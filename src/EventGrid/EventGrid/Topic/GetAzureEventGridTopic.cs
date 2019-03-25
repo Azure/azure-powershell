@@ -121,6 +121,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             IEnumerable<Topic> topicsList;
             string nextLink = null;
             string newNextLink = null;
+            int? providedTop = null;
+
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(this.Top)))
+            {
+                providedTop = this.Top;
+            }
 
             if (!string.IsNullOrEmpty(this.ResourceId))
             {
@@ -170,14 +176,14 @@ namespace Microsoft.Azure.Commands.EventGrid
             else if (!string.IsNullOrEmpty(resourceGroupName) && string.IsNullOrEmpty(topicName))
             {
                 // List all Event Grid topics in the given resource group
-                (topicsList, newNextLink) = this.Client.ListTopicsByResourceGroup(resourceGroupName, this.ODataQuery, this.Top);
+                (topicsList, newNextLink) = this.Client.ListTopicsByResourceGroup(resourceGroupName, this.ODataQuery, providedTop);
                 PSTopicListPagedInstance pSTopicListPagedInstance = new PSTopicListPagedInstance(topicsList, newNextLink);
                 this.WriteObject(pSTopicListPagedInstance, true);
             }
             else if (string.IsNullOrEmpty(resourceGroupName) && string.IsNullOrEmpty(topicName))
             {
                 // List all Event Grid topics in the given subscription
-                (topicsList, newNextLink) = this.Client.ListTopicsBySubscription(this.ODataQuery, this.Top);
+                (topicsList, newNextLink) = this.Client.ListTopicsBySubscription(this.ODataQuery, providedTop);
                 PSTopicListPagedInstance pSTopicListPagedInstance = new PSTopicListPagedInstance(topicsList, newNextLink);
                 this.WriteObject(pSTopicListPagedInstance, true);
             }

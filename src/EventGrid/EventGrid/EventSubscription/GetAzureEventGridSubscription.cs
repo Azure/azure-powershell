@@ -250,6 +250,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             string scope;
             bool includeFullEndpointUrl = this.IncludeFullEndpointUrl.IsPresent;
             string newNextLink = null;
+            int? providedTop = null;
+
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(this.Top)))
+            {
+                providedTop = this.Top;
+            }
 
             if (!string.IsNullOrEmpty(this.EventSubscriptionName))
             {
@@ -305,21 +311,21 @@ namespace Microsoft.Azure.Commands.EventGrid
                 else if (this.CustomTopicInputObject != null)
                 {
                     // Retrieve all the event subscriptions based on the ID of the specified topic object
-                    (eventSubscriptionsList, newNextLink) = this.Client.ListByResourceId(this.DefaultContext.Subscription.Id, this.CustomTopicInputObject.Id, this.ODataQuery, this.Top);
+                    (eventSubscriptionsList, newNextLink) = this.Client.ListByResourceId(this.DefaultContext.Subscription.Id, this.CustomTopicInputObject.Id, this.ODataQuery, providedTop);
                 }
                 else if (this.DomainInputObject != null)
                 {
                     // Retrieve all the event subscriptions based on the ID of the specified domain object
-                    (eventSubscriptionsList, newNextLink) = this.Client.ListByResourceId(this.DefaultContext.Subscription.Id, this.DomainInputObject.Id, this.ODataQuery, this.Top);
+                    (eventSubscriptionsList, newNextLink) = this.Client.ListByResourceId(this.DefaultContext.Subscription.Id, this.DomainInputObject.Id, this.ODataQuery, providedTop);
                 }
                 else if (this.DomainTopicInputObject != null)
                 {
                     // Retrieve all the event subscriptions based on the ID of the specified domain topic object
-                    (eventSubscriptionsList, newNextLink) = this.Client.ListByResourceId(this.DefaultContext.Subscription.Id, this.DomainTopicInputObject.Id, this.ODataQuery, this.Top);
+                    (eventSubscriptionsList, newNextLink) = this.Client.ListByResourceId(this.DefaultContext.Subscription.Id, this.DomainTopicInputObject.Id, this.ODataQuery, providedTop);
                 }
                 else if (!string.IsNullOrEmpty(this.ResourceId))
                 {
-                    (eventSubscriptionsList, newNextLink) = this.Client.ListByResourceId(this.DefaultContext.Subscription.Id, this.ResourceId, this.ODataQuery, this.Top);
+                    (eventSubscriptionsList, newNextLink) = this.Client.ListByResourceId(this.DefaultContext.Subscription.Id, this.ResourceId, this.ODataQuery, providedTop);
                 }
                 else if (!string.IsNullOrEmpty(this.TopicName))
                 {
@@ -330,7 +336,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                     }
 
                     // Get all event subscriptions for this topic
-                    (eventSubscriptionsList, newNextLink) = this.Client.ListByResource(this.ResourceGroupName, "Microsoft.EventGrid", "topics", this.TopicName, this.ODataQuery, this.Top);
+                    (eventSubscriptionsList, newNextLink) = this.Client.ListByResource(this.ResourceGroupName, "Microsoft.EventGrid", "topics", this.TopicName, this.ODataQuery, providedTop);
                 }
                 else if (!string.IsNullOrEmpty(this.DomainName))
                 {
@@ -343,12 +349,12 @@ namespace Microsoft.Azure.Commands.EventGrid
                     // Get all event subscriptions for this domain if no domain topic name is specified.
                     if (string.IsNullOrEmpty(this.DomainTopicName))
                     {
-                        (eventSubscriptionsList, newNextLink) = this.Client.ListByResource(this.ResourceGroupName, "Microsoft.EventGrid", "domains", this.DomainName, this.ODataQuery, this.Top);
+                        (eventSubscriptionsList, newNextLink) = this.Client.ListByResource(this.ResourceGroupName, "Microsoft.EventGrid", "domains", this.DomainName, this.ODataQuery, providedTop);
                     }
                     else
                     {
                         // Get all event subscriptions for this domain topic under the domain.
-                        (eventSubscriptionsList, newNextLink) = this.Client.ListByDomainTopic(this.ResourceGroupName, this.DomainName, this.DomainTopicName, this.ODataQuery, this.Top);
+                        (eventSubscriptionsList, newNextLink) = this.Client.ListByDomainTopic(this.ResourceGroupName, this.DomainName, this.DomainTopicName, this.ODataQuery, providedTop);
                     }
                 }
                 else if (!string.IsNullOrEmpty(this.ResourceGroupName))
@@ -356,20 +362,20 @@ namespace Microsoft.Azure.Commands.EventGrid
                     if (string.IsNullOrEmpty(this.Location) && string.IsNullOrEmpty(this.TopicTypeName))
                     {
                         // List all global Event Grid subscriptions in the given resource group
-                        (eventSubscriptionsList, newNextLink) = this.Client.ListGlobalEventSubscriptionsByResourceGroup(this.ResourceGroupName, this.ODataQuery, this.Top);
+                        (eventSubscriptionsList, newNextLink) = this.Client.ListGlobalEventSubscriptionsByResourceGroup(this.ResourceGroupName, this.ODataQuery, providedTop);
                     }
                     else if (string.IsNullOrEmpty(this.Location) && !string.IsNullOrEmpty(this.TopicTypeName))
                     {
-                        (eventSubscriptionsList, newNextLink) = this.Client.ListGlobalEventSubscriptionsByResourceGroupForTopicType(this.ResourceGroupName, this.TopicTypeName, this.ODataQuery, this.Top);
+                        (eventSubscriptionsList, newNextLink) = this.Client.ListGlobalEventSubscriptionsByResourceGroupForTopicType(this.ResourceGroupName, this.TopicTypeName, this.ODataQuery, providedTop);
                     }
                     else if (!string.IsNullOrEmpty(this.Location) && string.IsNullOrEmpty(this.TopicTypeName))
                     {
                         // List all regional Event Grid subscriptions in the given resource group
-                        (eventSubscriptionsList, newNextLink) = this.Client.ListRegionalEventSubscriptionsByResourceGroup(this.ResourceGroupName, this.Location, this.ODataQuery, this.Top);
+                        (eventSubscriptionsList, newNextLink) = this.Client.ListRegionalEventSubscriptionsByResourceGroup(this.ResourceGroupName, this.Location, this.ODataQuery, providedTop);
                     }
                     else if (!string.IsNullOrEmpty(this.Location) && !string.IsNullOrEmpty(this.TopicTypeName))
                     {
-                        (eventSubscriptionsList, newNextLink) = this.Client.ListRegionalEventSubscriptionsByResourceGroupForTopicType(this.ResourceGroupName, this.Location, this.TopicTypeName, this.ODataQuery, this.Top);
+                        (eventSubscriptionsList, newNextLink) = this.Client.ListRegionalEventSubscriptionsByResourceGroupForTopicType(this.ResourceGroupName, this.Location, this.TopicTypeName, this.ODataQuery, providedTop);
                     }
                 }
                 else
@@ -378,20 +384,20 @@ namespace Microsoft.Azure.Commands.EventGrid
                     if (string.IsNullOrEmpty(this.Location) && string.IsNullOrEmpty(this.TopicTypeName))
                     {
                         // List all global Event Grid subscriptions in the given resource group
-                        (eventSubscriptionsList, newNextLink) = this.Client.ListGlobalEventSubscriptionsBySubscription(this.ODataQuery, this.Top);
+                        (eventSubscriptionsList, newNextLink) = this.Client.ListGlobalEventSubscriptionsBySubscription(this.ODataQuery, providedTop);
                     }
                     else if (string.IsNullOrEmpty(this.Location) && !string.IsNullOrEmpty(this.TopicTypeName))
                     {
-                        (eventSubscriptionsList, newNextLink) = this.Client.ListGlobalEventSubscriptionsBySubscriptionForTopicType(this.TopicTypeName, this.ODataQuery, this.Top);
+                        (eventSubscriptionsList, newNextLink) = this.Client.ListGlobalEventSubscriptionsBySubscriptionForTopicType(this.TopicTypeName, this.ODataQuery, providedTop);
                     }
                     else if (!string.IsNullOrEmpty(this.Location) && string.IsNullOrEmpty(this.TopicTypeName))
                     {
                         // List all regional Event Grid subscriptions in the given resource group
-                        (eventSubscriptionsList, newNextLink) = this.Client.ListRegionalEventSubscriptionsBySubscription(this.Location, this.ODataQuery, this.Top);
+                        (eventSubscriptionsList, newNextLink) = this.Client.ListRegionalEventSubscriptionsBySubscription(this.Location, this.ODataQuery, providedTop);
                     }
                     else if (!string.IsNullOrEmpty(this.Location) && !string.IsNullOrEmpty(this.TopicTypeName))
                     {
-                        (eventSubscriptionsList, newNextLink) = this.Client.ListRegionalEventSubscriptionsBySubscriptionForTopicType(this.Location, this.TopicTypeName, this.ODataQuery, this.Top);
+                        (eventSubscriptionsList, newNextLink) = this.Client.ListRegionalEventSubscriptionsBySubscriptionForTopicType(this.Location, this.TopicTypeName, this.ODataQuery, providedTop);
                     }
                 }
 

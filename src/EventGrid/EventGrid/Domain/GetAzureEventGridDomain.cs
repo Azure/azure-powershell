@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = EventGridConstants.TopHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [ValidateRange(1, 100)]
-        public int? Top { get; set; }
+        public int Top { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -123,6 +123,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             string domainName = string.Empty;
             IEnumerable<Domain> domainsList;
             string newNextLink = null;
+            int? providedTop = null;
+
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(this.Top)))
+            {
+                providedTop = this.Top;
+            }
 
             if (!string.IsNullOrEmpty(this.ResourceId))
             {
@@ -168,14 +174,14 @@ namespace Microsoft.Azure.Commands.EventGrid
             else if (!string.IsNullOrEmpty(resourceGroupName) && string.IsNullOrEmpty(domainName))
             {
                 // List all Event Grid domains in the given resource group
-                (domainsList, newNextLink) = this.Client.ListDomainsByResourceGroup(resourceGroupName, this.ODataQuery, this.Top);
+                (domainsList, newNextLink) = this.Client.ListDomainsByResourceGroup(resourceGroupName, this.ODataQuery, providedTop);
                 PSDomainListPagedInstance pSDomainListPagedInstance = new PSDomainListPagedInstance(domainsList, newNextLink);
                 this.WriteObject(pSDomainListPagedInstance, true);
             }
             else if (string.IsNullOrEmpty(resourceGroupName) && string.IsNullOrEmpty(domainName))
             {
                 // List all Event Grid domains in the given subscription
-                (domainsList, newNextLink) = this.Client.ListDomainsBySubscription(this.ODataQuery, this.Top);
+                (domainsList, newNextLink) = this.Client.ListDomainsBySubscription(this.ODataQuery, providedTop);
                 PSDomainListPagedInstance pSDomainListPagedInstance = new PSDomainListPagedInstance(domainsList, newNextLink);
                 this.WriteObject(pSDomainListPagedInstance, true);
             }

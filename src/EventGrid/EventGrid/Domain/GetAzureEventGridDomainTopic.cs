@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = EventGridConstants.ODataQueryHelp,
             ParameterSetName = ResourceIdDomainTopicParameterSet)]
         [ValidateRange(1, 100)]
-        public int? Top { get; set; }
+        public int Top { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -119,6 +119,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             string newNextLink = null;
             IEnumerable<DomainTopic> domainTopicsList;
             List <PSDomainTopicListInstance> psDomainTopicsList = new List<PSDomainTopicListInstance>();
+            int? providedTop = null;
+
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(this.Top)))
+            {
+                providedTop = this.Top;
+            }
 
             if (!string.IsNullOrEmpty(this.ResourceId))
             {
@@ -152,7 +158,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                 else
                 {
                     // List all Event Grid domain topics in the given resource group/domain
-                    (domainTopicsList, newNextLink) = this.Client.ListDomainTopicsByDomain(resourceGroupName, domainName, this.ODataQuery, this.Top);
+                    (domainTopicsList, newNextLink) = this.Client.ListDomainTopicsByDomain(resourceGroupName, domainName, this.ODataQuery, providedTop);
                     PSDomainTopicListPagedInstance pSDomainTopicListPagedInstance = new PSDomainTopicListPagedInstance(domainTopicsList, newNextLink);
                     this.WriteObject(pSDomainTopicListPagedInstance, true);
                 }

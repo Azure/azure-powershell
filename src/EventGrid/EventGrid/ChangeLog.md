@@ -19,7 +19,6 @@
 -->
 ## Upcoming Release
 
-## Version 1.1.1
 * Updated to use the 2019-02-01-preview API version.
 * New commands:
     - New-AzureRmEventGridDomainTopic:

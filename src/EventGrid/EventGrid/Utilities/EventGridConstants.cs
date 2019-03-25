@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string ResourceIdNameHelp = "The identifier of the resource to which the event subscription should be created.";
 
         public const string ODataQueryHelp = "The OData query used for filtering the list results. Filtering is currently allowed on the Name property only.The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.";
-        public const string TopHelp = "The maximum number of resources to be obtained. Valid value is between 1 and 100. If top value is specified and more results are still available, the result will contain a link to the next page to be queried in NextLink. If the Top value is null or not specified, the full list of resources will be returned at once.";
+        public const string TopHelp = "The maximum number of resources to be obtained. Valid value is between 1 and 100. If top value is specified and more results are still available, the result will contain a link to the next page to be queried in NextLink. If the Top value is not specified, the full list of resources will be returned at once.";
         public const string NextLinkHelp = "The link for the next page of resources to be obtained. This value is obtained with the first Get-AzEventGrid cmdlet call when more resources are still available to be queried.";
 
         public const string TopicNameOfTheEventSubscriptionHelp = "The name of the topic to which the event subscription should be created.";

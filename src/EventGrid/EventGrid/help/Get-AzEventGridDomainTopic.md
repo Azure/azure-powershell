@@ -186,7 +186,7 @@ Accept wildcard characters: False
 The OData query used for filtering the list results. Filtering is currently allowed on the Name property only.The supported operations include: CONTAINS, eq (for equal), ne (for not equal), AND, OR and NOT.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Int32
 Parameter Sets: DomainTopicNameParameterSet, ResourceIdDomainTopicParameterSet
 Aliases:
 

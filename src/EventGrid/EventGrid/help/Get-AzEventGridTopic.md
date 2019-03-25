@@ -195,7 +195,7 @@ Accept wildcard characters: False
 ```
 
 ### -Top
-The maximum number of resources to be obtained. Valid value is between 1 and 100. If top value is specified and more results are still available, the result will contain a link to the next page to be queried in NextLink. If the Top value is null or not specified, the full list of resources will be returned at once.
+The maximum number of resources to be obtained. Valid value is between 1 and 100. If top value is specified and more results are still available, the result will contain a link to the next page to be queried in NextLink. If the Top value is not specified, the full list of resources will be returned at once.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
