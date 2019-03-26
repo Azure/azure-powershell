@@ -1,5 +1,5 @@
 ---
-Module Name: az.NetAppFiles
+Module Name: Az.NetAppFiles
 Module Guid: e20e99dc-6df9-479b-8504-2960f0088f00
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles
 Help Version: 0.9.0.0
