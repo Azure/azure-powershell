@@ -95,13 +95,13 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
                 this.ParentResourceName = parsedResourceId.ResourceName;
             }
 
-            if (!string.IsNullOrWhiteSpace(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 WriteObject(this.GetVpnConnection(this.ResourceGroupName, this.ParentResourceName, this.Name));
             }
             else
             {
-                WriteObject(this.ListVpnConnections(this.ResourceGroupName, this.ParentResourceName), true);
+                WriteObject(SubResourceWildcardFilter(Name, this.ListVpnConnections(this.ResourceGroupName, this.ParentResourceName)), true);
             }
         }
     }

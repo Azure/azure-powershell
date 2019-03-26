@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+using XTable = Microsoft.Azure.Cosmos.Table;
 using System.Collections.Generic;
 using System;
 using System.Linq;
@@ -58,6 +59,32 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
         }
 
         /// <summary>
+        /// Parse Cors Rules from OLD XSCL to PSCorsRule Array
+        /// </summary>
+        /// <param name="corsProperties">Cors Rules from XSCL</param>
+        /// <returns>PSCorsRule Array</returns>
+        public static PSCorsRule[] ParseCorsRules(XTable.CorsProperties corsProperties)
+        {
+            List<PSCorsRule> ruleList = new List<PSCorsRule>();
+
+            if (corsProperties != null && corsProperties.CorsRules != null)
+            {
+                foreach (var corsRule in corsProperties.CorsRules)
+                {
+                    PSCorsRule psCorsRule = new PSCorsRule();
+                    psCorsRule.AllowedOrigins = ListToArray(corsRule.AllowedOrigins);
+                    psCorsRule.AllowedHeaders = ListToArray(corsRule.AllowedHeaders);
+                    psCorsRule.ExposedHeaders = ListToArray(corsRule.ExposedHeaders);
+                    psCorsRule.AllowedMethods = ConvertCorsHttpMethodToString(corsRule.AllowedMethods);
+                    psCorsRule.MaxAgeInSeconds = corsRule.MaxAgeInSeconds;
+                    ruleList.Add(psCorsRule);
+                }
+            }
+
+            return ruleList.ToArray();
+        }
+
+        /// <summary>
         /// Parse CorsHttpMethods from XSCL to String Array
         /// </summary>
         /// <param name="methods">CorsHttpMethods from XSCL</param>
@@ -69,6 +96,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
             foreach (CorsHttpMethods methodValue in Enum.GetValues(typeof(CorsHttpMethods)).Cast<CorsHttpMethods>())
             {
                 if (methodValue != CorsHttpMethods.None && (methods & methodValue) != 0)
+                {
+                    methodList.Add(methodValue.ToString());
+                }
+            }
+
+            return methodList.ToArray();
+        }
+
+        /// <summary>
+        /// Parse CorsHttpMethods from OLD XSCL to String Array
+        /// </summary>
+        /// <param name="methods">CorsHttpMethods from XSCL</param>
+        /// <returns>String Array</returns>
+        private static string[] ConvertCorsHttpMethodToString(XTable.CorsHttpMethods methods)
+        {
+            List<string> methodList = new List<string>();
+
+            foreach (XTable.CorsHttpMethods methodValue in Enum.GetValues(typeof(XTable.CorsHttpMethods)).Cast<XTable.CorsHttpMethods>())
+            {
+                if (methodValue != XTable.CorsHttpMethods.None && (methods & methodValue) != 0)
                 {
                     methodList.Add(methodValue.ToString());
                 }

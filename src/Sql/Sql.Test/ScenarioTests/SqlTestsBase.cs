@@ -24,10 +24,12 @@ using System.Diagnostics;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Sql;
 using CommonStorage = Microsoft.Azure.Management.Storage.Version2017_10_01;
-using PublicStorage = Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Xunit.Abstractions;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.EventHub;
+using Microsoft.Azure.Management.OperationalInsights;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
@@ -85,7 +87,10 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     Helper.GetRMModulePath(@"AzureRM.Sql.psd1"),
                     Helper.RMNetworkModule,
                     "AzureRM.Storage.ps1",
-                    "AzureRM.Resources.ps1");
+                    "AzureRM.Resources.ps1",
+                    Helper.RMOperationalInsightsModule,
+                    Helper.RMEventHubModule,
+                    Helper.RMMonitorModule);
                 Helper.RunPowerShellTest(scripts);
             }
         }
@@ -93,6 +98,21 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         protected SqlManagementClient GetSqlClient(MockContext context)
         {
             return context.GetServiceClient<SqlManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected IMonitorManagementClient GetMonitorManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected IEventHubManagementClient GetEventHubManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<EventHubManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected IOperationalInsightsManagementClient GetOperationalInsightsManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<OperationalInsightsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         protected ResourceManagementClient GetResourcesClient(MockContext context)
@@ -108,11 +128,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         protected static CommonStorage.StorageManagementClient GetStorageManagementClient(MockContext context)
         {
             return context.GetServiceClient<CommonStorage.StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        protected static PublicStorage.StorageManagementClient GetPublicStorageManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<PublicStorage.StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
     }

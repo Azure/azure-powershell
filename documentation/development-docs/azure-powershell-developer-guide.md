@@ -174,13 +174,13 @@ After the solution file is updated, save and close it. Now, open the solution fi
     <PsModuleName>Cdn</PsModuleName>
   </PropertyGroup>
 ```
-- Remove the entry:
+- **Remove the entry**:
 ```xml
   <PropertyGroup>
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
   </PropertyGroup>
 ```
-This is not needed since this is a new project.
+**Note**: This is not needed since this is a new project and does not use legacy namespace conventions.
   
 - Update this entry to use your SDK:
 ```xml
@@ -244,8 +244,11 @@ Please see our guide on [Using Azure TestFramework](../testing-docs/using-azure-
 
 ### Adding Scenario Tests
 
-- Create a new class in `Commands.<SERVICE>.Test`
-- Create a ps1 file in the same folder that contains the actual tests ([see sample](../../src/Media/Commands.Media.Test/ScenarioTests))
+- Create a new class in `<SERVICE>.Test`
+    - Add `[Fact]` as an attribute to every test
+    - Add `[Trait(Category.AcceptanceType, Category.CheckIn)]` as an attribute to any test that should be run during CI in Playback mode.
+    - Add `[Trait(Category.AcceptanceType, Category.LiveOnly)]` as an attribute to any test that cannot be run in Playback mode (for example, if a test depends on a Dataplane SDK).
+- Create a ps1 file in the same folder that contains the actual tests ([see sample](../../src/Media/Media.Test/ScenarioTests))
     - Use `Assert-AreEqual x y` to verify that values are the same
     - Use `Assert-AreNotEqual x y` to verify that values are not the same
     - Use `Assert-Throws scriptblock message` to verify an exception is being thrown
@@ -256,7 +259,10 @@ Please see our guide on [Using Azure TestFramework](../testing-docs/using-azure-
     - Use `Assert-Null object` to verify that an object is null
     - Use `Assert-NotNull object` to verify that an object is not null
     - Use `Assert-Exists path` to verify that a file exists
-    - Use `Assert-AreEqualArray a1 a2` to verify that arrays are the sam
+    - Use `Assert-AreEqualArray a1 a2` to verify that arrays are the same
+    - Use `Assert-StartsWith s1 s2` to verify that the string `s2` starts with the string `s1`
+    - Use `Assert-Match s1 s2` to verify that the string `s2` matches the regular expression `s1`
+    - Use `Assert-NotMatch s1 s2` to verify that the string `s2` does not match the regular expression `s1`
 
 ### Using Active Directory
 
@@ -270,14 +276,8 @@ Please see our guide on [Using Azure TestFramework](../testing-docs/using-azure-
 
 ### AD Scenario Tests
 
-Create these environment variables for the AD scenario tests:
+Create this environment variables for the AD scenario tests:
 
-- `AZURE_LIVEID` should be UserId and Password for a valid LiveId account.
-  - `AZURE_LIVEID=UserId=<user@hotmail.com>;Password=<Password>`
-- `AZURE_ORGID_FPO` should be an orgid and password for an account that does not have any subscriptions or role assignments associated with it. It is supposed to be a foreign principal in your current tenant.
-  - `AZURE_ORGID_FPO=UserId=<user@orgid.com>;Password=<Password>`
--  `AZURE_ORGID_ONE_TENANT_ONE_SUBSCRIPTION` should be an account that is in a single tenant and has access to the subscription managed by that AD tenant.
-  - `AZURE_ORGID_ONE_TENANT_ONE_SUBSCRIPTION=UserId=<user@orgid.com>;Password=<Password>;SubscriptionId=<SubscriptionId>;AADAuthEndpoint=https://login.windows.net/`
 - `AZURE_SERVICE_PRINCIPAL` should be a service principal - an application defined in the subscription's tenant - that has management access to the subscription (or at least to a resource group in the tenant)
   - `AZURE_SERVICE_PRINCIPAL=UserId=<UserGuid>;Password=<Password>;AADTenant=<TenantGuid>;SubscriptionId=<SubscriptionId>`
 
@@ -287,7 +287,7 @@ Create these environment variables for the AD scenario tests:
 - Run the test in Visual Studio in the Test Explorer window and make sure you got a generated JSON file that matches the test name in the bin folder under the `SessionRecords` folder
 - Copy this `SessionRecords` folder and place it inside the test project
   - Inside Visual Studio, add all of the generated JSON files, making sure to change the "Copy to Output Directory" property for each one to "Copy if newer"
-  -  Make sure that all of these JSON files appear in your `Commands.<SERVICE>.Test.csproj` file
+  -  Make sure that all of these JSON files appear in your `<SERVICE>.Test.csproj` file
 
 # After Development
 

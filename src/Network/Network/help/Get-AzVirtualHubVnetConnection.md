@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvirtualhubvnetconnection
@@ -79,6 +79,24 @@ ProvisioningState    : Succeeded
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in Central US in that resource group in Azure. A Virtual Network Connection will be created thereafter which will peer the Virtual Network to the Virtual Hub.
 
 After the hub virtual network connection is created, it lists all the hub virtual network connection using its resource group name and the hub name.
+
+### Example 3
+
+```powershell
+PS C:\> Get-AzVirtualHubVnetConnection -ResourceGroupName testRG -VirtualHubName westushub -Name test*
+
+Name                 : testvnetconnection1
+Id                   : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubVirtualNetworkConnections/testvnetconnection1
+RemoteVirtualNetwork : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork
+ProvisioningState    : Succeeded
+
+Name                 : testvnetconnection2
+Id                   : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubVirtualNetworkConnections/testvnetconnection2
+RemoteVirtualNetwork : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork
+ProvisioningState    : Succeeded
+```
+
+This cmdlet lists all the hub virtual network connections starting with "test" using its resource group name and the hub name.
 
 ## PARAMETERS
 
@@ -188,3 +206,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzVirtualHubVnetConnection](./New-AzVirtualHubVnetConnection.md)
+
+[Remove-AzVirtualHubVnetConnection](./Remove-AzVirtualHubVnetConnection.md)

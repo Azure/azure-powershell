@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azserviceendpointpolicy
@@ -8,13 +8,13 @@ schema: 2.0.0
 # Get-AzServiceEndpointPolicy
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets a service endpoint policy.
 
 ## SYNTAX
 
-### GetByNameParameterSet (Default)
+### ListParameterSet (Default)
 ```
-Get-AzServiceEndpointPolicy [-Name <String>] -ResourceGroupName <String>
+Get-AzServiceEndpointPolicy [-Name <String>] [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -43,6 +43,13 @@ $policyList = Get-AzServiceEndpointPolicy -ResourceGroupName "ResourceGroup01"
 
 This command gets a list of all the service endpoint policies in the resource group named ResourceGroup01 and stores it in the $policyList variable.
 
+### Example 3
+```
+$policyList = Get-AzServiceEndpointPolicy -ResourceGroupName "ServiceEndpointPolicy*"
+```
+
+This command gets a list of all the service endpoint policies that start with "ServiceEndpointPolicy".
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -65,7 +72,7 @@ The name of the service endpoint policy
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByNameParameterSet
+Parameter Sets: ListParameterSet
 Aliases:
 
 Required: False
@@ -80,10 +87,10 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByNameParameterSet
+Parameter Sets: ListParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -91,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-{{Fill ResourceId Description}}
+The ID of the service endpoint policy.
 
 ```yaml
 Type: System.String
@@ -149,3 +156,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzServiceEndpointPolicy](./New-AzServiceEndpointPolicy.md)
+
+[Remove-AzServiceEndpointPolicy](./Remove-AzServiceEndpointPolicy.md)
+
+[Set-AzServiceEndpointPolicy](./Set-AzServiceEndpointPolicy.md)

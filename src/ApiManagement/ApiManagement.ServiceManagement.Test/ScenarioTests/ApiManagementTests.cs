@@ -174,14 +174,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TenantGitConfigurationCrudTest()
+        public void TenantGitConfCrudTest()
         {
             RunPowerShellTest("TenantGitConfiguration-CrudTest");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TenantAccessConfigurationCrudTest()
+        public void TenantAccessConfCrudTest()
         {
             RunPowerShellTest("TenantAccessConfiguration-CrudTest");
         }

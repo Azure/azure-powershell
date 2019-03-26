@@ -30,36 +30,36 @@ function Test-Image
             $loc = Get-ComputeVMLocation;
         }
         
-        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # Create a VM first
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
-        $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
-        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
-        $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-        $nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
-        $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
         
         # Adding the same Nic but not set it Primary
-        $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId -Primary;
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId -Primary;
         
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_LRS';
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
@@ -68,12 +68,12 @@ function Test-Image
         $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
         $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
-        $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+        $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
-        $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-        $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
-        $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
-        $p = Remove-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3';
+        $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
+        $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
+        $p = Remove-AzVMDataDisk -VM $p -Name 'testDataDisk3';
         
         # OS & Image
         $user = "Foo12";
@@ -84,26 +84,27 @@ function Test-Image
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
         # $p.StorageProfile.OSDisk = $null;
-        $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
-        $p = ($imgRef | Set-AzureRmVMSourceImage -VM $p);
+        $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
         # Virtual Machine
-        New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Create Image using the VM's OS disk and data disks.
         $imageName = 'image' + $rgname;
-        $imageConfig = New-AzureRmImageConfig -Location $loc;
-        Set-AzureRmImageOsDisk -Image $imageConfig -OsType 'Windows' -OsState 'Generalized' -BlobUri $osDiskVhdUri;
-        $imageConfig = Add-AzureRmImageDataDisk -Image $imageConfig -Lun 1 -BlobUri $dataDiskVhdUri1;
-        $imageConfig = Add-AzureRmImageDataDisk -Image $imageConfig -Lun 2 -BlobUri $dataDiskVhdUri2;
-        $imageConfig = Add-AzureRmImageDataDisk -Image $imageConfig -Lun 3 -BlobUri $dataDiskVhdUri2;
+        $tags = @{test1 = "testval1"; test2 = "testval2" };
+        $imageConfig = New-AzImageConfig -Location $loc -Tag $tags;
+        Set-AzImageOsDisk -Image $imageConfig -OsType 'Windows' -OsState 'Generalized' -BlobUri $osDiskVhdUri;
+        $imageConfig = Add-AzImageDataDisk -Image $imageConfig -Lun 1 -BlobUri $dataDiskVhdUri1;
+        $imageConfig = Add-AzImageDataDisk -Image $imageConfig -Lun 2 -BlobUri $dataDiskVhdUri2;
+        $imageConfig = Add-AzImageDataDisk -Image $imageConfig -Lun 3 -BlobUri $dataDiskVhdUri2;
         Assert-AreEqual 3 $imageConfig.StorageProfile.DataDisks.Count;
-        $imageConfig = Remove-AzureRmImageDataDisk -Image $imageConfig -Lun 3;
+        $imageConfig = Remove-AzImageDataDisk -Image $imageConfig -Lun 3;
         Assert-AreEqual 2 $imageConfig.StorageProfile.DataDisks.Count;
 
-        $job = New-AzureRmImage -Image $imageConfig -ImageName $imageName -ResourceGroupName $rgname -AsJob;
+        $job = New-AzImage -Image $imageConfig -ImageName $imageName -ResourceGroupName $rgname -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
         $createdImage = $job | Receive-Job
@@ -112,24 +113,81 @@ function Test-Image
         Assert-NotNull $createdImage.Id;
         Assert-AreEqual $imageName $createdImage.Name;
         Assert-AreEqual 2 $createdImage.StorageProfile.DataDisks.Count;
-        
+
         Assert-AreEqual "Succeeded" $createdImage.ProvisioningState;
         Assert-AreEqual $osDiskVhdUri $createdImage.StorageProfile.OsDisk.BlobUri;
         Assert-AreEqual $dataDiskVhdUri1 $createdImage.StorageProfile.DataDisks[0].BlobUri;
         Assert-AreEqual $dataDiskVhdUri2 $createdImage.StorageProfile.DataDisks[1].BlobUri;
 
-        # List and Delete Image
-        $images = Get-AzureRmImage -ResourceGroupName $rgname;
-        Assert-AreEqual 1 $images.Count;
+        Assert-True {$createdImage.Tags.ContainsKey("test1") }
+        Assert-AreEqual "testval1" $createdImage.Tags["test1"]
+        Assert-True {$createdImage.Tags.ContainsKey("test2") }
+        Assert-AreEqual "testval2" $createdImage.Tags["test2"]
 
-        $job = Remove-AzureRmImage -ResourceGroupName $rgname -ImageName $imageName -Force -AsJob;
+        # List and Delete Image
+        $wildcardRgQuery = ($rgname -replace ".$") + "*"
+        $wildcardNameQuery = ($imageName -replace ".$") + "*"
+        
+        $images = Get-AzImage;
+        Assert-True { $images.Count -ge 1 };
+        
+        $images = Get-AzImage -ResourceGroupName $wildcardRgQuery;
+        Assert-AreEqual 1 $images.Count;
+        Assert-AreEqual $rgname $images[0].ResourceGroupName;
+
+        $images = Get-AzImage -ResourceGroupName $rgname;
+        Assert-AreEqual 1 $images.Count;
+        Assert-AreEqual $rgname $images[0].ResourceGroupName;
+        
+        $images = Get-AzImage -Name $wildcardNameQuery;
+        Assert-AreEqual 1 $images.Count;
+        Assert-AreEqual $rgname $images[0].ResourceGroupName;
+        Assert-AreEqual $imageName $images[0].Name;
+        
+        $images = Get-AzImage -Name $imageName;
+        Assert-AreEqual 1 $images.Count;
+        Assert-AreEqual $rgname $images[0].ResourceGroupName;
+        Assert-AreEqual $imageName $images[0].Name;
+        
+        $images = Get-AzImage -ResourceGroupName $wildcardRgQuery -Name $wildcardNameQuery;
+        Assert-AreEqual 1 $images.Count;
+        Assert-AreEqual $rgname $images[0].ResourceGroupName;
+        Assert-AreEqual $imageName $images[0].Name;
+        
+        $images = Get-AzImage -ResourceGroupName $rgname -Name $wildcardNameQuery;
+        Assert-AreEqual 1 $images.Count;
+        Assert-AreEqual $rgname $images[0].ResourceGroupName;
+        Assert-AreEqual $imageName $images[0].Name;
+        
+        $images = Get-AzImage -ResourceGroupName $wildcardRgQuery -Name $imageName;
+        Assert-AreEqual 1 $images.Count;
+        Assert-AreEqual $rgname $images[0].ResourceGroupName;
+        Assert-AreEqual $imageName $images[0].Name;
+        
+        $images = Get-AzImage -ResourceGroupName $rgname -Name $imageName;
+        Assert-AreEqual $rgname $images.ResourceGroupName;
+        Assert-AreEqual $imageName $images.Name;
+
+        # Update Image Tag
+        $images[0] | Update-AzImage -Tag @{test1 = "testval3"; test2 = "testval4"};
+        Update-AzImage -ResourceGroupName $rgname -ImageName $imageName -Tag @{test1 = "testval3"; test2 = "testval4"};
+        Update-AzImage -Image $images[0] -Tag @{test1 = "testval3"; test2 = "testval4"};
+        Update-AzImage -ResourceId $images[0].Id -Tag @{test1 = "testval3"; test2 = "testval4"};
+
+        $image = Get-AzImage -ResourceGroupName $rgname -ImageName $imageName;
+        Assert-True {$image.Tags.ContainsKey("test1") }
+        Assert-AreEqual "testval3" $image.Tags["test1"]
+        Assert-True {$image.Tags.ContainsKey("test2") }
+        Assert-AreEqual "testval4" $image.Tags["test2"]
+
+        $job = Remove-AzImage -ResourceGroupName $rgname -ImageName $imageName -Force -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
-        $images = Get-AzureRmImage -ResourceGroupName $rgname;
+        $images = Get-AzImage -ResourceGroupName $rgname;
         Assert-AreEqual 0 $images.Count;
 
         # Remove All VMs
-        Get-AzureRmVM -ResourceGroupName $rgname | Remove-AzureRmVM -ResourceGroupName $rgname -Force;
+        Get-AzVM -ResourceGroupName $rgname | Remove-AzVM -ResourceGroupName $rgname -Force;
     }
     finally
     {
@@ -152,36 +210,36 @@ function Test-ImageCapture
             $loc = Get-ComputeVMLocation;
         }
         
-        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # Create a VM first
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
-        $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
-        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
-        $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-        $nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
-        $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
         
         # Adding the same Nic but not set it Primary
-        $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId -Primary;
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId -Primary;
         
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_LRS';
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
@@ -190,13 +248,13 @@ function Test-ImageCapture
         $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
         $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
-        $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+        $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
-        $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-        $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
-        $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
-        $p = Remove-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3';
-        
+        $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
+        $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
+        $p = Remove-AzVMDataDisk -VM $p -Name 'testDataDisk3';
+
         # OS & Image
         $user = "Foo12";
         $password = $PLACEHOLDER;
@@ -206,24 +264,24 @@ function Test-ImageCapture
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
         # $p.StorageProfile.OSDisk = $null;
-        $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
-        $p = ($imgRef | Set-AzureRmVMSourceImage -VM $p);
+        $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
         # Virtual Machine
-        New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Get VM
-        $vm = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
+        $vm = Get-AzVM -Name $vmname -ResourceGroupName $rgname;
 
-        Stop-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Force;
-        Set-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Generalize;
+        Stop-AzVM -ResourceGroupName $rgname -Name $vmname -Force;
+        Set-AzVM -ResourceGroupName $rgname -Name $vmname -Generalize;
 
         # Create Image through capture of the VM
         $imageName = 'image' + $rgname;
-        $imageConfig = New-AzureRmImageConfig -Location $loc -SourceVirtualMachineId $vm.Id;
-        $createdImage = New-AzureRmImage -Image $imageConfig -ImageName $imageName -ResourceGroupName $rgname;
+        $imageConfig = New-AzImageConfig -Location $loc -SourceVirtualMachineId $vm.Id;
+        $createdImage = New-AzImage -Image $imageConfig -ImageName $imageName -ResourceGroupName $rgname;
 
         Assert-NotNull $createdImage.Id;
         Assert-AreEqual $imageName $createdImage.Name;
@@ -235,15 +293,15 @@ function Test-ImageCapture
         Assert-AreEqual $dataDiskVhdUri2 $createdImage.StorageProfile.DataDisks[1].BlobUri;
 
         # List and Delete Image
-        $images = Get-AzureRmImage -ResourceGroupName $rgname;
+        $images = Get-AzImage -ResourceGroupName $rgname;
         Assert-AreEqual 1 $images.Count;
 
-        Remove-AzureRmImage -ResourceGroupName $rgname -ImageName $imageName -Force;
-        $images = Get-AzureRmImage -ResourceGroupName $rgname;
+        Remove-AzImage -ResourceGroupName $rgname -ImageName $imageName -Force;
+        $images = Get-AzImage -ResourceGroupName $rgname;
         Assert-AreEqual 0 $images.Count;
 
         # Remove All VMs
-        Get-AzureRmVM -ResourceGroupName $rgname | Remove-AzureRmVM -ResourceGroupName $rgname -Force;
+        Get-AzVM -ResourceGroupName $rgname | Remove-AzVM -ResourceGroupName $rgname -Force;
     }
     finally
     {

@@ -18,7 +18,7 @@ Get discovered security solutions on a subscription scope
 #>
 function Get-AzureRmDiscoveredSecuritySolution-SubscriptionScope
 {
-    $discoveredSecuritySolutions = Get-AzureRmDiscoveredSecuritySolution
+    $discoveredSecuritySolutions = Get-AzDiscoveredSecuritySolution
 	Validate-DiscoveredSecuritySolutions $discoveredSecuritySolutions
 }
 
@@ -28,11 +28,11 @@ Get discovered security solution
 #>
 function Get-AzureRmDiscoveredSecuritySolution-ResourceGroupLevelResource
 {
-	$discoveredSecuritySolution = Get-AzureRmDiscoveredSecuritySolution | Select -First 1
+	$discoveredSecuritySolution = Get-AzDiscoveredSecuritySolution | Select -First 1
 	$rgName = Extract-ResourceGroup -ResourceId $discoveredSecuritySolution.Id
 	$location = Extract-ResourceLocation -ResourceId $discoveredSecuritySolution.Id
 
-    $fetchedDiscoveredSecuritySolution = Get-AzureRmDiscoveredSecuritySolution -ResourceGroupName $rgName -Location $location -Name $discoveredSecuritySolution.Name
+    $fetchedDiscoveredSecuritySolution = Get-AzDiscoveredSecuritySolution -ResourceGroupName $rgName -Location $location -Name $discoveredSecuritySolution.Name
 	Validate-DiscoveredSecuritySolution $fetchedDiscoveredSecuritySolution
 }
 
@@ -42,9 +42,9 @@ Get discovered security solution by a resource ID
 #>
 function Get-AzureRmDiscoveredSecuritySolution-ResourceId
 {
-	$discoveredSecuritySolution = Get-AzureRmDiscoveredSecuritySolution | Select -First 1
+	$discoveredSecuritySolution = Get-AzDiscoveredSecuritySolution | Select -First 1
 
-    $discoveredSecuritySolutions = Get-AzureRmDiscoveredSecuritySolution -ResourceId $discoveredSecuritySolution.Id
+    $discoveredSecuritySolutions = Get-AzDiscoveredSecuritySolution -ResourceId $discoveredSecuritySolution.Id
 	Validate-DiscoveredSecuritySolutions $discoveredSecuritySolutions
 }
 

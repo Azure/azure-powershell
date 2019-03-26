@@ -18,7 +18,7 @@
 #>
 function Test-AzureLocation
 {
-    $providerLocations = Get-AzureRmLocation
+    $providerLocations = Get-AzLocation
 
     Assert-True { $providerLocations.Count -gt 0 }
     foreach ($location in $providerLocations)
