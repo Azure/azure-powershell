@@ -46,7 +46,7 @@ function Test-RecordSetCrud
 
 	$createdRecord.Metadata = @{ tag1 = "val1"; tag2 = "val2"}
 	$createdRecord.Ttl = 1300
-	$updatedRecord = $createdRecord | Add-AzPrivateDnsRecordConfig -Ipv4Address 13.13.0.13 | Update-AzPrivateDnsRecordSet
+	$updatedRecord = $createdRecord | Add-AzPrivateDnsRecordConfig -Ipv4Address 13.13.0.13 | Set-AzPrivateDnsRecordSet
 
 	Assert-NotNull $updatedRecord
 	Assert-NotNull $updatedRecord.Etag
@@ -134,7 +134,7 @@ function Test-RecordSetCrudWithPiping
 	$recordName = getAssetname
 	$resourceGroup = TestSetup-CreateResourceGroup 
     $zone = New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName
-	$updatedRecord = New-AzPrivateDnsRecordSet -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName  -Name $recordName -Ttl 100 -RecordType A -Metadata @{tag1 = "val1"} | Add-AzPrivateDnsRecordConfig -Ipv4Address 13.13.0.13 | Update-AzPrivateDnsRecordSet
+	$updatedRecord = New-AzPrivateDnsRecordSet -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName  -Name $recordName -Ttl 100 -RecordType A -Metadata @{tag1 = "val1"} | Add-AzPrivateDnsRecordConfig -Ipv4Address 13.13.0.13 | Set-AzPrivateDnsRecordSet
 
 	$resourceGroupName = $updatedRecord.ResourceGroupName
 	Assert-NotNull $updatedRecord
@@ -191,7 +191,7 @@ function Test-RecordSetCrudWithPipingTrimsDotFromZoneName
 	# this is an offline operation, we don't check the dot and don't change the object in place
 	Assert-AreEqual $zoneNameWithDot $recordAfterAdd.ZoneName 
 
-	$updatedRecord = $recordAfterAdd | Update-AzPrivateDnsRecordSet -Overwrite
+	$updatedRecord = $recordAfterAdd | Set-AzPrivateDnsRecordSet -Overwrite
 
 	Assert-NotNull $updatedRecord
 	Assert-AreEqual $recordName $updatedRecord.Name 
@@ -249,7 +249,7 @@ function Test-RecordSetCrudWithZoneResourceId
 
 	$createdRecord.Metadata = @{ tag1 = "val1"; tag2 = "val2"}
 	$createdRecord.Ttl = 1300
-	$updatedRecord = $createdRecord | Add-AzPrivateDnsRecordConfig -Ipv4Address 13.13.0.13 | Update-AzPrivateDnsRecordSet
+	$updatedRecord = $createdRecord | Add-AzPrivateDnsRecordConfig -Ipv4Address 13.13.0.13 | Set-AzPrivateDnsRecordSet
 
 	Assert-NotNull $updatedRecord
 	Assert-NotNull $updatedRecord.Etag
@@ -304,7 +304,7 @@ function Test-RecordSetA
 	$record = $record | Remove-AzPrivateDnsRecordConfig -Ipv4Address 1.1.1.1
 	$record = $record | Remove-AzPrivateDnsRecordConfig -Ipv4Address 3.3.3.3
 
-	$record | Update-AzPrivateDnsRecordSet
+	$record | Set-AzPrivateDnsRecordSet
 	$getResult = Get-AzPrivateDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A 
 	
 	Assert-AreEqual 1 $getResult.Records.Count
@@ -379,7 +379,7 @@ function Test-RecordSetAAAA
 	$record = $record | Remove-AzPrivateDnsRecordConfig -Ipv6Address 2::22
 	$record = $record | Remove-AzPrivateDnsRecordConfig -Ipv6Address 3::33
 
-	$record | Update-AzPrivateDnsRecordSet
+	$record | Set-AzPrivateDnsRecordSet
 	$getResult = Get-AzPrivateDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType AAAA 
 	
 	Assert-AreEqual 2 $getResult.Records.Count
@@ -446,7 +446,7 @@ function Test-RecordSetCNAME
 	$record = $record | Add-AzPrivateDnsRecordConfig -Cname www.contoso.com
 	$record = $record | Remove-AzPrivateDnsRecordConfig -Cname gibberish
 
-	$record | Update-AzPrivateDnsRecordSet
+	$record | Set-AzPrivateDnsRecordSet
 	$getResult = Get-AzPrivateDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType CNAME 
 	
 	Assert-AreEqual 1 $getResult.Records.Count
@@ -507,7 +507,7 @@ function Test-RecordSetMX
 	$record = $record | Remove-AzPrivateDnsRecordConfig -Exchange mail1.theg.com -Preference 10
 	$record = $record | Remove-AzPrivateDnsRecordConfig -Exchange mail2.theg.com -Preference 15
 
-	$record | Update-AzPrivateDnsRecordSet
+	$record | Set-AzPrivateDnsRecordSet
 	$getResult = Get-AzPrivateDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType MX 
 	
 	Assert-AreEqual 1 $getResult.Records.Count
@@ -577,7 +577,7 @@ function Test-RecordSetTXT
 	$record = $record | Remove-AzPrivateDnsRecordConfig -Value text1
 	$record = $record | Remove-AzPrivateDnsRecordConfig -Value text4
 
-	$record | Update-AzPrivateDnsRecordSet
+	$record | Set-AzPrivateDnsRecordSet
 	$getResult = Get-AzPrivateDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType TXT 
 	
 	Assert-AreEqual 2 $getResult.Records.Count
@@ -613,7 +613,7 @@ function Test-RecordSetTXTNonEmpty
 
 	# add three records, remove one, remove another no-op
 
-	$record | Update-AzPrivateDnsRecordSet
+	$record | Set-AzPrivateDnsRecordSet
 	$getResult = Get-AzPrivateDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType TXT 
 	
 	Assert-AreEqual 2 $getResult.Records.Count
@@ -642,7 +642,7 @@ function Test-RecordSetTXTLegacyLengthValidation
 	Assert-Throws {$recordSet | Add-AzPrivateDnsRecordConfig -Value $longRecordTxt }
 	
 	$recordSet = $recordSet | Add-AzPrivateDnsRecordConfig -Value $maxRecordTxt
-	$setResult = $recordSet | Update-AzPrivateDnsRecordSet ;
+	$setResult = $recordSet | Set-AzPrivateDnsRecordSet ;
 		
 	Assert-AreEqual $maxRecordTxt $setResult.Records[0].Value;
 
@@ -693,7 +693,7 @@ function Test-RecordSetPTR
     $record = $record | Remove-AzPrivateDnsRecordConfig -Ptrdname  "contoso1.com"
     $record = $record | Remove-AzPrivateDnsRecordConfig -Ptrdname  "contoso4.com"
 
-	$record | Update-AzPrivateDnsRecordSet
+	$record | Set-AzPrivateDnsRecordSet
 	$getResult = Get-AzPrivateDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType PTR 
 	
 	Assert-AreEqual 2 $getResult.Records.Count
@@ -755,7 +755,7 @@ function Test-RecordSetSRV
 	$record = $record | Remove-AzPrivateDnsRecordConfig -Port 53 -Priority 2 -Target ns2.example.com -Weight 10
 	$record = $record | Remove-AzPrivateDnsRecordConfig -Port 42 -Priority 999 -Target ns5.example.com -Weight 1600
 
-	$record | Update-AzPrivateDnsRecordSet
+	$record | Set-AzPrivateDnsRecordSet
 	$getResult = Get-AzPrivateDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType SRV 
 	
 	Assert-AreEqual 1 $getResult.Records.Count
@@ -790,7 +790,7 @@ function Test-RecordSetSRVNonEmpty
     $records = @()
 	$records += New-AzPrivateDnsRecordConfig  -Port 53 -Priority 1 -Target ns1.example.com -Weight 5
 	$record = New-AzPrivateDnsRecordSet -ZoneName $zone.Name -ResourceGroupName $resourceGroup.ResourceGroupName -Name $recordName -Ttl 100 -RecordType SRV -PrivateDnsRecords $records
-	$record | Update-AzPrivateDnsRecordSet
+	$record | Set-AzPrivateDnsRecordSet
 	$getResult = Get-AzPrivateDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType SRV 
 	
 	Assert-AreEqual 1 $getResult.Records.Count
@@ -832,7 +832,7 @@ function Test-RecordSetSOA
 	$record.Records[0].MinimumTtl = 321
 	$record.Ttl = 110901
 
-	$record | Update-AzPrivateDnsRecordSet
+	$record | Set-AzPrivateDnsRecordSet
 	$getResult = Get-AzPrivateDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType SOA 
 	
 	Assert-AreEqual 1 $getResult.Records.Count
@@ -999,9 +999,9 @@ function Test-RecordSetEtagMismatch
 	$recordSet.Etag = "gibberish"
 
 	$message = [System.String]::Format("The Record set {0} has been modified (etag mismatch).", $recordName);
-	Assert-Throws { $recordSet | Update-AzPrivateDnsRecordSet } $message
+	Assert-Throws { $recordSet | Set-AzPrivateDnsRecordSet } $message
 
-	$updatedRecordSet = $recordSet | Update-AzPrivateDnsRecordSet -Overwrite
+	$updatedRecordSet = $recordSet | Set-AzPrivateDnsRecordSet -Overwrite
 
 	Assert-AreNotEqual "gibberish" $updatedRecordSet.Etag
 	Assert-AreNotEqual $recordSet.Etag $updatedRecordSet.Etag
@@ -1137,12 +1137,12 @@ function Test-RecordSetNewRecordNoName
 	$recordSet = New-AzPrivateDnsRecordSet -Name $recordName -Ttl 100 -RecordType MX -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName
 	$recordSet = Get-AzPrivateDnsRecordSet -ResourceGroupName $resourceGroup.ResourceGroupName -ZoneName $zoneName -RecordType MX
 	$record1 = Add-AzPrivateDnsRecordConfig -Exchange mail1.theg.com -Preference 1 -RecordSet $recordSet
-	$recordSet | Update-AzPrivateDnsRecordSet
+	$recordSet | Set-AzPrivateDnsRecordSet
 	$getRecordSetOne = Get-AzPrivateDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType MX 
 	Assert-AreEqual 1 $getRecordSetOne.Records.Count
 
 	$record2 = Add-AzPrivateDnsRecordConfig -Exchange mail2.theg.com -Preference 10 -RecordSet $getRecordSetOne
-	$getRecordSetOne | Update-AzPrivateDnsRecordSet
+	$getRecordSetOne | Set-AzPrivateDnsRecordSet
 	$getRecordSetTwo = Get-AzPrivateDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType MX
 	Assert-AreEqual 2 $getRecordSetTwo.Records.Count
 
