@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
     /// <summary>
     /// Updates a ScheduledQueryRule object
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRule", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRule", SupportsShouldProcess = true, DefaultParameterSetName = ByRuleName), OutputType(typeof(bool))]
     public class RemoveScheduledQueryRuleCommand : ManagementCmdletBase
     {
 
@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         /// Alert name
         /// </summary>
         [Parameter(ParameterSetName = ByRuleName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The alert name")]
+        [ResourceNameCompleter("Microsoft.insights/scheduledqueryrules", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string RuleName { get; set; }
 
@@ -70,45 +71,18 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 
         protected override void ProcessRecordInternal()
         {
-
-                    //string resourceGroupName = this.ResourceGroupName;
-                    //string ruleName = this.RuleName;
-
-                    //// Using value from the pipe
-                    //if (this.MyInvocation.BoundParameters.ContainsKey("InputObject") || this.InputObject != null)
-                    //{
-                    //    ScheduledQueryRuleUtilities.ProcessPipeObject(
-                    //        inputObject: this.InputObject,
-                    //        resourceGroupName: out resourceGroupName,
-                    //        ruleName: out ruleName);
-                    //}
-                    //else if (this.MyInvocation.BoundParameters.ContainsKey("ResourceId") ||
-                    //         !string.IsNullOrWhiteSpace(this.ResourceId))
-                    //{
-                    //    ScheduledQueryRuleUtilities.ProcessPipeObject(
-                    //        resourceId: this.ResourceId,
-                    //        resourceGroupName: out resourceGroupName,
-                    //        ruleName: out ruleName);
-                    //}
-
-                    //this.MonitorManagementClient.ScheduledQueryRules.DeleteWithHttpMessagesAsync(
-                    //    resourceGroupName: resourceGroupName, ruleName: ruleName);
-
-                   
-
-                    if (this.IsParameterBound(c => c.InputObject))
-                    {
-                        var resourceIdentifier = new ResourceIdentifier(InputObject.Id);
-                        this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                        this.RuleName = this.InputObject.Name;
-                    }
-
-                    if (this.IsParameterBound(c => c.ResourceId))
-                    {
-                        var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
-                        this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                        this.RuleName = resourceIdentifier.ResourceName;
-                    }
+            if (this.IsParameterBound(c => c.InputObject) || this.InputObject != null)
+            {
+                var resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.RuleName = this.InputObject.Name;
+            }
+            else if (this.IsParameterBound(c => c.ResourceId) || !string.IsNullOrWhiteSpace(this.ResourceId))
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.RuleName = resourceIdentifier.ResourceName;
+            }
 
             if (this.ShouldProcess(this.RuleName,
                 string.Format("Deleting Log Alert Rule '{0}' in resource group {0}", this.RuleName,

@@ -1,4 +1,18 @@
-﻿using Microsoft.Azure.Commands.ScenarioTest;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -25,6 +39,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
         private AzureOperationResponse<LogSearchRuleResource> response;
         private string resourceGroup;
         private string ruleName;
+        private LogSearchRuleResourcePatch patchPrms;
         private LogSearchRuleResource updatePrms;
 
         public UpdateScheduledQueryRuleTests(Xunit.Abstractions.ITestOutputHelper output)
@@ -50,20 +65,21 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
 
             sqrOperationsMock.Setup(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult<Microsoft.Rest.Azure.AzureOperationResponse<LogSearchRuleResource>>(response))
-                .Callback((string resourceGrp, string name) =>
+                .Callback((string resourceGrp, string name, Dictionary<string, List<string>> customHeaders, CancellationToken cancellationToken) =>
                 {
                     this.resourceGroup = resourceGrp;
                     this.ruleName = name;
                     this.updatePrms = response.Body;
                 });
 
-            sqrOperationsMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<LogSearchRuleResource>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+            sqrOperationsMock.Setup(f => f.UpdateWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<LogSearchRuleResourcePatch>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult<Microsoft.Rest.Azure.AzureOperationResponse<LogSearchRuleResource>>(response))
-                .Callback((string resourceGrp, string name, LogSearchRuleResource updateParams, Dictionary<string, List<string>> headers, CancellationToken t) =>
+                .Callback((string resourceGrp, string name, LogSearchRuleResourcePatch patchPrms, Dictionary<string, List<string>> headers, CancellationToken t) =>
                 {
                     this.resourceGroup = resourceGrp;
                     this.ruleName = name;
-                    this.updatePrms = updateParams;
+                    this.patchPrms = patchPrms;
+                    this.updatePrms = response.Body;
                 });
 
             monitorManagementClientMock.SetupGet(f => f.ScheduledQueryRules).Returns(this.sqrOperationsMock.Object);
@@ -81,26 +97,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
 
         public void UpdateScheduledQueryRuleCommandParametersProcessing()
         {
-            //testing update of description field
+            //testing update of "enabled" field
 
             cmdlet.RuleName = "LogSearchAlertName";
             cmdlet.ResourceGroupName = Utilities.ResourceGroup;
-
-            /*
-            ScheduledQueryRuleAznsAction aznsAction = new ScheduledQueryRuleAznsAction(new AzNsActionGroup());
-            ScheduledQueryRuleTriggerCondition triggerCondition = new ScheduledQueryRuleTriggerCondition(new TriggerCondition("GreaterThan", 15));
-            ScheduledQueryRuleAlertingAction alertingAction = new ScheduledQueryRuleAlertingAction(new AlertingAction("2", aznsAction, triggerCondition));
-
-            cmdlet.Action = new PSScheduledQueryRuleAlertingAction(alertingAction);
-
-            ScheduledQueryRuleSchedule schedule = new ScheduledQueryRuleSchedule(new Schedule(5, 5));
-            cmdlet.Schedule = new PSScheduledQueryRuleSchedule(schedule);
-
-            ScheduledQueryRuleSource source = new ScheduledQueryRuleSource(new Source("union *", "dataSourceId", new List<string> { "authResource1", "authResource2" }, "ResultCount"));
-            cmdlet.Source = new PSScheduledQueryRuleSource(source);
-
-            ScheduledQueryRuleResource sqrResource = new ScheduledQueryRuleResource(new LogSearchRuleResource(location: Location, source: source, schedule:schedule, action:alertingAction, name: "LogSearchAlertName", description: "A Log Search Alert description"));
-            */
 
             cmdlet.Enabled = "false";
             cmdlet.ExecuteCmdlet();
@@ -109,23 +109,36 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
             Assert.Equal(Utilities.ResourceGroup, this.resourceGroup);
 
             Assert.NotNull(this.updatePrms);
+            Assert.NotNull(this.patchPrms);
 
-            
-            Assert.Equal("false", this.updatePrms.Enabled);
+            Assert.Equal("false", this.patchPrms.Enabled);
 
-            Assert.Null(this.updatePrms.Id); // TBD
+            Assert.Null(this.updatePrms.Id);
 
-            Assert.NotNull(this.updatePrms.Action);
+            cmdlet.RuleName = null;
+            cmdlet.ResourceGroupName = null;
 
-            Assert.NotNull(this.updatePrms.Schedule);
-            Assert.Equal(5, this.updatePrms.Schedule.FrequencyInMinutes);
-            Assert.Equal(5, this.updatePrms.Schedule.TimeWindowInMinutes);
+            ScheduledQueryRuleResource sqrResource= new ScheduledQueryRuleResource();
+            cmdlet.InputObject = new PSScheduledQueryRuleResource(sqrResource);
+            cmdlet.Enabled = "true";
 
-            Assert.NotNull(this.updatePrms.Source);
-            Assert.Equal("union *", this.updatePrms.Source.Query);
-            Assert.Equal("dataSourceId", this.updatePrms.Source.DataSourceId);
-            Assert.Equal(new List<string> { "authResource1", "authResource2" }, this.updatePrms.Source.AuthorizedResources);
-            Assert.Equal("ResultCount", this.updatePrms.Source.QueryType);
+            cmdlet.ExecuteCmdlet();
+
+            Assert.NotNull(this.patchPrms);
+            Assert.NotNull(this.updatePrms);
+            Assert.Equal("true", this.patchPrms.Enabled);
+
+            cmdlet.InputObject = null;
+            cmdlet.ResourceId = "/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/scheduledqueryrules/LogSearchAlertName";
+            cmdlet.Enabled = "false";
+
+            cmdlet.ExecuteCmdlet();
+
+            Assert.NotNull(this.patchPrms);
+            Assert.NotNull(this.updatePrms);
+            Assert.Equal("LogSearchAlertName", this.ruleName);
+            Assert.Equal(Utilities.ResourceGroup, this.resourceGroup);
+            Assert.Equal("false", this.patchPrms.Enabled);
         }
     }
 }

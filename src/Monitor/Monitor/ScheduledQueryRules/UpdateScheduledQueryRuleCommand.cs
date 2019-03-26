@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
     /// Updates a ScheduledQueryRule object
     /// </summary>
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRule",
-         SupportsShouldProcess = true), OutputType(typeof(PSScheduledQueryRuleResource))]
+         SupportsShouldProcess = true, DefaultParameterSetName = ByRuleName), OutputType(typeof(PSScheduledQueryRuleResource))]
     public class UpdateScheduledQueryRuleCommand : ManagementCmdletBase
     {
 
@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         /// </summary>
         [Parameter(ParameterSetName = ByRuleName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The alert name")]
+        [ResourceNameCompleter("Microsoft.insights/scheduledqueryrules", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string RuleName { get; set; }
 
@@ -77,6 +78,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         [Parameter(ParameterSetName = ByResourceId, Mandatory = true,
             HelpMessage = "The azure alert state - valid values - true, false")]
         [ValidateSet("true", "false")]
+        [PSArgumentCompleter("true", "false")]
         public string Enabled { get; set; }
 
         #endregion
@@ -87,15 +89,14 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
             ScheduledQueryRuleResource resource = null;
 
             // ByInputObject parameter set
-            if (this.IsParameterBound(c => c.InputObject))
+            if (this.IsParameterBound(c => c.InputObject) || this.InputObject != null)
             {
                 resourceIdentifier = new ResourceIdentifier(InputObject.Id);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 this.RuleName = resourceIdentifier.ResourceName;
 
             }
-
-            if (this.IsParameterBound(c => c.ResourceId))
+            else if (this.IsParameterBound(c => c.ResourceId) || !string.IsNullOrWhiteSpace(this.ResourceId))
             {
                 resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;

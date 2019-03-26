@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         #region Cmdlet parameters
 
         [Parameter(Mandatory = false, HelpMessage = "The list of action groups to send notification to")]
-        public IList<string> ActionGroup { get; set; }
+        public List<string> ActionGroup { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The email subject of alert notification")]
         public string EmailSubject { get; set; }

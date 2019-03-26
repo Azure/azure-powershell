@@ -13,10 +13,10 @@ Creates a Log Alert Rule (Scheduled Query Rule type)
 ## SYNTAX
 
 ```
-New-AzScheduledQueryRule -Source <PSScheduledQueryRuleSource> [-Schedule <PSScheduledQueryRuleSchedule>]
+New-AzScheduledQueryRule -Source <PSScheduledQueryRuleSource> -Schedule <PSScheduledQueryRuleSchedule>
  -Action <PSScheduledQueryRuleAlertingAction> -Location <String> [-Description <String>] -RuleName <String>
- [-Enabled <String>] -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [-Tags <String>] [<CommonParameters>]
+ -Enabled <String> -ResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-Tags <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,14 +29,13 @@ Creates a Log Alert Rule (Scheduled Query Rule type)
 PS C:\> New-AzScheduledQueryRule -Location "West Europe" -Action $alertingAction -Enabled "true" -Description "log alert foo" -Schedule $schedule -Source $source -RuleName "logalertfoo"
 ```
 
-
 ## PARAMETERS
 
 ### -Action
 The scheduled query rule Alerting Action
 
 ```yaml
-Type: PSScheduledQueryRuleAlertingAction
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSScheduledQueryRuleAlertingAction
 Parameter Sets: (All)
 Aliases:
 
@@ -47,11 +46,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -66,7 +80,7 @@ Accept wildcard characters: False
 The description for this alert
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -81,11 +95,12 @@ Accept wildcard characters: False
 The azure alert state - valid values - true, false
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: true, false
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -96,7 +111,7 @@ Accept wildcard characters: False
 The location for this alert
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -126,7 +141,7 @@ Accept wildcard characters: False
 The alert name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -141,11 +156,11 @@ Accept wildcard characters: False
 The scheduled query rule schedule
 
 ```yaml
-Type: PSScheduledQueryRuleSchedule
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSScheduledQueryRuleSchedule
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -156,7 +171,7 @@ Accept wildcard characters: False
 The scheduled query rule source
 
 ```yaml
-Type: PSScheduledQueryRuleSource
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSScheduledQueryRuleSource
 Parameter Sets: (All)
 Aliases:
 
@@ -171,7 +186,7 @@ Accept wildcard characters: False
 The duration in minutes for which alert should be throttled
 
 ```yaml
-Type: String
+Type: System.Collections.Generic.IDictionary`2[System.String,System.String]
 Parameter Sets: (All)
 Aliases:
 
@@ -183,8 +198,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. 
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

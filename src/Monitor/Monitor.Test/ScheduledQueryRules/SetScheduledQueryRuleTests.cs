@@ -1,4 +1,18 @@
-﻿using Microsoft.Azure.Commands.ScenarioTest;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -12,7 +26,6 @@ using Xunit;
 using Microsoft.Azure.Commands.Insights.ScheduledQueryRules;
 using Microsoft.Azure.Management.Monitor.Management.Models;
 using Microsoft.Azure.Management.Monitor.Models;
-using ActivityLogAlertResource = Microsoft.Azure.Management.Monitor.Models.ActivityLogAlertResource;
 
 namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
 {
@@ -36,8 +49,13 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
             monitorManagementClientMock = new Mock<MonitorManagementClient>() { CallBase = true };
             commandRuntimeMock = new Mock<ICommandRuntime>();
 
-            ScheduledQueryRuleSource source = new ScheduledQueryRuleSource(new Source("union *", "dataSourceId", new List<string> { "authResource1", "authResource2" }));
-            //cmdlet.Source = new PSScheduledQueryRuleSource(source);
+            ScheduledQueryRuleAznsAction aznsAction = new ScheduledQueryRuleAznsAction(new AzNsActionGroup());
+            ScheduledQueryRuleTriggerCondition triggerCondition = new ScheduledQueryRuleTriggerCondition(new TriggerCondition("GreaterThan", 15));
+            ScheduledQueryRuleAlertingAction alertingAction = new ScheduledQueryRuleAlertingAction(new AlertingAction("2", aznsAction, triggerCondition));
+
+            ScheduledQueryRuleSchedule schedule = new ScheduledQueryRuleSchedule(new Schedule(5, 5));          
+
+            ScheduledQueryRuleSource source = new ScheduledQueryRuleSource(new Source("union *", "dataSourceId", new List<string> { "authResource1", "authResource2" }, "ResultCount"));
 
             //testing update of "description" field
             cmdlet = new SetScheduledQueryRuleCommand
@@ -45,6 +63,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
                 CommandRuntime = commandRuntimeMock.Object,
                 MonitorManagementClient = monitorManagementClientMock.Object,
                 Source = new PSScheduledQueryRuleSource(source),
+                Schedule = new PSScheduledQueryRuleSchedule(schedule),
+                Action = new PSScheduledQueryRuleAlertingAction(alertingAction),
                 Description = "A Log Search Alert description"
             };
 
@@ -55,7 +75,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
 
             sqrOperationsMock.Setup(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult<Microsoft.Rest.Azure.AzureOperationResponse<LogSearchRuleResource>>(response))
-                .Callback((string resourceGrp, string name) =>
+                .Callback((string resourceGrp, string name, Dictionary<string, List<string>> customHeaders, CancellationToken cancellationToken) =>
                 {
                     this.resourceGroup = resourceGrp;
                     this.ruleName = name;
@@ -92,22 +112,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
             cmdlet.ResourceGroupName = Utilities.ResourceGroup;
             cmdlet.Location = Location;
 
-            /*
-            ScheduledQueryRuleAznsAction aznsAction = new ScheduledQueryRuleAznsAction(new AzNsActionGroup());
-            ScheduledQueryRuleTriggerCondition triggerCondition = new ScheduledQueryRuleTriggerCondition(new TriggerCondition("GreaterThan", 15));
-            ScheduledQueryRuleAlertingAction alertingAction = new ScheduledQueryRuleAlertingAction(new AlertingAction("2", aznsAction, triggerCondition));
-
-            cmdlet.Action = new PSScheduledQueryRuleAlertingAction(alertingAction);
-
-            ScheduledQueryRuleSchedule schedule = new ScheduledQueryRuleSchedule(new Schedule(5, 5));
-            cmdlet.Schedule = new PSScheduledQueryRuleSchedule(schedule);
-
-            ScheduledQueryRuleSource source = new ScheduledQueryRuleSource(new Source("union *", "dataSourceId", new List<string> { "authResource1", "authResource2" }, "ResultCount"));
-            cmdlet.Source = new PSScheduledQueryRuleSource(source);
-
-            ScheduledQueryRuleResource sqrResource = new ScheduledQueryRuleResource(new LogSearchRuleResource(location: Location, source: source, schedule:schedule, action:alertingAction, name: "LogSearchAlertName", description: "A Log Search Alert description"));
-            */
-
             cmdlet.Description = "Updated Log Search Alert description";
             cmdlet.ExecuteCmdlet();
 
@@ -118,13 +122,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
 
             Assert.Equal("Updated Log Search Alert description", this.updatePrms.Description);
 
-            Assert.Null(this.updatePrms.Id); // TBD
+            Assert.Null(this.updatePrms.Id);
             Assert.Equal(Location, this.updatePrms.Location);
 
-            /*
-
             Assert.NotNull(this.updatePrms.Action);
-
             Assert.NotNull(this.updatePrms.Schedule);
             Assert.Equal(5, this.updatePrms.Schedule.FrequencyInMinutes);
             Assert.Equal(5, this.updatePrms.Schedule.TimeWindowInMinutes);
@@ -134,7 +135,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
             Assert.Equal("dataSourceId", this.updatePrms.Source.DataSourceId);
             Assert.Equal(new List<string> { "authResource1", "authResource2" }, this.updatePrms.Source.AuthorizedResources);
             Assert.Equal("ResultCount", this.updatePrms.Source.QueryType);
-            */
         }
     }
 }
