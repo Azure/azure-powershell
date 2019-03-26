@@ -209,7 +209,15 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Clear-AzSqlInstanceVulnerabilityAssessmentSettings', 
                'Update-AzSqlServerVulnerabilityAssessmentSettings', 
                'Get-AzSqlServerVulnerabilityAssessmentSettings', 
-               'Clear-AzSqlServerVulnerabilityAssessmentSettings'
+               'Clear-AzSqlServerVulnerabilityAssessmentSettings',
+               'Get-AzSqlDatabaseSensitivityClassification',
+               'Get-AzSqlInstanceDatabaseSensitivityClassification',
+               'Set-AzSqlDatabaseSensitivityClassification',
+               'Set-AzSqlInstanceDatabaseSensitivityClassification',
+               'Remove-AzSqlDatabaseSensitivityClassification',
+               'Remove-AzSqlInstanceDatabaseSensitivityClassification',
+               'Get-AzSqlDatabaseSensitivityRecommendation',
+               'Get-AzSqlInstanceDatabaseSensitivityRecommendation'
 
 # Variables to export from this module
 # VariablesToExport = @()
