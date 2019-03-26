@@ -15,6 +15,8 @@
 $resourceGroupName = "RecoveryServicesBackupTestRg";
 $resourceName = "PsTestRsVault";
 $policyName = "PsTestPolicy";
+$DefaultSnapshotDays = 2;
+$UpdatedSnapShotDays = 5;
 
 function Test-AzureVMPolicy
 {
@@ -42,6 +44,7 @@ function Test-AzureVMPolicy
 			-SchedulePolicy $schedulePolicy
 		Assert-NotNull $policy
 		Assert-AreEqual $policy.Name $policyName
+		Assert-AreEqual $policy.SnapshotRetentionInDays $DefaultSnapshotDays
 
 		# Get policy
 	    $policy = Get-AzRecoveryServicesBackupProtectionPolicy `
@@ -56,12 +59,20 @@ function Test-AzureVMPolicy
 		$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM
 		Assert-NotNull $retentionPolicy
 
+		#update snapshot days
+		$policy.SnapshotRetentionInDays = $UpdatedSnapShotDays;
+
 		# Update policy
 		Set-AzRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `
 			-RetentionPolicy $retentionPolicy `
 			-SchedulePolicy $schedulePolicy `
 			-Policy $policy
+
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $policyName
+		Assert-AreEqual $policy.SnapshotRetentionInDays $UpdatedSnapShotDays
 
 		# Delete policy
 		Remove-AzRecoveryServicesBackupProtectionPolicy `
