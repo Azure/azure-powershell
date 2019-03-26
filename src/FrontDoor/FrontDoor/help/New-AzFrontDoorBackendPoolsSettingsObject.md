@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFrontDoorBackendPoolsSettingsObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create a PSBackendPoolsSettings object for Front Door creation that apply to all backend pools
 
 ## SYNTAX
 
