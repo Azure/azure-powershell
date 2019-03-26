@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 httpClientHelper: HttpClientHelperFactory.Instance
                 .CreateHttpClientHelper(
                         credentials: AzureSession.Instance.AuthenticationFactory
-                                                 .GetSubscriptionCloudCredentials(
+                                                 .GetServiceClientCredentials(
                                                     DefaultContext,
                                                     AzureEnvironment.Endpoint.ResourceManager),
                         headerValues: AzureSession.Instance.ClientFactory.UserAgents,
