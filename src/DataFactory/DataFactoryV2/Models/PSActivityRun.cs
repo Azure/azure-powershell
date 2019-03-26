@@ -42,14 +42,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
 
         public string DataFactoryName { get; private set; }
 
-        public string ActivityRunId
-        {
-            get
-            {
-                return this.activityRun.ActivityRunId;
-            }
-        }
-
         public string ActivityName
         {
             get
