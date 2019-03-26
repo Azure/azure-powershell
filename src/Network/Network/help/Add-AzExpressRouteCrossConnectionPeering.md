@@ -13,15 +13,13 @@ Adds a peering configuration to an ExpressRoute cross connection.
 
 ## SYNTAX
 
-### SetByResource (Default)
 ```
-Add-AzExpressRouteCrossConnectionPeering -Name <String> -ExpressRouteCrossConnection <PSExpressRouteCrossConnection>
- -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String>
- -VlanId <Int32> [-SharedKey <String>]
- [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
- [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>]
- [-PeerAddressType <String>] [-LegacyMode <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Add-AzExpressRouteCrossConnectionPeering -Name <String>
+ -ExpressRouteCrossConnection <PSExpressRouteCrossConnection> [-Force] -PeeringType <String> -PeerASN <UInt32>
+ -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
+ [-MicrosoftConfigAdvertisedPublicPrefix <String[]>] [-MicrosoftConfigCustomerAsn <Int32>]
+ [-MicrosoftConfigRoutingRegistryName <String>] [-PeerAddressType <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,9 +52,9 @@ Set-AzExpressRouteCrossConnection -ExpressRouteCrossConnection $cc
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -70,9 +68,9 @@ The ExpressRoute cross connection being modified. This is Azure object returned 
 **Get-AzExpressRouteCrossConnection** cmdlet.
 
 ```yaml
-Type: PSExpressRouteCrossConnection
+Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteCrossConnection
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -81,31 +79,31 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -LegacyMode
-The legacy mode of the Peering
+### -Force
+Do not ask for confirmation if you want to overrite a resource
 
 ```yaml
-Type: Boolean
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MicrosoftConfigAdvertisedPublicPrefixes
+### -MicrosoftConfigAdvertisedPublicPrefix
 For a PeeringType of MicrosoftPeering, you must provide a list of all prefixes you plan to
 advertise over the BGP session. Only public IP address prefixes are accepted. You can send a comma
 separated list if you plan to send a set of prefixes. These prefixes must be registered to you in
 a Routing Registry Name (RIR / IRR).
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -119,9 +117,9 @@ If you are advertising prefixes that are not registered to the peering AS number
 the AS number to which they are registered.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -134,9 +132,9 @@ Accept wildcard characters: False
 The Routing Registry Name (RIR / IRR) to which the AS number and prefixes are registered.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -149,9 +147,9 @@ Accept wildcard characters: False
 The name of the peering relationship to be added.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -164,9 +162,9 @@ Accept wildcard characters: False
 PeerAddressType
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: IPv4, IPv6
 
 Required: False
@@ -181,9 +179,9 @@ The AS number of your ExpressRoute cross connection. This must be a Public ASN w
 AzurePublicPeering.
 
 ```yaml
-Type: UInt32
+Type: System.UInt32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -197,9 +195,9 @@ The acceptable values for this parameter are: `AzurePrivatePeering`, `AzurePubli
 `MicrosoftPeering`
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AzurePrivatePeering, AzurePublicPeering, MicrosoftPeering
 
 Required: True
@@ -215,9 +213,9 @@ be a /30 CIDR subnet. The first odd-numbered address in this subnet should be as
 router interface. Azure will configure the next even-numbered address to the Azure router interface.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -232,9 +230,9 @@ be a /30 CIDR subnet. The first odd-numbered address in this subnet should be as
 router interface. Azure will configure the next even-numbered address to the Azure router interface.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -247,9 +245,9 @@ Accept wildcard characters: False
 This is an optional MD5 hash used as a pre-shared key for the peering configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -262,11 +260,41 @@ Accept wildcard characters: False
 This is the Id number of the VLAN assigned for this peering.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -289,10 +317,10 @@ Parameter 'ExpressRouteCrossConnection' accepts value of type 'PSExpressRouteCro
 
 ## RELATED LINKS
 
-[Get-AzExpressRouteCrossConnection](Get-AzExpressRouteCrossConnection.md)
-
-[New-AzExpressRouteCrossConnectionPeering](New-AzExpressRouteCrossConnectionPeering.md)
+[Get-AzExpressRouteCrossConnectionPeering](Get-AzExpressRouteCrossConnectionPeering.md)
 
 [Remove-AzExpressRouteCrossConnectionPeering](Remove-AzExpressRouteCrossConnectionPeering.md)
+
+[Get-AzExpressRouteCrossConnection](Get-AzExpressRouteCrossConnection.md)
 
 [Set-AzExpressRouteCrossConnection](Set-AzExpressRouteCrossConnection.md)

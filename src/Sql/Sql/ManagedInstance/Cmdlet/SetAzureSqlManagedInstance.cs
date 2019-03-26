@@ -22,7 +22,9 @@ using System.Management.Automation;
 using System.Security;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
+using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 {
@@ -111,7 +113,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// Gets or sets the instance License Type
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Determines which License Type to use")]
+            HelpMessage = "Determines which License Type to use. Possible values are BasePrice (with AHB discount) and LicenseIncluded (without AHB discount).")]
         [PSArgumentCompleter(Constants.LicenseTypeBasePrice, Constants.LicenseTypeLicenseIncluded)]
         public string LicenseType { get; set; }
 
@@ -128,6 +130,24 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "Determines how much VCore to associate with instance")]
         public int? VCore { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether or not the public data endpoint is enabled.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Whether or not the public data endpoint is enabled for the instance.")]
+        [ValidateNotNullOrEmpty]
+        public bool? PublicDataEndpointEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets connection type used for connecting to the instance.
+        /// Possible values include: 'Proxy', 'Redirect', 'Default'
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The connection type used for connecting to the instance.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter(ManagedInstanceProxyOverride.Proxy, ManagedInstanceProxyOverride.Redirect, ManagedInstanceProxyOverride.Default)]
+        public string ProxyOverride { get; set; }
 
         /// <summary>
         /// The tags to associate with the instance.
@@ -172,7 +192,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             if (Edition != null)
             {
                 string computeGeneration = existingInstance.Sku.Name.Contains(Constants.ComputeGenerationGen4) ? Constants.ComputeGenerationGen4 : Constants.ComputeGenerationGen5;
-                string editionShort = Edition.Equals(Constants.GeneralPurposeEdition) ? "GP" : Edition.Equals(Constants.BusinessCriticalEdition) ? "BC" : "Unknown";
+                string editionShort = AzureSqlManagedInstanceAdapter.GetInstanceSkuPrefix(Edition);
                 Sku.Name = editionShort + "_" + computeGeneration;
                 Sku.Tier = Edition;
             }
@@ -192,8 +212,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 Sku = Sku,
                 AdministratorPassword = this.AdministratorPassword,
                 LicenseType = this.LicenseType,
-                StorageSizeInGB = this.StorageSizeInGB,
+                StorageSizeInGB = this.StorageSizeInGB ?? model.FirstOrDefault().StorageSizeInGB,
                 VCores = this.VCore,
+                PublicDataEndpointEnabled = this.PublicDataEndpointEnabled,
+                ProxyOverride = this.ProxyOverride,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
                 Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
             });

@@ -69,7 +69,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public override void ExecuteCmdlet()
         {
             var vmss = GetVmss(this.NodeType);
-            var ext = FindFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile.Extensions);
+            VirtualMachineScaleSetExtension ext;
+            if (!TryGetFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile.Extensions, out ext))
+            {
+                throw new InvalidOperationException(string.Format(ServiceFabricProperties.Resources.SFExtensionNotFoundInVMSS, vmss.Name, vmss.Id));
+            }
+
             var cluster = GetCurrentCluster();
             var nodeType = GetNodeType(cluster, this.NodeType);
             var oldDurabilityLevel = GetDurabilityLevel(nodeType.DurabilityLevel);

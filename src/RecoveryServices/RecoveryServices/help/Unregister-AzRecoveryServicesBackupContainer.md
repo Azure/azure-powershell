@@ -1,8 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: A10DC2A2-A732-416F-9C68-6533C143AE8F
-online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices.backup/unregister-azrecoveryservicesbackupcontainer
+online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer
 schema: 2.0.0
 ---
 
@@ -49,7 +49,7 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/update-azvirtualhub
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVirtualHub
 
 ## SYNOPSIS
-Updates a Virtual Hub to an intended goal state.
+Updates a virtual hub.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzVirtualHub -InputObject <PSVirtualHub> [-AddressPrefix <String>]
 ```
 
 ## DESCRIPTION
-Updates a Virtual Hub to an intended goal state.
+The **Update-AzVirtualHub** cmdlet updates a virtual hub.
 
 ## EXAMPLES
 
@@ -288,3 +288,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzVirtualHub](./Get-AzVirtualHub.md)
+
+[New-AzVirtualHub](./New-AzVirtualHub.md)
+
+[Remove-AzVirtualHub](./Remove-AzVirtualHub.md)

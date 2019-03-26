@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 9CBF592E-734B-4A0C-A45D-358C226D08C7
@@ -26,10 +26,17 @@ The **Get-AzVirtualNetworkGateway** cmdlet returns the object of your gateway in
 
 ### 1: Get a Virtual Network Gateway
 ```
-Get-AzVirtualNetworkGateway -Name myGateway -ResourceGroupName myRG
+Get-AzVirtualNetworkGateway -Name myGateway1 -ResourceGroupName myRG
 ```
 
-Returns the object of the Virtual Network Gateway with the name "myGateway" within the resource group "myRG"
+Returns the object of the Virtual Network Gateway with the name "myGateway1" within the resource group "myRG"
+
+### 2: Get a Virtual Network Gateway
+```
+Get-AzVirtualNetworkGateway -Name myGateway* -ResourceGroupName myRG
+```
+
+Returns all Virtual Network Gateways that start with "myGateway" within the resource group "myRG"
 
 ## PARAMETERS
 
@@ -88,3 +95,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzVirtualNetworkGateway](./New-AzVirtualNetworkGateway.md)
+
+[Remove-AzVirtualNetworkGateway](./Remove-AzVirtualNetworkGateway.md)
+
+[Reset-AzVirtualNetworkGateway](./Reset-AzVirtualNetworkGateway.md)
+
+[Resize-AzVirtualNetworkGateway](./Resize-AzVirtualNetworkGateway.md)
+
+[Set-AzVirtualNetworkGateway](./Set-AzVirtualNetworkGateway.md)

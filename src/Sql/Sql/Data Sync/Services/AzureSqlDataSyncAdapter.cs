@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         public AzureSqlDataSyncAdapter(IAzureContext context)
         {
             Context = context;
-            _subscription = context.Subscription;
+            _subscription = context?.Subscription;
             Communicator = new AzureSqlDataSyncCommunicator(Context);
         }
 

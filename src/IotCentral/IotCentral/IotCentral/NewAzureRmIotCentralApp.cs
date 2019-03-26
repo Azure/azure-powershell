@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.IotCentral;
 using Microsoft.Azure.Management.IotCentral.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -107,22 +108,14 @@ namespace Microsoft.Azure.Commands.Management.IotCentral
         {
             var checkNameInputs = new OperationInputs(this.Name, resourceType);
             var nameAvailabilityInfo = this.IotCentralClient.Apps.CheckNameAvailability(checkNameInputs);
-            this.EnsureAvailabilityOrThrow(nameAvailabilityInfo);
+            IotCentralUtils.EnsureAvailabilityOrThrow(nameAvailabilityInfo);
         }
 
         private void EnsureSubdomainAvailabilityOrThrow()
         {
             var checkSubdomainInputs = new OperationInputs(this.Subdomain, resourceType);
             var subdomainAvailabilityInfo = this.IotCentralClient.Apps.CheckSubdomainAvailability(checkSubdomainInputs);
-            this.EnsureAvailabilityOrThrow(subdomainAvailabilityInfo);
-        }
-
-        private void EnsureAvailabilityOrThrow(AppAvailabilityInfo availabilityInfo)
-        {
-            if (availabilityInfo.NameAvailable != true)
-            {
-                throw new PSArgumentException(availabilityInfo.Message);
-            }
+            IotCentralUtils.EnsureAvailabilityOrThrow(subdomainAvailabilityInfo);
         }
 
         private IDictionary<string, string> GetTags()

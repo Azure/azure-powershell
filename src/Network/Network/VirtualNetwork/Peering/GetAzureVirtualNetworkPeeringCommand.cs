@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            if (!string.IsNullOrEmpty(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 var vnet = this.GetVirtualNetworkPeering(this.ResourceGroupName, this.VirtualNetworkName, this.Name);
 
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network
                     psVnetPeerings.Add(psVnetPeering);
                 }
 
-                WriteObject(psVnetPeerings, true);
+                WriteObject(SubResourceWildcardFilter(Name, psVnetPeerings), true);
             }
         }
     }

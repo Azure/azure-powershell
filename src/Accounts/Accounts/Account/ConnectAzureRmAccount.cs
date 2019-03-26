@@ -14,16 +14,10 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-// TODO: Remove IfDef
-#if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
-#endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
-// TODO: Remove IfDef
-#if NETSTANDARD
 using Microsoft.Azure.Commands.Profile.Models.Core;
-#endif
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -45,6 +39,7 @@ namespace Microsoft.Azure.Commands.Profile
     public class ConnectAzureRmAccountCommand : AzureContextModificationCmdlet, IModuleAssemblyInitializer
     {
         public const string UserParameterSet = "UserWithSubscriptionId";
+        public const string UserWithCredentialParameterSet = "UserWithCredential";
         public const string ServicePrincipalParameterSet = "ServicePrincipalWithSubscriptionId";
         public const string ServicePrincipalCertificateParameterSet= "ServicePrincipalCertificateWithSubscriptionId";
         public const string AccessTokenParameterSet = "AccessTokenWithSubscriptionId";
@@ -59,13 +54,10 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string Environment { get; set; }
 
-// TODO: Remove IfDef code
-#if !NETSTANDARD
-        [Parameter(ParameterSetName = UserParameterSet,
-                    Mandatory = false, HelpMessage = "Optional credential", Position = 0)]
-#endif
         [Parameter(ParameterSetName = ServicePrincipalParameterSet,
-                    Mandatory = true, HelpMessage = "Credential")]
+                    Mandatory = true, HelpMessage = "Service Principal Secret")]
+        [Parameter(ParameterSetName = UserWithCredentialParameterSet,
+                    Mandatory = true, HelpMessage = "User Password Credential: this is only supported in Windows PowerShell 5.1")]
         public PSCredential Credential { get; set; }
 
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet,
@@ -83,6 +75,8 @@ namespace Microsoft.Azure.Commands.Profile
         public SwitchParameter ServicePrincipal { get; set; }
 
         [Parameter(ParameterSetName = UserParameterSet,
+                    Mandatory = false, HelpMessage = "Optional tenant name or ID")]
+        [Parameter(ParameterSetName = UserWithCredentialParameterSet,
                     Mandatory = false, HelpMessage = "Optional tenant name or ID")]
         [Parameter(ParameterSetName = ServicePrincipalParameterSet,
                     Mandatory = true, HelpMessage = "Tenant name or ID")]
@@ -138,6 +132,8 @@ namespace Microsoft.Azure.Commands.Profile
         [Alias("SubscriptionName", "SubscriptionId")]
         [Parameter(ParameterSetName = UserParameterSet,
                     Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = UserWithCredentialParameterSet,
+                    Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
         [Parameter(ParameterSetName = ServicePrincipalParameterSet,
                     Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet,
@@ -159,6 +155,11 @@ namespace Microsoft.Azure.Commands.Profile
 
         [Parameter(Mandatory = false, HelpMessage = "Skips context population if no contexts are found.")]
         public SwitchParameter SkipContextPopulation { get; set; }
+
+        [Parameter(ParameterSetName = UserParameterSet,
+                   Mandatory = false, HelpMessage = "Use device code authentication instead of a browser control")]
+        [Alias("DeviceCode", "DeviceAuth", "Device")]
+        public SwitchParameter UseDeviceAuthentication { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Overwrite the existing context with the same name, if any.")]
         public SwitchParameter Force { get; set; }
@@ -228,13 +229,24 @@ namespace Microsoft.Azure.Commands.Profile
                         Path = "/oauth2/token"
                     };
 
+                    var envSecret = System.Environment.GetEnvironmentVariable(MSISecretVariable);
+
                     var msiSecret = this.IsBound(nameof(ManagedServiceSecret))
                         ? ManagedServiceSecret.ConvertToString()
-                        : System.Environment.GetEnvironmentVariable(MSISecretVariable);
+                        : envSecret;
+
+                    var envUri = System.Environment.GetEnvironmentVariable(MSIEndpointVariable);
 
                     var suppliedUri = this.IsBound(nameof(ManagedServiceHostName))
                         ? builder.Uri.ToString()
-                        : System.Environment.GetEnvironmentVariable(MSIEndpointVariable);
+                        : envUri;
+
+                    if (!this.IsBound(nameof(ManagedServiceHostName)) && !string.IsNullOrWhiteSpace(envUri) 
+                        && !this.IsBound(nameof(ManagedServiceSecret)) && !string.IsNullOrWhiteSpace(envSecret))
+                    {
+                        // set flag indicating this is AppService Managed Identity ad hoc mode
+                        azureAccount.SetProperty(AuthenticationFactory.AppServiceManagedIdentityFlag, "the value not used");
+                    }
 
                     if (!string.IsNullOrWhiteSpace(msiSecret))
                     {
@@ -254,6 +266,11 @@ namespace Microsoft.Azure.Commands.Profile
                     azureAccount.Id = this.IsBound(nameof(AccountId)) ? AccountId : string.Format("MSI@{0}", ManagedServicePort);
                     break;
                 default:
+                    if (ParameterSetName == UserWithCredentialParameterSet && string.Equals(SessionState?.PSVariable?.GetValue("PSEdition") as string, "Core"))
+                    {
+                        throw new InvalidOperationException(Resources.PasswordNotSupported);
+                    }
+
                     azureAccount.Type = AzureAccount.AccountType.User;
                     break;
             }
@@ -263,6 +280,11 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 azureAccount.Id = Credential.UserName;
                 password = Credential.Password;
+            }
+
+            if (UseDeviceAuthentication.IsPresent)
+            {
+                azureAccount.SetProperty("UseDeviceAuth", "true");
             }
 
             if (!string.IsNullOrEmpty(ApplicationId))
@@ -280,8 +302,6 @@ namespace Microsoft.Azure.Commands.Profile
                 azureAccount.SetProperty(AzureAccount.Property.Tenants, Tenant);
             }
 
-// TODO: Remove IfDef
-#if NETSTANDARD
             if (azureAccount.Type == AzureAccount.AccountType.ServicePrincipal && string.IsNullOrEmpty(CertificateThumbprint))
             {
                 azureAccount.SetProperty(AzureAccount.Property.ServicePrincipalSecret, password.ConvertToString());
@@ -292,7 +312,6 @@ namespace Microsoft.Azure.Commands.Profile
                     WriteWarning(string.Format(Resources.ServicePrincipalWarning, file, directory));
                 }
             }
-#endif
 
             if (ShouldProcess(string.Format(Resources.LoginTarget, azureAccount.Type, _environment.Name), "log in"))
             {

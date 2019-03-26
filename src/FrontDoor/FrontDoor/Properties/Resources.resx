@@ -165,4 +165,13 @@
   <data name="PurgeFrontDoor" xml:space="preserve">
     <value>Purge Contents?</value>
   </data>
+  <data name="DisableCustomDomainHttpsWarning" xml:space="preserve">
+    <value>Disable HTTPS for a custom domain?</value>
+  </data>
+  <data name="EnableCustomDomainHttpsWarning" xml:space="preserve">
+    <value>Enable HTTPS for a custom domain?</value>
+  </data>
+  <data name="Error_InvalidResourceId" xml:space="preserve">
+    <value>Invalid resource id - {0}</value>
+  </data>
 </root>

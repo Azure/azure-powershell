@@ -32,7 +32,7 @@ function Test-File
     New-TestResourceGroupAndStorageAccount -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName
 
     try{
-        $storageAccountKeyValue = $(Get-AzureRmStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
+        $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
 
         $localSrcFile = "localsrcfiletestfile.psd1" #The file need exist before test, and should be 512 bytes aligned
@@ -112,7 +112,7 @@ function Test-Blob
 
     try{
 
-        $storageAccountKeyValue = $(Get-AzureRmStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
+        $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
 
         $localSrcFile = "localsrcblobtestfile.psd1" #The file need exist before test, and should be 512 bytes aligned
@@ -201,7 +201,7 @@ function Test-Queue
 
     try
     {
-        $storageAccountKeyValue = $(Get-AzureRmStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
+        $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
 
         $queueName = "queue-test"
@@ -246,15 +246,45 @@ function Test-Table
 
     try
     {
-        $storageAccountKeyValue = $(Get-AzureRmStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
+        $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
-
+		
+        # Create Table
         $tableName = "tabletest"
         New-AzStorageTable -Name $tableName -Context $storageContext
         $table =Get-AzStorageTable -Name $tableName -Context $storageContext
         Assert-AreEqual $table.Count 1
         Assert-AreEqual $table[0].Name $tableName
 
+        #Test run Table query - Insert Entity
+        $partitionKey = "p123"
+        $rowKey = "row123"
+        $entity = New-Object -TypeName Microsoft.Azure.Cosmos.Table.DynamicTableEntity -ArgumentList $partitionKey, $rowKey
+        $entity.Properties.Add("Name", "name1")
+        $entity.Properties.Add("ID", 4567)
+        $result = $table.CloudTable.ExecuteAsync([Microsoft.Azure.Cosmos.Table.TableOperation]::Insert($entity)) 
+        
+        # Create Table Object - which reference to exist Table with SAS
+        $tableSASUri = New-AzureStorageTableSASToken -Name $tablename  -Permission "raud" -ExpiryTime (([DateTime]::UtcNow.AddDays(10))) -FullUri -Context $storageContext
+        $uri = [System.Uri]$tableSASUri
+        $sasTable = New-Object -TypeName Microsoft.Azure.Cosmos.Table.CloudTable $uri 
+
+        #Test run Table query - Query Entity
+        $query = New-Object Microsoft.Azure.Cosmos.Table.TableQuery
+        ## Define columns to select.
+        $list = New-Object System.Collections.Generic.List[string]
+        $list.Add("RowKey")
+        $list.Add("ID")
+        $list.Add("Name")
+        ## Set query details.
+        $query.FilterString = "ID gt 0"
+        $query.SelectColumns = $list
+        $query.TakeCount = 20
+        ## Execute the query.
+        $result = $sasTable.ExecuteQuerySegmentedAsync($query, $null) 
+        Assert-AreEqual $result.Result.Results.Count 1
+
+        # Get/Remove Table
         $tableCount1 = (Get-AzStorageTable -Context $storageContext).Count
         Remove-AzStorageTable -Name $tableName -Force -Context $storageContext
         $table2 = Get-AzStorageTable -Context $storageContext
@@ -291,7 +321,7 @@ function Test-BlobFileCopy
 
     try
     {
-        $storageAccountKeyValue = $(Get-AzureRmStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
+        $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
     
         $localSrcFile = "localsrcblobfilecopytestfile.psd1" #The file need exist before test, and should be 512 bytes aligned
@@ -368,9 +398,13 @@ function Test-Common
 
     try
     {
-        $storageAccountKeyValue = $(Get-AzureRmStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
+        $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
+
+        # wait at most 120*5s=600s for the set sevice proeprty updated on server.
+        $retryTimes = 120
         
+        # B/F/Q Service properties, in same code path
         $version = "1.0"
         $retentionDays = 2
         $LoggingOperations = "All"
@@ -378,10 +412,10 @@ function Test-Common
         Set-AzStorageServiceLoggingProperty -ServiceType blob -RetentionDays $retentionDays -Version $version -LoggingOperations $LoggingOperations -Context $storageContext
         $i = 0
 		$propertyUpdated = $false
-		while (($i -lt 120) -and ($propertyUpdated -eq $false))
+		while (($i -lt $retryTimes ) -and ($propertyUpdated -eq $false))
 		{
-			$property = Get-AzureStorageServiceLoggingProperty -ServiceType blob -Context $storageContext
-			if (($property.RetentionDays -eq $retentionDays+1) -and ($property.Version -eq $version) -and ($property.LoggingOperations -eq $LoggingOperations))
+			$property = Get-AzStorageServiceLoggingProperty -ServiceType blob -Context $storageContext
+			if (($property.RetentionDays -eq $retentionDays) -and ($property.Version -eq $version) -and ($property.LoggingOperations -eq $LoggingOperations))
 			{
 				$propertyUpdated = $true
 			}
@@ -400,10 +434,10 @@ function Test-Common
         Set-AzStorageServiceMetricsProperty -ServiceType blob -Version $version -MetricsType Hour -RetentionDays $retentionDays -MetricsLevel $MetricsLevel -Context $storageContext
         $i = 0
 		$propertyUpdated = $false
-		while (($i -lt 120) -and ($propertyUpdated -eq $false))
+		while (($i -lt $retryTimes ) -and ($propertyUpdated -eq $false))
 		{
-			$property = Get-AzureStorageServiceLoggingProperty -ServiceType blob -Context $storageContext
-			if (($property.RetentionDays -eq $retentionDays+1) -and ($property.Version -eq $version) -and ($property.MetricsLevel.ToString()  -eq $MetricsLevel))
+			$property = Get-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Hour -Context $storageContext
+			if (($property.RetentionDays -eq $retentionDays) -and ($property.Version -eq $version) -and ($property.MetricsLevel.ToString()  -eq $MetricsLevel))
 			{
 				$propertyUpdated = $true
 			}
@@ -431,7 +465,7 @@ function Test-Common
             AllowedMethods=@("Put")})
 		$i = 0
 		$corsRuleUpdated = $false
-		while (($i -lt 120) -and ($corsRuleUpdated -eq $false))
+		while (($i -lt $retryTimes ) -and ($corsRuleUpdated -eq $false))
 		{
 			$cors = Get-AzStorageCORSRule -ServiceType blob -Context $storageContext
 			if ($cors.Count -eq 2)
@@ -450,7 +484,7 @@ function Test-Common
         Remove-AzStorageCORSRule -ServiceType blob -Context $storageContext
 		$i = 0
 		$corsRuleUpdated = $false
-		while (($i -lt 120) -and ($corsRuleUpdated -eq $false))
+		while (($i -lt $retryTimes ) -and ($corsRuleUpdated -eq $false))
 		{
 			$cors = Get-AzStorageCORSRule -ServiceType blob -Context $storageContext
 			if ($cors.Count -eq 0)
@@ -464,7 +498,97 @@ function Test-Common
 			}
 		}
         $cors = Get-AzStorageCORSRule -ServiceType blob -Context $storageContext
-        Assert-AreEqual 0 $cors.Count     
+        Assert-AreEqual 0 $cors.Count    
+		
+        # Table Service properties
+        $version = "1.0"
+        $retentionDays = 3
+        $LoggingOperations = "Delete"
+
+        Set-AzStorageServiceLoggingProperty -ServiceType table -RetentionDays $retentionDays -Version $version -LoggingOperations $LoggingOperations -Context $storageContext
+        $i = 0
+		$propertyUpdated = $false
+		while (($i -lt $retryTimes ) -and ($propertyUpdated -eq $false))
+		{
+			$property = Get-AzStorageServiceLoggingProperty -ServiceType table -Context $storageContext
+			if (($property.RetentionDays -eq $retentionDays) -and ($property.Version -eq $version) -and ($property.LoggingOperations -eq $LoggingOperations))
+			{
+				$propertyUpdated = $true
+			}
+			else
+			{
+				sleep 5
+				$i = $i + 5
+			}
+		} 
+		$property = Get-AzStorageServiceLoggingProperty -ServiceType table -Context $storageContext
+		Assert-AreEqual $LoggingOperations $property.LoggingOperations.ToString() 
+        Assert-AreEqual $version $property.Version 
+        Assert-AreEqual $retentionDays $property.RetentionDays  
+
+        $MetricsLevel = "ServiceAndApi"
+        Set-AzStorageServiceMetricsProperty -ServiceType table -Version $version -MetricsType Minute -RetentionDays $retentionDays -MetricsLevel $MetricsLevel -Context $storageContext
+        $i = 0
+		$propertyUpdated = $false
+		while (($i -lt $retryTimes ) -and ($propertyUpdated -eq $false))
+		{
+			$property = Get-AzStorageServiceMetricsProperty -ServiceType table -MetricsType Minute -Context $storageContext
+			if (($property.RetentionDays -eq $retentionDays) -and ($property.Version -eq $version) -and ($property.MetricsLevel.ToString()  -eq $MetricsLevel))
+			{
+				$propertyUpdated = $true
+			}
+			else
+			{
+				sleep 5
+				$i = $i + 5
+			}
+		} 				
+		$property = Get-AzStorageServiceMetricsProperty -ServiceType table -MetricsType Minute -Context $storageContext
+        Assert-AreEqual $MetricsLevel $property.MetricsLevel.ToString() 
+        Assert-AreEqual $version $property.Version 
+        Assert-AreEqual $retentionDays $property.RetentionDays 
+
+        Set-AzStorageCORSRule -ServiceType table -Context $storageContext -CorsRules (@{
+            AllowedHeaders=@("x-ms-blob-content-type");
+            AllowedOrigins=@("*");
+            MaxAgeInSeconds=20;
+            AllowedMethods=@("Get","Connect")})
+		$i = 0
+		$corsRuleUpdated = $false
+		while (($i -lt $retryTimes ) -and ($corsRuleUpdated -eq $false))
+		{
+			$cors = Get-AzStorageCORSRule -ServiceType table -Context $storageContext
+			if ($cors.Count -eq 1)
+			{
+				$corsRuleUpdated = $true
+			}
+			else
+			{
+				sleep 5
+				$i = $i + 5
+			}
+		}
+        $cors = Get-AzStorageCORSRule -ServiceType table -Context $storageContext
+        Assert-AreEqual 1 $cors.Count 
+
+        Remove-AzStorageCORSRule -ServiceType table -Context $storageContext
+		$i = 0
+		$corsRuleUpdated = $false
+		while (($i -lt $retryTimes ) -and ($corsRuleUpdated -eq $false))
+		{
+			$cors = Get-AzStorageCORSRule -ServiceType table -Context $storageContext
+			if ($cors.Count -eq 0)
+			{
+				$corsRuleUpdated = $true
+			}
+			else
+			{
+				sleep 5
+				$i = $i + 5
+			}
+		}
+        $cors = Get-AzStorageCORSRule -ServiceType table -Context $storageContext
+        Assert-AreEqual 0 $cors.Count   
     }
     finally
     {
@@ -485,6 +609,6 @@ function New-TestResourceGroupAndStorageAccount
 
     $location = Get-ProviderLocation ResourceManagement    
     $storageAccountType = 'Standard_LRS'# Standard Geo-Reduntand Storage
-    New-AzureRmResourceGroup -Name $ResourceGroupName -Location $location
-    New-AzureRmStorageAccount -Name $storageAccountName -ResourceGroupName $ResourceGroupName -Location $location -Type $storageAccountType
+    New-AzResourceGroup -Name $ResourceGroupName -Location $location
+    New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $ResourceGroupName -Location $location -Type $storageAccountType
 }

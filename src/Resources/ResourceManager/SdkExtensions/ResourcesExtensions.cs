@@ -35,7 +35,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                 Location = resourceGroup.Location,
                 ProvisioningState = resourceGroup.Properties == null ? null : resourceGroup.Properties.ProvisioningState,
                 Tags = TagsConversionHelper.CreateTagHashtable(resourceGroup.Tags),
-                ResourceId = resourceGroup.Id
+                ResourceId = resourceGroup.Id,
+                ManagedBy = resourceGroup.ManagedBy
             };
 
             return result;
@@ -175,14 +176,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                 return null;
             }
 
+            var maxNameLength = 15;
+            dictionary.Keys.ForEach(k => maxNameLength = Math.Max(maxNameLength, k.Length + 2));
+
+            var maxTypeLength = 25;
+            dictionary.Values.ForEach(v => maxTypeLength = Math.Max(maxTypeLength, v.Type.Length + 2));
+
             StringBuilder result = new StringBuilder();
 
             if (dictionary.Count > 0)
             {
-                string rowFormat = "{0, -15}  {1, -25}  {2, -10}\r\n";
+                string rowFormat = "{0, -" + maxNameLength +"}  {1, -" + maxTypeLength + "}  {2, -10}\r\n";
                 result.AppendLine();
                 result.AppendFormat(rowFormat, "Name", "Type", "Value");
-                result.AppendFormat(rowFormat, GeneralUtilities.GenerateSeparator(15, "="), GeneralUtilities.GenerateSeparator(25, "="), GeneralUtilities.GenerateSeparator(10, "="));
+                result.AppendFormat(rowFormat, GeneralUtilities.GenerateSeparator(maxNameLength, "="), GeneralUtilities.GenerateSeparator(maxTypeLength, "="), GeneralUtilities.GenerateSeparator(10, "="));
 
                 foreach (KeyValuePair<string, DeploymentVariable> pair in dictionary)
                 {
