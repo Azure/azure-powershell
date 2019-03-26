@@ -103,35 +103,24 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         [ValidateNotNullOrEmpty]
         public string ServiceTopologyResourceId { get; set; }
 
-        [Parameter(
-            Mandatory = false, 
-            HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
             this.ResolveParams();
-            this.ConfirmAction(
-                this.Force.IsPresent,
-                string.Format(Messages.ConfirmRemoveService, this.Name),
-                string.Format(Messages.ConfirmRemoveService, this.Name),
-                this.Name,
-                () =>
-                {
-                    var result = this.Delete();
-                    if (result)
-                    {
-                        this.WriteVerbose(string.Format(Messages.RemovedService, this.Name));
-                    }
+            this.WriteVerbose(string.Format(Messages.RemovingService, this.Name));
 
-                    if (this.PassThru)
-                    {
-                        this.WriteObject(true);
-                    }
-                });
+            var result = this.Delete();
+            if (result)
+            {
+                this.WriteVerbose(string.Format(Messages.RemovedService, this.Name));
+            }
+
+            if (this.PassThru)
+            {
+                this.WriteObject(true);
+            }
         }
 
         private bool Delete()

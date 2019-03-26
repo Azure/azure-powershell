@@ -64,35 +64,25 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         [ValidateNotNullOrEmpty]
         public PSServiceTopologyResource InputObject { get; set; }
 
-        [Parameter(
-            Mandatory = false, 
-            HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
             this.ResolveParams();
-            this.ConfirmAction(
-                this.Force.IsPresent,
-                string.Format(Messages.ConfirmRemoveTopology, this.Name),
-                string.Format(Messages.RemovingTopology, this.Name),
-                this.Name,
-                () =>
-                {
-                    var result = this.Delete();
-                    if (result)
-                    {
-                        this.WriteVerbose(string.Format(Messages.RemovedTopology, this.Name));
-                    }
+            this.WriteVerbose(string.Format(Messages.RemovingTopology, this.Name));
 
-                    if (this.PassThru)
-                    {
-                        this.WriteObject(true);
-                    }
-                });
+            var result = this.Delete();
+
+            if (result)
+            {
+                this.WriteVerbose(string.Format(Messages.RemovedTopology, this.Name));
+            }
+
+            if (this.PassThru)
+            {
+                this.WriteObject(true);
+            }
         }
 
         private bool Delete()

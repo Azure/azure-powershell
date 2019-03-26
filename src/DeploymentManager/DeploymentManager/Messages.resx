@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ConfirmRemoveRollout" xml:space="preserve">
-    <value>Are you sure you want to remove the rollout {0}?</value>
-  </data>
   <data name="ConfirmRestartRollout" xml:space="preserve">
     <value>Are you sure you want to restart the rollout {0} and re-run all the steps from the start? If you want to skip all the steps that succeeded on the previous attempt, enter No and pass the SkipSucceeded parameter.</value>
   </data>
@@ -146,18 +143,6 @@
   </data>
   <data name="RemovingServiceUnit" xml:space="preserve">
     <value>Removing service unit {0}</value>
-  </data>
-  <data name="ConfirmRemoveArtifactSource" xml:space="preserve">
-    <value>There might be rollouts or topologies referencing the artifact source {0}. Are you sure you want to remove the artifact source?</value>
-  </data>
-  <data name="ConfirmRemoveTopology" xml:space="preserve">
-    <value>Are you sure you want to remove the topology {0}?</value>
-  </data>
-  <data name="ConfirmRemoveService" xml:space="preserve">
-    <value>Are you sure you want to remove the service {0}?</value>
-  </data>
-  <data name="ConfirmRemoveServiceUnit" xml:space="preserve">
-    <value>Are you sure you want to remove the service unit {0}?</value>
   </data>
   <data name="RestartedRollout" xml:space="preserve">
     <value>Rollout {0} restarted.</value>
@@ -218,9 +203,6 @@
   </data>
   <data name="RemovedServiceUnit" xml:space="preserve">
     <value>Removed service unit {0}</value>
-  </data>
-  <data name="ConfirmRemoveStep" xml:space="preserve">
-    <value>Are you sure you want to remove the step {0}?</value>
   </data>
   <data name="CreateStep" xml:space="preserve">
     <value>Create step</value>
