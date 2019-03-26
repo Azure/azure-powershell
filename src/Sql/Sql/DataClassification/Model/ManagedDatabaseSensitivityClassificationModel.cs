@@ -11,15 +11,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
-using System.Collections;
-
-namespace Microsoft.Azure.Commands.DataFactoryV2
+namespace Microsoft.Azure.Commands.Sql.DataClassification.Model
 {
-    public class CreatePSDataFactoryParameters : DataFactoryParametersBase
+    public class ManagedDatabaseSensitivityClassificationModel : SensitivityClassificationModel
     {
-        public string Location { get; set; }
-
-        public Hashtable Tags { get; set; }
+        [Ps1Xml(Target = ViewControl.List, Position = 1)]
+        public string InstanceName { get; set; }
     }
 }
