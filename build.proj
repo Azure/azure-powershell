@@ -384,7 +384,7 @@
       <CoreTests>$(LibraryRoot)src/Compute/Compute.Test/Compute.Test.csproj;$(LibraryRoot)src/Network/Network.Test/Network.Test.csproj;$(LibraryRoot)src/Resources/Resources.Test/Resources.Test.csproj;$(LibraryRoot)src/Sql/Sql.Test/Sql.Test.csproj;$(LibraryRoot)src/Websites/Websites.Test/Websites.Test.csproj;</CoreTests>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Framework)' == ''">
-        <Framework>netcoreapp2.0</Framework>
+        <Framework>netcoreapp2.1</Framework>
     </PropertyGroup>
 
     <CallTarget Targets="BinScopeCheck" Condition="'$(OnPremiseBuild)'" />
@@ -408,7 +408,7 @@
     <Exec Command="dotnet sln Azure.PowerShell.sln add $(LibraryRoot)tools/ScenarioTest.ResourceManager/ScenarioTest.ResourceManager.csproj $(LibraryRoot)tools/TestFx/TestFx.csproj" />
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
     <!-- https://github.com/xunit/xunit/issues/1154#issuecomment-405366373 -->
-    <Exec Command="dotnet test Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework netcoreapp2.0 --logger trx --results-directory &quot;$(TestOutputDirectory)&quot;" />
+    <Exec Command="dotnet test Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework $(Framework) --logger trx --results-directory &quot;$(TestOutputDirectory)&quot;" />
 
     <OnError ExecuteTargets="TestFailureErrorMessage" />
   </Target>
