@@ -17,7 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     RootModule        = 'Azs.InfrastructureInsights.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.3.0'
+    ModuleVersion     = '0.3.1'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -115,8 +115,9 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.12
-            * Added a new cmdlet Repair-AzsAlert, supported with azurestack 1811 update
+            ReleaseNotes = '## 2019.4
+            * Module dependencies updated
+                * AzureRM.Resources
             '
 
         } # End of PSData hashtable
