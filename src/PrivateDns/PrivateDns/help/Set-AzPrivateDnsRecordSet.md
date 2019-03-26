@@ -1,24 +1,24 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PrivateDns.dll-Help.xml
 Module Name: Az.PrivateDns
-online version: https://docs.microsoft.com/en-us/powershell/module/az.privatedns/Update-AzPrivateDnsRecordSet
+online version: https://docs.microsoft.com/en-us/powershell/module/az.privatedns/Set-AzPrivateDnsRecordSet
 schema: 2.0.0
 ---
 
-# Update-AzPrivateDnsRecordSet
+# Set-AzPrivateDnsRecordSet
 
 ## SYNOPSIS
-Updates a record set in a Private DNS zone.
+Updates/Sets a record set in a Private DNS zone.
 
 ## SYNTAX
 
 ```
-Update-AzPrivateDnsRecordSet -RecordSet <PSPrivateDnsRecordSet> [-Overwrite]
+Set-AzPrivateDnsRecordSet -RecordSet <PSPrivateDnsRecordSet> [-Overwrite]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Update-AzPrivateDnsRecordSet cmdlet updates a record set in the Azure Private DNS service from a local RecordSet object. You can pass a RecordSet object as a parameter or by using the pipeline operator. You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation. The record set is not updated if it has been changed in Azure Private DNS since the local RecordSet object was retrieved. This provides protection for concurrent changes. You can suppress this behavior using the Overwrite parameter, which updates the record set regardless of concurrent changes.
+The Set-AzPrivateDnsRecordSet cmdlet updates a record set in the Azure Private DNS service from a local RecordSet object. You can pass a RecordSet object as a parameter or by using the pipeline operator. You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation. The record set is not updated if it has been changed in Azure Private DNS since the local RecordSet object was retrieved. This provides protection for concurrent changes. You can suppress this behavior using the Overwrite parameter, which updates the record set regardless of concurrent changes.
 
 ## EXAMPLES
 
@@ -27,11 +27,11 @@ The Update-AzPrivateDnsRecordSet cmdlet updates a record set in the Azure Privat
 PS C:\> $RecordSet = Get-AzPrivateDnsRecordSet -ResourceGroupName MyResourceGroup -ZoneName myzone.com -Name www -RecordType A
 PS C:\> Add-AzPrivateDnsRecordConfig -RecordSet $RecordSet -Ipv4Address 172.16.0.0
 PS C:\> Add-AzPrivateDnsRecordConfig -RecordSet $RecordSet -Ipv4Address 172.31.255.255
-PS C:\> Update-AzPrivateDnsRecordSet -RecordSet $RecordSet
+PS C:\> Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
 
 # These cmdlets can also be piped:
 
-PS C:\> Get-AzPrivateDnsRecordSet -ResourceGroupName MyResourceGroup -ZoneName myzone.com -Name www -RecordType A | Add-AzPrivateDnsRecordConfig -Ipv4Address 172.16.0.0 | Add-AzPrivateDnsRecordConfig -Ipv4Address 172.31.255.255 | Update-AzPrivateDnsRecordSet
+PS C:\> Get-AzPrivateDnsRecordSet -ResourceGroupName MyResourceGroup -ZoneName myzone.com -Name www -RecordType A | Add-AzPrivateDnsRecordConfig -Ipv4Address 172.16.0.0 | Add-AzPrivateDnsRecordConfig -Ipv4Address 172.31.255.255 | Set-AzPrivateDnsRecordSet
 
 Id                : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Netwo
                     rk/privateDnsZones/myzone.com/A/www
@@ -46,13 +46,13 @@ Metadata          :
 IsAutoRegistered  :
 ```
 
-The first command uses the Get-AzPrivateDnsRecordSet cmdlet to get the specified record set, and then stores it in the $RecordSet variable. The second and third commands are off-line operations to add two A records to the record set. The final command uses the Update-AzPrivateDnsRecordSet cmdlet to commit the update.
+The first command uses the Get-AzPrivateDnsRecordSet cmdlet to get the specified record set, and then stores it in the $RecordSet variable. The second and third commands are off-line operations to add two A records to the record set. The final command uses the Set-AzPrivateDnsRecordSet cmdlet to commit the update.
 
 ### Example 2: Update an SOA record
 ```powershell
 PS C:\> $RecordSet = Get-AzPrivateDnsRecordSet -Name "@" -RecordType SOA -Zone $Zone
 PS C:\> $RecordSet.Records[0].Email = "admin.myzone.com"
-PS C:\> Update-AzPrivateDnsRecordSet -RecordSet $RecordSet
+PS C:\> Set-AzPrivateDnsRecordSet -RecordSet $RecordSet
 
 Id                : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Micros
                     oft.Network/privateDnsZones/myzone.com/SOA/@
@@ -67,7 +67,7 @@ Metadata          :
 IsAutoRegistered  :
 ```
 
-The first command uses the Get-AzPrivateDnsRecordSet cmdlet to get the specified record set, and then stores it in the $RecordSet variable. The second command updates the specified SOA record in $RecordSet. The final command uses the Update-AzPrivateDnsRecordSet cmdlet to propagate the update in $RecordSet.
+The first command uses the Get-AzPrivateDnsRecordSet cmdlet to get the specified record set, and then stores it in the $RecordSet variable. The second command updates the specified SOA record in $RecordSet. The final command uses the Set-AzPrivateDnsRecordSet cmdlet to propagate the update in $RecordSet.
 
 ## PARAMETERS
 
