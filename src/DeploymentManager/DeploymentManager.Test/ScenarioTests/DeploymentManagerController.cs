@@ -25,6 +25,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Management.DeploymentManager;
+using Microsoft.Azure.Management.ManagedServiceIdentity;
+using Microsoft.Azure.Graph.RBAC;
+using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.ResourceManager;
 
 namespace Microsoft.Azure.Commands.DeploymentManager.Test.ScenarioTests
 {
@@ -32,11 +36,17 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Test.ScenarioTests
     {
         private readonly EnvironmentSetupHelper _helper;
 
-        public Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient ResourceManagementClient { get; private set; }
+        public ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public AzureDeploymentManagerClient DeploymentManagerClient { get; private set; }
 
         public StorageManagementClient StorageClient { get; private set; }
+
+        public ManagedServiceIdentityClient ManagedServiceIdentityClient { get; private set; }
+
+        public GraphRbacManagementClient GraphManagementClient { get; private set; }
+
+        public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
         public DeploymentManagerController()
         {
@@ -50,10 +60,17 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Test.ScenarioTests
             DeploymentManagerClient = GetDeploymentManagementClient(context);
             ResourceManagementClient = GetResourceManagementClient(context);
             StorageClient = GetStorageManagementClient(context);
+            ManagedServiceIdentityClient = GetManagedServiceIdentityClient(context);
+            GraphManagementClient = GetGraphManagementClient(context);
+            AuthorizationManagementClient = GetAuthorizationManagementClient(context);
+
             _helper.SetupManagementClients(
                 DeploymentManagerClient,
                 StorageClient,
-                ResourceManagementClient);
+                ResourceManagementClient,
+                ManagedServiceIdentityClient,
+                GraphManagementClient,
+                AuthorizationManagementClient);
         }
 
         public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
@@ -81,18 +98,35 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Test.ScenarioTests
                 var callingClassName = callingClassType?.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 _helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\DeploymentManagerTestsCommon.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
                     "AzureRM.Storage.ps1",
+                    _helper.GetRMModulePath(@"Az.ManagedServiceIdentity.psd1"),
                     _helper.GetRMModulePath(@"Az.Storage.psd1"),
-                    _helper.GetRMModulePath(@"Az.DeploymentManager.psd1"),
-                    "AzureRM.Resources.ps1");
+                    _helper.GetRMModulePath(@"Az.Resources.psd1"),
+                    _helper.GetRMModulePath(@"Az.DeploymentManager.psd1"));
 
                 if (scripts != null)
                 {
                     _helper.RunPowerShellTest(scripts);
                 }
             }
+        }
+        
+        private static AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<AuthorizationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static GraphRbacManagementClient GetGraphManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static ManagedServiceIdentityClient GetManagedServiceIdentityClient(MockContext context)
+        {
+            return context.GetServiceClient<ManagedServiceIdentityClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static StorageManagementClient GetStorageManagementClient(MockContext context)
@@ -105,9 +139,9 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Test.ScenarioTests
             return context.GetServiceClient<AzureDeploymentManagerClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private static Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient GetResourceManagementClient(MockContext context)
+        private static ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return context.GetServiceClient<Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

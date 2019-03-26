@@ -64,34 +64,23 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         [ValidateNotNullOrEmpty]
         public PSStepResource InputObject { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            this.ConfirmAction(
-                this.Force.IsPresent,
-                string.Format(Messages.ConfirmRemoveStep, this.Name),
-                string.Format(Messages.RemovingStep, this.Name),
-                this.Name,
-                () =>
-                {
-                    var result = this.Delete();
-                    if (result)
-                    {
-                        this.WriteVerbose(string.Format(Messages.RemovedStep, this.Name));
-                    }
+            this.WriteVerbose(string.Format(Messages.RemovingStep, this.Name));
 
-                    if (this.PassThru)
-                    {
-                        this.WriteObject(true);
-                    }
-                });
+            var result = this.Delete();
+            if (result)
+            {
+                this.WriteVerbose(string.Format(Messages.RemovedStep, this.Name));
+            }
+
+            if (this.PassThru)
+            {
+                this.WriteObject(true);
+            }
         }
 
         private bool Delete()

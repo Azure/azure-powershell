@@ -19,11 +19,11 @@ using Xunit;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Microsoft.Azure.Commands.RedisCache.Test")]
+[assembly: AssemblyTitle("Microsoft.Azure.Commands.DeploymentManager.Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Microsoft.Azure.Commands.RedisCache.Test")]
+[assembly: AssemblyProduct("Microsoft.Azure.Commands.DeploymentManager.Test")]
 [assembly: AssemblyCopyright("Copyright © Microsoft")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

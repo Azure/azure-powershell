@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
     using Microsoft.Azure.Commands.DeploymentManager.Models;
     using Microsoft.Azure.Management.DeploymentManager;
     using Microsoft.Azure.Management.DeploymentManager.Models;
-    using Microsoft.Azure.Management.Internal.Resources;
     using Microsoft.Rest.Azure;
 
     /// <summary>
@@ -37,18 +36,12 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
         private AzureDeploymentManagerClient _client;
 
         /// <summary>
-        /// THe resource management client.
-        /// </summary>
-        private ResourceManagementClient _resourceManagementClient;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="DeploymentManagerClient"/> class.
         /// </summary>
         /// <param name="context">The current Azure session context.</param>
         internal DeploymentManagerClient(IAzureContext context)
         {
             this._client = AzureSession.Instance.ClientFactory.CreateArmClient<AzureDeploymentManagerClient>(context, AzureEnvironment.Endpoint.ResourceManager);
-            this._resourceManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         /// <summary>
@@ -68,7 +61,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
 
         internal PSRollout GetRollout(string resourceGroupName, string rolloutName, int? retryAttempt = null)
         {
-            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             var rollout = _client.Rollouts.Get(resourceGroupName, rolloutName, retryAttempt);
             return new PSRollout(resourceGroupName, rollout);
@@ -76,7 +68,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
 
         internal PSRollout RestartRollout(PSRollout psRollout, bool? skipSucceeded = true)
         {
-            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             var rollout = _client.Rollouts.Restart(psRollout.ResourceGroupName, psRollout.Name, skipSucceeded);
             return new PSRollout(psRollout.ResourceGroupName, rollout);
@@ -84,7 +75,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
 
         internal PSRollout CancelRollout(PSRollout psRollout)
         {
-            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             var rollout = _client.Rollouts.Cancel(psRollout.ResourceGroupName, psRollout.Name);
             return new PSRollout(psRollout.ResourceGroupName, rollout);
@@ -92,7 +82,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
 
         internal bool DeleteRollout(PSRollout psRollout)
         {
-            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             var result = _client.Rollouts.DeleteWithHttpMessagesAsync(psRollout.ResourceGroupName, psRollout.Name).GetAwaiter().GetResult();
             return (result.Response.StatusCode == HttpStatusCode.OK || result.Response.StatusCode == HttpStatusCode.NoContent);
@@ -100,7 +89,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
 
         internal PSArtifactSource PutArtifactSource(PSArtifactSource psArtifactSource)
         {
-            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             var artifactSource =_client.ArtifactSources.CreateOrUpdate(
                 psArtifactSource.ResourceGroupName, 
@@ -117,7 +105,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
 
         internal PSArtifactSource GetArtifactSource(PSArtifactSource psArtifactSource)
         {
-            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             var artifactSource = _client.ArtifactSources.Get(psArtifactSource.ResourceGroupName, psArtifactSource.Name);
             return new PSArtifactSource(psArtifactSource.ResourceGroupName, artifactSource);
@@ -125,7 +112,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
 
         internal bool DeleteArtifactSource(PSArtifactSource psArtifactSource)
         {
-            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             var result = _client.ArtifactSources.DeleteWithHttpMessagesAsync(psArtifactSource.ResourceGroupName, psArtifactSource.Name).GetAwaiter().GetResult();
             return (result.Response.StatusCode == HttpStatusCode.OK || result.Response.StatusCode == HttpStatusCode.NoContent);
@@ -133,7 +119,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
 
         internal PSServiceTopologyResource PutServiceTopology(PSServiceTopologyResource psTopologyResource)
         {
-            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             var serviceTopologyResource = _client.ServiceTopologies.CreateOrUpdate(
                 psTopologyResource.ToSdkType(),
@@ -150,7 +135,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
 
         internal PSServiceResource PutService(PSServiceResource psServiceResource)
         {
-            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             var serviceResource = _client.Services.CreateOrUpdate(
                 psServiceResource.ResourceGroupName, 
@@ -169,7 +153,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
         internal PSServiceUnitResource PutServiceUnit(
             PSServiceUnitResource psServiceUnitResource)
         {
-            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             var serviceUnitResource = _client.ServiceUnits.CreateOrUpdate(
                 psServiceUnitResource.ResourceGroupName, 
@@ -192,7 +175,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
 
         internal PSServiceTopologyResource GetServiceTopology(PSServiceTopologyResource pSServiceTopologyResource)
         {
-            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             var serviceTopologyResource = _client.ServiceTopologies.Get(pSServiceTopologyResource.ResourceGroupName, pSServiceTopologyResource.Name);
             return new PSServiceTopologyResource(pSServiceTopologyResource.ResourceGroupName, serviceTopologyResource);
@@ -200,7 +182,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
 
         internal PSServiceResource GetService(PSServiceResource pSServiceResource)
         {
-            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             var serviceResource = _client.Services.Get(pSServiceResource.ResourceGroupName, pSServiceResource.ServiceTopologyName, pSServiceResource.Name);
 
@@ -212,7 +193,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
 
         internal PSServiceUnitResource GetServiceUnit(PSServiceUnitResource psServiceUnit)
         {
-            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             var serviceUnit = _client.ServiceUnits.Get(psServiceUnit.ResourceGroupName, psServiceUnit.ServiceTopologyName, psServiceUnit.ServiceName, psServiceUnit.Name);
 
@@ -225,7 +205,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
 
         internal bool DeleteServiceTopology(PSServiceTopologyResource psServiceTopologyResource)
         {
-            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             var result = _client.ServiceTopologies.DeleteWithHttpMessagesAsync(psServiceTopologyResource.ResourceGroupName, psServiceTopologyResource.Name).GetAwaiter().GetResult();
             return (result.Response.StatusCode == HttpStatusCode.OK || result.Response.StatusCode == HttpStatusCode.NoContent);
@@ -233,7 +212,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
 
         internal bool DeleteService(PSServiceResource psServiceResource)
         {
-            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             var result = _client.Services.DeleteWithHttpMessagesAsync(psServiceResource.ResourceGroupName, psServiceResource.ServiceTopologyName, psServiceResource.Name).GetAwaiter().GetResult();
             return (result.Response.StatusCode == HttpStatusCode.OK || result.Response.StatusCode == HttpStatusCode.NoContent);
@@ -241,7 +219,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
 
         internal bool DeleteServiceUnit(PSServiceUnitResource psServiceUnitResource)
         {
-            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             var result = _client.ServiceUnits.DeleteWithHttpMessagesAsync(
                 psServiceUnitResource.ResourceGroupName, 
@@ -253,7 +230,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
 
         internal PSStepResource PutStep(PSStepResource psStepResource)
         {
-            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             var stepResource = _client.Steps.CreateOrUpdate(
                 psStepResource.ResourceGroupName,
@@ -270,7 +246,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
 
         internal PSStepResource GetStep(PSStepResource psStepResource)
         {
-            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             var stepResource = _client.Steps.Get(psStepResource.ResourceGroupName, psStepResource.Name);
             return new PSStepResource(psStepResource.ResourceGroupName, stepResource);
@@ -278,7 +253,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
 
         internal bool DeleteStep(PSStepResource psStepResource)
         {
-            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             var result = _client.Steps.DeleteWithHttpMessagesAsync(psStepResource.ResourceGroupName, psStepResource.Name).GetAwaiter().GetResult();
             return (result.Response.StatusCode == HttpStatusCode.OK || result.Response.StatusCode == HttpStatusCode.NoContent);
@@ -286,7 +260,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
 
         internal IList<Operation> GetOperations()
         {
-            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             return _client.Operations.Get();
         }

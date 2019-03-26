@@ -64,31 +64,20 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         [ValidateNotNullOrEmpty]
         public PSRollout InputObject { get; set; }
 
-        [Parameter(
-            Mandatory = false, 
-            HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            this.ConfirmAction(
-                this.Force.IsPresent,
-                string.Format(Messages.ConfirmRemoveRollout, this.Name),
-                string.Format(Messages.RemovingRollout, this.Name),
-                this.Name,
-                () =>
-                {
-                    var result = this.Delete();
-                    this.WriteVerbose(string.Format(Messages.RemovedRollout, this.Name));
+            this.WriteVerbose(string.Format(Messages.RemovingRollout, this.Name));
 
-                    if (this.PassThru)
-                    {
-                        this.WriteObject(result);
-                    }
-                });
+            var result = this.Delete();
+            this.WriteVerbose(string.Format(Messages.RemovedRollout, this.Name));
+
+            if (this.PassThru)
+            {
+                this.WriteObject(result);
+            }
         }
 
         private bool Delete()

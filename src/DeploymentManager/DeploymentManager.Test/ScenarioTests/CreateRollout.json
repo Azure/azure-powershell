@@ -5,26 +5,26 @@
       "location": "Central US",
       "apiVersion": "2018-09-01-preview",
       "type": "Microsoft.DeploymentManager/rollouts",
-      "name": "adm-powershell-tests-rollout",
+      "name": "__ROLLOUT_NAME__",
       "Identity": {
         "type": "userAssigned",
         "identityIds": [
-          "/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourcegroups/adm-sdk-tests/providers/Microsoft.ManagedIdentity/userassignedidentities/admsdktests"
+          "__USER_ASSIGNED_IDENTITY__"
         ]
       },
       "properties": {
         "buildVersion": "1.0.0",
-        "targetServiceTopologyId": "/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourcegroups/adm-powershell-test-rg/providers/Microsoft.DeploymentManager/serviceTopologies/powershell-sdk-tests",
-        "artifactSourceId": "/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourcegroups/adm-powershell-test-rg/providers/Microsoft.DeploymentManager/artifactSources/powershell-sdk-tests-functional",
+        "targetServiceTopologyId": "__TARGET_SERVICE_TOPOLOGY__",
+        "artifactSourceId": "__ARTIFACT_SOURCE_ID__",
         "stepGroups": [
           {
             "name": "PilotRegion",
             "preDeploymentSteps": [
               {
-                "stepId": "/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourcegroups/adm-powershell-test-rg/providers/Microsoft.DeploymentManager/steps/WaitStep"
+                "stepId": "__STEP_ID__"
               }
             ],
-            "deploymentTargetId": "/serviceTopologies/powershell-sdk-tests/services/Contoso_Service/serviceUnits/Contoso_WebApp"
+            "deploymentTargetId": "__SERVICE_UNIT_ID__"
           }
         ]
       }

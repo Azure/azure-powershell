@@ -150,35 +150,24 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         [ValidateNotNullOrEmpty]
         public string ServiceResourceId { get; set; }
 
-        [Parameter(
-            Mandatory = false, 
-            HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
             this.ResolveParameters();
-            this.ConfirmAction(
-                this.Force.IsPresent,
-                string.Format(Messages.ConfirmRemoveServiceUnit, this.Name),
-                string.Format(Messages.RemovingServiceUnit, this.Name),
-                this.Name,
-                () =>
-                {
-                    var result = this.Delete();
-                    if (result)
-                    {
-                        this.WriteVerbose(string.Format(Messages.RemovedServiceUnit, this.Name));
-                    }
+            this.WriteVerbose(string.Format(Messages.RemovingServiceUnit, this.Name));
 
-                    if (this.PassThru)
-                    {
-                        this.WriteObject(true);
-                    }
-                });
+            var result = this.Delete();
+            if (result)
+            {
+                this.WriteVerbose(string.Format(Messages.RemovedServiceUnit, this.Name));
+            }
+
+            if (this.PassThru)
+            {
+                this.WriteObject(true);
+            }
         }
 
         private bool Delete()

@@ -63,34 +63,22 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         [ValidateNotNullOrEmpty]
         public PSArtifactSource InputObject { get; set; }
 
-        [Parameter(
-            Mandatory = false, 
-            HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            this.ConfirmAction(
-                this.Force.IsPresent,
-                string.Format(Messages.ConfirmRemoveArtifactSource, this.Name),
-                string.Format(Messages.RemovingArtifactSource, this.Name),
-                this.Name,
-                () =>
-                {
-                    var result = this.Delete();
-                    if (result)
-                    {
-                        this.WriteVerbose(string.Format(Messages.RemovedArtifactSource, this.Name));
-                    }
+            this.WriteVerbose(string.Format(Messages.RemovingArtifactSource, this.Name));
+            var result = this.Delete();
+            if (result)
+            {
+                this.WriteVerbose(string.Format(Messages.RemovedArtifactSource, this.Name));
+            }
 
-                    if (this.PassThru)
-                    {
-                        this.WriteObject(result);
-                    }
-                });
+            if (this.PassThru)
+            {
+                this.WriteObject(result);
+            }
         }
 
         private bool Delete()
