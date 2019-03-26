@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
     /// <summary>
     /// Updates a ScheduledQueryRule object
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRule", SupportsShouldProcess = true), OutputType(typeof(PSScheduledQueryRuleResource))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRule", SupportsShouldProcess = true, DefaultParameterSetName = ByRuleName), OutputType(typeof(PSScheduledQueryRuleResource))]
     public class SetScheduledQueryRuleCommand : ManagementCmdletBase
     {
 
@@ -95,6 +95,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         // Summary:
         //     Alert name
         [Parameter(ParameterSetName = ByRuleName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The alert name")]
+        [ResourceNameCompleter("Microsoft.insights/scheduledqueryrules", nameof(ResourceGroupName))]
         public string RuleName { get; set; }
 
         /// <summary>
@@ -120,9 +121,11 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         [Parameter(ParameterSetName = ByInputObject, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure alert state - valid values - true, false")]
         [Parameter(ParameterSetName = ByResourceId, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure alert state - valid values - true, false")]
         [ValidateSet("true", "false")]
+        [PSArgumentCompleter("true", "false")]
         public string Enabled { get; set; }
 
-
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
         #endregion
 
         protected override void ProcessRecordInternal()
@@ -131,7 +134,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
             ScheduledQueryRuleResource requestBody = null;
 
             // ByInputObject parameter set
-            if (this.IsParameterBound(c => c.InputObject))
+            if (this.IsParameterBound(c => c.InputObject) || this.InputObject != null)
             {
                 resourceIdentifier = new ResourceIdentifier(this.InputObject.Id);
                 this.RuleName = resourceIdentifier.ResourceName;
@@ -142,7 +145,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
             else
             {
                 // ByRuleName and ByResourceId parameter sets
-                if (this.IsParameterBound(c => c.ResourceId))
+                if (this.IsParameterBound(c => c.ResourceId) || !string.IsNullOrWhiteSpace(this.ResourceId))
                 {
                     resourceIdentifier = new ResourceIdentifier(ResourceId);
                     this.RuleName = resourceIdentifier.ResourceName;
@@ -167,10 +170,13 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
             {
                 if (ShouldProcess(this.RuleName, string.Format("Updating Log Alert Rule '{0}' in resource group '{1}'.", this.RuleName, this.ResourceGroupName)))
                 {
+                    requestBody.Validate();
+
                     // Update the Log Alert rule
-                    WriteObject(
-                        this.MonitorManagementClient.ScheduledQueryRules.CreateOrUpdateWithHttpMessagesAsync(
-                            this.ResourceGroupName, this.RuleName, requestBody));
+                    var result = this.MonitorManagementClient.ScheduledQueryRules.CreateOrUpdateWithHttpMessagesAsync(
+                            this.ResourceGroupName, this.RuleName, requestBody).Result;
+
+                    WriteObject(new PSScheduledQueryRuleResource(result.Body));
                 }
             }
             catch (Exception ex)
@@ -188,7 +194,8 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 
             if (this.MyInvocation.BoundParameters.ContainsKey("Action") || this.Action != null)
             {
-                requestBody.Action = this.Action;
+                var alertingAction = new AlertingAction(severity: Action.Severity, aznsAction: Action.AznsAction, trigger: Action.Trigger, throttlingInMin: Action.ThrottlingInMin);
+                requestBody.Action = alertingAction;
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("Source") || this.Source != null)

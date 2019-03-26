@@ -14,7 +14,7 @@ Creates an object of type Source
 
 ```
 New-AzScheduledQueryRuleSource -Query <String>
- [-AuthorizedResources <System.Collections.Generic.IList`1[System.String]>] -DataSourceId <String>
+ [-AuthorizedResources <System.Collections.Generic.List`1[System.String]>] -DataSourceId <String>
  [-QueryType <String>] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ PS C:\> $source = New-AzScheduledQueryRuleSource -Query "Heartbeat | summarize A
 The list of authorized resources for this alert
 
 ```yaml
-Type: System.Collections.Generic.IList`1[System.String]
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The data source on which this alert is created
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 The alert query
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 Type of Query - currently supported values : ResultCount
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: ResultCount
@@ -96,8 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

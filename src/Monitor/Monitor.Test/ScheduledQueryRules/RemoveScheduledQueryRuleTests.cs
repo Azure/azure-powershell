@@ -1,4 +1,18 @@
-﻿using System.Collections.Generic;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System.Collections.Generic;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -11,7 +25,6 @@ using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Commands.Insights.ScheduledQueryRules;
 using Microsoft.Azure.Management.Monitor.Management.Models;
 using Microsoft.Azure.Management.Monitor.Models;
-using ActivityLogAlertResource = Microsoft.Azure.Management.Monitor.Models.ActivityLogAlertResource;
 
 namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
 {
@@ -78,8 +91,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
             Schedule schedule = new Schedule();
             Action action = new Action();
             
-            var resource = new ScheduledQueryRuleResource(new LogSearchRuleResource(name: "alert2", location: "westus", source: source, schedule: schedule, action: action));
-            
+            var resource = new ScheduledQueryRuleResource(new LogSearchRuleResource(name: "alert2", location: "westus", source: source, schedule: schedule, action: action, id: "/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/scheduledqueryrules/alert2"));
+
+
             cmdlet.InputObject = new OutputClasses.PSScheduledQueryRuleResource(resource);
             cmdlet.ExecuteCmdlet();
 
@@ -89,10 +103,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
             cmdlet.RuleName = null;
             cmdlet.ResourceGroupName = null;
             cmdlet.InputObject = null;
-            cmdlet.ResourceId = "/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/rg/providers/microsoft.insights/scheduledqueryrules/alert3";
+            cmdlet.ResourceId = "/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/scheduledqueryrules/alert3";
             cmdlet.ExecuteCmdlet();
 
-            Assert.Equal("rg", this.resourceGroup);
+            Assert.Equal(Utilities.ResourceGroup, this.resourceGroup);
             Assert.Equal("alert3", this.ruleName);
         }
     }

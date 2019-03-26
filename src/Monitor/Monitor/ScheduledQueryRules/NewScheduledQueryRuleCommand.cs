@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         //
         // Summary:
         //     Gets or sets schedule (Frequnecy, Time Window) for rule.
-        [Parameter(Mandatory = false, HelpMessage = "The scheduled query rule schedule")]
+        [Parameter(Mandatory = true, HelpMessage = "The scheduled query rule schedule")]
         [ValidateNotNullOrEmpty]
         public PSScheduledQueryRuleSchedule Schedule { get; set; }
 
@@ -68,6 +68,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         // Summary:
         //     Alert name
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The alert name")]
+        [ResourceNameCompleter("Microsoft.insights/scheduledqueryrules", nameof(ResourceGroupName))]
         public string RuleName { get; set; }
 
         //
@@ -79,7 +80,9 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         //
         // Summary:
         //     Alert status - enabled or not
-        [Parameter(Mandatory = false, HelpMessage = "The azure alert state - valid values - true, false")]
+        [Parameter(Mandatory = true, HelpMessage = "The azure alert state - valid values - true, false")]
+        [ValidateSet("true", "false")]
+        [PSArgumentCompleter("true", "false")]
         public string Enabled { get; set; }
 
         /// <summary>
@@ -90,29 +93,31 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
         #endregion
         protected override void ProcessRecordInternal()
         {
-            PSScheduledQueryRuleResource response = null;
-
             try
             {
-                var parameters = new LogSearchRuleResource(location: Location, source: Source, schedule: Schedule,
-                    action: Action, tags: Tags, description: Description, enabled: Enabled);
+                
+                var alertingAction = new AlertingAction(severity: Action.Severity, aznsAction: Action.AznsAction, trigger: Action.Trigger, throttlingInMin: Action.ThrottlingInMin);
 
-                parameters.Validate(); //validate does not allow schedule to be null, while it is optional for us
+                var parameters = new LogSearchRuleResource(location: Location, source: Source, schedule: Schedule,
+                    action:alertingAction, tags: Tags, description: Description, enabled: Enabled);
+
+                parameters.Validate();
 
                 var result = this.MonitorManagementClient.ScheduledQueryRules
                     .CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: ResourceGroupName, ruleName: RuleName,
                         parameters: parameters).Result;
 
-                response = new PSScheduledQueryRuleResource(result.Body);
-                WriteObject(response);
+                WriteObject(new PSScheduledQueryRuleResource(result.Body));
             }
             catch (Exception ex)
             {
                 throw new Exception("Error occured while creating Log Alert rule", ex);
-            }       
+            }    
         }
     }
 }

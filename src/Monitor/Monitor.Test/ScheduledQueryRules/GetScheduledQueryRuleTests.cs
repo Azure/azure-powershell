@@ -27,7 +27,6 @@ using Microsoft.Azure.Commands.Insights.ScheduledQueryRules;
 using Microsoft.Azure.Management.Monitor.Management.Models;
 using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.Rest.Azure.OData;
-using ActivityLogAlertResource = Microsoft.Azure.Management.Monitor.Models.ActivityLogAlertResource;
 
 namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
 {
@@ -75,7 +74,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
 
             sqrOperationsMock.Setup(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult<AzureOperationResponse<LogSearchRuleResource>>(responseSingle))
-                .Callback((string resourceGrp, string name) =>
+                .Callback((string resourceGrp, string name, Dictionary<string, List<string>> customHeaders, CancellationToken cancellationToken) =>
                 {
                     this.resourceGroup = resourceGrp;
                     this.ruleName = name;
@@ -84,7 +83,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
 
             sqrOperationsMock.Setup(f => f.ListByResourceGroupWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<ODataQuery<LogSearchRuleResource>>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult<AzureOperationResponse<IEnumerable<LogSearchRuleResource>>>(responseList))
-                .Callback((string resourceGrp, Dictionary<string, List<string>> headers, CancellationToken t) =>
+                .Callback((string resourceGrp, ODataQuery<LogSearchRuleResource> odataQuery, Dictionary<string, List<string>> customHeaders, CancellationToken cancellationToken) =>
                 {
                     this.resourceGroup = resourceGrp;
                     this.retrieved = responseList.Body;
@@ -115,7 +114,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
             Assert.Single(this.retrieved);
             Assert.Equal(Utilities.ResourceGroup, this.resourceGroup);
             Assert.Null(this.ruleName);
-
+            
             // Get by name
             cmdlet.RuleName = Utilities.Name;
             cmdlet.ResourceGroupName = Utilities.ResourceGroup;

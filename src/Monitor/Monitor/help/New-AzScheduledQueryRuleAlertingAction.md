@@ -14,7 +14,7 @@ Creates an object of type Alerting Action
 
 ```
 New-AzScheduledQueryRuleAlertingAction [-AznsAction <PSScheduledQueryRuleAznsAction>] -Severity <String>
- [-ThrottlingInMin <Int32>] -Trigger <PSScheduledQueryRuleTriggerCondition> 
+ [-ThrottlingInMin <Int32>] -Trigger <PSScheduledQueryRuleTriggerCondition>
  [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ PS C:\> $alertingAction = New-AzScheduledQueryRuleAlertingAction -AznsAction $az
 The AzNS action details
 
 ```yaml
-Type: PSScheduledQueryRuleAznsAction
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSScheduledQueryRuleAznsAction
 Parameter Sets: (All)
 Aliases:
 
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 The severity for this alert
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The duration in minutes for which alert should be throttled
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 The alert trigger condition
 
 ```yaml
-Type: PSScheduledQueryRuleTriggerCondition
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSScheduledQueryRuleTriggerCondition
 Parameter Sets: (All)
 Aliases:
 
@@ -92,8 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. 
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         public string Query { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The list of authorized resources for this alert")]
-        public IList<string> AuthorizedResources { get; set; }
+        public List<string> AuthorizedResources { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The data source on which this alert is created")]
         [ValidateNotNullOrEmpty]
