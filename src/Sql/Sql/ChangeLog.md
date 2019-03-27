@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support Database Data Classification.
 
 ## Version 1.7.0
 * Add Vulnerability Assessment cmdlets on Server and Managed Instance

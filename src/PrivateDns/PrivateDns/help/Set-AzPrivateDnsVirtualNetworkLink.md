@@ -2,39 +2,39 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PrivateDns.dll-Help.xml
 Module Name: Az.PrivateDns
 ms.assetid: A8E230A0-5057-40BC-81CD-6D397A503A84
-online version: https://docs.microsoft.com/en-us/powershell/module/az.privatedns/Update-AzPrivateDnsVirtualNetworkLink
+online version: https://docs.microsoft.com/en-us/powershell/module/az.privatedns/Set-AzPrivateDnsVirtualNetworkLink
 schema: 2.0.0
 ---
 
-# Update-AzPrivateDnsVirtualNetworkLink
+# Set-AzPrivateDnsVirtualNetworkLink
 
 ## SYNOPSIS
-Updates a virtual network link associated with a private zone and a resource group.
+Updates/Sets a virtual network link associated with a private zone and a resource group.
 
 ## SYNTAX
 
 ### Fields (Default)
 ```
-Update-AzPrivateDnsVirtualNetworkLink -ResourceGroupName <String> -ZoneName <String> -Name <String>
+Set-AzPrivateDnsVirtualNetworkLink -ResourceGroupName <String> -ZoneName <String> -Name <String>
  [-IsRegistrationEnabled <Boolean>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### Object
 ```
-Update-AzPrivateDnsVirtualNetworkLink -InputObject <PSPrivateDnsVirtualNetworkLink>
+Set-AzPrivateDnsVirtualNetworkLink -InputObject <PSPrivateDnsVirtualNetworkLink>
  [-IsRegistrationEnabled <Boolean>] [-Tag <Hashtable>] [-Overwrite] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Update-AzPrivateDnsVirtualNetworkLink -ResourceId <String> [-IsRegistrationEnabled <Boolean>]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzPrivateDnsVirtualNetworkLink -ResourceId <String> [-IsRegistrationEnabled <Boolean>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzPrivateDnsVirtualNetworkLink** cmdlet updates a link associated with a zone from a specified resource group.
+The **Set-AzPrivateDnsVirtualNetworkLink** cmdlet updates a link associated with a zone from a specified resource group.
 You can pass a **PSPrivateDnsVirtualNetworkLink** object using the *Link* parameter or by using the pipeline operator, or alternatively you can specify the *Name* *ZoneName* and *ResourceGroupName* parameters.
 You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 When specifying the zone using a **PSPrivateDnsVirtualNetworkLink** object (passed via the pipeline or *Link* parameter), the link is not updated if it has been changed in Azure DNS since the local **PSPrivateDnsVirtualNetworkLink** object was retrieved. This provides protection for concurrent link changes. This can be suppressed using the *Overwrite* parameter, which updates the link regardless of concurrent changes.
@@ -43,7 +43,7 @@ When specifying the zone using a **PSPrivateDnsVirtualNetworkLink** object (pass
 
 ### Example 1: Set a link
 ```
-PS C:\>Update-AzPrivateDnsVirtualNetworkLink -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup" -Name "mylink" -Tag @{} -IsRegistrationEnabled $true
+PS C:\>Set-AzPrivateDnsVirtualNetworkLink -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup" -Name "mylink" -Tag @{} -IsRegistrationEnabled $true
 
 Name                    : mylink
 ResourceId              : /subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.N
@@ -259,4 +259,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [New-AzPrivateDnsVirtualNetworkLink](./New-AzPrivateDnsVirtualNetworkLink.md)
 
-[Update-AzPrivateDnsVirtualNetworkLink](./Update-AzPrivateDnsVirtualNetworkLink.md)
+[Set-AzPrivateDnsVirtualNetworkLink](./Set-AzPrivateDnsVirtualNetworkLink.md)
