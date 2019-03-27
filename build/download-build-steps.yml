@@ -1,5 +1,5 @@
 steps:
-- task: DownloadPipelineArtifact@0
+- task: DownloadPipelineArtifact@1
   displayName: 'Download build'
   inputs:
     artifactName: build
