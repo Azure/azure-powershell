@@ -3207,6 +3207,10 @@
                 <Label>NetworkRuleCollections</Label>
                 <PropertyName>NetworkRuleCollectionsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ThreatIntelMode</Label>
+                <PropertyName>ThreatIntelMode</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -3862,6 +3866,36 @@
               <ListItem>
                 <Label>Results</Label>
                 <PropertyName>ResultsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRuleCondition</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRuleCondition</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Variable</Label>
+                <PropertyName>Variable</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Pattern</Label>
+                <PropertyName>Pattern</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>IgnoreCase</Label>
+                <PropertyName>IgnoreCase</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Negate</Label>
+                <PropertyName>Negate</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

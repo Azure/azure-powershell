@@ -23,5 +23,7 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
         public IList<string> ExcludedPackageNameMasks { get; set; }
 
         public IList<string> IncludedPackageNameMasks { get; set; }
+
+        public RebootSetting rebootSetting { get; set; }
     }
 }

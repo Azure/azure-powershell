@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string InstanceId { get; set; }
         public Sku Sku { get; set; }
         public bool? LatestModelApplied { get; set; }
+        public bool? ProtectFromScaleIn { get; set; }
         public string VmId { get; set; }
         public VirtualMachineScaleSetVMInstanceView InstanceView { get; set; }
         public HardwareProfile HardwareProfile { get; set; }
