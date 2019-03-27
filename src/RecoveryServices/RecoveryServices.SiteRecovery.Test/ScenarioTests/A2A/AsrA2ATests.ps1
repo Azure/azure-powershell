@@ -28,7 +28,7 @@ function Test-NewA2ADiskReplicationConfiguration
     $logStorageAccountId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/ltrgp1705152333/providers/Microsoft.Storage/storageAccounts/stagingsa2name1705152333"
     $vhdUri = "https://powershelltestdiag414.blob.core.windows.net/vhds/pslinV2-520180112143232.vhd"
 
-    $v = New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig -VhdUri  $vhdUri `
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -VhdUri  $vhdUri `
         -RecoveryAzureStorageAccountId $recoveryStorageAccountId `
         -LogStorageAccountId   $logStorageAccountId
 
@@ -50,7 +50,7 @@ function Test-NewA2AManagedDiskReplicationConfiguration
     $RecoveryReplicaDiskAccountType = "Premium_LRS"
     $RecoveryTargetDiskAccountType = "Premium_LRS"
 
-    $v = New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig -managed -LogStorageAccountId $logStorageAccountId `
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -managed -LogStorageAccountId $logStorageAccountId `
          -DiskId "diskId" -RecoveryResourceGroupId  $RecoveryResourceGroupId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
          -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
 
@@ -74,18 +74,18 @@ function Test-NewAsrFabric {
         $primaryFabricName = getPrimaryFabric
         $recoveryFabricName = getRecoveryFabric
         
-        New-AzureRmResourceGroup -name $vaultRg -location $vaultRgLocation -force
+        New-AzResourceGroup -name $vaultRg -location $vaultRgLocation -force
         [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
     # vault Creation
-        New-azureRmRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName -Location $vaultLocation
+        New-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName -Location $vaultLocation
         [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
-        $Vault = Get-AzureRMRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName
+        $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName
         Set-ASRVaultContext -Vault $Vault
     # fabric Creation    
         ### AzureToAzure New paramset 
-        $fabJob=  New-AzureRmRecoveryServicesAsrFabric -Azure -Name $primaryFabricName -Location $primaryLocation
+        $fabJob=  New-AzRecoveryServicesAsrFabric -Azure -Name $primaryFabricName -Location $primaryLocation
         WaitForJobCompletion -JobId $fabJob.Name
-        $fab = Get-AzureRmRecoveryServicesAsrFabric -Name $primaryFabricName
+        $fab = Get-AzRecoveryServicesAsrFabric -Name $primaryFabricName
         Assert-true { $fab.name -eq $primaryFabricName }
         Assert-AreEqual $fab.FabricSpecificDetails.Location $primaryLocation
 }
@@ -113,31 +113,31 @@ function Test-NewContainer{
         $RecoveryReplicaDiskAccountType = "Premium_LRS"
         $RecoveryTargetDiskAccountType = "Premium_LRS"
 
-        New-AzureRmResourceGroup -name $vaultRg -location $vaultRgLocation -force
+        New-AzResourceGroup -name $vaultRg -location $vaultRgLocation -force
         [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
     # vault Creation
-        New-azureRmRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName -Location $vaultLocation
+        New-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName -Location $vaultLocation
         [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
-        $Vault = Get-AzureRMRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName
+        $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName
         Set-ASRVaultContext -Vault $Vault
     # fabric Creation    
         ### AzureToAzure New paramset 
-        $fabJob=  New-AzureRmRecoveryServicesAsrFabric -Azure -Name $primaryFabricName -Location $primaryLocation
+        $fabJob=  New-AzRecoveryServicesAsrFabric -Azure -Name $primaryFabricName -Location $primaryLocation
         WaitForJobCompletion -JobId $fabJob.Name
-        $fab = Get-AzureRmRecoveryServicesAsrFabric -Name $primaryFabricName
+        $fab = Get-AzRecoveryServicesAsrFabric -Name $primaryFabricName
         Assert-true { $fab.name -eq $primaryFabricName }
         Assert-AreEqual $fab.FabricSpecificDetails.Location $primaryLocation
 
-        $fabJob=  New-AzureRmRecoveryServicesAsrFabric -Azure -Name $recoveryFabricName -Location $recoveryLocation
+        $fabJob=  New-AzRecoveryServicesAsrFabric -Azure -Name $recoveryFabricName -Location $recoveryLocation
         WaitForJobCompletion -JobId $fabJob.Name
-        $fab = Get-AzureRmRecoveryServicesAsrFabric -Name $recoveryFabricName
+        $fab = Get-AzRecoveryServicesAsrFabric -Name $recoveryFabricName
         Assert-true { $fab.name -eq $recoveryFabricName }
         Assert-AreEqual $fab.FabricSpecificDetails.Location $recoveryLocation
         $pf = get-asrFabric -Name $primaryFabricName
         $rf = get-asrFabric -Name $recoveryFabricName
         
         ### AzureToAzure (Default)
-        $job = New-AzureRmRecoveryServicesAsrProtectionContainer -Name $primaryContainerName -Fabric $pf
+        $job = New-AzRecoveryServicesAsrProtectionContainer -Name $primaryContainerName -Fabric $pf
         WaitForJobCompletion -JobId $Job.Name
         $pc = Get-asrProtectionContainer -name $primaryContainerName -Fabric $pf
         Assert-NotNull($pc)

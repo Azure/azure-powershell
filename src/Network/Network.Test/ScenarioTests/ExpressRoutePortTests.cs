@@ -12,30 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class ExpressRoutePortTests : RMTestBase
+    public class ExpressRoutePortTests : NetworkTestRunner
     {
-        public XunitTracingInterceptor _logger;
         public ExpressRoutePortTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact(Skip = "Backend issue. The resource type could not be found in the namespace 'Microsoft.Network' for api version '2018-10-01'.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.pgtm)]
         public void TestExpressRoutePortCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ExpressRoutePortCRUD"));
+            TestRunner.RunTestScript(string.Format("Test-ExpressRoutePortCRUD"));
         }
     }
 }

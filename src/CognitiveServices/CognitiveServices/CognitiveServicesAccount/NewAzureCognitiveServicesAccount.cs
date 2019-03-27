@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Management.CognitiveServices.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
+using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Globalization;
 using System.Management.Automation;
@@ -84,6 +85,13 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         [AllowEmptyCollection]
         public Hashtable[] Tag { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Cognitive Services Account Subdomain Name.")]
+        [ValidateNotNull]
+        [AllowEmptyCollection]
+        public string CustomSubdomainName { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
@@ -95,15 +103,20 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             {
                 CognitiveServicesAccountCreateParameters createParameters = new CognitiveServicesAccountCreateParameters()
                 {
-                    Location = this.Location,
-                    Kind = this.Type, // must have value, mandatory parameter
-                    Sku = new Sku(this.SkuName),
+                    Location = Location,
+                    Kind = Type, // must have value, mandatory parameter
+                    Sku = new Sku(SkuName),
                     Tags = TagsConversionHelper.CreateTagDictionary(Tag),
-                    Properties = new object(), // Must not be null according to Azure RM spec. Also there is no actual properties to pass, so not exposing it through cmdlet
+                    Properties = string.IsNullOrWhiteSpace(CustomSubdomainName) ?
+                        new object():
+                        JToken.Parse(string.Format(
+                            CultureInfo.InvariantCulture,
+                            "{{\"customSubDomainName\":\"{0}\"}}",
+                            CustomSubdomainName))
                 };
 
                 if (ShouldProcess(
-                    this.Name, string.Format(CultureInfo.CurrentCulture, Resources.NewAccount_ProcessMessage, this.Name, this.Type, this.SkuName, this.Location)))
+                    Name, string.Format(CultureInfo.CurrentCulture, Resources.NewAccount_ProcessMessage, Name, Type, SkuName, Location)))
                 {
                     if (Force.IsPresent)
                     {
@@ -118,14 +131,12 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         }
                     }
 
-                    var createAccountResponse = this.CognitiveServicesClient.Accounts.Create(
-                                    this.ResourceGroupName,
-                                    this.Name,
+                    CognitiveServicesAccount createAccountResponse = CognitiveServicesClient.Accounts.Create(
+                                    ResourceGroupName,
+                                    Name,
                                     createParameters);
-
-                    var cognitiveServicesAccount = this.CognitiveServicesClient.Accounts.GetProperties(this.ResourceGroupName, this.Name);
-
-                    this.WriteCognitiveServicesAccount(cognitiveServicesAccount);
+                    CognitiveServicesAccount cognitiveServicesAccount = CognitiveServicesClient.Accounts.GetProperties(ResourceGroupName, Name);
+                    WriteCognitiveServicesAccount(cognitiveServicesAccount);
                 }
             });
         }

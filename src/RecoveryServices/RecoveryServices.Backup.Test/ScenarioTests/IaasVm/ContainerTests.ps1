@@ -30,14 +30,14 @@ function Test-AzureVMGetContainers
 		Enable-Protection $vault $vm
 		
 		# VARIATION-1: Get All Containers with only mandatory parameters
-		$containers = Get-AzureRmRecoveryServicesBackupContainer `
+		$containers = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureVM `
 			-Status Registered;
 		Assert-True { $containers.FriendlyName -contains $vm.Name }
 
 		# VARIATION-2: Get Containers with friendly name filter
-		$containers = Get-AzureRmRecoveryServicesBackupContainer `
+		$containers = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureVM `
 			-Status Registered `
@@ -45,7 +45,7 @@ function Test-AzureVMGetContainers
 		Assert-True { $containers.FriendlyName -contains $vm.Name }
 
 		# VARIATION-3: Get Containers with friendly name and resource group filters
-		$containers = Get-AzureRmRecoveryServicesBackupContainer `
+		$containers = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureVM `
 			-Status Registered `
@@ -54,7 +54,7 @@ function Test-AzureVMGetContainers
 		Assert-True { $containers.FriendlyName -contains $vm.Name }
 
 		# VARIATION-4: Get Containers with resource group filter
-		$containers = Get-AzureRmRecoveryServicesBackupContainer `
+		$containers = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureVM `
 			-Status Registered `

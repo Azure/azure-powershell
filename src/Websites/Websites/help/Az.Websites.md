@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.Websites
 Module Guid: cc69c625-e961-43f4-8b50-0061eba6e4b6
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.websites
@@ -91,6 +91,9 @@ Creates an Azure Web App slot.
 
 ### [New-AzWebAppSSLBinding](New-AzWebAppSSLBinding.md)
 Creates an SSL certificate binding for an Azure Web App.
+
+### [Publish-AzWebApp](Publish-AzWebApp.md)
+Deploys an Azure Web App from a ZIP, JAR, or WAR file using zipdeploy.
 
 ### [Remove-AzAppServicePlan](Remove-AzAppServicePlan.md)
 Removes an Azure App Service plan.

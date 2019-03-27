@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.RecoveryServices
 Module Guid: 4aa53b7e-fcfe-4e22-979c-9a4e6380de58
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices
@@ -14,6 +14,9 @@ This topic displays help topics for the Azure Recovery Services cmdlets.
 ### [Backup-AzRecoveryServicesBackupItem](Backup-AzRecoveryServicesBackupItem.md)
 Starts a backup for a Backup item.
 
+### [Disable-AzRecoveryServicesBackupAutoProtection](Disable-AzRecoveryServicesBackupAutoProtection.md)
+Disables auto backup for a protectable item.
+
 ### [Disable-AzRecoveryServicesBackupProtection](Disable-AzRecoveryServicesBackupProtection.md)
 Disables protection for a Backup-protected item.
 
@@ -22,6 +25,9 @@ Dismounts all the files of the recovery point.
 
 ### [Edit-AzRecoveryServicesAsrRecoveryPlan](Edit-AzRecoveryServicesAsrRecoveryPlan.md)
 Edits a Site Recovery plan.
+
+### [Enable-AzRecoveryServicesBackupAutoProtection](Enable-AzRecoveryServicesBackupAutoProtection.md)
+Enables auto backup for a protectable item with a specified Backup protection policy.
 
 ### [Enable-AzRecoveryServicesBackupProtection](Enable-AzRecoveryServicesBackupProtection.md)
 Enables backup for an item with a specified Backup protection policy.
@@ -98,8 +104,14 @@ Gets SCDPM and Azure Backup management servers.
 ### [Get-AzRecoveryServicesBackupProperty](Get-AzRecoveryServicesBackupProperty.md)
 Gets Backup properties.
 
+### [Get-AzRecoveryServicesBackupProtectableItem](Get-AzRecoveryServicesBackupProtectableItem.md)
+Get protectable items from a container.
+
 ### [Get-AzRecoveryServicesBackupProtectionPolicy](Get-AzRecoveryServicesBackupProtectionPolicy.md)
 Gets Backup protection policies for a vault.
+
+### [Get-AzRecoveryServicesBackupRecoveryLogChain](Get-AzRecoveryServicesBackupRecoveryLogChain.md)
+Get time ranges for a backed up item.
 
 ### [Get-AzRecoveryServicesBackupRecoveryPoint](Get-AzRecoveryServicesBackupRecoveryPoint.md)
 Gets the recovery points for a backed up item.
@@ -116,6 +128,9 @@ Gets a base schedule policy object.
 ### [Get-AzRecoveryServicesBackupStatus](Get-AzRecoveryServicesBackupStatus.md)
 Checks whether your ARM resource is backed up or not.
 
+### [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](Get-AzRecoveryServicesBackupWorkloadRecoveryConfig.md)
+Get recovery plan for a backup up item.
+
 ### [Get-AzRecoveryServicesVault](Get-AzRecoveryServicesVault.md)
 Gets a list of Recovery Services vaults.
 
@@ -124,6 +139,9 @@ Gets the Azure Site Recovery vault settings file.
 
 ### [Import-AzRecoveryServicesAsrVaultSettingsFile](Import-AzRecoveryServicesAsrVaultSettingsFile.md)
 Imports the specified ASR vault settings file to set the vault context(PowerShell session context) for subsequent ASR operations in the PowerShell session. 
+
+### [Initialize-AzRecoveryServicesBackupProtectableItem](Initialize-AzRecoveryServicesBackupProtectableItem.md)
+Enquires for new DBs in the workload.
 
 ### [New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig](New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig.md)
 Creates a disk mapping object for Azure virtual machine disks to be replicated.
@@ -163,6 +181,9 @@ Creates a Backup protection policy.
 
 ### [New-AzRecoveryServicesVault](New-AzRecoveryServicesVault.md)
 Creates a new Recovery Services vault.
+
+### [Register-AzRecoveryServicesBackupContainer](Register-AzRecoveryServicesBackupContainer.md)
+Registers a protectable container.
 
 ### [Remove-AzRecoveryServicesAsrFabric](Remove-AzRecoveryServicesAsrFabric.md)
 Deletes the specified Azure Site Recovery Fabric from the Recovery Services vault.

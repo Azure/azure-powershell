@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.Name = resourceIdentifier.ResourceName;
             }
 
-            if (!string.IsNullOrEmpty(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 var tapConfig = this.GetNetworkInterfaceTapConfiguration(this.ResourceGroupName, this.NetworkInterfaceName, this.Name);
 
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Network
                     psTapConfigs = networkInterface.TapConfigurations;
                 }
 
-                WriteObject(psTapConfigs, true);
+                WriteObject(SubResourceWildcardFilter(Name, psTapConfigs), true);
             }
         }
     }

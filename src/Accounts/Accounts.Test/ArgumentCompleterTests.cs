@@ -25,21 +25,21 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
         }
 
-        [Fact(Skip = "Failure needs investigated. Not returning list of locations.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLocationCompleter()
         {
             TestRunner.RunTestScript("Test-LocationCompleter");
         }
 
-        [Fact(Skip = "Failure needs investigated. Cannot bind argument to parameter 'DifferenceObject' because it is null.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResourceGroupCompleter()
         {
             TestRunner.RunTestScript("Test-ResourceGroupCompleter");
         }
 
-        [Fact(Skip = "AzureRM.Resources.ps1 needs Get-AzureRmResource to be implemented")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResourceIdCompleter()
         {

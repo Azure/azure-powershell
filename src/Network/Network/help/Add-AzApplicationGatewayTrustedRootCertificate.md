@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azapplicationgatewaytrustedrootcertificate
@@ -25,8 +25,8 @@ The **Add-AzApplicationGatewayTrustedRootCertificate** cmdlet adds a trusted roo
 ### Example 1
 ```powershell
 PS C:\> $gw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $resgpName
-PS C:\> $gw = Add-AzApplicationGatewayTrustedRootCertificate -ApplicationGateway $gw -Name $certName --CertificateFile ".\rootCA.cer"
-PS C:\> $gw = Add-AzApplicationGatewayBackendHttpSetting -Name $poolSetting01Name -Port 443 -Protocol Https -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress -TrustedRootCertificate $gw.TrustedRootCertificates[0]
+PS C:\> $gw = Add-AzApplicationGatewayTrustedRootCertificate -ApplicationGateway $gw -Name $certName -CertificateFile ".\rootCA.cer"
+PS C:\> $gw = Add-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $gw -Name $poolSetting01Name -Port 443 -Protocol Https -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress -TrustedRootCertificate $gw.TrustedRootCertificates[0]
 PS C:\> $gw = Set-AzApplicationGateway -ApplicationGateway $gw
 ```
 
@@ -142,3 +142,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzApplicationGatewayTrustedRootCertificate](./Get-AzApplicationGatewayTrustedRootCertificate.md)
+
+[New-AzApplicationGatewayTrustedRootCertificate](./New-AzApplicationGatewayTrustedRootCertificate.md)
+
+[Remove-AzApplicationGatewayTrustedRootCertificate](./Remove-AzApplicationGatewayTrustedRootCertificate.md)
+
+[Set-AzApplicationGatewayTrustedRootCertificate](./Set-AzApplicationGatewayTrustedRootCertificate.md)

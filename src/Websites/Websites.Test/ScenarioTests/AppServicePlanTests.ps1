@@ -28,10 +28,10 @@ function Test-CreateNewAppServicePlan
 	try
 	{
 		#Setup
-		New-AzureRmResourceGroup -Name $rgname -Location $location
+		New-AzResourceGroup -Name $rgname -Location $location
 
 		# Test
-		$job = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier "Standard" -WorkerSize Medium -NumberOfWorkers $capacity -AsJob
+		$job = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier "Standard" -WorkerSize Medium -NumberOfWorkers $capacity -AsJob
 		$job | Wait-Job
 		$createResult = $job | Receive-Job
 
@@ -43,7 +43,7 @@ function Test-CreateNewAppServicePlan
 
 		# Assert
 
-		$getResult = Get-AzureRmAppServicePlan -ResourceGroupName $rgname -Name $whpName
+		$getResult = Get-AzAppServicePlan -ResourceGroupName $rgname -Name $whpName
 		Assert-AreEqual $whpName $getResult.Name
 		Assert-AreEqual "Standard" $getResult.Sku.Tier
 		Assert-AreEqual $skuName $getResult.Sku.Name
@@ -52,8 +52,8 @@ function Test-CreateNewAppServicePlan
 	finally
 	{
 		# Cleanup
-		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
+		Remove-AzResourceGroup -Name $rgname -Force
 	}
 }
 
@@ -74,10 +74,10 @@ function Test-CreateNewAppServicePlanHyperV
 	try
 	{
 		#Setup
-		New-AzureRmResourceGroup -Name $rgname -Location $location
+		New-AzResourceGroup -Name $rgname -Location $location
 
 		# Test
-		$job = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -WorkerSize Small -HyperV  -AsJob
+		$job = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -WorkerSize Small -HyperV  -AsJob
 		$job | Wait-Job
 		$createResult = $job | Receive-Job
 
@@ -89,7 +89,7 @@ function Test-CreateNewAppServicePlanHyperV
 
 		# Assert
 
-		$getResult = Get-AzureRmAppServicePlan -ResourceGroupName $rgname -Name $whpName
+		$getResult = Get-AzAppServicePlan -ResourceGroupName $rgname -Name $whpName
 		Assert-AreEqual $whpName $getResult.Name
 		Assert-AreEqual PremiumContainer $getResult.Sku.Tier
 		Assert-AreEqual $skuName $getResult.Sku.Name
@@ -101,8 +101,8 @@ function Test-CreateNewAppServicePlanHyperV
 	finally
 	{
 		# Cleanup
-		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
+		Remove-AzResourceGroup -Name $rgname -Force
 	}
 }
 
@@ -132,10 +132,10 @@ function Test-SetAppServicePlan
 	try
 	{
 		#Setup
-		New-AzureRmResourceGroup -Name $rgname -Location $location
+		New-AzResourceGroup -Name $rgname -Location $location
 		# Test
-		$actual = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -PerSiteScaling $perSiteScaling
-		$result = Get-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName
+		$actual = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -PerSiteScaling $perSiteScaling
+		$result = Get-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName
 		# Assert
 		Assert-AreEqual $whpName $result.Name
 		Assert-AreEqual $capacity $result.Sku.Capacity
@@ -144,7 +144,7 @@ function Test-SetAppServicePlan
 		Assert-AreEqual $perSiteScaling $result.PerSiteScaling
 
 		# Set the created service plan
-		$job = Set-AzureRmAppServicePlan  -ResourceGroupName $rgname -Name  $whpName -Tier $newTier -NumberofWorkers $newCapacity -WorkerSize $newWorkerSize -PerSiteScaling $newPerSiteScaling -AsJob
+		$job = Set-AzAppServicePlan  -ResourceGroupName $rgname -Name  $whpName -Tier $newTier -NumberofWorkers $newCapacity -WorkerSize $newWorkerSize -PerSiteScaling $newPerSiteScaling -AsJob
 		$job | Wait-Job
 		$newresult = $job | Receive-Job
 
@@ -161,10 +161,10 @@ function Test-SetAppServicePlan
 		$newresult.Sku.Name = $skuName
 		$newresult.PerSiteScaling = $perSiteScaling
 
-		$newresult | Set-AzureRmAppServicePlan
+		$newresult | Set-AzAppServicePlan
 
 		#Retrieve service plan
-		$newresult = Get-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName
+		$newresult = Get-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName
 
 		# Assert
 		Assert-AreEqual $whpName $newresult.Name
@@ -177,8 +177,8 @@ function Test-SetAppServicePlan
 	finally
 	{
 		# Cleanup
-		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
+		Remove-AzResourceGroup -Name $rgname -Force
 	}
 }
 
@@ -209,8 +209,8 @@ function Test-GetAppServicePlan
 	try
 	{
 		#Setup
-		New-AzureRmResourceGroup -Name $rgname -Location $location1
-		$serverFarm1 = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $serverFarmName1 -Location  $location1 -Tier $tier1
+		New-AzResourceGroup -Name $rgname -Location $location1
+		$serverFarm1 = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $serverFarmName1 -Location  $location1 -Tier $tier1
 		
 		# Assert
 		Assert-AreEqual $serverFarmName1 $serverFarm1.Name
@@ -219,7 +219,7 @@ function Test-GetAppServicePlan
 		Assert-AreEqual $skuName1 $serverFarm1.Sku.Name
 		
 		# Get app service plan by resource group and name
-		$serverFarm1 = Get-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $serverFarmName1 
+		$serverFarm1 = Get-AzAppServicePlan -ResourceGroupName $rgname -Name  $serverFarmName1 
 
 		# Assert
 		Assert-AreEqual $serverFarmName1 $serverFarm1.Name
@@ -228,7 +228,7 @@ function Test-GetAppServicePlan
 		Assert-AreEqual $skuName1 $serverFarm1.Sku.Name
 
 		# Create second app service plan
-		$serverFarm2 = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $serverFarmName2 -Location  $location2 -Tier $tier2 -WorkerSize $workerSize2 -NumberofWorkers $capacity2
+		$serverFarm2 = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $serverFarmName2 -Location  $location2 -Tier $tier2 -WorkerSize $workerSize2 -NumberofWorkers $capacity2
 		
 		# Assert
 		Assert-AreEqual $serverFarmName2 $serverFarm2.Name
@@ -237,7 +237,7 @@ function Test-GetAppServicePlan
 		Assert-AreEqual $skuName2 $serverFarm2.Sku.Name
 		
 		# Get app service plans by name
-		$result = Get-AzureRmAppServicePlan -Name $serverFarmName1
+		$result = Get-AzAppServicePlan -Name $serverFarmName1
 
 		# Assert
 		Assert-AreEqual 1 $result.Count
@@ -248,20 +248,20 @@ function Test-GetAppServicePlan
 		Assert-AreEqual $skuName1 $serverFarm1.Sku.Name
 
 		# Get all app service plans by subscription
-		$result = Get-AzureRmAppServicePlan
+		$result = Get-AzAppServicePlan
 
 		# Assert
 		Assert-True { $result.Count -ge 2 }
 
 		# Get all app service plans by location
-		$result = Get-AzureRmAppServicePlan -Location $location1 | Select -expand Name 
+		$result = Get-AzAppServicePlan -Location $location1 | Select -expand Name 
 		
 		# Assert
 		Assert-True { $result -contains $serverFarmName1 }
 		Assert-False { $result -contains $serverFarmName2 }
 
 		# Get all app service plans by resource group
-		$result = Get-AzureRmAppServicePlan -ResourceGroupName $rgname | Select -expand Name
+		$result = Get-AzAppServicePlan -ResourceGroupName $rgname | Select -expand Name
 		
 		# Assert
 		Assert-AreEqual 2 $result.Count
@@ -272,9 +272,9 @@ function Test-GetAppServicePlan
 	finally
 	{
 		# Cleanup
-		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $serverFarmName1 -Force
-		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $serverFarmName2 -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $serverFarmName1 -Force
+		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $serverFarmName2 -Force
+		Remove-AzResourceGroup -Name $rgname -Force
 	}
 }
 
@@ -295,9 +295,9 @@ function Test-RemoveAppServicePlan
 	try
 	{
 		#Setup
-		New-AzureRmResourceGroup -Name $rgname -Location $location
+		New-AzResourceGroup -Name $rgname -Location $location
 
-		$serverFarm = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $serverFarmName -Location  $location -Tier $tier
+		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $serverFarmName -Location  $location -Tier $tier
 		
 		# Assert
 		Assert-AreEqual $serverFarmName $serverFarm.Name
@@ -306,16 +306,16 @@ function Test-RemoveAppServicePlan
 		Assert-AreEqual $capacity $serverFarm.Sku.Capacity
 
 		# Remove App service plan
-		$serverFarm |Remove-AzureRmAppServicePlan -Force -AsJob | Wait-Job
+		$serverFarm |Remove-AzAppServicePlan -Force -AsJob | Wait-Job
 		
-		$result = Get-AzureRmAppServicePlan -ResourceGroupName $rgname
+		$result = Get-AzAppServicePlan -ResourceGroupName $rgname
 
 		Assert-AreEqual 0 $result.Count 
 	}
 	finally
 	{
 		# Cleanup
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzResourceGroup -Name $rgname -Force
 	}
 }
 
@@ -336,8 +336,8 @@ function Test-GetAppServicePlanMetrics
 	try
 	{
 		#Setup
-		New-AzureRmResourceGroup -Name $rgname -Location $location
-		$serverFarm = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $appServicePlanName -Location  $location -Tier $tier
+		New-AzResourceGroup -Name $rgname -Location $location
+		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $appServicePlanName -Location  $location -Tier $tier
 		
 		$endTime = Get-Date
 		$startTime = $endTime.AddHours(-3)
@@ -345,7 +345,7 @@ function Test-GetAppServicePlanMetrics
 		$metricnames = @('CPU', 'Requests')
 
 		# Get app service plan metrics
-		$metrics = Get-AzureRmAppServicePlanMetrics -ResourceGroupName $rgname -Name $appServicePlanName -Metrics $metricnames -StartTime $startTime -EndTime $endTime -Granularity PT1M
+		$metrics = Get-AzAppServicePlanMetrics -ResourceGroupName $rgname -Name $appServicePlanName -Metrics $metricnames -StartTime $startTime -EndTime $endTime -Granularity PT1M
 
 		$actualMetricNames = $metrics | Select -Expand Name | Select -Expand Value 
 
@@ -355,7 +355,7 @@ function Test-GetAppServicePlanMetrics
 		}
 
 		# Get app service plan metrics via pipeline obj
-		$metrics = $serverFarm | Get-AzureRmAppServicePlanMetrics -Metrics $metricnames -StartTime $startTime -EndTime $endTime -Granularity PT1M
+		$metrics = $serverFarm | Get-AzAppServicePlanMetrics -Metrics $metricnames -StartTime $startTime -EndTime $endTime -Granularity PT1M
 
 		$actualMetricNames = $metrics | Select -Expand Name | Select -Expand Value 
 
@@ -367,8 +367,8 @@ function Test-GetAppServicePlanMetrics
 	finally
 	{
 		# Cleanup
-		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $appServicePlanName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $appServicePlanName -Force
+		Remove-AzResourceGroup -Name $rgname -Force
 	}
 }
 
@@ -391,10 +391,10 @@ function Test-CreateNewAppServicePlanInAse
 	try
 	{
 		#Setup
-		New-AzureRmResourceGroup -Name $rgname -Location $location
+		New-AzResourceGroup -Name $rgname -Location $location
 
 		# Test
-		$createResult = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $skuTier -WorkerSize Medium -NumberOfWorkers $capacity -AseName $aseName -AseResourceGroupName $aseResourceGroupName
+		$createResult = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $skuTier -WorkerSize Medium -NumberOfWorkers $capacity -AseName $aseName -AseResourceGroupName $aseResourceGroupName
 		
 		# Assert
 		Assert-AreEqual $whpName $createResult.Name
@@ -402,7 +402,7 @@ function Test-CreateNewAppServicePlanInAse
 		Assert-AreEqual $skuName $createResult.Sku.Name
 
 		# Assert
-		$getResult = Get-AzureRmAppServicePlan -ResourceGroupName $rgname -Name $whpName
+		$getResult = Get-AzAppServicePlan -ResourceGroupName $rgname -Name $whpName
 		Assert-AreEqual $whpName $getResult.Name
 		Assert-AreEqual "Isolated" $getResult.Sku.Tier
 		Assert-AreEqual $skuName $getResult.Sku.Name
@@ -410,7 +410,7 @@ function Test-CreateNewAppServicePlanInAse
 	finally
 	{
 		# Cleanup
-		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
-		Remove-AzureRmResourceGroup -Name $rgname -Force
+		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
+		Remove-AzResourceGroup -Name $rgname -Force
 	}
 }

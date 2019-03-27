@@ -43,33 +43,33 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Test Get-AzureLogicAppRun and Get-AzureLogicAppRunHistory command to get logic app run history
+        /// Test Get-AzLogicAppRun and Get-AzLogicAppRunHistory command to get logic app run history
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureLogicAppRunHistory()
+        public void TestGetAzLogicAppRunHistory()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzureLogicAppRunHistory");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzLogicAppRunHistory");
         }
 
         /// <summary>
-        /// Test Get-AzureLogicAppRunAction command to get logic app run action
+        /// Test Get-AzLogicAppRunAction command to get logic app run action
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureLogicAppRunAction()
+        public void TestGetAzLogicAppRunAction()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzureLogicAppRunAction");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetAzLogicAppRunAction");
         }
 
         /// <summary>
-        /// Test Stop-AzureRmLogicAppRun command to cancel logic app run
+        /// Test Stop-AzLogicAppRun command to cancel logic app run
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestStopAzureRmLogicAppRun()
+        public void TestStopAzLogicAppRun()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-StopAzureRmLogicAppRun");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-StopAzLogicAppRun");
         }
     }
 }

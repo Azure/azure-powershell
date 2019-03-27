@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -29,36 +30,27 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
+            var clusterResource = GetCurrentCluster();
             var certInformations = base.GetOrCreateCertificateInformation();
 
             var certInformation = certInformations[0];
 
             if (ShouldProcess(target: this.Name, action: string.Format("Add application certificate")))
             {
-                var allTasks = new List<Task>();
-                var vmssPages = this.ComputeClient.VirtualMachineScaleSets.List(this.ResourceGroupName);
+                var addTasks = CreateAddOrRemoveCertVMSSTasks(certInformation, clusterResource.ClusterId, false);
 
-                if (vmssPages == null || !vmssPages.Any())
+                try
                 {
-                    throw new PSArgumentException(string.Format(
-                        ServiceFabricProperties.Resources.NoneNodeTypeFound,
-                        this.ResourceGroupName));
+                    WriteClusterAndVmssVerboseWhenUpdate(addTasks, false);
                 }
-
-                do
+                catch (AggregateException)
                 {
-                    if (!vmssPages.Any())
-                    {
-                        break;
-                    }
-
-                    allTasks.AddRange(vmssPages.Select(vmss => AddCertToVmssTask(vmss, certInformation)));
-
-                } while (!string.IsNullOrEmpty(vmssPages.NextPageLink) &&
-                         (vmssPages = this.ComputeClient.VirtualMachineScaleSets.ListNext(vmssPages.NextPageLink)) != null);
-
-                WriteClusterAndVmssVerboseWhenUpdate(allTasks, false);
+                    WriteWarning("Exception while performing operation. Rollingback...");
+                    var removeTasks = CreateAddOrRemoveCertVMSSTasks(certInformation, clusterResource.ClusterId, false, false);
+                    WriteClusterAndVmssVerboseWhenUpdate(removeTasks, false);
+                    WriteWarning("Operation rolled back, the certificate was removed from VMSS model.");
+                    throw;
+                }
             }
 
             WriteObject(new PSKeyVault()

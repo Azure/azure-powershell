@@ -18,7 +18,7 @@ Test List Resource Skus
 #>
 function Test-GetResourceSku
 {
-	$skulist = Get-AzureRmComputeResourceSku | where {$_.Locations -eq "eastus"};
+	$skulist = Get-AzComputeResourceSku | where {$_.Locations -eq "eastus"};
 	Assert-True { $skulist.Count -gt 0; }
 	$output = $skulist | Out-String;
 	Assert-True { $output.Contains("availabilitySets"); }

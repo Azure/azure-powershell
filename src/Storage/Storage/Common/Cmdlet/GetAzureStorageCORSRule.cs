@@ -14,11 +14,13 @@
 
 using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
 using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+using XTable = Microsoft.Azure.Cosmos.Table;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
@@ -42,9 +44,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            ServiceProperties currentServiceProperties = Channel.GetStorageServiceProperties(ServiceType, GetRequestOptions(ServiceType), OperationContext);
-            
-            WriteObject(PSCorsRule.ParseCorsRules(currentServiceProperties.Cors));
+            if (ServiceType != StorageServiceType.Table)
+            {
+                ServiceProperties currentServiceProperties = Channel.GetStorageServiceProperties(ServiceType, GetRequestOptions(ServiceType), OperationContext);
+                WriteObject(PSCorsRule.ParseCorsRules(currentServiceProperties.Cors));
+            }
+            else //Table use old XSCL
+            {
+                StorageTableManagement tableChannel = new StorageTableManagement(Channel.StorageContext);
+                XTable.ServiceProperties currentServiceProperties = tableChannel.GetStorageTableServiceProperties(GetTableRequestOptions(), TableOperationContext);
+                WriteObject(PSCorsRule.ParseCorsRules(currentServiceProperties.Cors));
+            }
         }
     }
 }

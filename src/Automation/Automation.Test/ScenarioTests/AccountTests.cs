@@ -12,21 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Automation.Test;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Commands.Automation.Test
 {
-    public class AccountTests : AutomationScenarioTestsBase
+    public class AccountTests : AutomationTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public AccountTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -34,7 +29,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void TestGetAutomationAccts()
         {
-            RunPowerShellTest(_logger, "Test-GetAutomationAccounts");
+            TestRunner.RunTestScript("Test-GetAutomationAccounts");
         }
 
         [Fact]
@@ -42,7 +37,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void TestAutomationAcctTags()
         {
-            RunPowerShellTest(_logger, "Test-AutomationAccountTags");
+            TestRunner.RunTestScript("Test-AutomationAccountTags");
         }
     }
 }
