@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 2638B226-B974-43B6-ACC2-D67573CF6B56
@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzLoadBalancerRuleConfig
 
 ## SYNOPSIS
-Sets the goal state for a load balancer rule configuration.
+Updates a rule configuration for a load balancer.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Set-AzLoadBalancerRuleConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Pro
 ```
 
 ## DESCRIPTION
-The **Set-AzLoadBalancerRuleConfig** cmdlet sets the goal state for a load balancer rule configuration.
+The **Set-AzLoadBalancerRuleConfig** cmdlet updates a rule configuration for a load balancer.
 
 ## EXAMPLES
 
@@ -217,7 +217,7 @@ Accept wildcard characters: False
 
 ### -LoadBalancer
 Specifies a load balancer.
-This cmdlet sets the goal state rule configuration for the load balancer that this parameter specifies.
+This cmdlet updates a rule configuration for the load balancer that this parameter specifies.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer

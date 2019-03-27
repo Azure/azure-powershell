@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner.dll-Help.xml
 Module Name: Az.ManagementPartner
-online version: http://go.microsoft.com/fwlink/?LinkID=393044
+online version: https://docs.microsoft.com/en-us/powershell/module/az.managementpartner/new-azmanagementpartner
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ ObjectId    : aa67f786-0552-423e-8849-244ed12bf581
 State       : Active
 ```
 
-Add a management partner 
+Add a management partner
 
 ## PARAMETERS
 

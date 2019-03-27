@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 7EFFFF43-501E-4955-A4EE-2C09B8863B30
@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzNetworkSecurityRuleConfig
 
 ## SYNOPSIS
-Sets the goal state for a network security rule configuration.
+Updates a network security rule configuration for a network security group.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Set-AzNetworkSecurityRuleConfig -Name <String> -NetworkSecurityGroup <PSNetworkS
 ```
 
 ## DESCRIPTION
-The **Set-AzNetworkSecurityRuleConfig** cmdlet sets the goal state for an Azure network security rule configuration.
+The **Set-AzNetworkSecurityRuleConfig** cmdlet updates a network security rule configuration for a network security group.
 
 ## EXAMPLES
 

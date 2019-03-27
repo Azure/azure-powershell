@@ -3,7 +3,7 @@ $tagValue = "testvalue"
 $KeyVaultResourceType = "Microsoft.KeyVault/vaults"
 $KeyVaultApiVersion = "2015-06-01"
 
-#------------------------------New-AzureRmKeyVault--------------------------------------
+#------------------------------New-AzKeyVault--------------------------------------
 function Test_CreateNewVault
 {
     Test-CreateNewVault $global:resourceGroupName $global:location $tagName $tagValue
@@ -55,7 +55,7 @@ function Test_PurgeDeletedVault
 
 #-------------------------------------------------------------------------------------
 
-#------------------------------Get-AzureRmKeyVault--------------------------------------
+#------------------------------Get-AzKeyVault--------------------------------------
 
 function Test_GetVaultByNameAndResourceGroup
 {
@@ -105,7 +105,7 @@ function Test_ListVaultsByUnknownResourceGroupFails
 
 #-------------------------------------------------------------------------------------
 
-#------------------------------Remove-AzureRmKeyVault-----------------------------------
+#------------------------------Remove-AzKeyVault-----------------------------------
 function Test_DeleteVaultByName
 {
     Test-DeleteVaultByName $global:resourceGroupName $global:location
@@ -118,10 +118,10 @@ function Test_DeleteUnknownVaultFails
 
 #-------------------------------------------------------------------------------------
 
-#------------------------------Set-AzureRmKeyVaultAccessPolicy--------------------------
+#------------------------------Set-AzKeyVaultAccessPolicy--------------------------
 function Test_SetRemoveAccessPolicyByUPN
 {
-    $user = (Get-AzureRmContext).Account.Id
+    $user = (Get-AzContext).Account.Id
     Reset-PreCreatedVault
     Test-SetRemoveAccessPolicyByUPN $global:testVault $global:resourceGroupName $user
 }
@@ -129,7 +129,7 @@ function Test_SetRemoveAccessPolicyByUPN
 function Test_SetRemoveAccessPolicyByEmailAddress
 {
     # ASSUMPTION: The logged in users UPN is the same as their email address.
-    $user = (Get-AzureRmContext).Account.Id
+    $user = (Get-AzContext).Account.Id
     Reset-PreCreatedVault
     Test-SetRemoveAccessPolicyByEmailAddress $global:testVault $global:resourceGroupName $user $user
 }
@@ -145,8 +145,8 @@ function Test_SetRemoveAccessPolicyBySPN
     {
         $appName = [Guid]::NewGuid().ToString("N")
         $uri = 'http://localhost:8080/'+$appName
-        $app = New-AzureRmADApplication -DisplayName $appName -HomePage 'http://contoso.com' -IdentifierUris $uri -Password $appName
-        $sp = New-AzureRmADServicePrincipal -ApplicationId $app.ApplicationId
+        $app = New-AzADApplication -DisplayName $appName -HomePage 'http://contoso.com' -IdentifierUris $uri -Password $appName
+        $sp = New-AzADServicePrincipal -ApplicationId $app.ApplicationId
     }
 
     try
@@ -157,7 +157,7 @@ function Test_SetRemoveAccessPolicyBySPN
     {
         if (-not $global:noADCmdLetMode)
         {
-            Remove-AzureRmADApplication -ObjectId $app.ObjectId -Force
+            Remove-AzADApplication -ObjectId $app.ObjectId -Force
         }
     }
 }
@@ -237,7 +237,7 @@ function Test_RemoveNonExistentAccessPolicyDoesNotThrow
 function Test_AllPermissionExpansion
 {
     Reset-PreCreatedVault
-    $user = (Get-AzureRmContext).Account.Id
+    $user = (Get-AzContext).Account.Id
     Test-AllPermissionExpansion $global:testVault $global:resourceGroupName $user
 }
 
@@ -294,7 +294,7 @@ Reset the pre-created vault to the default state for the control plane tests.
 #>
 function Reset-PreCreatedVault
 {
-    $tenantId = (Get-AzureRmContext).Tenant.Id
+    $tenantId = (Get-AzContext).Tenant.Id
     $sku = "premium"
     if ($global:standardVaultOnly)
     {
@@ -310,7 +310,7 @@ function Reset-PreCreatedVault
         "accessPolicies" = @()
     }
 
-    Set-AzureRmResource -ApiVersion $KeyVaultApiVersion `
+    Set-AzResource -ApiVersion $KeyVaultApiVersion `
                     -ResourceType $KeyVaultResourceType `
                     -ResourceName $global:testVault `
                     -ResourceGroupName $global:resourceGroupName `
@@ -329,7 +329,7 @@ function Initialize-TemporaryState
     {
         # Create a resource group.
         $rg = Get-ResourceGroupName $suffix
-        New-AzureRmResourceGroup -Name $rg -Location $global:location -Force
+        New-AzResourceGroup -Name $rg -Location $global:location -Force
 
         $global:resourceGroupName = $rg
         Write-Host "Successfully initialized the temporary resource group $global:resourceGroupName."
@@ -347,7 +347,7 @@ function Initialize-TemporaryState
 
     # Create a vault using ARM.
     $vaultName = Get-VaultName $suffix
-    $tenantId = (Get-AzureRmContext).Tenant.Id
+    $tenantId = (Get-AzContext).Tenant.Id
     $sku = "premium"
     if ($global:standardVaultOnly)
     {
@@ -388,7 +388,7 @@ function Initialize-TemporaryState
         $vaultProperties.accessPolicies.permissions.certificates = @("all", "purge")
     }
 
-    $keyVault = New-AzureRmResource @vaultId `
+    $keyVault = New-AzResource @vaultId `
                 -PropertyObject $vaultProperties `
                 -Location $global:location `
                 -Force -Confirm:$false
@@ -414,7 +414,7 @@ Retrieve the current vault as a resource of type System.Management.Automation.PS
 #>
 function Get-VaultResource
 {
-    return Get-AzureRmResource -ResourceType $KeyVaultResourceType `
+    return Get-AzResource -ResourceType $KeyVaultResourceType `
                                -ResourceGroupName $global:resourceGroupName `
                                -ResourceName $global:testVault
 }
@@ -430,7 +430,7 @@ function Restore-VaultResource($oldVaultResource)
 {
     Write-Host "Restoring the vault resource $global:testVault..."
 
-    $oldVaultResource | Set-AzureRmResource -Force
+    $oldVaultResource | Set-AzResource -Force
 }
 
 <#
@@ -448,7 +448,7 @@ function Cleanup-TemporaryState([bool]$tempResourceGroup, [bool]$tempVault)
     if ($tempResourceGroup)
     {
         Write-Host "Starting the deletion of the temporary resource group. This can take a few minutes..."
-        $groupRemoved = Remove-AzureRmResourceGroup -Name $global:resourceGroupname -Force -Confirm:$false
+        $groupRemoved = Remove-AzResourceGroup -Name $global:resourceGroupname -Force -Confirm:$false
         if ($groupRemoved)
         {
             $global:resourceGroupname = ""
@@ -462,7 +462,7 @@ function Cleanup-TemporaryState([bool]$tempResourceGroup, [bool]$tempVault)
     elseif ($tempVault)
     {
         Write-Host "Starting the deletion of the temporary vault. This can take a minute or so..."
-        $vaultRemoved = Remove-AzureRmKeyVault -VaultName $global:testVault -ResourceGroupName $global:resourceGroupname -Force -Confirm:$false
+        $vaultRemoved = Remove-AzKeyVault -VaultName $global:testVault -ResourceGroupName $global:resourceGroupname -Force -Confirm:$false
         if ($vaultRemoved)
         {
             $global:testVault = ""

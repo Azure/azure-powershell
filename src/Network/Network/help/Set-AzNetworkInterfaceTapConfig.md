@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-aznetworkinterfacetapconfig
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzNetworkInterfaceTapConfig
 
 ## SYNOPSIS
-Sets the goal state of a Tap Configuration
+Updates a tap configuration for a network interface.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Set-AzNetworkInterfaceTapConfig -NetworkInterfaceTapConfig <PSNetworkInterfaceTa
 ```
 
 ## DESCRIPTION
-The **Set-AzNetworkInterfaceTapConfig** sets the goal state for an Azure network interface.
+The **Set-AzNetworkInterfaceTapConfig** updates a tap configuration for a network interface.
 
 ## EXAMPLES
 
@@ -136,3 +136,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzNetworkInterfaceTapConfig](./Add-AzNetworkInterfaceTapConfig.md)
+
+[Get-AzNetworkInterfaceTapConfig](./Get-AzNetworkInterfaceTapConfig.md)
+
+[Remove-AzNetworkInterfaceTapConfig](./Remove-AzNetworkInterfaceTapConfig.md)

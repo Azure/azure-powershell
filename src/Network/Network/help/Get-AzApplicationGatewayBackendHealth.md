@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: D5E928C3-26B6-4B7C-8A9C-F1F602BABF75
@@ -30,7 +30,7 @@ PS C:\>$BackendHealth = Get-AzApplicationGatewayBackendHealth -Name ApplicationG
 
 This command gets the backend health of application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $BackendHealth variable.
 
-### Example 1: Gets backend health with expanded resources.
+### Example 2: Gets backend health with expanded resources.
 ```
 PS C:\>$BackendHealth = Get-AzApplicationGatewayBackendHealth -Name ApplicationGateway01 -ResourceGroupName ResourceGroup01 -ExpandResource "backendhealth/applicationgatewayresource"
 ```

@@ -18,3 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.2
+* Added `New-AzDataMigrationAzureActiveDirectoryApp` cmdlet
+    - Used as input for MI online sync migration

@@ -19,8 +19,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
+    /// <summary>
+    /// Class MaximumDatasetSizeValidationTest.
+    /// </summary>
     public class MaximumDatasetSizeValidationTest
     {
+        /// <summary>
+        /// Defines the test method WhenDataSetSizeIsTooBigValidationResultIsError.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void WhenDataSetSizeIsTooBigValidationResultIsError()
@@ -38,6 +44,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             AssertExtension.ValidationResultIsError(validationResult, "Dataset validation does not trigger an error when dataset is too big.");
         }
 
+        /// <summary>
+        /// Defines the test method WhenDataSetSizeIsMaxResultIsSuccess.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void WhenDataSetSizeIsMaxResultIsSuccess()
@@ -55,6 +64,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             AssertExtension.ValidationResultIsSuccess(validationResult, "Dataset validation triggered an error when dataset is same as max.");
         }
 
+        /// <summary>
+        /// Defines the test method WhenDataSetSizeLessThanMaxResultIsSuccess.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void WhenDataSetSizeLessThanMaxResultIsSuccess()

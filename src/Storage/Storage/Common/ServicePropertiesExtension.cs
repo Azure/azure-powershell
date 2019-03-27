@@ -15,6 +15,7 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
     using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+    using XTable = Microsoft.Azure.Cosmos.Table;
 
     public static class ServicePropertiesExtension
     {
@@ -23,6 +24,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// </summary>
         /// <param name="serviceProperties">Service properties</param>
         internal static void Clean(this ServiceProperties serviceProperties)
+        {
+            serviceProperties.Logging = null;
+            serviceProperties.HourMetrics = null;
+            serviceProperties.MinuteMetrics = null;
+            serviceProperties.Cors = null;
+            serviceProperties.DefaultServiceVersion = null;
+            serviceProperties.DeleteRetentionPolicy = null;
+        }
+
+        /// <summary>
+        /// Clean all the settings on the ServiceProperties project
+        /// </summary>
+        /// <param name="serviceProperties">Service properties</param>
+        internal static void Clean(this XTable.ServiceProperties serviceProperties)
         {
             serviceProperties.Logging = null;
             serviceProperties.HourMetrics = null;

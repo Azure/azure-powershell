@@ -15,6 +15,8 @@
 $resourceGroupName = "RecoveryServicesBackupTestRg";
 $resourceName = "PsTestRsVault";
 $policyName = "PsTestPolicy";
+$DefaultSnapshotDays = 2;
+$UpdatedSnapShotDays = 5;
 
 function Test-AzureVMPolicy
 {
@@ -27,14 +29,14 @@ function Test-AzureVMPolicy
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
 		
 		# Get default policy objects
-		$schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM
+		$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM
 		Assert-NotNull $schedulePolicy
-		$retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM
+		$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM
 		Assert-NotNull $retentionPolicy
 
 		# Create policy
 		$policyName = "newPolicy"
-		$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy `
+		$policy = New-AzRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `
 			-Name $policyName `
 			-WorkloadType AzureVM `
@@ -42,29 +44,38 @@ function Test-AzureVMPolicy
 			-SchedulePolicy $schedulePolicy
 		Assert-NotNull $policy
 		Assert-AreEqual $policy.Name $policyName
+		Assert-AreEqual $policy.SnapshotRetentionInDays $DefaultSnapshotDays
 
 		# Get policy
-	    $policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+	    $policy = Get-AzRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `
 			-Name $policyName
 		Assert-NotNull $policy
 		Assert-AreEqual $policy.Name $policyName
 
 		# Get default policy objects (this data is generated partially at random. So, running this again gives different values)
-		$schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM
+		$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM
 		Assert-NotNull $schedulePolicy
-		$retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM
+		$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM
 		Assert-NotNull $retentionPolicy
 
+		#update snapshot days
+		$policy.SnapshotRetentionInDays = $UpdatedSnapShotDays;
+
 		# Update policy
-		Set-AzureRmRecoveryServicesBackupProtectionPolicy `
+		Set-AzRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `
 			-RetentionPolicy $retentionPolicy `
 			-SchedulePolicy $schedulePolicy `
 			-Policy $policy
 
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $policyName
+		Assert-AreEqual $policy.SnapshotRetentionInDays $UpdatedSnapShotDays
+
 		# Delete policy
-		Remove-AzureRmRecoveryServicesBackupProtectionPolicy `
+		Remove-AzRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `
 			-Policy $policy `
 			-Force

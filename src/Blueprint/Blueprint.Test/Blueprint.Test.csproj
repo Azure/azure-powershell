@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PsModuleName>Blueprint</PsModuleName>
+  </PropertyGroup>
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
+  <PropertyGroup>
+    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Data\**" />
+    <Compile Remove="UnitTests\**" />
+    <EmbeddedResource Remove="Data\**" />
+    <EmbeddedResource Remove="UnitTests\**" />
+    <None Remove="Data\**" />
+    <None Remove="UnitTests\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.Blueprint" Version="0.10.0-preview" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Blueprint\Blueprint.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="SubscriptionLevelSimpleBlueprint.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Update="Microsoft.Azure.Management.ResourceManager" Version="1.9.1-preview" />
+  </ItemGroup>
+</Project>

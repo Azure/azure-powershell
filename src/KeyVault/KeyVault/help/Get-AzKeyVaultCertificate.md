@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 363FA51E-D075-4800-A4BE-BFF63FD25C90
@@ -177,6 +177,35 @@ Id                 : https://contoso.vault.azure.net:443/certificates/test1/7fe4
 
 This command gets the certificate named 'MyCert' that has been previously deleted, but not purged, in the key vault named Contoso.
 This command will return metadata such as the deletion date, and the scheduled purging date of this deleted certificate.
+
+### Example 4: List certificates using filtering
+```powershell
+PS C:\> Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "test*"
+
+Enabled   : True
+Expires   : 8/5/2019 2:39:25 AM
+NotBefore : 2/5/2019 2:29:25 AM
+Created   : 2/5/2019 2:39:25 AM
+Updated   : 2/5/2019 2:39:25 AM
+Tags      :
+VaultName : ContosoKV01
+Name      : test1
+Version   :
+Id        : https://ContosoKV01.vault.azure.net:443/certificates/test1
+
+Enabled   : True
+Expires   : 8/5/2019 2:39:25 AM
+NotBefore : 2/5/2019 2:29:25 AM
+Created   : 2/5/2019 2:39:25 AM
+Updated   : 2/5/2019 2:39:25 AM
+Tags      :
+VaultName : ContosoKV01
+Name      : test2
+Version   :
+Id        : https://ContosoKV01.vault.azure.net:443/certificates/test2
+
+This command gets all certificates starting with "test" from the key vault named ContosoKV01.
+```
 
 ## PARAMETERS
 

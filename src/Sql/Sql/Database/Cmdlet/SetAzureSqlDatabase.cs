@@ -166,10 +166,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the license type for the Azure Sql database
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The license type for the Azure Sql database.",
+            HelpMessage = "The license type for the Azure Sql database. Possible values are BasePrice (with AHB discount) and LicenseIncluded (without AHB discount).",
             ParameterSetName = UpdateParameterSetName)]
         [Parameter(Mandatory = false,
-            HelpMessage = "The license type for the Azure Sql database.",
+            HelpMessage = "The license type for the Azure Sql database. Possible values are BasePrice (with AHB discount) and LicenseIncluded (without AHB discount).",
             ParameterSetName = VcoreDatabaseParameterSet)]
         [PSArgumentCompleter(
             Management.Sql.Models.DatabaseLicenseType.LicenseIncluded,
