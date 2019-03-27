@@ -48,56 +48,49 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory
             return adObj;
         }
 
-        public static PSADObject ToPSADObject(this AADObject obj)
+        public static PSADObject ToPSADObject(this DirectoryObject obj)
         {
             if (obj == null) throw new ArgumentNullException();
 
-            if (obj.ObjectType == typeof(User).Name)
+            if (obj is User user)
             {
                 var adUser = new PSADUser()
                 {
-                    DisplayName = obj.DisplayName,
-                    UserPrincipalName = obj.UserPrincipalName
+                    DisplayName = user.DisplayName,
+                    UserPrincipalName = user.UserPrincipalName
                 };
 
                 return AssignObjectId(adUser, obj.ObjectId);
             }
-            else if (obj.ObjectType == "Group")
+            else if (obj is ADGroup group)
             {
                 var adGroup = new PSADGroup()
                 {
-                    DisplayName = obj.DisplayName,
-                    SecurityEnabled = obj.SecurityEnabled,
-                    MailNickname = obj.Mail
+                    DisplayName = group.DisplayName,
+                    SecurityEnabled = group.SecurityEnabled,
+                    MailNickname = group.Mail
                 };
                 return AssignObjectId(adGroup, obj.ObjectId);
             }
-            else if (obj.ObjectType == typeof(ServicePrincipal).Name)
+            else if (obj is ServicePrincipal servicePrincipal)
             {
                 var adSp = new PSADServicePrincipal()
                 {
-                    DisplayName = obj.DisplayName,
-                    ServicePrincipalNames = obj.ServicePrincipalNames.ToArray()
+                    DisplayName = servicePrincipal.DisplayName,
+                    ServicePrincipalNames = servicePrincipal.ServicePrincipalNames.ToArray()
                 };
 
                 return AssignObjectId(adSp, obj.ObjectId);
             }
-            else
-            {
-                var adObj = new PSADObject()
-                {
-                    DisplayName = obj.DisplayName,
-                };
 
-                return AssignObjectId(adObj, obj.ObjectId);
-            }
+            throw new NotSupportedException($"{obj.GetType()}");
         }
 
-        public static PSADObject ToPSADGroup(this AADObject obj)
+        public static PSADObject ToPSADGroup(this DirectoryObject obj)
         {
             var adObj = new PSADObject()
             {
-                DisplayName = obj.DisplayName,
+                DisplayName = (obj as ADGroup).DisplayName,
             };
 
             return AssignObjectId(adObj, obj.ObjectId);

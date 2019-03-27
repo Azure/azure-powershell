@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory
         public List<PSADObject> GetObjectsByObjectId(List<string> objectIds)
         {
             List<PSADObject> result = new List<PSADObject>();
-            IPage<AADObject> adObjects;
+            IPage<DirectoryObject> adObjects;
             int objectIdBatchCount;
             for(int i=0; i<objectIds.Count; i+=1000)
             {
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory
 
         public IEnumerable<PSADObject> GetGroupMembers(ADObjectFilterOptions options, ulong first = ulong.MaxValue, ulong skip = 0)
         {
-            return new GenericPageEnumerable<AADObject>(
+            return new GenericPageEnumerable<DirectoryObject>(
                 delegate ()
                 {
                     return GraphClient.Groups.GetGroupMembers(options.Id);
@@ -450,7 +450,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory
             {
                 if (ce.Response.StatusCode == HttpStatusCode.Forbidden)
                 {
-                    AADObject currentUser = GraphClient.Objects.GetCurrentUser();
+                    User currentUser = GraphClient.SignedInUser.Get();
                     if (currentUser != null && string.Equals(currentUser.UserType, "Guest", StringComparison.InvariantCultureIgnoreCase))
                     {
                         throw new InvalidOperationException(ProjectResources.CreateApplicationNotAllowedGuestUser);
@@ -815,7 +815,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory
             {
                 if (ce.Response.StatusCode == HttpStatusCode.Forbidden)
                 {
-                    AADObject currentUser = GraphClient.Objects.GetCurrentUser();
+                    User currentUser = GraphClient.SignedInUser.Get();
                     if (currentUser != null && string.Equals(currentUser.UserType, "Guest", StringComparison.InvariantCultureIgnoreCase))
                     {
                         throw new InvalidOperationException(ProjectResources.CreateServicePrincipalNotAllowedGuestUser);
