@@ -17,29 +17,9 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Models
-{    
-    public class PSFrontDoor: PSTrackedResource
+{
+    public class PSBackendPoolsSettings
     {
-        public string FriendlyName { get; set; }
-
-        public List<PSRoutingRule> RoutingRules { get; set; }
-
-        public List<PSBackendPool> BackendPools { get; set; }
-
-        public PSBackendPoolsSettings BackendPoolsSettings { get; set; }
-
-        public List<PSHealthProbeSetting> HealthProbeSettings { get; set; }
-
-        public List<PSLoadBalancingSetting> LoadBalancingSettings { get; set; }
-        
-        public List<PSFrontendEndpoint> FrontendEndpoints { get; set; }
-
-        public PSEnabledState? EnabledState { get; set; }
-
-        public string ResourceState { get; set; }
-
-        public string ProvisioningState { get; set; }
-
-        public string Cname { get; set; }
+        public PSEnforceCertificateNameCheck? EnforceCertificateNameCheck { get; set; }
     }
 }
