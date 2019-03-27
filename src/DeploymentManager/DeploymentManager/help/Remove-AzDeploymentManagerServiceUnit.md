@@ -15,45 +15,45 @@ Deletes the service unit.
 ### Interactive (Default)
 ```
 Remove-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceTopologyName] <String>
- [-ServiceName] <String> [-Name] <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ServiceName] <String> [-Name] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTopologyObjectAndServiceName
 ```
 Remove-AzDeploymentManagerServiceUnit [-ServiceName] <String> [-Name] <String>
- [-ServiceTopology] <PSServiceTopologyResource> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-ServiceTopologyObject] <PSServiceTopologyResource> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTopologyResourceAndServiceName
 ```
 Remove-AzDeploymentManagerServiceUnit [-ServiceName] <String> [-Name] <String>
- [-ServiceTopologyResourceId] <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ServiceTopologyResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByServiceObject
 ```
-Remove-AzDeploymentManagerServiceUnit [-Name] <String> [-Service] <PSServiceResource> [-Force] [-PassThru]
+Remove-AzDeploymentManagerServiceUnit [-Name] <String> [-ServiceObject] <PSServiceResource> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByServiceResourceId
 ```
-Remove-AzDeploymentManagerServiceUnit [-Name] <String> [-ServiceResourceId] <String> [-Force] [-PassThru]
+Remove-AzDeploymentManagerServiceUnit [-Name] <String> [-ServiceResourceId] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Remove-AzDeploymentManagerServiceUnit [-ResourceId] <String> [-Force] [-PassThru]
+Remove-AzDeploymentManagerServiceUnit [-ResourceId] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Remove-AzDeploymentManagerServiceUnit [-ServiceUnit] <PSServiceUnitResource> [-Force] [-PassThru]
+Remove-AzDeploymentManagerServiceUnit [-InputObject] <PSServiceUnitResource> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -93,7 +93,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -102,18 +102,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Do not ask for confirmation.
+### -InputObject
+Service unit resource object.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource
+Parameter Sets: InputObject
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -128,7 +128,7 @@ Aliases:
 Required: True
 Position: 3
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -158,7 +158,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -177,7 +177,22 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Service
+### -ServiceName
+The name of the service the service unit is part of.
+
+```yaml
+Type: System.String
+Parameter Sets: Interactive, ByTopologyObjectAndServiceName, ByTopologyResourceAndServiceName
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceObject
 The service object in which the service unit should be created.
 
 ```yaml
@@ -192,42 +207,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServiceName
-The name of the service the service unit is part of.
-
-```yaml
-Type: System.String
-Parameter Sets: Interactive, ByTopologyObjectAndServiceName, ByTopologyResourceAndServiceName
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ServiceResourceId
 The service resource identifier in which the service unit should be created.
 
 ```yaml
 Type: System.String
 Parameter Sets: ByServiceResourceId
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServiceTopology
-The service topology object in which the service unit should be created.
-
-```yaml
-Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource
-Parameter Sets: ByTopologyObjectAndServiceName
 Aliases:
 
 Required: True
@@ -248,7 +233,22 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceTopologyObject
+The service topology object in which the service unit should be created.
+
+```yaml
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource
+Parameter Sets: ByTopologyObjectAndServiceName
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -264,21 +264,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServiceUnit
-Service unit resource object.
-
-```yaml
-Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceUnitResource
-Parameter Sets: InputObject
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -314,8 +299,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

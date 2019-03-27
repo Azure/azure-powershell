@@ -21,7 +21,7 @@ Get-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceTopolo
 ### ByServiceObject
 ```
 Get-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-Name] <String>
- [-Service] <PSServiceResource> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ServiceObject] <PSServiceResource> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByServiceResourceId
@@ -33,7 +33,8 @@ Get-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-Name] <String
 ### ByTopologyObjectAndServiceName
 ```
 Get-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
- [-ServiceTopology] <PSServiceTopologyResource> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ServiceTopologyObject] <PSServiceTopologyResource> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByTopologyResourceAndServiceName
@@ -50,7 +51,7 @@ Get-AzDeploymentManagerServiceUnit [-ResourceId] <String> [-DefaultProfile <IAzu
 
 ### InputObject
 ```
-Get-AzDeploymentManagerServiceUnit [-ServiceUnit] <PSServiceUnitResource>
+Get-AzDeploymentManagerServiceUnit [-ServiceUnitObject] <PSServiceUnitResource>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -92,7 +93,7 @@ The credentials, account, tenant, and subscription used for communication with A
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzContext, AzContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -112,7 +113,7 @@ Aliases:
 Required: True
 Position: 3
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -127,7 +128,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -146,7 +147,22 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Service
+### -ServiceName
+The name of the service the service unit is part of.
+
+```yaml
+Type: System.String
+Parameter Sets: Interactive, ByTopologyObjectAndServiceName, ByTopologyResourceAndServiceName
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceObject
 The service object in which the service unit should be created.
 
 ```yaml
@@ -161,42 +177,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServiceName
-The name of the service the service unit is part of.
-
-```yaml
-Type: System.String
-Parameter Sets: Interactive, ByTopologyObjectAndServiceName, ByTopologyResourceAndServiceName
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ServiceResourceId
 The service resource identifier in which the service unit should be created.
 
 ```yaml
 Type: System.String
 Parameter Sets: ByServiceResourceId
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServiceTopology
-The service topology object in which the service unit should be created.
-
-```yaml
-Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource
-Parameter Sets: ByTopologyObjectAndServiceName
 Aliases:
 
 Required: True
@@ -217,7 +203,22 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceTopologyObject
+The service topology object in which the service unit should be created.
+
+```yaml
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource
+Parameter Sets: ByTopologyObjectAndServiceName
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -236,7 +237,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServiceUnit
+### -ServiceUnitObject
 Service unit resource object.
 
 ```yaml
@@ -252,8 +253,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

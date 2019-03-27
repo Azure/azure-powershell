@@ -10,6 +10,7 @@ schema: 2.0.0
 ## SYNOPSIS
 
 Gets the Artifact source.
+
 ## SYNTAX
 
 ### Interactive (Default)
@@ -26,7 +27,7 @@ Get-AzDeploymentManagerArtifactSource [-ResourceId] <String> [-DefaultProfile <I
 
 ### InputObject
 ```
-Get-AzDeploymentManagerArtifactSource [-ArtifactSource] <PSArtifactSource>
+Get-AzDeploymentManagerArtifactSource [-ArtifactSourceObject] <PSArtifactSource>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -59,7 +60,7 @@ This command gets an artifact source whose name and ResourceGroup match the Name
 
 ## PARAMETERS
 
-### -ArtifactSource
+### -ArtifactSourceObject
 Artifact Source object.
 
 ```yaml
@@ -100,7 +101,7 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -115,7 +116,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -135,8 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
