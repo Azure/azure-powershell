@@ -53,19 +53,19 @@
     # Modules that must be imported into the global environment prior to importing this module
     RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.8.3'; },
         @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.3'; },
-        @{ModuleName = 'Azs.AzureBridge.Admin'; RequiredVersion = '0.2.0'; },
+        @{ModuleName = 'Azs.AzureBridge.Admin'; RequiredVersion = '0.2.1'; },
         @{ModuleName = 'Azs.Backup.Admin'; RequiredVersion = '0.3.0'; },
-        @{ModuleName = 'Azs.Commerce.Admin'; RequiredVersion = '0.2.0'; },
+        @{ModuleName = 'Azs.Commerce.Admin'; RequiredVersion = '0.2.1'; },
         @{ModuleName = 'Azs.Compute.Admin'; RequiredVersion = '0.2.2'; },
         @{ModuleName = 'Azs.Fabric.Admin'; RequiredVersion = '0.4.0'; },
-        @{ModuleName = 'Azs.Gallery.Admin'; RequiredVersion = '0.2.0'; },
-        @{ModuleName = 'Azs.InfrastructureInsights.Admin'; RequiredVersion = '0.3.0'; },
-        @{ModuleName = 'Azs.KeyVault.Admin'; RequiredVersion = '0.2.0'; },
-        @{ModuleName = 'Azs.Network.Admin'; RequiredVersion = '0.2.0'; },
-        @{ModuleName = 'Azs.Storage.Admin'; RequiredVersion = '0.2.1'; },
-        @{ModuleName = 'Azs.Subscriptions'; RequiredVersion = '0.2.0'; },
-        @{ModuleName = 'Azs.Subscriptions.Admin'; RequiredVersion = '0.3.1'; },
-        @{ModuleName = 'Azs.Update.Admin'; RequiredVersion = '0.2.1'; })
+        @{ModuleName = 'Azs.Gallery.Admin'; RequiredVersion = '0.2.1'; },
+        @{ModuleName = 'Azs.InfrastructureInsights.Admin'; RequiredVersion = '0.3.1'; },
+        @{ModuleName = 'Azs.KeyVault.Admin'; RequiredVersion = '0.2.1'; },
+        @{ModuleName = 'Azs.Network.Admin'; RequiredVersion = '0.2.1'; },
+        @{ModuleName = 'Azs.Storage.Admin'; RequiredVersion = '0.2.2'; },
+        @{ModuleName = 'Azs.Subscriptions'; RequiredVersion = '0.2.1'; },
+        @{ModuleName = 'Azs.Subscriptions.Admin'; RequiredVersion = '0.3.2'; },
+        @{ModuleName = 'Azs.Update.Admin'; RequiredVersion = '0.2.2'; })
 
     # Assemblies that must be loaded prior to importing this module
     # RequiredAssemblies = @()
