@@ -96,7 +96,7 @@ CmdletsToExport = 'New-AzFrontDoor',
     'Enable-AzFrontDoorCustomDomainHttps',
     'Disable-AzFrontDoorCustomDomainHttps',
     'Get-AzFrontDoorFrontendEndpoint',
-    'New-AzFrontDoorManagedRuleOverrideObject'
+    'New-AzFrontDoorManagedRuleOverrideObject',
     'New-AzFrontDoorBackendPoolsSettingsObject'
 
 # Variables to export from this module

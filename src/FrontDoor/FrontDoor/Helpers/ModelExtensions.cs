@@ -33,25 +33,19 @@ using SdkBackend = Microsoft.Azure.Management.FrontDoor.Models.Backend;
 using SdkHealthProbeSetting = Microsoft.Azure.Management.FrontDoor.Models.HealthProbeSettingsModel;
 using SdkLoadBalancingSetting = Microsoft.Azure.Management.FrontDoor.Models.LoadBalancingSettingsModel;
 using SdkFrontendEndpoint = Microsoft.Azure.Management.FrontDoor.Models.FrontendEndpoint;
-using SdkFirewallPolicy = Microsoft.Azure.Management.FrontDoor.Models.WebApplicationFirewallPolicy1;
 using SdkRouteConfiguration = Microsoft.Azure.Management.FrontDoor.Models.RouteConfiguration;
 using SdkResourceState = Microsoft.Azure.Management.FrontDoor.Models.FrontDoorResourceState;
 using SdkCacheConfiguration = Microsoft.Azure.Management.FrontDoor.Models.CacheConfiguration;
 using SdkCustomRule = Microsoft.Azure.Management.FrontDoor.Models.CustomRule;
 using SdkCustomRuleList = Microsoft.Azure.Management.FrontDoor.Models.CustomRuleList;
 using SdkFirewallPolicy = Microsoft.Azure.Management.FrontDoor.Models.WebApplicationFirewallPolicy;
-using SdkFrontDoor = Microsoft.Azure.Management.FrontDoor.Models.FrontDoorModel;
-using SdkFrontendEndpoint = Microsoft.Azure.Management.FrontDoor.Models.FrontendEndpoint;
 using SdkFWPolicyLink = Microsoft.Azure.Management.FrontDoor.Models.FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink;
-using SdkHealthProbeSetting = Microsoft.Azure.Management.FrontDoor.Models.HealthProbeSettingsModel;
 using SdkHttpsConfig = Microsoft.Azure.Management.FrontDoor.Models.CustomHttpsConfiguration;
-using SdkLoadBalancingSetting = Microsoft.Azure.Management.FrontDoor.Models.LoadBalancingSettingsModel;
 using SdkManagedRule = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleSet;
 using SdkManagedRuleList = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleSetList;
 using sdkMatchCondition = Microsoft.Azure.Management.FrontDoor.Models.MatchCondition;
 using sdkPolicySetting = Microsoft.Azure.Management.FrontDoor.Models.PolicySettings;
 using SdkRefId = Microsoft.Azure.Management.FrontDoor.Models.SubResource;
-using SdkRoutingRule = Microsoft.Azure.Management.FrontDoor.Models.RoutingRule;
 using SdkValut = Microsoft.Azure.Management.FrontDoor.Models.KeyVaultCertificateSourceParametersVault;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Helpers
