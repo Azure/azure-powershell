@@ -34,7 +34,12 @@ namespace Microsoft.Azure.Commands.Profile
     /// Cmdlet to log into an environment and download the subscriptions
     /// </summary>
     [Cmdlet("Connect", AzureRMConstants.AzureRMPrefix + "Account", DefaultParameterSetName = "UserWithSubscriptionId", SupportsShouldProcess=true)]
-    [Alias("Login-AzAccount", "Login-AzureRmAccount", "Add-" + AzureRMConstants.AzureRMPrefix + "Account")]
+    [Alias("Login-AzAccount",
+        "Login-AzureRmAccount",
+        "Add-" + AzureRMConstants.AzureRMPrefix + "Account",
+        "Add" + AzureRMConstants.AzurePrefix + "AnalysisServicesAccount",
+        "Login-AzureAsAccount",
+        "Login-AzAsAccount")]
     [OutputType(typeof(PSAzureProfile))]
     public class ConnectAzureRmAccountCommand : AzureContextModificationCmdlet, IModuleAssemblyInitializer
     {
@@ -50,7 +55,7 @@ namespace Microsoft.Azure.Commands.Profile
         private IAzureEnvironment _environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
 
         [Parameter(Mandatory = false, HelpMessage = "Name of the environment containing the account to log into")]
-        [Alias("EnvironmentName")]
+        [Alias("EnvironmentName", "RolloutEnvironment")]
         [ValidateNotNullOrEmpty]
         public string Environment { get; set; }
 
