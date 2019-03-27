@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Text.RegularExpressions;
-
 namespace Microsoft.Azure.Commands.FrontDoor.Models
 {
-    public enum PSRuleGroupOverride
+    public class PSAzureManagedRuleOverride
     {
-        SqlInjection,
-        XSS
+        public string RuleId { get; set; }
+
+        public PSEnabledState? EnabledState { get; set; }
+
+        public PSAction? Action { get; set; }
     }
 }
