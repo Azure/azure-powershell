@@ -12,6 +12,28 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+
+#Pre-requisite for rerecording these Tests
+# 1. need to have automation account that has linked Log analytics workspaces
+#    $aa = "JemalOMSAutomation"
+# 2. need to have a resource group in which the automation account exist
+#    eg. $rg = "mms-wcus"
+# 2. need to have windows azure Vms that are already onborded to Update managment
+#     eg.  $azureVMIdsW
+# 3 need to have Linux azure Vms that are already onborded to Update managment
+#     eg. $azureVMIdsL
+# 4. need to have non azure computers that are already onborded to update managment
+#     eg. $nonAzurecomputers
+# 5. need to have a subscription or resource group id in which update managment onboarded Vms exists
+#.....eg $query1Scope = @(
+#       "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mms-wcus"
+#   )
+# 6. have workspace saved search queries in which it has non azure Vms that are onboarded. 
+#    eg.  $nonAzureQuery1 = @{
+ #       FunctionAlias = "SavedSearch1";
+ #      WorkspaceResourceId = "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourcegroups/mms-wcus/providers/microsoft.operationalinsights/workspaces/jemalwcus2"
+#   }
+
 $rg = "mms-wcus"
 $aa = "JemalOMSAutomation"
 $azureVMIdsW = @(
@@ -127,7 +149,7 @@ function Test-GetSoftwareUpdateConfigurationRunWithPrePost
 
 <#
 .SYNOPSIS
-Tests create new automation variable with string value.
+Test-CreateAndGetSoftwareUpdateConfigurationWithDynamicGroups.
 #>
 function Test-CreateAndGetSoftwareUpdateConfigurationWithDynamicGroups
 {
@@ -200,7 +222,7 @@ $query1Scope = @(
 
  <#
 .SYNOPSIS
-Tests create new automation variable with string value.
+Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnly.
 #>
 function Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnly
 {
@@ -257,6 +279,10 @@ $query1Scope = @(
    
  }
 
+  <#
+.SYNOPSIS
+Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnlyWithOutTags
+#>
  function Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnlyWithOutTags
 {
     $name = "DG-suc-04"
@@ -309,6 +335,10 @@ $query1Scope = @(
    
  }
 
+   <#
+.SYNOPSIS
+Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnlyWithOutLocations
+#>
  function Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnlyWithOutLocations
 {
     $name = "DG-suc-04"
@@ -361,6 +391,10 @@ $query1Scope = @(
    
  }
 
+    <#
+.SYNOPSIS
+Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnlyWithOutLocationsAndTags
+#>
  function Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnlyWithOutLocationsAndTags
 {
     $name = "DG-suc-04"
@@ -409,7 +443,7 @@ $query1Scope = @(
 
  <#
 .SYNOPSIS
-Tests create new automation variable with string value.
+Test-CreateAndGetSoftwareUpdateConfigurationWithNonAzureDynamicGroupsOnly
 #>
 function Test-CreateAndGetSoftwareUpdateConfigurationWithNonAzureDynamicGroupsOnly
 {

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 var updateConfig = configuration.UpdateConfiguration;
                 IList<Sdk.AzureQueryProperties> azureQueries = null;
-                if (updateConfig.Targets != null && updateConfig.Targets.AzureQueries != null && updateConfig.Targets.AzureQueries.Count > 0)
+                if (updateConfig != null && updateConfig.Targets != null && updateConfig.Targets.AzureQueries != null)
                 {
                     azureQueries = new List<Sdk.AzureQueryProperties>();
 
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     {
 
                         var tags = new Dictionary<string, IList<string>>();
-                        if (query.TagSettings != null && query.TagSettings.Tags != null && query.TagSettings.Tags.Count > 0)
+                        if (query.TagSettings != null && query.TagSettings.Tags != null)
                         {
                             foreach (var tag in query.TagSettings.Tags)
                             {
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 }
 
                 IList<Sdk.NonAzureQueryProperties> nonAzureQueries = null;
-                if (updateConfig.Targets != null && updateConfig.Targets.NonAzureQueries != null && updateConfig.Targets.NonAzureQueries.Count > 0)
+                if (updateConfig != null && updateConfig.Targets != null && updateConfig.Targets.NonAzureQueries != null)
                 {
                     nonAzureQueries = new List<Sdk.NonAzureQueryProperties>();
                     foreach (var query in updateConfig.Targets.NonAzureQueries)
