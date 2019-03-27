@@ -19,6 +19,21 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.2
+* New cmdlets for SQR API (Scheduled Query Rule)  
+    - New-AzScheduledQueryRuleAlertingAction
+	- New-AzScheduledQueryRuleAznsActionGroup
+	- New-AzScheduledQueryRuleLogMetricTrigger
+	- New-AzScheduledQueryRuleSchedule
+	- New-AzScheduledQueryRuleSource
+	- New-AzScheduledQueryRuleTriggerCondition
+	- New-AzScheduledQueryRule
+	- Get-AzScheduledQueryRule
+	- Set-AzScheduledQueryRule
+	- Update-AzScheduledQueryRule
+	- Remove-AzScheduledQueryRule
+	- [More](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules) information about SQR API
+
 ## Version 1.0.1
 * Update help for Get-AzMetric
 
