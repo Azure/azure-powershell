@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections;
 using System.Linq;
 using System.Management.Automation;
@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "The Name of Sku")]
         public string Sku { get; set; }
 
+        [CmdletParameterBreakingChange("Managed", "Parameter is being deprecated.  Please use -Sku 'Aligned' instead.")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = ManagedParamterSetName,
