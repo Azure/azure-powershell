@@ -45,7 +45,7 @@ FrontendEndpointIds          : {/subscriptions/{subid}/resourceGroups/{rgname}/p
 AcceptedProtocols            : {Http, Https}
 PatternsToMatch              : {/*}
 HealthProbeSettings          :
-RouteConfiguration  : Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingConfiguration
+RouteConfiguration           : Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingConfiguration
 EnabledState                 : Enabled
 ResourceState                :
 Id                           :
