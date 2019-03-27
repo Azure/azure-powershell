@@ -75,14 +75,14 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzPrivateDnsZone', 'Remove-AzPrivateDnsZone', 
-               'Update-AzPrivateDnsZone', 'New-AzPrivateDnsZone', 
+               'Set-AzPrivateDnsZone', 'New-AzPrivateDnsZone', 
                'Get-AzPrivateDnsRecordSet', 'Remove-AzPrivateDnsRecordSet', 
-               'Update-AzPrivateDnsRecordSet', 'New-AzPrivateDnsRecordSet', 
+               'Set-AzPrivateDnsRecordSet', 'New-AzPrivateDnsRecordSet', 
                'Add-AzPrivateDnsRecordConfig', 'Remove-AzPrivateDnsRecordConfig', 
                'New-AzPrivateDnsRecordConfig', 
                'Get-AzPrivateDnsVirtualNetworkLink', 
                'Remove-AzPrivateDnsVirtualNetworkLink', 
-               'Update-AzPrivateDnsVirtualNetworkLink', 
+               'Set-AzPrivateDnsVirtualNetworkLink', 
                'New-AzPrivateDnsVirtualNetworkLink'
 
 # Variables to export from this module
