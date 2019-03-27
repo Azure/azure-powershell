@@ -1,6 +1,8 @@
 steps:
-- task: DownloadPipelineArtifact@1
+- task: DownloadBuildArtifacts@0
   displayName: 'Download build'
   inputs:
+    buildType: 'current'
+    downloadType: 'single'
     artifactName: build
-    targetPath: artifacts
+    downloadPath: artifacts
