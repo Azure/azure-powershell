@@ -1,0 +1,2 @@
+"Directory","Assembly Name","Assembly Version","Referencing Assembly","Severity","ProblemId","Description","Remediation"
+"Az.DeploymentManager","Microsoft.PowerShell.CoreCLR.Eventing","6.1.0.0","System.Management.Automation","0","3000","Missing assembly Microsoft.PowerShell.CoreCLR.Eventing referenced from System.Management.Automation","Ensure that the assembly is included in the Wix file or directory"
