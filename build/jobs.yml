@@ -126,21 +126,21 @@ jobs:
   steps:
   - template: download-build-steps.yml
 
-  - task: DownloadPipelineArtifact@0
+  - task: DownloadPipelineArtifact@1
     displayName: 'Download help'
     inputs:
       artifactName: help
       targetPath: artifacts
     condition: succeededOrFailed()
 
-  - task: DownloadPipelineArtifact@0
+  - task: DownloadPipelineArtifact@1
     displayName: 'Download static-analysis'
     inputs:
       artifactName: 'static-analysis'
       targetPath: artifacts/StaticAnalysisResults
     condition: succeededOrFailed()
 
-  - task: DownloadPipelineArtifact@0
+  - task: DownloadPipelineArtifact@1
     displayName: 'Download test'
     inputs:
       artifactName: test
