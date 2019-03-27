@@ -48,12 +48,5 @@ namespace Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorEndpointCustomDomainHTTPS-FrontDoor");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestFrontDoorCrudRedirect()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorCrudRedirect");
-        }
     }
 }
