@@ -780,6 +780,11 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory
             return GraphClient.Applications.Get(applicationObjectId.ToString()).ToPSADApplication();
         }
 
+        public string GetServicePrincipalsIdByAppId(Guid applicationId)
+        {
+            return GraphClient.Applications.GetServicePrincipalsIdByAppId(applicationId.ToString())?.Value;
+        }
+
         public IEnumerable<PSADApplication> GetApplicationWithFilters(Rest.Azure.OData.ODataQuery<Application> odataQueryFilter, ulong first = ulong.MaxValue, ulong skip = 0)
         {
             return new GenericPageEnumerable<Application>(
