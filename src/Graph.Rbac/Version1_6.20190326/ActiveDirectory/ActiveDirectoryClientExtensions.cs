@@ -34,9 +34,8 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory
 
         public static PSADObject AssignObjectId(PSADObject adObj, string objectId)
         {
-            Guid objectIdGuid;
 
-            if (Guid.TryParse(objectId, out objectIdGuid))
+            if (Guid.TryParse(objectId, out Guid objectIdGuid))
             {
                 adObj.Id = objectIdGuid;
             }
@@ -54,33 +53,19 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory
 
             if (obj is User user)
             {
-                var adUser = new PSADUser()
-                {
-                    DisplayName = user.DisplayName,
-                    UserPrincipalName = user.UserPrincipalName
-                };
-
-                return AssignObjectId(adUser, obj.ObjectId);
+                return ToPSADUser(user);
             }
             else if (obj is ADGroup group)
             {
-                var adGroup = new PSADGroup()
-                {
-                    DisplayName = group.DisplayName,
-                    SecurityEnabled = group.SecurityEnabled,
-                    MailNickname = group.Mail
-                };
-                return AssignObjectId(adGroup, obj.ObjectId);
+                return ToPSADGroup(group);
             }
             else if (obj is ServicePrincipal servicePrincipal)
             {
-                var adSp = new PSADServicePrincipal()
-                {
-                    DisplayName = servicePrincipal.DisplayName,
-                    ServicePrincipalNames = servicePrincipal.ServicePrincipalNames.ToArray()
-                };
-
-                return AssignObjectId(adSp, obj.ObjectId);
+                return ToPSADServicePrincipal(servicePrincipal);
+            }
+            else if (obj is Application application)
+            {
+                return ToPSADApplication(application);
             }
 
             throw new NotSupportedException($"{obj.GetType()}");
@@ -137,7 +122,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory
             {
                 return new PSADApplication()
                 {
-                    ObjectId = Guid.Parse(application.ObjectId),
+                    Id = Guid.Parse(application.ObjectId),
                     DisplayName = application.DisplayName,
                     ApplicationId = Guid.Parse(application.AppId),
                     IdentifierUris = application.IdentifierUris,

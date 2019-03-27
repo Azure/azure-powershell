@@ -17,11 +17,8 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory
 {
-    public class PSADApplication
+    public class PSADApplication : PSADObject
     {
-        public string DisplayName { get; set; }
-
-        public Guid ObjectId { get; set; }
 
         public IList<string> IdentifierUris { get; set; }
 

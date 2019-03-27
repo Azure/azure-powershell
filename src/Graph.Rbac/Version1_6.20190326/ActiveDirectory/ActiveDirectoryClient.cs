@@ -590,7 +590,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory
             {
                 throw new InvalidOperationException(string.Format(ProjectResources.ApplicationWithAppIdDoesntExist, applicationId));
             }
-            return app.ObjectId;
+            return app.Id;
         }
 
         public Guid GetAppObjectIdFromDisplayName(string displayName)
@@ -607,7 +607,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory
                 throw new InvalidOperationException(string.Format(ProjectResources.MultipleApplicationsWithDisplayNameFound, displayName));
             }
 
-            return app.FirstOrDefault().ObjectId;
+            return app.FirstOrDefault().Id;
         }
 
         public Guid GetUserObjectIdFromDisplayName(string displayName)
