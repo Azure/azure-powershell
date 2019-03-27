@@ -19,8 +19,7 @@
 -->
 ## Upcoming Release
 * Removed Add-AzAnalysisServicesAccount cmdlet
-    - Removed Add-AzAnalysisServicesAccount cmdlet and associated classes and logic.
-    - Users will now use Connect-AzAccount to login, and credentials and authentication for Analysis Services will be retrieved from the Azure Session in Powershell.
+* Added aliases to Connect-AzAccount so that it can be used in place of Add-AzAnalysisServicesAccount, preventing any breaking changes.
 
 ## Version 1.0.2
 * Deprecated AddAzureASAccount cmdlet
