@@ -89,6 +89,12 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "Enabled state of the Front Door load balancer. Default value is Enabled")]
         public PSEnabledState EnabledState { get; set; }
 
+        /// <summary>
+        /// Settings that apply to all backend pools.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Settings that apply to all backend pools.")]
+        public PSBackendPoolsSettings BackendPoolsSettings { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var existingProfile = FrontDoorManagementClient.FrontDoors.ListByResourceGroup(ResourceGroupName)
@@ -112,7 +118,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                     healthProbeSettings: HealthProbeSetting?.Select(x => x.ToSdkHealthProbeSetting()).ToList(),
                     backendPools: BackendPool?.Select(x => x.ToSdkBackendPool()).ToList(),
                     frontendEndpoints: FrontendEndpoint?.Select(x => x.ToSdkFrontendEndpoints()).ToList(),
-                    enabledState: !this.IsParameterBound(c => c.EnabledState)? "Enabled" : EnabledState.ToString()
+                    enabledState: !this.IsParameterBound(c => c.EnabledState)? "Enabled" : EnabledState.ToString(),
+                    backendPoolsSettings : !this.IsParameterBound(c => c.BackendPoolsSettings) ? null : BackendPoolsSettings.ToSdkBackendPoolsSettings()
                     );
             updateParameters.ToPSFrontDoor().ValidateFrontDoor(ResourceGroupName, this.DefaultContext.Subscription.Id);
             if (ShouldProcess(Resources.FrontDoorTarget, string.Format(Resources.CreateFrontDoor, Name)))
