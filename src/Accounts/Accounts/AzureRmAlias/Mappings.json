@@ -958,7 +958,8 @@
     "Remove-AzFrontDoorContent": "Remove-AzureRmFrontDoorContent",
     "Enable-AzFrontDoorCustomDomainHttps": "Enable-AzureRmFrontDoorCustomDomainHttps",
     "Disable-AzFrontDoorCustomDomainHttps": "Disable-AzureRmFrontDoorCustomDomainHttps",
-    "Get-AzFrontDoorFrontendEndpoint": "Get-AzureRmFrontDoorFrontendEndpoint"
+    "Get-AzFrontDoorFrontendEndpoint": "Get-AzureRmFrontDoorFrontendEndpoint",
+    "New-AzFrontDoorBackendPoolsSettingsObject": "New-AzureRmFrontDoorBackendPoolsSettingsObject"
   },
   "Az.HDInsight": {
     "Get-AzHDInsightJob": "Get-AzureRmHDInsightJob",
