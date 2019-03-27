@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.10.4
 * Fix cmdlets failure when an initiative definition in subscription does not have category set.
 
 ## Version 0.10.3
