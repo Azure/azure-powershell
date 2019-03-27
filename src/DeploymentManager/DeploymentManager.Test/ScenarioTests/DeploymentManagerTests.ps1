@@ -371,52 +371,49 @@ function Test-Rollout
 	$rolloutName = $resourceGroupName + "Rollout"
 	$failedRolloutName = $resourceGroupName + "InvalidRollout"
 
-	New-AzResourceGroup -Name $rolloutName -Location $location
-	New-AzResourceGroup -Name $failedRolloutName -Location $location
-
 	Replace-RolloutPlaceholders $rolloutName $userAssignedIdentity $serviceTopology.Id $artifactSource.Id $step.Id $serviceUnit.Id $global:createRolloutTemplate
 
-	$deployment = New-AzResourceGroupDeployment -Name $rolloutName -ResourceGroupName $rolloutName -TemplateFile $global:createRolloutTemplate
+	$deployment = New-AzResourceGroupDeployment -Name $rolloutName -ResourceGroupName $resourceGroupName -TemplateFile $global:createRolloutTemplate
 
-	$getResponse = Get-AzDeploymentManagerRollout -ResourceGroupName $rolloutName -Name $rolloutName
-	Validate-Rollout $getResponse $rolloutName $location $rolloutName @('Running') $serviceTopology $artifactSource
+	$getResponse = Get-AzDeploymentManagerRollout -ResourceGroupName $resourceGroupName -Name $rolloutName
+	Validate-Rollout $getResponse $resourceGroupName $location $rolloutName @('Running') $serviceTopology $artifactSource
 
 	# Test Stop-Rollout
 	$canceledRollout = Stop-AzDeploymentManagerRollout -InputObject $getResponse -Force
-	Validate-Rollout $canceledRollout $rolloutName $location $rolloutName @('Canceling', 'Canceled') $serviceTopology $artifactSource
+	Validate-Rollout $canceledRollout $resourceGroupName $location $rolloutName @('Canceling', 'Canceled') $serviceTopology $artifactSource
 
 	# Wait for rollout to finish
 	while ($canceledRollout.Status -eq "Canceling")
 	{
-		Start-TestSleep 120000
-		$canceledRollout = Get-AzDeploymentManagerRollout -ResourceGroupName $rolloutName -Name $rolloutName
+		Start-TestSleep 120000 
+		$canceledRollout = Get-AzDeploymentManagerRollout -ResourceGroupName $resourceGroupName -Name $rolloutName
 	}
 
 	Assert-AreEqual "Canceled" $canceledRollout.Status
 
 	Replace-RolloutPlaceholders $failedRolloutName $userAssignedIdentity $serviceTopology.Id $artifactSource.Id $step.Id $invalidServiceUnit.Id $global:failureCreateRolloutTemplate
 
-	$failedDeployment = New-AzResourceGroupDeployment -Name $failedRolloutName -ResourceGroupName $failedRolloutName -TemplateFile $global:failureCreateRolloutTemplate
+	$failedDeployment = New-AzResourceGroupDeployment -Name $failedRolloutName -ResourceGroupName $resourceGroupName -TemplateFile $global:failureCreateRolloutTemplate
 
 	$ErrorActionPreference = "SilentlyContinue"
 	$Error.Clear()
-	$failedRollout = Get-AzDeploymentManagerRollout -ResourceGroupName $failedRolloutName -Name $failedRolloutName 2>$null
+	$failedRollout = Get-AzDeploymentManagerRollout -ResourceGroupName $resourceGroupName -Name $failedRolloutName 2>$null
 
 	# Wait for the invalid rollout to fail
 	while ($failedRollout.Status -eq "Running")
 	{
-		Start-TestSleep 60000
-		$failedRollout = Get-AzDeploymentManagerRollout -ResourceGroupName $failedRolloutName -Name $failedRolloutName 2>$null
+		Start-TestSleep 60000 
+		$failedRollout = Get-AzDeploymentManagerRollout -ResourceGroupName $resourceGroupName -Name $failedRolloutName 2>$null
 	}
 
 	$Error.Clear()
 	Assert-AreEqual "Failed" $failedRollout.Status
 
-	$restartRollout = Restart-AzDeploymentManagerRollout -ResourceGroupName $failedRolloutName -Name $failedRolloutName -SkipSucceeded
-	Validate-Rollout $restartRollout $failedRolloutName $location $failedRolloutName @('Running') $serviceTopology $artifactSource $true 1
+	$restartRollout = Restart-AzDeploymentManagerRollout -ResourceGroupName $resourceGroupName -Name $failedRolloutName -SkipSucceeded
+	Validate-Rollout $restartRollout $resourceGroupName $location $failedRolloutName @('Running') $serviceTopology $artifactSource $true 1
 
-	Remove-AzDeploymentManagerRollout -ResourceGroupName $rolloutName -Name $rolloutName
-	$getResponse = Get-AzDeploymentManagerRollout -ResourceGroupName $rolloutName -Name $rolloutName
+	Remove-AzDeploymentManagerRollout -ResourceGroupName $resourceGroupName -Name $rolloutName
+	$getResponse = Get-AzDeploymentManagerRollout -ResourceGroupName $resourceGroupName  -Name $rolloutName
 	Assert-Null $getResponse
 }
 
