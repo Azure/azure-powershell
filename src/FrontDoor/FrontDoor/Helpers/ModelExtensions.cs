@@ -15,11 +15,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Security.Permissions;
+using System.Management.Automation;
+using System.Text;
 using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
+using sdkAzManagedRuleGroupOverride = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleGroupOverride;
+using sdkAzManagedRuleOverride = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleOverride;
 using SdkFrontDoor = Microsoft.Azure.Management.FrontDoor.Models.FrontDoorModel;
 using SdkRoutingRule = Microsoft.Azure.Management.FrontDoor.Models.RoutingRule;
 using SdkForwardingConfiguration = Microsoft.Azure.Management.FrontDoor.Models.ForwardingConfiguration;
@@ -34,19 +37,22 @@ using SdkFirewallPolicy = Microsoft.Azure.Management.FrontDoor.Models.WebApplica
 using SdkRouteConfiguration = Microsoft.Azure.Management.FrontDoor.Models.RouteConfiguration;
 using SdkResourceState = Microsoft.Azure.Management.FrontDoor.Models.FrontDoorResourceState;
 using SdkCacheConfiguration = Microsoft.Azure.Management.FrontDoor.Models.CacheConfiguration;
-using SdkRefId = Microsoft.Azure.Management.FrontDoor.Models.SubResource;
-using SdkFWPolicyLink = Microsoft.Azure.Management.FrontDoor.Models.FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink;
-using SdkHttpsConfig = Microsoft.Azure.Management.FrontDoor.Models.CustomHttpsConfiguration;
-using SdkValut = Microsoft.Azure.Management.FrontDoor.Models.KeyVaultCertificateSourceParametersVault;
 using SdkCustomRule = Microsoft.Azure.Management.FrontDoor.Models.CustomRule;
-using SdkCustomRules = Microsoft.Azure.Management.FrontDoor.Models.CustomRules;
+using SdkCustomRuleList = Microsoft.Azure.Management.FrontDoor.Models.CustomRuleList;
+using SdkFirewallPolicy = Microsoft.Azure.Management.FrontDoor.Models.WebApplicationFirewallPolicy;
+using SdkFrontDoor = Microsoft.Azure.Management.FrontDoor.Models.FrontDoorModel;
+using SdkFrontendEndpoint = Microsoft.Azure.Management.FrontDoor.Models.FrontendEndpoint;
+using SdkFWPolicyLink = Microsoft.Azure.Management.FrontDoor.Models.FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink;
+using SdkHealthProbeSetting = Microsoft.Azure.Management.FrontDoor.Models.HealthProbeSettingsModel;
+using SdkHttpsConfig = Microsoft.Azure.Management.FrontDoor.Models.CustomHttpsConfiguration;
+using SdkLoadBalancingSetting = Microsoft.Azure.Management.FrontDoor.Models.LoadBalancingSettingsModel;
 using SdkManagedRule = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleSet;
-using SdkManagedRules = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleSets;
-using SdkAzureManagedRule = Microsoft.Azure.Management.FrontDoor.Models.AzureManagedRuleSet;
-using sdkAzRuleGroupOverride = Microsoft.Azure.Management.FrontDoor.Models.AzureManagedOverrideRuleGroup;
-using sdkMatchCondition = Microsoft.Azure.Management.FrontDoor.Models.MatchCondition1;
+using SdkManagedRuleList = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleSetList;
+using sdkMatchCondition = Microsoft.Azure.Management.FrontDoor.Models.MatchCondition;
 using sdkPolicySetting = Microsoft.Azure.Management.FrontDoor.Models.PolicySettings;
-using System.Management.Automation;
+using SdkRefId = Microsoft.Azure.Management.FrontDoor.Models.SubResource;
+using SdkRoutingRule = Microsoft.Azure.Management.FrontDoor.Models.RoutingRule;
+using SdkValut = Microsoft.Azure.Management.FrontDoor.Models.KeyVaultCertificateSourceParametersVault;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Helpers
 {
@@ -351,32 +357,37 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 RateLimitThreshold = sdkRule.RateLimitThreshold,
                 Name = sdkRule.Name,
                 Action = sdkRule.Action == null ? (PSAction?)null : (PSAction)Enum.Parse(typeof(PSAction), sdkRule.Action),
-                Etag = sdkRule.Etag,
                 RuleType = sdkRule.RuleType == null ? (PSCustomRuleType?)null : (PSCustomRuleType)Enum.Parse(typeof(PSCustomRuleType), sdkRule.RuleType),
                 Priority = sdkRule.Priority,
-                Transforms = sdkRule.Transforms?.ToList(),
                 MatchConditions = sdkRule.MatchConditions?.Select(x => x.ToPSMatchCondition()).ToList()
             };
         }
 
-        public static PSAzureRuleGroupOverride ToPSAzRuleGroupOverride(this sdkAzRuleGroupOverride sdkAzOverride)
+        public static PSAzureRuleGroupOverride ToPSAzRuleGroupOverride(this sdkAzManagedRuleGroupOverride sdkAzOverride)
         {
-            return new PSAzureRuleGroupOverride
+            return new PSAzureRuleGroupOverride()
             {
-                RuleGroupOverride = (PSRuleGroupOverride)Enum.Parse(typeof(PSRuleGroupOverride), sdkAzOverride.RuleGroupOverride),
-                Action = (PSAction)Enum.Parse(typeof(PSAction), sdkAzOverride.Action),
+                RuleGroupName = sdkAzOverride.RuleGroupName,
+                ManagedRuleOverrides = sdkAzOverride.Rules?.Select(ruleOverride =>
+                {
+                    return new PSAzureManagedRuleOverride()
+                    {
+                        Action = ruleOverride.Action == null ? (PSAction?)null : (PSAction)Enum.Parse(typeof(PSAction), ruleOverride.Action),
+                        EnabledState = ruleOverride.EnabledState == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), ruleOverride.EnabledState),
+                        RuleId = ruleOverride.RuleId
+                    };
+                }).ToList()
             };
         }
 
 
         public static PSManagedRule ToPSManagedRule(this SdkManagedRule sdkRule)
         {
-            sdkRule.GetType().ToString();
-            var sdkAzRule = (SdkAzureManagedRule)sdkRule;
             return new PSAzureManagedRule
             {
-                Priority = sdkAzRule.Priority,
-                RuleGroupOverrides = sdkAzRule.RuleGroupOverrides?.Select(x => x.ToPSAzRuleGroupOverride()).ToList()
+                RuleSetType = sdkRule.RuleSetType,
+                RuleSetVersion = sdkRule.RuleSetVersion,
+                RuleGroupOverrides = sdkRule.RuleGroupOverrides?.Select(ruleGroupOverride => ruleGroupOverride.ToPSAzRuleGroupOverride()).ToList()
             };
         }
 
@@ -390,9 +401,12 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 PolicyEnabledState = sdkPolicy.PolicySettings == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkPolicy.PolicySettings.EnabledState),
                 PolicyMode = sdkPolicy.PolicySettings == null ? (PSMode?)null : (PSMode)Enum.Parse(typeof(PSMode), sdkPolicy.PolicySettings.Mode),
                 CustomRules = sdkPolicy.CustomRules?.Rules?.Select(x => x.ToPSCustomRule()).ToList(),
-                ManagedRules = sdkPolicy.ManagedRules?.RuleSets?.Select(x => x.ToPSManagedRule()).ToList(),
+                ManagedRules = sdkPolicy.ManagedRules?.ManagedRuleSets?.Select(x => x.ToPSManagedRule()).ToList(),
                 Etag = sdkPolicy.Etag,
-                ProvisioningState = sdkPolicy.ProvisioningState
+                ProvisioningState = sdkPolicy.ProvisioningState,
+                CustomBlockResponseBody = sdkPolicy.PolicySettings?.CustomBlockResponseBody == null ? null : Encoding.UTF8.GetString(Convert.FromBase64String(sdkPolicy.PolicySettings?.CustomBlockResponseBody)),
+                CustomBlockResponseStatusCode = (ushort?)sdkPolicy.PolicySettings?.CustomBlockResponseStatusCode,
+                RedirectUrl = sdkPolicy.PolicySettings?.RedirectUrl
             };
         }
 
@@ -408,21 +422,30 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
             };
         }
 
-        public static sdkAzRuleGroupOverride ToSdkAzRuleGroupOverride(this PSAzureRuleGroupOverride psAzOverride)
+        public static sdkAzManagedRuleGroupOverride ToSdkAzRuleGroupOverride(this PSAzureRuleGroupOverride psAzOverride)
         {
-            return new sdkAzRuleGroupOverride
+            return new sdkAzManagedRuleGroupOverride()
             {
-                RuleGroupOverride = psAzOverride.RuleGroupOverride.ToString(),
-                Action = psAzOverride.Action.ToString()
+                RuleGroupName = psAzOverride.RuleGroupName,
+                Rules = psAzOverride.ManagedRuleOverrides?.Select(ruleOverride =>
+                {
+                    return new sdkAzManagedRuleOverride()
+                    {
+                        Action = ruleOverride.Action.HasValue ? ruleOverride.Action.Value.ToString() : null,
+                        EnabledState = ruleOverride.EnabledState.HasValue ? ruleOverride.EnabledState.Value.ToString() : null,
+                        RuleId = ruleOverride.RuleId.ToString()
+                    };
+                }).ToList()
             };
         }
 
         public static SdkManagedRule ToSdkAzManagedRule(this PSManagedRule psRule)
         {
             var psAzRule = (PSAzureManagedRule)psRule;
-            return new SdkAzureManagedRule
+            return new SdkManagedRule
             {
-                Priority = psAzRule.Priority,
+                RuleSetType = psAzRule.RuleSetType,
+                RuleSetVersion = psAzRule.RuleSetVersion,
                 RuleGroupOverrides = psAzRule.RuleGroupOverrides?.Select(x => x.ToSdkAzRuleGroupOverride()).ToList()
             };
         }
@@ -449,8 +472,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 Action = psRule.Action.ToString(),
                 MatchConditions = psRule.MatchConditions?.Select(x => x.ToSdkMatchCondition()).ToList(),
                 Priority = psRule.Priority,
-                RuleType = psRule.RuleType.ToString(),
-                Transforms = psRule.Transforms
+                RuleType = psRule.RuleType.ToString()
             };
         }
 
@@ -459,18 +481,19 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
             return new SdkFirewallPolicy
             {
                 Location = "global",
-                PolicySettings = new sdkPolicySetting
+                PolicySettings = new sdkPolicySetting()
                 {
                     EnabledState = psPolicy.PolicyEnabledState.ToString(),
                     Mode = psPolicy.PolicyMode.ToString()
                 },
-                CustomRules = new SdkCustomRules {
-                   Rules =  psPolicy.CustomRules?.Select(x => x.ToSdkCustomRule()).ToList()
-                },
-                ManagedRules = new SdkManagedRules
+                CustomRules = new SdkCustomRuleList()
                 {
-                    RuleSets = psPolicy.ManagedRules?.Select(x => x.ToSdkAzManagedRule()).ToList()
+                    Rules =  psPolicy.CustomRules?.Select(x => x.ToSdkCustomRule()).ToList()
                 },
+                ManagedRules = new SdkManagedRuleList()
+                {
+                    ManagedRuleSets = psPolicy.ManagedRules?.Select(x => x.ToSdkAzManagedRule()).ToList()
+                }
             };
         }
 
