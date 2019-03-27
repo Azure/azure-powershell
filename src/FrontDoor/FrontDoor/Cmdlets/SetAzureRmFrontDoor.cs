@@ -106,12 +106,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "Operational status of the Front Door load balancer. Default value is Enabled")]
         public PSEnabledState EnabledState { get; set; }
 
-        /// <summary>
-        /// Settings that apply to all backend pools.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Settings that apply to all backend pools.")]
-        public PSBackendPoolsSettings BackendPoolsSettings { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ObjectParameterSet)
@@ -184,11 +178,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             if (this.IsParameterBound(c => c.EnabledState))
             {
                 updateParameters.EnabledState = EnabledState;
-            }
-
-            if (this.IsParameterBound(c => c.BackendPoolsSettings))
-            {
-                updateParameters.BackendPoolsSettings = BackendPoolsSettings;
             }
 
             updateParameters.ValidateFrontDoor(ResourceGroupName, this.DefaultContext.Subscription.Id);
