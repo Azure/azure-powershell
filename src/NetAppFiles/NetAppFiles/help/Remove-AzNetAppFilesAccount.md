@@ -14,7 +14,7 @@ Deletes an Azure NetApp Files (ANF) account.
 
 ### ByFieldsParameterSet (Default)
 ```
-Remove-AzNetAppFilesAccount -ResourceGroupName <String> -Name <String> | -AccountName <String> [-PassThru]
+Remove-AzNetAppFilesAccount -ResourceGroupName <String> -Name <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Remove-AzNetAppFilesAccount -ResourceId <String> [-PassThru] [-DefaultProfile <I
 
 ### ByObjectParameterSet
 ```
-Remove-AzNetAppFilesAccount [-InputObject <PSNetAppFilesAccount>] [-PassThru]
+Remove-AzNetAppFilesAccount -InputObject <PSNetAppFilesAccount> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -67,7 +67,7 @@ Type: PSNetAppFilesAccount
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

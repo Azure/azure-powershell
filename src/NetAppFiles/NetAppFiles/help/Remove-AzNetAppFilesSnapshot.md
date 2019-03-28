@@ -15,7 +15,7 @@ Deletes an Azure NetApp Files (ANF) snapshot.
 ### ByFieldsParameterSet (Default)
 ```
 Remove-AzNetAppFilesSnapshot -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- -VolumeName <String> -Name <String> | -SnapshotName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ -VolumeName <String> -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,13 +27,13 @@ Remove-AzNetAppFilesSnapshot -ResourceId <String> [-PassThru] [-DefaultProfile <
 
 ### ByParentObjectParameterSet
 ```
-Remove-AzNetAppFilesSnapshot [-VolumeInputObject <PSNetAppFilesVolume>] [-PassThru]
+Remove-AzNetAppFilesSnapshot -VolumeObject <PSNetAppFilesVolume> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Remove-AzNetAppFilesSnapshot [-SnapshotInputObject <PSNetAppFilesSnapshot>] [-PassThru]
+Remove-AzNetAppFilesSnapshot -InputObject <PSNetAppFilesSnapshot> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -78,6 +78,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The snapshot object to remove
+
+```yaml
+Type: PSNetAppFilesSnapshot
+Parameter Sets: ByObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -156,36 +171,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SnapshotInputObject
-The snapshot object to remove
-
-```yaml
-Type: PSNetAppFilesSnapshot
-Parameter Sets: ByObjectParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -VolumeInputObject
-The volume object containing the snapshot to remove
-
-```yaml
-Type: PSNetAppFilesVolume
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -VolumeName
 The name of the ANF volume
 
@@ -198,6 +183,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VolumeObject
+The volume object containing the snapshot to remove
+
+```yaml
+Type: PSNetAppFilesVolume
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -246,7 +246,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesSnapshot
+### System.Boolean
 
 ## NOTES
 

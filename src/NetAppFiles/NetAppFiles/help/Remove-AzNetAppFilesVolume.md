@@ -14,13 +14,13 @@ Deletes an Azure NetApp Files (ANF) volume.
 
 ### ByFieldsParameterSet (Default)
 ```
-Remove-AzNetAppFilesVolume -ResourceGroupName <String> -AccountName <String> -PoolName <String> -Name <String> | -VolumeName <String>
+Remove-AzNetAppFilesVolume -ResourceGroupName <String> -AccountName <String> -PoolName <String> -Name <String>
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Remove-AzNetAppFilesVolume -Name <String> | -VolumeName <String> [-PoolInputObject <PSNetAppFilesPool>] [-PassThru]
+Remove-AzNetAppFilesVolume -Name <String> -PoolObject <PSNetAppFilesPool> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Remove-AzNetAppFilesVolume -ResourceId <String> [-PassThru] [-DefaultProfile <IA
 
 ### ByObjectParameterSet
 ```
-Remove-AzNetAppFilesVolume [-VolumeInputObject <PSNetAppFilesVolume>] [-PassThru]
+Remove-AzNetAppFilesVolume -InputObject <PSNetAppFilesVolume> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -80,6 +80,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The volume object to remove
+
+```yaml
+Type: PSNetAppFilesVolume
+Parameter Sets: ByObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the ANF volume
 
@@ -110,21 +125,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PoolInputObject
-The pool object containing the volume to remove
-
-```yaml
-Type: PSNetAppFilesPool
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -PoolName
 The name of the ANF pool
 
@@ -137,6 +137,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PoolObject
+The pool object containing the volume to remove
+
+```yaml
+Type: PSNetAppFilesPool
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -167,21 +182,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -VolumeInputObject
-The volume object to remove
-
-```yaml
-Type: PSNetAppFilesVolume
-Parameter Sets: ByObjectParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -230,7 +230,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
+### System.Boolean
 
 ## NOTES
 

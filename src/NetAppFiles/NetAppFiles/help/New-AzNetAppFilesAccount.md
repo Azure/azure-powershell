@@ -13,7 +13,7 @@ Creates a new Azure NetApp Files (ANF) account.
 ## SYNTAX
 
 ```
-New-AzNetAppFilesAccount -ResourceGroupName <String> -Location <String> [-Tag <Hashtable>] -Name <String> | -AccountName <String>
+New-AzNetAppFilesAccount -ResourceGroupName <String> -Location <String> [-Tag <Hashtable>] -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

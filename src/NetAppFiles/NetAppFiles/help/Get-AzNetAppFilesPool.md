@@ -14,7 +14,7 @@ Gets details of an Azure NetApp Files (ANF) pool.
 
 ### ByFieldsParameterSet (Default)
 ```
-Get-AzNetAppFilesPool -ResourceGroupName <String> -AccountName <String> [-Name <String> | -PoolName <String>]
+Get-AzNetAppFilesPool -ResourceGroupName <String> -AccountName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Get-AzNetAppFilesPool -ResourceId <String> [-DefaultProfile <IAzureContextContai
 
 ### ByObjectParameterSet
 ```
-Get-AzNetAppFilesPool [-AccountInputObject <PSNetAppFilesAccount>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzNetAppFilesPool -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -55,21 +55,6 @@ This command gets the account named MyAnfPool from the account "MyAnfAccount".
 
 ## PARAMETERS
 
-### -AccountInputObject
-The account object containing the pool to return
-
-```yaml
-Type: PSNetAppFilesAccount
-Parameter Sets: ByObjectParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -AccountName
 The name of the ANF account
 
@@ -82,6 +67,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AccountObject
+The account object containing the pool to return
+
+```yaml
+Type: PSNetAppFilesAccount
+Parameter Sets: ByObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
