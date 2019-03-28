@@ -53,7 +53,7 @@ This command gets an artifact source named ContosoArtifactSource in ContosoResou
 
 ### Example 3: Get an artifact source using an object returned by New-AzDeploymentManagerArtifactSource
 ```powershell
-PS C:\> Get-AzDeploymentManagerArtifactSource -ArtifactSource $artifactSourceObject
+PS C:\> Get-AzDeploymentManagerArtifactSource -InputObject $artifactSourceObject
 ```
 
 This command gets an artifact source whose name and ResourceGroup match the Name and ResourceGroupName properties of the $artifactSourceObject, respectively.

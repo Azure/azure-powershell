@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ValueFromPipeline = true,
             HelpMessage = "Service unit resource object.")]
         [ValidateNotNullOrEmpty]
-        public PSServiceUnitResource ServiceUnitObject { get; set; }
+        public PSServiceUnitResource InputObject { get; set; }
 
         [Parameter(
             Position = 1,
@@ -186,12 +186,12 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         private void ResolveParameters()
         {
-            if (this.ServiceUnitObject != null)
+            if (this.InputObject != null)
             {
-                this.ResourceGroupName = this.ServiceUnitObject.ResourceGroupName;
-                this.ServiceTopologyName = this.ServiceUnitObject.ServiceTopologyName;
-                this.ServiceName = this.ServiceUnitObject.ServiceName;
-                this.Name = this.ServiceUnitObject.Name;
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.ServiceTopologyName = this.InputObject.ServiceTopologyName;
+                this.ServiceName = this.InputObject.ServiceName;
+                this.Name = this.InputObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ResourceId))
             {

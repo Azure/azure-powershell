@@ -53,7 +53,7 @@ This command deletes a step named ContosoService1WaitStep in ContosoResourceGrou
 ### Example 3: Remove a step using an object returned by New-AzDeploymentManagerStep
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDeploymentManagerStep -Step $stepObject
+PS C:\> Remove-AzDeploymentManagerStep -InputObject $stepObject
 ```
 
  This command deletes a step whose name and ResourceGroup match the Name and ResourceGroupName properties of the $stepObject, respectively.

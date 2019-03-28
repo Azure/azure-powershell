@@ -53,7 +53,7 @@ This command deletes an artifact source named ContosoArtifactSource in ContosoRe
 
 ### Example 3: Delete an artifact source using an object
 ```powershell
-PS C:\> Remove-AzDeploymentManagerArtifactSource -ArtifactSource $artifactSourceObject
+PS C:\> Remove-AzDeploymentManagerArtifactSource -InputObject $artifactSourceObject
 ```
 
 This command deletes an artifact source whose name and ResourceGroup match the Name and ResourceGroupName properties of the $artifactSourceObject, respectively.
