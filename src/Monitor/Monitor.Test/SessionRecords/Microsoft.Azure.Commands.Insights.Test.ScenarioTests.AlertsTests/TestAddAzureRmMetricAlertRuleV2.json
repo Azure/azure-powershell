@@ -1,0 +1,83 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/gd-test-ResourceGroup/providers/Microsoft.Insights/metricAlerts/GenV2MetricAlertRule?api-version=2018-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlR3JvdXBzL2dkLXRlc3QtUmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0Lkluc2lnaHRzL21ldHJpY0FsZXJ0cy9HZW5WMk1ldHJpY0FsZXJ0UnVsZT9hcGktdmVyc2lvbj0yMDE4LTAzLTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"This New multi resource Metric alert rule was created from Powershell version: 1.0.0\",\r\n    \"severity\": 3,\r\n    \"enabled\": true,\r\n    \"scopes\": [\r\n      \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/gd-test-ResourceGroup/providers/Microsoft.Compute/virtualMachines/gd-mr-vm1\",\r\n      \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/gd-rg-test-2/providers/Microsoft.Compute/virtualMachines/gd-mr-vm2\",\r\n      \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/alertstest/providers/Microsoft.Compute/virtualMachines/sr-mr-vm1\"\r\n    ],\r\n    \"evaluationFrequency\": \"PT5M\",\r\n    \"windowSize\": \"PT5M\",\r\n    \"targetResourceType\": \"Microsoft.Compute/virtualMachines\",\r\n    \"targetResourceRegion\": \"southcentralus\",\r\n    \"criteria\": {\r\n      \"odata.type\": \"Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria\",\r\n      \"allOf\": [\r\n        {\r\n          \"name\": \"metric1\",\r\n          \"metricName\": \"Percentage CPU\",\r\n          \"operator\": \"GreaterThan\",\r\n          \"timeAggregation\": \"Total\",\r\n          \"threshold\": 2.0\r\n        }\r\n      ]\r\n    },\r\n    \"actions\": [\r\n      {\r\n        \"actionGroupId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/default-activitylogalerts/providers/microsoft.insights/actiongroups/anashah\"\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"global\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7d2234dd-db73-45d5-8b33-4cbd89af4cf0"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.22.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1395"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "7a764d24-95c0-420c-bd7a-90f8cb691efa"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "7a764d24-95c0-420c-bd7a-90f8cb691efa"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20190327T074014Z:7a764d24-95c0-420c-bd7a-90f8cb691efa"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 27 Mar 2019 07:40:13 GMT"
+        ],
+        "Content-Length": [
+          "1787"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"global\",\r\n  \"type\": \"Microsoft.Insights/metricAlerts\",\r\n  \"name\": \"GenV2MetricAlertRule\",\r\n  \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/gd-test-ResourceGroup/providers/Microsoft.Insights/metricAlerts/GenV2MetricAlertRule\",\r\n  \"properties\": {\r\n    \"description\": \"This New multi resource Metric alert rule was created from Powershell version: 1.0.0\",\r\n    \"severity\": 3,\r\n    \"enabled\": true,\r\n    \"scopes\": [\r\n      \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/gd-test-ResourceGroup/providers/Microsoft.Compute/virtualMachines/gd-mr-vm1\",\r\n      \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/gd-rg-test-2/providers/Microsoft.Compute/virtualMachines/gd-mr-vm2\",\r\n      \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/alertstest/providers/Microsoft.Compute/virtualMachines/sr-mr-vm1\"\r\n    ],\r\n    \"evaluationFrequency\": \"PT5M\",\r\n    \"windowSize\": \"PT5M\",\r\n    \"templateType\": 8,\r\n    \"criteria\": {\r\n      \"allOf\": [\r\n        {\r\n          \"threshold\": 2.0,\r\n          \"name\": \"metric1\",\r\n          \"metricNamespace\": \"microsoft.compute/virtualmachines\",\r\n          \"metricName\": \"Percentage CPU\",\r\n          \"operator\": \"GreaterThan\",\r\n          \"timeAggregation\": \"Total\",\r\n          \"criterionType\": \"StaticThresholdCriterion\"\r\n        }\r\n      ],\r\n      \"odata.type\": \"Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria\"\r\n    },\r\n    \"targetResourceType\": \"Microsoft.Compute/virtualMachines\",\r\n    \"targetResourceRegion\": \"southcentralus\",\r\n    \"actions\": [\r\n      {\r\n        \"actionGroupId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/default-activitylogalerts/providers/microsoft.insights/actiongroups/anashah\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "80430018-24ee-4b28-a7bd-fb23b5a221d6"
+  }
+}

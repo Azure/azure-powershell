@@ -1,0 +1,77 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/gd-test-ResourceGroup/providers/Microsoft.Insights/metricAlerts/2112019?api-version=2018-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlR3JvdXBzL2dkLXRlc3QtUmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0Lkluc2lnaHRzL21ldHJpY0FsZXJ0cy8yMTEyMDE5P2FwaS12ZXJzaW9uPTIwMTgtMDMtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4e218abe-d69f-4c8d-b983-0a6907069b6b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.22.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "1848ddc5-0fc4-4143-9e79-ba9e42fe1c75"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "1848ddc5-0fc4-4143-9e79-ba9e42fe1c75"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20190327T070746Z:1848ddc5-0fc4-4143-9e79-ba9e42fe1c75"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 27 Mar 2019 07:07:46 GMT"
+        ],
+        "Content-Length": [
+          "1922"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"global\",\r\n  \"type\": \"Microsoft.Insights/metricAlerts\",\r\n  \"name\": \"2112019\",\r\n  \"id\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/gd-test-ResourceGroup/providers/microsoft.insights/metricAlerts/2112019\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"description\": \"szdfg\",\r\n    \"severity\": 3,\r\n    \"enabled\": true,\r\n    \"scopes\": [\r\n      \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/gd-test-ResourceGroup\",\r\n      \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/gd-rg-test-2\",\r\n      \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/alertstest\"\r\n    ],\r\n    \"evaluationFrequency\": \"PT5M\",\r\n    \"windowSize\": \"PT5M\",\r\n    \"templateType\": 13,\r\n    \"templateSpecificParameters\": {\r\n      \"direction\": \"UpAndDown\",\r\n      \"sensitivity\": \"Medium\"\r\n    },\r\n    \"criteria\": {\r\n      \"allOf\": [\r\n        {\r\n          \"alertSensitivity\": \"Medium\",\r\n          \"failingPeriods\": {\r\n            \"numberOfEvaluationPeriods\": 4,\r\n            \"minFailingPeriodsToAlert\": 4\r\n          },\r\n          \"name\": \"Metric1\",\r\n          \"metricNamespace\": \"Microsoft.Compute/virtualMachines\",\r\n          \"metricName\": \"Network Out\",\r\n          \"dimensions\": [],\r\n          \"operator\": \"GreaterOrLessThan\",\r\n          \"timeAggregation\": \"Total\",\r\n          \"monitorTemplateType\": 13,\r\n          \"criterionType\": \"DynamicThresholdCriterion\"\r\n        }\r\n      ],\r\n      \"odata.type\": \"Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria\"\r\n    },\r\n    \"autoMitigate\": true,\r\n    \"targetResourceType\": \"microsoft.compute/virtualmachines\",\r\n    \"targetResourceRegion\": \"southcentralus\",\r\n    \"actions\": [\r\n      {\r\n        \"actionGroupId\": \"/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/default-activitylogalerts/providers/microsoft.insights/actiongroups/anashah\",\r\n        \"webHookProperties\": {}\r\n      }\r\n    ]\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "80430018-24ee-4b28-a7bd-fb23b5a221d6"
+  }
+}

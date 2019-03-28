@@ -1,0 +1,74 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/gd-test-ResourceGroup/providers/Microsoft.Insights/metricAlerts/temp?api-version=2018-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlR3JvdXBzL2dkLXRlc3QtUmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0Lkluc2lnaHRzL21ldHJpY0FsZXJ0cy90ZW1wP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDE=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f94a44fe-51c5-483c-a0de-571014f72da4"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.22.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "f855967c-2cc9-4908-a2fd-e444009aeb17"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "f855967c-2cc9-4908-a2fd-e444009aeb17"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20190327T072515Z:f855967c-2cc9-4908-a2fd-e444009aeb17"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 27 Mar 2019 07:25:15 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "80430018-24ee-4b28-a7bd-fb23b5a221d6"
+  }
+}
