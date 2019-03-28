@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add HyperVGeneration parameter to New-AzDiskConfig and New-AzSnapshotConfig
 
 ## Version 1.6.0
 * Fix issue with path resolution in Get-AzVmBootDiagnosticsData
