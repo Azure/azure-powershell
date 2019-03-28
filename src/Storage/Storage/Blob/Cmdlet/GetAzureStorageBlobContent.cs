@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Storage.DataMovement;
@@ -285,23 +287,33 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             return filePath;
         }
 
+        protected override void ProcessRecord()
+        {
+            try
+            {
+                if (AsJob.IsPresent)
+                {
+                    DoBeginProcessing();
+                }
+
+                FileName = ResolveUserPath(FileName);
+                Validate.ValidateInternetConnection();
+                InitChannelCurrentSubscription();
+                this.ExecuteSynchronouslyOrAsJob();
+            }
+            catch (Exception ex) when (!IsTerminatingError(ex))
+            {
+                WriteExceptionError(ex);
+            }
+        }
+
+
         /// <summary>
         /// execute command
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            if (AsJob.IsPresent)
-            {
-                BeginProcessingImplement();
-            }
-
-            if (AsJob.IsPresent && !Path.IsPathRooted(FileName))
-            {
-                throw new ArgumentException(String.Format(Resources.InvalidPathForAsJob, "Destination", FileName), "Destination");
-            }
-            FileName = ResolveUserPath(FileName);
-
             switch (ParameterSetName)
             {
                 case BlobParameterSet:

@@ -27,6 +27,7 @@ using System.Management.Automation;
 using System.Threading.Tasks;
 using StorageBlob = Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 {
@@ -325,11 +326,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         {
             if (!AsJob.IsPresent)
             {
-                EndProcessingImplement();
+                DoEndProcessing();
             }
         }
 
-        protected override void EndProcessingImplement()
+        protected override void DoEndProcessing()
         {
             while (!UploadRequests.IsEmpty())
             {
@@ -339,7 +340,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 RunTask(taskGenerator);
             }
 
-            base.EndProcessingImplement();
+            base.DoEndProcessing();
         }
 
         //only support the common blob properties for block blob and page blob
@@ -506,9 +507,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         {
             try
             {
-                base.ProcessRecord();
-                ResolvedFileName = this.GetUnresolvedProviderPathFromPSPath(
-                     string.IsNullOrWhiteSpace(this.FileName) ? "." : this.FileName);
+                if (AsJob.IsPresent)
+                {
+                    DoBeginProcessing();
+                }
+
+                ResolvedFileName = this.GetUnresolvedProviderPathFromPSPath(string.IsNullOrWhiteSpace(this.FileName) ? "." : this.FileName);
+                Validate.ValidateInternetConnection();
+                InitChannelCurrentSubscription();
                 this.ExecuteSynchronouslyOrAsJob();
             }
             catch (Exception ex) when (!IsTerminatingError(ex))
@@ -522,16 +528,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            if(AsJob.IsPresent)
-            {
-                BeginProcessingImplement();
-            }
-
-            //if (AsJob.IsPresent && !Path.IsPathRooted(FileName))
-            //{
-            //    throw new ArgumentException(String.Format(Resources.InvalidPathForAsJob, "File", FileName), "File");
-            //}
-            //FileName = ResolveUserPath(FileName);
 
             ValidateBlobTier(string.Equals(blobType, PageBlobType, StringComparison.InvariantCultureIgnoreCase)? StorageBlob.BlobType.PageBlob : StorageBlob.BlobType.Unspecified, 
                 pageBlobTier);
@@ -585,7 +581,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
             if (AsJob.IsPresent)
             {
-                EndProcessingImplement();
+                DoEndProcessing();
             }
         }
     }
