@@ -14,7 +14,7 @@ Create MatchCondition Object for WAF policy creation
 
 ```
 New-AzFrontDoorMatchConditionObject -MatchVariable <PSMatchVariable> -OperatorProperty <PSOperatorProperty>
- -MatchValue <String[]> [-Selector <String>] [-NegateCondition <Boolean>]
+ [-MatchValue <String[]>] [-Selector <String>] [-NegateCondition <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -62,7 +62,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

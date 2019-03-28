@@ -1,46 +1,57 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoorrulegroupoverrideobject
+online version:
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorRuleGroupOverrideObject
+# New-AzFrontDoorManagedRuleOverrideObject
 
 ## SYNOPSIS
-Create RuleGroupOverride Object for WAF policy creation
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorRuleGroupOverrideObject -RuleGroupName <String>
- [-ManagedRuleOverride <PSAzureManagedRuleOverride[]>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzFrontDoorManagedRuleOverrideObject -RuleId <String> [-Action <PSAction>] [-EnabledState <PSEnabledState>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create RuleGroupOverride Object for WAF policy creation
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\>  New-AzFrontDoorRuleGroupOverrideObject -Override SqlInjection -Action Block
-
-Action RuleGroupOverride
------- -----------------
- Block      SqlInjection
+PS C:> {{ Add example code here }}
 ```
 
-Create a RuleGroupOverride Object
+{{ Add example description here }}
 
 ## PARAMETERS
+
+### -Action
+Override Action
+
+```yaml
+Type: PSAction
+Parameter Sets: (All)
+Aliases:
+Accepted values: Allow, Block, Log, Redirect
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -51,13 +62,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedRuleOverride
-Rule override list
+### -EnabledState
+Enabled State
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRuleOverride[]
+Type: PSEnabledState
 Parameter Sets: (All)
 Aliases:
+Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -66,11 +78,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuleGroupName
-Rule Group Name for which these overrides apply
+### -RuleId
+Rule ID
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -90,10 +102,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride
+### Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRuleOverride
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzFrontDoorManagedRuleObject](./New-AzFrontDoorManagedRuleObject.md)
