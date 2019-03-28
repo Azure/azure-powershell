@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.WebApps.Models.WebApp
             return textWriter.ToString();
         }
 
-        internal static string CreateSlotCloneDeploymentTemplate(string location, string serverFarmId, string destinationWebAppName, string sourceWebAppId, string[] slotNames, HostingEnvironmentProfile hostingProfile, string apiVersion)
+        internal static object CreateSlotCloneDeploymentTemplate(string location, string serverFarmId, string destinationWebAppName, string sourceWebAppId, string[] slotNames, HostingEnvironmentProfile hostingProfile, string apiVersion)
         {
             var template = new DeploymentTemplate
             {
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.WebApps.Models.WebApp
                 }
             };
 
-            return template.ToJsonString();
+            return template;
         }
     }
 }

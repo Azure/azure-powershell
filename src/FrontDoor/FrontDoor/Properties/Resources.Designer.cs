@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -79,6 +79,24 @@ namespace Microsoft.Azure.Commands.FrontDoor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disable HTTPS for a custom domain?.
+        /// </summary>
+        internal static string DisableCustomDomainHttpsWarning {
+            get {
+                return ResourceManager.GetString("DisableCustomDomainHttpsWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable HTTPS for a custom domain?.
+        /// </summary>
+        internal static string EnableCustomDomainHttpsWarning {
+            get {
+                return ResourceManager.GetString("EnableCustomDomainHttpsWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is already an existing Front Door with name &apos;{0}&apos; in the resource group &apos;{1}&apos;.
         /// </summary>
         internal static string Error_CreateExistingFrontDoor {
@@ -129,6 +147,15 @@ namespace Microsoft.Azure.Commands.FrontDoor.Properties {
         internal static string Error_FrontDoorNotFound {
             get {
                 return ResourceManager.GetString("Error_FrontDoorNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid resource id - {0}.
+        /// </summary>
+        internal static string Error_InvalidResourceId {
+            get {
+                return ResourceManager.GetString("Error_InvalidResourceId", resourceCulture);
             }
         }
         

@@ -58,6 +58,34 @@ A ExpressRoute gateway will be created thereafter in the Virtual Hub with 2 scal
 
 It then gets the ExpressRouteGateway using its resourceGroupName and the gateway name.
 
+### Example 2
+
+```powershell
+PS C:\> Get-AzExpressRouteGateway -Name test*
+
+ResourceGroupName   : testRG
+Name                : testExpressRoutegw1
+Id                  : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/ExpressRouteGateways/testExpressRoutegw1
+Location            : West Central US
+ExpressRouteGatewayScaleUnit : 2
+VirtualHub          : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub
+BgpSettings         : {}
+Type                : Microsoft.Network/ExpressRouteGateways
+ProvisioningState   : Succeeded
+
+ResourceGroupName   : testRG
+Name                : testExpressRoutegw2
+Id                  : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/ExpressRouteGateways/testExpressRoutegw2
+Location            : West Central US
+ExpressRouteGatewayScaleUnit : 2
+VirtualHub          : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub
+BgpSettings         : {}
+Type                : Microsoft.Network/ExpressRouteGateways
+ProvisioningState   : Succeeded
+```
+
+This command will get all ExpressRouteGateways that start with "test"
+
 ## PARAMETERS
 
 ### -DefaultProfile

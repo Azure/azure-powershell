@@ -36,7 +36,7 @@ $rmItems | %{`
     -Wait `
     -WorkingDirectory $testDir `
     -NoNewWindow `
-    -ArgumentList $_.FullName, $testConfig, '-trait "AcceptanceType=CheckIn"', '-notrait "Runtype=DesktopOnly"', "-xml $logPath" `
+    -ArgumentList $_.FullName, $testConfig, '-trait "AcceptanceType=CheckIn"', '-notrait "Runtype=DesktopOnly"', '-notrait "Runtype=CoreOnly"', "-xml $logPath" `
   }
   finally {
     $copiedItems | %{Remove-Item -Force (Join-Path $testDir $_.Name)}

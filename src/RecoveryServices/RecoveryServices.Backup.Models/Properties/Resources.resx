@@ -554,12 +554,18 @@ Please contact Microsoft for further assistance.</value>
     <value>The specified workload is already registered in the given resource ID</value>
   </data>
   <data name="AzureWorkloadRestoreProtectableItemException" xml:space="preserve">
-    <value>Provide SQLInstance or SQLAvailabilityGroup protectable item in TargetItem</value>
+    <value>Provide SQLInstance protectable item in TargetItem</value>
   </data>
   <data name="RegisterContainerMessage" xml:space="preserve">
     <value>Registering container</value>
   </data>
   <data name="RegisterContainerWarning" xml:space="preserve">
-    <value>Are you sure you want to disable protection for the container '{0}'</value>
+    <value>Are you sure you want to register the container '{0}'</value>
+  </data>
+  <data name="AzureWorkloadRestoreLocationException" xml:space="preserve">
+    <value>Please provide the target of the restore operation using the switch -OriginalWorkloadRestore or -AlternateWorkloadRestore</value>
+  </data>
+  <data name="InstantRPRetentionDaysException" xml:space="preserve">
+    <value>For SnapshotRetentionRangeInDays, the minimum value is 1 and maximum is 5. For weekly backup policies, the only allowed value is 5. Please set the value accordingly</value>
   </data>
 </root>
