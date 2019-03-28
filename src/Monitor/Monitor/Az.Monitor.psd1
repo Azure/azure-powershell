@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.3.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Monitor.dll'
@@ -89,7 +89,9 @@ CmdletsToExport = 'Get-AzMetricDefinition', 'Get-AzMetric', 'Remove-AzLogProfile
                'New-AzActivityLogAlertCondition', 'Enable-AzActivityLogAlert', 
                'Disable-AzActivityLogAlert', 'Remove-AzActivityLogAlert', 
                'New-AzActionGroupReceiver', 'Set-AzActionGroup', 'Get-AzActionGroup', 
-               'Remove-AzActionGroup', 'New-AzMetricFilter'
+               'Remove-AzActionGroup', 'New-AzMetricFilter','Add-AzMetricAlertRuleV2',
+			   'Get-AzMetricAlertRuleV2','New-AzMetricAlertRuleV2DimensionSelection',
+			   'New-AzMetricAlertRuleV2Criteria','Remove-AzMetricAlertRuleV2'
 
 # Variables to export from this module
 # VariablesToExport = @()
