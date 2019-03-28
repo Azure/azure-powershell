@@ -17,7 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     RootModule        = 'Azs.Storage.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.2.1'
+    ModuleVersion     = '0.2.2'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -128,9 +128,9 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.12.3
-            * Bug fixes
-                * New Storage Quota uses defaults if none provided.
+            ReleaseNotes = '## 2019.4
+            * Module dependencies updated
+                * AzureRM.Resources
             '
 
         } # End of PSData hashtable
