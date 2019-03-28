@@ -13,7 +13,7 @@ Adds or updates a V2 (non-classic) metric-based alert rule.
 ## SYNTAX
 
 ### CreateAlertByResourceId
-For single resource metric alert rule
+For creating metric alert rule targeted on a single resource
 ```
 Add-AzMetricAlertRuleV2 -Name <String> -ResourceGroupName <String> -WindowSize <TimeSpan> -Frequency <TimeSpan>
  -TargetResourceId <String>
@@ -23,7 +23,7 @@ Add-AzMetricAlertRuleV2 -Name <String> -ResourceGroupName <String> -WindowSize <
 ```
 
 ### CreateAlertByScopes
-For multiple resource metric alert rule
+For creating metric alert targeted on  multiple resources
 ```powershell
 Add-AzMetricAlertRuleV2 -Name <String> -ResourceGroupName <String> -WindowSize <TimeSpan> -Frequency <TimeSpan>
  -TargetResourceScope <String[]> -TargetResourceType <String> -TargetResourceRegion <String>
@@ -90,24 +90,23 @@ Tags                 :
 
 This command creates a metric alert rule for all virtual machines in the subscription that are in eastus
 
-### Example 3: Disable a metric alert rule(piping works only for MultiResourceMultiMetricCriteria)
+### Example 3: Disable a metric alert rule
 ```powershell
-PS C:\>Get-AzMetricAlertRuleV2 -ResourceGroupName xxxxxRG -Name PSSDKTEST|Add-AzMetricAlertRuleV2 -DisableRule
-Description          : valid
+PS C:\>Add-AzMetricAlertRuleV2 -Name AllVM -ResourceGroupName xxxxRG -WindowSize 0:5 -Frequency 0:5 -TargetResourceScope "/subscriptions/00000000-0000-0000-0000-0000000" -TargetResourceType "Microsoft.Compute/virtualMachines" -TargetResourceRegion "eastus" -Description "This is description" -Severity 4 -ActionGroup $act -Condition $condition -DisableRule
+Description          : This is description
 Severity             : 4
 Enabled              : False
-Scopes               : {/subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/xxxxxRG/providers/Microsoft.Compute/virtualMachines/SCCMDemo3,
-                       /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/xxxxxRG/providers/Microsoft.Compute/virtualMachines/SCCMDemo2}
-EvaluationFrequency  : 00:01:00
+Scopes               : {/subscriptions/00000000-0000-0000-0000-0000000}
+EvaluationFrequency  : 00:05:00
 WindowSize           : 00:05:00
 TargetResourceType   : Microsoft.Compute/virtualMachines
-TargetResourceRegion : southcentralus
+TargetResourceRegion : eastus
 Criteria             : Microsoft.Azure.Management.Monitor.Models.MetricAlertMultipleResourceMultipleMetricCriteria
 AutoMitigate         :
-Actions              : {/subscriptions/00000000-0000-0000-0000-0000000/resourcegroups/default-activitylogalerts/providers/microsoft.insights/actiongroups/demo1}
+Actions              : {/subscriptions/00000000-0000-0000-0000-0000000/resourcegroups/default-activitylogalerts/providers/microsoft.insights/actiongroups/demo}
 LastUpdatedTime      :
-Id                   : /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/xxxxxRG/providers/Microsoft.Insights/metricAlerts/PSSDKTEST
-Name                 : PSSDKTEST
+Id                   : /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/xxxxRG/providers/Microsoft.Insights/metricAlerts/AllVM
+Name                 : AllVM
 Type                 : Microsoft.Insights/metricAlerts
 Location             : global
 Tags                 :
