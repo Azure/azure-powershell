@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Security.Cryptography;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 {
     using Microsoft.WindowsAzure.Commands.Storage.Common;
@@ -22,6 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
     using System.Globalization;
     using System.Management.Automation;
     using System.Threading.Tasks;
+    using OpContext = Microsoft.WindowsAzure.Storage.OperationContext;
 
     public class StorageDataMovementCmdletBase : StorageCloudBlobCmdletBase, IDisposable
     {
@@ -83,15 +82,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// </summary>
         protected override void BeginProcessing()
         {
-            if (!AsJob.IsPresent)
-            {
-                BeginProcessingImplement();
-            }
+            DoBeginProcessing();
         }
 
-        protected void BeginProcessingImplement()
+        protected virtual void DoBeginProcessing()
         {
-            base.BeginProcessing();
+            CmdletOperationContext.Init();
+            CmdletCancellationToken = _cancellationTokenSource.Token;
+            WriteDebugLog(String.Format(Resources.InitOperationContextLog, GetType().Name, CmdletOperationContext.ClientRequestId));
+
+            if (_enableMultiThread)
+            {
+                SetUpMultiThreadEnvironment();
+            }
+
+            OpContext.GlobalSendingRequest +=
+                (sender, args) =>
+                {
+                    //https://github.com/Azure/azure-storage-net/issues/658
+                };
+
             OutputStream.ConfirmWriter = (s1, s2, s3) => ShouldContinue(s2, s3);
 
             this.TransferManager = TransferManagerFactory.CreateTransferManager(this.GetCmdletConcurrency());
@@ -128,11 +138,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         {
             if (!AsJob.IsPresent)
             {
-                EndProcessingImplement();
+                DoEndProcessing();
             }
         }
 
-        protected virtual void EndProcessingImplement()
+        protected virtual void DoEndProcessing()
         {
             try
             {
