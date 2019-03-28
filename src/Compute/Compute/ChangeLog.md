@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Allow VM creation with galley image from other tenants. 
 
 ## Version 1.6.0
 * Fix issue with path resolution in Get-AzVmBootDiagnosticsData
