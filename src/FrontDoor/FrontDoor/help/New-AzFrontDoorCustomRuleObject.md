@@ -35,8 +35,6 @@ Priority                   : 2
 RateLimitDurationInMinutes : 1
 RateLimitThreshold         :
 Name                       : Rule1
-Etag                       :
-Transforms                 :
 ```
 
 Create a CustomRule Object

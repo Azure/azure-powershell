@@ -26,21 +26,21 @@ The **New-AzFrontDoorFireWallPolicy** cmdlet creates a new Azure WAF policy in t
 
 ### Example 1: Create WAF policy
 ```powershell
-PS C:\>  New-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule1 -ManagedRule $managedRule1 -En
-abledState Enabled -Mode Prevention
+PS C:\> New-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Customrule $customRule1,$customRule2 -ManagedRule $managedRule1 -EnabledState Enabled -Mode Prevention -RedirectUrl "https://www.bing.com/" -CustomBlockResponseStatusCode 405 -CustomBlockResponseBody "<html><head><title>You are blocked!</title></head><body></body></html>"
 
-
-PolicyMode         : Prevention
-PolicyEnabledState : Enabled
-CustomRules        : {Rule1}
-ManagedRules       : {Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule}
-Etag               :
-ProvisioningState  : Succeeded
-Tags               :
-Id                 : /subscriptions/{subid}/resourcegroups/{resourceGroupName}/providers/Micr
-                     osoft.Network/frontdoorwebapplicationfirewallpolicies/{Name}
-Name               : {Name}
-Type               :
+PolicyMode                    : Prevention
+PolicyEnabledState            : Enabled
+RedirectUrl                   : https://www.bing.com/
+CustomBlockResponseStatusCode : 405
+CustomBlockResponseBody       : <html><head><title>You are blocked!</title></head><body></body></html>
+CustomRules                   : {Rule1, Rule2}
+ManagedRules                  : {Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule}
+Etag                          :
+ProvisioningState             : Succeeded
+Tags                          :
+Id                            : /subscriptions/{subid}/resourcegroups/{resourceGroupName}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/{policyName}
+Name                          : {policyName}
+Type                          :
 ```
 
 Create WAF policy

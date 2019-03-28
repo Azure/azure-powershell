@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzFrontDoorFireWallPolicy
 
 ## SYNOPSIS
-update WAF policy
+Update WAF policy
 
 ## SYNTAX
 
@@ -37,73 +37,79 @@ Set-AzFrontDoorFireWallPolicy -ResourceId <String> [-EnabledState <PSEnabledStat
 ```
 
 ## DESCRIPTION
-The **Set-AzFrontDoor** cmdlet updates an existing WAF policy. If input parameters are not provided, old parameters from the existing WAF policy will be used.
+The **Set-AzFrontDoorFireWallPolicy** cmdlet updates an existing WAF policy. If input parameters are not provided, old parameters from the existing WAF policy will be used.
 
 ## EXAMPLES
 
-### Example 1: update an existing WAF policy
+### Example 1
 ```powershell
-PS C:\> Set-AzFrontDoorFireWallPolicy -Name $name -ResourceGroupName $resourceGroup -Customrule $customRule -ManagedRule $managedRule -EnabledState $enabledState -Mode $node
+PS C:\> Set-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName -CustomBlockResponseStatusCode 403
 
-PolicyMode         : Prevention
-PolicyEnabledState : Enabled
-CustomRules        : {Rule1}
-ManagedRules       : {Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule}
-Etag               :
-ProvisioningState  : Succeeded
-Tags               :
-Id                 : /subscriptions/{subid}/resourcegroups/{resourceGroupName}/providers/Micr
-                     osoft.Network/frontdoorwebapplicationfirewallpolicies/{Name}
-Name               : {Name}
-Type               :
+PolicyMode                    : Prevention
+PolicyEnabledState            : Enabled
+RedirectUrl                   : https://www.bing.com/
+CustomBlockResponseStatusCode : 403
+CustomBlockResponseBody       : <html><head><title>You are blocked!</title></head><body></body></html>
+CustomRules                   : {Rule1, Rule2}
+ManagedRules                  : {Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule}
+Etag                          :
+ProvisioningState             : Succeeded
+Tags                          :
+Id                            : /subscriptions/{subid}/resourcegroups/{resourceGroupName}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/{policyName}
+Name                          : {policyName}
+Type                          :
 ```
 
-update an existing WAF policy
+Update an existing WAF policy custom status code.
 
-### Example 2: update an existing WAF policy
+### Example 2
 ```powershell
-PS C:\> Set-AzFrontDoorFireWallPolicy -InputObject $policy1 -Customrule $customRule -ManagedRule $managedRule -EnabledState $enabledState -Mode $mode
+PS C:\> Set-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Mode Detection
 
-PolicyMode         : Prevention
-PolicyEnabledState : Enabled
-CustomRules        : {Rule1}
-ManagedRules       : {Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule}
-Etag               :
-ProvisioningState  : Succeeded
-Tags               :
-Id                 : /subscriptions/{subid}/resourcegroups/{resourceGroupName}/providers/Micr
-                     osoft.Network/frontdoorwebapplicationfirewallpolicies/{Name}
-Name               : {Name}
-Type               :
+PolicyMode                    : Detection
+PolicyEnabledState            : Enabled
+RedirectUrl                   : https://www.bing.com/
+CustomBlockResponseStatusCode : 403
+CustomBlockResponseBody       : <html><head><title>You are blocked!</title></head><body></body></html>
+CustomRules                   : {Rule1, Rule2}
+ManagedRules                  : {Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule}
+Etag                          :
+ProvisioningState             : Succeeded
+Tags                          :
+Id                            : /subscriptions/{subid}/resourcegroups/{resourceGroupName}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/{policyName}
+Name                          : {policyName}
+Type                          :
 ```
 
-update an existing WAF policy
+Update an existing WAF policy mode.
 
-### Example 3: update an existing WAF policy
+### Example 3
 ```powershell
-PS C:\> Set-AzFrontDoorFireWallPolicy -ResourceId $resourcdId -Customrule $customRule -ManagedRule $managedRule -EnabledState $enabledState -Mode $mode
+PS C:\> Set-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Mode Detection -EnabledState Disabled
 
-PolicyMode         : Prevention
-PolicyEnabledState : Enabled
-CustomRules        : {Rule1}
-ManagedRules       : {Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule}
-Etag               :
-ProvisioningState  : Succeeded
-Tags               :
-Id                 : /subscriptions/{subid}/resourcegroups/{resourceGroupName}/providers/Micr
-                     osoft.Network/frontdoorwebapplicationfirewallpolicies/{Name}
-Name               : {Name}
-Type               :
+PolicyMode                    : Detection
+PolicyEnabledState            : Disabled
+RedirectUrl                   : https://www.bing.com/
+CustomBlockResponseStatusCode : 403
+CustomBlockResponseBody       : <html><head><title>You are blocked!</title></head><body></body></html>
+CustomRules                   : {Rule1, Rule2}
+ManagedRules                  : {Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule}
+Etag                          :
+ProvisioningState             : Succeeded
+Tags                          :
+Id                            : /subscriptions/{subid}/resourcegroups/{resourceGroupName}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/{policyName}
+Name                          : {policyName}
+Type                          :
 ```
 
-update an existing WAF policy
+Update an existing WAF policy enabled state and mode.
 
-### Example 4: update all WAF policies in $resourceGroup
+### Example 4
 ```powershell
-PS C:\> Get-AzFrontDoorFireWallPolicy -ResourceGroupName $resourceGroup | Set-AzFrontDoorFireWallPolicy -Customrule $customRule -ManagedRule $managedRule -EnabledState $enabledState -Mode $mode
+PS C:\> Get-AzFrontDoorFireWallPolicy -ResourceGroupName $resourceGroupName | Set-AzFrontDoorFireWallPolicy -Mode Detection -EnabledState Disabled
 ```
 
-update all WAF policies in $resourceGroup
+Update all WAF policies in $resourceGroupName
 
 ## PARAMETERS
 
