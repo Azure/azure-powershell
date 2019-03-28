@@ -1,5 +1,5 @@
 
-This document serves as both a breaking change notification and migration guide for consumers of the AzureStack powershell version 1.7.0. This release supports Azurestack 1901 update or later
+This document serves as both a breaking change notification and migration guide for consumers of the AzureStack powershell version 1.7.1. This release supports Azurestack 1901 update or later
 
 ## Table of Contents
 - [Breaking changes to Backup Admin cmdlets](#breaking-changes-to-backup-admin-cmdlets)
