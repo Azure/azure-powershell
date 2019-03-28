@@ -76,7 +76,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private string ContainerName = String.Empty;
 
         [Alias("Path")]
-        [Parameter(HelpMessage = "File Path")]
+        [Parameter(HelpMessage = "File Path. With -Asjob, it must be an absolute Path.")]
         public string Destination
         {
             get { return FileName; }
@@ -253,7 +253,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <returns>full file path if file path is valid, otherwise throw an exception</returns>
         internal string GetFullReceiveFilePath(string fileName, string blobName, DateTimeOffset? snapshotTime)
         {
-            String filePath = Path.Combine(CurrentPath(), fileName);
+            // With -asjob, only absolute path works, so fileName should be absolute path.
+            String filePath = fileName;
+            if (!AsJob.IsPresent)
+            {
+                filePath = Path.Combine(CurrentPath(), fileName);
+            }
             fileName = Path.GetFileName(filePath);
             String dirPath = Path.GetDirectoryName(filePath);
 
@@ -286,6 +291,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
+            if (AsJob.IsPresent)
+            {
+                BeginProcessingImplement();
+            }
+
+            if (AsJob.IsPresent && !Path.IsPathRooted(FileName))
+            {
+                throw new ArgumentException(String.Format(Resources.InvalidPathForAsJob, "Destination", FileName), "Destination");
+            }
+            FileName = ResolveUserPath(FileName);
+
             switch (ParameterSetName)
             {
                 case BlobParameterSet:
@@ -308,6 +324,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         GetBlobContent(ContainerName, BlobName, FileName);
                     }
                     break;
+            }
+
+            if (AsJob.IsPresent)
+            {
+                EndProcessingImplement();
             }
         }
     }

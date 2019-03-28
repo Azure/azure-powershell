@@ -58,7 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Path to the local file to be uploaded.")]
+            HelpMessage = "Path to the local file to be uploaded. With -Asjob, it must be an absolute Path.")]
         [ValidateNotNullOrEmpty]
         public string Source { get; set; }
 
@@ -73,8 +73,23 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         public override void ExecuteCmdlet()
         {
+            if (AsJob.IsPresent)
+            {
+                BeginProcessingImplement();
+            }
+
             // Step 1: Validate source file.
-            FileInfo localFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(this.Source));
+            // With -asjob, only absolute path works, so Source must be absolute path.
+            if (AsJob.IsPresent && !System.IO.Path.IsPathRooted(this.Source))
+            {
+                throw new System.ArgumentException(string.Format(Resources.InvalidPathForAsJob, "Source", this.Source), "Source");
+            }
+            string filePath = this.Source;
+            if (!AsJob.IsPresent)
+            {
+                filePath = this.GetUnresolvedProviderPathFromPSPath(this.Source);
+            }
+            FileInfo localFile = new FileInfo(filePath);
             if (!localFile.Exists)
             {
                 throw new FileNotFoundException(string.Format(CultureInfo.CurrentCulture, Resources.SourceFileNotFound, this.Source));
@@ -118,6 +133,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         this.OutputStream.WriteObject(taskId, cloudFileToBeUploaded);
                     }
                 });
+            }
+
+            if (AsJob.IsPresent)
+            {
+                EndProcessingImplement();
             }
         }
 

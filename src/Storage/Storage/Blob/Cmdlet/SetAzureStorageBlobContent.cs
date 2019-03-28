@@ -26,6 +26,7 @@ using System.IO;
 using System.Management.Automation;
 using System.Threading.Tasks;
 using StorageBlob = Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 {
@@ -67,11 +68,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         private const string AppendBlobType = "Append";
 
         [Alias("FullName")]
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "file Path",
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "file Path. With -Asjob, it must be an absolute Path.",
             ValueFromPipelineByPropertyName = true, ParameterSetName = ManualParameterSet)]
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "file Path",
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "file Path. With -Asjob, it must be an absolute Path.",
             ParameterSetName = ContainerParameterSet)]
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "file Path",
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "file Path. With -Asjob, it must be an absolute Path.",
             ParameterSetName = BlobParameterSet)]
         public string File
         {
@@ -169,7 +170,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         private PremiumPageBlobTier? pageBlobTier = null;
 
         private BlobUploadRequestQueue UploadRequests = new BlobUploadRequestQueue();
-
+        
         /// <summary>
         /// Initializes a new instance of the SetAzureBlobContentCommand class.
         /// </summary>
@@ -262,7 +263,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 throw new ArgumentException(Resources.FileNameCannotEmpty);
             }
 
-            String filePath = Path.Combine(CurrentPath(), fileName);
+            // With -asjob, only absolute path works, so fileName should be absolute path.
+            String filePath = fileName;
+            if (!AsJob.IsPresent)
+            {
+                filePath = Path.GetFullPath(fileName);
+            }
+            fileName = Path.GetFileName(filePath);
 
             return filePath;
         }
@@ -316,6 +323,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
         protected override void EndProcessing()
         {
+            if (!AsJob.IsPresent)
+            {
+                EndProcessingImplement();
+            }
+        }
+
+        protected override void EndProcessingImplement()
+        {
             while (!UploadRequests.IsEmpty())
             {
                 Tuple<string, StorageBlob.CloudBlob> uploadRequest = UploadRequests.DequeueRequest();
@@ -324,7 +339,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 RunTask(taskGenerator);
             }
 
-            base.EndProcessing();
+            base.EndProcessingImplement();
         }
 
         //only support the common blob properties for block blob and page blob
@@ -486,12 +501,38 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             }
         }
 
+
+        protected override void ProcessRecord()
+        {
+            try
+            {
+                base.ProcessRecord();
+                ResolvedFileName = this.GetUnresolvedProviderPathFromPSPath(
+                     string.IsNullOrWhiteSpace(this.FileName) ? "." : this.FileName);
+                this.ExecuteSynchronouslyOrAsJob();
+            }
+            catch (Exception ex) when (!IsTerminatingError(ex))
+            {
+                WriteExceptionError(ex);
+            }
+        }
+
         /// <summary>
         /// execute command
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            FileName = ResolveUserPath(FileName);
+            if(AsJob.IsPresent)
+            {
+                BeginProcessingImplement();
+            }
+
+            //if (AsJob.IsPresent && !Path.IsPathRooted(FileName))
+            //{
+            //    throw new ArgumentException(String.Format(Resources.InvalidPathForAsJob, "File", FileName), "File");
+            //}
+            //FileName = ResolveUserPath(FileName);
+
             ValidateBlobTier(string.Equals(blobType, PageBlobType, StringComparison.InvariantCultureIgnoreCase)? StorageBlob.BlobType.PageBlob : StorageBlob.BlobType.Unspecified, 
                 pageBlobTier);
 
@@ -513,7 +554,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 case ContainerParameterSet:
                     if (ShouldProcess(BlobName, VerbsCommon.Set))
                     {
-                        SetAzureBlobContent(FileName, BlobName);
+                        SetAzureBlobContent(ResolvedFileName, BlobName);
                         containerName = CloudBlobContainer.Name;
                         UploadRequests.SetDestinationContainer(Channel, containerName);
                     }
@@ -523,7 +564,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 case BlobParameterSet:
                     if (ShouldProcess(CloudBlob.Name, VerbsCommon.Set))
                     {
-                        SetAzureBlobContent(FileName, CloudBlob.Name);
+                        SetAzureBlobContent(ResolvedFileName, CloudBlob.Name);
                         containerName = CloudBlob.Container.Name;
                         UploadRequests.SetDestinationContainer(Channel, containerName);
                     }
@@ -534,12 +575,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 default:
                     if (ShouldProcess(BlobName, VerbsCommon.Set))
                     {
-                        SetAzureBlobContent(FileName, BlobName);
+                        SetAzureBlobContent(ResolvedFileName, BlobName);
                         containerName = ContainerName;
                         UploadRequests.SetDestinationContainer(Channel, containerName);
                     }
 
                     break;
+            }
+
+            if (AsJob.IsPresent)
+            {
+                EndProcessingImplement();
             }
         }
     }
