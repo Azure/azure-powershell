@@ -15,13 +15,13 @@ Creates a new Azure NetApp Files (ANF) snapshot.
 ### ByFieldsParameterSet (Default)
 ```
 New-AzNetAppFilesSnapshot -ResourceGroupName <String> -Location <String> -AccountName <String>
- -PoolName <String> -VolumeName <String> -Name <String> | -SnapshotName <String> -FileSystemId <String> [-Tag <Hashtable>]
+ -PoolName <String> -VolumeName <String> -Name <String> -FileSystemId <String> [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-New-AzNetAppFilesSnapshot -Name <String> | -SnapshotName <String> [-Tag <Hashtable>] [-InputObject <PSNetAppFilesVolume>]
+New-AzNetAppFilesSnapshot -Name <String> [-Tag <Hashtable>] -VolumeObject <PSNetAppFilesVolume>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -93,21 +93,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The volume for the new snapshot object
-
-```yaml
-Type: PSNetAppFilesVolume
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -198,6 +183,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VolumeObject
+The volume for the new snapshot object
+
+```yaml
+Type: PSNetAppFilesVolume
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

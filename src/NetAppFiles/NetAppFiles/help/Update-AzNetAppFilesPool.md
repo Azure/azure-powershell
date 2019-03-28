@@ -14,15 +14,15 @@ Updates an Azure NetApp Files (ANF) pool with the new data set.
 
 ### ByFieldsParameterSet (Default)
 ```
-Update-AzNetAppFilesPool -ResourceGroupName <String> -Location <String> -AccountName <String> -Name <String> | PoolName <String>
+Update-AzNetAppFilesPool -ResourceGroupName <String> -Location <String> -AccountName <String> -Name <String>
  -PoolSize <Int64> -ServiceLevel <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Update-AzNetAppFilesPool -Name <String>| PoolName <String> -PoolSize <Int64> -ServiceLevel <String>
- [-AccountInputObject <PSNetAppFilesAccount>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Update-AzNetAppFilesPool -Name <String> -PoolSize <Int64> -ServiceLevel <String>
+ -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -58,21 +58,6 @@ This command changes the ANF pool "MyAnfPool" to have the given size and Service
 
 ## PARAMETERS
 
-### -AccountInputObject
-The account object containing the pool to update
-
-```yaml
-Type: PSNetAppFilesAccount
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -AccountName
 The name of the ANF account
 
@@ -85,6 +70,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AccountObject
+The account object containing the pool to update
+
+```yaml
+Type: PSNetAppFilesAccount
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

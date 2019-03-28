@@ -14,13 +14,13 @@ Deletes an Azure NetApp Files (ANF) pool.
 
 ### ByFieldsParameterSet (Default)
 ```
-Remove-AzNetAppFilesPool -ResourceGroupName <String> -AccountName <String> -Name <String> | -PoolName <String> [-PassThru]
+Remove-AzNetAppFilesPool -ResourceGroupName <String> -AccountName <String> -Name <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Remove-AzNetAppFilesPool -Name <String> | -PoolName <String> [-AccountInputObject <PSNetAppFilesAccount>] [-PassThru]
+Remove-AzNetAppFilesPool -Name <String> -AccountObject <PSNetAppFilesAccount> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -50,21 +50,6 @@ This command deletes the ANF pool "MyAnfPool".
 
 ## PARAMETERS
 
-### -AccountInputObject
-The account object containing the pool to remove
-
-```yaml
-Type: PSNetAppFilesAccount
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -AccountName
 The name of the ANF account
 
@@ -77,6 +62,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AccountObject
+The account object containing the pool to remove
+
+```yaml
+Type: PSNetAppFilesAccount
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -215,7 +215,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool
+### System.Boolean
 
 ## NOTES
 

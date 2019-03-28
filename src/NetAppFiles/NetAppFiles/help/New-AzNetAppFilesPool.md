@@ -14,15 +14,15 @@ Creates a new Azure NetApp Files (ANF) pool.
 
 ### ByFieldsParameterSet (Default)
 ```
-New-AzNetAppFilesPool -ResourceGroupName <String> -Location <String> -AccountName <String> [-Name <String> | -PoolName <String>]
+New-AzNetAppFilesPool -ResourceGroupName <String> -Location <String> -AccountName <String> -Name <String>
  -PoolSize <Int64> -ServiceLevel <String> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-New-AzNetAppFilesPool -Name <String> | -PoolName <String> -PoolSize <Int64> -ServiceLevel <String> [-Tag <Hashtable>]
- [-InputObject <PSNetAppFilesAccount>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+New-AzNetAppFilesPool -Name <String> -PoolSize <Int64> -ServiceLevel <String> [-Tag <Hashtable>]
+ -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -67,6 +67,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AccountObject
+The account for the new pool object
+
+```yaml
+Type: PSNetAppFilesAccount
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -79,21 +94,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The account for the new pool object
-
-```yaml
-Type: PSNetAppFilesAccount
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

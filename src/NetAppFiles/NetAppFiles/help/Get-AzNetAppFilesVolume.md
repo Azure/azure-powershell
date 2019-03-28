@@ -14,7 +14,7 @@ Gets details of an Azure NetApp Files (ANF) volume.
 
 ### ByFieldsParameterSet (Default)
 ```
-Get-AzNetAppFilesVolume -ResourceGroupName <String> -AccountName <String> -PoolName <String> [-Name <String> | -VolumeName <String>]
+Get-AzNetAppFilesVolume -ResourceGroupName <String> -AccountName <String> -PoolName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Get-AzNetAppFilesVolume -ResourceId <String> [-DefaultProfile <IAzureContextCont
 
 ### ByParentObjectParameterSet
 ```
-Get-AzNetAppFilesVolume [-PoolInputObject <PSNetAppFilesPool>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzNetAppFilesVolume -PoolObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -103,21 +103,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PoolInputObject
-The pool object containing the volume to return
-
-```yaml
-Type: PSNetAppFilesPool
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -PoolName
 The name of the ANF pool
 
@@ -130,6 +115,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PoolObject
+The pool object containing the volume to return
+
+```yaml
+Type: PSNetAppFilesPool
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
