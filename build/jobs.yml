@@ -20,11 +20,12 @@ jobs:
       custom: msbuild
       arguments: 'build.proj /t:Build /p:Configuration=$(Configuration)'
 
-  - task: PublishPipelineArtifact@0
+  - task: PublishBuildArtifacts@1
     displayName: 'Save build'
     inputs:
       artifactName: build
-      targetPath: artifacts
+      pathtoPublish: artifacts
+      publishLocation: 'Container'
     condition: succeededOrFailed()
 
 - job: Generate_Help
@@ -51,11 +52,12 @@ jobs:
       custom: msbuild
       arguments: 'build.proj /t:GenerateHelp /p:Configuration=$(Configuration)'
 
-  - task: PublishPipelineArtifact@0
+  - task: PublishBuildArtifacts@1
     displayName: 'Save help'
     inputs:
       artifactName: help
-      targetPath: artifacts
+      pathtoPublish: artifacts
+      publishLocation: 'Container'
     condition: succeededOrFailed()
 
 - job: Static_Analysis
@@ -79,11 +81,12 @@ jobs:
       custom: msbuild
       arguments: 'build.proj /t:StaticAnalysis /p:Configuration=$(Configuration)'
 
-  - task: PublishPipelineArtifact@0
+  - task: PublishBuildArtifacts@1
     displayName: 'Save static-analysis'
     inputs:
       artifactName: 'static-analysis'
-      targetPath: artifacts/StaticAnalysisResults
+      pathtoPublish: artifacts/StaticAnalysisResults
+      publishLocation: 'Container'
     condition: succeededOrFailed()
 
 - job: Test
@@ -107,11 +110,12 @@ jobs:
       custom: msbuild
       arguments: 'build.proj /t:Test /p:Configuration=$(Configuration);Framework=netcoreapp2.1'
 
-  - task: PublishPipelineArtifact@0
+  - task: PublishBuildArtifacts@1
     displayName: 'Save test'
     inputs:
       artifactName: test
-      targetPath: artifacts/TestResults
+      pathtoPublish: artifacts/TestResults
+      publishLocation: 'Container'
     condition: succeededOrFailed()
 
 - job: Save_All
@@ -153,9 +157,10 @@ jobs:
       downloadPath: artifacts/TestResults
     condition: succeededOrFailed()
 
-  - task: PublishPipelineArtifact@0
+  - task: PublishBuildArtifacts@1
     displayName: 'Save all'
     inputs:
       artifactName: all
-      targetPath: artifacts
+      pathtoPublish: artifacts
+      publishLocation: 'Container'
     condition: succeededOrFailed()
