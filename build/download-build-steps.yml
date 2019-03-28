@@ -5,4 +5,5 @@ steps:
     buildType: 'current'
     downloadType: 'single'
     artifactName: build
+    itemPattern: 'build/**'
     downloadPath: artifacts

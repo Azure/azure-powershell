@@ -136,6 +136,7 @@ jobs:
       buildType: 'current'
       downloadType: 'single'
       artifactName: help
+      itemPattern: 'help/**'
       downloadPath: artifacts
     condition: succeededOrFailed()
 
@@ -145,6 +146,7 @@ jobs:
       buildType: 'current'
       downloadType: 'single'
       artifactName: 'static-analysis'
+      itemPattern: 'static-analysis/**'
       downloadPath: artifacts/StaticAnalysisResults
     condition: succeededOrFailed()
 
@@ -154,6 +156,7 @@ jobs:
       buildType: 'current'
       downloadType: 'single'
       artifactName: test
+      itemPattern: 'test/**'
       downloadPath: artifacts/TestResults
     condition: succeededOrFailed()
 
