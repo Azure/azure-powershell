@@ -20,14 +20,29 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
     using System.Collections.Generic;
     using System.Linq;
 
-    public class FilenamesCharactersValidation : BaseNamespaceValidation
+    /// <summary>
+    /// Class FilenamesCharactersValidation.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations.NamespaceValidationBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations.NamespaceValidationBase" />
+    public class FilenamesCharactersValidation : NamespaceValidationBase
     {
         #region Fields and Properties
+        /// <summary>
+        /// The code point black list
+        /// </summary>
         private bool[] _codePointBlackList;
+        /// <summary>
+        /// The number of code points
+        /// </summary>
         private int NumberOfCodePoints = 0x10FFFF + 1;
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FilenamesCharactersValidation" /> class.
+        /// </summary>
+        /// <param name="configuration">The configuration.</param>
         public FilenamesCharactersValidation(
             IConfiguration configuration): base(
                 configuration,
@@ -37,36 +52,52 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
             var whitelistOfCodePointRanges = configuration.WhitelistOfCodePointRanges().ToList();
             var blacklistOfCodePoints = new HashSet<int>(configuration.BlacklistOfCodePoints());
 
-            this._codePointBlackList = new bool[this.NumberOfCodePoints];
+            _codePointBlackList = new bool[NumberOfCodePoints];
 
-            for (int i = 0; i < this.NumberOfCodePoints; ++i)
+            for (int i = 0; i < NumberOfCodePoints; ++i)
             {
-                this._codePointBlackList[i] = blacklistOfCodePoints.Contains(i) || !whitelistOfCodePointRanges.Any(range => range.Includes(i));
+                _codePointBlackList[i] = blacklistOfCodePoints.Contains(i) || !whitelistOfCodePointRanges.Any(range => range.Includes(i));
             }
         }
         #endregion
 
         #region Protected methods
+        /// <summary>
+        /// Does the validate.
+        /// </summary>
+        /// <param name="file">The file.</param>
+        /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidate(IFileInfo file)
         {
-            return this.ValidateInternal(file, isDirectory: false);
+            return ValidateInternal(file, isDirectory: false);
         }
 
+        /// <summary>
+        /// Does the validate.
+        /// </summary>
+        /// <param name="directoryInfo">The directory information.</param>
+        /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidate(IDirectoryInfo directoryInfo)
         {
             // skip validating volume root
             if (directoryInfo.Name == directoryInfo.FullName)
             {
-                return this.SuccessfulResult;
+                return SuccessfulResult;
             }
 
-            return this.ValidateInternal(directoryInfo, isDirectory: true);
+            return ValidateInternal(directoryInfo, isDirectory: true);
         }
 
         #endregion
 
         #region Private methods
-        
+
+        /// <summary>
+        /// Validates the internal.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <param name="isDirectory">if set to <c>true</c> [is directory].</param>
+        /// <returns>IValidationResult.</returns>
         private IValidationResult ValidateInternal (INamedObjectInfo node, bool isDirectory)
         {
             string name = node.Name;
@@ -87,8 +118,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
                 }
 
                 if (codePoint < 0 || 
-                    codePoint >= this.NumberOfCodePoints || 
-                    this._codePointBlackList[codePoint])
+                    codePoint >= NumberOfCodePoints || 
+                    _codePointBlackList[codePoint])
                 {
                     // adding +1 so that positions are 1-based
                     // to make them more human friendly
@@ -113,14 +144,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
                     Result = Result.Fail,
                     Level = ResultLevel.Error,
                     Path = node.FullName,
-                    Type = this.ValidationType,
-                    Kind = this.ValidationKind,
+                    Type = ValidationType,
+                    Kind = ValidationKind,
                     Description = description,
                     Positions = positions
                 };
             }
 
-            return this.SuccessfulResult;
+            return SuccessfulResult;
         }
 
         #endregion

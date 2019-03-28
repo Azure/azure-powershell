@@ -28,7 +28,8 @@ function Test-AzureVmWorkloadGetJob
 			-ResourceId $resourceId `
 			-BackupManagementType AzureWorkload `
 			-WorkloadType MSSQL `
-			-VaultId $vault.ID
+			-VaultId $vault.ID `
+			-Force
 
 		Enable-Protection $vault $container
 
@@ -68,7 +69,8 @@ function Test-AzureVmWorkloadWaitJob
 			-ResourceId $resourceId `
 			-BackupManagementType AzureWorkload `
 			-WorkloadType MSSQL `
-			-VaultId $vault.ID
+			-VaultId $vault.ID `
+			-Force
 
 		Enable-Protection $vault $container
 
@@ -104,7 +106,8 @@ function Test-AzureVmWorkloadCancelJob
 			-ResourceId $resourceId `
 			-BackupManagementType AzureWorkload `
 			-WorkloadType MSSQL `
-			-VaultId $vault.ID
+			-VaultId $vault.ID `
+			-Force
 
 		Enable-Protection $vault $container
 

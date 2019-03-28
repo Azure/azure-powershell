@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVault",DefaultParameterSetName = ListVaultsBySubParameterSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVault",DefaultParameterSetName = GetVaultParameterSet)]
     [OutputType(typeof(PSKeyVault), typeof(PSKeyVaultIdentityItem), typeof(PSDeletedKeyVault))]
     public class GetAzureKeyVault : KeyVaultManagementCmdletBase
     {
@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private const string GetVaultParameterSet = "GetVaultByName";
         private const string GetDeletedVaultParameterSet = "ByDeletedVault";
-        private const string ListVaultsBySubParameterSet = "ListAllVaultsInSubscription";
         private const string ListDeletedVaultsParameterSet = "ListAllDeletedVaultsInSubscription";
 
         #endregion
@@ -89,7 +88,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(
             Mandatory = false,
-            ParameterSetName = ListVaultsBySubParameterSet,
+            ParameterSetName = GetVaultParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the key and optional value of the specified tag to filter the list of key vaults by.")]        
         public Hashtable Tag { get; set; }
@@ -103,22 +102,19 @@ namespace Microsoft.Azure.Commands.KeyVault
                     ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
                     PSKeyVault vault = null;
 
-                    if (string.IsNullOrEmpty(VaultName))
+                    if (ShouldGetByName(ResourceGroupName, VaultName))
                     {
-                        WriteObject(ListVaults(ResourceGroupName, Tag), true);
-                        break;
-                    }
-
-                    if (!string.IsNullOrWhiteSpace(ResourceGroupName))
                         vault = KeyVaultManagementClient.GetVault(
                                                     VaultName,
                                                     ResourceGroupName,
                                                     ActiveDirectoryClient);
-                    WriteObject(vault);
-                    break;
-
-                case ListVaultsBySubParameterSet:
-                    WriteObject(ListVaults(ResourceGroupName, Tag), true);
+                        WriteObject(FilterByTag(vault, Tag));
+                    }
+                    else
+                    {
+                        WriteObject(TopLevelWildcardFilter(ResourceGroupName, VaultName, ListVaults(ResourceGroupName, Tag)), true);
+                    }
+                    
                     break;
 
                 case GetDeletedVaultParameterSet:

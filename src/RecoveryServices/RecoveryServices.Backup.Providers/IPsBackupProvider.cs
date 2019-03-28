@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
     {
         void Initialize(Dictionary<System.Enum, object> providerData, ServiceClientAdapter serviceClientAdapter);
 
-        RestAzureNS.AzureOperationResponse EnableProtection();
+        RestAzureNS.AzureOperationResponse<ProtectedItemResource> EnableProtection();
 
-        RestAzureNS.AzureOperationResponse DisableProtection();
+        RestAzureNS.AzureOperationResponse<ProtectedItemResource> DisableProtection();
 
         RestAzureNS.AzureOperationResponse DisableProtectionWithDeleteData();
 

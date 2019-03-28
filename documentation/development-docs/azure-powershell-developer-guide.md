@@ -260,6 +260,9 @@ Please see our guide on [Using Azure TestFramework](../testing-docs/using-azure-
     - Use `Assert-NotNull object` to verify that an object is not null
     - Use `Assert-Exists path` to verify that a file exists
     - Use `Assert-AreEqualArray a1 a2` to verify that arrays are the same
+    - Use `Assert-StartsWith s1 s2` to verify that the string `s2` starts with the string `s1`
+    - Use `Assert-Match s1 s2` to verify that the string `s2` matches the regular expression `s1`
+    - Use `Assert-NotMatch s1 s2` to verify that the string `s2` does not match the regular expression `s1`
 
 ### Using Active Directory
 

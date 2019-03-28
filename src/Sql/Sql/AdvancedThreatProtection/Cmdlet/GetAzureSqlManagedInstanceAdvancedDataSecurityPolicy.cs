@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         protected override ManagedInstanceAdvancedDataSecurityPolicyModel GetEntity()
         {
             ManagedInstanceAdvancedDataSecurityPolicyModel model = base.GetEntity();
-            return ModelAdapter.GetManagedInstanceAdvancedThreatProtectionPolicy(model.ResourceGroupName, model.ManagedInstanceName);
+            return ModelAdapter.GetManagedInstanceAdvancedDataSecurityPolicy(model.ResourceGroupName, model.ManagedInstanceName);
         }
 
         /// <summary>

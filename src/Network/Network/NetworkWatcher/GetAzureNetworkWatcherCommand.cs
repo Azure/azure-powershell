@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Alias("ResourceName")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The network watcher name.",
-             ParameterSetName = "Get")]
+             ParameterSetName = "List")]
         [ResourceNameCompleter("Microsoft.Network/networkWatchers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -39,10 +39,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The resource group name.",
              ParameterSetName = "List")]
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The resource group name.",
-             ParameterSetName = "Get")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -70,14 +66,14 @@ namespace Microsoft.Azure.Commands.Network
 
                 WriteObject(psNetworkWatcher);
             }
-            else if (!string.IsNullOrEmpty(this.Name))
+            else if (ShouldGetByName(ResourceGroupName, Name))
             {
                 PSNetworkWatcher psNetworkWatcher;
                 psNetworkWatcher = this.GetNetworkWatcher(this.ResourceGroupName, this.Name);
 
                 WriteObject(psNetworkWatcher);
             }
-            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
+            else if (ShouldListByResourceGroup(ResourceGroupName, Name))
             {
                 var networkWatchersList = this.NetworkWatcherClient.List(this.ResourceGroupName);
 
@@ -89,7 +85,7 @@ namespace Microsoft.Azure.Commands.Network
                     psNetworkWatchers.Add(psNetworkWatcher);
                 }
 
-                WriteObject(psNetworkWatchers, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psNetworkWatchers), true);
             }
             else
             {
@@ -103,7 +99,7 @@ namespace Microsoft.Azure.Commands.Network
                     psNetworkWatchers.Add(psNetworkWatcher);
                 }
 
-                WriteObject(psNetworkWatchers, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psNetworkWatchers), true);
             }
         }
     }
