@@ -340,7 +340,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             if (AsJob.IsPresent)
             {
-                EndProcessingImplement();
+                DoEndProcessing();
             }
         }
     }
