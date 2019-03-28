@@ -8,7 +8,7 @@
     <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Authorization" Version="1.1.18-preview"/>
     <PackageReference Include="Microsoft.Azure.PowerShell.Common" Version="1.1.18-preview"/>
     <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Compute" Version="1.1.18-preview"/>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Graph.Rbac" Version="1.1.18-preview"/>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Graph.Rbac" Version="1.0.317-preview"/>
     <PackageReference Include="Microsoft.Azure.PowerShell.Clients.KeyVault" Version="1.1.18-preview"/>
     <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Network" Version="1.1.18-preview"/>
     <PackageReference Include="Microsoft.Azure.PowerShell.Clients.ResourceManager" Version="1.1.18-preview"/>
