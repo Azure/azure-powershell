@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFrontDoorManagedRuleOverrideObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create managed rule override object
 
 ## SYNTAX
 
@@ -18,16 +18,20 @@ New-AzFrontDoorManagedRuleOverrideObject -RuleId <String> [-Action <PSAction>] [
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Create PSAzureManagedRuleOverride Object for managed WAF rule group override object creation.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:> {{ Add example code here }}
-```
+Create a managed rule override object for rule 942250 (which is in SQLI group).
 
-{{ Add example description here }}
+```powershell
+PS C:\> New-AzFrontDoorManagedRuleOverrideObject -RuleId "942250" -Action Log -EnabledState Enabled
+
+RuleId EnabledState Action
+------ ------------ ------
+942250      Enabled    Log
+```
 
 ## PARAMETERS
 

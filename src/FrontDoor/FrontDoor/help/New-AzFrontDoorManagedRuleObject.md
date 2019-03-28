@@ -25,12 +25,18 @@ Create ManagedRule Object for WAF policy creation
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFrontDoor
-ManagedRuleObject -Priority 1 -Version 0 -RuleGroupOverride $override1
+PS C:\> $ruleOverride1 = New-AzFrontDoorManagedRuleOverrideObject -RuleId "942250" -Action Log -EnabledState Enabled
+PS C:\> $ruleOverride2 = New-AzFrontDoorManagedRuleOverrideObject -RuleId "942251" -Action Log -EnabledState Enabled
+PS C:\> $override1 = New-AzFrontDoorRuleGroupOverrideObject -RuleGroupName SQLI -ManagedRuleOverride $ruleOverride1,$ruleOverride2
 
-RuleGroupOverrides                                                   Priority Version
-------------------                                                   -------- -------
-{Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride}        1 0
+PS C:\> $ruleOverride3 = New-AzFrontDoorManagedRuleOverrideObject -RuleId "941280" -Action Log -EnabledState Enabled
+PS C:\> $override2 = New-AzFrontDoorRuleGroupOverrideObject -RuleGroupName XSS -ManagedRuleOverride $ruleOverride3
+
+PS C:\> New-AzFrontDoorManagedRuleObject -Type DefaultRuleSet -Version "preview-0.1" -RuleGroupOverride $override1,$override2
+
+RuleGroupOverrides RuleSetType    RuleSetVersion
+------------------ -----------    --------------
+{SQLI, XSS}        DefaultRuleSet preview-0.1
 ```
 
 Create a ManagedRule Object

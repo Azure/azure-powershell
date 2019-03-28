@@ -25,11 +25,14 @@ Create RuleGroupOverride Object for WAF policy creation
 
 ### Example 1
 ```powershell
-PS C:\>  New-AzFrontDoorRuleGroupOverrideObject -Override SqlInjection -Action Block
+PS C:\> $ruleOverride1 = New-AzFrontDoorManagedRuleOverrideObject -RuleId "942250" -Action Log -EnabledState Enabled
+PS C:\> $ruleOverride2 = New-AzFrontDoorManagedRuleOverrideObject -RuleId "942251" -Action Log -EnabledState Enabled
 
-Action RuleGroupOverride
------- -----------------
- Block      SqlInjection
+PS C:\> New-AzFrontDoorRuleGroupOverrideObject -RuleGroupName SQLI -ManagedRuleOverride $ruleOverride1,$ruleOverride2
+
+RuleGroupName ManagedRuleOverrides
+------------- --------------------
+SQLI          {942250, 942251}
 ```
 
 Create a RuleGroupOverride Object
