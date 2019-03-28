@@ -25,24 +25,24 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the New-AzFrontDoorBackendPoolObject cmdlet.
+    /// Defines the New-FrontDoorBackendPoolsSettingObject cmdlet.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorBackendPoolsSettingsObject"), OutputType(typeof(PSBackendPoolsSettings))]
-    public class NewAzureRmFrontDoorBackendPoolsSettingsObject : AzureFrontDoorCmdletBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorBackendPoolsSettingObject"), OutputType(typeof(PSBackendPoolsSetting))]
+    public class NewAzureRmFrontDoorBackendPoolsSettingObject : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
-        public PSEnforceCertificateNameCheck EnforceCertificateNameCheck { get; set; }
+        public SwitchParameter DisableCertificateNameCheck { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var backendPoolsSettings = new PSBackendPoolsSettings
+            var backendPoolsSetting = new PSBackendPoolsSetting
             {
-                EnforceCertificateNameCheck = EnforceCertificateNameCheck
+                EnforceCertificateNameCheck = DisableCertificateNameCheck == true ? PSEnforceCertificateNameCheck.Disabled : PSEnforceCertificateNameCheck.Enabled
             };
-            WriteObject(backendPoolsSettings);
+            WriteObject(backendPoolsSetting);
         }
     }
 }

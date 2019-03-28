@@ -959,7 +959,7 @@
     "Enable-AzFrontDoorCustomDomainHttps": "Enable-AzureRmFrontDoorCustomDomainHttps",
     "Disable-AzFrontDoorCustomDomainHttps": "Disable-AzureRmFrontDoorCustomDomainHttps",
     "Get-AzFrontDoorFrontendEndpoint": "Get-AzureRmFrontDoorFrontendEndpoint",
-    "New-AzFrontDoorBackendPoolsSettingsObject": "New-AzureRmFrontDoorBackendPoolsSettingsObject"
+    "New-AzFrontDoorBackendPoolsSettingObject": "New-AzureRmFrontDoorBackendPoolsSettingObject"
   },
   "Az.HDInsight": {
     "Get-AzHDInsightJob": "Get-AzureRmHDInsightJob",

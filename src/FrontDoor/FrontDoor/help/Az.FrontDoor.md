@@ -35,8 +35,8 @@ Create a PSBackend object
 ### [New-AzFrontDoorBackendPoolObject](New-AzFrontDoorBackendPoolObject.md)
 Create a PSBackendPool object for Front Door creation
 
-### [New-AzFrontDoorBackendPoolsSettingsObject](New-AzFrontDoorBackendPoolsSettingsObject.md)
-Create a PSBackendPoolsSettings object for Front Door creation that apply to all backend pools
+### [New-AzFrontDoorBackendPoolsSettingObject](New-AzFrontDoorBackendPoolsSettingObject.md)
+{{ Fill in the Synopsis }}
 
 ### [New-AzFrontDoorCustomRuleObject](New-AzFrontDoorCustomRuleObject.md)
 Create CustomRule Object for WAF policy creation
@@ -55,6 +55,9 @@ Create a PSLoadBalancingSetting object for Front Door creation
 
 ### [New-AzFrontDoorManagedRuleObject](New-AzFrontDoorManagedRuleObject.md)
 Create ManagedRule Object for WAF policy creation
+
+### [New-AzFrontDoorManagedRuleOverrideObject](New-AzFrontDoorManagedRuleOverrideObject.md)
+{{ Fill in the Synopsis }}
 
 ### [New-AzFrontDoorMatchConditionObject](New-AzFrontDoorMatchConditionObject.md)
 Create MatchCondition Object for WAF policy creation
