@@ -15,14 +15,14 @@ Updates an Azure NetApp Files (ANF) volume according to the optional modifiers p
 ### ByFieldsParameterSet (Default)
 ```
 Update-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -AccountName <String>
- -PoolName <String> -Name <String> | -VolumeName <String> [-UsageThreshold <Int64>] [-ServiceLevel <String>] [-Tag <Hashtable>]
+ -PoolName <String> -Name <String> [-UsageThreshold <Int64>] [-ServiceLevel <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Update-AzNetAppFilesVolume -Name <String> | -VolumeName <String> [-UsageThreshold <Int64>] [-ServiceLevel <String>] [-Tag <Hashtable>]
- [-PoolInputObject <PSNetAppFilesAccount>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Update-AzNetAppFilesVolume -Name <String> [-UsageThreshold <Int64>] [-ServiceLevel <String>] [-Tag <Hashtable>]
+ -PoolObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -136,21 +136,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PoolInputObject
-The pool object containing the volume to update
-
-```yaml
-Type: PSNetAppFilesAccount
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -PoolName
 The name of the ANF pool
 
@@ -163,6 +148,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PoolObject
+The pool object containing the volume to update
+
+```yaml
+Type: PSNetAppFilesPool
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -263,7 +263,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool
 
 ### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
 

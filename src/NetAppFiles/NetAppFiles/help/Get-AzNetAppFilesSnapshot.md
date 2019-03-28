@@ -15,18 +15,18 @@ Gets details of an Azure NetApp Files (ANF) snapshot.
 ### ByFieldsParameterSet (Default)
 ```
 Get-AzNetAppFilesSnapshot -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- -VolumeName <String> [-Name <String> | -SnapshotName <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ -VolumeName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Get-AzNetAppFilesSnapshot -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetAppFilesSnapshot [-Name <String>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Get-AzNetAppFilesSnapshot [-Name <String> | -SnapshotName <String>] [-VolumeInputObject <PSNetAppFilesPool>]
+Get-AzNetAppFilesSnapshot [-Name <String>] -VolumeObject <PSNetAppFilesVolume>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -147,21 +147,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VolumeInputObject
-The pool object containing the volume to return
-
-```yaml
-Type: PSNetAppFilesPool
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -VolumeName
 The name of the ANF volume
 
@@ -177,6 +162,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VolumeObject
+The volume object containing the snapshot to return
+
+```yaml
+Type: PSNetAppFilesVolume
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
@@ -185,7 +185,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### System.String
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
 
 ## OUTPUTS
 
