@@ -20,12 +20,7 @@ jobs:
       custom: msbuild
       arguments: 'build.proj /t:Build /p:Configuration=$(Configuration)'
 
-  - task: PublishPipelineArtifact@0
-    displayName: 'Save build'
-    inputs:
-      artifactName: artifacts
-      targetPath: artifacts
-    condition: succeededOrFailed()
+  - template: publish-artifacts-steps.yml
 
 - job: Generate_Help
   displayName: Generate Help
@@ -51,12 +46,7 @@ jobs:
       custom: msbuild
       arguments: 'build.proj /t:GenerateHelp /p:Configuration=$(Configuration)'
 
-  - task: PublishPipelineArtifact@0
-    displayName: 'Save help'
-    inputs:
-      artifactName: artifacts
-      targetPath: artifacts
-    condition: succeededOrFailed()
+  - template: publish-artifacts-steps.yml
 
 - job: Static_Analysis
   displayName: Static Analysis
@@ -79,12 +69,7 @@ jobs:
       custom: msbuild
       arguments: 'build.proj /t:StaticAnalysis /p:Configuration=$(Configuration)'
 
-  - task: PublishPipelineArtifact@0
-    displayName: 'Save static-analysis'
-    inputs:
-      artifactName: artifacts
-      targetPath: artifacts
-    condition: succeededOrFailed()
+  - template: publish-artifacts-steps.yml
 
 - job: Test
   displayName: Test
@@ -107,9 +92,4 @@ jobs:
       custom: msbuild
       arguments: 'build.proj /t:Test /p:Configuration=$(Configuration);Framework=netcoreapp2.1'
 
-  - task: PublishPipelineArtifact@0
-    displayName: 'Save test'
-    inputs:
-      artifactName: artifacts
-      targetPath: artifacts
-    condition: succeededOrFailed()
+  - template: publish-artifacts-steps.yml
