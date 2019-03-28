@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.2
+* Fix ARM template bug that breaks cloning all slots using `New-AzWebApp -IncludeSourceWebAppSlots` 
+
+## Version 1.1.1
+* Correct example in Get-AzWebAppSlotMetrics
+
 ## Version 1.1.0
 * Update incorrect online help URLs
 * Fixes `New-AzWebAppSSLBinding` to upload the certificate to the correct resourcegroup+location if the app is hosted on an ASE.

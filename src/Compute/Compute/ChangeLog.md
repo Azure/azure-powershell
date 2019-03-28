@@ -20,6 +20,22 @@
 -->
 ## Upcoming Release
 
+## Version 1.6.0
+* Fix issue with path resolution in Get-AzVmBootDiagnosticsData
+* Update Compute client library to 25.0.0.
+* Add new parameter sets to Set-AzVMCustomScriptExtension
+    - Accepts PSVirtualMachine object from pipeline
+    - Accepts Resource Id and a VirtualMachineCustomScriptExtensionContext also from pipeline
+
+## Version 1.5.0
+* Add wildcard support to Get cmdlets
+
+## Version 1.4.0
+* Fix issue with ID parameter sets
+* Update Get-AzVMExtension to list all installed extension if Name parameter is not provided
+* Add Tag and ResourceId parameters to Update-AzImage cmdlet
+* Get-AzVmssVM without instance ID and with InstanceView can list VMSS VMs with instance view.
+
 ## Version 1.3.0
 * AEM extension: Add support for UltraSSD and P60,P70 and P80 disks
 * Update help description for Set-AzVMBootDiagnostics

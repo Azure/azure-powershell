@@ -119,3 +119,16 @@ function Assert-CompressionTypes($types1, $types2)
         }
     }
 }
+
+<#
+.SYNOPSIS
+Sleep in record mode only
+#>
+function SleepInRecordMode ([int]$SleepIntervalInSec)
+{
+    $mode = $env:AZURE_TEST_MODE
+    if ( $mode -ne $null -and $mode.ToUpperInvariant() -eq "RECORD")
+    {
+        Wait-Seconds $SleepIntervalInSec 
+    }
+}
