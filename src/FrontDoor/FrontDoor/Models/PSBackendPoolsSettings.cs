@@ -18,7 +18,7 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Models
 {
-    public class PSBackendPoolsSettings
+    public class PSBackendPoolsSetting
     {
         public PSEnforceCertificateNameCheck? EnforceCertificateNameCheck { get; set; }
     }

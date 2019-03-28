@@ -17,7 +17,7 @@ Update a Front Door load balancer
 Set-AzFrontDoor -ResourceGroupName <String> -Name <String> [-RoutingRule <PSRoutingRule[]>]
  [-BackendPool <PSBackendPool[]>] [-FrontendEndpoint <PSFrontendEndpoint[]>]
  [-LoadBalancingSetting <PSLoadBalancingSetting[]>] [-HealthProbeSetting <PSHealthProbeSetting[]>]
- [-Tag <Hashtable>] [-EnabledState <PSEnabledState>] [-BackendPoolsSettings <PSBackendPoolsSettings>]
+ [-Tag <Hashtable>] [-EnabledState <PSEnabledState>] [-BackendPoolsSetting <PSBackendPoolsSetting>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,8 +26,8 @@ Set-AzFrontDoor -ResourceGroupName <String> -Name <String> [-RoutingRule <PSRout
 Set-AzFrontDoor -InputObject <PSFrontDoor> [-RoutingRule <PSRoutingRule[]>] [-BackendPool <PSBackendPool[]>]
  [-FrontendEndpoint <PSFrontendEndpoint[]>] [-LoadBalancingSetting <PSLoadBalancingSetting[]>]
  [-HealthProbeSetting <PSHealthProbeSetting[]>] [-Tag <Hashtable>] [-EnabledState <PSEnabledState>]
- [-BackendPoolsSettings <PSBackendPoolsSettings>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-BackendPoolsSetting <PSBackendPoolsSetting>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
@@ -35,8 +35,8 @@ Set-AzFrontDoor -InputObject <PSFrontDoor> [-RoutingRule <PSRoutingRule[]>] [-Ba
 Set-AzFrontDoor -ResourceId <String> [-RoutingRule <PSRoutingRule[]>] [-BackendPool <PSBackendPool[]>]
  [-FrontendEndpoint <PSFrontendEndpoint[]>] [-LoadBalancingSetting <PSLoadBalancingSetting[]>]
  [-HealthProbeSetting <PSHealthProbeSetting[]>] [-Tag <Hashtable>] [-EnabledState <PSEnabledState>]
- [-BackendPoolsSettings <PSBackendPoolsSettings>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-BackendPoolsSetting <PSBackendPoolsSetting>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,11 +130,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BackendPoolsSettings
+### -BackendPoolsSetting
 Settings that apply to all backend pools.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSettings
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSetting
 Parameter Sets: (All)
 Aliases:
 

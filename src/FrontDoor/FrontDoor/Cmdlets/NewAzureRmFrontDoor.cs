@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Settings that apply to all backend pools.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Settings that apply to all backend pools.")]
-        public PSBackendPoolsSettings BackendPoolsSettings { get; set; }
+        public PSBackendPoolsSetting BackendPoolsSetting { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                     backendPools: BackendPool?.Select(x => x.ToSdkBackendPool()).ToList(),
                     frontendEndpoints: FrontendEndpoint?.Select(x => x.ToSdkFrontendEndpoints()).ToList(),
                     enabledState: !this.IsParameterBound(c => c.EnabledState)? "Enabled" : EnabledState.ToString(),
-                    backendPoolsSettings : !this.IsParameterBound(c => c.BackendPoolsSettings) ? null : BackendPoolsSettings.ToSdkBackendPoolsSettings()
+                    backendPoolsSettings : !this.IsParameterBound(c => c.BackendPoolsSetting) ? null : BackendPoolsSetting.ToSdkBackendPoolsSettings()
                     );
             updateParameters.ToPSFrontDoor().ValidateFrontDoor(ResourceGroupName, this.DefaultContext.Subscription.Id);
             if (ShouldProcess(Resources.FrontDoorTarget, string.Format(Resources.CreateFrontDoor, Name)))
