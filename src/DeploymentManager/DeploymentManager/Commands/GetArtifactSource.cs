@@ -61,14 +61,14 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ValueFromPipeline = true, 
             HelpMessage = "Artifact Source object.")]
         [ValidateNotNullOrEmpty]
-        public PSArtifactSource ArtifactSourceObject { get; set; }
+        public PSArtifactSource InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (this.ArtifactSourceObject != null)
+            if (this.InputObject != null)
             {
-                this.ResourceGroupName = this.ArtifactSourceObject.ResourceGroupName;
-                this.Name = this.ArtifactSourceObject.Name;
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.Name = this.InputObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ResourceId))
             {

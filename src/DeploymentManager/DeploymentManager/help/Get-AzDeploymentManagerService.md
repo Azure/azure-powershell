@@ -21,7 +21,8 @@ Get-AzDeploymentManagerService [-ResourceGroupName] <String> [-ServiceTopologyNa
 ### ByServiceTopologyObject
 ```
 Get-AzDeploymentManagerService [-ResourceGroupName] <String> [-Name] <String>
- [-ServiceTopology] <PSServiceTopologyResource> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ServiceTopologyObject] <PSServiceTopologyResource> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByServiceTopologyResourceId
@@ -38,7 +39,7 @@ Get-AzDeploymentManagerService [-ResourceId] <String> [-DefaultProfile <IAzureCo
 
 ### InputObject
 ```
-Get-AzDeploymentManagerService [-ServiceObject] <PSServiceResource> [-DefaultProfile <IAzureContextContainer>]
+Get-AzDeploymentManagerService [-InputObject] <PSServiceResource> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -92,6 +93,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Service object.
+
+```yaml
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource
+Parameter Sets: InputObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the service.
 
@@ -137,27 +153,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ServiceObject
-Service object.
+### -ServiceTopologyName
+The name of the service topology.
 
 ```yaml
-Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource
-Parameter Sets: InputObject
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ServiceTopology
-The service topology object in which the service should be created.
-
-```yaml
-Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource
-Parameter Sets: ByServiceTopologyObject
+Type: System.String
+Parameter Sets: Interactive
 Aliases:
 
 Required: True
@@ -167,12 +168,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServiceTopologyName
-The name of the service topology.
+### -ServiceTopologyObject
+The service topology object in which the service should be created.
 
 ```yaml
-Type: System.String
-Parameter Sets: Interactive
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource
+Parameter Sets: ByServiceTopologyObject
 Aliases:
 
 Required: True

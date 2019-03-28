@@ -28,8 +28,8 @@ New-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceName] 
  -Location <String> -TargetResourceGroup <String> -DeploymentMode <String> [-ParametersUri <String>]
  [-TemplateUri <String>] [-TemplateArtifactSourceRelativePath <String>]
  [-ParametersArtifactSourceRelativePath <String>] [-Tag <Hashtable>]
- [-ServiceTopology] <PSServiceTopologyResource> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ServiceTopologyObject] <PSServiceTopologyResource> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTopologyResourceAndServiceName
@@ -46,7 +46,7 @@ New-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceName] 
 New-AzDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-Name] <String> -Location <String>
  -TargetResourceGroup <String> -DeploymentMode <String> [-ParametersUri <String>] [-TemplateUri <String>]
  [-TemplateArtifactSourceRelativePath <String>] [-ParametersArtifactSourceRelativePath <String>]
- [-Tag <Hashtable>] [-Service] <PSServiceResource> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-Tag <Hashtable>] [-ServiceObject] <PSServiceResource> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -206,12 +206,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Service
-The service object in which the service unit should be created.
+### -ServiceName
+The name of the service this service unit is a part of.
 
 ```yaml
-Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource
-Parameter Sets: ByServiceObject
+Type: System.String
+Parameter Sets: ByTopologyAndServiceNames, ByTopologyObjectAndServiceName, ByTopologyResourceAndServiceName
 Aliases:
 
 Required: True
@@ -221,12 +221,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServiceName
-The name of the service this service unit is a part of.
+### -ServiceObject
+The service object in which the service unit should be created.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByTopologyAndServiceNames, ByTopologyObjectAndServiceName, ByTopologyResourceAndServiceName
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource
+Parameter Sets: ByServiceObject
 Aliases:
 
 Required: True
@@ -251,12 +251,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServiceTopology
-The service topology object in which the service unit should be created.
+### -ServiceTopologyName
+The name of the serivce topology this service unit is a part of.
 
 ```yaml
-Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource
-Parameter Sets: ByTopologyObjectAndServiceName
+Type: System.String
+Parameter Sets: ByTopologyAndServiceNames
 Aliases:
 
 Required: True
@@ -266,12 +266,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServiceTopologyName
-The name of the serivce topology this service unit is a part of.
+### -ServiceTopologyObject
+The service topology object in which the service unit should be created.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByTopologyAndServiceNames
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource
+Parameter Sets: ByTopologyObjectAndServiceName
 Aliases:
 
 Required: True

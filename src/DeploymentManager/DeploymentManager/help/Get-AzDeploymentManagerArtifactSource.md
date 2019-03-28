@@ -27,7 +27,7 @@ Get-AzDeploymentManagerArtifactSource [-ResourceId] <String> [-DefaultProfile <I
 
 ### InputObject
 ```
-Get-AzDeploymentManagerArtifactSource [-ArtifactSourceObject] <PSArtifactSource>
+Get-AzDeploymentManagerArtifactSource [-InputObject] <PSArtifactSource>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -60,21 +60,6 @@ This command gets an artifact source whose name and ResourceGroup match the Name
 
 ## PARAMETERS
 
-### -ArtifactSourceObject
-Artifact Source object.
-
-```yaml
-Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource
-Parameter Sets: InputObject
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -87,6 +72,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Artifact Source object.
+
+```yaml
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSArtifactSource
+Parameter Sets: InputObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

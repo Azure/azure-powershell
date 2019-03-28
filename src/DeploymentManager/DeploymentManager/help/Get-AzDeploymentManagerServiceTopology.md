@@ -26,7 +26,7 @@ Get-AzDeploymentManagerServiceTopology [-ResourceId] <String> [-DefaultProfile <
 
 ### InputObject
 ```
-Get-AzDeploymentManagerServiceTopology [-ServiceTopologyObject] <PSServiceTopologyResource>
+Get-AzDeploymentManagerServiceTopology [-InputObject] <PSServiceTopologyResource>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -76,6 +76,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Service topology resource object.
+
+```yaml
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource
+Parameter Sets: InputObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the service topology.
 
@@ -118,21 +133,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ServiceTopologyObject
-Service topology resource object.
-
-```yaml
-Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource
-Parameter Sets: InputObject
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

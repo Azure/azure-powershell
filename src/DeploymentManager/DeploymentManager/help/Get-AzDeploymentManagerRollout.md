@@ -26,7 +26,7 @@ Get-AzDeploymentManagerRollout [-ResourceId] <String> [-DefaultProfile <IAzureCo
 
 ### InputObject
 ```
-Get-AzDeploymentManagerRollout [-RolloutObject] <PSRollout> [-DefaultProfile <IAzureContextContainer>]
+Get-AzDeploymentManagerRollout [-InputObject] <PSRollout> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -81,6 +81,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Rollout object.
+
+```yaml
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout
+Parameter Sets: InputObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -141,21 +156,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RolloutObject
-Rollout object.
-
-```yaml
-Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout
-Parameter Sets: InputObject
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ParameterSetName = NewServiceUnit.ByTopologyObjectAndServiceNameParameterSet,
             HelpMessage = "The service topology object in which the service unit should be created.")]
         [ValidateNotNullOrEmpty]
-        public PSServiceTopologyResource ServiceTopology { get; set; }
+        public PSServiceTopologyResource ServiceTopologyObject { get; set; }
 
         [Parameter(
             Position = 1,
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ParameterSetName = NewServiceUnit.ByServiceObjectParameterSet,
             HelpMessage = "The service object in which the service unit should be created.")]
         [ValidateNotNullOrEmpty]
-        public PSServiceResource Service { get; set; }
+        public PSServiceResource ServiceObject { get; set; }
 
         [Parameter(
             Position = 2,
@@ -199,10 +199,10 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         private void ResolveParameters()
         {
-            if (this.Service != null)
+            if (this.ServiceObject != null)
             {
-                this.ServiceTopologyName = this.Service.ServiceTopologyName;
-                this.ServiceName = this.Service.Name;
+                this.ServiceTopologyName = this.ServiceObject.ServiceTopologyName;
+                this.ServiceName = this.ServiceObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ServiceResourceId))
             {
@@ -216,9 +216,9 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
                 this.ServiceTopologyName = tokens[1];
             }
-            else if (this.ServiceTopology != null)
+            else if (this.ServiceTopologyObject != null)
             {
-                this.ServiceTopologyName = this.ServiceTopology.Name;
+                this.ServiceTopologyName = this.ServiceTopologyObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ServiceTopologyResourceId))
             {

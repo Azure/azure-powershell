@@ -22,7 +22,7 @@ New-AzDeploymentManagerService [-ResourceGroupName] <String> [-ServiceTopologyNa
 ### ByServiceTopologyObject
 ```
 New-AzDeploymentManagerService [-ResourceGroupName] <String> -Name <String> -Location <String>
- -TargetLocation <String> -TargetSubscriptionId <String> [-ServiceTopology] <PSServiceTopologyResource>
+ -TargetLocation <String> -TargetSubscriptionId <String> [-ServiceTopologyObject] <PSServiceTopologyResource>
  [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -110,21 +110,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServiceTopology
-The service topology object in which the service should be created.
-
-```yaml
-Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource
-Parameter Sets: ByServiceTopologyObject
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ServiceTopologyId
 The service topology resource identifier in which the service should be created.
 
@@ -146,6 +131,21 @@ The name of the service topology this service belongs to.
 ```yaml
 Type: System.String
 Parameter Sets: Interactive
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceTopologyObject
+The service topology object in which the service should be created.
+
+```yaml
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource
+Parameter Sets: ByServiceTopologyObject
 Aliases:
 
 Required: True
