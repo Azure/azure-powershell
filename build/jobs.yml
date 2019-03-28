@@ -20,12 +20,11 @@ jobs:
       custom: msbuild
       arguments: 'build.proj /t:Build /p:Configuration=$(Configuration)'
 
-  - task: PublishBuildArtifacts@1
+  - task: PublishPipelineArtifact@0
     displayName: 'Save build'
     inputs:
-      artifactName: build
-      pathtoPublish: artifacts
-      publishLocation: 'Container'
+      artifactName: artifacts
+      targetPath: artifacts
     condition: succeededOrFailed()
 
 - job: Generate_Help
@@ -52,12 +51,11 @@ jobs:
       custom: msbuild
       arguments: 'build.proj /t:GenerateHelp /p:Configuration=$(Configuration)'
 
-  - task: PublishBuildArtifacts@1
+  - task: PublishPipelineArtifact@0
     displayName: 'Save help'
     inputs:
-      artifactName: help
-      pathtoPublish: artifacts
-      publishLocation: 'Container'
+      artifactName: artifacts
+      targetPath: artifacts
     condition: succeededOrFailed()
 
 - job: Static_Analysis
@@ -81,12 +79,11 @@ jobs:
       custom: msbuild
       arguments: 'build.proj /t:StaticAnalysis /p:Configuration=$(Configuration)'
 
-  - task: PublishBuildArtifacts@1
+  - task: PublishPipelineArtifact@0
     displayName: 'Save static-analysis'
     inputs:
-      artifactName: 'static-analysis'
-      pathtoPublish: artifacts/StaticAnalysisResults
-      publishLocation: 'Container'
+      artifactName: artifacts
+      targetPath: artifacts
     condition: succeededOrFailed()
 
 - job: Test
@@ -110,60 +107,9 @@ jobs:
       custom: msbuild
       arguments: 'build.proj /t:Test /p:Configuration=$(Configuration);Framework=netcoreapp2.1'
 
-  - task: PublishBuildArtifacts@1
+  - task: PublishPipelineArtifact@0
     displayName: 'Save test'
     inputs:
-      artifactName: test
-      pathtoPublish: artifacts/TestResults
-      publishLocation: 'Container'
-    condition: succeededOrFailed()
-
-- job: Save_All
-  displayName: Save All
-  dependsOn:
-  - Generate_Help
-  - Static_Analysis
-  - Test
-  condition: succeededOrFailed()
-  pool:
-    vmImage: ${{ parameters.vmImage }}
-  steps:
-  - template: download-build-steps.yml
-
-  - task: DownloadBuildArtifacts@0
-    displayName: 'Download help'
-    inputs:
-      buildType: 'current'
-      downloadType: 'single'
-      artifactName: help
-      itemPattern: 'help/**'
-      downloadPath: artifacts
-    condition: succeededOrFailed()
-
-  - task: DownloadBuildArtifacts@0
-    displayName: 'Download static-analysis'
-    inputs:
-      buildType: 'current'
-      downloadType: 'single'
-      artifactName: 'static-analysis'
-      itemPattern: 'static-analysis/**'
-      downloadPath: artifacts/StaticAnalysisResults
-    condition: succeededOrFailed()
-
-  - task: DownloadBuildArtifacts@0
-    displayName: 'Download test'
-    inputs:
-      buildType: 'current'
-      downloadType: 'single'
-      artifactName: test
-      itemPattern: 'test/**'
-      downloadPath: artifacts/TestResults
-    condition: succeededOrFailed()
-
-  - task: PublishBuildArtifacts@1
-    displayName: 'Save all'
-    inputs:
-      artifactName: all
-      pathtoPublish: artifacts
-      publishLocation: 'Container'
+      artifactName: artifacts
+      targetPath: artifacts
     condition: succeededOrFailed()
