@@ -112,7 +112,7 @@ Location             : global
 Tags                 :
 ```
 
-This command disables a metric alert rule. This is done by getting the rule you want to disable and setting enabled flag to false. 
+This command disables a metric alert rule. 
 
 ### Example 4: Add a metric alert rule with dimensions
 
