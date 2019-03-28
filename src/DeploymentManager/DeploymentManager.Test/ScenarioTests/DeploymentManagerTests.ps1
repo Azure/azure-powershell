@@ -134,7 +134,7 @@ function Test-Service
 	$serviceName = $resourceGroupName + "Service"
 	$targetLocation = Get-ProviderLocation "Microsoft.Storage/storageAccounts"
 
-	$service = New-AzDeploymentManagerService -ResourceGroupName $resourceGroupName -Location $location -Name $serviceName -ServiceTopology $serviceTopology -TargetLocation $targetLocation -TargetSubscriptionId $subscriptionId
+	$service = New-AzDeploymentManagerService -ResourceGroupName $resourceGroupName -Location $location -Name $serviceName -ServiceTopologyObject $serviceTopology -TargetLocation $targetLocation -TargetSubscriptionId $subscriptionId
 
 	Validate-Service $service $resourceGroupName $location $serviceTopology.Name $serviceName $targetLocation $subscriptionId
 
@@ -204,7 +204,7 @@ function Test-ServiceUnit
 	$serviceUnit = New-AzDeploymentManagerServiceUnit `
 		-ResourceGroupName $resourceGroupName `
 		-Location $location `
-		-ServiceTopology $serviceTopology `
+		-ServiceTopologyObject $serviceTopology `
 		-ServiceName $service.Name `
 		-Name $serviceUnitName `
 		-TargetResourceGroup $resourceGroupName `
@@ -229,7 +229,7 @@ function Test-ServiceUnit
 		$invalidServiceUnit = New-AzDeploymentManagerServiceUnit   `
 			-ResourceGroupName $resourceGroupName  `
 			-Location $location  `
-			-ServiceTopology $serviceTopology  `
+			-ServiceTopologyObject $serviceTopology  `
 			-ServiceName $service.Name  `
 			-Name $invalidServiceUnitName `
 			-TargetResourceGroup $resourceGroupName `
