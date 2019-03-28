@@ -53,6 +53,9 @@ Create a PSLoadBalancingSetting object for Front Door creation
 ### [New-AzFrontDoorManagedRuleObject](New-AzFrontDoorManagedRuleObject.md)
 Create ManagedRule Object for WAF policy creation
 
+### [New-AzFrontDoorManagedRuleOverrideObject](New-AzFrontDoorManagedRuleOverrideObject.md)
+Create Managed Rule Override Object for managed WAF rule group override object creation.
+
 ### [New-AzFrontDoorMatchConditionObject](New-AzFrontDoorMatchConditionObject.md)
 Create MatchCondition Object for WAF policy creation
 
