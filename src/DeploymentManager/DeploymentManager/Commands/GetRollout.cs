@@ -69,14 +69,14 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ValueFromPipeline = true,
             HelpMessage = "Rollout object.")]
         [ValidateNotNullOrEmpty]
-        public PSRollout RolloutObject { get; set; }
+        public PSRollout InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (this.RolloutObject != null)
+            if (this.InputObject != null)
             {
-                this.ResourceGroupName = this.RolloutObject.ResourceGroupName;
-                this.Name = this.RolloutObject.Name;
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.Name = this.InputObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ResourceId))
             {

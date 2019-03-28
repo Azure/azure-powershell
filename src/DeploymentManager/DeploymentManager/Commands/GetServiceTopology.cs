@@ -61,14 +61,14 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ValueFromPipeline = true,
             HelpMessage = "Service topology resource object.")]
         [ValidateNotNullOrEmpty]
-        public PSServiceTopologyResource ServiceTopologyObject { get; set; }
+        public PSServiceTopologyResource InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (this.ServiceTopologyObject != null)
+            if (this.InputObject != null)
             {
-                this.ResourceGroupName = this.ServiceTopologyObject.ResourceGroupName;
-                this.Name = this.ServiceTopologyObject.Name;
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.Name = this.InputObject.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ResourceId))
             {

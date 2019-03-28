@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ParameterSetName = NewService.ByServiceTopologyObjectParameterSet,
             HelpMessage = "The service topology object in which the service should be created.")]
         [ValidateNotNullOrEmpty]
-        public PSServiceTopologyResource ServiceTopology { get; set; }
+        public PSServiceTopologyResource ServiceTopologyObject { get; set; }
 
         [Parameter(
             Position = 1,
@@ -99,9 +99,9 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         {
             if (this.ShouldProcess(this.Name, Messages.CreateService))
             {
-                if (this.ServiceTopology != null)
+                if (this.ServiceTopologyObject != null)
                 {
-                    this.ServiceTopologyName = this.ServiceTopology.Name;
+                    this.ServiceTopologyName = this.ServiceTopologyObject.Name;
                 }
                 else if (!string.IsNullOrWhiteSpace(this.ServiceTopologyId))
                 {
