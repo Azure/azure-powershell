@@ -52,7 +52,7 @@ This command deletes a rollout named ContosoRollout in the ContosoResourceGroup.
 
 ### Example 3: Delete a rollout using the rollout object.
 ```powershell
-PS C:\> Remove-AzDeploymentManagerRollout -Rollout $rolloutObject
+PS C:\> Remove-AzDeploymentManagerRollout -InputObject $rolloutObject
 ```
 
 This command deletes a rollout whose name and ResourceGroup match the Name and ResourceGroupName properties of the $rolloutObject, respectively.

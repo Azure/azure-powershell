@@ -53,7 +53,7 @@ This command restarts a rollout named ContosoRollout in the ContosoResourceGroup
 
 ### Example 3: Restart a rollout using the rollout object.
 ```powershell
-PS C:\> Get-AzDeploymentManagerRollout -Rollout $rolloutObject
+PS C:\> Get-AzDeploymentManagerRollout -InputObject $rolloutObject
 ```
 
 This command restarts a rollout whose name and ResourceGroup match the Name and ResourceGroupName properties of the $rolloutObject, respectively.

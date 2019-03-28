@@ -22,7 +22,6 @@ The **New-AzDeploymentManagerStep** cmdlet creates a deployment step that can be
 Specify the *Name*, *ResourceGroupName* and required properties.
 
 You can modify the returned object locally and then apply the changes to the step by using the Set-AzDeploymentManagerStep cmdlet.
-{{Fill in the Description}}
 
 ## EXAMPLES
 

@@ -54,7 +54,7 @@ This command gets a service topology named ContosoServiceTopology in the Contoso
 
 ### Example 3: Get a service topology using the service topology object.
 ```powershell
-PS C:\> Get-AzDeploymentManagerService -ServiceTopology $serviceTopologyObject
+PS C:\> Get-AzDeploymentManagerService -InputObject $serviceTopologyObject
 ```
 
 This command gets a service topology whose name and ResourceGroup match the Name and ResourceGroupName properties of the $serviceTopologyObject, respectively.

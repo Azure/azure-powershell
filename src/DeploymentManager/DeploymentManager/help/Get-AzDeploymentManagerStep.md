@@ -55,7 +55,7 @@ This command gets a step named ContosoService1WaitStep in ContosoResourceGroup.
 
 ### Example 3: Get a step using an object returned by New-AzDeploymentManagerStep
 ```powershell
-PS C:\> Get-AzDeploymentManagerStep -Step $stepObject
+PS C:\> Get-AzDeploymentManagerStep -InputObject $stepObject
 ```
 
  This command gets a step whose name and ResourceGroup match the Name and ResourceGroupName properties of the $stepObject, respectively.

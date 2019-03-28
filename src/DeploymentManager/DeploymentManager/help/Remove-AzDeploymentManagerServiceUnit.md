@@ -80,7 +80,7 @@ This command gets a service unit named ContosoService1Storage under a service Co
 
 ### Example 3: Delete a service unit using the service unit object.
 ```powershell
-PS C:\> Remove-AzDeploymentManagerServiceUnit -ServiceUnit $serviceUnitObject
+PS C:\> Remove-AzDeploymentManagerServiceUnit -InputObject $serviceUnitObject
 ```
 
 This command deletes a service unit whose name, service name, service topology name and ResourceGroup match the Name, ServiceName, ServiceTopologyName and ResourceGroupName properties of the $serviceUnitObject, respectively.

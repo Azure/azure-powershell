@@ -48,7 +48,6 @@ The **Get-AzDeploymentManagerService** cmdlet gets a service under a service top
 Specify the service by its name, service topology it is in and the resource group name. Alternately, you can provide the Service object or the ResourceId.
 
 You can modify this object locally, and then apply changes to the service by using the Set-AzDeploymentManagerService cmdlet.
-{{Fill in the Description}}
 
 ## EXAMPLES
 
@@ -68,12 +67,10 @@ This command gets a service named ContosoService1 in a service topology named Co
 
 ### Example 3: Get a service using the service object.
 ```powershell
-PS C:\> Get-AzDeploymentManagerService -Service $serviceObject
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzDeploymentManagerService -InputObject $serviceObject
 ```
 
 This command gets a service whose name, service topology name and ResourceGroup match the Name, ServiceTopologyName and ResourceGroupName properties of the $serviceObject, respectively.
-{{ Add example description here }}
  
 
 ## PARAMETERS

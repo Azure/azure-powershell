@@ -53,7 +53,7 @@ This command deletes a service topology named ContosoServiceTopology in the Cont
 
 ### Example 3: Delete a service topology using the service topology object.
 ```powershell
-PS C:\> Remove-AzDeploymentManagerService -ServiceTopology $serviceTopologyObject
+PS C:\> Remove-AzDeploymentManagerService -InputObject $serviceTopologyObject
 ```
 
 This command deletes a service topology whose name and ResourceGroup match the Name and ResourceGroupName properties of the $serviceTopologyObject, respectively.
