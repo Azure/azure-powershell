@@ -13,7 +13,7 @@ Create ManagedRule Object for WAF policy creation
 ## SYNTAX
 
 ```
-New-AzFrontDoorManagedRuleObject -Priority <Int32> [-Version <String>]
+New-AzFrontDoorManagedRuleObject -Type <String> -Version <String>
  [-RuleGroupOverride <PSAzureRuleGroupOverride[]>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -52,21 +52,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Priority
-Describes priority of the rule
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -RuleGroupOverride
 List of azure managed provider override configuration
 
@@ -82,6 +67,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Type
+Type of the ruleset
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Version
 Version of the ruleset
 
@@ -90,7 +90,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
