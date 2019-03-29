@@ -37,9 +37,10 @@ function Test-Disk
         $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 500 -SkuName UltraSSD_LRS -OsType Windows -CreateOption Empty -DiskMBpsReadWrite 8 -DiskIOPSReadWrite 500;
         Assert-AreEqual "UltraSSD_LRS" $diskconfig.Sku.Name;
         Assert-AreEqual 500 $diskconfig.DiskIOPSReadWrite;
-        Assert-AreEqual 8 $diskconfig.DiskMBpsReadWrite
+        Assert-AreEqual 8 $diskconfig.DiskMBpsReadWrite;
 
-        $diskconfig = New-AzDiskConfig -Location $loc -Zone "1" -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+        $diskconfig = New-AzDiskConfig -Location $loc -Zone "1" -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty `
+                                       -EncryptionSettingsEnabled $true -HyperVGeneration "V1";
         # Encryption test
         $diskconfig = Set-AzDiskDiskEncryptionKey -Disk $diskconfig -SecretUrl $mocksecret -SourceVaultId $mocksourcevault;
         $diskconfig = Set-AzDiskKeyEncryptionKey -Disk $diskconfig -KeyUrl $mockkey -SourceVaultId $mocksourcevault;
@@ -140,6 +141,7 @@ function Test-Disk
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
         Assert-AreEqual $false $disk.EncryptionSettings.Enabled;
+        Assert-AreEqual "V1" $disk.HyperVGeneration;
 
         # Grant access test
         $job = Grant-AzDiskAccess -ResourceGroupName $rgname -DiskName $diskname -Access $access -DurationInSecond 5 -AsJob;
@@ -197,7 +199,8 @@ function Test-Snapshot
         $access = 'Read';
 
         # Config and create test
-        $snapshotconfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+        $snapshotconfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty `
+                                               -EncryptionSettingsEnabled $true  -HyperVGeneration "V2";
 
         # Encryption test
         $snapshotconfig = Set-AzSnapshotDiskEncryptionKey -Snapshot $snapshotconfig -SecretUrl $mocksecret -SourceVaultId $mocksourcevault;
@@ -287,6 +290,7 @@ function Test-Snapshot
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
         Assert-AreEqual $false $snapshot.EncryptionSettings.Enabled;
+        Assert-AreEqual "V2" $snapshot.HyperVGeneration;
 
         # Grant access test
         $job = Grant-AzSnapshotAccess -ResourceGroupName $rgname -SnapshotName $snapshotname -Access $access -DurationInSecond 5 -AsJob;
@@ -494,6 +498,7 @@ function Test-DiskEncrypt
         Assert-AreEqual $mocksecret $disk.EncryptionSettings.DiskEncryptionKey.SecretUrl;
         Assert-AreEqual $mocksourcevault $disk.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
         Assert-AreEqual $mockkey $disk.EncryptionSettings.KeyEncryptionKey.KeyUrl;
+        Assert-Null $disk.HyperVGeneration;
 
         # Grant access test
         $job = Grant-AzDiskAccess -ResourceGroupName $rgname -DiskName $diskname -Access $access -DurationInSecond 5 -AsJob;
@@ -686,6 +691,7 @@ function Test-SnapshotEncrypt
         Assert-AreEqual $mocksecret $snapshot.EncryptionSettings.DiskEncryptionKey.SecretUrl;
         Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
         Assert-AreEqual $mockkey $snapshot.EncryptionSettings.KeyEncryptionKey.KeyUrl;
+        Assert-Null $snapshot.HyperVGeneration;
 
         # Grant access test
         $job = Grant-AzSnapshotAccess -ResourceGroupName $rgname -SnapshotName $snapshotname -Access $access -DurationInSecond 5 -AsJob;

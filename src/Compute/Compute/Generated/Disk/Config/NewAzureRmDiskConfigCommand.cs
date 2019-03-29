@@ -73,6 +73,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("V1", "V2")]
+        public string HyperVGeneration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         public int DiskIOPSReadWrite { get; set; }
 
         [Parameter(
@@ -251,6 +257,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 Zones = this.MyInvocation.BoundParameters.ContainsKey("Zone") ? this.Zone : null,
                 OsType = this.MyInvocation.BoundParameters.ContainsKey("OsType") ? this.OsType : (OperatingSystemTypes?)null,
+                HyperVGeneration = this.MyInvocation.BoundParameters.ContainsKey("HyperVGeneration") ? this.HyperVGeneration : null,
                 DiskSizeGB = this.MyInvocation.BoundParameters.ContainsKey("DiskSizeGB") ? this.DiskSizeGB : (int?)null,
                 DiskIOPSReadWrite = this.MyInvocation.BoundParameters.ContainsKey("DiskIOPSReadWrite") ? this.DiskIOPSReadWrite : (int?)null,
                 DiskMBpsReadWrite = this.MyInvocation.BoundParameters.ContainsKey("DiskMBpsReadWrite") ? this.DiskMBpsReadWrite : (int?)null,
