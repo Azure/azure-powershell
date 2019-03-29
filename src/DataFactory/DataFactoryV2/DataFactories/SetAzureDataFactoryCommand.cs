@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             HelpMessage = Constants.HelpResourceId)]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.Id, Constants.DataFactoryId)]
+        [ResourceIdCompleter("Microsoft.DataFactory/factories")]
         #endregion // Attributes
         public string ResourceId { get; set; }
 
@@ -439,7 +440,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             else if (!string.IsNullOrWhiteSpace(this.HostName))
             {
                 var factoryGitHubConfiguration = new FactoryGitHubConfiguration();
-                factoryGitHubConfiguration.CollaborationBranch = this.HostName;
+                factoryGitHubConfiguration.HostName = this.HostName;
 
                 repoConfiguration = factoryGitHubConfiguration;
             }
@@ -472,8 +473,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             if (!string.IsNullOrWhiteSpace(ResourceId))
             {
                 var parsedResourceId = new ResourceIdentifier(ResourceId);
-                ResourceGroupName = parsedResourceId.ResourceGroupName;
-                Name = parsedResourceId.ResourceName;
+                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+                this.Name = parsedResourceId.ResourceName;
             }
         }
 
