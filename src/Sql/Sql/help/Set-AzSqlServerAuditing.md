@@ -107,12 +107,12 @@ PS C:\>Set-AzSqlServerAuditing -State Enabled -ResourceGroupName "ResourceGroup0
 
 ### Example 4: Enable the blob storage auditing policy of an Azure SQL server with advanced filtering using a T-SQL predicate
 ```
-PS C:\>Set-AzSqlDatabaseAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -StorageAccountName "Storage22" -DatabaseName "Database01" -PredicateExpression "statement <> 'select 1'"
+PS C:\>Set-AzSqlServerAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -StorageAccountName "Storage22" -PredicateExpression "statement <> 'select 1'"
 ```
 
 ### Example 5: Remove the advanced filtering setting from the blob auditing storage policy of an Azure SQL server
 ```
-PS C:\>Set-AzSqlDatabaseAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -StorageAccountName "Storage22" -DatabaseName "Database01" -PredicateExpression ""
+PS C:\>Set-AzSqlServerAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -StorageAccountName "Storage22" -PredicateExpression ""
 ```
 
 ### Example 6: Enable the event hub auditing policy of an Azure SQL server
