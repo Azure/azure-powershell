@@ -77,7 +77,7 @@ FunctionsToExport = @()
 CmdletsToExport = 'Get-AzNetAppFilesAccount', 'New-AzNetAppFilesAccount', 'Remove-AzNetAppFilesAccount', 
                'Get-AzNetAppFilesPool', 'New-AzNetAppFilesPool', 'Update-AzNetAppFilesPool',
                'Remove-AzNetAppFilesPool', 'Get-AzNetAppFilesVolume', 'New-AzNetAppFilesVolume', 
-               'Remove-AzNetAppFilesVolume', 'Update-AzNetAppFilesVolume', 'Get-AzNetAppFilesMountTarget',
+               'Remove-AzNetAppFilesVolume', 'Update-AzNetAppFilesVolume',
                'Get-AzNetAppFilesSnapshot', 'New-AzNetAppFilesSnapshot', 'Remove-AzNetAppFilesSnapshot'
 
 # Variables to export from this module
@@ -87,7 +87,7 @@ CmdletsToExport = 'Get-AzNetAppFilesAccount', 'New-AzNetAppFilesAccount', 'Remov
 AliasesToExport = 'Get-AnfAccount', 'New-AnfAccount', 'Remove-AnfAccount', 
                'Get-AnfPool', 'New-AnfPool', 'Update-AnfPool',
                'Remove-AnfPool', 'Get-AnfVolume', 'New-AnfVolume', 
-               'Remove-AnfVolume', 'Update-AnfVolume', 'Get-AnfMountTarget',
+               'Remove-AnfVolume', 'Update-AnfVolume',
                'Get-AnfSnapshot', 'New-AnfSnapshot', 'Remove-AnfSnapshot'
 
 # DSC resources to export from this module
