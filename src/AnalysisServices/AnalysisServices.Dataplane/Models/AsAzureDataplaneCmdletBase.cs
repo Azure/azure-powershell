@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             }
 
             var baseUri = new Uri(string.Format("{0}{1}{2}", Uri.UriSchemeHttps, Uri.SchemeDelimiter, hostUri));
-            var credentials = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix);
+            var credentials = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId);
             var handlers = AzureSession.Instance.ClientFactory.GetCustomHandlers();
             return AzureSession.Instance.ClientFactory.CreateCustomArmClient<AsAzureDataplaneClient>(baseUri, credentials, httpClientProvider, handlers);
         }
