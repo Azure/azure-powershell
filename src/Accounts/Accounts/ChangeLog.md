@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Bug fix for azure automation update management dynamic group
 
 ## Version 1.4.0
 * Add 'Register-AzModule' command to support AutoRest generated cmdlets
