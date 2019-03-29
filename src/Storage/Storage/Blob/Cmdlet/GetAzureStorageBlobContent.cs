@@ -255,12 +255,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <returns>full file path if file path is valid, otherwise throw an exception</returns>
         internal string GetFullReceiveFilePath(string fileName, string blobName, DateTimeOffset? snapshotTime)
         {
-            // With -asjob, only absolute path works, so fileName should be absolute path.
             String filePath = fileName;
-            if (!AsJob.IsPresent)
-            {
-                filePath = Path.Combine(CurrentPath(), fileName);
-            }
             fileName = Path.GetFileName(filePath);
             String dirPath = Path.GetDirectoryName(filePath);
 
@@ -291,12 +286,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             try
             {
-                if (AsJob.IsPresent)
-                {
-                    DoBeginProcessing();
-                }
-
-                FileName = ResolveUserPath(FileName);
+                FileName = GetUnresolvedProviderPathFromPSPath(FileName);
                 Validate.ValidateInternetConnection();
                 InitChannelCurrentSubscription();
                 this.ExecuteSynchronouslyOrAsJob();
@@ -314,6 +304,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
+            if (AsJob.IsPresent)
+            {
+                DoBeginProcessing();
+            }
+
             switch (ParameterSetName)
             {
                 case BlobParameterSet:
