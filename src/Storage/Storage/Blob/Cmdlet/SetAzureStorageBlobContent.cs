@@ -502,15 +502,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             }
         }
 
+        protected override void BeginProcessing()
+        {
+            if (!AsJob.IsPresent)
+            {
+                DoBeginProcessing();
+            }
+        }
 
         protected override void ProcessRecord()
         {
             try
             {
-                if (AsJob.IsPresent)
-                {
-                    DoBeginProcessing();
-                }
 
                 ResolvedFileName = this.GetUnresolvedProviderPathFromPSPath(string.IsNullOrWhiteSpace(this.FileName) ? "." : this.FileName);
                 Validate.ValidateInternetConnection();
@@ -528,6 +531,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            if (AsJob.IsPresent)
+            {
+                DoBeginProcessing();
+            }
 
             ValidateBlobTier(string.Equals(blobType, PageBlobType, StringComparison.InvariantCultureIgnoreCase)? StorageBlob.BlobType.PageBlob : StorageBlob.BlobType.Unspecified, 
                 pageBlobTier);
