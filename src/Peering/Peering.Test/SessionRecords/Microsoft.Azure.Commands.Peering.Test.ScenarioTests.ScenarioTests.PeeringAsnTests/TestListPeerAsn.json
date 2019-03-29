@@ -1,0 +1,68 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns?api-version=2019-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDQ0NWJmMTEtNjFjNC00MzZmLWE5NDAtNjAxOTRmOGFjYTU3L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucz9hcGktdmVyc2lvbj0yMDE5LTAzLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ab0cfb08-db1a-4316-b614-7f6dad1c0e20"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.9.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "d2324cfb-03c4-4565-8139-76ca9be6d750"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14994"
+        ],
+        "x-ms-correlation-request-id": [
+          "ba7c953e-f78c-4be7-9b6e-da9953e4d98e"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190321T233646Z:ba7c953e-f78c-4be7-9b6e-da9953e4d98e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 21 Mar 2019 23:36:45 GMT"
+        ],
+        "Content-Length": [
+          "551"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"peerAsn\": 65000,\r\n        \"peerContactInfo\": {\r\n          \"emails\": [\r\n            \"tata@noc.com\",\r\n            \"tata2@noc.com\"\r\n          ],\r\n          \"phone\": [\r\n            \"888-800-8889\"\r\n          ]\r\n        },\r\n        \"peerName\": \"Contoso\",\r\n        \"validationState\": \"Approved\"\r\n      },\r\n      \"name\": \"Contoso\",\r\n      \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso\",\r\n      \"type\": \"Microsoft.Peering/peerAsns\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "4445bf11-61c4-436f-a940-60194f8aca57"
+  }
+}

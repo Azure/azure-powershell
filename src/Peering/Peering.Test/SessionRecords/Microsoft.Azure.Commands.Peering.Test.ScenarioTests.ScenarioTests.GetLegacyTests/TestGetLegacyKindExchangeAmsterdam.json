@@ -1,0 +1,68 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/legacyPeerings?peeringLocation=Amsterdam&kind=Exchange&api-version=2019-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDQ0NWJmMTEtNjFjNC00MzZmLWE5NDAtNjAxOTRmOGFjYTU3L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9sZWdhY3lQZWVyaW5ncz9wZWVyaW5nTG9jYXRpb249QW1zdGVyZGFtJmtpbmQ9RXhjaGFuZ2UmYXBpLXZlcnNpb249MjAxOS0wMy0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "54a554f7-d76c-4ec6-9c1c-56fb168c00a1"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.9.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "b9e8fe74-04f4-4c4b-a152-9610abd0878a"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14997"
+        ],
+        "x-ms-correlation-request-id": [
+          "01494293-0a90-4cc4-aba1-e1d73d43470d"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190322T171831Z:01494293-0a90-4cc4-aba1-e1d73d43470d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 22 Mar 2019 17:18:30 GMT"
+        ],
+        "Content-Length": [
+          "993"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"kind\": \"Exchange\",\r\n      \"properties\": {\r\n        \"exchange\": {\r\n          \"connections\": [\r\n            {\r\n              \"peeringDBFacilityId\": 26,\r\n              \"connectionState\": \"Active\",\r\n              \"bgpSession\": {\r\n                \"sessionPrefixV4\": \"80.249.208.0/21\",\r\n                \"sessionPrefixV6\": \"2001:7f8:1::/64\",\r\n                \"microsoftSessionIPv4Address\": \"80.249.209.20\",\r\n                \"microsoftSessionIPv6Address\": \"2001:7f8:1::a500:8075:1\",\r\n                \"peerSessionIPv4Address\": \"80.249.213.235\",\r\n                \"peerSessionIPv6Address\": \"2001:7f8:1::a506:4050:1\",\r\n                \"sessionStateV4\": \"Established\",\r\n                \"sessionStateV6\": \"Established\",\r\n                \"maxPrefixesAdvertisedV4\": 0,\r\n                \"maxPrefixesAdvertisedV6\": 0\r\n              }\r\n            }\r\n          ]\r\n        },\r\n        \"peeringLocation\": \"Amsterdam\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "4445bf11-61c4-436f-a940-60194f8aca57"
+  }
+}
