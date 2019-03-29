@@ -65,8 +65,12 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests.ScenarioTests
             TestController.NewInstance.RunPowerShellTest(this._logger, "Test-NewDirectConnectionLowBandwidth");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Output on powershell is the same, but the handling of `r`n seems to differ for CORE")]
+#else
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+#endif
+        [Trait(Category.AcceptanceType, Category.DesktopOnly)]
         public void TestNewDirectConnectionWrongV6()
         {
             TestController.NewInstance.RunPowerShellTest(this._logger, "Test-NewDirectConnectionWrongV6");
