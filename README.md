@@ -186,12 +186,12 @@ _This project has adopted the [Microsoft Open Source Code of Conduct][CodeOfCond
 [MicrosoftAzureDocs]: https://docs.microsoft.com/en-us/azure/
 [PowerShellDocs]: https://docs.microsoft.com/en-us/powershell/
 
-[InstallationGuide]: https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps
+[InstallationGuide]: https://docs.microsoft.com/en-us/powershell/azure/install-az-ps
 [GettingStartedGuide]: https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps
 [PersistedCredentialsGuide]: https://docs.microsoft.com/en-us/powershell/azure/context-persistence
 
-[ConnectAzAccount]: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/connect-azurermaccount
-[GetAzContext]: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermcontext
-[GetAzSubscription]: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermsubscription
-[SetAzContext]: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/set-azurermcontext
-[SendFeedback]: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/send-feedback
+[ConnectAzAccount]: https://docs.microsoft.com/en-us/powershell/module/az.accounts/connect-azaccount
+[GetAzContext]: https://docs.microsoft.com/en-us/powershell/module/az.accounts/get-azcontext
+[GetAzSubscription]: https://docs.microsoft.com/en-us/powershell/module/az.accounts/get-azsubscription
+[SetAzContext]: https://docs.microsoft.com/en-us/powershell/module/az.accounts/set-azcontext
+[SendFeedback]: https://docs.microsoft.com/en-us/powershell/module/az.accounts/send-feedback
