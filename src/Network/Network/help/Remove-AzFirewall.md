@@ -35,20 +35,6 @@ Are you sure you want to remove resource 'azFw'
 
 This example creates a Firewall and then deletes it. To suppress the prompt when deleting the Firewall, use the -Force flag.
 
-### 2: Deallocate the Firewall, then delete the Firewall
-```
-$firewall=Get-AzFirewall -ResourceGroupName rgName -Name azFw
-$firewall.Deallocate()
-Remove-AzFirewall -ResourceGroupName rgName -Name azFw
-Confirm
-Are you sure you want to remove resource 'azFw'
-[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
-```
-
-This example retrieves a Firewall, deallocates the firewall, and then deletes the firewall. The Deallocate command removes the running 
-service but preserves the firewall's configuration. If user wants to start the service again, the Allocate method should be called on the firewall.
-To suppress the prompt when deleting the Firewall, use the -Force flag.
-
 ## PARAMETERS
 
 ### -AsJob
