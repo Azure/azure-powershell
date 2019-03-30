@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Profile
     [Alias("Login-AzAccount",
         "Login-AzureRmAccount",
         "Add-" + AzureRMConstants.AzureRMPrefix + "Account",
-        "Add" + AzureRMConstants.AzurePrefix + "AnalysisServicesAccount",
+        "Add-" + AzureRMConstants.AzurePrefix + "AnalysisServicesAccount",
         "Login-AzureAsAccount",
         "Login-AzAsAccount")]
     [OutputType(typeof(PSAzureProfile))]
