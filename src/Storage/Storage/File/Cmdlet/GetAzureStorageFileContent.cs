@@ -19,8 +19,11 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.WindowsAzure.Storage.DataMovement;
+    using System;
     using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
     using LocalDirectory = System.IO.Directory;
     using LocalPath = System.IO.Path;
@@ -111,11 +114,27 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(HelpMessage = "Returns an object representing the downloaded cloud file. By default, this cmdlet does not generate any output.")]
         public SwitchParameter PassThru { get; set; }
 
+        protected override void ProcessRecord()
+        {
+            try
+            {
+                Destination = this.GetUnresolvedProviderPathFromPSPath(
+                    string.IsNullOrWhiteSpace(Destination) ? "." : Destination);
+                Validate.ValidateInternetConnection();
+                InitChannelCurrentSubscription();
+                this.ExecuteSynchronouslyOrAsJob();
+            }
+            catch (Exception ex) when (!IsTerminatingError(ex))
+            {
+                WriteExceptionError(ex);
+            }
+        }
+
         public override void ExecuteCmdlet()
         {
             if (AsJob.IsPresent)
             {
-                BeginProcessingImplement();
+                DoBeginProcessing();
             }
 
             CloudFile fileToBeDownloaded;
@@ -144,16 +163,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             }
 
             // With -asjob, only absolute path works, so Destination must be absolute path.
-            if (AsJob.IsPresent && !System.IO.Path.IsPathRooted(this.Destination))
-            {
-                throw new System.ArgumentException(string.Format(Resources.InvalidPathForAsJob, "Destination", this.Destination), "Destination");
-            }
             string resolvedDestination = this.Destination;
-            if (!AsJob.IsPresent)
-            {
-                resolvedDestination = this.GetUnresolvedProviderPathFromPSPath(
-                    string.IsNullOrWhiteSpace(this.Destination) ? "." : this.Destination);
-            }
 
             FileMode mode = this.Force ? FileMode.Create : FileMode.CreateNew;
             string targetFile;
@@ -210,7 +220,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             if (AsJob.IsPresent)
             {
-                EndProcessingImplement();
+                DoEndProcessing();
             }
         }
     }
