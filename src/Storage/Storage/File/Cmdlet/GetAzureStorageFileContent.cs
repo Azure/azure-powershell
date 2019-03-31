@@ -162,9 +162,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid parameter set name: {0}", this.ParameterSetName));
             }
 
-            // With -asjob, only absolute path works, so Destination must be absolute path.
             string resolvedDestination = this.Destination;
-
             FileMode mode = this.Force ? FileMode.Create : FileMode.CreateNew;
             string targetFile;
             if (LocalDirectory.Exists(resolvedDestination))

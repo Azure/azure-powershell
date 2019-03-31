@@ -264,15 +264,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 throw new ArgumentException(Resources.FileNameCannotEmpty);
             }
 
-            // With -asjob, only absolute path works, so fileName should be absolute path.
-            String filePath = fileName;
-            if (!AsJob.IsPresent)
-            {
-                filePath = Path.GetFullPath(fileName);
-            }
-            fileName = Path.GetFileName(filePath);
-
-            return filePath;
+            return fileName;
         }
 
         /// <summary>
@@ -514,7 +506,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         {
             try
             {
-
                 ResolvedFileName = this.GetUnresolvedProviderPathFromPSPath(string.IsNullOrWhiteSpace(this.FileName) ? "." : this.FileName);
                 Validate.ValidateInternetConnection();
                 InitChannelCurrentSubscription();
