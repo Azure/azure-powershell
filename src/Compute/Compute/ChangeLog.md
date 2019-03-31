@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add HyperVGeneration parameter to New-AzDiskConfig and New-AzSnapshotConfig
 * Allow VM creation with galley image from other tenants. 
 
 ## Version 1.6.0
