@@ -16,8 +16,11 @@ using System.Reflection;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File
 {
+    using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.WindowsAzure.Storage.DataMovement;
+    using System;
     using System.Globalization;
     using System.Management.Automation;
     using System.Threading.Tasks;
@@ -37,6 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             get;
             private set;
         }
+
 
         /// <summary>
         /// Gets or sets whether to force overwrite the existing file.
@@ -77,11 +81,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         {
             if (!AsJob.IsPresent)
             {
-                BeginProcessingImplement();
+                DoBeginProcessing();
             }
         }
 
-        protected void BeginProcessingImplement()
+        protected void DoBeginProcessing()
         {
             base.BeginProcessing();
 
@@ -93,11 +97,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         {
             if (!AsJob.IsPresent)
             {
-                EndProcessingImplement();
+                DoEndProcessing();
             }
         }
 
-        protected  void EndProcessingImplement()
+        protected  void DoEndProcessing()
         {
             try
             {

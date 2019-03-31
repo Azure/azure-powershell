@@ -14,9 +14,12 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.File;
+    using System;
     using System.Globalization;
     using System.IO;
     using System.Management.Automation;
@@ -71,24 +74,29 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(HelpMessage = "Returns an object representing the downloaded cloud file. By default, this cmdlet does not generate any output.")]
         public SwitchParameter PassThru { get; set; }
 
+        protected override void ProcessRecord()
+        {
+            try
+            {
+                Source = this.GetUnresolvedProviderPathFromPSPath(Source);
+                Validate.ValidateInternetConnection();
+                InitChannelCurrentSubscription();
+                this.ExecuteSynchronouslyOrAsJob();
+            }
+            catch (Exception ex) when (!IsTerminatingError(ex))
+            {
+                WriteExceptionError(ex);
+            }
+        }
+
         public override void ExecuteCmdlet()
         {
             if (AsJob.IsPresent)
             {
-                BeginProcessingImplement();
+                DoBeginProcessing();
             }
 
-            // Step 1: Validate source file.
-            // With -asjob, only absolute path works, so Source must be absolute path.
-            if (AsJob.IsPresent && !System.IO.Path.IsPathRooted(this.Source))
-            {
-                throw new System.ArgumentException(string.Format(Resources.InvalidPathForAsJob, "Source", this.Source), "Source");
-            }
             string filePath = this.Source;
-            if (!AsJob.IsPresent)
-            {
-                filePath = this.GetUnresolvedProviderPathFromPSPath(this.Source);
-            }
             FileInfo localFile = new FileInfo(filePath);
             if (!localFile.Exists)
             {
@@ -137,7 +145,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             if (AsJob.IsPresent)
             {
-                EndProcessingImplement();
+                DoEndProcessing();
             }
         }
 
