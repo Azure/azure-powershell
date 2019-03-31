@@ -68,7 +68,6 @@ This example uses the asterisk wildcard character and the pipeline to find and d
 
 ### -AsJob
 Run cmdlet in the background.
-With this parameter, *Destination* parameter must be an absolute Path.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -228,7 +227,7 @@ Accept wildcard characters: False
 ```
 
 ### -Destination
-Specifies the location to store the downloaded file. With *Asjob* parameter, it must be an absolute Path.
+Specifies the location to store the downloaded file.
 
 ```yaml
 Type: System.String

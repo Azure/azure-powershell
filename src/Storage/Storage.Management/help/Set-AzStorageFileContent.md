@@ -72,7 +72,6 @@ For more information about script blocks, type `Get-Help about_Script_Blocks`.
 
 ### -AsJob
 Run cmdlet in the background.
-With this parameter, *Source* parameter must be an absolute Path.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -274,7 +273,6 @@ Accept wildcard characters: False
 
 ### -Source
 Specifies the source file that this cmdlet uploads.
-With *Asjob* parameter, it must be an absolute Path.
 If you specify a file that does not exist, this cmdlet returns an error.
 
 ```yaml
