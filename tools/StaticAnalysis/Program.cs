@@ -85,9 +85,10 @@ namespace StaticAnalysis
                     logReportsDirectoryWarning = false;
                 }
 
-                ExceptionsDirectory = Path.Combine(reportsDirectory, "Exceptions");
-                bool useExceptions = !args.Any(a => a == "--dont-use-exceptions" || a == "-d");
-                bool skipHelp = args.Any(a => a == "--skip-help" || a == "-s");
+                if (!Directory.Exists(reportsDirectory))
+                {
+                    Directory.CreateDirectory(reportsDirectory);
+                }
 
                 var modulesToAnalyze = new List<string>();
                 if (args.Any(a => a == "--modules-to-analyze" || a == "-m"))
@@ -103,23 +104,31 @@ namespace StaticAnalysis
                     }
                 }
 
-                bool useNetcore = args.Any(a => a == "--use-netcore" || a == "-u");
                 Analyzers.Add(new SignatureVerifier.SignatureVerifier());
                 Analyzers.Add(new BreakingChangeAnalyzer.BreakingChangeAnalyzer());
 
+                var helpOnly = args.Any(a => a == "--help-only" || a == "-h");
+                var skipHelp = !helpOnly && args.Any(a => a == "--skip-help" || a == "-s");
+                if(helpOnly)
+                {
+                    Analyzers.Clear();
+                }
                 if (!skipHelp)
                 {
                     Analyzers.Add(new HelpAnalyzer.HelpAnalyzer());
                 }
 
+                // https://stackoverflow.com/a/9737418/294804
+                var assemblyDirectory = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath);
+                ExceptionsDirectory = Path.Combine(assemblyDirectory, "Exceptions");
+                bool useExceptions = !args.Any(a => a == "--dont-use-exceptions" || a == "-d");
+                var useNetcore = args.Any(a => a == "--use-netcore" || a == "-u");
                 ConsolidateExceptionFiles(ExceptionsDirectory, useNetcore);
-                analysisLogger = useExceptions ? new AnalysisLogger(reportsDirectory, ExceptionsDirectory) :
-                    new AnalysisLogger(reportsDirectory);
 
+                analysisLogger = useExceptions ? new AnalysisLogger(reportsDirectory, ExceptionsDirectory) : new AnalysisLogger(reportsDirectory);
                 if (logReportsDirectoryWarning)
                 {
-                    analysisLogger.WriteWarning("No logger specified in the second parameter, writing reports to {0}",
-                        reportsDirectory);
+                    analysisLogger.WriteWarning("No logger specified in the second parameter, writing reports to {0}", reportsDirectory);
                 }
 
                 foreach (var analyzer in Analyzers)

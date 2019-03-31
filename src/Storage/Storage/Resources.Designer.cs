@@ -284,7 +284,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
                 return ResourceManager.GetString("ContainerAlreadyExists", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Can not find the container &apos;{0}&apos;..
         /// </summary>
@@ -293,7 +293,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
                 return ResourceManager.GetString("ContainerNotFound", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Context cannot be null.  Please log in using Connect-AzAccount.
+        /// </summary>
+        internal static string ContextCannotBeNull {
+            get {
+                return ResourceManager.GetString("ContextCannotBeNull", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Copy Blob..
         /// </summary>

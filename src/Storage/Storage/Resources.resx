@@ -734,6 +734,9 @@ Failed: {2}.</value>
   <data name="StartTimeParameterConflict" xml:space="preserve">
     <value>Parameter -StartTime and -NoStartTime are mutually exclusive</value>
   </data>
+  <data name="ContextCannotBeNull" xml:space="preserve">
+    <value>Context cannot be null.  Please log in using Connect-AzAccount.</value>
+  </data>
   <data name="InvalidPathForAsJob" xml:space="preserve">
     <value>With -Asjob, Parameter '{0}' must be an absolute path. But now it's: {1}</value>
     <comment>0 for parameter name for the Path, 1 for the path value</comment>
