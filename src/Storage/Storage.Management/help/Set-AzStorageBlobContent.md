@@ -101,7 +101,6 @@ This command  uploads the file that is named ContosoPlanning to the container na
 
 ### -AsJob
 Run cmdlet in the background.
-With this parameter, *File* parameter must be an absolute Path.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -269,7 +268,7 @@ Accept wildcard characters: False
 ```
 
 ### -File
-Specifies a local file path for a file to upload as blob content. With *Asjob* parameter, it must be an absolute Path.
+Specifies a local file path for a file to upload as blob content.
 
 ```yaml
 Type: System.String

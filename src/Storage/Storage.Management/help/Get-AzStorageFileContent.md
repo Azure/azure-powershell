@@ -69,7 +69,6 @@ This example downloads the files under sample file share
 
 ### -AsJob
 Run cmdlet in the background.
-With this parameter, *Destination* parameter must be an absolute Path.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -160,7 +159,6 @@ Accept wildcard characters: False
 
 ### -Destination
 Specifies the destination path.
-With *Asjob* parameter, it must be an absolute Path.
 This cmdlet downloads the file contents to the location that this parameter specifies.
 If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
 If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
