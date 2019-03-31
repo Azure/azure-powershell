@@ -88,19 +88,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(
             Position = 2,
             ParameterSetName = LocalConstants.ShareNameParameterSetName,
-            HelpMessage = "Path to the local file or directory when the downloaded file would be put. With -Asjob, it must be an absolute Path.")]
+            HelpMessage = "Path to the local file or directory when the downloaded file would be put.")]
         [Parameter(
             Position = 2,
             ParameterSetName = LocalConstants.ShareParameterSetName,
-            HelpMessage = "Path to the local file or directory when the downloaded file would be put. With -Asjob, it must be an absolute Path.")]
+            HelpMessage = "Path to the local file or directory when the downloaded file would be put.")]
         [Parameter(
             Position = 2,
             ParameterSetName = LocalConstants.DirectoryParameterSetName,
-            HelpMessage = "Path to the local file or directory when the downloaded file would be put. With -Asjob, it must be an absolute Path.")]
+            HelpMessage = "Path to the local file or directory when the downloaded file would be put.")]
         [Parameter(
             Position = 1,
             ParameterSetName = LocalConstants.FileParameterSetName,
-            HelpMessage = "Path to the local file or directory when the downloaded file would be put. With -Asjob, it must be an absolute Path.")]
+            HelpMessage = "Path to the local file or directory when the downloaded file would be put.")]
         [ValidateNotNullOrEmpty]
         public string Destination { get; set; }
 

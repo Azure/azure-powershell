@@ -61,7 +61,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Path to the local file to be uploaded. With -Asjob, it must be an absolute Path.")]
+            HelpMessage = "Path to the local file to be uploaded.")]
         [ValidateNotNullOrEmpty]
         public string Source { get; set; }
 
