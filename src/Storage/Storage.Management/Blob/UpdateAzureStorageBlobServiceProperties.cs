@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             HelpMessage = "Storage Account Name.",
            ParameterSetName = AccountNameParameterSet)]
         [ResourceNameCompleter("Microsoft.Storage/storageAccounts", nameof(ResourceGroupName))]
-        [Alias(AccountNameAlias)]
+        [Alias(AccountNameAlias, NameAlias)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
