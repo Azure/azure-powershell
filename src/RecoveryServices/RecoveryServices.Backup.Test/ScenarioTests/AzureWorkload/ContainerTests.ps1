@@ -87,9 +87,11 @@ function Unregister-AzureWorkloadContainer
 	  Assert-AreEqual $container.Status "Registered"
 
 	  #Unregister container
-      Unregister-AzRecoveryServicesBackupContainer `
-		-VaultId $vault.ID `
-		-Container $container
+      Get-AzRecoveryServicesBackupContainer `
+         -VaultId $vault.ID `
+         -ContainerType AzureVMAppContainer `
+         -Status Registered `
+         -FriendlyName $containerName | Unregister-AzRecoveryServicesBackupContainer -VaultId $vault.ID
 
 	  $container = Get-AzRecoveryServicesBackupContainer `
          -VaultId $vault.ID `
