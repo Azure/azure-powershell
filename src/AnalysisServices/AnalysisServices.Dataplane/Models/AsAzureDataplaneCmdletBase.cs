@@ -27,7 +27,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
     /// </summary>
     public abstract class AsAzureDataplaneCmdletBase : AzurePSCmdlet
     {
-        [Parameter(Mandatory = true, HelpMessage = "Name of the Azure Analysis Services server")]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Name of the Azure Analysis Services server",
+            Position = 0)]
         [ValidateNotNullOrEmpty]
         public string Instance { get; set; }
 
