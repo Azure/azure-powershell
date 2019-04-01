@@ -20,6 +20,11 @@
 ## Upcoming Release
 * Report detail error when create Storage context with parameter -UseConnectedAccount, but without login Azure account
     - New-AzStorageContext
+* Support Manage Blob Service Properties of a specified Storage account with Management plane API
+    - Update-AzStorageBlobServiceProperty
+    - Get-AzStorageBlobServiceProperty
+    - Enable-AzStorageBlobDeleteRetentionPolicy
+    - Disable-AzStorageBlobDeleteRetentionPolicy
 
 ## Version 1.1.0
 * Support Get/Set/Remove Management Policy on a Storage account
