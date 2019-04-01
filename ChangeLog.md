@@ -1,4 +1,70 @@
+## 1.6.0 - March 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+* Added wildcard support to Get cmdlets for Az.Compute and Az.Network
+* Added interactive and username/password authentication for Windows PowerShell 5.1 only
+* Added support for Python 2 runbooks in Az.Automation
+* Az.LogicApp: New cmdlets for Integration Account Assemblies and Batch Configuration
+
+#### Az.Automation
+* Azure automation update management change to support the following new features :
+    * Dynamic grouping
+    * Pre-Post script
+    * Reboot Setting
+
+#### Az.Compute
+* Fix issue with path resolution in Get-AzVmBootDiagnosticsData
+* Update Compute client library to 25.0.0.
+
+#### Az.KeyVault
+* Added wildcard support to KeyVault cmdlets
+
+#### Az.Network
+* Add Threat Intelligence support for Azure Firewall
+* Add Application Gateway Firewall Policy top level resource and Custom Rules
+* Add Alert action type for Azure Firewall Network and Application Rule Collections
+* Added support for conditions in RewriteRules in the Application Gateway
+    - New cmdlets added:
+        - New-AzApplicationGatewayRewriteRuleCondition
+    - Cmdlets updated with optional parameter - RuleSequence and Condition
+        - New-AzApplicationGatewayRewriteRule
+
+#### Az.RecoveryServices
+* Added SnapshotRetentionInDays in Azure VM policy to support Instant RP
+* Added pipe support for unregister container
+
+#### Az.Resources
+* Update wildcard support for Get-AzResource and Get-AzResourceGroup
+* Update credentials used when making generic calls to ARM
+
+#### Az.Sql
+* changed Threat Detection's cmdlets param (ExcludeDetectionType) from DetectionType to string[] to make it future proof when new DetectionTypes are added and to support autocomplete as well.
+* Add Vulnerability Assessment cmdlets on Server and Managed Instance
+
+#### Az.Storage
+* Support Get/Set/Remove Management Policy on a Storage account
+    - Set-AzStorageAccountManagementPolicy
+    - Get-AzStorageAccountManagementPolicy
+    - Remove-AzStorageAccountManagementPolicy
+    - Add-AzStorageAccountManagementPolicyAction
+    - New-AzStorageAccountManagementPolicyFilter
+    - New-AzStorageAccountManagementPolicyRule
+
+#### Az.Websites
+* Fix ARM template bug that breaks cloning all slots using 'New-AzWebApp -IncludeSourceWebAppSlots' 
+
 ## 1.5.0 - March 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+* Added wildcard support to Get cmdlets for Az.Compute and Az.Network
+* Added interactive and username/password authentication for Windows PowerShell 5.1 only
+* Added support for Python 2 runbooks in Az.Automation
+* Az.LogicApp: New cmdlets for Integration Account Assemblies and Batch Configuration
+
 #### Az.Accounts
 * Add 'Register-AzModule' command to support AutoRest generated cmdlets
 * Update examples for Connect-AzAccount
@@ -45,6 +111,14 @@
        - New-AzStorageAccount
 
 ## 1.4.0 - February 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+* Added interactive and username/password authentication for Windows PowerShell 5.1 only
+* Added support for Python 2 runbooks in Az.Automation
+* Az.LogicApp: New cmdlets for Integration Account Assemblies and Batch Configuration
+
 #### Az.AnalysisServices
 * Deprecated AddAzureASAccount cmdlet
 
@@ -111,6 +185,13 @@
 * Correct example in Get-AzWebAppSlotMetrics
 
 ## 1.3.0 - February 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+* Added interactive and username/password authentication for Windows PowerShell 5.1 only
+* Added support for Python 2 runbooks in Az.Automation
+
 #### Az.Accounts
 * Update to latest version of ClientRuntime
 
@@ -137,6 +218,13 @@ General availability for Az.RecoveryServices module.
 * Fixed null ref exception in Get-AzSqlCapability
 
 ## 1.2.1 - January 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+* Added interactive and username/password authentication for Windows PowerShell 5.1 only
+* Added support for Python 2 runbooks in Az.Automation
+
 #### Az.Accounts
 * Release with correct version of Authentication
 
@@ -148,6 +236,13 @@ General availability for Az.RecoveryServices module.
 
 
 ## 1.2.0 - January 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+* Added interactive and username/password authentication for Windows PowerShell 5.1 only
+* Added support for Python 2 runbooks in Az.Automation
+
 #### Az.Accounts
 * Add interactive and username/password authentication for Windows PowerShell 5.1 only
 * Update incorrect online help URLs
@@ -227,6 +322,11 @@ General availability for Az.RecoveryServices module.
 * Fixes 'New-AzWebAppSSLBinding' to not overwrite the tags on binding an SSL certificate to an app
 
 ## 1.1.0 - January 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+
 #### Az.Accounts
 * Add 'Local' Scope to Enable-AzureRmAlias
 
@@ -284,8 +384,7 @@ General availability for Az.RecoveryServices module.
 * Fix backward compatibility issue with Az.Accounts module
 
 ## Version 1.0.0 - December 2018
-
-#### General
-
+### Highlights since the last major release
 * General availability of `Az` module
 * For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/

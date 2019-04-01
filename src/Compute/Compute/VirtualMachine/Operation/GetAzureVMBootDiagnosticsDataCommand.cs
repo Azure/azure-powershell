@@ -88,6 +88,11 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
+                LocalPath = ResolveUserPath(LocalPath);
+                if (!LocalPath.EndsWith(Path.DirectorySeparatorChar.ToString()))
+                {
+                    LocalPath = LocalPath + Path.DirectorySeparatorChar;
+                }
                 var result = this.VirtualMachineClient.GetWithInstanceView(this.ResourceGroupName, this.Name);
                 if (result == null || result.Body == null)
                 {

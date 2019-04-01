@@ -8,6 +8,8 @@ The Azure PowerShell Developer Guide was created to help with the development an
 - [Environment Setup](#environment-setup)
     - [GitHub Basics](#github-basics)
     - [Building the Environment](#building-the-environment)
+    - [Generating Help](#generating-help)
+    - [Running Static Analysis](#running-static-analysis)
     - [Running Tests](#running-tests)
 - [Before Adding a New Project](#before-adding-a-new-project)
     - [.NET SDK](#net-sdk)
@@ -98,12 +100,20 @@ Alternatively, you can open any command prompt (Command Prompt, Windows PowerShe
 PS C:\azure-powershell> dotnet msbuild build.proj
 ```
 
-### Running StaticAnalysis and Help Generation
+## Generating Help
 
-By default, StaticAnalysis and help generation are not run as a part of the local build (`msbuild build.proj`); to run these locally, you will need to add the `/p:RunStaticAnalysis=true` property to your current `msbuild` command, like so:
+We build the `dll-Help.xml` files (used to display the help content for cmdlets in PowerShell) from markdown using the `platyPS` module. Since this help generation step can take 10-15 minutes, it is a separate part of the command line build process. Run this to generate help:
 
 ```
-msbuild build.proj /p:RunStaticAnalysis=true
+msbuild build.proj /t:GenerateHelp
+```
+
+## Running Static Analysis
+
+To keep consistency across our modules, we've implemented a static analysis system. This verifies various aspects (depdencies, breaking changes, etc.) for your module. Run this command to execute static analysis validation for the built modules:
+
+```
+msbuild build.proj /t:StaticAnalysis
 ```
 
 _Note_: this can add 10-15 minutes to your build time due to help generation.
@@ -262,6 +272,9 @@ Please see our guide on [Using Azure TestFramework](../testing-docs/using-azure-
     - Use `Assert-NotNull object` to verify that an object is not null
     - Use `Assert-Exists path` to verify that a file exists
     - Use `Assert-AreEqualArray a1 a2` to verify that arrays are the same
+    - Use `Assert-StartsWith s1 s2` to verify that the string `s2` starts with the string `s1`
+    - Use `Assert-Match s1 s2` to verify that the string `s2` matches the regular expression `s1`
+    - Use `Assert-NotMatch s1 s2` to verify that the string `s2` does not match the regular expression `s1`
 
 ### Using Active Directory
 

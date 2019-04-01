@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Added wildcard support to KeyVault cmdlets
+
 ## Version 1.0.2
 * Fix tagging on Set-AzKeyVaultSecret
 
