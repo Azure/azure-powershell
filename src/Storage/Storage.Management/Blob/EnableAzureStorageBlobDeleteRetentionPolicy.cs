@@ -75,11 +75,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Blob Service Properties Resource Id.",
+            HelpMessage = "Input a Storage account Resource Id, or a Blob service properties Resource Id.",
            ParameterSetName = PropertiesResourceIdParameterSet)]
-        [Alias(ResourceIdAlias)]
         [ValidateNotNullOrEmpty]
-        public string BlobServicePropertyResourceId { get; set; }
+        public string ResourceId { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Sets the number of retention days for the DeleteRetentionPolicy.")]
         [Alias("Days")]
@@ -100,9 +99,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         this.StorageAccountName = StorageAccount.StorageAccountName;
                         break;
                     case PropertiesResourceIdParameterSet:
-                        ResourceIdentifier blobServicePropertiesResource = new ResourceIdentifier(BlobServicePropertyResourceId);
+                        ResourceIdentifier blobServicePropertiesResource = new ResourceIdentifier(ResourceId);
                         this.ResourceGroupName = blobServicePropertiesResource.ResourceGroupName;
-                        this.StorageAccountName = PSBlobServiceProperties.GetStorageAccountNameFromBlobServicePropertiesResourceId(BlobServicePropertyResourceId);
+                        this.StorageAccountName = PSBlobServiceProperties.GetStorageAccountNameFromResourceId(ResourceId);
                         break;
                     default:
                         // For AccountNameParameterSet, the ResourceGroupName and StorageAccountName can get from input directly
