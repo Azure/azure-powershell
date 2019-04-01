@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 var updateConfig = configuration.UpdateConfiguration;
                 IList<Sdk.AzureQueryProperties> azureQueries = null;
-                if (updateConfig.Targets != null && updateConfig.Targets.AzureQueries != null && updateConfig.Targets.AzureQueries.Count > 0)
+                if (updateConfig != null && updateConfig.Targets != null && updateConfig.Targets.AzureQueries != null)
                 {
                     azureQueries = new List<Sdk.AzureQueryProperties>();
 
@@ -39,9 +39,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     {
 
                         var tags = new Dictionary<string, IList<string>>();
-                        foreach (var tag in query.TagSettings.Tags)
+                        if (query.TagSettings != null && query.TagSettings.Tags != null)
                         {
-                            tags.Add(tag.Key, tag.Value);
+                            foreach (var tag in query.TagSettings.Tags)
+                            {
+                                tags.Add(tag.Key, tag.Value);
+                            }
                         }
 
                         var azureQueryProperty = new Sdk.AzureQueryProperties
@@ -51,7 +54,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                             TagSettings = new Sdk.TagSettingsProperties
                             {
                                 Tags = tags,
-                                FilterOperator = (Sdk.TagOperators)query.TagSettings.FilterOperator
+                                FilterOperator = query.TagSettings == null? Sdk.TagOperators.Any : (Sdk.TagOperators)query.TagSettings.FilterOperator
                             }
                         };
                         azureQueries.Add(azureQueryProperty);
@@ -60,7 +63,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 }
 
                 IList<Sdk.NonAzureQueryProperties> nonAzureQueries = null;
-                if (updateConfig.Targets != null && updateConfig.Targets.NonAzureQueries != null && updateConfig.Targets.NonAzureQueries.Count > 0)
+                if (updateConfig != null && updateConfig.Targets != null && updateConfig.Targets.NonAzureQueries != null)
                 {
                     nonAzureQueries = new List<Sdk.NonAzureQueryProperties>();
                     foreach (var query in updateConfig.Targets.NonAzureQueries)

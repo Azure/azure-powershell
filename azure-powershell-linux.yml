@@ -1,0 +1,8 @@
+resources:
+- repo: self
+  fetchDepth: 1
+
+jobs:
+- template: build/jobs.yml
+  parameters:
+    vmImage: 'Ubuntu-16.04'
