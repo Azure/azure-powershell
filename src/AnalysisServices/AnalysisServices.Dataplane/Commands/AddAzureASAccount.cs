@@ -12,20 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using System.IO;
 using System.Management.Automation;
-using System.Reflection;
-using System.Security;
-using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
-using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.WindowsAzure.Commands.Common;
-using System;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
@@ -37,7 +26,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AnalysisServicesAccount", DefaultParameterSetName = "UserParameterSetName", SupportsShouldProcess =true)]
     [Alias("Login-AzureAsAccount", "Login-AzAsAccount")]
     [OutputType(typeof(PSAzureProfile))]
-    public class AddAzureASAccountCommand : AzureContextModificationCmdlet
+    public class AddAzureASAccountCommand : AzureRMCmdlet
     {
         private const string UserParameterSet = "UserParameterSetName";
         private const string ServicePrincipalWithPasswordParameterSet = "ServicePrincipalWithPasswordParameterSetName";
@@ -81,85 +70,40 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         [ValidateNotNullOrEmpty]
         public string CertificateThumbprint { get; set; }
 
-        private IAzureEnvironment _environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
-
-        protected override IAzureContext DefaultContext
-        {
-            get
-            {
-                return null;
-            }
-        }
-
         public override void ExecuteCmdlet()
         {
-            var azureAccount = new AzureAccount();
+            System.Management.Automation.PowerShell ps = System.Management.Automation.PowerShell.Create();
+            ps.AddCommand("Connect-AzAccount");
 
-            SecureString password = null;
-            if (Credential != null)
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(Credential)))
             {
-                azureAccount.Id = Credential.UserName;
-                password = Credential.Password;
+                ps.AddParameter("Credential",  Credential);
             }
 
-            if (ServicePrincipal)
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(ServicePrincipal)))
             {
-                azureAccount.Type = AzureAccount.AccountType.ServicePrincipal;
-                azureAccount.SetProperty(AzureAccount.Property.Tenants, TenantId);
-
-                if (!string.IsNullOrEmpty(ApplicationId))
-                {
-                    azureAccount.Id = ApplicationId;
-                }
-
-                if (!string.IsNullOrEmpty(CertificateThumbprint))
-                {
-                    azureAccount.SetThumbprint(CertificateThumbprint);
-                }
-
-            }
-            else
-            {
-                azureAccount.Type = AzureAccount.AccountType.User;
+                ps.AddParameter("ServicePrincipal", ServicePrincipal);
             }
 
-            if (azureAccount.Type == AzureAccount.AccountType.ServicePrincipal && string.IsNullOrEmpty(CertificateThumbprint))
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(TenantId)))
             {
-                azureAccount.SetProperty(AzureAccount.Property.ServicePrincipalSecret, password.ConvertToString());
+                ps.AddParameter("Tenant", TenantId);
             }
 
-            if (ShouldProcess(string.Format(Resources.LoginTarget, azureAccount.Type, _environment.Name), "log in"))
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(ApplicationId)))
             {
-                if (AzureRmProfileProvider.Instance.Profile == null)
-                {
-                    InitializeProfileProvider();
-                }
-
-                string subscriptionName = null;
-                string subscriptionId = null;
-                bool SkipValidation = false;
-
-                SetContextWithOverwritePrompt((localProfile, profileClient, name) =>
-                {
-                    WriteObject((PSAzureProfile)profileClient.Login(
-                         azureAccount,
-                         _environment,
-                         TenantId,
-                         subscriptionId,
-                         subscriptionName,
-                         password,
-                         SkipValidation,
-                         WriteWarning,
-                         name));
-                });
+                ps.AddParameter("ApplicationId", ApplicationId);
             }
-        }
 
-        private void SetContextWithOverwritePrompt(Action<AzureRmProfile, RMProfileClient, string> setContextAction)
-        {
-            string name = null;
-            var profile = DefaultProfile as AzureRmProfile;
-            ModifyContext((prof, client) => setContextAction(prof, client, name));
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(CertificateThumbprint)))
+            {
+                ps.AddParameter("CertificateThumbprint", CertificateThumbprint);
+            }
+
+            foreach (var result in ps.Invoke<PSAzureProfile>())
+            {
+                WriteObject(result);
+            }
         }
     }
 }
