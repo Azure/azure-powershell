@@ -67,12 +67,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Name of a load balancer SKU.",
-            ValueFromPipelineByPropertyName = true)]
-        [PSArgumentCompleter(
-            "Basic",
-            "Standard"
-        )]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The public IP Prefix Sku name.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            MNM.PublicIPAddressSkuName.Standard,
+            IgnoreCase = true)]
         public string Sku { get; set; }
 
         [Parameter(
@@ -114,6 +114,15 @@ namespace Microsoft.Azure.Commands.Network
 
             // Sku
             PSNatGatewaySku vSku = null;
+
+            if (this.Sku != null)
+            {
+                if (vSku == null)
+                {
+                    vSku = new PSNatGatewaySku();
+                }
+                vSku.Name = this.Sku;
+            }
 
             // PublicIpAddresses
             List<PSResourceId> vPublicIpAddresses = null;
