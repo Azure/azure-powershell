@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.DataFactory.Models;
 using System.Collections;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
@@ -22,7 +21,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public string Location { get; set; }
 
         public Hashtable Tags { get; set; }
-
-        public FactoryRepoConfiguration RepoConfiguration { get; set; }
     }
 }

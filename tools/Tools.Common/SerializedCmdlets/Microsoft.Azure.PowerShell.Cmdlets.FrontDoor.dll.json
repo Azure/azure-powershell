@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Backends": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackend]",
               "CertificateSource": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource]",
@@ -155,7 +155,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Backends": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackend]",
               "CertificateSource": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource]",
@@ -446,7 +446,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Backends": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackend]",
                     "CertificateSource": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource]",
@@ -615,7 +615,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Backends": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackend]",
               "CertificateSource": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource]",
@@ -756,7 +756,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Backends": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackend]",
               "CertificateSource": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource]",
@@ -1429,7 +1429,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Backends": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackend]",
                     "CertificateSource": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource]",
@@ -1547,7 +1547,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Backends": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackend]",
                     "CertificateSource": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource]",
@@ -1788,7 +1788,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BackendPools": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool]",
               "FrontendEndpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint]",
@@ -2028,7 +2028,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule]",
               "ManagedRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule]",
@@ -2264,7 +2264,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Backends": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackend]",
               "CertificateSource": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource]",
@@ -2387,7 +2387,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BackendPools": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool]",
               "FrontendEndpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint]",
@@ -2649,7 +2649,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BackendPools": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool]",
                     "FrontendEndpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint]",
@@ -2883,7 +2883,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BackendPools": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool]",
               "FrontendEndpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint]",
@@ -2985,7 +2985,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule",
             "GenericTypeArguments": [],
@@ -3003,7 +3003,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool",
             "GenericTypeArguments": [],
@@ -3021,7 +3021,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint",
             "GenericTypeArguments": [],
@@ -3039,7 +3039,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting",
             "GenericTypeArguments": [],
@@ -3057,7 +3057,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting",
             "GenericTypeArguments": [],
@@ -3093,7 +3093,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3283,7 +3283,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule",
                   "GenericTypeArguments": [],
@@ -3307,7 +3307,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool",
                   "GenericTypeArguments": [],
@@ -3331,7 +3331,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint",
                   "GenericTypeArguments": [],
@@ -3355,7 +3355,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting",
                   "GenericTypeArguments": [],
@@ -3379,7 +3379,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting",
                   "GenericTypeArguments": [],
@@ -3427,7 +3427,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3587,7 +3587,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackend",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackend, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackend, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EnabledState": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState]",
               "HttpPort": "System.Nullable`1[System.Int32]",
@@ -3736,7 +3736,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -4016,7 +4016,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4200,7 +4200,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EnabledState": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
               "Backends": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackend]",
@@ -4314,7 +4314,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackend[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackend[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackend[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackend",
             "GenericTypeArguments": [],
@@ -4479,7 +4479,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackend[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackend[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackend[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackend",
                   "GenericTypeArguments": [],
@@ -4602,7 +4602,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "MatchConditions": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition]",
               "Transforms": "System.Collections.Generic.List`1[System.String]",
@@ -4681,7 +4681,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRuleType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRuleType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRuleType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -4784,7 +4784,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition",
             "GenericTypeArguments": [],
@@ -4802,7 +4802,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSAction",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSAction, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSAction, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5042,7 +5042,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRuleType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRuleType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRuleType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5151,7 +5151,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition",
                   "GenericTypeArguments": [],
@@ -5175,7 +5175,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSAction",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSAction, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSAction, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5433,7 +5433,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule]",
               "ManagedRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule]",
@@ -5531,7 +5531,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5634,7 +5634,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5737,7 +5737,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule",
             "GenericTypeArguments": [],
@@ -5755,7 +5755,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule",
             "GenericTypeArguments": [],
@@ -5860,7 +5860,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5969,7 +5969,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6078,7 +6078,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule",
                   "GenericTypeArguments": [],
@@ -6102,7 +6102,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule",
                   "GenericTypeArguments": [],
@@ -6177,7 +6177,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Backends": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackend]",
               "CertificateSource": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource]",
@@ -6282,7 +6282,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -6421,7 +6421,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -6524,7 +6524,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocolType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocolType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocolType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -6681,7 +6681,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -6871,7 +6871,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7028,7 +7028,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7137,7 +7137,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocolType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocolType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocolType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7318,7 +7318,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7478,7 +7478,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Protocol": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol]",
               "IntervalInSeconds": "System.Nullable`1[System.Int32]",
@@ -7573,7 +7573,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -7781,7 +7781,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7965,7 +7965,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SampleSize": "System.Nullable`1[System.Int32]",
               "AdditionalLatencyMilliseconds": "System.Nullable`1[System.Int32]",
@@ -8282,7 +8282,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RuleGroupOverrides": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride]",
               "Priority": "System.Nullable`1[System.Int32]",
@@ -8373,7 +8373,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride",
             "GenericTypeArguments": [],
@@ -8478,7 +8478,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride",
                   "GenericTypeArguments": [],
@@ -8553,7 +8553,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "MatchValue": "System.Collections.Generic.List`1[System.String]",
               "MatchVariable": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSMatchVariable]",
@@ -8610,7 +8610,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchVariable",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchVariable, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchVariable, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -8713,7 +8713,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSOperatorProperty",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSOperatorProperty, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSOperatorProperty, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -8909,7 +8909,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchVariable",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchVariable, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchVariable, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9018,7 +9018,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSOperatorProperty",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSOperatorProperty, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSOperatorProperty, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9250,7 +9250,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EnableCaching": "System.Boolean",
               "HealthProbeSettings": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting]",
@@ -9407,7 +9407,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol",
             "GenericTypeArguments": [],
@@ -9461,7 +9461,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingProtocol",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingProtocol, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingProtocol, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -9582,7 +9582,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSQueryParameterStripDirective",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSQueryParameterStripDirective, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSQueryParameterStripDirective, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -9685,7 +9685,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -9788,7 +9788,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -10050,7 +10050,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol",
                   "GenericTypeArguments": [],
@@ -10122,7 +10122,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingProtocol",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingProtocol, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingProtocol, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10255,7 +10255,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSQueryParameterStripDirective",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSQueryParameterStripDirective, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSQueryParameterStripDirective, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10364,7 +10364,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10473,7 +10473,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10633,7 +10633,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Action": "Microsoft.Azure.Commands.FrontDoor.Models.PSAction",
               "RuleGroupOverride": "Microsoft.Azure.Commands.FrontDoor.Models.PSRuleGroupOverride"
@@ -10687,7 +10687,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSRuleGroupOverride",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRuleGroupOverride, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRuleGroupOverride, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -10790,7 +10790,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSAction",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSAction, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSAction, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -10932,7 +10932,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSRuleGroupOverride",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRuleGroupOverride, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRuleGroupOverride, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11041,7 +11041,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSAction",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSAction, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSAction, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11256,7 +11256,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BackendPools": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool]",
               "FrontendEndpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint]",
@@ -11512,7 +11512,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BackendPools": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool]",
                     "FrontendEndpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint]",
@@ -12150,7 +12150,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule]",
               "ManagedRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule]",
@@ -12402,7 +12402,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule]",
                     "ManagedRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule]",
@@ -12704,7 +12704,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BackendPools": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool]",
               "FrontendEndpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint]",
@@ -12806,7 +12806,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BackendPools": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool]",
               "FrontendEndpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint]",
@@ -12889,7 +12889,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule",
             "GenericTypeArguments": [],
@@ -12907,7 +12907,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool",
             "GenericTypeArguments": [],
@@ -12925,7 +12925,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint",
             "GenericTypeArguments": [],
@@ -12943,7 +12943,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting",
             "GenericTypeArguments": [],
@@ -12961,7 +12961,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting",
             "GenericTypeArguments": [],
@@ -12997,7 +12997,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -13187,7 +13187,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule",
                   "GenericTypeArguments": [],
@@ -13211,7 +13211,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool",
                   "GenericTypeArguments": [],
@@ -13235,7 +13235,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint",
                   "GenericTypeArguments": [],
@@ -13259,7 +13259,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting",
                   "GenericTypeArguments": [],
@@ -13283,7 +13283,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting",
                   "GenericTypeArguments": [],
@@ -13331,7 +13331,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -13484,7 +13484,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontDoor, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BackendPools": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool]",
                     "FrontendEndpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint]",
@@ -13555,7 +13555,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule",
                   "GenericTypeArguments": [],
@@ -13579,7 +13579,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool",
                   "GenericTypeArguments": [],
@@ -13603,7 +13603,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint",
                   "GenericTypeArguments": [],
@@ -13627,7 +13627,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting",
                   "GenericTypeArguments": [],
@@ -13651,7 +13651,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting",
                   "GenericTypeArguments": [],
@@ -13699,7 +13699,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -13876,7 +13876,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule",
                   "GenericTypeArguments": [],
@@ -13900,7 +13900,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool",
                   "GenericTypeArguments": [],
@@ -13924,7 +13924,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint",
                   "GenericTypeArguments": [],
@@ -13948,7 +13948,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting",
                   "GenericTypeArguments": [],
@@ -13972,7 +13972,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting",
                   "GenericTypeArguments": [],
@@ -14020,7 +14020,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14173,7 +14173,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule",
                   "GenericTypeArguments": [],
@@ -14197,7 +14197,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool",
                   "GenericTypeArguments": [],
@@ -14221,7 +14221,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint",
                   "GenericTypeArguments": [],
@@ -14245,7 +14245,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting",
                   "GenericTypeArguments": [],
@@ -14269,7 +14269,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting",
                   "GenericTypeArguments": [],
@@ -14317,7 +14317,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14477,7 +14477,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule]",
               "ManagedRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule]",
@@ -14575,7 +14575,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CustomRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule]",
               "ManagedRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule]",
@@ -14654,7 +14654,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -14757,7 +14757,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -14860,7 +14860,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule",
             "GenericTypeArguments": [],
@@ -14878,7 +14878,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
             "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule",
             "GenericTypeArguments": [],
@@ -14983,7 +14983,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15092,7 +15092,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15201,7 +15201,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule",
                   "GenericTypeArguments": [],
@@ -15225,7 +15225,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule",
                   "GenericTypeArguments": [],
@@ -15293,7 +15293,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CustomRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule]",
                     "ManagedRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule]",
@@ -15360,7 +15360,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15469,7 +15469,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15578,7 +15578,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule",
                   "GenericTypeArguments": [],
@@ -15602,7 +15602,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule",
                   "GenericTypeArguments": [],
@@ -15694,7 +15694,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15803,7 +15803,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15912,7 +15912,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule",
                   "GenericTypeArguments": [],
@@ -15936,7 +15936,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule",
                   "GenericTypeArguments": [],
@@ -16004,7 +16004,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -16113,7 +16113,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -16222,7 +16222,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule",
                   "GenericTypeArguments": [],
@@ -16246,7 +16246,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
                   "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[], Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule",
                   "GenericTypeArguments": [],
@@ -16452,7 +16452,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackend]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackend]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSBackend, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSBackend, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -16464,7 +16464,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSBackend": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackend",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackend, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackend, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "EnabledState": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState]",
         "HttpPort": "System.Nullable`1[System.Int32]",
@@ -16514,7 +16514,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -16526,7 +16526,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -16653,7 +16653,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -16665,7 +16665,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -16760,7 +16760,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -16772,7 +16772,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateType": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -16867,7 +16867,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCustomHttpsProvisioningState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCustomHttpsProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSCustomHttpsProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSCustomHttpsProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -16879,7 +16879,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomHttpsProvisioningState": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomHttpsProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomHttpsProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomHttpsProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -16974,7 +16974,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCustomHttpsProvisioningSubstate]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCustomHttpsProvisioningSubstate]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSCustomHttpsProvisioningSubstate, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSCustomHttpsProvisioningSubstate, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -16986,7 +16986,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomHttpsProvisioningSubstate": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomHttpsProvisioningSubstate",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomHttpsProvisioningSubstate, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomHttpsProvisioningSubstate, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -17081,7 +17081,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSProtocolType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSProtocolType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSProtocolType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSProtocolType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -17093,7 +17093,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocolType": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocolType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocolType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocolType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -17378,7 +17378,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -17390,7 +17390,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPool, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "EnabledState": "Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState",
         "Backends": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackend]",
@@ -17441,7 +17441,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -17453,7 +17453,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSFrontendEndpoint, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Backends": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSBackend]",
         "CertificateSource": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource]",
@@ -17513,7 +17513,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -17525,7 +17525,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Protocol": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol]",
         "IntervalInSeconds": "System.Nullable`1[System.Int32]",
@@ -17575,7 +17575,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -17587,7 +17587,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -17682,7 +17682,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -17694,7 +17694,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSLoadBalancingSetting, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "SampleSize": "System.Nullable`1[System.Int32]",
         "AdditionalLatencyMilliseconds": "System.Nullable`1[System.Int32]",
@@ -17744,7 +17744,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -17756,7 +17756,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRoutingRule, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "EnableCaching": "System.Boolean",
         "HealthProbeSettings": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSHealthProbeSetting]",
@@ -17814,7 +17814,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSProtocol, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -17838,7 +17838,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingProtocol]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingProtocol]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingProtocol, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingProtocol, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -17850,7 +17850,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingProtocol": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingProtocol",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingProtocol, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingProtocol, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -17945,7 +17945,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSQueryParameterStripDirective]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSQueryParameterStripDirective]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSQueryParameterStripDirective, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSQueryParameterStripDirective, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -17957,7 +17957,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSQueryParameterStripDirective": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSQueryParameterStripDirective",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSQueryParameterStripDirective, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSQueryParameterStripDirective, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -18062,7 +18062,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -18074,7 +18074,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "MatchConditions": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition]",
         "Transforms": "System.Collections.Generic.List`1[System.String]",
@@ -18126,7 +18126,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -18138,7 +18138,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "MatchValue": "System.Collections.Generic.List`1[System.String]",
         "MatchVariable": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSMatchVariable]",
@@ -18186,7 +18186,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSMatchVariable]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSMatchVariable]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSMatchVariable, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSMatchVariable, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -18198,7 +18198,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchVariable": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchVariable",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchVariable, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMatchVariable, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -18293,7 +18293,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSOperatorProperty]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSOperatorProperty]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSOperatorProperty, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSOperatorProperty, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -18305,7 +18305,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSOperatorProperty": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSOperatorProperty",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSOperatorProperty, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSOperatorProperty, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -18412,7 +18412,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSAction]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSAction]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSAction, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSAction, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -18424,7 +18424,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSAction": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSAction",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSAction, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSAction, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -18519,7 +18519,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRuleType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRuleType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRuleType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRuleType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -18531,7 +18531,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRuleType": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRuleType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRuleType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRuleType, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -18626,7 +18626,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -18638,7 +18638,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Priority": "System.Nullable`1[System.Int32]",
         "Version": "System.String"
@@ -18683,7 +18683,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSMode]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.FrontDoor.Models.PSMode]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSMode, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSMode, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -18695,7 +18695,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSMode": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSMode, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -18790,7 +18790,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -18802,7 +18802,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Action": "Microsoft.Azure.Commands.FrontDoor.Models.PSAction",
         "RuleGroupOverride": "Microsoft.Azure.Commands.FrontDoor.Models.PSRuleGroupOverride"
@@ -18847,7 +18847,7 @@
     "Microsoft.Azure.Commands.FrontDoor.Models.PSRuleGroupOverride": {
       "Namespace": "Microsoft.Azure.Commands.FrontDoor.Models",
       "Name": "Microsoft.Azure.Commands.FrontDoor.Models.PSRuleGroupOverride",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRuleGroupOverride, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.FrontDoor.Models.PSRuleGroupOverride, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
