@@ -264,7 +264,7 @@
       <PowerShellCommand Condition=" '$(PowerShellCommand)' == '' ">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</PowerShellCommand>
       <!-- All PowerShell commands have this prefix  -->
       <PowerShellCommandPrefix>&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command</PowerShellCommandPrefix>
-
+    </PropertyGroup>
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <Exec Command="dotnet new sln -n Azure.PowerShell --force" />
     <ItemGroup>
