@@ -86,6 +86,8 @@
   <UsingTask Condition="$(OnPremiseBuild)" TaskName="CorporateValidation" AssemblyFile="$(CIToolsPath)/Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
   <Import Condition="$(OnPremiseBuild)" Project="$(CIToolsPath)/Microsoft.WindowsAzure.Build.OnPremise.msbuild" />
   <UsingTask TaskName="ESRPSignTask" AssemblyFile="$(CISignRepoPath)/tools/sdkbuildtools/tasks/MS.Az.Sdk.OnPremise.Build.Tasks.dll" />
+  <UsingTask TaskName="FilesChangedTask" AssemblyFile="$(RepoArtifacts)Microsoft.Azure.Build.Tasks/Microsoft.Azure.Build.Tasks.dll" />
+  <UsingTask TaskName="FilterTask" AssemblyFile="$(RepoArtifacts)Microsoft.Azure.Build.Tasks/Microsoft.Azure.Build.Tasks.dll" />
 
   <!-- Clean the build in all configurations -->
   <Target Name="Clean">
@@ -99,8 +101,11 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(MSBuildThisFileDirectory) -Recurse -Include 'bin','obj','TestResults' | Remove-Item -Recurse -Force -ErrorAction Ignore&quot;" IgnoreExitCode="true" />
   </Target>
 
-  <Target Name="FilterBuild">
+  <Target Name="FilterBuild" Condition="$(PullRequestNumber) != ''">
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)/CreateFilterMappings.ps1&quot;" />
+
+    <!-- Build the Microsoft.Azure.Build.Tasks project -->
+    <Exec Command="dotnet publish $(RepoTools)BuildPackagesTask/Microsoft.Azure.Build.Tasks/Microsoft.Azure.Build.Tasks.csproj -c $(Configuration) -f netstandard2.0" />
 
     <!-- Get all of the files changed in the given pull request -->
     <FilesChangedTask RepositoryOwner="Azure" RepositoryName="azure-powershell" PullRequestNumber="$(PullRequestNumber)">
@@ -116,28 +121,18 @@
     <Message Text="Total: @(ModulesChanged->Count())" />
     <Message Text="" />
 
-    <!-- Get the list of solutions to build -->
-    <FilterTask FilesChanged="@(FilesChanged)" MapFilePath="./SolutionMappings.json">
-      <Output TaskParameter="Output" ItemName="CmdletSolutionsToBuild" />
+    <!-- Get the list of projects to build -->
+    <FilterTask FilesChanged="@(FilesChanged)" MapFilePath="./CsprojMappings.json">
+      <Output TaskParameter="Output" ItemName="ProjectsToBuild" />
     </FilterTask>
-    <Message Text="Filtering solutions to build by the following:" />
-    <Message Text="%(CmdletSolutionsToBuild.Identity)" />
-    <Message Text="Total: @(CmdletSolutionsToBuild->Count())" />
-    <Message Text="" />
-
-    <!--Get the list of tests to be run based on files changed from a specified PullRequestNumber. Mapping between paths and test DLLs is used to produce the list.-->
-    <FilterTask FilesChanged="@(FilesChanged)" MapFilePath="./TestMappings.json">
-      <Output TaskParameter="Output" ItemName="XUnitTests" />
-    </FilterTask>
-    <Message Text="Using these test assemblies:" />
-    <Message Text="%(XUnitTests.Identity)" />
-    <Message Text="Total: @(XunitTests->Count())" />
+    <Message Text="Filtering projects to build by the following:" />
+    <Message Text="%(ProjectsToBuild.Identity)" />
+    <Message Text="Total: @(ProjectsToBuild->Count())" />
     <Message Text="" />
   </Target>
 
   <!-- Build all flavors of the Cmdlets -->
-  <!-- TODO: Reimplement the FilterBuild and update RepoTasks to NetStandard -->
-  <Target Name="Build">
+  <Target Name="Build" DependsOnTargets="FilterBuild">
     <Message Importance="high" Text="Building Cmdlets..." />
 
     <MakeDir Directories="$(PackageDirectory)" />
@@ -148,12 +143,15 @@
     <!-- Build and create package content -->
     <Exec Command="dotnet --version" />
     <Exec Command="dotnet new sln -n Azure.PowerShell -o $(RepoArtifacts) --force" />
-    <ItemGroup>
+    <ItemGroup Condition="$(PullRequestNumber) == ''">
       <CsprojFiles Include="$(LibraryRoot)src/**/*.csproj" Exclude="$(LibraryRoot)src/**/*.Test.csproj;$(LibraryRoot)src/**/Authenticators.csproj" />
       <CsprojFiles Include="$(LibraryRoot)src/**/*.Test.csproj" Condition="'$(CodeSign)' == 'false' and '$(TestsToRun)' == 'All'" />
       <CsprojFiles Include="$(LibraryRoot)src/**/*.Test.csproj" Exclude="$(CoreTests)" Condition="'$(CodeSign)' == 'false' and '$(TestsToRun)' == 'NonCore'" />
       <CsprojFiles Include="$(CoreTests)" Condition="'$(CodeSign)' == 'false' and '$(TestsToRun)' == 'Core'" />
       <CsprojFiles Include="$(LibraryRoot)src/**/Authenticators.csproj" Condition="'$([MSBuild]::IsOsPlatform(&quot;Windows&quot;))' == 'true'" />
+    </ItemGroup>
+    <ItemGroup Condition="$(PullRequestNumber) != ''">
+      <CsprojFiles Include="%(ProjectsToBuild.Identity)" />
     </ItemGroup>
     <!-- https://github.com/dotnet/cli/issues/6295#issuecomment-346973582 -->
     <Exec Command="dotnet sln $(RepoArtifacts)Azure.PowerShell.sln add &quot;%(CsprojFiles.FullPath)&quot;" />
@@ -162,9 +160,9 @@
       <BuildAction Condition="'$(CodeSign)' == 'true'">publish</BuildAction>
     </PropertyGroup>
     <Exec Command="dotnet $(BuildAction) $(RepoArtifacts)Azure.PowerShell.sln -c $(Configuration)" />
-	
+
     <!-- Build version controller -->
-	<Exec Command="dotnet build $(RepoTools)VersionController/VersionController.Netcore.csproj -c $(Configuration)" />
+    <Exec Command="dotnet build $(RepoTools)VersionController/VersionController.Netcore.csproj -c $(Configuration)" />
 
     <!-- Publish static analysis for use cross-platform -->
     <Exec Command="dotnet publish $(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj -c $(Configuration) -f netcoreapp2.1" />
@@ -323,7 +321,7 @@ $(PackageDirectory)/$(Configuration)/**/Microsoft.Azure.PowerShell.Authenticator
     <!-- RemoveCodeSignArtifacts.ps1 -->
     <Message Text="----> Remove artifacts section" Importance="high" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(PackageDirectory) -Recurse -Include 'Signed','Unsigned' | Remove-Item -Recurse -Force -Confirm:$false -ErrorAction Ignore&quot;" IgnoreExitCode="true" />
-    
+
     <!-- CheckSignature.ps1 -->
     <Message Text="----> CheckSignature section" Importance="high" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)/CheckSignature.ps1 -CustomPath $(PackageDirectory)/$(Configuration)&quot;" Condition="'$(Scope)' != 'Stack'" />
