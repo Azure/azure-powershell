@@ -24,7 +24,7 @@ function Test-EndToEndFunctionalTests
 	$subscriptionId = $(getVariable "SubscriptionId")
 	$artifactSourceName = $resourceGroupName + "ArtifactSource"
 	$updatedArtifactSourceName = $resourceGroupName  + "ArtifactSourceUpdated"
-	$location = Get-ProviderLocation "Central US"
+	$location = Get-ProviderLocation "Microsoft.DeploymentManager/serviceTopologies"
 	$storageAccountName = $resourceGroupName + "psstgacct"
 
     # Create resource group
@@ -132,7 +132,7 @@ function Test-Service
 	$subscriptionId)
 
 	$serviceName = $resourceGroupName + "Service"
-	$targetLocation = Get-ProviderLocation "Microsoft.Storage/storageAccounts"
+	$targetLocation = $location
 
 	$service = New-AzDeploymentManagerService -ResourceGroupName $resourceGroupName -Location $location -Name $serviceName -ServiceTopologyObject $serviceTopology -TargetLocation $targetLocation -TargetSubscriptionId $subscriptionId
 
