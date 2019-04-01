@@ -94,7 +94,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Custom block response code used for block actions
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Custom Response Status Code")]
-        public ushort? CustomBlockResponseStatusCode { get; set; }
+        [ValidateRange(200, 499)]
+        public int CustomBlockResponseStatusCode { get; set; }
 
         /// <summary>
         /// Custom block response body used for block actions
