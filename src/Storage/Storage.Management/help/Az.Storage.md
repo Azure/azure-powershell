@@ -20,11 +20,17 @@ Adds an action to the input ManagementPolicy Action Group object, or creates a M
 ### [Add-AzStorageAccountNetworkRule](Add-AzStorageAccountNetworkRule.md)
  Add IpRules or VirtualNetworkRules to the NetworkRule property of a Storage account
 
+### [Disable-AzStorageBlobDeleteRetentionPolicy](Disable-AzStorageBlobDeleteRetentionPolicy.md)
+Disable delete retention policy for the Azure Storage Blob service.
+
 ### [Disable-AzStorageDeleteRetentionPolicy](Disable-AzStorageDeleteRetentionPolicy.md)
 Disable delete retention policy  for the Azure Storage Blob service.
 
 ### [Disable-AzStorageStaticWebsite](Disable-AzStorageStaticWebsite.md)
 Disable static website for the Azure Storage account.
+
+### [Enable-AzStorageBlobDeleteRetentionPolicy](Enable-AzStorageBlobDeleteRetentionPolicy.md)
+Enable delete retention policy for the Azure Storage Blob service.
 
 ### [Enable-AzStorageDeleteRetentionPolicy](Enable-AzStorageDeleteRetentionPolicy.md)
 Enable delete retention policy  for the Azure Storage Blob service.
@@ -61,6 +67,9 @@ Downloads a storage blob.
 
 ### [Get-AzStorageBlobCopyState](Get-AzStorageBlobCopyState.md)
 Gets the copy status of an Azure Storage blob.
+
+### [Get-AzStorageBlobServiceProperty](Get-AzStorageBlobServiceProperty.md)
+Gets service properties for Azure Storage Blob services.
 
 ### [Get-AzStorageContainer](Get-AzStorageContainer.md)
 Lists the storage containers.
@@ -298,6 +307,9 @@ Modifies a Storage blob container
 
 ### [Update-AzStorageAccountNetworkRuleSet](Update-AzStorageAccountNetworkRuleSet.md)
 Update the NetworkRule property of a Storage account
+
+### [Update-AzStorageBlobServiceProperty](Update-AzStorageBlobServiceProperty.md)
+Modifies the service properties for the Azure Storage Blob service.
 
 ### [Update-AzStorageServiceProperty](Update-AzStorageServiceProperty.md)
 Modifies the properties for the Azure Storage service.
