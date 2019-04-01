@@ -468,7 +468,7 @@
     <value>No JobId passed. Please pass a valid JobId.</value>
   </data>
   <data name="SoftwareUpdateConfigurationHasNoTargetComputers" xml:space="preserve">
-    <value>Software update configuration has no target computers.</value>
+    <value>Software update configuration has no target computers or dynamic group queries specified.</value>
   </data>
   <data name="SourceControlCreateAction" xml:space="preserve">
     <value>Creating Azure Automation Source Control.</value>
