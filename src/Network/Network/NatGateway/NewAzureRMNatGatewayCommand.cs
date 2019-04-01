@@ -67,6 +67,16 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Name of a load balancer SKU.",
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter(
+            "Basic",
+            "Standard"
+        )]
+        public string Sku { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The location.",
             ValueFromPipelineByPropertyName = true)]
         [LocationCompleter("Microsoft.Network/natGateways")]
