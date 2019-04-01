@@ -248,15 +248,15 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 SessionAffinityTtlSeconds = sdkFrontendEndpoint.SessionAffinityTtlSeconds,
                 WebApplicationFirewallPolicyLink = sdkFrontendEndpoint.WebApplicationFirewallPolicyLink?.Id,
                 ResourceState = sdkFrontendEndpoint.ResourceState,
-                CustomHttpsProvisioningState = sdkFrontendEndpoint.CustomHttpsConfiguration == null || sdkFrontendEndpoint.CustomHttpsProvisioningState == null ?
+                CustomHttpsProvisioningState = sdkFrontendEndpoint.CustomHttpsProvisioningState == null ?
                         (PSCustomHttpsProvisioningState?)null : (PSCustomHttpsProvisioningState)Enum.Parse(typeof(PSCustomHttpsProvisioningState), sdkFrontendEndpoint.CustomHttpsProvisioningState),
-                CustomHttpsProvisioningSubstate = sdkFrontendEndpoint.CustomHttpsConfiguration == null || sdkFrontendEndpoint.CustomHttpsProvisioningSubstate == null ?
+                CustomHttpsProvisioningSubstate = sdkFrontendEndpoint.CustomHttpsProvisioningSubstate == null ?
                         (PSCustomHttpsProvisioningSubstate?)null : (PSCustomHttpsProvisioningSubstate)Enum.Parse(typeof(PSCustomHttpsProvisioningSubstate), sdkFrontendEndpoint.CustomHttpsProvisioningSubstate),
                 CertificateSource = sdkFrontendEndpoint.CustomHttpsConfiguration == null || sdkFrontendEndpoint.CustomHttpsConfiguration.CertificateSource == null ?
                         (PSCertificateSource?)null : (PSCertificateSource)Enum.Parse(typeof(PSCertificateSource), sdkFrontendEndpoint.CustomHttpsConfiguration.CertificateSource),
                 ProtocolType = sdkFrontendEndpoint.CustomHttpsConfiguration == null || sdkFrontendEndpoint.CustomHttpsConfiguration.ProtocolType == null ?
                         (PSProtocolType?)null : (PSProtocolType)Enum.Parse(typeof(PSProtocolType), sdkFrontendEndpoint.CustomHttpsConfiguration.ProtocolType),
-                Vault = sdkFrontendEndpoint.CustomHttpsConfiguration?.Vault.Id,
+                Vault = sdkFrontendEndpoint.CustomHttpsConfiguration?.Vault?.Id,
                 SecretName = sdkFrontendEndpoint.CustomHttpsConfiguration?.SecretName,
                 SecretVersion = sdkFrontendEndpoint.CustomHttpsConfiguration?.SecretVersion,
                 CertificateType = sdkFrontendEndpoint.CustomHttpsConfiguration == null || sdkFrontendEndpoint.CustomHttpsConfiguration.CertificateType == null ?
