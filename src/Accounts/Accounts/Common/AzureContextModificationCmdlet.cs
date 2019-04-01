@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Profile.Common
         /// <summary>
         /// Initialize the profile provider based on the autosave setting
         /// </summary>
-        internal void InitializeProfileProvider(bool useAutoSaveProfile = false)
+        protected void InitializeProfileProvider(bool useAutoSaveProfile = false)
         {
 #if DEBUG
             if (!TestMockSupport.RunningMocked)
