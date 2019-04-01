@@ -114,7 +114,7 @@ Storage Account Name.
 ```yaml
 Type: System.String
 Parameter Sets: AccountName
-Aliases: AccountName
+Aliases: AccountName, Name
 
 Required: True
 Position: 1
