@@ -161,6 +161,9 @@ Gets the connection draining configuration of a back-end HTTP settings object.
 ### [Get-AzApplicationGatewayCustomError](Get-AzApplicationGatewayCustomError.md)
 Gets custom error(s) from an application gateway.
 
+### [Get-AzApplicationGatewayFirewallPolicy](Get-AzApplicationGatewayFirewallPolicy.md)
+Gets an application gateway firewall policy.
+
 ### [Get-AzApplicationGatewayFrontendIPConfig](Get-AzApplicationGatewayFrontendIPConfig.md)
 Gets the front-end IP configuration of an application gateway.
 
@@ -512,11 +515,23 @@ Creates a new connection draining configuration for back-end HTTP settings.
 ### [New-AzApplicationGatewayCustomError](New-AzApplicationGatewayCustomError.md)
 Creates a custom error with http status code and custom error page url 
 
+### [New-AzApplicationGatewayFirewallCondition](New-AzApplicationGatewayFirewallCondition.md)
+Creates a match condition for custom rule
+
+### [New-AzApplicationGatewayFirewallCustomRule](New-AzApplicationGatewayFirewallCustomRule.md)
+Creates a new custom rule for the application gateway firewall policy.
+
 ### [New-AzApplicationGatewayFirewallDisabledRuleGroupConfig](New-AzApplicationGatewayFirewallDisabledRuleGroupConfig.md)
 Creates a new disabled rule group configuration.
 
 ### [New-AzApplicationGatewayFirewallExclusionConfig](New-AzApplicationGatewayFirewallExclusionConfig.md)
 Creates a new exclusion rule list for application gateway waf
+
+### [New-AzApplicationGatewayFirewallMatchVariable](New-AzApplicationGatewayFirewallMatchVariable.md)
+Creates a match variable for firewall condition.
+
+### [New-AzApplicationGatewayFirewallPolicy](New-AzApplicationGatewayFirewallPolicy.md)
+Creates a application gateway firewall policy.
 
 ### [New-AzApplicationGatewayFrontendIPConfig](New-AzApplicationGatewayFrontendIPConfig.md)
 Creates a front-end IP configuration for an application gateway.
@@ -802,6 +817,9 @@ Removes the connection draining configuration of a back-end HTTP settings object
 ### [Remove-AzApplicationGatewayCustomError](Remove-AzApplicationGatewayCustomError.md)
 Removes a custom error from an application gateway.
 
+### [Remove-AzApplicationGatewayFirewallPolicy](Remove-AzApplicationGatewayFirewallPolicy.md)
+Removes an application gateway firewall policy.
+
 ### [Remove-AzApplicationGatewayFrontendIPConfig](Remove-AzApplicationGatewayFrontendIPConfig.md)
 Removes a front-end IP configuration from an application gateway.
 
@@ -1039,6 +1057,9 @@ Modifies the connection draining configuration of a back-end HTTP settings objec
 ### [Set-AzApplicationGatewayCustomError](Set-AzApplicationGatewayCustomError.md)
 Updates a custom error in an application gateway.
 
+### [Set-AzApplicationGatewayFirewallPolicy](Set-AzApplicationGatewayFirewallPolicy.md)
+Updates an application gateway firewall policy.
+
 ### [Set-AzApplicationGatewayFrontendIPConfig](Set-AzApplicationGatewayFrontendIPConfig.md)
 Modifies a front-end IP address configuration.
 
@@ -1250,5 +1271,5 @@ Updates a VPN connection.
 Updates a scalable VPN gateway.
 
 ### [Update-AzVpnSite](Update-AzVpnSite.md)
-Updates a VPN site.
+Updates a VpnSite representing a customer branch to an intended goal state.
 

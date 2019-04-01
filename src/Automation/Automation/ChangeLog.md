@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Azure automation update management change to support the following new features :
+    * Dynamic grouping
+    * Pre-Post script
+    * Reboot Setting
+    
 ## Version 1.1.2
 * Fixed issue when retreiving certain monthly schedules in several Azure Automation cmdlets
 * Fix Get-AzAutomationDscNode returning just top 20 nodes. Now it returns all nodes

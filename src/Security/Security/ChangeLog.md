@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.4
 * Deprecate ResourceGroupName parameter in commands: Get-AzSecurityPricing and Set-AzSecurityPricing
 
 ## Version 0.7.3

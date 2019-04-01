@@ -138,7 +138,7 @@ Accept wildcard characters: False
 The virtual network object associated with the link.
 
 ```yaml
-Type: Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.VirtualNetwork
+Type: Microsoft.Azure.Management.Internal.Network.Common.IVirtualNetwork
 Parameter Sets: VirtualNetworkObject
 Aliases:
 
