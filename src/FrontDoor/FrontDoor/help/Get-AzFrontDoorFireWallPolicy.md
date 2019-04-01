@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
 online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/get-azfrontdoorfirewallpolicy
@@ -26,19 +26,9 @@ The **Get-AzFrontDoorFireWallPolicy** cmdletGet gets WAF policy in a resource gr
 ```powershell
 PS C:\> Get-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName
 
-PolicyMode                    : Prevention
-PolicyEnabledState            : Enabled
-RedirectUrl                   : https://www.bing.com/
-CustomBlockResponseStatusCode : 405
-CustomBlockResponseBody       : <html><head><title>You are blocked!</title></head><body></body></html>
-CustomRules                   : {Rule1, Rule2}
-ManagedRules                  : {Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule}
-Etag                          :
-ProvisioningState             : Succeeded
-Tags                          :
-Id                            : /subscriptions/{subid}/resourcegroups/{resourceGroupName}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/{policyName}
-Name                          : {policyName}
-Type                          :
+Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
+----         ---------- ------------------ ----------------------------- -----------
+{policyName} Prevention            Enabled                           403 https://www.bing.com/
 ```
 
 Get a WAF policy called $policyName in $resourceGroupName
@@ -47,33 +37,11 @@ Get a WAF policy called $policyName in $resourceGroupName
 ```powershell
 PS C:\> Get-AzFrontDoorFireWallPolicy -ResourceGroupName $resourceGroupName
 
-PolicyMode                    : Prevention
-PolicyEnabledState            : Enabled
-RedirectUrl                   :
-CustomBlockResponseStatusCode :
-CustomBlockResponseBody       :
-CustomRules                   : {AllowRule, BlockAll}
-ManagedRules                  : {}
-Etag                          :
-ProvisioningState             : Succeeded
-Tags                          :
-Id                            : /subscriptions/{subid}/resourcegroups/{resourceGroupName}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/{policyName}
-Name                          : {policyName}
-Type                          :
-
-PolicyMode                    : Prevention
-PolicyEnabledState            : Enabled
-RedirectUrl                   : https://www.bing.com/
-CustomBlockResponseStatusCode : 405
-CustomBlockResponseBody       : <html><head><title>You are blocked!</title></head><body></body></html>
-CustomRules                   : {Rule1, Rule2}
-ManagedRules                  : {Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule}
-Etag                          :
-ProvisioningState             : Succeeded
-Tags                          :
-Id                            : /subscriptions/{subid}/resourcegroups/{resourceGroupName}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/{policyName}
-Name                          : {policyName}
-Type                          :
+Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
+----         ---------- ------------------ ----------------------------- -----------
+{policyName} Prevention           Disabled
+{policyName} Detection             Enabled                           403 https://www.bing.com/
+{policyName} Detection             Enabled                           404
 ```
 
 Get all WAF policy in $resourceGroupName

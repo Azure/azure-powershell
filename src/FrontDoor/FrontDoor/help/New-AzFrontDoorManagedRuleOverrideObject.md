@@ -13,7 +13,7 @@ Create managed rule override object
 ## SYNTAX
 
 ```
-New-AzFrontDoorManagedRuleOverrideObject -RuleId <String> [-Action <PSAction>] [-EnabledState <PSEnabledState>]
+New-AzFrontDoorManagedRuleOverrideObject -RuleId <String> [-Action <PSAction>] [-Disabled]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Create PSAzureManagedRuleOverride Object for managed WAF rule group override obj
 Create a managed rule override object for rule 942250 (which is in SQLI group).
 
 ```powershell
-PS C:\> New-AzFrontDoorManagedRuleOverrideObject -RuleId "942250" -Action Log -EnabledState Enabled
+PS C:\> New-AzFrontDoorManagedRuleOverrideObject -RuleId "942250" -Action Log
 
 RuleId EnabledState Action
 ------ ------------ ------
@@ -39,7 +39,7 @@ RuleId EnabledState Action
 Override Action
 
 ```yaml
-Type: PSAction
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSAction
 Parameter Sets: (All)
 Aliases:
 Accepted values: Allow, Block, Log, Redirect
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -66,14 +66,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnabledState
-Enabled State
+### -Disabled
+Disabled state
 
 ```yaml
-Type: PSEnabledState
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -86,7 +85,7 @@ Accept wildcard characters: False
 Rule ID
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

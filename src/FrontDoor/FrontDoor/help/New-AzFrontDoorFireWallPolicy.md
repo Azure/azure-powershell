@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
 online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoorfirewallpolicy
@@ -15,7 +15,7 @@ Create WAF policy
 ```
 New-AzFrontDoorFireWallPolicy -ResourceGroupName <String> -Name <String> [-EnabledState <PSEnabledState>]
  [-Mode <PSMode>] [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-RedirectUrl <String>]
- [-CustomBlockResponseStatusCode <UInt16>] [-CustomBlockResponseBody <String>]
+ [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -28,19 +28,9 @@ The **New-AzFrontDoorFireWallPolicy** cmdlet creates a new Azure WAF policy in t
 ```powershell
 PS C:\> New-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Customrule $customRule1,$customRule2 -ManagedRule $managedRule1 -EnabledState Enabled -Mode Prevention -RedirectUrl "https://www.bing.com/" -CustomBlockResponseStatusCode 405 -CustomBlockResponseBody "<html><head><title>You are blocked!</title></head><body></body></html>"
 
-PolicyMode                    : Prevention
-PolicyEnabledState            : Enabled
-RedirectUrl                   : https://www.bing.com/
-CustomBlockResponseStatusCode : 405
-CustomBlockResponseBody       : <html><head><title>You are blocked!</title></head><body></body></html>
-CustomRules                   : {Rule1, Rule2}
-ManagedRules                  : {Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule}
-Etag                          :
-ProvisioningState             : Succeeded
-Tags                          :
-Id                            : /subscriptions/{subid}/resourcegroups/{resourceGroupName}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/{policyName}
-Name                          : {policyName}
-Type                          :
+Name         PolicyMode PolicyEnabledState RedirectUrl
+----         ---------- ------------------ -----------
+{policyName} Prevention            Enabled https://www.bing.com/
 ```
 
 Create WAF policy
@@ -66,7 +56,7 @@ Accept wildcard characters: False
 Custom Response Status Code
 
 ```yaml
-Type: System.Nullable`1[System.UInt16]
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 

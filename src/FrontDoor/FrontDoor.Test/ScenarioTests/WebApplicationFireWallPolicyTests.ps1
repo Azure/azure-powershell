@@ -25,7 +25,7 @@ function Test-PolicyCrud
     $matchCondition1 = New-AzFrontDoorMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "UserAgent" -MatchValue "Windows"
     $customRule1 = New-AzFrontDoorCustomRuleObject -Name "Rule1" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Block -Priority 2
 
-    $ruleOverride = New-AzFrontDoorManagedRuleOverrideObject -RuleId "942100" -Action Log -EnabledState Enabled
+    $ruleOverride = New-AzFrontDoorManagedRuleOverrideObject -RuleId "942100" -Action Log
     $override1 = New-AzFrontDoorRuleGroupOverrideObject -RuleGroupName SQLI -ManagedRuleOverride $ruleOverride
     $managedRule1 = New-AzFrontDoorManagedRuleObject -Type DefaultRuleSet -Version "preview-0.1" -RuleGroupOverride $override1
 
@@ -67,7 +67,7 @@ function Test-PolicyCrudWithPiping
     $matchCondition1 = New-AzFrontDoorMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "UserAgent" -MatchValue "Windows"
     $customRule1 = New-AzFrontDoorCustomRuleObject -Name "Rule1" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Block -Priority 2
 
-    $ruleOverride = New-AzFrontDoorManagedRuleOverrideObject -RuleId "942100" -Action Log -EnabledState Enabled
+    $ruleOverride = New-AzFrontDoorManagedRuleOverrideObject -RuleId "942100" -Action Log
     $override1 = New-AzFrontDoorRuleGroupOverrideObject -RuleGroupName SQLI -ManagedRuleOverride $ruleOverride
     $managedRule1 = New-AzFrontDoorManagedRuleObject -Type DefaultRuleSet -Version "preview-0.1" -RuleGroupOverride $override1
 

@@ -13,18 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
+using System.Linq;
 using System.Management.Automation;
-using System.Net;
+using System.Text;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Helpers;
 using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.Azure.Commands.FrontDoor.Properties;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Management.FrontDoor;
-using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System.Text;
+using Microsoft.Azure.Management.FrontDoor;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -83,7 +81,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Custom block response code used for block actions
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Custom Response Status Code")]
-        public ushort? CustomBlockResponseStatusCode { get; set; }
+        [ValidateRange(200, 499)]
+        public int CustomBlockResponseStatusCode { get; set; }
 
         /// <summary>
         /// Custom block response body used for block actions
@@ -118,7 +117,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                     EnabledState = this.IsParameterBound(c => c.EnabledState) ? EnabledState.ToString() : PSEnabledState.Enabled.ToString(),
                     Mode = this.IsParameterBound(c => c.Mode) ? Mode.ToString() : PSMode.Prevention.ToString(),
                     CustomBlockResponseBody = CustomBlockResponseBody == null ? CustomBlockResponseBody : Convert.ToBase64String(Encoding.UTF8.GetBytes(CustomBlockResponseBody)),
-                    CustomBlockResponseStatusCode = CustomBlockResponseStatusCode,
+                    CustomBlockResponseStatusCode = this.IsParameterBound(c => c.CustomBlockResponseStatusCode) ? CustomBlockResponseStatusCode : (int?)null,
                     RedirectUrl = RedirectUrl
                 }
             };

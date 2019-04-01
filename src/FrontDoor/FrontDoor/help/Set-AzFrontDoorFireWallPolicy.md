@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
 online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/set-azfrontdoorfirewallpolicy
@@ -16,7 +16,7 @@ Update WAF policy
 ```
 Set-AzFrontDoorFireWallPolicy -ResourceGroupName <String> -Name <String> [-EnabledState <PSEnabledState>]
  [-Mode <PSMode>] [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-RedirectUrl <String>]
- [-CustomBlockResponseStatusCode <UInt16>] [-CustomBlockResponseBody <String>]
+ [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Set-AzFrontDoorFireWallPolicy -ResourceGroupName <String> -Name <String> [-Enabl
 ```
 Set-AzFrontDoorFireWallPolicy -InputObject <PSPolicy> [-EnabledState <PSEnabledState>] [-Mode <PSMode>]
  [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-RedirectUrl <String>]
- [-CustomBlockResponseStatusCode <UInt16>] [-CustomBlockResponseBody <String>]
+ [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Set-AzFrontDoorFireWallPolicy -InputObject <PSPolicy> [-EnabledState <PSEnabledS
 ```
 Set-AzFrontDoorFireWallPolicy -ResourceId <String> [-EnabledState <PSEnabledState>] [-Mode <PSMode>]
  [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-RedirectUrl <String>]
- [-CustomBlockResponseStatusCode <UInt16>] [-CustomBlockResponseBody <String>]
+ [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -45,19 +45,9 @@ The **Set-AzFrontDoorFireWallPolicy** cmdlet updates an existing WAF policy. If 
 ```powershell
 PS C:\> Set-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName -CustomBlockResponseStatusCode 403
 
-PolicyMode                    : Prevention
-PolicyEnabledState            : Enabled
-RedirectUrl                   : https://www.bing.com/
-CustomBlockResponseStatusCode : 403
-CustomBlockResponseBody       : <html><head><title>You are blocked!</title></head><body></body></html>
-CustomRules                   : {Rule1, Rule2}
-ManagedRules                  : {Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule}
-Etag                          :
-ProvisioningState             : Succeeded
-Tags                          :
-Id                            : /subscriptions/{subid}/resourcegroups/{resourceGroupName}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/{policyName}
-Name                          : {policyName}
-Type                          :
+Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
+----         ---------- ------------------ ----------------------------- -----------
+{policyName} Prevention            Enabled                           403 https://www.bing.com/
 ```
 
 Update an existing WAF policy custom status code.
@@ -66,19 +56,9 @@ Update an existing WAF policy custom status code.
 ```powershell
 PS C:\> Set-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Mode Detection
 
-PolicyMode                    : Detection
-PolicyEnabledState            : Enabled
-RedirectUrl                   : https://www.bing.com/
-CustomBlockResponseStatusCode : 403
-CustomBlockResponseBody       : <html><head><title>You are blocked!</title></head><body></body></html>
-CustomRules                   : {Rule1, Rule2}
-ManagedRules                  : {Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule}
-Etag                          :
-ProvisioningState             : Succeeded
-Tags                          :
-Id                            : /subscriptions/{subid}/resourcegroups/{resourceGroupName}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/{policyName}
-Name                          : {policyName}
-Type                          :
+Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
+----         ---------- ------------------ ----------------------------- -----------
+{policyName} Detection            Enabled                           403 https://www.bing.com/
 ```
 
 Update an existing WAF policy mode.
@@ -87,19 +67,9 @@ Update an existing WAF policy mode.
 ```powershell
 PS C:\> Set-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Mode Detection -EnabledState Disabled
 
-PolicyMode                    : Detection
-PolicyEnabledState            : Disabled
-RedirectUrl                   : https://www.bing.com/
-CustomBlockResponseStatusCode : 403
-CustomBlockResponseBody       : <html><head><title>You are blocked!</title></head><body></body></html>
-CustomRules                   : {Rule1, Rule2}
-ManagedRules                  : {Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule}
-Etag                          :
-ProvisioningState             : Succeeded
-Tags                          :
-Id                            : /subscriptions/{subid}/resourcegroups/{resourceGroupName}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/{policyName}
-Name                          : {policyName}
-Type                          :
+Name          PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
+----          ---------- ------------------ ----------------------------- -----------
+{policyName}  Detection           Disabled                           403 https://www.bing.com/
 ```
 
 Update an existing WAF policy enabled state and mode.
@@ -132,7 +102,7 @@ Accept wildcard characters: False
 Custom Response Status Code
 
 ```yaml
-Type: System.Nullable`1[System.UInt16]
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 

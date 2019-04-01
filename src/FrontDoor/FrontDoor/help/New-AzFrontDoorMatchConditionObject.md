@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
 online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoormatchconditionobject
@@ -25,14 +25,12 @@ Create MatchCondition Object for WAF policy creation
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFrontDoorMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "User-Agent" -MatchValue "Mozilla"
+PS C:\> New-AzFrontDoorMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "User-Agent" -MatchValue "Windows"
 
 
-MatchVariable    : RequestHeader
-OperatorProperty : Contains
-MatchValue       : {Mozilla}
-Selector         : User-Agent
-NegateCondition  : False
+MatchVariable OperatorProperty MatchValue Selector   NegateCondition
+------------- ---------------- ---------- --------   ---------------
+RequestHeader         Contains {Windows}  User-Agent           False
 ```
 
 Create a MatchCondition object
