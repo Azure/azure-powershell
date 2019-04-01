@@ -1,52 +1,51 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.storage/remove-Azstorageaccountmanagementpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/update-azstorageblobserviceproperty
 schema: 2.0.0
 ---
 
-# Remove-AzStorageAccountManagementPolicy
+# Update-AzStorageBlobServiceProperty
 
 ## SYNOPSIS
-Removes the management policy of an Azure Storage account.
+Modifies the service properties for the Azure Storage Blob service.
 
 ## SYNTAX
 
 ### AccountName (Default)
 ```
-Remove-AzStorageAccountManagementPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzStorageBlobServiceProperty [-ResourceGroupName] <String> [-StorageAccountName] <String>
+ [-DefaultServiceVersion <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
-Remove-AzStorageAccountManagementPolicy -StorageAccount <PSStorageAccount> [-PassThru]
+Update-AzStorageBlobServiceProperty -StorageAccount <PSStorageAccount> [-DefaultServiceVersion <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### AccountResourceId
+### BlobServicePropertiesResourceId
 ```
-Remove-AzStorageAccountManagementPolicy [-StorageAccountResourceId] <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### PolicyObject
-```
-Remove-AzStorageAccountManagementPolicy [-InputObject] <PSManagementPolicy> [-PassThru]
+Update-AzStorageBlobServiceProperty [-ResourceId] <String> [-DefaultServiceVersion <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzStorageAccountManagementPolicy** cmdlet removes the management policy of an Azure Storage account.
+The **Update-AzStorageBlobServiceProperty** cmdlet modifies the service properties for the Azure Storage Blob service.
 
 ## EXAMPLES
 
-### Example 1: Remove the management policy of a Storage account.
+### Example 1: Set Blob service DefaultServiceVersion to 2018-03-28
 ```
-PS C:\>Remove-AzStorageAccountManagementPolicy -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount"
+C:\PS> Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -DefaultServiceVersion 2018-03-28 
+
+StorageAccountName ResourceGroupName DefaultServiceVersion DeleteRetentionPolicy.Enabled DeleteRetentionPolicy.Days
+------------------ ----------------- --------------------- ----------------------------- --------------------------
+myresourcegroup    mystorageaccount  2018-03-28            False
 ```
 
-This command removes the management policy of a Storage account.
+This command sets the DefaultServiceVersion of Blob Service to 2018-03-28.
 
 ## PARAMETERS
 
@@ -65,27 +64,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Management Object to Remove
+### -DefaultServiceVersion
+Default Service Version to Set
 
 ```yaml
-Type: Microsoft.Azure.Commands.Management.Storage.Models.PSManagementPolicy
-Parameter Sets: PolicyObject
-Aliases: ManagementPolicy
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -PassThru
-Indicates that this cmdlet returns a **Boolean** that reflects the success of the operation.
-By default, this cmdlet does not return a value.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -111,6 +94,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+Input a Storage account Resource Id, or a Blob service properties Resource Id.
+
+```yaml
+Type: System.String
+Parameter Sets: BlobServicePropertiesResourceId
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -StorageAccount
 Storage account object
 
@@ -132,27 +130,12 @@ Storage Account Name.
 ```yaml
 Type: System.String
 Parameter Sets: AccountName
-Aliases: AccountName
+Aliases: AccountName, Name
 
 Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageAccountResourceId
-Storage Account Resource Id.
-
-```yaml
-Type: System.String
-Parameter Sets: AccountResourceId
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -192,11 +175,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount
+
 ### System.String
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.Management.Storage.Models.PSBlobServiceProperties
 
 ## NOTES
 
