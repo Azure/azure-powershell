@@ -28,7 +28,7 @@ The **New-AzActionGroup** cmdlet creates an action group reference object in mem
 ```
 PS C:\>$dict = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
 PS C:\>$dict.Add('key1', 'value1')
-PS C:\>$actionGrp1 = New-AzActionGroup -ActionGroupId 'actiongr1' -WebhookProperties $dict
+PS C:\>$actionGrp1 = New-AzActionGroup -ActionGroupId 'actiongr1' -WebhookProperty $dict
 ```
 
 ## PARAMETERS
