@@ -799,7 +799,7 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Software update configuration has no target computers..
+        ///   Looks up a localized string similar to Software update configuration has no target computers or dynamic group queries specified..
         /// </summary>
         internal static string SoftwareUpdateConfigurationHasNoTargetComputers {
             get {

@@ -68,6 +68,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("V1", "V2")]
+        public string HyperVGeneration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
 
         [Parameter(
@@ -235,6 +241,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             var vSnapshot = new PSSnapshot
             {
                 OsType = this.MyInvocation.BoundParameters.ContainsKey("OsType") ? this.OsType : (OperatingSystemTypes?)null,
+                HyperVGeneration = this.MyInvocation.BoundParameters.ContainsKey("HyperVGeneration") ? this.HyperVGeneration : null,
                 DiskSizeGB = this.MyInvocation.BoundParameters.ContainsKey("DiskSizeGB") ? this.DiskSizeGB : (int?)null,
                 Location = this.MyInvocation.BoundParameters.ContainsKey("Location") ? this.Location : null,
                 Tags = this.MyInvocation.BoundParameters.ContainsKey("Tag") ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,

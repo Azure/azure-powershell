@@ -42,6 +42,56 @@ namespace Commands.Automation.Test
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestCreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnly()
+        {
+            TestRunner.RunTestScript("Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnly");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestCreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnlyWithOutTags()
+        {
+            TestRunner.RunTestScript("Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnlyWithOutTags");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestCreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnlyWithOutLocation()
+        {
+            TestRunner.RunTestScript("Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnlyWithOutLocations");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestCreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnlyWithOutTagsAndLocations()
+        {
+            TestRunner.RunTestScript("Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnlyWithOutLocationsAndTags");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestCreateAndGetSoftwareUpdateConfigurationWithNonAzureDynamicGroupsOnly()
+        {
+            TestRunner.RunTestScript("Test-CreateAndGetSoftwareUpdateConfigurationWithNonAzureDynamicGroupsOnly");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestCreateAndGetSoftwareUpdateConfigurationWithRebootOnly()
         {
             TestRunner.RunTestScript("Test-CreateAndGetSoftwareUpdateConfigurationWithRebootOnly");
