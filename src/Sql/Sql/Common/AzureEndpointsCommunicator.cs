@@ -15,12 +15,14 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
+using Microsoft.Azure.Commands.Sql.DataClassification.Services;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
@@ -79,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// </summary>
         public static StorageManagementClient GetStorageV2Client(IAzureContext context)
         {
-// TODO: Remove IfDef
+            // TODO: Remove IfDef
 #if NETSTANDARD
             return AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
 #else
@@ -100,7 +102,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             {
                 url = url + "/";
             }
-// TODO: Remove IfDef
+            // TODO: Remove IfDef
 #if NETSTANDARD
             url = url + "subscriptions/" + (client.SubscriptionId != null ? client.SubscriptionId.Trim() : "");
 #else
@@ -110,7 +112,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             url = url + "/providers/Microsoft.ClassicStorage/storageAccounts/" + storageAccountName;
             url = url + "/listKeys?api-version=2014-06-01";
 
-            var httpRequest = new HttpRequestMessage {Method = HttpMethod.Post, RequestUri = new Uri(url)};
+            var httpRequest = new HttpRequestMessage { Method = HttpMethod.Post, RequestUri = new Uri(url) };
 
             await client.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
             var httpResponse = await client.HttpClient.SendAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
@@ -122,7 +124,10 @@ namespace Microsoft.Azure.Commands.Sql.Common
                 var primaryKey = (string)responseDoc["primaryKey"];
                 var secondaryKey = (string)responseDoc["secondaryKey"];
                 if (string.IsNullOrEmpty(primaryKey) || string.IsNullOrEmpty(secondaryKey))
+                {
                     throw new Exception(); // this is caught by the synced wrapper
+                }
+
                 result.Add(StorageKeyKind.Primary, primaryKey);
                 result.Add(StorageKeyKind.Secondary, secondaryKey);
                 return result;
@@ -137,7 +142,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         {
             var storageClient = GetCurrentStorageV2Client();
             var r = storageClient.StorageAccounts.ListKeys(resourceGroupName, storageAccountName);
-// TODO: Remove IfDef
+            // TODO: Remove IfDef
 #if NETSTANDARD
             var k1 = r.Keys[0].Value;
             var k2 = r.Keys[1].Value;
@@ -199,7 +204,10 @@ namespace Microsoft.Azure.Commands.Sql.Common
             var res = resourcesClient.Resources.List(query);
             var allResources = new List<GenericResource>(res);
             var account = allResources.Find(r => r.Name == storageAccountName);
-            if (account == null) return null;
+            if (account == null)
+            {
+                return null;
+            }
 
             var resId = account.Id;
             var segments = resId.Split('/');
@@ -325,13 +333,13 @@ namespace Microsoft.Azure.Commands.Sql.Common
                 JToken response = await SendAsync(nextLink, HttpMethod.Get, new Exception(string.Format(Properties.Resources.RetrievingStorageAccountIdUnderSubscriptionFailed, storageAccountName, storageAccountSubscriptionId)));
                 var valuesArray = (JArray)response["value"];
                 if (valuesArray.HasValues)
-            {
+                {
                     var idValueToken = valuesArray[0];
                     id = (string)idValueToken["id"];
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new Exception(string.Format(Properties.Resources.RetrievingStorageAccountIdUnderSubscriptionFailed, storageAccountName, storageAccountSubscriptionId));
-            }
+                    if (string.IsNullOrEmpty(id))
+                    {
+                        throw new Exception(string.Format(Properties.Resources.RetrievingStorageAccountIdUnderSubscriptionFailed, storageAccountName, storageAccountSubscriptionId));
+                    }
                 }
                 nextLink = (string)response["nextLink"];
             }
@@ -340,8 +348,19 @@ namespace Microsoft.Azure.Commands.Sql.Common
             {
                 throw new Exception(string.Format(Properties.Resources.StorageAccountNotFound, storageAccountName));
             }
-            
+
             return id;
+        }
+
+        internal async Task<InformationProtectionPolicy> RetrieveInformationProtectionPolicyAsync(Guid tenantId)
+        {
+            string endpoint = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager).ToString();
+            string uri = $"{endpoint}providers/Microsoft.Management/managementGroups/{tenantId}/providers/Microsoft.Security/informationprotectionpolicies/effective?api-version=2017-08-01-preview";
+            Exception exception = new Exception(
+                string.Format(Properties.Resources.DataClassificationFailedToRetrieveInformationProtectionPolicy,
+                tenantId));
+            JToken policyToken = await SendAsync(uri, HttpMethod.Get, exception);
+            return InformationProtectionPolicy.ToInformationProtectionPolicy(policyToken);
         }
 
         /// <summary>
@@ -354,7 +373,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         private async Task<JToken> SendAsync(string url, HttpMethod method, Exception exceptionToThrowOnFailure)
         {
             var client = GetCurrentResourcesClient(Context);
-            var httpRequest = new HttpRequestMessage {Method = method, RequestUri = new Uri(url)};
+            var httpRequest = new HttpRequestMessage { Method = method, RequestUri = new Uri(url) };
             await client.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
             var httpResponse = await client.HttpClient.SendAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
             if (!httpResponse.IsSuccessStatusCode)
@@ -364,19 +383,19 @@ namespace Microsoft.Azure.Commands.Sql.Common
 
             return JToken.Parse(await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false));
         }
-        
+
         /// <summary>
         /// Version of classic storage listKeys REST-API.
         /// </summary>
         private const string ClassicStorageListKeysApiVersion = "2016-11-01";
-        
+
         /// <summary>
         /// Version of non classic storage listKeys REST-API.
         /// </summary>
         private const string NonClassicStorageListKeysApiVersion = "2017-06-01";
-        
+
         private const string PrimaryKey = "primaryKey";
-        
+
         private const string SecondaryKey = "secondaryKey";
     }
 }

@@ -488,10 +488,30 @@ namespace Microsoft.Azure.Commands.Compute
                         Zones = this.Zone ?? this.VM.Zones,
                     };
 
+                    Dictionary<string, List<string>> auxAuthHeader = null;
+                    if (!string.IsNullOrEmpty(parameters.StorageProfile?.ImageReference?.Id))
+                    {
+                        var resourceId = ResourceId.TryParse(parameters.StorageProfile.ImageReference.Id);
+
+                        if (string.Equals(ComputeStrategy.Namespace, resourceId?.ResourceType?.Namespace, StringComparison.OrdinalIgnoreCase)
+                         && string.Equals("galleries", resourceId?.ResourceType?.Provider, StringComparison.OrdinalIgnoreCase)
+                         && !string.Equals(this.ComputeClient?.ComputeManagementClient?.SubscriptionId, resourceId?.SubscriptionId, StringComparison.OrdinalIgnoreCase))
+                        {
+                            List<string> resourceIds = new List<string>();
+                            resourceIds.Add(parameters.StorageProfile.ImageReference.Id);
+                            var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                            if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                            {
+                                auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                            }
+                        }
+                    }
+
                     var result = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.VM.Name,
-                        parameters).GetAwaiter().GetResult();
+                        parameters,
+                        auxAuthHeader).GetAwaiter().GetResult();
                     var psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(result);
 
                     if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))

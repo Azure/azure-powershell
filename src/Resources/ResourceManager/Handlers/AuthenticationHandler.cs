@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers
 {
+    using Microsoft.Rest;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -24,18 +25,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers
     public class AuthenticationHandler : DelegatingHandler
     {
         /// <summary>
-        /// The subscription cloud credentials.
+        /// The service client credentials.
         /// </summary>
-        private readonly SubscriptionCloudCredentials cloudCredentials;
+        private readonly ServiceClientCredentials clientCredentials;
 
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthenticationHandler" /> class.
         /// </summary>
         /// <param name="cloudCredentials">The credentials.</param>
-        public AuthenticationHandler(SubscriptionCloudCredentials cloudCredentials)
+        public AuthenticationHandler(ServiceClientCredentials cloudCredentials)
         {
-            this.cloudCredentials = cloudCredentials;
+            this.clientCredentials = cloudCredentials;
 
         }
 
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers
         /// <param name="cancellationToken">The cancellation token.</param>
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            await this.cloudCredentials
+            await this.clientCredentials
                 .ProcessHttpRequestAsync(request: request, cancellationToken: cancellationToken)
                 .ConfigureAwait(continueOnCapturedContext: false);
 
