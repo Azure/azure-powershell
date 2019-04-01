@@ -75,13 +75,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Blob Service Properties Resource Id.",
+            HelpMessage = "Input a Storage account Resource Id, or a Blob service properties Resource Id.",
            ParameterSetName = PropertiesResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Display ServiceProperties")]
-        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -95,7 +92,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 case PropertiesResourceIdParameterSet:
                     ResourceIdentifier blobServicePropertiesResource = new ResourceIdentifier(ResourceId);
                     this.ResourceGroupName = blobServicePropertiesResource.ResourceGroupName;
-                    this.StorageAccountName = PSBlobServiceProperties.GetStorageAccountNameFromBlobServicePropertiesResourceId(ResourceId);
+                    this.StorageAccountName = PSBlobServiceProperties.GetStorageAccountNameFromResourceId(ResourceId);
                     break;
                 default:
                     // For AccountNameParameterSet, the ResourceGroupName and StorageAccountName can get from input directly

@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSBlobServiceProperties(BlobServiceProperties policy)
         {
             this.ResourceGroupName = (new ResourceIdentifier(policy.Id)).ResourceGroupName;
-            this.StorageAccountName = GetStorageAccountNameFromBlobServicePropertiesResourceId(policy.Id);
+            this.StorageAccountName = GetStorageAccountNameFromResourceId(policy.Id);
             this.Id = policy.Id;
             this.Name = policy.Name;
             this.Type = policy.Type;
@@ -63,11 +63,25 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             };
         }
 
-        public static string GetStorageAccountNameFromBlobServicePropertiesResourceId(string ResourceId)
+        /// <summary>
+        /// Get Storage Account Name from Storage Account Resource Id or a storage account child resource Id (e.g. BlobServiceProperties ResourceId)
+        /// </summary>
+        /// <param name="ResourceId">Storage Account Resource Id or a storage account child resource Id (e.g. BlobServiceProperties ResourceId)</param>
+        /// <returns>Storage Account Name</returns>
+        public static string GetStorageAccountNameFromResourceId(string ResourceId)
         {
-            ResourceIdentifier blobServicePropertiesResource = new ResourceIdentifier(ResourceId);
-            var parentResource = blobServicePropertiesResource.ParentResource.Split(new[] { '/' });
-            return parentResource[parentResource.Length - 1];
+            ResourceIdentifier resource = new ResourceIdentifier(ResourceId);
+            if (resource.ResourceType.Equals(StorageBlobBaseCmdlet.StorageAccountResourceType))
+            {
+                //Storage Account Resource Id
+                return resource.ResourceName;
+
+            }
+            else //child resource Id(e.g.BlobServiceProperties ResourceId)
+            {
+                var parentResource = resource.ParentResource.Split(new[] { '/' });
+                return parentResource[parentResource.Length - 1];
+            }
         }
     }
 

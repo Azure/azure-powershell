@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         private StorageManagementClientWrapper storageClientWrapper;
 
         protected const string AccountNameAlias = "AccountName";
-        protected const string ResourceIdAlias = "ResourceId";
 
         protected const string StorageContainerNounStr = "StorageContainer";
         protected const string StorageContainerImmutabilityPolicyNounStr = StorageContainerNounStr + "ImmutabilityPolicy";
@@ -37,6 +36,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
         protected const string StorageContainerLeaseNounStr = StorageContainerNounStr + "Lease";
         protected const string StorageBlobServiceProperty = "StorageBlobServiceProperty";
         protected const string StorageBlobDeleteRetentionPolicy = "StorageBlobDeleteRetentionPolicy";
+
+        public const string StorageAccountResourceType = "Microsoft.Storage/storageAccounts";
 
         public IStorageManagementClient StorageClient
         {

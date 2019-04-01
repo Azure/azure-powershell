@@ -26,7 +26,7 @@ Disable-AzStorageBlobDeleteRetentionPolicy -StorageAccount <PSStorageAccount> [-
 
 ### BlobServicePropertiesResourceId
 ```
-Disable-AzStorageBlobDeleteRetentionPolicy [-BlobServicePropertyResourceId] <String> [-PassThru]
+Disable-AzStorageBlobDeleteRetentionPolicy [-ResourceId] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -47,21 +47,6 @@ Enabled Days
 This command disables delete retention policy for the Blob service.
 
 ## PARAMETERS
-
-### -BlobServicePropertyResourceId
-Blob Service Properties Resource Id.
-
-```yaml
-Type: System.String
-Parameter Sets: BlobServicePropertiesResourceId
-Aliases: ResourceId
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -105,6 +90,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Input a Storage account Resource Id, or a Blob service properties Resource Id.
+
+```yaml
+Type: System.String
+Parameter Sets: BlobServicePropertiesResourceId
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

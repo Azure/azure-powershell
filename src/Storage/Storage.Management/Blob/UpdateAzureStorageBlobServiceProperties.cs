@@ -44,21 +44,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// </summary>
         private const string PropertiesResourceIdParameterSet = "BlobServicePropertiesResourceId";
 
-        /// <summary>
-        /// AccountName Parameter Set
-        /// </summary>
-        private const string AccountNamePropertiesObjectParameterSet = "AccountNamePropertiesObject";
-
         [Parameter(
           Position = 0,
           Mandatory = true,
           HelpMessage = "Resource Group Name.",
          ParameterSetName = AccountNameParameterSet)]
-        [Parameter(
-          Position = 0,
-          Mandatory = true,
-          HelpMessage = "Resource Group Name.",
-         ParameterSetName = AccountNamePropertiesObjectParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -68,11 +58,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = true,
             HelpMessage = "Storage Account Name.",
            ParameterSetName = AccountNameParameterSet)]
-        [Parameter(
-            Position = 1,
-            Mandatory = true,
-            HelpMessage = "Storage Account Name.",
-           ParameterSetName = AccountNamePropertiesObjectParameterSet)]
         [ResourceNameCompleter("Microsoft.Storage/storageAccounts", nameof(ResourceGroupName))]
         [Alias(AccountNameAlias)]
         [ValidateNotNullOrEmpty]
@@ -89,7 +74,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Blob Service Properties Resource Id.",
+            HelpMessage = "Input a Storage account Resource Id, or a Blob service properties Resource Id.",
            ParameterSetName = PropertiesResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -97,10 +82,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(Mandatory = false, HelpMessage = "Default Service Version to Set")]
         [ValidateNotNull]
         public string DefaultServiceVersion { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = "Blob service properties object to Set", ParameterSetName = AccountNamePropertiesObjectParameterSet, ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public PSBlobServiceProperties BlobServiceProperty { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -116,7 +97,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     case PropertiesResourceIdParameterSet:
                         ResourceIdentifier blobServicePropertiesResource = new ResourceIdentifier(ResourceId);
                         this.ResourceGroupName = blobServicePropertiesResource.ResourceGroupName;
-                        this.StorageAccountName = PSBlobServiceProperties.GetStorageAccountNameFromBlobServicePropertiesResourceId(ResourceId);
+                        this.StorageAccountName = PSBlobServiceProperties.GetStorageAccountNameFromResourceId(ResourceId);
                         break;
                     default:
                         // For AccountNameParameterSet, the ResourceGroupName and StorageAccountName can get from input directly
@@ -124,15 +105,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 }
                 BlobServiceProperties serviceProperties = null;
 
-                // AccountNamePropertiesObjectParameterSet will update the whole blob service property
-                if (ParameterSetName == AccountNamePropertiesObjectParameterSet)
-                {
-                    serviceProperties = this.BlobServiceProperty.ParseBlobServiceProperties();
-                }
-                else //Other parameter set only update part of the blob service property 
-                {
-                    serviceProperties = this.StorageClient.BlobServices.GetServiceProperties(this.ResourceGroupName, this.StorageAccountName);
-                }
+                serviceProperties = this.StorageClient.BlobServices.GetServiceProperties(this.ResourceGroupName, this.StorageAccountName);
 
                 if (DefaultServiceVersion != null)
                 {

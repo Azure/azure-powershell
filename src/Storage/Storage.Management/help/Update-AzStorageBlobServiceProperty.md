@@ -19,13 +19,6 @@ Update-AzStorageBlobServiceProperty [-ResourceGroupName] <String> [-StorageAccou
  [<CommonParameters>]
 ```
 
-### AccountNamePropertiesObject
-```
-Update-AzStorageBlobServiceProperty [-ResourceGroupName] <String> [-StorageAccountName] <String>
- [-DefaultServiceVersion <String>] -BlobServiceProperty <PSBlobServiceProperties>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### AccountObject
 ```
 Update-AzStorageBlobServiceProperty -StorageAccount <PSStorageAccount> [-DefaultServiceVersion <String>]
@@ -54,33 +47,7 @@ myresourcegroup    mystorageaccount  2018-03-28            False
 
 This command sets the DefaultServiceVersion of Blob Service to 2018-03-28.
 
-### Example 2: Copy the Blob service properties from one Storage account to another
-```
-C:\PS> Get-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" | Update-AzStorageBlobServiceProperty -ResourceGroupName "myresourcegroup2" -AccountName "mystorageaccount2" 
-
-StorageAccountName ResourceGroupName DefaultServiceVersion DeleteRetentionPolicy.Enabled DeleteRetentionPolicy.Days
------------------- ----------------- --------------------- ----------------------------- --------------------------
-myresourcegroup2   mystorageaccount2 2018-03-28            False
-```
-
-This command copys the Blob service properties from one Storage account to another.
-
 ## PARAMETERS
-
-### -BlobServiceProperty
-Service property object to Set
-
-```yaml
-Type: Microsoft.Azure.Commands.Management.Storage.Models.PSBlobServiceProperties
-Parameter Sets: AccountNamePropertiesObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -117,7 +84,7 @@ Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountName, AccountNamePropertiesObject
+Parameter Sets: AccountName
 Aliases:
 
 Required: True
@@ -128,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Blob Service Properties Resource Id.
+Input a Storage account Resource Id, or a Blob service properties Resource Id.
 
 ```yaml
 Type: System.String
@@ -162,7 +129,7 @@ Storage Account Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountName, AccountNamePropertiesObject
+Parameter Sets: AccountName
 Aliases: AccountName
 
 Required: True
