@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             {
                 RuleId = RuleId,
                 Action = this.IsParameterBound(c => c.Action) ? Action : (PSAction?)null,
-                EnabledState = this.IsParameterBound(c => c.Disabled) ? PSEnabledState.Disabled : PSEnabledState.Enabled
+                EnabledState = (this.IsParameterBound(c => c.Disabled) && Disabled.IsPresent) ? PSEnabledState.Disabled : PSEnabledState.Enabled
             };
             WriteObject(managedRuleOverride);
         }
