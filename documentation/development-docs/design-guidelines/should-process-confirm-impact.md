@@ -106,18 +106,4 @@ Below are the possible `ConfirmImpact` values:
 | Medium      | This action should be confirmed in most scenarios where confirmation is requested.                             |
 | None        | There is never any need to confirm this action.                                                                |
 
-```cs
-[Cmdlet(VerbsCommon.Remove, "Foo", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium)]
-public class RemoveFoo
-{
-    ...
-
-    public override void ExecuteCmdlet()
-    {
-        if (ShouldProcess(target, actionMessage))
-        {
-            // make changes
-        }
-    }
-}
-```
+_Note:_ the `ConfirmImpact` property in the `Cmdlet` attribute should never be set; ignoring this property will set the value to `Medium`, which is expected and advised.

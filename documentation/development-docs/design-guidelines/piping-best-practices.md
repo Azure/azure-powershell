@@ -35,10 +35,12 @@ For all resources, `-InputObject` should be implemented for at least the `Remove
 Remove-AzTopLevelResource -InputObject <PSTopLevelResource> [...] [-PassThru] [-WhatIf] [-Confirm]
 ```
 
-For all child resources, the same functionality should be added for the cmdlets above, but for `Get-*` and `New-*` cmdlets, rather than using the `-InputObject` parameter, a separate object parameter should be added to allow piping the object representation of the parent resource.  The implementation of this will be a new parameter set, like the following:
+For all child resources, the same functionality should be added for the cmdlets above, but will also include an additional parameter set for the parent resource's object.  The implementation of this will be two new parameter sets, like the following:
 
 ```
-Get-AzChildResource -TopLevelResourceObject <PSTopLevelResource> [...]
+Remove-AzChildResource -InputObject <PSChildResource> [...] [-PassThru] [-WhatIf] [-Confirm]
+
+Remove-AzChildResource -TopLevelResourceObject <PSTopLevelResource> -Name <String> [...] [-PassThru] [-WhatIf] [-Confirm]
 ```
 
 #### Long explanation
@@ -90,7 +92,7 @@ Remove-AzChildResource -InputObject $childResource
 ### Using the `-ResourceId` Parameter
 
 #### Short explanation
-For all resources, `-ResourceId` should be implemented for the `Remove-*`, `Set-*` and `Update-*` cmdlets (and any other cmdlet where an existing resource is being operated on, such as `Start-*`, `Stop-*`, etc.). The implementation of this will be a new parameter set, like the following:
+For all resources, `-ResourceId` should be implemented for the `Get-*`, `Remove-*`, `Set-*` and `Update-*` cmdlets (and any other cmdlet where an existing resource is being operated on, such as `Start-*`, `Stop-*`, etc.). The implementation of this will be a new parameter set, like the following:
 
 ```
 Remove-AzTopLevelResource -ResourceId <string> [...] [-PassThru] [-WhatIf] [-Confirm]

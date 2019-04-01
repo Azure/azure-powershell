@@ -153,8 +153,8 @@ The interactive parameter set **will always be the default parameter set** for a
 
 #### ResourceId Parameter Set
 
-This parameter set should be implemented by _every_ cmdlet - the user is able to provide a `-ResourceId` string or GUID from the Azure Portal, or from one of the generic resources cmdlets (more information about that below in the piping section), and act upon the given resource associated with the id. The typical `-Name` and `-ResourceGroupName` parameters are replaced by a single `-ResourceId` parameter of type string.
+This parameter set should be implemented by _every_ cmdlet - the user is able to provide a `-ResourceId` string or GUID from the Azure Portal, or from one of the generic resources cmdlets (more information about this scenario can be found in the [`piping-best-practices.md`](./piping-best-practices.md#using-the--resourceid-parameter) document), and act upon the given resource associated with the id. The typical `-Name` and `-ResourceGroupName` parameters are replaced by a single `-ResourceId` parameter of type string.
 
 #### InputObject Parameter Set
 
-This parameter should be implemented by _most_ cmdlets - the user is able to take the object returned from the `Get`, `New`, or `Set` cmdlets (or other cmdlets that return the common resource) and provide it to the `-InputObject` parameter for a cmdlet that acts upon the same resource. The typical `-Name` and `-ResourceGroupName` parameters are retrieved from the `-InputObject` that the user is passing through.
+This parameter should be implemented by _most_ cmdlets - the user is able to take the object returned from the `Get`, `New`, or `Set` cmdlets (or other cmdlets that return the common resource) and provide it to the `-InputObject` parameter for a cmdlet that acts upon the same resource (more information about this scenario can be found in the [`piping-best-practices.md`](./piping-best-practices.md#using-the--inputobject-parameter) document). The typical `-Name` and `-ResourceGroupName` parameters are retrieved from the `-InputObject` that the user is passing through.
