@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azdiskconfig
@@ -14,8 +14,8 @@ Creates a configurable disk object.
 
 ```
 New-AzDiskConfig [[-SkuName] <String>] [[-OsType] <OperatingSystemTypes>] [[-DiskSizeGB] <Int32>]
- [[-Location] <String>] [-Zone <String[]>] [-DiskIOPSReadWrite <Int32>] [-DiskMBpsReadWrite <Int32>]
- [-Tag <Hashtable>] [-CreateOption <String>] [-StorageAccountId <String>]
+ [[-Location] <String>] [-Zone <String[]>] [-HyperVGeneration <String>] [-DiskIOPSReadWrite <Int32>]
+ [-DiskMBpsReadWrite <Int32>] [-Tag <Hashtable>] [-CreateOption <String>] [-StorageAccountId <String>]
  [-ImageReference <ImageDiskReference>] [-SourceUri <String>] [-SourceResourceId <String>]
  [-EncryptionSettingsEnabled <Boolean>] [-DiskEncryptionKey <KeyVaultAndSecretReference>]
  [-KeyEncryptionKey <KeyVaultAndKeyReference>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -29,7 +29,7 @@ The **New-AzDiskConfig** cmdlet creates a configurable disk object.
 
 ### Example 1
 ```
-PS C:\> $diskconfig = New-AzDiskConfig -Location 'Central US' -DiskSizeGB 5 -AccountType StandardLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+PS C:\> $diskconfig = New-AzDiskConfig -Location 'Central US' -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
 PS C:\> $secretUrl = https://myvault.vault-int.azure-int.net/secrets/123/;
 PS C:\> $secretId = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.KeyVault/vaults/TestVault123';
 PS C:\> $keyUrl = https://myvault.vault-int.azure-int.net/keys/456;
@@ -43,6 +43,27 @@ The first command creates a local empty disk object with size 5GB in Standard_LR
 type. It also sets Windows OS type and enables encryption settings. The second and third commands
 set the disk encryption key and key encryption key settings for the disk object. The last command
 takes the disk object and creates a disk with name 'Disk01' in resource group 'ResourceGroup01'.
+
+### Example 2
+```
+PS C:\> $diskconfig = New-AzDiskConfig -Location 'Central US' -DiskSizeGB 1023 -SkuName Standard_LRS -OsType Windows -CreateOption Upload -DiskIOPSReadWrite 500 -DiskMBpsReadWrite 8;
+PS C:\> New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskconfig;
+PS C:\> $diskSas = Grant-AzDiskAccess -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -DurationInSecond 86400 -Access 'Write'
+PS C:\> $disk = Get-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01'
+# $disk.DiskState == 'ReadyToUpload'
+PS C:\> AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer1 /Dest:$diskSas
+PS C:\> $disk = Get-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01'
+# $disk.DiskState == 'ActiveUpload'
+PS C:\> Revoke-AzDiskAccess -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01'
+```
+
+The first command creates a local disk object for Upload.
+The second command takes the disk object and creates a disk with name 'Disk01' in resource group 'ResourceGroup01'.
+The third command gets SAS Url for the disk.
+The fourth command gets the state of the disk.
+If the disk state is 'ReadyToUpload', a user can upload a disk from blob storage to the disk SAS Url using AzCopy.
+During uploading, the disk state is changed to 'ActiveUpload'.
+The last command revokes the disk access for the SAS Url.
 
 ## PARAMETERS
 
@@ -142,6 +163,21 @@ Enable encryption settings.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -HyperVGeneration
+The hypervisor generation of the Virtual Machine. Applicable to OS disks only.  Allowed values are V1 and V2.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
