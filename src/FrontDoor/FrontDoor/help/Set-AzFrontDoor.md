@@ -48,21 +48,21 @@ The **Set-AzFrontDoor** cmdlet updates a Front Door load balancer. If input para
 ```powershell
 PS C:\> Set-AzFrontDoor -Name "frontDoor1" -ResourceGroupName "resourceGroup1" -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -BackendPoolsSettings $backendPoolsSettings
 
-FriendlyName          : frontdoor1
-RoutingRules          : {routingrule1}
-BackendPools          : {backendpool1}
-HealthProbeSettings   : {healthProbeSetting1}
-LoadBalancingSettings : {loadbalancingsetting1}
-FrontendEndpoints     : {frontendendpoint1}
-EnabledState          : Enabled
-ResourceState         : Enabled
-ProvisioningState     : Succeeded
-Cname                 :
-Tags                  : {tag1, tag2}
-Id                    : /subscriptions/{guid}/resourcegroups/{guid}/providers/M
-                        icrosoft.Network/frontdoors/frontdoor1
-Name                  : frontdoor1
-Type                  : Microsoft.Network/frontdoor1
+FriendlyName                : frontdoor1
+RoutingRules                : {routingrule1}
+BackendPools                : {backendpool1}
+EnforceCertificateNameCheck : Enabled
+HealthProbeSettings         : {healthProbeSetting1}
+LoadBalancingSettings       : {loadbalancingsetting1}
+FrontendEndpoints           : {frontendendpoint1}
+EnabledState                : Enabled
+ResourceState               : Enabled
+ProvisioningState           : Succeeded
+Cname                       :
+Tags                        : {tag1, tag2}
+Id                          : /subscriptions/{guid}/resourcegroups/{guid}/providers/Microsoft.Network/frontdoors/frontdoor1
+Name                        : frontdoor1
+Type                        : Microsoft.Network/frontdoors
 ```
 
 update an existing FrontDoor.
@@ -71,21 +71,21 @@ update an existing FrontDoor.
 ```powershell
 PS C:\>  Set-AzFrontDoor -InputObject $frontDoor1 -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -BackendPoolsSettings $backendPoolsSettings
 
-FriendlyName          : frontdoor1
-RoutingRules          : {routingrule1}
-BackendPools          : {backendpool1}
-HealthProbeSettings   : {healthProbeSetting1}
-LoadBalancingSettings : {loadbalancingsetting1}
-FrontendEndpoints     : {frontendendpoint1}
-EnabledState          : Enabled
-ResourceState         : Enabled
-ProvisioningState     : Succeeded
-Cname                 :
-Tags                  : {tag1, tag2}
-Id                    : /subscriptions/{guid}/resourcegroups/{guid}/providers/M
-                        icrosoft.Network/frontdoors/frontdoor1
-Name                  : frontdoor1
-Type                  : Microsoft.Network/frontdoor1
+FriendlyName                : frontdoor1
+RoutingRules                : {routingrule1}
+BackendPools                : {backendpool1}
+EnforceCertificateNameCheck : Enabled
+HealthProbeSettings         : {healthProbeSetting1}
+LoadBalancingSettings       : {loadbalancingsetting1}
+FrontendEndpoints           : {frontendendpoint1}
+EnabledState                : Enabled
+ResourceState               : Enabled
+ProvisioningState           : Succeeded
+Cname                       :
+Tags                        : {tag1, tag2}
+Id                          : /subscriptions/{guid}/resourcegroups/{guid}/providers/Microsoft.Network/frontdoors/frontdoor1
+Name                        : frontdoor1
+Type                        : Microsoft.Network/frontdoor1
 ```
 
 update an existing FrontDoor.
@@ -94,21 +94,21 @@ update an existing FrontDoor.
 ```powershell
 PS C:\>  Set-AzFrontDoor -ResourceId {resourceId} -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -BackendPoolsSettings $backendPoolsSettings
 
-FriendlyName          : frontdoor1
-RoutingRules          : {routingrule1}
-BackendPools          : {backendpool1}
-HealthProbeSettings   : {healthProbeSetting1}
-LoadBalancingSettings : {loadbalancingsetting1}
-FrontendEndpoints     : {frontendendpoint1}
-EnabledState          : Enabled
-ResourceState         : Enabled
-ProvisioningState     : Succeeded
-Cname                 :
-Tags                  : {tag1, tag2}
-Id                    : /subscriptions/{guid}/resourcegroups/{guid}/providers/M
-                        icrosoft.Network/frontdoors/frontdoor1
-Name                  : frontdoor1
-Type                  : Microsoft.Network/frontdoor1
+FriendlyName                : frontdoor1
+RoutingRules                : {routingrule1}
+BackendPools                : {backendpool1}
+EnforceCertificateNameCheck : Enabled
+HealthProbeSettings         : {healthProbeSetting1}
+LoadBalancingSettings       : {loadbalancingsetting1}
+FrontendEndpoints           : {frontendendpoint1}
+EnabledState                : Enabled
+ResourceState               : Enabled
+ProvisioningState           : Succeeded
+Cname                       :
+Tags                        : {tag1, tag2}
+Id                          : /subscriptions/{guid}/resourcegroups/{guid}/providers/Microsoft.Network/frontdoors/frontdoor1
+Name                        : frontdoor1
+Type                        : Microsoft.Network/frontdoor1
 ```
 
 update an existing FrontDoor.
