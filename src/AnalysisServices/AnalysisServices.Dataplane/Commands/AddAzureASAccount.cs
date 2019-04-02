@@ -13,9 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Profile.Models.Core;
-using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
@@ -25,14 +26,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     [CmdletDeprecation("2.0.0")]
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AnalysisServicesAccount", DefaultParameterSetName = "UserParameterSetName", SupportsShouldProcess =true)]
     [Alias("Login-AzureAsAccount", "Login-AzAsAccount")]
-    [OutputType(typeof(PSAzureProfile))]
-    public class AddAzureASAccountCommand : AzureRMCmdlet
+    [OutputType(typeof(AsAzureProfile))]
+    public class AddAzureASAccountCommand : AzurePSCmdlet
     {
         private const string UserParameterSet = "UserParameterSetName";
         private const string ServicePrincipalWithPasswordParameterSet = "ServicePrincipalWithPasswordParameterSetName";
         private const string ServicePrincipalWithCertificateParameterSet = "ServicePrincipalWithCertificateParameterSetName";
 
-        // This is ignored sicne we only supported public cloud
+        // This is ignored since we only support public cloud
         [Parameter(ParameterSetName = UserParameterSet,
             Mandatory = false, HelpMessage = "Name of the Azure Analysis Services environment to which to logon to", Position = 0)]
         [Parameter(ParameterSetName = ServicePrincipalWithPasswordParameterSet,
@@ -70,6 +71,23 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         [ValidateNotNullOrEmpty]
         public string CertificateThumbprint { get; set; }
 
+        protected override IAzureContext DefaultContext
+        {
+            get
+            {
+                // Nothing to do with Azure Resource Management context
+                return null;
+            }
+        }
+
+        protected override string DataCollectionWarning
+        {
+            get
+            {
+                return Resources.ARMDataCollectionMessage;
+            }
+        }
+
         public override void ExecuteCmdlet()
         {
             System.Management.Automation.PowerShell ps = System.Management.Automation.PowerShell.Create();
@@ -100,10 +118,12 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 ps.AddParameter("CertificateThumbprint", CertificateThumbprint);
             }
 
-            foreach (var result in ps.Invoke<PSAzureProfile>())
-            {
-                WriteObject(result);
-            }
+            ps.Invoke();
+        }
+
+        protected override void InitializeQosEvent()
+        {
+            // No data collection for this cmdlet
         }
     }
 }

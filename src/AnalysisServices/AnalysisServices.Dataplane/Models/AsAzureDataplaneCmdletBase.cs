@@ -30,7 +30,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
         [Parameter(
             Mandatory = true,
             HelpMessage = "Name of the Azure Analysis Services server",
-            Position = 0)]
+            Position = 0,
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public string Instance { get; set; }
 
