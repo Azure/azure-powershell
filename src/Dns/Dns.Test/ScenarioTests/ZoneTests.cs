@@ -37,6 +37,13 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestZoneWithDelegation()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-ZoneWithDelegation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPrivateZoneCrud()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-PrivateZoneCrud");

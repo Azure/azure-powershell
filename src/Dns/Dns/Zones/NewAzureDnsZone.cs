@@ -47,6 +47,10 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateSet("Public", "Private")]
         public ZoneType? ZoneType { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The full name of the parent zone to add delegation (without a terminating dot).")]
+        [ValidateNotNullOrEmpty]
+        public string ParentZoneName { get; set; }
+
         [Alias("Tags")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Tag { get; set; }
@@ -75,7 +79,7 @@ namespace Microsoft.Azure.Commands.Dns
                 this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", this.Name));
             }
 
-            ConfirmAction(
+            base.ConfirmAction(
                 ProjectResources.Progress_CreatingNewZone,
                 this.Name,
                 () =>
@@ -102,7 +106,48 @@ namespace Microsoft.Azure.Commands.Dns
                         ? string.Format(ProjectResources.Success_NewPrivateZone, this.Name, this.ResourceGroupName)
                         : string.Format(ProjectResources.Success_NewZone, this.Name, this.ResourceGroupName));
                     this.WriteObject(result);
+
+                    if (!string.IsNullOrEmpty(this.ParentZoneName) && this.Name.EndsWith(this.ParentZoneName))
+                    {
+                        AddDnsNameserverDelegation(result);
+                        this.WriteVerbose(ProjectResources.Success);
+                        this.WriteVerbose(string.Format(ProjectResources.Success_NSDelegation, this.Name, this.ParentZoneName));
+
+                    }
                 });
+        }
+        /// <summary>
+        /// This method adds name server delegation in the parent zone for the created child zone.
+        /// The NS records are added in the parent zone that corresponds to the child zone
+        /// </summary>
+        /// <param name="zone">the created child zone</param>
+        private DnsRecordSet AddDnsNameserverDelegation(DnsZone zone)
+        {
+            DnsRecordSet recordSet = null;
+            if (zone != null && zone.NameServers != null && zone.NameServers.Count > 0)
+            {
+                List<NsRecord> nameServersList = new List<NsRecord>();
+                foreach (string nameserver in zone.NameServers)
+                {
+                    NsRecord record = new NsRecord();
+                    record.Nsdname = nameserver;
+                    nameServersList.Add(record);
+                }
+
+                DnsRecordBase[] resourceRecords = nameServersList.ToArray();
+                string recordName = this.Name.Replace('.' + ParentZoneName, "");
+                recordSet = this.DnsClient.CreateDnsRecordSet(
+                    this.ParentZoneName,
+                    this.ResourceGroupName,
+                    recordName,
+                    3600,
+                    RecordType.NS,
+                    null,
+                    true,
+                    resourceRecords,
+                    null);
+            }
+            return recordSet;
         }
     }
 }

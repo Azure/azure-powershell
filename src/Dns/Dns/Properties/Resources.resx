@@ -180,6 +180,9 @@
   <data name="Success_NewZone" xml:space="preserve">
     <value>Zone '{0}' was created in resource group '{1}'. The SOA and authoritative NS records for this zone have been created automatically. Use Get-AzDnsRecordSet to retrieve them</value>
   </data>
+    <data name="Success_NSDelegation" xml:space="preserve">
+    <value>Delegation for '{0}' was created in parent '{1}'. The NS records for this zone have been added automatically in the parent. Use Get-AzDnsRecordSet to retrieve them</value>
+  </data>
   <data name="Success_NonExistentZone" xml:space="preserve">
     <value>The Zone '{0}' was not present in the resource group '{1}'. Hence, was not deleted</value>
   </data>
