@@ -41,7 +41,7 @@ function Test-PolicyCrud
     Assert-AreEqual $managedRule1.RuleGroupOverrides[0].ManagedRuleOverrides[0].Action $retrievedPolicy.ManagedRules[0].RuleGroupOverrides[0].ManagedRuleOverrides[0].Action
 
     $customRule2 = New-AzFrontDoorCustomRuleObject -Name "Rule2" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Log -Priority 2
-    $updatedPolicy = Set-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule2
+    $updatedPolicy = Update-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule2
     Assert-NotNull $updatedPolicy
     Assert-AreEqual $Name $updatedPolicy.Name
     Assert-AreEqual $customRule2.Name $updatedPolicy.CustomRules[0].Name
@@ -74,7 +74,7 @@ function Test-PolicyCrudWithPiping
     New-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule1 -ManagedRule $managedRule1 -EnabledState Enabled -Mode Prevention
 
     $customRule2 = New-AzFrontDoorCustomRuleObject -Name "Rule2" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Log -Priority 2
-    $updatedPolicy = Get-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName | Set-AzFrontDoorFireWallPolicy -Customrule $customRule2
+    $updatedPolicy = Get-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName | Update-AzFrontDoorFireWallPolicy -Customrule $customRule2
     Assert-NotNull $updatedPolicy
     Assert-AreEqual $Name $updatedPolicy.Name
     Assert-AreEqual $customRule2.Name $updatedPolicy.CustomRules[0].Name

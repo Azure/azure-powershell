@@ -1,11 +1,12 @@
-﻿---
+
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/set-azfrontdoorfirewallpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/update-azfrontdoorfirewallpolicy
 schema: 2.0.0
 ---
 
-# Set-AzFrontDoorFireWallPolicy
+# Update-AzFrontDoorFireWallPolicy
 
 ## SYNOPSIS
 Update WAF policy
@@ -14,7 +15,7 @@ Update WAF policy
 
 ### ByFieldsParameterSet (Default)
 ```
-Set-AzFrontDoorFireWallPolicy -ResourceGroupName <String> -Name <String> [-EnabledState <PSEnabledState>]
+Update-AzFrontDoorFireWallPolicy -ResourceGroupName <String> -Name <String> [-EnabledState <PSEnabledState>]
  [-Mode <PSMode>] [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-RedirectUrl <String>]
  [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -22,7 +23,7 @@ Set-AzFrontDoorFireWallPolicy -ResourceGroupName <String> -Name <String> [-Enabl
 
 ### ByObjectParameterSet
 ```
-Set-AzFrontDoorFireWallPolicy -InputObject <PSPolicy> [-EnabledState <PSEnabledState>] [-Mode <PSMode>]
+Update-AzFrontDoorFireWallPolicy -InputObject <PSPolicy> [-EnabledState <PSEnabledState>] [-Mode <PSMode>]
  [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-RedirectUrl <String>]
  [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -30,20 +31,20 @@ Set-AzFrontDoorFireWallPolicy -InputObject <PSPolicy> [-EnabledState <PSEnabledS
 
 ### ByResourceIdParameterSet
 ```
-Set-AzFrontDoorFireWallPolicy -ResourceId <String> [-EnabledState <PSEnabledState>] [-Mode <PSMode>]
+Update-AzFrontDoorFireWallPolicy -ResourceId <String> [-EnabledState <PSEnabledState>] [-Mode <PSMode>]
  [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-RedirectUrl <String>]
  [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzFrontDoorFireWallPolicy** cmdlet updates an existing WAF policy. If input parameters are not provided, old parameters from the existing WAF policy will be used.
+The **Update-AzFrontDoorFireWallPolicy** cmdlet updates an existing WAF policy. If input parameters are not provided, old parameters from the existing WAF policy will be used.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName -CustomBlockResponseStatusCode 403
+PS C:\> Update-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName -CustomBlockResponseStatusCode 403
 
 Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
 ----         ---------- ------------------ ----------------------------- -----------
@@ -54,7 +55,7 @@ Update an existing WAF policy custom status code.
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Mode Detection
+PS C:\> Update-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Mode Detection
 
 Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
 ----         ---------- ------------------ ----------------------------- -----------
@@ -65,7 +66,7 @@ Update an existing WAF policy mode.
 
 ### Example 3
 ```powershell
-PS C:\> Set-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Mode Detection -EnabledState Disabled
+PS C:\> Update-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Mode Detection -EnabledState Disabled
 
 Name          PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
 ----          ---------- ------------------ ----------------------------- -----------
@@ -76,7 +77,7 @@ Update an existing WAF policy enabled state and mode.
 
 ### Example 4
 ```powershell
-PS C:\> Get-AzFrontDoorFireWallPolicy -ResourceGroupName $resourceGroupName | Set-AzFrontDoorFireWallPolicy -Mode Detection -EnabledState Disabled
+PS C:\> Get-AzFrontDoorFireWallPolicy -ResourceGroupName $resourceGroupName | Update-AzFrontDoorFireWallPolicy -Mode Detection -EnabledState Disabled
 ```
 
 Update all WAF policies in $resourceGroupName
@@ -102,7 +103,7 @@ Accept wildcard characters: False
 Custom Response Status Code
 
 ```yaml
-Type: System.Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
