@@ -12,29 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
     /// <summary>
-    /// Represents AS Azure profile structure with default context, environments and token cache.
+    /// Represents current AS Azure client context.
     /// This class exists to maintain the interface of deprecating cmdlet Add-AzAnalysisServicesAccount.
     /// Should be removed when Add-AzAnalysisServicesAccount is removed.
     /// </summary>
     [Serializable]
-    public sealed class AsAzureProfile
+    public class AsAzureContext
     {
-        /// <summary>	
-        /// Gets or sets AS Azure environments.	
-        /// </summary>	
-        public Hashtable Environments { get; set; }
+        /// <summary>
+        /// Gets the AS azure account.
+        /// </summary>
+        public AsAzureAccount Account { get; private set; }
 
-        /// <summary>	
-        /// Gets or sets the AS azure context object.	
-        /// </summary>	
-        public AsAzureContext Context { get; set; }
+        /// <summary>
+        /// Gets the AS Azure environment.
+        /// </summary>
+        public AsAzureEnvironment Environment { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the token cache contents.
+        /// </summary>
+        public byte[] TokenCache { get; set; }
     }
 }
