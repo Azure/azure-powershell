@@ -75,7 +75,7 @@ public class MySampleCmdlet : MyBaseCmdlet
     {
         // other code omitted
 
-        if (this.IsPassThru.IsPresent)
+        if (this.PassThru.IsPresent)
         {
             WriteObject(true);
         }
@@ -90,7 +90,7 @@ If a cmdlet makes any changes to an object on the server (_e.g._, create, delete
 - `-WhatIf` is a `SwitchParameter` that, when provided by the user, doesn't execute the part of the cmdlet responsible for making the changes to the object, but rather displays a message alerting the user of the action that is to be performed on the object
 - `-Confirm` is a `SwitchParameter` that, when provided by the user, prompts the user for confirmation that they want to continue with the execution of the cmdlet.
 
-The code below showshow this should look in a cmdlet:
+The code below shows how this should look in a cmdlet:
 
 ```cs
 [Cmdlet(..., SupportsShouldProcess = true), OutputType(typeof(...))]

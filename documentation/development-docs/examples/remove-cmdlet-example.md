@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Service
             if (this.ShouldProcess(this.Name, string.Format("Deleting TopLevelResource '{0}' in resource group {0}", this.Name, this.ResourceGroupName)))
             {
                 this.MySDKClient.TopLevelResource.Delete(this.ResourceGroupName, this.Name);
-                if (this.IsPassThru.IsPresent)
+                if (this.PassThru.IsPresent)
                 {
                     WriteObject(true);
                 }
