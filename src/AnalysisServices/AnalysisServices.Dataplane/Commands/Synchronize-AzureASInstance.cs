@@ -185,9 +185,26 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                         this.syncRequestRootActivityId = message.Headers.Contains(RootActivityIdHeaderName) ? message.Headers.GetValues(RootActivityIdHeaderName).FirstOrDefault() : string.Empty;
                         this.syncRequestTimeStamp = message.Headers.Contains(CurrentUtcDateHeaderName) ? message.Headers.GetValues(CurrentUtcDateHeaderName).FirstOrDefault() : string.Empty;
 
-                        message.EnsureSuccessStatusCode();
+                        if (!message.IsSuccessStatusCode)
+                        {
+                            var timestampNow = DateTime.Now;
 
-                        if (message.StatusCode != HttpStatusCode.Accepted)
+                            // Return sync details with exception message as details
+                            return new ScaleOutServerDatabaseSyncDetails
+                            {
+                                CorrelationId = correlationId.ToString(),
+                                Database = databaseName,
+                                SyncState = DatabaseSyncState.Invalid,
+                                Details = Resources.PostSyncRequestFailureMessage.FormatInvariant(
+                                                                        ServerName,
+                                                                        this.syncRequestRootActivityId,
+                                                                        this.syncRequestTimeStamp,
+                                                                        await message.Content.ReadAsStringAsync()),
+                                UpdatedAt = timestampNow,
+                                StartedAt = timestampNow
+                            };
+                        }
+                        else if (message.StatusCode != HttpStatusCode.Accepted)
                         {
                             var timestampNow = DateTime.Now;
                             syncResult = new ScaleOutServerDatabaseSyncDetails
@@ -207,24 +224,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                     }
 
                 }
-                catch (Exception e)
+                catch
                 {
-                    var timestampNow = DateTime.Now;
-
-                    // Return sync details with exception message as details
-                    return new ScaleOutServerDatabaseSyncDetails
-                    {
-                        CorrelationId = correlationId.ToString(),
-                        Database = databaseName,
-                        SyncState = DatabaseSyncState.Invalid,
-                        Details = Resources.PostSyncRequestFailureMessage.FormatInvariant(
-                                                                ServerName,
-                                                                this.syncRequestRootActivityId,
-                                                                this.syncRequestTimeStamp,
-                                                                string.Format(e.Message)),
-                        UpdatedAt = timestampNow,
-                        StartedAt = timestampNow
-                    };
                 }
 
                 Uri pollingUrl = pollingUrlAndRetryAfter.Item1;
