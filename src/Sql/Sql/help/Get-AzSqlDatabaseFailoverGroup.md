@@ -37,6 +37,13 @@ PS C:\> $failoverGroup = Get-AzSqlDatabaseFailoverGroup -ResourceGroupName rg -S
 
 Get a specific Failover Group.
 
+### Example 3
+```
+PS C:\> $failoverGroup = Get-AzSqlDatabaseFailoverGroup -ResourceGroupName rg -ServerName server -FailoverGroupName fg*
+```
+
+Get all failover groups in a server that start with "fg".
+
 ## PARAMETERS
 
 ### -DefaultProfile
