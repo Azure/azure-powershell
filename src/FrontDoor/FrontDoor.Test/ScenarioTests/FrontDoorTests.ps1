@@ -75,8 +75,7 @@ function Test-FrontDoorCrudRedirect
     $loadBalancingSetting1 = New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1" 
     $frontendEndpoint1 = New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName $hostName
     $backendpool1 = New-AzFrontDoorBackendPoolObject -Name "backendpool1" -FrontDoorName $Name -ResourceGroupName $resourceGroupName -Backend $backend1 -HealthProbeSettingsName "healthProbeSetting1" -LoadBalancingSettingsName "loadBalancingSetting1"
-    $backendPoolsSettings = New-AzFrontDoorBackendPoolsSettingsObject
-    New-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags -BackendPoolsSettings $backendPoolsSettings
+    New-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags
     
     $retrievedFrontDoor = Get-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName
     Assert-NotNull $retrievedFrontDoor
@@ -89,7 +88,7 @@ function Test-FrontDoorCrudRedirect
     Assert-Tags $tags $retrievedFrontDoor.Tags
     Assert-AreEqual $retrievedFrontDoor.RoutingRules[0].RouteConfiguration.GetType().Name "PSRedirectConfiguration"
     Assert-AreEqual $retrievedFrontDoor.RoutingRules[0].RouteConfiguration.CustomHost $customHost
-    #Assert-AreEqual $retrievedFrontDoor.BackendPoolsSettings.EnforceCertificateNameCheck "Enabled"
+    Assert-AreEqual $retrievedFrontDoor.EnforceCertificateNameCheck "Enabled"
 
     $routingrule1 = New-AzFrontDoorRoutingRuleObject -Name "routingrule1" -FrontDoorName $Name -ResourceGroupName $resourceGroupName -FrontendEndpointName "frontendEndpoint1" -CustomHost $customHost -CustomPath $customPath
     $updatedFrontDoor = Set-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1
@@ -103,10 +102,9 @@ function Test-FrontDoorCrudRedirect
     Assert-AreEqual $updatedFrontDoor.RoutingRules[0].RouteConfiguration.GetType().Name "PSRedirectConfiguration"
     Assert-AreEqual $updatedFrontDoor.RoutingRules[0].RouteConfiguration.CustomHost $customHost
     Assert-AreEqual $updatedFrontDoor.RoutingRules[0].RouteConfiguration.CustomPath $customPath
-    #Assert-AreEqual $updatedFrontDoor.BackendPoolsSettings.EnforceCertificateNameCheck "Enabled"
+    Assert-AreEqual $updatedFrontDoor.EnforceCertificateNameCheck "Enabled"
 
-    $backendPoolsSettings = New-AzFrontDoorBackendPoolsSettingsObject -DisableCertificateNameCheck
-    $updatedFrontDoor = Set-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -BackendPoolsSettings $backendPoolsSettings
+    $updatedFrontDoor = Set-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -DisableCertificateNameCheck
     Assert-NotNull $updatedFrontDoor
     Assert-AreEqual $Name $updatedFrontDoor.Name
     Assert-AreEqual $routingrule1.Name $updatedFrontDoor.RoutingRules[0].Name
@@ -117,7 +115,7 @@ function Test-FrontDoorCrudRedirect
     Assert-AreEqual $updatedFrontDoor.RoutingRules[0].RouteConfiguration.GetType().Name "PSRedirectConfiguration"
     Assert-AreEqual $updatedFrontDoor.RoutingRules[0].RouteConfiguration.CustomHost $customHost
     Assert-AreEqual $updatedFrontDoor.RoutingRules[0].RouteConfiguration.CustomPath $customPath
-    #Assert-AreEqual $updatedFrontDoor.BackendPoolsSettings.EnforceCertificateNameCheck "Disabled"
+    Assert-AreEqual $updatedFrontDoor.EnforceCertificateNameCheck "Disabled"
 
     $removed = Remove-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -PassThru
     Assert-True { $removed }
@@ -143,8 +141,7 @@ function Test-FrontDoorCrudWithPiping
     $loadBalancingSetting1 = New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1" 
     $frontendEndpoint1 = New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName $hostName
     $backendpool1 = New-AzFrontDoorBackendPoolObject -Name "backendpool1" -FrontDoorName $Name -ResourceGroupName $resourceGroupName -Backend $backend1 -HealthProbeSettingsName "healthProbeSetting1" -LoadBalancingSettingsName "loadBalancingSetting1"
-    $backendPoolsSettings = New-AzFrontDoorBackendPoolsSettingsObject 
-    New-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags -BackendPoolsSettings $backendPoolsSettings
+    New-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags
     
     $newTags = @{"tag1" = "value3"; "tag2" = "value4"}
     $updatedFrontDoor = Get-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName | Set-AzFrontDoor -Tag $newTags
