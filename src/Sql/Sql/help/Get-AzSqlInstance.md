@@ -25,7 +25,7 @@ Specify the name of a instance to see information for only that instance.
 
 ### Example 1: Get all instances assigned to a resource group
 ```
-PS C:\>Get-AzSqlInstance -ResourceGroupName "ResourceGroup01"
+PS C:\> Get-AzSqlInstance -ResourceGroupName "ResourceGroup01"
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -61,7 +61,7 @@ This command gets information about all instances assigned to the resource group
 
 ### Example 2: Get information about an  instance
 ```
-PS C:\>Get-AzSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01"
+PS C:\> Get-AzSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01"
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -79,6 +79,42 @@ StorageSizeInGB          : 512
 ```
 
 This command gets information about the instance named managedInstance1.
+
+### Example 3: Get all instances assigned to a resource group using filtering
+```
+PS C:\> Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "managedInstance*"
+Location                 : westcentralus
+Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
+ResourceGroupName        : resourcegroup01
+ManagedInstanceName      : managedInstance1
+Tags                     :
+Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
+Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
+AdministratorLogin       : adminLogin1
+AdministratorPassword    :
+SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+LicenseType              : BasePrice
+VCores                   : 8
+StorageSizeInGB          : 512
+
+Location                 : westcentralus
+Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance2
+ResourceGroupName        : resourcegroup01
+ManagedInstanceName      : managedInstance2
+Tags                     :
+Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
+Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+FullyQualifiedDomainName : managedInstance2.wcusxxxxxxxxxxxxx.database.windows.net
+AdministratorLogin       : adminLogin2
+AdministratorPassword    :
+SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+LicenseType              : BasePrice
+VCores                   : 8
+StorageSizeInGB          : 512
+```
+
+This command gets information about all instances assigned to the resource group ResourceGroup01 that start with "managedInstance".
 
 ## PARAMETERS
 

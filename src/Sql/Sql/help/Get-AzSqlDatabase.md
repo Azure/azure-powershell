@@ -93,6 +93,50 @@ Tags                          :
 
 This command gets a database named Database02 from a server named Server01.
 
+### Example 3: Get all databases on a server using filtering
+```
+PS C:\> Get-AzSqlDatabase -ResourceGroupName "resourcegroup01" -ServerName "server01" -DatabaseName "database*"
+ResourceGroupName             : resourcegroup01
+ServerName                    : server01
+DatabaseName                  : database01
+Location                      : Central US
+DatabaseId                    : a2a7f2db-7526-4d86-a7b2-36276ee10dc6
+Edition                       : None
+CollationName                 : SQL_Latin1_General_CP1_CI_AS
+CatalogCollation              : 
+MaxSizeBytes                  : 5368709120
+Status                        : Online
+CreationDate                  : 7/3/2015 7:32:44 AM
+CurrentServiceObjectiveId     : c99ac918-dbea-463f-a475-16ec020fdc12
+CurrentServiceObjectiveName   : System1
+RequestedServiceObjectiveId   : c99ac918-dbea-463f-a475-16ec020fdc12
+RequestedServiceObjectiveName : 
+ElasticPoolName               : 
+EarliestRestoreDate           : 
+Tags                          : 
+
+ResourceGroupName             : resourcegroup01
+ServerName                    : server01
+DatabaseName                  : database02
+Location                      : Central US
+DatabaseId                    : a1e6bd1a-735a-4d48-8b98-afead5ef1218
+Edition                       : Standard
+CollationName                 : SQL_Latin1_General_CP1_CI_AS
+CatalogCollation              : 
+MaxSizeBytes                  : 268435456000
+Status                        : Online
+CreationDate                  : 7/3/2015 7:33:37 AM
+CurrentServiceObjectiveId     : f1173c43-91bd-4aaa-973c-54e79e15235b
+CurrentServiceObjectiveName   : S0
+RequestedServiceObjectiveId   : f1173c43-91bd-4aaa-973c-54e79e15235b
+RequestedServiceObjectiveName : 
+ElasticPoolName               : 
+EarliestRestoreDate           : 
+Tags                          :
+```
+
+This command gets all databases on the server named server01 that start with "database".
+
 ## PARAMETERS
 
 ### -DatabaseName
