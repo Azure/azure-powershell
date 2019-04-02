@@ -248,7 +248,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 SubnetId = this.SubnetId,
                 VCores = this.VCore,
                 Sku = Sku,
-                Collation = this.Collation
+                Collation = this.Collation,
+                TimezoneId = this.TimezoneId,
             });
             return newEntity;
         }
