@@ -29,21 +29,21 @@ The **New-AzFrontDoor** cmdlet creates a new Azure Front Door load balancer in t
 ```powershell
 PS C:\> New-AzFrontDoor -Name "frontDoor1" -ResourceGroupName "rg1" -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -BackendPoolsSettings $backendPoolsSettings
 
-FriendlyName          : frontdoor1
-RoutingRules          : {routingrule1}
-BackendPools          : {backendpool1}
-HealthProbeSettings   : {healthProbeSetting1}
-LoadBalancingSettings : {loadbalancingsetting1}
-FrontendEndpoints     : {frontendendpoint1}
-EnabledState          : Enabled
-ResourceState         : Enabled
-ProvisioningState     : Succeeded
-Cname                 :
-Tags                  : {tag1, tag2}
-Id                    : /subscriptions/{guid}/resourcegroups/rg1/providers/M
-                        icrosoft.Network/frontdoors/frontdoor1
-Name                  : frontdoor1
-Type                  : Microsoft.Network/frontdoor1
+FriendlyName                : frontdoor1
+RoutingRules                : {routingrule1}
+BackendPools                : {backendpool1}
+EnforceCertificateNameCheck : Enabled
+HealthProbeSettings         : {healthProbeSetting1}
+LoadBalancingSettings       : {loadbalancingsetting1}
+FrontendEndpoints           : {frontendendpoint1}
+EnabledState                : Enabled
+ResourceState               : Enabled
+ProvisioningState           : Succeeded
+Cname                       :
+Tags                        : {tag1, tag2}
+Id                          : /subscriptions/{guid}/resourcegroups/rg1/providers/Microsoft.Network/frontdoors/frontdoor1
+Name                        : frontdoor1
+Type                        : Microsoft.Network/frontdoors
 ```
 
 Create a Front Door based on given parameters.
