@@ -51,6 +51,20 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateDataFactoryV2WithVSTSRepoConfig()
+        {
+            RunPowerShellTest(_logger, "Test-CreateDataFactoryV2WithVSTSRepoConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateDataFactoryV2WithGitHubRepoConfig()
+        {
+            RunPowerShellTest(_logger, "Test-CreateDataFactoryV2WithGitHubRepoConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteDataFactoryWithDataFactoryParameterV2()
         {
             RunPowerShellTest(_logger, "Test-DeleteDataFactoryWithDataFactoryParameter");
