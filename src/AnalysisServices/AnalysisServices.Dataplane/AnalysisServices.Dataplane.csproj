@@ -12,7 +12,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Accounts\Accounts\Accounts.csproj" />
     <ProjectReference Include="..\..\Accounts\Authentication\Authentication.csproj" />
   </ItemGroup>
 
