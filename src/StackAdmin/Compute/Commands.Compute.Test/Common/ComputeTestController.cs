@@ -30,13 +30,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using Microsoft.Azure.Management.Network;
-#if NETSTANDARD
 using Microsoft.Azure.Management.ResourceManager;
-#else
-//using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.ResourceManager;
-#endif
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;

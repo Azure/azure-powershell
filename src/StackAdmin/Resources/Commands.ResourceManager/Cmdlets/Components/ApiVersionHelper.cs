@@ -26,11 +26,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-#if !NETSTANDARD    
     using System.Runtime.Caching;
-#else
-    using Microsoft.Extensions.Caching.Memory;
-#endif  
     
     /// <summary>
     /// Helper class for determining the API version
@@ -145,11 +141,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
             static ApiVersionCache()
             {
-#if !NETSTANDARD
                 _cache = MemoryCache.Default;
-#else
-                _cache = new MemoryCache(new MemoryCacheOptions());
-#endif
             }
             /// <summary>
             /// The API version cache
