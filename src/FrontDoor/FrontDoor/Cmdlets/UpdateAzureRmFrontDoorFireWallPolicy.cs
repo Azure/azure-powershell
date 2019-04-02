@@ -27,10 +27,10 @@ using SdkPolicy = Microsoft.Azure.Management.FrontDoor.Models.WebApplicationFire
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the Set-AzFrontDoorFireWallPolicy cmdlet.
+    /// Defines the Update-AzFrontDoorFireWallPolicy cmdlet.
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorFireWallPolicy", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSPolicy))]
-    public class SetAzureRmFrontDoorFireWallPolicy : AzureFrontDoorCmdletBase
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorFireWallPolicy", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSPolicy))]
+    public class UpdateAzureRmFrontDoorFireWallPolicy : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// The resource group to which the FireWallPolicy belongs.
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Custom Response Status Code")]
         [ValidateRange(200, 499)]
-        public int CustomBlockResponseStatusCode { get; set; }
+        public int? CustomBlockResponseStatusCode { get; set; }
 
         /// <summary>
         /// Custom block response body used for block actions

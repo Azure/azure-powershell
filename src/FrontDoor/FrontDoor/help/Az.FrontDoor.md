@@ -77,6 +77,6 @@ Remove WAF policy
 ### [Set-AzFrontDoor](Set-AzFrontDoor.md)
 Update a Front Door load balancer
 
-### [Set-AzFrontDoorFireWallPolicy](Set-AzFrontDoorFireWallPolicy.md)
+### [Update-AzFrontDoorFireWallPolicy](Update-AzFrontDoorFireWallPolicy.md)
 Update WAF policy
 
