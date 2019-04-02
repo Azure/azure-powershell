@@ -38,6 +38,7 @@ using Newtonsoft.Json.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 {
@@ -433,7 +434,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
             else
             {
-                deployment.Properties.Template = JObject.Parse(FileUtilities.DataStore.ReadFileAsText(parameters.TemplateFile));
+                if (!string.IsNullOrEmpty(parameters.TemplateFile))
+                {
+                    deployment.Properties.Template = JObject.Parse(FileUtilities.DataStore.ReadFileAsText(parameters.TemplateFile));
+                }
+                else
+                {
+                    deployment.Properties.Template = JObject.Parse(JsonConvert.SerializeObject(parameters.TemplateObject));
+                }
             }
 
             if (Uri.IsWellFormedUriString(parameters.ParameterUri, UriKind.Absolute))
@@ -649,7 +657,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         {
             List<PSResourceGroup> result = new List<PSResourceGroup>();
 
-            if (string.IsNullOrEmpty(name) || name.Contains("*"))
+            if (string.IsNullOrEmpty(name) || WildcardPattern.ContainsWildcardCharacters(name))
             {
                 List<ResourceGroup> resourceGroups = new List<ResourceGroup>();
 
@@ -664,24 +672,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
                 if (!string.IsNullOrEmpty(name))
                 {
-                    if (name.StartsWith("*"))
-                    {
-                        name = name.TrimStart('*');
-                        if (name.EndsWith("*"))
-                        {
-                            name = name.TrimEnd('*');
-                            resourceGroups = resourceGroups.Where(g => g.Name.Contains(name)).ToList();
-                        }
-                        else
-                        {
-                            resourceGroups = resourceGroups.Where(g => g.Name.EndsWith(name)).ToList();
-                        }
-                    }
-                    else if (name.EndsWith("*"))
-                    {
-                        name = name.TrimEnd('*');
-                        resourceGroups = resourceGroups.Where(g => g.Name.StartsWith(name)).ToList();
-                    }
+                    WildcardPattern pattern = new WildcardPattern(name, WildcardOptions.IgnoreCase);
+                    resourceGroups = resourceGroups.Where(t => pattern.IsMatch(t.Name)).ToList();
                 }
 
                 resourceGroups = !string.IsNullOrEmpty(location)
@@ -1112,14 +1104,37 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         public virtual PSResource GetById(string resourceId, string apiVersion)
         {
-            PSResource result = null;
+            var providers = new List<Provider>();
             var resourceIdentifier = new ResourceIdentifier(resourceId);
-            var providers = ResourceManagementClient.Providers.List();
+            var providerNamespace = ResourceIdentifier.GetProviderFromResourceType(resourceIdentifier.ResourceType);
+            if (!string.IsNullOrEmpty(providerNamespace))
+            {
+                var result = ResourceManagementClient.Providers.Get(providerNamespace);
+                if (result != null)
+                {
+                    providers.Add(result);
+                }
+            }
+
+            if (!providers.Any())
+            {
+                var result = ResourceManagementClient.Providers.List();
+                if (result != null)
+                {
+                    result.ForEach(p => providers.Add(p));
+                    while (!string.IsNullOrEmpty(result.NextPageLink))
+                    {
+                        result = ResourceManagementClient.Providers.ListNext(result.NextPageLink);
+                        result.ForEach(p => providers.Add(p));
+                    }
+                }
+            }
+
             foreach (var provider in providers)
             {
                 var resourceType = provider.ResourceTypes
-                                            .Where(t => string.Equals(string.Format("{0}/{1}", provider.NamespaceProperty, t.ResourceType), resourceIdentifier.ResourceType, StringComparison.OrdinalIgnoreCase))
-                                            .FirstOrDefault();
+                                           .Where(t => string.Equals(string.Format("{0}/{1}", provider.NamespaceProperty, t.ResourceType), resourceIdentifier.ResourceType, StringComparison.OrdinalIgnoreCase))
+                                           .FirstOrDefault();
                 if (resourceType != null)
                 {
                     apiVersion = resourceType.ApiVersions.Contains(apiVersion) ? apiVersion : resourceType.ApiVersions.FirstOrDefault();
@@ -1130,7 +1145,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
             }
 
-            return result;
+            return null;
         }
     }
 }

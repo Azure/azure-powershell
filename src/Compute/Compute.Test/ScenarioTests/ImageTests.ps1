@@ -125,8 +125,48 @@ function Test-Image
         Assert-AreEqual "testval2" $createdImage.Tags["test2"]
 
         # List and Delete Image
+        $wildcardRgQuery = ($rgname -replace ".$") + "*"
+        $wildcardNameQuery = ($imageName -replace ".$") + "*"
+        
+        $images = Get-AzImage;
+        Assert-True { $images.Count -ge 1 };
+        
+        $images = Get-AzImage -ResourceGroupName $wildcardRgQuery;
+        Assert-AreEqual 1 $images.Count;
+        Assert-AreEqual $rgname $images[0].ResourceGroupName;
+
         $images = Get-AzImage -ResourceGroupName $rgname;
         Assert-AreEqual 1 $images.Count;
+        Assert-AreEqual $rgname $images[0].ResourceGroupName;
+        
+        $images = Get-AzImage -Name $wildcardNameQuery;
+        Assert-AreEqual 1 $images.Count;
+        Assert-AreEqual $rgname $images[0].ResourceGroupName;
+        Assert-AreEqual $imageName $images[0].Name;
+        
+        $images = Get-AzImage -Name $imageName;
+        Assert-AreEqual 1 $images.Count;
+        Assert-AreEqual $rgname $images[0].ResourceGroupName;
+        Assert-AreEqual $imageName $images[0].Name;
+        
+        $images = Get-AzImage -ResourceGroupName $wildcardRgQuery -Name $wildcardNameQuery;
+        Assert-AreEqual 1 $images.Count;
+        Assert-AreEqual $rgname $images[0].ResourceGroupName;
+        Assert-AreEqual $imageName $images[0].Name;
+        
+        $images = Get-AzImage -ResourceGroupName $rgname -Name $wildcardNameQuery;
+        Assert-AreEqual 1 $images.Count;
+        Assert-AreEqual $rgname $images[0].ResourceGroupName;
+        Assert-AreEqual $imageName $images[0].Name;
+        
+        $images = Get-AzImage -ResourceGroupName $wildcardRgQuery -Name $imageName;
+        Assert-AreEqual 1 $images.Count;
+        Assert-AreEqual $rgname $images[0].ResourceGroupName;
+        Assert-AreEqual $imageName $images[0].Name;
+        
+        $images = Get-AzImage -ResourceGroupName $rgname -Name $imageName;
+        Assert-AreEqual $rgname $images.ResourceGroupName;
+        Assert-AreEqual $imageName $images.Name;
 
         # Update Image Tag
         $images[0] | Update-AzImage -Tag @{test1 = "testval3"; test2 = "testval4"};

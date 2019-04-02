@@ -582,8 +582,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 {
                     response = this.automationManagementClient.DscNode.ListByAutomationAccount(
                                     resourceGroupName,
-                                    automationAccountName,
-                                    this.GetNodeListFilterString(status, nodeName));
+                                    automationAccountName);
                 }
                 else
                 {
@@ -615,7 +614,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 {
                     response = this.automationManagementClient.DscNode.ListByAutomationAccount(
                                             resourceGroupName,
-                                            automationAccountName, this.GetNodeListFilterString(status, nodeConfigurationName));
+                                            automationAccountName);
                 }
                 else
                 {
@@ -692,8 +691,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 {
                     response = this.automationManagementClient.DscNode.ListByAutomationAccount(
                             resourceGroupName,
-                            automationAccountName,
-                            this.GetNodeListFilterString(status, null));
+                            automationAccountName);
                 }
                 else
                 {
@@ -1718,17 +1716,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
 
             return filter;
-        }
-
-        private string GetNodeListFilterString(string status, string nodeConfigurationName)
-        {
-            var filter = new ODataQuery<DscNodeConfiguration>(node => node.Name == nodeConfigurationName)
-            {
-                Top = 20,
-                Skip = 0
-            };
-
-            return filter.ToString();
         }
 
         private string GetNodeReportListFilterString(string type, DateTimeOffset? startTime, DateTimeOffset? endTime, DateTimeOffset? lastModifiedTime)

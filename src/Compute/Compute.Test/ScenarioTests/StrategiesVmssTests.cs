@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.CoreOnly)]
         public void TestSimpleNewVmssImageName()
         {
             TestRunner.RunTestScript("Test-SimpleNewVmssImageName");

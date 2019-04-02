@@ -459,6 +459,10 @@
             <Label>WorkloadsPresent</Label>
             <Width>20</Width>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>HealthStatus</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -475,8 +479,11 @@
               <TableColumnItem>
                 <PropertyName>ContainerType</PropertyName>
               </TableColumnItem>
-            <TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>WorkloadsPresent</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>HealthStatus</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -605,6 +612,10 @@
             <Width>40</Width>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ServerName</Label>
+            <Width>40</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>IsProtected</Label>
             <Width>20</Width>
           </TableColumnHeader>
@@ -620,6 +631,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ParentName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ServerName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProtectionState</PropertyName>
@@ -667,7 +681,7 @@
                 <PropertyName>WorkloadType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>ParentName</PropertyName>
+                <PropertyName>ServerName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProtectionStatus</PropertyName>

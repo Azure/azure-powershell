@@ -1,9 +1,9 @@
-<!--
+<<!--
     Please leave this section at the top of the change log.
 
-    Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
+    Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
 
-    ## Current Release
+    ## Upcoming Release
     * Overview of change #1
         - Additional information about change #1
     * Overview of change #2
@@ -17,9 +17,10 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+## Upcoming Release
 
-## Current Release
-* Update all cmdlets required to manager StorageSync ARM resources.
+## Version 0.8.0
+* Update all cmdlets required to manage StorageSync ARM resources.
 
-## Version 1.0.0
+## Version 0.7.1
 * General availability of `Az.StorageSync` module

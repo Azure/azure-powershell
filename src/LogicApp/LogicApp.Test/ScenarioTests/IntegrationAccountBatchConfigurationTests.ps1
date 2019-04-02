@@ -18,7 +18,7 @@ Test New-AzIntegrationAccountBatchConfiguration command
 #>
 function Test-NewIntegrationAccountBatchConfiguration
 {
-	$batchConfigurationFilePath = Join-Path $TestOutputRoot "Resources" "SampleBatchConfiguration.json"
+	$batchConfigurationFilePath = Join-Path (Join-Path $TestOutputRoot "Resources") "SampleBatchConfiguration.json"
 	$batchConfigurationContent = [IO.File]::ReadAllText($batchConfigurationFilePath)
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$integrationAccountName = "IA-" + (getAssetname)
@@ -74,7 +74,7 @@ Test Get-AzIntegrationAccountBatchConfiguration command
 #>
 function Test-GetIntegrationAccountBatchConfiguration
 {
-	$batchConfigurationFilePath = Join-Path $TestOutputRoot "Resources" "SampleBatchConfiguration.json"
+	$batchConfigurationFilePath = Join-Path (Join-Path $TestOutputRoot "Resources") "SampleBatchConfiguration.json"
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$integrationAccountName = "IA-" + (getAssetname)
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
@@ -115,7 +115,7 @@ Test Remove-AzIntegrationAccountBatchConfiguration command
 #>
 function Test-RemoveIntegrationAccountBatchConfiguration
 {
-	$batchConfigurationFilePath = Join-Path $TestOutputRoot "Resources" "SampleBatchConfiguration.json"
+	$batchConfigurationFilePath = Join-Path (Join-Path $TestOutputRoot "Resources") "SampleBatchConfiguration.json"
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$integrationAccountName = "IA-" + (getAssetname)
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
@@ -145,7 +145,7 @@ Test Set-AzIntegrationAccountBatchConfiguration command
 #>
 function Test-SetIntegrationAccountBatchConfiguration
 {
-	$batchConfigurationFilePath = Join-Path $TestOutputRoot "Resources" "SampleBatchConfiguration.json"
+	$batchConfigurationFilePath = Join-Path (Join-Path $TestOutputRoot "Resources") "SampleBatchConfiguration.json"
 	$batchConfigurationContent = [IO.File]::ReadAllText($batchConfigurationFilePath)
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$integrationAccountName = "IA-" + (getAssetname)

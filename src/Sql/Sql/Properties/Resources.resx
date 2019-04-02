@@ -409,7 +409,7 @@
     <value>Server Advanced Threat Protection is not defined. Please run Enable-AzSqlServerAdvancedThreatProtection first.</value>
   </data>
   <data name="RunSetVulnerabilityAssemenSettings" xml:space="preserve">
-    <value>Vulnerability assessment settings are not defined. Please run Update-AzSqlDatabaseVulnerabilityAssessmentSettings first.</value>
+    <value>Vulnerability assessment settings are not defined. Please run Update-AzSqlServerVulnerabilityAssessmentSettings first.</value>
   </data>
   <data name="InvalidBlobStorageSasUri" xml:space="preserve">
     <value>Invalid BlobStorageSasUri parameter value. The value should be in format of https://mystorage.blob.core.windows.net/vulnerability-assessment?st=XXXXXX."</value>
@@ -439,12 +439,21 @@
     <value>Wrong parameter type</value>
   </data>
   <data name="RunSetManagedDatabaseVulnerabilityAssemenSettings" xml:space="preserve">
-    <value>Vulnerability assessment settings are not defined. Please run Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSettings first.</value>
+    <value>Vulnerability assessment settings are not defined. Please run Update-AzSqlInstanceVulnerabilityAssessmentSettings first.</value>
   </data>
-  <data name="ManagedInstanceAdvancedThreatProtectionIsNotDefined" xml:space="preserve">
-    <value>Managed Instance Advanced Threat Protection is not defined. Please run Enable-AzSqlInstanceAdvancedDataSecurityPolicy first.</value>
+  <data name="ManagedInstanceAdvancedDataSecurityIsNotDefined" xml:space="preserve">
+    <value>Managed Instance Advanced Data Security is not defined. Please run Enable-AzSqlInstanceAdvancedDataSecurityPolicy first.</value>
   </data>
   <data name="ScanIdManagedDatabaseParameterIsRequired" xml:space="preserve">
     <value>ScanId is a required parameter for this cmdlet. Please explicitly provide it or pass the Get-AzSqlInstanceDatabaseVulnerabilityAssessmentScanRecord output via pipe.</value>
+  </data>
+  <data name="DataClassificationFailedToRetrieveInformationProtectionPolicy" xml:space="preserve">
+    <value>Failed to retrieve information protection policy of tenant {0}.</value>
+  </data>
+  <data name="InvalidFormatResourceId" xml:space="preserve">
+    <value>Invalid format of the resource identifier.</value>
+  </data>
+  <data name="VulnerabilityAssessmentTypeNotSupported" xml:space="preserve">
+    <value>Requested type is not supported by Vulnerability Assessment.</value>
   </data>
 </root>

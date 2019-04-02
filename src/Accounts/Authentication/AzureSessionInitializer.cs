@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Newtonsoft.Json;
 using TraceLevel = System.Diagnostics.TraceLevel;
 using System.Linq;
+using Microsoft.WindowsAzure.Commands.Common;
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Core;
 #endif
@@ -253,6 +254,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
                 get => SourceLevels.Off;
                 set { }
+            }
+
+            /// <summary>
+            /// Adal Logger for Adal 3.x +
+            /// </summary>
+            public AdalLogger AdalLogger { get; private set; }  
+
+            /// <summary>
+            /// Write messages to the existing trace listeners when log messages occur
+            /// </summary>
+            /// <param name="message"></param>
+            private void WriteToTraceListeners(string message)
+            {
+                foreach (var listener in AuthenticationTraceListeners)
+                {
+                    var trace = listener as TraceListener;
+                    trace.WriteLine(message);
+                }
             }
 #endif
         }

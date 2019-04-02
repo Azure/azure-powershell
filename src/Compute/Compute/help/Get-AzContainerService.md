@@ -27,9 +27,78 @@ You can view the properties of a container service, which include state, number 
 ### Example 1: Get a container service
 ```
 PS C:\> Get-AzContainerService -ResourceGroupName "ResourceGroup17" -Name "CSResourceGroup17"
+
+ResourceGroupName     : ResourceGroup17
+ProvisioningState     : Succeeded
+OrchestratorProfile   :
+  OrchestratorType    : DCOS
+MasterProfile         :
+  Count               : 1
+  DnsPrefix           : MasterResourceGroup17
+  Fqdn                : masterresourcegroup17.eastus.cloudapp.azure.com
+AgentPoolProfiles[0]  :
+  Name                : AgentPool01
+  Count               : 2
+  VmSize              : Standard_A1
+  DnsPrefix           : APResourceGroup17
+  Fqdn                : apresourcegroup17.eastus.cloudapp.azure.com
+LinuxProfile          :
+  AdminUsername       : acslinuxadmin
+  Ssh                 :
+    PublicKeys[0]     :
+      KeyData         : ssh-rsa xxxxxxxxxxxxxx contoso@microsoft.com
+DiagnosticsProfile    :
+  VmDiagnostics       :
+    Enabled           : False
+    StorageUri        : https://xxxxxxxxxxx.blob.core.windows.net/
+Id                    : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup17/providers/Micr
+osoft.ContainerService/containerServices/CSResourceGroup17
+Name                  : CSResourceGroup17
+Type                  : Microsoft.ContainerService/ContainerServices
+Location              : eastus
+Tags                  : {}
 ```
 
 This command gets a container service named CSResourceGroup17.
+
+### Example 2: Get all container services
+```
+PS C:\> Get-AzContainerService
+
+ResourceGroupName   Name                Location ProvisioningState
+-----------------   ----                -------- -----------------
+ResourceGroup17     CSResourceGroup17   eastus         Succeeded
+ResourceGroup17     CSResourceGroup18   eastus         Succeeded
+ResourceGroup18     CSResourceGroup19   eastus         Succeeded
+ResourceGroup18     CSResourceGroup20   eastus         Succeeded
+```
+
+This command gets all container services in subscription.
+
+### Example 3: Get all container services in resource group
+```
+PS C:\> Get-AzContainerService -ResourceGroupName "ResourceGroup17"
+
+ResourceGroupName   Name                Location ProvisioningState
+-----------------   ----                -------- -----------------
+ResourceGroup17     CSResourceGroup17   eastus         Succeeded
+ResourceGroup17     CSResourceGroup18   eastus         Succeeded
+```
+
+This command gets all container services in ResourceGroup17.
+
+### Example 4: Get all container services using filter
+```
+PS C:\> Get-AzContainerService -Name "CSResourceGroup1*"
+
+ResourceGroupName   Name                Location ProvisioningState
+-----------------   ----                -------- -----------------
+ResourceGroup17     CSResourceGroup17   eastus         Succeeded
+ResourceGroup17     CSResourceGroup18   eastus         Succeeded
+ResourceGroup18     CSResourceGroup19   eastus         Succeeded
+```
+
+This command gets all container services starting with "CSResourceGroup1".
 
 ## PARAMETERS
 
