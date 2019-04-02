@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Common
         ICommandRuntime _runtime;
         IDictionary<string, AzurePSQoSEvent> _telemetryEvents;
         TelemetryProvider _metricHelper;
-        AdalLogger _logger;
         ConcurrentQueue<string> _debugMessages;
         ConcurrentQueue<string> _warningMessages;
         public AzModule(ICommandRuntime runtime)
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Commands.Common
             _telemetryEvents = new Dictionary<string, AzurePSQoSEvent>(StringComparer.OrdinalIgnoreCase);
             _warningMessages = new ConcurrentQueue<string>();
             _debugMessages = new ConcurrentQueue<string>();
-            _logger = new AdalLogger((message) => _debugMessages.CheckAndEnqueue(message));
             _metricHelper = TelemetryProvider.Create((message) => _warningMessages.CheckAndEnqueue(message), (message) => _debugMessages.CheckAndEnqueue(message));
         }
 
@@ -61,13 +59,13 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="appendStep">a delegate which allows the module to append a step in the HTTP Pipeline</param>
         public void OnModuleLoad(string resourceId, string moduleName, PipelineChangeDelegate prependStep, PipelineChangeDelegate appendStep)
         {
-            // this will be called once when the module starts up 
+            // this will be called once when the module starts up
             // the common module can prepend or append steps to the pipeline at this point.
             prependStep(UniqueId.Instance.SendAsync);
         }
 
         /// <summary>
-        /// The cmdlet will call this for every event during the pipeline. 
+        /// The cmdlet will call this for every event during the pipeline.
         /// </summary>
         /// <param name="id">a <c>string</c> containing the name of the event being raised (well-known events are in <see cref="Microsoft.Azure.Commands.Common.Events"/></param>
         /// <param name="cancellationToken">a <c>CancellationToken</c> indicating if this request is being cancelled.</param>
@@ -97,13 +95,13 @@ namespace Microsoft.Azure.Commands.Common
                                 if (request.Headers != null && request.Headers.TryGetValues("x-ms-client-request-id", out headers))
                                 {
                                     qos.ClientRequestId = headers.FirstOrDefault();
-                                    await signal(Events.Debug, cancellationToken, 
+                                    await signal(Events.Debug, cancellationToken,
                                         () => EventHelper.CreateLogEvent($"[{id}]: Amending QosEvent for command '{qos.CommandName}': {qos.ToString()}"));
                                 }
                             }
 
                             /// Print formatted request message
-                            await signal(Events.Debug, cancellationToken, 
+                            await signal(Events.Debug, cancellationToken,
                                 () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(request)));
                         }
                     }
@@ -112,7 +110,7 @@ namespace Microsoft.Azure.Commands.Common
                 case Events.CmdletProcessRecordAsyncStart:
                     {
                         var qos = CreateQosEvent(invocationInfo, parameterSetName, correlationId);
-                        await signal(Events.Debug, cancellationToken, 
+                        await signal(Events.Debug, cancellationToken,
                             () => EventHelper.CreateLogEvent($"[{id}]: Created new QosEvent for command '{qos.CommandName}': {qos.ToString()}"));
                         _telemetryEvents.Add(processRecordId, qos);
                     }
@@ -123,7 +121,7 @@ namespace Microsoft.Azure.Commands.Common
                         if (_telemetryEvents.TryGetValue(processRecordId, out qos))
                         {
                             qos.IsSuccess = qos.Exception == null;
-                            await signal(Events.Debug, cancellationToken, 
+                            await signal(Events.Debug, cancellationToken,
                                 () => EventHelper.CreateLogEvent($"[{id}]: Sending new QosEvent for command '{qos.CommandName}': {qos.ToString()}"));
                             _metricHelper.LogEvent(qos);
                             _telemetryEvents.Remove(processRecordId);
@@ -133,12 +131,12 @@ namespace Microsoft.Azure.Commands.Common
                 case Events.CmdletException:
                     {
                         var data = EventDataConverter.ConvertFrom(getEventData());
-                        await signal(Events.Debug, cancellationToken, 
+                        await signal(Events.Debug, cancellationToken,
                             () => EventHelper.CreateLogEvent($"[{id}]: Received Exception with message '{data?.Message}'"));
                         AzurePSQoSEvent qos;
                         if (_telemetryEvents.TryGetValue(processRecordId, out qos))
                         {
-                            await signal(Events.Debug, cancellationToken, 
+                            await signal(Events.Debug, cancellationToken,
                                 () => EventHelper.CreateLogEvent($"[{id}]: Sending new QosEvent for command '{qos.CommandName}': {qos.ToString()}"));
                             qos.IsSuccess = false;
                             qos.Exception = exception;
@@ -161,7 +159,7 @@ namespace Microsoft.Azure.Commands.Common
                             }
 
                             /// Print formatted response message
-                            await signal(Events.Debug, cancellationToken, 
+                            await signal(Events.Debug, cancellationToken,
                                 () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(response)));
                         }
                     }
@@ -193,12 +191,6 @@ namespace Microsoft.Azure.Commands.Common
                 {
                     _telemetryEvents.Clear();
                     _telemetryEvents = null;
-                }
-
-                if (_logger != null)
-                {
-                    _logger.Dispose();
-                    _logger = null;
                 }
 
                 if (_warningMessages != null)

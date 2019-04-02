@@ -257,11 +257,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
 
             /// <summary>
-            /// Adal Logger for Adal 3.x +
-            /// </summary>
-            public AdalLogger AdalLogger { get; private set; }  
-
-            /// <summary>
             /// Write messages to the existing trace listeners when log messages occur
             /// </summary>
             /// <param name="message"></param>
