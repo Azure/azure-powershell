@@ -58,9 +58,9 @@ For parameters that represent a value that should be kept secret in some fashion
 
 #### Bool vs. SwitchParameter
 
-Parameters of type `bool` are _strongly_ discouraged in PowerShell. The `SwitchParameter` type of a parameter acts a flag that signals whether or not some action should be taken based on if the parameter was provided or not. From the [_Strongly Encouraged Development Guidelines_](https://docs.microsoft.com/en-us/powershell/developer/cmdlet/strongly-encouraged-development-guidelines#parameters-that-take-true-and-false):
+Parameters of type `bool` are _strongly_ discouraged in PowerShell. The `SwitchParameter` type of a parameter acts a flag that signals whether or not some action should be taken based on if the parameter was provided or not.
 
-> _If your parameter takes only true and false, define the parameter as type SwitchParameter. A switch parameter is treated as true when it is specified in a command. If the parameter is not included in a command, Windows PowerShell considers the value of the parameter to be false. Do not define Boolean parameters._
+The only case where a `bool` parameter should be used is for a `PATCH` operation wrapped by an `Update-*` cmdlet; in this case, the user will have the option to set the value to `true` or `false`, or not provide a value at all, which keeps the value the same on the server. For a `PUT` operation wrapped by a `Set-*` cmdlet, the normal `SwitchParameter` type should be used.
 
 ### Argument Completers
 

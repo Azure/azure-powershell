@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Service
 
             if (this.ShouldProcess(this.Name, string.Format("Updating TopLevelResource '{0}' in resource group '{1}'.", this.Name, this.ResourceGroupName)))
             {
-                var result = new PSTopLevelResource(this.MySDKClient.TopLevelResource.Update(this.ResourceGroupName, this.Name, existingResource));
+                var result = new PSTopLevelResource(this.MySDKClient.TopLevelResource.CreateOrUpdate(this.ResourceGroupName, this.Name, existingResource));
                 WriteObject(result);
             }
         }
@@ -126,7 +126,7 @@ Set-AzChildResource -InputObject <PSChildResource> [-Property1 <Type1>] [-Proper
 Set-AzChildResource -ResourceId <String> -Property1 <Type1> -Property2 <Type2> ... [-WhatIf] [-Confirm]
 ```
 
-The first parameter set has required `-ResourceGroupName`, `-TopLevelResourceName` and `-Name` parameters, as well as required property parameters to set their values on the child resource. The second parameter set has a required `-TopLevelResourceObject` parameter, which allows the user to pipe the result of the parent resource's `Get-*` and `Set/Update-*` cmdlets to this cmdlet, as well as required property parameters. The third parameter set has a required `-InputObject` parameter, as well as optional property parameters that override the value of the property on the given object if provided. The fourth parameter set has a required `-ResourceIid` parameter, as well as required property parameters to set their values on the child resource.
+The first parameter set has required `-ResourceGroupName`, `-TopLevelResourceName` and `-Name` parameters, as well as required property parameters to set their values on the child resource. The second parameter set has a required `-TopLevelResourceObject` parameter, which allows the user to pipe the result of the parent resource's `Get-*` and `Set/Update-*` cmdlets to this cmdlet, as well as required property parameters. The third parameter set has a required `-InputObject` parameter, as well as optional property parameters that override the value of the property on the given object if provided. The fourth parameter set has a required `-ResourceId` parameter, as well as required property parameters to set their values on the child resource.
 
 #### C# example
 
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Commands.Service
 
             if (this.ShouldProcess(this.Name, string.Format("Updating ChildResource '{0}' in resource group '{1}' under parent TopLevelResource '{2}'.", this.Name, this.ResourceGroupName, this.TopLevelResourceName)))
             {
-                var result = new PSChildResource(this.MySDKClient.ChildResource.Update(this.ResourceGroupName, this.TopLevelResourceName, this.Name, childResource));
+                var result = new PSChildResource(this.MySDKClient.ChildResource.CreateOrUpdate(this.ResourceGroupName, this.TopLevelResourceName, this.Name, childResource));
                 WriteObject(result);
             }
         }
