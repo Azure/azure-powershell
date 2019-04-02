@@ -176,56 +176,34 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
             return await Task.Run(async () =>
             {
-                try
+                var syncEndpoint = string.Format(AsAzureEndpoints.SynchronizeEndpointPathFormat, this.ServerName, databaseName);
+                this.AsAzureDataplaneClient.ResetHttpClient();
+                using (var message = await AsAzureDataplaneClient.CallPostAsync(syncBaseUri, syncEndpoint, correlationId))
                 {
-                    var syncEndpoint = string.Format(AsAzureEndpoints.SynchronizeEndpointPathFormat, this.ServerName, databaseName);
-                    this.AsAzureDataplaneClient.ResetHttpClient();
-                    using (var message = await AsAzureDataplaneClient.CallPostAsync(syncBaseUri, syncEndpoint, correlationId))
+                    this.syncRequestRootActivityId = message.Headers.Contains(RootActivityIdHeaderName) ? message.Headers.GetValues(RootActivityIdHeaderName).FirstOrDefault() : string.Empty;
+                    this.syncRequestTimeStamp = message.Headers.Contains(CurrentUtcDateHeaderName) ? message.Headers.GetValues(CurrentUtcDateHeaderName).FirstOrDefault() : string.Empty;
+
+                    if (message.StatusCode != HttpStatusCode.Accepted)
                     {
-                        this.syncRequestRootActivityId = message.Headers.Contains(RootActivityIdHeaderName) ? message.Headers.GetValues(RootActivityIdHeaderName).FirstOrDefault() : string.Empty;
-                        this.syncRequestTimeStamp = message.Headers.Contains(CurrentUtcDateHeaderName) ? message.Headers.GetValues(CurrentUtcDateHeaderName).FirstOrDefault() : string.Empty;
+                        var timestampNow = DateTime.Now;
 
-                        if (!message.IsSuccessStatusCode)
+                        // Return sync details with exception message as details
+                        return new ScaleOutServerDatabaseSyncDetails
                         {
-                            var timestampNow = DateTime.Now;
-
-                            // Return sync details with exception message as details
-                            return new ScaleOutServerDatabaseSyncDetails
-                            {
-                                CorrelationId = correlationId.ToString(),
-                                Database = databaseName,
-                                SyncState = DatabaseSyncState.Invalid,
-                                Details = Resources.PostSyncRequestFailureMessage.FormatInvariant(
-                                                                        ServerName,
-                                                                        this.syncRequestRootActivityId,
-                                                                        this.syncRequestTimeStamp,
-                                                                        await message.Content.ReadAsStringAsync()),
-                                UpdatedAt = timestampNow,
-                                StartedAt = timestampNow
-                            };
-                        }
-                        else if (message.StatusCode != HttpStatusCode.Accepted)
-                        {
-                            var timestampNow = DateTime.Now;
-                            syncResult = new ScaleOutServerDatabaseSyncDetails
-                            {
-                                CorrelationId = correlationId.ToString(),
-                                Database = databaseName,
-                                SyncState = DatabaseSyncState.Completed,
-                                Details = string.Format("Http status code: {0}. Nothing readonly instances found to replicate databases.", message.StatusCode),
-                                UpdatedAt = timestampNow,
-                                StartedAt = timestampNow
-                            };
-
-                            return syncResult;
-                        }
-
-                        pollingUrlAndRetryAfter = new Tuple<Uri, RetryConditionHeaderValue>(message.Headers.Location, message.Headers.RetryAfter);
+                            CorrelationId = correlationId.ToString(),
+                            Database = databaseName,
+                            SyncState = DatabaseSyncState.Invalid,
+                            Details = Resources.PostSyncRequestFailureMessage.FormatInvariant(
+                                                                    ServerName,
+                                                                    this.syncRequestRootActivityId,
+                                                                    this.syncRequestTimeStamp,
+                                                                    await message.Content.ReadAsStringAsync()),
+                            UpdatedAt = timestampNow,
+                            StartedAt = timestampNow
+                        };
                     }
 
-                }
-                catch
-                {
+                    pollingUrlAndRetryAfter = new Tuple<Uri, RetryConditionHeaderValue>(message.Headers.Location, message.Headers.RetryAfter);
                 }
 
                 Uri pollingUrl = pollingUrlAndRetryAfter.Item1;
