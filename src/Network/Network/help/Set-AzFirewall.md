@@ -52,6 +52,16 @@ In this example, a Firewall is created first without any application rule collec
 and Application Rule Collection are created, then the Firewall object is modified in memory, without affecting 
 the real configuration in cloud. For changes to be reflected in cloud, Set-AzFirewall must be called.
 
+### 3:  Update Threat Intel operation mode of Azure Firewall
+```
+$azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
+$azFw.ThreatIntelMode = "Deny"
+Set-AzFirewall -Firewall $azFw
+```
+
+This example updates the Threat Intel operation mode of Azure Firewall "AzureFirewall" in resource group "rg".
+Without the Set-AzFirewall command, all operations performed on the local $azFw object are not reflected on the server.
+
 ## PARAMETERS
 
 ### -AsJob

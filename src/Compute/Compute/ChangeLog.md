@@ -19,7 +19,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add HyperVGeneration parameter to New-AzDiskConfig and New-AzSnapshotConfig
+* Allow VM creation with galley image from other tenants. 
+
+## Version 1.6.0
 * Fix issue with path resolution in Get-AzVmBootDiagnosticsData
+* Update Compute client library to 25.0.0.
+* Add new parameter sets to Set-AzVMCustomScriptExtension
+    - Accepts PSVirtualMachine object from pipeline
+    - Accepts Resource Id and a VirtualMachineCustomScriptExtensionContext also from pipeline
 
 ## Version 1.5.0
 * Add wildcard support to Get cmdlets
