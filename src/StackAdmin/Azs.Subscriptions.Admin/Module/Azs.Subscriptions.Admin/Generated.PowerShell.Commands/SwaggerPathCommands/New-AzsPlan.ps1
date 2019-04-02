@@ -108,6 +108,15 @@ function New-AzsPlan {
 
         if ($PSCmdlet.ShouldProcess("$Name", "Create a new plan")) {
 
+            # Validate quota
+            $QuotaIds | Foreach-Object {
+                Write-Verbose "Validating $_"
+                $testResult = Test-AzsQuota -Id $_
+                if (-not $testResult) {
+                    throw "$_ is not a valid quota ID"
+                }
+            }
+
             # Breaking changes message
             if ($PSBoundParameters.ContainsKey('Location')) {
                 if ( $MyInvocation.Line -match "\s-ArmLocation\s") {

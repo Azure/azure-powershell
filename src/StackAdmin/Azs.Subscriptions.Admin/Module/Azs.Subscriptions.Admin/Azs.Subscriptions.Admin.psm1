@@ -24,6 +24,7 @@ if (Test-Path -Path $ClrPath -PathType Container) {
     Get-ChildItem -Path $allDllsPath -File | ForEach-Object { Add-Type -Path $_.FullName -ErrorAction SilentlyContinue }
 }
 
+. (Join-Path -Path $PSScriptRoot -ChildPath 'Test-AzsQuota.ps1')
 . (Join-Path -Path $PSScriptRoot -ChildPath 'New-ServiceClient.ps1')
 . (Join-Path -Path $PSScriptRoot -ChildPath 'Get-TaskResult.ps1')
 . (Join-Path -Path $PSScriptRoot -ChildPath 'Get-ApplicableFilters.ps1')

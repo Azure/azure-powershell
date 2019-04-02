@@ -124,6 +124,16 @@ function Set-AzsPlan {
         $NewPlan = $null
 
         if ('InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+
+            # Validate quota
+            $QuotaIds | Foreach-Object {
+                Write-Verbose "Validating $_"
+                $testResult = Test-AzsQuota -Id $_
+                if (-not $testResult) {
+                    throw "$_ is not a valid quota ID"
+                }
+            }
+
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/plans/{plan}'
             }

@@ -17,7 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     RootModule        = 'Azs.Subscriptions.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.3.2'
+    ModuleVersion     = '0.3.3'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -130,9 +130,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2019.4
-            * Module dependencies updated
-                * AzureRM.Resources
+            ReleaseNotes = '## 2019.05
+                * Creating and updating plans will now validate quota Ids.
             '
 
         } # End of PSData hashtable

@@ -12,7 +12,7 @@
     # RootModule = ''
 
     # Version number of this module.
-    ModuleVersion          = '1.7.1'
+    ModuleVersion          = '1.7.2'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -64,7 +64,7 @@
         @{ModuleName = 'Azs.Network.Admin'; RequiredVersion = '0.2.1'; },
         @{ModuleName = 'Azs.Storage.Admin'; RequiredVersion = '0.2.2'; },
         @{ModuleName = 'Azs.Subscriptions'; RequiredVersion = '0.2.1'; },
-        @{ModuleName = 'Azs.Subscriptions.Admin'; RequiredVersion = '0.3.2'; },
+        @{ModuleName = 'Azs.Subscriptions.Admin'; RequiredVersion = '0.3.3'; },
         @{ModuleName = 'Azs.Update.Admin'; RequiredVersion = '0.2.2'; })
 
     # Assemblies that must be loaded prior to importing this module
@@ -121,23 +121,8 @@
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2019.04 - Version 1.7.1
-            * Supported with 1901 update
-            * This a breaking change release. For details on the breaking changes, refer to https://aka.ms/azspshmigration170
-            * Azs.Backup.Admin Module
-                * Breaking change: Backup changes to cert-based encryption mode. Support for symmetric keys is deprecated.
-            * Azs.Fabric.Admin Module
-                * Deprecation
-                    * Get-AzsInfrastructureVolume has been deprecated, we provide new cmdlet Get-AzsVolume
-                    * Get-AzsStorageSystem has been deprecated, we provide new cmdlet Get-AzsStorageSubSystem
-                    * Get-AzsStoragePool has been deprecated, the StorageSubSystem object has the capacity property
-			* Azs.Compute.Admin Module
-				* BugFix: Add-AzsPlatformImage, Get-AzsPlatformImage : Calling ConvertTo-PlatformImageObject only in the success path
-				* BugFix: Add-AzsVmExtension, Get-AzsVmExtension : Calling ConvertTo-VmExtensionObject only in the success path
-            * Azs.Storage.Admin Module 
-                * Bug fix - New Storage Quota uses defaults if none provided
-            * Module dependencies updated
-                * AzureRM.Resources.'
+            ReleaseNotes = '## 2019.05 - Version 1.7.2
+            * Azs.Subscriptions.Admin'
 
             # External dependent modules of this module
             # ExternalModuleDependencies = ''
