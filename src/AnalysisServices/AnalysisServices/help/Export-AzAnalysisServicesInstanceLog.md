@@ -13,7 +13,7 @@ Exports a log from an instance of Analysis Services server in the currently logg
 ## SYNTAX
 
 ```
-Export-AzAnalysisServicesInstanceLog -OutputPath <String> [-Force] -Instance <String> [-PassThru] [-WhatIf]
+Export-AzAnalysisServicesInstanceLog -OutputPath <String> [-Force] [-Instance] <String> [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -56,9 +56,9 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
