@@ -35,10 +35,10 @@ Clears the vulnerability assessment rule baseline.
 ### [Clear-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting](Clear-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting.md)
 Clears the vulnerability assessment settings of a managed database.
 
-### [Clear-AzSqlInstanceVulnerabilityAssessmentSettings](Clear-AzSqlInstanceVulnerabilityAssessmentSettings.md)
+### [Clear-AzSqlInstanceVulnerabilityAssessmentSetting](Clear-AzSqlInstanceVulnerabilityAssessmentSetting.md)
 Clears the vulnerability assessment settings of a managed instance.
 
-### [Clear-AzSqlServerVulnerabilityAssessmentSettings](Clear-AzSqlServerVulnerabilityAssessmentSettings.md)
+### [Clear-AzSqlServerVulnerabilityAssessmentSetting](Clear-AzSqlServerVulnerabilityAssessmentSetting.md)
 Clears the vulnerability assessment settings of a server.
 
 ### [Convert-AzSqlDatabaseVulnerabilityAssessmentScan](Convert-AzSqlDatabaseVulnerabilityAssessmentScan.md)
@@ -197,7 +197,7 @@ Gets all vulnerability assessment scan record(s) associated with a given managed
 ### [Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting](Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a managed database.
 
-### [Get-AzSqlInstanceVulnerabilityAssessmentSettings](Get-AzSqlInstanceVulnerabilityAssessmentSettings.md)
+### [Get-AzSqlInstanceVulnerabilityAssessmentSetting](Get-AzSqlInstanceVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a managed instance.
 
 ### [Get-AzSqlServer](Get-AzSqlServer.md)
@@ -251,7 +251,7 @@ Gets pricing tier hints for upgrading an Azure SQL Database server.
 ### [Get-AzSqlServerVirtualNetworkRule](Get-AzSqlServerVirtualNetworkRule.md)
 Gets or lists Azure SQL Server Virtual Network Rule.
 
-### [Get-AzSqlServerVulnerabilityAssessmentSettings](Get-AzSqlServerVulnerabilityAssessmentSettings.md)
+### [Get-AzSqlServerVulnerabilityAssessmentSetting](Get-AzSqlServerVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a server.
 
 ### [Get-AzSqlSyncAgent](Get-AzSqlSyncAgent.md)
@@ -554,10 +554,10 @@ Updates the vulnerability assessment settings of a database.
 ### [Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting](Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting.md)
 Updates the vulnerability assessment settings of a managed database.
 
-### [Update-AzSqlInstanceVulnerabilityAssessmentSettings](Update-AzSqlInstanceVulnerabilityAssessmentSettings.md)
+### [Update-AzSqlInstanceVulnerabilityAssessmentSetting](Update-AzSqlInstanceVulnerabilityAssessmentSetting.md)
 Updates the vulnerability assessment settings of a managed instance.
 
-### [Update-AzSqlServerVulnerabilityAssessmentSettings](Update-AzSqlServerVulnerabilityAssessmentSettings.md)
+### [Update-AzSqlServerVulnerabilityAssessmentSetting](Update-AzSqlServerVulnerabilityAssessmentSetting.md)
 Updates the vulnerability assessment settings of a server.
 
 ### [Update-AzSqlSyncGroup](Update-AzSqlSyncGroup.md)
