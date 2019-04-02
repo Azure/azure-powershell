@@ -1,4 +1,3 @@
-
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
