@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 backendPools: psFrontDoor.BackendPools?.Select(x => x.ToSdkBackendPool()).ToList(),
                 frontendEndpoints: psFrontDoor.FrontendEndpoints?.Select(x => x.ToSdkFrontendEndpoints()).ToList(),
                 enabledState: psFrontDoor.EnabledState.ToString(),
-                backendPoolsSettings: psFrontDoor.BackendPoolsSetting.ToSdkBackendPoolsSettings()
+                backendPoolsSettings: new SdkBackendPoolsSettings(psFrontDoor.EnforceCertificateNameCheck?.ToString())
                 );
         }
         public static PSFrontDoor ToPSFrontDoor(this SdkFrontDoor sdkFrontDoor)
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 EnabledState = sdkFrontDoor.EnabledState == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkFrontDoor.EnabledState),
                 ResourceState = sdkFrontDoor.ResourceState,
                 ProvisioningState = sdkFrontDoor.ProvisioningState,
-                BackendPoolsSetting = ToPSBackendPoolsSettings(sdkFrontDoor.BackendPoolsSettings)
+                EnforceCertificateNameCheck = (PSEnforceCertificateNameCheck)Enum.Parse(typeof(PSEnforceCertificateNameCheck), sdkFrontDoor.BackendPoolsSettings.EnforceCertificateNameCheck)
             };
         }
 
@@ -230,21 +230,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 loadBalancingSettings: new SdkRefId(psBackendPool.LoadBalancingSettingRef),
                 healthProbeSettings: new SdkRefId(psBackendPool.HealthProbeSettingRef),
                 name: psBackendPool.Name
-                );
-        }
-
-        public static PSBackendPoolsSetting ToPSBackendPoolsSettings(this SdkBackendPoolsSettings sdkBackendPoolsSettings)
-        {
-            return new PSBackendPoolsSetting
-            {
-                EnforceCertificateNameCheck = sdkBackendPoolsSettings?.EnforceCertificateNameCheck == null ? (PSEnforceCertificateNameCheck?)null : (PSEnforceCertificateNameCheck)Enum.Parse(typeof(PSEnforceCertificateNameCheck), sdkBackendPoolsSettings.EnforceCertificateNameCheck)
-            };
-        }
-
-        public static SdkBackendPoolsSettings ToSdkBackendPoolsSettings(this PSBackendPoolsSetting psBackendPoolsSettings)
-        {
-            return new SdkBackendPoolsSettings(
-                enforceCertificateNameCheck : psBackendPoolsSettings.EnforceCertificateNameCheck == null ? null : psBackendPoolsSettings.EnforceCertificateNameCheck.ToString()
                 );
         }
 

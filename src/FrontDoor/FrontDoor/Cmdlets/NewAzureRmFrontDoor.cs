@@ -90,10 +90,10 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         public PSEnabledState EnabledState { get; set; }
 
         /// <summary>
-        /// Settings that apply to all backend pools.
+        /// Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Settings that apply to all backend pools.")]
-        public PSBackendPoolsSetting BackendPoolsSetting { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
+        public SwitchParameter DisableCertificateNameCheck { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -119,7 +119,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                     backendPools: BackendPool?.Select(x => x.ToSdkBackendPool()).ToList(),
                     frontendEndpoints: FrontendEndpoint?.Select(x => x.ToSdkFrontendEndpoints()).ToList(),
                     enabledState: !this.IsParameterBound(c => c.EnabledState)? "Enabled" : EnabledState.ToString(),
-                    backendPoolsSettings : !this.IsParameterBound(c => c.BackendPoolsSetting) ? null : BackendPoolsSetting.ToSdkBackendPoolsSettings()
+                    backendPoolsSettings : new Management.FrontDoor.Models.BackendPoolsSettings(
+                        DisableCertificateNameCheck ? PSEnforceCertificateNameCheck.Disabled.ToString() : PSEnforceCertificateNameCheck.Enabled.ToString())
                     );
             updateParameters.ToPSFrontDoor().ValidateFrontDoor(ResourceGroupName, this.DefaultContext.Subscription.Id);
             if (ShouldProcess(Resources.FrontDoorTarget, string.Format(Resources.CreateFrontDoor, Name)))

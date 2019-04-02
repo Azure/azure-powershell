@@ -35,9 +35,6 @@ Create a PSBackend object
 ### [New-AzFrontDoorBackendPoolObject](New-AzFrontDoorBackendPoolObject.md)
 Create a PSBackendPool object for Front Door creation
 
-### [New-AzFrontDoorBackendPoolsSettingObject](New-AzFrontDoorBackendPoolsSettingObject.md)
-Create a PSBackendPoolsSettings object for Front Door creation that apply to all backend pools
-
 ### [New-AzFrontDoorCustomRuleObject](New-AzFrontDoorCustomRuleObject.md)
 Create CustomRule Object for WAF policy creation
 
