@@ -385,6 +385,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         /// <returns>the token</returns>
         private IAccessToken CreateOAuthToken()
         {
+            if (DefaultContext == null || DefaultContext.Account == null)
+            {
+                throw new InvalidOperationException(Resources.ContextCannotBeNull);
+            }
+
             IAccessToken accessToken = AzureSession.Instance.AuthenticationFactory.Authenticate(
                DefaultContext.Account,
                EnsureStorageOAuthAudienceSet(DefaultContext.Environment),

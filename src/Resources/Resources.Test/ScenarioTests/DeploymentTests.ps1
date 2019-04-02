@@ -80,7 +80,9 @@ function Test-NewDeploymentFromTemplateObject
 
         $path = (Get-Item ".\").FullName
         $file = Join-Path $path "sampleDeploymentTemplate.json"
-        $templateObject = ConvertFrom-Json ([System.IO.File]::ReadAllText($file)) -AsHashtable
+        $json = ConvertFrom-Json ([System.IO.File]::ReadAllText($file))
+        $templateObject = @{}
+        $json.PSObject.Properties | % { $templateObject[$_.Name] = $_.Value }
         $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateObject $templateObject -TemplateParameterFile sampleDeploymentTemplateParams.json
 
         # Assert
