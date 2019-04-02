@@ -245,7 +245,7 @@
     <Message Importance="high" Text="Running check in tests..." />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <PropertyGroup Condition="'$(Framework)' == ''">
-        <Framework>netcoreapp2.0</Framework>
+        <Framework>netcoreapp2.1</Framework>
     </PropertyGroup>
 
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
