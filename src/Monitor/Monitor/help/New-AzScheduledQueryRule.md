@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/new-azscheduledqueryrule
 schema: 2.0.0
 ---
 
@@ -16,7 +16,7 @@ Creates a Log Alert Rule (Scheduled Query Rule type)
 New-AzScheduledQueryRule -Source <PSScheduledQueryRuleSource> -Schedule <PSScheduledQueryRuleSchedule>
  -Action <PSScheduledQueryRuleAlertingAction> -Location <String> [-Description <String>] -RuleName <String>
  -Enabled <String> -ResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-Tags <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [<CommonParameters>]
+ [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -182,8 +182,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
-The duration in minutes for which alert should be throttled
+### -Tag
+Resource tags
 
 ```yaml
 Type: System.Collections.Generic.IDictionary`2[System.String,System.String]

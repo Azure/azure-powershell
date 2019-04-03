@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         [Parameter(ParameterSetName = ByRuleName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource tags")]
         [Parameter(ParameterSetName = ByInputObject, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource tags")]
         [Parameter(ParameterSetName = ByResourceId, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource tags")]
-        public IDictionary<string, string> Tags { get; set; }
+        public IDictionary<string, string> Tag { get; set; }
 
         //
         // Summary:
@@ -218,9 +218,9 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
                 requestBody.Schedule = this.Schedule;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("Tags") || this.Tags != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("Tags") || this.Tag != null)
             {
-                requestBody.Tags = this.Tags;
+                requestBody.Tags = this.Tag;
             }
 
             return requestBody;

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azscheduledqueryrule
 schema: 2.0.0
 ---
 
@@ -14,13 +14,13 @@ Gets Scheduled Query Resources
 
 ### BySubscriptionOrResourceGroup (Default)
 ```
-Get-AzScheduledQueryRule [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzScheduledQueryRule [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByRuleName
 ```
-Get-AzScheduledQueryRule [-ResourceGroupName] <String> [-RuleName] <String>
+Get-AzScheduledQueryRule -ResourceGroupName <String> -RuleName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
