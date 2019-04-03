@@ -102,6 +102,7 @@
   </Target>
 
   <Target Name="FilterBuild" Condition="$(PullRequestNumber) != ''">
+    <Message Importance="high" Text="Filtering projects and modules..." />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)/CreateFilterMappings.ps1&quot;" />
 
     <!-- Build the Microsoft.Azure.Build.Tasks project -->
@@ -116,19 +117,19 @@
     <FilterTask FilesChanged="@(FilesChanged)" MapFilePath="./ModuleMappings.json">
       <Output TaskParameter="Output" ItemName="ModulesChanged" />
     </FilterTask>
-    <Message Text="Filtering help generation and StaticAnalysis by the following modules:" />
-    <Message Text="%(ModulesChanged.Identity)" />
-    <Message Text="Total: @(ModulesChanged->Count())" />
-    <Message Text="" />
+    <Message Importance="high" Text="Filtering help generation and StaticAnalysis by the following modules:" />
+    <Message Importance="high" Text="%(ModulesChanged.Identity)" />
+    <Message Importance="high" Text="Total: @(ModulesChanged->Count())" />
+    <Message Importance="high" Text="" />
 
     <!-- Get the list of projects to build -->
     <FilterTask FilesChanged="@(FilesChanged)" MapFilePath="./CsprojMappings.json">
       <Output TaskParameter="Output" ItemName="ProjectsToBuild" />
     </FilterTask>
-    <Message Text="Filtering projects to build by the following:" />
-    <Message Text="%(ProjectsToBuild.Identity)" />
-    <Message Text="Total: @(ProjectsToBuild->Count())" />
-    <Message Text="" />
+    <Message Importance="high" Text="Filtering projects to build by the following:" />
+    <Message Importance="high" Text="%(ProjectsToBuild.Identity)" />
+    <Message Importance="high" Text="Total: @(ProjectsToBuild->Count())" />
+    <Message Importance="high" Text="" />
   </Target>
 
   <!-- Build all flavors of the Cmdlets -->
@@ -151,7 +152,8 @@
       <CsprojFiles Include="$(LibraryRoot)src/**/Authenticators.csproj" Condition="'$([MSBuild]::IsOsPlatform(&quot;Windows&quot;))' == 'true'" />
     </ItemGroup>
     <ItemGroup Condition="$(PullRequestNumber) != ''">
-      <CsprojFiles Include="%(ProjectsToBuild.Identity)" />
+      <CsprojFiles Include="%(ProjectsToBuild.Identity)" Exclude="$(LibraryRoot)src/**/Authenticators.csproj"/>
+      <CsprojFiles Include="$(LibraryRoot)src/**/Authenticators.csproj" Condition="'$([MSBuild]::IsOsPlatform(&quot;Windows&quot;))' == 'true'" />
     </ItemGroup>
     <!-- https://github.com/dotnet/cli/issues/6295#issuecomment-346973582 -->
     <Exec Command="dotnet sln $(RepoArtifacts)Azure.PowerShell.sln add &quot;%(CsprojFiles.FullPath)&quot;" />
