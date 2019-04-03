@@ -49,6 +49,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTestResourceGroupDeploymentErrors()
+        {
+            TestRunner.RunTestScript("Test-TestResourceGroupDeploymentErrors");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNestedDeploymentFromTemplateFile()
         {
             TestRunner.RunTestScript("Test-NestedDeploymentFromTemplateFile");
