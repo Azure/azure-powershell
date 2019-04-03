@@ -31,23 +31,23 @@ Remove-AzFrontDoorFireWallPolicy -ResourceId <String> [-PassThru] [-DefaultProfi
 ```
 
 ## DESCRIPTION
-The **Remove-AzFrontDoor** cmdlet removes a WAF policy under the current subscription
+The **Remove-AzFrontDoorFireWallPolicy** cmdlet removes a WAF policy under the current subscription
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzFrontDoorFireWallPolicy -Name $name -ResourceGroupName $resourceGroup
+PS C:\> Remove-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName
 ```
 
-Remove the WAF policy called $name in $resourceGroup.
+Remove the WAF policy called $policyName in $resourceGroupName.
 
 ### Example 2
 ```powershell
-PS C:\> Get--AzFrontDoorFireWallPolicy -ResourceGroupName $resourceGroup | Remove-AzFrontDoorFireWallPolicy
+PS C:\> Get-AzFrontDoorFireWallPolicy -ResourceGroupName $resourceGroupName | Remove-AzFrontDoorFireWallPolicy
 ```
 
-Remove all WAF policy in $resourceGroup.
+Remove all WAF policy in $resourceGroupName.
 
 ## PARAMETERS
 

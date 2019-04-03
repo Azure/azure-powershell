@@ -13,27 +13,24 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
+using System.Linq;
 using System.Management.Automation;
-using System.Net;
+using System.Text;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Helpers;
 using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.Azure.Commands.FrontDoor.Properties;
 using Microsoft.Azure.Management.FrontDoor;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.Linq;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.ResourceManager;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using SdkPolicy = Microsoft.Azure.Management.FrontDoor.Models.WebApplicationFirewallPolicy1;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using SdkPolicy = Microsoft.Azure.Management.FrontDoor.Models.WebApplicationFirewallPolicy;
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the Set-AzFrontDoorFireWallPolicy cmdlet.
+    /// Defines the Update-AzFrontDoorFireWallPolicy cmdlet.
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorFireWallPolicy", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSPolicy))]
-    public class SetAzureRmFrontDoorFireWallPolicy : AzureFrontDoorCmdletBase
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorFireWallPolicy", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSPolicy))]
+    public class UpdateAzureRmFrontDoorFireWallPolicy : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// The resource group to which the FireWallPolicy belongs.
@@ -87,7 +84,23 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "Managed rules inside the policy")]
         public PSManagedRule[] ManagedRule { get; set; }
 
+        /// <summary>
+        /// Redirect URL used for redirect actions
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Redirect URL")]
+        public string RedirectUrl { get; set; }
 
+        /// <summary>
+        /// Custom block response code used for block actions
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Custom Response Status Code")]
+        public int? CustomBlockResponseStatusCode { get; set; }
+
+        /// <summary>
+        /// Custom block response body used for block actions
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Custom Response Body")]
+        public string CustomBlockResponseBody { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -101,7 +114,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             {
                 ResourceIdentifier identifier = new ResourceIdentifier(ResourceId);
                 ResourceGroupName = identifier.ResourceGroupName;
-                Name = InputObject.Name;
+                Name = identifier.ResourceName;
             }
 
 
@@ -139,7 +152,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 
             if (this.IsParameterBound(c => c.Customrule))
             {
-                updateParameters.CustomRules = new Management.FrontDoor.Models.CustomRules
+                updateParameters.CustomRules = new Management.FrontDoor.Models.CustomRuleList()
                 {
                     Rules = Customrule.ToList().Select(x => x.ToSdkCustomRule()).ToList()
                 };
@@ -147,11 +160,27 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 
             if (this.IsParameterBound(c => c.ManagedRule))
             {
-                updateParameters.ManagedRules = new Management.FrontDoor.Models.ManagedRuleSets
+                updateParameters.ManagedRules = new Management.FrontDoor.Models.ManagedRuleSetList()
                 {
-                    RuleSets = ManagedRule.ToList().Select(x => x.ToSdkAzManagedRule()).ToList()
+                    ManagedRuleSets = ManagedRule.ToList().Select(x => x.ToSdkAzManagedRule()).ToList()
                 };
             }
+
+            if (this.IsParameterBound(c => c.CustomBlockResponseBody))
+            {
+                updateParameters.PolicySettings.CustomBlockResponseBody = CustomBlockResponseBody == null ? CustomBlockResponseBody : Convert.ToBase64String(Encoding.UTF8.GetBytes(CustomBlockResponseBody));
+            }
+
+            if (this.IsParameterBound(c => c.CustomBlockResponseStatusCode))
+            {
+                updateParameters.PolicySettings.CustomBlockResponseStatusCode = CustomBlockResponseStatusCode;
+            }
+
+            if (this.IsParameterBound(c => c.RedirectUrl))
+            {
+                updateParameters.PolicySettings.RedirectUrl = RedirectUrl;
+            }
+
             if (ShouldProcess(Resources.WebApplicationFirewallPolicyTarget, string.Format(Resources.WebApplicationFirewallPolicyChangeWarning, Name)))
             {
                 try

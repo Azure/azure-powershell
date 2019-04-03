@@ -1,108 +1,117 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/set-azfrontdoorfirewallpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/update-azfrontdoorfirewallpolicy
 schema: 2.0.0
 ---
 
-# Set-AzFrontDoorFireWallPolicy
+# Update-AzFrontDoorFireWallPolicy
 
 ## SYNOPSIS
-update WAF policy
+Update WAF policy
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Set-AzFrontDoorFireWallPolicy -ResourceGroupName <String> -Name <String> [-EnabledState <PSEnabledState>]
- [-Mode <PSMode>] [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>]
+Update-AzFrontDoorFireWallPolicy -ResourceGroupName <String> -Name <String> [-EnabledState <PSEnabledState>]
+ [-Mode <PSMode>] [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-RedirectUrl <String>]
+ [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Set-AzFrontDoorFireWallPolicy -InputObject <PSPolicy> [-EnabledState <PSEnabledState>] [-Mode <PSMode>]
- [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzFrontDoorFireWallPolicy -InputObject <PSPolicy> [-EnabledState <PSEnabledState>] [-Mode <PSMode>]
+ [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-RedirectUrl <String>]
+ [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Set-AzFrontDoorFireWallPolicy -ResourceId <String> [-EnabledState <PSEnabledState>] [-Mode <PSMode>]
- [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzFrontDoorFireWallPolicy -ResourceId <String> [-EnabledState <PSEnabledState>] [-Mode <PSMode>]
+ [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-RedirectUrl <String>]
+ [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzFrontDoor** cmdlet updates an existing WAF policy. If input parameters are not provided, old parameters from the existing WAF policy will be used.
+The **Update-AzFrontDoorFireWallPolicy** cmdlet updates an existing WAF policy. If input parameters are not provided, old parameters from the existing WAF policy will be used.
 
 ## EXAMPLES
 
-### Example 1: update an existing WAF policy
+### Example 1
 ```powershell
-PS C:\> Set-AzFrontDoorFireWallPolicy -Name $name -ResourceGroupName $resourceGroup -Customrule $customRule -ManagedRule $managedRule -EnabledState $enabledState -Mode $node
+PS C:\> Update-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName -CustomBlockResponseStatusCode 403
 
-PolicyMode         : Prevention
-PolicyEnabledState : Enabled
-CustomRules        : {Rule1}
-ManagedRules       : {Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule}
-Etag               :
-ProvisioningState  : Succeeded
-Tags               :
-Id                 : /subscriptions/{subid}/resourcegroups/{resourceGroupName}/providers/Micr
-                     osoft.Network/frontdoorwebapplicationfirewallpolicies/{Name}
-Name               : {Name}
-Type               :
+Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
+----         ---------- ------------------ ----------------------------- -----------
+{policyName} Prevention            Enabled                           403 https://www.bing.com/
 ```
 
-update an existing WAF policy
+Update an existing WAF policy custom status code.
 
-### Example 2: update an existing WAF policy
+### Example 2
 ```powershell
-PS C:\> Set-AzFrontDoorFireWallPolicy -InputObject $policy1 -Customrule $customRule -ManagedRule $managedRule -EnabledState $enabledState -Mode $mode
+PS C:\> Update-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Mode Detection
 
-PolicyMode         : Prevention
-PolicyEnabledState : Enabled
-CustomRules        : {Rule1}
-ManagedRules       : {Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule}
-Etag               :
-ProvisioningState  : Succeeded
-Tags               :
-Id                 : /subscriptions/{subid}/resourcegroups/{resourceGroupName}/providers/Micr
-                     osoft.Network/frontdoorwebapplicationfirewallpolicies/{Name}
-Name               : {Name}
-Type               :
+Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
+----         ---------- ------------------ ----------------------------- -----------
+{policyName} Detection            Enabled                           403 https://www.bing.com/
 ```
 
-update an existing WAF policy
+Update an existing WAF policy mode.
 
-### Example 3: update an existing WAF policy
+### Example 3
 ```powershell
-PS C:\> Set-AzFrontDoorFireWallPolicy -ResourceId $resourcdId -Customrule $customRule -ManagedRule $managedRule -EnabledState $enabledState -Mode $mode
+PS C:\> Update-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Mode Detection -EnabledState Disabled
 
-PolicyMode         : Prevention
-PolicyEnabledState : Enabled
-CustomRules        : {Rule1}
-ManagedRules       : {Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule}
-Etag               :
-ProvisioningState  : Succeeded
-Tags               :
-Id                 : /subscriptions/{subid}/resourcegroups/{resourceGroupName}/providers/Micr
-                     osoft.Network/frontdoorwebapplicationfirewallpolicies/{Name}
-Name               : {Name}
-Type               :
+Name          PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
+----          ---------- ------------------ ----------------------------- -----------
+{policyName}  Detection           Disabled                           403 https://www.bing.com/
 ```
 
-update an existing WAF policy
+Update an existing WAF policy enabled state and mode.
 
-### Example 4: update all WAF policies in $resourceGroup
+### Example 4
 ```powershell
-PS C:\> Get-AzFrontDoorFireWallPolicy -ResourceGroupName $resourceGroup | Set-AzFrontDoorFireWallPolicy -Customrule $customRule -ManagedRule $managedRule -EnabledState $enabledState -Mode $mode
+PS C:\> Get-AzFrontDoorFireWallPolicy -ResourceGroupName $resourceGroupName | Update-AzFrontDoorFireWallPolicy -Mode Detection -EnabledState Disabled
 ```
 
-update all WAF policies in $resourceGroup
+Update all WAF policies in $resourceGroupName
 
 ## PARAMETERS
+
+### -CustomBlockResponseBody
+Custom Response Body
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomBlockResponseStatusCode
+Custom Response Status Code
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Customrule
 Custom rules inside the policy
@@ -207,6 +216,21 @@ Parameter Sets: ByFieldsParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RedirectUrl
+Redirect URL
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
