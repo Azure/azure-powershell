@@ -12,22 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
-{ 
-    [DataContract]
-    public sealed class ClusterResolutionResult
+{
+    /// <summary>
+    /// Class to hold the endpoint format strings for dataplane cmdlets.
+    /// </summary>
+    class AsAzureEndpoints
     {
-        [DataMember(Name = "clusterFQDN")]
-        public string ClusterFQDN { get; set; }
+        public const string RestartEndpointPathFormat = "/webapi/servers/{0}/restart?api-version=2016-10-01";
+        public const string LogfileEndpointPathFormat = "/webapi/servers/{0}/logfile";
+        public const string SynchronizeEndpointPathFormat = "/servers/{0}/models/{1}/sync";
 
-        [DataMember(Name = "coreServerName")]
-        public string CoreServerName { get; set; }
+        public const string ClusterResolveEndpoint = "/webapi/clusterResolve";
 
-        [DataMember(Name = "tenantId")]
-        public string TenantId { get; set; }
+        public const string UriSchemeAsAzure = "asazure";
     }
 }
