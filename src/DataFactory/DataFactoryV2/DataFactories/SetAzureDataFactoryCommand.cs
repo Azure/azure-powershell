@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(
             ParameterSetName = ParameterSetNames.ByInputObjectFactoryRepoVstsConfig,
             Mandatory = false,
-            HelpMessage = Constants.HelpTagsForFactory)]
+            HelpMessage = Constants.HelpRepoConfigurationTenantId)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByFactoryNameFactoryRepoVstsConfig,
             Mandatory = false,
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(
             ParameterSetName = ParameterSetNames.ByInputObjectFactoryRepoGitConfig,
             Mandatory = true,
-            HelpMessage = Constants.HelpTagsForFactory)]
+            HelpMessage = Constants.HelpRepoConfigurationHostName)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByFactoryNameFactoryRepoGitConfig,
             Mandatory = true,
@@ -425,8 +425,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public override void ExecuteCmdlet()
         {
-            this.ByInputObject();
-            this.ByResourceId();
+            this.ValidateParameters();
 
             FactoryRepoConfiguration repoConfiguration = null;
             if (!string.IsNullOrWhiteSpace(this.ProjectName) || !string.IsNullOrWhiteSpace(this.TenantId))
@@ -468,17 +467,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             WriteObject(DataFactoryClient.CreatePSDataFactory(parameters));
         }
 
-        private void ByResourceId()
-        {
-            if (!string.IsNullOrWhiteSpace(ResourceId))
-            {
-                var parsedResourceId = new ResourceIdentifier(ResourceId);
-                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                this.Name = parsedResourceId.ResourceName;
-            }
-        }
-
-        private void ByInputObject()
+        private void ValidateParameters()
         {
             if (InputObject != null)
             {
@@ -509,6 +498,13 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                         }
                     }
                 }
+            }
+
+            if (!string.IsNullOrWhiteSpace(ResourceId))
+            {
+                var parsedResourceId = new ResourceIdentifier(ResourceId);
+                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+                this.Name = parsedResourceId.ResourceName;
             }
         }
     }
