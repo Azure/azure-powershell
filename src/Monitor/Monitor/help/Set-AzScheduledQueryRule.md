@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/set-azscheduledqueryrule
 schema: 2.0.0
 ---
 
 # Set-AzScheduledQueryRule
 
 ## SYNOPSIS
-Updates/creates a Log Alert Rule
+Updates a Log Alert Rule
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Set-AzScheduledQueryRule -ResourceId <String> -Source <PSScheduledQueryRuleSourc
 ```
 
 ## DESCRIPTION
-Updates/creates a Log Alert Rule by PUT semantics
+Updates a Log Alert Rule by PUT semantics
 
 ## EXAMPLES
 

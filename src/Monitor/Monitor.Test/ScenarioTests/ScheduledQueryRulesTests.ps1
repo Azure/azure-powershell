@@ -101,9 +101,9 @@ function Test-NewGetUpdateSetRemoveScheduledQueryRule
 
 		$schedule = New-AzScheduledQueryRuleSchedule -FrequencyInMinutes $frequencyInMin -TimeWindowInMinutes $timeWindowInMin
 
-		$source = New-AzScheduledQueryRuleSource -Query $query -DataSourceId $dataSourceId -AuthorizedResources $authorizedResources -QueryType $queryType
+		$source = New-AzScheduledQueryRuleSource -Query $query -DataSourceId $dataSourceId -AuthorizedResource $authorizedResources -QueryType $queryType
 
-		$scheduledQueryRule = New-AzScheduledQueryRule -Location $location -RuleName $ruleName -ResourceGroupName $resourceGroupName -Action $alertingAction -Source $source -Enabled $enabled -Description $description -Schedule $schedule -Tags $tags
+		$scheduledQueryRule = New-AzScheduledQueryRule -Location $location -RuleName $ruleName -ResourceGroupName $resourceGroupName -Action $alertingAction -Source $source -Enabled $enabled -Description $description -Schedule $schedule -Tag $tags
 
         Verify-ScheduledQueryRule $scheduledQueryRule
 				
@@ -127,15 +127,15 @@ function Test-NewGetUpdateSetRemoveScheduledQueryRule
 		# testing Set-* cmdlet with same parameters as they were setup, as it is similar to New-*
 
 		Write-Verbose " ****** Updating Scheduled Query Rule by name (PUT semantics)"
-		$updated = Set-AzScheduledQueryRule -Location $location -RuleName $ruleName -ResourceGroupName $resourceGroupName -Action $alertingAction -Source $source -Enabled "true" -Description $description -Schedule $schedule -Tags $tags
+		$updated = Set-AzScheduledQueryRule -Location $location -RuleName $ruleName -ResourceGroupName $resourceGroupName -Action $alertingAction -Source $source -Enabled "true" -Description $description -Schedule $schedule -Tag $tags
 		Verify-ScheduledQueryRule $scheduledQueryRule
 
 		Write-Verbose " ****** Updating Scheduled Query Rule by resource Id (PUT semantics)"
-		$updated = Set-AzScheduledQueryRule -ResourceId $scheduledQueryRule.Id -Location $location -Action $alertingAction -Source $source -Enabled "true" -Description $description -Schedule $schedule -Tags $tags
+		$updated = Set-AzScheduledQueryRule -ResourceId $scheduledQueryRule.Id -Location $location -Action $alertingAction -Source $source -Enabled "true" -Description $description -Schedule $schedule -Tag $tags
 		Verify-ScheduledQueryRule $scheduledQueryRule
 
 		Write-Verbose " ****** Updating Scheduled Query Rule by InputObject (PUT semantics)"
-		$updated = Set-AzScheduledQueryRule -InputObject $scheduledQueryRule -Location $location -Action $alertingAction -Source $source -Enabled "true" -Description $description -Schedule $schedule -Tags $tags
+		$updated = Set-AzScheduledQueryRule -InputObject $scheduledQueryRule -Location $location -Action $alertingAction -Source $source -Enabled "true" -Description $description -Schedule $schedule -Tag $tags
 		Verify-ScheduledQueryRule $scheduledQueryRule
 
 		Write-Verbose " ****** Updating Scheduled Query Rule by name (PATCH semantics)"
@@ -196,7 +196,7 @@ function Test-PipingRemoveSetUpdateScheduledQueryRule
 
 		$source = New-AzScheduledQueryRuleSource -Query $query -DataSourceId $dataSourceId -AuthorizedResources $authorizedResources -QueryType $queryType
 
-		$scheduledQueryRule = New-AzScheduledQueryRule -Location $location -RuleName $ruleName -ResourceGroupName $resourceGroupName -Action $alertingAction -Source $source -Enabled $enabled -Description $description -Schedule $schedule -Tags $tags
+		$scheduledQueryRule = New-AzScheduledQueryRule -Location $location -RuleName $ruleName -ResourceGroupName $resourceGroupName -Action $alertingAction -Source $source -Enabled $enabled -Description $description -Schedule $schedule -Tag $tags
 
         Verify-ScheduledQueryRule $scheduledQueryRule
         $resourceId = $scheduledQueryRule.Id

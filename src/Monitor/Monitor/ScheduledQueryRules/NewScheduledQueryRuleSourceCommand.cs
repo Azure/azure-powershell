@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         public string Query { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The list of authorized resources for this alert")]
-        public List<string> AuthorizedResources { get; set; }
+        public List<string> AuthorizedResource { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The data source on which this alert is created")]
         [ValidateNotNullOrEmpty]
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         #endregion
         protected override void ProcessRecordInternal()
         {
-            Source source = new Source(Query, DataSourceId, AuthorizedResources, QueryType);
+            Source source = new Source(Query, DataSourceId, AuthorizedResource, QueryType);
             source.Validate();
             WriteObject(new PSScheduledQueryRuleSource(source));
         }

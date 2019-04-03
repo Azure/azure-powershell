@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
             cmdlet.Description = "A Log Search Alert";
 
             Dictionary<string, string> tags = new Dictionary<string, string>{ {"key", "value"} };
-            cmdlet.Tags = tags;
+            cmdlet.Tag = tags;
             cmdlet.Enabled = "true";
 
             ScheduledQueryRuleAznsAction aznsAction = new ScheduledQueryRuleAznsAction(new AzNsActionGroup(new List<string>{"AG1", "AG2"}, "Email Subject for Log Search Alert", "custom webhook payload"));

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/new-azscheduledqueryrulesource
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Creates an object of type Source
 
 ```
 New-AzScheduledQueryRuleSource -Query <String>
- [-AuthorizedResources <System.Collections.Generic.List`1[System.String]>] -DataSourceId <String>
+ [-AuthorizedResource <System.Collections.Generic.List`1[System.String]>] -DataSourceId <String>
  [-QueryType <String>] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ PS C:\> $source = New-AzScheduledQueryRuleSource -Query "Heartbeat | summarize A
 
 ## PARAMETERS
 
-### -AuthorizedResources
+### -AuthorizedResource
 The list of authorized resources for this alert
 
 ```yaml

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
     /// <summary>
     /// Create a ScheduledQueryRule Source object
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRule"), OutputType(typeof(PSScheduledQueryRuleResource))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRule", SupportsShouldProcess = true), OutputType(typeof(PSScheduledQueryRuleResource))]
     public class NewScheduledQueryRuleCommand : ManagementCmdletBase
     {
 
@@ -74,8 +74,8 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         //
         // Summary:
         //     Resource tags
-        [Parameter(Mandatory = false, HelpMessage = "The duration in minutes for which alert should be throttled")]
-        public IDictionary<string, string> Tags;
+        [Parameter(Mandatory = false, HelpMessage = "Resource tags")]
+        public IDictionary<string, string> Tag;
 
         //
         // Summary:
@@ -104,15 +104,20 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
                 var alertingAction = new AlertingAction(severity: Action.Severity, aznsAction: Action.AznsAction, trigger: Action.Trigger, throttlingInMin: Action.ThrottlingInMin);
 
                 var parameters = new LogSearchRuleResource(location: Location, source: Source, schedule: Schedule,
-                    action:alertingAction, tags: Tags, description: Description, enabled: Enabled);
+                    action:alertingAction, tags: Tag, description: Description, enabled: Enabled);
 
                 parameters.Validate();
+                if (this.ShouldProcess(this.RuleName,
+                    string.Format("Creating Log Alert Rule '{0}' in resource group {0}", this.RuleName,
+                    this.ResourceGroupName)))
+                {
 
-                var result = this.MonitorManagementClient.ScheduledQueryRules
+                    var result = this.MonitorManagementClient.ScheduledQueryRules
                     .CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: ResourceGroupName, ruleName: RuleName,
                         parameters: parameters).Result;
 
-                WriteObject(new PSScheduledQueryRuleResource(result.Body));
+                    WriteObject(new PSScheduledQueryRuleResource(result.Body));
+                }
             }
             catch (Exception ex)
             {
