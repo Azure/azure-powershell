@@ -135,7 +135,7 @@ function Create-SolutionToProjectMappings
 }
 
 <#
-Parses a solution file to find the projects it is composed of (excluding test and common projects).
+Parses a solution file to find the projects it is composed of (excluding common projects).
 #>
 function Add-ProjectDependencies
 {
@@ -148,9 +148,11 @@ function Add-ProjectDependencies
         [string]$SolutionPath
     )
 
+    $CommonProjectsToIgnore = @( "Accounts", "Authentication", "Authentication.ResourceManager", "Authenticators", "ScenarioTest.ResourceManager", "TestFx", "Tests" )
+
     $ProjectDependencies = @()
     $Content = Get-Content -Path $SolutionPath
-    $Content | Select-String -Pattern "`"[a-zA-Z.]*`"" | ForEach-Object { $_.Matches[0].Value.Trim('"') } | Where-Object { $_ -notlike "*Test*" -and $_ -notlike "*Common*" } | Where-Object { $ProjectDependencies += $_ }
+    $Content | Select-String -Pattern "`"[a-zA-Z.]*`"" | ForEach-Object { $_.Matches[0].Value.Trim('"') } | Where-Object { $CommonProjectsToIgnore -notcontains $_ } | Where-Object { $ProjectDependencies += $_ }
     $Mappings[$SolutionPath] = $ProjectDependencies
     return $Mappings
 }
@@ -259,7 +261,7 @@ function Add-CsprojMappings
 
     $Key = Create-Key -FilePath $ServiceFolderPath
 
-    $CsprojFiles = Get-ChildItem -Path $ServiceFolderPath -Filter "*.csproj" -Recurse | Where-Object { $_.FullName -notlike "*Stack*" -and $_.FullName -notlike "*.Test*" }
+    $CsprojFiles = Get-ChildItem -Path $ServiceFolderPath -Filter "*.csproj" -Recurse
     if ($null -ne $CsprojFiles)
     {
         $Values = New-Object System.Collections.Generic.HashSet[string]
@@ -271,7 +273,6 @@ function Add-CsprojMappings
                 foreach ($ReferencedProject in $Script:SolutionToProjectMappings[$Solution])
                 {
                     $Values.Add($Script:ProjectToFullPathMappings[$ReferencedProject]) | Out-Null
-
                 }
             }
         }

@@ -152,7 +152,9 @@
       <CsprojFiles Include="$(LibraryRoot)src/**/Authenticators.csproj" Condition="'$([MSBuild]::IsOsPlatform(&quot;Windows&quot;))' == 'true'" />
     </ItemGroup>
     <ItemGroup Condition="$(PullRequestNumber) != ''">
-      <CsprojFiles Include="%(ProjectsToBuild.Identity)" Exclude="$(LibraryRoot)src/**/Authenticators.csproj"/>
+      <!-- Always build and test common code -->
+      <CsprojFiles Include="$(LibraryRoot)src/Accounts/**/.csproj;$(LibraryRoot)tools/TestFx/TestFx.csproj" Exclude="$(LibraryRoot)src/**/Authenticators.csproj" />
+      <CsprojFiles Include="%(ProjectsToBuild.Identity)" />
       <CsprojFiles Include="$(LibraryRoot)src/**/Authenticators.csproj" Condition="'$([MSBuild]::IsOsPlatform(&quot;Windows&quot;))' == 'true'" />
     </ItemGroup>
     <!-- https://github.com/dotnet/cli/issues/6295#issuecomment-346973582 -->
