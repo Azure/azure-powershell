@@ -31,7 +31,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     RootModule           = 'Azs.Backup.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion        = '0.3.0'
+    ModuleVersion        = '0.3.1'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -71,7 +71,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 
     # Modules that must be imported into the global environment prior to importing this module
     RequiredModules      = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.8.3'; },
-        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.3'; })
+        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.4.3'; })
 
     # Assemblies that must be loaded prior to importing this module
     RequiredAssemblies = @('.\ref\fullclr\Microsoft.AzureStack.Management.Backup.Admin.dll')
@@ -131,14 +131,9 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2019.MM.DD
-            * Breaking change: Backup changes to cert-based encryption mode. Support for symmetric keys is deprecated.
-                * Set-AzsBackupConfiguration now accepts parameter EncryptionCertPath instead of EncryptionKey:
-                    Before: Set-AzsBackupConfiguration -EncryptionKey $symmetricKey
-                    After: Set-AzsBackupConfiguration -EncryptionCertPath $pathToEncryptionCert
-                * Restore-AzsBackup now requires parameter DecryptionCertPath and DecryptionCertPassword:
-                    Before: Restore-AzsBackup -Name $backupResourceName
-                    After: Restore-AzsBackup -Name $backupResourceName -DecryptionCertPath $decryptionCertPath -DecryptionCertPassword $decryptionCertPassword
+            ReleaseNotes = '## 2019.05
+            * Module Dependencies Updated 
+                * AzureRM.Resources
             '
 
         } # End of PSData hashtable

@@ -118,17 +118,12 @@
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2019.01
+            ReleaseNotes = '## 2019.04
             * AzureRm.Resources
-                * Bug fix in Get-AzureRmResource to query case insensitively by resource type
-            * Azure.Storage
-                * AzureRm rollup module now includes the already published version 4.5.0 supporting the api-version 2017-07-29
-            * AzureRm.Storage
-                * AzureRm rollup module now includes the already published version 5.0.4 supporting the api-version 2017-10-01
+                * New Resources module supporting 2018-05-01 api version with 2019-03-01-hybrid profile
+                * PolicyDefinition(2016-12-01) and PolicyAssisgment(2017-06-01-preview) operations are still with old api versions
             * AzureRm.Compute
-                * Added simple parameter sets in New-AzureRMVM and NewAzureRMVMSS, -ImageName parameter supports specifying user images.
-            *AzureRm.Insights
-                * AzureRm rollup module now includes the already published version 5.1.5 supporting the api-version 2018-01-01 for metrics/metric definitions resource types'
+                * New compute module supporting 2017-12-01 api version.'
 
             # External dependent modules of this module
             # ExternalModuleDependencies = ''
