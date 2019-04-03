@@ -1,9 +1,22 @@
-﻿using Microsoft.Azure.Management.Monitor.Models;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
@@ -13,7 +26,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             :base(location: metricAlertResource.Location, description: metricAlertResource.Description, severity: metricAlertResource.Severity, enabled: metricAlertResource.Enabled,evaluationFrequency: metricAlertResource.EvaluationFrequency,windowSize: metricAlertResource.WindowSize, criteria: metricAlertResource.Criteria,id: metricAlertResource.Id, name: metricAlertResource.Name, type: metricAlertResource.Type,tags: metricAlertResource.Tags, scopes: metricAlertResource.Scopes, autoMitigate: metricAlertResource.AutoMitigate, actions: metricAlertResource.Actions, lastUpdatedTime: metricAlertResource.LastUpdatedTime, targetResourceRegion: metricAlertResource.TargetResourceRegion, targetResourceType: metricAlertResource.TargetResourceType)
         {
             Criteria = new List<PSMetricCriteria>();
-            if (metricAlertResource.Criteria.GetType() == typeof(MetricAlertSingleResourceMultipleMetricCriteria))
+            if (metricAlertResource.Criteria is MetricAlertSingleResourceMultipleMetricCriteria)
             {
                 var criteria = metricAlertResource.Criteria as MetricAlertSingleResourceMultipleMetricCriteria;
                 foreach(var condition in criteria.AllOf)
@@ -21,7 +34,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                     Criteria.Add(new PSMetricCriteria(condition));
                 }
             }
-            else if(metricAlertResource.Criteria.GetType() == typeof(MetricAlertMultipleResourceMultipleMetricCriteria))
+            else if(metricAlertResource.Criteria is MetricAlertMultipleResourceMultipleMetricCriteria)
             {
                 var criteria = metricAlertResource.Criteria as MetricAlertMultipleResourceMultipleMetricCriteria;
                 foreach(var condition in criteria.AllOf)
@@ -41,8 +54,8 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 Actions[i] = new ActivityLogAlertActionGroup(metricAlertResource.Actions[i].ActionGroupId, metricAlertResource.Actions[i].WebhookProperties);
             }
 
-            // /subscriptions/{subs}/resourceGroups/{Rg}/providers/Microsoft.Insights/metricAlerts/{RuleName}
-            ResourceGroup = metricAlertResource.Id.Split('/')[4];
+            var resourceIdentifier = new ResourceIdentifier(metricAlertResource.Id);
+            ResourceGroup = resourceIdentifier.ResourceGroupName;
         }
 
         /// <summary>

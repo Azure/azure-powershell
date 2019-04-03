@@ -39,10 +39,10 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         public string MetricName { get; set; }
 
         /// <summary>
-        /// Gets or sets MetricNameSpace  parameter of the cmdlet
+        /// Gets or sets MetricNamespace  parameter of the cmdlet
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The Namespace of the metric")]
-        public String MetricNameSpace { get; set; }
+        public String MetricNamespace { get; set; }
 
         /// <summary>
         /// Gets or sets Dimensions of the cmdlet
@@ -84,16 +84,16 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         public String Sensitivity { get; set; }
 
         /// <summary>
-        /// Gets or sets the rule FailingPeriods
+        /// Gets or sets the rule FailingPeriod
         /// </summary>
-        [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = false, HelpMessage = "The Failing Periods for rule condition")]
-        public int FailingPeriods { get; set; }
+        [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = false, HelpMessage = "The Failing Period for rule condition")]
+        public int FailingPeriod { get; set; }
 
         /// <summary>
-        /// Gets or sets the rule TotalPeriods
+        /// Gets or sets the rule TotalPeriod
         /// </summary>
-        [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = false,  HelpMessage = "The Total Periods for rule condition")]
-        public int TotalPeriods { get; set; }
+        [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = false,  HelpMessage = "The Total Period for rule condition")]
+        public int TotalPeriod { get; set; }
 
         /// <summary>
         /// Gets or set IgnoreDataBefore  parameter
@@ -125,13 +125,13 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                 {
                     metricDimensions = null;
                 }
-                MetricCriteria metricCriteria = new MetricCriteria(name: "metric1", metricName: this.MetricName, operatorProperty: this.Operator, timeAggregation: this.TimeAggregation, threshold: this.Threshold, metricNamespace: this.MetricNameSpace, dimensions: metricDimensions);
+                MetricCriteria metricCriteria = new MetricCriteria(name: "metric1", metricName: this.MetricName, operatorProperty: this.Operator, timeAggregation: this.TimeAggregation, threshold: this.Threshold, metricNamespace: this.MetricNamespace, dimensions: metricDimensions);
                 PSMetricCriteria result = new PSMetricCriteria(metricCriteria);
                 WriteObject(sendToPipeline: result);
             }
             else
             {
-                WriteObject("Creating criteria for Dynamic Threshold is not yet supported");
+                WriteExceptionError(new Exception("Creating criteria for Dynamic Threshold is not yet supported"));
             }
         }
     }

@@ -12,19 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Monitor.Models;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
-    public class PSMetricCriteria : MetricCriteria
+    public class PSMetricAlertRuleV2SingleResource : PSMetricAlertRuleV2
     {
-        /// <summary>
-        /// Initializes a new instance of the PSMetricCriteria class.
-        /// </summary>
-        /// <param name="metricCriteria">The input MetricCriteria object</param>
-        public PSMetricCriteria(MetricCriteria metricCriteria)
-            :base(name: metricCriteria.Name, metricName: metricCriteria.MetricName, operatorProperty: metricCriteria.OperatorProperty, timeAggregation: metricCriteria.TimeAggregation, threshold: metricCriteria.Threshold, metricNamespace: metricCriteria.MetricNamespace, dimensions: metricCriteria.Dimensions)
+        public PSMetricAlertRuleV2SingleResource(MetricAlertResource metricAlertResource)
+            : base(metricAlertResource)
         {
+            if (metricAlertResource.Criteria is MetricAlertSingleResourceMultipleMetricCriteria)
+            {
+                this.TargetResourceId = metricAlertResource.Scopes[0];
+            }
         }
+
+        [JsonProperty(PropertyName = "targetResourceId")]
+        public String TargetResourceId { get; set; }
     }
 }

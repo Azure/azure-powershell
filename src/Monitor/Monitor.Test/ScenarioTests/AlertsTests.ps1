@@ -216,17 +216,33 @@ Tests getting the alert rules associated to a resource group.
 function Test-GetAzureRmMetricAlertRuleV2
 {
     # Setup
-    $rgname = 'gd-test-ResourceGroup'
+	$sub = Get-AzContext
+    $subscription = $sub.subscription.subscriptionId
+	$rgname = Get-ResourceGroupName
+	$location =Get-ProviderLocation ResourceManagement
+	$resourceName = Get-ResourceName
+	$ruleName = Get-ResourceName
+	$targetResourceId = '/subscriptions/'+$subscription+'/resourceGroups/'+$rgname+'/providers/Microsoft.Network/publicIPAddresses/'+$resourceName
+	New-AzResourceGroup -Name $rgname -Location $location -Force
+	New-AzResource -ResourceId $targetResourceId -location $location -Force
+	$email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
+	$NewActionGroup =  Set-AzureRmActionGroup -Name 'PS-Test-ActionGroup' -ResourceGroup $rgname -ShortName ASTG -Receiver $email
+	$actionGroup = New-AzActionGroup -ActionGroupId $NewActionGroup.Id
+	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "PacketsInDDoS" -Operator GreaterThan -Threshold 8 -TimeAggregation Total
+	Add-AzMetricAlertRuleV2 -Name $ruleName -ResourceGroupName $rgname -WindowSize 00:05:00 -Frequency 00:05:00 -TargetResourceId $targetResourceId -Condition $condition -ActionGroup $actionGroup -Severity 3 
 
     try
     {
-        $actual = Get-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name '2112019'
+        $actual = Get-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name $ruleName
 		Assert-NotNull $actual
     }
     finally
     {
         # Cleanup
-        # No cleanup needed for now
+        Remove-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name $ruleName
+		Remove-AzActionGroup -ResourceGroupName $rgname -Name 'PS-Test-ActionGroup'
+		Remove-AzResource -ResourceId $targetResourceId -Force
+		Remove-AzResourceGroup -Name $rgname -Force
     }
 }
 
@@ -236,12 +252,14 @@ Tests creation of Dimension.
 #>
 function Test-NewAzureRmMetricAlertRuleV2DimensionSelection
 {
+	#Setup
+	$DimensionName = Get-ResourceName
 
     try
     {
-        $actual = New-AzMetricAlertRuleV2DimensionSelection -DimensionName 'Run location' -ValuesToInclude 1,2,3
+        $actual = New-AzMetricAlertRuleV2DimensionSelection -DimensionName $DimensionName -ValuesToInclude 1,2,3
 		Assert-NotNull $actual
-		Assert-AreEqual $actual.Dimension 'Run location'
+		Assert-AreEqual $actual.Dimension $DimensionName
     }
     finally
     {
@@ -279,16 +297,32 @@ Tests removing a GenV2 metric alert rule.
 function Test-RemoveAzureRmAlertRuleV2
 {
     # Setup
-    $rgname = 'gd-test-ResourceGroup'
-
+	$sub = Get-AzContext
+    $subscription = $sub.subscription.subscriptionId
+	$rgname = Get-ResourceGroupName
+	$location =Get-ProviderLocation ResourceManagement
+	$resourceName = Get-ResourceName
+	$ruleName = Get-ResourceName
+	$targetResourceId = '/subscriptions/'+$subscription+'/resourceGroups/'+$rgname+'/providers/Microsoft.Network/publicIPAddresses/'+$resourceName
+	New-AzResourceGroup -Name $rgname -Location $location -Force
+	New-AzResource -ResourceId $targetResourceId -location $location -Force
+	$email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
+	$NewActionGroup =  Set-AzureRmActionGroup -Name 'PS-Test-ActionGroup' -ResourceGroup $rgname -ShortName ASTG -Receiver $email
+	$actionGroup = New-AzActionGroup -ActionGroupId $NewActionGroup.Id
+	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "PacketsInDDoS" -Operator GreaterThan -Threshold 8 -TimeAggregation Total
+	Add-AzMetricAlertRuleV2 -Name $ruleName -ResourceGroupName $rgname -WindowSize 00:05:00 -Frequency 00:05:00 -TargetResourceId $targetResourceId -Condition $condition -ActionGroup $actionGroup -Severity 3 
     try
     {
-		Remove-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name 'temp'
+		$job = Remove-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name $ruleName -AsJob
+		$job|Wait-Job
+		$actual = $job | Receive-Job
     }
     finally
     {
         # Cleanup
-        # No cleanup needed for now
+      Remove-AzActionGroup -ResourceGroupName $rgname -Name 'PS-Test-ActionGroup'
+	  Remove-AzResource -ResourceId $targetResourceId -Force
+	  Remove-AzResourceGroup -Name $rgname -Force
     }
 }
 
@@ -299,18 +333,31 @@ Tests adding a GenV2 metric alert rule.
 function Test-AddAzureRmMetricAlertRuleV2
 {
 	#Setup
-	$scope = "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/gd-test-ResourceGroup/providers/Microsoft.Compute/virtualMachines/gd-mr-vm1","/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/gd-rg-test-2/providers/Microsoft.Compute/virtualMachines/gd-mr-vm2","/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/alertstest/providers/Microsoft.Compute/virtualMachines/sr-mr-vm1"
-	$condition = New-AzMetricAlertRuleV2Criteria -MetricName 'Percentage CPU' -TimeAggregation Total -Operator GreaterThan -Threshold 2
-	$actionGroup = New-AzActionGroup -ActionGroupID '/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourcegroups/default-activitylogalerts/providers/microsoft.insights/actiongroups/anashah'
+	$sub = Get-AzContext
+    $subscription = $sub.subscription.subscriptionId
+	$rgname = Get-ResourceGroupName
+	$location =Get-ProviderLocation ResourceManagement
+	$resourceName = Get-ResourceName
+	$ruleName = Get-ResourceName
+	$targetResourceId = '/subscriptions/'+$subscription+'/resourceGroups/'+$rgname+'/providers/Microsoft.Network/publicIPAddresses/'+$resourceName
+	New-AzResourceGroup -Name $rgname -Location $location -Force
+	New-AzResource -ResourceId $targetResourceId -location $location -Force
+	$email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
+	$NewActionGroup =  Set-AzureRmActionGroup -Name 'PS-Test-ActionGroup' -ResourceGroup $rgname -ShortName ASTG -Receiver $email
+	$actionGroup = New-AzActionGroup -ActionGroupId $NewActionGroup.Id
+	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "PacketsInDDoS" -Operator GreaterThan -Threshold 8 -TimeAggregation Total
     try
     {
         # Test
-        $actual = Add-AzMetricAlertRuleV2 -Name 'GenV2MetricAlertRule' -ResourceGroupName 'gd-test-ResourceGroup' -WindowSize 00:05:00 -Frequency 00:05:00 -TargetResourceScope $scope -TargetResourceType 'Microsoft.Compute/virtualMachines' -TargetResourceRegion 'southcentralus' -Condition $condition -ActionGroup $actionGroup -Severity 3
+        $actual = Add-AzMetricAlertRuleV2 -Name $ruleName -ResourceGroupName $rgname -WindowSize 00:05:00 -Frequency 00:05:00 -TargetResourceId $targetResourceId -Condition $condition -ActionGroup $actionGroup -Severity 3 
 
     }
     finally
     {
         # Cleanup
-        # No cleanup needed for now
+        Remove-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name $ruleName
+		Remove-AzActionGroup -ResourceGroupName $rgname -Name 'PS-Test-ActionGroup'
+		Remove-AzResource -ResourceId $targetResourceId -Force
+		Remove-AzResourceGroup -Name $rgname -Force
     }
 }

@@ -14,16 +14,17 @@
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
-using System.Net;
 
 namespace Microsoft.Azure.Commands.Insights.Alerts
 {
     /// <summary>
     /// Remove GenV2 metric alert rule
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2", SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmMetricAlertRuleV2Command : ManagementCmdletBase
     {
         const string ByMetricRuleResourceName = "ByMetricRuleResourceName";
@@ -60,51 +61,37 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         [Parameter(ParameterSetName = ByRuleObject,Mandatory = true,ValueFromPipeline =true,HelpMessage ="The Metric rule object")]
         public PSMetricAlertRuleV2 InputObject { get; set; }
 
-        [Parameter(Mandatory = false)]
+        /// <summary>
+        /// Gets or sets the PassThru switch parameter to force return an object when removing the alert rule.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Return true upon successful deletion.")]
         public SwitchParameter PassThru { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         protected override void ProcessRecordInternal()
         {
-            var ResourceGroupName = "";
-            var Name = "";
-            if (String.IsNullOrWhiteSpace(this.ResourceId) && String.IsNullOrWhiteSpace(this.ResourceGroupName))
+            if (this.IsParameterBound(c => c.InputObject))
             {
-                ResourceGroupName = this.InputObject.ResourceGroup;
-                Name = this.InputObject.Name;
+                this.ResourceGroupName = this.InputObject.ResourceGroup;
+                this.Name = this.InputObject.Name;
             }
-            else if (String.IsNullOrWhiteSpace(this.ResourceId))
+            if(this.IsParameterBound(c => c.ResourceId))
             {
-                ResourceGroupName = this.ResourceGroupName;
-                Name = this.Name;
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.Name = resourceIdentifier.ResourceName;
             }
-            else
-            {
-                try
-                {
-                    //"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/metricAlerts/{ruleName}";
-                    string[] array = this.ResourceId.Split('/');
-                    ResourceGroupName = array[4];
-                    Name = array[8];
-                }
-                catch(Exception)
-                {
-                    throw new PSArgumentException("Invalid ResourceID");
-                }
-
-            }
+            
             if (ShouldProcess(
                 target: string.Format("Remove an alert rule: {0} from resource group: {1}", Name, ResourceGroupName),
                 action: "Remove an alert rule"))
             {
                 var result = this.MonitorManagementClient.MetricAlerts.DeleteWithHttpMessagesAsync(resourceGroupName: ResourceGroupName, ruleName: Name).Result;
-                var response = new AzureOperationResponse()
+                if (this.PassThru.IsPresent)
                 {
-                    RequestId = result.RequestId,
-                    StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK
-                };
-                if (this.PassThru)
-                {
-                    WriteObject(response);
+                    WriteObject(true);
                 }
             }
         }

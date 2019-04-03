@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -29,6 +30,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
     public sealed class TestsController : RMTestBase
     {
         private readonly EnvironmentSetupHelper _helper;
+
+        public ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public IMonitorManagementClient MonitorManagementClient { get; private set; }
 
@@ -84,7 +87,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath("AzureRM.Monitor.psd1"),
                     "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    "AzureRM.Resources.ps1");
 
                 try
                 {
@@ -114,14 +118,22 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
                 string subId = Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION");
                 RestTestFramework.TestEnvironment environment = new RestTestFramework.TestEnvironment(connectionString: subId);
                 this.MonitorManagementClient = this.GetInsightsManagementClient(context: context, env: environment);
+                ResourceManagementClient = this.GetResourceManagementClient(context: context, env: environment);
             }
             else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
                 this.MonitorManagementClient = this.GetInsightsManagementClient(context: context, env: null);
+                ResourceManagementClient = this.GetResourceManagementClient(context: context, env: null);
             }
 
             _helper.SetupManagementClients(
+                ResourceManagementClient,
                 this.MonitorManagementClient);
+        }
+
+        private ResourceManagementClient GetResourceManagementClient(RestTestFramework.MockContext context, RestTestFramework.TestEnvironment env)
+        {
+            return context.GetServiceClient<ResourceManagementClient>(currentEnvironment:env);
         }
 
         private IMonitorManagementClient GetInsightsManagementClient(RestTestFramework.MockContext context, RestTestFramework.TestEnvironment env)
