@@ -106,6 +106,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to firewallPolicy.
+        /// </summary>
+        internal static string ApplicationGatewayFirewallPolicy {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayFirewallPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to frontendIpConfigurations.
         /// </summary>
         internal static string ApplicationGatewayFrontendIPConfigName {
