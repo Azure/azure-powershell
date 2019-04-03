@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Dns
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The full name of the parent zone to add delegation (without a terminating dot).")]
         [ValidateNotNullOrEmpty]
-        public string ParentZoneName { get; set; }
+        public string ParentZone { get; set; }
 
         [Alias("Tags")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.")]
@@ -107,11 +107,11 @@ namespace Microsoft.Azure.Commands.Dns
                         : string.Format(ProjectResources.Success_NewZone, this.Name, this.ResourceGroupName));
                     this.WriteObject(result);
 
-                    if (!string.IsNullOrEmpty(this.ParentZoneName) && this.Name.EndsWith(this.ParentZoneName))
+                    if (!string.IsNullOrEmpty(this.ParentZone) && this.Name.EndsWith(this.ParentZone))
                     {
                         AddDnsNameserverDelegation(result);
                         this.WriteVerbose(ProjectResources.Success);
-                        this.WriteVerbose(string.Format(ProjectResources.Success_NSDelegation, this.Name, this.ParentZoneName));
+                        this.WriteVerbose(string.Format(ProjectResources.Success_NSDelegation, this.Name, this.ParentZone));
 
                     }
                 });
@@ -135,9 +135,9 @@ namespace Microsoft.Azure.Commands.Dns
                 }
 
                 DnsRecordBase[] resourceRecords = nameServersList.ToArray();
-                string recordName = this.Name.Replace('.' + ParentZoneName, "");
+                string recordName = this.Name.Replace('.' + ParentZone, "");
                 recordSet = this.DnsClient.CreateDnsRecordSet(
-                    this.ParentZoneName,
+                    this.ParentZone,
                     this.ResourceGroupName,
                     recordName,
                     3600,
