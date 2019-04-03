@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// <summary>
     /// Add a GenV2 Metric Alert rule
     /// </summary>
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2", SupportsShouldProcess = true), OutputType(typeof(PSMetricAlertRuleV2))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2", DefaultParameterSetName = "CreateAlertByResourceId", SupportsShouldProcess = true), OutputType(typeof(PSMetricAlertRuleV2))]
     public class AddAzureRmMetricAlertRuleV2Command : ManagementCmdletBase
     {
         const string CreateAlertByResourceId = "CreateAlertByResourceId";
@@ -154,8 +154,13 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                         criteria: criteria,
                         actions: actions
                     );
-                var result = this.MonitorManagementClient.MetricAlerts.CreateOrUpdateAsync(resourceGroupName: this.ResourceGroupName, ruleName: this.Name, parameters: metricAlertResource).Result;
-                WriteObject(result);
+                if (ShouldProcess(
+                    target: string.Format("Create/update an alert rule: {0} from resource group: {1}", this.Name, this.ResourceGroupName),
+                    action: "Create/update an alert rule"))
+                {
+                    var result = this.MonitorManagementClient.MetricAlerts.CreateOrUpdateAsync(resourceGroupName: this.ResourceGroupName, ruleName: this.Name, parameters: metricAlertResource).Result;
+                    WriteObject(result);
+                }
             }
             else// Multi Resource Metric Alert Rule
             {
@@ -185,8 +190,14 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                     criteria: metricCriteria,
                     actions: actions
                 );
-                var result = this.MonitorManagementClient.MetricAlerts.CreateOrUpdateAsync(resourceGroupName: this.ResourceGroupName, ruleName: this.Name, parameters: metricAlertResource).Result;
-                WriteObject(result);
+                if (ShouldProcess(
+                    target: string.Format("Create/update an alert rule: {0} from resource group: {1}", this.Name, this.ResourceGroupName),
+                    action: "Create/update an alert rule"))
+                {
+                    var result = this.MonitorManagementClient.MetricAlerts.CreateOrUpdateAsync(resourceGroupName: this.ResourceGroupName, ruleName: this.Name, parameters: metricAlertResource).Result;
+                    WriteObject(result);
+                }
+                    
             }
         }
     }

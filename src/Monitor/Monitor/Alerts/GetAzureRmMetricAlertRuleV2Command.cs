@@ -14,8 +14,10 @@
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,42 +62,62 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
 
         protected override void ProcessRecordInternal()
         {
-            if (String.IsNullOrWhiteSpace(this.ResourceGroupName))
+            if (this.IsParameterBound(c => c.ResourceId))
             {
-                IEnumerable<MetricAlertResource> result = this.MonitorManagementClient.MetricAlerts.ListBySubscriptionAsync().Result;
-                var finalResult = result.Select(metricAlertResource => new PSMetricAlertRuleV2(metricAlertResource));
-                if (String.IsNullOrWhiteSpace(this.ResourceId))
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.Name = resourceIdentifier.ResourceName;
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.Name))
+            {
+                MetricAlertResource result = this.MonitorManagementClient.MetricAlerts.GetAsync(resourceGroupName: this.ResourceGroupName, ruleName: this.Name).Result;
+                PSMetricAlertRuleV2 finalResult;
+                if (result.Criteria is MetricAlertSingleResourceMultipleMetricCriteria)
                 {
-                    WriteObject(sendToPipeline: finalResult.ToList(), enumerateCollection: true);
+                    finalResult = new PSMetricAlertRuleV2SingleResource(result);
                 }
                 else
                 {
-                    PSMetricAlertRuleV2 rule = null;
-                    foreach(var item in finalResult)
-                    {
-                        if(item.Id == this.ResourceId)
-                        {
-                            rule = item;break;
-                        }
-                    }
-                    WriteObject(sendToPipeline: rule);
+                    finalResult = new PSMetricAlertRuleV2(result);
                 }
+                WriteObject(sendToPipeline: finalResult);
+            }
+            else if (!string.IsNullOrWhiteSpace(this.ResourceGroupName))
+            {
+                IEnumerable<MetricAlertResource> result = this.MonitorManagementClient.MetricAlerts.ListByResourceGroupAsync(resourceGroupName: this.ResourceGroupName).Result;
+                List<PSMetricAlertRuleV2> finalResult = new List<PSMetricAlertRuleV2>();
+                result.ToArray().ForEach((metricAlertResource) =>
+                {
+                    if (metricAlertResource.Criteria is MetricAlertSingleResourceMultipleMetricCriteria)
+                    {
+                        finalResult.Add(new PSMetricAlertRuleV2SingleResource(metricAlertResource));
+                    }
+                    else
+                    {
+                        finalResult.Add(new PSMetricAlertRuleV2(metricAlertResource));
+                    }
+                }
+                );
+                WriteObject(sendToPipeline: finalResult.ToList(), enumerateCollection: true);
             }
             else
             {
-                if (String.IsNullOrWhiteSpace(this.Name))
+                IEnumerable<MetricAlertResource> result = this.MonitorManagementClient.MetricAlerts.ListBySubscriptionAsync().Result;
+                List<PSMetricAlertRuleV2> finalResult = new List<PSMetricAlertRuleV2>();
+                result.ToArray().ForEach((metricAlertResource) =>
                 {
-                    IEnumerable<MetricAlertResource> result = this.MonitorManagementClient.MetricAlerts.ListByResourceGroupAsync(resourceGroupName: this.ResourceGroupName).Result;
-                    var finalResult = result.Select(metricAlertResource => new PSMetricAlertRuleV2(metricAlertResource));
-                    WriteObject(sendToPipeline: finalResult.ToList(), enumerateCollection: true);
+                    if (metricAlertResource.Criteria is MetricAlertSingleResourceMultipleMetricCriteria)
+                    {
+                        finalResult.Add(new PSMetricAlertRuleV2SingleResource(metricAlertResource));
+                    }
+                    else
+                    {
+                        finalResult.Add(new PSMetricAlertRuleV2(metricAlertResource));
+                    }
                 }
-                else
-                {
-                    // Retrieve a single AlertRule determined by the ResourceGroup and the rule name
-                    MetricAlertResource result = this.MonitorManagementClient.MetricAlerts.GetAsync(resourceGroupName: this.ResourceGroupName, ruleName: this.Name).Result;
-                    PSMetricAlertRuleV2 finalResult = new PSMetricAlertRuleV2(result);
-                    WriteObject(sendToPipeline: finalResult);
-                }
+                );
+                WriteObject(sendToPipeline: finalResult.ToList(), enumerateCollection: true);
             }
         }
     }
