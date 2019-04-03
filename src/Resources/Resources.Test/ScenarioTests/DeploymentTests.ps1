@@ -101,6 +101,39 @@ function Test-NewDeploymentFromTemplateObject
     }
 }
 
+function Test-TestResourceGroupDeploymentErrors
+{
+    # Catch exception when resource group doesn't exist
+    $rgname = "unknownresourcegroup"
+    $deploymentName = Get-ResourceName
+    $result = Test-AzResourceGroupDeploymentWithName -DeploymentName $deploymentName -ResourceGroupName $rgname -TemplateFile sampleDeploymentTemplate.json -TemplateParameterFile sampleDeploymentTemplateParams.json
+    Write-Debug "$result"
+    Assert-NotNull $result
+    Assert-AreEqual "ResourceGroupNotFound" $result.Code
+    Assert-AreEqual "Resource group '$rgname' could not be found." $result.Message
+
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+
+    try
+    {
+        # Test
+        # Catch exception when parameter template is missing
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+        $result = Test-AzResourceGroupDeploymentWithName -DeploymentName $deploymentName -ResourceGroupName $rgname -TemplateFile sampleDeploymentTemplate.json -SkipTemplateParameterPrompt
+        Assert-NotNull $result
+        Assert-AreEqual "InvalidTemplate" $result.Code
+        Assert-StartsWith "Deployment template validation failed" $result.Message
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
 <#
 .SYNOPSIS
 Tests cross resource group deployment via template file.
