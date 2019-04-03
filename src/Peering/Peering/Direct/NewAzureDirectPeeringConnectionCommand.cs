@@ -26,13 +26,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
     /// </summary>
     [Cmdlet(
         VerbsCommon.New,
-        "AzPeeringDirectConnection",
+        "AzPeeringDirectConnectionObject",
         DefaultParameterSetName = Constants.ParameterSetNameIPv4Prefix, SupportsShouldProcess = true)]
     [OutputType(typeof(PSDirectConnection))]
     public class NewAzureDirectPeeringConnectionCommand : PeeringBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the Peering Facility DB.
+        /// Gets or sets the InputObject Facility DB.
         /// </summary>
         [Parameter(
         Position = Constants.PositionPeeringZero,
@@ -83,13 +83,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         [Parameter(
             Position = Constants.PositionPeeringTwo,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+
             HelpMessage = Constants.HelpSessionIPv4Prefix,
             ParameterSetName = Constants.ParameterSetNameIPv4Prefix)]
         [Parameter(
             Position = Constants.PositionPeeringTwo,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+
             HelpMessage = Constants.HelpSessionIPv4Prefix,
             ParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix)]
         [ValidateNotNullOrEmpty]
@@ -100,12 +100,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+
             HelpMessage = Constants.HelpSessionIPv6Prefix,
             ParameterSetName = Constants.ParameterSetNameIPv6Prefix)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+
             HelpMessage = Constants.HelpSessionIPv6Prefix,
             ParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix)]
         public virtual string SessionPrefixV6 { get; set; }
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         }
 
         /// <summary>
-        /// The create Peering.
+        /// The create InputObject.
         /// </summary>
         /// <returns>
         /// The <see cref="PSDirectConnection"/>.

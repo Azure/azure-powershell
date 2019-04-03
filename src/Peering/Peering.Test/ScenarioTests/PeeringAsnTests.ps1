@@ -140,6 +140,6 @@ function Test-NewDirectConnectionWrongV4
 	$sessionv4 = "192.168.1.1/32"
 	$bandwidth = 30000
 
-	Assert-ThrowsContains {New-AzPeeringDirectConnection -PeeringDbFacilityId $facilityId -SessionPrefixIPv4 $sessionv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} "Parameter name: Invalid Prefix: 192.168.1.1/32, must be either /30 or /31"
+	Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixIPv4 $sessionv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} "Parameter name: Invalid Prefix: 192.168.1.1/32, must be either /30 or /31"
 }
 

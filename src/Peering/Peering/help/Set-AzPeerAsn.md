@@ -14,14 +14,14 @@ Update Contact Information
 
 ### ParameterSetNameUpdateContact (Default)
 ```
-Set-AzPeerAsn [-UpdatePeerContact] <PSPeerAsn> [-Email] <String[]> [[-Phone] <String[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzPeerAsn [-InputObject] <PSPeerAsn> -Email <String[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParameterSetNameUpdatePhone
 ```
-Set-AzPeerAsn [-UpdatePeerContact] <PSPeerAsn> [[-Email] <String[]>] [-Phone] <String[]> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzPeerAsn [-InputObject] <PSPeerAsn> -Phone <String[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,53 +78,14 @@ Parameter Sets: ParameterSetNameUpdateContact
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-```yaml
-Type: System.String[]
-Parameter Sets: ParameterSetNameUpdatePhone
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Phone
-Phone
-
-```yaml
-Type: System.String[]
-Parameter Sets: ParameterSetNameUpdateContact
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String[]
-Parameter Sets: ParameterSetNameUpdatePhone
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UpdatePeerContact
-{{ Fill UpdatePeerContact Description }}
+### -InputObject
+{{ Fill InputObject Description }}
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn
@@ -135,6 +96,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Phone
+Phone
+
+```yaml
+Type: System.String[]
+Parameter Sets: ParameterSetNameUpdatePhone
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

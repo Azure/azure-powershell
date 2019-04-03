@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
     using System.Linq;
 
     /// <summary>
-    /// Peering location is where connectivity could be established to the
+    /// InputObject location is where connectivity could be established to the
     /// Microsoft Cloud Edge.
     /// </summary>
     [Rest.Serialization.JsonTransformation]

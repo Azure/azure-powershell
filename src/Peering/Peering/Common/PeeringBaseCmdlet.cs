@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
     using Microsoft.Rest.Azure;
 
     /// <summary>
-    ///     The Peering base cmdlet
+    ///     The InputObject base cmdlet
     /// </summary>
     public class PeeringBaseCmdlet : AzureRMCmdlet
     {
@@ -56,13 +56,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         }
 
         /// <summary>
-        ///     The AsJob parameter to run in the background.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelp)]
-        public SwitchParameter AsJob { get; set; }
-
-        /// <summary>
-        ///     The Peering client.
+        ///     The InputObject client.
         /// </summary>
         public IPeeringsOperations PeeringClient => this.PeeringManagementClient.Peerings;
 
@@ -237,7 +231,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// </summary>
         /// <param name="toValidateBandwidth"></param>
         /// <param name="peeringVlanBandwidthInMbps">
-        /// The Peering Vlan Bandwidth In Mbps.
+        /// The InputObject Vlan Bandwidth In Mbps.
         /// </param>
         /// <param name="defaultVlanBandwidthInMbps">
         /// The default Vlan Bandwidth In Mbps.
@@ -291,10 +285,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         }
 
         /// <summary>
-        /// The compare default to Peering vlan.
+        /// The compare default to InputObject vlan.
         /// </summary>
         /// <param name="PeeringVlanBandwidthInMbps">
-        /// The Peering vlan bandwidth in mbps.
+        /// The InputObject vlan bandwidth in mbps.
         /// </param>
         /// <param name="defaultVlanBandwidthInMbps">
         /// The default vlan bandwidth in mbps.
@@ -318,10 +312,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         }
 
         /// <summary>
-        /// The return newly created Peering.
+        /// The return newly created InputObject.
         /// </summary>
         /// <param name="PeeringName">
-        /// The Peering name.
+        /// The InputObject name.
         /// </param>
         /// <param name="resourceGroupName">
         /// The resource group name.
@@ -339,7 +333,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// The get resource group name from id.
         /// </summary>
         /// <param name="PeeringId">
-        /// The Peering id.
+        /// The InputObject id.
         /// </param>
         /// <returns>
         /// The <see cref="object"/>.
@@ -395,7 +389,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// The route prefix.
         /// </param>
         /// <param name="PeeringType">
-        /// The Peering Type.
+        /// The InputObject Type.
         /// </param>
         /// <returns>
         /// The <see cref="string"/>.
@@ -518,7 +512,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// The get azure region.
         /// </summary>
         /// <param name="PeeringLocation">
-        /// The Peering location.
+        /// The InputObject location.
         /// </param>
         /// <param name="kind">
         /// The kind.
@@ -551,10 +545,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                     return "centralus";
                 }
 
-                throw new Exception("Unable to map AzureRegion to Peering location.");
+                throw new Exception("Unable to map AzureRegion to InputObject location.");
             }
 
-            throw new Exception("Unable to map AzureRegion to Peering location.");
+            throw new Exception("Unable to map AzureRegion to InputObject location.");
         }
 
         /// <summary>
@@ -594,7 +588,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             if (connection.PeeringDBFacilityId <= 0)
             {
                 throw new PSArgumentException(
-                    $"Connection has invalid Peering Facility ID: {connection.PeeringDBFacilityId}.");
+                    $"Connection has invalid InputObject Facility ID: {connection.PeeringDBFacilityId}.");
             }
 
             if (connection.BgpSession == null) throw new PSArgumentException($"Session cannot be null or empty.");
@@ -630,7 +624,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             {
                 // TODO validate facility ID with new peering
                 throw new PSArgumentException(
-                    $"Connection has invalid Peering Facility ID: {connection.PeeringDBFacilityId}.");
+                    $"Connection has invalid InputObject Facility ID: {connection.PeeringDBFacilityId}.");
             }
 
             if (connection.BgpSession == null) throw new PSArgumentException($"Session cannot be null or empty.");

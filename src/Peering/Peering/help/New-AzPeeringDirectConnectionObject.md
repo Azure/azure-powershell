@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
 Module Name: Az.Peering
-online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/new-azpeeringexchangeconnection
+online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/new-azpeeringdirectconnectionobject
 schema: 2.0.0
 ---
 
-# New-AzPeeringExchangeConnection
+# New-AzPeeringDirectConnection
 
 ## SYNOPSIS
 Creates a in memory PSObject to be used for creating or modifying a Peering.
@@ -14,24 +14,24 @@ Creates a in memory PSObject to be used for creating or modifying a Peering.
 
 ### ParameterSetNameIPv4Prefix (Default)
 ```
-New-AzPeeringExchangeConnection [-PeeringDBFacilityId] <Int32> -PeerSessionIPv4Address <String>
- [-MaxPrefixesAdvertisedIPv4 <Int32>] [-MD5AuthenticationKey <String>] [-AsJob]
+New-AzPeeringDirectConnection [-PeeringDBFacilityId] <Int32> -BandwidthInMbps <Int32>
+ [-SessionPrefixV4] <String> -MaxPrefixesAdvertisedIPv4 <Int32> [-MD5AuthenticationKey <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParameterSetNameIPv6Prefix
 ```
-New-AzPeeringExchangeConnection [-PeeringDBFacilityId] <Int32> -PeerSessionIPv6Address <String>
- [-MaxPrefixesAdvertisedIPv6 <Int32>] [-MD5AuthenticationKey <String>] [-AsJob]
+New-AzPeeringDirectConnection [-PeeringDBFacilityId] <Int32> -BandwidthInMbps <Int32> -SessionPrefixV6 <String>
+ -MaxPrefixesAdvertisedIPv6 <Int32> [-MD5AuthenticationKey <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParameterSetNameIPv4PrefixParameterSetNameIPv6Prefix
 ```
-New-AzPeeringExchangeConnection [-PeeringDBFacilityId] <Int32> -PeerSessionIPv4Address <String>
- -PeerSessionIPv6Address <String> [-MaxPrefixesAdvertisedIPv4 <Int32>] [-MaxPrefixesAdvertisedIPv6 <Int32>]
- [-MD5AuthenticationKey <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzPeeringDirectConnection [-PeeringDBFacilityId] <Int32> -BandwidthInMbps <Int32>
+ [-SessionPrefixV4] <String> -SessionPrefixV6 <String> -MaxPrefixesAdvertisedIPv4 <Int32>
+ -MaxPrefixesAdvertisedIPv6 <Int32> [-MD5AuthenticationKey <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,15 +41,16 @@ Creates an in memory PSObject
 
 ### Example 1
 ```powershell
-PS C:> $exconnection = New-AzPeeringExchangeConnection -PeeringDBFacilityId 99999 -PeerSessionIPv4Address 10.3.151.99 -MaxPrefixesAdvertisedIPv4 20000 -MD5AuthenticationKey 25234523452123411fd234qdwfas3234
+PS C:> $connection = New-AzPeeringDirectConnection -PeeringDBFacilityId 99999 -BandwidthInMbps 30000 -SessionPrefixV4 192.168.1.0/31 -SessionPrefixV6 fe01::0/127 -MaxPrefixesAdvertisedIPv4 20000 -MaxPrefixesAdvertisedIPv6 2000 -MD5AuthenticationKey 25234523452123411fd234qdwfas3234
 
-PeeringDBFacilityId     : 99999
-PeerSessionIPv4Address  : 10.3.151.99
-MaxPrefixesAdvertisedV4 : 20000
-Md5AuthenticationKey    : 25234523452123411fd234qdwfas3234
+PeeringDBFacilityId  : 99999
+SessionPrefixv4      : 192.168.1.0/31
+SessionPrefixv6      : fe01::0/127
+BandwidthInMbps      : 30000
+Md5AuthenticationKey : 25234523452123411fd234qdwfas3234
 ```
 
-Local connection object
+New local connection
 
 ## PARAMETERS
 
@@ -62,6 +63,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BandwidthInMbps
+The Bandwidth offered at this location in Mbps.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -91,10 +107,10 @@ Type: System.Nullable`1[System.Int32]
 Parameter Sets: ParameterSetNameIPv4Prefix, ParameterSetNameIPv4PrefixParameterSetNameIPv6Prefix
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -106,10 +122,10 @@ Type: System.Nullable`1[System.Int32]
 Parameter Sets: ParameterSetNameIPv6Prefix, ParameterSetNameIPv4PrefixParameterSetNameIPv6Prefix
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -143,8 +159,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PeerSessionIPv4Address
-HelpPeerSessionIPv4Prefix
+### -SessionPrefixV4
+HelpSessionIPv4Prefix
 
 ```yaml
 Type: System.String
@@ -152,14 +168,14 @@ Parameter Sets: ParameterSetNameIPv4Prefix, ParameterSetNameIPv4PrefixParameterS
 Aliases:
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PeerSessionIPv6Address
-HelpPeerSessionIPv6Prefix
+### -SessionPrefixV6
+HelpSessionIPv6Prefix
 
 ```yaml
 Type: System.String
@@ -214,7 +230,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection
 
 ## NOTES
 

@@ -27,7 +27,7 @@ function NewExchangeConnectionV4V6($prefixv4, $prefixv6, $maxv4, $maxv6)
 	$sessionv4 = "80.249.209." + $prefixv4
 	$sessionv6 = "2001:7f8:1::a500:8075:" + $prefixv6
 
-    $createdConnection = New-AzPeeringExchangeConnection -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxPrefixesAdvertisedIPv4 -MaxPrefixesAdvertisedIPv6 $maxPrefixesAdvertisedIPv6 -PeerSessionIPv4Address $sessionv4 -PeerSessionIPv6Address $sessionv6 -MD5AuthenticationKey $md5
+    $createdConnection = New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxPrefixesAdvertisedIPv4 -MaxPrefixesAdvertisedIPv6 $maxPrefixesAdvertisedIPv6 -PeerSessionIPv4Address $sessionv4 -PeerSessionIPv6Address $sessionv6 -MD5AuthenticationKey $md5
 	return $createdConnection
 }
 
@@ -185,6 +185,6 @@ function Test-NewDirectConnectionWrongV4
 	$sessionv4 = "192.168.1.1/32"
 	$bandwidth = 30000
 
-	Assert-ThrowsContains {New-AzPeeringDirectConnection -PeeringDbFacilityId $facilityId -SessionPrefixIPv4 $sessionv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} "Parameter name: Invalid Prefix: 192.168.1.1/32, must be either /30 or /31"
+	Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixIPv4 $sessionv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} "Parameter name: Invalid Prefix: 192.168.1.1/32, must be either /30 or /31"
 }
 

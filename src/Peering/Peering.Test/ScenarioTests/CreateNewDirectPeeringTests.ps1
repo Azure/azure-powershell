@@ -31,7 +31,7 @@ function NewDirectConnectionV4V6($sessionPrefixv4,$sessionPrefixv6,$bandwidth)
     $resourceLocation = "CentralUS"
     $profileSku = "Basic_Direct_Free"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
-    $createdConnection = New-AzPeeringDirectConnection -PeeringDbFacilityId $facilityId -SessionPrefixV4 $sessionv4 -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv4 $maxv4 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5
+    $createdConnection = New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV4 $sessionv4 -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv4 $maxv4 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5
 	return $createdConnection
 }
 

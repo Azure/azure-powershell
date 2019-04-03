@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public const string CDN = "CDN";
 
         /// <summary>
-        /// The Direct Peering Parameter set name.
+        /// The Direct InputObject Parameter set name.
         /// </summary>
         public const string Direct = "Direct";
 
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 
         #region Positions
         /// <summary>
-        /// The position Peering location.
+        /// The position InputObject location.
         /// </summary>
         public const int PositionPeeringThree = 3;
 
@@ -70,31 +70,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public const int PositionPeeringOne = 1;
 
         /// <summary>
-        /// The position Peering name.
+        /// The position InputObject name.
         /// </summary>
         public const int PositionPeeringZero = 0;
 
         #endregion
 
         /// <summary>
-        /// Partner Peering ParameterSetName
+        /// Partner InputObject ParameterSetName
         /// </summary>
         public const string PeeringService = "PeeringService";
 
         /// <summary>
-        /// Exchange Peering ParameterSetName
+        /// Exchange InputObject ParameterSetName
         /// </summary>
         public const string ExchangePeering = "ExchangePeering";
 
         /// <summary>
-        /// Continue Message for Peering Removal.
+        /// Continue Message for InputObject Removal.
         /// </summary>
-        public const string ContinueMessage = "You are about to remove an Peering Resource. Are you sure?";
+        public const string ContinueMessage = "You are about to remove an InputObject Resource. Are you sure?";
 
         /// <summary>
-        /// Processing Message for Peering Removal.
+        /// Processing Message for InputObject Removal.
         /// </summary>
-        public const string ProcessMessage = "Peering {PeeringName} Resource being removed.";
+        public const string ProcessMessage = "InputObject {PeeringName} Resource being removed.";
 
         #region Ranges
 
@@ -186,12 +186,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         // With V6 mandatory
 
         /// <summary>
-        /// The device A with Peering with v6.
+        /// The device A with InputObject with v6.
         /// </summary>
         public const string DeviceAAndBWithPeeringVlanV6 = "DeviceAAndBWithPeeringVlanV6";
 
         /// <summary>
-        /// The device a and b with default and Peering vlan v 6.
+        /// The device a and b with default and InputObject vlan v 6.
         /// </summary>
         public const string DeviceAAndBWithDefaultAndPeeringVlanV6 = "DeviceAAndBWithDefaultAndPeeringVlanV6";
 
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public const string ParameterSetNameUpdateEmail = "ParameterSetNameUpdateContact";
 
         /// <summary>
-        /// The parameter set name convert legacy Peering.
+        /// The parameter set name convert legacy InputObject.
         /// </summary>
         public const string ParameterSetNameConvertLegacyPeering = "ParameterSetNameConvertLegacyPeering";
 
@@ -236,12 +236,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public const string ParameterSetNameIPv6Prefix = "ParameterSetNameIPv6Prefix";
 
         /// <summary>
+        /// The parameter set name md 5 authentication.
+        /// </summary>
+        public const string ParameterSetNameMd5Authentication = "ParameterSetNameMd5Authentication";
+
+        /// <summary>
+        /// The parameter set name bandwidth.
+        /// </summary>
+        public const string ParameterSetNameBandwidth = "ParameterSetNameBandwidth";
+
+        /// <summary>
         /// The parameter set name i pv 4 prefix.
         /// </summary>
         public const string ParameterSetNameIPv4Prefix = "ParameterSetNameIPv4Prefix";
 
         /// <summary>
-        /// The parameter set name prefix by Peering.
+        /// The parameter set name prefix by InputObject.
         /// </summary>
         public const string ParameterSetNamePrefixByPeering = "ParameterSetNamePrefixByPeering";
 
@@ -331,12 +341,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// KindHelp
         /// </summary>
-        public const string KindHelp = "Shows all Peering resource by Kind.";
+        public const string KindHelp = "Shows all InputObject resource by Kind.";
 
         /// <summary>
         /// The use for partner peering.
         /// </summary>
-        public const string UseForPeeringServiceHelp = "Enable for use with Microsoft Peering Service (MPS).";
+        public const string UseForPeeringServiceHelp = "Enable for use with Microsoft InputObject Service (MPS).";
 
         /// <summary>
         /// SubscriberNameHelp
@@ -369,9 +379,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public const string PrefixNameHelp = "The name of prefix.";
 
         /// <summary>
-        /// The Peering state help.
+        /// The InputObject state help.
         /// </summary>
-        public const string PeeringStateHelp = "The Peering state of a subscriber.";
+        public const string PeeringStateHelp = "The InputObject state of a subscriber.";
 
         /// <summary>
         /// The peering exchange connection help.
@@ -416,7 +426,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// The tags help.
         /// </summary>
-        public const string TagsHelp = "The tags to associate with the Microsoft Peering Service.";
+        public const string TagsHelp = "The tags to associate with the Microsoft InputObject Service.";
 
         /// <summary>
         /// The help max advertised i pv 4.

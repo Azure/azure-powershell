@@ -14,18 +14,18 @@ Gets the Peering locations offered by Microsoft
 
 ### PeeringByKind (Default)
 ```
-Get-AzPeeringLocation [-Kind] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPeeringLocation [-Kind] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ParameterSetNameLocationByCity
 ```
-Get-AzPeeringLocation [-Kind] <String> [-PeeringLocation] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPeeringLocation [-Kind] <String> [-PeeringLocation] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ParameterSetNameLocationByFacilityId
 ```
-Get-AzPeeringLocation [-Kind] <String> [-PeeringDbFacilityId] <Int32> [-AsJob]
+Get-AzPeeringLocation [-Kind] <String> [-PeeringDbFacilityId] <Int32>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -59,21 +59,6 @@ Its a long list of locations
 
 ## PARAMETERS
 
-### -AsJob
-Run in the background.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -101,7 +86,7 @@ Accepted values: Direct, Exchange
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -116,7 +101,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -131,7 +116,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
