@@ -20,21 +20,15 @@ using System.Management.Automation;
 using System.Text;
 using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-
 using sdkAzManagedRuleGroupOverride = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleGroupOverride;
 using sdkAzManagedRuleOverride = Microsoft.Azure.Management.FrontDoor.Models.ManagedRuleOverride;
-using SdkFrontDoor = Microsoft.Azure.Management.FrontDoor.Models.FrontDoorModel;
-using SdkRoutingRule = Microsoft.Azure.Management.FrontDoor.Models.RoutingRule;
-using SdkForwardingConfiguration = Microsoft.Azure.Management.FrontDoor.Models.ForwardingConfiguration;
-using SdkRedirectConfiguration = Microsoft.Azure.Management.FrontDoor.Models.RedirectConfiguration;
-using SdkBackendPool = Microsoft.Azure.Management.FrontDoor.Models.BackendPool;
-using SdkBackendPoolsSettings = Microsoft.Azure.Management.FrontDoor.Models.BackendPoolsSettings;
 using SdkBackend = Microsoft.Azure.Management.FrontDoor.Models.Backend;
 using SdkHealthProbeSetting = Microsoft.Azure.Management.FrontDoor.Models.HealthProbeSettingsModel;
 using SdkLoadBalancingSetting = Microsoft.Azure.Management.FrontDoor.Models.LoadBalancingSettingsModel;
 using SdkFrontendEndpoint = Microsoft.Azure.Management.FrontDoor.Models.FrontendEndpoint;
 using SdkRouteConfiguration = Microsoft.Azure.Management.FrontDoor.Models.RouteConfiguration;
 using SdkResourceState = Microsoft.Azure.Management.FrontDoor.Models.FrontDoorResourceState;
+using SdkBackendPool = Microsoft.Azure.Management.FrontDoor.Models.BackendPool;
 using SdkCacheConfiguration = Microsoft.Azure.Management.FrontDoor.Models.CacheConfiguration;
 using SdkCustomRule = Microsoft.Azure.Management.FrontDoor.Models.CustomRule;
 using SdkCustomRuleList = Microsoft.Azure.Management.FrontDoor.Models.CustomRuleList;
@@ -93,69 +87,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 EnforceCertificateNameCheck = (PSEnforceCertificateNameCheck)Enum.Parse(typeof(PSEnforceCertificateNameCheck), sdkFrontDoor.BackendPoolsSettings.EnforceCertificateNameCheck)
             };
         }
-
-        private static PSRouteConfiguration ToPSRouteConfiguration(this SdkRouteConfiguration sdkRouteConfiguration)
-        {
-            if (sdkRouteConfiguration is SdkForwardingConfiguration)
-            {
-                var SDKForwardingConfiguration = sdkRouteConfiguration as SdkForwardingConfiguration;
-                return new PSForwardingConfiguration
-                {
-                    CustomForwardingPath = SDKForwardingConfiguration.CustomForwardingPath,
-                    ForwardingProtocol = SDKForwardingConfiguration.ForwardingProtocol == null ? (PSForwardingProtocol?)null : (PSForwardingProtocol)Enum.Parse(typeof(PSForwardingProtocol), SDKForwardingConfiguration.ForwardingProtocol),
-                    BackendPoolId = SDKForwardingConfiguration.BackendPool?.Id,
-                    EnableCaching = SDKForwardingConfiguration.CacheConfiguration != null,
-                    QueryParameterStripDirective = SDKForwardingConfiguration.CacheConfiguration == null ? (PSQueryParameterStripDirective?)null : (PSQueryParameterStripDirective)Enum.Parse(typeof(PSQueryParameterStripDirective), SDKForwardingConfiguration.CacheConfiguration.QueryParameterStripDirective),
-                    DynamicCompression = SDKForwardingConfiguration.CacheConfiguration == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), SDKForwardingConfiguration.CacheConfiguration.DynamicCompression)
-                };
-            }
-            else if (sdkRouteConfiguration is SdkRedirectConfiguration)
-            {
-                var SDKRedirectConfiguration = sdkRouteConfiguration as SdkRedirectConfiguration;
-                return new PSRedirectConfiguration
-                {
-                    RedirectType = SDKRedirectConfiguration.RedirectType == null ? (PSRedirectType?)null : (PSRedirectType)Enum.Parse(typeof(PSRedirectType), SDKRedirectConfiguration.RedirectType),
-                    RedirectProtocol = SDKRedirectConfiguration.RedirectProtocol == null ? (PSRedirectProtocol?)null : (PSRedirectProtocol)Enum.Parse(typeof(PSRedirectProtocol), SDKRedirectConfiguration.RedirectProtocol),
-                    CustomHost = SDKRedirectConfiguration.CustomHost,
-                    CustomPath = SDKRedirectConfiguration.CustomPath,
-                    CustomFragment = SDKRedirectConfiguration.CustomFragment,
-                    CustomQueryString = SDKRedirectConfiguration.CustomQueryString
-                };
-            }
-
-            return null;
-        }
-
-        private static SdkRouteConfiguration ToSdkRouteConfiguration(this PSRouteConfiguration psRoutingConfiguration)
-        {
-            if(psRoutingConfiguration is PSForwardingConfiguration)
-            {
-                var psForwardingConfiguration = psRoutingConfiguration as PSForwardingConfiguration;
-                return new SdkForwardingConfiguration
-                {
-                    CustomForwardingPath = psForwardingConfiguration.CustomForwardingPath,
-                    ForwardingProtocol = psForwardingConfiguration.ForwardingProtocol?.ToString(),
-                    BackendPool  = new SdkRefId(psForwardingConfiguration.BackendPoolId),
-                    CacheConfiguration = psForwardingConfiguration.EnableCaching ? new SdkCacheConfiguration(psForwardingConfiguration.QueryParameterStripDirective.ToString(), psForwardingConfiguration.DynamicCompression.ToString()) : null
-                };
-            }
-            else if(psRoutingConfiguration is PSRedirectConfiguration)
-            {
-                var psRedirectConfiguration = psRoutingConfiguration as PSRedirectConfiguration;
-                return new SdkRedirectConfiguration
-                {
-                    RedirectType = psRedirectConfiguration.RedirectType?.ToString(),
-                    RedirectProtocol = psRedirectConfiguration.RedirectProtocol?.ToString(),
-                    CustomHost = psRedirectConfiguration.CustomHost,
-                    CustomPath = psRedirectConfiguration.CustomPath,
-                    CustomFragment = psRedirectConfiguration.CustomFragment,
-                    CustomQueryString = psRedirectConfiguration.CustomQueryString
-                };
-            }
-
-            return null;
-        }
-
         public static PSRoutingRule ToPSRoutingRule(this SdkRoutingRule sdkRoutingRule)
         {
             return new PSRoutingRule
@@ -165,11 +96,14 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 AcceptedProtocols = sdkRoutingRule.AcceptedProtocols?.Select(x => (PSProtocol)Enum.Parse(typeof(PSProtocol), x)).ToList(),
                 PatternsToMatch = sdkRoutingRule.PatternsToMatch?.ToList(),
                 FrontendEndpointIds = sdkRoutingRule.FrontendEndpoints?.Select(x => x.Id).ToList(),
-                RouteConfiguration = ToPSRouteConfiguration(sdkRoutingRule.RouteConfiguration),
+                ForwardingProtocol = sdkRoutingRule.ForwardingProtocol == null ? (PSForwardingProtocol?)null : (PSForwardingProtocol)Enum.Parse(typeof(PSForwardingProtocol), sdkRoutingRule.ForwardingProtocol),
+                BackendPoolId = sdkRoutingRule.BackendPool?.Id,
+                EnableCaching = sdkRoutingRule.CacheConfiguration != null,
+                QueryParameterStripDirective = sdkRoutingRule.CacheConfiguration == null ? (PSQueryParameterStripDirective?)null : (PSQueryParameterStripDirective)Enum.Parse(typeof(PSQueryParameterStripDirective), sdkRoutingRule.CacheConfiguration.QueryParameterStripDirective),
+                DynamicCompression = sdkRoutingRule.CacheConfiguration == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkRoutingRule.CacheConfiguration.DynamicCompression),
                 EnabledState = sdkRoutingRule.EnabledState == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkRoutingRule.EnabledState)
             };
         }
-
         public static SdkRoutingRule ToSdkRoutingRule(this PSRoutingRule psRoutingRule)
         {
             return new SdkRoutingRule
@@ -177,7 +111,10 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 frontendEndpoints: psRoutingRule.FrontendEndpointIds?.Select(x => new SdkRefId(x)).ToList(),
                 acceptedProtocols: psRoutingRule.AcceptedProtocols?.Select(x => x.ToString()).ToList(),
                 patternsToMatch: psRoutingRule.PatternsToMatch,
-                routeConfiguration: ToSdkRouteConfiguration(psRoutingRule.RouteConfiguration),
+                customForwardingPath: psRoutingRule.CustomForwardingPath,
+                forwardingProtocol: psRoutingRule.ForwardingProtocol.ToString(),
+                cacheConfiguration: psRoutingRule.EnableCaching? new SdkCacheConfiguration(psRoutingRule.QueryParameterStripDirective.ToString(), psRoutingRule.DynamicCompression.ToString()) : null,
+                backendPool: new SdkRefId(psRoutingRule.BackendPoolId),
                 name: psRoutingRule.Name,
                 enabledState: psRoutingRule.EnabledState.ToString()
             );
@@ -586,16 +523,12 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                     }
                 }
 
-                if (routingRule.RouteConfiguration is PSForwardingConfiguration)
+                if (backendPoolIds.FirstOrDefault(x => x.Equals(routingRule.BackendPoolId.ToLower())) == null)
                 {
-                    var forwardingConfiguration = routingRule.RouteConfiguration as PSForwardingConfiguration;
-                    if (backendPoolIds.FirstOrDefault(x => x.Equals(forwardingConfiguration.BackendPoolId.ToLower())) == null)
-                    {
-                        throw new PSArgumentException(string.Format(
-                                "Invalid BackendPollId {0} in {1}. Target doesn't exist",
-                                forwardingConfiguration.BackendPoolId, routingRule.Name
-                                ));
-                    }
+                    throw new PSArgumentException(string.Format(
+                            "Invalid BackendPollId {0} in {1}. Target doesn't exist",
+                            routingRule.BackendPoolId, routingRule.Name
+                            ));
                 }
 
             }
