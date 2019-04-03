@@ -15,7 +15,7 @@ Sets a threat detection policy on a server.
 
 ```
 Set-AzSqlServerThreatDetectionPolicy [-PassThru] [-NotificationRecipientsEmails <String>]
- [-EmailAdmins <Boolean>] [-ExcludedDetectionType <DetectionType[]>] [-StorageAccountName <String>]
+ [-EmailAdmins <Boolean>] [-ExcludedDetectionType <String[]>] [-StorageAccountName <String>]
  [-RetentionInDays <UInt32>] -ServerName <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -75,10 +75,9 @@ The acceptable values for this parameter are:
 - None
 
 ```yaml
-Type: Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, None
 
 Required: False
 Position: Named

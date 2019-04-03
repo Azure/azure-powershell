@@ -1,0 +1,1246 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourcegroups/ps8130?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL3Jlc291cmNlZ3JvdXBzL3BzODEzMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"eastus\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7fb05c74-23f3-40b7-a1a1-fb247ebd5cee"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.17"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "28"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "7a013868-fda1-4dbb-b8ce-ea2088ed5ff8"
+        ],
+        "x-ms-correlation-request-id": [
+          "7a013868-fda1-4dbb-b8ce-ea2088ed5ff8"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190327T121131Z:7a013868-fda1-4dbb-b8ce-ea2088ed5ff8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 27 Mar 2019 12:11:30 GMT"
+        ],
+        "Content-Length": [
+          "165"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8130\",\r\n  \"name\": \"ps8130\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground?api-version=2018-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL3Jlc291cmNlR3JvdXBzL1JHX01JUGxheWdyb3VuZC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL1ZORVRfTUlQbGF5Z3JvdW5kP2FwaS12ZXJzaW9uPTIwMTgtMTItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1777e7b7-7fe8-4a4d-9a18-a734dfbdd395"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/19.9.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "W/\"6d0025d9-a43f-47a9-883c-15064d1160dd\""
+        ],
+        "x-ms-request-id": [
+          "b44d50ba-f6ed-47e4-892e-26d4827baf58"
+        ],
+        "x-ms-correlation-request-id": [
+          "89115c2a-32be-4a35-b1f8-98a1c1d4af3e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190327T121131Z:89115c2a-32be-4a35-b1f8-98a1c1d4af3e"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 27 Mar 2019 12:11:30 GMT"
+        ],
+        "Content-Length": [
+          "30652"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"VNET_MIPlayground\",\r\n  \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground\",\r\n  \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"dd89aae9-80ff-4a7e-8ef0-161dac0bb462\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/22\"\r\n      ]\r\n    },\r\n    \"dhcpOptions\": {\r\n      \"dnsServers\": []\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"DMS\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/DMS\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.0.112/28\",\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srki_test/providers/Microsoft.Network/networkSecurityGroups/NG_EMPTY\"\r\n          },\r\n          \"serviceEndpoints\": [],\r\n          \"delegations\": []\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      },\r\n      {\r\n        \"name\": \"MISubnet\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/MISubnet\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.0.0/26\",\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srki_test/providers/Microsoft.Network/networkSecurityGroups/MI_NSG_SAFE\"\r\n          },\r\n          \"routeTable\": {\r\n            \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/routeTables/RT_2SGW\"\r\n          },\r\n          \"resourceNavigationLinks\": [\r\n            {\r\n              \"name\": \"VirtualClusterMISubnet\",\r\n              \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/MISubnet/resourceNavigationLinks/VirtualClusterMISubnet\",\r\n              \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n              \"type\": \"Microsoft.Network/virtualNetworks/subnets/resourceNavigationLinks\",\r\n              \"properties\": {\r\n                \"provisioningState\": \"Succeeded\",\r\n                \"linkedResourceType\": \"Microsoft.Sql/virtualClusters\",\r\n                \"link\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Sql/virtualClusters/VirtualClusterMISubnet?api-version=2015-05-01-preview\"\r\n              }\r\n            }\r\n          ],\r\n          \"serviceEndpoints\": [],\r\n          \"delegations\": []\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      },\r\n      {\r\n        \"name\": \"SecureGatewaySubnet\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/SecureGatewaySubnet\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.0.128/25\",\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srki_test/providers/Microsoft.Network/networkSecurityGroups/MI_NSG_SAFE\"\r\n          },\r\n          \"serviceEndpoints\": [],\r\n          \"delegations\": []\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      },\r\n      {\r\n        \"name\": \"GatewaySubnet\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/GatewaySubnet\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.2.0/27\",\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/cleanupservice/providers/Microsoft.Network/networkSecurityGroups/rg-cleanupservice-nsg1\"\r\n          },\r\n          \"serviceEndpoints\": [],\r\n          \"delegations\": []\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      },\r\n      {\r\n        \"name\": \"csr\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/csr\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.3.0/24\",\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/cleanupservice/providers/Microsoft.Network/networkSecurityGroups/rg-cleanupservice-nsg1\"\r\n          },\r\n          \"routeTable\": {\r\n            \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srki_test_csr_2/providers/Microsoft.Network/routeTables/csr-CSR-RouteTable\"\r\n          },\r\n          \"serviceEndpoints\": [],\r\n          \"delegations\": []\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      },\r\n      {\r\n        \"name\": \"SQLSubnet\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/SQLSubnet\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.0.64/28\",\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/cleanupservice/providers/Microsoft.Network/networkSecurityGroups/rg-cleanupservice-nsg1\"\r\n          },\r\n          \"routeTable\": {\r\n            \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srki_test/providers/Microsoft.Network/routeTables/SQL_RT\"\r\n          },\r\n          \"ipConfigurations\": [\r\n            {\r\n              \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srki_test/providers/Microsoft.Network/networkInterfaces/sql664/ipConfigurations/ipconfig1\"\r\n            }\r\n          ],\r\n          \"serviceEndpoints\": [],\r\n          \"delegations\": []\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      },\r\n      {\r\n        \"name\": \"public\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/public\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.0.80/28\",\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/cleanupservice/providers/Microsoft.Network/networkSecurityGroups/rg-cleanupservice-nsg1\"\r\n          },\r\n          \"routeTable\": {\r\n            \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srki_test/providers/Microsoft.Network/routeTables/MI_CP_FRONT\"\r\n          },\r\n          \"serviceEndpoints\": [],\r\n          \"delegations\": []\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      },\r\n      {\r\n        \"name\": \"private\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/private\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.0.96/28\",\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/cleanupservice/providers/Microsoft.Network/networkSecurityGroups/rg-cleanupservice-nsg1\"\r\n          },\r\n          \"routeTable\": {\r\n            \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srki_test/providers/Microsoft.Network/routeTables/MI_CP_BACK\"\r\n          },\r\n          \"serviceEndpoints\": [],\r\n          \"delegations\": []\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      },\r\n      {\r\n        \"name\": \"CNFWTest\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/CNFWTest\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.2.32/28\",\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/cleanupservice/providers/Microsoft.Network/networkSecurityGroups/rg-cleanupservice-nsg1\"\r\n          },\r\n          \"routeTable\": {\r\n            \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/routeTables/RT_2SGW\"\r\n          },\r\n          \"serviceEndpoints\": [],\r\n          \"delegations\": []\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      },\r\n      {\r\n        \"name\": \"FrontEnd1\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/FrontEnd1\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.1.0/24\",\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/cleanupservice/providers/Microsoft.Network/networkSecurityGroups/rg-cleanupservice-nsg1\"\r\n          },\r\n          \"ipConfigurations\": [\r\n            {\r\n              \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/andy_shared_vms/providers/Microsoft.Network/networkInterfaces/jumpsrv4mi226/ipConfigurations/ipconfig1\"\r\n            },\r\n            {\r\n              \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/andy_shared_vms/providers/Microsoft.Network/networkInterfaces/micustomdns202/ipConfigurations/ipconfig1\"\r\n            },\r\n            {\r\n              \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/builddemo/providers/Microsoft.Network/networkInterfaces/midemovm435/ipConfigurations/ipconfig1\"\r\n            }\r\n          ],\r\n          \"serviceEndpoints\": [],\r\n          \"delegations\": []\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      },\r\n      {\r\n        \"name\": \"misub\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/misub\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.2.48/28\",\r\n          \"routeTable\": {\r\n            \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingEus1/providers/Microsoft.Network/routeTables/ModelRouteEus1\"\r\n          },\r\n          \"networkIntentPolicies\": [\r\n            {\r\n              \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/networkIntentPolicies/2db2d944-e548-43fc-a9b6-40f48da6ce8b\"\r\n            }\r\n          ],\r\n          \"resourceNavigationLinks\": [\r\n            {\r\n              \"name\": \"VirtualClustermisub\",\r\n              \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/misub/resourceNavigationLinks/VirtualClustermisub\",\r\n              \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n              \"type\": \"Microsoft.Network/virtualNetworks/subnets/resourceNavigationLinks\",\r\n              \"properties\": {\r\n                \"provisioningState\": \"Succeeded\",\r\n                \"linkedResourceType\": \"Microsoft.Sql/virtualClusters\",\r\n                \"link\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Sql/virtualClusters/VirtualClustermisub?api-version=2015-05-01-preview\"\r\n              }\r\n            }\r\n          ],\r\n          \"serviceEndpoints\": [],\r\n          \"delegations\": []\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      },\r\n      {\r\n        \"name\": \"VCReservedSubnet\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/VCReservedSubnet\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.2.64/28\",\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/networkSecurityGroups/nsg-sqlcl-vccrudtests-dotnetsdk1\"\r\n          },\r\n          \"routeTable\": {\r\n            \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srki_test/providers/Microsoft.Network/routeTables/rt-sqlcl-vccrudtests-dotnetsdk2\"\r\n          },\r\n          \"networkIntentPolicies\": [\r\n            {\r\n              \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/networkIntentPolicies/635de441-7f43-4199-b94a-12342c257e73\"\r\n            }\r\n          ],\r\n          \"resourceNavigationLinks\": [\r\n            {\r\n              \"name\": \"VirtualCluster25e76aa7-5829-4e81-8a15-51ad189ffffb\",\r\n              \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/VCReservedSubnet/resourceNavigationLinks/VirtualCluster25e76aa7-5829-4e81-8a15-51ad189ffffb\",\r\n              \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n              \"type\": \"Microsoft.Network/virtualNetworks/subnets/resourceNavigationLinks\",\r\n              \"properties\": {\r\n                \"provisioningState\": \"Succeeded\",\r\n                \"linkedResourceType\": \"Microsoft.Sql/virtualClusters\",\r\n                \"link\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Sql/virtualClusters/VirtualCluster25e76aa7-5829-4e81-8a15-51ad189ffffb?api-version=2015-05-01-preview\"\r\n              }\r\n            }\r\n          ],\r\n          \"serviceEndpoints\": [],\r\n          \"delegations\": []\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      },\r\n      {\r\n        \"name\": \"DifferentRgTestSubnet\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/DifferentRgTestSubnet\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.2.80/28\",\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srki_test/providers/Microsoft.Network/networkSecurityGroups/nsg-differentrgtest2\"\r\n          },\r\n          \"routeTable\": {\r\n            \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srki_test/providers/Microsoft.Network/routeTables/rt-differentrgtest2\"\r\n          },\r\n          \"networkIntentPolicies\": [\r\n            {\r\n              \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/networkIntentPolicies/b02e7bc5-c26a-4909-87c6-01a7c0724cc6\"\r\n            }\r\n          ],\r\n          \"resourceNavigationLinks\": [\r\n            {\r\n              \"name\": \"VirtualClustercdf02576-6e67-42eb-b6af-f72e1efce93c\",\r\n              \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/DifferentRgTestSubnet/resourceNavigationLinks/VirtualClustercdf02576-6e67-42eb-b6af-f72e1efce93c\",\r\n              \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n              \"type\": \"Microsoft.Network/virtualNetworks/subnets/resourceNavigationLinks\",\r\n              \"properties\": {\r\n                \"provisioningState\": \"Succeeded\",\r\n                \"linkedResourceType\": \"Microsoft.Sql/virtualClusters\",\r\n                \"link\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Sql/virtualClusters/VirtualClustercdf02576-6e67-42eb-b6af-f72e1efce93c?api-version=2015-05-01-preview\"\r\n              }\r\n            }\r\n          ],\r\n          \"delegations\": []\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      },\r\n      {\r\n        \"name\": \"AzDifferentRgTestSubnet\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/AzDifferentRgTestSubnet\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.2.96/28\",\r\n          \"routeTable\": {\r\n            \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/routeTables/rt-sqlcl-vccrudtests-dotnetsdk1\"\r\n          },\r\n          \"networkIntentPolicies\": [\r\n            {\r\n              \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/networkIntentPolicies/7171a34f-29a2-40d0-8765-df8eb5a8b689\"\r\n            }\r\n          ],\r\n          \"resourceNavigationLinks\": [\r\n            {\r\n              \"name\": \"VirtualCluster5a33aca7-42d3-42c5-9323-07fccd1740e7\",\r\n              \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/AzDifferentRgTestSubnet/resourceNavigationLinks/VirtualCluster5a33aca7-42d3-42c5-9323-07fccd1740e7\",\r\n              \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n              \"type\": \"Microsoft.Network/virtualNetworks/subnets/resourceNavigationLinks\",\r\n              \"properties\": {\r\n                \"provisioningState\": \"Succeeded\",\r\n                \"linkedResourceType\": \"Microsoft.Sql/virtualClusters\",\r\n                \"link\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Sql/virtualClusters/VirtualCluster5a33aca7-42d3-42c5-9323-07fccd1740e7?api-version=2015-05-01-preview\"\r\n              }\r\n            }\r\n          ],\r\n          \"serviceEndpoints\": [],\r\n          \"delegations\": []\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      },\r\n      {\r\n        \"name\": \"RouteTableTest\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/RouteTableTest\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.2.112/28\",\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/cleanupservice/providers/Microsoft.Network/networkSecurityGroups/rg-cleanupservice-nsg1\"\r\n          },\r\n          \"serviceEndpoints\": [],\r\n          \"delegations\": []\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      }\r\n    ],\r\n    \"virtualNetworkPeerings\": [\r\n      {\r\n        \"name\": \"Peering_MIPlayground_MISQLMP\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/virtualNetworkPeerings/Peering_MIPlayground_MISQLMP\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"peeringState\": \"Disconnected\",\r\n          \"remoteVirtualNetwork\": {\r\n            \"id\": \"/subscriptions/862b499a-981f-4c3f-afc5-bdd341c2811e/resourceGroups/SQLMP-AxPo/providers/Microsoft.Network/virtualNetworks/VNET_MI_SQLMP\"\r\n          },\r\n          \"allowVirtualNetworkAccess\": true,\r\n          \"allowForwardedTraffic\": false,\r\n          \"allowGatewayTransit\": false,\r\n          \"useRemoteGateways\": false,\r\n          \"doNotVerifyRemoteGateways\": false,\r\n          \"remoteAddressSpace\": {\r\n            \"addressPrefixes\": [\r\n              \"10.11.0.0/24\"\r\n            ]\r\n          },\r\n          \"routeServiceVips\": {}\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/virtualNetworkPeerings\"\r\n      },\r\n      {\r\n        \"name\": \"sqlMiPeering\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/virtualNetworkPeerings/sqlMiPeering\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"peeringState\": \"Disconnected\",\r\n          \"remoteVirtualNetwork\": {\r\n            \"id\": \"/subscriptions/aad396f6-0794-4cdd-8640-ac6f076d7b4d/resourceGroups/sqlManagedInstance/providers/Microsoft.Network/virtualNetworks/asVnet\"\r\n          },\r\n          \"allowVirtualNetworkAccess\": true,\r\n          \"allowForwardedTraffic\": false,\r\n          \"allowGatewayTransit\": false,\r\n          \"useRemoteGateways\": false,\r\n          \"doNotVerifyRemoteGateways\": false,\r\n          \"remoteAddressSpace\": {\r\n            \"addressPrefixes\": [\r\n              \"10.10.10.0/24\"\r\n            ]\r\n          },\r\n          \"routeServiceVips\": {}\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/virtualNetworkPeerings\"\r\n      },\r\n      {\r\n        \"name\": \"DMSToMIPeerNew\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/virtualNetworkPeerings/DMSToMIPeerNew\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"peeringState\": \"Connected\",\r\n          \"remoteVirtualNetwork\": {\r\n            \"id\": \"/subscriptions/97181df2-909d-420b-ab93-1bff15acb6b7/resourceGroups/MIEastUS/providers/Microsoft.Network/virtualNetworks/MIEastUS\"\r\n          },\r\n          \"allowVirtualNetworkAccess\": true,\r\n          \"allowForwardedTraffic\": false,\r\n          \"allowGatewayTransit\": false,\r\n          \"useRemoteGateways\": false,\r\n          \"doNotVerifyRemoteGateways\": false,\r\n          \"remoteAddressSpace\": {\r\n            \"addressPrefixes\": [\r\n              \"12.0.0.0/24\"\r\n            ]\r\n          },\r\n          \"routeServiceVips\": {}\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/virtualNetworkPeerings\"\r\n      },\r\n      {\r\n        \"name\": \"Mongotest-vnet-to-Vnet_MIPlayground\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/virtualNetworkPeerings/Mongotest-vnet-to-Vnet_MIPlayground\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"peeringState\": \"Disconnected\",\r\n          \"remoteVirtualNetwork\": {\r\n            \"id\": \"/subscriptions/73f85b81-2685-4126-a89a-dcc263c86198/resourceGroups/Mongotest/providers/Microsoft.Network/virtualNetworks/Mongotest-vnet\"\r\n          },\r\n          \"allowVirtualNetworkAccess\": true,\r\n          \"allowForwardedTraffic\": false,\r\n          \"allowGatewayTransit\": false,\r\n          \"useRemoteGateways\": false,\r\n          \"doNotVerifyRemoteGateways\": false,\r\n          \"remoteAddressSpace\": {\r\n            \"addressPrefixes\": [\r\n              \"10.4.0.0/24\"\r\n            ]\r\n          },\r\n          \"routeServiceVips\": {}\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/virtualNetworkPeerings\"\r\n      },\r\n      {\r\n        \"name\": \"Ayo_MI_VNT_TEST\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/virtualNetworkPeerings/Ayo_MI_VNT_TEST\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"peeringState\": \"Connected\",\r\n          \"remoteVirtualNetwork\": {\r\n            \"id\": \"/subscriptions/e7de9ab6-980f-4126-816f-c000195418be/resourceGroups/Ayo_MI_VNET2/providers/Microsoft.Network/virtualNetworks/Ayo_MI_VNET2\"\r\n          },\r\n          \"allowVirtualNetworkAccess\": true,\r\n          \"allowForwardedTraffic\": false,\r\n          \"allowGatewayTransit\": false,\r\n          \"useRemoteGateways\": false,\r\n          \"doNotVerifyRemoteGateways\": false,\r\n          \"remoteAddressSpace\": {\r\n            \"addressPrefixes\": [\r\n              \"192.168.1.0/24\"\r\n            ]\r\n          },\r\n          \"routeServiceVips\": {}\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/virtualNetworkPeerings\"\r\n      },\r\n      {\r\n        \"name\": \"DMSToMIPeerIntCompute\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/virtualNetworkPeerings/DMSToMIPeerIntCompute\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"peeringState\": \"Connected\",\r\n          \"remoteVirtualNetwork\": {\r\n            \"id\": \"/subscriptions/cd94dbf3-3497-4546-95b5-ba941e833080/resourceGroups/MIEastUSIntCompute/providers/Microsoft.Network/virtualNetworks/DMSToMIPeerIntCompute\"\r\n          },\r\n          \"allowVirtualNetworkAccess\": true,\r\n          \"allowForwardedTraffic\": false,\r\n          \"allowGatewayTransit\": false,\r\n          \"useRemoteGateways\": false,\r\n          \"doNotVerifyRemoteGateways\": false,\r\n          \"remoteAddressSpace\": {\r\n            \"addressPrefixes\": [\r\n              \"13.0.0.0/24\"\r\n            ]\r\n          },\r\n          \"routeServiceVips\": {}\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/virtualNetworkPeerings\"\r\n      },\r\n      {\r\n        \"name\": \"ClientToMIPeerin\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/virtualNetworkPeerings/ClientToMIPeerin\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"peeringState\": \"Disconnected\",\r\n          \"remoteVirtualNetwork\": {\r\n            \"id\": \"/subscriptions/4751a1a7-cc75-42c1-a835-811c83eda7c4/resourceGroups/eval-managed-instances/providers/Microsoft.Network/virtualNetworks/vnet\"\r\n          },\r\n          \"allowVirtualNetworkAccess\": true,\r\n          \"allowForwardedTraffic\": false,\r\n          \"allowGatewayTransit\": false,\r\n          \"useRemoteGateways\": false,\r\n          \"doNotVerifyRemoteGateways\": false,\r\n          \"remoteAddressSpace\": {\r\n            \"addressPrefixes\": [\r\n              \"11.11.0.0/22\"\r\n            ]\r\n          },\r\n          \"routeServiceVips\": {}\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/virtualNetworkPeerings\"\r\n      },\r\n      {\r\n        \"name\": \"MYMI_Peering\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/virtualNetworkPeerings/MYMI_Peering\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"peeringState\": \"Disconnected\",\r\n          \"remoteVirtualNetwork\": {\r\n            \"id\": \"/subscriptions/25758354-2fe7-426a-be0e-1ad20058340d/resourceGroups/MIPlay/providers/Microsoft.Network/virtualNetworks/MIVNet\"\r\n          },\r\n          \"allowVirtualNetworkAccess\": true,\r\n          \"allowForwardedTraffic\": false,\r\n          \"allowGatewayTransit\": false,\r\n          \"useRemoteGateways\": false,\r\n          \"doNotVerifyRemoteGateways\": false,\r\n          \"remoteAddressSpace\": {\r\n            \"addressPrefixes\": [\r\n              \"172.16.0.0/22\"\r\n            ]\r\n          },\r\n          \"routeServiceVips\": {}\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/virtualNetworkPeerings\"\r\n      },\r\n      {\r\n        \"name\": \"DMS2MI\",\r\n        \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/virtualNetworkPeerings/DMS2MI\",\r\n        \"etag\": \"W/\\\"6d0025d9-a43f-47a9-883c-15064d1160dd\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"peeringState\": \"Connected\",\r\n          \"remoteVirtualNetwork\": {\r\n            \"id\": \"/subscriptions/97181df2-909d-420b-ab93-1bff15acb6b7/resourceGroups/MIEastUS/providers/Microsoft.Network/virtualNetworks/DMSMIPeeringEUS\"\r\n          },\r\n          \"allowVirtualNetworkAccess\": true,\r\n          \"allowForwardedTraffic\": false,\r\n          \"allowGatewayTransit\": false,\r\n          \"useRemoteGateways\": false,\r\n          \"doNotVerifyRemoteGateways\": false,\r\n          \"remoteAddressSpace\": {\r\n            \"addressPrefixes\": [\r\n              \"10.128.0.0/27\"\r\n            ]\r\n          },\r\n          \"routeServiceVips\": {}\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/virtualNetworkPeerings\"\r\n      }\r\n    ],\r\n    \"enableDdosProtection\": false,\r\n    \"enableVmProtection\": false\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8130/providers/Microsoft.Sql/managedInstances/ps7532?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL3Jlc291cmNlR3JvdXBzL3BzODEzMC9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL3BzNzUzMj9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e7a22383-60c1-4f09-8abd-124e62c68e55"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.29.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "0b0d341a-8218-4ed6-82c7-11d1d0653a14"
+        ],
+        "x-ms-correlation-request-id": [
+          "0b0d341a-8218-4ed6-82c7-11d1d0653a14"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190327T121133Z:0b0d341a-8218-4ed6-82c7-11d1d0653a14"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 27 Mar 2019 12:11:32 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "147"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Sql/managedInstances/ps7532' under resource group 'ps8130' was not found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8130/providers/Microsoft.Sql/managedInstances/ps7532?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL3Jlc291cmNlR3JvdXBzL3BzODEzMC9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL3BzNzUzMj9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.29.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "1b342ce8-5454-424f-b95a-3e06234b7559"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "x-ms-correlation-request-id": [
+          "c3a0af9c-404f-4dbd-9b16-2423c4263e0e"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190327T121435Z:c3a0af9c-404f-4dbd-9b16-2423c4263e0e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 27 Mar 2019 12:14:35 GMT"
+        ],
+        "Content-Length": [
+          "785"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"GP_Gen4\",\r\n    \"tier\": \"GeneralPurpose\",\r\n    \"family\": \"Gen4\",\r\n    \"capacity\": 16\r\n  },\r\n  \"properties\": {\r\n    \"fullyQualifiedDomainName\": \"ps7532.e9af340cc5e4.database.windows.net\",\r\n    \"administratorLogin\": \"testusername\",\r\n    \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/VCReservedSubnet\",\r\n    \"state\": \"Ready\",\r\n    \"licenseType\": \"BasePrice\",\r\n    \"vCores\": 16,\r\n    \"storageSizeInGB\": 32,\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"dnsZone\": \"e9af340cc5e4\",\r\n    \"publicDataEndpointEnabled\": false,\r\n    \"timezoneId\": \"UTC\"\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8130/providers/Microsoft.Sql/managedInstances/ps7532\",\r\n  \"name\": \"ps7532\",\r\n  \"type\": \"Microsoft.Sql/managedInstances\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8130/providers/Microsoft.Sql/managedInstances/ps7532?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL3Jlc291cmNlR3JvdXBzL3BzODEzMC9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9tYW5hZ2VkSW5zdGFuY2VzL3BzNzUzMj9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"GP_Gen4\"\r\n  },\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"administratorLoginPassword\": \"t357ingP@s5w0rd!\",\r\n    \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/VCReservedSubnet\",\r\n    \"licenseType\": \"BasePrice\",\r\n    \"vCores\": 16,\r\n    \"storageSizeInGB\": 32,\r\n    \"publicDataEndpointEnabled\": false\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1689058e-42c1-4e0e-96f9-648f1245f470"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.29.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "502"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8130/providers/Microsoft.Sql/locations/eastus/managedInstanceOperationResults/e030722c-0a26-4dcd-8e43-02f28a3be296?api-version=2015-05-01-preview"
+        ],
+        "Retry-After": [
+          "60"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8130/providers/Microsoft.Sql/locations/eastus/managedInstanceAzureAsyncOperation/e030722c-0a26-4dcd-8e43-02f28a3be296?api-version=2015-05-01-preview"
+        ],
+        "x-ms-request-id": [
+          "e030722c-0a26-4dcd-8e43-02f28a3be296"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-correlation-request-id": [
+          "e18ba4da-05a4-493a-8494-dfe406f640c3"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190327T121134Z:e18ba4da-05a4-493a-8494-dfe406f640c3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 27 Mar 2019 12:11:34 GMT"
+        ],
+        "Content-Length": [
+          "74"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"UpsertManagedServer\",\r\n  \"startTime\": \"2019-03-27T12:11:34.797Z\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8130/providers/Microsoft.Sql/locations/eastus/managedInstanceAzureAsyncOperation/e030722c-0a26-4dcd-8e43-02f28a3be296?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL3Jlc291cmNlR3JvdXBzL3BzODEzMC9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9sb2NhdGlvbnMvZWFzdHVzL21hbmFnZWRJbnN0YW5jZUF6dXJlQXN5bmNPcGVyYXRpb24vZTAzMDcyMmMtMGEyNi00ZGNkLThlNDMtMDJmMjhhM2JlMjk2P2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.29.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "60"
+        ],
+        "x-ms-request-id": [
+          "a9f8ab50-e91d-4a6b-ba18-2e446a047048"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-correlation-request-id": [
+          "04d0c7de-d7e6-4993-ade7-5fb36b6fa7b8"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190327T121235Z:04d0c7de-d7e6-4993-ade7-5fb36b6fa7b8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 27 Mar 2019 12:12:34 GMT"
+        ],
+        "Content-Length": [
+          "108"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"e030722c-0a26-4dcd-8e43-02f28a3be296\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2019-03-27T12:11:34.797Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8130/providers/Microsoft.Sql/locations/eastus/managedInstanceAzureAsyncOperation/e030722c-0a26-4dcd-8e43-02f28a3be296?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL3Jlc291cmNlR3JvdXBzL3BzODEzMC9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9sb2NhdGlvbnMvZWFzdHVzL21hbmFnZWRJbnN0YW5jZUF6dXJlQXN5bmNPcGVyYXRpb24vZTAzMDcyMmMtMGEyNi00ZGNkLThlNDMtMDJmMjhhM2JlMjk2P2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.29.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "60"
+        ],
+        "x-ms-request-id": [
+          "f2b85d6a-e26a-4ca6-9064-b0ad38ac8c83"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-correlation-request-id": [
+          "94ff5da6-850e-4a7b-aeb0-2e7ac172520c"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190327T121335Z:94ff5da6-850e-4a7b-aeb0-2e7ac172520c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 27 Mar 2019 12:13:35 GMT"
+        ],
+        "Content-Length": [
+          "108"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"e030722c-0a26-4dcd-8e43-02f28a3be296\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2019-03-27T12:11:34.797Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8130/providers/Microsoft.Sql/locations/eastus/managedInstanceAzureAsyncOperation/e030722c-0a26-4dcd-8e43-02f28a3be296?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL3Jlc291cmNlR3JvdXBzL3BzODEzMC9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9sb2NhdGlvbnMvZWFzdHVzL21hbmFnZWRJbnN0YW5jZUF6dXJlQXN5bmNPcGVyYXRpb24vZTAzMDcyMmMtMGEyNi00ZGNkLThlNDMtMDJmMjhhM2JlMjk2P2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.29.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "60"
+        ],
+        "x-ms-request-id": [
+          "3bdc09ad-14f4-45d6-85b1-c7b7ee5e2a38"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-correlation-request-id": [
+          "bbafc9c2-b62d-4b7b-b722-da6f56cfc305"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190327T121435Z:bbafc9c2-b62d-4b7b-b722-da6f56cfc305"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 27 Mar 2019 12:14:34 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"e030722c-0a26-4dcd-8e43-02f28a3be296\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2019-03-27T12:11:34.797Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/providers/Microsoft.Sql/virtualClusters?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3ZpcnR1YWxDbHVzdGVycz9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "84ac4e7d-6a43-4301-8a1a-5ed87b523514"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.29.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-original-request-ids": [
+          "30b65a53-93f6-45ab-a3a6-7151d743b222",
+          "08aee002-e083-40bc-8cb2-518fb90bdca0",
+          "df2c2873-2291-48cb-8a5b-eea1ba2a43eb",
+          "500215f9-222f-4906-81ba-81d5dbf43971",
+          "b91d2a72-a364-405a-aa8a-7148d07679b9",
+          "5692ea23-0da9-4b4e-bcc8-df6091b04a16",
+          "25bad86a-0c1b-49fe-b66c-77fe368b067f",
+          "f3ee6ed0-1718-4722-9203-1bd66e693a19",
+          "c5f78840-7493-43a7-8eb7-18e8aae01216",
+          "3e6deecc-ca51-4aa2-8531-e5ea86db08eb",
+          "f630e717-73d3-43f5-a5ec-6a0c1699990e",
+          "41cf2efb-4d16-41e7-a86d-b32187db0254",
+          "5fc7010a-cb41-453f-8034-35e46714c39b",
+          "2611989c-3726-4bc5-bd4b-0f48a9009c1d",
+          "ecc3f800-98df-4fb2-9e04-2be9abdbe732",
+          "489497ec-9cb1-40f2-9944-1977b7f3be0f",
+          "51acff78-c6d4-4d45-9f9d-774bb81121e5",
+          "ed6462fd-304b-4286-934b-9fc0c294fb67",
+          "5870a2cf-4fbf-403d-a2b1-7d633cfc26a3",
+          "5728d97d-b86d-4634-8e77-29f169e5913a",
+          "91a229f3-1e2d-4392-b56c-046d95155537",
+          "dc51c6fc-ba84-443e-ba87-e6044a195d02",
+          "35c938e4-93b6-439b-92a0-eea7139fcc56",
+          "8a0205da-6716-40ad-acae-05fb5d2d0666",
+          "42d044e2-a405-44e7-8a6f-2b6b5e9334ab",
+          "2d12047e-c5cf-4bce-bee2-d1733a1e68ec",
+          "5e2bfe32-e0f4-478e-9027-e6ac65552c48",
+          "e7d4bfbb-7abe-48a0-8486-a0fa8b9d9af5",
+          "67c5faad-320f-4cfb-a26d-449cb251673a",
+          "21de818a-f62b-4555-a61a-1c357da497a3"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11990"
+        ],
+        "x-ms-request-id": [
+          "a742dcf7-2117-472f-991d-60bde7b69263"
+        ],
+        "x-ms-correlation-request-id": [
+          "a742dcf7-2117-472f-991d-60bde7b69263"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190327T121437Z:a742dcf7-2117-472f-991d-60bde7b69263"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 27 Mar 2019 12:14:36 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "56019"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingAuea1/providers/Microsoft.Network/virtualNetworks/ModelVnetAuea1/subnets/default\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingAuea1/providers/Microsoft.Sql/managedInstances/modelmigp1auea1\"\r\n        ]\r\n      },\r\n      \"location\": \"australiaeast\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingAuea1/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srki_test/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground_AES/subnets/MISubnet\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srki_test/providers/Microsoft.Sql/managedInstances/docusign-test\"\r\n        ]\r\n      },\r\n      \"location\": \"australiaeast\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srki_test/providers/Microsoft.Sql/virtualClusters/VirtualClusterMISubnet\",\r\n      \"name\": \"VirtualClusterMISubnet\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingAuse1/providers/Microsoft.Network/virtualNetworks/ModelVnetAuse1/subnets/default\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingAuse1/providers/Microsoft.Sql/managedInstances/modelmigp1ause1\"\r\n        ]\r\n      },\r\n      \"location\": \"australiasoutheast\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingAuse1/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingBrso1/providers/Microsoft.Network/virtualNetworks/ModelVnetBrso1/subnets/default\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingBrso1/providers/Microsoft.Sql/managedInstances/modelmigp1brso1\"\r\n        ]\r\n      },\r\n      \"location\": \"brazilsouth\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingBrso1/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/jimoharg0/providers/Microsoft.Network/virtualNetworks/jimohabzvnet00/subnets/misubnet\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/jimoharg0/providers/Microsoft.Sql/managedInstances/jimohagpmibz00\"\r\n        ]\r\n      },\r\n      \"location\": \"brazilsouth\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/jimoharg0/providers/Microsoft.Sql/virtualClusters/VirtualCluster44a2465f-8072-4903-b32c-08ac7570b4f7\",\r\n      \"name\": \"VirtualCluster44a2465f-8072-4903-b32c-08ac7570b4f7\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/GmPlusRG/providers/Microsoft.Network/virtualNetworks/GmPlusVnet/subnets/BugBashSubnet3\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/GmPlusRG/providers/Microsoft.Sql/managedInstances/bugbashnewprovisioning3\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/GmPlusRG/providers/Microsoft.Sql/managedInstances/bugbashnewprovisioning4\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/GmPlusRG/providers/Microsoft.Sql/managedInstances/bugbasholdprovisioning1\"\r\n        ]\r\n      },\r\n      \"location\": \"canadacentral\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/GmPlusRG/providers/Microsoft.Sql/virtualClusters/VirtualCluster62f13be5-7317-4664-bd40-dfa64701f5bc\",\r\n      \"name\": \"VirtualCluster62f13be5-7317-4664-bd40-dfa64701f5bc\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/GmPlusRG/providers/Microsoft.Network/virtualNetworks/GmPlusVnet/subnets/BugBashSubnet2\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/GmPlusRG/providers/Microsoft.Sql/managedInstances/bugbashradic7\"\r\n        ]\r\n      },\r\n      \"location\": \"canadacentral\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/GmPlusRG/providers/Microsoft.Sql/virtualClusters/VirtualClusterf659acca-0039-4b21-a7eb-b4984cc10431\",\r\n      \"name\": \"VirtualClusterf659acca-0039-4b21-a7eb-b4984cc10431\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/GmPlusRG/providers/Microsoft.Network/virtualNetworks/GmPlusVnet/subnets/BugBashSubnet2\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/GmPlusRG/providers/Microsoft.Sql/managedInstances/bugbashradic5\"\r\n        ]\r\n      },\r\n      \"location\": \"canadacentral\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/GmPlusRG/providers/Microsoft.Sql/virtualClusters/VirtualClusterd4d799b7-03d6-429c-9eac-eac931d1d0c7\",\r\n      \"name\": \"VirtualClusterd4d799b7-03d6-429c-9eac-eac931d1d0c7\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingCaCe1/providers/Microsoft.Network/virtualNetworks/ModelVnetCaCe1/subnets/default\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingCaCe1/providers/Microsoft.Sql/managedInstances/modelmigp1cace1\"\r\n        ]\r\n      },\r\n      \"location\": \"canadacentral\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingCaCe1/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/GmPlusRG/providers/Microsoft.Network/virtualNetworks/GmPlusVnet/subnets/BugBashSubnet2\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/GmPlusRG/providers/Microsoft.Sql/managedInstances/bugbashradicvalidate\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/GmPlusRG/providers/Microsoft.Sql/managedInstances/bugbashradic3\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/GmPlusRG/providers/Microsoft.Sql/managedInstances/bugbashradic2\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/GmPlusRG/providers/Microsoft.Sql/managedInstances/bugbashradic4\"\r\n        ]\r\n      },\r\n      \"location\": \"canadacentral\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/GmPlusRG/providers/Microsoft.Sql/virtualClusters/VirtualCluster5a652569-ada6-457a-a085-b1782b8cccab\",\r\n      \"name\": \"VirtualCluster5a652569-ada6-457a-a085-b1782b8cccab\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/instancePools/providers/Microsoft.Network/virtualNetworks/vnet-jp-instance/subnets/ManagedInstance\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": []\r\n      },\r\n      \"location\": \"canadacentral\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/instancePools/providers/Microsoft.Sql/virtualClusters/VirtualClusterb94d5eff-146c-4cb4-a763-cb0aa4b03f78\",\r\n      \"name\": \"VirtualClusterb94d5eff-146c-4cb4-a763-cb0aa4b03f78\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingCaEa1/providers/Microsoft.Network/virtualNetworks/ModelVnetCaEa1/subnets/default\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingCaEa1/providers/Microsoft.Sql/managedInstances/modelmigp1caea1\"\r\n        ]\r\n      },\r\n      \"location\": \"canadaeast\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingCaEa1/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingInCe1/providers/Microsoft.Network/virtualNetworks/ModelVnetInCe1/subnets/default\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingInCe1/providers/Microsoft.Sql/managedInstances/modelmigp1ince1\"\r\n        ]\r\n      },\r\n      \"location\": \"centralindia\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingInCe1/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingCus1/providers/Microsoft.Network/virtualNetworks/ModelVnetCus1/subnets/default\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingCus1/providers/Microsoft.Sql/managedInstances/modelmigp1cus1\"\r\n        ]\r\n      },\r\n      \"location\": \"centralus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingCus1/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingEas1/providers/Microsoft.Network/virtualNetworks/ModelVnetEas1/subnets/default\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingEas1/providers/Microsoft.Sql/managedInstances/modelmigp1eas1\"\r\n        ]\r\n      },\r\n      \"location\": \"eastasia\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingEas1/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/DifferentRgTestSubnet\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srki_test/providers/Microsoft.Sql/managedInstances/differentrgtest2\"\r\n        ]\r\n      },\r\n      \"location\": \"eastus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Sql/virtualClusters/VirtualClustercdf02576-6e67-42eb-b6af-f72e1efce93c\",\r\n      \"name\": \"VirtualClustercdf02576-6e67-42eb-b6af-f72e1efce93c\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/brrg/providers/Microsoft.Network/virtualNetworks/myVnetEus/subnets/mi\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/brrg/providers/Microsoft.Sql/managedInstances/brcl-eus\"\r\n        ]\r\n      },\r\n      \"location\": \"eastus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/brrg/providers/Microsoft.Sql/virtualClusters/VirtualClusteraf66c24b-c42c-4150-a4eb-26cb102382cb\",\r\n      \"name\": \"VirtualClusteraf66c24b-c42c-4150-a4eb-26cb102382cb\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/VCReservedSubnet\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Sql/managedInstances/toda-temp-mi\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8130/providers/Microsoft.Sql/managedInstances/ps7532\"\r\n        ]\r\n      },\r\n      \"location\": \"eastus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Sql/virtualClusters/VirtualCluster25e76aa7-5829-4e81-8a15-51ad189ffffb\",\r\n      \"name\": \"VirtualCluster25e76aa7-5829-4e81-8a15-51ad189ffffb\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/sqlcrudtest-570/providers/Microsoft.Network/virtualNetworks/sqlcrudtest-3386/subnets/MISubnet\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/sqlcrudtest-570/providers/Microsoft.Sql/managedInstances/manageddatabaserestorescenariotest-sqlcrudtest-9250\"\r\n        ]\r\n      },\r\n      \"location\": \"eastus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/sqlcrudtest-570/providers/Microsoft.Sql/virtualClusters/VirtualClustere357f83c-5b4a-4cf8-8cd7-90f746550e41\",\r\n      \"name\": \"VirtualClustere357f83c-5b4a-4cf8-8cd7-90f746550e41\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/geodrCLtestRG/providers/Microsoft.Network/virtualNetworks/geodrEastUSvnet/subnets/default\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/geodrCLtestRG/providers/Microsoft.Sql/managedInstances/geodrmitestgp-01\"\r\n        ]\r\n      },\r\n      \"location\": \"eastus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/geodrCLtestRG/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/misub\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srki_test/providers/Microsoft.Sql/managedInstances/clustest\"\r\n        ]\r\n      },\r\n      \"location\": \"eastus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Sql/virtualClusters/VirtualClustermisub\",\r\n      \"name\": \"VirtualClustermisub\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/stefanb/providers/Microsoft.Network/virtualNetworks/vnet-stefan-test/subnets/ManagedInstance\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/stefanb/providers/Microsoft.Sql/managedInstances/stefan-test\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/stefanb/providers/Microsoft.Sql/managedInstances/stefan-test-2\"\r\n        ]\r\n      },\r\n      \"location\": \"eastus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/stefanb/providers/Microsoft.Sql/virtualClusters/VirtualCluster7182fe84-9b97-425e-91c8-3e3da091c0cc\",\r\n      \"name\": \"VirtualCluster7182fe84-9b97-425e-91c8-3e3da091c0cc\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/cp_ref/providers/Microsoft.Network/virtualNetworks/cp_vnet/subnets/ManagedInstance\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/cp_ref/providers/Microsoft.Sql/managedInstances/cert-test3\"\r\n        ]\r\n      },\r\n      \"location\": \"eastus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/cp_ref/providers/Microsoft.Sql/virtualClusters/VirtualClusterManagedInstance\",\r\n      \"name\": \"VirtualClusterManagedInstance\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/brrg/providers/Microsoft.Network/virtualNetworks/myVnetEus2/subnets/mi\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/brrg/providers/Microsoft.Sql/managedInstances/brcl-eus2\"\r\n        ]\r\n      },\r\n      \"location\": \"eastus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/brrg/providers/Microsoft.Sql/virtualClusters/VirtualClusteraa9ec9df-6178-4668-bc2a-75998e3af984\",\r\n      \"name\": \"VirtualClusteraa9ec9df-6178-4668-bc2a-75998e3af984\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/MISubnet\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/sqlcrudtest-2085/providers/Microsoft.Sql/managedInstances/sqlcl-crudtests-dotnetsdk1\"\r\n        ]\r\n      },\r\n      \"location\": \"eastus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Sql/virtualClusters/VirtualClusterMISubnet\",\r\n      \"name\": \"VirtualClusterMISubnet\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/AzDifferentRgTestSubnet\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srki_test/providers/Microsoft.Sql/managedInstances/sql-mi-azdiffrgvnet\"\r\n        ]\r\n      },\r\n      \"location\": \"eastus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Sql/virtualClusters/VirtualCluster5a33aca7-42d3-42c5-9323-07fccd1740e7\",\r\n      \"name\": \"VirtualCluster5a33aca7-42d3-42c5-9323-07fccd1740e7\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingEus2/providers/Microsoft.Network/virtualNetworks/ModelVnetEus2/subnets/default\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingEus2/providers/Microsoft.Sql/managedInstances/modelmigp1eus2\"\r\n        ]\r\n      },\r\n      \"location\": \"eastus2\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingEus2/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srbozovi_test/providers/Microsoft.Network/virtualNetworks/vnet-sqlmisetest/subnets/ManagedInstance\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srbozovi_test/providers/Microsoft.Sql/managedInstances/sqlmisetest\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srbozovi_test/providers/Microsoft.Sql/managedInstances/sqlmisetestbc\"\r\n        ]\r\n      },\r\n      \"location\": \"eastus2\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srbozovi_test/providers/Microsoft.Sql/virtualClusters/VirtualClusterd4795238-1b8e-45d3-97eb-e641e47152f5\",\r\n      \"name\": \"VirtualClusterd4795238-1b8e-45d3-97eb-e641e47152f5\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingFrCe1/providers/Microsoft.Network/virtualNetworks/ModelVnetFrCe1/subnets/default\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingFrCe1/providers/Microsoft.Sql/managedInstances/modelmigp1frce1\"\r\n        ]\r\n      },\r\n      \"location\": \"francecentral\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingFrCe1/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingJaea1/providers/Microsoft.Network/virtualNetworks/ModelVnetJaea1/subnets/default\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingJaea1/providers/Microsoft.Sql/managedInstances/modelmigp1jaea1\"\r\n        ]\r\n      },\r\n      \"location\": \"japaneast\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingJaea1/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/sqlcrudtest-6687/providers/Microsoft.Network/virtualNetworks/sqlcrudtest-8475/subnets/MISubnet\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/sqlcrudtest-6687/providers/Microsoft.Sql/managedInstances/crud-tests-sqlcrudtest-9166\"\r\n        ]\r\n      },\r\n      \"location\": \"japaneast\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/sqlcrudtest-6687/providers/Microsoft.Sql/virtualClusters/VirtualCluster7d135fd0-52d1-4c24-871b-ae18f0e84620\",\r\n      \"name\": \"VirtualCluster7d135fd0-52d1-4c24-871b-ae18f0e84620\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingJawe1/providers/Microsoft.Network/virtualNetworks/ModelVnetJawe1/subnets/default\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingJawe1/providers/Microsoft.Sql/managedInstances/modelmigp1jawe1\"\r\n        ]\r\n      },\r\n      \"location\": \"japanwest\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingJawe1/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingKoCe1/providers/Microsoft.Network/virtualNetworks/ModelVnetKoCe1/subnets/default\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingKoCe1/providers/Microsoft.Sql/managedInstances/modelmigp1koce1\"\r\n        ]\r\n      },\r\n      \"location\": \"koreacentral\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingKoCe1/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/georestore-rg/providers/Microsoft.Network/virtualNetworks/vnet-targetinstance/subnets/ManagedInstance\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/georestore-rg/providers/Microsoft.Sql/managedInstances/targetinstance\"\r\n        ]\r\n      },\r\n      \"location\": \"koreasouth\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/georestore-rg/providers/Microsoft.Sql/virtualClusters/VirtualClusterdf40a11f-c07c-4050-8097-aa406fff33cb\",\r\n      \"name\": \"VirtualClusterdf40a11f-c07c-4050-8097-aa406fff33cb\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingKoSo1/providers/Microsoft.Network/virtualNetworks/ModelVnetKoSo1/subnets/default\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingKoSo1/providers/Microsoft.Sql/managedInstances/modelmigp1koso1\"\r\n        ]\r\n      },\r\n      \"location\": \"koreasouth\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingKoSo1/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingNCus1/providers/Microsoft.Network/virtualNetworks/ModelVnetNCus1/subnets/default\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingNCus1/providers/Microsoft.Sql/managedInstances/modelmigp1ncus1\"\r\n        ]\r\n      },\r\n      \"location\": \"northcentralus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingNCus1/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/dvTest/providers/Microsoft.Network/virtualNetworks/dvVnetFail/subnets/MISubnetUpdatePublic2\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/dvTest/providers/Microsoft.Sql/managedInstances/dvmiupdatesubnetpublic2\"\r\n        ]\r\n      },\r\n      \"location\": \"northeurope\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/dvTest/providers/Microsoft.Sql/virtualClusters/VirtualCluster859bba1f-4e14-4f78-b3b9-45c2cf3ea78b\",\r\n      \"name\": \"VirtualCluster859bba1f-4e14-4f78-b3b9-45c2cf3ea78b\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingNeu1/providers/Microsoft.Network/virtualNetworks/ModelVnetNeu1/subnets/default\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingNeu1/providers/Microsoft.Sql/managedInstances/modelmigp1neu1\"\r\n        ]\r\n      },\r\n      \"location\": \"northeurope\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingNeu1/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/dvTest/providers/Microsoft.Network/virtualNetworks/dvVnetPrivate/subnets/MIUpdateSubnet\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": []\r\n      },\r\n      \"location\": \"northeurope\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/dvTest/providers/Microsoft.Sql/virtualClusters/VirtualCluster49040348-ffb0-461a-9a5f-f455bd917460\",\r\n      \"name\": \"VirtualCluster49040348-ffb0-461a-9a5f-f455bd917460\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Network/virtualNetworks/vnet-mipeptest/subnets/ManagedInstance\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/mipeptest\"\r\n        ]\r\n      },\r\n      \"location\": \"northeurope\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/virtualClusters/VirtualCluster3e822f9b-f1ed-4cff-aa44-730f793c0568\",\r\n      \"name\": \"VirtualCluster3e822f9b-f1ed-4cff-aa44-730f793c0568\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/mabender-southafricanorth-rg/providers/Microsoft.Network/virtualNetworks/mabender-southafricanorth-vnet/subnets/mabender-southafricanorth-subnet\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": []\r\n      },\r\n      \"location\": \"southafricanorth\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/mabender-southafricanorth-rg/providers/Microsoft.Sql/virtualClusters/VirtualCluster15b8a23c-aeaf-46b1-9fd0-00ceebbabafe\",\r\n      \"name\": \"VirtualCluster15b8a23c-aeaf-46b1-9fd0-00ceebbabafe\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingSCus1/providers/Microsoft.Network/virtualNetworks/ModelVnetSCus1/subnets/default\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingSCus1/providers/Microsoft.Sql/managedInstances/modelmigp1scus1\"\r\n        ]\r\n      },\r\n      \"location\": \"southcentralus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingSCus1/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingInSo1/providers/Microsoft.Network/virtualNetworks/ModelVnetInSo1/subnets/default\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingInSo1/providers/Microsoft.Sql/managedInstances/modelmigp1inso1\"\r\n        ]\r\n      },\r\n      \"location\": \"southindia\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingInSo1/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingSEas1/providers/Microsoft.Network/virtualNetworks/ModelVnetSEas1/subnets/default\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingSEas1/providers/Microsoft.Sql/managedInstances/modelmigp1seas1\"\r\n        ]\r\n      },\r\n      \"location\": \"southeastasia\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingSEas1/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingUkSo1/providers/Microsoft.Network/virtualNetworks/ModelVnetUkSo1/subnets/default\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingUkSo1/providers/Microsoft.Sql/managedInstances/modelmigp1ukso1\"\r\n        ]\r\n      },\r\n      \"location\": \"uksouth\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingUkSo1/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingUkWe1/providers/Microsoft.Network/virtualNetworks/ModelVnetUkWe1/subnets/default\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingUkWe1/providers/Microsoft.Sql/managedInstances/modelmigp1ukwe1\"\r\n        ]\r\n      },\r\n      \"location\": \"ukwest\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingUkWe1/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/restore-rg/providers/Microsoft.Network/virtualNetworks/myVnetWcus/subnets/mi\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/restore-rg/providers/Microsoft.Sql/managedInstances/brcl-wcus\"\r\n        ]\r\n      },\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/restore-rg/providers/Microsoft.Sql/virtualClusters/VirtualClusterdc20dbe1-8da6-4681-8bc2-4cedbb77a82a\",\r\n      \"name\": \"VirtualClusterdc20dbe1-8da6-4681-8bc2-4cedbb77a82a\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/CMWTestResourceGroup/providers/Microsoft.Network/virtualNetworks/VirtualNetworkCMW/subnets/mi\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/CMWTestResourceGroup/providers/Microsoft.Sql/managedInstances/stdjordjcmw\"\r\n        ]\r\n      },\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/CMWTestResourceGroup/providers/Microsoft.Sql/virtualClusters/VirtualCluster67bdfb54-8e9a-46a5-8ff2-3161f8edd5a5\",\r\n      \"name\": \"VirtualCluster67bdfb54-8e9a-46a5-8ff2-3161f8edd5a5\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/mi-wcus-demo-rg/providers/Microsoft.Network/virtualNetworks/mi-wcus-vnet/subnets/mi-subnet-managed-instances\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/mi-wcus-demo-rg/providers/Microsoft.Sql/managedInstances/ssrstest2\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/mi-wcus-demo-rg/providers/Microsoft.Sql/managedInstances/milevamaric-pilot-gp-00\"\r\n        ]\r\n      },\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/mi-wcus-demo-rg/providers/Microsoft.Sql/virtualClusters/VirtualClustermi-subnet-managed-instances\",\r\n      \"name\": \"VirtualClustermi-subnet-managed-instances\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/svetst/providers/Microsoft.Network/virtualNetworks/vnet-testsvetst20190128/subnets/ManagedInstance\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/svetst/providers/Microsoft.Sql/managedInstances/testsvetst20190128\"\r\n        ]\r\n      },\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/svetst/providers/Microsoft.Sql/virtualClusters/VirtualClusterfd650eb8-2d75-4152-8f6a-5c5586a52e85\",\r\n      \"name\": \"VirtualClusterfd650eb8-2d75-4152-8f6a-5c5586a52e85\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/rgRestrictedadmintestmi/providers/Microsoft.Network/virtualNetworks/vnet-restrictedadmintestmi2/subnets/ManagedInstance\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/rgRestrictedadmintestmi/providers/Microsoft.Sql/managedInstances/restrictedadmintestmi2\"\r\n        ]\r\n      },\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/rgRestrictedadmintestmi/providers/Microsoft.Sql/virtualClusters/VirtualClustere72c76f6-b499-41bb-916a-8b904861afd3\",\r\n      \"name\": \"VirtualClustere72c76f6-b499-41bb-916a-8b904861afd3\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingWCus1/providers/Microsoft.Network/virtualNetworks/ModelVnetWCus1/subnets/default\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingWCus1/providers/Microsoft.Sql/managedInstances/modelmigp1wcus1\"\r\n        ]\r\n      },\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingWCus1/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/DATrain_Validation_Feb19/providers/Microsoft.Network/virtualNetworks/vnet-datrain-validation-feb2019/subnets/ManagedInstance\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/DATrain_Validation_Feb19/providers/Microsoft.Sql/managedInstances/datrain-validation-feb20191\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/DATrain_Validation_Feb19/providers/Microsoft.Sql/managedInstances/nocmwsetvalidation\"\r\n        ]\r\n      },\r\n      \"location\": \"westcentralus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/DATrain_Validation_Feb19/providers/Microsoft.Sql/virtualClusters/VirtualCluster0809980a-1c31-41a3-85c9-26deee112f3c\",\r\n      \"name\": \"VirtualCluster0809980a-1c31-41a3-85c9-26deee112f3c\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/milje/providers/Microsoft.Network/virtualNetworks/vnet-milans-cltest/subnets/ManagedInstance\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/milans_testrg/providers/Microsoft.Sql/managedInstances/milans-cltest\"\r\n        ]\r\n      },\r\n      \"location\": \"westeurope\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/milje/providers/Microsoft.Sql/virtualClusters/VirtualClusterde280c27-ebbf-4874-aa5c-7241fe6d32c4\",\r\n      \"name\": \"VirtualClusterde280c27-ebbf-4874-aa5c-7241fe6d32c4\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Network/virtualNetworks/vnet-clperftesting-gen5-bc24-loose40-weu-01/subnets/ManagedInstance\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clperftesting-gen5-bc24-loose40-weu-01\"\r\n        ]\r\n      },\r\n      \"location\": \"westeurope\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/virtualClusters/VirtualCluster5eb395cc-75a3-46da-a97d-87222efc14f7\",\r\n      \"name\": \"VirtualCluster5eb395cc-75a3-46da-a97d-87222efc14f7\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Network/virtualNetworks/clperftesting_weu_vnet/subnets/ManagedInstances\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clperftesting-gen5-bc32-weu-01\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clperftesting-gen5-bc8-weu-01\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clperftesting-gen5-gp80-weu-01\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clstresstesing-gen5-gp80-weu-001\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clperftesting-gen5-bc40-weu-01\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clstresstesing-gen5-gp8-weu-001\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clperftesting-gen5-bc24-weu-02\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clperftesting-gen5-gp32-weu-01\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clperftesting-gen5-bc24-weu-01\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clperftesting-gen5-bc40-weu-02\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clstresstesing-gen5-gp16-weu-001\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clperftesting-gen5-gp40-weu-01\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clperftesting-gen5-gp24-weu-01\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clperftesting-gen5-gp8-weu-01\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clperftesting-gen5-bc64-weu-01\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clperftesting-gen5-gp16-weu-01\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clperftesting-gen5-bc80-weu-01\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clperftesting-gen5-gp8-weu-02\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clperftesting-gen5-bc16-weu-01\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clperftesting-gen5-gp64-weu-01\"\r\n        ]\r\n      },\r\n      \"location\": \"westeurope\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/virtualClusters/VirtualClusterManagedInstances\",\r\n      \"name\": \"VirtualClusterManagedInstances\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srki_test/providers/Microsoft.Network/virtualNetworks/vnet-miniptest/subnets/ManagedInstance\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srki_test/providers/Microsoft.Sql/managedInstances/miniptest\"\r\n        ]\r\n      },\r\n      \"location\": \"westeurope\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srki_test/providers/Microsoft.Sql/virtualClusters/VirtualCluster6068077f-1e67-4e59-b1c0-f7702e8de729\",\r\n      \"name\": \"VirtualCluster6068077f-1e67-4e59-b1c0-f7702e8de729\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingWeu1/providers/Microsoft.Network/virtualNetworks/ModelVnetWeu1/subnets/default\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingWeu1/providers/Microsoft.Sql/managedInstances/modelmigp1weu1\"\r\n        ]\r\n      },\r\n      \"location\": \"westeurope\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingWeu1/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/stresstesting_weu_rg/providers/Microsoft.Network/virtualNetworks/clstresstesting_weu_vnet/subnets/ManagedInstances\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/stresstesting_weu_rg/providers/Microsoft.Sql/managedInstances/clstresstesing-gen4-gp24-weu-001\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/stresstesting_weu_rg/providers/Microsoft.Sql/managedInstances/clstresstesing-gen4-gp8-weu-001\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clstresstesing-gen4-gp16-weu-001\"\r\n        ]\r\n      },\r\n      \"location\": \"westeurope\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/stresstesting_weu_rg/providers/Microsoft.Sql/virtualClusters/VirtualClusterManagedInstances\",\r\n      \"name\": \"VirtualClusterManagedInstances\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/resourcemoveold/providers/Microsoft.Network/virtualNetworks/resourcemovetest/subnets/injectionSubnet\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/resourcemoveold/providers/Microsoft.Sql/managedInstances/resourcegroupmovetest-dejann\"\r\n        ]\r\n      },\r\n      \"location\": \"westeurope\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/resourcemoveold/providers/Microsoft.Sql/virtualClusters/VirtualCluster0d741e43-6b79-42bb-825b-4c1251838f23\",\r\n      \"name\": \"VirtualCluster0d741e43-6b79-42bb-825b-4c1251838f23\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/milje/providers/Microsoft.Network/virtualNetworks/vnet-milans-cltest/subnets/ManagedInstance\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": []\r\n      },\r\n      \"location\": \"westeurope\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/milje/providers/Microsoft.Sql/virtualClusters/VirtualCluster755a55b7-b93c-48c2-9196-aa5c5ce934a7\",\r\n      \"name\": \"VirtualCluster755a55b7-b93c-48c2-9196-aa5c5ce934a7\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Network/virtualNetworks/clperftesting_weu_vnet/subnets/ManagedInstances\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clperftesting-gen5-bc40-loose80-weu-03\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clperftesting-gen5-bc24-loose40-weu-03\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clperftesting-gen5-bc8-loose24-weu-04\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clperfautotuning\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/clperftesting-gen5-bc32loose64-weu-04\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/managedInstances/miradubc80\"\r\n        ]\r\n      },\r\n      \"location\": \"westeurope\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/clperftesting_weu_rg/providers/Microsoft.Sql/virtualClusters/VirtualClustera242d974-cf43-41b1-8d4d-9218685debcd\",\r\n      \"name\": \"VirtualClustera242d974-cf43-41b1-8d4d-9218685debcd\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingInWe1/providers/Microsoft.Network/virtualNetworks/ModelVnetInWe1/subnets/default\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingInWe1/providers/Microsoft.Sql/managedInstances/modelmigp1inwe1\"\r\n        ]\r\n      },\r\n      \"location\": \"westindia\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingInWe1/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ReadyWorkshop/providers/Microsoft.Network/virtualNetworks/VNET_Workshop_5/subnets/MIsubnet\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ReadyWorkshop/providers/Microsoft.Sql/managedInstances/mi-workshop5-1\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ReadyWorkshop/providers/Microsoft.Sql/managedInstances/mi-workshop5-2\"\r\n        ]\r\n      },\r\n      \"location\": \"westus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ReadyWorkshop/providers/Microsoft.Sql/virtualClusters/VirtualClusterMIsubnet\",\r\n      \"name\": \"VirtualClusterMIsubnet\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/fernotest/providers/Microsoft.Network/virtualNetworks/vnet-fernoreplwus/subnets/MISubnet\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/fernotest/providers/Microsoft.Sql/managedInstances/fernow1sub\"\r\n        ]\r\n      },\r\n      \"location\": \"westus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/fernotest/providers/Microsoft.Sql/virtualClusters/VirtualCluster136b228e-7787-417e-a95a-6f9223fede72\",\r\n      \"name\": \"VirtualCluster136b228e-7787-417e-a95a-6f9223fede72\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/geodrCLtestRG/providers/Microsoft.Network/virtualNetworks/geodrWestUSvnet2/subnets/default\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/geodrCLtestRG/providers/Microsoft.Sql/managedInstances/geodrmitestgp-02\"\r\n        ]\r\n      },\r\n      \"location\": \"westus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/geodrCLtestRG/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/restore-rg/providers/Microsoft.Network/virtualNetworks/vnet-testbrinstance/subnets/ManagedInstance\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/restore-rg/providers/Microsoft.Sql/managedInstances/testbrinstance\"\r\n        ]\r\n      },\r\n      \"location\": \"westus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/restore-rg/providers/Microsoft.Sql/virtualClusters/VirtualCluster7c93e73c-81c7-4d6f-8901-d82c0c33e81f\",\r\n      \"name\": \"VirtualCluster7c93e73c-81c7-4d6f-8901-d82c0c33e81f\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/restore-rg/providers/Microsoft.Network/virtualNetworks/vnet-restorerunnermanagedserverwus/subnets/ManagedInstance\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/restore-rg/providers/Microsoft.Sql/managedInstances/restorerunnermanagedserverwus\"\r\n        ]\r\n      },\r\n      \"location\": \"westus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/restore-rg/providers/Microsoft.Sql/virtualClusters/VirtualClusterd2d552c1-9d2b-47e9-a172-103dd2a91db5\",\r\n      \"name\": \"VirtualClusterd2d552c1-9d2b-47e9-a172-103dd2a91db5\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MIEvacuationTest/providers/Microsoft.Network/virtualNetworks/vnet-managedinstanceevacuate/subnets/ManagedInstance\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MIEvacuationTest/providers/Microsoft.Sql/managedInstances/mirestored1282019\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MIEvacuationTest/providers/Microsoft.Sql/managedInstances/managedinstanceevacuate\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MIEvacuationTest/providers/Microsoft.Sql/managedInstances/mirestored1222019\"\r\n        ]\r\n      },\r\n      \"location\": \"westus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MIEvacuationTest/providers/Microsoft.Sql/virtualClusters/VirtualCluster4cca41ac-09c6-4189-8158-aa49adf52e00\",\r\n      \"name\": \"VirtualCluster4cca41ac-09c6-4189-8158-aa49adf52e00\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/fernotest/providers/Microsoft.Network/virtualNetworks/vnet-fernoreplwus2/subnets/MISubnet\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/fernotest/providers/Microsoft.Sql/managedInstances/fernow1sub3\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/fernotest/providers/Microsoft.Sql/managedInstances/fernow1dist4\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/fernotest/providers/Microsoft.Sql/managedInstances/fernow1sub9\"\r\n        ]\r\n      },\r\n      \"location\": \"westus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/fernotest/providers/Microsoft.Sql/virtualClusters/VirtualClusteraf15ab6a-75e4-43bf-b202-7263acb6d633\",\r\n      \"name\": \"VirtualClusteraf15ab6a-75e4-43bf-b202-7263acb6d633\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/SharePoint2019MITest/providers/Microsoft.Network/virtualNetworks/MyNewVNet/subnets/ManagedInstances\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/SharePoint2016MITest/providers/Microsoft.Sql/managedInstances/sqlmi2\"\r\n        ]\r\n      },\r\n      \"location\": \"westus2\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/SharePoint2019MITest/providers/Microsoft.Sql/virtualClusters/VirtualClusterae011f35-757b-4528-a86b-1ab23442d1cd\",\r\n      \"name\": \"VirtualClusterae011f35-757b-4528-a86b-1ab23442d1cd\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingWus2/providers/Microsoft.Network/virtualNetworks/ModelVnetWus2/subnets/default\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingWus2/providers/Microsoft.Sql/managedInstances/modelmigp1wus2\"\r\n        ]\r\n      },\r\n      \"location\": \"westus2\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingWus2/providers/Microsoft.Sql/virtualClusters/VirtualClusterdefault\",\r\n      \"name\": \"VirtualClusterdefault\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/fernotest/providers/Microsoft.Network/virtualNetworks/vnet-fernorepl/subnets/ManagedInstance\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/fernotest/providers/Microsoft.Sql/managedInstances/fernow2dist\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/fernotest/providers/Microsoft.Sql/managedInstances/fernow2pub2\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/fernotest/providers/Microsoft.Sql/managedInstances/fernow2sub9\"\r\n        ]\r\n      },\r\n      \"location\": \"westus2\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/fernotest/providers/Microsoft.Sql/virtualClusters/VirtualClustercfb2e29b-1cc2-4a24-856d-e7507be78857\",\r\n      \"name\": \"VirtualClustercfb2e29b-1cc2-4a24-856d-e7507be78857\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/jovancvnettest/providers/Microsoft.Network/virtualNetworks/jcSwiftVnet/subnets/MSFT-MI\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/jovancvnettest/providers/Microsoft.Sql/managedInstances/sqlswiftmi\"\r\n        ]\r\n      },\r\n      \"location\": \"eastus2euap\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/jovancvnettest/providers/Microsoft.Sql/virtualClusters/VirtualClusterfa56d76b-bb72-4a62-bbd1-7e7ff641d6cc\",\r\n      \"name\": \"VirtualClusterfa56d76b-bb72-4a62-bbd1-7e7ff641d6cc\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/GmPlusRG/providers/Microsoft.Network/virtualNetworks/GmPlusVnetEus2Euap/subnets/default\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/GmPlusRG/providers/Microsoft.Sql/managedInstances/gmplus-gen5-eus2euap-validation\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/GmPlusRG/providers/Microsoft.Sql/managedInstances/radicdaverification\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/GmPlusRG/providers/Microsoft.Sql/managedInstances/gmplus-gen5-eus2euap-00\"\r\n        ]\r\n      },\r\n      \"location\": \"eastus2euap\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/GmPlusRG/providers/Microsoft.Sql/virtualClusters/VirtualClusterd8e8baca-9496-488c-8b6a-073ba9ab0a63\",\r\n      \"name\": \"VirtualClusterd8e8baca-9496-488c-8b6a-073ba9ab0a63\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/mabender-francesouth-rg/providers/Microsoft.Network/virtualNetworks/vnet-mabender-francesouth-mi/subnets/ManagedInstance\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/mabender-francesouth-rg/providers/Microsoft.Sql/managedInstances/mabender-francesouth-mi\"\r\n        ]\r\n      },\r\n      \"location\": \"francesouth\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/mabender-francesouth-rg/providers/Microsoft.Sql/virtualClusters/VirtualClustercb29810e-849d-4442-add5-dd70314a4d70\",\r\n      \"name\": \"VirtualClustercb29810e-849d-4442-add5-dd70314a4d70\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingFranceSa1/providers/Microsoft.Network/virtualNetworks/ModelVnetFranceSa1/subnets/default\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingFranceSa1/providers/Microsoft.Sql/managedInstances/modelmigp1francesa1\"\r\n        ]\r\n      },\r\n      \"location\": \"francesouth\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ModelRingFranceSa1/providers/Microsoft.Sql/virtualClusters/VirtualCluster12777ce3-18b1-4edc-b034-54db2ef7766c\",\r\n      \"name\": \"VirtualCluster12777ce3-18b1-4edc-b034-54db2ef7766c\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Sql/virtualClusters?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL3Jlc291cmNlR3JvdXBzL1JHX01JUGxheWdyb3VuZC9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC92aXJ0dWFsQ2x1c3RlcnM/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "57669fab-5073-4cfe-bd0f-29e47f7e2f38"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.29.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "f1e178d7-58c4-41ef-811e-0afbfc8f86e8"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11989"
+        ],
+        "x-ms-correlation-request-id": [
+          "c94474e7-1d47-4fe4-9757-1769d36ab4c8"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190327T121437Z:c94474e7-1d47-4fe4-9757-1769d36ab4c8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 27 Mar 2019 12:14:36 GMT"
+        ],
+        "Content-Length": [
+          "3384"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/DifferentRgTestSubnet\",\r\n        \"family\": \"Gen5\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srki_test/providers/Microsoft.Sql/managedInstances/differentrgtest2\"\r\n        ]\r\n      },\r\n      \"location\": \"eastus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Sql/virtualClusters/VirtualClustercdf02576-6e67-42eb-b6af-f72e1efce93c\",\r\n      \"name\": \"VirtualClustercdf02576-6e67-42eb-b6af-f72e1efce93c\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/VCReservedSubnet\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Sql/managedInstances/toda-temp-mi\",\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8130/providers/Microsoft.Sql/managedInstances/ps7532\"\r\n        ]\r\n      },\r\n      \"location\": \"eastus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Sql/virtualClusters/VirtualCluster25e76aa7-5829-4e81-8a15-51ad189ffffb\",\r\n      \"name\": \"VirtualCluster25e76aa7-5829-4e81-8a15-51ad189ffffb\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/misub\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srki_test/providers/Microsoft.Sql/managedInstances/clustest\"\r\n        ]\r\n      },\r\n      \"location\": \"eastus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Sql/virtualClusters/VirtualClustermisub\",\r\n      \"name\": \"VirtualClustermisub\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/MISubnet\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/sqlcrudtest-2085/providers/Microsoft.Sql/managedInstances/sqlcl-crudtests-dotnetsdk1\"\r\n        ]\r\n      },\r\n      \"location\": \"eastus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Sql/virtualClusters/VirtualClusterMISubnet\",\r\n      \"name\": \"VirtualClusterMISubnet\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/AzDifferentRgTestSubnet\",\r\n        \"family\": \"Gen4\",\r\n        \"childResources\": [\r\n          \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/srki_test/providers/Microsoft.Sql/managedInstances/sql-mi-azdiffrgvnet\"\r\n        ]\r\n      },\r\n      \"location\": \"eastus\",\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Sql/virtualClusters/VirtualCluster5a33aca7-42d3-42c5-9323-07fccd1740e7\",\r\n      \"name\": \"VirtualCluster5a33aca7-42d3-42c5-9323-07fccd1740e7\",\r\n      \"type\": \"Microsoft.Sql/virtualClusters\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Sql/virtualClusters/VirtualCluster25e76aa7-5829-4e81-8a15-51ad189ffffb?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL3Jlc291cmNlR3JvdXBzL1JHX01JUGxheWdyb3VuZC9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC92aXJ0dWFsQ2x1c3RlcnMvVmlydHVhbENsdXN0ZXIyNWU3NmFhNy01ODI5LTRlODEtOGExNS01MWFkMTg5ZmZmZmI/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a14d356b-475c-4cdb-882e-b6c18e188c49"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.29.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "2a2b0dbd-a9a5-4bfe-85d1-2a8e2ed0dafa"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11988"
+        ],
+        "x-ms-correlation-request-id": [
+          "61f60782-638e-4629-9959-88e4ff3efbd3"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190327T121437Z:61f60782-638e-4629-9959-88e4ff3efbd3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 27 Mar 2019 12:14:36 GMT"
+        ],
+        "Content-Length": [
+          "797"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"subnetId\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Network/virtualNetworks/VNET_MIPlayground/subnets/VCReservedSubnet\",\r\n    \"family\": \"Gen4\",\r\n    \"childResources\": [\r\n      \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Sql/managedInstances/toda-temp-mi\",\r\n      \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8130/providers/Microsoft.Sql/managedInstances/ps7532\"\r\n    ]\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/RG_MIPlayground/providers/Microsoft.Sql/virtualClusters/VirtualCluster25e76aa7-5829-4e81-8a15-51ad189ffffb\",\r\n  \"name\": \"VirtualCluster25e76aa7-5829-4e81-8a15-51ad189ffffb\",\r\n  \"type\": \"Microsoft.Sql/virtualClusters\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourcegroups/ps8130?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL3Jlc291cmNlZ3JvdXBzL3BzODEzMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "380dcaa0-9411-4cac-9251-9c82a0a832f5"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.17"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgxMzAtRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "28aeb1d5-f02d-44d5-aa02-d6935b467481"
+        ],
+        "x-ms-correlation-request-id": [
+          "28aeb1d5-f02d-44d5-aa02-d6935b467481"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190327T121439Z:28aeb1d5-f02d-44d5-aa02-d6935b467481"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 27 Mar 2019 12:14:38 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgxMzAtRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpneE16QXRSVUZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKbFlYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.17"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgxMzAtRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11987"
+        ],
+        "x-ms-request-id": [
+          "8eb73a83-1576-44e6-a84e-f2ea3b0fbed1"
+        ],
+        "x-ms-correlation-request-id": [
+          "8eb73a83-1576-44e6-a84e-f2ea3b0fbed1"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190327T121454Z:8eb73a83-1576-44e6-a84e-f2ea3b0fbed1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 27 Mar 2019 12:14:53 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgxMzAtRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpneE16QXRSVUZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKbFlYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.17"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgxMzAtRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11986"
+        ],
+        "x-ms-request-id": [
+          "46b08ec2-ba80-4a4b-aed5-3c1964fd7e06"
+        ],
+        "x-ms-correlation-request-id": [
+          "46b08ec2-ba80-4a4b-aed5-3c1964fd7e06"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190327T121509Z:46b08ec2-ba80-4a4b-aed5-3c1964fd7e06"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 27 Mar 2019 12:15:09 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgxMzAtRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpneE16QXRSVUZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKbFlYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.17"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgxMzAtRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11985"
+        ],
+        "x-ms-request-id": [
+          "0040729a-6682-472b-9311-ca45c15521ba"
+        ],
+        "x-ms-correlation-request-id": [
+          "0040729a-6682-472b-9311-ca45c15521ba"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190327T121525Z:0040729a-6682-472b-9311-ca45c15521ba"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 27 Mar 2019 12:15:25 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgxMzAtRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpneE16QXRSVUZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKbFlYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.17"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgxMzAtRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11984"
+        ],
+        "x-ms-request-id": [
+          "7145e1c1-61ae-4959-956b-cadadf2c08a5"
+        ],
+        "x-ms-correlation-request-id": [
+          "7145e1c1-61ae-4959-956b-cadadf2c08a5"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190327T121540Z:7145e1c1-61ae-4959-956b-cadadf2c08a5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 27 Mar 2019 12:15:40 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgxMzAtRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpneE16QXRSVUZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKbFlYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.17"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgxMzAtRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11983"
+        ],
+        "x-ms-request-id": [
+          "ee9f2f26-9ad8-4e34-89fc-e5fe0ff8d763"
+        ],
+        "x-ms-correlation-request-id": [
+          "ee9f2f26-9ad8-4e34-89fc-e5fe0ff8d763"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190327T121555Z:ee9f2f26-9ad8-4e34-89fc-e5fe0ff8d763"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 27 Mar 2019 12:15:54 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgxMzAtRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpneE16QXRSVUZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKbFlYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.17"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgxMzAtRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11982"
+        ],
+        "x-ms-request-id": [
+          "4854a1b0-9143-4657-ac12-7a8732535a00"
+        ],
+        "x-ms-correlation-request-id": [
+          "4854a1b0-9143-4657-ac12-7a8732535a00"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190327T121610Z:4854a1b0-9143-4657-ac12-7a8732535a00"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 27 Mar 2019 12:16:10 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgxMzAtRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpneE16QXRSVUZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKbFlYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.17"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11981"
+        ],
+        "x-ms-request-id": [
+          "a037bd5c-2ca6-47d7-8bae-23f30a1c8345"
+        ],
+        "x-ms-correlation-request-id": [
+          "a037bd5c-2ca6-47d7-8bae-23f30a1c8345"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190327T121626Z:a037bd5c-2ca6-47d7-8bae-23f30a1c8345"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 27 Mar 2019 12:16:25 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzgxMzAtRUFTVFVTIiwiam9iTG9jYXRpb24iOiJlYXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpneE16QXRSVUZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKbFlYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.6.3.9600.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.17"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11980"
+        ],
+        "x-ms-request-id": [
+          "b621d127-07b9-4bab-973f-0d9f6f7d397c"
+        ],
+        "x-ms-correlation-request-id": [
+          "b621d127-07b9-4bab-973f-0d9f6f7d397c"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH2:20190327T121626Z:b621d127-07b9-4bab-973f-0d9f6f7d397c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 27 Mar 2019 12:16:25 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-GetVirtualCluster": [
+      "ps8130",
+      "ps7532"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "a8c9a924-06c0-4bde-9788-e7b1370969e1"
+  }
+}
