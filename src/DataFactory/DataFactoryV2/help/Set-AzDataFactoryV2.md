@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datafactory/set-azdatafactoryv2
@@ -100,7 +100,10 @@ PS C:\> Set-AzDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" -Location "
     Identity          : Microsoft.Azure.Management.DataFactory.Models.FactoryIdentity
     ProvisioningState : Succeeded
     RepoConfiguration :
+```
 
+### Example 2: Create a data factory with repoconfiguration details using an existing factory object.
+```
 PS C:\> Get-AzDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" | Set-AzDataFactoryV2 -AccountName msdata -RepositoryName ADFRepo -CollaborationBranch master -RootFolder / -ProjectName "Azure Data Factory"
 
     DataFactoryName   : WikiADF
@@ -202,7 +205,7 @@ Accept wildcard characters: False
 ```
 
 ### -HostName
-The tags of the data factory.
+The host name for repo configuration.
 
 ```yaml
 Type: System.String
@@ -415,7 +418,7 @@ Accept wildcard characters: False
 ```
 
 ### -TenantId
-The tags of the data factory.
+The tenant id for repo configuration.
 
 ```yaml
 Type: System.String
