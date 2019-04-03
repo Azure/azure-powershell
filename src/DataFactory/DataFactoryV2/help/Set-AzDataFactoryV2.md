@@ -349,7 +349,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The Azure resource ID.
+The Azure resource ID of V2 data factory.
 
 ```yaml
 Type: System.String
