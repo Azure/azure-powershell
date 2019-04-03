@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Commands.Network
                         parameters.RetentionPolicy.Days = this.RetentionInDays;
                     }
 
-                    if (!string.IsNullOrWhiteSpace(this.FormatType) || this.FormatVersion == null)
+                    if (!string.IsNullOrWhiteSpace(this.FormatType) || this.FormatVersion != null)
                     {
                         parameters.Format = new MNM.FlowLogFormatParameters();
 

@@ -18,3 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.2
+* Add cmdlets to enable/disable custom domain SSL
+    - `Enable-AzFrontDoorCustomDomainHttps`
+    - `Disable-AzFrontDoorCustomDomainHttps`
+* Add cmdlet to get all existing frontend endpoints in the current front door resource
+    - `Get-AzFrontDoorFrontendEndpoint`
+
+## Version 0.7.1
+* Add new cmdlets to enable/disable HTTPS for a custom domain
+* Add new cmdlet to get frontend endpoint

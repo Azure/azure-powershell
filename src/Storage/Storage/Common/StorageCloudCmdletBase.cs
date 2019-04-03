@@ -27,7 +27,7 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Storage.File;
 using Microsoft.WindowsAzure.Storage.Queue;
-using Microsoft.WindowsAzure.Storage.Table;
+using XTable= Microsoft.Azure.Cosmos.Table;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -184,6 +184,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         }
 
         /// <summary>
+        /// Cmdlet operation context.
+        /// </summary>
+        protected XTable.OperationContext TableOperationContext
+        {
+            get
+            {
+                return CmdletOperationContext.GetStorageTableOperationContext(WriteDebugLog);
+            }
+        }
+
+        /// <summary>
         /// Write log in debug mode
         /// </summary>
         /// <param name="msg">Debug log</param>
@@ -209,15 +220,35 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 case StorageServiceType.Queue:
                     options = new QueueRequestOptions();
                     break;
-                case StorageServiceType.Table:
-                    options = new TableRequestOptions();
-                    break;
                 case StorageServiceType.File:
                     options = new FileRequestOptions();
                     break;
                 default:
                     throw new ArgumentException(Resources.InvalidStorageServiceType, "type");
             }
+
+            if (ServerTimeoutPerRequest.HasValue)
+            {
+                options.ServerTimeout = ConvertToTimeSpan(ServerTimeoutPerRequest.Value);
+            }
+
+            if (ClientTimeoutPerRequest.HasValue)
+            {
+                options.MaximumExecutionTime = ConvertToTimeSpan(ClientTimeoutPerRequest.Value);
+            }
+
+            return options;
+        }
+
+
+        /// <summary>
+        /// Get a request options
+        /// </summary>
+        /// <param name="type">Service type</param>
+        /// <returns>Request options</returns>
+        public XTable.TableRequestOptions GetTableRequestOptions()
+        {
+            XTable.TableRequestOptions options = new XTable.TableRequestOptions();
 
             if (ServerTimeoutPerRequest.HasValue)
             {

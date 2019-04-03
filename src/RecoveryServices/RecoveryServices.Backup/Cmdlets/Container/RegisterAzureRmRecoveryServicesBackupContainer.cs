@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Prevents the confirmation dialog when specified.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Item.ForceOption)]
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Container.ForceOption)]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()

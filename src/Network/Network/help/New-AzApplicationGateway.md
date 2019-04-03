@@ -36,6 +36,53 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### SetByResourceId
+```
+New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <String>
+ -Sku <PSApplicationGatewaySku> [-SslPolicy <PSApplicationGatewaySslPolicy>]
+ -GatewayIPConfigurations <PSApplicationGatewayIPConfiguration[]>
+ [-SslCertificates <PSApplicationGatewaySslCertificate[]>]
+ [-AuthenticationCertificates <PSApplicationGatewayAuthenticationCertificate[]>]
+ [-TrustedRootCertificate <PSApplicationGatewayTrustedRootCertificate[]>]
+ [-FrontendIPConfigurations <PSApplicationGatewayFrontendIPConfiguration[]>]
+ -FrontendPorts <PSApplicationGatewayFrontendPort[]> [-Probes <PSApplicationGatewayProbe[]>]
+ -BackendAddressPools <PSApplicationGatewayBackendAddressPool[]>
+ -BackendHttpSettingsCollection <PSApplicationGatewayBackendHttpSettings[]>
+ -HttpListeners <PSApplicationGatewayHttpListener[]> [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
+ -RequestRoutingRules <PSApplicationGatewayRequestRoutingRule[]>
+ [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
+ [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
+ [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
+ [-FirewallPolicyId <String>] [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>]
+ [-EnableHttp2] [-EnableFIPS] [-Zone <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetByResource
+```
+New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <String>
+ -Sku <PSApplicationGatewaySku> [-SslPolicy <PSApplicationGatewaySslPolicy>]
+ -GatewayIPConfigurations <PSApplicationGatewayIPConfiguration[]>
+ [-SslCertificates <PSApplicationGatewaySslCertificate[]>]
+ [-AuthenticationCertificates <PSApplicationGatewayAuthenticationCertificate[]>]
+ [-TrustedRootCertificate <PSApplicationGatewayTrustedRootCertificate[]>]
+ [-FrontendIPConfigurations <PSApplicationGatewayFrontendIPConfiguration[]>]
+ -FrontendPorts <PSApplicationGatewayFrontendPort[]> [-Probes <PSApplicationGatewayProbe[]>]
+ -BackendAddressPools <PSApplicationGatewayBackendAddressPool[]>
+ -BackendHttpSettingsCollection <PSApplicationGatewayBackendHttpSettings[]>
+ -HttpListeners <PSApplicationGatewayHttpListener[]> [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
+ -RequestRoutingRules <PSApplicationGatewayRequestRoutingRule[]>
+ [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
+ [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
+ [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
+ [-FirewallPolicy <PSApplicationGatewayWebApplicationFirewallPolicy>]
+ [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>] [-EnableHttp2] [-EnableFIPS]
+ [-Zone <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### IdentityByIdentityObject
 ```
 New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <String>
@@ -267,6 +314,36 @@ Whether HTTP2 is enabled.
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FirewallPolicy
+Firewall configuration
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayWebApplicationFirewallPolicy
+Parameter Sets: SetByResource
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FirewallPolicyId
+FirewallPolicyId
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceId
 Aliases:
 
 Required: False
