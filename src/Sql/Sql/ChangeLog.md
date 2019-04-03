@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Support Database Data Classification.
+* Add Get/Remove AzSqlVirtualCluster cmdlets.
 
 ## Version 1.7.0
 * Add Vulnerability Assessment cmdlets on Server and Managed Instance
