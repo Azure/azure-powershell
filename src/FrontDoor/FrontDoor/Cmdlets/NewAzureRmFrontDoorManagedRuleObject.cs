@@ -16,6 +16,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -29,12 +30,14 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Type of the ruleset (e.g.: DefaultRuleSet)
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "Type of the ruleset")]
+        [PSArgumentCompleter("DefaultRuleSet")]
         public string Type { get; set; }
 
         /// <summary>
         /// Version of the ruleset (e.g.: preview-0.1)
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "Version of the ruleset")]
+        [PSArgumentCompleter("preview-0.1")]
         public string Version { get; set; }
 
         /// <summary>

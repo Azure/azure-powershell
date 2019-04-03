@@ -14,6 +14,7 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.FrontDoor.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
@@ -34,21 +35,21 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Override Action
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Override Action")]
-        public PSAction? Action { get; set; }
+        public PSAction Action { get; set; }
 
         /// <summary>
-        /// Enabled State
+        /// Disabled State
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Enabled State")]
-        public PSEnabledState? EnabledState { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Disabled state")]
+        public SwitchParameter Disabled { get; set; }
 
         public override void ExecuteCmdlet()
         {
             var managedRuleOverride = new PSAzureManagedRuleOverride
             {
                 RuleId = RuleId,
-                Action = Action,
-                EnabledState = EnabledState
+                Action = this.IsParameterBound(c => c.Action) ? Action : (PSAction?)null,
+                EnabledState = (this.IsParameterBound(c => c.Disabled) && Disabled.IsPresent) ? PSEnabledState.Disabled : PSEnabledState.Enabled
             };
             WriteObject(managedRuleOverride);
         }

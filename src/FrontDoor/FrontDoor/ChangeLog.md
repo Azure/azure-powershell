@@ -20,6 +20,9 @@
 ## Upcoming Release
 * Configure redirect routing rule.
 * Enable/Disable cetificate name check for backend pools
+* Modify WAF policy cmdlets to implement new swagger
+    - Adds new managed rule sets capabilities
+    - Adds redirect action
 
 ## Version 0.7.2
 * Add cmdlets to enable/disable custom domain SSL
