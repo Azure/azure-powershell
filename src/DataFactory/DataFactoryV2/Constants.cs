@@ -52,6 +52,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpResourceId = "The Azure resource ID.";
 
+        public const string HelpDataFactoryV2ResourceId = "The Azure resource ID of V2 data factory.";
+
         public const string HelpResourceGroup = "The resource group name.";
 
         public const string HelpFactoryObject = "The data factory object.";

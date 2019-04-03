@@ -31,19 +31,19 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = Constants.HelpResourceId)]
+            HelpMessage = Constants.HelpDataFactoryV2ResourceId)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByResourceIdFactoryRepoVstsConfig,
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = Constants.HelpResourceId)]
+            HelpMessage = Constants.HelpDataFactoryV2ResourceId)]
         [Parameter(
             ParameterSetName = ParameterSetNames.ByResourceIdFactoryRepoGitConfig,
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = Constants.HelpResourceId)]
+            HelpMessage = Constants.HelpDataFactoryV2ResourceId)]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.Id, Constants.DataFactoryId)]
         [ResourceIdCompleter("Microsoft.DataFactory/factories")]
