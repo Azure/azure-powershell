@@ -66,9 +66,9 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests.ScenarioTests
         }
 
 #if NETSTANDARD
-        [Fact(Skip = "Output on powershell is the same, but the handling of `r`n seems to differ for CORE")]
-#else
         [Fact]
+#else
+        [Fact(Skip = "Output on powershell is the same, but the handling of `r`n seems to differ for CORE")]
 #endif
         [Trait(Category.AcceptanceType, Category.DesktopOnly)]
         public void TestNewDirectConnectionWrongV6()

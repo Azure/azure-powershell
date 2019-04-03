@@ -22,6 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using System.Collections.Generic;
     using System.Management.Automation;
     using System.Net.Http;
+    using System.Reflection.Emit;
 
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Peering;
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
 
     /// <summary>
-    ///     New Azure Peering Command-let
+    /// New Azure InputObject Command-let
     /// </summary>
     [Cmdlet(
         VerbsCommon.New,
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     public class NewAzurePeeringCommand : PeeringBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the legacy Peering.
+        /// Gets or sets the legacy InputObject.
         /// </summary>
         [Parameter(
             Mandatory = true,
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public PSPeering LegacyPeering { get; set; }
 
         /// <summary>
-        ///     Gets or sets The Peering NameMD5AuthenticationKeyHelp
+        /// Gets or sets The InputObject NameMD5AuthenticationKeyHelp
         /// </summary>
         [Parameter(
             Position = Constants.PositionPeeringZero,
@@ -72,7 +73,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public virtual string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets The Resource Group Name
+        /// Gets or sets The Resource Group Name
         /// </summary>
         [Parameter(
             Position = Constants.PositionPeeringOne,
@@ -94,76 +95,51 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public virtual string ResourceGroupName { get; set; }
 
         /// <summary>
-        ///     Gets or sets The Peering Location.
+        /// Gets or sets The InputObject Location.
         /// </summary>
         [Parameter(
             Position = Constants.PositionPeeringTwo,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.PeeringLocationHelp,
             ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering)]
         [Parameter(
             Position = Constants.PositionPeeringTwo,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.PeeringLocationHelp,
             ParameterSetName = Constants.Exchange)]
         [Parameter(
             Position = Constants.PositionPeeringTwo,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.PeeringLocationHelp,
             ParameterSetName = Constants.Direct)]
         [ValidateNotNullOrEmpty]
         public virtual string PeeringLocation { get; set; }
 
         /// <summary>
-        ///     Gets or sets The PeerAsn.
+        /// Gets or sets The PeerAsn.
         /// </summary>
         [Parameter(
             Position = Constants.PositionPeeringThree,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.PeeringAsnHelp,
             ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering)]
         [Parameter(
             Position = Constants.PositionPeeringThree,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.PeeringAsnHelp,
             ParameterSetName = Constants.Exchange)]
         [Parameter(
             Position = Constants.PositionPeeringThree,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.PeeringAsnHelp,
             ParameterSetName = Constants.Direct)]
         [ValidateNotNullOrEmpty]
         public virtual string PeerAsnResourceId { get; set; }
 
-        [Parameter(
-            
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = Constants.Exchange,
-            ParameterSetName = Constants.Exchange)]
-        [ValidateNotNullOrEmpty]
-        public virtual SwitchParameter Exchange { get; set; }
-
-        [Parameter(
-            
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = Constants.Direct,
-            ParameterSetName = Constants.Direct)]
-        [ValidateNotNullOrEmpty]
-        public virtual SwitchParameter Direct { get; set; }
-
         /// <summary>
         /// Gets or sets the exchange session.
         /// </summary>
         [Parameter(
-            
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = Constants.PeeringExchangeConnectionHelp,
@@ -175,7 +151,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// Gets or sets the direct session.
         /// </summary>
         [Parameter(
-            
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = Constants.PeeringDirectConnectionHelp,
@@ -185,7 +160,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipeline = true,
             HelpMessage = Constants.UseForPeeringServiceHelp,
             ParameterSetName = Constants.Direct)]
         public virtual SwitchParameter UseForPeeringService { get; set; }
@@ -198,17 +172,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public virtual Hashtable Tag { get; set; }
 
         /// <summary>
-        ///     The inherited Execute function.
+        ///     The AsJob parameter to run in the background.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelp)]
+        public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
+        /// The inherited Execute function.
         /// </summary>
         public override void Execute()
         {
             try
             {
                 base.Execute();
-                if (this.Exchange)
+                if (this.ParameterSetName.Equals(Constants.Exchange, StringComparison.OrdinalIgnoreCase))
                     this.WriteObject(new PSExchangePeeringModelView(this.CreateExchangePeering()));
 
-                if (this.Direct)
+                if (this.ParameterSetName.Equals(Constants.Direct, StringComparison.OrdinalIgnoreCase))
                     this.WriteObject(new PSDirectPeeringModelView(this.CreateDirectPeering()));
 
                 if (this.ParameterSetName.Equals(Constants.ParameterSetNameConvertLegacyPeering))
@@ -399,10 +379,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         }
 
         /// <summary>
-        /// The put new Peering.
+        /// The put new InputObject.
         /// </summary>
         /// <param name="newPeering">
-        /// The new Peering.
+        /// The new InputObject.
         /// </param>
         /// <returns>
         /// The <see cref="object"/>.

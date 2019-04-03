@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
 
     /// <summary>
-    ///     New Azure Peering Command-let
+    ///     New Azure InputObject Command-let
     /// </summary>
     [Cmdlet(
         VerbsCommon.Set,
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     public class SetAzurePeerAsn : PeeringBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the legacy Peering.
+        /// Gets or sets the legacy InputObject.
         /// </summary>
         [Parameter(
              Position = Constants.PositionPeeringZero,
@@ -50,18 +50,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
              ValueFromPipeline = true,
              ParameterSetName = Constants.ParameterSetNameUpdatePhone,
              DontShow = true)]
-        public PSPeerAsn UpdatePeerContact { get; set; }
+        public PSPeerAsn InputObject { get; set; }
 
         /// <summary>
         ///     Gets or sets the Email
         /// </summary>
         [Parameter(
-            Position = Constants.PositionPeeringTwo,
-            Mandatory = false,
-            HelpMessage = Constants.EmailsHelp,
-            ParameterSetName = Constants.ParameterSetNameUpdatePhone),
-        Parameter(
-            Position = Constants.PositionPeeringOne,
             Mandatory = true,
             HelpMessage = Constants.EmailsHelp,
             ParameterSetName = Constants.ParameterSetNameUpdateEmail)]
@@ -69,17 +63,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         public virtual string[] Email { get; set; }
 
         [Parameter(
-            Position = Constants.PositionPeeringOne,
             Mandatory = true,
             HelpMessage = Constants.PhoneHelp,
-            ParameterSetName = Constants.ParameterSetNameUpdatePhone),
-         Parameter(
-             Position = Constants.PositionPeeringTwo,
-             Mandatory = false,
-             HelpMessage = Constants.PhoneHelp,
-             ParameterSetName = Constants.ParameterSetNameUpdateEmail)]
+            ParameterSetName = Constants.ParameterSetNameUpdatePhone)]
         [ValidateNotNullOrEmpty]
         public virtual string[] Phone { get; set; }
+
+        /// <summary>
+        ///     The AsJob parameter to run in the background.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelp)]
+        public SwitchParameter AsJob { get; set; }
 
         /// <summary>
         ///     The inherited Execute function.
@@ -110,11 +104,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         private object UpdatePeerContactInfo()
         {
             // Get old and verify its the same
-            var oldPeerAsn = this.PeeringManagementClient.PeerAsns.Get(this.UpdatePeerContact.Name);
-            if (oldPeerAsn.PeerName == this.UpdatePeerContact.Name
-                && oldPeerAsn.PeerAsnProperty == this.UpdatePeerContact.PeerAsnProperty)
+            var oldPeerAsn = this.PeeringManagementClient.PeerAsns.Get(this.InputObject.Name);
+            if (oldPeerAsn.PeerName == this.InputObject.Name
+                && oldPeerAsn.PeerAsnProperty == this.InputObject.PeerAsnProperty)
             {
-                var update = this.UpdatePeerContact;
+                var update = this.InputObject;
                 if (this.Email != null)
                 {
                     foreach (var email in this.Email)

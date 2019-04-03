@@ -14,25 +14,24 @@ Gets the Peering Resources for a subsription
 
 ### BySubscription (Default)
 ```
-Get-AzPeering [-ResourceGroupName <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzPeering [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### PeeringByResourceAndName
 ```
-Get-AzPeering [-Name <String>] -ResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+Get-AzPeering [-Name <String>] -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### PeeringByResource
 ```
-Get-AzPeering -ResourceGroupName <String> [-Kind <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+Get-AzPeering -ResourceGroupName <String> [-Kind <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### PeeringByKind
 ```
-Get-AzPeering -Kind <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPeering -Kind <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,21 +90,6 @@ Gets all the Exchange Type Peerings for a subscription
 
 ## PARAMETERS
 
-### -AsJob
-Run in the background.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -133,7 +117,7 @@ Accepted values: Direct, Partner, Exchange
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -146,7 +130,7 @@ Accepted values: Direct, Partner, Exchange
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -161,7 +145,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -176,7 +160,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -188,7 +172,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

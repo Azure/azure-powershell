@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
 
     /// <summary>
-    ///     New Azure Peering Command-let
+    ///     New Azure InputObject Command-let
     /// </summary>
     [Cmdlet(
         VerbsCommon.New,
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     {
 
         /// <summary>
-        ///     Gets or sets The Peering name
+        ///     Gets or sets The InputObject name
         /// </summary>
         [Parameter(
             Position = Constants.PositionPeeringZero,
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         public virtual string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets The Peering name
+        ///     Gets or sets The InputObject name
         /// </summary>
         [Parameter(
             Position = Constants.PositionPeeringOne,
@@ -80,6 +80,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             HelpMessage = Constants.PhoneHelp)]
         [ValidateNotNullOrEmpty]
         public virtual string[] Phone { get; set; }
+
+        /// <summary>
+        ///     The AsJob parameter to run in the background.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelp)]
+        public SwitchParameter AsJob { get; set; }
 
         /// <summary>
         ///     The inherited Execute function.
@@ -125,10 +131,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         }
 
         /// <summary>
-        /// The put new Peering.
+        /// The put new InputObject.
         /// </summary>
         /// <param name="newPeering">
-        /// The new Peering.
+        /// The new InputObject.
         /// </param>
         /// <returns>
         /// The <see cref="PSPeerAsn"/>.

@@ -31,7 +31,7 @@ function Test-NewExchangeConnectionV4V6
     $resourceLocation = "CentralUS"
     $profileSku = "Premium_Direct_Metered"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
-    $createdConnection = New-AzPeeringExchangeConnection -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxPrefixesAdvertisedIPv4 -MaxPrefixesAdvertisedIPv6 $maxPrefixesAdvertisedIPv6 -PeerSessionIPv4Address $PeerSessionIPv4Address -PeerSessionIPv6Address $PeerSessionIPv6Address -MD5AuthenticationKey $md5
+    $createdConnection = New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxPrefixesAdvertisedIPv4 -MaxPrefixesAdvertisedIPv6 $maxPrefixesAdvertisedIPv6 -PeerSessionIPv4Address $PeerSessionIPv4Address -PeerSessionIPv6Address $PeerSessionIPv6Address -MD5AuthenticationKey $md5
 	Get-AzPeerAsn
     Assert-AreEqual $md5 $createdConnection.BgpSession.Md5AuthenticationKey
     Assert-AreEqual $bandwidth $createdConnection.BandwidthInMbps 
@@ -53,7 +53,7 @@ function Test-NewExchangeConnectionV4
 
 	$maxPrefixesAdvertisedIPv4 = 23
 	$PeerSessionIPv4Address = "192.168.1.22/32"
-    $createdConnection = New-AzPeeringExchangeConnection -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxPrefixesAdvertisedIPv4 -PeerSessionIPv4Address $PeerSessionIPv4Address -MD5AuthenticationKey $md5
+    $createdConnection = New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxPrefixesAdvertisedIPv4 -PeerSessionIPv4Address $PeerSessionIPv4Address -MD5AuthenticationKey $md5
 	Get-AzPeerAsn
     Assert-AreEqual $md5 $createdConnection.BgpSession.Md5AuthenticationKey
     Assert-AreEqual $bandwidth $createdConnection.BandwidthInMbps 
@@ -75,7 +75,7 @@ function Test-NewExchangeConnectionV6
 
 	$maxPrefixesAdvertisedIPv6 = 45
 	$PeerSessionIPv6Address = "fe01::22/128"
-    $createdConnection = New-AzPeeringExchangeConnection -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv6 $maxPrefixesAdvertisedIPv6 -PeerSessionIPv6Address $PeerSessionIPv6Address -MD5AuthenticationKey $md5
+    $createdConnection = New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv6 $maxPrefixesAdvertisedIPv6 -PeerSessionIPv6Address $PeerSessionIPv6Address -MD5AuthenticationKey $md5
 	Get-AzPeerAsn
     Assert-AreEqual $md5 $createdConnection.BgpSession.Md5AuthenticationKey
     Assert-AreEqual $bandwidth $createdConnection.BandwidthInMbps 
@@ -97,5 +97,5 @@ function Test-NewDirectConnectionWrongV4
 	$sessionv4 = "192.168.1.1/32"
 	$bandwidth = 30000
 	Get-AzPeerAsn
-	Assert-ThrowsContains {New-AzPeeringDirectConnection -PeeringDbFacilityId $facilityId -SessionPrefixIPv4 $sessionv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} "Parameter name: Invalid Prefix: 192.168.1.1/32, must be either /30 or /31"
+	Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixIPv4 $sessionv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} "Parameter name: Invalid Prefix: 192.168.1.1/32, must be either /30 or /31"
 }

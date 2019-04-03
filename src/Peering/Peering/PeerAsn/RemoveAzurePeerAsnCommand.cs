@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
 
     /// <inheritdoc />
     /// <summary>
-    ///     New Azure Peering Command-let
+    ///     New Azure InputObject Command-let
     /// </summary>
     [Cmdlet(
         VerbsCommon.Remove,
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     public class RemoveAzurePeerAsn : PeeringBaseCmdlet
     {
         /// <summary>
-        ///     Gets or sets The Peering name
+        ///     Gets or sets The InputObject name
         /// </summary>
         [Parameter(
             Position = Constants.PositionPeeringZero,
@@ -51,6 +51,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         /// </summary>
         [Parameter]
         public virtual SwitchParameter Force { get; set; }
+
+        /// <summary>
+        ///     The AsJob parameter to run in the background.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelp)]
+        public SwitchParameter AsJob { get; set; }
 
         /// <summary>
         ///     The inherited Execute function.

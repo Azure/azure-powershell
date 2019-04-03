@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
 
     /// <summary>
-    ///     The get Peering locations.
+    ///     The get InputObject locations.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzPeeringLocation", DefaultParameterSetName = Constants.ParameterSetNamePeeringByKind)]
     [OutputType(typeof(PSPeeringLocation))]
@@ -40,19 +40,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = true,
             Position = Constants.PositionPeeringZero,
-            ValueFromPipelineByPropertyName = true,
+
             ParameterSetName = Constants.ParameterSetNamePeeringByKind,
             HelpMessage = Constants.KindHelp)]
         [Parameter(
             Mandatory = true,
             Position = Constants.PositionPeeringZero,
-            ValueFromPipelineByPropertyName = true,
+
             ParameterSetName = Constants.ParameterSetNameLocationByCity,
             HelpMessage = Constants.KindHelp)]
         [Parameter(
             Mandatory = true,
             Position = Constants.PositionPeeringZero,
-            ValueFromPipelineByPropertyName = true,
+
             ParameterSetName = Constants.ParameterSetNameLocationByFacilityId,
             HelpMessage = Constants.KindHelp)]
         [ValidateNotNullOrEmpty]
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = true,
             Position = Constants.PositionPeeringZero,
-            ValueFromPipelineByPropertyName = true,
+
             ParameterSetName = Constants.ParameterSetNameLocationByCity,
             HelpMessage = Constants.LocationHelp)]
         [ValidateNotNullOrEmpty]
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = true,
             Position = Constants.PositionPeeringZero,
-            ValueFromPipelineByPropertyName = true,
+
             ParameterSetName = Constants.ParameterSetNameLocationByFacilityId,
             HelpMessage = Constants.PeeringDbFacilityIdHelp)]
         [ValidateNotNullOrEmpty]
@@ -221,9 +221,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         }
 
         /// <summary>
-        ///     Gets the Peering location.
+        ///     Gets the InputObject location.
         /// </summary>
-        /// <returns>List of Peering locations.</returns>
+        /// <returns>List of InputObject locations.</returns>
         public List<PSPeeringLocation> GetPeeringLocation()
         {
             var icList = this.PeeringLocationClient.List(this.Kind);

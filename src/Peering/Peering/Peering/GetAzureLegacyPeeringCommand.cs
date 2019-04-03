@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
 
     /// <inheritdoc />
     /// <summary>
-    ///     The Get Az Peering Legacy peering.
+    ///     The Get Az InputObject Legacy peering.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzLegacyPeering")]
     [OutputType(typeof(PSPeering))]
@@ -39,7 +39,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = true,
             Position = Constants.PositionPeeringZero,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.KindHelp)]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter(Constants.Direct, Constants.Exchange)]
@@ -51,7 +50,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = true,
             Position = Constants.PositionPeeringOne,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.KindHelp)]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter(Constants.Direct, Constants.Exchange)]

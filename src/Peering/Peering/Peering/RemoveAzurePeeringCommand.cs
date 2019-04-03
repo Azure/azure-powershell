@@ -28,19 +28,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
 
     /// <inheritdoc />
     /// <summary>
-    ///     The Remove Peering cmdlet.
+    ///     The Remove InputObject cmdlet.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzPeering", SupportsShouldProcess = true)]
     [OutputType(typeof(PSPeering))]
     public class RemoveAzurePeeringCommand : PeeringBaseCmdlet
     {
         /// <summary>
-        ///     The Peering name.
+        ///     The InputObject name.
         /// </summary>
         [Parameter(
             Position = Constants.PositionPeeringZero,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.PeeringNameHelp)]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
@@ -49,8 +48,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         ///     The ResourceGroupName
         /// </summary>
         [Parameter(
+            Position = Constants.PositionPeeringOne,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceGroupNameHelp)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -61,6 +60,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </summary>
         [Parameter]
         public virtual SwitchParameter Force { get; set; }
+
+        /// <summary>
+        ///     The AsJob parameter to run in the background.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelp)]
+        public SwitchParameter AsJob { get; set; }
 
         /// <summary>
         ///     Execute Override for powershell cmdlet
@@ -88,13 +93,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         }
 
         /// <summary>
-        ///     Removes the Peering Resource.
+        ///     Removes the InputObject Resource.
         /// </summary>
         /// <returns></returns>
         public void RemovePeering()
         {
             this.PeeringClient.Delete(this.ResourceGroupName, this.Name);
-            this.WriteObject($"Peering {this.Name} Resource Removed.");
+            this.WriteObject($"InputObject {this.Name} Resource Removed.");
         }
     }
 }

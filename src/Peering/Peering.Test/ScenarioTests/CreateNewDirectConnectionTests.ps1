@@ -34,7 +34,7 @@ function Test-NewDirectConnectionWithV4V6
     $resourceLocation = "CentralUS"
     $profileSku = "Premium_Direct_Metered"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
-    $createdConnection = New-AzPeeringDirectConnection -PeeringDbFacilityId $facilityId -SessionPrefixV4 $sessionv4 -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv4 $maxv4 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5
+    $createdConnection = New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV4 $sessionv4 -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv4 $maxv4 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5
 	Get-AzPeerAsn
     Assert-AreEqual $md5 $createdConnection.BgpSession.Md5AuthenticationKey
     Assert-AreEqual $bandwidth $createdConnection.BandwidthInMbps 
@@ -58,7 +58,7 @@ function Test-NewDirectConnectionWithV4
 		$maxv4 = 20000
 	$maxv6 = 2000
 
-    $createdConnection = New-AzPeeringDirectConnection -PeeringDbFacilityId $facilityId -SessionPrefixV4 $sessionv4 -MaxPrefixesAdvertisedIPv4 $maxv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5
+    $createdConnection = New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV4 $sessionv4 -MaxPrefixesAdvertisedIPv4 $maxv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5
 	Get-AzPeerAsn
     Assert-AreEqual $md5 $createdConnection.BgpSession.Md5AuthenticationKey
     Assert-AreEqual $bandwidth $createdConnection.BandwidthInMbps 
@@ -85,7 +85,7 @@ function Test-NewDirectConnectionWithV6
 
 	Get-AzPeerAsn
 
-    $createdConnection = New-AzPeeringDirectConnection -PeeringDbFacilityId $facilityId -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5
+    $createdConnection = New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5
 
     Assert-AreEqual $md5 $createdConnection.BgpSession.Md5AuthenticationKey
     Assert-AreEqual $bandwidth $createdConnection.BandwidthInMbps 
@@ -107,7 +107,7 @@ function Test-NewDirectConnectionNoSession
 		$maxv4 = 20000
 	$maxv6 = 2000
 	Get-AzPeerAsn
-	Assert-ThrowsContains { New-AzPeeringDirectConnection -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5 } "Cannot process command because of one or more missing mandatory parameters: SessionPrefixV4."
+	Assert-ThrowsContains { New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5 } "Cannot process command because of one or more missing mandatory parameters: SessionPrefixV4."
 }
 
 <#
@@ -125,7 +125,7 @@ function Test-NewDirectConnectionHighBandwidth
 		$maxv4 = 20000
 	$maxv6 = 2000
 	Get-AzPeerAsn
-	Assert-ThrowsContains { New-AzPeeringDirectConnection -PeeringDbFacilityId $facilityId -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5 } "The 300000 argument is greater than the maximum allowed range of 100000"
+	Assert-ThrowsContains { New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5 } "The 300000 argument is greater than the maximum allowed range of 100000"
 }
 
 <#
@@ -143,7 +143,7 @@ function Test-NewDirectConnectionLowBandwidth
 	$maxv4 = 20000
 	$maxv6 = 2000
 	Get-AzPeerAsn
-    Assert-ThrowsContains {New-AzPeeringDirectConnection -PeeringDbFacilityId $facilityId -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} "The 0 argument is less than the minimum allowed range of 10000"
+    Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} "The 0 argument is less than the minimum allowed range of 10000"
 }
 
 <#
@@ -161,7 +161,7 @@ function Test-NewDirectConnectionWrongV6
 		$maxv4 = 20000
 	$maxv6 = 2000
 	Get-AzPeerAsn
-	Assert-ThrowsContains {New-AzPeeringDirectConnection -PeeringDbFacilityId $facilityId -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} "Specified argument was out of the range of valid values.`r`nParameter name: IPv6 mask must be /64 - /127. IP Mask out of range fe01::1/128."
+	Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} "Specified argument was out of the range of valid values.`r`nParameter name: IPv6 mask must be /64 - /127. IP Mask out of range fe01::1/128."
 }
 
 <#
@@ -177,5 +177,5 @@ function Test-NewDirectConnectionWrongV4
 		$maxv4 = 20000
 	$maxv6 = 2000
 	Get-AzPeerAsn
-	Assert-ThrowsContains {New-AzPeeringDirectConnection -PeeringDbFacilityId $facilityId -SessionPrefixV4 $sessionv4 -MaxPrefixesAdvertisedIPv4 $maxv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} "Parameter name: Invalid Prefix: 192.168.1.1/32, must be either /30 or /31"
+	Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV4 $sessionv4 -MaxPrefixesAdvertisedIPv4 $maxv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} "Parameter name: Invalid Prefix: 192.168.1.1/32, must be either /30 or /31"
 }

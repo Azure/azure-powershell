@@ -27,18 +27,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
 
     /// <inheritdoc />
     /// <summary>
-    ///     The Get Az Peering cmdlet.
+    ///     The Get Az InputObject cmdlet.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzPeering", DefaultParameterSetName = Constants.ParameterSetNameBySubscription)]
     [OutputType(typeof(PSPeering))]
     public class GetAzurePeeringCommand : PeeringBaseCmdlet
     {
         /// <summary>
-        ///     Gets or sets the Peering name.
+        ///     Gets or sets the InputObject name.
         /// </summary>
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.PeeringNameHelp,
             ParameterSetName = Constants.ParameterSetNamePeeringByResourceAndName)]
         [ValidateNotNullOrEmpty]
@@ -49,18 +48,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </summary>
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
             ParameterSetName = Constants.ParameterSetNameBySubscription)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
             ParameterSetName = Constants.ParameterSetNamePeeringByResourceAndName)]
         [Parameter(
             Position = Constants.PositionPeeringZero,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
             ParameterSetName = Constants.ParameterSetNamePeeringByResource)]
         [ResourceGroupCompleter]
@@ -68,16 +64,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public virtual string ResourceGroupName { get; set; }
 
         /// <summary>
-        ///     Gets or sets the Kind of Peering
+        ///     Gets or sets the Kind of InputObject
         /// </summary>
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.KindHelp,
             ParameterSetName = Constants.ParameterSetNamePeeringByResource)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.KindHelp,
             ParameterSetName = Constants.ParameterSetNamePeeringByKind)]
         [PSArgumentCompleter(Constants.Direct, Constants.Partner, Constants.Exchange)]
@@ -132,9 +126,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         }
 
         /// <summary>
-        ///     Gets Peering by its Kind
+        ///     Gets InputObject by its Kind
         /// </summary>
-        /// <returns>List of Peering resources</returns>
+        /// <returns>List of InputObject resources</returns>
         public List<object> GetPeeringByKind()
         {
             var ics = new List<object>();
@@ -160,9 +154,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         }
 
         /// <summary>
-        ///     Gets Peering Resource by ResourceGroupName
+        ///     Gets InputObject Resource by ResourceGroupName
         /// </summary>
-        /// <returns>List of Peering Resources</returns>
+        /// <returns>List of InputObject Resources</returns>
         public List<object> GetPeeringByResource()
         {
             var icList = this.PeeringClient.ListByResourceGroup(this.ResourceGroupName);
@@ -199,9 +193,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         }
 
         /// <summary>
-        ///     Gets the Peering Resource by ResourceGroupName and Peering Name
+        ///     Gets the InputObject Resource by ResourceGroupName and InputObject Name
         /// </summary>
-        /// <returns>Peering Resource</returns>
+        /// <returns>InputObject Resource</returns>
         public object GetPeeringByResourceAndName()
         {
             var ic = this.PeeringClient.Get(this.ResourceGroupName, this.Name);
@@ -222,9 +216,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         }
 
         /// <summary>
-        ///     Gets all Peering for a subscription.
+        ///     Gets all InputObject for a subscription.
         /// </summary>
-        /// <returns>List of all Peering for a subscription</returns>
+        /// <returns>List of all InputObject for a subscription</returns>
         public List<object> GetPeeringBySubscription()
         {
             var icList = this.PeeringClient.ListBySubscription();

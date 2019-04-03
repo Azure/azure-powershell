@@ -13,7 +13,7 @@ Gets Peer Asn
 ## SYNTAX
 
 ```
-Get-AzPeerAsn [[-PeerName] <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPeerAsn [[-PeerName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,21 +37,6 @@ Type            : Microsoft.Peering/peerAsns
 Gets the PeerAsn
 
 ## PARAMETERS
-
-### -AsJob
-Run in the background.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

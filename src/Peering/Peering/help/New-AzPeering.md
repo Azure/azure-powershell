@@ -15,8 +15,8 @@ Creates a new Peering ARM Resource
 ### Exchange (Default)
 ```
 New-AzPeering [-Name] <String> [-ResourceGroupName] <String> [-PeeringLocation] <String>
- [-PeerAsnResourceId] <String> [-Exchange] -ExchangeConnection <PSExchangeConnection[]> [-Tag <Hashtable>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PeerAsnResourceId] <String> -ExchangeConnection <PSExchangeConnection[]> [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParameterSetNameConvertLegacyPeering
@@ -29,7 +29,7 @@ New-AzPeering -LegacyPeering <PSPeering> [-Name] <String> [-ResourceGroupName] <
 ### Direct
 ```
 New-AzPeering [-Name] <String> [-ResourceGroupName] <String> [-PeeringLocation] <String>
- [-PeerAsnResourceId] <String> [-Direct] -DirectConnection <PSDirectConnection[]> [-UseForPeeringService]
+ [-PeerAsnResourceId] <String> -DirectConnection <PSDirectConnection[]> [-UseForPeeringService]
  [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -140,21 +140,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Direct
-Direct
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Direct
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -DirectConnection
 Create a new Direct connections using the New-AzExchangePeeringConnection and pipe to this command.
 
@@ -167,21 +152,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Exchange
-Exchange
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Exchange
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -241,7 +211,7 @@ Aliases:
 Required: True
 Position: 3
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -257,7 +227,7 @@ Aliases:
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -302,7 +272,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

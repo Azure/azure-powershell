@@ -25,14 +25,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
 
     /// <summary>
-    ///     The get Peering locations.
+    ///     The get InputObject locations.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzPeerAsn")]
     [OutputType(typeof(PSPeeringLocation))]
     public class GetAzurePeerAsn : PeeringBaseCmdlet
     {
         /// <summary>
-        ///     Gets or sets The Peering name
+        ///     Gets or sets The InputObject name
         /// </summary>
         [Parameter(
             Position = Constants.PositionPeeringZero,
