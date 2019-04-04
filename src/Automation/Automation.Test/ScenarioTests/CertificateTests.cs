@@ -12,35 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+
 namespace Commands.Automation.Test
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.Automation.Test;
-    using Microsoft.Azure.ServiceManagement.Common.Models;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
-    public class CertificateTests : AutomationScenarioTestsBase
+    public class CertificateTests : AutomationTestRunner
     {
-        public XunitTracingInterceptor logger;
-
         public CertificateTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(logger);
         }
 
-        [Fact]
+        [Fact(Skip = "Fails on macOS. Needs investigation.")]
         [Trait(Category.Service, Category.Automation)]
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestE2ECertificates()
         {
-            RunPowerShellTest(logger, "Test-E2ECertificates");
+            TestRunner.RunTestScript("Test-E2ECertificates");
         }
 
     }

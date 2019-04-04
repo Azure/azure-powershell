@@ -16,6 +16,8 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +26,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGateway", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGateway", DefaultParameterSetName = "IdentityByUserAssignedIdentityId", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGateway))]
     public class NewAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -156,6 +158,16 @@ namespace Microsoft.Azure.Commands.Network
         public virtual PSApplicationGatewayWebApplicationFirewallConfiguration WebApplicationFirewallConfiguration { get; set; }
 
         [Parameter(
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "FirewallPolicyId")]
+        public string FirewallPolicyId { get; set; }
+
+        [Parameter(
+            ParameterSetName = "SetByResource",
+            HelpMessage = "FirewallPolicy")]
+        public PSApplicationGatewayWebApplicationFirewallPolicy FirewallPolicy { get; set; }
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Autoscale Configuration")]
@@ -182,13 +194,23 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
+        [CmdletParameterBreakingChange("UserAssignedIdentityId", ReplaceMentCmdletParameterName = "Identity")]
         [Parameter(
+            ParameterSetName = "IdentityByUserAssignedIdentityId",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "ResourceId of the user assigned identity to be assigned to Application Gateway.")]
         [ValidateNotNullOrEmpty]
         [Alias("UserAssignedIdentity")]
         public string UserAssignedIdentityId { get; set; }
+
+        [Parameter(
+            ParameterSetName = "IdentityByIdentityObject",
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Application Gateway Identity to be assigned to Application Gateway.")]
+        [ValidateNotNullOrEmpty]
+        public PSManagedServiceIdentity Identity { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -205,6 +227,14 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
+            {
+                if (this.FirewallPolicy != null)
+                {
+                    this.FirewallPolicyId = this.FirewallPolicy.Id;
+                }
+            }
 
             var present = this.IsApplicationGatewayPresent(this.ResourceGroupName, this.Name);
             ConfirmAction(
@@ -309,6 +339,12 @@ namespace Microsoft.Azure.Commands.Network
                 applicationGateway.WebApplicationFirewallConfiguration = this.WebApplicationFirewallConfiguration;
             }
 
+            if (!string.IsNullOrEmpty(this.FirewallPolicyId))
+            {
+                applicationGateway.FirewallPolicy = new PSResourceId();
+                applicationGateway.FirewallPolicy.Id = this.FirewallPolicyId;
+            }
+
             if (this.AutoscaleConfiguration != null)
             {
                 applicationGateway.AutoscaleConfiguration = this.AutoscaleConfiguration;
@@ -340,6 +376,10 @@ namespace Microsoft.Azure.Commands.Network
                     }
                 };
             }
+            else if (this.Identity != null)
+            {
+                applicationGateway.Identity = this.Identity;
+            }
 
             if (this.CustomErrorConfiguration != null)
             {
@@ -347,7 +387,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Normalize the IDs
-            ApplicationGatewayChildResourceHelper.NormalizeChildResourcesId(applicationGateway);
+            ApplicationGatewayChildResourceHelper.NormalizeChildIds(applicationGateway, this.ResourceGroupName, this.Name);
 
             // Map to the sdk object
             var appGwModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ApplicationGateway>(applicationGateway);

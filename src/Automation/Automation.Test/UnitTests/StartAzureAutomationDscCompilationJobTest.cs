@@ -17,13 +17,12 @@ using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
-    public class StartAzureAutomationDscCompilationJobTest : RMTestBase
+    public class StartAzureAutomationDscCompilationJobTest
     {
         private Mock<IAutomationPSClient> mockAutomationClient;
 

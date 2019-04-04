@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.CognitiveServices
 Module Guid: 66c566b4-950c-4a2b-9f3b-199d92f0df1a
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.cognitiveservices

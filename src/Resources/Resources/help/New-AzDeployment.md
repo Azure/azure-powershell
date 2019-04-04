@@ -19,6 +19,13 @@ New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <
  [-Confirm] [<CommonParameters>]
 ```
 
+### ByTemplateObjectAndParameterObject
+```
+New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-AsJob]
+ -TemplateParameterObject <Hashtable> -TemplateObject <Hashtable> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ByTemplateFileAndParameterObject
 ```
 New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-AsJob]
@@ -30,6 +37,13 @@ New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <
 ```
 New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-AsJob]
  -TemplateParameterObject <Hashtable> -TemplateUri <String> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByTemplateObjectAndParameterFile
+```
+New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-AsJob]
+ -TemplateParameterFile <String> -TemplateObject <Hashtable> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -47,6 +61,13 @@ New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ByTemplateObjectAndParameterUri
+```
+New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-AsJob]
+ -TemplateParameterUri <String> -TemplateObject <Hashtable> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ByTemplateFileAndParameterUri
 ```
 New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-AsJob]
@@ -61,6 +82,13 @@ New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ByTemplateObjectWithNoParameters
+```
+New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-AsJob]
+ -TemplateObject <Hashtable> [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### ByTemplateUriWithNoParameters
 ```
 New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <String>] [-AsJob]
@@ -72,11 +100,11 @@ New-AzDeployment [-Name <String>] -Location <String> [-DeploymentDebugLogLevel <
 The **New-AzDeployment** cmdlet adds a deployment at the current subscription scope.
 This includes the resources that the deployment requires.
 
-An Azure resource is a user-managed Azure entity. A resource can live in a resource group, like database server, database, website, virtual machine, or Storage account. 
+An Azure resource is a user-managed Azure entity. A resource can live in a resource group, like database server, database, website, virtual machine, or Storage account.
 Or, it can be a subscription level resource, like role definition, policy definition, etc.
 
 To add resources to a resource group, use the **New-AzResourceGroupDeployment** which creates a deployment at a resource group.
-The **New-AzDeployment** cmdlet creates a deployment at the current subscription scope, which deploys subscription level resources. 
+The **New-AzDeployment** cmdlet creates a deployment at the current subscription scope, which deploys subscription level resources.
 
 To add a deployment at subscription, specify the location and a template.
 The location tells Azure Resource Manager where to store the deployment data. The template is a JSON string that contains individual resources to be deployed.
@@ -93,11 +121,23 @@ Template parameter values that you enter at the command prompt take precedence o
 
 ### Example 1: Use a custom template and parameter file to create a deployment
 ```
-PS C:\>New-AzDeployment -Location "West US" -TemplateFile "D:\Azure\Templates\EngineeringSite.json" -TemplateParameterFile "D:\Azure\Templates\EngSiteParms.json" -TemplateVersion "2.1"
+PS C:\> New-AzDeployment -Location "West US" -TemplateFile "D:\Azure\Templates\EngineeringSite.json" -TemplateParameterFile "D:\Azure\Templates\EngSiteParms.json" -TemplateVersion "2.1"
 ```
 
 This command creates a new deployment at the current subscription scope by using a custom template and a template file on disk.
 The command uses the *TemplateFile* parameter to specify the template and the *TemplateParameterFile* parameter to specify a file that contains parameters and parameter values.
+It uses the *TemplateVersion* parameter to specify the version of the template.
+
+### Example 2: Use a custom template object and parameter file to create a deployment
+```
+PS C:\> $TemplateFileText = [System.IO.File]::ReadAllText("D:\Azure\Templates\EngineeringSite.json")
+PS C:\> $TemplateObject = ConvertFrom-Json $TemplateFileText -AsHashtable
+PS C:\> New-AzDeployment -Location "West US" -TemplateObject $TemplateObject -TemplateParameterFile "D:\Azure\Templates\EngSiteParams.json" -TemplateVersion "2.1"
+```
+
+This command creates a new deployment at the current subscription scope by using a custom template and a template file on disk that has been converted to an in-memory hashtable.
+The first two commands read the text for the template file on disk and convert it to an in-memory hashtable.
+The last command uses the *TemplateObject* parameter to specify this hashtable and the *TemplateParameterFile* parameter to specify a file that contains parameters and parameter values.
 It uses the *TemplateVersion* parameter to specify the version of the template.
 
 ## PARAMETERS
@@ -225,12 +265,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -TemplateObject
+A hash table which represents the template.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: ByTemplateObjectAndParameterObject, ByTemplateObjectAndParameterFile, ByTemplateObjectAndParameterUri, ByTemplateObjectWithNoParameters
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -TemplateParameterFile
 A file that has the template parameters.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByTemplateFileAndParameterFile, ByTemplateUriAndParameterFile
+Parameter Sets: ByTemplateObjectAndParameterFile, ByTemplateFileAndParameterFile, ByTemplateUriAndParameterFile
 Aliases:
 
 Required: True
@@ -245,7 +300,7 @@ A hash table which represents the parameters.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: ByTemplateFileAndParameterObject, ByTemplateUriAndParameterObject
+Parameter Sets: ByTemplateObjectAndParameterObject, ByTemplateFileAndParameterObject, ByTemplateUriAndParameterObject
 Aliases:
 
 Required: True
@@ -260,7 +315,7 @@ Uri to the template parameter file.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByTemplateFileAndParameterUri, ByTemplateUriAndParameterUri
+Parameter Sets: ByTemplateObjectAndParameterUri, ByTemplateFileAndParameterUri, ByTemplateUriAndParameterUri
 Aliases:
 
 Required: True

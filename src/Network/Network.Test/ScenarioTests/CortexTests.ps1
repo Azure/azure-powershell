@@ -52,6 +52,15 @@ function Test-CortexCRUD
         $virtualWansAll = Get-AzureRmVirtualWan
         Assert-NotNull $virtualWansAll
 
+		$virtualWansAll = Get-AzVirtualWan -ResourceGroupName "*"
+        Assert-NotNull $virtualWansAll
+
+		$virtualWansAll = Get-AzVirtualWan -Name "*"
+        Assert-NotNull $virtualWansAll
+
+		$virtualWansAll = Get-AzVirtualWan -ResourceGroupName "*" -Name "*"
+        Assert-NotNull $virtualWansAll
+
 		# Create the Virtual Hub
 		$createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan
 		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
@@ -63,6 +72,15 @@ function Test-CortexCRUD
         Assert-NotNull $virtualHubs
 
         $virtualHubsAll = Get-AzureRmVirtualHub
+        Assert-NotNull $virtualHubsAll
+
+		$virtualHubsAll = Get-AzureRmVirtualHub -ResourceGroupName "*"
+        Assert-NotNull $virtualHubsAll
+
+		$virtualHubsAll = Get-AzureRmVirtualHub -Name "*"
+        Assert-NotNull $virtualHubsAll
+
+		$virtualHubsAll = Get-AzureRmVirtualHub -ResourceGroupName "*" -Name "*"
         Assert-NotNull $virtualHubsAll
 
 		# Update the Virtual Hub
@@ -92,6 +110,15 @@ function Test-CortexCRUD
         $vpnSitesAll = Get-AzureRmVpnSite
         Assert-NotNull $vpnSitesAll
 
+		$vpnSitesAll = Get-AzVpnSite -ResourceGroupName "*"
+        Assert-NotNull $vpnSitesAll
+
+		$vpnSitesAll = Get-AzVpnSite -Name "*"
+        Assert-NotNull $vpnSitesAll
+
+		$vpnSitesAll = Get-AzVpnSite -ResourceGroupName "*" -Name "*"
+        Assert-NotNull $vpnSitesAll
+
 		# Create the VpnGateway
 		$createdVpnGateway = New-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 3
 		$createdVpnGateway = Update-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VpnGatewayScaleUnit 4
@@ -103,7 +130,16 @@ function Test-CortexCRUD
         $vpnGateways = Get-AzureRmVpnGateway -ResourceGroupName $rgName
         Assert-NotNull $vpnGateways
 
-        $vpnGatewaysAll = Get-AzureRmVpnGateway
+        $vpnGatewaysAll = Get-AzureRmVpnGateway -ResourceGroupName "*"
+        Assert-NotNull $vpnGatewaysAll
+
+		$vpnGatewaysAll = Get-AzureRmVpnGateway -Name "*"
+        Assert-NotNull $vpnGatewaysAll
+
+		$vpnGatewaysAll = Get-AzureRmVpnGateway -ResourceGroupName "*" -Name "*"
+        Assert-NotNull $vpnGatewaysAll
+
+		$vpnGatewaysAll = Get-AzureRmVpnGateway
         Assert-NotNull $vpnGatewaysAll
 
 		# Create the VpnConnection
@@ -116,6 +152,9 @@ function Test-CortexCRUD
         $vpnConnections = Get-AzureRmVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName
         Assert-NotNull $vpnConnections
 
+		$vpnConnections = Get-AzureRmVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "*"
+        Assert-NotNull $vpnConnections
+
 		# Create a HubVirtualNetworkConnection
 		$remoteVirtualNetwork = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $remoteVirtualNetworkName -Location $rglocation -AddressPrefix "10.0.1.0/24"
 		$createdHubVnetConnection = New-AzVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $hubVnetConnectionName -RemoteVirtualNetwork $remoteVirtualNetwork
@@ -123,27 +162,30 @@ function Test-CortexCRUD
 		Assert-AreEqual $hubVnetConnectionName $hubVnetConnection.Name
         $hubVnetConnections = Get-AzureRmVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName
         Assert-NotNull $hubVnetConnections
+        $hubVnetConnections = Get-AzureRmVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name "*"
+        Assert-NotNull $hubVnetConnections
+
+        # Clean up
+        $delete = Remove-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName -Force -PassThru
+        Assert-AreEqual $True $delete
+
+        $delete = Remove-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -Force -PassThru
+        Assert-AreEqual $True $delete
+
+        $delete = Remove-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -Force -PassThru
+        Assert-AreEqual $True $delete
+
+        $delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName -Force -PassThru
+        Assert-AreEqual $True $delete
+
+        $delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
+        Assert-AreEqual $True $delete
+
+        $delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
+        Assert-AreEqual $True $delete
 	}
 	finally
 	{
-		$delete = Remove-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHubName -Name $hubVnetConnectionName -Force -PassThru
-		Assert-AreEqual $True $delete
-
-		$delete = Remove-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -Force -PassThru
-		Assert-AreEqual $True $delete
-
-		$delete = Remove-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -Force -PassThru
-		Assert-AreEqual $True $delete
-
-		$delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName -Force -PassThru
-		Assert-AreEqual $True $delete
-
-		$delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
-		Assert-AreEqual $True $delete
-
-		$delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
-		Assert-AreEqual $True $delete
-
 		Clean-ResourceGroup $rgname
 	}
 }
@@ -282,7 +324,19 @@ function Test-CortexExpressRouteCRUD
         Assert-NotNull $expressRouteGateways
         Assert-True { $expressRouteGateways.Count -gt 0 }
 
-        $expressRouteGateways = Get-AzureRmExpressRouteGateway -ResourceGroupName $rgName
+		$expressRouteGateways = Get-AzureRmExpressRouteGateway -ResourceGroupName "*"
+        Assert-NotNull $expressRouteGateways
+        Assert-True { $expressRouteGateways.Count -gt 0 }
+
+		$expressRouteGateways = Get-AzureRmExpressRouteGateway -Name "*"
+        Assert-NotNull $expressRouteGateways
+        Assert-True { $expressRouteGateways.Count -gt 0 }
+
+		$expressRouteGateways = Get-AzureRmExpressRouteGateway -ResourceGroupName "*" -Name "*"
+        Assert-NotNull $expressRouteGateways
+        Assert-True { $expressRouteGateways.Count -gt 0 }
+
+		$expressRouteGateways = Get-AzureRmExpressRouteGateway -ResourceGroupName $rgName
         Assert-NotNull $expressRouteGateways
         Assert-True { $expressRouteGateways.Count -gt 0 }
 
@@ -306,6 +360,14 @@ function Test-CortexExpressRouteCRUD
         Write-Debug "Retrieved ExpressRoute Connection with Private Peering $expressRouteConnectionName successfully"
         Assert-AreEqual $expressRouteConnectionName $expressRouteConnection.Name
         Assert-AreEqual 30 $expressRouteConnection.RoutingWeight
+
+		$expressRouteConnection = Get-AzureRmExpressRouteConnection -ResourceGroupName $rgName -ExpressRouteGatewayName $expressRouteGatewayName
+        Assert-NotNull $expressRouteConnection
+		Assert-True { $expressRouteConnection.Count -ge 0}
+
+		$expressRouteConnection = Get-AzureRmExpressRouteConnection -ResourceGroupName $rgName -ExpressRouteGatewayName $expressRouteGatewayName -Name "*"
+        Assert-NotNull $expressRouteConnection
+		Assert-True { $expressRouteConnection.Count -ge 0}
 
         # Clean up
         Remove-AzureRmExpressRouteConnection -ResourceGroupName $rgName -ExpressRouteGatewayName $expressRouteGatewayName -Name $expressRouteConnectionName -Force

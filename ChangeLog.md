@@ -1,4 +1,230 @@
+## 1.6.0 - March 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+* Added wildcard support to Get cmdlets for Az.Compute and Az.Network
+* Added interactive and username/password authentication for Windows PowerShell 5.1 only
+* Added support for Python 2 runbooks in Az.Automation
+* Az.LogicApp: New cmdlets for Integration Account Assemblies and Batch Configuration
+
+#### Az.Automation
+* Azure automation update management change to support the following new features :
+    * Dynamic grouping
+    * Pre-Post script
+    * Reboot Setting
+
+#### Az.Compute
+* Fix issue with path resolution in Get-AzVmBootDiagnosticsData
+* Update Compute client library to 25.0.0.
+
+#### Az.KeyVault
+* Added wildcard support to KeyVault cmdlets
+
+#### Az.Network
+* Add Threat Intelligence support for Azure Firewall
+* Add Application Gateway Firewall Policy top level resource and Custom Rules
+* Add Alert action type for Azure Firewall Network and Application Rule Collections
+* Added support for conditions in RewriteRules in the Application Gateway
+    - New cmdlets added:
+        - New-AzApplicationGatewayRewriteRuleCondition
+    - Cmdlets updated with optional parameter - RuleSequence and Condition
+        - New-AzApplicationGatewayRewriteRule
+
+#### Az.RecoveryServices
+* Added SnapshotRetentionInDays in Azure VM policy to support Instant RP
+* Added pipe support for unregister container
+
+#### Az.Resources
+* Update wildcard support for Get-AzResource and Get-AzResourceGroup
+* Update credentials used when making generic calls to ARM
+
+#### Az.Sql
+* changed Threat Detection's cmdlets param (ExcludeDetectionType) from DetectionType to string[] to make it future proof when new DetectionTypes are added and to support autocomplete as well.
+* Add Vulnerability Assessment cmdlets on Server and Managed Instance
+
+#### Az.Storage
+* Support Get/Set/Remove Management Policy on a Storage account
+    - Set-AzStorageAccountManagementPolicy
+    - Get-AzStorageAccountManagementPolicy
+    - Remove-AzStorageAccountManagementPolicy
+    - Add-AzStorageAccountManagementPolicyAction
+    - New-AzStorageAccountManagementPolicyFilter
+    - New-AzStorageAccountManagementPolicyRule
+
+#### Az.Websites
+* Fix ARM template bug that breaks cloning all slots using 'New-AzWebApp -IncludeSourceWebAppSlots' 
+
+## 1.5.0 - March 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+* Added wildcard support to Get cmdlets for Az.Compute and Az.Network
+* Added interactive and username/password authentication for Windows PowerShell 5.1 only
+* Added support for Python 2 runbooks in Az.Automation
+* Az.LogicApp: New cmdlets for Integration Account Assemblies and Batch Configuration
+
+#### Az.Accounts
+* Add 'Register-AzModule' command to support AutoRest generated cmdlets
+* Update examples for Connect-AzAccount
+
+#### Az.Automation
+* Fixed issue when retreiving certain monthly schedules in several Azure Automation cmdlets
+* Fix Get-AzAutomationDscNode returning just top 20 nodes. Now it returns all nodes
+
+#### Az.Cdn
+* Added new Powershell cmdlets for Enable/Disable Custom Domain Https and deprecated the old ones
+
+#### Az.Compute
+* Add wildcard support to Get cmdlets
+
+#### Az.DataFactory
+* Updated ADF .Net SDK version to 3.0.1
+
+#### Az.LogicApp
+* Fix for ListWorkflows only retrieving the first page of results
+
+#### Az.Network
+* Add wildcard support to Network cmdlets
+
+#### Az.RecoveryServices
+* Added Sql server in Azure VM support
+* SDK Update
+* Removed VMappContainer check in Get-ProtectableItem
+* Added Name and ServerName as parameters for Get-ProtectableItem
+
+#### Az.Resources
+* Add `-TemplateObject` parameter to deployment cmdlets
+    - More information here: https://github.com/Azure/azure-powershell/issues/2933
+* Fix issue when piping the result of `Get-AzResource` to `Set-AzResource`
+    - More information here: https://github.com/Azure/azure-powershell/issues/8240
+* Fix issue with JSON data type change when running `Set-AzResource`
+    - More information here: https://github.com/Azure/azure-powershell/issues/7930
+
+#### Az.Sql
+* Updating AuditingEndpointsCommunicator.
+    - Fixing the behavior of an edge case while creating new diagnostic settings.
+
+#### Az.Storage
+* Support Kind BlockBlobStorage when create Storage account
+       - New-AzStorageAccount
+
+## 1.4.0 - February 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+* Added interactive and username/password authentication for Windows PowerShell 5.1 only
+* Added support for Python 2 runbooks in Az.Automation
+* Az.LogicApp: New cmdlets for Integration Account Assemblies and Batch Configuration
+
+#### Az.AnalysisServices
+* Deprecated AddAzureASAccount cmdlet
+
+#### Az.Automation
+* Update help for Import-AzAutomationDscNodeConfiguration
+* Added configuration name validation to Import-AzAutomationDscConfiguration cmdlet
+* Improved error handling for Import-AzAutomationDscConfiguration cmdlet
+
+#### Az.CognitiveServices
+* Added CustomSubdomainName as a new optional parameter for New-AzCognitiveServicesAccount which is used to specify subdomain for the resource.
+
+#### Az.Compute
+* Fix issue with ID parameter sets
+* Update Get-AzVMExtension to list all installed extension if Name parameter is not provided
+* Add Tag and ResourceId parameters to Update-AzImage cmdlet
+* Get-AzVmssVM without instance ID and with InstanceView can list VMSS VMs with instance view.
+
+#### Az.DataLakeStore
+* Add cmdlets for ADL deleted item enumerate and restore
+
+#### Az.EventHub
+* Added new boolean property SkipEmptyArchives to Skip Empty Archives in CaptureDescription class of Eventhub
+
+#### Az.KeyVault
+* Fix tagging on Set-AzKeyVaultSecret
+
+#### Az.LogicApp
+* Add in Basic sku for Integration Accounts
+* Add in XSLT 2.0, XSLT 3.0 and Liquid Map Types
+* New cmdlets for Integration Account Assemblies
+	- Get-AzIntegrationAccountAssembly
+	- New-AzIntegrationAccountAssembly
+	- Remove-AzIntegrationAccountAssembly
+	- Set-AzIntegrationAccountAssembly
+* New cmdlets for Integration Account Batch Configuration
+	- Get-AzIntegrationAccountBatchConfiguration
+	- New-AzIntegrationAccountBatchConfiguration
+	- Remove-AzIntegrationAccountBatchConfiguration
+	- Set-AzIntegrationAccountBatchConfiguration
+* Update Logic App SDK to version 4.1.0
+
+#### Az.Monitor
+* Update help for Get-AzMetric
+
+#### Az.Network
+* Update help example for Add-AzApplicationGatewayCustomError
+
+#### Az.OperationalInsights
+* Additional support for New and Get ApplicationInsights data source.
+    - Added new 'ApplicationInsights' kind to support Get specific and Get all ApplicationInsights data sources for given workspace.
+    - Added New-AzOperationalInsightsApplicationInsightsDataSource cmdlet for creating data source by given Application-Insights resource parameters: subscription Id, resourceGroupName and name.
+
+#### Az.Resources
+* Fix for issue https://github.com/Azure/azure-powershell/issues/8166
+* Fix for issue https://github.com/Azure/azure-powershell/issues/8235
+* Fix for issue https://github.com/Azure/azure-powershell/issues/6219
+* Fix bug preventing repeat creation of KeyCredentials
+
+#### Az.Sql
+* Add support for SQL DB Hyperscale tier
+* Fixed bug where restore could fail due to setting unnecessary properties in restore request
+
+#### Az.Websites
+* Correct example in Get-AzWebAppSlotMetrics
+
+## 1.3.0 - February 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+* Added interactive and username/password authentication for Windows PowerShell 5.1 only
+* Added support for Python 2 runbooks in Az.Automation
+
+#### Az.Accounts
+* Update to latest version of ClientRuntime
+
+#### Az.AnalysisServices
+General availability for Az.AnalysisServices module.
+
+#### Az.Compute
+* AEM extension: Add support for UltraSSD and P60,P70 and P80 disks
+* Update help description for Set-AzVMBootDiagnostics
+* Update help description and example for Update-AzImage
+
+#### Az.RecoveryServices
+General availability for Az.RecoveryServices module.
+
+#### Az.Resources
+* Fix tagging for resource groups
+    - More information here: https://github.com/Azure/azure-powershell/issues/8166
+* Fix issue where `Get-AzureRmRoleAssignment` doesn't respect -ErrorAction
+    - More information here: https://github.com/Azure/azure-powershell/issues/8235
+
+#### Az.Sql
+* Add Get/Set AzSqlDatabaseBackupShortTermRetentionPolicy
+* Fix issue where not being logged into Azure account would result in nullref exception when executing SQL cmdlets
+* Fixed null ref exception in Get-AzSqlCapability
+
 ## 1.2.1 - January 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+* Added interactive and username/password authentication for Windows PowerShell 5.1 only
+* Added support for Python 2 runbooks in Az.Automation
+
 #### Az.Accounts
 * Release with correct version of Authentication
 
@@ -8,7 +234,15 @@
 #### Az.RecoveryServices
 * Release with updated Authentication dependency
 
+
 ## 1.2.0 - January 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+* Added interactive and username/password authentication for Windows PowerShell 5.1 only
+* Added support for Python 2 runbooks in Az.Automation
+
 #### Az.Accounts
 * Add interactive and username/password authentication for Windows PowerShell 5.1 only
 * Update incorrect online help URLs
@@ -88,6 +322,11 @@
 * Fixes 'New-AzWebAppSSLBinding' to not overwrite the tags on binding an SSL certificate to an app
 
 ## 1.1.0 - January 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+
 #### Az.Accounts
 * Add 'Local' Scope to Enable-AzureRmAlias
 
@@ -145,8 +384,7 @@
 * Fix backward compatibility issue with Az.Accounts module
 
 ## Version 1.0.0 - December 2018
-
-#### General
-
+### Highlights since the last major release
 * General availability of `Az` module
 * For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/

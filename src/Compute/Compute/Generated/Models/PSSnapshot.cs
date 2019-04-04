@@ -44,9 +44,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public SnapshotSku Sku { get; set; }
         public DateTime? TimeCreated { get; set; }
         public OperatingSystemTypes? OsType { get; set; }
+        public string HyperVGeneration { get; set; }
         public CreationData CreationData { get; set; }
         public int? DiskSizeGB { get; set; }
-        public EncryptionSettings EncryptionSettings { get; set; }
+        public EncryptionSettingsCollection EncryptionSettingsCollection { get; set; }
         public string ProvisioningState { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }

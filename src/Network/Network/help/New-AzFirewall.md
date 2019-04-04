@@ -43,6 +43,7 @@ New-AzFirewall -Name "azFw" -ResourceGroupName "rg" -Location centralus -Virtual
 
 This example creates a Firewall attached to virtual network "vnet" in the same resource group as the firewall.
 Since no rules were specified, the firewall will block all traffic (default behavior).
+Threat Intel will also run in default mode - Alert - which means malicious traffic will be logged, but not denied.
 
 ### 2:  Create a Firewall which allows all HTTPS traffic
 ```
@@ -52,15 +53,35 @@ New-AzFirewall -Name "azFw" -ResourceGroupName "rg" -Location centralus -Virtual
 ```
 
 This example creates a Firewall which allows all HTTPS traffic on port 443.
+Threat Intel will run in default mode - Alert - which means malicious traffic will be logged, but not denied.
 
 ### 3:  DNAT - redirect traffic destined to 10.1.2.3:80 to 10.2.3.4:8080
 ```
 $rule = New-AzFirewallNatRule -Name "natRule" -Protocol "TCP" -SourceAddress "*" -DestinationAddress "10.1.2.3" -DestinationPort "80" -TranslatedAddress "10.2.3.4" -TranslatedPort "8080"
 $ruleCollection = New-AzFirewallNatRuleCollection -Name "NatRuleCollection" -Priority 1000 -Rule $rule
-New-AzFirewall -Name "azFw" -ResourceGroupName "rg" -Location centralus -NatRuleCollection $ruleCollection
+New-AzFirewall -Name "azFw" -ResourceGroupName "rg" -Location centralus -NatRuleCollection $ruleCollection -ThreatIntelMode Off
 ```
 
 This example created a Firewall which translated the destination IP and port of all packets destined to 10.1.2.3:80 to 10.2.3.4:8080
+Threat Intel is turned off in this example.
+
+### 4:  Create a Firewall with no rules and with Threat Intel in Alert mode
+```
+New-AzFirewall -Name "azFw" -ResourceGroupName "rg" -Location centralus -VirtualNetworkName "vnet" -PublicIpName "pip-name" -ThreatIntelMode Alert
+```
+
+This example creates a Firewall which blocks all traffic (default behavior) and has Threat Intel running in Alert mode.
+This means alerting logs are emitted for malicious traffic before applying the other rules (in this case just the default rule - Deny All)
+
+### 5:  Create a Firewall which allows all HTTP traffic on port 8080, but blocks malicious domains identified by Threat Intel
+```
+$rule = New-AzFirewallApplicationRule -Name R1 -Protocol "http:8080" -TargetFqdn "*" 
+$ruleCollection = New-AzFirewallApplicationRuleCollection -Name RC1 -Priority 100 -Rule $rule -ActionType "Allow"
+New-AzFirewall -Name "azFw" -ResourceGroupName "rg" -Location centralus -VirtualNetworkName "vnet" -PublicIpName "pip-name" -ApplicationRuleCollection $ruleCollection -ThreatIntelMode Deny
+```
+
+This example creates a Firewall which allows all HTTP traffic on port 8080 unless it is considered malicious by Threat Intel.
+When running in Deny mode, unlike Alert, traffic considered malicious by Threat Intel is not just logged, but also blocked.
 
 ## PARAMETERS
 
@@ -227,6 +248,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ThreatIntelMode
+Specifies the operation mode for Threat Intelligence. Default mode is Alert, not Off.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: Alert
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```

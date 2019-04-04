@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 6420CBE1-BF9D-493D-BCA8-E8C6688FAF3B
@@ -16,7 +16,7 @@ Downloads the contents of a file.
 ### ShareName (Default)
 ```
 Get-AzStorageFileContent [-ShareName] <String> [-Path] <String> [[-Destination] <String>] [-CheckMd5]
- [-PassThru] [-Force] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+ [-PassThru] [-Force] [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -24,7 +24,7 @@ Get-AzStorageFileContent [-ShareName] <String> [-Path] <String> [[-Destination] 
 ### Share
 ```
 Get-AzStorageFileContent [-Share] <CloudFileShare> [-Path] <String> [[-Destination] <String>] [-CheckMd5]
- [-PassThru] [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-PassThru] [-Force] [-AsJob] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -32,15 +32,15 @@ Get-AzStorageFileContent [-Share] <CloudFileShare> [-Path] <String> [[-Destinati
 ### Directory
 ```
 Get-AzStorageFileContent [-Directory] <CloudFileDirectory> [-Path] <String> [[-Destination] <String>]
- [-CheckMd5] [-PassThru] [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-CheckMd5] [-PassThru] [-Force] [-AsJob] [-ServerTimeoutPerRequest <Int32>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### File
 ```
 Get-AzStorageFileContent [-File] <CloudFile> [[-Destination] <String>] [-CheckMd5] [-PassThru] [-Force]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-AsJob] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -67,11 +67,23 @@ This example downloads the files under sample file share
 
 ## PARAMETERS
 
+### -AsJob
+Run cmdlet in the background.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CheckMd5
-If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
-If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
-If you specify a path of an existing file and you do not specify *Force*, the cmdlet prompts you before it continues.
-If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
+Specifies whether to check the Md5 sum for the downloaded file.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -86,10 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClientTimeoutPerRequest
-If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
-If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
-If you specify a path of an existing file and you do not specify *Force*, the cmdlet prompts you before it continues.
-If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
+Specifies the client-side time-out interval, in seconds, for one service request. If the previous call fails in the specified interval, this cmdlet retries the request. If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -104,10 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConcurrentTaskCount
-If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
-If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
-If you specify a path of an existing file and you do not specify *Force*, the cmdlet prompts you before it continues.
-If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
+Specifies the maximum concurrent network calls. You can use this parameter to limit the concurrency to throttle local CPU and bandwidth usage by specifying the maximum number of concurrent network calls. The specified value is an absolute count and is not multiplied by the core count. This parameter can help reduce network connection problems in low bandwidth environments, such as 100 kilobits per second. The default value is 10.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -122,10 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -Context
-If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
-If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
-If you specify a path of an existing file and you do not specify *Force*, the cmdlet prompts you before it continues.
-If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
+Specifies an Azure Storage context. To obtain a context, use the New-AzStorageContext cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
@@ -228,10 +231,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
-If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
-If you specify a path of an existing file and you do not specify *Force*, the cmdlet prompts you before it continues.
-If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
+Indicates that this cmdlet returns the **AzureStorageFile** object that it downloads.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -263,10 +263,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerTimeoutPerRequest
-If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
-If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
-If you specify a path of an existing file and you do not specify *Force*, the cmdlet prompts you before it continues.
-If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
+Specifies the service side time-out interval, in seconds, for a request. If the specified interval elapses before the service processes the request, the storage service returns an error.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
