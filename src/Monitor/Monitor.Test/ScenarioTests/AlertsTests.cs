@@ -94,20 +94,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewAzureRmMetricAlertRuleV2DimensionSelection()
-        {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-NewAzureRmMetricAlertRuleV2DimensionSelection");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewAzureRmMetricAlertRuleV2Criteria()
-        {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-NewAzureRmMetricAlertRuleV2Criteria");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAzureRmMetricAlertRuleV2()
         {
             TestsController.NewInstance.RunPsTest(_logger, "Test-RemoveAzureRmAlertRuleV2");
