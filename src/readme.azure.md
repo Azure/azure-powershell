@@ -3,6 +3,7 @@
 > Values
 ``` yaml
 azure: true
+enable-multi-api: true
 ```
 
 > Names
