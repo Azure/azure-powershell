@@ -30,6 +30,52 @@ namespace Microsoft.Azure.Commands.Automation.Common
             using (var request = new RequestSettings(this.automationManagementClient))
             {
                 var updateConfig = configuration.UpdateConfiguration;
+                IList<Sdk.AzureQueryProperties> azureQueries = null;
+                if (updateConfig != null && updateConfig.Targets != null && updateConfig.Targets.AzureQueries != null)
+                {
+                    azureQueries = new List<Sdk.AzureQueryProperties>();
+
+                    foreach (var query in updateConfig.Targets.AzureQueries)
+                    {
+
+                        var tags = new Dictionary<string, IList<string>>();
+                        if (query.TagSettings != null && query.TagSettings.Tags != null)
+                        {
+                            foreach (var tag in query.TagSettings.Tags)
+                            {
+                                tags.Add(tag.Key, tag.Value);
+                            }
+                        }
+
+                        var azureQueryProperty = new Sdk.AzureQueryProperties
+                        {
+                            Locations = query.Locations,
+                            Scope = query.Scope,
+                            TagSettings = new Sdk.TagSettingsProperties
+                            {
+                                Tags = tags,
+                                FilterOperator = query.TagSettings == null? Sdk.TagOperators.Any : (Sdk.TagOperators)query.TagSettings.FilterOperator
+                            }
+                        };
+                        azureQueries.Add(azureQueryProperty);
+                    }
+
+                }
+
+                IList<Sdk.NonAzureQueryProperties> nonAzureQueries = null;
+                if (updateConfig != null && updateConfig.Targets != null && updateConfig.Targets.NonAzureQueries != null)
+                {
+                    nonAzureQueries = new List<Sdk.NonAzureQueryProperties>();
+                    foreach (var query in updateConfig.Targets.NonAzureQueries)
+                    {
+                        var nonAzureQueryProperty = new Sdk.NonAzureQueryProperties
+                        {
+                           FunctionAlias = query.FunctionAlias,
+                           WorkspaceId = query.WorkspaceResourceId
+                        };
+                        nonAzureQueries.Add(nonAzureQueryProperty);
+                    }
+                }
 
                 var sucParameters = new Sdk.SoftwareUpdateConfiguration()
                 {
@@ -45,25 +91,39 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     },
                     UpdateConfiguration = new Sdk.UpdateConfiguration()
                     {
-                        OperatingSystem = updateConfig.OperatingSystem == OperatingSystemType.Windows ? 
+                        OperatingSystem = updateConfig.OperatingSystem == OperatingSystemType.Windows ?
                                                     Sdk.OperatingSystemType.Windows : Sdk.OperatingSystemType.Linux,
                         Windows = updateConfig.OperatingSystem == OperatingSystemType.Linux ? null : new Sdk.WindowsProperties()
                         {
-                            IncludedUpdateClassifications = updateConfig.Windows != null && updateConfig.Windows.IncludedUpdateClassifications != null 
-                                ? string.Join(",", updateConfig.Windows.IncludedUpdateClassifications.Select(c => c.ToString())) 
+                            IncludedUpdateClassifications = updateConfig.Windows != null && updateConfig.Windows.IncludedUpdateClassifications != null
+                                ? string.Join(",", updateConfig.Windows.IncludedUpdateClassifications.Select(c => c.ToString()))
                                 : null,
-                            ExcludedKbNumbers = updateConfig.Windows != null ? updateConfig.Windows.ExcludedKbNumbers : null
+                            ExcludedKbNumbers = updateConfig.Windows != null ? updateConfig.Windows.ExcludedKbNumbers : null,
+                            RebootSetting = updateConfig.Windows != null ? updateConfig.Windows.rebootSetting.ToString() : RebootSetting.IfRequired.ToString(),
                         },
                         Linux = updateConfig.OperatingSystem == OperatingSystemType.Windows ? null : new Sdk.LinuxProperties()
                         {
-                            IncludedPackageClassifications = updateConfig.Linux != null && updateConfig.Linux.IncludedPackageClassifications != null 
-                                ? string.Join(",", updateConfig.Linux.IncludedPackageClassifications.Select(c=>c.ToString()))
+                            IncludedPackageClassifications = updateConfig.Linux != null && updateConfig.Linux.IncludedPackageClassifications != null
+                                ? string.Join(",", updateConfig.Linux.IncludedPackageClassifications.Select(c => c.ToString()))
                                 : null,
-                            ExcludedPackageNameMasks = updateConfig.Linux != null ? updateConfig.Linux.ExcludedPackageNameMasks : null
+                            ExcludedPackageNameMasks = updateConfig.Linux != null ? updateConfig.Linux.ExcludedPackageNameMasks : null,
+                            RebootSetting = updateConfig.Windows != null ? updateConfig.Windows.rebootSetting.ToString() : RebootSetting.IfRequired.ToString(),
                         },
                         Duration = updateConfig.Duration,
                         AzureVirtualMachines = updateConfig.AzureVirtualMachines,
-                        NonAzureComputerNames = updateConfig.NonAzureComputers
+                        NonAzureComputerNames = updateConfig.NonAzureComputers,
+                        Targets = updateConfig.Targets == null
+                        ? null
+                        : new Sdk.TargetProperties
+                        {
+                            AzureQueries = azureQueries,
+                            NonAzureQueries = nonAzureQueries
+                        }
+                    },
+                    Tasks = configuration.Tasks == null ? null : new Sdk.SoftwareUpdateConfigurationTasks
+                    {
+                        PreTask = configuration.Tasks.PreTask == null ? null : new Sdk.TaskProperties { Source = configuration.Tasks.PreTask.source, Parameters = configuration.Tasks.PreTask.parameters },
+                        PostTask = configuration.Tasks.PostTask == null ? null : new Sdk.TaskProperties { Source = configuration.Tasks.PostTask.source, Parameters = configuration.Tasks.PostTask.parameters }
                     }
                 };
 
@@ -149,13 +209,13 @@ namespace Microsoft.Azure.Commands.Automation.Common
             using (var request = new RequestSettings(this.automationManagementClient))
             {
                 var sucrs = this.automationManagementClient.SoftwareUpdateConfigurationRuns.ListAll(
-                    resourceGroupName, 
-                    automationAccountName, 
+                    resourceGroupName,
+                    automationAccountName,
                     softwareUpdateConfigurationName,
                     operatingSystem.ToString(),
                     status.ToString(),
                     startTime.HasValue ? startTime.Value.DateTime.ToUniversalTime() : (DateTime?)null);
-                return sucrs.Value.Select(sucr =>  new SoftwareUpdateRun(resourceGroupName, automationAccountName, sucr));
+                return sucrs.Value.Select(sucr => new SoftwareUpdateRun(resourceGroupName, automationAccountName, sucr));
             }
         }
         #endregion

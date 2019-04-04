@@ -22,6 +22,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     {
         public PSStorageAccount(StorageModels.StorageAccount storageAccount)
         {
-            this.ResourceGroupName = ParseResourceGroupFromId(storageAccount.Id);
+            this.ResourceGroupName = new ResourceIdentifier(storageAccount.Id).ResourceGroupName;
             this.StorageAccountName = storageAccount.Name;
             this.Id = storageAccount.Id;
             this.Location = storageAccount.Location;
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Kind = storageAccount.Kind;
             this.AccessTier = storageAccount.AccessTier;
             this.CreationTime = storageAccount.CreationTime;
-            this.CustomDomain = storageAccount.CustomDomain;
+            this.CustomDomain = storageAccount.CustomDomain is null ? null : new PSCustomDomain(storageAccount.CustomDomain);
             this.Identity = storageAccount.Identity;
             this.LastGeoFailoverTime = storageAccount.LastGeoFailoverTime;
             this.PrimaryEndpoints = storageAccount.PrimaryEndpoints;
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Tags = storageAccount.Tags;
             this.EnableHttpsTrafficOnly = storageAccount.EnableHttpsTrafficOnly;
             this.NetworkRuleSet = PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet);
-            this.EnableHierarchicalNamespace = storageAccount.IsHnsEnabled; 
+            this.EnableHierarchicalNamespace = storageAccount.IsHnsEnabled;
         }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 1)]
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         [Ps1Xml(Label = "CreationTime", Target = ViewControl.Table, Position = 6)]
         public DateTime? CreationTime { get; set; }
 
-        public CustomDomain CustomDomain { get; set; }
+        public PSCustomDomain CustomDomain { get; set; }
 
         public Identity Identity { get; set; }
 
@@ -119,18 +120,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             return result;
         }
 
-        private static string ParseResourceGroupFromId(string idFromServer)
-        {
-            if (!string.IsNullOrEmpty(idFromServer))
-            {
-                string[] tokens = idFromServer.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-
-                return tokens[3];
-            }
-
-            return null;
-        }
-
         public IStorageContext Context { get; private set; }
 
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -143,6 +132,23 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             // Allow listing storage contents through piping
             return null;
+        }
+    }
+
+    public class PSCustomDomain
+    {
+        public string Name { get; set; }
+        public bool? UseSubDomain { get; set; }
+
+        public PSCustomDomain(CustomDomain input)
+        {
+            this.Name = input.Name;
+            this.UseSubDomain = input.UseSubDomainName;
+        }
+
+        public CustomDomain ParseCustomDomain()
+        {
+            return new CustomDomain(this.Name, this.UseSubDomain);
         }
     }
 }
