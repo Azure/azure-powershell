@@ -1,0 +1,872 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "2019-02-01-preview",
+      "title": "AppConfigurationManagementClient"
+    },
+    "host": "management.azure.com",
+    "schemes": [
+      "https"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/configurationStores": {
+        "get": {
+          "tags": [
+            "ConfigurationStores"
+          ],
+          "description": "Lists the configuration stores for a given subscription.",
+          "operationId": "ConfigurationStores_List",
+          "parameters": [
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "name": "$skipToken",
+              "in": "query",
+              "description": "A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The request was successful; the request was well-formed and received properly.",
+              "schema": {
+                "$ref": "#/definitions/ConfigurationStoreListResult"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed",
+              "schema": {
+                "$ref": "#/definitions/Error"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "ConfigurationStores_List": {
+              "$ref": "./examples/ConfigurationStoresList.json"
+            }
+          },
+          "x-ms-pageable": {
+            "nextLinkName": "nextLink"
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores": {
+        "get": {
+          "tags": [
+            "ConfigurationStores"
+          ],
+          "description": "Lists the configuration stores for a given resource group.",
+          "operationId": "ConfigurationStores_ListByResourceGroup",
+          "parameters": [
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "name": "$skipToken",
+              "in": "query",
+              "description": "A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The request was successful; the request was well-formed and received properly.",
+              "schema": {
+                "$ref": "#/definitions/ConfigurationStoreListResult"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed",
+              "schema": {
+                "$ref": "#/definitions/Error"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "ConfigurationStores_ListByResourceGroup": {
+              "$ref": "./examples/ConfigurationStoresListByResourceGroup.json"
+            }
+          },
+          "x-ms-pageable": {
+            "nextLinkName": "nextLink"
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}": {
+        "get": {
+          "tags": [
+            "ConfigurationStores"
+          ],
+          "description": "Gets the properties of the specified configuration store.",
+          "operationId": "ConfigurationStores_Get",
+          "parameters": [
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ConfigStoreNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The request was successful; the request was well-formed and received properly.",
+              "schema": {
+                "$ref": "#/definitions/ConfigurationStore"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed",
+              "schema": {
+                "$ref": "#/definitions/Error"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "ConfigurationStores_Get": {
+              "$ref": "./examples/ConfigurationStoresGet.json"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "ConfigurationStores"
+          ],
+          "description": "Creates a configuration store with the specified parameters.",
+          "operationId": "ConfigurationStores_Create",
+          "parameters": [
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ConfigStoreNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "name": "configStoreCreationParameters",
+              "in": "body",
+              "description": "The parameters for creating a configuration store.",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/ConfigurationStore"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The request was successful; the request was well-formed and received properly.",
+              "schema": {
+                "$ref": "#/definitions/ConfigurationStore"
+              }
+            },
+            "201": {
+              "description": "The request was successfully accepted; the operation will complete asynchronously. The provisioning state of the resource should indicate the current state of the resource.",
+              "schema": {
+                "$ref": "#/definitions/ConfigurationStore"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed",
+              "schema": {
+                "$ref": "#/definitions/Error"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "ConfigurationStores_Create": {
+              "$ref": "./examples/ConfigurationStoresCreate.json"
+            }
+          },
+          "x-ms-long-running-operation": true
+        },
+        "delete": {
+          "tags": [
+            "ConfigurationStores"
+          ],
+          "description": "Deletes a configuration store.",
+          "operationId": "ConfigurationStores_Delete",
+          "parameters": [
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ConfigStoreNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The request was successful; the request was well-formed and received properly."
+            },
+            "202": {
+              "description": "The request was successful; the operation will complete asynchronously."
+            },
+            "204": {
+              "description": "No Content - the specified resource was not found."
+            },
+            "default": {
+              "description": "Error response describing why the operation failed",
+              "schema": {
+                "$ref": "#/definitions/Error"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "ConfigurationStores_Delete": {
+              "$ref": "./examples/ConfigurationStoresDelete.json"
+            }
+          },
+          "x-ms-long-running-operation": true
+        },
+        "patch": {
+          "tags": [
+            "ConfigurationStores"
+          ],
+          "description": "Updates a configuration store with the specified parameters.",
+          "operationId": "ConfigurationStores_Update",
+          "parameters": [
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ConfigStoreNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "name": "configStoreUpdateParameters",
+              "in": "body",
+              "description": "The parameters for updating a configuration store.",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/ConfigurationStoreUpdateParameters"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The request was successful; the request was well-formed and received properly.",
+              "schema": {
+                "$ref": "#/definitions/ConfigurationStore"
+              }
+            },
+            "201": {
+              "description": "The request was successfully accepted; the operation will complete asynchronously. The provisioning state of the resource should indicate the current state of the resource.",
+              "schema": {
+                "$ref": "#/definitions/ConfigurationStore"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed",
+              "schema": {
+                "$ref": "#/definitions/Error"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "ConfigurationStores_Update": {
+              "$ref": "./examples/ConfigurationStoresUpdate.json"
+            }
+          },
+          "x-ms-long-running-operation": true
+        }
+      },
+      "/subscriptions/{subscriptionId}/providers/Microsoft.AppConfiguration/checkNameAvailability": {
+        "post": {
+          "tags": [
+            "Operations"
+          ],
+          "description": "Checks whether the configuration store name is available for use.",
+          "operationId": "ConfigurationStores_CheckNameAvailability",
+          "parameters": [
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "name": "checkNameAvailabilityParameters",
+              "in": "body",
+              "description": "The object containing information for the availability request.",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/CheckNameAvailabilityParameters"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The request was successful; the request was well-formed and received properly.",
+              "schema": {
+                "$ref": "#/definitions/NameAvailabilityStatus"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed",
+              "schema": {
+                "$ref": "#/definitions/Error"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "ConfigurationStores_CheckNameAvailable": {
+              "$ref": "./examples/CheckNameAvailable.json"
+            },
+            "ConfigurationStores_CheckNameNotAvailable": {
+              "$ref": "./examples/CheckNameNotAvailable.json"
+            }
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/ListKeys": {
+        "post": {
+          "tags": [
+            "ConfigurationStores"
+          ],
+          "description": "Lists the access key for the specified configuration store.",
+          "operationId": "ConfigurationStores_ListKeys",
+          "parameters": [
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ConfigStoreNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "name": "$skipToken",
+              "in": "query",
+              "description": "A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The request was successful; the request was well-formed and received properly.",
+              "schema": {
+                "$ref": "#/definitions/ApiKeyListResult"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed",
+              "schema": {
+                "$ref": "#/definitions/Error"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "ConfigurationStores_ListKeys": {
+              "$ref": "./examples/ConfigurationStoresListKeys.json"
+            }
+          },
+          "x-ms-pageable": {
+            "nextLinkName": "nextLink"
+          }
+        }
+      },
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/RegenerateKey": {
+        "post": {
+          "tags": [
+            "ConfigurationStores"
+          ],
+          "description": "Regenerates an access key for the specified configuration store.",
+          "operationId": "ConfigurationStores_RegenerateKey",
+          "parameters": [
+            {
+              "$ref": "#/parameters/SubscriptionIdParameter"
+            },
+            {
+              "$ref": "#/parameters/ResourceGroupNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ConfigStoreNameParameter"
+            },
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "name": "regenerateKeyParameters",
+              "in": "body",
+              "description": "The parameters for regenerating an access key.",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/RegenerateKeyParameters"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The request was successful; the request was well-formed and received properly.",
+              "schema": {
+                "$ref": "#/definitions/ApiKey"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed",
+              "schema": {
+                "$ref": "#/definitions/Error"
+              }
+            }
+          },
+          "x-ms-examples": {
+            "ConfigurationStores_RegenerateKey": {
+              "$ref": "./examples/ConfigurationStoresRegenerateKey.json"
+            }
+          }
+        }
+      },
+      "/providers/Microsoft.AppConfiguration/operations": {
+        "get": {
+          "tags": [
+            "Operations"
+          ],
+          "description": "Lists the operations available from this provider.",
+          "operationId": "Operations_List",
+          "parameters": [
+            {
+              "$ref": "#/parameters/ApiVersionParameter"
+            },
+            {
+              "name": "$skipToken",
+              "in": "query",
+              "description": "A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.",
+              "required": false,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "The request was successful; the request was well-formed and received properly.",
+              "schema": {
+                "$ref": "#/definitions/OperationDefinitionListResult"
+              }
+            },
+            "default": {
+              "description": "Error response describing why the operation failed",
+              "schema": {
+                "$ref": "#/definitions/Error"
+              }
+            }
+          },
+          "x-ms-examples": {},
+          "x-ms-pageable": {
+            "nextLinkName": "nextLink"
+          }
+        }
+      }
+    },
+    "definitions": {
+      "ConfigurationStoreListResult": {
+        "description": "The result of a request to list configuration stores.",
+        "type": "object",
+        "properties": {
+          "value": {
+            "description": "The collection value.",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/ConfigurationStore"
+            }
+          },
+          "nextLink": {
+            "description": "The URI that can be used to request the next set of paged results.",
+            "type": "string"
+          }
+        }
+      },
+      "ConfigurationStore": {
+        "description": "The configuration store along with all resource properties. The Configuration Store will have all information to begin utlizing it.",
+        "required": [
+          "location"
+        ],
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/definitions/Resource"
+          }
+        ],
+        "properties": {
+          "properties": {
+            "$ref": "#/definitions/ConfigurationStoreProperties",
+            "description": "The properties of a configuration store.",
+            "x-ms-client-flatten": true
+          }
+        }
+      },
+      "ConfigurationStoreProperties": {
+        "description": "The properties of a configuration store.",
+        "type": "object",
+        "properties": {
+          "provisioningState": {
+            "description": "The provisioning state of the configuration store.",
+            "enum": [
+              "Creating",
+              "Updating",
+              "Deleting",
+              "Succeeded",
+              "Failed",
+              "Canceled"
+            ],
+            "type": "string",
+            "readOnly": true,
+            "x-ms-enum": {
+              "name": "ProvisioningState",
+              "modelAsString": true
+            }
+          },
+          "creationDate": {
+            "format": "date-time",
+            "description": "The creation date of configuration store.",
+            "type": "string",
+            "readOnly": true
+          },
+          "endpoint": {
+            "description": "The DNS endpoint where the configuration store API will be available.",
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      },
+      "ConfigurationStoreUpdateParameters": {
+        "description": "The parameters for updating a configuration store.",
+        "type": "object",
+        "properties": {
+          "properties": {
+            "$ref": "#/definitions/ConfigurationStorePropertiesUpdateParameters",
+            "description": "The properties for updating a configuration store.",
+            "x-ms-client-flatten": true
+          },
+          "tags": {
+            "description": "The ARM resource tags.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ConfigurationStorePropertiesUpdateParameters": {
+        "description": "The properties for updating a configuration store.",
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "description": "The value of this property indicates whether the configuration store endpoint should be enabled to serve requests.",
+            "default": true,
+            "type": "boolean"
+          }
+        }
+      },
+      "CheckNameAvailabilityParameters": {
+        "description": "Parameters used for checking whether a resource name is available.",
+        "required": [
+          "name",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The name to check for availability.",
+            "type": "string"
+          },
+          "type": {
+            "description": "The resource type to check for name availability.",
+            "enum": [
+              "Microsoft.AppConfiguration/configurationStores"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "ConfigurationResourceType",
+              "modelAsString": true
+            }
+          }
+        }
+      },
+      "NameAvailabilityStatus": {
+        "description": "The result of a request to check the availability of a resource name.",
+        "type": "object",
+        "properties": {
+          "nameAvailable": {
+            "description": "The value indicating whether the resource name is available.",
+            "type": "boolean",
+            "readOnly": true
+          },
+          "message": {
+            "description": "If any, the error message that provides more detail for the reason that the name is not available.",
+            "type": "string",
+            "readOnly": true
+          },
+          "reason": {
+            "description": "If any, the reason that the name is not available.",
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      },
+      "ApiKeyListResult": {
+        "description": "The result of a request to list API keys.",
+        "type": "object",
+        "properties": {
+          "value": {
+            "description": "The collection value.",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/ApiKey"
+            }
+          },
+          "nextLink": {
+            "description": "The URI that can be used to request the next set of paged results.",
+            "type": "string"
+          }
+        }
+      },
+      "ApiKey": {
+        "description": "An API key used for authenticating with a configuration store endpoint.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The key ID.",
+            "type": "string",
+            "readOnly": true
+          },
+          "name": {
+            "description": "A name for the key describing its usage.",
+            "type": "string",
+            "readOnly": true
+          },
+          "value": {
+            "description": "The value of the key that is used for authentication purposes.",
+            "type": "string",
+            "readOnly": true
+          },
+          "connectionString": {
+            "description": "A connection string that can be used by supporting clients for authentication.",
+            "type": "string",
+            "readOnly": true
+          },
+          "lastModified": {
+            "format": "date-time",
+            "description": "The last time any of the key's properties were modified.",
+            "type": "string",
+            "readOnly": true
+          },
+          "readOnly": {
+            "description": "Whether this key can only be used for read operations.",
+            "type": "boolean",
+            "readOnly": true
+          }
+        }
+      },
+      "RegenerateKeyParameters": {
+        "description": "The parameters used to regenerate an API key.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The id of the key to regenerate.",
+            "type": "string"
+          }
+        }
+      },
+      "OperationDefinitionListResult": {
+        "description": "The result of a request to list configuration store operations.",
+        "type": "object",
+        "properties": {
+          "value": {
+            "description": "The collection value.",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/OperationDefinition"
+            }
+          },
+          "nextLink": {
+            "description": "The URI that can be used to request the next set of paged results.",
+            "type": "string"
+          }
+        }
+      },
+      "OperationDefinition": {
+        "description": "The definition of a configuration store operation.",
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Operation name: {provider}/{resource}/{operation}.",
+            "type": "string"
+          },
+          "display": {
+            "$ref": "#/definitions/OperationDefinitionDisplay",
+            "description": "The display information for the configuration store operation."
+          }
+        }
+      },
+      "OperationDefinitionDisplay": {
+        "description": "The display information for a configuration store operation.",
+        "type": "object",
+        "properties": {
+          "provider": {
+            "description": "The resource provider name: Microsoft App Configuration.\"",
+            "type": "string",
+            "readOnly": true
+          },
+          "resource": {
+            "description": "The resource on which the operation is performed.",
+            "type": "string"
+          },
+          "operation": {
+            "description": "The operation that users can perform.",
+            "type": "string"
+          },
+          "description": {
+            "description": "The description for the operation.",
+            "type": "string"
+          }
+        }
+      },
+      "Error": {
+        "description": "AppConfiguration error object.",
+        "properties": {
+          "code": {
+            "description": "Error code.",
+            "type": "string"
+          },
+          "message": {
+            "description": "Error message.",
+            "type": "string"
+          }
+        }
+      },
+      "Resource": {
+        "description": "An Azure resource.",
+        "required": [
+          "location"
+        ],
+        "properties": {
+          "id": {
+            "description": "The resource ID.",
+            "type": "string",
+            "readOnly": true
+          },
+          "name": {
+            "description": "The name of the resource.",
+            "type": "string",
+            "readOnly": true
+          },
+          "type": {
+            "description": "The type of the resource.",
+            "type": "string",
+            "readOnly": true
+          },
+          "location": {
+            "description": "The location of the resource. This cannot be changed after the resource is created.",
+            "type": "string",
+            "x-ms-mutability": [
+              "read",
+              "create"
+            ]
+          },
+          "tags": {
+            "description": "The tags of the resource.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        },
+        "x-ms-azure-resource": true
+      }
+    },
+    "parameters": {
+      "SubscriptionIdParameter": {
+        "name": "subscriptionId",
+        "in": "path",
+        "description": "The Microsoft Azure subscription ID.",
+        "required": true,
+        "type": "string"
+      },
+      "ResourceGroupNameParameter": {
+        "name": "resourceGroupName",
+        "in": "path",
+        "description": "The name of the resource group to which the container registry belongs.",
+        "required": true,
+        "type": "string",
+        "x-ms-parameter-location": "method"
+      },
+      "ConfigStoreNameParameter": {
+        "name": "configStoreName",
+        "in": "path",
+        "description": "The name of the configuration store.",
+        "required": true,
+        "type": "string",
+        "maxLength": 50,
+        "minLength": 5,
+        "pattern": "^[a-zA-Z0-9_-]*$",
+        "x-ms-parameter-location": "method"
+      },
+      "ApiVersionParameter": {
+        "name": "api-version",
+        "in": "query",
+        "description": "The client API version.",
+        "required": true,
+        "type": "string"
+      }
+    },
+    "securityDefinitions": {
+      "azure_auth": {
+        "flow": "implicit",
+        "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+        "scopes": {
+          "user_impersonation": "impersonate your user account"
+        },
+        "type": "oauth2",
+        "description": "Azure Active Directory OAuth2 Flow"
+      }
+    },
+    "security": [
+      {
+        "azure_auth": [
+          "user_impersonation"
+        ]
+      }
+    ]
+  }
