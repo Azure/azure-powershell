@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using Microsoft.Azure.DataLake.Store.MockAdlsFileSystem;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
+using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
@@ -16,6 +17,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// For unit testing this is set as true
         /// </summary>
         public static bool IsTest = false;
+        public static DelegatingHandler[] CustomDelegatingHAndler;
         /// <summary>
         /// Mock client credentials used for testing, this is set for record
         /// </summary>
@@ -43,25 +45,16 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 {
                     return ClientFactory[accntNm];
                 }
-                ServiceClientCredentials creds;
+                AdlsClient client = null;
                 if (IsTest)
                 {
-                    if (MockCredentials != null)
-                    {
-                        creds = MockCredentials;
-                    }
-                    else
-                    {
-                        ClientFactory.Add(accntNm, MockAdlsClient.GetMockClient());
-                        return ClientFactory[accntNm];
-                    }
+                    client = AdlsClient.CreateClient(accntNm, MockCredentials, DataLakeStoreFileSystemClient.ImportExportMaxThreads, CustomDelegatingHAndler);
                 }
                 else
                 {
-                    creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context,
-                        AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix);
+                    client = AdlsClient.CreateClient(accntNm, AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context,
+                        AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix), DataLakeStoreFileSystemClient.ImportExportMaxThreads);
                 }
-                var client=AdlsClient.CreateClient(accntNm,creds);
                 client.AddUserAgentSuffix(AzurePowerShell.UserAgentValue.ToString());
                 ClientFactory.Add(accntNm,client);
                 return client;
