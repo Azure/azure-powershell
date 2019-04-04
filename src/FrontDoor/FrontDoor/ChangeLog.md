@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.3
 * Configure redirect routing rule.
 * Enable/Disable cetificate name check for backend pools
 * Modify WAF policy cmdlets to implement new swagger
