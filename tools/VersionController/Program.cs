@@ -30,7 +30,8 @@ namespace VersionController
         public static void Main(string[] args)
         {
             var executingAssemblyPath = Assembly.GetExecutingAssembly().Location;
-            var artifactsDirectory = Directory.GetParent(executingAssemblyPath).FullName;
+            var versionControllerDirectory = Directory.GetParent(executingAssemblyPath).FullName;
+            var artifactsDirectory = Directory.GetParent(versionControllerDirectory).FullName;
 
              _rootDirectory = Directory.GetParent(artifactsDirectory).FullName;
 

@@ -1,3 +1,60 @@
+## 1.7.0 - April 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+* Added wildcard support to Get cmdlets for Az.Compute and Az.Network
+* Added interactive and username/password authentication for Windows PowerShell 5.1 only
+* Added support for Python 2 runbooks in Az.Automation
+* Az.LogicApp: New cmdlets for Integration Account Assemblies and Batch Configuration
+
+#### Az.Accounts
+* Updated Add-AzEnvironment and Set-AzEnvironment to accept parameter AzureAnalysisServicesEndpointResourceId
+
+#### Az.AnalysisServices
+* Using ServiceClient in dataplane cmdlets and removing the original authentication logic
+* Making Add-AzureASAccount a wrapper of Connect-AzAccount to avoid a breaking change
+
+#### Az.Automation
+* Fixed New-AzAutomationSoftwareUpdateConfiguration cmdlet bug for Inclusions. Now parameter IncludedKbNumber and IncludedPackageNameMask should work.
+* Bug fix for azure automation update management dynamic group
+
+#### Az.Compute
+* Add HyperVGeneration parameter to New-AzDiskConfig and New-AzSnapshotConfig
+* Allow VM creation with galley image from other tenants. 
+
+#### Az.ContainerInstance
+* Fixed issue in the -Command parameter of New-AzContainerGroup which added a trailing empty argument
+
+#### Az.DataFactory
+* Updated ADF .Net SDK version to 3.0.2
+* Updated Set-AzDataFactoryV2 cmdlet with extra parameters for RepoConfiguration related settings.
+
+#### Az.Resources
+* Improve handling of providers for 'Get-AzResource' when providing '-ResourceId' or '-ResourceGroupName', '-Name' and '-ResourceType' parameters
+* Improve error handling for for 'Test-AzDeployment' and 'Test-AzResourceGroupDeployment'
+    - Handle errors thrown outside of deployment validation and include them in output of command instead
+    - More information here: https://github.com/Azure/azure-powershell/issues/6856
+* Add '-IgnoreDynamicParameters' switch parameter to set of deployment cmdlets to skip prompt in script and job scenarios
+    - More information here: https://github.com/Azure/azure-powershell/issues/6856
+
+#### Az.Sql
+* Support Database Data Classification.
+
+#### Az.Storage
+* Report detail error when create Storage context with parameter -UseConnectedAccount, but without login Azure account
+    - New-AzStorageContext
+* Support Manage Blob Service Properties of a specified Storage account with Management plane API
+    - Update-AzStorageBlobServiceProperty
+    - Get-AzStorageBlobServiceProperty
+    - Enable-AzStorageBlobDeleteRetentionPolicy
+    - Disable-AzStorageBlobDeleteRetentionPolicy
+* -AsJob support for Blob and file upload and download cmdlets
+    - Get-AzStorageBlobContent
+    - Set-AzStorageBlobContent
+    - Get-AzStorageFileContent
+    - Set-AzStorageFileContent
+
 ## 1.6.0 - March 2019
 ### Highlights since the last major release
 * General availability of `Az` module
