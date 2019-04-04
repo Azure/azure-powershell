@@ -16,6 +16,7 @@ using System;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Identity.Client;
@@ -66,19 +67,32 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                     var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "msal.cache");
                     if (!AzureSession.Instance.DataStore.FileExists(filePath))
                     {
-                        AzureSession.Instance.DataStore.WriteFile(filePath, new byte[] { });
+                        var dataToWrite = ProtectedData.Protect(new byte[] { }, null, DataProtectionScope.CurrentUser);
+                        AzureSession.Instance.DataStore.WriteFile(filePath, dataToWrite);
                     }
 
                     publicClient.UserTokenCache.SetAfterAccess(notificationArgs =>
                     {
+                        var dataToWrite = ProtectedData.Protect(notificationArgs.TokenCache.SerializeMsalV3(), null, DataProtectionScope.CurrentUser);
                         if (notificationArgs.HasStateChanged)
                         {
-                            AzureSession.Instance.DataStore.WriteFile(filePath, notificationArgs.TokenCache.SerializeMsalV3());
+                            AzureSession.Instance.DataStore.WriteFile(filePath, dataToWrite);
                         }
                     });
                     publicClient.UserTokenCache.SetBeforeAccess(notificationArgs =>
                     {
-                        notificationArgs.TokenCache.DeserializeMsalV3(AzureSession.Instance.DataStore.ReadFileAsBytes(filePath));
+                        var existingData = AzureSession.Instance.DataStore.ReadFileAsBytes(filePath);
+                        if (existingData != null)
+                        {
+                            try
+                            {
+                                notificationArgs.TokenCache.DeserializeMsalV3(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
+                            }
+                            catch (CryptographicException)
+                            {
+                                AzureSession.Instance.DataStore.DeleteFile(filePath);
+                            }
+                        }
                     });
 
                     var interactiveResponse = publicClient.AcquireTokenInteractive(scopes, null)

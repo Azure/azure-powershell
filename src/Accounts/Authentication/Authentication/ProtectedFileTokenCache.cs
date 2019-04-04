@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Identity.Client;
 using System;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Core
 {
@@ -62,12 +63,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Core
         {
             get
             {
-                return UserCache.SerializeMsalV3();
+                return ProtectedData.Protect(UserCache.SerializeMsalV3(), null, DataProtectionScope.CurrentUser);
             }
 
             set
             {
-                UserCache.DeserializeMsalV3(value);
+                UserCache.DeserializeMsalV3(ProtectedData.Unprotect(value, null, DataProtectionScope.CurrentUser));
             }
         }
 
@@ -134,7 +135,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Core
                     var existingData = _store.ReadFileAsBytes(cacheFileName);
                     if (existingData != null)
                     {
-                        args.TokenCache.DeserializeMsalV3(existingData);
+                        try
+                        {
+                            args.TokenCache.DeserializeMsalV3(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
+                        }
+                        catch (CryptographicException)
+                        {
+                            _store.DeleteFile(cacheFileName);
+                        }
                     }
                 }
             }
@@ -147,7 +155,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Core
                 cacheFileName = ProtectedFileTokenCache.CacheFileName;
             }
 
-            var dataToWrite = UserCache.SerializeMsalV3();
+            var dataToWrite = ProtectedData.Protect(args.TokenCache.SerializeMsalV3(), null, DataProtectionScope.CurrentUser);
             lock(fileLock)
             {
                 if (args.HasStateChanged)
@@ -168,17 +176,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Core
                     {
                         try
                         {
-                            UserCache.DeserializeMsalV3(existingData);
+                            UserCache.DeserializeMsalV3(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
                         }
-                        catch (Exception ex)
+                        catch (CryptographicException)
                         {
-                            string message = ex?.Message;
+                            _store.DeleteFile(cacheFileName);
                         }
                     }
                 }
 
                 // Eagerly create cache file.
-                var dataToWrite = UserCache.SerializeMsalV3();
+                var dataToWrite = ProtectedData.Protect(UserCache.SerializeMsalV3(), null, DataProtectionScope.CurrentUser);
                 _store.WriteFile(cacheFileName, dataToWrite);
             }
         }

@@ -78,7 +78,8 @@ RequiredAssemblies = '.\Microsoft.Azure.PowerShell.Authentication.Abstractions.d
                '.\Microsoft.Azure.PowerShell.Clients.Aks.dll',
                '.\Microsoft.Azure.PowerShell.Strategies.dll',
                '.\Microsoft.Azure.PowerShell.Authenticators.dll',
-               '.\Microsoft.Identity.Client.dll'
+               '.\Microsoft.Identity.Client.dll',
+               '.\System.Security.Cryptography.ProtectedData.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
