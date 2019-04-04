@@ -44,12 +44,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
-             ParameterSetName = Constants.ParameterSetNameIPv4Prefix,
+             ParameterSetName = Constants.ParameterSetNameIPv4Address,
              DontShow = true),
          Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
-             ParameterSetName = Constants.ParameterSetNameIPv6Prefix,
+             ParameterSetName = Constants.ParameterSetNameIPv6Address,
              DontShow = true),
          Parameter(
              Mandatory = true,
@@ -64,17 +64,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         [Parameter(
              Position = Constants.PositionPeeringZero,
              Mandatory = true,
-             HelpMessage = Constants.PeeringExchangeConnectionHelp,
-             ParameterSetName = Constants.ParameterSetNameIPv4Prefix),
+             HelpMessage = Constants.PeeringDirectConnectionIndexHelp,
+             ParameterSetName = Constants.ParameterSetNameIPv4Address),
          Parameter(
              Position = Constants.PositionPeeringZero,
              Mandatory = true,
-             HelpMessage = Constants.PeeringExchangeConnectionHelp,
-             ParameterSetName = Constants.ParameterSetNameIPv6Prefix),
+             HelpMessage = Constants.PeeringDirectConnectionIndexHelp,
+             ParameterSetName = Constants.ParameterSetNameIPv6Address),
          Parameter(
              Position = Constants.PositionPeeringZero,
              Mandatory = true,
-             HelpMessage = Constants.PeeringExchangeConnectionHelp,
+             HelpMessage = Constants.PeeringDirectConnectionIndexHelp,
              ParameterSetName = Constants.ParameterSetNameMd5Authentication), PSArgumentCompleter("0", "1", "2"),
          ValidateRange(0, 2), ValidateNotNullOrEmpty]
         public virtual int? ConnectionIndex { get; set; }
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
             Position = Constants.PositionPeeringTwo,
             Mandatory = true,
             HelpMessage = Constants.HelpSessionIPv4Prefix,
-            ParameterSetName = Constants.ParameterSetNameIPv4Prefix)]
+            ParameterSetName = Constants.ParameterSetNameIPv4Address)]
         [ValidateNotNullOrEmpty]
         public virtual string PeerSessionIPv4Address { get; set; }
 
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         [Parameter(
              Mandatory = false,
              HelpMessage = Constants.HelpMaxAdvertisedIPv4,
-             ParameterSetName = Constants.ParameterSetNameIPv4Prefix), ValidateRange(1, 20000)]
+             ParameterSetName = Constants.ParameterSetNameIPv4Address), ValidateRange(1, 20000)]
         public virtual int? MaxPrefixesAdvertisedIPv4 { get; set; }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
             Position = Constants.PositionPeeringTwo,
             Mandatory = true,
             HelpMessage = Constants.HelpSessionIPv4Prefix,
-            ParameterSetName = Constants.ParameterSetNameIPv6Prefix)]
+            ParameterSetName = Constants.ParameterSetNameIPv6Address)]
         [ValidateNotNullOrEmpty]
         public virtual string PeerSessionIPv6Address { get; set; }
 
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         [Parameter(
              Mandatory = false,
              HelpMessage = Constants.HelpMaxAdvertisedIPv4,
-             ParameterSetName = Constants.ParameterSetNameIPv6Prefix), ValidateRange(1, 20000)]
+             ParameterSetName = Constants.ParameterSetNameIPv6Address), ValidateRange(1, 20000)]
         public virtual int? MaxPrefixesAdvertisedIPv6 { get; set; }
 
         /// <summary>
@@ -140,13 +140,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
                 base.Execute();
                 PSPeering newRequest = null;
                 if (this.ParameterSetName.Equals(
-                    Constants.ParameterSetNameIPv4Prefix,
+                    Constants.ParameterSetNameIPv4Address,
                     StringComparison.OrdinalIgnoreCase))
                 {
                     newRequest = this.UpdateIpV4Prefix();
                 }
                 else if (this.ParameterSetName.Equals(
-                    Constants.ParameterSetNameIPv6Prefix,
+                    Constants.ParameterSetNameIPv6Address,
                     StringComparison.OrdinalIgnoreCase))
                 {
                     newRequest = this.UpdateIpV6Prefix();

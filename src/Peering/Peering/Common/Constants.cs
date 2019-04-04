@@ -253,12 +253,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// The parameter set name prefix by InputObject.
         /// </summary>
-        public const string ParameterSetNamePrefixByPeering = "ParameterSetNamePrefixByPeering";
+        public const string ParameterSetNameIPv4Address = "ParameterSetNameIPv4Address";
 
         /// <summary>
         /// The parameter set name prefix by prefix name.
         /// </summary>
-        public const string ParameterSetNamePrefixByPrefixName = "ParameterSetNamePrefixByPrefixName";
+        public const string ParameterSetNameIPv6Address = "ParameterSetNameIPv6Address";
 
         #endregion
 
@@ -273,6 +273,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// PeeringNameHelp
         /// </summary>
         public const string PeeringNameHelp = "The unique name of the PSPeering.";
+
+        /// <summary>
+        /// The peer asn help.
+        /// </summary>
+        public const string PeerAsnHelp = "The PeerAsn object.";
 
         /// <summary>
         /// PeeringNameHelp
@@ -386,12 +391,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// The peering exchange connection help.
         /// </summary>
-        public const string PeeringExchangeConnectionHelp = "Create a new Exchange connections using the New-AzExchangePeeringConnection and pipe to this command.";
+        public const string PeeringExchangeConnectionHelp = "Create a new Exchange connection using the New-AzExchangePeeringConnectionObject and pipe to this command.";
 
         /// <summary>
         /// The peering Direct connection help.
         /// </summary>
-        public const string PeeringDirectConnectionHelp = "Create a new Direct connections using the New-AzExchangePeeringConnection and pipe to this command.";
+        public const string PeeringDirectConnectionHelp = "Create a new Direct connections using the New-AzDirectPeeringConnectionObject and pipe to this command.";
 
         /// <summary>
         /// The peering direct connection index help.
@@ -441,6 +446,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// The premium partner metered.
         /// </summary>
         public const string PremiumPartnerMetered = "Premium_Partner_Metered";
+
+        /// <summary>
+        /// The premium direct free.
+        /// </summary>
+        public const string PremiumDirectFree = "Premium_Direct_Free";
+
+        /// <summary>
+        /// The basic direct free.
+        /// </summary>
+        public const string BasicDirectFree = "Basic_Direct_Free";
+
+        /// <summary>
+        /// The basic exchange free.
+        /// </summary>
+        public const string BasicExchangeFree = "Basic_Exchange_Free";
 
         #endregion
     }

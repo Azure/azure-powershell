@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
 Module Name: Az.Peering
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/set-azpeeringexchangeconnectionobject
 schema: 2.0.0
 ---
 
 # Set-AzPeeringExchangeConnectionObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Sets or updates the Exchange Connection information. 
 
 ## SYNTAX
 
@@ -19,14 +19,14 @@ Set-AzPeeringExchangeConnectionObject -InputObject <PSPeering> [-ConnectionIndex
  [<CommonParameters>]
 ```
 
-### ParameterSetNameIPv4Prefix
+### ParameterSetNameIPv4Address
 ```
 Set-AzPeeringExchangeConnectionObject -InputObject <PSPeering> [-ConnectionIndex] <Int32>
  [-PeerSessionIPv4Address] <String> [-MaxPrefixesAdvertisedIPv4 <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ParameterSetNameIPv6Prefix
+### ParameterSetNameIPv6Address
 ```
 Set-AzPeeringExchangeConnectionObject -InputObject <PSPeering> [-ConnectionIndex] <Int32>
  [-PeerSessionIPv6Address] <String> [-MaxPrefixesAdvertisedIPv6 <Int32>]
@@ -34,21 +34,28 @@ Set-AzPeeringExchangeConnectionObject -InputObject <PSPeering> [-ConnectionIndex
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Used in conjunction with Set-AzPeering, this is an in memory operation and will only persist with `Set-AzPeering`. 
 
 ## EXAMPLES
 
-### Example 1
+### Update Md5 Hash
 ```powershell
-PS C:> {{ Add example code here }}
+PS C:> $update = Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 | Set-AzPeeringExchangeConnectionObject -ConnectionIndex 0 -MD5AuthenticationKey $hash
 ```
 
-{{ Add example description here }}
+Updates the Md5 Hash for the first connection in the Peering object in memory. 
+
+### Update Bgp Session Address
+```powershell
+PS C:> $update = Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 | Set-AzPeeringExchangeConnectionObject -ConnectionIndex 0 -PeerSessionIPv4Address "192.168.0.1" -MaxPrefixesAdvertisedIPv4 20000
+```
+
+Updates the Peering Address for the first connection in the Peering object in memory. 
 
 ## PARAMETERS
 
 ### -ConnectionIndex
-Create a new Exchange connections using the New-AzExchangePeeringConnection and pipe to this command.
+The index associated with the connection from the Get-AzPeering.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -97,7 +104,7 @@ HelpMaxAdvertisedIPv4
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: ParameterSetNameIPv4Prefix
+Parameter Sets: ParameterSetNameIPv4Address
 Aliases:
 
 Required: False
@@ -112,7 +119,7 @@ HelpMaxAdvertisedIPv4
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: ParameterSetNameIPv6Prefix
+Parameter Sets: ParameterSetNameIPv6Address
 Aliases:
 
 Required: False
@@ -142,7 +149,7 @@ HelpSessionIPv4Prefix
 
 ```yaml
 Type: System.String
-Parameter Sets: ParameterSetNameIPv4Prefix
+Parameter Sets: ParameterSetNameIPv4Address
 Aliases:
 
 Required: True
@@ -157,7 +164,7 @@ HelpSessionIPv4Prefix
 
 ```yaml
 Type: System.String
-Parameter Sets: ParameterSetNameIPv6Prefix
+Parameter Sets: ParameterSetNameIPv6Address
 Aliases:
 
 Required: True

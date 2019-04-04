@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     ///     The get InputObject locations.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzPeerAsn")]
-    [OutputType(typeof(PSPeeringLocation))]
+    [OutputType(typeof(PSPeerAsn))]
     public class GetAzurePeerAsn : PeeringBaseCmdlet
     {
         /// <summary>

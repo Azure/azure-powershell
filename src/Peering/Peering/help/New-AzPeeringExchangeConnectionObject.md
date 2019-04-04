@@ -12,21 +12,21 @@ Creates a in memory PSObject to be used for creating or modifying a Peering.
 
 ## SYNTAX
 
-### ParameterSetNameIPv4Prefix (Default)
+### ParameterSetNameIPv4Address (Default)
 ```
 New-AzPeeringExchangeConnectionObject [-PeeringDBFacilityId] <Int32> -PeerSessionIPv4Address <String>
  [-MaxPrefixesAdvertisedIPv4 <Int32>] [-MD5AuthenticationKey <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ParameterSetNameIPv6Prefix
+### ParameterSetNameIPv6Address
 ```
 New-AzPeeringExchangeConnectionObject [-PeeringDBFacilityId] <Int32> -PeerSessionIPv6Address <String>
  [-MaxPrefixesAdvertisedIPv6 <Int32>] [-MD5AuthenticationKey <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ParameterSetNameIPv4PrefixParameterSetNameIPv6Prefix
+### ParameterSetNameIPv4AddressParameterSetNameIPv6Address
 ```
 New-AzPeeringExchangeConnectionObject [-PeeringDBFacilityId] <Int32> -PeerSessionIPv4Address <String>
  -PeerSessionIPv6Address <String> [-MaxPrefixesAdvertisedIPv4 <Int32>] [-MaxPrefixesAdvertisedIPv6 <Int32>]
@@ -73,7 +73,7 @@ HelpMaxAdvertisedIPv4
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: ParameterSetNameIPv4Prefix, ParameterSetNameIPv4PrefixParameterSetNameIPv6Prefix
+Parameter Sets: ParameterSetNameIPv4Address, ParameterSetNameIPv4AddressParameterSetNameIPv6Address
 Aliases:
 
 Required: False
@@ -88,7 +88,7 @@ HelpMaxAdvertisedIPv6
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: ParameterSetNameIPv6Prefix, ParameterSetNameIPv4PrefixParameterSetNameIPv6Prefix
+Parameter Sets: ParameterSetNameIPv6Address, ParameterSetNameIPv4AddressParameterSetNameIPv6Address
 Aliases:
 
 Required: False
@@ -133,7 +133,7 @@ HelpPeerSessionIPv4Prefix
 
 ```yaml
 Type: System.String
-Parameter Sets: ParameterSetNameIPv4Prefix, ParameterSetNameIPv4PrefixParameterSetNameIPv6Prefix
+Parameter Sets: ParameterSetNameIPv4Address, ParameterSetNameIPv4AddressParameterSetNameIPv6Address
 Aliases:
 
 Required: True
@@ -148,7 +148,7 @@ HelpPeerSessionIPv6Prefix
 
 ```yaml
 Type: System.String
-Parameter Sets: ParameterSetNameIPv6Prefix, ParameterSetNameIPv4PrefixParameterSetNameIPv6Prefix
+Parameter Sets: ParameterSetNameIPv6Address, ParameterSetNameIPv4AddressParameterSetNameIPv6Address
 Aliases:
 
 Required: True

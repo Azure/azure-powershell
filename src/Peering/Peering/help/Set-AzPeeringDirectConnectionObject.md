@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
 Module Name: Az.Peering
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/set-azpeeringdirectconnectionobject
 schema: 2.0.0
 ---
 
 # Set-AzPeeringDirectConnectionObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Sets or updates the Direct Connection information. 
 
 ## SYNTAX
 
@@ -46,16 +46,24 @@ Set-AzPeeringDirectConnectionObject -InputObject <PSPeering> [-ConnectionIndex] 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Used in conjunction with Set-AzPeering, this is an in memory operation and will only persist with `Set-AzPeering`. 
 
 ## EXAMPLES
 
-### Example 1
+### Upgrade Bandwidth
 ```powershell
-PS C:> {{ Add example code here }}
+PS C:> $update = Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 | Set-AzPeeringDirectConnectionObject -ConnectionIndex 0 -BandwidthInMbps 30000
 ```
 
-{{ Add example description here }}
+Upgrades the bandwidth for the first connection in the Peering object in memory. 
+
+### Update Bgp Session Address
+```powershell
+PS C:> $update = Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 | Set-AzPeeringDirectConnectionObject -ConnectionIndex 0 -SessionPrefixV4 "192.168.0.1" -MaxPrefixesAdvertisedIPv4 20000
+```
+
+Updates the Peering Address for the first connection in the Peering object in memory. 
+
 
 ## PARAMETERS
 
@@ -75,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectionIndex
-Create a new Direct connections using the New-AzExchangePeeringConnection and pipe to this command.
+The index associated with the connection from the Get-AzPeering
 
 ```yaml
 Type: System.Nullable`1[System.Int32]

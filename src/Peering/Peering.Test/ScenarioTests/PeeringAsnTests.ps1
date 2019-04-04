@@ -96,17 +96,6 @@ function Test-SetPeerAsn
 	$peerasn.PeerContactInfo.Emails
 	
 	# Commented Lines are disabled for testing should be uncommented for Production Testing
-
-
-	#Assert-True {$peerasn.PeerContactInfo.Emails -ge 3}
-	#Assert-AreEqual $peerasn.PeerName $createdPeerAsn.PeerName
-    #Assert-AreEqual $peerasn.PeerAsnProperty $createdPeerAsn.PeerAsnProperty
-	#Assert-AreEqual $emails.Count $createdPeerAsn.Emails.Count
-	#Assert-NotEqual $getPeerAsn.Emails.Count $createdPeerAsn.Emails.Count
-	#Assert-AreEqual $emails $createdPeerAsn[0].Emails
-	#Assert-AreEqual $phone.Count $createdPeerAsn.Phone.Count
-	#Assert-AreEqual $phone $createdPeerAsn[0].Phone
-	#Assert-NotEqual $getPeerAsn.Phone $createdPeerAsn.Phone
 }
 
 <#
@@ -115,31 +104,25 @@ Tests new Exchange Peering Pipe Two Connections
 #>
 function Test-RemovePeerAsn
 {
-	$peerName = "Contoso"
-	$asn = 65000
+	$peerName = "Contoso1"
+	$asn = 65050
 	[string[]]$emails = "tata@noc.com","tata2@noc.com"
 	$phone = "888-800-8889"
 
-    #$createdPeerAsn = Remove-AzPeerAsn -PeerName $peerName -Force
-	
-	# Commented Lines are disabled for testing should be uncommented for Production Testing
-	#$createdPeerAsn = "Peer Asn $peerName Resource Removed."
-	#$getPeerAsn = Get-AzPeerAsn -PeerName $peerName
-	# this may fail becuase it will return a not found error and not null.
-	#Assert-IsNull $getPeerAsn
+    $createdPeerAsn = New-AzPeerAsn -Name $peerName -PeerName $peerName -PeerAsn $asn -Email $emails -Phone $phone
+
+	Assert-NotNull $createdPeerAsn
+
+	$getPeerAsn = Get-AzPeerAsn -PeerName $peerName
+
+	Assert-NotNull $getPeerAsn
+
+	$remove = $getPeerAsn | Remove-AzPeerAsn -Force
+
+	Assert-NotNull $remove
+	Assert-AreEqual $remove "Peer Asn Contoso1 Resource Removed."
+
+	Assert-ThrowsContains {Get-AzPeerAsn -PeerName $peerName} "Error:Not Found reason:NotFound message:PeerAsn does not exist with the given name Resource does not exist."
 }
 
-<#
-.SYNOPSIS
-NewDirectConnectionWithV4 with fail on wrong IP
-#>
-function Test-NewDirectConnectionWrongV4
-{
-	$md5 = "25234523452123411fd234qdwfas3234"
-	$facilityId = "99999"
-	$sessionv4 = "192.168.1.1/32"
-	$bandwidth = 30000
-
-	Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixIPv4 $sessionv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} "Parameter name: Invalid Prefix: 192.168.1.1/32, must be either /30 or /31"
-}
 

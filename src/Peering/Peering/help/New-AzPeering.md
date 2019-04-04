@@ -22,7 +22,7 @@ New-AzPeering [-Name] <String> [-ResourceGroupName] <String> [-PeeringLocation] 
 ### ParameterSetNameConvertLegacyPeering
 ```
 New-AzPeering -LegacyPeering <PSPeering> [-Name] <String> [-ResourceGroupName] <String>
- [-PeeringLocation] <String> [-PeerAsnResourceId] <String> [-Tag <Hashtable>] [-AsJob]
+ [-PeeringLocation] <String> [-PeerAsnResourceId] <String> [-UseForPeeringService] [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -266,7 +266,7 @@ Enable for use with Microsoft Peering Service (MPS).
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Direct
+Parameter Sets: ParameterSetNameConvertLegacyPeering, Direct
 Aliases:
 
 Required: False

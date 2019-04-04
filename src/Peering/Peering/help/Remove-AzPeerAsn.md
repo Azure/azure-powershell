@@ -12,6 +12,13 @@ Remove Peer Asn
 
 ## SYNTAX
 
+### ParameterSetNameDefault (Default)
+```
+Remove-AzPeerAsn [-InputObject] <PSPeerAsn> [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ParameterSetNameByName
 ```
 Remove-AzPeerAsn [-PeerName] <String> [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -76,12 +83,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The PeerAsn object.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn
+Parameter Sets: ParameterSetNameDefault
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PeerName
 The unique name of the PSPeering.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ParameterSetNameByName
 Aliases:
 
 Required: True
