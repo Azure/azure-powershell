@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.VirtualCluster.Model;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -99,10 +100,8 @@ namespace Microsoft.Azure.Commands.Sql.VirtualCluster.Services
             AzureSqlVirtualClusterModel virtualCluster = new AzureSqlVirtualClusterModel();
 
             // Extract the resource group name from the ID.
-            // ID is in the form:
-            // /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/providers/Microsoft.Sql/virtualClusters/virtualClusterName
-            string[] segments = resp.Id.Split('/');
-            virtualCluster.ResourceGroupName = segments[4];
+            ResourceIdentifier resourceIdentifier = new ResourceIdentifier(resp.Id);
+            virtualCluster.ResourceGroupName = resourceIdentifier.ResourceGroupName;
 
             virtualCluster.VirtualClusterName = resp.Name;
             virtualCluster.Id = resp.Id;

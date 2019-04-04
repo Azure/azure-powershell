@@ -54,7 +54,6 @@ namespace Microsoft.Azure.Commands.Sql.VirtualCluster.Cmdlet
             HelpMessage = "The name of the resource group.")]
         [Parameter(ParameterSetName = GetByResourceGroupParameterSet,
             Mandatory = false,
-            Position = 1,
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]

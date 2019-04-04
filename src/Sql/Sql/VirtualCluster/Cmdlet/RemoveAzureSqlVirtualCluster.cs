@@ -77,7 +77,6 @@ namespace Microsoft.Azure.Commands.Sql.VirtualCluster.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = RemoveByResourceIdParameterSet,
             Mandatory = true,
-            Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of instance object to remove")]
         [ValidateNotNullOrEmpty]
