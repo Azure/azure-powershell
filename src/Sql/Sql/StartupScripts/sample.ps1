@@ -1,1 +1,0 @@
-#Placeholder for future scripts: Please delete this file and uncomment <CopyToOutputDirectory>Always</CopytoOutputDirectory> within the <None Include="StartupScripts\*.ps1"> block in the .csproj file.
