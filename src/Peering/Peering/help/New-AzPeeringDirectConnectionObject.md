@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/ne
 schema: 2.0.0
 ---
 
-# New-AzPeeringDirectConnection
+# New-AzPeeringDirectConnectionObject
 
 ## SYNOPSIS
 Creates a in memory PSObject to be used for creating or modifying a Peering.
@@ -14,24 +14,24 @@ Creates a in memory PSObject to be used for creating or modifying a Peering.
 
 ### ParameterSetNameIPv4Prefix (Default)
 ```
-New-AzPeeringDirectConnection [-PeeringDBFacilityId] <Int32> -BandwidthInMbps <Int32>
- [-SessionPrefixV4] <String> -MaxPrefixesAdvertisedIPv4 <Int32> [-MD5AuthenticationKey <String>] [-AsJob]
+New-AzPeeringDirectConnectionObject [-PeeringDBFacilityId] <Int32> -BandwidthInMbps <Int32>
+ [-SessionPrefixV4] <String> -MaxPrefixesAdvertisedIPv4 <Int32> [-MD5AuthenticationKey <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParameterSetNameIPv6Prefix
 ```
-New-AzPeeringDirectConnection [-PeeringDBFacilityId] <Int32> -BandwidthInMbps <Int32> -SessionPrefixV6 <String>
- -MaxPrefixesAdvertisedIPv6 <Int32> [-MD5AuthenticationKey <String>] [-AsJob]
+New-AzPeeringDirectConnectionObject [-PeeringDBFacilityId] <Int32> -BandwidthInMbps <Int32>
+ -SessionPrefixV6 <String> -MaxPrefixesAdvertisedIPv6 <Int32> [-MD5AuthenticationKey <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParameterSetNameIPv4PrefixParameterSetNameIPv6Prefix
 ```
-New-AzPeeringDirectConnection [-PeeringDBFacilityId] <Int32> -BandwidthInMbps <Int32>
+New-AzPeeringDirectConnectionObject [-PeeringDBFacilityId] <Int32> -BandwidthInMbps <Int32>
  [-SessionPrefixV4] <String> -SessionPrefixV6 <String> -MaxPrefixesAdvertisedIPv4 <Int32>
- -MaxPrefixesAdvertisedIPv6 <Int32> [-MD5AuthenticationKey <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -MaxPrefixesAdvertisedIPv6 <Int32> [-MD5AuthenticationKey <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +41,7 @@ Creates an in memory PSObject
 
 ### Example 1
 ```powershell
-PS C:> $connection = New-AzPeeringDirectConnection -PeeringDBFacilityId 99999 -BandwidthInMbps 30000 -SessionPrefixV4 192.168.1.0/31 -SessionPrefixV6 fe01::0/127 -MaxPrefixesAdvertisedIPv4 20000 -MaxPrefixesAdvertisedIPv6 2000 -MD5AuthenticationKey 25234523452123411fd234qdwfas3234
+PS C:> $connection = New-AzPeeringDirectConnectionObject -PeeringDBFacilityId 99999 -BandwidthInMbps 30000 -SessionPrefixV4 192.168.1.0/31 -SessionPrefixV6 fe01::0/127 -MaxPrefixesAdvertisedIPv4 20000 -MaxPrefixesAdvertisedIPv6 2000 -MD5AuthenticationKey 25234523452123411fd234qdwfas3234
 
 PeeringDBFacilityId  : 99999
 SessionPrefixv4      : 192.168.1.0/31
@@ -53,21 +53,6 @@ Md5AuthenticationKey : 25234523452123411fd234qdwfas3234
 New local connection
 
 ## PARAMETERS
-
-### -AsJob
-Run in the background.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -BandwidthInMbps
 The Bandwidth offered at this location in Mbps.
@@ -170,7 +155,7 @@ Aliases:
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -185,7 +170,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

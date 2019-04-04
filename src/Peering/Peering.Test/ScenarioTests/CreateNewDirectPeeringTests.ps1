@@ -56,7 +56,7 @@ function Test-NewDirectPeering
 	$bandwidth = 20000
 
 	$directConnection = NewDirectConnectionV4V6 "0/31" "0/127" 20000
-    $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn  -Direct -DirectConnection $directConnection -Tag $tags
+    $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn  -DirectConnection $directConnection -Tag $tags
 	
 	# Commented Lines are disabled for testing should be uncommented for Production Testing
 
@@ -96,7 +96,7 @@ function Test-NewDirectPeeringWithPipe
 
 	$directConnection = NewDirectConnectionV4V6 "0/31" "0/127" 20000
 
-    $createdPeering =  ($directConnection) | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -Direct -Tag $tags
+    $createdPeering =  ($directConnection) | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -Tag $tags
 
 	# Commented Lines are disabled for testing should be uncommented for Production Testing
 
@@ -137,7 +137,7 @@ function Test-NewDirectPeeringPipeTwoConnections
 	$connection1 = NewDirectConnectionV4V6 "0/31" "0/127" 20000
 	$connection2 =NewDirectConnectionV4V6 "2/31" "2/127" 30000
 
-    $createdPeering = ,@( $connection1, $connection2  ) | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -Direct -Tag $tags
+    $createdPeering = ,@( $connection1, $connection2  ) | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -Tag $tags
 	
 	# Commented Lines are disabled for testing should be uncommented for Production Testing
 	Assert-AreEqual "Direct" $createdPeering.Kind

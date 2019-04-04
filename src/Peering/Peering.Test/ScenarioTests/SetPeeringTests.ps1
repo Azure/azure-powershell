@@ -20,14 +20,14 @@ function Test-GetAndSetUseForPeeringService
 {
     $peer = Get-AzPeering
 
-	$setPeer = $peer | Set-AzDirectPeeringUseForPeeringService -UseForPeeringService
+	$setPeer = $peer | Set-AzPeeringDirectConnectionObject -UseForPeeringService | Set-AzPeering
 
 	Assert-NotNull $setPeer
 	Assert-True {$setPeer.UseForPeeringService -eq $true}
 	Assert-True {$setPeer.Sku.Name -eq "Basic_Direct_Free"}
 	#Assert-True {$setPeer.Sku.Name -eq "Premium_Direct_Free"}
 
-	$setPeer = $peer | Set-AzDirectPeeringUseForPeeringService
+	$setPeer = $peer | Set-AzPeeringDirectConnectionObject -UseForPeeringService | Set-AzPeering
 
 	Assert-NotNull $setPeer
 	Assert-True {$setPeer.UseForPeeringService -eq $false}
@@ -45,7 +45,7 @@ function Test-SetNewIP
 	$sesip = "192.168.1.5"
     $peer = Get-AzPeering
 
-	$setPeer = $peer | Set-AzDirectPeeringSessionIPv4Prefix -ConnectionIndex 0 -SessionPrefixV4 $ip
+	$setPeer = $peer | Set-AzPeeringDirectConnectionObject -ConnectionIndex 0 -SessionPrefixV4 $ip | Set-AzPeering
 
 	Assert-NotNull $setPeer
 	Assert-AreEqual $ip $setPeer.Connections[0].BgpSession.SessionPrefixV4
@@ -64,7 +64,7 @@ function Test-SetNewIPv6
 	$sesip = "fe01::4"
     $peer = Get-AzPeering
 
-	$setPeer = $peer | Set-AzDirectPeeringSessionIPv6Prefix -ConnectionIndex 0 -SessionPrefixV6 $ip
+	$setPeer = $peer | Set-AzPeeringDirectConnectionObject -ConnectionIndex 0 -SessionPrefixV6 $ip | Set-AzPeering
 
 	Assert-NotNull $setPeer
 	Assert-AreEqual $ip $setPeer.Connections[0].BgpSession.SessionPrefixV6
@@ -81,7 +81,7 @@ function Test-SetNewBandwidth
 	$bandwidth = 30000
     $peer = Get-AzPeering
 
-	$setPeer = $peer | Set-AzDirectPeeringBandwidth -ConnectionIndex 0 -BandwidthInMbps $bandwidth
+	$setPeer = $peer | Set-AzPeeringDirectConnectionObject -ConnectionIndex 0 -BandwidthInMbps $bandwidth | Set-AzPeering
 
 	Assert-NotNull $setPeer
 	Assert-AreEqual $bandwidth $setPeer.Connections[0].BandwidthInMbps
@@ -96,7 +96,7 @@ function Test-SetNewMd5Hash
 	$hash = "25234523452123411fd234qdwfas3234"
     $peer = Get-AzPeering
 
-	$setPeer = $peer | Set-AzDirectPeeringMD5Authentication -ConnectionIndex 0 -MD5AuthenticationKey $hash
+	$setPeer = $peer | Set-AzPeeringDirectConnectionObject -ConnectionIndex 0 -MD5AuthenticationKey $hash | Set-AzPeering
 
 	Assert-NotNull $setPeer
 	Assert-AreEqual $hash $setPeer.Connections[0].BgpSession.Md5AuthenticationKey

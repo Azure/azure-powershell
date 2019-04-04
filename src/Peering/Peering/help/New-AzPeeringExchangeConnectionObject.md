@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/ne
 schema: 2.0.0
 ---
 
-# New-AzPeeringExchangeConnection
+# New-AzPeeringExchangeConnectionObject
 
 ## SYNOPSIS
 Creates a in memory PSObject to be used for creating or modifying a Peering.
@@ -14,23 +14,23 @@ Creates a in memory PSObject to be used for creating or modifying a Peering.
 
 ### ParameterSetNameIPv4Prefix (Default)
 ```
-New-AzPeeringExchangeConnection [-PeeringDBFacilityId] <Int32> -PeerSessionIPv4Address <String>
- [-MaxPrefixesAdvertisedIPv4 <Int32>] [-MD5AuthenticationKey <String>] [-AsJob]
+New-AzPeeringExchangeConnectionObject [-PeeringDBFacilityId] <Int32> -PeerSessionIPv4Address <String>
+ [-MaxPrefixesAdvertisedIPv4 <Int32>] [-MD5AuthenticationKey <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParameterSetNameIPv6Prefix
 ```
-New-AzPeeringExchangeConnection [-PeeringDBFacilityId] <Int32> -PeerSessionIPv6Address <String>
- [-MaxPrefixesAdvertisedIPv6 <Int32>] [-MD5AuthenticationKey <String>] [-AsJob]
+New-AzPeeringExchangeConnectionObject [-PeeringDBFacilityId] <Int32> -PeerSessionIPv6Address <String>
+ [-MaxPrefixesAdvertisedIPv6 <Int32>] [-MD5AuthenticationKey <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParameterSetNameIPv4PrefixParameterSetNameIPv6Prefix
 ```
-New-AzPeeringExchangeConnection [-PeeringDBFacilityId] <Int32> -PeerSessionIPv4Address <String>
+New-AzPeeringExchangeConnectionObject [-PeeringDBFacilityId] <Int32> -PeerSessionIPv4Address <String>
  -PeerSessionIPv6Address <String> [-MaxPrefixesAdvertisedIPv4 <Int32>] [-MaxPrefixesAdvertisedIPv6 <Int32>]
- [-MD5AuthenticationKey <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-MD5AuthenticationKey <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -41,7 +41,7 @@ Creates an in memory PSObject
 
 ### Example 1
 ```powershell
-PS C:> $exconnection = New-AzPeeringExchangeConnection -PeeringDBFacilityId 99999 -PeerSessionIPv4Address 10.3.151.99 -MaxPrefixesAdvertisedIPv4 20000 -MD5AuthenticationKey 25234523452123411fd234qdwfas3234
+PS C:> $exconnection = New-AzPeeringExchangeConnectionObject -PeeringDBFacilityId 99999 -PeerSessionIPv4Address 10.3.151.99 -MaxPrefixesAdvertisedIPv4 20000 -MD5AuthenticationKey 25234523452123411fd234qdwfas3234
 
 PeeringDBFacilityId     : 99999
 PeerSessionIPv4Address  : 10.3.151.99
@@ -52,21 +52,6 @@ Md5AuthenticationKey    : 25234523452123411fd234qdwfas3234
 Local connection object
 
 ## PARAMETERS
-
-### -AsJob
-Run in the background.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -94,7 +79,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -109,7 +94,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -154,7 +139,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -169,7 +154,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

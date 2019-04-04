@@ -54,7 +54,7 @@ function NewExchangePeeringPipeTwoConnections
 	$connection1 =NewExchangeConnectionV4V6 "22" "22" 23 45
 	$connection2 = NewExchangeConnectionV4V6 "34" "34" 55 100
 
-    $createdPeering = ,@( $connection1, $connection2  ) | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -Exchange -Tag $tags
+    $createdPeering = ,@( $connection1, $connection2  ) | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -Tag $tags
 	return $createdPeering
 }
 
@@ -79,7 +79,7 @@ function Test-NewExchangePeering()
 	$sessionv6 = "2001:7f8:1::a500:8075:22"
 
 	$connection1 =NewExchangeConnectionV4V6 "22" "22" 23 45
-    $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -Exchange -ExchangeConnection $connection1 -Tag $tags
+    $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -ExchangeConnection $connection1 -Tag $tags
 
     Assert-AreEqual $md5 $createdPeering.Connections[0].BgpSession.Md5AuthenticationKey
     Assert-AreEqual $bandwidth $createdPeering.Connections[0].BandwidthInMbps 
@@ -114,7 +114,7 @@ function Test-NewExchangePeeringPipe
 	$sessionv4 = "80.249.209.24"
 	$sessionv6 = "2001:7f8:1::a500:8075:24"
 
-    $createdPeering = @( NewExchangeConnectionV4V6 "24" "24" 23 45 ) | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -Exchange -Tag $tags	
+    $createdPeering = @( NewExchangeConnectionV4V6 "24" "24" 23 45 ) | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -Tag $tags	
 
     Assert-AreEqual $md5 $createdPeering.Connections[0].BgpSession.Md5AuthenticationKey
 	Assert-AreEqual $facilityId $createdPeering.Connections[0].PeeringDBFacilityId 
@@ -151,7 +151,7 @@ function Test-NewExchangePeeringPipeTwoConnections
 	$connection1 =NewExchangeConnectionV4V6 "25" "25" 23 45
 	$connection2 = NewExchangeConnectionV4V6 "34" "34" 55 100
 
-    $createdPeering = ,@( $connection1, $connection2  ) | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -Exchange -Tag $tags
+    $createdPeering = ,@( $connection1, $connection2  ) | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -Tag $tags
 	
 
     Assert-AreEqual $md5 $createdPeering.Connections[0].BgpSession.Md5AuthenticationKey
