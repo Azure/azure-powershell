@@ -24,5 +24,7 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string ResourceGroupLevelResource = "ResourceGroupLevelResource";
         public const string ResourceId = "ResourceId";
         public const string InputObject = "InputObject";
+        public const string PolicyOn = "PolicyOn";
+        public const string PolicyOff = "PolicyOff";
     }
 }

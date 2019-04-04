@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzRecoveryServicesBackupRecoveryLogChain
 
 ## SYNOPSIS
-Get time ranges for a backed up item.
+This command lists the start and end points of the unbroken log chain of the given backup item. Use it to determine whether the point-in-time, to which the user wants the DB to be restored, is valid or not.
 
 ## SYNTAX
 
@@ -35,8 +35,7 @@ After an item has been backed up, an **AzRecoveryServicesBackupRecoveryLogChain*
 PS C:\> $StartDate = (Get-Date).AddDays(-7) 
 PS C:\> $EndDate = Get-Date 
 PS C:\> $Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureWorkload -Status Registered
-PS C:\> $BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType MSSQL 
-PS C:\> $RP = Get-AzRecoveryServicesBackupRecoveryLogChain -Item $BackupItem -StartDate $Startdate.ToUniversalTime() -EndDate $Enddate.ToUniversalTime()
+PS C:\> $RP = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType MSSQL | Get-AzRecoveryServicesBackupRecoveryLogChain -StartDate $Startdate.ToUniversalTime() -EndDate $Enddate.ToUniversalTime()
 ```
 
 The first command gets the date from seven days ago, and then stores it in the $StartDate variable.

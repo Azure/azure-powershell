@@ -14,14 +14,8 @@ Gets a virtual network tap
 
 ### ListParameterSet (Default)
 ```
-Get-AzVirtualNetworkTap [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### GetByNameParameterSet
-```
-Get-AzVirtualNetworkTap -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzVirtualNetworkTap [-ResourceGroupName <String>] [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetByResourceIdParameterSet
@@ -37,10 +31,17 @@ The **Get-AzVirtualNetworkTap** cmdlet gets an Azure virtual network tap or a li
 
 ### Example 1: Get a virtual network tap
 ```
-PS C:\>Get-AzVirtualNetworkTap -ResourceGroupName "ResourceGroup1" -Name "VirtualTap1"
+PS C:\> Get-AzVirtualNetworkTap -ResourceGroupName "ResourceGroup1" -Name "VirtualTap1"
 ```
 
 This command gets a VirtualNetwork tap reference for given "VirtualTap1" in "ResourceGroup1".
+
+### Example 2: Get all virtual network taps using filtering
+```
+PS C:\> Get-AzVirtualNetworkTap -Name "VirtualTap*"
+```
+
+This command gets all VirtualNetwork tap references that start with "VirtualTap".
 
 ## PARAMETERS
 
@@ -64,10 +65,10 @@ The name of the tap.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByNameParameterSet
+Parameter Sets: ListParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -83,18 +84,6 @@ Parameter Sets: ListParameterSet
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: GetByNameParameterSet
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

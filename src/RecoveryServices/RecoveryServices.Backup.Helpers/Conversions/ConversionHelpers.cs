@@ -160,6 +160,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             AzureVmPolicy iaasPolicyModel = policyModel as AzureVmPolicy;
             iaasPolicyModel.WorkloadType = WorkloadType.AzureVM;
             iaasPolicyModel.BackupManagementType = BackupManagementType.AzureVM;
+            iaasPolicyModel.SnapshotRetentionInDays = ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.
+                Properties).InstantRpRetentionRangeInDays;
             iaasPolicyModel.RetentionPolicy = PolicyHelpers.GetPSLongTermRetentionPolicy((ServiceClientModel.LongTermRetentionPolicy)
                                               ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy,
                                               ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).TimeZone);

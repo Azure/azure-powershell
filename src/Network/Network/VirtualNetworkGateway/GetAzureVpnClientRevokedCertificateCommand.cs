@@ -50,13 +50,17 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
             var vnetGateway = this.GetVirtualNetworkGateway(this.ResourceGroupName, this.VirtualNetworkGatewayName);
+            if (vnetGateway.VpnClientConfiguration == null)
+            {
+                throw new ArgumentException(string.Format(Properties.Resources.VirtualNetworkGatewayNoRevokedCertificate, VirtualNetworkGatewayName));
+            }
 
             if (!string.IsNullOrEmpty(this.VpnClientRevokedCertificateName))
             {
                 PSVpnClientRevokedCertificate clientRevokedCertificate = vnetGateway.VpnClientConfiguration.VpnClientRevokedCertificates.Find(cert => cert.Name.Equals(VpnClientRevokedCertificateName));
                 if (clientRevokedCertificate == null)
                 {
-                    throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+                    throw new ArgumentException(string.Format(Properties.Resources.ResourceNotFound, VpnClientRevokedCertificateName));
                 }
                 else
                 {

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
 online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Set-AzSecurityPricing
@@ -16,12 +16,6 @@ Sets the pricing of Azure Security Center tier for a scope.
 ```
 Set-AzSecurityPricing -Name <String> -PricingTier <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
-```
-
-### ResourceGroupLevelResource
-```
-Set-AzSecurityPricing -ResourceGroupName <String> -Name <String> -PricingTier <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
@@ -93,7 +87,7 @@ Resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionLevelResource, ResourceGroupLevelResource
+Parameter Sets: SubscriptionLevelResource
 Aliases:
 
 Required: True
@@ -108,22 +102,7 @@ Pricing Tier.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionLevelResource, ResourceGroupLevelResource
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Resource group name.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceGroupLevelResource
+Parameter Sets: SubscriptionLevelResource
 Aliases:
 
 Required: True

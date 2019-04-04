@@ -381,4 +381,15 @@
   <data name="ApplicationGatewayRewriteRuleSetName" xml:space="preserve">
     <value>rewriteRuleSets</value>
   </data>
+  <data name="VirtualNetworkGatewayNoRevokedCertificate" xml:space="preserve">
+    <value>No revoked certificates found on VirtualNetworkGateway {0}</value>
+    <comment>Message for missing certificates</comment>
+  </data>
+  <data name="VirtualNetworkGatewayNoRootCertificate" xml:space="preserve">
+    <value>No root certificates found on VirtualNetworkGateway {0}</value>
+    <comment>Message for missing certificates</comment>
+  </data>
+  <data name="ApplicationGatewayFirewallPolicy" xml:space="preserve">
+    <value>firewallPolicy</value>
+  </data>
 </root>

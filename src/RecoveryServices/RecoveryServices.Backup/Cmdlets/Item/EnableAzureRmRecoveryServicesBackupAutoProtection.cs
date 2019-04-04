@@ -30,11 +30,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     public class EnableAzureRmRecoveryServicesBackupAutoProtection : RSBackupVaultCmdletBase
     {
         /// <summary>
-        /// Name of the Azure VM whose representative item needs to be protected.
+        /// Item that needs to be auto protected
         /// </summary>
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = ParamHelpMsgs.ProtectableItem.ItemId)]
-        public string InputItem { get; set; }
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true,
+            HelpMessage = ParamHelpMsgs.ProtectableItem.ItemObject)]
+        [ValidateNotNullOrEmpty]
+        public ProtectableItemBase InputItem { get; set; }
 
         /// <summary>
         /// Backup management type of the items to be returned.
@@ -73,20 +74,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string vaultName = resourceIdentifier.ResourceName;
                 string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
-                string shouldProcessName = InputItem;
+                string shouldProcessName = InputItem.Id;
 
                 string protectedItemUri = "";
                 if (ShouldProcess(shouldProcessName, VerbsLifecycle.Enable))
                 {
                     Dictionary<UriEnums, string> keyValueDict =
-                    HelperUtils.ParseUri(InputItem);
+                    HelperUtils.ParseUri(InputItem.Id);
 
                     protectedItemUri = HelperUtils.GetProtectableItemUri(
-                        keyValueDict, InputItem);
+                        keyValueDict, InputItem.Id);
 
                     AzureRecoveryServiceVaultProtectionIntent properties = new AzureRecoveryServiceVaultProtectionIntent();
                     properties.BackupManagementType = ServiceClientModel.BackupManagementType.AzureWorkload;
-                    properties.ItemId = InputItem;
+                    properties.ItemId = InputItem.Id;
                     properties.PolicyId = Policy.Id;
                     ProtectionIntentResource serviceClientRequest = new ProtectionIntentResource()
                     {
@@ -96,7 +97,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     try
                     {
                         var itemResponse = ServiceClientAdapter.CreateOrUpdateProtectionIntent(
-                        Guid.NewGuid().ToString(),
+                        GetGuid ?? Guid.NewGuid().ToString(),
                         serviceClientRequest,
                         vaultName: vaultName,
                         resourceGroupName: resourceGroupName);

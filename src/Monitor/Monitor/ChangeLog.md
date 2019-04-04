@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.1
+* Update help for Get-AzMetric
+
 ## Version 1.0.0
 * General availability of `Az.Monitor` module
 * Removed plural names "Categories" and "Timegrains" parameter in favor of singular parameter names
