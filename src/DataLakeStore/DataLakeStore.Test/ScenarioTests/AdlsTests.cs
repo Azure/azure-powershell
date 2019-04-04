@@ -83,5 +83,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         {
             NewInstance.RunPsTest(_logger, string.Format("Test-NegativeDataLakeStoreAccount -location '{0}'", AdlsTestsBase.ResourceGroupLocation));
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAdlsEnumerateAndRestoreDeletedItem()
+        {
+            NewInstance.RunPsTest(_logger, string.Format("Test-EnumerateAndRestoreDataLakeStoreDeletedItem -location '{0}'", AdlsTestsBase.ResourceGroupLocation));
+        }
     }
 }

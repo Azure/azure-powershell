@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzRecoveryServicesBackupWorkloadRecoveryConfig
 
 ## SYNOPSIS
-Get recovery plan for a backup up item.
+This command constructs the recovery configuration of a backed up item such as SQL DB. The configuration object stores all details such as the recovery mode, target destinations for the restore and application specific parameters like target physical paths for SQL.
 
 ## SYNTAX
 
@@ -35,9 +35,8 @@ The command returns a recovery config for AzureWorkload items which is passed to
 
 ### Example 1
 ```
-PS C:\> $RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $SQLBkpItem $startdate $enddate
-PS C:\> $SQLRecoveryObject = Get-AzRecoveryServicesWorkloadRecoveryConfig -RecoveryPoint $RP -OriginalWorkloadRestore
-PS C:\> $SQLRecoveryObject = Get-AzRecoveryServicesWorkloadRecoveryConfig -RecoveryPoint $RP -AlternateWorkloadRestore -TargetItem $SQLProtItem
+PS C:\> $SQLRecoveryObject = Get-AzRecoveryServicesBackupRecoveryPoint -Item $SQLBkpItem $startdate $enddate | Get-AzRecoveryServicesWorkloadRecoveryConfig -OriginalWorkloadRestore
+PS C:\> $SQLRecoveryObject = Get-AzRecoveryServicesBackupRecoveryPoint -Item $SQLBkpItem $startdate $enddate | Get-AzRecoveryServicesWorkloadRecoveryConfig -AlternateWorkloadRestore -TargetItem $SQLProtItem
 ```
 
 The first cmdlet is used to get the Recovery point object.
@@ -47,7 +46,7 @@ THe third cmdlet crreats a recovery plan for a alternate location restore.
 ## PARAMETERS
 
 ### -AlternateWorkloadRestore
-AlternateWorkloadRestore
+Specifies that the backed up DB is to be overwritten with the DB information present in the recovery point.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -77,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -Item
-Item
+Specifies the backup item on which the restore operation is being performed.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
@@ -92,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -OriginalWorkloadRestore
-OriginalWorkloadRestore
+Specifies that the backed up DB is to be overwritten with the DB information present in the recovery point.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -137,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetItem
-TargetItem
+Specifies the target on which the DB needs to be restored. For SQL restores, it needs to be of protectable item type SQLInstance only.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ProtectableItemBase

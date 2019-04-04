@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="$(MSBuildThisFileDirectory)..\..\..\..\Repo.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Repo.props" />
   <Import Project="$(RepoTools)Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>

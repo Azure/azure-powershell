@@ -19,7 +19,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class AzureVmPolicy : AzurePolicy
     {
-
+        /// <summary>
+        /// Object defining the retention days for a snapshot
+        /// </summary>
+        public int? SnapshotRetentionInDays { get; set; }
     }
 
 }

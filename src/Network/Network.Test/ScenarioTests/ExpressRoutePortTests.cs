@@ -12,22 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class ExpressRoutePortTests : RMTestBase
+    public class ExpressRoutePortTests : NetworkTestRunner
     {
-        public XunitTracingInterceptor _logger;
         public ExpressRoutePortTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -35,7 +30,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.pgtm)]
         public void TestExpressRoutePortCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ExpressRoutePortCRUD"));
+            TestRunner.RunTestScript(string.Format("Test-ExpressRoutePortCRUD"));
         }
     }
 }

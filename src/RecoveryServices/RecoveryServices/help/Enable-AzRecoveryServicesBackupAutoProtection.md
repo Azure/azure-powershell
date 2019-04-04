@@ -8,14 +8,15 @@ schema: 2.0.0
 # Enable-AzRecoveryServicesBackupAutoProtection
 
 ## SYNOPSIS
-Enables auto backup for a protectable item with a specified Backup protection policy.
+This commands allows users to automatically protect all existing unprotected DBs and any DB which will be added later with the given policy. Azure backup service will then regularly scan auto-protected containers for any new DBs and automatically protect them.
 
 ## SYNTAX
 
 ```
-Enable-AzRecoveryServicesBackupAutoProtection [-InputItem] <String>
+Enable-AzRecoveryServicesBackupAutoProtection [-InputItem] <ProtectableItemBase>
  [-BackupManagementType] <BackupManagementType> [-WorkloadType] <WorkloadType> [-Policy] <PolicyBase>
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +27,8 @@ The **Enable-AzRecoveryServicesBackupAutoProtection** cmdlet sets Azure auto Bac
 ### Example 1
 ```
 PS C:\> $Pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "DefaultPolicy"
-PS C:\> Enable-AzRecoveryServicesAutoProtection -BackupManagementType “AzureWorkload” -WorkloadType “MSSQL” -InputItem <$ItemID> -Policy $Pol -VaultId $vault.ID
+PS C:\> $container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer
+PS C:\> Get-AzRecoveryServicesBackupProtectableItem -Container $container -WorkloadType "MSSQL" -ItemType "SQLInstance" | Enable-AzRecoveryServicesBackupAutoProtection -BackupManagementType "AzureWorkload" -WorkloadType "MSSQL" -Policy $Pol
 ```
 
 The first cmdlet gets a default policy object, and then stores it in the $Pol variable.
@@ -35,7 +37,7 @@ The second cmdlet sets the Backup protection policy for the AzureWorkload using 
 ## PARAMETERS
 
 ### -BackupManagementType
-Backup Management type of the resource (for example: MAB, DPM).
+Backup Management type of the resource (for example: MAB, DPM, AzureWorkload).
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType
@@ -66,17 +68,32 @@ Accept wildcard characters: False
 ```
 
 ### -InputItem
-Item Id
+Specifies the protectable item object that can be passed as an input.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ProtectableItemBase
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Return the result for auto protection.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -111,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkloadType
-Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles).
+Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles, MSSQL).
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
