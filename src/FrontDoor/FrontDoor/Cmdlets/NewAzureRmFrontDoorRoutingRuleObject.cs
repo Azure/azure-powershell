@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// <summary>
     /// Defines the New-AzFrontDoorRoutingRuleObject cmdlet.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorRoutingRuleObject"), OutputType(typeof(PSRoutingRule))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorRoutingRuleObject", DefaultParameterSetName = FieldsWithForwardingParameterSet), OutputType(typeof(PSRoutingRule))]
     public class NewAzureRmFrontDoorRoutingRuleObject : AzureFrontDoorCmdletBase
     {
         /// <summary>
