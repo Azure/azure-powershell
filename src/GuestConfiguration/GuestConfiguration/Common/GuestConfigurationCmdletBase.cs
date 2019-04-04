@@ -276,11 +276,14 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
 
         private string GetPolicySetCategory(PolicySetDefinition initiativeDefinition)
         {
-            var categoryMetadata = JObject.Parse(initiativeDefinition.Metadata.ToString());
-            var categoryMetadataDictionary = categoryMetadata.ToObject<Dictionary<string, object>>();
-            if (categoryMetadataDictionary.ContainsKey("category"))
+            if (initiativeDefinition != null && initiativeDefinition.Metadata != null)
             {
-                return categoryMetadataDictionary["category"].ToString();                
+                var categoryMetadata = JObject.Parse(initiativeDefinition.Metadata.ToString());
+                var categoryMetadataDictionary = categoryMetadata.ToObject<Dictionary<string, object>>();
+                if (categoryMetadataDictionary.ContainsKey("category"))
+                {
+                    return categoryMetadataDictionary["category"].ToString();
+                }
             }
 
             return string.Empty;

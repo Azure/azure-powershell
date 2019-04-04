@@ -195,7 +195,7 @@ function Test-Gallery
                                           -PurchasePlanPublisher $purchasePlanPublisher;
                                           
         $wildcardNameQuery = ($galleryImageName -replace ".$") + "*"
-		$galleryImageDefinitionList = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $wildcardNameQuery;
+        $galleryImageDefinitionList = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $wildcardNameQuery;
         $definition = $galleryImageDefinitionList | ? {$_.Name -eq $galleryImageName};
         Verify-GalleryImageDefinition $definition $rgname $galleryImageName $loc $description1 `
                                       $eula $privacyStatementUri $releaseNoteUri `
@@ -337,6 +337,64 @@ function Test-Gallery
         $version | Remove-AzGalleryImageVersion -Force;
         $definition | Remove-AzGalleryImageDefinition -Force;
         $gallery | Remove-AzGallery -Force;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Testing creating VM with a shared gallery image from a different subscription.
+#>
+function Test-GalleryCrossTenant
+{
+    # Setup
+    # In order to record this test, please use another subscription to create a gallery image and share the image to the test subscription.  And then set the gallery image id here.
+    $imageId = "/subscriptions/97f78232-382b-46a7-8a72-964d692c4f3f/resourceGroups/xwRg/providers/Microsoft.Compute/galleries/galleryForCirrus/images/xwGalleryImageForCirrusWindows/versions/1.0.0";
+
+    $rgname = Get-ComputeTestResourceName;
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Create a VM first
+        $vmsize = 'Standard_D2_v2';
+        $vmname = 'vm' + $rgname;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId -Primary;
+
+        # OS & Image
+        $user = "Foo12";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+
+        $p = Set-AzVMSourceImage -VM $p -Id $imageId;
+
+        # Virtual Machine
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
+
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual $imageId $vm.StorageProfile.ImageReference.Id;
     }
     finally
     {

@@ -22,6 +22,7 @@
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,6 +31,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
+    [CmdletOutputBreakingChange(typeof(PSSnapshotUpdate),
+                                DeprecatedOutputProperties = new string[] { "EncryptionSettings" },
+                                NewOutputProperties = new string[] { "EncryptionSettingsCollection" })]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SnapshotUpdateConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSnapshotUpdate))]
     public partial class NewAzureRmSnapshotUpdateConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
@@ -85,37 +89,56 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            // EncryptionSettings
-            EncryptionSettings vEncryptionSettings = null;
+            // EncryptionSettingsCollection
+            EncryptionSettingsCollection vEncryptionSettingsCollection = null;
 
             // Sku
             SnapshotSku vSku = null;
 
             if (this.MyInvocation.BoundParameters.ContainsKey("EncryptionSettingsEnabled"))
             {
-                if (vEncryptionSettings == null)
+                if (vEncryptionSettingsCollection == null)
                 {
-                    vEncryptionSettings = new EncryptionSettings();
+                    vEncryptionSettingsCollection = new EncryptionSettingsCollection();
                 }
-                vEncryptionSettings.Enabled = this.EncryptionSettingsEnabled;
+                vEncryptionSettingsCollection.Enabled = (bool) this.EncryptionSettingsEnabled;
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("DiskEncryptionKey"))
             {
-                if (vEncryptionSettings == null)
+                if (vEncryptionSettingsCollection == null)
                 {
-                    vEncryptionSettings = new EncryptionSettings();
+                    vEncryptionSettingsCollection = new EncryptionSettingsCollection();
                 }
-                vEncryptionSettings.DiskEncryptionKey = this.DiskEncryptionKey;
+
+                if (vEncryptionSettingsCollection.EncryptionSettings == null)
+                {
+                    vEncryptionSettingsCollection.EncryptionSettings = new List<EncryptionSettingsElement>();
+                }
+
+                if (vEncryptionSettingsCollection.EncryptionSettings.Count == 0)
+                {
+                    vEncryptionSettingsCollection.EncryptionSettings.Add(new EncryptionSettingsElement());
+                }
+                vEncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey = this.DiskEncryptionKey;
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("KeyEncryptionKey"))
             {
-                if (vEncryptionSettings == null)
+                if (vEncryptionSettingsCollection == null)
                 {
-                    vEncryptionSettings = new EncryptionSettings();
+                    vEncryptionSettingsCollection = new EncryptionSettingsCollection();
                 }
-                vEncryptionSettings.KeyEncryptionKey = this.KeyEncryptionKey;
+                if (vEncryptionSettingsCollection.EncryptionSettings == null)
+                {
+                    vEncryptionSettingsCollection.EncryptionSettings = new List<EncryptionSettingsElement>();
+                }
+
+                if (vEncryptionSettingsCollection.EncryptionSettings.Count == 0)
+                {
+                    vEncryptionSettingsCollection.EncryptionSettings.Add(new EncryptionSettingsElement());
+                }
+                vEncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey = this.KeyEncryptionKey;
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("SkuName"))
@@ -132,7 +155,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 OsType = this.MyInvocation.BoundParameters.ContainsKey("OsType") ? this.OsType : (OperatingSystemTypes?)null,
                 DiskSizeGB = this.MyInvocation.BoundParameters.ContainsKey("DiskSizeGB") ? this.DiskSizeGB : (int?)null,
                 Tags = this.MyInvocation.BoundParameters.ContainsKey("Tag") ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
-                EncryptionSettings = vEncryptionSettings,
+                EncryptionSettingsCollection = vEncryptionSettingsCollection,
                 Sku = vSku,
             };
 

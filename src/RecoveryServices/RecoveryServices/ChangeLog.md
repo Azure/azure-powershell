@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Added SnapshotRetentionInDays in Azure VM policy to support Instant RP
+* Added pipe support for unregister container
+ 
 ## Version 1.1.0
 * Added Sql server in Azure VM support
 * SDK Update
