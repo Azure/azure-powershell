@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// Gets or sets the instance collation
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The collation of the Azure SQL Managed Instance to use.")]
+            HelpMessage = "The collation of the instance to use.")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter(Constants.CollationSqlLatin1, Constants.CollationLatin1)]
         public string Collation { get; set; }
@@ -166,6 +166,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter(ManagedInstanceProxyOverride.Proxy, ManagedInstanceProxyOverride.Redirect, ManagedInstanceProxyOverride.Default)]
         public string ProxyOverride { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the instance time zone
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The time zone id for the instance to set.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter(Constants.TimeZoneUtc)]
+        public string TimezoneId { get; set; }
 
         /// <summary>
         /// Gets or sets the tags to associate with the instance
@@ -260,7 +269,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 Sku = Sku,
                 Collation = this.Collation,
                 PublicDataEndpointEnabled = this.PublicDataEndpointEnabled,
-                ProxyOverride = this.ProxyOverride
+                ProxyOverride = this.ProxyOverride,
+                TimezoneId = this.TimezoneId,
             });
             return newEntity;
         }
