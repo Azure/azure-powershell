@@ -45,7 +45,7 @@ Update Contact Information
 Sets the Peering. Use this Command in conjunction with `Set-AzDirectPeeringConnectionObject` or `Set-AzExchangePeeringConnectionObject`.
 
 ### [Set-AzPeeringDirectConnectionObject](Set-AzPeeringDirectConnectionObject.md)
-{{ Fill in the Synopsis }}
+Sets or updates the Direct Connection information. 
 
 ### [Set-AzPeeringExchangeConnectionObject](Set-AzPeeringExchangeConnectionObject.md)
 Sets or updates the Exchange Connection information. 

@@ -18,15 +18,14 @@ RemoveByName
 #>
 function Test-RemoveByName
 {
-	$peerName = "Contoso"
+	$peerName = "Contoso1"
     $peer = Get-AzPeerAsn -PeerName $peerName
 
 	$removePeer = Remove-AzPeerAsn -PeerName $peer.PeerName -Force
 
 	Assert-NotNull $removePeer
 
-	$peer = Get-AzPeerAsn -PeerName $peer.PeerName
-	Assert-Null $peer
+Assert-ThrowsContains {Get-AzPeerAsn -PeerName $peerName} "Error:Not Found reason:NotFound message:PeerAsn does not exist with the given name Resource does not exist."
 
 
 }
@@ -37,13 +36,12 @@ RemoveInputObject
 #>
 function Test-RemoveInputObject
 {
-	$peerName = "Contoso"
+	$peerName = "Contoso1"
     $peer = Get-AzPeerAsn -PeerName $peerName
 
 	$removePeer = Get-AzPeerAsn | Remove-AzPeerAsn -Force
 
 	Assert-NotNull $removePeer
 
-	$peer = Get-AzPeerAsn -PeerName $peerName
-	Assert-Null $peer
+	Assert-ThrowsContains {Get-AzPeerAsn -PeerName $peerName} "Error:Not Found reason:NotFound message:PeerAsn does not exist with the given name Resource does not exist."
 }

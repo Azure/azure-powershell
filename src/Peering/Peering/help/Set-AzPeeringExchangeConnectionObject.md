@@ -14,23 +14,22 @@ Sets or updates the Exchange Connection information.
 
 ### ParameterSetNameMd5Authentication (Default)
 ```
-Set-AzPeeringExchangeConnectionObject -InputObject <PSPeering> [-ConnectionIndex] <Int32>
- [[-MD5AuthenticationKey] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzPeeringExchangeConnectionObject -InputObject <PSExchangeConnection> [[-MD5AuthenticationKey] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParameterSetNameIPv4Address
 ```
-Set-AzPeeringExchangeConnectionObject -InputObject <PSPeering> [-ConnectionIndex] <Int32>
- [-PeerSessionIPv4Address] <String> [-MaxPrefixesAdvertisedIPv4 <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzPeeringExchangeConnectionObject -InputObject <PSExchangeConnection> [-PeerSessionIPv4Address] <String>
+ [-MaxPrefixesAdvertisedIPv4 <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ParameterSetNameIPv6Address
 ```
-Set-AzPeeringExchangeConnectionObject -InputObject <PSPeering> [-ConnectionIndex] <Int32>
- [-PeerSessionIPv6Address] <String> [-MaxPrefixesAdvertisedIPv6 <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzPeeringExchangeConnectionObject -InputObject <PSExchangeConnection> [-PeerSessionIPv6Address] <String>
+ [-MaxPrefixesAdvertisedIPv6 <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,34 +39,19 @@ Used in conjunction with Set-AzPeering, this is an in memory operation and will 
 
 ### Update Md5 Hash
 ```powershell
-PS C:> $update = Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 | Set-AzPeeringExchangeConnectionObject -ConnectionIndex 0 -MD5AuthenticationKey $hash
+PS C:> $update = Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 | Set-AzPeeringExchangeConnectionObject -MD5AuthenticationKey $hash
 ```
 
 Updates the Md5 Hash for the first connection in the Peering object in memory. 
 
 ### Update Bgp Session Address
 ```powershell
-PS C:> $update = Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 | Set-AzPeeringExchangeConnectionObject -ConnectionIndex 0 -PeerSessionIPv4Address "192.168.0.1" -MaxPrefixesAdvertisedIPv4 20000
+PS C:> $update = Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 | Set-AzPeeringExchangeConnectionObject -PeerSessionIPv4Address "192.168.0.1" -MaxPrefixesAdvertisedIPv4 20000
 ```
 
 Updates the Peering Address for the first connection in the Peering object in memory. 
 
 ## PARAMETERS
-
-### -ConnectionIndex
-The index associated with the connection from the Get-AzPeering.
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -88,7 +72,7 @@ Accept wildcard characters: False
 {{ Fill InputObject Description }}
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection
 Parameter Sets: (All)
 Aliases:
 

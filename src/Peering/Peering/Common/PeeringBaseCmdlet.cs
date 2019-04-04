@@ -285,6 +285,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         }
 
         /// <summary>
+        /// The valid upgrade bandwidth.
+        /// </summary>
+        /// <param name="startingBandwidth">
+        /// The starting bandwidth.
+        /// </param>
+        /// <param name="newBandwidth">
+        /// The new bandwidth.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        /// <exception cref="PSNotSupportedException">
+        /// </exception>
+        public bool ValidUpgradeBandwidth(int? startingBandwidth, int? newBandwidth)
+        {
+            if (!this.ValidBandwidth(newBandwidth))
+                return false;
+            if (newBandwidth <= (startingBandwidth ?? 0))
+                throw new PSNotSupportedException(
+                    $"Downgrading bandwidth from {startingBandwidth} to {newBandwidth} supported.");
+            return true;
+        }
+
+        /// <summary>
         /// The compare default to InputObject vlan.
         /// </summary>
         /// <param name="PeeringVlanBandwidthInMbps">

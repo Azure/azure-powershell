@@ -12,9 +12,16 @@ Sets the Peering. Use this Command in conjunction with `Set-AzDirectPeeringConne
 
 ## SYNTAX
 
+### ParameterSetNameDefault (Default)
 ```
 Set-AzPeering -InputObject <PSPeering> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### ParameterSetNameUseForPeeringService
+```
+Set-AzPeering -InputObject <PSPeering> [-UseForPeeringService] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +31,7 @@ Sets the PSPeering Object
 
 ### Update Md5 Authentication Key
 ```powershell
-PS C:> Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 | Set-AzPeeringDirectConnectionObject -ConnectionIndex 0 -MD5AuthenticationKey $hash | Set-AzPeering
+PS C:> Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 | Set-AzPeeringDirectConnectionObject -MD5AuthenticationKey $hash | Set-AzPeering
 ```
 
 Sets the Md5 Authentication Key
@@ -58,6 +65,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -UseForPeeringService
+Enable for use with Microsoft InputObject Service (MPS).
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ParameterSetNameUseForPeeringService
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

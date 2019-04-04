@@ -34,19 +34,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
     [Cmdlet(
         VerbsCommon.Set,
         "AzPeeringDirectConnectionObject",
-        DefaultParameterSetName = Constants.ParameterSetNameUseForPeeringService,
+        DefaultParameterSetName = Constants.ParameterSetNameBandwidth,
         SupportsShouldProcess = true)]
-    [OutputType(typeof(PSPeering))]
+    [OutputType(typeof(PSDirectConnection))]
     public class SetAzureDirectPeeringConnectionCommand : PeeringBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the legacy InputObject.
         [Parameter(
-             Mandatory = true,
-             ValueFromPipeline = true,
-             ParameterSetName = Constants.ParameterSetNameUseForPeeringService,
-             DontShow = true),
-         Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
              ParameterSetName = Constants.ParameterSetNameIPv4Prefix,
@@ -66,33 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
              ValueFromPipeline = true,
              ParameterSetName = Constants.ParameterSetNameMd5Authentication,
              DontShow = true)]
-        public PSPeering InputObject { get; set; }
-
-        /// <summary>
-        /// Gets or sets the connection index.
-        /// </summary>
-        [Parameter(
-             Position = Constants.PositionPeeringZero,
-             Mandatory = true,
-             HelpMessage = Constants.PeeringDirectConnectionIndexHelp,
-             ParameterSetName = Constants.ParameterSetNameIPv4Prefix),
-         Parameter(
-             Position = Constants.PositionPeeringZero,
-             Mandatory = true,
-             HelpMessage = Constants.PeeringDirectConnectionIndexHelp,
-             ParameterSetName = Constants.ParameterSetNameIPv6Prefix),
-         Parameter(
-             Position = Constants.PositionPeeringZero,
-             Mandatory = true,
-             HelpMessage = Constants.PeeringDirectConnectionIndexHelp,
-             ParameterSetName = Constants.ParameterSetNameBandwidth),
-         Parameter(
-             Position = Constants.PositionPeeringZero,
-             Mandatory = true,
-             HelpMessage = Constants.PeeringDirectConnectionIndexHelp,
-             ParameterSetName = Constants.ParameterSetNameMd5Authentication), PSArgumentCompleter("0", "1", "2"),
-         ValidateRange(0, 2), ValidateNotNullOrEmpty]
-        public virtual int? ConnectionIndex { get; set; }
+        public PSDirectConnection InputObject { get; set; }
 
         /// <summary>
         /// Gets or sets the session ipv4.
@@ -144,12 +113,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
             ParameterSetName = Constants.ParameterSetNameMd5Authentication)]
         public string MD5AuthenticationKey { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = Constants.UseForPeeringServiceHelp,
-            ParameterSetName = Constants.ParameterSetNameUseForPeeringService)]
-        public SwitchParameter UseForPeeringService { get; set; }
-
         /// <summary>
         ///     Bandwidth offered at this location.
         /// </summary>
@@ -170,14 +133,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
             try
             {
                 base.Execute();
-                PSPeering newRequest = null;
+                PSDirectConnection newRequest = null;
                 if (this.ParameterSetName.Equals(
-                    Constants.ParameterSetNameUseForPeeringService,
-                    StringComparison.OrdinalIgnoreCase))
-                {
-                    newRequest = this.UpdateUseForPeeringService();
-                }
-                else if (this.ParameterSetName.Equals(
                     Constants.ParameterSetNameIPv4Prefix,
                     StringComparison.OrdinalIgnoreCase))
                 {
@@ -223,48 +180,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         ///     The update InputObject offer.
         /// </summary>
         /// <returns>
-        ///     The <see cref="PSDirectPeeringModelView" />.
+        ///     The <see cref="PSDirectConnection" />.
         /// </returns>
-        private PSDirectPeeringModelView UpdatePeeringOffer()
+        private PSDirectConnection UpdatePeeringOffer()
         {
-            if (this.InputObject is PSDirectPeeringModelView directPeer)
+            if (this.InputObject is PSDirectConnection inputObject)
             {
-                var resourceGroupName = this.GetResourceGroupNameFromId(directPeer.Id);
-                var peeringName = this.GetPeeringNameFromId(directPeer.Id);
-                var peering = new PSPeering
-                                  {
-                                      Kind = directPeer.Kind,
-                                      PeeringLocation = directPeer.PeeringLocation,
-                                      Location = directPeer.Location,
-                                      Sku = directPeer.UseForPeeringService
-                                                ? new PSPeeringSku { Name = Constants.PremiumDirectFree }
-                                                : new PSPeeringSku { Name = Constants.BasicDirectFree },
-                                      Tags = directPeer.Tags
-                                  };
-                peering.Direct = new PSPeeringPropertiesDirect
-                                     {
-                                         Connections = directPeer.Connections,
-                                         PeerAsn = directPeer.PeerAsn,
-                                         UseForPeeringService = directPeer.UseForPeeringService
-                                     };
-
-                if (this.ConnectionIndex >= directPeer.Connections.Count - 1)
-                    throw new IndexOutOfRangeException($"ConnectionIndex out of range {this.ConnectionIndex}");
-                var connectionIndex = this.ConnectionIndex;
-                if (connectionIndex != null)
-                    if (this.ValidBandwidth(this.BandwidthInMbps))
-                        peering.Direct.Connections[(int)connectionIndex].BandwidthInMbps =
-                            this.BandwidthInMbps >= directPeer.Connections[(int)connectionIndex].BandwidthInMbps
-                                ? this.BandwidthInMbps
-                                : throw new ArgumentOutOfRangeException($"Only Bandwidth upgrades are supported.");
-                this.PeeringClient.CreateOrUpdate(
-                    resourceGroupName.ToString(),
-                    peeringName.ToString(),
-                    PeeringResourceManagerProfile.Mapper.Map<PeeringModel>(peering));
-
-                return new PSDirectPeeringModelView(
-                    PeeringResourceManagerProfile.Mapper.Map<PSPeering>(
-                        this.PeeringClient.Get(resourceGroupName.ToString(), peeringName.ToString())));
+                inputObject.BandwidthInMbps =
+                    this.ValidUpgradeBandwidth(inputObject.BandwidthInMbps, this.BandwidthInMbps)
+                        ? this.BandwidthInMbps
+                        : inputObject.BandwidthInMbps;
+                if (this.ValidConnection(inputObject))
+                    return inputObject;
             }
 
             throw new InvalidOperationException("Use Set-AzPeeringExchangeConnectionObject instead.");
@@ -274,45 +201,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         ///     The update InputObject offer.
         /// </summary>
         /// <returns>
-        ///     The <see cref="PSPeering" />.
+        ///     The <see cref="PSDirectConnection" />.
         /// </returns>
-        private PSDirectPeeringModelView UpdateMD5Authentication()
+        private PSDirectConnection UpdateMD5Authentication()
         {
-            if (this.InputObject is PSDirectPeeringModelView directPeer)
+            if (this.InputObject is PSDirectConnection inputObject)
             {
-                var resourceGroupName = this.GetResourceGroupNameFromId(directPeer.Id);
-                var peeringName = this.GetPeeringNameFromId(directPeer.Id);
-                var peering = new PSPeering
-                                  {
-                                      Kind = directPeer.Kind,
-                                      PeeringLocation = directPeer.PeeringLocation,
-                                      Location = directPeer.Location,
-                                      Sku = directPeer.UseForPeeringService
-                                                ? new PSPeeringSku { Name = Constants.PremiumDirectFree }
-                                                : new PSPeeringSku { Name = Constants.BasicDirectFree },
-                                      Tags = directPeer.Tags,
-                                      Direct = new PSPeeringPropertiesDirect
-                                                   {
-                                                       Connections = directPeer.Connections,
-                                                       PeerAsn = directPeer.PeerAsn,
-                                                       UseForPeeringService = directPeer.UseForPeeringService
-                                                   }
-                                  };
-
-                if (this.ConnectionIndex >= directPeer.Connections.Count - 1)
-                    throw new IndexOutOfRangeException($"ConnectionIndex out of range {this.ConnectionIndex}");
-                var connectionIndex = this.ConnectionIndex;
-                if (connectionIndex != null)
-                    peering.Direct.Connections[(int)connectionIndex].BgpSession.Md5AuthenticationKey =
-                        this.MD5AuthenticationKey;
-                this.PeeringClient.CreateOrUpdate(
-                    resourceGroupName.ToString(),
-                    peeringName.ToString(),
-                    PeeringResourceManagerProfile.Mapper.Map<PeeringModel>(peering));
-
-                return new PSDirectPeeringModelView(
-                    PeeringResourceManagerProfile.Mapper.Map<PSPeering>(
-                        this.PeeringClient.Get(resourceGroupName.ToString(), peeringName.ToString())));
+                inputObject.BgpSession.Md5AuthenticationKey = this.MD5AuthenticationKey; 
+                if (this.ValidConnection(inputObject))
+                    return inputObject;
             }
 
             throw new InvalidOperationException("Use Set-AzPeeringExchangeConnectionObject instead.");
@@ -322,51 +219,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         ///     The update InputObject offer.
         /// </summary>
         /// <returns>
-        ///     The <see cref="PSPeering" />.
+        ///     The <see cref="PSDirectConnection" />.
         /// </returns>
-        private PSDirectPeeringModelView UpdateIpV4Prefix()
+        private PSDirectConnection UpdateIpV4Prefix()
         {
-            if (this.InputObject is PSDirectPeeringModelView directPeer)
+            if (this.InputObject is PSDirectConnection inputObject)
             {
-                var resourceGroupName = this.GetResourceGroupNameFromId(directPeer.Id);
-                var peeringName = this.GetPeeringNameFromId(directPeer.Id);
-                var peering = new PSPeering
-                                  {
-                                      Kind = directPeer.Kind,
-                                      PeeringLocation = directPeer.PeeringLocation,
-                                      Location = directPeer.Location,
-                                      Sku = directPeer.UseForPeeringService
-                                                ? new PSPeeringSku { Name = Constants.PremiumDirectFree }
-                                                : new PSPeeringSku { Name = Constants.BasicDirectFree },
-                    Tags = directPeer.Tags,
-                                      Direct = new PSPeeringPropertiesDirect
-                                                   {
-                                                       Connections = directPeer.Connections,
-                                                       PeerAsn = directPeer.PeerAsn,
-                                                       UseForPeeringService = directPeer.UseForPeeringService
-                                                   }
-                                  };
-                if (this.ConnectionIndex >= directPeer.Connections.Count - 1)
-                    throw new IndexOutOfRangeException($"ConnectionIndex out of range {this.ConnectionIndex}");
-                var connectionIndex = this.ConnectionIndex;
-                if (connectionIndex != null)
-                {
-                    peering.Direct.Connections[(int)connectionIndex].BgpSession.SessionPrefixV4 =
-                        this.ValidatePrefix(this.SessionPrefixV4, Constants.Direct);
-                    peering.Direct.Connections[(int)connectionIndex].BgpSession.MaxPrefixesAdvertisedV4 =
-                        this.MaxPrefixesAdvertisedIPv4 == null
-                            ? directPeer.Connections[(int)connectionIndex].BgpSession.MaxPrefixesAdvertisedV4
-                            : 20000;
-                }
-
-                this.PeeringClient.CreateOrUpdate(
-                    resourceGroupName.ToString(),
-                    peeringName.ToString(),
-                    PeeringResourceManagerProfile.Mapper.Map<PeeringModel>(peering));
-
-                return new PSDirectPeeringModelView(
-                    PeeringResourceManagerProfile.Mapper.Map<PSPeering>(
-                        this.PeeringClient.Get(resourceGroupName.ToString(), peeringName.ToString())));
+                inputObject.BgpSession.MaxPrefixesAdvertisedV4 =
+                    this.MaxPrefixesAdvertisedIPv4 == null ? inputObject.BgpSession.MaxPrefixesAdvertisedV4 : 20000;
+                inputObject.BgpSession.SessionPrefixV4 = this.ValidatePrefix(this.SessionPrefixV4, Constants.Direct);
+                if (this.ValidConnection(inputObject))
+                    return inputObject;
             }
 
             throw new InvalidOperationException("Use Set-AzPeeringExchangeConnectionObject instead.");
@@ -376,104 +239,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         ///     The update InputObject offer.
         /// </summary>
         /// <returns>
-        ///     The <see cref="PSPeering" />.
+        ///     The <see cref="PSDirectConnection" />.
         /// </returns>
-        private PSDirectPeeringModelView UpdateIpV6Prefix()
+        private PSDirectConnection UpdateIpV6Prefix()
         {
-            if (this.InputObject is PSDirectPeeringModelView directPeer)
+            if (this.InputObject is PSDirectConnection inputObject)
             {
-                var resourceGroupName = this.GetResourceGroupNameFromId(directPeer.Id);
-                var peeringName = this.GetPeeringNameFromId(directPeer.Id);
-                var peering = new PSPeering
-                                  {
-                                      Kind = directPeer.Kind,
-                                      PeeringLocation = directPeer.PeeringLocation,
-                                      Location = directPeer.Location,
-                                      Sku = directPeer.UseForPeeringService
-                                                ? new PSPeeringSku { Name = Constants.PremiumDirectFree }
-                                                : new PSPeeringSku { Name = Constants.BasicDirectFree },
-                    Tags = directPeer.Tags,
-                                      Direct = new PSPeeringPropertiesDirect
-                                                   {
-                                                       Connections = directPeer.Connections,
-                                                       PeerAsn = directPeer.PeerAsn,
-                                                       UseForPeeringService = directPeer.UseForPeeringService
-                                                   }
-                                  };
-                if (this.ConnectionIndex >= directPeer.Connections.Count - 1)
-                    throw new IndexOutOfRangeException($"ConnectionIndex out of range {this.ConnectionIndex}");
-                var connectionIndex = this.ConnectionIndex;
-                if (connectionIndex != null)
-                {
-                    peering.Direct.Connections[(int)connectionIndex].BgpSession.SessionPrefixV6 =
-                        this.ValidatePrefix(this.SessionPrefixV6, Constants.Direct);
-                    peering.Direct.Connections[(int)connectionIndex].BgpSession.MaxPrefixesAdvertisedV4 =
-                        this.MaxPrefixesAdvertisedIPv6 == null
-                            ? directPeer.Connections[(int)connectionIndex].BgpSession.MaxPrefixesAdvertisedV4
-                            : 20000;
-                }
-
-                this.PeeringClient.CreateOrUpdate(
-                    resourceGroupName.ToString(),
-                    peeringName.ToString(),
-                    PeeringResourceManagerProfile.Mapper.Map<PeeringModel>(peering));
-                return new PSDirectPeeringModelView(
-                    PeeringResourceManagerProfile.Mapper.Map<PSPeering>(
-                        this.PeeringClient.Get(resourceGroupName.ToString(), peeringName.ToString())));
+                inputObject.BgpSession.MaxPrefixesAdvertisedV6 =
+                    this.MaxPrefixesAdvertisedIPv6 == null ? inputObject.BgpSession.MaxPrefixesAdvertisedV6 : 2000;
+                inputObject.BgpSession.SessionPrefixV6 = this.ValidatePrefix(this.SessionPrefixV6, Constants.Direct);
+                if (this.ValidConnection(inputObject))
+                    return inputObject;
             }
 
-            if (this.InputObject is PSExchangePeeringModelView exPeer)
-            {
-                throw new InvalidOperationException("Use Set-AzPeeringExchangeConnectionObject instead.");
-            }
-
-            throw new InvalidOperationException();
-        }
-
-        /// <summary>
-        ///     The update InputObject offer.
-        /// </summary>
-        /// <returns>
-        ///     The <see cref="PSPeering" />.
-        /// </returns>
-        private PSDirectPeeringModelView UpdateUseForPeeringService()
-        {
-            if (this.InputObject is PSDirectPeeringModelView directPeer)
-            {
-                var resourceGroupName = this.GetResourceGroupNameFromId(directPeer.Id);
-                var peeringName = this.GetPeeringNameFromId(directPeer.Id);
-                var peering = new PSPeering
-                                  {
-                                      Kind = directPeer.Kind,
-                                      PeeringLocation = directPeer.PeeringLocation,
-                                      Location = directPeer.Location,
-                                      Sku = directPeer.UseForPeeringService
-                                                ? new PSPeeringSku { Name = Constants.PremiumDirectFree }
-                                                : new PSPeeringSku { Name = Constants.BasicDirectFree },
-                    Tags = directPeer.Tags,
-                                      Direct = new PSPeeringPropertiesDirect
-                                                   {
-                                                       Connections = directPeer.Connections,
-                                                       PeerAsn = directPeer.PeerAsn,
-                                                       UseForPeeringService =
-                                                           directPeer.UseForPeeringService = this.UseForPeeringService
-                                                   }
-                                  };
-                this.PeeringClient.CreateOrUpdate(
-                    resourceGroupName.ToString(),
-                    peeringName.ToString(),
-                    PeeringResourceManagerProfile.Mapper.Map<PeeringModel>(peering));
-                return new PSDirectPeeringModelView(
-                    PeeringResourceManagerProfile.Mapper.Map<PSPeering>(
-                        this.PeeringClient.Get(resourceGroupName.ToString(), peeringName.ToString())));
-            }
-
-            if (this.InputObject is PSExchangePeeringModelView exPeer)
-            {
-                throw new InvalidOperationException("Use Set-AzPeeringExchangeConnectionObject instead.");
-            }
-
-            throw new InvalidOperationException();
+            throw new InvalidOperationException("Use Set-AzPeeringExchangeConnectionObject instead.");
         }
     }
 }

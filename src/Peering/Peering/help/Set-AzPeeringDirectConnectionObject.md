@@ -12,37 +12,30 @@ Sets or updates the Direct Connection information.
 
 ## SYNTAX
 
-### ParameterSetNameUseForPeeringService (Default)
+### ParameterSetNameBandwidth (Default)
 ```
-Set-AzPeeringDirectConnectionObject -InputObject <PSPeering> [-UseForPeeringService]
+Set-AzPeeringDirectConnectionObject -InputObject <PSDirectConnection> -BandwidthInMbps <Int32>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParameterSetNameIPv4Prefix
 ```
-Set-AzPeeringDirectConnectionObject -InputObject <PSPeering> [-ConnectionIndex] <Int32>
- [-SessionPrefixV4] <String> [-MaxPrefixesAdvertisedIPv4 <Int32>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzPeeringDirectConnectionObject -InputObject <PSDirectConnection> [-SessionPrefixV4] <String>
+ [-MaxPrefixesAdvertisedIPv4 <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ParameterSetNameIPv6Prefix
 ```
-Set-AzPeeringDirectConnectionObject -InputObject <PSPeering> [-ConnectionIndex] <Int32>
- [-SessionPrefixV6] <String> [-MaxPrefixesAdvertisedIPv6 <Int32>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ParameterSetNameBandwidth
-```
-Set-AzPeeringDirectConnectionObject -InputObject <PSPeering> [-ConnectionIndex] <Int32>
- -BandwidthInMbps <Int32> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzPeeringDirectConnectionObject -InputObject <PSDirectConnection> [-SessionPrefixV6] <String>
+ [-MaxPrefixesAdvertisedIPv6 <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ParameterSetNameMd5Authentication
 ```
-Set-AzPeeringDirectConnectionObject -InputObject <PSPeering> [-ConnectionIndex] <Int32>
- [[-MD5AuthenticationKey] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzPeeringDirectConnectionObject -InputObject <PSDirectConnection> [[-MD5AuthenticationKey] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,18 +45,17 @@ Used in conjunction with Set-AzPeering, this is an in memory operation and will 
 
 ### Upgrade Bandwidth
 ```powershell
-PS C:> $update = Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 | Set-AzPeeringDirectConnectionObject -ConnectionIndex 0 -BandwidthInMbps 30000
+PS C:> $update = Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 | Set-AzPeeringDirectConnectionObject -BandwidthInMbps 30000
 ```
 
 Upgrades the bandwidth for the first connection in the Peering object in memory. 
 
 ### Update Bgp Session Address
 ```powershell
-PS C:> $update = Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 | Set-AzPeeringDirectConnectionObject -ConnectionIndex 0 -SessionPrefixV4 "192.168.0.1" -MaxPrefixesAdvertisedIPv4 20000
+PS C:> $update = Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 | Set-AzPeeringDirectConnectionObject -SessionPrefixV4 "192.168.0.1" -MaxPrefixesAdvertisedIPv4 20000
 ```
 
 Updates the Peering Address for the first connection in the Peering object in memory. 
-
 
 ## PARAMETERS
 
@@ -77,21 +69,6 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConnectionIndex
-The index associated with the connection from the Get-AzPeering
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: ParameterSetNameIPv4Prefix, ParameterSetNameIPv6Prefix, ParameterSetNameBandwidth, ParameterSetNameMd5Authentication
-Aliases:
-
-Required: True
-Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -116,7 +93,7 @@ Accept wildcard characters: False
 {{ Fill InputObject Description }}
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection
 Parameter Sets: (All)
 Aliases:
 
@@ -197,21 +174,6 @@ Aliases:
 
 Required: True
 Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UseForPeeringService
-Enable for use with Microsoft InputObject Service (MPS).
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ParameterSetNameUseForPeeringService
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -26,7 +26,7 @@ function Test-GetLegacyKindExchangeAmsterdam
 
 function Test-GetLegacyKindDirectAmsterdam
 {
-    $legacy = Get-AzLegacyPeering -Kind Exchange -PeeringLocation Amsterdam 
+    $legacy = Get-AzLegacyPeering -Kind Direct -PeeringLocation Amsterdam 
 
 	Assert-NotNull $legacy
 	Assert-AreEqual 1 $legacy.Count
@@ -44,7 +44,7 @@ function Test-ConvertLegacyDirectNewPeering
 	Assert-NotNull $legacy
 	Assert-AreEqual 1 $legacy.Count
 
-	$peerAsn = Get-AzPeerAsn
+	$peerAsn = Get-AzPeerAsn -PeerName "Contoso1"
 
 	Assert-NotNull $peerAsn
 
