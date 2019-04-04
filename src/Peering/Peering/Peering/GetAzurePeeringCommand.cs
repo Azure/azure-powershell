@@ -37,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         ///     Gets or sets the InputObject name.
         /// </summary>
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = Constants.PeeringNameHelp,
             ParameterSetName = Constants.ParameterSetNamePeeringByResourceAndName)]
         [ValidateNotNullOrEmpty]
@@ -46,10 +46,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <summary>
         ///     Gets or sets the ResourceGroupName
         /// </summary>
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = Constants.ResourceGroupNameHelp,
-            ParameterSetName = Constants.ParameterSetNameBySubscription)]
         [Parameter(
             Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
@@ -66,10 +62,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <summary>
         ///     Gets or sets the Kind of InputObject
         /// </summary>
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = Constants.KindHelp,
-            ParameterSetName = Constants.ParameterSetNamePeeringByResource)]
         [Parameter(
             Mandatory = true,
             HelpMessage = Constants.KindHelp,
@@ -160,36 +152,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public List<object> GetPeeringByResource()
         {
             var icList = this.PeeringClient.ListByResourceGroup(this.ResourceGroupName);
-            var ics = icList.Select(this.ToPeeringPs).ToList();
-
-            var kindPeering = new List<object>();
-            foreach (var peer in ics)
-                if (icList.FirstOrDefault()?.Kind == this.Kind)
+            var peering = icList.Select(this.ToPeeringPs).ToList();
+            List<object> psList = new List<object>();
+            foreach (var peer in peering)
+            {
+                if (peer.Exchange != null)
                 {
-                    if (peer.Exchange != null)
-                    {
-                        kindPeering.Add(new PSExchangePeeringModelView(peer));
-                    }
-
-                    if (peer.Direct != null)
-                    {
-                        kindPeering.Add(new PSDirectPeeringModelView(peer));
-                    }
-                }
-                else
-                {
-                    if (peer.Exchange != null)
-                    {
-                        kindPeering.Add(new PSExchangePeeringModelView(peer));
-                    }
-
-                    if (peer.Direct != null)
-                    {
-                        kindPeering.Add(new PSDirectPeeringModelView(peer));
-                    }
+                    psList.Add(new PSExchangePeeringModelView(peer));
                 }
 
-            return kindPeering;
+                if (peer.Direct != null)
+                {
+                    psList.Add(new PSDirectPeeringModelView(peer));
+                }
+            }
+
+            return psList;
         }
 
         /// <summary>

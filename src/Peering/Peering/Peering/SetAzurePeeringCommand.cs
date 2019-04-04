@@ -40,8 +40,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(Mandatory = true,
             ValueFromPipeline = true,
             ParameterSetName = Constants.ParameterSetNameDefault,
-            DontShow = true)]
+            DontShow = true),
+         Parameter(Mandatory = true,
+             ValueFromPipeline = true,
+             ParameterSetName = Constants.ParameterSetNameUseForPeeringService,
+             DontShow = true)]
         public PSPeering InputObject { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = Constants.UseForPeeringServiceHelp,
+            ParameterSetName = Constants.ParameterSetNameUseForPeeringService)]
+        public SwitchParameter UseForPeeringService { get; set; }
 
         /// <inheritdoc />
         /// <summary>
@@ -52,8 +62,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             try
             {
                 base.Execute();
-                var peeringRequest = this.UpdatePeeringOffer();
-                this.WriteObject(peeringRequest);
+                if (this.ParameterSetName.Equals(Constants.ParameterSetNameDefault, StringComparison.OrdinalIgnoreCase))
+                {
+                    var peeringRequest = this.UpdatePeeringOffer();
+                    this.WriteObject(peeringRequest);
+                }
+
+                if (!this.ParameterSetName.Equals(
+                        Constants.ParameterSetNameUseForPeeringService,
+                        StringComparison.OrdinalIgnoreCase)) return;
+                {
+                    var peeringRequest = this.UpdateUseForPeeringService();
+                    this.WriteObject(peeringRequest);
+                }
             }
             catch (InvalidOperationException mapException)
             {
@@ -139,6 +160,51 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 throw new ErrorResponseException($"Error:{ex.Response.ReasonPhrase} reason:{ex.Body?.Code} message:{ex.Body?.Message}");
             }
             throw new InvalidOperationException("Check the input parameters.");
+        }
+
+        /// <summary>
+        ///     The update InputObject offer.
+        /// </summary>
+        /// <returns>
+        ///     The <see cref="PSDirectConnection" />.
+        /// </returns>
+        private PSDirectPeeringModelView UpdateUseForPeeringService()
+        {
+            if (this.InputObject is PSDirectPeeringModelView directPeer)
+            {
+                var resourceGroupName = this.GetResourceGroupNameFromId(directPeer.Id);
+                var peeringName = this.GetPeeringNameFromId(directPeer.Id);
+                var peering = new PSPeering
+                {
+                    Kind = directPeer.Kind,
+                    PeeringLocation = directPeer.PeeringLocation,
+                    Location = directPeer.Location,
+                    Sku = this.UseForPeeringService
+                                                ? new PSPeeringSku { Name = Constants.PremiumDirectFree }
+                                                : new PSPeeringSku { Name = Constants.BasicDirectFree },
+                    Tags = directPeer.Tags,
+                    Direct = new PSPeeringPropertiesDirect
+                    {
+                        Connections = directPeer.Connections,
+                        PeerAsn = directPeer.PeerAsn,
+                        UseForPeeringService = this.UseForPeeringService
+                    }
+                };
+                this.PeeringClient.CreateOrUpdate(
+                    resourceGroupName.ToString(),
+                    peeringName.ToString(),
+                    PeeringResourceManagerProfile.Mapper.Map<PeeringModel>(peering));
+                return new PSDirectPeeringModelView(
+                    PeeringResourceManagerProfile.Mapper.Map<PSPeering>(
+                        this.PeeringClient.Get(resourceGroupName.ToString(), peeringName.ToString())));
+            }
+
+            if (this.InputObject is PSExchangePeeringModelView exPeer)
+            {
+                throw new InvalidOperationException("Use Exchange Connections do not support Peering Service.");
+            }
+
+            throw new InvalidOperationException();
         }
     }
 }

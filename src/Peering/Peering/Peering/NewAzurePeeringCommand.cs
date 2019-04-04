@@ -442,8 +442,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             // set default max prefixes 
             foreach (var connection in newPeering.Exchange.Connections)
             {
-                connection.BgpSession.MaxPrefixesAdvertisedV4 = connection.BgpSession.MaxPrefixesAdvertisedV4 ?? 20000;
-                connection.BgpSession.MaxPrefixesAdvertisedV6 = connection.BgpSession.MaxPrefixesAdvertisedV6 ?? 2000;
+                connection.BgpSession.MaxPrefixesAdvertisedV4 = connection.BgpSession.MaxPrefixesAdvertisedV4 != 0 ? connection.BgpSession.MaxPrefixesAdvertisedV4 : 20000;
+                connection.BgpSession.MaxPrefixesAdvertisedV6 = connection.BgpSession.MaxPrefixesAdvertisedV6 != 0 ? connection.BgpSession.MaxPrefixesAdvertisedV6 : 2000;
             }
 
             return newPeering;
@@ -487,8 +487,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             foreach (var connection in newPeering.Direct.Connections)
             {
                 connection.BandwidthInMbps = connection.ProvisionedBandwidthInMbps ?? 10000;
-                connection.BgpSession.MaxPrefixesAdvertisedV4  = connection.BgpSession.MaxPrefixesAdvertisedV4 ?? 20000;
-                connection.BgpSession.MaxPrefixesAdvertisedV6 = connection.BgpSession.MaxPrefixesAdvertisedV6 ?? 2000;
+                connection.BgpSession.MaxPrefixesAdvertisedV4  = connection.BgpSession.MaxPrefixesAdvertisedV4 != 0 ? connection.BgpSession.MaxPrefixesAdvertisedV4 : 20000;
+                connection.BgpSession.MaxPrefixesAdvertisedV6 = connection.BgpSession.MaxPrefixesAdvertisedV6 != 0 ? connection.BgpSession.MaxPrefixesAdvertisedV6 : 2000;
             }
 
             return newPeering;

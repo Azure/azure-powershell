@@ -45,7 +45,7 @@ function Test-NewDirectPeering
     $resourceGroup = "testCarrier"
     $peeringLocation = "Amsterdam"
     $profileSku = "Basic_Direct_Free"
-	$asn = Get-AzPeerAsn
+	$asn = "/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
 
 	$md5 = "25234523452123411fd234qdwfas3234"
@@ -56,7 +56,7 @@ function Test-NewDirectPeering
 	$bandwidth = 20000
 
 	$directConnection = NewDirectConnectionV4V6 "0/31" "0/127" 20000
-    $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn.Id -DirectConnection $directConnection -Tag $tags
+    $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -DirectConnection $directConnection -Tag $tags
 	
 	# Commented Lines are disabled for testing should be uncommented for Production Testing
 

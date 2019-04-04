@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         "AzPeeringExchangeConnectionObject",
         DefaultParameterSetName = Constants.ParameterSetNameMd5Authentication,
         SupportsShouldProcess = true)]
-    [OutputType(typeof(PSPeering))]
+    [OutputType(typeof(PSExchangeConnection))]
     public class SetAzureExchangePeeringConnectionCommand : PeeringBaseCmdlet
     {
         /// <summary>
@@ -56,28 +56,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
              ValueFromPipeline = true,
              ParameterSetName = Constants.ParameterSetNameMd5Authentication,
              DontShow = true)]
-        public PSPeering InputObject { get; set; }
-
-        /// <summary>
-        /// Gets or sets the connection index.
-        /// </summary>
-        [Parameter(
-             Position = Constants.PositionPeeringZero,
-             Mandatory = true,
-             HelpMessage = Constants.PeeringDirectConnectionIndexHelp,
-             ParameterSetName = Constants.ParameterSetNameIPv4Address),
-         Parameter(
-             Position = Constants.PositionPeeringZero,
-             Mandatory = true,
-             HelpMessage = Constants.PeeringDirectConnectionIndexHelp,
-             ParameterSetName = Constants.ParameterSetNameIPv6Address),
-         Parameter(
-             Position = Constants.PositionPeeringZero,
-             Mandatory = true,
-             HelpMessage = Constants.PeeringDirectConnectionIndexHelp,
-             ParameterSetName = Constants.ParameterSetNameMd5Authentication), PSArgumentCompleter("0", "1", "2"),
-         ValidateRange(0, 2), ValidateNotNullOrEmpty]
-        public virtual int? ConnectionIndex { get; set; }
+        public PSExchangeConnection InputObject { get; set; }
 
         /// <summary>
         /// Gets or sets the session ipv4.
@@ -138,7 +117,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
             try
             {
                 base.Execute();
-                PSPeering newRequest = null;
+                PSExchangeConnection newRequest = null;
                 if (this.ParameterSetName.Equals(
                     Constants.ParameterSetNameIPv4Address,
                     StringComparison.OrdinalIgnoreCase))
@@ -179,42 +158,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         ///     The update InputObject offer.
         /// </summary>
         /// <returns>
-        ///     The <see cref="PSPeering" />.
+        ///     The <see cref="PSExchangeConnection" />.
         /// </returns>
-        private PSPeering UpdateMD5Authentication()
+        private PSExchangeConnection UpdateMD5Authentication()
         {
-            if (this.InputObject is PSExchangePeeringModelView modelView)
+            if (this.InputObject is PSExchangeConnection inputObject)
             {
-                var resourceGroupName = this.GetResourceGroupNameFromId(modelView.Id);
-                var peeringName = this.GetPeeringNameFromId(modelView.Id);
-                var peering = new PSPeering
-                                  {
-                                      Kind = modelView.Kind,
-                                      PeeringLocation = modelView.PeeringLocation,
-                                      Location = modelView.Location,
-                                      Sku = modelView.Sku,
-                                      Tags = modelView.Tags,
-                                      Exchange = new PSPeeringPropertiesExchange
-                                                     {
-                                                         Connections = modelView.Connections,
-                                                         PeerAsn = modelView.PeerAsn
-                                                     }
-                                  };
-
-                if (this.ConnectionIndex >= modelView.Connections.Count - 1)
-                    throw new IndexOutOfRangeException($"ConnectionIndex out of range {this.ConnectionIndex}");
-                var connectionIndex = this.ConnectionIndex;
-                if (connectionIndex != null)
-                    peering.Exchange.Connections[(int)connectionIndex].BgpSession.Md5AuthenticationKey =
-                        this.MD5AuthenticationKey;
-                this.PeeringClient.CreateOrUpdate(
-                    resourceGroupName.ToString(),
-                    peeringName.ToString(),
-                    PeeringResourceManagerProfile.Mapper.Map<PeeringModel>(peering));
-
-                return new PSExchangePeeringModelView(
-                    PeeringResourceManagerProfile.Mapper.Map<PSPeering>(
-                        this.PeeringClient.Get(resourceGroupName.ToString(), peeringName.ToString())));
+                inputObject.BgpSession.Md5AuthenticationKey = this.MD5AuthenticationKey;
+                if (this.ValidConnection(inputObject))
+                    return inputObject;
             }
 
             throw new InvalidOperationException($"Exchange InputObject does not support this operation.");
@@ -224,134 +176,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         ///     The update InputObject offer.
         /// </summary>
         /// <returns>
-        ///     The <see cref="PSPeering" />.
+        ///     The <see cref="PSExchangeConnection" />.
         /// </returns>
-        private PSPeering UpdateIpV4Prefix()
+        private PSExchangeConnection UpdateIpV4Prefix()
         {
-            if (this.InputObject is PSExchangePeeringModelView modelView)
+            if (this.InputObject is PSExchangeConnection inputObject)
             {
-                var resourceGroupName = this.GetResourceGroupNameFromId(modelView.Id);
-                var peeringName = this.GetPeeringNameFromId(modelView.Id);
-                var peering = new PSPeering
-                                  {
-                                      Kind = modelView.Kind,
-                                      PeeringLocation = modelView.PeeringLocation,
-                                      Location = modelView.Location,
-                                      Sku = modelView.Sku,
-                                      Tags = modelView.Tags,
-                                      Exchange = new PSPeeringPropertiesExchange
-                                                     {
-                                                         Connections = modelView.Connections,
-                                                         PeerAsn = modelView.PeerAsn,
-                                                     }
-                                  };
-                if (this.ConnectionIndex >= modelView.Connections.Count - 1)
-                    throw new IndexOutOfRangeException($"ConnectionIndex out of range {this.ConnectionIndex}");
-                var connectionIndex = this.ConnectionIndex;
-                if (connectionIndex != null)
-                {
-                    peering.Exchange.Connections[(int)connectionIndex].BgpSession.SessionPrefixV4 = this.ValidatePrefix(
-                        this.PeerSessionIPv4Address,
-                        Constants.Exchange);
-                    peering.Exchange.Connections[(int)connectionIndex].BgpSession.MaxPrefixesAdvertisedV4 =
-                        this.MaxPrefixesAdvertisedIPv4 == null
-                            ? modelView.Connections[(int)connectionIndex].BgpSession.MaxPrefixesAdvertisedV4
-                            : 20000;
-                }
-
-                this.PeeringClient.CreateOrUpdate(
-                    resourceGroupName.ToString(),
-                    peeringName.ToString(),
-                    PeeringResourceManagerProfile.Mapper.Map<PeeringModel>(peering));
-
-                return new PSExchangePeeringModelView(
-                    PeeringResourceManagerProfile.Mapper.Map<PSPeering>(
-                        this.PeeringClient.Get(resourceGroupName.ToString(), peeringName.ToString())));
+                inputObject.BgpSession.PeerSessionIPv4Address = this.ValidatePrefix(this.PeerSessionIPv4Address, Constants.Exchange);
+                if (this.ValidConnection(inputObject))
+                    return inputObject;
             }
 
-            throw new InvalidOperationException();
+            throw new InvalidOperationException($"Exchange InputObject does not support this operation.");
         }
 
         /// <summary>
         ///     The update InputObject offer.
         /// </summary>
         /// <returns>
-        ///     The <see cref="PSPeering" />.
+        ///     The <see cref="PSExchangeConnection" />.
         /// </returns>
-        private PSPeering UpdateIpV6Prefix()
+        private PSExchangeConnection UpdateIpV6Prefix()
         {
-            if (this.InputObject is PSExchangePeeringModelView modelView)
+            if (this.InputObject is PSExchangeConnection inputObject)
             {
-                var resourceGroupName = this.GetResourceGroupNameFromId(modelView.Id);
-                var peeringName = this.GetPeeringNameFromId(modelView.Id);
-                var peering = new PSPeering
-                                  {
-                                      Kind = modelView.Kind,
-                                      PeeringLocation = modelView.PeeringLocation,
-                                      Location = modelView.Location,
-                                      Sku = modelView.Sku,
-                                      Tags = modelView.Tags,
-                                      Exchange = new PSPeeringPropertiesExchange
-                                                     {
-                                                         Connections = modelView.Connections,
-                                                         PeerAsn = modelView.PeerAsn,
-                                                     }
-                                  };
-                if (this.ConnectionIndex >= modelView.Connections.Count - 1)
-                    throw new IndexOutOfRangeException($"ConnectionIndex out of range {this.ConnectionIndex}");
-                var connectionIndex = this.ConnectionIndex;
-                if (connectionIndex != null)
-                {
-                    peering.Exchange.Connections[(int)connectionIndex].BgpSession.SessionPrefixV6 = this.ValidatePrefix(
-                        this.PeerSessionIPv6Address,
-                        Constants.Exchange);
-                    peering.Exchange.Connections[(int)connectionIndex].BgpSession.MaxPrefixesAdvertisedV4 =
-                        this.MaxPrefixesAdvertisedIPv6 == null
-                            ? modelView.Connections[(int)connectionIndex].BgpSession.MaxPrefixesAdvertisedV4
-                            : 2000;
-                }
-
-                this.PeeringClient.CreateOrUpdate(
-                    resourceGroupName.ToString(),
-                    peeringName.ToString(),
-                    PeeringResourceManagerProfile.Mapper.Map<PeeringModel>(peering));
-
-                return new PSExchangePeeringModelView(
-                    PeeringResourceManagerProfile.Mapper.Map<PSPeering>(
-                        this.PeeringClient.Get(resourceGroupName.ToString(), peeringName.ToString())));
+                inputObject.BgpSession.PeerSessionIPv6Address = this.ValidatePrefix(this.PeerSessionIPv6Address, Constants.Exchange);
+                if (this.ValidConnection(inputObject))
+                    return inputObject;
             }
 
-            if (this.InputObject is PSExchangePeeringModelView exPeer)
-            {
-                var resourceGroupName = this.GetResourceGroupNameFromId(exPeer.Id);
-                var peeringName = this.GetPeeringNameFromId(exPeer.Id);
-                var peering = new PSPeering
-                                  {
-                                      Kind = exPeer.Kind,
-                                      PeeringLocation = exPeer.PeeringLocation,
-                                      Location = exPeer.Location,
-                                      Sku = exPeer.Sku,
-                                      Tags = exPeer.Tags
-                                  };
-                if (exPeer.Kind == Constants.Exchange)
-                {
-                    peering.Exchange = new PSPeeringPropertiesExchange
-                                           {
-                                               Connections = exPeer.Connections, PeerAsn = exPeer.PeerAsn
-                                           };
-                }
-
-                this.PeeringClient.CreateOrUpdate(
-                    resourceGroupName.ToString(),
-                    peeringName.ToString(),
-                    PeeringResourceManagerProfile.Mapper.Map<PeeringModel>(peering));
-
-                return new PSExchangePeeringModelView(
-                    PeeringResourceManagerProfile.Mapper.Map<PSPeering>(
-                        this.PeeringClient.Get(resourceGroupName.ToString(), peeringName.ToString())));
-            }
-
-            throw new InvalidOperationException();
+            throw new InvalidOperationException($"Exchange InputObject does not support this operation.");
         }
     }
 }
