@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzPeering
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Sets the Peering. Use this Command in conjunction with `Set-AzDirectPeeringConnectionObject` or `Set-AzExchangePeeringConnectionObject`.
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ Set-AzPeering -InputObject <PSPeering> [-DefaultProfile <IAzureContextContainer>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Sets the PSPeering Object
 
 ## EXAMPLES
 
-### Example 1
+### Update Md5 Authentication Key
 ```powershell
-PS C:> {{ Add example code here }}
+PS C:> Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 | Set-AzPeeringDirectConnectionObject -ConnectionIndex 0 -MD5AuthenticationKey $hash | Set-AzPeering
 ```
 
-{{ Add example description here }}
+Sets the Md5 Authentication Key
 
 ## PARAMETERS
 

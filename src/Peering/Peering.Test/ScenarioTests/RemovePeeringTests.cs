@@ -20,35 +20,29 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests.ScenarioTests
 
     using Xunit;
 
-    public class GetLegacyTests
+    public class RemovePeeringTests
     {
         private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
 
-        public GetLegacyTests(Xunit.Abstractions.ITestOutputHelper output)
+        public RemovePeeringTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             this._logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this._logger);
             // Environment.SetEnvironmentVariable("AZURE_TEST_MODE", "Playback");
         }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetLegacyKindExchangeAmsterdam()
+        public void TestRemoveInputObject()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-GetLegacyKindExchangeAmsterdam");
+            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-RemoveInputObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetLegacyKindDirectAmsterdam()
+        public void TestRemoveByName()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-GetLegacyKindDirectAmsterdam");
-        }
-        
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestConvertLegacyDirectNewPeering()
-        {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-ConvertLegacyDirectNewPeering");
+            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-RemoveByName");
         }
     }
 }

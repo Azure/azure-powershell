@@ -24,11 +24,43 @@ function Test-GetLegacyKindExchangeAmsterdam
 	Assert-AreEqual 1 $legacy.Count
 }
 
+function Test-GetLegacyKindDirectAmsterdam
+{
+    $legacy = Get-AzLegacyPeering -Kind Exchange -PeeringLocation Amsterdam 
+
+	Assert-NotNull $legacy
+	Assert-AreEqual 1 $legacy.Count
+}
+
 <#
 .SYNOPSIS
 GetLocationKindDirect
 #>
-function Test-ConvertLegacyNewPeering
+function Test-ConvertLegacyDirectNewPeering
+{
+	$resourceName = "AkamaiPeering"
+    $legacy = Get-AzLegacyPeering -Kind Direct -PeeringLocation Amsterdam  
+
+	Assert-NotNull $legacy
+	Assert-AreEqual 1 $legacy.Count
+
+	$peerAsn = Get-AzPeerAsn
+
+	Assert-NotNull $peerAsn
+
+	$legacy | New-AzPeering -Name $resourceName -ResourceGroupName testCarrier -PeeringLocation $legacy.PeeringLocation -PeerAsnResourceId $peerAsn.Id 
+
+	$newPeering = Get-AzPeering -ResourceGroupName testCarrier -Name $resourceName
+	
+	Assert-NotNull $newPeering
+	Assert-AreEqual $resourceName $newPeering.Name
+}
+
+<#
+.SYNOPSIS
+GetLocationKindExchange
+#>
+function Test-ConvertLegacyExchangeNewPeering
 {
 	$resourceName = "AkamaiPeering"
     $legacy = Get-AzLegacyPeering -Kind Exchange -PeeringLocation Amsterdam  
@@ -42,8 +74,10 @@ function Test-ConvertLegacyNewPeering
 
 	$legacy | New-AzPeering -Name $resourceName -ResourceGroupName testCarrier -PeeringLocation $legacy.PeeringLocation -PeerAsnResourceId $peerAsn.Id 
 
-	$newPeering = Get-AzPeering
+	$newPeering = Get-AzPeering -ResourceGroupName testCarrier -Name $resourceName
 	
 	Assert-NotNull $newPeering
 	Assert-AreEqual $resourceName $newPeering.Name
 }
+
+

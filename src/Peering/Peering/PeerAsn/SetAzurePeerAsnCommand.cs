@@ -39,14 +39,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         /// Gets or sets the legacy InputObject.
         /// </summary>
         [Parameter(
-             Position = Constants.PositionPeeringZero,
+            Position = Constants.PositionPeeringZero,
             Mandatory = true,
             ValueFromPipeline = true,
+            HelpMessage = Constants.PeerAsnHelp,
             ParameterSetName = Constants.ParameterSetNameUpdateEmail,
             DontShow = true),
          Parameter(
              Position = Constants.PositionPeeringZero,
              Mandatory = true,
+             HelpMessage = Constants.PeerAsnHelp,
              ValueFromPipeline = true,
              ParameterSetName = Constants.ParameterSetNameUpdatePhone,
              DontShow = true)]

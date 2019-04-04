@@ -161,7 +161,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.UseForPeeringServiceHelp,
-            ParameterSetName = Constants.Direct)]
+            ParameterSetName = Constants.Direct),
+         Parameter(
+             Mandatory = false,
+             HelpMessage = Constants.UseForPeeringServiceHelp,
+             ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering)]
         public virtual SwitchParameter UseForPeeringService { get; set; }
 
         /// <summary>
@@ -239,7 +243,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 new PSPeering(
                     name: this.Name,
                     location: this.GetAzureRegion(this.PeeringLocation, Constants.Direct),
-                    sku: new PSPeeringSku { Name = "Basic_Direct_Free" },
+                    sku: this.UseForPeeringService ? new PSPeeringSku { Name = Constants.PremiumDirectFree } : new PSPeeringSku { Name = Constants.BasicDirectFree },
                     kind: Constants.Direct)
                 {
                     PeeringLocation = this.PeeringLocation,
@@ -427,7 +431,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 Kind = classicPeering.Kind ?? Constants.Exchange,
                 Sku =
                                               classicPeering.Sku
-                                              ?? new PSPeeringSku { Name = "basic_Exchange_Free" },
+                                              ?? new PSPeeringSku { Name = Constants.BasicExchangeFree },
                 Exchange = new PSPeeringPropertiesExchange
                 {
                     Connections = classicPeering.Exchange.Connections,
@@ -436,17 +440,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             };
 
             // set default max prefixes 
-            foreach (var psExchangeConnection in newPeering.Exchange.Connections)
+            foreach (var connection in newPeering.Exchange.Connections)
             {
-                if (psExchangeConnection.BgpSession.PeerSessionIPv4Address != null)
-                {
-                    psExchangeConnection.BgpSession.MaxPrefixesAdvertisedV4 = 20000;
-                }
-
-                if (psExchangeConnection.BgpSession.PeerSessionIPv6Address != null)
-                {
-                    psExchangeConnection.BgpSession.MaxPrefixesAdvertisedV6 = 2000;
-                }
+                connection.BgpSession.MaxPrefixesAdvertisedV4 = connection.BgpSession.MaxPrefixesAdvertisedV4 ?? 20000;
+                connection.BgpSession.MaxPrefixesAdvertisedV6 = connection.BgpSession.MaxPrefixesAdvertisedV6 ?? 2000;
             }
 
             return newPeering;
@@ -474,20 +471,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             }
 
             var newPeering = new PSPeering
+                                 {
+                                     Location = this.GetAzureRegion(this.PeeringLocation, Constants.Direct),
+                                     PeeringLocation = classicPeering.PeeringLocation ?? this.PeeringLocation,
+                                     Kind = classicPeering.Kind ?? Constants.Direct,
+                                     Sku = this.UseForPeeringService
+                                               ? new PSPeeringSku { Name = Constants.PremiumDirectFree }
+                                               : new PSPeeringSku { Name = Constants.BasicDirectFree },
+                                     Direct = new PSPeeringPropertiesDirect
+                                                  {
+                                                      Connections = classicPeering.Direct.Connections,
+                                                      PeerAsn = new PSSubResource(this.PeerAsnResourceId)
+                                                  }
+                                 };
+            foreach (var connection in newPeering.Direct.Connections)
             {
-                Location = this.GetAzureRegion(this.PeeringLocation, Constants.Direct),
-                PeeringLocation =
-                                              classicPeering.PeeringLocation ?? this.PeeringLocation,
-                Kind = classicPeering.Kind ?? Constants.Direct,
-                Sku =
-                                              classicPeering.Sku
-                                              ?? new PSPeeringSku { Name = "Premium_Direct_Metered" },
-                Direct = new PSPeeringPropertiesDirect
-                {
-                    Connections = classicPeering.Direct.Connections,
-                    PeerAsn = new PSSubResource(this.PeerAsnResourceId)
-                }
-            };
+                connection.BandwidthInMbps = connection.ProvisionedBandwidthInMbps ?? 10000;
+                connection.BgpSession.MaxPrefixesAdvertisedV4  = connection.BgpSession.MaxPrefixesAdvertisedV4 ?? 20000;
+                connection.BgpSession.MaxPrefixesAdvertisedV6 = connection.BgpSession.MaxPrefixesAdvertisedV6 ?? 2000;
+            }
+
             return newPeering;
         }
     }

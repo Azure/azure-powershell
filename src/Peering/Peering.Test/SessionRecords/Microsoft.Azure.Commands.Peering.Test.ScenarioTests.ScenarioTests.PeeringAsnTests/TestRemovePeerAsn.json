@@ -1,19 +1,85 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso?api-version=2019-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDQ0NWJmMTEtNjFjNC00MzZmLWE5NDAtNjAxOTRmOGFjYTU3L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy9Db250b3NvP2FwaS12ZXJzaW9uPTIwMTktMDMtMDEtcHJldmlldw==",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
+      "RequestUri": "/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso1?api-version=2019-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDQ0NWJmMTEtNjFjNC00MzZmLWE5NDAtNjAxOTRmOGFjYTU3L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy9Db250b3NvMT9hcGktdmVyc2lvbj0yMDE5LTAzLTAxLXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 65050,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"tata@noc.com\",\r\n        \"tata2@noc.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"888-800-8889\"\r\n      ]\r\n    },\r\n    \"peerName\": \"Contoso1\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c9632107-0988-4040-b1d5-2a6feb900d83"
+          "4a227a04-98dc-4451-b1ae-dceac0eccf9d"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27129.04",
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.9.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "243"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "6f9c436d-ce89-454a-b276-4df2e8eaa930"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "2cd01105-11ac-4b0f-8952-674659377782"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190404T174036Z:2cd01105-11ac-4b0f-8952-674659377782"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 04 Apr 2019 17:40:36 GMT"
+        ],
+        "Content-Length": [
+          "449"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 65050,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"tata@noc.com\",\r\n        \"tata2@noc.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"888-800-8889\"\r\n      ]\r\n    },\r\n    \"peerName\": \"Contoso1\",\r\n    \"validationState\": \"None\"\r\n  },\r\n  \"name\": \"Contoso1\",\r\n  \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso1\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso1?api-version=2019-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDQ0NWJmMTEtNjFjNC00MzZmLWE5NDAtNjAxOTRmOGFjYTU3L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy9Db250b3NvMT9hcGktdmVyc2lvbj0yMDE5LTAzLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fdb4be23-ca1c-42df-a9e0-e834643301c3"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.9.0"
@@ -27,19 +93,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "ff046fed-44be-4fa1-91bf-e9c6bd4e1246"
+          "5a246f2e-90f1-44b8-abdf-54f53afd8b11"
         ],
-        "x-ms-failure-cause": [
-          "service"
-        ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14996"
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14999"
         ],
         "x-ms-correlation-request-id": [
-          "235a2160-c90f-4f3f-abc9-e3fdc38751ac"
+          "6ba7d056-57e8-45e1-b2d2-9c29c29b92ef"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20190321T012556Z:235a2160-c90f-4f3f-abc9-e3fdc38751ac"
+          "NORTHEUROPE:20190404T174037Z:6ba7d056-57e8-45e1-b2d2-9c29c29b92ef"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -48,13 +111,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 21 Mar 2019 01:25:56 GMT"
-        ],
-        "Connection": [
-          "close"
+          "Thu, 04 Apr 2019 17:40:37 GMT"
         ],
         "Content-Length": [
-          "103"
+          "449"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -63,8 +123,128 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"code\": \"InternalServerError\",\r\n  \"message\": \"An error occurred while processing your request.\"\r\n}",
-      "StatusCode": 500
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 65050,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"tata@noc.com\",\r\n        \"tata2@noc.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"888-800-8889\"\r\n      ]\r\n    },\r\n    \"peerName\": \"Contoso1\",\r\n    \"validationState\": \"None\"\r\n  },\r\n  \"name\": \"Contoso1\",\r\n  \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso1\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso1?api-version=2019-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDQ0NWJmMTEtNjFjNC00MzZmLWE5NDAtNjAxOTRmOGFjYTU3L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy9Db250b3NvMT9hcGktdmVyc2lvbj0yMDE5LTAzLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6b03939e-7f06-4dac-af9d-a328403b94f2"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.9.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "cdc93f5d-c538-4d42-983b-d6610311627d"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
+        ],
+        "x-ms-correlation-request-id": [
+          "63d62425-a900-4afb-8968-aa9d50d4a156"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190404T174037Z:63d62425-a900-4afb-8968-aa9d50d4a156"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 04 Apr 2019 17:40:37 GMT"
+        ],
+        "Content-Length": [
+          "111"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"PeerAsn does not exist with the given name Resource does not exist.\"\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso1?api-version=2019-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDQ0NWJmMTEtNjFjNC00MzZmLWE5NDAtNjAxOTRmOGFjYTU3L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy9Db250b3NvMT9hcGktdmVyc2lvbj0yMDE5LTAzLTAxLXByZXZpZXc=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f38c06ae-dd8b-4ab2-a132-8201dde58fbb"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.9.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "bf42177e-8153-4e00-a182-e1eb770c51cf"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "46d589cd-c444-4a9d-9e6d-6b5308318214"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190404T174037Z:46d589cd-c444-4a9d-9e6d-6b5308318214"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 04 Apr 2019 17:40:37 GMT"
+        ],
+        "Content-Length": [
+          "5"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "false",
+      "StatusCode": 200
     }
   ],
   "Names": {},

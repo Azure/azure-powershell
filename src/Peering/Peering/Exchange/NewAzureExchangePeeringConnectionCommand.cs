@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
     [Cmdlet(
         VerbsCommon.New,
         "AzPeeringExchangeConnectionObject",
-        DefaultParameterSetName = Constants.ParameterSetNameIPv4Prefix,
+        DefaultParameterSetName = Constants.ParameterSetNameIPv4Address,
         SupportsShouldProcess = true)]
     [OutputType(typeof(PSExchangeConnection))]
     public class NewAzureExchangePeeringConnectionCommand : PeeringBaseCmdlet
@@ -39,19 +39,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpPeeringDBFacilityId,
-            ParameterSetName = Constants.ParameterSetNameIPv4Prefix)]
+            ParameterSetName = Constants.ParameterSetNameIPv4Address)]
         [Parameter(
             Position = Constants.PositionPeeringZero,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpPeeringDBFacilityId,
-            ParameterSetName = Constants.ParameterSetNameIPv6Prefix)]
+            ParameterSetName = Constants.ParameterSetNameIPv6Address)]
         [Parameter(
             Position = Constants.PositionPeeringZero,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpPeeringDBFacilityId,
-            ParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix)]
+            ParameterSetName = Constants.ParameterSetNameIPv4Address + Constants.ParameterSetNameIPv6Address)]
         [ValidateNotNullOrEmpty]
         public virtual int? PeeringDBFacilityId { get; set; }
 
@@ -61,11 +61,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         [Parameter(
             Mandatory = true,
             HelpMessage = Constants.HelpPeerSessionIPv4Prefix,
-            ParameterSetName = Constants.ParameterSetNameIPv4Prefix)]
+            ParameterSetName = Constants.ParameterSetNameIPv4Address)]
         [Parameter(
             Mandatory = true,
             HelpMessage = Constants.HelpPeerSessionIPv4Prefix,
-            ParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix)]
+            ParameterSetName = Constants.ParameterSetNameIPv4Address + Constants.ParameterSetNameIPv6Address)]
         public virtual string PeerSessionIPv4Address { get; set; }
 
         /// <summary>
@@ -74,11 +74,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         [Parameter(
             Mandatory = true,
             HelpMessage = Constants.HelpPeerSessionIPv6Prefix,
-            ParameterSetName = Constants.ParameterSetNameIPv6Prefix)]
+            ParameterSetName = Constants.ParameterSetNameIPv6Address)]
         [Parameter(
             Mandatory = true,
             HelpMessage = Constants.HelpPeerSessionIPv6Prefix,
-            ParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix)]
+            ParameterSetName = Constants.ParameterSetNameIPv4Address + Constants.ParameterSetNameIPv6Address)]
         public virtual string PeerSessionIPv6Address { get; set; }
 
         /// <summary>
@@ -87,11 +87,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.HelpMaxAdvertisedIPv4,
-            ParameterSetName = Constants.ParameterSetNameIPv4Prefix)]
+            ParameterSetName = Constants.ParameterSetNameIPv4Address)]
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.HelpMaxAdvertisedIPv4,
-            ParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix)]
+            ParameterSetName = Constants.ParameterSetNameIPv4Address + Constants.ParameterSetNameIPv6Address)]
         public virtual int? MaxPrefixesAdvertisedIPv4 { get; set; }
 
         /// <summary>
@@ -100,11 +100,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.HelpMaxAdvertisedIPv6,
-            ParameterSetName = Constants.ParameterSetNameIPv6Prefix)]
+            ParameterSetName = Constants.ParameterSetNameIPv6Address)]
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.HelpMaxAdvertisedIPv6,
-            ParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix)]
+            ParameterSetName = Constants.ParameterSetNameIPv4Address + Constants.ParameterSetNameIPv6Address)]
         public virtual int? MaxPrefixesAdvertisedIPv6 { get; set; }
 
         /// <summary>
@@ -113,15 +113,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.MD5AuthenticationKeyHelp,
-            ParameterSetName = Constants.ParameterSetNameIPv4Prefix)]
+            ParameterSetName = Constants.ParameterSetNameIPv4Address)]
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.MD5AuthenticationKeyHelp,
-            ParameterSetName = Constants.ParameterSetNameIPv6Prefix)]
+            ParameterSetName = Constants.ParameterSetNameIPv6Address)]
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.MD5AuthenticationKeyHelp,
-            ParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix)]
+            ParameterSetName = Constants.ParameterSetNameIPv4Address + Constants.ParameterSetNameIPv6Address)]
         public string MD5AuthenticationKey { get; set; }
 
         /// <summary>

@@ -74,22 +74,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         [Parameter(
              Position = Constants.PositionPeeringZero,
              Mandatory = true,
-             HelpMessage = Constants.PeeringDirectConnectionHelp,
+             HelpMessage = Constants.PeeringDirectConnectionIndexHelp,
              ParameterSetName = Constants.ParameterSetNameIPv4Prefix),
          Parameter(
              Position = Constants.PositionPeeringZero,
              Mandatory = true,
-             HelpMessage = Constants.PeeringDirectConnectionHelp,
+             HelpMessage = Constants.PeeringDirectConnectionIndexHelp,
              ParameterSetName = Constants.ParameterSetNameIPv6Prefix),
          Parameter(
              Position = Constants.PositionPeeringZero,
              Mandatory = true,
-             HelpMessage = Constants.PeeringDirectConnectionHelp,
+             HelpMessage = Constants.PeeringDirectConnectionIndexHelp,
              ParameterSetName = Constants.ParameterSetNameBandwidth),
          Parameter(
              Position = Constants.PositionPeeringZero,
              Mandatory = true,
-             HelpMessage = Constants.PeeringDirectConnectionHelp,
+             HelpMessage = Constants.PeeringDirectConnectionIndexHelp,
              ParameterSetName = Constants.ParameterSetNameMd5Authentication), PSArgumentCompleter("0", "1", "2"),
          ValidateRange(0, 2), ValidateNotNullOrEmpty]
         public virtual int? ConnectionIndex { get; set; }
@@ -236,7 +236,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
                                       Kind = directPeer.Kind,
                                       PeeringLocation = directPeer.PeeringLocation,
                                       Location = directPeer.Location,
-                                      Sku = directPeer.Sku,
+                                      Sku = directPeer.UseForPeeringService
+                                                ? new PSPeeringSku { Name = Constants.PremiumDirectFree }
+                                                : new PSPeeringSku { Name = Constants.BasicDirectFree },
                                       Tags = directPeer.Tags
                                   };
                 peering.Direct = new PSPeeringPropertiesDirect
@@ -285,7 +287,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
                                       Kind = directPeer.Kind,
                                       PeeringLocation = directPeer.PeeringLocation,
                                       Location = directPeer.Location,
-                                      Sku = directPeer.Sku,
+                                      Sku = directPeer.UseForPeeringService
+                                                ? new PSPeeringSku { Name = Constants.PremiumDirectFree }
+                                                : new PSPeeringSku { Name = Constants.BasicDirectFree },
                                       Tags = directPeer.Tags,
                                       Direct = new PSPeeringPropertiesDirect
                                                    {
@@ -331,8 +335,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
                                       Kind = directPeer.Kind,
                                       PeeringLocation = directPeer.PeeringLocation,
                                       Location = directPeer.Location,
-                                      Sku = directPeer.Sku,
-                                      Tags = directPeer.Tags,
+                                      Sku = directPeer.UseForPeeringService
+                                                ? new PSPeeringSku { Name = Constants.PremiumDirectFree }
+                                                : new PSPeeringSku { Name = Constants.BasicDirectFree },
+                    Tags = directPeer.Tags,
                                       Direct = new PSPeeringPropertiesDirect
                                                    {
                                                        Connections = directPeer.Connections,
@@ -383,8 +389,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
                                       Kind = directPeer.Kind,
                                       PeeringLocation = directPeer.PeeringLocation,
                                       Location = directPeer.Location,
-                                      Sku = directPeer.Sku,
-                                      Tags = directPeer.Tags,
+                                      Sku = directPeer.UseForPeeringService
+                                                ? new PSPeeringSku { Name = Constants.PremiumDirectFree }
+                                                : new PSPeeringSku { Name = Constants.BasicDirectFree },
+                    Tags = directPeer.Tags,
                                       Direct = new PSPeeringPropertiesDirect
                                                    {
                                                        Connections = directPeer.Connections,
@@ -439,16 +447,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
                                       Kind = directPeer.Kind,
                                       PeeringLocation = directPeer.PeeringLocation,
                                       Location = directPeer.Location,
-                                      Sku = directPeer.Sku,
-                                      Tags = directPeer.Tags,
+                                      Sku = directPeer.UseForPeeringService
+                                                ? new PSPeeringSku { Name = Constants.PremiumDirectFree }
+                                                : new PSPeeringSku { Name = Constants.BasicDirectFree },
+                    Tags = directPeer.Tags,
                                       Direct = new PSPeeringPropertiesDirect
                                                    {
                                                        Connections = directPeer.Connections,
                                                        PeerAsn = directPeer.PeerAsn,
                                                        UseForPeeringService =
-                                                           directPeer.UseForPeeringService != this.UseForPeeringService
-                                                               ? this.UseForPeeringService
-                                                               : directPeer.UseForPeeringService
+                                                           directPeer.UseForPeeringService = this.UseForPeeringService
                                                    }
                                   };
                 this.PeeringClient.CreateOrUpdate(

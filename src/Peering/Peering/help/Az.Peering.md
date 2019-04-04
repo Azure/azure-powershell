@@ -42,11 +42,11 @@ Remove Peer Asn
 Update Contact Information
 
 ### [Set-AzPeering](Set-AzPeering.md)
-{{ Fill in the Synopsis }}
+Sets the Peering. Use this Command in conjunction with `Set-AzDirectPeeringConnectionObject` or `Set-AzExchangePeeringConnectionObject`.
 
 ### [Set-AzPeeringDirectConnectionObject](Set-AzPeeringDirectConnectionObject.md)
 {{ Fill in the Synopsis }}
 
 ### [Set-AzPeeringExchangeConnectionObject](Set-AzPeeringExchangeConnectionObject.md)
-{{ Fill in the Synopsis }}
+Sets or updates the Exchange Connection information. 
 

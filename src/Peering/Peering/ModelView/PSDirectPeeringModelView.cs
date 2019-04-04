@@ -44,28 +44,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
             this.PeeringLocation = peering.PeeringLocation;
             this.ProvisioningState = peering.ProvisioningState;
             this.Sku = peering.Sku;
-            this.UseForPeeringService = peering.Direct.UseForPeeringService;
+            this.UseForPeeringService = peering.Direct.UseForPeeringService ?? false;
             this.Tags = peering.Tags;
             this.Name = peering.Name;
             this.Id = peering.Id;
             this.Type = peering.Type;
-        }
-
-        public PSDirectPeeringModelView(PSDirectPeeringModelView peering)
-        {
-            this.Connections = peering.Connections;
-            this.Kind = peering.Kind;
-            this.Location = peering.Location;
-            this.PeerAsn = peering.PeerAsn;
-            this.PeeringLocation = peering.PeeringLocation;
-            this.ProvisioningState = peering.ProvisioningState;
-            this.Sku = peering.Sku;
-            this.UseForPeeringService = peering.UseForPeeringService;
-            this.Tags = peering.Tags;
-            this.Name = peering.Name;
-            this.Id = peering.Id;
-            this.Type = peering.Type;
-
         }
 
         /// <summary>
@@ -104,7 +87,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// used for peering service.
         /// </summary>
         [JsonProperty(PropertyName = "useForPeeringService")]
-        public  bool? UseForPeeringService { get; set; }
+        public  bool UseForPeeringService { get; set; }
 
         /// <summary>
         /// Gets or sets the reference of the peer ASN.

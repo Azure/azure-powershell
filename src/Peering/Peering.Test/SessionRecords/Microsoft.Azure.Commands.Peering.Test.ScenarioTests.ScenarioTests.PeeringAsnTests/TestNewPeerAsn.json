@@ -7,13 +7,13 @@
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 65000,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"tata@noc.com\",\r\n        \"tata2@noc.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"888-800-8889\"\r\n      ]\r\n    },\r\n    \"peerName\": \"Contoso\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1ff6839c-c3e3-4ee9-a0f6-46202076ca39"
+          "4581a186-5d3e-4629-b1d5-c86e28b4db8b"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27129.04",
+          "FxVersion/4.6.27414.06",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.9.0"
@@ -33,16 +33,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "531763a7-aba7-4476-8b5b-53cad44b3145"
+          "d98d405f-e851-4929-b303-aa67815a0a98"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "60553f9a-8c02-4fc8-b718-ce49b08a7d9c"
+          "19cb6c61-68f1-4db3-b81f-a07b23474c0d"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20190321T233425Z:60553f9a-8c02-4fc8-b718-ce49b08a7d9c"
+          "NORTHEUROPE:20190404T173653Z:19cb6c61-68f1-4db3-b81f-a07b23474c0d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,7 +51,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 21 Mar 2019 23:34:24 GMT"
+          "Thu, 04 Apr 2019 17:36:53 GMT"
         ],
         "Content-Length": [
           "446"
