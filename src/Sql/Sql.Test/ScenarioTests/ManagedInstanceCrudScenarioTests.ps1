@@ -33,6 +33,7 @@ function Test-CreateManagedInstance
  	$vCore = 16
  	$skuName = "GP_Gen4"
 	$collation = "Serbian_Cyrillic_100_CS_AS"
+	$timezoneId = "Central Europe Standard Time"
 	$proxyOverride = "Proxy"
 
  	try
@@ -45,7 +46,7 @@ function Test-CreateManagedInstance
  		$job = New-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
   			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -Collation $collation `
-			-PublicDataEndpointEnabled -ProxyOverride $proxyOverride -AsJob
+			-TimezoneId $timezoneId -PublicDataEndpointEnabled -ProxyOverride $proxyOverride -AsJob
  		$job | Wait-Job
  		$managedInstance1 = $job.Output
 
@@ -59,6 +60,7 @@ function Test-CreateManagedInstance
 		Assert-AreEqual $managedInstance1.VCores $vCore
 		Assert-AreEqual $managedInstance1.StorageSizeInGB $storageSizeInGB
 		Assert-AreEqual $managedInstance1.Collation $collation
+		Assert-AreEqual $managedInstance1.TimezoneId $timezoneId
 		Assert-AreEqual $managedInstance1.PublicDataEndpointEnabled $true
 		Assert-AreEqual $managedInstance1.ProxyOverride $proxyOverride
  		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
