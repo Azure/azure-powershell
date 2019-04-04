@@ -3,4 +3,4 @@ steps:
   displayName: 'Download build'
   inputs:
     artifactName: build
-    downloadPath: artifacts
+    targetPath: artifacts
