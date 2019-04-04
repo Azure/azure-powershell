@@ -26,10 +26,62 @@ The **Get-AzLocalNetworkGateway** cmdlet returns the object representing your on
 
 ### 1: Get a Local Network Gateway
 ```
-Get-AzLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG
+Get-AzLocalNetworkGateway -Name myLocalGW1 -ResourceGroupName myRG
+
+Name                     : myLocalGW1
+ResourceGroupName        : myRG
+Location                 : eastus
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/M
+                           icrosoft.Network/localNetworkGateways/myLocalGW1
+Etag                     : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid             : 00000000-0000-0000-0000-000000000000
+ProvisioningState        : Succeeded
+Tags                     :
+GatewayIpAddress         : x.x.x.x
+LocalNetworkAddressSpace : {
+                             "AddressPrefixes": []
+                           }
+BgpSettings              : null
 ```
 
-Returns the object of the Local Network Gateway with the name "myLocalGW" within the resource group "myRG"
+Returns the object of the Local Network Gateway with the name "myLocalGW1" within the resource group "myRG"
+
+### 2: Get Local Network Gateways using filtering
+```
+Get-AzLocalNetworkGateway -Name myLocalGW* -ResourceGroupName myRG
+
+Name                     : myLocalGW1
+ResourceGroupName        : myRG
+Location                 : eastus
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/M
+                           icrosoft.Network/localNetworkGateways/myLocalGW1
+Etag                     : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid             : 00000000-0000-0000-0000-000000000000
+ProvisioningState        : Succeeded
+Tags                     :
+GatewayIpAddress         : x.x.x.x
+LocalNetworkAddressSpace : {
+                             "AddressPrefixes": []
+                           }
+BgpSettings              : null
+
+Name                     : myLocalGW2
+ResourceGroupName        : myRG
+Location                 : eastus
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/M
+                           icrosoft.Network/localNetworkGateways/myLocalGW2
+Etag                     : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid             : 00000000-0000-0000-0000-000000000000
+ProvisioningState        : Succeeded
+Tags                     :
+GatewayIpAddress         : x.x.x.x
+LocalNetworkAddressSpace : {
+                             "AddressPrefixes": []
+                           }
+BgpSettings              : null
+```
+
+Returns the object of the Local Network Gateway with name starting with "myLocalGW" within the resource group "myRG"
 
 ## PARAMETERS
 

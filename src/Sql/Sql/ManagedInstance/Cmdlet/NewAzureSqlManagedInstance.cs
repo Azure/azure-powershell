@@ -22,6 +22,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
+using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 {
@@ -149,6 +151,23 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public string Collation { get; set; }
 
         /// <summary>
+        /// Gets or sets whether or not the public data endpoint is enabled.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Whether or not the public data endpoint is enabled for the instance.")]
+        public SwitchParameter PublicDataEndpointEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets connection type used for connecting to the instance.
+        /// Possible values include: 'Proxy', 'Redirect', 'Default'
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The connection type used for connecting to the instance.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter(ManagedInstanceProxyOverride.Proxy, ManagedInstanceProxyOverride.Redirect, ManagedInstanceProxyOverride.Default)]
+        public string ProxyOverride { get; set; }
+        
+        /// <summary>
         /// Gets or sets the instance time zone
         /// </summary>
         [Parameter(Mandatory = false,
@@ -230,7 +249,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             }
             else if (string.Equals(this.ParameterSetName, NewByEditionAndComputeGenerationParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
-                string editionShort = Edition.Equals(Constants.GeneralPurposeEdition) ? "GP" : Edition.Equals(Constants.BusinessCriticalEdition) ? "BC" : "Unknown";
+                string editionShort = AzureSqlManagedInstanceAdapter.GetInstanceSkuPrefix(Edition);
                 Sku.Name = editionShort + "_" + ComputeGeneration;
             }
 
@@ -249,6 +268,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 VCores = this.VCore,
                 Sku = Sku,
                 Collation = this.Collation,
+                PublicDataEndpointEnabled = this.PublicDataEndpointEnabled,
+                ProxyOverride = this.ProxyOverride,
                 TimezoneId = this.TimezoneId,
             });
             return newEntity;

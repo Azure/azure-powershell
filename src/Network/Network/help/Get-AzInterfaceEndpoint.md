@@ -43,6 +43,13 @@ $interfaceendpoint = Get-AzInterfaceEndpoint -ResourceId "/subscriptions/sub1/re
 
 This command gets the interface endpoint with resourceId /subscriptions/sub1/resourceGroups/chsriniIEtest1/providers/Microsoft.Network/interfaceEndpoints/ie1.10 and stores it in the $interfaceendpoint variable.
 
+### Example 3
+```
+$interfaceendpoint = Get-AzInterfaceEndpoint -Name InterfaceEndpoint*
+```
+
+This command gets the interface endpoints that start with "InterfaceEndpoint"
+
 ## PARAMETERS
 
 ### -DefaultProfile

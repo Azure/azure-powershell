@@ -14,13 +14,7 @@ Gets a service endpoint policy.
 
 ### ListParameterSet (Default)
 ```
-Get-AzServiceEndpointPolicy [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### GetByNameParameterSet
-```
-Get-AzServiceEndpointPolicy -Name <String> -ResourceGroupName <String>
+Get-AzServiceEndpointPolicy [-Name <String>] [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -49,6 +43,13 @@ $policyList = Get-AzServiceEndpointPolicy -ResourceGroupName "ResourceGroup01"
 
 This command gets a list of all the service endpoint policies in the resource group named ResourceGroup01 and stores it in the $policyList variable.
 
+### Example 3
+```
+$policyList = Get-AzServiceEndpointPolicy -ResourceGroupName "ServiceEndpointPolicy*"
+```
+
+This command gets a list of all the service endpoint policies that start with "ServiceEndpointPolicy".
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -71,10 +72,10 @@ The name of the service endpoint policy
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByNameParameterSet
+Parameter Sets: ListParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -90,18 +91,6 @@ Parameter Sets: ListParameterSet
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: GetByNameParameterSet
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -31,6 +32,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
+    [CmdletOutputBreakingChange(typeof(PSVirtualMachineScaleSetVM), NewOutputProperties = new string[] { "ProtectFromScaleIn" })]
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssVM", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSetVM))]
     public partial class UpdateAzureRmVmssVM : ComputeAutomationBaseCmdlet
@@ -49,13 +51,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         case "ResourceIdParameter":
                             resourceGroupName = GetResourceGroupName(this.ResourceId);
-                            vmScaleSetName = GetResourceName(this.ResourceId, "Microsoft.Compute/VirtualMachineScaleSets", "virtualMachines");
-                            instanceId = GetInstanceId(this.ResourceId, "Microsoft.Compute/VirtualMachineScaleSets", "virtualMachines");
+                            vmScaleSetName = GetResourceName(this.ResourceId, "Microsoft.Compute/virtualMachineScaleSets", "virtualMachines");
+                            instanceId = GetInstanceId(this.ResourceId, "Microsoft.Compute/virtualMachineScaleSets", "virtualMachines");
                             break;
                         case "ObjectParameter":
                             resourceGroupName = GetResourceGroupName(this.VirtualMachineScaleSetVM.Id);
-                            vmScaleSetName = GetResourceName(this.VirtualMachineScaleSetVM.Id, "Microsoft.Compute/VirtualMachineScaleSets", "virtualMachines");
-                            instanceId = GetInstanceId(this.VirtualMachineScaleSetVM.Id, "Microsoft.Compute/VirtualMachineScaleSets", "virtualMachines");
+                            vmScaleSetName = GetResourceName(this.VirtualMachineScaleSetVM.Id, "Microsoft.Compute/virtualMachineScaleSets", "virtualMachines");
+                            instanceId = GetInstanceId(this.VirtualMachineScaleSetVM.Id, "Microsoft.Compute/virtualMachineScaleSets", "virtualMachines");
                             break;
                         default:
                             resourceGroupName = this.ResourceGroupName;
@@ -99,7 +101,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 1,
+            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
@@ -107,7 +109,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 2,
+            Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets", "ResourceGroupName")]
@@ -116,7 +118,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 3,
+            Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string InstanceId { get; set; }
@@ -137,6 +139,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
         public PSVirtualMachineScaleSetVM VirtualMachineScaleSetVM { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]

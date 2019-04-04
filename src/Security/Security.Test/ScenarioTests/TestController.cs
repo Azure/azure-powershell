@@ -12,25 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Security;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Management.Security;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 {
     public class TestController : RMTestBase
     {
         private readonly EnvironmentSetupHelper _helper;
-
-        public SecurityCenterClient SecurityCenterClient { get; private set; }
 
         public static TestController NewInstance => new TestController();
 
@@ -63,7 +63,9 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath(@"AzureRM.Security.psd1"),
                     "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    "AzureRM.Storage.ps1",
+                    "AzureRM.Resources.ps1");
 
                 _helper.RunPowerShellTest(scripts);
             }
@@ -71,13 +73,23 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 
         protected void SetupManagementClients(MockContext context)
         {
-            SecurityCenterClient = GetSecurityCenterClient(context);
-            _helper.SetupManagementClients(SecurityCenterClient);
+            var resourcesClient = GetResourcesClient(context);
+            var securityCenterClient = GetSecurityCenterClient(context);
+            var storageClient = GetStorageManagementClient(context);
+            _helper.SetupManagementClients(securityCenterClient, resourcesClient, storageClient);
         }
 
         private static SecurityCenterClient GetSecurityCenterClient(MockContext context)
         {
             return context.GetServiceClient<SecurityCenterClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+        private static ResourceManagementClient GetResourcesClient(MockContext context)
+        {
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+        private static StorageManagementClient GetStorageManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

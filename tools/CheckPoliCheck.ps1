@@ -8,7 +8,7 @@ param(
     [string] $CIToolsPath
 )
 
-& "$CIToolsPath\tools\PoliCheck\PoliCheck5.8.1\PoliCheck.exe" /F:"$PSScriptRoot\..\artifacts" /T:"9" /O:"$PSScriptRoot\..\artifacts\PoliCheck-Scan.xml"
+& "$CIToolsPath\tools\PoliCheck\PoliCheck5.8.1\PoliCheck.exe" /F:"$PSScriptRoot\..\artifacts\$BuildConfig" /T:"9" /O:"$PSScriptRoot\..\artifacts\PoliCheck-Scan.xml"
 
 [xml]$poliCheckReport = Get-Content $PSScriptRoot\..\artifacts\PoliCheck-Scan.xml
 
