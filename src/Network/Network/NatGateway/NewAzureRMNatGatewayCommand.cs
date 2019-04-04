@@ -68,10 +68,11 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The public IP Prefix Sku name.")]
+            HelpMessage = "Name of a NAT gateway SKU.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(
-            MNM.PublicIPAddressSkuName.Standard,
+        [PSArgumentCompleter(
+            MNM.NatGatewaySkuName.Basic,
+            MNM.NatGatewaySkuName.Standard,
             IgnoreCase = true)]
         public string Sku { get; set; }
 
