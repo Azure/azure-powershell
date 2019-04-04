@@ -121,7 +121,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             }
             catch (ErrorResponseException ex)
             {
-                throw new ErrorResponseException($"Error:{ex.Response.ReasonPhrase} reason:{ex.Body.Code} message:{ex.Body.Message}");
+                throw new ErrorResponseException($"Error:{ex.Response.ReasonPhrase} reason:{ex.Body?.Code} message:{ex.Body?.Message}");
             }
         }
 

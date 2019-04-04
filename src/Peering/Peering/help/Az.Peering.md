@@ -29,11 +29,20 @@ Creates a new Peer ASN
 ### [New-AzPeering](New-AzPeering.md)
 Creates a new Peering ARM Resource
 
+### [New-AzPeeringDirectConnectionObject](New-AzPeeringDirectConnectionObject.md)
+Creates a in memory PSObject to be used for creating or modifying a Peering.
+
+### [New-AzPeeringExchangeConnectionObject](New-AzPeeringExchangeConnectionObject.md)
+Creates a in memory PSObject to be used for creating or modifying a Peering.
+
 ### [Remove-AzPeerAsn](Remove-AzPeerAsn.md)
 Remove Peer Asn
 
 ### [Set-AzPeerAsn](Set-AzPeerAsn.md)
 Update Contact Information
+
+### [Set-AzPeering](Set-AzPeering.md)
+{{ Fill in the Synopsis }}
 
 ### [Set-AzPeeringDirectConnectionObject](Set-AzPeeringDirectConnectionObject.md)
 {{ Fill in the Synopsis }}

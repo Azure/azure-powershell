@@ -14,7 +14,7 @@ schema: 2.0.0
 
 ### ParameterSetNameUseForPeeringService (Default)
 ```
-Set-AzPeeringDirectConnectionObject -InputObject <PSPeering> [-ConnectionIndex] <Int32> [-UseForPeeringService]
+Set-AzPeeringDirectConnectionObject -InputObject <PSPeering> [-UseForPeeringService]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -79,7 +79,7 @@ Create a new Direct connections using the New-AzExchangePeeringConnection and pi
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
+Parameter Sets: ParameterSetNameIPv4Prefix, ParameterSetNameIPv6Prefix, ParameterSetNameBandwidth, ParameterSetNameMd5Authentication
 Aliases:
 
 Required: True

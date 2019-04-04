@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     /// <summary>
     ///     Updates the InputObject object.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzPeering", DefaultParameterSetName = Constants.ParameterSetNameUseForPeeringService, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, "AzPeering", DefaultParameterSetName = Constants.ParameterSetNameDefault, SupportsShouldProcess = true)]
     [OutputType(typeof(PSPeering))]
     public class SetAzurePeeringCommand : PeeringBaseCmdlet
     {
@@ -42,89 +42,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             ParameterSetName = Constants.ParameterSetNameDefault,
             DontShow = true)]
         public PSPeering InputObject { get; set; }
-
-        /// <summary>
-        /// Gets or sets the connection index.
-        /// </summary>
-        [Parameter(
-             Position = Constants.PositionPeeringOne,
-             Mandatory = true,
-             HelpMessage = Constants.PeeringDirectConnectionHelp,
-             ParameterSetName = Constants.ParameterSetNameDefault),
-         PSArgumentCompleter("0", "1", "2"),
-         ValidateRange(0, 2), ValidateNotNullOrEmpty]
-        public virtual int? ConnectionIndex { get; set; }
-
-        /// <summary>
-        /// Gets or sets the session ipv4.
-        /// </summary>
-        [Parameter(
-            Position = Constants.PositionPeeringTwo,
-            Mandatory = true,
-
-            HelpMessage = Constants.HelpSessionIPv4Prefix,
-            ParameterSetName = Constants.ParameterSetNameDefault)]
-        [ValidateNotNullOrEmpty]
-        public virtual string SessionPrefixV4 { get; set; }
-
-        /// <summary>
-        /// Gets or sets the max prefixes advertised ipv4.
-        /// </summary>
-        [Parameter(
-             Mandatory = false,
-
-             HelpMessage = Constants.HelpMaxAdvertisedIPv4,
-             ParameterSetName = Constants.ParameterSetNameDefault),
-         ValidateRange(1, 20000)]
-        public virtual int? MaxPrefixesAdvertisedIPv4 { get; set; }
-
-        /// <summary>
-        /// Gets or sets the session ipv4.
-        /// </summary>
-        [Parameter(
-            Position = Constants.PositionPeeringTwo,
-            Mandatory = true,
-
-            HelpMessage = Constants.HelpSessionIPv4Prefix,
-            ParameterSetName = Constants.ParameterSetNameDefault)]
-        [ValidateNotNullOrEmpty]
-        public virtual string SessionPrefixV6 { get; set; }
-
-        /// <summary>
-        /// Gets or sets the max prefixes advertised ipv4.
-        /// </summary>
-        [Parameter(
-             Mandatory = false,
-             HelpMessage = Constants.HelpMaxAdvertisedIPv4,
-             ParameterSetName = Constants.ParameterSetNameDefault),
-         ValidateRange(1, 20000)]
-        public virtual int? MaxPrefixesAdvertisedIPv6 { get; set; }
-
-        /// <summary>
-        /// Gets or sets the m d 5 authentication key.
-        /// </summary>
-        [Parameter(
-            Position = Constants.PositionPeeringOne,
-            Mandatory = false,
-            HelpMessage = Constants.MD5AuthenticationKeyHelp,
-            ParameterSetName = Constants.ParameterSetNameDefault)]
-        public string MD5AuthenticationKey { get; set; }
-
-        [Parameter(Mandatory = false,
-            HelpMessage = Constants.UseForPeeringServiceHelp,
-            ParameterSetName = Constants.ParameterSetNameUseForPeeringService)]
-        public SwitchParameter UseForPeeringService { get; set; }
-
-        /// <summary>
-        ///     Bandwidth offered at this location.
-        /// </summary>
-        [Parameter(
-             Mandatory = true,
-             HelpMessage = Constants.BandwidthHelp,
-             ParameterSetName = Constants.ParameterSetNameDefault),
-         PSArgumentCompleter("10000", "20000", "30000", "40000", "50000", "60000", "70000", "80000", "90000", "100000"),
-         ValidateRange(Constants.MinRange, Constants.MaxRange), ValidateNotNullOrEmpty]
-        public virtual int? BandwidthInMbps { get; set; }
 
         /// <inheritdoc />
         /// <summary>
@@ -144,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             }
             catch (ErrorResponseException ex)
             {
-                throw new ErrorResponseException($"Error:{ex.Response.ReasonPhrase} reason:{ex.Body.Code} message:{ex.Body.Message}");
+                throw new ErrorResponseException($"Error:{ex.Response.ReasonPhrase} reason:{ex.Body?.Code} message:{ex.Body?.Message}");
             }
         }
 
@@ -156,340 +73,72 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </returns>
         private PSPeering UpdatePeeringOffer()
         {
-            if (this.InputObject is PSDirectPeeringModelView directPeer)
+            try
             {
-                var resourceGroupName = this.GetResourceGroupNameFromId(directPeer.Id);
-                var peeringName = this.GetPeeringNameFromId(directPeer.Id);
-                var peering = new PSPeering
+                if (this.InputObject is PSDirectPeeringModelView directPeeringModelView)
                 {
-                    Kind = directPeer.Kind,
-                    PeeringLocation = directPeer.PeeringLocation,
-                    Location = directPeer.Location,
-                    Sku = directPeer.Sku,
-                    Tags = directPeer.Tags
-                };
-                peering.Direct = new PSPeeringPropertiesDirect
-                {
-                    Connections = directPeer.Connections,
-                    PeerAsn = directPeer.PeerAsn,
-                    UseForPeeringService = directPeer.UseForPeeringService
-                };
-
-                if (this.ConnectionIndex >= directPeer.Connections.Count - 1)
-                    throw new IndexOutOfRangeException($"ConnectionIndex out of range {this.ConnectionIndex}");
-                var connectionIndex = this.ConnectionIndex;
-                if (connectionIndex != null)
-                    if (this.ValidBandwidth(this.BandwidthInMbps))
-                        peering.Direct.Connections[(int)connectionIndex].BandwidthInMbps =
-                            this.BandwidthInMbps >= directPeer.Connections[(int)connectionIndex].BandwidthInMbps
-                                ? this.BandwidthInMbps
-                                : throw new ArgumentOutOfRangeException($"Only Bandwidth upgrades are supported.");
-                try
-                {
+                    var resourceGroupName = this.GetResourceGroupNameFromId(directPeeringModelView.Id);
+                    var peeringName = this.GetPeeringNameFromId(directPeeringModelView.Id);
+                    var peering = new PSPeering
+                                      {
+                                          Kind = directPeeringModelView.Kind,
+                                          PeeringLocation = directPeeringModelView.PeeringLocation,
+                                          Location = directPeeringModelView.Location,
+                                          Sku = directPeeringModelView.Sku,
+                                          Tags = directPeeringModelView.Tags
+                                      };
+                    peering.Direct = new PSPeeringPropertiesDirect
+                                         {
+                                             Connections = directPeeringModelView.Connections,
+                                             PeerAsn = directPeeringModelView.PeerAsn,
+                                             UseForPeeringService = directPeeringModelView.UseForPeeringService
+                                         };
                     this.PeeringClient.CreateOrUpdate(
                         resourceGroupName.ToString(),
                         peeringName.ToString(),
                         PeeringResourceManagerProfile.Mapper.Map<PeeringModel>(peering));
+
+                    return new PSDirectPeeringModelView(
+                        PeeringResourceManagerProfile.Mapper.Map<PSPeering>(
+                            this.PeeringClient.Get(resourceGroupName.ToString(), peeringName.ToString())));
                 }
-                catch (HttpOperationException ex)
+
+                if (this.InputObject is PSExchangePeeringModelView exchangePeeringModelView)
                 {
-                    throw new Exception(
-                        $"Request URL: {ex.Request.RequestUri} StatusCode: {ex.Response.StatusCode} Content: {ex.Response.Content}");
-                }
-
-                return new PSDirectPeeringModelView(PeeringResourceManagerProfile.Mapper.Map<PSPeering>(this.PeeringClient.Get(resourceGroupName.ToString(), peeringName.ToString())));
-            }
-
-            throw new InvalidOperationException("Exchange InputObject does not support this operation.");
-        }
-
-        /// <summary>
-        ///     The update InputObject offer.
-        /// </summary>
-        /// <returns>
-        ///     The <see cref="PSPeering" />.
-        /// </returns>
-        private PSPeering UpdateMD5Authentication()
-        {
-            if (this.InputObject is PSDirectPeeringModelView directPeer)
-            {
-                var resourceGroupName = this.GetResourceGroupNameFromId(directPeer.Id);
-                var peeringName = this.GetPeeringNameFromId(directPeer.Id);
-                var peering = new PSPeering
-                {
-                    Kind = directPeer.Kind,
-                    PeeringLocation = directPeer.PeeringLocation,
-                    Location = directPeer.Location,
-                    Sku = directPeer.Sku,
-                    Tags = directPeer.Tags,
-                    Direct = new PSPeeringPropertiesDirect
-                    {
-                        Connections = directPeer.Connections,
-                        PeerAsn = directPeer.PeerAsn,
-                        UseForPeeringService = directPeer.UseForPeeringService
-                    }
-                };
-
-                if (this.ConnectionIndex >= directPeer.Connections.Count - 1)
-                    throw new IndexOutOfRangeException($"ConnectionIndex out of range {this.ConnectionIndex}");
-                var connectionIndex = this.ConnectionIndex;
-                if (connectionIndex != null)
-                    peering.Direct.Connections[(int)connectionIndex].BgpSession.Md5AuthenticationKey =
-                        this.MD5AuthenticationKey;
-                try
-                {
+                    var resourceGroupName = this.GetResourceGroupNameFromId(exchangePeeringModelView.Id);
+                    var peeringName = this.GetPeeringNameFromId(exchangePeeringModelView.Id);
+                    var peering = new PSPeering
+                                      {
+                                          Kind = exchangePeeringModelView.Kind,
+                                          PeeringLocation = exchangePeeringModelView.PeeringLocation,
+                                          Location = exchangePeeringModelView.Location,
+                                          Sku = exchangePeeringModelView.Sku,
+                                          Tags = exchangePeeringModelView.Tags,
+                                          Exchange = new PSPeeringPropertiesExchange
+                                                         {
+                                                             Connections = exchangePeeringModelView.Connections,
+                                                             PeerAsn = exchangePeeringModelView.PeerAsn,
+                                                         }
+                                      };
                     this.PeeringClient.CreateOrUpdate(
                         resourceGroupName.ToString(),
                         peeringName.ToString(),
                         PeeringResourceManagerProfile.Mapper.Map<PeeringModel>(peering));
-                }
-                catch (HttpOperationException ex)
-                {
-                    throw new Exception(
-                        $"Request URL: {ex.Request.RequestUri} StatusCode: {ex.Response.StatusCode} Content: {ex.Response.Content}");
-                }
 
-                return new PSDirectPeeringModelView(PeeringResourceManagerProfile.Mapper.Map<PSPeering>(this.PeeringClient.Get(resourceGroupName.ToString(), peeringName.ToString())));
+                    return new PSExchangePeeringModelView(
+                        PeeringResourceManagerProfile.Mapper.Map<PSPeering>(
+                            this.PeeringClient.Get(resourceGroupName.ToString(), peeringName.ToString())));
+                }
             }
-
-            throw new InvalidOperationException($"Exchange InputObject does not support this operation.");
-        }
-
-        /// <summary>
-        ///     The update InputObject offer.
-        /// </summary>
-        /// <returns>
-        ///     The <see cref="PSPeering" />.
-        /// </returns>
-        private PSPeering UpdateIpV4Prefix()
-        {
-            if (this.InputObject is PSDirectPeeringModelView directPeer)
+            catch (InvalidOperationException mapException)
             {
-                var resourceGroupName = this.GetResourceGroupNameFromId(directPeer.Id);
-                var peeringName = this.GetPeeringNameFromId(directPeer.Id);
-                var peering = new PSPeering
-                {
-                    Kind = directPeer.Kind,
-                    PeeringLocation = directPeer.PeeringLocation,
-                    Location = directPeer.Location,
-                    Sku = directPeer.Sku,
-                    Tags = directPeer.Tags,
-                    Direct = new PSPeeringPropertiesDirect
-                    {
-                        Connections = directPeer.Connections,
-                        PeerAsn = directPeer.PeerAsn,
-                        UseForPeeringService = directPeer.UseForPeeringService
-                    }
-
-                };
-                if (this.ConnectionIndex >= directPeer.Connections.Count - 1)
-                    throw new IndexOutOfRangeException($"ConnectionIndex out of range {this.ConnectionIndex}");
-                var connectionIndex = this.ConnectionIndex;
-                if (connectionIndex != null)
-                {
-                    peering.Direct.Connections[(int)connectionIndex].BgpSession.SessionPrefixV4 =
-                        this.ValidatePrefix(this.SessionPrefixV4, Constants.Direct);
-                    peering.Direct.Connections[(int)connectionIndex].BgpSession.MaxPrefixesAdvertisedV4 =
-                        this.MaxPrefixesAdvertisedIPv4 == null ? directPeer.Connections[(int)connectionIndex].BgpSession.MaxPrefixesAdvertisedV4 : 20000;
-                }
-
-                try
-                {
-                    this.PeeringClient.CreateOrUpdate(
-                        resourceGroupName.ToString(),
-                        peeringName.ToString(),
-                        PeeringResourceManagerProfile.Mapper.Map<PeeringModel>(peering));
-                }
-                catch (HttpOperationException ex)
-                {
-                    throw new Exception(
-                        $"Request URL: {ex.Request.RequestUri} StatusCode: {ex.Response.StatusCode} Content: {ex.Response.Content}");
-                }
-
-                return new PSDirectPeeringModelView(PeeringResourceManagerProfile.Mapper.Map<PSPeering>(this.PeeringClient.Get(resourceGroupName.ToString(), peeringName.ToString())));
+                throw new InvalidOperationException($"Failed to map object {mapException}");
             }
-
-            throw new InvalidOperationException();
-        }
-
-        /// <summary>
-        ///     The update InputObject offer.
-        /// </summary>
-        /// <returns>
-        ///     The <see cref="PSPeering" />.
-        /// </returns>
-        private PSPeering UpdateIpV6Prefix()
-        {
-            if (this.InputObject is PSDirectPeeringModelView directPeer)
+            catch (ErrorResponseException ex)
             {
-                var resourceGroupName = this.GetResourceGroupNameFromId(directPeer.Id);
-                var peeringName = this.GetPeeringNameFromId(directPeer.Id);
-                var peering = new PSPeering
-                {
-                    Kind = directPeer.Kind,
-                    PeeringLocation = directPeer.PeeringLocation,
-                    Location = directPeer.Location,
-                    Sku = directPeer.Sku,
-                    Tags = directPeer.Tags,
-                    Direct = new PSPeeringPropertiesDirect
-                    {
-                        Connections = directPeer.Connections,
-                        PeerAsn = directPeer.PeerAsn,
-                        UseForPeeringService = directPeer.UseForPeeringService
-                    }
-
-                };
-                if (this.ConnectionIndex >= directPeer.Connections.Count - 1)
-                    throw new IndexOutOfRangeException($"ConnectionIndex out of range {this.ConnectionIndex}");
-                var connectionIndex = this.ConnectionIndex;
-                if (connectionIndex != null)
-                {
-                    peering.Direct.Connections[(int)connectionIndex].BgpSession.SessionPrefixV6 =
-                        this.ValidatePrefix(this.SessionPrefixV6, Constants.Direct);
-                    peering.Direct.Connections[(int)connectionIndex].BgpSession.MaxPrefixesAdvertisedV4 =
-                        this.MaxPrefixesAdvertisedIPv6 == null ? directPeer.Connections[(int)connectionIndex].BgpSession.MaxPrefixesAdvertisedV4 : 20000;
-                }
-
-                try
-                {
-                    this.PeeringClient.CreateOrUpdate(
-                        resourceGroupName.ToString(),
-                        peeringName.ToString(),
-                        PeeringResourceManagerProfile.Mapper.Map<PeeringModel>(peering));
-                }
-                catch (HttpOperationException ex)
-                {
-                    throw new Exception(
-                        $"Request URL: {ex.Request.RequestUri} StatusCode: {ex.Response.StatusCode} Content: {ex.Response.Content}");
-                }
-
-                return new PSDirectPeeringModelView(PeeringResourceManagerProfile.Mapper.Map<PSPeering>(this.PeeringClient.Get(resourceGroupName.ToString(), peeringName.ToString())));
+                throw new ErrorResponseException($"Error:{ex.Response.ReasonPhrase} reason:{ex.Body?.Code} message:{ex.Body?.Message}");
             }
-
-            if (this.InputObject is PSExchangePeeringModelView exPeer)
-            {
-                var resourceGroupName = this.GetResourceGroupNameFromId(exPeer.Id);
-                var peeringName = this.GetPeeringNameFromId(exPeer.Id);
-                var peering = new PSPeering
-                {
-                    Kind = exPeer.Kind,
-                    PeeringLocation = exPeer.PeeringLocation,
-                    Location = exPeer.Location,
-                    Sku = exPeer.Sku,
-                    Tags = exPeer.Tags
-                };
-                if (exPeer.Kind == Constants.Exchange)
-                {
-                    peering.Exchange = new PSPeeringPropertiesExchange
-                    {
-                        Connections = exPeer.Connections,
-                        PeerAsn = exPeer.PeerAsn
-                    };
-                }
-                try
-                {
-                    this.PeeringClient.CreateOrUpdate(
-                        resourceGroupName.ToString(),
-                        peeringName.ToString(),
-                        PeeringResourceManagerProfile.Mapper.Map<PeeringModel>(peering));
-                }
-                catch (HttpOperationException ex)
-                {
-                    throw new Exception(
-                        $"Request URL: {ex.Request.RequestUri} StatusCode: {ex.Response.StatusCode} Content: {ex.Response.Content}");
-                }
-
-                return new PSExchangePeeringModelView(PeeringResourceManagerProfile.Mapper.Map<PSPeering>(this.PeeringClient.Get(resourceGroupName.ToString(), peeringName.ToString())));
-            }
-
-            throw new InvalidOperationException();
-        }
-
-        /// <summary>
-        ///     The update InputObject offer.
-        /// </summary>
-        /// <returns>
-        ///     The <see cref="PSPeering" />.
-        /// </returns>
-        private PSPeering UpdateUseForPeeringService()
-        {
-            if (this.InputObject is PSDirectPeeringModelView directPeer)
-            {
-                var resourceGroupName = this.GetResourceGroupNameFromId(directPeer.Id);
-                var peeringName = this.GetPeeringNameFromId(directPeer.Id);
-                var peering = new PSPeering
-                {
-                    Kind = directPeer.Kind,
-                    PeeringLocation = directPeer.PeeringLocation,
-                    Location = directPeer.Location,
-                    Sku = directPeer.Sku,
-                    Tags = directPeer.Tags,
-                    Direct = new PSPeeringPropertiesDirect
-                    {
-                        Connections = directPeer.Connections,
-                        PeerAsn = directPeer.PeerAsn,
-                        UseForPeeringService =
-                                                           directPeer.UseForPeeringService != this.UseForPeeringService
-                                                               ? this.UseForPeeringService
-                                                               : directPeer.UseForPeeringService
-                    }
-                };
-
-                try
-                {
-                    this.PeeringClient.CreateOrUpdate(
-                        resourceGroupName.ToString(),
-                        peeringName.ToString(),
-                        PeeringResourceManagerProfile.Mapper.Map<PeeringModel>(peering));
-                }
-                catch (HttpOperationException ex)
-                {
-                    throw new Exception(
-                        $"Request URL: {ex.Request.RequestUri} StatusCode: {ex.Response.StatusCode} Content: {ex.Response.Content}");
-                }
-
-                return new PSDirectPeeringModelView(
-                    PeeringResourceManagerProfile.Mapper.Map<PSPeering>(
-                        this.PeeringClient.Get(resourceGroupName.ToString(), peeringName.ToString())));
-            }
-
-            if (this.InputObject is PSExchangePeeringModelView exPeer)
-            {
-                var resourceGroupName = this.GetResourceGroupNameFromId(exPeer.Id);
-                var peeringName = this.GetPeeringNameFromId(exPeer.Id);
-                var peering = new PSPeering
-                {
-                    Kind = exPeer.Kind,
-                    PeeringLocation = exPeer.PeeringLocation,
-                    Location = exPeer.Location,
-                    Sku = exPeer.Sku,
-                    Tags = exPeer.Tags
-                };
-                if (exPeer.Kind == Constants.Exchange)
-                {
-                    peering.Exchange = new PSPeeringPropertiesExchange
-                    {
-                        Connections = exPeer.Connections,
-                        PeerAsn = exPeer.PeerAsn
-                    };
-                }
-                try
-                {
-                    this.PeeringClient.CreateOrUpdate(
-                        resourceGroupName.ToString(),
-                        peeringName.ToString(),
-                        PeeringResourceManagerProfile.Mapper.Map<PeeringModel>(peering));
-                }
-                catch (HttpOperationException ex)
-                {
-                    throw new Exception(
-                        $"Request URL: {ex.Request.RequestUri} StatusCode: {ex.Response.StatusCode} Content: {ex.Response.Content}");
-                }
-
-                return new PSExchangePeeringModelView(PeeringResourceManagerProfile.Mapper.Map<PSPeering>(this.PeeringClient.Get(resourceGroupName.ToString(), peeringName.ToString())));
-            }
-
-            throw new InvalidOperationException();
+            throw new InvalidOperationException("Check the input parameters.");
         }
     }
 }
