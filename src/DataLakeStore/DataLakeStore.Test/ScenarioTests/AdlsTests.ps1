@@ -699,8 +699,8 @@ function Test-DataLakeStoreFileSystem
 		Assert-AreEqual $result.FileCount 1
 
 		# Export DiskUsage
-		$targetFile = ".\ScenarioTests\DuOutput"
-		Export-AdlStoreChildItemProperties -Account $accountName -Path $summaryFolder -OutputPath $targetFile -GetDiskUsage -IncludeFile
+		$targetFile = "./ScenarioTests/DuOutput"
+		Export-AzDataLakeStoreChildItemProperties -Account $accountName -Path $summaryFolder -OutputPath $targetFile -GetDiskUsage -IncludeFile
 		$result = Get-Item -Path $targetFile
 		Assert-NotNull $result "No file was created on export properties"
         Remove-Item -Path $targetFile
@@ -856,10 +856,11 @@ function Test-DataLakeStoreFileSystemPermissions
 		Assert-AreEqual $($currentCount+1) $result.Count
 
 		# Export Acl
-		$targetFile = "/aclOutputFile"
-		Export-AzDataLakeStoreChildItemProperties -Account $accountName -Path "/" -OutputPath $targetFile -GetAcl -IncludeFile -SaveToAdl
-		$result = Get-AzDataLakeStoreItem -Account $accountName -path $targetFile
+		$targetFile = "./ScenarioTests/acloutput"
+		Export-AzDataLakeStoreChildItemProperties -Account $accountName -Path "/" -OutputPath $targetFile -GetAcl -IncludeFile
+        $result = Get-Item -Path $targetFile
 		Assert-NotNull $result "No file was created on export properties"
+        Remove-Item -Path $targetFile
 
 		#Recursive Acl remove
 		Remove-AzDataLakeStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Recurse
