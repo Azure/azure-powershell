@@ -1,8 +1,16 @@
 # Azure PowerShell AutoRest Configuration
 
+> Language
+``` yaml
+use:
+- "@microsoft.azure/autorest.powershell@beta"
+
+```
+
 > Values
 ``` yaml
 azure: true
+enable-multi-api: true
 ```
 
 > Names
@@ -27,3 +35,4 @@ directive:
     set:
       hidden: true
 ```
+
