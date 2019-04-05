@@ -9,23 +9,22 @@ require:
   - https://raw.githubusercontent.com/NelsonDaniel/azure-rest-api-specs/multiapi/specification/compute/resource-manager/readme.md
 
 service-name: Compute
-subject-prefix: ''
 module-version: 0.0.1
 skip-model-cmdlets: true
 profile: 
-  - 2019-03-01-hybrid
-  - 2019-04-01-profile
+  - hybrid-2019
+  - latest-2019-04-01
 directive: 
   - where:
-      noun: VirtualMachineScaleSet(.*)
+      subject: VirtualMachineScaleSet(.*)
     set:
-      noun: Vmss$1
+      subject: Vmss$1
   - where:
-      noun: VirtualMachine(.*)
+      subject: VirtualMachine(.*)
     set:
-      noun: VM$1
+      subject: VM$1
   - where:
-      noun: VM
+      subject: VM
       parameter-name: VmName
     set:
       parameter-name: Name
