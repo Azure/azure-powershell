@@ -81,6 +81,7 @@ jobs:
   displayName: Test
   dependsOn: Build
   condition: succeeded()
+  timeoutInMinutes: 120
   pool:
     vmImage: ${{ parameters.vmImage }}
 
