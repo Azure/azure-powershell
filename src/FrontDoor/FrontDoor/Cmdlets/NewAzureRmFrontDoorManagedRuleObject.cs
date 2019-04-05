@@ -12,14 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
+using System.Linq;
 using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
-using Microsoft.Azure.Management.FrontDoor;
-using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
@@ -31,15 +27,17 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     public class NewAzureRmFrontDoorManagedRuleObject : AzureFrontDoorCmdletBase
     {
         /// <summary>
-        /// Describes priority of the rule
+        /// Type of the ruleset (e.g.: DefaultRuleSet)
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "Describes priority of the rule")]
-        public int Priority { get; set; }
+        [Parameter(Mandatory = true, HelpMessage = "Type of the ruleset")]
+        [PSArgumentCompleter("DefaultRuleSet")]
+        public string Type { get; set; }
 
         /// <summary>
-        /// Version of the ruleset
+        /// Version of the ruleset (e.g.: preview-0.1)
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Version of the ruleset")]
+        [Parameter(Mandatory = true, HelpMessage = "Version of the ruleset")]
+        [PSArgumentCompleter("preview-0.1")]
         public string Version { get; set; }
 
         /// <summary>
@@ -52,8 +50,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         {
             var rule = new PSAzureManagedRule
             {
-               Priority = Priority,
-               Version = Version,
+               RuleSetType = Type,
+               RuleSetVersion = Version,
                RuleGroupOverrides = RuleGroupOverride?.ToList()
             };
             WriteObject(rule);
