@@ -225,6 +225,9 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public SwitchParameter EnableUltraSSD { get; set; }
 
+        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "Returns immediately with status of request")]
+        public SwitchParameter NoWait { get; set; }
+
         public override void ExecuteCmdlet()
         {
             switch (ParameterSetName)
@@ -507,42 +510,53 @@ namespace Microsoft.Azure.Commands.Compute
                         }
                     }
 
-                    var result = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
+                    if (NoWait.IsPresent)
+                    {
+                        var result = this.VirtualMachineClient.BeginCreateOrUpdateWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            this.VM.Name,
+                            parameters,
+                            auxAuthHeader);
+                    }
+                    else
+                    {
+                        var result = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.VM.Name,
                         parameters,
                         auxAuthHeader).GetAwaiter().GetResult();
-                    var psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(result);
+                        var psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(result);
 
-                    if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
-                    {
-                        var currentBginfoVersion = GetBginfoExtension();
-
-                        if (!string.IsNullOrEmpty(currentBginfoVersion))
+                        if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
                         {
-                            var extensionParameters = new VirtualMachineExtension
+                            var currentBginfoVersion = GetBginfoExtension();
+
+                            if (!string.IsNullOrEmpty(currentBginfoVersion))
                             {
-                                Location = this.Location,
-                                Publisher = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
-                                VirtualMachineExtensionType = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
-                                TypeHandlerVersion = currentBginfoVersion,
-                                AutoUpgradeMinorVersion = true,
-                            };
+                                var extensionParameters = new VirtualMachineExtension
+                                {
+                                    Location = this.Location,
+                                    Publisher = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
+                                    VirtualMachineExtensionType = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
+                                    TypeHandlerVersion = currentBginfoVersion,
+                                    AutoUpgradeMinorVersion = true,
+                                };
 
-                            typeof(CM.Resource).GetRuntimeProperty("Name")
-                                .SetValue(extensionParameters, VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
-                            typeof(CM.Resource).GetRuntimeProperty("Type")
-                                .SetValue(extensionParameters, VirtualMachineExtensionType);
+                                typeof(CM.Resource).GetRuntimeProperty("Name")
+                                    .SetValue(extensionParameters, VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
+                                typeof(CM.Resource).GetRuntimeProperty("Type")
+                                    .SetValue(extensionParameters, VirtualMachineExtensionType);
 
-                            var op2 = ComputeClient.ComputeManagementClient.VirtualMachineExtensions.CreateOrUpdateWithHttpMessagesAsync(
-                                this.ResourceGroupName,
-                                this.VM.Name,
-                                VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
-                                extensionParameters).GetAwaiter().GetResult();
-                            psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op2);
+                                var op2 = ComputeClient.ComputeManagementClient.VirtualMachineExtensions.CreateOrUpdateWithHttpMessagesAsync(
+                                    this.ResourceGroupName,
+                                    this.VM.Name,
+                                    VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
+                                    extensionParameters).GetAwaiter().GetResult();
+                                psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op2);
+                            }
                         }
+                        WriteObject(psResult);
                     }
-                    WriteObject(psResult);
                 });
             }
         }
