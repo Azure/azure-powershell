@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.7.2'
+ModuleVersion = '0.7.3'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -131,11 +131,11 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add cmdlets to enable/disable custom domain SSL
-    - ''Enable-AzFrontDoorCustomDomainHttps''
-    - ''Disable-AzFrontDoorCustomDomainHttps''
-* Add cmdlet to get all existing frontend endpoints in the current front door resource
-    - ''Get-AzFrontDoorFrontendEndpoint'''
+        ReleaseNotes = '* Configure redirect routing rule.
+* Enable/Disable cetificate name check for backend pools
+* Modify WAF policy cmdlets to implement new swagger
+    - Adds new managed rule sets capabilities
+    - Adds redirect action'
 
         # Prerelease string of this module
         # Prerelease = ''
