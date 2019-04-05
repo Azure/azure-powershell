@@ -21,6 +21,7 @@
 ## Upcoming Release
 * Add HyperVGeneration parameter to New-AzDiskConfig and New-AzSnapshotConfig
 * Allow VM creation with galley image from other tenants. 
+* Make change to Compute
 
 ## Version 1.6.0
 * Fix issue with path resolution in Get-AzVmBootDiagnosticsData
