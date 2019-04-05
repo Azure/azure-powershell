@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: The corresponding URL should be the following: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoor
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoor
 schema: 2.0.0
 ---
 
@@ -16,8 +16,8 @@ Create a new Azure Front Door load balancer
 New-AzFrontDoor -ResourceGroupName <String> -Name <String> -RoutingRule <PSRoutingRule[]>
  -BackendPool <PSBackendPool[]> -FrontendEndpoint <PSFrontendEndpoint[]>
  -LoadBalancingSetting <PSLoadBalancingSetting[]> -HealthProbeSetting <PSHealthProbeSetting[]>
- [-Tag <Hashtable>] [-EnabledState <PSEnabledState>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-EnabledState <PSEnabledState>] [-DisableCertificateNameCheck]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,21 +29,21 @@ The **New-AzFrontDoor** cmdlet creates a new Azure Front Door load balancer in t
 ```powershell
 PS C:\> New-AzFrontDoor -Name "frontDoor1" -ResourceGroupName "rg1" -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1
 
-FriendlyName          : frontdoor1
-RoutingRules          : {routingrule1}
-BackendPools          : {backendpool1}
-HealthProbeSettings   : {healthProbeSetting1}
-LoadBalancingSettings : {loadbalancingsetting1}
-FrontendEndpoints     : {frontendendpoint1}
-EnabledState          : Enabled
-ResourceState         : Enabled
-ProvisioningState     : Succeeded
-Cname                 :
-Tags                  : {tag1, tag2}
-Id                    : /subscriptions/{guid}/resourcegroups/rg1/providers/M
-                        icrosoft.Network/frontdoors/frontdoor1
-Name                  : frontdoor1
-Type                  : Microsoft.Network/frontdoor1
+FriendlyName                : frontdoor1
+RoutingRules                : {routingrule1}
+BackendPools                : {backendpool1}
+EnforceCertificateNameCheck : Enabled
+HealthProbeSettings         : {healthProbeSetting1}
+LoadBalancingSettings       : {loadbalancingsetting1}
+FrontendEndpoints           : {frontendendpoint1}
+EnabledState                : Enabled
+ResourceState               : Enabled
+ProvisioningState           : Succeeded
+Cname                       :
+Tags                        : {tag1, tag2}
+Id                          : /subscriptions/{guid}/resourcegroups/rg1/providers/Microsoft.Network/frontdoors/frontdoor1
+Name                        : frontdoor1
+Type                        : Microsoft.Network/frontdoors
 ```
 
 Create a Front Door based on given parameters.
@@ -72,6 +72,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableCertificateNameCheck
+Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -234,7 +249,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

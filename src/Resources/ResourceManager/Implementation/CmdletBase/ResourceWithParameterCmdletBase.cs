@@ -116,69 +116,78 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string TemplateUri { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Skips the PowerShell dynamic parameter processing that checks if the provided template parameter contains all necessary parameters used by the template. " +
+                                                    "This check would prompt the user to provide a value for the missing parameters, but providing the -SkipTemplateParameterPrompt will ignore this prompt and " +
+                                                    "error out immediately if a parameter was found not to be bound in the template. For non-interactive scripts, -SkipTemplateParameterPrompt can be provided " +
+                                                    "to provide a better error message in the case where not all required parameters are satisfied.")]
+        public SwitchParameter SkipTemplateParameterPrompt { get; set; }
+
         public object GetDynamicParameters()
         {
-            if (TemplateObject != null &&
+            if (!this.IsParameterBound(c => c.SkipTemplateParameterPrompt))
+            {
+                if (TemplateObject != null &&
                 TemplateObject != templateObject)
-            {
-                templateObject = TemplateObject;
-                if (string.IsNullOrEmpty(TemplateParameterUri))
                 {
-                    dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                        TemplateObject,
-                        TemplateParameterObject,
-                        this.ResolvePath(TemplateParameterFile),
-                        MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                    templateObject = TemplateObject;
+                    if (string.IsNullOrEmpty(TemplateParameterUri))
+                    {
+                        dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
+                            TemplateObject,
+                            TemplateParameterObject,
+                            this.ResolvePath(TemplateParameterFile),
+                            MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                    }
+                    else
+                    {
+                        dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
+                            TemplateObject,
+                            TemplateParameterObject,
+                            TemplateParameterUri,
+                            MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                    }
                 }
-                else
+                else if (!string.IsNullOrEmpty(TemplateFile) &&
+                    !TemplateFile.Equals(templateFile, StringComparison.OrdinalIgnoreCase))
                 {
-                    dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                        TemplateObject,
-                        TemplateParameterObject,
-                        TemplateParameterUri,
-                        MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                    templateFile = TemplateFile;
+                    if (string.IsNullOrEmpty(TemplateParameterUri))
+                    {
+                        dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
+                            this.ResolvePath(TemplateFile),
+                            TemplateParameterObject,
+                            this.ResolvePath(TemplateParameterFile),
+                            MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                    }
+                    else
+                    {
+                        dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
+                            this.ResolvePath(TemplateFile),
+                            TemplateParameterObject,
+                            TemplateParameterUri,
+                            MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                    }
                 }
-            }
-            else if (!string.IsNullOrEmpty(TemplateFile) &&
-                !TemplateFile.Equals(templateFile, StringComparison.OrdinalIgnoreCase))
-            {
-                templateFile = TemplateFile;
-                if (string.IsNullOrEmpty(TemplateParameterUri))
+                else if (!string.IsNullOrEmpty(TemplateUri) &&
+                    !TemplateUri.Equals(templateUri, StringComparison.OrdinalIgnoreCase))
                 {
-                    dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                        this.ResolvePath(TemplateFile),
-                        TemplateParameterObject,
-                        this.ResolvePath(TemplateParameterFile),
-                        MyInvocation.MyCommand.Parameters.Keys.ToArray());
-                }
-                else
-                {
-                    dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                        this.ResolvePath(TemplateFile),
-                        TemplateParameterObject,
-                        TemplateParameterUri,
-                        MyInvocation.MyCommand.Parameters.Keys.ToArray());
-                }
-            }
-            else if (!string.IsNullOrEmpty(TemplateUri) &&
-                !TemplateUri.Equals(templateUri, StringComparison.OrdinalIgnoreCase))
-            {
-                templateUri = TemplateUri;
-                if (string.IsNullOrEmpty(TemplateParameterUri))
-                {
-                    dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                        TemplateUri,
-                        TemplateParameterObject,
-                        this.ResolvePath(TemplateParameterFile),
-                        MyInvocation.MyCommand.Parameters.Keys.ToArray());
-                }
-                else
-                {
-                    dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                        TemplateUri,
-                        TemplateParameterObject,
-                        TemplateParameterUri,
-                        MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                    templateUri = TemplateUri;
+                    if (string.IsNullOrEmpty(TemplateParameterUri))
+                    {
+                        dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
+                            TemplateUri,
+                            TemplateParameterObject,
+                            this.ResolvePath(TemplateParameterFile),
+                            MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                    }
+                    else
+                    {
+                        dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
+                            TemplateUri,
+                            TemplateParameterObject,
+                            TemplateParameterUri,
+                            MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                    }
                 }
             }
 

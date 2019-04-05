@@ -12,15 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
+using System.Linq;
 using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
-using Microsoft.Azure.Management.FrontDoor;
-using System.Linq;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
@@ -52,8 +47,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Match value.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "Match value.")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = false, HelpMessage = "Match value.")]
         public string[] MatchValue { get; set; }
 
         /// <summary>
@@ -67,19 +61,33 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Describes if this is negate condition or not. Default value is false")]
         public bool NegateCondition { get; set; }
-        
+
         public override void ExecuteCmdlet()
         {
+            ValidateArguments();
+
             var matchCondition = new PSMatchCondition
             {
-               MatchVariable = MatchVariable,
-               MatchValue = MatchValue.ToList(),
-               NegateCondition = !this.IsParameterBound(c => c.NegateCondition)? false : NegateCondition,
-               OperatorProperty = OperatorProperty,
-               Selector = Selector
+                MatchVariable = MatchVariable,
+                MatchValue = MatchValue?.ToList(),
+                NegateCondition = !this.IsParameterBound(c => c.NegateCondition) ? false : NegateCondition,
+                OperatorProperty = OperatorProperty,
+                Selector = Selector
             };
             WriteObject(matchCondition);
         }
-        
+
+        private void ValidateArguments()
+        {
+            if (OperatorProperty == PSOperatorProperty.Any && MatchValue != null)
+            {
+                throw new PSArgumentException(nameof(MatchValue));
+            }
+
+            if (OperatorProperty != PSOperatorProperty.Any && (MatchValue == null || MatchValue.Length == 0))
+            {
+                throw new PSArgumentNullException(nameof(MatchValue));
+            }
+        }
     }
 }
