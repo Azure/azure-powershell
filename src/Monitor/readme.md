@@ -1,14 +1,17 @@
-# AutoRest Configuration for Storage
+# AutoRest Configuration for Monitor
 
 > see https://aka.ms/autorest
 
 ``` yaml
 require: 
   - $(this-folder)/../readme.azure.md
-  - https://raw.githubusercontent.com/NelsonDaniel/azure-rest-api-specs/multiapi/specification/storage/resource-manager/readme.enable-multi-api.md
-  - https://raw.githubusercontent.com/NelsonDaniel/azure-rest-api-specs/multiapi/specification/storage/resource-manager/readme.md
+  - https://raw.githubusercontent.com/NelsonDaniel/azure-rest-api-specs/multiapi/specification/monitor/resource-manager/readme.enable-multi-api.md
+  - https://raw.githubusercontent.com/NelsonDaniel/azure-rest-api-specs/multiapi/specification/monitor/resource-manager/readme.md
+  - https://raw.githubusercontent.com/NelsonDaniel/azure-rest-api-specs/multiapi/specification/monitor/data-plane/readme.enable-multi-api.md
+  - https://raw.githubusercontent.com/NelsonDaniel/azure-rest-api-specs/multiapi/specification/monitor/data-plane/readme.md
 
-service-name: Storage
+service-name: Monitor
+subject-prefix: ''
 module-version: 0.0.1
 skip-model-cmdlets: true
 profile: 
