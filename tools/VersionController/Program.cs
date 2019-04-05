@@ -34,9 +34,7 @@ namespace VersionController
             var artifactsDirectory = Directory.GetParent(versionControllerDirectory).FullName;
 
              _rootDirectory = Directory.GetParent(artifactsDirectory).FullName;
-
             _projectDirectories = new List<string>{ Path.Combine(_rootDirectory, @"src\") }.Where((d) => Directory.Exists(d)).ToList();
-
             _outputDirectories = new List<string>{ Path.Combine(_rootDirectory, @"artifacts\Debug\") }.Where((d) => Directory.Exists(d)).ToList();
 
             var exceptionsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Exceptions");
