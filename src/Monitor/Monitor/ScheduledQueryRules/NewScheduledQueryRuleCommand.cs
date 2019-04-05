@@ -56,6 +56,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         //     Region where alert is to be created
         [Parameter(Mandatory = true, HelpMessage = "The location for this alert")]
         [ValidateNotNullOrEmpty]
+        [LocationCompleter("Microsoft.Batch/operations")]
         public string Location { get; set; }
 
         //
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         //     Alert name
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The alert name")]
         [ResourceNameCompleter("Microsoft.insights/scheduledqueryrules", nameof(ResourceGroupName))]
-        public string RuleName { get; set; }
+        public string Name { get; set; }
 
         //
         // Summary:
@@ -107,13 +108,13 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
                     action:alertingAction, tags: Tag, description: Description, enabled: Enabled);
 
                 parameters.Validate();
-                if (this.ShouldProcess(this.RuleName,
-                    string.Format("Creating Log Alert Rule '{0}' in resource group {0}", this.RuleName,
+                if (this.ShouldProcess(this.Name,
+                    string.Format("Creating Log Alert Rule '{0}' in resource group {0}", this.Name,
                     this.ResourceGroupName)))
                 {
 
                     var result = this.MonitorManagementClient.ScheduledQueryRules
-                    .CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: ResourceGroupName, ruleName: RuleName,
+                    .CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: ResourceGroupName, ruleName: Name,
                         parameters: parameters).Result;
 
                     WriteObject(new PSScheduledQueryRuleResource(result.Body));

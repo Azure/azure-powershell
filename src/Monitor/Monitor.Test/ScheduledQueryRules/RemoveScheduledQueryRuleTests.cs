@@ -78,13 +78,13 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
         public void RemoveScheduledQueryRuleCommandParametersProcessing()
         {
             cmdlet.ResourceGroupName = Utilities.ResourceGroup;
-            cmdlet.RuleName = "alert1";
+            cmdlet.Name = "alert1";
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(Utilities.ResourceGroup, this.resourceGroup);
             Assert.Equal("alert1", this.ruleName);
 
-            cmdlet.RuleName = null;
+            cmdlet.Name = null;
             cmdlet.ResourceGroupName = null;
 
             Source source = new Source();
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
             Assert.Equal(Utilities.ResourceGroup, this.resourceGroup);
             Assert.Equal("alert2", this.ruleName);
 
-            cmdlet.RuleName = null;
+            cmdlet.Name = null;
             cmdlet.ResourceGroupName = null;
             cmdlet.InputObject = null;
             cmdlet.ResourceId = "/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/scheduledqueryrules/alert3";

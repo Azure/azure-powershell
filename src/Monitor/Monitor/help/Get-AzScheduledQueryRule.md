@@ -20,7 +20,7 @@ Get-AzScheduledQueryRule [-ResourceGroupName <String>] [-DefaultProfile <IAzureC
 
 ### ByRuleName
 ```
-Get-AzScheduledQueryRule -ResourceGroupName <String> -RuleName <String>
+Get-AzScheduledQueryRule -ResourceGroupName <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ Parameter Set: BySubscriptionOrResourceGroup
         PS C:\> Get-AzScheduledQueryRule -ResourceGroupName "Rac46PostSwapRG"
 
       Parameter Set: ByRuleName
-        PS C:\> Get-AzScheduledQueryRule -ResourceGroupName "Rac46PostSwapRG" -RuleName "logalertfoo"
+        PS C:\> Get-AzScheduledQueryRule -ResourceGroupName "Rac46PostSwapRG" -Name "logalertfoo"
 
       Parameter Set: ByResourceId
         PS C:\> Get-AzScheduledQueryRule -ResourceId "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/microsoft.insights/scheduledQueryRules/logalertfoo"
@@ -105,7 +105,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuleName
+### -Name
 The alert rule name
 
 ```yaml

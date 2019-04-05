@@ -14,7 +14,7 @@ Removes a Log Alert Rule
 
 ### ByRuleName (Default)
 ```
-Remove-AzScheduledQueryRule -RuleName <String> -ResourceGroupName <String> [-PassThru]
+Remove-AzScheduledQueryRule -Name <String> -ResourceGroupName <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -38,7 +38,7 @@ Removes a Log Alert Rule
 ### Example 1
 ```powershell
 Parameter Set: ByRuleName
-PS C:\> Remove-AzScheduledQueryRule -ResourceGroupName "Rac46PostSwapRG" -RuleName "logalertfoo"
+PS C:\> Remove-AzScheduledQueryRule -ResourceGroupName "Rac46PostSwapRG" -Name "logalertfoo"
 
 Parameter Set: ByInputObject
 PS C:\> Remove-AzScheduledQueryRule -InputObject $PSScheduledQueryRuleResource
@@ -125,7 +125,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RuleName
+### -Name
 The alert name
 
 ```yaml

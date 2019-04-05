@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         [Parameter(Mandatory = true, ParameterSetName = ByRuleName, HelpMessage = "The alert rule name")]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.insights/scheduledqueryrules", nameof(ResourceGroupName))]
-        public string RuleName { get; set; }
+        public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ByResourceId, HelpMessage = "The resource Id")]
+        [Parameter(Mandatory = true, ParameterSetName = ByResourceId, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -60,13 +60,13 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
                 {
                     var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                     this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                    this.RuleName = resourceIdentifier.ResourceName;
+                    this.Name = resourceIdentifier.ResourceName;
                 }
 
-                if (!string.IsNullOrEmpty(this.RuleName))
+                if (!string.IsNullOrEmpty(this.Name))
                 {
                     var result = new PSScheduledQueryRuleResource(this.MonitorManagementClient.ScheduledQueryRules
-                        .GetWithHttpMessagesAsync(this.ResourceGroupName, this.RuleName).Result.Body);
+                        .GetWithHttpMessagesAsync(this.ResourceGroupName, this.Name).Result.Body);
                     WriteObject(result);
                 }
                 else if (!string.IsNullOrEmpty(this.ResourceGroupName))

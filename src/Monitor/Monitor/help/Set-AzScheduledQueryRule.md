@@ -15,7 +15,7 @@ Updates a Log Alert Rule
 ### ByRuleName (Default)
 ```
 Set-AzScheduledQueryRule -Source <PSScheduledQueryRuleSource> [-Schedule <PSScheduledQueryRuleSchedule>]
- -Action <PSScheduledQueryRuleAlertingAction> -Location <String> [-Description <String>] -RuleName <String>
+ -Action <PSScheduledQueryRuleAlertingAction> -Location <String> [-Description <String>] -Name <String>
  -ResourceGroupName <String> [-Tags <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
  [-Enabled <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -47,7 +47,7 @@ Updates a Log Alert Rule by PUT semantics
 ### Example 1
 ```powershell
 Parameter Set: ByRuleName
-PS C:\> Set-AzScheduledQueryRule -ResourceGroupName "Rac46PostSwapRG" -RuleName "logalertfoo" -Enabled "true" -Location "eastus" -Action $alertingAction -Description "log alert foo" -Schedule $schedule -Source $source
+PS C:\> Set-AzScheduledQueryRule -ResourceGroupName "Rac46PostSwapRG" -Name "logalertfoo" -Enabled "true" -Location "eastus" -Action $alertingAction -Description "log alert foo" -Schedule $schedule -Source $source
 
 Parameter Set: ByInputObject
 PS C:\> Set-AzScheduledQueryRule -InputObject $PSScheduledQueryRuleResource -Enabled "true" -Location "eastus" -Action $alertingAction -Description "log alert foo" -Schedule $schedule -Source $source
@@ -218,7 +218,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RuleName
+### -Name
 The alert name
 
 ```yaml

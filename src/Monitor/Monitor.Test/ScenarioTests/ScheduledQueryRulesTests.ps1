@@ -103,21 +103,21 @@ function Test-NewGetUpdateSetRemoveScheduledQueryRule
 
 		$source = New-AzScheduledQueryRuleSource -Query $query -DataSourceId $dataSourceId -AuthorizedResource $authorizedResources -QueryType $queryType
 
-		$scheduledQueryRule = New-AzScheduledQueryRule -Location $location -RuleName $ruleName -ResourceGroupName $resourceGroupName -Action $alertingAction -Source $source -Enabled $enabled -Description $description -Schedule $schedule -Tag $tags
+		$scheduledQueryRule = New-AzScheduledQueryRule -Location $location -Name $ruleName -ResourceGroupName $resourceGroupName -Action $alertingAction -Source $source -Enabled $enabled -Description $description -Schedule $schedule -Tag $tags
 
         Verify-ScheduledQueryRule $scheduledQueryRule
 				
-		Write-Verbose " ****** Getting the Scheduled Query Rule by name"
-		$retrieved = Get-AzScheduledQueryRule -ResourceGroup $resourceGroupName -RuleName $ruleName
+		Write-Debug " ****** Getting the Scheduled Query Rule by name"
+		$retrieved = Get-AzScheduledQueryRule -ResourceGroup $resourceGroupName -Name $ruleName
 		Assert-NotNull $retrieved
 		Assert-AreEqual 1 $retrieved.Length
 		Verify-ScheduledQueryRule $retrieved[0]
 		
-		Write-Verbose " ****** Getting the Scheduled Query Rule by subscriptionId"
+		Write-Debug " ****** Getting the Scheduled Query Rule by subscriptionId"
 		$retrieved = Get-AzScheduledQueryRule
 		Assert-NotNull $retrieved
 		
-		Write-Verbose " ****** Getting the Scheduled Query Rule by resource group"
+		Write-Debug " ****** Getting the Scheduled Query Rule by resource group"
 		$retrieved = Get-AzScheduledQueryRule -ResourceGroupName $resourceGroupName
 		Assert-NotNull $retrieved
 		Assert-AreEqual 1 $retrieved.Length
@@ -126,44 +126,44 @@ function Test-NewGetUpdateSetRemoveScheduledQueryRule
 
 		# testing Set-* cmdlet with same parameters as they were setup, as it is similar to New-*
 
-		Write-Verbose " ****** Updating Scheduled Query Rule by name (PUT semantics)"
-		$updated = Set-AzScheduledQueryRule -Location $location -RuleName $ruleName -ResourceGroupName $resourceGroupName -Action $alertingAction -Source $source -Enabled "true" -Description $description -Schedule $schedule -Tag $tags
+		Write-Debug " ****** Updating Scheduled Query Rule by name (PUT semantics)"
+		$updated = Set-AzScheduledQueryRule -Location $location -Name $ruleName -ResourceGroupName $resourceGroupName -Action $alertingAction -Source $source -Enabled "true" -Description $description -Schedule $schedule -Tag $tags
 		Verify-ScheduledQueryRule $scheduledQueryRule
 
-		Write-Verbose " ****** Updating Scheduled Query Rule by resource Id (PUT semantics)"
+		Write-Debug " ****** Updating Scheduled Query Rule by resource Id (PUT semantics)"
 		$updated = Set-AzScheduledQueryRule -ResourceId $scheduledQueryRule.Id -Location $location -Action $alertingAction -Source $source -Enabled "true" -Description $description -Schedule $schedule -Tag $tags
 		Verify-ScheduledQueryRule $scheduledQueryRule
 
-		Write-Verbose " ****** Updating Scheduled Query Rule by InputObject (PUT semantics)"
+		Write-Debug " ****** Updating Scheduled Query Rule by InputObject (PUT semantics)"
 		$updated = Set-AzScheduledQueryRule -InputObject $scheduledQueryRule -Location $location -Action $alertingAction -Source $source -Enabled "true" -Description $description -Schedule $schedule -Tag $tags
 		Verify-ScheduledQueryRule $scheduledQueryRule
 
-		Write-Verbose " ****** Updating Scheduled Query Rule by name (PATCH semantics)"
-		$updated = Update-AzScheduledQueryRule -ResourceGroupName $resourceGroupName -RuleName $ruleName -Enabled "false"
+		Write-Debug " ****** Updating Scheduled Query Rule by name (PATCH semantics)"
+		$updated = Update-AzScheduledQueryRule -ResourceGroupName $resourceGroupName -Name $ruleName -Enabled "false"
 		Verify-ScheduledQueryRule $updated
 		Assert-AreEqual $updated.Enabled "false"
 
-		Write-Verbose " ****** Updating Scheduled Query Rule by resource Id (PATCH semantics)"
+		Write-Debug " ****** Updating Scheduled Query Rule by resource Id (PATCH semantics)"
 		$updated = Update-AzScheduledQueryRule -ResourceId $scheduledQueryRule.Id -Enabled "false"
 		Verify-ScheduledQueryRule $updated
 		Assert-AreEqual $updated.Enabled "false"
 
-		Write-Verbose " ****** Updating Scheduled Query Rule by InputObject (PATCH semantics)"
+		Write-Debug " ****** Updating Scheduled Query Rule by InputObject (PATCH semantics)"
 		$updated = Update-AzScheduledQueryRule -InputObject $scheduledQueryRule -Enabled "false"
 		Verify-ScheduledQueryRule $updated
 		Assert-AreEqual $updated.Enabled "false"
 
-		Write-Verbose " ****** Removing Scheduled Query Rule by name"
-		Remove-AzScheduledQueryRule -ResourceGroup $resourceGroupName -RuleName $ruleName
+		Write-Debug " ****** Removing Scheduled Query Rule by name"
+		Remove-AzScheduledQueryRule -ResourceGroup $resourceGroupName -Name $ruleName
 
-		Write-Verbose " ****** Removing Scheduled Query Rule by resource Id"
+		Write-Debug " ****** Removing Scheduled Query Rule by resource Id"
 		Remove-AzScheduledQueryRule -ResourceId $scheduledQueryRule.Id
 
-		Write-Verbose " ****** Removing Scheduled Query Rule by InputObject"
+		Write-Debug " ****** Removing Scheduled Query Rule by InputObject"
 		Remove-AzScheduledQueryRule -InputObject $scheduledQueryRule
 
 		#call get again to make sure rule got deleted
-		$retrieved = Get-AzScheduledQueryRule -ResourceGroup $resourceGroupName -RuleName $ruleName
+		$retrieved = Get-AzScheduledQueryRule -ResourceGroup $resourceGroupName -Name $ruleName
         Assert-Null $retrieved
 		
 
@@ -196,21 +196,21 @@ function Test-PipingRemoveSetUpdateScheduledQueryRule
 
 		$source = New-AzScheduledQueryRuleSource -Query $query -DataSourceId $dataSourceId -AuthorizedResources $authorizedResources -QueryType $queryType
 
-		$scheduledQueryRule = New-AzScheduledQueryRule -Location $location -RuleName $ruleName -ResourceGroupName $resourceGroupName -Action $alertingAction -Source $source -Enabled $enabled -Description $description -Schedule $schedule -Tag $tags
+		$scheduledQueryRule = New-AzScheduledQueryRule -Location $location -Name $ruleName -ResourceGroupName $resourceGroupName -Action $alertingAction -Source $source -Enabled $enabled -Description $description -Schedule $schedule -Tag $tags
 
         Verify-ScheduledQueryRule $scheduledQueryRule
         $resourceId = $scheduledQueryRule.Id
 
-		Write-Verbose " ****** Updating Scheduled Query Rule by name"
-		$retrieved = Get-AzScheduledQueryRule -ResourceGroup $resourceGroupName -RuleName $ruleName | Update-AzScheduledQueryRule -Enabled "false"
+		Write-Debug " ****** Updating Scheduled Query Rule by name"
+		$retrieved = Get-AzScheduledQueryRule -ResourceGroup $resourceGroupName -Name $ruleName | Update-AzScheduledQueryRule -Enabled "false"
 
 		Verify-ScheduledQueryRule $retrieved
 		Assert-AreEqual $retrieved.Enabled "false"
 
-		$retrieved = Get-AzScheduledQueryRule -ResourceGroup $resourceGroupName -RuleName $ruleName | Set-AzScheduledQueryRule
+		$retrieved = Get-AzScheduledQueryRule -ResourceGroup $resourceGroupName -Name $ruleName | Set-AzScheduledQueryRule
 		Verify-ScheduledQueryRule $retrieved
 		
-		Write-Verbose " ****** Updating Scheduled Query Rule by Resource Id"
+		Write-Debug " ****** Updating Scheduled Query Rule by Resource Id"
 		$retrieved = Get-AzScheduledQueryRule -ResourceId $resourceId | Update-AzScheduledQueryRule -Enabled "true"
 		Assert-AreEqual $retrieved.Enabled "true"
 		Verify-ScheduledQueryRule $retrieved
@@ -218,20 +218,20 @@ function Test-PipingRemoveSetUpdateScheduledQueryRule
         $retrieved = Get-AzScheduledQueryRule -ResourceId $resourceId | Set-AzScheduledQueryRule
 		Verify-ScheduledQueryRule $retrieved
 
-		Write-Verbose " ****** Removing Scheduled Query Rule by name"
-		$retrieved = Get-AzScheduledQueryRule -ResourceGroup $resourceGroupName -RuleName $ruleName | Remove-AzScheduledQueryRule
+		Write-Debug " ****** Removing Scheduled Query Rule by name"
+		$retrieved = Get-AzScheduledQueryRule -ResourceGroup $resourceGroupName -Name $ruleName | Remove-AzScheduledQueryRule
 		Verify-ScheduledQueryRule $retrieved
 		
-		Write-Verbose " ****** Removing Scheduled Query Rule by Resource Id"
+		Write-Debug " ****** Removing Scheduled Query Rule by Resource Id"
 		$retrieved = Get-AzScheduledQueryRule -ResourceId $resourceId | Remove-AzScheduledQueryRule
 		Assert-Null $retrieved
 
-		Write-Verbose " ****** Removing Scheduled Query Rules in ResourceGroup"
+		Write-Debug " ****** Removing Scheduled Query Rules in ResourceGroup"
 		$retrieved = Get-AzScheduledQueryRule -ResourceGroupName $resourceGroupName | Remove-AzScheduledQueryRule
 		Assert-Null $retrieved
 
 		#commenting for now to prevent deleting all alert rules in the subscription
-		#Write-Verbose " ****** Removing Scheduled Query Rules in the current subscription"
+		#Write-Debug " ****** Removing Scheduled Query Rules in the current subscription"
 		#Get-AzScheduledQueryRule | Remove-AzScheduledQueryRule
 		
 	}
