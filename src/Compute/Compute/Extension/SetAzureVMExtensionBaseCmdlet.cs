@@ -75,5 +75,8 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Force re-run even if extension configuration has not changed")]
         [ValidateNotNullOrEmpty]
         public string ForceRerun { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
+        public SwitchParameter NoWait { get; set; }
     }
 }
