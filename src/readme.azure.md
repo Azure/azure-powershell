@@ -3,7 +3,7 @@
 > Language
 ``` yaml
 use:
-- "@microsoft.azure/autorest.powershell@1.0.323"
+- "@microsoft.azure/autorest.powershell@beta"
 
 
 ```
