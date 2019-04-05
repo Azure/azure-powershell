@@ -143,7 +143,7 @@
     <MakeDir Directories="$(PackageDirectory)" />
 
     <!-- Copy appropriate targets -->
-    <Copy SourceFiles="$(RepoBuild)after.Azure.PowerShell.sln.targets" DestinationFolder="$(RepoArtifacts)" />
+    <Copy SourceFiles="$(RepoTools)after.Azure.PowerShell.sln.targets" DestinationFolder="$(RepoArtifacts)" />
 
     <!-- Build and create package content -->
     <Exec Command="dotnet --version" />

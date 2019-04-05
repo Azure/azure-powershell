@@ -6,7 +6,6 @@
     <RepoSrc>$(RepoRoot)src/</RepoSrc>
     <RepoArtifacts>$(RepoRoot)artifacts/</RepoArtifacts>
     <RepoTools>$(RepoRoot)tools/</RepoTools>
-    <RepoBuild>$(RepoRoot)build/</RepoBuild>
   </PropertyGroup>
 
 </Project>
