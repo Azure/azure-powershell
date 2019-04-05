@@ -1,7 +1,10 @@
+parameters:
+  artifactName: ''
+
 steps:
-- task: PublishBuildArtifacts@1
-  displayName: 'Save artifacts'
+- task: PublishPipelineArtifact@0
+  displayName: 'Save ${{ parameters.artifactName }}'
   inputs:
-    artifactName: artifacts
-    pathtoPublish: artifacts
+    artifactName: ${{ parameters.artifactName }}
+    targetPath: artifacts
   condition: succeededOrFailed()
