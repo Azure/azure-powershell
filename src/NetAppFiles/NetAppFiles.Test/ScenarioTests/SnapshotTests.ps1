@@ -30,7 +30,7 @@ function Test-SnapshotCrud
     $gibibyte = 1024 * 1024 * 1024
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
-    $resourceLocation = "eastus"
+    $resourceLocation = "westus2"
     $subnetName = "default"
     $standardPoolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -84,9 +84,8 @@ function Test-SnapshotCrud
         # no update/set (patch/put) possible for snapshot
 
         # delete one snapshot retrieved by id and one by name and check removed
-        # temporary fix. Deletion returns 200 until upcoming swagger change
-        Assert-ThrowsContains -script { Remove-AzNetAppFilesSnapshot -ResourceId $retrievedSnapshotById.Id } -message "invalid status code 'OK'"
-        Assert-ThrowsContains -script { Remove-AzNetAppFilesSnapshot -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotName $snName2 } -message "invalid status code 'OK'"
+        Remove-AzNetAppFilesSnapshot -ResourceId $retrievedSnapshotById.Id
+        Remove-AzNetAppFilesSnapshot -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName -SnapshotName $snName2
         $retrievedSnapshot = Get-AzNetAppFilesSnapshot -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName
         Assert-AreEqual 0 $retrievedSnapshot.Length
     }
