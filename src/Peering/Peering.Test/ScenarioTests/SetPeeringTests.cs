@@ -38,19 +38,19 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests.ScenarioTests
             TestController.NewInstance.RunPowerShellTest(this._logger, "Test-GetAndSetUseForPeeringService");
         }
 
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void TestSetNewIP()
-        //{
-        //    TestController.NewInstance.RunPowerShellTest(this._logger, "Test-SetNewIP");
-        //}
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetNewIP()
+        {
+            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-SetNewIP");
+        }
 
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void TestSetNewIPv6()
-        //{
-        //    TestController.NewInstance.RunPowerShellTest(this._logger, "Test-SetNewIPv6");
-        //}
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetNewIPv6()
+        {
+            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-SetNewIPv6");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

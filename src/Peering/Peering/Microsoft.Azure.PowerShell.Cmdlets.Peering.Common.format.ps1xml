@@ -928,15 +928,15 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
                 <ItemSelectionCondition>
                   <ScriptBlock>$_.Direct -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
-                <Label>PeerAsn</Label>
-                <ScriptBlock>$_.Direct.PeerAsn</ScriptBlock>
+                <Label>PeerAsn.Id</Label>
+                <ScriptBlock>$_.Direct.PeerAsn.Id</ScriptBlock>
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
                   <ScriptBlock>$_.Exchange -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
-                <Label>PeerAsn</Label>
-                <ScriptBlock>$_.Exchange.PeerAsn</ScriptBlock>
+                <Label>PeerAsn.Id</Label>
+                <ScriptBlock>$_.Exchange.PeerAsn.Id</ScriptBlock>
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>

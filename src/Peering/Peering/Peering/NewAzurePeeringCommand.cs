@@ -52,47 +52,47 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public PSPeering LegacyPeering { get; set; }
 
         /// <summary>
-        /// Gets or sets The InputObject NameMD5AuthenticationKeyHelp
-        /// </summary>
-        [Parameter(
-            Position = Constants.PositionPeeringZero,
-            Mandatory = true,
-            HelpMessage = Constants.PeeringNameHelp,
-            ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering)]
-        [Parameter(
-            Position = Constants.PositionPeeringZero,
-            Mandatory = true,
-            HelpMessage = Constants.PeeringNameHelp,
-            ParameterSetName = Constants.Exchange)]
-        [Parameter(
-            Position = Constants.PositionPeeringZero,
-            Mandatory = true,
-            HelpMessage = Constants.PeeringNameHelp,
-            ParameterSetName = Constants.Direct)]
-        [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
-
-        /// <summary>
         /// Gets or sets The Resource Group Name
         /// </summary>
         [Parameter(
-            Position = Constants.PositionPeeringOne,
+            Position = Constants.PositionPeeringZero,
             Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
             ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering)]
         [Parameter(
-            Position = Constants.PositionPeeringOne,
+            Position = Constants.PositionPeeringZero,
             Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
             ParameterSetName = Constants.Exchange)]
         [Parameter(
-            Position = Constants.PositionPeeringOne,
+            Position = Constants.PositionPeeringZero,
             Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
             ParameterSetName = Constants.Direct)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets The InputObject NameMD5AuthenticationKeyHelp
+        /// </summary>
+        [Parameter(
+            Position = Constants.PositionPeeringOne,
+            Mandatory = true,
+            HelpMessage = Constants.PeeringNameHelp,
+            ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering)]
+        [Parameter(
+            Position = Constants.PositionPeeringOne,
+            Mandatory = true,
+            HelpMessage = Constants.PeeringNameHelp,
+            ParameterSetName = Constants.Exchange)]
+        [Parameter(
+            Position = Constants.PositionPeeringOne,
+            Mandatory = true,
+            HelpMessage = Constants.PeeringNameHelp,
+            ParameterSetName = Constants.Direct)]
+        [ValidateNotNullOrEmpty]
+        public virtual string Name { get; set; }
 
         /// <summary>
         /// Gets or sets The InputObject Location.

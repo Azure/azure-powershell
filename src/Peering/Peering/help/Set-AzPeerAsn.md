@@ -12,16 +12,9 @@ Update Contact Information
 
 ## SYNTAX
 
-### ParameterSetNameUpdateContact (Default)
 ```
-Set-AzPeerAsn [-InputObject] <PSPeerAsn> -Email <String[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ParameterSetNameUpdatePhone
-```
-Set-AzPeerAsn [-InputObject] <PSPeerAsn> -Phone <String[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzPeerAsn [-InputObject] <PSPeerAsn> [-Email <String[]>] [-Phone <String[]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,10 +67,10 @@ Email
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ParameterSetNameUpdateContact
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -104,10 +97,10 @@ Phone
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ParameterSetNameUpdatePhone
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

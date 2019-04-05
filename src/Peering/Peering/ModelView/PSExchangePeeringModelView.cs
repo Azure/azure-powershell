@@ -45,6 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
             this.Name = peering.Name;
             this.Id = peering.Id;
             this.Type = peering.Type;
+            this.Direct = null;
         }
 
         /// <summary>
