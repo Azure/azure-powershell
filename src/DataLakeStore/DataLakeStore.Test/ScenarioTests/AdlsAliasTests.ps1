@@ -701,17 +701,16 @@ function Test-DataLakeStoreFileSystem
 		Assert-AreEqual $result.FileCount 1
 
 		# Export DiskUsage
-		$targetFile = "/DuOutputFile"
-		Export-AdlStoreChildItemProperties -Account $accountName -Path $summaryFolder -OutputPath $targetFile -GetDiskUsage -IncludeFile -SaveToAdl
-		$result = Get-AzDataLakeStoreItem -Account $accountName -path $targetFile
+		$targetFile = ".\ScenarioTests\DuOutput"
+		Export-AdlStoreChildItemProperties -Account $accountName -Path $summaryFolder -OutputPath $targetFile -GetDiskUsage -IncludeFile
+		$result = Get-Item -Path $targetFile
 		Assert-NotNull $result "No file was created on export properties"
+        Remove-Item -Path $targetFile
 
 		# delete a file
 		Assert-True {Remove-AdlStoreItem -Account $accountName -paths "$moveFolder/movefile.txt" -force -passthru } "Remove File Failed"
 		Assert-Throws {Get-AdlStoreItem -Account $accountName -path $moveFile}
-		Assert-True {Remove-AdlStoreItem -Account $accountName -paths $targetFile -force -passthru } "Remove File Failed"
-		Assert-Throws {Get-AdlStoreItem -Account $accountName -path $targetFile}
-		
+
 		# delete a folder
 		Assert-True {Remove-AdlStoreItem -Account $accountName -paths $moveFolder -force -recurse -passthru} "Remove folder failed"
 		Assert-Throws {Get-AdlStoreItem -Account $accountName -path $moveFolder}
