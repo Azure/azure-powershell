@@ -14,7 +14,7 @@ Updates a Log Alert rule
 
 ### ByRuleName (Default)
 ```
-Update-AzScheduledQueryRule -RuleName <String> -ResourceGroupName <String> -Enabled <String>
+Update-AzScheduledQueryRule -Name <String> -ResourceGroupName <String> -Enabled <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -39,7 +39,7 @@ To update other properties, see "Set-AzScheduledQueryRule" command.
 ### Example 1
 ```powershell
 Parameter Set: ByRuleName
-PS C:\> Update-AzScheduledQueryRule -ResourceGroupName "Rac46PostSwapRG" -RuleName "logalertfoo" -Enabled "false"
+PS C:\> Update-AzScheduledQueryRule -ResourceGroupName "Rac46PostSwapRG" -Name "logalertfoo" -Enabled "false"
 
 Parameter Set: ByInputObject
 PS C:\> Update-AzScheduledQueryRule -InputObject $PSScheduledQueryRuleResource -Enabled "false"
@@ -126,7 +126,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RuleName
+### -Name
 The alert name
 
 ```yaml

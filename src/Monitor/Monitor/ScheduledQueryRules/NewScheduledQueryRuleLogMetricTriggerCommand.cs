@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 {
@@ -31,6 +32,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         [Parameter(Mandatory = true, HelpMessage = "The metric threshold operator : GreaterThan, LessThan, Equal")]
         [ValidateNotNullOrEmpty]
         [ValidateSet("GreaterThan", "LessThan", "Equal")]
+        [PSArgumentCompleter("GreaterThan", "LessThan", "Equal")]
         public string ThresholdOperator { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The metric threshold value")]
@@ -39,6 +41,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         [Parameter(Mandatory = true, HelpMessage = "The metric trigger type")]
         [ValidateNotNullOrEmpty]
         [ValidateSet("Consecutive", "Total")]
+        [PSArgumentCompleter("Consecutive", "Total")]
         public string MetricTriggerType { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Column on which metric value is being aggregated")]

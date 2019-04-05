@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
             HelpMessage = "The alert name")]
         [ResourceNameCompleter("Microsoft.insights/scheduledqueryrules", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
-        public string RuleName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// The resource group name
@@ -93,20 +93,20 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
             {
                 resourceIdentifier = new ResourceIdentifier(InputObject.Id);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.RuleName = resourceIdentifier.ResourceName;
+                this.Name = resourceIdentifier.ResourceName;
 
             }
             else if (this.IsParameterBound(c => c.ResourceId) || !string.IsNullOrWhiteSpace(this.ResourceId))
             {
                 resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.RuleName = resourceIdentifier.ResourceName;
+                this.Name = resourceIdentifier.ResourceName;
             }
 
             try
             {
                 resource = new ScheduledQueryRuleResource(
-                    this.MonitorManagementClient.ScheduledQueryRules.GetWithHttpMessagesAsync(this.ResourceGroupName, this.RuleName).Result.Body);
+                    this.MonitorManagementClient.ScheduledQueryRules.GetWithHttpMessagesAsync(this.ResourceGroupName, this.Name).Result.Body);
             }
             catch (Exception ex)
             {
@@ -116,15 +116,15 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
             // Update of only Enabled field is supported
             LogSearchRuleResourcePatch parameters = new LogSearchRuleResourcePatch(resource.Tags, this.Enabled);
 
-            if (ShouldProcess(this.RuleName,
-                string.Format("Updating Log Alert Rule '{0}' in resource group '{1}'.", this.RuleName,
+            if (ShouldProcess(this.Name,
+                string.Format("Updating Log Alert Rule '{0}' in resource group '{1}'.", this.Name,
                     this.ResourceGroupName)))
             {
                 try
                 {
                     WriteObject(new PSScheduledQueryRuleResource(
                         this.MonitorManagementClient.ScheduledQueryRules.UpdateWithHttpMessagesAsync(this.ResourceGroupName,
-                            this.RuleName,
+                            this.Name,
                             parameters).Result.Body));
                 }
                 catch (Exception ex)

@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
         {
             //testing update of description field
             
-            cmdlet.RuleName = "LogSearchAlertName";
+            cmdlet.Name = "LogSearchAlertName";
             cmdlet.ResourceGroupName = Utilities.ResourceGroup;
             cmdlet.Location = Location;
 

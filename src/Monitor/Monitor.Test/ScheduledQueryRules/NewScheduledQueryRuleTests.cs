@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
         
         public void NewScheduledQueryRuleCommandParametersProcessing()
         {
-            cmdlet.RuleName = "LogSearchAlertName";
+            cmdlet.Name = "LogSearchAlertName";
             cmdlet.ResourceGroupName = Utilities.ResourceGroup;
             cmdlet.Location = Location;
             cmdlet.Description = "A Log Search Alert";

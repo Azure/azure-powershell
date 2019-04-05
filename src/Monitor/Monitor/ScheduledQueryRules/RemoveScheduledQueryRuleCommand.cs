@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         [Parameter(ParameterSetName = ByRuleName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The alert name")]
         [ResourceNameCompleter("Microsoft.insights/scheduledqueryrules", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
-        public string RuleName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// The resource group name
@@ -75,23 +75,23 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
             {
                 var resourceIdentifier = new ResourceIdentifier(InputObject.Id);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.RuleName = this.InputObject.Name;
+                this.Name = this.InputObject.Name;
             }
             else if (this.IsParameterBound(c => c.ResourceId) || !string.IsNullOrWhiteSpace(this.ResourceId))
             {
                 var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.RuleName = resourceIdentifier.ResourceName;
+                this.Name = resourceIdentifier.ResourceName;
             }
 
-            if (this.ShouldProcess(this.RuleName,
-                string.Format("Deleting Log Alert Rule '{0}' in resource group {0}", this.RuleName,
+            if (this.ShouldProcess(this.Name,
+                string.Format("Deleting Log Alert Rule '{0}' in resource group {0}", this.Name,
                     this.ResourceGroupName)))
             {
                 try
                 {
                     this.MonitorManagementClient.ScheduledQueryRules.DeleteWithHttpMessagesAsync(this.ResourceGroupName,
-                        this.RuleName);
+                        this.Name);
                     if (PassThru.IsPresent)
                     {
                         WriteObject(true);

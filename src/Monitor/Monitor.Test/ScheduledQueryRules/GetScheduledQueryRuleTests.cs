@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
             Assert.Null(this.ruleName);
             
             // Get by name
-            cmdlet.RuleName = Utilities.Name;
+            cmdlet.Name = Utilities.Name;
             cmdlet.ResourceGroupName = Utilities.ResourceGroup;
             cmdlet.ExecuteCmdlet();
 

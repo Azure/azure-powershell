@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
         {
             //testing update of "enabled" field
 
-            cmdlet.RuleName = "LogSearchAlertName";
+            cmdlet.Name = "LogSearchAlertName";
             cmdlet.ResourceGroupName = Utilities.ResourceGroup;
 
             cmdlet.Enabled = "false";
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
 
             Assert.Null(this.updatePrms.Id);
 
-            cmdlet.RuleName = null;
+            cmdlet.Name = null;
             cmdlet.ResourceGroupName = null;
 
             ScheduledQueryRuleResource sqrResource= new ScheduledQueryRuleResource();

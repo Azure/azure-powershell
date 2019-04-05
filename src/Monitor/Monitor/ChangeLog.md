@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 1.0.2
 * New cmdlets for SQR API (Scheduled Query Rule)  
     - New-AzScheduledQueryRuleAlertingAction
 	- New-AzScheduledQueryRuleAznsActionGroup

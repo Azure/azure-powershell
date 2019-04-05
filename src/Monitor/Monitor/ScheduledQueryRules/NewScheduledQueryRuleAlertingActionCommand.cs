@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 {
@@ -33,10 +34,12 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         public PSScheduledQueryRuleAznsAction AznsAction { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The severity for this alert")]
+        [ValidateSet("0", "1", "2", "3", "4")]
+        [PSArgumentCompleter("0", "1", "2", "3", "4")]
         public string Severity { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The duration in minutes for which alert should be throttled")]
-        public int? ThrottlingInMin { get; set; }
+        public int ThrottlingInMin { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The alert trigger condition")]
         [ValidateNotNullOrEmpty]

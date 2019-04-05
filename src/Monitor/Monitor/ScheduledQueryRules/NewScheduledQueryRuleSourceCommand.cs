@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 {
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 
         [Parameter(Mandatory = false, HelpMessage = "Type of Query - currently supported values : ResultCount")]
         [ValidateSet("ResultCount")]
+        [PSArgumentCompleter("ResultCount")]
         public string QueryType { get; set; }
 
         #endregion
