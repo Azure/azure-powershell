@@ -35,25 +35,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     public class RemoveAzurePeeringCommand : PeeringBaseCmdlet
     {
         /// <summary>
-        ///     The InputObject name.
-        /// </summary>
-        [Parameter(
-            Position = Constants.PositionPeeringZero,
-            Mandatory = true,
-            HelpMessage = Constants.PeeringNameHelp)]
-        [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
-
-        /// <summary>
         ///     The ResourceGroupName
         /// </summary>
         [Parameter(
-            Position = Constants.PositionPeeringOne,
+            Position = Constants.PositionPeeringZero,
             Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelp)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
+
+        /// <summary>
+        ///     The InputObject name.
+        /// </summary>
+        [Parameter(
+            Position = Constants.PositionPeeringOne,
+            Mandatory = true,
+            HelpMessage = Constants.PeeringNameHelp)]
+        [ValidateNotNullOrEmpty]
+        public virtual string Name { get; set; }
 
         /// <summary>
         ///     Force the execution of the command.

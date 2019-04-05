@@ -39,7 +39,7 @@ Set-AzPeeringDirectConnectionObject -InputObject <PSDirectConnection> [[-MD5Auth
 ```
 
 ## DESCRIPTION
-Used in conjunction with Set-AzPeering, this is an in memory operation and will only persist with `Set-AzPeering`. 
+Used in conjunction with Update-AzPeering, this is an in memory operation and will only persist with `Update-AzPeering`. 
 
 ## EXAMPLES
 

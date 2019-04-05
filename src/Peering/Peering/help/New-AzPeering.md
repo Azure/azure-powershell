@@ -14,21 +14,21 @@ Creates a new Peering ARM Resource
 
 ### Exchange (Default)
 ```
-New-AzPeering [-Name] <String> [-ResourceGroupName] <String> [-PeeringLocation] <String>
+New-AzPeering [-ResourceGroupName] <String> [-Name] <String> [-PeeringLocation] <String>
  [-PeerAsnResourceId] <String> -ExchangeConnection <PSExchangeConnection[]> [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParameterSetNameConvertLegacyPeering
 ```
-New-AzPeering -LegacyPeering <PSPeering> [-Name] <String> [-ResourceGroupName] <String>
+New-AzPeering -LegacyPeering <PSPeering> [-ResourceGroupName] <String> [-Name] <String>
  [-PeeringLocation] <String> [-PeerAsnResourceId] <String> [-UseForPeeringService] [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Direct
 ```
-New-AzPeering [-Name] <String> [-ResourceGroupName] <String> [-PeeringLocation] <String>
+New-AzPeering [-ResourceGroupName] <String> [-Name] <String> [-PeeringLocation] <String>
  [-PeerAsnResourceId] <String> -DirectConnection <PSDirectConnection[]> [-UseForPeeringService]
  [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -194,7 +194,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -240,7 +240,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

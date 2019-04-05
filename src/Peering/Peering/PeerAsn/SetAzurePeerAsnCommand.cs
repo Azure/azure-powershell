@@ -19,7 +19,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
 {
     using System;
     using System.Management.Automation;
-    using System.Net.Http;
 
     using Microsoft.Azure.Management.Peering;
     using Microsoft.Azure.Management.Peering.Models;
@@ -31,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     /// </summary>
     [Cmdlet(
         VerbsCommon.Set,
-        "AzPeerAsn", DefaultParameterSetName = Constants.ParameterSetNameUpdateEmail, SupportsShouldProcess = true)]
+        "AzPeerAsn", DefaultParameterSetName = Constants.ParameterSetNameDefault, SupportsShouldProcess = true)]
     [OutputType(typeof(PSPeerAsn))]
     public class SetAzurePeerAsn : PeeringBaseCmdlet
     {
@@ -43,31 +42,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = Constants.PeerAsnHelp,
-            ParameterSetName = Constants.ParameterSetNameUpdateEmail,
-            DontShow = true),
-         Parameter(
-             Position = Constants.PositionPeeringZero,
-             Mandatory = true,
-             HelpMessage = Constants.PeerAsnHelp,
-             ValueFromPipeline = true,
-             ParameterSetName = Constants.ParameterSetNameUpdatePhone,
-             DontShow = true)]
+            ParameterSetName = Constants.ParameterSetNameDefault,
+            DontShow = true)]
         public PSPeerAsn InputObject { get; set; }
 
         /// <summary>
         ///     Gets or sets the Email
         /// </summary>
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = Constants.EmailsHelp,
-            ParameterSetName = Constants.ParameterSetNameUpdateEmail)]
+            ParameterSetName = Constants.ParameterSetNameDefault)]
         [ValidateNotNullOrEmpty]
         public virtual string[] Email { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = Constants.PhoneHelp,
-            ParameterSetName = Constants.ParameterSetNameUpdatePhone)]
+            ParameterSetName = Constants.ParameterSetNameDefault)]
         [ValidateNotNullOrEmpty]
         public virtual string[] Phone { get; set; }
 
