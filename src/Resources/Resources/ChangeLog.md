@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.0
 * Improve handling of providers for `Get-AzResource` when providing `-ResourceId` or `-ResourceGroupName`, `-Name` and `-ResourceType` parameters
 * Improve error handling for for `Test-AzDeployment` and `Test-AzResourceGroupDeployment`
     - Handle errors thrown outside of deployment validation and include them in output of command instead
