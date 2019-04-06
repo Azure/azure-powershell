@@ -1,5 +1,13 @@
 # Azure PowerShell AutoRest Configuration
 
+> Language
+``` yaml
+use:
+- "@microsoft.azure/autorest.powershell@beta"
+
+
+```
+
 > Values
 ``` yaml
 azure: true
@@ -28,3 +36,4 @@ directive:
     set:
       hidden: true
 ```
+
