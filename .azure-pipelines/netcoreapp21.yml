@@ -15,25 +15,25 @@ jobs:
   condition: succeeded()
   strategy:
     matrix:
-      ${{ variables['Windows'] }}:
-        osName: ${{ variables['Windows'] }}
-        vmImage: ${{ variables['WindowsVm'] }}
-      ${{ variables['Linux'] }}:
-        osName: ${{ variables['Linux'] }}
-        vmImage: ${{ variables['LinuxVm'] }}
-      ${{ variables['MacOS'] }}:
-        osName: ${{ variables['MacOS'] }}
-        vmImage: ${{ variables['MacOSVm'] }}
+      ${{ variables.Windows }}:
+        osName: ${{ variables.Windows }}
+        imageName: ${{ variables.WindowsVm }}
+      ${{ variables.Linux }}:
+        osName: ${{ variables.Linux }}
+        imageName: ${{ variables.LinuxVm }}
+      ${{ variables.MacOS }}:
+        osName: ${{ variables.MacOS }}
+        imageName: ${{ variables.MacOSVm }}
   pool:
-    vmImage: $(vmImage)
+    vmImage: $(imageName)
 
   steps:
   - template: util/build-steps.yml
     parameters:
       osName: $(osName)
-      vmImage: ${{ variables.vmImage }}
-      testFramework: ${{ variables['TestFramework'] }}
-      configuration: ${{ variables['Configuration'] }}
+      vmImage: $(imageName)
+      testFramework: ${{ variables.TestFramework }}
+      configuration: ${{ variables.Configuration }}
 
 - job: Analyze
   displayName: Analyze
@@ -41,24 +41,24 @@ jobs:
   condition: succeeded()
   strategy:
     matrix:
-      ${{ variables['Windows'] }}:
-        osName: ${{ variables['Windows'] }}
-        vmImage: ${{ variables['WindowsVm'] }}
-      ${{ variables['Linux'] }}:
-        osName: ${{ variables['Linux'] }}
-        vmImage: ${{ variables['LinuxVm'] }}
-      ${{ variables['MacOS'] }}:
-        osName: ${{ variables['MacOS'] }}
-        vmImage: ${{ variables['MacOSVm'] }}
+      ${{ variables.Windows }}:
+        osName: ${{ variables.Windows }}
+        imageName: ${{ variables.WindowsVm }}
+      ${{ variables.Linux }}:
+        osName: ${{ variables.Linux }}
+        imageName: ${{ variables.LinuxVm }}
+      ${{ variables.MacOS }}:
+        osName: ${{ variables.MacOS }}
+        imageName: ${{ variables.MacOSVm }}
   pool:
-    vmImage: $(vmImage)
+    vmImage: $(imageName)
 
   steps:
   - template: util/analyze-steps.yml
     parameters:
       osName: $(osName)
-      vmImage: ${{ variables.vmImage }}
-      configuration: ${{ variables['Configuration'] }}
+      vmImage: $(imageName)
+      configuration: ${{ variables.Configuration }}
 
 - job: Test
   displayName: Test
@@ -67,23 +67,23 @@ jobs:
   timeoutInMinutes: 120
   strategy:
     matrix:
-      ${{ variables['Windows'] }}:
-        osName: ${{ variables['Windows'] }}
-        vmImage: ${{ variables['WindowsVm'] }}
-      ${{ variables['Linux'] }}:
-        osName: ${{ variables['Linux'] }}
-        vmImage: ${{ variables['LinuxVm'] }}
-      ${{ variables['MacOS'] }}:
-        osName: ${{ variables['MacOS'] }}
-        vmImage: ${{ variables['MacOSVm'] }}
+      ${{ variables.Windows }}:
+        osName: ${{ variables.Windows }}
+        imageName: ${{ variables.WindowsVm }}
+      ${{ variables.Linux }}:
+        osName: ${{ variables.Linux }}
+        imageName: ${{ variables.LinuxVm }}
+      ${{ variables.MacOS }}:
+        osName: ${{ variables.MacOS }}
+        imageName: ${{ variables.MacOSVm }}
   pool:
-    vmImage: $(vmImage)
+    vmImage: $(imageName)
 
   steps:
   - template: util/test-steps.yml
     parameters:
       osName: $(osName)
-      vmImage: ${{ variables.vmImage }}
-      testFramework: ${{ variables['TestFramework'] }}
-      testTarget: ${{ variables['TestTarget'] }}
-      configuration: ${{ variables['Configuration'] }}
+      vmImage: $(imageName)
+      testFramework: ${{ variables.TestFramework }}
+      testTarget: ${{ variables.TestTarget }}
+      configuration: ${{ variables.Configuration }}
