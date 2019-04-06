@@ -1,5 +1,3 @@
-name: 1.1.0
-
 variables:
   windows: windows
   windowsVm: VS2017-Win2016
@@ -11,14 +9,14 @@ jobs:
   displayName: Build
   condition: succeeded()
   pool:
-    vmImage: $(windowsVm)
+    vmImage: ${{ variables['windowsVm'] }}
 
   steps:
   - template: util/build-steps.yml
     parameters:
-      osName: $(windows)
-      vmImage: $(windowsVm)
-      testFramework: $(testFramework)
+      osName: ${{ variables['windows'] }}
+      vmImage: ${{ variables['windowsVm'] }}
+      testFramework: ${{ variables['testFramework'] }}
 
 - job: Test
   displayName: Test
@@ -26,12 +24,12 @@ jobs:
   condition: succeeded()
   timeoutInMinutes: 120
   pool:
-    vmImage: $(windowsVm)
+    vmImage: ${{ variables['windowsVm'] }}
 
   steps:
   - template: util/test-steps.yml
     parameters:
-      osName: $(windows)
-      vmImage: $(windowsVm)
-      testFramework: $(testFramework)
-      testTarget: $(testTarget)
+      osName: ${{ variables['windows'] }}
+      vmImage: ${{ variables['windowsVm'] }}
+      testFramework: ${{ variables['testFramework'] }}
+      testTarget: ${{ variables['testTarget'] }}
