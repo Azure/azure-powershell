@@ -15,13 +15,13 @@ jobs:
   condition: succeeded()
   strategy:
     matrix:
-      ${{ variables.WindowsName }}_matrix:
+      windows:
         osName: ${{ variables.WindowsName }}
         imageName: ${{ variables.WindowsImage }}
-      ${{ variables.LinuxName }}_matrix:
+      linux:
         osName: ${{ variables.LinuxName }}
         imageName: ${{ variables.LinuxImage }}
-      ${{ variables.MacOSName }}_matrix:
+      macOS:
         osName: ${{ variables.MacOSName }}
         imageName: ${{ variables.MacOSImage }}
   pool:
@@ -40,13 +40,13 @@ jobs:
   condition: succeeded()
   strategy:
     matrix:
-      ${{ variables.WindowsName }}_matrix:
+      windows:
         osName: ${{ variables.WindowsName }}
         imageName: ${{ variables.WindowsImage }}
-      ${{ variables.LinuxName }}_matrix:
+      linux:
         osName: ${{ variables.LinuxName }}
         imageName: ${{ variables.LinuxImage }}
-      ${{ variables.MacOSName }}_matrix:
+      macOS:
         osName: ${{ variables.MacOSName }}
         imageName: ${{ variables.MacOSImage }}
   pool:
@@ -65,13 +65,13 @@ jobs:
   timeoutInMinutes: 120
   strategy:
     matrix:
-      ${{ variables.WindowsName }}_matrix:
+      windows:
         osName: ${{ variables.WindowsName }}
         imageName: ${{ variables.WindowsImage }}
-      ${{ variables.LinuxName }}_matrix:
+      linux:
         osName: ${{ variables.LinuxName }}
         imageName: ${{ variables.LinuxImage }}
-      ${{ variables.MacOSName }}_matrix:
+      macOS:
         osName: ${{ variables.MacOSName }}
         imageName: ${{ variables.MacOSImage }}
   pool:
