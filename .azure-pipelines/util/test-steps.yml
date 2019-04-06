@@ -1,0 +1,25 @@
+parameters:
+  osName: ''
+  vmImage: ''
+  testFramework: ''
+  testTarget: ''
+
+steps:
+- template: download-build-steps.yml
+  parameters:
+    vmImage: ${{ parameters.osName }}
+
+- template: install-pwsh-steps.yml
+  parameters:
+    vmImage: ${{ parameters.vmImage }}
+
+- task: DotNetCoreCLI@2
+  displayName: Test
+  inputs:
+    command: custom
+    custom: msbuild
+    arguments: 'build.proj /t:${{ parameters.testTarget }} /p:Configuration=$(Configuration);TestFramework=${{ parameters.testFramework }}'
+
+- template: publish-artifacts-steps.yml
+  parameters:
+    artifactName: test-${{ parameters.osName }}

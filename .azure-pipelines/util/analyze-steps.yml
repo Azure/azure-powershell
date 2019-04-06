@@ -1,0 +1,33 @@
+parameters:
+  osName: ''
+  vmImage: ''
+
+steps:
+- template: download-build-steps.yml
+  parameters:
+    vmImage: ${{ parameters.osName }}
+
+- template: install-pwsh-steps.yml
+  parameters:
+    vmImage: ${{ parameters.vmImage }}
+
+- pwsh: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
+  displayName: 'Install platyPS'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Generate Help'
+  inputs:
+    command: custom
+    custom: msbuild
+    arguments: 'build.proj /t:GenerateHelp /p:Configuration=$(Configuration)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Static Analysis'
+  inputs:
+    command: custom
+    custom: msbuild
+    arguments: 'build.proj /t:StaticAnalysis /p:Configuration=$(Configuration)'
+
+- template: publish-artifacts-steps.yml
+  parameters:
+    artifactName: analyze-${{ parameters.osName }}
