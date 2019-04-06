@@ -1,10 +1,10 @@
 variables:
-  Windows: windows
-  WindowsVm: VS2017-Win2016
-  Linux: linux
-  LinuxVm: Ubuntu-16.04
-  MacOS: macOS
-  MacOSVm: macOS-10.13
+  WindowsName: windows
+  WindowsImage: VS2017-Win2016
+  LinuxName: linux
+  LinuxImage: Ubuntu-16.04
+  MacOSName: macOS
+  MacOSImage: macOS-10.13
   TestFramework: netcoreapp2.1
   TestTarget: Test
   Configuration: Debug
@@ -15,15 +15,15 @@ jobs:
   condition: succeeded()
   strategy:
     matrix:
-      ${{ variables.Windows }}:
-        osName: ${{ variables.Windows }}
-        imageName: ${{ variables.WindowsVm }}
-      ${{ variables.Linux }}:
-        osName: ${{ variables.Linux }}
-        imageName: ${{ variables.LinuxVm }}
-      ${{ variables.MacOS }}:
-        osName: ${{ variables.MacOS }}
-        imageName: ${{ variables.MacOSVm }}
+      ${{ variables.WindowsName }}:
+        osName: ${{ variables.WindowsName }}
+        imageName: ${{ variables.WindowsImage }}
+      ${{ variables.LinuxName }}:
+        osName: ${{ variables.LinuxName }}
+        imageName: ${{ variables.LinuxImage }}
+      ${{ variables.MacOSName }}:
+        osName: ${{ variables.MacOSName }}
+        imageName: ${{ variables.MacOSImage }}
   pool:
     vmImage: $(imageName)
 
@@ -40,15 +40,15 @@ jobs:
   condition: succeeded()
   strategy:
     matrix:
-      ${{ variables.Windows }}:
-        osName: ${{ variables.Windows }}
-        imageName: ${{ variables.WindowsVm }}
-      ${{ variables.Linux }}:
-        osName: ${{ variables.Linux }}
-        imageName: ${{ variables.LinuxVm }}
-      ${{ variables.MacOS }}:
-        osName: ${{ variables.MacOS }}
-        imageName: ${{ variables.MacOSVm }}
+      ${{ variables.WindowsName }}:
+        osName: ${{ variables.WindowsName }}
+        imageName: ${{ variables.WindowsImage }}
+      ${{ variables.LinuxName }}:
+        osName: ${{ variables.LinuxName }}
+        imageName: ${{ variables.LinuxImage }}
+      ${{ variables.MacOSName }}:
+        osName: ${{ variables.MacOSName }}
+        imageName: ${{ variables.MacOSImage }}
   pool:
     vmImage: $(imageName)
 
@@ -65,15 +65,15 @@ jobs:
   timeoutInMinutes: 120
   strategy:
     matrix:
-      ${{ variables.Windows }}:
-        osName: ${{ variables.Windows }}
-        imageName: ${{ variables.WindowsVm }}
-      ${{ variables.Linux }}:
-        osName: ${{ variables.Linux }}
-        imageName: ${{ variables.LinuxVm }}
-      ${{ variables.MacOS }}:
-        osName: ${{ variables.MacOS }}
-        imageName: ${{ variables.MacOSVm }}
+      ${{ variables.WindowsName }}:
+        osName: ${{ variables.WindowsName }}
+        imageName: ${{ variables.WindowsImage }}
+      ${{ variables.LinuxName }}:
+        osName: ${{ variables.LinuxName }}
+        imageName: ${{ variables.LinuxImage }}
+      ${{ variables.MacOSName }}:
+        osName: ${{ variables.MacOSName }}
+        imageName: ${{ variables.MacOSImage }}
   pool:
     vmImage: $(imageName)
 
