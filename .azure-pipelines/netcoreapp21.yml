@@ -31,7 +31,6 @@ jobs:
   - template: util/build-steps.yml
     parameters:
       osName: $(osName)
-      vmImage: $(imageName)
       testFramework: ${{ variables.TestFramework }}
       configuration: ${{ variables.Configuration }}
 
@@ -57,7 +56,6 @@ jobs:
   - template: util/analyze-steps.yml
     parameters:
       osName: $(osName)
-      vmImage: $(imageName)
       configuration: ${{ variables.Configuration }}
 
 - job: Test
@@ -83,7 +81,6 @@ jobs:
   - template: util/test-steps.yml
     parameters:
       osName: $(osName)
-      vmImage: $(imageName)
       testFramework: ${{ variables.TestFramework }}
       testTarget: ${{ variables.TestTarget }}
       configuration: ${{ variables.Configuration }}

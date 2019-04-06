@@ -1,16 +1,11 @@
 parameters:
   osName: ''
-  vmImage: ''
   configuration: ''
 
 steps:
 - template: download-build-steps.yml
   parameters:
-    vmImage: ${{ parameters.osName }}
-
-- template: install-pwsh-steps.yml
-  parameters:
-    vmImage: ${{ parameters.vmImage }}
+    osName: ${{ parameters.osName }}
 
 - pwsh: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
   displayName: 'Install platyPS'

@@ -1,14 +1,9 @@
 parameters:
   osName: ''
-  vmImage: ''
   testFramework: ''
   configuration: ''
 
 steps:
-- template: install-pwsh-steps.yml
-  parameters:
-    vmImage: ${{ parameters.vmImage }}
-
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
