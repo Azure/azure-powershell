@@ -1,0 +1,37 @@
+name: 1.1.0
+
+variables:
+  windows: windows
+  windowsVm: VS2017-Win2016
+  testFramework: net472
+  testTarget: TestNet472
+
+jobs:
+- job: Build
+  displayName: Build
+  condition: succeeded()
+  pool:
+    vmImage: $(windowsVm)
+
+  steps:
+  - template: util/build-steps.yml
+    parameters:
+      osName: $(windows)
+      vmImage: $(windowsVm)
+      testFramework: $(testFramework)
+
+- job: Test
+  displayName: Test
+  dependsOn: Build
+  condition: succeeded()
+  timeoutInMinutes: 120
+  pool:
+    vmImage: $(windowsVm)
+
+  steps:
+  - template: util/test-steps.yml
+    parameters:
+      osName: $(windows)
+      vmImage: $(windowsVm)
+      testFramework: $(testFramework)
+      testTarget: $(testTarget)

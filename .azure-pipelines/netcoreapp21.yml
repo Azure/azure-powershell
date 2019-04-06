@@ -1,0 +1,87 @@
+name: 1.1.0
+
+variables:
+  windows: windows
+  windowsVm: VS2017-Win2016
+  linux: linux
+  linuxVm: Ubuntu-16.04
+  macOS: macOS
+  macOSVm: macOS-10.13
+  testFramework: netcoreapp2.1
+  testTarget: Test
+
+jobs:
+- job: Build
+  displayName: Build
+  condition: succeeded()
+  strategy:
+    matrix:
+      $(windows):
+        osName: $(windows)
+        vmImage: $(windowsVm)
+      $(linux):
+        osName: $(linux)
+        vmImage: $(linuxVm)
+      $(macOS):
+        osName: $(macOS)
+        vmImage: $(macOSVm)
+  pool:
+    vmImage: $(vmImage)
+
+  steps:
+  - template: util/build-steps.yml
+    parameters:
+      osName: $(osName)
+      vmImage: $(vmImage)
+      testFramework: $(testFramework)
+
+- job: Analyze
+  displayName: Analyze
+  dependsOn: Build
+  condition: succeeded()
+  strategy:
+    matrix:
+      $(windows):
+        osName: $(windows)
+        vmImage: $(windowsVm)
+      $(linux):
+        osName: $(linux)
+        vmImage: $(linuxVm)
+      $(macOS):
+        osName: $(macOS)
+        vmImage: $(macOSVm)
+  pool:
+    vmImage: $(vmImage)
+
+  steps:
+  - template: util/analyze-steps.yml
+    parameters:
+      osName: $(osName)
+      vmImage: $(vmImage)
+
+- job: Test
+  displayName: Test
+  dependsOn: Build
+  condition: succeeded()
+  timeoutInMinutes: 120
+  strategy:
+    matrix:
+      $(windows):
+        osName: $(windows)
+        vmImage: $(windowsVm)
+      $(linux):
+        osName: $(linux)
+        vmImage: $(linuxVm)
+      $(macOS):
+        osName: $(macOS)
+        vmImage: $(macOSVm)
+  pool:
+    vmImage: $(vmImage)
+
+  steps:
+  - template: util/test-steps.yml
+    parameters:
+      osName: $(osName)
+      vmImage: $(vmImage)
+      testFramework: $(testFramework)
+      testTarget: $(testTarget)
