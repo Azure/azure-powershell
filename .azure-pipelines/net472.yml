@@ -3,6 +3,7 @@ variables:
   WindowsVm: VS2017-Win2016
   TestFramework: net472
   TestTarget: TestNet472
+  Configuration: Debug
 
 jobs:
 - job: Build
@@ -17,6 +18,7 @@ jobs:
       osName: ${{ variables['Windows'] }}
       vmImage: ${{ variables['WindowsVm'] }}
       testFramework: ${{ variables['TestFramework'] }}
+      configuration: ${{ variables['Configuration'] }}
 
 - job: Test
   displayName: Test
@@ -33,3 +35,4 @@ jobs:
       vmImage: ${{ variables['WindowsVm'] }}
       testFramework: ${{ variables['TestFramework'] }}
       testTarget: ${{ variables['TestTarget'] }}
+      configuration: ${{ variables['Configuration'] }}
