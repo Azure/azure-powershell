@@ -16,7 +16,6 @@ jobs:
   - template: util/build-steps.yml
     parameters:
       osName: ${{ variables.Windows }}
-      vmImage: ${{ variables.WindowsVm }}
       testFramework: ${{ variables.TestFramework }}
       configuration: ${{ variables.Configuration }}
 
@@ -32,7 +31,6 @@ jobs:
   - template: util/test-steps.yml
     parameters:
       osName: ${{ variables.Windows }}
-      vmImage: ${{ variables.WindowsVm }}
       testFramework: ${{ variables.TestFramework }}
       testTarget: ${{ variables.TestTarget }}
       configuration: ${{ variables.Configuration }}

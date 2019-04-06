@@ -1,6 +1,5 @@
 parameters:
   osName: ''
-  vmImage: ''
   testFramework: ''
   testTarget: ''
   configuration: ''
@@ -8,11 +7,7 @@ parameters:
 steps:
 - template: download-build-steps.yml
   parameters:
-    vmImage: ${{ parameters.osName }}
-
-- template: install-pwsh-steps.yml
-  parameters:
-    vmImage: ${{ parameters.vmImage }}
+    osName: ${{ parameters.osName }}
 
 - task: DotNetCoreCLI@2
   displayName: Test
