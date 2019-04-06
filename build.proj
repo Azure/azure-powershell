@@ -252,10 +252,11 @@
     </PropertyGroup>
     <Message Importance="high" Text="Running check in tests..." />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
+    <Exec Command="dotnet build $(RepoArtifacts)Azure.PowerShell.sln -c $(Configuration)" />
     <Exec Command="dotnet new console -n Net472Tests" />
     <Exec Command="dotnet add Net472Tests package xunit.runner.console --version 2.4.0" />
-    <Exec Command="dotnet restore --packages ./artifacts/tools -f --no-cache Net472Tests" />
-    <Exec Command="$(PowerShellCommandPrefix) &quot;$(RepoTools)/TestNet472Modules.ps1 -TestExecPath '$(RepoArtifacts)/tools/xunit.runner.console/2.4.0/tools/net472/xunit.console.exe'&quot;" />
+    <Exec Command="dotnet restore --packages $(RepoArtifacts)/xUnit -f --no-cache Net472Tests" />
+    <Exec Command="$(PowerShellCommandPrefix) &quot;$(RepoTools)/TestNet472Modules.ps1 -TestExecPath '$(RepoArtifacts)/xUnit/xunit.runner.console/2.4.0/tools/net472/xunit.console.exe'&quot;" />
     <OnError ExecuteTargets="TestFailureErrorMessage" />
  </Target>
 
