@@ -50,8 +50,7 @@
     <Scope Condition="$(NetCore) == 'true'">Netcore</Scope>
 
     <!-- PS command related -->
-    <PowerShellCoreCommand Condition=" '$(PowerShellCoreCommand)' == '' ">pwsh</PowerShellCoreCommand>
-    <PowerShellCoreCommandPrefix>$(PowerShellCoreCommand) -NonInteractive -NoLogo -NoProfile -Command</PowerShellCoreCommandPrefix>
+    <PowerShellCoreCommandPrefix>pwsh -NonInteractive -NoLogo -NoProfile -Command</PowerShellCoreCommandPrefix>
 
     <!-- Testing related -->
     <TestsToRun Condition="$(TestsToRun) == ''" >All</TestsToRun>
@@ -249,7 +248,7 @@
 
   <Target Name="TestNet472" Condition="'$(TestFramework)' == 'net472'">
     <PropertyGroup>
-      <PowerShellCommandPrefix>&quot;C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -NonInteractive -NoLogo -NoProfile -Command</PowerShellCommandPrefix>
+      <PowerShellCommandPrefix>powershell -NonInteractive -NoLogo -NoProfile -Command</PowerShellCommandPrefix>
     </PropertyGroup>
     <Message Importance="high" Text="Running check in tests..." />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
