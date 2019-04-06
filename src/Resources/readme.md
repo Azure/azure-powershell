@@ -5,8 +5,8 @@
 ``` yaml
 require: 
   - $(this-folder)/../readme.azure.md
-  - https://raw.githubusercontent.com/NelsonDaniel/azure-rest-api-specs/multiapi/specification/resources/resource-manager/readme.enable-multi-api.md
-  - https://raw.githubusercontent.com/NelsonDaniel/azure-rest-api-specs/multiapi/specification/resources/resource-manager/readme.md
+  - https://raw.githubusercontent.com/azure/azure-rest-api-specs/multiapi/specification/resources/resource-manager/readme.enable-multi-api.md
+  - https://raw.githubusercontent.com/azure/azure-rest-api-specs/multiapi/specification/resources/resource-manager/readme.md
 
 service-name: Resources
 subject-prefix: ''
