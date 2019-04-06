@@ -28,6 +28,9 @@
 - Validate that help can be generated using the generate-help.ps1 script
 - List remaining necessary API customizations for the module (in the bug)
 
+## Customization
+The Compute module shows a simple PowerShell customization
+
 ## Special instructions for particular RPs
 ### AppService
 - There is currently a [profile failure](https://github.com/Azure/autorest.powershell/issues/192) - try generating with only the latest profile
