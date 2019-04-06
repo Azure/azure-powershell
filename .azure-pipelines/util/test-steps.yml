@@ -3,6 +3,7 @@ parameters:
   vmImage: ''
   testFramework: ''
   testTarget: ''
+  configuration: ''
 
 steps:
 - template: download-build-steps.yml
@@ -18,7 +19,7 @@ steps:
   inputs:
     command: custom
     custom: msbuild
-    arguments: 'build.proj /t:${{ parameters.testTarget }} /p:Configuration=$(Configuration);TestFramework=${{ parameters.testFramework }}'
+    arguments: 'build.proj /t:${{ parameters.testTarget }} /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }}'
 
 - template: publish-artifacts-steps.yml
   parameters:
