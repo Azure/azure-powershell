@@ -24,13 +24,13 @@ jobs:
         osName: ${{ variables['macOS'] }}
         vmImage: ${{ variables['macOSVm'] }}
   pool:
-    vmImage: ${{ variables['vmImage'] }}
+    vmImage: $(vmImage)
 
   steps:
   - template: util/build-steps.yml
     parameters:
-      osName: ${{ variables['osName'] }}
-      vmImage: ${{ variables['vmImage'] }}
+      osName: $(osName)
+      vmImage: $(vmImage)
       testFramework: ${{ variables['testFramework'] }}
 
 - job: Analyze
@@ -49,13 +49,13 @@ jobs:
         osName: ${{ variables['macOS'] }}
         vmImage: ${{ variables['macOSVm'] }}
   pool:
-    vmImage: ${{ variables['vmImage'] }}
+    vmImage: $(vmImage)
 
   steps:
   - template: util/analyze-steps.yml
     parameters:
-      osName: ${{ variables['osName'] }}
-      vmImage: ${{ variables['vmImage'] }}
+      osName: $(osName)
+      vmImage: $(vmImage)
 
 - job: Test
   displayName: Test
@@ -74,12 +74,12 @@ jobs:
         osName: ${{ variables['macOS'] }}
         vmImage: ${{ variables['macOSVm'] }}
   pool:
-    vmImage: ${{ variables['vmImage'] }}
+    vmImage: $(vmImage)
 
   steps:
   - template: util/test-steps.yml
     parameters:
-      osName: ${{ variables['osName'] }}
-      vmImage: ${{ variables['vmImage'] }}
+      osName: $(osName)
+      vmImage: $(vmImage)
       testFramework: ${{ variables['testFramework'] }}
       testTarget: ${{ variables['testTarget'] }}
