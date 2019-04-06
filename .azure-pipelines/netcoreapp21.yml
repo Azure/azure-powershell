@@ -30,8 +30,8 @@ jobs:
   steps:
   - template: util/build-steps.yml
     parameters:
-      osName: $(osName)
-      vmImage: $(vmImage)
+      osName: ${{ variables['osName'] }}
+      vmImage: ${{ variables['vmImage'] }}
       testFramework: ${{ variables['TestFramework'] }}
       configuration: ${{ variables['Configuration'] }}
 
@@ -56,8 +56,8 @@ jobs:
   steps:
   - template: util/analyze-steps.yml
     parameters:
-      osName: $(osName)
-      vmImage: $(vmImage)
+      osName: ${{ variables['osName'] }}
+      vmImage: ${{ variables['vmImage'] }}
       configuration: ${{ variables['Configuration'] }}
 
 - job: Test
@@ -82,8 +82,8 @@ jobs:
   steps:
   - template: util/test-steps.yml
     parameters:
-      osName: $(osName)
-      vmImage: $(vmImage)
+      osName: ${{ variables['osName'] }}
+      vmImage: ${{ variables['vmImage'] }}
       testFramework: ${{ variables['TestFramework'] }}
       testTarget: ${{ variables['TestTarget'] }}
       configuration: ${{ variables['Configuration'] }}
