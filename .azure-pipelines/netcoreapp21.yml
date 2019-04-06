@@ -1,12 +1,13 @@
 variables:
-  windows: windows
-  windowsVm: VS2017-Win2016
-  linux: linux
-  linuxVm: Ubuntu-16.04
-  macOS: macOS
-  macOSVm: macOS-10.13
-  testFramework: netcoreapp2.1
-  testTarget: Test
+  Windows: windows
+  WindowsVm: VS2017-Win2016
+  Linux: linux
+  LinuxVm: Ubuntu-16.04
+  MacOS: macOS
+  MacOSVm: macOS-10.13
+  TestFramework: netcoreapp2.1
+  TestTarget: Test
+  Configuration: Debug
 
 jobs:
 - job: Build
@@ -14,15 +15,15 @@ jobs:
   condition: succeeded()
   strategy:
     matrix:
-      ${{ variables['windows'] }}:
-        osName: ${{ variables['windows'] }}
-        vmImage: ${{ variables['windowsVm'] }}
-      ${{ variables['linux'] }}:
-        osName: ${{ variables['linux'] }}
-        vmImage: ${{ variables['linuxVm'] }}
-      ${{ variables['macOS'] }}:
-        osName: ${{ variables['macOS'] }}
-        vmImage: ${{ variables['macOSVm'] }}
+      ${{ variables['Windows'] }}:
+        osName: ${{ variables['Windows'] }}
+        vmImage: ${{ variables['WindowsVm'] }}
+      ${{ variables['Linux'] }}:
+        osName: ${{ variables['Linux'] }}
+        vmImage: ${{ variables['LinuxVm'] }}
+      ${{ variables['MacOS'] }}:
+        osName: ${{ variables['MacOS'] }}
+        vmImage: ${{ variables['MacOSVm'] }}
   pool:
     vmImage: $(vmImage)
 
@@ -31,7 +32,8 @@ jobs:
     parameters:
       osName: $(osName)
       vmImage: $(vmImage)
-      testFramework: ${{ variables['testFramework'] }}
+      testFramework: ${{ variables['TestFramework'] }}
+      configuration: ${{ variables['Configuration'] }}
 
 - job: Analyze
   displayName: Analyze
@@ -39,15 +41,15 @@ jobs:
   condition: succeeded()
   strategy:
     matrix:
-      ${{ variables['windows'] }}:
-        osName: ${{ variables['windows'] }}
-        vmImage: ${{ variables['windowsVm'] }}
-      ${{ variables['linux'] }}:
-        osName: ${{ variables['linux'] }}
-        vmImage: ${{ variables['linuxVm'] }}
-      ${{ variables['macOS'] }}:
-        osName: ${{ variables['macOS'] }}
-        vmImage: ${{ variables['macOSVm'] }}
+      ${{ variables['Windows'] }}:
+        osName: ${{ variables['Windows'] }}
+        vmImage: ${{ variables['WindowsVm'] }}
+      ${{ variables['Linux'] }}:
+        osName: ${{ variables['Linux'] }}
+        vmImage: ${{ variables['LinuxVm'] }}
+      ${{ variables['MacOS'] }}:
+        osName: ${{ variables['MacOS'] }}
+        vmImage: ${{ variables['MacOSVm'] }}
   pool:
     vmImage: $(vmImage)
 
@@ -56,6 +58,7 @@ jobs:
     parameters:
       osName: $(osName)
       vmImage: $(vmImage)
+      configuration: ${{ variables['Configuration'] }}
 
 - job: Test
   displayName: Test
@@ -64,15 +67,15 @@ jobs:
   timeoutInMinutes: 120
   strategy:
     matrix:
-      ${{ variables['windows'] }}:
-        osName: ${{ variables['windows'] }}
-        vmImage: ${{ variables['windowsVm'] }}
-      ${{ variables['linux'] }}:
-        osName: ${{ variables['linux'] }}
-        vmImage: ${{ variables['linuxVm'] }}
-      ${{ variables['macOS'] }}:
-        osName: ${{ variables['macOS'] }}
-        vmImage: ${{ variables['macOSVm'] }}
+      ${{ variables['Windows'] }}:
+        osName: ${{ variables['Windows'] }}
+        vmImage: ${{ variables['WindowsVm'] }}
+      ${{ variables['Linux'] }}:
+        osName: ${{ variables['Linux'] }}
+        vmImage: ${{ variables['LinuxVm'] }}
+      ${{ variables['MacOS'] }}:
+        osName: ${{ variables['MacOS'] }}
+        vmImage: ${{ variables['MacOSVm'] }}
   pool:
     vmImage: $(vmImage)
 
@@ -81,5 +84,6 @@ jobs:
     parameters:
       osName: $(osName)
       vmImage: $(vmImage)
-      testFramework: ${{ variables['testFramework'] }}
-      testTarget: ${{ variables['testTarget'] }}
+      testFramework: ${{ variables['TestFramework'] }}
+      testTarget: ${{ variables['TestTarget'] }}
+      configuration: ${{ variables['Configuration'] }}

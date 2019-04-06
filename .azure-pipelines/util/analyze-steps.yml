@@ -1,6 +1,7 @@
 parameters:
   osName: ''
   vmImage: ''
+  configuration: ''
 
 steps:
 - template: download-build-steps.yml
@@ -19,14 +20,14 @@ steps:
   inputs:
     command: custom
     custom: msbuild
-    arguments: 'build.proj /t:GenerateHelp /p:Configuration=$(Configuration)'
+    arguments: 'build.proj /t:GenerateHelp /p:Configuration=${{ parameters.configuration }}'
 
 - task: DotNetCoreCLI@2
   displayName: 'Static Analysis'
   inputs:
     command: custom
     custom: msbuild
-    arguments: 'build.proj /t:StaticAnalysis /p:Configuration=$(Configuration)'
+    arguments: 'build.proj /t:StaticAnalysis /p:Configuration=${{ parameters.configuration }}'
 
 - template: publish-artifacts-steps.yml
   parameters:

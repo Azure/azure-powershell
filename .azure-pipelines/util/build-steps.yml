@@ -2,6 +2,7 @@ parameters:
   osName: ''
   vmImage: ''
   testFramework: ''
+  configuration: ''
 
 steps:
 - template: install-pwsh-steps.yml
@@ -13,7 +14,7 @@ steps:
   inputs:
     command: custom
     custom: msbuild
-    arguments: 'build.proj /t:Build /p:Configuration=$(Configuration);TestFramework=${{ parameters.testFramework }}'
+    arguments: 'build.proj /t:Build /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }}'
 
 - template: publish-artifacts-steps.yml
   parameters:
