@@ -1,5 +1,3 @@
-name: 1.1.0
-
 variables:
   windows: windows
   windowsVm: VS2017-Win2016
@@ -16,24 +14,24 @@ jobs:
   condition: succeeded()
   strategy:
     matrix:
-      $(windows):
-        osName: $(windows)
-        vmImage: $(windowsVm)
-      $(linux):
-        osName: $(linux)
-        vmImage: $(linuxVm)
-      $(macOS):
-        osName: $(macOS)
-        vmImage: $(macOSVm)
+      ${{ variables['windows'] }}:
+        osName: ${{ variables['windows'] }}
+        vmImage: ${{ variables['windowsVm'] }}
+      ${{ variables['linux'] }}:
+        osName: ${{ variables['linux'] }}
+        vmImage: ${{ variables['linuxVm'] }}
+      ${{ variables['macOS'] }}:
+        osName: ${{ variables['macOS'] }}
+        vmImage: ${{ variables['macOSVm'] }}
   pool:
-    vmImage: $(vmImage)
+    vmImage: ${{ variables['vmImage'] }}
 
   steps:
   - template: util/build-steps.yml
     parameters:
-      osName: $(osName)
-      vmImage: $(vmImage)
-      testFramework: $(testFramework)
+      osName: ${{ variables['osName'] }}
+      vmImage: ${{ variables['vmImage'] }}
+      testFramework: ${{ variables['testFramework'] }}
 
 - job: Analyze
   displayName: Analyze
@@ -41,23 +39,23 @@ jobs:
   condition: succeeded()
   strategy:
     matrix:
-      $(windows):
-        osName: $(windows)
-        vmImage: $(windowsVm)
-      $(linux):
-        osName: $(linux)
-        vmImage: $(linuxVm)
-      $(macOS):
-        osName: $(macOS)
-        vmImage: $(macOSVm)
+      ${{ variables['windows'] }}:
+        osName: ${{ variables['windows'] }}
+        vmImage: ${{ variables['windowsVm'] }}
+      ${{ variables['linux'] }}:
+        osName: ${{ variables['linux'] }}
+        vmImage: ${{ variables['linuxVm'] }}
+      ${{ variables['macOS'] }}:
+        osName: ${{ variables['macOS'] }}
+        vmImage: ${{ variables['macOSVm'] }}
   pool:
-    vmImage: $(vmImage)
+    vmImage: ${{ variables['vmImage'] }}
 
   steps:
   - template: util/analyze-steps.yml
     parameters:
-      osName: $(osName)
-      vmImage: $(vmImage)
+      osName: ${{ variables['osName'] }}
+      vmImage: ${{ variables['vmImage'] }}
 
 - job: Test
   displayName: Test
@@ -66,22 +64,22 @@ jobs:
   timeoutInMinutes: 120
   strategy:
     matrix:
-      $(windows):
-        osName: $(windows)
-        vmImage: $(windowsVm)
-      $(linux):
-        osName: $(linux)
-        vmImage: $(linuxVm)
-      $(macOS):
-        osName: $(macOS)
-        vmImage: $(macOSVm)
+      ${{ variables['windows'] }}:
+        osName: ${{ variables['windows'] }}
+        vmImage: ${{ variables['windowsVm'] }}
+      ${{ variables['linux'] }}:
+        osName: ${{ variables['linux'] }}
+        vmImage: ${{ variables['linuxVm'] }}
+      ${{ variables['macOS'] }}:
+        osName: ${{ variables['macOS'] }}
+        vmImage: ${{ variables['macOSVm'] }}
   pool:
-    vmImage: $(vmImage)
+    vmImage: ${{ variables['vmImage'] }}
 
   steps:
   - template: util/test-steps.yml
     parameters:
-      osName: $(osName)
-      vmImage: $(vmImage)
-      testFramework: $(testFramework)
-      testTarget: $(testTarget)
+      osName: ${{ variables['osName'] }}
+      vmImage: ${{ variables['vmImage'] }}
+      testFramework: ${{ variables['testFramework'] }}
+      testTarget: ${{ variables['testTarget'] }}
