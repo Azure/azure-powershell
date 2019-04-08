@@ -15,15 +15,21 @@ Creates a new DNS zone.
 
 ### Ids (Default)
 ```
-New-AzDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneType>] [-ParentZone <String>]
+New-AzDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneType>] [-ParentZoneId <String>]
  [-Tag <Hashtable>] [-RegistrationVirtualNetworkId <System.Collections.Generic.List`1[System.String]>]
  [-ResolutionVirtualNetworkId <System.Collections.Generic.List`1[System.String]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### Names
+```
+New-AzDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneType>] [-ParentZoneName <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### Objects
 ```
-New-AzDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneType>] [-ParentZone <String>]
+New-AzDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneType>] [-ParentZone <DnsZone>]
  [-Tag <Hashtable>]
  [-RegistrationVirtualNetwork <System.Collections.Generic.List`1[Microsoft.Azure.Management.Internal.Network.Common.IResourceReference]>]
  [-ResolutionVirtualNetwork <System.Collections.Generic.List`1[Microsoft.Azure.Management.Internal.Network.Common.IResourceReference]>]
@@ -103,8 +109,38 @@ Accept wildcard characters: False
 The full name of the parent zone to add delegation (without a terminating dot).
 
 ```yaml
+Type: Microsoft.Azure.Commands.Dns.DnsZone
+Parameter Sets: Objects
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ParentZoneId
+The resource id of the parent zone to add delegation (without a terminating dot).
+
+```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Ids
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ParentZoneName
+The full name of the parent zone to add delegation (without a terminating dot).
+
+```yaml
+Type: System.String
+Parameter Sets: Names
 Aliases:
 
 Required: False
