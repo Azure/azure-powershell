@@ -258,7 +258,7 @@
     <Exec Command="dotnet restore --packages $(RepoArtifacts)/xUnit -f --no-cache Net472Tests" />
     <Exec Command="$(PowerShellCommandPrefix) &quot;$(RepoTools)/TestNet472Modules.ps1 -TestExecPath '$(RepoArtifacts)/xUnit/xunit.runner.console/2.4.0/tools/net472/xunit.console.exe'&quot;" />
     <OnError ExecuteTargets="TestFailureErrorMessage" />
- </Target>
+  </Target>
 
   <Target Name="TestFailureErrorMessage">
     <Error Text="Test failures occured, check the files in artifacts/TestResults" />
