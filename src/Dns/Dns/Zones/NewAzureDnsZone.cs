@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Dns
     {
         private const string IdsParameterSetName = "Ids";
         private const string ObjectsParameterSetName = "Objects";
+        private const string NamesParameterSetName = "Names";
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The full name of the zone (without a terminating dot).")]
         [ValidateNotNullOrEmpty]
@@ -47,9 +48,17 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateSet("Public", "Private")]
         public ZoneType? ZoneType { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The full name of the parent zone to add delegation (without a terminating dot).")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The full name of the parent zone to add delegation (without a terminating dot).", ParameterSetName = NamesParameterSetName)]
         [ValidateNotNullOrEmpty]
-        public string ParentZone { get; set; }
+        public string ParentZoneName { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id of the parent zone to add delegation (without a terminating dot).", ParameterSetName = IdsParameterSetName)]
+        [ValidateNotNullOrEmpty]
+        public string ParentZoneId { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The DnsZone object representing the parent zone to add delegation.", ParameterSetName = ObjectsParameterSetName)]
+        [ValidateNotNullOrEmpty]
+        public DnsZone ParentZone { get; set; }
 
         [Alias("Tags")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.")]
@@ -107,11 +116,11 @@ namespace Microsoft.Azure.Commands.Dns
                         : string.Format(ProjectResources.Success_NewZone, this.Name, this.ResourceGroupName));
                     this.WriteObject(result);
 
-                    if (!string.IsNullOrEmpty(this.ParentZone) && this.Name.EndsWith(this.ParentZone))
+                    if (!string.IsNullOrEmpty(this.ParentZoneName) && this.Name.EndsWith(this.ParentZoneName))
                     {
                         AddDnsNameserverDelegation(result);
                         this.WriteVerbose(ProjectResources.Success);
-                        this.WriteVerbose(string.Format(ProjectResources.Success_NSDelegation, this.Name, this.ParentZone));
+                        this.WriteVerbose(string.Format(ProjectResources.Success_NSDelegation, this.Name, this.ParentZoneName));
 
                     }
                 });
@@ -135,9 +144,9 @@ namespace Microsoft.Azure.Commands.Dns
                 }
 
                 DnsRecordBase[] resourceRecords = nameServersList.ToArray();
-                string recordName = this.Name.Replace('.' + ParentZone, "");
+                string recordName = this.Name.Replace('.' + ParentZoneName, "");
                 recordSet = this.DnsClient.CreateDnsRecordSet(
-                    this.ParentZone,
+                    this.ParentZoneName,
                     this.ResourceGroupName,
                     recordName,
                     3600,
