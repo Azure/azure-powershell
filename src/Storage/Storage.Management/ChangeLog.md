@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add a sub property "CanFailover" to Storage Account cmdlet output type PSStorageAccount.GeoReplicationStats
+    - New/Get/Set-AzureRMStorageAccount
+
+## Version 1.2.0
 * Report detail error when create Storage context with parameter -UseConnectedAccount, but without login Azure account
     - New-AzStorageContext
 * Support Manage Blob Service Properties of a specified Storage account with Management plane API
