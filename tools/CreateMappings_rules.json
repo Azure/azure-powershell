@@ -142,6 +142,7 @@
     { "regex": "DevSpaces", "group": "DevSpaces", "alias": "DevSpaces" },
     { "regex": "SignalR", "alias": "SignalR" },
     { "regex": "Search", "alias": "Search" },
+    { "regex": "ResourceGraph", "alias": "ResourceGraph" },
     { "regex": "Security", "alias": "Security" },
     { "regex": "Kusto", "alias": "Kusto" },
     { "regex": "Advisor", "alias": "Advisor" },
