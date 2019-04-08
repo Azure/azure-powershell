@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update the WebSites SDK
+* Remove the AdminSiteName property from PSAppServicePlan
 
 ## Version 1.1.2
 * Fix ARM template bug that breaks cloning all slots using `New-AzWebApp -IncludeSourceWebAppSlots` 
