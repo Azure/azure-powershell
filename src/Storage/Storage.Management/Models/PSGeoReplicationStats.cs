@@ -31,11 +31,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
             pSGeoReplicationStats.Status = geoReplicationStats.Status;
             pSGeoReplicationStats.LastSyncTime = geoReplicationStats.LastSyncTime;
+            pSGeoReplicationStats.CanFailover = geoReplicationStats.CanFailover;
 
             return pSGeoReplicationStats;
         }
 
         public string Status { get; set; }
         public DateTime? LastSyncTime { get; set; }
+        public bool? CanFailover { get; set; }
     }
 }
