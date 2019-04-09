@@ -150,7 +150,7 @@ CmdletsToExport = 'Get-AzRecoveryServicesBackupProperty',
                'Update-AzRecoveryServicesAsrRecoveryPlan', 
                'Update-AzRecoveryServicesAsrServicesProvider', 
                'Update-AzRecoveryServicesAsrvCenter', 
-               'Set-AzRecoveryServicesBackupProperties', 
+               'Set-AzRecoveryServicesBackupProperty', 
                'Set-AzRecoveryServicesVaultContext', 
                'Backup-AzRecoveryServicesBackupItem', 
                'Get-AzRecoveryServicesBackupManagementServer', 
@@ -165,7 +165,7 @@ CmdletsToExport = 'Get-AzRecoveryServicesBackupProperty',
                'Get-AzRecoveryServicesBackupProtectableItem', 
                'Initialize-AzRecoveryServicesBackupProtectableItem', 
                'Get-AzRecoveryServicesBackupJob', 
-               'Get-AzRecoveryServicesBackupJobDetails', 
+               'Get-AzRecoveryServicesBackupJobDetail', 
                'Stop-AzRecoveryServicesBackupJob', 
                'Wait-AzRecoveryServicesBackupJob', 
                'Get-AzRecoveryServicesBackupProtectionPolicy', 
@@ -222,7 +222,8 @@ AliasesToExport = 'Get-AzRecoveryServicesBackupProperties', 'Edit-ASRRP',
                'Start-ASRTestFailoverJob', 'Start-ASRUnplannedFailoverJob', 
                'Stop-ASRJob', 'Update-ASRMobilityService', 'Update-ASRPolicy', 
                'Update-ASRProtectionDirection', 'Update-ASRRecoveryPlan', 
-               'Update-ASRServicesProvider', 'Update-ASRvCenter'
+               'Update-ASRServicesProvider', 'Update-ASRvCenter', 
+               'Set-AzRecoveryServicesBackupProperties', 'Get-AzRecoveryServicesBackupJobDetails'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
