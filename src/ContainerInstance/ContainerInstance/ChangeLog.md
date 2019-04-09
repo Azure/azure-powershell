@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 1.0.1
+* Fixed issue in the -Command parameter of New-AzContainerGroup which added a trailing empty argument
+
 ## Version 1.0.0
 * General availability of `Az.ContainerInstance` module
 * Added managed identity support
