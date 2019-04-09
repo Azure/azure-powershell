@@ -177,6 +177,20 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public string LicenseType { get; set; }
 
         /// <summary>
+        /// Gets or sets the compute model for the Azure Sql Database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Computed model of Azure Sql database, serverless or provisioned",
+            ParameterSetName = UpdateParameterSetName)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "Computed model of Azure Sql database, serverless or provisioned",
+            ParameterSetName = VcoreDatabaseParameterSet)]
+        [PSArgumentCompleter(
+            "Provisioned",
+            "Serverless")]
+        public string ComputeModel { get; set; }
+
+        /// <summary>
         /// Gets or sets the auto pause delay for the Azure Sql Database
         /// </summary>
         [Parameter(Mandatory = false,
@@ -188,18 +202,16 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public int? AutoPauseDelay { get; set; }
 
         /// <summary>
-        /// Gets or sets the compute model for the Azure Sql Database
+        /// Gets or sets the Minimal capacity that database will always have allocated, if not paused
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Computed model of Azure Sql database, serverless or preprovisioned",
+            HelpMessage = "The Minimal capacity that database will always have allocated, if not paused. For Azure Sql database serverless only.",
             ParameterSetName = UpdateParameterSetName)]
         [Parameter(Mandatory = false,
-            HelpMessage = "Computed model of Azure Sql database, serverless or preprovisioned",
+            HelpMessage = "The Minimal capacity that database will always have allocated, if not paused. For Azure Sql database serverless only.",
             ParameterSetName = VcoreDatabaseParameterSet)]
-        [PSArgumentCompleter(
-            "Preprovisioned",
-            "Serverless")]
-        public string ComputeModel { get; set; }
+        [Alias("MinVCore")]
+        public double? MinCapacity { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -243,7 +255,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                            ? (bool?)ZoneRedundant.ToBool()
                            : null,
                 LicenseType = LicenseType ?? model.FirstOrDefault().LicenseType, // set to original license type
-                AutoPauseDelay = AutoPauseDelay
+                AutoPauseDelay = AutoPauseDelay,
+                MinCapacity = MinCapacity,
             };
 
             var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
@@ -256,7 +269,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             };
 
             // check if current db is serverless
-            string databaseCurrentComputeModel = database.CurrentServiceObjectiveName.Contains("_S_") ? "Serverless" : "Preprovisioned";
+            string databaseCurrentComputeModel = database.CurrentServiceObjectiveName.Contains("_S_") ? "Serverless" : "Provisioned";
 
             if (this.ParameterSetName == UpdateParameterSetName)
             {

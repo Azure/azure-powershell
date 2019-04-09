@@ -17,8 +17,8 @@ Sets properties for a database, or moves an existing database into an elastic po
 ```
 Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <String>]
  [-RequestedServiceObjectiveName <String>] [-ElasticPoolName <String>] [-ReadScale <DatabaseReadScale>]
- [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-LicenseType <String>] [-AutoPauseDelay <Int32>]
- [-ComputeModel <String>] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-LicenseType <String>] [-ComputeModel <String>]
+ [-AutoPauseDelay <Int32>] [-MinCapacity <Double>] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,9 +26,9 @@ Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <St
 ```
 Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <String>]
  [-ReadScale <DatabaseReadScale>] [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-VCore <Int32>]
- [-ComputeGeneration <String>] [-LicenseType <String>] [-AutoPauseDelay <Int32>] [-ComputeModel <String>]
- [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ComputeGeneration <String>] [-LicenseType <String>] [-ComputeModel <String>] [-AutoPauseDelay <Int32>]
+ [-MinCapacity <Double>] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Rename
@@ -142,6 +142,22 @@ The auto pause delay for Azure Sql database (serverless only), -1 to opt out
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: Update, VcoreBasedDatabase
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinCapacity
+The Minimal capacity that database will always have allocated, if not paused.
+For serverless Azure Sql databases only.
+
+```yaml
+Type: System.Nullable`1[System.Double]
+Parameter Sets: (All)
+Aliases: MinVCore
 
 Required: False
 Position: Named

@@ -160,6 +160,16 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public string LicenseType { get; set; }
 
         /// <summary>
+        /// Gets or sets the compute model for Azure Sql database
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = false,
+            HelpMessage="The compute model for Azure Sql database")]
+        [PSArgumentCompleter(
+            "Provisioned",
+            "Serverless")]
+        public string ComputeModel { get; set; }
+
+        /// <summary>
         /// Gets or sets the Auto Pause delay for Azure Sql Database
         /// </summary>
         [Parameter(Mandatory = false,
@@ -167,14 +177,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public int? AutoPauseDelay { get; set; }
 
         /// <summary>
-        /// Gets or sets the compute model for Azure Sql database
+        /// Gets or sets the Minimal capacity that database will always have allocated, if not paused
         /// </summary>
-        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = false,
-            HelpMessage="The compute model for Azure Sql database")]
-        [PSArgumentCompleter(
-            "Preprovisioned",
-            "Serverless")]
-        public string ComputeModel { get; set; }
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Minimal capacity that database will always have allocated, if not paused. For Azure Sql database serverless only.")]
+        [Alias("MinVCore")]
+        public double? MinCapacity { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -236,7 +244,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 ReadScale = ReadScale,
                 ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
                 LicenseType = LicenseType, // note: default license type will be LicenseIncluded in SQL RP if not specified
-                AutoPauseDelay = AutoPauseDelay
+                AutoPauseDelay = AutoPauseDelay,
+                MinCapacity = MinCapacity,
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)
