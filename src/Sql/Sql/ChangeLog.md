@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Support Database Data Classification.
+* Support for time zone parameter in Managed Instance create.
 
 ## Version 1.7.0
 * Add Vulnerability Assessment cmdlets on Server and Managed Instance
