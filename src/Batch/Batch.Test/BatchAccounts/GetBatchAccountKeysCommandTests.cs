@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
 {
     public class GetBatchAccountKeysCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        private GetBatchAccountKeysCommand cmdlet;
+        private GetBatchAccountKeyCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new GetBatchAccountKeysCommand()
+            cmdlet = new GetBatchAccountKeyCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object

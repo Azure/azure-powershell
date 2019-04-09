@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
 
 ## Version 1.1.0
 * Added new Powershell cmdlets for Enable/Disable Custom Domain Https and deprecated the old ones

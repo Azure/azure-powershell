@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
         {
             ICollection<AzureSqlServerAdvisorModel> results;
 
-            if (MyInvocation.BoundParameters.ContainsKey("AdvisorName"))
+            if (MyInvocation.BoundParameters.ContainsKey("AdvisorName") && !WildcardPattern.ContainsWildcardCharacters(AdvisorName))
             {
                 results = new List<AzureSqlServerAdvisorModel>();
                 results.Add(ModelAdapter.GetServerAdvisor(this.ResourceGroupName, this.ServerName, this.AdvisorName, this.ExpandRecommendedActions));
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
                 results = ModelAdapter.ListServerAdvisors(this.ResourceGroupName, this.ServerName, this.ExpandRecommendedActions);
             }
 
-            return results;
+            return SubResourceWildcardFilter(AdvisorName, results);
         }
 
         /// <summary>

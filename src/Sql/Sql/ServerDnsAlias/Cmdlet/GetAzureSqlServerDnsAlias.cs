@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		{
 			ICollection<AzureSqlServerDnsAliasModel> results = null;
 
-			if (this.MyInvocation.BoundParameters.ContainsKey("Name"))
+			if (this.MyInvocation.BoundParameters.ContainsKey("Name") && !WildcardPattern.ContainsWildcardCharacters(Name))
 			{
 				results = new List<AzureSqlServerDnsAliasModel>();
 				results.Add(ModelAdapter.GetServerDnsAlias(this.ResourceGroupName, this.ServerName, this.Name));
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 				results = ModelAdapter.ListServerDnsAliases(this.ResourceGroupName, this.ServerName);
 			}
 
-			return results;
+			return SubResourceWildcardFilter(Name, results);
 		}
 
 		/// <summary>

@@ -74,19 +74,19 @@ NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.NotificationHubs.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzNotificationHub', 'Get-AzNotificationHubAuthorizationRules', 
-               'Get-AzNotificationHubListKeys', 
-               'Get-AzNotificationHubPNSCredentials', 'New-AzNotificationHub', 
-               'New-AzNotificationHubAuthorizationRules', 
+CmdletsToExport = 'Get-AzNotificationHub', 'Get-AzNotificationHubAuthorizationRule', 
+               'Get-AzNotificationHubListKey', 
+               'Get-AzNotificationHubPNSCredential', 'New-AzNotificationHub', 
+               'New-AzNotificationHubAuthorizationRule', 
                'New-AzNotificationHubKey', 'Remove-AzNotificationHub', 
-               'Remove-AzNotificationHubAuthorizationRules', 
-               'Set-AzNotificationHub', 'Set-AzNotificationHubAuthorizationRules', 
-               'Get-AzNotificationHubsNamespaceAuthorizationRules', 
-               'Get-AzNotificationHubsNamespaceListKeys', 
-               'New-AzNotificationHubsNamespaceAuthorizationRules', 
+               'Remove-AzNotificationHubAuthorizationRule', 
+               'Set-AzNotificationHub', 'Set-AzNotificationHubAuthorizationRule', 
+               'Get-AzNotificationHubsNamespaceAuthorizationRule', 
+               'Get-AzNotificationHubsNamespaceListKey', 
+               'New-AzNotificationHubsNamespaceAuthorizationRule', 
                'New-AzNotificationHubsNamespaceKey', 
-               'Remove-AzNotificationHubsNamespaceAuthorizationRules', 
-               'Set-AzNotificationHubsNamespaceAuthorizationRules', 
+               'Remove-AzNotificationHubsNamespaceAuthorizationRule', 
+               'Set-AzNotificationHubsNamespaceAuthorizationRule', 
                'Get-AzNotificationHubsNamespace', 
                'New-AzNotificationHubsNamespace', 
                'Remove-AzNotificationHubsNamespace', 
@@ -96,7 +96,13 @@ CmdletsToExport = 'Get-AzNotificationHub', 'Get-AzNotificationHubAuthorizationRu
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+AliasesToExport = 'Get-AzNotificationHubAuthorizationRules', 'Get-AzNotificationHubListKeys',
+                'Get-AzNotificationHubPNSCredentials', 'Get-AzNotificationHubsNamespaceAuthorizationRules',
+                'Get-AzNotificationHubsNamespaceListKeys', 'New-AzNotificationHubAuthorizationRules',
+                'New-AzNotificationHubsNamespaceAuthorizationRules', 'Remove-AzNotificationHubAuthorizationRules',
+                'Remove-AzNotificationHubsNamespaceAuthorizationRules', 'Set-AzNotificationHubAuthorizationRules',
+                'Set-AzNotificationHubsNamespaceAuthorizationRules'
+
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

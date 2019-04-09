@@ -104,6 +104,50 @@ FailoverGroupId          :
 
 This command gets a database named managedDatabase1 from a instance named managedInstance1.
 
+### Example 3: Get all databases on a instance using filtering
+```
+PS C:\> Get-AzSqlInstanceDatabase -InstanceName "managedInstance1" -ResourceGroupName "resourcegroup01" -Name "managedDatabase*"
+ResourceGroupName        : resourcegroup01
+ManagedInstanceName      : managedInstance1
+Location                 : westcentralus
+Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1/databases/managedDatabase1
+Name                     : managedDatabase1
+Tags                     :
+Collation                : SQL_Latin1_General_CP1_CI_AS
+Status                   : Online
+CreationDate             : 4/27/2018 2:30:07 PM
+EarliestRestorePoint     : 4/27/2018 2:40:47 PM
+RestorePointInTime       :
+DefaultSecondaryLocation : West US 2
+CatalogCollation         :
+CreateMode               :
+StorageContainerUri      :
+StorageContainerSasToken :
+SourceDatabaseId         :
+FailoverGroupId          :
+
+ResourceGroupName        : resourcegroup01
+ManagedInstanceName      : managedInstance1
+Location                 : westcentralus
+Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1/databases/managedDatabase2
+Name                     : managedDatabase2
+Tags                     :
+Collation                : SQL_Latin1_General_CP1_CI_AS
+Status                   : Online
+CreationDate             : 4/23/2018 5:21:07 PM
+EarliestRestorePoint     : 4/23/2018 5:31:47 PM
+RestorePointInTime       :
+DefaultSecondaryLocation : West US 2
+CatalogCollation         :
+CreateMode               :
+StorageContainerUri      :
+StorageContainerSasToken :
+SourceDatabaseId         :
+FailoverGroupId          :
+```
+
+This command gets all databases on the instance named managedInstance1 that start with "managedDatabase".
+
 ## PARAMETERS
 
 ### -DefaultProfile

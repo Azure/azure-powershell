@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
         {
             ICollection<AzureSqlServerDisasterRecoveryConfigurationModel> results;
 
-            if (MyInvocation.BoundParameters.ContainsKey("VirtualEndpointName"))
+            if (MyInvocation.BoundParameters.ContainsKey("VirtualEndpointName") && !WildcardPattern.ContainsWildcardCharacters(VirtualEndpointName))
             {
                 results = new List<AzureSqlServerDisasterRecoveryConfigurationModel>
                 {
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
                 results = ModelAdapter.ListServerDisasterRecoveryConfigurations(this.ResourceGroupName, this.ServerName);
             }
 
-            return results;
+            return SubResourceWildcardFilter(VirtualEndpointName, results);
         }
 
         /// <summary>
