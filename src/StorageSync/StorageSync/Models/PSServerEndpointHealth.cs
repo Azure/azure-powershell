@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
     /// <summary>
     /// Class PSServerEndpointHealth.
     /// </summary>
-    public class PSServerEndpointSyncStatus
+    public class PSServerEndpointHealth
     {
         /// <summary>
         /// Gets or sets the download health.

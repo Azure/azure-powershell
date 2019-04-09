@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 source.ProvisioningState,
                 source.LastWorkflowId,
                 source.LastOperationName,
-                new ServerEndpointSyncStatusConverter().Convert(source.SyncStatus));
+                new ServerEndpointHealthConverter().Convert(source.SyncStatus));
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 ServerLocalPath = source.ServerLocalPath,
                 ServerResourceId = source.ServerResourceId,
                 ProvisioningState = source.ProvisioningState,
-                SyncStatus = new ServerEndpointSyncStatusConverter().Convert(source.SyncStatus),
+                SyncStatus = new ServerEndpointHealthConverter().Convert(source.SyncStatus),
                 FriendlyName = source.FriendlyName,
                 LastOperationName = source.LastOperationName,
                 LastWorkflowId = source.LastWorkflowId,

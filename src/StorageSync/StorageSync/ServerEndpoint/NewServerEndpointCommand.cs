@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.Management.StorageSync.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
@@ -31,6 +32,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
     /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
+    [CmdletOutputBreakingChange(
+        typeof(PSServerEndpoint),
+        DeprecatedOutputProperties = new string[] { "CurrentProgress" },
+        NewOutputProperties = new string[] { "SyncActivity", "UploadActivity", "DownloadActivity" })]
     [Cmdlet(VerbsCommon.New, StorageSyncNouns.NounAzureRmStorageSyncServerEndpoint,
         DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSServerEndpoint))]
     public class NewServerEndpointCommand : StorageSyncClientCmdletBase
