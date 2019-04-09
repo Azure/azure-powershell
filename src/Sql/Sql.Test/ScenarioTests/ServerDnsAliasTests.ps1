@@ -74,7 +74,7 @@ function Test-GetServerDNSAlias
 		Assert-AreEqual $resp.DnsAliasName $serverDnsAliasName
 
 		# Get list of server dns aliases for server
-		$resp = Get-AzSqlServerDnsAlias -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+		$resp = Get-AzSqlServerDnsAlias -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DnsAliasName *
 		Assert-AreEqual $resp.Count 2
 	}
 	finally

@@ -47,6 +47,19 @@ resourcegroup01   server01   P4                                  True     False 
 
 This command gets the service objectives for the server named Server01.
 
+### Example 2: Get service objectives using filtering
+```
+PS C:\>Get-AzSqlServerServiceObjective -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ServiceObjectiveName "System*"
+ResourceGroupName ServerName ServiceObjectiveName Description Enabled IsDefault IsSystem
+----------------- ---------- -------------------- ----------- ------- --------- --------
+resourcegroup01   server01   System                              True     False     True
+resourcegroup01   server01   System0                             True     False     True
+resourcegroup01   server01   System1                             True     False     True
+resourcegroup01   server01   System2                             True      True     True
+```
+
+This command gets the service objectives for the server named Server01 that start with "System".
+
 ## PARAMETERS
 
 ### -DefaultProfile

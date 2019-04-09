@@ -221,11 +221,11 @@ function Test-GetManagedInstance
 		Assert-AreEqual $managedInstance1.VCores $resp1.VCores
 		Assert-AreEqual $managedInstance1.StorageSizeInGB $resp1.StorageSizeInGB
 		
-		$all = Get-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName
+		$all = Get-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name *
 		Assert-AreEqual 1 $all.Count
 
 		# Test getting all managedInstances in all resource groups
-		$all2 = Get-AzSqlInstance
+		$all2 = Get-AzSqlInstance -ResourceGroupName *
 
 		# It is possible that there were existing managedInstances in the subscription when the test was recorded, so make sure
 		# that the managedInstances that we created are retrieved and ignore the other ones.

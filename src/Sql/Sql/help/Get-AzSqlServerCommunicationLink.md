@@ -26,17 +26,24 @@ Specify the name of a server communication link to see the properties for that l
 
 ### Example 1: Get all communication links for a server
 ```
-PS C:\>Get-AzSqlServerCommunicationLink -ResourceGroupName "ResourceGroup01" -ServerName "ContosoServer17"
+PS C:\> Get-AzSqlServerCommunicationLink -ResourceGroupName "ResourceGroup01" -ServerName "ContosoServer17"
 ```
 
 This command gets all server-to-server communication links for elastic database transactions for the server named ContosoServer17.
 
 ### Example 2: Get a specific communication link for a server
 ```
-PS C:\>Get-AzSqlServerCommunicationLink -ResourceGroupName "ResourceGroup01" -ServerName "ContosoServer17" -LinkName "Link01"
+PS C:\> Get-AzSqlServerCommunicationLink -ResourceGroupName "ResourceGroup01" -ServerName "ContosoServer17" -LinkName "Link01"
 ```
 
 This command gets the server-to-server communication link named Link01.
+
+### Example 3: Get all communication links for a server using filtering
+```
+PS C:\> Get-AzSqlServerCommunicationLink -ResourceGroupName "ResourceGroup01" -ServerName "ContosoServer17" -LinkName "Link*"
+```
+
+This command gets all server-to-server communication links for elastic database transactions for the server named ContosoServer17 that start with "Link".
 
 ## PARAMETERS
 
