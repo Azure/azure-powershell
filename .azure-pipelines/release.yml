@@ -1,5 +1,4 @@
 variables:
-  WindowsName: windows
   WindowsImage: VS2017-Win2016
   Configuration: Release
   CodeSign: true
@@ -12,12 +11,14 @@ jobs:
     vmImage: ${{ variables.WindowsImage }}
 
   steps:
+  - pwsh: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
+    displayName: 'Install platyPS'
   - task: DotNetCoreCLI@2
     displayName: Build
     inputs:
       command: custom
       custom: msbuild
       arguments: 'build.proj /t:Build;GenerateHelp;Publish /p:Configuration=${{ variables.Configuration }};CodeSign=${{ variables.CodeSign }}'
-  - template: publish-artifacts-steps.yml
+  - template: util/publish-artifacts-steps.yml
     parameters:
-      artifactName: build-${{ variables.WindowsName }}
+      artifactName: release
