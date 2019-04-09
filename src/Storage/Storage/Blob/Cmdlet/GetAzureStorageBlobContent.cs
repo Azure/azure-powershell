@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Storage.DataMovement;
@@ -76,7 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private string ContainerName = String.Empty;
 
         [Alias("Path")]
-        [Parameter(HelpMessage = "File Path")]
+        [Parameter(HelpMessage = "File Path.")]
         public string Destination
         {
             get { return FileName; }
@@ -253,7 +255,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <returns>full file path if file path is valid, otherwise throw an exception</returns>
         internal string GetFullReceiveFilePath(string fileName, string blobName, DateTimeOffset? snapshotTime)
         {
-            String filePath = Path.Combine(CurrentPath(), fileName);
+            String filePath = fileName;
             fileName = Path.GetFileName(filePath);
             String dirPath = Path.GetDirectoryName(filePath);
 
@@ -280,12 +282,33 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             return filePath;
         }
 
+        protected override void ProcessRecord()
+        {
+            try
+            {
+                FileName = GetUnresolvedProviderPathFromPSPath(FileName);
+                Validate.ValidateInternetConnection();
+                InitChannelCurrentSubscription();
+                this.ExecuteSynchronouslyOrAsJob();
+            }
+            catch (Exception ex) when (!IsTerminatingError(ex))
+            {
+                WriteExceptionError(ex);
+            }
+        }
+
+
         /// <summary>
         /// execute command
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
+            if (AsJob.IsPresent)
+            {
+                DoBeginProcessing();
+            }
+
             switch (ParameterSetName)
             {
                 case BlobParameterSet:
@@ -308,6 +331,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         GetBlobContent(ContainerName, BlobName, FileName);
                     }
                     break;
+            }
+
+            if (AsJob.IsPresent)
+            {
+                DoEndProcessing();
             }
         }
     }
