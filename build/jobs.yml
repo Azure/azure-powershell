@@ -18,7 +18,7 @@ jobs:
     inputs:
       command: custom
       custom: msbuild
-      arguments: 'build.proj /t:Build /p:Configuration=$(Configuration)'
+      arguments: 'build.proj /t:Build /p:Configuration=$(Configuration);PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
 
   - template: publish-artifacts-steps.yml
     parameters:
