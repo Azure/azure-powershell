@@ -22,14 +22,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     /// Implements the <see cref="Converters.ConverterBase{PSServerEndpointSyncStatus, StorageSyncModels.ServerEndpointHealth}" />
     /// </summary>
     /// <seealso cref="Converters.ConverterBase{PSServerEndpointSyncStatus, StorageSyncModels.ServerEndpointHealth}" />
-    public class ServerEndpointSyncStatusConverter : ConverterBase<PSServerEndpointSyncStatus, StorageSyncModels.ServerEndpointSyncStatus>
+    public class ServerEndpointHealthConverter : ConverterBase<PSServerEndpointHealth, StorageSyncModels.ServerEndpointSyncStatus>
     {
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>StorageSyncModels.ServerEndpointHealth.</returns>
-        protected override StorageSyncModels.ServerEndpointSyncStatus Transform(PSServerEndpointSyncStatus source) => new StorageSyncModels.ServerEndpointSyncStatus(
+        protected override StorageSyncModels.ServerEndpointSyncStatus Transform(PSServerEndpointHealth source) => new StorageSyncModels.ServerEndpointSyncStatus(
             source.DownloadHealth,
             source.UploadHealth,
             source.CombinedHealth,
@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
             source.LastUpdatedTimestamp,
             new SyncSessionStatusConvertor().Convert(source.UploadStatus),
             new SyncSessionStatusConvertor().Convert(source.DownloadStatus),
-            new SyncActivityStatusConvertor().Convert(source.UploadActivity),
-            new SyncActivityStatusConvertor().Convert(source.DownloadActivity),
+            new SyncActivityStatusConverter().Convert(source.UploadActivity),
+            new SyncActivityStatusConverter().Convert(source.DownloadActivity),
             source.OfflineDataTransferStatus);
 
         /// <summary>
@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>PSServerEndpointHealth.</returns>
-        protected override PSServerEndpointSyncStatus Transform(StorageSyncModels.ServerEndpointSyncStatus source)
+        protected override PSServerEndpointHealth Transform(StorageSyncModels.ServerEndpointSyncStatus source)
         {
-            return new PSServerEndpointSyncStatus()
+            return new PSServerEndpointHealth()
             {
                 DownloadHealth = source.DownloadHealth,
                 UploadHealth = source.UploadHealth,
@@ -58,8 +58,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 LastUpdatedTimestamp = source.LastUpdatedTimestamp,
                 UploadStatus = new SyncSessionStatusConvertor().Convert(source.UploadStatus),
                 DownloadStatus = new SyncSessionStatusConvertor().Convert(source.DownloadStatus),
-                UploadActivity = new SyncActivityStatusConvertor().Convert(source.UploadActivity),
-                DownloadActivity = new SyncActivityStatusConvertor().Convert(source.DownloadActivity),
+                UploadActivity = new SyncActivityStatusConverter().Convert(source.UploadActivity),
+                DownloadActivity = new SyncActivityStatusConverter().Convert(source.DownloadActivity),
                 OfflineDataTransferStatus = source.OfflineDataTransferStatus
             };
         }

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     /// Implements the <see cref="Converters.ConverterBase{PSSyncActivityStatus, StorageSyncModels.SyncProgressStatus}" />
     /// </summary>
     /// <seealso cref="Converters.ConverterBase{PSSyncActivityStatus, StorageSyncModels.SyncProgressStatus}" />
-    public class SyncActivityStatusConvertor : ConverterBase<PSSyncActivityStatus, StorageSyncModels.SyncActivityStatus>
+    public class SyncActivityStatusConverter : ConverterBase<PSSyncActivityStatus, StorageSyncModels.SyncActivityStatus>
     {
         /// <summary>
         /// Transforms the specified source.
