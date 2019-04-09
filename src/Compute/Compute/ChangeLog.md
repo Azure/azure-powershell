@@ -20,6 +20,8 @@
 -->
 ## Upcoming Release
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+## Version 1.7.0
 * Add HyperVGeneration parameter to New-AzDiskConfig and New-AzSnapshotConfig
 * Allow VM creation with galley image from other tenants. 
 
