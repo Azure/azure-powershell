@@ -245,7 +245,7 @@
     <Message Importance="high" Text="Running check in tests..." />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <PropertyGroup Condition="'$(Framework)' == ''">
-        <Framework>netcoreapp2.0</Framework>
+        <Framework>netcoreapp2.1</Framework>
     </PropertyGroup>
 
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
@@ -261,8 +261,10 @@
       <AuthExclusions>$(LibraryRoot)src/**/Authenticators.csproj;</AuthExclusions>
       <AutomationExclusions>$(LibraryRoot)src/**/Automation.Test.csproj;</AutomationExclusions>
       <StorageExclusions>$(LibraryRoot)src/**/Storage.Test.csproj;</StorageExclusions>
+      <PowerShellCommand Condition=" '$(PowerShellCommand)' == '' ">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</PowerShellCommand>
+      <!-- All PowerShell commands have this prefix  -->
+      <PowerShellCommandPrefix>&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command</PowerShellCommandPrefix>
     </PropertyGroup>
-
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <Exec Command="dotnet new sln -n Azure.PowerShell --force" />
     <ItemGroup>

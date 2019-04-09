@@ -54,7 +54,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.4.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll', 
@@ -150,7 +150,7 @@ CmdletsToExport = 'Get-AzRecoveryServicesBackupProperty',
                'Update-AzRecoveryServicesAsrRecoveryPlan', 
                'Update-AzRecoveryServicesAsrServicesProvider', 
                'Update-AzRecoveryServicesAsrvCenter', 
-               'Set-AzRecoveryServicesBackupProperties', 
+               'Set-AzRecoveryServicesBackupProperty', 
                'Set-AzRecoveryServicesVaultContext', 
                'Backup-AzRecoveryServicesBackupItem', 
                'Get-AzRecoveryServicesBackupManagementServer', 
@@ -165,7 +165,7 @@ CmdletsToExport = 'Get-AzRecoveryServicesBackupProperty',
                'Get-AzRecoveryServicesBackupProtectableItem', 
                'Initialize-AzRecoveryServicesBackupProtectableItem', 
                'Get-AzRecoveryServicesBackupJob', 
-               'Get-AzRecoveryServicesBackupJobDetails', 
+               'Get-AzRecoveryServicesBackupJobDetail', 
                'Stop-AzRecoveryServicesBackupJob', 
                'Wait-AzRecoveryServicesBackupJob', 
                'Get-AzRecoveryServicesBackupProtectionPolicy', 
@@ -222,7 +222,8 @@ AliasesToExport = 'Get-AzRecoveryServicesBackupProperties', 'Edit-ASRRP',
                'Start-ASRTestFailoverJob', 'Start-ASRUnplannedFailoverJob', 
                'Stop-ASRJob', 'Update-ASRMobilityService', 'Update-ASRPolicy', 
                'Update-ASRProtectionDirection', 'Update-ASRRecoveryPlan', 
-               'Update-ASRServicesProvider', 'Update-ASRvCenter'
+               'Update-ASRServicesProvider', 'Update-ASRvCenter', 
+               'Set-AzRecoveryServicesBackupProperties', 'Get-AzRecoveryServicesBackupJobDetails'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

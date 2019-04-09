@@ -21,45 +21,20 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
     /// <summary>
     /// Represents AS Azure profile structure with default context, environments and token cache.
+    /// This class exists to maintain the interface of deprecating cmdlet Add-AzAnalysisServicesAccount.
+    /// Should be removed when Add-AzAnalysisServicesAccount is removed.
     /// </summary>
     [Serializable]
     public sealed class AsAzureProfile
     {
-        /// <summary>
-        /// Gets or sets AS Azure environments.
-        /// </summary>
+        /// <summary>	
+        /// Gets or sets AS Azure environments.	
+        /// </summary>	
         public Hashtable Environments { get; set; }
 
-        /// <summary>
-        /// Gets or sets the AS azure context object.
-        /// </summary>
+        /// <summary>	
+        /// Gets or sets the AS azure context object.	
+        /// </summary>	
         public AsAzureContext Context { get; set; }
-
-        /// <summary>
-        /// Initializes a new instance of AsAzureProfile and loads its content from specified path.
-        /// </summary>
-        public AsAzureProfile()
-        {
-            this.Environments = new Hashtable();
-        }
-
-        /// <summary>
-        /// Serializes the current profile and return its contents.
-        /// </summary>
-        /// <returns>The current string.</returns>
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
-        }
-
-        public AsAzureEnvironment CreateEnvironment(string environmentName)
-        {
-            var env = new AsAzureEnvironment(environmentName);
-            env.Endpoints.Add(AsAzureEnvironment.AsRolloutEndpoints.AdAuthorityBaseUrl, AsAzureClientSession.GetAuthorityUrlForEnvironment(env));
-            env.Endpoints.Add(AsAzureEnvironment.AsRolloutEndpoints.RestartEndpointFormat, AsAzureClientSession.RestartEndpointPathFormat);
-            env.Endpoints.Add(AsAzureEnvironment.AsRolloutEndpoints.LogfileEndpointFormat, AsAzureClientSession.LogfileEndpointPathFormat);
-            env.Endpoints.Add(AsAzureEnvironment.AsRolloutEndpoints.SyncEndpoint, AsAzureClientSession.SynchronizeEndpointPathFormat);
-            return env;
-        }
     }
 }
