@@ -16,21 +16,21 @@ jobs:
   strategy:
     matrix:
       windows:
-        osName: ${{ variables.WindowsName }}
-        imageName: ${{ variables.WindowsImage }}
+        OSName: ${{ variables.WindowsName }}
+        ImageName: ${{ variables.WindowsImage }}
       linux:
-        osName: ${{ variables.LinuxName }}
-        imageName: ${{ variables.LinuxImage }}
+        OSName: ${{ variables.LinuxName }}
+        ImageName: ${{ variables.LinuxImage }}
       macOS:
-        osName: ${{ variables.MacOSName }}
-        imageName: ${{ variables.MacOSImage }}
+        OSName: ${{ variables.MacOSName }}
+        ImageName: ${{ variables.MacOSImage }}
   pool:
-    vmImage: $(imageName)
+    vmImage: $(ImageName)
 
   steps:
   - template: util/build-steps.yml
     parameters:
-      osName: $(osName)
+      osName: $(OSName)
       testFramework: ${{ variables.TestFramework }}
       configuration: ${{ variables.Configuration }}
 
@@ -41,21 +41,21 @@ jobs:
   strategy:
     matrix:
       windows:
-        osName: ${{ variables.WindowsName }}
-        imageName: ${{ variables.WindowsImage }}
+        OSName: ${{ variables.WindowsName }}
+        ImageName: ${{ variables.WindowsImage }}
       linux:
-        osName: ${{ variables.LinuxName }}
-        imageName: ${{ variables.LinuxImage }}
+        OSName: ${{ variables.LinuxName }}
+        ImageName: ${{ variables.LinuxImage }}
       macOS:
-        osName: ${{ variables.MacOSName }}
-        imageName: ${{ variables.MacOSImage }}
+        OSName: ${{ variables.MacOSName }}
+        ImageName: ${{ variables.MacOSImage }}
   pool:
-    vmImage: $(imageName)
+    vmImage: $(ImageName)
 
   steps:
   - template: util/analyze-steps.yml
     parameters:
-      osName: $(osName)
+      osName: $(OSName)
       configuration: ${{ variables.Configuration }}
 
 - job: Test
@@ -66,21 +66,21 @@ jobs:
   strategy:
     matrix:
       windows:
-        osName: ${{ variables.WindowsName }}
-        imageName: ${{ variables.WindowsImage }}
+        OSName: ${{ variables.WindowsName }}
+        ImageName: ${{ variables.WindowsImage }}
       linux:
-        osName: ${{ variables.LinuxName }}
-        imageName: ${{ variables.LinuxImage }}
+        OSName: ${{ variables.LinuxName }}
+        ImageName: ${{ variables.LinuxImage }}
       macOS:
-        osName: ${{ variables.MacOSName }}
-        imageName: ${{ variables.MacOSImage }}
+        OSName: ${{ variables.MacOSName }}
+        ImageName: ${{ variables.MacOSImage }}
   pool:
-    vmImage: $(imageName)
+    vmImage: $(ImageName)
 
   steps:
   - template: util/test-steps.yml
     parameters:
-      osName: $(osName)
+      osName: $(OSName)
       testFramework: ${{ variables.TestFramework }}
       testTarget: ${{ variables.TestTarget }}
       configuration: ${{ variables.Configuration }}
