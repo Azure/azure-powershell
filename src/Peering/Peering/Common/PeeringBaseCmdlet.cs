@@ -20,6 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
     using System.Linq;
     using System.Management.Automation;
     using System.Net.Sockets;
+
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -41,18 +42,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// </summary>
         public IPeeringManagementClient PeeringManagementClient
         {
-            get
-            {
-                return this.peeringClient ?? (this.peeringClient =
-                                                  AzureSession.Instance.ClientFactory.CreateArmClient<PeeringManagementClient>(
-                                                      this.DefaultProfile.DefaultContext,
-                                                      AzureEnvironment.Endpoint.ResourceManager));
-            }
+            get =>
+                this.peeringClient ?? (this.peeringClient =
+                                           AzureSession.Instance.ClientFactory.CreateArmClient<PeeringManagementClient>(
+                                               this.DefaultProfile.DefaultContext,
+                                               AzureEnvironment.Endpoint.ResourceManager));
 
-            set
-            {
-                this.peeringClient = value;
-            }
+            set => this.peeringClient = value;
         }
 
         /// <summary>

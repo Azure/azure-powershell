@@ -44,7 +44,7 @@ function Test-GetPeerAsn
 	[string[]]$emails = "tata@noc.com","tata2@noc.com"
 	$phone = "888-800-8889"
 
-    $createdPeerAsn = Get-AzPeerAsn -PeerName $peerName
+    $createdPeerAsn = Get-AzPeerAsn -Name $peerName
 	
 	# Commented Lines are disabled for testing should be uncommented for Production Testing
 
@@ -89,7 +89,7 @@ function Test-SetPeerAsn
 	$asn = 65000
 	$phone = "888-800-8899"
 
-	$getPeerAsn = Get-AzPeerAsn -PeerName $peerName
+	$getPeerAsn = Get-AzPeerAsn -Name $peerName
 
 	$getPeerAsn | Set-AzPeerAsn -Email "noc3@contoso.com"
 	$peerasn = Get-AzPeerAsn
@@ -113,7 +113,7 @@ function Test-RemovePeerAsn
 
 	Assert-NotNull $createdPeerAsn
 
-	$getPeerAsn = Get-AzPeerAsn -PeerName $peerName
+	$getPeerAsn = Get-AzPeerAsn -Name $peerName
 
 	Assert-NotNull $getPeerAsn
 
@@ -122,7 +122,7 @@ function Test-RemovePeerAsn
 	Assert-NotNull $remove
 	Assert-AreEqual $remove "Peer Asn Contoso1 Resource Removed."
 
-	Assert-ThrowsContains {Get-AzPeerAsn -PeerName $peerName} "Error:Not Found reason:NotFound message:PeerAsn does not exist with the given name Resource does not exist."
+	Assert-ThrowsContains {Get-AzPeerAsn -Name $peerName} "Error:Not Found reason:NotFound message:PeerAsn does not exist with the given name Resource does not exist."
 }
 
 

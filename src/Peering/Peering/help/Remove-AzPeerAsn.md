@@ -20,7 +20,7 @@ Remove-AzPeerAsn [-InputObject] <PSPeerAsn> [-Force] [-AsJob] [-DefaultProfile <
 
 ### ParameterSetNameByName
 ```
-Remove-AzPeerAsn [-PeerName] <String> [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Remove-AzPeerAsn [-Name] <String> [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -98,7 +98,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PeerName
+### -Name
 The unique name of the PSPeering.
 
 ```yaml

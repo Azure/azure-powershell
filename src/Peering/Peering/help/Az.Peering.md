@@ -8,7 +8,7 @@ Locale: {{ Update Locale }}
 
 # Az.Peering Module
 ## Description
-{{Manually Enter Description Here}}
+Microsoft Peering Service allows customers and Mircosoft to connect to Azure and represent their network resources as ARM objects.
 
 ## Az.Peering Cmdlets
 ### [Get-AzLegacyPeering](Get-AzLegacyPeering.md)
@@ -41,12 +41,12 @@ Remove Peer Asn
 ### [Set-AzPeerAsn](Set-AzPeerAsn.md)
 Update Contact Information
 
-### [Set-AzPeering](Set-AzPeering.md)
-Sets the Peering. Use this Command in conjunction with `Set-AzDirectPeeringConnectionObject` or `Set-AzExchangePeeringConnectionObject`.
-
 ### [Set-AzPeeringDirectConnectionObject](Set-AzPeeringDirectConnectionObject.md)
 Sets or updates the Direct Connection information. 
 
 ### [Set-AzPeeringExchangeConnectionObject](Set-AzPeeringExchangeConnectionObject.md)
 Sets or updates the Exchange Connection information. 
+
+### [Update-AzPeering](Update-AzPeering.md)
+Sets the Peering. Use this Command in conjunction with `Set-AzDirectPeeringConnectionObject` or `Set-AzExchangePeeringConnectionObject`.
 

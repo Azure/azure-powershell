@@ -1,0 +1,134 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/resourceGroups/testCarrier/providers/Microsoft.Peering/peerings/NewDirectPeering?api-version=2019-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDQ0NWJmMTEtNjFjNC00MzZmLWE5NDAtNjAxOTRmOGFjYTU3L3Jlc291cmNlR3JvdXBzL3Rlc3RDYXJyaWVyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyaW5ncy9OZXdEaXJlY3RQZWVyaW5nP2FwaS12ZXJzaW9uPTIwMTktMDMtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "990481b6-4b85-4afa-892d-452f979a81da"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.9.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "cc1e22bf-736d-4472-b1b2-87b6e7aa2c9b"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
+        ],
+        "x-ms-correlation-request-id": [
+          "d4fe887c-e66b-461b-b4e9-1d62bf4565a1"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190405T224531Z:d4fe887c-e66b-461b-b4e9-1d62bf4565a1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 05 Apr 2019 22:45:31 GMT"
+        ],
+        "Content-Length": [
+          "1642"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Basic_Direct_Free\",\r\n    \"tier\": \"Basic\",\r\n    \"family\": \"Direct\",\r\n    \"size\": \"Free\"\r\n  },\r\n  \"kind\": \"Direct\",\r\n  \"properties\": {\r\n    \"direct\": {\r\n      \"connections\": [\r\n        {\r\n          \"bandwidthInMbps\": 30000,\r\n          \"provisionedBandwidthInMbps\": 0,\r\n          \"peeringDBFacilityId\": 64,\r\n          \"connectionState\": \"PendingApproval\",\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"192.168.1.56/31\",\r\n            \"sessionPrefixV6\": \"fe01::fe02/127\",\r\n            \"microsoftSessionIPv4Address\": \"192.168.1.57\",\r\n            \"microsoftSessionIPv6Address\": \"fe01::fe03\",\r\n            \"peerSessionIPv4Address\": \"192.168.1.56\",\r\n            \"peerSessionIPv6Address\": \"fe01::fe02\",\r\n            \"sessionStateV4\": \"None\",\r\n            \"sessionStateV6\": \"None\",\r\n            \"maxPrefixesAdvertisedV4\": 20000,\r\n            \"maxPrefixesAdvertisedV6\": 2000,\r\n            \"md5AuthenticationKey\": \"25234523452123411fd234qdwfas3234\"\r\n          }\r\n        }\r\n      ],\r\n      \"useForPeeringService\": false,\r\n      \"peerAsn\": {\r\n        \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Akamai\"\r\n      }\r\n    },\r\n    \"peeringLocation\": \"Amsterdam\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"centralus\",\r\n  \"eTag\": \"132c587a-84d6-433b-b197-ad8f221aafc8\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"tag1\": \"value1\"\r\n  },\r\n  \"name\": \"NewDirectPeering\",\r\n  \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/resourceGroups/testCarrier/providers/Microsoft.Peering/peerings/NewDirectPeering\",\r\n  \"type\": \"Microsoft.Peering/peerings\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/resourceGroups/testCarrier/providers/Microsoft.Peering/peerings/NewDirectPeering?api-version=2019-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDQ0NWJmMTEtNjFjNC00MzZmLWE5NDAtNjAxOTRmOGFjYTU3L3Jlc291cmNlR3JvdXBzL3Rlc3RDYXJyaWVyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyaW5ncy9OZXdEaXJlY3RQZWVyaW5nP2FwaS12ZXJzaW9uPTIwMTktMDMtMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Basic_Direct_Free\",\r\n    \"tier\": \"Basic\",\r\n    \"family\": \"Direct\",\r\n    \"size\": \"Free\"\r\n  },\r\n  \"kind\": \"Direct\",\r\n  \"properties\": {\r\n    \"direct\": {\r\n      \"connections\": [\r\n        {\r\n          \"bandwidthInMbps\": 30000,\r\n          \"provisionedBandwidthInMbps\": 0,\r\n          \"peeringDBFacilityId\": 64,\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"192.168.1.56/31\",\r\n            \"sessionPrefixV6\": \"fe01::fe02/127\",\r\n            \"peerSessionIPv4Address\": \"192.168.1.56\",\r\n            \"peerSessionIPv6Address\": \"fe01::fe02\",\r\n            \"maxPrefixesAdvertisedV4\": 20000,\r\n            \"maxPrefixesAdvertisedV6\": 2000,\r\n            \"md5AuthenticationKey\": \"25234523452123411XXX34qdwfas3234\"\r\n          }\r\n        }\r\n      ],\r\n      \"useForPeeringService\": false,\r\n      \"peerAsn\": {\r\n        \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Akamai\"\r\n      }\r\n    },\r\n    \"peeringLocation\": \"Amsterdam\"\r\n  },\r\n  \"location\": \"centralus\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"tag1\": \"value1\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5ff8e25e-d8aa-4677-b30e-ff88b7dc5b95"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.9.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1090"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "5c226035-e422-4ce1-b9f2-f4a7cbfc3d27"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "623d28dc-adee-4729-b345-c09059366ca5"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190405T224640Z:623d28dc-adee-4729-b345-c09059366ca5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 05 Apr 2019 22:46:40 GMT"
+        ],
+        "Content-Length": [
+          "1642"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Basic_Direct_Free\",\r\n    \"tier\": \"Basic\",\r\n    \"family\": \"Direct\",\r\n    \"size\": \"Free\"\r\n  },\r\n  \"kind\": \"Direct\",\r\n  \"properties\": {\r\n    \"direct\": {\r\n      \"connections\": [\r\n        {\r\n          \"bandwidthInMbps\": 30000,\r\n          \"provisionedBandwidthInMbps\": 0,\r\n          \"peeringDBFacilityId\": 64,\r\n          \"connectionState\": \"PendingApproval\",\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"192.168.1.56/31\",\r\n            \"sessionPrefixV6\": \"fe01::fe02/127\",\r\n            \"microsoftSessionIPv4Address\": \"192.168.1.57\",\r\n            \"microsoftSessionIPv6Address\": \"fe01::fe03\",\r\n            \"peerSessionIPv4Address\": \"192.168.1.56\",\r\n            \"peerSessionIPv6Address\": \"fe01::fe02\",\r\n            \"sessionStateV4\": \"None\",\r\n            \"sessionStateV6\": \"None\",\r\n            \"maxPrefixesAdvertisedV4\": 20000,\r\n            \"maxPrefixesAdvertisedV6\": 2000,\r\n            \"md5AuthenticationKey\": \"25234523452123411XXX34qdwfas3234\"\r\n          }\r\n        }\r\n      ],\r\n      \"useForPeeringService\": false,\r\n      \"peerAsn\": {\r\n        \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Akamai\"\r\n      }\r\n    },\r\n    \"peeringLocation\": \"Amsterdam\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"centralus\",\r\n  \"eTag\": \"132c587a-84d6-433b-b197-ad8f221aafc8\",\r\n  \"tags\": {\r\n    \"tag2\": \"value2\",\r\n    \"tag1\": \"value1\"\r\n  },\r\n  \"name\": \"NewDirectPeering\",\r\n  \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/resourceGroups/testCarrier/providers/Microsoft.Peering/peerings/NewDirectPeering\",\r\n  \"type\": \"Microsoft.Peering/peerings\"\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "4445bf11-61c4-436f-a940-60194f8aca57"
+  }
+}

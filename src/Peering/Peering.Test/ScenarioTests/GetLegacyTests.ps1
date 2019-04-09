@@ -44,7 +44,7 @@ function Test-ConvertLegacyDirectNewPeering
 	Assert-NotNull $legacy
 	Assert-AreEqual 1 $legacy.Count
 
-	$peerAsn = Get-AzPeerAsn -PeerName "Contoso1"
+	$peerAsn = Get-AzPeerAsn -Name "Contoso1"
 
 	Assert-NotNull $peerAsn
 

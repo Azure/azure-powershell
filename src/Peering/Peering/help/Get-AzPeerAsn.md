@@ -13,7 +13,7 @@ Gets Peer Asn
 ## SYNTAX
 
 ```
-Get-AzPeerAsn [[-PeerName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPeerAsn [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,7 +53,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PeerName
+### -Name
 The unique name of the PSPeering.
 
 ```yaml
