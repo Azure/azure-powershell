@@ -55,12 +55,12 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests.ScenarioTests
             TestController.NewInstance.RunPowerShellTest(this._logger, "Test-ConvertLegacyToExchange");
         }
 
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void TestUpdateExchangeIPv4OnResourceId()
-        //{
-        //    TestController.NewInstance.RunPowerShellTest(this._logger, "Test-UpdateExchangeIPv4OnResourceId");
-        //}
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateExchangeIPv4OnResourceId()
+        {
+            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-UpdateExchangeIPv4OnResourceId");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -69,12 +69,12 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests.ScenarioTests
             TestController.NewInstance.RunPowerShellTest(this._logger, "Test-UpdateExchangeIPv4OnInputObject");
         }
 
-        //[Fact]
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        //public void TestUpdateExchangeMd5OnNameAndResourceGroup()
-        //{
-        //    TestController.NewInstance.RunPowerShellTest(this._logger, "Test-UpdateExchangeMd5OnNameAndResourceGroup");
-        //}
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateExchangeMd5OnNameAndResourceGroup()
+        {
+            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-UpdateExchangeMd5OnNameAndResourceGroup");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
