@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabaseGeoBackup",
         DefaultParameterSetName = GetByNameAndResourceGroupParameterSet),
         OutputType(typeof(AzureSqlRecoverableManagedDatabaseModel))]
-    public class GetAzureSqlRecoverableManagedDatabase : AzureSqlRecoverableManagedDatabaseCmdletBase<IEnumerable<AzureSqlRecoverableManagedDatabaseModel>>
+    public class GetAzureSqlInstanceDatabaseGeoBackup : AzureSqlRecoverableManagedDatabaseCmdletBase<IEnumerable<AzureSqlRecoverableManagedDatabaseModel>>
     {
         protected const string GetByNameAndResourceGroupParameterSet =
             "GetInstanceDatabaseFromInputParameters";
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         {
             ICollection<AzureSqlRecoverableManagedDatabaseModel> results;
 
-           if (MyInvocation.BoundParameters.ContainsKey("Name"))
+           if (MyInvocation.BoundParameters.ContainsKey("Name") && !WildcardPattern.ContainsWildcardCharacters(Name))
             {
                 results = new List<AzureSqlRecoverableManagedDatabaseModel>();
                 results.Add(ModelAdapter.GetRecoverableManagedDatabase(this.ResourceGroupName, this.InstanceName, this.Name));
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                 results = ModelAdapter.ListRecoverableManagedDatabases(this.ResourceGroupName, this.InstanceName);
             }
 
-            return results;
+            return SubResourceWildcardFilter(Name, results);
         }
 
         /// <summary>
