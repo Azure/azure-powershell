@@ -12,8 +12,15 @@ Update Contact Information
 
 ## SYNTAX
 
+### ParameterSetNameDefault (Default)
 ```
 Set-AzPeerAsn [-InputObject] <PSPeerAsn> [-Email <String[]>] [-Phone <String[]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ParameterSetNameByName
+```
+Set-AzPeerAsn [-Name] <String> [-Email <String[]>] [-Phone <String[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -82,13 +89,28 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn
-Parameter Sets: (All)
+Parameter Sets: ParameterSetNameDefault
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The unique name of the PSPeering.
+
+```yaml
+Type: System.String
+Parameter Sets: ParameterSetNameByName
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

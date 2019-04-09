@@ -19,13 +19,8 @@ Get-AzPeering [-Kind <String>] [-DefaultProfile <IAzureContextContainer>] [<Comm
 
 ### PeeringByResourceAndName
 ```
-Get-AzPeering [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzPeering [-ResourceGroupName] <String> [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
-```
-
-### PeeringByResource
-```
-Get-AzPeering [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -123,7 +118,7 @@ Type: System.String
 Parameter Sets: PeeringByResourceAndName
 Aliases:
 
-Required: True
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False
@@ -135,7 +130,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: PeeringByResourceAndName, PeeringByResource
+Parameter Sets: PeeringByResourceAndName
 Aliases:
 
 Required: True

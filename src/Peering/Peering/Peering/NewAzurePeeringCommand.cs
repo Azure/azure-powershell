@@ -98,8 +98,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// Gets or sets The InputObject Location.
         /// </summary>
         [Parameter(
-            Position = Constants.PositionPeeringTwo,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = Constants.PeeringLocationHelp,
             ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering)]
         [Parameter(
@@ -161,11 +160,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.UseForPeeringServiceHelp,
-            ParameterSetName = Constants.Direct),
-         Parameter(
-             Mandatory = false,
-             HelpMessage = Constants.UseForPeeringServiceHelp,
-             ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering)]
+            ParameterSetName = Constants.Direct)]
         public virtual SwitchParameter UseForPeeringService { get; set; }
 
         /// <summary>
@@ -475,9 +470,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                                      Location = this.GetAzureRegion(this.PeeringLocation, Constants.Direct),
                                      PeeringLocation = classicPeering.PeeringLocation ?? this.PeeringLocation,
                                      Kind = classicPeering.Kind ?? Constants.Direct,
-                                     Sku = this.UseForPeeringService
-                                               ? new PSPeeringSku { Name = Constants.PremiumDirectFree }
-                                               : new PSPeeringSku { Name = Constants.BasicDirectFree },
+                                     Sku = classicPeering.Sku ?? new PSPeeringSku(Constants.BasicDirectFree),
                                      Direct = new PSPeeringPropertiesDirect
                                                   {
                                                       Connections = classicPeering.Direct.Connections,

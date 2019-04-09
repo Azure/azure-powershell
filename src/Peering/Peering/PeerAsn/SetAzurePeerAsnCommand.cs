@@ -46,6 +46,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             DontShow = true)]
         public PSPeerAsn InputObject { get; set; }
 
+        [Parameter(
+            Position = Constants.PositionPeeringZero,
+            Mandatory = true,
+            HelpMessage = Constants.PeeringNameHelp,
+            ParameterSetName = Constants.ParameterSetNameByName)]
+        public virtual string Name { get; set; }
+
         /// <summary>
         ///     Gets or sets the Email
         /// </summary>
@@ -53,6 +60,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             Mandatory = false,
             HelpMessage = Constants.EmailsHelp,
             ParameterSetName = Constants.ParameterSetNameDefault)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.EmailsHelp,
+            ParameterSetName = Constants.ParameterSetNameByName)]
         [ValidateNotNullOrEmpty]
         public virtual string[] Email { get; set; }
 
@@ -60,6 +71,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             Mandatory = false,
             HelpMessage = Constants.PhoneHelp,
             ParameterSetName = Constants.ParameterSetNameDefault)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.PhoneHelp,
+            ParameterSetName = Constants.ParameterSetNameByName)]
         [ValidateNotNullOrEmpty]
         public virtual string[] Phone { get; set; }
 
@@ -77,7 +92,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             try
             {
                 base.Execute();
-                this.WriteObject(this.UpdatePeerContactInfo());
+                this.WriteObject(
+                    this.ParameterSetName.Equals(Constants.ParameterSetNameByName)
+                        ? this.ToPeeringAsnPs(this.GetAndSetContactInformation())
+                        : this.ToPeeringAsnPs(this.UpdatePeerContactInfo()));
             }
             catch (InvalidOperationException mapException)
             {
@@ -99,8 +117,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         {
             // Get old and verify its the same
             var oldPeerAsn = this.PeeringManagementClient.PeerAsns.Get(this.InputObject.Name);
-            if (oldPeerAsn.PeerName == this.InputObject.Name
-                && oldPeerAsn.PeerAsnProperty == this.InputObject.PeerAsnProperty)
+            if (oldPeerAsn.Name == this.InputObject.Name
+                && oldPeerAsn.PeerAsnProperty == this.InputObject.PeerAsnProperty && oldPeerAsn.PeerName == this.InputObject.PeerName)
             {
                 var update = this.InputObject;
                 if (this.Email != null)
@@ -113,7 +131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
 
                 if (this.Phone == null)
                     return this.PeeringManagementClient.PeerAsns.CreateOrUpdate(
-                        oldPeerAsn.PeerName,
+                        oldPeerAsn.Name,
                         this.ToPeeringAsn(update));
                 foreach (var s in this.Phone)
                 {
@@ -121,7 +139,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
                 }
 
                 return this.PeeringManagementClient.PeerAsns.CreateOrUpdate(
-                    oldPeerAsn.PeerName,
+                    oldPeerAsn.Name,
+                    this.ToPeeringAsn(update));
+            }
+
+            throw new Exception($"Only contact information can be changed");
+        }
+
+        private object GetAndSetContactInformation()
+        {
+            // Get old and verify its the same
+            var oldPeerAsn = this.PeeringManagementClient.PeerAsns.Get(this.Name);
+            if (oldPeerAsn != null)
+            {
+                var update = (PSPeerAsn)this.ToPeeringAsnPs(oldPeerAsn);
+                if (this.Email != null)
+                {
+                    foreach (var email in this.Email)
+                    {
+                        update.PeerContactInfo.Emails.Add(email);
+                    }
+                }
+
+                if (this.Phone == null)
+                    return this.PeeringManagementClient.PeerAsns.CreateOrUpdate(
+                        oldPeerAsn.Name,
+                        this.ToPeeringAsn(update));
+                foreach (var s in this.Phone)
+                {
+                    update.PeerContactInfo.Phone.Add(s);
+                }
+
+                return this.PeeringManagementClient.PeerAsns.CreateOrUpdate(
+                    oldPeerAsn.Name,
                     this.ToPeeringAsn(update));
             }
 

@@ -1,0 +1,260 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso?api-version=2019-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDQ0NWJmMTEtNjFjNC00MzZmLWE5NDAtNjAxOTRmOGFjYTU3L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy9Db250b3NvP2FwaS12ZXJzaW9uPTIwMTktMDMtMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 15224,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"noc@contoso.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"899-888-9989\"\r\n      ]\r\n    },\r\n    \"peerName\": \"Microscript\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3358396b-3159-481e-b6fd-a04c9ff45d3d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.9.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "223"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "52745b47-dedf-4470-b9e8-3256fee693e4"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "592206aa-96c1-4bf0-9391-0b53d4f4c85b"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190409T021225Z:592206aa-96c1-4bf0-9391-0b53d4f4c85b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 09 Apr 2019 02:12:25 GMT"
+        ],
+        "Content-Length": [
+          "427"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 15224,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"noc@contoso.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"899-888-9989\"\r\n      ]\r\n    },\r\n    \"peerName\": \"Microscript\",\r\n    \"validationState\": \"None\"\r\n  },\r\n  \"name\": \"Contoso\",\r\n  \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso?api-version=2019-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDQ0NWJmMTEtNjFjNC00MzZmLWE5NDAtNjAxOTRmOGFjYTU3L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy9Db250b3NvP2FwaS12ZXJzaW9uPTIwMTktMDMtMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 15224,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"noc@contoso.com\",\r\n        \"noc1@microscript.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"899-888-9989\"\r\n      ]\r\n    },\r\n    \"peerName\": \"Microscript\",\r\n    \"validationState\": \"None\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "62ad7396-5377-4eb7-a439-e6ae4a089d01"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.9.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "288"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "d0732674-e7d2-45bd-84c4-22f0a50a59bf"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "2aec7a61-0da5-4d1a-a4f1-f61f5175e21f"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190409T021226Z:2aec7a61-0da5-4d1a-a4f1-f61f5175e21f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 09 Apr 2019 02:12:26 GMT"
+        ],
+        "Content-Length": [
+          "460"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 15224,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"noc@contoso.com\",\r\n        \"noc1@microscript.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"899-888-9989\"\r\n      ]\r\n    },\r\n    \"peerName\": \"Microscript\",\r\n    \"validationState\": \"None\"\r\n  },\r\n  \"name\": \"Contoso\",\r\n  \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso?api-version=2019-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDQ0NWJmMTEtNjFjNC00MzZmLWE5NDAtNjAxOTRmOGFjYTU3L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy9Db250b3NvP2FwaS12ZXJzaW9uPTIwMTktMDMtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cc397c04-b2a9-4bf5-9155-22f155aac033"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.9.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "fd5c5030-62f6-4d35-a8e1-203c7192aa89"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14994"
+        ],
+        "x-ms-correlation-request-id": [
+          "f7fd5f50-d044-469d-a493-5fbe53e39367"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190409T021226Z:f7fd5f50-d044-469d-a493-5fbe53e39367"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 09 Apr 2019 02:12:25 GMT"
+        ],
+        "Content-Length": [
+          "427"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 15224,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"noc@contoso.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"899-888-9989\"\r\n      ]\r\n    },\r\n    \"peerName\": \"Microscript\",\r\n    \"validationState\": \"None\"\r\n  },\r\n  \"name\": \"Contoso\",\r\n  \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso?api-version=2019-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDQ0NWJmMTEtNjFjNC00MzZmLWE5NDAtNjAxOTRmOGFjYTU3L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy9Db250b3NvP2FwaS12ZXJzaW9uPTIwMTktMDMtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "34e8d265-8765-4319-8159-ff4561dfd362"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.9.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c6732de7-e1e2-49c3-b46f-6e717e0d7a93"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14993"
+        ],
+        "x-ms-correlation-request-id": [
+          "d71310e7-715a-456f-81cf-ba84511a668f"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190409T021226Z:d71310e7-715a-456f-81cf-ba84511a668f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 09 Apr 2019 02:12:26 GMT"
+        ],
+        "Content-Length": [
+          "427"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 15224,\r\n    \"peerContactInfo\": {\r\n      \"emails\": [\r\n        \"noc@contoso.com\"\r\n      ],\r\n      \"phone\": [\r\n        \"899-888-9989\"\r\n      ]\r\n    },\r\n    \"peerName\": \"Microscript\",\r\n    \"validationState\": \"None\"\r\n  },\r\n  \"name\": \"Contoso\",\r\n  \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "4445bf11-61c4-436f-a940-60194f8aca57"
+  }
+}
