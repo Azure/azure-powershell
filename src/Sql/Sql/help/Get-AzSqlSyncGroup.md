@@ -77,6 +77,40 @@ Schema                      :
 
 This command gets information about the Azure SQL Database Sync Group with name "SyncGroup01"
 
+### Example 3: Get all instances of Azure SQL Sync Group assigned to an Azure SQL Database using filtering
+```
+PS C:\>Get-AzSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup*" | Format-List
+ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}
+ResourceGroupName           : ResourceGroup01
+ServerName                  : Server01
+DatabaseName                : Database01
+SyncGroupName               : SyncGroup01
+SyncDatabaseId              : subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup01}/servers/{syncDatabaseServer01}/databases/{syncDatabaseName01}
+IntervalInSeconds           : 100
+ConflictResolutionPolicy:   : HubWin
+HubDatabaseUserName         : myAccount
+HubDatabasePassword         : 
+SyncState                   : NotReady
+LastSyncTime                : 1/1/0001 12:00:00 AM
+Schema                      :  
+
+ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup02}
+ResourceGroupName           : ResourceGroup01
+ServerName                  : Server01
+DatabaseName                : Database01
+SyncGroupName               : SyncGroup02
+SyncDatabaseId              : subscriptions/{subscriptionId}/resourceGroups/{syncDatabaseResourceGroup01}/servers/{syncDatabaseServer01}/databases/{syncDatabaseName01}
+IntervalInSeconds           : 100
+ConflictResolutionPolicy:   : HubWin
+HubDatabaseUserName         : myAccount
+HubDatabasePassword         : 
+SyncState                   : NotReady
+LastSyncTime                : 1/1/0001 12:00:00 AM
+Schema                      :
+```
+
+This command gets information about all the Azure SQL Database Sync Groups assigned to an Azure SQL Database that start with "SyncGroup".
+
 ## PARAMETERS
 
 ### -DatabaseName

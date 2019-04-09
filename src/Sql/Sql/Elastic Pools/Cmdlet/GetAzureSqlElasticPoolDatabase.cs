@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         {
             ICollection<AzureSqlDatabaseModel> results;
 
-            if (MyInvocation.BoundParameters.ContainsKey("DatabaseName"))
+            if (MyInvocation.BoundParameters.ContainsKey("DatabaseName") && !WildcardPattern.ContainsWildcardCharacters(DatabaseName))
             {
                 results = new List<AzureSqlDatabaseModel>();
                 results.Add(ModelAdapter.GetElasticPoolDatabase(this.ResourceGroupName, this.ServerName, this.ElasticPoolName, this.DatabaseName));
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                 results = ModelAdapter.ListElasticPoolDatabases(this.ResourceGroupName, this.ServerName, this.ElasticPoolName);
             }
 
-            return results;
+            return SubResourceWildcardFilter(DatabaseName, results);
         }
 
         /// <summary>
