@@ -45,6 +45,18 @@ rgname             servername   dnsaliasname
 
 Gets Server DNS Alias specified by server and alias name
 
+### Example 3
+```
+PS C:\> $serverDNSAliases = Get-AzSqlServerDNSAlias -ServerName servername -ResourceGroupName rgname -DnsAliasName "dnsaliasname*"
+
+ResourceGroupName  ServerName   DnsAliasName
+-----------------  ----------   ------------------
+rgname             servername   dnsaliasname
+rgname             servername   dnsaliasname2
+```
+
+Lists all Server DNS Aliases for the specific server that start with "dnsaliasname".
+
 ## PARAMETERS
 
 ### -DefaultProfile

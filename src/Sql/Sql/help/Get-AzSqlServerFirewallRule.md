@@ -42,6 +42,24 @@ FirewallRuleName  : Rule01
 
 This command gets all the firewall rules for the server named Server01.
 
+### Example 2: Get all rules for a server using filtering
+```
+PS C:\>Get-AzSqlServerFirewallRule -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -FirewallRuleName "Rule*"
+ResourceGroupName : ResourceGroup01
+ServerName        : server01
+StartIpAddress    : 0.0.0.0
+EndIpAddress      : 0.0.0.0
+FirewallRuleName  : Rule01
+
+ResourceGroupName : ResourceGroup01
+ServerName        : Server01
+StartIpAddress    : 1.2.3.4
+EndIpAddress      : 4.3.2.1
+FirewallRuleName  : Rule02
+```
+
+This command gets all the firewall rules for the server named Server01 that start with "Rule".
+
 ## PARAMETERS
 
 ### -DefaultProfile

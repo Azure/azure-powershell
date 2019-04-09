@@ -35,7 +35,7 @@ Gets the access keys associated with an operationalization cluster.
 ### [Get-AzMlWebService](Get-AzMlWebService.md)
 Retrieves the summary information for one or more web services.
 
-### [Get-AzMlWebServiceKeys](Get-AzMlWebServiceKeys.md)
+### [Get-AzMlWebServiceKey](Get-AzMlWebServiceKey.md)
 Retrieves the web service's keys.
 
 ### [Import-AzMlWebService](Import-AzMlWebService.md)

@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.4.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.DataLake.Store.dll', 
@@ -101,7 +101,7 @@ CmdletsToExport = 'Get-AzDataLakeStoreTrustedIdProvider',
                'Set-AzDataLakeStoreItemAcl', 'Set-AzDataLakeStoreItemExpiry', 
                'Set-AzDataLakeStoreItemOwner', 'Set-AzDataLakeStoreItemPermission', 
                'Test-AzDataLakeStoreAccount', 'Test-AzDataLakeStoreItem', 
-               'Export-AzDataLakeStoreChildItemProperties', 
+               'Export-AzDataLakeStoreChildItemProperty', 
                'Get-AzDataLakeStoreChildItemSummary', 
                'Get-AzDataLakeStoreDeletedItem', 
                'Restore-AzDataLakeStoreDeletedItem'
@@ -129,7 +129,7 @@ AliasesToExport = 'Get-AdlStoreTrustedIdProvider', 'Remove-AdlStoreTrustedIdProv
                'Set-AdlStoreItemOwner', 'Set-AdlStoreItemPermission', 
                'Test-AdlStore', 'Test-AdlStoreItem', 'Get-AdlStoreChildItemSummary', 
                'Export-AdlStoreChildItemProperties', 'Get-AdlStoreDeletedItem', 
-               'Restore-AdlStoreDeletedItem'
+               'Restore-AdlStoreDeletedItem', 'Export-AzDataLakeStoreChildItemProperties'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

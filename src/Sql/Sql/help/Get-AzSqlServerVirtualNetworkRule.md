@@ -36,6 +36,13 @@ PS C:\> $virtualNetworkRules = Get-AzSqlServerVirtualNetworkRule -ResourceGroupN
 
 Gets the list of Azure SQL Server virtual network rules under the specified server
 
+### Example 3
+```
+PS C:\> $virtualNetworkRules = Get-AzSqlServerVirtualNetworkRule -ResourceGroupName rg -ServerName serverName -VirtualNetworkRuleName virtualNetworkRule*
+```
+
+Gets the list of Azure SQL Server virtual network rules under the specified server that start with "virtualNetworkRule".
+
 ## PARAMETERS
 
 ### -DefaultProfile
