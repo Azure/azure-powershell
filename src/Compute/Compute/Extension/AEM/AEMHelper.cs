@@ -90,26 +90,26 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
         }
         internal string GetResourceGroupFromId(string id)
         {
-            var matcher = new Regex("/subscriptions/([^/]+)/resourceGroups/([^/]+)/providers/(\\w+)");
+            var matcher = new Regex("/([^/]+)/([^/]+)/([^/]+)/([^/]+)");
             var result = matcher.Match(id);
-            if (!result.Success || result.Groups == null || result.Groups.Count < 3)
+            if (!result.Success || result.Groups == null || result.Groups.Count < 5)
             {
                 throw new InvalidOperationException(string.Format("Cannot find resource group name and storage account name from resource identity {0}", id));
             }
 
-            return result.Groups[2].Value;
+            return result.Groups[4].Value;
         }
 
         internal string GetResourceNameFromId(string id)
         {
-            var matcher = new Regex("/subscriptions/([^/]+)/resourceGroups/([^/]+)/providers/([^/]+)/([^/]+)/([^/]+)(/\\w+)?");
+            var matcher = new Regex("/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)");
             var result = matcher.Match(id);
-            if (!result.Success || result.Groups == null || result.Groups.Count < 3)
+            if (!result.Success || result.Groups == null || result.Groups.Count < 9)
             {
                 throw new InvalidOperationException(string.Format("Cannot find resource group name and storage account name from resource identity {0}", id));
             }
 
-            return result.Groups[5].Value;
+            return result.Groups[8].Value;
         }
 
         internal bool IsPremiumStorageAccount(string accountName)
