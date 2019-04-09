@@ -442,7 +442,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             {
                 // P4
                 sla.IOPS = 120;
-                sla.TP = 125;
+                sla.TP = 25;
             }
             else if (diskSize > 0 && diskSize <= 64)
             {
