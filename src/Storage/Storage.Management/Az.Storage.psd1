@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.1.1'
+ModuleVersion = '1.2.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -203,18 +203,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Report detail error when create Storage context with parameter -UseConnectedAccount, but without login Azure account
-    - New-AzStorageContext
-* Support Manage Blob Service Properties of a specified Storage account with Management plane API
-    - Update-AzStorageBlobServiceProperty
-    - Get-AzStorageBlobServiceProperty
-    - Enable-AzStorageBlobDeleteRetentionPolicy
-    - Disable-AzStorageBlobDeleteRetentionPolicy
-* -AsJob support for Blob and file upload and download cmdlets
-    - Get-AzStorageBlobContent
-    - Set-AzStorageBlobContent
-    - Get-AzStorageFileContent
-    - Set-AzStorageFileContent'
+        ReleaseNotes = '* Add a sub property "CanFailover" to Storage Account cmdlet output type PSStorageAccount.GeoReplicationStats
+    - New/Get/Set-AzureRMStorageAccount'
 
         # Prerelease string of this module
         Prerelease = 'preview'

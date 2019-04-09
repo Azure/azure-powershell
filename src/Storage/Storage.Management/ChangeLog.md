@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.1
 * Add a sub property "CanFailover" to Storage Account cmdlet output type PSStorageAccount.GeoReplicationStats
     - New/Get/Set-AzureRMStorageAccount
 
