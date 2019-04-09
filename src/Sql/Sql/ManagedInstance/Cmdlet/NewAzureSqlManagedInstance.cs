@@ -173,7 +173,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The time zone id for the instance to set. A list of time zone ids is exposed through the sys.time_zone_info (Transact-SQL) view.")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter(Constants.TimeZoneUtc)]
         public string TimezoneId { get; set; }
 
         /// <summary>
