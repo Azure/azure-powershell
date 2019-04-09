@@ -1,8 +1,6 @@
 steps:
-- task: DownloadBuildArtifacts@0
-  displayName: 'Download artifacts'
+- task: DownloadPipelineArtifact@0
+  displayName: 'Download build'
   inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    artifactName: artifacts
-    downloadPath: $(System.DefaultWorkingDirectory)
+    artifactName: build
+    targetPath: artifacts
