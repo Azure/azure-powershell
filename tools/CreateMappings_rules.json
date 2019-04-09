@@ -142,10 +142,12 @@
     { "regex": "DevSpaces", "group": "DevSpaces", "alias": "DevSpaces" },
     { "regex": "SignalR", "alias": "SignalR" },
     { "regex": "Search", "alias": "Search" },
+    { "regex": "ResourceGraph", "alias": "ResourceGraph" },
     { "regex": "Security", "alias": "Security" },
     { "regex": "Kusto", "alias": "Kusto" },
     { "regex": "Advisor", "alias": "Advisor" },
     { "regex": "MixedReality", "group": "Mixed Reality", "alias": "Mixed Reality" },
     { "regex": "SpatialAnchors", "group": "Mixed Reality", "alias": "Mixed Reality" },
-    { "regex": "Blueprint", "alias": "Blueprint" }
+    { "regex": "Blueprint", "alias": "Blueprint" },    
+    { "regex": "DeploymentManager", "alias": "Deployment Manager" }
 ]

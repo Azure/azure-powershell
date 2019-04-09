@@ -163,6 +163,10 @@ namespace Microsoft.Azure.Commands.Profile
            HelpMessage = "The endpoint to use when communicating with the Azure Log Analytics API.")]
         public string AzureAnalysisServicesEndpointSuffix { get; set; }
 
+        [Parameter(Mandatory = false,
+           HelpMessage = "The resource identifier of the Azure Analysis Services resource.")]
+        public string AzureAnalysisServicesEndpointResourceId { get; set; }
+
         protected override void BeginProcessing()
         {
             // do not call begin processing there is no context needed for this cmdlet
@@ -310,6 +314,8 @@ namespace Microsoft.Azure.Commands.Profile
                                     nameof(AzureOperationalInsightsEndpoint));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix,
                                    nameof(AzureAnalysisServicesEndpointSuffix));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId,
+                                   nameof(AzureAnalysisServicesEndpointResourceId));
                                 WriteObject(new PSAzureEnvironment(profileClient.AddOrSetEnvironment(newEnvironment)));
                             }
                         });
