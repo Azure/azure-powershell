@@ -21,6 +21,8 @@ jobs:
       arguments: 'build.proj /t:Build /p:Configuration=$(Configuration)'
 
   - template: publish-artifacts-steps.yml
+    parameters:
+      artifactName: build
 
 - job: Generate_Help
   displayName: Generate Help
@@ -47,6 +49,8 @@ jobs:
       arguments: 'build.proj /t:GenerateHelp /p:Configuration=$(Configuration)'
 
   - template: publish-artifacts-steps.yml
+    parameters:
+      artifactName: help
 
 - job: Static_Analysis
   displayName: Static Analysis
@@ -70,11 +74,14 @@ jobs:
       arguments: 'build.proj /t:StaticAnalysis /p:Configuration=$(Configuration)'
 
   - template: publish-artifacts-steps.yml
+    parameters:
+      artifactName: static-analysis
 
 - job: Test
   displayName: Test
   dependsOn: Build
   condition: succeeded()
+  timeoutInMinutes: 120
   pool:
     vmImage: ${{ parameters.vmImage }}
 
@@ -93,3 +100,5 @@ jobs:
       arguments: 'build.proj /t:Test /p:Configuration=$(Configuration);Framework=netcoreapp2.1'
 
   - template: publish-artifacts-steps.yml
+    parameters:
+      artifactName: test

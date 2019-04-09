@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 {
     public class GetBatchJobStatisticsCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        private GetBatchJobStatisticsCommand cmdlet;
+        private GetBatchJobStatisticCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new GetBatchJobStatisticsCommand()
+            cmdlet = new GetBatchJobStatisticCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object,

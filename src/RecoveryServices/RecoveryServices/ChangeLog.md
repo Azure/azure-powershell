@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
 
 ## Version 1.2.0
 * Added SnapshotRetentionInDays in Azure VM policy to support Instant RP

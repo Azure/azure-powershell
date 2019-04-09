@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Bug fix for azure automation update management dynamic group
+* Update Uninstall-AzureRm to correctly delete modules in Mac
+
+## Version 1.5.0
+* Updated Add-AzEnvironment and Set-AzEnvironment to accept parameter AzureAnalysisServicesEndpointResourceId
 
 ## Version 1.4.0
 * Add 'Register-AzModule' command to support AutoRest generated cmdlets
