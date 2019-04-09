@@ -14,23 +14,13 @@ Gets the Peering Resources for a subsription
 
 ### BySubscription (Default)
 ```
-Get-AzPeering [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPeering [-Kind <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### PeeringByResourceAndName
 ```
-Get-AzPeering -Name <String> -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzPeering [-ResourceGroupName] <String> [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
-```
-
-### PeeringByResource
-```
-Get-AzPeering -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### PeeringByKind
-```
-Get-AzPeering -Kind <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -109,11 +99,11 @@ Shows all Peering resource by Kind.
 
 ```yaml
 Type: System.String
-Parameter Sets: PeeringByKind
+Parameter Sets: BySubscription
 Aliases:
-Accepted values: Direct, Partner, Exchange
+Accepted values: Direct, Exchange
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -128,8 +118,8 @@ Type: System.String
 Parameter Sets: PeeringByResourceAndName
 Aliases:
 
-Required: True
-Position: Named
+Required: False
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -140,11 +130,11 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: PeeringByResourceAndName, PeeringByResource
+Parameter Sets: PeeringByResourceAndName
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

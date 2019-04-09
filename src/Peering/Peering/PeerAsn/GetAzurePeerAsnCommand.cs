@@ -40,7 +40,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             HelpMessage = Constants.PeeringNameHelp,
             ParameterSetName = Constants.ParameterSetNameByName)]
         [ValidateNotNullOrEmpty]
-        public virtual string PeerName { get; set; }
+        public virtual string Name { get; set; }
 
         /// <inheritdoc />
         /// <summary>
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
                 base.Execute();
                 if (this.ParameterSetName.Equals(Constants.ParameterSetNameByName))
                 {
-                    var psPeerAsnInfo = this.GetPeerAsn(this.PeerName);
+                    var psPeerAsnInfo = this.GetPeerAsn(this.Name);
                     this.WriteObject(psPeerAsnInfo, true);
                 }
                 else

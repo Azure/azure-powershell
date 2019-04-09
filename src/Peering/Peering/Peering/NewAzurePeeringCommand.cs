@@ -52,41 +52,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public PSPeering LegacyPeering { get; set; }
 
         /// <summary>
-        /// Gets or sets The InputObject NameMD5AuthenticationKeyHelp
-        /// </summary>
-        [Parameter(
-            Position = Constants.PositionPeeringZero,
-            Mandatory = true,
-            HelpMessage = Constants.PeeringNameHelp,
-            ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering)]
-        [Parameter(
-            Position = Constants.PositionPeeringZero,
-            Mandatory = true,
-            HelpMessage = Constants.PeeringNameHelp,
-            ParameterSetName = Constants.Exchange)]
-        [Parameter(
-            Position = Constants.PositionPeeringZero,
-            Mandatory = true,
-            HelpMessage = Constants.PeeringNameHelp,
-            ParameterSetName = Constants.Direct)]
-        [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
-
-        /// <summary>
         /// Gets or sets The Resource Group Name
         /// </summary>
         [Parameter(
-            Position = Constants.PositionPeeringOne,
+            Position = Constants.PositionPeeringZero,
             Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
             ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering)]
         [Parameter(
-            Position = Constants.PositionPeeringOne,
+            Position = Constants.PositionPeeringZero,
             Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
             ParameterSetName = Constants.Exchange)]
         [Parameter(
-            Position = Constants.PositionPeeringOne,
+            Position = Constants.PositionPeeringZero,
             Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
             ParameterSetName = Constants.Direct)]
@@ -95,11 +74,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         public virtual string ResourceGroupName { get; set; }
 
         /// <summary>
+        /// Gets or sets The InputObject NameMD5AuthenticationKeyHelp
+        /// </summary>
+        [Parameter(
+            Position = Constants.PositionPeeringOne,
+            Mandatory = true,
+            HelpMessage = Constants.PeeringNameHelp,
+            ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering)]
+        [Parameter(
+            Position = Constants.PositionPeeringOne,
+            Mandatory = true,
+            HelpMessage = Constants.PeeringNameHelp,
+            ParameterSetName = Constants.Exchange)]
+        [Parameter(
+            Position = Constants.PositionPeeringOne,
+            Mandatory = true,
+            HelpMessage = Constants.PeeringNameHelp,
+            ParameterSetName = Constants.Direct)]
+        [ValidateNotNullOrEmpty]
+        public virtual string Name { get; set; }
+
+        /// <summary>
         /// Gets or sets The InputObject Location.
         /// </summary>
         [Parameter(
-            Position = Constants.PositionPeeringTwo,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = Constants.PeeringLocationHelp,
             ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering)]
         [Parameter(
@@ -161,11 +160,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.UseForPeeringServiceHelp,
-            ParameterSetName = Constants.Direct),
-         Parameter(
-             Mandatory = false,
-             HelpMessage = Constants.UseForPeeringServiceHelp,
-             ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering)]
+            ParameterSetName = Constants.Direct)]
         public virtual SwitchParameter UseForPeeringService { get; set; }
 
         /// <summary>
@@ -475,9 +470,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                                      Location = this.GetAzureRegion(this.PeeringLocation, Constants.Direct),
                                      PeeringLocation = classicPeering.PeeringLocation ?? this.PeeringLocation,
                                      Kind = classicPeering.Kind ?? Constants.Direct,
-                                     Sku = this.UseForPeeringService
-                                               ? new PSPeeringSku { Name = Constants.PremiumDirectFree }
-                                               : new PSPeeringSku { Name = Constants.BasicDirectFree },
+                                     Sku = classicPeering.Sku ?? new PSPeeringSku(Constants.BasicDirectFree),
                                      Direct = new PSPeeringPropertiesDirect
                                                   {
                                                       Connections = classicPeering.Direct.Connections,

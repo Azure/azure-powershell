@@ -58,7 +58,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             HelpMessage = Constants.PeeringNameHelp,
             ParameterSetName = Constants.ParameterSetNameByName)]
         [ValidateNotNullOrEmpty]
-        public virtual string PeerName { get; set; }
+        public virtual string Name { get; set; }
 
         /// <summary>
         ///  Gets or sets the Force the execution of the command.
@@ -93,9 +93,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
                 {
                     this.ConfirmAction(
                         this.Force,
-                        $"You are about to remove an {this.PeerName} Resource. Are you sure?",
+                        $"You are about to remove an {this.Name} Resource. Are you sure?",
                         Constants.ProcessMessage,
-                        this.PeerName,
+                        this.Name,
                         this.RemovePeerAsn);
                 }
             }
@@ -123,8 +123,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
 
             if (this.ParameterSetName.Equals(Constants.ParameterSetNameByName, StringComparison.OrdinalIgnoreCase))
             {
-                this.PeeringManagementClient.PeerAsns.Delete(this.PeerName);
-                this.WriteObject($"Peer Asn {this.PeerName} Resource Removed.");
+                this.PeeringManagementClient.PeerAsns.Delete(this.Name);
+                this.WriteObject($"Peer Asn {this.Name} Resource Removed.");
             }
         }
     }

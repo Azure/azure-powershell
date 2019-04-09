@@ -15,9 +15,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 {
     using System;
     using System.Collections;
+    using System.Collections.Generic;
     using System.Net;
     using System.Net.Sockets;
     using System.Numerics;
+    using System.Reflection;
 
     /// <summary>
     /// Helper Extension Methods
@@ -95,6 +97,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public static IPAddress ToIpAddress(this BitArray self)
         {
             return new IPAddress(self.ToByteArray());
+        }
+
+        /// <summary>
+        /// The detailed compare.
+        /// </summary>
+        /// <param name="val1">
+        /// The val 1.
+        /// </param>
+        /// <param name="val2">
+        /// The val 2.
+        /// </param>
+        /// <typeparam name="T"> The Type parameter
+        /// </typeparam>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
+        public static List<Variance> DetailedCompare<T>(this T val1, T val2)
+        {
+            List<Variance> variances = new List<Variance>();
+            PropertyInfo[] pr = (val1.GetType().GetProperties());
+            foreach (PropertyInfo p in pr)
+            {
+                Variance v = new Variance();
+                v.Prop = p.Name;
+                v.ValA = p.GetValue(val1);
+                v.ValB = p.GetValue(val2);
+                if (!Equals(v.ValA, v.ValB))
+                    variances.Add(v);
+            }
+            return variances;
         }
 
         /// <summary>
