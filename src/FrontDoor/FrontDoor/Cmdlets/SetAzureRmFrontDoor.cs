@@ -106,6 +106,12 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "Operational status of the Front Door load balancer. Default value is Enabled")]
         public PSEnabledState EnabledState { get; set; }
 
+        /// <summary>
+        /// Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
+        public SwitchParameter DisableCertificateNameCheck { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ObjectParameterSet)
@@ -178,6 +184,11 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             if (this.IsParameterBound(c => c.EnabledState))
             {
                 updateParameters.EnabledState = EnabledState;
+            }
+
+            if (this.IsParameterBound(c => c.DisableCertificateNameCheck))
+            {
+                updateParameters.EnforceCertificateNameCheck = DisableCertificateNameCheck ? PSEnforceCertificateNameCheck.Disabled : PSEnforceCertificateNameCheck.Enabled;
             }
 
             updateParameters.ValidateFrontDoor(ResourceGroupName, this.DefaultContext.Subscription.Id);
