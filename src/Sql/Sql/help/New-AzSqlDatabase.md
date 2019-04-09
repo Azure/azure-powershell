@@ -28,9 +28,9 @@ New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogColl
 New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogCollation <String>]
  [-MaxSizeBytes <Int64>] -Edition <String> [-ReadScale <DatabaseReadScale>] [-Tags <Hashtable>]
  [-SampleName <String>] [-ZoneRedundant] [-AsJob] -VCore <Int32> -ComputeGeneration <String>
- [-LicenseType <String>] [-AutoPauseDelay <Int32>] [-ComputeModel <String>] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-LicenseType <String>] [-ComputeModel <String>] [-AutoPauseDelay <Int32>] [-MinCapacity <Double>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,6 +139,22 @@ The auto pause delay for Azure Sql database(serverless only), -1 to opt out
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinCapacity
+The Minimal capacity that database will always have allocated, if not paused.
+For serverless Azure Sql databases only.
+
+```yaml
+Type: System.Nullable`1[System.Double]
+Parameter Sets: (All)
+Aliases: MinVCore
 
 Required: False
 Position: Named
@@ -420,7 +436,7 @@ The Vcore number for the Azure Sql database
 ```yaml
 Type: System.Int32
 Parameter Sets: VcoreBasedDatabase
-Aliases: Capacity
+Aliases: Capacity, MaxVCore
 
 Required: True
 Position: Named
