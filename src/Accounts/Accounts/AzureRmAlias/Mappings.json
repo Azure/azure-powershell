@@ -955,7 +955,10 @@
     "Set-AzFrontDoorFireWallPolicy": "Set-AzureRmFrontDoorFireWallPolicy",
     "Remove-AzFrontDoorFireWallPolicy": "Remove-AzureRmFrontDoorFireWallPolicy",
     "New-AzFrontDoorRuleGroupOverrideObject": "New-AzureRmFrontDoorRuleGroupOverrideObject",
-    "Remove-AzFrontDoorContent": "Remove-AzureRmFrontDoorContent"
+    "Remove-AzFrontDoorContent": "Remove-AzureRmFrontDoorContent",
+    "Enable-AzFrontDoorCustomDomainHttps": "Enable-AzureRmFrontDoorCustomDomainHttps",
+    "Disable-AzFrontDoorCustomDomainHttps": "Disable-AzureRmFrontDoorCustomDomainHttps",
+    "Get-AzFrontDoorFrontendEndpoint": "Get-AzureRmFrontDoorFrontendEndpoint"
   },
   "Az.HDInsight": {
     "Get-AzHDInsightJob": "Get-AzureRmHDInsightJob",
@@ -1258,6 +1261,7 @@
     "Set-AzApplicationGatewayAutoscaleConfiguration": "Set-AzureRmApplicationGatewayAutoscaleConfiguration",
     "Set-AzApplicationGatewayAuthenticationCertificate": "Set-AzureRmApplicationGatewayAuthenticationCertificate",
     "Get-AzApplicationGatewayAvailableWafRuleSets": "Get-AzureRmApplicationGatewayAvailableWafRuleSets",
+   	"Get-AzApplicationGatewayAvailableServerVariableAndHeader": "Get-AzureRmApplicationGatewayAvailableServerVariableAndHeader",
     "Get-AzApplicationGatewayAvailableSslOptions": "Get-AzureRmApplicationGatewayAvailableSslOptions",
     "Add-AzApplicationGatewayBackendAddressPool": "Add-AzureRmApplicationGatewayBackendAddressPool",
     "Get-AzApplicationGatewayBackendAddressPool": "Get-AzureRmApplicationGatewayBackendAddressPool",
@@ -1335,6 +1339,7 @@
     "New-AzApplicationGatewayRewriteRule": "New-AzureRmApplicationGatewayRewriteRule",
     "New-AzApplicationGatewayRewriteRuleActionSet": "New-AzureRmApplicationGatewayRewriteRuleActionSet",
     "New-AzApplicationGatewayRewriteRuleHeaderConfiguration": "New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration",
+    "New-AzApplicationGatewayRewriteRuleCondition": "New-AzureRmApplicationGatewayRewriteRuleCondition",
     "Add-AzApplicationGatewayRedirectConfiguration": "Add-AzureRmApplicationGatewayRedirectConfiguration",
     "Get-AzApplicationGatewayRedirectConfiguration": "Get-AzureRmApplicationGatewayRedirectConfiguration",
     "New-AzApplicationGatewayRedirectConfiguration": "New-AzureRmApplicationGatewayRedirectConfiguration",
@@ -1643,6 +1648,7 @@
     "Get-AzExpressRoutePortLinkConfig": "Get-AzureRmExpressRoutePortLinkConfig",
     "Get-AzExpressRoutePortsLocation": "Get-AzureRmExpressRoutePortsLocation",
     "List-AzApplicationGatewayAvailableWafRuleSets": "List-AzureRmApplicationGatewayAvailableWafRuleSets",
+    "List-AzApplicationGatewayAvailableServerVariableAndHeader": "List-AzureRmApplicationGatewayAvailableServerVariableAndHeader",
     "List-AzApplicationGatewayAvailableSslOptions": "List-AzureRmApplicationGatewayAvailableSslOptions",
     "List-AzApplicationGatewaySslPredefinedPolicy": "List-AzureRmApplicationGatewaySslPredefinedPolicy",
     "Get-AzExpressRouteGateway": "Get-AzureRmExpressRouteGateway",

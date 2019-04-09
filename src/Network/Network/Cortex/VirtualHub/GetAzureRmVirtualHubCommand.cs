@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Network
     public class GetAzureRmVirtualHubCommand : VirtualHubBaseCmdlet
     {
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = "ListByResourceGroupName",
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -47,13 +47,13 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if (ParameterSetName.Equals("ListByResourceGroupName", System.StringComparison.OrdinalIgnoreCase) && !string.IsNullOrWhiteSpace(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 WriteObject(this.GetVirtualHub(this.ResourceGroupName, this.Name));
             }
             else
             {
-                WriteObject(this.ListVirtualHubs(this.ResourceGroupName), true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, this.ListVirtualHubs(this.ResourceGroupName)), true);
             }
         }
     }

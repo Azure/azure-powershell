@@ -44,14 +44,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 string imageName = this.ImageName;
                 string expand = this.Expand;
 
-                if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(imageName))
+                if (ShouldGetByName(resourceGroupName, imageName))
                 {
                     var result = ImagesClient.Get(resourceGroupName, imageName, expand);
                     var psObject = new PSImage();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<Image, PSImage>(result, psObject);
                     WriteObject(psObject);
                 }
-                else if (!string.IsNullOrEmpty(resourceGroupName))
+                else if (ShouldListByResourceGroup(resourceGroupName, imageName))
                 {
                     var result = ImagesClient.ListByResourceGroup(resourceGroupName);
                     var resultList = result.ToList();
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<Image, PSImageList>(r));
                     }
-                    WriteObject(psObject, true);
+                    WriteObject(TopLevelWildcardFilter(resourceGroupName, imageName, psObject), true);
                 }
                 else
                 {
@@ -91,21 +91,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<Image, PSImageList>(r));
                     }
-                    WriteObject(psObject, true);
+                    WriteObject(TopLevelWildcardFilter(resourceGroupName, imageName, psObject), true);
                 }
             });
         }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 1,
+            Position = 0,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 2,
+            Position = 1,
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Compute/images", "ResourceGroupName")]
         [Alias("Name")]
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 3,
+            Position = 2,
             ValueFromPipelineByPropertyName = true)]
         public string Expand { get; set; }
     }

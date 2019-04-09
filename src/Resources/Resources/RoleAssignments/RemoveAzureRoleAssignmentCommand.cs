@@ -195,8 +195,8 @@ namespace Microsoft.Azure.Commands.Resources
             AuthorizationClient.ValidateScope(options.Scope, true);
 
             ConfirmAction(
-                ProjectResources.RemovingRoleAssignment,
-                string.Empty,
+                string.Format(ProjectResources.RemovingRoleAssignment, ObjectId, Scope, RoleDefinitionName),
+                ObjectId,
                 () =>
                 {
                     roleAssignments = PoliciesClient.RemoveRoleAssignment(options,

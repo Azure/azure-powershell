@@ -18,7 +18,28 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.8.0
+* Support Database Data Classification.
+
+## Version 1.7.0
+* Add Vulnerability Assessment cmdlets on Server and Managed Instance
+
+## Version 1.6.0
+* changed Threat Detection's cmdlets param (ExcludeDetectionType) from DetectionType to string[] to make it future proof when new DetectionTypes are added and to support autocomplete as well.
+
+## Version 1.5.0
+* Updating AuditingEndpointsCommunicator.
+    - Fixing the behavior of an edge case while creating new diagnostic settings.
+    
+## Version 1.4.0
+* Add support for restore an instance database from geo-redundant backups
+* Add support for backup short term retention on Managed Instance
+
+## Version 1.3.0
 * Add support for SQL DB Hyperscale tier
+* Fixed bug where restore could fail due to setting unnecessary properties in restore request
+
 
 ## Version 1.2.0
 * Add Get/Set AzSqlDatabaseBackupShortTermRetentionPolicy

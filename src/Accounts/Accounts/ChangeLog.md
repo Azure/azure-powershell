@@ -19,6 +19,17 @@
 -->
 ## Upcoming Release
 
+## Version 1.5.0
+* Updated Add-AzEnvironment and Set-AzEnvironment to accept parameter AzureAnalysisServicesEndpointResourceId
+
+## Version 1.4.0
+* Add 'Register-AzModule' command to support AutoRest generated cmdlets
+* Update examples for Connect-AzAccount
+
+## Version 1.3.1
+* Add additional framework extensions for .Net Framework execution
+* Update common packages to include new wildcard support functions
+
 ## Version 1.3.0
 * Update to latest version of ClientRuntime
 
