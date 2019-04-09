@@ -141,7 +141,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         /// </returns>
         private PSPeerAsn PutPeerInfo(PSPeerAsn psPeerInfo)
         {
-            var peerInfo = this.PeeringManagementClient.PeerAsns.CreateOrUpdate(this.PeerName, PeeringResourceManagerProfile.Mapper.Map<PeerAsn>(psPeerInfo));
+            var peerInfo = this.PeeringManagementClient.PeerAsns.CreateOrUpdate(this.Name, PeeringResourceManagerProfile.Mapper.Map<PeerAsn>(psPeerInfo));
             return PeeringResourceManagerProfile.Mapper.Map<PSPeerAsn>(peerInfo);
         }
     }

@@ -31,6 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzPeering", DefaultParameterSetName = Constants.ParameterSetNameBySubscription)]
     [OutputType(typeof(PSPeering))]
+    [OutputType(typeof(PSDirectPeeringModelView))]
+    [OutputType(typeof(PSExchangePeeringModelView))]
     public class GetAzurePeeringCommand : PeeringBaseCmdlet
     {
         /// <summary>
@@ -41,11 +43,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
             ParameterSetName = Constants.ParameterSetNamePeeringByResourceAndName)]
-        [Parameter(
-            Position = Constants.PositionPeeringZero,
-            Mandatory = true,
-            HelpMessage = Constants.ResourceGroupNameHelp,
-            ParameterSetName = Constants.ParameterSetNamePeeringByResource)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
@@ -55,10 +52,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </summary>
         [Parameter(
             Position = Constants.PositionPeeringOne,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = Constants.PeeringNameHelp,
             ParameterSetName = Constants.ParameterSetNamePeeringByResourceAndName)]
-        [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         /// <summary>
@@ -87,16 +83,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     Constants.ParameterSetNamePeeringByResourceAndName,
                     StringComparison.OrdinalIgnoreCase))
                 {
-                    var resourceAndName = this.GetPeeringByResourceAndName();
-                    this.WriteObject(resourceAndName, true);
-                }
-                else if (string.Equals(
-                    this.ParameterSetName,
-                    Constants.ParameterSetNamePeeringByResource,
-                    StringComparison.OrdinalIgnoreCase))
-                {
-                    var resource = this.GetPeeringByResource();
-                    this.WriteObject(resource, true);
+                    if (this.Name != null)
+                    {
+                        var item = this.GetPeeringByResourceAndName();
+                        this.WriteObject(item);
+                    }
+                    if (this.ResourceGroupName != null && this.Name == null)
+                    {
+                        var list = this.GetPeeringByResource();
+                        this.WriteObject(list, true);
+                    }
                 }
                 else
                 {

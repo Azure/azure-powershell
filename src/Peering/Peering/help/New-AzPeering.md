@@ -14,7 +14,7 @@ Creates a new Peering ARM Resource
 
 ### Exchange (Default)
 ```
-New-AzPeering [-ResourceGroupName] <String> [-Name] <String> [-PeeringLocation] <String>
+New-AzPeering [-ResourceGroupName] <String> [-Name] <String> -PeeringLocation <String>
  [-PeerAsnResourceId] <String> -ExchangeConnection <PSExchangeConnection[]> [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -22,13 +22,13 @@ New-AzPeering [-ResourceGroupName] <String> [-Name] <String> [-PeeringLocation] 
 ### ParameterSetNameConvertLegacyPeering
 ```
 New-AzPeering -LegacyPeering <PSPeering> [-ResourceGroupName] <String> [-Name] <String>
- [-PeeringLocation] <String> [-PeerAsnResourceId] <String> [-UseForPeeringService] [-Tag <Hashtable>] [-AsJob]
+ [-PeeringLocation <String>] [-PeerAsnResourceId] <String> [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Direct
 ```
-New-AzPeering [-ResourceGroupName] <String> [-Name] <String> [-PeeringLocation] <String>
+New-AzPeering [-ResourceGroupName] <String> [-Name] <String> -PeeringLocation <String>
  [-PeerAsnResourceId] <String> -DirectConnection <PSDirectConnection[]> [-UseForPeeringService]
  [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -221,11 +221,23 @@ Use Get-AzPeeringLocation -Kind \<kind\> use City name as key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Exchange, Direct
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ParameterSetNameConvertLegacyPeering
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -266,7 +278,7 @@ Enable for use with Microsoft Peering Service (MPS).
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ParameterSetNameConvertLegacyPeering, Direct
+Parameter Sets: Direct
 Aliases:
 
 Required: False

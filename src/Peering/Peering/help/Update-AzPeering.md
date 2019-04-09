@@ -12,9 +12,29 @@ Sets the Peering. Use this Command in conjunction with `Set-AzDirectPeeringConne
 
 ## SYNTAX
 
-### ParameterSetNameDefault (Default)
+### ParameterSetNameDefaultExchange (Default)
+```
+Update-AzPeering -InputObject <PSPeering> [-ExchangeConnection <PSExchangeConnection[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ParameterSetNameDefaultDirect
 ```
 Update-AzPeering -InputObject <PSPeering> [-UseForPeeringService <Boolean>]
+ [-DirectConnection <PSDirectConnection[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ParameterSetNameByResourceIdDirect
+```
+Update-AzPeering -ResourceId <String> [-UseForPeeringService <Boolean>]
+ -DirectConnection <PSDirectConnection[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ParameterSetNameByResourceIdExchange
+```
+Update-AzPeering -ResourceId <String> -ExchangeConnection <PSExchangeConnection[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -28,12 +48,6 @@ Update-AzPeering [-ResourceGroupName] <String> [-Name] <String> [-UseForPeeringS
 ### Exchange
 ```
 Update-AzPeering [-ResourceGroupName] <String> [-Name] <String> -ExchangeConnection <PSExchangeConnection[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ParameterSetNameUseForPeeringService
-```
-Update-AzPeering [-ResourceGroupName] <String> [-Name] <String> -UseForPeeringService <Boolean>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -80,13 +94,25 @@ Create a new Direct connections using the New-AzDirectPeeringConnectionObject an
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]
-Parameter Sets: Direct
+Parameter Sets: ParameterSetNameDefaultDirect
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]
+Parameter Sets: ParameterSetNameByResourceIdDirect, Direct
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -95,13 +121,25 @@ Create a new Exchange connection using the New-AzExchangePeeringConnectionObject
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[]
-Parameter Sets: Exchange
+Parameter Sets: ParameterSetNameDefaultExchange
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[]
+Parameter Sets: ParameterSetNameByResourceIdExchange, Exchange
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -110,7 +148,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
-Parameter Sets: ParameterSetNameDefault
+Parameter Sets: ParameterSetNameDefaultExchange, ParameterSetNameDefaultDirect
 Aliases:
 
 Required: True
@@ -125,7 +163,7 @@ The unique name of the PSPeering.
 
 ```yaml
 Type: System.String
-Parameter Sets: Direct, Exchange, ParameterSetNameUseForPeeringService
+Parameter Sets: Direct, Exchange
 Aliases:
 
 Required: True
@@ -140,7 +178,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Direct, Exchange, ParameterSetNameUseForPeeringService
+Parameter Sets: Direct, Exchange
 Aliases:
 
 Required: True
@@ -150,27 +188,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+The resource id string name.
+
+```yaml
+Type: System.String
+Parameter Sets: ParameterSetNameByResourceIdDirect, ParameterSetNameByResourceIdExchange
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -UseForPeeringService
 Enable for use with Microsoft InputObject Service (MPS).
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: ParameterSetNameDefault, Direct
+Parameter Sets: ParameterSetNameDefaultDirect, ParameterSetNameByResourceIdDirect, Direct
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.Boolean
-Parameter Sets: ParameterSetNameUseForPeeringService
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -182,7 +182,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         {
             if (this.InputObject is PSExchangeConnection inputObject)
             {
-                inputObject.BgpSession.PeerSessionIPv4Address = this.ValidatePrefix(this.PeerSessionIPv4Address, Constants.Exchange);
+                inputObject.BgpSession.PeerSessionIPv4Address = this.PeerSessionIPv4Address;
+                if (this.MaxPrefixesAdvertisedIPv4 != null)
+                {
+                    inputObject.BgpSession.MaxPrefixesAdvertisedV4 = this.MaxPrefixesAdvertisedIPv4;
+                }
                 if (this.ValidConnection(inputObject))
                     return inputObject;
             }
@@ -200,7 +204,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         {
             if (this.InputObject is PSExchangeConnection inputObject)
             {
-                inputObject.BgpSession.PeerSessionIPv6Address = this.ValidatePrefix(this.PeerSessionIPv6Address, Constants.Exchange);
+                inputObject.BgpSession.PeerSessionIPv6Address = this.PeerSessionIPv6Address;
+                if (this.MaxPrefixesAdvertisedIPv6 != null)
+                {
+                    inputObject.BgpSession.MaxPrefixesAdvertisedV6 = this.MaxPrefixesAdvertisedIPv4;
+                }
                 if (this.ValidConnection(inputObject))
                     return inputObject;
             }

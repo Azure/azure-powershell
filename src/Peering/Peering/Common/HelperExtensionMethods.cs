@@ -116,13 +116,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public static List<Variance> DetailedCompare<T>(this T val1, T val2)
         {
             List<Variance> variances = new List<Variance>();
-            FieldInfo[] fi = val1.GetType().GetFields();
-            foreach (FieldInfo f in fi)
+            PropertyInfo[] pr = (val1.GetType().GetProperties());
+            foreach (PropertyInfo p in pr)
             {
                 Variance v = new Variance();
-                v.Prop = f.Name;
-                v.ValA = f.GetValue(val1);
-                v.ValB = f.GetValue(val2);
+                v.Prop = p.Name;
+                v.ValA = p.GetValue(val1);
+                v.ValB = p.GetValue(val2);
                 if (!Equals(v.ValA, v.ValB))
                     variances.Add(v);
             }

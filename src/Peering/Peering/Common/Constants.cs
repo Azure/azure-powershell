@@ -208,7 +208,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// The parameter set name by name.
         /// </summary>
-        public const string ParameterSetNameByName = "ParameterSetNameByName"; 
+        public const string ParameterSetNameByName = "ParameterSetNameByName";
+
+        public const string ParameterSetNameByResourceId = "ParameterSetNameByResourceId";
 
         /// <summary>
         /// Parameter set name PeeringByKind
@@ -268,6 +270,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// ResourceGroupNameHelp
         /// </summary>
         public const string ResourceGroupNameHelp = "The resource group name.";
+
+        /// <summary>
+        /// The resource id help.
+        /// </summary>
+        public const string ResourceIdHelp = "The resource id string name.";
 
         /// <summary>
         /// PeeringNameHelp

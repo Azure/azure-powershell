@@ -30,18 +30,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     /// <summary>
     ///     Updates the InputObject object.
     /// </summary>
-    [Cmdlet("Update", "AzPeering", DefaultParameterSetName = Constants.ParameterSetNameDefault, SupportsShouldProcess = true)]
+    [Cmdlet(
+        "Update",
+        "AzPeering",
+        DefaultParameterSetName = Constants.ParameterSetNameDefault + Constants.Exchange,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSPeering))]
     public class UpdateAzurePeeringCommand : PeeringBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the input object.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipeline = true,
-            ParameterSetName = Constants.ParameterSetNameDefault,
+            ParameterSetName = Constants.ParameterSetNameDefault + Constants.Direct,
+            DontShow = true)]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ParameterSetName = Constants.ParameterSetNameDefault + Constants.Exchange,
             DontShow = true)]
         public PSPeering InputObject { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.ParameterSetNameByResourceId + Constants.Direct,
+            HelpMessage = Constants.ResourceIdHelp)]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.ParameterSetNameByResourceId + Constants.Exchange,
+            HelpMessage = Constants.ResourceIdHelp)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets The Resource Group Name
@@ -56,11 +79,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
             ParameterSetName = Constants.Exchange)]
-        [Parameter(
-            Position = Constants.PositionPeeringZero,
-            Mandatory = true,
-            HelpMessage = Constants.ResourceGroupNameHelp,
-            ParameterSetName = Constants.ParameterSetNameUseForPeeringService)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
@@ -77,11 +95,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Position = Constants.PositionPeeringOne,
             Mandatory = true,
             HelpMessage = Constants.PeeringNameHelp,
-            ParameterSetName = Constants.ParameterSetNameUseForPeeringService)]
-        [Parameter(
-            Position = Constants.PositionPeeringOne,
-            Mandatory = true,
-            HelpMessage = Constants.PeeringNameHelp,
             ParameterSetName = Constants.Exchange)]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
@@ -93,14 +106,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Mandatory = false,
             HelpMessage = Constants.UseForPeeringServiceHelp,
             ParameterSetName = Constants.Direct)]
-         [Parameter(
-             Mandatory = false,
-             ParameterSetName = Constants.ParameterSetNameDefault,
-             HelpMessage = Constants.UseForPeeringServiceHelp)]
         [Parameter(
-            Mandatory = true,
-            ParameterSetName = Constants.ParameterSetNameUseForPeeringService,
-        HelpMessage = Constants.UseForPeeringServiceHelp)]
+            Mandatory = false,
+            ParameterSetName = Constants.ParameterSetNameDefault + Constants.Direct,
+            HelpMessage = Constants.UseForPeeringServiceHelp)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = Constants.ParameterSetNameByResourceId + Constants.Direct,
+            HelpMessage = Constants.UseForPeeringServiceHelp)]
         public bool UseForPeeringService { get; set; }
 
         /// <summary>
@@ -109,8 +122,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = Constants.Exchange,
+            HelpMessage = Constants.PeeringExchangeConnectionHelp,
             ParameterSetName = Constants.Exchange)]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = Constants.PeeringExchangeConnectionHelp,
+            ParameterSetName = Constants.ParameterSetNameByResourceId + Constants.Exchange)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.PeeringExchangeConnectionHelp,
+            ParameterSetName = Constants.ParameterSetNameDefault + Constants.Exchange)]
         [ValidateNotNull]
         public virtual PSExchangeConnection[] ExchangeConnection { get; set; }
 
@@ -122,6 +144,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             ValueFromPipeline = true,
             HelpMessage = Constants.PeeringDirectConnectionHelp,
             ParameterSetName = Constants.Direct)]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = Constants.PeeringDirectConnectionHelp,
+            ParameterSetName = Constants.ParameterSetNameByResourceId + Constants.Direct)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.PeeringDirectConnectionHelp,
+            ParameterSetName = Constants.ParameterSetNameDefault + Constants.Direct)]
         [ValidateNotNull]
         public virtual PSDirectConnection[] DirectConnection { get; set; }
 
@@ -134,7 +165,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             try
             {
                 base.Execute();
-                if (this.ParameterSetName.Equals(Constants.ParameterSetNameDefault, StringComparison.OrdinalIgnoreCase))
+                if (this.ParameterSetName.Contains(Constants.ParameterSetNameDefault))
                 {
                     if (this.InputObject is PSDirectPeeringModelView)
                     {
@@ -151,25 +182,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     }
                 }
 
-                if (this.ParameterSetName.Equals(
-                    Constants.ParameterSetNameUseForPeeringService,
-                    StringComparison.OrdinalIgnoreCase))
+                if (this.ParameterSetName.Contains(Constants.ParameterSetNameByResourceId))
+                {
+                    var peeringRequest = this.PeeringClient.Get(
+                        this.GetResourceGroupNameFromId(this.ResourceId).ToString(),
+                        this.GetPeeringNameFromId(this.ResourceId).ToString());
+                    var peering = this.ToPeeringPs(peeringRequest);
+                    if (peering.Exchange == null)
+                    {
+                        var directPeering = new PSDirectPeeringModelView(peering);
+                        this.WriteObject(this.UpdateDirectPeering(directPeering));
+                    }
+
+                    if (peering.Direct == null)
+                    {
+                        var exchangePeering = new PSExchangePeeringModelView(peering);
+                        this.WriteObject(this.UpdateExchangePeering(exchangePeering));
+                    }
+                }
+
+                if (this.ParameterSetName.Equals(Constants.Direct, StringComparison.OrdinalIgnoreCase))
                 {
                     var peeringRequest = this.GetAndUpdateDirectPeering();
                     this.WriteObject(peeringRequest);
                 }
 
-                if (!this.ParameterSetName.Equals(
-                        Constants.Direct,
-                        StringComparison.OrdinalIgnoreCase)) return;
-                {
-                    var peeringRequest = this.GetAndUpdateDirectPeering();
-                    this.WriteObject(peeringRequest);
-                }
-
-                if (!this.ParameterSetName.Equals(
-                        Constants.Exchange,
-                        StringComparison.OrdinalIgnoreCase)) return;
+                if (this.ParameterSetName.Equals(Constants.Exchange, StringComparison.OrdinalIgnoreCase))
                 {
                     var peeringRequest = this.GetAndUpdateExchangePeering();
                     this.WriteObject(peeringRequest);
@@ -181,7 +219,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             }
             catch (ErrorResponseException ex)
             {
-                throw new ErrorResponseException($"Error:{ex.Response.ReasonPhrase} reason:{ex.Body?.Code} message:{ex.Body?.Message}");
+                throw new ErrorResponseException(
+                    $"Error:{ex.Response.ReasonPhrase} reason:{ex.Body?.Code} message:{ex.Body?.Message}");
             }
         }
 
@@ -204,30 +243,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     var resourceGroupName = this.GetResourceGroupNameFromId(directPeeringModelView.Id);
                     var peeringName = this.GetPeeringNameFromId(directPeeringModelView.Id);
                     var peering = new PSPeering
-                    {
-                        Kind = directPeeringModelView.Kind,
-                        PeeringLocation = directPeeringModelView.PeeringLocation,
-                        Location = directPeeringModelView.Location,
-                        Sku = directPeeringModelView.Sku,
-                        Tags = directPeeringModelView.Tags,
-                        Direct = new PSPeeringPropertiesDirect
-                        {
-                            Connections = directPeeringModelView.Connections,
-                            PeerAsn = new PSSubResource(directPeeringModelView.PeerAsn.Id),
-                            UseForPeeringService = directPeeringModelView
+                                      {
+                                          Kind = directPeeringModelView.Kind,
+                                          PeeringLocation = directPeeringModelView.PeeringLocation,
+                                          Location = directPeeringModelView.Location,
+                                          Sku = directPeeringModelView.Sku,
+                                          Tags = directPeeringModelView.Tags,
+                                          Direct = new PSPeeringPropertiesDirect
+                                                       {
+                                                           Connections = directPeeringModelView.Connections,
+                                                           PeerAsn = new PSSubResource(
+                                                               directPeeringModelView.PeerAsn.Id),
+                                                           UseForPeeringService = directPeeringModelView
                                                                .UseForPeeringService
-                        }
-                    };
+                                                       }
+                                      };
                     //peering.Sku = this.UseForPeeringService
                     //                  ? new PSPeeringSku { Name = Constants.PremiumDirectFree }
                     //                  : new PSPeeringSku { Name = Constants.BasicDirectFree };
                     peering.Direct.UseForPeeringService = this.UseForPeeringService;
 
                     return new PSDirectPeeringModelView(
-                        this.ToPeeringPs(this.PeeringClient.CreateOrUpdate(
-                        resourceGroupName.ToString(),
-                        peeringName.ToString(),
-                        this.ToPeering(peering))));
+                        this.ToPeeringPs(
+                            this.PeeringClient.CreateOrUpdate(
+                                resourceGroupName.ToString(),
+                                peeringName.ToString(),
+                                this.ToPeering(peering))));
                 }
             }
             catch (InvalidOperationException mapException)
@@ -236,7 +277,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             }
             catch (ErrorResponseException ex)
             {
-                throw new ErrorResponseException($"Error:{ex.Response.ReasonPhrase} reason:{ex.Body?.Code} message:{ex.Body?.Message}");
+                throw new ErrorResponseException(
+                    $"Error:{ex.Response.ReasonPhrase} reason:{ex.Body?.Code} message:{ex.Body?.Message}");
             }
 
             throw new InvalidOperationException("Check the input parameters.");
@@ -261,26 +303,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     var resourceGroupName = this.GetResourceGroupNameFromId(exchangePeeringModelView.Id);
                     var peeringName = this.GetPeeringNameFromId(exchangePeeringModelView.Id);
                     var peering = new PSPeering
-                    {
-                        Kind = exchangePeeringModelView.Kind,
-                        PeeringLocation = exchangePeeringModelView.PeeringLocation,
-                        Location = exchangePeeringModelView.Location,
-                        Sku = exchangePeeringModelView.Sku,
-                        Tags = exchangePeeringModelView.Tags,
-                        Exchange = new PSPeeringPropertiesExchange
-                        {
-                            Connections = exchangePeeringModelView.Connections,
-                            PeerAsn = new PSSubResource(exchangePeeringModelView.PeerAsn.Id),
-                        }
-                    };
+                                      {
+                                          Kind = exchangePeeringModelView.Kind,
+                                          PeeringLocation = exchangePeeringModelView.PeeringLocation,
+                                          Location = exchangePeeringModelView.Location,
+                                          Sku = exchangePeeringModelView.Sku,
+                                          Tags = exchangePeeringModelView.Tags,
+                                          Exchange = new PSPeeringPropertiesExchange
+                                                         {
+                                                             Connections = exchangePeeringModelView.Connections,
+                                                             PeerAsn = new PSSubResource(
+                                                                 exchangePeeringModelView.PeerAsn.Id),
+                                                         }
+                                      };
                     this.PeeringClient.CreateOrUpdate(
                         resourceGroupName.ToString(),
                         peeringName.ToString(),
                         this.ToPeering(peering));
 
                     return new PSExchangePeeringModelView(
-                        this.ToPeeringPs(
-                            this.PeeringClient.Get(resourceGroupName.ToString(), peeringName.ToString())));
+                        this.ToPeeringPs(this.PeeringClient.Get(resourceGroupName.ToString(), peeringName.ToString())));
                 }
             }
             catch (InvalidOperationException mapException)
@@ -289,7 +331,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             }
             catch (ErrorResponseException ex)
             {
-                throw new ErrorResponseException($"Error:{ex.Response.ReasonPhrase} reason:{ex.Body?.Code} message:{ex.Body?.Message}");
+                throw new ErrorResponseException(
+                    $"Error:{ex.Response.ReasonPhrase} reason:{ex.Body?.Code} message:{ex.Body?.Message}");
             }
 
             throw new InvalidOperationException("Check the input parameters.");
@@ -331,10 +374,53 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 }
             }
 
-            return new PSDirectPeeringModelView(this.ToPeeringPs(this.PeeringClient.CreateOrUpdate(
-                this.ResourceGroupName,
-                this.Name,
-                this.ToPeering(directPeering))));
+            return new PSDirectPeeringModelView(
+                this.ToPeeringPs(
+                    this.PeeringClient.CreateOrUpdate(
+                        this.ResourceGroupName,
+                        this.Name,
+                        this.ToPeering(directPeering))));
+        }
+
+        /// <summary>
+        /// The get and update direct peering.
+        /// </summary>
+        /// <param name="directPeering">
+        /// The direct peering.
+        /// </param>
+        /// <returns>
+        /// The <see cref="PSDirectPeeringModelView"/>.
+        /// </returns>
+        private PSDirectPeeringModelView UpdateDirectPeering(PSDirectPeeringModelView directPeering)
+        {
+            directPeering.Direct.UseForPeeringService = this.UseForPeeringService;
+            directPeering.Direct.PeerAsn = new PSSubResource(directPeering.Direct.PeerAsn.Id);
+            if (this.DirectConnection != null)
+            {
+                // check to see which connection has been changed
+                for (int i = 0; i < directPeering.Direct.Connections.Count - 1; i++)
+                {
+                    var differences = directPeering.Direct.Connections[i].DetailedCompare(this.DirectConnection[i]);
+                    if (differences.Count == 1)
+                    {
+                        directPeering.Direct.Connections[i] = this.DirectConnection[i];
+                    }
+
+                    if (differences.Count > 1) continue;
+                    var newPeering = this.PeeringClient.CreateOrUpdate(
+                        this.ResourceGroupName,
+                        this.Name,
+                        this.ToPeering(directPeering));
+                    return new PSDirectPeeringModelView(this.ToPeeringPs(newPeering));
+                }
+            }
+
+            return new PSDirectPeeringModelView(
+                this.ToPeeringPs(
+                    this.PeeringClient.CreateOrUpdate(
+                        this.ResourceGroupName,
+                        this.Name,
+                        this.ToPeering(directPeering))));
         }
 
         /// <summary>
@@ -354,17 +440,59 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 // check to see which connection has been changed
                 for (int i = 0; i < exchangePeering.Exchange.Connections.Count - 1; i++)
                 {
-                    var differences = exchangePeering.Exchange.Connections[i].DetailedCompare(this.ExchangeConnection[i]);
+                    var differences = exchangePeering.Exchange.Connections[i]
+                        .DetailedCompare(this.ExchangeConnection[i]);
                     if (differences.Count == 1)
                     {
                         exchangePeering.Exchange.Connections[i] = this.ExchangeConnection[i];
                     }
 
                     if (differences.Count > 1) continue;
-                    return new PSExchangePeeringModelView(this.ToPeeringPs(this.PeeringClient.CreateOrUpdate(
-                        this.ResourceGroupName,
-                        this.Name,
-                        this.ToPeering(exchangePeering))));
+                    return new PSExchangePeeringModelView(
+                        this.ToPeeringPs(
+                            this.PeeringClient.CreateOrUpdate(
+                                this.ResourceGroupName,
+                                this.Name,
+                                this.ToPeering(exchangePeering))));
+                }
+            }
+
+            throw new PSInvalidOperationException("Only one value is allowed to be changed for each connection.");
+        }
+
+        /// <summary>
+        /// The update exchange peering.
+        /// </summary>
+        /// <param name="psExchange">
+        /// The ps exchange.
+        /// </param>
+        /// <returns>
+        /// The <see cref="PSExchangePeeringModelView"/>.
+        /// </returns>
+        /// <exception cref="PSInvalidOperationException"> Not valid operation
+        /// </exception>
+        private PSExchangePeeringModelView UpdateExchangePeering(PSExchangePeeringModelView psExchange)
+        {
+            // var exchangePeering = this.ToPeeringPs(this.PeeringClient.Get(this.ResourceGroupName, this.Name));
+            psExchange.Exchange.PeerAsn = new PSSubResource(psExchange.Exchange.PeerAsn.Id);
+            if (this.ExchangeConnection != null)
+            {
+                // check to see which connection has been changed
+                for (int i = 0; i < psExchange.Exchange.Connections.Count - 1; i++)
+                {
+                    var differences = psExchange.Exchange.Connections[i].DetailedCompare(this.ExchangeConnection[i]);
+                    if (differences.Count == 1)
+                    {
+                        psExchange.Exchange.Connections[i] = this.ExchangeConnection[i];
+                    }
+
+                    if (differences.Count > 1) continue;
+                    return new PSExchangePeeringModelView(
+                        this.ToPeeringPs(
+                            this.PeeringClient.CreateOrUpdate(
+                                this.ResourceGroupName,
+                                this.Name,
+                                this.ToPeering(psExchange))));
                 }
             }
 
