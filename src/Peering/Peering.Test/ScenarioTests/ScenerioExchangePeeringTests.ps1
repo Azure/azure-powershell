@@ -143,12 +143,29 @@ Helper New Asn Exchange
 #>
 function Test-UpdateExchangeIPv4OnResourceId
 {
-	$name = "Contoso"
-	$resourceName = "NewContosoAshburnExchangePeering"
+	$resourceName = "NewContosoAmsterdamExchangePeering"
 	$resourceGroup = "testCarrier"
-	$peeringLocation = "Ashburn"
-	$profileSku = "Basic_Exchange_Free"
 
+	$ipv4 = "80.249.208.57"
+	$maxv4 = 19990
+
+	$ipv42 = "80.249.211.55"
+	$maxv42 = 19990
+
+	$peering = Get-AzPeering $resourceGroup $resourceName
+	Assert-NotNull $peering
+
+	$oldpeering = $peering
+
+	$peering.Connections[0] = $peering.Connections[0] |  Set-AzPeeringExchangeConnectionObject -PeerSessionIPv4Address $ipv4 -MaxPrefixesAdvertisedIPv4 $maxv4
+	$peering.Connections[1] = $peering.Connections[1] |  Set-AzPeeringExchangeConnectionObject -PeerSessionIPv4Address $ipv42 -MaxPrefixesAdvertisedIPv4 $maxv42
+
+	$update = Update-AzPeering -ResourceId $peering.Id $peering.Connections
+
+	Assert-AreEqual $ipv4 $update.Connections[0].BgpSession.PeerSessionIPv4Address 
+	Assert-AreEqual $maxv4 $update.Connections[0].BgpSession.MaxPrefixesAdvertisedV4 
+	Assert-AreEqual $ipv42 $update.Connections[1].BgpSession.PeerSessionIPv4Address 
+	Assert-AreEqual $maxv42 $update.Connections[1].BgpSession.MaxPrefixesAdvertisedV4 
 
 }
 

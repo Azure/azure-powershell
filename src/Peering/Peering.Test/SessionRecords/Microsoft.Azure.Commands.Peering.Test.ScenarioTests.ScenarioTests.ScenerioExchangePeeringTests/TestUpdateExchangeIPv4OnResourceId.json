@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "727ec184-2eb6-44bc-b6a7-b71feb1d07f4"
+          "737181b1-bdca-4829-a143-33169ab1d145"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,16 +27,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "96f21ca3-0e39-496f-8eb6-258d81da465f"
+          "3fc27039-8a9f-4cec-9d3d-21983b05478b"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14999"
+          "14997"
         ],
         "x-ms-correlation-request-id": [
-          "e4e6dcd0-604f-464e-97d3-2ae87d7c8d8f"
+          "c659e2dd-862a-4873-8766-2d11e3907e35"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20190409T193249Z:e4e6dcd0-604f-464e-97d3-2ae87d7c8d8f"
+          "NORTHEUROPE:20190409T193133Z:c659e2dd-862a-4873-8766-2d11e3907e35"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 09 Apr 2019 19:32:49 GMT"
+          "Tue, 09 Apr 2019 19:31:33 GMT"
         ],
         "Content-Length": [
           "2110"
@@ -67,7 +67,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "62de31ef-4416-4f0c-aa1d-4bb02cfe83bc"
+          "17c7776f-dfe6-4f0a-9d80-5c1fc1f609d2"
         ],
         "Accept-Language": [
           "en-US"
@@ -87,16 +87,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "18af67ce-602d-443b-b682-1a997d98f4c5"
+          "39404801-c37c-4410-b3a5-52a08e5d7ce8"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14998"
+          "14996"
         ],
         "x-ms-correlation-request-id": [
-          "3cbc200d-dacd-4123-b92f-2a6c4135747e"
+          "790002ff-b867-4a98-bda3-66d0c04c92fe"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20190409T193249Z:3cbc200d-dacd-4123-b92f-2a6c4135747e"
+          "NORTHEUROPE:20190409T193134Z:790002ff-b867-4a98-bda3-66d0c04c92fe"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -105,7 +105,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 09 Apr 2019 19:32:49 GMT"
+          "Tue, 09 Apr 2019 19:31:33 GMT"
         ],
         "Content-Length": [
           "2110"
@@ -117,17 +117,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Basic_Exchange_Free\",\r\n    \"tier\": \"Basic\",\r\n    \"family\": \"Exchange\",\r\n    \"size\": \"Free\"\r\n  },\r\n  \"kind\": \"Exchange\",\r\n  \"properties\": {\r\n    \"exchange\": {\r\n      \"connections\": [\r\n        {\r\n          \"peeringDBFacilityId\": 26,\r\n          \"connectionState\": \"Active\",\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"80.249.208.0/21\",\r\n            \"sessionPrefixV6\": \"2001:7f8:1::/64\",\r\n            \"microsoftSessionIPv4Address\": \"80.249.209.21\",\r\n            \"microsoftSessionIPv6Address\": \"2001:7f8:1::a500:8075:2\",\r\n            \"peerSessionIPv4Address\": \"80.249.208.61\",\r\n            \"peerSessionIPv6Address\": \"2001:7f8:1::a501:5224:1\",\r\n            \"sessionStateV4\": \"Established\",\r\n            \"sessionStateV6\": \"Established\",\r\n            \"maxPrefixesAdvertisedV4\": 20000,\r\n            \"maxPrefixesAdvertisedV6\": 2000\r\n          }\r\n        },\r\n        {\r\n          \"peeringDBFacilityId\": 26,\r\n          \"connectionState\": \"Active\",\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"80.249.208.0/21\",\r\n            \"sessionPrefixV6\": \"2001:7f8:1::/64\",\r\n            \"microsoftSessionIPv4Address\": \"80.249.209.21\",\r\n            \"microsoftSessionIPv6Address\": \"2001:7f8:1::a500:8075:2\",\r\n            \"peerSessionIPv4Address\": \"80.249.211.60\",\r\n            \"peerSessionIPv6Address\": \"2001:7f8:1::a501:5224:2\",\r\n            \"sessionStateV4\": \"Established\",\r\n            \"sessionStateV6\": \"Established\",\r\n            \"maxPrefixesAdvertisedV4\": 20000,\r\n            \"maxPrefixesAdvertisedV6\": 2000\r\n          }\r\n        }\r\n      ],\r\n      \"peerAsn\": {\r\n        \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso\"\r\n      }\r\n    },\r\n    \"peeringLocation\": \"Amsterdam\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"centralus\",\r\n  \"tags\": {},\r\n  \"name\": \"NewContosoAmsterdamExchangePeering\",\r\n  \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/resourceGroups/testCarrier/providers/Microsoft.Peering/peerings/NewContosoAmsterdamExchangePeering\",\r\n  \"type\": \"Microsoft.Peering/peerings\"\r\n}",
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Basic_Exchange_Free\",\r\n    \"tier\": \"Basic\",\r\n    \"family\": \"Exchange\",\r\n    \"size\": \"Free\"\r\n  },\r\n  \"kind\": \"Exchange\",\r\n  \"properties\": {\r\n    \"exchange\": {\r\n      \"connections\": [\r\n        {\r\n          \"peeringDBFacilityId\": 26,\r\n          \"connectionState\": \"Active\",\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"80.249.208.0/21\",\r\n            \"sessionPrefixV6\": \"2001:7f8:1::/64\",\r\n            \"microsoftSessionIPv4Address\": \"80.249.209.21\",\r\n            \"microsoftSessionIPv6Address\": \"2001:7f8:1::a500:8075:2\",\r\n            \"peerSessionIPv4Address\": \"80.249.208.57\",\r\n            \"peerSessionIPv6Address\": \"2001:7f8:1::a501:5224:1\",\r\n            \"sessionStateV4\": \"Established\",\r\n            \"sessionStateV6\": \"Established\",\r\n            \"maxPrefixesAdvertisedV4\": 19990,\r\n            \"maxPrefixesAdvertisedV6\": 2000\r\n          }\r\n        },\r\n        {\r\n          \"peeringDBFacilityId\": 26,\r\n          \"connectionState\": \"Active\",\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"80.249.208.0/21\",\r\n            \"sessionPrefixV6\": \"2001:7f8:1::/64\",\r\n            \"microsoftSessionIPv4Address\": \"80.249.209.21\",\r\n            \"microsoftSessionIPv6Address\": \"2001:7f8:1::a500:8075:2\",\r\n            \"peerSessionIPv4Address\": \"80.249.211.55\",\r\n            \"peerSessionIPv6Address\": \"2001:7f8:1::a501:5224:2\",\r\n            \"sessionStateV4\": \"Established\",\r\n            \"sessionStateV6\": \"Established\",\r\n            \"maxPrefixesAdvertisedV4\": 19990,\r\n            \"maxPrefixesAdvertisedV6\": 2000\r\n          }\r\n        }\r\n      ],\r\n      \"peerAsn\": {\r\n        \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso\"\r\n      }\r\n    },\r\n    \"peeringLocation\": \"Amsterdam\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"centralus\",\r\n  \"tags\": {},\r\n  \"name\": \"NewContosoAmsterdamExchangePeering\",\r\n  \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/resourceGroups/testCarrier/providers/Microsoft.Peering/peerings/NewContosoAmsterdamExchangePeering\",\r\n  \"type\": \"Microsoft.Peering/peerings\"\r\n}",
       "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/resourceGroups/testCarrier/providers/Microsoft.Peering/peerings/NewContosoAmsterdamExchangePeering?api-version=2019-03-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDQ0NWJmMTEtNjFjNC00MzZmLWE5NDAtNjAxOTRmOGFjYTU3L3Jlc291cmNlR3JvdXBzL3Rlc3RDYXJyaWVyL3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyaW5ncy9OZXdDb250b3NvQW1zdGVyZGFtRXhjaGFuZ2VQZWVyaW5nP2FwaS12ZXJzaW9uPTIwMTktMDMtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Basic_Exchange_Free\",\r\n    \"tier\": \"Basic\",\r\n    \"family\": \"Exchange\",\r\n    \"size\": \"Free\"\r\n  },\r\n  \"kind\": \"Exchange\",\r\n  \"properties\": {\r\n    \"exchange\": {\r\n      \"connections\": [\r\n        {\r\n          \"peeringDBFacilityId\": 26,\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"80.249.208.0/21\",\r\n            \"sessionPrefixV6\": \"2001:7f8:1::/64\",\r\n            \"peerSessionIPv4Address\": \"80.249.208.61\",\r\n            \"peerSessionIPv6Address\": \"2001:7f8:1::a501:5224:1\",\r\n            \"maxPrefixesAdvertisedV4\": 20000,\r\n            \"maxPrefixesAdvertisedV6\": 2000,\r\n            \"md5AuthenticationKey\": \"276cd9589fc3ee8921c40e9d98ceca02\"\r\n          }\r\n        },\r\n        {\r\n          \"peeringDBFacilityId\": 26,\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"80.249.208.0/21\",\r\n            \"sessionPrefixV6\": \"2001:7f8:1::/64\",\r\n            \"peerSessionIPv4Address\": \"80.249.211.60\",\r\n            \"peerSessionIPv6Address\": \"2001:7f8:1::a501:5224:2\",\r\n            \"maxPrefixesAdvertisedV4\": 20000,\r\n            \"maxPrefixesAdvertisedV6\": 2000\r\n          }\r\n        }\r\n      ],\r\n      \"peerAsn\": {\r\n        \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso\"\r\n      }\r\n    },\r\n    \"peeringLocation\": \"Amsterdam\"\r\n  },\r\n  \"location\": \"centralus\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Basic_Exchange_Free\",\r\n    \"tier\": \"Basic\",\r\n    \"family\": \"Exchange\",\r\n    \"size\": \"Free\"\r\n  },\r\n  \"kind\": \"Exchange\",\r\n  \"properties\": {\r\n    \"exchange\": {\r\n      \"connections\": [\r\n        {\r\n          \"peeringDBFacilityId\": 26,\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"80.249.208.0/21\",\r\n            \"sessionPrefixV6\": \"2001:7f8:1::/64\",\r\n            \"peerSessionIPv4Address\": \"80.249.208.57\",\r\n            \"peerSessionIPv6Address\": \"2001:7f8:1::a501:5224:1\",\r\n            \"maxPrefixesAdvertisedV4\": 19990,\r\n            \"maxPrefixesAdvertisedV6\": 2000\r\n          }\r\n        },\r\n        {\r\n          \"peeringDBFacilityId\": 26,\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"80.249.208.0/21\",\r\n            \"sessionPrefixV6\": \"2001:7f8:1::/64\",\r\n            \"peerSessionIPv4Address\": \"80.249.211.60\",\r\n            \"peerSessionIPv6Address\": \"2001:7f8:1::a501:5224:2\",\r\n            \"maxPrefixesAdvertisedV4\": 20000,\r\n            \"maxPrefixesAdvertisedV6\": 2000\r\n          }\r\n        }\r\n      ],\r\n      \"peerAsn\": {\r\n        \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso\"\r\n      }\r\n    },\r\n    \"peeringLocation\": \"Amsterdam\"\r\n  },\r\n  \"location\": \"centralus\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3216d9f0-b239-4690-ab5a-d4bd7d1ceec1"
+          "6061a613-06ce-4d8c-87ff-3bf6c8a1c03e"
         ],
         "Accept-Language": [
           "en-US"
@@ -142,7 +142,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "1363"
+          "1290"
         ]
       },
       "ResponseHeaders": {
@@ -153,16 +153,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "23c54516-2faf-4b2a-9f41-8810f80c0f52"
+          "2cc7633a-cd19-4d02-aaf3-b7203b47666b"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "b3c73c5e-f9ea-4c99-8e2c-dfa7232ba3f7"
+          "d3c78f0c-03e2-4eb5-ba67-f81196216fe5"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20190409T193250Z:b3c73c5e-f9ea-4c99-8e2c-dfa7232ba3f7"
+          "NORTHEUROPE:20190409T193134Z:d3c78f0c-03e2-4eb5-ba67-f81196216fe5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -171,7 +171,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 09 Apr 2019 19:32:50 GMT"
+          "Tue, 09 Apr 2019 19:31:34 GMT"
         ],
         "Content-Length": [
           "2110"
@@ -183,7 +183,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Basic_Exchange_Free\",\r\n    \"tier\": \"Basic\",\r\n    \"family\": \"Exchange\",\r\n    \"size\": \"Free\"\r\n  },\r\n  \"kind\": \"Exchange\",\r\n  \"properties\": {\r\n    \"exchange\": {\r\n      \"connections\": [\r\n        {\r\n          \"peeringDBFacilityId\": 26,\r\n          \"connectionState\": \"Active\",\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"80.249.208.0/21\",\r\n            \"sessionPrefixV6\": \"2001:7f8:1::/64\",\r\n            \"microsoftSessionIPv4Address\": \"80.249.209.21\",\r\n            \"microsoftSessionIPv6Address\": \"2001:7f8:1::a500:8075:2\",\r\n            \"peerSessionIPv4Address\": \"80.249.208.61\",\r\n            \"peerSessionIPv6Address\": \"2001:7f8:1::a501:5224:1\",\r\n            \"sessionStateV4\": \"Established\",\r\n            \"sessionStateV6\": \"Established\",\r\n            \"maxPrefixesAdvertisedV4\": 20000,\r\n            \"maxPrefixesAdvertisedV6\": 2000,\r\n            \"md5AuthenticationKey\": \"276cd9589fc3ee8921c40e9d98ceca02\"\r\n          }\r\n        },\r\n        {\r\n          \"peeringDBFacilityId\": 26,\r\n          \"connectionState\": \"Active\",\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"80.249.208.0/21\",\r\n            \"sessionPrefixV6\": \"2001:7f8:1::/64\",\r\n            \"microsoftSessionIPv4Address\": \"80.249.209.21\",\r\n            \"microsoftSessionIPv6Address\": \"2001:7f8:1::a500:8075:2\",\r\n            \"peerSessionIPv4Address\": \"80.249.211.60\",\r\n            \"peerSessionIPv6Address\": \"2001:7f8:1::a501:5224:2\",\r\n            \"sessionStateV4\": \"Established\",\r\n            \"sessionStateV6\": \"Established\",\r\n            \"maxPrefixesAdvertisedV4\": 20000,\r\n            \"maxPrefixesAdvertisedV6\": 2000,\r\n            \"md5AuthenticationKey\": \"276cd9589fc3ee8921c40e9d98ceca02\"\r\n          }\r\n        }\r\n      ],\r\n      \"peerAsn\": {\r\n        \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso\"\r\n      }\r\n    },\r\n    \"peeringLocation\": \"Amsterdam\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"centralus\",\r\n  \"tags\": {},\r\n  \"name\": \"NewContosoAmsterdamExchangePeering\",\r\n  \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/resourceGroups/testCarrier/providers/Microsoft.Peering/peerings/NewContosoAmsterdamExchangePeering\",\r\n  \"type\": \"Microsoft.Peering/peerings\"\r\n}",
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Basic_Exchange_Free\",\r\n    \"tier\": \"Basic\",\r\n    \"family\": \"Exchange\",\r\n    \"size\": \"Free\"\r\n  },\r\n  \"kind\": \"Exchange\",\r\n  \"properties\": {\r\n    \"exchange\": {\r\n      \"connections\": [\r\n        {\r\n          \"peeringDBFacilityId\": 26,\r\n          \"connectionState\": \"Active\",\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"80.249.208.0/21\",\r\n            \"sessionPrefixV6\": \"2001:7f8:1::/64\",\r\n            \"microsoftSessionIPv4Address\": \"80.249.209.21\",\r\n            \"microsoftSessionIPv6Address\": \"2001:7f8:1::a500:8075:2\",\r\n            \"peerSessionIPv4Address\": \"80.249.208.57\",\r\n            \"peerSessionIPv6Address\": \"2001:7f8:1::a501:5224:1\",\r\n            \"sessionStateV4\": \"Established\",\r\n            \"sessionStateV6\": \"Established\",\r\n            \"maxPrefixesAdvertisedV4\": 19990,\r\n            \"maxPrefixesAdvertisedV6\": 2000\r\n          }\r\n        },\r\n        {\r\n          \"peeringDBFacilityId\": 26,\r\n          \"connectionState\": \"Active\",\r\n          \"bgpSession\": {\r\n            \"sessionPrefixV4\": \"80.249.208.0/21\",\r\n            \"sessionPrefixV6\": \"2001:7f8:1::/64\",\r\n            \"microsoftSessionIPv4Address\": \"80.249.209.21\",\r\n            \"microsoftSessionIPv6Address\": \"2001:7f8:1::a500:8075:2\",\r\n            \"peerSessionIPv4Address\": \"80.249.211.55\",\r\n            \"peerSessionIPv6Address\": \"2001:7f8:1::a501:5224:2\",\r\n            \"sessionStateV4\": \"Established\",\r\n            \"sessionStateV6\": \"Established\",\r\n            \"maxPrefixesAdvertisedV4\": 19990,\r\n            \"maxPrefixesAdvertisedV6\": 2000\r\n          }\r\n        }\r\n      ],\r\n      \"peerAsn\": {\r\n        \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso\"\r\n      }\r\n    },\r\n    \"peeringLocation\": \"Amsterdam\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"centralus\",\r\n  \"tags\": {},\r\n  \"name\": \"NewContosoAmsterdamExchangePeering\",\r\n  \"id\": \"/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/resourceGroups/testCarrier/providers/Microsoft.Peering/peerings/NewContosoAmsterdamExchangePeering\",\r\n  \"type\": \"Microsoft.Peering/peerings\"\r\n}",
       "StatusCode": 200
     }
   ],

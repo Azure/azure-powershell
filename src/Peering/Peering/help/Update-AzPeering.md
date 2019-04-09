@@ -14,7 +14,7 @@ Sets the Peering. Use this Command in conjunction with `Set-AzDirectPeeringConne
 
 ### ParameterSetNameDefaultExchange (Default)
 ```
-Update-AzPeering -InputObject <PSPeering> [-ExchangeConnection <PSExchangeConnection[]>]
+Update-AzPeering -InputObject <PSPeering> [[-ExchangeConnection] <PSExchangeConnection[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -28,26 +28,26 @@ Update-AzPeering -InputObject <PSPeering> [-UseForPeeringService <Boolean>]
 ### ParameterSetNameByResourceIdDirect
 ```
 Update-AzPeering -ResourceId <String> [-UseForPeeringService <Boolean>]
- -DirectConnection <PSDirectConnection[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DirectConnection <PSDirectConnection[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ParameterSetNameByResourceIdExchange
 ```
-Update-AzPeering -ResourceId <String> -ExchangeConnection <PSExchangeConnection[]>
+Update-AzPeering -ResourceId <String> [-ExchangeConnection] <PSExchangeConnection[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Direct
 ```
 Update-AzPeering [-ResourceGroupName] <String> [-Name] <String> [-UseForPeeringService <Boolean>]
- -DirectConnection <PSDirectConnection[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DirectConnection <PSDirectConnection[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### Exchange
 ```
-Update-AzPeering [-ResourceGroupName] <String> [-Name] <String> -ExchangeConnection <PSExchangeConnection[]>
+Update-AzPeering [-ResourceGroupName] <String> [-Name] <String> [-ExchangeConnection] <PSExchangeConnection[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -58,7 +58,7 @@ Sets the PSPeering Object
 
 ### Update Md5 Authentication Key
 ```powershell
-PS C:> $peering = Get-AzPeering -PeerName "ContosoPeering" -ResourceGroupName rg1 
+PS C:> $peering = Get-AzPeering -ResourceGroupName rg1 -PeerName "ContosoPeering"  
 PS C:> $peering.Connections[0] = $peering.Connections[0] | Set-AzPeeringDirectConnectionObject -MD5AuthenticationKey $hash
 PS C:> $peering | Update-AzPeering
 ```
@@ -71,6 +71,15 @@ PS C:> Update-AzPeering -ResourceGroupName rg1 -Name ContosoPeering -UseForPeeri
 ```
 
 Sets the Use for Peering Service Flag
+
+### Update IPv4 Address for Exchange Peering
+```powershell
+PS C:> $peering = Get-AzPeering -ResourceGroupName rg1  -PeerName "ContosoExchangePeering" 
+PS C:> $peering.Connections[0] = $peering.Connections[0] | Set-AzPeeringExchangeConnectionObject -PeerSessionIPv4Address $ipv4Address
+PS C:> Update-AzPeering -ResourceId $peering.Id $peering.Connections
+```
+
+Sets the Ipv4 Address for an Exchange Peering using ResourceId
 
 ## PARAMETERS
 
@@ -109,7 +118,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]
 Parameter Sets: ParameterSetNameByResourceIdDirect, Direct
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -125,7 +134,7 @@ Parameter Sets: ParameterSetNameDefaultExchange
 Aliases:
 
 Required: False
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -137,7 +146,7 @@ Parameter Sets: ParameterSetNameByResourceIdExchange, Exchange
 Aliases:
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -169,7 +178,7 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -184,7 +193,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
