@@ -24,6 +24,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
+using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 {
@@ -131,6 +132,24 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public int? VCore { get; set; }
 
         /// <summary>
+        /// Gets or sets whether or not the public data endpoint is enabled.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Whether or not the public data endpoint is enabled for the instance.")]
+        [ValidateNotNullOrEmpty]
+        public bool? PublicDataEndpointEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets connection type used for connecting to the instance.
+        /// Possible values include: 'Proxy', 'Redirect', 'Default'
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The connection type used for connecting to the instance.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter(ManagedInstanceProxyOverride.Proxy, ManagedInstanceProxyOverride.Redirect, ManagedInstanceProxyOverride.Default)]
+        public string ProxyOverride { get; set; }
+
+        /// <summary>
         /// The tags to associate with the instance.
         /// </summary>
         [Parameter(Mandatory = false,
@@ -195,6 +214,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 LicenseType = this.LicenseType,
                 StorageSizeInGB = this.StorageSizeInGB ?? model.FirstOrDefault().StorageSizeInGB,
                 VCores = this.VCore,
+                PublicDataEndpointEnabled = this.PublicDataEndpointEnabled,
+                ProxyOverride = this.ProxyOverride,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
                 Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
             });

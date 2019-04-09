@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
+using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
@@ -150,6 +151,23 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public string Collation { get; set; }
 
         /// <summary>
+        /// Gets or sets whether or not the public data endpoint is enabled.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Whether or not the public data endpoint is enabled for the instance.")]
+        public SwitchParameter PublicDataEndpointEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets connection type used for connecting to the instance.
+        /// Possible values include: 'Proxy', 'Redirect', 'Default'
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The connection type used for connecting to the instance.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter(ManagedInstanceProxyOverride.Proxy, ManagedInstanceProxyOverride.Redirect, ManagedInstanceProxyOverride.Default)]
+        public string ProxyOverride { get; set; }
+
+        /// <summary>
         /// Gets or sets the tags to associate with the instance
         /// </summary>
         [Parameter(Mandatory = false,
@@ -240,7 +258,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 SubnetId = this.SubnetId,
                 VCores = this.VCore,
                 Sku = Sku,
-                Collation = this.Collation
+                Collation = this.Collation,
+                PublicDataEndpointEnabled = this.PublicDataEndpointEnabled,
+                ProxyOverride = this.ProxyOverride
             });
             return newEntity;
         }

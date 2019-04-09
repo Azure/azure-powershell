@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
+    [CmdletOutputBreakingChange(typeof(PSVirtualMachineScaleSetVM), NewOutputProperties = new string[] { "ProtectFromScaleIn" })]
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssVMDataDisk")]
     [OutputType(typeof(PSVirtualMachineScaleSetVM))]
     public class RemoveAzureRmVmssVMDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet

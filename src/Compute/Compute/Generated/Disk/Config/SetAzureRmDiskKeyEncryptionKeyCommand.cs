@@ -21,6 +21,7 @@
 
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,6 +30,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
+    [CmdletOutputBreakingChange(typeof(PSDisk),
+                                DeprecatedOutputProperties = new string[] { "EncryptionSettings" },
+                                NewOutputProperties = new string[] { "EncryptionSettingsCollection", "HyperVGeneration", "DiskState" })]
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiskKeyEncryptionKey", SupportsShouldProcess = true)]
     [OutputType(typeof(PSDisk))]
     public partial class SetAzureRmDiskKeyEncryptionKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
@@ -62,39 +66,46 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
+            // EncryptionSettingsCollection
+            if (this.Disk.EncryptionSettingsCollection == null)
+            {
+                this.Disk.EncryptionSettingsCollection = new EncryptionSettingsCollection();
+            }
+
+            // EncryptionSettings
+            if (this.Disk.EncryptionSettingsCollection.EncryptionSettings == null)
+            {
+                this.Disk.EncryptionSettingsCollection.EncryptionSettings = new List<EncryptionSettingsElement>();
+            }
+
+            if (this.Disk.EncryptionSettingsCollection.EncryptionSettings.Count == 0)
+            {
+                this.Disk.EncryptionSettingsCollection.EncryptionSettings.Add(new EncryptionSettingsElement());
+            }
+
             if (this.MyInvocation.BoundParameters.ContainsKey("KeyUrl"))
             {
-                // EncryptionSettings
-                if (this.Disk.EncryptionSettings == null)
-                {
-                    this.Disk.EncryptionSettings = new EncryptionSettings();
-                }
                 // KeyEncryptionKey
-                if (this.Disk.EncryptionSettings.KeyEncryptionKey == null)
+                if (this.Disk.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey == null)
                 {
-                    this.Disk.EncryptionSettings.KeyEncryptionKey = new KeyVaultAndKeyReference();
+                    this.Disk.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey = new KeyVaultAndKeyReference();
                 }
-                this.Disk.EncryptionSettings.KeyEncryptionKey.KeyUrl = this.KeyUrl;
+                this.Disk.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.KeyUrl = this.KeyUrl;
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("SourceVaultId"))
             {
-                // EncryptionSettings
-                if (this.Disk.EncryptionSettings == null)
-                {
-                    this.Disk.EncryptionSettings = new EncryptionSettings();
-                }
                 // KeyEncryptionKey
-                if (this.Disk.EncryptionSettings.KeyEncryptionKey == null)
+                if (this.Disk.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey == null)
                 {
-                    this.Disk.EncryptionSettings.KeyEncryptionKey = new KeyVaultAndKeyReference();
+                    this.Disk.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey = new KeyVaultAndKeyReference();
                 }
                 // SourceVault
-                if (this.Disk.EncryptionSettings.KeyEncryptionKey.SourceVault == null)
+                if (this.Disk.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.SourceVault == null)
                 {
-                    this.Disk.EncryptionSettings.KeyEncryptionKey.SourceVault = new SourceVault();
+                    this.Disk.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.SourceVault = new SourceVault();
                 }
-                this.Disk.EncryptionSettings.KeyEncryptionKey.SourceVault.Id = this.SourceVaultId;
+                this.Disk.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.SourceVault.Id = this.SourceVaultId;
             }
 
             WriteObject(this.Disk);

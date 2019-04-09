@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -133,15 +133,6 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Custom domain with name &apos;{0}&apos; in the endpoint &apos;{1}&apos;,profile &apos;{2}&apos;, resource group &apos;{3}&apos; does not exist..
-        /// </summary>
-        internal static string Error_DeleteNonExistingCustomDomain {
-            get {
-                return ResourceManager.GetString("Error_DeleteNonExistingCustomDomain", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Endpoint with name &apos;{0}&apos; in the profile &apos;{1}&apos; and resource group &apos;{2}&apos; does not exist..
         /// </summary>
         internal static string Error_DeleteNonExistingEndpoint {
@@ -165,6 +156,15 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         internal static string Error_DeleteNonExistingProfile {
             get {
                 return ResourceManager.GetString("Error_DeleteNonExistingProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom domain with name &apos;{0}&apos; in the endpoint &apos;{1}&apos;,profile &apos;{2}&apos;, resource group &apos;{3}&apos; does not exist..
+        /// </summary>
+        internal static string Error_NonExistingCustomDomain {
+            get {
+                return ResourceManager.GetString("Error_NonExistingCustomDomain", resourceCulture);
             }
         }
         
