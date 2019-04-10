@@ -95,5 +95,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
         /// </summary>
         [JsonProperty(Required = Required.Default)]
         public InsensitiveDictionary<string> Tags { get; set; }
+
+        /// <summary>
+        /// The identity assigned to the resource.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public ResourceIdentity Identity { get; set; }
     }
 }

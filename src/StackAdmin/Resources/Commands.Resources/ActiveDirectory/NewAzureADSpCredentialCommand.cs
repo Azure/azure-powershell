@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
@@ -25,8 +27,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new AD servicePrincipal Credential.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmADSpCredential", DefaultParameterSetName = ParameterSet.SpObjectIdWithPassword, SupportsShouldProcess = true), OutputType(typeof(PSADCredential))]
-    [Alias("New-AzureRmADServicePrincipalCredential")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADSpCredential", DefaultParameterSetName = ParameterSet.SpObjectIdWithPassword, SupportsShouldProcess = true)]
+    [OutputType(typeof(PSADCredential), typeof(PSADCredentialWrapper))]
+    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADServicePrincipalCredential")]
     public class NewAzureADSpCredentialCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SpObjectIdWithCertValue, HelpMessage = "The servicePrincipal object id.")]
@@ -46,13 +49,16 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [ValidateNotNullOrEmpty]
         public PSADServicePrincipal ServicePrincipalObject { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SpObjectIdWithPassword,
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SpObjectIdWithPassword,
             HelpMessage = "The value for the password credential associated with the servicePrincipal that will be valid for one year by default.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithPassword,
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithPassword,
             HelpMessage = "The value for the password credential associated with the servicePrincipal that will be valid for one year by default.")]
-        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.ServicePrincipalObjectWithPassword,
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ServicePrincipalObjectWithPassword,
             HelpMessage = "The value for the password credential associated with the servicePrincipal that will be valid for one year by default.")]
         [ValidateNotNullOrEmpty]
+#if NETSTANDARD
+        [CmdletParameterBreakingChange(nameof(Password), ChangeDescription = "The Password parameter will be removed in an upcoming breaking change release. After this point, the password will always be automatically generated.")]
+#endif
         public SecureString Password { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SpObjectIdWithCertValue,
@@ -80,7 +86,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
-                EndDate = StartDate.AddYears(1);
+                if (!this.IsParameterBound(c => c.EndDate))
+                {
+                    WriteVerbose(Resources.Properties.Resources.DefaultEndDateUsed);
+                    EndDate = StartDate.AddYears(1);
+                }
+
                 if (this.IsParameterBound(c => c.ServicePrincipalObject))
                 {
                     ObjectId = ServicePrincipalObject.Id;
@@ -127,7 +138,24 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 }
                 else
                 {
-                    throw new InvalidOperationException("No valid keyCredential or passwordCredential to update!!");
+                    // If no credentials provided, set the password to a randomly generated GUID
+                    Password = Guid.NewGuid().ToString().ConvertToSecureString();
+
+                    string decodedPassword = SecureStringExtensions.ConvertToString(Password);
+
+                    var passwordCredential = new PasswordCredential()
+                    {
+                        EndDate = EndDate,
+                        StartDate = StartDate,
+                        KeyId = Guid.NewGuid().ToString(),
+                        Value = decodedPassword
+                    };
+                    if (ShouldProcess(target: ObjectId.ToString(), action: string.Format("Adding a new password to service principal with objectId {0}", ObjectId)))
+                    {
+                        var spCred = new PSADCredentialWrapper(ActiveDirectoryClient.CreateSpPasswordCredential(ObjectId, passwordCredential));
+                        spCred.Secret = Password;
+                        WriteObject(spCred);
+                    }
                 }
             });
         }

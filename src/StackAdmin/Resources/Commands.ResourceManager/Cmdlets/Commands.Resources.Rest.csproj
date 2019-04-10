@@ -49,7 +49,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.Management.ResourceManager.1.6.0-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.Management.ResourceManager.1.9.1-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Caching" />
   </ItemGroup>
@@ -100,7 +100,9 @@
     <Compile Include="Entities\ResourceGroup\ExportTemplateParameters.cs" />
     <Compile Include="Entities\ResourceGroup\ResourceBatchMoveParameters.cs" />
     <Compile Include="Entities\Resources\Resource.cs" />
+    <Compile Include="Entities\Resources\ResourceIdentityType.cs" />
     <Compile Include="Entities\Resources\ResourcePlan.cs" />
+    <Compile Include="Entities\Resources\ResourceIdentity.cs" />
     <Compile Include="Entities\Resources\ResourceSku.cs" />
     <Compile Include="Entities\Resources\TerminalProvisioningStates.cs" />
     <Compile Include="Extensions\AsyncExtensions.cs" />
@@ -117,6 +119,13 @@
     <Compile Include="Handlers\CmdletInfoHandler.cs" />
     <Compile Include="Handlers\UserAgentHandler.cs" />
     <Compile Include="Implementation\CmdletBase\ProviderFeatureCmdletBase.cs" />
+    <Compile Include="Implementation\Deployments\GetAzureDeploymentCmdlet.cs" />
+    <Compile Include="Implementation\Deployments\GetAzureDeploymentOperationCmdlet.cs" />
+    <Compile Include="Implementation\Deployments\NewAzureDeploymentCmdlet.cs" />
+    <Compile Include="Implementation\Deployments\RemoveAzureDeploymentCmdlet.cs" />
+    <Compile Include="Implementation\Deployments\SaveAzureDeploymentTemplateCmdlet.cs" />
+    <Compile Include="Implementation\Deployments\StopAzureDeploymentCmdlet.cs" />
+    <Compile Include="Implementation\Deployments\TestAzureDeploymentCmdlet.cs" />
     <Compile Include="Implementation\Features\GetAzureProviderFeatureCmdlet.cs" />
     <Compile Include="Implementation\Features\RegisterAzureProviderFeatureCmdlet.cs" />
     <Compile Include="Implementation\Locations\GetAzureLocationCmdlet.cs" />
@@ -182,8 +191,13 @@
     <Compile Include="SdkClient\SubscriptionSdkClient.cs" />
     <Compile Include="SdkModels\Deployments\PSCreateResourceGroupDeploymentParameters.cs" />
     <Compile Include="SdkModels\Deployments\DeploymentVariable.cs" />
-    <Compile Include="SdkModels\Deployments\FilterResourceGroupDeploymentOptions.cs" />
+    <Compile Include="SdkModels\Deployments\FilterDeploymentOptions.cs" />
+    <Compile Include="SdkModels\Deployments\PSDeployment.cs" />
+    <Compile Include="SdkModels\Deployments\PSDeploymentCmdletParameters.cs" />
+    <Compile Include="SdkModels\Deployments\PSDeploymentObject.cs" />
+    <Compile Include="SdkModels\Deployments\PSDeploymentOperation.cs" />
     <Compile Include="SdkModels\Deployments\PSResourceGroupDeployment.cs" />
+    <Compile Include="SdkModels\Deployments\PSTemplatePath.cs" />
     <Compile Include="SdkModels\Deployments\TemplateFile.cs" />
     <Compile Include="SdkModels\Deployments\TemplateFileParameterV1.cs" />
     <Compile Include="SdkModels\Deployments\TemplateFileParameterv2.cs" />
@@ -245,6 +259,11 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\ResourceManager\Profile\Commands.Profile\Commands.Profile.csproj">
+      <Project>{142d7b0b-388a-4ceb-a228-7f6d423c5c2e}</Project>
+      <Name>Commands.Profile</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
