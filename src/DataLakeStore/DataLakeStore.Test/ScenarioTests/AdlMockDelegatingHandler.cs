@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
 {
     /// <summary>
-    /// This is needed to non-indent the output for jsons
+    /// Mock handler for azure test framework will read the output from httpclienthandler
+    /// and indent them while writing them to json files. This is needed to non-indent the output of
+    /// httpresponsemessage that we get from their mock handler
     /// </summary>
     public class AdlMockDelegatingHandler : DelegatingHandler
     {
