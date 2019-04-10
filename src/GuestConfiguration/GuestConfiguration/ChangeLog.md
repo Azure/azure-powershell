@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.10.5
 - Fixed cmdlets failure when a subscription has an incorrect format initiative definition for GuestConfiguration category.
 
 ## Version 0.10.4
