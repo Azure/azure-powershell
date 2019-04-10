@@ -57,7 +57,7 @@
         @{ModuleName = 'AzureRM.Dns'; RequiredVersion = '3.5.1'; },
         @{ModuleName = 'AzureRM.KeyVault'; RequiredVersion = '4.2.0'; },
         @{ModuleName = 'AzureRM.Network'; RequiredVersion = '5.0.1'; },
-        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.3'; },
+        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.4.3'; },
         @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '5.0.4'; },
         @{ModuleName = 'AzureRM.Tags'; RequiredVersion = '4.0.2'; },
         @{ModuleName = 'AzureRM.UsageAggregates'; RequiredVersion = '4.0.3'; },

@@ -225,13 +225,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             const string failureStatusFormat = "Resource {0} '{1}' failed with message '{2}'";
             List<DeploymentOperation> newOperations;
 
-            var result = ResourceManagementClient.DeploymentOperations.List(resourceGroup, deploymentName, null);
+            var result = this.ListDeploymentOperations(resourceGroup, deploymentName);
+
             newOperations = GetNewOperations(operations, result);
             operations.AddRange(newOperations);
 
             while (!string.IsNullOrEmpty(result.NextPageLink))
             {
-                result = ResourceManagementClient.DeploymentOperations.ListNext(result.NextPageLink);
+                result = this.ListNextDeploymentOperations(resourceGroup, result.NextPageLink);
                 newOperations = GetNewOperations(operations, result);
                 operations.AddRange(newOperations);
             }
@@ -245,9 +246,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     if (operation.Properties.TargetResource != null)
                     {
                         statusMessage = string.Format(normalStatusFormat,
-                        operation.Properties.TargetResource.ResourceType,
-                        operation.Properties.TargetResource.ResourceName,
-                        operation.Properties.ProvisioningState.ToLower());
+                            operation.Properties.TargetResource.ResourceType,
+                            operation.Properties.TargetResource.ResourceName,
+                            operation.Properties.ProvisioningState.ToLower());
 
                         WriteVerbose(statusMessage);
                     }
@@ -259,9 +260,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     if (operation.Properties.TargetResource != null)
                     {
                         statusMessage = string.Format(failureStatusFormat,
-                        operation.Properties.TargetResource.ResourceType,
-                        operation.Properties.TargetResource.ResourceName,
-                        errorMessage);
+                            operation.Properties.TargetResource.ResourceType,
+                            operation.Properties.TargetResource.ResourceName,
+                            errorMessage);
 
                         WriteError(statusMessage);
                     }
@@ -337,7 +338,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     job(resourceGroup, deploymentName, basicDeployment);
                 }
 
-                using (var getResult = ResourceManagementClient.Deployments.GetWithHttpMessagesAsync(resourceGroup, deploymentName).ConfigureAwait(false).GetAwaiter().GetResult())
+                var getDeploymentTask = resourceGroup != null
+                    ? ResourceManagementClient.Deployments.GetWithHttpMessagesAsync(resourceGroup, deploymentName)
+                    : ResourceManagementClient.Deployments.GetAtSubscriptionScopeWithHttpMessagesAsync(deploymentName);
+
+                using (var getResult = getDeploymentTask.ConfigureAwait(false).GetAwaiter().GetResult())
                 {
                     deployment = getResult.Body;
                     var response = getResult.Response;
@@ -376,13 +381,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                         var resourceGroupName = ResourceIdUtility.GetResourceGroupName(operation.Properties.TargetResource.Id);
                         var deploymentName = operation.Properties.TargetResource.ResourceName;
 
-                        if (ResourceManagementClient.Deployments.CheckExistence(resourceGroupName, deploymentName) == true)
+                        if (this.CheckDeploymentExistence(resourceGroupName, deploymentName) == true)
                         {
                             List<DeploymentOperation> newNestedOperations = new List<DeploymentOperation>();
 
-                            var result = ResourceManagementClient.DeploymentOperations.List(
-                                resourceGroupName: resourceGroupName,
-                                deploymentName: deploymentName);
+                            var result = this.ListDeploymentOperations(resourceGroupName, deploymentName);
 
                             newNestedOperations = GetNewOperations(operations, result);
 
@@ -403,7 +406,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return newOperations;
         }
 
-        private Deployment CreateBasicDeployment(PSValidateResourceGroupDeploymentParameters parameters, DeploymentMode deploymentMode, string debugSetting)
+        private Deployment CreateBasicDeployment(PSDeploymentCmdletParameters parameters, DeploymentMode deploymentMode, string debugSetting)
         {
             Deployment deployment = new Deployment
             {
@@ -446,17 +449,59 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 deployment.Properties.Parameters = string.IsNullOrEmpty(templateParams) ? null : JObject.Parse(templateParams);
             }
 
+            deployment.Location = parameters.Location;
+            deployment.Properties.OnErrorDeployment = parameters.OnErrorDeployment;
+
             return deployment;
         }
 
         private TemplateValidationInfo CheckBasicDeploymentErrors(string resourceGroup, string deploymentName, Deployment deployment)
         {
-            DeploymentValidateResult validationResult = ResourceManagementClient.Deployments.Validate(
-                resourceGroup,
-                deploymentName,
-                deployment);
+            DeploymentValidateResult validationResult = resourceGroup != null
+                ? ResourceManagementClient.Deployments.Validate(resourceGroup, deploymentName, deployment)
+                : ResourceManagementClient.Deployments.ValidateAtSubscriptionScope(deploymentName, deployment);
 
             return new TemplateValidationInfo(validationResult);
+        }
+
+        private IPage<DeploymentOperation> ListDeploymentOperations(string resourceGroupName, string deploymentName)
+        {
+            return resourceGroupName != null
+                ? this.ResourceManagementClient.DeploymentOperations.List(resourceGroupName, deploymentName, null)
+                : this.ResourceManagementClient.DeploymentOperations.ListAtSubscriptionScope(deploymentName, null);
+        }
+
+        private IPage<DeploymentOperation> ListNextDeploymentOperations(string resourceGroupName, string nextLink)
+        {
+            return resourceGroupName != null
+                ? this.ResourceManagementClient.DeploymentOperations.ListNext(nextLink)
+                : this.ResourceManagementClient.DeploymentOperations.ListAtSubscriptionScopeNext(nextLink);
+        }
+
+        private bool CheckDeploymentExistence(string resourceGroupName, string deploymentName)
+        {
+            return resourceGroupName != null
+                ? this.ResourceManagementClient.Deployments.CheckExistence(resourceGroupName, deploymentName)
+                : this.ResourceManagementClient.Deployments.CheckExistenceAtSubscriptionScope(deploymentName);
+        }
+
+        private void BeginDeployment(string resourceGroupName, string deploymentName, Deployment deployment)
+        {
+            if (resourceGroupName == null)
+            {
+                this.ResourceManagementClient.Deployments.BeginCreateOrUpdateAtSubscriptionScope(deploymentName, deployment);
+            }
+            else
+            {
+                this.ResourceManagementClient.Deployments.BeginCreateOrUpdate(resourceGroupName, deploymentName, deployment);
+            }
+        }
+
+        public string GetDeploymentTemplate(string deploymentName)
+        {
+            var exportResult = ResourceManagementClient.Deployments.ExportTemplateAtSubscriptionScope(deploymentName);
+
+            return JToken.FromObject(exportResult.Template).ToString();
         }
 
         public virtual List<Provider> ListResourceProviders(string providerName = null, bool listAvailable = true)
@@ -552,7 +597,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             parameters.ConfirmAction(parameters.Force,
                 ProjectResources.ResourceGroupAlreadyExists,
                 ProjectResources.NewResourceGroupMessage,
-                parameters.DeploymentName,
+                parameters.ResourceGroupName,
                 () =>
                 {
                     resourceGroup = CreateOrUpdateResourceGroup(parameters.ResourceGroupName, parameters.Location, parameters.Tag);
@@ -694,11 +739,50 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         /// <summary>
+        /// Filters the deployments at subscription scope.
+        /// </summary>
+        /// <param name="options">The filtering options</param>
+        /// <returns>The filtered list of deployments</returns>
+        public virtual List<PSDeployment> FilterDeploymentsAtSubscriptionScope(FilterDeploymentOptions options)
+        {
+            List<PSDeployment> deployments = new List<PSDeployment>();
+            string name = options.DeploymentName;
+            List<string> excludedProvisioningStates = options.ExcludedProvisioningStates ?? new List<string>();
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                deployments.Add(ResourceManagementClient.Deployments.GetAtSubscriptionScope(name).ToPSDeployment());
+            }
+            else
+            {
+                var result = ResourceManagementClient.Deployments.ListAtSubscriptionScope();
+
+                deployments.AddRange(result.Select(d => d.ToPSDeployment()));
+
+                while (!string.IsNullOrEmpty(result.NextPageLink))
+                {
+                    result = ResourceManagementClient.Deployments.ListAtSubscriptionScopeNext(result.NextPageLink);
+                    deployments.AddRange(result.Select(d => d.ToPSDeployment()));
+                }
+            }
+
+            if (excludedProvisioningStates.Count > 0)
+            {
+                return deployments.Where(d => excludedProvisioningStates
+                    .All(s => !s.Equals(d.ProvisioningState, StringComparison.OrdinalIgnoreCase))).ToList();
+            }
+            else
+            {
+                return deployments;
+            }
+        }
+
+        /// <summary>
         /// Filters the resource group deployments
         /// </summary>
         /// <param name="options">The filtering options</param>
         /// <returns>The filtered list of deployments</returns>
-        public virtual List<PSResourceGroupDeployment> FilterResourceGroupDeployments(FilterResourceGroupDeploymentOptions options)
+        public virtual List<PSResourceGroupDeployment> FilterResourceGroupDeployments(FilterDeploymentOptions options)
         {
             List<PSResourceGroupDeployment> deployments = new List<PSResourceGroupDeployment>();
             string resourceGroup = options.ResourceGroupName;
@@ -734,10 +818,40 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         /// <summary>
+        /// Gets the deployment operations at subscription scope.
+        /// </summary>
+        /// <param name="deploymentName">The deployment name</param>
+        /// <param name="operationId">The operation Id</param>
+        /// <returns>The deployment operations</returns>
+        public virtual List<PSDeploymentOperation> GetDeploymentOperations(string deploymentName, string operationId = null)
+        {
+            List<PSDeploymentOperation> deploymentOperations = new List<PSDeploymentOperation>();
+
+            if (!string.IsNullOrEmpty(operationId))
+            {
+                deploymentOperations.Add(ResourceManagementClient.DeploymentOperations.GetAtSubscriptionScope(deploymentName, operationId).ToPSDeploymentOperation());
+            }
+            else
+            {
+                var result = ResourceManagementClient.DeploymentOperations.ListAtSubscriptionScope(deploymentName);
+
+                deploymentOperations.AddRange(result.Select(d => d.ToPSDeploymentOperation()));
+
+                while (!string.IsNullOrEmpty(result.NextPageLink))
+                {
+                    result = ResourceManagementClient.DeploymentOperations.ListAtSubscriptionScopeNext(result.NextPageLink);
+                    deploymentOperations.AddRange(result.Select(d => d.ToPSDeploymentOperation()));
+                }
+            }
+
+            return deploymentOperations;
+        }
+
+        /// <summary>
         /// Creates new deployment
         /// </summary>
         /// <param name="parameters">The create deployment parameters</param>
-        public virtual PSResourceGroupDeployment ExecuteDeployment(PSCreateResourceGroupDeploymentParameters parameters)
+        public virtual PSDeployment ExecuteDeploymentAtSubscriptionScope(PSDeploymentCmdletParameters parameters)
         {
             parameters.DeploymentName = GenerateDeploymentName(parameters);
             Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode, parameters.DeploymentDebugLogLevel);
@@ -764,7 +878,47 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 WriteVerbose(ProjectResources.TemplateValid);
             }
 
-            ResourceManagementClient.Deployments.BeginCreateOrUpdate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+            this.BeginDeployment(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+
+            WriteVerbose(string.Format(ProjectResources.CreatedDeployment, parameters.DeploymentName));
+            DeploymentExtended result = ProvisionDeploymentStatus(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+
+            return result.ToPSDeployment();
+        }
+
+        /// <summary>
+        /// Creates new deployment
+        /// </summary>
+        /// <param name="parameters">The create deployment parameters</param>
+        public virtual PSResourceGroupDeployment ExecuteDeployment(PSDeploymentCmdletParameters parameters)
+        {
+            parameters.DeploymentName = GenerateDeploymentName(parameters);
+            Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode, parameters.DeploymentDebugLogLevel);
+
+            TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+
+            if (validationInfo.Errors.Count != 0)
+            {
+                foreach (var error in validationInfo.Errors)
+                {
+                    WriteError(string.Format(ErrorFormat, error.Code, error.Message));
+                    if (error.Details != null && error.Details.Count > 0)
+                    {
+                        foreach (var innerError in error.Details)
+                        {
+                            DisplayInnerDetailErrorMessage(innerError);
+                        }
+                    }
+                }
+                throw new InvalidOperationException(ProjectResources.FailedDeploymentValidation);
+            }
+            else
+            {
+                WriteVerbose(ProjectResources.TemplateValid);
+            }
+
+            this.BeginDeployment(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+            
             WriteVerbose(string.Format(ProjectResources.CreatedDeployment, parameters.DeploymentName));
             DeploymentExtended result = ProvisionDeploymentStatus(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
 
@@ -783,7 +937,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        private string GenerateDeploymentName(PSCreateResourceGroupDeploymentParameters parameters)
+        private string GenerateDeploymentName(PSDeploymentCmdletParameters parameters)
         {
             if (!string.IsNullOrEmpty(parameters.DeploymentName))
             {
@@ -802,16 +956,63 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <summary>
         /// Deletes a deployment
         /// </summary>
+        /// <param name="deploymentName">Deployment name</param>
+        public virtual void DeleteDeploymentAtSubscriptionScope(string deploymentName)
+        {
+            if (!ResourceManagementClient.Deployments.CheckExistenceAtSubscriptionScope(deploymentName))
+            {
+                throw new ArgumentException(string.Format(ProjectResources.DeploymentDoesntExistAtSubscriptionScope, deploymentName));
+            }
+
+            ResourceManagementClient.Deployments.DeleteAtSubscriptionScope(deploymentName);
+        }
+
+        /// <summary>
+        /// Deletes a deployment
+        /// </summary>
         /// <param name="resourceGroup">The resource group name</param>
         /// <param name="deploymentName">Deployment name</param>
         public virtual void DeleteDeployment(string resourceGroup, string deploymentName)
         {
             if (!ResourceManagementClient.Deployments.CheckExistence(resourceGroup, deploymentName))
             {
-                throw new ArgumentException(string.Format(ProjectResources.DeploymentDoesntExist, deploymentName, resourceGroup));
+                throw new ArgumentException(string.Format(ProjectResources.DeploymentDoesntExistInResourceGroup, deploymentName, resourceGroup));
             }
 
             ResourceManagementClient.Deployments.Delete(resourceGroup, deploymentName);
+        }
+
+        /// <summary>
+        /// Cancels the active deployment.
+        /// </summary>
+        /// <param name="deploymentName">Deployment name</param>
+        public virtual void CancelDeploymentAtSubscriptionScope(string deploymentName)
+        {
+            if (string.IsNullOrEmpty(deploymentName))
+            {
+                throw new ArgumentException(string.Format(ProjectResources.NoDeploymentToCancel, deploymentName));
+            }
+
+            FilterDeploymentOptions options = new FilterDeploymentOptions
+            {
+                DeploymentName = deploymentName,
+                ExcludedProvisioningStates = new List<string>
+                {
+                    ProvisioningState.Failed.ToString(),
+                    ProvisioningState.Succeeded.ToString()
+                }
+            };
+
+            List<PSDeployment> deployments = this.FilterDeploymentsAtSubscriptionScope(options);
+
+            if (deployments.Count == 0)
+            {
+                throw new ArgumentException(string.Format(ProjectResources.NoRunningDeploymentsAtSubscriptionScope, deploymentName));
+            }
+            else
+            {
+                ResourceManagementClient.Deployments.CancelAtSubscriptionScope(deployments.First().DeploymentName);
+            }
         }
 
         /// <summary>
@@ -821,7 +1022,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <param name="deploymentName">Deployment name</param>
         public virtual void CancelDeployment(string resourceGroup, string deploymentName)
         {
-            FilterResourceGroupDeploymentOptions options = new FilterResourceGroupDeploymentOptions
+            FilterDeploymentOptions options = new FilterDeploymentOptions
             {
                 DeploymentName = deploymentName,
                 ResourceGroupName = resourceGroup
@@ -863,8 +1064,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// Validates a given deployment.
         /// </summary>
         /// <param name="parameters">The deployment create options</param>
-        /// <returns>True if valid, false otherwise.</returns>
-        public virtual List<PSResourceManagerError> ValidatePSResourceGroupDeployment(PSValidateResourceGroupDeploymentParameters parameters, DeploymentMode deploymentMode)
+        /// <param name="deploymentMode">The deployment mode</param>
+        /// <returns>The validation errors if there's any, or empty list otherwise.</returns>
+        public virtual List<PSResourceManagerError> ValidateDeployment(PSDeploymentCmdletParameters parameters, DeploymentMode deploymentMode)
         {
             Deployment deployment = CreateBasicDeployment(parameters, deploymentMode, null);
             TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, Guid.NewGuid().ToString(), deployment);
@@ -906,7 +1108,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             foreach (var provider in providers)
             {
                 var resourceType = provider.ResourceTypes
-                                            .Where(t => String.Equals(string.Format("{0}/{1}", provider.NamespaceProperty, t.ResourceType), resourceIdentifier.ResourceType, StringComparison.OrdinalIgnoreCase))
+                                            .Where(t => string.Equals(string.Format("{0}/{1}", provider.NamespaceProperty, t.ResourceType), resourceIdentifier.ResourceType, StringComparison.OrdinalIgnoreCase))
                                             .FirstOrDefault();
                 if (resourceType != null)
                 {

@@ -70,20 +70,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancelling active deployment ....
+        /// </summary>
+        internal static string CancelDeploymentMessage {
+            get {
+                return ResourceManager.GetString("CancelDeploymentMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to cancel the active deployment of resource group &apos;{0}&apos;?.
         /// </summary>
         internal static string CancelResourceGroupDeployment {
             get {
                 return ResourceManager.GetString("CancelResourceGroupDeployment", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cancelling active resource group deployment ....
-        /// </summary>
-        internal static string CancelResourceGroupDeploymentMessage {
-            get {
-                return ResourceManager.GetString("CancelResourceGroupDeploymentMessage", resourceCulture);
             }
         }
         
@@ -169,6 +169,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleting the deployment ....
+        /// </summary>
+        internal static string DeleteDeploymentMessage {
+            get {
+                return ResourceManager.GetString("DeleteDeploymentMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to delete the deployment &apos;{0}&apos;?.
         /// </summary>
         internal static string DeleteResourceGroupDeployment {
@@ -178,20 +187,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deleting the deployment ....
+        ///   Looks up a localized string similar to Deployment &apos;{0}&apos; doesn&apos;t exist in subscription..
         /// </summary>
-        internal static string DeleteResourceGroupDeploymentMessage {
+        internal static string DeploymentDoesntExistAtSubscriptionScope {
             get {
-                return ResourceManager.GetString("DeleteResourceGroupDeploymentMessage", resourceCulture);
+                return ResourceManager.GetString("DeploymentDoesntExistAtSubscriptionScope", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Deployment &apos;{0}&apos; doesn&apos;t exist under resource group &apos;{1}&apos;.
         /// </summary>
-        internal static string DeploymentDoesntExist {
+        internal static string DeploymentDoesntExistInResourceGroup {
             get {
-                return ResourceManager.GetString("DeploymentDoesntExist", resourceCulture);
+                return ResourceManager.GetString("DeploymentDoesntExistInResourceGroup", resourceCulture);
             }
         }
         
@@ -363,6 +372,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         internal static string InvalidRoleDefinitionName {
             get {
                 return ResourceManager.GetString("InvalidRoleDefinitionName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The paramater -RollbackToLastDeployment and -RollBackDeploymentName can&apos;t be defined at the same time..
+        /// </summary>
+        internal static string InvalidRollbackParameters {
+            get {
+                return ResourceManager.GetString("InvalidRollbackParameters", resourceCulture);
             }
         }
         
@@ -543,6 +561,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         internal static string NoRunningDeployments {
             get {
                 return ResourceManager.GetString("NoRunningDeployments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are no running deployment called &apos;{0}&apos; at the current subscription scope..
+        /// </summary>
+        internal static string NoRunningDeploymentsAtSubscriptionScope {
+            get {
+                return ResourceManager.GetString("NoRunningDeploymentsAtSubscriptionScope", resourceCulture);
             }
         }
         

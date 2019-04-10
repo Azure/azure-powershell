@@ -54,15 +54,25 @@ namespace Microsoft.Azure.Commands.Resources
                 Scope = Scope,
                 ResourceIdentifier = new ResourceIdentifier
                 {
-                    Subscription = DefaultProfile.DefaultContext.Subscription.Id.ToString()
+                    Subscription = DefaultProfile.DefaultContext.Subscription.Id?.ToString()
                 },
                 RoleDefinitionId = Id,
                 RoleDefinitionName = Name,
             };
 
+            if (options.Scope == null && options.ResourceIdentifier.Subscription == null)
+            {
+                WriteTerminatingError("No subscription was found in the default profile and no scope was specified. Either specify a scope or use a tenant with a subscription to run the command.");
+            }
+
             AuthorizationClient.ValidateScope(options.Scope, true);
 
             WriteObject(PoliciesClient.FilterRoleDefinitions(options), enumerateCollection: true);
+        }
+
+        private void WriteTerminatingError(string message, params object[] args)
+        {
+            ThrowTerminatingError(new ErrorRecord(new Exception(String.Format(message, args)), "Error", ErrorCategory.NotSpecified, null));
         }
     }
 }
