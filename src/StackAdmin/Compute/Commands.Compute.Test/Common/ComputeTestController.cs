@@ -14,41 +14,29 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using Microsoft.Azure.Management.Network;
-#if NETSTANDARD
 using Microsoft.Azure.Management.ResourceManager;
-#else
-//using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.ResourceManager;
-#endif
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using ResourceManagementClientInternal = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
-using Microsoft.Azure.Graph.RBAC.Version1_6;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public sealed class ComputeTestController : RMTestBase
     {
-        bool testViaCsm = true; // Currently set to true, we will get this from Environment varialbe.
+        bool testViaCsm = true; // Currently set to true, we will get this from Environment variable.
 
         private CSMTestEnvironmentFactory csmTestFactory;
 		private readonly EnvironmentSetupHelper _helper;
@@ -62,9 +50,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         public GalleryClient GalleryClient { get; private set; }
 
-        //public EventsClient EventsClient { get; private set; }
-
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
+        
         public ResourceManagementClientInternal InternalResourceManagementClient { get; private set; }
 
         public StorageManagementClient StorageClient { get; private set; }
@@ -197,7 +184,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             SubscriptionClient = GetSubscriptionClient();
             StorageClient = GetStorageManagementClient(context);
             GalleryClient = GetGalleryClient();
-            //var eventsClient = GetEventsClient();
             NetworkManagementClient = this.GetNetworkManagementClientClient(context);
             ComputeManagementClient = GetComputeManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient();
@@ -209,13 +195,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 SubscriptionClient,
                 StorageClient,
                 GalleryClient,
-                //eventsClient,
                 NetworkManagementClient,
                 ComputeManagementClient,
                 AuthorizationManagementClient,
                 InternalNetworkManagementClient,
                 InternalResourceManagementClient);
-            // GraphClient);
         }
 
         private GraphRbacManagementClient GetGraphClient()
@@ -275,11 +259,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
-
-        //private EventsClient GetEventsClient()
-        //{
-        //    return TestBase.GetServiceClient<EventsClient>(this.csmTestFactory);
-        //}
 
         private NetworkManagementClient GetNetworkManagementClientClient(RestTestFramework.MockContext context)
         {
