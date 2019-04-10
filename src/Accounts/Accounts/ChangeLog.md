@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update Uninstall-AzureRm to correctly delete modules in Mac
 
 ## Version 1.5.0
 * Updated Add-AzEnvironment and Set-AzEnvironment to accept parameter AzureAnalysisServicesEndpointResourceId

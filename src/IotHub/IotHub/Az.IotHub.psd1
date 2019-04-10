@@ -79,7 +79,7 @@ CmdletsToExport = 'Add-AzIotHubKey', 'Get-AzIotHubEventHubConsumerGroup',
                'Get-AzIotHubQuotaMetric', 'Get-AzIotHub', 
                'Get-AzIotHubRegistryStatistic', 'Get-AzIotHubValidSku', 
                'Add-AzIotHubEventHubConsumerGroup', 'New-AzIotHub', 
-               'New-AzIotHubExportDevices', 'New-AzIotHubImportDevices', 
+               'New-AzIotHubExportDevice', 'New-AzIotHubImportDevice', 
                'Remove-AzIotHub', 'Remove-AzIotHubEventHubConsumerGroup', 
                'Remove-AzIotHubKey', 'Set-AzIotHub', 'Update-AzIotHub', 
                'Add-AzIotHubCertificate', 'Get-AzIotHubCertificate', 
@@ -95,7 +95,7 @@ CmdletsToExport = 'Add-AzIotHubKey', 'Get-AzIotHubEventHubConsumerGroup',
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzIotHubEHCG', 'Add-AzIotHubEHCG', 'Remove-AzIotHubEHCG', 
-               'Set-AzIotHubVC', 'Get-AzIotHubCVC'
+               'Set-AzIotHubVC', 'Get-AzIotHubCVC', 'New-AzIotHubExportDevices', 'New-AzIotHubImportDevices'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

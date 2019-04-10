@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
 
 ## Version 1.0.1
 * Added CustomSubdomainName as a new optional parameter for New-AzCognitiveServicesAccount which is used to specify subdomain for the resource.
