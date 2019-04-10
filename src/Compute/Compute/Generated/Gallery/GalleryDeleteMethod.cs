@@ -63,7 +63,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             break;
                     }
 
-                    var result = GalleriesClient.DeleteWithHttpMessagesAsync(resourceGroupName, galleryName).GetAwaiter().GetResult();
+                    Rest.Azure.AzureOperationResponse result;
+                    if (NoWait.IsPresent)
+                    {
+                        result = GalleriesClient.BeginDeleteWithHttpMessagesAsync(resourceGroupName, galleryName).GetAwaiter().GetResult();
+                    }
+                    else
+                    {
+                        result = GalleriesClient.DeleteWithHttpMessagesAsync(resourceGroupName, galleryName).GetAwaiter().GetResult();
+                    }
+                    
                     PSOperationStatusResponse output = new PSOperationStatusResponse
                     {
                         StartTime = this.StartTime,
@@ -118,5 +127,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
+        public SwitchParameter NoWait { get; set; }
     }
 }

@@ -54,10 +54,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     parameters.GroupByThrottlePolicy = this.GroupByThrottlePolicy;
                     string location = this.Location.Canonicalize();
 
-                    var result = LogAnalyticsClient.ExportThrottledRequests(parameters, location);
-                    var psObject = new PSLogAnalyticsOperationResult();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<LogAnalyticsOperationResult, PSLogAnalyticsOperationResult>(result, psObject);
-                    WriteObject(psObject);
+                    if (NoWait.IsPresent)
+                    {
+                        var result = LogAnalyticsClient.BeginExportThrottledRequests(parameters, location);
+                        var psObject = new PSLogAnalyticsOperationResult();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<LogAnalyticsOperationResult, PSLogAnalyticsOperationResult>(result, psObject);
+                        WriteObject(psObject);
+                    }
+                    else
+                    {
+                        var result = LogAnalyticsClient.ExportThrottledRequests(parameters, location);
+                        var psObject = new PSLogAnalyticsOperationResult();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<LogAnalyticsOperationResult, PSLogAnalyticsOperationResult>(result, psObject);
+                        WriteObject(psObject);
+                    }
                 }
             });
         }
@@ -105,5 +115,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
+        public SwitchParameter NoWait { get; set; }
     }
 }

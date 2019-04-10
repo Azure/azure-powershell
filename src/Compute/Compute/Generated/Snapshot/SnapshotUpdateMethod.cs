@@ -49,12 +49,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     Snapshot snapshot = new Snapshot();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<PSSnapshot, Snapshot>(this.Snapshot, snapshot);
 
-                    var result = (this.SnapshotUpdate == null)
+                    if (NoWait.IsPresent)
+                    {
+                        var result = (this.SnapshotUpdate == null)
+                                 ? SnapshotsClient.BeginCreateOrUpdate(resourceGroupName, snapshotName, snapshot)
+                                 : SnapshotsClient.BeginUpdate(resourceGroupName, snapshotName, snapshotupdate);
+                        var psObject = new PSSnapshot();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<Snapshot, PSSnapshot>(result, psObject);
+                        WriteObject(psObject);
+                    }
+                    else
+                    {
+                        var result = (this.SnapshotUpdate == null)
                                  ? SnapshotsClient.CreateOrUpdate(resourceGroupName, snapshotName, snapshot)
                                  : SnapshotsClient.Update(resourceGroupName, snapshotName, snapshotupdate);
-                    var psObject = new PSSnapshot();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<Snapshot, PSSnapshot>(result, psObject);
-                    WriteObject(psObject);
+                        var psObject = new PSSnapshot();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<Snapshot, PSSnapshot>(result, psObject);
+                        WriteObject(psObject);
+                    }
                 }
             });
         }
@@ -104,5 +116,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
+        public SwitchParameter NoWait { get; set; }
     }
 }

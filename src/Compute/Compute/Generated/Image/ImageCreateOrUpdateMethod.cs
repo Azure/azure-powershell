@@ -48,10 +48,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     Image parameters = new Image();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<PSImage, Image>(this.Image, parameters);
 
-                    var result = ImagesClient.CreateOrUpdate(resourceGroupName, imageName, parameters);
-                    var psObject = new PSImage();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<Image, PSImage>(result, psObject);
-                    WriteObject(psObject);
+                    if (NoWait.IsPresent)
+                    {
+                        var result = ImagesClient.BeginCreateOrUpdate(resourceGroupName, imageName, parameters);
+                        var psObject = new PSImage();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<Image, PSImage>(result, psObject);
+                        WriteObject(psObject);
+                    }
+                    else
+                    {
+                        var result = ImagesClient.CreateOrUpdate(resourceGroupName, imageName, parameters);
+                        var psObject = new PSImage();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<Image, PSImage>(result, psObject);
+                        WriteObject(psObject);
+                    }
                 }
             });
         }
@@ -81,6 +91,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
+        public SwitchParameter NoWait { get; set; }
     }
 
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Image", DefaultParameterSetName = "ObjectParameter", SupportsShouldProcess = true)]
@@ -115,10 +128,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     var parameters = ImagesClient.Get(resourceGroupName, imageName);
                     parameters.Tags = this.MyInvocation.BoundParameters.ContainsKey("Tag") ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null;
 
-                    var result = ImagesClient.CreateOrUpdate(resourceGroupName, imageName, parameters);
-                    var psObject = new PSImage();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<Image, PSImage>(result, psObject);
-                    WriteObject(psObject);
+                    if (NoWait.IsPresent)
+                    {
+                        var result = ImagesClient.BeginCreateOrUpdate(resourceGroupName, imageName, parameters);
+                        var psObject = new PSImage();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<Image, PSImage>(result, psObject);
+                        WriteObject(psObject);
+                    }
+                    else
+                    {
+                        var result = ImagesClient.CreateOrUpdate(resourceGroupName, imageName, parameters);
+                        var psObject = new PSImage();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<Image, PSImage>(result, psObject);
+                        WriteObject(psObject);
+                    }
                 }
             });
         }
@@ -167,5 +190,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
+        public SwitchParameter NoWait { get; set; }
     }
 }

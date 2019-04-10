@@ -47,10 +47,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     Disk disk = new Disk();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<PSDisk, Disk>(this.Disk, disk);
 
-                    var result = DisksClient.CreateOrUpdate(resourceGroupName, diskName, disk);
-                    var psObject = new PSDisk();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDisk>(result, psObject);
-                    WriteObject(psObject);
+                    if (NoWait.IsPresent)
+                    {
+                        var result = DisksClient.BeginCreateOrUpdate(resourceGroupName, diskName, disk);
+                        var psObject = new PSDisk();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDisk>(result, psObject);
+                        WriteObject(psObject);
+                    }
+                    else
+                    {
+                        var result = DisksClient.CreateOrUpdate(resourceGroupName, diskName, disk);
+                        var psObject = new PSDisk();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDisk>(result, psObject);
+                        WriteObject(psObject);
+                    }
                 }
             });
         }
@@ -80,5 +90,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
+        public SwitchParameter NoWait { get; set; }
     }
 }
