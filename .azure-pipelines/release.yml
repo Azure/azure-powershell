@@ -1,7 +1,6 @@
 variables:
   WindowsImage: VS2017-Win2016
   Configuration: Release
-  CodeSign: true
 
 jobs:
 - job: Build
@@ -18,7 +17,7 @@ jobs:
     inputs:
       command: custom
       custom: msbuild
-      arguments: 'build.proj /t:Build;GenerateHelp;Publish /p:Configuration=${{ variables.Configuration }};CodeSign=${{ variables.CodeSign }}'
+      arguments: 'build.proj /t:Build;GenerateHelp;Publish /p:Configuration=${{ variables.Configuration }}'
   - template: util/publish-artifacts-steps.yml
     parameters:
       artifactName: release
