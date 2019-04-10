@@ -81,6 +81,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
+        public SwitchParameter NoWait { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -135,14 +138,28 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                             ext.ProtectedSettings = null;
                             ext.ForceUpdateTag = this.ForceUpdate.IsPresent ? Guid.NewGuid().ToString() : null;
 
-                            VirtualMachineScaleSetExtension result = this.VirtualMachineScaleSetExtensionsClient.CreateOrUpdate(
-                                this.ResourceGroupName,
-                                this.VMScaleSetName,
-                                this.ExtensionName,
-                                ext);
-                            var psResult = result.ToPSVirtualMachineScaleSetExtension(this.ResourceGroupName, this.VMScaleSetName);
-                            extensionFound = true;
-                            WriteObject(psResult);
+                            if (NoWait.IsPresent)
+                            {
+                                VirtualMachineScaleSetExtension result = this.VirtualMachineScaleSetExtensionsClient.BeginCreateOrUpdate(
+                                    this.ResourceGroupName,
+                                    this.VMScaleSetName,
+                                    this.ExtensionName,
+                                    ext);
+                                var psResult = result.ToPSVirtualMachineScaleSetExtension(this.ResourceGroupName, this.VMScaleSetName);
+                                extensionFound = true;
+                                WriteObject(psResult);
+                            }
+                            else
+                            {
+                                VirtualMachineScaleSetExtension result = this.VirtualMachineScaleSetExtensionsClient.CreateOrUpdate(
+                                    this.ResourceGroupName,
+                                    this.VMScaleSetName,
+                                    this.ExtensionName,
+                                    ext);
+                                var psResult = result.ToPSVirtualMachineScaleSetExtension(this.ResourceGroupName, this.VMScaleSetName);
+                                extensionFound = true;
+                                WriteObject(psResult);
+                            }
                             break;
                         }
                     }

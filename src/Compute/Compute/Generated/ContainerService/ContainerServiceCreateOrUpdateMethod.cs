@@ -47,10 +47,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     ContainerService parameters = new ContainerService();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<PSContainerService, ContainerService>(this.ContainerService, parameters);
 
-                    var result = ContainerServicesClient.CreateOrUpdate(resourceGroupName, containerServiceName, parameters);
-                    var psObject = new PSContainerService();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<ContainerService, PSContainerService>(result, psObject);
-                    WriteObject(psObject);
+                    if (NoWait.IsPresent)
+                    {
+                        var result = ContainerServicesClient.BeginCreateOrUpdate(resourceGroupName, containerServiceName, parameters);
+                        var psObject = new PSContainerService();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<ContainerService, PSContainerService>(result, psObject);
+                        WriteObject(psObject);
+                    }
+                    else
+                    {
+                        var result = ContainerServicesClient.CreateOrUpdate(resourceGroupName, containerServiceName, parameters);
+                        var psObject = new PSContainerService();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<ContainerService, PSContainerService>(result, psObject);
+                        WriteObject(psObject);
+                    }
                 }
             });
         }
@@ -79,6 +89,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
+        public SwitchParameter NoWait { get; set; }
     }
 
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerService", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
@@ -97,10 +110,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     ContainerService parameters = new ContainerService();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<PSContainerService, ContainerService>(this.ContainerService, parameters);
 
-                    var result = ContainerServicesClient.CreateOrUpdate(resourceGroupName, containerServiceName, parameters);
-                    var psObject = new PSContainerService();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<ContainerService, PSContainerService>(result, psObject);
-                    WriteObject(psObject);
+                    if (NoWait.IsPresent)
+                    {
+                        var result = ContainerServicesClient.BeginCreateOrUpdate(resourceGroupName, containerServiceName, parameters);
+                        var psObject = new PSContainerService();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<ContainerService, PSContainerService>(result, psObject);
+                        WriteObject(psObject);
+                    }
+                    else
+                    {
+                        var result = ContainerServicesClient.CreateOrUpdate(resourceGroupName, containerServiceName, parameters);
+                        var psObject = new PSContainerService();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<ContainerService, PSContainerService>(result, psObject);
+                        WriteObject(psObject);
+                    }
                 }
             });
         }
@@ -129,5 +152,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
+        public SwitchParameter NoWait { get; set; }
     }
 }

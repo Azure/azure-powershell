@@ -137,6 +137,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             HelpMessage = "Disable auto-upgrade of minor version")]
         public SwitchParameter DisableAutoUpgradeMinorVersion { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
+        public SwitchParameter NoWait { get; set; }
+
         private Hashtable GetExtensionPublicSettings()
         {
             Hashtable publicSettings = new Hashtable();
@@ -260,14 +263,28 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                     vmssResponse.VirtualMachineProfile.ExtensionProfile.Extensions.Add(parameters);
 
-                    VirtualMachineScaleSetExtension result = this.VirtualMachineScaleSetExtensionsClient.CreateOrUpdate(
-                        this.ResourceGroupName,
-                        this.VMScaleSetName,
-                        this.ExtensionName,
-                        parameters);
+                    if (NoWait.IsPresent)
+                    {
+                        VirtualMachineScaleSetExtension result = this.VirtualMachineScaleSetExtensionsClient.BeginCreateOrUpdate(
+                            this.ResourceGroupName,
+                            this.VMScaleSetName,
+                            this.ExtensionName,
+                            parameters);
 
-                    var psResult = result.ToPSVirtualMachineScaleSetExtension(this.ResourceGroupName, this.VMScaleSetName);
-                    WriteObject(psResult);
+                        var psResult = result.ToPSVirtualMachineScaleSetExtension(this.ResourceGroupName, this.VMScaleSetName);
+                        WriteObject(psResult);
+                    }
+                    else
+                    {
+                        VirtualMachineScaleSetExtension result = this.VirtualMachineScaleSetExtensionsClient.CreateOrUpdate(
+                            this.ResourceGroupName,
+                            this.VMScaleSetName,
+                            this.ExtensionName,
+                            parameters);
+
+                        var psResult = result.ToPSVirtualMachineScaleSetExtension(this.ResourceGroupName, this.VMScaleSetName);
+                        WriteObject(psResult);
+                    }
                 }
             });
         }

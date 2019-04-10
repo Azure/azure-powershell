@@ -99,10 +99,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         }
                     }
 
-                    var result = GalleryImageVersionsClient.CreateOrUpdate(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, galleryImageVersion);
-                    var psObject = new PSGalleryImageVersion();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryImageVersion, PSGalleryImageVersion>(result, psObject);
-                    WriteObject(psObject);
+                    if (NoWait.IsPresent)
+                    {
+                        var result = GalleryImageVersionsClient.CreateOrUpdate(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, galleryImageVersion);
+                        var psObject = new PSGalleryImageVersion();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryImageVersion, PSGalleryImageVersion>(result, psObject);
+                        WriteObject(psObject);
+                    }
+                    else
+                    {
+                        var result = GalleryImageVersionsClient.CreateOrUpdate(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, galleryImageVersion);
+                        var psObject = new PSGalleryImageVersion();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryImageVersion, PSGalleryImageVersion>(result, psObject);
+                        WriteObject(psObject);
+                    }
                 }
             });
         }
@@ -175,6 +185,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public Hashtable[] TargetRegion { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
+        public SwitchParameter NoWait { get; set; }
     }
 
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "GalleryImageVersion", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
@@ -270,10 +283,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         }
                     }
 
-                    var result = GalleryImageVersionsClient.CreateOrUpdate(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, galleryImageVersion);
-                    var psObject = new PSGalleryImageVersion();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryImageVersion, PSGalleryImageVersion>(result, psObject);
-                    WriteObject(psObject);
+                    if (NoWait.IsPresent)
+                    {
+                        var result = GalleryImageVersionsClient.CreateOrUpdate(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, galleryImageVersion);
+                        var psObject = new PSGalleryImageVersion();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryImageVersion, PSGalleryImageVersion>(result, psObject);
+                        WriteObject(psObject);
+                    }
+                    else
+                    {
+                        var result = GalleryImageVersionsClient.CreateOrUpdate(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, galleryImageVersion);
+                        var psObject = new PSGalleryImageVersion();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryImageVersion, PSGalleryImageVersion>(result, psObject);
+                        WriteObject(psObject);
+                    }
                 }
             });
         }
@@ -350,5 +373,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public Hashtable[] TargetRegion { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
+        public SwitchParameter NoWait { get; set; }
     }
 }

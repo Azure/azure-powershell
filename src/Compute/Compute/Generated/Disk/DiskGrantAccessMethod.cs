@@ -48,10 +48,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     grantAccessData.DurationInSeconds = this.DurationInSecond;
                     grantAccessData.Access = this.Access;
 
-                    var result = DisksClient.GrantAccess(resourceGroupName, diskName, grantAccessData);
-                    var psObject = new PSAccessUri();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<AccessUri, PSAccessUri>(result, psObject);
-                    WriteObject(psObject);
+                    if (NoWait.IsPresent)
+                    {
+                        var result = DisksClient.BeginGrantAccess(resourceGroupName, diskName, grantAccessData);
+                        var psObject = new PSAccessUri();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<AccessUri, PSAccessUri>(result, psObject);
+                        WriteObject(psObject);
+                    }
+                    else
+                    {
+                        var result = DisksClient.GrantAccess(resourceGroupName, diskName, grantAccessData);
+                        var psObject = new PSAccessUri();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<AccessUri, PSAccessUri>(result, psObject);
+                        WriteObject(psObject);
+                    }
                 }
             });
         }
@@ -87,5 +97,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
+        public SwitchParameter NoWait { get; set; }
     }
 }
