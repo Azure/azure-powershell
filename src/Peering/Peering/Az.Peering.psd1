@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.4.16'
+ModuleVersion = '0.9.0'
 
 # Supported PSEditions
 #CompatiblePSEditions = 'Core', 'Desktop'
@@ -35,7 +35,7 @@ Description = 'Microsoft Azure PowerShell - Microsoft Peering Service cmdlets fo
 For more information on Cdn, please visit the following: https://docs.microsoft.com/azure/cdn/'
 
 # Minimum version of the PowerShell engine required by this module
-PowerShellVersion = '5.0'
+PowerShellVersion = '5.1'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''
@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.4.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Peering.dll', '.\AutoMapper.dll'
@@ -120,7 +120,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ARM','Network','Peering', 'EdgeRP', 'PSModule', 'Interconnect'
+        Tags = 'Azure','ARM','Network','Peering', 'EdgeRP', 'PSModule', 'Interconnect', 'Exchange', 'Direct', 'PNI'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -132,7 +132,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Update incorrect online help URLs'
+        ReleaseNotes = '* Preview Release for Microsoft Peering Service', '* New, Update, Remove, and Get AzPeerAsn', '* New, Update, and Get AzPeering', '* Get AzLegacyPeering', '* Get AzPeeringLocation'
 
         # Prerelease string of this module
         # Prerelease = ''
