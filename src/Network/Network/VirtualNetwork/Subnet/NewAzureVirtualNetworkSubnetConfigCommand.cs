@@ -49,9 +49,10 @@ namespace Microsoft.Azure.Commands.Network
             subnet.Name = this.Name;
             subnet.AddressPrefix = this.AddressPrefix?.ToList();
 
-            if (!string.IsNullOrEmpty(this.NatGateway))
+            if (!string.IsNullOrEmpty(this.NatGatewayId))
             {
-                 subnet.NatGateway = this.NatGateway;
+                subnet.NatGateway = new PSNatGateway();
+                subnet.NatGateway.Id = this.NatGatewayId;
             }
 
             if (!string.IsNullOrEmpty(this.NetworkSecurityGroupId))
