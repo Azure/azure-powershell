@@ -12,84 +12,114 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests.ScenarioTests
+namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
 {
-    using System;
-
+    using Microsoft.Azure.ServiceManagement.Common.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
     using Xunit;
+    using Xunit.Abstractions;
 
+    /// <summary>
+    /// The create new direct connection tests.
+    /// </summary>
     public class CreateNewDirectConnectionTests
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
+        /// <summary>
+        /// The logger.
+        /// </summary>
+        private XunitTracingInterceptor logger;
 
-        public CreateNewDirectConnectionTests(Xunit.Abstractions.ITestOutputHelper output)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CreateNewDirectConnectionTests"/> class.
+        /// </summary>
+        /// <param name="output">
+        /// The output.
+        /// </param>
+        public CreateNewDirectConnectionTests(ITestOutputHelper output)
         {
-            this._logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this._logger);
-            // Environment.SetEnvironmentVariable("AZURE_TEST_MODE", "Playback");
-        }
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewDirectConnectionWithV4V6()
-        {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-NewDirectConnectionWithV4V6");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewDirectConnectionWithV4()
-        {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-NewDirectConnectionWithV4");
+            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewDirectConnectionWithV6()
-        {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-NewDirectConnectionWithV6");
-        }
-
+        /// <summary>
+        /// The test new direct connection high bandwidth.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectConnectionHighBandwidth()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-NewDirectConnectionHighBandwidth");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionHighBandwidth");
         }
 
+        /// <summary>
+        /// The test new direct connection low bandwidth.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectConnectionLowBandwidth()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-NewDirectConnectionLowBandwidth");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionLowBandwidth");
         }
 
-#if NETSTANDARD
-        [Fact]
-#else
-        [Fact(Skip = "Output on powershell is the same, but the handling of `r`n seems to differ for CORE")]
-#endif
-        [Trait(Category.AcceptanceType, Category.DesktopOnly)]
-        public void TestNewDirectConnectionWrongV6()
-        {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-NewDirectConnectionWrongV6");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewDirectConnectionWrongV4()
-        {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-NewDirectConnectionWrongV4");
-        }
-
+        /// <summary>
+        /// The test new direct connection no session.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectConnectionNoSession()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-NewDirectConnectionNoSession");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionNoSession");
         }
 
+        /// <summary>
+        /// The test new direct connection with v 4.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDirectConnectionWithV4()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWithV4");
+        }
 
+        /// <summary>
+        /// The test new direct connection with v 4 v 6.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDirectConnectionWithV4V6()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWithV4V6");
+        }
+
+        /// <summary>
+        /// The test new direct connection with v 6.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDirectConnectionWithV6()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWithV6");
+        }
+
+        /// <summary>
+        /// The test new direct connection wrong v 4.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDirectConnectionWrongV4()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWrongV4");
+        }
+
+        /// <summary>
+        /// The test new direct connection wrong v 6.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.DesktopOnly)]
+        public void TestNewDirectConnectionWrongV6()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWrongV6");
+        }
     }
 }

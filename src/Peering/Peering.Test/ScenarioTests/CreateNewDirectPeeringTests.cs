@@ -12,10 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests.ScenarioTests
+namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
 {
-    using System;
-
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
     using Xunit;
@@ -25,34 +23,52 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests.ScenarioTests
     /// </summary>
     public class CreateNewDirectPeeringTests
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
+        /// <summary>
+        /// The _logger.
+        /// </summary>
+        private ServiceManagement.Common.Models.XunitTracingInterceptor logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CreateNewDirectPeeringTests"/> class.
+        /// </summary>
+        /// <param name="output">
+        /// The output.
+        /// </param>
         public CreateNewDirectPeeringTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            this._logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this._logger);
-            // Environment.SetEnvironmentVariable("AZURE_TEST_MODE", "Playback");
+            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
+            
         }
 
+        /// <summary>
+        /// The test new direct peering.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectPeering()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-NewDirectPeering");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectPeering");
         }
 
+        /// <summary>
+        /// The test new direct peering with pipe.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectPeeringWithPipe()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-NewDirectPeeringWithPipe");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectPeeringWithPipe");
         }
 
+        /// <summary>
+        /// The test new direct peering pipe two connections.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectPeeringPipeTwoConnections()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-NewDirectPeeringPipeTwoConnections");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectPeeringPipeTwoConnections");
         }
     }
 }

@@ -61,20 +61,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// Gets the name of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public virtual string Name { get; private set; }
+        public new virtual string Name { get; private set; }
 
         /// <summary>
         /// Gets or sets the SKU that defines the tier and kind of the peering.
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
-        public virtual PSPeeringSku Sku { get; set; }
+        public new virtual PSPeeringSku Sku { get; set; }
 
         /// <summary>
         /// Gets or sets the kind of the peering. Possible values include:
         /// 'Direct', 'Exchange'
         /// </summary>
         [JsonProperty(PropertyName = "kind")]
-        public virtual string Kind { get; set; }
+        public new virtual string Kind { get; set; }
 
         /// <summary>
         /// Gets or sets the set of connections that constitute a direct
@@ -100,37 +100,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// Gets or sets the location of the peering.
         /// </summary>
         [JsonProperty(PropertyName = "properties.peeringLocation")]
-        public virtual string PeeringLocation { get; set; }
+        public new virtual string PeeringLocation { get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the resource. Possible values
         /// include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public virtual string ProvisioningState { get; private set; }
+        public new virtual string ProvisioningState { get; private set; }
 
         /// <summary>
         /// Gets or sets the location of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "location")]
-        public virtual string Location { get; set; }
+        public new virtual string Location { get; set; }
 
         /// <summary>
         /// Gets the ID of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
-        public virtual string Id { get; private set; }
+        public new virtual string Id { get; private set; }
 
         /// <summary>
         /// Gets the type of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
-        public virtual string Type { get; private set; }
+        public new virtual string Type { get; private set; }
 
         /// <summary>
         /// Gets or sets the resource tags.
         /// </summary>
         [JsonProperty(PropertyName = "tags")]
-        public virtual IDictionary<string, string> Tags { get; set; }
+        public new virtual IDictionary<string, string> Tags { get; set; }
     }
 }

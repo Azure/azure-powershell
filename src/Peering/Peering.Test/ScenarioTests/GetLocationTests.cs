@@ -12,51 +12,72 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests.ScenarioTests
+namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
 {
-    using System;
-
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
     using Xunit;
 
+    /// <summary>
+    /// The get location tests.
+    /// </summary>
     public class GetLocationTests
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
+        /// <summary>
+        /// The logger.
+        /// </summary>
+        private ServiceManagement.Common.Models.XunitTracingInterceptor logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GetLocationTests"/> class.
+        /// </summary>
+        /// <param name="output">
+        /// The output.
+        /// </param>
         public GetLocationTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            this._logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this._logger);
-            // Environment.SetEnvironmentVariable("AZURE_TEST_MODE", "Playback");
+            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
         }
 
+        /// <summary>
+        /// The test get location kind direct.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetLocationKindDirect()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-GetLocationKindDirect");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLocationKindDirect");
         }
 
+        /// <summary>
+        /// The test get location kind exchange.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetLocationKindExchange()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-GetLocationKindExchange");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLocationKindExchange");
         }
 
+        /// <summary>
+        /// The test get location kind exchange seattle.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetLocationKindExchangeSeattle()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-GetLocationKindExchangeSeattle");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLocationKindExchangeSeattle");
         }
 
+        /// <summary>
+        /// The test get location kind direct seattle.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetLocationKindDirectSeattle()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-GetLocationKindDirectSeattle");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLocationKindDirectSeattle");
         }
     }
 }

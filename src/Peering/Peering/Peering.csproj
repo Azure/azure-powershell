@@ -2,26 +2,16 @@
 
   <PropertyGroup>
     <PsModuleName>Peering</PsModuleName>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Authors>Microsoft</Authors>
-    <PackageTags>PSModule</PackageTags>
-    <PackageId>Microsoft.Azure.PowerShell.Cmdlets.Peering</PackageId>
-    <SignAssembly>false</SignAssembly>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <WarningLevel>0</WarningLevel>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
-  <ItemGroup>
-    <Compile Remove="Peering\RemoveAzurePeeringCommand.cs" />
-  </ItemGroup>
+  <PropertyGroup>
+    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
+  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.0" />
     <PackageReference Include="Microsoft.Azure.Management.Peering" Version="0.9.0-preview" />
   </ItemGroup>
-
 </Project>

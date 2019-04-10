@@ -7,9 +7,7 @@
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
 
   <PropertyGroup>
-    <RootNamespace>Microsoft.Azure.Commands.Peering.Test.ScenarioTests</RootNamespace>
-    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Test</AssemblyName>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

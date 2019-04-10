@@ -19,76 +19,92 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
     using Xunit;
 
     /// <summary>
-    /// The set peering tests.
+    /// The scenario exchange peering tests.
     /// </summary>
-    public class SetPeeringTests
+    public class ScenarioExchangePeeringTests
     {
-        /// <summary>
-        /// The logger.
-        /// </summary>
         private ServiceManagement.Common.Models.XunitTracingInterceptor logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SetPeeringTests"/> class.
+        /// Initializes a new instance of the <see cref="ScenarioExchangePeeringTests"/> class.
         /// </summary>
         /// <param name="output">
         /// The output.
         /// </param>
-        public SetPeeringTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ScenarioExchangePeeringTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
-            
         }
 
         /// <summary>
-        /// The test get and set use for peering service.
+        /// The test asn.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAndSetUseForPeeringService()
+        public void TestAsn()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetAndSetUseForPeeringService");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-Asn");
         }
 
         /// <summary>
-        /// The test set new ip.
+        /// The test get legacy peering.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetNewIp()
+        public void TestGetLegacyPeering()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SetNewIP");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLegacyPeering Amsterdam");
         }
 
         /// <summary>
-        /// The test set new i pv 6.
+        /// The test convert legacy to exchange.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetNewIPv6()
+        public void TestConvertLegacyToExchange()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SetNewIPv6");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-ConvertLegacyToExchange");
         }
 
         /// <summary>
-        /// The test set new bandwidth.
+        /// The test update exchange i pv 4 on resource id.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetNewBandwidth()
+        public void TestUpdateExchangeIPv4OnResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SetNewBandwidth");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-UpdateExchangeIPv4OnResourceId");
         }
 
         /// <summary>
-        /// The test set new md 5 hash.
+        /// The test update exchange i pv 4 on input object.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetNewMd5Hash()
+        public void TestUpdateExchangeIPv4OnInputObject()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SetNewMd5Hash");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-UpdateExchangeIPv4OnInputObject");
+        }
+
+        /// <summary>
+        /// The test update exchange md 5 on name and resource group.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateExchangeMd5OnNameAndResourceGroup()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-UpdateExchangeMd5OnNameAndResourceGroup");
+        }
+
+        /// <summary>
+        /// The test remove asn exchange.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveAsnExchange()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-RemoveAsnExchange");
         }
     }
 }

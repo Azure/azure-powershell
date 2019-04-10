@@ -11,7 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-
 <#
 .SYNOPSIS
 GetLocationKindDirect 
@@ -19,11 +18,9 @@ GetLocationKindDirect
 function Test-GetLocationKindDirect
 {
     $location = Get-AzPeeringLocation -Kind Direct 
-
 	Assert-NotNull $location
 	Assert-AreEqual 91 $location.Count
 }
-
 <#
 .SYNOPSIS
 GetLocationKindDirect
@@ -31,12 +28,9 @@ GetLocationKindDirect
 function Test-GetLocationKindExchange
 {
     $location = Get-AzPeeringLocation -Kind Exchange 
-
 	Assert-NotNull $location
 	Assert-AreEqual 133 $location.Count
 }
-
-
 <#
 .SYNOPSIS
 GetLocationKindExchangeSeattle
@@ -44,7 +38,6 @@ GetLocationKindExchangeSeattle
 function Test-GetLocationKindExchangeSeattle
 {
     $location = Get-AzPeeringLocation -Kind Exchange -PeeringLocation seattle
-
 	Assert-NotNull $location
 	Assert-AreEqual 4 $location.Count
 	Assert-AreEqual 11 $location[0].PeeringDBFacilityId
@@ -52,7 +45,6 @@ function Test-GetLocationKindExchangeSeattle
 	Assert-AreEqual 1174 $location[2].PeeringDBFacilityId
 	Assert-AreEqual 82 $location[3].PeeringDBFacilityId
 }
-
 <#
 .SYNOPSIS
 GetLocationKindDirectSeattle
@@ -60,9 +52,7 @@ GetLocationKindDirectSeattle
 function Test-GetLocationKindDirectSeattle
 {
     $location = Get-AzPeeringLocation -Kind Direct -PeeringLocation seattle
-
 	Assert-NotNull $location
 	Assert-AreEqual 1 $location.Count
 	Assert-AreEqual 71 $location[0].PeeringDBFacilityId
-
 }

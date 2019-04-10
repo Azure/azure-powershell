@@ -12,10 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests.ScenarioTests
+namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
 {
-    using System;
-
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
     using Xunit;
@@ -25,48 +23,65 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests.ScenarioTests
     /// </summary>
     public class PeeringAsnTests
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
+        /// <summary>
+        /// The logger.
+        /// </summary>
+        private ServiceManagement.Common.Models.XunitTracingInterceptor logger;
 
         public PeeringAsnTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            this._logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this._logger);
-            // Environment.SetEnvironmentVariable("AZURE_TEST_MODE", "Playback");
+            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
         }
 
+        /// <summary>
+        /// The test new peer asn.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewPeerAsn()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-NewPeerAsn");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewPeerAsn");
         }
 
+        /// <summary>
+        /// The test get peer asn.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPeerAsn()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-GetPeerAsn");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetPeerAsn");
         }
 
+        /// <summary>
+        /// The test list peer asn.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListPeerAsn()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-ListPeerAsn");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-ListPeerAsn");
         }
 
+        /// <summary>
+        /// The test set peer asn.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetPeerAsn()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-SetPeerAsn");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SetPeerAsn");
         }
 
+        /// <summary>
+        /// The test remove peer asn.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemovePeerAsn()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-RemovePeerAsn");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-RemovePeerAsn");
         }
     }
 }

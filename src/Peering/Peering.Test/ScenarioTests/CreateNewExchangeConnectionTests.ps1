@@ -11,7 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-
 <#
 .SYNOPSIS
 NewExchangeConnectionV4V6 
@@ -21,12 +20,10 @@ function Test-NewExchangeConnectionV4V6
     $resourceName = "testAkamaiEPV4V6"
 	$md5 = "25234523452123411fd234qdwfas3234"
 	$facilityId = "99999"
-
 	$maxPrefixesAdvertisedIPv4 = 23
 	$maxPrefixesAdvertisedIPv6 = 45
 	$PeerSessionIPv4Address = "192.168.1.22/32"
 	$PeerSessionIPv6Address = "fe01::22/128"
-
     $resourceGroup = "testCarrier" #TestSetup-CreateResourceGroup
     $resourceLocation = "CentralUS"
     $profileSku = "Premium_Direct_Metered"
@@ -41,7 +38,6 @@ function Test-NewExchangeConnectionV4V6
 	Assert-AreEqual $PeerSessionIPv4Address $createdConnection.BgpSession.PeerSessionIPv4Address
     Assert-AreEqual $PeerSessionIPv6Address $createdConnection.BgpSession.PeerSessionIPv6Address
 }
-
 <#
 .SYNOPSIS
 NewExchangeConnectionV4
@@ -50,7 +46,6 @@ function Test-NewExchangeConnectionV4
 {
 	$md5 = "25234523452123411fd234qdwfas3234"
 	$facilityId = "99999"
-
 	$maxPrefixesAdvertisedIPv4 = 23
 	$PeerSessionIPv4Address = "192.168.1.22/32"
     $createdConnection = New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxPrefixesAdvertisedIPv4 -PeerSessionIPv4Address $PeerSessionIPv4Address -MD5AuthenticationKey $md5
@@ -63,7 +58,6 @@ function Test-NewExchangeConnectionV4
 	Assert-AreEqual $PeerSessionIPv4Address $createdConnection.BgpSession.PeerSessionIPv4Address
     Assert-Null $createdConnection.BgpSession.PeerSessionIPv6Address
 }
-
 <#
 .SYNOPSIS
 NewExchangeConnectionV6 
@@ -72,7 +66,6 @@ function Test-NewExchangeConnectionV6
 {
 	$md5 = "25234523452123411fd234qdwfas3234"
 	$facilityId = "99999"
-
 	$maxPrefixesAdvertisedIPv6 = 45
 	$PeerSessionIPv6Address = "fe01::22/128"
     $createdConnection = New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv6 $maxPrefixesAdvertisedIPv6 -PeerSessionIPv6Address $PeerSessionIPv6Address -MD5AuthenticationKey $md5
@@ -85,7 +78,6 @@ function Test-NewExchangeConnectionV6
 	Assert-Null $PeerSessionIPv4Address $createdConnection.BgpSession.PeerSessionIPv4Address
     Assert-AreEqual $PeerSessionIPv6Address $createdConnection.BgpSession.PeerSessionIPv6Address
 }
-
 <#
 .SYNOPSIS
 NewDirectConnectionWithV4 with fail on wrong IP

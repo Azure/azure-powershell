@@ -11,7 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-
 <#
 .SYNOPSIS
 GetAndSetUseForPeeringService 
@@ -21,21 +20,13 @@ function Test-GetAndSetUseForPeeringService
 	$name = "NewDirectPeering"
 	$rg = "testCarrier"
     $peer = Get-AzPeering -ResourceGroupName $rg -Name $name
-
 	$setPeer = $peer | Update-AzPeering -UseForPeeringService $true
-
 	Assert-NotNull $setPeer
-	#Assert-True {$setPeer.UseForPeeringService -eq $true}
-	#Assert-True {$setPeer.Sku.Name -eq "Basic_Direct_Free"}
-	#Assert-True {$setPeer.Sku.Name -eq "Premium_Direct_Free"}
-
 	$setPeer = $peer | Update-AzPeering -UseForPeeringService $false
-
 	Assert-NotNull $setPeer
 	Assert-True {$setPeer.UseForPeeringService -eq $false}
 	Assert-True {$setPeer.Sku.Name -eq "Basic_Direct_Free"}
 }
-
 <#
 .SYNOPSIS
 SetNewIP 
@@ -48,16 +39,13 @@ function Test-SetNewIP
 	$name = "NewDirectPeering"
 	$rg = "testCarrier"
     $peer = Get-AzPeering -ResourceGroupName $rg -Name $name
-	
 	$peer.Connections[0] = $peer.Connections[0] | Set-AzPeeringDirectConnectionObject -SessionPrefixV4 $ip
 	$setPeer = $peer | Update-AzPeering
-
 	Assert-NotNull $setPeer
 	Assert-AreEqual $ip $setPeer.Connections[0].BgpSession.SessionPrefixV4
 	Assert-AreEqual $msip $setPeer.Connections[0].BgpSession.PeerSessionIPv4Address
 	Assert-AreEqual $sesip $setPeer.Connections[0].BgpSession.MicrosoftSessionIPv4Address
 }
-
 <#
 .SYNOPSIS
 SetNewIPv6 
@@ -70,16 +58,13 @@ function Test-SetNewIPv6
 	$name = "NewDirectPeering"
 	$rg = "testCarrier"
     $peer = Get-AzPeering -ResourceGroupName $rg -Name $name
-	
 	$peer.Connections[0] = $peer.Connections[0] | Set-AzPeeringDirectConnectionObject -SessionPrefixV6 $ip
 	$setPeer = $peer | Update-AzPeering
-	
 	Assert-NotNull $setPeer
 	Assert-AreEqual $ip $setPeer.Connections[0].BgpSession.SessionPrefixV6
 	Assert-AreEqual $msip $setPeer.Connections[0].BgpSession.PeerSessionIPv6Address
 	Assert-AreEqual $sesip $setPeer.Connections[0].BgpSession.MicrosoftSessionIPv6Address
 }
-
 <#
 .SYNOPSIS
 SetNewBandwidth 
@@ -89,16 +74,12 @@ function Test-SetNewBandwidth
 	$name = "NewDirectPeering"
 	$rg = "testCarrier"
     $peer = Get-AzPeering -ResourceGroupName $rg -Name $name
-
 	$bandwidth = 30000
-
 	$peer.Connections[0] = $peer.Connections[0] | Set-AzPeeringDirectConnectionObject -BandwidthInMbps $bandwidth 
 	$setPeer = $peer | Update-AzPeering
-
 	Assert-NotNull $setPeer
 	Assert-AreEqual $bandwidth $setPeer.Connections[0].BandwidthInMbps
 }
-
 <#
 .SYNOPSIS
 SetNewMd5Hash 
@@ -109,10 +90,8 @@ function Test-SetNewMd5Hash
     $name = "NewDirectPeering"
 	$rg = "testCarrier"
     $peer = Get-AzPeering -ResourceGroupName $rg -Name $name
-
 	$peer.Connections[0] = $peer.Connections[0] | Set-AzPeeringDirectConnectionObject -MD5AuthenticationKey $hash
 	$setPeer = $peer | Update-AzPeering
-
 	Assert-NotNull $setPeer
 	Assert-AreEqual $hash $setPeer.Connections[0].BgpSession.Md5AuthenticationKey
 }
