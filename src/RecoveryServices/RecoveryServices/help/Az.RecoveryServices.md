@@ -95,7 +95,7 @@ Gets the items from a container in Backup.
 ### [Get-AzRecoveryServicesBackupJob](Get-AzRecoveryServicesBackupJob.md)
 Gets Backup jobs.
 
-### [Get-AzRecoveryServicesBackupJobDetails](Get-AzRecoveryServicesBackupJobDetails.md)
+### [Get-AzRecoveryServicesBackupJobDetail](Get-AzRecoveryServicesBackupJobDetail.md)
 Gets details for a Backup job.
 
 ### [Get-AzRecoveryServicesBackupManagementServer](Get-AzRecoveryServicesBackupManagementServer.md)
@@ -239,7 +239,7 @@ Sets recovery properties such as target network and virtual machine size for the
 ### [Set-AzRecoveryServicesAsrVaultContext](Set-AzRecoveryServicesAsrVaultContext.md)
 Sets the Recovery Services vault context to be used for subsequent Azure Site Recovery operations in the current PowerShell session.
 
-### [Set-AzRecoveryServicesBackupProperties](Set-AzRecoveryServicesBackupProperties.md)
+### [Set-AzRecoveryServicesBackupProperty](Set-AzRecoveryServicesBackupProperty.md)
 Sets the properties for backup management.
 
 ### [Set-AzRecoveryServicesBackupProtectionPolicy](Set-AzRecoveryServicesBackupProtectionPolicy.md)
