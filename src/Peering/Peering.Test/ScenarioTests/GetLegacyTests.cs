@@ -12,43 +12,62 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests.ScenarioTests
+namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
 {
-    using System;
-
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
     using Xunit;
 
+    /// <summary>
+    /// The get legacy tests.
+    /// </summary>
     public class GetLegacyTests
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
+        /// <summary>
+        /// The logger.
+        /// </summary>
+        private ServiceManagement.Common.Models.XunitTracingInterceptor logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GetLegacyTests"/> class.
+        /// </summary>
+        /// <param name="output">
+        /// The output.
+        /// </param>
         public GetLegacyTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            this._logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this._logger);
-            // Environment.SetEnvironmentVariable("AZURE_TEST_MODE", "Playback");
+            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
         }
+
+        /// <summary>
+        /// The test get legacy kind exchange amsterdam.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetLegacyKindExchangeAmsterdam()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-GetLegacyKindExchangeAmsterdam");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLegacyKindExchangeAmsterdam");
         }
 
+        /// <summary>
+        /// The test get legacy kind direct amsterdam.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetLegacyKindDirectAmsterdam()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-GetLegacyKindDirectAmsterdam");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLegacyKindDirectAmsterdam");
         }
-        
+
+        /// <summary>
+        /// The test convert legacy direct new peering.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConvertLegacyDirectNewPeering()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-ConvertLegacyDirectNewPeering");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-ConvertLegacyDirectNewPeering");
         }
     }
 }

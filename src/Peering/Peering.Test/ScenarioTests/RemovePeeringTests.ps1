@@ -11,7 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-
 <#
 .SYNOPSIS
 RemoveByName 
@@ -20,16 +19,10 @@ function Test-RemoveByName
 {
 	$peerName = "Contoso1"
     $peer = Get-AzPeerAsn -Name $peerName
-
 	$removePeer = Remove-AzPeerAsn -Name $peer.PeerName -Force
-
 	Assert-NotNull $removePeer
-
 Assert-ThrowsContains {Get-AzPeerAsn -Name $peerName} "Error:Not Found reason:NotFound message:PeerAsn does not exist with the given name Resource does not exist."
-
-
 }
-
 <#
 .SYNOPSIS
 RemoveInputObject 
@@ -38,10 +31,7 @@ function Test-RemoveInputObject
 {
 	$peerName = "Contoso1"
     $peer = Get-AzPeerAsn -Name $peerName
-
 	$removePeer = Get-AzPeerAsn | Remove-AzPeerAsn -Force
-
 	Assert-NotNull $removePeer
-
 	Assert-ThrowsContains {Get-AzPeerAsn -Name $peerName} "Error:Not Found reason:NotFound message:PeerAsn does not exist with the given name Resource does not exist."
 }

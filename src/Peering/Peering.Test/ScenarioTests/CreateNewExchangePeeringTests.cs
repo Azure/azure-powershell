@@ -1,5 +1,5 @@
 ﻿// ----------------------------------------------------------------------------------
-//
+// <copyright company="Microsoft" file="CreateNewExchangePeeringTests.cs">
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,10 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests.ScenarioTests
+namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
 {
-    using System;
-
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
     using Xunit;
@@ -25,34 +23,51 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests.ScenarioTests
     /// </summary>
     public class CreateNewExchangePeeringTests
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
+        /// <summary>
+        /// The _logger.
+        /// </summary>
+        private ServiceManagement.Common.Models.XunitTracingInterceptor logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CreateNewExchangePeeringTests"/> class.
+        /// </summary>
+        /// <param name="output">
+        /// The output.
+        /// </param>
         public CreateNewExchangePeeringTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            this._logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this._logger);
-            // Environment.SetEnvironmentVariable("AZURE_TEST_MODE", "Playback");
+            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
         }
 
+        /// <summary>
+        /// The test new exchange peering.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewExchangePeering()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-NewExchangePeering");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewExchangePeering");
         }
 
+        /// <summary>
+        /// The test new exchange peering pipe.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewExchangePeeringPipe()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-NewExchangePeeringPipe");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewExchangePeeringPipe");
         }
 
+        /// <summary>
+        /// The test new exchange peering pipe two connections.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewExchangePeeringPipeTwoConnections()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-NewExchangePeeringPipeTwoConnections");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewExchangePeeringPipeTwoConnections");
         }
     }
 }

@@ -11,7 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-
 <#
 .SYNOPSIS
 GetLocationKindDirect 
@@ -19,19 +18,15 @@ GetLocationKindDirect
 function Test-GetLegacyKindExchangeAmsterdam
 {
     $legacy = Get-AzLegacyPeering -Kind Exchange -PeeringLocation Amsterdam 
-
 	Assert-NotNull $legacy
 	Assert-AreEqual 1 $legacy.Count
 }
-
 function Test-GetLegacyKindDirectAmsterdam
 {
     $legacy = Get-AzLegacyPeering -Kind Direct -PeeringLocation Amsterdam 
-
 	Assert-NotNull $legacy
 	Assert-AreEqual 1 $legacy.Count
 }
-
 <#
 .SYNOPSIS
 GetLocationKindDirect
@@ -40,22 +35,15 @@ function Test-ConvertLegacyDirectNewPeering
 {
 	$resourceName = "AkamaiPeering"
     $legacy = Get-AzLegacyPeering -Kind Direct -PeeringLocation Amsterdam  
-
 	Assert-NotNull $legacy
 	Assert-AreEqual 1 $legacy.Count
-
 	$peerAsn = Get-AzPeerAsn -Name "Contoso1"
-
 	Assert-NotNull $peerAsn
-
 	$legacy | New-AzPeering -Name $resourceName -ResourceGroupName testCarrier -PeeringLocation $legacy.PeeringLocation -PeerAsnResourceId $peerAsn.Id 
-
 	$newPeering = Get-AzPeering -ResourceGroupName testCarrier -Name $resourceName
-	
 	Assert-NotNull $newPeering
 	Assert-AreEqual $resourceName $newPeering.Name
 }
-
 <#
 .SYNOPSIS
 GetLocationKindExchange
@@ -64,20 +52,12 @@ function Test-ConvertLegacyExchangeNewPeering
 {
 	$resourceName = "AkamaiPeering"
     $legacy = Get-AzLegacyPeering -Kind Exchange -PeeringLocation Amsterdam  
-
 	Assert-NotNull $legacy
 	Assert-AreEqual 1 $legacy.Count
-
 	$peerAsn = Get-AzPeerAsn
-
 	Assert-NotNull $peerAsn
-
 	$legacy | New-AzPeering -Name $resourceName -ResourceGroupName testCarrier -PeeringLocation $legacy.PeeringLocation -PeerAsnResourceId $peerAsn.Id 
-
 	$newPeering = Get-AzPeering -ResourceGroupName testCarrier -Name $resourceName
-	
 	Assert-NotNull $newPeering
 	Assert-AreEqual $resourceName $newPeering.Name
 }
-
-

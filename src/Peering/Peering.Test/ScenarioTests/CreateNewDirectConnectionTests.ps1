@@ -21,15 +21,11 @@ function Test-NewDirectConnectionWithV4V6
     $resourceName = "testAkamaiEPV4V6"
 	$md5 = "25234523452123411fd234qdwfas3234"
 	$facilityId = "99999"
-
 	$sessionv4 = "192.168.1.0/31"
 	$sessionv6 = "fe01::0/127"
-
 	$maxv4 = 20000
 	$maxv6 = 2000
-
 	$bandwidth = 30000
-
     $resourceGroup = "testCarrier" #TestSetup-CreateResourceGroup
     $resourceLocation = "CentralUS"
     $profileSku = "Premium_Direct_Metered"
@@ -51,13 +47,10 @@ function Test-NewDirectConnectionWithV4
 {
 	$md5 = "25234523452123411fd234qdwfas3234"
 	$facilityId = "99999"
-
 	$sessionv4 = "192.168.1.0/31"
-
 	$bandwidth = 30000
-		$maxv4 = 20000
+	$maxv4 = 20000
 	$maxv6 = 2000
-
     $createdConnection = New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV4 $sessionv4 -MaxPrefixesAdvertisedIPv4 $maxv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5
 	Get-AzPeerAsn
     Assert-AreEqual $md5 $createdConnection.BgpSession.Md5AuthenticationKey
@@ -76,17 +69,12 @@ function Test-NewDirectConnectionWithV6
 {
 	$md5 = "25234523452123411fd234qdwfas3234"
 	$facilityId = "99999"
-
 	$sessionv6 = "fe01::0/127"
-
 	$bandwidth = 30000
-		$maxv4 = 20000
+	$maxv4 = 20000
 	$maxv6 = 2000
-
 	Get-AzPeerAsn
-
     $createdConnection = New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5
-
     Assert-AreEqual $md5 $createdConnection.BgpSession.Md5AuthenticationKey
     Assert-AreEqual $bandwidth $createdConnection.BandwidthInMbps 
 	Assert-AreEqual $facilityId $createdConnection.PeeringDBFacilityId 
@@ -102,9 +90,8 @@ function Test-NewDirectConnectionNoSession
 {
 	$md5 = "25234523452123411fd234qdwfas3234"
 	$facilityId = "99999"
-
 	$bandwidth = 20000
-		$maxv4 = 20000
+	$maxv4 = 20000
 	$maxv6 = 2000
 	Get-AzPeerAsn
 	Assert-ThrowsContains { New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5 } "Cannot process command because of one or more missing mandatory parameters: SessionPrefixV4."
@@ -118,11 +105,9 @@ function Test-NewDirectConnectionHighBandwidth
 {
 	$md5 = "25234523452123411fd234qdwfas3234"
 	$facilityId = "99999"
-
 	$sessionv6 = "fe01::0/127"
-
 	$bandwidth = 300000
-		$maxv4 = 20000
+	$maxv4 = 20000
 	$maxv6 = 2000
 	Get-AzPeerAsn
 	Assert-ThrowsContains { New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5 } "The 300000 argument is greater than the maximum allowed range of 100000"
@@ -136,9 +121,7 @@ function Test-NewDirectConnectionLowBandwidth
 {
 	$md5 = "25234523452123411fd234qdwfas3234"
 	$facilityId = "99999"
-
 	$sessionv6 = "fe01::0/127"
-
 	$bandwidth = 0
 	$maxv4 = 20000
 	$maxv6 = 2000
@@ -154,14 +137,12 @@ function Test-NewDirectConnectionWrongV6
 {
 	$md5 = "25234523452123411fd234qdwfas3234"
 	$facilityId = "99999"
-
 	$sessionv6 = "fe01::1/128"
-
 	$bandwidth = 20000
 		$maxv4 = 20000
 	$maxv6 = 2000
 	Get-AzPeerAsn
-	Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} "Specified argument was out of the range of valid values.`r`nParameter name: IPv6 mask must be /64 - /127. IP Mask out of range fe01::1/128."
+	Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} 'Specified argument was out of the range of valid values'
 }
 
 <#
@@ -174,7 +155,7 @@ function Test-NewDirectConnectionWrongV4
 	$facilityId = "99999"
 	$sessionv4 = "192.168.1.1/32"
 	$bandwidth = 30000
-		$maxv4 = 20000
+	$maxv4 = 20000
 	$maxv6 = 2000
 	Get-AzPeerAsn
 	Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV4 $sessionv4 -MaxPrefixesAdvertisedIPv4 $maxv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} "Parameter name: Invalid Prefix: 192.168.1.1/32, must be either /30 or /31"

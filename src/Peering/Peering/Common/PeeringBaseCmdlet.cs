@@ -551,11 +551,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                 {
                     if (location.Name == PeeringLocation)
                     {
-                        // For Production
-                        // return location.Name == "Building40" ? "centralus" : location.AzureRegion;
+                        return location.Name == "Building40" ? "centralus" : location.AzureRegion;
                     }
                 }
-                // TODO remove for Production
                 return "centralus";
             }
             catch
@@ -567,8 +565,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 
                 throw new Exception("Unable to map AzureRegion to InputObject location.");
             }
-
-            throw new Exception("Unable to map AzureRegion to InputObject location.");
         }
 
         /// <summary>
@@ -642,7 +638,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         {
             if (connection.PeeringDBFacilityId <= 0)
             {
-                // TODO validate facility ID with new peering
                 throw new PSArgumentException(
                     $"Connection has invalid InputObject Facility ID: {connection.PeeringDBFacilityId}.");
             }

@@ -12,37 +12,52 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests.ScenarioTests
+namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
 {
-    using System;
-
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
     using Xunit;
 
+    /// <summary>
+    /// The remove peering tests.
+    /// </summary>
     public class RemovePeeringTests
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
+        /// <summary>
+        /// The logger.
+        /// </summary>
+        private ServiceManagement.Common.Models.XunitTracingInterceptor logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RemovePeeringTests"/> class.
+        /// </summary>
+        /// <param name="output">
+        /// The output.
+        /// </param>
         public RemovePeeringTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            this._logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this._logger);
-            // Environment.SetEnvironmentVariable("AZURE_TEST_MODE", "Playback");
+            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
         }
 
+        /// <summary>
+        /// The test remove input object.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveInputObject()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-RemoveInputObject");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-RemoveInputObject");
         }
 
+        /// <summary>
+        /// The test remove by name.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveByName()
         {
-            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-RemoveByName");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-RemoveByName");
         }
     }
 }
