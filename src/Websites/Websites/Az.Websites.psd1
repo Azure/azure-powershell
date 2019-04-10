@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.4.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Websites.dll'
@@ -76,18 +76,18 @@ FunctionsToExport = @()
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzAppServicePlan', 'Set-AzAppServicePlan', 
                'New-AzAppServicePlan', 'Remove-AzAppServicePlan', 'Get-AzWebAppSlot', 
-               'Get-AzWebAppSlotConfigName', 'Get-AzWebAppSlotMetrics', 
+               'Get-AzWebAppSlotConfigName', 'Get-AzWebAppSlotMetric', 
                'Get-AzWebAppSlotPublishingProfile', 'New-AzWebAppSlot', 
                'Remove-AzWebAppSlot', 'Reset-AzWebAppSlotPublishingProfile', 
                'Restart-AzWebAppSlot', 'Set-AzWebAppSlot', 
                'Set-AzWebAppSlotConfigName', 'Start-AzWebAppSlot', 
                'Stop-AzWebAppSlot', 'Switch-AzWebAppSlot', 
                'New-AzWebAppDatabaseBackupSetting', 'Restore-AzWebAppBackup', 
-               'Get-AzAppServicePlanMetrics', 'Get-AzWebAppCertificate', 
+               'Get-AzAppServicePlanMetric', 'Get-AzWebAppCertificate', 
                'Get-AzWebAppSSLBinding', 'New-AzWebAppSSLBinding', 
                'Remove-AzWebAppSSLBinding', 'Edit-AzWebAppBackupConfiguration', 
                'Get-AzWebAppBackup', 'Get-AzWebAppBackupConfiguration', 
-               'Get-AzWebAppBackupList', 'Get-AzWebAppMetrics', 
+               'Get-AzWebAppBackupList', 'Get-AzWebAppMetric', 
                'Get-AzWebAppPublishingProfile', 'Get-AzWebApp', 'New-AzWebAppBackup', 
                'Remove-AzWebApp', 'New-AzWebApp', 'Remove-AzWebAppBackup', 
                'Reset-AzWebAppPublishingProfile', 'Restart-AzWebApp', 'Set-AzWebApp', 
@@ -103,7 +103,7 @@ CmdletsToExport = 'Get-AzAppServicePlan', 'Set-AzAppServicePlan',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Swap-AzWebAppSlot'
+AliasesToExport = 'Swap-AzWebAppSlot', 'Get-AzWebAppSlotMetrics', 'Get-AzAppServicePlanMetrics', 'Get-AzWebAppMetrics'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

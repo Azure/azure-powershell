@@ -139,6 +139,40 @@ Unit           : Percent
 
 This command returns metrics for an Azure SQL elastic database pool named ElasticPool01.
 
+### Example 4: Get all elastic pools using filtering -ElasticPoolName "ElasticPool*"
+```
+PS C:\>Get-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/resourcegroup01/providers/Microsoft.Sql/servers/server01/elasticPools/elasticpool01
+ResourceGroupName : resourcegroup01
+ServerName        : server01
+ElasticPoolName   : elasticpool01
+Location          : Central US
+CreationDate      : 8/26/2015 10:00:17 PM
+State             : Ready
+Edition           : Standard
+Dtu               : 400
+DatabaseDtuMax    : 100
+DatabaseDtuMin    : 10
+StorageMB         : 409600
+Tags              : 
+
+ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/resourcegroup01/providers/Microsoft.Sql/servers/server01/elasticPools/elasticpool02
+ResourceGroupName : resourcegroup01
+ServerName        : server01
+ElasticPoolName   : elasticpool02
+Location          : Central US
+CreationDate      : 8/26/2015 11:00:17 PM
+State             : Ready
+Edition           : Standard
+Dtu               : 400
+DatabaseDtuMax    : 100
+DatabaseDtuMin    : 10
+StorageMB         : 409600
+Tags              :
+```
+
+This command gets all of the elastic pools on the server named Server01 that start with "ElasticPool".
+
 ## PARAMETERS
 
 ### -DefaultProfile

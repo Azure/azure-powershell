@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.4.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.PowerBIEmbedded.dll', 
@@ -78,9 +78,9 @@ FunctionsToExport = @()
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Remove-AzPowerBIWorkspaceCollection', 
                'Get-AzPowerBIWorkspaceCollection', 
-               'Get-AzPowerBIWorkspaceCollectionAccessKeys', 
+               'Get-AzPowerBIWorkspaceCollectionAccessKey', 
                'Get-AzPowerBIWorkspace', 'New-AzPowerBIWorkspaceCollection', 
-               'Reset-AzPowerBIWorkspaceCollectionAccessKeys', 
+               'Reset-AzPowerBIWorkspaceCollectionAccessKey', 
                'Resume-AzPowerBIEmbeddedCapacity', 
                'Suspend-AzPowerBIEmbeddedCapacity', 
                'Get-AzPowerBIEmbeddedCapacity', 'Remove-AzPowerBIEmbeddedCapacity', 
@@ -91,7 +91,7 @@ CmdletsToExport = 'Remove-AzPowerBIWorkspaceCollection',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+AliasesToExport = 'Get-AzPowerBIWorkspaceCollectionAccessKeys', 'Reset-AzPowerBIWorkspaceCollectionAccessKeys'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

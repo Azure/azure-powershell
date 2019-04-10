@@ -132,6 +132,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(HelpMessage = "Destination Storage context object", ParameterSetName = UriFilePathParameterSet)]
         public IStorageContext DestContext { get; set; }
 
+        // Overwrite the useless parameter
+        public override SwitchParameter AsJob { get; set; }
+
         private IStorageBlobManagement blobChannel = null;
 
         private BlobToAzureFileNameResolver nameResolver = new BlobToAzureFileNameResolver(() => NameUtil.MaxFileNameLength);

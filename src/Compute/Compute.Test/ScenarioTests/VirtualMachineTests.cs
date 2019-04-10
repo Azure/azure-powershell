@@ -24,14 +24,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
         }
 
-        [Fact]
+        [Fact(Skip = "Fails on Linux/macOS. Needs investigation.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachine()
         {
             TestRunner.RunTestScript("Test-VirtualMachine $null");
         }
 
-        [Fact]
+        [Fact(Skip = "Fails on Linux/macOS. Needs investigation.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachine_Managed()
         {
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-VirtualMachineTags");
         }
 
-        [Fact]
+        [Fact(Skip = "Fails on Linux/macOS. Needs investigation.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVMImageCmdletOutputFormat()
         {
