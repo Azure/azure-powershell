@@ -14,12 +14,14 @@
 
 using Microsoft.Azure.Commands.NotificationHubs.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
-
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NotificationHubPNSCredentials"), OutputType(typeof(NotificationHubAttributes))]
+    [GenericBreakingChange("Get-AzNotificationHubPNSCredentials alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NotificationHubPNSCredential"), OutputType(typeof(NotificationHubAttributes))]
+    [Alias("Get-AzNotificationHubPNSCredentials")]
     public class GetAzureNotificationHubPNSCredentials : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,

@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.4.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.Network.dll'
@@ -83,18 +83,18 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzApplicationGatewayAutoscaleConfiguration', 
                'Remove-AzApplicationGatewayAutoscaleConfiguration', 
                'Set-AzApplicationGatewayAutoscaleConfiguration', 
-               'Get-AzApplicationGatewayAvailableWafRuleSets', 
-               'Get-AzApplicationGatewayAvailableSslOptions', 
+               'Get-AzApplicationGatewayAvailableWafRuleSet', 
+               'Get-AzApplicationGatewayAvailableSslOption', 
                'Add-AzApplicationGatewayBackendAddressPool', 
                'Get-AzApplicationGatewayBackendAddressPool', 
                'New-AzApplicationGatewayBackendAddressPool', 
                'Remove-AzApplicationGatewayBackendAddressPool', 
                'Set-AzApplicationGatewayBackendAddressPool', 
-               'Add-AzApplicationGatewayBackendHttpSettings', 
-               'Get-AzApplicationGatewayBackendHttpSettings', 
-               'New-AzApplicationGatewayBackendHttpSettings', 
-               'Remove-AzApplicationGatewayBackendHttpSettings', 
-               'Set-AzApplicationGatewayBackendHttpSettings', 
+               'Add-AzApplicationGatewayBackendHttpSetting', 
+               'Get-AzApplicationGatewayBackendHttpSetting', 
+               'New-AzApplicationGatewayBackendHttpSetting', 
+               'Remove-AzApplicationGatewayBackendHttpSetting', 
+               'Set-AzApplicationGatewayBackendHttpSetting', 
                'Get-AzApplicationGatewayConnectionDraining', 
                'New-AzApplicationGatewayConnectionDraining', 
                'Remove-AzApplicationGatewayConnectionDraining', 
@@ -203,7 +203,7 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Move-AzExpressRouteCircuit', 'Get-AzExpressRouteCircuitARPTable', 
                'Get-AzExpressRouteCircuitRouteTable', 
                'Get-AzExpressRouteCircuitRouteTableSummary', 
-               'Get-AzExpressRouteCircuitStats', 
+               'Get-AzExpressRouteCircuitStat', 
                'Add-AzLoadBalancerInboundNatPoolConfig', 
                'Get-AzLoadBalancerInboundNatPoolConfig', 
                'New-AzLoadBalancerInboundNatPoolConfig', 
@@ -402,7 +402,15 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
 AliasesToExport = 'List-AzApplicationGatewayAvailableWafRuleSets', 
                'List-AzApplicationGatewayAvailableSslOptions', 
                'List-AzApplicationGatewaySslPredefinedPolicy', 
-               'List-AzApplicationGatewayAvailableServerVariableAndHeader'
+               'List-AzApplicationGatewayAvailableServerVariableAndHeader',
+               'Add-AzApplicationGatewayBackendHttpSettings', 
+               'Get-AzApplicationGatewayBackendHttpSettings', 
+               'New-AzApplicationGatewayBackendHttpSettings', 
+               'Remove-AzApplicationGatewayBackendHttpSettings', 
+               'Set-AzApplicationGatewayBackendHttpSettings', 
+               'Get-AzExpressRouteCircuitStats',
+               'Get-AzApplicationGatewayAvailableWafRuleSets', 
+               'Get-AzApplicationGatewayAvailableSslOptions'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

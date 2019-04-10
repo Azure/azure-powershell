@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
         {
             ICollection<AzureSqlServerServiceObjectiveModel> results = null;
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("ServiceObjectiveName"))
+            if (this.MyInvocation.BoundParameters.ContainsKey("ServiceObjectiveName") && !WildcardPattern.ContainsWildcardCharacters(ServiceObjectiveName))
             {
                 results = new List<AzureSqlServerServiceObjectiveModel>
                 {
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
                 results = ModelAdapter.ListServiceObjectives(this.ResourceGroupName, this.ServerName);
             }
 
-            return results;
+            return SubResourceWildcardFilter(ServiceObjectiveName, results);
         }
 
         /// <summary>

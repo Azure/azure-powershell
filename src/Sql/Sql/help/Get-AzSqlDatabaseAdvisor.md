@@ -169,6 +169,34 @@ RecommendedActions             : {IR_[test_schema]_[test_table_0.0361551]_6C7AE8
 This command gets the Advisor named CreateIndex from the database named WIRunner with its recommended actions included in the response.
 Since the command uses the *ExpandRecommendedActions* parameter, the cmdlet gets the recommended actions with the response.
 
+### Example 5: List all the advisors for the specified database using filtering
+```
+PS C:\>Get-AzSqlDatabaseAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -DatabaseName "WIRunner" -AdvisorName d*
+DatabaseName                   : WIRunner
+ResourceGroupName              : WIRunnersProd
+ServerName                     : wi-runner-australia-east
+AdvisorName                    : DropIndex
+AdvisorStatus                  : PublicPreview
+AutoExecuteStatus              : Disabled
+AutoExecuteStatusInheritedFrom : Database
+LastChecked                    : 7/31/2016 8:41:19 PM
+RecommendationsStatus          : Ok
+RecommendedActions             : {}
+
+DatabaseName                   : WIRunner
+ResourceGroupName              : WIRunnersProd
+ServerName                     : wi-runner-australia-east
+AdvisorName                    : DbParameterization
+AdvisorStatus                  : PublicPreview
+AutoExecuteStatus              : Disabled
+AutoExecuteStatusInheritedFrom : Default
+LastChecked                    : 7/31/2016 2:46:58 PM
+RecommendationsStatus          : NoDbParameterizationIssue
+RecommendedActions             : {}
+```
+
+This command gets lists all the advisors for the database named WIRunner that belongs to the server named wi-runner-australia-east and start with the letter "d".
+
 ## PARAMETERS
 
 ### -AdvisorName
