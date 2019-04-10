@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public partial class AvailabilityZoneTests
     {
-        [Fact(Skip = "TODO: Need to record again, error message changed to 'Availability Zone is not available for Standard A0-A7 Family virtual machines.'")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineZone()
         {

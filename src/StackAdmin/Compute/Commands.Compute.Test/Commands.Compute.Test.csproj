@@ -51,8 +51,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.16.3.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.17.5.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=16.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.16.1.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
@@ -70,8 +69,9 @@
     <Compile Include="ScenarioTests\DiagnosticsExtensionTests.cs" />
     <Compile Include="ScenarioTests\DiskRPTests.cs" />
     <Compile Include="ScenarioTests\ImageTests.cs" />
+    <Compile Include="ScenarioTests\LogAnalyticTests.cs" />
+    <Compile Include="ScenarioTests\NewVhdVMTests.cs" />
     <Compile Include="ScenarioTests\ResourceSkuTests.cs" />
-    <Compile Include="ScenarioTests\SqlIaaSExtensionTests.cs" />
     <Compile Include="ScenarioTests\DscExtensionTests.cs" />
     <Compile Include="ScenarioTests\RunnerTests.cs" />
     <Compile Include="ScenarioTests\StrategiesVirtualMachineTests.cs" />
@@ -110,15 +110,17 @@
       <Link>ScenarioTests\Common.ps1</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="VhdFiles\tiny.vhd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Storage.Management\SDK\StorageSDK.csproj">
       <Project>{ccc1f6c7-e2ce-47b3-bd64-8efd17823e20}</Project>
       <Name>StorageSDK</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Commands.Compute\Commands.Compute.csproj">
-      <Project>{52643bd5-6378-49bd-9f6e-dac9dd8a867b}</Project>
-      <Name>Commands.Compute</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commands.Compute\Commands.Compute.csproj">
       <Project>{52643bd5-6378-49bd-9f6e-dac9dd8a867b}</Project>
@@ -130,7 +132,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+    <Content Include="ConfigFiles\DiagnosticsExtensionConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

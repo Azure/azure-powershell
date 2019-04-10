@@ -22,5 +22,7 @@
 ## Version 4.6.1
 * Compute module supporting the api-version 2017-12-01
 * This module is for azurestack hybrid profile 2019-03-01-hybrid
+* Copy of the 4.6.0 module with the bug fixes for empty response for Restart-AzureRmVM, Stop-AzureRmVM, Start-AzureRmVM
+
 
 

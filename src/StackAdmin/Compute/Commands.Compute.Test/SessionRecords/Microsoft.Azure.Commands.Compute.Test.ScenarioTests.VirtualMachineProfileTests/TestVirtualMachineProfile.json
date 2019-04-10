@@ -1,13 +1,68 @@
 {
-  "Entries": [],
-  "Names": {
-    "Test-VirtualMachineProfile": [
-      "onesdk1234"
-    ]
-  },
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/7dec1fd6-2e45-4798-9be5-efba704319b4/resourceGroups/fakeresource/providers/Microsoft.Compute/virtualMachineScaleSets/fakevmss?api-version=2017-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2RlYzFmZDYtMmU0NS00Nzk4LTliZTUtZWZiYTcwNDMxOWI0L3Jlc291cmNlR3JvdXBzL2Zha2VyZXNvdXJjZS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVTY2FsZVNldHMvZmFrZXZtc3M/YXBpLXZlcnNpb249MjAxNy0xMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9d876b25-7c36-4144-9298-0ca2a710061f"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3324.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/17.5.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "d8e18c5b-63b6-47c0-8215-f82c2b129d06"
+        ],
+        "x-ms-correlation-request-id": [
+          "d8e18c5b-63b6-47c0-8215-f82c2b129d06"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190329T191806Z:d8e18c5b-63b6-47c0-8215-f82c2b129d06"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 29 Mar 2019 19:18:05 GMT"
+        ],
+        "Content-Length": [
+          "104"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'fakeresource' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    }
+  ],
+  "Names": {},
   "Variables": {
-    "SubscriptionId": "2c224e7e-3ef5-431d-a57b-e71f4662e3a6",
-    "UserId": "phuang@microsoft.com",
-    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+    "SubscriptionId": "7dec1fd6-2e45-4798-9be5-efba704319b4"
   }
 }

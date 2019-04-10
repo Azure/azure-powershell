@@ -38,25 +38,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineExtensionUsingHashTable");
         }
 
-        [Fact(Skip = "TODO: Keys.Key1 -> Keys[0].Value")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineCustomScriptExtension()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCustomScriptExtension");
-        }
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCustomScriptExtensionWrongStorage()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCustomScriptExtensionWrongStorage");
-        }
-
-        [Fact(Skip = "TODO: Keys.Key1 -> Keys[0].Value")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineCustomScriptExtensionSecureExecution()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCustomScriptExtensionSecureExecution");
         }
 
         [Fact]

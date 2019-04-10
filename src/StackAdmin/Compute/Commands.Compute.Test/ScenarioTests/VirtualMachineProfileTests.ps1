@@ -18,6 +18,8 @@ Test Virtual Machine Profile
 #>
 function Test-VirtualMachineProfile
 {
+    Get-AzureRmVmss -ResourceGroupName "fakeresource" -VMScaleSetName "fakevmss" -ErrorAction SilentlyContinue
+
     # VM Profile & Hardware
     $vmsize = 'Standard_A2';
     $vmname = 'pstestvm' + ((Get-Random) % 10000);
@@ -69,10 +71,12 @@ function Test-VirtualMachineProfile
     Assert-AreEqual $managedDataDiskId $p.StorageProfile.DataDisks[2].ManagedDisk.Id;
     Assert-AreEqual "StandardLRS" $p.StorageProfile.DataDisks[2].ManagedDisk.StorageAccountType;
     Assert-Null $p.StorageProfile.DataDisks[2].DiskSizeGB;
+    Assert-AreEqual $false $p.StorageProfile.DataDisks[2].WriteAcceleratorEnabled;
 
-    $p = Set-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -StorageAccountType PremiumLRS;
+    $p = Set-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -StorageAccountType PremiumLRS -WriteAccelerator;
     Assert-AreEqual $managedDataDiskId $p.StorageProfile.DataDisks[2].ManagedDisk.Id;
     Assert-AreEqual "PremiumLRS" $p.StorageProfile.DataDisks[2].ManagedDisk.StorageAccountType;
+    Assert-AreEqual $true $p.StorageProfile.DataDisks[2].WriteAcceleratorEnabled;
 
     $p = Remove-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3';
 
@@ -84,10 +88,13 @@ function Test-VirtualMachineProfile
     Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
     Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 0;
     Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri $dataDiskVhdUri1;
+    Assert-AreEqual $false $p.StorageProfile.DataDisks[0].WriteAcceleratorEnabled;
+
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
     Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 1;
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
+    Assert-AreEqual $false $p.StorageProfile.DataDisks[1].WriteAcceleratorEnabled;
 
     # Remove all data disks
     $p = $p | Remove-AzureRmVMDataDisk;
@@ -105,6 +112,25 @@ function Test-VirtualMachineProfile
     Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 1;
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
+
+    $managedOsDiskId_0 = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rggroup/providers/Microsoft.Compute/disks/osDisk0";
+    $managedOsDiskId_1 = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rggroup/providers/Microsoft.Compute/disks/osDisk1";
+
+    $p = Set-AzureRmVMOsDisk -VM $p -ManagedDiskId $managedOsDiskId_0 -StorageAccountType StandardLRS -WriteAccelerator;
+    Assert-AreEqual $osDiskCaching $p.StorageProfile.OSDisk.Caching;
+    Assert-AreEqual $osDiskName $p.StorageProfile.OSDisk.Name;
+    Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
+    Assert-AreEqual $managedOsDiskId_0 $p.StorageProfile.OSDisk.ManagedDisk.Id;
+    Assert-AreEqual 'StandardLRS' $p.StorageProfile.OSDisk.ManagedDisk.StorageAccountType;
+    Assert-AreEqual $true $p.StorageProfile.OSDisk.WriteAcceleratorEnabled;
+
+    $p = Set-AzureRmVMOsDisk -VM $p -ManagedDiskId $managedOsDiskId_1;
+    Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
+    Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
+    Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
+    Assert-AreEqual $managedOsDiskId_1 $p.StorageProfile.OSDisk.ManagedDisk.Id;
+    Assert-AreEqual 'StandardLRS' $p.StorageProfile.OSDisk.ManagedDisk.StorageAccountType;
+    Assert-AreEqual $false $p.StorageProfile.OSDisk.WriteAcceleratorEnabled;
 
     # Windows OS
     $user = "Foo12";

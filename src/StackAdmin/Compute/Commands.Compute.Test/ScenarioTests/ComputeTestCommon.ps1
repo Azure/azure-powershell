@@ -29,7 +29,7 @@ function Get-ComputeTestResourceName
             $testName = $frame.Command;
         }
     }
-
+    
     try
     {
         $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($testName, "crptestps");
@@ -132,7 +132,7 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
     $stotype = 'Standard_GRS';
     $sa = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
     Retry-IfException { $global:stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
-    $stokey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname)[0].Value;
+    $stokey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
 
     $osDiskName = 'osDisk';
     $osDiskCaching = 'ReadWrite';
@@ -263,7 +263,7 @@ Gets random resource name
 function Get-RandomItemName
 {
     param([string] $prefix = "crptestps")
-
+    
     if ($prefix -eq $null -or $prefix -eq '')
     {
         $prefix = "crptestps";
@@ -371,7 +371,7 @@ function Get-DefaultCRPImage
     {
         $defaultVersion = $result[0];
     }
-
+    
     $vmimg = Get-AzureRmVMImage -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku -Version $defaultVersion;
 
     return $vmimg;
@@ -400,7 +400,7 @@ function Get-DefaultCRPWindowsImageOffline
 # Get Default CRP Linux Image Object Offline
 function Get-DefaultCRPLinuxImageOffline
 {
-    return Create-ComputeVMImageObject 'SUSE' 'openSUSE' '13.2' 'latest';
+    return Create-ComputeVMImageObject 'SUSE' 'openSUSE-Leap' '42.3' 'latest';
 }
 
 <#
@@ -437,7 +437,7 @@ function Get-DefaultVMConfig
 function Assert-OutputContains
 {
     param([string] $cmd, [string[]] $sstr)
-
+    
     $st = Write-Verbose ('Running Command : ' + $cmd);
     $output = Invoke-Expression $cmd | Out-String;
 
@@ -490,7 +490,7 @@ function Get-ResourceProviderLocation
     {
         $type = $provider.Substring($namespace.Length + 1);
         $location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type};
-
+  
         if ($location -eq $null)
         {
             return "westus";
@@ -505,47 +505,47 @@ function Get-ResourceProviderLocation
 
 function Get-ComputeVMLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/virtualMachines";
+     Get-Location "Microsoft.Compute" "virtualMachines" "East US";
 }
 
 function Get-ComputeAvailabilitySetLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/availabilitySets";
+     Get-Location "Microsoft.Compute" "availabilitySets" "West US";
 }
 
 function Get-ComputeVMExtensionLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/virtualMachines/extensions";
+     Get-Location "Microsoft.Compute" "virtualMachines/extensions" "West US";
 }
 
 function Get-ComputeVMDiagnosticSettingLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/virtualMachines/diagnosticSettings";
+     Get-Location "Microsoft.Compute" "virtualMachines/diagnosticSettings" "West US";
 }
 
 function Get-ComputeVMMetricDefinitionLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/virtualMachines/metricDefinitions";
+     Get-Location "Microsoft.Compute" "virtualMachines/metricDefinitions" "West US";
 }
 
 function Get-ComputeOperationLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/locations/operations";
+     Get-Location "Microsoft.Compute" "locations/operations" "West US";
 }
 
 function Get-ComputeVMSizeLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/locations/vmSizes";
+     Get-Location "Microsoft.Compute" "locations/vmSizes" "West US";
 }
 
 function Get-ComputeUsageLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/locations/usages";
+     Get-Location "Microsoft.Compute" "locations/usages" "West US";
 }
 
 function Get-ComputePublisherLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/locations/publishers";
+     Get-Location "Microsoft.Compute" "locations/publishers" "West US";
 }
 
 function Get-SubscriptionIdFromResourceGroup

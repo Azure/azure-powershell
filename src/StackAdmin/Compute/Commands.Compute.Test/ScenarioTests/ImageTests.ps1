@@ -84,7 +84,7 @@ function Test-Image
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
         # $p.StorageProfile.OSDisk = $null;
-        $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+        $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
         $p = ($imgRef | Set-AzureRmVMSourceImage -VM $p);
@@ -103,7 +103,10 @@ function Test-Image
         $imageConfig = Remove-AzureRmImageDataDisk -Image $imageConfig -Lun 3;
         Assert-AreEqual 2 $imageConfig.StorageProfile.DataDisks.Count;
 
-        $createdImage = New-AzureRmImage -Image $imageConfig -ImageName $imageName -ResourceGroupName $rgname;
+        $job = New-AzureRmImage -Image $imageConfig -ImageName $imageName -ResourceGroupName $rgname -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+        $createdImage = $job | Receive-Job
 
         # Verify Image properties
         Assert-NotNull $createdImage.Id;
@@ -119,7 +122,9 @@ function Test-Image
         $images = Get-AzureRmImage -ResourceGroupName $rgname;
         Assert-AreEqual 1 $images.Count;
 
-        Remove-AzureRmImage -ResourceGroupName $rgname -ImageName $imageName -Force;
+        $job = Remove-AzureRmImage -ResourceGroupName $rgname -ImageName $imageName -Force -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
         $images = Get-AzureRmImage -ResourceGroupName $rgname;
         Assert-AreEqual 0 $images.Count;
 
@@ -201,7 +206,7 @@ function Test-ImageCapture
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
         # $p.StorageProfile.OSDisk = $null;
-        $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+        $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
         $p = ($imgRef | Set-AzureRmVMSourceImage -VM $p);

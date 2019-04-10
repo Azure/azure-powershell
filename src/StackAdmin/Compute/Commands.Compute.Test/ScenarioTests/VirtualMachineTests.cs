@@ -31,15 +31,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest(@"Test-VirtualMachine $null");
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachine_Managed()
-        {
-            ComputeTestController.NewInstance.RunPsTest(@"Test-VirtualMachine $null $true");
-        }
-
-        [Fact(Skip = "TODO: Object reference not set to an instance of an object")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestVirtualMachinePiping()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePiping");
@@ -52,7 +46,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineUpdateWithoutNic");
         }
 
-        [Fact(Skip = "TODO: The platform image 'SUSE:openSUSE:13.2:latest' is not available.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinuxVirtualMachine()
         {
@@ -73,7 +67,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineImageList");
         }
 
-        [Fact(Skip = "TODO: Exception formatting changed")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineList()
         {
@@ -87,8 +81,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineSizeAndUsage");
         }
 
-        [Fact(Skip = "TODO: Object reference not set to an instance of an object.")]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestVirtualMachineCapture()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCapture");
@@ -108,7 +103,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineDataDisk");
         }
 
-        [Fact(Skip = "TODO: Update expected Exception to : The maximum number of data disks allowed to be attached to a VM of this size is 1.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineDataDiskNegative()
         {
@@ -143,7 +138,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineTags");
         }
 
-        [Fact(Skip = "TODO: Exception formatting changed")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVMImageCmdletOutputFormat()
         {
@@ -159,19 +154,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineListWithPaging()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineListWithPaging");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithDifferentStorageResource()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithDifferentStorageResource");
         }
 
-        [Fact(Skip = "TODO: Object reference not set to an instance of an object.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithPremiumStorageAccount()
         {
@@ -185,14 +173,15 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithEmptyAuc");
         }
 
-        [Fact(Skip = "TODO: Object reference not set to an instance of an object.")]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestVirtualMachineWithBYOL()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithBYOL");
         }
 
-        [Fact(Skip = "TODO: Internal Server Error")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineRedeploy()
         {
@@ -232,6 +221,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineIdentityUpdate()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineIdentityUpdate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineWriteAcceleratorUpdate()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWriteAcceleratorUpdate");
         }
     }
 }

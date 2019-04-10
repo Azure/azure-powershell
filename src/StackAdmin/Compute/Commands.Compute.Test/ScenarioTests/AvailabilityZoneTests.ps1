@@ -59,17 +59,17 @@ function Test-VirtualMachineZone
 
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize -Zone "1" `
              | Add-AzureRmVMNetworkInterface -Id $nicId -Primary `
-             | Set-AzureRmVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred;
+             | Set-AzureRmVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
 
         $p = $imgRef | Set-AzureRmVMSourceImage -VM $p;
 
         Assert-ThrowsContains { New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;} `
-            "Availability Zone is not available for";
+            "Please try another size or deploy to a different location or zones";
         $p.Zones = $null;
         Assert-ThrowsContains { New-AzureRmVM -ResourceGroupName $rgname -Location $loc -Zone "1" -VM $p;} `
-            "Availability Zone is not available for";
+            "Please try another size or deploy to a different location or zones";
         $p.Zones = $null;
 
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;

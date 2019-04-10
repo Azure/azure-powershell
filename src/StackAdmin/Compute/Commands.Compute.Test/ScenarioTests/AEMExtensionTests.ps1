@@ -147,7 +147,7 @@ function Test-AEMExtensionAdvancedWindowsWAD
         Write-Verbose "Test-AEMExtensionAdvancedWindows: Set done"
         Write-Verbose "Test-AEMExtensionAdvancedWindows: Get with extension"
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-
+        
 
         Assert-NotNull $extension
         Assert-AreEqual $extension.Publisher 'Microsoft.AzureCAT.AzureEnhancedMonitoring'
@@ -214,7 +214,7 @@ function Test-AEMExtensionAdvancedWindows
         Write-Verbose "Test-AEMExtensionAdvancedWindows: Set done"
         Write-Verbose "Test-AEMExtensionAdvancedWindows: Get with extension"
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-
+        
 
         Assert-NotNull $extension
         Assert-AreEqual $extension.Publisher 'Microsoft.AzureCAT.AzureEnhancedMonitoring'
@@ -281,7 +281,7 @@ function Test-AEMExtensionAdvancedWindowsMD
         Write-Verbose "Test-AEMExtensionAdvancedWindowsMD: Set done"
         Write-Verbose "Test-AEMExtensionAdvancedWindowsMD: Get with extension"
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-
+        
 
         Assert-NotNull $extension
         Assert-AreEqual $extension.Publisher 'Microsoft.AzureCAT.AzureEnhancedMonitoring'
@@ -329,8 +329,8 @@ function Test-AEMExtensionAdvancedLinuxMD
 		$vmname = $vm.Name
 		$vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname
 		Add-AzureRmVMDataDisk -VM $vm -StorageAccountType PremiumLRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 2059 | Update-AzureRmVM
-
-
+		
+        
         Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: VM created"
 
         # Get with not extension
@@ -354,7 +354,7 @@ function Test-AEMExtensionAdvancedLinuxMD
         Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: Set done"
         Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: Get with extension"
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-
+        
 
         Assert-NotNull $extension
         Assert-AreEqual $extension.Publisher 'Microsoft.OSTCExtensions'
@@ -515,7 +515,7 @@ function Test-AEMExtensionAdvancedLinuxWAD
         Write-Verbose "Test-AEMExtensionAdvancedLinux: Set done"
         Write-Verbose "Test-AEMExtensionAdvancedLinux: Get with extension"
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-
+        
 
         Assert-NotNull $extension
         Assert-AreEqual $extension.Publisher 'Microsoft.OSTCExtensions'
@@ -583,7 +583,7 @@ function Test-AEMExtensionAdvancedLinux
         Write-Verbose "Test-AEMExtensionAdvancedLinux: Set done"
         Write-Verbose "Test-AEMExtensionAdvancedLinux: Get with extension"
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-
+        
 
         Assert-NotNull $extension
         Assert-AreEqual $extension.Publisher 'Microsoft.OSTCExtensions'
@@ -630,8 +630,8 @@ function Test-AEMExtensionAdvancedLinuxMD_E
 		$vmname = $vm.Name
 		$vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname
 		Add-AzureRmVMDataDisk -VM $vm -StorageAccountType PremiumLRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 2059 | Update-AzureRmVM
-
-
+		
+        
         Write-Output "Test-AEMExtensionAdvancedLinuxMD: VM created"
 
         # Get with not extension
@@ -655,7 +655,7 @@ function Test-AEMExtensionAdvancedLinuxMD_E
         Write-Output "Test-AEMExtensionAdvancedLinuxMD: Set done"
         Write-Output "Test-AEMExtensionAdvancedLinuxMD: Get with extension"
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-
+        
 
         Assert-NotNull $extension
         Assert-AreEqual $extension.Publisher 'Microsoft.OSTCExtensions'
@@ -705,8 +705,8 @@ function Test-AEMExtensionAdvancedLinuxMD_D
 		$vmname = $vm.Name
 		$vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname
 		Add-AzureRmVMDataDisk -VM $vm -StorageAccountType PremiumLRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 2059 | Update-AzureRmVM
-
-
+		
+        
         Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: VM created"
 
         # Get with not extension
@@ -730,7 +730,7 @@ function Test-AEMExtensionAdvancedLinuxMD_D
         Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Set done"
         Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Get with extension"
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-
+        
 
         Assert-NotNull $extension
         Assert-AreEqual $extension.Publisher 'Microsoft.OSTCExtensions'
@@ -765,7 +765,7 @@ function Test-AEMExtensionAdvancedLinuxMD_D
     }
 }
 
-function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount, [Switch] $linux, [Switch] $useMD)
+function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount, [Switch] $linux, [Switch] $useMD, $zone)
 {
     # Initialize parameters
     $rgname = if ([string]::IsNullOrEmpty($rgname)) { Get-ComputeTestResourceName } else { $rgname }
@@ -779,8 +779,16 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
     $g = New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
     # VM Profile & Hardware
-    $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
-    Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
+	$zoneparams = @{}
+	if ($zone) 
+	{
+		$zoneparams.Add("Zone", $zone)	
+	}
+    $p = New-AzureRmVmConfig -VMName $vmname -VMSize $vmsize @zoneparams;
+
+    # VM Profile & Hardware
+    # $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
+    # Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
     # NRP
     $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
@@ -790,7 +798,7 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
     $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
     $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
     $pubipId = $pubip.Id;
-
+    
     $pibparams = @{}
     $pibparams.Add("PublicIpAddressId", $pubip.Id)
     $nicPrimParams = @{}
@@ -807,13 +815,13 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
         $pibparams = @{}
         $nicPrimParams = @{}
     }
-    Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count $nicCount;
+    Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count $nicCount;   
 
     # Storage Account (SA)
     $stoname = 'sto' + $rgname;
     $s = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
     Retry-IfException { $global:stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
-    $stokey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname)[0].Value;
+    $stokey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
 
     $osDiskName = 'osDisk';
     $osDiskCaching = 'ReadWrite';
@@ -910,11 +918,11 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
 
 function Get-LinuxImage
 {
-    return Create-ComputeVMImageObject 'SUSE' 'SLES' '12-SP2' 'latest';
+    return Create-ComputeVMImageObject 'Canonical' 'UbuntuServer' '18.04-LTS' 'latest';
 }
 
 function GetWrongTestResult($TestResult, $searchFor, $level)
-{
+{	
 	$result = ""
 
 	if (-not $level) {$level = 0}
@@ -923,7 +931,7 @@ function GetWrongTestResult($TestResult, $searchFor, $level)
 	{
 		$result += [String]::new("`t", $level) + $TestResult.TestName + " is not expected. Actual result is " +  $TestResult.Result + [Environment]::NewLine
 	}
-	foreach ($tmpRes in $TestResult.PartialResults)
+	foreach ($tmpRes in $TestResult.PartialResults) 
 	{
 		$result += GetWrongTestResult $tmpRes $searchFor ($level+1)
 	}

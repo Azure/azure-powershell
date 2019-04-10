@@ -108,12 +108,12 @@ function Test-VirtualMachineSetRunCommand
         $path = 'ScenarioTests\test.ps1';
         
         $result = Invoke-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -CommandId $commandId -ScriptPath $path -Parameter $param;
-        $result_output = $result | Out-String;
+        Assert-AreEqual "Succeeded" $result.Status
 
         # Remove All VMs
         Get-AzureRmVM -ResourceGroupName $rgname | Remove-AzureRmVM -Force;
         $vms = Get-AzureRmVM -ResourceGroupName $rgname;
-        Assert-AreEqual $vms $null;
+        Assert-AreEqual $vms $null; 
     }
     finally
     {
