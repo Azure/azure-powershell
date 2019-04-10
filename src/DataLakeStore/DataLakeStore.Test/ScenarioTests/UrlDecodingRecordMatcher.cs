@@ -44,11 +44,6 @@ namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
             {
                 path = path.Replace("?&", "?");
             }
-
-            //if (path.Contains("%3A"))
-            //{
-            //    path = path.Replace("%3A", ":");
-            //}
             path = RemoveOrReplaceLeaseIdOrFilessesionID(path);
             string version;
             if (ContainsIgnoredProvider(path, out version))

@@ -4,6 +4,10 @@ using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
 {
+    /// <summary>
+    /// This class is needed because MockContext does not expose AddHandlers api. And we need to call
+    /// that api to get the mock handlers and pass in to our ADLS client
+    /// </summary>
     public class AdlMockContext : MockContext
     {
         public new static MockContext Start(
