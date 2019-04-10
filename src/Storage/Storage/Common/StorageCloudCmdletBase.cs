@@ -140,7 +140,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Cancellation Token Source
         /// </summary>
-        private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
+        protected readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
         protected CancellationToken CmdletCancellationToken;
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             get { return _enableMultiThread; }
             set { _enableMultiThread = value; }
         }
-        private bool _enableMultiThread = true;
+        protected bool _enableMultiThread = true;
 
         internal TaskOutputStream OutputStream;
 
@@ -620,10 +620,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 (sender, args) =>
                 {
                     //https://github.com/Azure/azure-storage-net/issues/658
-// TODO: Remove IfDef code
-#if !NETSTANDARD
-                    args.Request.UserAgent = Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.HeaderConstants.UserAgent + " " + ApiConstants.UserAgentHeaderValue;
-#endif
                 };
 
             base.BeginProcessing();
