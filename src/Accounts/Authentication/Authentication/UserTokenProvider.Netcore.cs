@@ -109,11 +109,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
         }
 
-        private PublicClientApplication GetPublicClient(AdalConfiguration config)
-        {
-            return new PublicClientApplication(config.ClientId, config.AdEndpoint + config.AdDomain, config.TokenCache);
-        }
-
         // We have to run this in a separate thread to guarantee that it's STA. This method
         // handles the threading details.
         private AuthenticationResult AcquireToken(AdalConfiguration config, Action<string> promptAction,
@@ -127,7 +122,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 var msalException = ex as MsalClientException;
                 if (msalException != null)
                 {
-                    if (msalException.ErrorCode == MsalClientException.AuthenticationCanceledError)
+                    if (msalException.ErrorCode == MsalError.AuthenticationCanceledError)
                     {
                         throw new AadAuthenticationCanceledException(msalException.Message, msalException);
                     }
@@ -157,11 +152,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
             catch (MsalException msalException)
             {
-                if (msalException.ErrorCode == MsalClientException.AuthenticationUiFailedError ||
-                    msalException.ErrorCode == MsalClientException.MultipleTokensMatchedError)
+                if (msalException.ErrorCode == MsalError.AuthenticationUiFailedError ||
+                    msalException.ErrorCode == MsalError.MultipleTokensMatchedError)
                 {
                     string message = Resources.AdalUserInteractionRequired;
-                    if (msalException.ErrorCode == MsalClientException.MultipleTokensMatchedError)
+                    if (msalException.ErrorCode == MsalError.MultipleTokensMatchedError)
                     {
                         message = Resources.AdalMultipleTokens;
                     }
@@ -192,12 +187,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             Action<string> promptAction,
             bool renew = false)
         {
-            var publicClient = GetPublicClient(config);
+            var clientId = config.ClientId;
+            var authority = config.AdEndpoint + config.AdDomain;
+            var publicClient = SharedTokenCacheClientFactory.CreatePublicClient(clientId: clientId, authority: authority);
 
             TracingAdapter.Information(
                 Resources.UPNAcquireTokenContextTrace,
-                publicClient.Authority,
-                publicClient.ClientId);
+                authority,
+                clientId);
             TracingAdapter.Information(
                 Resources.UPNAcquireTokenConfigTrace,
                 config.AdDomain,
@@ -209,21 +206,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
                 var accounts = publicClient.GetAccountsAsync()
                     .ConfigureAwait(false).GetAwaiter().GetResult();
-                return publicClient.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault(a => a.Username == userId))
+                return publicClient.AcquireTokenSilent(scopes, accounts.FirstOrDefault(a => a.Username == userId)).ExecuteAsync()
                     .ConfigureAwait(false).GetAwaiter().GetResult();
             }
             else if (string.IsNullOrEmpty(userId) || password == null)
             {
-                return publicClient.AcquireTokenWithDeviceCodeAsync(scopes, deviceCodeResult =>
+                return publicClient.AcquireTokenWithDeviceCode(scopes, deviceCodeResult =>
                 {
                     Console.WriteLine(deviceCodeResult?.Message);
                     return Task.FromResult(0);
-                }).ConfigureAwait(false).GetAwaiter().GetResult();
+                }).ExecuteAsync().ConfigureAwait(false).GetAwaiter().GetResult();
             }
             else
             {
-                return publicClient.AcquireTokenByUsernamePasswordAsync(scopes, userId, password).
-                    ConfigureAwait(false).GetAwaiter().GetResult();
+                return publicClient.AcquireTokenByUsernamePassword(scopes, userId, password).ExecuteAsync()
+                    .ConfigureAwait(false).GetAwaiter().GetResult();
             }
         }
 

@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Security;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Identity.Client;
@@ -25,30 +27,21 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         {
             var spParameters = parameters as ServicePrincipalParameters;
             var scopes = new string[] { string.Format(AuthenticationHelpers.DefaultScope, spParameters.Environment.ActiveDirectoryServiceEndpointResourceId) };
-            ConfidentialClientApplication confidentialClient = null;
+            var clientId = spParameters.ApplicationId;
+            var authority = AuthenticationHelpers.GetAuthority(spParameters.Environment, spParameters.TenantId);
+            var redirectUri = spParameters.Environment.ActiveDirectoryServiceEndpointResourceId;
+            IConfidentialClientApplication confidentialClient = null;
             if (spParameters.Secret == null)
             {
                 var certificate = AzureSession.Instance.DataStore.GetCertificate(spParameters.Thumbprint);
-                var credential = new ClientCredential(new ClientAssertionCertificate(certificate));
-                confidentialClient = new ConfidentialClientApplication(spParameters.ApplicationId,
-                                                                       AuthenticationHelpers.GetAuthority(spParameters.Environment, spParameters.TenantId),
-                                                                       spParameters.Environment.ActiveDirectoryServiceEndpointResourceId,
-                                                                       credential,
-                                                                       null,
-                                                                       new TokenCache());
+                confidentialClient = SharedTokenCacheClientFactory.CreateConfidentialClient(clientId: clientId, authority: authority, redirectUri: redirectUri, certificate: certificate);
             }
             else
             {
-                var credential = new ClientCredential(ConversionUtilities.SecureStringToString(spParameters.Secret));
-                confidentialClient = new ConfidentialClientApplication(spParameters.ApplicationId,
-                                                                       AuthenticationHelpers.GetAuthority(spParameters.Environment, spParameters.TenantId),
-                                                                       spParameters.Environment.ActiveDirectoryServiceEndpointResourceId,
-                                                                       credential,
-                                                                       null,
-                                                                       new TokenCache());
+                confidentialClient = SharedTokenCacheClientFactory.CreateConfidentialClient(clientId: clientId, authority: authority, redirectUri: redirectUri, clientSecret: spParameters.Secret);
             }
 
-            var response = confidentialClient.AcquireTokenForClientAsync(scopes);
+            var response = confidentialClient.AcquireTokenForClient(scopes).ExecuteAsync();
             return AuthenticationResultToken.GetAccessTokenAsync(response);
         }
 

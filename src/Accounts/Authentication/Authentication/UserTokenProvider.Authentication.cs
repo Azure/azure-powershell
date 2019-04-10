@@ -89,13 +89,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public static async Task<ServiceClientCredentials> CreateCredentialsFromCache(string clientId, string domain, string username,
             ActiveDirectoryServiceSettings serviceSettings, TokenCache cache)
         {
-            var publicClient = GetPublicClient(clientId, domain, serviceSettings, cache);
+            var authority = serviceSettings.AuthenticationEndpoint + domain;
+            var publicClient = SharedTokenCacheClientFactory.CreatePublicClient(clientId: clientId, authority: authority);
             var scopes = new string[] { serviceSettings.TokenAudience + ".default" };
             var accounts = publicClient.GetAccountsAsync()
                             .ConfigureAwait(false).GetAwaiter().GetResult();
             try
             {
-                var authResult = await publicClient.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault(a => a.Username == username)).ConfigureAwait(false);
+                var authResult = await publicClient.AcquireTokenSilent(scopes, accounts.FirstOrDefault(a => a.Username == username)).ExecuteAsync().ConfigureAwait(false);
                 return
                     new TokenCredentials(
                         new UserTokenAuthenticationProvider(publicClient, clientId, serviceSettings.TokenAudience, username),
@@ -108,13 +109,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
         }
 
-        private static IPublicClientApplication GetPublicClient(string clientId, string domain, ActiveDirectoryServiceSettings serviceSettings, TokenCache cache)
-        {
-            return (cache == null
-                        ? new PublicClientApplication(clientId, serviceSettings.AuthenticationEndpoint + domain)
-                        : new PublicClientApplication(clientId, serviceSettings.AuthenticationEndpoint + domain, cache));
-        }
-
         public virtual async Task<AuthenticationHeaderValue> GetAuthenticationHeaderAsync(CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -123,7 +117,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                              .ConfigureAwait(false).GetAwaiter().GetResult();
             try
             {
-                AuthenticationResult result = await _publicClient.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault(a => a.Username == _username)).ConfigureAwait(false);
+                AuthenticationResult result = await _publicClient.AcquireTokenSilent(scopes, accounts.FirstOrDefault(a => a.Username == _username)).ExecuteAsync().ConfigureAwait(false);
                 return new AuthenticationHeaderValue("Bearer", result.AccessToken);
             }
             catch (MsalException authenticationException)

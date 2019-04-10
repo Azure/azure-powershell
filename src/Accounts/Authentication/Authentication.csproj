@@ -12,7 +12,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Identity.Client" Version="3.0.2-preview" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="3.0.3-preview" />
+    <PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="1.0.1-internal324047add-netstandard" />
     <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="4.5.0" />
   </ItemGroup>
 

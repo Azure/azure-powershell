@@ -24,15 +24,14 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
         {
             var scopes = new string[] { string.Format(AuthenticationHelpers.UserImpersonationScope, parameters.Environment.ActiveDirectoryServiceEndpointResourceId) };
-            var publicClient = new PublicClientApplication(
-                AuthenticationHelpers.PowerShellClientId,
-                AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId),
-                parameters.TokenCache.GetUserCache() as TokenCache);
-            var response = publicClient.AcquireTokenWithDeviceCodeAsync(scopes, deviceCodeResult =>
+            var clientId = AuthenticationHelpers.PowerShellClientId;
+            var authority = AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
+            var publicClient = SharedTokenCacheClientFactory.CreatePublicClient(clientId: clientId, authority: authority);
+            var response = publicClient.AcquireTokenWithDeviceCode(scopes, deviceCodeResult =>
             {
                 Console.WriteLine(deviceCodeResult?.Message);
                 return Task.FromResult(0);
-            });
+            }).ExecuteAsync();
             return AuthenticationResultToken.GetAccessTokenAsync(response);
         }
 

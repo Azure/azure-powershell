@@ -28,13 +28,12 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         {
             var silentParameters = parameters as SilentParameters;
             var scopes = new string[] { string.Format(AuthenticationHelpers.UserImpersonationScope, silentParameters.Environment.ActiveDirectoryServiceEndpointResourceId) };
-            var publicClient = new PublicClientApplication(
-                AuthenticationHelpers.PowerShellClientId,
-                AuthenticationHelpers.GetAuthority(silentParameters.Environment, silentParameters.TenantId),
-                silentParameters.TokenCache.GetUserCache() as TokenCache);
+            var clientId = AuthenticationHelpers.PowerShellClientId;
+            var authority = AuthenticationHelpers.GetAuthority(silentParameters.Environment, silentParameters.TenantId);
+            var publicClient = SharedTokenCacheClientFactory.CreatePublicClient(clientId: clientId, authority: authority);
             var accounts = publicClient.GetAccountsAsync()
                 .ConfigureAwait(false).GetAwaiter().GetResult();
-            var response = publicClient.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault(a => a.Username == silentParameters.UserId));
+            var response = publicClient.AcquireTokenSilent(scopes, accounts.FirstOrDefault(a => a.Username == silentParameters.UserId)).ExecuteAsync();
             return AuthenticationResultToken.GetAccessTokenAsync(response);
         }
 

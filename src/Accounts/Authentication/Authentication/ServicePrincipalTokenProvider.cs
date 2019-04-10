@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Security;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -89,11 +90,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 (adalConfig, appId) => this.RenewWithCertificate(adalConfig, appId, certificateThumbprint), clientId);
         }
 
-        private ConfidentialClientApplication GetConfidentialClientApplication(AdalConfiguration config, ClientCredential credential, string appId = null)
-        {
-            return new ConfidentialClientApplication(appId ?? config.ClientId, config.AdEndpoint + config.AdDomain, config.ResourceClientUri, credential, null, new TokenCache());
-        }
-
         private AuthenticationResult AcquireTokenWithSecret(AdalConfiguration config, string appId, SecureString appKey)
         {
             if (appKey == null)
@@ -106,9 +102,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             var credential = new ClientCredential(appId, appKey);
             return context.AcquireToken(config.ResourceClientUri, credential);
 #else
-            var confidentialClient = GetConfidentialClientApplication(config, new ClientCredential(ConversionUtilities.SecureStringToString(appKey)), appId);
+            var clientId = appId ?? config.ClientId;
+            var authority = config.AdEndpoint + config.AdDomain;
+            var redirectUri = config.ResourceClientUri;
+            var confidentialClient = SharedTokenCacheClientFactory.CreateConfidentialClient(clientId: clientId, authority: authority, redirectUri: redirectUri, clientSecret: appKey);
             var scopes = new string[] { config.ResourceClientUri + "/.default" };
-            return confidentialClient.AcquireTokenForClientAsync(scopes).ConfigureAwait(false).GetAwaiter().GetResult();
+            return confidentialClient.AcquireTokenForClient(scopes)
+                                        .ExecuteAsync()
+                                        .ConfigureAwait(false)
+                                        .GetAwaiter()
+                                        .GetResult();
 #endif
         }
 
@@ -126,9 +129,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 #if !NETSTANDARD
             return context.AcquireToken(config.ResourceClientUri, new ClientAssertionCertificate(appId, certificate));
 #else
-            var confidentialClient = GetConfidentialClientApplication(config, new ClientCredential(new ClientAssertionCertificate(certificate)), appId);
+            var clientId = appId ?? config.ClientId;
+            var authority = config.AdEndpoint + config.AdDomain;
+            var redirectUri = config.ResourceClientUri;
+            var confidentialClient = SharedTokenCacheClientFactory.CreateConfidentialClient(clientId: clientId, authority: authority, redirectUri: redirectUri, certificate: certificate);
             var scopes = new string[] { config.ResourceClientUri + "/.default" };
-            return confidentialClient.AcquireTokenForClientAsync(scopes).ConfigureAwait(false).GetAwaiter().GetResult();
+            return confidentialClient.AcquireTokenForClient(scopes).ExecuteAsync()
+                                        .ConfigureAwait(false).GetAwaiter().GetResult();
 #endif
         }
 

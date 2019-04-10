@@ -19,7 +19,6 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Identity.Client;
-using Microsoft.Identity.Client.AppConfig;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -32,11 +31,10 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         {
             var upParameters = parameters as UsernamePasswordParameters;
             var scopes = new string[] { string.Format(AuthenticationHelpers.UserImpersonationScope, upParameters.Environment.ActiveDirectoryServiceEndpointResourceId) };
-            var publicClient = new PublicClientApplication(
-                AuthenticationHelpers.PowerShellClientId,
-                AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId),
-                parameters.TokenCache.GetUserCache() as TokenCache);
-            var response = publicClient.AcquireTokenByUsernamePasswordAsync(scopes, upParameters.UserId, upParameters.Password);
+            var clientId = AuthenticationHelpers.PowerShellClientId;
+            var authority = AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
+            var publicClient = SharedTokenCacheClientFactory.CreatePublicClient(clientId: clientId, authority: authority);
+            var response = publicClient.AcquireTokenByUsernamePassword(scopes, upParameters.UserId, upParameters.Password).ExecuteAsync();
             return AuthenticationResultToken.GetAccessTokenAsync(response);
         }
 

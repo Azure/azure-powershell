@@ -63,9 +63,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             task.Start();
             var certificate = await task.ConfigureAwait(false);
 
-            var clientCredential = new ClientCredential(new ClientAssertionCertificate(certificate));
-            var confidentialClient = new ConfidentialClientApplication(clientId, _settings.AuthenticationEndpoint + _tenantId, audience, clientCredential, new TokenCache(), new TokenCache());
-            return await confidentialClient.AcquireTokenForClientAsync(new string[] { audience + "/.default" });
+            var authority = _settings.AuthenticationEndpoint + _tenantId;
+            var confidentialClient = SharedTokenCacheClientFactory.CreateConfidentialClient(clientId: clientId, authority: authority, redirectUri: audience, certificate: certificate);
+            return await confidentialClient.AcquireTokenForClient(new string[] { audience + "/.default" }).ExecuteAsync();
         }
     }
 }

@@ -84,42 +84,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         public ITokenProvider TokenProvider { get; set; }
 
-
-        public List<IAccessToken> GetTokensInCache(
-            IAzureEnvironment environment,
-            string tenant,
-            IAzureTokenCache tokenCache,
-            string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
-        {
-            var result = new List<IAccessToken>();
-            var cache = tokenCache.GetUserCache() as TokenCache;
-            if (cache == null)
-            {
-                cache = new TokenCache();
-                return result;
-            }
-
-            var config = GetAdalConfiguration(environment, tenant, resourceId, cache);
-            var authority = config.AdEndpoint + config.AdDomain;
-            var publicClient = new PublicClientApplication(AdalConfiguration.PowerShellClientId, authority, cache);
-            var accounts = publicClient.GetAccountsAsync().ConfigureAwait(false).GetAwaiter().GetResult();
-            foreach (var acc in accounts)
-            {
-                Task<IAccessToken> authToken;
-                IAccessToken token;
-                if (Builder.Authenticator.TryAuthenticate(new SilentParameters(environment, tokenCache, tenant, acc.Username), out authToken))
-                {
-                    token = authToken?.ConfigureAwait(false).GetAwaiter().GetResult();
-                    if (token != null)
-                    {
-                        result.Add(token);
-                    }
-                }
-            }
-
-            return result;
-        }
-
         public IAccessToken Authenticate(
             IAzureAccount account,
             IAzureEnvironment environment,
@@ -505,7 +469,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         private void RemoveFromTokenCache(TokenCache cache, IAzureAccount account)
         {
-            var publicClient = new PublicClientApplication(string.Empty, string.Empty, cache);
+            var publicClient = SharedTokenCacheClientFactory.CreatePublicClient();
             var tokenAccounts = publicClient.GetAccountsAsync()
                             .ConfigureAwait(false).GetAwaiter().GetResult()
                             .Where(a => MatchCacheItem(account, a));

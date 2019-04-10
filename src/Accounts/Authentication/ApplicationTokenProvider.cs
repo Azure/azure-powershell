@@ -77,8 +77,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public static async Task<ServiceClientCredentials> LoginSilentAsync(string domain, string clientId,
             IApplicationAuthenticationProvider authenticationProvider, ActiveDirectoryServiceSettings settings, TokenCache cache)
         {
+            var authority = settings.AuthenticationEndpoint + domain;
             var audience = settings.TokenAudience.OriginalString;
-            var publicClient = GetPublicClient(clientId, domain, settings, cache);
+            var publicClient = SharedTokenCacheClientFactory.CreatePublicClient(clientId: clientId, authority: authority);
             var authResult = await authenticationProvider.AuthenticateAsync(clientId, audience);
             return new TokenCredentials(
                 new ApplicationTokenProvider(publicClient, audience, clientId, authenticationProvider, authResult),
@@ -124,13 +125,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             this._accessToken = authenticationResult.AccessToken;
             this._tokenAudience = tokenAudience;
             this._expiration = tokenExpiration;
-        }
-
-        private static IPublicClientApplication GetPublicClient(string clientId, string domain, ActiveDirectoryServiceSettings serviceSettings, TokenCache cache)
-        {
-            return (cache == null)
-                    ? new PublicClientApplication(clientId, serviceSettings.AuthenticationEndpoint + domain)
-                    : new PublicClientApplication(clientId, serviceSettings.AuthenticationEndpoint + domain, cache);
         }
 
         public virtual async Task<AuthenticationHeaderValue> GetAuthenticationHeaderAsync(CancellationToken cancellationToken)
