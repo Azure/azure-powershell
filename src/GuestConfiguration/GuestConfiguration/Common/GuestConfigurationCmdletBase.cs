@@ -404,7 +404,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
                     }
                     catch (Exception)
                     {
-                        this.WriteVerbose(string.Format(StringResources.InvalidPolicyDefinition, policyDef.DisplayName));
+                        this.WriteWarning(string.Format(StringResources.InvalidPolicyDefinition, policyDef.DisplayName));
                         continue;
                     }
                 }
