@@ -118,13 +118,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSSnapshot))]
     public partial class UpdateAzureRmSnapshot : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.SnapshotName, VerbsData.Update))
                 {
-
                     string resourceGroupName = this.ResourceGroupName;
                     string snapshotName = this.SnapshotName;
                     SnapshotUpdate snapshotupdate = new SnapshotUpdate();
@@ -155,6 +154,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
         [AllowNull]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -190,5 +190,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipeline = true)]
         [AllowNull]
         public PSSnapshot Snapshot { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
     }
 }

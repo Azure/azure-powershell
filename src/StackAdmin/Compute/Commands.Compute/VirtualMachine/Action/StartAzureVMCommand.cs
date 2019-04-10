@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Compute
                 base.ExecuteCmdlet();
 
                 ExecuteClientAction(() =>
-                {                    
+                {
                     var op = this.VirtualMachineClient.StartWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.Name).GetAwaiter().GetResult();

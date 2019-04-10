@@ -29,6 +29,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             => engine.GetSubResourceReference(availabilitySet);
 
         public static SubResource GetReference(
+            this IEngine engine, ResourceConfig<N.NetworkSecurityGroup> networkSecurityGroup)
+            => engine.GetSubResourceReference(networkSecurityGroup);
+
+        public static SubResource GetReference(
             this IEngine engine,
             NestedResourceConfig<N.BackendAddressPool, N.LoadBalancer> backendAddressPool)
             => engine.GetSubResourceReference(backendAddressPool);

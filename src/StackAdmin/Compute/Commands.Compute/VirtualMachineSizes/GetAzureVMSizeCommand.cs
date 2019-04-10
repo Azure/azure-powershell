@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.Compute
            ParameterSetName = ListVirtualMachineSizeParamSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The location name.")]
+        [LocationCompleter("Microsoft.Compute/locations/vmSizes")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -52,6 +53,7 @@ namespace Microsoft.Azure.Commands.Compute
            ParameterSetName = ListAvailableSizesForVirtualMachine,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

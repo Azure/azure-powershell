@@ -29,11 +29,12 @@ namespace Microsoft.Azure.Commands.Compute
 
         public Action<string> ErrorLogger { get; set; }
 
-        public ComputeClient(IAzureContext context) {
-            // Factories
+        public ComputeClient(IAzureContext context)
+            : this(AzureSession.Instance.ClientFactory.CreateArmClient<ComputeManagementClient>(
+                context, AzureEnvironment.Endpoint.ResourceManager))
+        {
             var authFactory = AzureSession.Instance.AuthenticationFactory;
             var clientFactory = AzureSession.Instance.ClientFactory;
-
             var endpoint = AzureEnvironment.Endpoint.ResourceManager;
 
             // Get parameters
@@ -46,7 +47,8 @@ namespace Microsoft.Azure.Commands.Compute
             ComputeManagementClient.SubscriptionId = context.Subscription.Id.ToString();
         }
 
-        public ComputeClient(IComputeManagementClient computeManagementClient) {
+        public ComputeClient(IComputeManagementClient computeManagementClient)
+        {
             ComputeManagementClient = computeManagementClient;
         }
     }

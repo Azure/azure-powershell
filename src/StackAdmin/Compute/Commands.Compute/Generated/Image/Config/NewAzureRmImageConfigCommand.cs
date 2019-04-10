@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceManager.Common.ArgumentCompleters.LocationCompleter("Microsoft.Compute/images")]
         public string Location { get; set; }
 
         [Parameter(
@@ -104,7 +105,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 vStorageProfile.DataDisks = this.DataDisk;
             }
-
 
             var vImage = new PSImage
             {

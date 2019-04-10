@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,12 +19,8 @@
 -->
 ## Current Release
 
-## Version 4.0.3
-* Adding simple parameter sets in the New-AzureRMVM and New-AzureRMVMSS cmdlets
-* This adds support for specifying user images while creating VM
+## Version 4.6.1
+* Compute module supporting the api-version 2017-12-01
+* This module is for azurestack hybrid profile 2019-03-01-hybrid
 
-## Version 4.0.2
-* Compute module supported for the profile 2018-03-01-hybrid 
-* This version supports azure stack 
-* Apiversion supported by the module is 2017-03-30 
-* This module includes functionalities up to the existing AzureRm.Compute module version 4.0.1 with additional bug fixes
+

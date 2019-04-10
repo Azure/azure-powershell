@@ -13,18 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using System;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    public abstract class ComputeClientBaseCmdlet : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    public abstract class ComputeClientBaseCmdlet : AzureRMCmdlet
     {
         protected const string VirtualMachineExtensionType = "Microsoft.Compute/virtualMachines/extensions";
 
-        protected override bool IsUsageMetricEnabled
-        {
-            get { return true; }
-        }
+        protected override bool IsUsageMetricEnabled => true;
 
         private ComputeClient computeClient;
 
@@ -34,13 +32,11 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (computeClient == null)
                 {
-                    computeClient = new ComputeClient(DefaultProfile.DefaultContext)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp
-                    };
+                    computeClient = new ComputeClient(DefaultProfile.DefaultContext);
                 }
 
+                this.computeClient.VerboseLogger = WriteVerboseWithTimestamp;
+                this.computeClient.ErrorLogger = WriteErrorWithTimestamp;
                 return computeClient;
             }
 

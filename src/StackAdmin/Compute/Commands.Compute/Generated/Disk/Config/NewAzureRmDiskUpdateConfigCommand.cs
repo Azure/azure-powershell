@@ -125,7 +125,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vSku.Name = this.SkuName;
             }
 
-
             var vDiskUpdate = new PSDiskUpdate
             {
                 OsType = this.OsType,
