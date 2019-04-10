@@ -78,9 +78,9 @@ FunctionsToExport = @()
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Remove-AzPowerBIWorkspaceCollection', 
                'Get-AzPowerBIWorkspaceCollection', 
-               'Get-AzPowerBIWorkspaceCollectionAccessKeys', 
+               'Get-AzPowerBIWorkspaceCollectionAccessKey', 
                'Get-AzPowerBIWorkspace', 'New-AzPowerBIWorkspaceCollection', 
-               'Reset-AzPowerBIWorkspaceCollectionAccessKeys', 
+               'Reset-AzPowerBIWorkspaceCollectionAccessKey', 
                'Resume-AzPowerBIEmbeddedCapacity', 
                'Suspend-AzPowerBIEmbeddedCapacity', 
                'Get-AzPowerBIEmbeddedCapacity', 'Remove-AzPowerBIEmbeddedCapacity', 
@@ -91,7 +91,7 @@ CmdletsToExport = 'Remove-AzPowerBIWorkspaceCollection',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+AliasesToExport = 'Get-AzPowerBIWorkspaceCollectionAccessKeys', 'Reset-AzPowerBIWorkspaceCollectionAccessKeys'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

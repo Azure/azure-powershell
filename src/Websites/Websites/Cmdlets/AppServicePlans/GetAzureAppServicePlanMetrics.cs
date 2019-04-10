@@ -14,6 +14,7 @@
 
 
 using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Management.Automation;
 
@@ -22,8 +23,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you get Azure servce plan metrics
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AppServicePlanMetrics")]
+    [GenericBreakingChange("Get-AzAppServicePlanMetrics alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AppServicePlanMetric")]
     [OutputType(typeof(ResourceMetric))]
+    [Alias("Get-AzAppServicePlanMetrics")]
     public class GetAzureAppServicePlanMetricsCmdlet : AppServicePlanBaseCmdlet
     {
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "Names of web app metrics")]

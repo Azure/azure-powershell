@@ -55,6 +55,26 @@ RecoverableDatabaseId   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/re
 
 This command gets a database redundant backup named managedDatabase1 from an instance named managedInstance1.
 
+### Example 3: Get all database redundant backups on a instance using filtering
+```
+PS C:\>Get-AzSqlInstanceDatabaseGeoBackup -InstanceName "managedInstance1" -ResourceGroupName "resourcegroup01" -Name "managedDatabase*"
+ResourceGroupName        : resourcegroup01
+ManagedInstanceName      : managedInstance1
+Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1/recoverableDatabases/managedDatabase1
+Name                     : managedDatabase1
+LastAvailableBackupDate  : 01/31/2019 20:44:57
+RecoverableDatabaseId   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1/recoverableDatabases/managedDatabase1
+
+ResourceGroupName        : resourcegroup01
+ManagedInstanceName      : managedInstance1
+Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1/recoverableDatabases/managedDatabase2
+Name                     : managedDatabase2
+LastAvailableBackupDate  : 01/31/2019 20:44:57
+RecoverableDatabaseId   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1/recoverableDatabases/managedDatabase2
+```
+
+This command gets all database redundant backups on the instance named managedInstance1 that start with "managedDatabase".
+
 ## PARAMETERS
 
 ### -DefaultProfile
