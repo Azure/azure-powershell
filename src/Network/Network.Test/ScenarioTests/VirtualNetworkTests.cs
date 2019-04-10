@@ -50,7 +50,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-subnetCRUD");
         }
 
-        [Fact]
+        [Fact(Skip = "Rerecord tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestVirtualNetworkSubnetDelegationCRUD()
