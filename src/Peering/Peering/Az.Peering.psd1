@@ -75,8 +75,6 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzPeering',
-			'Get-AzDirectPeering',
-			'Get-AzExchangePeering',
 			'Get-AzPeerAsn',
 			'New-AzPeerAsn',
 			'New-AzPeering',
@@ -87,17 +85,8 @@ CmdletsToExport = 'Get-AzPeering',
 			'New-AzPeeringDirectConnectionObject',
 			'Get-AzPeeringLocation',
 			'Get-AzLegacyPeering',
-			#'Remove-AzPeering',
-			'Set-AzDirectPeering',
-			'Set-AzDirectPeeringUseForPeeringService',
-			'Set-AzDirectPeeringSessionIPv4Prefix',
-			'Set-AzDirectPeeringSessionIPv6Prefix',
-			'Set-AzDirectPeeringMD5Authentication',
-			'Set-AzDirectPeeringBandwidth',
 			'Set-AzPeerAsn',
 			'Remove-AzPeerAsn'
-			#'Get-AzPeeringPrefix',
-			#'New-AzPeeringPrefix'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -15,20 +15,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 {
     /// <summary>
-    /// Constants Class for Powershell 
+    /// The constants.
     /// </summary>
     public static class Constants
     {
-        /// <summary>
-        /// None
-        /// </summary>
-        public const string None = "None";
-
-        /// <summary>
-        /// Active
-        /// </summary>
-        public const string Active = "Active";
-
         #region Kind
 
         /// <summary>
@@ -53,49 +43,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 
         #endregion
 
-        #region Positions
-        /// <summary>
-        /// The position InputObject location.
-        /// </summary>
-        public const int PositionPeeringThree = 3;
-
-        /// <summary>
-        /// The position location.
-        /// </summary>
-        public const int PositionPeeringTwo = 2;
-
-        /// <summary>
-        /// The position resource group name.
-        /// </summary>
-        public const int PositionPeeringOne = 1;
-
-        /// <summary>
-        /// The position InputObject name.
-        /// </summary>
-        public const int PositionPeeringZero = 0;
-
-        #endregion
-
-        /// <summary>
-        /// Partner InputObject ParameterSetName
-        /// </summary>
-        public const string PeeringService = "PeeringService";
-
-        /// <summary>
-        /// Exchange InputObject ParameterSetName
-        /// </summary>
-        public const string ExchangePeering = "ExchangePeering";
-
-        /// <summary>
-        /// Continue Message for InputObject Removal.
-        /// </summary>
-        public const string ContinueMessage = "You are about to remove an InputObject Resource. Are you sure?";
-
-        /// <summary>
-        /// Processing Message for InputObject Removal.
-        /// </summary>
-        public const string ProcessMessage = "InputObject {PeeringName} Resource being removed.";
-
         #region Ranges
 
         /// <summary>
@@ -115,85 +62,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// The parameter set name location by facility id.
         /// </summary>
-        public const string ParameterSetNameLocationByFacilityId = "ParameterSetNameLocationByFacilityId";
+        public const string ParameterSetNameLocationByFacilityId = "LocationByFacilityId";
 
         /// <summary>
         /// The parameter set name default.
         /// </summary>
-        public const string ParameterSetNameDefault = "ParameterSetNameDefault";
-
-        /// <summary>
-        /// The parameter set name update phone.
-        /// </summary>
-        public const string ParameterSetNameUpdatePhone = "ParameterSetNameUpdatePhone";
+        public const string ParameterSetNameDefault = "Default";
 
         /// <summary>
         /// The parameter set name use for peering service.
         /// </summary>
-        public const string ParameterSetNameUseForPeeringService = "ParameterSetNameUseForPeeringService";
+        public const string ParameterSetNameUseForPeeringService = "UseForPeeringService";
 
         /// <summary>
         /// The parameter set name location by city.
         /// </summary>
-        public const string ParameterSetNameLocationByCity = "ParameterSetNameLocationByCity";
-
-        /// <summary>
-        /// DeviceAAndBWithDefaultVlan ParameterSetName Enum 1
-        /// </summary>
-        public const string DeviceAWithDefaultVlan = "DeviceAWithDefaultVlan";
-
-        /// <summary>
-        /// DeviceAAndBWithDefaultVlan ParameterSetName Enum 2
-        /// </summary>
-        public const string DeviceBWithDefaultVlan = "DeviceBWithDefaultVlan";
-
-        /// <summary>
-        /// VlanAI ParameterSetName Enum 4
-        /// </summary>
-        public const string DeviceAWithPeeringVlan = "DeviceAWithPeeringVlan";
-
-        /// <summary>
-        /// VlanAI ParameterSetName Enum 6
-        /// </summary>
-        public const string DeviceBWithPeeringVlan = "DeviceBWithPeeringVlan";
-
-        /// <summary>
-        /// DeviceAAndBWithDefaultVlan ParameterSetName Enum 3
-        /// </summary>
-        // ReSharper disable once InconsistentNaming
-        public const string DeviceAAndBWithDefaultVlan = "DeviceAAndBWithDefaultVlan";
-
-        /// <summary>
-        /// VlanAandBI ParameterSetName Enum 10
-        /// </summary>
-        public const string DeviceAAndBWithPeeringVlan = "DeviceAAndBWithPeeringVlan";
-
-        /// <summary>
-        /// DeviceAWithDefaultAndPeeringVlan ParameterSetName Enum 5
-        /// </summary>
-        public const string DeviceAWithDefaultAndPeeringVlan = "DeviceAWithDefaultAndPeeringVlan";
-
-        /// <summary>
-        /// DeviceAWithDefaultAndPeeringVlan ParameterSetName Enum 8
-        /// </summary>
-        public const string DeviceBWithDefaultAndPeeringVlan = "DeviceBWithDefaultAndPeeringVlan";
-
-        /// <summary>
-        /// DeviceAAndBWithDefaultAndPeeringVlan ParameterSetName Enum 13
-        /// </summary>
-        public const string DeviceAAndBWithDefaultAndPeeringVlan = "DeviceAAndBWithDefaultAndPeeringVlan";
-
-        // With V6 mandatory
-
-        /// <summary>
-        /// The device A with InputObject with v6.
-        /// </summary>
-        public const string DeviceAAndBWithPeeringVlanV6 = "DeviceAAndBWithPeeringVlanV6";
-
-        /// <summary>
-        /// The device a and b with default and InputObject vlan v 6.
-        /// </summary>
-        public const string DeviceAAndBWithDefaultAndPeeringVlanV6 = "DeviceAAndBWithDefaultAndPeeringVlanV6";
+        public const string ParameterSetNameLocationByCity = "LocationByCity";
 
         /// <summary>
         /// ParameterSetName for GetPeering
@@ -208,9 +92,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// The parameter set name by name.
         /// </summary>
-        public const string ParameterSetNameByName = "ParameterSetNameByName";
+        public const string ParameterSetNameByName = "ByName";
 
-        public const string ParameterSetNameByResourceId = "ParameterSetNameByResourceId";
+        /// <summary>
+        /// The parameter set name by resource id.
+        /// </summary>
+        public const string ParameterSetNameByResourceId = "ByResourceId";
 
         /// <summary>
         /// Parameter set name PeeringByKind
@@ -223,48 +110,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public const string ParameterSetNameBySubscription = "BySubscription";
 
         /// <summary>
-        /// The parameter set name prefix.
-        /// </summary>
-        public const string ParameterSetNameUpdateEmail = "ParameterSetNameUpdateContact";
-
-        /// <summary>
         /// The parameter set name convert legacy InputObject.
         /// </summary>
-        public const string ParameterSetNameConvertLegacyPeering = "ParameterSetNameConvertLegacyPeering";
+        public const string ParameterSetNameConvertLegacyPeering = "ConvertLegacyPeering";
 
         /// <summary>
         /// The parameter set name i pv 6 prefix.
         /// </summary>
-        public const string ParameterSetNameIPv6Prefix = "ParameterSetNameIPv6Prefix";
+        public const string ParameterSetNameIPv6Prefix = "IPv6Prefix";
 
         /// <summary>
         /// The parameter set name md 5 authentication.
         /// </summary>
-        public const string ParameterSetNameMd5Authentication = "ParameterSetNameMd5Authentication";
+        public const string ParameterSetNameMd5Authentication = "Md5Authentication";
 
         /// <summary>
         /// The parameter set name bandwidth.
         /// </summary>
-        public const string ParameterSetNameBandwidth = "ParameterSetNameBandwidth";
+        public const string ParameterSetNameBandwidth = "Bandwidth";
 
         /// <summary>
         /// The parameter set name i pv 4 prefix.
         /// </summary>
-        public const string ParameterSetNameIPv4Prefix = "ParameterSetNameIPv4Prefix";
+        public const string ParameterSetNameIPv4Prefix = "IPv4Prefix";
 
         /// <summary>
         /// The parameter set name prefix by InputObject.
         /// </summary>
-        public const string ParameterSetNameIPv4Address = "ParameterSetNameIPv4Address";
+        public const string ParameterSetNameIPv4Address = "IPv4Address";
 
         /// <summary>
         /// The parameter set name prefix by prefix name.
         /// </summary>
-        public const string ParameterSetNameIPv6Address = "ParameterSetNameIPv6Address";
+        public const string ParameterSetNameIPv6Address = "IPv6Address";
 
         #endregion
 
         #region Help
+
         //Help Messages 
         /// <summary>
         /// ResourceGroupNameHelp
@@ -310,8 +193,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// PeeringAsnHelp
         /// </summary>
-        public const string PeeringAsnHelp =
-            "The Peer Asn Resource Id. Use Get-AzPeerAsn to retrieve the Id.";
+        public const string PeeringAsnHelp = "The Peer Asn Resource Id. Use Get-AzPeerAsn to retrieve the Id.";
 
         /// <summary>
         /// The peering db facility id help.
@@ -319,26 +201,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public const string PeeringDbFacilityIdHelp = "The PeeringDB.com Facility ID";
 
         /// <summary>
-        /// HelpSku
-        /// </summary>
-        public const string HelpSku = "The SKU Tier.";
-
-        /// <summary>
         /// Gets or sets the help peering db facility id.
         /// </summary>
         public const string HelpPeeringDBFacilityId = "The peering facility Id found on https://peeringdb.com";
-
-        /// <summary>
-        /// IPv4Help
-        /// </summary>
-        // ReSharper disable once InconsistentNaming
-        public const string IPv4Help = "The IPv4 session Prefix.";
-
-        /// <summary>
-        /// IPv6Help
-        /// </summary>
-        // ReSharper disable once InconsistentNaming
-        public const string IPv6Help = "TheIPv6sessionPrefix.";
 
         /// <summary>
         /// BandwidthHelp
@@ -359,16 +224,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// The use for partner peering.
         /// </summary>
         public const string UseForPeeringServiceHelp = "Enable for use with Microsoft InputObject Service (MPS).";
-
-        /// <summary>
-        /// SubscriberNameHelp
-        /// </summary>
-        public const string SubscriberNameHelp = "Name of carrier subscriber.";
-
-        /// <summary>
-        /// ProvisionedBandwidthHelp
-        /// </summary>
-        public const string ProvisionedBandwidthHelp = "The Bandwidth offered at this location in chunks of 10000 Mbps";
 
         /// <summary>
         /// The prefix help.
@@ -398,42 +253,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// The peering exchange connection help.
         /// </summary>
-        public const string PeeringExchangeConnectionHelp = "Create a new Exchange connection using the New-AzExchangePeeringConnectionObject and pipe to this command.";
+        public const string PeeringExchangeConnectionHelp =
+            "Create a new Exchange connection using the New-AzExchangePeeringConnectionObject and pipe to this command.";
 
         /// <summary>
         /// The peering Direct connection help.
         /// </summary>
-        public const string PeeringDirectConnectionHelp = "Create a new Direct connections using the New-AzDirectPeeringConnectionObject and pipe to this command.";
+        public const string PeeringDirectConnectionHelp =
+            "Create a new Direct connections using the New-AzDirectPeeringConnectionObject and pipe to this command.";
 
         /// <summary>
         /// The peering direct connection index help.
         /// </summary>
-        public const string PeeringDirectConnectionIndexHelp = "The index associated with the connection from the Get-AzPeering";
+        public const string PeeringDirectConnectionIndexHelp =
+            "The index associated with the connection from the Get-AzPeering";
 
         /// <summary>
         /// The help max advertised i pv 6.
         /// </summary>
-        public const string HelpMaxAdvertisedIPv6 = "HelpMaxAdvertisedIPv6";
+        public const string HelpMaxAdvertisedIPv6 = "The maximum advertised IPv6";
 
         /// <summary>
         /// The help session i pv 4 prefix.
         /// </summary>
-        public const string HelpSessionIPv4Prefix = "HelpSessionIPv4Prefix";
+        public const string HelpSessionIPv4Prefix = "The session IPv4 prefix";
 
         /// <summary>
         /// The help session i pv 6 prefix.
         /// </summary>
-        public const string HelpSessionIPv6Prefix = "HelpSessionIPv6Prefix";
+        public const string HelpSessionIPv6Prefix = "The session IPv6 prefix";
 
         /// <summary>
         /// The help peer session i pv 4 prefix.
         /// </summary>
-        public const string HelpPeerSessionIPv4Prefix = "HelpPeerSessionIPv4Prefix";
+        public const string HelpPeerSessionIPv4Prefix = "The peer session IPv4 address";
 
         /// <summary>
         /// The help peer session i pv 6 prefix.
         /// </summary>
-        public const string HelpPeerSessionIPv6Prefix = "HelpPeerSessionIPv6Prefix";
+        public const string HelpPeerSessionIPv6Prefix = "The peer session IPv6 address";
 
         /// <summary>
         /// The tags help.
@@ -443,7 +301,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// The help max advertised i pv 4.
         /// </summary>
-        public const string HelpMaxAdvertisedIPv4 = "HelpMaxAdvertisedIPv4";
+        public const string HelpMaxAdvertisedIPv4 = "The maximum advertised IPv4";
 
         #endregion
 

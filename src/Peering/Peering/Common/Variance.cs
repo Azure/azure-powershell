@@ -13,14 +13,6 @@
 // ----------------------------------------------------------------------------------
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Net;
-    using System.Net.Sockets;
-    using System.Numerics;
-    using System.Reflection;
-
     /// <summary>
     /// The variance.
     /// </summary>

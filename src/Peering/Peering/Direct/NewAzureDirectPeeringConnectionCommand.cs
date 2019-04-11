@@ -35,19 +35,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         /// Gets or sets the InputObject Facility DB.
         /// </summary>
         [Parameter(
-        Position = Constants.PositionPeeringZero,
+        Position = 0,
         Mandatory = true,
         ValueFromPipelineByPropertyName = true,
         HelpMessage = Constants.HelpPeeringDBFacilityId,
         ParameterSetName = Constants.ParameterSetNameIPv4Prefix)]
         [Parameter(
-        Position = Constants.PositionPeeringZero,
+        Position = 0,
         Mandatory = true,
         ValueFromPipelineByPropertyName = true,
         HelpMessage = Constants.HelpPeeringDBFacilityId,
         ParameterSetName = Constants.ParameterSetNameIPv6Prefix)]
         [Parameter(
-        Position = Constants.PositionPeeringZero,
+        Position = 0,
         Mandatory = true,
         ValueFromPipelineByPropertyName = true,
         HelpMessage = Constants.HelpPeeringDBFacilityId,
@@ -81,13 +81,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         /// Gets or sets the session ipv4.
         /// </summary>
         [Parameter(
-            Position = Constants.PositionPeeringTwo,
+            Position = 2,
             Mandatory = true,
 
             HelpMessage = Constants.HelpSessionIPv4Prefix,
             ParameterSetName = Constants.ParameterSetNameIPv4Prefix)]
         [Parameter(
-            Position = Constants.PositionPeeringTwo,
+            Position = 2,
             Mandatory = true,
 
             HelpMessage = Constants.HelpSessionIPv4Prefix,

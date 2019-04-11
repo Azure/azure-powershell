@@ -39,19 +39,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </summary>
         [Parameter(
             Mandatory = true,
-            Position = Constants.PositionPeeringZero,
+            Position = 0,
 
             ParameterSetName = Constants.ParameterSetNamePeeringByKind,
             HelpMessage = Constants.KindHelp)]
         [Parameter(
             Mandatory = true,
-            Position = Constants.PositionPeeringZero,
+            Position = 0,
 
             ParameterSetName = Constants.ParameterSetNameLocationByCity,
             HelpMessage = Constants.KindHelp)]
         [Parameter(
             Mandatory = true,
-            Position = Constants.PositionPeeringZero,
+            Position = 0,
 
             ParameterSetName = Constants.ParameterSetNameLocationByFacilityId,
             HelpMessage = Constants.KindHelp)]
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </summary>
         [Parameter(
             Mandatory = true,
-            Position = Constants.PositionPeeringZero,
+            Position = 0,
 
             ParameterSetName = Constants.ParameterSetNameLocationByCity,
             HelpMessage = Constants.LocationHelp)]
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </summary>
         [Parameter(
             Mandatory = true,
-            Position = Constants.PositionPeeringZero,
+            Position = 0,
 
             ParameterSetName = Constants.ParameterSetNameLocationByFacilityId,
             HelpMessage = Constants.PeeringDbFacilityIdHelp)]

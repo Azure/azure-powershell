@@ -35,19 +35,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         /// Gets or sets the InputObject Facility DB.
         /// </summary>
         [Parameter(
-            Position = Constants.PositionPeeringZero,
+            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpPeeringDBFacilityId,
             ParameterSetName = Constants.ParameterSetNameIPv4Address)]
         [Parameter(
-            Position = Constants.PositionPeeringZero,
+            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpPeeringDBFacilityId,
             ParameterSetName = Constants.ParameterSetNameIPv6Address)]
         [Parameter(
-            Position = Constants.PositionPeeringZero,
+            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpPeeringDBFacilityId,

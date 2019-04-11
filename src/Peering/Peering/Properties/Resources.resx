@@ -117,4 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ContinueMessage" xml:space="preserve">
+    <value>You are about to remove an {0} Resource. Are you sure?</value>
+  </data>
+  <data name="ProcessMessage" xml:space="preserve">
+    <value>InputObject {0} Resource being removed.</value>
+  </data>
 </root>

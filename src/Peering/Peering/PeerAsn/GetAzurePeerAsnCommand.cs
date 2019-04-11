@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         ///     Gets or sets The InputObject name
         /// </summary>
         [Parameter(
-            Position = Constants.PositionPeeringZero,
+            Position = 0,
             Mandatory = false,
             HelpMessage = Constants.PeeringNameHelp,
             ParameterSetName = Constants.ParameterSetNameByName)]

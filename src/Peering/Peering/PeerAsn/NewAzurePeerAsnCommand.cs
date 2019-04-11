@@ -40,7 +40,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         ///     Gets or sets The InputObject name
         /// </summary>
         [Parameter(
-            Position = Constants.PositionPeeringZero,
+            Position = 0,
             Mandatory = true,
             HelpMessage = Constants.PeeringNameHelp)]
         [ValidateNotNullOrEmpty]
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         ///     Gets or sets The InputObject name
         /// </summary>
         [Parameter(
-            Position = Constants.PositionPeeringOne,
+            Position = 1,
             Mandatory = true,
             HelpMessage = Constants.PeeringNameHelp)]
         [ValidateNotNullOrEmpty]
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         ///     Gets or sets Peer ASN
         /// </summary>
         [Parameter(            
-            Position = Constants.PositionPeeringTwo,
+            Position = 2,
             Mandatory = true,
             HelpMessage = Constants.PeeringAsnHelp)]
         [ValidateNotNullOrEmpty]
