@@ -524,7 +524,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             }
             catch (CloudException ex)
             {
-                throw new NetworkCloudException(ex);
+                throw new CloudException(ex.Message);
             }
         }
 

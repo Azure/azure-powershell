@@ -62,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         /// Gets or sets the session ipv4.
         /// </summary>
         [Parameter(
-            Position = Constants.PositionPeeringTwo,
+            Position = 2,
             Mandatory = true,
             HelpMessage = Constants.HelpSessionIPv4Prefix,
             ParameterSetName = Constants.ParameterSetNameIPv4Address)]
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         /// Gets or sets the session ipv4.
         /// </summary>
         [Parameter(
-            Position = Constants.PositionPeeringTwo,
+            Position = 2,
             Mandatory = true,
             HelpMessage = Constants.HelpSessionIPv4Prefix,
             ParameterSetName = Constants.ParameterSetNameIPv6Address)]
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         /// Gets or sets the m d 5 authentication key.
         /// </summary>
         [Parameter(
-            Position = Constants.PositionPeeringOne,
+            Position = 1,
             Mandatory = false,
             HelpMessage = Constants.MD5AuthenticationKeyHelp,
             ParameterSetName = Constants.ParameterSetNameMd5Authentication)]

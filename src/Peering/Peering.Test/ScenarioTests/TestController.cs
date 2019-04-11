@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests.ScenarioTests
+namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
 {
     using System;
     using System.Collections.Generic;

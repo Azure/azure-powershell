@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         ///     Gets or sets the ResourceGroupName
         /// </summary>
         [Parameter(
-            Position = Constants.PositionPeeringZero,
+            Position = 0,
             Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
             ParameterSetName = Constants.ParameterSetNamePeeringByResourceAndName)]
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         ///     Gets or sets the InputObject name.
         /// </summary>
         [Parameter(
-            Position = Constants.PositionPeeringOne,
+            Position = 1,
             Mandatory = false,
             HelpMessage = Constants.PeeringNameHelp,
             ParameterSetName = Constants.ParameterSetNamePeeringByResourceAndName)]

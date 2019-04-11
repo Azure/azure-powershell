@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common.Common
 {
-    using System.Collections;
     using System.Globalization;
     using System.IO;
     using System.Net;
     using System.Net.Sockets;
     using System.Numerics;
-
-    using Newtonsoft.Json;
 
     public class RoutePrefix
     {
@@ -33,10 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common.Common
             if (parts.Length != 2)
             {
                 throw new ArgumentException(
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        "Unrecognized routePrefix {0}",
-                        routePrefix));
+                    string.Format(CultureInfo.InvariantCulture, "Unrecognized routePrefix {0}", routePrefix));
             }
 
             // get and validate the prefix length mask into a number
@@ -78,20 +68,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common.Common
         /// <summary>
         /// Gets start IPAddress
         /// </summary>
-        public IPAddress StartIp
-        {
-            get;
-            private set;
-        }
+        public IPAddress StartIp { get; private set; }
 
         /// <summary>
         /// Gets mask width
         /// </summary>
-        public ushort PrefixMaskWidth
-        {
-            get;
-            private set;
-        }
+        public ushort PrefixMaskWidth { get; private set; }
 
         /// <summary>
         /// Gets the address family.
@@ -155,10 +137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common.Common
             if (parts.Length != 2)
             {
                 throw new ArgumentException(
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        "Unrecognized routePrefix {0}",
-                        routePrefix));
+                    string.Format(CultureInfo.InvariantCulture, "Unrecognized routePrefix {0}", routePrefix));
             }
 
             // get and validate the prefix length mask into a number

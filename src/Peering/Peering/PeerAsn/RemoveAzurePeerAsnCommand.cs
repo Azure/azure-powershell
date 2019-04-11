@@ -21,6 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     using System.Diagnostics.CodeAnalysis;
     using System.Management.Automation;
 
+    using Microsoft.Azure.Commands.Peering.Properties;
     using Microsoft.Azure.Management.Peering;
     using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         ///     Gets or sets The InputObject name
         /// </summary>
         [Parameter(
-            Position = Constants.PositionPeeringZero,
+            Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = Constants.PeerAsnHelp,
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         ///     Gets or sets The InputObject name
         /// </summary>
         [Parameter(
-            Position = Constants.PositionPeeringZero,
+            Position = 0,
             Mandatory = true,
             HelpMessage = Constants.PeeringNameHelp,
             ParameterSetName = Constants.ParameterSetNameByName)]
@@ -85,16 +86,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
                     this.ConfirmAction(
                         this.Force,
                         $"You are about to remove an {this.InputObject.Name} Resource. Are you sure?",
-                        Constants.ProcessMessage,
-                        this.InputObject.Name,
+                        string.Format(Resources.ContinueMessage, this.InputObject.Name),
+                        string.Format(Resources.ProcessMessage, this.InputObject.Name),
                         this.RemovePeerAsn);
                 }
                 if (this.ParameterSetName.Equals(Constants.ParameterSetNameByName, StringComparison.OrdinalIgnoreCase))
                 {
                     this.ConfirmAction(
                         this.Force,
-                        $"You are about to remove an {this.Name} Resource. Are you sure?",
-                        Constants.ProcessMessage,
+                        string.Format(Resources.ContinueMessage, this.InputObject.Name),
+                        string.Format(Resources.ProcessMessage, this.InputObject.Name),
                         this.Name,
                         this.RemovePeerAsn);
                 }

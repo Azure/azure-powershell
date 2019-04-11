@@ -26,7 +26,6 @@ function Test-NewExchangeConnectionV4V6
 	$PeerSessionIPv6Address = "fe01::22/128"
     $resourceGroup = "testCarrier" #TestSetup-CreateResourceGroup
     $resourceLocation = "CentralUS"
-    $profileSku = "Premium_Direct_Metered"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
     $createdConnection = New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxPrefixesAdvertisedIPv4 -MaxPrefixesAdvertisedIPv6 $maxPrefixesAdvertisedIPv6 -PeerSessionIPv4Address $PeerSessionIPv4Address -PeerSessionIPv6Address $PeerSessionIPv6Address -MD5AuthenticationKey $md5
 	Get-AzPeerAsn

@@ -70,13 +70,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// Gets or sets The Resource Group Name
         /// </summary>
         [Parameter(
-            Position = Constants.PositionPeeringZero,
+            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
             ParameterSetName = Constants.Direct)]
         [Parameter(
-            Position = Constants.PositionPeeringZero,
+            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
@@ -89,13 +89,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// Gets or sets The InputObject NameMD5AuthenticationKeyHelp
         /// </summary>
         [Parameter(
-            Position = Constants.PositionPeeringOne,
+            Position = 1,
             Mandatory = true,
             HelpMessage = Constants.PeeringNameHelp,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.Direct)]
         [Parameter(
-            Position = Constants.PositionPeeringOne,
+            Position = 1,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = Constants.PeeringNameHelp,
@@ -125,14 +125,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </summary>
         [Parameter(
             Mandatory = true,
-            Position = Constants.PositionPeeringTwo,
+            Position = 2,
             ValueFromPipeline = true,
             HelpMessage = Constants.PeeringExchangeConnectionHelp,
             ParameterSetName = Constants.Exchange)]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            Position = Constants.PositionPeeringOne,
+            Position = 1,
             HelpMessage = Constants.PeeringExchangeConnectionHelp,
             ParameterSetName = Constants.ParameterSetNameByResourceId + Constants.Exchange)]
         [Parameter(

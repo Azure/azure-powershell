@@ -38,7 +38,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </summary>
         [Parameter(
             Mandatory = true,
-            Position = Constants.PositionPeeringZero,
+            Position = 0,
             HelpMessage = Constants.KindHelp)]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter(Constants.Direct, Constants.Exchange)]
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </summary>
         [Parameter(
             Mandatory = true,
-            Position = Constants.PositionPeeringOne,
+            Position = 1,
             HelpMessage = Constants.KindHelp)]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter(Constants.Direct, Constants.Exchange)]

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Properties {
+namespace Microsoft.Azure.Commands.Peering.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.PowerShell.Cmdlets.Peering.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Peering.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are about to remove an {0} Resource. Are you sure?.
+        /// </summary>
+        internal static string ContinueMessage {
+            get {
+                return ResourceManager.GetString("ContinueMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to InputObject {0} Resource being removed..
+        /// </summary>
+        internal static string ProcessMessage {
+            get {
+                return ResourceManager.GetString("ProcessMessage", resourceCulture);
             }
         }
     }

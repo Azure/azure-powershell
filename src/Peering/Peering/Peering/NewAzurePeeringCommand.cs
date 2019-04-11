@@ -55,17 +55,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// Gets or sets The Resource Group Name
         /// </summary>
         [Parameter(
-            Position = Constants.PositionPeeringZero,
+            Position = 0,
             Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
             ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering)]
         [Parameter(
-            Position = Constants.PositionPeeringZero,
+            Position = 0,
             Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
             ParameterSetName = Constants.Exchange)]
         [Parameter(
-            Position = Constants.PositionPeeringZero,
+            Position = 0,
             Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
             ParameterSetName = Constants.Direct)]
@@ -77,17 +77,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// Gets or sets The InputObject NameMD5AuthenticationKeyHelp
         /// </summary>
         [Parameter(
-            Position = Constants.PositionPeeringOne,
+            Position = 1,
             Mandatory = true,
             HelpMessage = Constants.PeeringNameHelp,
             ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering)]
         [Parameter(
-            Position = Constants.PositionPeeringOne,
+            Position = 1,
             Mandatory = true,
             HelpMessage = Constants.PeeringNameHelp,
             ParameterSetName = Constants.Exchange)]
         [Parameter(
-            Position = Constants.PositionPeeringOne,
+            Position = 1,
             Mandatory = true,
             HelpMessage = Constants.PeeringNameHelp,
             ParameterSetName = Constants.Direct)]
@@ -102,12 +102,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             HelpMessage = Constants.PeeringLocationHelp,
             ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering)]
         [Parameter(
-            Position = Constants.PositionPeeringTwo,
+            Position = 2,
             Mandatory = true,
             HelpMessage = Constants.PeeringLocationHelp,
             ParameterSetName = Constants.Exchange)]
         [Parameter(
-            Position = Constants.PositionPeeringTwo,
+            Position = 2,
             Mandatory = true,
             HelpMessage = Constants.PeeringLocationHelp,
             ParameterSetName = Constants.Direct)]
@@ -118,17 +118,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// Gets or sets The PeerAsn.
         /// </summary>
         [Parameter(
-            Position = Constants.PositionPeeringThree,
+            Position = 3,
             Mandatory = true,
             HelpMessage = Constants.PeeringAsnHelp,
             ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering)]
         [Parameter(
-            Position = Constants.PositionPeeringThree,
+            Position = 3,
             Mandatory = true,
             HelpMessage = Constants.PeeringAsnHelp,
             ParameterSetName = Constants.Exchange)]
         [Parameter(
-            Position = Constants.PositionPeeringThree,
+            Position = 3,
             Mandatory = true,
             HelpMessage = Constants.PeeringAsnHelp,
             ParameterSetName = Constants.Direct)]

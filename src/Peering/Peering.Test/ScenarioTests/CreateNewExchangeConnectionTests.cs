@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         /// <summary>
         /// The _logger.
         /// </summary>
-        private ServiceManagement.Common.Models.XunitTracingInterceptor logger;
+        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateNewExchangeConnectionTests"/> class.
@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         /// </param>
         public CreateNewExchangeConnectionTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
+            this._logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
+            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this._logger);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewExchangeConnectionV4V6()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewExchangeConnectionV4V6");
+            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-NewExchangeConnectionV4V6");
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewExchangeConnectionV4()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewExchangeConnectionV4");
+            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-NewExchangeConnectionV4");
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewExchangeConnectionV6()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewExchangeConnectionV6");
+            TestController.NewInstance.RunPowerShellTest(this._logger, "Test-NewExchangeConnectionV6");
         }
     }
 }
