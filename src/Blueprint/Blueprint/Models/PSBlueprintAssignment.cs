@@ -105,14 +105,27 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
 
             foreach (var item in assignment.Parameters)
             {
-                var paramObj = item.Value as ParameterValue;
+                PSParameterValueBase parameterObject = null;
 
-                if (paramObj == null || !paramObj.GetType().Equals(typeof(ParameterValue)))
+                if (item.Value != null && item.Value.GetType().Equals(typeof(ParameterValue)))
                 {
-                    throw new NotSupportedException(string.Format(Resources.SecureStringsNotSupported, psAssignment.Name));
-                }
+                    // Need to cast as ParameterValue since assignment.Parameters value type is ParamaterValueBase. 
+                    var paramaterValue = item.Value as ParameterValue;  
 
-                psAssignment.Parameters.Add(item.Key, new PSParameterValue { Description = paramObj.Description, Value = paramObj.Value});
+                    parameterObject = new PSParameterValue { Description = paramaterValue.Description, Value = paramaterValue.Value };
+                }
+                else if (item.Value != null && item.Value.GetType().Equals(typeof(SecretReferenceParameterValue)))
+                {
+                    var paramaterValue = item.Value as SecretReferenceParameterValue;
+    
+                    var secretReference = new PSSecretValueReference(new PSKeyVaultReference(paramaterValue.Reference.KeyVault.Id), 
+                        paramaterValue.Reference.SecretName, 
+                        paramaterValue.Reference.SecretVersion);
+
+                    parameterObject = new PSSecretReferenceParameterValue(secretReference, item.Value.Description);
+                } 
+             
+                psAssignment.Parameters.Add(item.Key, parameterObject);
             }
 
             foreach (var item in assignment.ResourceGroups)
