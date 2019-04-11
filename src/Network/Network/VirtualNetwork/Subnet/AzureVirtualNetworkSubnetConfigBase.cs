@@ -78,6 +78,18 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "NatGatewayId")]
+        public string NatGatewayId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "NatGateway")]
+        public PSNatGateway NatGateway { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Service Endpoint Value")]
         [PSArgumentCompleter(
             "Microsoft.Storage",
