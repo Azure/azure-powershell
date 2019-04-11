@@ -43,7 +43,7 @@
     <SignedOutputRootDir>$(RepoRoot)signed</SignedOutputRootDir>
     <TestOutputDirectory>$(RepoArtifacts)/TestResults</TestOutputDirectory>
     <StaticAnalysisOutputDirectory>$(RepoArtifacts)/StaticAnalysisResults</StaticAnalysisOutputDirectory>
-    <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">$(RepoSrc)</NuGetPublishingSource>
+    <NuGetPublishingSource Condition="'$(NuGetPublishingSource)' == ''">$(RepoSrc)</NuGetPublishingSource>
 
     <!-- Misc -->
     <NuGetCommand>$(MSBuildProjectDirectory)/tools/NuGet.exe</NuGetCommand>
