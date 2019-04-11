@@ -123,6 +123,9 @@
   <data name="AssignmentNotExist" xml:space="preserve">
     <value>An assignment with name '{0}' in subscription '{1}' does not exist. Please use New-AzBlueprintAssignment to create a new assignment.</value>
   </data>
+  <data name="BlueprintSpnObjectIdNotFound" xml:space="preserve">
+    <value>Could not find Blueprints SPN ObjectId in customer's tenant.</value>
+  </data>
   <data name="CreateAssignmentShouldProcessString" xml:space="preserve">
     <value>Create blueprint assignment '{0}'</value>
   </data>

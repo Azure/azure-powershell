@@ -209,11 +209,21 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         /// <param name="Parameters"></param>
         /// <param name="ResourceGroups"></param>
         /// <returns></returns>
-        protected Assignment CreateAssignmentObject(string identityType, Dictionary<string, UserAssignedIdentity> userAssignedIdentity, string bpLocation, string blueprintId, PSLockMode? lockMode, Hashtable Parameters, Hashtable ResourceGroups)
+        protected Assignment CreateAssignmentObject(string identityType, string userAssignedIdentity, string bpLocation, string blueprintId, PSLockMode? lockMode, Hashtable Parameters, Hashtable ResourceGroups)
         {
+            Dictionary<string, UserAssignedIdentity> userAssignedIdentities = null;
+
+            if (userAssignedIdentity != null)
+            {
+                userAssignedIdentities = new Dictionary<string, UserAssignedIdentity>()
+                {
+                    { userAssignedIdentity, new UserAssignedIdentity() }
+                };
+            }
+
             var localAssignment = new Assignment
             {
-                Identity = new ManagedServiceIdentity { Type = identityType, UserAssignedIdentities = userAssignedIdentity },
+                Identity = new ManagedServiceIdentity { Type = identityType, UserAssignedIdentities = userAssignedIdentities },
                 Location = bpLocation,
                 BlueprintId = blueprintId,
                 Locks = new AssignmentLockSettings { Mode = lockMode == null ? PSLockMode.None.ToString() : lockMode.ToString() },
@@ -277,16 +287,20 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         }
 
         /// <summary>
-        /// Get Blueprint SPN for this tenant
+        /// Get Blueprint SPN object Id for this tenant
         /// </summary>
         /// <returns></returns>
-        protected ServicePrincipal GetBlueprintSpn()
+        protected string GetBlueprintSpn(string scope, string assignmentName)
         {
-            var odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ServicePrincipalNames.Contains(BlueprintConstants.AzureBlueprintAppId));
-            var servicePrincipal = GraphRbacManagementClient.ServicePrincipals.List(odataQuery.ToString())
-                .FirstOrDefault();
+            // TO-DO - First find out which blueprint client to use here.
+            var response = BlueprintClient.GetBlueprintSpnObjectId(scope, assignmentName);
 
-            return servicePrincipal;
+            if (response == null)
+            {
+                throw new KeyNotFoundException(Resources.BlueprintSpnObjectIdNotFound);
+            }
+
+            return response.ObjectId;
         }
 
         /// <summary>
@@ -294,12 +308,12 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         /// </summary>
         /// <param name="subscriptionId"></param>
         /// <param name="servicePrincipal"></param>
-        protected void AssignOwnerPermission(string subscriptionId, ServicePrincipal servicePrincipal)
+        protected void AssignOwnerPermission(string subscriptionId, string princialId)
         {
             string scope = string.Format(BlueprintConstants.SubscriptionScope, subscriptionId);
 
             var filter = new Rest.Azure.OData.ODataQuery<RoleAssignmentFilter>();
-            filter.SetFilter(a => a.AssignedTo(servicePrincipal.ObjectId));
+            filter.SetFilter(a => a.AssignedTo(princialId));
 
             var roleAssignmentList = AuthorizationManagementClient.RoleAssignments.ListForScopeAsync(scope, filter).GetAwaiter().GetResult();
 
@@ -310,7 +324,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             if (roleAssignment != null) return;
 
             var roleAssignmentParams = new RoleAssignmentProperties(
-                roleDefinitionId: BlueprintConstants.OwnerRoleDefinitionId, principalId: servicePrincipal.ObjectId);
+                roleDefinitionId: BlueprintConstants.OwnerRoleDefinitionId, principalId: princialId);
 
             try
             {
@@ -322,7 +336,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             catch (Exception ex)
             {
                 // ignore if it already exists
-                if (ex is CloudException cex && cex.Response.StatusCode != System.Net.HttpStatusCode.Conflict)
+                if (ex is CloudException cex && cex.Response.StatusCode != HttpStatusCode.Conflict)
                 {
                     throw;
                 }
