@@ -207,6 +207,19 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             return null;
         }
 
+        public PSWhoIsBlueprintContract GetBlueprintSpnObjectId(string scope, string assignmentName)
+        {
+            var result = blueprintManagementClient.Assignments
+                .WhoIsBlueprintWithHttpMessagesAsync(scope, assignmentName).GetAwaiter().GetResult();
+
+            if (result.Body != null)
+            {
+                return new PSWhoIsBlueprintContract(result.Body);
+            }
+
+            return null;
+        }
+
         /// <summary>
         /// Compare to nullable DateTime objects
         /// </summary>

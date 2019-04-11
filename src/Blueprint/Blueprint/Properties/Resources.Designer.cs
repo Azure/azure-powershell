@@ -79,6 +79,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not find Blueprints SPN ObjectId in customer&apos;s tenant..
+        /// </summary>
+        internal static string BlueprintSpnObjectIdNotFound {
+            get {
+                return ResourceManager.GetString("BlueprintSpnObjectIdNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create blueprint assignment &apos;{0}&apos;.
         /// </summary>
         internal static string CreateAssignmentShouldProcessString {
