@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 {
     public static class SharedTokenCacheClientFactory
     {
-        private static readonly string PowerShellClientId = "04b07795-8ddb-461a-bbee-02f9e1bf7b46";
+        private static readonly string PowerShellClientId = "872cd9fa-d31f-45e0-9eab-6e460a02d1f1";
         private static readonly string CacheFileName = "msal.cache";
         private static readonly string CacheFilePath =
             Path.Combine(SharedUtilities.GetUserRootDirectory(), ".IdentityServices", CacheFileName);
