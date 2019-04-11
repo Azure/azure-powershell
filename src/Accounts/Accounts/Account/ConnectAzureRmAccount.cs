@@ -28,6 +28,7 @@ using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.PowerShell.Authenticators;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -390,8 +391,10 @@ namespace Microsoft.Azure.Commands.Profile
                     autoSaveEnabled = localAutosave;
                 }
 
-                InitializeProfileProvider(autoSaveEnabled);
-                IServicePrincipalKeyStore keyStore =
+                var session = AzureSession.Instance;
+                var trySetupContextsFromCache = !session.DataStore.FileExists(Path.Combine(session.ARMProfileDirectory, session.ARMProfileFile));
+                InitializeProfileProvider(autoSaveEnabled);                
+                    IServicePrincipalKeyStore keyStore =
 // TODO: Remove IfDef
 #if NETSTANDARD
                     new AzureRmServicePrincipalKeyStore(AzureRmProfileProvider.Instance.Profile);
@@ -405,6 +408,11 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     builder = new DefaultAuthenticatorBuilder();
                     AzureSession.Instance.RegisterComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, () => builder);
+                }
+
+                if (trySetupContextsFromCache)
+                {
+                    TrySetupContextsFromCache();
                 }
 #if DEBUG
             }

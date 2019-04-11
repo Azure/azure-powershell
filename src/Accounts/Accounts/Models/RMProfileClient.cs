@@ -492,6 +492,30 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return subscriptions;
         }
 
+        public void TrySetupContextsFromCache()
+        {
+            var client = SharedTokenCacheClientFactory.CreatePublicClient();
+            var accounts = client.GetAccountsAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+            if (!accounts.Any())
+            {
+                return;
+            }
+
+            foreach (var account in accounts)
+            {
+                var environment = AzureEnvironment.PublicEnvironments
+                                    .Where(env => env.Value.ActiveDirectoryAuthority.Contains(account.Environment))
+                                    .Select(env => env.Value).FirstOrDefault();
+                var azureAccount = new AzureAccount()
+                {
+                    Id = account.Username,
+                    Type = AzureAccount.AccountType.User
+                };
+
+                Login(azureAccount, environment, null, null, null, null, false, WriteWarningMessage);
+            }
+        }
+
         private AzureTenant CreateTenant(string tenantIdOrDomain)
         {
             var tenant = new AzureTenant();

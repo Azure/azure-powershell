@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         private static readonly string PowerShellClientId = "04b07795-8ddb-461a-bbee-02f9e1bf7b46";
         private static readonly string CacheFileName = "msal.cache";
         private static readonly string CacheFilePath =
-            Path.Combine(SharedUtilities.GetUserRootDirectory(), CacheFileName);
+            Path.Combine(SharedUtilities.GetUserRootDirectory(), ".IdentityServices", CacheFileName);
 
-        private static MsalCacheHelper InitializeCacheHelper()
+        private static MsalCacheHelper InitializeCacheHelper(string clientId)
         {
-            var builder = new StorageCreationPropertiesBuilder(Path.GetFileName(CacheFilePath), Path.GetDirectoryName(CacheFilePath));
+            var builder = new StorageCreationPropertiesBuilder(Path.GetFileName(CacheFilePath), Path.GetDirectoryName(CacheFilePath), clientId);
             builder = builder.WithMacKeyChain(serviceName: "Microsoft.Developer.IdentityService", accountName: "MSALCache");
             builder = builder.WithLinuxKeyring(
                 schemaName: "msal.cache",
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 attribute1: new KeyValuePair<string, string>("MsalClientID", "Microsoft.Developer.IdentityService"),
                 attribute2: new KeyValuePair<string, string>("MsalClientVersion", "1.0.0.0"));
             var storageCreationProperties = builder.Build();
-            return new MsalCacheHelper(storageCreationProperties);
+            return MsalCacheHelper.CreateAsync(storageCreationProperties).ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
         public static IPublicClientApplication CreatePublicClient(
@@ -48,7 +48,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             string authority = null,
             string redirectUri = null)
         {
-            var builder = PublicClientApplicationBuilder.Create(clientId ?? PowerShellClientId);
+            clientId = clientId ?? PowerShellClientId;
+            var builder = PublicClientApplicationBuilder.Create(clientId);
             if (!string.IsNullOrEmpty(authority))
             {
                 builder = builder.WithAuthority(authority);
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
 
             var client = builder.Build();
-            var cacheHelper = InitializeCacheHelper();
+            var cacheHelper = InitializeCacheHelper(clientId);
             cacheHelper.RegisterCache(client.UserTokenCache);
             return client;
         }
@@ -72,7 +73,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             X509Certificate2 certificate = null,
             SecureString clientSecret = null)
         {
-            var builder = ConfidentialClientApplicationBuilder.Create(clientId ?? PowerShellClientId);
+            clientId = clientId ?? PowerShellClientId;
+            var builder = ConfidentialClientApplicationBuilder.Create(clientId);
             if (!string.IsNullOrEmpty(authority))
             {
                 builder = builder.WithAuthority(authority);
@@ -94,7 +96,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
 
             var client = builder.Build();
-            var cacheHelper = InitializeCacheHelper();
+            var cacheHelper = InitializeCacheHelper(clientId);
             cacheHelper.RegisterCache(client.UserTokenCache);
             return client;
         }

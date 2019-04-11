@@ -22,6 +22,7 @@ using System.Security;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Microsoft.Azure.Internal.Subscriptions;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
