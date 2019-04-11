@@ -289,10 +289,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         /// <summary>
         /// Get Blueprint SPN object Id for this tenant
         /// </summary>
-        /// <returns></returns>
+        /// <param name="scope"></param>
+        /// <param name="assignmentName"></param>
+        /// <returns>"spnObjectId"</returns>
         protected string GetBlueprintSpn(string scope, string assignmentName)
         {
-            // TO-DO - First find out which blueprint client to use here.
             var response = BlueprintClient.GetBlueprintSpnObjectId(scope, assignmentName);
 
             if (response == null)
@@ -307,13 +308,13 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         /// Assign owner role to Blueprint RP (so that we can do deployments)
         /// </summary>
         /// <param name="subscriptionId"></param>
-        /// <param name="servicePrincipal"></param>
-        protected void AssignOwnerPermission(string subscriptionId, string princialId)
+        /// <param name="spnObjectId"></param>
+        protected void AssignOwnerPermission(string subscriptionId, string spnObjectId)
         {
             string scope = string.Format(BlueprintConstants.SubscriptionScope, subscriptionId);
 
             var filter = new Rest.Azure.OData.ODataQuery<RoleAssignmentFilter>();
-            filter.SetFilter(a => a.AssignedTo(princialId));
+            filter.SetFilter(a => a.AssignedTo(spnObjectId));
 
             var roleAssignmentList = AuthorizationManagementClient.RoleAssignments.ListForScopeAsync(scope, filter).GetAwaiter().GetResult();
 
@@ -324,7 +325,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             if (roleAssignment != null) return;
 
             var roleAssignmentParams = new RoleAssignmentProperties(
-                roleDefinitionId: BlueprintConstants.OwnerRoleDefinitionId, principalId: princialId);
+                roleDefinitionId: BlueprintConstants.OwnerRoleDefinitionId, principalId: spnObjectId);
 
             try
             {

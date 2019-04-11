@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                         var scope = Utils.GetScopeForSubscription(subscription);
                         ThrowIfAssignmentExits(scope, Name);
                         // Register Blueprint RP
-                        //RegisterBlueprintRp(subscription);
+                        RegisterBlueprintRp(subscription);
 
                         if (!this.IsParameterBound(c => c.UserAssignedIdentity))
                         {
