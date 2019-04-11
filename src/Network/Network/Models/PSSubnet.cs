@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSIPConfiguration> IpConfigurations { get; set; }
 
         [JsonProperty(Order = 1)]
+        public PSNatGateway NatGateway { get; set; }
+
+        [JsonProperty(Order = 1)]
         public List<PSServiceAssocationLink> ServiceAssociationLinks { get; set; }
 
         [JsonProperty(Order = 1)]
@@ -86,6 +89,12 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(RouteTable, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
+        [JsonIgnore]
+        public string NatGatewayText
+        {
+            get { return JsonConvert.SerializeObject(NatGateway, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
         public bool ShouldSerializeIpConfigurations()
         {
             return !string.IsNullOrEmpty(this.Name);
@@ -107,6 +116,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         public bool ShouldSerializeInterfaceEndpoints()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeNatGateway()
         {
             return !string.IsNullOrEmpty(this.Name);
         }

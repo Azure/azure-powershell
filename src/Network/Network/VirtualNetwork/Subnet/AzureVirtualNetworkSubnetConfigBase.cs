@@ -58,6 +58,20 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResource",
+            HelpMessage = "NatGateway")]
+        public PSNatGateway NatGateway { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResourceId",
+            HelpMessage = "NatGatewayId")]
+        public string NatGatewayId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResource",
             HelpMessage = "RouteTable")]
         public PSRouteTable RouteTable { get; set; }
 

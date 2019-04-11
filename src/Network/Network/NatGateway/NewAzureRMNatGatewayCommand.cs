@@ -70,10 +70,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of a NAT gateway SKU.")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter(
-            MNM.NatGatewaySkuName.Basic,
-            MNM.NatGatewaySkuName.Standard,
-            IgnoreCase = true)]
+        [PSArgumentCompleter(MNM.NatGatewaySkuName.Standard)]
         public string Sku { get; set; }
 
         [Parameter(

@@ -61,6 +61,12 @@ namespace Microsoft.Azure.Commands.Network
                 subnet.RouteTable.Id = this.RouteTableId;
             }
 
+            if (!string.IsNullOrEmpty(this.NatGatewayId))
+            {
+                subnet.NatGateway = new PSNatGateway();
+                subnet.NatGateway.Id = this.NatGatewayId;
+            }
+
             if (this.ServiceEndpoint != null)
             {
                 subnet.ServiceEndpoints = new List<PSServiceEndpoint>();
