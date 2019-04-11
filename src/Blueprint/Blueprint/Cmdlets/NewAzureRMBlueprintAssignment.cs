@@ -72,6 +72,10 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
         [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, HelpMessage = ParameterHelpMessages.LockFlag)]
         public PSLockMode? Lock { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, HelpMessage = "Enter secure strings here")]
+        [ValidateNotNullOrEmpty]
+        public Hashtable SecureStringParameter { get; set; }
         #endregion Parameters
 
         #region Cmdlet Overrides
@@ -95,7 +99,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                         Blueprint.Id,
                         Lock,
                         Parameter,
-                        ResourceGroupParameter);
+                        ResourceGroupParameter,
+                        SecureStringParameter);
 
                     foreach (var subscription in subscriptionsList)
                     {

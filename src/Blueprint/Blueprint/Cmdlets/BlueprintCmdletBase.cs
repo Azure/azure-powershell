@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         /// <param name="Parameters"></param>
         /// <param name="ResourceGroups"></param>
         /// <returns></returns>
-        protected Assignment CreateAssignmentObject(string identityType, string userAssignedIdentity, string bpLocation, string blueprintId, PSLockMode? lockMode, Hashtable Parameters, Hashtable ResourceGroups)
+        protected Assignment CreateAssignmentObject(string identityType, string userAssignedIdentity, string bpLocation, string blueprintId, PSLockMode? lockMode, Hashtable Parameters, Hashtable ResourceGroups, Hashtable SecureStringParameters)
         {
             Dictionary<string, UserAssignedIdentity> userAssignedIdentities = null;
 
@@ -238,6 +238,38 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                     var value = new ParameterValue(Parameters[key], null);   
                     localAssignment.Parameters.Add(key.ToString(), value);
                 }   
+            }
+
+            if (SecureStringParameters != null)
+            {
+                foreach (var key in SecureStringParameters.Keys)
+                {
+                    var kvp = SecureStringParameters[key] as Hashtable;
+                    string keyVaultId = null;
+                    string secretName = null;
+                    string secretVersion = null;
+
+                    foreach (var k in kvp.Keys)
+                    {
+                        var paramKey = k.ToString();
+
+                        if (string.Equals(paramKey, "keyVaultId", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            keyVaultId = kvp[k].ToString();
+                        }
+                        else if (string.Equals(paramKey, "secretName", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            secretName = kvp[k].ToString();
+                        }
+                        else if (string.Equals(paramKey, "secretVersion", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            secretVersion = kvp[k].ToString();
+                        }
+                    }
+
+                    var secretValue = new SecretReferenceParameterValue(new SecretValueReference(new KeyVaultReference(keyVaultId), secretName, secretVersion));
+                    localAssignment.Parameters.Add(key.ToString(), secretValue);
+                }
             }
 
             if (ResourceGroups != null)
