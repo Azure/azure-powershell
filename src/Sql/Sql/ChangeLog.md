@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Enhanced process of multiple columns classification.
 
 ## Version 1.8.0
 * Support Database Data Classification.
