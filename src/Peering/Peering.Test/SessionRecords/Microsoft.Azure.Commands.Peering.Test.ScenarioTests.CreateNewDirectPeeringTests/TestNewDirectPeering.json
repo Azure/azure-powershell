@@ -187,7 +187,19 @@
       "StatusCode": 200
     }
   ],
-  "Names": {},
+  "Names": {
+    "Test-NewDirectPeering": [
+      "Global583",
+      "ps5351",
+      "ps263",
+      "Global1411",
+      "ps6900",
+      "ps6522",
+      "Global2387",
+      "ps3729",
+      "ps1133"
+    ]
+  },
   "Variables": {
     "SubscriptionId": "4445bf11-61c4-436f-a940-60194f8aca57"
   }

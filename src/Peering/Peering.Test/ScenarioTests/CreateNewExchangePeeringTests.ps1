@@ -15,40 +15,51 @@
 .SYNOPSIS
 Helper Function NewExchangeConnectionV4V6 
 #>
-function NewExchangeConnectionV4V6($prefixv4, $prefixv6, $maxv4, $maxv6)
+function NewExchangeConnectionV4V6($facilityId, $v4, $v6)
 {
-    $resourceName = "testTataEPV4V6"
-	$md5 = "25234523452123411fd234qdwfas3234"
-	$facilityId = "26"
-	$maxPrefixesAdvertisedIPv4 = $maxv4
-	$maxPrefixesAdvertisedIPv6 = $maxv6
-	$sessionv4 = "80.249.209." + $prefixv4
-	$sessionv6 = "2001:7f8:1::a500:8075:" + $prefixv6
-    $createdConnection = New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxPrefixesAdvertisedIPv4 -MaxPrefixesAdvertisedIPv6 $maxPrefixesAdvertisedIPv6 -PeerSessionIPv4Address $sessionv4 -PeerSessionIPv6Address $sessionv6 -MD5AuthenticationKey $md5
+	#Create some data for the object
+	Write-Debug "Creating Connection at $facilityId"
+	$md5 = getHash
+	$md5 = $md5.ToString()
+	Write-Debug "Created Hash $md5"
+	$offset = Get-Random -Maximum 20 -Minimum 3
+	$sessionv4 = changeIp "$v4/32" $false $offset $false
+	$sessionv6 = changeIp "$v6/128" $true $offset $false
+	Write-Debug "Created IPs $sessionv4"
+	$maxv4 = maxAdvertisedIpv4
+	$maxv6 = maxAdvertisedIpv6
+	Write-Debug "Created maxAdvertised $maxv4 $maxv6"
+	#create Connection
+    $createdConnection = New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxv4 -PeerSessionIPv4Address $sessionv4 -PeerSessionIPv6Address $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -MD5AuthenticationKey $md5
 	return $createdConnection
 }
 <#
 .SYNOPSIS
 Helper Function NewExchangeConnectionV4V6 
 #>
-function NewExchangePeeringPipeTwoConnections
+function Test-NewExchangePeeringPipeTwoConnections
 {
-	$resourceName = "NewExchangePeeringPipeTwoConnections"
+#Hard Coded locations becuase of limitations in locations
+	$resourceName = getAssetName "NewExchangePeeringPipeTwoConnections"
     $resourceGroup = "testCarrier"
     $peeringLocation = "Amsterdam"
-    $profileSku = "Basic_Exchange_Free"
+	$kind = IsDirect $false
+	Write-Debug "Getting the Facility Information"
+	$facility = Get-AzPeeringLocation -PeeringLocation $peeringLocation -Kind $kind
+	$microsoftIpAddressV4 = $facility[0].MicrosoftIPv4Address
+	$microsoftIpAddressV6 = $facility[0].MicrosoftIPv6Address
+	$facilityId = $facility[0].PeeringDBFacilityId
+	$peeringLocation = $facility[0].PeeringLocation
+	Write-Debug "Getting the Asn Information"
+	$peerAsn = Get-AzPeerAsn | Where-Object {$_.Name -match "Global"} | Select-Object -First 1
+	$asn = $peerAsn.Id
+	Write-Debug "Creating Connections"
+	$connection1 = NewExchangeConnectionV4V6 $facilityId $microsoftIpAddressV4 $microsoftIpAddressV6
+	$connection2 = NewExchangeConnectionV4V6 $facilityId $microsoftIpAddressV4 $microsoftIpAddressV6
+	Write-Debug "Created $connection1 $connection1"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
-	$asn = "/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso"
-	$md5 = "25234523452123411fd234qdwfas3234"
-	$facilityId = "64"
-	$maxPrefixesAdvertisedIPv4 = 23
-	$maxPrefixesAdvertisedIPv6 = 45
-	$sessionv4 = "80.249.209.22"
-	$sessionv6 = "2001:7f8:1::a500:8075:22"
-	$connection1 =NewExchangeConnectionV4V6 "22" "22" 23 45
-	$connection2 = NewExchangeConnectionV4V6 "34" "34" 55 100
     $createdPeering = ,@( $connection1, $connection2  ) | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -Tag $tags
-	return $createdPeering
+	Assert-NotNull $createdPeering
 }
 <#
 .SYNOPSIS
@@ -56,31 +67,28 @@ Tests new Exchange Peering
 #>
 function Test-NewExchangePeering()
 {
-	$resourceName = "NewExchangePeering"
+#Hard Coded locations becuase of limitations in locations
+	$resourceName = getAssetName "NewExchangePeeringCVS"
     $resourceGroup = "testCarrier"
     $peeringLocation = "Amsterdam"
-    $profileSku = "Basic_Exchange_Free"
+	$kind = IsDirect $false
+	Write-Debug "Getting the Facility Information"
+	$facility = Get-AzPeeringLocation -PeeringLocation $peeringLocation -Kind $kind
+	$microsoftIpAddressV4 = $facility[1].MicrosoftIPv4Address.Split(',') | Select-Object -First 1
+	$microsoftIpAddressV6 = $facility[1].MicrosoftIPv6Address.Split(',') | Select-Object -First 1
+	$facilityId = $facility[1].PeeringDBFacilityId
+	$peeringLocation = $facility[1].PeeringLocation
+	Write-Debug "Getting the Asn Information"
+	$peerAsn = Get-AzPeerAsn | Where-Object {$_.Name -match "Global"} | Select-Object -First 1
+	$asn = $peerAsn.Id
+	Write-Debug "Creating Connections"
+	$connection1 = NewExchangeConnectionV4V6 $facilityId $microsoftIpAddressV4 $microsoftIpAddressV6
+	$connection2 = NewExchangeConnectionV4V6 $facilityId $microsoftIpAddressV4 $microsoftIpAddressV6
+	Write-Debug "Created $connection1 $connection1"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
-	$asn = "/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso"
-	$md5 = "25234523452123411fd234qdwfas3234"
-	$facilityId = "26"
-	$maxPrefixesAdvertisedIPv4 = 23
-	$maxPrefixesAdvertisedIPv6 = 45
-	$sessionv4 = "80.249.209.22"
-	$sessionv6 = "2001:7f8:1::a500:8075:22"
-	$connection1 =NewExchangeConnectionV4V6 "22" "22" 23 45
-    $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -ExchangeConnection $connection1 -Tag $tags
-    Assert-AreEqual $md5 $createdPeering.Connections[0].BgpSession.Md5AuthenticationKey
-    Assert-AreEqual $bandwidth $createdPeering.Connections[0].BandwidthInMbps 
-	Assert-AreEqual $facilityId $createdPeering.Connections[0].PeeringDBFacilityId 
-	Assert-AreEqual "Exchange" $createdPeering.Kind
-    Assert-AreEqual $maxPrefixesAdvertisedIPv4 $createdPeering.Connections[0].BgpSession.MaxPrefixesAdvertisedV4
-    Assert-AreEqual $maxPrefixesAdvertisedIPv6 $createdPeering.Connections[0].BgpSession.MaxPrefixesAdvertisedv6
-	Assert-AreEqual $sessionv4 $createdPeering.Connections[0].BgpSession.PeerSessionIPv4Address
-    Assert-AreEqual $sessionv6 $createdPeering.Connections[0].BgpSession.PeerSessionIPv6Address
-	Assert-AreEqual $resourceName $createdPeering.Name
-	Assert-AreEqual $peeringLocation $createdPeering.PeeringLocation
-	Assert-AreEqual $profileSku $createdPeering.Sku.Name
+	Write-Debug "Creating Resource $resourceName"
+    $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -ExchangeConnection $connection1,$connection2 -Tag $tags
+	Assert-NotNull $createdPeering
 }
 <#
 .SYNOPSIS
@@ -88,78 +96,24 @@ Tests new Exchange Peering Pipe
 #>
 function Test-NewExchangePeeringPipe
 {
-	$resourceName = "NewExchangePeeringPipe"
+#Hard Coded locations becuase of limitations in locations
+	$resourceName = getAssetName "NewExchangePeeringCVS"
     $resourceGroup = "testCarrier"
     $peeringLocation = "Amsterdam"
-    $profileSku = "Basic_Exchange_Free"
+	$kind = IsDirect $false
+	Write-Debug "Getting the Facility Information"
+	$facility = Get-AzPeeringLocation -PeeringLocation $peeringLocation -Kind $kind
+	$microsoftIpAddressV4 = $facility[2].MicrosoftIPv4Address
+	$microsoftIpAddressV6 = $facility[2].MicrosoftIPv6Address
+	$facilityId = $facility[2].PeeringDBFacilityId
+	$peeringLocation = $facility[2].PeeringLocation
+	Write-Debug "Getting the Asn Information"
+	$peerAsn = Get-AzPeerAsn | Where-Object {$_.Name -match "Global"} | Select-Object -First 1
+	$asn = $peerAsn.Id
+	Write-Debug "Creating Connections"
+	$connection1 = NewExchangeConnectionV4V6 $facilityId $microsoftIpAddressV4 $microsoftIpAddressV6
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
-	$asn = "/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso"
-	$md5 = "25234523452123411fd234qdwfas3234"
-	$facilityId = "26"
-	$maxPrefixesAdvertisedIPv4 = 23
-	$maxPrefixesAdvertisedIPv6 = 45
-	$sessionv4 = "80.249.209.24"
-	$sessionv6 = "2001:7f8:1::a500:8075:24"
-    $createdPeering = @( NewExchangeConnectionV4V6 "24" "24" 23 45 ) | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -Tag $tags	
-    Assert-AreEqual $md5 $createdPeering.Connections[0].BgpSession.Md5AuthenticationKey
-	Assert-AreEqual $facilityId $createdPeering.Connections[0].PeeringDBFacilityId 
-	Assert-AreEqual "Exchange" $createdPeering.Kind
-    Assert-AreEqual $maxPrefixesAdvertisedIPv4 $createdPeering.Connections[0].BgpSession.MaxPrefixesAdvertisedV4
-    Assert-AreEqual $maxPrefixesAdvertisedIPv6 $createdPeering.Connections[0].BgpSession.MaxPrefixesAdvertisedv6
-	Assert-AreEqual $sessionv4 $createdPeering.Connections[0].BgpSession.PeerSessionIPv4Address
-    Assert-AreEqual $sessionv6 $createdPeering.Connections[0].BgpSession.PeerSessionIPv6Address
-	Assert-AreEqual $resourceName $createdPeering.Name
-	Assert-AreEqual $peeringLocation $createdPeering.PeeringLocation
-	Assert-AreEqual $profileSku $createdPeering.Sku.Name
-}
-<#
-.SYNOPSIS
-Tests new Exchange Peering Pipe Two Connections
-#>
-function Test-NewExchangePeeringPipeTwoConnections
-{
-	$resourceName = "NewExchangePeeringPipeTwoConnections"
-    $resourceGroup = "testCarrier"
-    $peeringLocation = "Amsterdam"
-    $profileSku = "Basic_Exchange_Free"
-    $tags = @{"tag1" = "value1"; "tag2" = "value2"}
-	$asn = "/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/peerAsns/Contoso"
-	$md5 = "25234523452123411fd234qdwfas3234"
-	$facilityId = "26"
-	$maxPrefixesAdvertisedIPv4 = 23
-	$maxPrefixesAdvertisedIPv6 = 45
-	$sessionv4 = "80.249.209.25"
-	$sessionv6 = "2001:7f8:1::a500:8075:25"
-	$connection1 =NewExchangeConnectionV4V6 "25" "25" 23 45
-	$connection2 = NewExchangeConnectionV4V6 "34" "34" 55 100
-    $createdPeering = ,@( $connection1, $connection2  ) | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -Tag $tags
-    Assert-AreEqual $md5 $createdPeering.Connections[0].BgpSession.Md5AuthenticationKey
-	Assert-AreEqual $facilityId $createdPeering.Connections[0].PeeringDBFacilityId 
-	Assert-AreEqual $maxPrefixesAdvertisedIPv4 $createdPeering.Connections[0].BgpSession.MaxPrefixesAdvertisedV4
-    Assert-AreEqual $maxPrefixesAdvertisedIPv6 $createdPeering.Connections[0].BgpSession.MaxPrefixesAdvertisedv6
-	Assert-AreEqual $sessionv4 $createdPeering.Connections[0].BgpSession.PeerSessionIPv4Address
-    Assert-AreEqual $sessionv6 $createdPeering.Connections[0].BgpSession.PeerSessionIPv6Address
-	Assert-AreEqual $md5 $createdPeering.Connections[0].BgpSession.Md5AuthenticationKey
-	Assert-AreEqual $connection2.PeeringDBFacilityId $createdPeering.Connections[1].PeeringDBFacilityId 
-	Assert-NotNull $createdPeering.Connections[1].BgpSession
-	Assert-AreEqual $connection2.BgpSession.MaxPrefixesAdvertisedV4 $createdPeering.Connections[1].BgpSession.MaxPrefixesAdvertisedV4
-	Assert-AreEqual $connection2.BgpSession.MaxPrefixesAdvertisedv6 $createdPeering.Connections[1].BgpSession.MaxPrefixesAdvertisedv6
-	Assert-AreEqual $connection2.BgpSession.PeerSessionIPv4Address $createdPeering.Connections[1].BgpSession.PeerSessionIPv4Address
-	Assert-AreEqual $connection2.BgpSession.PeerSessionIPv6Address $createdPeering.Connections[1].BgpSession.PeerSessionIPv6Address
-	Assert-AreEqual "Exchange" $createdPeering.Kind
-	Assert-AreEqual $resourceName $createdPeering.Name
-	Assert-AreEqual $peeringLocation $createdPeering.PeeringLocation
-	Assert-AreEqual $profileSku $createdPeering.Sku.Name
-}
-<#
-.SYNOPSIS
-NewDirectConnectionWithV4 with fail on wrong IP
-#>
-function Test-NewDirectConnectionWrongV4
-{
-	$md5 = "25234523452123411fd234qdwfas3234"
-	$facilityId = "64"
-	$sessionv4 = "192.168.1.1/32"
-	$bandwidth = 30000
-	Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixIPv4 $sessionv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} "Parameter name: Invalid Prefix: 192.168.1.1/32, must be either /30 or /31"
+	Write-Debug "Creating Resource $resourceName"
+	$createdPeering = $connection1 | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -Tag $tags
+	Assert-NotNull $createdPeering
 }

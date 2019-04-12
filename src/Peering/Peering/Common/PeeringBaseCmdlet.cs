@@ -550,7 +550,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                 {
                     if (location.Name == PeeringLocation)
                     {
-                        if (this.PeeringManagementClient.BaseUri.AbsolutePath.Contains("api-dogfood"))
+                        if (this.PeeringManagementClient.BaseUri.AbsoluteUri.Contains("api-dogfood"))
                         {
                             return "centralus";
                         }
