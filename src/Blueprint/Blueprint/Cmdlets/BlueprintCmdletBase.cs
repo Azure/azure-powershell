@@ -32,8 +32,6 @@ using System.Threading;
 using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01;
-using Microsoft.Azure.Graph.RBAC.Version1_6;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 
@@ -81,24 +79,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
             }
             set => clientCredentials = value;
-        }
-
-        /// <summary>
-        /// Graph RBAC client
-        /// </summary>
-        private IGraphRbacManagementClient graphRbacManagementClient;
-
-        public IGraphRbacManagementClient GraphRbacManagementClient
-        {
-            get
-            {
-                graphRbacManagementClient = graphRbacManagementClient ?? AzureSession.Instance.ClientFactory.CreateArmClient<GraphRbacManagementClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.Graph);
-
-                graphRbacManagementClient.TenantID = DefaultProfile.DefaultContext.Tenant.Id.ToString();
-
-                return graphRbacManagementClient;
-            }
-            set => graphRbacManagementClient = value;
         }
 
         /// <summary>
