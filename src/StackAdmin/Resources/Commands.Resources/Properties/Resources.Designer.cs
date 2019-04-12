@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -88,20 +88,20 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancelling active deployment ....
+        /// </summary>
+        internal static string CancelDeploymentMessage {
+            get {
+                return ResourceManager.GetString("CancelDeploymentMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to cancel the active deployment of resource group &apos;{0}&apos;?.
         /// </summary>
         internal static string CancelResourceGroupDeployment {
             get {
                 return ResourceManager.GetString("CancelResourceGroupDeployment", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cancelling active resource group deployment ....
-        /// </summary>
-        internal static string CancelResourceGroupDeploymentMessage {
-            get {
-                return ResourceManager.GetString("CancelResourceGroupDeploymentMessage", resourceCulture);
             }
         }
         
@@ -124,20 +124,29 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to delete the deployment &apos;{0}&apos;?.
+        ///   Looks up a localized string similar to No value specified for -EndDate parameter; setting the value to one year after start date..
         /// </summary>
-        internal static string DeleteResourceGroupDeployment {
+        internal static string DefaultEndDateUsed {
             get {
-                return ResourceManager.GetString("DeleteResourceGroupDeployment", resourceCulture);
+                return ResourceManager.GetString("DefaultEndDateUsed", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Deleting the deployment ....
         /// </summary>
-        internal static string DeleteResourceGroupDeploymentMessage {
+        internal static string DeleteDeploymentMessage {
             get {
-                return ResourceManager.GetString("DeleteResourceGroupDeploymentMessage", resourceCulture);
+                return ResourceManager.GetString("DeleteDeploymentMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete the deployment &apos;{0}&apos;?.
+        /// </summary>
+        internal static string DeleteResourceGroupDeployment {
+            get {
+                return ResourceManager.GetString("DeleteResourceGroupDeployment", resourceCulture);
             }
         }
         

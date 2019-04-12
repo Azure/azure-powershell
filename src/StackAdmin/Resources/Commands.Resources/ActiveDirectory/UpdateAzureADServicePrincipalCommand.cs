@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Updates an exisitng service principal.
     /// </summary>
-    [Cmdlet(VerbsData.Update, "AzureRmADServicePrincipal", DefaultParameterSetName = ParameterSet.SpObjectIdWithDisplayName, SupportsShouldProcess = true), OutputType(typeof(PSADServicePrincipal))]
-    [Alias("Set-AzureRmADServicePrincipal")]
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADServicePrincipal", DefaultParameterSetName = ParameterSet.SpObjectIdWithDisplayName, SupportsShouldProcess = true), OutputType(typeof(PSADServicePrincipal))]
+    [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADServicePrincipal")]
 
-    public class UpdateAzureADServicePrincipalCommand: ActiveDirectoryBaseCmdlet
+    public class UpdateAzureADServicePrincipalCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SpObjectIdWithDisplayName, HelpMessage = "The servicePrincipal object id.")]
         [ValidateNotNullOrEmpty]
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 }
 
                 // Get AppObjectId
-                var applicationObjectId = sp.Id;
+                var applicationObjectId = GetObjectIdFromApplicationId(sp.ApplicationId.ToString());
                 ApplicationUpdateParameters parameters = new ApplicationUpdateParameters()
                 {
                     DisplayName = DisplayName,
@@ -116,6 +116,17 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     WriteObject(ActiveDirectoryClient.FilterServicePrincipals(new ADObjectFilterOptions() { Id = applicationObjectId.ToString() }).FirstOrDefault());
                 }
             });
+        }
+
+        private Guid GetObjectIdFromApplicationId(string applicationId)
+        {
+            var odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.AppId == applicationId);
+            var app = ActiveDirectoryClient.GetApplicationWithFilters(odataQueryFilter).SingleOrDefault();
+            if (app == null)
+            {
+                throw new InvalidOperationException(String.Format("Application with AppId '{0}' does not exist.", applicationId));
+            }
+            return app.ObjectId;
         }
     }
 }

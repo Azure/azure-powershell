@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
 using System.Security;
@@ -23,7 +24,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new AD application.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmADApplication", DefaultParameterSetName = ParameterSet.ApplicationWithoutCredential, SupportsShouldProcess = true), OutputType(typeof(PSADApplication))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADApplication", DefaultParameterSetName = ParameterSet.ApplicationWithoutCredential, SupportsShouldProcess = true), OutputType(typeof(PSADApplication))]
     public class NewAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithoutCredential,
@@ -124,11 +125,16 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             DateTime currentTime = DateTime.UtcNow;
             StartDate = currentTime;
-            EndDate = currentTime.AddYears(1);
         }
 
         public override void ExecuteCmdlet()
         {
+            if (!this.IsParameterBound(c => c.EndDate))
+            {
+                WriteVerbose(Resources.Properties.Resources.DefaultEndDateUsed);
+                EndDate = StartDate.AddYears(1);
+            }
+
             CreatePSApplicationParameters createParameters = new CreatePSApplicationParameters
             {
                 DisplayName = DisplayName,
@@ -137,7 +143,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 ReplyUrls = ReplyUrls,
                 AvailableToOtherTenants = AvailableToOtherTenants
             };
-            
+
             switch (ParameterSetName)
             {
                 case ParameterSet.ApplicationWithPasswordPlain:

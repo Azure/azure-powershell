@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: C61FA834-BEBE-4DBF-888F-C6CB8CC95390
@@ -40,7 +40,7 @@ Remove-AzureRmADAppCredential [-KeyId <Guid>] -ApplicationObject <PSADApplicatio
 ## DESCRIPTION
 The Remove-AzureRmADAppCredential cmdlet can be used to remove a credential key from an application in the case of a compromise or as part of credential key rollover expiration.
 The application is identified by supplying either the object ID or AppId.
-The credential to be removed is identified by its key ID if an individual credential is to be removed or with an 'All' switch to delete all credentials associated with the application.
+The credential to be removed is identified by its key ID.
 
 ## EXAMPLES
 
@@ -74,7 +74,7 @@ Gets the application with object id '7663d3fb-6f86-4352-9e6d-cf9d50d5ee82' and p
 The id of the application to remove the credentials from.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ApplicationIdWithKeyIdParameterSet
 Aliases:
 
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 The application object to remove the credentials from.
 
 ```yaml
-Type: PSADApplication
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
 Parameter Sets: ApplicationObjectWithKeyIdParameterSet
 Aliases:
 
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 The display name of the application.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ApplicationDisplayNameParameterSet
 Aliases:
 
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 Switch to delete credential without a confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -150,7 +150,7 @@ Specifies the credential key to be removed.
 The key Ids for the application can be obtained using the Get-AzureRmADAppCredential cmdlet.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ApplicationObjectIdWithKeyIdParameterSet, ApplicationIdWithKeyIdParameterSet
 Aliases:
 
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ApplicationObjectWithKeyIdParameterSet
 Aliases:
 
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 The object id of the application to remove the credentials from.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ApplicationObjectIdWithKeyIdParameterSet
 Aliases:
 
@@ -192,7 +192,7 @@ Accept wildcard characters: False
 Specifying this will return true if the command was successful.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -207,7 +207,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -223,7 +223,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -239,9 +239,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+### System.Guid
 
-This cmdlet accepts a PSADApplication object from the pipeline. You can pipe the output of Get-AzureRmADApplication to this cmdlet to remove the credentials for the provided application.
+### System.String
+
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+Parameters: ApplicationObject (ByValue)
 
 ## OUTPUTS
 

@@ -28,6 +28,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using ResourceManagementClientInternal = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         bool testViaCsm = true; // Currently set to true, we will get this from Environment variable.
 
         private CSMTestEnvironmentFactory csmTestFactory;
-		private readonly EnvironmentSetupHelper _helper;
+		    private readonly EnvironmentSetupHelper _helper;
         private const string TenantIdKey = "TenantId";
         private const string DomainKey = "Domain";
 
