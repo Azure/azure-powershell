@@ -17,9 +17,8 @@ GetAndSetUseForPeeringService
 #>
 function Test-GetAndSetUseForPeeringService
 {
-	$name = "NewDirectPeering"
-	$rg = "testCarrier"
-    $peer = Get-AzPeering -ResourceGroupName $rg -Name $name
+    $peers = Get-AzPeering 
+	$peer = $peers | Select -First 1
 	$setPeer = $peer | Update-AzPeering -UseForPeeringService $true
 	Assert-NotNull $setPeer
 	$setPeer = $peer | Update-AzPeering -UseForPeeringService $false
@@ -33,12 +32,11 @@ SetNewIP
 #>
 function Test-SetNewIP
 {
-	$ip = "192.168.1.4/31"
-	$msip = "192.168.1.4"
-	$sesip = "192.168.1.5"
-	$name = "NewDirectPeering"
-	$rg = "testCarrier"
-    $peer = Get-AzPeering -ResourceGroupName $rg -Name $name
+    $peers = Get-AzPeering
+	$peer = $peers | Select -First 1
+    $peerIpAddress = $peer.Connections[0].BgpSession.SessionPrefixV4
+	$offset = Get-Random -Maximum 100 -Minimum 1 | % { $_ * 2 } | getPeeringVariable
+	$newIpAddress = changeIp "$peerIpAddress" $false $offset $true 
 	$peer.Connections[0] = $peer.Connections[0] | Set-AzPeeringDirectConnectionObject -SessionPrefixV4 $ip
 	$setPeer = $peer | Update-AzPeering
 	Assert-NotNull $setPeer
@@ -52,12 +50,11 @@ SetNewIPv6
 #>
 function Test-SetNewIPv6
 {
-	$ip = "fe01::4/127"
-	$msip = "fe01::4"
-	$sesip = "fe01::5"
-	$name = "NewDirectPeering"
-	$rg = "testCarrier"
-    $peer = Get-AzPeering -ResourceGroupName $rg -Name $name
+    $peers = Get-AzPeering
+	$peer = $peers | Select -First 1
+    $peerIpAddress = $peer.Connections[0].BgpSession.SessionPrefixV4
+	$offset = Get-Random -Maximum 100 -Minimum 1 | % { $_ * 2 } | getPeeringVariable
+	$newIpAddress = changeIp "$peerIpAddress" $true $offset $true 
 	$peer.Connections[0] = $peer.Connections[0] | Set-AzPeeringDirectConnectionObject -SessionPrefixV6 $ip
 	$setPeer = $peer | Update-AzPeering
 	Assert-NotNull $setPeer
@@ -71,10 +68,10 @@ SetNewBandwidth
 #>
 function Test-SetNewBandwidth
 {
-	$name = "NewDirectPeering"
-	$rg = "testCarrier"
-    $peer = Get-AzPeering -ResourceGroupName $rg -Name $name
-	$bandwidth = 30000
+    $peers = Get-AzPeering
+	$peer = $peers | Select -First 1
+    $bandwidth = $peer.Connections[0].BgpSession.BandwidthInMbps
+	$bandwidth = Get-Random -Maximum 2 -Minimum 1 | % { $_ * 10000 } | % {$_  + $bandwidth }
 	$peer.Connections[0] = $peer.Connections[0] | Set-AzPeeringDirectConnectionObject -BandwidthInMbps $bandwidth 
 	$setPeer = $peer | Update-AzPeering
 	Assert-NotNull $setPeer
@@ -86,10 +83,9 @@ SetNewMd5Hash
 #>
 function Test-SetNewMd5Hash
 {
-	$hash = "25234523452123411XXX34qdwfas3234"
-    $name = "NewDirectPeering"
-	$rg = "testCarrier"
-    $peer = Get-AzPeering -ResourceGroupName $rg -Name $name
+    $peers = Get-AzPeering
+	$peer = $peers | Select -First 1
+    $hash = getHash
 	$peer.Connections[0] = $peer.Connections[0] | Set-AzPeeringDirectConnectionObject -MD5AuthenticationKey $hash
 	$setPeer = $peer | Update-AzPeering
 	Assert-NotNull $setPeer

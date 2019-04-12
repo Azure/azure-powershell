@@ -13,7 +13,7 @@ Gets Peer Asn
 ## SYNTAX
 
 ```
-Get-AzPeerAsn [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPeerAsn [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +62,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -77,7 +77,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringLocation
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn
 
 ## NOTES
 

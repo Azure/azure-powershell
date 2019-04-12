@@ -17,13 +17,13 @@ Gets the Peering locations offered by Microsoft
 Get-AzPeeringLocation [-Kind] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ParameterSetNameLocationByCity
+### LocationByCity
 ```
 Get-AzPeeringLocation [-Kind] <String> [-PeeringLocation] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### ParameterSetNameLocationByFacilityId
+### LocationByFacilityId
 ```
 Get-AzPeeringLocation [-Kind] <String> [-PeeringDbFacilityId] <Int32>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -95,7 +95,7 @@ The PeeringDB.com Facility ID
 
 ```yaml
 Type: System.Int32
-Parameter Sets: ParameterSetNameLocationByFacilityId
+Parameter Sets: LocationByFacilityId
 Aliases:
 
 Required: True
@@ -110,7 +110,7 @@ The location of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ParameterSetNameLocationByCity
+Parameter Sets: LocationByCity
 Aliases:
 
 Required: True
@@ -125,9 +125,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.Int32
+### None
 
 ## OUTPUTS
 

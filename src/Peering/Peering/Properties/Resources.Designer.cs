@@ -70,6 +70,69 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Downgrading bandwidth from {0} to {1} not supported..
+        /// </summary>
+        internal static string Error_BandwidthDowngrade {
+            get {
+                return ResourceManager.GetString("Error_BandwidthDowngrade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bandwidth {0} must have a multiple of {1}..
+        /// </summary>
+        internal static string Error_BandwidthIncorrectFormat {
+            get {
+                return ResourceManager.GetString("Error_BandwidthIncorrectFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bandwidth:{0} is greater than {1}..
+        /// </summary>
+        internal static string Error_BandwidthTooHigh {
+            get {
+                return ResourceManager.GetString("Error_BandwidthTooHigh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bandwidth {0} must be greater than 0.
+        /// </summary>
+        internal static string Error_BandwidthTooLow {
+            get {
+                return ResourceManager.GetString("Error_BandwidthTooLow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} could be found for this object {1}..
+        /// </summary>
+        internal static string Error_CannotParseResourceId {
+            get {
+                return ResourceManager.GetString("Error_CannotParseResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server Error: {0} {1}.
+        /// </summary>
+        internal static string Error_CloudError {
+            get {
+                return ResourceManager.GetString("Error_CloudError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not a valid connection.
+        /// </summary>
+        internal static string Error_InvalidConnection {
+            get {
+                return ResourceManager.GetString("Error_InvalidConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid email address input {0}..
         /// </summary>
         internal static string Error_InvalidEmailAddress {
@@ -79,11 +142,101 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Connection has invalid InputObject PeeringDBFacilityId: {0}..
+        /// </summary>
+        internal static string Error_InvalidFacilityId {
+            get {
+                return ResourceManager.GetString("Error_InvalidFacilityId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exchange InputObject does not support this operation..
+        /// </summary>
+        internal static string Error_InvalidInputObject_Exchange {
+            get {
+                return ResourceManager.GetString("Error_InvalidInputObject_Exchange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Prefix: {0}, must be {1}.
+        /// </summary>
+        internal static string Error_InvalidPrefix {
+            get {
+                return ResourceManager.GetString("Error_InvalidPrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Prefix Range: {0} must be at least {1} not greater than {2}.
+        /// </summary>
+        internal static string Error_InvalidPrefixRange {
+            get {
+                return ResourceManager.GetString("Error_InvalidPrefixRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to map object {0}.
+        /// </summary>
+        internal static string Error_Mapping {
+            get {
+                return ResourceManager.GetString("Error_Mapping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MaxPrefixesAdvertisedV{0}:{1} must be greater than 0 or null..
+        /// </summary>
+        internal static string Error_MustBeGreaterThanZero {
+            get {
+                return ResourceManager.GetString("Error_MustBeGreaterThanZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MaxPrefixesAdvertisedV{0}:{1} must be null if PeerSessionIPv{0}Address is null..
+        /// </summary>
+        internal static string Error_MustBeNull {
+            get {
+                return ResourceManager.GetString("Error_MustBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Session cannot be null or empty..
+        /// </summary>
+        internal static string Error_NullSession {
+            get {
+                return ResourceManager.GetString("Error_NullSession", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use Set-AzPeeringExchangeConnectionObject instead..
+        /// </summary>
+        internal static string Error_WrongCommandForDirectObject {
+            get {
+                return ResourceManager.GetString("Error_WrongCommandForDirectObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to InputObject {0} Resource being removed..
         /// </summary>
         internal static string ProcessMessage {
             get {
                 return ResourceManager.GetString("ProcessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to complete the request. Check your syntax for errors..
+        /// </summary>
+        internal static string String1 {
+            get {
+                return ResourceManager.GetString("String1", resourceCulture);
             }
         }
     }

@@ -12,30 +12,28 @@ Sets or updates the Direct Connection information.
 
 ## SYNTAX
 
-### ParameterSetNameBandwidth (Default)
+### Bandwidth (Default)
 ```
 Set-AzPeeringDirectConnectionObject -InputObject <PSDirectConnection> -BandwidthInMbps <Int32>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ParameterSetNameIPv4Prefix
+### IPv4Prefix
 ```
-Set-AzPeeringDirectConnectionObject -InputObject <PSDirectConnection> [-SessionPrefixV4] <String>
- [-MaxPrefixesAdvertisedIPv4 <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ParameterSetNameIPv6Prefix
-```
-Set-AzPeeringDirectConnectionObject -InputObject <PSDirectConnection> [-SessionPrefixV6] <String>
- [-MaxPrefixesAdvertisedIPv6 <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzPeeringDirectConnectionObject -InputObject <PSDirectConnection> -SessionPrefixV4 <String>
+ [-MaxPrefixesAdvertisedIPv4 <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ParameterSetNameMd5Authentication
+### IPv6Prefix
 ```
-Set-AzPeeringDirectConnectionObject -InputObject <PSDirectConnection> [[-MD5AuthenticationKey] <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzPeeringDirectConnectionObject -InputObject <PSDirectConnection> -SessionPrefixV6 <String>
+ [-MaxPrefixesAdvertisedIPv6 <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### Md5Authentication
+```
+Set-AzPeeringDirectConnectionObject -InputObject <PSDirectConnection> [-MD5AuthenticationKey <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,7 +62,7 @@ The Bandwidth offered at this location in Mbps.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: ParameterSetNameBandwidth
+Parameter Sets: Bandwidth
 Aliases:
 
 Required: True
@@ -109,7 +107,7 @@ HelpMaxAdvertisedIPv4
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: ParameterSetNameIPv4Prefix
+Parameter Sets: IPv4Prefix
 Aliases:
 
 Required: False
@@ -124,7 +122,7 @@ HelpMaxAdvertisedIPv4
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: ParameterSetNameIPv6Prefix
+Parameter Sets: IPv6Prefix
 Aliases:
 
 Required: False
@@ -139,11 +137,11 @@ The MD5 authentication key for session.
 
 ```yaml
 Type: System.String
-Parameter Sets: ParameterSetNameMd5Authentication
+Parameter Sets: Md5Authentication
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -154,11 +152,11 @@ HelpSessionIPv4Prefix
 
 ```yaml
 Type: System.String
-Parameter Sets: ParameterSetNameIPv4Prefix
+Parameter Sets: IPv4Prefix
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -169,41 +167,10 @@ HelpSessionIPv4Prefix
 
 ```yaml
 Type: System.String
-Parameter Sets: ParameterSetNameIPv6Prefix
+Parameter Sets: IPv6Prefix
 Aliases:
 
 Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -215,11 +182,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection
 
 ## NOTES
 

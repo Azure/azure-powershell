@@ -1,17 +1,16 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Microsoft" file="GetAzurePeeringCommand.cs">
-//  Licensed under the Apache License, Version 2.0 (the "License");
-//  you may not use this file except in compliance with the License.
-//  You may obtain a copy of the License at
-//  http://www.apache.org/licenses/LICENSE-2.0
-//  Unless required by applicable law or agreed to in writing, software
-//  distributed under the License is distributed on an "AS IS" BASIS,
-//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//  See the License for the specific language governing permissions and
-//  limitations under the License.
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
 {
     using System;
@@ -19,11 +18,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using System.Linq;
     using System.Management.Automation;
 
+    using Microsoft.Azure.Commands.Peering.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Peering;
-    using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
+    using Microsoft.Rest.Azure;
 
     /// <inheritdoc />
     /// <summary>
@@ -45,17 +45,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             ParameterSetName = Constants.ParameterSetNamePeeringByResourceAndName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        public virtual string ResourceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         ///     Gets or sets the InputObject name.
         /// </summary>
         [Parameter(
-            Position = 1,
             Mandatory = false,
             HelpMessage = Constants.PeeringNameHelp,
             ParameterSetName = Constants.ParameterSetNamePeeringByResourceAndName)]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the Kind of InputObject
@@ -67,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [PSArgumentCompleter(Constants.Direct, Constants.Partner, Constants.Exchange)]
         [ValidateSet(Constants.Direct, Constants.Exchange, IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public virtual string Kind { get; set; }
+        public string Kind { get; set; }
 
         /// <inheritdoc />
         /// <summary>
@@ -88,6 +87,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                         var item = this.GetPeeringByResourceAndName();
                         this.WriteObject(item);
                     }
+
                     if (this.ResourceGroupName != null && this.Name == null)
                     {
                         var list = this.GetPeeringByResource();
@@ -102,11 +102,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             }
             catch (InvalidOperationException mapException)
             {
-                throw new InvalidOperationException($"Failed to map object {mapException}");
+                throw new InvalidOperationException(string.Format(Resources.Error_Mapping, mapException));
             }
-            catch (ErrorResponseException ex)
+            catch (CloudException ex)
             {
-                throw new ErrorResponseException($"{ex}");
+                throw new CloudException(string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
             }
         }
 
@@ -118,20 +118,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         {
             var ics = new List<object>();
             var icList = this.PeeringClient.ListBySubscription();
-
             ics.AddRange(icList.Select(this.ToPeeringPs));
-
             var kindPeering = new List<object>();
             foreach (PSPeering psIc in ics)
                 if (psIc.Kind.Equals(this.Kind, StringComparison.CurrentCultureIgnoreCase))
                 {
                     if (string.Equals(Constants.Exchange, this.Kind, StringComparison.InvariantCultureIgnoreCase))
                     {
-                        kindPeering.Add(new PSExchangePeeringModelView((PSPeering)psIc));
+                        kindPeering.Add(new PSExchangePeeringModelView(psIc));
                     }
+
                     if (string.Equals(Constants.Direct, this.Kind, StringComparison.InvariantCultureIgnoreCase))
                     {
-                        kindPeering.Add(new PSDirectPeeringModelView((PSPeering)psIc));
+                        kindPeering.Add(new PSDirectPeeringModelView(psIc));
                     }
                 }
 
@@ -174,13 +173,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             if (peer.Exchange != null)
             {
                 var obj = new PSExchangePeeringModelView(peer);
-                return (object)obj;
+                return obj;
             }
 
             if (peer.Direct != null)
             {
                 var obj = new PSDirectPeeringModelView(peer);
-                return (object)obj;
+                return obj;
             }
 
             return null;

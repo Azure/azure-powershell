@@ -148,11 +148,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 
         #region Help
 
-        //Help Messages 
         /// <summary>
         /// ResourceGroupNameHelp
         /// </summary>
         public const string ResourceGroupNameHelp = "The create or use an existing resource group name.";
+
+        /// <summary>
+        /// The legacy item help.
+        /// </summary>
+        public const string LegacyItemHelp = "Use Get-AzLegacyPeering to retrieve this object.";
+
+        /// <summary>
+        /// The peering object help.
+        /// </summary>
+        public const string PeeringObjectHelp = "Use Get-AzPeering to retrieve this object.";
 
         /// <summary>
         /// The resource id help.
@@ -172,12 +181,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// PeeringNameHelp
         /// </summary>
-        public const string EmailsHelp = "Email";
+        public const string EmailsHelp = "Email Addresses used to contact if issues arrise typically a Network Operations Center";
 
         /// <summary>
         /// PeeringNameHelp
         /// </summary>
-        public const string PhoneHelp = "Phone";
+        public const string PhoneHelp = "Phone used to contact if issues arrise typically a Network Operations Center";
 
         /// <summary>
         /// The location help.
@@ -214,6 +223,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// AsJobHelp
         /// </summary>
         public const string AsJobHelp = "Run in the background.";
+
+        /// <summary>
+        /// The force help.
+        /// </summary>
+        public const string ForceHelp = "Force the operation to complete";
 
         /// <summary>
         /// KindHelp

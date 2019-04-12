@@ -12,27 +12,27 @@ Sets the Peering. Use this Command in conjunction with `Set-AzDirectPeeringConne
 
 ## SYNTAX
 
-### ParameterSetNameDefaultExchange (Default)
+### DefaultExchange (Default)
 ```
 Update-AzPeering -InputObject <PSPeering> [[-ExchangeConnection] <PSExchangeConnection[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ParameterSetNameDefaultDirect
+### DefaultDirect
 ```
 Update-AzPeering -InputObject <PSPeering> [-UseForPeeringService <Boolean>]
  [-DirectConnection <PSDirectConnection[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### ParameterSetNameByResourceIdDirect
+### ByResourceIdDirect
 ```
 Update-AzPeering -ResourceId <String> [-UseForPeeringService <Boolean>]
  [-DirectConnection <PSDirectConnection[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### ParameterSetNameByResourceIdExchange
+### ByResourceIdExchange
 ```
 Update-AzPeering -ResourceId <String> [-ExchangeConnection] <PSExchangeConnection[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -103,7 +103,7 @@ Create a new Direct connections using the New-AzDirectPeeringConnectionObject an
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]
-Parameter Sets: ParameterSetNameDefaultDirect
+Parameter Sets: DefaultDirect
 Aliases:
 
 Required: False
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]
-Parameter Sets: ParameterSetNameByResourceIdDirect, Direct
+Parameter Sets: ByResourceIdDirect, Direct
 Aliases:
 
 Required: False
@@ -130,7 +130,7 @@ Create a new Exchange connection using the New-AzExchangePeeringConnectionObject
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[]
-Parameter Sets: ParameterSetNameDefaultExchange
+Parameter Sets: DefaultExchange
 Aliases:
 
 Required: False
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[]
-Parameter Sets: ParameterSetNameByResourceIdExchange, Exchange
+Parameter Sets: ByResourceIdExchange, Exchange
 Aliases:
 
 Required: True
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
-Parameter Sets: ParameterSetNameDefaultExchange, ParameterSetNameDefaultDirect
+Parameter Sets: DefaultExchange, DefaultDirect
 Aliases:
 
 Required: True
@@ -178,7 +178,7 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -193,7 +193,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -202,7 +202,7 @@ The resource id string name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ParameterSetNameByResourceIdDirect, ParameterSetNameByResourceIdExchange
+Parameter Sets: ByResourceIdDirect, ByResourceIdExchange
 Aliases:
 
 Required: True
@@ -217,7 +217,7 @@ Enable for use with Microsoft InputObject Service (MPS).
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: ParameterSetNameDefaultDirect, ParameterSetNameByResourceIdDirect, Direct
+Parameter Sets: DefaultDirect, ByResourceIdDirect, Direct
 Aliases:
 
 Required: False
@@ -264,6 +264,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
+
+### System.String
+
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[]
+
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]
 
 ## OUTPUTS
 

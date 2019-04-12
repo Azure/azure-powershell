@@ -1,85 +1,70 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Microsoft" file="NewAzurePeerAsnCommand.cs">
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   //   you may not use this file except in compliance with the License.
-//   //   You may obtain a copy of the License at
-//   //   http://www.apache.org/licenses/LICENSE-2.0
-//   //   Unless required by applicable law or agreed to in writing, software
-//   //   distributed under the License is distributed on an "AS IS" BASIS,
-//   //   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   //   See the License for the specific language governing permissions and
-//   //   limitations under the License.
-// </copyright>
-// <summary>
-//   
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
 {
     using System;
     using System.Management.Automation;
     using System.Net.Http;
 
+    using Microsoft.Azure.Commands.Peering.Properties;
     using Microsoft.Azure.Management.Peering;
     using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
+    using Microsoft.Rest.Azure;
 
     /// <summary>
     ///     New Azure InputObject Command-let
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.New,
-        "AzPeerAsn", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, "AzPeerAsn", SupportsShouldProcess = true)]
     [OutputType(typeof(PSPeerAsn))]
     public class NewAzurePeerAsn : PeeringBaseCmdlet
     {
+        /// <summary>
+        ///     Gets or sets The InputObject name
+        /// </summary>
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = Constants.PeeringNameHelp)]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
 
         /// <summary>
         ///     Gets or sets The InputObject name
         /// </summary>
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
-            HelpMessage = Constants.PeeringNameHelp)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = Constants.PeeringNameHelp)]
         [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        ///     Gets or sets The InputObject name
-        /// </summary>
-        [Parameter(
-            Position = 1,
-            Mandatory = true,
-            HelpMessage = Constants.PeeringNameHelp)]
-        [ValidateNotNullOrEmpty]
-        public virtual string PeerName { get; set; }
+        public string PeerName { get; set; }
 
         /// <summary>
         ///     Gets or sets Peer ASN
         /// </summary>
-        [Parameter(            
-            Position = 2,
-            Mandatory = true,
-            HelpMessage = Constants.PeeringAsnHelp)]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = Constants.PeeringAsnHelp)]
         [ValidateNotNullOrEmpty]
-        public virtual int PeerAsn { get; set; }
+        public int PeerAsn { get; set; }
 
         /// <summary>
         ///     Gets or sets the Email
         /// </summary>
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = Constants.EmailsHelp)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.EmailsHelp)]
         [ValidateNotNullOrEmpty]
-        public virtual string[] Email { get; set; }
+        public string[] Email { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = Constants.PhoneHelp)]
+        /// <summary>
+        /// Gets or sets the phone.
+        /// </summary>
+        [Parameter(Mandatory = true, HelpMessage = Constants.PhoneHelp)]
         [ValidateNotNullOrEmpty]
-        public virtual string[] Phone { get; set; }
+        public string[] Phone { get; set; }
 
         /// <summary>
         ///     The AsJob parameter to run in the background.
@@ -99,11 +84,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             }
             catch (InvalidOperationException mapException)
             {
-                throw new InvalidOperationException($"Failed to map object {mapException}");
+                throw new InvalidOperationException(string.Format(Resources.Error_Mapping, mapException));
             }
-            catch (ErrorResponseException ex)
+            catch (CloudException ex)
             {
-                throw new ErrorResponseException($"Error:{ex.Response.ReasonPhrase} reason:{ex.Body.Code} message:{ex.Body.Message}");
+                throw new CloudException(
+                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
             }
         }
 
@@ -129,8 +115,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             {
                 HelperExtensionMethods.IsValidEmail(s);
             }
+
             var contactInfo = new PSContactInfo(emails: this.Email, phone: this.Phone);
-            var peerInfo = new PSPeerAsn(peerAsnProperty: this.PeerAsn, peerContactInfo: contactInfo, peerName: this.PeerName, name:this.Name);
+            var peerInfo = new PSPeerAsn(
+                peerAsnProperty: this.PeerAsn,
+                peerContactInfo: contactInfo,
+                peerName: this.PeerName,
+                name: this.Name);
             return this.PutPeerInfo(peerInfo);
         }
 
@@ -145,7 +136,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         /// </returns>
         private PSPeerAsn PutPeerInfo(PSPeerAsn psPeerInfo)
         {
-            var peerInfo = this.PeeringManagementClient.PeerAsns.CreateOrUpdate(this.Name, PeeringResourceManagerProfile.Mapper.Map<PeerAsn>(psPeerInfo));
+            var peerInfo = this.PeeringManagementClient.PeerAsns.CreateOrUpdate(
+                this.Name,
+                PeeringResourceManagerProfile.Mapper.Map<PeerAsn>(psPeerInfo));
             return PeeringResourceManagerProfile.Mapper.Map<PSPeerAsn>(peerInfo);
         }
     }

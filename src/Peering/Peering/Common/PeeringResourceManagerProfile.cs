@@ -11,13 +11,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 {
     using AutoMapper;
 
-    using CNM = Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
-    using MNM = Microsoft.Azure.Management.Peering.Models;
+    using CNM = Models;
+    using MNM = Management.Peering.Models;
     using Profile = AutoMapper.Profile;
 
     /// <summary>
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                 lock (Lock)
                 {
                     if (mapper == null) Initialize();
-
                     return mapper;
                 }
             }
@@ -54,7 +52,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// The profile name for Network manager.
         /// </summary>
-        public override string ProfileName => "NetworkResourceManagerProfile";
+        public override string ProfileName => "PeeringResourceManagerProfile";
 
         /// <summary>
         /// The initialize.
@@ -65,7 +63,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                 cfg =>
                     {
                         cfg.AddProfile<PeeringResourceManagerProfile>();
-
                         // MNM to CNM 
                         cfg.CreateMap<MNM.BgpSession, CNM.PSBgpSession>();
                         cfg.CreateMap<MNM.DirectConnection, CNM.PSDirectConnection>();
@@ -84,8 +81,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                         cfg.CreateMap<MNM.Resource, CNM.PSResource>();
                         cfg.CreateMap<MNM.SubResource, CNM.PSSubResource>();
                         cfg.CreateMap<MNM.ContactInfo, CNM.PSContactInfo>();
-                        //cfg.CreateMap<MNM.ResourceIdentifier, CNM.PSResourceIdentifier>();
-
                         // CNM to MNM
                         cfg.CreateMap<CNM.PSBgpSession, MNM.BgpSession>();
                         cfg.CreateMap<CNM.PSDirectConnection, MNM.DirectConnection>();
@@ -104,7 +99,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                         cfg.CreateMap<CNM.PSResource, MNM.Resource>();
                         cfg.CreateMap<CNM.PSSubResource, MNM.SubResource>();
                         cfg.CreateMap<CNM.PSContactInfo, MNM.ContactInfo>();
-                        //cfg.CreateMap<CNM.PSResourceIdentifier, MNM.ResourceIdentifier>();
                     });
             mapper = config.CreateMapper();
         }

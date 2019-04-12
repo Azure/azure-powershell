@@ -120,10 +120,61 @@
   <data name="ContinueMessage" xml:space="preserve">
     <value>You are about to remove an {0} Resource. Are you sure?</value>
   </data>
+  <data name="Error_BandwidthDowngrade" xml:space="preserve">
+    <value>Downgrading bandwidth from {0} to {1} not supported.</value>
+  </data>
+  <data name="Error_BandwidthIncorrectFormat" xml:space="preserve">
+    <value>Bandwidth {0} must have a multiple of {1}.</value>
+  </data>
+  <data name="Error_BandwidthTooHigh" xml:space="preserve">
+    <value>Bandwidth:{0} is greater than {1}.</value>
+  </data>
+  <data name="Error_BandwidthTooLow" xml:space="preserve">
+    <value>Bandwidth {0} must be greater than 0</value>
+  </data>
+  <data name="Error_CannotParseResourceId" xml:space="preserve">
+    <value>{0} could be found for this object {1}.</value>
+  </data>
+  <data name="Error_CloudError" xml:space="preserve">
+    <value>Server Error: {0} {1}</value>
+  </data>
+  <data name="Error_InvalidConnection" xml:space="preserve">
+    <value>Not a valid connection</value>
+  </data>
   <data name="Error_InvalidEmailAddress" xml:space="preserve">
     <value>Invalid email address input {0}.</value>
   </data>
+  <data name="Error_InvalidFacilityId" xml:space="preserve">
+    <value>Connection has invalid InputObject PeeringDBFacilityId: {0}.</value>
+  </data>
+  <data name="Error_InvalidInputObject_Exchange" xml:space="preserve">
+    <value>Exchange InputObject does not support this operation.</value>
+  </data>
+  <data name="Error_InvalidPrefix" xml:space="preserve">
+    <value>Invalid Prefix: {0}, must be {1}</value>
+  </data>
+  <data name="Error_InvalidPrefixRange" xml:space="preserve">
+    <value>Invalid Prefix Range: {0} must be at least {1} not greater than {2}</value>
+  </data>
+  <data name="Error_Mapping" xml:space="preserve">
+    <value>Failed to map object {0}</value>
+  </data>
+  <data name="Error_MustBeGreaterThanZero" xml:space="preserve">
+    <value>MaxPrefixesAdvertisedV{0}:{1} must be greater than 0 or null.</value>
+  </data>
+  <data name="Error_MustBeNull" xml:space="preserve">
+    <value>MaxPrefixesAdvertisedV{0}:{1} must be null if PeerSessionIPv{0}Address is null.</value>
+  </data>
+  <data name="Error_NullSession" xml:space="preserve">
+    <value>Session cannot be null or empty.</value>
+  </data>
+  <data name="Error_WrongCommandForDirectObject" xml:space="preserve">
+    <value>Use Set-AzPeeringExchangeConnectionObject instead.</value>
+  </data>
   <data name="ProcessMessage" xml:space="preserve">
     <value>InputObject {0} Resource being removed.</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Unable to complete the request. Check your syntax for errors.</value>
   </data>
 </root>

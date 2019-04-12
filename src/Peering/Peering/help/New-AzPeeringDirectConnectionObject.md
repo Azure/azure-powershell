@@ -12,26 +12,26 @@ Creates a in memory PSObject to be used for creating or modifying a Peering.
 
 ## SYNTAX
 
-### ParameterSetNameIPv4Prefix (Default)
+### IPv4Prefix (Default)
 ```
-New-AzPeeringDirectConnectionObject [-PeeringDBFacilityId] <Int32> -BandwidthInMbps <Int32>
- [-SessionPrefixV4] <String> -MaxPrefixesAdvertisedIPv4 <Int32> [-MD5AuthenticationKey <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ParameterSetNameIPv6Prefix
-```
-New-AzPeeringDirectConnectionObject [-PeeringDBFacilityId] <Int32> -BandwidthInMbps <Int32>
- -SessionPrefixV6 <String> -MaxPrefixesAdvertisedIPv6 <Int32> [-MD5AuthenticationKey <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzPeeringDirectConnectionObject [-PeeringDBFacilityId] <Int32> [-SessionPrefixV4] <String>
+ [-MaxPrefixesAdvertisedIPv4] <Int32> [-BandwidthInMbps] <Int32> [-MD5AuthenticationKey <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ParameterSetNameIPv4PrefixParameterSetNameIPv6Prefix
+### IPv6Prefix
 ```
-New-AzPeeringDirectConnectionObject [-PeeringDBFacilityId] <Int32> -BandwidthInMbps <Int32>
- [-SessionPrefixV4] <String> -SessionPrefixV6 <String> -MaxPrefixesAdvertisedIPv4 <Int32>
- -MaxPrefixesAdvertisedIPv6 <Int32> [-MD5AuthenticationKey <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzPeeringDirectConnectionObject [-PeeringDBFacilityId] <Int32> [-SessionPrefixV6] <String>
+ [-MaxPrefixesAdvertisedIPv6] <Int32> [-BandwidthInMbps] <Int32> [-MD5AuthenticationKey <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### IPv4PrefixIPv6Prefix
+```
+New-AzPeeringDirectConnectionObject [-PeeringDBFacilityId] <Int32> [-SessionPrefixV4] <String>
+ [-SessionPrefixV6] <String> [-MaxPrefixesAdvertisedIPv4] <Int32> [-MaxPrefixesAdvertisedIPv6] <Int32>
+ [-BandwidthInMbps] <Int32> [-MD5AuthenticationKey <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +63,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -89,11 +89,11 @@ HelpMaxAdvertisedIPv4
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: ParameterSetNameIPv4Prefix, ParameterSetNameIPv4PrefixParameterSetNameIPv6Prefix
+Parameter Sets: IPv4Prefix, IPv4PrefixIPv6Prefix
 Aliases:
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -104,11 +104,11 @@ HelpMaxAdvertisedIPv6
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: ParameterSetNameIPv6Prefix, ParameterSetNameIPv4PrefixParameterSetNameIPv6Prefix
+Parameter Sets: IPv6Prefix, IPv4PrefixIPv6Prefix
 Aliases:
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -140,7 +140,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -149,11 +149,11 @@ HelpSessionIPv4Prefix
 
 ```yaml
 Type: System.String
-Parameter Sets: ParameterSetNameIPv4Prefix, ParameterSetNameIPv4PrefixParameterSetNameIPv6Prefix
+Parameter Sets: IPv4Prefix, IPv4PrefixIPv6Prefix
 Aliases:
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -164,41 +164,11 @@ HelpSessionIPv6Prefix
 
 ```yaml
 Type: System.String
-Parameter Sets: ParameterSetNameIPv6Prefix, ParameterSetNameIPv4PrefixParameterSetNameIPv6Prefix
+Parameter Sets: IPv6Prefix, IPv4PrefixIPv6Prefix
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -210,8 +180,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-
-### System.String
 
 ## OUTPUTS
 

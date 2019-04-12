@@ -12,13 +12,13 @@ Remove Peer Asn
 
 ## SYNTAX
 
-### ParameterSetNameDefault (Default)
+### Default (Default)
 ```
 Remove-AzPeerAsn [-InputObject] <PSPeerAsn> [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ParameterSetNameByName
+### ByName
 ```
 Remove-AzPeerAsn [-Name] <String> [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -88,7 +88,7 @@ The PeerAsn object.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn
-Parameter Sets: ParameterSetNameDefault
+Parameter Sets: Default
 Aliases:
 
 Required: True
@@ -103,7 +103,7 @@ The unique name of the PSPeering.
 
 ```yaml
 Type: System.String
-Parameter Sets: ParameterSetNameByName
+Parameter Sets: ByName
 Aliases:
 
 Required: True
@@ -148,7 +148,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn
 
 ## OUTPUTS
 

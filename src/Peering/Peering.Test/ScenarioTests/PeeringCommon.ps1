@@ -100,7 +100,7 @@ function newIpV4Address ($withPrefix, $maxPrefix, $offset, $randomNum)
 
 function newIpV6Address ($withPrefix, $maxPrefix, $offset, $randomNum)
 {
-		$ipv6 = $ipGenerator.CreateIpv4Address($randomNum, $maxPrefix);
+		$ipv6 = $ipGenerator.CreateIpv6Address($randomNum, $maxPrefix);
 		return $ipGenerator.OffSet($ipv6, $true, $offset, $withPrefix);
 }
 
@@ -128,7 +128,30 @@ return "$hash"
 
 function getBandwidth
 {
-	return $ipGenerator.GetBandwidth()
+$bandwidth = $ipGenerator.GetBandwidth()
+	return $bandwidth
+}
+
+function getPeeringVariable {
+    param($var)
+
+    if ($var -eq $null -or $var -eq '') {
+        throw;
+    }
+
+    $testName = getTestName
+    
+    try {
+        $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($testName, $var);
+    } catch {
+        if ($PSItem.Exception.Message -like '*Unable to find type*') {
+            $assetName = $var;
+        } else {
+            throw;
+        }
+    }
+
+    return $assetName
 }
 
 <#

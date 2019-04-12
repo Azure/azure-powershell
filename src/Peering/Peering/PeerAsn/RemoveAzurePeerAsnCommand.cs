@@ -1,20 +1,16 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Microsoft" file="RemoveAzurePeerAsnCommand.cs">
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   //   you may not use this file except in compliance with the License.
-//   //   You may obtain a copy of the License at
-//   //   http://www.apache.org/licenses/LICENSE-2.0
-//   //   Unless required by applicable law or agreed to in writing, software
-//   //   distributed under the License is distributed on an "AS IS" BASIS,
-//   //   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   //   See the License for the specific language governing permissions and
-//   //   limitations under the License.
-// </copyright>
-// <summary>
-//   
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
 {
     using System;
@@ -23,9 +19,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
 
     using Microsoft.Azure.Commands.Peering.Properties;
     using Microsoft.Azure.Management.Peering;
-    using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
+    using Microsoft.Rest.Azure;
 
     /// <inheritdoc />
     /// <summary>
@@ -33,11 +29,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     /// </summary>
     [Cmdlet(
         VerbsCommon.Remove,
-        "AzPeerAsn", SupportsShouldProcess = true, DefaultParameterSetName = Constants.ParameterSetNameDefault)]
+        "AzPeerAsn",
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = Constants.ParameterSetNameDefault)]
     [OutputType(typeof(PSPeerAsn))]
     public class RemoveAzurePeerAsn : PeeringBaseCmdlet
     {
-
         /// <summary>
         ///     Gets or sets The InputObject name
         /// </summary>
@@ -59,13 +56,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             HelpMessage = Constants.PeeringNameHelp,
             ParameterSetName = Constants.ParameterSetNameByName)]
         [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         ///  Gets or sets the Force the execution of the command.
         /// </summary>
-        [Parameter]
-        public virtual SwitchParameter Force { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = Constants.ForceHelp)]
+        public SwitchParameter Force { get; set; }
 
         /// <summary>
         ///     The AsJob parameter to run in the background.
@@ -90,6 +87,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
                         this.InputObject.Name,
                         this.RemovePeerAsn);
                 }
+
                 if (this.ParameterSetName.Equals(Constants.ParameterSetNameByName, StringComparison.OrdinalIgnoreCase))
                 {
                     this.ConfirmAction(
@@ -102,18 +100,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             }
             catch (InvalidOperationException mapException)
             {
-                throw new InvalidOperationException($"Failed to map object {mapException}");
+                throw new InvalidOperationException(string.Format(Resources.Error_Mapping, mapException));
             }
-            catch (ErrorResponseException ex)
+            catch (CloudException ex)
             {
-                throw new ErrorResponseException($"Error:{ex.Response.ReasonPhrase} reason:{ex.Body.Code} message:{ex.Body.Message}");
+                throw new CloudException(
+                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
             }
         }
 
         /// <summary>
         /// The remove peer asn.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
+        [SuppressMessage(
+            "StyleCop.CSharp.DocumentationRules",
+            "SA1650:ElementDocumentationMustBeSpelledCorrectly",
+            Justification = "Reviewed. Suppression is OK here.")]
         private void RemovePeerAsn()
         {
             if (this.ParameterSetName.Equals(Constants.ParameterSetNameDefault, StringComparison.OrdinalIgnoreCase))
