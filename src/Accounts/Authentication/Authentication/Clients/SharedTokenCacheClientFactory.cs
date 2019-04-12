@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         private static readonly string PowerShellClientId = "872cd9fa-d31f-45e0-9eab-6e460a02d1f1";
         private static readonly string CacheFileName = "msal.cache";
         private static readonly string CacheFilePath =
-            Path.Combine(SharedUtilities.GetUserRootDirectory(), ".IdentityServices", CacheFileName);
+            Path.Combine(SharedUtilities.GetUserRootDirectory(), ".IdentityService", CacheFileName);
 
         private static MsalCacheHelper InitializeCacheHelper(string clientId)
         {

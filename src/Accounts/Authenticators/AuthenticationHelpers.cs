@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 {
     internal static class AuthenticationHelpers
     {
-        internal const string PowerShellClientId = "04b07795-8ddb-461a-bbee-02f9e1bf7b46",
+        internal const string PowerShellClientId = "872cd9fa-d31f-45e0-9eab-6e460a02d1f1",
             PowerShellRedirectUri = "urn:ietf:wg:oauth:2.0:oob",
             EnableEbdMagicCookie = "site_id=501358&display=popup",
             UserImpersonationScope = "{0}/user_impersonation",
