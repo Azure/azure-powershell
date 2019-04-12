@@ -115,6 +115,38 @@ Tags                          :
 
 This command creates a Vcore database named Database03 on server Server01.
 
+### Example 4: Create an Serverless database on the specified server
+```
+PS C:\>New-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database04" -Edition "GeneralPurpose" -Vcore 2 -ComputeGeneration "Gen5" -ComputeModel Serverless
+ResourceGroupName             : ResourceGroup01
+ServerName                    : Server01
+DatabaseName                  : Database04
+Location                      : Central US
+DatabaseId                    : ef5a9698-012c-4def-8d94-7f6bfb7b4f04
+Edition                       : GeneralPurpose
+CollationName                 : SQL_Latin1_General_CP1_CI_AS
+CatalogCollation              :
+MaxSizeBytes                  : 34359738368
+Status                        : Online
+CreationDate                  : 4/12/2019 11:20:29 PM
+CurrentServiceObjectiveName   : GP_S_Gen5_2
+RequestedServiceObjectiveName : GP_S_Gen5_2
+ElasticPoolName               :
+EarliestRestoreDate           : 4/12/2019 11:50:29 PM
+Tags                          :
+CreateMode                    :
+ReadScale                     : Disabled
+ZoneRedundant                 : False
+Capacity                      : 2
+Family                        : Gen5
+SkuName                       : GP_S_Gen5
+LicenseType                   : LicenseIncluded
+AutoPauseDelay                : 360
+MinCapacity                   : 0.5
+```
+
+This command creates a Serverless database named Database04 on server Server01.
+
 ## PARAMETERS
 
 ### -AsJob
