@@ -272,7 +272,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add Virtual Cluster cmdlets'
+        ReleaseNotes = '* Support Database Data Classification.'
 
         # Prerelease string of this module
         # Prerelease = ''
