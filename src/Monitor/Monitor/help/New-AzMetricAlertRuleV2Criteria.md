@@ -1,32 +1,29 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version:
+online version:https://docs.microsoft.com/en-us/powershell/module/az.monitor/new-azmetricalertrulev2criteria
 schema: 2.0.0
 ---
 
 # New-AzMetricAlertRuleV2Criteria
 
 ## SYNOPSIS
-
 Creates a local criteria object that can be used to create a new metric alert
 
 ## SYNTAX
 
 ### StaticThresholdParameterSet
-
-```powershell
-New-AzMetricAlertRuleV2Criteria -MetricName <String> [-MetricNameSpace <String>]
+```
+New-AzMetricAlertRuleV2Criteria -MetricName <String> [-MetricNamespace <String>]
  [-DimensionSelection <PSMetricDimension[]>] -TimeAggregation <String> -Operator <String> -Threshold <Double>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### DynamicThresholdParameterSet
-
-```powershell
-New-AzMetricAlertRuleV2Criteria -MetricName <String> [-MetricNameSpace <String>]
+```
+New-AzMetricAlertRuleV2Criteria -MetricName <String> [-MetricNamespace <String>]
  [-DimensionSelection <PSMetricDimension[]>] -TimeAggregation <String> -Operator <String>
- -DynamicThreshold <String> [-Sensitivity <String>] [-FailingPeriods <Int32>] [-TotalPeriods <Int32>]
+ -DynamicThreshold <String> [-Sensitivity <String>] [-FailingPeriod <Int32>] [-TotalPeriod <Int32>]
  [-IgnoreDataBefore <DateTime>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -115,8 +112,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FailingPeriods
-The Failing Periods for rule condition
+### -FailingPeriod
+The Failing Period for rule condition
 
 ```yaml
 Type: Int32
@@ -160,7 +157,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MetricNameSpace
+### -MetricNamespace
 The Namespace of the metric
 
 ```yaml
@@ -235,8 +232,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TotalPeriods
-The Total Periods for rule condition
+### -TotalPeriod
+The Total Period for rule condition
 
 ```yaml
 Type: Int32
