@@ -1,31 +1,25 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Microsoft" file="SetAzureExchangePeeringConnectionCommand.cs">
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   //   you may not use this file except in compliance with the License.
-//   //   You may obtain a copy of the License at
-//   //   http://www.apache.org/licenses/LICENSE-2.0
-//   //   Unless required by applicable law or agreed to in writing, software
-//   //   distributed under the License is distributed on an "AS IS" BASIS,
-//   //   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   //   See the License for the specific language governing permissions and
-//   //   limitations under the License.
-// </copyright>
-// <summary>
-//   
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
 {
     using System;
     using System.Management.Automation;
 
-    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-    using Microsoft.Azure.Management.Peering;
-    using Microsoft.Azure.Management.Peering.Models;
+    using Microsoft.Azure.Commands.Peering.Properties;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
-    using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
 
     /// <inheritdoc />
     /// <summary>
@@ -34,8 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
     [Cmdlet(
         VerbsCommon.Set,
         "AzPeeringExchangeConnectionObject",
-        DefaultParameterSetName = Constants.ParameterSetNameMd5Authentication,
-        SupportsShouldProcess = true)]
+        DefaultParameterSetName = Constants.ParameterSetNameMd5Authentication)]
     [OutputType(typeof(PSExchangeConnection))]
     public class SetAzureExchangePeeringConnectionCommand : PeeringBaseCmdlet
     {
@@ -44,30 +37,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
-             ParameterSetName = Constants.ParameterSetNameIPv4Address,
-             DontShow = true),
+             HelpMessage = Constants.PeeringExchangeConnectionHelp,
+             ParameterSetName = Constants.ParameterSetNameIPv4Address),
          Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
-             ParameterSetName = Constants.ParameterSetNameIPv6Address,
-             DontShow = true),
+             HelpMessage = Constants.PeeringExchangeConnectionHelp,
+             ParameterSetName = Constants.ParameterSetNameIPv6Address),
          Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
-             ParameterSetName = Constants.ParameterSetNameMd5Authentication,
-             DontShow = true)]
+             HelpMessage = Constants.PeeringExchangeConnectionHelp,
+             ParameterSetName = Constants.ParameterSetNameMd5Authentication)]
         public PSExchangeConnection InputObject { get; set; }
 
         /// <summary>
         /// Gets or sets the session ipv4.
         /// </summary>
         [Parameter(
-            Position = 2,
             Mandatory = true,
             HelpMessage = Constants.HelpSessionIPv4Prefix,
             ParameterSetName = Constants.ParameterSetNameIPv4Address)]
         [ValidateNotNullOrEmpty]
-        public virtual string PeerSessionIPv4Address { get; set; }
+        public string PeerSessionIPv4Address { get; set; }
 
         /// <summary>
         /// Gets or sets the max prefixes advertised ipv4.
@@ -76,18 +68,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
              Mandatory = false,
              HelpMessage = Constants.HelpMaxAdvertisedIPv4,
              ParameterSetName = Constants.ParameterSetNameIPv4Address), ValidateRange(1, 20000)]
-        public virtual int? MaxPrefixesAdvertisedIPv4 { get; set; }
+        public int? MaxPrefixesAdvertisedIPv4 { get; set; }
 
         /// <summary>
         /// Gets or sets the session ipv4.
         /// </summary>
         [Parameter(
-            Position = 2,
             Mandatory = true,
             HelpMessage = Constants.HelpSessionIPv4Prefix,
             ParameterSetName = Constants.ParameterSetNameIPv6Address)]
         [ValidateNotNullOrEmpty]
-        public virtual string PeerSessionIPv6Address { get; set; }
+        public string PeerSessionIPv6Address { get; set; }
 
         /// <summary>
         /// Gets or sets the max prefixes advertised ipv4.
@@ -96,13 +87,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
              Mandatory = false,
              HelpMessage = Constants.HelpMaxAdvertisedIPv4,
              ParameterSetName = Constants.ParameterSetNameIPv6Address), ValidateRange(1, 20000)]
-        public virtual int? MaxPrefixesAdvertisedIPv6 { get; set; }
+        public int? MaxPrefixesAdvertisedIPv6 { get; set; }
 
         /// <summary>
         /// Gets or sets the m d 5 authentication key.
         /// </summary>
         [Parameter(
-            Position = 1,
             Mandatory = false,
             HelpMessage = Constants.MD5AuthenticationKeyHelp,
             ParameterSetName = Constants.ParameterSetNameMd5Authentication)]
@@ -136,21 +126,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
                 {
                     newRequest = this.UpdateMD5Authentication();
                 }
-                else
-                {
-                    throw new PSArgumentException("Unable to complete the request. Check your syntax for errors.");
-                }
 
                 this.WriteObject(newRequest);
             }
             catch (InvalidOperationException mapException)
             {
-                throw new InvalidOperationException($"Failed to map object {mapException}");
+                throw new InvalidOperationException(string.Format(Resources.Error_Mapping, mapException));
             }
-            catch (ErrorResponseException ex)
+            catch (CloudException ex)
             {
-                throw new ErrorResponseException(
-                    $"Error:{ex.Response.ReasonPhrase} reason:{ex.Body?.Code} message:{ex.Body?.Message}");
+                throw new CloudException(
+                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
             }
         }
 
@@ -165,11 +151,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
             if (this.InputObject is PSExchangeConnection inputObject)
             {
                 inputObject.BgpSession.Md5AuthenticationKey = this.MD5AuthenticationKey;
-                if (this.ValidConnection(inputObject))
+                if (this.IsValidConnection(inputObject))
                     return inputObject;
             }
 
-            throw new InvalidOperationException($"Exchange InputObject does not support this operation.");
+            throw new InvalidOperationException(string.Format(Resources.Error_InvalidInputObject_Exchange));
         }
 
         /// <summary>
@@ -187,11 +173,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
                 {
                     inputObject.BgpSession.MaxPrefixesAdvertisedV4 = this.MaxPrefixesAdvertisedIPv4;
                 }
-                if (this.ValidConnection(inputObject))
+
+                if (this.IsValidConnection(inputObject))
                     return inputObject;
             }
 
-            throw new InvalidOperationException($"Exchange InputObject does not support this operation.");
+            throw new InvalidOperationException(string.Format(Resources.Error_InvalidInputObject_Exchange));
         }
 
         /// <summary>
@@ -209,11 +196,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
                 {
                     inputObject.BgpSession.MaxPrefixesAdvertisedV6 = this.MaxPrefixesAdvertisedIPv4;
                 }
-                if (this.ValidConnection(inputObject))
+
+                if (this.IsValidConnection(inputObject))
                     return inputObject;
             }
 
-            throw new InvalidOperationException($"Exchange InputObject does not support this operation.");
+            throw new InvalidOperationException(string.Format(Resources.Error_InvalidInputObject_Exchange));
         }
     }
 }

@@ -23,7 +23,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.Peering.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.Management.Peering;
     using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
@@ -93,11 +95,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             }
             catch (InvalidOperationException mapException)
             {
-                throw new InvalidOperationException($"Failed to map object {mapException}");
+                throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
             }
-            catch (ErrorResponseException ex)
+            catch (CloudException ex)
             {
-                throw new ErrorResponseException($"Error:{ex.Response.ReasonPhrase} reason:{ex.Body.Code} message:{ex.Body.Message}");
+
+                throw new CloudException(
+                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
             }
         }
 
@@ -118,11 +122,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             }
             catch (InvalidOperationException mapException)
             {
-                throw new InvalidOperationException($"Failed to map object {mapException}");
+                throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
             }
-            catch (ErrorResponseException ex)
+            catch (CloudException ex)
             {
-                throw new ErrorResponseException($"Error:{ex.Response.ReasonPhrase} reason:{ex.Body.Code} message:{ex.Body.Message}");
+
+                throw new CloudException(
+                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
             }
         }
 
@@ -143,11 +149,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             }
             catch (InvalidOperationException mapException)
             {
-                throw new InvalidOperationException($"Failed to map object {mapException}");
+                throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
             }
-            catch (ErrorResponseException ex)
+            catch (CloudException ex)
             {
-                throw new ErrorResponseException($"Error:{ex.Response.ReasonPhrase} reason:{ex.Body.Code} message:{ex.Body.Message}");
+
+                throw new CloudException(
+                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
             }
         }
 
@@ -159,11 +167,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             }
             catch (InvalidOperationException mapException)
             {
-                throw new InvalidOperationException($"Failed to map object {mapException}");
+                throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
             }
-            catch (ErrorResponseException ex)
+            catch (CloudException ex)
             {
-                throw new ErrorResponseException($"Error:{ex.Response.ReasonPhrase} reason:{ex.Body.Code} message:{ex.Body.Message}");
+
+                throw new CloudException(
+                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
             }
         }
 
@@ -184,11 +194,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             }
             catch (InvalidOperationException mapException)
             {
-                throw new InvalidOperationException($"Failed to map object {mapException}");
+                throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
             }
-            catch (ErrorResponseException ex)
+            catch (CloudException ex)
             {
-                throw new ErrorResponseException($"Error:{ex.Response.ReasonPhrase} reason:{ex.Body.Code} message:{ex.Body.Message}");
+
+                throw new CloudException(
+                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
             }
         }
 
@@ -203,7 +215,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// </returns>
         /// <exception cref="InvalidOperationException">
         /// </exception>
-        /// <exception cref="ErrorResponseException">
+        /// <exception cref="CloudException">
         /// </exception>
         public PeerAsn ToPeeringAsn(PSPeerAsn psPeerInfo)
         {
@@ -213,47 +225,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             }
             catch (InvalidOperationException mapException)
             {
-                throw new InvalidOperationException($"Failed to map object {mapException}");
+                throw new InvalidOperationException(string.Format(Resources.Error_Mapping, mapException));
             }
-            catch (ErrorResponseException ex)
+            catch (CloudException ex)
             {
-                throw new ErrorResponseException($"Error:{ex.Response.ReasonPhrase} reason:{ex.Body.Code} message:{ex.Body.Message}");
-            }
-        }
 
-        /// <summary>
-        /// The validate bandwidth.
-        /// </summary>
-        /// <param name="toValidateBandwidth"></param>
-        /// <param name="peeringVlanBandwidthInMbps">
-        /// The InputObject Vlan Bandwidth In Mbps.
-        /// </param>
-        /// <param name="defaultVlanBandwidthInMbps">
-        /// The default Vlan Bandwidth In Mbps.
-        /// </param>
-        /// <param name="totalBandwidthInMbps">
-        /// The bandwidth In Mbps.
-        /// </param>
-        /// <returns>
-        /// The <see cref="object"/>.
-        /// </returns>
-        /// <exception cref="Exception">
-        /// Incorrect bandwidth.
-        /// </exception>
-        public int? ValidateVlanBandwidth(
-            int? toValidateBandwidth,
-            int? peeringVlanBandwidthInMbps,
-            int? defaultVlanBandwidthInMbps,
-            int? totalBandwidthInMbps)
-        {
-            var i = totalBandwidthInMbps ?? peeringVlanBandwidthInMbps + defaultVlanBandwidthInMbps;
-            if (toValidateBandwidth % Constants.MinRange != 0)
-                throw new Exception($"VlanBandwidth:{toValidateBandwidth} must be a divisible by {Constants.MinRange}");
-            if (toValidateBandwidth % Constants.MinRange == 0 && this.CompareDefaultToPeeringVlan(
-                    peeringVlanBandwidthInMbps ?? 0,
-                    defaultVlanBandwidthInMbps ?? 0,
-                    i)) return toValidateBandwidth;
-            throw new Exception("VlanBandwidth provided is not supported.");
+                throw new CloudException(
+                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
+            }
         }
 
         /// <summary>
@@ -270,12 +249,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public bool ValidBandwidth(int? bandwidthInMbps)
         {
             if (bandwidthInMbps <= 0)
-                throw new PSArgumentException($"Bandwidth {bandwidthInMbps} must be greater than 0");
+                throw new PSArgumentException(string.Format(Resources.Error_BandwidthTooLow, bandwidthInMbps));
             if (bandwidthInMbps % Constants.MinRange != 0)
                 throw new PSArgumentException(
-                    $"Bandwidth {bandwidthInMbps} must have a multiple of {Constants.MinRange}.");
+                    string.Format(Resources.Error_BandwidthIncorrectFormat, bandwidthInMbps, Constants.MinRange));
             if (bandwidthInMbps > Constants.MaxRange)
-                throw new PSArgumentException($"Bandwidth:{bandwidthInMbps} is greater than {Constants.MaxRange}.");
+                throw new PSArgumentException(
+                    string.Format(Resources.Error_BandwidthTooHigh, bandwidthInMbps, Constants.MaxRange));
             return true;
         }
 
@@ -299,106 +279,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                 return false;
             if (newBandwidth <= (startingBandwidth ?? 0))
                 throw new PSNotSupportedException(
-                    $"Downgrading bandwidth from {startingBandwidth} to {newBandwidth} supported.");
+                    string.Format(Resources.Error_BandwidthDowngrade, startingBandwidth, newBandwidth));
             return true;
-        }
-
-        /// <summary>
-        /// The compare default to InputObject vlan.
-        /// </summary>
-        /// <param name="PeeringVlanBandwidthInMbps">
-        /// The InputObject vlan bandwidth in mbps.
-        /// </param>
-        /// <param name="defaultVlanBandwidthInMbps">
-        /// The default vlan bandwidth in mbps.
-        /// </param>
-        /// <param name="bandwidthInMbps">
-        /// The bandwidth In Mbps.
-        /// </param>
-        /// <returns>
-        /// The <see cref="bool"/>.
-        /// </returns>
-        /// <exception cref="Exception">
-        /// </exception>
-        public bool CompareDefaultToPeeringVlan(
-            int? PeeringVlanBandwidthInMbps,
-            int? defaultVlanBandwidthInMbps,
-            int? bandwidthInMbps)
-        {
-            if (PeeringVlanBandwidthInMbps + defaultVlanBandwidthInMbps == bandwidthInMbps) return true;
-            throw new Exception(
-                $"PeeringVlanBandwidthInMbps + DefaultVlanBandwidthInMbps({PeeringVlanBandwidthInMbps + defaultVlanBandwidthInMbps}) does not equal BandwidthInMbps ({bandwidthInMbps})");
-        }
-
-        /// <summary>
-        /// The return newly created InputObject.
-        /// </summary>
-        /// <param name="PeeringName">
-        /// The InputObject name.
-        /// </param>
-        /// <param name="resourceGroupName">
-        /// The resource group name.
-        /// </param>
-        /// <returns>
-        /// The <see cref="PSPeering"/>.
-        /// </returns>
-        public PSPeering ReturnNewlyCreatedPeering(string PeeringName, string resourceGroupName)
-        {
-            return PeeringResourceManagerProfile.Mapper.Map<PSPeering>(
-                this.PeeringClient.Get(resourceGroupName, PeeringName));
         }
 
         /// <summary>
         /// The get resource group name from id.
         /// </summary>
-        /// <param name="PeeringId">
+        /// <param name="peeringId">
         /// The InputObject id.
         /// </param>
         /// <returns>
-        /// The <see cref="object"/>.
+        /// The <see cref="ResourceIdentifier"/>.
         /// </returns>
-        public object GetResourceGroupNameFromId(string PeeringId)
+        public ResourceIdentifier GetResourceIdentifier(string peeringId)
         {
-            var words = PeeringId.Split('/');
-            bool isResourceGroup = false;
-            foreach (var word in words)
-            {
-                if (!isResourceGroup)
-                {
-                    if (word.Equals("resourceGroups"))
-                    {
-                        isResourceGroup = true;
-                    }
-                }
-                else
-                {
-                    return word;
-                }
-            }
-
-            throw new ItemNotFoundException("No ResourceGroupName could be found for this object.");
-        }
-
-        public object GetPeeringNameFromId(string PeeringId)
-        {
-            var words = PeeringId.Split('/');
-            bool isPeeringName = false;
-            foreach (var word in words)
-            {
-                if (!isPeeringName)
-                {
-                    if (word.Equals("Peerings", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        isPeeringName = true;
-                    }
-                }
-                else
-                {
-                    return word;
-                }
-            }
-
-            throw new ItemNotFoundException("No ResourceGroupName could be found for this object.");
+            ResourceIdentifier resourceIdentifier = new ResourceIdentifier(peeringId);
+            if (resourceIdentifier.ResourceGroupName != null)
+                return resourceIdentifier;
+            throw new ItemNotFoundException(string.Format(Resources.Error_CannotParseResourceId, "Resource", peeringId));
         }
 
         /// <summary>
@@ -425,15 +324,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                         {
                             if (prefix.PrefixMaskWidth != 32)
                             {
-                                throw new ArgumentOutOfRangeException($"Invalid Prefix: {routePrefix}, must be /32");
+                                throw new PSArgumentOutOfRangeException(
+                                    string.Format(Resources.Error_InvalidPrefix, routePrefix, "/32"));
                             }
                         }
                         else
                         {
                             if (!(prefix.PrefixMaskWidth == 30 || prefix.PrefixMaskWidth == 31))
                             {
-                                throw new ArgumentOutOfRangeException(
-                                    $"Invalid Prefix: {routePrefix}, must be either /30 or /31");
+                                throw new PSArgumentOutOfRangeException(
+                                    string.Format(Resources.Error_InvalidPrefix, routePrefix, "either /30 or /31"));
                             }
                             else
                             {
@@ -442,19 +342,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                                 {
                                     return prefix.StartOfPrefixBigInt + 1 == actualPrefixBigInt
                                                ? routePrefix
-                                               : throw new ArgumentException(
-                                                     $"Your IP address: {routePrefix} must be at least {(prefix.StartOfPrefixBigInt + 1).ToIpAddress(AddressFamily.InterNetwork)} not greater than {(prefix.EndOfPrefixBigInt).ToIpAddress(AddressFamily.InterNetwork)}");
+                                               : throw new PSArgumentException(
+                                                     string.Format(
+                                                         Resources.Error_InvalidPrefixRange,
+                                                         routePrefix,
+                                                         (prefix.StartOfPrefixBigInt + 1).ToIpAddress(
+                                                             AddressFamily.InterNetwork),
+                                                         (prefix.EndOfPrefixBigInt).ToIpAddress(
+                                                             AddressFamily.InterNetwork)));
                                 }
                                 else if (prefix.Length == 2)
                                 {
                                     return prefix.StartOfPrefixBigInt == actualPrefixBigInt
                                                ? routePrefix
-                                               : throw new ArgumentException(
-                                                     $"IP address: {routePrefix} must be {(prefix.EndOfPrefixBigInt-1).ToIpAddress(AddressFamily.InterNetwork)} for the given IP Mask");
+                                               : throw new PSArgumentException(
+                                                     string.Format(
+                                                         Resources.Error_InvalidPrefix,
+                                                         routePrefix,
+                                                         (prefix.EndOfPrefixBigInt - 1).ToIpAddress(
+                                                             AddressFamily.InterNetwork)));
                                 }
 
-                                throw new ArgumentOutOfRangeException(
-                                    $"IPv4 mask must be /30 or /31. IP Mask out of range {routePrefix}.");
+                                throw new PSArgumentOutOfRangeException(
+                                    string.Format(Resources.Error_InvalidPrefixRange, routePrefix, "/30", "/31"));
                             }
                         }
 
@@ -464,15 +374,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                         {
                             if (prefix.PrefixMaskWidth != 128)
                             {
-                                throw new ArgumentOutOfRangeException($"Invalid Prefix: {routePrefix}, must be /128");
+                                throw new PSArgumentOutOfRangeException(
+                                    string.Format(Resources.Error_InvalidPrefix, routePrefix, "/128"));
                             }
                         }
                         else
                         {
                             if (!(prefix.PrefixMaskWidth >= 64 && prefix.PrefixMaskWidth <= 127))
                             {
-                                throw new ArgumentOutOfRangeException(
-                                    $"IPv6 mask must be /64 - /127. IP Mask out of range {routePrefix}.");
+                                throw new PSArgumentOutOfRangeException(
+                                    string.Format(Resources.Error_InvalidPrefixRange, routePrefix, "/64", "/127"));
                             }
 
                             switch (prefix.PrefixMaskWidth)
@@ -480,24 +391,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                                 case 127:
                                     return prefix.StartOfPrefixBigInt == prefix.ActualPrefixBigInt
                                                ? routePrefix
-                                               : throw new ArgumentException(
-                                                     $"IP address: {routePrefix} must be "
-                                                     + $"{(prefix.EndOfPrefixBigInt).ToIpAddress(AddressFamily.InterNetworkV6)} "
-                                                     + "for the given IP Mask");
+                                               : throw new PSArgumentException(
+                                                     string.Format(
+                                                         Resources.Error_InvalidPrefix,
+                                                         routePrefix,
+                                                         (prefix.EndOfPrefixBigInt).ToIpAddress(
+                                                             AddressFamily.InterNetworkV6)));
                                 default:
                                     return prefix.StartOfPrefixBigInt + 1 >= prefix.ActualPrefixBigInt
                                                ? routePrefix
                                                : throw new ArgumentException(
-                                                     $"Your IP address: {routePrefix} must be at least"
-                                                     + $"{(prefix.StartOfPrefixBigInt + 1).ToIpAddress(AddressFamily.InterNetwork)} "
-                                                     + $"not greater than {(prefix.EndOfPrefixBigInt).ToIpAddress(AddressFamily.InterNetwork)}");
+                                                     string.Format(
+                                                         Resources.Error_InvalidPrefixRange,
+                                                         routePrefix,
+                                                         (prefix.StartOfPrefixBigInt + 1).ToIpAddress(
+                                                             AddressFamily.InterNetworkV6),
+                                                         (prefix.EndOfPrefixBigInt).ToIpAddress(
+                                                             AddressFamily.InterNetworkV6)));
                             }
                         }
 
                         return routePrefix;
                 }
-
-                throw new ArgumentOutOfRangeException($"Prefix out of range {routePrefix}.");
             }
 
             return null;
@@ -550,40 +465,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                 {
                     if (location.Name == PeeringLocation)
                     {
-                        if (this.PeeringManagementClient.BaseUri.AbsoluteUri.Contains("api-dogfood"))
-                        {
-                            return "centralus";
-                        }
-                        return location.Name == "Building40" ? "centralus" : location.AzureRegion;
+                        return location.AzureRegion;
                     }
                 }
+
                 return "centralus";
             }
-            catch
+            catch (CloudException ex)
             {
-                throw new Exception("Unable to map AzureRegion to InputObject location.");
-            }
-        }
 
-        /// <summary>
-        /// The convert to dictionary.
-        /// </summary>
-        /// <param name="tag">
-        /// The tag.
-        /// </param>
-        /// <returns>
-        /// The <see cref="IDictionary"/>.
-        /// </returns>
-        public IDictionary<string, string> ConvertToDictionary(Hashtable tag)
-        {
-            if (tag == null) return null;
-            var dictionary = new Dictionary<string, string>();
-            foreach (string key in tag?.Keys)
-            {
-                dictionary.Add(key, tag[key].ToString());
+                throw new CloudException(
+                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
             }
-
-            return dictionary;
         }
 
         /// <summary>
@@ -597,27 +490,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// </returns>
         /// <exception cref="PSArgumentException">
         /// </exception>
-        public bool ValidConnection(PSExchangeConnection connection)
+        public bool IsValidConnection(PSExchangeConnection connection)
         {
             if (connection.PeeringDBFacilityId <= 0)
             {
                 throw new PSArgumentException(
-                    $"Connection has invalid InputObject Facility ID: {connection.PeeringDBFacilityId}.");
+                    string.Format(Resources.Error_InvalidFacilityId, connection.PeeringDBFacilityId));
             }
 
-            if (connection.BgpSession == null) throw new PSArgumentException($"Session cannot be null or empty.");
-            if (connection.BgpSession.PeerSessionIPv4Address == null && connection.BgpSession.MaxPrefixesAdvertisedV4 != null)
+            if (connection.BgpSession == null)
+                throw new PSArgumentNullException(string.Format(Resources.Error_NullSession));
+            if (connection.BgpSession.PeerSessionIPv4Address == null
+                && connection.BgpSession.MaxPrefixesAdvertisedV4 != null)
                 throw new PSArgumentException(
-                    $"Session V4 cannot be null if MaxPrefixesAdvertisedV4:{connection.BgpSession.MaxPrefixesAdvertisedV4} is greater and 0.");
-            if (connection.BgpSession.PeerSessionIPv6Address == null && connection.BgpSession.MaxPrefixesAdvertisedV6 != null)
+                    string.Format(Resources.Error_MustBeNull, "4", connection.BgpSession.MaxPrefixesAdvertisedV4));
+            if (connection.BgpSession.PeerSessionIPv6Address == null
+                && connection.BgpSession.MaxPrefixesAdvertisedV6 != null)
                 throw new PSArgumentException(
-                    $"Session V6 cannot be null if MaxPrefixesAdvertisedV6:{connection.BgpSession.MaxPrefixesAdvertisedV6} is greater and 0.");
+                    string.Format(Resources.Error_MustBeNull, "6", connection.BgpSession.MaxPrefixesAdvertisedV6));
             if (connection.BgpSession.MaxPrefixesAdvertisedV4 <= 0 && connection.BgpSession.SessionPrefixV4 != null)
                 throw new PSArgumentException(
-                    $"MaxPrefixesAdvertisedV4:{connection.BgpSession.MaxPrefixesAdvertisedV4} must be greater and 0.");
+                    string.Format(
+                        Resources.Error_MustBeGreaterThanZero,
+                        "4",
+                        connection.BgpSession.MaxPrefixesAdvertisedV4));
             if (connection.BgpSession.MaxPrefixesAdvertisedV6 <= 0 && connection.BgpSession.SessionPrefixV6 != null)
                 throw new PSArgumentException(
-                    $"MaxPrefixesAdvertisedV6:{connection.BgpSession.MaxPrefixesAdvertisedV6} must be greater and 0.");
+                    string.Format(
+                        Resources.Error_MustBeGreaterThanZero,
+                        "6",
+                        connection.BgpSession.MaxPrefixesAdvertisedV6));
             return true;
         }
 
@@ -632,15 +534,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// </returns>
         /// <exception cref="PSArgumentException">
         /// </exception>
-        public bool ValidConnection(PSDirectConnection connection)
+        public bool IsValidConnection(PSDirectConnection connection)
         {
             if (connection.PeeringDBFacilityId <= 0)
             {
                 throw new PSArgumentException(
-                    $"Connection has invalid InputObject Facility ID: {connection.PeeringDBFacilityId}.");
+                    string.Format(Resources.Error_InvalidFacilityId, connection.PeeringDBFacilityId));
             }
 
-            if (connection.BgpSession == null) throw new PSArgumentException($"Session cannot be null or empty.");
+            if (connection.BgpSession == null)
+                throw new PSArgumentNullException(string.Format(Resources.Error_NullSession));
             return this.ValidBandwidth(connection.BandwidthInMbps);
         }
     }

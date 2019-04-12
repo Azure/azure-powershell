@@ -12,24 +12,22 @@ Sets or updates the Exchange Connection information.
 
 ## SYNTAX
 
-### ParameterSetNameMd5Authentication (Default)
+### Md5Authentication (Default)
 ```
-Set-AzPeeringExchangeConnectionObject -InputObject <PSExchangeConnection> [[-MD5AuthenticationKey] <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ParameterSetNameIPv4Address
-```
-Set-AzPeeringExchangeConnectionObject -InputObject <PSExchangeConnection> [-PeerSessionIPv4Address] <String>
- [-MaxPrefixesAdvertisedIPv4 <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzPeeringExchangeConnectionObject -InputObject <PSExchangeConnection> [-MD5AuthenticationKey <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ParameterSetNameIPv6Address
+### IPv4Address
 ```
-Set-AzPeeringExchangeConnectionObject -InputObject <PSExchangeConnection> [-PeerSessionIPv6Address] <String>
- [-MaxPrefixesAdvertisedIPv6 <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzPeeringExchangeConnectionObject -InputObject <PSExchangeConnection> -PeerSessionIPv4Address <String>
+ [-MaxPrefixesAdvertisedIPv4 <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### IPv6Address
+```
+Set-AzPeeringExchangeConnectionObject -InputObject <PSExchangeConnection> -PeerSessionIPv6Address <String>
+ [-MaxPrefixesAdvertisedIPv6 <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,7 +86,7 @@ HelpMaxAdvertisedIPv4
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: ParameterSetNameIPv4Address
+Parameter Sets: IPv4Address
 Aliases:
 
 Required: False
@@ -103,7 +101,7 @@ HelpMaxAdvertisedIPv4
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: ParameterSetNameIPv6Address
+Parameter Sets: IPv6Address
 Aliases:
 
 Required: False
@@ -118,11 +116,11 @@ The MD5 authentication key for session.
 
 ```yaml
 Type: System.String
-Parameter Sets: ParameterSetNameMd5Authentication
+Parameter Sets: Md5Authentication
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -133,11 +131,11 @@ HelpSessionIPv4Prefix
 
 ```yaml
 Type: System.String
-Parameter Sets: ParameterSetNameIPv4Address
+Parameter Sets: IPv4Address
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -148,41 +146,10 @@ HelpSessionIPv4Prefix
 
 ```yaml
 Type: System.String
-Parameter Sets: ParameterSetNameIPv6Address
+Parameter Sets: IPv6Address
 Aliases:
 
 Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -194,11 +161,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection
 
 ## NOTES
 

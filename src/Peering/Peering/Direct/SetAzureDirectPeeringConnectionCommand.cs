@@ -1,31 +1,26 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Microsoft" file="SetAzureDirectPeeringConnectionCommand.cs">
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   //   you may not use this file except in compliance with the License.
-//   //   You may obtain a copy of the License at
-//   //   http://www.apache.org/licenses/LICENSE-2.0
-//   //   Unless required by applicable law or agreed to in writing, software
-//   //   distributed under the License is distributed on an "AS IS" BASIS,
-//   //   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   //   See the License for the specific language governing permissions and
-//   //   limitations under the License.
-// </copyright>
-// <summary>
-//   
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
 {
     using System;
     using System.Management.Automation;
 
+    using Microsoft.Azure.Commands.Peering.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-    using Microsoft.Azure.Management.Peering;
-    using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
-    using Microsoft.Rest;
+    using Microsoft.Rest.Azure;
 
     /// <inheritdoc />
     /// <summary>
@@ -34,8 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
     [Cmdlet(
         VerbsCommon.Set,
         "AzPeeringDirectConnectionObject",
-        DefaultParameterSetName = Constants.ParameterSetNameBandwidth,
-        SupportsShouldProcess = true)]
+        DefaultParameterSetName = Constants.ParameterSetNameBandwidth)]
     [OutputType(typeof(PSDirectConnection))]
     public class SetAzureDirectPeeringConnectionCommand : PeeringBaseCmdlet
     {
@@ -44,35 +38,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
-             ParameterSetName = Constants.ParameterSetNameIPv4Prefix,
-             DontShow = true),
+             HelpMessage = Constants.PeeringDirectConnectionHelp,
+             ParameterSetName = Constants.ParameterSetNameIPv4Prefix),
          Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
-             ParameterSetName = Constants.ParameterSetNameIPv6Prefix,
-             DontShow = true),
+             HelpMessage = Constants.PeeringDirectConnectionHelp,
+             ParameterSetName = Constants.ParameterSetNameIPv6Prefix),
          Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
-             ParameterSetName = Constants.ParameterSetNameBandwidth,
-             DontShow = true),
+             HelpMessage = Constants.PeeringDirectConnectionHelp,
+             ParameterSetName = Constants.ParameterSetNameBandwidth),
          Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
-             ParameterSetName = Constants.ParameterSetNameMd5Authentication,
-             DontShow = true)]
+             HelpMessage = Constants.PeeringDirectConnectionHelp,
+             ParameterSetName = Constants.ParameterSetNameMd5Authentication)]
         public PSDirectConnection InputObject { get; set; }
 
         /// <summary>
         /// Gets or sets the session ipv4.
         /// </summary>
         [Parameter(
-            Position = 2,
             Mandatory = true,
             HelpMessage = Constants.HelpSessionIPv4Prefix,
             ParameterSetName = Constants.ParameterSetNameIPv4Prefix)]
         [ValidateNotNullOrEmpty]
-        public virtual string SessionPrefixV4 { get; set; }
+        public string SessionPrefixV4 { get; set; }
 
         /// <summary>
         /// Gets or sets the max prefixes advertised ipv4.
@@ -81,18 +74,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
              Mandatory = false,
              HelpMessage = Constants.HelpMaxAdvertisedIPv4,
              ParameterSetName = Constants.ParameterSetNameIPv4Prefix), ValidateRange(1, 20000)]
-        public virtual int? MaxPrefixesAdvertisedIPv4 { get; set; }
+        public int? MaxPrefixesAdvertisedIPv4 { get; set; }
 
         /// <summary>
         /// Gets or sets the session ipv4.
         /// </summary>
         [Parameter(
-            Position = 2,
             Mandatory = true,
             HelpMessage = Constants.HelpSessionIPv4Prefix,
             ParameterSetName = Constants.ParameterSetNameIPv6Prefix)]
         [ValidateNotNullOrEmpty]
-        public virtual string SessionPrefixV6 { get; set; }
+        public string SessionPrefixV6 { get; set; }
 
         /// <summary>
         /// Gets or sets the max prefixes advertised ipv4.
@@ -101,13 +93,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
              Mandatory = false,
              HelpMessage = Constants.HelpMaxAdvertisedIPv4,
              ParameterSetName = Constants.ParameterSetNameIPv6Prefix), ValidateRange(1, 20000)]
-        public virtual int? MaxPrefixesAdvertisedIPv6 { get; set; }
+        public int? MaxPrefixesAdvertisedIPv6 { get; set; }
 
         /// <summary>
         /// Gets or sets the m d 5 authentication key.
         /// </summary>
         [Parameter(
-            Position = 1,
             Mandatory = false,
             HelpMessage = Constants.MD5AuthenticationKeyHelp,
             ParameterSetName = Constants.ParameterSetNameMd5Authentication)]
@@ -122,7 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
              ParameterSetName = Constants.ParameterSetNameBandwidth),
          PSArgumentCompleter("10000", "20000", "30000", "40000", "50000", "60000", "70000", "80000", "90000", "100000"),
          ValidateRange(Constants.MinRange, Constants.MaxRange), ValidateNotNullOrEmpty]
-        public virtual int? BandwidthInMbps { get; set; }
+        public int? BandwidthInMbps { get; set; }
 
         /// <inheritdoc />
         /// <summary>
@@ -158,21 +149,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
                 {
                     newRequest = this.UpdateMD5Authentication();
                 }
-                else
-                {
-                    throw new PSArgumentException("Unable to complete the request. Check your syntax for errors.");
-                }
 
                 this.WriteObject(newRequest);
             }
             catch (InvalidOperationException mapException)
             {
-                throw new InvalidOperationException($"Failed to map object {mapException}");
+                throw new InvalidOperationException(string.Format(Resources.Error_Mapping, mapException));
             }
-            catch (ErrorResponseException ex)
+            catch (CloudException ex)
             {
-                throw new ErrorResponseException(
-                    $"Error:{ex.Response.ReasonPhrase} reason:{ex.Body?.Code} message:{ex.Body?.Message}");
+                throw new CloudException(
+                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
             }
         }
 
@@ -190,11 +177,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
                     this.ValidUpgradeBandwidth(inputObject.BandwidthInMbps, this.BandwidthInMbps)
                         ? this.BandwidthInMbps
                         : inputObject.BandwidthInMbps;
-                if (this.ValidConnection(inputObject))
+                if (this.IsValidConnection(inputObject))
                     return inputObject;
             }
 
-            throw new InvalidOperationException("Use Set-AzPeeringExchangeConnectionObject instead.");
+            throw new InvalidOperationException(string.Format(Resources.Error_WrongCommandForDirectObject));
         }
 
         /// <summary>
@@ -207,12 +194,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         {
             if (this.InputObject is PSDirectConnection inputObject)
             {
-                inputObject.BgpSession.Md5AuthenticationKey = this.MD5AuthenticationKey; 
-                if (this.ValidConnection(inputObject))
+                inputObject.BgpSession.Md5AuthenticationKey = this.MD5AuthenticationKey;
+                if (this.IsValidConnection(inputObject))
                     return inputObject;
             }
 
-            throw new InvalidOperationException("Use Set-AzPeeringExchangeConnectionObject instead.");
+            throw new InvalidOperationException(string.Format(Resources.Error_WrongCommandForDirectObject));
         }
 
         /// <summary>
@@ -228,11 +215,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
                 inputObject.BgpSession.MaxPrefixesAdvertisedV4 =
                     this.MaxPrefixesAdvertisedIPv4 == null ? inputObject.BgpSession.MaxPrefixesAdvertisedV4 : 20000;
                 inputObject.BgpSession.SessionPrefixV4 = this.ValidatePrefix(this.SessionPrefixV4, Constants.Direct);
-                if (this.ValidConnection(inputObject))
+                if (this.IsValidConnection(inputObject))
                     return inputObject;
             }
 
-            throw new InvalidOperationException("Use Set-AzPeeringExchangeConnectionObject instead.");
+            throw new InvalidOperationException(string.Format(Resources.Error_WrongCommandForDirectObject));
         }
 
         /// <summary>
@@ -248,11 +235,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
                 inputObject.BgpSession.MaxPrefixesAdvertisedV6 =
                     this.MaxPrefixesAdvertisedIPv6 == null ? inputObject.BgpSession.MaxPrefixesAdvertisedV6 : 2000;
                 inputObject.BgpSession.SessionPrefixV6 = this.ValidatePrefix(this.SessionPrefixV6, Constants.Direct);
-                if (this.ValidConnection(inputObject))
+                if (this.IsValidConnection(inputObject))
                     return inputObject;
             }
 
-            throw new InvalidOperationException("Use Set-AzPeeringExchangeConnectionObject instead.");
+            throw new InvalidOperationException(string.Format(Resources.Error_WrongCommandForDirectObject));
         }
     }
 }

@@ -1,19 +1,16 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Microsoft" file="GetAzurePeeringLocationCommand.cs">
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   you may not use this file except in compliance with the License.
-//   You may obtain a copy of the License at
-//   http://www.apache.org/licenses/LICENSE-2.0
-//   Unless required by applicable law or agreed to in writing, software
-//   distributed under the License is distributed on an "AS IS" BASIS,
-//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   See the License for the specific language governing permissions and
-//   limitations under the License.
-// </copyright>
-// <summary>
-//   
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
 {
@@ -21,11 +18,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
+
+    using Microsoft.Azure.Commands.Peering.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Peering;
-    using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
+    using Microsoft.Rest.Azure;
 
     /// <summary>
     ///     The get InputObject locations.
@@ -40,25 +39,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = true,
             Position = 0,
-
             ParameterSetName = Constants.ParameterSetNamePeeringByKind,
             HelpMessage = Constants.KindHelp)]
         [Parameter(
             Mandatory = true,
             Position = 0,
-
             ParameterSetName = Constants.ParameterSetNameLocationByCity,
             HelpMessage = Constants.KindHelp)]
         [Parameter(
             Mandatory = true,
             Position = 0,
-
             ParameterSetName = Constants.ParameterSetNameLocationByFacilityId,
             HelpMessage = Constants.KindHelp)]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter(Constants.Direct, Constants.Exchange)]
         [ValidateSet(Constants.Direct, Constants.Exchange)]
-        public virtual string Kind { get; set; }
+        public string Kind { get; set; }
 
         /// <summary>
         /// Gets or sets the peering location.
@@ -66,11 +62,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = true,
             Position = 0,
-
             ParameterSetName = Constants.ParameterSetNameLocationByCity,
             HelpMessage = Constants.LocationHelp)]
         [ValidateNotNullOrEmpty]
-        public virtual string PeeringLocation { get; set; }
+        public string PeeringLocation { get; set; }
 
         /// <summary>
         /// Gets or sets the peering db facility id.
@@ -78,11 +73,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = true,
             Position = 0,
-
             ParameterSetName = Constants.ParameterSetNameLocationByFacilityId,
             HelpMessage = Constants.PeeringDbFacilityIdHelp)]
         [ValidateNotNullOrEmpty]
-        public virtual int PeeringDbFacilityId { get; set; }
+        public int PeeringDbFacilityId { get; set; }
 
         /// <inheritdoc />
         /// <summary>
@@ -111,11 +105,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             }
             catch (InvalidOperationException mapException)
             {
-                throw new InvalidOperationException($"Failed to map object {mapException}");
+                throw new InvalidOperationException(string.Format(Resources.Error_Mapping, mapException));
             }
-            catch (ErrorResponseException ex)
+            catch (CloudException ex)
             {
-                throw new ErrorResponseException($"{ex}");
+                throw new CloudException(
+                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
             }
         }
 
@@ -135,6 +130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                         }
                     }
                 }
+
                 if (this.Kind.Equals(Constants.Direct))
                 {
                     if (psPeeringLocation.Name.Equals(s, StringComparison.OrdinalIgnoreCase))
@@ -179,6 +175,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                         }
                     }
                 }
+
                 if (this.Kind.Equals(Constants.Direct))
                 {
                     var numFacilities = psPeeringLocation.Direct.PeeringFacilities.Count;
@@ -191,6 +188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     }
                 }
             }
+
             throw new ItemNotFoundException();
         }
 
@@ -207,6 +205,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                         newPSPeeringLocations.Add(new PSPeeringLocationObject(location, i));
                     }
                 }
+
                 if (location.Exchange != null && location.Kind == "Exchange")
                 {
                     var numFacilities = location.Exchange.PeeringFacilities.Count;

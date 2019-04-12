@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
     /// <summary>
     /// The remove peering tests.
     /// </summary>
-    public class RemovePeeringTests
+    public class RemovePeerAsnTests
     {
         /// <summary>
         /// The logger.
@@ -29,12 +29,12 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         private ServiceManagement.Common.Models.XunitTracingInterceptor logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RemovePeeringTests"/> class.
+        /// Initializes a new instance of the <see cref="RemovePeerAsnTests"/> class.
         /// </summary>
         /// <param name="output">
         /// The output.
         /// </param>
-        public RemovePeeringTests(Xunit.Abstractions.ITestOutputHelper output)
+        public RemovePeerAsnTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);

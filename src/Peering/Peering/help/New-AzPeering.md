@@ -19,7 +19,7 @@ New-AzPeering [-ResourceGroupName] <String> [-Name] <String> -PeeringLocation <S
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ParameterSetNameConvertLegacyPeering
+### ConvertLegacyPeering
 ```
 New-AzPeering -LegacyPeering <PSPeering> [-ResourceGroupName] <String> [-Name] <String>
  [-PeeringLocation <String>] [-PeerAsnResourceId] <String> [-Tag <Hashtable>] [-AsJob]
@@ -175,7 +175,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
-Parameter Sets: ParameterSetNameConvertLegacyPeering
+Parameter Sets: ConvertLegacyPeering
 Aliases:
 
 Required: True
@@ -233,7 +233,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: ParameterSetNameConvertLegacyPeering
+Parameter Sets: ConvertLegacyPeering
 Aliases:
 
 Required: False
@@ -325,13 +325,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[]
 
-### System.Management.Automation.SwitchParameter
-
-### System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]]
-
-### System.Collections.Generic.List`1[[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]
 
 ## OUTPUTS
 

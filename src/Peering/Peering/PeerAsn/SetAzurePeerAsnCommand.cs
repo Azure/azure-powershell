@@ -1,36 +1,35 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Microsoft" file="SetAzurePeerAsnCommand.cs">
-//   Licensed under the Apache License, Version 2.0 (the "License");
-//   //   you may not use this file except in compliance with the License.
-//   //   You may obtain a copy of the License at
-//   //   http://www.apache.org/licenses/LICENSE-2.0
-//   //   Unless required by applicable law or agreed to in writing, software
-//   //   distributed under the License is distributed on an "AS IS" BASIS,
-//   //   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//   //   See the License for the specific language governing permissions and
-//   //   limitations under the License.
-// </copyright>
-// <summary>
-//   
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
 {
     using System;
     using System.Management.Automation;
 
+    using Microsoft.Azure.Commands.Peering.Properties;
     using Microsoft.Azure.Management.Peering;
-    using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
+    using Microsoft.Rest.Azure;
 
     /// <summary>
     ///     New Azure InputObject Command-let
     /// </summary>
     [Cmdlet(
         VerbsCommon.Set,
-        "AzPeerAsn", DefaultParameterSetName = Constants.ParameterSetNameDefault, SupportsShouldProcess = true)]
+        "AzPeerAsn",
+        DefaultParameterSetName = Constants.ParameterSetNameDefault,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSPeerAsn))]
     public class SetAzurePeerAsn : PeeringBaseCmdlet
     {
@@ -51,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             Mandatory = true,
             HelpMessage = Constants.PeeringNameHelp,
             ParameterSetName = Constants.ParameterSetNameByName)]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the Email
@@ -65,7 +64,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             HelpMessage = Constants.EmailsHelp,
             ParameterSetName = Constants.ParameterSetNameByName)]
         [ValidateNotNullOrEmpty]
-        public virtual string[] Email { get; set; }
+        public string[] Email { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -76,7 +75,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             HelpMessage = Constants.PhoneHelp,
             ParameterSetName = Constants.ParameterSetNameByName)]
         [ValidateNotNullOrEmpty]
-        public virtual string[] Phone { get; set; }
+        public string[] Phone { get; set; }
 
         /// <summary>
         ///     The AsJob parameter to run in the background.
@@ -99,11 +98,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             }
             catch (InvalidOperationException mapException)
             {
-                throw new InvalidOperationException($"Failed to map object {mapException}");
+                throw new InvalidOperationException(string.Format(Resources.Error_Mapping, mapException));
             }
-            catch (ErrorResponseException ex)
+            catch (CloudException ex)
             {
-                throw new ErrorResponseException($"Error:{ex.Response.ReasonPhrase} reason:{ex.Body.Code} message:{ex.Body.Message}");
+                throw new CloudException(
+                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
             }
         }
 
@@ -118,7 +118,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             // Get old and verify its the same
             var oldPeerAsn = this.PeeringManagementClient.PeerAsns.Get(this.InputObject.Name);
             if (oldPeerAsn.Name == this.InputObject.Name
-                && oldPeerAsn.PeerAsnProperty == this.InputObject.PeerAsnProperty && oldPeerAsn.PeerName == this.InputObject.PeerName)
+                && oldPeerAsn.PeerAsnProperty == this.InputObject.PeerAsnProperty
+                && oldPeerAsn.PeerName == this.InputObject.PeerName)
             {
                 var update = this.InputObject;
                 if (this.Email != null)
@@ -139,9 +140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
                     update.PeerContactInfo.Phone.Add(s);
                 }
 
-                return this.PeeringManagementClient.PeerAsns.CreateOrUpdate(
-                    oldPeerAsn.Name,
-                    this.ToPeeringAsn(update));
+                return this.PeeringManagementClient.PeerAsns.CreateOrUpdate(oldPeerAsn.Name, this.ToPeeringAsn(update));
             }
 
             throw new Exception($"Only contact information can be changed");
@@ -171,9 +170,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
                     update.PeerContactInfo.Phone.Add(s);
                 }
 
-                return this.PeeringManagementClient.PeerAsns.CreateOrUpdate(
-                    oldPeerAsn.Name,
-                    this.ToPeeringAsn(update));
+                return this.PeeringManagementClient.PeerAsns.CreateOrUpdate(oldPeerAsn.Name, this.ToPeeringAsn(update));
             }
 
             throw new Exception($"Only contact information can be changed");

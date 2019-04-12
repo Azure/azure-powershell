@@ -12,26 +12,25 @@ Creates a in memory PSObject to be used for creating or modifying a Peering.
 
 ## SYNTAX
 
-### ParameterSetNameIPv4Address (Default)
+### IPv4Address (Default)
 ```
 New-AzPeeringExchangeConnectionObject [-PeeringDBFacilityId] <Int32> -PeerSessionIPv4Address <String>
  [-MaxPrefixesAdvertisedIPv4 <Int32>] [-MD5AuthenticationKey <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ParameterSetNameIPv6Address
+### IPv6Address
 ```
 New-AzPeeringExchangeConnectionObject [-PeeringDBFacilityId] <Int32> -PeerSessionIPv6Address <String>
  [-MaxPrefixesAdvertisedIPv6 <Int32>] [-MD5AuthenticationKey <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ParameterSetNameIPv4AddressParameterSetNameIPv6Address
+### IPv4AddressIPv6Address
 ```
 New-AzPeeringExchangeConnectionObject [-PeeringDBFacilityId] <Int32> -PeerSessionIPv4Address <String>
  -PeerSessionIPv6Address <String> [-MaxPrefixesAdvertisedIPv4 <Int32>] [-MaxPrefixesAdvertisedIPv6 <Int32>]
- [-MD5AuthenticationKey <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-MD5AuthenticationKey <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +72,7 @@ HelpMaxAdvertisedIPv4
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: ParameterSetNameIPv4Address, ParameterSetNameIPv4AddressParameterSetNameIPv6Address
+Parameter Sets: IPv4Address, IPv4AddressIPv6Address
 Aliases:
 
 Required: False
@@ -88,7 +87,7 @@ HelpMaxAdvertisedIPv6
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: ParameterSetNameIPv6Address, ParameterSetNameIPv4AddressParameterSetNameIPv6Address
+Parameter Sets: IPv6Address, IPv4AddressIPv6Address
 Aliases:
 
 Required: False
@@ -124,7 +123,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -133,7 +132,7 @@ HelpPeerSessionIPv4Prefix
 
 ```yaml
 Type: System.String
-Parameter Sets: ParameterSetNameIPv4Address, ParameterSetNameIPv4AddressParameterSetNameIPv6Address
+Parameter Sets: IPv4Address, IPv4AddressIPv6Address
 Aliases:
 
 Required: True
@@ -148,40 +147,10 @@ HelpPeerSessionIPv6Prefix
 
 ```yaml
 Type: System.String
-Parameter Sets: ParameterSetNameIPv6Address, ParameterSetNameIPv4AddressParameterSetNameIPv6Address
+Parameter Sets: IPv6Address, IPv4AddressIPv6Address
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -194,8 +163,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-
-### System.String
 
 ## OUTPUTS
 
