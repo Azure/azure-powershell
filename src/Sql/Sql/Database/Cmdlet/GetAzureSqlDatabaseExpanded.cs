@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         {
             ICollection<AzureSqlDatabaseModelExpanded> results;
 
-            if (MyInvocation.BoundParameters.ContainsKey("DatabaseName"))
+            if (MyInvocation.BoundParameters.ContainsKey("DatabaseName") && !WildcardPattern.ContainsWildcardCharacters(DatabaseName))
             {
                 results = new List<AzureSqlDatabaseModelExpanded>();
                 results.Add(ModelAdapter.GetDatabaseExpanded(this.ResourceGroupName, this.ServerName, this.DatabaseName));
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 results = ModelAdapter.ListDatabasesExpanded(this.ResourceGroupName, this.ServerName);
             }
 
-            return results;
+            return SubResourceWildcardFilter(DatabaseName, results);
         }
     }
 }

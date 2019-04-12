@@ -19,8 +19,11 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.WindowsAzure.Storage.DataMovement;
+    using System;
     using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
     using LocalDirectory = System.IO.Directory;
     using LocalPath = System.IO.Path;
@@ -111,8 +114,29 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(HelpMessage = "Returns an object representing the downloaded cloud file. By default, this cmdlet does not generate any output.")]
         public SwitchParameter PassThru { get; set; }
 
+        protected override void ProcessRecord()
+        {
+            try
+            {
+                Destination = this.GetUnresolvedProviderPathFromPSPath(
+                    string.IsNullOrWhiteSpace(Destination) ? "." : Destination);
+                Validate.ValidateInternetConnection();
+                InitChannelCurrentSubscription();
+                this.ExecuteSynchronouslyOrAsJob();
+            }
+            catch (Exception ex) when (!IsTerminatingError(ex))
+            {
+                WriteExceptionError(ex);
+            }
+        }
+
         public override void ExecuteCmdlet()
         {
+            if (AsJob.IsPresent)
+            {
+                DoBeginProcessing();
+            }
+
             CloudFile fileToBeDownloaded;
             string[] path = NamingUtil.ValidatePath(this.Path, true);
             switch (this.ParameterSetName)
@@ -138,9 +162,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid parameter set name: {0}", this.ParameterSetName));
             }
 
-            string resolvedDestination = this.GetUnresolvedProviderPathFromPSPath(
-                string.IsNullOrWhiteSpace(this.Destination) ? "." : this.Destination);
-
+            string resolvedDestination = this.Destination;
             FileMode mode = this.Force ? FileMode.Create : FileMode.CreateNew;
             string targetFile;
             if (LocalDirectory.Exists(resolvedDestination))
@@ -192,6 +214,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         this.OutputStream.WriteObject(taskId, fileToBeDownloaded);
                     }
                 });
+            }
+
+            if (AsJob.IsPresent)
+            {
+                DoEndProcessing();
             }
         }
     }

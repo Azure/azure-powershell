@@ -181,3 +181,55 @@ function ValidateFactoryProperties ($expected, $actual)
     Assert-AreEqualObjectProperties $expected $actual
 }
 
+<#
+.SYNOPSIS
+Creates a data factory with VSTS repo config and then does a Get to verify that both are identical.
+#>
+function Test-CreateDataFactoryV2WithVSTSRepoConfig
+{
+    $dfname = Get-DataFactoryName
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+    
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
+
+    try
+    {
+        $actual = Set-AzDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force -AccountName  "an" -RepositoryName "rn" -CollaborationBranch "cb" -RootFolder  "rf" -LastCommitId "lci" -ProjectName "pn" 
+        $expected = Get-AzDataFactoryV2 -ResourceGroupName $rgname -Name $dfname
+
+		ValidateFactoryProperties $expected $actual
+    }
+    finally
+    {
+        CleanUp $rgname $dfname
+    }
+}
+
+<#
+.SYNOPSIS
+Creates a data factory with VSTS repo config and then does a Get to verify that both are identical.
+#>
+function Test-CreateDataFactoryV2WithGitHubRepoConfig
+{
+    $dfname = Get-DataFactoryName
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+    
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
+
+    try
+    {
+        $actual = Set-AzDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force -AccountName  "an" -RepositoryName "rn" -CollaborationBranch "cb" -RootFolder  "rf" -LastCommitId "lci" -HostName "hn" 
+        $expected = Get-AzDataFactoryV2 -ResourceGroupName $rgname -Name $dfname
+
+		ValidateFactoryProperties $expected $actual
+    }
+    finally
+    {
+        CleanUp $rgname $dfname
+    }
+}
+
