@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.10.4'
+ModuleVersion = '0.10.5'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -107,7 +107,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fix cmdlets failure when an initiative definition in subscription does not have category set.'
+        ReleaseNotes = '- Fixed cmdlets failure when a subscription has an incorrect format initiative definition for GuestConfiguration category.'
 
         # Prerelease string of this module
         # Prerelease = ''
