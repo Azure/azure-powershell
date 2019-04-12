@@ -105,27 +105,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
 
             foreach (var item in assignment.Parameters)
             {
-                PSParameterValueBase parameterObject = null;
-
-                if (item.Value != null && item.Value.GetType().Equals(typeof(ParameterValue)))
-                {
-                    // Need to cast as ParameterValue since assignment.Parameters value type is ParamaterValueBase. 
-                    var paramaterValue = item.Value as ParameterValue;  
-
-                    parameterObject = new PSParameterValue { Description = paramaterValue.Description, Value = paramaterValue.Value };
-                }
-                else if (item.Value != null && item.Value.GetType().Equals(typeof(SecretReferenceParameterValue)))
-                {
-                    var paramaterValue = item.Value as SecretReferenceParameterValue;
-    
-                    var secretReference = new PSSecretValueReference(new PSKeyVaultReference(paramaterValue.Reference.KeyVault.Id), 
-                        paramaterValue.Reference.SecretName, 
-                        paramaterValue.Reference.SecretVersion);
-
-                    parameterObject = new PSSecretReferenceParameterValue(secretReference, item.Value.Description);
-                } 
-             
-                psAssignment.Parameters.Add(item.Key, parameterObject);
+                PSParameterValueBase parameter = GetAssignmentParameters(item);
+                psAssignment.Parameters.Add(item.Key, parameter);
             }
 
             foreach (var item in assignment.ResourceGroups)
@@ -144,6 +125,34 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
             }
 
             return psAssignment;
+        }
+
+        private static PSParameterValueBase GetAssignmentParameters(KeyValuePair<string, ParameterValueBase> parameterKvp)
+        {
+            PSParameterValueBase parameter = null;
+
+            if (parameterKvp.Value != null && parameterKvp.Value.GetType().Equals(typeof(ParameterValue)))
+            {
+                // Need to cast as ParameterValue since assignment.Parameters value type is ParamaterValueBase. 
+                var paramaterValue = parameterKvp.Value as ParameterValue;
+
+                parameter = new PSParameterValue { Description = paramaterValue.Description, Value = paramaterValue.Value };
+            }
+            else if (parameterKvp.Value != null && parameterKvp.Value.GetType().Equals(typeof(SecretReferenceParameterValue)))
+            {
+                var paramaterValue = parameterKvp.Value as SecretReferenceParameterValue;
+
+                var secretReference = new PSSecretValueReference
+                {
+                    KeyVault = new PSKeyVaultReference { Id = paramaterValue.Reference.KeyVault.Id },
+                    SecretName = paramaterValue.Reference.SecretName,
+                    SecretVersion = paramaterValue.Reference.SecretVersion
+                };
+
+                parameter = new PSSecretReferenceParameterValue { Reference = secretReference, Description = paramaterValue.Description };
+            }
+
+            return parameter;
         }
     }
 }
