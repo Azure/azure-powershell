@@ -21,16 +21,16 @@
 function Test-GetVirtualCluster
 {
 	# Setup
-	$location = "eastus"
+	$location = Get-ProviderLocation "Microsoft.Sql/virtualclusters"
 	$rg = Create-ResourceGroupForTest $location
 
-	$rgName = "RG_MIPlayground"
-	$vnetName = "VNET_MIPlayground"
-	$subnetName = "VCReservedSubnet"
+	$rgName = $rg.ResourceGroupName
+	$vnetName = "cl_initial"
+	$subnetName = "Cool"
 
 	# Setup VNET 
 	$virtualNetwork = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $location $rgName
-	$subnetId = $virtualNetwork.Subnets.where({ $_.Name -eq $subnetName }).Id
+	$subnetId = $virtualNetwork.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
 
@@ -39,18 +39,15 @@ function Test-GetVirtualCluster
 		# Test using all parameters
 		$virtualClusterList = Get-AzSqlVirtualCluster
 		$virtualCluster = $virtualClusterList.where({$_.SubnetId -eq $subnetId})
-		Assert-AreEqual $location $virtualCluster.Location
 		Assert-AreEqual $rgName $virtualCluster.ResourceGroupName
 		$virtualClusterName = $virtualCluster.VirtualClusterName
 
 		$virtualClusterList = Get-AzSqlVirtualCluster -ResourceGroupName $rgName
 		$virtualCluster = $virtualClusterList.where({$_.SubnetId -eq $subnetId})
-		Assert-AreEqual $location $virtualCluster.Location
 		Assert-AreEqual $rgName $virtualCluster.ResourceGroupName
 		Assert-AreEqual $virtualClusterName $virtualCluster.VirtualClusterName
 
 		$virtualCluster = Get-AzSqlVirtualCluster -ResourceGroupName $rgName -Name $virtualClusterName
-		Assert-AreEqual $location $virtualCluster.Location
 		Assert-AreEqual $rgName $virtualCluster.ResourceGroupName
 		Assert-AreEqual $virtualClusterName $virtualCluster.VirtualClusterName
 		Assert-AreEqual $subnetId $virtualCluster.SubnetId
@@ -70,16 +67,16 @@ function Test-GetVirtualCluster
 function Test-RemoveVirtualCluster
 {
 	# Setup
-	$location = "eastus"
+	$location = Get-ProviderLocation "Microsoft.Sql/virtualclusters"
 	$rg = Create-ResourceGroupForTest $location
 
-	$rgName = "RG_MIPlayground"
-	$vnetName = "VNET_MIPlayground"
-	$subnetName = "VCReservedSubnet"
+	$rgName = $rg.ResourceGroupName
+	$vnetName = "cl_initial"
+	$subnetName = "Cool"
 
 	# Setup VNET 
 	$virtualNetwork = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $location $rgName
-	$subnetId = $virtualNetwork.Subnets.where({ $_.Name -eq $subnetName }).Id
+	$subnetId = $virtualNetwork.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
 
