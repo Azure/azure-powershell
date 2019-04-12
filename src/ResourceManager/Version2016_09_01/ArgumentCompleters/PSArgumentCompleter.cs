@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
@@ -25,10 +26,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
 
         public static ScriptBlock CreateScriptBlock(string[] resourceTypes)
         {
-            string scriptResourceTypeList = "'" + String.Join("' , '", resourceTypes) + "'";
+            List<string> outputResourceTypes = new List<string>();
+            foreach (string resourceType in resourceTypes)
+            {
+                if (resourceType.Contains(" "))
+                {
+                    outputResourceTypes.Add("\'\'" + resourceType + "\'\'");
+                }
+                else
+                {
+                    outputResourceTypes.Add(resourceType);
+                }
+            }
+            string scriptResourceTypeList = "'" + String.Join("' , '", outputResourceTypes) + "'";
             string script = "param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)\n" +
                 String.Format("$values = {0}\n", scriptResourceTypeList) +
-                "$values | Where-Object { $_ -Like \"$wordToComplete*\" } | Sort-Object | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }";
+                "$values | Where-Object { $_ -Like \"$wordToComplete*\" -or $_ -Like \"'$wordToComplete*\" } | Sort-Object | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }";
             ScriptBlock scriptBlock = ScriptBlock.Create(script);
             return scriptBlock;
         }
