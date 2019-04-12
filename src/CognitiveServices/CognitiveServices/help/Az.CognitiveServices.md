@@ -17,7 +17,7 @@ Gets an account.
 ### [Get-AzCognitiveServicesAccountKey](Get-AzCognitiveServicesAccountKey.md)
 Gets the API keys for an account.
 
-### [Get-AzCognitiveServicesAccountSkus](Get-AzCognitiveServicesAccountSkus.md)
+### [Get-AzCognitiveServicesAccountSku](Get-AzCognitiveServicesAccountSku.md)
 Gets the available SKUs for an account.
 
 ### [Get-AzCognitiveServicesAccountType](Get-AzCognitiveServicesAccountType.md)
