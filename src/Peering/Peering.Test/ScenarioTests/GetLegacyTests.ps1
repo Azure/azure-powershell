@@ -17,16 +17,9 @@ GetLocationKindExchange
 #>
 function Test-GetLegacyKindExchangeAmsterdam
 {
-	try{
-	$peer = makePeerAsn 15169
     $legacy = Get-AzLegacyPeering -Kind Exchange -PeeringLocation Amsterdam 
 	Assert-NotNull $legacy
 	Assert-True {$legacy.Count -ge 1}
-	}
-	finally
-	{
-	Remove-AzPeerAsn $peer.Name -Force
-	}
 }
 
 <#
@@ -35,15 +28,9 @@ GetLocationKindDirect
 #>
 function Test-GetLegacyKindDirectAshburn
 {
-try{
-	$peer = makePeerAsn 15169
     $legacy = Get-AzLegacyPeering -Kind Direct -PeeringLocation Ashburn 
 	Assert-NotNull $legacy
 	Assert-True {$legacy.Count -ge 1}
-	}
-	finally{
-		Remove-AzPeerAsn $peer.Name -Force
-	}
 }
 
 function makePeerAsn($asn)
@@ -54,6 +41,8 @@ function makePeerAsn($asn)
 	$asnPeer = getAssetName 
 	[string[]]$emails = "noc@$asnPeer.com","noc@$asnPeerName.com"
 	$phone = getAssetName
-	$created = New-AzPeerAsn -Name $asnPeerName -PeerName $asnPeer -PeerAsn $asnId -Email $emails -Phone $phone
+	New-AzPeerAsn -Name $asnPeerName -PeerName $asnPeer -PeerAsn $asnId -Email $emails -Phone $phone
+	$created = Get-AzPeerAsn $asnPeerName
+	Assert-NotNull $created
 	return $created
 }

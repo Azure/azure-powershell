@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetLegacyKindDirectAmsterdam()
+        public void TestGetLegacyKindDirectAshburn()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLegacyKindDirectAmsterdam");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLegacyKindDirectAshburn");
         }
     }
 }
