@@ -147,7 +147,8 @@ Accept wildcard characters: False
 
 ### -Endpoint
 Event subscription destination endpoint.
-This can be a webhook URL or the Azure resource ID of an EventHub.
+This can be a webhook URL, or the Azure resource ID of an EventHub, storage queue or hybridconnection. For example, the resource ID for a hybrid connection takes the following form: /subscriptions/[Azure Subscription ID]/resourceGroups/[ResourceGroupName]/providers/Microsoft.Relay/namespaces/[NamespaceName]/hybridConnections/[HybridConnectionName]. It is expected that the destination endpoint to be created and available for use before executing any Event Grid cmdlets.
+
 
 ```yaml
 Type: System.String
@@ -175,7 +176,8 @@ Accept wildcard characters: False
 
 ### -EndpointType
 Endpoint Type.
-This can be webhook or eventhub
+This can be webhook, eventhub, storagequeue, or hybridconnection. Default value is webhook.
+
 
 ```yaml
 Type: System.String
