@@ -68,10 +68,10 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
             var capabilities = CapabilitiesCommunicator.Get(server.Location);
 
             return (
-                from sv in FilterByName(capabilities.SupportedServerVersions, server.Version)
-                from e in sv.SupportedEditions
-                from slo in FilterByName(e.SupportedServiceLevelObjectives, serviceObjectiveName)
-                select CreateServiceObjectiveModelFromResponse(e, slo, resourceGroupName, serverName)).ToList();
+                from serverVersion in FilterByName(capabilities.SupportedServerVersions, server.Version)
+                from edition in serverVersion.SupportedEditions
+                from serviceObjective in FilterByName(edition.SupportedServiceLevelObjectives, serviceObjectiveName)
+                select CreateServiceObjectiveModelFromResponse(edition, serviceObjective, resourceGroupName, serverName)).ToList();
         }
 
         /// <summary>
@@ -86,10 +86,10 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
             var capabilities = CapabilitiesCommunicator.Get(server.Location);
 
             return (
-                from sv in FilterByName(capabilities.SupportedServerVersions, server.Version)
-                from e in sv.SupportedEditions
-                from slo in e.SupportedServiceLevelObjectives
-                select CreateServiceObjectiveModelFromResponse(e, slo, resourceGroupName, serverName)).ToList();
+                from serverVersion in FilterByName(capabilities.SupportedServerVersions, server.Version)
+                from edition in serverVersion.SupportedEditions
+                from serviceObjective in edition.SupportedServiceLevelObjectives
+                select CreateServiceObjectiveModelFromResponse(edition, serviceObjective, resourceGroupName, serverName)).ToList();
         }
 
         /// <summary>
