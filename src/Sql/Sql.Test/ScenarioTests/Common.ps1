@@ -716,18 +716,17 @@ function Create-ManagedInstanceForTest ($resourceGroup, $subnetId)
 	.SYNOPSIS
 	Create a virtual network
 #>
-function CreateAndGetVirtualNetworkForManagedInstance ($vnetName, $subnetName, $location = "westcentralus")
+function CreateAndGetVirtualNetworkForManagedInstance ($vnetName, $subnetName, $location = "westcentralus", $resourceGroupName = "cl_one")
 {
 	$vNetAddressPrefix = "10.0.0.0/16"
-	$defaultResourceGroupName = "cl_one"
 	$defaultSubnetAddressPrefix = "10.0.0.0/24"
 
 	try {
-		$getVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $defaultResourceGroupName
+		$getVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
 		return $getVnet
 	} catch {
 		$virtualNetwork = New-AzVirtualNetwork `
-							-ResourceGroupName $defaultResourceGroupName `
+							-ResourceGroupName $resourceGroupName `
 							-Location $location `
 							-Name $vNetName `
 							-AddressPrefix $vNetAddressPrefix
@@ -738,7 +737,7 @@ function CreateAndGetVirtualNetworkForManagedInstance ($vnetName, $subnetName, $
  		$virtualNetwork | Set-AzVirtualNetwork
  		$routeTableMiManagementService = New-AzRouteTable `
 								-Name 'myRouteTableMiManagementService' `
-								-ResourceGroupName $defaultResourceGroupName `
+								-ResourceGroupName $resourceGroupName `
 								-location $location
  		Set-AzVirtualNetworkSubnetConfig `
 								-VirtualNetwork $virtualNetwork `
@@ -747,7 +746,7 @@ function CreateAndGetVirtualNetworkForManagedInstance ($vnetName, $subnetName, $
 								-RouteTable $routeTableMiManagementService | `
 							Set-AzVirtualNetwork
  		Get-AzRouteTable `
-								-ResourceGroupName $defaultResourceGroupName `
+								-ResourceGroupName $resourceGroupName `
 								-Name "myRouteTableMiManagementService" `
 								| Add-AzRouteConfig `
 								-Name "ToManagedInstanceManagementService" `
@@ -755,7 +754,7 @@ function CreateAndGetVirtualNetworkForManagedInstance ($vnetName, $subnetName, $
 								-NextHopType "Internet" `
 								| Set-AzRouteTable
 
-		$getVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $defaultResourceGroupName
+		$getVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
 		return $getVnet
 	}
 }
