@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Updated the WebSites SDK.
+* Removed the AdminSiteName property from PSAppServicePlan.
 
 ## Version 1.1.2
 * Fix ARM template bug that breaks cloning all slots using `New-AzWebApp -IncludeSourceWebAppSlots` 

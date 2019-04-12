@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         {
             ICollection<AzureSqlDatabaseModel> results;
 
-            if (MyInvocation.BoundParameters.ContainsKey("DatabaseName"))
+            if (MyInvocation.BoundParameters.ContainsKey("DatabaseName") && !WildcardPattern.ContainsWildcardCharacters(DatabaseName))
             {
                 results = new List<AzureSqlDatabaseModel>();
                 results.Add(ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName));
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 results = ModelAdapter.ListDatabases(this.ResourceGroupName, this.ServerName);
             }
 
-            return results;
+            return SubResourceWildcardFilter(DatabaseName, results);
         }
 
         /// <summary>

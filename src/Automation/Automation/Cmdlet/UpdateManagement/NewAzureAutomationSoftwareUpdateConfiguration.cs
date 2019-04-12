@@ -101,14 +101,17 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
-            if ((this.AzureVMResourceId == null || !this.AzureVMResourceId.Any()) && (this.NonAzureComputer == null || !this.NonAzureComputer.Any()))
+            if ((this.AzureVMResourceId == null || !this.AzureVMResourceId.Any()) && 
+                (this.NonAzureComputer == null || !this.NonAzureComputer.Any()) &&
+                (this.AzureQuery == null || !this.AzureQuery.Any()) &&
+                (this.NonAzureQuery == null || !this.NonAzureQuery.Any()))
             {
                 throw new PSArgumentException(Resources.SoftwareUpdateConfigurationHasNoTargetComputers);
             }
-            var target = this.AzureQuery == null ? null : new UpdateTargets
+            var target = (this.AzureQuery == null && this.NonAzureQuery == null) ? null : new UpdateTargets
             {
-                AzureQueries = this.AzureQuery.ToList(),
-                NonAzureQueries = this.NonAzureQuery.ToList()
+                AzureQueries = this.AzureQuery == null ? null : this.AzureQuery.ToList(),
+                NonAzureQueries = this.NonAzureQuery == null ? null : this.NonAzureQuery.ToList()
             };
 
             var resource = string.Format(CultureInfo.CurrentCulture, Resources.SoftwareUpdateConfigurationCreateOperation);
@@ -152,7 +155,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
                             source = this.PreTaskRunbookName,
                             parameters = TagsConversionHelper.CreateTagDictionary(this.PreTaskRunbookParameter, true)
                         },
-                        PostTask = this.PreTaskRunbookName == null ? null : new Task
+                        PostTask = this.PostTaskRunbookName == null ? null : new Task
                         {
                             source = this.PostTaskRunbookName,
                             parameters = TagsConversionHelper.CreateTagDictionary(this.PostTaskRunbookParameter, true)

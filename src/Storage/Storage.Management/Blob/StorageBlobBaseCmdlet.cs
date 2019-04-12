@@ -27,14 +27,19 @@ namespace Microsoft.Azure.Commands.Management.Storage
     public abstract class StorageBlobBaseCmdlet : AzureRMCmdlet
     {
         private StorageManagementClientWrapper storageClientWrapper;
-        
+
         protected const string AccountNameAlias = "AccountName";
+        protected const string NameAlias = "Name";
 
         protected const string StorageContainerNounStr = "StorageContainer";
         protected const string StorageContainerImmutabilityPolicyNounStr = StorageContainerNounStr + "ImmutabilityPolicy";
         protected const string StorageContainerLegalHoldNounStr = StorageContainerNounStr + "LegalHold";
         protected const string StorageContainerLeaseNounStr = StorageContainerNounStr + "Lease";
-        
+        protected const string StorageBlobServiceProperty = "StorageBlobServiceProperty";
+        protected const string StorageBlobDeleteRetentionPolicy = "StorageBlobDeleteRetentionPolicy";
+
+        public const string StorageAccountResourceType = "Microsoft.Storage/storageAccounts";
+
         public IStorageManagementClient StorageClient
         {
             get
