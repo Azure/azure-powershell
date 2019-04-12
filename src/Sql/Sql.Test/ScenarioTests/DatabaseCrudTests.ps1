@@ -185,6 +185,39 @@ function Test-CreateVcoreDatabaseWithLicenseType
 
 <#
 	.SYNOPSIS
+	Tests creating a Serverless based database
+#>
+function Test-CreateServerlessDatabase
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Japan East"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+	try
+	{
+		# Create with Edition and RequestedServiceObjectiveName
+		$databaseName = Get-DatabaseName
+		$job1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_S_Gen5_2 -AutoPauseDelay 360 -MinVCore 0.5 -AsJob
+		$job1 | Wait-Job
+		$db = $job1.Output
+
+		Assert-AreEqual $databaseName $db.DatabaseName
+		Assert-NotNull $db.MaxSizeBytes
+		Assert-AreEqual GP_S_Gen5_2 $db.CurrentServiceObjectiveName
+		Assert-AreEqual 2 $db.Capacity
+		Assert-AreEqual 360 $db.AutoPauseDelay
+		Assert-AreEqual 0.5 $db.MinCapacity
+		Assert-AreEqual GeneralPurpose $db.Edition
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
 	Tests creating a database with sample name.
 #>
 function Test-CreateDatabaseWithSampleName

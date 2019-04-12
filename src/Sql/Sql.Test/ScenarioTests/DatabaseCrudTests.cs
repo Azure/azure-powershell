@@ -56,6 +56,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateServerlessDatabase()
+        {
+            RunPowerShellTest("Test-CreateServerlessDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseCreateWithSampleName()
         {
             RunPowerShellTest("Test-CreateDatabaseWithSampleName");
