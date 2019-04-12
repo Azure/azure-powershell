@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/add-azmetricalertrulev2
 schema: 2.0.0
 ---
 
@@ -12,8 +12,7 @@ Adds or updates a V2 (non-classic) metric-based alert rule.
 
 ## SYNTAX
 
-### CreateAlertByResourceId
-For creating metric alert rule targeted on a single resource
+### CreateAlertByResourceId (Default)
 ```
 Add-AzMetricAlertRuleV2 -Name <String> -ResourceGroupName <String> -WindowSize <TimeSpan> -Frequency <TimeSpan>
  -TargetResourceId <String>
@@ -23,8 +22,7 @@ Add-AzMetricAlertRuleV2 -Name <String> -ResourceGroupName <String> -WindowSize <
 ```
 
 ### CreateAlertByScopes
-For creating metric alert targeted on  multiple resources
-```powershell
+```
 Add-AzMetricAlertRuleV2 -Name <String> -ResourceGroupName <String> -WindowSize <TimeSpan> -Frequency <TimeSpan>
  -TargetResourceScope <String[]> -TargetResourceType <String> -TargetResourceRegion <String>
  -Condition <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricCriteria]>
@@ -33,7 +31,6 @@ Add-AzMetricAlertRuleV2 -Name <String> -ResourceGroupName <String> -WindowSize <
 ```
 
 ## DESCRIPTION
-
 Adds or updates a **V2 (non-classic) metric-based alert rule**. The added rule is associated with a resource group and has a name. This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
 ## EXAMPLES
@@ -92,31 +89,32 @@ This command creates a metric alert rule for all virtual machines in the subscri
 
 ### Example 3: Disable a metric alert rule
 ```powershell
-PS C:\>Add-AzMetricAlertRuleV2 -Name AllVM -ResourceGroupName xxxxRG -WindowSize 0:5 -Frequency 0:5 -TargetResourceScope "/subscriptions/00000000-0000-0000-0000-0000000" -TargetResourceType "Microsoft.Compute/virtualMachines" -TargetResourceRegion "eastus" -Description "This is description" -Severity 4 -ActionGroup $act -Condition $condition -DisableRule
-Description          : This is description
+PS C:\>Get-AzMetricAlertRuleV2 -ResourceGroupName alertstest  -Name TestAlertRule | Add-AzMetricAlertRuleV2 -DisableRule
+Description          : This new Metric alert rule was created from Powershell version: 1.0.1
 Severity             : 4
 Enabled              : False
-Scopes               : {/subscriptions/00000000-0000-0000-0000-0000000}
+Scopes               : {/subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/alertstest/providers/microsoft.insights/components/alertstestFunction}
 EvaluationFrequency  : 00:05:00
 WindowSize           : 00:05:00
-TargetResourceType   : Microsoft.Compute/virtualMachines
-TargetResourceRegion : eastus
-Criteria             : Microsoft.Azure.Management.Monitor.Models.MetricAlertMultipleResourceMultipleMetricCriteria
+TargetResourceType   :
+TargetResourceRegion :
+Criteria             : Microsoft.Azure.Management.Monitor.Models.MetricAlertSingleResourceMultipleMetricCriteria
 AutoMitigate         :
-Actions              : {/subscriptions/00000000-0000-0000-0000-0000000/resourcegroups/default-activitylogalerts/providers/microsoft.insights/actiongroups/demo}
+Actions              : {/subscriptions/00000000-0000-0000-0000-0000000/resourcegroups/default-activitylogalerts/providers/microsoft.insights/actiongroups/demo1}
 LastUpdatedTime      :
-Id                   : /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/xxxxRG/providers/Microsoft.Insights/metricAlerts/AllVM
-Name                 : AllVM
+Id                   : /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/alertstest/providers/Microsoft.Insights/metricAlerts/TestAlertRule
+Name                 : TestAlertRule
 Type                 : Microsoft.Insights/metricAlerts
 Location             : global
 Tags                 :
 ```
 
-This command disables a metric alert rule. 
+This command disables a metric alert rule. Here, we are piping output of Get-AzMetricAlertRuleV2 to Add-AzMetricAlertRuleV2 
 
 ### Example 4: Add a metric alert rule with dimensions
 
 ```powershell
+PS C:\>$act = New-AzActionGroup -ActionGroupId "/subscriptions/00000000-0000-0000-0000-0000000/resourcegroups/default-activitylogalerts/providers/microsoft.insights/actiongroups/actionGroupDemo"
 PS C:\>$dim1 = New-AzMetricAlertRuleV2DimensionSelection -DimensionName "availabilityResult/name" -ValuesToInclude "gdtest"
 PS C:\>$dim2 = New-AzMetricAlertRuleV2DimensionSelection -DimensionName "availabilityResult/location" -ValuesToInclude "*"
 PS C:\>$criteria = New-AzMetricAlertRuleV2Criteria -MetricName "availabilityResults/availabilityPercentage" -DimensionSelection $dim1,$dim2 -TimeAggregation Average -Operator GreaterThan -Threshold 2
@@ -131,7 +129,7 @@ TargetResourceType   :
 TargetResourceRegion :
 Criteria             : Microsoft.Azure.Management.Monitor.Models.MetricAlertSingleResourceMultipleMetricCriteria
 AutoMitigate         :
-Actions              : {/subscriptions/00000000-0000-0000-0000-0000000/resourcegroups/default-activitylogalerts/providers/microsoft.insights/actiongroups/anashah}
+Actions              : {/subscriptions/00000000-0000-0000-0000-0000000/resourcegroups/default-activitylogalerts/providers/microsoft.insights/actiongroups/actionGroupDemo}
 LastUpdatedTime      :
 Id                   : /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/alertstest/providers/Microsoft.Insights/metricAlerts/AlertWithDim
 Name                 : AlertWithDim
@@ -144,7 +142,6 @@ Tags                 :
 To create a more complex metric alert rule like the ones that involve selecting dimension values or have multiple criteria, you can use the helper cmdlets New-AzMetricAlertRuleV2DimensionSelection and New-AzMetricAlertRuleV2Criteria.
 
 Above set of cmdlets will create a metric alert rule with dimensions.
-
 ## PARAMETERS
 
 ### -ActionGroup
@@ -328,7 +325,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetResourceScope
-The target resource scope for rule. Full resource ID of an Azure resource, resource group or a subscription
+The target resource scope for rule
 
 ```yaml
 Type: String[]
@@ -400,7 +397,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### System.String[]
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricCriteria, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricCriteria, Microsoft.Azure.PowerShell.Cmdlets.Monitor, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]]
 
 ### Microsoft.Azure.Management.Monitor.Models.ActivityLogAlertActionGroup[]
 

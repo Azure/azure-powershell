@@ -223,14 +223,14 @@ function Test-GetAzureRmMetricAlertRuleV2
 	$resourceName = Get-ResourceName
 	$ruleName = Get-ResourceName
 	$actionGroupName = Get-ResourceName
-	$targetResourceId = '/subscriptions/'+$subscription+'/resourceGroups/'+$rgname+'/providers/Microsoft.Network/publicIPAddresses/'+$resourceName
+	$targetResourceId = '/subscriptions/'+$subscription+'/resourceGroups/'+$rgname+'/providers/Microsoft.Storage/storageAccounts/'+$resourceName
 	New-AzResourceGroup -Name $rgname -Location $location -Force
-	New-AzResource -ResourceId $targetResourceId -location $location -Force
+	New-AzStorageAccount -ResourceGroupName $rgname -Name $resourceName -Location $location -Type Standard_GRS
 	$email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
 	$NewActionGroup =  Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $rgname -ShortName ASTG -Receiver $email
 	$actionGroup = New-AzActionGroup -ActionGroupId $NewActionGroup.Id
-	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "PacketsInDDoS" -Operator GreaterThan -Threshold 8 -TimeAggregation Total
-	Add-AzMetricAlertRuleV2 -Name $ruleName -ResourceGroupName $rgname -WindowSize 00:05:00 -Frequency 00:05:00 -TargetResourceId $targetResourceId -Condition $condition -ActionGroup $actionGroup -Severity 3 
+	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "UsedCapacity" -Operator GreaterThan -Threshold 8 -TimeAggregation Average
+	Add-AzMetricAlertRuleV2 -Name $ruleName -ResourceGroupName $rgname -WindowSize 01:00:00 -Frequency 00:01:00 -TargetResourceId $targetResourceId -Condition $condition -ActionGroup $actionGroup -Severity 3 
 
     try
     {
@@ -242,7 +242,7 @@ function Test-GetAzureRmMetricAlertRuleV2
         # Cleanup
         Remove-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name $ruleName
 		Remove-AzActionGroup -ResourceGroupName $rgname -Name $actionGroupName
-		Remove-AzResource -ResourceId $targetResourceId -Force
+		Remove-AzureRmStorageAccount -ResourceGroupName $rgName -Name $resourceName 
 		Remove-AzResourceGroup -Name $rgname -Force
     }
 }
@@ -261,14 +261,14 @@ function Test-RemoveAzureRmAlertRuleV2
 	$resourceName = Get-ResourceName
 	$ruleName = Get-ResourceName
 	$actionGroupName = Get-ResourceName
-	$targetResourceId = '/subscriptions/'+$subscription+'/resourceGroups/'+$rgname+'/providers/Microsoft.Network/publicIPAddresses/'+$resourceName
+	$targetResourceId = '/subscriptions/'+$subscription+'/resourceGroups/'+$rgname+'/providers/Microsoft.Storage/storageAccounts/'+$resourceName
 	New-AzResourceGroup -Name $rgname -Location $location -Force
-	New-AzResource -ResourceId $targetResourceId -location $location -Force
+	New-AzStorageAccount -ResourceGroupName $rgname -Name $resourceName -Location $location -Type Standard_GRS
 	$email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
 	$NewActionGroup =  Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $rgname -ShortName ASTG -Receiver $email
 	$actionGroup = New-AzActionGroup -ActionGroupId $NewActionGroup.Id
-	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "PacketsInDDoS" -Operator GreaterThan -Threshold 8 -TimeAggregation Total
-	Add-AzMetricAlertRuleV2 -Name $ruleName -ResourceGroupName $rgname -WindowSize 00:05:00 -Frequency 00:05:00 -TargetResourceId $targetResourceId -Condition $condition -ActionGroup $actionGroup -Severity 3 
+	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "UsedCapacity" -Operator GreaterThan -Threshold 8 -TimeAggregation Average
+	Add-AzMetricAlertRuleV2 -Name $ruleName -ResourceGroupName $rgname -WindowSize 01:00:00 -Frequency 00:01:00 -TargetResourceId $targetResourceId -Condition $condition -ActionGroup $actionGroup -Severity 3 
     try
     {
 		$job = Remove-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name $ruleName -AsJob
@@ -279,7 +279,7 @@ function Test-RemoveAzureRmAlertRuleV2
     {
         # Cleanup
       Remove-AzActionGroup -ResourceGroupName $rgname -Name $actionGroupName
-	  Remove-AzResource -ResourceId $targetResourceId -Force
+	  Remove-AzureRmStorageAccount -ResourceGroupName $rgName -Name $resourceName 
 	  Remove-AzResourceGroup -Name $rgname -Force
     }
 }
@@ -290,7 +290,7 @@ Tests adding a GenV2 metric alert rule.
 #>
 function Test-AddAzureRmMetricAlertRuleV2
 {
-	#Setup
+	# Setup
 	$sub = Get-AzContext
     $subscription = $sub.subscription.subscriptionId
 	$rgname = Get-ResourceGroupName
@@ -298,17 +298,17 @@ function Test-AddAzureRmMetricAlertRuleV2
 	$resourceName = Get-ResourceName
 	$ruleName = Get-ResourceName
 	$actionGroupName = Get-ResourceName
-	$targetResourceId = '/subscriptions/'+$subscription+'/resourceGroups/'+$rgname+'/providers/Microsoft.Network/publicIPAddresses/'+$resourceName
+	$targetResourceId = '/subscriptions/'+$subscription+'/resourceGroups/'+$rgname+'/providers/Microsoft.Storage/storageAccounts/'+$resourceName
 	New-AzResourceGroup -Name $rgname -Location $location -Force
-	New-AzResource -ResourceId $targetResourceId -location $location -Force
+	New-AzStorageAccount -ResourceGroupName $rgname -Name $resourceName -Location $location -Type Standard_GRS
 	$email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
 	$NewActionGroup =  Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $rgname -ShortName ASTG -Receiver $email
 	$actionGroup = New-AzActionGroup -ActionGroupId $NewActionGroup.Id
-	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "PacketsInDDoS" -Operator GreaterThan -Threshold 8 -TimeAggregation Total
+	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "UsedCapacity" -Operator GreaterThan -Threshold 8 -TimeAggregation Average
     try
     {
         # Test
-        $actual = Add-AzMetricAlertRuleV2 -Name $ruleName -ResourceGroupName $rgname -WindowSize 00:05:00 -Frequency 00:05:00 -TargetResourceId $targetResourceId -Condition $condition -ActionGroup $actionGroup -Severity 3 
+        $actual = Add-AzMetricAlertRuleV2 -Name $ruleName -ResourceGroupName $rgname -WindowSize 01:00:00 -Frequency 00:01:00 -TargetResourceId $targetResourceId -Condition $condition -ActionGroup $actionGroup -Severity 3 
 		Assert-AreEqual $actual.Name $ruleName
     }
     finally
@@ -316,7 +316,7 @@ function Test-AddAzureRmMetricAlertRuleV2
         # Cleanup
         Remove-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name $ruleName
 		Remove-AzActionGroup -ResourceGroupName $rgname -Name $actionGroupName
-		Remove-AzResource -ResourceId $targetResourceId -Force
+		Remove-AzureRmStorageAccount -ResourceGroupName $rgName -Name $resourceName
 		Remove-AzResourceGroup -Name $rgname -Force
     }
 }

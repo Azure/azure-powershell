@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version:
+online version:https://docs.microsoft.com/en-us/powershell/module/az.monitor/remove-azmetricalertrulev2
 schema: 2.0.0
 ---
 
@@ -14,24 +14,23 @@ Removes a V2 (non-classic) metric alert rule.
 
 ### ByMetricRuleResourceName
 ```
-Remove-AzMetricAlertRuleV2 -Name <String> -ResourceGroupName <String> [-PassThru]
+Remove-AzMetricAlertRuleV2 -Name <String> -ResourceGroupName <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByMetricRuleResourceId
 ```
-Remove-AzMetricAlertRuleV2 -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzMetricAlertRuleV2 -ResourceId <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByRuleObject
 ```
-Remove-AzMetricAlertRuleV2 -InputObject <PSMetricAlertRuleV2> [-PassThru]
+Remove-AzMetricAlertRuleV2 -InputObject <PSMetricAlertRuleV2> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
 The **Remove-AzMetricAlertRuleV2** cmdlet removes an alert rule. This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
 ## EXAMPLES
@@ -39,34 +38,43 @@ The **Remove-AzMetricAlertRuleV2** cmdlet removes an alert rule. This cmdlet imp
 ### Example 1: Remove an alert rule by name
 
 ```powershell
-PS C:\> Remove-AzMetricAlertRuleV2 -ResourceGroupName xxxxRG -Name PsSdk
-
-RequestId                            StatusCode
----------                            ----------
-12b76a7a-855b-4e21-a9fe-4a14bc41fb0d         OK
+PS C:\> Remove-AzMetricAlertRuleV2 -ResourceGroupName xxxxRG -Name PsSdk -PassThru
+True
 ```
 
 This command removes the alert rule named PsSdk
 
-### Example 1: Remove an alert rule by ID
+### Example 2: Remove an alert rule by ID
 
 ```powershell
 PS C:\>Remove-AzMetricAlertRuleV2 -ResourceId /subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/metricAlertRG/providers/microsoft.insights/metricAlerts/myAlertRule
 ```
 
 This command removes the alert rule with resource ID `/subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/metricAlertRG/providers/microsoft.insights/metricAlerts/myAlertRule`
-### Example 1: Get an alert and remove it
+### Example 3: Get an alert and remove it
 
 ```powershell
-PS c:\>Get-AzMetricAlertRuleV2 -ResourceGroupName alertstest -Name sampleAlertRule |Remove-AzMetricAlertRuleV2 -PassThru
-RequestId                            StatusCode
----------                            ----------
-7837a170-e6fa-470a-adfa-4a2dda1d3a8a         OK
+PS c:\>Get-AzMetricAlertRuleV2 -ResourceGroupName alertstest -Name sampleAlertRule |Remove-AzMetricAlertRuleV2
 ```
 
 This command gets an alert and removes it.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
@@ -129,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-The PassThru parameter is a SwitchParameter set by the user to signal that they would like to receive output from the cmdlet.
+Return true upon successful deletion.
 
 ```yaml
 Type: SwitchParameter
@@ -201,7 +209,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## OUTPUTS
 
-### Microsoft.Azure.AzureOperationResponse
+### System.Boolean
 
 ## NOTES
 
