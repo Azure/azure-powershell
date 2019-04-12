@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// List of resourceIds to filter the results by.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "A list of resourceIds to filter the results by.")]
-        public string[] FilteredResourceIds { get; set; }
+        public string[] ResourceIdFilter { get; set; }
 
         /// <summary>
         /// Gets or sets the force parameter.
@@ -190,14 +190,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <param name="resourceGroupId"></param>
         private string[] GetResourcesFilter(string resourceGroupId)
         {
-            if (this.FilteredResourceIds?.Any() != true)
+            if (this.ResourceIdFilter?.Any() != true)
             {
                 return new[] { "*" };
             }
 
             var resourceIds = new List<ResourceGroupLevelResourceId>();
             var subscriptionId = DefaultContext.Subscription.GetId().ToString();
-            foreach (var filteredResourceId in this.FilteredResourceIds)
+            foreach (var filteredResourceId in this.ResourceIdFilter)
             {
                 if (!ResourceGroupLevelResourceId.TryParse(filteredResourceId, out var resourceId))
                 {
