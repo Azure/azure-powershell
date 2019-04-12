@@ -125,6 +125,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         /// </exception>
         private PSPeerAsn CreatePeerInfo()
         {
+            foreach (var s in Email)
+            {
+                HelperExtensionMethods.IsValidEmail(s);
+            }
             var contactInfo = new PSContactInfo(emails: this.Email, phone: this.Phone);
             var peerInfo = new PSPeerAsn(peerAsnProperty: this.PeerAsn, peerContactInfo: contactInfo, peerName: this.PeerName, name:this.Name);
             return this.PutPeerInfo(peerInfo);

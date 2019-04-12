@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
 
                 this._helper.SetupModules(
                     AzureModule.AzureResourceManager,
-                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\PeeringCommon.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     this._helper.RMProfileModule,
                     this._helper.RMResourceModule,

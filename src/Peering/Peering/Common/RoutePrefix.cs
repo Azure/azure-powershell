@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common.Common
+namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 {
     using System.Globalization;
     using System.IO;

@@ -26,7 +26,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Management.Peering;
     using Microsoft.Azure.Management.Peering.Models;
-    using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
     using Microsoft.Rest.Azure;
 
@@ -451,7 +450,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                                     return prefix.StartOfPrefixBigInt == actualPrefixBigInt
                                                ? routePrefix
                                                : throw new ArgumentException(
-                                                     $"IP address: {routePrefix} must be {(prefix.EndOfPrefixBigInt).ToIpAddress(AddressFamily.InterNetwork)} for the given IP Mask");
+                                                     $"IP address: {routePrefix} must be {(prefix.EndOfPrefixBigInt-1).ToIpAddress(AddressFamily.InterNetwork)} for the given IP Mask");
                                 }
 
                                 throw new ArgumentOutOfRangeException(
@@ -551,6 +550,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                 {
                     if (location.Name == PeeringLocation)
                     {
+                        if (this.PeeringManagementClient.BaseUri.AbsolutePath.Contains("api-dogfood"))
+                        {
+                            return "centralus";
+                        }
                         return location.Name == "Building40" ? "centralus" : location.AzureRegion;
                     }
                 }
@@ -558,11 +561,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             }
             catch
             {
-                if (PeeringLocation.Equals("Building40", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    return "centralus";
-                }
-
                 throw new Exception("Unable to map AzureRegion to InputObject location.");
             }
         }

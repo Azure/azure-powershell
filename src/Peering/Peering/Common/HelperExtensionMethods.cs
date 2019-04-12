@@ -16,10 +16,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Management.Automation;
     using System.Net;
     using System.Net.Sockets;
     using System.Numerics;
     using System.Reflection;
+
+    using Microsoft.Azure.Commands.Peering.Properties;
 
     /// <summary>
     /// Helper Extension Methods
@@ -254,6 +257,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             var paddedAddressBytes = new byte[addressBytes.Length + 1];
             Array.Copy(addressBytes, paddedAddressBytes, addressBytes.Length);
             return paddedAddressBytes;
+        }
+
+        public static bool IsValidEmail(string email)
+        {
+            if (email.Contains("@"))
+            {
+                return true;
+            }
+            throw new PSArgumentException(string.Format(Resources.Error_InvalidEmailAddress, email));
         }
     }
 }

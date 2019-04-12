@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid email address input {0}..
+        /// </summary>
+        internal static string Error_InvalidEmailAddress {
+            get {
+                return ResourceManager.GetString("Error_InvalidEmailAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to InputObject {0} Resource being removed..
         /// </summary>
         internal static string ProcessMessage {

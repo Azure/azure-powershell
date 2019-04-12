@@ -13,51 +13,47 @@
 # ----------------------------------------------------------------------------------
 <#
 .SYNOPSIS
-GetLocationKindDirect 
+GetLocationKindExchange 
 #>
 function Test-GetLegacyKindExchangeAmsterdam
 {
+	try{
+	$peer = makePeerAsn 15169
     $legacy = Get-AzLegacyPeering -Kind Exchange -PeeringLocation Amsterdam 
 	Assert-NotNull $legacy
-	Assert-AreEqual 1 $legacy.Count
+	Assert-True {$legacy.Count -ge 1}
+	}
+	finally
+	{
+	Remove-AzPeerAsn $peer.Name -Force
+	}
 }
-function Test-GetLegacyKindDirectAmsterdam
-{
-    $legacy = Get-AzLegacyPeering -Kind Direct -PeeringLocation Amsterdam 
-	Assert-NotNull $legacy
-	Assert-AreEqual 1 $legacy.Count
-}
+
 <#
 .SYNOPSIS
 GetLocationKindDirect
 #>
-function Test-ConvertLegacyDirectNewPeering
+function Test-GetLegacyKindDirectAshburn
 {
-	$resourceName = "AkamaiPeering"
-    $legacy = Get-AzLegacyPeering -Kind Direct -PeeringLocation Amsterdam  
+try{
+	$peer = makePeerAsn 15169
+    $legacy = Get-AzLegacyPeering -Kind Direct -PeeringLocation Ashburn 
 	Assert-NotNull $legacy
-	Assert-AreEqual 1 $legacy.Count
-	$peerAsn = Get-AzPeerAsn -Name "Contoso1"
-	Assert-NotNull $peerAsn
-	$legacy | New-AzPeering -Name $resourceName -ResourceGroupName testCarrier -PeeringLocation $legacy.PeeringLocation -PeerAsnResourceId $peerAsn.Id 
-	$newPeering = Get-AzPeering -ResourceGroupName testCarrier -Name $resourceName
-	Assert-NotNull $newPeering
-	Assert-AreEqual $resourceName $newPeering.Name
+	Assert-True {$legacy.Count -ge 1}
+	}
+	finally{
+		Remove-AzPeerAsn $peer.Name -Force
+	}
 }
-<#
-.SYNOPSIS
-GetLocationKindExchange
-#>
-function Test-ConvertLegacyExchangeNewPeering
+
+function makePeerAsn($asn)
 {
-	$resourceName = "AkamaiPeering"
-    $legacy = Get-AzLegacyPeering -Kind Exchange -PeeringLocation Amsterdam  
-	Assert-NotNull $legacy
-	Assert-AreEqual 1 $legacy.Count
-	$peerAsn = Get-AzPeerAsn
-	Assert-NotNull $peerAsn
-	$legacy | New-AzPeering -Name $resourceName -ResourceGroupName testCarrier -PeeringLocation $legacy.PeeringLocation -PeerAsnResourceId $peerAsn.Id 
-	$newPeering = Get-AzPeering -ResourceGroupName testCarrier -Name $resourceName
-	Assert-NotNull $newPeering
-	Assert-AreEqual $resourceName $newPeering.Name
+#asn has to be hard coded because its unique and finite amoungst locations
+	$asnId = $asn
+	$asnPeerName = getAssetName "Global"
+	$asnPeer = getAssetName 
+	[string[]]$emails = "noc@$asnPeer.com","noc@$asnPeerName.com"
+	$phone = getAssetName
+	$created = New-AzPeerAsn -Name $asnPeerName -PeerName $asnPeer -PeerAsn $asnId -Email $emails -Phone $phone
+	return $created
 }

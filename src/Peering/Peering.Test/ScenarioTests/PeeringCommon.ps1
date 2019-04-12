@@ -12,6 +12,11 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+#cd ..
+$dll = dir | Where-Object {$_.Name -match "Peering.Test.dll"} | % {$_.FullName};
+[Reflection.Assembly]::LoadFile($dll);
+$ipGenerator = New-Object Microsoft.Azure.Commands.Peering.Test.ScenarioTests.IPGenerator;
+
 <#
 .SYNOPSIS
 Gets valid resource group name
@@ -39,6 +44,7 @@ function Get-ProviderLocation($provider)
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
     {
         $namespace = $provider.Split("/")[0]  
+		Write-Debug "Namespace: $namespace"
         if($provider.Contains("/"))  
         {  
             $type = $provider.Substring($namespace.Length + 1)  
@@ -46,17 +52,17 @@ function Get-ProviderLocation($provider)
   
             if ($location -eq $null) 
             {  
-                return "West US"  
+                return "Central US"  
             } else 
             {  
                 return $location.Locations[0]  
             }  
         }
         
-        return "West US"
+        return "Central US"
     }
 
-    return "WestUS"
+    return "Central US"
 }
 
 <#
@@ -65,10 +71,64 @@ Creates a resource group to use in tests
 #>
 function TestSetup-CreateResourceGroup
 {
-    $resourceGroupName = getAssetName
-    $rglocation = Get-ProviderLocation "Central US"
+    $resourceGroupName = getAssetName "MockRg"
+	Write-Debug "ResourceGroupName: $resourceGroupName"
+    $rglocation = "Central US"
     $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -location $rglocation -Force
+	Write-Debug "Created $resourceGroupName"
     return $resourceGroup
+}
+
+function getPeeringLocation ($kind, $location)
+{
+	return Get-AzPeeringLocation -Kind $kind -PeeringLocation $location
+}
+
+function isDirect ($t)
+{
+	if ($t -eq $true){
+		return "Direct"
+	}
+	return "Exchange"
+}
+
+function newIpV4Address ($withPrefix, $maxPrefix, $offset, $randomNum)
+{
+		$ipv4 = $ipGenerator.CreateIpv4Address($randomNum, $maxPrefix);
+		return $ipGenerator.OffSet($ipv4, $false, $offset, $withPrefix);
+}
+
+function newIpV6Address ($withPrefix, $maxPrefix, $offset, $randomNum)
+{
+		$ipv6 = $ipGenerator.CreateIpv4Address($randomNum, $maxPrefix);
+		return $ipGenerator.OffSet($ipv6, $true, $offset, $withPrefix);
+}
+
+function changeIp($address, $isv6, $offset, $withPrefix){
+return $ipGenerator.OffSet($address, $isv6, $offset, $withPrefix);
+}
+
+function maxAdvertisedIpv4
+{
+	return $ipGenerator.BuildMaxPrefixes($false);
+}
+
+function maxAdvertisedIpv6
+{
+return $ipGenerator.BuildMaxPrefixes($true);
+}
+
+function getHash
+{
+Write-Debug "Getting hash"
+$hash = $ipGenerator.BuildHash()
+Write-Debug "Return $hash"
+return "$hash"
+}
+
+function getBandwidth
+{
+	return $ipGenerator.GetBandwidth()
 }
 
 <#
@@ -93,29 +153,14 @@ function Assert-Tags($tags1, $tags2)
 
 <#
 .SYNOPSIS
-Asserts if two compression types are equal
+Cleans the created resource groups
 #>
-function Assert-CompressionTypes($types1, $types2)
+function Clean-ResourceGroup($rgname)
 {
-    if($types1.Count -ne $types1.Count)
-    {
-        throw "Array size not equal. Types1: $types1.count Types2: $types2.count"
-    }
-
-    foreach($value1 in $types1)
-    {
-        $found = $false
-        foreach($value2 in $types2)
-        {
-            if($value1.CompareTo($value2) -eq 0)
-            {
-                $found = $true
-                break
-            }
-        }
-        if(-Not($found))
-        {
-            throw "Compression content not equal. " + $value1 + " cannot be found in second array"
-        }
+	$assemblies = [AppDomain]::Currentdomain.GetAssemblies() | Select-Object FullName | ForEach-Object { $_.FullName.Substring(0, $_.FullName.IndexOf(',')) }
+    if ($assemblies -notcontains 'Microsoft.Azure.Test.HttpRecorder.HttpMockServer' `
+		-or $assemblies -notcontains 'Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode' `
+		-or [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
+        Remove-AzResourceGroup -Name $rgname -Force
     }
 }

@@ -120,6 +120,9 @@
   <data name="ContinueMessage" xml:space="preserve">
     <value>You are about to remove an {0} Resource. Are you sure?</value>
   </data>
+  <data name="Error_InvalidEmailAddress" xml:space="preserve">
+    <value>Invalid email address input {0}.</value>
+  </data>
   <data name="ProcessMessage" xml:space="preserve">
     <value>InputObject {0} Resource being removed.</value>
   </data>

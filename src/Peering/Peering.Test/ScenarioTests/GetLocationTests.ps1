@@ -19,7 +19,7 @@ function Test-GetLocationKindDirect
 {
     $location = Get-AzPeeringLocation -Kind Direct 
 	Assert-NotNull $location
-	Assert-AreEqual 91 $location.Count
+	Assert-True { $location.Count -gt 30}
 }
 <#
 .SYNOPSIS
@@ -29,7 +29,7 @@ function Test-GetLocationKindExchange
 {
     $location = Get-AzPeeringLocation -Kind Exchange 
 	Assert-NotNull $location
-	Assert-AreEqual 133 $location.Count
+	Assert-True {$location.Count -gt 60}
 }
 <#
 .SYNOPSIS

@@ -152,7 +152,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// ResourceGroupNameHelp
         /// </summary>
-        public const string ResourceGroupNameHelp = "The resource group name.";
+        public const string ResourceGroupNameHelp = "The create or use an existing resource group name.";
 
         /// <summary>
         /// The resource id help.
