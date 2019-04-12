@@ -275,6 +275,9 @@ Returns information about Azure SQL Database Sync Members.
 ### [Get-AzSqlSyncSchema](Get-AzSqlSyncSchema.md)
 Returns information about the sync schema of a member database or a hub database.
 
+### [Get-AzSqlVirtualCluster](Get-AzSqlVirtualCluster.md)
+Returns information about Azure SQL Virtual Cluster.
+
 ### [New-AzSqlDatabase](New-AzSqlDatabase.md)
 Creates a database or an elastic database.
 
@@ -412,6 +415,9 @@ Removes an Azure SQL Database Sync Group.
 
 ### [Remove-AzSqlSyncMember](Remove-AzSqlSyncMember.md)
 Removes an Azure SQL Database Sync Member.
+
+### [Remove-AzSqlVirtualCluster](Remove-AzSqlVirtualCluster.md)
+Removes an Azure SQL Virtual Cluster.
 
 ### [Restore-AzSqlDatabase](Restore-AzSqlDatabase.md)
 Restores a SQL database.
