@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             {
                 var subscriptionsList = SubscriptionId ?? new[] { DefaultContext.Subscription.Id };
 
-                if (ShouldProcess(string.Join(",", subscriptionsList), string.Format(Resources.CreateAssignmentShouldProcessString, Name)))
+                if (ShouldProcess(string.Join(",", subscriptionsList), string.Format(Resources.UpdateAssignmentShouldProcessString, Name)))
                 {
                     var assignment = CreateAssignmentObject(
                         this.IsParameterBound(c => c.UserAssignedIdentity)
