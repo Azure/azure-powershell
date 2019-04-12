@@ -29,6 +29,7 @@
 #### Az.DataFactory
 * Updated ADF .Net SDK version to 3.0.2
 * Updated Set-AzDataFactoryV2 cmdlet with extra parameters for RepoConfiguration related settings.
+* Add SsisProperties if NodeCount not null for managed integration runtime.
 
 #### Az.Resources
 * Improve handling of providers for 'Get-AzResource' when providing '-ResourceId' or '-ResourceGroupName', '-Name' and '-ResourceType' parameters
