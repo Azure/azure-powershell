@@ -206,7 +206,7 @@ Gets the default location for a resource group
 #>
 function Get-ResourceGroupLocation()
 {
-	return "West US"
+    return Get-Location -providerNamespace "Microsoft.Resources"  -resourceType "resourceGroups" -preferredLocation "West US"
 }
 
 <#
