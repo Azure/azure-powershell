@@ -17,19 +17,25 @@ NewDirectConnectionWithV4V6
 #>
 function Test-NewDirectConnectionWithV4V6
 {
-    $resourceName = "testAkamaiEPV4V6"
-	$md5 = "25234523452123411fd234qdwfas3234"
-	$facilityId = "99999"
-	$sessionv4 = "192.168.1.0/31"
-	$sessionv6 = "fe01::0/127"
-	$maxv4 = 20000
-	$maxv6 = 2000
-	$bandwidth = 30000
-    $resourceGroup = "testCarrier" #TestSetup-CreateResourceGroup
-    $resourceLocation = "CentralUS"
-    $tags = @{"tag1" = "value1"; "tag2" = "value2"}
+	#Hard Coded locations becuase of limitations in locations
+	$kind = isDirect $true;
+	$loc = "Los Angeles"
+	$peeringLocation = getPeeringLocation $kind $loc;
+	$facilityId = $peeringLocation[0].PeeringDBFacilityId
+	#Create some data for the object
+	$bandwidth = getBandwidth
+	Write-Debug "Creating Connection at $facilityId"
+	$md5 = getHash
+	$md5 = $md5.ToString()
+	Write-Debug "Created Hash $md5"
+	$sessionv4 = newIpV4Address $true $true 0 0
+	$sessionv6 = newIpV6Address $true $true 0 0
+	Write-Debug "Created IPs $sessionv4 $SessionPrefixV6"
+	$maxv4 = maxAdvertisedIpv4
+	$maxv6 = maxAdvertisedIpv6
+	Write-Debug "Created maxAdvertised $maxv4 $maxv6"
+	#create Connection
     $createdConnection = New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV4 $sessionv4 -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv4 $maxv4 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5
-	Get-AzPeerAsn
     Assert-AreEqual $md5 $createdConnection.BgpSession.Md5AuthenticationKey
     Assert-AreEqual $bandwidth $createdConnection.BandwidthInMbps 
 	Assert-AreEqual $facilityId $createdConnection.PeeringDBFacilityId 
@@ -42,12 +48,22 @@ NewDirectConnectionWithV6 v6 should be null
 #>
 function Test-NewDirectConnectionWithV4
 {
-	$md5 = "25234523452123411fd234qdwfas3234"
-	$facilityId = "99999"
-	$sessionv4 = "192.168.1.0/31"
-	$bandwidth = 30000
-	$maxv4 = 20000
-	$maxv6 = 2000
+	#Hard Coded locations becuase of limitations in locations
+	$kind = isDirect $true;
+	$loc = "Amsterdam"
+	$peeringLocation = getPeeringLocation $kind $loc;
+	$facilityId = $peeringLocation[0].PeeringDBFacilityId
+	#Create some data for the object
+	$bandwidth = getBandwidth
+	Write-Debug "Creating Connection at $facilityId"
+	$md5 = getHash
+	$md5 = $md5.ToString()
+	Write-Debug "Created Hash $md5"
+	$sessionv4 = newIpV4Address $true $true 0 0
+	Write-Debug "Created IPs $sessionv4"
+	$maxv4 = maxAdvertisedIpv4
+	Write-Debug "Created maxAdvertised $maxv4"
+	#create Connection
     $createdConnection = New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV4 $sessionv4 -MaxPrefixesAdvertisedIPv4 $maxv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5
 	Get-AzPeerAsn
     Assert-AreEqual $md5 $createdConnection.BgpSession.Md5AuthenticationKey
@@ -62,13 +78,22 @@ NewDirectConnectionWithV6 v4 should be Null
 #>
 function Test-NewDirectConnectionWithV6
 {
-	$md5 = "25234523452123411fd234qdwfas3234"
-	$facilityId = "99999"
-	$sessionv6 = "fe01::0/127"
-	$bandwidth = 30000
-	$maxv4 = 20000
-	$maxv6 = 2000
-	Get-AzPeerAsn
+	#Hard Coded locations becuase of limitations in locations
+	$kind = isDirect $true;
+	$loc = "Los Angeles"
+	$peeringLocation = getPeeringLocation $kind $loc;
+	$facilityId = $peeringLocation[0].PeeringDBFacilityId
+	#Create some data for the object
+	$bandwidth = getBandwidth
+	Write-Debug "Creating Connection at $facilityId"
+	$md5 = getHash
+	$md5 = $md5.ToString()
+	Write-Debug "Created Hash $md5"
+	$sessionv6 = newIpV6Address $true $true 0 0
+	Write-Debug "Created IPs $SessionPrefixV6"
+	$maxv6 = maxAdvertisedIpv6
+	Write-Debug "Created maxAdvertised $maxv6"
+	#create Connection
     $createdConnection = New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5
     Assert-AreEqual $md5 $createdConnection.BgpSession.Md5AuthenticationKey
     Assert-AreEqual $bandwidth $createdConnection.BandwidthInMbps 
@@ -82,12 +107,24 @@ NewDirectConnectionNoSession should fail with null value
 #>
 function Test-NewDirectConnectionNoSession
 {
-	$md5 = "25234523452123411fd234qdwfas3234"
-	$facilityId = "99999"
-	$bandwidth = 20000
-	$maxv4 = 20000
-	$maxv6 = 2000
-	Get-AzPeerAsn
+	#Hard Coded locations becuase of limitations in locations
+	$kind = isDirect $true;
+	$loc = "Ashburn"
+	$peeringLocation = getPeeringLocation $kind $loc;
+	$facilityId = $peeringLocation[0].PeeringDBFacilityId
+	#Create some data for the object
+	$bandwidth = getBandwidth
+	Write-Debug "Creating Connection at $facilityId"
+	$md5 = getHash
+	$md5 = $md5.ToString()
+	Write-Debug "Created Hash $md5"
+	$sessionv4 = newIpV4Address $true $true 0 0
+	$sessionv6 = newIpV6Address $true $true 0 0
+	Write-Debug "Created IPs $sessionv4 $SessionPrefixV6"
+	$maxv4 = maxAdvertisedIpv4
+	$maxv6 = maxAdvertisedIpv6
+	Write-Debug "Created maxAdvertised $maxv4 $maxv6"
+	#create Connection
 	Assert-ThrowsContains { New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5 } "Cannot process command because of one or more missing mandatory parameters: SessionPrefixV4."
 }
 <#
@@ -96,14 +133,29 @@ NewDirectConnectionWithV6 should fail with high BandwidthInMbps message
 #>
 function Test-NewDirectConnectionHighBandwidth
 {
-	$md5 = "25234523452123411fd234qdwfas3234"
-	$facilityId = "99999"
-	$sessionv6 = "fe01::0/127"
-	$bandwidth = 300000
-	$maxv4 = 20000
-	$maxv6 = 2000
-	Get-AzPeerAsn
-	Assert-ThrowsContains { New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5 } "The 300000 argument is greater than the maximum allowed range of 100000"
+	#Hard Coded locations becuase of limitations in locations
+	$kind = isDirect $true;
+	$loc = "Los Angeles"
+	$peeringLocation = getPeeringLocation $kind $loc;
+	$facilityId = $peeringLocation[0].PeeringDBFacilityId
+	#Create some data for the object
+	#Set up the wrong BandwidthInMbps
+	$bandwidth = getBandwidth
+	$wrongBandwidth = 10000
+	$bandwidth = $bandwidth * $wrongBandwidth
+	#Anything over 100000 will fail. 
+	Write-Debug "Creating Connection at $facilityId"
+	$md5 = getHash
+	$md5 = $md5.ToString()
+	Write-Debug "Created Hash $md5"
+	$sessionv4 = newIpV4Address $true $true 0 0
+	$sessionv6 = newIpV6Address $true $true 0 0
+	Write-Debug "Created IPs $sessionv4 $SessionPrefixV6"
+	$maxv4 = maxAdvertisedIpv4
+	$maxv6 = maxAdvertisedIpv6
+	Write-Debug "Created maxAdvertised $maxv4 $maxv6"
+	#create Connection
+	Assert-ThrowsContains { New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5 } "The $bandwidth argument is greater than the maximum allowed range of 100000"
 }
 <#
 .SYNOPSIS
@@ -111,14 +163,27 @@ NewDirectConnectionWithV6 should fail with low BandwidthInMbps message
 #>
 function Test-NewDirectConnectionLowBandwidth
 {
-	$md5 = "25234523452123411fd234qdwfas3234"
-	$facilityId = "99999"
-	$sessionv6 = "fe01::0/127"
-	$bandwidth = 0
-	$maxv4 = 20000
-	$maxv6 = 2000
-	Get-AzPeerAsn
-    Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} "The 0 argument is less than the minimum allowed range of 10000"
+	#Hard Coded locations becuase of limitations in locations
+	$kind = isDirect $true;
+	$loc = "Ashburn"
+	$peeringLocation = getPeeringLocation $kind $loc;
+	$facilityId = $peeringLocation[0].PeeringDBFacilityId
+	#Create some data for the object
+	#Set up the wrong BandwidthInMbps
+	$wrongBandwidth = 0
+	#Anything less than 0 will fail.
+	Write-Debug "Creating Connection at $facilityId"
+	$md5 = getHash
+	$md5 = $md5.ToString()
+	Write-Debug "Created Hash $md5"
+	$sessionv4 = newIpV4Address $true $true 0 0
+	$sessionv6 = newIpV6Address $true $true 0 0
+	Write-Debug "Created IPs $sessionv4 $SessionPrefixV6"
+	$maxv4 = maxAdvertisedIpv4
+	$maxv6 = maxAdvertisedIpv6
+	Write-Debug "Created maxAdvertised $maxv4 $maxv6"
+	#create Connection
+    Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $wrongBandwidth -MD5AuthenticationKey $md5} "The $wrongBandwidth argument is less than the minimum allowed range of 10000"
 }
 <#
 .SYNOPSIS
@@ -126,14 +191,26 @@ NewDirectConnectionWithV6 should fail with wrong IP
 #>
 function Test-NewDirectConnectionWrongV6
 {
-	$md5 = "25234523452123411fd234qdwfas3234"
-	$facilityId = "99999"
-	$sessionv6 = "fe01::1/128"
-	$bandwidth = 20000
-		$maxv4 = 20000
-	$maxv6 = 2000
-	Get-AzPeerAsn
-	Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} 'Specified argument was out of the range of valid values'
+	#Hard Coded locations becuase of limitations in locations
+	$kind = isDirect $true;
+	$loc = "Ashburn"
+	$peeringLocation = getPeeringLocation $kind $loc;
+	$facilityId = $peeringLocation[0].PeeringDBFacilityId
+	#Create some data for the object
+	$bandwidth = getBandwidth
+	Write-Debug "Creating Connection at $facilityId"
+	$md5 = getHash
+	$md5 = $md5.ToString()
+	Write-Debug "Created Hash $md5"
+	#set up wrong IP address 
+	$sessionv6 = newIpV6Address $true $true 0 0
+	$wrongv6 = changeIp $sessionv6 $true 1 $true
+	Write-Debug "Created IPs wrong $wrongv6 correct $sessionv6"
+	$maxv4 = maxAdvertisedIpv4
+	$maxv6 = maxAdvertisedIpv6
+	Write-Debug "Created maxAdvertised $maxv4 $maxv6"
+	#create Connection
+	Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV6 $wrongv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} "IP address: $wrongv6 must be"
 }
 <#
 .SYNOPSIS
@@ -141,12 +218,24 @@ NewDirectConnectionWithV4 with fail on wrong IP
 #>
 function Test-NewDirectConnectionWrongV4
 {
-	$md5 = "25234523452123411fd234qdwfas3234"
-	$facilityId = "99999"
-	$sessionv4 = "192.168.1.1/32"
-	$bandwidth = 30000
-	$maxv4 = 20000
-	$maxv6 = 2000
-	Get-AzPeerAsn
-	Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV4 $sessionv4 -MaxPrefixesAdvertisedIPv4 $maxv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} "Parameter name: Invalid Prefix: 192.168.1.1/32, must be either /30 or /31"
+	#Hard Coded locations becuase of limitations in locations
+	$kind = isDirect $true;
+	$loc = "Ashburn"
+	$peeringLocation = getPeeringLocation $kind $loc;
+	$facilityId = $peeringLocation[0].PeeringDBFacilityId
+	#Create some data for the object
+	$bandwidth = getBandwidth
+	Write-Debug "Creating Connection at $facilityId"
+	$md5 = getHash
+	$md5 = $md5.ToString()
+	Write-Debug "Created Hash $md5"
+	#set up wrong IP address 
+	$sessionv4 = newIpV4Address $true $true 0 0
+	$wrongv4 = changeIp $sessionv4 $false 1 $true
+	Write-Debug "Created IPs wrong $wrongv4 correct $sessionv4"
+	$maxv4 = maxAdvertisedIpv4
+	$maxv6 = maxAdvertisedIpv6
+	Write-Debug "Created maxAdvertised $maxv4 $maxv6"
+	#create Connection
+	Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV4 $wrongv4 -MaxPrefixesAdvertisedIPv4 $maxv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5.ToString} "IP address: $wrongv4 must be "
 }

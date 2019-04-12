@@ -85,6 +85,41 @@ return $legacy
 }
 <#
 .SYNOPSIS
+Convert Legacy Exchange to New Peering
+#>
+function Test-ConvertLegacyExchangeNewPeering
+{
+	#Hard Coded locations becuase of limitations in locations
+	$kind = isDirect $false;
+	$loc = "Seattle"
+	$resourceGroup = "testCarrier"
+	#asn has to be hard coded because its unique and finite amoungst locations
+	$asnId = 11164
+	$resourceName = getAssetName "LegacyConvertDirect"
+	$asnPeerName = getAssetName "PeerName"
+	$asnPeer = "Contoso"
+	$email = "noc@$asnPeer.com"
+	$phone = getAssetName
+	New-AzPeerAsn -Name $asnPeerName -PeerName $asnPeer -PeerAsn $asnId -Email $email -Phone $phone
+	#the ASN has to be "Approved" by admins prior to this call. 
+	$asn = Get-AzPeerAsn $asnPeerName
+	Assert-NotNull $asn
+	try{
+	Assert-AreEqual "Approved" $asn.ValidationState
+    $legacy = Get-AzLegacyPeering -Kind $kind -PeeringLocation $loc  
+	Assert-NotNull $legacy
+	$legacy | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $legacy.PeeringLocation -PeerAsnResourceId $asn.Id 
+	$newPeering = Get-AzPeering -ResourceGroupName testCarrier -Name $resourceName
+	Assert-NotNull $newPeering
+	#Assert-AreEqual $legacy.
+	#Assert-AreEqual $resourceName $newPeering.Name
+	}
+	finally{
+		Remove-AzPeerAsn -Name $asnPeerName -Force
+		}
+}
+<#
+.SYNOPSIS
 Helper New Asn Exchange
 #>
 function Test-ConvertLegacyToExchange

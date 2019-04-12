@@ -59,15 +59,5 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLegacyKindDirectAmsterdam");
         }
-
-        /// <summary>
-        /// The test convert legacy direct new peering.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestConvertLegacyDirectNewPeering()
-        {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-ConvertLegacyDirectNewPeering");
-        }
     }
 }

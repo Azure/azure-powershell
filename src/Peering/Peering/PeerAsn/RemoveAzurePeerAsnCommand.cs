@@ -85,17 +85,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
                 {
                     this.ConfirmAction(
                         this.Force,
-                        $"You are about to remove an {this.InputObject.Name} Resource. Are you sure?",
                         string.Format(Resources.ContinueMessage, this.InputObject.Name),
-                        string.Format(Resources.ProcessMessage, this.InputObject.Name),
+                        string.Format(Resources.ContinueMessage, this.InputObject.Name),
+                        this.InputObject.Name,
                         this.RemovePeerAsn);
                 }
                 if (this.ParameterSetName.Equals(Constants.ParameterSetNameByName, StringComparison.OrdinalIgnoreCase))
                 {
                     this.ConfirmAction(
                         this.Force,
-                        string.Format(Resources.ContinueMessage, this.InputObject.Name),
-                        string.Format(Resources.ProcessMessage, this.InputObject.Name),
+                        string.Format(Resources.ContinueMessage, this.Name),
+                        string.Format(Resources.ProcessMessage, this.Name),
                         this.Name,
                         this.RemovePeerAsn);
                 }

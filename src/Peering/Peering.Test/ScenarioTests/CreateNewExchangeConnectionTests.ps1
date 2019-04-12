@@ -17,25 +17,30 @@ NewExchangeConnectionV4V6
 #>
 function Test-NewExchangeConnectionV4V6
 {
-    $resourceName = "testAkamaiEPV4V6"
-	$md5 = "25234523452123411fd234qdwfas3234"
-	$facilityId = "99999"
-	$maxPrefixesAdvertisedIPv4 = 23
-	$maxPrefixesAdvertisedIPv6 = 45
-	$PeerSessionIPv4Address = "192.168.1.22/32"
-	$PeerSessionIPv6Address = "fe01::22/128"
-    $resourceGroup = "testCarrier" #TestSetup-CreateResourceGroup
-    $resourceLocation = "CentralUS"
-    $tags = @{"tag1" = "value1"; "tag2" = "value2"}
-    $createdConnection = New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxPrefixesAdvertisedIPv4 -MaxPrefixesAdvertisedIPv6 $maxPrefixesAdvertisedIPv6 -PeerSessionIPv4Address $PeerSessionIPv4Address -PeerSessionIPv6Address $PeerSessionIPv6Address -MD5AuthenticationKey $md5
-	Get-AzPeerAsn
-    Assert-AreEqual $md5 $createdConnection.BgpSession.Md5AuthenticationKey
-    Assert-AreEqual $bandwidth $createdConnection.BandwidthInMbps 
+	#Hard Coded locations becuase of limitations in locations
+	$kind = isDirect $false;
+	$loc = "Los Angeles"
+	$peeringLocation = getPeeringLocation $kind $loc;
+	$facilityId = $peeringLocation[0].PeeringDBFacilityId
+	#Create some data for the object
+	Write-Debug "Creating Connection at $facilityId"
+	$md5 = getHash
+	$md5 = $md5.ToString()
+	Write-Debug "Created Hash $md5"
+	$sessionv4 = newIpV4Address $false $false 0 0
+	$sessionv6 = newIpV6Address $false $false 0 0
+	Write-Debug "Created IPs $sessionv4"
+	$maxv4 = maxAdvertisedIpv4
+	$maxv6 = maxAdvertisedIpv6
+	Write-Debug "Created maxAdvertised $maxv4 $maxv6"
+	#create Connection
+    $createdConnection = New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxv4 -MaxPrefixesAdvertisedIPv6 $maxv6 -PeerSessionIPv4Address $sessionv4 -PeerSessionIPv6Address $sessionv6 -MD5AuthenticationKey $md5
+	Assert-AreEqual $md5 $createdConnection.BgpSession.Md5AuthenticationKey
 	Assert-AreEqual $facilityId $createdConnection.PeeringDBFacilityId 
-    Assert-AreEqual $maxPrefixesAdvertisedIPv4 $createdConnection.BgpSession.MaxPrefixesAdvertisedV4
-    Assert-AreEqual $maxPrefixesAdvertisedIPv6 $createdConnection.BgpSession.MaxPrefixesAdvertisedv6
-	Assert-AreEqual $PeerSessionIPv4Address $createdConnection.BgpSession.PeerSessionIPv4Address
-    Assert-AreEqual $PeerSessionIPv6Address $createdConnection.BgpSession.PeerSessionIPv6Address
+    Assert-AreEqual $maxv4 $createdConnection.BgpSession.MaxPrefixesAdvertisedV4
+    Assert-AreEqual $maxv6 $createdConnection.BgpSession.MaxPrefixesAdvertisedv6
+	Assert-AreEqual $sessionv4 $createdConnection.BgpSession.PeerSessionIPv4Address
+    Assert-AreEqual $sessionv6 $createdConnection.BgpSession.PeerSessionIPv6Address
 }
 <#
 .SYNOPSIS
@@ -43,19 +48,30 @@ NewExchangeConnectionV4
 #>
 function Test-NewExchangeConnectionV4
 {
-	$md5 = "25234523452123411fd234qdwfas3234"
-	$facilityId = "99999"
-	$maxPrefixesAdvertisedIPv4 = 23
-	$PeerSessionIPv4Address = "192.168.1.22/32"
-    $createdConnection = New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxPrefixesAdvertisedIPv4 -PeerSessionIPv4Address $PeerSessionIPv4Address -MD5AuthenticationKey $md5
-	Get-AzPeerAsn
-    Assert-AreEqual $md5 $createdConnection.BgpSession.Md5AuthenticationKey
-    Assert-AreEqual $bandwidth $createdConnection.BandwidthInMbps 
+	#Hard Coded locations becuase of limitations in locations
+	$kind = isDirect $false;
+	$loc = "Los Angeles"
+	$peeringLocation = getPeeringLocation $kind $loc;
+	$facilityId = $peeringLocation[0].PeeringDBFacilityId
+	#Create some data for the object
+	Write-Debug "Creating Connection at $facilityId"
+	$md5 = getHash
+	$md5 = $md5.ToString()
+	Write-Debug "Created Hash $md5"
+	$sessionv4 = newIpV4Address $false $false 0 0
+	$sessionv6 = $null
+	Write-Debug "Created IPs $sessionv4"
+	$maxv4 = maxAdvertisedIpv4
+	$maxv6 = $null
+	Write-Debug "Created maxAdvertised $maxv4 $maxv6"
+	#create Connection
+    $createdConnection = New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxv4 -PeerSessionIPv4Address $sessionv4 -MD5AuthenticationKey $md5
+	Assert-AreEqual $md5 $createdConnection.BgpSession.Md5AuthenticationKey
 	Assert-AreEqual $facilityId $createdConnection.PeeringDBFacilityId 
-    Assert-AreEqual $maxPrefixesAdvertisedIPv4 $createdConnection.BgpSession.MaxPrefixesAdvertisedV4
-    Assert-Null $createdConnection.BgpSession.MaxPrefixesAdvertisedv6
-	Assert-AreEqual $PeerSessionIPv4Address $createdConnection.BgpSession.PeerSessionIPv4Address
-    Assert-Null $createdConnection.BgpSession.PeerSessionIPv6Address
+    Assert-AreEqual $maxv4 $createdConnection.BgpSession.MaxPrefixesAdvertisedV4
+    Assert-AreEqual $maxv6 $createdConnection.BgpSession.MaxPrefixesAdvertisedv6
+	Assert-AreEqual $sessionv4 $createdConnection.BgpSession.PeerSessionIPv4Address
+    Assert-AreEqual $sessionv6 $createdConnection.BgpSession.PeerSessionIPv6Address
 }
 <#
 .SYNOPSIS
@@ -63,30 +79,51 @@ NewExchangeConnectionV6
 #>
 function Test-NewExchangeConnectionV6
 {
-	$md5 = "25234523452123411fd234qdwfas3234"
-	$facilityId = "99999"
-	$maxPrefixesAdvertisedIPv6 = 45
-	$PeerSessionIPv6Address = "fe01::22/128"
-    $createdConnection = New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv6 $maxPrefixesAdvertisedIPv6 -PeerSessionIPv6Address $PeerSessionIPv6Address -MD5AuthenticationKey $md5
-	Get-AzPeerAsn
-    Assert-AreEqual $md5 $createdConnection.BgpSession.Md5AuthenticationKey
-    Assert-AreEqual $bandwidth $createdConnection.BandwidthInMbps 
+	#Hard Coded locations becuase of limitations in locations
+	$kind = isDirect $false;
+	$loc = "Los Angeles"
+	$peeringLocation = getPeeringLocation $kind $loc;
+	$facilityId = $peeringLocation[0].PeeringDBFacilityId
+	#Create some data for the object
+	Write-Debug "Creating Connection at $facilityId"
+	$md5 = getHash
+	$md5 = $md5.ToString()
+	Write-Debug "Created Hash $md5"
+	$sessionv6 = newIpV6Address $false $false 0 0
+	Write-Debug "Created IPs $sessionv4"
+	$maxv6 = maxAdvertisedIpv6
+	Write-Debug "Created maxAdvertised $maxv4 $maxv6"
+	#create Connection
+    $createdConnection = New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv6 $maxv6 -PeerSessionIPv6Address $sessionv6 -MD5AuthenticationKey $md5
+	Assert-AreEqual $md5 $createdConnection.BgpSession.Md5AuthenticationKey
 	Assert-AreEqual $facilityId $createdConnection.PeeringDBFacilityId 
-    Assert-Null $createdConnection.BgpSession.MaxPrefixesAdvertisedV4
-    Assert-AreEqual $maxPrefixesAdvertisedIPv6 $createdConnection.BgpSession.MaxPrefixesAdvertisedv6
-	Assert-Null $PeerSessionIPv4Address $createdConnection.BgpSession.PeerSessionIPv4Address
-    Assert-AreEqual $PeerSessionIPv6Address $createdConnection.BgpSession.PeerSessionIPv6Address
+    Assert-AreEqual $null $createdConnection.BgpSession.MaxPrefixesAdvertisedV4
+    Assert-AreEqual $maxv6 $createdConnection.BgpSession.MaxPrefixesAdvertisedv6
+	Assert-AreEqual $null $createdConnection.BgpSession.PeerSessionIPv4Address
+    Assert-AreEqual $sessionv6 $createdConnection.BgpSession.PeerSessionIPv6Address
 }
 <#
 .SYNOPSIS
 NewDirectConnectionWithV4 with fail on wrong IP
 #>
-function Test-NewDirectConnectionWrongV4
+function Test-NewExchangeConnectionWrongV4
 {
-	$md5 = "25234523452123411fd234qdwfas3234"
-	$facilityId = "99999"
-	$sessionv4 = "192.168.1.1/32"
-	$bandwidth = 30000
-	Get-AzPeerAsn
-	Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixIPv4 $sessionv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} "Parameter name: Invalid Prefix: 192.168.1.1/32, must be either /30 or /31"
+	#Hard Coded locations becuase of limitations in locations
+	$kind = isDirect $false;
+	$loc = "Los Angeles"
+	$peeringLocation = getPeeringLocation $kind $loc;
+	$facilityId = $peeringLocation[0].PeeringDBFacilityId
+	#Create some data for the object
+	Write-Debug "Creating Connection at $facilityId"
+	$md5 = getHash
+	$md5 = $md5.ToString()
+	Write-Debug "Created Hash $md5"
+	$sessionv4 = newIpV4Address $false $false 0 0
+	$sessionv6 = newIpV6Address $false $false 0 0
+	Write-Debug "Created IPs $sessionv4"
+	$maxv4 = maxAdvertisedIpv4
+	$maxv6 = maxAdvertisedIpv6
+	Write-Debug "Created maxAdvertised $maxv4 $maxv6"
+	#create Connection
+	Assert-ThrowsContains {New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxv4 -MaxPrefixesAdvertisedIPv6 $maxv6 -PeerSessionIPv4Address $sessionv4 -PeerSessionIPv6Address $sessionv6 -MD5AuthenticationKey $md5} "Parameter name: Invalid Prefix"
 }

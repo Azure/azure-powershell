@@ -125,7 +125,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
                 {
                     foreach (var email in this.Email)
                     {
-                        update.PeerContactInfo.Emails.Add(email);
+                        if (HelperExtensionMethods.IsValidEmail(email))
+                            update.PeerContactInfo.Emails.Add(email);
                     }
                 }
 

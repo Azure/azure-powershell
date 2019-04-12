@@ -12,10 +12,10 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.9.0'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
-#CompatiblePSEditions = 'Core', 'Desktop'
+CompatiblePSEditions = 'Core', 'Desktop'
 
 # ID used to uniquely identify this module
 GUID = '6c848b97-4dd4-49ef-b385-43c64905d25a'
@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Microsoft Peering Service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
 
-For more information on Cdn, please visit the following: https://docs.microsoft.com/azure/cdn/'
+For more information on Cdn, please visit the following:  https://docs.microsoft.com/en-us/powershell/module/az.peering.md'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'
