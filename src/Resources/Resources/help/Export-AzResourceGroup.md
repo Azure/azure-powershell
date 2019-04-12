@@ -16,7 +16,7 @@ Captures a resource group as a template and saves it to a file.
 ```
 Export-AzResourceGroup -ResourceGroupName <String> [-Path <String>] [-IncludeParameterDefaultValue]
  [-IncludeComments] [-SkipResourceNameParameterization] [-SkipAllParameterization]
- [-FilteredResourceIds <String[]>] [-Force] [-ApiVersion <String>] [-Pre]
+ [-ResourceIdFilter <String[]>] [-Force] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -38,14 +38,14 @@ This command captures the resource group named TestGroup as a template, and save
 
 ### Example 2: Export a single resource from a resource group
 ```
-PS C:\>Export-AzResourceGroup -ResourceGroupName "TestGroup" -FilteredResourceIds "/subscriptions/5f43547b-1d2d-4a3e-ace4-88d4b600d568/resourceGroups/TestGroup/providers/Microsoft.Compute/virtualMachines/TestVirtualMachine"
+PS C:\>Export-AzResourceGroup -ResourceGroupName "TestGroup" -ResourceIdFilter "/subscriptions/5f43547b-1d2d-4a3e-ace4-88d4b600d568/resourceGroups/TestGroup/providers/Microsoft.Compute/virtualMachines/TestVirtualMachine"
 ```
 
 This command captures the Virtual Machine resource named "TestVirtualMachine" from the "TestGroup" resource group as a template, and saves it to a JSON file in the current directory.
 
 ### Example 3: Export a selection of resources from a resource group
 ```
-PS C:\>Export-AzResourceGroup -ResourceGroupName "TestGroup" -SkipAllParameterization -FilteredResourceIds @(
+PS C:\>Export-AzResourceGroup -ResourceGroupName "TestGroup" -SkipAllParameterization -ResourceIdFilter @(
   "/subscriptions/5f43547b-1d2d-4a3e-ace4-88d4b600d568/resourceGroups/TestGroup/providers/Microsoft.Compute/virtualMachines/TestVm",
   "/subscriptions/5f43547b-1d2d-4a3e-ace4-88d4b600d568/resourceGroups/TestGroup/providers/Microsoft.Network/networkInterfaces/TestNic"
 )
@@ -78,21 +78,6 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FilteredResourceIds
-A list of resourceIds to filter the results by.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -188,6 +173,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceIdFilter
+A list of resourceIds to filter the results by.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
