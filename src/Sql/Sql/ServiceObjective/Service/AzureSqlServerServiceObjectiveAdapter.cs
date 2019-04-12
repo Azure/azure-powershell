@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
                 Description = string.Empty,
                 Enabled = IsEnabled(slo.Status),
                 Edition = edition.Name,
-                Sku = slo.Sku.Name,
+                SkuName = slo.Sku.Name,
                 Family = slo.Sku.Family,
                 Capacity = slo.Sku.Capacity,
                 CapacityUnit = slo.PerformanceLevel.Unit

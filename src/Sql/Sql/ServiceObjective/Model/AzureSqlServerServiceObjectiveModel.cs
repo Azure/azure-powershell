@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Model
         /// <remarks>
         /// Not used as input to another cmdlet, but useful to help document the available sku names.
         /// </remarks>
-        public string Sku { get; set; }
+        public string SkuName { get; set; }
 
         /// <summary>
         /// Gets or sets the family

@@ -61,7 +61,7 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader><Label>ServiceObjectiveName</Label></TableColumnHeader>
-          <TableColumnHeader><Label>Sku</Label></TableColumnHeader>
+          <TableColumnHeader><Label>SkuName</Label></TableColumnHeader>
           <TableColumnHeader><Label>Edition</Label></TableColumnHeader>
           <TableColumnHeader><Label>Family</Label></TableColumnHeader>
           <TableColumnHeader><Label>Capacity</Label></TableColumnHeader>
@@ -72,7 +72,7 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem><PropertyName>ServiceObjectiveName</PropertyName></TableColumnItem>
-              <TableColumnItem><PropertyName>Sku</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>SkuName</PropertyName></TableColumnItem>
               <TableColumnItem><PropertyName>Edition</PropertyName></TableColumnItem>
               <TableColumnItem><PropertyName>Family</PropertyName></TableColumnItem>
               <TableColumnItem><PropertyName>Capacity</PropertyName></TableColumnItem>
