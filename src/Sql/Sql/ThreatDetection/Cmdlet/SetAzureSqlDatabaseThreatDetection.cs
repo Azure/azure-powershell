@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
@@ -51,7 +52,13 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// Gets or sets the names of the detection types to filter.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Detection types to exclude")]
-        public DetectionType[] ExcludedDetectionType { get; set; }
+        [PSArgumentCompleter(DetectionType.None,
+            DetectionType.Sql_Injection,
+            DetectionType.Sql_Injection_Vulnerability,
+            DetectionType.Unsafe_Action,
+            DetectionType.Data_Exfiltration,
+            DetectionType.Access_Anomaly)]
+        public string[] ExcludedDetectionType { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the storage account to use.

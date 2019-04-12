@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         {
             ICollection<AzureSqlFailoverGroupModel> results;
 
-            if (MyInvocation.BoundParameters.ContainsKey("FailoverGroupName")) 
+            if (MyInvocation.BoundParameters.ContainsKey("FailoverGroupName") && !WildcardPattern.ContainsWildcardCharacters(FailoverGroupName)) 
             {
                 results = new List<AzureSqlFailoverGroupModel>();
                 results.Add(ModelAdapter.GetFailoverGroup(this.ResourceGroupName, this.ServerName, this.FailoverGroupName));
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
                 results = ModelAdapter.ListFailoverGroups(this.ResourceGroupName, this.ServerName);
             }
 
-            return results;
+            return SubResourceWildcardFilter(FailoverGroupName, results);
         }
 
         /// <summary>

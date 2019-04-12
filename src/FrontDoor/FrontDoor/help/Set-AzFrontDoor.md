@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
 online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/set-azfrontdoor
@@ -17,8 +17,8 @@ Update a Front Door load balancer
 Set-AzFrontDoor -ResourceGroupName <String> -Name <String> [-RoutingRule <PSRoutingRule[]>]
  [-BackendPool <PSBackendPool[]>] [-FrontendEndpoint <PSFrontendEndpoint[]>]
  [-LoadBalancingSetting <PSLoadBalancingSetting[]>] [-HealthProbeSetting <PSHealthProbeSetting[]>]
- [-Tag <Hashtable>] [-EnabledState <PSEnabledState>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-EnabledState <PSEnabledState>] [-DisableCertificateNameCheck]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
@@ -26,15 +26,17 @@ Set-AzFrontDoor -ResourceGroupName <String> -Name <String> [-RoutingRule <PSRout
 Set-AzFrontDoor -InputObject <PSFrontDoor> [-RoutingRule <PSRoutingRule[]>] [-BackendPool <PSBackendPool[]>]
  [-FrontendEndpoint <PSFrontendEndpoint[]>] [-LoadBalancingSetting <PSLoadBalancingSetting[]>]
  [-HealthProbeSetting <PSHealthProbeSetting[]>] [-Tag <Hashtable>] [-EnabledState <PSEnabledState>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DisableCertificateNameCheck] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### ResourceIdParameterSet
+### ByResourceIdParameterSet
 ```
 Set-AzFrontDoor -ResourceId <String> [-RoutingRule <PSRoutingRule[]>] [-BackendPool <PSBackendPool[]>]
  [-FrontendEndpoint <PSFrontendEndpoint[]>] [-LoadBalancingSetting <PSLoadBalancingSetting[]>]
  [-HealthProbeSetting <PSHealthProbeSetting[]>] [-Tag <Hashtable>] [-EnabledState <PSEnabledState>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DisableCertificateNameCheck] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,21 +48,21 @@ The **Set-AzFrontDoor** cmdlet updates a Front Door load balancer. If input para
 ```powershell
 PS C:\> Set-AzFrontDoor -Name "frontDoor1" -ResourceGroupName "resourceGroup1" -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1
 
-FriendlyName          : frontdoor1
-RoutingRules          : {routingrule1}
-BackendPools          : {backendpool1}
-HealthProbeSettings   : {healthProbeSetting1}
-LoadBalancingSettings : {loadbalancingsetting1}
-FrontendEndpoints     : {frontendendpoint1}
-EnabledState          : Enabled
-ResourceState         : Enabled
-ProvisioningState     : Succeeded
-Cname                 :
-Tags                  : {tag1, tag2}
-Id                    : /subscriptions/{guid}/resourcegroups/{guid}/providers/M
-                        icrosoft.Network/frontdoors/frontdoor1
-Name                  : frontdoor1
-Type                  : Microsoft.Network/frontdoor1
+FriendlyName                : frontdoor1
+RoutingRules                : {routingrule1}
+BackendPools                : {backendpool1}
+EnforceCertificateNameCheck : Enabled
+HealthProbeSettings         : {healthProbeSetting1}
+LoadBalancingSettings       : {loadbalancingsetting1}
+FrontendEndpoints           : {frontendendpoint1}
+EnabledState                : Enabled
+ResourceState               : Enabled
+ProvisioningState           : Succeeded
+Cname                       :
+Tags                        : {tag1, tag2}
+Id                          : /subscriptions/{guid}/resourcegroups/{guid}/providers/Microsoft.Network/frontdoors/frontdoor1
+Name                        : frontdoor1
+Type                        : Microsoft.Network/frontdoors
 ```
 
 update an existing FrontDoor.
@@ -69,21 +71,21 @@ update an existing FrontDoor.
 ```powershell
 PS C:\>  Set-AzFrontDoor -InputObject $frontDoor1 -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1
 
-FriendlyName          : frontdoor1
-RoutingRules          : {routingrule1}
-BackendPools          : {backendpool1}
-HealthProbeSettings   : {healthProbeSetting1}
-LoadBalancingSettings : {loadbalancingsetting1}
-FrontendEndpoints     : {frontendendpoint1}
-EnabledState          : Enabled
-ResourceState         : Enabled
-ProvisioningState     : Succeeded
-Cname                 :
-Tags                  : {tag1, tag2}
-Id                    : /subscriptions/{guid}/resourcegroups/{guid}/providers/M
-                        icrosoft.Network/frontdoors/frontdoor1
-Name                  : frontdoor1
-Type                  : Microsoft.Network/frontdoor1
+FriendlyName                : frontdoor1
+RoutingRules                : {routingrule1}
+BackendPools                : {backendpool1}
+EnforceCertificateNameCheck : Enabled
+HealthProbeSettings         : {healthProbeSetting1}
+LoadBalancingSettings       : {loadbalancingsetting1}
+FrontendEndpoints           : {frontendendpoint1}
+EnabledState                : Enabled
+ResourceState               : Enabled
+ProvisioningState           : Succeeded
+Cname                       :
+Tags                        : {tag1, tag2}
+Id                          : /subscriptions/{guid}/resourcegroups/{guid}/providers/Microsoft.Network/frontdoors/frontdoor1
+Name                        : frontdoor1
+Type                        : Microsoft.Network/frontdoor1
 ```
 
 update an existing FrontDoor.
@@ -92,21 +94,21 @@ update an existing FrontDoor.
 ```powershell
 PS C:\>  Set-AzFrontDoor -ResourceId {resourceId} -RoutingRule $routingrule1 -BackendPool $backendpool1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1
 
-FriendlyName          : frontdoor1
-RoutingRules          : {routingrule1}
-BackendPools          : {backendpool1}
-HealthProbeSettings   : {healthProbeSetting1}
-LoadBalancingSettings : {loadbalancingsetting1}
-FrontendEndpoints     : {frontendendpoint1}
-EnabledState          : Enabled
-ResourceState         : Enabled
-ProvisioningState     : Succeeded
-Cname                 :
-Tags                  : {tag1, tag2}
-Id                    : /subscriptions/{guid}/resourcegroups/{guid}/providers/M
-                        icrosoft.Network/frontdoors/frontdoor1
-Name                  : frontdoor1
-Type                  : Microsoft.Network/frontdoor1
+FriendlyName                : frontdoor1
+RoutingRules                : {routingrule1}
+BackendPools                : {backendpool1}
+EnforceCertificateNameCheck : Enabled
+HealthProbeSettings         : {healthProbeSetting1}
+LoadBalancingSettings       : {loadbalancingsetting1}
+FrontendEndpoints           : {frontendendpoint1}
+EnabledState                : Enabled
+ResourceState               : Enabled
+ProvisioningState           : Succeeded
+Cname                       :
+Tags                        : {tag1, tag2}
+Id                          : /subscriptions/{guid}/resourcegroups/{guid}/providers/Microsoft.Network/frontdoors/frontdoor1
+Name                        : frontdoor1
+Type                        : Microsoft.Network/frontdoor1
 ```
 
 update an existing FrontDoor.
@@ -135,6 +137,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableCertificateNameCheck
+Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -254,7 +271,7 @@ Resource Id of the Front Door to update
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceIdParameterSet
+Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -326,7 +343,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

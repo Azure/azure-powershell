@@ -19,10 +19,24 @@
 -->
 ## Upcoming Release
 * Replace dependency on Monitor SDK with common code
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Enhanced process of multiple columns classification.
+* Include sku properties (sku name, family, capacity) in response from Get-AzSqlServerServiceObjective and format as table by default.
+
+## Version 1.8.0
+* Support Database Data Classification.
+* Add Get/Remove AzSqlVirtualCluster cmdlets.
+
+## Version 1.7.0
+* Add Vulnerability Assessment cmdlets on Server and Managed Instance
+
+## Version 1.6.0
+* changed Threat Detection's cmdlets param (ExcludeDetectionType) from DetectionType to string[] to make it future proof when new DetectionTypes are added and to support autocomplete as well.
 
 ## Version 1.5.0
 * Updating AuditingEndpointsCommunicator.
     - Fixing the behavior of an edge case while creating new diagnostic settings.
+    
 ## Version 1.4.0
 * Add support for restore an instance database from geo-redundant backups
 * Add support for backup short term retention on Managed Instance

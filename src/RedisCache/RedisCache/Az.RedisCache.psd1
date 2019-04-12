@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.4.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Insights.dll', 
@@ -78,7 +78,7 @@ FunctionsToExport = @()
 CmdletsToExport = 'Remove-AzRedisCachePatchSchedule', 'New-AzRedisCacheScheduleEntry', 
                'Get-AzRedisCachePatchSchedule', 'New-AzRedisCachePatchSchedule', 
                'Reset-AzRedisCache', 'Export-AzRedisCache', 'Import-AzRedisCache', 
-               'Remove-AzRedisCacheDiagnostics', 'Set-AzRedisCacheDiagnostics', 
+               'Remove-AzRedisCacheDiagnostic', 'Set-AzRedisCacheDiagnostic', 
                'Set-AzRedisCache', 'New-AzRedisCacheKey', 'Get-AzRedisCacheKey', 
                'Get-AzRedisCache', 'Remove-AzRedisCache', 'New-AzRedisCache', 
                'New-AzRedisCacheLink', 'Remove-AzRedisCacheLink', 
@@ -89,7 +89,7 @@ CmdletsToExport = 'Remove-AzRedisCachePatchSchedule', 'New-AzRedisCacheScheduleE
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+AliasesToExport = 'Set-AzRedisCacheDiagnostics', 'Remove-AzRedisCacheDiagnostics'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

@@ -1,0 +1,29 @@
+parameters:
+  osName: ''
+  configuration: ''
+
+steps:
+- template: download-build-steps.yml
+  parameters:
+    osName: ${{ parameters.osName }}
+
+- pwsh: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
+  displayName: 'Install platyPS'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Generate Help'
+  inputs:
+    command: custom
+    custom: msbuild
+    arguments: 'build.proj /t:GenerateHelp /p:Configuration=${{ parameters.configuration }}'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Static Analysis'
+  inputs:
+    command: custom
+    custom: msbuild
+    arguments: 'build.proj /t:StaticAnalysis /p:Configuration=${{ parameters.configuration }}'
+
+- template: publish-artifacts-steps.yml
+  parameters:
+    artifactName: analyze-${{ parameters.osName }}

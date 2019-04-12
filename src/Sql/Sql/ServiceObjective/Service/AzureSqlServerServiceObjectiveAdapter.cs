@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.ServiceObjective.Model;
-using Microsoft.Azure.Commands.Sql.ServiceObjective.Services;
-using Microsoft.Azure.Commands.Sql.Services;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.Sql.Location_Capabilities.Services;
+using Microsoft.Azure.Commands.Sql.Server.Services;
+using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
 {
@@ -28,9 +29,14 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
     public class AzureSqlServerServiceObjectiveAdapter
     {
         /// <summary>
-        /// Gets or sets the AzureSqlDatabaseServerServiceObjectiveCommunicator which has all the needed management clients
+        /// Gets or sets the server communicator.
         /// </summary>
-        private AzureSqlServerServiceObjectiveCommunicator Communicator { get; set; }
+        public AzureSqlServerCommunicator ServerCommunicator { get; set; }
+
+        /// <summary>
+        /// Gets or sets the capabilities communicator.
+        /// </summary>
+        public AzureSqlCapabilitiesCommunicator CapabilitiesCommunicator { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
@@ -45,7 +51,8 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
         public AzureSqlServerServiceObjectiveAdapter(IAzureContext context)
         {
             Context = context;
-            Communicator = new AzureSqlServerServiceObjectiveCommunicator(Context);
+            ServerCommunicator = new AzureSqlServerCommunicator(Context);
+            CapabilitiesCommunicator = new AzureSqlCapabilitiesCommunicator(Context);
         }
 
         /// <summary>
@@ -55,10 +62,16 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
         /// <param name="serverName">The name of the server</param>
         /// <param name="serviceObjectiveName">The name of the service objective</param>
         /// <returns>The ServiceObjective</returns>
-        public AzureSqlServerServiceObjectiveModel GetServiceObjective(string resourceGroupName, string serverName, string serviceObjectiveName)
+        public List<AzureSqlServerServiceObjectiveModel> GetServiceObjective(string resourceGroupName, string serverName, string serviceObjectiveName)
         {
-            var resp = Communicator.Get(resourceGroupName, serverName, serviceObjectiveName);
-            return CreateServiceObjectiveModelFromResponse(resourceGroupName, serverName, resp);
+            var server = ServerCommunicator.Get(resourceGroupName, serverName);
+            var capabilities = CapabilitiesCommunicator.Get(server.Location);
+
+            return (
+                from serverVersion in FilterByName(capabilities.SupportedServerVersions, server.Version)
+                from edition in serverVersion.SupportedEditions
+                from serviceObjective in FilterByName(edition.SupportedServiceLevelObjectives, serviceObjectiveName)
+                select CreateServiceObjectiveModelFromResponse(edition, serviceObjective, resourceGroupName, serverName)).ToList();
         }
 
         /// <summary>
@@ -69,34 +82,69 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
         /// <returns>A list of all the ServiceObjectives</returns>
         public List<AzureSqlServerServiceObjectiveModel> ListServiceObjectives(string resourceGroupName, string serverName)
         {
-            var resp = Communicator.List(resourceGroupName, serverName);
+            var server = ServerCommunicator.Get(resourceGroupName, serverName);
+            var capabilities = CapabilitiesCommunicator.Get(server.Location);
 
-            return resp.Select((s) =>
-            {
-                return CreateServiceObjectiveModelFromResponse(resourceGroupName, serverName, s);
-            }).ToList();
+            return (
+                from serverVersion in FilterByName(capabilities.SupportedServerVersions, server.Version)
+                from edition in serverVersion.SupportedEditions
+                from serviceObjective in edition.SupportedServiceLevelObjectives
+                select CreateServiceObjectiveModelFromResponse(edition, serviceObjective, resourceGroupName, serverName)).ToList();
         }
 
         /// <summary>
-        /// Convert a Management.Sql.LegacySdk.Models.ServiceObjective to AzureSqlDatabaseServerServiceObjectiveModel
+        /// Convert a SLO capability to AzureSqlDatabaseServerServiceObjectiveModel
         /// </summary>
-        /// <param name="resourceGroupName">The resource group the server is in</param>
-        /// <param name="serverName">The name of the server</param>
-        /// <param name="resp">The management client ServiceObjective response to convert</param>
+        /// <param name="edition">The edition</param>
+        /// <param name="slo">The service objective</param>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// /// <param name="serverName">The server name</param>
         /// <returns>The converted ServiceObjective model</returns>
-        private static AzureSqlServerServiceObjectiveModel CreateServiceObjectiveModelFromResponse(string resourceGroupName, string serverName, Management.Sql.Models.ServiceObjective resp)
+        private static AzureSqlServerServiceObjectiveModel CreateServiceObjectiveModelFromResponse(
+            EditionCapability edition,
+            ServiceObjectiveCapability slo,
+            string resourceGroupName = null,
+            string serverName = null)
         {
-            AzureSqlServerServiceObjectiveModel slo = new AzureSqlServerServiceObjectiveModel()
+            return new AzureSqlServerServiceObjectiveModel()
             {
                 ResourceGroupName = resourceGroupName,
                 ServerName = serverName,
-                ServiceObjectiveName = resp.ServiceObjectiveName,
-                IsDefault = resp.IsDefault,
-                IsSystem = resp.IsSystem,
-                Description = resp.Description,
-                Enabled = resp.Enabled
+                ServiceObjectiveName = slo.Name,
+                IsDefault = slo.Status == CapabilityStatus.Default,
+                IsSystem = string.Equals(edition.Name, "System", StringComparison.OrdinalIgnoreCase),
+                Description = string.Empty,
+                Enabled = IsEnabled(slo.Status),
+                Edition = edition.Name,
+                SkuName = slo.Sku.Name,
+                Family = slo.Sku.Family,
+                Capacity = slo.Sku.Capacity,
+                CapacityUnit = slo.PerformanceLevel.Unit
             };
-            return slo;
+        }
+
+        #region Filter by name
+
+        private static IEnumerable<ServerVersionCapability> FilterByName(IEnumerable<ServerVersionCapability> capabilities, string name)
+        {
+            return capabilities.Where(c => string.Equals(c.Name, name, StringComparison.OrdinalIgnoreCase));
+        }
+
+        private static IEnumerable<EditionCapability> FilterByName(IEnumerable<EditionCapability> capabilities, string name)
+        {
+            return capabilities.Where(c => string.Equals(c.Name, name, StringComparison.OrdinalIgnoreCase));
+        }
+
+        private static IEnumerable<ServiceObjectiveCapability> FilterByName(IEnumerable<ServiceObjectiveCapability> capabilities, string name)
+        {
+            return capabilities.Where(c => string.Equals(c.Name, name, StringComparison.OrdinalIgnoreCase));
+        }
+
+        #endregion
+
+        private static bool IsEnabled(CapabilityStatus? status)
+        {
+            return status == CapabilityStatus.Default || status == CapabilityStatus.Available;
         }
     }
 }
