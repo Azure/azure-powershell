@@ -54,7 +54,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.16.3.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.17.5.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -191,8 +191,7 @@
     <Compile Include="Extension\VmssDiskEncryption\GetAzureVmssVMDiskEncryptionStatus.cs" />
     <Compile Include="Extension\VmssDiskEncryption\SetAzureVmssDiskEncryptionExtension.cs" />
     <Compile Include="Generated\**\*.cs" />
-    <Compile Include="Manual\PSVirtualMachineScaleSet.cs" />
-    <Compile Include="Manual\VirtualMachineScaleSetCreateOrUpdateMethod.cs" />
+    <Compile Include="Manual\*.cs" />
     <Compile Include="Images\GetAzureVMImageCommand.cs" />
     <Compile Include="Common\HashTableExtensions.cs" />
     <Compile Include="Models\AzureDiskEncryptionStatusContext.cs" />
@@ -378,6 +377,10 @@
     <None Include="Extension\AzureDiskEncryption\Scripts\AzureDiskEncryptionPreRequisiteSetup.ps1" />
     <None Include="Generated\Microsoft.Azure.Commands.Compute.Automation.format.generated.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Microsoft.Azure.Commands.Compute.dll-Help.psd1">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Include="Microsoft.Azure.Commands.Compute.format.generated.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -392,6 +395,9 @@
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
     </None>
   </ItemGroup>
   <ItemGroup>

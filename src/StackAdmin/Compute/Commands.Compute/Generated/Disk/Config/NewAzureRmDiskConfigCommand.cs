@@ -56,6 +56,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 3,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceManager.Common.ArgumentCompleters.LocationCompleter("Microsoft.Compute/disks")]
         public string Location { get; set; }
 
         [Parameter(
@@ -207,7 +208,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 vEncryptionSettings.KeyEncryptionKey = this.KeyEncryptionKey;
             }
-
 
             var vDisk = new PSDisk
             {

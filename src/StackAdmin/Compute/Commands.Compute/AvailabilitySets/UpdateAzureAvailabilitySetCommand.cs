@@ -51,6 +51,9 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Managed Availability Set")]
         public SwitchParameter Managed { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.ShouldProcess(AvailabilitySet.Name, VerbsData.Update))

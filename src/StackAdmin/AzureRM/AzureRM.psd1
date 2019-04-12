@@ -53,7 +53,7 @@
     # Modules that must be imported into the global environment prior to importing this module
     RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.8.3'; },
         @{ModuleName = 'Azure.Storage'; RequiredVersion = '4.5.0'; },
-        @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '4.0.3'; },
+        @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '4.6.1'; },
         @{ModuleName = 'AzureRM.Dns'; RequiredVersion = '3.5.1'; },
         @{ModuleName = 'AzureRM.KeyVault'; RequiredVersion = '4.2.0'; },
         @{ModuleName = 'AzureRM.Network'; RequiredVersion = '5.0.1'; },

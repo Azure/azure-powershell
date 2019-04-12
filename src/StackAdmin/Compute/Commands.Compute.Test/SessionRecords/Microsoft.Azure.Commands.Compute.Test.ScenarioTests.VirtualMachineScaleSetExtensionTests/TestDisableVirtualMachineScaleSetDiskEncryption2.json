@@ -1,0 +1,131 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/7dec1fd6-2e45-4798-9be5-efba704319b4/resourceGroups/hyleevmssdetest2/providers/Microsoft.Compute/virtualMachineScaleSets/vmsshyleevmssdetest2?api-version=2017-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2RlYzFmZDYtMmU0NS00Nzk4LTliZTUtZWZiYTcwNDMxOWI0L3Jlc291cmNlR3JvdXBzL2h5bGVldm1zc2RldGVzdDIvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NoeWxlZXZtc3NkZXRlc3QyP2FwaS12ZXJzaW9uPTIwMTctMTItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1842e371-a09e-4c23-9705-2ad4f40c6896"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3324.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/17.5.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "dc6a00e4-b7be-4ca1-815c-8447b2c8aa6e"
+        ],
+        "x-ms-correlation-request-id": [
+          "dc6a00e4-b7be-4ca1-815c-8447b2c8aa6e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190328T223601Z:dc6a00e4-b7be-4ca1-815c-8447b2c8aa6e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Mar 2019 22:36:00 GMT"
+        ],
+        "Content-Length": [
+          "108"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'hyleevmssdetest2' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/7dec1fd6-2e45-4798-9be5-efba704319b4/resourcegroups/hyleevmssdetest2?api-version=2018-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2RlYzFmZDYtMmU0NS00Nzk4LTliZTUtZWZiYTcwNDMxOWI0L3Jlc291cmNlZ3JvdXBzL2h5bGVldm1zc2RldGVzdDI/YXBpLXZlcnNpb249MjAxOC0wNS0wMQ==",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "aef7c19f-31df-4be3-bb90-bd882f0d4db6"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3324.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.9.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "62fa8c5c-ce3d-42a7-b8ad-64a05c71689e"
+        ],
+        "x-ms-correlation-request-id": [
+          "62fa8c5c-ce3d-42a7-b8ad-64a05c71689e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190328T223601Z:62fa8c5c-ce3d-42a7-b8ad-64a05c71689e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Mar 2019 22:36:00 GMT"
+        ],
+        "Content-Length": [
+          "108"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 404
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "7dec1fd6-2e45-4798-9be5-efba704319b4"
+  }
+}

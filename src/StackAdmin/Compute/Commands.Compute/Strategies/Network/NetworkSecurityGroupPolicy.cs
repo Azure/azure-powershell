@@ -20,6 +20,7 @@ using System;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Commands.Compute.Strategies.ComputeRp;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {
@@ -36,7 +37,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                 createTime: _ => 15);
 
         public static ResourceConfig<NetworkSecurityGroup> CreateNetworkSecurityGroupConfig(
-            this ResourceConfig<ResourceGroup> resourceGroup, string name, int[] openPorts)
+            this ResourceConfig<ResourceGroup> resourceGroup, string name, IList<int> openPorts)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -57,14 +58,5 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                         })
                         .ToList()
                 });
-
-        public static ResourceConfig<NetworkSecurityGroup> CreateNetworkSecurityGroupConfig(
-            this ResourceConfig<ResourceGroup> resourceGroup,
-            string name,
-            int[] openPorts,
-            ImageAndOsType imageAndOsType)
-            => resourceGroup.CreateNetworkSecurityGroupConfig(
-                name,
-                imageAndOsType.UpdatePorts(openPorts));
     }
 }

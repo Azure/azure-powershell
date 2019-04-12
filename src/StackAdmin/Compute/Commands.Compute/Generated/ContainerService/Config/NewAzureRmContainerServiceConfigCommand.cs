@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceManager.Common.ArgumentCompleters.LocationCompleter("Microsoft.ContainerService/containerServices")]
         public string Location { get; set; }
 
         [Parameter(
@@ -259,7 +260,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
             vDiagnosticsProfile.VmDiagnostics.Enabled = this.VmDiagnosticsEnabled;
-
 
             var vContainerService = new PSContainerService
             {

@@ -24,78 +24,39 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestAEMExtensionBasicWindowsWAD()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionBasicWindowsWAD");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionBasicWindows()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionBasicWindows");
         }
 
         [Fact]
-        public void TestAEMExtensionBasicLinuxWAD()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionBasicLinuxWAD");
-        }
-
-        [Fact]
-        public void TestAEMExtensionBasicLinux()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionBasicLinux");
-        }
-
-        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionAdvancedWindowsWAD()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedWindowsWAD");
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestAEMExtensionAdvancedWindows()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedWindows");
         }
 
-        [Fact]
-        public void TestAEMExtensionAdvancedLinuxWAD()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinuxWAD");
-        }
-
-        [Fact]
-        public void TestAEMExtensionAdvancedLinux()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinux");
-        }
-
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestAEMExtensionAdvancedWindowsMD()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedWindowsMD");
-        }
-
-        [Fact]
-        public void TestAEMExtensionAdvancedLinuxMD()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinuxMD");
-        }
-
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Fact]
-        public void TestAEMExtensionAdvancedLinuxMD_ESeries()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinuxMD_E");
-        }
-
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Fact]
-        public void TestAEMExtensionAdvancedLinuxMD_DSeries()
-        {
-            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinuxMD_D");
         }
     }
 }

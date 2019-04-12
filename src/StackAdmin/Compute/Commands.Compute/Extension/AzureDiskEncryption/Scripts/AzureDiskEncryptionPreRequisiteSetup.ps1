@@ -43,15 +43,12 @@ $ErrorActionPreference = "Stop"
 ########################################################################################################################
 # Section1:  Log-in to Azure and select appropriate subscription. 
 ########################################################################################################################
-  
 
     Select-AzureRmSubscription -SubscriptionId $subscriptionId;
-
 
 ########################################################################################################################
 # Section2:  Create AAD app . Fill in $aadClientSecret variable if AAD app was already created
 ########################################################################################################################
-
 
     # Check if AAD app with $aadAppName was already created
     $SvcPrincipals = (Get-AzureRmADServicePrincipal -SearchString $aadAppName);
@@ -62,16 +59,26 @@ $ErrorActionPreference = "Stop"
         $defaultHomePage = 'http://contoso.com';
         $now = [System.DateTime]::Now;
         $oneYearFromNow = $now.AddYears(1);
-        $aadClientSecret = [Guid]::NewGuid();
-
+        $aadClientSecret = [Guid]::NewGuid().ToString();
         Write-Host "Creating new AAD application ($aadAppName)";
-        $ADApp = New-AzureRmADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $aadClientSecret;
+
+        $azureResourcesModule = Get-Module 'AzureRM.Resources';
+        if($azureResourcesModule.Version.Major -ge 5)
+        {
+            $secureAadClientSecret = ConvertTo-SecureString -String $aadClientSecret -AsPlainText -Force;
+            $ADApp = New-AzureRmADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $secureAadClientSecret;
+        }
+        else
+        {
+            $ADApp = New-AzureRmADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $aadClientSecret;
+        }
+
         $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $ADApp.ApplicationId;
         $SvcPrincipals = (Get-AzureRmADServicePrincipal -SearchString $aadAppName);
         if(-not $SvcPrincipals)
         {
             # AAD app wasn't created 
-            Write-Error "Failed to create AAD app $aadAppName. Please log-in to Azure using Login-AzureRmAccount  and try again";
+            Write-Error "Failed to create AAD app $aadAppName. Please log in to Azure using Connect-AzureRmAccount and try again";
             return;
         }
         $aadClientID = $servicePrincipal.ApplicationId;
@@ -177,7 +184,36 @@ $ErrorActionPreference = "Stop"
     Read-Host;
 
 ########################################################################################################################
-# For each VM you want to encrypt, run the below cmdlet
-#    $vmName = 'Name of VM to encrypt';
-#    Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType $volumeType
+# To encrypt one VM in given resource group of the logged in subscritpion, assign $vmName and uncomment below section
 ########################################################################################################################
+#$vmName = "Your VM Name";
+#$allVMs = Get-AzureRmVm -ResourceGroupName $resourceGroupName -Name $vmName;
+
+########################################################################################################################
+# To encrypt all the VMs in the given resource group of the logged in subscription uncomment below section
+########################################################################################################################
+#$allVMs = Get-AzureRmVm -ResourceGroupName $resourceGroupName;
+
+########################################################################################################################
+# To encrypt all the VMs in the all the resource groups of the logged in subscription, uncomment below section
+########################################################################################################################
+#$allVMs = Get-AzureRmVm;
+
+########################################################################################################################
+# Loop through the selected list of VMs and enable encryption
+########################################################################################################################
+
+foreach($vm in $allVMs)
+{
+    Write-Host "Encrypting VM: $($vm.Name) in ResourceGroup: $($vm.ResourceGroupName) " -foregroundcolor Green;
+    if(-not $kek)
+    {
+        Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType 'All';    
+    }
+    else
+    {
+        Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId -VolumeType 'All';            
+    }
+    # Show encryption status of the VM
+    Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name;
+}

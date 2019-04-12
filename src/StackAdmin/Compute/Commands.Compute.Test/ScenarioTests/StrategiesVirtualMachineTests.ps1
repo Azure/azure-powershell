@@ -24,7 +24,7 @@ function Test-SimpleNewVm
     try
     {
         $username = "admin01"
-        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string]$domainNameLabel = "$vmname-$vmname".tolower();
 
@@ -52,7 +52,7 @@ function Test-SimpleNewVmWithAvailabilitySet
     try
     {
 		$username = "admin01"
-		$password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
 		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string]$vmname = $rgname
 		[string]$asname = $rgname
@@ -97,11 +97,12 @@ function Test-SimpleNewVmWithDefaultDomainName
     try
     {
 		$username = "admin01"
-		$password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
 		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string] $vmname = "ps9301"
 
         # Common
+		$r = New-AzureRmResourceGroup -Name $rgname -Location "eastus"
 		$x = New-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Credential $cred
 
 		Assert-AreEqual $vmname $x.Name
@@ -115,7 +116,7 @@ function Test-SimpleNewVmWithDefaultDomainName
     finally
     {
         # Cleanup
-        Clean-ResourceGroup $vmname
+        Clean-ResourceGroup $rgname
     }
 }
 
@@ -132,7 +133,7 @@ function Test-SimpleNewVmWithDefaultDomainName2
     try
     {
 		$username = "admin01"
-		$password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
 		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string] $vmname = "vm"
 
@@ -170,7 +171,7 @@ function Test-SimpleNewVmWithAvailabilitySet2
     try
     {
 		$username = "admin01"
-		$password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
 		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string]$vmname = "myVM"
 		[string]$asname = "myAvailabilitySet"
@@ -215,28 +216,30 @@ Test Simple Paremeter Set for New Vm
 function Test-SimpleNewVmImageName
 {
     # Setup
-    $vmname = Get-ResourceName
-
+    $rgname = Get-ResourceName
+	[string]$vmname = "myvm"
     try
     {
 		$username = "admin01"
-		$password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
 		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string]$domainNameLabel = "$vmname-$vmname".tolower()
 
         # Common
+		$r = New-AzureRmResourceGroup -Name $rgname -Location "eastus"
 		$x = New-AzureRmVM `
 			-Name $vmname `
+			-ResourceGroupName $rgname `
 			-Credential $cred `
 			-DomainNameLabel $domainNameLabel `
-			-ImageName "MicrosoftWindowsServer:WindowsServer:2016-Datacenter:2016.127.20170406"
+			-ImageName "MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest"
 
 		Assert-AreEqual $vmname $x.Name
     }
     finally
     {
         # Cleanup
-        Clean-ResourceGroup $vmname
+        Clean-ResourceGroup $rgname
     }
 }
 
@@ -253,7 +256,7 @@ function Test-SimpleNewVmImageNameMicrosoftSqlUbuntu
     try
     {
 		$username = "admin01"
-		$password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
 		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string]$domainNameLabel = "xsd3490285".tolower()
 
