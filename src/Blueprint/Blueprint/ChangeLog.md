@@ -20,6 +20,10 @@
 ## Upcoming Release
 * Update Remove- cmdlet to not require SubscriptionId parameter
 * Update cmdlet examples 
+* Update Blueprint .NET SDK version
+* Support secure strings as assignment parameters
+* Support WhoIsBlueprint
+     - Get AAD ObjectId of the Blueprints service principal in the tenant
 
 ## Version 0.1.0
 * Preview release of Az.Blueprint module
