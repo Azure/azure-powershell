@@ -88,7 +88,9 @@ CmdletsToExport = 'New-AzEventHubNamespace', 'Get-AzEventHubNamespace',
                'Get-AzEventHubGeoDRConfiguration', 
                'Remove-AzEventHubGeoDRConfiguration', 
                'Set-AzEventHubGeoDRConfigurationBreakPair', 
-               'Set-AzEventHubGeoDRConfigurationFailOver', 'Test-AzEventHubName'
+               'Set-AzEventHubGeoDRConfigurationFailOver', 'Test-AzEventHubName', 
+			   'Remove-AzEventHubIPRule', 'Add-AzEventHubIPRule', 'Remove-AzEventHubVirtualNetworkRule', 'Add-AzEventHubVirtualNetworkRule', 'Get-AzEventHubNetworkRuleSet', 'Remove-AzEventHubNetworkRuleSet', 'Set-AzEventHubNetworkRuleSet'
+
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
     /// 'Set-AzEventHubNamespace' Cmdlet updates the specified Eventhub Namespace
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubNamespace", SupportsShouldProcess = true, DefaultParameterSetName = NamespaceParameterSet), OutputType(typeof(PSNamespaceAttributes))]
-    public class SetAzureEventHubNamespace : AzureEventHubsCmdletBase
+    public class SetAzureEventHubVirtualNetworkrule : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name.")]
         [Parameter(Mandatory = true, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name.")]
