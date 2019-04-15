@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
     [Cmdlet(
         VerbsCommon.Set,
         "AzPeeringExchangeConnectionObject",
-        DefaultParameterSetName = Constants.ParameterSetNameMd5Authentication)]
+        DefaultParameterSetName = Constants.ParameterSetNameMd5Authentication, SupportsShouldProcess = false)]
     [OutputType(typeof(PSExchangeConnection))]
     public class SetAzureExchangePeeringConnectionCommand : PeeringBaseCmdlet
     {
