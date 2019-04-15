@@ -20,18 +20,21 @@ Tests New Parameter for EventHub Namespace Create List Remove operations.
 function NetworkRuleSetTests
 {
     # Setup    
-    $location = Get-Location	
-	$locationKafka = "westus"
-	$namespaceName = getAssetName "Eventhub-Namespace1-"	
-    $resourceGroupName = "v-ajnavtest"
-	$namespaceName2  = getAssetName "Eventhub-Namespace2-"
-	$resourceid = "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/v-ajnavtest/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace1-2389"
+    #$location = Get-Location	
+	#$locationKafka = "westus"
+	#$namespaceName = getAssetName "Eventhub-Namespace1-"	
+    #$resourceGroupName = "v-ajnavtest"
+	#$namespaceName2  = getAssetName "Eventhub-Namespace2-"	
+
+	$location = Get-Location
+	$resourceGroupName = getAssetName "RSG"
+	$namespaceName = getAssetName "Eventhub-Namespace-"
+	$namespaceName2  = getAssetName "Eventhub-Namespace2-"	
 	
     #Write-Debug "Create resource group"
     #Write-Debug "ResourceGroup name : $resourceGroupName"
-	#New-AzResourceGroup -Name $resourceGroupName -Location $location -Force 
-	  
-	 Get-AzEventHubNetworkRuleSet -ResourceId $resourceid
+	New-AzResourceGroup -Name $resourceGroupName -Location $location -Force	 
+	
 	# Check Namespace Name Availability
 
 	$checkNameResult = Test-AzEventHubName -Namespace $namespaceName 
