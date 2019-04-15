@@ -166,6 +166,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             Position = 1,
             HelpMessage = "The name of the backup.")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string BackupName { get; set; }
 
         /// <summary>
