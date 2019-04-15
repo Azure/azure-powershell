@@ -19,11 +19,15 @@ Get-AzSqlServerServiceObjective [[-ServiceObjectiveName] <String>] [-ResourceGro
  [-ServerName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+Gets the service objectives for a server.
+
 ### ByLocation
 ```
 Get-AzSqlServerServiceObjective -LocationName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
+
+Gets the service objectives for an Azure region.
 
 ## DESCRIPTION
 The **Get-AzSqlServerServiceObjective** cmdlet gets the available service objectives for an Azure SQL Database server.
@@ -65,6 +69,29 @@ resourcegroup01   server01   System2                             True      True 
 ```
 
 This command gets the service objectives for the server named Server01 that start with "System".
+
+### Example 3: Get service objectives for a location
+```
+PS C:\>Get-AzSqlServerServiceObjective -Location "west us"
+ResourceGroupName ServerName ServiceObjectiveName Description Enabled IsDefault IsSystem
+----------------- ---------- -------------------- ----------- ------- --------- --------
+resourcegroup01   server01   ElasticPool                         True     False    False
+resourcegroup01   server01   System                              True     False     True
+resourcegroup01   server01   System0                             True     False     True
+resourcegroup01   server01   System1                             True     False     True
+resourcegroup01   server01   System2                             True      True     True
+resourcegroup01   server01   Basic                               True      True    False
+resourcegroup01   server01   S0                                  True      True    False
+resourcegroup01   server01   S1                                  True     False    False
+resourcegroup01   server01   S2                                  True     False    False
+resourcegroup01   server01   S3                                  True     False    False
+resourcegroup01   server01   P1                                  True      True    False
+resourcegroup01   server01   P2                                  True     False    False
+resourcegroup01   server01   P3                                  True     False    False
+resourcegroup01   server01   P4                                  True     False    False
+```
+
+This command gets the service objectives for a specified Azure region.
 
 ## PARAMETERS
 
