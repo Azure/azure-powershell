@@ -1,49 +1,45 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/default?api-version=2017-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvcHJpY2luZ3MvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDE3LTA4LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/VirtualMachines?api-version=2018-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDg3YmI0ODUtYjViMC00NzFlLTljMGQtMTA3MTc2MTJmODY5L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VjdXJpdHkvcHJpY2luZ3MvVmlydHVhbE1hY2hpbmVzP2FwaS12ZXJzaW9uPTIwMTgtMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d3dcac04-90de-41d1-8f99-8476bf4e3383"
+          "53454c0a-4f38-4e00-80f9-c5f043112a55"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3132.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.Security.SecurityCenterClient/0.9.0.0"
+          "FxVersion/4.6.27317.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/default\",\r\n  \"name\": \"default\",\r\n  \"type\": \"Microsoft.Security/pricings\",\r\n  \"properties\": {\r\n    \"pricingTier\": \"Standard\"\r\n  }\r\n}",
       "ResponseHeaders": {
-        "Content-Length": [
-          "200"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
+        "Cache-Control": [
+          "no-cache"
         ],
         "Pragma": [
           "no-cache"
         ],
         "x-ms-request-id": [
-          "d8b7ca88-a650-4514-ad85-6f61803064bf"
+          "a037fefe-64b5-4806-8f96-158e3a3372d4"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "749"
         ],
         "x-ms-correlation-request-id": [
-          "01658dc3-ae97-41b0-92ee-7d244af45b93"
+          "6c6dce52-fc3f-489e-bb8d-cafa6ca73d49"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH2:20180820T190857Z:01658dc3-ae97-41b0-92ee-7d244af45b93"
+          "UKWEST:20190307T160212Z:6c6dce52-fc3f-489e-bb8d-cafa6ca73d49"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,16 +47,20 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Cache-Control": [
-          "no-cache"
-        ],
         "Date": [
-          "Mon, 20 Aug 2018 19:08:56 GMT"
+          "Thu, 07 Mar 2019 16:02:11 GMT"
         ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
+        "Content-Length": [
+          "248"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
         ]
       },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/pricings/VirtualMachines\",\r\n  \"name\": \"VirtualMachines\",\r\n  \"type\": \"Microsoft.Security/pricings\",\r\n  \"properties\": {\r\n    \"pricingTier\": \"Standard\",\r\n    \"freeTrialRemainingTime\": \"PT0S\"\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],

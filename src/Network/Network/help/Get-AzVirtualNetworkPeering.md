@@ -30,6 +30,13 @@ The **Get-AzVirtualNetworkPeering** cmdlet gets the virtual network peering.
 Get-AzVirtualNetworkPeering -Name "myVnet1TomyVnet2" -VirtualNetwork "myVnet" -ResourceGroupName "myResourceGroup"
 ```
 
+### Example 2: Get all peerings in virtual network
+```
+# Get all virtual network peerings located in myVirtualNetwork in the resource group named myResourceGroup.
+
+Get-AzVirtualNetworkPeering -Name "myVnet1To*" -VirtualNetwork "myVnet" -ResourceGroupName "myResourceGroup"
+```
+
 ## PARAMETERS
 
 ### -DefaultProfile

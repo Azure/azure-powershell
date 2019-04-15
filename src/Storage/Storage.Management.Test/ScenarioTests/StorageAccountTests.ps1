@@ -718,3 +718,164 @@ function Test-PipingNewUpdateAccount
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test New-AzureRmStorageAccountBlockBlobStorage
+.DESCRIPTION
+Smoke[Broken]Test
+#>
+function Test-NewAzureStorageAccountBlockBlobStorage
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Premium_LRS';
+        $kind = 'BlockBlobStorage'
+
+        $loc = Get-ProviderLocation ResourceManagement;
+        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+		
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
+        $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        $stotype = 'PremiumLRS';
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+        
+        Retry-IfException { Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Set/Get/Remove-AzureStorageAccountManagementPolicy
+.Description
+AzureAutomationTest
+#>
+function Test-StorageAccountManagementPolicy
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        $loc = Get-ProviderLocation ResourceManagement;
+        $kind = 'StorageV2'
+
+        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+
+        $loc = Get-ProviderLocation_Stage;
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
+
+        Retry-IfException { $global:sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        $stotype = 'StandardGRS';
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;        
+                    
+		# create Rule1
+		$action1 = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 100
+		$action1 = Add-AzStorageAccountManagementPolicyAction -InputObject $action1 -BaseBlobAction TierToArchive -daysAfterModificationGreaterThan 50
+		$action1 = Add-AzStorageAccountManagementPolicyAction -InputObject $action1 -BaseBlobAction TierToCool -daysAfterModificationGreaterThan 30
+		$action1 = Add-AzStorageAccountManagementPolicyAction -InputObject $action1 -SnapshotAction Delete -daysAfterCreationGreaterThan 100
+		$filter1 = New-AzStorageAccountManagementPolicyFilter -PrefixMatch ab,cd
+		$rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action1 -Filter $filter1
+
+		# create Rule2
+		$action2 = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 100
+		$filter2 = New-AzStorageAccountManagementPolicyFilter
+		$rule2 = New-AzStorageAccountManagementPolicyRule -Name Test2 -Action $action2 -Filter $filter2 -Disabled
+
+		# Set policy 
+		$policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $stoname -Rule $rule1, $rule2
+		Assert-AreEqual 2 $policy.Rules.Count
+		Assert-AreEqual $rule1.Enabled $policy.Rules[0].Enabled
+		Assert-AreEqual $rule1.Name $policy.Rules[0].Name
+		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan
+		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToArchive.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToArchive.DaysAfterModificationGreaterThan
+		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToCool.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToCool.DaysAfterModificationGreaterThan
+		Assert-AreEqual $rule1.Definition.Actions.Snapshot.Delete.DaysAfterCreationGreaterThan $policy.Rules[0].Definition.Actions.Snapshot.Delete.DaysAfterCreationGreaterThan
+		Assert-AreEqual $rule1.Definition.Filters.BlobTypes[0] $policy.Rules[0].Definition.Filters.BlobTypes[0]
+		Assert-AreEqual $rule1.Definition.Filters.PrefixMatch.Count $policy.Rules[0].Definition.Filters.PrefixMatch.Count
+		Assert-AreEqual $rule1.Definition.Filters.PrefixMatch[0] $policy.Rules[0].Definition.Filters.PrefixMatch[0]
+		Assert-AreEqual $rule1.Definition.Filters.PrefixMatch[1] $policy.Rules[0].Definition.Filters.PrefixMatch[1]		
+		Assert-AreEqual $rule2.Enabled $policy.Rules[1].Enabled
+		Assert-AreEqual $rule2.Name $policy.Rules[1].Name
+		Assert-AreEqual $rule2.Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan $policy.Rules[1].Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan
+		Assert-AreEqual $rule2.Definition.Actions.BaseBlob.TierToArchive $policy.Rules[1].Definition.Actions.BaseBlob.TierToArchive
+		Assert-AreEqual $rule2.Definition.Actions.BaseBlob.TierToCool $policy.Rules[1].Definition.Actions.BaseBlob.TierToCool
+		Assert-AreEqual $rule2.Definition.Actions.Snapshot $policy.Rules[1].Definition.Actions.Snapshot
+		Assert-AreEqual $rule2.Definition.Filters.BlobTypes[0] $policy.Rules[1].Definition.Filters.BlobTypes[0]
+		Assert-AreEqual $rule2.Definition.Filters.PrefixMatch $policy.Rules[1].Definition.Filters.PrefixMatch
+		
+		$policy = Get-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $stoname
+		Assert-AreEqual 2 $policy.Rules.Count
+		Assert-AreEqual $rule1.Enabled $policy.Rules[0].Enabled
+		Assert-AreEqual $rule1.Name $policy.Rules[0].Name
+		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan
+		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToArchive.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToArchive.DaysAfterModificationGreaterThan
+		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToCool.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToCool.DaysAfterModificationGreaterThan
+		Assert-AreEqual $rule1.Definition.Actions.Snapshot.Delete.DaysAfterCreationGreaterThan $policy.Rules[0].Definition.Actions.Snapshot.Delete.DaysAfterCreationGreaterThan
+		Assert-AreEqual $rule1.Definition.Filters.BlobTypes[0] $policy.Rules[0].Definition.Filters.BlobTypes[0]
+		Assert-AreEqual $rule1.Definition.Filters.PrefixMatch.Count $policy.Rules[0].Definition.Filters.PrefixMatch.Count
+		Assert-AreEqual $rule1.Definition.Filters.PrefixMatch[0] $policy.Rules[0].Definition.Filters.PrefixMatch[0]
+		Assert-AreEqual $rule1.Definition.Filters.PrefixMatch[1] $policy.Rules[0].Definition.Filters.PrefixMatch[1]		
+		Assert-AreEqual $rule2.Enabled $policy.Rules[1].Enabled
+		Assert-AreEqual $rule2.Name $policy.Rules[1].Name
+		Assert-AreEqual $rule2.Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan $policy.Rules[1].Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan
+		Assert-AreEqual $rule2.Definition.Actions.BaseBlob.TierToArchive $policy.Rules[1].Definition.Actions.BaseBlob.TierToArchive
+		Assert-AreEqual $rule2.Definition.Actions.BaseBlob.TierToCool $policy.Rules[1].Definition.Actions.BaseBlob.TierToCool
+		Assert-AreEqual $rule2.Definition.Actions.Snapshot $policy.Rules[1].Definition.Actions.Snapshot
+		Assert-AreEqual $rule2.Definition.Filters.BlobTypes[0] $policy.Rules[1].Definition.Filters.BlobTypes[0]
+		Assert-AreEqual $rule2.Definition.Filters.PrefixMatch $policy.Rules[1].Definition.Filters.PrefixMatch
+
+		Remove-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $stoname	
+        
+		$policy| Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $stoname 
+
+		$policy = Get-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $stoname	
+        Assert-AreEqual 2 $policy.Rules.Count
+		Assert-AreEqual $rule1.Enabled $policy.Rules[0].Enabled
+		Assert-AreEqual $rule1.Name $policy.Rules[0].Name
+		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan
+		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToArchive.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToArchive.DaysAfterModificationGreaterThan
+		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToCool.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToCool.DaysAfterModificationGreaterThan
+		Assert-AreEqual $rule1.Definition.Actions.Snapshot.Delete.DaysAfterCreationGreaterThan $policy.Rules[0].Definition.Actions.Snapshot.Delete.DaysAfterCreationGreaterThan
+		Assert-AreEqual $rule1.Definition.Filters.BlobTypes[0] $policy.Rules[0].Definition.Filters.BlobTypes[0]
+		Assert-AreEqual $rule1.Definition.Filters.PrefixMatch.Count $policy.Rules[0].Definition.Filters.PrefixMatch.Count
+		Assert-AreEqual $rule1.Definition.Filters.PrefixMatch[0] $policy.Rules[0].Definition.Filters.PrefixMatch[0]
+		Assert-AreEqual $rule1.Definition.Filters.PrefixMatch[1] $policy.Rules[0].Definition.Filters.PrefixMatch[1]		
+		Assert-AreEqual $rule2.Enabled $policy.Rules[1].Enabled
+		Assert-AreEqual $rule2.Name $policy.Rules[1].Name
+		Assert-AreEqual $rule2.Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan $policy.Rules[1].Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan
+		Assert-AreEqual $rule2.Definition.Actions.BaseBlob.TierToArchive $policy.Rules[1].Definition.Actions.BaseBlob.TierToArchive
+		Assert-AreEqual $rule2.Definition.Actions.BaseBlob.TierToCool $policy.Rules[1].Definition.Actions.BaseBlob.TierToCool
+		Assert-AreEqual $rule2.Definition.Actions.Snapshot $policy.Rules[1].Definition.Actions.Snapshot
+		Assert-AreEqual $rule2.Definition.Filters.BlobTypes[0] $policy.Rules[1].Definition.Filters.BlobTypes[0]
+		Assert-AreEqual $rule2.Definition.Filters.PrefixMatch $policy.Rules[1].Definition.Filters.PrefixMatch
+
+		$policy| Remove-AzStorageAccountManagementPolicy
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

@@ -17,6 +17,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using Microsoft.WindowsAzure.Storage;
     using System;
     using System.Threading;
+    using XTable = Microsoft.Azure.Cosmos.Table;
 
     internal class CmdletOperationContext
     {
@@ -111,15 +112,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 context.StartTime = DateTime.Now;
 
                 Interlocked.Increment(ref _startedRemoteCallCounter);
-// TODO: Remove IfDef
-#if NETSTANDARD
+
                 //https://github.com/Azure/azure-storage-net/issues/658
                 var message = String.Format(Resources.StartRemoteCall,
-                    _startedRemoteCallCounter, String.Empty, e.RequestUri.ToString());
-#else
-                string message = String.Format(Resources.StartRemoteCall,
-                    _startedRemoteCallCounter, e.Request.Method, e.Request.RequestUri.ToString());
-#endif
+                    _startedRemoteCallCounter, String.Empty, e.Request.RequestUri.ToString());
 
                 try
                 {
@@ -137,15 +133,69 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 Interlocked.Increment(ref _finishedRemoteCallCounter);
 
                 var elapsedTime = (context.EndTime - context.StartTime).TotalMilliseconds;
-// TODO: Remove IfDef
-#if NETSTANDARD
+
                 //https://github.com/Azure/azure-storage-net/issues/658
                 var message = String.Format(Resources.FinishRemoteCall,
-                    e.RequestUri.ToString(), String.Empty, String.Empty, e.RequestInformation.ServiceRequestID, elapsedTime);
-#else
-                string message = String.Format(Resources.FinishRemoteCall,
-                    e.Request.RequestUri.ToString(), (int)e.Response.StatusCode, e.Response.StatusCode, e.RequestInformation.ServiceRequestID, elapsedTime);
-#endif
+                    e.Request.RequestUri.ToString(), String.Empty, String.Empty, e.RequestInformation.ServiceRequestID, elapsedTime);
+
+                try
+                {
+                    outputWriter?.Invoke(message);
+                }
+                catch
+                {
+                    //catch the exception. If so, the storage client won't sleep and retry
+                }
+            };
+
+            return context;
+        }
+
+        /// <summary>
+        /// Get Storage Table Operation Context for rest calls
+        /// </summary>
+        /// <param name="outputWriter">Output writer for writing logs for each rest call</param>
+        /// <returns>Storage Table operation context</returns>
+        public static XTable.OperationContext GetStorageTableOperationContext(Action<string> outputWriter)
+        {
+            if (!_inited)
+            {
+                Init();
+            }
+
+            var context = new XTable.OperationContext { ClientRequestID = ClientRequestId };
+
+            context.SendingRequest += (s, e) =>
+            {
+                context.StartTime = DateTime.Now;
+
+                Interlocked.Increment(ref _startedRemoteCallCounter);
+                // TODO: Remove IfDef
+
+                //https://github.com/Azure/azure-storage-net/issues/658
+                var message = String.Format(Resources.StartRemoteCall,
+                    _startedRemoteCallCounter, String.Empty, e.Request.RequestUri.ToString());
+
+                try
+                {
+                    outputWriter?.Invoke(message);
+                }
+                catch
+                {
+                    //catch the exception. If so, the storage client won't sleep and retry
+                }
+            };
+
+            context.ResponseReceived += (s, e) =>
+            {
+                context.EndTime = DateTime.Now;
+                Interlocked.Increment(ref _finishedRemoteCallCounter);
+
+                var elapsedTime = (context.EndTime - context.StartTime).TotalMilliseconds;
+                // TODO: Remove IfDef
+                //https://github.com/Azure/azure-storage-net/issues/658
+                var message = String.Format(Resources.FinishRemoteCall,
+                    e.Request.RequestUri.ToString(), String.Empty, String.Empty, e.RequestInformation.ServiceRequestID, elapsedTime);
 
                 try
                 {

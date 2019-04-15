@@ -5,7 +5,8 @@ dotnet: 2.1.400
 dist: trusty
 
 env:
-  - NAME="azure-powershell-core" CONFIG="Debug"
+  - NAME="azure-powershell-core" CONFIG="Debug" TESTS_TO_RUN="Core"
+  - NAME="azure-powershell-core" CONFIG="Debug" TESTS_TO_RUN="NonCore"
 
 services:
  - docker
@@ -24,7 +25,7 @@ before_install:
 
  # https://github.com/travis-ci/travis-ci/issues/1066#issuecomment-383489298
 script:
- - sudo dotnet msbuild build.proj /t:Full /p:ExcludeAuthenticators=true /p:Configuration=$CONFIG || travis_terminate 1
+ - sudo dotnet msbuild build.proj /t:Build;StaticAnalysis;Test /p:ExcludeAuthenticators=true;Configuration=$CONFIG;TestsToRun=$TESTS_TO_RUN
 
 after_success:
  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then

@@ -94,9 +94,9 @@ namespace Microsoft.Azure.Commands.KeyVault
                 VaultName = parsedResourceId.ResourceName;
             }
 
-            if (string.IsNullOrEmpty(Name))
+            if (string.IsNullOrEmpty(Name) || WildcardPattern.ContainsWildcardCharacters(Name))
             {
-                GetAndWriteCertificateIssuers(VaultName);
+                GetAndWriteCertificateIssuers(VaultName, Name);
             }
             else
             {
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
         }
 
-        private void GetAndWriteCertificateIssuers(string vaultName)
+        private void GetAndWriteCertificateIssuers(string vaultName, string name)
         {
             KeyVaultObjectFilterOptions options = new KeyVaultObjectFilterOptions
             {
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     page.VaultName = VaultName;
                     psPageResults.Add(page);
                 }
-                WriteObject(psPageResults, true);
+                WriteObject(KVSubResourceWildcardFilter(name, psPageResults), true);
             } while (!string.IsNullOrEmpty(options.NextLink));
         }
     }

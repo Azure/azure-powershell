@@ -16,36 +16,63 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemVali
 {
     using Interfaces;
 
-    public abstract class BaseSystemValidation : BaseValidation, ISystemValidation
+    /// <summary>
+    /// Class SystemValidationBase.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.ValidationBase" />
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.ISystemValidation" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.ValidationBase" />
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.ISystemValidation" />
+    public abstract class SystemValidationBase : ValidationBase, ISystemValidation
     {
         #region Fields and Properties
+        /// <summary>
+        /// Gets the configuration.
+        /// </summary>
+        /// <value>The configuration.</value>
         protected IConfiguration Configuration { get; }
         #endregion
 
         #region Constructors
-        public BaseSystemValidation(
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SystemValidationBase" /> class.
+        /// </summary>
+        /// <param name="configuration">The configuration.</param>
+        /// <param name="validationName">Name of the validation.</param>
+        /// <param name="validationType">Type of the validation.</param>
+        public SystemValidationBase(
             IConfiguration configuration,
             string validationName,
             ValidationType validationType) : base(validationName, validationType, ValidationKind.SystemValidation)
         {
-            this.Configuration = configuration;
+            Configuration = configuration;
         }
 
         #endregion
 
         #region Public methods
 
+        /// <summary>
+        /// Validates the using.
+        /// </summary>
+        /// <param name="commandRunner">The command runner.</param>
+        /// <returns>IValidationResult.</returns>
         public IValidationResult ValidateUsing(IPowershellCommandRunner commandRunner)
         {
-            return this.DoValidateUsing(commandRunner);
+            return DoValidateUsing(commandRunner);
         }
 
         #endregion
 
         #region Protected methods
+        /// <summary>
+        /// Does the validate using.
+        /// </summary>
+        /// <param name="commandRunner">The command runner.</param>
+        /// <returns>IValidationResult.</returns>
         protected virtual IValidationResult DoValidateUsing(IPowershellCommandRunner commandRunner)
         {
-            return this.SuccessfulResult;
+            return SuccessfulResult;
         }
         #endregion
     }

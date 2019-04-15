@@ -17,14 +17,16 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.IO;
 using System.Management.Automation;
 using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAvailableSslOptions"), OutputType(typeof(PSApplicationGatewayAvailableSslOptions))]
-    [Alias("List-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAvailableSslOptions")]
+    [GenericBreakingChange("Get-AzApplicationGatewayAvailableSslOptions alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAvailableSslOption"), OutputType(typeof(PSApplicationGatewayAvailableSslOptions))]
+    [Alias("List-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAvailableSslOptions", "Get-AzApplicationGatewayAvailableSslOptions")]
     public class GetAzureApplicationGatewayAvailableSslOptions : ApplicationGatewayBaseCmdlet
     {
         public override void ExecuteCmdlet()
