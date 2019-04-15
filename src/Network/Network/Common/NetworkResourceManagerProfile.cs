@@ -68,6 +68,12 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSRouteFilterRule, MNM.RouteFilterRule>();
                 cfg.CreateMap<MNM.RouteFilterRule, CNM.PSRouteFilterRule>();
 
+                // Nat Gateway 
+                cfg.CreateMap<CNM.PSNatGateway, MNM.NatGateway>();
+                cfg.CreateMap<MNM.NatGateway, CNM.PSNatGateway>();
+                cfg.CreateMap<CNM.PSNatGatewaySku, MNM.NatGatewaySku>();
+                cfg.CreateMap<MNM.NatGatewaySku, CNM.PSNatGatewaySku>();
+
                 // Bgp Service Community
                 cfg.CreateMap<CNM.PSBgpServiceCommunity, MNM.BgpServiceCommunity>();
                 cfg.CreateMap<CNM.PSBgpCommunity, MNM.BGPCommunity>();
