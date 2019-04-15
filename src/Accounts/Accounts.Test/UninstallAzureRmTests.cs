@@ -68,7 +68,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.True(dataStore.DirectoryExists(Path.Combine("testmodulepath2", "AzureRM.Profile")));
 
             var cmdlet = new UninstallAzureRmCommand();
-            Environment.SetEnvironmentVariable("PSModulePath", "testmodulepath;testmodulepath2;pathdoesntexist");
+            Environment.SetEnvironmentVariable("PSModulePath", 
+                "testmodulepath" + Path.PathSeparator + "testmodulepath2" + Path.PathSeparator + "pathdoesntexist");
             cmdlet.ExecuteCmdlet();
             Assert.False(dataStore.DirectoryExists(Path.Combine("testmodulepath", "AzureRM.ApiManagement")));
             Assert.False(dataStore.DirectoryExists(Path.Combine("testmodulepath2", "AzureRM.Profile")));
