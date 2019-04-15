@@ -55,7 +55,7 @@ AuthorizationKey                   :
 RoutingWeight                      : 20
 ProvisioningState                  : Succeeded
 Name                               : testConnection
-Etag                               : W/"4580a2e2-2fab-4cff-88eb-92013a76b5a8"
+Etag                               : W/"00000000-0000-0000-0000-000000000000"
 Id                                 : /subscriptions/{subscriptionId}/resourceGroups/ps9361/providers/Microsoft.Network/ExpressRouteGateways/testExpressRoutegw/expressRouteConnections/testConnection
 ```
 
@@ -65,6 +65,30 @@ A ExpressRoute gateway will be created thereafter in the Virtual Hub with 2 scal
 Once the gateway has been created, it is connected to the on premise ExpressRoute circuit using the New-AzExpressRouteConnection command.
 
 Then it gets the connection using the connection name.
+
+### Example 2
+
+```powershell
+PS C:\> Get-AzExpressRouteConnection -ResourceGroupName ps9361 -ParentResourceName testExpressRoutegw -Name test*
+
+ExpressRouteCircuitPeeringId       : Microsoft.Azure.Commands.Network.Models.PSResourceId
+AuthorizationKey                   :
+RoutingWeight                      : 20
+ProvisioningState                  : Succeeded
+Name                               : testConnection1
+Etag                               : W/"00000000-0000-0000-0000-000000000000"
+Id                                 : /subscriptions/{subscriptionId}/resourceGroups/ps9361/providers/Microsoft.Network/ExpressRouteGateways/testExpressRoutegw/expressRouteConnections/testConnection1
+
+ExpressRouteCircuitPeeringId       : Microsoft.Azure.Commands.Network.Models.PSResourceId
+AuthorizationKey                   :
+RoutingWeight                      : 20
+ProvisioningState                  : Succeeded
+Name                               : testConnection2
+Etag                               : W/"00000000-0000-0000-0000-000000000000"
+Id                                 : /subscriptions/{subscriptionId}/resourceGroups/ps9361/providers/Microsoft.Network/ExpressRouteGateways/testExpressRoutegw/expressRouteConnections/testConnection2
+```
+
+This command will get all Connections in ExpressRoute "testExpressRoutegw" that start with "test"
 
 ## PARAMETERS
 

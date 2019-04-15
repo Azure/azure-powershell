@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: AD8BA5CB-D5D4-4C6E-A65F-E7AE69E3B22C
@@ -41,6 +41,24 @@ FirewallRuleName  : Rule01
 ```
 
 This command gets all the firewall rules for the server named Server01.
+
+### Example 2: Get all rules for a server using filtering
+```
+PS C:\>Get-AzSqlServerFirewallRule -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -FirewallRuleName "Rule*"
+ResourceGroupName : ResourceGroup01
+ServerName        : server01
+StartIpAddress    : 0.0.0.0
+EndIpAddress      : 0.0.0.0
+FirewallRuleName  : Rule01
+
+ResourceGroupName : ResourceGroup01
+ServerName        : Server01
+StartIpAddress    : 1.2.3.4
+EndIpAddress      : 4.3.2.1
+FirewallRuleName  : Rule02
+```
+
+This command gets all the firewall rules for the server named Server01 that start with "Rule".
 
 ## PARAMETERS
 
@@ -136,7 +154,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

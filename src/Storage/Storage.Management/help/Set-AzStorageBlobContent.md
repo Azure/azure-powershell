@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: F20A5FD3-6EC3-4EFE-988C-75F8583961A4
@@ -17,7 +17,7 @@ Uploads a local file to an Azure Storage blob.
 ```
 Set-AzStorageBlobContent [-File] <String> [-Container] <String> [-Blob <String>] [-BlobType <String>]
  [-Properties <Hashtable>] [-Metadata <Hashtable>] [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Force]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -26,7 +26,7 @@ Set-AzStorageBlobContent [-File] <String> [-Container] <String> [-Blob <String>]
 ```
 Set-AzStorageBlobContent [-File] <String> [-Blob <String>] -CloudBlobContainer <CloudBlobContainer>
  [-BlobType <String>] [-Properties <Hashtable>] [-Metadata <Hashtable>]
- [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Force] [-Context <IStorageContext>]
+ [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Force] [-AsJob] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -35,8 +35,8 @@ Set-AzStorageBlobContent [-File] <String> [-Blob <String>] -CloudBlobContainer <
 ### BlobPipeline
 ```
 Set-AzStorageBlobContent [-File] <String> -CloudBlob <CloudBlob> [-BlobType <String>] [-Properties <Hashtable>]
- [-Metadata <Hashtable>] [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Force] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-Metadata <Hashtable>] [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Force] [-AsJob]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -98,6 +98,21 @@ PS C:\> Set-AzStorageBlobContent -File "ContosoPlanning" -Container "ContosoUplo
 This command  uploads the file that is named ContosoPlanning to the container named ContosoUploads with specified blob properties.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Blob
 Specifies the name of a blob.
