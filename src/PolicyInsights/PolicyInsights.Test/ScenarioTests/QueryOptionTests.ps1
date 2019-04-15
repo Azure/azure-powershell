@@ -95,3 +95,15 @@ function QueryOptions-QueryResultsWithApply
 		Assert-NotNull $policyState.AdditionalProperties["NumResources"]
 	}
 }
+
+<#
+.SYNOPSIS
+Get latest policy states at subscription scope; with Expand query option set to PolicyEvaluationDetails
+#>
+function QueryOptions-QueryResultsWithExpandPolicyEvaluationDetails
+{
+	$resourceId = Get-TestResourceId
+
+    $policyStates = Get-AzPolicyState -ResourceId $resourceId -Expand "PolicyEvaluationDetails" -Top 10
+	Validate-PolicyStates $policyStates 10 -expandPolicyEvaluationDetails
+}
