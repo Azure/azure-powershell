@@ -18,7 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.0
 * Improve handling of providers for `Get-AzResource` when providing `-ResourceId` or `-ResourceGroupName`, `-Name` and `-ResourceType` parameters
+* Improve error handling for for `Test-AzDeployment` and `Test-AzResourceGroupDeployment`
+    - Handle errors thrown outside of deployment validation and include them in output of command instead
+    - More information here: https://github.com/Azure/azure-powershell/issues/6856
+* Add `-IgnoreDynamicParameters` switch parameter to set of deployment cmdlets to skip prompt in script and job scenarios
+    - More information here: https://github.com/Azure/azure-powershell/issues/6856
 
 ## Version 1.2.1
 * Update wildcard support for Get-AzResource and Get-AzResourceGroup

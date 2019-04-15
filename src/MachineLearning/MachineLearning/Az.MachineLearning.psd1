@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.4.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.MachineLearning.dll', 
@@ -81,7 +81,7 @@ CmdletsToExport = 'Move-AzMlCommitmentAssociation', 'Get-AzMlCommitmentAssociati
                'Update-AzMlCommitmentPlan', 'Get-AzMlCommitmentPlan', 
                'Remove-AzMlWebService', 'Get-AzMlWebService', 
                'Update-AzMlWebService', 'Export-AzMlWebService', 
-               'Get-AzMlWebServiceKeys', 'Import-AzMlWebService', 
+               'Get-AzMlWebServiceKey', 'Import-AzMlWebService', 
                'New-AzMlCommitmentPlan', 'New-AzMlWebService', 
                'Add-AzMlWebServiceRegionalProperty', 'Get-AzMlOpCluster', 
                'Get-AzMlOpClusterKey', 
@@ -93,7 +93,7 @@ CmdletsToExport = 'Move-AzMlCommitmentAssociation', 'Get-AzMlCommitmentAssociati
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+AliasesToExport = @('Get-AzMlWebServiceKeys')
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

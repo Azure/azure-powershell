@@ -19,6 +19,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix issue with AEM installation if resource ids of disks had lowercase resourcegroups in resource id
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+## Version 1.7.0
 * Add HyperVGeneration parameter to New-AzDiskConfig and New-AzSnapshotConfig
 * Allow VM creation with galley image from other tenants. 
 

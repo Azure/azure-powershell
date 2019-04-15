@@ -62,25 +62,21 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         {
             ICollection<AzureSqlServerModel> results = null;
 
-            if (MyInvocation.BoundParameters.ContainsKey("ServerName") && MyInvocation.BoundParameters.ContainsKey("ResourceGroupName"))
+            if (ShouldGetByName(ResourceGroupName, ServerName))
             {
                 results = new List<AzureSqlServerModel>();
                 results.Add(ModelAdapter.GetServer(this.ResourceGroupName, this.ServerName));
             }
-            else if (MyInvocation.BoundParameters.ContainsKey("ResourceGroupName"))
+            else if (ShouldListByResourceGroup(ResourceGroupName, ServerName))
             {
                 results = ModelAdapter.ListServersByResourceGroup(this.ResourceGroupName);
             }
-            else if (!MyInvocation.BoundParameters.ContainsKey("ServerName"))
+            else
             {
                 results = ModelAdapter.ListServers();
             }
-            else
-            {
-                throw new PSArgumentException("When specifying the serverName parameter the ResourceGroup parameter must also be used");
-            }
 
-            return results;
+            return TopLevelWildcardFilter(ResourceGroupName, ServerName, results);
         }
 
         /// <summary>
