@@ -24,10 +24,37 @@ Below is an example to get legacy Direct Peering at Seattle peering location
 
 ### Example 1
 ```powershell
-PS C:> Get-AzLegacyPeering -PeeringLocation "Seattle" -Kind Exchange
+PS C:> Get-AzLegacyPeering -PeeringLocation "Seattle" -Kind Direct
+
+Name                       :
+Sku                        : Basic_Direct_Free
+Kind                       : Direct
+PeeringLocation            : Seattle
+UseForPeeringService       : False
+PeerAsn.Id                 :
+Connection                 : ------------------------
+PeeringDBFacilityId        : 71
+SessionPrefixIPv4          : 173.205.50.236/30
+PeerSessionIPv4Address     : 173.205.50.237
+MicrosoftIPv4Address       : 173.205.50.238
+SessionStateV4             : Established
+MaxPrefixesAdvertisedV4    : 20000
+SessionPrefixIPv6          : 2001:668:0:3:ffff:0:adcd:32ec/126
+PeerSessionIPv6Address     : 2001:668:0:3:ffff:0:adcd:32ed
+MicrosoftIPv6Address       : 2001:668:0:3:ffff:0:adcd:32ee
+SessionStateV6             : Established
+MaxPrefixesAdvertisedV6    : 2000
+ConnectionState            : Active
+BandwidthInMbps            : 0
+ProvisionedBandwidthInMbps : 20000
+SessionStateV4             :
+MaxPrefixesAdvertisedV4    :
+SessionStateV6             :
+MaxPrefixesAdvertisedV6    :
+ProvisioningState          : Succeeded
 ```
 
-Gets the peering location
+Gets the legacy peering for Seattle
 
 ## PARAMETERS
 

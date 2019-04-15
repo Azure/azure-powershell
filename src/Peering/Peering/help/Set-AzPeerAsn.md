@@ -33,6 +33,14 @@ Allows you to update contact information for a PeerAsn
 ```powershell
 #Get the Peer ASN object
 PS C:> Get-AzPeerAsn -PeerName Contoso | Set-AzPeerAsn -Email noc1@contoso.com
+
+PeerContactInfo : Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSContactInfo
+PeerName        : Contoso
+ValidationState : None
+PeerAsnProperty : 65050
+Name            : Contoso65050
+Id              : /subscriptions//providers/Microsoft.Peering/peerAsns/Contoso65050
+Type            : Microsoft.Peering/peerAsns
 ```
 
 Adds an email address to the Peer Asn
