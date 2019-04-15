@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
             Position = 2,
             HelpMessage = "The name of the Azure SQL server communication link to retrieve.")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string LinkName { get; set; }
 
         /// <summary>

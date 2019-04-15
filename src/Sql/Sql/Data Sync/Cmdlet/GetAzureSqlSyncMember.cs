@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The sync member name.")]
         [Alias("SyncMemberName")]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         /// <summary>

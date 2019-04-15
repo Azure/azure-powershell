@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             Position = 2,
             HelpMessage = "The sync agent name.")]
         [Alias("SyncAgentName")]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         /// <summary>
