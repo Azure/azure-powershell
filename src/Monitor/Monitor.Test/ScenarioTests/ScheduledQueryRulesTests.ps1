@@ -13,31 +13,47 @@
 # ----------------------------------------------------------------------------------
 
 # Setup
-$ruleName = "SQRPSTestAlert"
-$resourceGroupName = "PSCmdletRG"
-$location = "eastus"
-$description = "SQR log alert rule"
-$severity = "2"
-$throttlingInMin = "5"
-$enabled = "true"
-$emailSubject = "SQR Log alert trigger notification"
-$customWebhookPayload = "{}"
-$thresholdOperator = "GreaterThan"
-$threshold = 5
-$metricTriggerType = "Total"
-$metricTriggerColumn = "timestamp"
-$frequencyInMin = 5
-$timeWindowInMin = 5
-$query = "traces | summarize AggregatedValue = count() by bin(timestamp, 5m)"
-$authorizedResources = "/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/PSCmdletRG/providers/microsoft.insights/components/PSCmdletsAI"
-$dataSourceId = "/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/PSCmdletRG/providers/microsoft.insights/components/PSCmdletsAI"
-$queryType = "ResultCount"
-$metricTriggerThreshold = 10
-$metricTriggerThresholdOperator = "GreaterThan"
+function Test-setup
+{
+	$global:ruleName = Get-ResourceName
+	$global:resourceGroupName = Get-ResourceGroupName
+	$global:location = Get-ProviderLocation("microsoft.insights")
+	$global:description = "SQR log alert rule"
+	$global:severity = "2"
+	$global:throttlingInMin = "5"
+	$global:enabled = 1
+	$global:emailSubject = "SQR Log alert trigger notification"
+	$global:customWebhookPayload = "{}"
+	$global:thresholdOperator = "GreaterThan"
+	$global:threshold = 5
+	$global:metricTriggerType = "Total"
+	$global:metricTriggerColumn = "timestamp"
+	$global:frequencyInMin = 5
+	$global:timeWindowInMin = 5
+	$global:query = "traces | summarize AggregatedValue = count() by bin(timestamp, 5m)"
 
-$actionGroup = New-Object "System.Collections.Generic.List[System.String]"
-$tags = New-Object "System.Collections.Generic.Dictionary[string, string]"
+	$PSCmdletsAI="PSCmdletAppInsights"
 
+	# Create the App Insights Resource
+	$PSCmdletsAIResource = New-AzResource `
+	-ResourceName $PSCmdletsAI `
+	-ResourceGroupName $resourceGroupName `
+	-Tag @{ applicationType = "web"; applicationName = $applicationTagName} `
+	-ResourceType "Microsoft.Insights/components" `
+	-Location $location `  # or North Europe, West Europe, South Central US
+	-PropertyObject @{"Application_Type"="web"} `
+	-Force
+
+	$global:subscription = (Get-AzureRmContext).Subscription
+	$global:authorizedResources = "/subscriptions/" + $subscription + "/resourceGroups/" + $resourceGroupName + "/providers/microsoft.insights/components/" + $PSCmdletsAI
+	$global:dataSourceId = $authorizedResources
+	$global:queryType = "ResultCount"
+	$global:metricTriggerThreshold = 10
+	$global:metricTriggerThresholdOperator = "GreaterThan"
+
+	$global:actionGroup = @("AG1", "AG2")
+	$global:tags = @{tag1="value1"}
+}
 
 function Verify-ScheduledQueryRule($scheduledQueryRule)
 {
@@ -87,7 +103,7 @@ function Verify-ScheduledQueryRule($scheduledQueryRule)
 function Test-NewGetUpdateSetRemoveScheduledQueryRule
 {
 	Write-Output "Starting Test-NewGetUpdateSetRemoveScheduledQueryRule"
-	
+	Test-setup
 	try
 	{
 		
@@ -97,7 +113,7 @@ function Test-NewGetUpdateSetRemoveScheduledQueryRule
 
 		$triggerCondition = New-AzScheduledQueryRuleTriggerCondition -ThresholdOperator $thresholdOperator -Threshold $threshold -MetricTrigger $metricTrigger
 
-		$alertingAction = New-AzScheduledQueryRuleAlertingAction -AznsAction $aznsActionGroup -Severity $severity -ThrottlingInMin $throttlingInMin -Trigger $triggerCondition
+		$alertingAction = New-AzScheduledQueryRuleAlertingAction -AznsAction $aznsActionGroup -Severity $severity -ThrottlingInMinutes $throttlingInMin -Trigger $triggerCondition
 
 		$schedule = New-AzScheduledQueryRuleSchedule -FrequencyInMinutes $frequencyInMin -TimeWindowInMinutes $timeWindowInMin
 
@@ -127,31 +143,31 @@ function Test-NewGetUpdateSetRemoveScheduledQueryRule
 		# testing Set-* cmdlet with same parameters as they were setup, as it is similar to New-*
 
 		Write-Debug " ****** Updating Scheduled Query Rule by name (PUT semantics)"
-		$updated = Set-AzScheduledQueryRule -Location $location -Name $ruleName -ResourceGroupName $resourceGroupName -Action $alertingAction -Source $source -Enabled "true" -Description $description -Schedule $schedule -Tag $tags
+		$updated = Set-AzScheduledQueryRule -Location $location -Name $ruleName -ResourceGroupName $resourceGroupName -Action $alertingAction -Source $source -Enabled 1 -Description $description -Schedule $schedule -Tag $tags
 		Verify-ScheduledQueryRule $scheduledQueryRule
 
 		Write-Debug " ****** Updating Scheduled Query Rule by resource Id (PUT semantics)"
-		$updated = Set-AzScheduledQueryRule -ResourceId $scheduledQueryRule.Id -Location $location -Action $alertingAction -Source $source -Enabled "true" -Description $description -Schedule $schedule -Tag $tags
+		$updated = Set-AzScheduledQueryRule -ResourceId $scheduledQueryRule.Id -Location $location -Action $alertingAction -Source $source -Enabled 1 -Description $description -Schedule $schedule -Tag $tags
 		Verify-ScheduledQueryRule $scheduledQueryRule
 
 		Write-Debug " ****** Updating Scheduled Query Rule by InputObject (PUT semantics)"
-		$updated = Set-AzScheduledQueryRule -InputObject $scheduledQueryRule -Location $location -Action $alertingAction -Source $source -Enabled "true" -Description $description -Schedule $schedule -Tag $tags
+		$updated = Set-AzScheduledQueryRule -InputObject $scheduledQueryRule -Location $location -Action $alertingAction -Source $source -Enabled 1 -Description $description -Schedule $schedule -Tag $tags
 		Verify-ScheduledQueryRule $scheduledQueryRule
 
 		Write-Debug " ****** Updating Scheduled Query Rule by name (PATCH semantics)"
-		$updated = Update-AzScheduledQueryRule -ResourceGroupName $resourceGroupName -Name $ruleName -Enabled "false"
+		$updated = Update-AzScheduledQueryRule -ResourceGroupName $resourceGroupName -Name $ruleName -Enabled 0
 		Verify-ScheduledQueryRule $updated
-		Assert-AreEqual $updated.Enabled "false"
+		Assert-AreEqual $updated.Enabled 0
 
 		Write-Debug " ****** Updating Scheduled Query Rule by resource Id (PATCH semantics)"
-		$updated = Update-AzScheduledQueryRule -ResourceId $scheduledQueryRule.Id -Enabled "false"
+		$updated = Update-AzScheduledQueryRule -ResourceId $scheduledQueryRule.Id -Enabled 0
 		Verify-ScheduledQueryRule $updated
-		Assert-AreEqual $updated.Enabled "false"
+		Assert-AreEqual $updated.Enabled 0
 
 		Write-Debug " ****** Updating Scheduled Query Rule by InputObject (PATCH semantics)"
-		$updated = Update-AzScheduledQueryRule -InputObject $scheduledQueryRule -Enabled "false"
+		$updated = Update-AzScheduledQueryRule -InputObject $scheduledQueryRule -Enabled 0
 		Verify-ScheduledQueryRule $updated
-		Assert-AreEqual $updated.Enabled "false"
+		Assert-AreEqual $updated.Enabled 0
 
 		Write-Debug " ****** Removing Scheduled Query Rule by name"
 		Remove-AzScheduledQueryRule -ResourceGroup $resourceGroupName -Name $ruleName
@@ -175,13 +191,14 @@ function Test-NewGetUpdateSetRemoveScheduledQueryRule
     finally
     {
         # Cleanup
-        # No cleanup needed for now
+        Clean-ResourceGroup($resourceGroupName)
     }
 }
 
 function Test-PipingRemoveSetUpdateScheduledQueryRule
 {
 	Write-Output "Starting Test-PipingRemoveSetUpdateScheduledQueryRule"
+	Test-setup
 	try
 	{
 		$aznsActionGroup = New-AzScheduledQueryRuleAznsActionGroup -ActionGroup $actionGroup -EmailSubject $emailSubject -CustomWebhookPayload $customWebhookPayload
@@ -190,7 +207,7 @@ function Test-PipingRemoveSetUpdateScheduledQueryRule
 
 		$triggerCondition = New-AzScheduledQueryRuleTriggerCondition -ThresholdOperator $thresholdOperator -Threshold $threshold -MetricTrigger $metricTrigger
 
-		$alertingAction = New-AzScheduledQueryRuleAlertingAction -AznsAction $aznsActionGroup -Severity $severity -ThrottlingInMin $throttlingInMin -Trigger $triggerCondition
+		$alertingAction = New-AzScheduledQueryRuleAlertingAction -AznsAction $aznsActionGroup -Severity $severity -ThrottlingInMinutes $throttlingInMin -Trigger $triggerCondition
 
 		$schedule = New-AzScheduledQueryRuleSchedule -FrequencyInMinutes $frequencyInMin -TimeWindowInMinutes $timeWindowInMin
 
@@ -202,17 +219,17 @@ function Test-PipingRemoveSetUpdateScheduledQueryRule
         $resourceId = $scheduledQueryRule.Id
 
 		Write-Debug " ****** Updating Scheduled Query Rule by name"
-		$retrieved = Get-AzScheduledQueryRule -ResourceGroup $resourceGroupName -Name $ruleName | Update-AzScheduledQueryRule -Enabled "false"
+		$retrieved = Get-AzScheduledQueryRule -ResourceGroup $resourceGroupName -Name $ruleName | Update-AzScheduledQueryRule -Enabled 0
 
 		Verify-ScheduledQueryRule $retrieved
-		Assert-AreEqual $retrieved.Enabled "false"
+		Assert-AreEqual $retrieved.Enabled 0
 
 		$retrieved = Get-AzScheduledQueryRule -ResourceGroup $resourceGroupName -Name $ruleName | Set-AzScheduledQueryRule
 		Verify-ScheduledQueryRule $retrieved
 		
 		Write-Debug " ****** Updating Scheduled Query Rule by Resource Id"
-		$retrieved = Get-AzScheduledQueryRule -ResourceId $resourceId | Update-AzScheduledQueryRule -Enabled "true"
-		Assert-AreEqual $retrieved.Enabled "true"
+		$retrieved = Get-AzScheduledQueryRule -ResourceId $resourceId | Update-AzScheduledQueryRule -Enabled 1
+		Assert-AreEqual $retrieved.Enabled 1
 		Verify-ScheduledQueryRule $retrieved
 		
         $retrieved = Get-AzScheduledQueryRule -ResourceId $resourceId | Set-AzScheduledQueryRule
@@ -241,7 +258,7 @@ function Test-PipingRemoveSetUpdateScheduledQueryRule
 	}
 	finally
 	{
-	
+		Clean-ResourceGroup($resourceGroupName)
 	}
 }
 

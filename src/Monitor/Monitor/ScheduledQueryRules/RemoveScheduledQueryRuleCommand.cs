@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         /// <summary>
         /// Alert name
         /// </summary>
-        [Parameter(ParameterSetName = ByRuleName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The alert name")]
+        [Parameter(ParameterSetName = ByRuleName, Mandatory = true, HelpMessage = "The alert name")]
         [ResourceNameCompleter("Microsoft.insights/scheduledqueryrules", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         /// <summary>
         /// The resource group name
         /// </summary>
-        [Parameter(ParameterSetName = ByRuleName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [Parameter(ParameterSetName = ByRuleName, Mandatory = true, HelpMessage = "The resource group name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }

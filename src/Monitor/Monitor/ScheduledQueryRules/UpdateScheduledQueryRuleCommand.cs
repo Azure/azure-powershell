@@ -53,8 +53,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         /// <summary>
         /// Alert name
         /// </summary>
-        [Parameter(ParameterSetName = ByRuleName, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The alert name")]
+        [Parameter(ParameterSetName = ByRuleName, Mandatory = true, HelpMessage = "The alert name")]
         [ResourceNameCompleter("Microsoft.insights/scheduledqueryrules", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -62,8 +61,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         /// <summary>
         /// The resource group name
         /// </summary>
-        [Parameter(ParameterSetName = ByRuleName, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name")]
+        [Parameter(ParameterSetName = ByRuleName, Mandatory = true, HelpMessage = "The resource group name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -77,9 +75,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
             HelpMessage = "The azure alert state - valid values - true, false")]
         [Parameter(ParameterSetName = ByResourceId, Mandatory = true,
             HelpMessage = "The azure alert state - valid values - true, false")]
-        [ValidateSet("true", "false")]
-        [PSArgumentCompleter("true", "false")]
-        public string Enabled { get; set; }
+        public bool Enabled { get; set; }
 
         #endregion
 
@@ -114,7 +110,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
             }
 
             // Update of only Enabled field is supported
-            LogSearchRuleResourcePatch parameters = new LogSearchRuleResourcePatch(resource.Tags, this.Enabled);
+            LogSearchRuleResourcePatch parameters = new LogSearchRuleResourcePatch(resource.Tags, this.Enabled ? "true" : "false");
 
             if (ShouldProcess(this.Name,
                 string.Format("Updating Log Alert Rule '{0}' in resource group '{1}'.", this.Name,

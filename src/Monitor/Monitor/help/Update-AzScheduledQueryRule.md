@@ -14,19 +14,19 @@ Updates a Log Alert rule
 
 ### ByRuleName (Default)
 ```
-Update-AzScheduledQueryRule -Name <String> -ResourceGroupName <String> -Enabled <String>
+Update-AzScheduledQueryRule -Name <String> -ResourceGroupName <String> -Enabled <Boolean>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Update-AzScheduledQueryRule -InputObject <PSScheduledQueryRuleResource> -Enabled <String>
+Update-AzScheduledQueryRule -InputObject <PSScheduledQueryRuleResource> -Enabled <Boolean>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Update-AzScheduledQueryRule -ResourceId <String> -Enabled <String> [-DefaultProfile <IAzureContextContainer>]
+Update-AzScheduledQueryRule -ResourceId <String> -Enabled <Boolean> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,15 +36,18 @@ To update other properties, see "Set-AzScheduledQueryRule" command.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 - Update by rule name
 ```powershell
-Parameter Set: ByRuleName
 PS C:\> Update-AzScheduledQueryRule -ResourceGroupName "Rac46PostSwapRG" -Name "logalertfoo" -Enabled "false"
+```
 
-Parameter Set: ByInputObject
+### Example 2 - Update by input object
+```powershell
 PS C:\> Update-AzScheduledQueryRule -InputObject $PSScheduledQueryRuleResource -Enabled "false"
+```
 
-Parameter Set: ByResourceId
+### Example 3 - Update by resource Id
+```powershell
 PS C:\> Update-AzScheduledQueryRule -ResourceId "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/microsoft.insights/scheduledQueryRules/logalertfoo" -Enabled "false"
 ```
 
@@ -69,10 +72,9 @@ Accept wildcard characters: False
 The azure alert state - valid values - true, false
 
 ```yaml
-Type: System.String
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
-Accepted values: true, false
 
 Required: True
 Position: Named
@@ -96,6 +98,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+The alert name
+
+```yaml
+Type: System.String
+Parameter Sets: ByRuleName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name
 
@@ -107,7 +124,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -117,21 +134,6 @@ The resource Id
 ```yaml
 Type: System.String
 Parameter Sets: ByResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-The alert name
-
-```yaml
-Type: System.String
-Parameter Sets: ByRuleName
 Aliases:
 
 Required: True

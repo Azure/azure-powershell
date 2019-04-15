@@ -16,8 +16,8 @@ Updates a Log Alert Rule
 ```
 Set-AzScheduledQueryRule -Source <PSScheduledQueryRuleSource> [-Schedule <PSScheduledQueryRuleSchedule>]
  -Action <PSScheduledQueryRuleAlertingAction> -Location <String> [-Description <String>] -Name <String>
- -ResourceGroupName <String> [-Tags <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
- [-Enabled <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -ResourceGroupName <String> [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
+ [-Enabled <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -25,8 +25,8 @@ Set-AzScheduledQueryRule -Source <PSScheduledQueryRuleSource> [-Schedule <PSSche
 ```
 Set-AzScheduledQueryRule -InputObject <PSScheduledQueryRuleResource> [-Source <PSScheduledQueryRuleSource>]
  [-Schedule <PSScheduledQueryRuleSchedule>] [-Action <PSScheduledQueryRuleAlertingAction>] [-Location <String>]
- [-Description <String>] [-Tags <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
- [-Enabled <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Description <String>] [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
+ [-Enabled <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -34,8 +34,8 @@ Set-AzScheduledQueryRule -InputObject <PSScheduledQueryRuleResource> [-Source <P
 ```
 Set-AzScheduledQueryRule -ResourceId <String> -Source <PSScheduledQueryRuleSource>
  [-Schedule <PSScheduledQueryRuleSchedule>] -Action <PSScheduledQueryRuleAlertingAction> -Location <String>
- [-Description <String>] [-Tags <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
- [-Enabled <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Description <String>] [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
+ [-Enabled <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -44,15 +44,18 @@ Updates a Log Alert Rule by PUT semantics
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 - Set by rule name
 ```powershell
-Parameter Set: ByRuleName
 PS C:\> Set-AzScheduledQueryRule -ResourceGroupName "Rac46PostSwapRG" -Name "logalertfoo" -Enabled "true" -Location "eastus" -Action $alertingAction -Description "log alert foo" -Schedule $schedule -Source $source
+```
 
-Parameter Set: ByInputObject
+### Example 2 - Set by Innput Object
+```powershell
 PS C:\> Set-AzScheduledQueryRule -InputObject $PSScheduledQueryRuleResource -Enabled "true" -Location "eastus" -Action $alertingAction -Description "log alert foo" -Schedule $schedule -Source $source
+```
 
-Parameter Set: ByResourceId
+### Example 3 - Set by resource Id
+```powershell
 PS C:\> Set-AzScheduledQueryRule -ResourceId "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/microsoft.insights/scheduledQueryRules/logalertfoo" -Location "eastus" -Action $alertingAction -Enabled "true" -Description "log alert foo" -Schedule $schedule -Source $source
 ```
 
@@ -69,7 +72,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -81,7 +84,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -126,7 +129,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -134,15 +137,14 @@ Accept wildcard characters: False
 The azure alert state - valid values - true, false
 
 ```yaml
-Type: System.String
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
-Accepted values: true, false
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -172,7 +174,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -184,7 +186,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The alert name
+
+```yaml
+Type: System.String
+Parameter Sets: ByRuleName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -199,7 +216,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -209,21 +226,6 @@ The resource Id
 ```yaml
 Type: System.String
 Parameter Sets: ByResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-The alert name
-
-```yaml
-Type: System.String
-Parameter Sets: ByRuleName
 Aliases:
 
 Required: True
@@ -244,7 +246,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -259,7 +261,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -271,11 +273,11 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Resource tags
 
 ```yaml
@@ -286,7 +288,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

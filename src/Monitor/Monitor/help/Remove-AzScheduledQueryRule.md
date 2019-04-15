@@ -35,15 +35,18 @@ Removes a Log Alert Rule
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 - Remove by rule name
 ```powershell
-Parameter Set: ByRuleName
 PS C:\> Remove-AzScheduledQueryRule -ResourceGroupName "Rac46PostSwapRG" -Name "logalertfoo"
+```
 
-Parameter Set: ByInputObject
+### Example 2 - Remove by input object
+```powershell
 PS C:\> Remove-AzScheduledQueryRule -InputObject $PSScheduledQueryRuleResource
+```
 
-Parameter Set: ByResourceId
+### Example 3 - Remove by resource Id
+```powershell
 PS C:\> Remove-AzScheduledQueryRule -ResourceId "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/microsoft.insights/scheduledQueryRules/logalertfoo"
 ```
 
@@ -79,6 +82,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+The alert name
+
+```yaml
+Type: System.String
+Parameter Sets: ByRuleName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Return a value indicating success or failure.
 This cmdlet does not generate any output.
@@ -106,7 +124,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -116,21 +134,6 @@ The resource Id
 ```yaml
 Type: System.String
 Parameter Sets: ByResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-The alert name
-
-```yaml
-Type: System.String
-Parameter Sets: ByRuleName
 Aliases:
 
 Required: True

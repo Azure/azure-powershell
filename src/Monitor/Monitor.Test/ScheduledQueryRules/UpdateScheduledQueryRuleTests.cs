@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 MonitorManagementClient = monitorManagementClientMock.Object,
-                Enabled = "true"
+                Enabled = true
             };
 
             response = new AzureOperationResponse<LogSearchRuleResource>()
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
             cmdlet.Name = "LogSearchAlertName";
             cmdlet.ResourceGroupName = Utilities.ResourceGroup;
 
-            cmdlet.Enabled = "false";
+            cmdlet.Enabled = false;
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal("LogSearchAlertName", this.ruleName);
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
 
             ScheduledQueryRuleResource sqrResource= new ScheduledQueryRuleResource();
             cmdlet.InputObject = new PSScheduledQueryRuleResource(sqrResource);
-            cmdlet.Enabled = "true";
+            cmdlet.Enabled = true;
 
             cmdlet.ExecuteCmdlet();
 
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
 
             cmdlet.InputObject = null;
             cmdlet.ResourceId = "/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/scheduledqueryrules/LogSearchAlertName";
-            cmdlet.Enabled = "false";
+            cmdlet.Enabled = false;
 
             cmdlet.ExecuteCmdlet();
 

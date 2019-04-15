@@ -91,9 +91,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
 
             Dictionary<string, string> tags = new Dictionary<string, string>{ {"key", "value"} };
             cmdlet.Tag = tags;
-            cmdlet.Enabled = "true";
+            cmdlet.Enabled = true;
 
-            ScheduledQueryRuleAznsAction aznsAction = new ScheduledQueryRuleAznsAction(new AzNsActionGroup(new List<string>{"AG1", "AG2"}, "Email Subject for Log Search Alert", "custom webhook payload"));
+            ScheduledQueryRuleAznsAction aznsAction = new ScheduledQueryRuleAznsAction(new AzNsActionGroup(new string[]{"AG1", "AG2"}, "Email Subject for Log Search Alert", "custom webhook payload"));
             ScheduledQueryRuleLogMetricTrigger logMetricTrigger = new ScheduledQueryRuleLogMetricTrigger(new LogMetricTrigger("GreaterThan", 15, "Total"));
             ScheduledQueryRuleTriggerCondition triggerCondition = new ScheduledQueryRuleTriggerCondition(new TriggerCondition("GreaterThan", 15, logMetricTrigger));
             ScheduledQueryRuleAlertingAction alertingAction = new ScheduledQueryRuleAlertingAction(new AlertingAction("2", aznsAction, triggerCondition, 5));
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
             ScheduledQueryRuleSchedule schedule = new ScheduledQueryRuleSchedule(new Schedule(5, 5));
             cmdlet.Schedule = new PSScheduledQueryRuleSchedule(schedule);
 
-            ScheduledQueryRuleSource source= new ScheduledQueryRuleSource(new Source("union *", "dataSourceId", new List<string>{"authResource1", "authResource2"}, "ResultCount"));
+            ScheduledQueryRuleSource source= new ScheduledQueryRuleSource(new Source("union *", "dataSourceId", new string[]{"authResource1", "authResource2"}, "ResultCount"));
             cmdlet.Source = new PSScheduledQueryRuleSource(source);
 
             cmdlet.ExecuteCmdlet();
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
             Assert.NotNull(this.createOrUpdatePrms.Source);
             Assert.Equal("union *", this.createOrUpdatePrms.Source.Query);
             Assert.Equal("dataSourceId", this.createOrUpdatePrms.Source.DataSourceId);
-            Assert.Equal(new List<string> { "authResource1", "authResource2" }, this.createOrUpdatePrms.Source.AuthorizedResources);
+            Assert.Equal(new string[]{ "authResource1", "authResource2" }, this.createOrUpdatePrms.Source.AuthorizedResources);
             Assert.Equal("ResultCount", this.createOrUpdatePrms.Source.QueryType);
         }
     }

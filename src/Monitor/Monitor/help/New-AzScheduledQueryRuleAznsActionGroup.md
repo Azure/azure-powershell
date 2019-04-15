@@ -13,8 +13,8 @@ Creates an object of type Azns Action Group
 ## SYNTAX
 
 ```
-New-AzScheduledQueryRuleAznsActionGroup [-ActionGroup <System.Collections.Generic.List`1[System.String]>]
- [-EmailSubject <String>] [-CustomWebhookPayload <String>] [<CommonParameters>]
+New-AzScheduledQueryRuleAznsActionGroup [-ActionGroup <String[]>] [-EmailSubject <String>]
+ [-CustomWebhookPayload <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,7 +34,7 @@ PS C:\> $aznsActionGroup = New-AzScheduledQueryRuleAznsActionGroup -ActionGroup 
 The list of action groups to send notification to
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

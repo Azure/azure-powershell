@@ -14,9 +14,10 @@ Creates a Log Alert Rule (Scheduled Query Rule type)
 
 ```
 New-AzScheduledQueryRule -Source <PSScheduledQueryRuleSource> -Schedule <PSScheduledQueryRuleSchedule>
- -Action <PSScheduledQueryRuleAlertingAction> -Location <String> [-Description <String>] -RuleName <String>
- -Enabled <String> -ResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [<CommonParameters>]
+ -Action <PSScheduledQueryRuleAlertingAction> -Location <String> [-Description <String>] -Name <String>
+ -Enabled <Boolean> -ResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,10 +96,9 @@ Accept wildcard characters: False
 The azure alert state - valid values - true, false
 
 ```yaml
-Type: System.String
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
-Accepted values: true, false
 
 Required: True
 Position: Named
@@ -109,6 +109,21 @@ Accept wildcard characters: False
 
 ### -Location
 The location for this alert
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The alert name
 
 ```yaml
 Type: System.String
@@ -133,22 +148,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -RuleName
-The alert name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -189,6 +189,36 @@ Resource tags
 Type: System.Collections.Generic.IDictionary`2[System.String,System.String]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
