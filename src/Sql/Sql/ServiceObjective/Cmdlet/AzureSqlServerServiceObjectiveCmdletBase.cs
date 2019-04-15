@@ -27,16 +27,45 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
     public abstract class AzureSqlServerServiceObjectiveCmdletBase
         : AzureSqlCmdletBase<IEnumerable<AzureSqlServerServiceObjectiveModel>, AzureSqlServerServiceObjectiveAdapter>
     {
+        internal const string ByServerNameParameterSet = "ByServer";
+
+        internal const string ByLocationNameParameterSet = "ByLocation";
+
+
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The name of the resource group.",
+            ParameterSetName = ByServerNameParameterSet)]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
+
         /// <summary>
         /// Gets or sets the name of the database server to use.
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "SQL Database server name.")]
+            HelpMessage = "SQL Database server name.",
+            ParameterSetName = ByServerNameParameterSet)]
         [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the database server to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the Location for which to get the service objectives.",
+            ParameterSetName = ByLocationNameParameterSet)]
+        [LocationCompleter("Microsoft.Sql/locations/capabilities")]
+        [ValidateNotNullOrEmpty]
+        public string LocationName { get; set; }
 
         /// <summary>
         /// Intializes the model adapter

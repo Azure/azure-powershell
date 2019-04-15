@@ -93,6 +93,22 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
         }
 
         /// <summary>
+        /// Gets a list of all the ServiceObjective for a location
+        /// </summary>
+        /// <param name="locationName">The name of the location</param>
+        /// <returns>A list of all the ServiceObjectives</returns>
+        public List<AzureSqlServerServiceObjectiveModel> ListServiceObjectives(string locationName)
+        {
+            var capabilities = CapabilitiesCommunicator.Get(locationName);
+
+            return (
+                from sv in capabilities.SupportedServerVersions
+                from e in sv.SupportedEditions
+                from slo in e.SupportedServiceLevelObjectives
+                select CreateServiceObjectiveModelFromResponse(e, slo)).ToList();
+         }
+
+        /// <summary>
         /// Convert a SLO capability to AzureSqlDatabaseServerServiceObjectiveModel
         /// </summary>
         /// <param name="edition">The edition</param>
