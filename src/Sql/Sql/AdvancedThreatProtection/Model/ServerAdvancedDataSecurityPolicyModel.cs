@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model
     /// <summary>
     /// A class representing a server Advanced Threat Protection policy
     /// </summary>
-    public class ServerAdvancedThreatProtectionPolicyModel
+    public class ServerAdvancedDataSecurityPolicyModel
     {
         /// <summary>
         /// Gets or sets the resource group
