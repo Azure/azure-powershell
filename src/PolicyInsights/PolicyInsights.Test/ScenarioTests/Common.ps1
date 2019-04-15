@@ -181,13 +181,16 @@ Validates a list of policy states
 #>
 function Validate-PolicyStates
 {
-   param([System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState]]]$policyStates, [int]$count)
+   param(
+      [System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState]]]$policyStates,
+	  [int]$count,
+	  [switch]$expandPolicyEvaluationDetails = $false)
 
    Assert-True { $count -ge $policyStates.Count }
    Assert-True { $policyStates.Count -gt 0 }
    Foreach($policyState in $policyStates)
    {
-      Validate-PolicyState $policyState
+      Validate-PolicyState $policyState $expandPolicyEvaluationDetails
    }
 }
 
@@ -197,7 +200,9 @@ Validates a policy state
 #>
 function Validate-PolicyState
 {
-   param([Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState]$policyState)
+   param(
+      [Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState]$policyState,
+	  [switch]$expandPolicyEvaluationDetails = $false)
 
    Assert-NotNull $policyState
 
@@ -208,6 +213,15 @@ function Validate-PolicyState
    Assert-NotNull $policyState.IsCompliant
    Assert-NotNullOrEmpty $policyState.SubscriptionId
    Assert-NotNullOrEmpty $policyState.PolicyDefinitionAction
+
+   if ($expandPolicyEvaluationDetails -and $policyState.ComplianceState -eq "NonCompliant")
+   {
+      Assert-NotNull $policyState.PolicyEvaluationDetails
+   }
+   else
+   {
+      Assert-Null $policyState.PolicyEvaluationDetails
+   }
 }
 
 <#
