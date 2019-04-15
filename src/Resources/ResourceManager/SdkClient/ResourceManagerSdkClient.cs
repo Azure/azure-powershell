@@ -39,6 +39,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using System.Management.Automation;
+using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 {
@@ -465,11 +466,42 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         private TemplateValidationInfo CheckBasicDeploymentErrors(string resourceGroup, string deploymentName, Deployment deployment)
         {
-            DeploymentValidateResult validationResult = resourceGroup != null
-                ? ResourceManagementClient.Deployments.Validate(resourceGroup, deploymentName, deployment)
-                : ResourceManagementClient.Deployments.ValidateAtSubscriptionScope(deploymentName, deployment);
+            try
+            {
+                DeploymentValidateResult validationResult = resourceGroup != null
+                    ? ResourceManagementClient.Deployments.Validate(resourceGroup, deploymentName, deployment)
+                    : ResourceManagementClient.Deployments.ValidateAtSubscriptionScope(deploymentName, deployment);
 
-            return new TemplateValidationInfo(validationResult);
+                return new TemplateValidationInfo(validationResult);
+            }
+            catch (Exception ex)
+            {
+                var error = HandleError(ex).FirstOrDefault();
+                return new TemplateValidationInfo(new DeploymentValidateResult(error));
+            }
+        }
+
+        private List<ResourceManagementErrorWithDetails> HandleError(Exception ex)
+        {
+            if (ex == null)
+            {
+                return null;
+            }
+
+            ResourceManagementErrorWithDetails error = null;
+            var innerException = HandleError(ex.InnerException);
+            if (ex is CloudException)
+            {
+                var cloudEx = ex as CloudException;
+                error = new ResourceManagementErrorWithDetails(cloudEx.Body?.Code, cloudEx.Body?.Message, cloudEx.Body?.Target, innerException);
+            }
+            else
+            {
+                error = new ResourceManagementErrorWithDetails(null, ex.Message, null, innerException);
+            }
+
+            return new List<ResourceManagementErrorWithDetails> { error };
+
         }
 
         private IPage<DeploymentOperation> ListDeploymentOperations(string resourceGroupName, string deploymentName)
@@ -1071,7 +1103,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         public virtual List<PSResourceManagerError> ValidateDeployment(PSDeploymentCmdletParameters parameters, DeploymentMode deploymentMode)
         {
             Deployment deployment = CreateBasicDeployment(parameters, deploymentMode, null);
-            TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, Guid.NewGuid().ToString(), deployment);
+            var deploymentName = GenerateDeploymentName(parameters);
+            TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, deploymentName, deployment);
 
             if (validationInfo.Errors.Count == 0)
             {

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update Remove- cmdlet to not require SubscriptionId parameter
+* Update cmdlet examples 
 
 ## Version 0.1.0
 * Preview release of Az.Blueprint module

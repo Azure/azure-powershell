@@ -18,7 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Replace dependency on Monitor SDK with common code
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Enhanced process of multiple columns classification.
+* Include sku properties (sku name, family, capacity) in response from Get-AzSqlServerServiceObjective and format as table by default.
+* Support for time zone parameter in Managed Instance create.
+
+## Version 1.8.0
 * Support Database Data Classification.
+* Add Get/Remove AzSqlVirtualCluster cmdlets.
 
 ## Version 1.7.0
 * Add Vulnerability Assessment cmdlets on Server and Managed Instance

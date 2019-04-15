@@ -258,7 +258,7 @@ function New-AzADSpCredentialWithId
     )
 
     $profile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
-    $cmdlet = New-Object -TypeName Microsoft.Azure.Commands.ActiveDirectory.NewAzureADSpCredentialCommand 
+    $cmdlet = New-Object -TypeName Microsoft.Azure.Commands.ActiveDirectory.NewAzureADSpCredentialCommand
     $cmdlet.DefaultProfile = $profile
 	$cmdlet.CommandRuntime = $PSCmdlet.CommandRuntime
 
@@ -295,6 +295,104 @@ function New-AzADSpCredentialWithId
     if ($KeyId -ne $null -and $KeyId -ne [System.Guid]::Empty)
     {
         $cmdlet.KeyId = $KeyId
+    }
+
+    $cmdlet.ExecuteCmdlet()
+}
+
+function Test-AzResourceGroupDeploymentWithName
+{
+    [CmdletBinding()]
+    param(
+        [string] [Parameter()] $DeploymentName,
+        [string] [Parameter()] $ResourceGroupName,
+        [string] [Parameter()] $RollBackDeploymentName,
+        [string] [Parameter()] $TemplateFile,
+        [string] [Parameter()] $TemplateUri,
+        [string] [Parameter()] $TemplateParameterFile,
+        [string] [Parameter()] $TemplateParameterUri,
+        [string] [Parameter()] $ApiVersion,
+        [switch] [Parameter()] $RollbackToLastDeployment,
+        [switch] [Parameter()] $SkipTemplateParameterPrompt,
+        [switch] [Parameter()] $Pre,
+        [hashtable] [Parameter()] $TemplateObject,
+        [hashtable] [Parameter()] $TemplateParameterObject,
+        [Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode] [Parameter()] $Mode
+    )
+
+    $profile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
+    $cmdlet = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.TestAzureResourceGroupDeploymentCmdlet
+    $cmdlet.DefaultProfile = $profile
+    $cmdlet.CommandRuntime = $PSCmdlet.CommandRuntime
+
+    if (-not ([string]::IsNullOrEmpty($DeploymentName)))
+    {
+        $cmdlet.DeploymentName = $DeploymentName
+    }
+
+    if (-not ([string]::IsNullOrEmpty($ResourceGroupName)))
+    {
+        $cmdlet.ResourceGroupName = $ResourceGroupName
+    }
+
+    if (-not ([string]::IsNullOrEmpty($RollBackDeploymentName)))
+    {
+        $cmdlet.RollBackDeploymentName = $RollBackDeploymentName
+    }
+
+    if (-not ([string]::IsNullOrEmpty($TemplateFile)))
+    {
+        $cmdlet.TemplateFile = $TemplateFile
+    }
+
+    if (-not ([string]::IsNullOrEmpty($TemplateUri)))
+    {
+        $cmdlet.TemplateUri = $TemplateUri
+    }
+
+    if (-not ([string]::IsNullOrEmpty($TemplateParameterFile)))
+    {
+        $cmdlet.TemplateParameterFile = $TemplateParameterFile
+    }
+
+    if (-not ([string]::IsNullOrEmpty($TemplateParameterUri)))
+    {
+        $cmdlet.TemplateParameterUri = $TemplateParameterUri
+    }
+
+    if (-not ([string]::IsNullOrEmpty($ApiVersion)))
+    {
+        $cmdlet.ApiVersion = $ApiVersion
+    }
+
+    if ($RollbackToLastDeployment.IsPresent)
+    {
+        $cmdlet.RollbackToLastDeployment = $true
+    }
+
+    if ($SkipTemplateParameterPrompt.IsPresent)
+    {
+        $cmdlet.SkipTemplateParameterPrompt = $true
+    }
+
+    if ($Pre.IsPresent)
+    {
+        $cmdlet.Pre = $true
+    }
+
+    if ($TemplateObject -ne $null)
+    {
+        $cmdlet.TemplateObject = $TemplateObject
+    }
+
+    if ($TemplateParameterObject -ne $null)
+    {
+        $cmdlet.TemplateParameterObject = $TemplateParameterObject
+    }
+
+    if ($Mode -ne $null)
+    {
+        $cmdlet.Mode = $Mode
     }
 
     $cmdlet.ExecuteCmdlet()

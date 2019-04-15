@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         {
             ICollection<AzureSqlSyncGroupModel> results;
 
-            if (MyInvocation.BoundParameters.ContainsKey("Name"))
+            if (MyInvocation.BoundParameters.ContainsKey("Name") && !WildcardPattern.ContainsWildcardCharacters(Name))
             {
                 results = new List<AzureSqlSyncGroupModel>();
                 results.Add(ModelAdapter.GetSyncGroup(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.Name));
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                 results = ModelAdapter.ListSyncGroups(this.ResourceGroupName, this.ServerName, this.DatabaseName);
             }
 
-            return results;
+            return SubResourceWildcardFilter(Name, results);
         }
 
         /// <summary>
