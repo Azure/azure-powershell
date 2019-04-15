@@ -13,10 +13,16 @@ Gets service objectives for an Azure SQL Database server.
 
 ## SYNTAX
 
+### ByServer
 ```
-Get-AzSqlServerServiceObjective [[-ServiceObjectiveName] <String>] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzSqlServerServiceObjective [[-ServiceObjectiveName] <String>] [-ResourceGroupName] <String>
+ [-ServerName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByLocation
+```
+Get-AzSqlServerServiceObjective -LocationName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,13 +83,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LocationName
+The name of the Location for which to get the service objectives.
+
+```yaml
+Type: System.String
+Parameter Sets: ByLocation
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of a resource group.
 This cmdlet gets service objectives for a SQL Database server assigned to this resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByServer
 Aliases:
 
 Required: True
@@ -98,7 +119,7 @@ Specifies the name of a SQL Database SQL Database server.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByServer
 Aliases:
 
 Required: True
@@ -114,7 +135,7 @@ The acceptable values for this parameter are: Basic, S0, S1, S2, P1, P2, and P3.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByServer
 Aliases:
 
 Required: False
