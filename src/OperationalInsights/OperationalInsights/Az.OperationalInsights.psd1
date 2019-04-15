@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.4.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.OperationalInsights.dll', 
@@ -89,9 +89,9 @@ CmdletsToExport = 'New-AzOperationalInsightsAzureActivityLogDataSource',
                'Disable-AzOperationalInsightsLinuxSyslogCollection', 
                'New-AzOperationalInsightsWindowsEventDataSource', 
                'Get-AzOperationalInsightsSavedSearch', 
-               'Get-AzOperationalInsightsSavedSearchResults', 
+               'Get-AzOperationalInsightsSavedSearchResult', 
                'Get-AzOperationalInsightsSchema', 
-               'Get-AzOperationalInsightsSearchResults', 
+               'Get-AzOperationalInsightsSearchResult', 
                'New-AzOperationalInsightsComputerGroup', 
                'New-AzOperationalInsightsSavedSearch', 
                'Set-AzOperationalInsightsSavedSearch', 
@@ -104,11 +104,11 @@ CmdletsToExport = 'New-AzOperationalInsightsAzureActivityLogDataSource',
                'New-AzOperationalInsightsStorageInsight', 
                'Remove-AzOperationalInsightsStorageInsight', 
                'Set-AzOperationalInsightsIntelligencePack', 
-               'Get-AzOperationalInsightsIntelligencePacks', 
-               'Get-AzOperationalInsightsWorkspaceManagementGroups', 
-               'Get-AzOperationalInsightsLinkTargets', 
+               'Get-AzOperationalInsightsIntelligencePack', 
+               'Get-AzOperationalInsightsWorkspaceManagementGroup', 
+               'Get-AzOperationalInsightsLinkTarget', 
                'Get-AzOperationalInsightsWorkspaceUsage', 
-               'Get-AzOperationalInsightsWorkspaceSharedKeys', 
+               'Get-AzOperationalInsightsWorkspaceSharedKey', 
                'Get-AzOperationalInsightsWorkspace', 
                'New-AzOperationalInsightsWorkspace', 
                'Remove-AzOperationalInsightsWorkspace', 
@@ -119,7 +119,10 @@ CmdletsToExport = 'New-AzOperationalInsightsAzureActivityLogDataSource',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'New-AzOperationalInsightsAzureAuditDataSource'
+AliasesToExport = 'New-AzOperationalInsightsAzureAuditDataSource', 'Get-AzOperationalInsightsIntelligencePacks',
+                'Get-AzOperationalInsightsLinkTargets', 'Get-AzOperationalInsightsSavedSearchResults',
+                'Get-AzOperationalInsightsSearchResults', 'Get-AzOperationalInsightsWorkspaceManagementGroups',
+                'Get-AzOperationalInsightsWorkspaceSharedKeys'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

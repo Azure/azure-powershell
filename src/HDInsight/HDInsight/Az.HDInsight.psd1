@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.4.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.HDInsight.dll', 
@@ -87,7 +87,7 @@ CmdletsToExport = 'Get-AzHDInsightJob', 'New-AzHDInsightSqoopJobDefinition',
                'Add-AzHDInsightComponentVersion', 'Add-AzHDInsightSecurityProfile', 
                'Set-AzHDInsightDefaultStorage', 'Add-AzHDInsightStorage', 
                'Add-AzHDInsightScriptAction', 'Add-AzHDInsightMetastore', 
-               'Add-AzHDInsightConfigValues', 'Get-AzHDInsightProperties', 
+               'Add-AzHDInsightConfigValue', 'Get-AzHDInsightProperty', 
                'Revoke-AzHDInsightRdpServicesAccess', 
                'Revoke-AzHDInsightHttpServicesAccess', 
                'Grant-AzHDInsightRdpServicesAccess', 
@@ -108,8 +108,8 @@ CmdletsToExport = 'Get-AzHDInsightJob', 'New-AzHDInsightSqoopJobDefinition',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Enable-AzHDInsightOMS', 'Disable-AzHDInsightOMS', 
-               'Get-AzHDInsightOMS'
+AliasesToExport = 'Enable-AzHDInsightOMS', 'Disable-AzHDInsightOMS', 'Add-AzHDInsightConfigValues',
+               'Get-AzHDInsightOMS', 'Get-AzHDInsightProperties'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
