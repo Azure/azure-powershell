@@ -50,36 +50,36 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         //
         // Summary:
         //     Gets or sets source (Query, DataSourceId, etc.) for rule.
-        [Parameter(ParameterSetName = ByRuleName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The scheduled query rule source")]
-        [Parameter(ParameterSetName = ByInputObject, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The scheduled query rule source")]
-        [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The scheduled query rule source")]
+        [Parameter(ParameterSetName = ByRuleName, Mandatory = true, HelpMessage = "The scheduled query rule source")]
+        [Parameter(ParameterSetName = ByInputObject, Mandatory = false, HelpMessage = "The scheduled query rule source")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = true, HelpMessage = "The scheduled query rule source")]
         [ValidateNotNullOrEmpty]
         public PSScheduledQueryRuleSource Source { get; set; }
 
         //
         // Summary:
         //     Gets or sets schedule (Frequnecy, Time Window) for rule.
-        [Parameter(ParameterSetName = ByRuleName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The scheduled query rule schedule")]
-        [Parameter(ParameterSetName = ByInputObject, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The scheduled query rule schedule")]
-        [Parameter(ParameterSetName = ByResourceId, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The scheduled query rule schedule")]
+        [Parameter(ParameterSetName = ByRuleName, Mandatory = false, HelpMessage = "The scheduled query rule schedule")]
+        [Parameter(ParameterSetName = ByInputObject, Mandatory = false, HelpMessage = "The scheduled query rule schedule")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = false, HelpMessage = "The scheduled query rule schedule")]
         [ValidateNotNullOrEmpty]
         public PSScheduledQueryRuleSchedule Schedule { get; set; }
 
         //
         // Summary:
         //     Gets or sets action needs to be taken on rule execution.
-        [Parameter(ParameterSetName = ByRuleName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The scheduled query rule Alerting Action")]
-        [Parameter(ParameterSetName = ByInputObject, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The scheduled query rule Alerting Action")]
-        [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The scheduled query rule Alerting Action")]
+        [Parameter(ParameterSetName = ByRuleName, Mandatory = true, HelpMessage = "The scheduled query rule Alerting Action")]
+        [Parameter(ParameterSetName = ByInputObject, Mandatory = false, HelpMessage = "The scheduled query rule Alerting Action")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = true, HelpMessage = "The scheduled query rule Alerting Action")]
         [ValidateNotNullOrEmpty]
         public PSScheduledQueryRuleAlertingAction Action { get; set; }
 
         //
         // Summary:
         //     Region where alert is to be created
-        [Parameter(ParameterSetName = ByRuleName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location for this alert")]
-        [Parameter(ParameterSetName = ByInputObject, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The location for this alert")]
-        [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location for this alert")]
+        [Parameter(ParameterSetName = ByRuleName, Mandatory = true, HelpMessage = "The location for this alert")]
+        [Parameter(ParameterSetName = ByInputObject, Mandatory = false, HelpMessage = "The location for this alert")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = true, HelpMessage = "The location for this alert")]
         [ValidateNotNullOrEmpty]
         [LocationCompleter("Microsoft.Batch/operations")]
         public string Location { get; set; }
@@ -87,22 +87,22 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         //
         // Summary:
         //     Alert description
-        [Parameter(ParameterSetName = ByRuleName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description for this alert")]
-        [Parameter(ParameterSetName = ByInputObject, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description for this alert")]
-        [Parameter(ParameterSetName = ByResourceId, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description for this alert")]
+        [Parameter(ParameterSetName = ByRuleName, Mandatory = false, HelpMessage = "The description for this alert")]
+        [Parameter(ParameterSetName = ByInputObject, Mandatory = false, HelpMessage = "The description for this alert")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = false, HelpMessage = "The description for this alert")]
         public string Description { get; set; }
 
         //
         // Summary:
         //     Alert name
-        [Parameter(ParameterSetName = ByRuleName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The alert name")]
+        [Parameter(ParameterSetName = ByRuleName, Mandatory = true, HelpMessage = "The alert name")]
         [ResourceNameCompleter("Microsoft.insights/scheduledqueryrules", nameof(ResourceGroupName))]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the ResourceGroupName parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = ByRuleName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [Parameter(ParameterSetName = ByRuleName, Mandatory = true, HelpMessage = "The resource group name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -110,20 +110,19 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         //
         // Summary:
         //     Resource tags
-        [Parameter(ParameterSetName = ByRuleName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource tags")]
-        [Parameter(ParameterSetName = ByInputObject, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource tags")]
-        [Parameter(ParameterSetName = ByResourceId, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource tags")]
+        [Parameter(ParameterSetName = ByRuleName, Mandatory = false, HelpMessage = "Resource tags")]
+        [Parameter(ParameterSetName = ByInputObject, Mandatory = false, HelpMessage = "Resource tags")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = false, HelpMessage = "Resource tags")]
         public IDictionary<string, string> Tag { get; set; }
 
         //
         // Summary:
         //     Alert status - enabled or not, supported values - "true", "false"
-        [Parameter(ParameterSetName = ByRuleName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure alert state - valid values - true, false")]
-        [Parameter(ParameterSetName = ByInputObject, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure alert state - valid values - true, false")]
-        [Parameter(ParameterSetName = ByResourceId, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure alert state - valid values - true, false")]
-        [ValidateSet("true", "false")]
+        [Parameter(ParameterSetName = ByRuleName, Mandatory = false, HelpMessage = "The azure alert state - valid values - true, false")]
+        [Parameter(ParameterSetName = ByInputObject, Mandatory = false, HelpMessage = "The azure alert state - valid values - true, false")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = false, HelpMessage = "The azure alert state - valid values - true, false")]
         [PSArgumentCompleter("true", "false")]
-        public string Enabled { get; set; }
+        public bool Enabled { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -204,9 +203,9 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
                 requestBody.Source = this.Source;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("Enabled") || this.Enabled != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("Enabled"))
             {
-                requestBody.Enabled = this.Enabled;
+                requestBody.Enabled = this.Enabled? "true" : "false";
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("Description") || this.Description != null)

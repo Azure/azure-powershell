@@ -34,12 +34,11 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         public PSScheduledQueryRuleAznsAction AznsAction { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The severity for this alert")]
-        [ValidateSet("0", "1", "2", "3", "4")]
         [PSArgumentCompleter("0", "1", "2", "3", "4")]
         public string Severity { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The duration in minutes for which alert should be throttled")]
-        public int ThrottlingInMin { get; set; }
+        public int ThrottlingInMinutes { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The alert trigger condition")]
         [ValidateNotNullOrEmpty]
@@ -48,7 +47,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         #endregion
         protected override void ProcessRecordInternal()
         {
-             AlertingAction alertingAction = new AlertingAction(Severity, AznsAction, Trigger, ThrottlingInMin);
+             AlertingAction alertingAction = new AlertingAction(Severity, AznsAction, Trigger, ThrottlingInMinutes);
              alertingAction.Validate();
              WriteObject(new PSScheduledQueryRuleAlertingAction(alertingAction));
         }

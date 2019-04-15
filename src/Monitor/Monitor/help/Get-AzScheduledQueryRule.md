@@ -20,8 +20,8 @@ Get-AzScheduledQueryRule [-ResourceGroupName <String>] [-DefaultProfile <IAzureC
 
 ### ByRuleName
 ```
-Get-AzScheduledQueryRule -ResourceGroupName <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzScheduledQueryRule -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByResourceId
@@ -34,16 +34,19 @@ Gets Scheduled Query Resources
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 - List by subscription or resource group
 ```powershell
-Parameter Set: BySubscriptionOrResourceGroup
-        PS C:\> Get-AzScheduledQueryRule -ResourceGroupName "Rac46PostSwapRG"
+PS C:\> Get-AzScheduledQueryRule -ResourceGroupName "Rac46PostSwapRG"
+```
 
-      Parameter Set: ByRuleName
-        PS C:\> Get-AzScheduledQueryRule -ResourceGroupName "Rac46PostSwapRG" -Name "logalertfoo"
+### Example 2 - Get by rule name
+```powershell
+PS C:\> Get-AzScheduledQueryRule -ResourceGroupName "Rac46PostSwapRG" -Name "logalertfoo"
+```
 
-      Parameter Set: ByResourceId
-        PS C:\> Get-AzScheduledQueryRule -ResourceId "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/microsoft.insights/scheduledQueryRules/logalertfoo"
+### Example 3 - Get by resource Id
+```powershell
+PS C:\> Get-AzScheduledQueryRule -ResourceId "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/microsoft.insights/scheduledQueryRules/logalertfoo"
 ```
 
 ## PARAMETERS
@@ -57,6 +60,21 @@ Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The alert rule name
+
+```yaml
+Type: System.String
+Parameter Sets: ByRuleName
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -101,22 +119,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The alert rule name
-
-```yaml
-Type: System.String
-Parameter Sets: ByRuleName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

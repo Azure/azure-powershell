@@ -14,7 +14,7 @@ Creates an object of type Alerting Action
 
 ```
 New-AzScheduledQueryRuleAlertingAction [-AznsAction <PSScheduledQueryRuleAznsAction>] -Severity <String>
- [-ThrottlingInMin <Int32>] -Trigger <PSScheduledQueryRuleTriggerCondition>
+ [-ThrottlingInMinutes <Int32>] -Trigger <PSScheduledQueryRuleTriggerCondition>
  [<CommonParameters>]
 ```
 
@@ -61,11 +61,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ThrottlingInMin
+### -ThrottlingInMinutes
 The duration in minutes for which alert should be throttled
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 

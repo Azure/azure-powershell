@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
 
             ScheduledQueryRuleSchedule schedule = new ScheduledQueryRuleSchedule(new Schedule(5, 5));          
 
-            ScheduledQueryRuleSource source = new ScheduledQueryRuleSource(new Source("union *", "dataSourceId", new List<string> { "authResource1", "authResource2" }, "ResultCount"));
+            ScheduledQueryRuleSource source = new ScheduledQueryRuleSource(new Source("union *", "dataSourceId", new string[]{ "authResource1", "authResource2" }, "ResultCount"));
 
             //testing update of "description" field
             cmdlet = new SetScheduledQueryRuleCommand
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
             Assert.NotNull(this.updatePrms.Source);
             Assert.Equal("union *", this.updatePrms.Source.Query);
             Assert.Equal("dataSourceId", this.updatePrms.Source.DataSourceId);
-            Assert.Equal(new List<string> { "authResource1", "authResource2" }, this.updatePrms.Source.AuthorizedResources);
+            Assert.Equal(new string[]{ "authResource1", "authResource2" }, this.updatePrms.Source.AuthorizedResources);
             Assert.Equal("ResultCount", this.updatePrms.Source.QueryType);
         }
     }

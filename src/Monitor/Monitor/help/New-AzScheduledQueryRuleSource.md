@@ -13,8 +13,7 @@ Creates an object of type Source
 ## SYNTAX
 
 ```
-New-AzScheduledQueryRuleSource -Query <String>
- [-AuthorizedResource <System.Collections.Generic.List`1[System.String]>] -DataSourceId <String>
+New-AzScheduledQueryRuleSource -Query <String> [-AuthorizedResource <String[]>] -DataSourceId <String>
  [-QueryType <String>] [<CommonParameters>]
 ```
 
@@ -37,7 +36,7 @@ PS C:\> $source = New-AzScheduledQueryRuleSource -Query "Heartbeat | summarize A
 The list of authorized resources for this alert
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +85,6 @@ Type of Query - currently supported values : ResultCount
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: ResultCount
 
 Required: False
 Position: Named

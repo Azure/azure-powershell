@@ -34,14 +34,13 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         public string Query { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The list of authorized resources for this alert")]
-        public List<string> AuthorizedResource { get; set; }
+        public string[] AuthorizedResource { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The data source on which this alert is created")]
         [ValidateNotNullOrEmpty]
         public string DataSourceId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Type of Query - currently supported values : ResultCount")]
-        [ValidateSet("ResultCount")]
         [PSArgumentCompleter("ResultCount")]
         public string QueryType { get; set; }
 

@@ -31,7 +31,6 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 
         [Parameter(Mandatory = true, HelpMessage = "The metric threshold operator : GreaterThan, LessThan, Equal")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("GreaterThan", "LessThan", "Equal")]
         [PSArgumentCompleter("GreaterThan", "LessThan", "Equal")]
         public string ThresholdOperator { get; set; }
 
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 
         [Parameter(Mandatory = true, HelpMessage = "The metric trigger type")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("Consecutive", "Total")]
         [PSArgumentCompleter("Consecutive", "Total")]
         public string MetricTriggerType { get; set; }
 

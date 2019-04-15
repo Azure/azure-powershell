@@ -14,8 +14,7 @@ Creates an object of type Log Metric Trigger
 
 ```
 New-AzScheduledQueryRuleLogMetricTrigger -ThresholdOperator <String> -Threshold <Double>
- -MetricTriggerType <String> -MetricColumn <String>
- [<CommonParameters>]
+ -MetricTriggerType <String> -MetricColumn <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,7 +53,6 @@ The metric trigger type
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Consecutive, Total
 
 Required: True
 Position: Named
@@ -85,7 +83,6 @@ The metric threshold operator : GreaterThan, LessThan, Equal
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: GreaterThan, LessThan, Equal
 
 Required: True
 Position: Named

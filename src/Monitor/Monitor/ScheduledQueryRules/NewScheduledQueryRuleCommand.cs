@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         //
         // Summary:
         //     Alert name
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The alert name")]
+        [Parameter(Mandatory = true, HelpMessage = "The alert name")]
         [ResourceNameCompleter("Microsoft.insights/scheduledqueryrules", nameof(ResourceGroupName))]
         public string Name { get; set; }
 
@@ -82,14 +82,12 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         // Summary:
         //     Alert status - enabled or not
         [Parameter(Mandatory = true, HelpMessage = "The azure alert state - valid values - true, false")]
-        [ValidateSet("true", "false")]
-        [PSArgumentCompleter("true", "false")]
-        public string Enabled { get; set; }
+        public bool Enabled { get; set; }
 
         /// <summary>
         /// Gets or sets the ResourceGroupName parameter of the cmdlet
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [Parameter(Mandatory = true, HelpMessage = "The resource group name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -105,7 +103,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
                 var alertingAction = new AlertingAction(severity: Action.Severity, aznsAction: Action.AznsAction, trigger: Action.Trigger, throttlingInMin: Action.ThrottlingInMin);
 
                 var parameters = new LogSearchRuleResource(location: Location, source: Source, schedule: Schedule,
-                    action:alertingAction, tags: Tag, description: Description, enabled: Enabled);
+                    action:alertingAction, tags: Tag, description: Description, enabled: Enabled? "true" : "false");
 
                 parameters.Validate();
                 if (this.ShouldProcess(this.Name,
