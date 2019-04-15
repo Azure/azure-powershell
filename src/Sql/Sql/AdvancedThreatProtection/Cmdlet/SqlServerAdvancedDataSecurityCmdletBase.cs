@@ -24,9 +24,9 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
 {
     /// <summary>
-    /// The base class for all Azure Sql server Advanced Threat Protection Cmdlets
+    /// The base class for all Azure Sql server Advanced Data Security Cmdlets
     /// </summary>
-    public abstract class SqlServerAdvancedThreatProtectionCmdletBase : AzureSqlCmdletBase<ServerAdvancedThreatProtectionPolicyModel, SqlAdvancedThreatProtectionAdapter>
+    public abstract class SqlServerAdvancedDataSecurityCmdletBase : AzureSqlCmdletBase<ServerAdvancedDataSecurityPolicyModel, SqlAdvancedDataSecurityAdapter>
     {
         protected const string UseParentResourceParameterSet = "UseParentResourceParameterSet";
 
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         [Parameter(ParameterSetName = UseParentResourceParameterSet,
             Mandatory = false,
             ValueFromPipeline = true,
-            HelpMessage = "The server object to use with Advanced Threat Protection policy operation ")]
+            HelpMessage = "The server object to use with Advanced Data Security policy operation ")]
         [ValidateNotNullOrEmpty]
         public AzureSqlServerModel InputObject { get; set; }
 
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         /// Provides the model element that this cmdlet operates on
         /// </summary>
         /// <returns>A model object</returns>
-        protected override ServerAdvancedThreatProtectionPolicyModel GetEntity()
+        protected override ServerAdvancedDataSecurityPolicyModel GetEntity()
         {
             string resourceGroupName = ResourceGroupName;
             string serverName = ServerName;
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
                 serverName = InputObject.ServerName;
             }
 
-            return new ServerAdvancedThreatProtectionPolicyModel()
+            return new ServerAdvancedDataSecurityPolicyModel()
             {
                 ResourceGroupName = resourceGroupName,
                 ServerName = serverName
@@ -76,9 +76,9 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         /// Creation and initialization of the ModelAdapter object
         /// </summary>
         /// <returns>An initialized and ready to use ModelAdapter object</returns>
-        protected override SqlAdvancedThreatProtectionAdapter InitModelAdapter()
+        protected override SqlAdvancedDataSecurityAdapter InitModelAdapter()
         {
-            return new SqlAdvancedThreatProtectionAdapter(DefaultProfile.DefaultContext);
+            return new SqlAdvancedDataSecurityAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

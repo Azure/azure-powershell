@@ -18,20 +18,28 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
 {
     /// <summary>
-    /// Enables the Advanced Threat Protection of a specific server.
+    /// Returns the Advanced Threat Protection policy of a specific server.
     /// </summary>
-    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerAdvancedThreatProtection", SupportsShouldProcess = true), OutputType(typeof(ServerAdvancedThreatProtectionPolicyModel))]
-    public class EnableAzureSqlServerAdvancedThreatProtection : SqlServerAdvancedThreatProtectionCmdletBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerAdvancedDataSecurityPolicy"), OutputType(typeof(ServerAdvancedDataSecurityPolicyModel))]
+    [Alias("Get-AzSqlServerAdvancedThreatProtectionPolicy")]
+    public class GetAzureSqlServerAdvancedDataSecurityPolicy : SqlServerAdvancedDataSecurityCmdletBase
     {
         /// <summary>
-        /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
-        /// object to the REST endpoint
+        /// Provides the model element that this cmdlet operates on
+        /// </summary>
+        /// <returns>A model object</returns>
+        protected override ServerAdvancedDataSecurityPolicyModel GetEntity()
+        {
+            ServerAdvancedDataSecurityPolicyModel model = base.GetEntity();
+            return ModelAdapter.GetServerAdvancedDataSecurityPolicy(model.ResourceGroupName, model.ServerName);
+        }
+
+        /// <summary>
+        /// No sending is needed as this is a Get cmdlet
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override ServerAdvancedThreatProtectionPolicyModel PersistChanges(ServerAdvancedThreatProtectionPolicyModel model)
+        protected override ServerAdvancedDataSecurityPolicyModel PersistChanges(ServerAdvancedDataSecurityPolicyModel model)
         {
-            model.IsEnabled = true;
-            ModelAdapter.SetServerAdvancedThreatProtection(model);
             return model;
         }
     }

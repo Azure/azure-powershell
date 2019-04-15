@@ -1,0 +1,64 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "serverName": {
+            "type": "string",
+        },
+        "location": {
+            "type": "string",
+        },
+        "enableVa": {
+            "type": "bool",
+			      "defaultValue": true,
+        },
+    },
+    "variables": {
+        "subscriptionId": "[subscription().subscriptionId]",
+        "resourceGroupName": "[resourceGroup().name]",
+        "uniqueStorage":
+            "[uniqueString(variables('subscriptionId'), variables('resourceGroupName'), parameters('location'))]",
+        "storageName": "[tolower(concat('sqlva', variables('uniqueStorage')))]",
+    },
+    "resources": [
+        {
+            "condition": "[parameters('enableVa')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[variables('storageName')]",
+            "apiVersion": "2016-01-01",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "Standard_LRS",
+            },
+            "kind": "Storage",
+            "properties": {},
+        },
+        {
+            "type": "Microsoft.Sql/servers/securityAlertPolicies",
+            "name": "[concat(parameters('serverName'), '/Default')]",
+            "apiVersion": "2017-03-01-preview",
+            "properties": {
+                "state": "Enabled",
+                "emailAccountAdmins": true,
+            },
+        },
+        {
+            "condition": "[parameters('enableVa')]",
+            "type": "Microsoft.Sql/servers/vulnerabilityAssessments",
+            "name": "[concat(parameters('serverName'), '/Default')]",
+            "apiVersion": "2018-06-01-preview",
+            "properties": {
+                "storageContainerPath": "[if(parameters('enableVa'), concat(reference(variables('storageName'), '2018-02-01').primaryEndpoints.blob, 'vulnerability-assessment'), '')]",
+                "storageAccountAccessKey": "[if(parameters('enableVa'), listKeys(variables('storageName'), '2018-02-01').keys[0].value, '')]",
+                "recurringScans": {
+                    "isEnabled": true,
+                    "emailSubscriptionAdmins": true,
+                },
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Storage/storageAccounts/', variables('storageName'))]",
+                "[concat('Microsoft.Sql/servers/', parameters('serverName'), '/securityAlertPolicies/Default')]",
+            ],
+        },
+    ],
+}
