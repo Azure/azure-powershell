@@ -37,35 +37,31 @@ The **Get-AzSqlServerServiceObjective** cmdlet gets the available service object
 ### Example 1: Get service objectives
 ```
 PS C:\>Get-AzSqlServerServiceObjective -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
-ResourceGroupName ServerName ServiceObjectiveName Description Enabled IsDefault IsSystem
------------------ ---------- -------------------- ----------- ------- --------- --------
-resourcegroup01   server01   ElasticPool                         True     False    False
-resourcegroup01   server01   System                              True     False     True
-resourcegroup01   server01   System0                             True     False     True
-resourcegroup01   server01   System1                             True     False     True
-resourcegroup01   server01   System2                             True      True     True
-resourcegroup01   server01   Basic                               True      True    False
-resourcegroup01   server01   S0                                  True      True    False
-resourcegroup01   server01   S1                                  True     False    False
-resourcegroup01   server01   S2                                  True     False    False
-resourcegroup01   server01   S3                                  True     False    False
-resourcegroup01   server01   P1                                  True      True    False
-resourcegroup01   server01   P2                                  True     False    False
-resourcegroup01   server01   P3                                  True     False    False
-resourcegroup01   server01   P4                                  True     False    False
+serviceObjectiveName SkuName       Edition          Family Capacity CapacityUnit Enabled
+-------------------- -------       -------          ------ -------- ------------ -------
+System               System        System                  0        DTU          False
+Free                 Free          Free                    5        DTU          True
+Basic                Basic         Basic                   5        DTU          True
+S0                   Standard      Standard                10       DTU          True
+S1                   Standard      Standard                20       DTU          True
+P1                   Premium       Premium                 125      DTU          True
+P2                   Premium       Premium                 250      DTU          True
+DW100c               DataWarehouse DataWarehouse           900      DTU          False
+GP_Gen4_1            GP_Gen4       GeneralPurpose   Gen4   1        VCores       True
+GP_Gen5_2            GP_Gen5       GeneralPurpose   Gen5   2        VCores       True
+BC_Gen4_1            BC_Gen4       BusinessCritical Gen4   1        VCores       True
+BC_Gen5_4            BC_Gen5       BusinessCritical Gen5   4        VCores       True
 ```
 
 This command gets the service objectives for the server named Server01.
 
 ### Example 2: Get service objectives using filtering
 ```
-PS C:\>Get-AzSqlServerServiceObjective -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ServiceObjectiveName "System*"
-ResourceGroupName ServerName ServiceObjectiveName Description Enabled IsDefault IsSystem
------------------ ---------- -------------------- ----------- ------- --------- --------
-resourcegroup01   server01   System                              True     False     True
-resourcegroup01   server01   System0                             True     False     True
-resourcegroup01   server01   System1                             True     False     True
-resourcegroup01   server01   System2                             True      True     True
+PS C:\>Get-AzSqlServerServiceObjective -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ServiceObjectiveName "P*"
+ServiceObjectiveName SkuName       Edition          Family Capacity CapacityUnit Enabled
+-------------------- -------       -------          ------ -------- ------------ -------
+P1                   Premium       Premium                 125      DTU          True
+P2                   Premium       Premium                 250      DTU          True
 ```
 
 This command gets the service objectives for the server named Server01 that start with "System".
@@ -73,22 +69,20 @@ This command gets the service objectives for the server named Server01 that star
 ### Example 3: Get service objectives for a location
 ```
 PS C:\>Get-AzSqlServerServiceObjective -Location "west us"
-ResourceGroupName ServerName ServiceObjectiveName Description Enabled IsDefault IsSystem
------------------ ---------- -------------------- ----------- ------- --------- --------
-resourcegroup01   server01   ElasticPool                         True     False    False
-resourcegroup01   server01   System                              True     False     True
-resourcegroup01   server01   System0                             True     False     True
-resourcegroup01   server01   System1                             True     False     True
-resourcegroup01   server01   System2                             True      True     True
-resourcegroup01   server01   Basic                               True      True    False
-resourcegroup01   server01   S0                                  True      True    False
-resourcegroup01   server01   S1                                  True     False    False
-resourcegroup01   server01   S2                                  True     False    False
-resourcegroup01   server01   S3                                  True     False    False
-resourcegroup01   server01   P1                                  True      True    False
-resourcegroup01   server01   P2                                  True     False    False
-resourcegroup01   server01   P3                                  True     False    False
-resourcegroup01   server01   P4                                  True     False    False
+serviceObjectiveName SkuName       Edition          Family Capacity CapacityUnit Enabled
+-------------------- -------       -------          ------ -------- ------------ -------
+System               System        System                  0        DTU          False
+Free                 Free          Free                    5        DTU          True
+Basic                Basic         Basic                   5        DTU          True
+S0                   Standard      Standard                10       DTU          True
+S1                   Standard      Standard                20       DTU          True
+P1                   Premium       Premium                 125      DTU          True
+P2                   Premium       Premium                 250      DTU          True
+DW100c               DataWarehouse DataWarehouse           900      DTU          False
+GP_Gen4_1            GP_Gen4       GeneralPurpose   Gen4   1        VCores       True
+GP_Gen5_2            GP_Gen5       GeneralPurpose   Gen5   2        VCores       True
+BC_Gen4_1            BC_Gen4       BusinessCritical Gen4   1        VCores       True
+BC_Gen5_4            BC_Gen5       BusinessCritical Gen5   4        VCores       True
 ```
 
 This command gets the service objectives for a specified Azure region.
