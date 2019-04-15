@@ -19,9 +19,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using Microsoft.Azure.Commands.Peering.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Peering;
+    using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
     using Microsoft.Rest.Azure;
+
+    using Newtonsoft.Json;
 
     /// <inheritdoc />
     /// <summary>
@@ -217,9 +220,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             {
                 throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
-                throw new CloudException($"{ex}");
+                throw new ErrorResponseException($"{ex}");
             }
         }
 
@@ -231,7 +234,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </returns>
         /// <exception cref="InvalidOperationException"> Only one value can be changed.
         /// </exception>
-        /// <exception cref="CloudException"> Http request failed.
+        /// <exception cref="ErrorResponseException"> Http request failed.
         /// </exception>
         private PSDirectPeeringModelView InputUpdateDirect()
         {
@@ -274,10 +277,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             {
                 throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
-                throw new CloudException(
-                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
+                var error = JsonConvert.DeserializeObject<CloudError>(ex.Response.Content);
+                throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
 
             throw new InvalidOperationException("Check the input parameters.");
@@ -291,7 +294,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </returns>
         /// <exception cref="InvalidOperationException"> Only one value can be changed.
         /// </exception>
-        /// <exception cref="CloudException"> Http request failed.
+        /// <exception cref="ErrorResponseException"> Http request failed.
         /// </exception>
         private PSExchangePeeringModelView InputUpdateExchange()
         {
@@ -328,10 +331,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             {
                 throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
-                throw new CloudException(
-                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
+                var error = JsonConvert.DeserializeObject<CloudError>(ex.Response.Content);
+                throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
 
             throw new InvalidOperationException("Check the input parameters.");

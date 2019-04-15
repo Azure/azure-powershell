@@ -42,14 +42,14 @@ function Test-NewExchangePeeringPipeTwoConnections
 #Hard Coded locations becuase of limitations in locations
 	$resourceName = getAssetName "NewExchangePeeringPipeTwoConnections"
     $resourceGroup = "testCarrier"
-    $peeringLocation = "Amsterdam"
+    $peeringLocation = "Seattle"
 	$kind = IsDirect $false
 	Write-Debug "Getting the Facility Information"
 	$facility = Get-AzPeeringLocation -PeeringLocation $peeringLocation -Kind $kind
-	$microsoftIpAddressV4 = $facility[0].MicrosoftIPv4Address
-	$microsoftIpAddressV6 = $facility[0].MicrosoftIPv6Address
-	$facilityId = $facility[0].PeeringDBFacilityId
-	$peeringLocation = $facility[0].PeeringLocation
+	$microsoftIpAddressV4 = $facility[1].MicrosoftIPv4Address
+	$microsoftIpAddressV6 = $facility[1].MicrosoftIPv6Address
+	$facilityId = $facility[1].PeeringDBFacilityId
+	$peeringLocation = $facility[1].PeeringLocation
 	Write-Debug "Getting the Asn Information"
 	$peerAsn = Get-AzPeerAsn | Where-Object {$_.Name -match "Global"} | Select-Object -First 1
 	$asn = $peerAsn.Id
@@ -70,14 +70,14 @@ function Test-NewExchangePeering()
 #Hard Coded locations becuase of limitations in locations
 	$resourceName = getAssetName "NewExchangePeeringCVS"
     $resourceGroup = "testCarrier"
-    $peeringLocation = "Amsterdam"
+    $peeringLocation = "Berlin"
 	$kind = IsDirect $false
 	Write-Debug "Getting the Facility Information"
 	$facility = Get-AzPeeringLocation -PeeringLocation $peeringLocation -Kind $kind
-	$microsoftIpAddressV4 = $facility[1].MicrosoftIPv4Address.Split(',') | Select-Object -First 1
-	$microsoftIpAddressV6 = $facility[1].MicrosoftIPv6Address.Split(',') | Select-Object -First 1
-	$facilityId = $facility[1].PeeringDBFacilityId
-	$peeringLocation = $facility[1].PeeringLocation
+	$microsoftIpAddressV4 = $facility[0].MicrosoftIPv4Address.Split(',') | Select-Object -First 1
+	$microsoftIpAddressV6 = $facility[0].MicrosoftIPv6Address.Split(',') | Select-Object -First 1
+	$facilityId = $facility[0].PeeringDBFacilityId
+	$peeringLocation = $facility[0].PeeringLocation
 	Write-Debug "Getting the Asn Information"
 	$peerAsn = Get-AzPeerAsn | Where-Object {$_.Name -match "Global"} | Select-Object -First 1
 	$asn = $peerAsn.Id
@@ -103,10 +103,10 @@ function Test-NewExchangePeeringPipe
 	$kind = IsDirect $false
 	Write-Debug "Getting the Facility Information"
 	$facility = Get-AzPeeringLocation -PeeringLocation $peeringLocation -Kind $kind
-	$microsoftIpAddressV4 = $facility[2].MicrosoftIPv4Address
-	$microsoftIpAddressV6 = $facility[2].MicrosoftIPv6Address
-	$facilityId = $facility[2].PeeringDBFacilityId
-	$peeringLocation = $facility[2].PeeringLocation
+	$microsoftIpAddressV4 = $facility[0].MicrosoftIPv4Address
+	$microsoftIpAddressV6 = $facility[0].MicrosoftIPv6Address
+	$facilityId = $facility[0].PeeringDBFacilityId
+	$peeringLocation = $facility[0].PeeringLocation
 	Write-Debug "Getting the Asn Information"
 	$peerAsn = Get-AzPeerAsn | Where-Object {$_.Name -match "Global"} | Select-Object -First 1
 	$asn = $peerAsn.Id

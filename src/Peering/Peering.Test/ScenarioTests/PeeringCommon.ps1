@@ -19,54 +19,6 @@ $ipGenerator = New-Object Microsoft.Azure.Commands.Peering.Test.ScenarioTests.IP
 
 <#
 .SYNOPSIS
-Gets valid resource group name
-#>
-function Get-ResourceGroupName
-{
-    return getAssetName
-}
-
-<#
-.SYNOPSIS
-Gets valid resource name
-#>
-function Get-ResourceName
-{
-    return getAssetName
-}
-
-<#
-.SYNOPSIS
-Gets the default location for a provider
-#>
-function Get-ProviderLocation($provider)
-{
-    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
-    {
-        $namespace = $provider.Split("/")[0]  
-		Write-Debug "Namespace: $namespace"
-        if($provider.Contains("/"))  
-        {  
-            $type = $provider.Substring($namespace.Length + 1)  
-            $location = Get-AzResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
-  
-            if ($location -eq $null) 
-            {  
-                return "Central US"  
-            } else 
-            {  
-                return $location.Locations[0]  
-            }  
-        }
-        
-        return "Central US"
-    }
-
-    return "Central US"
-}
-
-<#
-.SYNOPSIS
 Creates a resource group to use in tests
 #>
 function TestSetup-CreateResourceGroup
@@ -110,19 +62,19 @@ return $ipGenerator.OffSet($address, $isv6, $offset, $withPrefix);
 
 function maxAdvertisedIpv4
 {
-	return $ipGenerator.BuildMaxPrefixes($false);
+	$maxPrefixV4 = getPeeringVariable "MaxPrefixV4" $ipGenerator.BuildMaxPrefixes($false);
+	return $maxPrefixV4
 }
 
 function maxAdvertisedIpv6
 {
-return $ipGenerator.BuildMaxPrefixes($true);
+	$maxPrefixV6 = getPeeringVariable "MaxPrefixV6" $ipGenerator.BuildMaxPrefixes($true);
+	return $maxPrefixV6
 }
 
 function getHash
 {
-Write-Debug "Getting hash"
-$hash = $ipGenerator.BuildHash()
-Write-Debug "Return $hash"
+$hash = getPeeringVariable "Hash" $ipGenerator.BuildHash()
 return "$hash"
 }
 
@@ -132,26 +84,26 @@ $bandwidth = $ipGenerator.GetBandwidth()
 	return $bandwidth
 }
 
-function getPeeringVariable {
-    param($var)
+function getPeeringVariable
+{
+   param([string]$variableName, $value)
+   $testName = getTestName
+   if ($value)
+   {
+   $result = $value
+   }
+   else {
+   $reult = $null
+   }
+  if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Variables.ContainsKey($variableName))
+  {
+      $result = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Variables[$variableName]
+  }
+  if (![Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Variables.ContainsKey($variableName)){
+   return $result = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable($variableName, $value)
+  }
 
-    if ($var -eq $null -or $var -eq '') {
-        throw;
-    }
-
-    $testName = getTestName
-    
-    try {
-        $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($testName, $var);
-    } catch {
-        if ($PSItem.Exception.Message -like '*Unable to find type*') {
-            $assetName = $var;
-        } else {
-            throw;
-        }
-    }
-
-    return $assetName
+  return $result
 }
 
 <#

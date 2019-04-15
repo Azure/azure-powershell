@@ -40,7 +40,7 @@ Helper Get Legavy
 function Test-GetLegacyPeering($location)
 {
 $legacy = Get-AzLegacyPeering -PeeringLocation $location -Kind Exchange
-return $legacy
+Assert-NotNull $legacy
 }
 <#
 .SYNOPSIS
@@ -61,9 +61,8 @@ function Test-ConvertLegacyToExchange
 	$phone = getAssetName
 	New-AzPeerAsn -Name $asnPeerName -PeerName $asnPeer -PeerAsn $asnId -Email $email -Phone $phone
 	#the ASN has to be "Approved" by admins prior to this call. 
-	$asn = Get-AzPeerAsn $asnPeerName
+	$asn = Get-AzPeerAsn -Name $asnPeerName
 	Assert-NotNull $asn
-	try{
 	Assert-AreEqual "Approved" $asn.ValidationState
     $legacy = Get-AzLegacyPeering -Kind $kind -PeeringLocation $loc  
 	Assert-NotNull $legacy
@@ -72,10 +71,6 @@ function Test-ConvertLegacyToExchange
 	Assert-NotNull $newPeering
 	#Assert-AreEqual $legacy.
 	#Assert-AreEqual $resourceName $newPeering.Name
-	}
-	finally{
-		Remove-AzPeerAsn -Name $asnPeerName -Force
-	}
 }
 <#
 .SYNOPSIS
@@ -87,10 +82,10 @@ function Test-UpdateExchangeIPv4OnResourceId
 	$peering = Get-AzPeering -Kind "Exchange" | Select-Object -First 1
 	Assert-NotNull $peering
 	$ipv4 = $peering.Connections[0].BgpSession.PeerSessionIPv4Address
-	$newipv4 = changeIp $ipv4 $false 15 $false
+	$newipv4 = getPeeringVariable "newIpv4" (changeIp "$ipv4/32" $false 15 $false)
 	$maxv4 = maxAdvertisedIpv4
 	$ipv42 = $peering.Connections[1].BgpSession.PeerSessionIPv4Address
-	$newipv42 = changeIp $ipv4 $false 17 $false
+	$newipv42 = getPeeringVariable "newIpv42" (changeIp "$ipv4/32" $false 17 $false)
 	$maxv42 = maxAdvertisedIpv4
 	$oldpeering = $peering
 	$peering.Connections[0] = $peering.Connections[0] |  Set-AzPeeringExchangeConnectionObject -PeerSessionIPv4Address $newipv4 -MaxPrefixesAdvertisedIPv4 $maxv4
@@ -111,10 +106,10 @@ function Test-UpdateExchangeIPv4OnInputObject
 	$peering = Get-AzPeering -Kind "Exchange" | Select-Object -First 1
 	Assert-NotNull $peering
 	$ipv4 = $peering.Connections[0].BgpSession.PeerSessionIPv4Address
-	$newipv4 = changeIp $ipv4 $false 14 $false
+	$newipv4 = getPeeringVariable "newIpv4" (changeIp "$ipv4/32" $false 14 $false)
 	$maxv4 = maxAdvertisedIpv4
 	$ipv42 = $peering.Connections[1].BgpSession.PeerSessionIPv4Address
-	$newipv42 = changeIp $ipv4 $false 16 $false
+	$newipv42 = getPeeringVariable "newIpv42" (changeIp "$ipv4/32" $false 16 $false)
 	$maxv42 = maxAdvertisedIpv4
 	$oldpeering = $peering
 	$peering.Connections[0] = $peering.Connections[0] |  Set-AzPeeringExchangeConnectionObject -PeerSessionIPv4Address $newipv4 -MaxPrefixesAdvertisedIPv4 $maxv4

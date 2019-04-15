@@ -24,6 +24,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
     using Microsoft.Rest.Azure;
 
+    using Newtonsoft.Json;
+
     /// <summary>
     ///     New Azure InputObject Command-let
     /// </summary>
@@ -86,10 +88,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             {
                 throw new InvalidOperationException(string.Format(Resources.Error_Mapping, mapException));
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
-                throw new CloudException(
-                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
+                var error = JsonConvert.DeserializeObject<CloudError>(ex.Response.Content);
+                throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
 

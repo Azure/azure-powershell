@@ -31,6 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
     using Microsoft.Rest.Azure;
 
+    using Newtonsoft.Json;
+
     /// <summary>
     ///     The InputObject base cmdlet
     /// </summary>
@@ -97,10 +99,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             {
                 throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
 
-                throw new CloudException(
+                throw new ErrorResponseException(
                     string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
             }
         }
@@ -124,11 +126,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             {
                 throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
-
-                throw new CloudException(
-                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
+                var error = JsonConvert.DeserializeObject<CloudError>(ex.Response.Content);
+                throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
 
@@ -151,11 +152,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             {
                 throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
-
-                throw new CloudException(
-                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
+                var error = JsonConvert.DeserializeObject<CloudError>(ex.Response.Content);
+                throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
 
@@ -169,11 +169,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             {
                 throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
-
-                throw new CloudException(
-                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
+                var error = JsonConvert.DeserializeObject<CloudError>(ex.Response.Content);
+                throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
 
@@ -196,11 +195,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             {
                 throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
-
-                throw new CloudException(
-                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
+                var error = JsonConvert.DeserializeObject<CloudError>(ex.Response.Content);
+                throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
 
@@ -215,7 +213,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// </returns>
         /// <exception cref="InvalidOperationException">
         /// </exception>
-        /// <exception cref="CloudException">
+        /// <exception cref="ErrorResponseException">
         /// </exception>
         public PeerAsn ToPeeringAsn(PSPeerAsn psPeerInfo)
         {
@@ -227,11 +225,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             {
                 throw new InvalidOperationException(string.Format(Resources.Error_Mapping, mapException));
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
-
-                throw new CloudException(
-                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
+                var error = JsonConvert.DeserializeObject<CloudError>(ex.Response.Content);
+                throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
 
@@ -428,7 +425,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// Base Cmdlet execute.
         /// </summary>
-        /// <exception cref="NetworkCloudException"></exception>
+        /// <exception cref="NetworkErrorResponseException"></exception>
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -436,9 +433,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             {
                 Execute();
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
-                throw new CloudException(ex.Message);
+                throw new ErrorResponseException(ex.Message);
             }
         }
 
@@ -471,11 +468,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 
                 return "centralus";
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
-
-                throw new CloudException(
-                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
+                var error = JsonConvert.DeserializeObject<CloudError>(ex.Response.Content);
+                throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
 
