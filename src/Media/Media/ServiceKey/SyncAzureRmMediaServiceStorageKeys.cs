@@ -19,13 +19,16 @@ using Microsoft.Azure.Commands.Media.Common;
 using Microsoft.Azure.Management.Media;
 using Microsoft.Azure.Management.Media.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Media.ServiceKey
 {
     /// <summary>
     /// Synchronizes storage account keys for a storage account associated with the Media Service.
     /// </summary>
-    [Cmdlet("Sync", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MediaServiceStorageKeys", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [GenericBreakingChange("Sync-AzMediaServiceStorageKeys alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Sync", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MediaServiceStorageKey", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Alias("Sync-AzMediaServiceStorageKeys")]
     public class SyncAzureRmMediaServiceStorageKeys : AzureMediaServiceCmdletBase
     {
         private const string SyncMediaServiceStorageKeysWhatIfMessage = "Sync MediaService storage keys";

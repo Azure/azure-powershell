@@ -162,4 +162,7 @@
   <data name="NotFoundByReportId" xml:space="preserve">
     <value>No report was found for report id {0}.</value>
   </data>
+  <data name="InvalidPolicyDefinition" xml:space="preserve">
+    <value>Policy definition with name - {0} does not comply with GuestConfiguration policy category. No reports will be fetched for this definition.</value>
+  </data>
 </root>

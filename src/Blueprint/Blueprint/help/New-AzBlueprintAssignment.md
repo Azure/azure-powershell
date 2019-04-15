@@ -32,7 +32,7 @@ PS C:\> $blueprintObject =  Get-AzBlueprint -SubscriptionId "00000000-1111-0000-
 PS C:\> New-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId "00000000-1111-0000-1111-000000000000" -Location "West US" -ResourceGroupParameter $rg -Parameter $params
 
 Name              : myAssignment
-Id                : /subscriptions/00000000-1111-0000-1111-000000000000/providers/Microsoft.Blueprint/blueprintAssignments/Assignment-PS-BlueprintDefinition
+Id                : /subscriptions/00000000-1111-0000-1111-000000000000/providers/Microsoft.Blueprint/blueprintAssignments/myAssignment
 Scope             : /subscriptions/00000000-1111-0000-1111-000000000000
 LastModified      : 2019-01-08
 LockMode          : None
@@ -45,7 +45,7 @@ Create a new blueprint assignment of the blueprint definition `$blueprintObject`
 
 ### Example 2
 ```powershell
-PS C:\> New-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId 00000000-1111-0000-1111-000000000000 -Location "West US" -Parameter @{P1="v1"; P2="v2"} -Lock AllResources
+PS C:\> New-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId 00000000-1111-0000-1111-000000000000 -Location "West US" -Parameter @{P1="v1"; P2="v2"} -Lock AllResourcesReadOnly
 ```
 
 Create a new blueprint assignment of the blueprint definition `$blueprintObject` within the specified subscription using the defined parameter and resource group dictionary and configuring resource locking to **AllResources**. Defaults to using system-assigned identity.  The location defines the region for creating the managed identity.

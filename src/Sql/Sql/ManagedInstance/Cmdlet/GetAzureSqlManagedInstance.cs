@@ -23,22 +23,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     /// <summary>
     /// Defines the Get-AzSqlInstance cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstance",
-        DefaultParameterSetName = GetByResourceGroupParameterSet),
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstance"),
         OutputType(typeof(AzureSqlManagedInstanceModel))]
     public class GetAzureSqlManagedInstance : ManagedInstanceCmdletBase
     {
-        protected const string GetByNameAndResourceGroupParameterSet =
-            "GetInstanceByNameAndResourceGroup";
-
-        protected const string GetByResourceGroupParameterSet =
-            "GetInstanceByResourceGroup";
-
         /// <summary>
         /// Gets or sets the name of the instance.
         /// </summary>
-        [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
-            Mandatory = true,
+        [Parameter(Mandatory = false,
             Position = 0,
             HelpMessage = "The name of the instance.")]
         [Alias("InstanceName")]
@@ -49,12 +41,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// <summary>
         /// Gets or sets the name of the resource group.
         /// </summary>
-        [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet, 
-            Mandatory = true,
-            Position = 1,
-            HelpMessage = "The name of the resource group.")]
-        [Parameter(ParameterSetName = GetByResourceGroupParameterSet,
-            Mandatory = false,
+        [Parameter(Mandatory = false,
             Position = 1,
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
@@ -69,24 +56,21 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         {
             ICollection<AzureSqlManagedInstanceModel> results = null;
 
-            if (string.Equals(this.ParameterSetName, GetByNameAndResourceGroupParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 results = new List<AzureSqlManagedInstanceModel>();
                 results.Add(ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name));
             }
-            else if (string.Equals(this.ParameterSetName, GetByResourceGroupParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            else if (ShouldListByResourceGroup(ResourceGroupName, Name))
             {
-                if (MyInvocation.BoundParameters.ContainsKey("ResourceGroupName"))
-                {
-                    results = ModelAdapter.ListManagedInstancesByResourceGroup(this.ResourceGroupName);
-                }
-                else
-                {
-                    results = ModelAdapter.ListManagedInstances();
-                }
+                results = ModelAdapter.ListManagedInstancesByResourceGroup(this.ResourceGroupName);
+            }
+            else
+            {
+                results = ModelAdapter.ListManagedInstances();
             }
 
-            return results;
+            return TopLevelWildcardFilter(ResourceGroupName, Name, results);
         }
 
         /// <summary>

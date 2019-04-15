@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
         {
             ICollection<AzureSqlServerVirtualNetworkRuleModel> results = null;
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("VirtualNetworkRuleName"))
+            if (this.MyInvocation.BoundParameters.ContainsKey("VirtualNetworkRuleName") && !WildcardPattern.ContainsWildcardCharacters(VirtualNetworkRuleName))
             {
                 results = new List<AzureSqlServerVirtualNetworkRuleModel>();
                 results.Add(ModelAdapter.GetVirtualNetworkRule(this.ResourceGroupName, this.ServerName, this.VirtualNetworkRuleName));
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
                 results = ModelAdapter.ListVirtualNetworkRules(this.ResourceGroupName, this.ServerName);
             }
 
-            return results;
+            return SubResourceWildcardFilter(VirtualNetworkRuleName, results);
         }
 
         /// <summary>
