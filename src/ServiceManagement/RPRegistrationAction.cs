@@ -144,16 +144,5 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
         }
 
         public IClientFactory ClientFactory { get; set; }
-
-
-        public void ApplyArm<TClient>(TClient client, IAzureContextContainer container, string endpoint) where TClient : Rest.ServiceClient<TClient>
-        {
-            Debug.Assert(ClientFactory != null);
-
-            if (endpoint == AzureEnvironment.Endpoint.ResourceManager)
-            {
-                RegisterResourceManagerProviders<TClient>(container);
-            }
-        }
     }
 }

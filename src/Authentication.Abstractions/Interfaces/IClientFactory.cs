@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Rest;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -28,24 +27,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// </summary>
     public interface IClientFactory: IHyakClientFactory
     {
-        /// <summary>
-        /// Create a properly configured AutoRest client using the given target Azure context and named endpoint
-        /// </summary>
-        /// <typeparam name="TClient">The client type to create</typeparam>
-        /// <param name="context">The azure context to target</param>
-        /// <param name="endpoint">The named endpoint the client shoulld target</param>
-        /// <returns>A client properly authenticated in the given context, properly configured for use with Azure PowerShell, 
-        /// targeting the given named endpoint in the targeted environment</returns>
-        TClient CreateArmClient<TClient>(IAzureContext context, string endpoint) where TClient : ServiceClient<TClient>;
-
-        /// <summary>
-        /// Create a properly configured AutoRest client using custom client parameters
-        /// </summary>
-        /// <typeparam name="TClient">The client type to create</typeparam>
-        /// <param name="parameters">The parameters to pass to a client constructor.  
-        /// The parameters must match an existing constructor for the given client type</param>
-        /// <returns>A client properly configured for use with Azure PowerShell</returns>
-        TClient CreateCustomArmClient<TClient>(params object[] parameters) where TClient : ServiceClient<TClient>;
 
         /// <summary>
         /// Create a properly configured HttpEndpoint, using the given named target endpoint and http credentials

@@ -23,14 +23,18 @@
   </Target>
 
   <Target Name="netstandard20">
-    <Message Importance="high" Text="Pack: netstandard20 started" />
+    <Message Importance="high" Text="Pack: net452 started" />
+    <PropertyGroup>
+      <NuGet>$(Tools)NuGet-4.7.0\nuget.exe</NuGet>
+    </PropertyGroup>
+
     <ItemGroup>
-      <NetStandard20Projects Include="$(Src)**\*.Netcore.csproj" Exclude="$(Src)**\*.Tests.Netcore.csproj;$(Src)**\*.Test.Netcore.csproj;$(Src)**\*.UnitTest.Netcore.csproj" />
+      <Net452Projects Include="$(Src)**\*.csproj" Exclude="$(Src)**\*.Netcore.csproj;$(Src)**\*.Tests.csproj;$(Src)**\*.Test.csproj;$(Src)**\*.UnitTest.csproj" />
     </ItemGroup>
-    <Exec Command="dotnet pack %(NetStandard20Projects.FullPath) -c $(Configuration) /p:PackageVersion=$(PackageVersion)-preview --no-build" />
+    <Exec Command="$(NuGet) pack %(Net452Projects.FullPath) -OutputDirectory $(Net452PackDir) -Properties Configuration=$(Configuration) -Version $(PackageVersion)-preview -IncludeReferencedProjects" />
   </Target>
 
-  <Target Name="All" DependsOnTargets="net452;netstandard20">
+  <Target Name="All" DependsOnTargets="net452">
     <Message Importance="high" Text="Pack: NupkgMerge started" />
     <PropertyGroup>
       <NupkgMerge>$(Tools)NupkgMerge\NupkgMerge.exe</NupkgMerge>

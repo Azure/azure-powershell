@@ -56,16 +56,12 @@
     <Compile Include="Authentication\AccessTokenCredential.cs" />
     <Compile Include="Authentication\AdalConfiguration.cs" />
     <Compile Include="Authentication\AdalTokenProvider.cs" />
-    <Compile Include="Authentication\CertificateApplicationCredentialProvider.cs" />
     <Compile Include="Authentication\ConsoleParentWindow.cs" />
     <Compile Include="Authentication\IdentityTokenHelpers.cs" />
     <Compile Include="Authentication\ITokenProvider.cs" />
-    <Compile Include="Authentication\KeyStoreApplicationCredentialProvider.cs" />
-    <Compile Include="Authentication\ManagedServiceAccessToken.cs" />
     <Compile Include="Authentication\ManagedServiceTokenInfo.cs" />
     <Compile Include="Authentication\ProtectedFileTokenCache.cs" />
     <Compile Include="Authentication\RawAccessToken.cs" />
-    <Compile Include="Authentication\RenewingTokenCredential.cs" />
     <Compile Include="Authentication\ServicePrincipalTokenProvider.cs" />
     <Compile Include="Authentication\UserTokenProvider.cs" />
     <Compile Include="AzureSessionInitializer.cs" />
@@ -74,7 +70,6 @@
     <Compile Include="Factories\AuthenticationFactory.cs" />
     <Compile Include="Factories\CancelRetryHandler.cs" />
     <Compile Include="Factories\ClientFactory.cs" />
-    <Compile Include="HttpClientOperationsFactory.cs" />
     <Compile Include="KeyStore\IServicePrincipalKeyStore.cs" />
     <Compile Include="KeyStore\ServicePrincipalKeyStore.cs" />
     <Compile Include="Utilities\HttpClientWithRetry.cs" />
@@ -105,5 +100,5 @@
       <Name>Authentication.Abstractions</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
