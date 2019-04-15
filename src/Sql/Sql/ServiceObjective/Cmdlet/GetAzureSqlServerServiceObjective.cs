@@ -32,7 +32,8 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = "Azure Sql Database service objective name.")]
+            HelpMessage = "Azure Sql Database service objective name.",
+            ParameterSetName = ByServerNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ServiceObjectiveName { get; set; }
 
@@ -44,7 +45,11 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
         {
             ICollection<AzureSqlServerServiceObjectiveModel> results = null;
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("ServiceObjectiveName") && !WildcardPattern.ContainsWildcardCharacters(ServiceObjectiveName))
+            if (this.ParameterSetName == ByLocationNameParameterSet)
+            {
+                results = ModelAdapter.ListServiceObjectives(this.LocationName);
+            }
+            else if (this.MyInvocation.BoundParameters.ContainsKey("ServiceObjectiveName") && !WildcardPattern.ContainsWildcardCharacters(ServiceObjectiveName))
             {
                 results = ModelAdapter.GetServiceObjective(
                     this.ResourceGroupName,
