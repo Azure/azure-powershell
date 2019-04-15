@@ -50,11 +50,17 @@ Converts a vulnerability assessment scan results to Excel format.
 ### [Disable-AzSqlInstanceAdvancedDataSecurity](Disable-AzSqlInstanceAdvancedDataSecurity.md)
 Disables Advanced Data Security on a managed instance.
 
+### [Disable-AzSqlServerAdvancedDataSecurity](Disable-AzSqlServerAdvancedDataSecurity.md)
+Disables Advanced Data Security on a server.
+
 ### [Disable-AzSqlServerAdvancedThreatProtection](Disable-AzSqlServerAdvancedThreatProtection.md)
 Disables Advanced Threat Protection on a server.
 
 ### [Enable-AzSqlInstanceAdvancedDataSecurity](Enable-AzSqlInstanceAdvancedDataSecurity.md)
 Enables Advanced Data Security on a managed instance.
+
+### [Enable-AzSqlServerAdvancedDataSecurity](Enable-AzSqlServerAdvancedDataSecurity.md)
+Enables Advanced Data Security on a server.
 
 ### [Enable-AzSqlServerAdvancedThreatProtection](Enable-AzSqlServerAdvancedThreatProtection.md)
 Enables Advanced Threat Protection on a server.
@@ -208,6 +214,9 @@ Returns information about SQL Database servers.
 
 ### [Get-AzSqlServerActiveDirectoryAdministrator](Get-AzSqlServerActiveDirectoryAdministrator.md)
 Gets information about an Azure AD administrator for SQL Server.
+
+### [Get-AzSqlServerAdvancedDataSecurityPolicy](Get-AzSqlServerAdvancedDataSecurityPolicy.md)
+Gets Advanced Data Security policy of a server.
 
 ### [Get-AzSqlServerAdvancedThreatProtectionPolicy](Get-AzSqlServerAdvancedThreatProtectionPolicy.md)
 Gets Advanced Threat Protection policy of a server.
