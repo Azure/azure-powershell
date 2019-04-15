@@ -50,3 +50,19 @@ function Test-GetServerServiceObjective
 		Remove-ResourceGroupForTest $rg
 	}
 }
+
+<#
+	.SYNOPSIS
+	Tests getting a server's service objectives
+	.DESCRIPTION
+	SmokeTest
+#>
+function Test-GetServerServiceObjectiveByLocation
+{
+	# Setup
+	$location = "Japan East"
+
+	# Get with named parameters
+	$o = Get-AzSqlServerServiceObjective -LocationName $location
+	Assert-AreNotEqual 0 $o.Length "Expected more than 0 service objectives"
+}
