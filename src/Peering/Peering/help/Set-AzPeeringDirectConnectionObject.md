@@ -88,7 +88,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-{{ Fill InputObject Description }}
+The direct connection Object
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection

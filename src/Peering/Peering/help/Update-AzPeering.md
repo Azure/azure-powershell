@@ -68,6 +68,19 @@ Sets the Md5 Authentication Key
 ### Update UseForPeeringService
 ```powershell
 PS C:> Update-AzPeering -ResourceGroupName rg1 -Name ContosoPeering -UseForPeeringService $true
+
+Name                 : ContosoPeering
+Sku.Name             : Premium_Direct_Free
+Kind                 : Direct
+Connections          : {71}
+PeerAsn.Id           : /subscriptions//providers/Microsoft.Peering/peerAsns/Contoso
+UseForPeeringService : True
+PeeringLocation      : Seattle
+ProvisioningState    : Succeeded
+Location             : West US 2
+Id                   : /subscriptions//resourceGroups/rg1/providers/Microsoft.Peering/peerings/ContosoPeering
+Type                 : Microsoft.Peering/peerings
+Tags                 : {[tag2, value2], [tag1, value1]}
 ```
 
 Sets the Use for Peering Service Flag
@@ -77,6 +90,18 @@ Sets the Use for Peering Service Flag
 PS C:> $peering = Get-AzPeering -ResourceGroupName rg1  -PeerName "ContosoExchangePeering" 
 PS C:> $peering.Connections[0] = $peering.Connections[0] | Set-AzPeeringExchangeConnectionObject -PeerSessionIPv4Address $ipv4Address
 PS C:> Update-AzPeering -ResourceId $peering.Id $peering.Connections
+
+Name              : ContosoExchangePeering
+Sku.Name          : Basic_Exchange_Free
+Kind              : Exchange
+Connections       : {13, 13}
+PeerAsn.Id        : /subscriptions//providers/Microsoft.Peering/peerAsns/PeerName6935
+PeeringLocation   : Seattle
+ProvisioningState : Succeeded
+Location          : West US 2
+Id                : /subscriptions//resourceGroups/rg1/providers/Microsoft.Peering/peerings/ContosoExchangePeering
+Type              : Microsoft.Peering/peerings
+Tags              : {}
 ```
 
 Sets the Ipv4 Address for an Exchange Peering using ResourceId
@@ -153,7 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-{{ Fill InputObject Description }}
+The Peering object 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
