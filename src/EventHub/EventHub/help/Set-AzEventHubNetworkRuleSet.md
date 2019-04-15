@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
-online version:
+online version:https://docs.microsoft.com/en-us/powershell/module/az.eventhub/set-azeventhubnetworkruleset
 schema: 2.0.0
 ---
 
@@ -38,7 +38,7 @@ Update the NetwrokruleSet of the given Namepsace in the current Azure subscripti
 
 ## EXAMPLES
 
-### Example 1 - 
+### Example 1 
 ```powershell
 PS C:\> $IpRules = New-Object 'System.Collections.Generic.List`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes]'
 PS C:\> $IpRules.Add(@{IpMask = "4.4.4.4";Action = "Allow" })
@@ -71,7 +71,7 @@ Update the NetworkRuleSet using -ResourceId of the other namespace.
 ## PARAMETERS
 
 ### -DefaultAction
-Default Action for NetwrokeuleSet
+Default Action for Networkruleset
 
 ```yaml
 Type: System.String
