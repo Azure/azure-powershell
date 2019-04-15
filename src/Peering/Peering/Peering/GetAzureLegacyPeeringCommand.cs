@@ -19,9 +19,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using Microsoft.Azure.Commands.Peering.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Peering;
+    using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
     using Microsoft.Rest.Azure;
+
+    using Newtonsoft.Json;
 
     /// <inheritdoc />
     /// <summary>
@@ -64,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>
         /// The <see cref="object"/>.
         /// </returns>
-        /// <exception cref="CloudException">Http Response 
+        /// <exception cref="ErrorResponseException">Http Response 
         /// </exception>
         private object PeeringByLegacyPeering()
         {
@@ -73,10 +76,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 var icList = this.PeeringLegacyClient.List(this.PeeringLocation, this.Kind);
                 return icList.Select(this.ToPeeringPs).ToList();
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
-                throw new CloudException(
-                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
+                var error = JsonConvert.DeserializeObject<CloudError>(ex.Response.Content);
+                throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
     }

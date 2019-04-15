@@ -38,23 +38,13 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         }
 
         /// <summary>
-        /// The test asn.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAsn()
-        {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-Asn");
-        }
-
-        /// <summary>
         /// The test get legacy peering.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetLegacyPeering()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLegacyPeering Amsterdam");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLegacyPeering Ashburn");
         }
 
         /// <summary>
@@ -95,16 +85,6 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         public void TestUpdateExchangeMd5OnNameAndResourceGroup()
         {
             TestController.NewInstance.RunPowerShellTest(this.logger, "Test-UpdateExchangeMd5OnNameAndResourceGroup");
-        }
-
-        /// <summary>
-        /// The test remove asn exchange.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveAsnExchange()
-        {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-RemoveAsnExchange");
         }
     }
 }

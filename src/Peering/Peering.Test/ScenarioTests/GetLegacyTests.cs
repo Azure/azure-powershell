@@ -45,9 +45,9 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetLegacyKindExchangeAmsterdam()
+        public void TestGetLegacyKindDirectAmsterdam()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLegacyKindExchangeAmsterdam");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLegacyKindDirectAmsterdam");
         }
 
         /// <summary>
@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetLegacyKindDirectAshburn()
+        public void TestGetLegacyKindExchangeAshburn()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLegacyKindDirectAshburn");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetLegacyKindExchangeAshburn");
         }
     }
 }

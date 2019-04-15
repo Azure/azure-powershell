@@ -210,7 +210,7 @@ function Test-NewDirectConnectionWrongV6
 	$maxv6 = maxAdvertisedIpv6
 	Write-Debug "Created maxAdvertised $maxv4 $maxv6"
 	#create Connection
-	Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV6 $wrongv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} "IP address: $wrongv6 must be"
+	Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV6 $wrongv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5} "Invalid Prefix: $wrongv6, must be"
 }
 <#
 .SYNOPSIS
@@ -237,5 +237,5 @@ function Test-NewDirectConnectionWrongV4
 	$maxv6 = maxAdvertisedIpv6
 	Write-Debug "Created maxAdvertised $maxv4 $maxv6"
 	#create Connection
-	Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV4 $wrongv4 -MaxPrefixesAdvertisedIPv4 $maxv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5.ToString} "IP address: $wrongv4 must be "
+	Assert-ThrowsContains {New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV4 $wrongv4 -MaxPrefixesAdvertisedIPv4 $maxv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5.ToString} "Invalid Prefix: $wrongv4, must be "
 }

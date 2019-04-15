@@ -25,7 +25,7 @@ function Test-NewPeerAsn()
 	$phone = getAssetName
 	try{
 	New-AzPeerAsn -Name $asnPeerName -PeerName $asnPeer -PeerAsn $asnId -Email $emails -Phone $phone
-	$asn = Get-AzPeerAsn $asnPeerName
+	$asn = Get-AzPeerAsn -Name $asnPeerName
 	Assert-NotNull $asn
 	Assert-AreEqual "None" $asn.ValidationState
 	Assert-AreEqual $asnPeerName $asn.Name
@@ -51,7 +51,7 @@ function Test-GetPeerAsn
 	$phone = getAssetName
 	try{
 	$created = New-AzPeerAsn -Name $asnPeerName -PeerName $asnPeer -PeerAsn $asnId -Email $emails -Phone $phone
-	$asn = Get-AzPeerAsn $asnPeerName
+	$asn = Get-AzPeerAsn -Name $asnPeerName
 	Assert-NotNull $asn
 	Assert-NotNull $created
 	Assert-AreEqual $created.ValidationState $asn.ValidationState
@@ -106,7 +106,7 @@ function Test-SetPeerAsn
 	$createdPeerAsn = makePeerAsn 65000
 	Assert-NotNull $createdPeerAsn
 	$name = $createdPeerAsn.Name
-	$getPeerAsn = Get-AzPeerAsn $name
+	$getPeerAsn = Get-AzPeerAsn -Name $name
 	#new email contact 
 	$email = getAssetName
 	$email = "$email@$name.com"
@@ -129,5 +129,5 @@ function Test-RemovePeerAsn
 	$remove = Remove-AzPeerAsn $name -Force
 	Assert-NotNull $remove
 	Assert-AreEqual $remove "Peer Asn $name Resource Removed."
-	Assert-ThrowsContains {Get-AzPeerAsn -Name $name} "Error:Not Found reason:NotFound message:PeerAsn does not exist with the given name Resource does not exist."
+	Assert-ThrowsContains {Get-AzPeerAsn -Name $name} "Server Error"
 }
