@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.4.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.KeyVault.dll', 
@@ -96,8 +96,8 @@ CmdletsToExport = 'Add-AzKeyVaultCertificate', 'Update-AzKeyVaultCertificate',
                'Remove-AzKeyVaultSecret', 'Restore-AzKeyVaultKey', 
                'Update-AzKeyVaultKey', 'Set-AzKeyVaultSecret', 
                'Update-AzKeyVaultSecret', 'Get-AzKeyVaultCertificatePolicy', 
-               'New-AzKeyVaultCertificateAdministratorDetails', 
-               'New-AzKeyVaultCertificateOrganizationDetails', 
+               'New-AzKeyVaultCertificateAdministratorDetail', 
+               'New-AzKeyVaultCertificateOrganizationDetail', 
                'Backup-AzKeyVaultSecret', 'Restore-AzKeyVaultSecret', 
                'Get-AzKeyVaultManagedStorageAccount', 
                'Add-AzKeyVaultManagedStorageAccount', 
@@ -120,8 +120,8 @@ CmdletsToExport = 'Add-AzKeyVaultCertificate', 'Update-AzKeyVaultCertificate',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Set-AzKeyVaultKey', 'Set-AzKeyVaultSecretAttribute', 
-               'Set-AzKeyVaultKeyAttribute', 'Set-AzKeyVaultCertificateAttribute'
+AliasesToExport = 'Set-AzKeyVaultKey', 'Set-AzKeyVaultSecretAttribute', 'New-AzKeyVaultCertificateAdministratorDetails',
+               'Set-AzKeyVaultKeyAttribute', 'Set-AzKeyVaultCertificateAttribute', 'New-AzKeyVaultCertificateOrganizationDetails'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
