@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// <summary>
     /// Remove GenV2 metric alert rule
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2", SupportsShouldProcess = true, DefaultParameterSetName =ByMetricRuleResourceName), OutputType(typeof(bool))]
     public class RemoveAzureRmMetricAlertRuleV2Command : ManagementCmdletBase
     {
         const string ByMetricRuleResourceName = "ByMetricRuleResourceName";
@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         [Parameter(ParameterSetName = ByMetricRuleResourceName, Mandatory = true, HelpMessage = "The name of metric alert rule")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.insights/metricalerts", nameof(ResourceGroupName))]
         public String Name { get; set; }
 
         /// <summary>
