@@ -24,8 +24,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
-    using Microsoft.Rest.Azure;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
     using Newtonsoft.Json;
 
@@ -249,21 +247,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     var resourceGroupName = resourceId.ResourceGroupName;
                     var peeringName = resourceId.ResourceName;
                     var peering = new PSPeering
-                                      {
-                                          Kind = directPeeringModelView.Kind,
-                                          PeeringLocation = directPeeringModelView.PeeringLocation,
-                                          Location = directPeeringModelView.Location,
-                                          Sku = directPeeringModelView.Sku,
-                                          Tags = directPeeringModelView.Tags,
-                                          Direct = new PSPeeringPropertiesDirect
-                                                       {
-                                                           Connections = directPeeringModelView.Connections,
-                                                           PeerAsn = new PSSubResource(
+                    {
+                        Kind = directPeeringModelView.Kind,
+                        PeeringLocation = directPeeringModelView.PeeringLocation,
+                        Location = directPeeringModelView.Location,
+                        Sku = directPeeringModelView.Sku,
+                        Tags = directPeeringModelView.Tags,
+                        Direct = new PSPeeringPropertiesDirect
+                        {
+                            Connections = directPeeringModelView.Connections,
+                            PeerAsn = new PSSubResource(
                                                                directPeeringModelView.PeerAsn.Id),
-                                                           UseForPeeringService = directPeeringModelView
+                            UseForPeeringService = directPeeringModelView
                                                                .UseForPeeringService
-                                                       }
-                                      };
+                        }
+                    };
                     if (this.UseForPeeringService != null)
                     {
                         peering.Sku = this.UseForPeeringService == true
@@ -314,7 +312,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             }
             catch (ErrorResponseException ex)
             {
-                var error = JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content).FirstOrDefault().Value;
+                var error = ex.Response.Content.Contains("\"error\": \"") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
                 throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
 
@@ -368,7 +366,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             }
             catch (ErrorResponseException ex)
             {
-                var error = JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content).FirstOrDefault().Value;
+                var error = ex.Response.Content.Contains("\"error\": \"") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
                 throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
 
@@ -447,8 +445,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             {
                 directPeering.Direct.UseForPeeringService = this.UseForPeeringService;
             }
-       
-        directPeering.Direct.PeerAsn = new PSSubResource(directPeering.Direct.PeerAsn.Id);
+
+            directPeering.Direct.PeerAsn = new PSSubResource(directPeering.Direct.PeerAsn.Id);
             if (this.DirectConnection != null)
             {
                 for (int i = 0; i < directPeering.Direct.Connections.Count; i++)

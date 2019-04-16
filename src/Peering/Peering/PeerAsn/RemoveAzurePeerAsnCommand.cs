@@ -14,7 +14,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
 {
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.Peering.Properties;
@@ -107,7 +109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             }
             catch (ErrorResponseException ex)
             {
-                var error = JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content).FirstOrDefault().Value;
+                var error = ex.Response.Content.Contains("\"error\": \"") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
                 throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
