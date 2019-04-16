@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
     /// <summary>
     /// Defines the Get-AzSqlDatabaseServer cmdlet
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerServiceObjective", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerServiceObjective", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true, DefaultParameterSetName = ByLocationNameParameterSet)]
     [OutputType(typeof(AzureSqlServerServiceObjectiveModel))]
     public class GetAzureSqlServerServiceObjective : AzureSqlServerServiceObjectiveCmdletBase
     {
