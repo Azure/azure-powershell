@@ -131,25 +131,25 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
         {
             PSParameterValueBase parameter = null;
 
-            if (parameterKvp.Value != null && parameterKvp.Value.GetType().Equals(typeof(ParameterValue)))
+            if (parameterKvp.Value != null && parameterKvp.Value is ParameterValue)
             {
-                // Need to cast as ParameterValue since assignment.Parameters value type is ParamaterValueBase. 
-                var paramaterValue = parameterKvp.Value as ParameterValue;
+                // Need to cast as ParameterValue since assignment.Parameters value type is ParameterValueBase. 
+                var parameterValue = (ParameterValue) parameterKvp.Value;
 
-                parameter = new PSParameterValue { Description = paramaterValue.Description, Value = paramaterValue.Value };
+                parameter = new PSParameterValue { Description = parameterValue.Description, Value = parameterValue.Value };
             }
-            else if (parameterKvp.Value != null && parameterKvp.Value.GetType().Equals(typeof(SecretReferenceParameterValue)))
+            else if (parameterKvp.Value != null && parameterKvp.Value is SecretReferenceParameterValue)
             {
-                var paramaterValue = parameterKvp.Value as SecretReferenceParameterValue;
+                var parameterValue = (SecretReferenceParameterValue) parameterKvp.Value;
 
                 var secretReference = new PSSecretValueReference
                 {
-                    KeyVault = new PSKeyVaultReference { Id = paramaterValue.Reference.KeyVault.Id },
-                    SecretName = paramaterValue.Reference.SecretName,
-                    SecretVersion = paramaterValue.Reference.SecretVersion
+                    KeyVault = new PSKeyVaultReference { Id = parameterValue.Reference.KeyVault.Id },
+                    SecretName = parameterValue.Reference.SecretName,
+                    SecretVersion = parameterValue.Reference.SecretVersion
                 };
 
-                parameter = new PSSecretReferenceParameterValue { Reference = secretReference, Description = paramaterValue.Description };
+                parameter = new PSSecretReferenceParameterValue { Reference = secretReference, Description = parameterValue.Description };
             }
 
             return parameter;
