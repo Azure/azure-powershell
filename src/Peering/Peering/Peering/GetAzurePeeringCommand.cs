@@ -24,7 +24,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
-    using Microsoft.Rest.Azure;
 
     using Newtonsoft.Json;
 
@@ -109,7 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             }
             catch (ErrorResponseException ex)
             {
-                var error = JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content).FirstOrDefault().Value;
+                var error = ex.Response.Content.Contains("\"error\": \"") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
                 throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
@@ -195,23 +194,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>List of all InputObject for a subscription</returns>
         public List<object> GetPeeringBySubscription()
         {
-                var icList = this.PeeringClient.ListBySubscription();
-                var peering = icList.Select(this.ToPeeringPs).ToList();
-                List<object> psList = new List<object>();
-                foreach (var peer in peering)
+            var icList = this.PeeringClient.ListBySubscription();
+            var peering = icList.Select(this.ToPeeringPs).ToList();
+            List<object> psList = new List<object>();
+            foreach (var peer in peering)
+            {
+                if (peer.Exchange != null)
                 {
-                    if (peer.Exchange != null)
-                    {
-                        psList.Add(new PSExchangePeeringModelView(peer));
-                    }
-
-                    if (peer.Direct != null)
-                    {
-                        psList.Add(new PSDirectPeeringModelView(peer));
-                    }
+                    psList.Add(new PSExchangePeeringModelView(peer));
                 }
 
-                return psList;
+                if (peer.Direct != null)
+                {
+                    psList.Add(new PSDirectPeeringModelView(peer));
+                }
+            }
+
+            return psList;
         }
     }
 }
