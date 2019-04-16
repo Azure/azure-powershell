@@ -107,7 +107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             }
             catch (ErrorResponseException ex)
             {
-                var error = JsonConvert.DeserializeObject<CloudError>(ex.Response.Content);
+                var error = JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content).FirstOrDefault().Value;
                 throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
