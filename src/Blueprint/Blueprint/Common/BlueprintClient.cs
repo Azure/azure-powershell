@@ -209,15 +209,9 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
 
         public PSWhoIsBlueprintContract GetBlueprintSpnObjectId(string scope, string assignmentName)
         {
-            var result = blueprintManagementClient.Assignments
-                .WhoIsBlueprintWithHttpMessagesAsync(scope, assignmentName).GetAwaiter().GetResult();
+            var result = blueprintManagementClient.Assignments.WhoIsBlueprint(scope, assignmentName);
 
-            if (result.Body != null)
-            {
-                return new PSWhoIsBlueprintContract(result.Body);
-            }
-
-            return null;
+            return result != null ? new PSWhoIsBlueprintContract(result) : null;
         }
 
         /// <summary>
