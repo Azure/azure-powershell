@@ -75,10 +75,6 @@ function Test-NatGatewayCRUDMinimalParameters
         $listNatGateway = Get-AzNatGateway -ResourceGroupName "*";
         Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
-        # Get all NatGateways in subscription wildcard for name
-        $listNatGateway = Get-AzNatGateway -Name "*";
-        Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
-
         # Get all NatGateways in subscription wildcard for both resource group and name
         $listNatGateway = Get-AzNatGateway -ResourceGroupName "*" -Name "*";
         Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
@@ -142,10 +138,6 @@ function Test-NatGatewayWithSubnet
         $listNatGateway = Get-AzNatGateway -ResourceGroupName "*";
         Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
-        # Get all NatGateways in subscription wildcard for name
-        $listNatGateway = Get-AzNatGateway -Name "*";
-        Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
-
         # Get all NatGateways in subscription wildcard for both resource group and name
         $listNatGateway = Get-AzNatGateway -ResourceGroupName "*" -Name "*";
         Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
@@ -158,10 +150,11 @@ function Test-NatGatewayWithSubnet
         # Get Subnet
         $subnet2 = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnetName;
 
-        Assert-AreEqual $vNatGateway @($subnet2.NatGateway.Name)
+        Assert-AreEqual $vNatGateway.Id @($subnet2.NatGateway.Id)
 
         # Remove Subnet
-        Remove-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork
+        Remove-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
+        Set-AzVirtualNetwork -VirtualNetwork $vnet
 
         # Remove NatGateway
         $job = Remove-AzNatGateway -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
@@ -229,10 +222,6 @@ function Test-NatGatewayCRUDAllParameters
         $listNatGateway = Get-AzNatGateway -ResourceGroupName "*";
         Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
-        # Get all NatGateways in subscription wildcard for name
-        $listNatGateway = Get-AzNatGateway -Name "*";
-        Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
-
         # Get all NatGateways in subscription wildcard for both resource group and name
         $listNatGateway = Get-AzNatGateway -ResourceGroupName "*" -Name "*";
         Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
@@ -265,10 +254,6 @@ function Test-NatGatewayCRUDAllParameters
 
         # Get all NatGateways in subscription wildcard for resource group
         $listNatGateway = Get-AzNatGateway -ResourceGroupName "*";
-        Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
-
-        # Get all NatGateways in subscription wildcard for name
-        $listNatGateway = Get-AzNatGateway -Name "*";
         Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Get all NatGateways in subscription wildcard for both resource group and name

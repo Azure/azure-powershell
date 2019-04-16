@@ -66,8 +66,9 @@ namespace Microsoft.Azure.Commands.Network
         public string NatGatewayId { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipeline = true,
+            ParameterSetName = SetByInputObjectParameterSet,
             HelpMessage = "The nat gateway")]
         public PSNatGateway NatGateway { get; set; }
 
