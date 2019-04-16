@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.Sql.ServiceObjective.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -45,10 +46,10 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
 
             if (this.MyInvocation.BoundParameters.ContainsKey("ServiceObjectiveName") && !WildcardPattern.ContainsWildcardCharacters(ServiceObjectiveName))
             {
-                results = new List<AzureSqlServerServiceObjectiveModel>
-                {
-                    ModelAdapter.GetServiceObjective(this.ResourceGroupName, this.ServerName, this.ServiceObjectiveName)
-                };
+                results = ModelAdapter.GetServiceObjective(
+                    this.ResourceGroupName,
+                    this.ServerName,
+                    this.ServiceObjectiveName);
             }
             else
             {
