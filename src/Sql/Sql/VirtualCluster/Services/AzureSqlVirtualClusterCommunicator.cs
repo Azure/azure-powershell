@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,16 +14,17 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Sql;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Services
+namespace Microsoft.Azure.Commands.Sql.VirtualCluster.Services
 {
     /// <summary>
     /// This class is responsible for all the REST communication with the audit REST endpoints
     /// </summary>
-    public class AzureSqlServerServiceObjectiveCommunicator
+    public class AzureSqlVirtualClusterCommunicator
     {
         /// <summary>
         /// The Sql client to be used by this end points communicator
@@ -41,11 +42,10 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Services
         public IAzureContext Context { get; set; }
 
         /// <summary>
-        /// Creates a communicator for Azure Sql Databases ServiceObjective
+        /// Creates a communicator for Virtual Cluster
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
-        public AzureSqlServerServiceObjectiveCommunicator(IAzureContext context)
+        /// <param name="context"></param>
+        public AzureSqlVirtualClusterCommunicator(IAzureContext context)
         {
             Context = context;
             if (context?.Subscription != Subscription)
@@ -56,19 +56,35 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Services
         }
 
         /// <summary>
-        /// Gets the Azure Sql Database Server ServiceObjective
+        /// Gets the VirtualCluster
         /// </summary>
-        public Management.Sql.Models.ServiceObjective Get(string resourceGroupName, string serverName, string serviceObjectiveName)
+        public Management.Sql.Models.VirtualCluster Get(string resourceGroupName, string virtualClusterName)
         {
-            return GetCurrentSqlClient().ServiceObjectives.Get(resourceGroupName, serverName, serviceObjectiveName);
+            return GetCurrentSqlClient().VirtualClusters.Get(resourceGroupName, virtualClusterName);
         }
 
         /// <summary>
-        /// Lists Azure Sql Databases Server ServiceObjective
+        /// Lists Virtual clusters in a resource group
         /// </summary>
-        public IList<Management.Sql.Models.ServiceObjective> List(string resourceGroupName, string serverName)
+        public IList<Management.Sql.Models.VirtualCluster> ListByResourceGroup(string resourceGroupName)
         {
-            return GetCurrentSqlClient().ServiceObjectives.ListByServer(resourceGroupName, serverName).ToList();
+            return GetCurrentSqlClient().VirtualClusters.ListByResourceGroup(resourceGroupName).ToList();
+        }
+
+        /// <summary>
+        /// Lists Managed instances
+        /// </summary>
+        public IList<Management.Sql.Models.VirtualCluster> List()
+        {
+            return GetCurrentSqlClient().VirtualClusters.List().ToList();
+        }
+
+        /// <summary>
+        /// Deletes a Virtual Cluster
+        /// </summary>
+        public void Remove(string resourceGroupName, string virtualClusterName)
+        {
+            GetCurrentSqlClient().VirtualClusters.Delete(resourceGroupName, virtualClusterName);
         }
 
         /// <summary>
