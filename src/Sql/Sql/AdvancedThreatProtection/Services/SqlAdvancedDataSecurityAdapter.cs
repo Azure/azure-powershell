@@ -131,9 +131,10 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
         /// <param name="resourceGroupName">The resource group name</param>
         /// <param name="serverName">The server name</param>
         /// <param name="serverLocation">The server location</param>
-        public void EnableServerAdsWithVa(string resourceGroupName, string serverName, string serverLocation)
+        /// <param name="deploymentName">The name of the deployment (can be null - in this case a random name will be generated)</param>
+        public void EnableServerAdsWithVa(string resourceGroupName, string serverName, string serverLocation, string deploymentName)
         {
-            EnableAdsWithVa(resourceGroupName, serverName, serverLocation, @"DeployServerAdsWithVaTemplate.json");
+            EnableAdsWithVa(resourceGroupName, serverName, serverLocation, @"DeployServerAdsWithVaTemplate.json", deploymentName);
         }
 
         /// <summary>
@@ -142,14 +143,25 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
         /// <param name="resourceGroupName">The resource group name</param>
         /// <param name="instanceName">The managed instance name</param>
         /// <param name="instanceLocation">The managed instance location</param>
-        public void EnableInstanceAdsWithVa(string resourceGroupName, string instanceName, string instanceLocation)
+        /// <param name="deploymentName">The name of the deployment (can be null - in this case a random name will be generated)</param>
+        public void EnableInstanceAdsWithVa(string resourceGroupName, string instanceName, string instanceLocation, string deploymentName)
         {
-            EnableAdsWithVa(resourceGroupName, instanceName, instanceLocation, @"DeployInstanceAdsWithVaTemplate.json");
+            EnableAdsWithVa(resourceGroupName, instanceName, instanceLocation, @"DeployInstanceAdsWithVaTemplate.json", deploymentName);
         }
 
-        private void EnableAdsWithVa(string resourceGroupName, string serverName, string serverLocation, string templateName)
+        private void EnableAdsWithVa(string resourceGroupName, string serverName, string serverLocation, string templateName, string deploymentName)
         {
-            string deploymentName = "EnableADS_" + serverName + "_" + Guid.NewGuid().ToString("N");
+            // Generate deployment name if it was not provided
+            if (string.IsNullOrEmpty(deploymentName))
+            {
+                deploymentName = "EnableADS_" + serverName + "_" + Guid.NewGuid().ToString("N");
+            }
+
+            // Trim deployment name as it has a maximum of 64 chars
+            if (deploymentName.Length > 64)
+            {
+                deploymentName = deploymentName.Substring(0, 64);
+            }
 
             Dictionary<string, object> parametersDictionary = new Dictionary<string, object>
             {

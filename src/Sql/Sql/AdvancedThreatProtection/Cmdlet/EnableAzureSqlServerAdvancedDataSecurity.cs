@@ -43,6 +43,14 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         public SwitchParameter AsJob { get; set; }
 
         /// <summary>
+        /// A custom name for Advanced Data Security deployment
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Supply a custom name for Advanced Data Security deployment")]
+        [ValidateNotNullOrEmpty]
+        public string DeploymentName { get; set; }
+
+        /// <summary>
         /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
         /// object to the REST endpoint
         /// </summary>
@@ -65,7 +73,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
                 {
                     var serverAdapter = new AzureSqlServerAdapter(DefaultContext);
                     AzureSqlServerModel serverModel = serverAdapter.GetServer(ResourceGroupName, ServerName);
-                    ModelAdapter.EnableServerAdsWithVa(ResourceGroupName, ServerName, serverModel.Location);
+                    ModelAdapter.EnableServerAdsWithVa(ResourceGroupName, ServerName, serverModel.Location, DeploymentName);
                 }
                 else
                 {
