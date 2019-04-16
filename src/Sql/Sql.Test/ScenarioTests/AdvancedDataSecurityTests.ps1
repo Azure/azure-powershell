@@ -76,7 +76,7 @@ function Test-AdvancedDataSecurityPolicyTest
 
 		# Check enabling ADS with VA
 		Disable-AzSqlServerAdvancedDataSecurity -ResourceGroupName $params.rgname -ServerName $params.serverName 
-		Enable-AzSqlServerAdvancedDataSecurity -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Enable-AzSqlServerAdvancedDataSecurity -ResourceGroupName $params.rgname -ServerName $params.serverName -DeploymentName "EnableADS_sql-ads-cmdlet-test-srv"
 
 		# Validate the ADS policy
 		$policy = Get-AzSqlServerAdvancedDataSecurityPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
@@ -117,9 +117,9 @@ Gets the values of the parameters used at the tests
 #>
 function Get-SqlAdvancedDataSecurityTestEnvironmentParameters ($testSuffix)
 {
-	return @{ rgname = "sql-atp-cmdlet-test-rg" +$testSuffix;
-			  serverName = "sql-atp-cmdlet-server" +$testSuffix;
-			  databaseName = "sql-atp-cmdlet-db" + $testSuffix;
+	return @{ rgname = "sql-ads-cmdlet-test-rg" +$testSuffix;
+			  serverName = "sql-ads-cmdlet-server" +$testSuffix;
+			  databaseName = "sql-ads-cmdlet-db" + $testSuffix;
 			  }
 }
 
