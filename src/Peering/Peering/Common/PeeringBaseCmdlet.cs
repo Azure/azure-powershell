@@ -395,7 +395,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                                                          (prefix.EndOfPrefixBigInt).ToIpAddress(
                                                              AddressFamily.InterNetworkV6)));
                                 default:
-                                    return prefix.StartOfPrefixBigInt + 1 >= prefix.ActualPrefixBigInt
+                                    return prefix.StartOfPrefixBigInt + 1 <= prefix.ActualPrefixBigInt
                                                ? routePrefix
                                                : throw new ArgumentException(
                                                      string.Format(
