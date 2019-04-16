@@ -59,11 +59,6 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     this.RouteTableId = this.RouteTable.Id;
                 }
-
-                if (this.NatGateway != null)
-                {
-                    this.NatGatewayId = this.NatGateway.Id;
-                }
             }
 
             subnet.AddressPrefix = this.AddressPrefix?.ToList();
@@ -78,12 +73,6 @@ namespace Microsoft.Azure.Commands.Network
             {
                 subnet.RouteTable = new PSRouteTable();
                 subnet.RouteTable.Id = this.RouteTableId;
-            }
-
-            if (!string.IsNullOrEmpty(this.NatGatewayId))
-            {
-                subnet.NatGateway = new PSNatGateway();
-                subnet.NatGateway.Id = this.NatGatewayId;
             }
 
             if (this.ServiceEndpoint != null)

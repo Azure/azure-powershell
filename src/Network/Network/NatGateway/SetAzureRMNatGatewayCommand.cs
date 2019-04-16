@@ -42,7 +42,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.Network
 {
 
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NatGateway", SupportsShouldProcess = true), OutputType(typeof(PSNatGateway))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NatGateway", SupportsShouldProcess = true, DefaultParameterSetName = "SetByNameParameterSet"), OutputType(typeof(PSNatGateway))]
     public class SetAzureNatGatewayCommand : NetworkBaseCmdlet
     {
         private const string SetByNameParameterSet = "SetByNameParameterSet";
