@@ -23,6 +23,7 @@
 * Enhanced process of multiple columns classification.
 * Include sku properties (sku name, family, capacity) in response from Get-AzSqlServerServiceObjective and format as table by default.
 * Support for time zone parameter in Managed Instance create.
+* Fix documentation for wildcards
 
 ## Version 1.8.0
 * Support Database Data Classification.

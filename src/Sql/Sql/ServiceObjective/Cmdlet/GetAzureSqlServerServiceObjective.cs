@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
             Position = 2,
             HelpMessage = "Azure Sql Database service objective name.")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ServiceObjectiveName { get; set; }
 
         /// <summary>
