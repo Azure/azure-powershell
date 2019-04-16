@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetNewIp()
+        public void TestSetNewIP()
         {
             TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SetNewIP");
         }
