@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// <summary>
     /// Get a GenV2 Metric Alert rule
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2"), OutputType(typeof(PSMetricAlertRuleV2))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2", DefaultParameterSetName = ByResourceGroupName), OutputType(typeof(PSMetricAlertRuleV2))]
     public class GetAzureRmMetricAlertRuleV2Command : ManagementCmdletBase
     {
         const string ByResourceGroupName = "ByResourceGroupName";
@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         [Parameter(ParameterSetName = ByRuleName, Mandatory = true, HelpMessage = "The Name of metric alert rule")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.insights/metricalerts",nameof(ResourceGroupName))]
         public String Name { get; set; }
 
         protected override void ProcessRecordInternal()

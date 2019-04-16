@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// <summary>
     /// Create Metric Criteria
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2Criteria"), OutputType(typeof(PSMetricCriteria))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2Criteria", DefaultParameterSetName = StaticThresholdParameterSet), OutputType(typeof(PSMetricCriteria))]
     public class NewAzureRmMetricAlertRuleV2CriteriaCommand : MonitorCmdletBase
     {
         const string StaticThresholdParameterSet = "StaticThresholdParameterSet";
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// Gets or sets the TimeAggregationType parameter
         /// </summary>
         [Parameter(Mandatory = true,  HelpMessage = "The aggregation operation used to roll up multiple metric values across the window interval")]
-        [PSArgumentCompleter("Average", "Minimum", "Maximum", "Total", "Last")]
+        [PSArgumentCompleter("Average", "Minimum", "Maximum", "Total", "Count")]
         public String TimeAggregation { get; set; }
 
         /// <summary>
