@@ -1207,23 +1207,23 @@
       "_justification": "Legitimate session record, resource removed at end of test"
     },
     {
-      "file": "src/Resources/Resources/ActiveDirectory/Models/ParameterSet.cs",
+      "file": "src\\Resources\\Resources\\ActiveDirectory\\Models\\ParameterSet.cs",
       "_justification": "Legitmate parameter set names"
     },
     {
-      "file": "src/Batch/Batch/help/New-AzBatchTask.md",
+      "file": "src\\Batch\\Batch\\help\\New-AzBatchTask.md",
       "_justification": "Example URL for Blob container"
     },
     {
-      "file": "src/DataFactory/DataFactoryV2/help/New-AzDataFactoryEncryptValue.md",
+      "file": "src\\DataFactory\\DataFactoryV2\\help\\New-AzDataFactoryEncryptValue.md",
       "_justification": "Example credential creation"
     },
     {
-      "file": "src/RedisCache/RedisCache/help/Export-AzRedisCache.md",
+      "file": "src\\RedisCache\\RedisCache\\help\\Export-AzRedisCache.md",
       "_justification": "Example data export"
     },
     {
-      "file": "src/RedisCache/RedisCache/help/Import-AzRedisCache.md",
+      "file": "src\\RedisCache\\RedisCache\\help\\Import-AzRedisCache.md",
       "_justification": "Example data import"
     }
   ]
