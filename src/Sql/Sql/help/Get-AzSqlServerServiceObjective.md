@@ -13,16 +13,16 @@ Gets service objectives for an Azure SQL Database server.
 
 ## SYNTAX
 
+### ByLocation (Default)
+```
+Get-AzSqlServerServiceObjective [[-ServiceObjectiveName] <String>] -LocationName <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ByServer
 ```
 Get-AzSqlServerServiceObjective [[-ServiceObjectiveName] <String>] [-ResourceGroupName] <String>
  [-ServerName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByLocation
-```
-Get-AzSqlServerServiceObjective -LocationName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -152,7 +152,7 @@ The acceptable values for this parameter are: Basic, S0, S1, S2, P1, P2, and P3.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByServer
+Parameter Sets: (All)
 Aliases:
 
 Required: False

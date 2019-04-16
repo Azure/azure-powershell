@@ -75,5 +75,13 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
         {
             return new AzureSqlServerServiceObjectiveAdapter(DefaultProfile.DefaultContext);
         }
+
+        /// <summary>
+        /// Converts the given string to a wildcard pattern. If the string is null, treat that as "*" (match all).
+        /// </summary>
+        protected static WildcardPattern ToWildcardPattern(string s)
+        {
+            return WildcardPattern.Get(s ?? "*", WildcardOptions.IgnoreCase);
+        }
     }
 }
