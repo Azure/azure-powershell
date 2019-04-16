@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
 
         private static IEnumerable<ServerVersionCapability> FilterByName(IEnumerable<ServerVersionCapability> capabilities, string name)
         {
-            return capabilities.Where(c => name == null || string.Equals(c.Name, name, StringComparison.OrdinalIgnoreCase));
+            return capabilities.Where(c => string.Equals(c.Name, name, StringComparison.OrdinalIgnoreCase));
         }
 
         private static IEnumerable<ServiceObjectiveCapability> FilterByName(IEnumerable<ServiceObjectiveCapability> capabilities, WildcardPattern nameFilter)
