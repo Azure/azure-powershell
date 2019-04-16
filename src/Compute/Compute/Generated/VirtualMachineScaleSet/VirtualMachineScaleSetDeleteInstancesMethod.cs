@@ -50,13 +50,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     System.Collections.Generic.IList<string> instanceIds = this.InstanceId;
 
                     Rest.Azure.AzureOperationResponse result = null;
-                    if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(vmScaleSetName) && instanceIds != null)
+                    if (NoWait.IsPresent)
                     {
-                        result = VirtualMachineScaleSetsClient.DeleteInstancesWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds).GetAwaiter().GetResult();
+                        if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(vmScaleSetName) && instanceIds != null)
+                        {
+                            result = VirtualMachineScaleSetsClient.BeginDeleteInstancesWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds).GetAwaiter().GetResult();
+                        }
+                        else
+                        {
+                            result = VirtualMachineScaleSetsClient.BeginDeleteWithHttpMessagesAsync(resourceGroupName, vmScaleSetName).GetAwaiter().GetResult();
+                        }
                     }
                     else
                     {
-                        result = VirtualMachineScaleSetsClient.DeleteWithHttpMessagesAsync(resourceGroupName, vmScaleSetName).GetAwaiter().GetResult();
+                        if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(vmScaleSetName) && instanceIds != null)
+                        {
+                            result = VirtualMachineScaleSetsClient.DeleteInstancesWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds).GetAwaiter().GetResult();
+                        }
+                        else
+                        {
+                            result = VirtualMachineScaleSetsClient.DeleteWithHttpMessagesAsync(resourceGroupName, vmScaleSetName).GetAwaiter().GetResult();
+                        }
                     }
 
                     PSOperationStatusResponse output = new PSOperationStatusResponse
@@ -105,5 +119,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
+        public SwitchParameter NoWait { get; set; }
     }
 }

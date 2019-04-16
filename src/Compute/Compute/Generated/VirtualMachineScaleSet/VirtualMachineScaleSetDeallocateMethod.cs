@@ -50,13 +50,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     System.Collections.Generic.IList<string> instanceIds = this.InstanceId;
 
                     Rest.Azure.AzureOperationResponse result = null;
-                    if (this.ParameterSetName.Equals("FriendMethod"))
+                    if (NoWait.IsPresent)
                     {
-                        result = VirtualMachineScaleSetsClient.PowerOffWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds).GetAwaiter().GetResult();
+                        if (this.ParameterSetName.Equals("FriendMethod"))
+                        {
+                            result = VirtualMachineScaleSetsClient.BeginPowerOffWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds).GetAwaiter().GetResult();
+                        }
+                        else
+                        {
+                            result = VirtualMachineScaleSetsClient.BeginDeallocateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds).GetAwaiter().GetResult();
+                        }
                     }
                     else
                     {
-                        result = VirtualMachineScaleSetsClient.DeallocateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds).GetAwaiter().GetResult();
+                        if (this.ParameterSetName.Equals("FriendMethod"))
+                        {
+                            result = VirtualMachineScaleSetsClient.PowerOffWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds).GetAwaiter().GetResult();
+                        }
+                        else
+                        {
+                            result = VirtualMachineScaleSetsClient.DeallocateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds).GetAwaiter().GetResult();
+                        }
                     }
 
                     PSOperationStatusResponse output = new PSOperationStatusResponse
@@ -127,5 +141,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
+        public SwitchParameter NoWait { get; set; }
     }
 }
