@@ -102,7 +102,7 @@ function Verify-ScheduledQueryRule($scheduledQueryRule)
 #>
 function Test-NewGetUpdateSetRemoveScheduledQueryRule
 {
-	Write-Output "Starting Test-NewGetUpdateSetRemoveScheduledQueryRule"
+	Write-Debug "Starting Test-NewGetUpdateSetRemoveScheduledQueryRule"
 	Test-setup
 	try
 	{
@@ -186,7 +186,7 @@ function Test-NewGetUpdateSetRemoveScheduledQueryRule
     }
 	catch
 	{
-		Write-Output $_
+		Write-Debug $_
 	}
     finally
     {
@@ -197,7 +197,7 @@ function Test-NewGetUpdateSetRemoveScheduledQueryRule
 
 function Test-PipingRemoveSetUpdateScheduledQueryRule
 {
-	Write-Output "Starting Test-PipingRemoveSetUpdateScheduledQueryRule"
+	Write-Debug "Starting Test-PipingRemoveSetUpdateScheduledQueryRule"
 	Test-setup
 	try
 	{
@@ -254,7 +254,7 @@ function Test-PipingRemoveSetUpdateScheduledQueryRule
 	}
 	catch
 	{
-		Write-Output $_
+		Write-Debug $_
 	}
 	finally
 	{
