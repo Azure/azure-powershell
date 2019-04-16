@@ -23,6 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
     using Microsoft.Rest.Azure;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
     using Newtonsoft.Json;
 
@@ -116,7 +117,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Mandatory = false,
             ParameterSetName = Constants.ParameterSetNameByResourceId + Constants.Direct,
             HelpMessage = Constants.UseForPeeringServiceHelp)]
-        public bool UseForPeeringService { get; set; }
+        public bool? UseForPeeringService { get; set; }
 
         /// <summary>
         /// Gets or sets the exchange session.
@@ -178,7 +179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     if (this.InputObject is PSExchangePeeringModelView)
                     {
                         var peeringRequest = this.InputUpdateExchange();
-                        if (this.UseForPeeringService)
+                        if (this.UseForPeeringService != null)
                             this.WriteVerbose("UseForPeeringService is only offered for Direct Peerings.");
                         this.WriteObject(peeringRequest);
                     }
@@ -246,30 +247,62 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     var resourceGroupName = resourceId.ResourceGroupName;
                     var peeringName = resourceId.ResourceName;
                     var peering = new PSPeering
-                    {
-                        Kind = directPeeringModelView.Kind,
-                        PeeringLocation = directPeeringModelView.PeeringLocation,
-                        Location = directPeeringModelView.Location,
-                        Sku = directPeeringModelView.Sku,
-                        Tags = directPeeringModelView.Tags,
-                        Direct = new PSPeeringPropertiesDirect
-                        {
-                            Connections = directPeeringModelView.Connections,
-                            PeerAsn = new PSSubResource(
+                                      {
+                                          Kind = directPeeringModelView.Kind,
+                                          PeeringLocation = directPeeringModelView.PeeringLocation,
+                                          Location = directPeeringModelView.Location,
+                                          Sku = directPeeringModelView.Sku,
+                                          Tags = directPeeringModelView.Tags,
+                                          Direct = new PSPeeringPropertiesDirect
+                                                       {
+                                                           Connections = directPeeringModelView.Connections,
+                                                           PeerAsn = new PSSubResource(
                                                                directPeeringModelView.PeerAsn.Id),
-                            UseForPeeringService = directPeeringModelView
+                                                           UseForPeeringService = directPeeringModelView
                                                                .UseForPeeringService
+                                                       }
+                                      };
+                    if (this.UseForPeeringService != null)
+                    {
+                        peering.Sku = this.UseForPeeringService == true
+                                          ? new PSPeeringSku { Name = Constants.PremiumDirectFree }
+                                          : new PSPeeringSku { Name = Constants.BasicDirectFree };
+                        peering.Direct.UseForPeeringService = this.UseForPeeringService;
+                    }
+
+                    if (this.DirectConnection != null)
+                    {
+                        for (int i = 0; i < peering.Direct.Connections.Count; i++)
+                        {
+                            foreach (var connection in this.DirectConnection)
+                            {
+                                var connectionDifferencesCount =
+                                    peering.Direct.Connections[i].DetailedCompare(connection).Count;
+                                if (connectionDifferencesCount == 0)
+                                {
+                                    continue;
+                                }
+
+                                if (connectionDifferencesCount == 1)
+                                {
+                                    peering.Direct.Connections[i] = connection;
+                                    continue;
+                                }
+
+                                if (connectionDifferencesCount <= 1) continue;
+                                if (!peering.Direct.Connections.Contains(connection))
+                                {
+                                    peering.Direct.Connections.Add(connection);
+                                }
+                            }
                         }
-                    };
-                    peering.Sku = this.UseForPeeringService
-                                      ? new PSPeeringSku { Name = Constants.PremiumDirectFree }
-                                      : new PSPeeringSku { Name = Constants.BasicDirectFree };
-                    peering.Direct.UseForPeeringService = this.UseForPeeringService;
+                    }
+
                     return new PSDirectPeeringModelView(
                         this.ToPeeringPs(
                             this.PeeringClient.CreateOrUpdate(
-                                resourceGroupName.ToString(),
-                                peeringName.ToString(),
+                                resourceGroupName,
+                                peeringName,
                                 this.ToPeering(peering))));
                 }
             }
@@ -349,28 +382,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         private PSDirectPeeringModelView GetAndUpdateDirectPeering()
         {
             var directPeering = this.ToPeeringPs(this.PeeringClient.Get(this.ResourceGroupName, this.Name));
-            directPeering.Sku = this.UseForPeeringService
-                                    ? new PSPeeringSku { Name = Constants.PremiumDirectFree }
-                                    : new PSPeeringSku { Name = Constants.BasicDirectFree };
-            directPeering.Direct.UseForPeeringService = this.UseForPeeringService;
+            if (this.UseForPeeringService != null)
+            {
+                directPeering.Sku = this.UseForPeeringService == true
+                                        ? new PSPeeringSku { Name = Constants.PremiumDirectFree }
+                                        : new PSPeeringSku { Name = Constants.BasicDirectFree };
+                directPeering.Direct.UseForPeeringService = this.UseForPeeringService;
+            }
+
             directPeering.Direct.PeerAsn = new PSSubResource(directPeering.Direct.PeerAsn.Id);
             if (this.DirectConnection != null)
             {
-                // check to see which connection has been changed
-                for (int i = 0; i < directPeering.Direct.Connections.Count - 1; i++)
+                for (int i = 0; i < directPeering.Direct.Connections.Count; i++)
                 {
-                    var differences = directPeering.Direct.Connections[i].DetailedCompare(this.DirectConnection[i]);
-                    if (differences.Count == 1)
+                    foreach (var connection in this.DirectConnection)
                     {
-                        directPeering.Direct.Connections[i] = this.DirectConnection[i];
-                    }
+                        var connectionDifferencesCount =
+                            directPeering.Direct.Connections[i].DetailedCompare(connection).Count;
+                        if (connectionDifferencesCount == 0)
+                        {
+                            continue;
+                        }
 
-                    if (differences.Count > 1) continue;
-                    var newPeering = this.PeeringClient.CreateOrUpdate(
-                        this.ResourceGroupName,
-                        this.Name,
-                        this.ToPeering(directPeering));
-                    return new PSDirectPeeringModelView(this.ToPeeringPs(newPeering));
+                        if (connectionDifferencesCount == 1)
+                        {
+                            directPeering.Direct.Connections[i] = connection;
+                            continue;
+                        }
+
+                        if (connectionDifferencesCount <= 1) continue;
+                        if (!directPeering.Direct.Connections.Contains(connection))
+                        {
+                            directPeering.Direct.Connections.Add(connection);
+                        }
+                    }
                 }
             }
 
@@ -396,33 +441,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             string resourceGroupName,
             string name)
         {
-            directPeering.Direct.UseForPeeringService = this.UseForPeeringService;
-            directPeering.Direct.PeerAsn = new PSSubResource(directPeering.Direct.PeerAsn.Id);
+            if (this.UseForPeeringService != null)
+            {
+                directPeering.Direct.UseForPeeringService = this.UseForPeeringService;
+            }
+       
+        directPeering.Direct.PeerAsn = new PSSubResource(directPeering.Direct.PeerAsn.Id);
             if (this.DirectConnection != null)
             {
-                // check to see which connection has been changed
-                for (int i = 0; i < directPeering.Direct.Connections.Count - 1; i++)
+                for (int i = 0; i < directPeering.Direct.Connections.Count; i++)
                 {
-                    var differences = directPeering.Direct.Connections[i].DetailedCompare(this.DirectConnection[i]);
-                    if (differences.Count == 1)
+                    foreach (var connection in this.DirectConnection)
                     {
-                        directPeering.Direct.Connections[i] = this.DirectConnection[i];
-                    }
+                        var connectionDifferencesCount =
+                            directPeering.Direct.Connections[i].DetailedCompare(connection).Count;
+                        if (connectionDifferencesCount == 0)
+                        {
+                            continue;
+                        }
 
-                    if (differences.Count > 1) continue;
-                    var newPeering = this.PeeringClient.CreateOrUpdate(
-                        resourceGroupName,
-                        name,
-                        this.ToPeering(directPeering));
-                    return new PSDirectPeeringModelView(this.ToPeeringPs(newPeering));
+                        if (connectionDifferencesCount == 1)
+                        {
+                            directPeering.Direct.Connections[i] = connection;
+                            continue;
+                        }
+
+                        if (connectionDifferencesCount <= 1) continue;
+                        if (!directPeering.Direct.Connections.Contains(connection))
+                        {
+                            directPeering.Direct.Connections.Add(connection);
+                        }
+                    }
                 }
             }
 
             return new PSDirectPeeringModelView(
                 this.ToPeeringPs(
                     this.PeeringClient.CreateOrUpdate(
-                        this.ResourceGroupName,
-                        this.Name,
+                        resourceGroupName,
+                        name,
                         this.ToPeering(directPeering))));
         }
 
@@ -440,27 +497,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             exchangePeering.Exchange.PeerAsn = new PSSubResource(exchangePeering.Exchange.PeerAsn.Id);
             if (this.ExchangeConnection != null)
             {
-                // check to see which connection has been changed
-                for (int i = 0; i < exchangePeering.Exchange.Connections.Count - 1; i++)
+                for (int i = 0; i < exchangePeering.Exchange.Connections.Count; i++)
                 {
-                    var differences = exchangePeering.Exchange.Connections[i]
-                        .DetailedCompare(this.ExchangeConnection[i]);
-                    if (differences.Count == 1)
+                    foreach (var connection in this.ExchangeConnection)
                     {
-                        exchangePeering.Exchange.Connections[i] = this.ExchangeConnection[i];
-                    }
+                        var connectionDifferencesCount =
+                            exchangePeering.Exchange.Connections[i].DetailedCompare(connection).Count;
+                        if (connectionDifferencesCount == 0)
+                        {
+                            continue;
+                        }
 
-                    if (differences.Count > 1) continue;
-                    return new PSExchangePeeringModelView(
-                        this.ToPeeringPs(
-                            this.PeeringClient.CreateOrUpdate(
-                                this.ResourceGroupName,
-                                this.Name,
-                                this.ToPeering(exchangePeering))));
+                        if (connectionDifferencesCount == 1)
+                        {
+                            exchangePeering.Exchange.Connections[i] = connection;
+                            continue;
+                        }
+
+                        if (connectionDifferencesCount <= 1) continue;
+                        if (!exchangePeering.Exchange.Connections.Contains(connection))
+                        {
+                            exchangePeering.Exchange.Connections.Add(connection);
+                        }
+                    }
                 }
             }
 
-            throw new PSArgumentNullException("Exchange Connections is Null or Invalid.");
+            return new PSExchangePeeringModelView(
+                this.ToPeeringPs(
+                    this.PeeringClient.CreateOrUpdate(this.ResourceGroupName, this.Name, this.ToPeering(exchangePeering))));
         }
 
         /// <summary>
@@ -481,28 +546,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <exception cref="PSArgumentNullException"> Not valid operation
         /// </exception>
         private PSExchangePeeringModelView UpdateExchangePeering(
-            PSPeering psExchange,
+            PSPeering exchangePeering,
             string resourceGroupName,
             string name)
         {
-            psExchange.Exchange.PeerAsn = new PSSubResource(psExchange.Exchange.PeerAsn.Id);
+            exchangePeering.Exchange.PeerAsn = new PSSubResource(exchangePeering.Exchange.PeerAsn.Id);
             if (this.ExchangeConnection != null)
             {
-                // check to see which connection has been changed
-                for (int i = 0; i < psExchange.Exchange.Connections.Count - 1; i++)
+                for (int i = 0; i < exchangePeering.Exchange.Connections.Count; i++)
                 {
-                    var differences = psExchange.Exchange.Connections[i].DetailedCompare(this.ExchangeConnection[i]);
-                    if (differences.Count == 1)
+                    foreach (var connection in this.ExchangeConnection)
                     {
-                        psExchange.Exchange.Connections[i] = this.ExchangeConnection[i];
-                    }
+                        var connectionDifferencesCount =
+                            exchangePeering.Exchange.Connections[i].DetailedCompare(connection).Count;
+                        if (connectionDifferencesCount == 0)
+                        {
+                            continue;
+                        }
 
-                    if (differences.Count > 1) continue;
-                    return new PSExchangePeeringModelView(
-                        this.ToPeeringPs(
-                            this.PeeringClient.CreateOrUpdate(resourceGroupName, name, this.ToPeering(psExchange))));
+                        if (connectionDifferencesCount == 1)
+                        {
+                            exchangePeering.Exchange.Connections[i] = connection;
+                            continue;
+                        }
+
+                        if (connectionDifferencesCount <= 1) continue;
+                        if (!exchangePeering.Exchange.Connections.Contains(connection))
+                        {
+                            exchangePeering.Exchange.Connections.Add(connection);
+                        }
+                    }
                 }
             }
+
+            return new PSExchangePeeringModelView(
+                        this.ToPeeringPs(
+                            this.PeeringClient.CreateOrUpdate(resourceGroupName, name, this.ToPeering(exchangePeering))));
 
             throw new PSArgumentNullException("Exchange Connections is Null or Invalid.");
         }

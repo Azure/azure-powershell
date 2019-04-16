@@ -241,7 +241,7 @@ Accept wildcard characters: False
 Enable for use with Microsoft InputObject Service (MPS).
 
 ```yaml
-Type: System.Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: DefaultDirect, ByResourceIdDirect, Direct
 Aliases:
 
