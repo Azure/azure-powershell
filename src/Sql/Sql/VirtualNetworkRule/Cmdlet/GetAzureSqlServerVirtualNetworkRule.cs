@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The Azure Sql Server Virtual Network Rule name.")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string VirtualNetworkRuleName { get; set; }
 
         /// <summary>
