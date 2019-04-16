@@ -39,7 +39,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NatGateway", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NatGateway", SupportsShouldProcess = true, DefaultParameterSetName = "BackendSetByResource"), OutputType(typeof(bool))]
     public partial class RemoveAzureRmNatGateway : NetworkBaseCmdlet
     {
         private const string DeleteByNameParameterSet = "DeleteByNameParameterSet";
