@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor.Models;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 {
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 
         [Parameter(Mandatory = true, HelpMessage = "The threshold operator : GreaterThan, LessThan or Equal")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("GreaterThan", "LessThan", "Equal")]
+        [PSArgumentCompleter("GreaterThan", "LessThan", "Equal")]
         public string ThresholdOperator { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The threshold above which alert gets fired")]
