@@ -19,15 +19,11 @@ Get-AzSqlServerServiceObjective [[-ServiceObjectiveName] <String>] [-ResourceGro
  [-ServerName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-Gets the service objectives for a server.
-
 ### ByLocation
 ```
 Get-AzSqlServerServiceObjective -LocationName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
-
-Gets the service objectives for an Azure region.
 
 ## DESCRIPTION
 The **Get-AzSqlServerServiceObjective** cmdlet gets the available service objectives for an Azure SQL Database server.
