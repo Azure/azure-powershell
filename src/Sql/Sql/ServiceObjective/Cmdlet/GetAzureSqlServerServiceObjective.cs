@@ -34,6 +34,10 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
             Position = 2,
             HelpMessage = "Azure Sql Database service objective name.",
             ParameterSetName = ByServerNameParameterSet)]
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Azure Sql Database service objective name.",
+            ParameterSetName = ByLocationNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ServiceObjectiveName { get; set; }
 
@@ -43,25 +47,19 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
         /// <returns>A single server</returns>
         protected override IEnumerable<AzureSqlServerServiceObjectiveModel> GetEntity()
         {
-            ICollection<AzureSqlServerServiceObjectiveModel> results = null;
-
             if (this.ParameterSetName == ByLocationNameParameterSet)
             {
-                results = ModelAdapter.ListServiceObjectives(this.LocationName);
-            }
-            else if (this.MyInvocation.BoundParameters.ContainsKey("ServiceObjectiveName") && !WildcardPattern.ContainsWildcardCharacters(ServiceObjectiveName))
-            {
-                results = ModelAdapter.GetServiceObjective(
-                    this.ResourceGroupName,
-                    this.ServerName,
-                    this.ServiceObjectiveName);
+                return ModelAdapter.ListServiceObjectivesByLocation(
+                    this.LocationName,
+                    ToWildcardPattern(this.ServiceObjectiveName));
             }
             else
             {
-                results = ModelAdapter.ListServiceObjectives(this.ResourceGroupName, this.ServerName);
+                return ModelAdapter.ListServiceObjectivesByServer(
+                    this.ResourceGroupName,
+                    this.ServerName,
+                    ToWildcardPattern(this.ServiceObjectiveName));
             }
-
-            return SubResourceWildcardFilter(ServiceObjectiveName, results);
         }
 
         /// <summary>
