@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
     public class GetAzureEventHubNetworkRuleSet : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet, Position = 0, HelpMessage = "Resource Group Name")]
-        [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetNamespacePropertiesParameterSet, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetNamespacePropertiesParameterSet, HelpMessage = "Resource Group Name")]
          public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet, Position = 1, HelpMessage = "Namespace Name")]
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
                                         where nsName.Name == Namespace
                                         select nsName.ResourceGroup;
 
-                    PSNetworkRuleSetAttributes netwrokruleSet = Client.GetNetworkRuleSet(ResourceGrouplst.ElementAt<string>(0), Namespace);
+                    PSNetworkRuleSetAttributes netwrokruleSet = Client.GetNetworkRuleSet(ResourceGrouplst.FirstOrDefault(), Namespace);
                     WriteObject(netwrokruleSet);                    
                 }
 
