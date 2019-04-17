@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "SQL Database server name.",
+            HelpMessage = "Azure SQL Server name.",
             ParameterSetName = ByServerNameParameterSet)]
         [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
