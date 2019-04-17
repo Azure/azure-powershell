@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.9.0
 * Replace dependency on Monitor SDK with common code
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 * Enhanced process of multiple columns classification.

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.1
 * Fix documentation for wildcards
 
 ## Version 1.3.0

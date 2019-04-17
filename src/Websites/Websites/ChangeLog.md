@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.0
 * fixes the Set-AzWebApp and Set-AzWebAppSlot to not remove the tags on execution
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 * Updated the WebSites SDK.
