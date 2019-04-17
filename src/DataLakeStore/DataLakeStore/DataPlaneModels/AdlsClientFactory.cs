@@ -3,7 +3,6 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.DataLake.Store;
 using System.Text.RegularExpressions;
-using Microsoft.Azure.DataLake.Store.MockAdlsFileSystem;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 using System.Net.Http;
@@ -16,12 +15,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <summary>
         /// For unit testing this is set as true
         /// </summary>
-        public static bool IsTest = false;
+        internal static bool IsTest = false;
         public static DelegatingHandler[] CustomDelegatingHAndler;
         /// <summary>
         /// Mock client credentials used for testing, this is set for record
         /// </summary>
-        public static ServiceClientCredentials MockCredentials = null;
+        internal static ServiceClientCredentials MockCredentials = null;
         private static string HandleAccntName(string accnt,IAzureContext context)
         {
             if (Regex.IsMatch(accnt, @"^[a-zA-Z0-9]+$"))
