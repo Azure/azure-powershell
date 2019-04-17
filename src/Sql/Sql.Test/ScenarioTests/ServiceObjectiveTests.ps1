@@ -66,13 +66,13 @@ function Test-GetServerServiceObjectiveByLocation
 	$requestedSloFilter = "GP_Gen*_2"
 
 	# Get all
-	$o = Get-AzSqlServerServiceObjective -LocationName $location
+	$o = Get-AzSqlServerServiceObjective -Location $location
 	Assert-AreNotEqual 0 $o.Length "Expected more than 0 service objectives"
 
 	# Test filtering
-	$o = Get-AzSqlServerServiceObjective -LocationName $location -ServiceObjectiveName $requestedSlo
+	$o = Get-AzSqlServerServiceObjective -Location $location -ServiceObjectiveName $requestedSlo
 	Assert-AreEqual 1 $o.Length "Could not find exactly 1 service objective for $requestedSlo"
 
-	$o = Get-AzSqlServerServiceObjective -LocationName $location -ServiceObjectiveName $requestedSloFilter
+	$o = Get-AzSqlServerServiceObjective -Location $location -ServiceObjectiveName $requestedSloFilter
 	Assert-True {$o.Length -ge 2} "Expected 2 or more service objectives for $requestedSloFilter, actual $($o.Length)"
 }

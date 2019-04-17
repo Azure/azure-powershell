@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
     /// <summary>
     /// Defines the Get-AzSqlDatabaseServer cmdlet
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerServiceObjective", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true, DefaultParameterSetName = ByLocationNameParameterSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerServiceObjective", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true, DefaultParameterSetName = ByLocationParameterSet)]
     [OutputType(typeof(AzureSqlServerServiceObjectiveModel))]
     public class GetAzureSqlServerServiceObjective : AzureSqlServerServiceObjectiveCmdletBase
     {
@@ -33,11 +33,11 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "Azure Sql Database service objective name.",
-            ParameterSetName = ByServerNameParameterSet)]
+            ParameterSetName = ByServerParameterSet)]
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure Sql Database service objective name.",
-            ParameterSetName = ByLocationNameParameterSet)]
+            ParameterSetName = ByLocationParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ServiceObjectiveName { get; set; }
 
@@ -47,10 +47,10 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
         /// <returns>A single server</returns>
         protected override IEnumerable<AzureSqlServerServiceObjectiveModel> GetEntity()
         {
-            if (this.ParameterSetName == ByLocationNameParameterSet)
+            if (this.ParameterSetName == ByLocationParameterSet)
             {
                 return ModelAdapter.ListServiceObjectivesByLocation(
-                    this.LocationName,
+                    this.Location,
                     ToWildcardPattern(this.ServiceObjectiveName));
             }
             else
