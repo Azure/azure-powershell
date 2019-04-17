@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [JsonProperty(Order = 1)]
         [Ps1Xml(Label = "NatGateway Name", Target = ViewControl.Table, ScriptBlock = "$_.NatGateway.Name")]
-        public PSNatGateway NatGateway { get; set; }
+        public PSResourceId NatGateway { get; set; }
 
         [JsonProperty(Order = 1)]
         public List<PSServiceEndpoint> ServiceEndpoints { get; set; }
