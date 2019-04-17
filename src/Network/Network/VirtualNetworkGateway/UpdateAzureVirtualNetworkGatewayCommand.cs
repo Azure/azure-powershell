@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual network gateway's SKU")]
         [ValidateSet(
             MNM.VirtualNetworkGatewaySkuTier.Basic,
@@ -59,17 +60,20 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The default site to use for force tunneling. If a default site is specified, all internet traffic from the gateway's vnet is routed to that site.")]
         public PSLocalNetworkGateway GatewayDefaultSite { get; set; }
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The address space to allocate VPN client IP addresses from. This should not overlap with virtual network or on-premise ranges.")]
         [ValidateNotNullOrEmpty]
         public string[] VpnClientAddressPool { get; set; }
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A list of P2S VPN client tunneling protocols")]
         [ValidateSet(
             MNM.VpnClientProtocol.SSTP,
@@ -80,16 +84,19 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A list of VPN client root certificates to use for VPN client authentication. Connecting VPN clients must present certificates generated from one of these root certificates.")]
         public PSVpnClientRootCertificate[] VpnClientRootCertificates { get; set; }
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A list of revoked VPN client certificates. A VPN client presenting a certificate that matches one of these will be told to go away.")]
         public PSVpnClientRevokedCertificate[] VpnClientRevokedCertificates { get; set; }
 
         [Parameter(
              Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
              HelpMessage = "A list of IPSec policies for P2S VPN client tunneling protocols.")]
         public PSIpsecPolicy[] VpnClientIpsecPolicy { get; set; }
 
@@ -100,11 +107,13 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The weight added to routes learned over BGP from this virtual network gateway")]
         public int PeerWeight { get; set; }
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Flag to enable Active Active feature on virtual network gateway")]
         public SwitchParameter EnableActiveActiveFeature { get; set; }
 
@@ -115,10 +124,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
             HelpMessage = "P2S External Radius server address.")]
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration + VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
             HelpMessage = "P2S External Radius server address.")]
         [ValidateNotNullOrEmpty]
@@ -126,10 +137,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
             HelpMessage = "P2S External Radius server secret.")]
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration + VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
             HelpMessage = "P2S External Radius server secret.")]
         [ValidateNotNullOrEmpty]

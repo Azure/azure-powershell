@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Network
         
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Whether to use a BGP session over a S2S VPN tunnel")]
         public bool? EnableBgp { get; set; }
 
@@ -48,6 +49,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
              Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
              HelpMessage = "A list of IPSec policies.")]
         public PSIpsecPolicy[] IpsecPolicies { get; set; }
 
