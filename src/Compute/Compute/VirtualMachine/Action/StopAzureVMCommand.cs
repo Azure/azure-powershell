@@ -58,6 +58,9 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public SwitchParameter StayProvisioned { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
+        public SwitchParameter NoWait { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -83,13 +86,27 @@ namespace Microsoft.Azure.Commands.Compute
                         WriteObject(result);
                     };
 
-                    if (this.StayProvisioned)
+                    if (NoWait.IsPresent)
                     {
-                        call(this.VirtualMachineClient.PowerOffWithHttpMessagesAsync);
+                        if (this.StayProvisioned)
+                        {
+                            call(this.VirtualMachineClient.BeginPowerOffWithHttpMessagesAsync);
+                        }
+                        else
+                        {
+                            call(this.VirtualMachineClient.BeginDeallocateWithHttpMessagesAsync);
+                        }
                     }
                     else
                     {
-                        call(this.VirtualMachineClient.DeallocateWithHttpMessagesAsync);
+                        if (this.StayProvisioned)
+                        {
+                            call(this.VirtualMachineClient.PowerOffWithHttpMessagesAsync);
+                        }
+                        else
+                        {
+                            call(this.VirtualMachineClient.DeallocateWithHttpMessagesAsync);
+                        }
                     }
                 }
                 else

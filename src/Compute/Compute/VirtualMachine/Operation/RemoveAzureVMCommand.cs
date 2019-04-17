@@ -50,6 +50,9 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
+        public SwitchParameter NoWait { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -67,13 +70,26 @@ namespace Microsoft.Azure.Commands.Compute
                         this.ShouldContinue(Properties.Resources.VirtualMachineRemovalConfirmation, 
                         Properties.Resources.VirtualMachineRemovalCaption)))
                 {
-                    var op = this.VirtualMachineClient.DeleteWithHttpMessagesAsync(
-                        this.ResourceGroupName,
-                        this.Name).GetAwaiter().GetResult();
-                    var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
-                    result.StartTime = this.StartTime;
-                    result.EndTime = DateTime.Now;
-                    WriteObject(result);
+                    if (NoWait.IsPresent)
+                    {
+                        var op = this.VirtualMachineClient.BeginDeleteWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            this.Name).GetAwaiter().GetResult();
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
+                        result.StartTime = this.StartTime;
+                        result.EndTime = DateTime.Now;
+                        WriteObject(result);
+                    }
+                    else
+                    {
+                        var op = this.VirtualMachineClient.DeleteWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            this.Name).GetAwaiter().GetResult();
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
+                        result.StartTime = this.StartTime;
+                        result.EndTime = DateTime.Now;
+                        WriteObject(result);
+                    }
                 }
             });
         }
