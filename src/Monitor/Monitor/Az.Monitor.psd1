@@ -89,7 +89,9 @@ CmdletsToExport = 'Get-AzMetricDefinition', 'Get-AzMetric', 'Remove-AzLogProfile
                'New-AzActivityLogAlertCondition', 'Enable-AzActivityLogAlert', 
                'Disable-AzActivityLogAlert', 'Remove-AzActivityLogAlert', 
                'New-AzActionGroupReceiver', 'Set-AzActionGroup', 'Get-AzActionGroup', 
-               'Remove-AzActionGroup', 'New-AzMetricFilter'
+               'Remove-AzActionGroup', 'New-AzMetricFilter','Add-AzMetricAlertRuleV2',
+			   'Get-AzMetricAlertRuleV2','New-AzMetricAlertRuleV2DimensionSelection',
+			   'New-AzMetricAlertRuleV2Criteria','Remove-AzMetricAlertRuleV2'
 
 # Variables to export from this module
 # VariablesToExport = @()
