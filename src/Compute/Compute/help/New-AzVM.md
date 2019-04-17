@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 ms.assetid: 05E6155D-4F0E-406B-9312-77AD97EF66EE
@@ -27,7 +27,7 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [[-Zone] <String
 ### DefaultParameterSet
 ```
 New-AzVM [-ResourceGroupName] <String> [-Location] <String> [-VM] <PSVirtualMachine> [[-Zone] <String[]>]
- [-DisableBginfoExtension] [-Tag <Hashtable>] [-LicenseType <String>] [-AsJob]
+ [-DisableBginfoExtension] [-Tag <Hashtable>] [-LicenseType <String>] [-AsJob] [-NoWait]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -425,6 +425,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NoWait
+Returns immediately with status of request
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: DefaultParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OpenPorts
 A list of ports to open on the network security group (NSG) for the created VM.  The default value depends on the type of image chosen (i.e., Windows: 3389, 5985 and Linux: 22).
 
@@ -680,7 +695,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
