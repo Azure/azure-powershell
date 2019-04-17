@@ -43,6 +43,9 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
+        public SwitchParameter NoWait { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.ShouldProcess(Name, VerbsLifecycle.Start))
@@ -57,13 +60,26 @@ namespace Microsoft.Azure.Commands.Compute
                         this.Name = parsedId.ResourceName;
                     }
 
-                    var op = this.VirtualMachineClient.StartWithHttpMessagesAsync(
-                        this.ResourceGroupName,
-                        this.Name).GetAwaiter().GetResult();
-                    var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
-                    result.StartTime = this.StartTime;
-                    result.EndTime = DateTime.Now;
-                    WriteObject(result);
+                    if (NoWait.IsPresent)
+                    {
+                        var op = this.VirtualMachineClient.BeginStartWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            this.Name).GetAwaiter().GetResult();
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
+                        result.StartTime = this.StartTime;
+                        result.EndTime = DateTime.Now;
+                        WriteObject(result);
+                    }
+                    else
+                    {
+                        var op = this.VirtualMachineClient.StartWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            this.Name).GetAwaiter().GetResult();
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
+                        result.StartTime = this.StartTime;
+                        result.EndTime = DateTime.Now;
+                        WriteObject(result);
+                    }
                 });
             }
         }

@@ -77,6 +77,9 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
+        public SwitchParameter NoWait { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -97,10 +100,21 @@ namespace Microsoft.Azure.Commands.Compute
                     VhdPrefix = VHDNamePrefix
                 };
 
-                var op = this.VirtualMachineClient.CaptureWithHttpMessagesAsync(
-                    this.ResourceGroupName,
-                    this.Name,
-                    parameters).GetAwaiter().GetResult();
+                Rest.Azure.AzureOperationResponse<VirtualMachineCaptureResult> op;
+                if (NoWait.IsPresent)
+                {
+                    op = this.VirtualMachineClient.CaptureWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.Name,
+                        parameters).GetAwaiter().GetResult();
+                }
+                else
+                {
+                    op = this.VirtualMachineClient.CaptureWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.Name,
+                        parameters).GetAwaiter().GetResult();
+                }
 
                 var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
                 result.StartTime = this.StartTime;

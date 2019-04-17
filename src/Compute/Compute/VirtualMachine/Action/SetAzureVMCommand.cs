@@ -117,6 +117,16 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(
+            ParameterSetName = RedeployIdParameterSet,
+            Mandatory = false, 
+            HelpMessage = "Returns immediately with status of request")]
+        [Parameter(
+            ParameterSetName = RedeployResourceGroupNameParameterSet,
+            Mandatory = false, 
+            HelpMessage = "Returns immediately with status of request")]
+        public SwitchParameter NoWait { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -149,13 +159,26 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 ExecuteClientAction(() =>
                 {
-                    var op = this.VirtualMachineClient.RedeployWithHttpMessagesAsync(
-                        this.ResourceGroupName,
-                        this.Name).GetAwaiter().GetResult();
-                    var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
-                    result.StartTime = this.StartTime;
-                    result.EndTime = DateTime.Now;
-                    WriteObject(result);
+                    if (NoWait.IsPresent)
+                    {
+                        var op = this.VirtualMachineClient.BeginRedeployWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            this.Name).GetAwaiter().GetResult();
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
+                        result.StartTime = this.StartTime;
+                        result.EndTime = DateTime.Now;
+                        WriteObject(result);
+                    }
+                    else
+                    {
+                        var op = this.VirtualMachineClient.RedeployWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            this.Name).GetAwaiter().GetResult();
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
+                        result.StartTime = this.StartTime;
+                        result.EndTime = DateTime.Now;
+                        WriteObject(result);
+                    }
                 });
             }
         }

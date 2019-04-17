@@ -517,14 +517,26 @@ namespace Microsoft.Azure.Commands.Compute
                             this.VM.Name,
                             parameters,
                             auxAuthHeader);
+                        var psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(result);
+
+                        if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
+                        {
+                            var currentBginfoVersion = GetBginfoExtension();
+
+                            if (!string.IsNullOrEmpty(currentBginfoVersion))
+                            {
+                                WriteWarning("BGInfo extension not created in NoWait mode.");
+                            }
+                        }
+                        WriteObject(psResult);
                     }
                     else
                     {
                         var result = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
-                        this.ResourceGroupName,
-                        this.VM.Name,
-                        parameters,
-                        auxAuthHeader).GetAwaiter().GetResult();
+                            this.ResourceGroupName,
+                            this.VM.Name,
+                            parameters,
+                            auxAuthHeader).GetAwaiter().GetResult();
                         var psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(result);
 
                         if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))

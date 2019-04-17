@@ -64,7 +64,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         var vmScaleSetReimageInput = new VirtualMachineScaleSetReimageParameters();
                         vmScaleSetReimageInput.InstanceIds = instanceIds;
                         vmScaleSetReimageInput.TempDisk = this.TempDisk.IsPresent;
-                        result = VirtualMachineScaleSetsClient.ReimageWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, vmScaleSetReimageInput).GetAwaiter().GetResult();
+                        if (NoWait.IsPresent)
+                        {
+                            result = VirtualMachineScaleSetsClient.BeginReimageWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, vmScaleSetReimageInput).GetAwaiter().GetResult();
+                        }
+                        else
+                        {
+                            result = VirtualMachineScaleSetsClient.ReimageWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, vmScaleSetReimageInput).GetAwaiter().GetResult();
+                        }
+                        
                     }
 
                     PSOperationStatusResponse output = new PSOperationStatusResponse
