@@ -62,13 +62,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
                         if (ParameterSetName.Equals(VirtualNetworkRulePropertiesParameterSet))
                         {
                             networkRuleSet.VirtualNetworkRules.Add(new PSNWRuleSetVirtualNetworkRulesAttributes { Subnet = new PSSubnetAttributes { Id = SubnetId }, IgnoreMissingVnetServiceEndpoint = IgnoreMissingVnetServiceEndpoint.IsPresent });
-                            Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet);
+                            WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet));
                         }
 
                         if (ParameterSetName.Equals(VirtualNetworkRuleInputObjectParameterSet))
                         {
                             networkRuleSet.VirtualNetworkRules.Add(VirtualNetworkRuleObject);
-                            Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet);
+                            WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet));
                         }
                     }
                     catch (Management.EventHub.Models.ErrorResponseException ex)

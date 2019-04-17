@@ -14,9 +14,8 @@ Update the NetwrokruleSet of the given Namepsace in the current Azure subscripti
 
 ### NetworkRuleSetPropertiesSet (Default)
 ```
-Set-AzEventHubNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String> [[-DefaultAction] <String>]
- [-IPRules] <System.Collections.Generic.List`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes]>
- [-VirtualNtewrokRules] <System.Collections.Generic.List`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes]>
+Set-AzEventHubNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String> [-DefaultAction <String>]
+ [-IPRule] <PSNWRuleSetIpRulesAttributes[]> [-VirtualNteworkRule] <PSNWRuleSetVirtualNetworkRulesAttributes[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -71,18 +70,17 @@ Update the NetworkRuleSet using -ResourceId of the other namespace.
 ## PARAMETERS
 
 ### -DefaultAction
-Default Action for Networkruleset
+Default Action for NetwrokeuleSet
 
 ```yaml
 Type: System.String
 Parameter Sets: NetworkRuleSetPropertiesSet
 Aliases:
-Accepted values: Allow, Deny
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -116,18 +114,18 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -IPRules
+### -IPRule
 List of IPRuleSet
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes]
+Type: Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes[]
 Parameter Sets: NetworkRuleSetPropertiesSet
 Aliases:
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -172,22 +170,22 @@ Aliases:
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VirtualNtewrokRules
+### -VirtualNteworkRule
 List of VirtualNetworkRules
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes]
+Type: Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes[]
 Parameter Sets: NetworkRuleSetPropertiesSet
 Aliases:
 
 Required: True
-Position: 4
+Position: 3
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -230,9 +228,9 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### System.String
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes[]
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes, Microsoft.Azure.PowerShell.Cmdlets.EventHub, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes[]
 
 ### Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes
 

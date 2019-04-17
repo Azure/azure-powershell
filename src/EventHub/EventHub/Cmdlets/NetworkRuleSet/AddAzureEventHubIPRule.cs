@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 
         [Parameter(Mandatory = false, ParameterSetName = IPRulePropertiesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The IP Filter Action")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("Allow", IgnoreCase = true)]
         [PSArgumentCompleter("Allow")]
         public string Action { get; set; }
 
@@ -72,7 +71,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
                             networkRuleSet.IpRules.Add(IpRuleObject);
                         }
 
-                        Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet);
+                        WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet));
                     }
                     catch (Management.EventHub.Models.ErrorResponseException ex)
                     {

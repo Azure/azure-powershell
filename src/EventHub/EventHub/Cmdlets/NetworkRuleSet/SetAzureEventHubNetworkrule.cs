@@ -15,8 +15,7 @@ using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
@@ -41,25 +40,24 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
         [Alias(AliasNamespaceName)]
         public string Name { get; set; }       
 
-        [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetPropertiesParameterSet, ValueFromPipeline = true, Position = 2, HelpMessage = "Default Action for NetwrokeuleSet")]
-        [ValidateSet("Allow", "Deny", IgnoreCase = true)]
+        [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetPropertiesParameterSet, ValueFromPipelineByPropertyName = true,  HelpMessage = "Default Action for NetwrokeuleSet")]
         [PSArgumentCompleter("Allow", "Deny")]
         [PSDefaultValue(Value ="Deny")]
         public string DefaultAction { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet, ValueFromPipeline = true, Position = 3, HelpMessage = "List of IPRuleSet")]
+        [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "List of IPRuleSet")]
         [ValidateNotNullOrEmpty]
-        public List<PSNWRuleSetIpRulesAttributes> IPRules { get; set; }
+        public PSNWRuleSetIpRulesAttributes[] IPRule { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet, ValueFromPipeline = true, Position = 4, HelpMessage = "List of VirtualNetworkRules")]
+        [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "List of VirtualNetworkRules")]
         [ValidateNotNullOrEmpty]
-        public List<PSNWRuleSetVirtualNetworkRulesAttributes> VirtualNtewrokRules { get; set; }
+        public PSNWRuleSetVirtualNetworkRulesAttributes[] VirtualNteworkRule { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetInputObjectParameterSet, ValueFromPipeline = true, Position = 2, HelpMessage = "NetworkruleSet Configuration Object")]
         [ValidateNotNullOrEmpty]
         public PSNetworkRuleSetAttributes InputObject { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = NetworkRuleSetResourceIdParameterSet, ValueFromPipeline = true, Position = 2, HelpMessage = "Resource ID of Namespace")]
+        [Parameter(Mandatory = true, ParameterSetName = NetworkRuleSetResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Resource ID of Namespace")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -78,8 +76,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
                         PSNetworkRuleSetAttributes networkRuleSetAttributes = new PSNetworkRuleSetAttributes()
                         {
                             DefaultAction = DefaultAction,
-                            IpRules = IPRules,
-                            VirtualNetworkRules = VirtualNtewrokRules
+                            IpRules = IPRule.OfType<PSNWRuleSetIpRulesAttributes>().ToList(),
+                            VirtualNetworkRules = VirtualNteworkRule.OfType<PSNWRuleSetVirtualNetworkRulesAttributes>().ToList()
                         };
 
                         Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSetAttributes);

@@ -46,7 +46,6 @@ The IP Filter Action
 Type: System.String
 Parameter Sets: IPRulePropertiesParameterSet
 Aliases:
-Accepted values: Allow
 
 Required: False
 Position: Named
