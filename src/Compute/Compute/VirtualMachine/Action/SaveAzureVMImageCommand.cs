@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Rest.Azure.AzureOperationResponse<VirtualMachineCaptureResult> op;
                 if (NoWait.IsPresent)
                 {
-                    op = this.VirtualMachineClient.CaptureWithHttpMessagesAsync(
+                    op = this.VirtualMachineClient.BeginCaptureWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.Name,
                         parameters).GetAwaiter().GetResult();
