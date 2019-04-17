@@ -113,7 +113,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Flag to enable Active Active feature on virtual network gateway")]
         public SwitchParameter EnableActiveActiveFeature { get; set; }
 
