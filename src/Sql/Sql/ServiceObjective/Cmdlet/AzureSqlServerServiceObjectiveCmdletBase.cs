@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
     public abstract class AzureSqlServerServiceObjectiveCmdletBase
         : AzureSqlCmdletBase<IEnumerable<AzureSqlServerServiceObjectiveModel>, AzureSqlServerServiceObjectiveAdapter>
     {
-        internal const string ByServerNameParameterSet = "ByServer";
+        internal const string ByServerParameterSet = "ByServer";
 
-        internal const string ByLocationNameParameterSet = "ByLocation";
+        internal const string ByLocationParameterSet = "ByLocation";
 
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group.",
-            ParameterSetName = ByServerNameParameterSet)]
+            ParameterSetName = ByServerParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Azure SQL Server name.",
-            ParameterSetName = ByServerNameParameterSet)]
+            ParameterSetName = ByServerParameterSet)]
         [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
@@ -62,10 +62,10 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Location for which to get the service objectives.",
-            ParameterSetName = ByLocationNameParameterSet)]
+            ParameterSetName = ByLocationParameterSet)]
         [LocationCompleter("Microsoft.Sql/locations/capabilities")]
         [ValidateNotNullOrEmpty]
-        public string LocationName { get; set; }
+        public string Location { get; set; }
 
         /// <summary>
         /// Intializes the model adapter

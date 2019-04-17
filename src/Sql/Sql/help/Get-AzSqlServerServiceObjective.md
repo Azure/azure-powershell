@@ -15,7 +15,7 @@ Gets service objectives for an Azure SQL Database server.
 
 ### ByLocation (Default)
 ```
-Get-AzSqlServerServiceObjective [[-ServiceObjectiveName] <String>] -LocationName <String>
+Get-AzSqlServerServiceObjective [[-ServiceObjectiveName] <String>] -Location <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -100,7 +100,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LocationName
+### -Location
 The name of the Location for which to get the service objectives.
 
 ```yaml
