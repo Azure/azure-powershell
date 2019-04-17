@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.ServiceBus
 
         [Parameter(Mandatory = false, ParameterSetName = IPRulePropertiesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The IP Filter Action")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("Allow", IgnoreCase = true)]
         [PSArgumentCompleter("Allow")]
         public string Action { get; set; }
 

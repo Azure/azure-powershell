@@ -20,8 +20,8 @@ Get-AzServiceBusNetworkRuleSet [-ResourceGroupName] <String> [-Namespace] <Strin
 
 ### NetworkRuleSetNamespacePropertiesSet
 ```
-Get-AzServiceBusNetworkRuleSet [-Namespace] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzServiceBusNetworkRuleSet [[-ResourceGroupName] <String>] [-Namespace] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NetworkRuleSetResourceIdParameterSet
@@ -97,6 +97,18 @@ Parameter Sets: NetworkRuleSetPropertiesSet
 Aliases:
 
 Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: NetworkRuleSetNamespacePropertiesSet
+Aliases:
+
+Required: False
 Position: 0
 Default value: None
 Accept pipeline input: False

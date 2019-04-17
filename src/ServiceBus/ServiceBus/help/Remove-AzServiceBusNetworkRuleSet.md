@@ -115,7 +115,7 @@ Aliases: NamespaceName
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -145,7 +145,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -201,9 +201,9 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
-
 ### System.String
+
+### Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
 
 ## OUTPUTS
 

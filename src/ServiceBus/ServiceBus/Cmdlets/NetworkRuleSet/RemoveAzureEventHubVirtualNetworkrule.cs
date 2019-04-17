@@ -45,6 +45,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
         [ValidateNotNullOrEmpty]
         public PSNWRuleSetVirtualNetworkRulesAttributes VirtualNetworkRuleObject { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+
         public override void ExecuteCmdlet()
         {
             PSNetworkRuleSetAttributes networkRuleSet = Client.GetNetworkRuleSet(ResourceGroupName, Name);
@@ -61,7 +68,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
                 foreach (PSNWRuleSetVirtualNetworkRulesAttributes virtualnw in networkRuleSet.VirtualNetworkRules)
                 {
                     if (virtualnw.Subnet.Id == SubnetId)
+                    {
                         Toremove = virtualnw;
+                        break;
+                    }
+
                 }
             }            
 
@@ -73,7 +84,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
                     try
                     {
                         networkRuleSet.VirtualNetworkRules.Remove(Toremove);
-                        Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet);
+                        var result = Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet);
+                        if (PassThru.IsPresent)
+                        {
+                            WriteObject(result);
+                        }
                     }
                     catch (Management.ServiceBus.Models.ErrorResponseException ex)
                     {

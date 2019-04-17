@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
                                         where nsName.Name == Namespace
                                         select nsName.ResourceGroup;
 
-                    PSNetworkRuleSetAttributes netwrokruleSet = Client.GetNetworkRuleSet(ResourceGrouplst.ElementAt<string>(0), Namespace);
+                    PSNetworkRuleSetAttributes netwrokruleSet = Client.GetNetworkRuleSet(ResourceGrouplst.FirstOrDefault(), Namespace);
                     WriteObject(netwrokruleSet);                    
                 }
 
