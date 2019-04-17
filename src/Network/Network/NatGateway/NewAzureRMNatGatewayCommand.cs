@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     vSku = new PSNatGatewaySku();
                 }
-                vSku.Name = this.Sku;
+                vSku.Name = MNM.NatGatewaySkuName.Standard;
             }
 
             // PublicIpAddresses
