@@ -558,6 +558,10 @@
       "_justification": "Response body contains URL to test store for fake invoices"
     },
     {
+      "file": "src\\Billing\\Billing.Test\\SessionRecords\\Microsoft.Azure.Commands.Billing.Test.ScenarioTests.InvoicesTests\\TestListInvoicesWithMaxCount.json",
+      "_justification": "Response body contains URL to test store for fake invoices"
+    },
+    {
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AddVhdTests\\TestAddVhd.json",
       "_justification": "Generated test resource group, deleted after test execution"
     },
