@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
                             VirtualNetworkRules = VirtualNteworkRule.OfType<PSNWRuleSetVirtualNetworkRulesAttributes>().ToList()
                         };
 
-                        Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSetAttributes);
+                        WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSetAttributes));
                     }
 
                     if (ParameterSetName.Equals(NetwrokruleSetInputObjectParameterSet))

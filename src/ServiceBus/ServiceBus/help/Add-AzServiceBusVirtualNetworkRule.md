@@ -35,6 +35,12 @@ Add a single VirtualNetworkRule to NetworkRuleSet for the given Namespace
 ```powershell
 PS C:\> Add-AzServiceBusVirtualNetworkRule -ResourceGroupName v-ajnavtest -Namespace ServiceBus-Namespace1-2389 -SubnetId "/subscriptions/SubscriptionId/resourcegroups/ResourceGroup/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/sbdefault01" -IgnoreMissingVnetServiceEndpoint
 ```
+Name                : default
+DefaultAction       : Allow
+Id                  : /subscriptions/SubscriptionId/resourceGroups/RSG-TestAzEventhub/providers/Microsoft.ServiceBus/namespaces/ServiceBus-Namespace-1122/networkRuleSets/default
+Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
+IpRules             : 
+VirtualNetworkRules : {/subscriptions/SubscriptionId/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default, False}
 
 Adds the given Subnet and IgnoreMissingVnetServiceEndpoint (VirtualNetworkRule) to NetworkRuleSet for the given Namespace
 
@@ -42,6 +48,12 @@ Adds the given Subnet and IgnoreMissingVnetServiceEndpoint (VirtualNetworkRule) 
 ```powershell
 PS C:\> Add-AzServiceBusVirtualNetworkRule -ResourceGroupName v-ajnavtest -Namespace ServiceBus-Namespace1-2389 -VirtualNetworkRuleObject $virtualruleset1
 ```
+Name                : default
+DefaultAction       : Allow
+Id                  : /subscriptions/SubscriptionId/resourceGroups/RSG-TestAzEventhub/providers/Microsoft.ServiceBus/namespaces/ServiceBus-Namespace-1122/networkRuleSets/default
+Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
+IpRules             : 
+VirtualNetworkRules : {/subscriptions/SubscriptionId/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default, False}
 
 Adds the $virtualruleset1 to NetworkRuleSet for the given Namespace
 
