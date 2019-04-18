@@ -190,7 +190,7 @@ function Validate-PolicyStates
    Assert-True { $policyStates.Count -gt 0 }
    Foreach($policyState in $policyStates)
    {
-      Validate-PolicyState $policyState $expandPolicyEvaluationDetails
+      Validate-PolicyState $policyState -expandPolicyEvaluationDetails:$expandPolicyEvaluationDetails
    }
 }
 
@@ -213,6 +213,7 @@ function Validate-PolicyState
    Assert-NotNull $policyState.IsCompliant
    Assert-NotNullOrEmpty $policyState.SubscriptionId
    Assert-NotNullOrEmpty $policyState.PolicyDefinitionAction
+   Assert-NotNullOrEmpty $policyState.ComplianceState
 
    if ($expandPolicyEvaluationDetails -and $policyState.ComplianceState -eq "NonCompliant")
    {
