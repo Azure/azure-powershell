@@ -34,22 +34,19 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = "ListParameterSet",
             HelpMessage = "The resource group name of the virtual network tap.",
             ValueFromPipelineByPropertyName = true)]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = "GetByNameParameterSet",
-            HelpMessage = "The resource group name of the virtual network tap.",
-            ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ParameterSetName = "GetByNameParameterSet",
+            Mandatory = false,
+            ParameterSetName = "ListParameterSet",
             HelpMessage = "The name of the tap.",
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Network/virtualNetworkTaps", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         [Parameter(
@@ -70,7 +67,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.Name = resourceIdentifier.ResourceName;
             }
 
-            if (!string.IsNullOrEmpty(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 var vVirtualNetworkTap = this.NetworkClient.NetworkManagementClient.VirtualNetworkTaps.Get(ResourceGroupName, Name);
                 var vVirtualNetworkTapModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSVirtualNetworkTap>(vVirtualNetworkTap);
@@ -81,7 +78,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<VirtualNetworkTap> vtapPage;
-                if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                if (ShouldListByResourceGroup(ResourceGroupName, Name))
                 {
                     vtapPage = this.NetworkClient.NetworkManagementClient.VirtualNetworkTaps.ListByResourceGroup(this.ResourceGroupName);
                 }
@@ -101,7 +98,7 @@ namespace Microsoft.Azure.Commands.Network
                     psVtaps.Add(psVtap);
                 }
 
-                WriteObject(psVtaps, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psVtaps), true);
             }
         }
 

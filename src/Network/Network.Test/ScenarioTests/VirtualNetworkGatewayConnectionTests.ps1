@@ -46,6 +46,9 @@ function Test-VirtualNetworkeExpressRouteGatewayConnectionCRUD
         Assert-AreEqual "3" $expected.RoutingWeight
         Assert-AreEqual $False $expected.ExpressRouteGatewayBypass
 
+        $list = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -Name "*"
+        Assert-True { $list.Count -ge 0 }
+
 		#get routes 
 		Get-AzExpressRouteCircuitARPTable -ResourceGroupName $rgname -ExpressRouteCircuitName $circuit.Name -PeeringType AzurePrivatePeering -DevicePath Primary
 

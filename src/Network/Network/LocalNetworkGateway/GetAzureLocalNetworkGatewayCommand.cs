@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource name.")]
         [ResourceNameCompleter("Microsoft.Network/localNetworkGateways", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
@@ -39,18 +40,19 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         public override void Execute()
         {
             base.Execute();
-            if (!string.IsNullOrEmpty(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 var localnetGateway = this.GetLocalNetworkGateway(this.ResourceGroupName, this.Name);
 
                 WriteObject(localnetGateway);
             }
-            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
+            else if (ShouldListByResourceGroup(ResourceGroupName, Name))
             {
                 var localnetGatewayPage = this.LocalNetworkGatewayClient.List(this.ResourceGroupName);
 
@@ -65,7 +67,7 @@ namespace Microsoft.Azure.Commands.Network
                     psLocalnetGateways.Add(psLocalnetGateway);
                 }
 
-                WriteObject(psLocalnetGateways, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psLocalnetGateways), true);
             }
         }
     }

@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Alias("ResourceName")]
@@ -56,6 +57,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Network/networkProfiles", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         [Parameter(
@@ -94,7 +96,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.Name = resourceIdentifier.ResourceName;
             }
 
-            if(!string.IsNullOrEmpty(this.Name))
+            if(ShouldGetByName(ResourceGroupName, Name))
             {
                 var vNetworkProfile = this.NetworkClient.NetworkManagementClient.NetworkProfiles.Get(ResourceGroupName, Name, ExpandResource);
                 var vNetworkProfileModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSNetworkProfile>(vNetworkProfile);
@@ -105,7 +107,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<NetworkProfile> vNetworkProfilePage;
-                if(!string.IsNullOrEmpty(this.ResourceGroupName))
+                if(ShouldListByResourceGroup(ResourceGroupName, Name))
                 {
                     vNetworkProfilePage = this.NetworkClient.NetworkManagementClient.NetworkProfiles.List(this.ResourceGroupName);
                 }
@@ -124,7 +126,7 @@ namespace Microsoft.Azure.Commands.Network
                     vNetworkProfileModel.Tag = TagsConversionHelper.CreateTagHashtable(vNetworkProfile.Tags);
                     psNetworkProfileList.Add(vNetworkProfileModel);
                 }
-                WriteObject(psNetworkProfileList, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name,psNetworkProfileList), true);
             }
         }
     }

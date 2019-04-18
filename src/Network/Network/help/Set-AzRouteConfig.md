@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzRouteConfig
 
 ## SYNOPSIS
-Sets the goal state for a route.
+Updates a route configuration for a route table.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Set-AzRouteConfig -RouteTable <PSRouteTable> [-Name <String>] [-AddressPrefix <S
 ```
 
 ## DESCRIPTION
-The **Set-AzRouteConfig** cmdlet sets the goal state for an Azure route.
+The **Set-AzRouteConfig** cmdlet updates a route configuration for a route table.
 
 ## EXAMPLES
 

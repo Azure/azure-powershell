@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Alias("ResourceName")]
@@ -70,6 +71,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Network/routeTables", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         [Parameter(
@@ -84,7 +86,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if(!string.IsNullOrEmpty(this.Name))
+            if(ShouldGetByName(ResourceGroupName, Name))
             {
                 var vRouteTable = this.NetworkClient.NetworkManagementClient.RouteTables.Get(ResourceGroupName, Name, ExpandResource);
                 var vRouteTableModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSRouteTable>(vRouteTable);
@@ -95,7 +97,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<RouteTable> vRouteTablePage;
-                if(!string.IsNullOrEmpty(this.ResourceGroupName))
+                if(ShouldListByResourceGroup(ResourceGroupName, Name))
                 {
                     vRouteTablePage = this.NetworkClient.NetworkManagementClient.RouteTables.List(this.ResourceGroupName);
                 }
@@ -114,7 +116,7 @@ namespace Microsoft.Azure.Commands.Network
                     vRouteTableModel.Tag = TagsConversionHelper.CreateTagHashtable(vRouteTable.Tags);
                     psRouteTableList.Add(vRouteTableModel);
                 }
-                WriteObject(psRouteTableList, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psRouteTableList), true);
             }
         }
     }

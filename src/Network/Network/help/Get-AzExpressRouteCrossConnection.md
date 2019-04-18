@@ -13,15 +13,8 @@ Gets an Azure ExpressRoute cross connection from Azure.
 
 ## SYNTAX
 
-### ListByResourceGroup
 ```
-Get-AzExpressRouteCrossConnection -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ListSpecific
-```
-Get-AzExpressRouteCrossConnection -ResourceGroupName <String> -Name <String>
+Get-AzExpressRouteCrossConnection [-ResourceGroupName <String>] [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -36,6 +29,13 @@ AzureRmExpressRouteCrossConnection
 ```
 Get-AzExpressRouteCrossConnection -Name $CrossConnectionName -ResourceGroupName $rg
 ```
+
+### Example 2: List the ExpressRoute cross connections using a filter
+```
+Get-AzExpressRouteCrossConnection -Name test*
+```
+
+This cmdlet will list all ExpressRoute cross connections that begin with "test"
 
 ## PARAMETERS
 
@@ -59,14 +59,14 @@ The name of the ExpressRoute cross connection.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSpecific
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
@@ -77,15 +77,15 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

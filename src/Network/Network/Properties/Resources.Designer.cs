@@ -106,6 +106,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to firewallPolicy.
+        /// </summary>
+        internal static string ApplicationGatewayFirewallPolicy {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayFirewallPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to frontendIpConfigurations.
         /// </summary>
         internal static string ApplicationGatewayFrontendIPConfigName {
@@ -750,6 +759,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string VirtualNetworkGatewayNameNotSet {
             get {
                 return ResourceManager.GetString("VirtualNetworkGatewayNameNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No revoked certificates found on VirtualNetworkGateway {0}.
+        /// </summary>
+        internal static string VirtualNetworkGatewayNoRevokedCertificate {
+            get {
+                return ResourceManager.GetString("VirtualNetworkGatewayNoRevokedCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No root certificates found on VirtualNetworkGateway {0}.
+        /// </summary>
+        internal static string VirtualNetworkGatewayNoRootCertificate {
+            get {
+                return ResourceManager.GetString("VirtualNetworkGatewayNoRootCertificate", resourceCulture);
             }
         }
         

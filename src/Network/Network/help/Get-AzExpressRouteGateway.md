@@ -58,6 +58,34 @@ A ExpressRoute gateway will be created thereafter in the Virtual Hub with 2 scal
 
 It then gets the ExpressRouteGateway using its resourceGroupName and the gateway name.
 
+### Example 2
+
+```powershell
+PS C:\> Get-AzExpressRouteGateway -Name test*
+
+ResourceGroupName   : testRG
+Name                : testExpressRoutegw1
+Id                  : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/ExpressRouteGateways/testExpressRoutegw1
+Location            : West Central US
+ExpressRouteGatewayScaleUnit : 2
+VirtualHub          : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub
+BgpSettings         : {}
+Type                : Microsoft.Network/ExpressRouteGateways
+ProvisioningState   : Succeeded
+
+ResourceGroupName   : testRG
+Name                : testExpressRoutegw2
+Id                  : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/ExpressRouteGateways/testExpressRoutegw2
+Location            : West Central US
+ExpressRouteGatewayScaleUnit : 2
+VirtualHub          : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub
+BgpSettings         : {}
+Type                : Microsoft.Network/ExpressRouteGateways
+ProvisioningState   : Succeeded
+```
+
+This command will get all ExpressRouteGateways that start with "test"
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -87,7 +115,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
@@ -102,7 +130,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceId
@@ -121,7 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

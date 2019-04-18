@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Network
            ParameterSetName = "ExpandScaleSetIp")]
         [ResourceNameCompleter("Microsoft.Network/publicIPAddresses", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
@@ -73,6 +74,7 @@ namespace Microsoft.Azure.Commands.Network
            ParameterSetName = "ExpandScaleSetIp")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -143,7 +145,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            if (!string.IsNullOrEmpty(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 PSPublicIpAddress publicIp;
                 if (ParameterSetName.Contains("ScaleSetIp"))
@@ -164,7 +166,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<PublicIPAddress> publicipPage;
-                if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                if (ShouldListByResourceGroup(ResourceGroupName, Name))
                 {
                     if (ParameterSetName.Contains("ScaleSetIp"))
                     {
@@ -224,7 +226,7 @@ namespace Microsoft.Azure.Commands.Network
                     psPublicIps.Add(psPublicIp);
                 }
 
-                WriteObject(psPublicIps, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psPublicIps), true);
             }
         }
     }

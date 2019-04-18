@@ -14,7 +14,7 @@
                     <TableColumnHeader><Label>StartTime</Label><Width>10</Width></TableColumnHeader>
                     <TableColumnHeader><Label>EndTime</Label><Width>10</Width></TableColumnHeader>
                     <TableColumnHeader><Label>VMName</Label><Width>10</Width></TableColumnHeader>
-                    <TableColumnHeader><Label>Id</Label><Width>10</Width></TableColumnHeader>
+                    <TableColumnHeader><Label>ReportId</Label><Width>10</Width></TableColumnHeader>
                 </TableHeaders>
                 <TableRowEntries>
                     <TableRowEntry>
@@ -36,7 +36,7 @@
                             <TableColumnItem><ScriptBlock>$_.StartTime.ToString("MM/dd/yyyy hh:mm:ss tt")</ScriptBlock></TableColumnItem>
                             <TableColumnItem><ScriptBlock>$_.EndTime.ToString("MM/dd/yyyy hh:mm:ss tt")</ScriptBlock></TableColumnItem>
                             <TableColumnItem><ScriptBlock>$_.VM.ResourceId.Substring($_.VM.ResourceId.LastIndexOf("/")+1)</ScriptBlock></TableColumnItem>
-                            <TableColumnItem><ScriptBlock>".." + $_.Id.Substring($_.Id.LastIndexOf("/"), 37)</ScriptBlock></TableColumnItem>
+                            <TableColumnItem><ScriptBlock>".." + $_.ReportId.Substring($_.ReportId.LastIndexOf("/"), 37)</ScriptBlock></TableColumnItem>
                         </TableColumnItems>
                     </TableRowEntry>
                 </TableRowEntries>
@@ -54,7 +54,7 @@
                     <TableColumnHeader><Label>StartTime</Label><Width>10</Width></TableColumnHeader>
                     <TableColumnHeader><Label>EndTime</Label><Width>10</Width></TableColumnHeader>
                     <TableColumnHeader><Label>VMName</Label><Width>10</Width></TableColumnHeader>
-                    <TableColumnHeader><Label>Id</Label><Width>10</Width></TableColumnHeader>
+                    <TableColumnHeader><Label>ReportId</Label><Width>10</Width></TableColumnHeader>
                 </TableHeaders>
                 <TableRowEntries>
                     <TableRowEntry>
@@ -64,7 +64,7 @@
                             <TableColumnItem><ScriptBlock>$_.StartTime.ToString("MM/dd/yyyy hh:mm:ss tt")</ScriptBlock></TableColumnItem>
                             <TableColumnItem><ScriptBlock>$_.EndTime.ToString("MM/dd/yyyy hh:mm:ss tt")</ScriptBlock></TableColumnItem>
                             <TableColumnItem><ScriptBlock>$_.VM.ResourceId.Substring($_.VM.ResourceId.LastIndexOf("/")+1)</ScriptBlock></TableColumnItem>
-                            <TableColumnItem><ScriptBlock>".." + $_.Id.Substring($_.Id.LastIndexOf("/"), 37)</ScriptBlock></TableColumnItem>
+                            <TableColumnItem><ScriptBlock>".." + $_.ReportId.Substring($_.ReportId.LastIndexOf("/"), 37)</ScriptBlock></TableColumnItem>
                         </TableColumnItems>
                     </TableRowEntry>
                 </TableRowEntries>

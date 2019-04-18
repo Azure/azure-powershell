@@ -74,6 +74,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateSet(AccountKind.Storage,
             AccountKind.StorageV2,
             AccountKind.BlobStorage,
+            AccountKind.BlockBlobStorage,
             IgnoreCase = true)]
         public string Kind { get; set; }
 
@@ -175,7 +176,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 createParameters.CustomDomain = new CustomDomain()
                 {
                     Name = CustomDomainName,
-                    UseSubDomain = UseSubDomain
+                    UseSubDomainName = UseSubDomain
                 };
             }
             else if (UseSubDomain != null)

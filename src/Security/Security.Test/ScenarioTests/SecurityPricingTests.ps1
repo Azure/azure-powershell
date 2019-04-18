@@ -24,35 +24,11 @@ function Get-AzureRmSecurityPricing-SubscriptionScope
 
 <#
 .SYNOPSIS
-Get Azure Security Center pricing settings override on a resource group
-#>
-function Get-AzureRmSecurityPricing-ResourceGroupScope
-{
-	$rgName = Get-TestResourceGroupName
-
-    $pricings = Get-AzSecurityPricing -ResourceGroupName $rgName
-	Validate-Pricings $pricings
-}
-
-<#
-.SYNOPSIS
 Get Azure Security Center pricing settings on a subscription
 #>
 function Get-AzureRmSecurityPricing-SubscriptionLevelResource
 {
-    $pricings = Get-AzSecurityPricing -Name "default"
-	Validate-Pricings $pricings
-}
-
-<#
-.SYNOPSIS
-Get Azure Security Center pricing settings override on a resource group
-#>
-function Get-AzureRmSecurityPricing-ResourceGroupLevelResource
-{
-	$rgName = Get-TestResourceGroupName
-
-    $pricings = Get-AzSecurityPricing -ResourceGroupName $rgName -Name $rgName
+    $pricings = Get-AzSecurityPricing -Name "VirtualMachines"
 	Validate-Pricings $pricings
 }
 
@@ -74,18 +50,7 @@ Set an Azure Security Center pricing setting
 #>
 function Set-AzureRmSecurityPricing-SubscriptionLevelResource
 {
-    Set-AzSecurityPricing -Name "default" -PricingTier "Standard"
-}
-
-<#
-.SYNOPSIS
-Set an Azure Security Center pricing setting override
-#>
-function Set-AzureRmSecurityPricing-ResourceGroupLevelResource
-{
-	$rgName = Get-TestResourceGroupName
-
-    Set-AzSecurityPricing -ResourceGroupName $rgName -Name $rgName -PricingTier "Standard"
+    Set-AzSecurityPricing -Name "VirtualMachines" -PricingTier "Standard"
 }
 
 <#
