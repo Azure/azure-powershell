@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.1.1
 * Add SsisProperties if NodeCount not null for managed integration runtime.
 
 ## Version 1.1.0
