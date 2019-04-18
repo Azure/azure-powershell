@@ -16,11 +16,14 @@ namespace Microsoft.Azure.Commands.RedisCache
 {
     using Microsoft.Azure.Commands.RedisCache.Models;
     using Microsoft.Azure.Commands.RedisCache.Properties;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using ResourceManager.Common.ArgumentCompleters;
     using System;
     using System.Management.Automation;
 
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RedisCacheDiagnostics", SupportsShouldProcess = true), OutputType(typeof(void))]
+    [GenericBreakingChange("Set-AzRedisCacheDiagnostics alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RedisCacheDiagnostic", SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Alias("Set-AzRedisCacheDiagnostics")]
     public class SetAzureRedisCacheDiagnostics : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group under which cache exists.")]

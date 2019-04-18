@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Updated table format for SQL in azure VM
+* Added alternate method to fetch location in AzureFileShare
+* Updated ScheduleRunDays in SchedulePolicy object according to timezone
 
 ## Version 1.2.0
 * Added SnapshotRetentionInDays in Azure VM policy to support Instant RP

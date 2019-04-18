@@ -17,7 +17,7 @@ Adds a cluster identity to a cluster configuration object.
 ### [Add-AzHDInsightComponentVersion](Add-AzHDInsightComponentVersion.md)
 Adds a version for a service running in a cluster to a cluster configuration object.
 
-### [Add-AzHDInsightConfigValues](Add-AzHDInsightConfigValues.md)
+### [Add-AzHDInsightConfigValue](Add-AzHDInsightConfigValue.md)
 Adds a Hadoop configuration value customization and/or a Hive shared library customization to a cluster configuration object.
 
 ### [Add-AzHDInsightMetastore](Add-AzHDInsightMetastore.md)
@@ -53,7 +53,7 @@ Gets the status of Operations Management Suite (OMS) installation on the cluster
 ### [Get-AzHDInsightPersistedScriptAction](Get-AzHDInsightPersistedScriptAction.md)
 Gets the persisted script actions for a cluster and lists them in chronological order, or gets details for a specified persisted script action.
 
-### [Get-AzHDInsightProperties](Get-AzHDInsightProperties.md)
+### [Get-AzHDInsightProperty](Get-AzHDInsightProperty.md)
 Gets properties about the HDInsight service, such as available locations and capacity.
 
 ### [Get-AzHDInsightScriptActionHistory](Get-AzHDInsightScriptActionHistory.md)
