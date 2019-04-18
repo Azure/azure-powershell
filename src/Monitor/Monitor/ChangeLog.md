@@ -18,13 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-  * New cmdlets for GenV2(non classic) metric-based alert rule
-      - New-AzMetricAlertRuleV2DimensionSelection
-      - New-AzMetricAlertRuleV2Criteria
-      - Remove-AzMetricAlertRuleV2
-      - Get-AzMetricAlertRuleV2
-      - Add-AzMetricAlertRuleV2
-  * Updated Monitor SDK to version 0.22.0-preview
+
+## Version 1.1.0
+* New cmdlets for GenV2(non classic) metric-based alert rule
+    - New-AzMetricAlertRuleV2DimensionSelection
+    - New-AzMetricAlertRuleV2Criteria
+    - Remove-AzMetricAlertRuleV2
+    - Get-AzMetricAlertRuleV2
+    - Add-AzMetricAlertRuleV2
+* Updated Monitor SDK to version 0.22.0-preview
 
 ## Version 1.0.1
 * Update help for Get-AzMetric

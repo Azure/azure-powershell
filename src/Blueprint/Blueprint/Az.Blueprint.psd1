@@ -112,7 +112,11 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '* Update Remove- cmdlet to not require SubscriptionId parameter
-* Update cmdlet examples '
+* Update cmdlet examples 
+* Update Blueprint .NET SDK version
+* Support secure strings as assignment parameters
+* Support WhoIsBlueprint
+     - Get AAD ObjectId of the Blueprints service principal in the tenant'
 
         # Prerelease string of this module
         # Prerelease = ''

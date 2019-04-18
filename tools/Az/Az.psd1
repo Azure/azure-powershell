@@ -80,7 +80,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.1'; },
                @{ModuleName = 'Az.MachineLearning'; RequiredVersion = '1.1.0'; }, 
                @{ModuleName = 'Az.MarketplaceOrdering'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.Media'; RequiredVersion = '1.1.0'; }, 
-               @{ModuleName = 'Az.Monitor'; RequiredVersion = '1.0.1'; }, 
+               @{ModuleName = 'Az.Monitor'; RequiredVersion = '1.1.0'; }, 
                @{ModuleName = 'Az.Network'; RequiredVersion = '1.7.0'; }, 
                @{ModuleName = 'Az.NotificationHubs'; RequiredVersion = '1.1.0'; }, 
                @{ModuleName = 'Az.PolicyInsights'; RequiredVersion = '1.0.0'; }, 
@@ -196,6 +196,15 @@ Az.MachineLearning
 Az.Media
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 
+Az.Monitor
+* New cmdlets for GenV2(non classic) metric-based alert rule
+    - New-AzMetricAlertRuleV2DimensionSelection
+    - New-AzMetricAlertRuleV2Criteria
+    - Remove-AzMetricAlertRuleV2
+    - Get-AzMetricAlertRuleV2
+    - Add-AzMetricAlertRuleV2
+* Updated Monitor SDK to version 0.22.0-preview
+
 Az.Network
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 * Fix documentation for wildcards
@@ -226,6 +235,7 @@ Az.Sql
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 * Enhanced process of multiple columns classification.
 * Include sku properties (sku name, family, capacity) in response from Get-AzSqlServerServiceObjective and format as table by default.
+* Ability to Get-AzSqlServerServiceObjective by location without needing a preexisting server in the region.
 * Support for time zone parameter in Managed Instance create.
 * Fix documentation for wildcards
 

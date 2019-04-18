@@ -50,6 +50,15 @@
 #### Az.Media
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 
+#### Az.Monitor
+* New cmdlets for GenV2(non classic) metric-based alert rule
+    - New-AzMetricAlertRuleV2DimensionSelection
+    - New-AzMetricAlertRuleV2Criteria
+    - Remove-AzMetricAlertRuleV2
+    - Get-AzMetricAlertRuleV2
+    - Add-AzMetricAlertRuleV2
+* Updated Monitor SDK to version 0.22.0-preview
+
 #### Az.Network
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 * Fix documentation for wildcards
@@ -80,6 +89,7 @@
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 * Enhanced process of multiple columns classification.
 * Include sku properties (sku name, family, capacity) in response from Get-AzSqlServerServiceObjective and format as table by default.
+* Ability to Get-AzSqlServerServiceObjective by location without needing a preexisting server in the region.
 * Support for time zone parameter in Managed Instance create.
 * Fix documentation for wildcards
 
