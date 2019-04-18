@@ -512,6 +512,230 @@
     {
       "file": "src\\RedisCache\\RedisCache\\help\\Import-AzRedisCache.md",
       "_justification": "Example data import"
+    },
+    {
+      "file": "src\\ApplicationInsights\\ApplicationInsights.Test\\SessionRecords\\Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests.PricingAndDailyCapTests\\TestGetPricingPlan.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\ApplicationInsights\\ApplicationInsights.Test\\SessionRecords\\Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests.PricingAndDailyCapTests\\TestSetPricingPlan.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\ApplicationInsights\\ApplicationInsights.Test\\SessionRecords\\Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests.PricingAndDailyCapTests\\TestGetDailyCapStatus.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\Batch\\Batch.Test\\ComputeNodeUsers\\NewBatchComputeNodeUserCommandTests.cs",
+      "_justification": "Fake password used against mocked client, no real resources are created"
+    },
+    {
+      "file": "src\\Batch\\Batch.Test\\ComputeNodeUsers\\SetBatchComputeNoderUserCommandTests.cs",
+      "_justification": "Fake password used against mocked client, no real resources are created"
+    },
+    {
+      "file": "src\\Batch\\Batch.Test\\ScenarioTests\\ScenarioTestHelpers.cs",
+      "_justification": "Fake password used against mocked client, no real resources are created"
+    },
+    {
+      "file": "src\\Batch\\Batch.Test\\Tasks\\NewBatchTaskCommandTests.cs",
+      "_justification": "Fake password used against mocked client, no real resources are created"
+    },
+    {
+      "file": "src\\Billing\\Billing.Test\\SessionRecords\\Microsoft.Azure.Commands.Billing.Test.ScenarioTests.InvoicesTests\\TestGetInvoiceWithName.json",
+      "_justification": "Response body contains URL to test store for fake invoices"
+    },
+    {
+      "file": "src\\Billing\\Billing.Test\\SessionRecords\\Microsoft.Azure.Commands.Billing.Test.ScenarioTests.InvoicesTests\\TestGetInvoiceWithNames.json",
+      "_justification": "Response body contains URL to test store for fake invoices"
+    },
+    {
+      "file": "src\\Billing\\Billing.Test\\SessionRecords\\Microsoft.Azure.Commands.Billing.Test.ScenarioTests.InvoicesTests\\TestGetLatestInvoice.json",
+      "_justification": "Response body contains URL to test store for fake invoices"
+    },
+    {
+      "file": "src\\Billing\\Billing.Test\\SessionRecords\\Microsoft.Azure.Commands.Billing.Test.ScenarioTests.InvoicesTests\\TestListInvoicesWithDownloadUrl.json",
+      "_justification": "Response body contains URL to test store for fake invoices"
+    },
+    {
+      "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AddVhdTests\\TestAddVhd.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.LogAnalyticTests\\TestExportLogAnalytics.json",
+      "_justification": "Generated test storage account, deleted after test execution"
+    },
+    {
+      "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineBootDiagnosticsTests\\TestVirtualMachineBootDiagnostics.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\DataFactory\\DataFactoryV2.Test\\SessionRecords\\Microsoft.Azure.Commands.DataFactoryV2.Test.IntegrationRuntimeTests\\TestSharedIntegrationRuntime.json",
+      "_justification": "False positive on generated server name"
+    },
+    {
+      "file": "src\\DeviceProvisioningServices\\DeviceProvisioningServices.Test\\SessionRecords\\Commands.DeviceProvisioningServices.Test.IotDpsAccessPolicyTests\\IotDpsAccessPolicyLifeCycle.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\DeviceProvisioningServices\\DeviceProvisioningServices.Test\\SessionRecords\\Commands.DeviceProvisioningServices.Test.IotDpsLinkedHubTests\\IotDpsLinkedHubLifeCycle.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\HDInsight\\HDInsight.Test\\HDInsightTestBase.cs",
+      "_justification": "Fake password used against mocked client"
+    },
+    {
+      "file": "src\\HDInsight\\HDInsight.Test\\UnitTests\\NewClusterTests.cs",
+      "_justification": "Fake password used against mocked client"
+    },
+    {
+      "file": "src\\DataLakeAnalytics\\DataLakeAnalytics.Test\\SessionRecords\\Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests.AdlaAliasTests\\TestAdlaAccount.json",
+      "_justification": "Generated test resource group, deleted after test execution, confirmed by Dongwei Wang"
+    },
+    {
+      "file": "src\\DataLakeAnalytics\\DataLakeAnalytics.Test\\SessionRecords\\Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests.AdlaTests\\TestAdlaAccount.json",
+      "_justification": "Generated test resource group, deleted after test execution, confirmed by Dongwei Wang"
+    },
+    {
+      "file": "src\\MachineLearning\\MachineLearning.Test\\SessionRecords\\Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests.WebServiceTests\\TestCreateGetRemoveWebService.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\MachineLearning\\MachineLearning.Test\\SessionRecords\\Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests.WebServiceTests\\TestUpdateWebService.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\MachineLearning\\MachineLearning.Test\\SessionRecords\\Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests.WebServiceTests\\TestCreateWebServiceFromFile.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\MachineLearning\\MachineLearningCompute.Test\\SessionRecords\\Microsoft.Azure.Commands.MachineLearningCompute.Test.ScenarioTests.MLCTests\\TestGetKeys.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\MachineLearning\\MachineLearning.Test\\SessionRecords\\Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests.WebServiceTests\\TestCreateAndGetRegionalProperties.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\Media\\Media.Test\\SessionRecords\\Microsoft.Azure.Commands.Media.Test.ScenarioTests.MediaTests\\TestMediaWithPiping.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\Media\\Media.Test\\SessionRecords\\Microsoft.Azure.Commands.Media.Test.ScenarioTests.MediaTests\\TestMedia.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\MachineLearning\\MachineLearning.Test\\SessionRecords\\Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests.WebServiceTests\\TestListWebServices.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\NotificationHubs\\NotificationHubs.Test\\SessionRecords\\Commands.NotificationHubs.Test.NHServiceTests\\TestCRUDNamespaceAuth.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\PowerBIEmbedded\\PowerBIEmbedded.Test\\SessionRecords\\Microsoft.Azure.Commands.PowerBIEmbedded.Test.ScenarioTests.PowerBITests\\TestGetWorkspaceCollectionAccessKeys.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\PowerBIEmbedded\\PowerBIEmbedded.Test\\SessionRecords\\Microsoft.Azure.Commands.PowerBIEmbedded.Test.ScenarioTests.PowerBITests\\TestResetWorkspaceCollectionAccessKeys1.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\PowerBIEmbedded\\PowerBIEmbedded.Test\\SessionRecords\\Microsoft.Azure.Commands.PowerBIEmbedded.Test.ScenarioTests.PowerBITests\\TestResetWorkspaceCollectionAccessKeys2.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\OperationalInsights\\OperationalInsights.Test\\SessionRecords\\Microsoft.Azure.Commands.OperationalInsights.Test.WorkspaceTests\\TestWorkspaceActions.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\Resources\\Resources.Test\\ScenarioTests\\ActiveDirectoryTests.ps1",
+      "_justification": "Fake information used for unit testing"
+    },
+    {
+      "file": "src\\Resources\\Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ActiveDirectoryTests\\TestNewADServicePrincipalWithCustomScope.json",
+      "_justification": "False positive on generated server name"
+    },
+    {
+      "file": "src\\Resources\\Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ActiveDirectoryTests\\TestNewADServicePrincipalWithoutApp.json",
+      "_justification": "False positive on generated server name"
+    },
+    {
+      "file": "src\\Resources\\Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ActiveDirectoryTests\\TestNewADServicePrincipalWithReaderRole.json",
+      "_justification": "False positive on generated server name"
+    },
+    {
+      "file": "src\\Resources\\Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ActiveDirectoryTests\\TestNewADApplication.json",
+      "_justification": "False positive on generated server name"
+    },
+    {
+      "file": "src\\Resources\\Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagedApplicationDefinitionTests\\TestManagedApplicationDefinitionCRUD.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\Resources\\Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagedApplicationTests\\TestManagedApplicationCRUD.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\Resources\\Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.RoleAssignmentTests\\RaByServicePrincipal.json",
+      "_justification": "False positive on generated server name"
+    },
+    {
+      "file": "src\\Resources\\Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.RoleAssignmentTests\\RaAuthorizationChangeLog.json",
+      "_justification": "False positive on generated server name"
+    },
+    {
+      "file": "src\\Resources\\Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.RoleAssignmentTests\\RaById.json",
+      "_justification": "False positive on generated server name"
+    },
+    {
+      "file": "src\\ServiceBus\\ServiceBus.Test\\SessionRecords\\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusDRConfigurationTests\\ServiceBusDRConfigurationsCURDAlterName.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\ScenarioTests\\ServerCrudTests.ps1",
+      "_justification": "Generated test resource group, server information deleted after test execution"
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\ScenarioTests\\RecommendedActionTests.ps1",
+      "_justification": "Function used for setting up resources for testing, not run as part of testing"
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingClassicStorageTests\\TestAuditingUpdatePolicyWithClassicStorage.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingClassicStorageTests\\TestAuditingUpdatePolicyWithClassicStorage.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\Sql\\Sql.Test\\SessionRecords\\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ThreatDetectionClassicStorageTests\\ThreatDetectionUpdatePolicyWithClassicStorage.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+    {
+      "file": "src\\Storage\\Storage.Test\\Service\\MockStorageFileManagement.cs",
+      "_justification": "Mocked connection string used with mocked client"
+    },
+    {
+      "file": "src\\Websites\\Websites.Test\\SessionRecords\\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.SSLBindingTests\\TestRemoveNewWebAppSSLBinding.json",
+      "_justification": "Resource group used for recording has been deleted, confirmed by Nicholas King"
+    },
+    {
+      "file": "src\\Websites\\Websites.Test\\SessionRecords\\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.SSLBindingTests\\TestGetNewWebAppSSLBinding.json",
+      "_justification": "Resource group used for recording has been deleted, confirmed by Nicholas King"
+    },
+    {
+      "file": "src\\Websites\\Websites.Test\\SessionRecords\\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.SSLBindingTests\\TestCreateNewWebAppSSLBinding.json",
+      "_justification": "Resource group used for recording has been deleted, confirmed by Nicholas King"
+    },
+    {
+      "file": "src\\Websites\\Websites.Test\\SessionRecords\\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.SSLBindingTests\\TestWebAppSSLBindingPipeSupport.json",
+      "_justification": "Resource group used for recording has been deleted, confirmed by Nicholas King"
+    },
+    {
+      "file": "src\\Websites\\Websites.Test\\SessionRecords\\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.SSLBindingTests\\TestGetWebAppCertificate.json",
+      "_justification": "Resource group used for recording has been deleted, confirmed by Nicholas King"
     }
   ]
 }
