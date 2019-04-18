@@ -27,14 +27,13 @@ jobs:
     vmImage: ${{ variables.WindowsImage }}
 
   steps:
-  - task: NuGetCommand@2
-    displayName: 'Download SecurityTools'
+  - task: DownloadPackage@1
+    displayName: 'Download CredScan'
     inputs:
-      restoreSolution: tools/packages.SecurityTools.config
-      feedsToUse: config
-      nugetConfigPath: tools/nuget.SecurityTools.config
-      externalFeedCredentials: 'SecurityTools-feed'
-      restoreDirectory: '$(System.DefaultWorkingDirectory)/tools/SecurityTools'
+      feed: SecureDevelopmentTools-local
+      definition: Microsoft.Azure.CredentialScanner
+      version: 1.0.26.1
+      downloadPath: tools/SecurityTools/Microsoft.Azure.CredentialScanner.1.0.26.1
   - task: PowerShell@2
     displayName: 'Run CredScan'
     inputs:
@@ -51,12 +50,24 @@ jobs:
       targetType: filePath
       filePath: tools/CleanupBuild.ps1
       pwsh: true
+  - task: NuGetCommand@2
+    displayName: 'Download BinSkim'
+    inputs:
+      command: custom
+      arguments: 'install Microsoft.CodeAnalysis.BinSkim -OutputDirectory $(System.DefaultWorkingDirectory)/tools/SecurityTools'
   - task: PowerShell@2
     displayName: 'Run BinSkim'
     inputs:
       targetType: filePath
       filePath: tools/SecurityToolsScripts/RunBinSkim.ps1
       pwsh: true
+  - task: DownloadPackage@1
+    displayName: 'Download PoliCheck'
+    inputs:
+      feed: SecureDevelopmentTools-local
+      definition: Microsoft.StaticAnalysis.PoliCheck
+      version: 5.9.1
+      downloadPath: tools/SecurityTools/Microsoft.StaticAnalysis.PoliCheck.5.9.1
   - task: PowerShell@2
     displayName: 'Run PoliCheck'
     inputs:
