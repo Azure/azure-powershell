@@ -22,6 +22,7 @@
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 * Enhanced process of multiple columns classification.
 * Include sku properties (sku name, family, capacity) in response from Get-AzSqlServerServiceObjective and format as table by default.
+* Ability to Get-AzSqlServerServiceObjective by location without needing a preexisting server in the region.
 * Support for time zone parameter in Managed Instance create.
 * Fix documentation for wildcards
 
@@ -38,7 +39,7 @@
 ## Version 1.5.0
 * Updating AuditingEndpointsCommunicator.
     - Fixing the behavior of an edge case while creating new diagnostic settings.
-    
+
 ## Version 1.4.0
 * Add support for restore an instance database from geo-redundant backups
 * Add support for backup short term retention on Managed Instance
