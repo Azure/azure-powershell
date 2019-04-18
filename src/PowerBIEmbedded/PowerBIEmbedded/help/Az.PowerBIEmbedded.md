@@ -20,7 +20,7 @@ Gets the workspaces in a Power BI workspace collection.
 ### [Get-AzPowerBIWorkspaceCollection](Get-AzPowerBIWorkspaceCollection.md)
 Gets Power BI workspace collections.
 
-### [Get-AzPowerBIWorkspaceCollectionAccessKeys](Get-AzPowerBIWorkspaceCollectionAccessKeys.md)
+### [Get-AzPowerBIWorkspaceCollectionAccessKey](Get-AzPowerBIWorkspaceCollectionAccessKey.md)
 Gets the current access keys associated with a Power BI workspace collection.
 
 ### [New-AzPowerBIEmbeddedCapacity](New-AzPowerBIEmbeddedCapacity.md)
@@ -35,7 +35,7 @@ Deletes an instance of PowerBI Embedded Capacity.
 ### [Remove-AzPowerBIWorkspaceCollection](Remove-AzPowerBIWorkspaceCollection.md)
 Removes a Power BI workspace collection.
 
-### [Reset-AzPowerBIWorkspaceCollectionAccessKeys](Reset-AzPowerBIWorkspaceCollectionAccessKeys.md)
+### [Reset-AzPowerBIWorkspaceCollectionAccessKey](Reset-AzPowerBIWorkspaceCollectionAccessKey.md)
 Resets the specified access key.
 
 ### [Resume-AzPowerBIEmbeddedCapacity](Resume-AzPowerBIEmbeddedCapacity.md)

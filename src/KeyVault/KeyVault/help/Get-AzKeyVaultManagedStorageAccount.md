@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/get-azkeyvaultmanagedstorageaccount
@@ -72,6 +72,33 @@ Tags                :
 
 Gets the details of Key Vault managed Storage Account of 'mystorageaccount' if its keys are managed by vault 'myvault'
 
+### Example 3: List all Key Vault managed Storage Accounts using filtering
+```powershell
+PS C:\> Get-AzKeyVaultManagedStorageAccount -VaultName 'myvault' -Name "test*"
+
+Id                  : https://myvault.vault.azure.net:443/storage/test1
+Vault Name          : myvault
+AccountName         : test1
+Account Resource Id : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.St
+                      orage/storageAccounts/test1
+Enabled             : True
+Created             : 4/25/2018 1:50:32 AM
+Updated             : 4/25/2018 1:50:32 AM
+Tags                :
+
+Id                  : https://myvault.vault.azure.net:443/storage/test2
+Vault Name          : myvault
+AccountName         : test2
+Account Resource Id : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.St
+                      orage/storageAccounts/test2
+Enabled             : True
+Created             : 4/25/2018 1:50:32 AM
+Updated             : 4/25/2018 1:50:32 AM
+Tags                :
+```
+
+Lists all the accounts whose keys are managed by vault 'myvault' that start with "test"
+
 ## PARAMETERS
 
 ### -AccountName
@@ -86,7 +113,7 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -DefaultProfile
@@ -166,7 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -14,8 +14,11 @@
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="9.1.0-preview" />
-    <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="9.4.2" />
+    <PackageReference Include="Microsoft.Azure.Storage.File" Version="9.4.2" />
+    <PackageReference Include="Microsoft.Azure.Storage.Queue" Version="9.4.2" />
+    <PackageReference Include="Microsoft.Azure.KeyVault.Core" Version="2.0.4" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(StorageToolsPath)Adapters\ARM.Storage.6\ARMStorageProvider.cs" Link="Common\ARMStorageProvider.cs" />
