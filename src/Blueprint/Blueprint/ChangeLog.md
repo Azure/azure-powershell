@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.1
 * Update Remove- cmdlet to not require SubscriptionId parameter
 * Update cmdlet examples 
 * Update Blueprint .NET SDK version

@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.1.0
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 
 ## Version 1.0.0

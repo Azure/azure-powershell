@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.0
   * New cmdlets for GenV2(non classic) metric-based alert rule
       - New-AzMetricAlertRuleV2DimensionSelection
       - New-AzMetricAlertRuleV2Criteria
