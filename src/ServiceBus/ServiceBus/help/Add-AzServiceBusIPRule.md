@@ -43,6 +43,19 @@ VirtualNetworkRules :
 
 add the IPRule with IpMask "11.22.33.44" and Action Allow fro the given namesapce.
 
+### Example 2
+```powershell
+PS C:\> Add-AzServiceBusIPRule -ResourceGroupName v-ajnavtest -Namespace ServiceBus-Namespace1-2389 -IpRuleObject $ipruleObject
+```
+Name                : default
+DefaultAction       : Allow
+Id                  : /subscriptions/SubscriptionId/resourceGroups/RSG-TestAzEventhub/providers/Microsoft.ServiceBus/namespaces/ServiceBus-Namespace-2389/networkRuleSets/default
+Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
+IpRules             : {11.22.33.44, Allow}
+VirtualNetworkRules : 
+
+add the IPRule with IpMask "11.22.33.44" and Action Allow fro the given namesapce.
+
 ## PARAMETERS
 
 ### -Action
