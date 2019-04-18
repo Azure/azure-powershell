@@ -19,6 +19,51 @@ jobs:
       testFramework: ${{ variables.TestFramework }}
       configuration: ${{ variables.Configuration }}
 
+- job: Analyze
+  displayName: Analyze
+  dependsOn: Build
+  condition: succeeded()
+  pool:
+    vmImage: ${{ variables.WindowsImage }}
+
+  steps:
+  - task: NuGetCommand@2
+    displayName: 'Download SecurityTools'
+    inputs:
+      restoreSolution: tools/packages.SecurityTools.config
+      feedsToUse: config
+      nugetConfigPath: tools/nuget.SecurityTools.config
+      externalFeedCredentials: 'SecurityTools-feed'
+      restoreDirectory: '$(System.DefaultWorkingDirectory)/tools/SecurityTools'
+  - task: PowerShell@2
+    displayName: 'Run CredScan'
+    inputs:
+      targetType: filePath
+      filePath: tools/SecurityToolsScripts/RunCredScan.ps1
+      pwsh: true
+  - template: util/analyze-steps.yml
+    parameters:
+      osName: ${{ variables.WindowsName }}
+      configuration: ${{ variables.Configuration }}
+  - task: PowerShell@2
+    displayName: 'Cleanup Build'
+    inputs:
+      targetType: filePath
+      filePath: tools/CleanupBuild.ps1
+      pwsh: true
+  - task: PowerShell@2
+    displayName: 'Run BinSkim'
+    inputs:
+      targetType: filePath
+      filePath: tools/SecurityToolsScripts/RunBinSkim.ps1
+      pwsh: true
+  - task: PowerShell@2
+    displayName: 'Run PoliCheck'
+    inputs:
+      targetType: filePath
+      filePath: tools/SecurityToolsScripts/RunPoliCheck.ps1
+      pwsh: true
+
 - job: Test
   displayName: Test
   dependsOn: Build
