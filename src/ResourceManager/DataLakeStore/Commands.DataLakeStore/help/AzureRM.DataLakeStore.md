@@ -8,7 +8,7 @@ Locale: en-US
 
 # AzureRM.DataLakeStore Module
 ## Description
-The topics in this section document the Azure PowerShell cmdlets for Azure Data Lake Store in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.DataLakeStore namespace.
+The topics in this section document the Azure PowerShell cmdlets for Azure Data Lake Store in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.DataLakeStore namespace. These cmdlets work only with Azure Data Lake Storage Gen1 accounts.
 
 ## AzureRM.DataLakeStore Cmdlets
 ### [Add-AzureRmDataLakeStoreFirewallRule](Add-AzureRmDataLakeStoreFirewallRule.md)
