@@ -185,7 +185,7 @@
                   $vnetrules = $_.VirtualNetworkRules;
                   foreach ($vnetrule in $vnetrules)
                   {
-                  $vnetrule.PSSubnetAttributes.Id.ToString();
+                  $vnetrule.Subnet.Id.ToString();
                   $vnetrule.IgnoreMissingVnetServiceEndpoint.ToString();
                   }
                 </ScriptBlock>
