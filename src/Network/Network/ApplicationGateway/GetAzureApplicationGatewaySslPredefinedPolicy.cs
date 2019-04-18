@@ -28,12 +28,13 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Name of the ssl predefined policy")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            if (this.Name != null)
+            if (this.Name != null && !WildcardPattern.ContainsWildcardCharacters(Name))
             {
                 var policy = this.ApplicationGatewayClient.GetSslPredefinedPolicy(this.Name);
                 var psPolicy = NetworkResourceManagerProfile.Mapper.Map<PSApplicationGatewaySslPredefinedPolicy>(policy);
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network
                     psPolicies.Add(NetworkResourceManagerProfile.Mapper.Map<PSApplicationGatewaySslPredefinedPolicy>(policy));
                 }
 
-                WriteObject(psPolicies, true);
+                WriteObject(TopLevelWildcardFilter(null, Name, psPolicies), true);
             }
         }
     }

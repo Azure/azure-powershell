@@ -33,32 +33,27 @@ namespace Microsoft.Azure.Commands.Network
     public partial class GetAzureRmExpressRouteCrossConnection : ExpressRouteCrossConnectionBaseCmdlet
     {
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The resource group name of express route cross connection.",
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "ListByResourceGroup")]
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The resource group name of express route cross connection.",
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "ListSpecific")]
+            ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The name of express route cross connection.",
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "ListSpecific")]
+            ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Network/expressRouteCrossConnections", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         public override void Execute()
         {
             base.Execute();
-            if (!string.IsNullOrEmpty(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 var crossConnection = this.GetExpressRouteCrossConnection(this.ResourceGroupName, this.Name);
 
@@ -67,7 +62,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<ExpressRouteCrossConnection> crossConnectionPage;
-                if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                if (ShouldListByResourceGroup(ResourceGroupName, Name))
                 {
                     crossConnectionPage = this.ExpressRouteCrossConnectionClient.ListByResourceGroup(this.ResourceGroupName);
                 }
@@ -87,7 +82,7 @@ namespace Microsoft.Azure.Commands.Network
                     psCrossConnections.Add(psCrossConnection);
                 }
 
-                WriteObject(psCrossConnections, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psCrossConnections), true);
             }
         }
     }

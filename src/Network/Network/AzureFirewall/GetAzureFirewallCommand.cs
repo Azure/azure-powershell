@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource name.")]
         [ResourceNameCompleter("Microsoft.Network/azureFirewalls", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
@@ -40,12 +41,13 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            if (!string.IsNullOrEmpty(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 var azureFirewall = this.GetAzureFirewall(this.ResourceGroupName, this.Name);
 
@@ -53,7 +55,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                IPage<AzureFirewall> azureFirewallPage = string.IsNullOrEmpty(this.ResourceGroupName)
+                IPage<AzureFirewall> azureFirewallPage = ShouldListBySubscription(ResourceGroupName, Name)
                     ? this.AzureFirewallClient.ListAll()
                     : this.AzureFirewallClient.List(this.ResourceGroupName);
 
@@ -67,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network
                     return psAzureFirewall;
                 }).ToList();
 
-                WriteObject(psAzureFirewalls, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psAzureFirewalls), true);
             }
         }
     }

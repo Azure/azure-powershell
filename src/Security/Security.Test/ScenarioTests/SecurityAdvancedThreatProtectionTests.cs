@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetResourceId()
+        public void TestResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzSecurityThreatProtection-ResourceId");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzSecurityAdvancedThreatProtection-ResourceId");
         }
         
     }

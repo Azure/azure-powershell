@@ -33,9 +33,120 @@ The **Get-AzNetworkSecurityGroup** cmdlet gets an Azure network security group.
 ### 1: Retrieve an existing network security group
 ```
 Get-AzNetworkSecurityGroup -Name nsg1 -ResourceGroupName "rg1"
+
+Name                        : nsg1
+ResourceGroupName           : rg1
+Location                    : eastus
+Id                          : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provider
+                              s/Microsoft.Network/networkInterfaces/nsg1
+Etag                        : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid                : 00000000-0000-0000-0000-000000000000
+ProvisioningState           : Succeeded
+Tags                        :
+VirtualMachine              : null
+IpConfigurations            : [
+                                {
+                                  "Name": "ipconfig1",
+                                  "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                  "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1
+                              /providers/Microsoft.Network/networkInterfaces/nsg1/ipConfigurations/ipcon
+                              fig1",
+                                  "PrivateIpAddress": "x.x.x.x",
+                                  "PrivateIpAllocationMethod": "Dynamic",
+                                  "Subnet": {
+                                    "Delegations": [],
+                                    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1
+                              /providers/Microsoft.Network/virtualNetworks/vnetcrptestps2673/subnets/subnetcrptestp
+                              s2673",
+                                    "ServiceAssociationLinks": []
+                                  },
+                                  "PublicIpAddress": {
+                                    "IpTags": [],
+                                    "Zones": [],
+                                    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1
+                              /providers/Microsoft.Network/publicIPAddresses/pubipcrptestps2673"
+                                  },
+                                  "ProvisioningState": "Succeeded",
+                                  "PrivateIpAddressVersion": "IPv4",
+                                  "LoadBalancerBackendAddressPools": [],
+                                  "LoadBalancerInboundNatRules": [],
+                                  "Primary": true,
+                                  "ApplicationGatewayBackendAddressPools": [],
+                                  "ApplicationSecurityGroups": []
+                                }
+                              ]
+DnsSettings                 : {
+                                "DnsServers": [],
+                                "AppliedDnsServers": [],
+                                "InternalDomainNameSuffix": "xxxxxxxxxxxxxxx.xx.internal.cloudapp.net"
+                              }
+EnableIPForwarding          : False
+EnableAcceleratedNetworking : False
+NetworkSecurityGroup        : null
+Primary                     :
+MacAddress                  :
 ```
 
 This command returns contents of Azure network security group "nsg1" in resource group "rg1"
+
+### 2: List existing network security groups using filtering
+```
+Get-AzNetworkSecurityGroup -Name nsg*
+
+Name                        : nsg1
+ResourceGroupName           : rg1
+Location                    : eastus
+Id                          : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provider
+                              s/Microsoft.Network/networkInterfaces/nsg1
+Etag                        : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid                : 00000000-0000-0000-0000-000000000000
+ProvisioningState           : Succeeded
+Tags                        :
+VirtualMachine              : null
+IpConfigurations            : [
+                                {
+                                  "Name": "ipconfig1",
+                                  "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                                  "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1
+                              /providers/Microsoft.Network/networkInterfaces/nsg1/ipConfigurations/ipcon
+                              fig1",
+                                  "PrivateIpAddress": "x.x.x.x",
+                                  "PrivateIpAllocationMethod": "Dynamic",
+                                  "Subnet": {
+                                    "Delegations": [],
+                                    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1
+                              /providers/Microsoft.Network/virtualNetworks/vnetcrptestps2673/subnets/subnetcrptestp
+                              s2673",
+                                    "ServiceAssociationLinks": []
+                                  },
+                                  "PublicIpAddress": {
+                                    "IpTags": [],
+                                    "Zones": [],
+                                    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1
+                              /providers/Microsoft.Network/publicIPAddresses/pubipcrptestps2673"
+                                  },
+                                  "ProvisioningState": "Succeeded",
+                                  "PrivateIpAddressVersion": "IPv4",
+                                  "LoadBalancerBackendAddressPools": [],
+                                  "LoadBalancerInboundNatRules": [],
+                                  "Primary": true,
+                                  "ApplicationGatewayBackendAddressPools": [],
+                                  "ApplicationSecurityGroups": []
+                                }
+                              ]
+DnsSettings                 : {
+                                "DnsServers": [],
+                                "AppliedDnsServers": [],
+                                "InternalDomainNameSuffix": "xxxxxxxxxxxxxxx.xx.internal.cloudapp.net"
+                              }
+EnableIPForwarding          : False
+EnableAcceleratedNetworking : False
+NetworkSecurityGroup        : null
+Primary                     :
+MacAddress                  :
+```
+
+This command returns contents of Azure network security groups that start with "nsg"
 
 ## PARAMETERS
 
@@ -79,7 +190,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -91,7 +202,7 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
@@ -106,7 +217,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -118,11 +229,11 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

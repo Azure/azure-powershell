@@ -146,6 +146,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.KeyName)]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         /// <summary>
@@ -220,9 +221,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
             else if (InRemovedState)
             {
-                if (Name == null)
+                if (string.IsNullOrEmpty(Name) || WildcardPattern.ContainsWildcardCharacters(Name))
                 {
-                    GetAndWriteDeletedKeys(VaultName);
+                    GetAndWriteDeletedKeys(VaultName, Name);
                 }
                 else
                 {
@@ -232,9 +233,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
             else
             {
-                if (string.IsNullOrEmpty(Name))
+                if (string.IsNullOrEmpty(Name) || WildcardPattern.ContainsWildcardCharacters(Name))
                 {
-                    GetAndWriteKeys(VaultName);
+                    GetAndWriteKeys(VaultName, Name);
                 }
                 else
                 {
@@ -244,21 +245,21 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
         }
 
-        private void GetAndWriteKeys(string vaultName) =>
+        private void GetAndWriteKeys(string vaultName, string name) =>
             GetAndWriteObjects(new KeyVaultObjectFilterOptions
                 {
                     VaultName = vaultName,
                     NextLink = null
                 },
-                (options) => DataServiceClient.GetKeys(options));
+                (options) => KVSubResourceWildcardFilter(name, DataServiceClient.GetKeys(options)));
 
-        private void GetAndWriteDeletedKeys(string vaultName) =>
+        private void GetAndWriteDeletedKeys(string vaultName, string name) =>
             GetAndWriteObjects(new KeyVaultObjectFilterOptions
                 {
                     VaultName = vaultName,
                     NextLink = null
                 },
-                (options) => DataServiceClient.GetDeletedKeys(options));
+                (options) => KVSubResourceWildcardFilter(name, DataServiceClient.GetDeletedKeys(options)));
 
         private void GetAndWriteKeyVersions(string vaultName, string name, string currentKeyVersion) =>
             GetAndWriteObjects(new KeyVaultObjectFilterOptions

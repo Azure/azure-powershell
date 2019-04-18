@@ -166,6 +166,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             Position = 1,
             HelpMessage = "The name of the backup.")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string BackupName { get; set; }
 
         /// <summary>
@@ -230,13 +231,13 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
                 ServerName = identifier.ResourceName;
             }
 
-            return ModelAdapter.GetDatabaseLongTermRetentionBackups(
+            return SubResourceWildcardFilter(BackupName, ModelAdapter.GetDatabaseLongTermRetentionBackups(
                     Location,
                     ServerName,
                     DatabaseName,
                     BackupName,
                     OnlyLatestPerDatabase.IsPresent,
-                    DatabaseState);
+                    DatabaseState));
         }
 
         /// <summary>

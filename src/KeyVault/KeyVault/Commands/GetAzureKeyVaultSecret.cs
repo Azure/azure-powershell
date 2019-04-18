@@ -145,6 +145,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.SecretName)]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         /// <summary>
@@ -219,9 +220,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
             else if (InRemovedState)
             {
-                if (Name == null)
+                if (string.IsNullOrEmpty(Name) || WildcardPattern.ContainsWildcardCharacters(Name))
                 {
-                    GetAndWriteDeletedSecrets(VaultName);
+                    GetAndWriteDeletedSecrets(VaultName, Name);
                 }
                 else
                 {
@@ -231,9 +232,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
             else
             {
-                if (string.IsNullOrEmpty(Name))
+                if (string.IsNullOrEmpty(Name) || WildcardPattern.ContainsWildcardCharacters(Name))
                 {
-                    GetAndWriteSecrets(VaultName);
+                    GetAndWriteSecrets(VaultName, Name);
                 }
                 else
                 {
@@ -243,21 +244,21 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
         }
 
-        private void GetAndWriteDeletedSecrets(string vaultName) =>
+        private void GetAndWriteDeletedSecrets(string vaultName, string name) =>
             GetAndWriteObjects(new KeyVaultObjectFilterOptions
                 {
                     VaultName = vaultName,
                     NextLink = null
                 },
-                (options) => DataServiceClient.GetDeletedSecrets(options));
+                (options) => KVSubResourceWildcardFilter(name, DataServiceClient.GetDeletedSecrets(options)));
 
-        private void GetAndWriteSecrets(string vaultName) =>
+        private void GetAndWriteSecrets(string vaultName, string name) =>
             GetAndWriteObjects(new KeyVaultObjectFilterOptions
                 {
                     VaultName = vaultName,
                     NextLink = null
                 }, 
-                (options) => DataServiceClient.GetSecrets(options));
+                (options) => KVSubResourceWildcardFilter(name, DataServiceClient.GetSecrets(options)));
 
         private void GetAndWriteSecretVersions(string vaultName, string name, string currentSecretVersion) =>
             GetAndWriteObjects(new KeyVaultObjectFilterOptions

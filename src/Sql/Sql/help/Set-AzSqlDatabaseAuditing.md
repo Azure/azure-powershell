@@ -137,7 +137,7 @@ PS C:\>Set-AzSqlDatabaseAuditing -State Enabled -ResourceGroupName "ResourceGrou
 PS C:\>Set-AzSqlDatabaseAuditing -State Disabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -LogAnalytics
 ```
 
-### Example 10: Disable, througth pipeline, the log analytics auditing policy of an Azure SQL database
+### Example 10: Disable, through pipeline, the log analytics auditing policy of an Azure SQL database
 ```
 PS C:\>Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" | Set-AzSqlDatabaseAuditing -LogAnalytics -State Disabled
 ```
@@ -527,15 +527,19 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 
+### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
+
 ### Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]
 
 ### System.String[]
+
+### System.Management.Automation.SwitchParameter
 
 ### System.Guid
 

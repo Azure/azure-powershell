@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource name.")]
         [ResourceNameCompleter("Microsoft.Network/connections", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
@@ -39,18 +40,19 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         public override void Execute()
         {
             base.Execute();
-            if (!string.IsNullOrEmpty(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 var vnetGatewayConnection = this.GetVirtualNetworkGatewayConnection(this.ResourceGroupName, this.Name);
 
                 WriteObject(vnetGatewayConnection);
             }
-            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
+            else if (ShouldListByResourceGroup(ResourceGroupName, Name))
             {
                 var connectionPage = this.VirtualNetworkGatewayConnectionClient.List(this.ResourceGroupName);
 
@@ -65,7 +67,7 @@ namespace Microsoft.Azure.Commands.Network
                     psVnetGatewayConnections.Add(psVnetGatewayConnection);
                 }
 
-                WriteObject(psVnetGatewayConnections, true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psVnetGatewayConnections), true);
             }
         }
     }

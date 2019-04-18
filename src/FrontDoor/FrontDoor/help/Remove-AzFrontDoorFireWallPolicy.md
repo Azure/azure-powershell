@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
 online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/remove-azfrontdoorfirewallpolicy
@@ -24,30 +24,30 @@ Remove-AzFrontDoorFireWallPolicy -InputObject <PSPolicy> [-PassThru] [-DefaultPr
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ResourceIdParameterSet
+### ByResourceIdParameterSet
 ```
 Remove-AzFrontDoorFireWallPolicy -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzFrontDoor** cmdlet removes a WAF policy under the current subscription
+The **Remove-AzFrontDoorFireWallPolicy** cmdlet removes a WAF policy under the current subscription
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzFrontDoorFireWallPolicy -Name $name -ResourceGroupName $resourceGroup
+PS C:\> Remove-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName
 ```
 
-Remove the WAF policy called $name in $resourceGroup.
+Remove the WAF policy called $policyName in $resourceGroupName.
 
 ### Example 2
 ```powershell
-PS C:\> Get--AzFrontDoorFireWallPolicy -ResourceGroupName $resourceGroup | Remove-AzFrontDoorFireWallPolicy
+PS C:\> Get-AzFrontDoorFireWallPolicy -ResourceGroupName $resourceGroupName | Remove-AzFrontDoorFireWallPolicy
 ```
 
-Remove all WAF policy in $resourceGroup.
+Remove all WAF policy in $resourceGroupName.
 
 ## PARAMETERS
 
@@ -131,7 +131,7 @@ Resource Id of the WAF policy to delete
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceIdParameterSet
+Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -173,7 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
