@@ -96,7 +96,8 @@ CmdletsToExport = 'New-AzServiceBusNamespace', 'Get-AzServiceBusNamespace',
                'Set-AzServiceBusGeoDRConfigurationFailOver', 
                'Test-AzServiceBusName', 'Get-AzServiceBusMigration', 
                'Stop-AzServiceBusMigration', 'Start-AzServiceBusMigration', 
-               'Complete-AzServiceBusMigration', 'Remove-AzServiceBusMigration'
+               'Complete-AzServiceBusMigration', 'Remove-AzServiceBusMigration',
+			   'Remove-AzServiceBusIPRule', 'Add-AzServiceBusIPRule', 'Remove-AzServiceBusVirtualNetworkRule', 'Add-AzServiceBusVirtualNetworkRule', 'Get-AzServiceBusNetworkRuleSet', 'Remove-AzServiceBusNetworkRuleSet', 'Set-AzServiceBusNetworkRuleSet'
 
 # Variables to export from this module
 # VariablesToExport = @()
