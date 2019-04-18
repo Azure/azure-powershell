@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
         [ValidateNotNullOrEmpty]
         public string SubnetId { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = VirtualNetworkRulePropertiesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "ARM ID of Subnet")]
+        [Parameter(Mandatory = false, ParameterSetName = VirtualNetworkRulePropertiesParameterSet, HelpMessage = "Indicates whether to ignore missing vnet Service Endpoint")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter IgnoreMissingVnetServiceEndpoint { get; set; }
 
@@ -62,13 +62,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
                         if (ParameterSetName.Equals(VirtualNetworkRulePropertiesParameterSet))
                         {
                             networkRuleSet.VirtualNetworkRules.Add(new PSNWRuleSetVirtualNetworkRulesAttributes { Subnet = new PSSubnetAttributes { Id = SubnetId }, IgnoreMissingVnetServiceEndpoint = IgnoreMissingVnetServiceEndpoint.IsPresent });
-                            Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet);
+                            WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet));
                         }
 
                         if (ParameterSetName.Equals(VirtualNetworkRuleInputObjectParameterSet))
                         {
                             networkRuleSet.VirtualNetworkRules.Add(VirtualNetworkRuleObject);
-                            Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet);
+                            WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet));
                         }
                     }
                     catch (Management.ServiceBus.Models.ErrorResponseException ex)

@@ -41,7 +41,7 @@ Update the NetwrokruleSet of the given Namepsace in the current Azure subscripti
 ```powershell
 PS C:\> $IpRules = @([Microsoft.Azure.Commands.ServiceBus.Models.PSNWRuleSetIpRulesAttributes] @{IpMask = "4.4.4.4";Action = "Allow"},[Microsoft.Azure.Commands.ServiceBus.Models.PSNWRuleSetIpRulesAttributes] @{IpMask = "3.3.3.3";Action = "Allow"})
 PS C:\> $VirtualNetworkRules = @([Microsoft.Azure.Commands.ServiceBus.Models.PSNWRuleSetVirtualNetworkRulesAttributes]@{Subnet=@{Id="/subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default"};IgnoreMissingVnetServiceEndpoint=$True})
-PS C:\>  Set-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace ServiceBus-Namespace1-1375 -IPRules $IpRules -VirtualNtewrokRules $VirtualNetworkRules -DefaultAction "Allow" -Debug
+PS C:\>  Set-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace ServiceBus-Namespace1-1375 -IPRule $IpRules -VirtualNteworkRule $VirtualNetworkRules -DefaultAction "Allow" -Debug
 
 ```
 
@@ -52,7 +52,7 @@ Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
 IpRules             : {4.4.4.4, Allow, 3.3.3.3, Allow}
 VirtualNetworkRules : {/subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default, True}
 
-Update the NetworkRuleSet using Properties (ParameterSet = NetworkRuleSetPropertiesSet)
+Update the NetworkRuleSet using -IPRule and -VirtualNteworkRule parameters
 
 ### Example 2
 ```powershell
@@ -67,7 +67,7 @@ Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
 IpRules             : {4.4.4.4, Allow, 3.3.3.3, Allow}
 VirtualNetworkRules : {/subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default, True}
 
-Update the NetworkRuleSet using -IPRules and -VirtualNtewrokRules parameters
+Update the NetworkRuleSet using -InputObject
 
 
 ### Example 3

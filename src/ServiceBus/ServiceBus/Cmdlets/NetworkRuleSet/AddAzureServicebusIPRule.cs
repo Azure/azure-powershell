@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.ServiceBus
                             networkRuleSet.IpRules.Add(IpRuleObject);
                         }
 
-                        Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet);
+                        WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet));
                     }
                     catch (Management.ServiceBus.Models.ErrorResponseException ex)
                     {
