@@ -19,6 +19,32 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Report detail error when create Storage context with parameter -UseConnectedAccount, but without login Azure account
+    - New-AzStorageContext
+* Support Manage Blob Service Properties of a specified Storage account with Management plane API
+    - Update-AzStorageBlobServiceProperty
+    - Get-AzStorageBlobServiceProperty
+    - Enable-AzStorageBlobDeleteRetentionPolicy
+    - Disable-AzStorageBlobDeleteRetentionPolicy
+* -AsJob support for Blob and file upload and download cmdlets
+    - Get-AzStorageBlobContent
+    - Set-AzStorageBlobContent
+    - Get-AzStorageFileContent
+    - Set-AzStorageFileContent
+
+## Version 1.1.0
+* Support Get/Set/Remove Management Policy on a Storage account
+    - Set-AzStorageAccountManagementPolicy
+    - Get-AzStorageAccountManagementPolicy
+    - Remove-AzStorageAccountManagementPolicy
+    - Add-AzStorageAccountManagementPolicyAction
+    - New-AzStorageAccountManagementPolicyFilter
+    - New-AzStorageAccountManagementPolicyRule
+
+## Version 1.0.4
+* Upgrade to Storage Client Library 9.4.2 and Microsoft.Azure.Cosmos.Table 0.10.1-preview
+
 ## Version 1.0.3
 * Support Kind BlockBlobStorage when create Storage account
        - New-AzStorageAccount

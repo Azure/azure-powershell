@@ -70,20 +70,20 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
         }
 
         /// <summary>
-        /// Provides a managed instance Advanced Threat Protection policy model for the given managed instance
+        /// Provides a managed instance Advanced Data Security policy model for the given managed instance
         /// </summary>
-        public ManagedInstanceAdvancedDataSecurityPolicyModel GetManagedInstanceAdvancedThreatProtectionPolicy(string resourceGroup, string managedInstanceName)
+        public ManagedInstanceAdvancedDataSecurityPolicyModel GetManagedInstanceAdvancedDataSecurityPolicy(string resourceGroup, string managedInstanceName)
         {
             // Currently Advanced Threat Protection policy is a TD policy until the backend will support Advanced Threat Protection APIs
             var threatDetectionPolicy = SqlThreatDetectionAdapter.GetManagedInstanceThreatDetectionPolicy(resourceGroup, managedInstanceName);
-            var managedInstanceAdvancedThreatProtectionPolicyModel = new ManagedInstanceAdvancedDataSecurityPolicyModel()
+            var managedInstanceAdvancedDataSecurityPolicy = new ManagedInstanceAdvancedDataSecurityPolicyModel()
             {
                 ResourceGroupName = resourceGroup,
                 ManagedInstanceName = managedInstanceName,
                 IsEnabled = (threatDetectionPolicy.ThreatDetectionState == ThreatDetectionStateType.Enabled)
             };
 
-            return managedInstanceAdvancedThreatProtectionPolicyModel;
+            return managedInstanceAdvancedDataSecurityPolicy;
         }
 
         /// <summary>

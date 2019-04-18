@@ -42,7 +42,7 @@ _Note_: Sometimes the error listed in the .csv file can be a false positive (for
 We take breaking changes very seriously, so please be mindful about the violations that you suppress in our repo.
 
 ### Signature Issues
-Signature issues occur when your cmdlets do not follow PowerShell standards.  Please check [this page](https://github.com/Azure/azure-powershell/blob/master/documentation/development-docs/azure-powershell-design-guidelines.md) to ensure you are following PowerShell guidelines.  Issues with severity 0 or 1 must be addressed, while issues with severity 2 are advisory.  If you have an issue with severity 0 or 1 that has been approved by the Azure PowerShell team, you can suppress them following these steps:
+Signature issues occur when your cmdlets do not follow PowerShell standards.  Please check the [_Cmdlet Best Practices_](https://github.com/Azure/azure-powershell/blob/master/documentation/development-docs/design-guidelines/cmdlet-best-practices.md) and the [_Parameter Best Practices_](https://github.com/Azure/azure-powershell/blob/master/documentation/development-docs/design-guidelines/parameter-best-practices.md) documents to ensure you are following PowerShell guidelines.  Issues with severity 0 or 1 must be addressed, while issues with severity 2 are advisory.  If you have an issue with severity 0 or 1 that has been approved by the Azure PowerShell team, you can suppress them following these steps:
 
 - Download the `SignatureIssues.csv` file from the Jenkins build
 - Open the file using a text editor (such as VS Code) and copy each of the errors you'd like to suppress

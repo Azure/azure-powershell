@@ -15,6 +15,9 @@
 $resourceGroupName = "RecoveryServicesBackupTestRg";
 $resourceName = "PsTestRsVault";
 $policyName = "PsTestPolicy";
+$defaultPolicyName = "DefaultPolicy";
+$DefaultSnapshotDays = 2;
+$UpdatedSnapShotDays = 5;
 
 function Test-AzureVMPolicy
 {
@@ -42,6 +45,7 @@ function Test-AzureVMPolicy
 			-SchedulePolicy $schedulePolicy
 		Assert-NotNull $policy
 		Assert-AreEqual $policy.Name $policyName
+		Assert-AreEqual $policy.SnapshotRetentionInDays $DefaultSnapshotDays
 
 		# Get policy
 	    $policy = Get-AzRecoveryServicesBackupProtectionPolicy `
@@ -50,11 +54,24 @@ function Test-AzureVMPolicy
 		Assert-NotNull $policy
 		Assert-AreEqual $policy.Name $policyName
 
+		$defaultPolicy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $defaultPolicyName
+		Assert-NotNull $defaultPolicy
+		Assert-AreEqual $defaultPolicy.Name $defaultPolicyName
+		Assert-True { $defaultPolicy.SchedulePolicy.ScheduleRunDays -contains "Saturday" }
+		Assert-True { $defaultPolicy.SchedulePolicy.ScheduleRunDays -contains "Thursday" }
+		Assert-False { $defaultPolicy.SchedulePolicy.ScheduleRunDays -contains "Sunday" }
+		Assert-False { $defaultPolicy.SchedulePolicy.ScheduleRunDays -contains "Friday" }
+
 		# Get default policy objects (this data is generated partially at random. So, running this again gives different values)
 		$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM
 		Assert-NotNull $schedulePolicy
 		$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM
 		Assert-NotNull $retentionPolicy
+
+		#update snapshot days
+		$policy.SnapshotRetentionInDays = $UpdatedSnapShotDays;
 
 		# Update policy
 		Set-AzRecoveryServicesBackupProtectionPolicy `
@@ -62,6 +79,11 @@ function Test-AzureVMPolicy
 			-RetentionPolicy $retentionPolicy `
 			-SchedulePolicy $schedulePolicy `
 			-Policy $policy
+
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $policyName
+		Assert-AreEqual $policy.SnapshotRetentionInDays $UpdatedSnapShotDays
 
 		# Delete policy
 		Remove-AzRecoveryServicesBackupProtectionPolicy `

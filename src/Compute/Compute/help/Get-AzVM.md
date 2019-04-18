@@ -166,13 +166,13 @@ Therefore, the command gets only the instance view properties.
 
 ### Example 3: Get properties for all virtual machines in a resource group
 ```
-PS C:\> Get-AzVM -ResourceGroupName "TEST1"
+PS C:\> Get-AzVM -ResourceGroupName "ResourceGroup11"
 
-ResourceGroupName                                            Name       Location          VmSize  OsType            NIC
------------------                                            ----       --------          ------  ------            ---
-TEST1                                                       test1         eastus Standard_DS1_v2 Windows          test1
-TEST1                                                       test2         westus Standard_DS1_v2 Windows          test2
-TEST1                                                       test3         eastus Standard_DS1_v2 Windows          test3
+ResourceGroupName    Name       Location          VmSize  OsType            NIC
+-----------------    ----       --------          ------  ------            ---
+ResourceGroup11     test1         eastus Standard_DS1_v2 Windows          test1
+ResourceGroup11     test2         westus Standard_DS1_v2 Windows          test2
+ResourceGroup11     test3         eastus Standard_DS1_v2 Windows          test3
 ```
 
 This command gets properties for all the virtual machines in the resource group named ResourceGroup11.
@@ -181,13 +181,13 @@ This command gets properties for all the virtual machines in the resource group 
 ```
 PS C:\> Get-AzVM
 
-ResourceGroupName                                            Name       Location          VmSize  OsType            NIC
------------------                                            ----       --------          ------  ------            ---
-TEST1                                                       test1         eastus Standard_DS1_v2 Windows          test1
-TEST1                                                       test2         westus Standard_DS1_v2 Windows          test2
-TEST1                                                       test3         eastus Standard_DS1_v2 Windows          test3
-TEST2                                                       test4         westus Standard_DS1_v2 Windows          test4
-TEST2                                                       test5         eastus Standard_DS1_v2 Windows          test5
+ResourceGroupName    Name       Location          VmSize  OsType            NIC
+-----------------    ----       --------          ------  ------            ---
+TEST1               test1         eastus Standard_DS1_v2 Windows          test1
+TEST1               test2         westus Standard_DS1_v2 Windows          test2
+TEST1               test3         eastus Standard_DS1_v2 Windows          test3
+TEST2               test4         westus Standard_DS1_v2 Windows          test4
+TEST2               test5         eastus Standard_DS1_v2 Windows          test5
 ```
 
 This command gets all the virtual machines in your subscription.
@@ -196,10 +196,10 @@ This command gets all the virtual machines in your subscription.
 ```
 PS C:\> Get-AzVM -Location "westus"
 
-ResourceGroupName                                            Name       Location          VmSize  OsType            NIC
------------------                                            ----       --------          ------  ------            ---
-TEST1                                                       test2         westus Standard_DS1_v2 Windows          test2
-TEST2                                                       test4         westus Standard_DS1_v2 Windows          test4
+ResourceGroupName    Name       Location          VmSize  OsType            NIC
+-----------------    ----       --------          ------  ------            ---
+TEST1               test2         westus Standard_DS1_v2 Windows          test2
+TEST2               test4         westus Standard_DS1_v2 Windows          test4
 ```
 
 This command gets all the virtual machines in West US region.
@@ -208,13 +208,13 @@ This command gets all the virtual machines in West US region.
 ```
 PS C:\> Get-AzVM -Name test*
 
-ResourceGroupName                                            Name       Location          VmSize  OsType            NIC
------------------                                            ----       --------          ------  ------            ---
-TEST1                                                       test1         eastus Standard_DS1_v2 Windows          test1
-TEST1                                                       test2         westus Standard_DS1_v2 Windows          test2
-TEST1                                                       test3         eastus Standard_DS1_v2 Windows          test3
-TEST2                                                       test4         westus Standard_DS1_v2 Windows          test4
-TEST2                                                       test5         eastus Standard_DS1_v2 Windows          test5
+ResourceGroupName    Name       Location          VmSize  OsType            NIC
+-----------------    ----       --------          ------  ------            ---
+TEST1               test1         eastus Standard_DS1_v2 Windows          test1
+TEST1               test2         westus Standard_DS1_v2 Windows          test2
+TEST1               test3         eastus Standard_DS1_v2 Windows          test3
+TEST2               test4         westus Standard_DS1_v2 Windows          test4
+TEST2               test5         eastus Standard_DS1_v2 Windows          test5
 ```
 
 This command gets all the virtual machines in your subscription that start with "test".
@@ -282,7 +282,7 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -294,7 +294,7 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -NextLink
@@ -324,7 +324,7 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -336,7 +336,7 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Status
@@ -355,7 +355,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
