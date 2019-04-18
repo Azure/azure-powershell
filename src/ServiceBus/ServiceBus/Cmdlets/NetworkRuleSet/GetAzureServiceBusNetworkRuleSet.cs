@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
     public class GetAzureServiceBusNetworkRuleSet : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet, Position = 0, HelpMessage = "Resource Group Name")]
-        [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetNamespacePropertiesParameterSet, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetNamespacePropertiesParameterSet, HelpMessage = "Resource Group Name")]
          public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet, Position = 1, HelpMessage = "Namespace Name")]
