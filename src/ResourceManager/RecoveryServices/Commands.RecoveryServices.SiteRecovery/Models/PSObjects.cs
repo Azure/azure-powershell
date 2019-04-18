@@ -1583,7 +1583,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name="recoveryPoint">Recovery point object to read values from.</param>
         public ASRRecoveryPoint(
-            RecoveryPoint recoveryPoint)
+            RecoveryPoint1 recoveryPoint)
         {
             this.ID = recoveryPoint.Id;
             this.Name = recoveryPoint.Name;
@@ -2471,6 +2471,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         /// Gets or sets the Azure role assignments.
         /// </summary>
+        [Obsolete("This property will be removed in a future release.")]
         public List<ASRRoleAssignment> RoleAssignments { get; set; }
 
         /// <summary>

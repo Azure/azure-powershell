@@ -313,7 +313,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         licenseType = providerSpecificDetails.LicenseType;
                     }
 
-                    if (string.IsNullOrEmpty(this.RecoveryAvailabilitySet))
+                    if (!this.MyInvocation.BoundParameters.ContainsKey(
+                            Utilities.GetMemberName(() => this.RecoveryAvailabilitySet)))
                     {
                         availabilitySetId = providerSpecificDetails.RecoveryAvailabilitySetId;
                     }

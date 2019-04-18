@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name="recoveryPoint">Recovery point.</param>
         private void WriteRecoveryPoint(
-            RecoveryPoint recoveryPoint)
+            RecoveryPoint1 recoveryPoint)
         {
             this.WriteObject(new ASRRecoveryPoint(recoveryPoint));
         }
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name="recoveryPoints">List of recovery points.</param>
         private void WriteRecoveryPoints(
-            IList<RecoveryPoint> recoveryPoints)
+            IList<RecoveryPoint1> recoveryPoints)
         {
             this.WriteObject(
                 recoveryPoints.Select(recoveryPoint => new ASRRecoveryPoint(recoveryPoint)),

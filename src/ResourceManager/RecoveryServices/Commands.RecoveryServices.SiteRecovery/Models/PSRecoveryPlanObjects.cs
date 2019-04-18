@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                 if (recoveryPlanGroup.EndGroupActions != null)
                 {
-                    this.EndGroupActions = recoveryPlanGroup.StartGroupActions.ToList().
+                    this.EndGroupActions = recoveryPlanGroup.EndGroupActions.ToList().
                         ConvertAll(endGroupActions => new RecoveryPlanAction_2016_08_10(endGroupActions));
                 }
 
@@ -93,6 +94,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         //
         // Summary:
         //     Optional. List of protected items.
+        [Obsolete("In a future release this object will Change the object type ASRReplicationProtectedItem.Matching the structure of Get-AzureRmRecoveryServicesReplicationProtectedItem")]
         public IList<ReplicationProtectedItem_2016_08_10> ReplicationProtectedItems { get; set; }
 
         //

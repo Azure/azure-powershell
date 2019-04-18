@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicationProtectedItemName">Replication protected item name.</param>
         /// <returns>List of recovery points.</returns>
-        public List<RecoveryPoint> GetAzureSiteRecoveryRecoveryPoint(
+        public List<RecoveryPoint1> GetAzureSiteRecoveryRecoveryPoint(
             string fabricName,
             string protectionContainerName,
             string replicationProtectedItemName)
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <param name="replicationProtectedItemName">Replication protected item name.</param>
         /// <param name="recoveryPointName">Recovery point name.</param>
         /// <returns>Recovery point.</returns>
-        public RecoveryPoint GetAzureSiteRecoveryRecoveryPoint(
+        public RecoveryPoint1 GetAzureSiteRecoveryRecoveryPoint(
             string fabricName,
             string protectionContainerName,
             string replicationProtectedItemName,

@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             Position = 0,
             ParameterSetName = ASRParameterSets.VMwareToAzure,
             Mandatory = true)]
+        [Obsolete("Parameter set VMwareToAzure will be changed in future release to support directly write to managed disk support for 'vmWare to Azure' Azure Site Recovery.")]
         public SwitchParameter VMwareToAzure { get; set; }
 
         /// <summary>
