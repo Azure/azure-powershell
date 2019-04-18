@@ -29,9 +29,6 @@ namespace Commands.HDInsight.Test.UnitTests
     public class DataLakeStoreTests : HDInsightTestBase
     {
         private NewAzureHDInsightClusterCommand cmdlet;
-        private const string StorageName = "dummystorage.blob.core.windows.net";
-        private const string StorageKey = "O9EQvp3A3AjXq/W27rst1GQfLllhp01qlJMJfSU1hVW2K42gUeiUUn2D8zX2lU3taiXSSfqkZlcPv+nQcYYwUx==";
-        private const int ClusterSize = 4;
         private Guid ObjectId = new Guid("11111111-1111-1111-1111-111111111111");
         private Guid AadTenantId = new Guid("11111111-1111-1111-1111-111111111111");
         private string Certificate = "";
