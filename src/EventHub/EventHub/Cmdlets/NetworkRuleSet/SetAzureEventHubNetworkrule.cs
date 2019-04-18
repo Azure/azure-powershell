@@ -70,7 +70,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
             {
                 try
                 {
-
                     if (ParameterSetName.Equals(NetwrokruleSetPropertiesParameterSet))
                     {
                         PSNetworkRuleSetAttributes networkRuleSetAttributes = new PSNetworkRuleSetAttributes()
@@ -80,7 +79,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
                             VirtualNetworkRules = VirtualNteworkRule.OfType<PSNWRuleSetVirtualNetworkRulesAttributes>().ToList()
                         };
 
-                        Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSetAttributes);
+                        WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSetAttributes));
                     }
 
                     if (ParameterSetName.Equals(NetwrokruleSetInputObjectParameterSet))

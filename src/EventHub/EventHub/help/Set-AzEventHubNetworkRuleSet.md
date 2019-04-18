@@ -39,15 +39,18 @@ Update the NetwrokruleSet of the given Namepsace in the current Azure subscripti
 
 ### Example 1 
 ```powershell
-PS C:\> $IpRules = New-Object 'System.Collections.Generic.List`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes]'
-PS C:\> $IpRules.Add(@{IpMask = "4.4.4.4";Action = "Allow" })
-PS C:\> $IpRules.Add(@{IpMask = "3.3.3.3";Action = "Allow" })
-PS C:\> $VirtualNetworkRules = New-Object 'System.Collections.Generic.List`1[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes]'
-PS C:\> $VirtualNetworkRules.Add(@{Subnet=@{Id="/subscriptions/SubscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default"};IgnoreMissingVnetServiceEndpoint=$True})
-PS C:\> $VirtualNetworkRules.Add(@{Subnet=@{Id="/subscriptions/SubscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default01"};IgnoreMissingVnetServiceEndpoint=$True})
-PS C:\>  Set-AzEventHubNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-1375 -IPRules $IpRules -VirtualNtewrokRules $VirtualNetworkRules -DefaultAction "Allow" -Debug
+PS C:\> $IpRules = @([Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes] @{IpMask = "4.4.4.4";Action = "Allow"},[Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes] @{IpMask = "3.3.3.3";Action = "Allow"})
+PS C:\> $VirtualNetworkRules = @([Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes]@{Subnet=@{Id="/subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default"};IgnoreMissingVnetServiceEndpoint=$True})
+PS C:\> Set-AzEventHubNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace EventHub-Namespace1-1375 -IPRules $IpRules -VirtualNtewrokRules $VirtualNetworkRules -DefaultAction "Allow" -Debug
 
 ```
+
+Name                : default
+DefaultAction       : Allow
+Id                  : /subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/EventHub-Namespace-1122/networkRuleSets/default
+Type                : Microsoft.EventHub/Namespaces/NetworkRuleSet
+IpRules             : {4.4.4.4, Allow, 3.3.3.3, Allow}
+VirtualNetworkRules : {/subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default, True}
 
 Update the NetworkRuleSet using Properties (ParameterSet = NetworkRuleSetPropertiesSet)
 
@@ -57,6 +60,13 @@ PS C:\> $getresult = Get-AzEventHubNetworkRuleSet -ResourceGroupName v-ajnavtest
 PS C:\> Set-AzEventHubNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-1375 -InputObject $getresult
 ```
 
+Name                : default
+DefaultAction       : Allow
+Id                  : /subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/EventHub-Namespace-1122/networkRuleSets/default
+Type                : Microsoft.EventHub/Namespaces/NetworkRuleSet
+IpRules             : {4.4.4.4, Allow, 3.3.3.3, Allow}
+VirtualNetworkRules : {/subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default, True}
+
 Update the NetworkRuleSet using -IPRules and -VirtualNtewrokRules parameters
 
 
@@ -64,6 +74,12 @@ Update the NetworkRuleSet using -IPRules and -VirtualNtewrokRules parameters
 ```powershell
 PS C:\> Set-AzEventHubNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-1375 -ResourceId /subscriptions/SubscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace1-1375
 ```
+Name                : default
+DefaultAction       : Allow
+Id                  : /subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/EventHub-Namespace-1122/networkRuleSets/default
+Type                : Microsoft.EventHub/Namespaces/NetworkRuleSet
+IpRules             : {4.4.4.4, Allow, 3.3.3.3, Allow}
+VirtualNetworkRules : {/subscriptions/subscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default, True}
 
 Update the NetworkRuleSet using -ResourceId of the other namespace.
 
