@@ -96,55 +96,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     throw new ArgumentException(string.Format(Resources.AzureWorkloadRestoreLocationException));
                 }
 
-                AzureWorkloadRecoveryConfig azureWorkloadRecoveryConfig = new AzureWorkloadRecoveryConfig();
+                AzureWorkloadRecoveryConfig azureWorkloadRecoveryConfig = GetConfigObject();
                 azureWorkloadRecoveryConfig.SourceResourceId = Item != null ? Item.SourceResourceId : GetResourceId();
                 DateTime currentTime = DateTime.Now;
                 TimeSpan timeSpan = DateTime.UtcNow - new DateTime(1970, 1, 1);
                 int offset = (int)timeSpan.TotalSeconds;
-                string targetServer = "";
-                string parentName = "";
                 string targetDb = "";
                 if (ParameterSetName == RpParameterSet)
                 {
-                    azureWorkloadRecoveryConfig.RecoveryPoint = RecoveryPoint;
                     Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(RecoveryPoint.Id);
-                    string containerUri = HelperUtils.GetContainerUri(keyValueDict, RecoveryPoint.Id);
-                    try
-                    {
-                        targetServer = containerUri.Split(new string[] { ";" }, StringSplitOptions.None)[3];
-                    }
-                    catch
-                    {
-                        targetServer = containerUri.Split(new string[] { ";" }, StringSplitOptions.None)[1];
-                    }
                     string itemUri = HelperUtils.GetProtectedItemUri(keyValueDict, RecoveryPoint.Id);
-                    parentName = itemUri.Split(new string[] { ";" }, StringSplitOptions.None)[1];
                     targetDb = itemUri.Split(new string[] { ";" }, StringSplitOptions.None)[2];
                 }
-                else
-                {
-                    azureWorkloadRecoveryConfig.PointInTime = PointInTime;
-                }
+
                 if (OriginalWorkloadRestore.IsPresent)
                 {
-                    azureWorkloadRecoveryConfig.RestoreRequestType = "Original WL Restore";
-                    azureWorkloadRecoveryConfig.TargetServer = Item != null ?
-                    ((AzureWorkloadSQLDatabaseProtectedItem)Item).ServerName : targetServer;
-                    azureWorkloadRecoveryConfig.TargetInstance = Item != null ?
-                    ((AzureWorkloadSQLDatabaseProtectedItem)Item).ParentName : parentName;
                     azureWorkloadRecoveryConfig.RestoredDBName = Item != null ?
                     ((AzureWorkloadSQLDatabaseProtectedItem)Item).FriendlyName : targetDb;
                     azureWorkloadRecoveryConfig.OverwriteWLIfpresent = "No";
                     azureWorkloadRecoveryConfig.NoRecoveryMode = "Disabled";
-                    if (RecoveryPoint == null)
-                    {
-                        Models.AzureWorkloadRecoveryPoint azureWorkloadRecoveryPoint = new Models.AzureWorkloadRecoveryPoint()
-                        {
-                            Id = Item.Id + "/recoveryPoints/DefaultRangeRecoveryPoint",
-                            RecoveryPointId = "DefaultRangeRecoveryPoint"
-                        };
-                        azureWorkloadRecoveryConfig.RecoveryPoint = azureWorkloadRecoveryPoint;
-                    }
                     azureWorkloadRecoveryConfig.ContainerId = Item != null ?
                     GetContainerId(Item.Id) : GetContainerId(GetItemId(RecoveryPoint.Id));
                 }
@@ -156,11 +126,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         throw new ArgumentException(string.Format(Resources.AzureWorkloadRestoreProtectableItemException));
                     }
 
-                    azureWorkloadRecoveryConfig.RestoreRequestType = "Alternate WL Restore";
-                    azureWorkloadRecoveryConfig.TargetServer = ((AzureWorkloadProtectableItem)TargetItem).ServerName;
-                    azureWorkloadRecoveryConfig.TargetInstance = ((AzureWorkloadProtectableItem)TargetItem).ParentName;
                     azureWorkloadRecoveryConfig.RestoredDBName =
-                    GetRestoredDBName(((AzureWorkloadProtectableItem)TargetItem).ParentName, RecoveryPoint.ItemName, currentTime);
+                    GetRestoredDBName(RecoveryPoint.ItemName, currentTime);
                     azureWorkloadRecoveryConfig.OverwriteWLIfpresent = "No";
                     azureWorkloadRecoveryConfig.NoRecoveryMode = "Disabled";
                     List<SQLDataDirectoryMapping> targetPhysicalPath = new List<SQLDataDirectoryMapping>();
@@ -213,11 +180,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         throw new ArgumentException(string.Format(Resources.AzureWorkloadRestoreProtectableItemException));
                     }
 
-                    azureWorkloadRecoveryConfig.RestoreRequestType = "Alternate WL Restore to diff item";
-                    azureWorkloadRecoveryConfig.TargetServer = ((AzureWorkloadProtectableItem)TargetItem).ServerName;
-                    azureWorkloadRecoveryConfig.TargetInstance = ((AzureWorkloadProtectableItem)TargetItem).ParentName;
                     azureWorkloadRecoveryConfig.RestoredDBName =
-                    GetRestoredDBName(((AzureWorkloadProtectableItem)TargetItem).ParentName, Item.Name, currentTime);
+                    GetRestoredDBName(Item.Name, currentTime);
                     azureWorkloadRecoveryConfig.OverwriteWLIfpresent = "No";
                     azureWorkloadRecoveryConfig.NoRecoveryMode = "Disabled";
                     List<SQLDataDirectoryMapping> targetPhysicalPath = new List<SQLDataDirectoryMapping>();
@@ -258,13 +222,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             break;
                         }
                     }
-
-                    Models.AzureWorkloadRecoveryPoint azureWorkloadRecoveryPoint = new Models.AzureWorkloadRecoveryPoint()
-                    {
-                        Id = Item.Id + "/recoveryPoints/DefaultRangeRecoveryPoint",
-                        RecoveryPointId = "DefaultRangeRecoveryPoint"
-                    };
-                    azureWorkloadRecoveryConfig.RecoveryPoint = azureWorkloadRecoveryPoint;
 
                     azureWorkloadRecoveryConfig.targetPhysicalPath = targetPhysicalPath;
                     azureWorkloadRecoveryConfig.ContainerId = GetContainerId(TargetItem.Id);
@@ -367,14 +324,80 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             return recoveryPoint.ExtendedInfo.DataDirectoryPaths;
         }
 
-        public string GetRestoredDBName(string parentName, string itemName, DateTime currentTime)
+        public string GetRestoredDBName(string itemName, DateTime currentTime)
         {
             List<string> nameList = new List<string>(itemName.Split(new string[] { ";" }, StringSplitOptions.None));
 
             string itemSuffix = currentTime.Month.ToString() + "_" + currentTime.Day.ToString() + "_" +
                 currentTime.Year.ToString() + "_" + currentTime.Hour.ToString() + currentTime.Minute.ToString();
 
-            return parentName + "/" + nameList.Last() + "_restored_" + itemSuffix;
+            return nameList.Last() + "_restored_" + itemSuffix;
+        }
+
+        public AzureWorkloadRecoveryConfig GetConfigObject()
+        {
+            string targetServer = "";
+            string parentName = "";
+            string restoreRequestType = "";
+            RecoveryPointBase recoveryPoint = RecoveryPoint;
+            DateTime pointInTime = PointInTime;
+
+            if (ParameterSetName == RpParameterSet)
+            {
+                Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(RecoveryPoint.Id);
+                string containerUri = HelperUtils.GetContainerUri(keyValueDict, RecoveryPoint.Id);
+                try
+                {
+                    targetServer = containerUri.Split(new string[] { ";" }, StringSplitOptions.None)[3];
+                }
+                catch
+                {
+                    targetServer = containerUri.Split(new string[] { ";" }, StringSplitOptions.None)[1];
+                }
+
+                string itemUri = HelperUtils.GetProtectedItemUri(keyValueDict, RecoveryPoint.Id);
+                parentName = itemUri.Split(new string[] { ";" }, StringSplitOptions.None)[1];
+            }
+
+            if (OriginalWorkloadRestore.IsPresent)
+            {
+                restoreRequestType = "Original WL Restore";
+                if (Item != null)
+                {
+                    targetServer = ((AzureWorkloadSQLDatabaseProtectedItem)Item).ServerName;
+                    parentName = ((AzureWorkloadSQLDatabaseProtectedItem)Item).ParentName;
+                }
+                if (RecoveryPoint == null)
+                {
+                    Models.AzureWorkloadRecoveryPoint azureWorkloadRecoveryPoint = new Models.AzureWorkloadRecoveryPoint()
+                    {
+                        Id = Item.Id + "/recoveryPoints/DefaultRangeRecoveryPoint",
+                        RecoveryPointId = "DefaultRangeRecoveryPoint"
+                    };
+                    recoveryPoint = azureWorkloadRecoveryPoint;
+                }
+            }
+            else if (AlternateWorkloadRestore.IsPresent && Item == null)
+            {
+                restoreRequestType = "Alternate WL Restore";
+                targetServer = ((AzureWorkloadProtectableItem)TargetItem).ServerName;
+                parentName = ((AzureWorkloadProtectableItem)TargetItem).ParentName;
+            }
+            else if (Item != null && TargetItem != null)
+            {
+                restoreRequestType = "Alternate WL Restore to diff item";
+                targetServer = ((AzureWorkloadProtectableItem)TargetItem).ServerName;
+                parentName = ((AzureWorkloadProtectableItem)TargetItem).ParentName;
+
+                Models.AzureWorkloadRecoveryPoint azureWorkloadRecoveryPoint = new Models.AzureWorkloadRecoveryPoint()
+                {
+                    Id = Item.Id + "/recoveryPoints/DefaultRangeRecoveryPoint",
+                    RecoveryPointId = "DefaultRangeRecoveryPoint"
+                };
+                recoveryPoint = azureWorkloadRecoveryPoint;
+            }
+
+            return new AzureWorkloadRecoveryConfig(targetServer, parentName, restoreRequestType, recoveryPoint, pointInTime);
         }
     }
 }

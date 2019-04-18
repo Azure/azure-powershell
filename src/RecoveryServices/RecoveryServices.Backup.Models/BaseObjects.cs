@@ -492,16 +492,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Original WL Restore, Alternate WL restore, Alternate WL restore to diff item.
         /// </summary>
-        public string RestoreRequestType { get; set; }
+        public string RestoreRequestType { get; }
 
         /// <summary>
         /// Recovery point for full/differential backup.
         /// </summary>
-        public RecoveryPointBase RecoveryPoint { get; set; }
+        public RecoveryPointBase RecoveryPoint { get; }
 
         /// <summary>
         /// PointInTime for Log backup.
         /// </summary>
-        public DateTime PointInTime { get; set; }
+        public DateTime PointInTime { get; }
+
+        public RecoveryConfigBase(string restoreRequestType, RecoveryPointBase recoveryPoint, DateTime pointInTime)
+        {
+            RestoreRequestType = restoreRequestType;
+            RecoveryPoint = recoveryPoint;
+            PointInTime = pointInTime;
+        }
     }
 }

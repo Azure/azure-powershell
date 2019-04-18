@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     {
                         OverwriteOption = string.Compare(wLRecoveryConfig.OverwriteWLIfpresent, "No") == 0 ?
                         OverwriteOptions.FailOnConflict : OverwriteOptions.Overwrite,
-                        DatabaseName = wLRecoveryConfig.RestoredDBName,
+                        DatabaseName = wLRecoveryConfig.TargetInstance + "/" + wLRecoveryConfig.RestoredDBName,
                         ContainerId = wLRecoveryConfig.ContainerId
                     };
                     azureWorkloadSQLRestoreRequest.AlternateDirectoryPaths = wLRecoveryConfig.targetPhysicalPath;
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     {
                         OverwriteOption = string.Compare(wLRecoveryConfig.OverwriteWLIfpresent, "No") == 0 ?
                         OverwriteOptions.FailOnConflict : OverwriteOptions.Overwrite,
-                        DatabaseName = wLRecoveryConfig.RestoredDBName,
+                        DatabaseName = wLRecoveryConfig.TargetInstance + "/" + wLRecoveryConfig.RestoredDBName,
                         ContainerId = wLRecoveryConfig.ContainerId
                     };
                     azureWorkloadSQLPointInTimeRestoreRequest.AlternateDirectoryPaths = wLRecoveryConfig.targetPhysicalPath;
