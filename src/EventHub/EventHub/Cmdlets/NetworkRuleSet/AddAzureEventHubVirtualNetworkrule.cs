@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
         [ValidateNotNullOrEmpty]
         public string SubnetId { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = VirtualNetworkRulePropertiesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "ARM ID of Subnet")]
+        [Parameter(Mandatory = false, ParameterSetName = VirtualNetworkRulePropertiesParameterSet, HelpMessage = "ARM ID of Subnet")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter IgnoreMissingVnetServiceEndpoint { get; set; }
 
