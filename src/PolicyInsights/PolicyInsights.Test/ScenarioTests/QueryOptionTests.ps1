@@ -62,7 +62,7 @@ Get latest policy states at subscription scope; with Select query option
 #>
 function QueryOptions-QueryResultsWithSelect
 {
-    $policyStates = Get-AzPolicyState -Select "Timestamp, ResourceId, PolicyAssignmentId, PolicyDefinitionId, IsCompliant, SubscriptionId, PolicyDefinitionAction" -Top 10
+    $policyStates = Get-AzPolicyState -Select "Timestamp, ResourceId, PolicyAssignmentId, PolicyDefinitionId, IsCompliant, SubscriptionId, PolicyDefinitionAction, ComplianceState" -Top 10
 	Validate-PolicyStates $policyStates 10
 }
 
