@@ -40,12 +40,25 @@ Removes the NetwrokRuleSet for the Given Namespace
 PS C:\> Remove-AzServiceBusNetworkRuleSet -ResourceGroupName  v-ajnavtest -Namespace ServiceBus-Namespace1-1375
 ```
 
+Name                : default
+DefaultAction       : Allow
+Id                  : /subscriptions/subscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/ServiceBus-Namespace-1375/networkRuleSets/default
+Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
+IpRules             : 
+VirtualNetworkRules : 
+
 Deletes the NetwrokRuleSet for the Given "ServiceBus-Namespace1-1375" namesapce 
 
 ### Example 2
 ```powershell
 PS C:\> Remove-AzServiceBusNetworkRuleSet -InputObject $result1375
 ```
+Name                : default
+DefaultAction       : Allow
+Id                  : /subscriptions/subscriptionId/resourceGroups/RSG-TestAzEventhub/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-1375/networkRuleSets/default
+Type                : Microsoft.EventHub/Namespaces/NetworkRuleSet
+IpRules             : 
+VirtualNetworkRules : 
 
 Deletes the NetwrokRuleSet using InputObject 
 
@@ -53,6 +66,12 @@ Deletes the NetwrokRuleSet using InputObject
 ```powershell
 PS C:\> Remove-AzServiceBusNetworkRuleSet -ResourceId /SubscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/ServiceBus-Namespace1-1375
 ```
+Name                : default
+DefaultAction       : Allow
+Id                  : /subscriptions/subscriptionId/resourceGroups/RSG-TestAzEventhub/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace-1375/networkRuleSets/default
+Type                : Microsoft.EventHub/Namespaces/NetworkRuleSet
+IpRules             : 
+VirtualNetworkRules : 
 
 Deletes the NetwrokRuleSet using ResourceId of the Namepsace
 
