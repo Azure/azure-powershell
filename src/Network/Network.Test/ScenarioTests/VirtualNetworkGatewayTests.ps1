@@ -119,8 +119,8 @@ function Test-VirtualNetworkGatewayCRUD
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual "Vpn" $expected.GatewayType
       Assert-AreEqual "RouteBased" $expected.VpnType
-      
-      # List virtualNetworkGateways
+
+	  # List virtualNetworkGateways
       $list = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname
       Assert-AreEqual 1 @($list).Count
       Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName	
@@ -279,6 +279,11 @@ function Test-SetVirtualNetworkGatewayCRUD
 	  $gateway = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -Asn $asn -PeerWeight $peerweight
 	  Assert-AreEqual $asn $gateway.BgpSettings.Asn 
 	  Assert-AreEqual $peerWeight $gateway.BgpSettings.PeerWeight
+
+	  # Tags
+	  $gateway = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -Tag @{ testtagKey="SomeTagKey"; testtagValue="SomeKeyValue" }
+	  Assert-AreEqual 2 $gateway.Tag.Count
+	  Assert-AreEqual $true $gateway.Tag.Contains("testtagKey")
 	}
     finally
     {
