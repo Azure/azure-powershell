@@ -30,8 +30,8 @@ jobs:
   - task: DownloadPackage@1
     displayName: 'Download CredScan'
     inputs:
-      feed: 7172b7c1-b3cd-41c7-8b2c-8947e27fc760
-      definition: ba5ce490-a34f-42ca-b804-76559e7992a2
+      feed: 81acd510-a202-4464-a324-468fc2d27db0
+      definition: 0a28014c-fa0d-409a-8924-d72e557eb1ac
       version: 1.0.26.1
       downloadPath: tools/SecurityTools/Microsoft.Azure.CredentialScanner.1.0.26.1
   - task: PowerShell@2
@@ -64,8 +64,8 @@ jobs:
   - task: DownloadPackage@1
     displayName: 'Download PoliCheck'
     inputs:
-      feed: 7172b7c1-b3cd-41c7-8b2c-8947e27fc760
-      definition: 72640853-3649-4f80-bdca-3d0627949f7
+      feed: 81acd510-a202-4464-a324-468fc2d27db0
+      definition: 9dccbbe5-88b0-4b32-8468-eb7d58719257
       version: 5.9.1
       downloadPath: tools/SecurityTools/Microsoft.StaticAnalysis.PoliCheck.5.9.1
   - task: PowerShell@2
