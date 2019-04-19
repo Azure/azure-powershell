@@ -36,17 +36,70 @@ Gets Scheduled Query Resources
 
 ### Example 1 - List by subscription or resource group
 ```powershell
-PS C:\> Get-AzScheduledQueryRule -ResourceGroupName "Rac46PostSwapRG"
+PS C:\> Get-AzScheduledQueryRule -ResourceGroupName "shrutika-rg"
+
+Description       : desc 1
+Enabled           : true
+LastUpdatedTime   : 19-Apr-19 12:29:39 PM
+ProvisioningState : Succeeded
+Source            : Microsoft.Azure.Management.Monitor.Models.Source
+Schedule          : Microsoft.Azure.Management.Monitor.Models.Schedule
+Action            : Microsoft.Azure.Management.Monitor.Models.AlertingAction
+Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/microsoft.insights/scheduledqueryrules/LogAlertRulePSTest1
+Name              : LogAlertRulePSTest1
+Type              : microsoft.insights/scheduledqueryrules
+Location          : centralindia
+Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/Microsoft.OperationalInsights/workspaces/shrutika-ws, Resource]}
+
+Description       : desc 2
+Enabled           : true
+LastUpdatedTime   : 15-Apr-19 6:57:00 PM
+ProvisioningState : Succeeded
+Source            : Microsoft.Azure.Management.Monitor.Models.Source
+Schedule          :
+Action            : Microsoft.Azure.Management.Monitor.Models.Action
+Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/microsoft.insights/scheduledqueryrules/LogAlertRulePSTest1
+Name              : LogAlertRulePSTest2
+Type              : microsoft.insights/scheduledqueryrules
+Location          : centralindia
+Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/Microsoft.OperationalInsights/workspaces/shrutika-ws, Resource]}
+
 ```
 
 ### Example 2 - Get by rule name
 ```powershell
-PS C:\> Get-AzScheduledQueryRule -ResourceGroupName "Rac46PostSwapRG" -Name "logalertfoo"
+PS C:\> Get-AzScheduledQueryRule -ResourceGroupName "shrutika-rg" -Name "LogAlertRulePSTest1"
+
+Description       : desc 1
+Enabled           : true
+LastUpdatedTime   : 19-Apr-19 12:29:39 PM
+ProvisioningState : Succeeded
+Source            : Microsoft.Azure.Management.Monitor.Models.Source
+Schedule          : Microsoft.Azure.Management.Monitor.Models.Schedule
+Action            : Microsoft.Azure.Management.Monitor.Models.AlertingAction
+Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/microsoft.insights/scheduledqueryrules/LogAlertRulePSTest1
+Name              : LogAlertRulePSTest1
+Type              : microsoft.insights/scheduledqueryrules
+Location          : centralindia
+Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/Microsoft.OperationalInsights/workspaces/shrutika-ws, Resource]}
 ```
 
 ### Example 3 - Get by resource Id
 ```powershell
-PS C:\> Get-AzScheduledQueryRule -ResourceId "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/microsoft.insights/scheduledQueryRules/logalertfoo"
+PS C:\> Get-AzScheduledQueryRule -ResourceId "/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/microsoft.insights/scheduledqueryrules/LogAlertRulePSTest1"
+
+Description       : desc 1
+Enabled           : true
+LastUpdatedTime   : 19-Apr-19 12:29:39 PM
+ProvisioningState : Succeeded
+Source            : Microsoft.Azure.Management.Monitor.Models.Source
+Schedule          : Microsoft.Azure.Management.Monitor.Models.Schedule
+Action            : Microsoft.Azure.Management.Monitor.Models.AlertingAction
+Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/microsoft.insights/scheduledqueryrules/LogAlertRulePSTest1
+Name              : LogAlertRulePSTest1
+Type              : microsoft.insights/scheduledqueryrules
+Location          : centralindia
+Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/Microsoft.OperationalInsights/workspaces/shrutika-ws, Resource]}
 ```
 
 ## PARAMETERS
