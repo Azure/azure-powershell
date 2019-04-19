@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.0
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 * Updated table format for SQL in azure VM
 * Added alternate method to fetch location in AzureFileShare
