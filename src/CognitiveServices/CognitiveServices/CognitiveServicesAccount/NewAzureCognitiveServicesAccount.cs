@@ -145,8 +145,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                     {
                         // Give users a specific message says `Failed to create Cognitive Services account.`
                         // Details should able be found in the exception.
-                        WriteError(new ErrorRecord(new Exception("Failed to create Cognitive Services account.", ex), string.Empty, ErrorCategory.NotSpecified, null));
-                        return;
+                        throw new Exception("Failed to create Cognitive Services account.", ex);
                     }
 
                     CognitiveServicesAccount cognitiveServicesAccount = CognitiveServicesClient.Accounts.GetProperties(ResourceGroupName, Name);
