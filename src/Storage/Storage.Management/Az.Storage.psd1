@@ -66,7 +66,8 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.Storage.dll',
                '.\Microsoft.Azure.Storage.DataMovement.dll', 
                '.\Microsoft.Azure.DocumentDB.Core.dll', 
                '.\Microsoft.OData.Core.dll', '.\Microsoft.OData.Edm.dll', 
-               '.\Microsoft.Spatial.dll'
+               '.\Microsoft.Spatial.dll',
+               '.\Microsoft.Azure.KeyVault.Core.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
