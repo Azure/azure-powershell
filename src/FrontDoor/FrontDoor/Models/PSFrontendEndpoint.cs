@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 
         public PSCustomHttpsProvisioningSubstate? CustomHttpsProvisioningSubstate { get; set; }
 
-        public PSCertificateSource? CertificateSource { get; set; }
+        public string CertificateSource { get; set; }
 
-        public PSProtocolType? ProtocolType { get; set; }
+        public string ProtocolType { get; set; }
 
         public string Vault { get; set; }
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 
         public string SecretVersion { get; set; }
 
-        public PSCertificateType? CertificateType { get; set; }
+        public string CertificateType { get; set; }
 
         public string ResourceState { get; set; }
     }

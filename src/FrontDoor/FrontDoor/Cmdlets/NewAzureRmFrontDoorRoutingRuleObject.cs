@@ -89,7 +89,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// The protocol this rule will use when forwarding traffic to backends.
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = FieldsWithForwardingParameterSet, HelpMessage = "The protocol this rule will use when forwarding traffic to backends. Default value is MatchRequest")]
-        public PSForwardingProtocol ForwardingProtocol { get; set; }
+        [PSArgumentCompleter("HttpOnly", "HttpsOnly", "MatchRequest")]
+        public string ForwardingProtocol { get; set; }
 
         /// <summary>
         /// Whether to enable caching for this route.
@@ -101,7 +102,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// The treatment of URL query terms when forming the cache key.
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = FieldsWithForwardingParameterSet, HelpMessage = "The treatment of URL query terms when forming the cache key. Default value is StripAll")]
-        public PSQueryParameterStripDirective QueryParameterStripDirective { get; set; }
+        [PSArgumentCompleter("StripNone", "StripAll")]
+        public string QueryParameterStripDirective { get; set; }
 
         /// <summary>
         /// Whether to use dynamic compression for cached content
@@ -113,13 +115,15 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// The redirect type the rule will use when redirecting traffic.
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = FieldsWithRedirectParameterSet, HelpMessage = "The redirect type the rule will use when redirecting traffic. Default Value is Moved")]
-        public PSRedirectType RedirectType { get; set; }
+        [PSArgumentCompleter("Moved", "Found", "TemporaryRedirect", "PermanentRedirect")]
+        public string RedirectType { get; set; }
 
         /// <summary>
         /// The protocol of the destination to where the traffic is redirected
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = FieldsWithRedirectParameterSet, HelpMessage = "The protocol of the destination to where the traffic is redirected. Default value is MatchRequest")]
-        public PSRedirectProtocol RedirectProtocol { get; set; }
+        [PSArgumentCompleter("HttpOnly", "HttpsOnly", "MatchRequest")]
+        public string RedirectProtocol { get; set; }
 
         /// <summary>
         /// Host to redirect. Leave empty to use use the incoming host as the destination host.
@@ -173,8 +177,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 RoutingRule.RouteConfiguration = new PSForwardingConfiguration
                 {
                     CustomForwardingPath = CustomForwardingPath,
-                    ForwardingProtocol = !this.IsParameterBound(c => c.ForwardingProtocol) ? PSForwardingProtocol.MatchRequest : ForwardingProtocol,
-                    QueryParameterStripDirective = !this.IsParameterBound(c => c.QueryParameterStripDirective) ? PSQueryParameterStripDirective.StripAll : QueryParameterStripDirective,
+                    ForwardingProtocol = !this.IsParameterBound(c => c.ForwardingProtocol) ? PSForwardingProtocol.MatchRequest.ToString() : ForwardingProtocol,
+                    QueryParameterStripDirective = !this.IsParameterBound(c => c.QueryParameterStripDirective) ? PSQueryParameterStripDirective.StripAll.ToString() : QueryParameterStripDirective,
                     DynamicCompression = !this.IsParameterBound(c => c.DynamicCompression) ? PSEnabledState.Enabled : DynamicCompression,
                     BackendPoolId = BackendPoolId,
                     EnableCaching = !this.IsParameterBound(c => c.EnableCaching) ? false : EnableCaching
@@ -184,8 +188,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             {
                 RoutingRule.RouteConfiguration = new PSRedirectConfiguration
                 {
-                    RedirectProtocol = !this.IsParameterBound(c => c.RedirectProtocol) ? PSRedirectProtocol.MatchRequest : RedirectProtocol,
-                    RedirectType = !this.IsParameterBound(c => c.RedirectType) ? PSRedirectType.Moved : RedirectType,
+                    RedirectProtocol = !this.IsParameterBound(c => c.RedirectProtocol) ? PSRedirectProtocol.MatchRequest.ToString() : RedirectProtocol,
+                    RedirectType = !this.IsParameterBound(c => c.RedirectType) ? PSRedirectType.Moved.ToString() : RedirectType,
                     CustomHost = !this.IsParameterBound(c => c.CustomHost) ? "" : CustomHost,
                     CustomFragment = CustomFragment,
                     CustomPath = !this.IsParameterBound(c => c.CustomPath) ? "" : CustomPath,

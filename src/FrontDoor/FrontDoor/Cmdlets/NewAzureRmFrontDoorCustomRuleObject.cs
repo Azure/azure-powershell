@@ -31,7 +31,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorCustomRuleObject"), OutputType(typeof(PSCustomRule))]
     public class NewAzureRmFrontDoorCustomRuleObject : AzureFrontDoorCmdletBase
     {
-
         /// <summary>
         /// Name of the rule. 
         /// </summary>
@@ -43,7 +42,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Type of the rule. Possible values include: 'MatchRule', 'RateLimitRule'
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "Type of the rule. Possible values include: 'MatchRule', 'RateLimitRule'")]
-        public PSCustomRuleType RuleType { get; set; }
+        [PSArgumentCompleter("RateLimitRule", "MatchRule")]
+        public string RuleType { get; set; }
 
         /// <summary>
         /// List of match conditions.
@@ -56,7 +56,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Type of Actions. Possible values include: 'Allow', 'Block', 'Log'
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "Type of Actions. Possible values include: 'Allow', 'Block', 'Log'. ")]
-        public PSAction Action { get; set; }
+        [PSArgumentCompleter("Allow","Block","Log","Redirect")]
+        public string Action { get; set; }
 
         /// <summary>
         /// Describes priority of the rule. Rules with a lower value will be evaluated before rules with a higher

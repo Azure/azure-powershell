@@ -20,6 +20,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 
         public PSEnabledState? EnabledState { get; set; }
 
-        public PSAction? Action { get; set; }
+        public string Action { get; set; }
     }
 }
