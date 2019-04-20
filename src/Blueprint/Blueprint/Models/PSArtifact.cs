@@ -20,16 +20,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Blueprint.Models
 {
-    public class PSBlueprintBase : PSAzureResourceBase
+    public class PSArtifact: PSAzureResourceBase
     {
-        public string Scope { get; set; }
-        public string DefinitionLocationId { get; set; }
-        public string DisplayName { get; set; }
-        public string Description { get; set; }
-        public string Location { get; set; }
-        public PSBlueprintStatus Status { get; set; }
-        public PSBlueprintTargetScope TargetScope { get; set; }
-        public IDictionary<string, PSParameterDefinition> Parameters { get; set; }
-        public IDictionary<string, PSResourceGroupDefinition> ResourceGroups { get; set; }
     }
 }

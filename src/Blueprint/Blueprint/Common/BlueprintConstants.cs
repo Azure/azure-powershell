@@ -41,6 +41,16 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             public const string CreateBlueprintAssignment = "CreateBlueprintAssignmentBySystemAssigned";
             public const string DeleteBlueprintAssignmentByName = "DeleteBlueprintAssignmentByName";
             public const string DeleteBlueprintAssignmentByObject = "DeleteBlueprintAssignmentByObject";
+
+            public const string CreateBlueprint = "CreateBlueprint";
+            public const string PublishBlueprint = "PublishBlueprint";
+            public const string ArtifactsByBlueprint = "ArtifactsByBlueprint";
+
+            public const string CreatePolicyAssignmentArtifact = "CreatePolicyArtifact";
+            public const string CreateRoleAssignmentArtifact = "CreateRoleAssignmentArtifact";
+            public const string CreateTemplateArtifact = "CreateTemplateArtifact";
+
+
         }
 
         public static class ParameterHelpMessages

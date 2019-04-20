@@ -39,5 +39,13 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
         PSBlueprintAssignment DeleteBlueprintAssignment(string subscriptionId, string blueprintAssignmentName);
 
         PSBlueprintAssignment CreateOrUpdateBlueprintAssignment(string subscriptionId, string assignmentName, Assignment assignment);
+
+        PSBlueprint CreateOrUpdateBlueprint(string scope, string name, BlueprintModel bp);
+
+        PSPublishedBlueprint CreatePublishedBlueprint(string scope, string name, string version);
+
+        PSArtifact CreateArtifact(string scope, string blueprintName, string artifactName, Artifact artifact);
+
+        PSArtifact GetArtifact(string scope, string blueprintName, string artifactName);
     }
 }
