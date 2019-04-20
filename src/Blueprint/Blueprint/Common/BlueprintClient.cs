@@ -19,9 +19,11 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.Blueprint;
+using Microsoft.Azure.Management.Storage.Version2017_10_01.Models;
 using BlueprintManagement = Microsoft.Azure.Management.Blueprint;
 using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
 using Microsoft.Rest;
@@ -205,6 +207,68 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             }
 
             return null;
+        }
+
+        public PSBlueprint CreateOrUpdateBlueprint(string scope, string name, BlueprintModel bp)
+        {
+            return PSBlueprint.FromBlueprintModel(blueprintManagementClient.Blueprints.CreateOrUpdate(scope, name, bp), scope);
+        }
+
+        public PSPublishedBlueprint CreatePublishedBlueprint(string scope, string name, string version)
+        {
+            return PSPublishedBlueprint.FromPublishedBlueprintModel(blueprintManagementClient.PublishedBlueprints.Create(scope, name, version), scope);
+        }
+
+
+        public PSArtifact CreateArtifact(string scope, string blueprintName, string artifactName, Artifact artifact)
+        {
+            var kind = artifact.Type;
+            PSArtifact psArtifact;
+
+            switch (kind)
+            {
+                case "Template":
+                    psArtifact = PSTemplateArtifact.FromArtifactModel(blueprintManagementClient.Artifacts.CreateOrUpdate(scope, blueprintName, artifactName, artifact) as TemplateArtifact, scope);
+                    break;
+                case "PolicyAssignment":
+                    psArtifact = PSPolicyAssignmentArtifact.FromArtifactModel(blueprintManagementClient.Artifacts.CreateOrUpdate(scope, blueprintName, artifactName, artifact) as PolicyAssignmentArtifact, scope);
+                    break;
+                case "RoleAssignment":
+                    psArtifact = PSRoleAssignmentArtifact.FromArtifactModel(blueprintManagementClient.Artifacts.CreateOrUpdate(scope, blueprintName, artifactName, artifact) as RoleAssignmentArtifact, scope);
+                    break;
+                default:
+                    throw new NotSupportedException("To-Do:");
+            }
+
+            return psArtifact;
+        }
+
+        public PSArtifact GetArtifact(string scope, string blueprintName, string artifactName)
+        {
+            // assuming that we know the returned typed, we can call the FromArtifactModel
+            /*return PSArtifact.FromArtifactModel(
+                blueprintManagementClient.Artifacts.Get(scope, blueprintName, artifactName), scope);*/
+          
+            Artifact artifact = blueprintManagementClient.Artifacts.Get(scope, blueprintName, artifactName);
+            PSArtifact psArtifact;
+
+            switch (artifact.Type)
+            {
+                case "Template":
+                    psArtifact = PSTemplateArtifact.FromArtifactModel(blueprintManagementClient.Artifacts.CreateOrUpdate(scope, blueprintName, artifactName, artifact) as TemplateArtifact, scope);
+                    break;
+                case "PolicyAssignment":
+                    psArtifact = PSPolicyAssignmentArtifact.FromArtifactModel(blueprintManagementClient.Artifacts.CreateOrUpdate(scope, blueprintName, artifactName, artifact) as PolicyAssignmentArtifact, scope);
+                    break;
+                case "RoleAssignment":
+                    psArtifact = PSRoleAssignmentArtifact.FromArtifactModel(blueprintManagementClient.Artifacts.CreateOrUpdate(scope, blueprintName, artifactName, artifact) as RoleAssignmentArtifact, scope);
+                    break;
+                default:
+                    throw new NotSupportedException("To-Do:");
+            }
+
+            return psArtifact;
+
         }
 
         /// <summary>

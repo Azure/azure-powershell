@@ -24,8 +24,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
 {
     public class PSBlueprint : PSBlueprintBase
     {
-        public string DefinitionLocationId { get; set; }
-        public string Scope { get; set; }
         public object Versions { get; set; }
 
         /// <summary>

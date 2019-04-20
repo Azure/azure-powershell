@@ -12,24 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Microsoft.Azure.Commands.Blueprint.Models
 {
-    public class PSBlueprintBase : PSAzureResourceBase
+    public enum PSArtifactKind 
     {
-        public string Scope { get; set; }
-        public string DefinitionLocationId { get; set; }
-        public string DisplayName { get; set; }
-        public string Description { get; set; }
-        public string Location { get; set; }
-        public PSBlueprintStatus Status { get; set; }
-        public PSBlueprintTargetScope TargetScope { get; set; }
-        public IDictionary<string, PSParameterDefinition> Parameters { get; set; }
-        public IDictionary<string, PSResourceGroupDefinition> ResourceGroups { get; set; }
+        None = 0,
+        RoleAssignmentArtifact = 1,
+        PolicyAssignmentArtifact = 2,
+        TemplateArtifact = 3
     }
 }
