@@ -56,7 +56,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Describes if it is in detection mode  or prevention mode at policy level. Possible values include:'Prevention', 'Detection'
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Describes if it is in detection mode  or prevention mode at policy level. Possible values include:'Prevention', 'Detection'")]
-        public PSMode Mode { get; set; }
+        [PSArgumentCompleter("Prevention", "Detection")]
+        public string Mode { get; set; }
 
         /// <summary>
         /// Custom rules inside the policy
@@ -115,7 +116,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 PolicySettings = new Management.FrontDoor.Models.PolicySettings
                 {
                     EnabledState = this.IsParameterBound(c => c.EnabledState) ? EnabledState.ToString() : PSEnabledState.Enabled.ToString(),
-                    Mode = this.IsParameterBound(c => c.Mode) ? Mode.ToString() : PSMode.Prevention.ToString(),
+                    Mode = this.IsParameterBound(c => c.Mode) ? Mode : PSMode.Prevention.ToString(),
                     CustomBlockResponseBody = CustomBlockResponseBody == null ? CustomBlockResponseBody : Convert.ToBase64String(Encoding.UTF8.GetBytes(CustomBlockResponseBody)),
                     CustomBlockResponseStatusCode = this.IsParameterBound(c => c.CustomBlockResponseStatusCode) ? CustomBlockResponseStatusCode : (int?)null,
                     RedirectUrl = RedirectUrl

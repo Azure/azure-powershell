@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 {
     public class PSCustomRule
     {
-        public PSCustomRuleType? RuleType { get; set; }
+        public string RuleType { get; set; }
 
-        public PSAction? Action { get; set; }
+        public string Action { get; set; }
 
         public List<PSMatchCondition> MatchConditions { get; set; }
 
