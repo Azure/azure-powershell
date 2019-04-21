@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 48C143BE-3BF6-43E3-99B0-1A1D12A0A3F3
@@ -18,7 +18,8 @@ Imports an API from a file or a URL.
 Import-AzApiManagementApi -Context <PsApiManagementContext> [-ApiId <String>] [-ApiRevision <String>]
  -SpecificationFormat <PsApiManagementApiFormat> -SpecificationPath <String> [-Path <String>]
  [-WsdlServiceName <String>] [-WsdlEndpointName <String>] [-ApiType <PsApiManagementApiType>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Protocol <PsApiManagementSchema[]>] [-ServiceUrl <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ImportFromUrl
@@ -26,7 +27,8 @@ Import-AzApiManagementApi -Context <PsApiManagementContext> [-ApiId <String>] [-
 Import-AzApiManagementApi -Context <PsApiManagementContext> [-ApiId <String>] [-ApiRevision <String>]
  -SpecificationFormat <PsApiManagementApiFormat> -SpecificationUrl <String> [-Path <String>]
  [-WsdlServiceName <String>] [-WsdlEndpointName <String>] [-ApiType <PsApiManagementApiType>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Protocol <PsApiManagementSchema[]>] [-ServiceUrl <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,6 +60,39 @@ PS C:\>Import-AzApiManagementApi -Context $ApiMgmtContext -SpecificationFormat "
 
 This command imports an API from the specified WADL link.
 
+### Example 4: Import an API from a Open Api Link
+```powershell
+PS C:\>$context = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\> Import-AzApiManagementApi -Context $context -SpecificationFormat OpenApi -SpecificationUrl https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/petstore.yaml -Path "petstore30"
+
+ApiId                         : af3f57bab399455aa875d7050654e9d1
+Name                          : Swagger Petstore
+Description                   :
+ServiceUrl                    : http://petstore.swagger.io/v1
+Path                          : petstore30
+ApiType                       : http
+Protocols                     : {Https}
+AuthorizationServerId         :
+AuthorizationScope            :
+OpenidProviderId              :
+BearerTokenSendingMethod      : {}
+SubscriptionKeyHeaderName     : Ocp-Apim-Subscription-Key
+SubscriptionKeyQueryParamName : subscription-key
+ApiRevision                   : 1
+ApiVersion                    :
+IsCurrent                     : True
+IsOnline                      : False
+SubscriptionRequired          :
+ApiRevisionDescription        :
+ApiVersionSetDescription      :
+ApiVersionSetId               :
+Id                            : /subscriptions/subid/resourceGroups/Api-Default-West-US/providers/Microsoft.ApiManagement/service/constoso/apis/af3f57bab399455aa875d7050654e9d1     
+ResourceGroupName             : Api-Default-West-US
+ServiceName                   : constoso
+```
+
+This command imports an API from the specified Open 3.0 specification link.
+
 ## PARAMETERS
 
 ### -ApiId
@@ -65,7 +100,7 @@ Specifies an ID for the API to import.
 If you do not specify this parameter, an ID is generated for you.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -80,7 +115,7 @@ Accept wildcard characters: False
 Identifier of API Revision. This parameter is optional. If not specified, the import will be done onto the currently active revision or a new api.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -95,7 +130,7 @@ Accept wildcard characters: False
 This parameter is optional with a default value of Http. The Soap option is only applicable when importing WSDL and will create a SOAP Passthrough API.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiType]
+Type: PsApiManagementApiType
 Parameter Sets: (All)
 Aliases:
 Accepted values: Http, Soap
@@ -111,14 +146,14 @@ Accept wildcard characters: False
 Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Type: PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -126,7 +161,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -144,7 +179,38 @@ Must be 1 to 400 characters long.
 The default value is $Null.
 
 ```yaml
-Type: System.String
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Protocol
+Web API protocols (http, https). Protocols over which API is made available. This parameter is optional. If provided it will override the protocols specified in the specifications document.
+
+```yaml
+Type: PsApiManagementSchema[]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Http, Https
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServiceUrl
+A URL of the web service exposing the API. This URL will be used by Azure API Management only, and will not be made public. This parameter is optional. If provided it will override the ServiceUrl specificed in the Specifications document.
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -160,10 +226,10 @@ Specifies the specification format.
 psdx_paramvalues Wadl, Wsdl, and Swagger.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiFormat
+Type: PsApiManagementApiFormat
 Parameter Sets: (All)
 Aliases:
-Accepted values: Wadl, Swagger, Wsdl
+Accepted values: Wadl, Swagger, Wsdl, OpenApi
 
 Required: True
 Position: Named
@@ -176,7 +242,7 @@ Accept wildcard characters: False
 Specifies the specification file path.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ImportFromLocalFile
 Aliases:
 
@@ -191,7 +257,7 @@ Accept wildcard characters: False
 Specifies the specification URL.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ImportFromUrl
 Aliases:
 
@@ -206,7 +272,7 @@ Accept wildcard characters: False
 Local name of WSDL Endpoint (port) to be imported. Must be 1 to 400 characters long. This parameter is optional and only required for importing Wsdl. Default value is $null.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -221,7 +287,7 @@ Accept wildcard characters: False
 Local name of WSDL Service to be imported. Must be 1 to 400 characters long. This parameter is optional and only required for importing Wsdl . Default value is $null.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -233,7 +299,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

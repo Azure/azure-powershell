@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementidentityprovider
@@ -15,8 +15,9 @@ Creates a new Identity Provider configuration.
 ```
 New-AzApiManagementIdentityProvider -Context <PsApiManagementContext>
  -Type <PsApiManagementIdentityProviderType> -ClientId <String> -ClientSecret <String>
- [-AllowedTenants <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AllowedTenants <String[]>] [-Authority <String>] [-SignupPolicyName <String>] [-SigninPolicyName <String>]
+ [-ProfileEditingPolicyName <String>] [-PasswordResetPolicyName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,9 +26,31 @@ Creates a new Identity Provider configuration.
 ## EXAMPLES
 
 ### Example 1: Configures Facebook as an identity Provider for Developer Portal Logins
-```
+```powershell
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>New-AzApiManagementIdentityProvider -Context $apimContext -Type 'Facebook' -ClientId 'sdfsfwerwerw' -ClientSecret 'sdgsdfgfst43tewfewrf'
+```
+
+This command configures Facebook Identity as a accepted Identity Provider on the Developer Portal of the ApiManagement service.
+This takes as input the ClientId and ClientSecret of the Facebook app.
+
+### Example 2: Configures adB2C as an identity Provider for Developer Portal Logins
+```powershell
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>New-AzApiManagementIdentityProvider -Context $context -Type AadB2C -ClientId 6b1fc750-9e68-450c-97d2-ba6acd0fbc20 -ClientSecret "foobar" -AllowedTenants 'samirtestbc.onmicrosoft.com' -SignupPolicyName B2C_1_signup-policy
+
+Type                     : AadB2C
+ClientId                 : 6b1fc750-9e68-450c-97d2-ba6acd0fbc20
+ClientSecret             : foobar
+AllowedTenants           : {samirtestbc.onmicrosoft.com}
+Authority                : login.microsoftonline.com
+SignupPolicyName         : B2C_1_signup-policy
+SigninPolicyName         :
+ProfileEditingPolicyName :
+PasswordResetPolicyName  :
+Id                       : /subscriptions/subid/resourceGroups/Api-Default-WestUS/providers/Microsoft.ApiManagement/service/contoso/identityProviders/AadB2C
+ResourceGroupName        : Api-Default-WestUS
+ServiceName              : contoso
 ```
 
 This command configures Facebook Identity as a accepted Identity Provider on the Developer Portal of the ApiManagement service.
@@ -39,7 +62,22 @@ This takes as input the ClientId and ClientSecret of the Facebook app.
 List of allowed Azure Active Directory Tenants
 
 ```yaml
-Type: System.String[]
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Authority
+OpenID Connect discovery endpoint hostname for AAD or AAD B2C. This parameter is optional.
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -55,7 +93,7 @@ Client Id of the Application in the external Identity Provider.
 It is App ID for Facebook login, Client ID for Google login, App ID for Microsoft.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +109,7 @@ Client secret of the Application in external Identity Provider, used to authenti
 For example, it is App Secret for Facebook login, API Key for Google login, Public Key for Microsoft.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -87,14 +125,14 @@ Instance of PsApiManagementContext.
 This parameter is required.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Type: PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -102,7 +140,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -113,13 +151,73 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PasswordResetPolicyName
+Password Reset Policy Name. Only applies to AAD B2C Identity Provider. This parameter is optional.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProfileEditingPolicyName
+Profile Editing Policy Name. Only applies to AAD B2C Identity Provider. This parameter is optional.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SigninPolicyName
+Signin Policy Name. Only applies to AAD B2C Identity Provider. This parameter is optional.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SignupPolicyName
+Signup Policy Name. Only applies to AAD B2C Identity Provider. This parameter is optional.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Type
 Identifier of a Identity Provider.
 If specified will try to find identity provider configuration by the identifier.
 This parameter is optional.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProviderType
+Type: PsApiManagementIdentityProviderType
 Parameter Sets: (All)
 Aliases:
 Accepted values: Facebook, Google, Microsoft, Twitter, Aad, AadB2C
@@ -135,7 +233,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -150,7 +248,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -162,7 +260,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

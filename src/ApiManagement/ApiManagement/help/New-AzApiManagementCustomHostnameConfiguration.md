@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 online version: https://docs.microsoft.com/en-us/powershell/module/az.apimanagement/new-azapimanagementcustomhostnameconfiguration
@@ -64,7 +64,7 @@ This command creates and initializes an instance of **PsApiManagementCustomHostN
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -81,7 +81,7 @@ This parameter is optional.
 Default Value is false.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Custom Hostname
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 Existing Certificate Configuration.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCertificateInformation
+Type: PsApiManagementCertificateInformation
 Parameter Sets: NoChangeCertificate
 Aliases:
 
@@ -126,10 +126,10 @@ Accept wildcard characters: False
 Hostname Type
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType
+Type: PsApiManagementHostnameType
 Parameter Sets: (All)
 Aliases:
-Accepted values: Proxy, Portal, Management, Scm
+Accepted values: Proxy, Portal, Management, Scm, DeveloperPortal
 
 Required: True
 Position: Named
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 KeyVaultId to the secret storing the Custom SSL Certificate.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SslCertificateFromKeyVault
 Aliases:
 
@@ -159,7 +159,7 @@ This parameter is optional.
 Default Value is false.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 Password for the .pfx certificate file.
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: SslCertificateFromFile
 Aliases:
 
@@ -189,7 +189,7 @@ Accept wildcard characters: False
 Path to a .pfx certificate file.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SslCertificateFromFile
 Aliases:
 
@@ -201,7 +201,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
