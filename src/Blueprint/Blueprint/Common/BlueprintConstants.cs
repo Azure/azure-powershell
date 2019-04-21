@@ -51,6 +51,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             public const string CreateTemplateArtifact = "CreateTemplateArtifact";
 
 
+            public const string CreateBlueprintBySubscription = "CreateBlueprintBySubscription";
+            public const string CreateBlueprintByManagementGroup = "CreateBlueprintByManagementGroup";
         }
 
         public static class ParameterHelpMessages
