@@ -34,7 +34,7 @@ using System.IO;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintArtifact", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSBlueprint), typeof(PSPublishedBlueprint))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintArtifact", DefaultParameterSetName = ParameterSetNames.CreateTemplateArtifact), OutputType(typeof(Artifact))]
     public class NewAzureRMBlueprintArtifact : BlueprintCmdletBase
     {
         #region Parameters
@@ -50,8 +50,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         [ValidateNotNullOrEmpty]
         public PSArtifactKind Type { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.CreateTemplateArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateRoleAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        [Parameter(ParameterSetName = ParameterSetNames.CreateTemplateArtifact, Mandatory = true, ValueFromPipeline = true, HelpMessage = "To-Do")]
+        [Parameter(ParameterSetName = ParameterSetNames.CreateRoleAssignmentArtifact, Mandatory = true, ValueFromPipeline = true, HelpMessage = "To-Do")]
         [Parameter(ParameterSetName = ParameterSetNames.CreatePolicyAssignmentArtifact, Mandatory = true, ValueFromPipeline = true, HelpMessage = "To-Do")]
         [ValidateNotNull]
         public PSBlueprintBase Blueprint { get; set; }
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         {
             try
             {
-                var scope = Utils.GetScopeForSubscription(Blueprint.Scope);
+                var scope = Blueprint.Scope;
 
                 switch (ParameterSetName)
                 {
@@ -129,35 +129,39 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                         WriteObject(BlueprintClient.CreateArtifact(scope, Blueprint.Name, Name, policyArtifact));
 
                         break;
-                   case ParameterSetNames.CreateTemplateArtifact:
-                      // PS C:\> New - AzBlueprintArtifact
-                     //      - Name ‘vNic template’
-                     //       -Blueprint $bp
-                     //      - ResourceGroup ‘vNicResourceGroup’
-                     //      -Template { }
-                    //       -Parameter C:\parameters.json
-
-                      
-                       var resolvedTemplatePath = this.ResolveUserPath(Template);
-                       var resolvedParameterPath = this.ResolveUserPath(ParameterFile);
-
-                        if (!new FileInfo(resolvedTemplatePath).Exists)
+                   case ParameterSetNames.CreateTemplateArtifact:                
+                       var templatePath = ResolveUserPath(Template);
+                       if (!new FileInfo(templatePath).Exists)
                        {
                            throw new FileNotFoundException(string.Format("Add here the path"));
                        }
 
-                       if (!new FileInfo(resolvedParameterPath).Exists)
-                       {
-                           throw new FileNotFoundException(string.Format("Add here the path"));
-                       }
+                       var parameterFilePath = ResolveUserPath(ParameterFile);
+                       Dictionary<string, ParameterValue> paramObj = null; //Parameter value base is going to blow here for the rest of the properties
 
-                        var templateArtifact = new TemplateArtifact
+                       if (this.IsParameterBound(c => c.ParameterFile)) //Parameter file is optional, so check if it's provided
+                       {
+                           if (parameterFilePath == null || !new FileInfo(parameterFilePath).Exists)
+                           {
+                               throw new FileNotFoundException(string.Format("Add here the path"));
+                           }
+
+                           paramObj = JsonConvert.DeserializeObject<Dictionary<string, ParameterValue>>(File.ReadAllText(parameterFilePath));
+                        }
+
+                       var ParameterSetMetadata = new OrdinalStringDictionary<ParameterValueBase>
+                       {
+                           {"vNetName", new ParameterValue {Value = "[parameters('vNetName')]"}},
+                           {"Location", new ParameterValue {Value = "[parameters('defaultLocation')]"}},
+                       };
+
+                       var templateArtifact = new TemplateArtifact
                        {
                            DisplayName = Name,
                            Description = Description,
                            ResourceGroup = ResourceGroup,
-                           Parameters = new Dictionary<string, ParameterValueBase>(),
-                           Template = File.ReadAllText(resolvedTemplatePath),
+                           Parameters = ParameterSetMetadata,
+                           Template = JObject.Parse(File.ReadAllText(templatePath)),
                            DependsOn = null // To-Do: do we need anything here for dependson? Add a new param for the cmdlet?
                        };
 

@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         #region Cmdlet Overrides
         public override void ExecuteCmdlet()
         {
-            var scope = Utils.GetScopeForSubscription(Blueprint.Scope);
+            var scope = Blueprint.Scope;
 
             try
             {

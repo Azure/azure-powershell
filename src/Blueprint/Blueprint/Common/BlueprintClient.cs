@@ -222,18 +222,16 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
 
         public PSArtifact CreateArtifact(string scope, string blueprintName, string artifactName, Artifact artifact)
         {
-            var kind = artifact.Type;
-            PSArtifact psArtifact;
-
-            switch (kind)
+            PSArtifact psArtifact = null;
+            switch (true)
             {
-                case "Template":
+                case bool _ when artifact.GetType() == typeof(TemplateArtifact):
                     psArtifact = PSTemplateArtifact.FromArtifactModel(blueprintManagementClient.Artifacts.CreateOrUpdate(scope, blueprintName, artifactName, artifact) as TemplateArtifact, scope);
                     break;
-                case "PolicyAssignment":
+                case bool _ when artifact.GetType() == typeof(PolicyAssignmentArtifact):
                     psArtifact = PSPolicyAssignmentArtifact.FromArtifactModel(blueprintManagementClient.Artifacts.CreateOrUpdate(scope, blueprintName, artifactName, artifact) as PolicyAssignmentArtifact, scope);
                     break;
-                case "RoleAssignment":
+                case bool _ when artifact.GetType() == typeof(RoleAssignmentArtifact):
                     psArtifact = PSRoleAssignmentArtifact.FromArtifactModel(blueprintManagementClient.Artifacts.CreateOrUpdate(scope, blueprintName, artifactName, artifact) as RoleAssignmentArtifact, scope);
                     break;
                 default:
@@ -248,20 +246,19 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             // assuming that we know the returned typed, we can call the FromArtifactModel
             /*return PSArtifact.FromArtifactModel(
                 blueprintManagementClient.Artifacts.Get(scope, blueprintName, artifactName), scope);*/
-          
-            Artifact artifact = blueprintManagementClient.Artifacts.Get(scope, blueprintName, artifactName);
-            PSArtifact psArtifact;
 
-            switch (artifact.Type)
+            var artifact = blueprintManagementClient.Artifacts.Get(scope, blueprintName, artifactName);
+            PSArtifact psArtifact = null;
+            switch (true)
             {
-                case "Template":
-                    psArtifact = PSTemplateArtifact.FromArtifactModel(blueprintManagementClient.Artifacts.CreateOrUpdate(scope, blueprintName, artifactName, artifact) as TemplateArtifact, scope);
+                case bool _ when artifact.GetType() == typeof(TemplateArtifact):
+                    psArtifact = PSTemplateArtifact.FromArtifactModel(artifact as TemplateArtifact, scope);
                     break;
-                case "PolicyAssignment":
-                    psArtifact = PSPolicyAssignmentArtifact.FromArtifactModel(blueprintManagementClient.Artifacts.CreateOrUpdate(scope, blueprintName, artifactName, artifact) as PolicyAssignmentArtifact, scope);
+                case bool _ when artifact.GetType() == typeof(PolicyAssignmentArtifact):
+                    psArtifact = PSPolicyAssignmentArtifact.FromArtifactModel(artifact as PolicyAssignmentArtifact, scope);
                     break;
-                case "RoleAssignment":
-                    psArtifact = PSRoleAssignmentArtifact.FromArtifactModel(blueprintManagementClient.Artifacts.CreateOrUpdate(scope, blueprintName, artifactName, artifact) as RoleAssignmentArtifact, scope);
+                case bool _ when artifact.GetType() == typeof(RoleAssignmentArtifact):
+                    psArtifact = PSRoleAssignmentArtifact.FromArtifactModel(artifact as RoleAssignmentArtifact, scope);
                     break;
                 default:
                     throw new NotSupportedException("To-Do:");

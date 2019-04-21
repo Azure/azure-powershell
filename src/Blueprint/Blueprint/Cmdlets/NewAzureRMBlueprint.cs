@@ -34,28 +34,31 @@ using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Blueprint", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.CreateBlueprint), OutputType(typeof(PSBlueprint))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Blueprint", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.CreateBlueprintBySubscription), OutputType(typeof(PSBlueprint))]
     public class NewAzureRmBlueprint : BlueprintCmdletBase
     {
         #region Parameters
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprint, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintBySubscription, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintByManagementGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
         [ValidatePattern("^[0-9a-zA-Z_-]*$", Options = RegexOptions.Compiled | RegexOptions.CultureInvariant)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprint, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintBySubscription, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprint, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintByManagementGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
         [ValidateNotNullOrEmpty]
         public string ManagementGroupId { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprint, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintBySubscription, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintByManagementGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
         [ValidateNotNullOrEmpty]
         public string Description { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprint, Mandatory = false, ValueFromPipeline = true, HelpMessage = "To-Do")]
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintBySubscription, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintByManagementGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
         [ValidateNotNullOrEmpty]
         public string BlueprintFile { get; set; }
         #endregion
@@ -65,27 +68,36 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         {
             try
             {
-                var scope = Utils.GetScopeForSubscription(SubscriptionId ?? DefaultContext.Subscription.Id);
-                var resolvedFilePath = this.ResolveUserPath(BlueprintFile);
-
-                if (!new FileInfo(resolvedFilePath).Exists)
+                // Resolve path and check if the file exists
+                var filePath = ResolveUserPath(BlueprintFile);
+                if (filePath == null || new FileInfo(filePath).Exists)
                 {
                     throw new FileNotFoundException(string.Format("Add here the path"));
                 }
+                // To-Do: In good case the JSON file will be deserialized, though it might throw 
+                var bp = JsonConvert.DeserializeObject<BlueprintModel>(File.ReadAllText(filePath), DefaultJsonSettings.DeserializerSettings);
 
-                // In good case the JSON file will be deserialized, though it might throw <- To-Do 
-                var bp = JsonConvert.DeserializeObject<BlueprintModel>(File.ReadAllText(resolvedFilePath), DefaultJsonSettings.DeserializerSettings);
+                switch (ParameterSetName)
+                {
+                    case ParameterSetNames.CreateBlueprintBySubscription:
+                        var subScope = Utils.GetScopeForSubscription(SubscriptionId ?? DefaultContext.Subscription.Id);
+                        RegisterBlueprintRp(SubscriptionId ?? DefaultContext.Subscription.Id); //To-Do: how do we register BP RP if it's MG scope?
 
-                WriteObject(BlueprintClient.CreateOrUpdateBlueprint(scope, Name, bp));
+                        WriteObject(BlueprintClient.CreateOrUpdateBlueprint(subScope, Name, bp));
 
+                        break;
+                    case ParameterSetNames.CreateBlueprintByManagementGroup:
+                        var mgScope = Utils.GetScopeForManagementGroup(ManagementGroupId);
+
+                        WriteObject(BlueprintClient.CreateOrUpdateBlueprint(mgScope, Name, bp));
+                        break;
+                }
             }
             catch (Exception ex)
             {
                 WriteExceptionError(ex);
             }
-
         }
-
         #endregion
     }
 }

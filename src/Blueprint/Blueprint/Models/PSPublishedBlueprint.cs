@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
         /// Create a PSPublishedBlueprint object from a PublishedBlueprint.
         /// </summary>
         /// <param name="model"></param>
-        /// <param name="managementGroupName">Name of the management group the blueprint belongs to.</param>
+        /// <param name="scope">Subscription or management group the blueprint belongs to.</param>
         /// <returns>A new PSPublishedBlueprint object</returns>
         internal static PSPublishedBlueprint FromPublishedBlueprintModel(PublishedBlueprint model, string scope)
         {

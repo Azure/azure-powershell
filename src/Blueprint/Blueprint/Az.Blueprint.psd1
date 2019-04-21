@@ -80,7 +80,9 @@ CmdletsToExport = 'Get-AzBlueprint',
                   'Remove-AzBlueprintAssignment',
 				  'Set-AzBlueprintAssignment',
 				  'New-AzBlueprint',
-				  'Publish-AzBlueprint'
+				  'Publish-AzBlueprint',
+				  'New-AzBlueprintArtifact',
+				  'Get-AzBlueprintArtifact'
 
 # Variables to export from this module
 # VariablesToExport = @()
