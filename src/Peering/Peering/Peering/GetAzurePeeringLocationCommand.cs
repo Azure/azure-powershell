@@ -46,11 +46,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = true,
             Position = 0,
-            ParameterSetName = Constants.ParameterSetNameLocationByCity,
-            HelpMessage = Constants.KindHelp)]
-        [Parameter(
-            Mandatory = true,
-            Position = 0,
             ParameterSetName = Constants.ParameterSetNameLocationByFacilityId,
             HelpMessage = Constants.KindHelp)]
         [ValidateNotNullOrEmpty]
@@ -61,9 +56,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// Gets or sets the peering location.
         /// </summary>
         [Parameter(
-            Mandatory = true,
-            Position = 0,
-            ParameterSetName = Constants.ParameterSetNameLocationByCity,
+            Mandatory = false,
+            ParameterSetName = Constants.ParameterSetNamePeeringByKind,
             HelpMessage = Constants.LocationHelp)]
         [ValidateNotNullOrEmpty]
         public string PeeringLocation { get; set; }
@@ -91,12 +85,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 var peeringLocation = this.GetPeeringLocation();
                 if (this.ParameterSetName.Equals(Constants.ParameterSetNamePeeringByKind))
                 {
-                    this.WriteObject(this.ConvertToPsObject(peeringLocation), true);
-                }
-
-                if (this.ParameterSetName.Equals(Constants.ParameterSetNameLocationByCity))
-                {
-                    this.WriteObject(this.ListByLocation(peeringLocation, this.PeeringLocation), true);
+                    this.WriteObject(
+                        this.PeeringLocation != null
+                            ? this.ListByLocation(peeringLocation, this.PeeringLocation)
+                            : this.ConvertToPsObject(peeringLocation),
+                        true);
                 }
 
                 if (this.ParameterSetName.Equals(Constants.ParameterSetNameLocationByFacilityId))
@@ -117,7 +110,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
 
         private object ListByLocation(List<PSPeeringLocation> peeringLocation, string s)
         {
-            var newPSPeeringLocations = new List<PSPeeringLocationObject>();
+            var newPsPeeringLocations = new List<PSPeeringLocationObject>();
             foreach (var psPeeringLocation in peeringLocation)
             {
                 if (this.Kind.Equals(Constants.Exchange))
@@ -127,7 +120,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                         var numFacilities = psPeeringLocation.Exchange.PeeringFacilities.Count;
                         for (int i = 0; i < numFacilities; i++)
                         {
-                            newPSPeeringLocations.Add(new PSPeeringLocationObject(psPeeringLocation, i));
+                            newPsPeeringLocations.Add(new PSPeeringLocationObject(psPeeringLocation, i));
                         }
                     }
                 }
@@ -139,13 +132,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                         var numFacilities = psPeeringLocation.Direct.PeeringFacilities.Count;
                         for (int i = 0; i < numFacilities; i++)
                         {
-                            newPSPeeringLocations.Add(new PSPeeringLocationObject(psPeeringLocation, i));
+                            newPsPeeringLocations.Add(new PSPeeringLocationObject(psPeeringLocation, i));
                         }
                     }
                 }
             }
 
-            return newPSPeeringLocations;
+            return newPsPeeringLocations;
         }
 
         /// <summary>
@@ -190,34 +183,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 }
             }
 
-            throw new ItemNotFoundException();
+            throw new ItemNotFoundException(string.Format(Resources.Item_NotFound, "PeeringDbFacilityId", facilityId));
         }
 
         private List<PSPeeringLocationObject> ConvertToPsObject(List<PSPeeringLocation> peeringLocation)
         {
-            var newPSPeeringLocations = new List<PSPeeringLocationObject>();
+            var newPsPeeringLocations = new List<PSPeeringLocationObject>();
             foreach (var location in peeringLocation)
             {
-                if (location.Direct != null && location.Kind == "Direct")
+                if (location.Direct != null && location.Kind == Constants.Direct)
                 {
                     var numFacilities = location.Direct.PeeringFacilities.Count;
                     for (int i = 0; i < numFacilities; i++)
                     {
-                        newPSPeeringLocations.Add(new PSPeeringLocationObject(location, i));
+                        newPsPeeringLocations.Add(new PSPeeringLocationObject(location, i));
                     }
                 }
 
-                if (location.Exchange != null && location.Kind == "Exchange")
+                if (location.Exchange != null && location.Kind == Constants.Exchange)
                 {
                     var numFacilities = location.Exchange.PeeringFacilities.Count;
                     for (int i = 0; i < numFacilities; i++)
                     {
-                        newPSPeeringLocations.Add(new PSPeeringLocationObject(location, i));
+                        newPsPeeringLocations.Add(new PSPeeringLocationObject(location, i));
                     }
                 }
             }
 
-            return newPSPeeringLocations;
+            return newPsPeeringLocations;
         }
 
         /// <summary>

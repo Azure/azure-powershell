@@ -35,7 +35,7 @@ New-AzPeering [-ResourceGroupName] <String> [-Name] <String> [-PeeringLocation] 
 ```
 
 ## DESCRIPTION
-Create a new Direct Peering with a single connection at the Seattle facility using PeerAsn 65000
+Creates an ARM Peering for the subscription.
 
 ## EXAMPLES
 
@@ -171,7 +171,7 @@ Accept wildcard characters: False
 ```
 
 ### -LegacyPeering
-{{ Fill LegacyPeering Description }}
+The legacy peering object. Use Get-AzLegacyPeering to view current objects.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering

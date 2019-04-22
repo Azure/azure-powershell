@@ -18,7 +18,7 @@ New-AzPeerAsn [-Name] <String> [-PeerName] <String> [-PeerAsn] <Int32> -Email <S
 ```
 
 ## DESCRIPTION
-Create a new Peer for ASN 65000
+Creates a new PeerAsn object for the subscription.
 
 ## EXAMPLES
 

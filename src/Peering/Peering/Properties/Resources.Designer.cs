@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} could be found for this object {1}..
+        ///   Looks up a localized string similar to {0} could not be found for this object {1}..
         /// </summary>
         internal static string Error_CannotParseResourceId {
             get {
@@ -255,6 +255,15 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
         internal static string Error_WrongCommandForDirectObject {
             get {
                 return ResourceManager.GetString("Error_WrongCommandForDirectObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} {1} not found during lookup. .
+        /// </summary>
+        internal static string Item_NotFound {
+            get {
+                return ResourceManager.GetString("Item_NotFound", resourceCulture);
             }
         }
         

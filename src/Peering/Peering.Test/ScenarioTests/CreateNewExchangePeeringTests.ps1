@@ -58,7 +58,7 @@ function Test-NewExchangePeeringPipeTwoConnections
 	$connection2 = NewExchangeConnectionV4V6 $facilityId $microsoftIpAddressV4 $microsoftIpAddressV6
 	Write-Debug "Created $connection1 $connection1"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
-    $createdPeering = ,@( $connection1, $connection2  ) | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -Tag $tags
+    $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -ExchangeConnection $connection1,$connection2 -Tag $tags
 	Assert-NotNull $createdPeering
 }
 <#
@@ -114,6 +114,6 @@ function Test-NewExchangePeeringPipe
 	$connection1 = NewExchangeConnectionV4V6 $facilityId $microsoftIpAddressV4 $microsoftIpAddressV6
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
 	Write-Debug "Creating Resource $resourceName"
-	$createdPeering = $connection1 | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -Tag $tags
+	$createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation -PeerAsnResourceId $asn -Tag $tags -ExchangeConnection $connection1
 	Assert-NotNull $createdPeering
 }

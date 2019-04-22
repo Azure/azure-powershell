@@ -14,12 +14,7 @@ Gets the Peering locations offered by Microsoft
 
 ### PeeringByKind (Default)
 ```
-Get-AzPeeringLocation [-Kind] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### LocationByCity
-```
-Get-AzPeeringLocation [-Kind] <String> [-PeeringLocation] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzPeeringLocation [-Kind] <String> [-PeeringLocation <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -30,7 +25,7 @@ Get-AzPeeringLocation [-Kind] <String> [-PeeringDbFacilityId] <Int32>
 ```
 
 ## DESCRIPTION
-Gets the all the Direct Peering Facilities
+Gets the Peering Facilities where users can connect with ARM.
 
 ## EXAMPLES
 
@@ -55,7 +50,41 @@ BandwidthOffers       : {10Gbps, 100Gbps}
 #...More below
 ```
 
-Its a long list of locations
+Its a long list of locations. Gets the all the Direct Peering Facilities.
+
+### Example 2
+```powershell
+PS C:> Get-AzPeeringLocation -Kind Exchange -PeeringLocation "Honolulu" 
+
+ExchangeName          : DRF IX
+PeeringLocation       : Honolulu
+Country               : US
+PeeringDBFacilityId   : 267
+PeeringDBFacilityLink : https://www.peeringdb.com/ix/267
+MicrosoftIPv4Address  : 206.197.210.37
+MicrosoftIPv6Address  : 2606:7c80:3375:50::37
+FacilityIPv4Prefix    : 206.197.210.0/24
+FacilityIPv6Prefix    : 2606:7c80:3375:50::/64
+```
+
+Gets the exchange peering location for Honolulu. 
+
+### Example 3
+```powershell
+PS C:> Get-AzPeeringLocation -Kind Exchange -PeeringDbFacilityId 71 
+
+ExchangeName          : NIX.CZ
+PeeringLocation       : Prague
+Country               : CZ
+PeeringDBFacilityId   : 71
+PeeringDBFacilityLink : https://www.peeringdb.com/ix/71
+MicrosoftIPv4Address  : 91.210.16.115
+MicrosoftIPv6Address  : 2001:7f8:14::6b:1
+FacilityIPv4Prefix    : 91.210.16.0/22
+FacilityIPv6Prefix    : 2001:7f8:14::/64
+```
+
+Gets the exchange peering location for peering facility id 71. 
 
 ## PARAMETERS
 
@@ -109,11 +138,11 @@ The location of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: LocationByCity
+Parameter Sets: PeeringByKind
 Aliases:
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

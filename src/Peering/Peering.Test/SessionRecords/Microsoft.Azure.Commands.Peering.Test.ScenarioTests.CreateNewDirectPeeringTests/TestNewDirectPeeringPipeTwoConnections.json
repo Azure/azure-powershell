@@ -313,6 +313,12 @@
     ]
   },
   "Variables": {
-    "SubscriptionId": "4445bf11-61c4-436f-a940-60194f8aca57"
+    "SubscriptionId": "4445bf11-61c4-436f-a940-60194f8aca57",
+    "Hash": "dce6868150009a41010bc8f930af738c",
+    "bandwidth": 60000,
+    "MaxPrefixV4": 3585,
+    "MaxPrefixV6": 880,
+    "sessionv4": "118.39.68.0/31",
+    "sessionv6": "a00e:1724:f719:8eda:8500:148f:743e:4d00/127"
   }
 }

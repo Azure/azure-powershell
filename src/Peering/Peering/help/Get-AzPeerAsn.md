@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzPeerAsn
 
 ## SYNOPSIS
-Gets Peer Asn
+Gets PeerAsn object from ARM.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Get-AzPeerAsn [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<Comm
 ```
 
 ## DESCRIPTION
-Gets the PeerAsn for Contoso
+Gets the PeerAsn for a subscription.
 
 ## EXAMPLES
 

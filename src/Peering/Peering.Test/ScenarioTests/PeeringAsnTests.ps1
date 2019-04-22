@@ -126,8 +126,8 @@ function Test-RemovePeerAsn
 	$name = $createdPeerAsn.Name
 	$getPeerAsn = Get-AzPeerAsn -Name $name
 	Assert-NotNull $getPeerAsn
-	$remove = Remove-AzPeerAsn $name -Force
+	$remove = Remove-AzPeerAsn $name -PassThru -Force
 	Assert-NotNull $remove
-	Assert-AreEqual $remove "Peer Asn $name Resource Removed."
+	Assert-AreEqual $remove "$true"
 	Assert-ThrowsContains {Get-AzPeerAsn -Name $name} "Server Error"
 }

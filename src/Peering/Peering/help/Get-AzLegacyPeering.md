@@ -18,7 +18,7 @@ Get-AzLegacyPeering [-PeeringLocation] <String> [-Kind] <String> [-DefaultProfil
 ```
 
 ## DESCRIPTION
-Below is an example to get legacy Direct Peering at Seattle peering location
+The command is used to view legacy Peering resources which all you to convert them to Azure Resource Management (ARM) Resources.
 
 ## EXAMPLES
 
@@ -47,10 +47,6 @@ MaxPrefixesAdvertisedV6    : 2000
 ConnectionState            : Active
 BandwidthInMbps            : 0
 ProvisionedBandwidthInMbps : 20000
-SessionStateV4             :
-MaxPrefixesAdvertisedV4    :
-SessionStateV6             :
-MaxPrefixesAdvertisedV6    :
 ProvisioningState          : Succeeded
 ```
 

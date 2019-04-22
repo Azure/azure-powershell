@@ -56,20 +56,20 @@ function Test-NewDirectPeering
 	$directConnection = NewDirectConnectionV4V6 $facilityId $bandwidth
 	$tags = @{"tag1" = "value1"; "tag2" = "value2"}
 	$md5 =  $directConnection.BgpSession.Md5AuthenticationKey
-	$sessionv4 = $directConnection.BgpSession.SessionPrefixV4
-	$sessionv6 = $directConnection.BgpSession.SessionPrefixV6
+	$sessionv4 = getPeeringVariable "sessionv4" $directConnection.BgpSession.SessionPrefixV4
+	$sessionv6 = getPeeringVariable "sessionv6" $directConnection.BgpSession.SessionPrefixV6
 	Write-Debug "Creating New Peering: $resourceName."
     $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation[0].PeeringLocation -PeerAsnResourceId $asn.Id -DirectConnection $directConnection -Tag $tags
 	Write-Debug "Created New Peering: $createdPeering$Name"
 	Assert-NotNull $createdPeering
-	#Assert-AreEqual $kind $createdPeering.Kind
-	#Assert-AreEqual $resourceName $createdPeering.Name
-	#Assert-AreEqual $peeringLocation $createdPeering.PeeringLocation
-	#Assert-AreEqual $md5 $createdPeering.Connections[0].BgpSession.Md5AuthenticationKey
-	#Assert-AreEqual $facilityId $createdPeering.Connections[0].PeeringDBFacilityId 
-    #Assert-AreEqual $bandwidth $createdPeering.Connections[0].BandwidthInMbps
-	#Assert-AreEqual $sessionv4 $createdPeering.Connections[0].BgpSession.SessionPrefixV4
-    #Assert-AreEqual $sessionv6 $createdPeering.Connections[0].BgpSession.SessionPrefixV6
+	Assert-AreEqual $kind $createdPeering.Kind
+	Assert-AreEqual $resourceName $createdPeering.Name
+	Assert-AreEqual $peeringLocation[0].PeeringLocation $createdPeering.PeeringLocation
+	Assert-AreEqual $md5 $createdPeering.Connections[0].BgpSession.Md5AuthenticationKey
+	Assert-AreEqual $facilityId $createdPeering.Connections[0].PeeringDBFacilityId 
+    Assert-AreEqual $bandwidth $createdPeering.Connections[0].BandwidthInMbps
+	Assert-AreEqual $sessionv4 $createdPeering.Connections[0].BgpSession.SessionPrefixV4
+    Assert-AreEqual $sessionv6 $createdPeering.Connections[0].BgpSession.SessionPrefixV6
 }
 <#
 .SYNOPSIS
@@ -93,19 +93,19 @@ function Test-NewDirectPeeringWithPipe
 	$directConnection = NewDirectConnectionV4V6 $facilityId $bandwidth
 	$tags = @{"tag1" = "value1"; "tag2" = "value2"}
 	$md5 =  $directConnection.BgpSession.Md5AuthenticationKey
-	$sessionv4 = $directConnection.BgpSession.SessionPrefixV4
-	$sessionv6 = $directConnection.BgpSession.SessionPrefixV6
+	$sessionv4 = getPeeringVariable "sessionv4" $directConnection.BgpSession.SessionPrefixV4
+	$sessionv6 = getPeeringVariable "sessionv6" $directConnection.BgpSession.SessionPrefixV6
 	Write-Debug "Creating New Peering: $resourceName."
-    $createdPeering =  ($directConnection) | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation[0].PeeringLocation -PeerAsnResourceId $asn.Id -Tag $tags
+    $createdPeering =  New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation[0].PeeringLocation -PeerAsnResourceId $asn.Id -Tag $tags -DirectConnection ($directConnection) 
 	Assert-NotNull $createdPeering
-	#Assert-AreEqual "Direct" $createdPeering.Kind
-	#Assert-AreEqual $resourceName $createdPeering.Name
-	#Assert-AreEqual $peeringLocation $createdPeering.PeeringLocation
-	#Assert-AreEqual $md5 $createdPeering.Connections[0].BgpSession.Md5AuthenticationKey
-	#Assert-AreEqual $facilityId $createdPeering.Connections[0].PeeringDBFacilityId 
-    #Assert-AreEqual $bandwidth $createdPeering.Connections[0].BandwidthInMbps
-	#Assert-AreEqual $sessionv4 $createdPeering.Connections[0].BgpSession.SessionPrefixV4
-    #Assert-AreEqual $sessionv6 $createdPeering.Connections[0].BgpSession.SessionPrefixV6
+	Assert-AreEqual "Direct" $createdPeering.Kind
+	Assert-AreEqual $resourceName $createdPeering.Name
+	Assert-AreEqual $peeringLocation[0].PeeringLocation $createdPeering.PeeringLocation
+	Assert-AreEqual $md5 $createdPeering.Connections[0].BgpSession.Md5AuthenticationKey
+	Assert-AreEqual $facilityId $createdPeering.Connections[0].PeeringDBFacilityId 
+    Assert-AreEqual $bandwidth $createdPeering.Connections[0].BandwidthInMbps
+	Assert-AreEqual $sessionv4 $createdPeering.Connections[0].BgpSession.SessionPrefixV4
+    Assert-AreEqual $sessionv6 $createdPeering.Connections[0].BgpSession.SessionPrefixV6
 }
 <#
 .SYNOPSIS
@@ -130,25 +130,20 @@ function Test-NewDirectPeeringPipeTwoConnections
 	$directConnection = NewDirectConnectionV4V6 $facilityId $bandwidth
 	$tags = @{"tag1" = "value1"; "tag2" = "value2"}
 	$md5 =  $directConnection.BgpSession.Md5AuthenticationKey
-	$sessionv4 = $directConnection.BgpSession.SessionPrefixV4
-	$sessionv6 = $directConnection.BgpSession.SessionPrefixV6
+	$sessionv4 = getPeeringVariable "sessionv4" $directConnection.BgpSession.SessionPrefixV4
+	$sessionv6 = getPeeringVariable "sessionv6" $directConnection.BgpSession.SessionPrefixV6
 	Write-Debug "Creating New Peering: $resourceName."
 	$connection1 = NewDirectConnectionV4V6 $facilityId $bandwidth
 	$connection2 = NewDirectConnectionV4V6 $facilityId $bandwidth2
-    $createdPeering = ,@( $connection1, $connection2  ) | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation[0].PeeringLocation -PeerAsnResourceId $asn.Id -Tag $tags
+    $createdPeering = New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $peeringLocation[0].PeeringLocation -PeerAsnResourceId $asn.Id -Tag $tags -DirectConnection $connection1, $connection2
 	Assert-NotNull $createdPeering
-	#Assert-AreEqual $kind $createdPeering.Kind
-	#Assert-AreEqual $resourceName $createdPeering.Name
-	#Assert-AreEqual $peeringLocation $createdPeering.PeeringLocation
-	#Assert-AreEqual $md5 $createdPeering.Connections[0].BgpSession.Md5AuthenticationKey
-	#Assert-AreEqual $facilityId $createdPeering.Connections[0].PeeringDBFacilityId 
-    #Assert-AreEqual $bandwidth $createdPeering.Connections[0].BandwidthInMbps
-	#Assert-AreEqual $sessionv4 $createdPeering.Connections[0].BgpSession.SessionPrefixV4
-    #Assert-AreEqual $sessionv6 $createdPeering.Connections[0].BgpSession.SessionPrefixV6
-	#Assert-AreEqual $connection2.BgpSession.Md5AuthenticationKey $createdPeering.Connections[1].BgpSession.Md5AuthenticationKey
-	#Assert-AreEqual $connection2.PeeringDBFacilityId $createdPeering.Connections[1].PeeringDBFacilityId
-	#Assert-AreEqual $connection2.BandwidthInMbps $createdPeering.Connections[1].BandwidthInMbps
-	#Assert-NotNull $createdPeering.Connections[1].BgpSession
-	#Assert-AreEqual $connection2.BgpSession.SessionPrefixV4 $createdPeering.Connections[1].BgpSession.SessionPrefixV4
-	#Assert-AreEqual $connection2.BgpSession.SessionPrefixV6 $createdPeering.Connections[1].BgpSession.SessionPrefixV6
+	Assert-AreEqual $kind $createdPeering.Kind
+	Assert-AreEqual $resourceName $createdPeering.Name
+	Assert-AreEqual $peeringLocation[0].PeeringLocation $createdPeering.PeeringLocation
+	Assert-AreEqual $md5 $createdPeering.Connections[0].BgpSession.Md5AuthenticationKey
+	Assert-AreEqual $facilityId $createdPeering.Connections[0].PeeringDBFacilityId 
+    Assert-AreEqual $bandwidth $createdPeering.Connections[0].BandwidthInMbps
+	Assert-AreEqual $sessionv4 $createdPeering.Connections[0].BgpSession.SessionPrefixV4
+    Assert-AreEqual $sessionv6 $createdPeering.Connections[0].BgpSession.SessionPrefixV6
+	Assert-NotNull $createdPeering.Connections[1].BgpSession
 }

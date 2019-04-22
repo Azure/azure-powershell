@@ -136,7 +136,7 @@
     <value>Bandwidth {0} must be greater than 0</value>
   </data>
   <data name="Error_CannotParseResourceId" xml:space="preserve">
-    <value>{0} could be found for this object {1}.</value>
+    <value>{0} could not be found for this object {1}.</value>
   </data>
   <data name="Error_CloudError" xml:space="preserve">
     <value>Server Error: {0} {1}</value>
@@ -182,6 +182,9 @@
   </data>
   <data name="Error_WrongCommandForDirectObject" xml:space="preserve">
     <value>Use Set-AzPeeringExchangeConnectionObject instead.</value>
+  </data>
+  <data name="Item_NotFound" xml:space="preserve">
+    <value>{0} {1} not found during lookup. </value>
   </data>
   <data name="ProcessMessage" xml:space="preserve">
     <value>InputObject {0} Resource being removed.</value>
