@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Test.ScenarioTests
 
         public BlueprintManagementClient BlueprintManagementClient { get; private set; }
         public ServiceClientCredentials ClientCredentials { get; private set; }
-        public GraphRbacManagementClient GraphRbacManagementClient { get; private set; }
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
         public ResourceManagementClient ResourceManagerClient { get; private set; }
         public LegacyResourceManagementClient LegacyResourceManagementClient { get; private set; }
@@ -43,14 +42,12 @@ namespace Microsoft.Azure.Commands.Blueprint.Test.ScenarioTests
         protected void SetupManagementClients(MockContext context)
         {
             BlueprintManagementClient = GetBlueprintManagementClient(context);
-            GraphRbacManagementClient = GetGraphRbacManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient(context);
             ResourceManagerClient = GetResourceManagementClient(context);
             LegacyResourceManagementClient = GetLegacyResourceManagementClient(context);
 
             _helper.SetupManagementClients(
                 BlueprintManagementClient,
-                GraphRbacManagementClient,
                 AuthorizationManagementClient,
                 ResourceManagerClient,
                 LegacyResourceManagementClient);
@@ -121,18 +118,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Test.ScenarioTests
         {
             return context.GetServiceClient<BlueprintManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
-
-        private static GraphRbacManagementClient GetGraphRbacManagementClient(MockContext context)
-        {
-            var environment = TestEnvironmentFactory.GetTestEnvironment();
-            string tenantId = null;
-
-            var client = context.GetGraphServiceClient<GraphRbacManagementClient>(environment);
-            client.TenantID = tenantId;
-
-            return client;
-        }
-        
+       
         private static AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
         {
             return context.GetServiceClient<AuthorizationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
