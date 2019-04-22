@@ -203,7 +203,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         public SwitchParameter EncryptFormatAll { get; set; }
 
         [Parameter(
-            ParameterSetName = AzureDiskEncryptionExtensionConstants.singlePassParameterSet, 
             Mandatory = false, 
             HelpMessage = "Returns immediately with status of request")]
         public SwitchParameter NoWait { get; set; }
