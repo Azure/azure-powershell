@@ -114,14 +114,15 @@ namespace Microsoft.Azure.Commands.Dns
                     this.WriteVerbose(zoneType == Management.Dns.Models.ZoneType.Private
                         ? string.Format(ProjectResources.Success_NewPrivateZone, this.Name, this.ResourceGroupName)
                         : string.Format(ProjectResources.Success_NewZone, this.Name, this.ResourceGroupName));
+
                     this.WriteObject(result);
 
-                    if (!string.IsNullOrEmpty(this.ParentZoneName) && this.Name.EndsWith(this.ParentZoneName))
+                    DnsZone parent = this.ParseParentZoneFromArguments();
+                    if (parent != null && this.Name.EndsWith(parent.Name))
                     {
-                        AddDnsNameserverDelegation(result);
+                        AddDnsNameserverDelegation(result, parent);
                         this.WriteVerbose(ProjectResources.Success);
-                        this.WriteVerbose(string.Format(ProjectResources.Success_NSDelegation, this.Name, this.ParentZoneName));
-
+                        this.WriteVerbose(string.Format(ProjectResources.Success_NSDelegation, this.Name, parent.Name));
                     }
                 });
         }
@@ -130,10 +131,11 @@ namespace Microsoft.Azure.Commands.Dns
         /// The NS records are added in the parent zone that corresponds to the child zone
         /// </summary>
         /// <param name="zone">the created child zone</param>
-        private DnsRecordSet AddDnsNameserverDelegation(DnsZone zone)
+        /// <param name="parent">the parent zone</param>
+        private DnsRecordSet AddDnsNameserverDelegation(DnsZone zone, DnsZone parent)
         {
             DnsRecordSet recordSet = null;
-            if (zone != null && zone.NameServers != null && zone.NameServers.Count > 0)
+            if (zone != null && parent != null && zone.NameServers != null && zone.NameServers.Count > 0)
             {
                 List<NsRecord> nameServersList = new List<NsRecord>();
                 foreach (string nameserver in zone.NameServers)
@@ -144,9 +146,9 @@ namespace Microsoft.Azure.Commands.Dns
                 }
 
                 DnsRecordBase[] resourceRecords = nameServersList.ToArray();
-                string recordName = this.Name.Replace('.' + ParentZoneName, "");
+                string recordName = this.Name.Replace('.' + parent.Name, "");
                 recordSet = this.DnsClient.CreateDnsRecordSet(
-                    this.ParentZoneName,
+                    parent.Name,
                     this.ResourceGroupName,
                     recordName,
                     3600,
@@ -157,6 +159,62 @@ namespace Microsoft.Azure.Commands.Dns
                     null);
             }
             return recordSet;
+        }
+
+        /// <summary>
+        /// This method parses the parent zone from the command arguments, depending
+        /// on the format of the parent zone details passed.
+        /// Supports resource id, parent zone name and the zone object.
+        /// </summary>
+        private DnsZone ParseParentZoneFromArguments()
+        {
+            DnsZone parent = null;
+            string parentZoneName = this.ParentZoneName;
+            string parentResourceGroupName = this.ResourceGroupName;
+
+            if (this.ParameterSetName == ObjectsParameterSetName && this.ParentZone != null)
+            {
+                parentZoneName = this.ParentZone.Name;
+                parentResourceGroupName = this.ParentZone.ResourceGroupName;
+            }
+            else if (this.ParameterSetName == IdsParameterSetName && !string.IsNullOrEmpty(this.ParentZoneId))
+            {
+                string[] tokens = this.ParseParentZoneResourceId(this.ParentZoneId);
+                parentZoneName = (tokens != null && tokens.Length == 8) ? tokens[7] : null;
+                parentResourceGroupName = (tokens != null && tokens.Length == 8) ? tokens[1] : null;
+            }
+            if(parentZoneName != null)
+            {
+                parent = new DnsZone();
+                parent.Name = parentZoneName;
+                parent.ResourceGroupName = parentResourceGroupName;
+            }
+            return parent;
+        }
+        /// <summary>
+        /// This method tokenizes the resource id of the parent DNS zone.
+        /// It also checks if the parent zone belongs to same subscription as the child zone created.
+        /// </summary>
+        /// <param name="resourceId">the resource id of the parent zone</param>
+        // Example : "/subscriptions/**67e2/resourceGroups/other-rg/providers/Microsoft.Network/dnszones/cakes.com"
+        private string[] ParseParentZoneResourceId(string resourceId)
+        {
+            if (!string.IsNullOrEmpty(resourceId))
+            {
+                string[] tokens = resourceId.Split(new[] { '/' });
+                tokens = tokens.Where(token => !string.IsNullOrEmpty(token)).ToArray();
+                if (tokens.Length != 8)
+                {
+                    throw new PSArgumentException(string.Format(ProjectResources.Error_ResourceIdIncorrectFormat, resourceId));
+                }
+                string subscriptionIdInContext = this.DefaultContext.Subscription.Id;
+                if (subscriptionIdInContext != tokens[1])
+                {
+                    throw new PSArgumentException(string.Format(ProjectResources.Error_NSDelegationSubscriptionMisMatch, this.Name, tokens[7]));
+                }
+                return tokens;
+            }
+            return null;
         }
     }
 }
