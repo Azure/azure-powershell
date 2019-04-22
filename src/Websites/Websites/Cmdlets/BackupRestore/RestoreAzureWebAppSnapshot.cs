@@ -39,6 +39,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         [Parameter(Mandatory = false, HelpMessage = "Recover the web app's configuration in addition to files.", ValueFromPipelineByPropertyName = true)]
         public SwitchParameter RecoverConfiguration { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Use to recover a snapshot from a scale unit that is offline.")]
+        public SwitchParameter UseDisasterRecovery { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Allows the original web app to be overwritten without displaying a warning.", ValueFromPipelineByPropertyName = true)]
         public SwitchParameter Force { get; set; }
 
@@ -60,7 +63,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
                 SnapshotTime = this.InputObject.SnapshotTime.ToString("o"),
                 RecoverConfiguration = this.RecoverConfiguration,
                 IgnoreConflictingHostNames = true,
-                RecoverySource = source
+                RecoverySource = source,
+                UseDRSecondary = UseDisasterRecovery
             };
             Action recoverAction = () => WebsitesClient.RestoreSnapshot(ResourceGroupName, Name, Slot, recoveryReq);
             ConfirmAction(this.Force.IsPresent, "Web app contents will be overwritten with the contents of the snapshot.",
