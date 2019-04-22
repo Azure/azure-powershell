@@ -1,3 +1,107 @@
+## 1.8.0 - April 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+* Added wildcard support to Get cmdlets for Az.Compute and Az.Network
+* Added interactive and username/password authentication for Windows PowerShell 5.1 only
+* Added support for Python 2 runbooks in Az.Automation
+* Az.LogicApp: New cmdlets for Integration Account Assemblies and Batch Configuration
+
+#### Az.Accounts
+* Update Uninstall-AzureRm to correctly delete modules in Mac
+
+#### Az.Batch
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.Cdn
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.CognitiveServices
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.Compute
+* Fix issue with AEM installation if resource ids of disks had lowercase resourcegroups in resource id
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Fix documentation for wildcards
+
+#### Az.DataFactory
+* Add SsisProperties if NodeCount not null for managed integration runtime.
+
+#### Az.DataLakeStore
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.EventGrid
+* Updated the help text for endpoint to indicate that resources should be created before using the create/update event subscription cmdlets.
+
+#### Az.EventHub
+* Added new cmdlets for NetworkRuleSet of Namespace 
+
+#### Az.HDInsight
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.IotHub
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.KeyVault
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Fix documentation for wildcards
+
+#### Az.MachineLearning
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.Media
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.Monitor
+  * New cmdlets for GenV2(non classic) metric-based alert rule
+      - New-AzMetricAlertRuleV2DimensionSelection
+      - New-AzMetricAlertRuleV2Criteria
+      - Remove-AzMetricAlertRuleV2
+      - Get-AzMetricAlertRuleV2
+      - Add-AzMetricAlertRuleV2
+  * Updated Monitor SDK to version 0.22.0-preview
+
+#### Az.Network
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Fix documentation for wildcards
+
+#### Az.NotificationHubs
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.OperationalInsights
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.PowerBIEmbedded
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.RecoveryServices
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Updated table format for SQL in azure VM
+* Added alternate method to fetch location in AzureFileShare
+* Updated ScheduleRunDays in SchedulePolicy object according to timezone
+
+#### Az.RedisCache
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.Resources
+* Fix documentation for wildcards
+
+#### Az.Sql
+* Replace dependency on Monitor SDK with common code
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Enhanced process of multiple columns classification.
+* Include sku properties (sku name, family, capacity) in response from Get-AzSqlServerServiceObjective and format as table by default.
+* Ability to Get-AzSqlServerServiceObjective by location without needing a preexisting server in the region.
+* Support for time zone parameter in Managed Instance create.
+* Fix documentation for wildcards
+
+#### Az.Websites
+* fixes the Set-AzWebApp and Set-AzWebAppSlot to not remove the tags on execution
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Updated the WebSites SDK.
+* Removed the AdminSiteName property from PSAppServicePlan.
+
 ## 1.7.0 - April 2019
 ### Highlights since the last major release
 * General availability of `Az` module

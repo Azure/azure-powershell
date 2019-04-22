@@ -74,6 +74,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.ExpressRouteGateway
             Mandatory = false,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         public override void Execute()

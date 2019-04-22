@@ -27,9 +27,10 @@ using CommonStorage = Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Xunit.Abstractions;
-using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.EventHub;
 using Microsoft.Azure.Management.OperationalInsights;
+using SDKMonitor = Microsoft.Azure.Management.Monitor;
+using CommonMonitor = Microsoft.Azure.Management.Monitor.Version2018_09_01;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
@@ -100,9 +101,14 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             return context.GetServiceClient<SqlManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        protected IMonitorManagementClient GetMonitorManagementClient(MockContext context)
+        protected SDKMonitor.IMonitorManagementClient GetMonitorManagementClient(MockContext context)
         {
-            return context.GetServiceClient<MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<SDKMonitor.MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected CommonMonitor.IMonitorManagementClient GetCommonMonitorManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<CommonMonitor.MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         protected IEventHubManagementClient GetEventHubManagementClient(MockContext context)
