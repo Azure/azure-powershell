@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.DataLakeStore
 Module Guid: 90dfd814-abce-4e1f-99b6-fe16760c079a
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.datalakestore
@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.DataLakeStore Module
 ## Description
-The topics in this section document the Azure PowerShell cmdlets for Azure Data Lake Store in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.DataLakeStore namespace.
+The topics in this section document the Azure PowerShell cmdlets for Azure Data Lake Store in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.DataLakeStore namespace. These cmdlets work only with Azure Data Lake Storage Gen1 accounts.
 
 ## Az.DataLakeStore Cmdlets
 ### [Add-AzDataLakeStoreFirewallRule](Add-AzDataLakeStoreFirewallRule.md)
@@ -26,7 +26,7 @@ Adds a virtual network rule to the specified Data Lake Store account.
 ### [Enable-AzDataLakeStoreKeyVault](Enable-AzDataLakeStoreKeyVault.md)
 Attempts to enable a user managed Key Vault for encryption of the specified Data Lake Store account.
 
-### [Export-AzDataLakeStoreChildItemProperties](Export-AzDataLakeStoreChildItemProperties.md)
+### [Export-AzDataLakeStoreChildItemProperty](Export-AzDataLakeStoreChildItemProperty.md)
 Exports the properties (Disk usage and Acl) for the entire tree from the specified path to a ouput path
 
 ### [Export-AzDataLakeStoreItem](Export-AzDataLakeStoreItem.md)

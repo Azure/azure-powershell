@@ -76,12 +76,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "Rate limit thresold")]
         public int? RateLimitThreshold { get; set; }
 
-        /// <summary>
-        /// List of transforms
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "List of transforms")]
-        public string[] Transform { get; set; }
-
         public override void ExecuteCmdlet()
         {
             var CustomRule = new PSCustomRule
@@ -92,7 +86,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                RuleType = RuleType,
                RateLimitDurationInMinutes = !this.IsParameterBound(c => c.RateLimitDurationInMinutes)? 1 : RateLimitDurationInMinutes,
                RateLimitThreshold = RateLimitThreshold,
-               Transforms = Transform?.ToList(),
                Action = Action
             };
             WriteObject(CustomRule);
