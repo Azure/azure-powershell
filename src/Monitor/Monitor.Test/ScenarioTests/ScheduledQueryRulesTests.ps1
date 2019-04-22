@@ -32,26 +32,31 @@ function Test-setup
 	$global:timeWindowInMin = 5
 	$global:query = "traces | summarize AggregatedValue = count() by bin(timestamp, 5m)"
 
-	$PSCmdletsAI="PSCmdletAppInsights"
+	# Create resource group
+	New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
+
+	$appInsightsResourceName = Get-ResourceName
 
 	# Create the App Insights Resource
-	$PSCmdletsAIResource = New-AzResource `
-	-ResourceName $PSCmdletsAI `
+	$appInsightsResource = New-AzureRmApplicationInsights `
+	-Name $appInsightsResourceName `
 	-ResourceGroupName $resourceGroupName `
-	-Tag @{ applicationType = "web"; applicationName = $applicationTagName} `
-	-ResourceType "Microsoft.Insights/components" `
-	-Location $location `  # or North Europe, West Europe, South Central US
-	-PropertyObject @{"Application_Type"="web"} `
-	-Force
+	-Location $location
 
+	# Create Action group
+	$actionGroupName = Get-ResourceName
+	$email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
+	$newActionGroup =  Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $resourceGroupName -ShortName ASTG -Receiver $email
+	$actionGroupResource = New-AzActionGroup -ActionGroupId $newActionGroup.Id
+	$global:actionGroup = @($newActionGroup.Id)
+	
 	$global:subscription = (Get-AzureRmContext).Subscription
-	$global:authorizedResources = "/subscriptions/" + $subscription + "/resourceGroups/" + $resourceGroupName + "/providers/microsoft.insights/components/" + $PSCmdletsAI
+	$global:authorizedResources = "/subscriptions/" + $subscription + "/resourceGroups/" + $resourceGroupName + "/providers/microsoft.insights/components/" + $appInsightsResourceName
 	$global:dataSourceId = $authorizedResources
 	$global:queryType = "ResultCount"
 	$global:metricTriggerThreshold = 10
 	$global:metricTriggerThresholdOperator = "GreaterThan"
 
-	$global:actionGroup = @("AG1", "AG2")
 	$global:tags = @{tag1="value1"}
 }
 
