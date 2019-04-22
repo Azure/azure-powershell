@@ -73,6 +73,34 @@ This command creates a new Private DNS zone named myprivatezone.com in the speci
 an associated resolution virtual network (referred to by $ResVirtualNetwork variable), and then stores it
 in the $Zone variable.
 
+### Example 4: Create a DNS zone with delegation by specifying parent zone name
+```
+PS C:\>$Zone = New-AzDnsZone -Name "mychild.zone.com" -ResourceGroupName "MyResourceGroup" -ParentZoneName "zone.com"
+```
+
+This command creates a new child DNS zone named mychild.zone.com in the specified resource group and stores 
+in the $Zone variable.
+It also adds delegation in the parent DNS zone named zone.com residing in the same subscription and resource group as child zone.
+
+### Example 5: Create a DNS zone with delegation by specifying parent zone id
+```
+PS C:\>$Zone = New-AzDnsZone -Name "mychild.zone.com" -ResourceGroupName "MyResourceGroup" -ParentZoneId "/subscriptions/**67e2/resourceGroups/other-rg/providers/Microsoft.Network/dnszones/zone.com"
+```
+
+This command creates a new child DNS zone named mychild.zone.com in the specified resource group and stores 
+in the $Zone variable.
+It also adds delegation in the parent DNS zone named zone.com in resource group other-rg provided subscription is same as that of child zone created.
+
+### Example 6: Create a DNS zone with delegation by specifying parent zone object
+```
+PS C:\>$PZone = New-AzDnsZone -Name "zone.com" -ResourceGroupName "MyResourceGroup" 
+PS C:\>$Zone = New-AzDnsZone -Name "mychild.zone.com" -ResourceGroupName "MyResourceGroup" -ParentZone @($PZone)
+```
+
+This command creates a new child DNS zone named mychild.zone.com in the specified resource group and stores 
+in the $Zone variable.
+It also adds delegation in the parent DNS zone named zone.com as passed in the ParentZone object
+
 ## PARAMETERS
 
 ### -DefaultProfile
