@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             HelpMessage = "The name of the Azure SQL Database to retrieve geo backups for.")]
         [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string DatabaseName { get; set; }
 
         /// <summary>
