@@ -37,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         "AzPeerAsn",
         SupportsShouldProcess = true,
         DefaultParameterSetName = Constants.ParameterSetNameDefault)]
-    [OutputType(typeof(PSPeerAsn))]
+    [OutputType(typeof(bool))]
     public class RemoveAzurePeerAsn : PeeringBaseCmdlet
     {
         /// <summary>
@@ -68,6 +68,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = Constants.ForceHelp)]
         public SwitchParameter Force { get; set; }
+
+        /// <summary>
+        /// Gets or sets the pass thru.
+        /// </summary>
+        public SwitchParameter PassThru { get; set; }
 
         /// <summary>
         ///     The AsJob parameter to run in the background.
@@ -126,13 +131,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             if (this.ParameterSetName.Equals(Constants.ParameterSetNameDefault, StringComparison.OrdinalIgnoreCase))
             {
                 this.PeeringManagementClient.PeerAsns.Delete(this.InputObject.Name);
-                this.WriteObject($"Peer Asn {this.InputObject.Name} Resource Removed.");
+                if (this.PassThru) this.WriteObject(true);
             }
 
             if (this.ParameterSetName.Equals(Constants.ParameterSetNameByName, StringComparison.OrdinalIgnoreCase))
             {
                 this.PeeringManagementClient.PeerAsns.Delete(this.Name);
-                this.WriteObject($"Peer Asn {this.Name} Resource Removed.");
+                if (this.PassThru) this.WriteObject(true);
             }
         }
     }

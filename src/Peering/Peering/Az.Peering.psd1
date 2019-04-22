@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Microsoft Peering Service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
 
-For more information on Microsoft Peering, please visit the following:  https://docs.microsoft.com/en-us/powershell/module/az.peering.md'
+For more information on Microsoft Peering, please visit the following:  https://docs.microsoft.com/en-us/powershell/module/az.peering'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'
@@ -121,7 +121,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Preview Release for Microsoft Peering Service', '* New, Update, Remove, and Get AzPeerAsn', '* New, Update, and Get AzPeering', '* Get AzLegacyPeering', '* Get AzPeeringLocation'
+        ReleaseNotes = '* Preview Release for Microsoft Peering Service'
 
         # Prerelease string of this module
         # Prerelease = ''

@@ -20,6 +20,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
     using System.Net.Sockets;
     using System.Numerics;
 
+    using Microsoft.Azure.Commands.Peering.Properties;
+
     public class RoutePrefix
     {
         /// <summary>
@@ -38,7 +40,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             if (parts.Length != 2)
             {
                 throw new ArgumentException(
-                    string.Format(CultureInfo.InvariantCulture, "Unrecognized routePrefix {0}", routePrefix));
+                    string.Format(Resources.Route_PrefixUnrecognized, routePrefix));
             }
 
             // get and validate the prefix length mask into a number
@@ -46,8 +48,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             {
                 throw new FormatException(
                     string.Format(
-                        CultureInfo.InvariantCulture,
-                        "{0} is not in proper IP / CIDR notation.",
+                        Resources.Route_NotProperCIDR,
                         routePrefix));
             }
 
@@ -56,8 +57,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             {
                 throw new FormatException(
                     string.Format(
-                        CultureInfo.InvariantCulture,
-                        "{0} is not in proper IP / CIDR notation. (not a valid IP address).",
+                        Resources.Route_NotProperCIDR,
                         routePrefix));
             }
 
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             if (parts.Length != 2)
             {
                 throw new ArgumentException(
-                    string.Format(CultureInfo.InvariantCulture, "Unrecognized routePrefix {0}", routePrefix));
+                    string.Format(Resources.Route_PrefixUnrecognized, routePrefix));
             }
 
             // get and validate the prefix length mask into a number
@@ -157,8 +157,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             {
                 throw new FormatException(
                     string.Format(
-                        CultureInfo.InvariantCulture,
-                        "{0} is not in proper IP / CIDR notation.",
+                        Resources.Route_NotProperCIDR,
                         routePrefix));
             }
 
@@ -167,8 +166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             {
                 throw new FormatException(
                     string.Format(
-                        CultureInfo.InvariantCulture,
-                        "{0} is not in proper IP / CIDR notation. (not a valid IP address).",
+                        Resources.Route_NotProperCIDR,
                         routePrefix));
             }
 
@@ -227,7 +225,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                 if (bitArray[i])
                 {
                     throw new InvalidDataException(
-                        $"Prefix {startBigInt.ToIpAddress(addressFamily)}/{prefixMask} is invalid");
+                        string.Format(Resources.Route_PrefixUnrecognized, $"{startBigInt.ToIpAddress(addressFamily)}/{prefixMask}"));
                 }
             }
         }

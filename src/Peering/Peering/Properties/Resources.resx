@@ -120,6 +120,9 @@
   <data name="ContinueMessage" xml:space="preserve">
     <value>You are about to remove an {0} Resource. Are you sure?</value>
   </data>
+  <data name="Create_NewConnectionObject" xml:space="preserve">
+    <value>Create a new PSPeering{0}ConnectionObject by using the New-AzPeering{0}ConnectionObject cmdlet.</value>
+  </data>
   <data name="Error_BandwidthDowngrade" xml:space="preserve">
     <value>Downgrading bandwidth from {0} to {1} not supported.</value>
   </data>
@@ -138,8 +141,11 @@
   <data name="Error_CloudError" xml:space="preserve">
     <value>Server Error: {0} {1}</value>
   </data>
+  <data name="Error_GenericSyntax" xml:space="preserve">
+    <value>Unable to complete the request. Check your syntax for errors.</value>
+  </data>
   <data name="Error_InvalidConnection" xml:space="preserve">
-    <value>Not a valid connection</value>
+    <value>Not a valid connection {0}</value>
   </data>
   <data name="Error_InvalidEmailAddress" xml:space="preserve">
     <value>Invalid email address input {0}.</value>
@@ -165,8 +171,14 @@
   <data name="Error_MustBeNull" xml:space="preserve">
     <value>MaxPrefixesAdvertisedV{0}:{1} must be null if PeerSessionIPv{0}Address is null.</value>
   </data>
+  <data name="Error_NullConnection" xml:space="preserve">
+    <value>{0} connection cannot be null or empty. </value>
+  </data>
   <data name="Error_NullSession" xml:space="preserve">
     <value>Session cannot be null or empty.</value>
+  </data>
+  <data name="Error_UnableToConvertLegacy" xml:space="preserve">
+    <value>Unable to convert legacy peering because {0} was null or empty.</value>
   </data>
   <data name="Error_WrongCommandForDirectObject" xml:space="preserve">
     <value>Use Set-AzPeeringExchangeConnectionObject instead.</value>
@@ -174,7 +186,10 @@
   <data name="ProcessMessage" xml:space="preserve">
     <value>InputObject {0} Resource being removed.</value>
   </data>
-  <data name="String1" xml:space="preserve">
-    <value>Unable to complete the request. Check your syntax for errors.</value>
+  <data name="Route_NotProperCIDR" xml:space="preserve">
+    <value>{0} is not in proper IP / CIDR notation.</value>
+  </data>
+  <data name="Route_PrefixUnrecognized" xml:space="preserve">
+    <value>Unrecognized routePrefix {0}</value>
   </data>
 </root>

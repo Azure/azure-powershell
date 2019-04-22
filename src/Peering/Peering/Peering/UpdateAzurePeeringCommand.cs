@@ -20,6 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
 
     using Microsoft.Azure.Commands.Peering.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.Management.Peering;
     using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
@@ -187,7 +188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
 
                 if (this.ParameterSetName.Contains(Constants.ParameterSetNameByResourceId))
                 {
-                    var resourceId = this.GetResourceIdentifier(this.ResourceId);
+                    var resourceId = new ResourceIdentifier(this.ResourceId);
                     var resourceGroupName = resourceId.ResourceGroupName;
                     var resourceName = resourceId.ResourceName;
                     var peeringRequest = this.PeeringClient.Get(resourceGroupName, resourceName);
@@ -243,7 +244,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             {
                 if (this.InputObject is PSDirectPeeringModelView directPeeringModelView)
                 {
-                    var resourceId = this.GetResourceIdentifier(directPeeringModelView.Id);
+                    var resourceId = new ResourceIdentifier(directPeeringModelView.Id);
                     var resourceGroupName = resourceId.ResourceGroupName;
                     var peeringName = resourceId.ResourceName;
                     var peering = new PSPeering
@@ -335,7 +336,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             {
                 if (this.InputObject is PSExchangePeeringModelView exchangePeeringModelView)
                 {
-                    var resourceId = this.GetResourceIdentifier(exchangePeeringModelView.Id);
+                    var resourceId = new ResourceIdentifier(exchangePeeringModelView.Id);
                     var resourceGroupName = resourceId.ResourceGroupName;
                     var peeringName = resourceId.ResourceName;
                     var peering = new PSPeering

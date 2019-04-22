@@ -33,8 +33,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzPeering", DefaultParameterSetName = Constants.ParameterSetNameBySubscription)]
     [OutputType(typeof(PSPeering))]
-    [OutputType(typeof(PSDirectPeeringModelView))]
-    [OutputType(typeof(PSExchangePeeringModelView))]
     public class GetAzurePeeringCommand : PeeringBaseCmdlet
     {
         /// <summary>
@@ -66,8 +64,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             HelpMessage = Constants.KindHelp,
             ParameterSetName = Constants.ParameterSetNameBySubscription)]
         [PSArgumentCompleter(Constants.Direct, Constants.Partner, Constants.Exchange)]
-        [ValidateSet(Constants.Direct, Constants.Exchange, IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
         public string Kind { get; set; }
 
         /// <inheritdoc />
@@ -89,9 +85,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                         var item = this.GetPeeringByResourceAndName();
                         this.WriteObject(item);
                     }
-
-                    if (this.ResourceGroupName != null && this.Name == null)
-                    {
+                    else
+                    { 
                         var list = this.GetPeeringByResource();
                         this.WriteObject(list, true);
                     }

@@ -15,7 +15,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
@@ -25,11 +24,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.Peering.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common;
-    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.Management.Peering;
     using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
-    using Microsoft.Rest.Azure;
 
     using Newtonsoft.Json;
 
@@ -77,39 +74,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// The to peering.
         /// </summary>
-        /// <param name="resourceGroup">
-        /// The resource group.
-        /// </param>
-        /// <param name="name">
-        /// The name.
-        /// </param>
-        /// <returns>
-        /// The <see cref="PSPeering"/>.
-        /// </returns>
-        public PSPeering ToPeering(string resourceGroup, string name)
-        {
-            try
-            {
-                var ic = this.PeeringClient.Get(resourceGroup, name);
-
-                var psPeering = PeeringResourceManagerProfile.Mapper.Map<PSPeering>(ic);
-                return psPeering;
-            }
-            catch (InvalidOperationException mapException)
-            {
-                throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
-            }
-            catch (ErrorResponseException ex)
-            {
-
-                throw new ErrorResponseException(
-                    string.Format(Resources.Error_CloudError, ex.Response.StatusCode, ex.Response.ReasonPhrase));
-            }
-        }
-
-        /// <summary>
-        /// The to peering.
-        /// </summary>
         /// <param name="pSPeering">
         /// The p s peering.
         /// </param>
@@ -125,11 +89,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             catch (InvalidOperationException mapException)
             {
                 throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
-            }
-            catch (ErrorResponseException ex)
-            {
-                var error = ex.Response.Content.Contains("\"error\": \"") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
-                throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
 
@@ -151,54 +110,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             catch (InvalidOperationException mapException)
             {
                 throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
-            }
-            catch (ErrorResponseException ex)
-            {
-                var error = ex.Response.Content.Contains("\"error\": \"") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
-                throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
-            }
-        }
-
-        public object ToPeeringAsnPs(object peeringAsn)
-        {
-            try
-            {
-                return PeeringResourceManagerProfile.Mapper.Map<PSPeerAsn>(peeringAsn);
-            }
-            catch (InvalidOperationException mapException)
-            {
-                throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
-            }
-            catch (ErrorResponseException ex)
-            {
-                var error = ex.Response.Content.Contains("\"error\": \"") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
-                throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
-            }
-        }
-
-        /// <summary>
-        /// The top s peering location.
-        /// </summary>
-        /// <param name="peering">
-        /// The oc.
-        /// </param>
-        /// <returns>
-        /// The <see cref="PSPeeringLocation"/>.
-        /// </returns>
-        public PSPeeringLocation TopSPeeringLocation(object peering)
-        {
-            try
-            {
-                return PeeringResourceManagerProfile.Mapper.Map<PSPeeringLocation>(peering);
-            }
-            catch (InvalidOperationException mapException)
-            {
-                throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
-            }
-            catch (ErrorResponseException ex)
-            {
-                var error = ex.Response.Content.Contains("\"error\": \"") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
-                throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
 
@@ -225,10 +136,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             {
                 throw new InvalidOperationException(string.Format(Resources.Error_Mapping, mapException));
             }
-            catch (ErrorResponseException ex)
+        }
+
+        public object ToPeeringAsnPs(object peeringAsn)
+        {
+            try
             {
-                var error = ex.Response.Content.Contains("\"error\": \"") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
-                throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
+                return PeeringResourceManagerProfile.Mapper.Map<PSPeerAsn>(peeringAsn);
+            }
+            catch (InvalidOperationException mapException)
+            {
+                throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
+            }
+        }
+
+        /// <summary>
+        /// The top s peering location.
+        /// </summary>
+        /// <param name="peering">
+        /// The oc.
+        /// </param>
+        /// <returns>
+        /// The <see cref="PSPeeringLocation"/>.
+        /// </returns>
+        public PSPeeringLocation TopSPeeringLocation(object peering)
+        {
+            try
+            {
+                return PeeringResourceManagerProfile.Mapper.Map<PSPeeringLocation>(peering);
+            }
+            catch (InvalidOperationException mapException)
+            {
+                throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
             }
         }
 
@@ -278,23 +217,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                 throw new PSNotSupportedException(
                     string.Format(Resources.Error_BandwidthDowngrade, startingBandwidth, newBandwidth));
             return true;
-        }
-
-        /// <summary>
-        /// The get resource group name from id.
-        /// </summary>
-        /// <param name="peeringId">
-        /// The InputObject id.
-        /// </param>
-        /// <returns>
-        /// The <see cref="ResourceIdentifier"/>.
-        /// </returns>
-        public ResourceIdentifier GetResourceIdentifier(string peeringId)
-        {
-            ResourceIdentifier resourceIdentifier = new ResourceIdentifier(peeringId);
-            if (resourceIdentifier.ResourceGroupName != null)
-                return resourceIdentifier;
-            throw new ItemNotFoundException(string.Format(Resources.Error_CannotParseResourceId, "Resource", peeringId));
         }
 
         /// <summary>
@@ -429,14 +351,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            try
-            {
-                Execute();
-            }
-            catch (ErrorResponseException ex)
-            {
-                throw new ErrorResponseException(ex.Message);
-            }
+            this.Execute();
+
         }
 
         /// <summary>
@@ -453,24 +369,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// </returns>
         /// <exception cref="Exception">
         /// </exception>
-        public string GetAzureRegion(string PeeringLocation, string kind)
+        public string GetAzureRegion(string peeringLocation, string kind)
         {
             try
             {
+                if (peeringLocation == null)
+                {
+                    throw new PSArgumentNullException();
+                }
+
                 var icList = this.PeeringLocationClient.List(kind);
                 foreach (var location in icList.Select(this.TopSPeeringLocation).ToList())
                 {
-                    if (location.Name == PeeringLocation)
+                    if (location.Name == peeringLocation)
                     {
                         return location.AzureRegion;
                     }
                 }
 
-                return "centralus";
+                return icList.Select(this.TopSPeeringLocation).FirstOrDefault()?.ToString();
             }
             catch (ErrorResponseException ex)
             {
-                var error = ex.Response.Content.Contains("\"error\": \"") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
+                var error = ex.Response.Content.Contains("\"error\": \"")
+                                ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content)
+                                    .FirstOrDefault().Value
+                                : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
                 throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
