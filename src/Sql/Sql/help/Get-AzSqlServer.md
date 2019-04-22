@@ -102,6 +102,32 @@ FullyQualifiedDomainName : server03.database.windows.net
 
 This command gets information about all the Azure SQL Database servers in the current subscription.
 
+### Example 4: Get all instances of SQL Server assigned to a resource group using filtering
+```
+PS C:\>Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "server*"
+ResourceGroupName        : resourcegroup01
+ServerName               : server01
+Location                 : Central US
+SqlAdministratorLogin    : adminLogin
+SqlAdministratorPassword :
+ServerVersion            : 12.0
+Tags                     :
+Identity                 :
+FullyQualifiedDomainName : server01.database.windows.net
+
+ResourceGroupName        : resourcegroup01
+ServerName               : server02
+Location                 : West US
+SqlAdministratorLogin    : adminLogin
+SqlAdministratorPassword :
+ServerVersion            : 12.0
+Tags                     :
+Identity                 :
+FullyQualifiedDomainName : server02.database.windows.net
+```
+
+This command gets information about all the Azure SQL Database servers assigned to the resource group ResourceGroup01 that start with "server".
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -131,7 +157,7 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ServerName
@@ -146,7 +172,7 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Confirm
@@ -181,7 +207,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

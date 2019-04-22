@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public override string ResourceGroupName { get; set; }
 
         /// <summary>
@@ -52,6 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ServerName { get; set; }
         
         /// <summary>
@@ -62,25 +64,21 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         {
             ICollection<AzureSqlServerModel> results = null;
 
-            if (MyInvocation.BoundParameters.ContainsKey("ServerName") && MyInvocation.BoundParameters.ContainsKey("ResourceGroupName"))
+            if (ShouldGetByName(ResourceGroupName, ServerName))
             {
                 results = new List<AzureSqlServerModel>();
                 results.Add(ModelAdapter.GetServer(this.ResourceGroupName, this.ServerName));
             }
-            else if (MyInvocation.BoundParameters.ContainsKey("ResourceGroupName"))
+            else if (ShouldListByResourceGroup(ResourceGroupName, ServerName))
             {
                 results = ModelAdapter.ListServersByResourceGroup(this.ResourceGroupName);
             }
-            else if (!MyInvocation.BoundParameters.ContainsKey("ServerName"))
+            else
             {
                 results = ModelAdapter.ListServers();
             }
-            else
-            {
-                throw new PSArgumentException("When specifying the serverName parameter the ResourceGroup parameter must also be used");
-            }
 
-            return results;
+            return TopLevelWildcardFilter(ResourceGroupName, ServerName, results);
         }
 
         /// <summary>

@@ -30,5 +30,7 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
         public IList<string> AzureVirtualMachines { get; set; }
 
         public IList<string> NonAzureComputers { get; set; }
+
+        public UpdateTargets Targets { get; set; }
     }
 }

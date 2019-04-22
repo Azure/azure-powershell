@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 5F856280-C561-47B5-AA96-27E34C86D604
@@ -50,6 +50,27 @@ VaultName           : Contosokv01
 
 This command gets the certificate issuer named TestIssuer01.
 
+### Example 2: List certificate issuers using filtering
+```powershell
+PS C:\> Get-AzKeyVaultCertificateIssuer -VaultName "Contosokv01" -Name "test*"
+
+AccountId           : 555
+ApiKey              :
+OrganizationDetails : Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateOrganizationDetails
+Name                : TestIssuer01
+IssuerProvider      : Test
+VaultName           : Contosokv01
+
+AccountId           : 555
+ApiKey              :
+OrganizationDetails : Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateOrganizationDetails
+Name                : TestIssuer02
+IssuerProvider      : Test
+VaultName           : Contosokv01
+```
+
+This command gets the certificate issuers that start with "test".
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -94,7 +115,7 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceId
@@ -128,7 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
