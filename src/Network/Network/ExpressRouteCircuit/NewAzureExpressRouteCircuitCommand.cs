@@ -61,6 +61,7 @@ namespace Microsoft.Azure.Commands.Network
             MNM.ExpressRouteCircuitSkuTier.Standard,
             MNM.ExpressRouteCircuitSkuTier.Premium,
             MNM.ExpressRouteCircuitSkuTier.Basic,
+            MNM.ExpressRouteCircuitSkuTier.Local,
             IgnoreCase = true)]
         public string SkuTier { get; set; }
 
