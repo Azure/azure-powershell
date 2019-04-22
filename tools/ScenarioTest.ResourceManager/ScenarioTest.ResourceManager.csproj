@@ -1,11 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   
+  <PropertyGroup>
+    <IncludeCommonTestProject>false</IncludeCommonTestProject>
+  </PropertyGroup>
+  
   <Import Project="$(MSBuildThisFileDirectory)..\..\src\Az.Test.props" />
 
   <PropertyGroup>
     <AssemblyName>Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager</AssemblyName>
     <RootNamespace>$(LegacyAssemblyPrefix)ScenarioTest</RootNamespace>
-    <IncludeCommonTestProject>false</IncludeCommonTestProject>
   </PropertyGroup>
 
   <ItemGroup>    

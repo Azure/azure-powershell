@@ -17,7 +17,7 @@ Adds an authentication certificate to an application gateway.
 ### [Add-AzApplicationGatewayBackendAddressPool](Add-AzApplicationGatewayBackendAddressPool.md)
 Adds a back-end address pool to an application gateway.
 
-### [Add-AzApplicationGatewayBackendHttpSettings](Add-AzApplicationGatewayBackendHttpSettings.md)
+### [Add-AzApplicationGatewayBackendHttpSetting](Add-AzApplicationGatewayBackendHttpSetting.md)
 Adds back-end HTTP settings to an application gateway.
 
 ### [Add-AzApplicationGatewayCustomError](Add-AzApplicationGatewayCustomError.md)
@@ -137,10 +137,10 @@ Gets an authentication certificate for an application gateway.
 ### [Get-AzApplicationGatewayAutoscaleConfiguration](Get-AzApplicationGatewayAutoscaleConfiguration.md)
 Gets the Autoscale Configuration of the Application Gateway.
 
-### [Get-AzApplicationGatewayAvailableSslOptions](Get-AzApplicationGatewayAvailableSslOptions.md)
+### [Get-AzApplicationGatewayAvailableSslOption](Get-AzApplicationGatewayAvailableSslOption.md)
 Gets all available ssl options for ssl policy for Application Gateway.
 
-### [Get-AzApplicationGatewayAvailableWafRuleSets](Get-AzApplicationGatewayAvailableWafRuleSets.md)
+### [Get-AzApplicationGatewayAvailableWafRuleSet](Get-AzApplicationGatewayAvailableWafRuleSet.md)
 Gets all available web application firewall rule sets.
 
 ### [Get-AzApplicationGatewayAvailableServerVariableAndHeader](Get-AzApplicationGatewayAvailableServerVariableAndHeader.md)
@@ -152,7 +152,7 @@ Gets a back-end address pool for an application gateway.
 ### [Get-AzApplicationGatewayBackendHealth](Get-AzApplicationGatewayBackendHealth.md)
 Gets application gateway backend health.
 
-### [Get-AzApplicationGatewayBackendHttpSettings](Get-AzApplicationGatewayBackendHttpSettings.md)
+### [Get-AzApplicationGatewayBackendHttpSetting](Get-AzApplicationGatewayBackendHttpSetting.md)
 Gets the back-end HTTP settings of an application gateway.
 
 ### [Get-AzApplicationGatewayConnectionDraining](Get-AzApplicationGatewayConnectionDraining.md)
@@ -160,6 +160,9 @@ Gets the connection draining configuration of a back-end HTTP settings object.
 
 ### [Get-AzApplicationGatewayCustomError](Get-AzApplicationGatewayCustomError.md)
 Gets custom error(s) from an application gateway.
+
+### [Get-AzApplicationGatewayFirewallPolicy](Get-AzApplicationGatewayFirewallPolicy.md)
+Gets an application gateway firewall policy.
 
 ### [Get-AzApplicationGatewayFrontendIPConfig](Get-AzApplicationGatewayFrontendIPConfig.md)
 Gets the front-end IP configuration of an application gateway.
@@ -254,7 +257,7 @@ Gets a route table from an ExpressRoute circuit.
 ### [Get-AzExpressRouteCircuitRouteTableSummary](Get-AzExpressRouteCircuitRouteTableSummary.md)
 Gets a route table summary of an ExpressRoute circuit.
 
-### [Get-AzExpressRouteCircuitStats](Get-AzExpressRouteCircuitStats.md)
+### [Get-AzExpressRouteCircuitStat](Get-AzExpressRouteCircuitStat.md)
 Gets usage statistics of an ExpressRoute circuit.
 
 ### [Get-AzExpressRouteConnection](Get-AzExpressRouteConnection.md)
@@ -503,7 +506,7 @@ Creates a Autoscale Configuration for the Application Gateway.
 ### [New-AzApplicationGatewayBackendAddressPool](New-AzApplicationGatewayBackendAddressPool.md)
 Creates a back-end address pool for an application gateway.
 
-### [New-AzApplicationGatewayBackendHttpSettings](New-AzApplicationGatewayBackendHttpSettings.md)
+### [New-AzApplicationGatewayBackendHttpSetting](New-AzApplicationGatewayBackendHttpSetting.md)
 Creates back-end HTTP settings for an application gateway.
 
 ### [New-AzApplicationGatewayConnectionDraining](New-AzApplicationGatewayConnectionDraining.md)
@@ -512,11 +515,23 @@ Creates a new connection draining configuration for back-end HTTP settings.
 ### [New-AzApplicationGatewayCustomError](New-AzApplicationGatewayCustomError.md)
 Creates a custom error with http status code and custom error page url 
 
+### [New-AzApplicationGatewayFirewallCondition](New-AzApplicationGatewayFirewallCondition.md)
+Creates a match condition for custom rule
+
+### [New-AzApplicationGatewayFirewallCustomRule](New-AzApplicationGatewayFirewallCustomRule.md)
+Creates a new custom rule for the application gateway firewall policy.
+
 ### [New-AzApplicationGatewayFirewallDisabledRuleGroupConfig](New-AzApplicationGatewayFirewallDisabledRuleGroupConfig.md)
 Creates a new disabled rule group configuration.
 
 ### [New-AzApplicationGatewayFirewallExclusionConfig](New-AzApplicationGatewayFirewallExclusionConfig.md)
 Creates a new exclusion rule list for application gateway waf
+
+### [New-AzApplicationGatewayFirewallMatchVariable](New-AzApplicationGatewayFirewallMatchVariable.md)
+Creates a match variable for firewall condition.
+
+### [New-AzApplicationGatewayFirewallPolicy](New-AzApplicationGatewayFirewallPolicy.md)
+Creates a application gateway firewall policy.
 
 ### [New-AzApplicationGatewayFrontendIPConfig](New-AzApplicationGatewayFrontendIPConfig.md)
 Creates a front-end IP configuration for an application gateway.
@@ -793,7 +808,7 @@ Removes Autoscale Configuration from an application gateway.
 ### [Remove-AzApplicationGatewayBackendAddressPool](Remove-AzApplicationGatewayBackendAddressPool.md)
 Removes a back-end address pool from an application gateway.
 
-### [Remove-AzApplicationGatewayBackendHttpSettings](Remove-AzApplicationGatewayBackendHttpSettings.md)
+### [Remove-AzApplicationGatewayBackendHttpSetting](Remove-AzApplicationGatewayBackendHttpSetting.md)
 Removes back-end HTTP settings from an application gateway.
 
 ### [Remove-AzApplicationGatewayConnectionDraining](Remove-AzApplicationGatewayConnectionDraining.md)
@@ -801,6 +816,9 @@ Removes the connection draining configuration of a back-end HTTP settings object
 
 ### [Remove-AzApplicationGatewayCustomError](Remove-AzApplicationGatewayCustomError.md)
 Removes a custom error from an application gateway.
+
+### [Remove-AzApplicationGatewayFirewallPolicy](Remove-AzApplicationGatewayFirewallPolicy.md)
+Removes an application gateway firewall policy.
 
 ### [Remove-AzApplicationGatewayFrontendIPConfig](Remove-AzApplicationGatewayFrontendIPConfig.md)
 Removes a front-end IP configuration from an application gateway.
@@ -1030,7 +1048,7 @@ Updates Autoscale Configuration of an application gateway.
 ### [Set-AzApplicationGatewayBackendAddressPool](Set-AzApplicationGatewayBackendAddressPool.md)
 Updates a back-end address pool for an application gateway.
 
-### [Set-AzApplicationGatewayBackendHttpSettings](Set-AzApplicationGatewayBackendHttpSettings.md)
+### [Set-AzApplicationGatewayBackendHttpSetting](Set-AzApplicationGatewayBackendHttpSetting.md)
 Updates back-end HTTP settings for an application gateway.
 
 ### [Set-AzApplicationGatewayConnectionDraining](Set-AzApplicationGatewayConnectionDraining.md)
@@ -1038,6 +1056,9 @@ Modifies the connection draining configuration of a back-end HTTP settings objec
 
 ### [Set-AzApplicationGatewayCustomError](Set-AzApplicationGatewayCustomError.md)
 Updates a custom error in an application gateway.
+
+### [Set-AzApplicationGatewayFirewallPolicy](Set-AzApplicationGatewayFirewallPolicy.md)
+Updates an application gateway firewall policy.
 
 ### [Set-AzApplicationGatewayFrontendIPConfig](Set-AzApplicationGatewayFrontendIPConfig.md)
 Modifies a front-end IP address configuration.
@@ -1250,5 +1271,5 @@ Updates a VPN connection.
 Updates a scalable VPN gateway.
 
 ### [Update-AzVpnSite](Update-AzVpnSite.md)
-Updates a VPN site.
+Updates a VpnSite representing a customer branch to an intended goal state.
 
