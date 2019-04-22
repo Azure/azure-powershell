@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.0
 * Report detail error when create Storage context with parameter -UseConnectedAccount, but without login Azure account
     - New-AzStorageContext
 * Support Manage Blob Service Properties of a specified Storage account with Management plane API

@@ -124,6 +124,15 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Policy definition with name - {0} does not comply with GuestConfiguration policy category. No reports will be fetched for this definition..
+        /// </summary>
+        internal static string InvalidPolicyDefinition {
+            get {
+                return ResourceManager.GetString("InvalidPolicyDefinition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid report Id {0}..
         /// </summary>
         internal static string InvalidReportId {

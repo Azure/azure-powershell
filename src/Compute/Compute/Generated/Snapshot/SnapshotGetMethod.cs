@@ -100,6 +100,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
+        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -108,6 +109,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Compute/snapshots", "ResourceGroupName")]
         [Alias("Name")]
+        [SupportsWildcards]
         public string SnapshotName { get; set; }
     }
 }

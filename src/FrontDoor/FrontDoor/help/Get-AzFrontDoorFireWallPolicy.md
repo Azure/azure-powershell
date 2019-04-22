@@ -22,55 +22,29 @@ The **Get-AzFrontDoorFireWallPolicy** cmdletGet gets WAF policy in a resource gr
 
 ## EXAMPLES
 
-### Example 1: Get a WAF policy called $Name in $resourceGroup
+### Example 1
 ```powershell
-PS C:\> Get-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroup
+PS C:\> Get-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName
 
-PolicyMode         : Prevention
-PolicyEnabledState : Enabled
-CustomRules        : {Rule1}
-ManagedRules       : {Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule}
-Etag               :
-ProvisioningState  : Succeeded
-Tags               :
-Id                 : /subscriptions/{subid}/resourcegroups/{resourceGroupName}/providers/Micr
-                     osoft.Network/frontdoorwebapplicationfirewallpolicies/{Name}
-Name               : {Name}
-Type               :
+Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
+----         ---------- ------------------ ----------------------------- -----------
+{policyName} Prevention            Enabled                           403 https://www.bing.com/
 ```
 
-Get a WAF policy called $Name in $resourceGroup
+Get a WAF policy called $policyName in $resourceGroupName
 
-### Example 2: Get all WAF policy in $resourceGroup
+### Example 2
 ```powershell
-PS C:\> Get-AzFrontDoorFireWallPolicy -ResourceGroupName $resourceGroup
+PS C:\> Get-AzFrontDoorFireWallPolicy -ResourceGroupName $resourceGroupName
 
-PolicyMode         : Prevention
-PolicyEnabledState : Enabled
-CustomRules        : {Rule1}
-ManagedRules       : {Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule}
-Etag               :
-ProvisioningState  : Succeeded
-Tags               :
-Id                 : /subscriptions/{subid}/resourcegroups/{resourceGroupName}/providers/Micr
-                     osoft.Network/frontdoorwebapplicationfirewallpolicies/{Name1}
-Name               : {Name1}
-Type               :
-
-PolicyMode         : Prevention
-PolicyEnabledState : Enabled
-CustomRules        : {Rule1}
-ManagedRules       : {Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule}
-Etag               :
-ProvisioningState  : Succeeded
-Tags               :
-Id                 : /subscriptions/{subid}/resourcegroups/{resourceGroupName}/providers/Micr
-                     osoft.Network/frontdoorwebapplicationfirewallpolicies/{Name2}
-Name               : {Name2}
-Type               :
+Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
+----         ---------- ------------------ ----------------------------- -----------
+{policyName} Prevention           Disabled
+{policyName} Detection             Enabled                           403 https://www.bing.com/
+{policyName} Detection             Enabled                           404
 ```
 
-Get all WAF policy in $resourceGroup
+Get all WAF policy in $resourceGroupName
 
 ## PARAMETERS
 
@@ -120,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

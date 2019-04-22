@@ -14,28 +14,28 @@ This topic displays help topics for the Azure Notification Hub cmdlets. Notifica
 ### [Get-AzNotificationHub](Get-AzNotificationHub.md)
 Gets information about your notification hubs.
 
-### [Get-AzNotificationHubAuthorizationRules](Get-AzNotificationHubAuthorizationRules.md)
+### [Get-AzNotificationHubAuthorizationRule](Get-AzNotificationHubAuthorizationRule.md)
 Gets information about the authorization rules associated with a notification hub.
 
-### [Get-AzNotificationHubListKeys](Get-AzNotificationHubListKeys.md)
+### [Get-AzNotificationHubListKey](Get-AzNotificationHubListKey.md)
 Gets the primary and secondary connection strings associated with a notification hub authorization rule.
 
-### [Get-AzNotificationHubPNSCredentials](Get-AzNotificationHubPNSCredentials.md)
+### [Get-AzNotificationHubPNSCredential](Get-AzNotificationHubPNSCredential.md)
 Gets the PNS credentials for a notification hub.
 
 ### [Get-AzNotificationHubsNamespace](Get-AzNotificationHubsNamespace.md)
 Gets information about a notification hub namespace.
 
-### [Get-AzNotificationHubsNamespaceAuthorizationRules](Get-AzNotificationHubsNamespaceAuthorizationRules.md)
+### [Get-AzNotificationHubsNamespaceAuthorizationRule](Get-AzNotificationHubsNamespaceAuthorizationRule.md)
 Gets information about the authorization rules associated with a notification hub namespace.
 
-### [Get-AzNotificationHubsNamespaceListKeys](Get-AzNotificationHubsNamespaceListKeys.md)
+### [Get-AzNotificationHubsNamespaceListKey](Get-AzNotificationHubsNamespaceListKey.md)
 Gets the primary and secondary connection strings associated with a notification hub namespace authorization rule.
 
 ### [New-AzNotificationHub](New-AzNotificationHub.md)
 Creates a notification hub.
 
-### [New-AzNotificationHubAuthorizationRules](New-AzNotificationHubAuthorizationRules.md)
+### [New-AzNotificationHubAuthorizationRule](New-AzNotificationHubAuthorizationRule.md)
 Creates an authorization rule and assigns the rule to a notification hub.
 
 ### [New-AzNotificationHubKey](New-AzNotificationHubKey.md)
@@ -44,7 +44,7 @@ Regenerate the Authorization Rule Key for a NotificationHub .
 ### [New-AzNotificationHubsNamespace](New-AzNotificationHubsNamespace.md)
 Creates a notification hub namespace.
 
-### [New-AzNotificationHubsNamespaceAuthorizationRules](New-AzNotificationHubsNamespaceAuthorizationRules.md)
+### [New-AzNotificationHubsNamespaceAuthorizationRule](New-AzNotificationHubsNamespaceAuthorizationRule.md)
 Creates an authorization rule and assigns that rule to a notification hub namespace.
 
 ### [New-AzNotificationHubsNamespaceKey](New-AzNotificationHubsNamespaceKey.md)
@@ -53,24 +53,24 @@ Regenerate the Authorization Rule Key for a Namespace.
 ### [Remove-AzNotificationHub](Remove-AzNotificationHub.md)
 Removes an existing notification hub.
 
-### [Remove-AzNotificationHubAuthorizationRules](Remove-AzNotificationHubAuthorizationRules.md)
+### [Remove-AzNotificationHubAuthorizationRule](Remove-AzNotificationHubAuthorizationRule.md)
 Removes an authorization rule from a notification hub.
 
 ### [Remove-AzNotificationHubsNamespace](Remove-AzNotificationHubsNamespace.md)
 Removes a notification hub namespace.
 
-### [Remove-AzNotificationHubsNamespaceAuthorizationRules](Remove-AzNotificationHubsNamespaceAuthorizationRules.md)
+### [Remove-AzNotificationHubsNamespaceAuthorizationRule](Remove-AzNotificationHubsNamespaceAuthorizationRule.md)
 Removes an authorization rule from a notification hub namespace.
 
 ### [Set-AzNotificationHub](Set-AzNotificationHub.md)
 Sets property values for a notification hub.
 
-### [Set-AzNotificationHubAuthorizationRules](Set-AzNotificationHubAuthorizationRules.md)
+### [Set-AzNotificationHubAuthorizationRule](Set-AzNotificationHubAuthorizationRule.md)
 Sets authorization rules for a notification hub.
 
 ### [Set-AzNotificationHubsNamespace](Set-AzNotificationHubsNamespace.md)
 Sets property values for a notification hub namespace.
 
-### [Set-AzNotificationHubsNamespaceAuthorizationRules](Set-AzNotificationHubsNamespaceAuthorizationRules.md)
+### [Set-AzNotificationHubsNamespaceAuthorizationRule](Set-AzNotificationHubsNamespaceAuthorizationRule.md)
 Sets authorization rules for a notification hub namespace.
 
