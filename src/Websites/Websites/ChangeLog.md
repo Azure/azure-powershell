@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* "Kind" property will now be set for PSSite objects returned by Get-AzWebApp
 
 ## Version 1.2.0
 * fixes the Set-AzWebApp and Set-AzWebAppSlot to not remove the tags on execution
