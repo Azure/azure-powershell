@@ -12,33 +12,34 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.Models;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 {
     /// <summary>
     /// Class ServerEndpointHealthConvertor.
-    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth, Microsoft.Azure.Management.StorageSync.Models.ServerEndpointHealth}" />
+    /// Implements the <see cref="Converters.ConverterBase{PSServerEndpointSyncStatus, StorageSyncModels.ServerEndpointHealth}" />
     /// </summary>
-    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth, Microsoft.Azure.Management.StorageSync.Models.ServerEndpointHealth}" />
-    public class ServerEndpointHealthConvertor : ConverterBase<PSServerEndpointHealth, StorageSyncModels.ServerEndpointHealth>
+    /// <seealso cref="Converters.ConverterBase{PSServerEndpointSyncStatus, StorageSyncModels.ServerEndpointHealth}" />
+    public class ServerEndpointHealthConverter : ConverterBase<PSServerEndpointHealth, StorageSyncModels.ServerEndpointSyncStatus>
     {
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>StorageSyncModels.ServerEndpointHealth.</returns>
-        protected override StorageSyncModels.ServerEndpointHealth Transform(PSServerEndpointHealth source) => new StorageSyncModels.ServerEndpointHealth(
+        protected override StorageSyncModels.ServerEndpointSyncStatus Transform(PSServerEndpointHealth source) => new StorageSyncModels.ServerEndpointSyncStatus(
             source.DownloadHealth,
             source.UploadHealth,
             source.CombinedHealth,
+            source.SyncActivity,
+            null /*TotalPersistentFilesNotSyncingCount currently not supported in PS*/,
             source.LastUpdatedTimestamp,
             new SyncSessionStatusConvertor().Convert(source.UploadStatus),
             new SyncSessionStatusConvertor().Convert(source.DownloadStatus),
-            new SyncProgressStatusConvertor().Convert(source.CurrentProgress),
+            new SyncActivityStatusConverter().Convert(source.UploadActivity),
+            new SyncActivityStatusConverter().Convert(source.DownloadActivity),
             source.OfflineDataTransferStatus);
 
         /// <summary>
@@ -46,17 +47,19 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>PSServerEndpointHealth.</returns>
-        protected override PSServerEndpointHealth Transform(StorageSyncModels.ServerEndpointHealth source)
+        protected override PSServerEndpointHealth Transform(StorageSyncModels.ServerEndpointSyncStatus source)
         {
             return new PSServerEndpointHealth()
             {
                 DownloadHealth = source.DownloadHealth,
                 UploadHealth = source.UploadHealth,
                 CombinedHealth = source.CombinedHealth,
+                SyncActivity = source.SyncActivity,
                 LastUpdatedTimestamp = source.LastUpdatedTimestamp,
                 UploadStatus = new SyncSessionStatusConvertor().Convert(source.UploadStatus),
                 DownloadStatus = new SyncSessionStatusConvertor().Convert(source.DownloadStatus),
-                CurrentProgress = new SyncProgressStatusConvertor().Convert(source.CurrentProgress),
+                UploadActivity = new SyncActivityStatusConverter().Convert(source.UploadActivity),
+                DownloadActivity = new SyncActivityStatusConverter().Convert(source.DownloadActivity),
                 OfflineDataTransferStatus = source.OfflineDataTransferStatus
             };
         }
