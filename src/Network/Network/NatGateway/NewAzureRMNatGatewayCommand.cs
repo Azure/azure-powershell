@@ -45,8 +45,7 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The resource group name of the nat gateway.",
-            ValueFromPipelineByPropertyName = true)]
+            HelpMessage = "The resource group name of the nat gateway.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -54,20 +53,17 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the nat gateway.",
-            ValueFromPipelineByPropertyName = true)]
+            HelpMessage = "The name of the nat gateway.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The idle timeout of the nat gateway.",
-            ValueFromPipelineByPropertyName = true)]
+            HelpMessage = "The idle timeout of the nat gateway.")]
         public int IdleTimeoutInMinutes { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of a NAT gateway SKU.")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter(MNM.NatGatewaySkuName.Standard)]
@@ -75,33 +71,24 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The location.",
-            ValueFromPipelineByPropertyName = true)]
+            HelpMessage = "The location.")]
         [LocationCompleter("Microsoft.Network/natGateways")]
         public string Location { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "A hashtable which represents resource tags.",
-            ValueFromPipelineByPropertyName = true)]
+            HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "An array of public ip addresses associated with the nat gateway resource.",
-            ValueFromPipelineByPropertyName = true)]
+            HelpMessage = "An array of public ip addresses associated with the nat gateway resource.")]
         public PSResourceId[] PublicIpAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "An array of public ip prefixes associated with the nat gateway resource.",
-            ValueFromPipelineByPropertyName = true)]
+            HelpMessage = "An array of public ip prefixes associated with the nat gateway resource.")]
         public PSResourceId[] PublicIpPrefix { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
-        public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
