@@ -24,7 +24,7 @@ Get-AzPeering [-ResourceGroupName] <String> [-Name <String>] [-DefaultProfile <I
 ```
 
 ## DESCRIPTION
-Gets all of the Peerings for a subscription
+Gets the Peerings from a subscription, resource group, or by name.
 
 ## EXAMPLES
 
@@ -58,9 +58,11 @@ Type                 : Microsoft.Peering/peerings
 Tags                 : {}
 ```
 
+Gets all the resources for the subscription.
+
 ### Example 2
 ```powershell
-PS C:> Get-AzPeering
+PS C:> Get-AzPeering -ResourceGroupName test -Name myExchangePeering1
 
 Name              : myExchangePeering1
 Sku.Name          : Basic_Exchange_Free
@@ -75,7 +77,7 @@ Type              : Microsoft.Peering/peerings
 Tags              : {}
 ```
 
-Gets all the Exchange Type Peerings for a subscription
+Gets the Exchange peering named `myExchangePeering1`
 
 ## PARAMETERS
 

@@ -70,14 +70,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public const string ParameterSetNameDefault = "Default";
 
         /// <summary>
-        /// The parameter set name use for peering service.
-        /// </summary>
-        public const string ParameterSetNameUseForPeeringService = "UseForPeeringService";
-
-        /// <summary>
         /// The parameter set name location by city.
         /// </summary>
-        public const string ParameterSetNameLocationByCity = "LocationByCity";
+        public const string ParameterSetNameLocationByCity = "ByPeeringLocation";
 
         /// <summary>
         /// ParameterSetName for GetPeering
@@ -228,6 +223,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// The force help.
         /// </summary>
         public const string ForceHelp = "Force the operation to complete";
+
+        /// <summary>
+        /// The pass thru help.
+        /// </summary>
+        public const string PassThruHelp = "Return true if complete";
 
         /// <summary>
         /// KindHelp

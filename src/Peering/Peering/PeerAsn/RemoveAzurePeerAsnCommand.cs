@@ -72,6 +72,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         /// <summary>
         /// Gets or sets the pass thru.
         /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = Constants.PassThruHelp)]
         public SwitchParameter PassThru { get; set; }
 
         /// <summary>

@@ -85,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -MaxPrefixesAdvertisedIPv4
-HelpMaxAdvertisedIPv4
+The maximum advertised IPv4
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -MaxPrefixesAdvertisedIPv6
-HelpMaxAdvertisedIPv6
+The maximum advertised IPv6
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -145,7 +145,7 @@ Accept wildcard characters: False
 ```
 
 ### -SessionPrefixV4
-HelpSessionIPv4Prefix
+The peer session IPv4 address
 
 ```yaml
 Type: System.String
@@ -160,7 +160,7 @@ Accept wildcard characters: False
 ```
 
 ### -SessionPrefixV6
-HelpSessionIPv6Prefix
+The peer session IPv6 address
 
 ```yaml
 Type: System.String

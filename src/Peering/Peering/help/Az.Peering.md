@@ -15,7 +15,7 @@ Microsoft Peering Service allows customers and Mircosoft to connect to Azure and
 Used to Convert Legacy Peering resources to Azure Resource Management (ARM) Resources. 
 
 ### [Get-AzPeerAsn](Get-AzPeerAsn.md)
-Gets Peer Asn
+Gets PeerAsn object from ARM.
 
 ### [Get-AzPeering](Get-AzPeering.md)
 Gets the Peering Resources for a subsription

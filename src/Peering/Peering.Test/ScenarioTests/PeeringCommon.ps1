@@ -80,7 +80,7 @@ return "$hash"
 
 function getBandwidth
 {
-$bandwidth = $ipGenerator.GetBandwidth()
+$bandwidth = getPeeringVariable "bandwidth" $ipGenerator.GetBandwidth()
 	return $bandwidth
 }
 

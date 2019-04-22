@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     [Cmdlet(
         VerbsCommon.Set,
         "AzPeerAsn",
-        DefaultParameterSetName = Constants.ParameterSetNameDefault,
+        DefaultParameterSetName = Constants.ParameterSetNameByName,
         SupportsShouldProcess = true)]
     [OutputType(typeof(PSPeerAsn))]
     public class SetAzurePeerAsn : PeeringBaseCmdlet
