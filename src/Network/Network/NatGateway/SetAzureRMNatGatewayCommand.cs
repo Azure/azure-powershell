@@ -72,8 +72,23 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The nat gateway")]
         public PSNatGateway NatGateway { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "An array of public ip addresses associated with the nat gateway resource.")]
+        public PSResourceId[] PublicIpAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "An array of public ip prefixes associated with the nat gateway resource.")]
+        public PSResourceId[] PublicIpPrefix { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The idle timeout of the nat gateway.")]
+        public int IdleTimeoutInMinutes { get; set; }
 
         public override void Execute()
         {
@@ -107,6 +122,26 @@ namespace Microsoft.Azure.Commands.Network
                 var resourceIdentifier = new ResourceIdentifier(this.NatGatewayId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 this.Name = resourceIdentifier.ResourceName;
+            }
+
+            // PublicIpAddresses
+            List<PSResourceId> vPublicIpAddresses = null;
+
+            // PublicIpPrefixes
+            List<PSResourceId> vPublicIpPrefixes = null;
+
+            vPublicIpAddresses = this.PublicIpAddress?.ToList();
+            vPublicIpPrefixes = this.PublicIpPrefix?.ToList();
+
+            this.NatGateway.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
+            if (this.PublicIpAddress != null)
+            {
+                this.NatGateway.PublicIpAddresses = vPublicIpAddresses;
+            }
+
+            if (this.PublicIpPrefix != null)
+            {
+                this.NatGateway.PublicIpPrefixes = vPublicIpPrefixes;
             }
 
             // Map to the sdk object
