@@ -99,6 +99,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                 ? string.Join(",", updateConfig.Windows.IncludedUpdateClassifications.Select(c => c.ToString()))
                                 : null,
                             ExcludedKbNumbers = updateConfig.Windows != null ? updateConfig.Windows.ExcludedKbNumbers : null,
+                            IncludedKbNumbers = updateConfig.Windows != null ? updateConfig.Windows.IncludedKbNumbers : null,
                             RebootSetting = updateConfig.Windows != null ? updateConfig.Windows.rebootSetting.ToString() : RebootSetting.IfRequired.ToString(),
                         },
                         Linux = updateConfig.OperatingSystem == OperatingSystemType.Windows ? null : new Sdk.LinuxProperties()
@@ -107,6 +108,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                 ? string.Join(",", updateConfig.Linux.IncludedPackageClassifications.Select(c => c.ToString()))
                                 : null,
                             ExcludedPackageNameMasks = updateConfig.Linux != null ? updateConfig.Linux.ExcludedPackageNameMasks : null,
+                            IncludedPackageNameMasks = updateConfig.Linux != null ? updateConfig.Linux.IncludedPackageNameMasks : null,
                             RebootSetting = updateConfig.Windows != null ? updateConfig.Windows.rebootSetting.ToString() : RebootSetting.IfRequired.ToString(),
                         },
                         Duration = updateConfig.Duration,

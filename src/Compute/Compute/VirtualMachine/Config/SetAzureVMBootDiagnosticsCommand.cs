@@ -27,7 +27,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMBootDiagnostics"),OutputType(typeof(PSVirtualMachine))]
+    [GenericBreakingChange("Set-AzVMBootDiagnostics alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMBootDiagnostic"),OutputType(typeof(PSVirtualMachine))]
+    [Alias("Set-AzVMBootDiagnostics")]
     public class SetAzureVMBootDiagnosticsCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         private const string EnableParameterSet = "EnableBootDiagnostics";
