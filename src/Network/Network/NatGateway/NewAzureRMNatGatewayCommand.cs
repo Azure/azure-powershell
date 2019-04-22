@@ -90,6 +90,11 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "An array of public ip prefixes associated with the nat gateway resource.")]
         public PSResourceId[] PublicIpPrefix { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+             HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
+        public SwitchParameter Force { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -162,7 +167,6 @@ namespace Microsoft.Azure.Commands.Network
                 WriteObject(psNatGateway, true);
             },
             () => present);
-
         }
     }
 }

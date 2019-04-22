@@ -182,7 +182,7 @@ function Test-NatGatewayCRUDAllParameters
     $rgname = Get-ResourceGroupName;
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
-    $location = Get-Location;
+    $location = "eastus2";
     # Resource's parameters
     $IdleTimeoutInMinutes = 5;
     $Tag = @{tag1='test'};
