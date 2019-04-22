@@ -16,13 +16,16 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
     /// Gets detailed information about a particular job.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupJobDetails", DefaultParameterSetName = JobFilterSet), OutputType(typeof(JobBase))]
+    [GenericBreakingChange("Get-AzRecoveryServicesBackupJobDetails alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupJobDetail", DefaultParameterSetName = JobFilterSet), OutputType(typeof(JobBase))]
+    [Alias("Get-AzRecoveryServicesBackupJobDetails")]
     public class GetAzureRmRecoveryServicesBackupJobDetails : RSBackupVaultCmdletBase
     {
         protected const string IdFilterSet = "IdFilterSet";

@@ -17,10 +17,13 @@ using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network		
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuitStats"), OutputType(typeof(PSExpressRouteCircuitStats))]
+    [GenericBreakingChange("Get-AzExpressRouteCircuitStats alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuitStat"), OutputType(typeof(PSExpressRouteCircuitStats))]
+    [Alias("Get-AzExpressRouteCircuitStats")]
     public class GetAzureExpressRouteCircuitStatsCommand : NetworkBaseCmdlet		
     {	
         [Parameter(		

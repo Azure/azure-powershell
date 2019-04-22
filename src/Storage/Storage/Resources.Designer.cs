@@ -995,7 +995,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage {
                 return ResourceManager.GetString("InvalidPageBlobSize", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Queue name &apos;{0}&apos; is invalid. Valid names start and end with a lower case letter or a number and has in between a lower case letter, number or dash with no consecutive dashes and is 3 through 63 characters long..
         /// </summary>

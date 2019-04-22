@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
 ## Version 1.1.0
 * Add cmdlets for ADL deleted item enumerate and restore
 
