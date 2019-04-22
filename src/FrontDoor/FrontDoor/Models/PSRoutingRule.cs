@@ -17,11 +17,46 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Models
-{    
+{
+    public class PSRouteConfiguration
+    {
+
+    }
+
+    public class PSForwardingConfiguration : PSRouteConfiguration
+    {
+        public string CustomForwardingPath { get; set; }
+
+        public PSForwardingProtocol? ForwardingProtocol { get; set; }
+
+        public string BackendPoolId { get; set; }
+
+        public PSQueryParameterStripDirective? QueryParameterStripDirective { get; set; }
+
+        public PSEnabledState? DynamicCompression { get; set; }
+
+        public bool EnableCaching { get; set; }
+    }
+
+    public class PSRedirectConfiguration : PSRouteConfiguration
+    {
+        public PSRedirectType? RedirectType { get; set; }
+
+        public PSRedirectProtocol? RedirectProtocol { get; set; }
+
+        public string CustomHost { get; set; }
+
+        public string CustomPath { get; set; }
+
+        public string CustomFragment { get; set; }
+
+        public string CustomQueryString { get; set; }
+    }
+
     /// <summary>
-        /// Represents the properties of an Azure Front Door object.
+    /// Represents the properties of an Azure Front Door object.
     /// </summary>
-    public class PSRoutingRule: PSResource
+    public class PSRoutingRule : PSResource
     {
         public List<string> FrontendEndpointIds { get; set; }
 
@@ -29,22 +64,12 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 
         public List<String> PatternsToMatch { get; set; }
 
-        public PSForwardingProtocol? ForwardingProtocol { get; set; }
-
-        public string CustomForwardingPath { get; set; }
-
-        public PSQueryParameterStripDirective? QueryParameterStripDirective { get; set; }
-
-        public PSEnabledState? DynamicCompression { get; set; }
-
         public List<PSHealthProbeSetting> HealthProbeSettings { get; set; }
 
-        public string BackendPoolId { get; set; }
-    
+        public PSRouteConfiguration RouteConfiguration { get; set; }
+
         public PSEnabledState? EnabledState { get; set; }
 
         public string ResourceState { get; set; }
-
-        public bool EnableCaching { get; set; }
     }
 }

@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.StorageServices;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.Management.Storage.Version2017_10_01.Models;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
@@ -88,29 +89,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
 
             return account;
         }
-        internal string GetResourceGroupFromId(string id)
-        {
-            var matcher = new Regex("/subscriptions/([^/]+)/resourceGroups/([^/]+)/providers/(\\w+)");
-            var result = matcher.Match(id);
-            if (!result.Success || result.Groups == null || result.Groups.Count < 3)
-            {
-                throw new InvalidOperationException(string.Format("Cannot find resource group name and storage account name from resource identity {0}", id));
-            }
-
-            return result.Groups[2].Value;
-        }
-
-        internal string GetResourceNameFromId(string id)
-        {
-            var matcher = new Regex("/subscriptions/([^/]+)/resourceGroups/([^/]+)/providers/([^/]+)/([^/]+)/([^/]+)(/\\w+)?");
-            var result = matcher.Match(id);
-            if (!result.Success || result.Groups == null || result.Groups.Count < 3)
-            {
-                throw new InvalidOperationException(string.Format("Cannot find resource group name and storage account name from resource identity {0}", id));
-            }
-
-            return result.Groups[5].Value;
-        }
 
         internal bool IsPremiumStorageAccount(string accountName)
         {
@@ -138,7 +116,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                 try
                 {
                     var account = this.GetStorageAccountFromCache(accountName);
-                    var resGroupName = this.GetResourceGroupFromId(account.Id);
+
+                    var resGroupName = new ResourceIdentifier(account.Id).ResourceGroupName;
                     StorageCredentialsFactory storageCredentialsFactory = new StorageCredentialsFactory(resGroupName,
                         this._StorageClient, this._Subscription);
                     StorageCredentials sc = storageCredentialsFactory.Create(blobUri);
@@ -368,7 +347,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             }
 
             var account = this.GetStorageAccountFromCache(accountName);
-            var resourceGroup = this.GetResourceGroupFromId(account.Id);
+            var resourceGroup = new ResourceIdentifier(account.Id).ResourceGroupName;
             var keys = this._StorageClient.StorageAccounts.ListKeys(resourceGroup, account.Name);
 
             _StorageKeyCache.Add(account.Name, keys.GetKey1());
@@ -442,7 +421,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             {
                 // P4
                 sla.IOPS = 120;
-                sla.TP = 125;
+                sla.TP = 25;
             }
             else if (diskSize > 0 && diskSize <= 64)
             {
