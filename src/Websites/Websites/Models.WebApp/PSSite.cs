@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                   id: other.Id,
                   name: other.Name,
                   type: other.Type,
+                  kind: other.Kind,
                   tags: other.Tags,
                   state: other.State,
                   hostNames: other.HostNames,
