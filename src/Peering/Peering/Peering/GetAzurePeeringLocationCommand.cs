@@ -55,7 +55,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             HelpMessage = Constants.KindHelp)]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter(Constants.Direct, Constants.Exchange)]
-        [ValidateSet(Constants.Direct, Constants.Exchange)]
         public string Kind { get; set; }
 
         /// <summary>

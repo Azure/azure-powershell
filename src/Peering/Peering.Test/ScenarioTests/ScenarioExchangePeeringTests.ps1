@@ -66,7 +66,7 @@ function Test-ConvertLegacyToExchange
 	Assert-AreEqual "Approved" $asn.ValidationState
     $legacy = Get-AzLegacyPeering -Kind $kind -PeeringLocation $loc  
 	Assert-NotNull $legacy
-	$legacy | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeeringLocation $legacy.PeeringLocation -PeerAsnResourceId $asn.Id 
+	$legacy | New-AzPeering -Name $resourceName -ResourceGroupName $resourceGroup -PeerAsnResourceId $asn.Id 
 	$newPeering = Get-AzPeering -ResourceGroupName testCarrier -Name $resourceName
 	Assert-NotNull $newPeering
 	#Assert-AreEqual $legacy.

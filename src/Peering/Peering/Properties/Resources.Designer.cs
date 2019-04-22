@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create a new PSPeering{0}ConnectionObject by using the New-AzPeering{0}ConnectionObject cmdlet..
+        /// </summary>
+        internal static string Create_NewConnectionObject {
+            get {
+                return ResourceManager.GetString("Create_NewConnectionObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Downgrading bandwidth from {0} to {1} not supported..
         /// </summary>
         internal static string Error_BandwidthDowngrade {
@@ -124,7 +133,16 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not a valid connection.
+        ///   Looks up a localized string similar to Unable to complete the request. Check your syntax for errors..
+        /// </summary>
+        internal static string Error_GenericSyntax {
+            get {
+                return ResourceManager.GetString("Error_GenericSyntax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not a valid connection {0}.
         /// </summary>
         internal static string Error_InvalidConnection {
             get {
@@ -205,11 +223,29 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} connection cannot be null or empty. .
+        /// </summary>
+        internal static string Error_NullConnection {
+            get {
+                return ResourceManager.GetString("Error_NullConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Session cannot be null or empty..
         /// </summary>
         internal static string Error_NullSession {
             get {
                 return ResourceManager.GetString("Error_NullSession", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to convert legacy peering because {0} was null or empty..
+        /// </summary>
+        internal static string Error_UnableToConvertLegacy {
+            get {
+                return ResourceManager.GetString("Error_UnableToConvertLegacy", resourceCulture);
             }
         }
         
@@ -232,11 +268,20 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to complete the request. Check your syntax for errors..
+        ///   Looks up a localized string similar to {0} is not in proper IP / CIDR notation..
         /// </summary>
-        internal static string String1 {
+        internal static string Route_NotProperCIDR {
             get {
-                return ResourceManager.GetString("String1", resourceCulture);
+                return ResourceManager.GetString("Route_NotProperCIDR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unrecognized routePrefix {0}.
+        /// </summary>
+        internal static string Route_PrefixUnrecognized {
+            get {
+                return ResourceManager.GetString("Route_PrefixUnrecognized", resourceCulture);
             }
         }
     }

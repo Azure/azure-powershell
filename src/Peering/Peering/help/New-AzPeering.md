@@ -14,7 +14,7 @@ Creates a new Peering ARM Resource
 
 ### Exchange (Default)
 ```
-New-AzPeering [-ResourceGroupName] <String> [-Name] <String> -PeeringLocation <String>
+New-AzPeering [-ResourceGroupName] <String> [-Name] <String> [-PeeringLocation] <String>
  [-PeerAsnResourceId] <String> -ExchangeConnection <PSExchangeConnection[]> [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -22,13 +22,13 @@ New-AzPeering [-ResourceGroupName] <String> [-Name] <String> -PeeringLocation <S
 ### ConvertLegacyPeering
 ```
 New-AzPeering -LegacyPeering <PSPeering> [-ResourceGroupName] <String> [-Name] <String>
- [-PeeringLocation <String>] [-PeerAsnResourceId] <String> [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PeerAsnResourceId] <String> [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Direct
 ```
-New-AzPeering [-ResourceGroupName] <String> [-Name] <String> -PeeringLocation <String>
+New-AzPeering [-ResourceGroupName] <String> [-Name] <String> [-PeeringLocation] <String>
  [-PeerAsnResourceId] <String> -DirectConnection <PSDirectConnection[]> [-UseForPeeringService]
  [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -151,7 +151,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -166,7 +166,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -225,19 +225,7 @@ Parameter Sets: Exchange, Direct
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ConvertLegacyPeering
-Aliases:
-
-Required: False
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -324,10 +312,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
-
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[]
-
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]
 
 ## OUTPUTS
 

@@ -81,7 +81,6 @@ Shows all Peering resource by Kind.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Direct, Exchange
 
 Required: True
 Position: 0

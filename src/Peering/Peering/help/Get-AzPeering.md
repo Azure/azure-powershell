@@ -101,7 +101,6 @@ Shows all Peering resource by Kind.
 Type: System.String
 Parameter Sets: BySubscription
 Aliases:
-Accepted values: Direct, Exchange
 
 Required: False
 Position: Named
@@ -150,10 +149,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
-
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectPeeringModelView
-
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangePeeringModelView
 
 ## NOTES
 

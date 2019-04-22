@@ -10,10 +10,15 @@
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
 {
+    using System;
+
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Linq;
+
+    using Microsoft.Azure.Commands.Peering.Properties;
+    using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
 
     /// <summary>
     /// InputObject location is where connectivity could be established to the
@@ -28,6 +33,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         public PSPeeringLocation()
         {
             CustomInit();
+        }
+
+        public PSPeeringLocation(object peeringLocation)
+        {
+            try
+            {
+                PeeringResourceManagerProfile.Mapper.Map<PSPeeringLocation>(peeringLocation);
+            }
+            catch (InvalidOperationException mapException)
+            {
+                throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
+            }
         }
 
         /// <summary>

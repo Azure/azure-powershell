@@ -19,5 +19,5 @@
 -->
 ## Upcoming Release
 
-## Version 1.0.0
-* General availability of `Az.Peering` module
+## Version 0.1.0
+* Preview release for Microsoft Peering Service module

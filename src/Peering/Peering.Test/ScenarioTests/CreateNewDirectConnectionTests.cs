@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         /// The test new direct connection wrong v 6.
         /// </summary>
         [Fact]
-        [Trait(Category.AcceptanceType, Category.DesktopOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDirectConnectionWrongV6()
         {
             TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewDirectConnectionWrongV6");

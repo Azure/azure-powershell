@@ -35,30 +35,16 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.BgpSession.SessionStateV4 -ne $null</ScriptBlock>
+                  <ScriptBlock>$_.BgpSession.PeerSessionIPv4Address -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
-                <Label>SessionStateV4</Label>
-                <ScriptBlock>$_.BgpSession.SessionStateV4</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <ItemSelectionCondition>
-                  <ScriptBlock>$_.BgpSession.SessionStateV6 -ne $null</ScriptBlock>
-                </ItemSelectionCondition>
-                <Label>SessionStateV6</Label>
-                <ScriptBlock>$_.BgpSession.SessionStateV6</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <ItemSelectionCondition>
-                  <ScriptBlock>$_.BgpSession.MaxPrefixesAdvertisedV4 -ne $null</ScriptBlock>
-                </ItemSelectionCondition>
-                <Label>MaxPrefixesAdvertisedV4</Label>
+                <Label>MaxPrefixesAdvertisedIPv4</Label>
                 <ScriptBlock>$_.BgpSession.MaxPrefixesAdvertisedV4</ScriptBlock>
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.BgpSession.MaxPrefixesAdvertisedV6 -ne $null</ScriptBlock>
+                  <ScriptBlock>$_.BgpSession.PeerSessionIPv6Address -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
-                <Label>MaxPrefixesAdvertisedV6</Label>
+                <Label>MaxPrefixesAdvertisedIPv6</Label>
                 <ScriptBlock>$_.BgpSession.MaxPrefixesAdvertisedV6</ScriptBlock>
               </ListItem>
               <ListItem>
@@ -76,8 +62,32 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
                 <ScriptBlock>$_.BgpSession.MicrosoftSessionIPv6Address</ScriptBlock>
               </ListItem>
               <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.BgpSession.Md5AuthenticationKey -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
                 <Label>Md5AuthenticationKey</Label>
                 <ScriptBlock>$_.BgpSession.Md5AuthenticationKey</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.BgpSession.PeerSessionIPv4Address -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>SessionStateV4</Label>
+                <ScriptBlock>$_.BgpSession.SessionStateV4</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.BgpSession.PeerSessionIPv6Address -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>SessionStateV6</Label>
+                <ScriptBlock>$_.BgpSession.SessionStateV6</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.ConnectionState -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>ConnectionState</Label>
+                <PropertyName>ConnectionState</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -99,31 +109,17 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.BgpSession.SessionPrefixv4 -ne $null</ScriptBlock>
+                  <ScriptBlock>$_.BgpSession.SessionPrefixV4 -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
-                <Label>SessionPrefixv4</Label>
-                <ScriptBlock>$_.BgpSession.SessionPrefixv4</ScriptBlock>
+                <Label>SessionPrefixV4</Label>
+                <ScriptBlock>$_.BgpSession.SessionPrefixV4</ScriptBlock>
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.BgpSession.SessionPrefixv6 -ne $null</ScriptBlock>
+                  <ScriptBlock>$_.BgpSession.SessionPrefixV6 -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
-                <Label>SessionPrefixv6</Label>
-                <ScriptBlock>$_.BgpSession.SessionPrefixv6</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <ItemSelectionCondition>
-                  <ScriptBlock>$_.BgpSession.SessionStateV4 -ne $null</ScriptBlock>
-                </ItemSelectionCondition>
-                <Label>SessionStateV4</Label>
-                <ScriptBlock>$_.BgpSession.SessionStateV4</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <ItemSelectionCondition>
-                  <ScriptBlock>$_.BgpSession.SessionStateV6 -ne $null</ScriptBlock>
-                </ItemSelectionCondition>
-                <Label>SessionStateV6</Label>
-                <ScriptBlock>$_.BgpSession.SessionStateV6</ScriptBlock>
+                <Label>SessionPrefixV6</Label>
+                <ScriptBlock>$_.BgpSession.SessionPrefixV6</ScriptBlock>
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
@@ -147,8 +143,32 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
                 <ScriptBlock>$_.BandwidthInMbps</ScriptBlock>
               </ListItem>
               <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.BgpSession.Md5AuthenticationKey -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
                 <Label>Md5AuthenticationKey</Label>
                 <ScriptBlock>$_.BgpSession.Md5AuthenticationKey</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.BgpSession.SessionPrefixV4 -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>SessionStateV4</Label>
+                <ScriptBlock>$_.BgpSession.SessionStateV4</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.BgpSession.SessionPrefixV6 -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>SessionStateV6</Label>
+                <ScriptBlock>$_.BgpSession.SessionStateV6</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.ConnectionState -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>ConnectionState</Label>
+                <PropertyName>ConnectionState</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -194,30 +214,16 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.SessionStateV4 -ne $null</ScriptBlock>
-                </ItemSelectionCondition>
-                <Label>SessionStateV4</Label>
-                <ScriptBlock>$_.SessionStateV4</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <ItemSelectionCondition>
-                  <ScriptBlock>$_.SessionStateV6 -ne $null</ScriptBlock>
-                </ItemSelectionCondition>
-                <Label>SessionStateV6</Label>
-                <ScriptBlock>$_.SessionStateV6</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <ItemSelectionCondition>
                   <ScriptBlock>$_.MaxPrefixesAdvertisedV4 -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
-                <Label>MaxPrefixesAdvertisedV4</Label>
+                <Label>MaxPrefixesAdvertisedIPv6</Label>
                 <ScriptBlock>$_.MaxPrefixesAdvertisedV4</ScriptBlock>
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
                   <ScriptBlock>$_.MaxPrefixesAdvertisedV6 -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
-                <Label>MaxPrefixesAdvertisedV6</Label>
+                <Label>MaxPrefixesAdvertisedIPv6</Label>
                 <ScriptBlock>$_.MaxPrefixesAdvertisedV6</ScriptBlock>
               </ListItem>
               <ListItem>
@@ -237,6 +243,20 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
               <ListItem>
                 <Label>Md5AuthenticationKey</Label>
                 <PropertyName>Md5AuthenticationKey</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.SessionStateV4 -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>SessionStateV4</Label>
+                <ScriptBlock>$_.SessionStateV4</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.SessionStateV6 -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>SessionStateV6</Label>
+                <ScriptBlock>$_.SessionStateV6</ScriptBlock>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -468,6 +488,20 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
                 </ItemSelectionCondition>
                 <Label>MicrosoftIPv6Address</Label>
                 <ScriptBlock>$_.MicrosoftIPv6Address</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.FacilityIPv4Prefix -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>FacilityIPv4Prefix</Label>
+                <ScriptBlock>$_.FacilityIPv4Prefix</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.FacilityIPv6Prefix -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>FacilityIPv6Prefix</Label>
+                <ScriptBlock>$_.FacilityIPv6Prefix</ScriptBlock>
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
@@ -754,35 +788,51 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
           <ListEntry>
             <ListItems>
               <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>PeerName</Label>
                 <PropertyName>PeerName</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>PeerAsn</Label>
-                <PropertyName>PeerAsn</PropertyName>
+                <Label>PeerAsnProperty</Label>
+                <PropertyName>PeerAsnProperty</PropertyName>
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
                   <ScriptBlock>$_.PeerContactInfo -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
-                <Label>Email</Label>
+                <Label>PeerContactInfo.Email</Label>
                 <ScriptBlock>$_.PeerContactInfo.Emails</ScriptBlock>
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
                   <ScriptBlock>$_.PeerContactInfo -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
-                <Label>Phone</Label>
+                <Label>PeerContactInfo.Phone</Label>
                 <ScriptBlock>$_.PeerContactInfo.Phone</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ValidationState</Label>
+                <PropertyName>ValidationState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -975,16 +1025,16 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.Direct.Connections[0].BgpSession.SessionStateV4 -ne "None"</ScriptBlock>
+                  <ScriptBlock>$_.Direct.Connections[0].BgpSession.SessionStateV4 -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
                 <Label>SessionStateV4</Label>
                 <ScriptBlock>$_.Direct.Connections[0].BgpSession.SessionStateV4</ScriptBlock>
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.Direct.Connections[0].BgpSession.MaxPrefixesAdvertisedV4 -ne 0</ScriptBlock>
+                  <ScriptBlock>$_.Direct.Connections[0].BgpSession.MaxPrefixesAdvertisedV4 -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
-                <Label>MaxPrefixesAdvertisedV4</Label>
+                <Label>MaxPrefixesAdvertisedIPv4</Label>
                 <ScriptBlock>$_.Direct.Connections[0].BgpSession.MaxPrefixesAdvertisedV4</ScriptBlock>
               </ListItem>
               <ListItem>
@@ -1010,16 +1060,16 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.Direct.Connections[0].BgpSession.SessionStateV6 -ne "None"</ScriptBlock>
+                  <ScriptBlock>$_.Direct.Connections[0].BgpSession.SessionStateV6 -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
                 <Label>SessionStateV6</Label>
                 <ScriptBlock>$_.Direct.Connections[0].BgpSession.SessionStateV6</ScriptBlock>
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.Direct.Connections[0].BgpSession.MaxPrefixesAdvertisedV6 -ne 0</ScriptBlock>
+                  <ScriptBlock>$_.Direct.Connections[0].BgpSession.MaxPrefixesAdvertisedV6 -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
-                <Label>MaxPrefixesAdvertisedV6</Label>
+                <Label>MaxPrefixesAdvertisedIPv6</Label>
                 <ScriptBlock>$_.Direct.Connections[0].BgpSession.MaxPrefixesAdvertisedV6</ScriptBlock>
               </ListItem>
               <ListItem>
@@ -1080,16 +1130,16 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.Direct.Connections[1].BgpSession.SessionStateV4 -ne "None"</ScriptBlock>
+                  <ScriptBlock>$_.Direct.Connections[1].BgpSession.SessionStateV4 -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
                 <Label>SessionStateV4</Label>
                 <ScriptBlock>$_.Direct.Connections[1].BgpSession.SessionStateV4</ScriptBlock>
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.Direct.Connections[1].BgpSession.MaxPrefixesAdvertisedV4 -ne 0</ScriptBlock>
+                  <ScriptBlock>$_.Direct.Connections[1].BgpSession.MaxPrefixesAdvertisedV4 -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
-                <Label>MaxPrefixesAdvertisedV4</Label>
+                <Label>MaxPrefixesAdvertisedIPv4</Label>
                 <ScriptBlock>$_.Direct.Connections[1].BgpSession.MaxPrefixesAdvertisedV4</ScriptBlock>
               </ListItem>
               <ListItem>
@@ -1115,16 +1165,16 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.Direct.Connections[1].BgpSession.SessionStateV6 -ne "None"</ScriptBlock>
+                  <ScriptBlock>$_.Direct.Connections[1].BgpSession.SessionStateV6 -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
                 <Label>SessionStateV6</Label>
                 <ScriptBlock>$_.Direct.Connections[1].BgpSession.SessionStateV6</ScriptBlock>
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.Direct.Connections[1].BgpSession.MaxPrefixesAdvertisedV6 -ne 0</ScriptBlock>
+                  <ScriptBlock>$_.Direct.Connections[1].BgpSession.MaxPrefixesAdvertisedV6 -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
-                <Label>MaxPrefixesAdvertisedV6</Label>
+                <Label>MaxPrefixesAdvertisedIPv6</Label>
                 <ScriptBlock>$_.Direct.Connections[1].BgpSession.MaxPrefixesAdvertisedV6</ScriptBlock>
               </ListItem>
               <ListItem>
@@ -1178,16 +1228,16 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.Exchange.Connections[0].BgpSession.SessionStateV4 -ne "None"</ScriptBlock>
+                  <ScriptBlock>$_.Exchange.Connections[0].BgpSession.SessionStateV4 -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
                 <Label>SessionStateV4</Label>
                 <ScriptBlock>$_.Exchange.Connections[0].BgpSession.SessionStateV4</ScriptBlock>
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.Exchange.Connections[0].BgpSession.MaxPrefixesAdvertisedV4 -ne 0</ScriptBlock>
+                  <ScriptBlock>$_.Exchange.Connections[0].BgpSession.MaxPrefixesAdvertisedV4 -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
-                <Label>MaxPrefixesAdvertisedV4</Label>
+                <Label>MaxPrefixesAdvertisedIPv4</Label>
                 <ScriptBlock>$_.Exchange.Connections[0].BgpSession.MaxPrefixesAdvertisedV4</ScriptBlock>
               </ListItem>
               <ListItem>
@@ -1206,16 +1256,16 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.Exchange.Connections[0].BgpSession.SessionStateV6 -ne "None"</ScriptBlock>
+                  <ScriptBlock>$_.Exchange.Connections[0].BgpSession.SessionStateV6 -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
                 <Label>SessionStateV6</Label>
                 <ScriptBlock>$_.Exchange.Connections[0].BgpSession.SessionStateV6</ScriptBlock>
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.Exchange.Connections[0].BgpSession.MaxPrefixesAdvertisedV6 -ne 0</ScriptBlock>
+                  <ScriptBlock>$_.Exchange.Connections[0].BgpSession.MaxPrefixesAdvertisedV6 -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
-                <Label>MaxPrefixesAdvertisedV6</Label>
+                <Label>MaxPrefixesAdvertisedIPv6</Label>
                 <ScriptBlock>$_.Exchange.Connections[0].BgpSession.MaxPrefixesAdvertisedV6</ScriptBlock>
               </ListItem>
               <ListItem>
@@ -1234,10 +1284,10 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.Exchange.Connections[0] -ne $null</ScriptBlock>
+                  <ScriptBlock>$_.Exchange.Connections[1] -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
                 <Label>PeeringDBFacilityId</Label>
-                <ScriptBlock>$_.Exchange.Connections[0].PeeringDBFacilityId</ScriptBlock>
+                <ScriptBlock>$_.Exchange.Connections[1].PeeringDBFacilityId</ScriptBlock>
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
@@ -1255,16 +1305,16 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.Exchange.Connections[1].BgpSession.SessionStateV4 -ne "None"</ScriptBlock>
+                  <ScriptBlock>$_.Exchange.Connections[1].BgpSession.SessionStateV4 -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
                 <Label>SessionStateV4</Label>
                 <ScriptBlock>$_.Exchange.Connections[1].BgpSession.SessionStateV4</ScriptBlock>
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.Exchange.Connections[1].BgpSession.MaxPrefixesAdvertisedV4 -ne 0</ScriptBlock>
+                  <ScriptBlock>$_.Exchange.Connections[1].BgpSession.MaxPrefixesAdvertisedV4 -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
-                <Label>MaxPrefixesAdvertisedV4</Label>
+                <Label>MaxPrefixesAdvertisedIPv4</Label>
                 <ScriptBlock>$_.Exchange.Connections[1].BgpSession.MaxPrefixesAdvertisedV4</ScriptBlock>
               </ListItem>
               <ListItem>
@@ -1283,16 +1333,16 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.Exchange.Connections[1].BgpSession.SessionStateV6 -ne "None"</ScriptBlock>
+                  <ScriptBlock>$_.Exchange.Connections[1].BgpSession.SessionStateV6 -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
                 <Label>SessionStateV6</Label>
                 <ScriptBlock>$_.Exchange.Connections[1].BgpSession.SessionStateV6</ScriptBlock>
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.Exchange.Connections[1].BgpSession.MaxPrefixesAdvertisedV6 -ne 0</ScriptBlock>
+                  <ScriptBlock>$_.Exchange.Connections[1].BgpSession.MaxPrefixesAdvertisedV6 -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
-                <Label>MaxPrefixesAdvertisedV6</Label>
+                <Label>MaxPrefixesAdvertisedIPv6</Label>
                 <ScriptBlock>$_.Exchange.Connections[1].BgpSession.MaxPrefixesAdvertisedV6</ScriptBlock>
               </ListItem>
               <ListItem>

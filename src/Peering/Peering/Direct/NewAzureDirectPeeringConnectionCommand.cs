@@ -38,19 +38,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ValueFromPipeline = true,
             HelpMessage = Constants.HelpPeeringDBFacilityId,
             ParameterSetName = Constants.ParameterSetNameIPv4Prefix)]
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ValueFromPipeline = true,
             HelpMessage = Constants.HelpPeeringDBFacilityId,
             ParameterSetName = Constants.ParameterSetNameIPv6Prefix)]
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ValueFromPipeline = true,
             HelpMessage = Constants.HelpPeeringDBFacilityId,
             ParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix)]
         [ValidateNotNullOrEmpty]
