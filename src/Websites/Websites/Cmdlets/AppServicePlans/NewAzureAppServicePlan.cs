@@ -106,13 +106,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
             {
                 Location = Location,
                 Sku = sku,
-                AdminSiteName = null,
                 PerSiteScaling = PerSiteScaling,
                 IsXenon = HyperV.IsPresent
             };
 
+            AppServicePlan retPlan = WebsitesClient.CreateOrUpdateAppServicePlan(ResourceGroupName, Name, appServicePlan, AseName, aseResourceGroupName);
+            PSAppServicePlan psPlan = new PSAppServicePlan(retPlan);
 
-            WriteObject(new PSAppServicePlan(WebsitesClient.CreateOrUpdateAppServicePlan(ResourceGroupName, Name, appServicePlan, AseName, aseResourceGroupName)), true);
+            WriteObject(psPlan, true);
         }
     }
 }

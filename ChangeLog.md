@@ -1,3 +1,164 @@
+## 1.8.0 - April 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+* Added wildcard support to Get cmdlets for Az.Compute and Az.Network
+* Added interactive and username/password authentication for Windows PowerShell 5.1 only
+* Added support for Python 2 runbooks in Az.Automation
+* Az.LogicApp: New cmdlets for Integration Account Assemblies and Batch Configuration
+
+#### Az.Accounts
+* Update Uninstall-AzureRm to correctly delete modules in Mac
+
+#### Az.Batch
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.Cdn
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.CognitiveServices
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.Compute
+* Fix issue with AEM installation if resource ids of disks had lowercase resourcegroups in resource id
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Fix documentation for wildcards
+
+#### Az.DataFactory
+* Add SsisProperties if NodeCount not null for managed integration runtime.
+
+#### Az.DataLakeStore
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.EventGrid
+* Updated the help text for endpoint to indicate that resources should be created before using the create/update event subscription cmdlets.
+
+#### Az.EventHub
+* Added new cmdlets for NetworkRuleSet of Namespace 
+
+#### Az.HDInsight
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.IotHub
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.KeyVault
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Fix documentation for wildcards
+
+#### Az.MachineLearning
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.Media
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.Monitor
+  * New cmdlets for GenV2(non classic) metric-based alert rule
+      - New-AzMetricAlertRuleV2DimensionSelection
+      - New-AzMetricAlertRuleV2Criteria
+      - Remove-AzMetricAlertRuleV2
+      - Get-AzMetricAlertRuleV2
+      - Add-AzMetricAlertRuleV2
+  * Updated Monitor SDK to version 0.22.0-preview
+
+#### Az.Network
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Fix documentation for wildcards
+
+#### Az.NotificationHubs
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.OperationalInsights
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.PowerBIEmbedded
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.RecoveryServices
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Updated table format for SQL in azure VM
+* Added alternate method to fetch location in AzureFileShare
+* Updated ScheduleRunDays in SchedulePolicy object according to timezone
+
+#### Az.RedisCache
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+#### Az.Resources
+* Fix documentation for wildcards
+
+#### Az.Sql
+* Replace dependency on Monitor SDK with common code
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Enhanced process of multiple columns classification.
+* Include sku properties (sku name, family, capacity) in response from Get-AzSqlServerServiceObjective and format as table by default.
+* Ability to Get-AzSqlServerServiceObjective by location without needing a preexisting server in the region.
+* Support for time zone parameter in Managed Instance create.
+* Fix documentation for wildcards
+
+#### Az.Websites
+* fixes the Set-AzWebApp and Set-AzWebAppSlot to not remove the tags on execution
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Updated the WebSites SDK.
+* Removed the AdminSiteName property from PSAppServicePlan.
+
+## 1.7.0 - April 2019
+### Highlights since the last major release
+* General availability of `Az` module
+* For more information about the `Az` module, please visit the following: https://aka.ms/azps-announce
+* Added Location, ResourceGroup, and ResourceName completers: https://azure.microsoft.com/en-us/blog/completers-in-azure-powershell/
+* Added wildcard support to Get cmdlets for Az.Compute and Az.Network
+* Added interactive and username/password authentication for Windows PowerShell 5.1 only
+* Added support for Python 2 runbooks in Az.Automation
+* Az.LogicApp: New cmdlets for Integration Account Assemblies and Batch Configuration
+
+#### Az.Accounts
+* Updated Add-AzEnvironment and Set-AzEnvironment to accept parameter AzureAnalysisServicesEndpointResourceId
+
+#### Az.AnalysisServices
+* Using ServiceClient in dataplane cmdlets and removing the original authentication logic
+* Making Add-AzureASAccount a wrapper of Connect-AzAccount to avoid a breaking change
+
+#### Az.Automation
+* Fixed New-AzAutomationSoftwareUpdateConfiguration cmdlet bug for Inclusions. Now parameter IncludedKbNumber and IncludedPackageNameMask should work.
+* Bug fix for azure automation update management dynamic group
+
+#### Az.Compute
+* Add HyperVGeneration parameter to New-AzDiskConfig and New-AzSnapshotConfig
+* Allow VM creation with galley image from other tenants. 
+
+#### Az.ContainerInstance
+* Fixed issue in the -Command parameter of New-AzContainerGroup which added a trailing empty argument
+
+#### Az.DataFactory
+* Updated ADF .Net SDK version to 3.0.2
+* Updated Set-AzDataFactoryV2 cmdlet with extra parameters for RepoConfiguration related settings.
+
+#### Az.Resources
+* Improve handling of providers for 'Get-AzResource' when providing '-ResourceId' or '-ResourceGroupName', '-Name' and '-ResourceType' parameters
+* Improve error handling for for 'Test-AzDeployment' and 'Test-AzResourceGroupDeployment'
+    - Handle errors thrown outside of deployment validation and include them in output of command instead
+    - More information here: https://github.com/Azure/azure-powershell/issues/6856
+* Add '-IgnoreDynamicParameters' switch parameter to set of deployment cmdlets to skip prompt in script and job scenarios
+    - More information here: https://github.com/Azure/azure-powershell/issues/6856
+
+#### Az.Sql
+* Support Database Data Classification.
+
+#### Az.Storage
+* Report detail error when create Storage context with parameter -UseConnectedAccount, but without login Azure account
+    - New-AzStorageContext
+* Support Manage Blob Service Properties of a specified Storage account with Management plane API
+    - Update-AzStorageBlobServiceProperty
+    - Get-AzStorageBlobServiceProperty
+    - Enable-AzStorageBlobDeleteRetentionPolicy
+    - Disable-AzStorageBlobDeleteRetentionPolicy
+* -AsJob support for Blob and file upload and download cmdlets
+    - Get-AzStorageBlobContent
+    - Set-AzStorageBlobContent
+    - Get-AzStorageFileContent
+    - Set-AzStorageFileContent
+
 ## 1.6.0 - March 2019
 ### Highlights since the last major release
 * General availability of `Az` module
