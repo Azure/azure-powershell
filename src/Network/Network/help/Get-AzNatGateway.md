@@ -8,13 +8,13 @@ schema: 2.0.0
 # Get-AzNatGateway
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a Nat Gateway resource in a resource group by name or NatGateway Id  or all Nat Gateway resources in a resource group.
 
 ## SYNTAX
 
-### NoExpand (Default)
+### ListParameterSet (Default)
 ```
-Get-AzNatGateway [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNatGateway [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByNameParameterSet
@@ -23,32 +23,120 @@ Get-AzNatGateway -ResourceGroupName <String> -Name <String> [-DefaultProfile <IA
  [<CommonParameters>]
 ```
 
-### ListParameterSet
-```
-Get-AzNatGateway [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ### GetByResourceIdParameterSet
 ```
 Get-AzNatGateway -NatGatewayId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Expand
-```
-Get-AzNatGateway -ExpandResource <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-{{ Fill in the Description }}
+Gets a Nat Gateway resource in a resource group by name OR NatGateway Id OR all Nat Gateway resources in a resource group.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:> {{ Add example code here }}
-```
+PS C:> Get-AzNatGateway -ResourceGroupName "natgateway_test"
 
-{{ Add example description here }}
+
+IdleTimeoutInMinutes  : 4
+ProvisioningState     : Succeeded
+Sku                   : Microsoft.Azure.Commands.Network.Models.PSNatGatewaySku
+PublicIpAddresses     : {/subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPAddresses/Test_Pip}
+PublicIpPrefixes      : {}
+SkuText               : {
+                          "Name": "Standard"
+                        }
+PublicIpAddressesText : [
+                          {
+                            "Id": "/subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPAddresses/Test_Pip"
+                          }
+                        ]
+PublicIpPrefixesText  : []
+ResourceGroupName     : natgateway_test
+Location              : eastus2
+ResourceGuid          :
+Type                  : Microsoft.Network/natGateways
+Tag                   :
+TagsTable             :
+Name                  : nat_gateway
+Etag                  : W/"178470d2-7b86-4ddd-b954-e0cd3ab30a90"
+Id                    : /subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/nat_gateway
+
+IdleTimeoutInMinutes  : 4
+ProvisioningState     : Succeeded
+Sku                   : Microsoft.Azure.Commands.Network.Models.PSNatGatewaySku
+PublicIpAddresses     : {}
+PublicIpPrefixes      : {}
+SkuText               : {
+                          "Name": "Standard"
+                        }
+PublicIpAddressesText : []
+PublicIpPrefixesText  : []
+ResourceGroupName     : natgateway_test
+Location              : eastus2
+ResourceGuid          :
+Type                  : Microsoft.Network/natGateways
+Tag                   :
+TagsTable             :
+Name                  : ng1
+Etag                  : W/"bdf98e30-d6c6-4af2-8f62-10d1fdaa6e84"
+Id                    : /subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/ng1
+
+
+PS C:> Get-AzNatGateway -ResourceGroupName "natgateway_test" -Name "nat_gateway"
+
+
+IdleTimeoutInMinutes  : 4
+ProvisioningState     : Succeeded
+Sku                   : Microsoft.Azure.Commands.Network.Models.PSNatGatewaySku
+PublicIpAddresses     : {/subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPAddresses/Test_Pip}
+PublicIpPrefixes      : {}
+SkuText               : {
+                          "Name": "Standard"
+                        }
+PublicIpAddressesText : [
+                          {
+                            "Id": "/subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPAddresses/Test_Pip"
+                          }
+                        ]
+PublicIpPrefixesText  : []
+ResourceGroupName     : natgateway_test
+Location              : eastus2
+ResourceGuid          :
+Type                  : Microsoft.Network/natGateways
+Tag                   :
+TagsTable             :
+Name                  : nat_gateway
+Etag                  : W/"178470d2-7b86-4ddd-b954-e0cd3ab30a90"
+Id                    : /subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/nat_gateway
+
+PS C:> Get-AzNatGateway -NatGatewayId "/subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/nat_gateway"
+
+
+IdleTimeoutInMinutes  : 4
+ProvisioningState     : Succeeded
+Sku                   : Microsoft.Azure.Commands.Network.Models.PSNatGatewaySku
+PublicIpAddresses     : {/subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPAddresses/Test_Pip}
+PublicIpPrefixes      : {}
+SkuText               : {
+                          "Name": "Standard"
+                        }
+PublicIpAddressesText : [
+                          {
+                            "Id": "/subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPAddresses/Test_Pip"
+                          }
+                        ]
+PublicIpPrefixesText  : []
+ResourceGroupName     : natgateway_test
+Location              : eastus2
+ResourceGuid          :
+Type                  : Microsoft.Network/natGateways
+Tag                   :
+TagsTable             :
+Name                  : nat_gateway
+Etag                  : W/"178470d2-7b86-4ddd-b954-e0cd3ab30a90"
+Id                    : /subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/nat_gateway
+```
 
 ## PARAMETERS
 
@@ -67,21 +155,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExpandResource
-The resource reference to be expanded.
-
-```yaml
-Type: String
-Parameter Sets: Expand
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the nat gateway.
 
@@ -93,7 +166,7 @@ Aliases: ResourceName
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -117,25 +190,25 @@ The resource group name of the nat gateway.
 
 ```yaml
 Type: String
-Parameter Sets: GetByNameParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
 Parameter Sets: ListParameterSet
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: GetByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -52,13 +52,11 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "The resource group name of the nat gateway.",
-            ParameterSetName = GetByNameParameterSet,
-            ValueFromPipelineByPropertyName = true)]
+            ParameterSetName = GetByNameParameterSet)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The resource group name of the nat gateway.",
-            ParameterSetName = ListParameterSet,
-            ValueFromPipelineByPropertyName = true)]
+            ParameterSetName = ListParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -67,8 +65,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the nat gateway.",
-            ParameterSetName = GetByNameParameterSet,
-            ValueFromPipelineByPropertyName = true)]
+            ParameterSetName = GetByNameParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/natGateways", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -80,14 +77,6 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string NatGatewayId { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The resource reference to be expanded.",
-            ParameterSetName = "Expand",
-            ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string ExpandResource { get; set; }
 
         public override void Execute()
         {
@@ -102,7 +91,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (ShouldGetByName(this.ResourceGroupName, this.Name))
             {
-                var vNatGateway = this.NetworkClient.NetworkManagementClient.NatGateways.Get(ResourceGroupName, Name, ExpandResource);
+                var vNatGateway = this.NetworkClient.NetworkManagementClient.NatGateways.Get(ResourceGroupName, Name);
                 var vNatGatewayModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSNatGateway>(vNatGateway);
                 vNatGatewayModel.ResourceGroupName = this.ResourceGroupName;
                 vNatGatewayModel.Tag = TagsConversionHelper.CreateTagHashtable(vNatGateway.Tags);
@@ -111,7 +100,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<NatGateway> vNatGatewayPage;
-                if (ShouldGetByName(this.ResourceGroupName, this.Name))
+                if (ShouldListByResourceGroup(this.ResourceGroupName, this.Name))
                 {
                     vNatGatewayPage = this.NetworkClient.NetworkManagementClient.NatGateways.List(this.ResourceGroupName);
                 }

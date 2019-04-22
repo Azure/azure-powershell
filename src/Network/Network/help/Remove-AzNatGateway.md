@@ -8,11 +8,11 @@ schema: 2.0.0
 # Remove-AzNatGateway
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a Nat Gateway resource based on name or Resource Id.
 
 ## SYNTAX
 
-### DeleteByNameParameterSet
+### DeleteByNameParameterSet (Default)
 ```
 Remove-AzNatGateway -ResourceGroupName <String> -Name <String> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -20,27 +20,27 @@ Remove-AzNatGateway -ResourceGroupName <String> -Name <String> [-Force] [-AsJob]
 
 ### DeleteByInputObjectParameterSet
 ```
-Remove-AzNatGateway -InputObject <PSTopLevelResource> [-Force] [-AsJob] [-PassThru]
+Remove-AzNatGateway -NatGateway <PSNatGateway> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteByResourceIdParameterSet
 ```
-Remove-AzNatGateway -ResourceId <String> [-Force] [-AsJob] [-PassThru]
+Remove-AzNatGateway -NatGatewayId <String> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Removes a Nat Gateway resource based on name or Resource Id.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:> {{ Add example code here }}
+PS C:> $nat = Get-AzNatGateway -ResourceGroupName "natgateway_test" -Name "nat_gateway"
+PS C:> Remove-AzNatGateway -NatGateway $nat
+PS C:> Remove-AzNatGateway -NatGatewayId "/subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/natgateway"
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -89,21 +89,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-{{ Fill InputObject Description }}
-
-```yaml
-Type: PSTopLevelResource
-Parameter Sets: DeleteByInputObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 {{ Fill Name Description }}
 
@@ -116,6 +101,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NatGateway
+{{ Fill NatGateway Description }}
+
+```yaml
+Type: PSNatGateway
+Parameter Sets: DeleteByInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -NatGatewayId
+{{ Fill NatGatewayId Description }}
+
+```yaml
+Type: String
+Parameter Sets: DeleteByResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -146,21 +161,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-{{ Fill ResourceId Description }}
-
-```yaml
-Type: String
-Parameter Sets: DeleteByResourceIdParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

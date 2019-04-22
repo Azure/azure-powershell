@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNatGateway
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create new Nat Gateway resource with properties Public Ip Address/Public Ip Prefix, IdleTimeoutInMinutes and Sku.
 
 ## SYNTAX
 
@@ -19,16 +19,28 @@ New-AzNatGateway -ResourceGroupName <String> -Name <String> [-IdleTimeoutInMinut
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNatGateway** cmdlet creates a Nat Gateway Resource. 
+A natgateway requires the following: 
+- Public Ip Address and/or Public Ip Prefix
+- IdleTimeoutInMinutes 
+- Sku
+- ResourceGroupName
+- ResourceName
+- Location
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 : Create Nat Gateway with Public Ip Address
 ```powershell
-PS C:> {{ Add example code here }}
+PS C:> $pip = New-AzPublicIpAddress -Name "pip" -ResourceGroupName "natgateway_test" -Location "eastus2" -Sku "Standard" -IdleTimeoutInMinutes 4 -AllocationMethod "static"
+PS C:> $natgateway = New-AzNatGateway -ResourceGroupName "natgateway_test" -Name "nat_gateway" -IdleTimeoutInMinutes 4 -Sku "Standard" -Location "eastus2" -PublicIpAddress $pip
 ```
 
-{{ Add example description here }}
+### Example 2 : Create Nat Gateway with Public Ip Prefix
+```powershell
+PS C:> $publicipprefix = New-AzPublicIpPrefix -Name "prefix2" -ResourceGroupName "natgateway_test" -Location "eastus2" -Sku "Standard" -PrefixLength "31"
+PS C:> $natgateway = New-AzNatGateway -ResourceGroupName "natgateway_test" -Name "nat_gateway" -IdleTimeoutInMinutes 4 -Sku "Standard" -Location "eastus2" -PublicIpPrefix $publicipprefix
+```
 
 ## PARAMETERS
 
@@ -88,7 +100,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -103,7 +115,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -118,7 +130,7 @@ Aliases: ResourceName
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -133,7 +145,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -148,7 +160,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -163,7 +175,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -178,7 +190,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -193,7 +205,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
