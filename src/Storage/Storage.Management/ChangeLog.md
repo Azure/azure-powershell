@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgrade to Microsoft.Azure.Management.Storage 11.0.0, to support new API version 2019-04-01.
+* The default Storage account Kind in Create Storage account change from 'Storage' to 'StorageV2'
+    - New-AzStorageAccount
+* Change the Storage account cmdlet output Sku.Name to be aligned with input SkuName by add '-', like "StandardLRS" change to "Standard_LRS"
+    - New-AzStorageAccount
+    - Get-AzStorageAccount
+    - Set-AzStorageAccount
 
 ## Version 1.2.0
 * Report detail error when create Storage context with parameter -UseConnectedAccount, but without login Azure account
