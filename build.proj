@@ -187,7 +187,7 @@
     <Error Text="BinScope or PoliCheck failed. Please check the files in artifacts/BinScope, or Severity 1 issues in artifacts/PoliCheck-Scan.html" />
   </Target>
 
-  <Target Name="GenerateHelp" DependsOnTargets="FilterBuild" Condition="'$(SkipHelp)' == 'false'">
+  <Target Name="GenerateHelp" Condition="'$(SkipHelp)' == 'false'">
     <Message Importance="high" Text="Running help generation..." />
     <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
 
@@ -198,7 +198,7 @@
   <!-- Everything except Publish -->
   <Target Name="Full" DependsOnTargets="Clean;Build;OnPremChecks;GenerateHelp;StaticAnalysis;Test" />
 
-  <Target Name="StaticAnalysis" DependsOnTargets="FilterBuild" Condition="'$(RunStaticAnalysis)' == 'true'">
+  <Target Name="StaticAnalysis" Condition="'$(RunStaticAnalysis)' == 'true'">
     <Message Importance="high" Text="Running static analysis..." />
     <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
 
@@ -237,7 +237,7 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. Unregister-PSRepository -Name MSIcreationrepository &quot;" />
   </Target>
 
-  <Target Name="Test" DependsOnTargets="FilterBuild">
+  <Target Name="Test">
     <Message Importance="high" Text="Running check in tests..." />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
 
