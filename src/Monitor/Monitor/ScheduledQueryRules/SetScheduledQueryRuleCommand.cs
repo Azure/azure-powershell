@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -23,6 +24,7 @@ using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Management.Models;
 using Microsoft.Azure.Management.Monitor.Models;
 using ActivityLogAlertResource = Microsoft.Azure.Management.Monitor.Models.ActivityLogAlertResource;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 {
@@ -113,7 +115,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         [Parameter(ParameterSetName = ByRuleName, Mandatory = false, HelpMessage = "Resource tags")]
         [Parameter(ParameterSetName = ByInputObject, Mandatory = false, HelpMessage = "Resource tags")]
         [Parameter(ParameterSetName = ByResourceId, Mandatory = false, HelpMessage = "Resource tags")]
-        public IDictionary<string, string> Tag { get; set; }
+        public Hashtable Tag { get; set; }
 
         //
         // Summary:
@@ -220,7 +222,8 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 
             if (this.MyInvocation.BoundParameters.ContainsKey("Tags") || this.Tag != null)
             {
-                requestBody.Tags = this.Tag;
+                Dictionary<string, string> tags = TagsConversionHelper.CreateTagDictionary(Tag, true);
+                requestBody.Tags = tags;
             }
 
             return requestBody;

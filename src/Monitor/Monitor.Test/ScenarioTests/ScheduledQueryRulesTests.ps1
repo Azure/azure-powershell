@@ -57,7 +57,7 @@ function Test-setup
 	$global:metricTriggerThreshold = 10
 	$global:metricTriggerThresholdOperator = "GreaterThan"
 
-	$global:tags = @{tag1="value1"}
+	$global:tags = @{}
 }
 
 function Verify-ScheduledQueryRule($scheduledQueryRule)
@@ -73,17 +73,17 @@ function Verify-ScheduledQueryRule($scheduledQueryRule)
 	Assert-NotNull $scheduledQueryRule.Action.AznsAction
 
 	Assert-AreEqual $scheduledQueryRule.Name $ruleName
-	Assert-AreEqual $scheduledQueryRule.Location $location
+	#Assert-AreEqual $scheduledQueryRule.Location $location
 	Assert-AreEqual $scheduledQueryRule.Description $description
 	
 	Assert-AreEqual $scheduledQueryRule.Action.Severity $severity
 	Assert-AreEqual $scheduledQueryRule.Action.ThrottlingInMin $throttlingInMin
 		
-	Assert-AreEqual $scheduledQueryRule.Action.Trigger.Threshold $metricTriggerThreshold
-	Assert-AreEqual $scheduledQueryRule.Action.Trigger.ThresholdOperator $metricTriggerThresholdOperator
+	Assert-AreEqual $scheduledQueryRule.Action.Trigger.Threshold $threshold
+	Assert-AreEqual $scheduledQueryRule.Action.Trigger.ThresholdOperator $thresholdOperator
 
-	Assert-AreEqual $scheduledQueryRule.Action.Trigger.MetricTrigger.Threshold $threshold
-	Assert-AreEqual $scheduledQueryRule.Action.Trigger.MetricTrigger.ThresholdOperator $thresholdOperator
+	Assert-AreEqual $scheduledQueryRule.Action.Trigger.MetricTrigger.Threshold $metricTriggerThreshold
+	Assert-AreEqual $scheduledQueryRule.Action.Trigger.MetricTrigger.ThresholdOperator $metricTriggerThresholdOperator
 	Assert-AreEqual $scheduledQueryRule.Action.Trigger.MetricTrigger.MetricTriggerType $metricTriggerType
 	Assert-AreEqual $scheduledQueryRule.Action.Trigger.MetricTrigger.MetricColumn $metricTriggerColumn
 	
@@ -111,7 +111,6 @@ function Test-NewGetUpdateSetRemoveScheduledQueryRule
 	Test-setup
 	try
 	{
-		
 		$aznsActionGroup = New-AzScheduledQueryRuleAznsActionGroup -ActionGroup $actionGroup -EmailSubject $emailSubject -CustomWebhookPayload $customWebhookPayload
 
 		$metricTrigger = New-AzScheduledQueryRuleLogMetricTrigger -ThresholdOperator $metricTriggerthresholdOperator -Threshold $metricTriggerThreshold -MetricTriggerType $metricTriggerType -MetricColumn $metricTriggerColumn
@@ -144,7 +143,6 @@ function Test-NewGetUpdateSetRemoveScheduledQueryRule
 		Assert-AreEqual 1 $retrieved.Length
 		Verify-ScheduledQueryRule $retrieved[0]
 
-
 		# testing Set-* cmdlet with same parameters as they were setup, as it is similar to New-*
 
 		Write-Debug " ****** Updating Scheduled Query Rule by name (PUT semantics)"
@@ -162,17 +160,17 @@ function Test-NewGetUpdateSetRemoveScheduledQueryRule
 		Write-Debug " ****** Updating Scheduled Query Rule by name (PATCH semantics)"
 		$updated = Update-AzScheduledQueryRule -ResourceGroupName $resourceGroupName -Name $ruleName -Enabled 0
 		Verify-ScheduledQueryRule $updated
-		Assert-AreEqual $updated.Enabled 0
+		Assert-AreEqual $updated.Enabled false
 
 		Write-Debug " ****** Updating Scheduled Query Rule by resource Id (PATCH semantics)"
 		$updated = Update-AzScheduledQueryRule -ResourceId $scheduledQueryRule.Id -Enabled 0
 		Verify-ScheduledQueryRule $updated
-		Assert-AreEqual $updated.Enabled 0
+		Assert-AreEqual $updated.Enabled false
 
 		Write-Debug " ****** Updating Scheduled Query Rule by InputObject (PATCH semantics)"
 		$updated = Update-AzScheduledQueryRule -InputObject $scheduledQueryRule -Enabled 0
 		Verify-ScheduledQueryRule $updated
-		Assert-AreEqual $updated.Enabled 0
+		Assert-AreEqual $updated.Enabled false
 
 		Write-Debug " ****** Removing Scheduled Query Rule by name"
 		Remove-AzScheduledQueryRule -ResourceGroup $resourceGroupName -Name $ruleName
@@ -182,16 +180,11 @@ function Test-NewGetUpdateSetRemoveScheduledQueryRule
 
 		Write-Debug " ****** Removing Scheduled Query Rule by InputObject"
 		Remove-AzScheduledQueryRule -InputObject $scheduledQueryRule
-
-		#call get again to make sure rule got deleted
-		$retrieved = Get-AzScheduledQueryRule -ResourceGroup $resourceGroupName -Name $ruleName
-        Assert-Null $retrieved
-		
-
     }
 	catch
 	{
-		Write-Debug $_
+		#Write-Debug $_
+		throw $_
 	}
     finally
     {
@@ -216,7 +209,7 @@ function Test-PipingRemoveSetUpdateScheduledQueryRule
 
 		$schedule = New-AzScheduledQueryRuleSchedule -FrequencyInMinutes $frequencyInMin -TimeWindowInMinutes $timeWindowInMin
 
-		$source = New-AzScheduledQueryRuleSource -Query $query -DataSourceId $dataSourceId -AuthorizedResources $authorizedResources -QueryType $queryType
+		$source = New-AzScheduledQueryRuleSource -Query $query -DataSourceId $dataSourceId -AuthorizedResource $authorizedResources -QueryType $queryType
 
 		$scheduledQueryRule = New-AzScheduledQueryRule -Location $location -Name $ruleName -ResourceGroupName $resourceGroupName -Action $alertingAction -Source $source -Enabled $enabled -Description $description -Schedule $schedule -Tag $tags
 
@@ -227,14 +220,14 @@ function Test-PipingRemoveSetUpdateScheduledQueryRule
 		$retrieved = Get-AzScheduledQueryRule -ResourceGroup $resourceGroupName -Name $ruleName | Update-AzScheduledQueryRule -Enabled 0
 
 		Verify-ScheduledQueryRule $retrieved
-		Assert-AreEqual $retrieved.Enabled 0
+		Assert-AreEqual $retrieved.Enabled false
 
 		$retrieved = Get-AzScheduledQueryRule -ResourceGroup $resourceGroupName -Name $ruleName | Set-AzScheduledQueryRule
 		Verify-ScheduledQueryRule $retrieved
 		
 		Write-Debug " ****** Updating Scheduled Query Rule by Resource Id"
 		$retrieved = Get-AzScheduledQueryRule -ResourceId $resourceId | Update-AzScheduledQueryRule -Enabled 1
-		Assert-AreEqual $retrieved.Enabled 1
+		Assert-AreEqual $retrieved.Enabled true
 		Verify-ScheduledQueryRule $retrieved
 		
         $retrieved = Get-AzScheduledQueryRule -ResourceId $resourceId | Set-AzScheduledQueryRule
@@ -242,12 +235,17 @@ function Test-PipingRemoveSetUpdateScheduledQueryRule
 
 		Write-Debug " ****** Removing Scheduled Query Rule by name"
 		$retrieved = Get-AzScheduledQueryRule -ResourceGroup $resourceGroupName -Name $ruleName | Remove-AzScheduledQueryRule
-		Verify-ScheduledQueryRule $retrieved
+		Assert-Null $retrieved
 		
+		$scheduledQueryRule = New-AzScheduledQueryRule -Location $location -Name $ruleName -ResourceGroupName $resourceGroupName -Action $alertingAction -Source $source -Enabled $enabled -Description $description -Schedule $schedule -Tag $tags
+		Verify-ScheduledQueryRule $scheduledQueryRule
+
 		Write-Debug " ****** Removing Scheduled Query Rule by Resource Id"
 		$retrieved = Get-AzScheduledQueryRule -ResourceId $resourceId | Remove-AzScheduledQueryRule
 		Assert-Null $retrieved
 
+		$scheduledQueryRule = New-AzScheduledQueryRule -Location $location -Name $ruleName -ResourceGroupName $resourceGroupName -Action $alertingAction -Source $source -Enabled $enabled -Description $description -Schedule $schedule -Tag $tags
+		Verify-ScheduledQueryRule $scheduledQueryRule
 		Write-Debug " ****** Removing Scheduled Query Rules in ResourceGroup"
 		$retrieved = Get-AzScheduledQueryRule -ResourceGroupName $resourceGroupName | Remove-AzScheduledQueryRule
 		Assert-Null $retrieved
@@ -259,7 +257,8 @@ function Test-PipingRemoveSetUpdateScheduledQueryRule
 	}
 	catch
 	{
-		Write-Debug $_
+		#Write-Debug $_
+		throw $_
 	}
 	finally
 	{
