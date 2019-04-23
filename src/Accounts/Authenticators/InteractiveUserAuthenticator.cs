@@ -59,7 +59,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 if (!string.IsNullOrEmpty(replyUrl))
                 {
                     var clientId = AuthenticationHelpers.PowerShellClientId;
-                    var authority = AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
+                    var authority = AuthenticationHelpers.GetAuthority(parameters.Environment, "organizations");
                     publicClient = SharedTokenCacheClientFactory.CreatePublicClient(clientId: clientId, authority: authority, redirectUri: replyUrl);
 
                     var interactiveResponse = publicClient.AcquireTokenInteractive(scopes, null)
