@@ -15,7 +15,6 @@
 namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.PolicyInsights.Common;
@@ -150,6 +149,10 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
         [ValidateNotNullOrEmpty]
         public string Apply { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSetNames.ResourceScope, Mandatory = false, HelpMessage = ParameterHelpMessages.Expand)]
+        [ValidateNotNullOrEmpty]
+        public string Expand { get; set; }
+
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
@@ -163,7 +166,8 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
                 FromProperty = MyInvocation.BoundParameters.ContainsKey("From") ? (DateTime?)From : null,
                 To = MyInvocation.BoundParameters.ContainsKey("To") ? (DateTime?)To : null,
                 Filter = Filter,
-                Apply = Apply
+                Apply = Apply,
+                Expand = Expand
             };
 
             RestApiModels.PolicyStatesQueryResults policyStatesQueryResults;
