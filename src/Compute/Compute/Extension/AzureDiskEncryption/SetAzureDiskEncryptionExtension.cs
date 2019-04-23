@@ -548,9 +548,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     {
                         if (vmParameters.StorageProfile.OsDisk.ManagedDisk != null)
                         {
-                            ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture, "-skipVmBackup parameter is a required parameter for encrypting Linux VMs with managed disks. For more information, see https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux.")),
-                                                      "InvalidResult",
-                                                      ErrorCategory.InvalidResult,
+                            ThrowTerminatingError(new ErrorRecord(new ArgumentException(string.Format(CultureInfo.CurrentUICulture, "-skipVmBackup parameter is a required parameter for encrypting Linux VMs with managed disks. For more information, see https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux.")),
+                                                      "InvalidArgument",
+                                                      ErrorCategory.InvalidArgument,
                                                       null));
                         }
                         else
