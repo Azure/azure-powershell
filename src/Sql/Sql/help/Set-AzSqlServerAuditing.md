@@ -85,6 +85,7 @@ To use the cmdlet, use the *ResourceGroupName* and *ServerName* parameters to id
 The audit logs destination is determined by specifying one of the following switch parameters: BlobStorage, LogAnalytics or EventHub (if none is specified, the default is BlobStorage).
 Use the *State* parameter to enable/disable the policy.
 When audit logs destination is blob storage, specify the *StorageAccountName* parameter to determine the storage account for the audit logs and the *StorageKeyType* parameter to define the storage keys. You can also define retention for the audit logs by setting the value of the *RetentionInDays* parameter to define the period for the audit logs.
+To apply changes to the *AuditActionGroup* parameter, you must first disable auditing on all destinations and then reapply the configuration for each.
 If the cmdlet succeeds and you use the *PassThru* parameter, it returns an object describing the current auditing settings in addition to the server identifiers.
 Server identifiers include, but are not limited to, **ResourceGroupName** and **ServerName**.
 
@@ -164,7 +165,7 @@ The recommended set of action groups to use is the following combination - this 
 "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",  
 "FAILED_DATABASE_AUTHENTICATION_GROUP"  
 This above combination is also the set that is configured by default. These groups cover all SQL statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs.
-For more information, see https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups.
+For more information, see https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups.  If you choose to override the default with your own configuration, you must first disable auditing on all destinations and then reapply each with the new configuration.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]
