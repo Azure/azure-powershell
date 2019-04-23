@@ -13,10 +13,9 @@ Create CustomRule Object for WAF policy creation
 ## SYNTAX
 
 ```
-New-AzFrontDoorCustomRuleObject -Name <String> -RuleType <PSCustomRuleType>
- -MatchCondition <PSMatchCondition[]> -Action <PSAction> -Priority <Int32>
- [-RateLimitDurationInMinutes <Int32>] [-RateLimitThreshold <Int32>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzFrontDoorCustomRuleObject -Name <String> -RuleType <String> -MatchCondition <PSMatchCondition[]>
+ -Action <String> -Priority <Int32> [-RateLimitDurationInMinutes <Int32>] [-RateLimitThreshold <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,10 +41,9 @@ Type of Actions.
 Possible values include: 'Allow', 'Block', 'Log'
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Allow, Block, Log, Redirect
 
 Required: True
 Position: Named
@@ -149,10 +147,9 @@ Type of the rule.
 Possible values include: 'MatchRule', 'RateLimitRule'
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRuleType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: RateLimitRule, MatchRule
 
 Required: True
 Position: Named
