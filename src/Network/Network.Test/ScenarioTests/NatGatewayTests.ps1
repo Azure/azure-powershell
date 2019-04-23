@@ -45,7 +45,7 @@ function Test-NatGatewayCRUDMinimalParameters
     $rgname = Get-ResourceGroupName;
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
-    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "East US";
+    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "East US 2";
 
     try
     {
@@ -107,7 +107,7 @@ function Test-NatGatewayWithSubnet
     $rname = Get-ResourceName;
 	$vnetName = Get-ResourceName;
     $subnetName = Get-ResourceName;
-    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "East US";
+    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "East US 2";
 	$sku = "Standard";
 
     try
