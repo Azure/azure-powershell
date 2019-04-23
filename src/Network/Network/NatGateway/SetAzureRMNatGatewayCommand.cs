@@ -63,12 +63,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "An array of public ip addresses associated with the nat gateway resource.")]
-        public PSResourceId[] PublicIpAddresses { get; set; }
+        public PSResourceId[] PublicIpAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "An array of public ip prefixes associated with the nat gateway resource.")]
-        public PSResourceId[] PublicIpPrefixes { get; set; }
+        public PSResourceId[] PublicIpPrefix { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -123,16 +123,16 @@ namespace Microsoft.Azure.Commands.Network
                 this.NatGateway.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
             }
 
-            if (this.PublicIpAddresses != null)
+            if (this.PublicIpAddress != null)
             {
-                vPublicIpAddresses = this.PublicIpAddresses?.ToList();
-                this.NatGateway.PublicIpAddresses = vPublicIpAddresses;
+                vPublicIpAddresses = this.PublicIpAddress?.ToList();
+                this.NatGateway.PublicIpAddress = vPublicIpAddresses;
             }
 
-            if (this.PublicIpPrefixes != null)
+            if (this.PublicIpPrefix != null)
             {
-                vPublicIpPrefixes = this.PublicIpPrefixes?.ToList();
-                this.NatGateway.PublicIpPrefixes = vPublicIpPrefixes;
+                vPublicIpPrefixes = this.PublicIpPrefix?.ToList();
+                this.NatGateway.PublicIpPrefix = vPublicIpPrefixes;
             }
 
             // Map to the sdk object
