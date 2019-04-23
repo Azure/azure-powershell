@@ -68,7 +68,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             Mandatory = false,
             HelpMessage = Constants.EmailsHelp,
             ParameterSetName = Constants.ParameterSetNameByName)]
-        [ValidateNotNullOrEmpty]
         public string[] Email { get; set; }
 
         [Parameter(
@@ -79,7 +78,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             Mandatory = false,
             HelpMessage = Constants.PhoneHelp,
             ParameterSetName = Constants.ParameterSetNameByName)]
-        [ValidateNotNullOrEmpty]
         public string[] Phone { get; set; }
 
         /// <summary>
