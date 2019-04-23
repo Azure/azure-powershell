@@ -19,42 +19,37 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
     /// <summary>
     /// Class PSSyncProgressStatus.
     /// </summary>
-    public class PSSyncProgressStatus
+    public class PSSyncActivityStatus
     {
         /// <summary>
-        /// Gets or sets the progress timestamp.
+        /// Gets or sets the timestamp.
         /// </summary>
         /// <value>The progress timestamp.</value>
-        public DateTime? ProgressTimestamp { get; set; }
-        /// <summary>
-        /// Gets or sets the sync direction.
-        /// </summary>
-        /// <value>The sync direction.</value>
-        public string SyncDirection { get; set; }
+        public DateTime? Timestamp { get; set; }
         /// <summary>
         /// Gets or sets the per item error count.
         /// </summary>
         /// <value>The per item error count.</value>
-        public int? PerItemErrorCount { get; set; }
+        public long? PerItemErrorCount { get; set; }
         /// <summary>
         /// Gets or sets the applied item count.
         /// </summary>
         /// <value>The applied item count.</value>
-        public int? AppliedItemCount { get; set; }
+        public long? AppliedItemCount { get; set; }
         /// <summary>
         /// Gets or sets the total item count.
         /// </summary>
         /// <value>The total item count.</value>
-        public int? TotalItemCount { get; set; }
+        public long? TotalItemCount { get; set; }
         /// <summary>
         /// Gets or sets the applied bytes.
         /// </summary>
         /// <value>The applied bytes.</value>
-        public int? AppliedBytes { get; set; }
+        public long? AppliedBytes { get; set; }
         /// <summary>
         /// Gets or sets the total bytes.
         /// </summary>
         /// <value>The total bytes.</value>
-        public int? TotalBytes { get; set; }
+        public long? TotalBytes { get; set; }
     }
 }
