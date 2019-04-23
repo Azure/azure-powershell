@@ -71,12 +71,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "An array of public ip addresses associated with the nat gateway resource.")]
-        public PSResourceId[] PublicIpAddresses { get; set; }
+        public PSResourceId[] PublicIpAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "An array of public ip prefixes associated with the nat gateway resource.")]
-        public PSResourceId[] PublicIpPrefixes { get; set; }
+        public PSResourceId[] PublicIpPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -108,16 +108,16 @@ namespace Microsoft.Azure.Commands.Network
             // PublicIpPrefixes
             List<PSResourceId> vPublicIpPrefixes = null;
 
-            vPublicIpAddresses = this.PublicIpAddresses?.ToList();
-            vPublicIpPrefixes = this.PublicIpPrefixes?.ToList();
+            vPublicIpAddresses = this.PublicIpAddress?.ToList();
+            vPublicIpPrefixes = this.PublicIpPrefix?.ToList();
 
             var vNatGateway = new PSNatGateway
             {
                 IdleTimeoutInMinutes = this.IdleTimeoutInMinutes,
                 Location = this.Location,
                 Sku = vSku,
-                PublicIpAddresses = vPublicIpAddresses,
-                PublicIpPrefixes = vPublicIpPrefixes,
+                PublicIpAddress = vPublicIpAddresses,
+                PublicIpPrefix = vPublicIpPrefixes,
             };
 
             var vNatGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NatGateway>(vNatGateway);
