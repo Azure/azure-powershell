@@ -45,7 +45,7 @@ function Test-NatGatewayCRUDMinimalParameters
     $rgname = Get-ResourceGroupName;
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
-    $location = Get-Location;
+    $location = "eastus2";
 
     try
     {
@@ -107,7 +107,7 @@ function Test-NatGatewayWithSubnet
     $rname = Get-ResourceName;
 	$vnetName = Get-ResourceName;
     $subnetName = Get-ResourceName;
-    $location = Get-Location;
+    $location = "eastus2";
 	$sku = "Standard";
 
     try
@@ -182,7 +182,7 @@ function Test-NatGatewayCRUDAllParameters
     $rgname = Get-ResourceGroupName;
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
-    $location = Get-Location;
+    $location = "eastus2";
     # Resource's parameters
     $IdleTimeoutInMinutes = 5;
     $Tag = @{tag1='test'};
@@ -248,9 +248,9 @@ function Test-NatGatewayCRUDAllParameters
         $listNatGateway = Get-AzNatGateway -ResourceGroupName $rgname;
         Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
-        # Get all NatGateways in subscription - This needs to be commented out until 502 Gateway Error is fixed.
-        #$listNatGateway = Get-AzNatGateway;
-        #Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
+        # Get all NatGateways in subscription
+        $listNatGateway = Get-AzNatGateway;
+        Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Get all NatGateways in subscription wildcard for resource group
         $listNatGateway = Get-AzNatGateway -ResourceGroupName "*";
