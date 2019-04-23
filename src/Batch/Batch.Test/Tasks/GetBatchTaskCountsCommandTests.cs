@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 {
     public class GetBatchTaskCountsCommandTests
     {
-        private GetBatchTaskCountsCommand cmdlet;
+        private GetBatchTaskCountCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new GetBatchTaskCountsCommand()
+            cmdlet = new GetBatchTaskCountCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object,
