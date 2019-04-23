@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
         public const string To = "ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, defaults to time of request.";
         public const string Filter = "Filter expression using OData notation.";
         public const string Apply = "Apply expression for aggregations using OData notation.";
+        public const string Expand = "Expand expression using OData notation.";
         public const string All = "Within the specified time interval, get all policy states instead of the latest only.";
         public const string RemediationObject = "The Remediation object.";
         public const string LocationFilter = "The resource locations that should be included in the remediation. Resources that don't reside in these locations will not be remediated.";
