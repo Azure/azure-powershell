@@ -14,22 +14,22 @@ Update Nat Gateway Resource with Public Ip Address, Public Ip Prefix and IdleTim
 
 ### SetByNameParameterSet (Default)
 ```
-Set-AzNatGateway -ResourceGroupName <String> -Name <String> [-PublicIpAddress <PSResourceId[]>]
- [-PublicIpPrefix <PSResourceId[]>] [-AsJob] [-IdleTimeoutInMinutes <Int32>]
+Set-AzNatGateway -ResourceGroupName <String> -Name <String> [-PublicIpAddresses <PSResourceId[]>]
+ [-PublicIpPrefixes <PSResourceId[]>] [-AsJob] [-IdleTimeoutInMinutes <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
-Set-AzNatGateway -NatGatewayId <String> [-PublicIpAddress <PSResourceId[]>] [-PublicIpPrefix <PSResourceId[]>]
- [-AsJob] [-IdleTimeoutInMinutes <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzNatGateway -NatGatewayId <String> [-PublicIpAddresses <PSResourceId[]>]
+ [-PublicIpPrefixes <PSResourceId[]>] [-AsJob] [-IdleTimeoutInMinutes <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
-Set-AzNatGateway -NatGateway <PSNatGateway> [-PublicIpAddress <PSResourceId[]>]
- [-PublicIpPrefix <PSResourceId[]>] [-AsJob] [-IdleTimeoutInMinutes <Int32>]
+Set-AzNatGateway -NatGateway <PSNatGateway> [-PublicIpAddresses <PSResourceId[]>]
+ [-PublicIpPrefixes <PSResourceId[]>] [-AsJob] [-IdleTimeoutInMinutes <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -40,70 +40,10 @@ Update Nat Gateway Resource with Public Ip Address, Public Ip Prefix and IdleTim
 
 ### Example 1
 ```powershell
-PS C:\> $pip = Get-AzPublicIpAddress -Name "test_pip" -ResourceGroupName "natgateway_test"
-PS C:\> $natUpdate = Set-AzNatGateway -NatGateway $ngw -IdleTimeoutInMinutes 5 -PublicIpAddress $pip
+PS C:\> $nGateway = Get-AzNatGateway -ResourceGroupName "natgateway_test" -Name "ng1"
+PS C:\> $pipArray = $pip, $pip2
+PS C:\> $natUpdate = Set-AzNatGateway -NatGateway $nGateway -IdleTimeoutInMinutes 5 -PublicIpAddresses $pipArray
 PS C:\> $natUpdate
-
-
-IdleTimeoutInMinutes  : 5
-ProvisioningState     : Succeeded
-Sku                   : Microsoft.Azure.Commands.Network.Models.PSNatGatewaySku
-PublicIpAddresses     : {/subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPAddresses/Test_Pip}
-PublicIpPrefixes      : {}
-SkuText               : {
-                          "Name": "Standard"
-                        }
-PublicIpAddressesText : [
-                          {
-                            "Id": "/subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPAddresses/Test_Pip"
-                          }
-                        ]
-PublicIpPrefixesText  : []
-ResourceGroupName     : natgateway_test
-Location              : eastus2
-ResourceGuid          :
-Type                  : Microsoft.Network/natGateways
-Tag                   :
-TagsTable             :
-Name                  : natgateway
-Etag                  : W/"7e0e8579-ef38-42a5-a854-f66c0effa9f8"
-Id                    : /subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/natgateway
-
-
-
-
-PS C:\> $prefix = Get-AzPublicIpPrefix -ResourceGroupName "natgateway_test"
-PS C:\> $natUpdate = Set-AzNatGateway -NatGateway $ngw -IdleTimeoutInMinutes 5 -PublicIpPrefix $prefix
-PS C:\> $natUpdate
-
-
-IdleTimeoutInMinutes  : 5
-ProvisioningState     : Succeeded
-Sku                   : Microsoft.Azure.Commands.Network.Models.PSNatGatewaySku
-PublicIpAddresses     : {/subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPAddresses/Test_Pip}
-PublicIpPrefixes      : {/subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPPrefixes/prefix2}
-SkuText               : {
-                          "Name": "Standard"
-                        }
-PublicIpAddressesText : [
-                          {
-                            "Id": "/subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPAddresses/Test_Pip"
-                          }
-                        ]
-PublicIpPrefixesText  : [
-                          {
-                            "Id": "/subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPPrefixes/prefix2"
-                          }
-                        ]
-ResourceGroupName     : natgateway_test
-Location              : eastus2
-ResourceGuid          :
-Type                  : Microsoft.Network/natGateways
-Tag                   :
-TagsTable             :
-Name                  : natgateway
-Etag                  : W/"52f33a5c-6ba4-4b55-afb3-4b5be96e3b18"
-Id                    : /subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/natgateway
 ```
 
 ## PARAMETERS
@@ -198,7 +138,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PublicIpAddress
+### -PublicIpAddresses
 An array of public ip addresses associated with the nat gateway resource.
 
 ```yaml
@@ -213,7 +153,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicIpPrefix
+### -PublicIpPrefixes
 An array of public ip prefixes associated with the nat gateway resource.
 
 ```yaml
