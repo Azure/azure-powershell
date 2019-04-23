@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(this.NatGatewayId))
             {
                 subnet.NatGateway = new PSNatGateway();
-                subnet.NatGateway.Id = this.RouteTableId;
+                subnet.NatGateway.Id = this.NatGatewayId;
             }
 
             if (this.ServiceEndpoint != null)

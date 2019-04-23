@@ -45,7 +45,7 @@ function Test-NatGatewayCRUDMinimalParameters
     $rgname = Get-ResourceGroupName;
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
-    $location = "eastus2";
+    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "East US";
 
     try
     {
@@ -107,7 +107,7 @@ function Test-NatGatewayWithSubnet
     $rname = Get-ResourceName;
 	$vnetName = Get-ResourceName;
     $subnetName = Get-ResourceName;
-    $location = "eastus2";
+    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "East US";
 	$sku = "Standard";
 
     try
@@ -182,7 +182,7 @@ function Test-NatGatewayCRUDAllParameters
     $rgname = Get-ResourceGroupName;
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
-    $location = "eastus2";
+    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "East US 2";
     # Resource's parameters
     $IdleTimeoutInMinutes = 5;
     $Tag = @{tag1='test'};
