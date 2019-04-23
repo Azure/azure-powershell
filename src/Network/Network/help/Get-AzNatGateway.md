@@ -41,14 +41,14 @@ PS C:> Get-AzNatGateway -ResourceGroupName "natgateway_test"
 IdleTimeoutInMinutes  : 4
 ProvisioningState     : Succeeded
 Sku                   : Microsoft.Azure.Commands.Network.Models.PSNatGatewaySku
-PublicIpAddresses     : {/subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPAddresses/Test_Pip}
+PublicIpAddresses     : {/subscriptions/<subid>/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPAddresses/Test_Pip}
 PublicIpPrefixes      : {}
 SkuText               : {
                           "Name": "Standard"
                         }
 PublicIpAddressesText : [
                           {
-                            "Id": "/subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPAddresses/Test_Pip"
+                            "Id": "/subscriptions/<subid>/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPAddresses/Test_Pip"
                           }
                         ]
 PublicIpPrefixesText  : []
@@ -60,7 +60,7 @@ Tag                   :
 TagsTable             :
 Name                  : nat_gateway
 Etag                  : W/"178470d2-7b86-4ddd-b954-e0cd3ab30a90"
-Id                    : /subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/nat_gateway
+Id                    : /subscriptions/<subid>/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/nat_gateway
 
 IdleTimeoutInMinutes  : 4
 ProvisioningState     : Succeeded
@@ -80,7 +80,7 @@ Tag                   :
 TagsTable             :
 Name                  : ng1
 Etag                  : W/"bdf98e30-d6c6-4af2-8f62-10d1fdaa6e84"
-Id                    : /subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/ng1
+Id                    : /subscriptions/<subid>/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/ng1
 
 
 PS C:> Get-AzNatGateway -ResourceGroupName "natgateway_test" -Name "nat_gateway"
@@ -89,14 +89,14 @@ PS C:> Get-AzNatGateway -ResourceGroupName "natgateway_test" -Name "nat_gateway"
 IdleTimeoutInMinutes  : 4
 ProvisioningState     : Succeeded
 Sku                   : Microsoft.Azure.Commands.Network.Models.PSNatGatewaySku
-PublicIpAddresses     : {/subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPAddresses/Test_Pip}
+PublicIpAddresses     : {/subscriptions/<subid>/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPAddresses/Test_Pip}
 PublicIpPrefixes      : {}
 SkuText               : {
                           "Name": "Standard"
                         }
 PublicIpAddressesText : [
                           {
-                            "Id": "/subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPAddresses/Test_Pip"
+                            "Id": "/subscriptions/<subid>/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPAddresses/Test_Pip"
                           }
                         ]
 PublicIpPrefixesText  : []
@@ -108,22 +108,22 @@ Tag                   :
 TagsTable             :
 Name                  : nat_gateway
 Etag                  : W/"178470d2-7b86-4ddd-b954-e0cd3ab30a90"
-Id                    : /subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/nat_gateway
+Id                    : /subscriptions/<subid>/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/nat_gateway
 
-PS C:> Get-AzNatGateway -NatGatewayId "/subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/nat_gateway"
+PS C:> Get-AzNatGateway -NatGatewayId "/subscriptions/<subid>/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/nat_gateway"
 
 
 IdleTimeoutInMinutes  : 4
 ProvisioningState     : Succeeded
 Sku                   : Microsoft.Azure.Commands.Network.Models.PSNatGatewaySku
-PublicIpAddresses     : {/subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPAddresses/Test_Pip}
+PublicIpAddresses     : {/subscriptions/<subid>/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPAddresses/Test_Pip}
 PublicIpPrefixes      : {}
 SkuText               : {
                           "Name": "Standard"
                         }
 PublicIpAddressesText : [
                           {
-                            "Id": "/subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPAddresses/Test_Pip"
+                            "Id": "/subscriptions/<subid>/resourceGroups/natgateway_test/providers/Microsoft.Network/publicIPAddresses/Test_Pip"
                           }
                         ]
 PublicIpPrefixesText  : []
@@ -135,7 +135,7 @@ Tag                   :
 TagsTable             :
 Name                  : nat_gateway
 Etag                  : W/"178470d2-7b86-4ddd-b954-e0cd3ab30a90"
-Id                    : /subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/nat_gateway
+Id                    : /subscriptions/<subid>/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/nat_gateway
 ```
 
 ## PARAMETERS
