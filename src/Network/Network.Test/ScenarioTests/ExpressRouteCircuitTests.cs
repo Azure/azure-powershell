@@ -98,7 +98,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ExpressRouteCircuitPeeringWithRouteFilter");
         }
 
-	    [Fact]
+	    [Fact(Skip = "Rerecord tests")]
 	    [Trait(Category.AcceptanceType, Category.CheckIn)]
 	    [Trait(Category.Owner, NrpTeamAlias.pgtm)]
 	    public void TestExpressRouteLocalCircuit()
