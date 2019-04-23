@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The name of the service endpoint policy")]
         [ResourceNameCompleter("Microsoft.Network/serviceEndpointPolicies", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         [Parameter(
@@ -39,6 +40,7 @@ namespace Microsoft.Azure.Commands.Network
            ParameterSetName = "ListParameterSet")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(

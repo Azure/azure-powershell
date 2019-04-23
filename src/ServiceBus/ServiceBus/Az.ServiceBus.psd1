@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.ServiceBus.dll'
@@ -96,7 +96,8 @@ CmdletsToExport = 'New-AzServiceBusNamespace', 'Get-AzServiceBusNamespace',
                'Set-AzServiceBusGeoDRConfigurationFailOver', 
                'Test-AzServiceBusName', 'Get-AzServiceBusMigration', 
                'Stop-AzServiceBusMigration', 'Start-AzServiceBusMigration', 
-               'Complete-AzServiceBusMigration', 'Remove-AzServiceBusMigration'
+               'Complete-AzServiceBusMigration', 'Remove-AzServiceBusMigration',
+			   'Remove-AzServiceBusIPRule', 'Add-AzServiceBusIPRule', 'Remove-AzServiceBusVirtualNetworkRule', 'Add-AzServiceBusVirtualNetworkRule', 'Get-AzServiceBusNetworkRuleSet', 'Remove-AzServiceBusNetworkRuleSet', 'Set-AzServiceBusNetworkRuleSet'
 
 # Variables to export from this module
 # VariablesToExport = @()
