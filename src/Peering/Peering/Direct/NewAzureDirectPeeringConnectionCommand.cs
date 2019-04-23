@@ -83,15 +83,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         public string SessionPrefixV6 { get; set; }
 
         /// <summary>
-        /// Gets or sets the max prefixes advertised ipv4.
+        ///     Bandwidth offered at this location.
         /// </summary>
         [Parameter(
              Position = 2,
              Mandatory = true,
+             HelpMessage = Constants.BandwidthHelp,
+             ParameterSetName = Constants.ParameterSetNameIPv4Prefix),
+         Parameter(
+             Position = 2,
+             Mandatory = true,
+             HelpMessage = Constants.BandwidthHelp,
+             ParameterSetName = Constants.ParameterSetNameIPv6Prefix),
+         Parameter(
+             Position = 2,
+             Mandatory = true,
+             HelpMessage = Constants.BandwidthHelp,
+             ParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix),
+         PSArgumentCompleter("10000", "20000", "30000", "40000", "50000", "60000", "70000", "80000", "90000", "100000"),
+         ValidateRange(Constants.MinRange, Constants.MaxRange), ValidateNotNullOrEmpty]
+        public int? BandwidthInMbps { get; set; }
+
+        /// <summary>
+        /// Gets or sets the max prefixes advertised ipv4.
+        /// </summary>
+        [Parameter(
+             Mandatory = false,
              HelpMessage = Constants.HelpMaxAdvertisedIPv4,
              ParameterSetName = Constants.ParameterSetNameIPv4Prefix),
          Parameter(
-             Mandatory = true,
+             Mandatory = false,
              HelpMessage = Constants.HelpMaxAdvertisedIPv4,
              ParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix),
          ValidateRange(1, 20000)]
@@ -101,38 +122,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         /// Gets or sets the max prefixes advertised ipv6.
         /// </summary>
         [Parameter(
-             Position = 2,
-             Mandatory = true,
+             Mandatory = false,
              HelpMessage = Constants.HelpMaxAdvertisedIPv6,
              ParameterSetName = Constants.ParameterSetNameIPv6Prefix),
          Parameter(
-             Mandatory = true,
+             Mandatory = false,
              HelpMessage = Constants.HelpMaxAdvertisedIPv6,
              ParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix),
          ValidateRange(1, 2000)]
         public int? MaxPrefixesAdvertisedIPv6 { get; set; }
-
-        /// <summary>
-        ///     Bandwidth offered at this location.
-        /// </summary>
-        [Parameter(
-             Position = 3,
-             Mandatory = true,
-             HelpMessage = Constants.BandwidthHelp,
-             ParameterSetName = Constants.ParameterSetNameIPv4Prefix),
-         Parameter(
-             Position = 3,
-             Mandatory = true,
-             HelpMessage = Constants.BandwidthHelp,
-             ParameterSetName = Constants.ParameterSetNameIPv6Prefix),
-         Parameter(
-             Position = 3,
-             Mandatory = true,
-             HelpMessage = Constants.BandwidthHelp,
-             ParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix),
-         PSArgumentCompleter("10000", "20000", "30000", "40000", "50000", "60000", "70000", "80000", "90000", "100000"),
-         ValidateRange(Constants.MinRange, Constants.MaxRange), ValidateNotNullOrEmpty]
-        public int? BandwidthInMbps { get; set; }
 
         /// <summary>
         /// Gets or sets the m d 5 authentication key.
@@ -178,9 +176,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
                                          PeeringDBFacilityId = this.PeeringDBFacilityId,
                                          BgpSession = new PSBgpSession
                                                           {
-                                                              MaxPrefixesAdvertisedV4 = this.MaxPrefixesAdvertisedIPv4,
-                                                              MaxPrefixesAdvertisedV6 = this.MaxPrefixesAdvertisedIPv6,
-                                                              SessionPrefixV4 =
+                                                              MaxPrefixesAdvertisedV4 = !string.IsNullOrEmpty(this.SessionPrefixV4) ? (this.MaxPrefixesAdvertisedIPv4 ?? 20000) : (int?)null,
+                                                              MaxPrefixesAdvertisedV6 = !string.IsNullOrEmpty(this.SessionPrefixV6) ? (this.MaxPrefixesAdvertisedIPv6 ?? 2000) : (int?)null,
+                                             SessionPrefixV4 =
                                                                   this.ValidatePrefix(
                                                                       this.SessionPrefixV4,
                                                                       Constants.Direct),

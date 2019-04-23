@@ -15,23 +15,23 @@ Creates a in memory PSObject to be used for creating or modifying a Peering.
 ### IPv4Prefix (Default)
 ```
 New-AzPeeringDirectConnectionObject [-PeeringDBFacilityId] <Int32> [-SessionPrefixV4] <String>
- [-MaxPrefixesAdvertisedIPv4] <Int32> [-BandwidthInMbps] <Int32> [-MD5AuthenticationKey <String>]
+ [-BandwidthInMbps] <Int32> [-MaxPrefixesAdvertisedIPv4 <Int32>] [-MD5AuthenticationKey <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### IPv6Prefix
 ```
 New-AzPeeringDirectConnectionObject [-PeeringDBFacilityId] <Int32> [-SessionPrefixV6] <String>
- [-MaxPrefixesAdvertisedIPv6] <Int32> [-BandwidthInMbps] <Int32> [-MD5AuthenticationKey <String>]
+ [-BandwidthInMbps] <Int32> [-MaxPrefixesAdvertisedIPv6 <Int32>] [-MD5AuthenticationKey <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### IPv4PrefixIPv6Prefix
 ```
 New-AzPeeringDirectConnectionObject [-PeeringDBFacilityId] <Int32> [-SessionPrefixV4] <String>
- [-SessionPrefixV6] <String> [-MaxPrefixesAdvertisedIPv4] <Int32> [-MaxPrefixesAdvertisedIPv6] <Int32>
- [-BandwidthInMbps] <Int32> [-MD5AuthenticationKey <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-SessionPrefixV6] <String> [-BandwidthInMbps] <Int32> [-MaxPrefixesAdvertisedIPv4 <Int32>]
+ [-MaxPrefixesAdvertisedIPv6 <Int32>] [-MD5AuthenticationKey <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +63,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -92,8 +92,8 @@ Type: System.Nullable`1[System.Int32]
 Parameter Sets: IPv4Prefix, IPv4PrefixIPv6Prefix
 Aliases:
 
-Required: True
-Position: 2
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -107,8 +107,8 @@ Type: System.Nullable`1[System.Int32]
 Parameter Sets: IPv6Prefix, IPv4PrefixIPv6Prefix
 Aliases:
 
-Required: True
-Position: 2
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
