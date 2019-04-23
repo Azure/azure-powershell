@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+## Version 0.7.4
+* Change enum type parameters to string.
 
 ## Version 0.7.3
 * Configure redirect routing rule.
