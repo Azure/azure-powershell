@@ -162,6 +162,16 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models
         public string PolicyDefinitionReferenceId { get; }
 
         /// <summary>
+        /// Gets compliance state.
+        /// </summary>
+        public string ComplianceState { get; }
+
+        /// <summary>
+        /// Gets policy evaluation details.
+        /// </summary>
+        public PolicyEvaluationDetails PolicyEvaluationDetails { get; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="PolicyState" /> class.
         /// </summary>
         /// <param name="policyState">Policy state.</param>
@@ -200,6 +210,12 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models
             this.PolicySetDefinitionParameters = policyState.PolicySetDefinitionParameters;
             this.ManagementGroupIds = policyState.ManagementGroupIds;
             this.PolicyDefinitionReferenceId = policyState.PolicyDefinitionReferenceId;
+            this.ComplianceState = policyState.ComplianceState;
+
+            if (policyState.PolicyEvaluationDetails != null)
+            {
+                this.PolicyEvaluationDetails = new PolicyEvaluationDetails(policyState.PolicyEvaluationDetails);
+            }
         }
     }
 }
