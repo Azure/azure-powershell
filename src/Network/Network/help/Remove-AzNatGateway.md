@@ -39,7 +39,7 @@ Removes a Nat Gateway resource based on name or Resource Id.
 ```powershell
 PS C:> $nat = Get-AzNatGateway -ResourceGroupName "natgateway_test" -Name "nat_gateway"
 PS C:> Remove-AzNatGateway -NatGateway $nat
-PS C:> Remove-AzNatGateway -NatGatewayId "/subscriptions/3dc13b6d-6896-40ac-98f7-f18cbce2a405/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/natgateway"
+PS C:> Remove-AzNatGateway -NatGatewayId "/subscriptions/<subid>/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/natgateway"
 ```
 
 ## PARAMETERS
