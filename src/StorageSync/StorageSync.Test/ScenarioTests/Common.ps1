@@ -176,7 +176,7 @@ Gets the default location for a provider
 #>
 function Get-StorageSyncLocation($provider)
 {
-    $defaultLocation = "West Central US"
+    $defaultLocation = "Central US EUAP"
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
     {
         $namespace = $provider.Split("/")[0]
@@ -198,6 +198,15 @@ function Get-StorageSyncLocation($provider)
     }
 
     return $defaultLocation
+}
+
+<#
+.SYNOPSIS
+Gets the default location for a resource group
+#>
+function Get-ResourceGroupLocation()
+{
+    return Get-Location -providerNamespace "Microsoft.Resources"  -resourceType "resourceGroups" -preferredLocation "West US"
 }
 
 <#
