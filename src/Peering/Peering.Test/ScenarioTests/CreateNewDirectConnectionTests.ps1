@@ -141,8 +141,6 @@ function Test-NewDirectConnectionHighBandwidth
 	#Create some data for the object
 	#Set up the wrong BandwidthInMbps
 	$bandwidth = getBandwidth
-	$wrongBandwidth = 10000
-	$bandwidth = $bandwidth * $wrongBandwidth
 	#Anything over 100000 will fail. 
 	Write-Debug "Creating Connection at $facilityId"
 	$md5 = getHash

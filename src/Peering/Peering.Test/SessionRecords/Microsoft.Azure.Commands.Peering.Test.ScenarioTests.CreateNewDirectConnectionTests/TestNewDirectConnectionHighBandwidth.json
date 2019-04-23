@@ -63,6 +63,7 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "4445bf11-61c4-436f-a940-60194f8aca57"
+    "SubscriptionId": "4445bf11-61c4-436f-a940-60194f8aca57",
+    "bandwidth":  100001 
   }
 }
