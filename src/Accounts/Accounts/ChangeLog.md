@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update Authentication Library to fix ADFS issues with username/password auth
 
 ## Version 1.5.1
 * Update Uninstall-AzureRm to correctly delete modules in Mac
