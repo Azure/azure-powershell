@@ -16,27 +16,24 @@ Updates a Log Alert Rule
 ```
 Set-AzScheduledQueryRule -Source <PSScheduledQueryRuleSource> [-Schedule <PSScheduledQueryRuleSchedule>]
  -Action <PSScheduledQueryRuleAlertingAction> -Location <String> [-Description <String>] -Name <String>
- -ResourceGroupName <String> [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
- [-Enabled <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ResourceGroupName <String> [-Tag <Hashtable>] [-Enabled <Boolean>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
 Set-AzScheduledQueryRule -InputObject <PSScheduledQueryRuleResource> [-Source <PSScheduledQueryRuleSource>]
  [-Schedule <PSScheduledQueryRuleSchedule>] [-Action <PSScheduledQueryRuleAlertingAction>] [-Location <String>]
- [-Description <String>] [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
- [-Enabled <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Description <String>] [-Tag <Hashtable>] [-Enabled <Boolean>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Set-AzScheduledQueryRule -ResourceId <String> -Source <PSScheduledQueryRuleSource>
  [-Schedule <PSScheduledQueryRuleSchedule>] -Action <PSScheduledQueryRuleAlertingAction> -Location <String>
- [-Description <String>] [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
- [-Enabled <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Description <String>] [-Tag <Hashtable>] [-Enabled <Boolean>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -320,7 +317,7 @@ Accept wildcard characters: False
 Resource tags
 
 ```yaml
-Type: System.Collections.Generic.IDictionary`2[System.String,System.String]
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 

@@ -16,8 +16,7 @@ Creates a Log Alert Rule (Scheduled Query Rule type)
 New-AzScheduledQueryRule -Source <PSScheduledQueryRuleSource> -Schedule <PSScheduledQueryRuleSchedule>
  -Action <PSScheduledQueryRuleAlertingAction> -Location <String> [-Description <String>] -Name <String>
  -Enabled <Boolean> -ResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Tag <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -186,7 +185,7 @@ Accept wildcard characters: False
 Resource tags
 
 ```yaml
-Type: System.Collections.Generic.IDictionary`2[System.String,System.String]
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 

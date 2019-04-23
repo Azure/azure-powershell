@@ -15,9 +15,11 @@
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 {
@@ -76,7 +78,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         // Summary:
         //     Resource tags
         [Parameter(Mandatory = false, HelpMessage = "Resource tags")]
-        public IDictionary<string, string> Tag;
+        public Hashtable Tag;
 
         //
         // Summary:
@@ -99,11 +101,13 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         {
             try
             {
-                
+                // Convert Tag parameter from Hashtable to Dictionary<string, string>
+                Dictionary<string, string> tags = TagsConversionHelper.CreateTagDictionary(Tag, true);
+
                 var alertingAction = new AlertingAction(severity: Action.Severity, aznsAction: Action.AznsAction, trigger: Action.Trigger, throttlingInMin: Action.ThrottlingInMin);
 
                 var parameters = new LogSearchRuleResource(location: Location, source: Source, schedule: Schedule,
-                    action:alertingAction, tags: Tag, description: Description, enabled: Enabled? "true" : "false");
+                    action:alertingAction, tags: tags, description: Description, enabled: Enabled? "true" : "false");
 
                 parameters.Validate();
                 if (this.ShouldProcess(this.Name,

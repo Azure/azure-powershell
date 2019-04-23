@@ -86,6 +86,12 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
             }
             catch (Exception ex)
             {
+                if (ex.Message.Contains("NotFound"))
+                {
+                    WriteObject(null);
+                    return;
+                }
+
                 throw new Exception("Error occured while getting Log Alert rules", ex.InnerException);
             }
         }
