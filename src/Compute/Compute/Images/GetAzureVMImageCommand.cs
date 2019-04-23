@@ -78,6 +78,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = true,
             ValueFromPipelineByPropertyName = true),
         ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Version { get; set; }
 
         public override void ExecuteCmdlet()

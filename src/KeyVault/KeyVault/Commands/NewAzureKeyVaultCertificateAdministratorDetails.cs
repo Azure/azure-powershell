@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
@@ -20,7 +21,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
     /// <summary>
     /// New-AzKeyVaultCertificateAdministratorDetails creates an in-memory administrator details object
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificateAdministratorDetails",SupportsShouldProcess = true)]
+    [GenericBreakingChange("New-AzKeyVaultCertificateAdministratorDetails alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificateAdministratorDetail",SupportsShouldProcess = true)]
+    [Alias("New-AzKeyVaultCertificateAdministratorDetails")]
     [OutputType(typeof(PSKeyVaultCertificateAdministratorDetails))]
     public class NewAzureKeyVaultCertificateAdministratorDetails : KeyVaultCmdletBase
     {
