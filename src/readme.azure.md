@@ -1,6 +1,6 @@
 # Azure PowerShell AutoRest Configuration
 
-> Language
+> Usings
 ``` yaml
 use:
 - "@microsoft.azure/autorest.powershell@beta"
@@ -10,6 +10,8 @@ use:
 ``` yaml
 azure: true
 enable-multi-api: true
+branch: multiapi
+repo: https://github.com/Azure/azure-rest-api-specs/blob/$(branch)
 ```
 
 > Names
@@ -23,7 +25,7 @@ namespace: Microsoft.Azure.PowerShell.Cmdlets.$(service-name)
 > Folders
 ``` yaml
 clear-output-folder: true
-output-folder: '.'
+output-folder: .
 ```
 
 > Directives
@@ -33,4 +35,3 @@ directive:
       subject: Operation
     hide: true
 ```
-

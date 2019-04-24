@@ -49,7 +49,6 @@ In this directory, run AutoRest:
 ``` yaml
 require: $(this-folder)/../readme.azure.md
 input-file: resources/AppConfiguration.json
-service-name: AppConfiguration
 module-version: 0.1.2
 skip-model-cmdlets: true
 

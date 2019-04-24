@@ -1,14 +1,12 @@
-# AutoRest Configuration for ServiceBus
-
+# Az.ServiceBus
 > see https://aka.ms/autorest
 
 ``` yaml
 require: 
   - $(this-folder)/../readme.azure.md
-  - https://raw.githubusercontent.com/azure/azure-rest-api-specs/multiapi/specification/servicebus/resource-manager/readme.enable-multi-api.md
-  - https://raw.githubusercontent.com/azure/azure-rest-api-specs/multiapi/specification/servicebus/resource-manager/readme.md
+  - $(repo)/specification/servicebus/resource-manager/readme.enable-multi-api.md
+  - $(repo)/specification/servicebus/resource-manager/readme.md
 
-service-name: ServiceBus
 module-version: 0.0.1
 skip-model-cmdlets: true
 profile: 
