@@ -51,11 +51,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Sku Name.")]
         [Alias(StorageAccountTypeAlias, AccountTypeAlias, Account_TypeAlias)]
-        [ValidateSet(AccountTypeString.StandardLRS,
-            AccountTypeString.StandardZRS,
-            AccountTypeString.StandardGRS,
-            AccountTypeString.StandardRAGRS,
-            AccountTypeString.PremiumLRS,
+        [ValidateSet(StorageModels.SkuName.StandardLRS,
+            StorageModels.SkuName.StandardZRS,
+            StorageModels.SkuName.StandardGRS,
+            StorageModels.SkuName.StandardRAGRS,
+            StorageModels.SkuName.PremiumLRS,
             IgnoreCase = true)]
         public string SkuName { get; set; }
 
@@ -71,12 +71,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(
             Mandatory = false,
             HelpMessage = "Storage Account Kind.")]
-        [ValidateSet(AccountKind.Storage,
-            AccountKind.StorageV2,
-            AccountKind.BlobStorage,
-            AccountKind.BlockBlobStorage,
+        [ValidateSet(StorageModels.Kind.Storage,
+            StorageModels.Kind.StorageV2,
+            StorageModels.Kind.BlobStorage,
+            StorageModels.Kind.BlockBlobStorage,
             IgnoreCase = true)]
-        public string Kind { get; set; }
+        public string Kind
+        {
+            get
+            {
+                return kind;
+            }
+            set
+            {
+                kind = value;
+            }
+        }
+        private string kind = StorageModels.Kind.StorageV2;
 
         [Parameter(
             Mandatory = false,
@@ -167,7 +178,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             StorageAccountCreateParameters createParameters = new StorageAccountCreateParameters()
             {
                 Location = this.Location,
-                Sku = new Sku(ParseSkuName(this.SkuName)),
+                Sku = new Sku(this.SkuName),
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
             };
 
@@ -184,9 +195,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 throw new System.ArgumentException(string.Format("UseSubDomain must be set together with CustomDomainName."));
             }
 
-            if (Kind != null)
+            if (kind != null)
             {
-                createParameters.Kind = ParseAccountKind(Kind);
+                createParameters.Kind = kind;
             }
 
             if (this.AccessTier != null)
