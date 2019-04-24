@@ -63,12 +63,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "An array of public ip addresses associated with the nat gateway resource.")]
-        public PSResourceId[] PublicIpAddresses { get; set; }
+        public PSResourceId[] PublicIpAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "An array of public ip prefixes associated with the nat gateway resource.")]
-        public PSResourceId[] PublicIpPrefixes { get; set; }
+        public PSResourceId[] PublicIpPrefix { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -130,15 +130,15 @@ namespace Microsoft.Azure.Commands.Network
                 this.InputObject.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
             }
 
-            if (this.PublicIpAddresses != null)
+            if (this.PublicIpAddress != null)
             {
-                vPublicIpAddresses = this.PublicIpAddresses?.ToList();
+                vPublicIpAddresses = this.PublicIpAddress?.ToList();
                 this.InputObject.PublicIpAddress = vPublicIpAddresses;
             }
 
-            if (this.PublicIpPrefixes != null)
+            if (this.PublicIpPrefix != null)
             {
-                vPublicIpPrefixes = this.PublicIpPrefixes?.ToList();
+                vPublicIpPrefixes = this.PublicIpPrefix?.ToList();
                 this.InputObject.PublicIpPrefix = vPublicIpPrefixes;
             }
 

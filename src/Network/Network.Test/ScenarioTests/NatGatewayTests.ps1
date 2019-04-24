@@ -277,5 +277,4 @@ function Test-NatGatewayCRUDAllParameters
         # Cleanup
         Clean-ResourceGroup $rgname;
     }
-} 
 }
