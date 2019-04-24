@@ -121,7 +121,7 @@
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2019.05 - Version 1.7.2
+            ReleaseNotes = ' - Version 1.7.2
             * Supported with 1904 update
             * Module dependencies updated
                 * AzureRM.Resources.'

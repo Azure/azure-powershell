@@ -131,7 +131,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2019.05
+            ReleaseNotes = '
             * Module Dependencies Updated 
                 * AzureRM.Resources
             '

@@ -128,7 +128,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2019.05
+            ReleaseNotes = '
             * Module dependencies updated
                 * AzureRM.Resources
             '

@@ -118,7 +118,7 @@
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2019.04
+            ReleaseNotes = '
             * AzureRm.Resources
                 * New Resources module supporting 2018-05-01 api version with 2019-03-01-hybrid profile
                 * PolicyDefinition(2016-12-01) and PolicyAssisgment(2017-06-01-preview) operations are still with old api versions
