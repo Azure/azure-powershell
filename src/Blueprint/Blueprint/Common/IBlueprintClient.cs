@@ -46,12 +46,16 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
 
         PSArtifact CreateArtifact(string scope, string blueprintName, string artifactName, Artifact artifact);
 
-        PSArtifact GetArtifact(string scope, string blueprintName, string artifactName);
+        PSArtifact GetArtifact(string scope, string blueprintName, string artifactName, string version);
 
         PSWhoIsBlueprintContract GetBlueprintSpnObjectId(string scope, string assignmentName);
 
-        string GetBlueprintDefinitionJsonFromObject(PSBlueprintBase blueprint);
+        string GetBlueprintDefinitionJsonFromObject(PSBlueprintBase blueprint, string version);
 
         PSBlueprint GetBlueprintObjectFromJsonDefinition(string jsonDefinition, string scope);
+
+        IEnumerable<PSArtifact> ListArtifacts(string scope, string blueprintName, string version);
+
+        string GetBlueprintArtifactJsonFromObject(string scope, string blueprintName, string artifactName, string version);
     }
 }

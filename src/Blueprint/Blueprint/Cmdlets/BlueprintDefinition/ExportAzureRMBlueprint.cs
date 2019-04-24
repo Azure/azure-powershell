@@ -5,71 +5,66 @@ using System.Management.Automation;
 using System.Text;
 using Microsoft.Azure.Commands.Blueprint.Common;
 using Microsoft.Azure.Commands.Blueprint.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
-    [Cmdlet("Export", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Blueprint", DefaultParameterSetName =
+    [Cmdlet("Export", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintWithArtifacts", DefaultParameterSetName =
          BlueprintConstants.ParameterSetNames.SubscriptionScope), OutputType(typeof(string))]
     public class ExportAzureRmBlueprint : BlueprintCmdletBase
     {
         private const string ExportToFileParamSet = "ExportToFile";
         private const string ExportToStringParamSet = "ExportToJSON";
 
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The Blueprint definition object to export.",
-            ValueFromPipeline = true)]
+        [Parameter(Mandatory = true, HelpMessage = "The Blueprint definition object to export.", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public PSBlueprintBase Blueprint { get; set; }
 
-        [Parameter(
-            ParameterSetName = ExportToFileParamSet,
-            Mandatory = true,
-            HelpMessage = "Path to a file on disk where to export the Blueprint definition in JSON format.")]
+        /*[Parameter(ParameterSetName = ExportToFileParamSet, Mandatory = true, HelpMessage = "Path to a file on disk where to export the Blueprint definition in JSON format.")]
         [ValidateNotNullOrEmpty]
-        public string OutputFile { get; set; }
+        public string OutputPath { get; set; }*/
 
-        [Parameter(
-            ParameterSetName = ExportToStringParamSet,
-            Mandatory = true,
-            HelpMessage = "The actual Blueprint definition as a JSON string printed on screen.")]
-        public SwitchParameter ToJsonString { get; set; }
+        [Parameter(ParameterSetName = ExportToFileParamSet, Mandatory = false, HelpMessage = "Version of the blueprint.")]
+        [ValidateNotNullOrEmpty]
+        public string Version { get; set; }
 
-        /// <summary>
-        /// Gets or sets a value that indicates if the user should be prompted for confirmation.
-        /// </summary>
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Do not ask for confirmation.")]
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            string serializedDefinition =
-                BlueprintClient.GetBlueprintDefinitionJsonFromObject(Blueprint);
+            // Get blueprint, serialize it and write it to disk
+            string serializedDefinition = BlueprintClient.GetBlueprintDefinitionJsonFromObject(Blueprint, Version);
 
-            if (!string.IsNullOrWhiteSpace(this.OutputFile))
+            var currentPath = this.SessionState.Path.CurrentFileSystemLocation.Path;
+            var definitionFileFullPath = Path.Combine(currentPath, Blueprint.Name + " - Copy.json");
+
+            this.ConfirmAction(
+                this.Force || !File.Exists(definitionFileFullPath),
+                "Want to overwriting the output file?",
+                "Overwriting the output file",
+                definitionFileFullPath,
+                () => File.WriteAllText(definitionFileFullPath, serializedDefinition)
+            );
+
+            // Get artifacts from this blueprint, serialize it and write it to disk
+
+            var artifacts = BlueprintClient.ListArtifacts(Blueprint.Scope, Blueprint.Name, Version);
+
+            foreach (var artifact in artifacts)
             {
-                var currentPath = this.SessionState.Path.CurrentFileSystemLocation.Path;
-                var definitionFileFullPath =
-                    Path.IsPathRooted(this.OutputFile) ?
-                        this.OutputFile :
-                        Path.Combine(currentPath, this.OutputFile);
+                string serializedArtifact = BlueprintClient.GetBlueprintArtifactJsonFromObject(Blueprint.Scope, Blueprint.Name, artifact.Name, Version);
 
-                bool fileExisting = File.Exists(definitionFileFullPath);
+                var artifactFileFullPath = Path.Combine(currentPath, artifact.Name + " - Copy.json");
+
                 this.ConfirmAction(
-                    this.Force || !fileExisting,
+                    this.Force || !File.Exists(artifactFileFullPath),
                     "Want to overwriting the output file?",
                     "Overwriting the output file",
-                    definitionFileFullPath,
-                    () => File.WriteAllText(definitionFileFullPath, serializedDefinition));
+                    artifactFileFullPath,
+                    () => File.WriteAllText(artifactFileFullPath, serializedArtifact)
+                );
             }
-            else
-            {
-                this.WriteObject(serializedDefinition);
-            }
-
-            //Let's see if we can create a new blueprint from what we exported.
 
         }
     }

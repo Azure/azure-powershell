@@ -245,12 +245,13 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             return psArtifact;
         }
 
-        public PSArtifact GetArtifact(string scope, string blueprintName, string artifactName)
+        public PSArtifact GetArtifact(string scope, string blueprintName, string artifactName, string version)
         {
-            var artifact = blueprintManagementClient.Artifacts.Get(scope, blueprintName, artifactName);
+            var artifact = string.IsNullOrEmpty(version) 
+                ? blueprintManagementClient.Artifacts.Get(scope, blueprintName, artifactName) 
+                : blueprintManagementClient.PublishedArtifacts.Get(scope, blueprintName, artifactName, version);
 
             PSArtifact psArtifact = null;
-
             switch (artifact)
             {
                 case TemplateArtifact templateArtifact:
@@ -258,7 +259,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
                     break;
                 case PolicyAssignmentArtifact policyArtifact:
                     psArtifact = PSPolicyAssignmentArtifact.FromArtifactModel(artifact as PolicyAssignmentArtifact, scope);
-                    break;
+                    break; 
                 case RoleAssignmentArtifact roleAssignmentArtifact:
                     psArtifact = PSRoleAssignmentArtifact.FromArtifactModel(artifact as RoleAssignmentArtifact, scope);
                     break;
@@ -277,14 +278,18 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
         }
 
         // export
-        public string GetBlueprintDefinitionJsonFromObject(PSBlueprintBase blueprint)
+        public string GetBlueprintDefinitionJsonFromObject(PSBlueprintBase blueprintObject, string version)
         {
-            var result = blueprintManagementClient.Blueprints.GetWithHttpMessagesAsync(blueprint.Scope, blueprint.Name)
-                .GetAwaiter().GetResult();
+            if (string.IsNullOrEmpty(version))
+            {
+                var blueprint = blueprintManagementClient.Blueprints.Get(blueprintObject.Scope, blueprintObject.Name);
 
-            var serializedDefinition = JsonConvert.SerializeObject(result.Body, DefaultJsonSettings.SerializerSettings);
+                return  JsonConvert.SerializeObject(blueprint, DefaultJsonSettings.SerializerSettings);
+            }
 
-            return serializedDefinition;
+            var publishedBlueprint = blueprintManagementClient.PublishedBlueprints.Get(blueprintObject.Scope, blueprintObject.Name, version);
+
+            return JsonConvert.SerializeObject(publishedBlueprint, DefaultJsonSettings.SerializerSettings);
         }
 
         // import
@@ -296,6 +301,46 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             var blueprint = blueprintManagementClient.Blueprints.CreateOrUpdate(scope, blueprintDefinitionObj.DisplayName + " - Copy", blueprintDefinitionObj);
 
             return PSBlueprint.FromBlueprintModel(blueprint, scope);
+
+        }
+
+        public IEnumerable<PSArtifact> ListArtifacts(string scope, string blueprintName, string version)
+        {
+            var list = new List<PSArtifact>();
+
+            var artifacts = string.IsNullOrEmpty(version)
+                ? blueprintManagementClient.Artifacts.List(scope, blueprintName)
+                : blueprintManagementClient.PublishedArtifacts.List(scope, blueprintName, version);
+
+            foreach (var artifact in artifacts)
+            {
+                switch (artifact)
+                {
+                    case TemplateArtifact templateArtifact:
+                        list.Add(PSTemplateArtifact.FromArtifactModel(artifact as TemplateArtifact, scope));
+                        break;
+                    case PolicyAssignmentArtifact policyArtifact:
+                        list.Add(PSPolicyAssignmentArtifact.FromArtifactModel(artifact as PolicyAssignmentArtifact, scope));
+                        break;
+                    case RoleAssignmentArtifact roleAssignmentArtifact:
+                        list.Add(PSRoleAssignmentArtifact.FromArtifactModel(artifact as RoleAssignmentArtifact, scope));
+                        break;
+                    default:
+                        throw new NotSupportedException("To-Do:");
+                }
+            }
+
+            return list;
+        }
+
+        public string GetBlueprintArtifactJsonFromObject(string scope, string blueprintName, string artifactName, string version)
+        {
+            var artifact = string.IsNullOrEmpty(version)
+             ? blueprintManagementClient.Artifacts.Get(scope, blueprintName, artifactName)
+             : blueprintManagementClient.PublishedArtifacts.Get(scope, blueprintName, version, artifactName);
+
+
+            return JsonConvert.SerializeObject(artifact, DefaultJsonSettings.SerializerSettings);
 
         }
 
