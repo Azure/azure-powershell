@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-aznatgateway
+online version:
 schema: 2.0.0
 ---
 
 # Remove-AzNatGateway
 
 ## SYNOPSIS
-Removes a Nat Gateway resource based on name or Resource Id.
+Remove Nat Gateway resource.
 
 ## SYNTAX
 
@@ -20,26 +20,26 @@ Remove-AzNatGateway -ResourceGroupName <String> -Name <String> [-Force] [-AsJob]
 
 ### DeleteByInputObjectParameterSet
 ```
-Remove-AzNatGateway -NatGateway <PSNatGateway> [-Force] [-AsJob] [-PassThru]
+Remove-AzNatGateway -InputObject <PSNatGateway> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteByResourceIdParameterSet
 ```
-Remove-AzNatGateway -NatGatewayId <String> [-Force] [-AsJob] [-PassThru]
+Remove-AzNatGateway -ResourceId <String> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Removes a Nat Gateway resource based on name or Resource Id.
+Remove Nat Gateway Resource
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
 PS C:> $nat = Get-AzNatGateway -ResourceGroupName "natgateway_test" -Name "nat_gateway"
-PS C:> Remove-AzNatGateway -NatGateway $nat
-PS C:> Remove-AzNatGateway -NatGatewayId "/subscriptions/<subid>/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/natgateway"
+PS C:> Remove-AzNatGateway -InputObject $nat
+PS C:> Remove-AzNatGateway -ResourceId "/subscriptions/<subid>/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/natgateway"
 ```
 
 ## PARAMETERS
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Do not ask for confirmation if you want to delete resource
+Do not ask for confirmation if you want to delete resource.
 
 ```yaml
 Type: SwitchParameter
@@ -89,23 +89,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-{{ Fill Name Description }}
-
-```yaml
-Type: String
-Parameter Sets: DeleteByNameParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NatGateway
-{{ Fill NatGateway Description }}
+### -InputObject
+NatGateway Object
 
 ```yaml
 Type: PSNatGateway
@@ -119,23 +104,24 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -NatGatewayId
-{{ Fill NatGatewayId Description }}
+### -Name
+Name of the Nat Gateway resource.
 
 ```yaml
 Type: String
-Parameter Sets: DeleteByResourceIdParameterSet
+Parameter Sets: DeleteByNameParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+Returns an object representing the item with which you are working.
+By default, this cmdlet does not generate any output.
 
 ```yaml
 Type: SwitchParameter
@@ -150,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{ Fill ResourceGroupName Description }}
+Name of the Resource Group.
 
 ```yaml
 Type: String
@@ -161,6 +147,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Resource Id associated with the Nat Gateway.
+
+```yaml
+Type: String
+Parameter Sets: DeleteByResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -200,7 +201,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSTopLevelResource
+### Microsoft.Azure.Commands.Network.Models.PSNatGateway
 
 ### System.String
 

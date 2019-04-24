@@ -65,15 +65,15 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = GetByResourceIdParameterSet,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string NatGatewayId { get; set; }
+        public string ResourceId { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            if (this.IsParameterBound(c => c.NatGatewayId))
+            if (this.IsParameterBound(c => c.ResourceId))
             {
-                var resourceIdentifier = new ResourceIdentifier(this.NatGatewayId);
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 this.Name = resourceIdentifier.ResourceName;
             }

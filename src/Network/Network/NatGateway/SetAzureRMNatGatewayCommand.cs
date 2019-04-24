@@ -51,24 +51,24 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = SetByResourceIdParameterSet,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string NatGatewayId { get; set; }
+        public string ResourceId { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
             ParameterSetName = SetByInputObjectParameterSet,
             HelpMessage = "The nat gateway")]
-        public PSNatGateway NatGateway { get; set; }
+        public PSNatGateway InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "An array of public ip addresses associated with the nat gateway resource.")]
-        public PSResourceId[] PublicIpAddress { get; set; }
+        public PSResourceId[] PublicIpAddresses { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "An array of public ip prefixes associated with the nat gateway resource.")]
-        public PSResourceId[] PublicIpPrefix { get; set; }
+        public PSResourceId[] PublicIpPrefixes { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -82,10 +82,24 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
+            if (this.IsParameterBound(c => c.ResourceId))
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.Name = resourceIdentifier.ResourceName;
+            }
+
             var present = true;
             try
             {
-                this.NetworkClient.NetworkManagementClient.NatGateways.Get(this.NatGateway.ResourceGroupName, this.NatGateway.Name);
+                if (this.InputObject == null)
+                {
+                    var natGateway = this.NetworkClient.NetworkManagementClient.NatGateways.Get(this.ResourceGroupName, this.Name);
+                    this.InputObject = NetworkResourceManagerProfile.Mapper.Map<PSNatGateway>(natGateway);
+                    this.InputObject.ResourceGroupName = this.ResourceGroupName;
+                    this.InputObject.Name = this.Name;
+                }
+                this.NetworkClient.NetworkManagementClient.NatGateways.Get(this.InputObject.ResourceGroupName, this.InputObject.Name);
             }
             catch (Microsoft.Rest.Azure.CloudException exception)
             {
@@ -105,13 +119,6 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
-            if (this.IsParameterBound(c => c.NatGatewayId))
-            {
-                var resourceIdentifier = new ResourceIdentifier(this.NatGatewayId);
-                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.Name = resourceIdentifier.ResourceName;
-            }
-
             // PublicIpAddresses
             List<PSResourceId> vPublicIpAddresses = null;
 
@@ -120,31 +127,31 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.IdleTimeoutInMinutes > 0)
             {
-                this.NatGateway.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
+                this.InputObject.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
             }
 
-            if (this.PublicIpAddress != null)
+            if (this.PublicIpAddresses != null)
             {
-                vPublicIpAddresses = this.PublicIpAddress?.ToList();
-                this.NatGateway.PublicIpAddress = vPublicIpAddresses;
+                vPublicIpAddresses = this.PublicIpAddresses?.ToList();
+                this.InputObject.PublicIpAddress = vPublicIpAddresses;
             }
 
-            if (this.PublicIpPrefix != null)
+            if (this.PublicIpPrefixes != null)
             {
-                vPublicIpPrefixes = this.PublicIpPrefix?.ToList();
-                this.NatGateway.PublicIpPrefix = vPublicIpPrefixes;
+                vPublicIpPrefixes = this.PublicIpPrefixes?.ToList();
+                this.InputObject.PublicIpPrefix = vPublicIpPrefixes;
             }
 
             // Map to the sdk object
-            var vNatGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NatGateway>(this.NatGateway);
-            vNatGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(this.NatGateway.Tag, validate: true);
+            var vNatGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NatGateway>(this.InputObject);
+            vNatGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(this.InputObject.Tag, validate: true);
 
             // Execute the PUT NatGateway call
-            this.NetworkClient.NetworkManagementClient.NatGateways.CreateOrUpdate(this.NatGateway.ResourceGroupName, this.NatGateway.Name, vNatGatewayModel);
+            this.NetworkClient.NetworkManagementClient.NatGateways.CreateOrUpdate(this.InputObject.ResourceGroupName, this.InputObject.Name, vNatGatewayModel);
 
-            var getNatGateway = this.NetworkClient.NetworkManagementClient.NatGateways.Get(this.NatGateway.ResourceGroupName, this.NatGateway.Name);
+            var getNatGateway = this.NetworkClient.NetworkManagementClient.NatGateways.Get(this.InputObject.ResourceGroupName, this.InputObject.Name);
             var psNatGateway = NetworkResourceManagerProfile.Mapper.Map<PSNatGateway>(getNatGateway);
-            psNatGateway.ResourceGroupName = this.NatGateway.ResourceGroupName;
+            psNatGateway.ResourceGroupName = this.InputObject.ResourceGroupName;
             psNatGateway.Tag = TagsConversionHelper.CreateTagHashtable(getNatGateway.Tags);
             WriteObject(psNatGateway, true);
         }

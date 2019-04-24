@@ -143,7 +143,7 @@ function Test-NatGatewayWithSubnet
         Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Create Subnet
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -NatGateway $vNatGateway
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -InputObject $vNatGateway
         New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 
@@ -229,7 +229,7 @@ function Test-NatGatewayCRUDAllParameters
         # Set NatGateway
         $vNatGateway.IdleTimeoutInMinutes = $IdleTimeoutInMinutesSet;
         $vNatGateway.Tag = $TagSet;
-        $vNatGateway = Set-AzNatGateway -NatGateway $vNatGateway;
+        $vNatGateway = Set-AzNatGateway -InputObject $vNatGateway;
         Assert-NotNull $vNatGateway;
         Assert-True { Check-CmdletReturnType "Set-AzNatGateway" $vNatGateway };
         Assert-AreEqual $rname $vNatGateway.Name;
@@ -270,11 +270,12 @@ function Test-NatGatewayCRUDAllParameters
         Assert-ThrowsContains { Get-AzNatGateway -ResourceGroupName $rgname -Name $rname } "not found";
 
         # Set NatGateway should fail
-        Assert-ThrowsContains { Set-AzNatGateway -NatGateway $vNatGateway } "not found";
+        Assert-ThrowsContains { Set-AzNatGateway -InputObject $vNatGateway } "not found";
     }
     finally
     {
         # Cleanup
         Clean-ResourceGroup $rgname;
     }
+} 
 }

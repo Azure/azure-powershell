@@ -65,15 +65,15 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResourceId",
-            HelpMessage = "NatGatewayId")]
-        public string NatGatewayId { get; set; }
+            HelpMessage = "ResourceId")]
+        public string ResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResource",
             HelpMessage = "NatGateway")]
-        public PSNatGateway NatGateway { get; set; }
+        public PSNatGateway InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
