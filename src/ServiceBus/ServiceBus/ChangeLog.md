@@ -20,5 +20,8 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Added new cmdlets for NetworkRuleSet of Namespace
+
 ## Version 1.0.0
 * General availability of `Az.ServiceBus` module

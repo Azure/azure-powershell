@@ -16,7 +16,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 {
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.Azure.Storage;
     using Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Management.Automation;
