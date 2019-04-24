@@ -16,13 +16,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 {
     using Microsoft.WindowsAzure.Commands.Common.Storage;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Storage;
-    using XSCL = Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Blob;
-    using Microsoft.WindowsAzure.Storage.File;
-    using Microsoft.WindowsAzure.Storage.File.Protocol;
-    using Microsoft.WindowsAzure.Storage.Queue;
-    using XSCLProtocol = Microsoft.WindowsAzure.Storage.Shared.Protocol;
+    using Microsoft.Azure.Storage;
+    using XSCL = Microsoft.Azure.Storage;
+    using Microsoft.Azure.Storage.Blob;
+    using Microsoft.Azure.Storage.File;
+    using Microsoft.Azure.Storage.File.Protocol;
+    using Microsoft.Azure.Storage.Queue;
+    using XSCLProtocol = Microsoft.Azure.Storage.Shared.Protocol;
     using XTable = Microsoft.Azure.Cosmos.Table;
     using Microsoft.Azure.Cosmos.Table;
     using System;

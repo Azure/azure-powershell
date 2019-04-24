@@ -66,13 +66,6 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-RemoveAppServicePlan");
         }
 
-        [Fact(Skip = "Needs investigation. Fails running playback")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAppServicePlanMetrics()
-        {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetAppServicePlanMetrics");
-        }
-
         [Fact(Skip = "TODO #5594: This test requires a pre-set AppService Environment with specific settings.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewAppServicePlanInAse()
