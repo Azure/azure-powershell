@@ -70,8 +70,9 @@ Get policy events at policy set definition scope
 function Get-AzureRmPolicyEvent-PolicySetDefinitionScope
 {
 	$policySetDefinitionName = Get-TestPolicySetDefinitionName
+	$from = Get-TestQueryIntervalStart
 
-    $policyEvents = Get-AzPolicyEvent -PolicySetDefinitionName $policySetDefinitionName -Top 10
+    $policyEvents = Get-AzPolicyEvent -PolicySetDefinitionName $policySetDefinitionName -Top 10 -From $from
 	Validate-PolicyEvents $policyEvents 10
 }
 
@@ -94,8 +95,9 @@ Get policy events at subscription level policy assignment scope
 function Get-AzureRmPolicyEvent-SubscriptionLevelPolicyAssignmentScope
 {
 	$policyAssignmentName = Get-TestPolicyAssignmentName
+	$from = Get-TestQueryIntervalStart
 
-    $policyEvents = Get-AzPolicyEvent -PolicyAssignmentName $policyAssignmentName -Top 10
+    $policyEvents = Get-AzPolicyEvent -PolicyAssignmentName $policyAssignmentName -Top 10 -From $from
 	Validate-PolicyEvents $policyEvents 10
 }
 

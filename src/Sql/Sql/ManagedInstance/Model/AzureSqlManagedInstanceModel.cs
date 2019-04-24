@@ -108,5 +108,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Possible values include: 'Proxy', 'Redirect', 'Default'
         /// </summary>
         public string ProxyOverride { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Managed Instance time zone
+        /// </summary>
+        public string TimezoneId { get; set; }
+
     }
 }

@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
             HelpMessage = "The Azure Sql Database Server Firewall Rule name.")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string FirewallRuleName { get; set; }
 
         /// <summary>

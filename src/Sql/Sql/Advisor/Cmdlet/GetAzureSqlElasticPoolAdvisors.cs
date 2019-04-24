@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure SQL Elastic Pool Advisor name.")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string AdvisorName { get; set; }
 
         /// <summary>

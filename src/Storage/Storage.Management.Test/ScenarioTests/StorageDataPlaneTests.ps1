@@ -49,7 +49,14 @@ function Test-File
         Assert-AreEqual $Share.Count 1
         Assert-AreEqual $Share[0].Name $shareName
 
-        Set-AzStorageFileContent -source $localSrcFile -ShareName $shareName -Path $objectName1 -Force -Context $storageContext
+        $t = Set-AzStorageFileContent -source $localSrcFile -ShareName $shareName -Path $objectName1 -Force -Context $storageContext -asjob
+		$t | wait-job
+		Assert-AreEqual $t.State "Completed"
+		Assert-AreEqual $t.Error $null
+        $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
+        Assert-AreEqual $file.Count 1
+        Assert-AreEqual $file[0].Name $objectName1
+		Set-AzStorageFileContent -source $localSrcFile -ShareName $shareName -Path $objectName1 -Force -Context $storageContext
         $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
         Assert-AreEqual $file.Count 1
         Assert-AreEqual $file[0].Name $objectName1
@@ -61,7 +68,12 @@ function Test-File
         Assert-AreEqual $file[0].Name $objectName1
         Assert-AreEqual $file[1].Name $objectName2
 
-        Get-AzStorageFileContent -ShareName $shareName -Path $objectName1 -Destination $localDestFile -Force -Context $storageContext    
+        $t = Get-AzStorageFileContent -ShareName $shareName -Path $objectName1 -Destination $localDestFile -Force -Context $storageContext  -asjob
+		$t | wait-job
+		Assert-AreEqual $t.State "Completed"
+		Assert-AreEqual $t.Error $null   
+        Assert-AreEqual (Get-FileHash -Path $localDestFile -Algorithm MD5).Hash (Get-FileHash -Path $localSrcFile -Algorithm MD5).Hash
+		Get-AzStorageFileContent -ShareName $shareName -Path $objectName1 -Destination $localDestFile -Force -Context $storageContext
         Assert-AreEqual (Get-FileHash -Path $localDestFile -Algorithm MD5).Hash (Get-FileHash -Path $localSrcFile -Algorithm MD5).Hash
 
         Remove-AzStorageFile -ShareName $shareName -Path $objectName1 -Context $storageContext
@@ -118,6 +130,7 @@ function Test-Blob
         $localSrcFile = "localsrcblobtestfile.psd1" #The file need exist before test, and should be 512 bytes aligned
         New-Item $localSrcFile -ItemType File -Force
         $localDestFile = "localdestblobtestfile.txt"
+        $localDestFile2 = "localdestblobtestfile2.txt"
 
         $containerName = "blobtestcontainer"          
         $objectName1 = "blobtest1.txt"
@@ -129,12 +142,19 @@ function Test-Blob
         New-AzStorageContainer $containerName -Context $storageContext
 
         # Upload local file to Azure Storage Blob.
-        Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob $objectName1 -Force -Properties @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5} -Context $storageContext
+        $t = Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob $objectName1 -Force -Properties @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5} -Context $storageContext -asjob
+		$t | wait-job
+		Assert-AreEqual $t.State "Completed"
+		Assert-AreEqual $t.Error $null
         $blob = Get-AzStorageContainer -Name $containerName -Context $storageContext | Get-AzStorageBlob
         Assert-AreEqual $blob.Count 1
         Assert-AreEqual $blob.Name $objectName1
         Assert-AreEqual $blob.ICloudBlob.Properties.ContentType $ContentType
         Assert-AreEqual $blob.ICloudBlob.Properties.ContentMD5 $ContentMD5
+		Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob $objectName2 -Force -Properties @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5} -Context $storageContext
+        $blob = Get-AzStorageContainer -Name $containerName -Context $storageContext | Get-AzStorageBlob
+        Assert-AreEqual $blob.Count 2
+        Get-AzStorageBlob -Container $containerName -Blob $objectName2 -Context $storageContext | Remove-AzStorageBlob -Force 
 
         # Copy blob to the same container, but with a different name.
         Start-AzStorageBlobCopy -srcContainer $containerName -SrcBlob $objectName1 -DestContainer $containerName -DestBlob $objectName2 -Context $storageContext -DestContext $storageContext
@@ -147,6 +167,11 @@ function Test-Blob
         # Download storage blob to compare with the local file.
         Get-AzStorageBlobContent -Container $containerName -Blob $objectName2 -Destination $localDestFile -Force -Context $storageContext
         Assert-AreEqual (Get-FileHash -Path $localDestFile -Algorithm MD5).Hash (Get-FileHash -Path $localSrcFile -Algorithm MD5).Hash
+        $t = Get-AzStorageBlobContent -Container $containerName -Blob $objectName2 -Destination $localDestFile2 -Force -Context $storageContext -asjob
+		$t | wait-job
+		Assert-AreEqual $t.State "Completed"
+		Assert-AreEqual $t.Error $null
+        Assert-AreEqual (Get-FileHash -Path $localDestFile2 -Algorithm MD5).Hash (Get-FileHash -Path $localSrcFile -Algorithm MD5).Hash
 
         Remove-AzStorageBlob -Container $containerName -Blob $objectName2 -Force -Context $storageContext
         $blob = Get-AzStorageBlob -Container $containerName -Context $storageContext
@@ -209,6 +234,9 @@ function Test-Queue
         $queue = Get-AzStorageQueue -Name $queueName -Context $storageContext
         Assert-AreEqual $queue.Count 1
         Assert-AreEqual $queue[0].Name $queueName
+
+		$queueMessage = New-Object -TypeName "Microsoft.Azure.Storage.Queue.CloudQueueMessage" -ArgumentList "This is message 1"
+        $queue.CloudQueue.AddMessageAsync($QueueMessage)
         
         $queueCount1 = (Get-AzStorageQueue -Context $storageContext).Count
         Remove-AzStorageQueue -Name $queueName -Force -Context $storageContext
