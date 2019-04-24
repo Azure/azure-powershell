@@ -17,9 +17,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage.DataMovement;
-using Microsoft.WindowsAzure.Storage.File;
+using Microsoft.Azure.Storage.Blob;
+using Microsoft.Azure.Storage.DataMovement;
+using Microsoft.Azure.Storage.File;
 
 namespace Microsoft.WindowsAzure.Management.Storage.Test.Common
 {

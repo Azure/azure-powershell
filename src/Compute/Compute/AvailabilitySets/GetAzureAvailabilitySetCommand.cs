@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Compute
            HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Alias("ResourceName", "AvailabilitySetName")]
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "The availability set name.")]
         [ResourceNameCompleter("Microsoft.Compute/availabilitySets", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         public override void ExecuteCmdlet()

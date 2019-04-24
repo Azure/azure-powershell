@@ -39,7 +39,6 @@ function Test-StorageAccount
         $job | Wait-Job
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
 
-        $stotype = 'StandardGRS';
         Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname; }
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
@@ -52,7 +51,6 @@ function Test-StorageAccount
         # TODO: Still need to do retry for Set-, even after Get- returns it.
         Retry-IfException { $global:sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype -AccessTier $accessTier -Force }
         $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
-        $stotype = 'StandardLRS';
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
@@ -64,7 +62,6 @@ function Test-StorageAccount
         Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype -AccessTier $accessTier -Force
         
         $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
-        $stotype = 'StandardRAGRS';
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
@@ -75,7 +72,6 @@ function Test-StorageAccount
         Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype
         
         $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
-        $stotype = 'StandardGRS';
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
@@ -129,7 +125,6 @@ function Test-NewAzureStorageAccount
 		
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
         $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
-        $stotype = 'StandardLRS';
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
@@ -162,7 +157,7 @@ function Test-GetAzureStorageAccount
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
         $loc = Get-ProviderLocation ResourceManagement;
-        $kind = 'Storage'
+        $kind = 'StorageV2'
 
         New-AzResourceGroup -Name $rgname -Location $loc;
         Write-Output ("Resource Group created")
@@ -170,7 +165,6 @@ function Test-GetAzureStorageAccount
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype ;
 
         Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
-        $stotype = 'StandardGRS';
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
@@ -216,7 +210,6 @@ function Test-SetAzureStorageAccount
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableHttpsTrafficOnly $true -EnableAzureFilesAadIntegrationForSMB $true -EnableHierarchicalNamespace $true;
 
         Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
-        $stotype = 'StandardGRS';
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
@@ -243,7 +236,6 @@ function Test-SetAzureStorageAccount
         Assert-AreEqual $true $sto.EnableHierarchicalNamespace;
 
         $sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
-        $stotype = 'StandardRAGRS';
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
@@ -314,7 +306,6 @@ function Test-SetAzureRmStorageAccountKeySource
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
         
         $sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -StorageEncryption
-        $stotype = 'StandardGRS';
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
@@ -651,7 +642,6 @@ function Test-SetAzureStorageAccountStorageV2
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
 
         Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
-        $stotype = 'StandardGRS';
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
@@ -714,7 +704,6 @@ function Test-NewAzureStorageAccountFileStorage
 		
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
         $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
-        $stotype = 'PremiumLRS';
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
@@ -752,7 +741,6 @@ function Test-NewAzureStorageAccountBlockBlobStorage
 		
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
         $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
-        $stotype = 'PremiumLRS';
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
@@ -806,7 +794,6 @@ function Test-FailoverAzureStorageAccount
 		
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
         $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
-        $stotype = 'StandardRAGRS';
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
@@ -819,7 +806,7 @@ function Test-FailoverAzureStorageAccount
 
         $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
         Assert-AreEqual $seconcaryLocation $sto.PrimaryLocation;
-        Assert-AreEqual 'StandardLRS' $sto.Sku.Name;
+        Assert-AreEqual 'Standard_LRS' $sto.Sku.Name;
         
         Retry-IfException { Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
     }
@@ -853,7 +840,6 @@ function Test-GetAzureStorageAccountGeoReplicationStats
 		
         New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
         $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname -IncludeGeoReplicationStats;
-        $stotype = 'StandardRAGRS';
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
@@ -936,7 +922,6 @@ function Test-StorageAccountManagementPolicy
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
 
         Retry-IfException { $global:sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
-        $stotype = 'StandardGRS';
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
