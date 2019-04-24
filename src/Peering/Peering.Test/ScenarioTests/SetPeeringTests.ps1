@@ -37,7 +37,7 @@ function Test-SetNewIP
 	$newIpAddress = getPeeringVariable "newIpAddress" (changeIp "$peerIpAddress" $false $offset $true )
 	$msip = getPeeringVariable "MicrosoftSessionIPv4Address" $peer.Connections[0].BgpSession.MicrosoftSessionIPv4Address
 	$peer.Connections[0] = $peer.Connections[0] | Set-AzPeeringDirectConnectionObject -SessionPrefixV4 $newIpAddress
-	Assert-ThrowsContains {$peer | Update-AzPeering} "Microsoft.Azure.Management.Peering.Models.ErrorResponseException: Server Error: OperationFailed Input prefix $newIpAddress"
+	Assert-ThrowsContains {$peer | Update-AzPeering} "ErrorCode: OperationFailed ErrorMessage: Input prefix $newIpAddress"
 
 }
 <#
@@ -53,7 +53,7 @@ function Test-SetNewIPv6
 	$newIpAddress = getPeeringVariable "newIpAddress" (changeIp "$peerIpAddress" $true $offset $true )
 	$msip = getPeeringVariable "MicrosoftSessionIPv6Address" $peer.Connections[0].BgpSession.MicrosoftSessionIPv6Address
 	$peer.Connections[0] = $peer.Connections[0] | Set-AzPeeringDirectConnectionObject -SessionPrefixV6 $newIpAddress
-	Assert-ThrowsContains {$peer | Update-AzPeering} "Microsoft.Azure.Management.Peering.Models.ErrorResponseException: Server Error: OperationFailed Input prefix $newIpAddress"
+	Assert-ThrowsContains {$peer | Update-AzPeering} "ErrorCode: OperationFailed ErrorMessage: Input prefix $newIpAddress"
 }
 <#
 .SYNOPSIS

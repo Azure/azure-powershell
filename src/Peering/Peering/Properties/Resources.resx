@@ -139,7 +139,7 @@
     <value>{0} could not be found for this object {1}.</value>
   </data>
   <data name="Error_CloudError" xml:space="preserve">
-    <value>Server Error: {0} {1}</value>
+    <value>ErrorCode: {0} ErrorMessage: {1}</value>
   </data>
   <data name="Error_GenericSyntax" xml:space="preserve">
     <value>Unable to complete the request. Check your syntax for errors.</value>

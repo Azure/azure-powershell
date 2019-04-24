@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Server Error: {0} {1}.
+        ///   Looks up a localized string similar to ErrorCode: {0} ErrorMessage: {1}.
         /// </summary>
         internal static string Error_CloudError {
             get {
