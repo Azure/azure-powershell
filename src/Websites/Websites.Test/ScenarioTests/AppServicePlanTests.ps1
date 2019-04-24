@@ -321,59 +321,6 @@ function Test-RemoveAppServicePlan
 
 <#
 .SYNOPSIS
-Tests retrieving app service plan metrics
-#>
-function Test-GetAppServicePlanMetrics
-{
-	# Setup
-	$rgname = Get-ResourceGroupName
-	$location = Get-Location
-	$appServicePlanName = Get-WebHostPlanName
-	$tier = "Standard"
-	$apiversion = "2015-08-01"
-	$resourceType = "Microsoft.Web/sites"
-
-	try
-	{
-		#Setup
-		New-AzResourceGroup -Name $rgname -Location $location
-		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $appServicePlanName -Location  $location -Tier $tier
-		
-		$endTime = Get-Date
-		$startTime = $endTime.AddHours(-3)
-
-		$metricnames = @('CPU', 'Requests')
-
-		# Get app service plan metrics
-		$metrics = Get-AzAppServicePlanMetrics -ResourceGroupName $rgname -Name $appServicePlanName -Metrics $metricnames -StartTime $startTime -EndTime $endTime -Granularity PT1M
-
-		$actualMetricNames = $metrics | Select -Expand Name | Select -Expand Value 
-
-		foreach ($i in $metricsnames)
-		{
-			Assert-True { $actualMetricsNames -contains $i}
-		}
-
-		# Get app service plan metrics via pipeline obj
-		$metrics = $serverFarm | Get-AzAppServicePlanMetrics -Metrics $metricnames -StartTime $startTime -EndTime $endTime -Granularity PT1M
-
-		$actualMetricNames = $metrics | Select -Expand Name | Select -Expand Value 
-
-		foreach ($i in $metricsnames)
-		{
-			Assert-True { $actualMetricsNames -contains $i}
-		}
-	}
-	finally
-	{
-		# Cleanup
-		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $appServicePlanName -Force
-		Remove-AzResourceGroup -Name $rgname -Force
-	}
-}
-
-<#
-.SYNOPSIS
 Tests creating a new Web Hosting Plan.
 #>
 function Test-CreateNewAppServicePlanInAse
