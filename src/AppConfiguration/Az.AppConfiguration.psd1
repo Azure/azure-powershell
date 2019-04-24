@@ -1,5 +1,5 @@
 @{
-# region definition
+# region definition 
   RootModule = './Az.AppConfiguration.psm1'
   ModuleVersion = '0.1.2'
   CompatiblePSEditions = 'Core', 'Desktop'
@@ -11,13 +11,13 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.AppConfiguration.private.dll'
   FormatsToProcess = './Az.AppConfiguration.format.ps1xml'
-# endregion
+# endregion 
 
-# region persistent data
+# region persistent data 
   GUID = '3ff16738-381e-4d5a-9d90-c7ef6816f78e'
-# endregion
+# endregion 
 
-# region private data
+# region private data 
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'AppConfiguration'
@@ -26,7 +26,7 @@
       ReleaseNotes = ''
     }
   }
-# endregion
+# endregion 
 
 # region exports
   CmdletsToExport = 'Get-AzAppConfigurationStore', 'Get-AzAppConfigurationStoreKey', 'New-AzAppConfigurationStore', 'New-AzAppConfigurationStoreKey', 'Remove-AzAppConfigurationStore', 'Test-AzAppConfigurationStoreNameAvailability', '*'

@@ -1,31 +1,31 @@
 ---
 external help file: Az.AppConfiguration-help.xml
 Module Name: Az.AppConfiguration
-online version: https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/remove-azappconfigurationstore
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstorekey
 schema: 2.0.0
 ---
 
-# Remove-AzAppConfigurationStore
+# New-AzAppConfigurationStoreKey
 
 ## SYNOPSIS
-Deletes a configuration store.
+Regenerates an access key for the specified configuration store.
 
 ## SYNTAX
 
-### ResourceGroupNameConfigStoreNameEtc (Default)
+### RegenerateSubscriptionIdViaHostExpanded (Default)
 ```
-Remove-AzAppConfigurationStore [-AsJob] [-DefaultProfile <PSObject>] -Name <String> [-PassThru]
- -ResourceGroupName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzAppConfigurationStoreKey -Name <String> -ResourceGroupName <String> [-Id <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SubscriptionIdResourceGroupNameConfigStoreNameEtc
+### RegenerateExpanded
 ```
-Remove-AzAppConfigurationStore [-AsJob] [-DefaultProfile <PSObject>] -Name <String> [-PassThru]
- -ResourceGroupName <String> -SubscriptionId <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzAppConfigurationStoreKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-Id <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes a configuration store.
+Regenerates an access key for the specified configuration store.
 
 ## EXAMPLES
 
@@ -38,21 +38,6 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -60,6 +45,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+The id of the key to regenerate.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -79,21 +79,6 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -118,7 +103,7 @@ The Microsoft Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionIdResourceGroupNameConfigStoreNameEtc
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: True
@@ -166,10 +151,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IApiKey
 ## NOTES
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/remove-azappconfigurationstore](https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/remove-azappconfigurationstore)
+[https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstorekey](https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstorekey)
 

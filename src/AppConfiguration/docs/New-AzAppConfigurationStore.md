@@ -1,31 +1,32 @@
 ---
 external help file: Az.AppConfiguration-help.xml
 Module Name: Az.AppConfiguration
-online version: https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/get-azappconfigurationstorekey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstore
 schema: 2.0.0
 ---
 
-# Get-AzAppConfigurationStoreKey
+# New-AzAppConfigurationStore
 
 ## SYNOPSIS
-Lists the access key for the specified configuration store.
+Creates a configuration store with the specified parameters.
 
 ## SYNTAX
 
-### KeysResourceGroupNameConfigStoreName (Default)
+### CreateSubscriptionIdViaHostExpanded (Default)
 ```
-Get-AzAppConfigurationStoreKey [-DefaultProfile <PSObject>] -Name <String> -ResourceGroupName <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> -Location <String>
+ [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### KeysSubscriptionIdResourceGroupNameConfigStoreName
+### CreateExpanded
 ```
-Get-AzAppConfigurationStoreKey [-DefaultProfile <PSObject>] -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Location <String> [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Lists the access key for the specified configuration store.
+Creates a configuration store with the specified parameters.
 
 ## EXAMPLES
 
@@ -38,6 +39,21 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -47,6 +63,22 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The location of the resource.
+This cannot be changed after the resource is created.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -88,10 +120,25 @@ The Microsoft Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: KeysSubscriptionIdResourceGroupNameConfigStoreName
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+The tags of the resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IResourceTags
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -136,10 +183,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IApiKey
+### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStore
 ## NOTES
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/get-azappconfigurationstorekey](https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/get-azappconfigurationstorekey)
+[https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstore](https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstore)
 

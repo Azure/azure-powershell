@@ -5,14 +5,13 @@
 ``` yaml
 require: 
   - $(this-folder)/../readme.azure.md
-  - https://raw.githubusercontent.com/azure/azure-rest-api-specs/multiapi/specification/billing/resource-manager/readme.enable-multi-api.md
-  - https://raw.githubusercontent.com/azure/azure-rest-api-specs/multiapi/specification/billing/resource-manager/readme.md
-  - https://raw.githubusercontent.com/azure/azure-rest-api-specs/multiapi/specification/commerce/resource-manager/readme.enable-multi-api.md
-  - https://raw.githubusercontent.com/azure/azure-rest-api-specs/multiapi/specification/commerce/resource-manager/readme.md 
-  - https://raw.githubusercontent.com/azure/azure-rest-api-specs/multiapi/specification/consumption/resource-manager/readme.enable-multi-api.md
-  - https://raw.githubusercontent.com/azure/azure-rest-api-specs/multiapi/specification/consumption/resource-manager/readme.md
+  - $(repo)/specification/billing/resource-manager/readme.enable-multi-api.md
+  - $(repo)/specification/billing/resource-manager/readme.md
+  - $(repo)/specification/commerce/resource-manager/readme.enable-multi-api.md
+  - $(repo)/specification/commerce/resource-manager/readme.md 
+  - $(repo)/specification/consumption/resource-manager/readme.enable-multi-api.md
+  - $(repo)/specification/consumption/resource-manager/readme.md
 
-service-name: Billing
 module-version: 0.0.1
 title: BillingManagementClient
 skip-model-cmdlets: true

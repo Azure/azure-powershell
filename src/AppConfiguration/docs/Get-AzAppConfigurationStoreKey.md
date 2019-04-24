@@ -1,31 +1,31 @@
 ---
 external help file: Az.AppConfiguration-help.xml
 Module Name: Az.AppConfiguration
-online version: https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstorekey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/get-azappconfigurationstorekey
 schema: 2.0.0
 ---
 
-# New-AzAppConfigurationStoreKey
+# Get-AzAppConfigurationStoreKey
 
 ## SYNOPSIS
-Regenerates an access key for the specified configuration store.
+Lists the access key for the specified configuration store.
 
 ## SYNTAX
 
-### KeyResourceGroupNameConfigStoreNameIdExpanded (Default)
+### ListSubscriptionIdViaHost (Default)
 ```
-New-AzAppConfigurationStoreKey [-DefaultProfile <PSObject>] [-Id <String>] -Name <String>
- -ResourceGroupName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzAppConfigurationStoreKey -Name <String> -ResourceGroupName <String> [-SkipToken <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### KeySubscriptionIdResourceGroupNameConfigStoreNameIdExpanded
+### List
 ```
-New-AzAppConfigurationStoreKey [-DefaultProfile <PSObject>] [-Id <String>] -Name <String>
- -ResourceGroupName <String> -SubscriptionId <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzAppConfigurationStoreKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-SkipToken <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Regenerates an access key for the specified configuration store.
+Lists the access key for the specified configuration store.
 
 ## EXAMPLES
 
@@ -45,21 +45,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Id
-The id of the key to regenerate.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -98,12 +83,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkipToken
+A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The Microsoft Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: KeySubscriptionIdResourceGroupNameConfigStoreNameIdExpanded
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -156,5 +156,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstorekey](https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstorekey)
+[https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/get-azappconfigurationstorekey](https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/get-azappconfigurationstorekey)
 

@@ -1,32 +1,31 @@
 ---
 external help file: Az.AppConfiguration-help.xml
 Module Name: Az.AppConfiguration
-online version: https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstore
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/remove-azappconfigurationstore
 schema: 2.0.0
 ---
 
-# New-AzAppConfigurationStore
+# Remove-AzAppConfigurationStore
 
 ## SYNOPSIS
-Creates a configuration store with the specified parameters.
+Deletes a configuration store.
 
 ## SYNTAX
 
-### ResourceGroupNameConfigStoreNameLocationTagsPropertiesExpanded (Default)
+### DeleteSubscriptionIdViaHost (Default)
 ```
-New-AzAppConfigurationStore [-AsJob] [-DefaultProfile <PSObject>] -Location <String> -Name <String>
- -ResourceGroupName <String> [-Tag <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SubscriptionIdResourceGroupNameConfigStoreNameLocationTagsPropertiesEtc
+### Delete
 ```
-New-AzAppConfigurationStore [-AsJob] [-DefaultProfile <PSObject>] -Location <String> -Name <String>
- -ResourceGroupName <String> [-Tag <Hashtable>] -SubscriptionId <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a configuration store with the specified parameters.
+Deletes a configuration store.
 
 ## EXAMPLES
 
@@ -69,9 +68,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-The location of the resource.
-This cannot be changed after the resource is created.
+### -Name
+The name of the configuration store.
 
 ```yaml
 Type: System.String
@@ -85,17 +83,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the configuration store.
+### -PassThru
+When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -120,25 +118,10 @@ The Microsoft Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionIdResourceGroupNameConfigStoreNameLocationTagsPropertiesEtc
+Parameter Sets: Delete
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-The tags of the resource.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -183,10 +166,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStore
+### System.Boolean
 ## NOTES
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstore](https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstore)
+[https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/remove-azappconfigurationstore](https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/remove-azappconfigurationstore)
 
