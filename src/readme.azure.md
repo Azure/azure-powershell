@@ -31,7 +31,6 @@ output-folder: '.'
 directive:
   - where:
       subject: Operation
-    set:
-      hidden: true
+    hide: true
 ```
 

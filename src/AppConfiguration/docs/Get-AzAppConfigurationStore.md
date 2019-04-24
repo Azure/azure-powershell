@@ -12,37 +12,39 @@ Lists the configuration stores for a given subscription.
 
 ## SYNTAX
 
-### __NoParameters (Default)
+### ListSubscriptionIdViaHost (Default)
 ```
-Get-AzAppConfigurationStore [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### SubscriptionIdResourceGroupNameConfigStoreName
-```
-Get-AzAppConfigurationStore [-DefaultProfile <PSObject>] -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> [<CommonParameters>]
+Get-AzAppConfigurationStore [-SkipToken <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ResourceGroupNameConfigStoreName
+### GetSubscriptionIdViaHost
 ```
-Get-AzAppConfigurationStore [-DefaultProfile <PSObject>] -Name <String> -ResourceGroupName <String>
+Get-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### ResourceGroupSubscriptionIdResourceGroupName
+### Get
 ```
-Get-AzAppConfigurationStore [-DefaultProfile <PSObject>] -ResourceGroupName <String> -SubscriptionId <String>
+Get-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListSubscriptionIdViaHost1
+```
+Get-AzAppConfigurationStore -ResourceGroupName <String> [-SkipToken <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### ResourceGroupResourceGroupName
+### List1
 ```
-Get-AzAppConfigurationStore [-DefaultProfile <PSObject>] -ResourceGroupName <String> [<CommonParameters>]
+Get-AzAppConfigurationStore -ResourceGroupName <String> -SubscriptionId <String> [-SkipToken <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### SubscriptionId
+### List
 ```
-Get-AzAppConfigurationStore [-DefaultProfile <PSObject>] -SubscriptionId <String> [<CommonParameters>]
+Get-AzAppConfigurationStore -SubscriptionId <String> [-SkipToken <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +81,7 @@ The name of the configuration store.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionIdResourceGroupNameConfigStoreName, ResourceGroupNameConfigStoreName
+Parameter Sets: GetSubscriptionIdViaHost, Get
 Aliases:
 
 Required: True
@@ -94,10 +96,25 @@ The name of the resource group to which the container registry belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionIdResourceGroupNameConfigStoreName, ResourceGroupNameConfigStoreName, ResourceGroupSubscriptionIdResourceGroupName, ResourceGroupResourceGroupName
+Parameter Sets: GetSubscriptionIdViaHost, Get, ListSubscriptionIdViaHost1, List1
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkipToken
+A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
+
+```yaml
+Type: System.String
+Parameter Sets: ListSubscriptionIdViaHost, ListSubscriptionIdViaHost1, List1, List
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -109,7 +126,7 @@ The Microsoft Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionIdResourceGroupNameConfigStoreName, ResourceGroupSubscriptionIdResourceGroupName, SubscriptionId
+Parameter Sets: Get, List1, List
 Aliases:
 
 Required: True

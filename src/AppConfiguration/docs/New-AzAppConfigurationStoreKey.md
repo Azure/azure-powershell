@@ -12,16 +12,16 @@ Regenerates an access key for the specified configuration store.
 
 ## SYNTAX
 
-### KeyResourceGroupNameConfigStoreNameIdExpanded (Default)
+### RegenerateSubscriptionIdViaHostExpanded (Default)
 ```
-New-AzAppConfigurationStoreKey [-DefaultProfile <PSObject>] [-Id <String>] -Name <String>
- -ResourceGroupName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzAppConfigurationStoreKey -Name <String> -ResourceGroupName <String> [-Id <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### KeySubscriptionIdResourceGroupNameConfigStoreNameIdExpanded
+### RegenerateExpanded
 ```
-New-AzAppConfigurationStoreKey [-DefaultProfile <PSObject>] [-Id <String>] -Name <String>
- -ResourceGroupName <String> -SubscriptionId <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzAppConfigurationStoreKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-Id <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,7 +103,7 @@ The Microsoft Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: KeySubscriptionIdResourceGroupNameConfigStoreNameIdExpanded
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: True

@@ -65,5 +65,5 @@ directive:
   - where:
       parameter-name: ConfigStoreCreationParameters|RegenerateKeyParameters|CheckNameAvailabilityParameters
     select: command
-    remove: true
+    hide: true
 ```

@@ -12,16 +12,16 @@ Lists the access key for the specified configuration store.
 
 ## SYNTAX
 
-### KeysResourceGroupNameConfigStoreName (Default)
+### ListSubscriptionIdViaHost (Default)
 ```
-Get-AzAppConfigurationStoreKey [-DefaultProfile <PSObject>] -Name <String> -ResourceGroupName <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzAppConfigurationStoreKey -Name <String> -ResourceGroupName <String> [-SkipToken <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### KeysSubscriptionIdResourceGroupNameConfigStoreName
+### List
 ```
-Get-AzAppConfigurationStoreKey [-DefaultProfile <PSObject>] -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzAppConfigurationStoreKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-SkipToken <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,12 +83,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkipToken
+A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The Microsoft Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: KeysSubscriptionIdResourceGroupNameConfigStoreName
+Parameter Sets: List
 Aliases:
 
 Required: True

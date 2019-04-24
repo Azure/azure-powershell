@@ -12,16 +12,16 @@ Creates a configuration store with the specified parameters.
 
 ## SYNTAX
 
-### ResourceGroupNameConfigStoreNameLocationTagsPropertiesExpanded (Default)
+### CreateSubscriptionIdViaHostExpanded (Default)
 ```
-New-AzAppConfigurationStore [-AsJob] [-DefaultProfile <PSObject>] -Location <String> -Name <String>
- -ResourceGroupName <String> [-Tag <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> -Location <String>
+ [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SubscriptionIdResourceGroupNameConfigStoreNameLocationTagsPropertiesEtc
+### CreateExpanded
 ```
-New-AzAppConfigurationStore [-AsJob] [-DefaultProfile <PSObject>] -Location <String> -Name <String>
- -ResourceGroupName <String> [-Tag <Hashtable>] -SubscriptionId <String> [-WhatIf] [-Confirm]
+New-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Location <String> [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -120,7 +120,7 @@ The Microsoft Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionIdResourceGroupNameConfigStoreNameLocationTagsPropertiesEtc
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 The tags of the resource.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IResourceTags
 Parameter Sets: (All)
 Aliases:
 

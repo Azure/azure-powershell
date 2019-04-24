@@ -12,16 +12,16 @@ Deletes a configuration store.
 
 ## SYNTAX
 
-### ResourceGroupNameConfigStoreNameEtc (Default)
+### DeleteSubscriptionIdViaHost (Default)
 ```
-Remove-AzAppConfigurationStore [-AsJob] [-DefaultProfile <PSObject>] -Name <String> [-PassThru]
- -ResourceGroupName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SubscriptionIdResourceGroupNameConfigStoreNameEtc
+### Delete
 ```
-Remove-AzAppConfigurationStore [-AsJob] [-DefaultProfile <PSObject>] -Name <String> [-PassThru]
- -ResourceGroupName <String> -SubscriptionId <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -118,7 +118,7 @@ The Microsoft Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: SubscriptionIdResourceGroupNameConfigStoreNameEtc
+Parameter Sets: Delete
 Aliases:
 
 Required: True

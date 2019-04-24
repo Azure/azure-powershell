@@ -14,20 +14,14 @@ Checks whether the configuration store name is available for use.
 
 ### NoType (Default)
 ```
-Test-AzAppConfigurationStoreNameAvailability [-DefaultProfile <PSObject>] -Name <String>
- [-SubscriptionId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Test-AzAppConfigurationStoreNameAvailability [-SubscriptionId <String>] -Name <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### NameAvailabilitySubscriptionIdNameTypeExpanded
+### CheckExpanded
 ```
-Test-AzAppConfigurationStoreNameAvailability [-DefaultProfile <PSObject>] -Name <String>
- -Type <ConfigurationResourceType> -SubscriptionId <String> [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### NameAvailabilityNameTypeExpanded
-```
-Test-AzAppConfigurationStoreNameAvailability [-DefaultProfile <PSObject>] -Name <String>
- -Type <ConfigurationResourceType> [-WhatIf] [-Confirm] [<CommonParameters>]
+Test-AzAppConfigurationStoreNameAvailability -SubscriptionId <String> -Name <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,22 +85,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: NameAvailabilitySubscriptionIdNameTypeExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-The resource type to check for name availability.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.ConfigurationResourceType
-Parameter Sets: NameAvailabilitySubscriptionIdNameTypeExpanded, NameAvailabilityNameTypeExpanded
+Parameter Sets: CheckExpanded
 Aliases:
 
 Required: True
