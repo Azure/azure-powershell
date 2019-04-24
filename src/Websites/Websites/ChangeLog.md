@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* "Kind" property will now be set for PSSite objects returned by Get-AzWebApp
 * Get-AzWebApp*Metrics and Get-AzAppServicePlanMetrics marked deprecated
 
 ## Version 1.2.0
