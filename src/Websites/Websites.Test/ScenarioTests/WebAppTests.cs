@@ -164,5 +164,12 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         {
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-WindowsContainerWebAppPSSessionOpened");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTagsNotRemovedBySetWebApp()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-TagsNotRemovedBySetWebApp");
+        }
     }
 }

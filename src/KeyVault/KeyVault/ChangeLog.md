@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.0
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Fix documentation for wildcards
 
 ## Version 1.1.0
 * Added wildcard support to KeyVault cmdlets

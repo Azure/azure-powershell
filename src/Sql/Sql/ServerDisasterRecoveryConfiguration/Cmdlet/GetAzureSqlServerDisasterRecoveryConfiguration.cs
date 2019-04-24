@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The name of the Azure SQL Server Disaster Recovery Configuration to retrieve.")]
+        [SupportsWildcards]
         public string VirtualEndpointName { get; set; }
 
         /// <summary>

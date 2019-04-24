@@ -84,5 +84,26 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
         {
             TestsController.NewInstance.RunPsTest(_logger, "Test-GetAzureRmAlertHistory");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzureRmMetricAlertRuleV2()
+        {
+            TestsController.NewInstance.RunPsTest(_logger, "Test-GetAzureRmMetricAlertRuleV2");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveAzureRmMetricAlertRuleV2()
+        {
+            TestsController.NewInstance.RunPsTest(_logger, "Test-RemoveAzureRmAlertRuleV2");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddAzureRmMetricAlertRuleV2()
+        {
+            TestsController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmMetricAlertRuleV2");
+        }
     }
 }

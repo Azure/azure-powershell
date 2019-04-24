@@ -16,8 +16,8 @@
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Blob;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -25,7 +25,7 @@ using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using StorageBlob = Microsoft.WindowsAzure.Storage.Blob;
+using StorageBlob = Microsoft.Azure.Storage.Blob;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 

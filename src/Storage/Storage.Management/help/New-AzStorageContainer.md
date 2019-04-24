@@ -138,7 +138,7 @@ Clients cannot enumerate blobs in the container by using anonymous request.
 Which restricts access to only the storage account owner.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.WindowsAzure.Storage.Blob.BlobContainerPublicAccessType]
+Type: System.Nullable`1[Microsoft.Azure.Storage.Blob.BlobContainerPublicAccessType]
 Parameter Sets: (All)
 Aliases: PublicAccess
 Accepted values: Off, Container, Blob, Unknown

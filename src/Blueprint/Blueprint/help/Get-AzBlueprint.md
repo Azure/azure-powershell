@@ -80,7 +80,6 @@ ResourceGroups       : ResourceGroup
 
 Get the blueprint definitions within the current subscription and the management group hierarchy of the subscription.
 
-
 ### Example 2
 ```powershell
 PS> Get-AzBlueprint -ManagementGroupId "myManagementGroupId"
