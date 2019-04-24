@@ -30,7 +30,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNatGatewayCRUDMinimalParameters()
         {
-            TestRunner.RunTestScript("Test-NatGatewayCRUDMinimalParameters");
+            TestRunner.RunTestScript("Test-NatGatewayCRUDAllParameters");
         }
 
         [Fact]
