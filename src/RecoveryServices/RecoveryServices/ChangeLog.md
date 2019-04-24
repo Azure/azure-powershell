@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support for Cross subscription Azure to Azure site recovery.
+* Marking upcoming breaking changes for Azure Site Recovery.
+* Fix for Azure Site Recovery recovery plan end action plan.
+* Fix for Azure Site Recovery Update network mapping for Azure to Azure.
+* Fix for Azure Site Recovery update protection direction for Azure to Azure for managed disk.
+* Other minor fixes.
 
 ## Version 1.3.0
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
