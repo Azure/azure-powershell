@@ -18,8 +18,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage
     using Microsoft.WindowsAzure.Commands.Common.Storage;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Blob;
+    using Microsoft.Azure.Storage;
+    using Microsoft.Azure.Storage.Blob;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
