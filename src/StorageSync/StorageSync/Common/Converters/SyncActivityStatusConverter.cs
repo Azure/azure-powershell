@@ -19,33 +19,36 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 {
     /// <summary>
     /// Class SyncProgressStatusConvertor.
-    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSSyncProgressStatus, Microsoft.Azure.Management.StorageSync.Models.SyncProgressStatus}" />
+    /// Implements the <see cref="Converters.ConverterBase{PSSyncActivityStatus, StorageSyncModels.SyncProgressStatus}" />
     /// </summary>
-    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSSyncProgressStatus, Microsoft.Azure.Management.StorageSync.Models.SyncProgressStatus}" />
-    public class SyncProgressStatusConvertor : ConverterBase<PSSyncProgressStatus, StorageSyncModels.SyncProgressStatus>
+    /// <seealso cref="Converters.ConverterBase{PSSyncActivityStatus, StorageSyncModels.SyncProgressStatus}" />
+    public class SyncActivityStatusConverter : ConverterBase<PSSyncActivityStatus, StorageSyncModels.SyncActivityStatus>
     {
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>StorageSyncModels.SyncProgressStatus.</returns>
-        protected override StorageSyncModels.SyncProgressStatus Transform(PSSyncProgressStatus source) => new StorageSyncModels.SyncProgressStatus(
-            source.ProgressTimestamp, source.SyncDirection, source.PerItemErrorCount, source.AppliedItemCount, source.TotalItemCount, source.AppliedBytes,source.TotalBytes);
+        protected override StorageSyncModels.SyncActivityStatus Transform(PSSyncActivityStatus source) => new StorageSyncModels.SyncActivityStatus(
+            source.Timestamp,
+            source.PerItemErrorCount,
+            source.AppliedItemCount,
+            source.TotalItemCount,
+            source.AppliedBytes,source.TotalBytes);
 
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>PSSyncProgressStatus.</returns>
-        protected override PSSyncProgressStatus Transform(StorageSyncModels.SyncProgressStatus source)
+        protected override PSSyncActivityStatus Transform(StorageSyncModels.SyncActivityStatus source)
         {
-            return new PSSyncProgressStatus()
+            return new PSSyncActivityStatus()
             {
+                Timestamp = source.Timestamp,
                 AppliedBytes = source.AppliedBytes,
                 AppliedItemCount=source.AppliedItemCount,
                 PerItemErrorCount=source.PerItemErrorCount,
-                ProgressTimestamp = source.ProgressTimestamp,
-                SyncDirection = source.SyncDirection,
                 TotalBytes = source.TotalBytes,
                 TotalItemCount=source.TotalItemCount
             };

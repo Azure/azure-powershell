@@ -14,7 +14,7 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
-    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.Azure.Storage;
     using System;
 
     /// <summary>
