@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
     {
         #region Parameters
         [Parameter(ParameterSetName = ParameterSetNames.PublishBlueprint, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidatePattern("([A-Za-z0-9\\-\\_]+)", Options = RegexOptions.Compiled | RegexOptions.CultureInvariant)]
+        [ValidatePattern("([A-Za-z0-9-_]+)", Options = RegexOptions.Compiled | RegexOptions.CultureInvariant)]
         [ValidateNotNullOrEmpty]
         public string Version { get; set; }
 

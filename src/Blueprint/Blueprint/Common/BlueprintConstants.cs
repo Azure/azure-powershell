@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             public const string CreatePolicyAssignmentArtifact = "CreatePolicyArtifact";
             public const string CreateRoleAssignmentArtifact = "CreateRoleAssignmentArtifact";
             public const string CreateTemplateArtifact = "CreateTemplateArtifact";
+            public const string CreateArtifactByInputFile = "CreateArtifactByInputFile";
 
 
             public const string CreateBlueprintBySubscription = "CreateBlueprintBySubscription";

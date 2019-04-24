@@ -16,9 +16,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
 {
     public enum PSArtifactKind 
     {
-        None = 0,
-        RoleAssignmentArtifact = 1,
-        PolicyAssignmentArtifact = 2,
-        TemplateArtifact = 3
+        RoleAssignmentArtifact = 0,
+        PolicyAssignmentArtifact = 1,
+        TemplateArtifact = 2
     }
 }
