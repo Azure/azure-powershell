@@ -29,6 +29,7 @@ using System.IO;
 using Microsoft.Azure.Management.DataLake.Store;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.DataLake.Test.ScenarioTests;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 {
@@ -36,7 +37,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
     {
         private readonly EnvironmentSetupHelper _helper;
 
-        internal const string ResourceGroupLocation = "eastus2";
+        internal const string ResourceGroupLocation = "westus";
 
         public NewResourceManagementClient NewResourceManagementClient { get; private set; }
 
@@ -86,9 +87,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
             {
                 {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
             };
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.Matcher = new UrlDecodingRecordMatcher(true, d, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
-            using (var context = MockContext.Start(callingClassType, mockName))
+            using (var context = AdlMockContext.Start(callingClassType, mockName))
             {
                 SetupManagementClients(context);
 
@@ -115,6 +116,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
                 finally
                 {
                     cleanup?.Invoke();
+                    ReSetDataLakeStoreFileSystemManagementClient();
                 }
             }
         }
@@ -122,7 +124,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         private void SetupManagementClients(MockContext context)
         {
             DataLakeStoreAccountManagementClient = GetDataLakeStoreAccountManagementClient(context);
-            SetDataLakeStoreFileSystemManagementClient();
+            SetDataLakeStoreFileSystemManagementClient(context);
             NewResourceManagementClient = GetNewResourceManagementClient(context);
             NetworkClient = GetNetworkClient(context);
             _helper.SetupManagementClients(NewResourceManagementClient, NetworkClient, DataLakeStoreAccountManagementClient);
@@ -140,14 +142,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
             return context.GetServiceClient<DataLakeStoreAccountManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private static void SetDataLakeStoreFileSystemManagementClient()
+        private static void ReSetDataLakeStoreFileSystemManagementClient() { AdlsClientFactory.IsTest = false; }
+
+        private static void SetDataLakeStoreFileSystemManagementClient(MockContext context)
         {
             var currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
             AdlsClientFactory.IsTest = true;
-            if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
-            {
-                AdlsClientFactory.MockCredentials = currentEnvironment.TokenInfo[TokenAudience.Management];
-            }
+            AdlsClientFactory.CustomDelegatingHAndler = ((AdlMockContext)context).GetDelegatingHAndlersForDataPlane(currentEnvironment, new AdlMockDelegatingHandler());
+            AdlsClientFactory.MockCredentials = currentEnvironment.TokenInfo[TokenAudience.Management];
         }
 
         protected NetworkManagementClient GetNetworkClient(MockContext context)

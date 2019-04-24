@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.Sql.ServiceObjective.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -21,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
     /// <summary>
     /// Defines the Get-AzSqlDatabaseServer cmdlet
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerServiceObjective", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerServiceObjective", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true, DefaultParameterSetName = ByLocationParameterSet)]
     [OutputType(typeof(AzureSqlServerServiceObjectiveModel))]
     public class GetAzureSqlServerServiceObjective : AzureSqlServerServiceObjectiveCmdletBase
     {
@@ -31,8 +32,14 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = "Azure Sql Database service objective name.")]
+            HelpMessage = "Azure Sql Database service objective name.",
+            ParameterSetName = ByServerParameterSet)]
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Azure Sql Database service objective name.",
+            ParameterSetName = ByLocationParameterSet)]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ServiceObjectiveName { get; set; }
 
         /// <summary>
@@ -41,21 +48,19 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
         /// <returns>A single server</returns>
         protected override IEnumerable<AzureSqlServerServiceObjectiveModel> GetEntity()
         {
-            ICollection<AzureSqlServerServiceObjectiveModel> results = null;
-
-            if (this.MyInvocation.BoundParameters.ContainsKey("ServiceObjectiveName"))
+            if (this.ParameterSetName == ByLocationParameterSet)
             {
-                results = new List<AzureSqlServerServiceObjectiveModel>
-                {
-                    ModelAdapter.GetServiceObjective(this.ResourceGroupName, this.ServerName, this.ServiceObjectiveName)
-                };
+                return ModelAdapter.ListServiceObjectivesByLocation(
+                    this.Location,
+                    ToWildcardPattern(this.ServiceObjectiveName));
             }
             else
             {
-                results = ModelAdapter.ListServiceObjectives(this.ResourceGroupName, this.ServerName);
+                return ModelAdapter.ListServiceObjectivesByServer(
+                    this.ResourceGroupName,
+                    this.ServerName,
+                    ToWildcardPattern(this.ServiceObjectiveName));
             }
-
-            return results;
         }
 
         /// <summary>

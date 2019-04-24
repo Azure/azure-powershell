@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
             HelpMessage = "The name of the Azure SQL Database.")]
         [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string DatabaseName { get; set; }
 
         /// <summary>
@@ -66,7 +67,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
         {
             ICollection<RecommendedDatabaseProperties> results;
 
-            if (MyInvocation.BoundParameters.ContainsKey("DatabaseName"))
+            if (MyInvocation.BoundParameters.ContainsKey("DatabaseName") && !WildcardPattern.ContainsWildcardCharacters(DatabaseName))
             {
                 results = new List<RecommendedDatabaseProperties>();
                 results.Add(ModelAdapter.GetUpgradeDatabaseHints(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.ExcludeElasticPoolCandidates));
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
                 results = ModelAdapter.ListUpgradeDatabaseHints(this.ResourceGroupName, this.ServerName, this.ExcludeElasticPoolCandidates);
             }
 
-            return results;
+            return SubResourceWildcardFilter(DatabaseName, results);
         }
 
         /// <summary>

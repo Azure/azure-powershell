@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 1.1.0
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
 ## Version 1.0.0
 * General availability of `Az.Batch` module
 * Added the ability to see what version of the Azure Batch Node Agent is running on each of the VMs in a pool, via the new `NodeAgentInformation` property on `PSComputeNode`.
