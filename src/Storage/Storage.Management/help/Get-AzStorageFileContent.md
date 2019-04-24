@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 6420CBE1-BF9D-493D-BCA8-E8C6688FAF3B
@@ -16,7 +16,7 @@ Downloads the contents of a file.
 ### ShareName (Default)
 ```
 Get-AzStorageFileContent [-ShareName] <String> [-Path] <String> [[-Destination] <String>] [-CheckMd5]
- [-PassThru] [-Force] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+ [-PassThru] [-Force] [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -24,7 +24,7 @@ Get-AzStorageFileContent [-ShareName] <String> [-Path] <String> [[-Destination] 
 ### Share
 ```
 Get-AzStorageFileContent [-Share] <CloudFileShare> [-Path] <String> [[-Destination] <String>] [-CheckMd5]
- [-PassThru] [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-PassThru] [-Force] [-AsJob] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -32,15 +32,15 @@ Get-AzStorageFileContent [-Share] <CloudFileShare> [-Path] <String> [[-Destinati
 ### Directory
 ```
 Get-AzStorageFileContent [-Directory] <CloudFileDirectory> [-Path] <String> [[-Destination] <String>]
- [-CheckMd5] [-PassThru] [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-CheckMd5] [-PassThru] [-Force] [-AsJob] [-ServerTimeoutPerRequest <Int32>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### File
 ```
 Get-AzStorageFileContent [-File] <CloudFile> [[-Destination] <String>] [-CheckMd5] [-PassThru] [-Force]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-AsJob] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -66,6 +66,21 @@ PS C:\>Get-AzStorageFile -ShareName sample | ? {$_.GetType().Name -eq "CloudFile
 This example downloads the files under sample file share
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -CheckMd5
 Specifies whether to check the Md5 sum for the downloaded file.
@@ -169,7 +184,7 @@ To obtain a directory, use the New-AzStorageDirectory cmdlet.
 You can also use the Get-AzStorageFile cmdlet to obtain a directory.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
+Type: Microsoft.Azure.Storage.File.CloudFileDirectory
 Parameter Sets: Directory
 Aliases:
 
@@ -186,7 +201,7 @@ This cmdlet gets the file that this parameter specifies.
 To obtain a **CloudFile** object, use the Get-AzStorageFile cmdlet.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.File.CloudFile
+Type: Microsoft.Azure.Storage.File.CloudFile
 Parameter Sets: File
 Aliases:
 
@@ -270,7 +285,7 @@ This object contains the storage context.
 If you specify this parameter, do not specify the *Context* parameter.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.File.CloudFileShare
+Type: Microsoft.Azure.Storage.File.CloudFileShare
 Parameter Sets: Share
 Aliases:
 
@@ -333,17 +348,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.WindowsAzure.Storage.File.CloudFileShare
+### Microsoft.Azure.Storage.File.CloudFileShare
 
-### Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
+### Microsoft.Azure.Storage.File.CloudFileDirectory
 
-### Microsoft.WindowsAzure.Storage.File.CloudFile
+### Microsoft.Azure.Storage.File.CloudFile
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Storage.File.CloudFile
+### Microsoft.Azure.Storage.File.CloudFile
 
 ## NOTES
 

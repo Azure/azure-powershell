@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                           "selected environment, storage account name and sas definition name." )]
         [ValidateNotNullOrEmpty]
         [Alias( Constants.SasDefinitionName )]
+
         public string Name { get; set; }
 
         [Parameter(Mandatory = false,

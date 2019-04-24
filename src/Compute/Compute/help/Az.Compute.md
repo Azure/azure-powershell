@@ -74,7 +74,7 @@ Disables disk encryption on a VM scale set.
 ### [Export-AzLogAnalyticRequestRateByInterval](Export-AzLogAnalyticRequestRateByInterval.md)
 Export logs that show Api requests made by this subscription in the given time window to show throttling activities.
 
-### [Export-AzLogAnalyticThrottledRequests](Export-AzLogAnalyticThrottledRequests.md)
+### [Export-AzLogAnalyticThrottledRequest](Export-AzLogAnalyticThrottledRequest.md)
 Export logs that show total throttled Api requests for this subscription in the given time window.
 
 ### [Get-AzAvailabilitySet](Get-AzAvailabilitySet.md)
@@ -446,7 +446,7 @@ Sets the backup extension properties on a virtual machine.
 ### [Set-AzVMBginfoExtension](Set-AzVMBginfoExtension.md)
 Adds the BGInfo extension to a virtual machine.
 
-### [Set-AzVMBootDiagnostics](Set-AzVMBootDiagnostics.md)
+### [Set-AzVMBootDiagnostic](Set-AzVMBootDiagnostic.md)
 Modifies boot diagnostics properties of a virtual machine.
 
 ### [Set-AzVMChefExtension](Set-AzVMChefExtension.md)

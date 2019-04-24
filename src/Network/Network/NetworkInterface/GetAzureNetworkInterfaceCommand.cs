@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.Network
            ParameterSetName = "ExpandScaleSetNic")]
         [ResourceNameCompleter("Microsoft.Network/networkInterfaces", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
@@ -76,6 +77,7 @@ namespace Microsoft.Azure.Commands.Network
            ParameterSetName = "ExpandScaleSetNic")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(

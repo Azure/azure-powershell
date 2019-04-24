@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 Type = resourceIdentifier.ResourceType ?? StorageSyncConstants.CloudEndpointType,
                 FriendlyName = source.FriendlyName,
                 StorageAccountResourceId = source.StorageAccountResourceId,
-                AzureFileShareName = source.StorageAccountShareName,
+                AzureFileShareName = source.AzureFileShareName,
                 StorageAccountTenantId = source.StorageAccountTenantId?.Trim('"'),
                 BackupEnabled = System.Convert.ToBoolean(source.BackupEnabled),
                 LastWorkflowId = source.LastWorkflowId,
