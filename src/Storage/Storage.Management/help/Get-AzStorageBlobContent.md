@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: C091D654-E113-4AE0-A6C8-24630D1294A4
@@ -16,14 +16,14 @@ Downloads a storage blob.
 ### ReceiveManual (Default)
 ```
 Get-AzStorageBlobContent [-Blob] <String> [-Container] <String> [-Destination <String>] [-CheckMd5] [-Force]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### BlobPipeline
 ```
-Get-AzStorageBlobContent -CloudBlob <CloudBlob> [-Destination <String>] [-CheckMd5] [-Force]
+Get-AzStorageBlobContent -CloudBlob <CloudBlob> [-Destination <String>] [-CheckMd5] [-Force] [-AsJob]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -32,7 +32,7 @@ Get-AzStorageBlobContent -CloudBlob <CloudBlob> [-Destination <String>] [-CheckM
 ### ContainerPipeline
 ```
 Get-AzStorageBlobContent -CloudBlobContainer <CloudBlobContainer> [-Blob] <String> [-Destination <String>]
- [-CheckMd5] [-Force] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+ [-CheckMd5] [-Force] [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -65,6 +65,21 @@ PS C:\>Get-AzStorageContainer container* | Get-AzStorageBlobContent -Blob "cbox.
 This example uses the asterisk wildcard character and the pipeline to find and download blob content.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Blob
 Specifies the name of the blob to be downloaded.
@@ -118,7 +133,7 @@ Specifies a cloud blob.
 To obtain a **CloudBlob** object, use the Get-AzStorageBlob cmdlet.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlob
+Type: Microsoft.Azure.Storage.Blob.CloudBlob
 Parameter Sets: BlobPipeline
 Aliases: ICloudBlob
 
@@ -134,7 +149,7 @@ Specifies a **CloudBlobContainer** object from the Azure storage client library.
 You can create it or use the Get-AzStorageContainer cmdlet.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
+Type: Microsoft.Azure.Storage.Blob.CloudBlobContainer
 Parameter Sets: ContainerPipeline
 Aliases:
 
@@ -293,9 +308,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.WindowsAzure.Storage.Blob.CloudBlob
+### Microsoft.Azure.Storage.Blob.CloudBlob
 
-### Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
+### Microsoft.Azure.Storage.Blob.CloudBlobContainer
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 

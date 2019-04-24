@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ConfirmRestartRollout" xml:space="preserve">
+    <value>Are you sure you want to restart the rollout {0} and re-run all the steps from the start? If you want to skip all the steps that succeeded on the previous attempt, enter No and pass the SkipSucceeded parameter.</value>
+  </data>
+  <data name="RemovingArtifactSource" xml:space="preserve">
+    <value>Removing artifact source {0}</value>
+  </data>
+  <data name="RemovedRollout" xml:space="preserve">
+    <value>Removed rollout {0}</value>
+  </data>
+  <data name="RemovedTopology" xml:space="preserve">
+    <value>Topology {0} deleted.</value>
+  </data>
+  <data name="RemovedService" xml:space="preserve">
+    <value>Service {0} deleted.</value>
+  </data>
+  <data name="RemovingRollout" xml:space="preserve">
+    <value>Removing rollout {0}</value>
+  </data>
+  <data name="RemovingTopology" xml:space="preserve">
+    <value>Removing service topology {0}</value>
+  </data>
+  <data name="RemovingService" xml:space="preserve">
+    <value>Removing service {0}</value>
+  </data>
+  <data name="RemovingServiceUnit" xml:space="preserve">
+    <value>Removing service unit {0}</value>
+  </data>
+  <data name="RestartedRollout" xml:space="preserve">
+    <value>Rollout {0} restarted.</value>
+  </data>
+  <data name="RestartingRollout" xml:space="preserve">
+    <value>Restarting rollout {0}</value>
+  </data>
+  <data name="StoppedRollout" xml:space="preserve">
+    <value>Rollout {0} stopped.</value>
+  </data>
+  <data name="ConfirmStopRollout" xml:space="preserve">
+    <value>Once stopped, a rollout cannot be resumed. Are you sure you want to stop the rollout {0}</value>
+  </data>
+  <data name="StoppingRollout" xml:space="preserve">
+    <value>Stopping rollout {0}</value>
+  </data>
+  <data name="TemplateParametersMissing" xml:space="preserve">
+    <value>Template and Parameters paths are required, either both as absolute SAS URIs or both relative paths.</value>
+  </data>
+  <data name="RemovedArtifactSource" xml:space="preserve">
+    <value>Removed artifact source {0}.</value>
+  </data>
+  <data name="ArtifactSourceAlreadyExists" xml:space="preserve">
+    <value>The specified artifact source already exists.</value>
+  </data>
+  <data name="CreateArtifactSource" xml:space="preserve">
+    <value>Create artifact source</value>
+  </data>
+  <data name="CreateService" xml:space="preserve">
+    <value>Create service</value>
+  </data>
+  <data name="CreateServiceTopology" xml:space="preserve">
+    <value>Create service topology</value>
+  </data>
+  <data name="CreateServiceUnit" xml:space="preserve">
+    <value>Create service unit</value>
+  </data>
+  <data name="ServiceAlreadyExists" xml:space="preserve">
+    <value>The specified service already exists.</value>
+  </data>
+  <data name="ServiceTopologyAlreadyExists" xml:space="preserve">
+    <value>The specified service topology already exists.</value>
+  </data>
+  <data name="ServiceUnitAlreadyExists" xml:space="preserve">
+    <value>The specified service unit already exists.</value>
+  </data>
+  <data name="UpdateArtifactSource" xml:space="preserve">
+    <value>Update artifact source</value>
+  </data>
+  <data name="UpdateService" xml:space="preserve">
+    <value>Update service</value>
+  </data>
+  <data name="UpdateServiceTopology" xml:space="preserve">
+    <value>Update service topology</value>
+  </data>
+  <data name="UpdateServiceUnit" xml:space="preserve">
+    <value>Update service unit</value>
+  </data>
+  <data name="RemovedServiceUnit" xml:space="preserve">
+    <value>Removed service unit {0}</value>
+  </data>
+  <data name="CreateStep" xml:space="preserve">
+    <value>Create step</value>
+  </data>
+  <data name="RemovedStep" xml:space="preserve">
+    <value>Step {0} deleted.</value>
+  </data>
+  <data name="RemovingStep" xml:space="preserve">
+    <value>Removing step {0}</value>
+  </data>
+  <data name="StepAlreadyExists" xml:space="preserve">
+    <value>The specified step already exists.</value>
+  </data>
+  <data name="UpdateStep" xml:space="preserve">
+    <value>Update step</value>
+  </data>
+</root>

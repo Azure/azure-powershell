@@ -23,10 +23,10 @@ using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 using Microsoft.WindowsAzure.Commands.Storage.Adapters;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage.File;
-using Microsoft.WindowsAzure.Storage.Queue;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Blob;
+using Microsoft.Azure.Storage.File;
+using Microsoft.Azure.Storage.Queue;
 using XTable= Microsoft.Azure.Cosmos.Table;
 using System;
 using System.Collections.Generic;
@@ -140,7 +140,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Cancellation Token Source
         /// </summary>
-        private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
+        protected readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
         protected CancellationToken CmdletCancellationToken;
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             get { return _enableMultiThread; }
             set { _enableMultiThread = value; }
         }
-        private bool _enableMultiThread = true;
+        protected bool _enableMultiThread = true;
 
         internal TaskOutputStream OutputStream;
 
@@ -620,10 +620,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 (sender, args) =>
                 {
                     //https://github.com/Azure/azure-storage-net/issues/658
-// TODO: Remove IfDef code
-#if !NETSTANDARD
-                    args.Request.UserAgent = Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.HeaderConstants.UserAgent + " " + ApiConstants.UserAgentHeaderValue;
-#endif
                 };
 
             base.BeginProcessing();

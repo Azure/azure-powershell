@@ -501,7 +501,7 @@ function Test-DataLakeStoreFileSystem
 		$resourceGroupName = Get-ResourceGroupName
 		$accountName = Get-DataLakeStoreAccountName
 		New-AzResourceGroup -Name $resourceGroupName -Location $location
-		$accountCreated = New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
+		$accountCreated = New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DisableEncryption
     
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
@@ -699,16 +699,15 @@ function Test-DataLakeStoreFileSystem
 		Assert-AreEqual $result.FileCount 1
 
 		# Export DiskUsage
-		$targetFile = "/DuOutputFile"
-		Export-AdlStoreChildItemProperties -Account $accountName -Path $summaryFolder -OutputPath $targetFile -GetDiskUsage -IncludeFile -SaveToAdl
-		$result = Get-AzDataLakeStoreItem -Account $accountName -path $targetFile
+		$targetFile = Join-Path $currentDir "DuOutput"
+		Export-AzDataLakeStoreChildItemProperties -Account $accountName -Path $summaryFolder -OutputPath $targetFile -GetDiskUsage -IncludeFile
+		$result = Get-Item -Path $targetFile
 		Assert-NotNull $result "No file was created on export properties"
+        Remove-Item -Path $targetFile
 
 		# delete a file
 		Assert-True {Remove-AdlStoreItem -Account $accountName -paths "$moveFolder/movefile.txt" -force -passthru } "Remove File Failed"
 		Assert-Throws {Get-AdlStoreItem -Account $accountName -path $moveFile}
-		Assert-True {Remove-AdlStoreItem -Account $accountName -paths $targetFile -force -passthru } "Remove File Failed"
-		Assert-Throws {Get-AdlStoreItem -Account $accountName -path $targetFile}
 		
 		# delete a folder
 		Assert-True {Remove-AzDataLakeStoreItem -Account $accountName -paths $moveFolder -force -recurse -passthru} "Remove folder failed"
@@ -753,7 +752,7 @@ function Test-DataLakeStoreFileSystemPermissions
 		$resourceGroupName = Get-ResourceGroupName
 		$accountName = Get-DataLakeStoreAccountName
 		New-AzResourceGroup -Name $resourceGroupName -Location $location
-		$accountCreated = New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
+		$accountCreated = New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DisableEncryption
     
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
@@ -857,10 +856,11 @@ function Test-DataLakeStoreFileSystemPermissions
 		Assert-AreEqual $($currentCount+1) $result.Count
 
 		# Export Acl
-		$targetFile = "/aclOutputFile"
-		Export-AzDataLakeStoreChildItemProperties -Account $accountName -Path "/" -OutputPath $targetFile -GetAcl -IncludeFile -SaveToAdl
-		$result = Get-AzDataLakeStoreItem -Account $accountName -path $targetFile
+		$targetFile = "./ScenarioTests/acloutput"
+		Export-AzDataLakeStoreChildItemProperties -Account $accountName -Path "/" -OutputPath $targetFile -GetAcl -IncludeFile
+        $result = Get-Item -Path $targetFile
 		Assert-NotNull $result "No file was created on export properties"
+        Remove-Item -Path $targetFile
 
 		#Recursive Acl remove
 		Remove-AzDataLakeStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Recurse
@@ -1013,8 +1013,8 @@ function Test-EnumerateAndRestoreDataLakeStoreDeletedItem
 		# Creating Account
 		$resourceGroupName = Get-ResourceGroupName
 		$accountName = Get-DataLakeStoreAccountName
-		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-		$accountCreated = New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
+		$accountCreated = New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
     
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
@@ -1024,7 +1024,7 @@ function Test-EnumerateAndRestoreDataLakeStoreDeletedItem
 		# In loop to check if account exists
 		for ($i = 0; $i -le 60; $i++)
 		{
-			[array]$accountGet = Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName
+			[array]$accountGet = Get-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName
 			if ($accountGet[0].ProvisioningState -like "Succeeded")
 			{
 				Assert-AreEqual $accountName $accountGet[0].Name
@@ -1040,53 +1040,54 @@ function Test-EnumerateAndRestoreDataLakeStoreDeletedItem
 		}
 
 		# define all the files and folders
-		$folderToCreate1 = "/adlfolder1"
-		$folderToCreate2 = "/adlfolder2"
-		$fileToCreate1 = "/adlfolder1/adlfile1"
-		$fileToCreate2 = "/adlfolder2/adlfile2"
+		$folderToCreate1 = "/adlfolderTest1"
+		$folderToCreate2 = "/adlfolderTest2"
+		$fileToCreate1 = "/adlfolderTest1/adlfile1"
+		$fileToCreate2 = "/adlfolderTest2/adlfile2"
 
 		# Create and get Empty folder
-		$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $folderToCreate1 -Folder
+		$result = New-AzDataLakeStoreItem -Account $accountName -path $folderToCreate1 -Folder
 		Assert-NotNull $result "No value was returned on folder creation"
 
-		$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $folderToCreate2 -Folder
+		$result = New-AzDataLakeStoreItem -Account $accountName -path $folderToCreate2 -Folder
 		Assert-NotNull $result "No value was returned on folder creation"
 		
 		# Create and get Empty File
-		$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $fileToCreate1
+		$result = New-AzDataLakeStoreItem -Account $accountName -path $fileToCreate1
 		Assert-NotNull $result "No value was returned on empty file creation"
-		$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $fileToCreate2
+		$result = New-AzDataLakeStoreItem -Account $accountName -path $fileToCreate2
 		Assert-NotNull $result "No value was returned on empty file creation"
 		
 	    # delete a file
-		Assert-True {Remove-AdlStoreItem -Account $accountName -paths $fileToCreate1 -force -passthru } "Remove File Failed"
-		Assert-Throws {Get-AdlStoreItem -Account $accountName -path $fileToCreate1}
-		Assert-True {Remove-AdlStoreItem -Account $accountName -paths $fileToCreate2 -force -passthru } "Remove File Failed"
-		Assert-Throws {Get-AdlStoreItem -Account $accountName -path $fileToCreate2}
+		Assert-True {Remove-AzDataLakeStoreItem -Account $accountName -paths $fileToCreate1 -force -passthru } "Remove File Failed"
+		Assert-Throws {Get-AzDataLakeStoreItem -Account $accountName -path $fileToCreate1}
+		Assert-True {Remove-AzDataLakeStoreItem -Account $accountName -paths $fileToCreate2 -force -passthru } "Remove File Failed"
+		Assert-Throws {Get-AzDataLakeStoreItem -Account $accountName -path $fileToCreate2}
 		
 		# search delete folder
-		$out = Get-AzDataLakeStoreDeletedItem -Account $accountName -filter "adlfolder1" -Count 1000
+		$out = Get-AzDataLakeStoreDeletedItem -Account $accountName -filter "adlfolderTest1" -Count 1000
 		foreach($item in $out)
 		{
+            Restore-AzDataLakeStoreDeletedItem -Account $accountName -Path $item.TrashDirPath -Destination $item.OriginalPath -Type "file" -Force -Passthru
 			Assert-True { Restore-AzDataLakeStoreDeletedItem -Account $accountName -Path $item.TrashDirPath -Destination $item.OriginalPath -Type "file" -Force -Passthru}
 		}
 
-		$out = Get-AzDataLakeStoreDeletedItem -Account $accountName -filter "adlfolder2" -Count 1000
+		$out = Get-AzDataLakeStoreDeletedItem -Account $accountName -filter "adlfolderTest2" -Count 1000
 		foreach($item in $out)
 		{
 			Assert-True { Restore-AzDataLakeStoreDeletedItem -Account $accountName $item -Force -Passthru}
 		}
     
 		# Delete Data Lake account
-		Assert-True {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+		Assert-True {Remove-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
 		# Verify that it is gone by trying to get it again
-		Assert-Throws {Get-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		Assert-Throws {Get-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
 	}
 	finally
 	{
 		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
-		Invoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
-		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
 }

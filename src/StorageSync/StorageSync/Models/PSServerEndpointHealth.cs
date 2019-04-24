@@ -37,6 +37,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// <value>The combined health.</value>
         public string CombinedHealth { get; set; }
         /// <summary>
+        /// Gets or sets the sync activity.
+        /// </summary>
+        /// <value>The combined health.</value>
+        public string SyncActivity { get; set; }
+        /// <summary>
         /// Gets or sets the last updated timestamp.
         /// </summary>
         /// <value>The last updated timestamp.</value>
@@ -52,10 +57,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// <value>The download status.</value>
         public PSSyncSessionStatus DownloadStatus { get; set; }
         /// <summary>
-        /// Gets or sets the current progress.
+        /// Gets or sets the upload activity.
         /// </summary>
         /// <value>The current progress.</value>
-        public PSSyncProgressStatus CurrentProgress { get; set; }
+        public PSSyncActivityStatus UploadActivity { get; set; }
+        /// <summary>
+        /// Gets or sets the download activity.
+        /// </summary>
+        /// <value>The current progress.</value>
+        public PSSyncActivityStatus DownloadActivity { get; set; }
         /// <summary>
         /// Gets or sets the offline data transfer status.
         /// </summary>
