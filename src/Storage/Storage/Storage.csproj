@@ -14,21 +14,14 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Cosmos.Table" Version="0.10.1-preview" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
-    <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="9.4.2" />
-    <PackageReference Include="Microsoft.Azure.Storage.File" Version="9.4.2" />
-    <PackageReference Include="Microsoft.Azure.Storage.Queue" Version="9.4.2" />
-    <PackageReference Include="Microsoft.Azure.KeyVault.Core" Version="2.0.4" />
+    <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="10.0.1" />
+    <PackageReference Include="Microsoft.Azure.Storage.File" Version="10.0.1" />
+    <PackageReference Include="Microsoft.Azure.Storage.Queue" Version="10.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\AzureContextAdapterExtensions.cs" Link="Common\Cmdlet\AzureContextAdapterExtensions.cs" />
-    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageBlob.cs" Link="Common\AzureStorageBlob.cs" />
-    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageContainer.cs" Link="Common\AzureStorageContainer.cs" />
-    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageQueue.cs" Link="Common\AzureStorageQueue.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.WindowsAzure.Storage.DataMovement.PowerShell">
-      <HintPath>$(RepoSrc)lib\Microsoft.WindowsAzure.Storage.DataMovement.PowerShell.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Storage.DataMovement">
+      <HintPath>$(RepoSrc)lib\Microsoft.Azure.Storage.DataMovement.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

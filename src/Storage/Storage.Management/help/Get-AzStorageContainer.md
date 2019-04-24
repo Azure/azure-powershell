@@ -105,7 +105,7 @@ Accept wildcard characters: False
 Specifies a continuation token for the blob list.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.Blob.BlobContinuationToken
+Type: Microsoft.Azure.Storage.Blob.BlobContinuationToken
 Parameter Sets: (All)
 Aliases:
 

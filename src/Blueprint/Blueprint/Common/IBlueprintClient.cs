@@ -39,5 +39,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
         PSBlueprintAssignment DeleteBlueprintAssignment(string subscriptionId, string blueprintAssignmentName);
 
         PSBlueprintAssignment CreateOrUpdateBlueprintAssignment(string subscriptionId, string assignmentName, Assignment assignment);
+
+        PSWhoIsBlueprintContract GetBlueprintSpnObjectId(string scope, string assignmentName);
     }
 }

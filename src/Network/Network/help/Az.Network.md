@@ -17,7 +17,7 @@ Adds an authentication certificate to an application gateway.
 ### [Add-AzApplicationGatewayBackendAddressPool](Add-AzApplicationGatewayBackendAddressPool.md)
 Adds a back-end address pool to an application gateway.
 
-### [Add-AzApplicationGatewayBackendHttpSettings](Add-AzApplicationGatewayBackendHttpSettings.md)
+### [Add-AzApplicationGatewayBackendHttpSetting](Add-AzApplicationGatewayBackendHttpSetting.md)
 Adds back-end HTTP settings to an application gateway.
 
 ### [Add-AzApplicationGatewayCustomError](Add-AzApplicationGatewayCustomError.md)
@@ -137,10 +137,10 @@ Gets an authentication certificate for an application gateway.
 ### [Get-AzApplicationGatewayAutoscaleConfiguration](Get-AzApplicationGatewayAutoscaleConfiguration.md)
 Gets the Autoscale Configuration of the Application Gateway.
 
-### [Get-AzApplicationGatewayAvailableSslOptions](Get-AzApplicationGatewayAvailableSslOptions.md)
+### [Get-AzApplicationGatewayAvailableSslOption](Get-AzApplicationGatewayAvailableSslOption.md)
 Gets all available ssl options for ssl policy for Application Gateway.
 
-### [Get-AzApplicationGatewayAvailableWafRuleSets](Get-AzApplicationGatewayAvailableWafRuleSets.md)
+### [Get-AzApplicationGatewayAvailableWafRuleSet](Get-AzApplicationGatewayAvailableWafRuleSet.md)
 Gets all available web application firewall rule sets.
 
 ### [Get-AzApplicationGatewayAvailableServerVariableAndHeader](Get-AzApplicationGatewayAvailableServerVariableAndHeader.md)
@@ -152,7 +152,7 @@ Gets a back-end address pool for an application gateway.
 ### [Get-AzApplicationGatewayBackendHealth](Get-AzApplicationGatewayBackendHealth.md)
 Gets application gateway backend health.
 
-### [Get-AzApplicationGatewayBackendHttpSettings](Get-AzApplicationGatewayBackendHttpSettings.md)
+### [Get-AzApplicationGatewayBackendHttpSetting](Get-AzApplicationGatewayBackendHttpSetting.md)
 Gets the back-end HTTP settings of an application gateway.
 
 ### [Get-AzApplicationGatewayConnectionDraining](Get-AzApplicationGatewayConnectionDraining.md)
@@ -257,7 +257,7 @@ Gets a route table from an ExpressRoute circuit.
 ### [Get-AzExpressRouteCircuitRouteTableSummary](Get-AzExpressRouteCircuitRouteTableSummary.md)
 Gets a route table summary of an ExpressRoute circuit.
 
-### [Get-AzExpressRouteCircuitStats](Get-AzExpressRouteCircuitStats.md)
+### [Get-AzExpressRouteCircuitStat](Get-AzExpressRouteCircuitStat.md)
 Gets usage statistics of an ExpressRoute circuit.
 
 ### [Get-AzExpressRouteConnection](Get-AzExpressRouteConnection.md)
@@ -506,7 +506,7 @@ Creates a Autoscale Configuration for the Application Gateway.
 ### [New-AzApplicationGatewayBackendAddressPool](New-AzApplicationGatewayBackendAddressPool.md)
 Creates a back-end address pool for an application gateway.
 
-### [New-AzApplicationGatewayBackendHttpSettings](New-AzApplicationGatewayBackendHttpSettings.md)
+### [New-AzApplicationGatewayBackendHttpSetting](New-AzApplicationGatewayBackendHttpSetting.md)
 Creates back-end HTTP settings for an application gateway.
 
 ### [New-AzApplicationGatewayConnectionDraining](New-AzApplicationGatewayConnectionDraining.md)
@@ -808,7 +808,7 @@ Removes Autoscale Configuration from an application gateway.
 ### [Remove-AzApplicationGatewayBackendAddressPool](Remove-AzApplicationGatewayBackendAddressPool.md)
 Removes a back-end address pool from an application gateway.
 
-### [Remove-AzApplicationGatewayBackendHttpSettings](Remove-AzApplicationGatewayBackendHttpSettings.md)
+### [Remove-AzApplicationGatewayBackendHttpSetting](Remove-AzApplicationGatewayBackendHttpSetting.md)
 Removes back-end HTTP settings from an application gateway.
 
 ### [Remove-AzApplicationGatewayConnectionDraining](Remove-AzApplicationGatewayConnectionDraining.md)
@@ -1048,7 +1048,7 @@ Updates Autoscale Configuration of an application gateway.
 ### [Set-AzApplicationGatewayBackendAddressPool](Set-AzApplicationGatewayBackendAddressPool.md)
 Updates a back-end address pool for an application gateway.
 
-### [Set-AzApplicationGatewayBackendHttpSettings](Set-AzApplicationGatewayBackendHttpSettings.md)
+### [Set-AzApplicationGatewayBackendHttpSetting](Set-AzApplicationGatewayBackendHttpSetting.md)
 Updates back-end HTTP settings for an application gateway.
 
 ### [Set-AzApplicationGatewayConnectionDraining](Set-AzApplicationGatewayConnectionDraining.md)

@@ -18,8 +18,8 @@ using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Auth;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common.Cmdlet
 {
