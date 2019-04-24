@@ -60,6 +60,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         [Parameter(Mandatory = false, HelpMessage = "Restore the web app's files, but do not restore the settings.")]
         public SwitchParameter RestoreContentOnly { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Use to recover a deleted app from a scale unit that is offline.")]
+        public SwitchParameter UseDisasterRecovery { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Do the restore without prompting for confirmation.")]
         public SwitchParameter Force { get; set; }
 
@@ -76,7 +79,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
             DeletedAppRestoreRequest restoreReq = new DeletedAppRestoreRequest()
             {
                 DeletedSiteId = deletedSiteId,
-                RecoverConfiguration = !this.RestoreContentOnly
+                RecoverConfiguration = !this.RestoreContentOnly,
+                UseDRSecondary = UseDisasterRecovery
             };
 
             Action restoreAction = () => WebsitesClient.RestoreDeletedWebApp(TargetResourceGroupName, TargetName, TargetSlot, restoreReq);

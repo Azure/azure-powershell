@@ -73,11 +73,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Sku Name.")]
         [Alias(StorageAccountTypeAlias, AccountTypeAlias, Account_TypeAlias)]
-        [ValidateSet(AccountTypeString.StandardLRS,
-            AccountTypeString.StandardZRS,
-            AccountTypeString.StandardGRS,
-            AccountTypeString.StandardRAGRS,
-            AccountTypeString.PremiumLRS,
+        [ValidateSet(StorageModels.SkuName.StandardLRS,
+            StorageModels.SkuName.StandardZRS,
+            StorageModels.SkuName.StandardGRS,
+            StorageModels.SkuName.StandardRAGRS,
+            StorageModels.SkuName.PremiumLRS,
             IgnoreCase = true)]
         public string SkuName { get; set; }
 
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     StorageAccountUpdateParameters updateParameters = new StorageAccountUpdateParameters();
                     if (this.SkuName != null)
                     {
-                        updateParameters.Sku = new Sku(ParseSkuName(this.SkuName));
+                        updateParameters.Sku = new Sku(this.SkuName);
                     }
 
                     if (this.Tag != null)
