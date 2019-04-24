@@ -365,6 +365,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <summary>
         /// Gets or sets the Azure role assignments.
         /// </summary>
+        [Obsolete("This property will be removed in a future release.")]
         public List<ASRRoleAssignment_2016_08_10> RoleAssignments { get; set; }
 
         /// <summary>

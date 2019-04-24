@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Sets recovery properties such as target network and virtual machine size for the specified replication protected item.
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrReplicationProtectedItem",DefaultParameterSetName = ASRParameterSets.ByObject,SupportsShouldProcess = true)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrReplicationProtectedItem", DefaultParameterSetName = ASRParameterSets.ByObject, SupportsShouldProcess = true)]
     [Alias("Set-ASRReplicationProtectedItem")]
     [OutputType(typeof(ASRJob))]
     public class SetAzureRmRecoveryServicesAsrReplicationProtectedItem : SiteRecoveryCmdletBase
@@ -187,7 +187,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     string.IsNullOrEmpty(this.PrimaryNic) &&
                     string.IsNullOrEmpty(this.RecoveryNetworkId) &&
                     this.UseManagedDisk == null &&
-                    string.IsNullOrEmpty(this.RecoveryAvailabilitySet) &&
+                     !this.MyInvocation.BoundParameters.ContainsKey(
+                            Utilities.GetMemberName(() => this.RecoveryAvailabilitySet)) &&
                     string.IsNullOrEmpty(this.RecoveryCloudServiceId) &&
                     string.IsNullOrEmpty(this.RecoveryResourceGroupId) &&
                     string.IsNullOrEmpty(this.LicenseType) &&
@@ -244,7 +245,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         licenseType = providerSpecificDetails.LicenseType;
                     }
 
-                    if (string.IsNullOrEmpty(this.RecoveryAvailabilitySet))
+                    if (!this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.RecoveryAvailabilitySet)))
                     {
                         availabilitySetId = providerSpecificDetails.RecoveryAvailabilitySetId;
                     }
@@ -313,7 +314,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         licenseType = providerSpecificDetails.LicenseType;
                     }
 
-                    if (string.IsNullOrEmpty(this.RecoveryAvailabilitySet))
+                    if (!this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.RecoveryAvailabilitySet)))
                     {
                         availabilitySetId = providerSpecificDetails.RecoveryAvailabilitySetId;
                     }
@@ -363,6 +364,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     {
                         recoveryResourceGroupId =
                             providerSpecificDetails.RecoveryAzureResourceGroupId;
+                    }
+
+                    if (!this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.RecoveryAvailabilitySet)))
+                    {
+                        availabilitySetId = providerSpecificDetails.RecoveryAvailabilitySet;
                     }
 
                     if (!this.MyInvocation.BoundParameters.ContainsKey(

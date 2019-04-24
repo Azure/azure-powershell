@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             Position = 0,
             ParameterSetName = ASRParameterSets.VMwareToAzure,
             Mandatory = true)]
+        [Obsolete("Parameter set VMwareToAzure will be changed in future release to support directly write to managed disk support for 'vmWare to Azure' Azure Site Recovery.")]
         public SwitchParameter VMwareToAzure { get; set; }
 
         /// <summary>
@@ -607,14 +608,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 RecoveryBootDiagStorageAccountId = this.RecoveryBootDiagStorageAccountId
             };
 
+            if (!string.IsNullOrEmpty(this.RecoveryCloudServiceId))
+            {
+                providerSettings.RecoveryResourceGroupId = null;
+            }
+
             if (this.AzureToAzureDiskReplicationConfiguration == null)
             {
                 if (this.AzureVmId.ToLower().Contains(ARMResourceTypeConstants.Compute.ToLower()))
                 {
                     var vmName = Utilities.GetValueFromArmId(this.AzureVmId, ARMResourceTypeConstants.VirtualMachine);
                     var vmRg = Utilities.GetValueFromArmId(this.AzureVmId, ARMResourceTypeConstants.ResourceGroups);
+                    var subscriptionId = Utilities.GetValueFromArmId(this.AzureVmId, ARMResourceTypeConstants.Subscriptions);
+                    var tempSubscriptionId = this.ComputeManagementClient.GetComputeManagementClient.SubscriptionId;
+                    this.ComputeManagementClient.GetComputeManagementClient.SubscriptionId = subscriptionId;
                     var virtualMachine = this.ComputeManagementClient.GetComputeManagementClient.
                         VirtualMachines.GetWithHttpMessagesAsync(vmRg, vmName).GetAwaiter().GetResult().Body;
+                    this.ComputeManagementClient.GetComputeManagementClient.SubscriptionId = tempSubscriptionId;
+
                     if (virtualMachine == null)
                     {
                         throw new Exception("Azure Vm not found");
