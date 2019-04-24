@@ -45,11 +45,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = DeleteByInputObjectParameterSet)]
         [ValidateNotNull]
-        public PSNatGateway NatGateway { get; set; }
+        public PSNatGateway InputObject { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = DeleteByResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string NatGatewayId { get; set; }
+        public string ResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -67,15 +67,15 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if (this.IsParameterBound(c => c.NatGateway))
+            if (this.IsParameterBound(c => c.InputObject))
             {
-                this.ResourceGroupName = this.NatGateway.ResourceGroupName;
-                this.Name = this.NatGateway.Name;
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.Name = this.InputObject.Name;
             }
 
-            if (this.IsParameterBound(c => c.NatGatewayId))
+            if (this.IsParameterBound(c => c.ResourceId))
             {
-                var resourceIdentifier = new ResourceIdentifier(this.NatGatewayId);
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 this.Name = resourceIdentifier.ResourceName;
             }

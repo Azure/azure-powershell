@@ -25,7 +25,7 @@ Get-AzNatGateway -ResourceGroupName <String> -Name <String> [-DefaultProfile <IA
 
 ### GetByResourceIdParameterSet
 ```
-Get-AzNatGateway -NatGatewayId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNatGateway -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,7 +110,7 @@ Name                  : nat_gateway
 Etag                  : W/"178470d2-7b86-4ddd-b954-e0cd3ab30a90"
 Id                    : /subscriptions/<subid>/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/nat_gateway
 
-PS C:> Get-AzNatGateway -NatGatewayId "/subscriptions/<subid>/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/nat_gateway"
+PS C:> Get-AzNatGateway -ResourceId "/subscriptions/<subid>/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/nat_gateway"
 
 
 IdleTimeoutInMinutes  : 4
@@ -170,21 +170,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NatGatewayId
-The resource reference to be expanded.
-
-```yaml
-Type: String
-Parameter Sets: GetByResourceIdParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The resource group name of the nat gateway.
 
@@ -209,6 +194,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Nat Gateway Id
+
+```yaml
+Type: String
+Parameter Sets: GetByResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

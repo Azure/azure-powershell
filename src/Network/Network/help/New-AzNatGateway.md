@@ -14,9 +14,8 @@ Create new Nat Gateway resource with properties Public Ip Address/Public Ip Pref
 
 ```
 New-AzNatGateway -ResourceGroupName <String> -Name <String> [-IdleTimeoutInMinutes <Int32>] [-Sku <String>]
- [-Location <String>] [-Tag <Hashtable>] [-PublicIpAddresses <PSResourceId[]>]
- [-PublicIpPrefixes <PSResourceId[]>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Location <String>] [-Tag <Hashtable>] [-PublicIpAddress <PSResourceId[]>] [-PublicIpPrefix <PSResourceId[]>]
+ [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -135,7 +134,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicIpAddresses
+### -PublicIpAddress
 An array of public ip addresses associated with the nat gateway resource.
 
 ```yaml
@@ -150,7 +149,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicIpPrefixes
+### -PublicIpPrefix
 An array of public ip prefixes associated with the nat gateway resource.
 
 ```yaml

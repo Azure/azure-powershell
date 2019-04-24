@@ -21,14 +21,14 @@ Set-AzNatGateway -ResourceGroupName <String> -Name <String> [-PublicIpAddresses 
 
 ### SetByResourceIdParameterSet
 ```
-Set-AzNatGateway -NatGatewayId <String> [-PublicIpAddresses <PSResourceId[]>]
+Set-AzNatGateway -ResourceId <String> [-PublicIpAddresses <PSResourceId[]>]
  [-PublicIpPrefixes <PSResourceId[]>] [-AsJob] [-IdleTimeoutInMinutes <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
-Set-AzNatGateway -NatGateway <PSNatGateway> [-PublicIpAddresses <PSResourceId[]>]
+Set-AzNatGateway -InputObject <PSNatGateway> [-PublicIpAddresses <PSResourceId[]>]
  [-PublicIpPrefixes <PSResourceId[]>] [-AsJob] [-IdleTimeoutInMinutes <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -42,8 +42,9 @@ Update Nat Gateway Resource with Public Ip Address, Public Ip Prefix and IdleTim
 ```powershell
 PS C:\> $nGateway = Get-AzNatGateway -ResourceGroupName "natgateway_test" -Name "ng1"
 PS C:\> $pipArray = $pip, $pip2
-PS C:\> $natUpdate = Set-AzNatGateway -NatGateway $nGateway -IdleTimeoutInMinutes 5 -PublicIpAddresses $pipArray
-PS C:\> $natUpdate
+PS C:\> $natUpdate = Set-AzNatGateway -InputObject $nGateway -IdleTimeoutInMinutes 5 -PublicIpAddresses $pipArray
+PS C:\> $natUpdate = Set-AzNatGateway -ResourceGroupName "natgateway_test" -Name "ng1" -PublicIpAddresses $pipArray
+PS C:\> $natUpdate = Set-AzNatGateway -ResourceId "natgateway_id" -PublicIpAddresses $pipArray
 ```
 
 ## PARAMETERS
@@ -93,22 +94,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-{{ Fill Name Description }}
-
-```yaml
-Type: String
-Parameter Sets: SetByNameParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NatGateway
+### -InputObject
 The nat gateway
 
 ```yaml
@@ -123,18 +109,18 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -NatGatewayId
-Nat Gateway Id
+### -Name
+Name of the Nat Gateway Resource.
 
 ```yaml
 Type: String
-Parameter Sets: SetByResourceIdParameterSet
+Parameter Sets: SetByNameParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -169,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{ Fill ResourceGroupName Description }}
+Name of the Resource Group.
 
 ```yaml
 Type: String
@@ -180,6 +166,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Nat Gateway Id
+
+```yaml
+Type: String
+Parameter Sets: SetByResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
