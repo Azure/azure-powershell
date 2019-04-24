@@ -164,7 +164,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Storage.File.SharedAccessFilePolicy
+### Microsoft.Azure.Storage.File.SharedAccessFilePolicy
 
 ## NOTES
 

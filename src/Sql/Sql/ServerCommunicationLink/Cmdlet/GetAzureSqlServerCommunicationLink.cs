@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
             Position = 2,
             HelpMessage = "The name of the Azure SQL server communication link to retrieve.")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string LinkName { get; set; }
 
         /// <summary>
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
         {
             ICollection<AzureSqlServerCommunicationLinkModel> results;
 
-            if (MyInvocation.BoundParameters.ContainsKey("LinkName"))
+            if (MyInvocation.BoundParameters.ContainsKey("LinkName") && !WildcardPattern.ContainsWildcardCharacters(LinkName))
             {
                 results = new List<AzureSqlServerCommunicationLinkModel>();
                 results.Add(ModelAdapter.GetServerCommunicationLink(this.ResourceGroupName, this.ServerName, this.LinkName));
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
                 results = ModelAdapter.ListServerCommunicationLinks(this.ResourceGroupName, this.ServerName);
             }
 
-            return results;
+            return SubResourceWildcardFilter(LinkName, results);
         }
 
         /// <summary>

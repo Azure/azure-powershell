@@ -193,7 +193,7 @@ Specifies a **CloudBlob** object from Azure Storage Client library.
 To obtain a **CloudBlob** object, use the Get-AzStorageBlob cmdlet.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlob
+Type: Microsoft.Azure.Storage.Blob.CloudBlob
 Parameter Sets: BlobInstance, BlobInstanceToBlobInstance
 Aliases: SrcICloudBlob, SrcCloudBlob, ICloudBlob, SourceICloudBlob, SourceCloudBlob
 
@@ -210,7 +210,7 @@ This cmdlet copies a blob from the container that this parameter specifies.
 To obtain a **CloudBlobContainer** object, use the Get-AzStorageContainer cmdlet.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
+Type: Microsoft.Azure.Storage.Blob.CloudBlobContainer
 Parameter Sets: ContainerInstance
 Aliases: SourceCloudBlobContainer
 
@@ -314,7 +314,7 @@ Accept wildcard characters: False
 Specifies a destination **CloudBlob** object
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlob
+Type: Microsoft.Azure.Storage.Blob.CloudBlob
 Parameter Sets: BlobInstanceToBlobInstance, FileInstanceToBlobInstance
 Aliases: DestICloudBlob, DestinationCloudBlob, DestinationICloudBlob
 
@@ -375,7 +375,7 @@ Accept wildcard characters: False
 Premium Page Blob Tier
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier
+Type: Microsoft.Azure.Storage.Blob.PremiumPageBlobTier
 Parameter Sets: ContainerName, BlobInstance, BlobInstanceToBlobInstance, ContainerInstance
 Aliases:
 Accepted values: Unknown, P4, P6, P10, P20, P30, P40, P50, P60
@@ -437,7 +437,7 @@ Accept wildcard characters: False
 Specifies a **CloudFileDirectory** object from Azure Storage Client library.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
+Type: Microsoft.Azure.Storage.File.CloudFileDirectory
 Parameter Sets: DirInstance
 Aliases: SourceDir
 
@@ -453,7 +453,7 @@ Specifes a **CloudFile** object from Azure Storage Client library.
 You can create it or use Get-AzStorageFile cmdlet.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.File.CloudFile
+Type: Microsoft.Azure.Storage.File.CloudFile
 Parameter Sets: FileInstance, FileInstanceToBlobInstance
 Aliases: SourceFile
 
@@ -484,7 +484,7 @@ Specifies a **CloudFileShare** object from Azure Storage Client library.
 You can create it or use Get-AzStorageShare cmdlet.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.File.CloudFileShare
+Type: Microsoft.Azure.Storage.File.CloudFileShare
 Parameter Sets: ShareInstance
 Aliases: SourceShare
 
@@ -546,11 +546,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.WindowsAzure.Storage.Blob.CloudBlob
+### Microsoft.Azure.Storage.Blob.CloudBlob
 
-### Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
+### Microsoft.Azure.Storage.Blob.CloudBlobContainer
 
-### Microsoft.WindowsAzure.Storage.File.CloudFile
+### Microsoft.Azure.Storage.File.CloudFile
 
 ### System.String
 

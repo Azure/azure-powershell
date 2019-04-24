@@ -18,6 +18,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
@@ -42,12 +44,7 @@ namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
             {
                 path = path.Replace("?&", "?");
             }
-
-            if (path.Contains("%3A"))
-            {
-                path = path.Replace("%3A", ":");
-            }
-
+            path = RemoveOrReplaceLeaseIdOrFilessesionID(path);
             string version;
             if (ContainsIgnoredProvider(path, out version))
             {
@@ -71,6 +68,41 @@ namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
 
             var encodedPath = Convert.ToBase64String(Encoding.UTF8.GetBytes(path));
             return string.Format("{0} {1}", request.Method, encodedPath);
+        }
+
+        public override string GetMatchingKey(RecordEntry recordEntry)
+        {
+            var encodedPath = recordEntry.EncodedRequestUri;
+            var path = recordEntry.RequestUri;
+            var changed = false;
+            if (path.Contains("?&"))
+            {
+                path = recordEntry.RequestUri.Replace("?&", "?");
+                changed = true;
+            }
+            if (path.Contains("leaseid") || path.Contains("filesessionid"))
+            {
+                path = RemoveOrReplaceLeaseIdOrFilessesionID(path);
+                changed = true;
+            }
+            string version;
+            if (ContainsIgnoredProvider(path, out version))
+            {
+                path = RemoveOrReplaceApiVersion(path, version);
+                changed = true;
+            }
+
+            if (changed)
+            {
+                encodedPath = Convert.ToBase64String(Encoding.UTF8.GetBytes(path));
+            }
+
+            return string.Format("{0} {1}", recordEntry.RequestMethod, encodedPath);
+        }
+        protected string RemoveOrReplaceLeaseIdOrFilessesionID(string requestUri)
+        {
+            var removedLeaseid = Regex.Replace(requestUri, @"([\?&])leaseid=[^&]+", string.Format("$1leaseid={0}", "const"));
+            return Regex.Replace(removedLeaseid, @"([\?&])filesessionid=[^&]+", string.Format("$1filesessionid={0}", "const"));
         }
     }
 }
