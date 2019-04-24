@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.Monitor
 Module Guid: 698c387c-bd6b-41c6-82ce-721f1ef39548
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.monitor
@@ -62,6 +62,9 @@ Gets the metric values of a resource.
 ### [Get-AzMetricDefinition](Get-AzMetricDefinition.md)
 Gets metric definitions.
 
+### [Get-AzScheduledQueryRule](Get-AzScheduledQueryRule.md)
+Gets Scheduled Query Resources
+
 ### [New-AzActionGroup](New-AzActionGroup.md)
 Creates an ActionGroup reference object in memory.
 
@@ -92,6 +95,27 @@ Creates an Autoscale webhook.
 ### [New-AzMetricFilter](New-AzMetricFilter.md)
 Creates a metric dimension filter that can be used to query metrics.
 
+### [New-AzScheduledQueryRule](New-AzScheduledQueryRule.md)
+Creates a Log Alert Rule (Scheduled Query Rule type)
+
+### [New-AzScheduledQueryRuleAlertingAction](New-AzScheduledQueryRuleAlertingAction.md)
+Creates an object of type Alerting Action
+
+### [New-AzScheduledQueryRuleAznsActionGroup](New-AzScheduledQueryRuleAznsActionGroup.md)
+Creates an object of type Azns Action Group
+
+### [New-AzScheduledQueryRuleLogMetricTrigger](New-AzScheduledQueryRuleLogMetricTrigger.md)
+Creates an object of type Log Metric Trigger
+
+### [New-AzScheduledQueryRuleSchedule](New-AzScheduledQueryRuleSchedule.md)
+Creates an object of type Schedule
+
+### [New-AzScheduledQueryRuleSource](New-AzScheduledQueryRuleSource.md)
+Creates an object of type Source
+
+### [New-AzScheduledQueryRuleTriggerCondition](New-AzScheduledQueryRuleTriggerCondition.md)
+Creates an object of type Trigger Condition
+
 ### [Remove-AzActionGroup](Remove-AzActionGroup.md)
 Removes an action group.
 
@@ -110,6 +134,9 @@ Remove a diagnostic setting for the a resource.
 ### [Remove-AzLogProfile](Remove-AzLogProfile.md)
 Removes a log profile.
 
+### [Remove-AzScheduledQueryRule](Remove-AzScheduledQueryRule.md)
+Removes a Log Alert Rule
+
 ### [Set-AzActionGroup](Set-AzActionGroup.md)
 Creates a new or updates an existing action group.
 
@@ -118,4 +145,10 @@ Creates a new or sets an existing activity log alert.
 
 ### [Set-AzDiagnosticSetting](Set-AzDiagnosticSetting.md)
 Sets the logs and metrics settings for the resource.
+
+### [Set-AzScheduledQueryRule](Set-AzScheduledQueryRule.md)
+Updates a Log Alert Rule
+
+### [Update-AzScheduledQueryRule](Update-AzScheduledQueryRule.md)
+Updates a Log Alert rule
 

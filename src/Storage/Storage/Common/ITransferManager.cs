@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage.DataMovement;
-using Microsoft.WindowsAzure.Storage.File;
+using Microsoft.Azure.Storage.Blob;
+using Microsoft.Azure.Storage.DataMovement;
+using Microsoft.Azure.Storage.File;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Download an Azure file from Azure File Storage.
         /// </summary>
-        /// <param name="sourceFile">The Microsoft.WindowsAzure.Storage.File.CloudFile that is the source Azure file.</param>
+        /// <param name="sourceFile">The Microsoft.Azure.Storage.File.CloudFile that is the source Azure file.</param>
         /// <param name="destPath">Path to the destination file.</param>
         /// <param name="options">A Microsoft.WindowsAzure.Storage.DataMovement.DownloadOptions object that specifies additional options for the operation.</param>
         /// <param name="context">A Microsoft.WindowsAzure.Storage.DataMovement.TransferContext object that represents
@@ -37,7 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Download an Azure blob from Azure Blob Storage.
         /// </summary>
-        /// <param name="sourceBlob">The Microsoft.WindowsAzure.Storage.Blob.CloudBlob that is the source Azure blob.</param>
+        /// <param name="sourceBlob">The Microsoft.Azure.Storage.Blob.CloudBlob that is the source Azure blob.</param>
         /// <param name="destPath">Path to the destination file.</param>
         /// <param name="options">A Microsoft.WindowsAzure.Storage.DataMovement.DownloadOptions object that specifies
         ///     additional options for the operation.</param>
@@ -52,7 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// Upload a file to Azure File Storage.
         /// </summary>
         /// <param name="sourcePath">Path to the source file.</param>
-        /// <param name="destFile">The Microsoft.WindowsAzure.Storage.File.CloudFile that is the destination Azure file.</param>
+        /// <param name="destFile">The Microsoft.Azure.Storage.File.CloudFile that is the destination Azure file.</param>
         /// <param name="options">An Microsoft.WindowsAzure.Storage.DataMovement.UploadOptions object that specifies
         ///     additional options for the operation.</param>
         /// <param name="context"> A Microsoft.WindowsAzure.Storage.DataMovement.TransferContext object that represents
@@ -66,7 +66,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// Upload a file to Azure Blob Storage.
         /// </summary>
         /// <param name="sourcePath">Path to the source file.</param>
-        /// <param name="destBlob">The Microsoft.WindowsAzure.Storage.Blob.CloudBlob that is the destination Azure blob.</param>
+        /// <param name="destBlob">The Microsoft.Azure.Storage.Blob.CloudBlob that is the destination Azure blob.</param>
         /// <param name="options">An Microsoft.WindowsAzure.Storage.DataMovement.UploadOptions object that specifies
         ///     additional options for the operation.</param>
         /// <param name="context">A Microsoft.WindowsAzure.Storage.DataMovement.TransferContext object that represents
