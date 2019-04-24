@@ -221,21 +221,22 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
         }
 
 
-        public PSArtifact CreateArtifact(string scope, string blueprintName, string artifactName, Artifact artifact)
+        public PSArtifact CreateArtifact(string scope, string blueprintName, string artifactName, Artifact artifactObject)
         {
-            var response = blueprintManagementClient.Artifacts.CreateOrUpdate(scope, blueprintName, artifactName, artifact);
+            var artifact = blueprintManagementClient.Artifacts.CreateOrUpdate(scope, blueprintName, artifactName, artifactObject);
+
             PSArtifact psArtifact = null;
 
-            switch (response)
+            switch (artifact)
             {
                 case TemplateArtifact templateArtifact:
-                    psArtifact = PSTemplateArtifact.FromArtifactModel((response) as TemplateArtifact, scope);
+                    psArtifact = PSTemplateArtifact.FromArtifactModel(artifact as TemplateArtifact, scope);
                     break;
                 case PolicyAssignmentArtifact policyArtifact:
-                    psArtifact = PSPolicyAssignmentArtifact.FromArtifactModel((response) as PolicyAssignmentArtifact, scope);
+                    psArtifact = PSPolicyAssignmentArtifact.FromArtifactModel(artifact as PolicyAssignmentArtifact, scope);
                     break;
                 case RoleAssignmentArtifact roleAssignmentArtifact:
-                    psArtifact = PSRoleAssignmentArtifact.FromArtifactModel((response) as RoleAssignmentArtifact, scope);
+                    psArtifact = PSRoleAssignmentArtifact.FromArtifactModel(artifact as RoleAssignmentArtifact, scope);
                     break;
                 default:
                     throw new NotSupportedException("To-Do:");
@@ -247,16 +248,18 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
         public PSArtifact GetArtifact(string scope, string blueprintName, string artifactName)
         {
             var artifact = blueprintManagementClient.Artifacts.Get(scope, blueprintName, artifactName);
+
             PSArtifact psArtifact = null;
-            switch (true)
+
+            switch (artifact)
             {
-                case bool _ when artifact.GetType() == typeof(TemplateArtifact):
+                case TemplateArtifact templateArtifact:
                     psArtifact = PSTemplateArtifact.FromArtifactModel(artifact as TemplateArtifact, scope);
                     break;
-                case bool _ when artifact.GetType() == typeof(PolicyAssignmentArtifact):
+                case PolicyAssignmentArtifact policyArtifact:
                     psArtifact = PSPolicyAssignmentArtifact.FromArtifactModel(artifact as PolicyAssignmentArtifact, scope);
                     break;
-                case bool _ when artifact.GetType() == typeof(RoleAssignmentArtifact):
+                case RoleAssignmentArtifact roleAssignmentArtifact:
                     psArtifact = PSRoleAssignmentArtifact.FromArtifactModel(artifact as RoleAssignmentArtifact, scope);
                     break;
                 default:
@@ -264,7 +267,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             }
 
             return psArtifact;
-
         }
 
         public PSWhoIsBlueprintContract GetBlueprintSpnObjectId(string scope, string assignmentName)
