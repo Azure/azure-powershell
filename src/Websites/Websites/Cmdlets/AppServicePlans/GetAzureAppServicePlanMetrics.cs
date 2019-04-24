@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you get Azure servce plan metrics
     /// </summary>
+    [CmdletDeprecation(ReplacementCmdletName = "Get-AzMetric")]
     [GenericBreakingChange("Get-AzAppServicePlanMetrics alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AppServicePlanMetric")]
     [OutputType(typeof(ResourceMetric))]
