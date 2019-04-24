@@ -4,8 +4,6 @@
 ``` yaml
 use:
 - "@microsoft.azure/autorest.powershell@beta"
-
-
 ```
 
 > Values
@@ -25,7 +23,7 @@ namespace: Microsoft.Azure.PowerShell.Cmdlets.$(service-name)
 > Folders
 ``` yaml
 clear-output-folder: true
-output-folder: $(service-name)
+output-folder: '.'
 ```
 
 > Directives
