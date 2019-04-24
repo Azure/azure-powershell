@@ -10,7 +10,7 @@
   PowerShellVersion = '5.1'
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Compute.private.dll'
-  FormatsToProcess = './custom/extensions.format.ps1xml', './Az.Compute.format.ps1xml' 
+  FormatsToProcess = './Az.Compute.format.ps1xml'
 # endregion
 
 # region persistent data
