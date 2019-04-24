@@ -40,6 +40,7 @@ $ModuleToSerializedCmdletsFile = @{
 }
 
 $CmdletsToParameters = @{}
+$CmdletToAliases = @{}
 $SerializedCmdletsFiles = $ModuleToSerializedCmdletsFile[$Module]
 if ($null -eq $SerializedCmdletsFiles)
 {
@@ -62,6 +63,7 @@ foreach ($File in $SerializedCmdletsFiles)
     foreach ($Cmdlet in $Hashtable.Cmdlets)
     {
         $CmdletsToParameters[$Cmdlet.Name] = $Cmdlet.Parameters
+        $CmdletToAliases[$Cmdlet.Name] = $Cmdlet.AliasList
     }
 }
 
@@ -94,6 +96,7 @@ if (!(Test-Path -Path $ApiProfileFolder))
 }
 
 Write-Debug "[DEBUG] Using API profile folder '$ApiProfileFolder'"
+$GeneratedCmdlets = @{}
 $NewlyGeneratedCmdlets = @()
 $NoMissingParametersCmdlets = @()
 $GeneratedScripts = Get-ChildItem -Path $ApiProfileFolder -Filter "*.ps1"
@@ -101,12 +104,25 @@ $Result += "## Incorrect Cmdlets`n"
 foreach ($Script in $GeneratedScripts)
 {
     $CmdletName = $Script.BaseName
+    $GeneratedCmdlets[$CmdletName] = $true
     $ExistingParameters = $CmdletsToParameters[$CmdletName]
     if ($null -eq $ExistingParameters)
     {
-        Write-Debug "[DEBUG] '$CmdletName' is a new cmdlet -- skipping"
-        $NewlyGeneratedCmdlets += $CmdletName
-        continue
+        foreach ($Cmdlet in $CmdletToAliases.Keys)
+        {
+            if ($CmdletToAliases[$Cmdlet] -contains $CmdletName)
+            {
+                $ExistingParameters = $CmdletsToParameters[$Cmdlet]
+                break
+            }
+        }
+
+        if ($null -eq $ExistingParameters)
+        {
+            Write-Debug "[DEBUG] '$CmdletName' is a new cmdlet -- skipping"
+            $NewlyGeneratedCmdlets += $CmdletName
+            continue
+        }
     }
 
     $Content = Get-Content -Path $Script.FullName
@@ -146,6 +162,33 @@ $NoMissingParametersCmdlets | ForEach-Object { $Result += "- $_" }
 
 $Result += "`n## New Cmdlets`n"
 $NewlyGeneratedCmdlets | ForEach-Object { $Result += "- $_" }
+
+$MissingCmdlets = @()
+foreach ($Cmdlet in $CmdletsToParameters.Keys)
+{
+    if ($null -eq $GeneratedCmdlets[$Cmdlet])
+    {
+        $AliasList = $CmdletToAliases[$Cmdlet]
+        $Found = $false
+        foreach ($Alias in $AliasList)
+        {
+            if ($null -ne $GeneratedCmdlets[$Alias])
+            {
+                $Found = $true
+                break
+            }
+        }
+
+        if (!$Found)
+        {
+            Write-Debug "[DEBUG] No cmdlet generated for existing cmdlet '$Cmdlet'"
+            $MissingCmdlets += $Cmdlet
+        }
+    }
+}
+
+$Result += "`n## Missing Cmdlets`n"
+$MissingCmdlets | Sort-Object | ForEach-Object { $Result += "- $_" }
 
 if ([string]::IsNullOrEmpty($OutputFile))
 {
