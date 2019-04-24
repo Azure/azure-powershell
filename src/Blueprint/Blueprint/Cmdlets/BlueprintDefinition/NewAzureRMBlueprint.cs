@@ -15,22 +15,15 @@ using Microsoft.Azure.Commands.Blueprint.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Blueprint.Models;
 using System;
-using System.Collections;
-using System.Linq;
 using System.Management.Automation;
-using System.Management.Automation.Language;
-using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
 using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterSetNames;
 using ParameterHelpMessages = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterHelpMessages;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Blueprint.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
 using System.IO;
-using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
@@ -39,7 +32,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
     {
         #region Parameters
         [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintBySubscription, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintByManagementGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintByManagementGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
         [ValidatePattern("^[0-9a-zA-Z_-]*$", Options = RegexOptions.Compiled | RegexOptions.CultureInvariant)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -68,26 +61,23 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         {
             try
             {
-                // Resolve path and check if the file exists
-                var filePath = ResolveUserPath(BlueprintFile);
-                if (filePath == null || new FileInfo(filePath).Exists)
-                {
-                    throw new FileNotFoundException(string.Format("Add here the path"));
-                }
-                // To-Do: In good case the JSON file will be deserialized, though it might throw 
-                var bp = JsonConvert.DeserializeObject<BlueprintModel>(File.ReadAllText(filePath), DefaultJsonSettings.DeserializerSettings);
+                var bp = CreateBlueprint(GetResolvedFilePath());
+
+                RegisterBlueprintRp(SubscriptionId ?? DefaultContext.Subscription.Id);
 
                 switch (ParameterSetName)
                 {
                     case ParameterSetNames.CreateBlueprintBySubscription:
                         var subScope = Utils.GetScopeForSubscription(SubscriptionId ?? DefaultContext.Subscription.Id);
-                        RegisterBlueprintRp(SubscriptionId ?? DefaultContext.Subscription.Id); //To-Do: how do we register BP RP if it's MG scope?
+
+                        ThrowIfBlueprintExits(subScope, Name);
 
                         WriteObject(BlueprintClient.CreateOrUpdateBlueprint(subScope, Name, bp));
-
                         break;
                     case ParameterSetNames.CreateBlueprintByManagementGroup:
                         var mgScope = Utils.GetScopeForManagementGroup(ManagementGroupId);
+
+                        ThrowIfBlueprintExits(mgScope, Name);
 
                         WriteObject(BlueprintClient.CreateOrUpdateBlueprint(mgScope, Name, bp));
                         break;
@@ -99,5 +89,49 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             }
         }
         #endregion
+
+        private BlueprintModel CreateBlueprint(string filePath)
+        {
+            // To-Do: In good case the JSON file will be deserialized, though it might throw 
+            return JsonConvert.DeserializeObject<BlueprintModel>(File.ReadAllText(filePath),
+                DefaultJsonSettings.DeserializerSettings);
+        }
+
+        private string GetResolvedFilePath()
+        {
+            // To-Do: work with relative paths?
+            var filePath = ResolveUserPath(BlueprintFile);
+            if (filePath == null || !new FileInfo(filePath).Exists)
+            {
+                throw new FileNotFoundException(string.Format("Cannot find the path: Add here the path"));
+            }
+
+            return filePath;
+        }
+
+        // To-Do: Update exception messages
+
+        protected void ThrowIfBlueprintExits(string scope, string name)
+        {
+            PSBlueprint blueprint = null;
+
+            try
+            {
+                blueprint = BlueprintClient.GetBlueprint(scope, name);
+            }
+            catch (Exception ex)
+            {
+                if (ex is CloudException cex && cex.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
+                {
+                    // if exception is for a reason other than .NotFound, pass it to the caller.
+                    throw;
+                }
+            }
+
+            if (blueprint != null)
+            {
+                throw new Exception(string.Format(Resources.AssignmentExists, name, scope));
+            }
+        }
     }
 }

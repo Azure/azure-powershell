@@ -27,6 +27,7 @@ using Microsoft.Azure.Management.Storage.Version2017_10_01.Models;
 using BlueprintManagement = Microsoft.Azure.Management.Blueprint;
 using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
 using Microsoft.Rest;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Blueprint.Common
 {
@@ -66,7 +67,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
         {
             var result = blueprintManagementClient.Blueprints.GetWithHttpMessagesAsync(scope, blueprintName)
                 .GetAwaiter().GetResult();
-
+            
             return PSBlueprint.FromBlueprintModel(result.Body, scope);
         }
 
@@ -222,17 +223,19 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
 
         public PSArtifact CreateArtifact(string scope, string blueprintName, string artifactName, Artifact artifact)
         {
+            var response = blueprintManagementClient.Artifacts.CreateOrUpdate(scope, blueprintName, artifactName, artifact);
             PSArtifact psArtifact = null;
-            switch (true)
+
+            switch (response)
             {
-                case bool _ when artifact.GetType() == typeof(TemplateArtifact):
-                    psArtifact = PSTemplateArtifact.FromArtifactModel(blueprintManagementClient.Artifacts.CreateOrUpdate(scope, blueprintName, artifactName, artifact) as TemplateArtifact, scope);
+                case TemplateArtifact templateArtifact:
+                    psArtifact = PSTemplateArtifact.FromArtifactModel((response) as TemplateArtifact, scope);
                     break;
-                case bool _ when artifact.GetType() == typeof(PolicyAssignmentArtifact):
-                    psArtifact = PSPolicyAssignmentArtifact.FromArtifactModel(blueprintManagementClient.Artifacts.CreateOrUpdate(scope, blueprintName, artifactName, artifact) as PolicyAssignmentArtifact, scope);
+                case PolicyAssignmentArtifact policyArtifact:
+                    psArtifact = PSPolicyAssignmentArtifact.FromArtifactModel((response) as PolicyAssignmentArtifact, scope);
                     break;
-                case bool _ when artifact.GetType() == typeof(RoleAssignmentArtifact):
-                    psArtifact = PSRoleAssignmentArtifact.FromArtifactModel(blueprintManagementClient.Artifacts.CreateOrUpdate(scope, blueprintName, artifactName, artifact) as RoleAssignmentArtifact, scope);
+                case RoleAssignmentArtifact roleAssignmentArtifact:
+                    psArtifact = PSRoleAssignmentArtifact.FromArtifactModel((response) as RoleAssignmentArtifact, scope);
                     break;
                 default:
                     throw new NotSupportedException("To-Do:");
@@ -243,10 +246,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
 
         public PSArtifact GetArtifact(string scope, string blueprintName, string artifactName)
         {
-            // assuming that we know the returned typed, we can call the FromArtifactModel
-            /*return PSArtifact.FromArtifactModel(
-                blueprintManagementClient.Artifacts.Get(scope, blueprintName, artifactName), scope);*/
-
             var artifact = blueprintManagementClient.Artifacts.Get(scope, blueprintName, artifactName);
             PSArtifact psArtifact = null;
             switch (true)
@@ -273,6 +272,29 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             var result = blueprintManagementClient.Assignments.WhoIsBlueprint(scope, assignmentName);
 
             return result != null ? new PSWhoIsBlueprintContract(result) : null;
+        }
+
+        // export
+        public string GetBlueprintDefinitionJsonFromObject(PSBlueprintBase blueprint)
+        {
+            var result = blueprintManagementClient.Blueprints.GetWithHttpMessagesAsync(blueprint.Scope, blueprint.Name)
+                .GetAwaiter().GetResult();
+
+            var serializedDefinition = JsonConvert.SerializeObject(result.Body, DefaultJsonSettings.SerializerSettings);
+
+            return serializedDefinition;
+        }
+
+        // import
+        public PSBlueprint GetBlueprintObjectFromJsonDefinition(string jsonDefinition, string scope)
+        {
+            var blueprintDefinitionObj =  JsonConvert.DeserializeObject<BlueprintModel>(jsonDefinition,
+                DefaultJsonSettings.DeserializerSettings);
+
+            var blueprint = blueprintManagementClient.Blueprints.CreateOrUpdate(scope, blueprintDefinitionObj.DisplayName + " - Copy", blueprintDefinitionObj);
+
+            return PSBlueprint.FromBlueprintModel(blueprint, scope);
+
         }
 
         /// <summary>

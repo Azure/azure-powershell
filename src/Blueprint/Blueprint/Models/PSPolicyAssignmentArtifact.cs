@@ -53,17 +53,16 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
             }
             else if (parameterKvp.Value != null && parameterKvp.Value is SecretReferenceParameterValue)
             {
-                // To-Do: Wait until previous changes merged into Azure master
-                //var parameterValue = (SecretReferenceParameterValue)parameterKvp.Value;
+                var parameterValue = (SecretReferenceParameterValue)parameterKvp.Value;
 
-                /*var secretReference = new PSSecretValueReference
+                var secretReference = new PSSecretValueReference
                 {
                     KeyVault = new PSKeyVaultReference { Id = parameterValue.Reference.KeyVault.Id },
                     SecretName = parameterValue.Reference.SecretName,
                     SecretVersion = parameterValue.Reference.SecretVersion
                 };
 
-                parameter = new PSSecretReferenceParameterValue { Reference = secretReference, Description = parameterValue.Description };*/
+                parameter = new PSSecretReferenceParameterValue { Reference = secretReference, Description = parameterValue.Description };
             }
 
             return parameter;

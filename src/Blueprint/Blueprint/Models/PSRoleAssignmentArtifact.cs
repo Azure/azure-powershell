@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
 
             psArtifact.DependsOn = artifact.DependsOn.Select(x => x) as List<string>;
 
+            //To-Do: Spell out principleIds to the user (can be expression or list of principleids)
+
             return psArtifact;
         }
     }
