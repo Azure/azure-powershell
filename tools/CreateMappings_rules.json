@@ -148,6 +148,7 @@
     { "regex": "Advisor", "alias": "Advisor" },
     { "regex": "MixedReality", "group": "Mixed Reality", "alias": "Mixed Reality" },
     { "regex": "SpatialAnchors", "group": "Mixed Reality", "alias": "Mixed Reality" },
-    { "regex": "Blueprint", "alias": "Blueprint" },    
+    { "regex": "Blueprint", "alias": "Blueprint" },
+    { "regex": "NetAppFiles", "alias": "NetApp Files" },
     { "regex": "DeploymentManager", "alias": "Deployment Manager" }
 ]
