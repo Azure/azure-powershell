@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 0.4.1
+* Module dependencies updated
+    * AzureRM.Resources module updated to 6.4.3
+
 ## Version 0.4.0
 * Deprecation
     * Get-AzsInfrastructureVolume has been deprecated, we provide new cmdlet Get-AzsVolume

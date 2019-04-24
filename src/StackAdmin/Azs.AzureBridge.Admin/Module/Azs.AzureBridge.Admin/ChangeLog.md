@@ -19,6 +19,14 @@
 -->
 ## Current Release
 
+## Version 0.2.2
+* Module dependencies updated
+    * AzureRM.Resources module updated to 6.4.3
+
+## Version 0.2.1
+* Module dependencies updated
+    * AzureRM.Resources module updated to 6.0.3
+
 ## Version 0.2.0
 * Module dependencies updated
 	* AzureRM.Profile

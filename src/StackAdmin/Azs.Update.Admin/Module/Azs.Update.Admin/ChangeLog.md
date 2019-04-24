@@ -19,6 +19,14 @@
 -->
 ## Current Release
 
+## Version 0.2.3
+* Module dependencies updated
+    * AzureRM.Resources module updated to 6.4.3
+
+## Version 0.2.2
+* Module dependencies updated
+    * AzureRM.Resources module updated to 6.0.3
+
 ## Version 0.2.1
 * Added a warning to recommend running Test-AzureStack before Install-AzsUpdate
 

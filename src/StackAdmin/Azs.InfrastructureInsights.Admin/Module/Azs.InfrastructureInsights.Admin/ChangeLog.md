@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.3.2
+* Module dependencies updated
+    * AzureRM.Resources module updated to 6.4.3
+
+## Version 0.3.1
+* Module dependencies updated
+    * AzureRM.Resources module updated to 6.0.3
+
 ## Version 0.3.0
 * New admin cmdlet added
     * Repair-AzsAlert

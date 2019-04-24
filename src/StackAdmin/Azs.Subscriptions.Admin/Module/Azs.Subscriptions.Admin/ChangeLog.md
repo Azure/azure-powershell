@@ -19,6 +19,14 @@
 -->
 ## Current Release
 
+## Version 0.3.2
+* Module dependencies updated
+    * AzureRM.Resources module updated to 6.4.3
+
+## Version 0.3.1
+* Module dependencies updated
+    * AzureRM.Resources module updated to 6.0.3
+
 ## Version 0.3.1
 * Added missing Azs prefix for New-AddonPlanDefinitionObject and created alias.  The cmdlet will be deprecated in a future release.
 
