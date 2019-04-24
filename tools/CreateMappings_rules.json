@@ -150,6 +150,7 @@
     { "regex": "SpatialAnchors", "group": "Mixed Reality", "alias": "Mixed Reality" },
     { "regex": "Blueprint", "alias": "Blueprint" },    
     { "regex": "DeploymentManager", "alias": "Deployment Manager" },
-{ "regex": "Peering", "group": "Peering", "alias": "Peering" },
-{ "regex": "PeerAsn", "group": "Peering", "alias": "Peer Asn" },
+    { "regex": "Peering", "group": "Peering", "alias": "Peering" },
+    { "regex": "PeerAsn", "group": "Peering", "alias": "Peer Asn" },
+    { "regex": "NetAppFiles", "alias": "NetApp Files" }
 ]

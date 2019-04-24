@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The name of the interface endpoint")]
         [ResourceNameCompleter("Microsoft.Network/interfaceEndpoints", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         [Parameter(
@@ -39,6 +40,7 @@ namespace Microsoft.Azure.Commands.Network
            ParameterSetName = "GetByNameParameterSet")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
