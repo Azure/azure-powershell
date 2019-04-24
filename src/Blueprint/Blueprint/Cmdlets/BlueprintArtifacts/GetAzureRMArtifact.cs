@@ -18,6 +18,7 @@ using System.Management.Automation;
 using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterSetNames;
 using ParameterHelpMessages = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterHelpMessages;
 using System.Text.RegularExpressions;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
     public class GetAzureRmArtifact : BlueprintCmdletBase
     {
         #region Parameters
-        [Parameter(ParameterSetName = ParameterSetNames.ArtifactsByBlueprint, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        [Parameter(ParameterSetName = ParameterSetNames.ArtifactsByBlueprint, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
         //[ValidatePattern("^[0-9a-zA-Z_-]*$", Options = RegexOptions.Compiled | RegexOptions.CultureInvariant)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -34,6 +35,10 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         [Parameter(ParameterSetName = ParameterSetNames.ArtifactsByBlueprint, Mandatory = true, ValueFromPipeline = true, HelpMessage = "To-Do")]
         [ValidateNotNull]
         public PSBlueprintBase Blueprint { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.ArtifactsByBlueprint, Mandatory = false, HelpMessage = "Version of the blueprint to get the artifacts from.")]
+        [ValidateNotNullOrEmpty]
+        public string Version { get; set; }
         #endregion
 
         #region Cmdlet Overrides
@@ -43,8 +48,15 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
             try
             {
-                // To-Do - how is blueprint name different than dislplay name
-                WriteObject(BlueprintClient.GetArtifact(scope, Blueprint.Name, Name));
+                if (this.IsParameterBound(c => c.Name))
+                {
+                    // To-Do - how is blueprint name different than dislplay name
+                    WriteObject(BlueprintClient.GetArtifact(scope, Blueprint.Name, Name, Version));
+                }
+                else
+                {
+                    WriteObject(BlueprintClient.ListArtifacts(scope, Blueprint.Name, Version)); 
+                }
             }
             catch (Exception ex)
             {

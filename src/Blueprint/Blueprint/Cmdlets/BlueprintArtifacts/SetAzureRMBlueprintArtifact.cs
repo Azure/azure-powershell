@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
             try
             {
-                artifact = BlueprintClient.GetArtifact(scope, blueprintName, artifactName);
+                artifact = BlueprintClient.GetArtifact(scope, blueprintName, artifactName, null);
             }
             catch (Exception ex)
             {
