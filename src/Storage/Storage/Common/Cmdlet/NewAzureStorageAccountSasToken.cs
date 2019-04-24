@@ -15,7 +15,7 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.Azure.Storage;
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;

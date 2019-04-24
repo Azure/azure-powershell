@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-using Microsoft.WindowsAzure.Storage;
+using Microsoft.Azure.Storage;
 using Microsoft.Azure.Cosmos.Table;
 using XTable = Microsoft.Azure.Cosmos.Table;
 

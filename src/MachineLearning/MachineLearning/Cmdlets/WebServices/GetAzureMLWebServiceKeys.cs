@@ -17,11 +17,14 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.MachineLearning.Utilities;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MlWebServiceKeys")]
+    [GenericBreakingChange("Get-AzMlWebServiceKeys alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MlWebServiceKey")]
     [OutputType(typeof(WebServiceKeys))]
+    [Alias("Get-AzMlWebServiceKeys")]
     public class GetAzureMLWebServiceKeys : WebServicesCmdletBase
     {
         private const string GetKeysByGroupAndName = "GetByNameAndResourceGroup";

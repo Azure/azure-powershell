@@ -1399,3 +1399,29 @@ function Test-CreateNewWebAppSimple
 		Remove-AzResourceGroup $appName
 	}
 }
+
+<#
+.SYNOPSIS
+Tests Tags are not overridden when calling Set-AzWebApp commandlet
+#>
+function Test-TagsNotRemovedBySetWebApp
+{
+	$rgname = "lketmtestantps10"
+	$appname = "lketmtestantps10"
+	$slot = "testslot"
+
+	$getApp =  Get-AzWebApp -ResourceGroupName $rgname -Name $appname
+	$getSlot = Get-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slot
+	Assert-notNull $getApp.Tags
+	Assert-notNull $getSlot.Tags
+
+	# Test - tags not removed after Set-AzWebApp
+	$webApp = Set-AzWebApp -ResourceGroupName $rgname -Name $appname -HttpsOnly $true
+	$slot = Set-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slot -HttpsOnly $true
+
+	Assert-AreEqual $true $webApp.HttpsOnly
+	Assert-AreEqual $true $slot.HttpsOnly
+
+	Assert-notNull $webApp.Tags
+	Assert-notNull $slot.Tags
+}

@@ -144,7 +144,7 @@ Specifies a **CloudFileShare** object to represent the share for which this cmdl
 To obtain a **CloudFileShare** object, use the Get-AzStorageShare cmdlet.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.File.CloudFileShare
+Type: Microsoft.Azure.Storage.File.CloudFileShare
 Parameter Sets: Share
 Aliases:
 
@@ -177,13 +177,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.WindowsAzure.Storage.File.CloudFileShare
+### Microsoft.Azure.Storage.File.CloudFileShare
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Storage.File.FileShareProperties
+### Microsoft.Azure.Storage.File.FileShareProperties
 
 ## NOTES
 

@@ -120,6 +120,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "DefaultParameter",
             Position = 3,
             ValueFromPipelineByPropertyName = true)]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         [Parameter(

@@ -78,5 +78,12 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "QueryOptions-QueryResultsWithApply");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void QueryResultsWithExpandPolicyEvaluationDetails()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "QueryOptions-QueryResultsWithExpandPolicyEvaluationDetails");
+        }
     }
 }

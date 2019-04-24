@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
             "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -259,7 +259,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
             "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "Id": "System.String",
@@ -604,8 +604,8 @@
     },
     {
       "VerbName": "Get",
-      "NounName": "AzPowerBIWorkspaceCollectionAccessKeys",
-      "Name": "Get-AzPowerBIWorkspaceCollectionAccessKeys",
+      "NounName": "AzPowerBIWorkspaceCollectionAccessKey",
+      "Name": "Get-AzPowerBIWorkspaceCollectionAccessKey",
       "ClassName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollection.GetWorkspaceCollectionAccessKeys",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
@@ -616,7 +616,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
             "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "KeyName": "System.String",
               "Value": "System.String"
@@ -844,7 +844,9 @@
           ]
         }
       ],
-      "AliasList": []
+      "AliasList": [
+        "Get-AzPowerBIWorkspaceCollectionAccessKeys"
+      ]
     },
     {
       "VerbName": "New",
@@ -860,7 +862,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
             "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "Id": "System.String",
@@ -1334,8 +1336,8 @@
     },
     {
       "VerbName": "Reset",
-      "NounName": "AzPowerBIWorkspaceCollectionAccessKeys",
-      "Name": "Reset-AzPowerBIWorkspaceCollectionAccessKeys",
+      "NounName": "AzPowerBIWorkspaceCollectionAccessKey",
+      "Name": "Reset-AzPowerBIWorkspaceCollectionAccessKey",
       "ClassName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollection.ResetWorkspaceCollectionAccessKeys",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
@@ -1346,7 +1348,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
             "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "KeyName": "System.String",
               "Value": "System.String"
@@ -1449,7 +1451,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1467,7 +1469,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1575,7 +1577,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1599,7 +1601,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1658,7 +1660,9 @@
           ]
         }
       ],
-      "AliasList": []
+      "AliasList": [
+        "Reset-AzPowerBIWorkspaceCollectionAccessKeys"
+      ]
     }
   ],
   "TypeDictionary": {
@@ -1805,7 +1809,7 @@
     "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspace": {
       "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
       "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspace",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Id": "System.String",
         "Name": "System.String",
@@ -2061,7 +2065,7 @@
     "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection": {
       "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
       "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "Id": "System.String",
@@ -2117,7 +2121,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -2129,7 +2133,7 @@
     "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey": {
       "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
       "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "KeyName": "System.String",
         "Value": "System.String"

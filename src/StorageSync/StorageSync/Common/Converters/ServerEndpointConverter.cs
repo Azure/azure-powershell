@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 
     /// <summary>
     /// Class ServerEndpointConverter.
-    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.Management.StorageSync.Models.ServerEndpoint}" />
+    /// Implements the <see cref="Converters.ConverterBase{PSServerEndpoint, StorageSyncModels.ServerEndpoint}" />
     /// </summary>
-    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.Management.StorageSync.Models.ServerEndpoint}" />
+    /// <seealso cref="Converters.ConverterBase{PSServerEndpoint, StorageSyncModels.ServerEndpoint}" />
     public class ServerEndpointConverter : ConverterBase<PSServerEndpoint, StorageSyncModels.ServerEndpoint>
     {
 
@@ -54,12 +54,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 source.ProvisioningState,
                 source.LastWorkflowId,
                 source.LastOperationName,
-                new StorageSyncModels.ServerEndpointHealth(
-                    source.SyncStatus?.DownloadHealth,
-                    source.SyncStatus?.UploadHealth,
-                    source.SyncStatus?.CombinedHealth,
-                    source.SyncStatus?.LastUpdatedTimestamp,
-                    null));
+                new ServerEndpointHealthConverter().Convert(source.SyncStatus));
         }
 
         /// <summary>
@@ -81,7 +76,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 ServerLocalPath = source.ServerLocalPath,
                 ServerResourceId = source.ServerResourceId,
                 ProvisioningState = source.ProvisioningState,
-                SyncStatus = new ServerEndpointHealthConvertor().Convert(source.SyncStatus),
+                SyncStatus = new ServerEndpointHealthConverter().Convert(source.SyncStatus),
                 FriendlyName = source.FriendlyName,
                 LastOperationName = source.LastOperationName,
                 LastWorkflowId = source.LastWorkflowId,

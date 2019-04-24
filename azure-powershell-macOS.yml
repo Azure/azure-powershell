@@ -1,8 +1,0 @@
-resources:
-- repo: self
-  fetchDepth: 1
-
-jobs:
-- template: build/jobs.yml
-  parameters:
-    vmImage: 'macOS-10.13'

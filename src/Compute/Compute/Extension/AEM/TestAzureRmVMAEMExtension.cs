@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Compute.Extension.AEM;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.Management.Storage.Version2017_10_01.Models;
 using Newtonsoft.Json;
@@ -360,8 +361,9 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                     else
                     {
-                        var osDiskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(osdisk.ManagedDisk.Id),
-                            this._Helper.GetResourceNameFromId(osdisk.ManagedDisk.Id));
+                        var resId = new ResourceIdentifier(osdisk.ManagedDisk.Id);
+
+                        var osDiskMD = ComputeClient.ComputeManagementClient.Disks.Get(resId.ResourceGroupName, resId.ResourceName);
                         if (osDiskMD.Sku.Name == StorageAccountTypes.PremiumLRS)
                         {
                             var sla = this._Helper.GetDiskSLA(osDiskMD.DiskSizeGB, null);
@@ -387,8 +389,9 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         if (disk.ManagedDisk != null)
                         {
-                            var diskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(disk.ManagedDisk.Id),
-                                this._Helper.GetResourceNameFromId(disk.ManagedDisk.Id));
+                            var resId = new ResourceIdentifier(disk.ManagedDisk.Id);
+
+                            var diskMD = ComputeClient.ComputeManagementClient.Disks.Get(resId.ResourceGroupName, resId.ResourceName);
 
                             if (diskMD.Sku.Name == StorageAccountTypes.PremiumLRS)
                             {
