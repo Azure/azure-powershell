@@ -272,7 +272,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 }
                 catch (ErrorResponseException ex)
                 {
-                    var error = ex.Response.Content.Contains("\"error\": \"") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
+                                    var error = ex.Response.Content.Contains("\"error\\\":") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(JsonConvert.DeserializeObject(ex.Response.Content).ToString()).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
                     throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
                 }
             }
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 }
                 catch (ErrorResponseException ex)
                 {
-                    var error = ex.Response.Content.Contains("\"error\": \"") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
+                                    var error = ex.Response.Content.Contains("\"error\\\":") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(JsonConvert.DeserializeObject(ex.Response.Content).ToString()).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
                     throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
                 }
             }
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 }
                 catch (ErrorResponseException ex)
                 {
-                    var error = ex.Response.Content.Contains("\"error\": \"") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
+                                    var error = ex.Response.Content.Contains("\"error\\\":") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(JsonConvert.DeserializeObject(ex.Response.Content).ToString()).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
                     throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
                 }
             }
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 }
                 catch (ErrorResponseException ex)
                 {
-                    var error = ex.Response.Content.Contains("\"error\": \"") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
+                                    var error = ex.Response.Content.Contains("\"error\\\":") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(JsonConvert.DeserializeObject(ex.Response.Content).ToString()).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
                     throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
                 }
             }
