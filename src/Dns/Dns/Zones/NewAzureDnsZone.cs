@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Dns.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Dns.Models;
 using Microsoft.Azure.Management.Internal.Network.Common;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Dns
@@ -117,12 +118,20 @@ namespace Microsoft.Azure.Commands.Dns
 
                     this.WriteObject(result);
 
-                    DnsZone parent = this.ParseParentZoneFromArguments();
-                    if (parent != null && this.Name.EndsWith(parent.Name))
+                    try
                     {
-                        AddDnsNameserverDelegation(result, parent);
-                        this.WriteVerbose(ProjectResources.Success);
-                        this.WriteVerbose(string.Format(ProjectResources.Success_NSDelegation, this.Name, parent.Name));
+                        DnsZone parent = this.ParseParentZoneFromArguments();
+                        if (parent != null && this.Name.EndsWith(parent.Name))
+                        {
+                            AddDnsNameserverDelegation(result, parent);
+                            this.WriteVerbose(ProjectResources.Success);
+                            this.WriteVerbose(string.Format(ProjectResources.Success_NSDelegation, this.Name, parent.Name));
+                        }
+                    }
+                    catch (System.Exception ex)
+                    {
+                        this.WriteWarning(string.Format(ProjectResources.Error_NSDelegation, this.Name));
+                        this.WriteWarning(ex.Message);
                     }
                 });
         }
@@ -179,9 +188,14 @@ namespace Microsoft.Azure.Commands.Dns
             }
             else if (this.ParameterSetName == IdsParameterSetName && !string.IsNullOrEmpty(this.ParentZoneId))
             {
-                string[] tokens = this.ParseParentZoneResourceId(this.ParentZoneId);
-                parentZoneName = (tokens != null && tokens.Length == 8) ? tokens[7] : null;
-                parentResourceGroupName = (tokens != null && tokens.Length == 8) ? tokens[1] : null;
+                ResourceIdentifier resource = new ResourceIdentifier(ParentZoneId);
+                string subscriptionIdInContext = this.DefaultContext.Subscription.Id;
+                parentZoneName = resource.ResourceName;
+                parentResourceGroupName = resource.ResourceGroupName;
+                if (subscriptionIdInContext != resource.Subscription)
+                {
+                    throw new PSArgumentException(string.Format(ProjectResources.Error_NSDelegationSubscriptionMisMatch, this.Name, parentZoneName));
+                }
             }
             if(parentZoneName != null)
             {
@@ -190,31 +204,6 @@ namespace Microsoft.Azure.Commands.Dns
                 parent.ResourceGroupName = parentResourceGroupName;
             }
             return parent;
-        }
-        /// <summary>
-        /// This method tokenizes the resource id of the parent DNS zone.
-        /// It also checks if the parent zone belongs to same subscription as the child zone created.
-        /// </summary>
-        /// <param name="resourceId">the resource id of the parent zone</param>
-        // Example : "/subscriptions/**67e2/resourceGroups/other-rg/providers/Microsoft.Network/dnszones/cakes.com"
-        private string[] ParseParentZoneResourceId(string resourceId)
-        {
-            if (!string.IsNullOrEmpty(resourceId))
-            {
-                string[] tokens = resourceId.Split(new[] { '/' });
-                tokens = tokens.Where(token => !string.IsNullOrEmpty(token)).ToArray();
-                if (tokens.Length != 8)
-                {
-                    throw new PSArgumentException(string.Format(ProjectResources.Error_ResourceIdIncorrectFormat, resourceId));
-                }
-                string subscriptionIdInContext = this.DefaultContext.Subscription.Id;
-                if (subscriptionIdInContext != tokens[1])
-                {
-                    throw new PSArgumentException(string.Format(ProjectResources.Error_NSDelegationSubscriptionMisMatch, this.Name, tokens[7]));
-                }
-                return tokens;
-            }
-            return null;
         }
     }
 }
