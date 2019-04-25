@@ -9,6 +9,7 @@
   <PropertyGroup>
     <AssemblyName>$(AzAssemblyPrefix)$(PsModuleName).SiteRecovery</AssemblyName>
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName).SiteRecovery</RootNamespace>
+    <WarningsNotAsErrors>612,618</WarningsNotAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
