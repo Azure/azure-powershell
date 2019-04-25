@@ -191,10 +191,6 @@
         - New-AzApplicationGatewayRewriteRuleCondition
     - Cmdlets updated with optional parameter - RuleSequence and Condition
         - New-AzApplicationGatewayRewriteRule
-* Added support for updating tags in Set operations for VirtualNetworkGateways and VirtualNetworkGatewayConnections
-    - Cmdlets updated with optional parameter - Tag
-        - Set-AzVirtualNetworkGateway
-        - Set-AzVirtualNetworkGatewayConnection
 
 #### Az.RecoveryServices
 * Added SnapshotRetentionInDays in Azure VM policy to support Instant RP
