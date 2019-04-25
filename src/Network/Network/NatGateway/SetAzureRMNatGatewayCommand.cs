@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The idle timeout of the nat gateway.")]
-        public int IdleTimeoutInMinutes { get; set; }
+        public int IdleTimeoutInMinutes { get; set; } = 4;
 
         public override void Execute()
         {
