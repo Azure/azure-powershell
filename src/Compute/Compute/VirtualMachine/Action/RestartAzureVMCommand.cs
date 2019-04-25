@@ -23,7 +23,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Restart", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", DefaultParameterSetName = RestartResourceGroupNameParameterSet, SupportsShouldProcess = true)]
-    [OutputType(typeof(PSComputeLongRunningOperation))]
+    [OutputType(typeof(PSComputeLongRunningOperation), typeof(PSAzureOperationResponse))]
     public class RestartAzureVMCommand : VirtualMachineBaseCmdlet
     {
         protected const string RestartResourceGroupNameParameterSet = "RestartResourceGroupNameParameterSetName";
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Compute
                             var op = this.VirtualMachineClient.BeginPerformMaintenanceWithHttpMessagesAsync(
                                 this.ResourceGroupName,
                                 this.Name).GetAwaiter().GetResult();
-                            var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
+                            var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                             WriteObject(result);
                         });
                     }
@@ -151,9 +151,7 @@ namespace Microsoft.Azure.Commands.Compute
                             var op = this.VirtualMachineClient.BeginRestartWithHttpMessagesAsync(
                                 this.ResourceGroupName,
                                 this.Name).GetAwaiter().GetResult();
-                            var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
-                            result.StartTime = this.StartTime;
-                            result.EndTime = DateTime.Now;
+                            var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                             WriteObject(result);
                         });
                     }

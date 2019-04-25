@@ -23,7 +23,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", DefaultParameterSetName = GeneralizeResourceGroupNameParameterSet)]
-    [OutputType(typeof(PSComputeLongRunningOperation))]
+    [OutputType(typeof(PSComputeLongRunningOperation), typeof(PSAzureOperationResponse))]
     public class SetAzureVMCommand : VirtualMachineBaseCmdlet
     {
         protected const string GeneralizeResourceGroupNameParameterSet = "GeneralizeResourceGroupNameParameterSetName";
@@ -119,11 +119,11 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ParameterSetName = RedeployIdParameterSet,
-            Mandatory = false, 
+            Mandatory = false,
             HelpMessage = "Returns immediately with status of request")]
         [Parameter(
             ParameterSetName = RedeployResourceGroupNameParameterSet,
-            Mandatory = false, 
+            Mandatory = false,
             HelpMessage = "Returns immediately with status of request")]
         public SwitchParameter NoWait { get; set; }
 
@@ -164,9 +164,7 @@ namespace Microsoft.Azure.Commands.Compute
                         var op = this.VirtualMachineClient.BeginRedeployWithHttpMessagesAsync(
                             this.ResourceGroupName,
                             this.Name).GetAwaiter().GetResult();
-                        var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
-                        result.StartTime = this.StartTime;
-                        result.EndTime = DateTime.Now;
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                         WriteObject(result);
                     }
                     else
