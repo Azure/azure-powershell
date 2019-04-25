@@ -116,8 +116,8 @@ namespace Microsoft.Azure.Commands.Network
                 IdleTimeoutInMinutes = this.IdleTimeoutInMinutes,
                 Location = this.Location,
                 Sku = vSku,
-                PublicIpAddress = vPublicIpAddresses,
-                PublicIpPrefix = vPublicIpPrefixes,
+                PublicIpAddresses = vPublicIpAddresses,
+                PublicIpPrefixes = vPublicIpPrefixes,
             };
 
             var vNatGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NatGateway>(vNatGateway);

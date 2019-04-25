@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ProvisioningState { get; set; }
         [Ps1Xml(Label = "Sku Name", Target = ViewControl.Table, ScriptBlock = "$_.Sku.Name")]
         public PSNatGatewaySku Sku { get; set; }
-        public List<PSResourceId> PublicIpAddress { get; set; }
-        public List<PSResourceId> PublicIpPrefix { get; set; }
+        public List<PSResourceId> PublicIpAddresses { get; set; }
+        public List<PSResourceId> PublicIpPrefixes { get; set; }
 
         [JsonIgnore]
         public string SkuText
@@ -39,13 +39,13 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string PublicIpAddressesText
         {
-            get { return JsonConvert.SerializeObject(PublicIpAddress, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(PublicIpAddresses, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string PublicIpPrefixesText
         {
-            get { return JsonConvert.SerializeObject(PublicIpPrefix, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(PublicIpPrefixes, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

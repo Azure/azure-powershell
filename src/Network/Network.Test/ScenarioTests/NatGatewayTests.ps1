@@ -182,9 +182,6 @@ function Test-NatGatewayCRUDAllParameters
     $rgname = Get-ResourceGroupName;
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
-	$pipname = $rname+"pip";
-	$prefixname = $rname+"prefix";
-	$pipname2 = $rname+"pip2";
     $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "East US 2";
     # Resource's parameters
     $IdleTimeoutInMinutes = 5;
@@ -197,19 +194,11 @@ function Test-NatGatewayCRUDAllParameters
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
-        # Create Public Ip Address
-        $pip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $pipname -location $location -IdleTimeoutInMinutes 15 -AllocationMethod Static -DomainNameLabel $domainNameLabel -Sku Standard;
-
-        # Create Public Ip Prefix
-        $prefix = New-AzPublicIpPrefix -ResourceGroupName $rgname -name $prefixname -location $location -Sku Standard -PrefixLength 30;
-
         # Create NatGateway
-        $vNatGateway = New-AzNatGateway -ResourceGroupName $rgname -Name $rname -Location $location -IdleTimeoutInMinutes $IdleTimeoutInMinutes -Tag $Tag -Sku Standard -PublicIpAddress $pip -PublicIpPrefix $prefix;
+        $vNatGateway = New-AzNatGateway -ResourceGroupName $rgname -Name $rname -Location $location -IdleTimeoutInMinutes $IdleTimeoutInMinutes -Tag $Tag -Sku Standard;
         Assert-NotNull $vNatGateway;
         Assert-True { Check-CmdletReturnType "New-AzNatGateway" $vNatGateway };
         Assert-AreEqual $rname $vNatGateway.Name;
-        Assert-AreEqual 1 @($vNatGateway.PublicIpAddress).Count;
-        Assert-AreEqual 1 @($vNatGateway.PublicIpPrefix).Count;
         Assert-AreEqual $IdleTimeoutInMinutes $vNatGateway.IdleTimeoutInMinutes;
         Assert-AreEqualObjectProperties $Tag $vNatGateway.Tag;
 
@@ -218,8 +207,6 @@ function Test-NatGatewayCRUDAllParameters
         Assert-NotNull $vNatGateway;
         Assert-True { Check-CmdletReturnType "Get-AzNatGateway" $vNatGateway };
         Assert-AreEqual $rname $vNatGateway.Name;
-        Assert-AreEqual 1 @($vNatGateway.PublicIpAddress).Count;
-        Assert-AreEqual 1 @($vNatGateway.PublicIpPrefix).Count;
         Assert-AreEqual $IdleTimeoutInMinutes $vNatGateway.IdleTimeoutInMinutes;
         Assert-AreEqualObjectProperties $Tag $vNatGateway.Tag;
 
@@ -239,14 +226,9 @@ function Test-NatGatewayCRUDAllParameters
         $listNatGateway = Get-AzNatGateway -ResourceGroupName "*" -Name "*";
         Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
-		# New PublicIpAddress
-        $pip2 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $pipname2 -location $location -IdleTimeoutInMinutes 15 -AllocationMethod Static -DomainNameLabel $domainNameLabel -Sku Standard;
-		$pipArray = $pip, $pip2;
-
         # Set NatGateway
         $vNatGateway.IdleTimeoutInMinutes = $IdleTimeoutInMinutesSet;
         $vNatGateway.Tag = $TagSet;
-        $vNatGateway.PublicIpAddress = $pipArray;
         $vNatGateway = Set-AzNatGateway -InputObject $vNatGateway;
         Assert-NotNull $vNatGateway;
         Assert-True { Check-CmdletReturnType "Set-AzNatGateway" $vNatGateway };
@@ -259,8 +241,6 @@ function Test-NatGatewayCRUDAllParameters
         Assert-NotNull $vNatGateway;
         Assert-True { Check-CmdletReturnType "Get-AzNatGateway" $vNatGateway };
         Assert-AreEqual $rname $vNatGateway.Name;
-		Assert-AreEqual 1 @($vNatGateway.PublicIpAddress).Count;
-        Assert-AreEqual 1 @($vNatGateway.PublicIpPrefix).Count;
         Assert-AreEqual $IdleTimeoutInMinutesSet $vNatGateway.IdleTimeoutInMinutes;
         Assert-AreEqualObjectProperties $TagSet $vNatGateway.Tag;
 
