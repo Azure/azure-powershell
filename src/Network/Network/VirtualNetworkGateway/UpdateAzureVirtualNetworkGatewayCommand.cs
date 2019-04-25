@@ -149,6 +149,12 @@ namespace Microsoft.Azure.Commands.Network
         public SecureString RadiusServerSecret { get; set; }
 
         [Parameter(
+                    Mandatory = false,
+                    ValueFromPipelineByPropertyName = true,
+                    HelpMessage = "Custom routes AddressPool specified by customer")]
+        public string[] CustomRoute { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
             HelpMessage = "P2S External Radius server address.")]
@@ -271,6 +277,16 @@ namespace Microsoft.Azure.Commands.Network
             else if (this.PeerWeight < 0)
             {
                 throw new ArgumentException("PeerWeight must be a positive integer");
+            }
+
+            if (this.CustomRoute != null && this.CustomRoute.Any())
+            {
+                this.VirtualNetworkGateway.CustomRoutes = new PSAddressSpace();
+                this.VirtualNetworkGateway.CustomRoutes.AddressPrefixes = this.CustomRoute?.ToList();
+            }
+            else
+            {
+                this.VirtualNetworkGateway.CustomRoutes = null;
             }
 
             // Map to the sdk object
