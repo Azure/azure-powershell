@@ -35,6 +35,13 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
         public override void ExecuteCmdlet()
         {
+            string scope = Utils.GetScopeForSubscription(SubscriptionId ?? DefaultContext.Subscription.Id);
+
+            if (this.IsParameterBound(c => c.ManagementGroupId))
+            {
+                scope = Utils.GetScopeForManagementGroup(ManagementGroupId);}
+
+
             var resolvedPath = this.ResolveUserPath(Path);
             var blueprintPath = System.IO.Path.Combine(resolvedPath, "Blueprint");
             if (!Directory.Exists(blueprintPath))
@@ -45,35 +52,30 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             DirectoryInfo directory = new DirectoryInfo(blueprintPath);
             FileInfo[] files = directory.GetFiles("*.json");
             int blueprintFileCounter = 0;
-
+        
             foreach (var file in files)
             {
                 if (File.Exists(file.FullName))
                 {
-                    var json = JObject.Parse(File.ReadAllText(file.FullName));
-                    //var type = json["type"].ToString();
-
-                    //if (string.Equals("Microsoft.Blueprint/blueprints", type))
-                  //  {
-                        blueprintFileCounter++;
-                  //  }
-                }
-
-                if (blueprintFileCounter > 1)
-                {
-                    // say there is more than one blueprint file detected. Delete some.
-                    throw new Exception("Multiple blueprint files detected. Please have only one blueprint file in this location.");
-                }
-                else
-                {
-                    var bpObject = JsonConvert.DeserializeObject<BlueprintModel>(File.ReadAllText(file.FullName),
-                        DefaultJsonSettings.DeserializerSettings);
-
-                    BlueprintClient.CreateOrUpdateBlueprint(Utils.GetScopeForSubscription(SubscriptionId ?? DefaultContext.Subscription.Id),
-                        BlueprintName, bpObject);
+                    blueprintFileCounter++;
                 }
             }
 
+            if (blueprintFileCounter > 1)
+            {
+                // say there is more than one blueprint file detected. Delete some.
+                throw new Exception(
+                    "Multiple blueprint files detected. Please have only one blueprint file in this location.");
+            }
+
+            foreach (var file in files)
+            {
+                var bpObject = JsonConvert.DeserializeObject<BlueprintModel>(File.ReadAllText(file.FullName),
+                    DefaultJsonSettings.DeserializerSettings);
+
+                BlueprintClient.CreateOrUpdateBlueprint(scope,
+                    BlueprintName, bpObject);
+            }
 
 
             // if everything is right to start import do so:
@@ -102,7 +104,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                         throw new Exception("Can't deserialize the JSON file: " + artifactFile.FullName);
                     }
 
-                    BlueprintClient.CreateArtifact(Utils.GetScopeForSubscription(SubscriptionId ?? DefaultContext.Subscription.Id), BlueprintName,
+                    BlueprintClient.CreateArtifact(scope, BlueprintName,
                         System.IO.Path.GetFileNameWithoutExtension(artifactFile.Name), artifactObject);
 
                 }
