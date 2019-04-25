@@ -86,6 +86,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImageVersion.PublishingProfile.EndOfLifeDate = this.PublishingProfileEndOfLifeDate;
                     }
 
+                    if (this.MyInvocation.BoundParameters.ContainsKey("StorageAccountType"))
+                    {
+                        if (galleryImageVersion.PublishingProfile == null)
+                        {
+                            galleryImageVersion.PublishingProfile = new GalleryImageVersionPublishingProfile();
+                        }
+                        galleryImageVersion.PublishingProfile.StorageAccountType = this.StorageAccountType;
+                    }
+
                     if (this.MyInvocation.BoundParameters.ContainsKey("TargetRegion"))
                     {
                         if (galleryImageVersion.PublishingProfile == null)
@@ -95,7 +104,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImageVersion.PublishingProfile.TargetRegions = new List<TargetRegion>();
                         foreach (var t in this.TargetRegion)
                         {
-                            galleryImageVersion.PublishingProfile.TargetRegions.Add(new TargetRegion((string)t["Name"], (int?)t["ReplicaCount"]));
+                            galleryImageVersion.PublishingProfile.TargetRegions.Add(new TargetRegion((string)t["Name"], (int?)t["ReplicaCount"], (string)t["StorageAccountType"]));
                         }
                     }
 
@@ -170,6 +179,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public DateTime PublishingProfileEndOfLifeDate { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("Standard_LRS", "Standard_ZRS")]
+        public string StorageAccountType { get; set; }
 
         [Parameter(
             Mandatory = false,

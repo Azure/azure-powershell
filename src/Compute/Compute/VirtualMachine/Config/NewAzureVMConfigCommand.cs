@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -83,6 +81,11 @@ namespace Microsoft.Azure.Commands.Compute
         public string [] Zone { get; set; }
 
         [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Id of ProximityPlacementGroup")]
+        public string ProximityPlacementGroupId { get; set; }
+
+        [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true)]
 		[Alias("Tag")]
@@ -142,6 +145,11 @@ namespace Microsoft.Azure.Commands.Compute
             if (this.EnableUltraSSD.IsPresent)
             {
                 vm.AdditionalCapabilities = new AdditionalCapabilities(true);
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("ProximityPlacementGroupId"))
+            {
+                vm.ProximityPlacementGroup = new SubResource(this.ProximityPlacementGroupId);
             }
 
             WriteObject(vm);

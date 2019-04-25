@@ -23,7 +23,6 @@ using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -47,6 +46,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string imageName = this.ImageName;
                     Image parameters = new Image();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<PSImage, Image>(this.Image, parameters);
+                    parameters.HyperVGeneration = HyperVGenerationTypes.V1; // temporarily unblock create image until this parameter is added.
 
                     var result = ImagesClient.CreateOrUpdate(resourceGroupName, imageName, parameters);
                     var psObject = new PSImage();
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 
-    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Image", DefaultParameterSetName = "ObjectParameter", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Image", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSImage))]
     public partial class UpdateAzureRmImage : ComputeAutomationBaseCmdlet
     {
@@ -100,11 +100,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         case "ResourceIdParameter":
                             resourceGroupName = GetResourceGroupName(this.ResourceId);
-                            imageName = GetResourceName(this.ResourceId, "Microsoft.Compute/Images");
+                            imageName = GetResourceName(this.ResourceId, "Microsoft.Compute/images");
                             break;
                         case "ObjectParameter":
                             resourceGroupName = GetResourceGroupName(this.Image.Id);
-                            imageName = GetResourceName(this.Image.Id, "Microsoft.Compute/Images");
+                            imageName = GetResourceName(this.Image.Id, "Microsoft.Compute/images");
                             break;
                         default:
                             resourceGroupName = this.ResourceGroupName;
@@ -114,6 +114,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     var parameters = ImagesClient.Get(resourceGroupName, imageName);
                     parameters.Tags = this.MyInvocation.BoundParameters.ContainsKey("Tag") ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null;
+
+                    if (string.IsNullOrEmpty(parameters.HyperVGeneration))
+                    {
+                        parameters.HyperVGeneration = HyperVGenerationTypes.V1; // temporarily unblock create image until this parameter is added.
+                    }
 
                     var result = ImagesClient.CreateOrUpdate(resourceGroupName, imageName, parameters);
                     var psObject = new PSImage();
@@ -139,19 +144,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Alias("Name")]
         public string ImageName { get; set; }
 
-        [CmdletParameterBreakingChange("Image", "Image parameter will be removed for the parameter set when resource group name and image name are given.")]
         [Parameter(
-            ParameterSetName = "ObjectParameter",
-            Position = 0,
-            Mandatory = true,
-            ValueFromPipeline = true)]
-        [Parameter(
-            ParameterSetName = "DefaultParameter",
-            Position = 2,
             Mandatory = false,
-            ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public PSImage Image { get; set; }
+            ValueFromPipelineByPropertyName = true)]
+        public Hashtable Tag { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         [Parameter(
             ParameterSetName = "ResourceIdParameter",
@@ -161,11 +160,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string ResourceId { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public Hashtable Tag { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
+            ParameterSetName = "ObjectParameter",
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public PSImage Image { get; set; }
     }
 }

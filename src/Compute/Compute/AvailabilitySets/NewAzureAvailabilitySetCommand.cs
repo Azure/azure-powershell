@@ -76,6 +76,11 @@ namespace Microsoft.Azure.Commands.Compute
         public string Sku { get; set; }
 
         [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Id of ProximityPlacementGroup")]
+        public string ProximityPlacementGroupId { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Key-value pairs in the form of a hash table."
             )]
@@ -98,13 +103,18 @@ namespace Microsoft.Azure.Commands.Compute
                     Tags = Tag == null ? null : Tag.Cast<DictionaryEntry>().ToDictionary(d => (string)d.Key, d => (string)d.Value)
                 };
 
-                if (!string.IsNullOrEmpty(this.Sku))
+                if (this.MyInvocation.BoundParameters.ContainsKey("Sku"))
                 {
                     avSetParams.Sku = new Sku();
                     if (!string.IsNullOrEmpty(this.Sku))
                     {
                         avSetParams.Sku.Name = this.Sku;
                     }
+                }
+
+                if (this.MyInvocation.BoundParameters.ContainsKey("ProximityPlacementGroupId"))
+                {
+                    avSetParams.ProximityPlacementGroup = new SubResource(this.ProximityPlacementGroupId);
                 }
 
                 var result = this.AvailabilitySetClient.CreateOrUpdateWithHttpMessagesAsync(
