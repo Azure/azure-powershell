@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
                         var roleAssignmentArtifact = new RoleAssignmentArtifact
                         {
-                            DisplayName = null,
+                            DisplayName = Name,
                             Description = Description,
                             RoleDefinitionId = RoleDefinitionId,
                             PrincipalIds = PrincipalIds,
