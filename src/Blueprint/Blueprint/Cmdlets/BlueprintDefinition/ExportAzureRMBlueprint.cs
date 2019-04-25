@@ -14,7 +14,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
     public class ExportAzureRmBlueprint : BlueprintCmdletBase
     {
         private const string ExportToFileParamSet = "ExportToFile";
-        private const string ExportToStringParamSet = "ExportToJSON";
 
         [Parameter(Mandatory = true, HelpMessage = "The Blueprint definition object to export.", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -37,29 +36,41 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             string serializedDefinition = BlueprintClient.GetBlueprintDefinitionJsonFromObject(Blueprint, Version);
 
             var currentPath = this.SessionState.Path.CurrentFileSystemLocation.Path;
-            var definitionFileFullPath = Path.Combine(currentPath, Blueprint.Name + " - Copy.json");
+
+            var blueprintPath = Path.Combine(currentPath, "Blueprint");
+            if (!File.Exists(blueprintPath))
+            {
+                System.IO.Directory.CreateDirectory(blueprintPath);
+            }
+
+            var definitionFileFullPath = Path.Combine(blueprintPath, Blueprint.Name + ".json");
 
             this.ConfirmAction(
                 this.Force || !File.Exists(definitionFileFullPath),
-                "Want to overwriting the output file?",
+                "Want to overwrite the output file " + $"{Blueprint.Name}.json?",
                 "Overwriting the output file",
                 definitionFileFullPath,
                 () => File.WriteAllText(definitionFileFullPath, serializedDefinition)
             );
 
             // Get artifacts from this blueprint, serialize it and write it to disk
+            var artifactsPath = Path.Combine(currentPath, "Artifacts");
+            if (!File.Exists(artifactsPath))
+            {
+                System.IO.Directory.CreateDirectory(artifactsPath);
+            }
 
             var artifacts = BlueprintClient.ListArtifacts(Blueprint.Scope, Blueprint.Name, Version);
-
+            
             foreach (var artifact in artifacts)
             {
-                string serializedArtifact = BlueprintClient.GetBlueprintArtifactJsonFromObject(Blueprint.Scope, Blueprint.Name, artifact.Name, Version);
+                string serializedArtifact = BlueprintClient.GetBlueprintArtifactJsonFromObject(Blueprint.Scope, Blueprint.Name, artifact, Version);
 
-                var artifactFileFullPath = Path.Combine(currentPath, artifact.Name + " - Copy.json");
+                var artifactFileFullPath = Path.Combine(artifactsPath, artifact.Name + ".json");
 
                 this.ConfirmAction(
                     this.Force || !File.Exists(artifactFileFullPath),
-                    "Want to overwriting the output file?",
+                    "Want to overwrite the output file " + $"{artifact.Name}.json?",
                     "Overwriting the output file",
                     artifactFileFullPath,
                     () => File.WriteAllText(artifactFileFullPath, serializedArtifact)

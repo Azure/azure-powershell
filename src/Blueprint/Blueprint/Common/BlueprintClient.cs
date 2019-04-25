@@ -333,14 +333,14 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             return list;
         }
 
-        public string GetBlueprintArtifactJsonFromObject(string scope, string blueprintName, string artifactName, string version)
+        public string GetBlueprintArtifactJsonFromObject(string scope, string blueprintName, PSArtifact artifact, string version)
         {
-            var artifact = string.IsNullOrEmpty(version)
-             ? blueprintManagementClient.Artifacts.Get(scope, blueprintName, artifactName)
-             : blueprintManagementClient.PublishedArtifacts.Get(scope, blueprintName, version, artifactName);
+            var artifactObj = string.IsNullOrEmpty(version)
+             ? blueprintManagementClient.Artifacts.Get(scope, blueprintName, artifact.Name)
+             : blueprintManagementClient.PublishedArtifacts.Get(scope, blueprintName, version, artifact.Name);
 
 
-            return JsonConvert.SerializeObject(artifact, DefaultJsonSettings.SerializerSettings);
+            return JsonConvert.SerializeObject(artifactObj, DefaultJsonSettings.SerializerSettings);
 
         }
 
