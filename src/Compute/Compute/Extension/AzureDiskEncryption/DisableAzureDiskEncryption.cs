@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
-    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDiskEncryption",SupportsShouldProcess =  true)]
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDiskEncryption", SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class DisableAzureDiskEncryptionCommand : VirtualMachineExtensionBaseCmdlet
     {
@@ -102,6 +102,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             HelpMessage = "The extension publisher name. Specify this parameter only to override the default value of \"Microsoft.Azure.Security\".")]
         [ValidateNotNullOrEmpty]
         public string ExtensionPublisherName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
+        public SwitchParameter NoWait { get; set; }
 
         private OperatingSystemTypes? currentOSType = null;
 
@@ -270,10 +273,20 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 Tags = vmParameters.Tags
             };
 
-            return this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
+            if (NoWait.IsPresent)
+            {
+                return this.ComputeClient.ComputeManagementClient.VirtualMachines.BeginCreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName,
                     vmParameters.Name,
                     parameters).GetAwaiter().GetResult();
+            }
+            else
+            {
+                return this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
+                    this.ResourceGroupName,
+                    vmParameters.Name,
+                    parameters).GetAwaiter().GetResult();
+            }
         }
 
         public override void ExecuteCmdlet()
@@ -323,11 +336,22 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     VirtualMachineExtension parameters = GetVmExtensionParameters(virtualMachineResponse);
 
                     AzureOperationResponse<VirtualMachineExtension> opExt;
-                    opExt = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                    if (NoWait.IsPresent)
+                    {
+                        opExt = this.VirtualMachineExtensionClient.BeginCreateOrUpdateWithHttpMessagesAsync(
                                                             this.ResourceGroupName,
                                                             this.VMName,
                                                             this.Name,
                                                             parameters).GetAwaiter().GetResult();
+                    }
+                    else
+                    {
+                        opExt = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                                                            this.ResourceGroupName,
+                                                            this.VMName,
+                                                            this.Name,
+                                                            parameters).GetAwaiter().GetResult();
+                    }
 
                     // +---------+---------------+----------------------------+
                     // | OSType  |  VolumeType   | UpdateVmEncryptionSettings |
