@@ -270,6 +270,15 @@ namespace Microsoft.Azure.Commands.Dns.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Zone Delegation 
         /// </summary>
+        internal static string Error_NSDelegation {
+            get {
+                return ResourceManager.GetString("Error_NSDelegation", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Zone Delegation 
+        /// </summary>
         internal static string Error_ResourceIdIncorrectFormat
         {
             get
