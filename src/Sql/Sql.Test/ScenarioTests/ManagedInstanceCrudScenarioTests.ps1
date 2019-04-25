@@ -68,11 +68,12 @@ function Test-CreateManagedInstance
 		$edition = "GeneralPurpose"
 		$computeGeneration = "Gen4"
 		$managedInstanceName = Get-ManagedInstanceName
+		$dnsZonePartner = $managedInstance1.ResourceId
 
 		# With edition and computeGeneration specified
  		$job = New-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
-  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Edition $edition -ComputeGeneration $computeGeneration  -AsJob
+  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Edition $edition -ComputeGeneration $computeGeneration  -DnsZonePartner $dnsZonePartner  -AsJob
  		$job | Wait-Job
  		$managedInstance1 = $job.Output
 
