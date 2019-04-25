@@ -87,36 +87,24 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-AzureDiskEncryptionExtension");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Updated Storage, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
+        [Trait(Category.RunType, Category.DesktopOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureDiskEncryptionExtensionSinglePass()
         {
             TestRunner.RunTestScript("Test-AzureDiskEncryptionExtensionSinglePass");
         }
 
-#if NETSTANDARD
         [Fact(Skip = "Updated Storage, needs re-recorded")]
         [Trait(Category.RunType, Category.DesktopOnly)]
-#else
-        [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureDiskEncryptionExtensionSinglePassRemove()
         {
             TestRunner.RunTestScript("Test-AzureDiskEncryptionExtensionSinglePassRemove");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Updated Storage, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
+        [Trait(Category.RunType, Category.DesktopOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureDiskEncryptionExtensionSinglePassDisableAndRemove()
         {

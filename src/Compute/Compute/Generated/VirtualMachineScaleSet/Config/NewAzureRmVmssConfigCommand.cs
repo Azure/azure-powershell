@@ -186,6 +186,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string EvictionPolicy { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string ProximityPlacementGroupId { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ParameterSetName = "ExplicitIdentityParameterSet",
             ValueFromPipelineByPropertyName = true)]
@@ -218,6 +223,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // VirtualMachineProfile
             VirtualMachineScaleSetVMProfile vVirtualMachineProfile = null;
+
+            // ProximityPlacementGroup
+            SubResource vProximityPlacementGroup = null;
+
+            // AdditionalCapabilities
+            AdditionalCapabilities vAdditionalCapabilities = null;
 
             // Identity
             VirtualMachineScaleSetIdentity vIdentity = null;
@@ -344,18 +355,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.StorageProfile = this.StorageProfile;
             }
 
-            if (this.EnableUltraSSD.IsPresent)
-            {
-                if (vVirtualMachineProfile == null)
-                {
-                    vVirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
-                }
-                if (vVirtualMachineProfile.AdditionalCapabilities == null)
-                {
-                    vVirtualMachineProfile.AdditionalCapabilities = new AdditionalCapabilities(true);
-                }
-            }
-
             if (this.MyInvocation.BoundParameters.ContainsKey("HealthProbeId"))
             {
                 if (vVirtualMachineProfile == null)
@@ -439,6 +438,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.EvictionPolicy = this.EvictionPolicy;
             }
 
+            if (this.MyInvocation.BoundParameters.ContainsKey("ProximityPlacementGroupId"))
+            {
+                if (vProximityPlacementGroup == null)
+                {
+                    vProximityPlacementGroup = new SubResource();
+                }
+                vProximityPlacementGroup.Id = this.ProximityPlacementGroupId;
+            }
+
+            if (this.EnableUltraSSD.IsPresent)
+            {
+                if (vAdditionalCapabilities == null)
+                {
+                    vAdditionalCapabilities = new AdditionalCapabilities(true);
+                }
+            }
+
             if (this.AssignIdentity.IsPresent)
             {
                 if (vIdentity == null)
@@ -485,6 +501,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Plan = vPlan,
                 UpgradePolicy = vUpgradePolicy,
                 VirtualMachineProfile = vVirtualMachineProfile,
+                ProximityPlacementGroup = vProximityPlacementGroup,
+                AdditionalCapabilities = vAdditionalCapabilities,
                 Identity = vIdentity,
             };
 

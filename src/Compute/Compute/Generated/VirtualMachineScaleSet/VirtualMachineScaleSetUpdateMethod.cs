@@ -1424,15 +1424,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (this.MyInvocation.BoundParameters.ContainsKey("UltraSSDEnabled"))
             {
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                if (this.VirtualMachineScaleSet.AdditionalCapabilities == null)
                 {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new VirtualMachineScaleSetVMProfile();
+                    this.VirtualMachineScaleSet.AdditionalCapabilities = new AdditionalCapabilities();
                 }
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile.AdditionalCapabilities == null)
-                {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.AdditionalCapabilities = new AdditionalCapabilities();
-                }
-                this.VirtualMachineScaleSet.VirtualMachineProfile.AdditionalCapabilities.UltraSSDEnabled = this.UltraSSDEnabled;
+                this.VirtualMachineScaleSet.AdditionalCapabilities.UltraSSDEnabled = this.UltraSSDEnabled;
             }
 
             if (this.VirtualMachineScaleSet != null

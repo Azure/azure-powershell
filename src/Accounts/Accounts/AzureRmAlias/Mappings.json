@@ -478,7 +478,7 @@
     "Remove-AzVMSecret": "Remove-AzureRmVMSecret",
     "Remove-AzVMNetworkInterface": "Remove-AzureRmVMNetworkInterface",
     "Remove-AzVMDataDisk": "Remove-AzureRmVMDataDisk",
-    "Set-AzVMBootDiagnostics": "Set-AzureRmVMBootDiagnostics",
+    "Set-AzVMBootDiagnostic": "Set-AzureRmVMBootDiagnostic",
     "Set-AzVMDataDisk": "Set-AzureRmVMDataDisk",
     "Set-AzVMPlan": "Set-AzureRmVMPlan",
     "Set-AzVMSourceImage": "Set-AzureRmVMSourceImage",
@@ -594,7 +594,7 @@
     "Get-AzVmssDiskEncryption": "Get-AzureRmVmssDiskEncryption",
     "Get-AzVmssVMDiskEncryption": "Get-AzureRmVmssVMDiskEncryption",
     "Export-AzLogAnalyticRequestRateByInterval": "Export-AzureRmLogAnalyticRequestRateByInterval",
-    "Export-AzLogAnalyticThrottledRequests": "Export-AzureRmLogAnalyticThrottledRequests",
+    "Export-AzLogAnalyticThrottledRequest": "Export-AzureRmLogAnalyticThrottledRequest",
     "Repair-AzVmssServiceFabricUpdateDomain": "Repair-AzureRmVmssServiceFabricUpdateDomain",
     "New-AzVMDataDisk": "New-AzureRmVMDataDisk",
     "Update-AzVmssVM": "Update-AzureRmVmssVM",
@@ -616,7 +616,11 @@
     "Remove-AzVmssVMDataDisk": "Remove-AzureRmVmssVMDataDisk",
     "Get-AzVmssDiskEncryptionStatus": "Get-AzureRmVmssDiskEncryptionStatus",
     "Get-AzVmssVMDiskEncryptionStatus": "Get-AzureRmVmssVMDiskEncryptionStatus",
-    "Repair-AzVmssServiceFabricUD": "Repair-AzureRmVmssServiceFabricUD"
+    "Repair-AzVmssServiceFabricUD": "Repair-AzureRmVmssServiceFabricUD",
+    "New-AzProximityPlacementGroup": "New-AzureRmProximityPlacementGroup",
+    "Update-AzProximityPlacementGroup": "Update-AzureRmProximityPlacementGroup",
+    "Get-AzProximityPlacementGroup": "Get-AzureRmProximityPlacementGroup",
+    "Remove-AzProximityPlacementGroup": "Remove-AzureRmProximityPlacementGroup"
   },
   "Az.Compute.ManagedService": {
     "ConvertTo-AzVhd": "ConvertTo-AzureRmVhd"
