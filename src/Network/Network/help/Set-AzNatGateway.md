@@ -14,22 +14,22 @@ Update Nat Gateway Resource with Public Ip Address, Public Ip Prefix and IdleTim
 
 ### SetByNameParameterSet (Default)
 ```
-Set-AzNatGateway -ResourceGroupName <String> -Name <String> [-PublicIpAddresses <PSResourceId[]>]
- [-PublicIpPrefixes <PSResourceId[]>] [-AsJob] [-IdleTimeoutInMinutes <Int32>]
+Set-AzNatGateway -ResourceGroupName <String> -Name <String> [-PublicIpAddress <PSResourceId[]>]
+ [-PublicIpPrefix <PSResourceId[]>] [-AsJob] [-IdleTimeoutInMinutes <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
-Set-AzNatGateway -ResourceId <String> [-PublicIpAddresses <PSResourceId[]>]
- [-PublicIpPrefixes <PSResourceId[]>] [-AsJob] [-IdleTimeoutInMinutes <Int32>]
+Set-AzNatGateway -ResourceId <String> [-PublicIpAddress <PSResourceId[]>]
+ [-PublicIpPrefix <PSResourceId[]>] [-AsJob] [-IdleTimeoutInMinutes <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
-Set-AzNatGateway -InputObject <PSNatGateway> [-PublicIpAddresses <PSResourceId[]>]
- [-PublicIpPrefixes <PSResourceId[]>] [-AsJob] [-IdleTimeoutInMinutes <Int32>]
+Set-AzNatGateway -InputObject <PSNatGateway> [-PublicIpAddress <PSResourceId[]>]
+ [-PublicIpPrefix <PSResourceId[]>] [-AsJob] [-IdleTimeoutInMinutes <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -42,9 +42,9 @@ Update Nat Gateway Resource with Public Ip Address, Public Ip Prefix and IdleTim
 ```powershell
 PS C:\> $nGateway = Get-AzNatGateway -ResourceGroupName "natgateway_test" -Name "ng1"
 PS C:\> $pipArray = $pip, $pip2
-PS C:\> $natUpdate = Set-AzNatGateway -InputObject $nGateway -IdleTimeoutInMinutes 5 -PublicIpAddresses $pipArray
-PS C:\> $natUpdate = Set-AzNatGateway -ResourceGroupName "natgateway_test" -Name "ng1" -PublicIpAddresses $pipArray
-PS C:\> $natUpdate = Set-AzNatGateway -ResourceId "natgateway_id" -PublicIpAddresses $pipArray
+PS C:\> $natUpdate = Set-AzNatGateway -InputObject $nGateway -IdleTimeoutInMinutes 5 -PublicIpAddress $pipArray
+PS C:\> $natUpdate = Set-AzNatGateway -ResourceGroupName "natgateway_test" -Name "ng1" -PublicIpAddress $pipArray
+PS C:\> $natUpdate = Set-AzNatGateway -ResourceId "natgateway_id" -PublicIpAddress $pipArray
 ```
 
 ## PARAMETERS
@@ -124,7 +124,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicIpAddresses
+### -PublicIpAddress
 An array of public ip addresses associated with the nat gateway resource.
 
 ```yaml
@@ -139,7 +139,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicIpPrefixes
+### -PublicIpPrefix
 An array of public ip prefixes associated with the nat gateway resource.
 
 ```yaml
