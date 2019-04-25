@@ -31,7 +31,8 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NatGateway", DefaultParameterSetName = "ListParameterSet"), OutputType(typeof(PSNatGateway))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NatGateway", 
+            DefaultParameterSetName = "ListParameterSet"), OutputType(typeof(PSNatGateway))]
     public partial class GetAzureRmNatGateway : NetworkBaseCmdlet
     {
         private const string ListParameterSet = "ListParameterSet";
