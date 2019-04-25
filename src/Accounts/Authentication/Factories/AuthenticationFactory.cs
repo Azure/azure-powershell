@@ -283,13 +283,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 /*TracingAdapter.Information(Resources.UPNAuthenticationTokenTrace,
                     token.LoginType, token.TenantId, token.UserId);*/
 
-                var env = new ActiveDirectoryServiceSettings
-                {
-                    AuthenticationEndpoint = context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ActiveDirectory),
-                    TokenAudience = context.Environment.GetEndpointAsUri(context.Environment.GetTokenAudience(targetEndpoint)),
-                    ValidateAuthority = !context.Environment.OnPremise
-                };
-
                 var tokenCache = AzureSession.Instance.TokenCache;
 
                 if (context.TokenCache != null)
@@ -309,33 +302,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                                 context.Environment.GetTokenAudience(targetEndpoint)));
                         break;
                     case AzureAccount.AccountType.User:
-                        result = UserTokenAuthenticationProvider.CreateCredentialsFromCache(
-                           AdalConfiguration.PowerShellClientId,
-                           tenant,
-                           context.Account.Id,
-                           env,
-                           tokenCache.GetUserCache() as TokenCache).ConfigureAwait(false).GetAwaiter().GetResult();
-                        break;
                     case AzureAccount.AccountType.ServicePrincipal:
-                        if (context.Account.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
-                        {
-                            result = ApplicationTokenProvider.LoginSilentAsync(
-                                tenant,
-                                context.Account.Id,
-                                new CertificateApplicationCredentialProvider(
-                                    context.Account.GetThumbprint(), tenant, env),
-                                env,
-                                tokenCache.GetUserCache() as TokenCache).ConfigureAwait(false).GetAwaiter().GetResult();
-                        }
-                        else
-                        {
-                            result = ApplicationTokenProvider.LoginSilentAsync(
-                                tenant,
-                                context.Account.Id,
-                                new KeyStoreApplicationCredentialProvider(tenant, KeyStore, env),
-                                env,
-                                tokenCache.GetUserCache() as TokenCache).ConfigureAwait(false).GetAwaiter().GetResult();
-                        }
+                        result = new RenewingTokenCredential(Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, context.Environment.GetTokenAudience(targetEndpoint)));
                         break;
                     default:
                         throw new NotSupportedException(context.Account.Type.ToString());

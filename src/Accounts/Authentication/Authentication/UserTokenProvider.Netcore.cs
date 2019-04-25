@@ -273,9 +273,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 {
                     if (AuthResult.Account.Environment != null)
                     {
-                        return Authentication.LoginType.LiveId;
+                        return Common.Authentication.LoginType.LiveId;
                     }
-                    return Authentication.LoginType.OrgId;
+                    return Common.Authentication.LoginType.OrgId;
                 }
             }
 

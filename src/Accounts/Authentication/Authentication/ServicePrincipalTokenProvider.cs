@@ -15,9 +15,7 @@
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Identity.Client;
-#if NETSTANDARD
 using Microsoft.WindowsAzure.Commands.Common;
-#endif
 using System;
 using System.Collections.Generic;
 using System.Security;
@@ -98,10 +96,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
 
             StoreAppKey(appId, config.AdDomain, appKey);
-#if !NETSTANDARD
-            var credential = new ClientCredential(appId, appKey);
-            return context.AcquireToken(config.ResourceClientUri, credential);
-#else
             var clientId = appId ?? config.ClientId;
             var authority = config.AdEndpoint + config.AdDomain;
             var redirectUri = config.ResourceClientUri;
@@ -112,7 +106,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                                         .ConfigureAwait(false)
                                         .GetAwaiter()
                                         .GetResult();
-#endif
         }
 
         private AuthenticationResult AcquireTokenWithCertificate(
@@ -126,9 +119,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 throw new ArgumentException(string.Format(Resources.CertificateNotFoundInStore, thumbprint));
             }
 
-#if !NETSTANDARD
-            return context.AcquireToken(config.ResourceClientUri, new ClientAssertionCertificate(appId, certificate));
-#else
             var clientId = appId ?? config.ClientId;
             var authority = config.AdEndpoint + config.AdDomain;
             var redirectUri = config.ResourceClientUri;
@@ -136,27 +126,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             var scopes = new string[] { config.ResourceClientUri + "/.default" };
             return confidentialClient.AcquireTokenForClient(scopes).ExecuteAsync()
                                         .ConfigureAwait(false).GetAwaiter().GetResult();
-#endif
         }
 
         private AuthenticationResult RenewWithSecret(AdalConfiguration config, string appId)
         {
             TracingAdapter.Information(Resources.SPNRenewTokenTrace, appId, config.AdDomain, config.AdEndpoint,
                 config.ClientId, config.ClientRedirectUri);
-#if !NETSTANDARD
-            using (SecureString appKey = LoadAppKey(appId, config.AdDomain))
-            {
-#else
                 var appKey = LoadAppKey(appId, config.AdDomain);
-#endif
                 if (appKey == null)
                 {
                     throw new KeyNotFoundException(string.Format(Resources.ServiceKeyNotFound, appId));
                 }
                 return AcquireTokenWithSecret(config, appId, appKey);
-#if !NETSTANDARD
-            }
-#endif
         }
 
         private AuthenticationResult RenewWithCertificate(
@@ -217,7 +198,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             public string AccessToken { get { return AuthResult.AccessToken; } }
 
-            public string LoginType { get { return Authentication.LoginType.OrgId; } }
+            public string LoginType { get { return Common.Authentication.LoginType.OrgId; } }
 
             public string TenantId { get { return this.Configuration.AdDomain; } }
 
