@@ -52,7 +52,7 @@ This command creates a new SMS receiver in memory.
 
 ### Example 3: Create a new webhook receiver in memory.
 ```
-PS C:\>$webhookReceiver = New-AzureRmActionGroupReceiver -Name 'webhookReceiver1' -SMSReceiver -ServiceUri 'http://test.com'
+PS C:\>$webhookReceiver = New-AzureRmActionGroupReceiver -Name 'webhookReceiver1' -WebhookReceiver -ServiceUri 'http://test.com'
 ```
 
 This command creates a new webhook receiver in memory.
