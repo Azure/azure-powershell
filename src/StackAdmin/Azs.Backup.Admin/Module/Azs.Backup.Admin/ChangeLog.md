@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 0.3.1
+* Module dependencies updated
+    * AzureRM.Resources module updated to 6.4.3
+
 ## Version 0.3.0
 * Breaking change: Backup changes to cert-based encryption mode. Support for symmetric keys is deprecated.
     * Set-AzsBackupConfiguration now accepts parameter EncryptionCertPath instead of EncryptionKey:

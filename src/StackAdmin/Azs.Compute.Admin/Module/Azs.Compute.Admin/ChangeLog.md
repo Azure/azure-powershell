@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 0.2.3
+* Module dependencies updated
+    * AzureRM.Resources module updated to 6.4.3
+
 ## Version 0.2.2
 BugFix: Add-AzsPlatformImage, Get-AzsPlatformImage : Calling ConvertTo-PlatformImageObject only in the success path
 BugFix: Add-AzsVmExtension, Get-AzsVmExtension : Calling ConvertTo-VmExtensionObject only in the success path

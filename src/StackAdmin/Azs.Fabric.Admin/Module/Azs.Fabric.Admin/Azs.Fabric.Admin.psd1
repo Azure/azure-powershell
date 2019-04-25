@@ -17,7 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     RootModule        = 'Azs.Fabric.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.4.0'
+    ModuleVersion     = '0.4.1'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -57,7 +57,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
     # Modules that must be imported into the global environment prior to importing this module
     RequiredModules   = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.8.3'; },
-        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.3'; })
+        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.4.3'; })
 
     # Assemblies that must be loaded prior to importing this module
     RequiredAssemblies = @('.\ref\fullclr\Microsoft.AzureStack.Management.Fabric.Admin.dll')
@@ -128,11 +128,9 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2019.01
-            * Deprecation
-                * Get-AzsInfrastructureVolume has been deprecated, we provide new cmdlet Get-AzsVolume
-                * Get-AzsStorageSystem has been deprecated, we provide new cmdlet Get-AzsStorageSubSystem
-                * Get-AzsStoragePool has been deprecated, the StorageSubSystem object has the capacity property
+            ReleaseNotes = '
+            * Module dependencies updated
+                * AzureRM.Resources
             '
 
         } # End of PSData hashtable
