@@ -133,13 +133,13 @@ namespace Microsoft.Azure.Commands.Network
             if (this.PublicIpAddress != null)
             {
                 vPublicIpAddresses = this.PublicIpAddress?.ToList();
-                this.InputObject.PublicIpAddress = vPublicIpAddresses;
+                this.InputObject.PublicIpAddresses = vPublicIpAddresses;
             }
 
             if (this.PublicIpPrefix != null)
             {
                 vPublicIpPrefixes = this.PublicIpPrefix?.ToList();
-                this.InputObject.PublicIpPrefix = vPublicIpPrefixes;
+                this.InputObject.PublicIpPrefixes = vPublicIpPrefixes;
             }
 
             // Map to the sdk object
