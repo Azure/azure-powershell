@@ -196,6 +196,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Compute.Models.PSComputeLongRunningOperation
 
+### Microsoft.Azure.Commands.Compute.Models.PSAzureOperationResponse
+
 ## NOTES
 
 ## RELATED LINKS
