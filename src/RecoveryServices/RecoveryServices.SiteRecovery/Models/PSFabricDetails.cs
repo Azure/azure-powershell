@@ -537,7 +537,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// </summary>
     public class ASRHyperVReplicaDiskDetails
     {
-        public ASRHyperVReplicaDiskDetails(DiskDetails diskDetails) {
+        public ASRHyperVReplicaDiskDetails(DiskDetails diskDetails)
+        {
             this.MaxSizeMB = diskDetails.MaxSizeMB;
             this.VhdId = diskDetails.VhdId;
             this.VhdName = diskDetails.VhdName;
