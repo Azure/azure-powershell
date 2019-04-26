@@ -61,9 +61,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             HelpMessage = "The tag for this backup.")]
         public string Tag { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
-        public SwitchParameter NoWait { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -76,7 +73,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             vmConfig.ExtensionName = this.Name;
             vmConfig.VirtualMachineExtensionType = VirtualMachineExtensionType;
 
-            azureBackupExtensionUtil.CreateSnapshotForDisks(vmConfig, Tag, this, NoWait.IsPresent);
+            azureBackupExtensionUtil.CreateSnapshotForDisks(vmConfig, Tag, this);
         }
     }
 }

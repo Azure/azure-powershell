@@ -46,16 +46,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string vmName = this.VMName;
                     bool? tempDisk = this.TempDisk.IsPresent;
 
-                    Rest.Azure.AzureOperationResponse result;
-                    if (NoWait.IsPresent)
-                    {
-                        result = VirtualMachinesClient.BeginReimageWithHttpMessagesAsync(resourceGroupName, vmName, tempDisk).GetAwaiter().GetResult();
-                    }
-                    else
-                    {
-                        result = VirtualMachinesClient.ReimageWithHttpMessagesAsync(resourceGroupName, vmName, tempDisk).GetAwaiter().GetResult();
-                    }
-                    
+                    var result = VirtualMachinesClient.ReimageWithHttpMessagesAsync(resourceGroupName, vmName, tempDisk).GetAwaiter().GetResult();
                     PSOperationStatusResponse output = new PSOperationStatusResponse
                     {
                         StartTime = this.StartTime,
@@ -95,8 +86,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
-        public SwitchParameter NoWait { get; set; }
     }
 }

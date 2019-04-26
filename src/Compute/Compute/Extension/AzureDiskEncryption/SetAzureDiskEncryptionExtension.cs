@@ -27,7 +27,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDiskEncryptionExtension",SupportsShouldProcess = true,DefaultParameterSetName = AzureDiskEncryptionExtensionConstants.singlePassParameterSet)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDiskEncryptionExtension", SupportsShouldProcess = true, DefaultParameterSetName = AzureDiskEncryptionExtensionConstants.singlePassParameterSet)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureDiskEncryptionExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
@@ -202,11 +202,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             HelpMessage = "Encrypt-Format all data drives that are not already encrypted")]
         public SwitchParameter EncryptFormatAll { get; set; }
 
-        [Parameter(
-            Mandatory = false, 
-            HelpMessage = "Returns immediately with status of request")]
-        public SwitchParameter NoWait { get; set; }
-
         private OperatingSystemTypes? currentOSType = null;
 
         private void ValidateInputParameters()
@@ -362,7 +357,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 this.ComputeClient.ComputeManagementClient.VirtualMachines
                     .DeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.VMName).GetAwaiter()
                     .GetResult();
-                
+
                 // update vm
                 vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(
                 this.ResourceGroupName, this.VMName));
@@ -417,7 +412,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             string keyEncryptAlgorithm = string.Empty;
             if (!string.IsNullOrEmpty(this.KeyEncryptionKeyUrl))
             {
-                if(!string.IsNullOrEmpty(KeyEncryptionAlgorithm))
+                if (!string.IsNullOrEmpty(KeyEncryptionAlgorithm))
                 {
                     keyEncryptAlgorithm = KeyEncryptionAlgorithm;
                 }
@@ -518,7 +513,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 vmConfig.VirtualMachineExtensionType = VirtualMachineExtensionType;
                 string tag = string.Format("{0}{1}", "AzureEnc", Guid.NewGuid().ToString());
                 // this would create shapshot only for Linux box. and we should wait for the snapshot found.
-                azureBackupExtensionUtil.CreateSnapshotForDisks(vmConfig, tag, this, NoWait.IsPresent);
+                azureBackupExtensionUtil.CreateSnapshotForDisks(vmConfig, tag, this);
                 WriteWarning(string.Format("one snapshot for disks are created with tag,{0}, you can use {1}-{2} to remove it.", tag, VerbsCommon.Remove,
     ProfileNouns.AzureVMBackup));
             }
@@ -576,24 +571,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     //          updates VM 
 
                     // First Pass
-
-                    AzureOperationResponse<VirtualMachineExtension> firstPass;
-                    if (NoWait.IsPresent)
-                    {
-                        firstPass = this.VirtualMachineExtensionClient.BeginCreateOrUpdateWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.VMName,
-                            this.Name,
+                    AzureOperationResponse<VirtualMachineExtension> firstPass = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.VMName,
+                        this.Name,
                         parameters).GetAwaiter().GetResult();
-                    }
-                    else
-                    {
-                        firstPass = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.VMName,
-                            this.Name,
-                        parameters).GetAwaiter().GetResult();
-                    }
 
                     if (!firstPass.Response.IsSuccessStatusCode)
                     {

@@ -103,9 +103,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         [ValidateNotNullOrEmpty]
         public string ExtensionPublisherName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
-        public SwitchParameter NoWait { get; set; }
-
         private OperatingSystemTypes? currentOSType = null;
 
         private Hashtable GetExtensionPublicSettings()
@@ -273,20 +270,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 Tags = vmParameters.Tags
             };
 
-            if (NoWait.IsPresent)
-            {
-                return this.ComputeClient.ComputeManagementClient.VirtualMachines.BeginCreateOrUpdateWithHttpMessagesAsync(
-                    this.ResourceGroupName,
-                    vmParameters.Name,
-                    parameters).GetAwaiter().GetResult();
-            }
-            else
-            {
-                return this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
-                    this.ResourceGroupName,
-                    vmParameters.Name,
-                    parameters).GetAwaiter().GetResult();
-            }
+            return this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
+                this.ResourceGroupName,
+                vmParameters.Name,
+                parameters).GetAwaiter().GetResult();
         }
 
         public override void ExecuteCmdlet()
@@ -335,23 +322,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 {
                     VirtualMachineExtension parameters = GetVmExtensionParameters(virtualMachineResponse);
 
-                    AzureOperationResponse<VirtualMachineExtension> opExt;
-                    if (NoWait.IsPresent)
-                    {
-                        opExt = this.VirtualMachineExtensionClient.BeginCreateOrUpdateWithHttpMessagesAsync(
+                    var opExt = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                                                             this.ResourceGroupName,
                                                             this.VMName,
                                                             this.Name,
                                                             parameters).GetAwaiter().GetResult();
-                    }
-                    else
-                    {
-                        opExt = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
-                                                            this.ResourceGroupName,
-                                                            this.VMName,
-                                                            this.Name,
-                                                            parameters).GetAwaiter().GetResult();
-                    }
 
                     // +---------+---------------+----------------------------+
                     // | OSType  |  VolumeType   | UpdateVmEncryptionSettings |
