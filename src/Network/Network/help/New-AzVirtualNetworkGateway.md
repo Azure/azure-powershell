@@ -139,7 +139,9 @@ Accept wildcard characters: False
 ```
 
 ### -CustomRoute
-Custom routes AddressPool specified by customer```yaml
+Custom routes AddressPool specified by customer
+
+```yaml
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
