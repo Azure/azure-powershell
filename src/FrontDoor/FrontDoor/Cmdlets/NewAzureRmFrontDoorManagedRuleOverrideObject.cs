@@ -16,6 +16,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -35,7 +36,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Override Action
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Override Action")]
-        public PSAction Action { get; set; }
+        [PSArgumentCompleter("Allow", "Block", "Log", "Redirect")]
+        public string Action { get; set; }
 
         /// <summary>
         /// Disabled State
@@ -48,7 +50,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             var managedRuleOverride = new PSAzureManagedRuleOverride
             {
                 RuleId = RuleId,
-                Action = this.IsParameterBound(c => c.Action) ? Action : (PSAction?)null,
+                Action = this.IsParameterBound(c => c.Action) ? Action : null,
                 EnabledState = (this.IsParameterBound(c => c.Disabled) && Disabled.IsPresent) ? PSEnabledState.Disabled : PSEnabledState.Enabled
             };
             WriteObject(managedRuleOverride);
