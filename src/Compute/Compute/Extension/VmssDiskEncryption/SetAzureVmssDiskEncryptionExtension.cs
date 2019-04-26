@@ -29,7 +29,7 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssDiskEncryptionExtension",SupportsShouldProcess = true,DefaultParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientSecretParameterSet)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssDiskEncryptionExtension", SupportsShouldProcess = true, DefaultParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientSecretParameterSet)]
     [OutputType(typeof(PSVirtualMachineScaleSetExtension))]
     public class SetAzureVmssDiskEncryptionExtensionCommand : VirtualMachineScaleSetExtensionBaseCmdlet
     {
@@ -137,24 +137,21 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             HelpMessage = "Disable auto-upgrade of minor version")]
         public SwitchParameter DisableAutoUpgradeMinorVersion { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
-        public SwitchParameter NoWait { get; set; }
-
         private Hashtable GetExtensionPublicSettings()
         {
             Hashtable publicSettings = new Hashtable();
 
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.keyVaultUrlKey, DiskEncryptionKeyVaultUrl ?? string.Empty);
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.keyEncryptionKeyUrlKey, KeyEncryptionKeyUrl ?? string.Empty);
-			publicSettings.Add(AzureDiskEncryptionExtensionConstants.keyVaultResourceIdKey, DiskEncryptionKeyVaultId ?? string.Empty);
-			publicSettings.Add(AzureDiskEncryptionExtensionConstants.kekVaultResourceIdKey, KeyEncryptionKeyVaultId ?? string.Empty);
+            publicSettings.Add(AzureDiskEncryptionExtensionConstants.keyVaultResourceIdKey, DiskEncryptionKeyVaultId ?? string.Empty);
+            publicSettings.Add(AzureDiskEncryptionExtensionConstants.kekVaultResourceIdKey, KeyEncryptionKeyVaultId ?? string.Empty);
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.volumeTypeKey, VolumeType ?? string.Empty);
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.encryptionOperationKey, AzureDiskEncryptionExtensionConstants.enableEncryptionOperation);
 
             string keyEncryptAlgorithm = string.Empty;
             if (!string.IsNullOrEmpty(this.KeyEncryptionKeyUrl))
             {
-                if(!string.IsNullOrEmpty(KeyEncryptionAlgorithm))
+                if (!string.IsNullOrEmpty(KeyEncryptionAlgorithm))
                 {
                     keyEncryptAlgorithm = KeyEncryptionAlgorithm;
                 }
@@ -206,7 +203,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 this.ExtensionName = this.ExtensionName ?? AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
                 vmssExtensionParameters = new VirtualMachineScaleSetExtension
                 {
-					Name = this.ExtensionName,
+                    Name = this.ExtensionName,
                     Publisher = AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher,
                     Type = AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultName,
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultVersion,
@@ -263,28 +260,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                     vmssResponse.VirtualMachineProfile.ExtensionProfile.Extensions.Add(parameters);
 
-                    if (NoWait.IsPresent)
-                    {
-                        VirtualMachineScaleSetExtension result = this.VirtualMachineScaleSetExtensionsClient.BeginCreateOrUpdate(
-                            this.ResourceGroupName,
-                            this.VMScaleSetName,
-                            this.ExtensionName,
-                            parameters);
+                    VirtualMachineScaleSetExtension result = this.VirtualMachineScaleSetExtensionsClient.CreateOrUpdate(
+                        this.ResourceGroupName,
+                        this.VMScaleSetName,
+                        this.ExtensionName,
+                        parameters);
 
-                        var psResult = result.ToPSVirtualMachineScaleSetExtension(this.ResourceGroupName, this.VMScaleSetName);
-                        WriteObject(psResult);
-                    }
-                    else
-                    {
-                        VirtualMachineScaleSetExtension result = this.VirtualMachineScaleSetExtensionsClient.CreateOrUpdate(
-                            this.ResourceGroupName,
-                            this.VMScaleSetName,
-                            this.ExtensionName,
-                            parameters);
-
-                        var psResult = result.ToPSVirtualMachineScaleSetExtension(this.ResourceGroupName, this.VMScaleSetName);
-                        WriteObject(psResult);
-                    }
+                    var psResult = result.ToPSVirtualMachineScaleSetExtension(this.ResourceGroupName, this.VMScaleSetName);
+                    WriteObject(psResult);
                 }
             });
         }

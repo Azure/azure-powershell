@@ -170,20 +170,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImage.PurchasePlan.Product = this.PurchasePlanProduct;
                     }
 
-                    if (NoWait.IsPresent)
-                    {
-                        var result = GalleryImagesClient.CreateOrUpdate(resourceGroupName, galleryName, galleryImageName, galleryImage);
-                        var psObject = new PSGalleryImage();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryImage, PSGalleryImage>(result, psObject);
-                        WriteObject(psObject);
-                    }
-                    else
-                    {
-                        var result = GalleryImagesClient.CreateOrUpdate(resourceGroupName, galleryName, galleryImageName, galleryImage);
-                        var psObject = new PSGalleryImage();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryImage, PSGalleryImage>(result, psObject);
-                        WriteObject(psObject);
-                    }
+                    var result = GalleryImagesClient.CreateOrUpdate(resourceGroupName, galleryName, galleryImageName, galleryImage);
+                    var psObject = new PSGalleryImage();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryImage, PSGalleryImage>(result, psObject);
+                    WriteObject(psObject);
                 }
             });
         }
@@ -265,7 +255,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public string ReleaseNoteUri { get; set; }
-        
+
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
@@ -275,7 +265,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
-        
+
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
@@ -315,9 +305,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public string PurchasePlanProduct { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
-        public SwitchParameter NoWait { get; set; }
     }
 
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "GalleryImageDefinition", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
@@ -365,7 +352,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
 
                     if (this.MyInvocation.BoundParameters.ContainsKey("Description"))
-                    {   
+                    {
                         galleryImage.Description = this.Description;
                     }
 
@@ -482,20 +469,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImage.PurchasePlan.Product = this.PurchasePlanProduct;
                     }
 
-                    if (NoWait.IsPresent)
-                    {
-                        var result = GalleryImagesClient.CreateOrUpdate(resourceGroupName, galleryName, galleryImageName, galleryImage);
-                        var psObject = new PSGalleryImage();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryImage, PSGalleryImage>(result, psObject);
-                        WriteObject(psObject);
-                    }
-                    else
-                    {
-                        var result = GalleryImagesClient.CreateOrUpdate(resourceGroupName, galleryName, galleryImageName, galleryImage);
-                        var psObject = new PSGalleryImage();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryImage, PSGalleryImage>(result, psObject);
-                        WriteObject(psObject);
-                    }
+                    var result = GalleryImagesClient.CreateOrUpdate(resourceGroupName, galleryName, galleryImageName, galleryImage);
+                    var psObject = new PSGalleryImage();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<GalleryImage, PSGalleryImage>(result, psObject);
+                    WriteObject(psObject);
                 }
             });
         }
@@ -610,8 +587,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public string PurchasePlanProduct { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
-        public SwitchParameter NoWait { get; set; }
     }
 }

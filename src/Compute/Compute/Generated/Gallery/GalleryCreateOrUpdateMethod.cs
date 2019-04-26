@@ -57,20 +57,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         gallery.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                     }
 
-                    if (NoWait.IsPresent)
-                    {
-                        var result = GalleriesClient.BeginCreateOrUpdate(resourceGroupName, galleryName, gallery);
-                        var psObject = new PSGallery();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<Gallery, PSGallery>(result, psObject);
-                        WriteObject(psObject);
-                    }
-                    else
-                    {
-                        var result = GalleriesClient.CreateOrUpdate(resourceGroupName, galleryName, gallery);
-                        var psObject = new PSGallery();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<Gallery, PSGallery>(result, psObject);
-                        WriteObject(psObject);
-                    }
+                    var result = GalleriesClient.CreateOrUpdate(resourceGroupName, galleryName, gallery);
+                    var psObject = new PSGallery();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<Gallery, PSGallery>(result, psObject);
+                    WriteObject(psObject);
                 }
             });
         }
@@ -93,7 +83,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-        
+
         [Parameter(
             Mandatory = true,
             Position = 2,
@@ -111,9 +101,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
-        public SwitchParameter NoWait { get; set; }
     }
 
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Gallery", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
@@ -166,20 +153,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         gallery.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                     }
 
-                    if (NoWait.IsPresent)
-                    {
-                        var result = GalleriesClient.BeginCreateOrUpdate(resourceGroupName, galleryName, gallery);
-                        var psObject = new PSGallery();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<Gallery, PSGallery>(result, psObject);
-                        WriteObject(psObject);
-                    }
-                    else
-                    {
-                        var result = GalleriesClient.CreateOrUpdate(resourceGroupName, galleryName, gallery);
-                        var psObject = new PSGallery();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<Gallery, PSGallery>(result, psObject);
-                        WriteObject(psObject);
-                    }
+                    var result = GalleriesClient.CreateOrUpdate(resourceGroupName, galleryName, gallery);
+                    var psObject = new PSGallery();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<Gallery, PSGallery>(result, psObject);
+                    WriteObject(psObject);
                 }
             });
         }
@@ -227,8 +204,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
-        public SwitchParameter NoWait { get; set; }
     }
 }

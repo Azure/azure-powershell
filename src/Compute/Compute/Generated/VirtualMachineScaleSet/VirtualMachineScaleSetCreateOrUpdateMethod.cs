@@ -56,20 +56,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             VirtualMachineScaleSet parameters = new VirtualMachineScaleSet();
                             ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSet, VirtualMachineScaleSet>(this.VirtualMachineScaleSet, parameters);
 
-                            if (NoWait.IsPresent)
-                            {
-                                var result = VirtualMachineScaleSetsClient.BeginCreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
-                                var psObject = new PSVirtualMachineScaleSet();
-                                ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
-                                WriteObject(psObject);
-                            }
-                            else
-                            {
-                                var result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
-                                var psObject = new PSVirtualMachineScaleSet();
-                                ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
-                                WriteObject(psObject);
-                            }
+                            var result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
+                            var psObject = new PSVirtualMachineScaleSet();
+                            ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
+                            WriteObject(psObject);
                         }
                     });
                     break;
@@ -107,8 +97,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
-        public SwitchParameter NoWait { get; set; }
     }
 }
