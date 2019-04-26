@@ -23,7 +23,9 @@ using Microsoft.Azure.Commands.FrontDoor.Properties;
 using Microsoft.Azure.Management.FrontDoor;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using SdkPolicy = Microsoft.Azure.Management.FrontDoor.Models.WebApplicationFirewallPolicy;
+
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
@@ -70,7 +72,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Describes if it is in detection mode  or prevention mode at policy level. Possible values include:'Prevention', 'Detection'
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Describes if it is in detection mode  or prevention mode at policy level. Possible values include:'Prevention', 'Detection'")]
-        public PSMode Mode { get; set; }
+        [PSArgumentCompleter("Prevention", "Detection")]
+        public string Mode { get; set; }
 
         /// <summary>
         /// Custom rules inside the policy
@@ -147,7 +150,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 
             if (this.IsParameterBound(c => c.Mode))
             {
-                updateParameters.PolicySettings.Mode = Mode.ToString();
+                updateParameters.PolicySettings.Mode = Mode;
             }
 
             if (this.IsParameterBound(c => c.Customrule))

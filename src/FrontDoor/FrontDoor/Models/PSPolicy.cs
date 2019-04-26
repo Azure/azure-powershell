@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 {
     public class PSPolicy : PSTrackedResource
     {
-        public PSMode? PolicyMode { get; set; }
+        public string PolicyMode { get; set; }
 
         public PSEnabledState? PolicyEnabledState { get; set; }
 
