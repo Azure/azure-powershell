@@ -1,34 +1,39 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject
 schema: 2.0.0
 ---
 
 # New-AzFrontDoorWafMatchConditionObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create MatchCondition Object for WAF policy creation
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorWafMatchConditionObject -MatchVariable <String> -OperatorProperty <String>
- [-MatchValue <String[]>] [-Selector <String>] [-NegateCondition <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzFrontDoorWafMatchConditionObject -MatchVariable <String> -OperatorProperty <String> [-MatchValue <String[]>]
+ [-Selector <String>] [-NegateCondition <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Create MatchCondition Object for WAF policy creation
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "User-Agent" -MatchValue "Windows"
+
+
+MatchVariable OperatorProperty MatchValue Selector   NegateCondition
+------------- ---------------- ---------- --------   ---------------
+RequestHeader         Contains {Windows}  User-Agent           False
 ```
 
-{{ Add example description here }}
+Create a MatchCondition object
 
 ## PARAMETERS
 
@@ -36,7 +41,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -51,7 +56,7 @@ Accept wildcard characters: False
 Match value.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -67,7 +72,7 @@ Match Variable.
 Possible values include: 'RemoteAddr', 'RequestMethod', 'QueryString', 'PostArgs','RequestUri', 'RequestHeader', 'RequestBody'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -79,11 +84,11 @@ Accept wildcard characters: False
 ```
 
 ### -NegateCondition
-Describes if this is negate condition or not.
+Describes if this is negate condition or not
 Default value is false
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +104,7 @@ Describes operator to be matched.
 Possible values include: 'Any', 'IPMatch', 'GeoMatch', 'Equal', 'Contains', 'LessThan', 'GreaterThan', 'LessThanOrEqual', 'GreaterThanOrEqual', 'BeginsWith', 'EndsWith''
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -114,7 +119,7 @@ Accept wildcard characters: False
 Name of selector in RequestHeader or RequestBody to be matched
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -139,3 +144,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzFrontDoorWafCustomRuleObject](./New-AzFrontDoorWafCustomRuleObject.md)

@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoorwafrulegroupoverrideobject
 schema: 2.0.0
 ---
 
 # New-AzFrontDoorWafRuleGroupOverrideObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create RuleGroupOverride Object for WAF policy creation
 
 ## SYNTAX
 
@@ -19,16 +19,23 @@ New-AzFrontDoorWafRuleGroupOverrideObject -RuleGroupName <String>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Create RuleGroupOverride Object for WAF policy creation
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $ruleOverride1 = New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942250" -Action Log -EnabledState Enabled
+PS C:\> $ruleOverride2 = New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942251" -Action Log -EnabledState Enabled
+
+PS C:\> New-AzFrontDoorWafRuleGroupOverrideObject -RuleGroupName SQLI -ManagedRuleOverride $ruleOverride1,$ruleOverride2
+
+RuleGroupName ManagedRuleOverrides
+------------- --------------------
+SQLI          {942250, 942251}
 ```
 
-{{ Add example description here }}
+Create a RuleGroupOverride Object
 
 ## PARAMETERS
 
@@ -36,7 +43,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -51,7 +58,7 @@ Accept wildcard characters: False
 Rule override list
 
 ```yaml
-Type: PSAzureManagedRuleOverride[]
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRuleOverride[]
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +73,7 @@ Accept wildcard characters: False
 Rule Group Name for which these overrides apply
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -91,3 +98,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzFrontDoorWafManagedRuleObject](./New-AzFrontDoorWafManagedRuleObject.md)
