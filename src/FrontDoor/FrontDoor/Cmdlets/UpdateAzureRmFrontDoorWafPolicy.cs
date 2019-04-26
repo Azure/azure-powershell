@@ -29,15 +29,15 @@ using SdkPolicy = Microsoft.Azure.Management.FrontDoor.Models.WebApplicationFire
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the Update-AzFrontDoorFireWallPolicy cmdlet.
+    /// Defines the Update-AzFrontDoorWafPolicy cmdlet.
     /// </summary>
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorFireWallPolicy", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSPolicy))]
-    public class UpdateAzureRmFrontDoorFireWallPolicy : AzureFrontDoorCmdletBase
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafPolicy", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSPolicy))]
+    public class UpdateAzureRmFrontDoorWafPolicy : AzureFrontDoorCmdletBase
     {
         /// <summary>
-        /// The resource group to which the FireWallPolicy belongs.
+        /// The resource group to which the WebApplicationFireWall Policy belongs.
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group to which the FireWallPolicy belongs.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group to which the WebApplicationFireWallPolicy belongs.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
