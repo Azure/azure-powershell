@@ -22,10 +22,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the New-AzFrontDoorMatchConditionObject cmdlet.
+    /// Defines the New-AzFrontDoorWafMatchConditionObject cmdlet.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorMatchConditionObject"), OutputType(typeof(PSMatchCondition))]
-    public class NewAzureRmFrontDoorMatchConditionObject : AzureFrontDoorCmdletBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafMatchConditionObject"), OutputType(typeof(PSMatchCondition))]
+    public class NewAzureRmFrontDoorWafMatchConditionObject : AzureFrontDoorCmdletBase
     {
 
         /// <summary>

@@ -29,10 +29,10 @@ using Microsoft.Azure.Commands.ResourceManager;
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the Remove-AzFrontDoorFireWallPolicy cmdlet.
+    /// Defines the Remove-AzFrontDoorWafPolicy cmdlet.
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorFireWallPolicy", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
-    public class RemoveAzureRmFrontDoorFireWallPolicy : AzureFrontDoorCmdletBase
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafPolicy", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
+    public class RemoveAzureRmFrontDoorWafPolicy : AzureFrontDoorCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group to which the WAF policy belongs.")]
         [ValidateNotNullOrEmpty]

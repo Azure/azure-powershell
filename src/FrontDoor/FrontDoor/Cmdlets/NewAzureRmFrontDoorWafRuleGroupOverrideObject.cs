@@ -20,10 +20,10 @@ using Microsoft.Azure.Commands.FrontDoor.Models;
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the New-AzFrontDoorRuleGroupOverrideObject cmdlet.
+    /// Defines the New-AzFrontDoorWafRuleGroupOverrideObject cmdlet.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorRuleGroupOverrideObject"), OutputType(typeof(PSAzureRuleGroupOverride))]
-    public class NewAzureRmFrontDoorRuleGroupOverrideObject : AzureFrontDoorCmdletBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafRuleGroupOverrideObject"), OutputType(typeof(PSAzureRuleGroupOverride))]
+    public class NewAzureRmFrontDoorWafRuleGroupOverrideObject : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// Rule Group Name
