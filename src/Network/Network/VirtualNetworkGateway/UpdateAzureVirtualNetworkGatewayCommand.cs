@@ -33,12 +33,6 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
             Mandatory = true,
-            ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
-            ValueFromPipeline = true,
-            HelpMessage = "The virtual network gateway object to base modifications off of. This can be retrieved using Get-AzVirtualNetworkGateway")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = VirtualNetworkGatewayParameterSets.Default,
             ValueFromPipeline = true,
             HelpMessage = "The virtual network gateway object to base modifications off of. This can be retrieved using Get-AzVirtualNetworkGateway")]
         public PSVirtualNetworkGateway VirtualNetworkGateway { get; set; }
@@ -244,10 +238,12 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientIpsecPolicies = this.VpnClientIpsecPolicy?.ToList();
             }
 
-            if ((this.RadiusServerAddress != null && this.RadiusServerSecret == null) ||
-                (this.RadiusServerAddress == null && this.RadiusServerSecret != null))
+            if (ParameterSetName.Contains(VirtualNetworkGatewayParameterSets.RadiusServerConfiguration))
             {
-                throw new ArgumentException("Both radius server address and secret must be specified if external radius is being configured");
+                if (this.RadiusServerSecret == null || this.RadiusServerAddress == null)
+                {
+                    throw new ArgumentException("Both radius server address and secret must be specified if external radius is being configured");
+                }
             }
 
             if (this.RadiusServerAddress != null)
