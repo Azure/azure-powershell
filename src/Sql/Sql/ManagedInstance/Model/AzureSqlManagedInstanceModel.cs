@@ -115,4 +115,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         public string TimezoneId { get; set; }
 
     }
+
+    public class ManagedInstanceProxyOverride
+    {
+        public const string Proxy = "Proxy";
+        public const string Redirect = "Redirect";
+        public const string Default = "Default";
+    }
 }

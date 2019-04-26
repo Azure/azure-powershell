@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
             HelpMessage = "The Vcore number for the Azure Sql database")]
-        [Alias("Capacity", "MaxVCore")]
+        [Alias("Capacity", "MaxVCore", "MaxCapacity")]
         public int VCore { get; set; }
 
         /// <summary>
@@ -163,24 +163,24 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the compute model for Azure Sql database
         /// </summary>
         [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = false,
-            HelpMessage="The compute model for Azure Sql database")]
+            HelpMessage="The compute model for database. Serverless or Provisioned")]
         [PSArgumentCompleter(
-            "Provisioned",
-            "Serverless")]
+            DatabaseComputeModel.Provisioned,
+            DatabaseComputeModel.Serverless)]
         public string ComputeModel { get; set; }
 
         /// <summary>
         /// Gets or sets the Auto Pause delay for Azure Sql Database
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The auto pause delay for Azure Sql database(serverless only), -1 to opt out")]
-        public int? AutoPauseDelay { get; set; }
+            HelpMessage = "The auto pause delay in minutes for database(serverless only), -1 to opt out")]
+        public int? AutoPauseDelayInMinutes { get; set; }
 
         /// <summary>
         /// Gets or sets the Minimal capacity that database will always have allocated, if not paused
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The Minimal capacity that database will always have allocated, if not paused. For Azure Sql database serverless only.")]
+            HelpMessage = "The Minimal capacity that database will always have allocated, if not paused. For serverless database only.")]
         [Alias("MinVCore")]
         public double? MinCapacity { get; set; }
 
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 ReadScale = ReadScale,
                 ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
                 LicenseType = LicenseType, // note: default license type will be LicenseIncluded in SQL RP if not specified
-                AutoPauseDelay = AutoPauseDelay,
+                AutoPauseDelay = AutoPauseDelayInMinutes,
                 MinCapacity = MinCapacity,
             };
 
@@ -255,15 +255,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             }
             else
             {
-                newDbModel.SkuName = AzureSqlDatabaseAdapter.GetDatabaseSkuName(Edition);
+                newDbModel.SkuName = AzureSqlDatabaseAdapter.GetDatabaseSkuName(Edition, ComputeModel == DatabaseComputeModel.Serverless);
                 newDbModel.Edition = Edition;
                 newDbModel.Capacity = VCore;
                 newDbModel.Family = ComputeGeneration;
-                // change sku name for serverless dbs
-                if (ComputeModel == "Serverless")
-                {
-                    newDbModel.SkuName = ModelAdapter.GetServerlessSkuNameFromOtherParams(Edition, VCore, ComputeGeneration);
-                }
             }
 
             dbCreateUpdateModel.Database = newDbModel;
