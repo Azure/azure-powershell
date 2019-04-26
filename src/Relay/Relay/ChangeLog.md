@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix typos in customer-facing messages
 
 ## Version 1.0.0
 * General availability of `Az.Relay` module

@@ -17,6 +17,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -33,7 +34,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// 'RequestUri', 'RequestHeader', 'RequestBody'
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "Match Variable. Possible values include: 'RemoteAddr', 'RequestMethod', 'QueryString', 'PostArgs','RequestUri', 'RequestHeader', 'RequestBody'")]
-        public PSMatchVariable MatchVariable { get; set; }
+        [PSArgumentCompleter("RemoteAddr", "RequestMethod", "QueryString", "PostArgs", "RequestUri", "RequestHeader", "RequestBody")]
+        public string MatchVariable { get; set; }
 
         /// <summary>
         /// Describes operator to be matched.
@@ -42,7 +44,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// 'GreaterThanOrEqual', 'BeginsWith', 'EndsWith'
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "Describes operator to be matched. Possible values include: 'Any', 'IPMatch', 'GeoMatch', 'Equal', 'Contains', 'LessThan', 'GreaterThan', 'LessThanOrEqual', 'GreaterThanOrEqual', 'BeginsWith', 'EndsWith''")]
-        public PSOperatorProperty OperatorProperty { get; set; }
+        [PSArgumentCompleter("Any", "IPMatch", "GeoMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith")]
+        public string OperatorProperty { get; set; }
 
         /// <summary>
         /// Match value.
@@ -79,12 +82,12 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 
         private void ValidateArguments()
         {
-            if (OperatorProperty == PSOperatorProperty.Any && MatchValue != null)
+            if (OperatorProperty == PSOperatorProperty.Any.ToString() && MatchValue != null)
             {
                 throw new PSArgumentException(nameof(MatchValue));
             }
 
-            if (OperatorProperty != PSOperatorProperty.Any && (MatchValue == null || MatchValue.Length == 0))
+            if (OperatorProperty != PSOperatorProperty.Any.ToString() && (MatchValue == null || MatchValue.Length == 0))
             {
                 throw new PSArgumentNullException(nameof(MatchValue));
             }
