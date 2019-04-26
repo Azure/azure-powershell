@@ -340,17 +340,20 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         ///    Standard             | Standard
         ///    Basic                | Basic
         ///    Premium              | Premium
+        ///    
+        /// Also adds _S in the end of SkuName in case if it is Serverless
         /// </summary>
         /// <param name="tier">Azure Sql database edition</param>
+        /// <param name="isServerless">If sku should be serverless type</param>
         /// <returns>The sku name</returns>
-        public static string GetDatabaseSkuName(string tier)
+        public static string GetDatabaseSkuName(string tier, bool isServerless = false)
         {
             if (string.IsNullOrWhiteSpace(tier))
             {
                 return null;
             }
 
-            return SqlSkuUtils.GetVcoreSkuPrefix(tier) ?? tier;
+            return (SqlSkuUtils.GetVcoreSkuPrefix(tier) ?? tier) + (isServerless ? "_S" : "");
         }
 
         /// <summary>
@@ -372,20 +375,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             }
 
             return sku;
-        }
-
-        public string GetServerlessSkuNameFromOtherParams(string edition, int vcore, string computeGeneration)
-        {
-            var shortEditions = new Dictionary<string, string>()
-            {
-                { "GeneralPurpose", "GP"},
-                { "BusinessCritical", "BC"},
-                { "Hyperscale", "HS"}
-            };
-            string shortEdition;
-            shortEditions.TryGetValue(edition, out shortEdition);
-
-            return string.Format(@"{0}_S_{1}_{2}", shortEdition, computeGeneration, vcore);
         }
     }
 }
