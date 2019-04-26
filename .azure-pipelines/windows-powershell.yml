@@ -46,7 +46,7 @@ jobs:
     displayName: 'Run BinSkim'
     inputs:
       targetType: filePath
-      filePath: tools/SecurityToolsScripts/RunBinSkim.ps1
+      filePath: tools/SecurityTools/RunBinSkim.ps1
       pwsh: true
 
 - job: Test
