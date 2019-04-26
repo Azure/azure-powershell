@@ -47,20 +47,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     Snapshot snapshot = new Snapshot();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<PSSnapshot, Snapshot>(this.Snapshot, snapshot);
 
-                    if (NoWait.IsPresent)
-                    {
-                        var result = SnapshotsClient.BeginCreateOrUpdate(resourceGroupName, snapshotName, snapshot);
-                        var psObject = new PSSnapshot();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<Snapshot, PSSnapshot>(result, psObject);
-                        WriteObject(psObject);
-                    }
-                    else
-                    {
-                        var result = SnapshotsClient.CreateOrUpdate(resourceGroupName, snapshotName, snapshot);
-                        var psObject = new PSSnapshot();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<Snapshot, PSSnapshot>(result, psObject);
-                        WriteObject(psObject);
-                    }
+                    var result = SnapshotsClient.CreateOrUpdate(resourceGroupName, snapshotName, snapshot);
+                    var psObject = new PSSnapshot();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<Snapshot, PSSnapshot>(result, psObject);
+                    WriteObject(psObject);
                 }
             });
         }
@@ -90,8 +80,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
-        public SwitchParameter NoWait { get; set; }
     }
 }

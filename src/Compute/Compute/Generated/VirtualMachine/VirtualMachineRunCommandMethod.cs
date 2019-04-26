@@ -82,20 +82,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         parameters.Parameters = vParameter;
                     }
 
-                    if (NoWait.IsPresent)
-                    {
-                        var result = VirtualMachinesClient.BeginRunCommand(resourceGroupName, vmName, parameters);
-                        var psObject = new PSRunCommandResult();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<RunCommandResult, PSRunCommandResult>(result, psObject);
-                        WriteObject(psObject);
-                    }
-                    else
-                    {
-                        var result = VirtualMachinesClient.RunCommand(resourceGroupName, vmName, parameters);
-                        var psObject = new PSRunCommandResult();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<RunCommandResult, PSRunCommandResult>(result, psObject);
-                        WriteObject(psObject);
-                    }
+                    var result = VirtualMachinesClient.RunCommand(resourceGroupName, vmName, parameters);
+                    var psObject = new PSRunCommandResult();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<RunCommandResult, PSRunCommandResult>(result, psObject);
+                    WriteObject(psObject);
                 }
             });
         }
@@ -151,8 +141,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
-        public SwitchParameter NoWait { get; set; }
     }
 }
