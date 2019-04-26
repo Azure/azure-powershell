@@ -28,7 +28,7 @@ using System.Collections;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGateway",DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default, SupportsShouldProcess = true),OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGateway", DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default, SupportsShouldProcess = true), OutputType(typeof(PSVirtualNetworkGateway))]
     public class SetAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(
@@ -147,6 +147,12 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "P2S External Radius server secret.")]
         [ValidateNotNullOrEmpty]
         public SecureString RadiusServerSecret { get; set; }
+
+        [Parameter(
+                    Mandatory = false,
+                    ValueFromPipelineByPropertyName = true,
+                    HelpMessage = "Custom routes AddressPool specified by customer")]
+        public string[] CustomRoute { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -273,10 +279,19 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("PeerWeight must be a positive integer");
             }
 
+            if (this.CustomRoute != null && this.CustomRoute.Any())
+            {
+                this.VirtualNetworkGateway.CustomRoutes = new PSAddressSpace();
+                this.VirtualNetworkGateway.CustomRoutes.AddressPrefixes = this.CustomRoute?.ToList();
+            }
+            else
+            {
+                this.VirtualNetworkGateway.CustomRoutes = null;
+            }
+
             // Map to the sdk object
             MNM.VirtualNetworkGateway sdkVirtualNetworkGateway = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGateway>(this.VirtualNetworkGateway);
-
-            sdkVirtualNetworkGateway.Tags = 
+            sdkVirtualNetworkGateway.Tags =
                 ParameterSetName.Contains(VirtualNetworkGatewayParameterSets.UpdateResourceWithTags) ?
                 TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true) :
                 TagsConversionHelper.CreateTagDictionary(this.VirtualNetworkGateway.Tag, validate: true);
