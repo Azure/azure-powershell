@@ -24,10 +24,11 @@ using Microsoft.Azure.Commands.Network.VirtualNetworkGateway;
 using Microsoft.WindowsAzure.Commands.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using System.Linq;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGateway",DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default, SupportsShouldProcess = true),OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGateway", DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default, SupportsShouldProcess = true), OutputType(typeof(PSVirtualNetworkGateway))]
     public class SetAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(
@@ -148,6 +149,16 @@ namespace Microsoft.Azure.Commands.Network
                     ValueFromPipelineByPropertyName = true,
                     HelpMessage = "Custom routes AddressPool specified by customer")]
         public string[] CustomRoute { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
+            HelpMessage = "P2S External Radius server address.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration + VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
+            HelpMessage = "P2S External Radius server address.")]
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -277,7 +288,10 @@ namespace Microsoft.Azure.Commands.Network
 
             // Map to the sdk object
             MNM.VirtualNetworkGateway sdkVirtualNetworkGateway = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGateway>(this.VirtualNetworkGateway);
-            sdkVirtualNetworkGateway.Tags = TagsConversionHelper.CreateTagDictionary(this.VirtualNetworkGateway.Tag, validate: true);
+            sdkVirtualNetworkGateway.Tags =
+                ParameterSetName.Contains(VirtualNetworkGatewayParameterSets.UpdateResourceWithTags) ?
+                TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true) :
+                TagsConversionHelper.CreateTagDictionary(this.VirtualNetworkGateway.Tag, validate: true);
 
             string shouldProcessMessage = string.Format("Execute AzureRmVirtualNetworkGateway for ResourceGroupName {0} VirtualNetworkGateway {1}", this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name);
             if (ShouldProcess(shouldProcessMessage, VerbsCommon.Set))
