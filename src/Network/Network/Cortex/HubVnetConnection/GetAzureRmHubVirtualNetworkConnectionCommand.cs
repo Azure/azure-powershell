@@ -67,6 +67,7 @@ namespace Microsoft.Azure.Commands.Network
            HelpMessage = "The resource name.")]
         [ResourceNameCompleter("Microsoft.Network/virtualHubs/hubVirtualNetworkConnections", "ResourceGroupName", "ParentResourceName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         public override void Execute()

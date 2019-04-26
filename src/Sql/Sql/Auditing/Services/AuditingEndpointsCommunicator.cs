@@ -14,8 +14,8 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Management.Monitor;
-using Microsoft.Azure.Management.Monitor.Models;
+using Microsoft.Azure.Management.Monitor.Version2018_09_01;
+using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Rest.Azure;

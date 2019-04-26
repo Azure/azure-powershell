@@ -74,7 +74,7 @@ The acceptable values for this parameter are:
 - ServiceAndApi
 
 ```yaml
-Type: System.Nullable`1[Microsoft.WindowsAzure.Storage.Shared.Protocol.MetricsLevel]
+Type: System.Nullable`1[Microsoft.Azure.Storage.Shared.Protocol.MetricsLevel]
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, Service, ServiceAndApi
@@ -183,7 +183,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Storage.Shared.Protocol.MetricsProperties
+### Microsoft.Azure.Storage.Shared.Protocol.MetricsProperties
 
 ## NOTES
 

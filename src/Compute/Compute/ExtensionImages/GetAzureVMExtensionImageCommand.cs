@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Compute
         public string FilterExpression { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        [SupportsWildcards]
         public string Version { get; set; }
 
         public override void ExecuteCmdlet()
