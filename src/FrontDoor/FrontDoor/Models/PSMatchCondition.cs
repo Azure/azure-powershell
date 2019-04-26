@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 {    
     public class PSMatchCondition
     {
-        public PSMatchVariable? MatchVariable { get; set; }
+        public string MatchVariable { get; set; }
 
-        public PSOperatorProperty? OperatorProperty { get; set; }
+        public string OperatorProperty { get; set; }
 
         public List<string> MatchValue { get; set; }
 

@@ -143,6 +143,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.AzureFileShareNameParameter)]
         [ValidateNotNullOrEmpty]
+        [Alias(StorageSyncAliases.StorageAccountShareNameAlias)]
         public string AzureFileShareName { get; set; }
 
         /// <summary>
@@ -209,7 +210,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 var createParameters = new CloudEndpointCreateParameters()
                 {
                     StorageAccountResourceId = StorageAccountResourceId,
-                    StorageAccountShareName = AzureFileShareName,
+                    AzureFileShareName = AzureFileShareName,
                     StorageAccountTenantId = (StorageAccountTenantId ?? DefaultContext.Tenant?.Id)
                 };
 

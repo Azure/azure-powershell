@@ -24,20 +24,15 @@ using Microsoft.Azure.Commands.Network.VirtualNetworkGateway;
 using Microsoft.WindowsAzure.Commands.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using System.Linq;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGateway",DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default, SupportsShouldProcess = true),OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGateway", DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default, SupportsShouldProcess = true), OutputType(typeof(PSVirtualNetworkGateway))]
     public class SetAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
-            ValueFromPipeline = true,
-            HelpMessage = "The virtual network gateway object to base modifications off of. This can be retrieved using Get-AzVirtualNetworkGateway")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = VirtualNetworkGatewayParameterSets.Default,
             ValueFromPipeline = true,
             HelpMessage = "The virtual network gateway object to base modifications off of. This can be retrieved using Get-AzVirtualNetworkGateway")]
         public PSVirtualNetworkGateway VirtualNetworkGateway { get; set; }
@@ -132,6 +127,11 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
             HelpMessage = "P2S External Radius server address.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration + VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
+            HelpMessage = "P2S External Radius server address.")]
         [ValidateNotNullOrEmpty]
         public string RadiusServerAddress { get; set; }
 
@@ -140,8 +140,29 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
             HelpMessage = "P2S External Radius server secret.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration + VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
+            HelpMessage = "P2S External Radius server secret.")]
         [ValidateNotNullOrEmpty]
         public SecureString RadiusServerSecret { get; set; }
+
+        [Parameter(
+                    Mandatory = false,
+                    ValueFromPipelineByPropertyName = true,
+                    HelpMessage = "Custom routes AddressPool specified by customer")]
+        public string[] CustomRoute { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
+            HelpMessage = "P2S External Radius server address.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration + VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
+            HelpMessage = "P2S External Radius server address.")]
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -227,14 +248,13 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientIpsecPolicies = this.VpnClientIpsecPolicy?.ToList();
             }
 
-            if ((this.RadiusServerAddress != null && this.RadiusServerSecret == null) ||
-                (this.RadiusServerAddress == null && this.RadiusServerSecret != null))
+            if (ParameterSetName.Contains(VirtualNetworkGatewayParameterSets.RadiusServerConfiguration))
             {
-                throw new ArgumentException("Both radius server address and secret must be specified if external radius is being configured");
-            }
+                if (this.RadiusServerSecret == null || this.RadiusServerAddress == null)
+                {
+                    throw new ArgumentException("Both radius server address and secret must be specified if external radius is being configured");
+                }
 
-            if (this.RadiusServerAddress != null)
-            {
                 this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerAddress = this.RadiusServerAddress;
                 this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
             }
@@ -259,9 +279,22 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("PeerWeight must be a positive integer");
             }
 
+            if (this.CustomRoute != null && this.CustomRoute.Any())
+            {
+                this.VirtualNetworkGateway.CustomRoutes = new PSAddressSpace();
+                this.VirtualNetworkGateway.CustomRoutes.AddressPrefixes = this.CustomRoute?.ToList();
+            }
+            else
+            {
+                this.VirtualNetworkGateway.CustomRoutes = null;
+            }
+
             // Map to the sdk object
             MNM.VirtualNetworkGateway sdkVirtualNetworkGateway = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGateway>(this.VirtualNetworkGateway);
-            sdkVirtualNetworkGateway.Tags = TagsConversionHelper.CreateTagDictionary(this.VirtualNetworkGateway.Tag, validate: true);
+            sdkVirtualNetworkGateway.Tags =
+                ParameterSetName.Contains(VirtualNetworkGatewayParameterSets.UpdateResourceWithTags) ?
+                TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true) :
+                TagsConversionHelper.CreateTagDictionary(this.VirtualNetworkGateway.Tag, validate: true);
 
             string shouldProcessMessage = string.Format("Execute AzureRmVirtualNetworkGateway for ResourceGroupName {0} VirtualNetworkGateway {1}", this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name);
             if (ShouldProcess(shouldProcessMessage, VerbsCommon.Set))

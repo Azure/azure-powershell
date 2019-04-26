@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string DatabaseName { get; set; }
 
         /// <summary>
