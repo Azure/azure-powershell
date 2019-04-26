@@ -797,6 +797,10 @@
                 <PropertyName>RouteTableText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>NatGateway</Label>
+                <PropertyName>NatGatewayText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>ServiceEndpoints</Label>
                 <PropertyName>ServiceEndpointText</PropertyName>
               </ListItem>
