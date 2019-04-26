@@ -1,3 +1,70 @@
+## 1.9.0 - May 2019
+#### Az.Accounts
+* Update Authentication Library to fix ADFS issues with username/password auth
+
+#### Az.CognitiveServices
+* Only display Bing disclaimer for Bing Search Services.
+* Improve error when create account failed.
+
+#### Az.Dns
+* Automatic DNS NameServer Delegation
+    - Create DNS zone cmdlet accepts parent zone name as additional optional parameter.
+    - Adds NS records in the parent zone for newly created child zone.
+
+#### Az.Monitor
+* New cmdlets for SQR API (Scheduled Query Rule)  
+    - New-AzScheduledQueryRuleAlertingAction
+	- New-AzScheduledQueryRuleAznsActionGroup
+	- New-AzScheduledQueryRuleLogMetricTrigger
+	- New-AzScheduledQueryRuleSchedule
+	- New-AzScheduledQueryRuleSource
+	- New-AzScheduledQueryRuleTriggerCondition
+	- New-AzScheduledQueryRule
+	- Get-AzScheduledQueryRule
+	- Set-AzScheduledQueryRule
+	- Update-AzScheduledQueryRule
+	- Remove-AzScheduledQueryRule
+	- [More](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules) information about SQR API
+	- Updated Az.Monitor.md to include cmdlets for GenV2(non classic) metric-based alert rule
+
+#### Az.Network
+* Add support for Nat Gateway Resource
+    - New cmdlets
+        - New-AzNatGateway
+        - Get-AzNatGateway
+        - Set-AzNatGateway
+        - Remove-AzNatGateway
+   - Updated cmdlets
+        - New-AzureVirtualNetworkSubnetConfigCommand
+        - Add-AzureVirtualNetworkSubnetConfigCommand
+* Updated below commands for feature: Custom routes set/remove on Brooklyn Gateway.
+    - Updated New-AzVirtualNetworkGateway: Added optional parameter -CustomRoute to set the address prefixes as custom routes to set on Gateway.
+    - Updated Set-AzVirtualNetworkGateway: Added optional parameter -CustomRoute to set the address prefixes as custom routes to set on Gateway.
+
+#### Az.PolicyInsights
+* Support for querying policy evaluation details.
+    - Add '-Expand' parameter to Get-AzPolicyState. Support '-Expand PolicyEvaluationDetails'.
+
+#### Az.Relay
+* Fix typos in customer-facing messages
+
+#### Az.ServiceBus
+* Added new cmdlets for NetworkRuleSet of Namespace
+
+#### Az.Storage
+* Upgrade to Storage Client Library 10.0.1 (the namespace of all objects from this SDK change from 'Microsoft.WindowsAzure.Storage.*' to 'Microsoft.Azure.Storage.*')
+* Upgrade to Microsoft.Azure.Management.Storage 11.0.0, to support new API version 2019-04-01.
+* The default Storage account Kind in Create Storage account change from 'Storage' to 'StorageV2'
+    - New-AzStorageAccount
+* Change the Storage account cmdlet output Sku.Name to be aligned with input SkuName by add '-', like 'StandardLRS' change to 'Standard_LRS'
+    - New-AzStorageAccount
+    - Get-AzStorageAccount
+    - Set-AzStorageAccount
+
+#### Az.Websites
+* 'Kind' property will now be set for PSSite objects returned by Get-AzWebApp
+* Get-AzWebApp*Metrics and Get-AzAppServicePlanMetrics marked deprecated
+
 ## 1.8.0 - April 2019
 ### Highlights since the last major release
 * General availability of `Az` module
