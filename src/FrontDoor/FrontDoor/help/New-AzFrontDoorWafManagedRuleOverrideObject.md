@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject
 schema: 2.0.0
 ---
 
 # New-AzFrontDoorWafManagedRuleOverrideObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create managed rule override object
 
 ## SYNTAX
 
@@ -18,16 +18,20 @@ New-AzFrontDoorWafManagedRuleOverrideObject -RuleId <String> [-Action <String>] 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Create PSAzureManagedRuleOverride Object for managed WAF rule group override object creation.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
-```
+Create a managed rule override object for rule 942250 (which is in SQLI group).
 
-{{ Add example description here }}
+```powershell
+PS C:\> New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942250" -Action Log
+
+RuleId EnabledState Action
+------ ------------ ------
+942250      Enabled    Log
+```
 
 ## PARAMETERS
 
@@ -35,7 +39,7 @@ PS C:\> {{ Add example code here }}
 Override Action
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -50,7 +54,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -65,7 +69,7 @@ Accept wildcard characters: False
 Disabled state
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -80,7 +84,7 @@ Accept wildcard characters: False
 Rule ID
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -105,3 +109,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzFrontDoorWafRuleGroupOverrideObject](./New-AzFrontDoorWafRuleGroupOverrideObject.md)

@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/update-azfrontdoorwaflpolicy
 schema: 2.0.0
 ---
 
 # Update-AzFrontDoorWafPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Update WAF policy
 
 ## SYNTAX
 
@@ -37,16 +37,49 @@ Update-AzFrontDoorWafPolicy -ResourceId <String> [-EnabledState <PSEnabledState>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Update-AzFrontDoorWafPolicy** cmdlet updates an existing WAF policy. If input parameters are not provided, old parameters from the existing WAF policy will be used.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Update-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -CustomBlockResponseStatusCode 403
+
+Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
+----         ---------- ------------------ ----------------------------- -----------
+{policyName} Prevention            Enabled                           403 https://www.bing.com/
 ```
 
-{{ Add example description here }}
+Update an existing WAF policy custom status code.
+
+### Example 2
+```powershell
+PS C:\> Update-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Mode Detection
+
+Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
+----         ---------- ------------------ ----------------------------- -----------
+{policyName} Detection            Enabled                           403 https://www.bing.com/
+```
+
+Update an existing WAF policy mode.
+
+### Example 3
+```powershell
+PS C:\> Update-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Mode Detection -EnabledState Disabled
+
+Name          PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
+----          ---------- ------------------ ----------------------------- -----------
+{policyName}  Detection           Disabled                           403 https://www.bing.com/
+```
+
+Update an existing WAF policy enabled state and mode.
+
+### Example 4
+```powershell
+PS C:\> Get-AzFrontDoorWafPolicy -ResourceGroupName $resourceGroupName | Update-AzFrontDoorWafPolicy -Mode Detection -EnabledState Disabled
+```
+
+Update all WAF policies in $resourceGroupName
 
 ## PARAMETERS
 
@@ -54,7 +87,7 @@ PS C:\> {{ Add example code here }}
 Custom Response Body
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -69,7 +102,7 @@ Accept wildcard characters: False
 Custom Response Status Code
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -84,7 +117,7 @@ Accept wildcard characters: False
 Custom rules inside the policy
 
 ```yaml
-Type: PSCustomRule[]
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +132,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -115,7 +148,7 @@ Whether the policy is in enabled state or disabled state.
 Possible values include: 'Disabled', 'Enabled'
 
 ```yaml
-Type: PSEnabledState
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState
 Parameter Sets: (All)
 Aliases:
 Accepted values: Enabled, Disabled
@@ -131,7 +164,7 @@ Accept wildcard characters: False
 The FireWallPolicy object to update.
 
 ```yaml
-Type: PSPolicy
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -146,7 +179,7 @@ Accept wildcard characters: False
 Managed rules inside the policy
 
 ```yaml
-Type: PSManagedRule[]
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -162,7 +195,7 @@ Describes if it is in detection mode  or prevention mode at policy level.
 Possible values include:'Prevention', 'Detection'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -177,7 +210,7 @@ Accept wildcard characters: False
 The name of the FireWallPolicy to update.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -192,7 +225,7 @@ Accept wildcard characters: False
 Redirect URL
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -204,10 +237,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group to which the WebApplicationFireWallPolicy belongs.
+The resource group to which the FireWallPolicy belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -222,7 +255,7 @@ Accept wildcard characters: False
 Resource Id of the FireWallPolicy to update
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
@@ -237,7 +270,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -253,7 +286,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -280,3 +313,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzFrontDoorWafPolicy](./New-AzFrontDoorWafPolicy.md)
+[Get-AzFrontDoorWafPolicy](./Get-AzFrontDoorWafPolicy.md)
+[New-AzFrontDoorWafManagedRuleObject](./New-AzFrontDoorWafManagedRuleObject.md)
+[New-AzFrontDoorWafCustomRuleObject](./New-AzFrontDoorWafManagedRuleObject.md)

@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     public class UpdateAzureRmFrontDoorWafPolicy : AzureFrontDoorCmdletBase
     {
         /// <summary>
-        /// The resource group to which the WebApplicationFireWall Policy belongs.
+        /// The resource group to which the FireWallPolicy belongs.
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group to which the WebApplicationFireWallPolicy belongs.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group to which the FireWallPolicy belongs.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

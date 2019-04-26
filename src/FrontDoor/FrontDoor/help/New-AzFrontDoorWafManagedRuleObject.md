@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleobject
 schema: 2.0.0
 ---
 
 # New-AzFrontDoorWafManagedRuleObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create ManagedRule Object for WAF policy creation
 
 ## SYNTAX
 
@@ -19,16 +19,27 @@ New-AzFrontDoorWafManagedRuleObject -Type <String> -Version <String>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Create ManagedRule Object for WAF policy creation
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $ruleOverride1 = New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942250" -Action Log -EnabledState Enabled
+PS C:\> $ruleOverride2 = New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942251" -Action Log -EnabledState Enabled
+PS C:\> $override1 = New-AzFrontDoorWafRuleGroupOverrideObject -RuleGroupName SQLI -ManagedRuleOverride $ruleOverride1,$ruleOverride2
+
+PS C:\> $ruleOverride3 = New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "941280" -Action Log -EnabledState Enabled
+PS C:\> $override2 = New-AzFrontDoorWafRuleGroupOverrideObject -RuleGroupName XSS -ManagedRuleOverride $ruleOverride3
+
+PS C:\> New-AzFrontDoorWafManagedRuleObject -Type DefaultRuleSet -Version "preview-0.1" -RuleGroupOverride $override1,$override2
+
+RuleGroupOverrides RuleSetType    RuleSetVersion
+------------------ -----------    --------------
+{SQLI, XSS}        DefaultRuleSet preview-0.1
 ```
 
-{{ Add example description here }}
+Create a ManagedRule Object
 
 ## PARAMETERS
 
@@ -36,7 +47,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -51,7 +62,7 @@ Accept wildcard characters: False
 List of azure managed provider override configuration
 
 ```yaml
-Type: PSAzureRuleGroupOverride[]
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSAzureRuleGroupOverride[]
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +77,7 @@ Accept wildcard characters: False
 Type of the ruleset
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +92,7 @@ Accept wildcard characters: False
 Version of the ruleset
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -106,3 +117,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzFrontDoorWafPolicy](./New-AzFrontDoorWafPolicy.md)
+[Set-AzFrontDoorWafPolicy](./Set-AzFrontDoorWafPolicy.md)
+[New-AzFrontDoorWafRuleGroupOverrideObject](./New-AzFrontDoorWafRuleGroupOverrideObject.md)

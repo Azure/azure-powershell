@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorWafCustomRuleObject
+# New-AzFrontDoorCustomRuleObject
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create CustomRule Object for WAF policy creation
 
 ## SYNTAX
 
@@ -19,25 +19,29 @@ New-AzFrontDoorWafCustomRuleObject -Name <String> -RuleType <String> -MatchCondi
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Create CustomRule Object for WAF policy creation
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzFrontDoorWafCustomRuleObject -Name "Rule1" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Block -Priority 2
+
+Name   RuleType Action Priority RateLimitDurationInMinutes
+----   -------- ------ -------- --------------------------
+Rule1 MatchRule  Block        2                          1
 ```
 
-{{ Add example description here }}
+Create a CustomRule Object
 
 ## PARAMETERS
 
 ### -Action
 Type of Actions.
-Possible values include: 'Allow', 'Block', 'Log'.
+Possible values include: 'Allow', 'Block', 'Log'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -52,7 +56,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -67,7 +71,7 @@ Accept wildcard characters: False
 List of match conditions.
 
 ```yaml
-Type: PSMatchCondition[]
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +86,7 @@ Accept wildcard characters: False
 Name of the rule
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +101,7 @@ Accept wildcard characters: False
 Describes priority of the rule.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -109,11 +113,10 @@ Accept wildcard characters: False
 ```
 
 ### -RateLimitDurationInMinutes
-Rate limit duration.
-Default - 1 minute
+Rate limit duration. Default - 1 minute
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +131,7 @@ Accept wildcard characters: False
 Rate limit thresold
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -144,7 +147,7 @@ Type of the rule.
 Possible values include: 'MatchRule', 'RateLimitRule'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -169,3 +172,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzFrontDoorWafPolicy](./New-AzFrontDoorWafPolicy.md)
+[Set-AzFrontDoorWafPolicy](./Set-AzFrontDoorWafPolicy.md)

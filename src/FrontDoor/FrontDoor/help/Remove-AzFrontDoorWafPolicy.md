@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/remove-azfrontdoorwafpolicy
 schema: 2.0.0
 ---
 
 # Remove-AzFrontDoorWafPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Remove WAF policy
 
 ## SYNTAX
 
@@ -31,16 +31,23 @@ Remove-AzFrontDoorWafPolicy -ResourceId <String> [-PassThru] [-DefaultProfile <I
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzFrontDoorWafPolicy** cmdlet removes a WAF policy under the current subscription
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName
 ```
 
-{{ Add example description here }}
+Remove the WAF policy called $policyName in $resourceGroupName.
+
+### Example 2
+```powershell
+PS C:\> Get-AzFrontDoorWafPolicy -ResourceGroupName $resourceGroupName | Remove-AzFrontDoorWafPolicy
+```
+
+Remove all WAF policy in $resourceGroupName.
 
 ## PARAMETERS
 
@@ -48,7 +55,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -63,7 +70,7 @@ Accept wildcard characters: False
 The WAF policy object to delete.
 
 ```yaml
-Type: PSPolicy
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSPolicy
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -78,7 +85,7 @@ Accept wildcard characters: False
 The name of the WAF policy to delete.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -93,7 +100,7 @@ Accept wildcard characters: False
 Return object (if specified).
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -108,7 +115,7 @@ Accept wildcard characters: False
 The resource group to which the WAF policy belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -123,7 +130,7 @@ Accept wildcard characters: False
 Resource Id of the WAF policy to delete
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
@@ -138,7 +145,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -154,7 +161,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -181,3 +188,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzFrontDoorWafPolicy](./New-AzFrontDoorWafPolicy.md)
+[Get-AzFrontDoorWafPolicy](./Get-AzFrontDoorWafPolicy.md)

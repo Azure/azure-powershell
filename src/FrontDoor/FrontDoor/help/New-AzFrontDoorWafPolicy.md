@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy
 schema: 2.0.0
 ---
 
 # New-AzFrontDoorWafPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create WAF policy
 
 ## SYNTAX
 
@@ -20,16 +20,20 @@ New-AzFrontDoorWafPolicy -ResourceGroupName <String> -Name <String> [-EnabledSta
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzFrontDoorWafPolicy** cmdlet creates a new Azure WAF policy in the specified resource group under current subscription
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create WAF policy
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Customrule $customRule1,$customRule2 -ManagedRule $managedRule1 -EnabledState Enabled -Mode Prevention -RedirectUrl "https://www.bing.com/" -CustomBlockResponseStatusCode 405 -CustomBlockResponseBody "<html><head><title>You are blocked!</title></head><body></body></html>"
+
+Name         PolicyMode PolicyEnabledState RedirectUrl
+----         ---------- ------------------ -----------
+{policyName} Prevention            Enabled https://www.bing.com/
 ```
 
-{{ Add example description here }}
+Create WAF policy
 
 ## PARAMETERS
 
@@ -37,7 +41,7 @@ PS C:\> {{ Add example code here }}
 Custom Response Body
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -52,7 +56,7 @@ Accept wildcard characters: False
 Custom Response Status Code
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -67,7 +71,7 @@ Accept wildcard characters: False
 Custom rules inside the policy
 
 ```yaml
-Type: PSCustomRule[]
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +86,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -98,7 +102,7 @@ Whether the policy is in enabled state or disabled state.
 Possible values include: 'Disabled', 'Enabled'
 
 ```yaml
-Type: PSEnabledState
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState
 Parameter Sets: (All)
 Aliases:
 Accepted values: Enabled, Disabled
@@ -114,7 +118,7 @@ Accept wildcard characters: False
 Managed rules inside the policy
 
 ```yaml
-Type: PSManagedRule[]
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSManagedRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -130,7 +134,7 @@ Describes if it is in detection mode  or prevention mode at policy level.
 Possible values include:'Prevention', 'Detection'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -145,7 +149,7 @@ Accept wildcard characters: False
 WebApplicationFireWallPolicy name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -160,7 +164,7 @@ Accept wildcard characters: False
 Redirect URL
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -175,7 +179,7 @@ Accept wildcard characters: False
 The resource group name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -190,7 +194,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -206,7 +210,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -231,3 +235,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Set-AzFrontDoorWafPolicy](./Set-AzFrontDoorWafPolicy.md)
+[Get-AzFrontDoorWafPolicy](./Get-AzFrontDoorWafPolicy.md)
+[Remove-AzFrontDoorWafPolicy](./Remove-AzFrontDoorWafPolicy.md)
+[New-AzFrontDoorWafManagedRuleObject](./New-AzFrontDoorWafManagedRuleObject.md)
+[New-AzFrontDoorWafCustomRuleObject](./New-AzFrontDoorWafManagedRuleObject.md)

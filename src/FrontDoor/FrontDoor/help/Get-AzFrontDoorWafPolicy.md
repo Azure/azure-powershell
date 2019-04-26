@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/get-azfrontdoorwafpolicy
 schema: 2.0.0
 ---
 
 # Get-AzFrontDoorWafPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get WAF policy
 
 ## SYNTAX
 
@@ -18,16 +18,33 @@ Get-AzFrontDoorWafPolicy -ResourceGroupName <String> [-Name <String>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzFrontDoorWafPolicy** cmdletGet gets WAF policy in a resource group under the current subscription
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName
+
+Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
+----         ---------- ------------------ ----------------------------- -----------
+{policyName} Prevention            Enabled                           403 https://www.bing.com/
 ```
 
-{{ Add example description here }}
+Get a WAF policy called $policyName in $resourceGroupName
+
+### Example 2
+```powershell
+PS C:\> Get-AzFrontDoorWafPolicy -ResourceGroupName $resourceGroupName
+
+Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
+----         ---------- ------------------ ----------------------------- -----------
+{policyName} Prevention           Disabled
+{policyName} Detection             Enabled                           403 https://www.bing.com/
+{policyName} Detection             Enabled                           404
+```
+
+Get all WAF policy in $resourceGroupName
 
 ## PARAMETERS
 
@@ -35,7 +52,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -50,7 +67,7 @@ Accept wildcard characters: False
 FireWallPolicy name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -65,7 +82,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -90,3 +107,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzFrontDoorWafPolicy](./New-AzFrontDoorWafPolicy.md)
+[Set-AzFrontDoorWafPolicy](./Set-AzFrontDoorWafPolicy.md)
+[Remove-AzFrontDoorWafPolicy](./Remove-AzFrontDoorWafPolicy.md)
