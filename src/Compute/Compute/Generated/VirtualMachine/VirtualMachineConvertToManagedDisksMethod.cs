@@ -45,15 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string resourceGroupName = this.ResourceGroupName;
                     string vmName = this.VMName;
 
-                    Rest.Azure.AzureOperationResponse result;
-                    if (NoWait.IsPresent)
-                    {
-                        result = VirtualMachinesClient.BeginConvertToManagedDisksWithHttpMessagesAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
-                    }
-                    else
-                    {
-                        result = VirtualMachinesClient.ConvertToManagedDisksWithHttpMessagesAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
-                    }
+                    var result = VirtualMachinesClient.ConvertToManagedDisksWithHttpMessagesAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
                     PSOperationStatusResponse output = new PSOperationStatusResponse
                     {
                         StartTime = this.StartTime,
@@ -89,8 +81,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
-        public SwitchParameter NoWait { get; set; }
     }
 }

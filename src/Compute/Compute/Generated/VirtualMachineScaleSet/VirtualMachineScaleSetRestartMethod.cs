@@ -46,15 +46,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string vmScaleSetName = this.VMScaleSetName;
                     System.Collections.Generic.IList<string> instanceIds = this.InstanceId;
 
-                    Rest.Azure.AzureOperationResponse result;
-                    if (NoWait.IsPresent)
-                    {
-                        result = VirtualMachineScaleSetsClient.BeginRestartWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds).GetAwaiter().GetResult();
-                    }
-                    else
-                    {
-                        result = VirtualMachineScaleSetsClient.RestartWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds).GetAwaiter().GetResult();
-                    }
+                    var result = VirtualMachineScaleSetsClient.RestartWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds).GetAwaiter().GetResult();
                     PSOperationStatusResponse output = new PSOperationStatusResponse
                     {
                         StartTime = this.StartTime,
@@ -92,12 +84,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "DefaultParameter",
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
-        public string [] InstanceId { get; set; }
+        public string[] InstanceId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
-        public SwitchParameter NoWait { get; set; }
     }
 }

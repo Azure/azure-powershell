@@ -49,7 +49,7 @@ using CM = Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM",SupportsShouldProcess = true,DefaultParameterSetName = "SimpleParameterSet")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", SupportsShouldProcess = true, DefaultParameterSetName = "SimpleParameterSet")]
     [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
@@ -225,9 +225,6 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public SwitchParameter EnableUltraSSD { get; set; }
 
-        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "Returns immediately with status of request")]
-        public SwitchParameter NoWait { get; set; }
-
         public override void ExecuteCmdlet()
         {
             switch (ParameterSetName)
@@ -386,13 +383,13 @@ namespace Microsoft.Azure.Commands.Compute
                     ResourceGroupName,
                     Name,
                     new StorageAccountCreateParameters
-                {
-                    Sku = new Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku
                     {
-                        Name = SkuName.PremiumLRS
-                    },
-                    Location = Location
-                });
+                        Sku = new Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku
+                        {
+                            Name = SkuName.PremiumLRS
+                        },
+                        Location = Location
+                    });
                 var filePath = new FileInfo(SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiskFile));
                 using (var vds = new VirtualDiskStream(filePath.FullName))
                 {
@@ -510,65 +507,42 @@ namespace Microsoft.Azure.Commands.Compute
                         }
                     }
 
-                    if (NoWait.IsPresent)
+                    var result = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.VM.Name,
+                        parameters,
+                        auxAuthHeader).GetAwaiter().GetResult();
+                    var psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(result);
+
+                    if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
                     {
-                        var result = this.VirtualMachineClient.BeginCreateOrUpdateWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.VM.Name,
-                            parameters,
-                            auxAuthHeader);
-                        var psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(result);
+                        var currentBginfoVersion = GetBginfoExtension();
 
-                        if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
+                        if (!string.IsNullOrEmpty(currentBginfoVersion))
                         {
-                            var currentBginfoVersion = GetBginfoExtension();
-
-                            if (!string.IsNullOrEmpty(currentBginfoVersion))
+                            var extensionParameters = new VirtualMachineExtension
                             {
-                                WriteWarning("BGInfo extension not created in NoWait mode.");
-                            }
+                                Location = this.Location,
+                                Publisher = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
+                                VirtualMachineExtensionType = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
+                                TypeHandlerVersion = currentBginfoVersion,
+                                AutoUpgradeMinorVersion = true,
+                            };
+
+                            typeof(CM.Resource).GetRuntimeProperty("Name")
+                                .SetValue(extensionParameters, VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
+                            typeof(CM.Resource).GetRuntimeProperty("Type")
+                                .SetValue(extensionParameters, VirtualMachineExtensionType);
+
+                            var op2 = ComputeClient.ComputeManagementClient.VirtualMachineExtensions.CreateOrUpdateWithHttpMessagesAsync(
+                                this.ResourceGroupName,
+                                this.VM.Name,
+                                VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
+                                extensionParameters).GetAwaiter().GetResult();
+                            psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op2);
                         }
-                        WriteObject(psResult);
                     }
-                    else
-                    {
-                        var result = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.VM.Name,
-                            parameters,
-                            auxAuthHeader).GetAwaiter().GetResult();
-                        var psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(result);
-
-                        if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
-                        {
-                            var currentBginfoVersion = GetBginfoExtension();
-
-                            if (!string.IsNullOrEmpty(currentBginfoVersion))
-                            {
-                                var extensionParameters = new VirtualMachineExtension
-                                {
-                                    Location = this.Location,
-                                    Publisher = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
-                                    VirtualMachineExtensionType = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
-                                    TypeHandlerVersion = currentBginfoVersion,
-                                    AutoUpgradeMinorVersion = true,
-                                };
-
-                                typeof(CM.Resource).GetRuntimeProperty("Name")
-                                    .SetValue(extensionParameters, VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
-                                typeof(CM.Resource).GetRuntimeProperty("Type")
-                                    .SetValue(extensionParameters, VirtualMachineExtensionType);
-
-                                var op2 = ComputeClient.ComputeManagementClient.VirtualMachineExtensions.CreateOrUpdateWithHttpMessagesAsync(
-                                    this.ResourceGroupName,
-                                    this.VM.Name,
-                                    VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
-                                    extensionParameters).GetAwaiter().GetResult();
-                                psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op2);
-                            }
-                        }
-                        WriteObject(psResult);
-                    }
+                    WriteObject(psResult);
                 });
             }
         }
@@ -588,11 +562,11 @@ namespace Microsoft.Azure.Commands.Compute
             return (SystemAssignedIdentity.IsPresent || isUserAssignedEnabled)
                 ? new VirtualMachineIdentity
                 {
-                    Type = !isUserAssignedEnabled ? 
+                    Type = !isUserAssignedEnabled ?
                            CM.ResourceIdentityType.SystemAssigned :
                            (SystemAssignedIdentity.IsPresent ? CM.ResourceIdentityType.SystemAssignedUserAssigned : CM.ResourceIdentityType.UserAssigned),
 
-                    UserAssignedIdentities = isUserAssignedEnabled 
+                    UserAssignedIdentities = isUserAssignedEnabled
                                              ? new Dictionary<string, VirtualMachineIdentityUserAssignedIdentitiesValue>()
                                              {
                                                  { UserAssignedIdentity, new VirtualMachineIdentityUserAssignedIdentitiesValue() }
@@ -770,7 +744,7 @@ namespace Microsoft.Azure.Commands.Compute
                 storageAccountName = GetRandomStorageAccountName(i);
                 i++;
             }
-            while (i < 10 && (bool) !client.StorageAccounts.CheckNameAvailability(storageAccountName).NameAvailable);
+            while (i < 10 && (bool)!client.StorageAccounts.CheckNameAvailability(storageAccountName).NameAvailable);
 
             var storaeAccountParameter = new StorageAccountCreateParameters
             {

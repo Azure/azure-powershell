@@ -100,9 +100,6 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
-        public SwitchParameter NoWait { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -139,23 +136,11 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 try
                 {
-                    if (NoWait.IsPresent)
-                    {
-                        op = VirtualMachineExtensionClient.BeginCreateOrUpdateWithHttpMessagesAsync(
-                            ResourceGroupName,
-                            VMName,
-                            Name ?? VirtualMachineSqlServerExtensionContext.ExtensionPublishedName,
-                            parameters).GetAwaiter().GetResult();
-                    }
-                    else
-                    {
-                        op = VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
-                            ResourceGroupName,
-                            VMName,
-                            Name ?? VirtualMachineSqlServerExtensionContext.ExtensionPublishedName,
-                            parameters).GetAwaiter().GetResult();
-                    }
-                    
+                    op = VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                        ResourceGroupName,
+                        VMName,
+                        Name ?? VirtualMachineSqlServerExtensionContext.ExtensionPublishedName,
+                        parameters).GetAwaiter().GetResult();
                     break;
                 }
                 catch (Rest.Azure.CloudException ex)

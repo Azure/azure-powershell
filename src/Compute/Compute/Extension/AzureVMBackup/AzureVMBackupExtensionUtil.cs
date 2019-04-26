@@ -225,8 +225,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
         /// <param name="virtualMachineResponse"></param>
         /// <param name="snapshotTag"></param>
         /// <param name="virtualMachineExtensionBaseCmdlet"></param>
-        public void CreateSnapshotForDisks(AzureVMBackupConfig vmConfig, string snapshotTag, 
-            VirtualMachineExtensionBaseCmdlet virtualMachineExtensionBaseCmdlet, bool noWait)
+        public void CreateSnapshotForDisks(AzureVMBackupConfig vmConfig, string snapshotTag, VirtualMachineExtensionBaseCmdlet virtualMachineExtensionBaseCmdlet)
         {
             var virtualMachine = virtualMachineExtensionBaseCmdlet.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(
                 vmConfig.ResourceGroupName,
@@ -272,24 +271,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
                 ProtectedSettings = privateConfig,
             };
 
-            VirtualMachineExtension vmBackupOperation;
-            if (noWait)
-            {
-                vmBackupOperation = virtualMachineExtensionBaseCmdlet.VirtualMachineExtensionClient.BeginCreateOrUpdate(
-                    vmConfig.ResourceGroupName,
-                    vmConfig.VMName,
-                    vmConfig.ExtensionName ?? backupExtensionName,
-                    vmExtensionParameters);
-            }
-            else
-            {
-                vmBackupOperation = virtualMachineExtensionBaseCmdlet.VirtualMachineExtensionClient.CreateOrUpdate(
-                    vmConfig.ResourceGroupName,
-                    vmConfig.VMName,
-                    vmConfig.ExtensionName ?? backupExtensionName,
-                    vmExtensionParameters);
-            }
-            
+            var vmBackupOperation = virtualMachineExtensionBaseCmdlet.VirtualMachineExtensionClient.CreateOrUpdate(
+                vmConfig.ResourceGroupName,
+                vmConfig.VMName,
+                vmConfig.ExtensionName ?? backupExtensionName,
+                vmExtensionParameters);
+
             // check the snapshots with the task id are all created.
             int timePeriod = 5000;
             int loopingTimes = ((int)TimeSpan.FromMinutes(10).TotalMilliseconds / timePeriod);

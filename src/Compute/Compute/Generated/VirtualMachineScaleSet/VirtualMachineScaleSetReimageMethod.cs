@@ -64,15 +64,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         var vmScaleSetReimageInput = new VirtualMachineScaleSetReimageParameters();
                         vmScaleSetReimageInput.InstanceIds = instanceIds;
                         vmScaleSetReimageInput.TempDisk = this.TempDisk.IsPresent;
-                        if (NoWait.IsPresent)
-                        {
-                            result = VirtualMachineScaleSetsClient.BeginReimageWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, vmScaleSetReimageInput).GetAwaiter().GetResult();
-                        }
-                        else
-                        {
-                            result = VirtualMachineScaleSetsClient.ReimageWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, vmScaleSetReimageInput).GetAwaiter().GetResult();
-                        }
-                        
+                        result = VirtualMachineScaleSetsClient.ReimageWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, vmScaleSetReimageInput).GetAwaiter().GetResult();
                     }
 
                     PSOperationStatusResponse output = new PSOperationStatusResponse
@@ -109,7 +101,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
-        public string [] InstanceId { get; set; }
+        public string[] InstanceId { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter")]
@@ -137,8 +129,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
-        public SwitchParameter NoWait { get; set; }
     }
 }
