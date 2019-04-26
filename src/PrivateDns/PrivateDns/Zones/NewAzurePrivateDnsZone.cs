@@ -41,6 +41,10 @@ namespace Microsoft.Azure.Commands.PrivateDns.Zones
         public override void ExecuteCmdlet()
         {
             this.Name = TrimTrailingDotInZoneName(this.Name);
+            if (this.Name.EndsWith(".local"))
+            {
+                this.WriteWarning(ProjectResources.Warning_ZoneNameEndsWithLocal);
+            }
 
             ConfirmAction(
                 ProjectResources.Progress_CreatingNewZone,
