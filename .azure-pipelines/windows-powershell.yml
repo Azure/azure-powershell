@@ -27,19 +27,6 @@ jobs:
     vmImage: ${{ variables.WindowsImage }}
 
   steps:
-  - task: DownloadPackage@1
-    displayName: 'Download CredScan'
-    inputs:
-      feed: 81acd510-a202-4464-a324-468fc2d27db0
-      definition: 0a28014c-fa0d-409a-8924-d72e557eb1ac
-      version: 1.0.26.1
-      downloadPath: tools/SecurityTools/Microsoft.Azure.CredentialScanner.1.0.26.1
-  - task: PowerShell@2
-    displayName: 'Run CredScan'
-    inputs:
-      targetType: filePath
-      filePath: tools/SecurityToolsScripts/RunCredScan.ps1
-      pwsh: true
   - template: util/analyze-steps.yml
     parameters:
       osName: ${{ variables.WindowsName }}
@@ -60,19 +47,6 @@ jobs:
     inputs:
       targetType: filePath
       filePath: tools/SecurityToolsScripts/RunBinSkim.ps1
-      pwsh: true
-  - task: DownloadPackage@1
-    displayName: 'Download PoliCheck'
-    inputs:
-      feed: 81acd510-a202-4464-a324-468fc2d27db0
-      definition: 9dccbbe5-88b0-4b32-8468-eb7d58719257
-      version: 5.9.1
-      downloadPath: tools/SecurityTools/Microsoft.StaticAnalysis.PoliCheck.5.9.1
-  - task: PowerShell@2
-    displayName: 'Run PoliCheck'
-    inputs:
-      targetType: filePath
-      filePath: tools/SecurityToolsScripts/RunPoliCheck.ps1
       pwsh: true
 
 - job: Test
