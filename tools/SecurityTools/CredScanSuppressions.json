@@ -740,6 +740,10 @@
     {
       "file": "src\\Websites\\Websites.Test\\SessionRecords\\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.SSLBindingTests\\TestGetWebAppCertificate.json",
       "_justification": "Resource group used for recording has been deleted, confirmed by Nicholas King"
+    },
+    {
+      "file": "src\\Network\\Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.CortexTests\\TestCortexDownloadConfig.json",
+      "_justification": "Generated test resource group, deleted after test execution"
     }
   ]
 }
