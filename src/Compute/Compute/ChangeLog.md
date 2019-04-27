@@ -21,6 +21,11 @@
 ## Upcoming Release
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 
+## Version 1.8.0
+* Improve the error message displayed when -skipVmBackup parameter is not provided for Set-AzVMDiskEncryptionExtension 
+	- Allow cmdlet execution for Windows VMs and Linux VMs with Native disks.
+	- Throw exception for Linux VMs with Managed disks. 
+
 ## Version 1.7.0
 * Add HyperVGeneration parameter to New-AzDiskConfig and New-AzSnapshotConfig
 * Allow VM creation with galley image from other tenants. 
