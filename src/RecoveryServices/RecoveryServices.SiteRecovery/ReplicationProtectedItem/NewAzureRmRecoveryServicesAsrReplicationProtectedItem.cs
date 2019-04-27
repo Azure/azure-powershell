@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Job = Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.Job;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -37,7 +38,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             Position = 0,
             ParameterSetName = ASRParameterSets.VMwareToAzure,
             Mandatory = true)]
-        [Obsolete("Parameter set VMwareToAzure will be changed in future release to support directly write to managed disk support for 'vmWare to Azure' Azure Site Recovery.")]
         public SwitchParameter VMwareToAzure { get; set; }
 
         /// <summary>
@@ -201,6 +201,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
+        [CmdletParameterBreakingChange(
+            "IncludeDiskId", 
+            ChangeDescription = "Parameter IncludeDiskId will be changed in future release to support directly write to managed disk support Azure Site Recovery.")]
         [ValidateNotNullOrEmpty]
         public string[] IncludeDiskId { get; set; }
 

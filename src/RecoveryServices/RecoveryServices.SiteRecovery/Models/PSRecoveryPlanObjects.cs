@@ -94,7 +94,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         //
         // Summary:
         //     Optional. List of protected items.
-        [Obsolete("In a future release this object will Change the object type ASRReplicationProtectedItem.Matching the structure of Get-AzureRmRecoveryServicesReplicationProtectedItem")]
         public IList<ReplicationProtectedItem_2016_08_10> ReplicationProtectedItems { get; set; }
 
         //

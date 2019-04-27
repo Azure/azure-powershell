@@ -1197,14 +1197,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.LastHeartbeat = details.LastHeartbeat.Value.ToLocalTime();
             }
 
-            if (details.ProtectedDisks != null && details.ProtectedDisks.Count > 0)
+            if (details.ProtectedDisks != null && details.ProtectedDisks.Any())
             {
                 this.A2ADiskDetails =
                     details.ProtectedDisks.ToList()
                     .ConvertAll(disk => new ASRAzureToAzureProtectedDiskDetails(disk));
             }
 
-            if (details.ProtectedManagedDisks != null && details.ProtectedManagedDisks.Count > 0)
+            if (details.ProtectedManagedDisks != null && details.ProtectedManagedDisks.Any())
             {
                 if (this.A2ADiskDetails == null)
                 {
