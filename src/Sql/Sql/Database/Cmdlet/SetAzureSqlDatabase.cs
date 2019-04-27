@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The auto pause delay in minutes for database (serverless only), -1 to opt out",
             ParameterSetName = VcoreDatabaseParameterSet)]
-        public int? AutoPauseDelayInMinutes { get; set; }
+        public int? AutoPauseDelay { get; set; }
 
         /// <summary>
         /// Gets or sets the Minimal capacity that database will always have allocated, if not paused
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                            ? (bool?)ZoneRedundant.ToBool()
                            : null,
                 LicenseType = LicenseType ?? model.FirstOrDefault().LicenseType, // set to original license type
-                AutoPauseDelay = AutoPauseDelayInMinutes,
+                AutoPauseDelay = AutoPauseDelay,
                 MinCapacity = MinCapacity,
             };
 

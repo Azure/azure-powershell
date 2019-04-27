@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The auto pause delay in minutes for database(serverless only), -1 to opt out")]
-        public int? AutoPauseDelayInMinutes { get; set; }
+        public int? AutoPauseDelay { get; set; }
 
         /// <summary>
         /// Gets or sets the Minimal capacity that database will always have allocated, if not paused
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 ReadScale = ReadScale,
                 ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
                 LicenseType = LicenseType, // note: default license type will be LicenseIncluded in SQL RP if not specified
-                AutoPauseDelay = AutoPauseDelayInMinutes,
+                AutoPauseDelay = AutoPauseDelay,
                 MinCapacity = MinCapacity,
             };
 
