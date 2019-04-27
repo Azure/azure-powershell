@@ -116,6 +116,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
 
     }
 
+    // TODO: delete this class when SDK is fixed and have this values
     public class ManagedInstanceProxyOverride
     {
         public const string Proxy = "Proxy";
