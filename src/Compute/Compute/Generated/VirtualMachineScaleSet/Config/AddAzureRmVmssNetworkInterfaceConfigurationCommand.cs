@@ -19,13 +19,14 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -113,24 +114,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vNetworkInterfaceConfigurations = new VirtualMachineScaleSetNetworkConfiguration();
 
-            vNetworkInterfaceConfigurations.Name = this.MyInvocation.BoundParameters.ContainsKey("Name") ? this.Name : null;
-            vNetworkInterfaceConfigurations.Primary = this.MyInvocation.BoundParameters.ContainsKey("Primary") ? this.Primary : (bool?)null;
+            vNetworkInterfaceConfigurations.Name = this.IsParameterBound(c => c.Name) ? this.Name : null;
+            vNetworkInterfaceConfigurations.Primary = this.IsParameterBound(c => c.Primary) ? this.Primary : (bool?)null;
             vNetworkInterfaceConfigurations.EnableAcceleratedNetworking = this.EnableAcceleratedNetworking.IsPresent;
             vNetworkInterfaceConfigurations.EnableIPForwarding = this.EnableIPForwarding.IsPresent;
-            vNetworkInterfaceConfigurations.Id = this.MyInvocation.BoundParameters.ContainsKey("Id") ? this.Id : null;
-            if (this.MyInvocation.BoundParameters.ContainsKey("NetworkSecurityGroupId"))
+            vNetworkInterfaceConfigurations.Id = this.IsParameterBound(c => c.Id) ? this.Id : null;
+            if (this.IsParameterBound(c => c.NetworkSecurityGroupId))
             {
                 // NetworkSecurityGroup
                 vNetworkInterfaceConfigurations.NetworkSecurityGroup = new SubResource();
                 vNetworkInterfaceConfigurations.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
             }
-            if (this.MyInvocation.BoundParameters.ContainsKey("DnsSettingsDnsServer"))
+            if (this.IsParameterBound(c => c.DnsSettingsDnsServer))
             {
                 // DnsSettings
                 vNetworkInterfaceConfigurations.DnsSettings = new VirtualMachineScaleSetNetworkConfigurationDnsSettings();
                 vNetworkInterfaceConfigurations.DnsSettings.DnsServers = this.DnsSettingsDnsServer;
             }
-            vNetworkInterfaceConfigurations.IpConfigurations = this.MyInvocation.BoundParameters.ContainsKey("IpConfiguration") ? this.IpConfiguration : null;
+            vNetworkInterfaceConfigurations.IpConfigurations = this.IsParameterBound(c => c.IpConfiguration) ? this.IpConfiguration : null;
             this.VirtualMachineScaleSet.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations.Add(vNetworkInterfaceConfigurations);
             WriteObject(this.VirtualMachineScaleSet);
         }

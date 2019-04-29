@@ -12,15 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AutoMapper;
+using System.Collections;
+using System.Linq;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
-using System;
-using System.Collections;
-using System.Linq;
-using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -103,7 +102,7 @@ namespace Microsoft.Azure.Commands.Compute
                     Tags = Tag == null ? null : Tag.Cast<DictionaryEntry>().ToDictionary(d => (string)d.Key, d => (string)d.Value)
                 };
 
-                if (this.MyInvocation.BoundParameters.ContainsKey("Sku"))
+                if (this.IsParameterBound(c => c.Sku))
                 {
                     avSetParams.Sku = new Sku();
                     if (!string.IsNullOrEmpty(this.Sku))
@@ -112,7 +111,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                 }
 
-                if (this.MyInvocation.BoundParameters.ContainsKey("ProximityPlacementGroupId"))
+                if (this.IsParameterBound(c => c.ProximityPlacementGroupId))
                 {
                     avSetParams.ProximityPlacementGroup = new SubResource(this.ProximityPlacementGroupId);
                 }

@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -219,7 +220,7 @@ namespace Microsoft.Azure.Commands.Compute
                 };
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("CreateOption"))
+            if (this.IsParameterBound(c => c.CreateOption))
             {
                 this.VM.StorageProfile.OsDisk.CreateOption = this.CreateOption;
             }
@@ -253,7 +254,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             this.VM.StorageProfile.OsDisk.WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent;
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("DiffDiskSetting"))
+            if (this.IsParameterBound(c => c.DiffDiskSetting))
             {
                 if (this.VM.StorageProfile.OsDisk.DiffDiskSettings == null)
                 {
