@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+
 namespace Microsoft.Azure.Commands.PrivateDns.Zones
 {
     using System.Collections;
@@ -41,7 +43,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Zones
         public override void ExecuteCmdlet()
         {
             this.Name = TrimTrailingDotInZoneName(this.Name);
-            if (this.Name.EndsWith(".local"))
+            if (this.Name.EndsWith(".local", StringComparison.OrdinalIgnoreCase))
             {
                 this.WriteWarning(ProjectResources.Warning_ZoneNameEndsWithLocal);
             }
