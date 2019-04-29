@@ -961,7 +961,7 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
 
 function Get-LinuxImage
 {
-    return Create-ComputeVMImageObject 'SUSE' 'SLES' '12-SP2' 'latest';
+    return Create-ComputeVMImageObject 'SUSE' 'SLES' '12-SP4' 'latest';
 }
 
 function GetWrongTestResult($TestResult, $searchFor, $level)

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support for querying policy evaluation details.
+    - Add `-Expand` parameter to Get-AzPolicyState. Support `-Expand PolicyEvaluationDetails`.
 
 ## Version 1.0.0
 * General availability of `Az.PolicyInsights` module

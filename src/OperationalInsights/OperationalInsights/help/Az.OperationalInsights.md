@@ -38,22 +38,22 @@ Starts collection of syslog data from Linux computers.
 ### [Get-AzOperationalInsightsDataSource](Get-AzOperationalInsightsDataSource.md)
 Get datasources under Azure Log Analytics workspace.
 
-### [Get-AzOperationalInsightsIntelligencePacks](Get-AzOperationalInsightsIntelligencePacks.md)
+### [Get-AzOperationalInsightsIntelligencePack](Get-AzOperationalInsightsIntelligencePack.md)
 Gets the available Intelligence Packs.
 
-### [Get-AzOperationalInsightsLinkTargets](Get-AzOperationalInsightsLinkTargets.md)
+### [Get-AzOperationalInsightsLinkTarget](Get-AzOperationalInsightsLinkTarget.md)
 Gets accounts that are not associated with a subscription.
 
 ### [Get-AzOperationalInsightsSavedSearch](Get-AzOperationalInsightsSavedSearch.md)
 Returns all of the saved searches for a specified workspace.
 
-### [Get-AzOperationalInsightsSavedSearchResults](Get-AzOperationalInsightsSavedSearchResults.md)
+### [Get-AzOperationalInsightsSavedSearchResult](Get-AzOperationalInsightsSavedSearchResult.md)
 Returns the results from a query.
 
 ### [Get-AzOperationalInsightsSchema](Get-AzOperationalInsightsSchema.md)
 Returns the schema associated with a workspace.
 
-### [Get-AzOperationalInsightsSearchResults](Get-AzOperationalInsightsSearchResults.md)
+### [Get-AzOperationalInsightsSearchResult](Get-AzOperationalInsightsSearchResult.md)
 Returns search results based on the specified parameters.
 
 ### [Get-AzOperationalInsightsStorageInsight](Get-AzOperationalInsightsStorageInsight.md)
@@ -62,10 +62,10 @@ Gets information about a Storage Insight.
 ### [Get-AzOperationalInsightsWorkspace](Get-AzOperationalInsightsWorkspace.md)
 Gets information about a workspace.
 
-### [Get-AzOperationalInsightsWorkspaceManagementGroups](Get-AzOperationalInsightsWorkspaceManagementGroups.md)
+### [Get-AzOperationalInsightsWorkspaceManagementGroup](Get-AzOperationalInsightsWorkspaceManagementGroup.md)
 Gets details of management groups connected to a workspace.
 
-### [Get-AzOperationalInsightsWorkspaceSharedKeys](Get-AzOperationalInsightsWorkspaceSharedKeys.md)
+### [Get-AzOperationalInsightsWorkspaceSharedKey](Get-AzOperationalInsightsWorkspaceSharedKey.md)
 Gets the shared keys for a workspace.
 
 ### [Get-AzOperationalInsightsWorkspaceUsage](Get-AzOperationalInsightsWorkspaceUsage.md)

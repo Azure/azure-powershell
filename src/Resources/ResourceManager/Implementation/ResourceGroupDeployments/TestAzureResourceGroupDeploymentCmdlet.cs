@@ -43,6 +43,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Rollback to the successful deployment with the given name in the resource group, should not be used if -RollbackToLastDeployment is used.")]
         public string RollBackDeploymentName { get; set; }
 
+        public string DeploymentName { get; set; }
+
         public TestAzureResourceGroupDeploymentCmdlet()
         {
             this.Mode = DeploymentMode.Incremental;
@@ -57,6 +59,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             PSDeploymentCmdletParameters parameters = new PSDeploymentCmdletParameters()
             {
+                DeploymentName = DeploymentName ?? Guid.NewGuid().ToString(),
                 ResourceGroupName = ResourceGroupName,
                 TemplateFile = TemplateUri ?? this.ResolvePath(TemplateFile),
                 TemplateObject = TemplateObject,

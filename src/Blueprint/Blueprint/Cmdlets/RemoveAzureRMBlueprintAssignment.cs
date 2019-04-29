@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
     public class RemoveAzureRmBlueprintAssignment : BlueprintCmdletBase
     {
         #region Parameters
-        [Parameter(ParameterSetName = ParameterSetNames.DeleteBlueprintAssignmentByObject, Position = 0, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.AssignmentSubscriptionId)]
-        [Parameter(ParameterSetName = ParameterSetNames.DeleteBlueprintAssignmentByName, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.AssignmentSubscriptionId)]
+        [Parameter(ParameterSetName = ParameterSetNames.DeleteBlueprintAssignmentByObject, Position = 0, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.AssignmentSubscriptionId)]
+        [Parameter(ParameterSetName = ParameterSetNames.DeleteBlueprintAssignmentByName, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.AssignmentSubscriptionId)]
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
 
@@ -48,14 +48,16 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         #region Cmdlet Overrides
         public override void ExecuteCmdlet()
         {
+            var subscription = SubscriptionId ?? DefaultContext.Subscription.Id;
+
             try
             {
                 switch (ParameterSetName)
                 {
                     case ParameterSetNames.DeleteBlueprintAssignmentByName:
-                        if (ShouldProcess(SubscriptionId, string.Format(Resources.DeleteAssignmentShouldProcessString, Name)))
+                        if (ShouldProcess(subscription, string.Format(Resources.DeleteAssignmentShouldProcessString, Name)))
                         {
-                            var deletedAssignment = BlueprintClient.DeleteBlueprintAssignment(Utils.GetScopeForSubscription(SubscriptionId), Name);
+                            var deletedAssignment = BlueprintClient.DeleteBlueprintAssignment(Utils.GetScopeForSubscription(subscription), Name);
 
                             if (deletedAssignment != null && PassThru.IsPresent)
                             {
@@ -64,7 +66,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                         }
                         break;
                     case ParameterSetNames.DeleteBlueprintAssignmentByObject:
-                        if (ShouldProcess(SubscriptionId, string.Format(Resources.DeleteAssignmentShouldProcessString, InputObject.Name)))
+                        if (ShouldProcess(subscription, string.Format(Resources.DeleteAssignmentShouldProcessString, InputObject.Name)))
                         {
                             var deletedAssignment = BlueprintClient.DeleteBlueprintAssignment(InputObject.Scope, InputObject.Name);
 

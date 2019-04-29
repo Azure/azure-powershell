@@ -14,12 +14,15 @@
 
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsIntelligencePacks"), OutputType(typeof(PSIntelligencePack))]
+    [GenericBreakingChange("Get-AzOperationalInsightsIntelligencePacks alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsIntelligencePack"), OutputType(typeof(PSIntelligencePack))]
+    [Alias("Get-AzOperationalInsightsIntelligencePacks")]
     public class GetAzureOperationalInsightsIntelligencePacksCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,

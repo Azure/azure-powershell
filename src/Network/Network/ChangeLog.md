@@ -18,6 +18,19 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+* Add support for Nat Gateway Resource
+    - New cmdlets
+        - New-AzNatGateway
+        - Get-AzNatGateway
+        - Set-AzNatGateway
+        - Remove-AzNatGateway
+   - Updated cmdlets
+        - New-AzureVirtualNetworkSubnetConfigCommand
+        - Add-AzureVirtualNetworkSubnetConfigCommand
+
+## Version 1.7.0
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Fix documentation for wildcards
 
 ## Version 1.6.0
 * Add Alert action type for Azure Firewall Network and Application Rule Collections

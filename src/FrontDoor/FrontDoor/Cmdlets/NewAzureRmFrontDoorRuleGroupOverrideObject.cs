@@ -12,15 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
+using System.Linq;
 using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
-using Microsoft.Azure.Management.FrontDoor;
-using System.Linq;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
@@ -31,23 +26,23 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     public class NewAzureRmFrontDoorRuleGroupOverrideObject : AzureFrontDoorCmdletBase
     {
         /// <summary>
-        /// Describes overrideruleGroup. Possible values include: 'SqlInjection', 'XSS'
+        /// Rule Group Name
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "Describes overrideruleGroup. Possible values include: 'SqlInjection', 'XSS'")]
-        public PSRuleGroupOverride Override { get; set; }
+        [Parameter(Mandatory = true, HelpMessage = "Rule Group Name for which these overrides apply")]
+        public string RuleGroupName { get; set; }
 
         /// <summary>
-        /// Type of Actions. Possible values include: 'Allow', 'Block', 'Log'
+        /// Rule override list
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "Type of Actions. Possible values include: 'Allow', 'Block', 'Log'")]
-        public PSAction Action { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Rule override list")]
+        public PSAzureManagedRuleOverride[] ManagedRuleOverride { get; set; }
 
         public override void ExecuteCmdlet()
         {
             var ruleGroupOverride = new PSAzureRuleGroupOverride 
             {
-               RuleGroupOverride = Override,
-               Action = Action
+               ManagedRuleOverrides = ManagedRuleOverride?.ToList(),
+               RuleGroupName = RuleGroupName
             };
             WriteObject(ruleGroupOverride);
         }

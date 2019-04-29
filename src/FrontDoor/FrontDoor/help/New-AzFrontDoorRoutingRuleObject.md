@@ -12,12 +12,21 @@ Create a PSRoutingRuleObject for Front Door creation
 
 ## SYNTAX
 
+### ByFieldsWithForwardingParameterSet (Default)
 ```
 New-AzFrontDoorRoutingRuleObject -ResourceGroupName <String> -FrontDoorName <String> -Name <String>
  -FrontendEndpointName <String[]> -BackendPoolName <String> [-AcceptedProtocol <PSProtocol[]>]
- [-PatternToMatch <String[]>] [-CustomForwardingPath <String>] [-ForwardingProtocol <PSForwardingProtocol>]
- [-EnableCaching <Boolean>] [-QueryParameterStripDirective <PSQueryParameterStripDirective>]
- [-DynamicCompression <PSEnabledState>] [-EnabledState <PSEnabledState>]
+ [-PatternToMatch <String[]>] [-CustomForwardingPath <String>] [-ForwardingProtocol <String>]
+ [-EnableCaching <Boolean>] [-QueryParameterStripDirective <String>] [-DynamicCompression <PSEnabledState>]
+ [-EnabledState <PSEnabledState>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByFieldsWithRedirectParameterSet
+```
+New-AzFrontDoorRoutingRuleObject -ResourceGroupName <String> -FrontDoorName <String> -Name <String>
+ -FrontendEndpointName <String[]> [-AcceptedProtocol <PSProtocol[]>] [-PatternToMatch <String[]>]
+ [-RedirectType <String>] [-RedirectProtocol <String>] [-CustomHost <String>] [-CustomPath <String>]
+ [-CustomFragment <String>] [-CustomQueryString <String>] [-EnabledState <PSEnabledState>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -75,7 +84,7 @@ Resource id of the BackendPool which this rule routes to
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
 
 Required: True
@@ -91,7 +100,67 @@ Leave empty to use incoming path.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithForwardingParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomFragment
+Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsWithRedirectParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomHost
+Host to redirect. Leave empty to use use the incoming host as the destination host.
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsWithRedirectParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomPath
+The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsWithRedirectParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomQueryString
+The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsWithRedirectParameterSet
 Aliases:
 
 Required: False
@@ -122,7 +191,7 @@ Default value is Enabled
 
 ```yaml
 Type: Microsoft.Azure.Commands.FrontDoor.Models.PSEnabledState
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
 Accepted values: Enabled, Disabled
 
@@ -139,7 +208,7 @@ Default value is false
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
 
 Required: False
@@ -171,10 +240,9 @@ The protocol this rule will use when forwarding traffic to backends
 Default value is MatchRequest.
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSForwardingProtocol
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
-Accepted values: HttpOnly, HttpsOnly, MatchRequest
 
 Required: False
 Position: Named
@@ -249,10 +317,39 @@ The treatment of URL query terms when forming the cache key.
 Default value is StripAll
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSQueryParameterStripDirective
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ByFieldsWithForwardingParameterSet
 Aliases:
-Accepted values: StripNone, StripAll
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RedirectProtocol
+The protocol of the destination to where the traffic is redirected. Default value is MatchRequest
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsWithRedirectParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RedirectType
+The redirect type the rule will use when redirecting traffic. Default Value is Moved
+
+```yaml
+Type: System.String
+Parameter Sets: ByFieldsWithRedirectParameterSet
+Aliases:
 
 Required: False
 Position: Named
@@ -277,7 +374,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

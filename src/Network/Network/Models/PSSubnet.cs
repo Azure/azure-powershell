@@ -42,6 +42,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSRouteTable RouteTable { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Label = "NatGateway Name", Target = ViewControl.Table, ScriptBlock = "$_.NatGateway.Name")]
+        public PSResourceId NatGateway { get; set; }
+
+        [JsonProperty(Order = 1)]
         public List<PSServiceEndpoint> ServiceEndpoints { get; set; }
 
         [JsonProperty(Order = 1)]
@@ -84,6 +88,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string RouteTableText
         {
             get { return JsonConvert.SerializeObject(RouteTable, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string NatGatewayText
+        {
+            get { return JsonConvert.SerializeObject(NatGateway, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         public bool ShouldSerializeIpConfigurations()

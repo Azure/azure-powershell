@@ -12,15 +12,8 @@ Returns information about Azure SQL Managed Database Instance.
 
 ## SYNTAX
 
-### GetInstanceByResourceGroup (Default)
 ```
-Get-AzSqlInstance [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### GetInstanceByNameAndResourceGroup
-```
-Get-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzSqlInstance [[-Name] <String>] [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -32,7 +25,7 @@ Specify the name of a instance to see information for only that instance.
 
 ### Example 1: Get all instances assigned to a resource group
 ```
-PS C:\>Get-AzSqlInstance -ResourceGroupName "ResourceGroup01"
+PS C:\> Get-AzSqlInstance -ResourceGroupName "ResourceGroup01"
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -68,7 +61,7 @@ This command gets information about all instances assigned to the resource group
 
 ### Example 2: Get information about an  instance
 ```
-PS C:\>Get-AzSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01"
+PS C:\> Get-AzSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01"
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -86,6 +79,42 @@ StorageSizeInGB          : 512
 ```
 
 This command gets information about the instance named managedInstance1.
+
+### Example 3: Get all instances assigned to a resource group using filtering
+```
+PS C:\> Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "managedInstance*"
+Location                 : westcentralus
+Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
+ResourceGroupName        : resourcegroup01
+ManagedInstanceName      : managedInstance1
+Tags                     :
+Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
+Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
+AdministratorLogin       : adminLogin1
+AdministratorPassword    :
+SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+LicenseType              : BasePrice
+VCores                   : 8
+StorageSizeInGB          : 512
+
+Location                 : westcentralus
+Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance2
+ResourceGroupName        : resourcegroup01
+ManagedInstanceName      : managedInstance2
+Tags                     :
+Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
+Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+FullyQualifiedDomainName : managedInstance2.wcusxxxxxxxxxxxxx.database.windows.net
+AdministratorLogin       : adminLogin2
+AdministratorPassword    :
+SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+LicenseType              : BasePrice
+VCores                   : 8
+StorageSizeInGB          : 512
+```
+
+This command gets information about all instances assigned to the resource group ResourceGroup01 that start with "managedInstance".
 
 ## PARAMETERS
 
@@ -109,14 +138,14 @@ SQL instance name.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetInstanceByNameAndResourceGroup
+Parameter Sets: (All)
 Aliases: InstanceName
 
-Required: True
+Required: False
 Position: 0
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
@@ -124,30 +153,18 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetInstanceByResourceGroup
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: GetInstanceByNameAndResourceGroup
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

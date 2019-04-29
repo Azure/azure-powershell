@@ -15,9 +15,9 @@ Create a PSFrontendEndpoint Object for Front Door creation
 ```
 New-AzFrontDoorFrontendEndpointObject -Name <String> -HostName <String>
  [-SessionAffinityEnabledState <PSEnabledState>] [-SessionAffinityTtlInSeconds <Int32>]
- [-WebApplicationFirewallPolicyLink <String>] [-CertificateSource <PSCertificateSource>]
- [-ProtocolType <PSProtocolType>] [-Vault <String>] [-SecretName <String>] [-SecretVersion <String>]
- [-CertificateType <PSCertificateType>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-WebApplicationFirewallPolicyLink <String>] [-CertificateSource <String>] [-ProtocolType <String>]
+ [-Vault <String>] [-SecretName <String>] [-SecretVersion <String>] [-CertificateType <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,10 +57,9 @@ Create a PSFrontendEndpoint Object for Front Door creation
 The source of the SSL certificate
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateSource
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureKeyVault, FrontDoor
 
 Required: False
 Position: Named
@@ -73,10 +72,9 @@ Accept wildcard characters: False
 the type of the certificate used for secure connections to a frontendEndpoint
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSCertificateType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Shared, Dedicated
 
 Required: False
 Position: Named
@@ -135,10 +133,9 @@ Accept wildcard characters: False
 The TLS extension protocol that is used for secure delivery
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSProtocolType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: ServerNameIndication, IPBased
 
 Required: False
 Position: Named
@@ -241,7 +238,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

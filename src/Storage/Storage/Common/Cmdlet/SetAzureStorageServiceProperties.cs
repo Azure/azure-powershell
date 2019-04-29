@@ -17,7 +17,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
-    using StorageClient = WindowsAzure.Storage.Shared.Protocol;
+    using StorageClient = Azure.Storage.Shared.Protocol;
     using XTable = Microsoft.Azure.Cosmos.Table;
     using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;

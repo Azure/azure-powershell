@@ -29,7 +29,7 @@ Enables custom HTTPS.
 ### [Get-AzCdnCustomDomain](Get-AzCdnCustomDomain.md)
 Gets a CDN custom domain.
 
-### [Get-AzCdnEdgeNodes](Get-AzCdnEdgeNodes.md)
+### [Get-AzCdnEdgeNode](Get-AzCdnEdgeNode.md)
 Gets Azure CDN edgenodes.
 
 ### [Get-AzCdnEndpoint](Get-AzCdnEndpoint.md)

@@ -45,6 +45,18 @@ rgname             servername   dnsaliasname
 
 Gets Server DNS Alias specified by server and alias name
 
+### Example 3
+```
+PS C:\> $serverDNSAliases = Get-AzSqlServerDNSAlias -ServerName servername -ResourceGroupName rgname -DnsAliasName "dnsaliasname*"
+
+ResourceGroupName  ServerName   DnsAliasName
+-----------------  ----------   ------------------
+rgname             servername   dnsaliasname
+rgname             servername   dnsaliasname2
+```
+
+Lists all Server DNS Aliases for the specific server that start with "dnsaliasname".
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -74,7 +86,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
@@ -139,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

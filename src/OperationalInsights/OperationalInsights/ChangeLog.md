@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
 ## Version 1.1.0
 * Additional support for New and Get ApplicationInsights data source.
     - Added new 'ApplicationInsights' kind to support Get specific and Get all ApplicationInsights data sources for given workspace. 

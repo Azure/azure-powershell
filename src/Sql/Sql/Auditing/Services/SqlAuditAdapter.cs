@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Services;
-using Microsoft.Azure.Management.Monitor.Models;
+using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
