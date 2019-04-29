@@ -18,7 +18,7 @@ Creates a database or an elastic database.
 New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogCollation <String>]
  [-MaxSizeBytes <Int64>] [-Edition <String>] [-RequestedServiceObjectiveName <String>]
  [-ElasticPoolName <String>] [-ReadScale <DatabaseReadScale>] [-Tags <Hashtable>] [-SampleName <String>]
- [-ZoneRedundant] [-AsJob] [-LicenseType <String>] [-AutoPauseDelay <Int32>] [-MinCapacity <Double>]
+ [-ZoneRedundant] [-AsJob] [-LicenseType <String>] [-AutoPauseDelayMinutes <Int32>] [-MinCapacity <Double>]
  [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -28,7 +28,7 @@ New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogColl
 New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogCollation <String>]
  [-MaxSizeBytes <Int64>] -Edition <String> [-ReadScale <DatabaseReadScale>] [-Tags <Hashtable>]
  [-SampleName <String>] [-ZoneRedundant] [-AsJob] -VCore <Int32> -ComputeGeneration <String>
- [-LicenseType <String>] [-ComputeModel <String>] [-AutoPauseDelay <Int32>] [-MinCapacity <Double>]
+ [-LicenseType <String>] [-ComputeModel <String>] [-AutoPauseDelayMinutes <Int32>] [-MinCapacity <Double>]
  [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -164,7 +164,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AutoPauseDelay
+### -AutoPauseDelayMinutes
 The auto pause delay in minutes for database(serverless only), -1 to opt out
 
 ```yaml

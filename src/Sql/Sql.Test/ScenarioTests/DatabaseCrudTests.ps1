@@ -198,7 +198,7 @@ function Test-CreateServerlessDatabase
 	{
 		# Create with Edition and RequestedServiceObjectiveName
 		$databaseName = Get-DatabaseName
-		$job1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_S_Gen5_2 -AutoPauseDelay 360 -MinVCore 0.5 -AsJob
+		$job1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_S_Gen5_2 -AutoPauseDelayMinutes 360 -MinVCore 0.5 -AsJob
 		$job1 | Wait-Job
 		$db = $job1.Output
 
@@ -599,7 +599,7 @@ function Test-UpdateServerlessDatabase()
 
 		# Alter mincapacity and autopausedelay
 		$job = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-			-Vcore 2 -Edition GeneralPurpose -ComputeModel Serverless -ComputeGeneration Gen5 -MinCapacity 2 -AutoPauseDelay 1440 -AsJob
+			-Vcore 2 -Edition GeneralPurpose -ComputeModel Serverless -ComputeGeneration Gen5 -MinCapacity 2 -AutoPauseDelayMinutes 1440 -AsJob
 		$job | Wait-Job
 		$db1 = $job.Output
 		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
