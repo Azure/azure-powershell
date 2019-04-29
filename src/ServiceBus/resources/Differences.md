@@ -1,0 +1,160 @@
+## Incorrect Cmdlets
+
+- Get-AzServiceBusQueue
+    - Namespace
+    - MaxCount
+- Get-AzServiceBusRule
+    - Namespace
+    - Topic
+    - Subscription
+    - MaxCount
+- Get-AzServiceBusSubscription
+    - Namespace
+    - Topic
+    - MaxCount
+- Get-AzServiceBusTopic
+    - Namespace
+    - MaxCount
+- New-AzServiceBusQueue
+    - Namespace
+    - EnableBatchedOperations
+    - MaxSizeInMegabytes
+    - MessageCount
+    - SizeInBytes
+- New-AzServiceBusRule
+    - Namespace
+    - Topic
+    - Subscription
+    - SqlExpression
+    - RequiresPreprocessing
+- New-AzServiceBusSubscription
+    - Namespace
+    - Topic
+    - DeadLetteringOnFilterEvaluationExceptions
+    - EnableBatchedOperations
+- New-AzServiceBusTopic
+    - Namespace
+    - EnableBatchedOperations
+    - MaxSizeInMegabytes
+    - SizeInBytes
+- Remove-AzServiceBusNamespace
+    - InputObject
+    - ResourceId
+- Remove-AzServiceBusQueue
+    - Namespace
+    - InputObject
+    - ResourceId
+    - AsJob
+- Remove-AzServiceBusRule
+    - Namespace
+    - Topic
+    - Subscription
+    - InputObject
+    - ResourceId
+    - AsJob
+    - Force
+- Remove-AzServiceBusSubscription
+    - Namespace
+    - Topic
+    - InputObject
+    - ResourceId
+    - AsJob
+- Remove-AzServiceBusTopic
+    - Namespace
+    - InputObject
+    - ResourceId
+    - AsJob
+- Set-AzServiceBusQueue
+    - Namespace
+    - InputObject
+- Set-AzServiceBusRule
+    - Namespace
+    - Topic
+    - Subscription
+    - InputObject
+- Set-AzServiceBusSubscription
+    - Namespace
+    - Topic
+    - InputObject
+- Set-AzServiceBusTopic
+    - Namespace
+    - InputObject
+
+## Correct Cmdlets
+
+- Get-AzServiceBusNamespace
+- New-AzServiceBusNamespace
+- Set-AzServiceBusNamespace
+
+## New Cmdlets
+
+- Complete-AzServiceBusMigrationConfigMigration
+- Get-AzServiceBusDisasterRecoveryConfig
+- Get-AzServiceBusDisasterRecoveryConfigAuthorizationRule
+- Get-AzServiceBusDisasterRecoveryConfigKey
+- Get-AzServiceBusEventHub
+- Get-AzServiceBusMigrationConfig
+- Get-AzServiceBusNamespaceAuthorizationRule
+- Get-AzServiceBusNamespaceIPFilterRule
+- Get-AzServiceBusNamespaceKey
+- Get-AzServiceBusNamespaceNetworkRuleSet
+- Get-AzServiceBusNamespaceVirtualNetworkRule
+- Get-AzServiceBusPremiumMessagingRegion
+- Get-AzServiceBusQueueAuthorizationRule
+- Get-AzServiceBusQueueKey
+- Get-AzServiceBusRegion
+- Get-AzServiceBusTopicAuthorizationRule
+- Get-AzServiceBusTopicKey
+- Invoke-AzServiceBusBreakDisasterRecoveryConfigPairing
+- Invoke-AzServiceBusFailDisasterRecoveryConfigOver
+- Invoke-AzServiceBusRevertMigrationConfig
+- Move-AzServiceBusNamespace
+- New-AzServiceBusDisasterRecoveryConfig
+- New-AzServiceBusMigrationConfigAndStartMigration
+- New-AzServiceBusNamespaceAuthorizationRule
+- New-AzServiceBusNamespaceIPFilterRule
+- New-AzServiceBusNamespaceKey
+- New-AzServiceBusNamespaceNetworkRuleSet
+- New-AzServiceBusNamespaceVirtualNetworkRule
+- New-AzServiceBusQueueAuthorizationRule
+- New-AzServiceBusQueueKey
+- New-AzServiceBusTopicAuthorizationRule
+- New-AzServiceBusTopicKey
+- Remove-AzServiceBusDisasterRecoveryConfig
+- Remove-AzServiceBusMigrationConfig
+- Remove-AzServiceBusNamespaceAuthorizationRule
+- Remove-AzServiceBusNamespaceIPFilterRule
+- Remove-AzServiceBusNamespaceVirtualNetworkRule
+- Remove-AzServiceBusQueueAuthorizationRule
+- Remove-AzServiceBusTopicAuthorizationRule
+- Set-AzServiceBusDisasterRecoveryConfig
+- Set-AzServiceBusNamespaceAuthorizationRule
+- Set-AzServiceBusNamespaceIPFilterRule
+- Set-AzServiceBusNamespaceNetworkRuleSet
+- Set-AzServiceBusNamespaceVirtualNetworkRule
+- Set-AzServiceBusQueueAuthorizationRule
+- Set-AzServiceBusTopicAuthorizationRule
+- Test-AzServiceBusDisasterRecoveryConfigNameAvailability
+- Test-AzServiceBusNamespaceNameAvailability
+- Update-AzServiceBusNamespace
+
+## Missing Cmdlets
+
+- Complete-AzServiceBusMigration
+- Get-AzServiceBusAuthorizationRule
+- Get-AzServiceBusGeoDRConfiguration
+- Get-AzServiceBusKey
+- Get-AzServiceBusMigration
+- Get-AzServiceBusOperation
+- New-AzServiceBusAuthorizationRule
+- New-AzServiceBusGeoDRConfiguration
+- New-AzServiceBusKey
+- Remove-AzServiceBusAuthorizationRule
+- Remove-AzServiceBusGeoDRConfiguration
+- Remove-AzServiceBusMigration
+- Set-AzServiceBusAuthorizationRule
+- Set-AzServiceBusGeoDRConfigurationBreakPair
+- Set-AzServiceBusGeoDRConfigurationFailOver
+- Start-AzServiceBusMigration
+- Stop-AzServiceBusMigration
+- Test-AzServiceBusName
