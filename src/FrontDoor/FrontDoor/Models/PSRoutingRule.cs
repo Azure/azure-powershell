@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
     {
         public string CustomForwardingPath { get; set; }
 
-        public PSForwardingProtocol? ForwardingProtocol { get; set; }
+        public string ForwardingProtocol { get; set; }
 
         public string BackendPoolId { get; set; }
 
-        public PSQueryParameterStripDirective? QueryParameterStripDirective { get; set; }
+        public string QueryParameterStripDirective { get; set; }
 
         public PSEnabledState? DynamicCompression { get; set; }
 
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 
     public class PSRedirectConfiguration : PSRouteConfiguration
     {
-        public PSRedirectType? RedirectType { get; set; }
+        public string RedirectType { get; set; }
 
-        public PSRedirectProtocol? RedirectProtocol { get; set; }
+        public string RedirectProtocol { get; set; }
 
         public string CustomHost { get; set; }
 
