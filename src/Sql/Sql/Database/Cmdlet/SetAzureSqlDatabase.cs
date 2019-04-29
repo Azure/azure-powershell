@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                            ? (bool?)ZoneRedundant.ToBool()
                            : null,
                 LicenseType = LicenseType ?? model.FirstOrDefault().LicenseType, // set to original license type
-                AutoPauseDelay = AutoPauseDelayMinutes,
+                AutoPauseDelayMinutes = AutoPauseDelayMinutes,
                 MinCapacity = MinCapacity,
             };
 

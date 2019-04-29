@@ -141,7 +141,7 @@ Capacity                      : 2
 Family                        : Gen5
 SkuName                       : GP_S_Gen5
 LicenseType                   : LicenseIncluded
-AutoPauseDelay                : 360
+AutoPauseDelayMinutes         : 360
 MinCapacity                   : 0.5
 ```
 
