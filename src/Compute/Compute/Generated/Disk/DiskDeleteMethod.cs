@@ -48,16 +48,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string resourceGroupName = this.ResourceGroupName;
                     string diskName = this.DiskName;
 
-                    Microsoft.Rest.Azure.AzureOperationResponse result;
-                    if (NoWait.IsPresent)
-                    {
-                        result = DisksClient.BeginDeleteWithHttpMessagesAsync(resourceGroupName, diskName).GetAwaiter().GetResult();
-                    }
-                    else
-                    {
-                        result = DisksClient.DeleteWithHttpMessagesAsync(resourceGroupName, diskName).GetAwaiter().GetResult();
-                    }
-
+                    var result = DisksClient.DeleteWithHttpMessagesAsync(resourceGroupName, diskName).GetAwaiter().GetResult();
                     PSOperationStatusResponse output = new PSOperationStatusResponse
                     {
                         StartTime = this.StartTime,
@@ -98,8 +89,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
-        public SwitchParameter NoWait { get; set; }
     }
 }
