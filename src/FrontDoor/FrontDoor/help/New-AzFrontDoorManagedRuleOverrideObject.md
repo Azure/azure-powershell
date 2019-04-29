@@ -13,7 +13,7 @@ Create managed rule override object
 ## SYNTAX
 
 ```
-New-AzFrontDoorManagedRuleOverrideObject -RuleId <String> [-Action <PSAction>] [-Disabled]
+New-AzFrontDoorManagedRuleOverrideObject -RuleId <String> [-Action <String>] [-Disabled]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -39,10 +39,9 @@ RuleId EnabledState Action
 Override Action
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Allow, Block, Log, Redirect
 
 Required: False
 Position: Named

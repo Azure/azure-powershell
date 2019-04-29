@@ -78,6 +78,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Issuer name. Cmdlet constructs the FQDN of a certificate issuer from vault name, currently selected environment and issuer name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.IssuerName)]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         #endregion

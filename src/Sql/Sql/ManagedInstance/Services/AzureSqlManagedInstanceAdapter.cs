@@ -110,7 +110,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 Identity = model.Identity,
                 Collation = model.Collation,
                 PublicDataEndpointEnabled = model.PublicDataEndpointEnabled,
-                ProxyOverride = model.ProxyOverride
+                ProxyOverride = model.ProxyOverride,
+                TimezoneId = model.TimezoneId,
             });
 
             return CreateManagedInstanceModelFromResponse(resp);
@@ -181,6 +182,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.Collation = resp.Collation;
             managedInstance.PublicDataEndpointEnabled = resp.PublicDataEndpointEnabled;
             managedInstance.ProxyOverride = resp.ProxyOverride;
+            managedInstance.TimezoneId = resp.TimezoneId;
 
             Management.Internal.Resources.Models.Sku sku = new Management.Internal.Resources.Models.Sku();
             sku.Name = resp.Sku.Name;

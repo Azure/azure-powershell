@@ -102,5 +102,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// The server endpoint identifier alias
         /// </summary>
         public const string ServerEndpointIdAlias = "ServerEndpointId";
+        /// <summary>
+        /// The storage account share name alias
+        /// </summary>
+        public const string StorageAccountShareNameAlias = "StorageAccountShareName";
     }
 }

@@ -102,6 +102,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             {
                 ServerFarmId = appServicePlan,
                 Location = location,
+                Tags = siteEnvelope?.Tags
             };
 
             if (siteEnvelope!=null)
@@ -806,6 +807,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             string qualifiedSiteName;
 
             var shouldUseDeploymentSlot = CmdletHelpers.ShouldUseDeploymentSlot(webAppName, slotName, out qualifiedSiteName);
+            var webapp = GetWebApp(resourceGroupName, webAppName, slotName);
 
             var webappWithNewSslBinding = new Site
             {
@@ -816,11 +818,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                     ToUpdate = true,
                     SslState = sslState
                 }},
-                Location = location
+                Location = location,
+                Tags = webapp?.Tags
             };
-
-            var webapp = GetWebApp(resourceGroupName, webAppName, slotName);
-            webappWithNewSslBinding.Tags = webapp?.Tags;
 
             if (shouldUseDeploymentSlot)
             {

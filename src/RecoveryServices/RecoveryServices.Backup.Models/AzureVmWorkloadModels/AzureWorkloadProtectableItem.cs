@@ -59,6 +59,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public bool? IsAutoProtectable { get; set; }
 
         /// <summary>
+        /// indicates if protectable item is auto-protected
+        /// </summary>
+        public bool? IsAutoProtected { get; set; }
+
+        /// <summary>
         /// for instance or AG, indicates number of DB's present
         /// </summary>
         public int? Subinquireditemcount { get; set; }
@@ -91,6 +96,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             ParentUniqueName = protectedItem.ParentUniqueName;
             ServerName = protectedItem.ServerName;
             IsAutoProtectable = protectedItem.IsAutoProtectable;
+            IsAutoProtected = protectedItem.IsAutoProtected;
             Subinquireditemcount = protectedItem.Subinquireditemcount;
             Subprotectableitemcount = protectedItem.Subprotectableitemcount;
             Prebackupvalidation = protectedItem.Prebackupvalidation;
