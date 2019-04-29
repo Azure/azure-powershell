@@ -128,19 +128,7 @@ Create a new Direct connections using the New-AzDirectPeeringConnectionObject an
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]
-Parameter Sets: DefaultDirect
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]
-Parameter Sets: ByResourceIdDirect, Direct
+Parameter Sets: DefaultDirect, ByResourceIdDirect, Direct
 Aliases:
 
 Required: False
@@ -291,10 +279,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
 
 ### System.String
-
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[]
-
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]
 
 ## OUTPUTS
 
