@@ -161,15 +161,16 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
                'Remove-AzGalleryImageDefinition', 'New-AzGalleryImageVersion', 
                'Update-AzGalleryImageVersion', 'Get-AzGalleryImageVersion', 
                'Remove-AzGalleryImageVersion', 'Add-AzVmssVMDataDisk', 
-               'Remove-AzVmssVMDataDisk', 'Invoke-AzVMReimage'
+               'Remove-AzVmssVMDataDisk', 'Invoke-AzVMReimage',
+               'New-AzProximityPlacementGroup', 'Update-AzProximityPlacementGroup',
+               'Get-AzProximityPlacementGroup', 'Remove-AzProximityPlacementGroup'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzVmssDiskEncryptionStatus', 
-               'Get-AzVmssVMDiskEncryptionStatus', 'Repair-AzVmssServiceFabricUD', 
-               'Export-AzLogAnalyticThrottledRequests', 'Set-AzVMBootDiagnostics'
+               'Get-AzVmssVMDiskEncryptionStatus', 'Repair-AzVmssServiceFabricUD'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
