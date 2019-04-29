@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+ * Bug fix for NewAZAutomationUpdateManagementAzureQuery
 ## Version 1.2.1
 * Fixed New-AzAutomationSoftwareUpdateConfiguration cmdlet bug for Inclusions. Now parameter IncludedKbNumber and IncludedPackageNameMask should work.
 * Bug fix for azure automation update management dynamic group
