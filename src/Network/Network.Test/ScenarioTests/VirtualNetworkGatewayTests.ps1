@@ -601,7 +601,7 @@ function Test-VirtualNetworkGatewayIkeV2
 		$vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
       
 		# Create & Get IkeV2 + SSTP virtualnetworkgateway
-		New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 -VpnClientRootCertificates $rootCert
+		New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 -VpnClientRootCertificates $rootCert -CustomRoute 192.168.0.0/24
 		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
 		Assert-AreEqual "VpnGw1" $actual.Sku.Tier
 		$protocols = $actual.VpnClientConfiguration.VpnClientProtocols
@@ -609,13 +609,20 @@ function Test-VirtualNetworkGatewayIkeV2
 		Assert-AreEqual "SSTP" $protocols[0]
 		Assert-AreEqual "IkeV2" $protocols[1]
 		Assert-AreEqual "201.169.0.0/16" $actual.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes
+        Assert-AreEqual "192.168.0.0/24" $actual.CustomRoutes.AddressPrefixes
 
-		# Update gateway to IkeV2 only
-		Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientProtocol IkeV2
+		# Update gateway to IkeV2 only and update Custom routes
+		Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientProtocol IkeV2 -CustomRoute 192.168.1.0/24
 		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
 		$protocols = $actual.VpnClientConfiguration.VpnClientProtocols
 		Assert-AreEqual 1 @($protocols).Count
 		Assert-AreEqual "IkeV2" $protocols[0]
+        Assert-AreEqual "192.168.1.0/24" $actual.CustomRoutes.AddressPrefixes
+		 
+		# Update gateway to remove the Custom routes
+        Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientProtocol IkeV2 -CustomRoute @()
+        $actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+        Assert-Null  $actual.CustomRoutes.AddressPrefixes
 	}
 	finally
     {
