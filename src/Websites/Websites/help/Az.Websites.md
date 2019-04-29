@@ -20,7 +20,7 @@ Opens a remote PowerShell session into the windows container specified in a give
 ### [Get-AzAppServicePlan](Get-AzAppServicePlan.md)
 Gets an Azure App Service plan in the specified resource group.
 
-### [Get-AzAppServicePlanMetrics](Get-AzAppServicePlanMetrics.md)
+### [Get-AzAppServicePlanMetric](Get-AzAppServicePlanMetric.md)
 
 
 ### [Get-AzDeletedWebApp](Get-AzDeletedWebApp.md)
@@ -44,7 +44,7 @@ Gets an Azure Web App certificate.
 ### [Get-AzWebAppContainerContinuousDeploymentUrl](Get-AzWebAppContainerContinuousDeploymentUrl.md)
 Get-AzWebAppContainerContinuousDeploymentUrl will return container continuous deployment url
 
-### [Get-AzWebAppMetrics](Get-AzWebAppMetrics.md)
+### [Get-AzWebAppMetric](Get-AzWebAppMetric.md)
 Gets Azure Web App metrics.
 
 ### [Get-AzWebAppPublishingProfile](Get-AzWebAppPublishingProfile.md)
@@ -56,7 +56,7 @@ Gets an Azure Web App slot.
 ### [Get-AzWebAppSlotConfigName](Get-AzWebAppSlotConfigName.md)
 Get the list of Web App Slot Config names
 
-### [Get-AzWebAppSlotMetrics](Get-AzWebAppSlotMetrics.md)
+### [Get-AzWebAppSlotMetric](Get-AzWebAppSlotMetric.md)
 Gets metrics for an Azure Web App slot.
 
 ### [Get-AzWebAppSlotPublishingProfile](Get-AzWebAppSlotPublishingProfile.md)

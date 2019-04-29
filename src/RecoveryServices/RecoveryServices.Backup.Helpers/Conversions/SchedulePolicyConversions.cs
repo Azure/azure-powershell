@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
@@ -48,6 +48,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     typeof(ScheduleRunType), serviceClientPolicy.ScheduleRunFrequency.ToString());
             psPolicy.ScheduleRunTimes = ParseDateTimesToUTC(serviceClientPolicy.ScheduleRunTimes, timeZone);
 
+            if (psPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly)
+            {
+                int offset = psPolicy.ScheduleRunTimes[0].DayOfWeek.GetHashCode() -
+                    serviceClientPolicy.ScheduleRunTimes[0].Value.DayOfWeek.GetHashCode();
+
+                for (int index = 0; index < psPolicy.ScheduleRunDays.Count(); index++)
+                {
+                    if (offset == -1)
+                    {
+                        int value = psPolicy.ScheduleRunDays[index].GetHashCode() - 1;
+                        if (value == -1)
+                        {
+                            value = 6;
+                        }
+                        psPolicy.ScheduleRunDays[index] = (DayOfWeek)value;
+                    }
+                    else if (offset == 1)
+                    {
+                        int value = psPolicy.ScheduleRunDays[index].GetHashCode() + 1;
+                        if (value == 7)
+                        {
+                            value = 0;
+                        }
+                        psPolicy.ScheduleRunDays[index] = (DayOfWeek)value;
+                    }
+                }
+            }
             // safe side validation
             psPolicy.Validate();
 
@@ -100,7 +127,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 temp = localTime;
                 if (!string.IsNullOrEmpty(timeZone))
                 {
-                    TimeZoneInfo timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(timeZone);
+                    TimeZoneInfo timeZoneInfo = TimeZoneConverter.TZConvert.GetTimeZoneInfo(timeZone);
                     temp = DateTime.SpecifyKind(temp, DateTimeKind.Unspecified);
                     temp = TimeZoneInfo.ConvertTimeToUtc(temp, timeZoneInfo);
                 }

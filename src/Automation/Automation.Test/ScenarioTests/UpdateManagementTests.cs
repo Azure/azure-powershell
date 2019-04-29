@@ -159,5 +159,21 @@ namespace Commands.Automation.Test
         {
             TestRunner.RunTestScript("Test-CreateWindowsMonthlySoftwareUpdateConfiguration");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Service, Category.Automation)]
+        public void CreateWindowsIncludeKbNumbersSUC()
+        {
+            TestRunner.RunTestScript("Test-CreateWindowsIncludeKbNumbersSoftwareUpdateConfiguration");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Service, Category.Automation)]
+        public void CreateLinuxIncludePackageNameMasksSUC()
+        {
+            TestRunner.RunTestScript("Test-CreateLinuxIncludedPackageNameMasksSoftwareUpdateConfiguration");
+        }
     }
 }

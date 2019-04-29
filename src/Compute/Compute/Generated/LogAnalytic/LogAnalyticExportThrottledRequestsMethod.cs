@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -31,8 +32,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsData.Export, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LogAnalyticThrottledRequests", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [GenericBreakingChange("Export-AzLogAnalyticThrottledRequests alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet(VerbsData.Export, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LogAnalyticThrottledRequest", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSLogAnalyticsOperationResult))]
+    [Alias("Export-AzLogAnalyticThrottledRequests")]
     public partial class ExportAzureRmLogAnalyticThrottledRequests : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()

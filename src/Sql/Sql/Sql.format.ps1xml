@@ -54,6 +54,36 @@
       </ListControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.Sql.ServiceObjective.Model.AzureSqlServerServiceObjectiveModel</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Sql.ServiceObjective.Model.AzureSqlServerServiceObjectiveModel</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader><Label>ServiceObjectiveName</Label></TableColumnHeader>
+          <TableColumnHeader><Label>SkuName</Label></TableColumnHeader>
+          <TableColumnHeader><Label>Edition</Label></TableColumnHeader>
+          <TableColumnHeader><Label>Family</Label></TableColumnHeader>
+          <TableColumnHeader><Label>Capacity</Label></TableColumnHeader>
+          <TableColumnHeader><Label>CapacityUnit</Label></TableColumnHeader>
+          <TableColumnHeader><Label>Enabled</Label></TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem><PropertyName>ServiceObjectiveName</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>SkuName</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Edition</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Family</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Capacity</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>CapacityUnit</PropertyName></TableColumnItem>
+              <TableColumnItem><PropertyName>Enabled</PropertyName></TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model.ServerAdvancedThreatProtectionPolicyModel</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model.ServerAdvancedThreatProtectionPolicyModel</TypeName>

@@ -1,0 +1,16 @@
+parameters:
+  osName: ''
+  testFramework: ''
+  configuration: ''
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: Build
+  inputs:
+    command: custom
+    custom: msbuild
+    arguments: 'build.proj /t:Build /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }}'
+
+- template: publish-artifacts-steps.yml
+  parameters:
+    artifactName: build-${{ parameters.osName }}

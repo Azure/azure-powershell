@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Alias("ResourceName")]
@@ -48,6 +49,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The name of the express route port.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         [Parameter(

@@ -26,7 +26,7 @@ The **Get-AzSqlElasticPoolAdvisor** cmdlet gets one or more Azure SQL Elastic Po
 
 ### Example 1: List all the advisors for the specified elastic pool
 ```
-PS C:\>Get-AzSqlElasticPoolAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -PoolName "WIRunnerPool"
+PS C:\>Get-AzSqlElasticPoolAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -ElasticPoolName "WIRunnerPool"
 ElasticPoolName                : WIRunnerPool
 ResourceGroupName              : WIRunnersProd
 ServerName                     : wi-runner-australia-east
@@ -167,6 +167,34 @@ RecommendedActions             : {IR_[test_schema]_[test_table_0.0361551]_6C7AE8
 
 This command gets advisor named CreateIndex from the server named wi-runner-australia-east with its recommended actions included in the response.
 
+### Example 5: List all the advisors for the specified elastic pool using filtering
+```
+PS C:\>Get-AzSqlElasticPoolAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -ElasticPoolName "WIRunnerPool" -AdvisorName d*
+ElasticPoolName                : WIRunnerPool
+ResourceGroupName              : WIRunnersProd
+ServerName                     : wi-runner-australia-east
+AdvisorName                    : DropIndex
+AdvisorStatus                  : PublicPreview
+AutoExecuteStatus              : Disabled
+AutoExecuteStatusInheritedFrom : Database
+LastChecked                    : 7/31/2016 8:41:19 PM
+RecommendationsStatus          : Ok
+RecommendedActions             : {}
+
+ElasticPoolName                : WIRunnerPool
+ResourceGroupName              : WIRunnersProd
+ServerName                     : wi-runner-australia-east
+AdvisorName                    : DbParameterization
+AdvisorStatus                  : PublicPreview
+AutoExecuteStatus              : Disabled
+AutoExecuteStatusInheritedFrom : Default
+LastChecked                    : 7/31/2016 2:46:58 PM
+RecommendationsStatus          : NoDbParameterizationIssue
+RecommendedActions             : {}
+```
+
+The command gets lists all the advisors for the elastic pool named WIRunnerPool that start with the letter "d".
+
 ## PARAMETERS
 
 ### -AdvisorName
@@ -181,7 +209,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -DefaultProfile
@@ -260,7 +288,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

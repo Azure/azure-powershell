@@ -13,9 +13,8 @@ Create CustomRule Object for WAF policy creation
 ## SYNTAX
 
 ```
-New-AzFrontDoorCustomRuleObject -Name <String> -RuleType <PSCustomRuleType>
- -MatchCondition <PSMatchCondition[]> -Action <PSAction> -Priority <Int32>
- [-RateLimitDurationInMinutes <Int32>] [-RateLimitThreshold <Int32>] [-Transform <String[]>]
+New-AzFrontDoorCustomRuleObject -Name <String> -RuleType <String> -MatchCondition <PSMatchCondition[]>
+ -Action <String> -Priority <Int32> [-RateLimitDurationInMinutes <Int32>] [-RateLimitThreshold <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -28,15 +27,9 @@ Create CustomRule Object for WAF policy creation
 ```powershell
 PS C:\> New-AzFrontDoorCustomRuleObject -Name "Rule1" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Block -Priority 2
 
-RuleType                   : MatchRule
-Action                     : Block
-MatchConditions            : {Microsoft.Azure.Commands.FrontDoor.Models.PSMatchCondition}
-Priority                   : 2
-RateLimitDurationInMinutes : 1
-RateLimitThreshold         :
-Name                       : Rule1
-Etag                       :
-Transforms                 :
+Name   RuleType Action Priority RateLimitDurationInMinutes
+----   -------- ------ -------- --------------------------
+Rule1 MatchRule  Block        2                          1
 ```
 
 Create a CustomRule Object
@@ -48,10 +41,9 @@ Type of Actions.
 Possible values include: 'Allow', 'Block', 'Log'
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Allow, Block, Log
 
 Required: True
 Position: Named
@@ -155,10 +147,9 @@ Type of the rule.
 Possible values include: 'MatchRule', 'RateLimitRule'
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSCustomRuleType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: RateLimitRule, MatchRule
 
 Required: True
 Position: Named
@@ -167,23 +158,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Transform
-List of transforms
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

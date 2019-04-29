@@ -13,9 +13,9 @@ Create MatchCondition Object for WAF policy creation
 ## SYNTAX
 
 ```
-New-AzFrontDoorMatchConditionObject -MatchVariable <PSMatchVariable> -OperatorProperty <PSOperatorProperty>
- -MatchValue <String[]> [-Selector <String>] [-NegateCondition <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzFrontDoorMatchConditionObject -MatchVariable <String> -OperatorProperty <String> [-MatchValue <String[]>]
+ [-Selector <String>] [-NegateCondition <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,14 +25,12 @@ Create MatchCondition Object for WAF policy creation
 
 ### Example 1
 ```powershell
-PS C:\> New-AzFrontDoorMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "UserAgent" -MatchValue "Windows"
+PS C:\> New-AzFrontDoorMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "User-Agent" -MatchValue "Windows"
 
 
-MatchVariable    : RequestHeader
-OperatorProperty : Contains
-MatchValue       : {Windows}
-Selector         : UserAgent
-NegateCondition  : False
+MatchVariable OperatorProperty MatchValue Selector   NegateCondition
+------------- ---------------- ---------- --------   ---------------
+RequestHeader         Contains {Windows}  User-Agent           False
 ```
 
 Create a MatchCondition object
@@ -62,7 +60,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -74,10 +72,9 @@ Match Variable.
 Possible values include: 'RemoteAddr', 'RequestMethod', 'QueryString', 'PostArgs','RequestUri', 'RequestHeader', 'RequestBody'
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSMatchVariable
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: RemoteAddr, RequestMethod, QueryString, PostArgs, RequestUri, RequestHeader, RequestBody
 
 Required: True
 Position: Named
@@ -107,10 +104,9 @@ Describes operator to be matched.
 Possible values include: 'Any', 'IPMatch', 'GeoMatch', 'Equal', 'Contains', 'LessThan', 'GreaterThan', 'LessThanOrEqual', 'GreaterThanOrEqual', 'BeginsWith', 'EndsWith''
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSOperatorProperty
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Any, IPMatch, GeoMatch, Equal, Contains, LessThan, GreaterThan, LessThanOrEqual, GreaterThanOrEqual, BeginsWith, EndsWith
 
 Required: True
 Position: Named
@@ -135,7 +131,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

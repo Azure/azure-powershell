@@ -1,0 +1,36 @@
+variables:
+  WindowsName: windows
+  WindowsImage: VS2017-Win2016
+  TestFramework: net472
+  TestTarget: TestNet472
+  Configuration: Debug
+
+jobs:
+- job: Build
+  displayName: Build
+  condition: succeeded()
+  pool:
+    vmImage: ${{ variables.WindowsImage }}
+
+  steps:
+  - template: util/build-steps.yml
+    parameters:
+      osName: ${{ variables.WindowsName }}
+      testFramework: ${{ variables.TestFramework }}
+      configuration: ${{ variables.Configuration }}
+
+- job: Test
+  displayName: Test
+  dependsOn: Build
+  condition: succeeded()
+  timeoutInMinutes: 120
+  pool:
+    vmImage: ${{ variables.WindowsImage }}
+
+  steps:
+  - template: util/test-steps.yml
+    parameters:
+      osName: ${{ variables.WindowsName }}
+      testFramework: ${{ variables.TestFramework }}
+      testTarget: ${{ variables.TestTarget }}
+      configuration: ${{ variables.Configuration }}

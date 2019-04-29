@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Alias("InstanceDatabaseName")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances/databases", "ResourceGroupName", "InstanceName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         /// <summary>
@@ -115,33 +116,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 
                 ResourceGroupName = resourceInfo.ResourceGroupName;
                 InstanceName = resourceInfo.ResourceName;
-
-                if (MyInvocation.BoundParameters.ContainsKey("Name"))
-                {
-                    results = new List<AzureSqlManagedDatabaseModel>();
-                    results.Add(ModelAdapter.GetManagedDatabase(this.ResourceGroupName, this.InstanceName, this.Name));
-                }
-                else
-                {
-                    results = ModelAdapter.ListManagedDatabases(this.ResourceGroupName, this.InstanceName);
-                }
             }
             else if (string.Equals(this.ParameterSetName, GetByInputObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
                 ResourceGroupName = InstanceObject.ResourceGroupName;
                 InstanceName = InstanceObject.ManagedInstanceName;
-
-                if (MyInvocation.BoundParameters.ContainsKey("Name"))
-                {
-                    results = new List<AzureSqlManagedDatabaseModel>();
-                    results.Add(ModelAdapter.GetManagedDatabase(this.ResourceGroupName, this.InstanceName, this.Name));
-                }
-                else
-                {
-                    results = ModelAdapter.ListManagedDatabases(this.ResourceGroupName, this.InstanceName);
-                }
             }
-            else if (MyInvocation.BoundParameters.ContainsKey("Name"))
+
+
+            if (MyInvocation.BoundParameters.ContainsKey("Name") && !WildcardPattern.ContainsWildcardCharacters(Name))
             {
                 results = new List<AzureSqlManagedDatabaseModel>();
                 results.Add(ModelAdapter.GetManagedDatabase(this.ResourceGroupName, this.InstanceName, this.Name));
@@ -151,7 +134,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                 results = ModelAdapter.ListManagedDatabases(this.ResourceGroupName, this.InstanceName);
             }
 
-            return results;
+            return SubResourceWildcardFilter(Name, results);
         }
 
         /// <summary>

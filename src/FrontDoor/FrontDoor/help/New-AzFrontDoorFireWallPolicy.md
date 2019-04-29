@@ -14,7 +14,8 @@ Create WAF policy
 
 ```
 New-AzFrontDoorFireWallPolicy -ResourceGroupName <String> -Name <String> [-EnabledState <PSEnabledState>]
- [-Mode <PSMode>] [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>]
+ [-Mode <String>] [-Customrule <PSCustomRule[]>] [-ManagedRule <PSManagedRule[]>] [-RedirectUrl <String>]
+ [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,26 +26,46 @@ The **New-AzFrontDoorFireWallPolicy** cmdlet creates a new Azure WAF policy in t
 
 ### Example 1: Create WAF policy
 ```powershell
-PS C:\>  New-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule1 -ManagedRule $managedRule1 -En
-abledState Enabled -Mode Prevention
+PS C:\> New-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Customrule $customRule1,$customRule2 -ManagedRule $managedRule1 -EnabledState Enabled -Mode Prevention -RedirectUrl "https://www.bing.com/" -CustomBlockResponseStatusCode 405 -CustomBlockResponseBody "<html><head><title>You are blocked!</title></head><body></body></html>"
 
-
-PolicyMode         : Prevention
-PolicyEnabledState : Enabled
-CustomRules        : {Rule1}
-ManagedRules       : {Microsoft.Azure.Commands.FrontDoor.Models.PSAzureManagedRule}
-Etag               :
-ProvisioningState  : Succeeded
-Tags               :
-Id                 : /subscriptions/{subid}/resourcegroups/{resourceGroupName}/providers/Micr
-                     osoft.Network/frontdoorwebapplicationfirewallpolicies/{Name}
-Name               : {Name}
-Type               :
+Name         PolicyMode PolicyEnabledState RedirectUrl
+----         ---------- ------------------ -----------
+{policyName} Prevention            Enabled https://www.bing.com/
 ```
 
 Create WAF policy
 
 ## PARAMETERS
+
+### -CustomBlockResponseBody
+Custom Response Body
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomBlockResponseStatusCode
+Custom Response Status Code
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Customrule
 Custom rules inside the policy
@@ -113,10 +134,9 @@ Describes if it is in detection mode  or prevention mode at policy level.
 Possible values include:'Prevention', 'Detection'
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSMode
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Prevention, Detection
 
 Required: False
 Position: Named
@@ -134,6 +154,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RedirectUrl
+Redirect URL
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -187,7 +222,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

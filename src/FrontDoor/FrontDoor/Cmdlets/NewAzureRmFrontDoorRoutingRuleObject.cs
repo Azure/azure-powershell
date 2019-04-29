@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// <summary>
     /// Defines the New-AzFrontDoorRoutingRuleObject cmdlet.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorRoutingRuleObject"), OutputType(typeof(PSRoutingRule))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorRoutingRuleObject", DefaultParameterSetName = FieldsWithForwardingParameterSet), OutputType(typeof(PSRoutingRule))]
     public class NewAzureRmFrontDoorRoutingRuleObject : AzureFrontDoorCmdletBase
-    {        
+    {
         /// <summary>
         /// The resource group name that the RoutingRule will be created in.
         /// </summary>
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// The name of BackendPool which this rule routes to
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The name of the BackendPool which this rule routes to")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsWithForwardingParameterSet, HelpMessage = "The name of the BackendPool which this rule routes to")]
         [ValidateNotNullOrEmpty]
         public string BackendPoolName { get; set; }
 
@@ -82,32 +82,72 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// The custom path used to rewrite resource paths matched by this rule. Leave empty to use incoming path.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The custom path used to rewrite resource paths matched by this rule. Leave empty to use incoming path.")]
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithForwardingParameterSet, HelpMessage = "The custom path used to rewrite resource paths matched by this rule. Leave empty to use incoming path.")]
         public string CustomForwardingPath { get; set; }
 
         /// <summary>
         /// The protocol this rule will use when forwarding traffic to backends.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The protocol this rule will use when forwarding traffic to backends. Default value is MatchRequest")]
-        public PSForwardingProtocol ForwardingProtocol { get; set; }
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithForwardingParameterSet, HelpMessage = "The protocol this rule will use when forwarding traffic to backends. Default value is MatchRequest")]
+        [PSArgumentCompleter("HttpOnly", "HttpsOnly", "MatchRequest")]
+        public string ForwardingProtocol { get; set; }
 
         /// <summary>
         /// Whether to enable caching for this route.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Whether to enable caching for this route. Default value is false")]
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithForwardingParameterSet, HelpMessage = "Whether to enable caching for this route. Default value is false")]
         public bool EnableCaching { get; set; }
 
         /// <summary>
         /// The treatment of URL query terms when forming the cache key.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The treatment of URL query terms when forming the cache key. Default value is StripAll")]
-        public PSQueryParameterStripDirective QueryParameterStripDirective { get; set; }
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithForwardingParameterSet, HelpMessage = "The treatment of URL query terms when forming the cache key. Default value is StripAll")]
+        [PSArgumentCompleter("StripNone", "StripAll")]
+        public string QueryParameterStripDirective { get; set; }
 
         /// <summary>
         /// Whether to use dynamic compression for cached content
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Whether to enable dynamic compression for cached content. Default value is Enabled")]
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithForwardingParameterSet, HelpMessage = "Whether to enable dynamic compression for cached content. Default value is Enabled")]
         public PSEnabledState DynamicCompression { get; set; }
+
+        /// <summary>
+        /// The redirect type the rule will use when redirecting traffic.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithRedirectParameterSet, HelpMessage = "The redirect type the rule will use when redirecting traffic. Default Value is Moved")]
+        [PSArgumentCompleter("Moved", "Found", "TemporaryRedirect", "PermanentRedirect")]
+        public string RedirectType { get; set; }
+
+        /// <summary>
+        /// The protocol of the destination to where the traffic is redirected
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithRedirectParameterSet, HelpMessage = "The protocol of the destination to where the traffic is redirected. Default value is MatchRequest")]
+        [PSArgumentCompleter("HttpOnly", "HttpsOnly", "MatchRequest")]
+        public string RedirectProtocol { get; set; }
+
+        /// <summary>
+        /// Host to redirect. Leave empty to use use the incoming host as the destination host.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithRedirectParameterSet, HelpMessage = "Host to redirect. Leave empty to use use the incoming host as the destination host.")]
+        public string CustomHost { get; set; }
+
+        /// <summary>
+        /// The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithRedirectParameterSet, HelpMessage = "The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.")]
+        public string CustomPath { get; set; }
+
+        /// <summary>
+        /// Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithRedirectParameterSet, HelpMessage = "Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.")]
+        public string CustomFragment { get; set; }
+
+        /// <summary>
+        /// The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = FieldsWithRedirectParameterSet, HelpMessage = "The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.")]
+        public string CustomQueryString { get; set; }
 
         /// <summary>
         /// Whether to enable use of this rule.
@@ -126,19 +166,39 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             var RoutingRule = new PSRoutingRule
             {
                 Name = Name,
-                CustomForwardingPath = CustomForwardingPath,
-                ForwardingProtocol = !this.IsParameterBound(c => c.ForwardingProtocol)? PSForwardingProtocol.MatchRequest : ForwardingProtocol,
-                QueryParameterStripDirective = !this.IsParameterBound(c => c.QueryParameterStripDirective)? PSQueryParameterStripDirective.StripAll : QueryParameterStripDirective,
-                DynamicCompression = !this.IsParameterBound(c => c.DynamicCompression)? PSEnabledState.Enabled : DynamicCompression,
-                EnabledState = !this.IsParameterBound(c => c.EnabledState)? PSEnabledState.Enabled : EnabledState,
-                BackendPoolId = BackendPoolId,
+                EnabledState = !this.IsParameterBound(c => c.EnabledState) ? PSEnabledState.Enabled : EnabledState,
                 FrontendEndpointIds = FrontendEndpointIds,
                 AcceptedProtocols = !this.IsParameterBound(c => c.AcceptedProtocol) ? new List<PSProtocol> { PSProtocol.Http, PSProtocol.Https } : AcceptedProtocol?.ToList(),
-                PatternsToMatch = !this.IsParameterBound(c => c.PatternToMatch) ? new List<string> { "/*" } : PatternToMatch?.ToList(),
-                EnableCaching = !this.IsParameterBound(c => c.EnableCaching) ? false : EnableCaching
+                PatternsToMatch = !this.IsParameterBound(c => c.PatternToMatch) ? new List<string> { "/*" } : PatternToMatch?.ToList()
             };
+
+            if (ParameterSetName == FieldsWithForwardingParameterSet)
+            {
+                RoutingRule.RouteConfiguration = new PSForwardingConfiguration
+                {
+                    CustomForwardingPath = CustomForwardingPath,
+                    ForwardingProtocol = !this.IsParameterBound(c => c.ForwardingProtocol) ? PSForwardingProtocol.MatchRequest.ToString() : ForwardingProtocol,
+                    QueryParameterStripDirective = !this.IsParameterBound(c => c.QueryParameterStripDirective) ? PSQueryParameterStripDirective.StripAll.ToString() : QueryParameterStripDirective,
+                    DynamicCompression = !this.IsParameterBound(c => c.DynamicCompression) ? PSEnabledState.Enabled : DynamicCompression,
+                    BackendPoolId = BackendPoolId,
+                    EnableCaching = !this.IsParameterBound(c => c.EnableCaching) ? false : EnableCaching
+                };
+            }
+            else if (ParameterSetName == FieldsWithRedirectParameterSet)
+            {
+                RoutingRule.RouteConfiguration = new PSRedirectConfiguration
+                {
+                    RedirectProtocol = !this.IsParameterBound(c => c.RedirectProtocol) ? PSRedirectProtocol.MatchRequest.ToString() : RedirectProtocol,
+                    RedirectType = !this.IsParameterBound(c => c.RedirectType) ? PSRedirectType.Moved.ToString() : RedirectType,
+                    CustomHost = !this.IsParameterBound(c => c.CustomHost) ? "" : CustomHost,
+                    CustomFragment = CustomFragment,
+                    CustomPath = !this.IsParameterBound(c => c.CustomPath) ? "" : CustomPath,
+                    CustomQueryString = CustomQueryString
+                };
+
+            }
             WriteObject(RoutingRule);
         }
-        
+
     }
 }

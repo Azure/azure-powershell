@@ -115,7 +115,7 @@ To provide a better PowerShell Azure cmdlets output experience we worked out a m
 2. Run the New-FormatPs1Xml cmdlet to generate the format.ps1xml file.
 
 ---
- We presume that for the [output type](https://github.com/Azure/azure-powershell/blob/master/documentation/development-docs/azure-powershell-design-guidelines.md#output-type) you created a new class that, for example,  wraps a returning .NET SDK type, rather than PSObject.
+ We presume that for the [output type](./design-guidelines/cmdlet-best-practices.md#output-type) you created a new class that, for example,  wraps a returning .NET SDK type, rather than PSObject.
 
 ---
 

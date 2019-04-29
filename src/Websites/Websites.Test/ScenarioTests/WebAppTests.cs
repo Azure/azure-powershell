@@ -80,13 +80,6 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetWebApp");
         }
 
-        [Fact(Skip = "Needs investigation. Fails running playback")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetWebAppMetrics()
-        {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetWebAppMetrics");
-        }
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWebAppPublishingProfile()
@@ -163,6 +156,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         public void TestWindowsContainerWebAppPSSessionOpened()
         {
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-WindowsContainerWebAppPSSessionOpened");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTagsNotRemovedBySetWebApp()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-TagsNotRemovedBySetWebApp");
         }
     }
 }

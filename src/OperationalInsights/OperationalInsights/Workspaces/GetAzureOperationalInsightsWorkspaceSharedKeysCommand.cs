@@ -14,11 +14,14 @@
 
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsWorkspaceSharedKeys"), OutputType(typeof(PSWorkspaceKeys))]
+    [GenericBreakingChange("Get-AzOperationalInsightsWorkspaceSharedKeys alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsWorkspaceSharedKey"), OutputType(typeof(PSWorkspaceKeys))]
+    [Alias("Get-AzOperationalInsightsWorkspaceSharedKeys")]
     public class GetAzureOperationalInsightsWorkspaceSharedKeysCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
