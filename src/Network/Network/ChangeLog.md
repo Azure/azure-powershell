@@ -27,6 +27,9 @@
    - Updated cmdlets
         - New-AzureVirtualNetworkSubnetConfigCommand
         - Add-AzureVirtualNetworkSubnetConfigCommand
+* Updated below commands for feature: Custom routes set/remove on Brooklyn Gateway.
+    - Updated New-AzVirtualNetworkGateway: Added optional parameter -CustomRoute to set the address prefixes as custom routes to set on Gateway.
+    - Updated Set-AzVirtualNetworkGateway: Added optional parameter -CustomRoute to set the address prefixes as custom routes to set on Gateway.
 
 ## Version 1.7.0
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
