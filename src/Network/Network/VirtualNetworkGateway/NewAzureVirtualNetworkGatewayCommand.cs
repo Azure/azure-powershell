@@ -214,6 +214,13 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public SecureString RadiusServerSecret { get; set; }
 
+        [Parameter(
+                    Mandatory = false,
+                    ValueFromPipelineByPropertyName = true,
+                    HelpMessage = "Custom routes AddressPool specified by customer")]
+        [ValidateNotNullOrEmpty]
+        public string[] CustomRoute { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -383,6 +390,16 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     throw new ArgumentException("PeerWeight must be a positive integer");
                 }
+            }
+
+            if (this.CustomRoute != null && this.CustomRoute.Any())
+            {
+                vnetGateway.CustomRoutes = new PSAddressSpace();
+                vnetGateway.CustomRoutes.AddressPrefixes = this.CustomRoute?.ToList();
+            }
+            else
+            {
+                vnetGateway.CustomRoutes = null;
             }
 
             // Map to the sdk object
