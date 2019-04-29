@@ -74,7 +74,7 @@ if (!(Test-Path -Path $ModuleFolder))
 }
 
 Write-Debug "[DEBUG] Using module folder path '$ModuleFolder'"
-$ExportsFolder = Get-ChildItem -Path $ModuleFolder -Filter "exports" -Recurse -Directory
+$ExportsFolder = Get-ChildItem -Path $ModuleFolder -Include "exports" -Recurse -Directory
 if ($null -eq $ExportsFolder)
 {
     Write-Error "No exports folder found in module folder '$ModuleFolder'"
