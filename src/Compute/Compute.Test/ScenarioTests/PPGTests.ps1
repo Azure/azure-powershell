@@ -48,16 +48,6 @@ function Test-ProximityPlacementGroup
         $ppgs = Get-AzProximityPlacementGroup;
         Assert-True {  $ppgs.Count -ge 1 };
 
-        Update-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname -Tag @{key1 = "val2"};
-
-        $ppg = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname;
-        Assert-AreEqual $rgname $ppg.ResourceGroupName;
-        Assert-AreEqual $ppgname $ppg.Name;
-        Assert-AreEqual $loc $ppg.Location;
-        Assert-AreEqual "Standard" $ppg.ProximityPlacementGroupType;
-        Assert-True { $ppg.Tags.Keys.Contains("key1") };
-        Assert-AreEqual "val2" $ppg.Tags["key1"];
-
         Remove-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname -Force;
 
         $ppgs = Get-AzProximityPlacementGroup -ResourceGroupName $rgname;

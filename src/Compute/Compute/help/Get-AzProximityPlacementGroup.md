@@ -31,14 +31,30 @@ This cmdlet will get or list Proximity Placement Group resource(s).
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmProximityPlacementGroup  -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName
+PS C:\> Get-AzureRmProximityPlacementGroup -ResourceGroupName $resourceGroupName -Name $proximityPlacementGroupName
+
+ResourceGroupName           : rg0
+ProximityPlacementGroupType : Standard
+VirtualMachines             : {}
+VirtualMachineScaleSets     : {}
+AvailabilitySets            : {}
+Id                          : /subscriptions/5393f919-a68a-43d0-9063-4b2bda6bffdf/resourceGroups/rg0/providers/Microsoft.Compute/proximityPlacementGroups/ppg0
+Name                        : ppg0
+Type                        : Microsoft.Compute/proximityPlacementGroups
+Location                    : westcentralus
+Tags                        : {[key1, val1]}
 ```
 
 This command gets the proximity placement group
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmProximityPlacementGroup  -ResourceGroupName $resourceGroupName
+PS C:\> Get-AzureRmProximityPlacementGroup -ResourceGroupName $resourceGroupName
+
+ResourceGroupName            Name      Location     Type
+-----------------            ----      --------     ----
+rg0                          ppg0 westcentralus Standard
+rg0                          ppg1 westcentralus Standard
 ```
 
 This command list all proximity placement groups under the given resource group.
@@ -46,6 +62,12 @@ This command list all proximity placement groups under the given resource group.
 ### Example 3
 ```
 PS C:\> Get-AzureRmProximityPlacementGroup
+
+ResourceGroupName            Name      Location     Type
+-----------------            ----      --------     ----
+rg0                          ppg0 westcentralus Standard
+rg0                          ppg1 westcentralus Standard
+rg1                          ppg2     centralus Standard
 ```
 
 This command list all proximity placement groups under the subscription.
