@@ -18,6 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -116,12 +117,12 @@ namespace Microsoft.Azure.Commands.Compute
                 Zones = this.Zone,
             };
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("IdentityType"))
+            if (this.IsParameterBound(c => c.IdentityType))
             {
                 vm.Identity = new VirtualMachineIdentity(null, null, this.IdentityType);
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("IdentityId"))
+            if (this.IsParameterBound(c => c.IdentityId))
             {
                 if (vm.Identity == null)
                 {
@@ -147,7 +148,7 @@ namespace Microsoft.Azure.Commands.Compute
                 vm.AdditionalCapabilities = new AdditionalCapabilities(true);
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("ProximityPlacementGroupId"))
+            if (this.IsParameterBound(c => c.ProximityPlacementGroupId))
             {
                 vm.ProximityPlacementGroup = new SubResource(this.ProximityPlacementGroupId);
             }
