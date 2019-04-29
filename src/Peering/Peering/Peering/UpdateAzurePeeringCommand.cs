@@ -47,14 +47,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Mandatory = true,
             ValueFromPipeline = true,
             ParameterSetName = Constants.ParameterSetNameDefault + Constants.Direct,
-            HelpMessage = Constants.PeeringObjectHelp,
-            DontShow = true)]
+            HelpMessage = Constants.PeeringObjectHelp)]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = Constants.PeeringObjectHelp,
-            ParameterSetName = Constants.ParameterSetNameDefault + Constants.Exchange,
-            DontShow = true)]
+            ParameterSetName = Constants.ParameterSetNameDefault + Constants.Exchange)]
         public PSPeering InputObject { get; set; }
 
         [Parameter(
@@ -126,12 +124,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = true,
             Position = 2,
-            ValueFromPipeline = true,
             HelpMessage = Constants.PeeringExchangeConnectionHelp,
             ParameterSetName = Constants.Exchange)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipeline = true,
             Position = 1,
             HelpMessage = Constants.PeeringExchangeConnectionHelp,
             ParameterSetName = Constants.ParameterSetNameByResourceId + Constants.Exchange)]
@@ -146,12 +142,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </summary>
         [Parameter(
             Mandatory = false,
-            ValueFromPipeline = true,
             HelpMessage = Constants.PeeringDirectConnectionHelp,
             ParameterSetName = Constants.Direct)]
         [Parameter(
             Mandatory = false,
-            ValueFromPipeline = true,
             HelpMessage = Constants.PeeringDirectConnectionHelp,
             ParameterSetName = Constants.ParameterSetNameByResourceId + Constants.Direct)]
         [Parameter(

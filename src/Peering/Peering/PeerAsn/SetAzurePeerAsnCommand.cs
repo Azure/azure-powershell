@@ -46,8 +46,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = Constants.PeerAsnHelp,
-            ParameterSetName = Constants.ParameterSetNameDefault,
-            DontShow = true)]
+            ParameterSetName = Constants.ParameterSetNameDefault)]
         public PSPeerAsn InputObject { get; set; }
 
         [Parameter(

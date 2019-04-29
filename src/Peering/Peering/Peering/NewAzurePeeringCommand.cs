@@ -44,8 +44,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Mandatory = true,
             ValueFromPipeline = true,
             ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering,
-            HelpMessage = Constants.LegacyItemHelp,
-            DontShow = true)]
+            HelpMessage = Constants.LegacyItemHelp)]
         public PSPeering LegacyPeering { get; set; }
 
         /// <summary>

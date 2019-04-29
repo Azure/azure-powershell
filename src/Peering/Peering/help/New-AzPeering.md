@@ -35,7 +35,7 @@ New-AzPeering [-ResourceGroupName] <String> [-Name] <String> [-PeeringLocation] 
 ```
 
 ## DESCRIPTION
-Creates an ARM Peering for the subscription.
+Creates an ARM Peering for the subscription. See [New-AzPeeringDirectConnectionOject](https://docs.microsoft.com/en-us/powershell/module/az.peering/new-azpeeringdirectconnectionobject) or [New-AzPeeringExchangeConnectionOject](https://docs.microsoft.com/en-us/powershell/module/az.peering/new-azpeeringexchangeconnectionobject) for more information on creating a connection object.
 
 ## EXAMPLES
 
@@ -46,7 +46,7 @@ PS C:> $asn = Get-AzPeerAsn -PeerName Contoso
 #Gets the Direct Peering Location
 PS C:> $location = Get-AzPeeringLocation Direct -PeeringLocation Seattle
 #Creates the ARM Resource
-PS C:> New-AzPeering -Name ContosoSeattlePeering -ResourceGroupName testCarrier -PeeringLocation $location.PeeringLocation -PeerAsnResourceId $asn.Id -Direct -DirectConnection $connection
+PS C:> New-AzPeering -Name ContosoSeattlePeering -ResourceGroupName testCarrier -PeeringLocation $location.PeeringLocation -PeerAsnResourceId $asn.Id -DirectConnection $connection
 
 Name                 : ContosoSeattlePeering
 Sku.Name             : Basic_Direct_Free
@@ -71,7 +71,7 @@ PS C:> $asn = Get-AzPeerAsn -PeerName Contoso
 #Gets the Exchange Peering Location
 PS C:> $location = Get-AzPeeringLocation Exchange -PeeringLocation Seattle
 #Creates the ARM Resource
-PS C:> New-AzPeering -Name ContosoSeattlePeering -ResourceGroupName testCarrier -PeeringLocation $location.PeeringLocation -PeerAsnResourceId $asn.Id -Direct -DirectConnection $connection
+PS C:> New-AzPeering -Name ContosoSeattlePeering -ResourceGroupName testCarrier -PeeringLocation $location.PeeringLocation -PeerAsnResourceId $asn.Id -ExchangeConnection $connection
 
 Name              : myExchangePeering1
 Sku.Name          : Basic_Exchange_Free

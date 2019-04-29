@@ -36,19 +36,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ValueFromPipeline = true,
             HelpMessage = Constants.HelpPeeringDBFacilityId,
             ParameterSetName = Constants.ParameterSetNameIPv4Address)]
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ValueFromPipeline = true,
             HelpMessage = Constants.HelpPeeringDBFacilityId,
             ParameterSetName = Constants.ParameterSetNameIPv6Address)]
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ValueFromPipeline = true,
             HelpMessage = Constants.HelpPeeringDBFacilityId,
             ParameterSetName = Constants.ParameterSetNameIPv4Address + Constants.ParameterSetNameIPv6Address)]
         [ValidateNotNullOrEmpty]
