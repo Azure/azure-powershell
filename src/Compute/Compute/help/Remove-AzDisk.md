@@ -13,7 +13,7 @@ Removes a disk.
 ## SYNTAX
 
 ```
-Remove-AzDisk [-ResourceGroupName] <String> [-DiskName] <String> [-Force] [-AsJob] [-NoWait]
+Remove-AzDisk [-ResourceGroupName] <String> [-DiskName] <String> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -78,21 +78,6 @@ Accept wildcard characters: False
 
 ### -Force
 Forces the command to run without asking for user confirmation.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Returns immediately with status of request
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

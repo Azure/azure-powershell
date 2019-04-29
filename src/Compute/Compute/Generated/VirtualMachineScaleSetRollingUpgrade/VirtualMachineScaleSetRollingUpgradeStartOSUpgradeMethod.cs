@@ -45,16 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string resourceGroupName = this.ResourceGroupName;
                     string vmScaleSetName = this.VMScaleSetName;
 
-                    Rest.Azure.AzureOperationResponse result;
-                    if (NoWait.IsPresent)
-                    {
-                        result = VirtualMachineScaleSetRollingUpgradesClient.BeginStartOSUpgradeWithHttpMessagesAsync(resourceGroupName, vmScaleSetName).GetAwaiter().GetResult();
-                    }
-                    else
-                    {
-                        result = VirtualMachineScaleSetRollingUpgradesClient.StartOSUpgradeWithHttpMessagesAsync(resourceGroupName, vmScaleSetName).GetAwaiter().GetResult();
-                    }
-
+                    var result = VirtualMachineScaleSetRollingUpgradesClient.StartOSUpgradeWithHttpMessagesAsync(resourceGroupName, vmScaleSetName).GetAwaiter().GetResult();
                     PSOperationStatusResponse output = new PSOperationStatusResponse
                     {
                         StartTime = this.StartTime,
@@ -90,8 +81,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
-        public SwitchParameter NoWait { get; set; }
     }
 }

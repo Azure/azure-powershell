@@ -47,43 +47,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string instanceId = this.InstanceId;
 
                     Rest.Azure.AzureOperationResponse result = null;
-                    if (NoWait.IsPresent)
+                    if (this.ParameterSetName.Equals("FriendMethod"))
                     {
-                        if (this.ParameterSetName.Equals("FriendMethod"))
-                        {
-                            result = VirtualMachineScaleSetVMsClient.BeginReimageAllWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
-                        }
-                        else if (this.ParameterSetName.Equals("RedeployMethodParameter"))
-                        {
-                            result = VirtualMachineScaleSetVMsClient.BeginRedeployWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
-                        }
-                        else if (this.ParameterSetName.Equals("PerformMaintenanceMethodParameter"))
-                        {
-                            result = VirtualMachineScaleSetVMsClient.BeginPerformMaintenanceWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
-                        }
-                        else
-                        {
-                            result = VirtualMachineScaleSetVMsClient.BeginReimageWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
-                        }
+                        result = VirtualMachineScaleSetVMsClient.ReimageAllWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
+                    }
+                    else if (this.ParameterSetName.Equals("RedeployMethodParameter"))
+                    {
+                        result = VirtualMachineScaleSetVMsClient.RedeployWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
+                    }
+                    else if (this.ParameterSetName.Equals("PerformMaintenanceMethodParameter"))
+                    {
+                        result = VirtualMachineScaleSetVMsClient.PerformMaintenanceWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
                     }
                     else
                     {
-                        if (this.ParameterSetName.Equals("FriendMethod"))
-                        {
-                            result = VirtualMachineScaleSetVMsClient.ReimageAllWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
-                        }
-                        else if (this.ParameterSetName.Equals("RedeployMethodParameter"))
-                        {
-                            result = VirtualMachineScaleSetVMsClient.RedeployWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
-                        }
-                        else if (this.ParameterSetName.Equals("PerformMaintenanceMethodParameter"))
-                        {
-                            result = VirtualMachineScaleSetVMsClient.PerformMaintenanceWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
-                        }
-                        else
-                        {
-                            result = VirtualMachineScaleSetVMsClient.ReimageWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
-                        }
+                        result = VirtualMachineScaleSetVMsClient.ReimageWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
                     }
 
                     PSOperationStatusResponse output = new PSOperationStatusResponse
@@ -145,8 +123,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
-        public SwitchParameter NoWait { get; set; }
     }
 }

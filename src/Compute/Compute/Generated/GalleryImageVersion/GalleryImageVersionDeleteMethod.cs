@@ -71,15 +71,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             break;
                     }
 
-                    Rest.Azure.AzureOperationResponse result;
-                    if (NoWait.IsPresent)
-                    {
-                        result = GalleryImageVersionsClient.BeginDeleteWithHttpMessagesAsync(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName).GetAwaiter().GetResult();
-                    }
-                    else
-                    {
-                        result = GalleryImageVersionsClient.DeleteWithHttpMessagesAsync(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName).GetAwaiter().GetResult();
-                    }
+                    var result = GalleryImageVersionsClient.DeleteWithHttpMessagesAsync(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName).GetAwaiter().GetResult();
                     PSOperationStatusResponse output = new PSOperationStatusResponse
                     {
                         StartTime = this.StartTime,
@@ -148,8 +140,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Returns immediately with status of request")]
-        public SwitchParameter NoWait { get; set; }
     }
 }
