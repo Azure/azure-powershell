@@ -557,9 +557,6 @@ Update a gallery image version.
 ### [Update-AzImage](Update-AzImage.md)
 Updates an image.
 
-### [Update-AzProximityPlacementGroup](Update-AzProximityPlacementGroup.md)
-Update Proximity Placement Group resource.
-
 ### [Update-AzSnapshot](Update-AzSnapshot.md)
 Updates a snapshot.
 

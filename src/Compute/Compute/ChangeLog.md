@@ -22,7 +22,6 @@
 * Proximity placement group feature.
     - The following new cmdlets are added:
 	    New-AzProximityPlacementGroup
-   		Update-AzProximityPlacementGroup
 		Get-AzProximityPlacementGroup
 		Remove-AzProximityPlacementGroup
 	- The new parameter, ProximityPlacementGroupId, is added to the following cmdlets:
@@ -35,7 +34,6 @@
 * Breaking changes
     - Set-AzVMBootDiagnostics is changed to Set-AzVMBootDiagnostic.
     - Export-AzLogAnalyticThrottledRequests is changed to Export-AzLogAnalyticThrottledRequests.
-
 
 ## Version 1.8.0
 * Fix issue with AEM installation if resource ids of disks had lowercase resourcegroups in resource id
