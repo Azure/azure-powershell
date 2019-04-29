@@ -393,7 +393,11 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Remove-AzExpressRouteCrossConnectionPeering', 
                'Get-AzExpressRouteCrossConnectionArpTable', 
                'Get-AzExpressRouteCrossConnectionRouteTable', 
-               'Get-AzExpressRouteCrossConnectionRouteTableSummary'
+               'Get-AzExpressRouteCrossConnectionRouteTableSummary', 
+               'Get-AzNatGateway', 
+               'New-AzNatGateway', 
+               'Remove-AzNatGateway', 
+               'Set-AzNatGateway'
 
 # Variables to export from this module
 # VariablesToExport = @()
