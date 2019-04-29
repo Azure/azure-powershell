@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 ReadScale = ReadScale,
                 ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
                 LicenseType = LicenseType, // note: default license type will be LicenseIncluded in SQL RP if not specified
-                AutoPauseDelay = AutoPauseDelayMinutes,
+                AutoPauseDelayMinutes = AutoPauseDelayMinutes,
                 MinCapacity = MinCapacity,
             };
 

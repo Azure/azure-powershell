@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <summary>
         /// Gets or sets the Auto pause delay of the database
         /// </summary>
-        public int? AutoPauseDelay { get; set; }
+        public int? AutoPauseDelayMinutes { get; set; }
 
         /// <summary>
         /// Minimal capacity that database will always have allocated, if not paused
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             ReadScale = readScale;
 
             ZoneRedundant = false;
-            AutoPauseDelay = null;
+            AutoPauseDelayMinutes = null;
             MinCapacity = null;
         }
 
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             LicenseType = database.LicenseType;
 
-            AutoPauseDelay = database.AutoPauseDelay;
+            AutoPauseDelayMinutes = database.AutoPauseDelay;
             MinCapacity = database.MinCapacity;
         }
     }
