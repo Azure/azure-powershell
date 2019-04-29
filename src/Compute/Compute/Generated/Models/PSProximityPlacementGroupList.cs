@@ -19,20 +19,13 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Management.Compute.Models;
-
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSSnapshotUpdate
+    public class PSProximityPlacementGroupList : PSProximityPlacementGroup
     {
-        public EncryptionSettings EncryptionSettings
+        public PSProximityPlacementGroup ToPSProximityPlacementGroup ()
         {
-            get
-            {
-                return (this.EncryptionSettingsCollection == null)
-                       ? null
-                       : new EncryptionSettings(this.EncryptionSettingsCollection);
-            }
+            return ComputeAutomationAutoMapperProfile.Mapper.Map<PSProximityPlacementGroup>(this);
         }
     }
 }
