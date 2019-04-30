@@ -31,6 +31,7 @@
 	- Update-AzScheduledQueryRule
 	- Remove-AzScheduledQueryRule
 	- [More](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules) information about SQR API
+	- Updated Az.Monitor.md to include cmdlets for GenV2(non classic) metric-based alert rule
 
 ## Version 1.1.0
   * New cmdlets for GenV2(non classic) metric-based alert rule
