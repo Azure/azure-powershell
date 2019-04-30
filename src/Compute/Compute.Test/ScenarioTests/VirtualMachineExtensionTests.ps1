@@ -1254,7 +1254,7 @@ function Test-AzureDiskEncryptionExtensionSinglePassDisableAndRemove
 .SYNOPSIS
 Test the Set-AzVMDiskEncryptionExtension single pass scenario for Linux VMs with Managed Disks
 #>
-function TestAzureDiskEncryptionExtensionSinglePassSkipVmBackupForLinuxManagedDisks
+function TestAzDiskEncryptionSinglePassForLinuxManagedDisks
 {
     $rgname = Get-ComputeTestResourceName
     try
@@ -1350,7 +1350,7 @@ function TestAzureDiskEncryptionExtensionSinglePassSkipVmBackupForLinuxManagedDi
 .SYNOPSIS
 Test the Set-AzVMDiskEncryptionExtension single pass scenario for Linux VMs with Native Disks
 #>
-function TestAzureDiskEncryptionExtensionSinglePassSkipVmBackupForLinuxNativeDisks
+function TestAzDiskEncryptionSinglePassForLinuxNativeDisks
 {
     $rgname = Get-ComputeTestResourceName
     try 
