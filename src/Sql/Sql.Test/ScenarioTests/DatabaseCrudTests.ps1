@@ -198,7 +198,7 @@ function Test-CreateServerlessDatabase
 	{
 		# Create with Edition and RequestedServiceObjectiveName
 		$databaseName = Get-DatabaseName
-		$job1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_S_Gen5_2 -AutoPauseDelayMinutes 360 -MinVCore 0.5 -AsJob
+		$job1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_S_Gen5_2 -AutoPauseDelayInMinutes 360 -MinVCore 0.5 -AsJob
 		$job1 | Wait-Job
 		$db = $job1.Output
 
@@ -206,8 +206,8 @@ function Test-CreateServerlessDatabase
 		Assert-NotNull $db.MaxSizeBytes
 		Assert-AreEqual GP_S_Gen5_2 $db.CurrentServiceObjectiveName
 		Assert-AreEqual 2 $db.Capacity
-		Assert-AreEqual 360 $db.AutoPauseDelayMinutes
-		Assert-AreEqual 0.5 $db.MinCapacity
+		Assert-AreEqual 360 $db.AutoPauseDelayInMinutes
+		Assert-AreEqual 0.5 $db.MinimumCapacity
 		Assert-AreEqual GeneralPurpose $db.Edition
 	}
 	finally
@@ -573,8 +573,8 @@ function Test-UpdateServerlessDatabase()
 		Assert-NotNull $db1.MaxSizeBytes
 		Assert-NotNull $db1.Edition
 		Assert-NotNull $db1.CurrentServiceObjectiveName
-		Assert-NotNull $db1.MinCapacity
-		Assert-NotNull $db1.AutoPauseDelayMinutes
+		Assert-NotNull $db1.MinimumCapacity
+		Assert-NotNull $db1.AutoPauseDelayInMinutes
 
 		# Alter to dtu database
 		$job = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
@@ -583,8 +583,8 @@ function Test-UpdateServerlessDatabase()
 		$db1 = $job.Output
 		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
 		Assert-AreEqual $db1.Edition Premium
-		Assert-Null $db1.MinCapacity
-		Assert-Null $db1.AutoPauseDelayMinutes
+		Assert-Null $db1.MinimumCapacity
+		Assert-Null $db1.AutoPauseDelayInMinutes
 
 		# Alter back to Serverless
 		$job = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
@@ -594,19 +594,19 @@ function Test-UpdateServerlessDatabase()
 		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
 		Assert-AreEqual $db1.Edition GeneralPurpose
 		Assert-AreEqual $db1.CurrentServiceObjectiveName GP_S_Gen5_2
-		Assert-NotNull $db1.MinCapacity
-		Assert-NotNull $db1.AutoPauseDelayMinutes
+		Assert-NotNull $db1.MinimumCapacity
+		Assert-NotNull $db1.AutoPauseDelayInMinutes
 
-		# Alter mincapacity and autopausedelayminutes
+		# Alter mincapacity and AutoPauseDelayInMinutes
 		$job = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-			-Vcore 2 -Edition GeneralPurpose -ComputeModel Serverless -ComputeGeneration Gen5 -MinCapacity 2 -AutoPauseDelayMinutes 1440 -AsJob
+			-Vcore 2 -Edition GeneralPurpose -ComputeModel Serverless -ComputeGeneration Gen5 -MinimumCapacity 2 -AutoPauseDelayInMinutes 1440 -AsJob
 		$job | Wait-Job
 		$db1 = $job.Output
 		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
 		Assert-AreEqual $db1.Edition GeneralPurpose
 		Assert-AreEqual $db1.CurrentServiceObjectiveName GP_S_Gen5_2
-		Assert-AreEqual $db1.MinCapacity 2
-		Assert-AreEqual $db1.AutoPauseDelayMinutes 1440
+		Assert-AreEqual $db1.MinimumCapacity 2
+		Assert-AreEqual $db1.AutoPauseDelayInMinutes 1440
 	}
 	finally
 	{

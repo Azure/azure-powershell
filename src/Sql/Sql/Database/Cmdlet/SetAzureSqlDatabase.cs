@@ -194,12 +194,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the auto pause delay for the Azure Sql Database
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The auto pause delay in minutes for database (serverless only), -1 to opt out",
+            HelpMessage = "The auto pause delay in minutes for database (serverless only), -1 to opt out from pausing",
             ParameterSetName = UpdateParameterSetName)]
         [Parameter(Mandatory = false,
-            HelpMessage = "The auto pause delay in minutes for database (serverless only), -1 to opt out",
+            HelpMessage = "The auto pause delay in minutes for database (serverless only), -1 to opt out from pausing",
             ParameterSetName = VcoreDatabaseParameterSet)]
-        public int? AutoPauseDelayMinutes { get; set; }
+        public int AutoPauseDelayInMinutes { get; set; }
 
         /// <summary>
         /// Gets or sets the Minimal capacity that database will always have allocated, if not paused
@@ -210,8 +210,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The Minimal capacity that database will always have allocated, if not paused. For serverless database only.",
             ParameterSetName = VcoreDatabaseParameterSet)]
-        [Alias("MinVCore")]
-        public double? MinCapacity { get; set; }
+        [Alias("MinVCore", "MinCapacity")]
+        public double MinimumCapacity { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -255,8 +255,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                            ? (bool?)ZoneRedundant.ToBool()
                            : null,
                 LicenseType = LicenseType ?? model.FirstOrDefault().LicenseType, // set to original license type
-                AutoPauseDelayMinutes = AutoPauseDelayMinutes,
-                MinCapacity = MinCapacity,
+                AutoPauseDelayInMinutes = MyInvocation.BoundParameters.ContainsKey("AutoPauseDelayInMinutes") ? AutoPauseDelayInMinutes : (int?)null,
+                MinimumCapacity = MyInvocation.BoundParameters.ContainsKey("MinimumCapacity") ? MinimumCapacity : (double?)null,
             };
 
             var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
