@@ -9,7 +9,7 @@ https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebu
 function Get-AzServiceBusAuthorizationRule_DisasterRecoveryConfig {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ISbAuthorizationRule')]
 [CmdletBinding(PositionalBinding=$false)]
-[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Profile('latest-2019-04-01')]
+[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Profile('latest-2019-04-30')]
 [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description('Gets an authorization rule for a namespace by rule name.')]
 param(
     [Parameter(Mandatory, HelpMessage='The Disaster Recovery configuration name')]

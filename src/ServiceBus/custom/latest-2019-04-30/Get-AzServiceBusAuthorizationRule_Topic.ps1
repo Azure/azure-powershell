@@ -9,7 +9,7 @@ https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebu
 function Get-AzServiceBusAuthorizationRule_Topic {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ISbAuthorizationRule')]
 [CmdletBinding(PositionalBinding=$false)]
-[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Profile('latest-2019-04-01')]
+[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Profile('latest-2019-04-30')]
 [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description('Returns the specified authorization rule.')]
 param(
     [Parameter(HelpMessage='The authorization rule name.')]
