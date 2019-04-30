@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.FrontDoor.dll'
@@ -80,16 +80,16 @@ CmdletsToExport = 'New-AzFrontDoor', 'Get-AzFrontDoor', 'Set-AzFrontDoor',
                'New-AzFrontDoorFrontendEndpointObject', 
                'New-AzFrontDoorHealthProbeSettingObject', 
                'New-AzFrontDoorLoadBalancingSettingObject', 
-               'New-AzFrontDoorMatchConditionObject', 
-               'New-AzFrontDoorCustomRuleObject', 
-               'New-AzFrontDoorManagedRuleObject', 'New-AzFrontDoorFireWallPolicy', 
-               'Get-AzFrontDoorFireWallPolicy', 'Update-AzFrontDoorFireWallPolicy', 
-               'Remove-AzFrontDoorFireWallPolicy', 
-               'New-AzFrontDoorRuleGroupOverrideObject', 
+               'New-AzFrontDoorWafMatchConditionObject', 
+               'New-AzFrontDoorWafCustomRuleObject', 
+               'New-AzFrontDoorWafManagedRuleObject', 'New-AzFrontDoorWafPolicy', 
+               'Get-AzFrontDoorWafPolicy', 'Update-AzFrontDoorWafPolicy', 
+               'Remove-AzFrontDoorWafPolicy', 
+               'New-AzFrontDoorWafRuleGroupOverrideObject', 
                'Remove-AzFrontDoorContent', 'Enable-AzFrontDoorCustomDomainHttps', 
                'Disable-AzFrontDoorCustomDomainHttps', 
                'Get-AzFrontDoorFrontendEndpoint', 
-               'New-AzFrontDoorManagedRuleOverrideObject'
+               'New-AzFrontDoorWafManagedRuleOverrideObject'
 
 # Variables to export from this module
 # VariablesToExport = @()

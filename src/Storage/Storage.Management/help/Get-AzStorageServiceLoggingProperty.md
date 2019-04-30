@@ -95,7 +95,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Storage.Shared.Protocol.LoggingProperties
+### Microsoft.Azure.Storage.Shared.Protocol.LoggingProperties
 
 ## NOTES
 

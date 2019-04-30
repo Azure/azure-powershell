@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Alias("InstanceName")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         /// <summary>
@@ -46,6 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public override string ResourceGroupName { get; set; }
 
         /// <summary>

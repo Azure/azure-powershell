@@ -231,7 +231,7 @@ Accept wildcard characters: False
 ```
 
 ### -GitRepositoryPath
-Path to the GitHub repository containign the web application to deploy.
+Path to the GitHub repository containing the web application to deploy.
 
 ```yaml
 Type: System.String

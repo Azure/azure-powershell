@@ -21,6 +21,27 @@
 ## Upcoming Release
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 * Update error message displayed when -skipVmBackup is not provided for Set-AzVMDiskEncryptionExtension 
+* Update error message displayed when -skipVmBackup parameter is not provided for Set-AzVMDiskEncryptionExtension  
+* Proximity placement group feature.
+    - The following new cmdlets are added:
+	    New-AzProximityPlacementGroup
+		Get-AzProximityPlacementGroup
+		Remove-AzProximityPlacementGroup
+	- The new parameter, ProximityPlacementGroupId, is added to the following cmdlets:
+	    New-AzAvailabilitySet
+		New-AzVMConfig
+		New-AzVmssConfig
+* StorageAccountType parameter is added to New-AzGalleryImageVersion.
+* TargetRegion of New-AzGalleryImageVersion can contain StorageAccountType.
+* SkipShutdown switch parameter is added to Stop-AzVM and Stop-AzVmss		
+* Breaking changes
+    - Set-AzVMBootDiagnostics is changed to Set-AzVMBootDiagnostic.
+    - Export-AzLogAnalyticThrottledRequests is changed to Export-AzLogAnalyticThrottledRequests.
+
+## Version 1.8.0
+* Fix issue with AEM installation if resource ids of disks had lowercase resourcegroups in resource id
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Fix documentation for wildcards
 
 ## Version 1.7.0
 * Add HyperVGeneration parameter to New-AzDiskConfig and New-AzSnapshotConfig

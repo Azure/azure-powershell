@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.1
+* Fix documentation for wildcards
+
 ## Version 1.3.0
 * Improve handling of providers for `Get-AzResource` when providing `-ResourceId` or `-ResourceGroupName`, `-Name` and `-ResourceType` parameters
 * Improve error handling for for `Test-AzDeployment` and `Test-AzResourceGroupDeployment`
