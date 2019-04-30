@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
-using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+using Microsoft.Azure.Storage.Shared.Protocol;
 using XTable = Microsoft.Azure.Cosmos.Table;
 using System;
 using System.Collections.Generic;

@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
-using XFile = Microsoft.WindowsAzure.Storage.File;
-using Microsoft.WindowsAzure.Storage.File;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Blob;
+using XFile = Microsoft.Azure.Storage.File;
+using Microsoft.Azure.Storage.File;
 using System;
 using System.Collections.Concurrent;
 using System.Management.Automation;
