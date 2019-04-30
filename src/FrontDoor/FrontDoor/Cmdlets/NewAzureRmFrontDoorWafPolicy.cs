@@ -27,10 +27,10 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the New-AzFrontDoorFireWallPolicy cmdlet.
+    /// Defines the New-AzFrontDoorWafPolicy cmdlet.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorFireWallPolicy", SupportsShouldProcess = true), OutputType(typeof(PSPolicy))]
-    public class NewAzureRmFrontDoorFireWallPolicy : AzureFrontDoorCmdletBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafPolicy", SupportsShouldProcess = true), OutputType(typeof(PSPolicy))]
+    public class NewAzureRmFrontDoorWafPolicy : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// The resource group name.

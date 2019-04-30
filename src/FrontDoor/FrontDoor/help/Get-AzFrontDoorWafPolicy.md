@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll-Help.xml
 Module Name: Az.FrontDoor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/get-azfrontdoorfirewallpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/get-azfrontdoorwafpolicy
 schema: 2.0.0
 ---
 
-# Get-AzFrontDoorFireWallPolicy
+# Get-AzFrontDoorWafPolicy
 
 ## SYNOPSIS
 Get WAF policy
@@ -13,18 +13,18 @@ Get WAF policy
 ## SYNTAX
 
 ```
-Get-AzFrontDoorFireWallPolicy -ResourceGroupName <String> [-Name <String>]
+Get-AzFrontDoorWafPolicy -ResourceGroupName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzFrontDoorFireWallPolicy** cmdletGet gets WAF policy in a resource group under the current subscription
+The **Get-AzFrontDoorWafPolicy** cmdletGet gets WAF policy in a resource group under the current subscription
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzFrontDoorFireWallPolicy -Name $policyName -ResourceGroupName $resourceGroupName
+PS C:\> Get-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName
 
 Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
 ----         ---------- ------------------ ----------------------------- -----------
@@ -35,7 +35,7 @@ Get a WAF policy called $policyName in $resourceGroupName
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzFrontDoorFireWallPolicy -ResourceGroupName $resourceGroupName
+PS C:\> Get-AzFrontDoorWafPolicy -ResourceGroupName $resourceGroupName
 
 Name         PolicyMode PolicyEnabledState CustomBlockResponseStatusCode RedirectUrl
 ----         ---------- ------------------ ----------------------------- -----------
@@ -108,6 +108,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzFrontDoorFireWallPolicy](./New-AzFrontDoorFireWallPolicy.md)
-[Set-AzFrontDoorFireWallPolicy](./Set-AzFrontDoorFireWallPolicy.md)
-[Remove-AzFrontDoorFireWallPolicy](./Remove-AzFrontDoorFireWallPolicy.md)
+[New-AzFrontDoorWafPolicy](./New-AzFrontDoorWafPolicy.md)
+[Set-AzFrontDoorWafPolicy](./Set-AzFrontDoorWafPolicy.md)
+[Remove-AzFrontDoorWafPolicy](./Remove-AzFrontDoorWafPolicy.md)

@@ -26,10 +26,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 {
     /// <summary>
-    /// Defines the New-AzFrontDoorCustomRuleObject cmdlet.
+    /// Defines the New-AzFrontDoorWafCustomRuleObject cmdlet.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorCustomRuleObject"), OutputType(typeof(PSCustomRule))]
-    public class NewAzureRmFrontDoorCustomRuleObject : AzureFrontDoorCmdletBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorWafCustomRuleObject"), OutputType(typeof(PSCustomRule))]
+    public class NewAzureRmFrontDoorWafCustomRuleObject : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// Name of the rule. 
