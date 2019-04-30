@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.0
 * Proximity placement group feature.
     - The following new cmdlets are added:
 	    New-AzProximityPlacementGroup

@@ -301,6 +301,7 @@ namespace VersionController.Models
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine($"Warning: {nestedModule} does not have a previously serialized cmdlet for comparison.");
                         Console.ForegroundColor = currentColor;
+                        SerializeCmdlets(serializedCmdletFile, newModuleMetadata);
                         continue;
                     }
                     var oldModuleMetadata = DeserializeCmdlets(serializedCmdletFile);

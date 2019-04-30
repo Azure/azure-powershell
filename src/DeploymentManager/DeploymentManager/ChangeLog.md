@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.1
 * GA release of Deployment Manager cmdlets
 
 ## Version 0.1.0
