@@ -15,13 +15,13 @@ Stops an Azure virtual machine.
 
 ### ResourceGroupNameParameterSetName (Default)
 ```
-Stop-AzVM [-Name] <String> [-Force] [-StayProvisioned] [-NoWait] [-ResourceGroupName] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzVM [-Name] <String> [-Force] [-StayProvisioned] [-NoWait] [-SkipShutdown] [-ResourceGroupName] <String>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSetName
 ```
-Stop-AzVM [[-Name] <String>] [-Force] [-StayProvisioned] [-NoWait] [-Id] <String> [-AsJob]
+Stop-AzVM [-Force] [-StayProvisioned] [-NoWait] [-SkipShutdown] [-Id] <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -114,18 +114,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-```yaml
-Type: System.String
-Parameter Sets: IdParameterSetName
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Returns immediately with status of request
 
@@ -153,6 +141,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SkipShutdown
+To request non-graceful VM shutdown when keeping the VM provisioned.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

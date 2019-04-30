@@ -21,8 +21,8 @@ Remove-AzVM [-Name] <String> [-Force] [-NoWait] [-ResourceGroupName] <String> [-
 
 ### IdParameterSetName
 ```
-Remove-AzVM [[-Name] <String>] [-Force] [-NoWait] [-Id] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzVM [-Force] [-NoWait] [-Id] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,18 +108,6 @@ Parameter Sets: ResourceGroupNameParameterSetName
 Aliases: ResourceName, VMName
 
 Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: IdParameterSetName
-Aliases: ResourceName, VMName
-
-Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)

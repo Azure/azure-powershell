@@ -21,8 +21,8 @@ Start-AzVM [-Name] <String> [-NoWait] [-ResourceGroupName] <String> [-AsJob]
 
 ### IdParameterSetName
 ```
-Start-AzVM [[-Name] <String>] [-NoWait] [-Id] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzVM [-NoWait] [-Id] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,18 +93,6 @@ Parameter Sets: ResourceGroupNameParameterSetName
 Aliases:
 
 Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: IdParameterSetName
-Aliases:
-
-Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)

@@ -27,14 +27,13 @@ Set-AzVM [-ResourceGroupName] <String> [-Name] <String> [-Redeploy] [-AsJob] [-N
 
 ### GeneralizeIdParameterSetName
 ```
-Set-AzVM [-Id] <String> [[-Name] <String>] [-Generalized] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Set-AzVM [-Id] <String> [-Generalized] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RedeployIdParameterSetName
 ```
-Set-AzVM [-Id] <String> [[-Name] <String>] [-Redeploy] [-AsJob] [-NoWait]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzVM [-Id] <String> [-Redeploy] [-AsJob] [-NoWait] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -121,18 +120,6 @@ Parameter Sets: GeneralizeResourceGroupNameParameterSetName, RedeployResourceGro
 Aliases:
 
 Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: GeneralizeIdParameterSetName, RedeployIdParameterSetName
-Aliases:
-
-Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
