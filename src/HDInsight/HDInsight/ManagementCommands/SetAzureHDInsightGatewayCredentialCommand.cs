@@ -85,7 +85,10 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
         }
 
-        [Parameter(HelpMessage = "Gets or sets the name of the resource group.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SetByNameParameterSet,
+            HelpMessage = "Gets or sets the name of the resource group.")]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
