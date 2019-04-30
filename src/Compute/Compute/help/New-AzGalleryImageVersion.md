@@ -16,7 +16,7 @@ Create a gallery image version.
 New-AzGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <String>
  [-GalleryImageDefinitionName] <String> [-Name] <String> [-AsJob] -Location <String> -SourceImageId <String>
  [-Tag <Hashtable>] [-ReplicaCount <Int32>] [-PublishingProfileExcludeFromLatest]
- [-PublishingProfileEndOfLifeDate <DateTime>] [-TargetRegion <Hashtable[]>]
+ [-PublishingProfileEndOfLifeDate <DateTime>] [-StorageAccountType <String>] [-TargetRegion <Hashtable[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -197,6 +197,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StorageAccountType
+Specifies the storage account type to be used to store the image. This property is not updatable. Available values are Standard_LRS and Standard_ZRS.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

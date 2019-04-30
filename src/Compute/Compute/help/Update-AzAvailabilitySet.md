@@ -12,15 +12,8 @@ Updates an availability set.
 
 ## SYNTAX
 
-### SkuParameterSet
 ```
 Update-AzAvailabilitySet [-AvailabilitySet] <PSAvailabilitySet> [-Sku] <String> [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ManagedParamterSet
-```
-Update-AzAvailabilitySet [-AvailabilitySet] <PSAvailabilitySet> [-Managed] [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -83,27 +76,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Managed
-Managed Availability Set
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ManagedParamterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Sku
 The Name of Sku
 
 ```yaml
 Type: System.String
-Parameter Sets: SkuParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
