@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.8.0
 * Fix issue with AEM installation if resource ids of disks had lowercase resourcegroups in resource id
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 * Fix documentation for wildcards

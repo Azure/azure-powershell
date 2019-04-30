@@ -123,6 +123,9 @@
   <data name="AssignmentNotExist" xml:space="preserve">
     <value>An assignment with name '{0}' in subscription '{1}' does not exist. Please use New-AzBlueprintAssignment to create a new assignment.</value>
   </data>
+  <data name="BlueprintSpnObjectIdNotFound" xml:space="preserve">
+    <value>Could not find Blueprints SPN ObjectId in customer's tenant.</value>
+  </data>
   <data name="CreateAssignmentShouldProcessString" xml:space="preserve">
     <value>Create blueprint assignment '{0}'</value>
   </data>
@@ -131,9 +134,6 @@
   </data>
   <data name="ResourceProviderRegistrationFailed" xml:space="preserve">
     <value>Could not register the resource provider '{0}'</value>
-  </data>
-  <data name="SecureStringsNotSupported" xml:space="preserve">
-    <value>Secure strings are not supported at this time. {0}'</value>
   </data>
   <data name="UpdateAssignmentShouldProcessString" xml:space="preserve">
     <value>Update blueprint assignment '{0}'</value>
