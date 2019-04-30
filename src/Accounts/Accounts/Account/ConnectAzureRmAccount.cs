@@ -392,7 +392,9 @@ namespace Microsoft.Azure.Commands.Profile
                 }
 
                 var session = AzureSession.Instance;
-                var trySetupContextsFromCache = !session.DataStore.FileExists(Path.Combine(session.ARMProfileDirectory, session.ARMProfileFile));
+                var contextPath = Path.Combine(session.ARMProfileDirectory, session.ARMProfileFile);
+                var trySetupContextsFromCache = !session.DataStore.FileExists(contextPath) ||
+                                                 session.DataStore.ReadFileAsText(contextPath).Equals(string.Empty);
                 InitializeProfileProvider(autoSaveEnabled);                
                     IServicePrincipalKeyStore keyStore =
 // TODO: Remove IfDef
@@ -411,8 +413,12 @@ namespace Microsoft.Azure.Commands.Profile
                 }
 
                 if (trySetupContextsFromCache)
-                {
+                { 
                     TrySetupContextsFromCache();
+                }
+                else
+                {
+                    TryRefreshContextsFromCache();
                 }
 #if DEBUG
             }

@@ -149,6 +149,15 @@ namespace Microsoft.Azure.Commands.Profile.Common
             }
         }
 
+        internal void TryRefreshContextsFromCache()
+        {
+            using (var profile = GetDefaultProfile())
+            {
+                var profileClient = new RMProfileClient(profile);
+                profileClient.TryRefreshContextsFromCache();
+            }
+        }
+
         /// <summary>
         /// Generate a runtime parameter with ValidateSet matching the current context
         /// </summary>

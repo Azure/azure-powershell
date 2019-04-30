@@ -62,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                     var authority = AuthenticationHelpers.GetAuthority(parameters.Environment, "organizations");
                     publicClient = SharedTokenCacheClientFactory.CreatePublicClient(clientId: clientId, authority: authority, redirectUri: replyUrl);
 
-                    var interactiveResponse = publicClient.AcquireTokenInteractive(scopes, null)
+                    var interactiveResponse = publicClient.AcquireTokenInteractive(scopes)
                         .WithCustomWebUi(new CustomWebUi(interactiveParameters.PromptAction))
                         .ExecuteAsync();
                     return AuthenticationResultToken.GetAccessTokenAsync(interactiveResponse);

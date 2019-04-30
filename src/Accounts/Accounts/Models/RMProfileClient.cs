@@ -498,11 +498,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             var accounts = client.GetAccountsAsync().ConfigureAwait(false).GetAwaiter().GetResult();
             if (!accounts.Any())
             {
+                // If there are no accounts in the cache, return
                 return;
             }
 
             foreach (var account in accounts)
             {
+                Console.WriteLine($"Creating context for each subscription accessible by account '{account.Username}'.");
                 var environment = AzureEnvironment.PublicEnvironments
                                     .Where(env => env.Value.ActiveDirectoryAuthority.Contains(account.Environment))
                                     .Select(env => env.Value).FirstOrDefault();
@@ -513,6 +515,110 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 };
 
                 Login(azureAccount, environment, null, null, null, null, false, WriteWarningMessage);
+            }
+
+            var defaultContextName = _profile.ToProfile().DefaultContextKey;
+            Console.WriteLine($"Default context is now '{defaultContextName}' -- run 'Get-AzContext -ListAvailable' to see all contexts.");
+        }
+
+        public void TryRefreshContextsFromCache()
+        {
+            var client = SharedTokenCacheClientFactory.CreatePublicClient();
+            var accounts = client.GetAccountsAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+            if (!accounts.Any())
+            {
+                if (!_profile.ToProfile().Contexts.Any())
+                {
+                    // If there are no accounts in the cache, but we never had any existing contexts, return
+                    return;
+                }
+
+                Console.WriteLine("No accounts found in the shared token cache -- removing all user contexts.");
+                foreach (var contextName in _profile.ToProfile().Contexts.Keys)
+                {
+                    var context = _profile.ToProfile().Contexts[contextName];
+                    if (context.Account.Type != AzureAccount.AccountType.User)
+                    {
+                        continue;
+                    }
+
+                    _profile.TryRemoveContext(contextName);
+                }
+
+                if (_profile.ToProfile().Contexts.Any())
+                {
+                    var defaultContextName = _profile.ToProfile().DefaultContextKey;
+                    Console.WriteLine($"Default context is now '{defaultContextName}' -- run 'Get-AzContext -ListAvailable' to see all remaining contexts.");
+                }
+                else
+                {
+                    Console.WriteLine("No contexts remain -- run 'Connect-AzAccount' to authenticate and populate your contexts.");
+                }
+            }
+            else
+            {
+                var contextsModified = false;
+                var removedUsers = new HashSet<string>();
+                foreach (var contextName in _profile.ToProfile().Contexts.Keys)
+                {
+                    var context = _profile.ToProfile().Contexts[contextName];
+                    if (context.Account.Type != AzureAccount.AccountType.User)
+                    {
+                        continue;
+                    }
+
+                    var foundContext = false;
+                    foreach (var account in accounts)
+                    {
+                        if (context.Account.Id == account.Username)
+                        {
+                            foundContext = true;
+                            break;
+                        }
+                    }
+
+                    if (foundContext)
+                    {
+                        continue;
+                    }
+
+                    contextsModified = true;
+                    if (!removedUsers.Contains(context.Account.Id))
+                    {
+                        Console.WriteLine($"User '{context.Account.Id}' was not found in the shared token cache -- removing all contexts with this user.");
+                        removedUsers.Add(context.Account.Id);
+                    }
+
+                    _profile.TryRemoveContext(contextName);
+                }
+
+                // Check to see if each account has at least one context
+                foreach (var account in accounts)
+                {
+                    if (_profile.ToProfile().Contexts.Values.Where(c => c.Account.Id == account.Username).Any())
+                    {
+                        continue;
+                    }
+
+                    contextsModified = true;
+                    Console.WriteLine($"Creating context for each subscription accessible by account '{account.Username}'.");
+                    var environment = AzureEnvironment.PublicEnvironments
+                                        .Where(env => env.Value.ActiveDirectoryAuthority.Contains(account.Environment))
+                                        .Select(env => env.Value).FirstOrDefault();
+                    var azureAccount = new AzureAccount()
+                    {
+                        Id = account.Username,
+                        Type = AzureAccount.AccountType.User
+                    };
+
+                    Login(azureAccount, environment, null, null, null, null, false, WriteWarningMessage);
+                }
+
+                if (contextsModified && _profile.ToProfile().Contexts.Any())
+                {
+                    var defaultContextName = _profile.ToProfile().DefaultContextKey;
+                    Console.WriteLine($"Default context is now '{defaultContextName}' -- run 'Get-AzContext -ListAvailable' to see all remaining contexts.");
+                }
             }
         }
 
