@@ -24,12 +24,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
+        [Fact]
         [Trait(Category.RunType, Category.DesktopOnly)]
-#else
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWithValidVhdDiskFile()
         {
