@@ -18,7 +18,7 @@ Sets properties for a database, or moves an existing database into an elastic po
 Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <String>]
  [-RequestedServiceObjectiveName <String>] [-ElasticPoolName <String>] [-ReadScale <DatabaseReadScale>]
  [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-LicenseType <String>] [-ComputeModel <String>]
- [-AutoPauseDelayMinutes <Int32>] [-MinCapacity <Double>] [-ServerName] <String>
+ [-AutoPauseDelayInMinutes <Int32>] [-MinimumCapacity <Double>] [-ServerName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -28,7 +28,7 @@ Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <St
 Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <String>]
  [-ReadScale <DatabaseReadScale>] [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-VCore <Int32>]
  [-ComputeGeneration <String>] [-LicenseType <String>] [-ComputeModel <String>]
- [-AutoPauseDelayMinutes <Int32>] [-MinCapacity <Double>] [-ServerName] <String>
+ [-AutoPauseDelayInMinutes <Int32>] [-MinimumCapacity <Double>] [-ServerName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -137,11 +137,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AutoPauseDelayMinutes
+### -AutoPauseDelayInMinutes
 The auto pause delay in minutes for database (serverless only), -1 to opt out
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Int32
 Parameter Sets: Update, VcoreBasedDatabase
 Aliases:
 
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 ```
 
 ### -ComputeModel
-Computed model of Azure Sql database, serverless or preprovisioned
+Computed model of Azure Sql database. Serverless or Provisioned
 
 ```yaml
 Type: System.String
@@ -284,12 +284,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MinCapacity
+### -MinimumCapacity
 The Minimal capacity that database will always have allocated, if not paused.
 For serverless Azure Sql databases only.
 
 ```yaml
-Type: System.Nullable`1[System.Double]
+Type: System.Double
 Parameter Sets: Update, VcoreBasedDatabase
 Aliases: MinVCore
 

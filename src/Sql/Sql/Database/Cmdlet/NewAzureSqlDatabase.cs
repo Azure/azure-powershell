@@ -173,16 +173,16 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the Auto Pause delay for Azure Sql Database
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The auto pause delay in minutes for database(serverless only), -1 to opt out")]
-        public int? AutoPauseDelayMinutes { get; set; }
+            HelpMessage = "The auto pause delay in minutes for database(serverless only), -1 to opt out from pausing")]
+        public int AutoPauseDelayInMinutes { get; set; }
 
         /// <summary>
         /// Gets or sets the Minimal capacity that database will always have allocated, if not paused
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The Minimal capacity that database will always have allocated, if not paused. For serverless database only.")]
-        [Alias("MinVCore")]
-        public double? MinCapacity { get; set; }
+        [Alias("MinVCore", "MinCapacity")]
+        public double MinimumCapacity { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -244,8 +244,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 ReadScale = ReadScale,
                 ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
                 LicenseType = LicenseType, // note: default license type will be LicenseIncluded in SQL RP if not specified
-                AutoPauseDelayMinutes = AutoPauseDelayMinutes,
-                MinCapacity = MinCapacity,
+                AutoPauseDelayInMinutes = MyInvocation.BoundParameters.ContainsKey("AutoPauseDelayInMinutes") ? AutoPauseDelayInMinutes : (int?)null,
+                MinimumCapacity = MyInvocation.BoundParameters.ContainsKey("AutoPauseDelayInMinutes") ? MinimumCapacity : (double?)null,
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)

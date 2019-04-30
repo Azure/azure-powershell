@@ -18,7 +18,7 @@ Creates a database or an elastic database.
 New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogCollation <String>]
  [-MaxSizeBytes <Int64>] [-Edition <String>] [-RequestedServiceObjectiveName <String>]
  [-ElasticPoolName <String>] [-ReadScale <DatabaseReadScale>] [-Tags <Hashtable>] [-SampleName <String>]
- [-ZoneRedundant] [-AsJob] [-LicenseType <String>] [-AutoPauseDelayMinutes <Int32>] [-MinCapacity <Double>]
+ [-ZoneRedundant] [-AsJob] [-LicenseType <String>] [-AutoPauseDelayInMinutes <Int32>] [-MinimumCapacity <Double>]
  [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -28,7 +28,7 @@ New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogColl
 New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogCollation <String>]
  [-MaxSizeBytes <Int64>] -Edition <String> [-ReadScale <DatabaseReadScale>] [-Tags <Hashtable>]
  [-SampleName <String>] [-ZoneRedundant] [-AsJob] -VCore <Int32> -ComputeGeneration <String>
- [-LicenseType <String>] [-ComputeModel <String>] [-AutoPauseDelayMinutes <Int32>] [-MinCapacity <Double>]
+ [-LicenseType <String>] [-ComputeModel <String>] [-AutoPauseDelayInMinutes <Int32>] [-MinimumCapacity <Double>]
  [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -141,8 +141,8 @@ Capacity                      : 2
 Family                        : Gen5
 SkuName                       : GP_S_Gen5
 LicenseType                   : LicenseIncluded
-AutoPauseDelayMinutes         : 360
-MinCapacity                   : 0.5
+AutoPauseDelayInMinutes       : 360
+MinimumCapacity               : 0.5
 ```
 
 This command creates a Serverless database named Database04 on server Server01.
@@ -164,11 +164,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AutoPauseDelayMinutes
+### -AutoPauseDelayInMinutes
 The auto pause delay in minutes for database(serverless only), -1 to opt out
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -225,7 +225,7 @@ Accept wildcard characters: False
 ```
 
 ### -ComputeModel
-The compute model for Azure Sql database
+The compute model for Azure Sql database. Serverless or Provisioned
 
 ```yaml
 Type: System.String
@@ -352,14 +352,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MinCapacity
+### -MinimumCapacity
 The Minimal capacity that database will always have allocated, if not paused.
 For serverless Azure Sql databases only.
 
 ```yaml
-Type: System.Nullable`1[System.Double]
+Type: System.Double
 Parameter Sets: (All)
-Aliases: MinVCore
+Aliases: MinVCore, MinCapacity
 
 Required: False
 Position: Named

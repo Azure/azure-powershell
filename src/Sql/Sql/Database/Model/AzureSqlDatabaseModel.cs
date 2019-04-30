@@ -168,12 +168,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <summary>
         /// Gets or sets the Auto pause delay of the database
         /// </summary>
-        public int? AutoPauseDelayMinutes { get; set; }
+        public int? AutoPauseDelayInMinutes { get; set; }
 
         /// <summary>
         /// Minimal capacity that database will always have allocated, if not paused
         /// </summary>
-        public double? MinCapacity { get; set; }
+        public double? MinimumCapacity { get; set; }
 
         /// <summary>
         /// Construct AzureSqlDatabaseModel
@@ -223,8 +223,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             ReadScale = readScale;
 
             ZoneRedundant = false;
-            AutoPauseDelayMinutes = null;
-            MinCapacity = null;
+            AutoPauseDelayInMinutes = null;
+            MinimumCapacity = null;
         }
 
         /// <summary>
@@ -272,8 +272,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             LicenseType = database.LicenseType;
 
-            AutoPauseDelayMinutes = database.AutoPauseDelay;
-            MinCapacity = database.MinCapacity;
+            AutoPauseDelayInMinutes = database.AutoPauseDelay;
+            MinimumCapacity = database.MinCapacity;
         }
     }
 }

@@ -158,8 +158,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 ZoneRedundant = model.Database.ZoneRedundant,
                 ElasticPoolId = elasticPoolId,
                 LicenseType = model.Database.LicenseType,
-                AutoPauseDelay = model.Database.AutoPauseDelayMinutes,
-                MinCapacity = model.Database.MinCapacity,
+                AutoPauseDelay = model.Database.AutoPauseDelayInMinutes,
+                MinCapacity = model.Database.MinimumCapacity,
             });
 
             return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
