@@ -227,9 +227,8 @@ function Test-NatGatewayCRUDAllParameters
         Assert-NotNull ($listNatGateway | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Set NatGateway
-        $vNatGateway.IdleTimeoutInMinutes = $IdleTimeoutInMinutesSet;
         $vNatGateway.Tag = $TagSet;
-        $vNatGateway = Set-AzNatGateway -InputObject $vNatGateway;
+        $vNatGateway = Set-AzNatGateway -InputObject $vNatGateway -IdleTimeoutInMinutes $IdleTimeoutInMinutesSet;
         Assert-NotNull $vNatGateway;
         Assert-True { Check-CmdletReturnType "Set-AzNatGateway" $vNatGateway };
         Assert-AreEqual $rname $vNatGateway.Name;

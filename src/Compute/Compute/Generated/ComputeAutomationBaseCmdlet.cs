@@ -137,6 +137,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        public IProximityPlacementGroupsOperations ProximityPlacementGroupsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.ProximityPlacementGroups;
+            }
+        }
+
         public IResourceSkusOperations ResourceSkusClient
         {
             get
