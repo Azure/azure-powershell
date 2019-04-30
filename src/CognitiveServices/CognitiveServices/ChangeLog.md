@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Only display Bing disclaimer for Bing Search Services.
+* Improve error when create account failed.
 
 ## Version 1.1.0
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
