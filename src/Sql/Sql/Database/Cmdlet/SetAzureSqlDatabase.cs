@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             HelpMessage = "The Minimal capacity that database will always have allocated, if not paused. For serverless database only.",
             ParameterSetName = VcoreDatabaseParameterSet)]
         [Alias("MinVCore", "MinCapacity")]
-        public double MinimumVCoreCapacity { get; set; }
+        public double MinimumCapacity { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                            : null,
                 LicenseType = LicenseType ?? model.FirstOrDefault().LicenseType, // set to original license type
                 AutoPauseDelayInMinutes = MyInvocation.BoundParameters.ContainsKey("AutoPauseDelayInMinutes") ? AutoPauseDelayInMinutes : (int?)null,
-                MinimumVCoreCapacity = MyInvocation.BoundParameters.ContainsKey("MinimumVCoreCapacity") ? MinimumVCoreCapacity : (double?)null,
+                MinimumCapacity = MyInvocation.BoundParameters.ContainsKey("MinimumCapacity") ? MinimumCapacity : (double?)null,
             };
 
             var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
