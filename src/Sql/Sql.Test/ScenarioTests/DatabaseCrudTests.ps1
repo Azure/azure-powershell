@@ -207,7 +207,7 @@ function Test-CreateServerlessDatabase
 		Assert-AreEqual GP_S_Gen5_2 $db.CurrentServiceObjectiveName
 		Assert-AreEqual 2 $db.Capacity
 		Assert-AreEqual 360 $db.AutoPauseDelayInMinutes
-		Assert-AreEqual 0.5 $db.MinimumCapacity
+		Assert-AreEqual 0.5 $db.MinimumVCoreCapacity
 		Assert-AreEqual GeneralPurpose $db.Edition
 	}
 	finally
@@ -573,7 +573,7 @@ function Test-UpdateServerlessDatabase()
 		Assert-NotNull $db1.MaxSizeBytes
 		Assert-NotNull $db1.Edition
 		Assert-NotNull $db1.CurrentServiceObjectiveName
-		Assert-NotNull $db1.MinimumCapacity
+		Assert-NotNull $db1.MinimumVCoreCapacity
 		Assert-NotNull $db1.AutoPauseDelayInMinutes
 
 		# Alter to dtu database
@@ -583,7 +583,7 @@ function Test-UpdateServerlessDatabase()
 		$db1 = $job.Output
 		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
 		Assert-AreEqual $db1.Edition Premium
-		Assert-Null $db1.MinimumCapacity
+		Assert-Null $db1.MinimumVCoreCapacity
 		Assert-Null $db1.AutoPauseDelayInMinutes
 
 		# Alter back to Serverless
@@ -594,18 +594,18 @@ function Test-UpdateServerlessDatabase()
 		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
 		Assert-AreEqual $db1.Edition GeneralPurpose
 		Assert-AreEqual $db1.CurrentServiceObjectiveName GP_S_Gen5_2
-		Assert-NotNull $db1.MinimumCapacity
+		Assert-NotNull $db1.MinimumVCoreCapacity
 		Assert-NotNull $db1.AutoPauseDelayInMinutes
 
 		# Alter mincapacity and AutoPauseDelayInMinutes
 		$job = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-			-Vcore 2 -Edition GeneralPurpose -ComputeModel Serverless -ComputeGeneration Gen5 -MinimumCapacity 2 -AutoPauseDelayInMinutes 1440 -AsJob
+			-Vcore 2 -Edition GeneralPurpose -ComputeModel Serverless -ComputeGeneration Gen5 -MinimumVCoreCapacity 2 -AutoPauseDelayInMinutes 1440 -AsJob
 		$job | Wait-Job
 		$db1 = $job.Output
 		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
 		Assert-AreEqual $db1.Edition GeneralPurpose
 		Assert-AreEqual $db1.CurrentServiceObjectiveName GP_S_Gen5_2
-		Assert-AreEqual $db1.MinimumCapacity 2
+		Assert-AreEqual $db1.MinimumVCoreCapacity 2
 		Assert-AreEqual $db1.AutoPauseDelayInMinutes 1440
 	}
 	finally

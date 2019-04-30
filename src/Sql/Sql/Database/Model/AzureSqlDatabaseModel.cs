@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <summary>
         /// Minimal capacity that database will always have allocated, if not paused
         /// </summary>
-        public double? MinimumCapacity { get; set; }
+        public double? MinimumVCoreCapacity { get; set; }
 
         /// <summary>
         /// Construct AzureSqlDatabaseModel
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             ZoneRedundant = false;
             AutoPauseDelayInMinutes = null;
-            MinimumCapacity = null;
+            MinimumVCoreCapacity = null;
         }
 
         /// <summary>
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             LicenseType = database.LicenseType;
 
             AutoPauseDelayInMinutes = database.AutoPauseDelay;
-            MinimumCapacity = database.MinCapacity;
+            MinimumVCoreCapacity = database.MinCapacity;
         }
     }
 }
