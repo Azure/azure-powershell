@@ -19,16 +19,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Update error message displayed when -skipVmBackup parameter is not provided for Set-AzVMDiskEncryptionExtension  
+	
 ## Version 1.8.0
 * Fix issue with AEM installation if resource ids of disks had lowercase resourcegroups in resource id
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 * Fix documentation for wildcards
-
-## Version 1.8.0
-* Improve the error message displayed when -skipVmBackup parameter is not provided for Set-AzVMDiskEncryptionExtension 
-	- Allow cmdlet execution for Windows VMs and Linux VMs with Native disks.
-	- Throw exception for Linux VMs with Managed disks. 
 
 ## Version 1.7.0
 * Add HyperVGeneration parameter to New-AzDiskConfig and New-AzSnapshotConfig
