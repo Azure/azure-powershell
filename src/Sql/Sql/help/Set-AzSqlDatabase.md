@@ -18,7 +18,7 @@ Sets properties for a database, or moves an existing database into an elastic po
 Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <String>]
  [-RequestedServiceObjectiveName <String>] [-ElasticPoolName <String>] [-ReadScale <DatabaseReadScale>]
  [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-LicenseType <String>] [-ComputeModel <String>]
- [-AutoPauseDelayInMinutes <Int32>] [-MinimumVCoreCapacity <Double>] [-ServerName] <String>
+ [-AutoPauseDelayInMinutes <Int32>] [-MinimumCapacity <Double>] [-ServerName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -28,7 +28,7 @@ Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <St
 Set-AzSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <String>]
  [-ReadScale <DatabaseReadScale>] [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-VCore <Int32>]
  [-ComputeGeneration <String>] [-LicenseType <String>] [-ComputeModel <String>]
- [-AutoPauseDelayInMinutes <Int32>] [-MinimumVCoreCapacity <Double>] [-ServerName] <String>
+ [-AutoPauseDelayInMinutes <Int32>] [-MinimumCapacity <Double>] [-ServerName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -284,7 +284,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MinimumVCoreCapacity
+### -MinimumCapacity
 The Minimal capacity that database will always have allocated, if not paused.
 For serverless Azure Sql databases only.
 
