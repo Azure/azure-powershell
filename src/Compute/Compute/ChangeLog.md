@@ -20,6 +20,7 @@
 -->
 ## Upcoming Release
 * New-AzVM wimple parameter set now uses by default an available location if 'East US' is not supported
+* Update error message displayed when -skipVmBackup is not provided for Set-AzVMDiskEncryptionExtension 
 
 ## Version 2.0.0
 * Proximity placement group feature.
@@ -42,11 +43,6 @@
 * Fix issue with AEM installation if resource ids of disks had lowercase resourcegroups in resource id
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 * Fix documentation for wildcards
-
-## Version 1.8.0
-* Improve the error message displayed when -skipVmBackup parameter is not provided for Set-AzVMDiskEncryptionExtension 
-	- Allow cmdlet execution for Windows VMs and Linux VMs with Native disks.
-	- Throw exception for Linux VMs with Managed disks. 
 
 ## Version 1.7.0
 * Add HyperVGeneration parameter to New-AzDiskConfig and New-AzSnapshotConfig
