@@ -13,9 +13,9 @@ Create MatchCondition Object for WAF policy creation
 ## SYNTAX
 
 ```
-New-AzFrontDoorMatchConditionObject -MatchVariable <PSMatchVariable> -OperatorProperty <PSOperatorProperty>
- [-MatchValue <String[]>] [-Selector <String>] [-NegateCondition <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzFrontDoorMatchConditionObject -MatchVariable <String> -OperatorProperty <String> [-MatchValue <String[]>]
+ [-Selector <String>] [-NegateCondition <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,10 +72,9 @@ Match Variable.
 Possible values include: 'RemoteAddr', 'RequestMethod', 'QueryString', 'PostArgs','RequestUri', 'RequestHeader', 'RequestBody'
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSMatchVariable
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: RemoteAddr, RequestMethod, QueryString, PostArgs, RequestUri, RequestHeader, RequestBody
 
 Required: True
 Position: Named
@@ -105,10 +104,9 @@ Describes operator to be matched.
 Possible values include: 'Any', 'IPMatch', 'GeoMatch', 'Equal', 'Contains', 'LessThan', 'GreaterThan', 'LessThanOrEqual', 'GreaterThanOrEqual', 'BeginsWith', 'EndsWith''
 
 ```yaml
-Type: Microsoft.Azure.Commands.FrontDoor.Models.PSOperatorProperty
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Any, IPMatch, GeoMatch, Equal, Contains, LessThan, GreaterThan, LessThanOrEqual, GreaterThanOrEqual, BeginsWith, EndsWith
 
 Required: True
 Position: Named

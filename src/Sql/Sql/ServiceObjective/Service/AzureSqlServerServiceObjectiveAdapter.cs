@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.ServiceObjective.Model;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Location_Capabilities.Services;
 using Microsoft.Azure.Commands.Sql.Server.Services;
 using Microsoft.Azure.Management.Sql.Models;
@@ -56,31 +57,16 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
         }
 
         /// <summary>
-        /// Gets a ServiceObjective for a server
-        /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group</param>
-        /// <param name="serverName">The name of the server</param>
-        /// <param name="serviceObjectiveName">The name of the service objective</param>
-        /// <returns>The ServiceObjective</returns>
-        public List<AzureSqlServerServiceObjectiveModel> GetServiceObjective(string resourceGroupName, string serverName, string serviceObjectiveName)
-        {
-            var server = ServerCommunicator.Get(resourceGroupName, serverName);
-            var capabilities = CapabilitiesCommunicator.Get(server.Location);
-
-            return (
-                from serverVersion in FilterByName(capabilities.SupportedServerVersions, server.Version)
-                from edition in serverVersion.SupportedEditions
-                from serviceObjective in FilterByName(edition.SupportedServiceLevelObjectives, serviceObjectiveName)
-                select CreateServiceObjectiveModelFromResponse(edition, serviceObjective, resourceGroupName, serverName)).ToList();
-        }
-
-        /// <summary>
         /// Gets a list of all the ServiceObjective for a server
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the server</param>
+        /// <param name="serviceObjectiveNamePattern">The name of the serviceObjective, or null to get all.</param>
         /// <returns>A list of all the ServiceObjectives</returns>
-        public List<AzureSqlServerServiceObjectiveModel> ListServiceObjectives(string resourceGroupName, string serverName)
+        public List<AzureSqlServerServiceObjectiveModel> ListServiceObjectivesByServer(
+            string resourceGroupName,
+            string serverName,
+            WildcardPattern serviceObjectiveNamePattern)
         {
             var server = ServerCommunicator.Get(resourceGroupName, serverName);
             var capabilities = CapabilitiesCommunicator.Get(server.Location);
@@ -88,9 +74,28 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
             return (
                 from serverVersion in FilterByName(capabilities.SupportedServerVersions, server.Version)
                 from edition in serverVersion.SupportedEditions
-                from serviceObjective in edition.SupportedServiceLevelObjectives
+                from serviceObjective in FilterByName(edition.SupportedServiceLevelObjectives, serviceObjectiveNamePattern)
                 select CreateServiceObjectiveModelFromResponse(edition, serviceObjective, resourceGroupName, serverName)).ToList();
         }
+
+        /// <summary>
+        /// Gets a list of all the ServiceObjective for a location
+        /// </summary>
+        /// <param name="locationName">The name of the location</param>
+        /// <param name="serviceObjectiveNamePattern">The name of the serviceObjective, or null to get all.</param>
+        /// <returns>A list of all the ServiceObjectives</returns>
+        public List<AzureSqlServerServiceObjectiveModel> ListServiceObjectivesByLocation(
+            string locationName,
+            WildcardPattern serviceObjectiveNamePattern)
+        {
+            var capabilities = CapabilitiesCommunicator.Get(locationName);
+
+            return (
+                from serverVersion in capabilities.SupportedServerVersions
+                from edition in serverVersion.SupportedEditions
+                from serviceObjective in FilterByName(edition.SupportedServiceLevelObjectives, serviceObjectiveNamePattern)
+                select CreateServiceObjectiveModelFromResponse(edition, serviceObjective)).ToList();
+         }
 
         /// <summary>
         /// Convert a SLO capability to AzureSqlDatabaseServerServiceObjectiveModel
@@ -130,14 +135,9 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
             return capabilities.Where(c => string.Equals(c.Name, name, StringComparison.OrdinalIgnoreCase));
         }
 
-        private static IEnumerable<EditionCapability> FilterByName(IEnumerable<EditionCapability> capabilities, string name)
+        private static IEnumerable<ServiceObjectiveCapability> FilterByName(IEnumerable<ServiceObjectiveCapability> capabilities, WildcardPattern nameFilter)
         {
-            return capabilities.Where(c => string.Equals(c.Name, name, StringComparison.OrdinalIgnoreCase));
-        }
-
-        private static IEnumerable<ServiceObjectiveCapability> FilterByName(IEnumerable<ServiceObjectiveCapability> capabilities, string name)
-        {
-            return capabilities.Where(c => string.Equals(c.Name, name, StringComparison.OrdinalIgnoreCase));
+            return capabilities.Where(c => nameFilter.IsMatch(c.Name));
         }
 
         #endregion

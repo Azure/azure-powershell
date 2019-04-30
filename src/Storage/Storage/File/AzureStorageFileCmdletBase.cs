@@ -18,7 +18,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
     using Microsoft.WindowsAzure.Commands.Common.Storage;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage.File;
+    using Microsoft.Azure.Storage.File;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
