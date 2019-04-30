@@ -27,14 +27,14 @@ Restart-AzVM [-ResourceGroupName] <String> [-Name] <String> [-PerformMaintenance
 
 ### RestartIdParameterSetName
 ```
-Restart-AzVM [-Id] <String> [[-Name] <String>] [-AsJob] [-NoWait] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Restart-AzVM [-Id] <String> [-AsJob] [-NoWait] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### PerformMaintenanceIdParameterSetName
 ```
-Restart-AzVM [-Id] <String> [[-Name] <String>] [-PerformMaintenance] [-AsJob] [-NoWait]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restart-AzVM [-Id] <String> [-PerformMaintenance] [-AsJob] [-NoWait] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,18 +105,6 @@ Parameter Sets: RestartResourceGroupNameParameterSetName, PerformMaintenanceReso
 Aliases:
 
 Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: RestartIdParameterSetName, PerformMaintenanceIdParameterSetName
-Aliases:
-
-Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
