@@ -10,6 +10,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
     public class PSDeploymentCmdletParameters
     {
+        public string ManagementGroupId { get; set; }
+
         public string ResourceGroupName { get; set; }
 
         public string DeploymentName { get; set; }

@@ -180,6 +180,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         }
 
         /// <summary>
+        /// Gets the management group id from the resource id.
+        /// </summary>
+        /// <param name="resourceId">The resource id.</param>
+        public static string GetManagementGroupId(string resourceId)
+        {
+            return ResourceIdUtility.GetNextSegmentAfter(resourceId: resourceId, segmentName: Constants.MicrosoftManagementNamespace);
+        }
+
+        /// <summary>
         /// Gets the subscription id from the resource id.
         /// </summary>
         /// <param name="resourceId">The resource id.</param>

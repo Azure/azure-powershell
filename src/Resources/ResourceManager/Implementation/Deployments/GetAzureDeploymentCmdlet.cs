@@ -47,14 +47,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
+        [Parameter(ParameterSetName = GetAzureDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = false, HelpMessage = "The management group.")]
+        [ValidateNotNullOrEmpty]
+        public string ManagementGroup { get; set; }
+
         public override void ExecuteCmdlet()
         {
             FilterDeploymentOptions options = new FilterDeploymentOptions()
             {
-                DeploymentName = Name ?? (string.IsNullOrEmpty(Id) ? null : ResourceIdUtility.GetResourceName(Id))
+                DeploymentName = Name ?? (string.IsNullOrEmpty(Id) ? null : ResourceIdUtility.GetResourceName(Id)),
+                ManagementGroupId = ManagementGroup ?? (string.IsNullOrEmpty(Id) ? null : ResourceIdUtility.GetManagementGroupId(Id))
             };
 
-            WriteObject(ResourceManagerSdkClient.FilterDeploymentsAtSubscriptionScope(options), true);
+            var deployments = string.IsNullOrEmpty(options.ManagementGroupId)
+                ? ResourceManagerSdkClient.FilterDeploymentsAtSubscriptionScope(options)
+                : ResourceManagerSdkClient.FilterDeploymentsAtManagementGroup(options);
+
+            WriteObject(deployments, true);
         }
     }
 }

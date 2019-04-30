@@ -41,6 +41,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         internal const string InputObjectParameterSet = "RemoveByInputObject";
 
+        [Parameter(ParameterSetName = RemoveAzureDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = false, HelpMessage = "The management group.")]
+        [ValidateNotNullOrEmpty]
+        public string ManagementGroup { get; set; }
+
         [Alias("DeploymentName")]
         [Parameter(Position = 0, ParameterSetName = RemoveAzureDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = true, HelpMessage = "The name of the deployment.")]
         [ValidateNotNullOrEmpty]
@@ -69,11 +73,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 Name,
                 () =>
                 {
+                    var managementGroupId = !string.IsNullOrEmpty(this.ManagementGroup)
+                        ? this.ManagementGroup
+                        : !string.IsNullOrEmpty(this.Id) ? ResourceIdUtility.GetManagementGroupId(this.Id) : null;
+
                     var deploymentName = !string.IsNullOrEmpty(this.Name)
                         ? this.Name
                         : !string.IsNullOrEmpty(this.Id) ? ResourceIdUtility.GetResourceName(this.Id) : this.InputObject.DeploymentName;
 
-                    ResourceManagerSdkClient.DeleteDeploymentAtSubscriptionScope(deploymentName);
+                    if (string.IsNullOrEmpty(managementGroupId))
+                    {
+                        ResourceManagerSdkClient.DeleteDeploymentAtSubscriptionScope(deploymentName);
+                    }
+                    else
+                    {
+                        ResourceManagerSdkClient.DeleteDeploymentAtManagementGroup(managementGroupId, deploymentName);
+                    }
 
                     if (this.PassThru.IsPresent)
                     {

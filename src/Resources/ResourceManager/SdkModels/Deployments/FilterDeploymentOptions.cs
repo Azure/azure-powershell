@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
     {
         public string DeploymentName { get; set; }
 
+        public string ManagementGroupId { get; set; }
+
         public string ResourceGroupName { get; set; }
 
         public List<string> ProvisioningStates { get; set; }
@@ -29,6 +31,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         public FilterDeploymentOptions()
         {
             DeploymentName = null;
+            ManagementGroupId = null;
             ResourceGroupName = null;
             ProvisioningStates = new List<string>();
             ExcludedProvisioningStates = new List<string>();

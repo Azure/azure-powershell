@@ -187,6 +187,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deployment &apos;{0}&apos; doesn&apos;t exist in management group..
+        /// </summary>
+        internal static string DeploymentDoesntExistAtManagementGroupScope {
+            get {
+                return ResourceManager.GetString("DeploymentDoesntExistAtManagementGroupScope", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deployment &apos;{0}&apos; doesn&apos;t exist in subscription..
         /// </summary>
         internal static string DeploymentDoesntExistAtSubscriptionScope {

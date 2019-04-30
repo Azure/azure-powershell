@@ -32,10 +32,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The management group.")]
+        [ValidateNotNullOrEmpty]
+        public string ManagementGroup { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var parameters = new PSDeploymentCmdletParameters()
             {
+                ManagementGroupId = ManagementGroup,
                 Location = Location,
                 TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
                 TemplateObject = TemplateObject,
@@ -43,7 +48,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 ParameterUri = TemplateParameterUri
             };
 
-            WriteObject(ResourceManagerSdkClient.ValidateDeployment(parameters, DeploymentMode.Incremental));
+            var validationResult = string.IsNullOrEmpty(parameters.ManagementGroupId)
+                ? ResourceManagerSdkClient.ValidateDeployment(parameters, DeploymentMode.Incremental)
+                : ResourceManagerSdkClient.ValidateDeploymentAtManagementGroup(parameters, DeploymentMode.Incremental);
+
+            WriteObject(validationResult);
         }
     }
 }

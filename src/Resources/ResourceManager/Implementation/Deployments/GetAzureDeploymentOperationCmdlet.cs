@@ -39,6 +39,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         internal const string DeploymentObjectParameterSet = "GetByDeploymentObject";
 
+        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.DeploymentNameParameterSet, Mandatory = false, HelpMessage = "The management group.")]
+        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.DeploymentObjectParameterSet, Mandatory = false, HelpMessage = "The management group.")]
+        [ValidateNotNullOrEmpty]
+        public string ManagementGroup { get; set; }
+
         /// <summary>
         /// Gets or sets the deployment name parameter.
         /// </summary>
@@ -60,7 +65,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var deploymentName = !string.IsNullOrEmpty(this.DeploymentName) ? this.DeploymentName : this.DeploymentObject.DeploymentName;
 
-            WriteObject(ResourceManagerSdkClient.GetDeploymentOperations(deploymentName, this.OperationId), true);
+            var deploymentOperations = string.IsNullOrEmpty(this.ManagementGroup)
+                ? ResourceManagerSdkClient.GetDeploymentOperations(deploymentName, this.OperationId)
+                : ResourceManagerSdkClient.GetDeploymentOperationsAtManagementGroup(this.ManagementGroup, deploymentName, this.OperationId);
+
+            WriteObject(deploymentOperations, true);
         }
     }
 }

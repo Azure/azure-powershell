@@ -40,6 +40,7 @@ using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Proper
 using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using System.Management.Automation;
 using Microsoft.Rest;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 {
@@ -207,15 +208,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
+        public DeploymentExtended ProvisionDeploymentStatusAtManagementGroup(string managementGroupId, string deploymentName, Deployment deployment)
+        {
+            operations = new List<DeploymentOperation>();
+
+            return WaitDeploymentStatus(
+                () => GetDeploymentResponseAtManagementGroup(managementGroupId, deploymentName),
+                () => WriteDeploymentProgressAtManagementGroup(managementGroupId, deploymentName, deployment),
+                ProvisioningState.Canceled,
+                ProvisioningState.Succeeded,
+                ProvisioningState.Failed);
+        }
+
         public DeploymentExtended ProvisionDeploymentStatus(string resourceGroup, string deploymentName, Deployment deployment)
         {
             operations = new List<DeploymentOperation>();
 
             return WaitDeploymentStatus(
-                resourceGroup,
-                deploymentName,
-                deployment,
-                WriteDeploymentProgress,
+                () => GetDeploymentResponse(resourceGroup, deploymentName),
+                () => WriteDeploymentProgress(resourceGroup, deploymentName, deployment),
                 ProvisioningState.Canceled,
                 ProvisioningState.Succeeded,
                 ProvisioningState.Failed);
@@ -235,6 +246,68 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             while (!string.IsNullOrEmpty(result.NextPageLink))
             {
                 result = this.ListNextDeploymentOperations(resourceGroup, result.NextPageLink);
+                newOperations = GetNewOperations(operations, result);
+                operations.AddRange(newOperations);
+            }
+
+            foreach (DeploymentOperation operation in newOperations)
+            {
+                string statusMessage;
+
+                if (operation.Properties.ProvisioningState != ProvisioningState.Failed.ToString())
+                {
+                    if (operation.Properties.TargetResource != null)
+                    {
+                        statusMessage = string.Format(normalStatusFormat,
+                            operation.Properties.TargetResource.ResourceType,
+                            operation.Properties.TargetResource.ResourceName,
+                            operation.Properties.ProvisioningState.ToLower());
+
+                        WriteVerbose(statusMessage);
+                    }
+                }
+                else
+                {
+                    string errorMessage = operation.Properties.StatusMessage.ToString();
+
+                    if (operation.Properties.TargetResource != null)
+                    {
+                        statusMessage = string.Format(failureStatusFormat,
+                            operation.Properties.TargetResource.ResourceType,
+                            operation.Properties.TargetResource.ResourceName,
+                            errorMessage);
+
+                        WriteError(statusMessage);
+                    }
+                    else
+                    {
+                        WriteError(errorMessage);
+                    }
+
+                    List<string> detailedMessage = ParseDetailErrorMessage(operation.Properties.StatusMessage.ToString());
+
+                    if (detailedMessage != null && detailedMessage.Count > 0)
+                    {
+                        detailedMessage.ForEach(s => WriteError(s));
+                    }
+                }
+            }
+        }
+
+        private void WriteDeploymentProgressAtManagementGroup(string managementGroup, string deploymentName, Deployment deployment)
+        {
+            const string normalStatusFormat = "Resource {0} '{1}' provisioning status is {2}";
+            const string failureStatusFormat = "Resource {0} '{1}' failed with message '{2}'";
+            List<DeploymentOperation> newOperations;
+
+            var result = this.ListDeploymentOperationsAtManagementGroup(managementGroup, deploymentName);
+
+            newOperations = GetNewOperations(operations, result);
+            operations.AddRange(newOperations);
+
+            while (!string.IsNullOrEmpty(result.NextPageLink))
+            {
+                result = this.ListNextDeploymentOperationsAtManagementGroup(managementGroup, result.NextPageLink);
                 newOperations = GetNewOperations(operations, result);
                 operations.AddRange(newOperations);
             }
@@ -310,10 +383,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         private DeploymentExtended WaitDeploymentStatus(
-            string resourceGroup,
-            string deploymentName,
-            Deployment basicDeployment,
-            Action<string, string, Deployment> job,
+            Func<Task<AzureOperationResponse<DeploymentExtended>>> getDeployment,
+            Action listDeploymentOperations,
             params ProvisioningState[] status)
         {
             DeploymentExtended deployment;
@@ -335,14 +406,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     phaseOne -= step;
                 }
 
-                if (job != null)
+                if (listDeploymentOperations != null)
                 {
-                    job(resourceGroup, deploymentName, basicDeployment);
+                    ////listDeploymentOperations(resourceGroup, deploymentName, basicDeployment);
+                    listDeploymentOperations();
                 }
 
-                var getDeploymentTask = resourceGroup != null
-                    ? ResourceManagementClient.Deployments.GetWithHttpMessagesAsync(resourceGroup, deploymentName)
-                    : ResourceManagementClient.Deployments.GetAtSubscriptionScopeWithHttpMessagesAsync(deploymentName);
+                ////var getDeploymentTask = resourceGroup != null
+                ////    ? ResourceManagementClient.Deployments.GetWithHttpMessagesAsync(resourceGroup, deploymentName)
+                ////    : ResourceManagementClient.Deployments.GetAtSubscriptionScopeWithHttpMessagesAsync(deploymentName);
+
+                var getDeploymentTask = getDeployment();
 
                 using (var getResult = getDeploymentTask.ConfigureAwait(false).GetAwaiter().GetResult())
                 {
@@ -360,6 +434,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             } while (!status.Any(s => s.ToString().Equals(deployment.Properties.ProvisioningState, StringComparison.OrdinalIgnoreCase)));
 
             return deployment;
+        }
+
+        Task<AzureOperationResponse<DeploymentExtended>> GetDeploymentResponseAtManagementGroup(string managementGroupId, string deploymentName)
+        {
+            return ResourceManagementClient.Deployments.GetAtManagementGroupScopeWithHttpMessagesAsync(managementGroupId, deploymentName);
+        }
+
+        Task<AzureOperationResponse<DeploymentExtended>> GetDeploymentResponse(string resourceGroupName, string deploymentName)
+        {
+            return resourceGroupName != null
+                ? ResourceManagementClient.Deployments.GetWithHttpMessagesAsync(resourceGroupName, deploymentName)
+                : ResourceManagementClient.Deployments.GetAtSubscriptionScopeWithHttpMessagesAsync(deploymentName);
         }
 
         private List<DeploymentOperation> GetNewOperations(List<DeploymentOperation> old, IPage<DeploymentOperation> current)
@@ -380,9 +466,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     Enum.TryParse<HttpStatusCode>(operation.Properties.StatusCode, out statusCode);
                     if (!statusCode.IsClientFailureRequest())
                     {
+                        var subscriptionId = ResourceIdUtility.GetSubscriptionId(operation.Properties.TargetResource.Id);
                         var resourceGroupName = ResourceIdUtility.GetResourceGroupName(operation.Properties.TargetResource.Id);
                         var deploymentName = operation.Properties.TargetResource.ResourceName;
 
+                        // (tiano): specify the subscription id.
                         if (this.CheckDeploymentExistence(resourceGroupName, deploymentName) == true)
                         {
                             List<DeploymentOperation> newNestedOperations = new List<DeploymentOperation>();
@@ -464,6 +552,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return deployment;
         }
 
+        private TemplateValidationInfo CheckBasicDeploymentErrorsAtManagementGroup(string managementGroup, string deploymentName, Deployment deployment)
+        {
+            try
+            {
+                DeploymentValidateResult validationResult = ResourceManagementClient.Deployments.ValidateAtManagementGroupScope(managementGroup, deploymentName, deployment);
+
+                return new TemplateValidationInfo(validationResult);
+            }
+            catch (Exception ex)
+            {
+                var error = HandleError(ex).FirstOrDefault();
+                return new TemplateValidationInfo(new DeploymentValidateResult(error));
+            }
+        }
+
         private TemplateValidationInfo CheckBasicDeploymentErrors(string resourceGroup, string deploymentName, Deployment deployment)
         {
             try
@@ -504,6 +607,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         }
 
+        private IPage<DeploymentOperation> ListDeploymentOperationsAtManagementGroup(string managementGroup, string deploymentName)
+        {
+            return this.ResourceManagementClient.DeploymentOperations.ListAtManagementGroupScope(managementGroup, deploymentName, null);
+        }
+
+        private IPage<DeploymentOperation> ListNextDeploymentOperationsAtManagementGroup(string managementGroup, string nextLink)
+        {
+            return this.ResourceManagementClient.DeploymentOperations.ListAtManagementGroupScopeNext(nextLink);
+        }
+
         private IPage<DeploymentOperation> ListDeploymentOperations(string resourceGroupName, string deploymentName)
         {
             return resourceGroupName != null
@@ -518,11 +631,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 : this.ResourceManagementClient.DeploymentOperations.ListAtSubscriptionScopeNext(nextLink);
         }
 
+        private bool CheckDeploymentExistenceAtManagementGroup(string managementGroup, string deploymentName)
+        {
+            return this.ResourceManagementClient.Deployments.CheckExistenceAtManagementGroupScope(managementGroup, deploymentName);
+        }
+
         private bool CheckDeploymentExistence(string resourceGroupName, string deploymentName)
         {
             return resourceGroupName != null
                 ? this.ResourceManagementClient.Deployments.CheckExistence(resourceGroupName, deploymentName)
                 : this.ResourceManagementClient.Deployments.CheckExistenceAtSubscriptionScope(deploymentName);
+        }
+
+        private void BeginDeploymentAtManagementGroupScope(string managementGroupId, string deploymentName, Deployment deployment)
+        {
+            this.ResourceManagementClient.Deployments.BeginCreateOrUpdateAtManagementGroupScope(managementGroupId, deploymentName, deployment);
         }
 
         private void BeginDeployment(string resourceGroupName, string deploymentName, Deployment deployment)
@@ -772,6 +895,45 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         /// <summary>
+        /// Filters the deployments at management group scope.
+        /// </summary>
+        /// <param name="options">The filtering options</param>
+        /// <returns>The filtered list of deployments</returns>
+        public virtual List<PSDeployment> FilterDeploymentsAtManagementGroup(FilterDeploymentOptions options)
+        {
+            List<PSDeployment> deployments = new List<PSDeployment>();
+            string name = options.DeploymentName;
+            List<string> excludedProvisioningStates = options.ExcludedProvisioningStates ?? new List<string>();
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                deployments.Add(ResourceManagementClient.Deployments.GetAtManagementGroupScope(options.ManagementGroupId, name).ToPSDeployment());
+            }
+            else
+            {
+                var result = ResourceManagementClient.Deployments.ListAtManagementGroupScope(options.ManagementGroupId);
+
+                deployments.AddRange(result.Select(d => d.ToPSDeployment()));
+
+                while (!string.IsNullOrEmpty(result.NextPageLink))
+                {
+                    result = ResourceManagementClient.Deployments.ListAtManagementGroupScopeNext(result.NextPageLink);
+                    deployments.AddRange(result.Select(d => d.ToPSDeployment()));
+                }
+            }
+
+            if (excludedProvisioningStates.Count > 0)
+            {
+                return deployments.Where(d => excludedProvisioningStates
+                    .All(s => !s.Equals(d.ProvisioningState, StringComparison.OrdinalIgnoreCase))).ToList();
+            }
+            else
+            {
+                return deployments;
+            }
+        }
+
+        /// <summary>
         /// Filters the deployments at subscription scope.
         /// </summary>
         /// <param name="options">The filtering options</param>
@@ -851,6 +1013,37 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         /// <summary>
+        /// Gets the deployment operations at management group scope.
+        /// </summary>
+        /// <param name="managementGroupId">The management group id</param>
+        /// <param name="deploymentName">The deployment name</param>
+        /// <param name="operationId">The operation Id</param>
+        /// <returns>The deployment operations</returns>
+        public virtual List<PSDeploymentOperation> GetDeploymentOperationsAtManagementGroup(string managementGroupId, string deploymentName, string operationId = null)
+        {
+            List<PSDeploymentOperation> deploymentOperations = new List<PSDeploymentOperation>();
+
+            if (!string.IsNullOrEmpty(operationId))
+            {
+                deploymentOperations.Add(ResourceManagementClient.DeploymentOperations.GetAtManagementGroupScope(managementGroupId, deploymentName, operationId).ToPSDeploymentOperation());
+            }
+            else
+            {
+                var result = ResourceManagementClient.DeploymentOperations.ListAtManagementGroupScope(managementGroupId, deploymentName);
+
+                deploymentOperations.AddRange(result.Select(d => d.ToPSDeploymentOperation()));
+
+                while (!string.IsNullOrEmpty(result.NextPageLink))
+                {
+                    result = ResourceManagementClient.DeploymentOperations.ListAtManagementGroupScopeNext(result.NextPageLink);
+                    deploymentOperations.AddRange(result.Select(d => d.ToPSDeploymentOperation()));
+                }
+            }
+
+            return deploymentOperations;
+        }
+
+        /// <summary>
         /// Gets the deployment operations at subscription scope.
         /// </summary>
         /// <param name="deploymentName">The deployment name</param>
@@ -878,6 +1071,45 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
 
             return deploymentOperations;
+        }
+
+        /// <summary>
+        /// Creates new deployment at management group scope.
+        /// </summary>
+        /// <param name="parameters">The create deployment parameters</param>
+        public virtual PSDeployment ExecuteDeploymentAtManagementGroupScope(PSDeploymentCmdletParameters parameters)
+        {
+            parameters.DeploymentName = GenerateDeploymentName(parameters);
+            Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode, parameters.DeploymentDebugLogLevel);
+
+            TemplateValidationInfo validationInfo = CheckBasicDeploymentErrorsAtManagementGroup(parameters.ManagementGroupId, parameters.DeploymentName, deployment);
+
+            if (validationInfo.Errors.Count != 0)
+            {
+                foreach (var error in validationInfo.Errors)
+                {
+                    WriteError(string.Format(ErrorFormat, error.Code, error.Message));
+                    if (error.Details != null && error.Details.Count > 0)
+                    {
+                        foreach (var innerError in error.Details)
+                        {
+                            DisplayInnerDetailErrorMessage(innerError);
+                        }
+                    }
+                }
+                throw new InvalidOperationException(ProjectResources.FailedDeploymentValidation);
+            }
+            else
+            {
+                WriteVerbose(ProjectResources.TemplateValid);
+            }
+
+            this.BeginDeploymentAtManagementGroupScope(parameters.ManagementGroupId, parameters.DeploymentName, deployment);
+
+            WriteVerbose(string.Format(ProjectResources.CreatedDeployment, parameters.DeploymentName));
+            DeploymentExtended result = ProvisionDeploymentStatusAtManagementGroup(parameters.ManagementGroupId, parameters.DeploymentName, deployment);
+            
+            return result.ToPSDeployment();
         }
 
         /// <summary>
@@ -989,6 +1221,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <summary>
         /// Deletes a deployment
         /// </summary>
+        /// <param name="managementGroupId">The management group id</param>
+        /// <param name="deploymentName">Deployment name</param>
+        public virtual void DeleteDeploymentAtManagementGroup(string managementGroupId, string deploymentName)
+        {
+            if (!ResourceManagementClient.Deployments.CheckExistenceAtManagementGroupScope(managementGroupId, deploymentName))
+            {
+                throw new ArgumentException(string.Format(ProjectResources.DeploymentDoesntExistAtManagementGroupScope, deploymentName));
+            }
+
+            ResourceManagementClient.Deployments.DeleteAtManagementGroupScope(managementGroupId, deploymentName);
+        }
+
+        /// <summary>
+        /// Deletes a deployment
+        /// </summary>
         /// <param name="deploymentName">Deployment name</param>
         public virtual void DeleteDeploymentAtSubscriptionScope(string deploymentName)
         {
@@ -1092,6 +1339,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             {
                 throw new ArgumentException(ProjectResources.MultipleRunningDeployment);
             }
+        }
+
+        /// <summary>
+        /// Validates a given deployment.
+        /// </summary>
+        /// <param name="parameters">The deployment create options</param>
+        /// <param name="deploymentMode">The deployment mode</param>
+        /// <returns>The validation errors if there's any, or empty list otherwise.</returns>
+        public virtual List<PSResourceManagerError> ValidateDeploymentAtManagementGroup(PSDeploymentCmdletParameters parameters, DeploymentMode deploymentMode)
+        {
+            Deployment deployment = CreateBasicDeployment(parameters, deploymentMode, null);
+            var deploymentName = GenerateDeploymentName(parameters);
+            TemplateValidationInfo validationInfo = CheckBasicDeploymentErrorsAtManagementGroup(parameters.ManagementGroupId, deploymentName, deployment);
+
+            if (validationInfo.Errors.Count == 0)
+            {
+                WriteVerbose(ProjectResources.TemplateValid);
+            }
+            return validationInfo.Errors.Select(e => e.ToPSResourceManagerError()).ToList();
         }
 
         /// <summary>

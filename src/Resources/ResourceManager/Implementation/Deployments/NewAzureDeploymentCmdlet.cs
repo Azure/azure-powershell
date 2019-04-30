@@ -46,10 +46,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The management group.")]
+        [ValidateNotNullOrEmpty]
+        public string ManagementGroup { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var parameters = new PSDeploymentCmdletParameters()
             {
+                ManagementGroupId = ManagementGroup,
                 Location = Location,
                 DeploymentName = Name,
                 DeploymentMode = DeploymentMode.Incremental,
@@ -64,7 +69,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 WriteWarning(ProjectResources.WarnOnDeploymentDebugSetting);
             }
-            WriteObject(ResourceManagerSdkClient.ExecuteDeploymentAtSubscriptionScope(parameters));
+
+            var deployment = string.IsNullOrEmpty(parameters.ManagementGroupId)
+                ? ResourceManagerSdkClient.ExecuteDeploymentAtSubscriptionScope(parameters)
+                : ResourceManagerSdkClient.ExecuteDeploymentAtManagementGroupScope(parameters);
+
+            WriteObject(deployment);
         }
     }
 }
