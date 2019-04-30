@@ -22,7 +22,7 @@ Stop-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-Instance
 ### FriendMethod
 ```
 Stop-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>] [-Force]
- [-StayProvisioned] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-StayProvisioned] [-SkipShutdown] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -121,6 +121,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SkipShutdown
+To request non-graceful VM shutdown
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: FriendMethod
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

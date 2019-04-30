@@ -52,7 +52,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     Rest.Azure.AzureOperationResponse result = null;
                     if (this.ParameterSetName.Equals("FriendMethod"))
                     {
-                        result = VirtualMachineScaleSetsClient.PowerOffWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds).GetAwaiter().GetResult();
+                        bool? skipShutdown = this.SkipShutdown.IsPresent ? (bool?) true : null;
+                        result = VirtualMachineScaleSetsClient.PowerOffWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, skipShutdown, instanceIds).GetAwaiter().GetResult();
                     }
                     else
                     {
@@ -124,6 +125,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "FriendMethod",
             Mandatory = true)]
         public SwitchParameter StayProvisioned { get; set; }
+
+        [Parameter(
+            ParameterSetName = "FriendMethod")]
+        public SwitchParameter SkipShutdown { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }

@@ -22,8 +22,8 @@ Save-AzVMImage [-Name] <String> [-DestinationContainerName] <String> [-VHDNamePr
 
 ### IdParameterSetName
 ```
-Save-AzVMImage [[-Name] <String>] [-DestinationContainerName] <String> [-VHDNamePrefix] <String> [-Overwrite]
- [[-Path] <String>] [-Id] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Save-AzVMImage [-DestinationContainerName] <String> [-VHDNamePrefix] <String> [-Overwrite] [[-Path] <String>]
+ [-Id] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,18 +120,6 @@ Parameter Sets: ResourceGroupNameParameterSetName
 Aliases: VMName
 
 Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: IdParameterSetName
-Aliases: VMName
-
-Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
