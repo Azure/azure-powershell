@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The Minimal capacity that database will always have allocated, if not paused. For serverless database only.")]
         [Alias("MinVCore", "MinCapacity")]
-        public double MinimumCapacity { get; set; }
+        public double MinimumVCoreCapacity { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
                 LicenseType = LicenseType, // note: default license type will be LicenseIncluded in SQL RP if not specified
                 AutoPauseDelayInMinutes = MyInvocation.BoundParameters.ContainsKey("AutoPauseDelayInMinutes") ? AutoPauseDelayInMinutes : (int?)null,
-                MinimumCapacity = MyInvocation.BoundParameters.ContainsKey("AutoPauseDelayInMinutes") ? MinimumCapacity : (double?)null,
+                MinimumVCoreCapacity = MyInvocation.BoundParameters.ContainsKey("AutoPauseDelayInMinutes") ? MinimumVCoreCapacity : (double?)null,
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)
