@@ -2,8 +2,7 @@
 
 > Usings
 ``` yaml
-use:
-- "@microsoft.azure/autorest.powershell@beta"
+use: "@microsoft.azure/autorest.powershell@beta"
 ```
 
 > Values
@@ -26,6 +25,14 @@ namespace: Microsoft.Azure.PowerShell.Cmdlets.$(service-name)
 ``` yaml
 clear-output-folder: true
 output-folder: .
+```
+
+> Profiles
+``` yaml
+require: $(repo)/profiles/readme.md
+profile:
+  - hybrid-2019-03-01
+  - latest-2019-04-30
 ```
 
 > Directives

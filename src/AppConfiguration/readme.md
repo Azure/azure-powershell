@@ -47,9 +47,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-require: $(this-folder)/../readme.azure.md
-input-file: resources/AppConfiguration.json
-module-version: 0.1.2
+require:
+  - $(this-folder)/../readme.azure.md
+  - $(repo)/specification/appconfiguration/resource-manager/readme.enable-multi-api.md
+  - $(repo)/specification/appconfiguration/resource-manager/readme.md
+
+module-version: 0.1.3
 skip-model-cmdlets: true
 
 directive:
@@ -58,11 +61,15 @@ directive:
     set:
       parameter-name: Name
   - where:
-      verb: Update
-      subject: ConfigurationStore
-    remove: true
-  - where:
-      parameter-name: ConfigStoreCreationParameters|RegenerateKeyParameters|CheckNameAvailabilityParameters
+      parameter-name: ConfigStoreCreationParameter|RegenerateKeyParameter|CheckNameAvailabilityParameter
     select: command
     hide: true
+  - where:
+      subject: OperationNameAvailability
+    set:
+      subject: StoreNameAvailability
+  # - where:
+  #     verb: Update
+  #     subject: ConfigurationStore
+  #   remove: true
 ```

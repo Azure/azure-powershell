@@ -12,10 +12,10 @@ Checks whether the configuration store name is available for use.
 
 ## SYNTAX
 
-### NoType (Default)
+### CheckSubscriptionIdViaHostExpanded (Default)
 ```
-Test-AzAppConfigurationStoreNameAvailability [-SubscriptionId <String>] -Name <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Test-AzAppConfigurationStoreNameAvailability -Name <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CheckExpanded
@@ -70,18 +70,6 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The Microsoft Azure subscription ID.
-
-```yaml
-Type: System.String
-Parameter Sets: NoType
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ```yaml
 Type: System.String

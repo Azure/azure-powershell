@@ -55,9 +55,7 @@ require:
 subject-prefix: ''
 module-version: 0.0.1
 skip-model-cmdlets: true
-profile:
-  - hybrid-2019
-  - latest-2019-04-01
+
 directive:
   - where:
       verb: Get

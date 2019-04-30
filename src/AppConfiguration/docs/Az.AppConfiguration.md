@@ -12,7 +12,7 @@ Microsoft Azure PowerShell: AppConfiguration cmdlets
 
 ## Az.AppConfiguration Cmdlets
 ### [Get-AzAppConfigurationStore](Get-AzAppConfigurationStore.md)
-Lists the configuration stores for a given subscription.
+Gets the properties of the specified configuration store.
 
 ### [Get-AzAppConfigurationStoreKey](Get-AzAppConfigurationStoreKey.md)
 Lists the access key for the specified configuration store.
@@ -28,4 +28,7 @@ Deletes a configuration store.
 
 ### [Test-AzAppConfigurationStoreNameAvailability](Test-AzAppConfigurationStoreNameAvailability.md)
 Checks whether the configuration store name is available for use.
+
+### [Update-AzAppConfigurationStore](Update-AzAppConfigurationStore.md)
+Updates a configuration store with the specified parameters.
 

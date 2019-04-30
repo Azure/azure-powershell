@@ -84,7 +84,8 @@ Accept wildcard characters: False
 ```
 
 ### -SkipToken
-A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
+A skip token is used to continue retrieving items after an operation returns a partial result.
+If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
 
 ```yaml
 Type: System.String

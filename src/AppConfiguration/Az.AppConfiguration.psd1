@@ -1,7 +1,7 @@
 @{
 # region definition 
   RootModule = './Az.AppConfiguration.psm1'
-  ModuleVersion = '0.1.2'
+  ModuleVersion = '0.1.3'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -24,12 +24,14 @@
       LicenseUri = 'https://aka.ms/azps-license'
       ProjectUri = 'https://github.com/Azure/azure-powershell'
       ReleaseNotes = ''
+      Profiles = 'latest-2019-04-30'
     }
   }
 # endregion 
 
 # region exports
-  CmdletsToExport = 'Get-AzAppConfigurationStore', 'Get-AzAppConfigurationStoreKey', 'New-AzAppConfigurationStore', 'New-AzAppConfigurationStoreKey', 'Remove-AzAppConfigurationStore', 'Test-AzAppConfigurationStoreNameAvailability', '*'
+  CmdletsToExport = 'Get-AzAppConfigurationStore', 'Get-AzAppConfigurationStoreKey', 'New-AzAppConfigurationStore', 'New-AzAppConfigurationStoreKey', 'Remove-AzAppConfigurationStore', 'Test-AzAppConfigurationStoreNameAvailability', 'Update-AzAppConfigurationStore', '*'
+  AliasesToExport = '*'
 # endregion
 
 }
