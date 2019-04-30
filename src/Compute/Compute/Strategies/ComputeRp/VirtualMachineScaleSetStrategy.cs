@@ -70,9 +70,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     },
                     Identity = identity,
                     SinglePlacementGroup = singlePlacementGroup,
+                    AdditionalCapabilities = ultraSSDEnabled ? new AdditionalCapabilities(true) : null,
                     VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                     {
-                        AdditionalCapabilities = ultraSSDEnabled ? new AdditionalCapabilities(true) : null,
                         OsProfile = new VirtualMachineScaleSetOSProfile
                         {
                             ComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),
