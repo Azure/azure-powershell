@@ -487,22 +487,22 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 {
                     if (!string.IsNullOrEmpty(account.Id))
                     {
-                        return new SilentParameters(environment, tokenCache, tenant, account.Id);
+                        return new SilentParameters(environment, tokenCache, tenant, resourceId, account.Id);
                     }
                     else if (account.IsPropertySet("UseDeviceAuth"))
                     {
-                        return new DeviceCodeParameters(environment, tokenCache, tenant);
+                        return new DeviceCodeParameters(environment, tokenCache, tenant, resourceId);
                     }
 
-                    return new InteractiveParameters(environment, tokenCache, tenant, promptAction);
+                    return new InteractiveParameters(environment, tokenCache, tenant, resourceId, promptAction);
                 }
 
-                return new UsernamePasswordParameters(environment, tokenCache, tenant, account.Id, password);
+                return new UsernamePasswordParameters(environment, tokenCache, tenant, resourceId, account.Id, password);
             }
             else if (account.Type == AzureAccount.AccountType.ServicePrincipal ||
                      account.Type == AzureAccount.AccountType.Certificate)
             {
-                return new ServicePrincipalParameters(environment, tokenCache, tenant, account.Id, account.GetProperty(AzureAccount.Property.CertificateThumbprint), password);
+                return new ServicePrincipalParameters(environment, tokenCache, tenant, resourceId, account.Id, account.GetProperty(AzureAccount.Property.CertificateThumbprint), password);
             }
 
             return null;

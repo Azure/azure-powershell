@@ -29,9 +29,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             IAzureEnvironment environment,
             IAzureTokenCache tokenCache,
             string tenantId,
+            string resourceId,
             string applicationId,
             string thumbprint,
-            SecureString secret) : base(environment, tokenCache, tenantId)
+            SecureString secret) : base(environment, tokenCache, tenantId, resourceId)
         {
             ApplicationId = applicationId;
             Thumbprint = thumbprint;

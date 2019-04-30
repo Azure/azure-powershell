@@ -27,8 +27,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             IAzureEnvironment environment,
             IAzureTokenCache tokenCache,
             string tenantId,
+            string resourceId,
             string userId,
-            SecureString password) : base(environment, tokenCache, tenantId)
+            SecureString password) : base(environment, tokenCache, tenantId, resourceId)
         {
             UserId = userId;
             Password = password;

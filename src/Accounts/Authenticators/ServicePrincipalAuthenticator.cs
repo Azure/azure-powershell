@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
         {
             var spParameters = parameters as ServicePrincipalParameters;
-            var scopes = new string[] { string.Format(AuthenticationHelpers.DefaultScope, spParameters.Environment.ActiveDirectoryServiceEndpointResourceId) };
+            var scopes = new string[] { string.Format(AuthenticationHelpers.DefaultScope, spParameters.ResourceEndpoint) };
             var clientId = spParameters.ApplicationId;
             var authority = AuthenticationHelpers.GetAuthority(spParameters.Environment, spParameters.TenantId);
             var redirectUri = spParameters.Environment.ActiveDirectoryServiceEndpointResourceId;

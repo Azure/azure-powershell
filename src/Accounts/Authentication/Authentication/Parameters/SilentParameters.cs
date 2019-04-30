@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             IAzureEnvironment environment,
             IAzureTokenCache tokenCache,
             string tenantId,
-            string userId) : base(environment, tokenCache, tenantId)
+            string resourceId,
+            string userId) : base(environment, tokenCache, tenantId, resourceId)
         {
             UserId = userId;
         }

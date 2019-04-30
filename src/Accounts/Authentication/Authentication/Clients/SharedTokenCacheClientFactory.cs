@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public static IPublicClientApplication CreatePublicClient(
             string clientId = null,
+            string tenantId = null,
             string authority = null,
             string redirectUri = null)
         {
@@ -53,6 +54,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             if (!string.IsNullOrEmpty(authority))
             {
                 builder = builder.WithAuthority(authority);
+            }
+
+            if (!string.IsNullOrEmpty(tenantId))
+            {
+                builder = builder.WithTenantId(tenantId);
             }
 
             if (!string.IsNullOrEmpty(redirectUri))

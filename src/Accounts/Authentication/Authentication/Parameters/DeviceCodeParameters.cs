@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public DeviceCodeParameters(
             IAzureEnvironment environment,
             IAzureTokenCache tokenCache,
-            string tenantId) : base(environment, tokenCache, tenantId) { }
+            string tenantId,
+            string resourceId) : base(environment, tokenCache, tenantId, resourceId) { }
     }
 }

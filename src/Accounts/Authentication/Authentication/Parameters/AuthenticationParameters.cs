@@ -24,14 +24,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public string TenantId { get; set; }
 
+        public string ResourceEndpoint { get; set; }
+
         public AuthenticationParameters(
             IAzureEnvironment environment,
             IAzureTokenCache tokenCache,
-            string tenantId)
+            string tenantId,
+            string resourceId)
         {
             Environment = environment;
             TokenCache = tokenCache;
             TenantId = tenantId;
+            ResourceEndpoint = environment.GetEndpoint(resourceId);
         }
     }
 }

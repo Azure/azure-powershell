@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         {
             var interactiveParameters = parameters as InteractiveParameters;
             IPublicClientApplication publicClient = null;
-            var scopes = new string[] { string.Format(AuthenticationHelpers.UserImpersonationScope, parameters.Environment.ActiveDirectoryServiceEndpointResourceId) };
+            var scopes = new string[] { string.Format(AuthenticationHelpers.UserImpersonationScope, parameters.ResourceEndpoint) };
             TcpListener listener = null;
             var replyUrl = string.Empty;
             var port = 8399;
