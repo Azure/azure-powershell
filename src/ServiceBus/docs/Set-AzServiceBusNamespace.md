@@ -16,29 +16,29 @@ This operation is idempotent.
 
 ### UpdateSubscriptionIdViaHost (Default)
 ```
-Set-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> [-Parameter <ISbNamespace>]
+Set-AzServiceBusNamespace [-Name] <String> [-ResourceGroupName] <String> [-Parameter <ISbNamespace>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Set-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Location <String> [-SkuCapacity <Int32>] -SkuName <SkuName> [-SkuTier <SkuTier>]
+Set-AzServiceBusNamespace [-Name] <String> [-ResourceGroupName] <String> -SubscriptionId <String>
+ [-Location] <String> [-SkuCapacity <Int32>] -SkuName <SkuName> [-SkuTier <SkuTier>]
  [-Tag <ITrackedResourceTags>] [-ZoneRedundant <Boolean>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzServiceBusNamespace [-Name] <String> [-ResourceGroupName] <String> -SubscriptionId <String>
  [-Parameter <ISbNamespace>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateSubscriptionIdViaHostExpanded
 ```
-Set-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> -Location <String> [-SkuCapacity <Int32>]
- -SkuName <SkuName> [-SkuTier <SkuTier>] [-Tag <ITrackedResourceTags>] [-ZoneRedundant <Boolean>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzServiceBusNamespace [-Name] <String> [-ResourceGroupName] <String> [-Location] <String>
+ [-SkuCapacity <Int32>] -SkuName <SkuName> [-SkuTier <SkuTier>] [-Tag <ITrackedResourceTags>]
+ [-ZoneRedundant <Boolean>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,7 +96,7 @@ Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
 Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -111,7 +111,7 @@ Parameter Sets: (All)
 Aliases: NamespaceName
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -141,7 +141,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

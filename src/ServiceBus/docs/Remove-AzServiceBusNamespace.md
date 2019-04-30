@@ -15,14 +15,14 @@ This operation also removes all associated resources under the namespace.
 
 ### DeleteSubscriptionIdViaHost (Default)
 ```
-Remove-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> [-PassThru]
+Remove-AzServiceBusNamespace [-Name] <String> [-ResourceGroupName] <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Delete
 ```
-Remove-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzServiceBusNamespace [-Name] <String> [-ResourceGroupName] <String> -SubscriptionId <String>
+ [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +79,7 @@ Parameter Sets: (All)
 Aliases: NamespaceName
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -109,7 +109,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

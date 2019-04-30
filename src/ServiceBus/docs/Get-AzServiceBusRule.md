@@ -14,26 +14,26 @@ Retrieves the description for the specified rule.
 
 ### ListSubscriptionIdViaHost (Default)
 ```
-Get-AzServiceBusRule -NamespaceName <String> -ResourceGroupName <String> -SubscriptionName <String>
+Get-AzServiceBusRule -NamespaceName <String> [-ResourceGroupName] <String> -SubscriptionName <String>
  -TopicName <String> [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetSubscriptionIdViaHost
 ```
-Get-AzServiceBusRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+Get-AzServiceBusRule [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
  -SubscriptionName <String> -TopicName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzServiceBusRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+Get-AzServiceBusRule [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
  -SubscriptionId <String> -SubscriptionName <String> -TopicName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzServiceBusRule -NamespaceName <String> -ResourceGroupName <String> -SubscriptionId <String>
+Get-AzServiceBusRule -NamespaceName <String> [-ResourceGroupName] <String> -SubscriptionId <String>
  -SubscriptionName <String> -TopicName <String> [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -76,7 +76,7 @@ Parameter Sets: GetSubscriptionIdViaHost, Get
 Aliases: RuleName
 
 Required: True
-Position: Named
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -106,7 +106,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

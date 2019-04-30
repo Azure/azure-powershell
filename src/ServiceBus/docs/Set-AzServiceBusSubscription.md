@@ -14,14 +14,14 @@ Creates a topic subscription.
 
 ### UpdateSubscriptionIdViaHost (Default)
 ```
-Set-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+Set-AzServiceBusSubscription -Name <String> -NamespaceName <String> [-ResourceGroupName] <String>
  -TopicName <String> [-Parameter <ISbSubscription>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Set-AzServiceBusSubscription -Id <String> -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+Set-AzServiceBusSubscription -Id <String> -Name <String> -NamespaceName <String> [-ResourceGroupName] <String>
  -TopicName <String> [-AutoDeleteOnIdle <TimeSpan>] [-DeadLetteringOnFilterEvaluationException <Boolean>]
  [-DeadLetteringOnMessageExpiration <Boolean>] [-DefaultMessageTimeToLive <TimeSpan>]
  [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperation <Boolean>]
@@ -32,14 +32,14 @@ Set-AzServiceBusSubscription -Id <String> -Name <String> -NamespaceName <String>
 
 ### Update
 ```
-Set-AzServiceBusSubscription -Id <String> -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+Set-AzServiceBusSubscription -Id <String> -Name <String> -NamespaceName <String> [-ResourceGroupName] <String>
  -TopicName <String> [-Parameter <ISbSubscription>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateSubscriptionIdViaHostExpanded
 ```
-Set-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+Set-AzServiceBusSubscription -Name <String> -NamespaceName <String> [-ResourceGroupName] <String>
  -TopicName <String> [-AutoDeleteOnIdle <TimeSpan>] [-DeadLetteringOnFilterEvaluationException <Boolean>]
  [-DeadLetteringOnMessageExpiration <Boolean>] [-DefaultMessageTimeToLive <TimeSpan>]
  [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperation <Boolean>]
@@ -317,7 +317,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

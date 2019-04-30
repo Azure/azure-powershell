@@ -1,33 +1,43 @@
 ---
 external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusqueueauthorizationrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusauthorizationrule
 schema: 2.0.0
 ---
 
-# Remove-AzServiceBusQueueAuthorizationRule
+# Get-AzServiceBusAuthorizationRule
 
 ## SYNOPSIS
-Deletes a queue authorization rule.
+Gets an authorization rule for a namespace by rule name.
 
 ## SYNTAX
 
-### DeleteSubscriptionIdViaHost (Default)
+### Namespace (Default)
 ```
-Remove-AzServiceBusQueueAuthorizationRule -AuthorizationRuleName <String> -NamespaceName <String>
- -QueueName <String> -ResourceGroupName <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzServiceBusAuthorizationRule [[-Name] <String>] -NamespaceName <String> [-ResourceGroupName] <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Delete
+### DisasterRecoveryConfig
 ```
-Remove-AzServiceBusQueueAuthorizationRule -AuthorizationRuleName <String> -NamespaceName <String>
- -QueueName <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzServiceBusAuthorizationRule [-AliasName] <String> [[-Name] <String>] -NamespaceName <String>
+ [-ResourceGroupName] <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Queue
+```
+Get-AzServiceBusAuthorizationRule [[-Name] <String>] -NamespaceName <String> [-ResourceGroupName] <String>
+ [-SubscriptionId <String>] -QueueName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Topic
+```
+Get-AzServiceBusAuthorizationRule [[-Name] <String>] -NamespaceName <String> [-ResourceGroupName] <String>
+ [-SubscriptionId <String>] -TopicName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes a queue authorization rule.
+Gets an authorization rule for a namespace by rule name.
 
 ## EXAMPLES
 
@@ -40,16 +50,16 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AuthorizationRuleName
-The authorization rule name.
+### -AliasName
+The Disaster Recovery configuration name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: DisasterRecoveryConfig
+Aliases: Alias
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -70,6 +80,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+The authorization rule name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: AuthorizationRuleName
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NamespaceName
 The namespace name
 
@@ -85,27 +110,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -QueueName
 The queue name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Queue
 Aliases:
 
 Required: True
@@ -124,53 +134,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials that uniquely identify a Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TopicName
+The topic name.
+
+```yaml
+Type: System.String
+Parameter Sets: Topic
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -184,10 +177,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ISbAuthorizationRule
 ## NOTES
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusqueueauthorizationrule](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusqueueauthorizationrule)
+[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusauthorizationrule](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusauthorizationrule)
 

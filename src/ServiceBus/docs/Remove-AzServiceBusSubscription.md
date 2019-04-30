@@ -14,14 +14,15 @@ Deletes a subscription from the specified topic.
 
 ### DeleteSubscriptionIdViaHost (Default)
 ```
-Remove-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+Remove-AzServiceBusSubscription [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
  -TopicName <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Delete
 ```
-Remove-AzServiceBusSubscription -Id <String> -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -TopicName <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzServiceBusSubscription -Id <String> [-Name] <String> -NamespaceName <String>
+ [-ResourceGroupName] <String> -TopicName <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,7 +79,7 @@ Parameter Sets: (All)
 Aliases: SubscriptionName
 
 Required: True
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -123,7 +124,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

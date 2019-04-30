@@ -14,14 +14,14 @@ Deletes an existing rule.
 
 ### DeleteSubscriptionIdViaHost (Default)
 ```
-Remove-AzServiceBusRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+Remove-AzServiceBusRule [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
  -SubscriptionName <String> -TopicName <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### Delete
 ```
-Remove-AzServiceBusRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+Remove-AzServiceBusRule [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
  -SubscriptionId <String> -SubscriptionName <String> -TopicName <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -64,7 +64,7 @@ Parameter Sets: (All)
 Aliases: RuleName
 
 Required: True
-Position: Named
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -109,7 +109,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

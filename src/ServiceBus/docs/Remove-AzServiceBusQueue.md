@@ -14,13 +14,13 @@ Deletes a queue from the specified namespace in a resource group.
 
 ### DeleteSubscriptionIdViaHost (Default)
 ```
-Remove-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName <String> [-PassThru]
+Remove-AzServiceBusQueue [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Delete
 ```
-Remove-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+Remove-AzServiceBusQueue [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
  -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -62,7 +62,7 @@ Parameter Sets: (All)
 Aliases: QueueName
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -107,7 +107,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

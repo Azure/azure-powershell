@@ -14,13 +14,13 @@ Creates a topic in the specified namespace.
 
 ### CreateSubscriptionIdViaHost (Default)
 ```
-New-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+New-AzServiceBusTopic [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
  [-Parameter <ISbTopic>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
-New-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+New-AzServiceBusTopic [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
  -SubscriptionId <String> [-AutoDeleteOnIdle <TimeSpan>] [-DefaultMessageTimeToLive <TimeSpan>]
  [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperation <Boolean>]
  [-EnableExpress <Boolean>] [-EnablePartitioning <Boolean>] [-MaxSizeInMegabyte <Int32>]
@@ -30,14 +30,14 @@ New-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName 
 
 ### Create
 ```
-New-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+New-AzServiceBusTopic [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
  -SubscriptionId <String> [-Parameter <ISbTopic>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateSubscriptionIdViaHostExpanded
 ```
-New-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+New-AzServiceBusTopic [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
  [-AutoDeleteOnIdle <TimeSpan>] [-DefaultMessageTimeToLive <TimeSpan>]
  [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperation <Boolean>]
  [-EnableExpress <Boolean>] [-EnablePartitioning <Boolean>] [-MaxSizeInMegabyte <Int32>]
@@ -170,7 +170,8 @@ Accept wildcard characters: False
 ```
 
 ### -MaxSizeInMegabyte
-Maximum size of the topic in megabytes, which is the size of the memory allocated for the topic. Default is 1024.
+Maximum size of the topic in megabytes, which is the size of the memory allocated for the topic.
+Default is 1024.
 
 ```yaml
 Type: System.Int32
@@ -193,7 +194,7 @@ Parameter Sets: (All)
 Aliases: TopicName
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -253,7 +254,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

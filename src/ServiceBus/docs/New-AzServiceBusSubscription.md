@@ -14,32 +14,32 @@ Creates a topic subscription.
 
 ### CreateSubscriptionIdViaHost (Default)
 ```
-New-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+New-AzServiceBusSubscription [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
  -TopicName <String> [-Parameter <ISbSubscription>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
-New-AzServiceBusSubscription -Id <String> -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -TopicName <String> [-AutoDeleteOnIdle <TimeSpan>] [-DeadLetteringOnFilterEvaluationException <Boolean>]
- [-DeadLetteringOnMessageExpiration <Boolean>] [-DefaultMessageTimeToLive <TimeSpan>]
- [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperation <Boolean>]
- [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-LockDuration <TimeSpan>]
- [-MaxDeliveryCount <Int32>] [-RequiresSession <Boolean>] [-Status <EntityStatus>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzServiceBusSubscription -Id <String> [-Name] <String> -NamespaceName <String>
+ [-ResourceGroupName] <String> -TopicName <String> [-AutoDeleteOnIdle <TimeSpan>]
+ [-DeadLetteringOnFilterEvaluationException <Boolean>] [-DeadLetteringOnMessageExpiration <Boolean>]
+ [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
+ [-EnableBatchedOperation <Boolean>] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>]
+ [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-RequiresSession <Boolean>] [-Status <EntityStatus>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzServiceBusSubscription -Id <String> -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -TopicName <String> [-Parameter <ISbSubscription>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzServiceBusSubscription -Id <String> [-Name] <String> -NamespaceName <String>
+ [-ResourceGroupName] <String> -TopicName <String> [-Parameter <ISbSubscription>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateSubscriptionIdViaHostExpanded
 ```
-New-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+New-AzServiceBusSubscription [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
  -TopicName <String> [-AutoDeleteOnIdle <TimeSpan>] [-DeadLetteringOnFilterEvaluationException <Boolean>]
  [-DeadLetteringOnMessageExpiration <Boolean>] [-DefaultMessageTimeToLive <TimeSpan>]
  [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperation <Boolean>]
@@ -257,7 +257,7 @@ Parameter Sets: (All)
 Aliases: SubscriptionName
 
 Required: True
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -317,7 +317,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

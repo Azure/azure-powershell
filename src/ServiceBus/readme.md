@@ -56,4 +56,21 @@ module-version: 0.0.1
 skip-model-cmdlets: true
 profile:
   - latest-2019-04-01
+
+directive:
+  - where:
+      subject: ^(.+)AuthorizationRule$
+    hide: true
+  - where:
+      subject: ^(.+)AuthorizationRule$
+      parameter-name: AuthorizationRuleName
+    set:
+      alias: AuthorizationRuleName
+      parameter-name: Name
+  - where:
+      subject: ^(.+)AuthorizationRule$
+      parameter-name: Alias
+    set:
+      alias: Alias
+      parameter-name: AliasName
 ```

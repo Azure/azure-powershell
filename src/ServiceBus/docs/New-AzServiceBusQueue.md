@@ -15,13 +15,13 @@ This operation is idempotent.
 
 ### CreateSubscriptionIdViaHost (Default)
 ```
-New-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+New-AzServiceBusQueue [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
  [-Parameter <ISbQueue>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
-New-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+New-AzServiceBusQueue [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
  -SubscriptionId <String> [-AutoDeleteOnIdle <TimeSpan>] [-DeadLetteringOnMessageExpiration <Boolean>]
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
  [-EnableBatchedOperation <Boolean>] [-EnableExpress <Boolean>] [-EnablePartitioning <Boolean>]
@@ -33,14 +33,14 @@ New-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName 
 
 ### Create
 ```
-New-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+New-AzServiceBusQueue [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
  -SubscriptionId <String> [-Parameter <ISbQueue>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateSubscriptionIdViaHostExpanded
 ```
-New-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+New-AzServiceBusQueue [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
  [-AutoDeleteOnIdle <TimeSpan>] [-DeadLetteringOnMessageExpiration <Boolean>]
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
  [-EnableBatchedOperation <Boolean>] [-EnableExpress <Boolean>] [-EnablePartitioning <Boolean>]
@@ -254,7 +254,8 @@ Accept wildcard characters: False
 ```
 
 ### -MaxSizeInMegabyte
-The maximum size of the queue in megabytes, which is the size of memory allocated for the queue. Default is 1024.
+The maximum size of the queue in megabytes, which is the size of memory allocated for the queue.
+Default is 1024.
 
 ```yaml
 Type: System.Int32
@@ -277,7 +278,7 @@ Parameter Sets: (All)
 Aliases: QueueName
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -352,7 +353,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
