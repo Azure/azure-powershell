@@ -537,7 +537,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// </summary>
     public class ASRHyperVReplicaDiskDetails
     {
-        public ASRHyperVReplicaDiskDetails(DiskDetails diskDetails) {
+        public ASRHyperVReplicaDiskDetails(DiskDetails diskDetails)
+        {
             this.MaxSizeMB = diskDetails.MaxSizeMB;
             this.VhdId = diskDetails.VhdId;
             this.VhdName = diskDetails.VhdName;
@@ -664,6 +665,39 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class ASRHyperVReplicaAzureSpecificRPIDetails : ASRProviderSpecificRPIDetails
     {
         /// <summary>
+        /// Initializes a new instance of the<see cref="ASRAzureToAzureSpecificRPIDetails" /> class.
+        /// </summary>
+        public ASRHyperVReplicaAzureSpecificRPIDetails(HyperVReplicaAzureReplicationDetails details)
+        {
+            this.RecoveryAvailabilitySetId = details.RecoveryAvailabilitySetId;
+            this.EnableRDPOnTargetOption = details.EnableRdpOnTargetOption;
+            this.SourceVmCPUCount = details.SourceVmCpuCount;
+            this.SourceVmRAMSizeInMB = details.SourceVmRamSizeInMB;
+            if (details.OSDetails != null)
+            {
+                this.OsDetails = new ASRHyperVReplicaAzureOsDetails(details.OSDetails);
+            }
+            this.Encryption = details.Encryption;
+            this.SelectedRecoveryAzureNetworkId = details.SelectedRecoveryAzureNetworkId;
+            this.VmProtectionState = details.VmProtectionState;
+            this.VmProtectionStateDescription = details.VmProtectionStateDescription;
+            this.VmId = details.VmId;
+            this.LastReplicatedTime = details.LastReplicatedTime;
+            this.RecoveryAzureLogStorageAccountId = details.RecoveryAzureLogStorageAccountId;
+            this.RecoveryAzureStorageAccount = details.RecoveryAzureStorageAccount;
+            this.RecoveryAzureVMSize = details.RecoveryAzureVMSize;
+            this.RecoveryAzureVMName = details.RecoveryAzureVmName;
+            this.UseManagedDisks = details.UseManagedDisks;
+            if (details.AzureVmDiskDetails != null)
+            {
+                this.AzureVMDiskDetails =
+                    details.AzureVmDiskDetails.ToList()
+                    .ConvertAll(disk => new ASRHyperVReplicaAzureVmDiskDetails(disk));
+            }
+            this.LicenseType = details.LicenseType;
+        }
+
+        /// <summary>
         ///     Gets or sets the recovery availability set Id.
         /// <summary>
         public string RecoveryAvailabilitySetId { get; set; }
@@ -763,6 +797,71 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class ASRInMageAzureV2SpecificRPIDetails : ASRProviderSpecificRPIDetails
     {
         /// <summary>
+        /// Initializes a new instance of the<see cref="ASRInMageAzureV2SpecificRPIDetails" /> class.
+        /// </summary>
+        public ASRInMageAzureV2SpecificRPIDetails(InMageAzureV2ReplicationDetails details)
+        {
+            this.LastHeartbeat = this.LastHeartbeat;
+            this.RecoveryAvailabilitySetId = details.RecoveryAvailabilitySetId;
+            this.AgentVersion = details.AgentVersion;
+            this.DiscoveryType = details.DiscoveryType;
+            this.IpAddress = details.IpAddress;
+            this.MasterTargetId = details.MasterTargetId;
+            this.MultiVmGroupId = details.MultiVmGroupId;
+            this.MultiVmGroupName = details.MultiVmGroupName;
+            this.OSDiskId = details.OsDiskId;
+            this.OSType = details.OsType;
+            this.ProcessServerId = details.ProcessServerId;
+            this.ProtectionStage = details.ProtectionStage;
+            this.RecoveryAzureLogStorageAccountId = details.RecoveryAzureLogStorageAccountId;
+            this.VHDName = details.VhdName;
+            this.DiskResized = details.DiskResized;
+            this.EnableRdpOnTargetOption = details.EnableRdpOnTargetOption;
+            this.InfrastructureVmId = details.InfrastructureVmId;
+            this.IsAgentUpdateRequired = details.IsAgentUpdateRequired;
+            this.IsRebootAfterUpdateRequired = details.IsRebootAfterUpdateRequired;
+            this.LicenseType = details.LicenseType;
+            this.MultiVmSyncStatus = details.MultiVmSyncStatus;
+            this.OsVersion = details.OsVersion;
+            this.RecoveryAzureResourceGroupId = details.RecoveryAzureResourceGroupId;
+            this.RecoveryAzureStorageAccount = details.RecoveryAzureStorageAccount;
+            this.RecoveryAzureVMName = details.RecoveryAzureVMName;
+            this.RecoveryAzureVMSize = details.RecoveryAzureVMSize;
+            this.ReplicaId = details.ReplicaId;
+            this.ResyncProgressPercentage = details.ResyncProgressPercentage;
+            this.RpoInSeconds = details.RpoInSeconds;
+            this.SelectedRecoveryAzureNetworkId = details.SelectedRecoveryAzureNetworkId;
+            this.SelectedSourceNicId = details.SelectedSourceNicId;
+            this.SourceVmCpuCount = details.SourceVmCpuCount;
+            this.SourceVmRamSizeInMB = details.SourceVmRamSizeInMB;
+            this.TargetVmId = details.TargetVmId;
+            this.UncompressedDataRateInMB = details.UncompressedDataRateInMB;
+            this.UseManagedDisks = details.UseManagedDisks;
+            this.VCenterInfrastructureId = details.VCenterInfrastructureId;
+            this.VmId = details.VmId;
+            this.VmProtectionState = details.VmProtectionState;
+            this.VmProtectionStateDescription = details.VmProtectionStateDescription;
+            if (details.ProtectedDisks != null)
+            {
+                this.ProtectedDiskDetails = new List<AsrVirtualHardDisk>();
+                foreach (var pd in details.ProtectedDisks)
+                {
+                    this.ProtectedDiskDetails.Add(
+                        new AsrVirtualHardDisk
+                        {
+                            Id = pd.DiskId,
+                            Name = pd.DiskName
+                        });
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Gets or sets the recovery availability set Id.
+        /// <summary>
+        public string RecoveryAvailabilitySetId { get; set; }
+
+        /// <summary>
         ///     Gets or sets the agent version.
         /// </summary>
         public string AgentVersion { get; set; }
@@ -831,6 +930,167 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     VHD Name.
         /// </summary>
         public string VHDName { get; set; }
+
+
+        //
+        // Summary:
+        //     Gets or sets agent expiry date.
+        public DateTime? AgentExpiryDate { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets azure VM Disk details.
+        public IList<AzureVmDiskDetails> AzureVMDiskDetails { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the compressed data change rate in MB.
+        public double? CompressedDataRateInMB { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the datastores of the on-premise machine. Value can be list of strings
+        //     that contain datastore names.
+        public IList<string> Datastores { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets a value indicating whether any disk is resized for this VM.
+        public string DiskResized { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the selected option to enable RDP\SSH on target vm after failover.
+        //     String value of {SrsDataContract.EnableRDPOnTargetOption} enum.
+        public string EnableRdpOnTargetOption { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the infrastructure VM Id.
+        public string InfrastructureVmId { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets a value indicating whether installed agent needs to be updated.
+        public string IsAgentUpdateRequired { get; set; }
+        //
+        // Summary:
+        //     Gets or sets a value indicating whether the source server requires a restart
+        //     after update.
+        public string IsRebootAfterUpdateRequired { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the last RPO calculated time.
+        public DateTime? LastRpoCalculatedTime { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the last update time received from on-prem components.
+        public DateTime? LastUpdateReceivedTime { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets license Type of the VM to be used.
+        public string LicenseType { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets a value indicating whether multi vm sync is enabled or disabled.
+        public string MultiVmSyncStatus { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the OS Version of the protected item.
+        public string OsVersion { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the list of protected disks.
+        public IList<InMageAzureV2ProtectedDiskDetails> ProtectedDisks { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the target resource group Id.
+        public string RecoveryAzureResourceGroupId { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the recovery Azure storage account.
+        public string RecoveryAzureStorageAccount { get; set; }
+        //
+        // Summary:
+        //     Gets or sets recovery Azure given name.
+        public string RecoveryAzureVMName { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the Recovery Azure VM size.
+        public string RecoveryAzureVMSize { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the replica id of the protected item.
+        public string ReplicaId { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the resync progress percentage.
+        public int? ResyncProgressPercentage { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the RPO in seconds.
+        public long? RpoInSeconds { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the selected recovery azure network Id.
+        public string SelectedRecoveryAzureNetworkId { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the selected source nic Id which will be used as the primary nic
+        //     during failover.
+        public string SelectedSourceNicId { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the CPU count of the VM on the primary side.
+        public int? SourceVmCpuCount { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the RAM size of the VM on the primary side.
+        public int? SourceVmRamSizeInMB { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the ARM Id of the target Azure VM. This value will be null until
+        //     the VM is failed over. Only after failure it will be populated with the ARM Id
+        //     of the Azure VM.
+        public string TargetVmId { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the uncompressed data change rate in MB.
+        public double? UncompressedDataRateInMB { get; set; }
+        //
+        // Summary:
+        //     Gets or sets a value indicating whether managed disks should be used during failover.
+        public string UseManagedDisks { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the validation errors of the on-premise machine Value can be list
+        //     of validation errors.
+        public IList<HealthError> ValidationErrors { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the vCenter infrastructure Id.
+        public string VCenterInfrastructureId { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the virtual machine Id.
+        public string VmId { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the PE Network details.
+        public IList<VMNicDetails> VmNics { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the protection state for the vm.
+        public string VmProtectionState { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the protection state description for the vm.
+        public string VmProtectionStateDescription { get; set; }
     }
 
     /// <summary>
@@ -937,11 +1197,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.LastHeartbeat = details.LastHeartbeat.Value.ToLocalTime();
             }
 
-            if (details.ProtectedDisks != null)
+            if (details.ProtectedDisks != null && details.ProtectedDisks.Any())
             {
                 this.A2ADiskDetails =
                     details.ProtectedDisks.ToList()
                     .ConvertAll(disk => new ASRAzureToAzureProtectedDiskDetails(disk));
+            }
+
+            if (details.ProtectedManagedDisks != null && details.ProtectedManagedDisks.Any())
+            {
+                if (this.A2ADiskDetails == null)
+                {
+                    this.A2ADiskDetails = new List<ASRAzureToAzureProtectedDiskDetails>();
+                }
+                this.A2ADiskDetails.AddRange(details.ProtectedManagedDisks.ToList().ConvertAll(disk => new ASRAzureToAzureProtectedDiskDetails(disk)));
             }
 
             if (details.ProtectedManagedDisks != null)
