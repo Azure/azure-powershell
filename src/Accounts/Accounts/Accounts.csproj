@@ -17,6 +17,7 @@
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.Private.ServiceModel.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.Reflection.DispatchProxy.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.Security.AccessControl.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Security.Cryptography.ProtectedData.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.Security.Permissions.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.Security.Principal.Windows.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.ServiceModel.Primitives.dll" />

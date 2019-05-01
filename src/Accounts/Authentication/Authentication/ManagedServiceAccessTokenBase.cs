@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         protected DateTimeOffset Expiration = DateTimeOffset.Now;
         protected string accessToken;
 
-        protected ManagedServiceAccessTokenBase(IAzureAccount account, IAzureEnvironment environment, string resourceId, string tenant = "Common")
+        protected ManagedServiceAccessTokenBase(IAzureAccount account, IAzureEnvironment environment, string resourceId, string tenant = "organizations")
         {
             if (string.IsNullOrEmpty(account?.Id) || !account.IsPropertySet(AzureAccount.Property.MSILoginUri))
             {

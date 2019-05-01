@@ -14,7 +14,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Identity.Client" Version="3.0.8" />
     <PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="1.1.0-preview" />
-    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>

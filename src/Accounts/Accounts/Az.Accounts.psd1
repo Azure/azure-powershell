@@ -56,32 +56,31 @@ DotNetFrameworkVersion = '4.7.2'
 # RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.PowerShell.Authentication.Abstractions.dll', 
-               '.\Microsoft.Azure.PowerShell.Authentication.dll', 
-               '.\Microsoft.Azure.PowerShell.Authentication.ResourceManager.dll', 
-               '.\Microsoft.Azure.PowerShell.Clients.Authorization.dll', 
-               '.\Microsoft.Azure.PowerShell.Clients.Compute.dll', 
-               '.\Microsoft.Azure.PowerShell.Clients.Graph.Rbac.dll', 
-               '.\Microsoft.Azure.PowerShell.Clients.Monitor.dll', 
-               '.\Microsoft.Azure.PowerShell.Clients.Network.dll', 
-               '.\Microsoft.Azure.PowerShell.Clients.ResourceManager.dll', 
-               '.\Microsoft.Azure.PowerShell.Common.dll', 
-               '.\Microsoft.Azure.PowerShell.Storage.dll', 
-               '.\Microsoft.Azure.PowerShell.Clients.Storage.Management.dll', 
-               '.\Microsoft.Azure.PowerShell.Clients.KeyVault.dll', 
-               '.\Microsoft.Azure.PowerShell.Clients.Websites.dll', 
-               '.\Hyak.Common.dll', '.\Microsoft.ApplicationInsights.dll', 
-               '.\Microsoft.Azure.Common.dll', 
-               '.\Microsoft.Rest.ClientRuntime.dll', 
-               '.\Microsoft.Rest.ClientRuntime.Azure.dll', 
-               '.\Microsoft.WindowsAzure.Storage.dll', 
-               '.\Microsoft.WindowsAzure.Storage.DataMovement.dll', 
-               '.\Microsoft.Azure.PowerShell.Clients.Aks.dll', 
-               '.\Microsoft.Azure.PowerShell.Strategies.dll', 
-               '.\Microsoft.Azure.PowerShell.Authenticators.dll', 
-               '.\Microsoft.Identity.Client.dll', 
-               '.\System.Security.Cryptography.ProtectedData.dll', 
-               '.\Microsoft.Identity.Client.Extensions.Msal.dll' 
+RequiredAssemblies = '.\Microsoft.Azure.PowerShell.Authentication.Abstractions.dll',
+               '.\Microsoft.Azure.PowerShell.Authentication.dll',
+               '.\Microsoft.Azure.PowerShell.Authentication.ResourceManager.dll',
+               '.\Microsoft.Azure.PowerShell.Clients.Authorization.dll',
+               '.\Microsoft.Azure.PowerShell.Clients.Compute.dll',
+               '.\Microsoft.Azure.PowerShell.Clients.Graph.Rbac.dll',
+               '.\Microsoft.Azure.PowerShell.Clients.Monitor.dll',
+               '.\Microsoft.Azure.PowerShell.Clients.Network.dll',
+               '.\Microsoft.Azure.PowerShell.Clients.ResourceManager.dll',
+               '.\Microsoft.Azure.PowerShell.Common.dll',
+               '.\Microsoft.Azure.PowerShell.Storage.dll',
+               '.\Microsoft.Azure.PowerShell.Clients.Storage.Management.dll',
+               '.\Microsoft.Azure.PowerShell.Clients.KeyVault.dll',
+               '.\Microsoft.Azure.PowerShell.Clients.Websites.dll',
+               '.\Hyak.Common.dll', '.\Microsoft.ApplicationInsights.dll',
+               '.\Microsoft.Azure.Common.dll',
+               '.\Microsoft.Rest.ClientRuntime.dll',
+               '.\Microsoft.Rest.ClientRuntime.Azure.dll',
+               '.\Microsoft.WindowsAzure.Storage.dll',
+               '.\Microsoft.WindowsAzure.Storage.DataMovement.dll',
+               '.\Microsoft.Azure.PowerShell.Clients.Aks.dll',
+               '.\Microsoft.Azure.PowerShell.Strategies.dll',
+               '.\Microsoft.Azure.PowerShell.Authenticators.dll',
+               '.\Microsoft.Identity.Client.dll',
+               '.\Microsoft.Identity.Client.Extensions.Msal.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -99,24 +98,24 @@ NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Disable-AzDataCollection', 'Disable-AzContextAutosave', 
-               'Enable-AzDataCollection', 'Enable-AzContextAutosave', 
-               'Remove-AzEnvironment', 'Get-AzEnvironment', 'Set-AzEnvironment', 
-               'Add-AzEnvironment', 'Get-AzSubscription', 'Connect-AzAccount', 
-               'Get-AzContext', 'Set-AzContext', 'Import-AzContext', 'Save-AzContext', 
-               'Get-AzTenant', 'Send-Feedback', 'Resolve-AzError', 'Select-AzContext', 
-               'Rename-AzContext', 'Remove-AzContext', 'Clear-AzContext', 
-               'Disconnect-AzAccount', 'Get-AzContextAutosaveSetting', 
-               'Set-AzDefault', 'Get-AzDefault', 'Clear-AzDefault', 
-               'Register-AzModule', 'Enable-AzureRmAlias', 'Disable-AzureRmAlias', 
+CmdletsToExport = 'Disable-AzDataCollection', 'Disable-AzContextAutosave',
+               'Enable-AzDataCollection', 'Enable-AzContextAutosave',
+               'Remove-AzEnvironment', 'Get-AzEnvironment', 'Set-AzEnvironment',
+               'Add-AzEnvironment', 'Get-AzSubscription', 'Connect-AzAccount',
+               'Get-AzContext', 'Set-AzContext', 'Import-AzContext', 'Save-AzContext',
+               'Get-AzTenant', 'Send-Feedback', 'Resolve-AzError', 'Select-AzContext',
+               'Rename-AzContext', 'Remove-AzContext', 'Clear-AzContext',
+               'Disconnect-AzAccount', 'Get-AzContextAutosaveSetting',
+               'Set-AzDefault', 'Get-AzDefault', 'Clear-AzDefault',
+               'Register-AzModule', 'Enable-AzureRmAlias', 'Disable-AzureRmAlias',
                'Uninstall-AzureRm'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Add-AzAccount', 'Login-AzAccount', 'Remove-AzAccount', 
-               'Logout-AzAccount', 'Select-AzSubscription', 'Resolve-Error', 
+AliasesToExport = 'Add-AzAccount', 'Login-AzAccount', 'Remove-AzAccount',
+               'Logout-AzAccount', 'Select-AzSubscription', 'Resolve-Error',
                'Save-AzProfile', 'Get-AzDomain'
 
 # DSC resources to export from this module

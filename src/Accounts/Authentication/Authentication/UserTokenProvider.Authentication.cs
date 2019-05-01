@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <summary>
         /// The id of the active directory common tenant.
         /// </summary>
-        public const string CommonTenantId = "common";
+        public const string CommonTenantId = "organizations";
 
 
         /// <summary>

@@ -123,6 +123,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Core
 
         private void ReadFileIntoCache(TokenCacheNotificationArgs args, string cacheFileName = null)
         {
+            /*
             if(cacheFileName == null)
             {
                 cacheFileName = ProtectedFileTokenCache.CacheFileName;
@@ -146,10 +147,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Core
                     }
                 }
             }
+            */
         }
 
         private void WriteCacheIntoFile(TokenCacheNotificationArgs args, string cacheFileName = null)
         {
+            /*
             if(cacheFileName == null)
             {
                 cacheFileName = ProtectedFileTokenCache.CacheFileName;
@@ -163,10 +166,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Core
                     _store.WriteFile(cacheFileName, dataToWrite);
                 }
             }
+            */
         }
 
         private void EnsureCacheFile(string cacheFileName = null)
         {
+            /*
             lock (fileLock)
             {
                 if (_store.FileExists(cacheFileName))
@@ -189,6 +194,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Core
                 var dataToWrite = ProtectedData.Protect(UserCache.SerializeMsalV3(), null, DataProtectionScope.CurrentUser);
                 _store.WriteFile(cacheFileName, dataToWrite);
             }
+            */
         }
 
         public void Clear()

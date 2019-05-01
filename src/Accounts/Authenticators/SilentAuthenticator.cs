@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
         {
             var silentParameters = parameters as SilentParameters;
-            var scopes = new string[] { string.Format(AuthenticationHelpers.UserImpersonationScope, silentParameters.ResourceEndpoint) };
+            var scopes = new string[] { string.Format(AuthenticationHelpers.DefaultScope, silentParameters.ResourceEndpoint) };
             var clientId = AuthenticationHelpers.PowerShellClientId;
             var authority = AuthenticationHelpers.GetAuthority(silentParameters.Environment, silentParameters.TenantId);
             var publicClient = SharedTokenCacheClientFactory.CreatePublicClient(clientId: clientId, authority: authority);
