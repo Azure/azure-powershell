@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.0
 * Support for Cross subscription Azure to Azure site recovery.
 * Marking upcoming breaking changes for Azure Site Recovery.
 * Fix for Azure Site Recovery recovery plan end action plan.

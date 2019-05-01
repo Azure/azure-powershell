@@ -21,7 +21,8 @@
 ## Upcoming Release
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 * Update error message displayed when -skipVmBackup is not provided for Set-AzVMDiskEncryptionExtension 
-* Update error message displayed when -skipVmBackup parameter is not provided for Set-AzVMDiskEncryptionExtension  
+
+## Version 2.0.0
 * Proximity placement group feature.
     - The following new cmdlets are added:
 	    New-AzProximityPlacementGroup
