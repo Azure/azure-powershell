@@ -23,11 +23,26 @@
     - Set-AzVMBootDiagnostics is changed to Set-AzVMBootDiagnostic.
     - Export-AzLogAnalyticThrottledRequests is changed to Export-AzLogAnalyticThrottledRequests.
 
+#### Az.DeploymentManager
+* First Generally Available release of Azure Deployment Manager cmdlets
+
 #### Az.Dns
 * Automatic DNS NameServer Delegation
     - Create DNS zone cmdlet accepts parent zone name as additional optional parameter.
     - Adds NS records in the parent zone for newly created child zone.
 
+#### Az.FrontDoor
+* First Generally Available Release of Azure FrontDoor cmdlets
+* Rename WAF cmdlets to include 'Waf'
+    - `Get-AzFrontDoorFireWallPolicy --> Get-AzFrontDoorWafPolicy`
+    - `New-AzFrontDoorCustomRuleObject --> New-AzFrontDoorWafCustomRuleObject`
+    - `New-AzFrontDoorFireWallPolicy --> New-AzFrontDoorWafPolicy`
+    - `New-AzFrontDoorManagedRuleObject --> New-AzFrontDoorWafManagedRuleObject`
+    - `New-AzFrontDoorManagedRuleOverrideObject --> New-AzFrontDoorWafManagedRuleOverrideObject`
+    - `New-AzFrontDoorMatchConditionObject --> New-AzFrontDoorWafMatchConditionObject`
+    - `New-AzFrontDoorRuleGroupOverrideObject --> New-AzFrontDoorWafRuleGroupOverrideObject`
+    - `Remove-AzFrontDoorFireWallPolicy --> Remove-AzFrontDoorWafPolicy`
+    - `Update-AzFrontDoorFireWallPolicy --> Update-AzFrontDoorWafPolicy`
 #### Az.HDInsight
 * Removed two cmdlets:
     - Grant-AzHDInsightHttpServicesAccess
