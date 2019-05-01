@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-## Version 0.7.5
+
+## Version 1.0.0
 * Rename WAF cmdlets to include 'Waf'
     - `Get-AzFrontDoorFireWallPolicy --> Get-AzFrontDoorWafPolicy`
     - `New-AzFrontDoorCustomRuleObject --> New-AzFrontDoorWafCustomRuleObject`
