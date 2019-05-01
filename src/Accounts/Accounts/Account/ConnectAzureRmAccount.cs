@@ -326,6 +326,12 @@ namespace Microsoft.Azure.Commands.Profile
 
                 SetContextWithOverwritePrompt((localProfile, profileClient, name) =>
                {
+                   bool? skipContextPopulationList = null;
+                   if (this.IsParameterBound(c => c.SkipContextPopulation))
+                   {
+                       skipContextPopulationList = false;
+                   }
+
                    WriteObject((PSAzureProfile)profileClient.Login(
                         azureAccount,
                         _environment,
@@ -336,7 +342,7 @@ namespace Microsoft.Azure.Commands.Profile
                         SkipValidation,
                         WriteWarning,
                         name,
-                        !SkipContextPopulation.IsPresent));
+                        skipContextPopulationList));
                });
             }
         }

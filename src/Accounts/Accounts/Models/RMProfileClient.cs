@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             bool skipValidation,
             Action<string> promptAction,
             string name = null,
-            bool shouldPopulateContextList = true)
+            bool? shouldPopulateContextList = null)
         {
             IAzureSubscription newSubscription = null;
             IAzureTenant newTenant = null;
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
             }
 
-            shouldPopulateContextList &= _profile.DefaultContext?.Account == null;
+            var populateContextList = shouldPopulateContextList ?? _profile.DefaultContext?.Account == null;
             if (newSubscription == null)
             {
                 if (subscriptionId != null)
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
 
             _profile.DefaultContext.TokenCache = _cache;
-            if (shouldPopulateContextList)
+            if (populateContextList)
             {
                 var defaultContext = _profile.DefaultContext;
                 var subscriptions = ListSubscriptions(tenantId).Take(25);
@@ -514,7 +514,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     Type = AzureAccount.AccountType.User
                 };
 
-                Login(azureAccount, environment, null, null, null, null, false, WriteWarningMessage);
+                Login(azureAccount, environment, null, null, null, null, false, WriteWarningMessage, null, true);
             }
 
             var defaultContextName = _profile.ToProfile().DefaultContextKey;
@@ -611,7 +611,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         Type = AzureAccount.AccountType.User
                     };
 
-                    Login(azureAccount, environment, null, null, null, null, false, WriteWarningMessage);
+                    Login(azureAccount, environment, null, null, null, null, false, WriteWarningMessage, null, true);
                 }
 
                 if (contextsModified && _profile.ToProfile().Contexts.Any())

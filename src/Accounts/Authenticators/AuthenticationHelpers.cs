@@ -31,8 +31,8 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         /// <returns>The authrotity string, from the AAD endpoint and tenant ID</returns>
         internal static string GetAuthority(IAzureEnvironment environment, string tenant)
         {
-            var tenantString = tenant ?? environment?.AdTenant ?? "Common";
-            return $"{environment.ActiveDirectoryAuthority}{tenant}";
+            var tenantString = tenant ?? environment?.AdTenant ?? "organizations";
+            return $"{environment.ActiveDirectoryAuthority}{tenantString}";
         }
 
         /// <summary>
