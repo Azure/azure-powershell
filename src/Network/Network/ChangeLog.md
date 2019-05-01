@@ -31,6 +31,9 @@
     - Updated New-AzVirtualNetworkGateway: Added optional parameter -CustomRoute to set the address prefixes as custom routes to set on Gateway.
     - Updated Set-AzVirtualNetworkGateway: Added optional parameter -CustomRoute to set the address prefixes as custom routes to set on Gateway.
 
+* Updated below commands for feature: UseLocalAzureIpAddress flag on VpnConnection
+	- Updated New-AzVpnConnection: Added optional parameter -UseLocalAzureIpAddress to indicate that local azure ip address should be used as source address while initiating connection.
+	- Updated Set-AzVpnConnection: Added optional parameter -UseLocalAzureIpAddress to indicate that local azure ip address should be used as source address while initiating connection.
 ## Version 1.7.0
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 * Fix documentation for wildcards
