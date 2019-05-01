@@ -74,7 +74,7 @@ if (!(Test-Path -Path $ModuleFolder))
 }
 
 Write-Debug "[DEBUG] Using module folder path '$ModuleFolder'"
-$ExportsFolder = Get-ChildItem -Path $ModuleFolder -Include "exports" -Recurse -Directory
+$ExportsFolder = Get-ChildItem -Path $ModuleFolder -Filter "exports" -Recurse -Directory
 if ($null -eq $ExportsFolder)
 {
     Write-Error "No exports folder found in module folder '$ModuleFolder'"
@@ -104,6 +104,7 @@ $Result += "## Incorrect Cmdlets`n"
 foreach ($Script in $GeneratedScripts)
 {
     $CmdletName = $Script.BaseName
+    $CmdletAliases = @()
     $GeneratedCmdlets[$CmdletName] = $true
     $ExistingParameters = $CmdletsToParameters[$CmdletName]
     if ($null -eq $ExistingParameters)
@@ -127,20 +128,52 @@ foreach ($Script in $GeneratedScripts)
 
     $Content = Get-Content -Path $Script.FullName
     $Parameters = @()
-    foreach ($Line in $Content)
+    for ($Index = 0; $Index -lt $Content.Length; $Index++)
     {
+        $Line = $Content[$Index]
         if ($Line -like "*`${*}*")
         {
-            $Parameters += $Line.Trim("").Trim(",").Trim("$").Trim("{").Trim("}")
+            $Parameters += $Line.Trim("").Trim("`${").Trim("},")
+            $TempIndex = $Index - 1
+            while ($TempIndex -ge 0 -and ![string]::IsNullOrWhiteSpace($Content[$TempIndex]))
+            {
+                $Line = $Content[$TempIndex]
+                if ($Line -like '*`[Alias`(*')
+                {
+                    $Line = $Line.Trim("").Trim("[Alias(").Trim(")]")
+                    $Aliases = $Line -split ","
+                    foreach ($Alias in $Aliases)
+                    {
+                        $Parameters += $Alias.Trim("").Trim("'")
+                    }
+
+                    break
+                }
+
+                $TempIndex--
+            }
         }
     }
 
     $MissingParameters = @()
     foreach ($Parameter in $ExistingParameters)
     {
-        if (($Parameters | Where-Object { $_ -eq $Parameter.Name}).Count -eq 0)
+        if (($Parameters | Where-Object { $_ -eq $Parameter.Name }).Count -eq 0)
         {
-            $MissingParameters += $Parameter.Name
+            $Found = $false
+            foreach ($Alias in $Parameter.AliasList)
+            {
+                if ($Parameters -contains $Alias)
+                {
+                    $Found = $true
+                    break
+                }
+            }
+
+            if (!$Found)
+            {
+                $MissingParameters += $Parameter.Name
+            }
         }
     }
 
