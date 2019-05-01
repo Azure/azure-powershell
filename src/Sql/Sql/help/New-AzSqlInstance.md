@@ -356,11 +356,12 @@ Accept wildcard characters: False
 ### -DnsZonePartner
 The resource id of the partner Managed Server to inherit DnsZone property from for Managed instance creation
 
- ```yaml
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
- Required: false
+
+Required: false
 Position: Named
 Default value: None
 Accept pipeline input: False
