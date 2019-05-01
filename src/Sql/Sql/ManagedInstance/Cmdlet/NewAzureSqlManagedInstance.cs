@@ -218,6 +218,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The Dns Zone Partner Resource ID for the Sql Azure Managed Instance.")]
+        [ResourceIdCompleter("Microsoft.Sql/managedInstances")]
         public string DnsZonePartner { get; set; }
 
         /// <summary>
