@@ -19,11 +19,13 @@ param(
     ${Name},
 
     [Parameter(Mandatory, HelpMessage='The namespace name')]
+    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
     ${NamespaceName},
 
     [Parameter(Mandatory, HelpMessage='The queue name.')]
+    [Alias('Queue')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
     ${QueueName},

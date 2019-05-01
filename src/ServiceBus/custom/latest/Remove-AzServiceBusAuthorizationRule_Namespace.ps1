@@ -19,6 +19,7 @@ param(
     ${Name},
 
     [Parameter(Mandatory, HelpMessage='The namespace name')]
+    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
     ${NamespaceName},

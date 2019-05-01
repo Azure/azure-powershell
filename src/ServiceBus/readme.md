@@ -77,4 +77,16 @@ directive:
     set:
       alias: Right
       parameter-name: AccessRight
+  - where:
+      parameter-name: NamespaceName
+    set:
+      alias: Namespace
+  - where:
+      parameter-name: TopicName
+    set:
+      alias: Topic
+  - where:
+      parameter-name: QueueName
+    set:
+      alias: Queue
 ```
