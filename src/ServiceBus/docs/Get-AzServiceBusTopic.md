@@ -14,25 +14,25 @@ Returns a description for the specified topic.
 
 ### ListSubscriptionIdViaHost (Default)
 ```
-Get-AzServiceBusTopic -NamespaceName <String> [-ResourceGroupName] <String> [-Skip <Int32>] [-Top <Int32>]
+Get-AzServiceBusTopic -NamespaceName <String> -ResourceGroupName <String> [-Skip <Int32>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetSubscriptionIdViaHost
 ```
-Get-AzServiceBusTopic [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
+Get-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzServiceBusTopic [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
+Get-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzServiceBusTopic -NamespaceName <String> [-ResourceGroupName] <String> -SubscriptionId <String>
+Get-AzServiceBusTopic -NamespaceName <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -74,7 +74,7 @@ Parameter Sets: GetSubscriptionIdViaHost, Get
 Aliases: TopicName
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -104,7 +104,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

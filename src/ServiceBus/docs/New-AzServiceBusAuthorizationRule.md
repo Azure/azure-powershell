@@ -8,56 +8,42 @@ schema: 2.0.0
 # New-AzServiceBusAuthorizationRule
 
 ## SYNOPSIS
-Creates a new authorization rule for the specified Service Bus given Namespace or Queue or Topic.
+Creates or updates an authorization rule for a namespace.
 
 ## SYNTAX
 
 ### Namespace (Default)
 ```
-New-AzServiceBusAuthorizationRule [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
+New-AzServiceBusAuthorizationRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AccessRight <AccessRights[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### Queue
 ```
-New-AzServiceBusAuthorizationRule [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
+New-AzServiceBusAuthorizationRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -QueueName <String> [-AccessRight <AccessRights[]>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Topic
 ```
-New-AzServiceBusAuthorizationRule [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
+New-AzServiceBusAuthorizationRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -TopicName <String> [-AccessRight <AccessRights[]>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzServiceBusAuthorizationRule cmdlet creates a new authorization rule for the specified Service Bus namespace or queue or topic.
+Creates or updates an authorization rule for a namespace.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> New-AzServiceBusAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SB-Example1 -Name AuthoRule1 -Rights @("Listen","Send")
-```
-
-Creates \`AuthoRule1\` with Listen and Send rights for the namespace \`SB-Example1\`.
-
-### Example 2
-```
-PS C:\> New-AzServiceBusAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SB-Example1 -Queue SBQueue -Name AuthoRule1 -Rights @("Listen","Send")
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-Creates \`AuthoRule1\` with Listen and Send rights for the queue \`SBQueue\`.
-
-### Example 3
-```
-PS C:\> New-AzServiceBusAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SB-Example1 -Topic SBTopic -Name AuthoRule1 -Rights @("Listen","Send")
-```
-
-Creates \`AuthoRule1\` with Listen and Send rights for the topic \`SBTopic\`.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -65,7 +51,7 @@ Creates \`AuthoRule1\` with Listen and Send rights for the topic \`SBTopic\`.
 The rights associated with the rule.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.AccessRights[]
+Type: AccessRights[]
 Parameter Sets: (All)
 Aliases: Right
 
@@ -80,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -92,15 +78,15 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-AuthorizationRule Name
+The authorization rule name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: AuthorizationRuleName
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -110,7 +96,7 @@ Accept wildcard characters: False
 The namespace name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -125,7 +111,7 @@ Accept wildcard characters: False
 The queue name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Queue
 Aliases:
 
@@ -137,25 +123,26 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of the Resource group within the Azure subscription.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -170,7 +157,7 @@ Accept wildcard characters: False
 The topic name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Topic
 Aliases:
 
@@ -185,13 +172,13 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -201,13 +188,13 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -217,11 +204,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-### System.String[]
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.PSSharedAccessAuthorizationRuleAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ISbAuthorizationRule
 ## NOTES
 
 ## RELATED LINKS
+
+[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebusauthorizationrule](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebusauthorizationrule)
+

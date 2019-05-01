@@ -15,13 +15,13 @@ This operation is idempotent.
 
 ### UpdateSubscriptionIdViaHost (Default)
 ```
-Set-AzServiceBusQueue [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
+Set-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-Parameter <ISbQueue>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Set-AzServiceBusQueue [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
+Set-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-AutoDeleteOnIdle <TimeSpan>] [-DeadLetteringOnMessageExpiration <Boolean>]
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
  [-EnableBatchedOperation <Boolean>] [-EnableExpress <Boolean>] [-EnablePartitioning <Boolean>]
@@ -33,14 +33,14 @@ Set-AzServiceBusQueue [-Name] <String> -NamespaceName <String> [-ResourceGroupNa
 
 ### Update
 ```
-Set-AzServiceBusQueue [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
+Set-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-Parameter <ISbQueue>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateSubscriptionIdViaHostExpanded
 ```
-Set-AzServiceBusQueue [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
+Set-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-AutoDeleteOnIdle <TimeSpan>] [-DeadLetteringOnMessageExpiration <Boolean>]
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
  [-EnableBatchedOperation <Boolean>] [-EnableExpress <Boolean>] [-EnablePartitioning <Boolean>]
@@ -278,7 +278,7 @@ Parameter Sets: (All)
 Aliases: QueueName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -353,7 +353,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

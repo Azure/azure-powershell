@@ -19,24 +19,24 @@ Get-AzServiceBusNamespace [-DefaultProfile <PSObject>] [<CommonParameters>]
 
 ### GetSubscriptionIdViaHost
 ```
-Get-AzServiceBusNamespace [-Name] <String> [-ResourceGroupName] <String> [-DefaultProfile <PSObject>]
+Get-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzServiceBusNamespace [-Name] <String> [-ResourceGroupName] <String> -SubscriptionId <String>
+Get-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListSubscriptionIdViaHost1
 ```
-Get-AzServiceBusNamespace [-ResourceGroupName] <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzServiceBusNamespace -ResourceGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzServiceBusNamespace [-ResourceGroupName] <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
+Get-AzServiceBusNamespace -ResourceGroupName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -83,7 +83,7 @@ Parameter Sets: GetSubscriptionIdViaHost, Get
 Aliases: NamespaceName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -98,7 +98,7 @@ Parameter Sets: GetSubscriptionIdViaHost, Get, ListSubscriptionIdViaHost1, List1
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

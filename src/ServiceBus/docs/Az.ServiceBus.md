@@ -11,15 +11,9 @@ Locale: en-US
 Microsoft Azure PowerShell: ServiceBus cmdlets
 
 ## Az.ServiceBus Cmdlets
-### [Complete-AzServiceBusMigration](Complete-AzServiceBusMigration.md)
-Cmdlets set the Migration from Standard to premium namespace as complete and connection strings of standard namespace now point to Premium namespace
-
 ### [Complete-AzServiceBusMigrationConfigMigration](Complete-AzServiceBusMigrationConfigMigration.md)
 This operation Completes Migration of entities by pointing the connection strings to Premium namespace and any entities created after the operation will be under Premium Namespace.
 CompleteMigration operation will fail when entity migration is in-progress.
-
-### [Get-AzServiceBusAuthorizationRule](Get-AzServiceBusAuthorizationRule.md)
-Gets an authorization rule for a namespace by rule name.
 
 ### [Get-AzServiceBusDisasterRecoveryConfig](Get-AzServiceBusDisasterRecoveryConfig.md)
 Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
@@ -29,15 +23,6 @@ Gets the primary and secondary connection strings for the namespace.
 
 ### [Get-AzServiceBusEventHub](Get-AzServiceBusEventHub.md)
 Gets all the Event Hubs in a service bus Namespace.
-
-### [Get-AzServiceBusGeoDRConfiguration](Get-AzServiceBusGeoDRConfiguration.md)
-Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
-
-### [Get-AzServiceBusKey](Get-AzServiceBusKey.md)
-Gets the primary and secondary connection strings for the given Namespace or Queue or Topic or Alias (GeoDR Configurations).
-
-### [Get-AzServiceBusMigration](Get-AzServiceBusMigration.md)
-Retrieves MigrationConfiguration for the namespace
 
 ### [Get-AzServiceBusMigrationConfig](Get-AzServiceBusMigrationConfig.md)
 Retrieves Migration Config
@@ -56,9 +41,6 @@ Gets NetworkRuleSet for a Namespace.
 
 ### [Get-AzServiceBusNamespaceVirtualNetworkRule](Get-AzServiceBusNamespaceVirtualNetworkRule.md)
 Gets an VirtualNetworkRule for a Namespace by rule name.
-
-### [Get-AzServiceBusOperation](Get-AzServiceBusOperation.md)
-List supported ServiceBus Operations
 
 ### [Get-AzServiceBusPremiumMessagingRegion](Get-AzServiceBusPremiumMessagingRegion.md)
 Gets the available premium messaging regions for servicebus
@@ -96,17 +78,8 @@ This operation reverts Migration
 ### [Move-AzServiceBusNamespace](Move-AzServiceBusNamespace.md)
 This operation Migrate the given namespace to provided name type
 
-### [New-AzServiceBusAuthorizationRule](New-AzServiceBusAuthorizationRule.md)
-Creates a new authorization rule for the specified Service Bus given Namespace or Queue or Topic.
-
 ### [New-AzServiceBusDisasterRecoveryConfig](New-AzServiceBusDisasterRecoveryConfig.md)
 Creates or updates a new Alias(Disaster Recovery configuration)
-
-### [New-AzServiceBusGeoDRConfiguration](New-AzServiceBusGeoDRConfiguration.md)
-Creates an new Alias(Disaster Recovery configuration)
-
-### [New-AzServiceBusKey](New-AzServiceBusKey.md)
-Regenerates the primary or secondary connection strings for the Service Bus namespace or queue or topic.
 
 ### [New-AzServiceBusMigrationConfigAndStartMigration](New-AzServiceBusMigrationConfigAndStartMigration.md)
 Creates Migration configuration and starts migration of entities from Standard to Premium namespace
@@ -147,17 +120,8 @@ Creates a topic in the specified namespace.
 ### [New-AzServiceBusTopicKey](New-AzServiceBusTopicKey.md)
 Regenerates primary or secondary connection strings for the topic.
 
-### [Remove-AzServiceBusAuthorizationRule](Remove-AzServiceBusAuthorizationRule.md)
-Removes the authorization rule of a Service Bus namespace or queue or topic from the specified resource group.
-
 ### [Remove-AzServiceBusDisasterRecoveryConfig](Remove-AzServiceBusDisasterRecoveryConfig.md)
 Deletes an Alias(Disaster Recovery configuration)
-
-### [Remove-AzServiceBusGeoDRConfiguration](Remove-AzServiceBusGeoDRConfiguration.md)
-Deletes an Alias(Disaster Recovery configuration)
-
-### [Remove-AzServiceBusMigration](Remove-AzServiceBusMigration.md)
-Cmdlet deletes the Migration configuration for Standard to Premium namespaces
 
 ### [Remove-AzServiceBusMigrationConfig](Remove-AzServiceBusMigrationConfig.md)
 Deletes a MigrationConfiguration
@@ -184,17 +148,8 @@ Deletes a subscription from the specified topic.
 ### [Remove-AzServiceBusTopic](Remove-AzServiceBusTopic.md)
 Deletes a topic from the specified namespace and resource group.
 
-### [Set-AzServiceBusAuthorizationRule](Set-AzServiceBusAuthorizationRule.md)
-Updates the specified authorization rule description for the given Service Bus namespace or queue or topic.
-
 ### [Set-AzServiceBusDisasterRecoveryConfig](Set-AzServiceBusDisasterRecoveryConfig.md)
 Creates or updates a new Alias(Disaster Recovery configuration)
-
-### [Set-AzServiceBusGeoDRConfigurationBreakPair](Set-AzServiceBusGeoDRConfigurationBreakPair.md)
-This operation disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
-
-### [Set-AzServiceBusGeoDRConfigurationFailOver](Set-AzServiceBusGeoDRConfigurationFailOver.md)
-Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
 
 ### [Set-AzServiceBusNamespace](Set-AzServiceBusNamespace.md)
 Creates or updates a service namespace.
@@ -223,17 +178,8 @@ Creates a topic subscription.
 ### [Set-AzServiceBusTopic](Set-AzServiceBusTopic.md)
 Creates a topic in the specified namespace.
 
-### [Start-AzServiceBusMigration](Start-AzServiceBusMigration.md)
-Creates a new Migration configuration and starts migrating entities from Standard to Premium namespaces
-
-### [Stop-AzServiceBusMigration](Stop-AzServiceBusMigration.md)
-{{Fill in the Synopsis}}
-
 ### [Test-AzServiceBusDisasterRecoveryConfigNameAvailability](Test-AzServiceBusDisasterRecoveryConfigNameAvailability.md)
 Check the give namespace name availability.
-
-### [Test-AzServiceBusName](Test-AzServiceBusName.md)
-Checks the Availability of the given NameSpace Name or Alias (DR Configuration Name)
 
 ### [Test-AzServiceBusNamespaceNameAvailability](Test-AzServiceBusNamespaceNameAvailability.md)
 Check the give namespace name availability.

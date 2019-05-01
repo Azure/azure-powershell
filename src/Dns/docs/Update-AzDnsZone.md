@@ -1,31 +1,45 @@
 ---
-external help file: Az.ServiceBus-help.xml
-Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebussubscription
+external help file: Az.Dns-help.xml
+Module Name: Az.Dns
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dns/update-azdnszone
 schema: 2.0.0
 ---
 
-# Remove-AzServiceBusSubscription
+# Update-AzDnsZone
 
 ## SYNOPSIS
-Deletes a subscription from the specified topic.
+Updates a DNS zone.
+Does not modify DNS records within the zone.
 
 ## SYNTAX
 
-### DeleteSubscriptionIdViaHost (Default)
+### UpdateSubscriptionIdViaHost (Default)
 ```
-Remove-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -TopicName <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzDnsZone -Name <String> -ResourceGroupName <String> [-Parameter <IZoneUpdate>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Delete
+### UpdateExpanded
 ```
-Remove-AzServiceBusSubscription -Id <String> -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -TopicName <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Tag <IZoneUpdateTags>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Update
+```
+Update-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Parameter <IZoneUpdate>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateSubscriptionIdViaHostExpanded
+```
+Update-AzDnsZone -Name <String> -ResourceGroupName <String> [-Tag <IZoneUpdateTags>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes a subscription from the specified topic.
+Updates a DNS zone.
+Does not modify DNS records within the zone.
 
 ## EXAMPLES
 
@@ -53,29 +67,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-Subscription credentials that uniquely identify a Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: SubscriptionId
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-The subscription name.
+The name of the DNS zone (without a terminating dot).
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: SubscriptionName
+Aliases: ZoneName
 
 Required: True
 Position: Named
@@ -84,38 +82,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
-The namespace name
+### -Parameter
+Describes a request to update a DNS zone.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IZoneUpdate
+Parameter Sets: UpdateSubscriptionIdViaHost, Update
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the Resource group within the Azure subscription.
+The name of the resource group.
 
 ```yaml
 Type: System.String
@@ -129,15 +112,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TopicName
-The topic name.
+### -SubscriptionId
+Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Resource tags.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IZoneUpdateTags
+Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -182,10 +180,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IZone
 ## NOTES
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebussubscription](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebussubscription)
+[https://docs.microsoft.com/en-us/powershell/module/az.dns/update-azdnszone](https://docs.microsoft.com/en-us/powershell/module/az.dns/update-azdnszone)
 

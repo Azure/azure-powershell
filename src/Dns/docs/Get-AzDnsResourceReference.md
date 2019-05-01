@@ -1,31 +1,43 @@
 ---
-external help file: Az.ServiceBus-help.xml
-Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusqueue
+external help file: Az.Dns-help.xml
+Module Name: Az.Dns
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dns/get-azdnsresourcereference
 schema: 2.0.0
 ---
 
-# Remove-AzServiceBusQueue
+# Get-AzDnsResourceReference
 
 ## SYNOPSIS
-Deletes a queue from the specified namespace in a resource group.
+Returns the DNS records specified by the referencing targetResourceIds.
 
 ## SYNTAX
 
-### DeleteSubscriptionIdViaHost (Default)
+### GetSubscriptionIdViaHost (Default)
 ```
-Remove-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName <String> [-PassThru]
+Get-AzDnsResourceReference [-Parameter <IDnsResourceReferenceRequest>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### GetExpanded
+```
+Get-AzDnsResourceReference -SubscriptionId <String> [-TargetResource <ISubResource[]>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Delete
+### Get
 ```
-Remove-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzDnsResourceReference -SubscriptionId <String> [-Parameter <IDnsResourceReferenceRequest>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetSubscriptionIdViaHostExpanded
+```
+Get-AzDnsResourceReference [-TargetResource <ISubResource[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes a queue from the specified namespace in a resource group.
+Returns the DNS records specified by the referencing targetResourceIds.
 
 ## EXAMPLES
 
@@ -53,57 +65,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The queue name.
+### -Parameter
+Represents the properties of the Dns Resource Reference Request.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: QueueName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NamespaceName
-The namespace name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IDnsResourceReferenceRequest
+Parameter Sets: GetSubscriptionIdViaHost, Get
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Name of the Resource group within the Azure subscription.
+### -SubscriptionId
+Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetExpanded, Get
 Aliases:
 
 Required: True
@@ -113,16 +95,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubscriptionId
-Subscription credentials that uniquely identify a Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+### -TargetResource
+A list of references to azure resources for which referencing dns records need to be queried.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
+Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180301Preview.ISubResource[]
+Parameter Sets: GetExpanded, GetSubscriptionIdViaHostExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -167,10 +148,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IDnsResourceReferenceResultProperties
 ## NOTES
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusqueue](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusqueue)
+[https://docs.microsoft.com/en-us/powershell/module/az.dns/get-azdnsresourcereference](https://docs.microsoft.com/en-us/powershell/module/az.dns/get-azdnsresourcereference)
 

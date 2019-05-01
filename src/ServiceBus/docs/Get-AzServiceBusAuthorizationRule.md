@@ -14,25 +14,25 @@ Gets an authorization rule for a namespace by rule name.
 
 ### Namespace (Default)
 ```
-Get-AzServiceBusAuthorizationRule [[-Name] <String>] -NamespaceName <String> [-ResourceGroupName] <String>
+Get-AzServiceBusAuthorizationRule [-Name <String>] -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### DisasterRecoveryConfig
 ```
-Get-AzServiceBusAuthorizationRule [-AliasName] <String> [[-Name] <String>] -NamespaceName <String>
- [-ResourceGroupName] <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzServiceBusAuthorizationRule -AliasName <String> [-Name <String>] -NamespaceName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Queue
 ```
-Get-AzServiceBusAuthorizationRule [[-Name] <String>] -NamespaceName <String> [-ResourceGroupName] <String>
+Get-AzServiceBusAuthorizationRule [-Name <String>] -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -QueueName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Topic
 ```
-Get-AzServiceBusAuthorizationRule [[-Name] <String>] -NamespaceName <String> [-ResourceGroupName] <String>
+Get-AzServiceBusAuthorizationRule [-Name <String>] -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -TopicName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -54,12 +54,12 @@ PS C:\> {{ Add example code here }}
 The Disaster Recovery configuration name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: DisasterRecoveryConfig
 Aliases: Alias
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -84,12 +84,12 @@ Accept wildcard characters: False
 The authorization rule name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: AuthorizationRuleName
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 The namespace name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 The queue name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Queue
 Aliases:
 
@@ -129,22 +129,23 @@ Accept wildcard characters: False
 Name of the Resource group within the Azure subscription.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -159,7 +160,7 @@ Accept wildcard characters: False
 The topic name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Topic
 Aliases:
 

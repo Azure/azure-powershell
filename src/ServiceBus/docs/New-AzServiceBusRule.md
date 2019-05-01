@@ -14,14 +14,14 @@ Creates a new rule and updates an existing rule
 
 ### CreateSubscriptionIdViaHost (Default)
 ```
-New-AzServiceBusRule [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
+New-AzServiceBusRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  -SubscriptionName <String> -TopicName <String> [-Parameter <IRule>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
-New-AzServiceBusRule [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
+New-AzServiceBusRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -SubscriptionName <String> -TopicName <String> [-ActionCompatibilityLevel <Int32>]
  [-ActionRequiresPreprocessing <Boolean>] [-ActionSqlExpression <String>]
  [-CorrelationFilterContentType <String>] [-CorrelationFilterCorrelationId <String>]
@@ -35,14 +35,14 @@ New-AzServiceBusRule [-Name] <String> -NamespaceName <String> [-ResourceGroupNam
 
 ### Create
 ```
-New-AzServiceBusRule [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
+New-AzServiceBusRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -SubscriptionName <String> -TopicName <String> [-Parameter <IRule>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateSubscriptionIdViaHostExpanded
 ```
-New-AzServiceBusRule [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
+New-AzServiceBusRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  -SubscriptionName <String> -TopicName <String> [-ActionCompatibilityLevel <Int32>]
  [-ActionRequiresPreprocessing <Boolean>] [-ActionSqlExpression <String>]
  [-CorrelationFilterContentType <String>] [-CorrelationFilterCorrelationId <String>]
@@ -305,7 +305,7 @@ Parameter Sets: (All)
 Aliases: RuleName
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -350,7 +350,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

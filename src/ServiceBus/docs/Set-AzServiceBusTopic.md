@@ -14,13 +14,13 @@ Creates a topic in the specified namespace.
 
 ### UpdateSubscriptionIdViaHost (Default)
 ```
-Set-AzServiceBusTopic [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
+Set-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-Parameter <ISbTopic>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Set-AzServiceBusTopic [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
+Set-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-AutoDeleteOnIdle <TimeSpan>] [-DefaultMessageTimeToLive <TimeSpan>]
  [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperation <Boolean>]
  [-EnableExpress <Boolean>] [-EnablePartitioning <Boolean>] [-MaxSizeInMegabyte <Int32>]
@@ -30,14 +30,14 @@ Set-AzServiceBusTopic [-Name] <String> -NamespaceName <String> [-ResourceGroupNa
 
 ### Update
 ```
-Set-AzServiceBusTopic [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
+Set-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-Parameter <ISbTopic>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateSubscriptionIdViaHostExpanded
 ```
-Set-AzServiceBusTopic [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
+Set-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-AutoDeleteOnIdle <TimeSpan>] [-DefaultMessageTimeToLive <TimeSpan>]
  [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperation <Boolean>]
  [-EnableExpress <Boolean>] [-EnablePartitioning <Boolean>] [-MaxSizeInMegabyte <Int32>]
@@ -194,7 +194,7 @@ Parameter Sets: (All)
 Aliases: TopicName
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -254,7 +254,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -14,25 +14,25 @@ Returns a description for the specified queue.
 
 ### ListSubscriptionIdViaHost (Default)
 ```
-Get-AzServiceBusQueue -NamespaceName <String> [-ResourceGroupName] <String> [-Skip <Int32>] [-Top <Int32>]
+Get-AzServiceBusQueue -NamespaceName <String> -ResourceGroupName <String> [-Skip <Int32>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetSubscriptionIdViaHost
 ```
-Get-AzServiceBusQueue [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
+Get-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzServiceBusQueue [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
+Get-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzServiceBusQueue -NamespaceName <String> [-ResourceGroupName] <String> -SubscriptionId <String>
+Get-AzServiceBusQueue -NamespaceName <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -74,7 +74,7 @@ Parameter Sets: GetSubscriptionIdViaHost, Get
 Aliases: QueueName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -104,7 +104,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

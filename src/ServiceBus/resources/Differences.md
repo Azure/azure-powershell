@@ -19,6 +19,11 @@
 - Get-AzServiceBusTopic
     - Namespace
     - MaxCount
+- New-AzServiceBusAuthorizationRule
+    - Namespace
+    - Queue
+    - Topic
+    - Rights
 - New-AzServiceBusQueue
     - Namespace
     - EnableBatchedOperations
@@ -136,7 +141,6 @@
 - Get-AzServiceBusKey
 - Get-AzServiceBusMigration
 - Get-AzServiceBusOperation
-- New-AzServiceBusAuthorizationRule
 - New-AzServiceBusGeoDRConfiguration
 - New-AzServiceBusKey
 - Remove-AzServiceBusAuthorizationRule

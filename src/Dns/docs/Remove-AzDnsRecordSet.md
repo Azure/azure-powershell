@@ -1,31 +1,34 @@
 ---
-external help file: Az.ServiceBus-help.xml
-Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebussubscription
+external help file: Az.Dns-help.xml
+Module Name: Az.Dns
+online version: https://docs.microsoft.com/en-us/powershell/module/az.dns/remove-azdnsrecordset
 schema: 2.0.0
 ---
 
-# Remove-AzServiceBusSubscription
+# Remove-AzDnsRecordSet
 
 ## SYNOPSIS
-Deletes a subscription from the specified topic.
+Deletes a record set from a DNS zone.
+This operation cannot be undone.
 
 ## SYNTAX
 
-### DeleteSubscriptionIdViaHost (Default)
+### DeleteSubscriptionIdViaHost1 (Default)
 ```
-Remove-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -TopicName <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzDnsRecordSet -RecordType <RecordType> -RelativeRecordSetName <String> -ResourceGroupName <String>
+ -ZoneName <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Delete
+### Delete1
 ```
-Remove-AzServiceBusSubscription -Id <String> -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -TopicName <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzDnsRecordSet -RecordType <RecordType> -RelativeRecordSetName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -ZoneName <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes a subscription from the specified topic.
+Deletes a record set from a DNS zone.
+This operation cannot be undone.
 
 ## EXAMPLES
 
@@ -53,52 +56,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-Subscription credentials that uniquely identify a Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: SubscriptionId
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The subscription name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: SubscriptionName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NamespaceName
-The namespace name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PassThru
 When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
 
@@ -114,8 +71,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Name of the Resource group within the Azure subscription.
+### -RecordType
+The type of DNS record in this record set.
+Record sets of type SOA cannot be deleted (they are deleted when the DNS zone is deleted).
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RelativeRecordSetName
+The name of the record set, relative to the name of the zone.
 
 ```yaml
 Type: System.String
@@ -129,8 +102,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TopicName
-The topic name.
+### -ResourceGroupName
+The name of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ZoneName
+The name of the DNS zone (without a terminating dot).
 
 ```yaml
 Type: System.String
@@ -187,5 +190,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebussubscription](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebussubscription)
+[https://docs.microsoft.com/en-us/powershell/module/az.dns/remove-azdnsrecordset](https://docs.microsoft.com/en-us/powershell/module/az.dns/remove-azdnsrecordset)
 
