@@ -18,6 +18,8 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+
+## Version 1.8.0
 * Add support for Nat Gateway Resource
     - New cmdlets
         - New-AzNatGateway
