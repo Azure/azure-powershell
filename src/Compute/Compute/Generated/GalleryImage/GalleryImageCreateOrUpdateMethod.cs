@@ -19,15 +19,16 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -52,37 +53,37 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     galleryImage.OsState = this.OsState;
                     galleryImage.OsType = this.OsType;
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("Description"))
+                    if (this.IsParameterBound(c => c.Description))
                     {
                         galleryImage.Description = this.Description;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("Eula"))
+                    if (this.IsParameterBound(c => c.Eula))
                     {
                         galleryImage.Eula = this.Eula;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("PrivacyStatementUri"))
+                    if (this.IsParameterBound(c => c.PrivacyStatementUri))
                     {
                         galleryImage.PrivacyStatementUri = this.PrivacyStatementUri;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("ReleaseNoteUri"))
+                    if (this.IsParameterBound(c => c.ReleaseNoteUri))
                     {
                         galleryImage.ReleaseNoteUri = this.ReleaseNoteUri;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("EndOfLifeDate"))
+                    if (this.IsParameterBound(c => c.EndOfLifeDate))
                     {
                         galleryImage.EndOfLifeDate = this.EndOfLifeDate;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("Tag"))
+                    if (this.IsParameterBound(c => c.Tag))
                     {
                         galleryImage.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("MinimumVCPU"))
+                    if (this.IsParameterBound(c => c.MinimumVCPU))
                     {
                         if (galleryImage.Recommended == null)
                         {
@@ -95,7 +96,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImage.Recommended.VCPUs.Min = this.MinimumVCPU;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("MaximumVCPU"))
+                    if (this.IsParameterBound(c => c.MaximumVCPU))
                     {
                         if (galleryImage.Recommended == null)
                         {
@@ -108,7 +109,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImage.Recommended.VCPUs.Max = this.MaximumVCPU;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("MinimumMemory"))
+                    if (this.IsParameterBound(c => c.MinimumMemory))
                     {
                         if (galleryImage.Recommended == null)
                         {
@@ -121,7 +122,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImage.Recommended.Memory.Min = this.MinimumMemory;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("MaximumMemory"))
+                    if (this.IsParameterBound(c => c.MaximumMemory))
                     {
                         if (galleryImage.Recommended == null)
                         {
@@ -134,7 +135,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImage.Recommended.Memory.Max = this.MaximumMemory;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("DisallowedDiskType"))
+                    if (this.IsParameterBound(c => c.DisallowedDiskType))
                     {
                         if (galleryImage.Disallowed == null)
                         {
@@ -143,7 +144,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImage.Disallowed.DiskTypes = this.DisallowedDiskType;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("PurchasePlanName"))
+                    if (this.IsParameterBound(c => c.PurchasePlanName))
                     {
                         if (galleryImage.PurchasePlan == null)
                         {
@@ -152,7 +153,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImage.PurchasePlan.Name = this.PurchasePlanName;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("PurchasePlanPublisher"))
+                    if (this.IsParameterBound(c => c.PurchasePlanPublisher))
                     {
                         if (galleryImage.PurchasePlan == null)
                         {
@@ -161,7 +162,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImage.PurchasePlan.Publisher = this.PurchasePlanPublisher;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("PurchasePlanProduct"))
+                    if (this.IsParameterBound(c => c.PurchasePlanProduct))
                     {
                         if (galleryImage.PurchasePlan == null)
                         {
@@ -351,37 +352,37 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImage = GalleryImagesClient.Get(resourceGroupName, galleryName, galleryImageName);
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("Description"))
+                    if (this.IsParameterBound(c => c.Description))
                     {   
                         galleryImage.Description = this.Description;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("Eula"))
+                    if (this.IsParameterBound(c => c.Eula))
                     {
                         galleryImage.Eula = this.Eula;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("PrivacyStatementUri"))
+                    if (this.IsParameterBound(c => c.PrivacyStatementUri))
                     {
                         galleryImage.PrivacyStatementUri = this.PrivacyStatementUri;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("ReleaseNoteUri"))
+                    if (this.IsParameterBound(c => c.ReleaseNoteUri))
                     {
                         galleryImage.ReleaseNoteUri = this.ReleaseNoteUri;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("EndOfLifeDate"))
+                    if (this.IsParameterBound(c => c.EndOfLifeDate))
                     {
                         galleryImage.EndOfLifeDate = this.EndOfLifeDate;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("Tag"))
+                    if (this.IsParameterBound(c => c.Tag))
                     {
                         galleryImage.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("MinimumVCPU"))
+                    if (this.IsParameterBound(c => c.MinimumVCPU))
                     {
                         if (galleryImage.Recommended == null)
                         {
@@ -394,7 +395,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImage.Recommended.VCPUs.Min = this.MinimumVCPU;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("MaximumVCPU"))
+                    if (this.IsParameterBound(c => c.MaximumVCPU))
                     {
                         if (galleryImage.Recommended == null)
                         {
@@ -407,7 +408,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImage.Recommended.VCPUs.Max = this.MaximumVCPU;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("MinimumMemory"))
+                    if (this.IsParameterBound(c => c.MinimumMemory))
                     {
                         if (galleryImage.Recommended == null)
                         {
@@ -420,7 +421,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImage.Recommended.Memory.Min = this.MinimumMemory;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("MaximumMemory"))
+                    if (this.IsParameterBound(c => c.MaximumMemory))
                     {
                         if (galleryImage.Recommended == null)
                         {
@@ -433,7 +434,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImage.Recommended.Memory.Max = this.MaximumMemory;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("DisallowedDiskType"))
+                    if (this.IsParameterBound(c => c.DisallowedDiskType))
                     {
                         if (galleryImage.Disallowed == null)
                         {
@@ -442,7 +443,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImage.Disallowed.DiskTypes = this.DisallowedDiskType;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("PurchasePlanName"))
+                    if (this.IsParameterBound(c => c.PurchasePlanName))
                     {
                         if (galleryImage.PurchasePlan == null)
                         {
@@ -451,7 +452,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImage.PurchasePlan.Name = this.PurchasePlanName;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("PurchasePlanPublisher"))
+                    if (this.IsParameterBound(c => c.PurchasePlanPublisher))
                     {
                         if (galleryImage.PurchasePlan == null)
                         {
@@ -460,7 +461,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImage.PurchasePlan.Publisher = this.PurchasePlanPublisher;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("PurchasePlanProduct"))
+                    if (this.IsParameterBound(c => c.PurchasePlanProduct))
                     {
                         if (galleryImage.PurchasePlan == null)
                         {
