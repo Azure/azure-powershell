@@ -51,7 +51,7 @@ PS C:\> {{ Add example code here }}
 The rights associated with the rule.
 
 ```yaml
-Type: AccessRights[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.AccessRights[]
 Parameter Sets: (All)
 Aliases: Right
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The authorization rule name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AuthorizationRuleName
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 The namespace name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 The queue name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Queue
 Aliases:
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 Name of the Resource group within the Azure subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +142,7 @@ Subscription credentials that uniquely identify a Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 The topic name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Topic
 Aliases:
 
@@ -172,7 +172,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -188,7 +188,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

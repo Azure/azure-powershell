@@ -1,43 +1,39 @@
 ---
 external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusauthorizationrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusauthorizationrule
 schema: 2.0.0
 ---
 
-# Get-AzServiceBusAuthorizationRule
+# Remove-AzServiceBusAuthorizationRule
 
 ## SYNOPSIS
-Gets an authorization rule for a namespace by rule name.
+Deletes a namespace authorization rule.
 
 ## SYNTAX
 
 ### Namespace (Default)
 ```
-Get-AzServiceBusAuthorizationRule [-Name <String>] -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### DisasterRecoveryConfig
-```
-Get-AzServiceBusAuthorizationRule -AliasName <String> [-Name <String>] -NamespaceName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Remove-AzServiceBusAuthorizationRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Queue
 ```
-Get-AzServiceBusAuthorizationRule [-Name <String>] -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -QueueName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Remove-AzServiceBusAuthorizationRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -QueueName <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Topic
 ```
-Get-AzServiceBusAuthorizationRule [-Name <String>] -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -TopicName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Remove-AzServiceBusAuthorizationRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -TopicName <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets an authorization rule for a namespace by rule name.
+Deletes a namespace authorization rule.
 
 ## EXAMPLES
 
@@ -49,21 +45,6 @@ PS C:\> {{ Add example code here }}
 {{ Add example description here }}
 
 ## PARAMETERS
-
-### -AliasName
-The Disaster Recovery configuration name
-
-```yaml
-Type: System.String
-Parameter Sets: DisasterRecoveryConfig
-Aliases: Alias
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -88,7 +69,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases: AuthorizationRuleName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -106,6 +87,21 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -171,6 +167,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -178,10 +205,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ISbAuthorizationRule
+### System.Boolean
 ## NOTES
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusauthorizationrule](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusauthorizationrule)
+[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusauthorizationrule](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusauthorizationrule)
 

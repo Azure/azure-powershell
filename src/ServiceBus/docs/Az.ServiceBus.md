@@ -15,6 +15,9 @@ Microsoft Azure PowerShell: ServiceBus cmdlets
 This operation Completes Migration of entities by pointing the connection strings to Premium namespace and any entities created after the operation will be under Premium Namespace.
 CompleteMigration operation will fail when entity migration is in-progress.
 
+### [Get-AzServiceBusAuthorizationRule](Get-AzServiceBusAuthorizationRule.md)
+Gets an authorization rule for a namespace by rule name.
+
 ### [Get-AzServiceBusDisasterRecoveryConfig](Get-AzServiceBusDisasterRecoveryConfig.md)
 Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
 
@@ -78,6 +81,9 @@ This operation reverts Migration
 ### [Move-AzServiceBusNamespace](Move-AzServiceBusNamespace.md)
 This operation Migrate the given namespace to provided name type
 
+### [New-AzServiceBusAuthorizationRule](New-AzServiceBusAuthorizationRule.md)
+Creates or updates an authorization rule for a namespace.
+
 ### [New-AzServiceBusDisasterRecoveryConfig](New-AzServiceBusDisasterRecoveryConfig.md)
 Creates or updates a new Alias(Disaster Recovery configuration)
 
@@ -120,6 +126,9 @@ Creates a topic in the specified namespace.
 ### [New-AzServiceBusTopicKey](New-AzServiceBusTopicKey.md)
 Regenerates primary or secondary connection strings for the topic.
 
+### [Remove-AzServiceBusAuthorizationRule](Remove-AzServiceBusAuthorizationRule.md)
+Deletes a namespace authorization rule.
+
 ### [Remove-AzServiceBusDisasterRecoveryConfig](Remove-AzServiceBusDisasterRecoveryConfig.md)
 Deletes an Alias(Disaster Recovery configuration)
 
@@ -147,6 +156,9 @@ Deletes a subscription from the specified topic.
 
 ### [Remove-AzServiceBusTopic](Remove-AzServiceBusTopic.md)
 Deletes a topic from the specified namespace and resource group.
+
+### [Set-AzServiceBusAuthorizationRule](Set-AzServiceBusAuthorizationRule.md)
+Creates or updates an authorization rule for a namespace.
 
 ### [Set-AzServiceBusDisasterRecoveryConfig](Set-AzServiceBusDisasterRecoveryConfig.md)
 Creates or updates a new Alias(Disaster Recovery configuration)

@@ -1,43 +1,40 @@
 ---
 external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusauthorizationrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/set-azservicebusauthorizationrule
 schema: 2.0.0
 ---
 
-# Get-AzServiceBusAuthorizationRule
+# Set-AzServiceBusAuthorizationRule
 
 ## SYNOPSIS
-Gets an authorization rule for a namespace by rule name.
+Creates or updates an authorization rule for a namespace.
 
 ## SYNTAX
 
 ### Namespace (Default)
 ```
-Get-AzServiceBusAuthorizationRule [-Name <String>] -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### DisasterRecoveryConfig
-```
-Get-AzServiceBusAuthorizationRule -AliasName <String> [-Name <String>] -NamespaceName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Set-AzServiceBusAuthorizationRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-AccessRight <AccessRights[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Queue
 ```
-Get-AzServiceBusAuthorizationRule [-Name <String>] -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -QueueName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Set-AzServiceBusAuthorizationRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -QueueName <String> [-AccessRight <AccessRights[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Topic
 ```
-Get-AzServiceBusAuthorizationRule [-Name <String>] -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -TopicName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Set-AzServiceBusAuthorizationRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -TopicName <String> [-AccessRight <AccessRights[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets an authorization rule for a namespace by rule name.
+Creates or updates an authorization rule for a namespace.
 
 ## EXAMPLES
 
@@ -50,15 +47,15 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AliasName
-The Disaster Recovery configuration name
+### -AccessRight
+The rights associated with the rule.
 
 ```yaml
-Type: System.String
-Parameter Sets: DisasterRecoveryConfig
-Aliases: Alias
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.AccessRights[]
+Parameter Sets: (All)
+Aliases: Right
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -88,7 +85,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases: AuthorizationRuleName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -171,6 +168,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -183,5 +211,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusauthorizationrule](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusauthorizationrule)
+[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/set-azservicebusauthorizationrule](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/set-azservicebusauthorizationrule)
 

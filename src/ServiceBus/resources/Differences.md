@@ -46,6 +46,12 @@
     - EnableBatchedOperations
     - MaxSizeInMegabytes
     - SizeInBytes
+- Remove-AzServiceBusAuthorizationRule
+    - Namespace
+    - Queue
+    - Topic
+    - InputObject
+    - Force
 - Remove-AzServiceBusNamespace
     - InputObject
     - ResourceId
@@ -73,6 +79,12 @@
     - InputObject
     - ResourceId
     - AsJob
+- Set-AzServiceBusAuthorizationRule
+    - Namespace
+    - Queue
+    - Topic
+    - InputObject
+    - Rights
 - Set-AzServiceBusQueue
     - Namespace
     - InputObject
@@ -143,10 +155,8 @@
 - Get-AzServiceBusOperation
 - New-AzServiceBusGeoDRConfiguration
 - New-AzServiceBusKey
-- Remove-AzServiceBusAuthorizationRule
 - Remove-AzServiceBusGeoDRConfiguration
 - Remove-AzServiceBusMigration
-- Set-AzServiceBusAuthorizationRule
 - Set-AzServiceBusGeoDRConfigurationBreakPair
 - Set-AzServiceBusGeoDRConfigurationFailOver
 - Start-AzServiceBusMigration
