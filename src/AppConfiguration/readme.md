@@ -68,8 +68,8 @@ directive:
       subject: OperationNameAvailability
     set:
       subject: StoreNameAvailability
-  # - where:
-  #     verb: Update
-  #     subject: ConfigurationStore
-  #   remove: true
+  - where:
+      verb: Update
+      subject: ConfigurationStore
+    remove: true
 ```

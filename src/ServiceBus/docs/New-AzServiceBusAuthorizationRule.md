@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
+external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebusauthorizationrule
 schema: 2.0.0
@@ -12,24 +12,25 @@ Creates a new authorization rule for the specified Service Bus given Namespace o
 
 ## SYNTAX
 
-### NamespaceAuthorizationRuleSet (Default)
+### Namespace (Default)
 ```
-New-AzServiceBusAuthorizationRule [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
- -Rights <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### QueueAuthorizationRuleSet
-```
-New-AzServiceBusAuthorizationRule [-ResourceGroupName] <String> [-Namespace] <String> [-Queue] <String>
- [-Name] <String> -Rights <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+New-AzServiceBusAuthorizationRule [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
+ [-SubscriptionId <String>] [-AccessRight <AccessRights[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### TopicAuthorizationRuleSet
+### Queue
 ```
-New-AzServiceBusAuthorizationRule [-ResourceGroupName] <String> [-Namespace] <String> [-Topic] <String>
- [-Name] <String> -Rights <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzServiceBusAuthorizationRule [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
+ [-SubscriptionId <String>] -QueueName <String> [-AccessRight <AccessRights[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Topic
+```
+New-AzServiceBusAuthorizationRule [-Name] <String> -NamespaceName <String> [-ResourceGroupName] <String>
+ [-SubscriptionId <String>] -TopicName <String> [-AccessRight <AccessRights[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,13 +61,28 @@ Creates \`AuthoRule1\` with Listen and Send rights for the topic \`SBTopic\`.
 
 ## PARAMETERS
 
+### -AccessRight
+The rights associated with the rule.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.AccessRights[]
+Parameter Sets: (All)
+Aliases: Right
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -86,37 +102,37 @@ Aliases: AuthorizationRuleName
 Required: True
 Position: 3
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Namespace
-Namespace Name
+### -NamespaceName
+The namespace name
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: NamespaceName
+Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Queue
-Queue Name
+### -QueueName
+The queue name.
 
 ```yaml
 Type: System.String
-Parameter Sets: QueueAuthorizationRuleSet
-Aliases: QueueName
+Parameter Sets: Queue
+Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -131,39 +147,37 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Rights
-Rights, e.g. 
-"Listen","Send","Manage"
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Listen, Send, Manage
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TopicName
+The topic name.
+
+```yaml
+Type: System.String
+Parameter Sets: Topic
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Topic
-Topic Name
-
-```yaml
-Type: System.String
-Parameter Sets: TopicAuthorizationRuleSet
-Aliases: TopicName
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

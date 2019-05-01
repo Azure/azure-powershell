@@ -71,4 +71,10 @@ directive:
     set:
       alias: Alias
       parameter-name: AliasName
+  - where:
+      subject: ^(.+)AuthorizationRule$
+      parameter-name: Right
+    set:
+      alias: Right
+      parameter-name: AccessRight
 ```

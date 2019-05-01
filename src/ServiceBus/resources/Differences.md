@@ -1,5 +1,9 @@
 ## Incorrect Cmdlets
 
+- Get-AzServiceBusAuthorizationRule
+    - Namespace
+    - Queue
+    - Topic
 - Get-AzServiceBusQueue
     - Namespace
     - MaxCount
@@ -90,20 +94,16 @@
 
 - Complete-AzServiceBusMigrationConfigMigration
 - Get-AzServiceBusDisasterRecoveryConfig
-- Get-AzServiceBusDisasterRecoveryConfigAuthorizationRule
 - Get-AzServiceBusDisasterRecoveryConfigKey
 - Get-AzServiceBusEventHub
 - Get-AzServiceBusMigrationConfig
-- Get-AzServiceBusNamespaceAuthorizationRule
 - Get-AzServiceBusNamespaceIPFilterRule
 - Get-AzServiceBusNamespaceKey
 - Get-AzServiceBusNamespaceNetworkRuleSet
 - Get-AzServiceBusNamespaceVirtualNetworkRule
 - Get-AzServiceBusPremiumMessagingRegion
-- Get-AzServiceBusQueueAuthorizationRule
 - Get-AzServiceBusQueueKey
 - Get-AzServiceBusRegion
-- Get-AzServiceBusTopicAuthorizationRule
 - Get-AzServiceBusTopicKey
 - Invoke-AzServiceBusBreakDisasterRecoveryConfigPairing
 - Invoke-AzServiceBusFailDisasterRecoveryConfigOver
@@ -111,29 +111,20 @@
 - Move-AzServiceBusNamespace
 - New-AzServiceBusDisasterRecoveryConfig
 - New-AzServiceBusMigrationConfigAndStartMigration
-- New-AzServiceBusNamespaceAuthorizationRule
 - New-AzServiceBusNamespaceIPFilterRule
 - New-AzServiceBusNamespaceKey
 - New-AzServiceBusNamespaceNetworkRuleSet
 - New-AzServiceBusNamespaceVirtualNetworkRule
-- New-AzServiceBusQueueAuthorizationRule
 - New-AzServiceBusQueueKey
-- New-AzServiceBusTopicAuthorizationRule
 - New-AzServiceBusTopicKey
 - Remove-AzServiceBusDisasterRecoveryConfig
 - Remove-AzServiceBusMigrationConfig
-- Remove-AzServiceBusNamespaceAuthorizationRule
 - Remove-AzServiceBusNamespaceIPFilterRule
 - Remove-AzServiceBusNamespaceVirtualNetworkRule
-- Remove-AzServiceBusQueueAuthorizationRule
-- Remove-AzServiceBusTopicAuthorizationRule
 - Set-AzServiceBusDisasterRecoveryConfig
-- Set-AzServiceBusNamespaceAuthorizationRule
 - Set-AzServiceBusNamespaceIPFilterRule
 - Set-AzServiceBusNamespaceNetworkRuleSet
 - Set-AzServiceBusNamespaceVirtualNetworkRule
-- Set-AzServiceBusQueueAuthorizationRule
-- Set-AzServiceBusTopicAuthorizationRule
 - Test-AzServiceBusDisasterRecoveryConfigNameAvailability
 - Test-AzServiceBusNamespaceNameAvailability
 - Update-AzServiceBusNamespace
@@ -141,7 +132,6 @@
 ## Missing Cmdlets
 
 - Complete-AzServiceBusMigration
-- Get-AzServiceBusAuthorizationRule
 - Get-AzServiceBusGeoDRConfiguration
 - Get-AzServiceBusKey
 - Get-AzServiceBusMigration
