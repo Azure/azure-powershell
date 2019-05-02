@@ -77,22 +77,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
                 var cache = AzureSession.Instance.TokenCache;
                 if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
                 {
-                    var fileCache = cache as ProtectedFileTokenCache;
-                    if (fileCache == null)
-                    {
-                        try
-                        {
-                            var session = AzureSession.Instance;
-                            fileCache = new ProtectedFileTokenCache(Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile), session.DataStore);
-                            fileCache.Clear();
-                        }
-                        catch
-                        {
-                            // ignore exceptions from creating a token cache
-                        }
-                    }
-
-                    cache.Clear();
+                    SharedTokenCacheClientFactory.ClearCache();
                 }
                 else
                 {

@@ -106,5 +106,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             cacheHelper.RegisterCache(client.UserTokenCache);
             return client;
         }
+
+        public static void ClearCache(string clientId = null)
+        {
+            clientId = clientId ?? PowerShellClientId;
+            var cacheHelper = InitializeCacheHelper(clientId);
+            cacheHelper.Clear();
+        }
     }
 }
