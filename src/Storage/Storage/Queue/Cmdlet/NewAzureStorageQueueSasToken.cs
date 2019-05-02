@@ -16,8 +16,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 {
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Queue;
+    using Microsoft.Azure.Storage;
+    using Microsoft.Azure.Storage.Queue;
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;

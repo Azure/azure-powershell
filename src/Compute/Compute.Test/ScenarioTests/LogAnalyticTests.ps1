@@ -23,7 +23,7 @@ function Test-ExportLogAnalyticThrottledRequestsNegative
     $to = Get-Date -Year 2018 -Month 2 -Day 28 -Hour 9;
     $sasuri = 'https://fakestore.blob.core.windows.net/mylogs/fakesas';
     Assert-ThrowsContains { `
-        $result = Export-AzLogAnalyticThrottledRequests -Location $loc -FromTime $from -ToTime $to -BlobContainerSasUri $sasuri -GroupByThrottlePolicy -GroupByResourceName;} `
+        $result = Export-AzLogAnalyticThrottledRequest -Location $loc -FromTime $from -ToTime $to -BlobContainerSasUri $sasuri -GroupByThrottlePolicy -GroupByResourceName;} `
         "the given SAS URI";
 }
 
@@ -79,7 +79,7 @@ function Test-ExportLogAnalytics
         Assert-True { $output.Contains(".csv"); }
         Assert-True { $output.Contains("RequestRateByInterval"); }
 
-        $result = Export-AzLogAnalyticThrottledRequests -Location $loc -FromTime $from -ToTime $to -BlobContainerSasUri $sasuri -GroupByThrottlePolicy -GroupByOperationName -GroupByResourceName;
+        $result = Export-AzLogAnalyticThrottledRequest -Location $loc -FromTime $from -ToTime $to -BlobContainerSasUri $sasuri -GroupByThrottlePolicy -GroupByOperationName -GroupByResourceName;
         Assert-AreEqual "Succeeded" $result.Status;
         $output = $result | Out-String;
         Assert-True { $output.Contains(".csv"); }

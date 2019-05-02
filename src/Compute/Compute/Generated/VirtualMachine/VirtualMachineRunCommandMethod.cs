@@ -48,11 +48,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         case "ResourceIdParameter":
                             resourceGroupName = GetResourceGroupName(this.ResourceId);
-                            vmName = GetResourceName(this.ResourceId, "Microsoft.Compute/VirtualMachines");
+                            vmName = GetResourceName(this.ResourceId, "Microsoft.Compute/virtualMachines");
                             break;
                         case "VMParameter":
                             resourceGroupName = GetResourceGroupName(this.VM.Id);
-                            vmName = GetResourceName(this.VM.Id, "Microsoft.Compute/VirtualMachines");
+                            vmName = GetResourceName(this.VM.Id, "Microsoft.Compute/virtualMachines");
                             break;
                         default:
                             resourceGroupName = this.ResourceGroupName;

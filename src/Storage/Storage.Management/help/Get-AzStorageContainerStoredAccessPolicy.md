@@ -163,7 +163,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPolicy
+### Microsoft.Azure.Storage.Blob.SharedAccessBlobPolicy
 
 ## NOTES
 
