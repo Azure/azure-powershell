@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.1
 * Updated the help text for endpoint to indicate that resources should be created before using the create/update event subscription cmdlets.
 
 ## Version 1.1.0

@@ -37,7 +37,7 @@ assignees: ''
 
 ## Module versions
 
-<!-- Please run (Get-Module -Name Az.* -ListAvailable) and paste the output in the below code block -->
+<!-- Please run (Get-Module  -ListAvailable) and paste the output in the below code block -->
 
 ```powershell
 
@@ -53,7 +53,7 @@ assignees: ''
 
 ## Error output
 
-<!-- Please run Resolve-AzureRmError and paste the output in the below code block -->
+<!-- Please run Resolve-AzError and paste the output in the below code block -->
 
 ```
 

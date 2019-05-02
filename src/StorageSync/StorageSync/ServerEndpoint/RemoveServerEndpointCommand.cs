@@ -21,7 +21,6 @@ using Microsoft.Azure.Commands.StorageSync.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
