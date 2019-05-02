@@ -16,6 +16,7 @@ using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Management.Automation;
 using System.Net;
 using Xunit;
@@ -24,8 +25,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 {
     public class HttpTests : HDInsightTestBase
     {
-        private GrantAzureHDInsightHttpServicesAccessCommand grantcmdlet;
-        private RevokeAzureHDInsightHttpServicesAccessCommand revokecmdlet;
+        private SetAzureHDInsightGatewayCredentialCommand setcmdlet;
 
         private readonly PSCredential _httpCred;
 
@@ -35,30 +35,25 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             base.SetupTestsForManagement();
             _httpCred = new PSCredential("hadoopuser", string.Format("Password1!").ConvertToSecureString());
 
-            grantcmdlet = new GrantAzureHDInsightHttpServicesAccessCommand
+            setcmdlet = new SetAzureHDInsightGatewayCredentialCommand
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 HDInsightManagementClient = hdinsightManagementMock.Object,
-                ClusterName = ClusterName,
+                Name = ClusterName,
                 ResourceGroupName = ResourceGroupName,
                 HttpCredential = _httpCred
-            };
-            revokecmdlet = new RevokeAzureHDInsightHttpServicesAccessCommand
-            {
-                CommandRuntime = commandRuntimeMock.Object,
-                HDInsightManagementClient = hdinsightManagementMock.Object,
-                ClusterName = ClusterName,
-                ResourceGroupName = ResourceGroupName
             };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanGrantHttpAccess()
+        public void CanSetGatewayCredentialSupportsShouldProcess()
         {
+            commandRuntimeMock.Setup(c => c.ShouldProcess(ClusterName, It.IsAny<string>())).Returns(true);
+
             hdinsightManagementMock.Setup(
                 c =>
-                    c.ConfigureHttp(ResourceGroupName, ClusterName,
+                    c.UpdateGatewayCredential(ResourceGroupName, ClusterName,
                         It.Is<HttpSettingsParameters>(
                             param =>
                                 param.HttpUserEnabled && param.HttpUsername == _httpCred.UserName &&
@@ -71,7 +66,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 })
                 .Verifiable();
 
-            var connectivitysettings = new HttpConnectivitySettings
+            var gatewayCredential = new HttpConnectivitySettings
             {
                 HttpPassword = _httpCred.Password.ConvertToString(),
                 HttpUserEnabled = true,
@@ -79,50 +74,50 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 StatusCode = HttpStatusCode.OK
             };
 
-            hdinsightManagementMock.Setup(c => c.GetConnectivitySettings(ResourceGroupName, ClusterName))
-                .Returns(connectivitysettings)
+            hdinsightManagementMock.Setup(c => c.GetGatewaySettings(ResourceGroupName, ClusterName))
+                .Returns(gatewayCredential)
                 .Verifiable();
 
-            grantcmdlet.ExecuteCmdlet();
+            setcmdlet.ExecuteCmdlet();
 
             commandRuntimeMock.VerifyAll();
-            commandRuntimeMock.Verify(f => f.WriteObject(connectivitysettings), Times.Once);
+            commandRuntimeMock.Verify(f => f.WriteObject(gatewayCredential), Times.Once);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanRevokeHttpAccess()
+        public void CanWriteErrorWhenSetGatewayCredentialFailedSupportsProcess()
         {
-            hdinsightManagementMock.Setup(
-                c =>
-                    c.ConfigureHttp(ResourceGroupName, ClusterName,
-                        It.Is<HttpSettingsParameters>(
-                            param =>
-                                !param.HttpUserEnabled &&
-                                string.IsNullOrEmpty(param.HttpPassword) &&
-                                string.IsNullOrEmpty(param.HttpUsername))))
-                .Returns(new OperationResource
-                {
-                    ErrorInfo = null,
-                    StatusCode = HttpStatusCode.OK,
-                    State = AsyncOperationState.Succeeded
-                })
-                .Verifiable();
-
-            var connectivitysettings = new HttpConnectivitySettings
+            var result = new OperationResource
             {
-                HttpUserEnabled = false,
-                StatusCode = HttpStatusCode.OK
+                ErrorInfo = new ErrorInfo { Code = "Ambari Failed Code", Message = "GetAmbariUserFailed" },
+                StatusCode = HttpStatusCode.OK,
+                State = AsyncOperationState.Failed
             };
 
-            hdinsightManagementMock.Setup(c => c.GetConnectivitySettings(ResourceGroupName, ClusterName))
-                .Returns(connectivitysettings)
+            commandRuntimeMock.Setup(c => c.ShouldProcess(ClusterName, It.IsAny<string>())).Returns(true);
+
+            hdinsightManagementMock.Setup(
+                c =>
+                    c.UpdateGatewayCredential(ResourceGroupName, ClusterName,
+                        It.Is<HttpSettingsParameters>(
+                            param =>
+                                param.HttpUserEnabled && param.HttpUsername == _httpCred.UserName &&
+                                param.HttpPassword == _httpCred.Password.ConvertToString())))
+                .Returns(result)
                 .Verifiable();
 
-            revokecmdlet.ExecuteCmdlet();
+            setcmdlet.ExecuteCmdlet();
 
             commandRuntimeMock.VerifyAll();
-            commandRuntimeMock.Verify(f => f.WriteObject(connectivitysettings), Times.Once);
+            commandRuntimeMock.Verify(
+                f =>
+                    f.WriteError(It.Is<ErrorRecord>(
+                        record =>
+                            record.Exception.Message == $"{result.ErrorInfo.Code}: {result.ErrorInfo.Message}" &&
+                            string.IsNullOrEmpty(record.FullyQualifiedErrorId) &&
+                            record.CategoryInfo.Category == ErrorCategory.InvalidArgument)),
+                Times.Once);
         }
     }
 }
