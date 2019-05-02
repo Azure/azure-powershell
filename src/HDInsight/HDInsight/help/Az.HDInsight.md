@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.HDInsight
 Module Guid: 3fd1475f-cb23-4ffb-bf08-33d94b7d1acb
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight
@@ -59,9 +59,6 @@ Gets properties about the HDInsight service, such as available locations and cap
 ### [Get-AzHDInsightScriptActionHistory](Get-AzHDInsightScriptActionHistory.md)
 Gets the script action history for a cluster and lists it in reverse chronological order, or gets details of a previously executed script action.
 
-### [Grant-AzHDInsightHttpServicesAccess](Grant-AzHDInsightHttpServicesAccess.md)
-Grants HTTP access to the cluster.
-
 ### [Grant-AzHDInsightRdpServicesAccess](Grant-AzHDInsightRdpServicesAccess.md)
 Grants RDP access to the Windows cluster.
 
@@ -95,9 +92,6 @@ Removes the specified HDInsight cluster from the current subscription.
 ### [Remove-AzHDInsightPersistedScriptAction](Remove-AzHDInsightPersistedScriptAction.md)
 Removes an persisted script action from an HDInsight cluster.
 
-### [Revoke-AzHDInsightHttpServicesAccess](Revoke-AzHDInsightHttpServicesAccess.md)
-Disables HTTP access to the cluster.
-
 ### [Revoke-AzHDInsightRdpServicesAccess](Revoke-AzHDInsightRdpServicesAccess.md)
 Disables RDP access to a Windows cluster.
 
@@ -106,6 +100,9 @@ Sets the number of Worker nodes in a specified cluster.
 
 ### [Set-AzHDInsightDefaultStorage](Set-AzHDInsightDefaultStorage.md)
 Sets the default Storage account setting in a cluster configuration object.
+
+### [Set-AzHDInsightGatewayCredential](Set-AzHDInsightGatewayCredential.md)
+Sets the gateway HTTP credentials of an Azure HDInsight cluster.
 
 ### [Set-AzHDInsightPersistedScriptAction](Set-AzHDInsightPersistedScriptAction.md)
 Sets a previously executed script action to be a persisted script action.
