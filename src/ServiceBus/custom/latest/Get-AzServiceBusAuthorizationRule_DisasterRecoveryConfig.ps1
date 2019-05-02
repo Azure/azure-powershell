@@ -19,7 +19,7 @@ param(
     ${AliasName},
 
     [Parameter(HelpMessage='The authorization rule name.')]
-    [Alias('AuthorizationRuleName')]
+    [Alias('AuthorizationRule', 'AuthorizationRuleName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
     ${Name},

@@ -13,7 +13,7 @@ function Set-AzServiceBusAuthorizationRule_Queue {
 [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description('Creates an authorization rule for a queue.')]
 param(
     [Parameter(Mandatory, HelpMessage='The authorization rule name.')]
-    [Alias('AuthorizationRuleName')]
+    [Alias('AuthorizationRule', 'AuthorizationRuleName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
     ${Name},

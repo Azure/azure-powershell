@@ -13,7 +13,7 @@ function Set-AzServiceBusAuthorizationRule_Namespace {
 [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description('Creates or updates an authorization rule for a namespace.')]
 param(
     [Parameter(Mandatory, HelpMessage='The authorization rule name.')]
-    [Alias('AuthorizationRuleName')]
+    [Alias('AuthorizationRule', 'AuthorizationRuleName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
     ${Name},

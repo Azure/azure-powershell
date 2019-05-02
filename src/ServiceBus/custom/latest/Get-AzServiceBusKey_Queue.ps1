@@ -1,28 +1,34 @@
 <#
 .Synopsis
-Returns the specified authorization rule.
+Primary and secondary connection strings to the queue.
 .Description
-Returns the specified authorization rule.
+Primary and secondary connection strings to the queue.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusauthorizationrule
+https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusqueuekey
 #>
-function Get-AzServiceBusAuthorizationRule_Topic {
-[OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ISbAuthorizationRule')]
-[CmdletBinding(PositionalBinding=$false)]
+function Get-AzServiceBusKey_Queue {
+[OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.IAccessKeys')]
+[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Profile('latest-2019-04-30')]
-[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description('Returns the specified authorization rule.')]
+[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description('Primary and secondary connection strings to the queue.')]
 param(
-    [Parameter(HelpMessage='The authorization rule name.')]
-    [Alias('AuthorizationRule', 'AuthorizationRuleName')]
+    [Parameter(Mandatory, HelpMessage='The authorization rule name.')]
+    [Alias('AuthorizationRule', 'Name')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    ${Name},
+    ${AuthorizationRuleName},
 
     [Parameter(Mandatory, HelpMessage='The namespace name')]
     [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
     ${NamespaceName},
+
+    [Parameter(Mandatory, HelpMessage='The queue name.')]
+    [Alias('Queue')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    ${QueueName},
 
     [Parameter(Mandatory, HelpMessage='Name of the Resource group within the Azure subscription.')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
@@ -33,12 +39,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
     ${SubscriptionId},
-
-    [Parameter(Mandatory, HelpMessage='The topic name.')]
-    [Alias('Topic')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
-    [System.String]
-    ${TopicName},
 
     [Parameter(HelpMessage='The credentials, account, tenant, and subscription used for communication with Azure.')]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -82,7 +82,7 @@ param(
 )
 
 process {
-    Az.ServiceBus.internal\Get-AzServiceTopicAuthorizationRule @PSBoundParameters
+    Az.ServiceBus.internal\Get-AzServiceBusQueueKey @PSBoundParameters
 }
 
 }

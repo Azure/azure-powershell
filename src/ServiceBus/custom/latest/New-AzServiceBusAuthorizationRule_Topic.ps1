@@ -13,7 +13,7 @@ function New-AzServiceBusAuthorizationRule_Topic {
 [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description('Creates an authorization rule for the specified topic.')]
 param(
     [Parameter(Mandatory, HelpMessage='The authorization rule name.')]
-    [Alias('AuthorizationRuleName')]
+    [Alias('AuthorizationRule', 'AuthorizationRuleName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
     ${Name},
@@ -40,7 +40,7 @@ param(
     [System.String]
     ${TopicName},
 
-    [Parameter(HelpMessage='The rights associated with the rule.')]
+    [Parameter(Mandatory, HelpMessage='The rights associated with the rule.')]
     [Alias('Right')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.AccessRights])]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]

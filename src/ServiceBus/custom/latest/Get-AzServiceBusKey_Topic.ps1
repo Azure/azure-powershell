@@ -1,22 +1,22 @@
 <#
 .Synopsis
-Returns the specified authorization rule.
+Gets the primary and secondary connection strings for the topic.
 .Description
-Returns the specified authorization rule.
+Gets the primary and secondary connection strings for the topic.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusauthorizationrule
+https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebustopickey
 #>
-function Get-AzServiceBusAuthorizationRule_Topic {
-[OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ISbAuthorizationRule')]
-[CmdletBinding(PositionalBinding=$false)]
+function Get-AzServiceBusKey_Topic {
+[OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.IAccessKeys')]
+[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Profile('latest-2019-04-30')]
-[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description('Returns the specified authorization rule.')]
+[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description('Gets the primary and secondary connection strings for the topic.')]
 param(
-    [Parameter(HelpMessage='The authorization rule name.')]
-    [Alias('AuthorizationRule', 'AuthorizationRuleName')]
+    [Parameter(Mandatory, HelpMessage='The authorization rule name.')]
+    [Alias('AuthorizationRule', 'Name')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    ${Name},
+    ${AuthorizationRuleName},
 
     [Parameter(Mandatory, HelpMessage='The namespace name')]
     [Alias('Namespace')]
@@ -82,7 +82,7 @@ param(
 )
 
 process {
-    Az.ServiceBus.internal\Get-AzServiceTopicAuthorizationRule @PSBoundParameters
+    Az.ServiceBus.internal\Get-AzServiceBusTopicKey @PSBoundParameters
 }
 
 }

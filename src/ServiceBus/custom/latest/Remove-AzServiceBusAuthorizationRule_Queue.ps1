@@ -13,7 +13,7 @@ function Remove-AzServiceBusAuthorizationRule_Queue {
 [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description('Deletes a queue authorization rule.')]
 param(
     [Parameter(Mandatory, HelpMessage='The authorization rule name.')]
-    [Alias('AuthorizationRuleName')]
+    [Alias('AuthorizationRule', 'AuthorizationRuleName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
     ${Name},

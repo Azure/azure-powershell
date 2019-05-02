@@ -1,22 +1,22 @@
 <#
 .Synopsis
-Returns the specified authorization rule.
+Regenerates primary or secondary connection strings for the topic.
 .Description
-Returns the specified authorization rule.
+Regenerates primary or secondary connection strings for the topic.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusauthorizationrule
+https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebustopickey
 #>
-function Get-AzServiceBusAuthorizationRule_Topic {
-[OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ISbAuthorizationRule')]
-[CmdletBinding(PositionalBinding=$false)]
+function New-AzServiceBusKey_Topic {
+[OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.IAccessKeys')]
+[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Profile('latest-2019-04-30')]
-[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description('Returns the specified authorization rule.')]
+[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description('Regenerates primary or secondary connection strings for the topic.')]
 param(
-    [Parameter(HelpMessage='The authorization rule name.')]
-    [Alias('AuthorizationRule', 'AuthorizationRuleName')]
+    [Parameter(Mandatory, HelpMessage='The authorization rule name.')]
+    [Alias('AuthorizationRule', 'Name')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    ${Name},
+    ${AuthorizationRuleName},
 
     [Parameter(Mandatory, HelpMessage='The namespace name')]
     [Alias('Namespace')]
@@ -39,6 +39,17 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
     ${TopicName},
+
+    [Parameter(HelpMessage='Optional, if the key value provided, is reset for KeyType value or autogenerate Key value set for keyType')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    ${Key},
+
+    [Parameter(Mandatory, HelpMessage='The access key to regenerate.')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeyType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeyType]
+    ${KeyType},
 
     [Parameter(HelpMessage='The credentials, account, tenant, and subscription used for communication with Azure.')]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -82,7 +93,7 @@ param(
 )
 
 process {
-    Az.ServiceBus.internal\Get-AzServiceTopicAuthorizationRule @PSBoundParameters
+    Az.ServiceBus.internal\New-AzServiceBusTopicKey @PSBoundParameters
 }
 
 }
