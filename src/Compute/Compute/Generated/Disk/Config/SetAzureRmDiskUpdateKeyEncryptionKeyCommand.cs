@@ -19,20 +19,17 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [CmdletOutputBreakingChange(typeof(PSDiskUpdate),
-                                DeprecatedOutputProperties = new string[] { "EncryptionSettings" },
-                                NewOutputProperties = new string[] { "EncryptionSettingsCollection" })]
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiskUpdateKeyEncryptionKey", SupportsShouldProcess = true)]
     [OutputType(typeof(PSDiskUpdate))]
     public partial class SetAzureRmDiskUpdateKeyEncryptionKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
@@ -84,7 +81,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.DiskUpdate.EncryptionSettingsCollection.EncryptionSettings.Add(vEncryptionSettings);
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("KeyUrl"))
+            if (this.IsParameterBound(c => c.KeyUrl))
             {
                 // KeyEncryptionKey
                 if (this.DiskUpdate.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey == null)
@@ -94,7 +91,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.DiskUpdate.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.KeyUrl = this.KeyUrl;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("SourceVaultId"))
+            if (this.IsParameterBound(c => c.SourceVaultId))
             {
                 // KeyEncryptionKey
                 if (this.DiskUpdate.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey == null)
