@@ -113,7 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             var newPsPeeringLocations = new List<PSPeeringLocationObject>();
             foreach (var psPeeringLocation in peeringLocation)
             {
-                if (this.Kind.Equals(Constants.Exchange))
+                if (this.Kind.Equals(Constants.Exchange, StringComparison.OrdinalIgnoreCase))
                 {
                     if (psPeeringLocation.Name.Equals(s, StringComparison.OrdinalIgnoreCase))
                     {
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     }
                 }
 
-                if (this.Kind.Equals(Constants.Direct))
+                if (this.Kind.Equals(Constants.Direct, StringComparison.OrdinalIgnoreCase))
                 {
                     if (psPeeringLocation.Name.Equals(s, StringComparison.OrdinalIgnoreCase))
                     {
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         {
             foreach (var psPeeringLocation in peeringLocation)
             {
-                if (this.Kind.Equals(Constants.Exchange))
+                if (this.Kind.Equals(Constants.Exchange, StringComparison.OrdinalIgnoreCase))
                 {
                     var numFacilities = psPeeringLocation.Exchange.PeeringFacilities.Count;
                     for (int i = 0; i < numFacilities; i++)
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     }
                 }
 
-                if (this.Kind.Equals(Constants.Direct))
+                if (this.Kind.Equals(Constants.Direct, StringComparison.OrdinalIgnoreCase))
                 {
                     var numFacilities = psPeeringLocation.Direct.PeeringFacilities.Count;
                     for (int i = 0; i < numFacilities; i++)
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             var newPsPeeringLocations = new List<PSPeeringLocationObject>();
             foreach (var location in peeringLocation)
             {
-                if (location.Direct != null && location.Kind == Constants.Direct)
+                if (location.Direct != null && location.Kind.Equals(Constants.Direct, StringComparison.OrdinalIgnoreCase))
                 {
                     var numFacilities = location.Direct.PeeringFacilities.Count;
                     for (int i = 0; i < numFacilities; i++)
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     }
                 }
 
-                if (location.Exchange != null && location.Kind == Constants.Exchange)
+                if (location.Exchange != null && location.Kind.Equals(Constants.Exchange, StringComparison.OrdinalIgnoreCase))
                 {
                     var numFacilities = location.Exchange.PeeringFacilities.Count;
                     for (int i = 0; i < numFacilities; i++)
