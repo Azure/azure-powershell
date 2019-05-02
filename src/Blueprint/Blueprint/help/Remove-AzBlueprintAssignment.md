@@ -14,13 +14,13 @@ Remove a blueprint assignment from a subscription.
 
 ### DeleteBlueprintAssignmentByName (Default)
 ```
-Remove-AzBlueprintAssignment [-SubscriptionId] <String> [-Name] <String> [-PassThru]
+Remove-AzBlueprintAssignment [[-SubscriptionId] <String>] [-Name] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteBlueprintAssignmentByObject
 ```
-Remove-AzBlueprintAssignment [-SubscriptionId] <String> [-InputObject] <PSBlueprintAssignment> [-PassThru]
+Remove-AzBlueprintAssignment [[-SubscriptionId] <String>] [-InputObject] <PSBlueprintAssignment> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -106,7 +106,7 @@ Type: System.String
 Parameter Sets: DeleteBlueprintAssignmentByName
 Aliases:
 
-Required: True
+Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -118,7 +118,7 @@ Type: System.String
 Parameter Sets: DeleteBlueprintAssignmentByObject
 Aliases:
 
-Required: True
+Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)

@@ -13,15 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Shared.Protocol;
 using XTable = Microsoft.Azure.Cosmos.Table;
 using System;
 using System.Globalization;
 using System.Management.Automation;
 using System.Net;
 using System.Security.Permissions;
-using SharedProtocol = Microsoft.WindowsAzure.Storage.Shared.Protocol;
+using SharedProtocol = Microsoft.Azure.Storage.Shared.Protocol;
 using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet

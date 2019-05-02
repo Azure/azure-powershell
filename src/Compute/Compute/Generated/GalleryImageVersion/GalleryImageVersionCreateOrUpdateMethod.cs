@@ -19,15 +19,16 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -54,12 +55,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     galleryImageVersion.PublishingProfile.Source.ManagedImage = new ManagedArtifact();
                     galleryImageVersion.PublishingProfile.Source.ManagedImage.Id = this.SourceImageId;
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("Tag"))
+                    if (this.IsParameterBound(c => c.Tag))
                     {
                         galleryImageVersion.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("ReplicaCount"))
+                    if (this.IsParameterBound(c => c.ReplicaCount))
                     {
                         if (galleryImageVersion.PublishingProfile == null)
                         {
@@ -68,7 +69,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImageVersion.PublishingProfile.ReplicaCount = this.ReplicaCount;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("PublishingProfileExcludeFromLatest"))
+                    if (this.IsParameterBound(c => c.PublishingProfileExcludeFromLatest))
                     {
                         if (galleryImageVersion.PublishingProfile == null)
                         {
@@ -77,7 +78,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImageVersion.PublishingProfile.ExcludeFromLatest = this.PublishingProfileExcludeFromLatest.IsPresent;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("PublishingProfileEndOfLifeDate"))
+                    if (this.IsParameterBound(c => c.PublishingProfileEndOfLifeDate))
                     {
                         if (galleryImageVersion.PublishingProfile == null)
                         {
@@ -86,7 +87,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImageVersion.PublishingProfile.EndOfLifeDate = this.PublishingProfileEndOfLifeDate;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("TargetRegion"))
+                    if (this.IsParameterBound(c => c.StorageAccountType))
+                    {
+                        if (galleryImageVersion.PublishingProfile == null)
+                        {
+                            galleryImageVersion.PublishingProfile = new GalleryImageVersionPublishingProfile();
+                        }
+                        galleryImageVersion.PublishingProfile.StorageAccountType = this.StorageAccountType;
+                    }
+
+                    if (this.IsParameterBound(c => c.TargetRegion))
                     {
                         if (galleryImageVersion.PublishingProfile == null)
                         {
@@ -95,7 +105,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImageVersion.PublishingProfile.TargetRegions = new List<TargetRegion>();
                         foreach (var t in this.TargetRegion)
                         {
-                            galleryImageVersion.PublishingProfile.TargetRegions.Add(new TargetRegion((string)t["Name"], (int?)t["ReplicaCount"]));
+                            galleryImageVersion.PublishingProfile.TargetRegions.Add(new TargetRegion((string)t["Name"], (int?)t["ReplicaCount"], (string)t["StorageAccountType"]));
                         }
                     }
 
@@ -174,6 +184,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("Standard_LRS", "Standard_ZRS")]
+        public string StorageAccountType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         public Hashtable[] TargetRegion { get; set; }
     }
 
@@ -225,12 +241,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImageVersion = GalleryImageVersionsClient.Get(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName);
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("Tag"))
+                    if (this.IsParameterBound(c => c.Tag))
                     {
                         galleryImageVersion.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("ReplicaCount"))
+                    if (this.IsParameterBound(c => c.ReplicaCount))
                     {
                         if (galleryImageVersion.PublishingProfile == null)
                         {
@@ -239,7 +255,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImageVersion.PublishingProfile.ReplicaCount = this.ReplicaCount;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("PublishingProfileExcludeFromLatest"))
+                    if (this.IsParameterBound(c => c.PublishingProfileExcludeFromLatest))
                     {
                         if (galleryImageVersion.PublishingProfile == null)
                         {
@@ -248,7 +264,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImageVersion.PublishingProfile.ExcludeFromLatest = this.PublishingProfileExcludeFromLatest.IsPresent;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("PublishingProfileEndOfLifeDate"))
+                    if (this.IsParameterBound(c => c.PublishingProfileEndOfLifeDate))
                     {
                         if (galleryImageVersion.PublishingProfile == null)
                         {
@@ -257,7 +273,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         galleryImageVersion.PublishingProfile.EndOfLifeDate = this.PublishingProfileEndOfLifeDate;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("TargetRegion"))
+                    if (this.IsParameterBound(c => c.TargetRegion))
                     {
                         if (galleryImageVersion.PublishingProfile == null)
                         {
