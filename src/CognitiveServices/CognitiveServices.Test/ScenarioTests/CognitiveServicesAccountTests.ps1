@@ -31,13 +31,44 @@ function Test-NewAzureRmCognitiveServicesAccount
 
         New-AzResourceGroup -Name $rgname -Location $loc;
 
-        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
+        $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc;
         Assert-NotNull $createdAccount;
         # Call create again, expect to get the same account
         $createdAccountAgain = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
         Assert-NotNull $createdAccountAgain
         Assert-AreEqual $createdAccount.Name $createdAccountAgain.Name;
         Assert-AreEqual $createdAccount.Endpoint $createdAccountAgain.Endpoint;
+        
+        Retry-IfException { Remove-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test New-AzCognitiveServicesAccountInvalidName
+#>
+function Test-NewAzureRmCognitiveServicesAccountInvalidName
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname + ".invalid";
+        $skuname = 'S2';
+        $accounttype = 'TextAnalytics';
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+
+		Assert-ThrowsContains { New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc;
+        Assert-NotNull $createdAccount; } 'Failed to create Cognitive Services account.'
         
         Retry-IfException { Remove-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
     }
