@@ -57,22 +57,26 @@ skip-model-cmdlets: true
 
 directive:
   - where:
-      subject: ^(.+)AuthorizationRule$
+      subject: AuthorizationRule$
     hide: true
   - where:
-      subject: ^(.+)AuthorizationRule$
+      parameter-name: AuthorizationRuleName
+    set:
+      alias: AuthorizationRule
+  - where:
+      subject: AuthorizationRule$
       parameter-name: AuthorizationRuleName
     set:
       alias: AuthorizationRuleName
       parameter-name: Name
   - where:
-      subject: ^(.+)AuthorizationRule$
+      subject: ^DisasterRecoveryConfig
       parameter-name: Alias
     set:
       alias: Alias
       parameter-name: AliasName
   - where:
-      subject: ^(.+)AuthorizationRule$
+      subject: AuthorizationRule$
       parameter-name: Right
     set:
       alias: Right
@@ -89,4 +93,12 @@ directive:
       parameter-name: QueueName
     set:
       alias: Queue
+  - where:
+      subject: Key$
+    hide: true
+  - where:
+      subject: Key$
+      parameter-name: AuthorizationRuleName
+    set:
+      alias: Name
 ```
