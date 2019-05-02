@@ -32,8 +32,6 @@ using System.Threading;
 using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01;
-using Microsoft.Azure.Graph.RBAC.Version1_6;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 
@@ -81,24 +79,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
             }
             set => clientCredentials = value;
-        }
-
-        /// <summary>
-        /// Graph RBAC client
-        /// </summary>
-        private IGraphRbacManagementClient graphRbacManagementClient;
-
-        public IGraphRbacManagementClient GraphRbacManagementClient
-        {
-            get
-            {
-                graphRbacManagementClient = graphRbacManagementClient ?? AzureSession.Instance.ClientFactory.CreateArmClient<GraphRbacManagementClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.Graph);
-
-                graphRbacManagementClient.TenantID = DefaultProfile.DefaultContext.Tenant.Id.ToString();
-
-                return graphRbacManagementClient;
-            }
-            set => graphRbacManagementClient = value;
         }
 
         /// <summary>
@@ -209,11 +189,21 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         /// <param name="Parameters"></param>
         /// <param name="ResourceGroups"></param>
         /// <returns></returns>
-        protected Assignment CreateAssignmentObject(string identityType, Dictionary<string, UserAssignedIdentity> userAssignedIdentity, string bpLocation, string blueprintId, PSLockMode? lockMode, Hashtable Parameters, Hashtable ResourceGroups)
+        protected Assignment CreateAssignmentObject(string identityType, string userAssignedIdentity, string bpLocation, string blueprintId, PSLockMode? lockMode, Hashtable Parameters, Hashtable ResourceGroups, Hashtable SecureStringParameters)
         {
+            Dictionary<string, UserAssignedIdentity> userAssignedIdentities = null;
+
+            if (userAssignedIdentity != null)
+            {
+                userAssignedIdentities = new Dictionary<string, UserAssignedIdentity>()
+                {
+                    { userAssignedIdentity, new UserAssignedIdentity() }
+                };
+            }
+
             var localAssignment = new Assignment
             {
-                Identity = new ManagedServiceIdentity { Type = identityType, UserAssignedIdentities = userAssignedIdentity },
+                Identity = new ManagedServiceIdentity { Type = identityType, UserAssignedIdentities = userAssignedIdentities },
                 Location = bpLocation,
                 BlueprintId = blueprintId,
                 Locks = new AssignmentLockSettings { Mode = lockMode == null ? PSLockMode.None.ToString() : lockMode.ToString() },
@@ -228,6 +218,38 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                     var value = new ParameterValue(Parameters[key], null);   
                     localAssignment.Parameters.Add(key.ToString(), value);
                 }   
+            }
+
+            if (SecureStringParameters != null)
+            {
+                foreach (var key in SecureStringParameters.Keys)
+                {
+                    var kvp = SecureStringParameters[key] as Hashtable;
+                    string keyVaultId = null;
+                    string secretName = null;
+                    string secretVersion = null;
+
+                    foreach (var k in kvp.Keys)
+                    {
+                        var paramKey = k.ToString();
+
+                        if (string.Equals(paramKey, "keyVaultId", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            keyVaultId = kvp[k].ToString();
+                        }
+                        else if (string.Equals(paramKey, "secretName", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            secretName = kvp[k].ToString();
+                        }
+                        else if (string.Equals(paramKey, "secretVersion", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            secretVersion = kvp[k].ToString();
+                        }
+                    }
+
+                    var secretValue = new SecretReferenceParameterValue(new SecretValueReference(new KeyVaultReference(keyVaultId), secretName, secretVersion));
+                    localAssignment.Parameters.Add(key.ToString(), secretValue);
+                }
             }
 
             if (ResourceGroups != null)
@@ -277,29 +299,34 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         }
 
         /// <summary>
-        /// Get Blueprint SPN for this tenant
+        /// Get Blueprint SPN object Id for this tenant
         /// </summary>
-        /// <returns></returns>
-        protected ServicePrincipal GetBlueprintSpn()
+        /// <param name="scope"></param>
+        /// <param name="assignmentName"></param>
+        /// <returns>"spnObjectId"</returns>
+        protected string GetBlueprintSpn(string scope, string assignmentName)
         {
-            var odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ServicePrincipalNames.Contains(BlueprintConstants.AzureBlueprintAppId));
-            var servicePrincipal = GraphRbacManagementClient.ServicePrincipals.List(odataQuery.ToString())
-                .FirstOrDefault();
+            var response = BlueprintClient.GetBlueprintSpnObjectId(scope, assignmentName);
 
-            return servicePrincipal;
+            if (response == null)
+            {
+                throw new KeyNotFoundException(Resources.BlueprintSpnObjectIdNotFound);
+            }
+
+            return response.ObjectId;
         }
 
         /// <summary>
         /// Assign owner role to Blueprint RP (so that we can do deployments)
         /// </summary>
         /// <param name="subscriptionId"></param>
-        /// <param name="servicePrincipal"></param>
-        protected void AssignOwnerPermission(string subscriptionId, ServicePrincipal servicePrincipal)
+        /// <param name="spnObjectId"></param>
+        protected void AssignOwnerPermission(string subscriptionId, string spnObjectId)
         {
             string scope = string.Format(BlueprintConstants.SubscriptionScope, subscriptionId);
 
             var filter = new Rest.Azure.OData.ODataQuery<RoleAssignmentFilter>();
-            filter.SetFilter(a => a.AssignedTo(servicePrincipal.ObjectId));
+            filter.SetFilter(a => a.AssignedTo(spnObjectId));
 
             var roleAssignmentList = AuthorizationManagementClient.RoleAssignments.ListForScopeAsync(scope, filter).GetAwaiter().GetResult();
 
@@ -310,7 +337,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             if (roleAssignment != null) return;
 
             var roleAssignmentParams = new RoleAssignmentProperties(
-                roleDefinitionId: BlueprintConstants.OwnerRoleDefinitionId, principalId: servicePrincipal.ObjectId);
+                roleDefinitionId: BlueprintConstants.OwnerRoleDefinitionId, principalId: spnObjectId);
 
             try
             {
@@ -322,7 +349,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             catch (Exception ex)
             {
                 // ignore if it already exists
-                if (ex is CloudException cex && cex.Response.StatusCode != System.Net.HttpStatusCode.Conflict)
+                if (ex is CloudException cex && cex.Response.StatusCode != HttpStatusCode.Conflict)
                 {
                     throw;
                 }

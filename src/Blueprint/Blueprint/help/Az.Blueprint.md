@@ -21,7 +21,7 @@ Get one or more blueprint assignments.
 Assign a blueprint definition to a subscription.
 
 ### [Remove-AzBlueprintAssignment](Remove-AzBlueprintAssignment.md)
-Remove a blueprint that has been assigned to a subscription.
+Remove a blueprint assignment from a subscription.
 
 ### [Set-AzBlueprintAssignment](Set-AzBlueprintAssignment.md)
 Update an existing blueprint assignment.
