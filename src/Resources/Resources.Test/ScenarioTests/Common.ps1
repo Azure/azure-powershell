@@ -397,3 +397,17 @@ function Test-AzResourceGroupDeploymentWithName
 
     $cmdlet.ExecuteCmdlet()
 }
+
+function Get-VMImageVersion {
+	param([string] $publisher, [string] $offer, [string] $sku, [string] $location)
+
+	if ([string]::IsNullOrEmpty($location)) {
+		$location = "East US"
+	}
+
+	return (Get-AzVMImage -PublisherName $publisher `
+					 -Location $location `
+					 -Offer $offer `
+					 -Skus $sku | sort -Descending Version `
+					 | select -First 1).Version
+}
