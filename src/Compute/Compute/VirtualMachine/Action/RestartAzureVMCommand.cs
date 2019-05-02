@@ -14,11 +14,9 @@
 
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -76,20 +74,7 @@ namespace Microsoft.Azure.Commands.Compute
            ParameterSetName = PerformMaintenanceResourceGroupNameParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The virtual machine name.")]
-        [Parameter(
-           Mandatory = false,
-           Position = 1,
-           ParameterSetName = RestartIdParameterSet,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The virtual machine name.")]
-        [Parameter(
-           Mandatory = false,
-           Position = 1,
-           ParameterSetName = PerformMaintenanceIdParameterSet,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The virtual machine name.")]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
-        [CmdletParameterBreakingChange("Name", ChangeDescription = "Name will be removed from the Id parameter sets in an upcoming breaking change release.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
