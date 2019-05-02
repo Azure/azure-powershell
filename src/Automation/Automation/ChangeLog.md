@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Updated Get-AzAutomationJobOutputRecord to handle JSON and Text record values.
+    - Fix for issue https://github.com/Azure/azure-powershell/issues/7977
+    - Fix for issue https://github.com/Azure/azure-powershell/issues/8600
+    
 ## Version 1.2.1
 * Fixed New-AzAutomationSoftwareUpdateConfiguration cmdlet bug for Inclusions. Now parameter IncludedKbNumber and IncludedPackageNameMask should work.
 * Bug fix for azure automation update management dynamic group
@@ -31,9 +34,6 @@
 
 ## Version 1.1.2
 * Fixed issue when retreiving certain monthly schedules in several Azure Automation cmdlets
-* Updated Get-AzAutomationJobOutputRecord to handle JSON and Text record values.
-    - Fix for issue https://github.com/Azure/azure-powershell/issues/7977
-    - Fix for issue https://github.com/Azure/azure-powershell/issues/8600
 * Fix Get-AzAutomationDscNode returning just top 20 nodes. Now it returns all nodes
 
 ## Version 1.1.1
