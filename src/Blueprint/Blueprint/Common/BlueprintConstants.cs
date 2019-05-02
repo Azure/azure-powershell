@@ -61,6 +61,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             public const string CurrentLevel = "Flag to denote if current management group level or subscription to be used for the query.";
             public const string SystemAssignedIdentity = "System assigned identity(MSI) to deploy the artifacts.";
             public const string UserAssignedIdentity = "User assigned identity(MSI) to deploy the artifacts.";
+            public const string SecureString = "Secure string parameter for KeyVault resource id, name and version.";
         }
     }
 }

@@ -19,6 +19,7 @@ using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
@@ -27,6 +28,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Gets a recovery plan or all the recovery plans in the Recovery Services vault
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrRecoveryPlan",DefaultParameterSetName = ASRParameterSets.Default)]
+    [CmdletOutputBreakingChange(
+        typeof(ASRRecoveryPlan),
+        DeprecatedOutputProperties = new String[] {
+            "ASRRecoveryPlanGroup.ReplicationProtectedItems",
+            "ASRRecoveryPlanGroup.StartGroupActions",
+            "ASRRecoveryPlanGroup.EndGroupActions" })]
     [Alias(
         "Get-ASRRP",
         "Get-ASRRecoveryPlan")]

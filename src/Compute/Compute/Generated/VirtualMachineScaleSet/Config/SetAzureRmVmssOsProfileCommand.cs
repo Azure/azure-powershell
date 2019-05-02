@@ -19,13 +19,14 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -122,7 +123,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            if (this.MyInvocation.BoundParameters.ContainsKey("ComputerNamePrefix"))
+            if (this.IsParameterBound(c => c.ComputerNamePrefix))
             {
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
@@ -137,7 +138,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.ComputerNamePrefix = this.ComputerNamePrefix;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("AdminUsername"))
+            if (this.IsParameterBound(c => c.AdminUsername))
             {
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
@@ -152,7 +153,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.AdminUsername = this.AdminUsername;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("AdminPassword"))
+            if (this.IsParameterBound(c => c.AdminPassword))
             {
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
@@ -167,7 +168,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.AdminPassword = this.AdminPassword;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("CustomData"))
+            if (this.IsParameterBound(c => c.CustomData))
             {
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
@@ -182,7 +183,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.CustomData = this.CustomData;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("WindowsConfigurationProvisionVMAgent"))
+            if (this.IsParameterBound(c => c.WindowsConfigurationProvisionVMAgent))
             {
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
@@ -202,7 +203,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.ProvisionVMAgent = this.WindowsConfigurationProvisionVMAgent;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("WindowsConfigurationEnableAutomaticUpdate"))
+            if (this.IsParameterBound(c => c.WindowsConfigurationEnableAutomaticUpdate))
             {
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
@@ -222,7 +223,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.EnableAutomaticUpdates = this.WindowsConfigurationEnableAutomaticUpdate;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("TimeZone"))
+            if (this.IsParameterBound(c => c.TimeZone))
             {
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
@@ -242,7 +243,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.TimeZone = this.TimeZone;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("AdditionalUnattendContent"))
+            if (this.IsParameterBound(c => c.AdditionalUnattendContent))
             {
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
@@ -262,7 +263,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.AdditionalUnattendContent = this.AdditionalUnattendContent;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("Listener"))
+            if (this.IsParameterBound(c => c.Listener))
             {
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
@@ -287,7 +288,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.WinRM.Listeners = this.Listener;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("LinuxConfigurationDisablePasswordAuthentication"))
+            if (this.IsParameterBound(c => c.LinuxConfigurationDisablePasswordAuthentication))
             {
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
@@ -307,7 +308,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.LinuxConfiguration.DisablePasswordAuthentication = this.LinuxConfigurationDisablePasswordAuthentication;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("PublicKey"))
+            if (this.IsParameterBound(c => c.PublicKey))
             {
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
@@ -332,7 +333,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.LinuxConfiguration.Ssh.PublicKeys = this.PublicKey;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("Secret"))
+            if (this.IsParameterBound(c => c.Secret))
             {
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
