@@ -21,7 +21,6 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -35,14 +34,7 @@ namespace Microsoft.Azure.Commands.Compute
            ParameterSetName = ResourceGroupNameParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The virtual machine name.")]
-        [Parameter(
-           Mandatory = false,
-           Position = 1,
-           ParameterSetName = IdParameterSet,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The virtual machine name.")]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
-        [CmdletParameterBreakingChange("Name", ChangeDescription = "Name will be removed from the Id parameter set in an upcoming breaking change release.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -57,6 +49,11 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "To keep the VM provisioned.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter StayProvisioned { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "To request non-graceful VM shutdown when keeping the VM provisioned.")]
+        public SwitchParameter SkipShutdown { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -74,23 +71,22 @@ namespace Microsoft.Azure.Commands.Compute
                         this.Name = parsedId.ResourceName;
                     }
 
-                    Action<Func<string, string, Dictionary<string, List<string>>, CancellationToken, Task<Rest.Azure.AzureOperationResponse>>> call = f =>
-                    {
-                        var op = f(this.ResourceGroupName, this.Name, null, CancellationToken.None).GetAwaiter().GetResult();
-                        var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
-                        result.StartTime = this.StartTime;
-                        result.EndTime = DateTime.Now;
-                        WriteObject(result);
-                    };
+                    Rest.Azure.AzureOperationResponse op;
 
                     if (this.StayProvisioned)
                     {
-                        call(this.VirtualMachineClient.PowerOffWithHttpMessagesAsync);
+                        bool? skipShutdown = this.SkipShutdown.IsPresent ? (bool?)true : null;
+                        op = this.VirtualMachineClient.PowerOffWithHttpMessagesAsync(this.ResourceGroupName, this.Name, skipShutdown, null, CancellationToken.None).GetAwaiter().GetResult();
                     }
                     else
                     {
-                        call(this.VirtualMachineClient.DeallocateWithHttpMessagesAsync);
+                        op = this.VirtualMachineClient.DeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, null, CancellationToken.None).GetAwaiter().GetResult();
                     }
+
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
+                    result.StartTime = this.StartTime;
+                    result.EndTime = DateTime.Now;
+                    WriteObject(result);
                 }
                 else
                 {

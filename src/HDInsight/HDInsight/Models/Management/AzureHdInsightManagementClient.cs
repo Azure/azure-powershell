@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.HDInsight;
 using Microsoft.Azure.Management.HDInsight.Models;
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
@@ -121,14 +122,19 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             return HdInsightManagementClient.Clusters.Delete(resourceGroupName, clusterName);
         }
 
-        public virtual OperationResource ConfigureHttp(string resourceGroupName, string clusterName, HttpSettingsParameters httpSettings)
+        public virtual OperationResource UpdateGatewayCredential(string resourceGroupName, string clusterName, HttpSettingsParameters httpSettings)
         {
-            return HdInsightManagementClient.Clusters.ConfigureHttpSettings(resourceGroupName, clusterName, httpSettings);
+            return HdInsightManagementClient.Clusters.UpdateGatewaySettings(resourceGroupName, clusterName, httpSettings);
         }
 
-        public virtual HttpConnectivitySettings GetConnectivitySettings(string resourceGroupName, string clusterName)
+        public virtual HttpConnectivitySettings GetGatewaySettings(string resourceGroupName, string clusterName)
         {
-            return HdInsightManagementClient.Clusters.GetConnectivitySettings(resourceGroupName, clusterName);
+            return HdInsightManagementClient.Clusters.GetGatewaySettings(resourceGroupName, clusterName);
+        }
+
+        public virtual ClusterListConfigurationsResponse ListConfigurations(string resourceGroupName, string clusterName)
+        {
+            return HdInsightManagementClient.Clusters.ListConfigurations(resourceGroupName, clusterName);
         }
 
         public virtual OperationResource ConfigureRdp(string resourceGroupName, string clusterName, RDPSettingsParameters rdpSettings)

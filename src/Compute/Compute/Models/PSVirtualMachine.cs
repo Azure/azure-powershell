@@ -103,5 +103,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         // Gets or sets the AdditionalCapabilities
         public AdditionalCapabilities AdditionalCapabilities { get; set; }
+
+        // Gets or sets the ProximityPlacementGroup
+        public SubResource ProximityPlacementGroup { get; set; }
     }
 }
