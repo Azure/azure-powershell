@@ -24,14 +24,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
         }
 
-        [Fact(Skip = "Fails on Linux/macOS. Needs investigation.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachine()
         {
             TestRunner.RunTestScript("Test-VirtualMachine $null");
         }
 
-        [Fact(Skip = "Fails on Linux/macOS. Needs investigation.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachine_Managed()
         {
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-VirtualMachineTags");
         }
 
-        [Fact(Skip = "Fails on Linux/macOS. Needs investigation.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVMImageCmdletOutputFormat()
         {
@@ -185,12 +185,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-VirtualMachineWithEmptyAuc");
         }
 
-#if NETSTANDARD
         [Fact(Skip = "Unknown issue/update, needs re-recorded")]
         [Trait(Category.RunType, Category.DesktopOnly)]
-#else
-        [Fact(Skip = "CRP needs to re-record the test")]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithBYOL()
         {
@@ -258,6 +254,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineReimage()
         {
             TestRunner.RunTestScript("Test-VirtualMachineReimage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineStop()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineStop");
         }
     }
 }
