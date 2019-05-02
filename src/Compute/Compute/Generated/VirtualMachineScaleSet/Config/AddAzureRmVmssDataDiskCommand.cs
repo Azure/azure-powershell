@@ -19,14 +19,15 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -109,13 +110,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vDataDisks = new VirtualMachineScaleSetDataDisk();
 
-            vDataDisks.Name = this.MyInvocation.BoundParameters.ContainsKey("Name") ? this.Name : null;
+            vDataDisks.Name = this.IsParameterBound(c => c.Name) ? this.Name : null;
             vDataDisks.Lun = this.Lun;
-            vDataDisks.Caching = this.MyInvocation.BoundParameters.ContainsKey("Caching") ? this.Caching : (CachingTypes?)null;
+            vDataDisks.Caching = this.IsParameterBound(c => c.Caching) ? this.Caching : (CachingTypes?)null;
             vDataDisks.WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent;
-            vDataDisks.CreateOption = this.MyInvocation.BoundParameters.ContainsKey("CreateOption") ? this.CreateOption : null;
-            vDataDisks.DiskSizeGB = this.MyInvocation.BoundParameters.ContainsKey("DiskSizeGB") ? this.DiskSizeGB : (int?)null;
-            if (this.MyInvocation.BoundParameters.ContainsKey("StorageAccountType"))
+            vDataDisks.CreateOption = this.IsParameterBound(c => c.CreateOption) ? this.CreateOption : null;
+            vDataDisks.DiskSizeGB = this.IsParameterBound(c => c.DiskSizeGB) ? this.DiskSizeGB : (int?)null;
+            if (this.IsParameterBound(c => c.StorageAccountType))
             {
                 // ManagedDisk
                 vDataDisks.ManagedDisk = new VirtualMachineScaleSetManagedDiskParameters();
