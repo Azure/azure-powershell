@@ -17,7 +17,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
-    using Microsoft.WindowsAzure.Storage.File;
+    using Microsoft.Azure.Storage.File;
     using System;
     using System.Globalization;
     using System.Management.Automation;

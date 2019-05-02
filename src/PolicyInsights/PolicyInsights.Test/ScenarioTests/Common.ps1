@@ -18,7 +18,7 @@ Gets test management group name
 #>
 function Get-TestManagementGroupName
 {
-   "azgovtest4"
+   "azgovtest5"
 }
 
 <#
@@ -27,7 +27,7 @@ Gets test resource group group name
 #>
 function Get-TestResourceGroupName
 {
-   "bulenttestrg"
+   "jilimpolicytest2"
 }
 
 <#
@@ -45,7 +45,7 @@ Gets test policy set definition name
 #>
 function Get-TestPolicySetDefinitionName
 {
-   "12b58873-e0f8-4b95-936c-86cbe7c9d697"
+   "875cf75e-49c3-47f8-ab8d-89ba3d2311a0"
 }
 
 <#
@@ -63,7 +63,7 @@ Gets test policy assignment name
 #>
 function Get-TestPolicyAssignmentName
 {
-   "45ab2ab7898d45ebb3087573"
+   "f54e881207924ca8b2e39f6a"
 }
 
 <#
@@ -90,7 +90,7 @@ Gets test resource group group name for resource group level policy assignment (
 #>
 function Get-TestResourceGroupNameForPolicyAssignmentStates
 {
-   "bulenttestrg"
+   "jilimpolicytest2"
 }
 
 <#
@@ -99,7 +99,7 @@ Gets test policy assignment name (resource group level) (for state tests)
 #>
 function Get-TestPolicyAssignmentNameResourceGroupLevelStates
 {
-   "f4d1645d-9180-4968-99df-17234d0f7019"
+   "e9860612d8ec4a469f59af06"
 }
 
 <#
@@ -108,7 +108,7 @@ Gets test query interval start
 #>
 function Get-TestQueryIntervalStart
 {
-   "2018-03-31 00:00:00Z"
+   "2019-01-20 00:00:00Z"
 }
 
 <#
@@ -117,7 +117,7 @@ Gets test query interval end
 #>
 function Get-TestQueryIntervalEnd
 {
-   "2018-05-30 00:00:00Z"
+   "2019-04-15 00:00:00Z"
 }
 
 <#
@@ -181,13 +181,16 @@ Validates a list of policy states
 #>
 function Validate-PolicyStates
 {
-   param([System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState]]]$policyStates, [int]$count)
+   param(
+      [System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState]]]$policyStates,
+	  [int]$count,
+	  [switch]$expandPolicyEvaluationDetails = $false)
 
    Assert-True { $count -ge $policyStates.Count }
    Assert-True { $policyStates.Count -gt 0 }
    Foreach($policyState in $policyStates)
    {
-      Validate-PolicyState $policyState
+      Validate-PolicyState $policyState -expandPolicyEvaluationDetails:$expandPolicyEvaluationDetails
    }
 }
 
@@ -197,7 +200,9 @@ Validates a policy state
 #>
 function Validate-PolicyState
 {
-   param([Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState]$policyState)
+   param(
+      [Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState]$policyState,
+	  [switch]$expandPolicyEvaluationDetails = $false)
 
    Assert-NotNull $policyState
 
@@ -208,6 +213,16 @@ function Validate-PolicyState
    Assert-NotNull $policyState.IsCompliant
    Assert-NotNullOrEmpty $policyState.SubscriptionId
    Assert-NotNullOrEmpty $policyState.PolicyDefinitionAction
+   Assert-NotNullOrEmpty $policyState.ComplianceState
+
+   if ($expandPolicyEvaluationDetails -and $policyState.ComplianceState -eq "NonCompliant")
+   {
+      Assert-NotNull $policyState.PolicyEvaluationDetails
+   }
+   else
+   {
+      Assert-Null $policyState.PolicyEvaluationDetails
+   }
 }
 
 <#
@@ -225,7 +240,6 @@ function Validate-PolicyStateSummary
    Assert-NotNull $policyStateSummary.Results.NonCompliantPolicies
 
    Assert-NotNull $policyStateSummary.PolicyAssignments
-   Assert-True { $policyStateSummary.PolicyAssignments.Count -le $policyStateSummary.Results.NonCompliantPolicies } 
    Assert-True { $policyStateSummary.PolicyAssignments.Count -gt 0 } 
 
    Foreach($policyAssignmentSummary in $policyStateSummary.PolicyAssignments)
@@ -239,25 +253,22 @@ function Validate-PolicyStateSummary
       Assert-NotNull $policyAssignmentSummary.Results.NonCompliantPolicies
 
       Assert-NotNull $policyAssignmentSummary.PolicyDefinitions
-      Assert-True { $policyAssignmentSummary.PolicyDefinitions.Count -eq $policyAssignmentSummary.Results.NonCompliantPolicies }
-      Assert-True { $policyAssignmentSummary.PolicyDefinitions.Count -gt 0 }
+      if ($policyAssignmentSummary.PolicyDefinitions.Count -gt 0)
+	  {
+		  Assert-True { ($policyAssignmentSummary.PolicyDefinitions | Where-Object { $_.Results.NonCompliantResources -gt 0 }).Count -eq $policyAssignmentSummary.Results.NonCompliantPolicies }
 
-      if ($policyAssignmentSummary.Results.NonCompliantPolicies -gt 1)
-      {
-         Assert-NotNullOrEmpty $policyAssignmentSummary.PolicySetDefinitionId
-      }
+		  Foreach($policyDefinitionSummary in $policyAssignmentSummary.PolicyDefinitions)
+		  {
+			 Assert-NotNull $policyDefinitionSummary
 
-      Foreach($policyDefinitionSummary in $policyAssignmentSummary.PolicyDefinitions)
-      {
-         Assert-NotNull $policyDefinitionSummary
+			 Assert-NotNullOrEmpty $policyDefinitionSummary.PolicyDefinitionId
+			 Assert-NotNullOrEmpty $policyDefinitionSummary.Effect
 
-         Assert-NotNullOrEmpty $policyDefinitionSummary.PolicyDefinitionId
-         Assert-NotNullOrEmpty $policyDefinitionSummary.Effect
-
-         Assert-NotNull $policyDefinitionSummary.Results
-         Assert-NotNull $policyDefinitionSummary.Results.NonCompliantResources
-         Assert-Null $policyDefinitionSummary.Results.NonCompliantPolicies
-      }
+			 Assert-NotNull $policyDefinitionSummary.Results
+			 Assert-NotNull $policyDefinitionSummary.Results.NonCompliantResources
+			 Assert-Null $policyDefinitionSummary.Results.NonCompliantPolicies
+		  }
+	  }
    }
 }
 

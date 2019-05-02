@@ -486,6 +486,7 @@ namespace Microsoft.Azure.Commands.Compute
                         Tags = this.Tag != null ? this.Tag.ToDictionary() : this.VM.Tags,
                         Identity = ComputeAutoMapperProfile.Mapper.Map<VirtualMachineIdentity>(this.VM.Identity),
                         Zones = this.Zone ?? this.VM.Zones,
+                        ProximityPlacementGroup = this.VM.ProximityPlacementGroup
                     };
 
                     Dictionary<string, List<string>> auxAuthHeader = null;

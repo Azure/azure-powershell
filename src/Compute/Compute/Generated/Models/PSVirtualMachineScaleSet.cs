@@ -46,10 +46,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public VirtualMachineScaleSetVMProfile VirtualMachineProfile { get; set; }
         public string ProvisioningState { get; set; }
         public bool? Overprovision { get; set; }
+        public bool? DoNotRunExtensionsOnOverprovisionedVMs { get; set; }
         public string UniqueId { get; set; }
         public bool? SinglePlacementGroup { get; set; }
         public bool? ZoneBalance { get; set; }
         public int? PlatformFaultDomainCount { get; set; }
+        public SubResource ProximityPlacementGroup { get; set; }
+        public AdditionalCapabilities AdditionalCapabilities { get; set; }
         public VirtualMachineScaleSetIdentity Identity { get; set; }
         public System.Collections.Generic.IList<string> Zones { get; set; }
         public string Id { get; set; }
