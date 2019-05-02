@@ -19,13 +19,14 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -122,15 +123,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vExtensions = new VirtualMachineScaleSetExtension();
 
-            vExtensions.Name = this.MyInvocation.BoundParameters.ContainsKey("Name") ? this.Name : null;
-            vExtensions.ForceUpdateTag = this.MyInvocation.BoundParameters.ContainsKey("ForceUpdateTag") ? this.ForceUpdateTag : null;
-            vExtensions.Publisher = this.MyInvocation.BoundParameters.ContainsKey("Publisher") ? this.Publisher : null;
-            vExtensions.Type = this.MyInvocation.BoundParameters.ContainsKey("Type") ? this.Type : null;
-            vExtensions.TypeHandlerVersion = this.MyInvocation.BoundParameters.ContainsKey("TypeHandlerVersion") ? this.TypeHandlerVersion : null;
-            vExtensions.AutoUpgradeMinorVersion = this.MyInvocation.BoundParameters.ContainsKey("AutoUpgradeMinorVersion") ? this.AutoUpgradeMinorVersion : (bool?)null;
-            vExtensions.Settings = this.MyInvocation.BoundParameters.ContainsKey("Setting") ? this.Setting : null;
-            vExtensions.ProtectedSettings = this.MyInvocation.BoundParameters.ContainsKey("ProtectedSetting") ? this.ProtectedSetting : null;
-            vExtensions.ProvisionAfterExtensions = this.MyInvocation.BoundParameters.ContainsKey("ProvisionAfterExtension") ? this.ProvisionAfterExtension : null;
+            vExtensions.Name = this.IsParameterBound(c => c.Name) ? this.Name : null;
+            vExtensions.ForceUpdateTag = this.IsParameterBound(c => c.ForceUpdateTag) ? this.ForceUpdateTag : null;
+            vExtensions.Publisher = this.IsParameterBound(c => c.Publisher) ? this.Publisher : null;
+            vExtensions.Type = this.IsParameterBound(c => c.Type) ? this.Type : null;
+            vExtensions.TypeHandlerVersion = this.IsParameterBound(c => c.TypeHandlerVersion) ? this.TypeHandlerVersion : null;
+            vExtensions.AutoUpgradeMinorVersion = this.IsParameterBound(c => c.AutoUpgradeMinorVersion) ? this.AutoUpgradeMinorVersion : (bool?)null;
+            vExtensions.Settings = this.IsParameterBound(c => c.Setting) ? this.Setting : null;
+            vExtensions.ProtectedSettings = this.IsParameterBound(c => c.ProtectedSetting) ? this.ProtectedSetting : null;
+            vExtensions.ProvisionAfterExtensions = this.IsParameterBound(c => c.ProvisionAfterExtension) ? this.ProvisionAfterExtension : null;
             this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions.Add(vExtensions);
             WriteObject(this.VirtualMachineScaleSet);
         }
