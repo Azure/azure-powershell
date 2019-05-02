@@ -317,7 +317,7 @@ The namespace name
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Namespace
 
 Required: True
 Position: Named
@@ -425,7 +425,7 @@ The topic name.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Topic
 
 Required: True
 Position: Named

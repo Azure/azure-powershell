@@ -14,14 +14,15 @@ Deletes an Alias(Disaster Recovery configuration)
 
 ### DeleteSubscriptionIdViaHost (Default)
 ```
-Remove-AzServiceBusDisasterRecoveryConfig -Alias <String> -NamespaceName <String> -ResourceGroupName <String>
- [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzServiceBusDisasterRecoveryConfig -AliasName <String> -NamespaceName <String>
+ -ResourceGroupName <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Delete
 ```
-Remove-AzServiceBusDisasterRecoveryConfig -Alias <String> -NamespaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzServiceBusDisasterRecoveryConfig -AliasName <String> -NamespaceName <String>
+ -ResourceGroupName <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,13 +39,13 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -Alias
+### -AliasName
 The Disaster Recovery configuration name
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Alias
 
 Required: True
 Position: Named
@@ -74,7 +75,7 @@ The namespace name
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Namespace
 
 Required: True
 Position: Named

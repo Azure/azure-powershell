@@ -1,32 +1,46 @@
 ---
 external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebustopickey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebuskey
 schema: 2.0.0
 ---
 
-# Get-AzServiceBusTopicKey
+# Get-AzServiceBusKey
 
 ## SYNOPSIS
-Gets the primary and secondary connection strings for the topic.
+Gets the primary and secondary connection strings for the namespace.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
+### Namespace (Default)
 ```
-Get-AzServiceBusTopicKey -AuthorizationRuleName <String> -NamespaceName <String> -ResourceGroupName <String>
- -TopicName <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzServiceBusKey -AuthorizationRuleName <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### List
+### DisasterRecoveryConfig
 ```
-Get-AzServiceBusTopicKey -AuthorizationRuleName <String> -NamespaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -TopicName <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+Get-AzServiceBusKey -AliasName <String> -AuthorizationRuleName <String> -NamespaceName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### Queue
+```
+Get-AzServiceBusKey -AuthorizationRuleName <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -QueueName <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### Topic
+```
+Get-AzServiceBusKey -AuthorizationRuleName <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -TopicName <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the primary and secondary connection strings for the topic.
+Gets the primary and secondary connection strings for the namespace.
 
 ## EXAMPLES
 
@@ -39,13 +53,28 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
+### -AliasName
+The Disaster Recovery configuration name
+
+```yaml
+Type: System.String
+Parameter Sets: DisasterRecoveryConfig
+Aliases: Alias
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AuthorizationRuleName
 The authorization rule name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: AuthorizationRule, Name
 
 Required: True
 Position: Named
@@ -75,7 +104,22 @@ The namespace name
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Namespace
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -QueueName
+The queue name.
+
+```yaml
+Type: System.String
+Parameter Sets: Queue
+Aliases: Queue
 
 Required: True
 Position: Named
@@ -105,10 +149,10 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -120,8 +164,8 @@ The topic name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: Topic
+Aliases: Topic
 
 Required: True
 Position: Named
@@ -173,5 +217,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebustopickey](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebustopickey)
+[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebuskey](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebuskey)
 

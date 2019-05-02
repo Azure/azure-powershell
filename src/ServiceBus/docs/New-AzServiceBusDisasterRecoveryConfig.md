@@ -14,28 +14,28 @@ Creates or updates a new Alias(Disaster Recovery configuration)
 
 ### CreateSubscriptionIdViaHost (Default)
 ```
-New-AzServiceBusDisasterRecoveryConfig -Alias <String> -NamespaceName <String> -ResourceGroupName <String>
+New-AzServiceBusDisasterRecoveryConfig -AliasName <String> -NamespaceName <String> -ResourceGroupName <String>
  [-Parameter <IArmDisasterRecovery>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
-New-AzServiceBusDisasterRecoveryConfig -Alias <String> -NamespaceName <String> -ResourceGroupName <String>
+New-AzServiceBusDisasterRecoveryConfig -AliasName <String> -NamespaceName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-PassThru] [-AlternateName <String>] [-PartnerNamespace <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzServiceBusDisasterRecoveryConfig -Alias <String> -NamespaceName <String> -ResourceGroupName <String>
+New-AzServiceBusDisasterRecoveryConfig -AliasName <String> -NamespaceName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-Parameter <IArmDisasterRecovery>] [-PassThru] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateSubscriptionIdViaHostExpanded
 ```
-New-AzServiceBusDisasterRecoveryConfig -Alias <String> -NamespaceName <String> -ResourceGroupName <String>
+New-AzServiceBusDisasterRecoveryConfig -AliasName <String> -NamespaceName <String> -ResourceGroupName <String>
  [-PassThru] [-AlternateName <String>] [-PartnerNamespace <String>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -54,13 +54,13 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -Alias
+### -AliasName
 The Disaster Recovery configuration name
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Alias
 
 Required: True
 Position: Named
@@ -105,7 +105,7 @@ The namespace name
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Namespace
 
 Required: True
 Position: Named

@@ -67,7 +67,7 @@ The authorization rule name.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: AuthorizationRuleName
+Aliases: AuthorizationRule, AuthorizationRuleName
 
 Required: True
 Position: Named
@@ -82,7 +82,7 @@ The namespace name
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Namespace
 
 Required: True
 Position: Named
@@ -112,7 +112,7 @@ The queue name.
 ```yaml
 Type: System.String
 Parameter Sets: Queue
-Aliases:
+Aliases: Queue
 
 Required: True
 Position: Named
@@ -158,7 +158,7 @@ The topic name.
 ```yaml
 Type: System.String
 Parameter Sets: Topic
-Aliases:
+Aliases: Topic
 
 Required: True
 Position: Named

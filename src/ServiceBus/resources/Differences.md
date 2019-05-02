@@ -1,108 +1,72 @@
 ## Incorrect Cmdlets
 
-- Get-AzServiceBusAuthorizationRule
-    - Namespace
-    - Queue
-    - Topic
 - Get-AzServiceBusQueue
-    - Namespace
     - MaxCount
 - Get-AzServiceBusRule
-    - Namespace
-    - Topic
-    - Subscription
     - MaxCount
 - Get-AzServiceBusSubscription
-    - Namespace
-    - Topic
     - MaxCount
 - Get-AzServiceBusTopic
-    - Namespace
     - MaxCount
 - New-AzServiceBusAuthorizationRule
-    - Namespace
-    - Queue
-    - Topic
     - Rights
+- New-AzServiceBusKey
+    - RegenerateKey
+    - KeyValue
 - New-AzServiceBusQueue
-    - Namespace
     - EnableBatchedOperations
     - MaxSizeInMegabytes
     - MessageCount
     - SizeInBytes
 - New-AzServiceBusRule
-    - Namespace
-    - Topic
-    - Subscription
     - SqlExpression
     - RequiresPreprocessing
 - New-AzServiceBusSubscription
-    - Namespace
-    - Topic
     - DeadLetteringOnFilterEvaluationExceptions
     - EnableBatchedOperations
 - New-AzServiceBusTopic
-    - Namespace
     - EnableBatchedOperations
     - MaxSizeInMegabytes
     - SizeInBytes
 - Remove-AzServiceBusAuthorizationRule
-    - Namespace
-    - Queue
-    - Topic
     - InputObject
     - Force
 - Remove-AzServiceBusNamespace
     - InputObject
     - ResourceId
 - Remove-AzServiceBusQueue
-    - Namespace
     - InputObject
     - ResourceId
     - AsJob
 - Remove-AzServiceBusRule
-    - Namespace
-    - Topic
-    - Subscription
     - InputObject
     - ResourceId
     - AsJob
     - Force
 - Remove-AzServiceBusSubscription
-    - Namespace
-    - Topic
     - InputObject
     - ResourceId
     - AsJob
 - Remove-AzServiceBusTopic
-    - Namespace
     - InputObject
     - ResourceId
     - AsJob
 - Set-AzServiceBusAuthorizationRule
-    - Namespace
-    - Queue
-    - Topic
     - InputObject
     - Rights
 - Set-AzServiceBusQueue
-    - Namespace
     - InputObject
 - Set-AzServiceBusRule
-    - Namespace
-    - Topic
-    - Subscription
     - InputObject
 - Set-AzServiceBusSubscription
-    - Namespace
-    - Topic
     - InputObject
 - Set-AzServiceBusTopic
-    - Namespace
     - InputObject
 
 ## Correct Cmdlets
 
+- Get-AzServiceBusAuthorizationRule
+- Get-AzServiceBusKey
 - Get-AzServiceBusNamespace
 - New-AzServiceBusNamespace
 - Set-AzServiceBusNamespace
@@ -111,17 +75,13 @@
 
 - Complete-AzServiceBusMigrationConfigMigration
 - Get-AzServiceBusDisasterRecoveryConfig
-- Get-AzServiceBusDisasterRecoveryConfigKey
 - Get-AzServiceBusEventHub
 - Get-AzServiceBusMigrationConfig
 - Get-AzServiceBusNamespaceIPFilterRule
-- Get-AzServiceBusNamespaceKey
 - Get-AzServiceBusNamespaceNetworkRuleSet
 - Get-AzServiceBusNamespaceVirtualNetworkRule
 - Get-AzServiceBusPremiumMessagingRegion
-- Get-AzServiceBusQueueKey
 - Get-AzServiceBusRegion
-- Get-AzServiceBusTopicKey
 - Invoke-AzServiceBusBreakDisasterRecoveryConfigPairing
 - Invoke-AzServiceBusFailDisasterRecoveryConfigOver
 - Invoke-AzServiceBusRevertMigrationConfig
@@ -129,11 +89,8 @@
 - New-AzServiceBusDisasterRecoveryConfig
 - New-AzServiceBusMigrationConfigAndStartMigration
 - New-AzServiceBusNamespaceIPFilterRule
-- New-AzServiceBusNamespaceKey
 - New-AzServiceBusNamespaceNetworkRuleSet
 - New-AzServiceBusNamespaceVirtualNetworkRule
-- New-AzServiceBusQueueKey
-- New-AzServiceBusTopicKey
 - Remove-AzServiceBusDisasterRecoveryConfig
 - Remove-AzServiceBusMigrationConfig
 - Remove-AzServiceBusNamespaceIPFilterRule
@@ -150,11 +107,9 @@
 
 - Complete-AzServiceBusMigration
 - Get-AzServiceBusGeoDRConfiguration
-- Get-AzServiceBusKey
 - Get-AzServiceBusMigration
 - Get-AzServiceBusOperation
 - New-AzServiceBusGeoDRConfiguration
-- New-AzServiceBusKey
 - Remove-AzServiceBusGeoDRConfiguration
 - Remove-AzServiceBusMigration
 - Set-AzServiceBusGeoDRConfigurationBreakPair

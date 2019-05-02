@@ -21,11 +21,11 @@ Gets an authorization rule for a namespace by rule name.
 ### [Get-AzServiceBusDisasterRecoveryConfig](Get-AzServiceBusDisasterRecoveryConfig.md)
 Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
 
-### [Get-AzServiceBusDisasterRecoveryConfigKey](Get-AzServiceBusDisasterRecoveryConfigKey.md)
-Gets the primary and secondary connection strings for the namespace.
-
 ### [Get-AzServiceBusEventHub](Get-AzServiceBusEventHub.md)
 Gets all the Event Hubs in a service bus Namespace.
+
+### [Get-AzServiceBusKey](Get-AzServiceBusKey.md)
+Gets the primary and secondary connection strings for the namespace.
 
 ### [Get-AzServiceBusMigrationConfig](Get-AzServiceBusMigrationConfig.md)
 Retrieves Migration Config
@@ -35,9 +35,6 @@ Gets a description for the specified namespace.
 
 ### [Get-AzServiceBusNamespaceIPFilterRule](Get-AzServiceBusNamespaceIPFilterRule.md)
 Gets an IpFilterRule for a Namespace by rule name.
-
-### [Get-AzServiceBusNamespaceKey](Get-AzServiceBusNamespaceKey.md)
-Gets the primary and secondary connection strings for the namespace.
 
 ### [Get-AzServiceBusNamespaceNetworkRuleSet](Get-AzServiceBusNamespaceNetworkRuleSet.md)
 Gets NetworkRuleSet for a Namespace.
@@ -51,9 +48,6 @@ Gets the available premium messaging regions for servicebus
 ### [Get-AzServiceBusQueue](Get-AzServiceBusQueue.md)
 Returns a description for the specified queue.
 
-### [Get-AzServiceBusQueueKey](Get-AzServiceBusQueueKey.md)
-Primary and secondary connection strings to the queue.
-
 ### [Get-AzServiceBusRegion](Get-AzServiceBusRegion.md)
 Gets the available Regions for a given sku
 
@@ -65,9 +59,6 @@ Returns a subscription description for the specified topic.
 
 ### [Get-AzServiceBusTopic](Get-AzServiceBusTopic.md)
 Returns a description for the specified topic.
-
-### [Get-AzServiceBusTopicKey](Get-AzServiceBusTopicKey.md)
-Gets the primary and secondary connection strings for the topic.
 
 ### [Invoke-AzServiceBusBreakDisasterRecoveryConfigPairing](Invoke-AzServiceBusBreakDisasterRecoveryConfigPairing.md)
 This operation disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
@@ -87,6 +78,9 @@ Creates or updates an authorization rule for a namespace.
 ### [New-AzServiceBusDisasterRecoveryConfig](New-AzServiceBusDisasterRecoveryConfig.md)
 Creates or updates a new Alias(Disaster Recovery configuration)
 
+### [New-AzServiceBusKey](New-AzServiceBusKey.md)
+Regenerates the primary or secondary connection strings for the namespace.
+
 ### [New-AzServiceBusMigrationConfigAndStartMigration](New-AzServiceBusMigrationConfigAndStartMigration.md)
 Creates Migration configuration and starts migration of entities from Standard to Premium namespace
 
@@ -98,9 +92,6 @@ This operation is idempotent.
 ### [New-AzServiceBusNamespaceIPFilterRule](New-AzServiceBusNamespaceIPFilterRule.md)
 Creates or updates an IpFilterRule for a Namespace.
 
-### [New-AzServiceBusNamespaceKey](New-AzServiceBusNamespaceKey.md)
-Regenerates the primary or secondary connection strings for the namespace.
-
 ### [New-AzServiceBusNamespaceNetworkRuleSet](New-AzServiceBusNamespaceNetworkRuleSet.md)
 Gets NetworkRuleSet for a Namespace.
 
@@ -111,9 +102,6 @@ Creates or updates an VirtualNetworkRule for a Namespace.
 Creates or updates a Service Bus queue.
 This operation is idempotent.
 
-### [New-AzServiceBusQueueKey](New-AzServiceBusQueueKey.md)
-Regenerates the primary or secondary connection strings to the queue.
-
 ### [New-AzServiceBusRule](New-AzServiceBusRule.md)
 Creates a new rule and updates an existing rule
 
@@ -122,9 +110,6 @@ Creates a topic subscription.
 
 ### [New-AzServiceBusTopic](New-AzServiceBusTopic.md)
 Creates a topic in the specified namespace.
-
-### [New-AzServiceBusTopicKey](New-AzServiceBusTopicKey.md)
-Regenerates primary or secondary connection strings for the topic.
 
 ### [Remove-AzServiceBusAuthorizationRule](Remove-AzServiceBusAuthorizationRule.md)
 Deletes a namespace authorization rule.

@@ -15,21 +15,21 @@ Creates or updates an authorization rule for a namespace.
 ### Namespace (Default)
 ```
 New-AzServiceBusAuthorizationRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AccessRight <AccessRights[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] -AccessRight <AccessRights[]> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### Queue
 ```
 New-AzServiceBusAuthorizationRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -QueueName <String> [-AccessRight <AccessRights[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String>] -QueueName <String> -AccessRight <AccessRights[]> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Topic
 ```
 New-AzServiceBusAuthorizationRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -TopicName <String> [-AccessRight <AccessRights[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String>] -TopicName <String> -AccessRight <AccessRights[]> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -55,7 +55,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.AccessRights[]
 Parameter Sets: (All)
 Aliases: Right
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -83,7 +83,7 @@ The authorization rule name.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: AuthorizationRuleName
+Aliases: AuthorizationRule, AuthorizationRuleName
 
 Required: True
 Position: Named
@@ -98,7 +98,7 @@ The namespace name
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Namespace
 
 Required: True
 Position: Named
@@ -113,7 +113,7 @@ The queue name.
 ```yaml
 Type: System.String
 Parameter Sets: Queue
-Aliases:
+Aliases: Queue
 
 Required: True
 Position: Named
@@ -159,7 +159,7 @@ The topic name.
 ```yaml
 Type: System.String
 Parameter Sets: Topic
-Aliases:
+Aliases: Topic
 
 Required: True
 Position: Named

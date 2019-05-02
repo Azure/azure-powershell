@@ -20,13 +20,13 @@ Get-AzServiceBusDisasterRecoveryConfig -NamespaceName <String> -ResourceGroupNam
 
 ### GetSubscriptionIdViaHost
 ```
-Get-AzServiceBusDisasterRecoveryConfig -Alias <String> -NamespaceName <String> -ResourceGroupName <String>
+Get-AzServiceBusDisasterRecoveryConfig -AliasName <String> -NamespaceName <String> -ResourceGroupName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzServiceBusDisasterRecoveryConfig -Alias <String> -NamespaceName <String> -ResourceGroupName <String>
+Get-AzServiceBusDisasterRecoveryConfig -AliasName <String> -NamespaceName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -50,13 +50,13 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -Alias
+### -AliasName
 The Disaster Recovery configuration name
 
 ```yaml
 Type: System.String
 Parameter Sets: GetSubscriptionIdViaHost, Get
-Aliases:
+Aliases: Alias
 
 Required: True
 Position: Named
@@ -86,7 +86,7 @@ The namespace name
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Namespace
 
 Required: True
 Position: Named

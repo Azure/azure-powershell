@@ -1,47 +1,40 @@
 ---
 external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebustopickey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebuskey
 schema: 2.0.0
 ---
 
-# New-AzServiceBusTopicKey
+# New-AzServiceBusKey
 
 ## SYNOPSIS
-Regenerates primary or secondary connection strings for the topic.
+Regenerates the primary or secondary connection strings for the namespace.
 
 ## SYNTAX
 
-### RegenerateSubscriptionIdViaHost (Default)
+### Namespace (Default)
 ```
-New-AzServiceBusTopicKey -AuthorizationRuleName <String> -NamespaceName <String> -ResourceGroupName <String>
- -TopicName <String> [-Parameter <IRegenerateAccessKeyParameters>] [-DefaultProfile <PSObject>] [-WhatIf]
+New-AzServiceBusKey -AuthorizationRuleName <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Key <String>] -KeyType <KeyType> [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### RegenerateExpanded
+### Queue
 ```
-New-AzServiceBusTopicKey -AuthorizationRuleName <String> -NamespaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -TopicName <String> [-Key <String>] -KeyType <KeyType> [-DefaultProfile <PSObject>]
+New-AzServiceBusKey -AuthorizationRuleName <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -QueueName <String> [-Key <String>] -KeyType <KeyType> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Regenerate
+### Topic
 ```
-New-AzServiceBusTopicKey -AuthorizationRuleName <String> -NamespaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -TopicName <String> [-Parameter <IRegenerateAccessKeyParameters>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RegenerateSubscriptionIdViaHostExpanded
-```
-New-AzServiceBusTopicKey -AuthorizationRuleName <String> -NamespaceName <String> -ResourceGroupName <String>
- -TopicName <String> [-Key <String>] -KeyType <KeyType> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzServiceBusKey -AuthorizationRuleName <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -TopicName <String> [-Key <String>] -KeyType <KeyType> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Regenerates primary or secondary connection strings for the topic.
+Regenerates the primary or secondary connection strings for the namespace.
 
 ## EXAMPLES
 
@@ -60,7 +53,7 @@ The authorization rule name.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: AuthorizationRule, Name
 
 Required: True
 Position: Named
@@ -89,7 +82,7 @@ Optional, if the key value provided, is reset for KeyType value or autogenerate 
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded, RegenerateSubscriptionIdViaHostExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -104,7 +97,7 @@ The access key to regenerate.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeyType
-Parameter Sets: RegenerateExpanded, RegenerateSubscriptionIdViaHostExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -120,7 +113,7 @@ The namespace name
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Namespace
 
 Required: True
 Position: Named
@@ -129,18 +122,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Parameters supplied to the Regenerate Authorization Rule operation, specifies which key needs to be reset.
+### -QueueName
+The queue name.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.IRegenerateAccessKeyParameters
-Parameter Sets: RegenerateSubscriptionIdViaHost, Regenerate
-Aliases:
+Type: System.String
+Parameter Sets: Queue
+Aliases: Queue
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -165,10 +158,10 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded, Regenerate
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -180,8 +173,8 @@ The topic name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: Topic
+Aliases: Topic
 
 Required: True
 Position: Named
@@ -233,5 +226,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebustopickey](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebustopickey)
+[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebuskey](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebuskey)
 
