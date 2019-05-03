@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed incorrect parameter names in help examples
 
 ## Version 1.2.0
 * New cmdlets for SQR API (Scheduled Query Rule)  
