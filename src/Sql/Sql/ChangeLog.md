@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.10.0
 * Support for Serverless specific parameters in New-AzSqlDatabase and Set-AzSqlDatabase
 
 ## Version 1.9.0
