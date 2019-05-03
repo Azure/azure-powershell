@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Blueprint", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.CreateBlueprintBySubscription), OutputType(typeof(PSBlueprint))]
 
-    class SetAzureRMBlueprint : BlueprintCmdletBase
+    public class SetAzureRMBlueprint : BlueprintCmdletBase
     {
         #region Parameters
         [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintBySubscription, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
@@ -53,11 +53,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintByManagementGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
         [ValidateNotNullOrEmpty]
         public string ManagementGroupId { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintBySubscription, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintByManagementGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public string Description { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintBySubscription, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
         [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintByManagementGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
@@ -139,7 +134,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
             if (blueprint == null)
             {
-                throw new Exception(string.Format(Resources.AssignmentNotExist, name, scope));
+                throw new Exception(string.Format(Resources.BlueprintNotExist, name, scope));
             }
         }
     }

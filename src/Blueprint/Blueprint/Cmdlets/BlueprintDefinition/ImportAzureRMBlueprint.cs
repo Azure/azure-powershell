@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "File path to blueprint and ", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Path { get; set; }
+        public string InputPath { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Scope for the blueprint ", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -33,33 +33,28 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ManagementGroupId { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            string scope = Utils.GetScopeForSubscription(SubscriptionId ?? DefaultContext.Subscription.Id);
+            string scope = this.IsParameterBound(c => c.ManagementGroupId) 
+                ? Utils.GetScopeForManagementGroup(ManagementGroupId) 
+                : Utils.GetScopeForSubscription(SubscriptionId ?? DefaultContext.Subscription.Id);
 
-            if (this.IsParameterBound(c => c.ManagementGroupId))
-            {
-                scope = Utils.GetScopeForManagementGroup(ManagementGroupId);}
+            var resolvedPath = this.ResolveUserPath(InputPath);
+            ImportBlueprint(scope, resolvedPath);
+            ImportArtifacts(scope, resolvedPath);
 
+        }
 
-            var resolvedPath = this.ResolveUserPath(Path);
-            var blueprintPath = System.IO.Path.Combine(resolvedPath, "Blueprint");
-            if (!Directory.Exists(blueprintPath))
-            {
-                throw new DirectoryNotFoundException("Can't find Blueprint directory.");
-            }
-
-            DirectoryInfo directory = new DirectoryInfo(blueprintPath);
+        private void ImportBlueprint(string scope, string resolvedPath)
+        {
+            DirectoryInfo directory = new DirectoryInfo(resolvedPath);
             FileInfo[] files = directory.GetFiles("*.json");
-            int blueprintFileCounter = 0;
-        
-            foreach (var file in files)
-            {
-                if (File.Exists(file.FullName))
-                {
-                    blueprintFileCounter++;
-                }
-            }
+            var blueprintFileCounter = 0;
+
+            files.ForEach( file => { if (File.Exists(file.FullName)) blueprintFileCounter++; });
 
             if (blueprintFileCounter > 1)
             {
@@ -73,12 +68,24 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 var bpObject = JsonConvert.DeserializeObject<BlueprintModel>(File.ReadAllText(file.FullName),
                     DefaultJsonSettings.DeserializerSettings);
 
+                var blueprintExists = BlueprintClient.GetBlueprint(scope, BlueprintName) != null;
+
+                this.ConfirmAction(
+                    Force || !blueprintExists,
+                    $"This will overwrite the unpublished changes in the blueprint {BlueprintName} and its artifacts. Would you like to continue?",
+                    "Overwriting the unpublished blueprint and artifacts",
+                    BlueprintName,
+                    () => DeleteBlueprintArtifactsIfExist(scope, BlueprintName)
+                );
+
                 BlueprintClient.CreateOrUpdateBlueprint(scope,
                     BlueprintName, bpObject);
             }
+        }
 
-
-            // if everything is right to start import do so:
+        private void ImportArtifacts(string scope, string resolvedPath)
+        {
+            // if everything is right to start import, do so:
             var artifactsPath = System.IO.Path.Combine(resolvedPath, "Artifacts");
             if (!Directory.Exists(artifactsPath))
             {
@@ -95,7 +102,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                     try
                     {
                         //To-Do: why the artifact name doesn't get deserialized?
-                         artifactObject = JsonConvert.DeserializeObject<Artifact>(
+                        artifactObject = JsonConvert.DeserializeObject<Artifact>(
                             File.ReadAllText(ResolveUserPath(artifactFile.FullName)),
                             DefaultJsonSettings.DeserializerSettings);
                     }
@@ -109,6 +116,13 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
                 }
             }
+        }
+
+        private void DeleteBlueprintArtifactsIfExist(string scope, string blueprintName)
+        {
+            var artifactList = BlueprintClient.ListArtifacts(scope, blueprintName, null);
+
+            artifactList.ForEach(artifact => BlueprintClient.DeleteArtifact(scope, blueprintName, artifact.Name));
         }
     }
 }

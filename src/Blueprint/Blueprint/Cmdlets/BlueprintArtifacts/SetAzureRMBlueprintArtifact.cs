@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
     public class SetAzureRmBlueprintArtifact : BlueprintCmdletBase
     {
         #region Parameters
-        [Parameter(ParameterSetName = ParameterSetNames.CreateArtifactByInputFile, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        [Parameter(ParameterSetName = ParameterSetNames.CreateArtifactByInputFile, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
         [Parameter(ParameterSetName = ParameterSetNames.CreateTemplateArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
         [Parameter(ParameterSetName = ParameterSetNames.CreateRoleAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
         [Parameter(ParameterSetName = ParameterSetNames.CreatePolicyAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         [ValidateNotNullOrEmpty]
         public string PolicyDefinitionId { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.CreatePolicyAssignmentArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        [Parameter(ParameterSetName = ParameterSetNames.CreatePolicyAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
         [ValidateNotNullOrEmpty]
         public Hashtable PolicyParameter { get; set; }
 
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         public string ResourceGroupName { get; set; }
 
         //Alternatively, user can provide a artifactFile
-        [Parameter(ParameterSetName = ParameterSetNames.CreateArtifactByInputFile, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        [Parameter(ParameterSetName = ParameterSetNames.CreateArtifactByInputFile, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
         [ValidateNotNullOrEmpty]
         public string ArtifactFile { get; set; }
 
@@ -114,12 +114,14 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             try
             {
                 var scope = Blueprint.Scope;
+                ThrowIfArtifactNotExist(scope, Blueprint.Name, Name);
 
                 switch (ParameterSetName)
                 {
                     case ParameterSetNames.CreateArtifactByInputFile:
                         var artifact = JsonConvert.DeserializeObject<Artifact>(File.ReadAllText(ResolveUserPath(ArtifactFile)),
                             DefaultJsonSettings.DeserializerSettings);
+
 
                         WriteObject(BlueprintClient.CreateArtifact(scope, Blueprint.Name, Name, artifact));
                         break;
@@ -241,7 +243,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
             if (artifact == null)
             {
-                throw new Exception(string.Format(Resources.AssignmentNotExist, artifactName, scope));
+                throw new Exception(string.Format(Resources.ArtifactNotExist, artifactName, blueprintName));
             }
         }
     }

@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         [ValidateNotNullOrEmpty]
         public PSBlueprintBase Blueprint { get; set; }
 
-        /*[Parameter(ParameterSetName = ExportToFileParamSet, Mandatory = true, HelpMessage = "Path to a file on disk where to export the Blueprint definition in JSON format.")]
+        [Parameter(ParameterSetName = ExportToFileParamSet, Mandatory = true, HelpMessage = "Path to a file on disk where to export the Blueprint definition in JSON format.")]
         [ValidateNotNullOrEmpty]
-        public string OutputPath { get; set; }*/
+        public string OutputPath { get; set; }
 
         [Parameter(ParameterSetName = ExportToFileParamSet, Mandatory = false, HelpMessage = "Version of the blueprint.")]
         [ValidateNotNullOrEmpty]
@@ -35,16 +35,20 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             // Get blueprint, serialize it and write it to disk
             string serializedDefinition = BlueprintClient.GetBlueprintDefinitionJsonFromObject(Blueprint, Version);
 
-            var currentPath = this.SessionState.Path.CurrentFileSystemLocation.Path;
-
-            var blueprintPath = Path.Combine(currentPath, "Blueprint");
-            if (!File.Exists(blueprintPath))
+            var blueprintPath = Path.Combine(OutputPath, Blueprint.Name);
+            if (!Directory.Exists(blueprintPath))
             {
-                System.IO.Directory.CreateDirectory(blueprintPath);
+               Directory.CreateDirectory(blueprintPath);
+            }
+            else
+            {
+                //clean up the directory
             }
 
-            var definitionFileFullPath = Path.Combine(blueprintPath, Blueprint.Name + ".json");
 
+            var definitionFileFullPath = Path.Combine(blueprintPath, $"Blueprint-{Blueprint.Name}.json");
+
+            // Technically this should never happen
             this.ConfirmAction(
                 this.Force || !File.Exists(definitionFileFullPath),
                 "Want to overwrite the output file " + $"{Blueprint.Name}.json?",
@@ -54,10 +58,14 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             );
 
             // Get artifacts from this blueprint, serialize it and write it to disk
-            var artifactsPath = Path.Combine(currentPath, "Artifacts");
-            if (!File.Exists(artifactsPath))
+            var artifactsPath = Path.Combine(blueprintPath, "Artifacts");
+            if (!Directory.Exists(artifactsPath))
             {
-                System.IO.Directory.CreateDirectory(artifactsPath);
+                Directory.CreateDirectory(artifactsPath);
+            }
+            else
+            {
+                //cleanup the directory
             }
 
             var artifacts = BlueprintClient.ListArtifacts(Blueprint.Scope, Blueprint.Name, Version);
@@ -76,7 +84,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                     () => File.WriteAllText(artifactFileFullPath, serializedArtifact)
                 );
             }
-
         }
     }
 }

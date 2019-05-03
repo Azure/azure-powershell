@@ -78,6 +78,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             return PSBlueprintAssignment.FromAssignment(result.Body, subscriptionId);
         }
 
+        public PSBlueprint DeleteBlueprint(string scope, string blueprintName)
+        {
+            return PSBlueprint.FromBlueprintModel(blueprintManagementClient.Blueprints.Delete(scope, blueprintName), scope);
+        }
+
         public PSPublishedBlueprint GetPublishedBlueprint(string scope, string blueprintName, string version)
         {
             var result = blueprintManagementClient.PublishedBlueprints.GetWithHttpMessagesAsync(scope, blueprintName, version).GetAwaiter().GetResult();
@@ -270,40 +275,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             return psArtifact;
         }
 
-        public PSWhoIsBlueprintContract GetBlueprintSpnObjectId(string scope, string assignmentName)
-        {
-            var result = blueprintManagementClient.Assignments.WhoIsBlueprint(scope, assignmentName);
-
-            return result != null ? new PSWhoIsBlueprintContract(result) : null;
-        }
-
-        // export
-        public string GetBlueprintDefinitionJsonFromObject(PSBlueprintBase blueprintObject, string version)
-        {
-            if (string.IsNullOrEmpty(version))
-            {
-                var blueprint = blueprintManagementClient.Blueprints.Get(blueprintObject.Scope, blueprintObject.Name);
-
-                return  JsonConvert.SerializeObject(blueprint, DefaultJsonSettings.SerializerSettings);
-            }
-
-            var publishedBlueprint = blueprintManagementClient.PublishedBlueprints.Get(blueprintObject.Scope, blueprintObject.Name, version);
-
-            return JsonConvert.SerializeObject(publishedBlueprint, DefaultJsonSettings.SerializerSettings);
-        }
-
-        // import
-        public PSBlueprint GetBlueprintObjectFromJsonDefinition(string jsonDefinition, string scope)
-        {
-            var blueprintDefinitionObj =  JsonConvert.DeserializeObject<BlueprintModel>(jsonDefinition,
-                DefaultJsonSettings.DeserializerSettings);
-
-            var blueprint = blueprintManagementClient.Blueprints.CreateOrUpdate(scope, blueprintDefinitionObj.DisplayName + " - Copy", blueprintDefinitionObj);
-
-            return PSBlueprint.FromBlueprintModel(blueprint, scope);
-
-        }
-
         public IEnumerable<PSArtifact> ListArtifacts(string scope, string blueprintName, string version)
         {
             var list = new List<PSArtifact>();
@@ -333,6 +304,64 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             return list;
         }
 
+        public PSArtifact DeleteArtifact(string scope, string blueprintName, string artifactName)
+        {
+            var artifact = blueprintManagementClient.Artifacts.Delete(scope, blueprintName, artifactName);
+
+            PSArtifact psArtifact;
+
+            switch (artifact)
+            {
+                case TemplateArtifact templateArtifact:
+                    psArtifact = PSTemplateArtifact.FromArtifactModel(artifact as TemplateArtifact, scope);
+                    break;
+                case PolicyAssignmentArtifact policyArtifact:
+                    psArtifact = PSPolicyAssignmentArtifact.FromArtifactModel(artifact as PolicyAssignmentArtifact, scope);
+                    break;
+                case RoleAssignmentArtifact roleAssignmentArtifact:
+                    psArtifact = PSRoleAssignmentArtifact.FromArtifactModel(artifact as RoleAssignmentArtifact, scope);
+                    break;
+                default:
+                    throw new NotSupportedException("To-Do:");
+            }
+
+            return psArtifact;
+
+        }
+
+        public PSWhoIsBlueprintContract GetBlueprintSpnObjectId(string scope, string assignmentName)
+        {
+            var result = blueprintManagementClient.Assignments.WhoIsBlueprint(scope, assignmentName);
+
+            return result != null ? new PSWhoIsBlueprintContract(result) : null;
+        }
+
+        // export
+        public string GetBlueprintDefinitionJsonFromObject(PSBlueprintBase blueprintObject, string version)
+        {
+            if (string.IsNullOrEmpty(version))
+            {
+                var blueprint = blueprintManagementClient.Blueprints.Get(blueprintObject.Scope, blueprintObject.Name);
+
+                return JsonConvert.SerializeObject(blueprint, DefaultJsonSettings.SerializerSettings);
+            }
+
+            var publishedBlueprint = blueprintManagementClient.PublishedBlueprints.Get(blueprintObject.Scope, blueprintObject.Name, version);
+
+            return JsonConvert.SerializeObject(publishedBlueprint, DefaultJsonSettings.SerializerSettings);
+        }
+
+        // import
+        public PSBlueprint GetBlueprintObjectFromJsonDefinition(string jsonDefinition, string scope)
+        {
+            var blueprintDefinitionObj = JsonConvert.DeserializeObject<BlueprintModel>(jsonDefinition,
+                DefaultJsonSettings.DeserializerSettings);
+
+            var blueprint = blueprintManagementClient.Blueprints.CreateOrUpdate(scope, blueprintDefinitionObj.DisplayName + " - Copy", blueprintDefinitionObj);
+
+            return PSBlueprint.FromBlueprintModel(blueprint, scope);
+
+        }
         public string GetBlueprintArtifactJsonFromObject(string scope, string blueprintName, PSArtifact artifact, string version)
         {
             var artifactObj = string.IsNullOrEmpty(version)

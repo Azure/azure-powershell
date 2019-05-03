@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
         [Parameter(ParameterSetName = ParameterSetNames.ArtifactsByBlueprint, Mandatory = false, HelpMessage = "Version of the blueprint to get the artifacts from.")]
         [ValidateNotNullOrEmpty]
-        public string Version { get; set; }
+        public string BlueprintVersion { get; set; }
         #endregion
 
         #region Cmdlet Overrides
@@ -51,11 +51,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 if (this.IsParameterBound(c => c.Name))
                 {
                     // To-Do - how is blueprint name different than dislplay name
-                    WriteObject(BlueprintClient.GetArtifact(scope, Blueprint.Name, Name, Version));
+                    WriteObject(BlueprintClient.GetArtifact(scope, Blueprint.Name, Name, BlueprintVersion));
                 }
                 else
                 {
-                    WriteObject(BlueprintClient.ListArtifacts(scope, Blueprint.Name, Version)); 
+                    WriteObject(BlueprintClient.ListArtifacts(scope, Blueprint.Name, BlueprintVersion)); 
                 }
             }
             catch (Exception ex)
