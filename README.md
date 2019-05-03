@@ -2,7 +2,7 @@
 
 # ![AzureIcon] ![PowershellIcon] Microsoft Azure PowerShell
 
-This repository contains PowerShell cmdlets for developers and administrators to develop, deploy, and manage Microsoft Azure applications.
+This repository contains PowerShell cmdlets for developers and administrators to develop, deploy, and manage Microsoft Azure services.
 
 Try it out in Azure Cloud Shell!
 
