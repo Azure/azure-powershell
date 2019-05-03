@@ -45,11 +45,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ManagementGroupId { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintBySubscription, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintByManagementGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public string Description { get; set; }
-
         [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintBySubscription, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
         [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintByManagementGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
         [ValidateNotNullOrEmpty]
@@ -103,7 +98,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             var filePath = ResolveUserPath(BlueprintFile);
             if (filePath == null || !new FileInfo(filePath).Exists)
             {
-                throw new FileNotFoundException(string.Format("Cannot find the path: Add here the path"));
+                throw new FileNotFoundException(string.Format("Cannot find path: " + BlueprintFile));
             }
 
             return filePath;
@@ -130,7 +125,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
             if (blueprint != null)
             {
-                throw new Exception(string.Format(Resources.AssignmentExists, name, scope));
+                throw new Exception(string.Format(Resources.BlueprintExists, name, scope));
             }
         }
     }

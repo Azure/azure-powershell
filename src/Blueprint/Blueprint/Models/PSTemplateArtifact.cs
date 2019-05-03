@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
             }
             else if (parameterKvp.Value != null && parameterKvp.Value is SecretReferenceParameterValue)
             {
-                // To-Do: Wait until previous changes merged into Azure master
+                // To-Do: Wait until previous changes merged into Azure master - Below should never happen.
                 //var parameterValue = (SecretReferenceParameterValue)parameterKvp.Value;
 
                 /*var secretReference = new PSSecretValueReference

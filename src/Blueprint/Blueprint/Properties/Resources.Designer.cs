@@ -61,6 +61,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An artifact with name &apos;{0}&apos; in blueprint &apos;{1}&apos; already exists. Please use Set-AzBlueprintArtifact to update an existing artifact..
+        /// </summary>
+        internal static string ArtifactExists {
+            get {
+                return ResourceManager.GetString("ArtifactExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An artifact with name &apos;{0}&apos; in blueprint &apos;{1}&apos; does not exist. Please use New- AzBlueprintArtifact to create a new artifact..
+        /// </summary>
+        internal static string ArtifactNotExist {
+            get {
+                return ResourceManager.GetString("ArtifactNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An assignment with name &apos;{0}&apos; in subscription &apos;{1}&apos; already exists. Please use Set-AzBlueprintAssignment to update an existing assignment..
         /// </summary>
         internal static string AssignmentExists {
@@ -75,6 +93,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties {
         internal static string AssignmentNotExist {
             get {
                 return ResourceManager.GetString("AssignmentNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A blueprint with name &apos;{0}&apos; in subscription &apos;{1}&apos; already exists. Please use Set-AzBlueprint to update an existing blueprint..
+        /// </summary>
+        internal static string BlueprintExists {
+            get {
+                return ResourceManager.GetString("BlueprintExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A blueprint with name &apos;{0}&apos; in subscription &apos;{1}&apos; does not exist. Please use New-AzBlueprint to create a new blueprint..
+        /// </summary>
+        internal static string BlueprintNotExist {
+            get {
+                return ResourceManager.GetString("BlueprintNotExist", resourceCulture);
             }
         }
         

@@ -15,6 +15,7 @@
 using Microsoft.Azure.Management.Blueprint.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Microsoft.Azure.Commands.Blueprint.Common;
 
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
 {
     public class PSPublishedBlueprint : PSBlueprintBase
     {
-        public string BlueprintName { get; set; }
+        public string Version { get; set; }
         public string ChangeNotes { get; set; }
 
         /// <summary>
@@ -36,7 +37,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
             var psBlueprint = new PSPublishedBlueprint
             {
                 Id = model.Id,
-                Name = model.Name,
+                Name = model.BlueprintName,
                 Scope = scope,
                 DefinitionLocationId = Utils.GetDefinitionLocationId(scope),
                 DisplayName = model.DisplayName,
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 TargetScope = PSBlueprintTargetScope.Unknown,
                 Parameters = new Dictionary<string, PSParameterDefinition>(),
                 ResourceGroups = new Dictionary<string, PSResourceGroupDefinition>(),
-                BlueprintName = model.BlueprintName,
+                Version = model.Name, // Name is the version in PublishedBlueprint object.
                 ChangeNotes = model.ChangeNotes
             };
 
@@ -57,7 +58,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
             {
                 psBlueprint.Status.TimeCreated = null;
             }
-
+            
             if (DateTime.TryParse(model.Status.LastModified, out DateTime lastModified))
             {
                 psBlueprint.Status.LastModified = lastModified;

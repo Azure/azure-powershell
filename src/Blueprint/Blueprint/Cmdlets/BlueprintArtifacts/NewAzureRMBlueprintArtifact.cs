@@ -26,6 +26,8 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.Azure.Commands.Blueprint.Common;
+using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
@@ -34,7 +36,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
     public class NewAzureRMBlueprintArtifact : BlueprintCmdletBase
     {
         #region Parameters
-        [Parameter(ParameterSetName = ParameterSetNames.CreateArtifactByInputFile, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        [Parameter(ParameterSetName = ParameterSetNames.CreateArtifactByInputFile, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
         [Parameter(ParameterSetName = ParameterSetNames.CreateTemplateArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
         [Parameter(ParameterSetName = ParameterSetNames.CreateRoleAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
         [Parameter(ParameterSetName = ParameterSetNames.CreatePolicyAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
@@ -96,7 +98,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         public string ResourceGroupName { get; set; }
 
         //Alternatively, user can provide a artifactFile
-        [Parameter(ParameterSetName = ParameterSetNames.CreateArtifactByInputFile, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        [Parameter(ParameterSetName = ParameterSetNames.CreateArtifactByInputFile, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
         [ValidateNotNullOrEmpty]
         public string ArtifactFile { get; set; }
 
@@ -109,6 +111,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             try
             {
                 var scope = Blueprint.Scope;
+
+                ThrowIfArtifactExits(scope, Blueprint.Name, Name);
 
                 switch (ParameterSetName)
                 {
@@ -164,17 +168,17 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                         var templatePath = ResolveUserPath(TemplateFile);
                         var parameterFilePath = ResolveUserPath(TemplateParameterFile); 
 
-                        if (!new FileInfo(templatePath).Exists)
+                        if (templatePath == null || !File.Exists(templatePath))
                         {
-                            throw new FileNotFoundException(string.Format("Add here the path"));
+                            throw new FileNotFoundException(string.Format("Can't find template file at " + TemplateFile));
                         }
 
                         Dictionary<string, ParameterValueBase> parameters = new Dictionary<string, ParameterValueBase>();
                         if (this.IsParameterBound(c => c.TemplateParameterFile)) 
                         {
-                            if (parameterFilePath == null || !new FileInfo(parameterFilePath).Exists)
+                            if (parameterFilePath == null || !File.Exists(parameterFilePath))
                             {
-                                throw new FileNotFoundException(string.Format("Add here the path"));
+                                throw new FileNotFoundException(string.Format("Can't find template parameter file at: " + TemplateParameterFile));
                             }
 
                             // Missing schema here.
@@ -214,5 +218,29 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             }
         }
         #endregion
+
+        // To-Do: Update error message
+        private void ThrowIfArtifactExits(string scope, string blueprintName, string artifactName)
+        {
+            PSArtifact artifact = null;
+
+            try
+            {
+                artifact = BlueprintClient.GetArtifact(scope, blueprintName, Name, null);
+            }
+            catch (Exception ex)
+            {
+                if (ex is CloudException cex && cex.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
+                {
+                    // if exception is for a reason other than .NotFound, pass it to the caller.
+                    throw;
+                }
+            }
+
+            if (artifact != null)
+            {
+                throw new Exception(string.Format(Resources.ArtifactExists, Name, blueprintName));
+            }
+        }
     }
 }

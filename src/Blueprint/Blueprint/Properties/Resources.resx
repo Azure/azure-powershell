@@ -117,11 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ArtifactExists" xml:space="preserve">
+    <value>An artifact with name '{0}' in blueprint '{1}' already exists. Please use Set-AzBlueprintArtifact to update an existing artifact.</value>
+  </data>
+  <data name="ArtifactNotExist" xml:space="preserve">
+    <value>An artifact with name '{0}' in blueprint '{1}' does not exist. Please use New- AzBlueprintArtifact to create a new artifact.</value>
+  </data>
   <data name="AssignmentExists" xml:space="preserve">
     <value>An assignment with name '{0}' in subscription '{1}' already exists. Please use Set-AzBlueprintAssignment to update an existing assignment.</value>
   </data>
   <data name="AssignmentNotExist" xml:space="preserve">
     <value>An assignment with name '{0}' in subscription '{1}' does not exist. Please use New-AzBlueprintAssignment to create a new assignment.</value>
+  </data>
+  <data name="BlueprintExists" xml:space="preserve">
+    <value>A blueprint with name '{0}' in subscription '{1}' already exists. Please use Set-AzBlueprint to update an existing blueprint.</value>
+  </data>
+  <data name="BlueprintNotExist" xml:space="preserve">
+    <value>A blueprint with name '{0}' in subscription '{1}' does not exist. Please use New-AzBlueprint to create a new blueprint.</value>
   </data>
   <data name="BlueprintSpnObjectIdNotFound" xml:space="preserve">
     <value>Could not find Blueprints SPN ObjectId in customer's tenant.</value>

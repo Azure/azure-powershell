@@ -12,7 +12,7 @@
             <ListItems>
               <ListItem>
                 <Label>Name</Label>
-                <PropertyName>BlueprintName</PropertyName>
+                <PropertyName>Name</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Id</Label>
@@ -24,7 +24,7 @@
               </ListItem>
               <ListItem>
                 <Label>Version</Label>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>Version</PropertyName>
               </ListItem>
               <ListItem>
                 <PropertyName>Description</PropertyName>

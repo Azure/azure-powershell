@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
         /// Create a PSBlueprint object from a BlueprintModel.
         /// </summary>
         /// <param name="model"></param>
-        /// <param name="managementGroupName">Name of the management group the blueprint belongs to.</param>
+        /// <param name="scope">Name of the scope the blueprint is under.</param>
         /// <returns>A new PSBlueprint object</returns>
         internal static PSBlueprint FromBlueprintModel(BlueprintModel model, string scope)
         {
