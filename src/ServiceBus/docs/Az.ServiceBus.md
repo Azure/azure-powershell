@@ -11,14 +11,17 @@ Locale: en-US
 Microsoft Azure PowerShell: ServiceBus cmdlets
 
 ## Az.ServiceBus Cmdlets
-### [Complete-AzServiceBusMigrationConfigMigration](Complete-AzServiceBusMigrationConfigMigration.md)
+### [Complete-AzServiceBusMigration](Complete-AzServiceBusMigration.md)
 This operation Completes Migration of entities by pointing the connection strings to Premium namespace and any entities created after the operation will be under Premium Namespace.
 CompleteMigration operation will fail when entity migration is in-progress.
+
+### [Disable-AzServiceBusDisasterRecoveryPairing](Disable-AzServiceBusDisasterRecoveryPairing.md)
+This operation disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
 
 ### [Get-AzServiceBusAuthorizationRule](Get-AzServiceBusAuthorizationRule.md)
 Gets an authorization rule for a namespace by rule name.
 
-### [Get-AzServiceBusDisasterRecoveryConfig](Get-AzServiceBusDisasterRecoveryConfig.md)
+### [Get-AzServiceBusDisasterRecoveryConfiguration](Get-AzServiceBusDisasterRecoveryConfiguration.md)
 Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
 
 ### [Get-AzServiceBusEventHub](Get-AzServiceBusEventHub.md)
@@ -27,7 +30,7 @@ Gets all the Event Hubs in a service bus Namespace.
 ### [Get-AzServiceBusKey](Get-AzServiceBusKey.md)
 Gets the primary and secondary connection strings for the namespace.
 
-### [Get-AzServiceBusMigrationConfig](Get-AzServiceBusMigrationConfig.md)
+### [Get-AzServiceBusMigration](Get-AzServiceBusMigration.md)
 Retrieves Migration Config
 
 ### [Get-AzServiceBusNamespace](Get-AzServiceBusNamespace.md)
@@ -60,14 +63,8 @@ Returns a subscription description for the specified topic.
 ### [Get-AzServiceBusTopic](Get-AzServiceBusTopic.md)
 Returns a description for the specified topic.
 
-### [Invoke-AzServiceBusBreakDisasterRecoveryConfigPairing](Invoke-AzServiceBusBreakDisasterRecoveryConfigPairing.md)
-This operation disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
-
-### [Invoke-AzServiceBusFailDisasterRecoveryConfigOver](Invoke-AzServiceBusFailDisasterRecoveryConfigOver.md)
+### [Invoke-AzServiceBusDisasterRecoveryFailOver](Invoke-AzServiceBusDisasterRecoveryFailOver.md)
 Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
-
-### [Invoke-AzServiceBusRevertMigrationConfig](Invoke-AzServiceBusRevertMigrationConfig.md)
-This operation reverts Migration
 
 ### [Move-AzServiceBusNamespace](Move-AzServiceBusNamespace.md)
 This operation Migrate the given namespace to provided name type
@@ -75,14 +72,11 @@ This operation Migrate the given namespace to provided name type
 ### [New-AzServiceBusAuthorizationRule](New-AzServiceBusAuthorizationRule.md)
 Creates or updates an authorization rule for a namespace.
 
-### [New-AzServiceBusDisasterRecoveryConfig](New-AzServiceBusDisasterRecoveryConfig.md)
+### [New-AzServiceBusDisasterRecoveryConfiguration](New-AzServiceBusDisasterRecoveryConfiguration.md)
 Creates or updates a new Alias(Disaster Recovery configuration)
 
 ### [New-AzServiceBusKey](New-AzServiceBusKey.md)
 Regenerates the primary or secondary connection strings for the namespace.
-
-### [New-AzServiceBusMigrationConfigAndStartMigration](New-AzServiceBusMigrationConfigAndStartMigration.md)
-Creates Migration configuration and starts migration of entities from Standard to Premium namespace
 
 ### [New-AzServiceBusNamespace](New-AzServiceBusNamespace.md)
 Creates or updates a service namespace.
@@ -114,10 +108,10 @@ Creates a topic in the specified namespace.
 ### [Remove-AzServiceBusAuthorizationRule](Remove-AzServiceBusAuthorizationRule.md)
 Deletes a namespace authorization rule.
 
-### [Remove-AzServiceBusDisasterRecoveryConfig](Remove-AzServiceBusDisasterRecoveryConfig.md)
+### [Remove-AzServiceBusDisasterRecoveryConfiguration](Remove-AzServiceBusDisasterRecoveryConfiguration.md)
 Deletes an Alias(Disaster Recovery configuration)
 
-### [Remove-AzServiceBusMigrationConfig](Remove-AzServiceBusMigrationConfig.md)
+### [Remove-AzServiceBusMigration](Remove-AzServiceBusMigration.md)
 Deletes a MigrationConfiguration
 
 ### [Remove-AzServiceBusNamespace](Remove-AzServiceBusNamespace.md)
@@ -145,7 +139,7 @@ Deletes a topic from the specified namespace and resource group.
 ### [Set-AzServiceBusAuthorizationRule](Set-AzServiceBusAuthorizationRule.md)
 Creates or updates an authorization rule for a namespace.
 
-### [Set-AzServiceBusDisasterRecoveryConfig](Set-AzServiceBusDisasterRecoveryConfig.md)
+### [Set-AzServiceBusDisasterRecoveryConfiguration](Set-AzServiceBusDisasterRecoveryConfiguration.md)
 Creates or updates a new Alias(Disaster Recovery configuration)
 
 ### [Set-AzServiceBusNamespace](Set-AzServiceBusNamespace.md)
@@ -175,10 +169,13 @@ Creates a topic subscription.
 ### [Set-AzServiceBusTopic](Set-AzServiceBusTopic.md)
 Creates a topic in the specified namespace.
 
-### [Test-AzServiceBusDisasterRecoveryConfigNameAvailability](Test-AzServiceBusDisasterRecoveryConfigNameAvailability.md)
-Check the give namespace name availability.
+### [Start-AzServiceBusMigration](Start-AzServiceBusMigration.md)
+Creates Migration configuration and starts migration of entities from Standard to Premium namespace
 
-### [Test-AzServiceBusNamespaceNameAvailability](Test-AzServiceBusNamespaceNameAvailability.md)
+### [Stop-AzServiceBusMigration](Stop-AzServiceBusMigration.md)
+This operation reverts Migration
+
+### [Test-AzServiceBusNameAvailability](Test-AzServiceBusNameAvailability.md)
 Check the give namespace name availability.
 
 ### [Update-AzServiceBusNamespace](Update-AzServiceBusNamespace.md)

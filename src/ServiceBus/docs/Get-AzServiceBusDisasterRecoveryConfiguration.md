@@ -1,37 +1,43 @@
 ---
 external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusmigrationconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusdisasterrecoveryconfiguration
 schema: 2.0.0
 ---
 
-# Get-AzServiceBusMigrationConfig
+# Get-AzServiceBusDisasterRecoveryConfiguration
 
 ## SYNOPSIS
-Retrieves Migration Config
+Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
 
 ## SYNTAX
 
-### GetSubscriptionIdViaHost (Default)
+### ListSubscriptionIdViaHost (Default)
 ```
-Get-AzServiceBusMigrationConfig -NamespaceName <String> -ResourceGroupName <String>
+Get-AzServiceBusDisasterRecoveryConfiguration -NamespaceName <String> -ResourceGroupName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### GetSubscriptionIdViaHost
 ```
-Get-AzServiceBusMigrationConfig -NamespaceName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzServiceBusDisasterRecoveryConfiguration -Name <String> -NamespaceName <String>
+ -ResourceGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzServiceBusMigrationConfig -NamespaceName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzServiceBusDisasterRecoveryConfiguration -Name <String> -NamespaceName <String>
+ -ResourceGroupName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzServiceBusDisasterRecoveryConfiguration -NamespaceName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Retrieves Migration Config
+Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
 
 ## EXAMPLES
 
@@ -53,6 +59,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The Disaster Recovery configuration name
+
+```yaml
+Type: System.String
+Parameter Sets: GetSubscriptionIdViaHost, Get
+Aliases: Alias, AliasName, DisasterRecoveryConfiguration, DisasterRecoveryConfigurationName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -95,7 +116,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -112,10 +133,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.IMigrationConfigProperties
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.IArmDisasterRecovery
 ## NOTES
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusmigrationconfig](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusmigrationconfig)
+[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusdisasterrecoveryconfiguration](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusdisasterrecoveryconfiguration)
 

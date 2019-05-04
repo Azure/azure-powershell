@@ -18,11 +18,11 @@ Get-AzServiceBusKey -AuthorizationRuleName <String> -NamespaceName <String> -Res
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DisasterRecoveryConfig
+### DisasterRecoveryConfiguration
 ```
-Get-AzServiceBusKey -AliasName <String> -AuthorizationRuleName <String> -NamespaceName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzServiceBusKey -DisasterRecoveryConfigurationName <String> -AuthorizationRuleName <String>
+ -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Queue
@@ -53,21 +53,6 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AliasName
-The Disaster Recovery configuration name
-
-```yaml
-Type: System.String
-Parameter Sets: DisasterRecoveryConfig
-Aliases: Alias
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AuthorizationRuleName
 The authorization rule name.
 
@@ -92,6 +77,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisasterRecoveryConfigurationName
+The Disaster Recovery configuration name
+
+```yaml
+Type: System.String
+Parameter Sets: DisasterRecoveryConfiguration
+Aliases: Alias, AliasName, DisasterRecoveryConfiguration
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

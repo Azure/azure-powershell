@@ -1,11 +1,11 @@
 ---
 external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebusmigrationconfigandstartmigration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/start-azservicebusmigration
 schema: 2.0.0
 ---
 
-# New-AzServiceBusMigrationConfigAndStartMigration
+# Start-AzServiceBusMigration
 
 ## SYNOPSIS
 Creates Migration configuration and starts migration of entities from Standard to Premium namespace
@@ -14,30 +14,29 @@ Creates Migration configuration and starts migration of entities from Standard t
 
 ### CreateSubscriptionIdViaHost (Default)
 ```
-New-AzServiceBusMigrationConfigAndStartMigration -NamespaceName <String> -ResourceGroupName <String>
+Start-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String>
  [-Parameter <IMigrationConfigProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
-New-AzServiceBusMigrationConfigAndStartMigration -NamespaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -PostMigrationName <String> -TargetNamespace <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -PostMigrationName <String> -TargetNamespace <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzServiceBusMigrationConfigAndStartMigration -NamespaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Parameter <IMigrationConfigProperties>] [-DefaultProfile <PSObject>] [-AsJob]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-Parameter <IMigrationConfigProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateSubscriptionIdViaHostExpanded
 ```
-New-AzServiceBusMigrationConfigAndStartMigration -NamespaceName <String> -ResourceGroupName <String>
- -PostMigrationName <String> -TargetNamespace <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Start-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> -PostMigrationName <String>
+ -TargetNamespace <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -218,5 +217,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebusmigrationconfigandstartmigration](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebusmigrationconfigandstartmigration)
+[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/start-azservicebusmigration](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/start-azservicebusmigration)
 

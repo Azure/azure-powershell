@@ -1,31 +1,32 @@
 ---
 external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/invoke-azservicebusrevertmigrationconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/test-azservicebusnameavailability
 schema: 2.0.0
 ---
 
-# Invoke-AzServiceBusRevertMigrationConfig
+# Test-AzServiceBusNameAvailability
 
 ## SYNOPSIS
-This operation reverts Migration
+Check the give namespace name availability.
 
 ## SYNTAX
 
-### RevertSubscriptionIdViaHost (Default)
+### Namespace (Default)
 ```
-Invoke-AzServiceBusRevertMigrationConfig -NamespaceName <String> -ResourceGroupName <String> [-PassThru]
+Test-AzServiceBusNameAvailability -NamespaceName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Revert
+### DisasterRecoveryConfiguration
 ```
-Invoke-AzServiceBusRevertMigrationConfig -NamespaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Test-AzServiceBusNameAvailability -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -DisasterRecoveryConfigurationName <String> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This operation reverts Migration
+Check the give namespace name availability.
 
 ## EXAMPLES
 
@@ -53,6 +54,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisasterRecoveryConfigurationName
+The Name to check the namespace name availability and The namespace name can contain only letters, numbers, and hyphens.
+The namespace must start with a letter, and it must end with a letter or number.
+
+```yaml
+Type: System.String
+Parameter Sets: DisasterRecoveryConfiguration
+Aliases: Alias, AliasName, DisasterRecoveryConfiguration
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NamespaceName
 The namespace name
 
@@ -68,27 +85,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DisasterRecoveryConfiguration
 Aliases:
 
 Required: True
@@ -104,10 +106,10 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Revert
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -152,10 +154,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ICheckNameAvailabilityResult
 ## NOTES
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/invoke-azservicebusrevertmigrationconfig](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/invoke-azservicebusrevertmigrationconfig)
+[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/test-azservicebusnameavailability](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/test-azservicebusnameavailability)
 

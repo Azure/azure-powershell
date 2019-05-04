@@ -1,5 +1,13 @@
 ## Incorrect Cmdlets
 
+- Complete-AzServiceBusMigration
+    - Name
+    - InputObject
+    - ResourceId
+- Get-AzServiceBusMigration
+    - Name
+    - InputObject
+    - ResourceId
 - Get-AzServiceBusQueue
     - MaxCount
 - Get-AzServiceBusRule
@@ -31,6 +39,11 @@
 - Remove-AzServiceBusAuthorizationRule
     - InputObject
     - Force
+- Remove-AzServiceBusMigration
+    - Name
+    - InputObject
+    - ResourceId
+    - AsJob
 - Remove-AzServiceBusNamespace
     - InputObject
     - ResourceId
@@ -62,6 +75,12 @@
     - InputObject
 - Set-AzServiceBusTopic
     - InputObject
+- Start-AzServiceBusMigration
+    - Name
+- Stop-AzServiceBusMigration
+    - Name
+    - InputObject
+    - ResourceId
 
 ## Correct Cmdlets
 
@@ -73,47 +92,36 @@
 
 ## New Cmdlets
 
-- Complete-AzServiceBusMigrationConfigMigration
-- Get-AzServiceBusDisasterRecoveryConfig
+- Disable-AzServiceBusDisasterRecoveryPairing
+- Get-AzServiceBusDisasterRecoveryConfiguration
 - Get-AzServiceBusEventHub
-- Get-AzServiceBusMigrationConfig
 - Get-AzServiceBusNamespaceIPFilterRule
 - Get-AzServiceBusNamespaceNetworkRuleSet
 - Get-AzServiceBusNamespaceVirtualNetworkRule
 - Get-AzServiceBusPremiumMessagingRegion
 - Get-AzServiceBusRegion
-- Invoke-AzServiceBusBreakDisasterRecoveryConfigPairing
-- Invoke-AzServiceBusFailDisasterRecoveryConfigOver
-- Invoke-AzServiceBusRevertMigrationConfig
+- Invoke-AzServiceBusDisasterRecoveryFailOver
 - Move-AzServiceBusNamespace
-- New-AzServiceBusDisasterRecoveryConfig
-- New-AzServiceBusMigrationConfigAndStartMigration
+- New-AzServiceBusDisasterRecoveryConfiguration
 - New-AzServiceBusNamespaceIPFilterRule
 - New-AzServiceBusNamespaceNetworkRuleSet
 - New-AzServiceBusNamespaceVirtualNetworkRule
-- Remove-AzServiceBusDisasterRecoveryConfig
-- Remove-AzServiceBusMigrationConfig
+- Remove-AzServiceBusDisasterRecoveryConfiguration
 - Remove-AzServiceBusNamespaceIPFilterRule
 - Remove-AzServiceBusNamespaceVirtualNetworkRule
-- Set-AzServiceBusDisasterRecoveryConfig
+- Set-AzServiceBusDisasterRecoveryConfiguration
 - Set-AzServiceBusNamespaceIPFilterRule
 - Set-AzServiceBusNamespaceNetworkRuleSet
 - Set-AzServiceBusNamespaceVirtualNetworkRule
-- Test-AzServiceBusDisasterRecoveryConfigNameAvailability
-- Test-AzServiceBusNamespaceNameAvailability
+- Test-AzServiceBusNameAvailability
 - Update-AzServiceBusNamespace
 
 ## Missing Cmdlets
 
-- Complete-AzServiceBusMigration
 - Get-AzServiceBusGeoDRConfiguration
-- Get-AzServiceBusMigration
 - Get-AzServiceBusOperation
 - New-AzServiceBusGeoDRConfiguration
 - Remove-AzServiceBusGeoDRConfiguration
-- Remove-AzServiceBusMigration
 - Set-AzServiceBusGeoDRConfigurationBreakPair
 - Set-AzServiceBusGeoDRConfigurationFailOver
-- Start-AzServiceBusMigration
-- Stop-AzServiceBusMigration
 - Test-AzServiceBusName

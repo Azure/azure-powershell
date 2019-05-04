@@ -1,32 +1,31 @@
 ---
 external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/invoke-azservicebusfaildisasterrecoveryconfigover
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusmigration
 schema: 2.0.0
 ---
 
-# Invoke-AzServiceBusFailDisasterRecoveryConfigOver
+# Remove-AzServiceBusMigration
 
 ## SYNOPSIS
-Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
+Deletes a MigrationConfiguration
 
 ## SYNTAX
 
-### FailSubscriptionIdViaHost (Default)
+### DeleteSubscriptionIdViaHost (Default)
 ```
-Invoke-AzServiceBusFailDisasterRecoveryConfigOver -Alias <String> -NamespaceName <String>
- -ResourceGroupName <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Fail
+### Delete
 ```
-Invoke-AzServiceBusFailDisasterRecoveryConfigOver -Alias <String> -NamespaceName <String>
- -ResourceGroupName <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
+Deletes a MigrationConfiguration
 
 ## EXAMPLES
 
@@ -38,21 +37,6 @@ PS C:\> {{ Add example code here }}
 {{ Add example description here }}
 
 ## PARAMETERS
-
-### -Alias
-The Disaster Recovery configuration name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -120,7 +104,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Fail
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -173,5 +157,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/invoke-azservicebusfaildisasterrecoveryconfigover](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/invoke-azservicebusfaildisasterrecoveryconfigover)
+[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusmigration](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusmigration)
 

@@ -1,33 +1,31 @@
 ---
 external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/complete-azservicebusmigrationconfigmigration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/stop-azservicebusmigration
 schema: 2.0.0
 ---
 
-# Complete-AzServiceBusMigrationConfigMigration
+# Stop-AzServiceBusMigration
 
 ## SYNOPSIS
-This operation Completes Migration of entities by pointing the connection strings to Premium namespace and any entities created after the operation will be under Premium Namespace.
-CompleteMigration operation will fail when entity migration is in-progress.
+This operation reverts Migration
 
 ## SYNTAX
 
-### CompleteSubscriptionIdViaHost (Default)
+### RevertSubscriptionIdViaHost (Default)
 ```
-Complete-AzServiceBusMigrationConfigMigration -NamespaceName <String> -ResourceGroupName <String> [-PassThru]
+Stop-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Complete
+### Revert
 ```
-Complete-AzServiceBusMigrationConfigMigration -NamespaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This operation Completes Migration of entities by pointing the connection strings to Premium namespace and any entities created after the operation will be under Premium Namespace.
-CompleteMigration operation will fail when entity migration is in-progress.
+This operation reverts Migration
 
 ## EXAMPLES
 
@@ -106,7 +104,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Complete
+Parameter Sets: Revert
 Aliases:
 
 Required: True
@@ -159,5 +157,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/complete-azservicebusmigrationconfigmigration](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/complete-azservicebusmigrationconfigmigration)
+[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/stop-azservicebusmigration](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/stop-azservicebusmigration)
 

@@ -1,43 +1,31 @@
 ---
 external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/test-azservicebusnamespacenameavailability
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/invoke-azservicebusdisasterrecoveryfailover
 schema: 2.0.0
 ---
 
-# Test-AzServiceBusNamespaceNameAvailability
+# Invoke-AzServiceBusDisasterRecoveryFailOver
 
 ## SYNOPSIS
-Check the give namespace name availability.
+Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
 
 ## SYNTAX
 
-### CheckSubscriptionIdViaHost (Default)
+### FailSubscriptionIdViaHost (Default)
 ```
-Test-AzServiceBusNamespaceNameAvailability [-Parameter <ICheckNameAvailability>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CheckExpanded
-```
-Test-AzServiceBusNamespaceNameAvailability -SubscriptionId <String> -Name <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzServiceBusDisasterRecoveryFailOver -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Check
+### Fail
 ```
-Test-AzServiceBusNamespaceNameAvailability -SubscriptionId <String> [-Parameter <ICheckNameAvailability>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CheckSubscriptionIdViaHostExpanded
-```
-Test-AzServiceBusNamespaceNameAvailability -Name <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Invoke-AzServiceBusDisasterRecoveryFailOver -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Check the give namespace name availability.
+Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
 
 ## EXAMPLES
 
@@ -66,12 +54,56 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The Name to check the namespace name availability and The namespace name can contain only letters, numbers, and hyphens.
-The namespace must start with a letter, and it must end with a letter or number.
+The Disaster Recovery configuration name
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckSubscriptionIdViaHostExpanded
+Parameter Sets: (All)
+Aliases: Alias, AliasName, DisasterRecoveryConfiguration, DisasterRecoveryConfigurationName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NamespaceName
+The namespace name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: Namespace
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Name of the Resource group within the Azure subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -81,28 +113,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Description of a Check Name availability request properties.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ICheckNameAvailability
-Parameter Sets: CheckSubscriptionIdViaHost, Check
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 Subscription credentials that uniquely identify a Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, Check
+Parameter Sets: Fail
 Aliases:
 
 Required: True
@@ -150,10 +167,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ICheckNameAvailabilityResult
+### System.Boolean
 ## NOTES
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/test-azservicebusnamespacenameavailability](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/test-azservicebusnamespacenameavailability)
+[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/invoke-azservicebusdisasterrecoveryfailover](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/invoke-azservicebusdisasterrecoveryfailover)
 

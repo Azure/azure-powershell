@@ -18,10 +18,11 @@ Get-AzServiceBusAuthorizationRule [-Name <String>] -NamespaceName <String> -Reso
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### DisasterRecoveryConfig
+### DisasterRecoveryConfiguration
 ```
-Get-AzServiceBusAuthorizationRule -AliasName <String> [-Name <String>] -NamespaceName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzServiceBusAuthorizationRule -DisasterRecoveryConfigurationName <String> [-Name <String>]
+ -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Queue
@@ -50,21 +51,6 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AliasName
-The Disaster Recovery configuration name
-
-```yaml
-Type: System.String
-Parameter Sets: DisasterRecoveryConfig
-Aliases: Alias
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -74,6 +60,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisasterRecoveryConfigurationName
+The Disaster Recovery configuration name
+
+```yaml
+Type: System.String
+Parameter Sets: DisasterRecoveryConfiguration
+Aliases: Alias, AliasName, DisasterRecoveryConfiguration
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

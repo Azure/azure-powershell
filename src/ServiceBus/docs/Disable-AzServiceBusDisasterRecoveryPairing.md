@@ -1,31 +1,31 @@
 ---
 external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusmigrationconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/disable-azservicebusdisasterrecoverypairing
 schema: 2.0.0
 ---
 
-# Remove-AzServiceBusMigrationConfig
+# Disable-AzServiceBusDisasterRecoveryPairing
 
 ## SYNOPSIS
-Deletes a MigrationConfiguration
+This operation disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
 
 ## SYNTAX
 
-### DeleteSubscriptionIdViaHost (Default)
+### BreakSubscriptionIdViaHost (Default)
 ```
-Remove-AzServiceBusMigrationConfig -NamespaceName <String> -ResourceGroupName <String> [-PassThru]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Delete
-```
-Remove-AzServiceBusMigrationConfig -NamespaceName <String> -ResourceGroupName <String> -SubscriptionId <String>
+Disable-AzServiceBusDisasterRecoveryPairing -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### Break
+```
+Disable-AzServiceBusDisasterRecoveryPairing -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Deletes a MigrationConfiguration
+This operation disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
 
 ## EXAMPLES
 
@@ -47,6 +47,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The Disaster Recovery configuration name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: Alias, AliasName, DisasterRecoveryConfiguration, DisasterRecoveryConfigurationName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -104,7 +119,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Break
 Aliases:
 
 Required: True
@@ -157,5 +172,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusmigrationconfig](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusmigrationconfig)
+[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/disable-azservicebusdisasterrecoverypairing](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/disable-azservicebusdisasterrecoverypairing)
 

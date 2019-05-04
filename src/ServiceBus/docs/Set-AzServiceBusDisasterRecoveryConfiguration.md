@@ -1,43 +1,43 @@
 ---
 external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebusdisasterrecoveryconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/set-azservicebusdisasterrecoveryconfiguration
 schema: 2.0.0
 ---
 
-# New-AzServiceBusDisasterRecoveryConfig
+# Set-AzServiceBusDisasterRecoveryConfiguration
 
 ## SYNOPSIS
 Creates or updates a new Alias(Disaster Recovery configuration)
 
 ## SYNTAX
 
-### CreateSubscriptionIdViaHost (Default)
+### UpdateSubscriptionIdViaHost (Default)
 ```
-New-AzServiceBusDisasterRecoveryConfig -AliasName <String> -NamespaceName <String> -ResourceGroupName <String>
- [-Parameter <IArmDisasterRecovery>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzServiceBusDisasterRecoveryConfig -AliasName <String> -NamespaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-PassThru] [-AlternateName <String>] [-PartnerNamespace <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzServiceBusDisasterRecoveryConfig -AliasName <String> -NamespaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Parameter <IArmDisasterRecovery>] [-PassThru] [-DefaultProfile <PSObject>]
+Set-AzServiceBusDisasterRecoveryConfiguration -Name <String> -NamespaceName <String>
+ -ResourceGroupName <String> [-Parameter <IArmDisasterRecovery>] [-PassThru] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateSubscriptionIdViaHostExpanded
+### UpdateExpanded
 ```
-New-AzServiceBusDisasterRecoveryConfig -AliasName <String> -NamespaceName <String> -ResourceGroupName <String>
- [-PassThru] [-AlternateName <String>] [-PartnerNamespace <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzServiceBusDisasterRecoveryConfiguration -Name <String> -NamespaceName <String>
+ -ResourceGroupName <String> -SubscriptionId <String> [-PassThru] [-AlternateName <String>]
+ [-PartnerNamespace <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzServiceBusDisasterRecoveryConfiguration -Name <String> -NamespaceName <String>
+ -ResourceGroupName <String> -SubscriptionId <String> [-Parameter <IArmDisasterRecovery>] [-PassThru]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateSubscriptionIdViaHostExpanded
+```
+Set-AzServiceBusDisasterRecoveryConfiguration -Name <String> -NamespaceName <String>
+ -ResourceGroupName <String> [-PassThru] [-AlternateName <String>] [-PartnerNamespace <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,27 +54,12 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AliasName
-The Disaster Recovery configuration name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: Alias
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AlternateName
 Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
 Aliases:
 
 Required: False
@@ -93,6 +78,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The Disaster Recovery configuration name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: Alias, AliasName, DisasterRecoveryConfiguration, DisasterRecoveryConfigurationName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -119,7 +119,7 @@ Single item in List or Get Alias(Disaster Recovery configuration) operation
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.IArmDisasterRecovery
-Parameter Sets: CreateSubscriptionIdViaHost, Create
+Parameter Sets: UpdateSubscriptionIdViaHost, Update
 Aliases:
 
 Required: False
@@ -134,7 +134,7 @@ ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
 Aliases:
 
 Required: False
@@ -180,7 +180,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -233,5 +233,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebusdisasterrecoveryconfig](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebusdisasterrecoveryconfig)
+[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/set-azservicebusdisasterrecoveryconfiguration](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/set-azservicebusdisasterrecoveryconfiguration)
 

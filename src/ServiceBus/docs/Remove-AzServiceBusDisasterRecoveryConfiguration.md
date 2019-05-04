@@ -1,44 +1,32 @@
 ---
 external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/test-azservicebusdisasterrecoveryconfignameavailability
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusdisasterrecoveryconfiguration
 schema: 2.0.0
 ---
 
-# Test-AzServiceBusDisasterRecoveryConfigNameAvailability
+# Remove-AzServiceBusDisasterRecoveryConfiguration
 
 ## SYNOPSIS
-Check the give namespace name availability.
+Deletes an Alias(Disaster Recovery configuration)
 
 ## SYNTAX
 
-### CheckSubscriptionIdViaHost (Default)
+### DeleteSubscriptionIdViaHost (Default)
 ```
-Test-AzServiceBusDisasterRecoveryConfigNameAvailability -NamespaceName <String> -ResourceGroupName <String>
- [-Parameter <ICheckNameAvailability>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CheckExpanded
-```
-Test-AzServiceBusDisasterRecoveryConfigNameAvailability -NamespaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Name <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzServiceBusDisasterRecoveryConfiguration -Name <String> -NamespaceName <String>
+ -ResourceGroupName <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Check
+### Delete
 ```
-Test-AzServiceBusDisasterRecoveryConfigNameAvailability -NamespaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Parameter <ICheckNameAvailability>] [-DefaultProfile <PSObject>] [-WhatIf]
+Remove-AzServiceBusDisasterRecoveryConfiguration -Name <String> -NamespaceName <String>
+ -ResourceGroupName <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### CheckSubscriptionIdViaHostExpanded
-```
-Test-AzServiceBusDisasterRecoveryConfigNameAvailability -NamespaceName <String> -ResourceGroupName <String>
- -Name <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Check the give namespace name availability.
+Deletes an Alias(Disaster Recovery configuration)
 
 ## EXAMPLES
 
@@ -67,13 +55,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The Name to check the namespace name availability and The namespace name can contain only letters, numbers, and hyphens.
-The namespace must start with a letter, and it must end with a letter or number.
+The Disaster Recovery configuration name
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckSubscriptionIdViaHostExpanded
-Aliases:
+Parameter Sets: (All)
+Aliases: Alias, AliasName, DisasterRecoveryConfiguration, DisasterRecoveryConfigurationName
 
 Required: True
 Position: Named
@@ -97,18 +84,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Description of a Check Name availability request properties.
+### -PassThru
+When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ICheckNameAvailability
-Parameter Sets: CheckSubscriptionIdViaHost, Check
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -133,7 +120,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, Check
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -181,10 +168,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ICheckNameAvailabilityResult
+### System.Boolean
 ## NOTES
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/test-azservicebusdisasterrecoveryconfignameavailability](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/test-azservicebusdisasterrecoveryconfignameavailability)
+[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusdisasterrecoveryconfiguration](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusdisasterrecoveryconfiguration)
 

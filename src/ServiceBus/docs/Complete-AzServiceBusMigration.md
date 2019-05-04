@@ -1,32 +1,33 @@
 ---
 external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusdisasterrecoveryconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicebus/complete-azservicebusmigration
 schema: 2.0.0
 ---
 
-# Remove-AzServiceBusDisasterRecoveryConfig
+# Complete-AzServiceBusMigration
 
 ## SYNOPSIS
-Deletes an Alias(Disaster Recovery configuration)
+This operation Completes Migration of entities by pointing the connection strings to Premium namespace and any entities created after the operation will be under Premium Namespace.
+CompleteMigration operation will fail when entity migration is in-progress.
 
 ## SYNTAX
 
-### DeleteSubscriptionIdViaHost (Default)
+### CompleteSubscriptionIdViaHost (Default)
 ```
-Remove-AzServiceBusDisasterRecoveryConfig -AliasName <String> -NamespaceName <String>
- -ResourceGroupName <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Complete-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Delete
+### Complete
 ```
-Remove-AzServiceBusDisasterRecoveryConfig -AliasName <String> -NamespaceName <String>
- -ResourceGroupName <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Complete-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes an Alias(Disaster Recovery configuration)
+This operation Completes Migration of entities by pointing the connection strings to Premium namespace and any entities created after the operation will be under Premium Namespace.
+CompleteMigration operation will fail when entity migration is in-progress.
 
 ## EXAMPLES
 
@@ -38,21 +39,6 @@ PS C:\> {{ Add example code here }}
 {{ Add example description here }}
 
 ## PARAMETERS
-
-### -AliasName
-The Disaster Recovery configuration name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: Alias
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -120,7 +106,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Complete
 Aliases:
 
 Required: True
@@ -173,5 +159,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusdisasterrecoveryconfig](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/remove-azservicebusdisasterrecoveryconfig)
+[https://docs.microsoft.com/en-us/powershell/module/az.servicebus/complete-azservicebusmigration](https://docs.microsoft.com/en-us/powershell/module/az.servicebus/complete-azservicebusmigration)
 
