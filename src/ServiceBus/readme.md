@@ -56,9 +56,11 @@ module-version: 0.0.1
 skip-model-cmdlets: true
 
 directive:
+# General
   - where:
-      subject: AuthorizationRule$
+      subject: AuthorizationRule$|Key$|NameAvailability$
     hide: true
+# AuthorizationRule
   - where:
       parameter-name: AuthorizationRuleName
     set:
@@ -70,17 +72,75 @@ directive:
       alias: AuthorizationRuleName
       parameter-name: Name
   - where:
-      subject: ^DisasterRecoveryConfig
-      parameter-name: Alias
-    set:
-      alias: Alias
-      parameter-name: AliasName
-  - where:
       subject: AuthorizationRule$
       parameter-name: Right
     set:
       alias: Right
       parameter-name: AccessRight
+# DisasterRecovery
+  - where:
+      subject: (.*)DisasterRecoveryConfig(.*)
+    set:
+      subject: $1DisasterRecoveryConfiguration$2
+  - where:
+      subject: DisasterRecoveryConfiguration
+      parameter-name: Alias
+    set:
+      alias:
+        - Alias
+        - AliasName
+        - DisasterRecoveryConfiguration
+      parameter-name: DisasterRecoveryConfigurationName
+  - where:
+      subject: FailDisasterRecoveryConfigurationOver
+    set:
+      subject: DisasterRecoveryFailOver
+  - where:
+      subject: BreakDisasterRecoveryConfigurationPairing
+    set:
+      verb: Disable
+      subject: DisasterRecoveryPairing
+  - where:
+      subject: DisasterRecoveryConfiguration$|DisasterRecoveryFailOver|DisasterRecoveryPairing
+      parameter-name: DisasterRecoveryConfigurationName
+    set:
+      alias: DisasterRecoveryConfigurationName
+      parameter-name: Name
+# MigrationConfiguration
+  - where:
+      subject: (.*)MigrationConfig(.*)
+    set:
+      subject: $1Migration$2
+  # - where:
+  #     subject: MigrationMigration
+  #   set:
+  #     subject: Migration
+  - where:
+      subject: MigrationAndStartMigration
+    set:
+      verb: Start
+      subject: Migration
+  - where:
+      subject: RevertMigration
+    set:
+      verb: Stop
+      subject: Migration
+# NameAvailability
+  - where:
+      subject: DisasterRecoveryConfigurationNameAvailability
+      parameter-name: Name
+    set:
+      alias:
+        - Alias
+        - AliasName
+        - DisasterRecoveryConfiguration
+      parameter-name: DisasterRecoveryConfigurationName
+  - where:
+      subject: NamespaceNameAvailability
+      parameter-name: Name
+    set:
+      parameter-name: NamespaceName
+# General Parameters
   - where:
       parameter-name: NamespaceName
     set:
@@ -93,9 +153,6 @@ directive:
       parameter-name: QueueName
     set:
       alias: Queue
-  - where:
-      subject: Key$
-    hide: true
   - where:
       subject: Key$
       parameter-name: AuthorizationRuleName
