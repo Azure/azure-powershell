@@ -13,10 +13,10 @@ function Get-AzServiceBusAuthorizationRule_DisasterRecoveryConfig {
 [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description('Gets an authorization rule for a namespace by rule name.')]
 param(
     [Parameter(Mandatory, HelpMessage='The Disaster Recovery configuration name')]
-    [Alias('Alias')]
+    [Alias('Alias', 'AliasName', 'DisasterRecoveryConfiguration')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    ${AliasName},
+    ${DisasterRecoveryConfigurationName},
 
     [Parameter(HelpMessage='The authorization rule name.')]
     [Alias('AuthorizationRule', 'AuthorizationRuleName')]
