@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.10.0
+* Support for Serverless specific parameters in New-AzSqlDatabase and Set-AzSqlDatabase
+
 ## Version 1.9.0
 * Replace dependency on Monitor SDK with common code
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
@@ -27,7 +30,6 @@
 * Ability to Get-AzSqlServerServiceObjective by location without needing a preexisting server in the region.
 * Support for time zone parameter in Managed Instance create.
 * Fix documentation for wildcards
-* Support of Serverless specific parameters in New-AzSqlDatabase and Set-AzSqlDatabase
 
 ## Version 1.8.0
 * Support Database Data Classification.
