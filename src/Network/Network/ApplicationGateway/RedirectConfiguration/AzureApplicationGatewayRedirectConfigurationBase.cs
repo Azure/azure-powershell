@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(this.TargetListenerID))
             {
                 redirectConfiguration.TargetListener = new PSResourceId();
-                redirectConfiguration.TargetListener.Id = this.TargetListener.Id;
+                redirectConfiguration.TargetListener.Id = this.TargetListenerID;
             }
 
             redirectConfiguration.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
