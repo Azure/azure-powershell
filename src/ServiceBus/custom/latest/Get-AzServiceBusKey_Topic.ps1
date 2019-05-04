@@ -4,7 +4,7 @@ Gets the primary and secondary connection strings for the topic.
 .Description
 Gets the primary and secondary connection strings for the topic.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebustopickey
+https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebuskey
 #>
 function Get-AzServiceBusKey_Topic {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.IAccessKeys')]

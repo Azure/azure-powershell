@@ -89,7 +89,7 @@ param(
 )
 
 process {
-    Az.ServiceBus.internal\Set-AzServiceQueueAuthorizationRule @PSBoundParameters
+    Az.ServiceBus.internal\Set-AzServiceBusQueueAuthorizationRule @PSBoundParameters
 }
 
 }

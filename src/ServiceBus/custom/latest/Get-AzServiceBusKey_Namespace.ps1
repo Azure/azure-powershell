@@ -4,7 +4,7 @@ Gets the primary and secondary connection strings for the namespace.
 .Description
 Gets the primary and secondary connection strings for the namespace.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusnamespacekey
+https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebuskey
 #>
 function Get-AzServiceBusKey_Namespace {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.IAccessKeys')]

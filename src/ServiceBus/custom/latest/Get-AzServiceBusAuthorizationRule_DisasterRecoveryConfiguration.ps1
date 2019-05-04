@@ -6,7 +6,7 @@ Gets an authorization rule for a namespace by rule name.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusauthorizationrule
 #>
-function Get-AzServiceBusAuthorizationRule_DisasterRecoveryConfig {
+function Get-AzServiceBusAuthorizationRule_DisasterRecoveryConfiguration {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ISbAuthorizationRule')]
 [CmdletBinding(PositionalBinding=$false)]
 [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Profile('latest-2019-04-30')]
@@ -82,7 +82,7 @@ param(
 )
 
 process {
-    Az.ServiceBus.internal\Get-AzServiceBusDisasterRecoveryConfigAuthorizationRule @PSBoundParameters
+    Az.ServiceBus.internal\Get-AzServiceBusDisasterRecoveryConfigurationAuthorizationRule @PSBoundParameters
 }
 
 }

@@ -76,7 +76,7 @@ param(
 )
 
 process {
-    Az.ServiceBus.internal\Get-AzServiceNamespaceAuthorizationRule @PSBoundParameters
+    Az.ServiceBus.internal\Get-AzServiceBusNamespaceAuthorizationRule @PSBoundParameters
 }
 
 }

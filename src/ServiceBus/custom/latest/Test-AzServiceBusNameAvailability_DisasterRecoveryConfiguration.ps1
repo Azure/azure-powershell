@@ -1,29 +1,17 @@
 <#
 .Synopsis
-Gets the primary and secondary connection strings for the namespace.
+Check the give namespace name availability.
 .Description
-Gets the primary and secondary connection strings for the namespace.
+Check the give namespace name availability.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusdisasterrecoveryconfigkey
+https://docs.microsoft.com/en-us/powershell/module/az.servicebus/test-azservicebusnameavailability
 #>
-function Get-AzServiceBusKey_DisasterRecoveryConfig {
-[OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.IAccessKeys')]
+function Test-AzServiceBusNameAvailability_DisasterRecoveryConfiguration {
+[OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ICheckNameAvailabilityResult')]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Profile('latest-2019-04-30')]
-[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description('Gets the primary and secondary connection strings for the namespace.')]
+[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description('Check the give namespace name availability.')]
 param(
-    [Parameter(Mandatory, HelpMessage='The Disaster Recovery configuration name')]
-    [Alias('Alias', 'AliasName', 'DisasterRecoveryConfiguration')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
-    [System.String]
-    ${DisasterRecoveryConfigurationName},
-
-    [Parameter(Mandatory, HelpMessage='The authorization rule name.')]
-    [Alias('AuthorizationRule', 'Name')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
-    [System.String]
-    ${AuthorizationRuleName},
-
     [Parameter(Mandatory, HelpMessage='The namespace name')]
     [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
@@ -39,6 +27,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
     ${SubscriptionId},
+
+    [Parameter(Mandatory, HelpMessage='The Name to check the namespace name availability and The namespace name can contain only letters, numbers, and hyphens. The namespace must start with a letter, and it must end with a letter or number.')]
+    [Alias('Alias', 'AliasName', 'DisasterRecoveryConfiguration')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.String]
+    ${DisasterRecoveryConfigurationName},
 
     [Parameter(HelpMessage='The credentials, account, tenant, and subscription used for communication with Azure.')]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -82,7 +76,7 @@ param(
 )
 
 process {
-    Az.ServiceBus.internal\Get-AzServiceBusDisasterRecoveryConfigKey @PSBoundParameters
+    Az.ServiceBus.internal\Test-AzServiceBusDisasterRecoveryConfigurationNameAvailability @PSBoundParameters
 }
 
 }

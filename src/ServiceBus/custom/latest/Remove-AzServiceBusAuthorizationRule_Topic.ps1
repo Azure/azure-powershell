@@ -87,7 +87,7 @@ param(
 )
 
 process {
-    Az.ServiceBus.internal\Remove-AzServiceTopicAuthorizationRule @PSBoundParameters
+    Az.ServiceBus.internal\Remove-AzServiceBusTopicAuthorizationRule @PSBoundParameters
 }
 
 }

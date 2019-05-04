@@ -1,22 +1,28 @@
 <#
 .Synopsis
-Creates or updates an authorization rule for a namespace.
+Gets the primary and secondary connection strings for the namespace.
 .Description
-Creates or updates an authorization rule for a namespace.
+Gets the primary and secondary connection strings for the namespace.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebusauthorizationrule
+https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebuskey
 #>
-function New-AzServiceBusAuthorizationRule_Namespace {
-[OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ISbAuthorizationRule')]
-[CmdletBinding(DefaultParameterSetName='Namespace', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Get-AzServiceBusKey_DisasterRecoveryConfiguration {
+[OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.IAccessKeys')]
+[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Profile('latest-2019-04-30')]
-[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description('Creates or updates an authorization rule for a namespace.')]
+[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description('Gets the primary and secondary connection strings for the namespace.')]
 param(
-    [Parameter(Mandatory, HelpMessage='The authorization rule name.')]
-    [Alias('AuthorizationRule', 'AuthorizationRuleName')]
+    [Parameter(Mandatory, HelpMessage='The Disaster Recovery configuration name')]
+    [Alias('Alias', 'AliasName', 'DisasterRecoveryConfiguration')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    ${Name},
+    ${DisasterRecoveryConfigurationName},
+
+    [Parameter(Mandatory, HelpMessage='The authorization rule name.')]
+    [Alias('AuthorizationRule', 'Name')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    ${AuthorizationRuleName},
 
     [Parameter(Mandatory, HelpMessage='The namespace name')]
     [Alias('Namespace')]
@@ -33,13 +39,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
     ${SubscriptionId},
-
-    [Parameter(Mandatory, HelpMessage='The rights associated with the rule.')]
-    [Alias('Right')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.AccessRights])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.AccessRights[]]
-    ${AccessRight},
 
     [Parameter(HelpMessage='The credentials, account, tenant, and subscription used for communication with Azure.')]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -83,7 +82,7 @@ param(
 )
 
 process {
-    Az.ServiceBus.internal\New-AzServiceBusNamespaceAuthorizationRule @PSBoundParameters
+    Az.ServiceBus.internal\Get-AzServiceBusDisasterRecoveryConfigurationKey @PSBoundParameters
 }
 
 }

@@ -83,7 +83,7 @@ param(
 )
 
 process {
-    Az.ServiceBus.internal\Set-AzServiceNamespaceAuthorizationRule @PSBoundParameters
+    Az.ServiceBus.internal\Set-AzServiceBusNamespaceAuthorizationRule @PSBoundParameters
 }
 
 }

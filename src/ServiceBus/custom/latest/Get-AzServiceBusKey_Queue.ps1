@@ -4,7 +4,7 @@ Primary and secondary connection strings to the queue.
 .Description
 Primary and secondary connection strings to the queue.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebusqueuekey
+https://docs.microsoft.com/en-us/powershell/module/az.servicebus/get-azservicebuskey
 #>
 function Get-AzServiceBusKey_Queue {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.IAccessKeys')]

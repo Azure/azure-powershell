@@ -82,7 +82,7 @@ param(
 )
 
 process {
-    Az.ServiceBus.internal\Get-AzServiceTopicAuthorizationRule @PSBoundParameters
+    Az.ServiceBus.internal\Get-AzServiceBusTopicAuthorizationRule @PSBoundParameters
 }
 
 }

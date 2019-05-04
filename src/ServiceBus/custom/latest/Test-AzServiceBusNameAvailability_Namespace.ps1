@@ -1,45 +1,27 @@
 <#
 .Synopsis
-Creates or updates an authorization rule for a namespace.
+Check the give namespace name availability.
 .Description
-Creates or updates an authorization rule for a namespace.
+Check the give namespace name availability.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebusauthorizationrule
+https://docs.microsoft.com/en-us/powershell/module/az.servicebus/test-azservicebusnameavailability
 #>
-function New-AzServiceBusAuthorizationRule_Namespace {
-[OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ISbAuthorizationRule')]
+function Test-AzServiceBusNameAvailability_Namespace {
+[OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ICheckNameAvailabilityResult')]
 [CmdletBinding(DefaultParameterSetName='Namespace', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Profile('latest-2019-04-30')]
-[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description('Creates or updates an authorization rule for a namespace.')]
+[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description('Check the give namespace name availability.')]
 param(
-    [Parameter(Mandatory, HelpMessage='The authorization rule name.')]
-    [Alias('AuthorizationRule', 'AuthorizationRuleName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
-    [System.String]
-    ${Name},
-
-    [Parameter(Mandatory, HelpMessage='The namespace name')]
-    [Alias('Namespace')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
-    [System.String]
-    ${NamespaceName},
-
-    [Parameter(Mandatory, HelpMessage='Name of the Resource group within the Azure subscription.')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
-    [System.String]
-    ${ResourceGroupName},
-
     [Parameter(HelpMessage='Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
     ${SubscriptionId},
 
-    [Parameter(Mandatory, HelpMessage='The rights associated with the rule.')]
-    [Alias('Right')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.AccessRights])]
+    [Parameter(HelpMessage='The Name to check the namespace name availability and The namespace name can contain only letters, numbers, and hyphens. The namespace must start with a letter, and it must end with a letter or number.')]
+    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.AccessRights[]]
-    ${AccessRight},
+    [System.String]
+    ${NamespaceName},
 
     [Parameter(HelpMessage='The credentials, account, tenant, and subscription used for communication with Azure.')]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -83,7 +65,7 @@ param(
 )
 
 process {
-    Az.ServiceBus.internal\New-AzServiceBusNamespaceAuthorizationRule @PSBoundParameters
+    Az.ServiceBus.internal\Test-AzServiceBusNamespaceNameAvailability @PSBoundParameters
 }
 
 }
