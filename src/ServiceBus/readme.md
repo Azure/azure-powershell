@@ -83,7 +83,7 @@ directive:
     set:
       subject: $1DisasterRecoveryConfiguration$2
   - where:
-      subject: DisasterRecoveryConfiguration
+      subject: (.*)DisasterRecoveryConfiguration(.*)
       parameter-name: Alias
     set:
       alias:
@@ -111,10 +111,10 @@ directive:
       subject: (.*)MigrationConfig(.*)
     set:
       subject: $1Migration$2
-  # - where:
-  #     subject: MigrationMigration
-  #   set:
-  #     subject: Migration
+  - where:
+      subject: MigrationMigration
+    set:
+      subject: Migration
   - where:
       subject: MigrationAndStartMigration
     set:
