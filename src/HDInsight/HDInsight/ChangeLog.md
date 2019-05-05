@@ -20,13 +20,13 @@
 ## Upcoming Release
 
 ## Version 2.0.0
-* Removed two cmdlets:
-    - Grant-AzHDInsightHttpServicesAccess
-    - Revoke-AzHDInsightHttpServicesAccess
-* Added a new cmdlet Set-AzHDInsightGatewayCredential to replace Grant-AzHDInsightHttpServicesAccess
-* Update cmdlet Get-AzHDInsightJobOutput to distinguish reader role and hdinsight operator role:
-    - Users with reader role need to specify `DefaultStorageAccountKey` parameter explicitly, otherwise error occurs.
-	- Users with hdinsight operator role will not be affected.
+* Removed the `Grant-AzHDInsightHttpServicesAccess` and `Revoke-AzHDInsightHttpServicesAccess` cmdlets. These are no longer necessary because HTTP access is always enabled on all HDInsight clusters.
+* Added a new `Set-AzHDInsightGatewayCredential`  cmdlet. Use this cmdlet to change the gateway HTTP username and password (replaces `Grant-AzHDInsightHttpServicesAccess`).
+* Updated the `Get-AzHDInsightJobOutput` cmdlet to support granular role-based access to the storage key.
+    - Users with HDInsight Cluster Operator, Contributor, or Owner roles will not be affected.
+    - Users with only the Reader role will need to specify `DefaultStorageAccountKey` parameter explicitly.
+
+For more information about these role-based access changes, see [aka.ms/hdi-config-update](http://aka.ms/hdi-config-update)
 
 
 ## Version 1.1.0
