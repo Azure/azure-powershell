@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            // Get blueprint, serialize it and write it to disk
+            // Get serialized blueprint and write it to disk
             string serializedDefinition = BlueprintClient.GetBlueprintDefinitionJsonFromObject(Blueprint, Version);
 
             var blueprintPath = Path.Combine(OutputPath, Blueprint.Name);
@@ -40,34 +40,24 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             {
                Directory.CreateDirectory(blueprintPath);
             }
-            else
-            {
-                //clean up the directory
-            }
+         
+            var definitionFileFullPath = Path.Combine(blueprintPath, $"{Blueprint.Name}.json");
 
-
-            var definitionFileFullPath = Path.Combine(blueprintPath, $"Blueprint-{Blueprint.Name}.json");
-
-            // Technically this should never happen
             this.ConfirmAction(
                 this.Force || !File.Exists(definitionFileFullPath),
-                "Want to overwrite the output file " + $"{Blueprint.Name}.json?",
-                "Overwriting the output file",
+                "Do you want to overwrite the output file " + $"{Blueprint.Name}.json?",
+                "Overwriting the output file.",
                 definitionFileFullPath,
                 () => File.WriteAllText(definitionFileFullPath, serializedDefinition)
             );
 
-            // Get artifacts from this blueprint, serialize it and write it to disk
+            // Get serialized artifacts from this blueprint and write it to disk
             var artifactsPath = Path.Combine(blueprintPath, "Artifacts");
             if (!Directory.Exists(artifactsPath))
             {
                 Directory.CreateDirectory(artifactsPath);
             }
-            else
-            {
-                //cleanup the directory
-            }
-
+   
             var artifacts = BlueprintClient.ListArtifacts(Blueprint.Scope, Blueprint.Name, Version);
             
             foreach (var artifact in artifacts)
@@ -78,8 +68,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
                 this.ConfirmAction(
                     this.Force || !File.Exists(artifactFileFullPath),
-                    "Want to overwrite the output file " + $"{artifact.Name}.json?",
-                    "Overwriting the output file",
+                    "Do you want to overwrite the output file " + $"{artifact.Name}.json?",
+                    "Overwriting the output file.",
                     artifactFileFullPath,
                     () => File.WriteAllText(artifactFileFullPath, serializedArtifact)
                 );

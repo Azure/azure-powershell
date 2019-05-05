@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Microsoft.Azure.Commands.Blueprint.Common;
 using Microsoft.Azure.Commands.Blueprint.Models;
 using Microsoft.Azure.Management.Blueprint;
 using Microsoft.Azure.Management.Blueprint.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -17,7 +20,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
          DefaultParameterSetName = BlueprintConstants.ParameterSetNames.SubscriptionScope), OutputType(typeof(string))]
     public class ImportAzureRmBlueprint : BlueprintCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "Name for the new blueprint ", ValueFromPipeline = true)]
+        [Parameter(Mandatory = true, HelpMessage = "Name of the blueprint to import. ", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public string BlueprintName { get; set; }
 
@@ -50,76 +53,105 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
         private void ImportBlueprint(string scope, string resolvedPath)
         {
-            DirectoryInfo directory = new DirectoryInfo(resolvedPath);
-            FileInfo[] files = directory.GetFiles("*.json");
-            var blueprintFileCounter = 0;
+            var blueprintPath = GetValidatedBlueprintPath(resolvedPath, BlueprintName);
 
-            files.ForEach( file => { if (File.Exists(file.FullName)) blueprintFileCounter++; });
-
-            if (blueprintFileCounter > 1)
+            BlueprintModel bpObject;
+            try
             {
-                // say there is more than one blueprint file detected. Delete some.
-                throw new Exception(
-                    "Multiple blueprint files detected. Please have only one blueprint file in this location.");
-            }
-
-            foreach (var file in files)
-            {
-                var bpObject = JsonConvert.DeserializeObject<BlueprintModel>(File.ReadAllText(file.FullName),
+                bpObject = JsonConvert.DeserializeObject<BlueprintModel>(File.ReadAllText(blueprintPath),
                     DefaultJsonSettings.DeserializerSettings);
-
-                var blueprintExists = BlueprintClient.GetBlueprint(scope, BlueprintName) != null;
-
-                this.ConfirmAction(
-                    Force || !blueprintExists,
-                    $"This will overwrite the unpublished changes in the blueprint {BlueprintName} and its artifacts. Would you like to continue?",
-                    "Overwriting the unpublished blueprint and artifacts",
-                    BlueprintName,
-                    () => DeleteBlueprintArtifactsIfExist(scope, BlueprintName)
-                );
-
-                BlueprintClient.CreateOrUpdateBlueprint(scope,
-                    BlueprintName, bpObject);
             }
+            catch (Exception ex)
+            {
+                throw new Exception("Can't deserialize the JSON file: " + blueprintPath + ". " + ex.Message);
+            }
+           
+            this.ConfirmAction(
+                Force || !BlueprintExists(scope, BlueprintName),
+                $"This will overwrite any unpublished changes in the blueprint {BlueprintName} and its artifacts. Would you like to continue?",
+                "Overwriting the unpublished blueprint and artifacts",
+                BlueprintName,
+                () => DeleteBlueprintArtifactsIfExist(scope, BlueprintName)
+            );
+
+            BlueprintClient.CreateOrUpdateBlueprint(scope, BlueprintName, bpObject);
+        }
+
+        private bool BlueprintExists(string scope, string blueprintName)
+        {
+            PSBlueprintBase blueprint = null;
+            try
+            {
+                blueprint = BlueprintClient.GetBlueprint(scope, blueprintName);
+            }
+            catch (Exception ex)
+            {
+                if (ex is CloudException cex && cex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                   // Blueprint doesn't exists. Ignore the exception and continue.
+                }
+                else
+                {
+                    // if the exception is due to some other error, halt and let the user know.
+                    throw new Exception("An unexpected error occured while checking if blueprint already exists. Try again in a few minutes." + ex.Message);
+                }
+            }
+
+            return blueprint != null;
+        }
+
+        private string GetValidatedBlueprintPath(string resolvedPath, string blueprintName)
+        {
+            var blueprintPath = Path.Combine(resolvedPath, blueprintName + ".json");
+
+            if (!File.Exists(blueprintPath))
+            {
+                throw new Exception(
+                    $"Cannot locate a blueprint file with the name {blueprintName} in: {resolvedPath}.");
+            }
+
+            return blueprintPath;
         }
 
         private void ImportArtifacts(string scope, string resolvedPath)
         {
-            // if everything is right to start import, do so:
-            var artifactsPath = System.IO.Path.Combine(resolvedPath, "Artifacts");
+            // if everything is right, start import:
+            const string artifacts = "Artifacts";
+
+            var artifactsPath = Path.Combine(resolvedPath, artifacts);
             if (!Directory.Exists(artifactsPath))
             {
-                throw new DirectoryNotFoundException("Can't find the Artifacts folder.");
+                throw new DirectoryNotFoundException($"Can't find folder {artifacts} in path {resolvedPath}.");
             }
 
             DirectoryInfo artifactsDirectory = new DirectoryInfo(artifactsPath);
             FileInfo[] artifactsFiles = artifactsDirectory.GetFiles("*.json");
+
             foreach (var artifactFile in artifactsFiles)
             {
-                if (File.Exists(artifactFile.FullName))
+                Artifact artifactObject;
+
+                try
                 {
-                    Artifact artifactObject = null;
-                    try
-                    {
-                        //To-Do: why the artifact name doesn't get deserialized?
-                        artifactObject = JsonConvert.DeserializeObject<Artifact>(
-                            File.ReadAllText(ResolveUserPath(artifactFile.FullName)),
-                            DefaultJsonSettings.DeserializerSettings);
-                    }
-                    catch
-                    {
-                        throw new Exception("Can't deserialize the JSON file: " + artifactFile.FullName);
-                    }
-
-                    BlueprintClient.CreateArtifact(scope, BlueprintName,
-                        System.IO.Path.GetFileNameWithoutExtension(artifactFile.Name), artifactObject);
-
+                    artifactObject = JsonConvert.DeserializeObject<Artifact>(
+                        File.ReadAllText(ResolveUserPath(artifactFile.FullName)),
+                        DefaultJsonSettings.DeserializerSettings);
                 }
+                catch (Exception ex)
+                {
+                    throw new Exception("Can't deserialize the JSON file: " + artifactFile.FullName + ". " + ex.Message);
+                }
+
+                // Artifact name comes from the file name
+                BlueprintClient.CreateArtifact(scope, BlueprintName, Path.GetFileNameWithoutExtension(artifactFile.Name), artifactObject);
             }
         }
 
         private void DeleteBlueprintArtifactsIfExist(string scope, string blueprintName)
         {
+            // If blueprint doesn't exists, return
+            if (!BlueprintExists(scope, blueprintName)) return;
+
             var artifactList = BlueprintClient.ListArtifacts(scope, blueprintName, null);
 
             artifactList.ForEach(artifact => BlueprintClient.DeleteArtifact(scope, blueprintName, artifact.Name));
