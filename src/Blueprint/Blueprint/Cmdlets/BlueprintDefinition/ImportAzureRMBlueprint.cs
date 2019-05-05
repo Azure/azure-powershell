@@ -44,16 +44,15 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             string scope = this.IsParameterBound(c => c.ManagementGroupId) 
                 ? Utils.GetScopeForManagementGroup(ManagementGroupId) 
                 : Utils.GetScopeForSubscription(SubscriptionId ?? DefaultContext.Subscription.Id);
-
-            var resolvedPath = this.ResolveUserPath(InputPath);
-            ImportBlueprint(scope, resolvedPath);
-            ImportArtifacts(scope, resolvedPath);
+          
+            ImportBlueprint(scope, InputPath);
+            ImportArtifacts(scope, InputPath);
 
         }
 
-        private void ImportBlueprint(string scope, string resolvedPath)
+        private void ImportBlueprint(string scope, string InputPath)
         {
-            var blueprintPath = GetValidatedBlueprintPath(resolvedPath, BlueprintName);
+            var blueprintPath = GetValidatedBlueprintPath(InputPath, BlueprintName);
 
             BlueprintModel bpObject;
             try
@@ -100,29 +99,41 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             return blueprint != null;
         }
 
-        private string GetValidatedBlueprintPath(string resolvedPath, string blueprintName)
+        private string GetValidatedFilePath(string inputPath, string fileName)
         {
-            var blueprintPath = Path.Combine(resolvedPath, blueprintName + ".json");
+            var resolvedPath = ResolveUserPath(inputPath);
+
+            var blueprintPath = Path.Combine(resolvedPath, fileName + ".json");
 
             if (!File.Exists(blueprintPath))
             {
                 throw new Exception(
-                    $"Cannot locate a blueprint file with the name {blueprintName} in: {resolvedPath}.");
+                    $"Cannot locate a file with the name {fileName} in: {resolvedPath}.");
             }
 
             return blueprintPath;
         }
 
-        private void ImportArtifacts(string scope, string resolvedPath)
+        private string GetValidatedFolderPath(string inputPath, string folderName)
+        {
+            var resolvedPath = ResolveUserPath(inputPath);
+
+            var artifactsPath = Path.Combine(resolvedPath, folderName);
+
+            if (!Directory.Exists(artifactsPath))
+            {
+                throw new DirectoryNotFoundException($"Can't find folder {folderName} in path {resolvedPath}.");
+            }
+
+            return artifactsPath;
+        }
+
+        private void ImportArtifacts(string scope, string inputPath)
         {
             // if everything is right, start import:
             const string artifacts = "Artifacts";
 
-            var artifactsPath = Path.Combine(resolvedPath, artifacts);
-            if (!Directory.Exists(artifactsPath))
-            {
-                throw new DirectoryNotFoundException($"Can't find folder {artifacts} in path {resolvedPath}.");
-            }
+            var artifactsPath = GetValidatedFolderPath(inputPath, artifacts);
 
             DirectoryInfo artifactsDirectory = new DirectoryInfo(artifactsPath);
             FileInfo[] artifactsFiles = artifactsDirectory.GetFiles("*.json");
