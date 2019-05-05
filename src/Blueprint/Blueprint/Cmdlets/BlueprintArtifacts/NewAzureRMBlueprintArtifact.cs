@@ -33,7 +33,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintArtifact", DefaultParameterSetName = ParameterSetNames.CreateTemplateArtifact), OutputType(typeof(Artifact))]
-    public class NewAzureRMBlueprintArtifact : BlueprintCmdletBase
+    public class NewAzureRMBlueprintArtifact : BlueprintArtifactsCmdletBase
     {
         #region Parameters
         [Parameter(ParameterSetName = ParameterSetNames.CreateArtifactByInputFile, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         [ValidateNotNullOrEmpty]
         public Hashtable PolicyParameter { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.CreateTemplateArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        [Parameter(ParameterSetName = ParameterSetNames.CreateTemplateArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
         [ValidateNotNullOrEmpty]
         public string TemplateParameterFile { get; set; }
 
@@ -123,6 +123,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                         WriteObject(BlueprintClient.CreateArtifact(scope, Blueprint.Name, Name, artifact));
                         break;
                     case ParameterSetNames.CreateRoleAssignmentArtifact:
+                        // Check if chosen -Type parameter matches with parameters set
                         if (!Type.Equals(PSArtifactKind.RoleAssignmentArtifact)) throw new PSInvalidOperationException("Artifact type mismatch."); ;
 
                         var roleAssignmentArtifact = new RoleAssignmentArtifact
@@ -141,13 +142,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                     case ParameterSetNames.CreatePolicyAssignmentArtifact:
                         if (!Type.Equals(PSArtifactKind.PolicyAssignmentArtifact)) throw new PSInvalidOperationException("Artifact type mismatch.");
 
-                        Dictionary<string, ParameterValueBase> policyAssignmentParameters = new Dictionary<string, ParameterValueBase>();
-
-                        foreach (var key in PolicyParameter.Keys)
-                        {
-                            var value = new ParameterValue(PolicyParameter[key], null);
-                            policyAssignmentParameters.Add(key.ToString(), value);
-                        }
+                        var policyAssignmentParameters = GetPolicyAssignmentParameters(PolicyParameter);
 
                         var policyArtifact = new PolicyAssignmentArtifact
                         {
@@ -165,36 +160,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                     case ParameterSetNames.CreateTemplateArtifact:
                         if (!Type.Equals(PSArtifactKind.TemplateArtifact)) throw new PSInvalidOperationException("Artifact type mismatch."); ;
 
-                        var templatePath = ResolveUserPath(TemplateFile);
-                        var parameterFilePath = ResolveUserPath(TemplateParameterFile); 
-
-                        if (templatePath == null || !File.Exists(templatePath))
-                        {
-                            throw new FileNotFoundException(string.Format("Can't find template file at " + TemplateFile));
-                        }
-
-                        Dictionary<string, ParameterValueBase> parameters = new Dictionary<string, ParameterValueBase>();
-                        if (this.IsParameterBound(c => c.TemplateParameterFile)) 
-                        {
-                            if (parameterFilePath == null || !File.Exists(parameterFilePath))
-                            {
-                                throw new FileNotFoundException(string.Format("Can't find template parameter file at: " + TemplateParameterFile));
-                            }
-
-                            // Missing schema here.
-                            JObject parsedJson = JObject.Parse(File.ReadAllText(parameterFilePath));
-                            //To-Do: Next action is to find a better way to check if parameters exists and parse.
-                            var parametersHashtable = parsedJson["parameters"].ToObject<Dictionary<string, JObject>>();
-
-                            foreach (var key in parametersHashtable.Keys)
-                            {
-                                var kvp = parametersHashtable[key];
-                                var value = kvp["value"].ToString();
-                                var paramValue = new ParameterValue(value);
-                                parameters.Add(key, paramValue);
-                            }
-                            //paramObjects.ForEach(kvp => parameters.Add(kvp.Key, kvp.Value));
-                        }
+                        var parameters = GetTemplateParametersFromFile(ValidateAndReturnFilePath(TemplateParameterFile));
  
                         var templateArtifact = new TemplateArtifact
                         {
@@ -202,7 +168,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                             Description = Description,
                             ResourceGroup = ResourceGroupName,
                             Parameters = parameters,
-                            Template = JObject.Parse(File.ReadAllText(templatePath)),
+                            Template = JObject.Parse(File.ReadAllText(ValidateAndReturnFilePath(TemplateFile))),
                             DependsOn = DependsOn 
                         };
 
@@ -218,29 +184,5 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             }
         }
         #endregion
-
-        // To-Do: Update error message
-        private void ThrowIfArtifactExits(string scope, string blueprintName, string artifactName)
-        {
-            PSArtifact artifact = null;
-
-            try
-            {
-                artifact = BlueprintClient.GetArtifact(scope, blueprintName, Name, null);
-            }
-            catch (Exception ex)
-            {
-                if (ex is CloudException cex && cex.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
-                {
-                    // if exception is for a reason other than .NotFound, pass it to the caller.
-                    throw;
-                }
-            }
-
-            if (artifact != null)
-            {
-                throw new Exception(string.Format(Resources.ArtifactExists, Name, blueprintName));
-            }
-        }
     }
 }
