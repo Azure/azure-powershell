@@ -115,6 +115,7 @@ function Test-RunbookWithParameter
     $job = $automationAccount | Start-AzAutomationRunbook -Name $runbook.Name -Parameters $parameters
     WaitForJobStatus -Id $job.Id -Status "Completed"
     $jobOutput = $automationAccount | Get-AzAutomationJobOutput -Id $job.Id -Stream Output
+    $JobOutputRecord = $jobOutput | Get-AzAutomationJobOutputRecord -ErrorAction Stop
     $automationAccount | Remove-AzAutomationRunbook -Name $runbook.Name -Force 
     Assert-Throws { $automationAccount | Get-AzAutomationRunbook -Name $runbook.Name}
 }
