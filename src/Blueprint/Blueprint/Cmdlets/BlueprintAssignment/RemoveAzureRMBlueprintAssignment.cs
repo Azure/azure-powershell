@@ -45,13 +45,14 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         #region Cmdlet Overrides
         public override void ExecuteCmdlet()
         {
-            var subscription = SubscriptionId ?? DefaultContext.Subscription.Id;
-
             try
             {
                 switch (ParameterSetName)
                 {
                     case ParameterSetNames.DeleteBlueprintAssignmentByName:
+
+                        var subscription = SubscriptionId ?? DefaultContext.Subscription.Id;
+
                         if (ShouldProcess(subscription, string.Format(Resources.DeleteAssignmentShouldProcessString, Name)))
                         {
                             var deletedAssignment = BlueprintClient.DeleteBlueprintAssignment(Utils.GetScopeForSubscription(subscription), Name);
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                         }
                         break;
                     case ParameterSetNames.DeleteBlueprintAssignmentByObject:
-                        if (ShouldProcess(subscription, string.Format(Resources.DeleteAssignmentShouldProcessString, InputObject.Name)))
+                        if (ShouldProcess(InputObject.Scope, string.Format(Resources.DeleteAssignmentShouldProcessString, InputObject.Name)))
                         {
                             var deletedAssignment = BlueprintClient.DeleteBlueprintAssignment(InputObject.Scope, InputObject.Name);
 
