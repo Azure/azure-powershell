@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintWithArtifacts",
          DefaultParameterSetName = BlueprintConstants.ParameterSetNames.SubscriptionScope), OutputType(typeof(string))]
-    public class ImportAzureRmBlueprint : BlueprintCmdletBase
+    public class ImportAzureRmBlueprint : BlueprintDefinitionCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Name of the blueprint to import. ", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -47,12 +47,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
           
             ImportBlueprint(scope, InputPath);
             ImportArtifacts(scope, InputPath);
-
         }
 
         private void ImportBlueprint(string scope, string InputPath)
         {
-            var blueprintPath = GetValidatedBlueprintPath(InputPath, BlueprintName);
+            var blueprintPath = GetValidatedFilePath(InputPath, BlueprintName);
 
             BlueprintModel bpObject;
             try

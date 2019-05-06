@@ -24,11 +24,10 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintArtifact", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.ArtifactsByBlueprint), OutputType(typeof(PSBlueprintAssignment))]
-    public class GetAzureRmArtifact : BlueprintCmdletBase
+    public class GetAzureRmArtifact : BlueprintArtifactsCmdletBase
     {
         #region Parameters
         [Parameter(ParameterSetName = ParameterSetNames.ArtifactsByBlueprint, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        //[ValidatePattern("^[0-9a-zA-Z_-]*$", Options = RegexOptions.Compiled | RegexOptions.CultureInvariant)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

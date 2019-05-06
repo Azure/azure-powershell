@@ -25,7 +25,7 @@ using BlueprintConstants = Microsoft.Azure.Commands.Blueprint.Common.BlueprintCo
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintAssignment", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.DeleteBlueprintAssignmentByName), OutputType(typeof(PSBlueprintAssignment))]
-    public class RemoveAzureRmBlueprintAssignment : BlueprintCmdletBase
+    public class RemoveAzureRmBlueprintAssignment : BlueprintAssignmentCmdletBase
     {
         #region Parameters
         [Parameter(ParameterSetName = ParameterSetNames.DeleteBlueprintAssignmentByObject, Position = 0, Mandatory = false, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.AssignmentSubscriptionId)]

@@ -28,7 +28,7 @@ using Microsoft.Rest.Azure;
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Blueprint", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.CreateBlueprintBySubscription), OutputType(typeof(PSBlueprint))]
-    public class NewAzureRmBlueprint : BlueprintCmdletBase
+    public class NewAzureRmBlueprint : BlueprintDefinitionCmdletBase
     {
         #region Parameters
         [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintBySubscription, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]

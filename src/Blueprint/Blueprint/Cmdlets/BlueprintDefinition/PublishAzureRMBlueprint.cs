@@ -26,7 +26,7 @@ using System.Text.RegularExpressions;
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     [Cmdlet("Publish", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Blueprint", DefaultParameterSetName = ParameterSetNames.PublishBlueprint), OutputType(typeof(PSPublishedBlueprint))]
-    public class PublishAzureRmBlueprint : BlueprintCmdletBase
+    public class PublishAzureRmBlueprint : BlueprintDefinitionCmdletBase
     {
         #region Parameters
         [Parameter(ParameterSetName = ParameterSetNames.PublishBlueprint, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]

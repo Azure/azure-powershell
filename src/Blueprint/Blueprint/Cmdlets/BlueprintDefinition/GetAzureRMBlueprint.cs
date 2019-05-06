@@ -25,7 +25,7 @@ using ParameterHelpMessages = Microsoft.Azure.Commands.Blueprint.Common.Blueprin
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets 
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Blueprint", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSBlueprint),typeof(PSPublishedBlueprint))]
-    public class GetAzureRmBlueprint : BlueprintCmdletBase
+    public class GetAzureRmBlueprint : BlueprintDefinitionCmdletBase
     {
         #region Parameters
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionScope, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionSubscriptionId)]

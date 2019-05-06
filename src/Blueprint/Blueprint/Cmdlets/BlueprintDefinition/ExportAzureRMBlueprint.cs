@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     [Cmdlet("Export", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintWithArtifacts", DefaultParameterSetName =
          BlueprintConstants.ParameterSetNames.SubscriptionScope), OutputType(typeof(string))]
-    public class ExportAzureRmBlueprint : BlueprintCmdletBase
+    public class ExportAzureRmBlueprint : BlueprintDefinitionCmdletBase
     {
         private const string ExportToFileParamSet = "ExportToFile";
 

@@ -34,7 +34,7 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintAssignment", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.CreateBlueprintAssignment), OutputType(typeof(PSBlueprintAssignment))]
-    public class NewAzureRmBlueprintAssignment : BlueprintCmdletBase
+    public class NewAzureRmBlueprintAssignment : BlueprintAssignmentCmdletBase
     {
         #region Parameters
         [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintAssignmentName)]
