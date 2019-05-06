@@ -21,6 +21,7 @@
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 * Enhanced process of multiple columns classification.
 * Include sku properties (sku name, family, capacity) in response from Get-AzSqlServerServiceObjective and format as table by default.
+* Rename Advanced Threat Protection cmdlets to Advanced Data Security and enable Vulnerability Assessment by default
 
 ## Version 1.8.0
 * Support Database Data Classification.

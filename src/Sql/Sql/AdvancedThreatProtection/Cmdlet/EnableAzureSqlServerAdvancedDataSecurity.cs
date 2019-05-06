@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "Do not auto enable Vulnerability Assessment (This will not create a storage account)")]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter DoNotAutoEnableVulnerabilityAssessment { get; set; }
+        public SwitchParameter DoNotConfigureVulnerabilityAssessment { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         {
             model.IsEnabled = true;
 
-            if (DoNotAutoEnableVulnerabilityAssessment)
+            if (DoNotConfigureVulnerabilityAssessment)
             {
                 ModelAdapter.SetServerAdvancedDataSecurity(model);
             }

@@ -34,7 +34,7 @@ function Test-AdvancedDataSecurityPolicyTest
 		Assert-False { $policy.IsEnabled }
 
 		# Enabled Advanced Data Security Policy
-		Enable-AzSqlServerAdvancedDataSecurity -ResourceGroupName $params.rgname -ServerName $params.serverName -DoNotAutoEnableVulnerabilityAssessment
+		Enable-AzSqlServerAdvancedDataSecurity -ResourceGroupName $params.rgname -ServerName $params.serverName -DoNotConfigureVulnerabilityAssessment
 		$policy = Get-AzSqlServerAdvancedDataSecurityPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
 				
 		# Validate the policy
@@ -64,7 +64,7 @@ function Test-AdvancedDataSecurityPolicyTest
 		Assert-AreEqual $policy.ExcludedDetectionTypes.Count 1
 		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Sql_Injection_Vulnerability)}
 
-		Enable-AzSqlServerAdvancedDataSecurity -ResourceGroupName $params.rgname -ServerName $params.serverName -DoNotAutoEnableVulnerabilityAssessment
+		Enable-AzSqlServerAdvancedDataSecurity -ResourceGroupName $params.rgname -ServerName $params.serverName -DoNotConfigureVulnerabilityAssessment
 
 		# Assert
 		$policy = Get-AzSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
