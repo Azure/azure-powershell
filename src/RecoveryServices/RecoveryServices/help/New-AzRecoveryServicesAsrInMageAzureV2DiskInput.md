@@ -5,54 +5,32 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryse
 schema: 2.0.0
 ---
 
-# Update-AzRecoveryServicesAsrvCenter
+# New-AzRecoveryServicesAsrInMageAzureV2DiskInput
 
 ## SYNOPSIS
-Update discovery details for a registered vCenter.
+Create disk input for disk to protect vMWare to Azure.
 
 ## SYNTAX
 
-### Default (Default)
 ```
-Update-AzRecoveryServicesAsrvCenter -InputObject <ASRvCenter> [-Account <ASRRunAsAccount>] [-Port <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByResourceId
-```
-Update-AzRecoveryServicesAsrvCenter -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzRecoveryServicesAsrInMageAzureV2DiskInput -DiskId <String> -LogStorageAccountId <String>
+ -DiskType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzRecoveryServicesAsrvCenter** cmdlet is updates discovery details for a registered vCenter.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Update-AzRecoveryServicesAsrvCenter -Account $fabric.fabricSpecificDetails.RunAsAccounts[1] -InputObject $vCenter
-Returns ASRJOB for update vCenter.
+```powershell
+PS C:> New-AzRecoveryServicesAsrInMageAzureV2DiskInput -DiskId $diskId -LogStorageAccountId $logStorageAccountId
+ -DiskType $diskType
 ```
 
-Update discovery details for a registered vCenter.
+{{ Add example description here }}
 
 ## PARAMETERS
-
-### -Account
-vCenter login credentials account.
-
-```yaml
-Type: ASRRunAsAccount
-Parameter Sets: Default
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
@@ -70,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -84,48 +62,49 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The vCenter server object to update discovery details for.
+### -DiskId
+Specify the DiskId of the disk that this mapping corresponds to.
 
 ```yaml
-Type: ASRvCenter
-Parameter Sets: Default
-Aliases: vCenter
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Port
-The TCP port on the vCenter server to use for discovery.
-
-```yaml
-Type: Int32
-Parameter Sets: Default
+Type: String
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Specifies the resourceId of vCenter.
+### -DiskType
+Specifies the Recovery disk type.
 
 ```yaml
 Type: String
-Parameter Sets: ByResourceId
+Parameter Sets: (All)
+Aliases:
+Accepted values: Premium_LRS, Standard_LRS, Standard_SSD
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogStorageAccountId
+Specifies the log or cache storage account Id to be used to store replication logs.
+
+```yaml
+Type: String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -150,13 +129,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRvCenter
+### None
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.AsrInMageAzureV2DiskInput
 
 ## NOTES
 

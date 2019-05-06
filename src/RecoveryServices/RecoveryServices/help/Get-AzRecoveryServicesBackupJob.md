@@ -74,7 +74,7 @@ Specifies the Backup management type.
 Currently, only AzureVM, AzureStorage is supported.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
+Type: BackupManagementType
 Parameter Sets: (All)
 Aliases:
 Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL, AzureStorage, AzureWorkload
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -108,7 +108,7 @@ For more information about **DateTime** objects, type `Get-Help Get-Date`.
 Use UTC format for dates.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 Specifies the name of the Backup job to get.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase
+Type: JobBase
 Parameter Sets: (All)
 Aliases:
 
@@ -140,7 +140,7 @@ The ID is the InstanceId property of an **AzureRmRecoveryServicesBackupJob** obj
 To obtain an **AzureRmRecoveryServicesBackupJob** object, use Get-AzRecoveryServicesBackupJob.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -163,7 +163,7 @@ The acceptable values for this parameter are:
 - Unregister
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobOperation]
+Type: JobOperation
 Parameter Sets: (All)
 Aliases:
 Accepted values: Backup, Restore, ConfigureBackup, DisableBackup, DeleteBackupData
@@ -186,7 +186,7 @@ The acceptable values for this parameter are:
 - CompletedWithWarnings
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobStatus]
+Type: JobStatus
 Parameter Sets: (All)
 Aliases:
 Accepted values: InProgress, Cancelling, Cancelled, Completed, CompletedWithWarnings, Failed
@@ -205,7 +205,7 @@ If you specify this parameter, you must also specify the *From* parameter.
 Use UTC format for dates.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -220,7 +220,7 @@ Accept wildcard characters: False
 ARM ID of the Recovery Services Vault.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -232,7 +232,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

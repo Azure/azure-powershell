@@ -66,7 +66,7 @@ The acceptable values for this parameter are:
 - AzureStorage
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType
+Type: BackupManagementType
 Parameter Sets: GetItemsForVault
 Aliases:
 Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL, AzureStorage, AzureWorkload
@@ -83,7 +83,7 @@ Specifies a container object from which this cmdlet gets backup items.
 To obtain an **AzureRmRecoveryServicesBackupContainer**, use the Get-AzRecoveryServicesBackupContainer cmdlet.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase
+Type: ContainerBase
 Parameter Sets: GetItemsForContainer
 Aliases:
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 Specifies the name of the container.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 Protection policy object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase
+Type: PolicyBase
 Parameter Sets: GetItemsForPolicy
 Aliases:
 
@@ -152,7 +152,7 @@ There is a protection error.
 Protection is disabled.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionState
+Type: ItemProtectionState
 Parameter Sets: (All)
 Aliases:
 Accepted values: IRPending, ProtectionError, Protected, ProtectionStopped
@@ -171,7 +171,7 @@ The acceptable values for this parameter are:
 - Unhealthy
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionStatus
+Type: ItemProtectionStatus
 Parameter Sets: (All)
 Aliases:
 Accepted values: Healthy, Unhealthy
@@ -187,7 +187,7 @@ Accept wildcard characters: False
 ARM ID of the Recovery Services Vault.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -206,7 +206,7 @@ The acceptable values for this parameter are:
 - AzureFiles
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
+Type: WorkloadType
 Parameter Sets: GetItemsForContainer, GetItemsForVault
 Aliases:
 Accepted values: AzureVM, AzureSQLDatabase, AzureFiles, MSSQL
@@ -219,7 +219,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

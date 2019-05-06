@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
 online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesasrjob
@@ -48,7 +48,7 @@ The credentials, account, tenant, and subscription used for communication with A
 
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -66,7 +66,7 @@ To obtain a **DateTime** object for this parameter, use the Get-Date cmdlet.
 For more information, type `Get-Help Get-Date`.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: DateTime
 Parameter Sets: ByParam
 Aliases:
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 Specifies the ASR job object to get updated details for.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob
+Type: ASRJob
 Parameter Sets: ByObject
 Aliases:
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Specify the ASR job by name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByName
 Aliases:
 
@@ -112,7 +112,7 @@ Specifies the start time for the jobs.
 This cmdlet gets all jobs that started after the specified time.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: DateTime
 Parameter Sets: ByParam
 Aliases:
 
@@ -137,7 +137,7 @@ The acceptable values for this parameter are:
 - Suspended
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByParam
 Aliases:
 Accepted values: NotStarted, InProgress, Succeeded, Other, Failed, Cancelled, Suspended
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 Specifies the ID of the object. Used to search for jobs on the specified object.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByParam
 Aliases:
 
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

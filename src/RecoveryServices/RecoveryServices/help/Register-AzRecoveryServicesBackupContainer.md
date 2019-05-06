@@ -8,7 +8,7 @@ schema: 2.0.0
 # Register-AzRecoveryServicesBackupContainer
 
 ## SYNOPSIS
-This command allows Azure Backup to convert the ‘Resource’ to a ‘Backup Container’ which is then registered to the given Recovery services vault. The Azure Backup service can then discover workloads of the given workload type within this container to be protected later.
+This command allows Azure Backup to convert the ï¿½Resourceï¿½ to a ï¿½Backup Containerï¿½ which is then registered to the given Recovery services vault. The Azure Backup service can then discover workloads of the given workload type within this container to be protected later.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ The cmdlet registers an Azure VM for AzureWorkloads with specific workloadType.
 
 ### Example 1
 ```
-PS C:\> Register-AzRecoveryServicesBackupContainer -ResourceId <AzureVMID> -VaultId <vaultID> -WorkloadType “MSSQL” -BackupManagementType “AzureWorkload”
+PS C:\> Register-AzRecoveryServicesBackupContainer -ResourceId <AzureVMID> -VaultId <vaultID> -WorkloadType ï¿½MSSQLï¿½ -BackupManagementType ï¿½AzureWorkloadï¿½
 ```
 
 The cmdlet registers an azure VM for the workload MSSQL.
@@ -44,7 +44,7 @@ The cmdlet registers an azure VM for the workload MSSQL.
 The backup management type of the Azure Backup container
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType
+Type: BackupManagementType
 Parameter Sets: (All)
 Aliases:
 Accepted values: AzureWorkload
@@ -56,11 +56,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Container
 Container where the item resides
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase
+Type: ContainerBase
 Parameter Sets: ReRegister
 Aliases:
 
@@ -75,7 +90,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -90,7 +105,7 @@ Accept wildcard characters: False
 Force registers container (prevents confirmation dialog). This parameter is optional.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +120,7 @@ Accept wildcard characters: False
 ID of the Azure Resource whose representative item needs to be checked if it is already protected by some RecoveryServices Vault in the subscription.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Register
 Aliases:
 
@@ -120,7 +135,7 @@ Accept wildcard characters: False
 ARM ID of the Recovery Services Vault.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -131,11 +146,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WorkloadType
 Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles, MSSQL).
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
+Type: WorkloadType
 Parameter Sets: (All)
 Aliases:
 Accepted values: AzureVM, AzureSQLDatabase, AzureFiles, MSSQL
@@ -147,39 +178,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

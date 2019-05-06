@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
 online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/new-azrecoveryservicesasrazuretoazurediskreplicationconfig
@@ -41,11 +41,26 @@ Create a disk mapping object for Azure virtual machine disks to be replicated.Us
 
 ## PARAMETERS
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -60,7 +75,7 @@ Accept wildcard characters: False
 Specifies the disk id of managed disk.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: AzureToAzureManagedDisk
 Aliases:
 
@@ -75,7 +90,7 @@ Accept wildcard characters: False
 Specifies the log or cache storage account Id to be used to store replication logs.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -90,7 +105,7 @@ Accept wildcard characters: False
 Specifies the input is for managed disk.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: AzureToAzureManagedDisk
 Aliases:
 
@@ -105,7 +120,7 @@ Accept wildcard characters: False
 Specifies the ID of the Azure storage account to replicate to.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: AzureToAzure
 Aliases:
 
@@ -120,10 +135,10 @@ Accept wildcard characters: False
 Specifies the account type of replicated managed disk.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: AzureToAzureManagedDisk
 Aliases:
-Accepted values: Premium_LRS, Standard_LRS
+Accepted values: Premium_LRS, Standard_LRS, Standard_SSD
 
 Required: True
 Position: Named
@@ -136,7 +151,7 @@ Accept wildcard characters: False
 Specifies the recovery resource group id for replicated managed disk.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: AzureToAzureManagedDisk
 Aliases:
 
@@ -151,10 +166,10 @@ Accept wildcard characters: False
 Specifies the recovery target disk for replicated managed disk.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: AzureToAzureManagedDisk
 Aliases:
-Accepted values: Premium_LRS, Standard_LRS
+Accepted values: Premium_LRS, Standard_LRS, Standard_SSD
 
 Required: True
 Position: Named
@@ -167,26 +182,11 @@ Accept wildcard characters: False
 Specify the VHD URI of the disk that this mapping corresponds to.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: AzureToAzure
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -198,7 +198,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -210,7 +210,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
