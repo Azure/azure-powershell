@@ -1,48 +1,49 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/disable-azsqlinstanceadvanceddatasecurity
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/disable-azsqlserveradvanceddatasecurity
 schema: 2.0.0
 ---
 
-# Disable-AzSqlInstanceAdvancedDataSecurity
+# Disable-AzSqlServerAdvancedDataSecurity
 
 ## SYNOPSIS
-Disables Advanced Data Security on a managed instance.
+Disables Advanced Data Security on a server.
 
 ## SYNTAX
 
 ```
-Disable-AzSqlInstanceAdvancedDataSecurity [-InputObject <AzureSqlManagedInstanceModel>] -InstanceName <String>
+Disable-AzSqlServerAdvancedDataSecurity [-InputObject <AzureSqlServerModel>] -ServerName <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Disable-AzSqlInstanceAdvancedDataSecurity** cmdlet disables Advanced Data Security on a managed instance.
+The **Disable-AzSqlServerAdvancedDataSecurity** cmdlet disables Advanced Data Security on a server.
 
 ## EXAMPLES
 
-### Example 1 - Disable managed instance Advanced Data Security
+### Example 1
+### Example 1 - Disable server Advanced Data Security
 ```powershell
-PS C:\>  Disable-AzSqlInstanceAdvancedDataSecurity `
+PS C:\>  Disable-AzSqlServerAdvancedDataSecurity `
             -ResourceGroupName "ResourceGroup01" `
-            -InstanceName "ManagedInstance01" `
+            -ServerName "Server01" 
 
 ResourceGroupName	         : ResourceGroup01
-ManagedInstanceName		     : ManagedInstance01
+ServerName		             : Server01
 IsEnabled		             : False
 ```
 
-### Example 2 - Disable server Advanced Data Security from managed instance resource
+### Example 2 - Disable server Advanced Data Security from server resource
 ```powershell
-PS C:\>  Get-AzSqlInstance `
+PS C:\>  Get-AzSqlServer `
            -ResourceGroupName "ResourceGroup01" `
-           -Name "ManagedInstance01" `
-           | Disable-AzSqlInstanceAdvancedDataSecurity
+           -ServerName "Server01" `
+           | Disable-AzSqlServerAdvancedDataSecurity
 
 ResourceGroupName	         : ResourceGroup01
-ManagedInstanceName		     : ManagedInstance01
+ServerName		             : Server01
 IsEnabled		             : False
 ```
 
@@ -52,7 +53,7 @@ IsEnabled		             : False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -64,10 +65,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The managed instance object to use with Advanced Data Security policy operation
+The server object to use with Advanced Data Security policy operation
 
 ```yaml
-Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+Type: AzureSqlServerModel
 Parameter Sets: (All)
 Aliases:
 
@@ -78,26 +79,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -InstanceName
-SQL Database managed instance name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -108,11 +94,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ServerName
+SQL Database server name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -128,7 +129,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -140,17 +141,18 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+### Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
 
 ### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model.ManagedInstanceAdvancedDataSecurityPolicyModel
+### Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model.ServerAdvancedDataSecurityPolicyModel
 
 ## NOTES
 
