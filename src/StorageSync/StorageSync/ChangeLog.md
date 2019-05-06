@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.8.1
+* Support for tracking upload and download sync activity in parallel
+
 ## Version 0.8.0
 * Update all cmdlets required to manage StorageSync ARM resources.
 

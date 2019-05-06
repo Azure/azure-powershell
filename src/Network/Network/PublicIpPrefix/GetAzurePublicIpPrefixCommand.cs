@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = GetAzurePublicIpPrefixParameterSetNames.List)]
         [ResourceNameCompleter("Microsoft.Network/publicIPPrefixes", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
@@ -45,6 +46,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = GetAzurePublicIpPrefixParameterSetNames.List)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(

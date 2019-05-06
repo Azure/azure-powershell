@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 			HelpMessage = "The Azure Sql Server DNS Alias name.")]
 		[Alias("DnsAliasName")]
 		[ValidateNotNullOrEmpty]
+        [SupportsWildcards]
 		public string Name { get; set; }
 
 		/// <summary>

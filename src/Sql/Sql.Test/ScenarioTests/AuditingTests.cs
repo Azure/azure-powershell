@@ -28,11 +28,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             var storageV2Client = GetStorageManagementClient(context);
             var newResourcesClient = GetResourcesClient(context);
             var monitorManagementClient = GetMonitorManagementClient(context);
+            var commonMonitorManagementClient = GetCommonMonitorManagementClient(context);
             var eventHubManagementClient = GetEventHubManagementClient(context);
             var operationalInsightsManagementClient = GetOperationalInsightsManagementClient(context);
             Helper.SetupSomeOfManagementClients(sqlClient, storageV2Client, storageV2Client,
-                newResourcesClient, monitorManagementClient, eventHubManagementClient,
-                operationalInsightsManagementClient);
+                newResourcesClient, monitorManagementClient, commonMonitorManagementClient,
+                eventHubManagementClient, operationalInsightsManagementClient);
         }
 
         public AuditingTests(ITestOutputHelper output) : base(output)

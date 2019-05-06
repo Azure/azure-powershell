@@ -100,6 +100,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
+        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -107,6 +108,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.ContainerService/containerServices", "ResourceGroupName")]
+        [SupportsWildcards]
         public string Name { get; set; }
     }
 }
