@@ -401,7 +401,7 @@ function Test-LinuxVirtualMachineBootDiagnostics
 
 <#
 .SYNOPSIS
-Test Virtual Machine Boot Diagnostics with Set-AzVMBootDiagnostics
+Test Virtual Machine Boot Diagnostics with Set-AzVMBootDiagnostic
 #>
 function Test-VirtualMachineBootDiagnosticsSet
 {
@@ -485,7 +485,7 @@ function Test-VirtualMachineBootDiagnosticsSet
         Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imgRef.Skus;
         Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
 
-        $p = Set-AzVMBootDiagnostics -VM $p -Enable -ResourceGroupName $rgname -StorageAccountName $stoname2;
+        $p = Set-AzVMBootDiagnostic -VM $p -Enable -ResourceGroupName $rgname -StorageAccountName $stoname2;
 
         # Create Virtual Machine
         New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
@@ -509,7 +509,7 @@ function Test-VirtualMachineBootDiagnosticsSet
         Assert-AreEqual $stoaccount2.PrimaryEndpoints.Blob   $vm1.DiagnosticsProfile.BootDiagnostics.StorageUri;
 
         # Update Virtual Machine
-        $vm1 | Set-AzVMBootDiagnostics -Disable | Update-AzVM
+        $vm1 | Set-AzVMBootDiagnostic -Disable | Update-AzVM
 
         # Get VM
         $vm1 = Get-AzVM -Name $vmname -ResourceGroupName $rgname;
