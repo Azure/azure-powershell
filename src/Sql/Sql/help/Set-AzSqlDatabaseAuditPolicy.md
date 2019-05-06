@@ -63,47 +63,47 @@ PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -Server
 PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -BlobStorageAuditState Enabled -StorageAccountName "Storage22" -StorageAccountSubscriptionId "7fe3301d-31d3-4668-af5e-211a890ba6e3"
 ```
 
-### Example 4: Enable the blob storage auditing policy of an Azure SQL database with advanced filtering using a T-SQL predicate
+### Example 4.1: Enable the blob storage auditing policy of an Azure SQL database with advanced filtering using a T-SQL predicate
 ```
 PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -PredicateExpression "statement <> 'select 1'" -BlobStorageAuditState Enabled -StorageAccountName "Storage22"
 ```
 
-### Example 5: Remove the advanced filtering setting from the blob storage auditing policy of an Azure SQL database
+### Example 4.2: Remove the advanced filtering setting from the auditing policy of an Azure SQL database
 ```
-PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -PredicateExpression "" -BlobStorageAuditState Enabled -StorageAccountName "Storage22"
+PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -PredicateExpression ""
 ```
 
-### Example 6: Enable the event hub auditing policy of an Azure SQL database
+### Example 5: Enable the event hub auditing policy of an Azure SQL database
 ```
 PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -EventHubAuditState Enabled -EventHubName "EventHubName" -EventHubAuthorizationRuleResourceId "EventHubAuthorizationRuleResourceId"
 ```
 
-### Example 7: Disable the event hub auditing policy of an Azure SQL database
+### Example 6: Disable the event hub auditing policy of an Azure SQL database
 ```
 PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -EventHubAuditState Disabled
 ```
 
-### Example 8: Enable the log analytics auditing policy of an Azure SQL database
+### Example 7: Enable the log analytics auditing policy of an Azure SQL database
 ```
 PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -LogAnalyticsAuditState Enabled -WorkspaceResourceId "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2"
 ```
 
-### Example 9: Disable the log analytics auditing policy of an Azure SQL database
+### Example 8: Disable the log analytics auditing policy of an Azure SQL database
 ```
 PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -LogAnalyticsAuditState Disabled
 ```
 
-### Example 10: Disable, through pipeline, the log analytics auditing policy of an Azure SQL database
+### Example 9: Disable, through pipeline, the log analytics auditing policy of an Azure SQL database
 ```
 PS C:\>Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" | Set-AzSqlDatabaseAuditPolicy -LogAnalyticsAuditState Disabled
 ```
 
-### Example 11: Disable sending audit records of an Azure SQL database to blob storage, and enable sending them to log analytics.
+### Example 10: Disable sending audit records of an Azure SQL database to blob storage, and enable sending them to log analytics.
 ```
 PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -LogAnalyticsAuditState Enabled  -WorkspaceResourceId "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2" -BlobStorageAuditState Disabled
 ```
 
-### Example 12: Enable sending audit records of an Azure SQL database to blob storage, event hub and log analytics.
+### Example 11: Enable sending audit records of an Azure SQL database to blob storage, event hub and log analytics.
 ```
 PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -BlobStorageAuditState Enabled -StorageAccountName "Storage22" -EventHubAuditState Enabled -EventHubName "EventHubName" -EventHubAuthorizationRuleResourceId "EventHubAuthorizationRuleResourceId" -LogAnalyticsAuditState Enabled  -WorkspaceResourceId "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2"
 ```
