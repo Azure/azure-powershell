@@ -9,7 +9,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing
         internal const string ConfirmParameterName = "Confirm";
         internal const string StorageAccountNameParameterName = "StorageAccountName";
         internal const string ServerAuditingCmdletsSuffix = "SqlServerAuditing";
+        internal const string ServerAuditPolicyCmdletsSuffix = "SqlServerAuditPolicy";
         internal const string DatabaseAuditingCmdletsSuffix = "SqlDatabaseAuditing";
+        internal const string DatabaseAuditPolicyCmdletsSuffix = "SqlDatabaseAuditPolicy";
         internal const string BlobStorageParameterSetName = "DefaultParameterSet";
         internal const string BlobStorageByParentResourceParameterSetName = "BlobStorageByParentResourceSet";
         internal const string EventHubParameterSetName = "EventHubSet";
@@ -18,6 +20,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing
         internal const string LogAnalyticsByParentResourceParameterSetName = "LogAnalyticsByParentResourceSet";
         internal const string StorageAccountSubscriptionIdParameterSetName = "StorageAccountSubscriptionIdSet";
         internal const string StorageAccountSubscriptionIdByParentResourceParameterSetName = "StorageAccountSubscriptionIdByParentResourceSet";
+        internal const string DatabaseParameterSetName = "DatabaseParameterSet";
+        internal const string DatabaseObjectParameterSetName = "DatabaseObjectParameterSet";
+        internal const string ServerParameterSetName = "ServerParameterSet";
+        internal const string ServerObjectParameterSetName = "ServerObjectParameterSet";
+        internal const string AuditPolicyObjectParameterSetName = "AuditPolicyObjectParameterSet";
         internal const string DiagnosticSettingsNamePrefix = "SQLSecurityAuditEvents_3d229c42-c7e7-4c97-9a99-ec0d0d8b86c1_";
         internal const string SQLSecurityAuditCategory = "SQLSecurityAuditEvents";
         internal const string BlobStorageParameterName = "BlobStorage";
