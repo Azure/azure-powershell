@@ -58,10 +58,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             get
             {
+                RefreshContextsFromCache();
                 IAzureContext result = null;
                 if (!string.IsNullOrEmpty(DefaultContextKey) && Contexts != null && Contexts.ContainsKey(DefaultContextKey))
                 {
                     result = this.Contexts[DefaultContextKey];
+                }
+                else if (DefaultContextKey == null)
+                {
+                    throw new InvalidOperationException("The default context can no longer be found; please run `Get-AzContext -ListAvailable` to see all available contexts, " + 
+                                                        "'Select-AzContext' to select a new default context, or 'Connect-AzAccount' to login with a new account.");
                 }
 
                 return result;
@@ -188,7 +194,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     this.Contexts.Add(context.Key, context.Value);
                 }
 
-                DefaultContextKey = profile.DefaultContextKey ?? "Default";
+                DefaultContextKey = profile.DefaultContextKey ?? (profile.Contexts.Any() ? null : "Default");
             }
         }
 
@@ -424,7 +430,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             bool result = Contexts.Remove(name);
             if (string.Equals(name, DefaultContextKey))
             {
-                DefaultContextKey = Contexts.Keys.FirstOrDefault() ?? "Default";
+                DefaultContextKey = Contexts.Keys.Any() ? null : "Default";
             }
 
             return result;
@@ -630,6 +636,103 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
 
             return result;
+        }
+
+        private void RefreshContextsFromCache()
+        {
+            var accounts = SharedTokenCacheClientFactory.GetAccounts();
+            if (!accounts.Any())
+            {
+                if (!Contexts.Any() || (Contexts.Count == 1 && Contexts.Any(c => c.Key == "Default")))
+                {
+                    // If there are no accounts in the cache, but we never had any existing contexts, return
+                    return;
+                }
+
+                Console.WriteLine($"No accounts found in the shared token cache; removing all user contexts.");
+                foreach (var contextName in Contexts.Keys)
+                {
+                    var context = Contexts[contextName];
+                    if (context.Account.Type != AzureAccount.AccountType.User)
+                    {
+                        continue;
+                    }
+
+                    TryRemoveContext(contextName);
+                }
+            }
+            else
+            {
+                var removedUsers = new HashSet<string>();
+                foreach (var contextName in Contexts.Keys)
+                {
+                    var context = Contexts[contextName];
+                    if (context.Account.Type != AzureAccount.AccountType.User)
+                    {
+                        continue;
+                    }
+
+                    if (accounts.Any(a => string.Equals(a.Username, context.Account.Id, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        continue;
+                    }
+
+                    if (!removedUsers.Contains(context.Account.Id))
+                    {
+                        removedUsers.Add(context.Account.Id);
+                        Console.WriteLine($"User '{context.Account.Id}' was not found in the shared token cache; removing all contexts with this user.");
+                    }
+
+                    TryRemoveContext(contextName);
+                }
+
+                // Check to see if each account has at least one context
+                foreach (var account in accounts)
+                {
+                    if (Contexts.Values.Any(v => string.Equals(v.Account.Id, account.Username, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        continue;
+                    }
+
+                    Console.WriteLine($"Creating context for each subscription accessible by account '{account.Username}'.");
+                    var environment = AzureEnvironment.PublicEnvironments
+                                        .Where(env => env.Value.ActiveDirectoryAuthority.Contains(account.Environment))
+                                        .Select(env => env.Value)
+                                        .FirstOrDefault();
+                    var azureAccount = new AzureAccount()
+                    {
+                        Id = account.Username,
+                        Type = AzureAccount.AccountType.User
+                    };
+
+                    var tokens = SharedTokenCacheClientFactory.GetTenantTokensForAccount(account, Console.WriteLine);
+                    foreach (var token in tokens)
+                    {
+                        var azureTenant = new AzureTenant() { Id = token.TenantId };
+                        azureAccount.SetOrAppendProperty(AzureAccount.Property.Tenants, token.TenantId);
+                        var subscriptions = SharedTokenCacheClientFactory.GetSubscriptionsFromTenantToken(account, token, Console.WriteLine);
+                        if (!subscriptions.Any())
+                        {
+                            subscriptions.Add(null);
+                        }
+
+                        foreach (var subscription in subscriptions)
+                        {
+                            var context = new AzureContext(subscription, azureAccount, environment, azureTenant);
+                            if (!TryGetContextName(context, out string name))
+                            {
+                                Console.WriteLine($"Unable to get context name for subscription with id '{subscription.Id}'.");
+                                continue;
+                            }
+
+                            if (!TrySetContext(name, context))
+                            {
+                                Console.WriteLine($"Cannot create a context for subscription with id '{subscription.Id}'.");
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

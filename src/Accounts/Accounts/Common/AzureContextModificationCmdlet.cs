@@ -144,24 +144,6 @@ namespace Microsoft.Azure.Commands.Profile.Common
 #endif
         }
 
-        internal void TrySetupContextsFromCache()
-        {
-            using (var profile = GetDefaultProfile())
-            {
-                var profileClient = new RMProfileClient(profile);
-                profileClient.TrySetupContextsFromCache();
-            }
-        }
-
-        internal void TryRefreshContextsFromCache()
-        {
-            using (var profile = GetDefaultProfile())
-            {
-                var profileClient = new RMProfileClient(profile);
-                profileClient.TryRefreshContextsFromCache();
-            }
-        }
-
         /// <summary>
         /// Generate a runtime parameter with ValidateSet matching the current context
         /// </summary>
@@ -216,5 +198,9 @@ namespace Microsoft.Azure.Commands.Profile.Common
             return result;
         }
 
+        protected override void BeginProcessing()
+        {
+            // Skip BeginProcessing() for context modification cmdlets
+        }
     }
 }

@@ -30,8 +30,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Core
         private static readonly string CacheFileName = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "msal.cache");
 
-        private static readonly object fileLock = new object();
-
         private static readonly Lazy<ProtectedFileTokenCache> instance = new Lazy<ProtectedFileTokenCache>(() => new ProtectedFileTokenCache());
 
         IDataStore _store;
@@ -42,10 +40,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Core
         {
             if (_tokenCache == null)
             {
-                var tokenCache = new TokenCache();
-                tokenCache.SetBeforeAccess(BeforeAccessNotification);
-                tokenCache.SetAfterAccess(AfterAccessNotification);
-                _tokenCache = tokenCache;
+                _tokenCache = SharedTokenCacheClientFactory.GetTokenCache();
             }
 
             return _tokenCache;
@@ -77,7 +72,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Core
         private ProtectedFileTokenCache()
         {
             _store = AzureSession.Instance.DataStore;
-            Initialize(CacheFileName);
         }
 
         public ProtectedFileTokenCache(byte[] inputData, IDataStore store = null) : this(CacheFileName, store)
@@ -88,121 +82,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Core
         public ProtectedFileTokenCache(string cacheFile, IDataStore store = null)
         {
             _store = store ?? AzureSession.Instance.DataStore;
-            Initialize(cacheFile);
-        }
-
-        private void Initialize(string fileName)
-        {
-            EnsureCacheFile(fileName);
-
-            UserCache.SetAfterAccess(AfterAccessNotification);
-            UserCache.SetBeforeAccess(BeforeAccessNotification);
-        }
-
-        // Triggered right before ADAL needs to access the cache.
-        // Reload the cache from the persistent store in case it changed since the last access.
-        void BeforeAccessNotification(TokenCacheNotificationArgs args)
-        {
-            ReadFileIntoCache(args: args);
-        }
-
-        // Triggered right after ADAL accessed the cache.
-        void AfterAccessNotification(TokenCacheNotificationArgs args)
-        {
-            // if the access operation resulted in a cache update
-            EnsureStateSaved(args);
-        }
-
-        void EnsureStateSaved(TokenCacheNotificationArgs args)
-        {
-            if (args != null && args.HasStateChanged)
-            {
-                WriteCacheIntoFile(args);
-            }
-        }
-
-        private void ReadFileIntoCache(TokenCacheNotificationArgs args, string cacheFileName = null)
-        {
-            /*
-            if(cacheFileName == null)
-            {
-                cacheFileName = ProtectedFileTokenCache.CacheFileName;
-            }
-
-            lock (fileLock)
-            {
-                if (_store.FileExists(cacheFileName))
-                {
-                    var existingData = _store.ReadFileAsBytes(cacheFileName);
-                    if (existingData != null)
-                    {
-                        try
-                        {
-                            args.TokenCache.DeserializeMsalV3(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
-                        }
-                        catch (CryptographicException)
-                        {
-                            _store.DeleteFile(cacheFileName);
-                        }
-                    }
-                }
-            }
-            */
-        }
-
-        private void WriteCacheIntoFile(TokenCacheNotificationArgs args, string cacheFileName = null)
-        {
-            /*
-            if(cacheFileName == null)
-            {
-                cacheFileName = ProtectedFileTokenCache.CacheFileName;
-            }
-
-            var dataToWrite = ProtectedData.Protect(args.TokenCache.SerializeMsalV3(), null, DataProtectionScope.CurrentUser);
-            lock(fileLock)
-            {
-                if (args.HasStateChanged)
-                {
-                    _store.WriteFile(cacheFileName, dataToWrite);
-                }
-            }
-            */
-        }
-
-        private void EnsureCacheFile(string cacheFileName = null)
-        {
-            /*
-            lock (fileLock)
-            {
-                if (_store.FileExists(cacheFileName))
-                {
-                    var existingData = _store.ReadFileAsBytes(cacheFileName);
-                    if (existingData != null)
-                    {
-                        try
-                        {
-                            UserCache.DeserializeMsalV3(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
-                        }
-                        catch (CryptographicException)
-                        {
-                            _store.DeleteFile(cacheFileName);
-                        }
-                    }
-                }
-
-                // Eagerly create cache file.
-                var dataToWrite = ProtectedData.Protect(UserCache.SerializeMsalV3(), null, DataProtectionScope.CurrentUser);
-                _store.WriteFile(cacheFileName, dataToWrite);
-            }
-            */
         }
 
         public void Clear()
         {
-            if (_store.FileExists(CacheFileName))
-            {
-                _store.DeleteFile(CacheFileName);
-            }
+            SharedTokenCacheClientFactory.ClearCache();
         }
     }
 }
