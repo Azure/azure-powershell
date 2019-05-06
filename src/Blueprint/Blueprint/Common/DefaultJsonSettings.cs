@@ -1,10 +1,8 @@
-﻿
-using System.Collections.Generic;
-using Microsoft.Azure.Management.Blueprint.Models;
+﻿using Microsoft.Azure.Management.Blueprint.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Serialization;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Blueprint.Common
 {

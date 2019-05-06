@@ -12,19 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
-using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
-using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterSetNames;
-using ParameterHelpMessages = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterHelpMessages;
-using System.Text.RegularExpressions;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.Blueprint.Models;
-using System.Collections;
-using Microsoft.Azure.Management.Blueprint.Models;
 using Microsoft.Azure.Commands.Blueprint.Common;
+using Microsoft.Azure.Commands.Blueprint.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Blueprint.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Collections;
+using System.Management.Automation;
+using System.Text.RegularExpressions;
+using ParameterHelpMessages = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterHelpMessages;
+using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterSetNames;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {

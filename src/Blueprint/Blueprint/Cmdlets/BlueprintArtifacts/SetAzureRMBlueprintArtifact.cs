@@ -12,26 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Blueprint.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Blueprint.Models;
-using System;
-using System.Collections;
-using System.Linq;
-using System.Management.Automation;
-using System.Management.Automation.Language;
-using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
-using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterSetNames;
-using ParameterHelpMessages = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterHelpMessages;
-using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Blueprint.Common;
+using Microsoft.Azure.Management.Blueprint.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using Microsoft.Rest.Azure;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.Blueprint.Models;
+using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterSetNames;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
@@ -108,7 +100,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         #endregion
 
         #region Cmdlet Overrides
-
         public override void ExecuteCmdlet()
         {
             try
@@ -221,30 +212,5 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             }
         }
         #endregion
-
-        //To-Do: Update exception messages below
-
-        protected void ThrowIfArtifactNotExist(string scope, string blueprintName, string artifactName)
-        {
-            PSArtifact artifact = null;
-
-            try
-            {
-                artifact = BlueprintClient.GetArtifact(scope, blueprintName, artifactName, null);
-            }
-            catch (Exception ex)
-            {
-                if (ex is CloudException cex && cex.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
-                {
-                    // if exception is for a reason other than .NotFound, pass it to the caller.
-                    throw;
-                }
-            }
-
-            if (artifact == null)
-            {
-                throw new Exception(string.Format(Resources.ArtifactNotExist, artifactName, blueprintName));
-            }
-        }
     }
 }

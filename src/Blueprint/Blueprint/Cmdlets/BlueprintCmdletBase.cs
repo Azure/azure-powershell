@@ -16,30 +16,17 @@ using Microsoft.Azure.Commands.Blueprint.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Internal.Subscriptions;
-using System;
-using Microsoft.Rest;
-using Microsoft.Rest.Azure;
-using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
-using Microsoft.Azure.Commands.Blueprint.Models;
-using Microsoft.Azure.Management.Blueprint.Models;
-using System.Collections.Generic;
-using System.Collections;
-using System.Linq;
-using System.Net.Http;
-using System.Net;
-using System.Threading;
-using Newtonsoft.Json.Linq;
-using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
-using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
+using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01;
+using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
+using Microsoft.Rest;
+using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     public class BlueprintCmdletBase : AzureRMCmdlet
     {
-        #region Properties
         /// <summary>
         /// The blueprint client.
         /// </summary>
@@ -111,9 +98,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             set => resourceManagerClient = value;
         }
 
-        #endregion Properties
-
-        #region Cmdlet Overrides
         protected override void WriteExceptionError(Exception ex)
         {
             var aggEx = ex as AggregateException;
@@ -129,9 +113,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
             base.WriteExceptionError(ex);
         }
-        #endregion Cmdlet Overrides
-
-        #region Protected Methods
 
         /// <summary>
         /// Register Blueprint RP with a subscription.
@@ -147,7 +128,5 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 throw new KeyNotFoundException(string.Format(Resources.ResourceProviderRegistrationFailed, BlueprintConstants.BlueprintProviderNamespace));
             }
         }
-
-        #endregion Protected Methods
     }
 }

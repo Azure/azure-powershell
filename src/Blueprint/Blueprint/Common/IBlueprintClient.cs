@@ -13,10 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Blueprint.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.Azure.Management.Blueprint.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Blueprint.Common
 {

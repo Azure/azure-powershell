@@ -1,26 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
 using Microsoft.Azure.Commands.Blueprint.Common;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Internal.Subscriptions;
-using Microsoft.Rest;
-using Microsoft.Rest.Azure;
-using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
 using Microsoft.Azure.Commands.Blueprint.Models;
-using Microsoft.Azure.Management.Blueprint.Models;
-using System.Collections;
-using System.Linq;
-using System.Net.Http;
-using System.Net;
-using System.Threading;
-using Newtonsoft.Json.Linq;
-using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
+using Microsoft.Azure.Management.Blueprint.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
+using Microsoft.Rest.Azure;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
@@ -36,7 +39,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         /// <param name="Parameters"></param>
         /// <param name="ResourceGroups"></param>
         /// <returns></returns>
-        protected Assignment CreateAssignmentObject(string identityType, string userAssignedIdentity, string bpLocation, string blueprintId, PSLockMode? lockMode, Hashtable Parameters, Hashtable ResourceGroups, Hashtable SecureStringParameters)
+        protected Assignment CreateAssignmentObject(string identityType, string userAssignedIdentity, string bpLocation, string blueprintId, PSLockMode? lockMode, Hashtable parameters, Hashtable resourceGroups, Hashtable secureStringParameters)
         {
             Dictionary<string, UserAssignedIdentity> userAssignedIdentities = null;
 
@@ -58,20 +61,20 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 ResourceGroups = new Dictionary<string, ResourceGroupValue>()
             };
 
-            if (Parameters != null)
+            if (parameters != null)
             {
-                foreach (var key in Parameters.Keys)
+                foreach (var key in parameters.Keys)
                 {
-                    var value = new ParameterValue(Parameters[key], null);
+                    var value = new ParameterValue(parameters[key], null);
                     localAssignment.Parameters.Add(key.ToString(), value);
                 }
             }
 
-            if (SecureStringParameters != null)
+            if (secureStringParameters != null)
             {
-                foreach (var key in SecureStringParameters.Keys)
+                foreach (var key in secureStringParameters.Keys)
                 {
-                    var kvp = SecureStringParameters[key] as Hashtable;
+                    var kvp = secureStringParameters[key] as Hashtable;
                     string keyVaultId = null;
                     string secretName = null;
                     string secretVersion = null;
@@ -99,11 +102,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 }
             }
 
-            if (ResourceGroups != null)
+            if (resourceGroups != null)
             {
-                foreach (var key in ResourceGroups.Keys)
+                foreach (var key in resourceGroups.Keys)
                 {
-                    var kvp = ResourceGroups[key] as Hashtable;
+                    var kvp = resourceGroups[key] as Hashtable;
                     string name = null;
                     string location = null;
 
