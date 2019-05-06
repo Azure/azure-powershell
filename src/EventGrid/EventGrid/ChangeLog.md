@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.1
+* Updated the help text for endpoint to indicate that resources should be created before using the create/update event subscription cmdlets.
+
 ## Version 1.1.0
 * Updated to use the 2019-01-01 API version.
 * Update the following cmdlets to support new scenario in 2019-01-01 API version

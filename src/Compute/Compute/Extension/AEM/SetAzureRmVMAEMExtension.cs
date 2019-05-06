@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
@@ -206,14 +207,15 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
-                    var osDiskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(osdisk.ManagedDisk.Id),
-                        this._Helper.GetResourceNameFromId(osdisk.ManagedDisk.Id));
+                    var resId = new ResourceIdentifier(osdisk.ManagedDisk.Id);
+
+                    var osDiskMD = ComputeClient.ComputeManagementClient.Disks.Get(resId.ResourceGroupName, resId.ResourceName);
                     if (osDiskMD.Sku.Name == StorageAccountTypes.PremiumLRS)
                     {
                         WriteVerbose("OS Disk is a Premium Managed Disk - adding SLAs for OS disk");
                         var sla = this._Helper.GetDiskSLA(osDiskMD.DiskSizeGB, null);
                         var caching = osdisk.Caching;
-                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.name", Value = this._Helper.GetResourceNameFromId(osdisk.ManagedDisk.Id) });
+                        sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.name", Value = resId.ResourceName });
                         sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.caching", Value = caching });
                         sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.type", Value = AEMExtensionConstants.DISK_TYPE_PREMIUM_MD });
                         sapmonPublicConfig.Add(new KeyValuePair() { Key = "osdisk.sla.throughput", Value = sla.TP });
@@ -231,8 +233,9 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     if (disk.ManagedDisk != null)
                     {
-                        var diskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(disk.ManagedDisk.Id),
-                            this._Helper.GetResourceNameFromId(disk.ManagedDisk.Id));
+                        var resId = new ResourceIdentifier(disk.ManagedDisk.Id);
+
+                        var diskMD = ComputeClient.ComputeManagementClient.Disks.Get(resId.ResourceGroupName, resId.ResourceName);
 
                         if (diskMD.Sku.Name == StorageAccountTypes.PremiumLRS)
                         {
@@ -240,7 +243,7 @@ namespace Microsoft.Azure.Commands.Compute
                             var sla = this._Helper.GetDiskSLA(diskMD.DiskSizeGB, null);
                             var cachingMD = disk.Caching;
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.lun." + diskNumber, Value = disk.Lun });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = this._Helper.GetResourceNameFromId(disk.ManagedDisk.Id) });
+                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = resId.ResourceName });
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.caching." + diskNumber, Value = cachingMD });
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.type." + diskNumber, Value = AEMExtensionConstants.DISK_TYPE_PREMIUM_MD });
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.throughput." + diskNumber, Value = sla.TP });
@@ -253,7 +256,7 @@ namespace Microsoft.Azure.Commands.Compute
                             var sla = this._Helper.GetDiskSLA(diskMD.DiskSizeGB, null);
                             var cachingMD = disk.Caching;
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.lun." + diskNumber, Value = disk.Lun });
-                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = this._Helper.GetResourceNameFromId(disk.ManagedDisk.Id) });
+                            sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.name." + diskNumber, Value = resId.ResourceName });
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.caching." + diskNumber, Value = cachingMD });
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.type." + diskNumber, Value = AEMExtensionConstants.DISK_TYPE_ULTRA_MD });
                             sapmonPublicConfig.Add(new KeyValuePair() { Key = "disk.sla.throughput." + diskNumber, Value = diskMD.DiskMBpsReadWrite });

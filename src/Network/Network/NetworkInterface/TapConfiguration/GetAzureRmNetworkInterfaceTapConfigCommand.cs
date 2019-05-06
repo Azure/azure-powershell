@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = "GetByNameParameterSet",
             HelpMessage = "Name of the specific tap configuration.")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
 

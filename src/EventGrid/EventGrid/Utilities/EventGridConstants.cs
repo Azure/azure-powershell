@@ -31,7 +31,8 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string LabelsHelp = "Labels for the event subscription.";
         public const string EndpointTypeHelp = "Endpoint Type. This can be webhook, eventhub, storagequeue, or hybridconnection. Default value is webhook.";
         public const string EndpointHelp = "Event subscription destination endpoint. This can be a webhook URL, or the Azure resource ID of an EventHub, storage queue or hybridconnection. For example, the resource ID for a hybrid connection " +
-                                           "takes the following form: /subscriptions/[Azure Subscription ID]/resourceGroups/[ResourceGroupName]/providers/Microsoft.Relay/namespaces/[NamespaceName]/hybridConnections/[HybridConnectionName].";
+                                           "takes the following form: /subscriptions/[Azure Subscription ID]/resourceGroups/[ResourceGroupName]/providers/Microsoft.Relay/namespaces/[NamespaceName]/hybridConnections/[HybridConnectionName]. It is expected that " +
+                                           "the destination endpoint to be created and available for use before executing any Event Grid cmdlets.";
         public const string ResourceGroupNameHelp = "The name of the resource group.";
         public const string TopicNameHelp = "EventGrid topic name.";
         public const string TopicTypeNameHelp = "EventGrid topic type name.";

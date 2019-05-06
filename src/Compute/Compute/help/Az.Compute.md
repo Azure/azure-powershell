@@ -101,6 +101,9 @@ Get or list gallery image versions.
 ### [Get-AzImage](Get-AzImage.md)
 Gets the properties of an image.
 
+### [Get-AzProximityPlacementGroup](Get-AzProximityPlacementGroup.md)
+Get or list Proximity Placement Group resource(s).
+
 ### [Get-AzRemoteDesktopFile](Get-AzRemoteDesktopFile.md)
 Gets an .rdp file.
 
@@ -239,6 +242,9 @@ Creats an image.
 ### [New-AzImageConfig](New-AzImageConfig.md)
 Creates a configurable image object.
 
+### [New-AzProximityPlacementGroup](New-AzProximityPlacementGroup.md)
+Create Proximity Placement Group resource.
+
 ### [New-AzSnapshot](New-AzSnapshot.md)
 Creates a snapshot.
 
@@ -310,6 +316,9 @@ Removes an image.
 
 ### [Remove-AzImageDataDisk](Remove-AzImageDataDisk.md)
 Removes a data disk from an image object.
+
+### [Remove-AzProximityPlacementGroup](Remove-AzProximityPlacementGroup.md)
+Delete Proximity Placement Group resource.
 
 ### [Remove-AzSnapshot](Remove-AzSnapshot.md)
 Removes a snapshot.

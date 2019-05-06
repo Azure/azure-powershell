@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add new cmdlet Get-AzureRmDenyAssignment for retrieving deny assignments
+
+## Version 1.3.1
+* Fix documentation for wildcards
 
 ## Version 1.3.0
 * Improve handling of providers for `Get-AzResource` when providing `-ResourceId` or `-ResourceGroupName`, `-Name` and `-ResourceType` parameters
