@@ -56,7 +56,7 @@ module-version: 0.0.1
 skip-model-cmdlets: true
 
 directive:
-# General
+# Internal
   - where:
       subject: AuthorizationRule$|Key$|NameAvailability$
     hide: true
@@ -106,6 +106,31 @@ directive:
     set:
       alias: DisasterRecoveryConfigurationName
       parameter-name: Name
+  - where:
+      verb: Get
+      subject: DisasterRecoveryConfiguration
+    set:
+      alias: Get-AzServiceBusGeoDRConfiguration
+  - where:
+      verb: New
+      subject: DisasterRecoveryConfiguration
+    set:
+      alias: New-AzServiceBusGeoDRConfiguration
+  - where:
+      verb: Remove
+      subject: DisasterRecoveryConfiguration
+    set:
+      alias: Remove-AzServiceBusGeoDRConfiguration
+  - where:
+      verb: Invoke
+      subject: DisasterRecoveryFailOver
+    set:
+      alias: Set-AzServiceBusGeoDRConfigurationFailOver
+  - where:
+      verb: Disable
+      subject: DisasterRecoveryPairing
+    set:
+      alias: Set-AzServiceBusGeoDRConfigurationBreakPair
 # MigrationConfiguration
   - where:
       subject: (.*)MigrationConfig(.*)
@@ -158,4 +183,30 @@ directive:
       parameter-name: AuthorizationRuleName
     set:
       alias: Name
+# Remove Non-expanded
+  - where:
+      verb: Move
+      subject: ^Namespace$
+      variant: ^Migrate$|^MigrateSubscriptionIdViaHost$
+    remove: true
+  - where:
+      verb: New|Set
+      subject: DisasterRecoveryConfiguration|^Namespace$|NamespaceAuthorizationRule|NamespaceIPFilterRule|NamespaceNetworkRuleSet|NamespaceVirtualNetworkRule|^Queue$|QueueAuthorizationRule|^Rule$|^Subscription$|^Topic$|TopicAuthorizationRule
+      variant: ^Create$|^CreateSubscriptionIdViaHost$|^Update$|^UpdateSubscriptionIdViaHost$
+    remove: true
+  - where:
+      verb: New
+      subject: ^NamespaceKey$|^QueueKey$|^TopicKey$
+      variant: ^Regenerate$|^RegenerateSubscriptionIdViaHost$
+    remove: true
+  - where:
+      verb: Start
+      subject: ^Migration$
+      variant: ^Create$|^CreateSubscriptionIdViaHost$
+    remove: true
+  - where:
+      verb: Test
+      subject: DisasterRecoveryConfigurationNameAvailability|NamespaceNameAvailability
+      variant: ^Check$|^CheckSubscriptionIdViaHost$
+    remove: true
 ```
