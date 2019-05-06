@@ -262,7 +262,7 @@ This document describes the changes between the 1.0.0 and 2.0.0 versions of Az
   ```
 - Removed cmdlet `Revoke-AzHDInsightHttpServicesAccess`
 
-### Az.Storage (previously Azure.Storage and AzureRM.Storage)
+### Az.Storage
 - Namespaces for types returned from Blob, Queue, and File cmdlets have changed their namespace from `Microsoft.WindowsAzure.Storage` to `Microsoft.Azure.Storage`.  While this is not technically a breaking change according to the breakign change policy, it may require some changes in code that uses the .Net methods returned by these classes directly
 
   #### Example 1:  Add a message to a Queue (change CloudQueueMessage object namespace)
