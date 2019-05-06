@@ -11,6 +11,12 @@ Locale: en-US
 This topic displays help for the Azure Event Hub PowerShell resource manager cmdlets.
 
 ## Az.EventHub Cmdlets
+### [Add-AzEventHubIPRule](Add-AzEventHubIPRule.md)
+Add a single IPrule to the NetworkRuleSet of the given Namespace
+
+### [Add-AzEventHubVirtualNetworkRule](Add-AzEventHubVirtualNetworkRule.md)
+Add a single VirtualNetworkRule to NetworkRuleSet for the given Namespace
+
 ### [Get-AzEventHub](Get-AzEventHub.md)
 Gets the details of a single Event Hub, or gets a list of Event Hubs.
 
@@ -28,6 +34,9 @@ Gets the primary key details of the specified Event Hubs authorization rule.
 
 ### [Get-AzEventHubNamespace](Get-AzEventHubNamespace.md)
 Gets the details of an Event Hubs namespace, or gets a list of all Event Hubs namespaces in the current Azure subscription.
+
+### [Get-AzEventHubNetworkRuleSet](Get-AzEventHubNetworkRuleSet.md)
+Gets the details of an Event Hubs NetwrokruleSet of namespace in the current Azure subscription.
 
 ### [New-AzEventHub](New-AzEventHub.md)
 Creates a new Event Hub.
@@ -47,8 +56,17 @@ Creates a new primary or secondary key for the specified Event Hubs authorizatio
 ### [New-AzEventHubNamespace](New-AzEventHubNamespace.md)
 Creates an Event Hubs namespace.
 
+### [Remove-AzEventHubIPRule](Remove-AzEventHubIPRule.md)
+Remove a single IPrule to the NetworkRuleSet of the given Namespace
+
 ### [Remove-AzEventHub](Remove-AzEventHub.md)
 Removes the specified Event Hub.
+
+### [Remove-AzEventHubVirtualNetworkRule](Remove-AzEventHubVirtualNetworkRule.md)
+Removes the single given VirtualNetworkRule for the NetworkRuleSet of the Namespace
+
+### [Remove-AzEventHubNetworkRuleSet](Remove-AzEventHubNetworkRuleSet.md)
+Removes the NetwrokRuleSet for the Given Namespace
 
 ### [Remove-AzEventHubAuthorizationRule](Remove-AzEventHubAuthorizationRule.md)
 Removes the specified Event Hub authorization rule.
@@ -79,6 +97,9 @@ Invokes GEO DR failover and reconfigure the alias to point to the secondary name
 
 ### [Set-AzEventHubNamespace](Set-AzEventHubNamespace.md)
 Updates the specified Event Hubs namespace.
+
+### [Set-AzEventHubNetworkRuleSet](Set-AzEventHubNetworkRuleSet.md)
+Update the NetwrokruleSet of the given Namepsace in the current Azure subscription.
 
 ### [Test-AzEventHubName](Test-AzEventHubName.md)
 Checks the Availability of the given NameSpace Name or Alias (DR Configuration Name)

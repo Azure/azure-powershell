@@ -94,73 +94,6 @@ function Test-GetWebApp
 
 <#
 .SYNOPSIS
-Tests retrieving website metrics
-#>
-function Test-GetWebAppMetrics
-{
-	# Setup
-	$rgname = Get-ResourceGroupName
-	$wname = Get-WebsiteName
-	$location = Get-WebLocation
-	$whpName = Get-WebHostPlanName
-	$tier = "Shared"
-	$apiversion = "2015-08-01"
-	$resourceType = "Microsoft.Web/sites"
-
-	try
-	{
-		#Setup
-		New-AzResourceGroup -Name $rgname -Location $location
-		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier
-		
-		# Create new web app
-		$webapp = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName 
-		
-		# Assert
-		Assert-AreEqual $wname $webapp.Name
-		Assert-AreEqual $serverFarm.Id $webapp.ServerFarmId
-		
-		for($i = 0; $i -lt 10; $i++)
-		{
-			PingWebApp $webapp
-		}
-
-		$endTime = Get-Date
-		$startTime = $endTime.AddHours(-3)
-
-		$metricnames = @('CPU', 'Requests')
-		
-		# Get web app metrics
-		$metrics = Get-AzWebAppMetrics -ResourceGroupName $rgname -Name $wname -Metrics $metricnames -StartTime $startTime -EndTime $endTime -Granularity PT1M
-
-		$actualMetricNames = $metrics | Select -Expand Name | Select -Expand Value 
-
-		foreach ($i in $metricnames)
-		{
-			Assert-True { $actualMetricNames -contains $i}
-		}
-
-		# Get web app metrics via pipeline obj
-		$metrics = $webapp | Get-AzWebAppMetrics -Metrics $metricnames -StartTime $startTime -EndTime $endTime -Granularity PT1M
-
-		$actualMetricNames = $metrics | Select -Expand Name | Select -Expand Value 
-
-		foreach ($i in $metricnames)
-		{
-			Assert-True { $actualMetricNames -contains $i}
-		}
-	}
-	finally
-	{
-		# Cleanup
-		Remove-AzWebApp -ResourceGroupName $rgname -Name $wname -Force
-		Remove-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
-		Remove-AzResourceGroup -Name $rgname -Force
-	}
-}
-
-<#
-.SYNOPSIS
 Start stop restart web app
 #>
 function Test-StartStopRestartWebApp
@@ -1398,4 +1331,30 @@ function Test-CreateNewWebAppSimple
 	{
 		Remove-AzResourceGroup $appName
 	}
+}
+
+<#
+.SYNOPSIS
+Tests Tags are not overridden when calling Set-AzWebApp commandlet
+#>
+function Test-TagsNotRemovedBySetWebApp
+{
+	$rgname = "lketmtestantps10"
+	$appname = "lketmtestantps10"
+	$slot = "testslot"
+
+	$getApp =  Get-AzWebApp -ResourceGroupName $rgname -Name $appname
+	$getSlot = Get-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slot
+	Assert-notNull $getApp.Tags
+	Assert-notNull $getSlot.Tags
+
+	# Test - tags not removed after Set-AzWebApp
+	$webApp = Set-AzWebApp -ResourceGroupName $rgname -Name $appname -HttpsOnly $true
+	$slot = Set-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slot -HttpsOnly $true
+
+	Assert-AreEqual $true $webApp.HttpsOnly
+	Assert-AreEqual $true $slot.HttpsOnly
+
+	Assert-notNull $webApp.Tags
+	Assert-notNull $slot.Tags
 }

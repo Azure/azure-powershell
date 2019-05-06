@@ -12710,8 +12710,8 @@
     },
     {
       "VerbName": "Get",
-      "NounName": "AzRecoveryServicesBackupJobDetails",
-      "Name": "Get-AzRecoveryServicesBackupJobDetails",
+      "NounName": "AzRecoveryServicesBackupJobDetail",
+      "Name": "Get-AzRecoveryServicesBackupJobDetail",
       "ClassName": "Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.GetAzureRmRecoveryServicesBackupJobDetails",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
@@ -13218,7 +13218,9 @@
           ]
         }
       ],
-      "AliasList": []
+      "AliasList": [
+        "Get-AzRecoveryServicesBackupJobDetails"
+      ]
     },
     {
       "VerbName": "Stop",
@@ -19691,7 +19693,20 @@
               {
                 "Name": "",
                 "ReturnType": null,
-                "Parameters": []
+                "Parameters": [
+                  {
+                    "Name": "restoreRequestType",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "recoveryPoint",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "pointInTime",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
               }
             ]
           },
@@ -21160,7 +21175,20 @@
               {
                 "Name": "",
                 "ReturnType": null,
-                "Parameters": []
+                "Parameters": [
+                  {
+                    "Name": "restoreRequestType",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "recoveryPoint",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "pointInTime",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
               }
             ]
           },
@@ -22280,7 +22308,20 @@
                     {
                       "Name": "",
                       "ReturnType": null,
-                      "Parameters": []
+                      "Parameters": [
+                        {
+                          "Name": "restoreRequestType",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "recoveryPoint",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "pointInTime",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
                     }
                   ]
                 },

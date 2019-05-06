@@ -27,7 +27,7 @@
 
   <PropertyGroup>
     <!-- General -->
-    <Configuration Condition=" '$(Configuration)' != 'Release'">Debug</Configuration>
+    <Configuration Condition="'$(Configuration)' != 'Release'">Debug</Configuration>
     <Scope Condition="$(Scope) == ''">All</Scope>
     <TestFramework Condition="'$(TestFramework)' == ''">netcoreapp2.1</TestFramework>
 
@@ -43,7 +43,7 @@
     <SignedOutputRootDir>$(RepoRoot)signed</SignedOutputRootDir>
     <TestOutputDirectory>$(RepoArtifacts)/TestResults</TestOutputDirectory>
     <StaticAnalysisOutputDirectory>$(RepoArtifacts)/StaticAnalysisResults</StaticAnalysisOutputDirectory>
-    <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">$(RepoSrc)</NuGetPublishingSource>
+    <NuGetPublishingSource Condition="'$(NuGetPublishingSource)' == ''">$(RepoSrc)</NuGetPublishingSource>
 
     <!-- Misc -->
     <NuGetCommand>$(MSBuildProjectDirectory)/tools/NuGet.exe</NuGetCommand>
@@ -144,16 +144,16 @@
     <Exec Command="dotnet new sln -n Azure.PowerShell -o $(RepoArtifacts) --force" />
     <ItemGroup>
       <CsprojFiles Include="$(RepoRoot)src/**/*.csproj" Exclude="$(RepoRoot)src/**/*.Test.csproj;$(RepoRoot)src/**/Authenticators.csproj" />
-      <CsprojFiles Include="$(RepoRoot)src/**/*.Test.csproj" Exclude="$(Net472TestExclude)" Condition="'$(CodeSign)' == 'false' and '$(TestsToRun)' == 'All'" />
-      <CsprojFiles Include="$(RepoRoot)src/**/*.Test.csproj" Exclude="$(CoreTests)$(Net472TestExclude)" Condition="'$(CodeSign)' == 'false' and '$(TestsToRun)' == 'NonCore'" />
-      <CsprojFiles Include="$(CoreTests)" Exclude="$(Net472TestExclude)" Condition="'$(CodeSign)' == 'false' and '$(TestsToRun)' == 'Core'" />
+      <CsprojFiles Include="$(RepoRoot)src/**/*.Test.csproj" Exclude="$(Net472TestExclude)" Condition="'$(Configuration)' != 'Release' and '$(TestsToRun)' == 'All'" />
+      <CsprojFiles Include="$(RepoRoot)src/**/*.Test.csproj" Exclude="$(CoreTests)$(Net472TestExclude)" Condition="'$(Configuration)' != 'Release' and '$(TestsToRun)' == 'NonCore'" />
+      <CsprojFiles Include="$(CoreTests)" Exclude="$(Net472TestExclude)" Condition="'$(Configuration)' != 'Release' and '$(TestsToRun)' == 'Core'" />
       <CsprojFiles Include="$(RepoRoot)src/**/Authenticators.csproj" Condition="'$([MSBuild]::IsOsPlatform(&quot;Windows&quot;))' == 'true' and '$(TestFramework)' != 'net472'" />
     </ItemGroup>
     <!-- https://github.com/dotnet/cli/issues/6295#issuecomment-346973582 -->
     <Exec Command="dotnet sln $(RepoArtifacts)Azure.PowerShell.sln add &quot;%(CsprojFiles.FullPath)&quot;" />
     <PropertyGroup>
-      <BuildAction Condition="'$(CodeSign)' == 'false'">build</BuildAction>
-      <BuildAction Condition="'$(CodeSign)' == 'true'">publish</BuildAction>
+      <BuildAction Condition="'$(Configuration)' != 'Release'">build</BuildAction>
+      <BuildAction Condition="'$(Configuration)' == 'Release'">publish</BuildAction>
     </PropertyGroup>
     <Exec Command="dotnet $(BuildAction) $(RepoArtifacts)Azure.PowerShell.sln -c $(Configuration)" />
 
@@ -218,7 +218,7 @@
     <Error Text="Modified files were found with no update to their change log. Please add a snippet to the affected modules' change log." />
   </Target>
 
-  <Target Name="Publish" Condition="'$(CodeSign)' == 'true'">
+  <Target Name="Publish" Condition="'$(Configuration)' == 'Release'">
     <Message Importance="high" Text="Publishing Cmdlets using $(Scope) scope" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/NewOutputTypeIndex.ps1 -OutputFile $(RepoArtifacts)/outputtypes.json -BuildConfig $(Configuration)&quot;" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/NewHelpIndex.ps1 -OutputFile $(RepoArtifacts)/index.json -BuildConfig $(Configuration)&quot;" />

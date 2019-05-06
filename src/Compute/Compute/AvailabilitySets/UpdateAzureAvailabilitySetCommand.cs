@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -27,7 +26,6 @@ namespace Microsoft.Azure.Commands.Compute
     public class UpdateAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {
         private const string SkuParameterSetName = "SkuParameterSet";
-        private const string ManagedParamterSetName = "ManagedParamterSet";
 
         [Alias("VMProfile")]
         [Parameter(
@@ -45,14 +43,6 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = false,
             HelpMessage = "The Name of Sku")]
         public string Sku { get; set; }
-
-        [CmdletParameterBreakingChange("Managed", "Parameter is being deprecated.  Please use -Sku 'Aligned' instead.")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ManagedParamterSetName,
-            ValueFromPipelineByPropertyName = false,
-            HelpMessage = "Managed Availability Set")]
-        public SwitchParameter Managed { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -76,23 +66,9 @@ namespace Microsoft.Azure.Commands.Compute
                         Location = this.AvailabilitySet.Location,
                         PlatformUpdateDomainCount = this.AvailabilitySet.PlatformUpdateDomainCount,
                         PlatformFaultDomainCount = this.AvailabilitySet.PlatformFaultDomainCount,
-                        Tags = Tag == null ? null : Tag.Cast<DictionaryEntry>().ToDictionary(d => (string)d.Key, d => (string)d.Value)
+                        Tags = Tag == null ? null : Tag.Cast<DictionaryEntry>().ToDictionary(d => (string)d.Key, d => (string)d.Value),
+                        Sku = new Sku(this.Sku, null, null)
                     };
-
-                    if (this.ParameterSetName.Equals(ManagedParamterSetName))
-                    {
-                        avSetParams.Sku = new Sku
-                        {
-                            Name = "Aligned"
-                        };
-                    }
-                    else
-                    {
-                        avSetParams.Sku = new Sku
-                        {
-                            Name = this.Sku
-                        };
-                    }
 
                     var result = this.AvailabilitySetClient.CreateOrUpdateWithHttpMessagesAsync(
                         this.AvailabilitySet.ResourceGroupName,

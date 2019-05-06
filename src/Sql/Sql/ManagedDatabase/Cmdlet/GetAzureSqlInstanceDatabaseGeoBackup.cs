@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Alias("RecoverableInstanceDatabaseName")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances/recoverableDatabases", "ResourceGroupName", "InstanceName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         /// <summary>

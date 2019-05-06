@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public override string ResourceGroupName { get; set; }
 
         /// <summary>
@@ -52,6 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ServerName { get; set; }
         
         /// <summary>

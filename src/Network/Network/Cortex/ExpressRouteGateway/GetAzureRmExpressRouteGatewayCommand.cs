@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Alias("ResourceName", "ExpressRouteGatewayName")]
@@ -42,6 +43,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = "ListByResourceGroupName",
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         [Alias("expressRouteGatewayId")]
