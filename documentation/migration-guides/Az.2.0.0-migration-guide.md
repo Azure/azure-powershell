@@ -18,7 +18,7 @@ This document describes the changes between the 1.0.0 and 2.0.0 versions of Az
   ```
   #### After
   ```powershell
-  Update-AzAvailabilitySet -Sku Alighed
+  Update-AzAvailabilitySet -Sku Aligned
   ```
 - For consistency, removed `Image` parameter from 'ByName' and 'ByResourceId' parameter sets in `Update-AzImage` 
   
