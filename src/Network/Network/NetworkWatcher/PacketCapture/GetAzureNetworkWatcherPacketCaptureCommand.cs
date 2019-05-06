@@ -67,6 +67,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The packet capture name.")]
         [ResourceNameCompleter("Microsoft.Network/networkWatchers/packetCaptures", "ResourceGroupName", "NetworkWatcherName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string PacketCaptureName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]

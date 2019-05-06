@@ -1,5 +1,5 @@
-﻿using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.DataMovement;
+﻿using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.DataMovement;
 using System;
 using System.Globalization;
 using System.Management.Automation;

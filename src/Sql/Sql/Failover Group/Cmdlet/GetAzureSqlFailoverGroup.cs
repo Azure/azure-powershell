@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             Position = 2,
             HelpMessage = "The name of the Azure SQL Database Failover Group to retrieve.")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string FailoverGroupName { get; set; }
 
         /// <summary>
