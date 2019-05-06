@@ -12,15 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Blueprint.Common;
 using Microsoft.Azure.Commands.Blueprint.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
-using Microsoft.Azure.Commands.Blueprint.Common;
-using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterSetNames;
 using ParameterHelpMessages = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterHelpMessages;
-using BlueprintConstants = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
-
+using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterSetNames;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
@@ -43,7 +41,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
         #endregion Parameters
-
 
         #region Cmdlet Overrides
         public override void ExecuteCmdlet()

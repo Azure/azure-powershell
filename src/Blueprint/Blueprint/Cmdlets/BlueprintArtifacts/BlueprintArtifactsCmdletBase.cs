@@ -1,44 +1,31 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using Microsoft.Azure.Commands.Blueprint.Common;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
 using Microsoft.Azure.Commands.Blueprint.Models;
 using Microsoft.Azure.Management.Blueprint.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
 using Microsoft.Rest.Azure;
 using Newtonsoft.Json.Linq;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     public class BlueprintArtifactsCmdletBase : BlueprintCmdletBase
     {
-
-        // To-Do: Update error message
-        protected void ThrowIfArtifactExits(string scope, string blueprintName, string artifactName)
-        {
-            PSArtifact artifact = null;
-
-            try
-            {
-                artifact = BlueprintClient.GetArtifact(scope, blueprintName, artifactName, null);
-            }
-            catch (Exception ex)
-            {
-                if (ex is CloudException cex && cex.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
-                {
-                    // if exception is for a reason other than .NotFound, pass it to the caller.
-                    throw;
-                }
-            }
-
-            if (artifact != null)
-            {
-                throw new Exception(string.Format(Resources.ArtifactExists, artifactName, blueprintName));
-            }
-        }
-
         protected Dictionary<string, ParameterValueBase> GetPolicyAssignmentParameters(Hashtable policyParameter)
         {
             var policyAssignmentParameters = new Dictionary<string, ParameterValueBase>();
@@ -82,6 +69,53 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             //paramObjects.ForEach(kvp => parameters.Add(kvp.Key, kvp.Value));
 
             return parameters;
+        }
+
+        //To-Do: Update exception messages below
+
+        protected void ThrowIfArtifactNotExist(string scope, string blueprintName, string artifactName)
+        {
+            PSArtifact artifact = null;
+
+            try
+            {
+                artifact = BlueprintClient.GetArtifact(scope, blueprintName, artifactName, null);
+            }
+            catch (Exception ex)
+            {
+                if (ex is CloudException cex && cex.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
+                {
+                    // if exception is for a reason other than .NotFound, pass it to the caller.
+                    throw;
+                }
+            }
+
+            if (artifact == null)
+            {
+                throw new Exception(string.Format(Resources.ArtifactNotExist, artifactName, blueprintName));
+            }
+        }
+        protected void ThrowIfArtifactExits(string scope, string blueprintName, string artifactName)
+        {
+            PSArtifact artifact = null;
+
+            try
+            {
+                artifact = BlueprintClient.GetArtifact(scope, blueprintName, artifactName, null);
+            }
+            catch (Exception ex)
+            {
+                if (ex is CloudException cex && cex.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
+                {
+                    // if exception is for a reason other than .NotFound, pass it to the caller.
+                    throw;
+                }
+            }
+
+            if (artifact != null)
+            {
+                throw new Exception(string.Format(Resources.ArtifactExists, artifactName, blueprintName));
+            }
         }
     }
 }

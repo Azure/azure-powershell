@@ -12,22 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Blueprint.Models;
 using Microsoft.Azure.Commands.Blueprint.Models;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.Blueprint;
+using Microsoft.Azure.Management.Blueprint.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Management.Automation;
-using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Blueprint;
-using Microsoft.Azure.Management.Storage.Version2017_10_01.Models;
 using BlueprintManagement = Microsoft.Azure.Management.Blueprint;
-using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
-using Microsoft.Rest;
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Blueprint.Common
 {

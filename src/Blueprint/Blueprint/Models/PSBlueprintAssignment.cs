@@ -12,12 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common.Properties;
-using Microsoft.Azure.Commands.Blueprint.Common;
 using Microsoft.Azure.Management.Blueprint.Models;
 using System;
 using System.Collections.Generic;
-using Resources = Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Blueprint.Models
 {

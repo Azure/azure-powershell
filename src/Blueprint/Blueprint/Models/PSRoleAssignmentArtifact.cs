@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Microsoft.Azure.Management.Blueprint.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Microsoft.Azure.Management.Blueprint.Models;
 
 namespace Microsoft.Azure.Commands.Blueprint.Models
 {

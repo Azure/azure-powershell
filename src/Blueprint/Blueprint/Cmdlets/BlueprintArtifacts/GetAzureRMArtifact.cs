@@ -13,13 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Blueprint.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
 using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterSetNames;
-using ParameterHelpMessages = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterHelpMessages;
-using System.Text.RegularExpressions;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {

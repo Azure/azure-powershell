@@ -12,31 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Blueprint.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Blueprint.Models;
-using System;
-using System.Collections;
-using System.Linq;
-using System.Management.Automation;
-using System.Management.Automation.Language;
-using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
-using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterSetNames;
-using ParameterHelpMessages = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterHelpMessages;
-using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Blueprint.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
-using System.IO;
-using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.Blueprint.Models;
+using System;
+using System.Management.Automation;
+using System.Text.RegularExpressions;
+using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterSetNames;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Blueprint", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.CreateBlueprintBySubscription), OutputType(typeof(PSBlueprint))]
-
     public class SetAzureRMBlueprint : BlueprintDefinitionCmdletBase
     {
         #region Parameters
@@ -65,7 +50,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         {
             try
             {
-                var bp = CreateBlueprint(GetResolvedFilePath());
+                var bp = CreateBlueprint(GetValidatedFilePath(BlueprintFile));
 
                 RegisterBlueprintRp(SubscriptionId ?? DefaultContext.Subscription.Id);
 
@@ -93,49 +78,5 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             }
         }
         #endregion
-
-        private BlueprintModel CreateBlueprint(string filePath)
-        {
-            // To-Do: In good case the JSON file will be deserialized, though it might throw 
-            return JsonConvert.DeserializeObject<BlueprintModel>(File.ReadAllText(filePath),
-                DefaultJsonSettings.DeserializerSettings);
-        }
-
-        private string GetResolvedFilePath()
-        {
-            // To-Do: work with relative paths?
-            var filePath = ResolveUserPath(BlueprintFile);
-            if (filePath == null || !new FileInfo(filePath).Exists)
-            {
-                throw new FileNotFoundException(string.Format("Cannot find the path: Add here the path"));
-            }
-
-            return filePath;
-        }
-
-        // To-Do: Update exception messages below.
-     
-        protected void ThrowIfBlueprintNotExist(string scope, string name)
-        {
-            PSBlueprint blueprint = null;
-
-            try
-            {
-                blueprint = BlueprintClient.GetBlueprint(scope, name);
-            }
-            catch (Exception ex)
-            {
-                if (ex is CloudException cex && cex.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
-                {
-                    // if exception is for a reason other than .NotFound, pass it to the caller.
-                    throw;
-                }
-            }
-
-            if (blueprint == null)
-            {
-                throw new Exception(string.Format(Resources.BlueprintNotExist, name, scope));
-            }
-        }
     }
 }

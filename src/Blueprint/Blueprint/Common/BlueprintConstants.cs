@@ -54,6 +54,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
 
             public const string CreateBlueprintBySubscription = "CreateBlueprintBySubscription";
             public const string CreateBlueprintByManagementGroup = "CreateBlueprintByManagementGroup";
+
+            public const string ExportToFileParameterSet = "ExportToFile";
         }
 
         public static class ParameterHelpMessages

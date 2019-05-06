@@ -16,8 +16,6 @@ using Microsoft.Azure.Management.Blueprint.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Newtonsoft.Json;
-using System.Collections;
 using Microsoft.Azure.Commands.Blueprint.Common;
 
 namespace Microsoft.Azure.Commands.Blueprint.Models
