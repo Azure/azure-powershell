@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version:https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azmetricalertrulev2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azmetricalertrulev2
 schema: 2.0.0
 ---
 
@@ -12,7 +12,7 @@ Gets V2 (non-classic) metric alert rules
 
 ## SYNTAX
 
-### ByResourceGroupName
+### ByResourceGroupName (Default)
 ```
 Get-AzMetricAlertRuleV2 [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -33,6 +33,7 @@ Get-AzMetricAlertRuleV2 -ResourceId <String> [-DefaultProfile <IAzureContextCont
 The **Get-AzMetricAlertRuleV2** cmdlet gets a metric alert rule by its name or URI, or all metric alert rules from a specified resource group or subscription.
 
 ## EXAMPLES
+
 ### Example 1: Get all metric alert rules in current subscription
 ```powershell
 PS C:\>Get-AzMetricAlertRuleV2
@@ -74,11 +75,9 @@ Name                 : Rule2
 Type                 : Microsoft.Insights/metricAlerts
 Location             : global
 Tags                 : {}
-
 ```
 
 This command gets all the metric alert rules in the current subscription.
-
 
 ### Example 2: Get all metric alert rules in a resource group
 
@@ -105,8 +104,8 @@ Name                 : Test Classic VM alert - CPU Usage
 Type                 : Microsoft.Insights/metricAlerts
 Location             : global
 Tags                 : {}
-
 ```
+
 This command gets all the metric alert rules in the resource group named metricAlertsRG.
 
 ### Example 3: Get a metric alert rule by name
@@ -159,7 +158,7 @@ Id                   : /subscriptions/00000000-0000-0000-0000-0000000/resourceGr
 Name                 : MyMetricAlertRule
 Type                 : Microsoft.Insights/metricAlerts
 Location             : global
-Tags                 : 
+Tags                 :
 ```
 
 This command gets the metric alert rule with the given resource ID.
@@ -170,7 +169,7 @@ This command gets the metric alert rule with the given resource ID.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -185,7 +184,7 @@ Accept wildcard characters: False
 The Name of metric alert rule
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByRuleName
 Aliases:
 
@@ -200,7 +199,7 @@ Accept wildcard characters: False
 The ResourceGroupName
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroupName
 Aliases: ResourceGroup
 
@@ -212,7 +211,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByRuleName
 Aliases: ResourceGroup
 
@@ -227,7 +226,7 @@ Accept wildcard characters: False
 The Rule Id of metric alert rule
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByRuleId
 Aliases:
 
@@ -239,8 +238,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
