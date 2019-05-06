@@ -13,7 +13,7 @@ Enables Advanced Data Security on a server.
 ## SYNTAX
 
 ```
-Enable-AzSqlServerAdvancedDataSecurity [-DoNotAutoEnableVulnerabilityAssessment] [-AsJob]
+Enable-AzSqlServerAdvancedDataSecurity [-DoNotConfigureVulnerabilityAssessment] [-AsJob]
  [-DeploymentName <String>] [-InputObject <AzureSqlServerModel>] -ServerName <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -95,7 +95,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DoNotAutoEnableVulnerabilityAssessment
+### -DoNotConfigureVulnerabilityAssessment
 Do not auto enable Vulnerability Assessment (This will not create a storage account)
 
 ```yaml

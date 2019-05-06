@@ -34,7 +34,7 @@ function Test-AdvancedDataSecurityPolicyManagedInstanceTest
 		Assert-False { $policy.IsEnabled }
 
 		# Enabled Advanced Threat Protection Policy
-		Enable-AzSqlInstanceAdvancedDataSecurity -ResourceGroupName $params.rgname -InstanceName $params.serverName -DoNotAutoEnableVulnerabilityAssessment
+		Enable-AzSqlInstanceAdvancedDataSecurity -ResourceGroupName $params.rgname -InstanceName $params.serverName -DoNotConfigureVulnerabilityAssessment
 		$policy = Get-AzSqlInstanceAdvancedDataSecurityPolicy -ResourceGroupName $params.rgname -InstanceName $params.serverName 
 				
 		# Validate the policy

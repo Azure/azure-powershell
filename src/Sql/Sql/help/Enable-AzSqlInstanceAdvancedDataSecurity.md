@@ -13,7 +13,7 @@ Enables Advanced Data Security on a managed instance.
 ## SYNTAX
 
 ```
-Enable-AzSqlInstanceAdvancedDataSecurity [-DoNotAutoEnableVulnerabilityAssessment] [-AsJob]
+Enable-AzSqlInstanceAdvancedDataSecurity [-DoNotConfigureVulnerabilityAssessment] [-AsJob]
  [-DeploymentName <String>] [-InputObject <AzureSqlManagedInstanceModel>] -InstanceName <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -94,7 +94,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DoNotAutoEnableVulnerabilityAssessment
+### -DoNotConfigureVulnerabilityAssessment
 Do not auto enable Vulnerability Assessment (This will not create a storage account)
 
 ```yaml
