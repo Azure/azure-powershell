@@ -21,6 +21,7 @@
 * Add DisableBgpRoutePropagation flag to Effective Route Table output
     - Updated cmdlet:
         - Get-AzEffectiveRouteTable
+* Fixed bug in New-AzApplicationGatewayPathRuleConfig that prevented the rewrite ruleset from being set.
 
 ## Version 1.8.0
 * Add support for Nat Gateway Resource
