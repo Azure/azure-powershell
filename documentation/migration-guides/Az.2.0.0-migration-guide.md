@@ -11,19 +11,19 @@ This document describes the changes between the 1.0.0 and 2.0.0 versions of Az
 ## Module breaking changes
 
 ### Az.Compute
-- Removed `Managed` Parameter from `New-AzAvailabilitySet` and `Update-AzAvailabilitySet` cmdlets infavor of using ```Sku = Aligned```
+- Removed `Managed` Parameter from `New-AzAvailabilitySet` and `Update-AzAvailabilitySet` cmdlets in favor of using ```Sku = Aligned```
   #### Before
   ```powershell
-  Update-AzVMss -Managed
+  Update-AzAvailabilitySet -Managed
   ```
   #### After
   ```powershell
-  Update-AzVMss -Sku Alighed
+  Update-AzAvailabilitySet -Sku Alighed
   ```
 - For consistency, removed `Image` parameter from 'ByName' and 'ByResourceId' parameter sets in `Update-AzImage` 
   
   #### Before
-  Note that the below code is functional, but the passed-in Image is not used, so removing this parameter has no functional impact.
+  Note that the below code is functional, but the passed-in ImageName is not used, so removing this parameter has no functional impact.
   ```powershell
   Update-AzImage -ResourceGroupName $Rg -ImageName $Name -Image $Image -Tag $tags
 
@@ -39,7 +39,7 @@ This document describes the changes between the 1.0.0 and 2.0.0 versions of Az
 - For consistency, removed `Name` parameter from 'ByObject' and 'ByResourceId' parameter sets in `Restart-AzVM`
   
   #### Before
-  Note that the below code is functional, but the passed-in Image is not used, so removing this parameter has no functional impact.
+  Note that the below code is functional, but the passed-in Name is not used, so removing this parameter has no functional impact.
   ```powershell
   Restart-AzVM -InputObject $VM -Name $Name 
 
@@ -56,7 +56,7 @@ This document describes the changes between the 1.0.0 and 2.0.0 versions of Az
 - For consistency, removed `Name` parameter from 'ByObject' and 'ByResourceId' parameter sets in `Start-AzVM`
   
   #### Before
-  Note that the below code is functional, but the passed-in Image is not used, so removing this parameter has no functional impact.
+  Note that the below code is functional, but the passed-in Name is not used, so removing this parameter has no functional impact.
   ```powershell
   Start-AzVM -InputObject $VM -Name $Name 
 
@@ -73,7 +73,7 @@ This document describes the changes between the 1.0.0 and 2.0.0 versions of Az
 - For consistency, removed `Name` parameter from 'ByObject' and 'ByResourceId' parameter sets in `Stop-AzVM`
   
   #### Before
-  Note that the below code is functional, but the passed-in Image is not used, so removing this parameter has no functional impact.
+  Note that the below code is functional, but the passed-in Name is not used, so removing this parameter has no functional impact.
   ```powershell
   Stop-AzVM -InputObject $VM -Name $Name 
 
@@ -89,7 +89,7 @@ This document describes the changes between the 1.0.0 and 2.0.0 versions of Az
 - For consistency, removed `Name` parameter from 'ByObject' and 'ByResourceId' parameter sets in `Remove-AzVM`
   
   #### Before
-  Note that the below code is functional, but the passed-in Image is not used, so removing this parameter has no functional impact.
+  Note that the below code is functional, but the passed-in Name is not used, so removing this parameter has no functional impact.
   ```powershell
   Remove-AzVM -InputObject $VM -Name $Name
 
@@ -106,7 +106,7 @@ This document describes the changes between the 1.0.0 and 2.0.0 versions of Az
 - For consistency, removed `Name` parameter from 'ByObject' and 'ByResourceId' parameter sets in `Set-AzVM`
   
   #### Before
-  Note that the below code is functional, but the passed-in Image is not used, so removing this parameter has no functional impact.
+  Note that the below code is functional, but the passed-in Name is not used, so removing this parameter has no functional impact.
   ```powershell
   Set-AzVM -InputObject $VM -Name $Name ...
 
@@ -123,7 +123,7 @@ This document describes the changes between the 1.0.0 and 2.0.0 versions of Az
 - For consistency, removed `Name` parameter from 'ByObject' and 'ByResourceId' parameter sets in `Save-AzVMImage` 
   
   #### Before
-  Note that the below code is functional, but the passed-in Image is not used, so removing this parameter has no functional impact.
+  Note that the below code is functional, but the passed-in Name is not used, so removing this parameter has no functional impact.
   ```powershell
   Save-AzVMImage -InputObject $VM -Name $Name ...
 
@@ -263,7 +263,7 @@ This document describes the changes between the 1.0.0 and 2.0.0 versions of Az
 - Removed cmdlet `Revoke-AzHDInsightHttpServicesAccess`
 
 ### Az.Storage
-- Namespaces for types returned from Blob, Queue, and File cmdlets have changed their namespace from `Microsoft.WindowsAzure.Storage` to `Microsoft.Azure.Storage`.  While this is not technically a breaking change according to the breakign change policy, it may require some changes in code that uses the .Net methods returned by these classes directly
+- Namespaces for types returned from Blob, Queue, and File cmdlets have changed their namespace from `Microsoft.WindowsAzure.Storage` to `Microsoft.Azure.Storage`.  While this is not technically a breaking change according to the breaking change policy, it may require some changes in code that uses the methods from the Storage .Net SDK to interact with the objects returned from these cmdlets.
 
   #### Example 1:  Add a message to a Queue (change CloudQueueMessage object namespace)
   Before: 
@@ -301,7 +301,7 @@ This document describes the changes between the 1.0.0 and 2.0.0 versions of Az
   $file.FetchAttributes($accessCondition)
   ```
 
-- While not technically a breaking change, you will notice output differences in the Sku.Name property of STorage Accounts returned from  `New/Get/Set-AzStorageAccount` changes are as follows. (After the change, output and input SkuName aligned.)
+- While not technically a breaking change, you will notice output differences in the Sku.Name property of Storage Accounts returned from  `New/Get/Set-AzStorageAccount` changes are as follows. (After the change, output and input SkuName are aligned.)
   - "StandardLRS" -> "Standard_LRS";
   - "StandardGRS" -> "Standard_GRS";
   - "StandardRAGRS" -> "Standard_RAGRS";
