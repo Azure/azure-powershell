@@ -217,7 +217,11 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Remove-AzSqlInstanceDatabaseSensitivityClassification', 
                'Get-AzSqlDatabaseSensitivityRecommendation', 
                'Get-AzSqlInstanceDatabaseSensitivityRecommendation', 
-               'Get-AzSqlVirtualCluster', 'Remove-AzSqlVirtualCluster'
+               'Get-AzSqlVirtualCluster', 'Remove-AzSqlVirtualCluster',
+			   'Get-AzSqlServerAuditPolicy',
+			   'Get-AzSqlDatabaseAuditPolicy',
+			   'Set-AzSqlServerAuditPolicy',
+			   'Set-AzSqlDatabaseAuditPolicy'
 
 # Variables to export from this module
 # VariablesToExport = @()

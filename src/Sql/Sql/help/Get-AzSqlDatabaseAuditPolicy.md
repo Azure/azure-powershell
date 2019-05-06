@@ -1,0 +1,192 @@
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
+Module Name: Az.Sql
+ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqldatabaseauditpolicy
+schema: 2.0.0
+---
+
+# Get-AzSqlDatabaseAuditPolicy
+
+## SYNOPSIS
+Gets the auditing settings of an Azure SQL database.
+
+## SYNTAX
+
+### DatabaseObjectParameterSet (Default)
+```
+Get-AzSqlDatabaseAuditPolicy -DatabaseObject <AzureSqlDatabaseModel> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### DatabaseParameterSet
+```
+Get-AzSqlDatabaseAuditPolicy [-ResourceGroupName] <String> [-ServerName] <String> [-DatabaseName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+## DESCRIPTION
+The **Get-AzSqlDatabaseAuditPolicy** cmdlet gets the auditing settings of an Azure SQL database.
+To use the cmdlet, use the *ResourceGroupName*, *ServerName*, and *DatabaseName* parameters to identify the database.
+
+## EXAMPLES
+
+### Example 1: Get the auditing settings of an Azure SQL database
+```
+PS C:\>Get-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+ServerName                          : server01
+DatabaseName                        : database01
+AuditAction                         : {}
+ResourceGroupName                   : resourcegroup01
+AuditActionGroup                    : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
+                                       BATCH_COMPLETED_GROUP, ...}
+PredicateExpression                 : statement <> 'select 1'
+BlobStorageAuditState               : Enabled
+StorageAccountName                  : mystorage
+StorageAccountSubscriptionId        : 7fe3301d-31d3-4668-af5e-211a890ba6e3
+StorageKeyType                      : Primary
+RetentionInDays                     : 0
+EventHubAuditState                  : Enabled
+EventHubName                        : eventHubName
+EventHubAuthorizationRuleResourceId : EventHubAuthorizationRuleResourceId
+LogAnalyticsAuditState              : Enabled
+WorkspaceResourceId                 : "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2"
+```
+
+### Example 2: Get, through pipeline, the auditing settings of an Azure SQL database
+```
+PS C:\> Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" | Get-AzSqlDatabaseAuditPolicy
+ServerName                          : server01
+DatabaseName                        : database01
+AuditAction                         : {}
+ResourceGroupName                   : resourcegroup01
+AuditActionGroup                    : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
+                                       BATCH_COMPLETED_GROUP, ...}
+PredicateExpression                 : statement <> 'select 1'
+BlobStorageAuditState               : Enabled
+StorageAccountName                  : mystorage
+StorageAccountSubscriptionId        : 7fe3301d-31d3-4668-af5e-211a890ba6e3
+StorageKeyType                      : Primary
+RetentionInDays                     : 0
+EventHubAuditState                  : Enabled
+EventHubName                        : eventHubName
+EventHubAuthorizationRuleResourceId : EventHubAuthorizationRuleResourceId
+LogAnalyticsAuditState              : Enabled
+WorkspaceResourceId                 : "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2"
+```
+
+### Example 3: Get the auditing settings of an Azure SQL database
+```
+PS C:\>Get-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+ServerName                          : server01
+DatabaseName                        : database01
+AuditAction                         : {}
+ResourceGroupName                   : resourcegroup01
+AuditActionGroup                    : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
+                                       BATCH_COMPLETED_GROUP, ...}
+PredicateExpression                 : statement <> 'select 1'
+BlobStorageAuditState               : Enabled
+StorageAccountName                  : mystorage
+StorageAccountSubscriptionId        : 7fe3301d-31d3-4668-af5e-211a890ba6e3
+StorageKeyType                      : Primary
+RetentionInDays                     : 0
+EventHubAuditState                  : Enabled
+EventHubName                        : eventHubName
+EventHubAuthorizationRuleResourceId : EventHubAuthorizationRuleResourceId
+LogAnalyticsAuditState              : Disabled
+WorkspaceResourceId                 :
+```
+
+## PARAMETERS
+
+### -DatabaseName
+SQL Database name.
+
+```yaml
+Type: System.String
+Parameter Sets: DatabaseParameterSet
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DatabaseObject
+The database object to manage its audit policy.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
+Parameter Sets: DatabaseObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: DatabaseParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServerName
+SQL server name.
+
+```yaml
+Type: System.String
+Parameter Sets: DatabaseParameterSet
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### System.String
+
+### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
+
+## OUTPUTS
+
+### Microsoft.Azure.Commands.Sql.Auditing.Model.DatabaseAuditPolicyModel
+
+## NOTES
+
+## RELATED LINKS
