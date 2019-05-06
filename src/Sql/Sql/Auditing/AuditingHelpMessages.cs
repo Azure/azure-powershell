@@ -14,6 +14,12 @@
 
         public const string StateHelpMessage = "The state of the policy.";
 
+        public const string BlobStorageAuditState = "Indicates whether blob storage is a destination for audit records.";
+
+        public const string EventHubAuditState = "Indicates whether event hub is a destination for audit records.";
+
+        public const string LogAnalyticsAuditState = "Indicates whether log analytics is a destination for audit records.";
+
         public const string AuditStorageAccountNameHelpMessage = "The name of the storage account.";
 
         public const string AuditStorageAccountSubscriptionIdHelpMessage = "The storage account subscription id";
@@ -39,6 +45,8 @@
         public const string LogAnalyticsHelpMessage = "Specifies that audit logs destination is log analytics";
 
         public const string AsJobHelpMessage = "Run cmdlet in the background";
+
+        public const string AuditPolicyObject = "An object representing the audit policy.";
 
         public const string AuditActionHelpMessage =
 @"The set of audit actions.  
