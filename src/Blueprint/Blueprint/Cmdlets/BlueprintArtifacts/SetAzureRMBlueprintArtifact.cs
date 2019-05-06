@@ -36,7 +36,7 @@ using Microsoft.Rest.Azure;
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintArtifact", DefaultParameterSetName = ParameterSetNames.CreateTemplateArtifact), OutputType(typeof(Artifact))]
-    public class SetAzureRmBlueprintArtifact : BlueprintCmdletBase
+    public class SetAzureRmBlueprintArtifact : BlueprintArtifactsCmdletBase
     {
         #region Parameters
         [Parameter(ParameterSetName = ParameterSetNames.CreateArtifactByInputFile, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]

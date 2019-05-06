@@ -22,7 +22,7 @@ using ParameterHelpMessages = Microsoft.Azure.Commands.Blueprint.Common.Blueprin
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintAssignment", DefaultParameterSetName = ParameterSetNames.BlueprintAssignmentsBySubscription), OutputType(typeof(PSBlueprintAssignment))]
-    public class GetAzureRmBlueprintAssignment : BlueprintCmdletBase
+    public class GetAzureRmBlueprintAssignment : BlueprintAssignmentCmdletBase
     {
         #region Parameters
 
