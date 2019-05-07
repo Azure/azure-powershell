@@ -701,7 +701,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
                 if (!result.Any())
                 {
-                    throw;
+                    throw new RuntimeException("Error occurred when attempting to acquire the common tenant token. Please run 'Connect-AzAccount` again to authenticate.");
                 }
 
             }
