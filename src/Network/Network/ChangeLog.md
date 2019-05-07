@@ -21,6 +21,9 @@
 * Add DisableBgpRoutePropagation flag to Effective Route Table output
     - Updated cmdlet:
         - Get-AzEffectiveRouteTable
+* Added readonly field PeeredConnections in ExpressRoute peering.
+* Added readonly field GlobalReachEnabled in ExpressRoute.
+* Removed deprecated field AllowGlobalReach in ExpressRoute.
 
 ## Version 1.8.0
 * Add support for Nat Gateway Resource
