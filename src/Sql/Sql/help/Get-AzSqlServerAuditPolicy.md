@@ -13,15 +13,15 @@ Gets the auditing settings of an Azure SQL server.
 
 ## SYNTAX
 
-### ServerObjectParameterSet (Default)
+### ServerParameterSet (Default)
 ```
-Get-AzSqlServerAuditPolicy -ServerObject <AzureSqlServerModel> [-AsJob]
+Get-AzSqlServerAuditPolicy [-ResourceGroupName] <String> [-ServerName] <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ServerParameterSet
+### ServerObjectParameterSet
 ```
-Get-AzSqlServerAuditPolicy [-ResourceGroupName] <String> [-ServerName] <String> [-AsJob]
+Get-AzSqlServerAuditPolicy -ServerObject <AzureSqlServerModel> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 

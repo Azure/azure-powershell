@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     [Cmdlet(
         VerbsCommon.Get,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.ServerAuditPolicyCmdletsSuffix,
-        DefaultParameterSetName = DefinitionsCommon.ServerObjectParameterSetName),
+        DefaultParameterSetName = DefinitionsCommon.ServerParameterSetName),
         OutputType(typeof(ServerAuditPolicyModel))]
     public class GetAzSqlServerAuditPolicy : SqlServerAuditPolicyCmdlet
     {

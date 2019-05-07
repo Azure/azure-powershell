@@ -13,13 +13,7 @@ Changes the auditing settings of an Azure SQL server.
 
 ## SYNTAX
 
-### AuditPolicyObjectParameterSet (Default)
-```
-Set-AzSqlServerAuditPolicy -ServerAuditPolicyObject <ServerAuditPolicyModel> [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ServerParameterSet
+### ServerParameterSet (Default)
 ```
 Set-AzSqlServerAuditPolicy [-AuditActionGroup <AuditActionGroups[]>] [-PredicateExpression <String>]
  [-BlobStorageAuditState <String>] [-StorageAccountName <String>] [-StorageAccountSubscriptionId <Guid>]
@@ -134,7 +128,7 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]
-Parameter Sets: ServerParameterSet, ServerObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 Accepted values: BATCH_STARTED_GROUP, BATCH_COMPLETED_GROUP, APPLICATION_ROLE_CHANGE_PASSWORD_GROUP, BACKUP_RESTORE_GROUP, DATABASE_LOGOUT_GROUP, DATABASE_OBJECT_CHANGE_GROUP, DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP, DATABASE_OBJECT_PERMISSION_CHANGE_GROUP, DATABASE_OPERATION_GROUP, DATABASE_PERMISSION_CHANGE_GROUP, DATABASE_PRINCIPAL_CHANGE_GROUP, DATABASE_PRINCIPAL_IMPERSONATION_GROUP, DATABASE_ROLE_MEMBER_CHANGE_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP, SCHEMA_OBJECT_ACCESS_GROUP, SCHEMA_OBJECT_CHANGE_GROUP, SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP, SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP, SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, USER_CHANGE_PASSWORD_GROUP
 
@@ -150,7 +144,7 @@ Indicates whether blob storage is a destination for audit records.
 
 ```yaml
 Type: System.String
-Parameter Sets: ServerParameterSet, ServerObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 Accepted values: Enabled, Disabled
 
@@ -181,7 +175,7 @@ Indicates whether event hub is a destination for audit records.
 
 ```yaml
 Type: System.String
-Parameter Sets: ServerParameterSet, ServerObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 Accepted values: Enabled, Disabled
 
@@ -197,7 +191,7 @@ The resource Id for the event hub authorization rule
 
 ```yaml
 Type: System.String
-Parameter Sets: ServerParameterSet, ServerObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -212,7 +206,7 @@ The name of the event hub. If none is specified when providing EventHubAuthoriza
 
 ```yaml
 Type: System.String
-Parameter Sets: ServerParameterSet, ServerObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -227,7 +221,7 @@ Indicates whether log analytics is a destination for audit records.
 
 ```yaml
 Type: System.String
-Parameter Sets: ServerParameterSet, ServerObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 Accepted values: Enabled, Disabled
 
@@ -258,7 +252,7 @@ The T-SQL predicate (WHERE clause) used to filter audit logs.
 
 ```yaml
 Type: System.String
-Parameter Sets: ServerParameterSet, ServerObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -288,28 +282,13 @@ The number of retention days for the audit logs.
 
 ```yaml
 Type: System.Nullable`1[System.UInt32]
-Parameter Sets: ServerParameterSet, ServerObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ServerAuditPolicyObject
-An object representing the audit policy.
-
-```yaml
-Type: Microsoft.Azure.Commands.Sql.Auditing.Model.ServerAuditPolicyModel
-Parameter Sets: AuditPolicyObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -348,7 +327,7 @@ The name of the storage account.
 
 ```yaml
 Type: System.String
-Parameter Sets: ServerParameterSet, ServerObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -363,7 +342,7 @@ The storage account subscription id
 
 ```yaml
 Type: System.Guid
-Parameter Sets: ServerParameterSet, ServerObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -378,7 +357,7 @@ Specifies which of the storage access keys to use.
 
 ```yaml
 Type: System.String
-Parameter Sets: ServerParameterSet, ServerObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 Accepted values: Primary, Secondary
 
@@ -394,7 +373,7 @@ The workspace ID (resource ID of a Log Analytics workspace) for a Log Analytics 
 
 ```yaml
 Type: System.String
-Parameter Sets: ServerParameterSet, ServerObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False

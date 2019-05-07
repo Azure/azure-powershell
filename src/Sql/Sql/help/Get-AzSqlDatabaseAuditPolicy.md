@@ -13,16 +13,16 @@ Gets the auditing settings of an Azure SQL database.
 
 ## SYNTAX
 
-### DatabaseObjectParameterSet (Default)
-```
-Get-AzSqlDatabaseAuditPolicy -DatabaseObject <AzureSqlDatabaseModel> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### DatabaseParameterSet
+### DatabaseParameterSet (Default)
 ```
 Get-AzSqlDatabaseAuditPolicy [-ResourceGroupName] <String> [-ServerName] <String> [-DatabaseName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### DatabaseObjectParameterSet
+```
+Get-AzSqlDatabaseAuditPolicy -DatabaseObject <AzureSqlDatabaseModel> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

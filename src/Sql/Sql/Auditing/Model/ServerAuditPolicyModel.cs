@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Monitor.Models;
+using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;

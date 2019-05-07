@@ -38,7 +38,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing
         internal const string DatabaseObjectParameterSetName = "DatabaseObjectParameterSet";
         internal const string ServerParameterSetName = "ServerParameterSet";
         internal const string ServerObjectParameterSetName = "ServerObjectParameterSet";
-        internal const string AuditPolicyObjectParameterSetName = "AuditPolicyObjectParameterSet";
         internal const string DiagnosticSettingsNamePrefix = "SQLSecurityAuditEvents_3d229c42-c7e7-4c97-9a99-ec0d0d8b86c1_";
         internal const string SQLSecurityAuditCategory = "SQLSecurityAuditEvents";
         internal const string BlobStorageParameterName = "BlobStorage";
