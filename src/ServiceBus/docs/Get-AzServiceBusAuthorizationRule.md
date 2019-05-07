@@ -14,26 +14,26 @@ Gets an authorization rule for a namespace by rule name.
 
 ### Namespace (Default)
 ```
-Get-AzServiceBusAuthorizationRule [-Name <String>] -NamespaceName <String> -ResourceGroupName <String>
+Get-AzServiceBusAuthorizationRule -NamespaceName <String> -ResourceGroupName <String> [-Name <String>]
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### DisasterRecoveryConfiguration
 ```
-Get-AzServiceBusAuthorizationRule -DisasterRecoveryConfigurationName <String> [-Name <String>]
- -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzServiceBusAuthorizationRule -NamespaceName <String> -ResourceGroupName <String>
+ -DisasterRecoveryConfigurationName <String> [-Name <String>] [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Queue
 ```
-Get-AzServiceBusAuthorizationRule [-Name <String>] -NamespaceName <String> -ResourceGroupName <String>
+Get-AzServiceBusAuthorizationRule -NamespaceName <String> -ResourceGroupName <String> [-Name <String>]
  [-SubscriptionId <String>] -QueueName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Topic
 ```
-Get-AzServiceBusAuthorizationRule [-Name <String>] -NamespaceName <String> -ResourceGroupName <String>
+Get-AzServiceBusAuthorizationRule -NamespaceName <String> -ResourceGroupName <String> [-Name <String>]
  [-SubscriptionId <String>] -TopicName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 

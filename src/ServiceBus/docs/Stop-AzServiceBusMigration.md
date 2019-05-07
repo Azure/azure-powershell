@@ -74,7 +74,7 @@ The namespace name
 ```yaml
 Type: System.String
 Parameter Sets: Revert
-Aliases: Namespace
+Aliases: Name, Namespace
 
 Required: True
 Position: Named

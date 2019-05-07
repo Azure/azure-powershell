@@ -53,7 +53,7 @@ The rights associated with the rule.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.AccessRights[]
 Parameter Sets: (All)
-Aliases: Right
+Aliases: Right, Rights
 
 Required: False
 Position: Named

@@ -96,7 +96,7 @@ The namespace name
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded
-Aliases: Namespace
+Aliases: Name, Namespace
 
 Required: True
 Position: Named

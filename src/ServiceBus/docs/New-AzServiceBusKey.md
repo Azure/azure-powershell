@@ -15,21 +15,21 @@ Regenerates the primary or secondary connection strings for the namespace.
 ### Namespace (Default)
 ```
 New-AzServiceBusKey -AuthorizationRuleName <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Key <String>] -KeyType <KeyType> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-SubscriptionId <String>] -KeyType <KeyType> [-Key <String>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### Queue
 ```
 New-AzServiceBusKey -AuthorizationRuleName <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -QueueName <String> [-Key <String>] -KeyType <KeyType> [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String>] -QueueName <String> -KeyType <KeyType> [-Key <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Topic
 ```
 New-AzServiceBusKey -AuthorizationRuleName <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -TopicName <String> [-Key <String>] -KeyType <KeyType> [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String>] -TopicName <String> -KeyType <KeyType> [-Key <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

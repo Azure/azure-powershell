@@ -20,9 +20,9 @@ Get-AzServiceBusKey -AuthorizationRuleName <String> -NamespaceName <String> -Res
 
 ### DisasterRecoveryConfiguration
 ```
-Get-AzServiceBusKey -DisasterRecoveryConfigurationName <String> -AuthorizationRuleName <String>
- -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzServiceBusKey -AuthorizationRuleName <String> -NamespaceName <String> -ResourceGroupName <String>
+ -DisasterRecoveryConfigurationName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Queue

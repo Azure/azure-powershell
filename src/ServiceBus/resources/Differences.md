@@ -1,9 +1,5 @@
 ## Incorrect Cmdlets
 
-- Complete-AzServiceBusMigration
-    - Name
-- Get-AzServiceBusMigration
-    - Name
 - Get-AzServiceBusQueue
     - MaxCount
 - Get-AzServiceBusRule
@@ -38,7 +34,6 @@
 - Remove-AzServiceBusDisasterRecoveryConfiguration
     - AsJob
 - Remove-AzServiceBusMigration
-    - Name
     - AsJob
 - Remove-AzServiceBusQueue
     - AsJob
@@ -51,17 +46,15 @@
     - AsJob
 - Set-AzServiceBusAuthorizationRule
     - InputObject
-- Start-AzServiceBusMigration
-    - Name
-- Stop-AzServiceBusMigration
-    - Name
 
 ## Correct Cmdlets
 
+- Complete-AzServiceBusMigration
 - Disable-AzServiceBusDisasterRecoveryPairing
 - Get-AzServiceBusAuthorizationRule
 - Get-AzServiceBusDisasterRecoveryConfiguration
 - Get-AzServiceBusKey
+- Get-AzServiceBusMigration
 - Get-AzServiceBusNamespace
 - Invoke-AzServiceBusDisasterRecoveryFailOver
 - New-AzServiceBusAuthorizationRule
@@ -72,6 +65,8 @@
 - Set-AzServiceBusRule
 - Set-AzServiceBusSubscription
 - Set-AzServiceBusTopic
+- Start-AzServiceBusMigration
+- Stop-AzServiceBusMigration
 - Test-AzServiceBusNameAvailability
 
 ## New Cmdlets
