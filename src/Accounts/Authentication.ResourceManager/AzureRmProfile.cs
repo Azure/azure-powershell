@@ -676,7 +676,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 foreach (var contextName in Contexts.Keys)
                 {
                     var context = Contexts[contextName];
-                    if (context.Account.Type != AzureAccount.AccountType.User)
+                    if ((string.Equals(contextName, "Default") && context.Account == null) || context.Account.Type != AzureAccount.AccountType.User)
                     {
                         continue;
                     }
@@ -698,7 +698,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 // Check to see if each account has at least one context
                 foreach (var account in accounts)
                 {
-                    if (Contexts.Values.Any(v => string.Equals(v.Account.Id, account.Username, StringComparison.OrdinalIgnoreCase)))
+                    if (Contexts.Values.Where(v => v.Account != null && v.Account.Type == AzureAccount.AccountType.User )
+                                       .Any(v => string.Equals(v.Account.Id, account.Username, StringComparison.OrdinalIgnoreCase)))
                     {
                         continue;
                     }

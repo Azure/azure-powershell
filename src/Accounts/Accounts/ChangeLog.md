@@ -19,6 +19,18 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.0-preview
+* Update to using Microsoft Authentication Library (MSAL)
+    - Enable interactive login support for cross-platform by default
+    - Device code flow login is now the backup option of interactive login fails, or the user provides the `-UseDeviceAuthentication` switch parameter
+    - Enable username/password support for CSP accounts for cross-platform
+* Support single-sign on scenario using shared token cache
+    - Token cache is now shared with other products, such as Visual Studio 2019 and Azure CLI
+    - Allows users to add/remove accounts in one product and have the changes reflected in another product
+    - `Connect-AzAccount` adds an account to the token cache if not already there
+    - `Remove-AzAccount` removes the account from the token cache and deletes all contexts containing the account
+    - `Clear-AzContext` removes all accounts from the token cache and deletes all contexts
+
 ## Version 1.5.2
 * Update Authentication Library to fix ADFS issues with username/password auth
 
