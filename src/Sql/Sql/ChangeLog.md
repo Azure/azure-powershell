@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Deprecating Get-AzSqlDatabaseSecureConnectionPolicy cmdlet
 
 ## Version 1.9.0
 * Replace dependency on Monitor SDK with common code
