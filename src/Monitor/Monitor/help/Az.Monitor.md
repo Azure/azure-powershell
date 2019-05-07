@@ -20,6 +20,9 @@ Creates a new activity log profile. This profile is used to either archive the a
 ### [Add-AzMetricAlertRule](Add-AzMetricAlertRule.md)
 Adds or updates a metric-based alert rule.
 
+### [Add-AzMetricAlertRuleV2](Add-AzMetricAlertRuleV2.md)
+Adds or updates a V2 (non-classic) metric-based alert rule.
+
 ### [Add-AzWebtestAlertRule](Add-AzWebtestAlertRule.md)
 Adds or updates a webtest alert rule.
 
@@ -59,6 +62,9 @@ Gets a log profile.
 ### [Get-AzMetric](Get-AzMetric.md)
 Gets the metric values of a resource.
 
+### [Get-AzMetricAlertRuleV2](Get-AzMetricAlertRuleV2.md)
+Gets V2 (non-classic) metric alert rules
+
 ### [Get-AzMetricDefinition](Get-AzMetricDefinition.md)
 Gets metric definitions.
 
@@ -91,6 +97,12 @@ Creates an Autoscale rule.
 
 ### [New-AzAutoscaleWebhook](New-AzAutoscaleWebhook.md)
 Creates an Autoscale webhook.
+
+### [New-AzMetricAlertRuleV2Criteria](New-AzMetricAlertRuleV2Criteria.md)
+Creates a local criteria object that can be used to create a new metric alert
+
+### [New-AzMetricAlertRuleV2DimensionSelection](New-AzMetricAlertRuleV2DimensionSelection.md)
+Creates a local dimension selection object that can be used to construct a metric alert criteria.
 
 ### [New-AzMetricFilter](New-AzMetricFilter.md)
 Creates a metric dimension filter that can be used to query metrics.
@@ -133,6 +145,9 @@ Remove a diagnostic setting for the a resource.
 
 ### [Remove-AzLogProfile](Remove-AzLogProfile.md)
 Removes a log profile.
+
+### [Remove-AzMetricAlertRuleV2](Remove-AzMetricAlertRuleV2.md)
+Removes a V2 (non-classic) metric alert rule.
 
 ### [Remove-AzScheduledQueryRule](Remove-AzScheduledQueryRule.md)
 Removes a Log Alert Rule

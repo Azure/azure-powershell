@@ -77,7 +77,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void TestAutomationRunbookWithParameter()
         {
-            TestRunner.RunTestScript("Test-RunbookWithParameter -runbookPath ScenarioTests\\Resources\\fastJob.ps1 -type 'PowerShell' -parameters @{'nums'='[1,2,3,4,5,6,7]'} -expectedResult 28");
+            TestRunner.RunTestScript("Test-RunbookWithParameter -runbookPath ScenarioTests\\Resources\\Test-PowershellRunbook.ps1 -type 'PowerShell' -parameters @{'nums'=@(1,2,3,4,5,6,7)} -expectedResult 28");
         }
 
         [Fact(Skip = "Need x64 test framework.")]
@@ -85,7 +85,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void TestAutomationPy2RunbookWithParameter()
         {
-            TestRunner.RunTestScript("Test-RunbookWithParameter -runbookPath ScenarioTests\\Resources\\fastJob.py -type 'Python2' -parameters @{'param1'='1';'param2'='2';'param3'='3';'param4'='4';'param5'='5';'param6'='6';'param7'='7'} -expectedResult 28");
+            TestRunner.RunTestScript("Test-RunbookWithParameter -runbookPath ScenarioTests\\Resources\\TestPythonRunbook.py -type 'Python2' -parameters @{'param1'='1';'param2'='2';'param3'='3';'param4'='4';'param5'='5';'param6'='6';'param7'='7'} -expectedResult 28");
         }
     }
 }

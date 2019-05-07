@@ -19693,7 +19693,20 @@
               {
                 "Name": "",
                 "ReturnType": null,
-                "Parameters": []
+                "Parameters": [
+                  {
+                    "Name": "restoreRequestType",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "recoveryPoint",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "pointInTime",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
               }
             ]
           },
@@ -21162,7 +21175,20 @@
               {
                 "Name": "",
                 "ReturnType": null,
-                "Parameters": []
+                "Parameters": [
+                  {
+                    "Name": "restoreRequestType",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "recoveryPoint",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "pointInTime",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
               }
             ]
           },
@@ -22282,7 +22308,20 @@
                     {
                       "Name": "",
                       "ReturnType": null,
-                      "Parameters": []
+                      "Parameters": [
+                        {
+                          "Name": "restoreRequestType",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "recoveryPoint",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "pointInTime",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
                     }
                   ]
                 },
