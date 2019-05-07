@@ -22,37 +22,18 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     [Cmdlet(
         VerbsCommon.Set,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.ServerAuditPolicyCmdletsSuffix,
-        DefaultParameterSetName = DefinitionsCommon.AuditPolicyObjectParameterSetName,
+        DefaultParameterSetName = DefinitionsCommon.ServerParameterSetName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
     public class SetAzSqlServerAuditPolicy : SqlServerAuditPolicyCmdlet
     {
         [Parameter(
-            ParameterSetName = DefinitionsCommon.AuditPolicyObjectParameterSetName,
-            Mandatory = true,
-            ValueFromPipeline = true,
-            HelpMessage = AuditingHelpMessages.AuditPolicyObject)]
-        public ServerAuditPolicyModel ServerAuditPolicyObject { get; set; }
-
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerParameterSetName,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = AuditingHelpMessages.AuditActionGroupsHelpMessage)]
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerObjectParameterSetName,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.AuditActionGroupsHelpMessage)]
         public AuditActionGroups[] AuditActionGroup { get; set; }
 
         [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerParameterSetName,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = AuditingHelpMessages.PredicateExpressionHelpMessage)]
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerObjectParameterSetName,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.PredicateExpressionHelpMessage)]
@@ -60,12 +41,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         public string PredicateExpression { get; set; }
 
         [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerParameterSetName,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = AuditingHelpMessages.BlobStorageAuditState)]
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerObjectParameterSetName,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.BlobStorageAuditState)]
@@ -74,12 +49,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         public string BlobStorageAuditState { get; set; }
 
         [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerParameterSetName,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = AuditingHelpMessages.AuditStorageAccountNameHelpMessage)]
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerObjectParameterSetName,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.AuditStorageAccountNameHelpMessage)]
@@ -87,12 +56,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         public string StorageAccountName { get; set; }
 
         [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerParameterSetName,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = AuditingHelpMessages.AuditStorageAccountSubscriptionIdHelpMessage)]
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerObjectParameterSetName,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.AuditStorageAccountSubscriptionIdHelpMessage)]
@@ -100,12 +63,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         public Guid StorageAccountSubscriptionId { get; set; }
 
         [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerParameterSetName,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = AuditingHelpMessages.StorageKeyTypeHelpMessage)]
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerObjectParameterSetName,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.StorageKeyTypeHelpMessage)]
@@ -116,12 +73,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         public string StorageKeyType { get; set; }
 
         [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerParameterSetName,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = AuditingHelpMessages.RetentionInDaysHelpMessage)]
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerObjectParameterSetName,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.RetentionInDaysHelpMessage)]
@@ -129,12 +80,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         public uint? RetentionInDays { get; set; }
 
         [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerParameterSetName,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = AuditingHelpMessages.EventHubAuditState)]
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerObjectParameterSetName,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.EventHubAuditState)]
@@ -143,12 +88,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         public string EventHubAuditState { get; set; }
 
         [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerParameterSetName,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = AuditingHelpMessages.EventHubNameHelpMessage)]
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerObjectParameterSetName,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.EventHubNameHelpMessage)]
@@ -156,12 +95,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         public string EventHubName { get; set; }
 
         [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerParameterSetName,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = AuditingHelpMessages.EventHubAuthorizationRuleIdHelpMessage)]
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerObjectParameterSetName,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.EventHubAuthorizationRuleIdHelpMessage)]
@@ -169,12 +102,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         public string EventHubAuthorizationRuleResourceId { get; set; }
 
         [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerParameterSetName,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = AuditingHelpMessages.LogAnalyticsAuditState)]
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerObjectParameterSetName,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.LogAnalyticsAuditState)]
@@ -183,12 +110,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         public string LogAnalyticsAuditState { get; set; }
 
         [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerParameterSetName,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = AuditingHelpMessages.WorkspaceIdHelpMessage)]
-        [Parameter(
-            ParameterSetName = DefinitionsCommon.ServerObjectParameterSetName,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.WorkspaceIdHelpMessage)]

@@ -13,13 +13,7 @@ Changes the auditing settings for an Azure SQL database.
 
 ## SYNTAX
 
-### AuditPolicyObjectParameterSet (Default)
-```
-Set-AzSqlDatabaseAuditPolicy -DatabaseAuditPolicyObject <DatabaseAuditPolicyModel> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DatabaseParameterSet
+### DatabaseParameterSet (Default)
 ```
 Set-AzSqlDatabaseAuditPolicy [-AuditActionGroup <AuditActionGroups[]>] [-AuditAction <String[]>]
  [-PredicateExpression <String>] [-BlobStorageAuditState <String>] [-StorageAccountName <String>]
@@ -55,7 +49,7 @@ PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -Server
 
 ### Example 2: Disable the blob storage auditing policy of an Azure SQL database
 ```
-PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -BlobStorageAuditState Disabled 
+PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -BlobStorageAuditState Disabled
 ```
 
 ### Example 3: Enable the blob storage auditing policy of an Azure SQL database using a storage account from a different subscription
@@ -131,7 +125,7 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
 ```yaml
 Type: System.String[]
-Parameter Sets: DatabaseParameterSet, DatabaseObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -152,7 +146,7 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]
-Parameter Sets: DatabaseParameterSet, DatabaseObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 Accepted values: BATCH_STARTED_GROUP, BATCH_COMPLETED_GROUP, APPLICATION_ROLE_CHANGE_PASSWORD_GROUP, BACKUP_RESTORE_GROUP, DATABASE_LOGOUT_GROUP, DATABASE_OBJECT_CHANGE_GROUP, DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP, DATABASE_OBJECT_PERMISSION_CHANGE_GROUP, DATABASE_OPERATION_GROUP, DATABASE_PERMISSION_CHANGE_GROUP, DATABASE_PRINCIPAL_CHANGE_GROUP, DATABASE_PRINCIPAL_IMPERSONATION_GROUP, DATABASE_ROLE_MEMBER_CHANGE_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP, SCHEMA_OBJECT_ACCESS_GROUP, SCHEMA_OBJECT_CHANGE_GROUP, SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP, SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP, SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, USER_CHANGE_PASSWORD_GROUP
 
@@ -168,7 +162,7 @@ Indicates whether blob storage is a destination for audit records.
 
 ```yaml
 Type: System.String
-Parameter Sets: DatabaseParameterSet, DatabaseObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 Accepted values: Enabled, Disabled
 
@@ -176,21 +170,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DatabaseAuditPolicyObject
-An object representing the audit policy.
-
-```yaml
-Type: Microsoft.Azure.Commands.Sql.Auditing.Model.DatabaseAuditPolicyModel
-Parameter Sets: AuditPolicyObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -244,7 +223,7 @@ Indicates whether event hub is a destination for audit records.
 
 ```yaml
 Type: System.String
-Parameter Sets: DatabaseParameterSet, DatabaseObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 Accepted values: Enabled, Disabled
 
@@ -260,7 +239,7 @@ The resource Id for the event hub authorization rule
 
 ```yaml
 Type: System.String
-Parameter Sets: DatabaseParameterSet, DatabaseObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -275,7 +254,7 @@ The name of the event hub. If none is specified when providing EventHubAuthoriza
 
 ```yaml
 Type: System.String
-Parameter Sets: DatabaseParameterSet, DatabaseObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -290,7 +269,7 @@ Indicates whether log analytics is a destination for audit records.
 
 ```yaml
 Type: System.String
-Parameter Sets: DatabaseParameterSet, DatabaseObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 Accepted values: Enabled, Disabled
 
@@ -321,7 +300,7 @@ The T-SQL predicate (WHERE clause) used to filter audit logs.
 
 ```yaml
 Type: System.String
-Parameter Sets: DatabaseParameterSet, DatabaseObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -351,7 +330,7 @@ The number of retention days for the audit logs.
 
 ```yaml
 Type: System.Nullable`1[System.UInt32]
-Parameter Sets: DatabaseParameterSet, DatabaseObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -381,7 +360,7 @@ The name of the storage account.
 
 ```yaml
 Type: System.String
-Parameter Sets: DatabaseParameterSet, DatabaseObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -396,7 +375,7 @@ The storage account subscription id
 
 ```yaml
 Type: System.Guid
-Parameter Sets: DatabaseParameterSet, DatabaseObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -411,7 +390,7 @@ Specifies which of the storage access keys to use.
 
 ```yaml
 Type: System.String
-Parameter Sets: DatabaseParameterSet, DatabaseObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 Accepted values: Primary, Secondary
 
@@ -427,7 +406,7 @@ The workspace ID (resource ID of a Log Analytics workspace) for a Log Analytics 
 
 ```yaml
 Type: System.String
-Parameter Sets: DatabaseParameterSet, DatabaseObjectParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False

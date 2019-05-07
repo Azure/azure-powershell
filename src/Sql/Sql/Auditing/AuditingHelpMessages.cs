@@ -60,8 +60,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing
 
         public const string AsJobHelpMessage = "Run cmdlet in the background";
 
-        public const string AuditPolicyObject = "An object representing the audit policy.";
-
         public const string AuditActionHelpMessage =
 @"The set of audit actions.  
 The supported actions to audit are:  
