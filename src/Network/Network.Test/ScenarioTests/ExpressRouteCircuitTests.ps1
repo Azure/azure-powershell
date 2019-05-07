@@ -630,6 +630,9 @@ function Test-ExpressRouteCircuitConnectionCRUD
 		#Get Express Route Circuit Resource
 		$initckt = Get-AzExpressRouteCircuit -Name $initCircuitName -ResourceGroupName $rgname
 
+		#Verify Global reach enabled readonly flag
+		Assert-AreEqual $true $initckt.GlobalReachEnabled
+
         $connection = Get-AzureRmExpressRouteCircuitConnectionConfig -Name $connectionName -ExpressRouteCircuit $initckt
 		Assert-AreEqual $connectionName $connection.Name
 		Assert-AreEqual "Succeeded" $connection.ProvisioningState
@@ -638,6 +641,19 @@ function Test-ExpressRouteCircuitConnectionCRUD
         $connections = Get-AzureRmExpressRouteCircuitConnectionConfig -ExpressRouteCircuit $initckt
         Assert-NotNull $connections
         Assert-AreEqual 1 $connections.Count
+
+		$initckt = Get-AzExpressRouteCircuit -Name $initCircuitName -ResourceGroupName $rgname
+		$peerckt = Get-AzExpressRouteCircuit -Name $peerCircuitName -ResourceGroupName $rgname
+
+		#Verify Global reach enabled readonly flag in peer circuit
+		Assert-AreEqual $true $peerckt.GlobalReachEnabled
+
+		#Verify Peer Circuit Connection fields
+		Assert-AreEqual 1 $peerckt.Peerings[0].PeeredConnections.Count
+		Assert-AreEqual $initckt.ServiceKey $peerckt.Peerings[0].PeeredConnections[0].Name
+		Assert-AreEqual $connectionName $peerckt.Peerings[0].PeeredConnections[0].ConnectionName
+		Assert-AreEqual "Succeeded" $initckt.Peerings[0].PeeredConnections[0].ProvisioningState
+		Assert-AreEqual "Connected" $initckt.Peerings[0].PeeredConnections[0].CircuitConnectionStatus
 
 		#Delete the circuit connection Resource
 		Remove-AzExpressRouteCircuitConnectionConfig -Name $connectionName -ExpressRouteCircuit $initckt
@@ -649,8 +665,20 @@ function Test-ExpressRouteCircuitConnectionCRUD
 		$initckt = Get-AzExpressRouteCircuit -Name $initCircuitName -ResourceGroupName $rgname
 		$initckt
 
+		#Verify Global reach enabled readonly flag
+		Assert-AreEqual $false $initckt.GlobalReachEnabled
+
 		#Verify Circuit Connection does not exist
 		Assert-AreEqual 0 $initckt.Peerings[0].Connections.Count
+
+		#Get peer Express Route Circuit Resource
+		$peerckt = Get-AzExpressRouteCircuit -Name $peerCircuitName -ResourceGroupName $rgname
+
+		#Verify Global reach enabled readonly flag in peer circuit
+		Assert-AreEqual $false $peerckt.GlobalReachEnabled
+
+		#Verify peer Circuit Connection does not exist
+		Assert-AreEqual 0 $peerckt.Peerings[0].PeeredConnections.Count
 
         Remove-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $initckt -Name AzurePrivatePeering
         $initckt = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $initckt
