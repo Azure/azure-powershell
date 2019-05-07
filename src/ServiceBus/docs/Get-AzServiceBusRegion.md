@@ -12,14 +12,9 @@ Gets the available Regions for a given sku
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
 ```
-Get-AzServiceBusRegion -Sku <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzServiceBusRegion -Sku <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzServiceBusRegion -Sku <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,8 +66,8 @@ Subscription credentials that uniquely identify a Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: List
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True

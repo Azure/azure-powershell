@@ -12,28 +12,22 @@ Gets an VirtualNetworkRule for a Namespace by rule name.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
+### List (Default)
 ```
 Get-AzServiceBusNamespaceVirtualNetworkRule -NamespaceName <String> -ResourceGroupName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzServiceBusNamespaceVirtualNetworkRule -NamespaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzServiceBusNamespaceVirtualNetworkRule -NamespaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -VirtualNetworkRuleName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -SubscriptionId <String[]> -VirtualNetworkRuleName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetSubscriptionIdViaHost
+### GetViaIdentity
 ```
-Get-AzServiceBusNamespaceVirtualNetworkRule -NamespaceName <String> -ResourceGroupName <String>
- -VirtualNetworkRuleName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzServiceBusNamespaceVirtualNetworkRule -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,12 +59,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -NamespaceName
 The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, Get
 Aliases: Namespace
 
 Required: True
@@ -85,7 +94,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -100,7 +109,7 @@ Subscription credentials that uniquely identify a Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: List, Get
 Aliases:
 
@@ -116,7 +125,7 @@ The Virtual Network Rule name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetSubscriptionIdViaHost
+Parameter Sets: Get
 Aliases:
 
 Required: True

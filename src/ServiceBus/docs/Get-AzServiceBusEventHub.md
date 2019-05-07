@@ -12,15 +12,8 @@ Gets all the Event Hubs in a service bus Namespace.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
 ```
-Get-AzServiceBusEventHub -NamespaceName <String> -ResourceGroupName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### List
-```
-Get-AzServiceBusEventHub -NamespaceName <String> -ResourceGroupName <String> -SubscriptionId <String>
+Get-AzServiceBusEventHub -NamespaceName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -88,8 +81,8 @@ Subscription credentials that uniquely identify a Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: List
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True

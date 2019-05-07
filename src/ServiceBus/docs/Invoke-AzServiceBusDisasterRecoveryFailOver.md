@@ -12,16 +12,16 @@ Invokes GEO DR failover and reconfigure the alias to point to the secondary name
 
 ## SYNTAX
 
-### FailSubscriptionIdViaHost (Default)
-```
-Invoke-AzServiceBusDisasterRecoveryFailOver -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Fail
+### Fail (Default)
 ```
 Invoke-AzServiceBusDisasterRecoveryFailOver -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### FailViaIdentity
+```
+Invoke-AzServiceBusDisasterRecoveryFailOver -InputObject <IServiceBusIdentity> [-PassThru]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,12 +53,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: FailViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The Disaster Recovery configuration name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Fail
 Aliases: Alias, AliasName, DisasterRecoveryConfiguration, DisasterRecoveryConfigurationName
 
 Required: True
@@ -73,7 +88,7 @@ The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Fail
 Aliases: Namespace
 
 Required: True
@@ -103,7 +118,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Fail
 Aliases:
 
 Required: True

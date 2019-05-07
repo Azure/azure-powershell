@@ -12,14 +12,8 @@ Gets the available premium messaging regions for servicebus
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
 ```
-Get-AzServiceBusPremiumMessagingRegion [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzServiceBusPremiumMessagingRegion -SubscriptionId <String> [-DefaultProfile <PSObject>]
+Get-AzServiceBusPremiumMessagingRegion -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -57,8 +51,8 @@ Subscription credentials that uniquely identify a Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: List
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True

@@ -12,16 +12,16 @@ This operation disables the Disaster Recovery and stops replicating changes from
 
 ## SYNTAX
 
-### BreakSubscriptionIdViaHost (Default)
-```
-Disable-AzServiceBusDisasterRecoveryPairing -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Break
+### Break (Default)
 ```
 Disable-AzServiceBusDisasterRecoveryPairing -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### BreakViaIdentity
+```
+Disable-AzServiceBusDisasterRecoveryPairing -InputObject <IServiceBusIdentity> [-PassThru]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,12 +53,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: BreakViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The Disaster Recovery configuration name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Break
 Aliases: Alias, AliasName, DisasterRecoveryConfiguration, DisasterRecoveryConfigurationName
 
 Required: True
@@ -73,7 +88,7 @@ The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Break
 Aliases: Namespace
 
 Required: True
@@ -103,7 +118,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Break
 Aliases:
 
 Required: True

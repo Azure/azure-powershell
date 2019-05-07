@@ -14,11 +14,11 @@ This operation is idempotent.
 
 ## SYNTAX
 
-### UpdateSubscriptionIdViaHost (Default)
+### UpdateViaIdentityExpanded (Default)
 ```
-Update-AzServiceBusNamespace -Name <String> -ResourceGroupName <String>
- [-Parameter <ISbNamespaceUpdateParameters>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzServiceBusNamespace [-PassThru] [-Location <String>] [-SkuCapacity <Int32>] -SkuName <SkuName>
+ [-SkuTier <SkuTier>] [-Tag <IResourceNamespacePatchTags>] [-ZoneRedundant <Boolean>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -36,11 +36,10 @@ Update-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> -Subscri
  [<CommonParameters>]
 ```
 
-### UpdateSubscriptionIdViaHostExpanded
+### UpdateViaIdentity
 ```
-Update-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> [-PassThru] [-Location <String>]
- [-SkuCapacity <Int32>] -SkuName <SkuName> [-SkuTier <SkuTier>] [-Tag <IResourceNamespacePatchTags>]
- [-ZoneRedundant <Boolean>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzServiceBusNamespace -InputObject <IServiceBusIdentity> [-Parameter <ISbNamespaceUpdateParameters>]
+ [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,12 +73,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Location
 Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
 Aliases:
 
 Required: False
@@ -94,7 +108,7 @@ The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, Update
 Aliases: NamespaceName
 
 Required: True
@@ -109,7 +123,7 @@ Description of a namespace resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api201801Preview.ISbNamespaceUpdateParameters
-Parameter Sets: UpdateSubscriptionIdViaHost, Update
+Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -139,7 +153,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -155,7 +169,7 @@ For Premium tier, capacity are 1,2 and 4.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
 Aliases:
 
 Required: False
@@ -170,7 +184,7 @@ Name of this SKU.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.SkuName
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
 Aliases:
 
 Required: True
@@ -185,7 +199,7 @@ The billing tier of this particular SKU.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.SkuTier
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
 Aliases:
 
 Required: False
@@ -216,7 +230,7 @@ Resource tags
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.IResourceNamespacePatchTags
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
 Aliases:
 
 Required: False
@@ -231,7 +245,7 @@ Enabling this property creates a Premium Service Bus Namespace in regions suppor
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
 Aliases:
 
 Required: False

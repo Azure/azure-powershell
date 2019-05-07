@@ -12,11 +12,10 @@ Creates or updates an VirtualNetworkRule for a Namespace.
 
 ## SYNTAX
 
-### CreateSubscriptionIdViaHost (Default)
+### CreateViaIdentityExpanded (Default)
 ```
-New-AzServiceBusNamespaceVirtualNetworkRule -NamespaceName <String> -ResourceGroupName <String>
- -VirtualNetworkRuleName <String> [-Parameter <IVirtualNetworkRule>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzServiceBusNamespaceVirtualNetworkRule [-VirtualNetworkSubnetId <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -26,18 +25,10 @@ New-AzServiceBusNamespaceVirtualNetworkRule -NamespaceName <String> -ResourceGro
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Create
+### CreateViaIdentity
 ```
-New-AzServiceBusNamespaceVirtualNetworkRule -NamespaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -VirtualNetworkRuleName <String> [-Parameter <IVirtualNetworkRule>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateSubscriptionIdViaHostExpanded
-```
-New-AzServiceBusNamespaceVirtualNetworkRule -NamespaceName <String> -ResourceGroupName <String>
- -VirtualNetworkRuleName <String> [-VirtualNetworkSubnetId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzServiceBusNamespaceVirtualNetworkRule -InputObject <IServiceBusIdentity>
+ [-Parameter <IVirtualNetworkRule>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,12 +60,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -NamespaceName
 The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases: Namespace
 
 Required: True
@@ -89,7 +95,7 @@ Single item in a List or Get VirtualNetworkRules operation
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api201801Preview.IVirtualNetworkRule
-Parameter Sets: CreateSubscriptionIdViaHost, Create
+Parameter Sets: CreateViaIdentity
 Aliases:
 
 Required: False
@@ -104,7 +110,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -120,7 +126,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -135,7 +141,7 @@ The Virtual Network Rule name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -150,7 +156,7 @@ Resource ID of Virtual Network Subnet
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False

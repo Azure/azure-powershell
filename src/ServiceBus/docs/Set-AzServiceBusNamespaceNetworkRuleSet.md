@@ -12,10 +12,11 @@ Gets NetworkRuleSet for a Namespace.
 
 ## SYNTAX
 
-### UpdateSubscriptionIdViaHost (Default)
+### UpdateViaIdentityExpanded (Default)
 ```
-Set-AzServiceBusNamespaceNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String>
- [-Parameter <INetworkRuleSet>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzServiceBusNamespaceNetworkRuleSet [-DefaultAction <DefaultAction>] [-IPRule <INwRuleSetIPRules[]>]
+ [-VirtualNetworkRule <INwRuleSetVirtualNetworkRules[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -26,19 +27,10 @@ Set-AzServiceBusNamespaceNetworkRuleSet -NamespaceName <String> -ResourceGroupNa
  [<CommonParameters>]
 ```
 
-### Update
+### UpdateViaIdentity
 ```
-Set-AzServiceBusNamespaceNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Parameter <INetworkRuleSet>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### UpdateSubscriptionIdViaHostExpanded
-```
-Set-AzServiceBusNamespaceNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String>
- [-DefaultAction <DefaultAction>] [-IPRule <INwRuleSetIPRules[]>]
- [-VirtualNetworkRule <INwRuleSetVirtualNetworkRules[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzServiceBusNamespaceNetworkRuleSet -InputObject <IServiceBusIdentity> [-Parameter <INetworkRuleSet>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,7 +52,7 @@ Default Action for Network Rule Set
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.DefaultAction
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
 Aliases:
 
 Required: False
@@ -85,12 +77,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -IPRule
 List of IpRules
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api201801Preview.INwRuleSetIPRules[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
 Aliases:
 
 Required: False
@@ -105,7 +112,7 @@ The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases: Namespace
 
 Required: True
@@ -120,7 +127,7 @@ Description of topic resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api201801Preview.INetworkRuleSet
-Parameter Sets: UpdateSubscriptionIdViaHost, Update
+Parameter Sets: UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -135,7 +142,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -151,7 +158,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -166,7 +173,7 @@ List VirtualNetwork Rules
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api201801Preview.INwRuleSetVirtualNetworkRules[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
 Aliases:
 
 Required: False

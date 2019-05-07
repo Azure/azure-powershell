@@ -7,6 +7,7 @@ Check the give namespace name availability.
 https://docs.microsoft.com/en-us/powershell/module/az.servicebus/test-azservicebusnameavailability
 #>
 function Test-AzServiceBusNameAvailability_Namespace {
+[Alias('Test-AzServiceBusName')]
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ICheckNameAvailabilityResult')]
 [CmdletBinding(DefaultParameterSetName='Namespace', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Profile('latest-2019-04-30')]

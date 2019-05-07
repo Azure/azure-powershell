@@ -75,7 +75,9 @@ directive:
       subject: AuthorizationRule$
       parameter-name: Right
     set:
-      alias: Right
+      alias:
+        - Right
+        - Rights
       parameter-name: AccessRight
 # DisasterRecovery
   - where:
@@ -150,6 +152,11 @@ directive:
     set:
       verb: Stop
       subject: Migration
+  - where:
+      subject: Migration$
+      parameter-name: NamespaceName
+    set:
+      alias: Name
 # NameAvailability
   - where:
       subject: DisasterRecoveryConfigurationNameAvailability
@@ -184,29 +191,55 @@ directive:
     set:
       alias: Name
 # Remove Non-expanded
+  # - where:
+  #     verb: Move
+  #     subject: ^Namespace$
+  #     variant: ^Migrate$|^MigrateViaIdentity$
+  #   remove: true
+  # - where:
+  #     verb: New|Set
+  #     subject: DisasterRecoveryConfiguration|^Namespace$|NamespaceAuthorizationRule|NamespaceIPFilterRule|NamespaceNetworkRuleSet|NamespaceVirtualNetworkRule|^Queue$|QueueAuthorizationRule|^Rule$|^Subscription$|^Topic$|TopicAuthorizationRule
+  #     variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+  #   remove: true
+  # - where:
+  #     verb: New
+  #     subject: ^NamespaceKey$|^QueueKey$|^TopicKey$
+  #     variant: ^Regenerate$|^RegenerateViaIdentity$
+  #   remove: true
+  # - where:
+  #     verb: Start
+  #     subject: ^Migration$
+  #     variant: ^Create$|^CreateViaIdentity$
+  #   remove: true
+  # - where:
+  #     verb: Test
+  #     subject: DisasterRecoveryConfigurationNameAvailability|NamespaceNameAvailability
+  #     variant: ^Check$|^CheckViaIdentity$
+  #   remove: true
+
   - where:
       verb: Move
       subject: ^Namespace$
-      variant: ^Migrate$|^MigrateSubscriptionIdViaHost$
-    remove: true
+      variant: ^Migrate$
+    hide: true
   - where:
-      verb: New|Set
+      verb: ^New$|^Set$
       subject: DisasterRecoveryConfiguration|^Namespace$|NamespaceAuthorizationRule|NamespaceIPFilterRule|NamespaceNetworkRuleSet|NamespaceVirtualNetworkRule|^Queue$|QueueAuthorizationRule|^Rule$|^Subscription$|^Topic$|TopicAuthorizationRule
-      variant: ^Create$|^CreateSubscriptionIdViaHost$|^Update$|^UpdateSubscriptionIdViaHost$
-    remove: true
+      variant: ^Create$|^Update$
+    hide: true
   - where:
       verb: New
       subject: ^NamespaceKey$|^QueueKey$|^TopicKey$
-      variant: ^Regenerate$|^RegenerateSubscriptionIdViaHost$
-    remove: true
+      variant: ^Regenerate$
+    hide: true
   - where:
       verb: Start
       subject: ^Migration$
-      variant: ^Create$|^CreateSubscriptionIdViaHost$
-    remove: true
+      variant: ^Create$
+    hide: true
   - where:
       verb: Test
       subject: DisasterRecoveryConfigurationNameAvailability|NamespaceNameAvailability
-      variant: ^Check$|^CheckSubscriptionIdViaHost$
-    remove: true
+      variant: ^Check$
+    hide: true
 ```

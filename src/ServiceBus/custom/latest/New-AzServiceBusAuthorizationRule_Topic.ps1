@@ -41,7 +41,7 @@ param(
     ${TopicName},
 
     [Parameter(Mandatory, HelpMessage='The rights associated with the rule.')]
-    [Alias('Right')]
+    [Alias('Right', 'Rights')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.AccessRights])]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.AccessRights[]]

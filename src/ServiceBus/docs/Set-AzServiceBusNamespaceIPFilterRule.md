@@ -12,11 +12,10 @@ Creates or updates an IpFilterRule for a Namespace.
 
 ## SYNTAX
 
-### UpdateSubscriptionIdViaHost (Default)
+### UpdateViaIdentityExpanded (Default)
 ```
-Set-AzServiceBusNamespaceIPFilterRule -IPFilterRuleName <String> -NamespaceName <String>
- -ResourceGroupName <String> [-Parameter <IIPFilterRule>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzServiceBusNamespaceIPFilterRule [-Action <IPAction>] [-FilterName <String>] [-IPMask <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -26,17 +25,9 @@ Set-AzServiceBusNamespaceIPFilterRule -IPFilterRuleName <String> -NamespaceName 
  [-IPMask <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Update
+### UpdateViaIdentity
 ```
-Set-AzServiceBusNamespaceIPFilterRule -IPFilterRuleName <String> -NamespaceName <String>
- -ResourceGroupName <String> -SubscriptionId <String> [-Parameter <IIPFilterRule>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateSubscriptionIdViaHostExpanded
-```
-Set-AzServiceBusNamespaceIPFilterRule -IPFilterRuleName <String> -NamespaceName <String>
- -ResourceGroupName <String> [-Action <IPAction>] [-FilterName <String>] [-IPMask <String>]
+Set-AzServiceBusNamespaceIPFilterRule -InputObject <IServiceBusIdentity> [-Parameter <IIPFilterRule>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -59,7 +50,7 @@ The IP Filter Action
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.IPAction
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
 Aliases:
 
 Required: False
@@ -89,7 +80,7 @@ IP Filter name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
 Aliases:
 
 Required: False
@@ -99,12 +90,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -IPFilterRuleName
 The IP Filter Rule name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -119,7 +125,7 @@ IP Mask
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
 Aliases:
 
 Required: False
@@ -134,7 +140,7 @@ The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases: Namespace
 
 Required: True
@@ -149,7 +155,7 @@ Single item in a List or Get IpFilterRules operation
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api201801Preview.IIPFilterRule
-Parameter Sets: UpdateSubscriptionIdViaHost, Update
+Parameter Sets: UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -164,7 +170,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -180,7 +186,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True

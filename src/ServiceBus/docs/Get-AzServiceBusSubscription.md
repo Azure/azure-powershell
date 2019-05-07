@@ -12,13 +12,7 @@ Returns a subscription description for the specified topic.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
-```
-Get-AzServiceBusSubscription -NamespaceName <String> -ResourceGroupName <String> -TopicName <String>
- [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
+### List (Default)
 ```
 Get-AzServiceBusSubscription -Id <String> -NamespaceName <String> -ResourceGroupName <String>
  -TopicName <String> [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -30,10 +24,10 @@ Get-AzServiceBusSubscription -Id <String> -Name <String> -NamespaceName <String>
  -TopicName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetSubscriptionIdViaHost
+### GetViaIdentity
 ```
-Get-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -TopicName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzServiceBusSubscription -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,12 +75,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The subscription name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetSubscriptionIdViaHost
+Parameter Sets: Get
 Aliases: SubscriptionName
 
 Required: True
@@ -101,7 +110,7 @@ The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, Get
 Aliases: Namespace
 
 Required: True
@@ -116,7 +125,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -131,7 +140,7 @@ May be used to limit the number of results to the most recent N usageDetails.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: ListSubscriptionIdViaHost, List
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -146,7 +155,7 @@ The topic name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, Get
 Aliases: Topic
 
 Required: True
@@ -162,7 +171,7 @@ If a previous response contains a nextLink element, the value of the nextLink el
 
 ```yaml
 Type: System.Int32
-Parameter Sets: ListSubscriptionIdViaHost, List
+Parameter Sets: List
 Aliases:
 
 Required: False

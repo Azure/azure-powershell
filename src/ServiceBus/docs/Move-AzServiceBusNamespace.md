@@ -12,10 +12,10 @@ This operation Migrate the given namespace to provided name type
 
 ## SYNTAX
 
-### MigrateSubscriptionIdViaHost (Default)
+### MigrateViaIdentityExpanded (Default)
 ```
-Move-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> [-Parameter <ISbNamespaceMigrate>]
- [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Move-AzServiceBusNamespace [-PassThru] -TargetNamespaceType <NameSpaceType> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MigrateExpanded
@@ -24,17 +24,10 @@ Move-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> -Subscript
  -TargetNamespaceType <NameSpaceType> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Migrate
+### MigrateViaIdentity
 ```
-Move-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <ISbNamespaceMigrate>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### MigrateSubscriptionIdViaHostExpanded
-```
-Move-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> [-PassThru]
- -TargetNamespaceType <NameSpaceType> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Move-AzServiceBusNamespace -InputObject <IServiceBusIdentity> [-PassThru] [-Parameter <ISbNamespaceMigrate>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,12 +59,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: MigrateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: MigrateExpanded
 Aliases: NamespaceName
 
 Required: True
@@ -86,7 +94,7 @@ Namespace Migrate Object
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ISbNamespaceMigrate
-Parameter Sets: MigrateSubscriptionIdViaHost, Migrate
+Parameter Sets: MigrateViaIdentity
 Aliases:
 
 Required: False
@@ -116,7 +124,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: MigrateExpanded
 Aliases:
 
 Required: True
@@ -132,7 +140,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: MigrateExpanded, Migrate
+Parameter Sets: MigrateExpanded
 Aliases:
 
 Required: True
@@ -147,7 +155,7 @@ Type of namespaces
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.NameSpaceType
-Parameter Sets: MigrateExpanded, MigrateSubscriptionIdViaHostExpanded
+Parameter Sets: MigrateViaIdentityExpanded, MigrateExpanded
 Aliases:
 
 Required: True

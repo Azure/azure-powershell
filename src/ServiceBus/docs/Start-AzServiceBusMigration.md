@@ -12,11 +12,10 @@ Creates Migration configuration and starts migration of entities from Standard t
 
 ## SYNTAX
 
-### CreateSubscriptionIdViaHost (Default)
+### CreateViaIdentityExpanded (Default)
 ```
-Start-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String>
- [-Parameter <IMigrationConfigProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Start-AzServiceBusMigration -PostMigrationName <String> -TargetNamespace <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -26,17 +25,10 @@ Start-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> 
  [-Confirm] [<CommonParameters>]
 ```
 
-### Create
+### CreateViaIdentity
 ```
-Start-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IMigrationConfigProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### CreateSubscriptionIdViaHostExpanded
-```
-Start-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> -PostMigrationName <String>
- -TargetNamespace <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzServiceBusMigration -InputObject <IServiceBusIdentity> [-Parameter <IMigrationConfigProperties>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,12 +75,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -NamespaceName
 The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases: Namespace
 
 Required: True
@@ -103,7 +110,7 @@ Single item in List or Get Migration Config operation
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.IMigrationConfigProperties
-Parameter Sets: CreateSubscriptionIdViaHost, Create
+Parameter Sets: CreateViaIdentity
 Aliases:
 
 Required: False
@@ -118,7 +125,7 @@ Name to access Standard Namespace after migration
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: True
@@ -133,7 +140,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -149,7 +156,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -164,7 +171,7 @@ Existing premium Namespace ARM Id name which has no entities, will be used for m
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: True

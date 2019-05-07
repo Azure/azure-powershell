@@ -14,10 +14,11 @@ This operation is idempotent.
 
 ## SYNTAX
 
-### UpdateSubscriptionIdViaHost (Default)
+### UpdateViaIdentityExpanded (Default)
 ```
-Set-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> [-Parameter <ISbNamespace>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzServiceBusNamespace -Location <String> [-SkuCapacity <Int32>] -SkuName <SkuName> [-SkuTier <SkuTier>]
+ [-Tag <ITrackedResourceTags>] [-ZoneRedundant <Boolean>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -28,16 +29,9 @@ Set-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> -Subscripti
  [-Confirm] [<CommonParameters>]
 ```
 
-### Update
+### UpdateViaIdentity
 ```
-Set-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <ISbNamespace>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateSubscriptionIdViaHostExpanded
-```
-Set-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> -Location <String> [-SkuCapacity <Int32>]
- -SkuName <SkuName> [-SkuTier <SkuTier>] [-Tag <ITrackedResourceTags>] [-ZoneRedundant <Boolean>]
+Set-AzServiceBusNamespace -InputObject <IServiceBusIdentity> [-Parameter <ISbNamespace>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -87,12 +81,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Location
 The Geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
 Aliases:
 
 Required: True
@@ -107,7 +116,7 @@ The namespace name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases: NamespaceName
 
 Required: True
@@ -122,7 +131,7 @@ Description of a namespace resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api201801Preview.ISbNamespace
-Parameter Sets: UpdateSubscriptionIdViaHost, Update
+Parameter Sets: UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -137,7 +146,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -153,7 +162,7 @@ For Premium tier, capacity are 1,2 and 4.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
 Aliases:
 
 Required: False
@@ -168,7 +177,7 @@ Name of this SKU.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.SkuName
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
 Aliases:
 
 Required: True
@@ -183,7 +192,7 @@ The billing tier of this particular SKU.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.SkuTier
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
 Aliases:
 
 Required: False
@@ -199,7 +208,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -214,7 +223,7 @@ Resource tags
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ITrackedResourceTags
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
 Aliases:
 
 Required: False
@@ -229,7 +238,7 @@ Enabling this property creates a Premium Service Bus Namespace in regions suppor
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
 Aliases:
 
 Required: False

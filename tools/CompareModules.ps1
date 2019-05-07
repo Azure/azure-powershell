@@ -99,12 +99,42 @@ Write-Debug "[DEBUG] Using API profile folder '$ApiProfileFolder'"
 $GeneratedCmdlets = @{}
 $NewlyGeneratedCmdlets = @()
 $NoMissingParametersCmdlets = @()
+$AllCmdletAliases = @()
 $GeneratedScripts = Get-ChildItem -Path $ApiProfileFolder -Filter "*.ps1"
 $Result += "## Incorrect Cmdlets`n"
 foreach ($Script in $GeneratedScripts)
 {
     $CmdletName = $Script.BaseName
     $CmdletAliases = @()
+    $Content = Get-Content -Path $Script.FullName
+    for ($Index = 0; $Index -lt $Content.Length; $Index++)
+    {
+        $Line = $Content[$Index]
+        if ($Line -like "*param(*")
+        {
+            $TempIndex = $Index - 1
+            while ($TempIndex -ge 0 -and $Content[$TempIndex] -notlike "*function *")
+            {
+                $Line = $Content[$TempIndex]
+                if ($Line -like '*`[Alias`(*')
+                {
+                    $Line = $Line.Trim("").Trim("[Alias(").Trim(")]")
+                    $Aliases = $Line -split ","
+                    foreach ($Alias in $Aliases)
+                    {
+                        $AliasName = $Alias.Trim("").Trim("'")
+                        $CmdletAliases += $AliasName
+                        $AllCmdletAliases += $AliasName
+                    }
+
+                    break
+                }
+
+                $TempIndex--
+            }
+        }
+    }
+
     $GeneratedCmdlets[$CmdletName] = $true
     $ExistingParameters = $CmdletsToParameters[$CmdletName]
     if ($null -eq $ExistingParameters)
@@ -120,13 +150,24 @@ foreach ($Script in $GeneratedScripts)
 
         if ($null -eq $ExistingParameters)
         {
-            Write-Debug "[DEBUG] '$CmdletName' is a new cmdlet -- skipping"
-            $NewlyGeneratedCmdlets += $CmdletName
-            continue
+            foreach ($Cmdlet in $CmdletAliases)
+            {
+                if ($null -ne $CmdletsToParameters[$Cmdlet])
+                {
+                    $ExistingParameters = $CmdletsToParameters[$Cmdlet]
+                    break
+                }
+            }
+
+            if ($null -eq $ExistingParameters)
+            {
+                Write-Debug "[DEBUG] '$CmdletName' is a new cmdlet -- skipping"
+                $NewlyGeneratedCmdlets += $CmdletName
+                continue
+            }
         }
     }
 
-    $Content = Get-Content -Path $Script.FullName
     $Parameters = @()
     for ($Index = 0; $Index -lt $Content.Length; $Index++)
     {
@@ -158,7 +199,7 @@ foreach ($Script in $GeneratedScripts)
     $MissingParameters = @()
     foreach ($Parameter in $ExistingParameters)
     {
-        if (($Parameters | Where-Object { $_ -eq $Parameter.Name }).Count -eq 0)
+        if (($Parameter.Name -ne 'ResourceId') -and (($Parameters | Where-Object { $_ -eq $Parameter.Name }).Count -eq 0))
         {
             $Found = $false
             foreach ($Alias in $Parameter.AliasList)
@@ -199,7 +240,7 @@ $NewlyGeneratedCmdlets | ForEach-Object { $Result += "- $_" }
 $MissingCmdlets = @()
 foreach ($Cmdlet in $CmdletsToParameters.Keys)
 {
-    if ($null -eq $GeneratedCmdlets[$Cmdlet])
+    if ($null -eq $GeneratedCmdlets[$Cmdlet] -and $AllCmdletAliases -notcontains $Cmdlet)
     {
         $AliasList = $CmdletToAliases[$Cmdlet]
         $Found = $false

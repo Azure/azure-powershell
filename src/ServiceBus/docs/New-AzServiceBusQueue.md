@@ -13,10 +13,15 @@ This operation is idempotent.
 
 ## SYNTAX
 
-### CreateSubscriptionIdViaHost (Default)
+### CreateViaIdentityExpanded (Default)
 ```
-New-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-Parameter <ISbQueue>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzServiceBusQueue [-AutoDeleteOnIdle <TimeSpan>] [-DeadLetteringOnMessageExpiration <Boolean>]
+ [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
+ [-EnableBatchedOperation <Boolean>] [-EnableExpress <Boolean>] [-EnablePartitioning <Boolean>]
+ [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-LockDuration <TimeSpan>]
+ [-MaxDeliveryCount <Int32>] [-MaxSizeInMegabyte <Int32>] [-RequiresDuplicateDetection <Boolean>]
+ [-RequiresSession <Boolean>] [-Status <EntityStatus>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -31,23 +36,10 @@ New-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName 
  [<CommonParameters>]
 ```
 
-### Create
+### CreateViaIdentity
 ```
-New-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Parameter <ISbQueue>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### CreateSubscriptionIdViaHostExpanded
-```
-New-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-AutoDeleteOnIdle <TimeSpan>] [-DeadLetteringOnMessageExpiration <Boolean>]
- [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
- [-EnableBatchedOperation <Boolean>] [-EnableExpress <Boolean>] [-EnablePartitioning <Boolean>]
- [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-LockDuration <TimeSpan>]
- [-MaxDeliveryCount <Int32>] [-MaxSizeInMegabyte <Int32>] [-RequiresDuplicateDetection <Boolean>]
- [-RequiresSession <Boolean>] [-Status <EntityStatus>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzServiceBusQueue -InputObject <IServiceBusIdentity> [-Parameter <ISbQueue>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,7 +63,7 @@ The minimum duration is 5 minutes.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -86,7 +78,7 @@ A value that indicates whether this queue has dead letter support when a message
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -103,7 +95,7 @@ This is the default value used when TimeToLive is not set on a message itself.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -134,7 +126,7 @@ The default value is 10 minutes.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -149,7 +141,7 @@ Value that indicates whether server-side batched operations are enabled.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -165,7 +157,7 @@ An express queue holds a message in memory temporarily before writing it to pers
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -180,7 +172,7 @@ A value that indicates whether the queue is to be partitioned across multiple me
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -195,7 +187,7 @@ Queue/Topic name to forward the Dead Letter message
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -210,7 +202,7 @@ Queue/Topic name to forward the messages
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -220,13 +212,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -LockDuration
 ISO 8601 timespan duration of a peek-lock; that is, the amount of time that the message is locked for other receivers.
 The maximum value for LockDuration is 5 minutes; the default value is 1 minute.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -243,7 +250,7 @@ default value is 10.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -259,7 +266,7 @@ Default is 1024.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -274,7 +281,7 @@ The queue name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases: QueueName
 
 Required: True
@@ -289,7 +296,7 @@ The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases: Namespace
 
 Required: True
@@ -304,7 +311,7 @@ Description of queue Resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ISbQueue
-Parameter Sets: CreateSubscriptionIdViaHost, Create
+Parameter Sets: CreateViaIdentity
 Aliases:
 
 Required: False
@@ -319,7 +326,7 @@ A value indicating if this queue requires duplicate detection.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -334,7 +341,7 @@ A value that indicates whether the queue supports the concept of sessions.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -349,7 +356,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -364,7 +371,7 @@ Enumerates the possible values for the status of a messaging entity.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -380,7 +387,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True

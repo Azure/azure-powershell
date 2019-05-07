@@ -12,11 +12,14 @@ Creates a topic subscription.
 
 ## SYNTAX
 
-### CreateSubscriptionIdViaHost (Default)
+### CreateViaIdentityExpanded (Default)
 ```
-New-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -TopicName <String> [-Parameter <ISbSubscription>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzServiceBusSubscription [-AutoDeleteOnIdle <TimeSpan>]
+ [-DeadLetteringOnFilterEvaluationException <Boolean>] [-DeadLetteringOnMessageExpiration <Boolean>]
+ [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
+ [-EnableBatchedOperation <Boolean>] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>]
+ [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-RequiresSession <Boolean>] [-Status <EntityStatus>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -30,22 +33,10 @@ New-AzServiceBusSubscription -Id <String> -Name <String> -NamespaceName <String>
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Create
+### CreateViaIdentity
 ```
-New-AzServiceBusSubscription -Id <String> -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -TopicName <String> [-Parameter <ISbSubscription>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### CreateSubscriptionIdViaHostExpanded
-```
-New-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -TopicName <String> [-AutoDeleteOnIdle <TimeSpan>] [-DeadLetteringOnFilterEvaluationException <Boolean>]
- [-DeadLetteringOnMessageExpiration <Boolean>] [-DefaultMessageTimeToLive <TimeSpan>]
- [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperation <Boolean>]
- [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-LockDuration <TimeSpan>]
- [-MaxDeliveryCount <Int32>] [-RequiresSession <Boolean>] [-Status <EntityStatus>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzServiceBusSubscription -InputObject <IServiceBusIdentity> [-Parameter <ISbSubscription>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,7 +59,7 @@ The minimum duration is 5 minutes.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -83,7 +74,7 @@ Value that indicates whether a subscription has dead letter support on filter ev
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -98,7 +89,7 @@ Value that indicates whether a subscription has dead letter support when a messa
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -115,7 +106,7 @@ This is the default value used when TimeToLive is not set on a message itself.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -146,7 +137,7 @@ The default value is 10 minutes.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -161,7 +152,7 @@ Value that indicates whether server-side batched operations are enabled.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -176,7 +167,7 @@ Queue/Topic name to forward the Dead Letter message
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -191,7 +182,7 @@ Queue/Topic name to forward the messages
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -207,7 +198,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: CreateExpanded
 Aliases: SubscriptionId
 
 Required: True
@@ -217,13 +208,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -LockDuration
 ISO 8061 lock duration timespan for the subscription.
 The default value is 1 minute.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -238,7 +244,7 @@ Number of maximum deliveries.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -253,7 +259,7 @@ The subscription name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases: SubscriptionName
 
 Required: True
@@ -268,7 +274,7 @@ The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases: Namespace
 
 Required: True
@@ -283,7 +289,7 @@ Description of subscription resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ISbSubscription
-Parameter Sets: CreateSubscriptionIdViaHost, Create
+Parameter Sets: CreateViaIdentity
 Aliases:
 
 Required: False
@@ -298,7 +304,7 @@ Value indicating if a subscription supports the concept of sessions.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -313,7 +319,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -328,7 +334,7 @@ Enumerates the possible values for the status of a messaging entity.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -343,7 +349,7 @@ The topic name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases: Topic
 
 Required: True
