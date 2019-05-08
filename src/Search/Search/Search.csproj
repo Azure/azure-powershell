@@ -16,6 +16,7 @@
     <PackageReference Include="Microsoft.Azure.Search.Common" Version="9.0.0" />
     <PackageReference Include="Microsoft.Azure.Search.Data" Version="9.0.0" />
     <PackageReference Include="Microsoft.Azure.Search.Service" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Spatial" Version="7.5.4" />
   </ItemGroup>
 
 </Project>
