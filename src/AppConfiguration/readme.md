@@ -57,19 +57,19 @@ skip-model-cmdlets: true
 
 directive:
   - where:
-      parameter-name: ConfigStoreName
-    set:
-      parameter-name: Name
-  - where:
       parameter-name: ConfigStoreCreationParameter|RegenerateKeyParameter|CheckNameAvailabilityParameter
     select: command
     hide: true
   - where:
+      verb: Update
+      subject: ConfigurationStore
+    hide: true
+  - where:
+      parameter-name: ConfigStoreName
+    set:
+      parameter-name: Name
+  - where:
       subject: OperationNameAvailability
     set:
       subject: StoreNameAvailability
-  - where:
-      verb: Update
-      subject: ConfigurationStore
-    remove: true
 ```
