@@ -221,7 +221,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         public PSADServicePrincipal EnsureServicePrincipal()
         {
             string applicationId = CurrentApplicationId.ToString();
-            PSADServicePrincipal servicePrincipal = ActiveDirectoryClient.GetServicePrincipalByObjectId(ActiveDirectoryClient.GetAppObjectIdFromApplicationId(CurrentApplicationId).ToString());
+            string appObjectId = ActiveDirectoryClient.GetServicePrincipalsIdByAppId(CurrentApplicationId);
+            PSADServicePrincipal servicePrincipal = ActiveDirectoryClient.GetServicePrincipalByObjectId(appObjectId);
 
             if (servicePrincipal == null)
             {
