@@ -13,6 +13,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Search" Version="3.0.0" />
     <PackageReference Include="Microsoft.Azure.Search" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Azure.Search.Common" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Azure.Search.Data" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Azure.Search.Service" Version="9.0.0" />
   </ItemGroup>
 
 </Project>
