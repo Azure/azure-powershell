@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         #endregion
         protected override void ProcessRecordInternal()
         {
-            TriggerCondition triggerCondition = new TriggerCondition(ThresholdOperator, Threshold, MetricTrigger);
+            TriggerCondition triggerCondition = new TriggerCondition(thresholdOperator: ThresholdOperator, threshold: Threshold, metricTrigger: MetricTrigger);
             triggerCondition.Validate();
             WriteObject(new PSScheduledQueryRuleTriggerCondition(triggerCondition));
         }

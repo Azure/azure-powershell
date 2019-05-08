@@ -12,24 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Globalization;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-using System;
-using System.Globalization;
-using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [GenericBreakingChange("Set-AzVMBootDiagnostics alias will be removed in an upcoming breaking change release", "2.0.0")]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMBootDiagnostic"),OutputType(typeof(PSVirtualMachine))]
-    [Alias("Set-AzVMBootDiagnostics")]
     public class SetAzureVMBootDiagnosticsCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         private const string EnableParameterSet = "EnableBootDiagnostics";

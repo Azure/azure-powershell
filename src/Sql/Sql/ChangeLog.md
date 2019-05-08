@@ -27,6 +27,7 @@
 * Ability to Get-AzSqlServerServiceObjective by location without needing a preexisting server in the region.
 * Support for time zone parameter in Managed Instance create.
 * Fix documentation for wildcards
+* Support of Serverless specific parameters in New-AzSqlDatabase and Set-AzSqlDatabase
 
 ## Version 1.8.0
 * Support Database Data Classification.
