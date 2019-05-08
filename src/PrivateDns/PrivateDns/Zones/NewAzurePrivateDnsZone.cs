@@ -12,10 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-
 namespace Microsoft.Azure.Commands.PrivateDns.Zones
 {
+    using System;
     using System.Collections;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.PrivateDns.Models;
