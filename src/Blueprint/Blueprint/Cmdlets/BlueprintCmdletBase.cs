@@ -22,6 +22,7 @@ using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
 using Microsoft.Rest;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
@@ -127,6 +128,65 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             {
                 throw new KeyNotFoundException(string.Format(Resources.ResourceProviderRegistrationFailed, BlueprintConstants.BlueprintProviderNamespace));
             }
+        }
+
+
+        /// <summary>
+        /// Expects a string that consist of full file path with file extension and check if it exists.
+        /// </summary>
+        /// <param name="fileFullName"></param>
+        /// <returns></returns>
+        protected string GetValidatedFilePath(string fileFullName)
+        {
+            // To-Do: work with relative paths?
+            var filePath = ResolveUserPath(fileFullName);
+            if (filePath == null || !new FileInfo(filePath).Exists)
+            {
+                throw new FileNotFoundException(string.Format("Cannot find path: " + fileFullName));
+            }
+
+            return filePath;
+        }
+
+        /// <summary>
+        ///  This overloaded function expects a folder path and a file name and combines them. Checks if resulting full file name exist.
+        /// </summary>
+        /// <param name="inputPath"></param>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        protected string GetValidatedFilePath(string path, string fileName)
+        {
+            var resolvedPath = ResolveUserPath(path);
+
+            var blueprintPath = Path.Combine(resolvedPath, fileName + ".json");
+
+            if (!File.Exists(blueprintPath))
+            {
+                throw new Exception(
+                    $"Cannot locate a file with the name {fileName} in: {resolvedPath}.");
+            }
+
+            return blueprintPath;
+        }
+
+        /// <summary>
+        /// Combines input folder path and folder name and check if the resulting path exists.
+        /// </summary>
+        /// <param name="inputPath"></param>
+        /// <param name="folderName"></param>
+        /// <returns></returns>
+        protected string GetValidatedFolderPath(string path, string folderName)
+        {
+            var resolvedPath = ResolveUserPath(path);
+
+            var artifactsPath = Path.Combine(resolvedPath, folderName);
+
+            if (!Directory.Exists(artifactsPath))
+            {
+                throw new DirectoryNotFoundException($"Can't find folder {folderName} in path {resolvedPath}.");
+            }
+
+            return artifactsPath;
         }
     }
 }
