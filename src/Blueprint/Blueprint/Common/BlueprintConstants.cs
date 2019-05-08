@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             public const string BlueprintAssignmentsBySubscription = "BlueprintAssignmentsBySubscription";
             public const string BlueprintAssignmentByName = "BlueprintAssignmentByName";
             public const string CreateBlueprintAssignment = "CreateBlueprintAssignmentBySystemAssigned";
+            public const string CreateBlueprintAssignmentByParametersFile = "CreateBlueprintAssignmentByParametersFile";
             public const string DeleteBlueprintAssignmentByName = "DeleteBlueprintAssignmentByName";
             public const string DeleteBlueprintAssignmentByObject = "DeleteBlueprintAssignmentByObject";
 
