@@ -59,7 +59,20 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
         protected override ServerAuditPolicyModel GetEntity()
         {
-            return new ServerAuditPolicyModel();
+            if (ServerObject != null)
+            {
+                ResourceGroupName = ServerObject.ResourceGroupName;
+                ServerName = ServerObject.ServerName;
+            }
+
+            ServerAuditPolicyModel model = new ServerAuditPolicyModel()
+            {
+                ResourceGroupName = ResourceGroupName,
+                ServerName = ServerName
+            };
+
+            ModelAdapter.GetAuditingSettings(ResourceGroupName, ServerName, model);
+            return model;
         }
 
         protected override SqlAuditAdapter InitModelAdapter()

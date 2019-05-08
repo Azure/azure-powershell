@@ -28,11 +28,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing
 
         public const string StateHelpMessage = "The state of the policy.";
 
-        public const string BlobStorageAuditState = "Indicates whether blob storage is a destination for audit records.";
+        public const string BlobStorageTargetState = "Indicates whether blob storage is a destination for audit records.";
 
-        public const string EventHubAuditState = "Indicates whether event hub is a destination for audit records.";
+        public const string EventHubTargetState = "Indicates whether event hub is a destination for audit records.";
 
-        public const string LogAnalyticsAuditState = "Indicates whether log analytics is a destination for audit records.";
+        public const string LogAnalyticsTargetState = "Indicates whether log analytics is a destination for audit records.";
 
         public const string AuditStorageAccountNameHelpMessage = "The name of the storage account.";
 

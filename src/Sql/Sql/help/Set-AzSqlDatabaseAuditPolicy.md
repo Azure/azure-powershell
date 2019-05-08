@@ -16,10 +16,10 @@ Changes the auditing settings for an Azure SQL database.
 ### DatabaseParameterSet (Default)
 ```
 Set-AzSqlDatabaseAuditPolicy [-AuditActionGroup <AuditActionGroups[]>] [-AuditAction <String[]>]
- [-PredicateExpression <String>] [-BlobStorageAuditState <String>] [-StorageAccountName <String>]
+ [-PredicateExpression <String>] [-BlobStorageTargetState <String>] [-StorageAccountName <String>]
  [-StorageAccountSubscriptionId <Guid>] [-StorageKeyType <String>] [-RetentionInDays <UInt32>]
- [-EventHubAuditState <String>] [-EventHubName <String>] [-EventHubAuthorizationRuleResourceId <String>]
- [-LogAnalyticsAuditState <String>] [-WorkspaceResourceId <String>] [-PassThru] [-ResourceGroupName] <String>
+ [-EventHubTargetState <String>] [-EventHubName <String>] [-EventHubAuthorizationRuleResourceId <String>]
+ [-LogAnalyticsTargetState <String>] [-WorkspaceResourceId <String>] [-PassThru] [-ResourceGroupName] <String>
  [-ServerName] <String> [-DatabaseName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -27,10 +27,10 @@ Set-AzSqlDatabaseAuditPolicy [-AuditActionGroup <AuditActionGroups[]>] [-AuditAc
 ### DatabaseObjectParameterSet
 ```
 Set-AzSqlDatabaseAuditPolicy [-AuditActionGroup <AuditActionGroups[]>] [-AuditAction <String[]>]
- [-PredicateExpression <String>] [-BlobStorageAuditState <String>] [-StorageAccountName <String>]
+ [-PredicateExpression <String>] [-BlobStorageTargetState <String>] [-StorageAccountName <String>]
  [-StorageAccountSubscriptionId <Guid>] [-StorageKeyType <String>] [-RetentionInDays <UInt32>]
- [-EventHubAuditState <String>] [-EventHubName <String>] [-EventHubAuthorizationRuleResourceId <String>]
- [-LogAnalyticsAuditState <String>] [-WorkspaceResourceId <String>] [-PassThru]
+ [-EventHubTargetState <String>] [-EventHubName <String>] [-EventHubAuthorizationRuleResourceId <String>]
+ [-LogAnalyticsTargetState <String>] [-WorkspaceResourceId <String>] [-PassThru]
  -DatabaseObject <AzureSqlDatabaseModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -44,22 +44,22 @@ When audit logs destination is blob storage, specify the *StorageAccountName* pa
 
 ### Example 1: Enable the blob storage auditing policy of an Azure SQL database
 ```
-PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -BlobStorageAuditState Enabled  -StorageAccountName "Storage22"
+PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -BlobStorageTargetState Enabled  -StorageAccountName "Storage22"
 ```
 
 ### Example 2: Disable the blob storage auditing policy of an Azure SQL database
 ```
-PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -BlobStorageAuditState Disabled
+PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -BlobStorageTargetState Disabled
 ```
 
 ### Example 3: Enable the blob storage auditing policy of an Azure SQL database using a storage account from a different subscription
 ```
-PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -BlobStorageAuditState Enabled -StorageAccountName "Storage22" -StorageAccountSubscriptionId "7fe3301d-31d3-4668-af5e-211a890ba6e3"
+PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -BlobStorageTargetState Enabled -StorageAccountName "Storage22" -StorageAccountSubscriptionId "7fe3301d-31d3-4668-af5e-211a890ba6e3"
 ```
 
 ### Example 4.1: Enable the blob storage auditing policy of an Azure SQL database with advanced filtering using a T-SQL predicate
 ```
-PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -PredicateExpression "statement <> 'select 1'" -BlobStorageAuditState Enabled -StorageAccountName "Storage22"
+PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -PredicateExpression "statement <> 'select 1'" -BlobStorageTargetState Enabled -StorageAccountName "Storage22"
 ```
 
 ### Example 4.2: Remove the advanced filtering setting from the auditing policy of an Azure SQL database
@@ -69,37 +69,37 @@ PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -Server
 
 ### Example 5: Enable the event hub auditing policy of an Azure SQL database
 ```
-PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -EventHubAuditState Enabled -EventHubName "EventHubName" -EventHubAuthorizationRuleResourceId "EventHubAuthorizationRuleResourceId"
+PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -EventHubTargetState Enabled -EventHubName "EventHubName" -EventHubAuthorizationRuleResourceId "EventHubAuthorizationRuleResourceId"
 ```
 
 ### Example 6: Disable the event hub auditing policy of an Azure SQL database
 ```
-PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -EventHubAuditState Disabled
+PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -EventHubTargetState Disabled
 ```
 
 ### Example 7: Enable the log analytics auditing policy of an Azure SQL database
 ```
-PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -LogAnalyticsAuditState Enabled -WorkspaceResourceId "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2"
+PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -LogAnalyticsTargetState Enabled -WorkspaceResourceId "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2"
 ```
 
 ### Example 8: Disable the log analytics auditing policy of an Azure SQL database
 ```
-PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -LogAnalyticsAuditState Disabled
+PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -LogAnalyticsTargetState Disabled
 ```
 
 ### Example 9: Disable, through pipeline, the log analytics auditing policy of an Azure SQL database
 ```
-PS C:\>Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" | Set-AzSqlDatabaseAuditPolicy -LogAnalyticsAuditState Disabled
+PS C:\>Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" | Set-AzSqlDatabaseAuditPolicy -LogAnalyticsTargetState Disabled
 ```
 
 ### Example 10: Disable sending audit records of an Azure SQL database to blob storage, and enable sending them to log analytics.
 ```
-PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -LogAnalyticsAuditState Enabled  -WorkspaceResourceId "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2" -BlobStorageAuditState Disabled
+PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -LogAnalyticsTargetState Enabled  -WorkspaceResourceId "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2" -BlobStorageTargetState Disabled
 ```
 
 ### Example 11: Enable sending audit records of an Azure SQL database to blob storage, event hub and log analytics.
 ```
-PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -BlobStorageAuditState Enabled -StorageAccountName "Storage22" -EventHubAuditState Enabled -EventHubName "EventHubName" -EventHubAuthorizationRuleResourceId "EventHubAuthorizationRuleResourceId" -LogAnalyticsAuditState Enabled  -WorkspaceResourceId "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2"
+PS C:\>Set-AzSqlDatabaseAuditPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -BlobStorageTargetState Enabled -StorageAccountName "Storage22" -EventHubTargetState Enabled -EventHubName "EventHubName" -EventHubAuthorizationRuleResourceId "EventHubAuthorizationRuleResourceId" -LogAnalyticsTargetState Enabled  -WorkspaceResourceId "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2"
 ```
 
 ## PARAMETERS
@@ -157,7 +157,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -BlobStorageAuditState
+### -BlobStorageTargetState
 Indicates whether blob storage is a destination for audit records.
 
 ```yaml
@@ -218,22 +218,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EventHubAuditState
-Indicates whether event hub is a destination for audit records.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: Enabled, Disabled
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -EventHubAuthorizationRuleResourceId
 The resource Id for the event hub authorization rule
 
@@ -264,7 +248,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -LogAnalyticsAuditState
+### -EventHubTargetState
+Indicates whether event hub is a destination for audit records.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -LogAnalyticsTargetState
 Indicates whether log analytics is a destination for audit records.
 
 ```yaml
@@ -467,7 +467,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Auditing.Model.DatabaseAuditPolicyModel
+### System.Boolean
 
 ## NOTES
 

@@ -350,6 +350,9 @@ Creates an Azure SQL Database Sync Member.
 ### [Remove-AzSqlDatabase](Remove-AzSqlDatabase.md)
 Removes an Azure SQL database.
 
+### [Remove-AzSqlDatabaseAuditPolicy](Remove-AzSqlDatabaseAuditPolicy.md)
+Removes the audit policy of a SQL Database.
+
 ### [Remove-AzSqlDatabaseDataMaskingRule](Remove-AzSqlDatabaseDataMaskingRule.md)
 Removes a data masking rule from a database.
 
@@ -391,6 +394,9 @@ Removes an Azure SQL Database server.
 
 ### [Remove-AzSqlServerActiveDirectoryAdministrator](Remove-AzSqlServerActiveDirectoryAdministrator.md)
 Removes an Azure AD administrator for SQL Server.
+
+### [Remove-AzSqlServerAuditPolicy](Remove-AzSqlServerAuditPolicy.md)
+Removes the audit policy of a SQL Server.
 
 ### [Remove-AzSqlServerCommunicationLink](Remove-AzSqlServerCommunicationLink.md)
 Deletes a communication link for elastic database transactions between two servers.

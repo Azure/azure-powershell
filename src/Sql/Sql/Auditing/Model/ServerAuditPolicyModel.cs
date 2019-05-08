@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 
         public string PredicateExpression { get; set; }
 
-        public AuditStateType BlobStorageAuditState { get; set; }
+        public AuditStateType BlobStorageTargetState { get; set; }
 
         public string StorageAccountName { get; set; }
 
@@ -39,13 +39,13 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 
         public uint? RetentionInDays { get; set; }
 
-        public AuditStateType EventHubAuditState { get; set; }
+        public AuditStateType EventHubTargetState { get; set; }
 
         public string EventHubName { get; set; }
 
         public string EventHubAuthorizationRuleResourceId { get; set; }
 
-        public AuditStateType LogAnalyticsAuditState { get; set; }
+        public AuditStateType LogAnalyticsTargetState { get; set; }
 
         public string WorkspaceResourceId { get; set; }
 

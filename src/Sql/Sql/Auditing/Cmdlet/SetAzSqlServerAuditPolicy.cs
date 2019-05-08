@@ -43,10 +43,10 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = AuditingHelpMessages.BlobStorageAuditState)]
+            HelpMessage = AuditingHelpMessages.BlobStorageTargetState)]
         [ValidateSet(SecurityConstants.Enabled, SecurityConstants.Disabled, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
-        public string BlobStorageAuditState { get; set; }
+        public string BlobStorageTargetState { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -82,10 +82,10 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = AuditingHelpMessages.EventHubAuditState)]
+            HelpMessage = AuditingHelpMessages.EventHubTargetState)]
         [ValidateSet(SecurityConstants.Enabled, SecurityConstants.Disabled, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
-        public string EventHubAuditState { get; set; }
+        public string EventHubTargetState { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -104,10 +104,10 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = AuditingHelpMessages.LogAnalyticsAuditState)]
+            HelpMessage = AuditingHelpMessages.LogAnalyticsTargetState)]
         [ValidateSet(SecurityConstants.Enabled, SecurityConstants.Disabled, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
-        public string LogAnalyticsAuditState { get; set; }
+        public string LogAnalyticsTargetState { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -120,5 +120,79 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             Mandatory = false,
             HelpMessage = AuditingHelpMessages.PassThruHelpMessage)]
         public SwitchParameter PassThru { get; set; }
+
+        protected override ServerAuditPolicyModel ApplyUserInputToModel(ServerAuditPolicyModel model)
+        {
+            base.ApplyUserInputToModel(model);
+
+            if (AuditActionGroup != null && AuditActionGroup.Length != 0)
+            {
+                model.AuditActionGroup = AuditActionGroup;
+            }
+
+            if (PredicateExpression != null)
+            {
+                model.PredicateExpression = PredicateExpression = PredicateExpression;
+            }
+
+            if (BlobStorageTargetState != null)
+            {
+                model.BlobStorageTargetState = BlobStorageTargetState == SecurityConstants.Enabled ?
+                    AuditStateType.Enabled : AuditStateType.Disabled;
+            }
+
+            if (StorageAccountName != null)
+            {
+                model.StorageAccountName = StorageAccountName;
+            }
+
+            if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.StorageKeyType))
+            {
+                model.StorageKeyType = (StorageKeyType == SecurityConstants.Primary) ? StorageKeyKind.Primary : StorageKeyKind.Secondary;
+            }
+
+            if (RetentionInDays != null)
+            {
+                model.RetentionInDays = RetentionInDays;
+            }
+
+            if (!StorageAccountSubscriptionId.Equals(Guid.Empty))
+            {
+                model.StorageAccountSubscriptionId = StorageAccountSubscriptionId;
+            }
+            else if (StorageAccountName != null)
+            {
+                model.StorageAccountSubscriptionId = Guid.Parse(DefaultProfile.DefaultContext.Subscription.Id);
+            }
+
+            if (EventHubTargetState != null)
+            {
+                model.EventHubTargetState = EventHubTargetState == SecurityConstants.Enabled ?
+                    AuditStateType.Enabled : AuditStateType.Disabled;
+            }
+
+            if (EventHubName != null)
+            {
+                model.EventHubName = EventHubName;
+            }
+
+            if (EventHubAuthorizationRuleResourceId != null)
+            {
+                model.EventHubAuthorizationRuleResourceId = EventHubAuthorizationRuleResourceId;
+            }
+
+            if (LogAnalyticsTargetState != null)
+            {
+                model.LogAnalyticsTargetState = LogAnalyticsTargetState == SecurityConstants.Enabled ?
+                    AuditStateType.Enabled : AuditStateType.Disabled;
+            }
+
+            if (WorkspaceResourceId != null)
+            {
+                model.WorkspaceResourceId = WorkspaceResourceId;
+            }
+
+            return model;
+        }
     }
 }
