@@ -64,7 +64,22 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
         protected override DatabaseAuditPolicyModel GetEntity()
         {
-            return new DatabaseAuditPolicyModel();
+            if (DatabaseObject != null)
+            {
+                ResourceGroupName = DatabaseObject.ResourceGroupName;
+                ServerName = DatabaseObject.ServerName;
+                DatabaseName = DatabaseObject.DatabaseName;
+            }
+
+            DatabaseAuditPolicyModel model = new DatabaseAuditPolicyModel
+            {
+                ResourceGroupName = ResourceGroupName,
+                ServerName = ServerName,
+                DatabaseName = DatabaseName
+            };
+
+            ModelAdapter.GetAuditingSettings(ResourceGroupName, ServerName, DatabaseName, model);
+            return model;
         }
 
         protected override SqlAuditAdapter InitModelAdapter()

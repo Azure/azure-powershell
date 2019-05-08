@@ -39,15 +39,15 @@ ResourceGroupName                   : resourcegroup01
 AuditActionGroup                    : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
                                        BATCH_COMPLETED_GROUP, ...}
 PredicateExpression                 : statement <> 'select 1'
-BlobStorageAuditState               : Enabled
+BlobStorageTargetState               : Enabled
 StorageAccountName                  : mystorage
 StorageAccountSubscriptionId        : 7fe3301d-31d3-4668-af5e-211a890ba6e3
 StorageKeyType                      : Primary
 RetentionInDays                     : 0
-EventHubAuditState                  : Enabled
+EventHubTargetState                  : Enabled
 EventHubName                        : eventHubName
 EventHubAuthorizationRuleResourceId : EventHubAuthorizationRuleResourceId
-LogAnalyticsAuditState              : Enabled
+LogAnalyticsTargetState              : Enabled
 WorkspaceResourceId                 : "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2"
 ```
 
@@ -59,15 +59,15 @@ ResourceGroupName                   : resourcegroup01
 AuditActionGroup                    : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
                                        BATCH_COMPLETED_GROUP, ...}
 PredicateExpression                 : statement <> 'select 1'
-BlobStorageAuditState               : Enabled
+BlobStorageTargetState               : Enabled
 StorageAccountName                  : mystorage
 StorageAccountSubscriptionId        : 7fe3301d-31d3-4668-af5e-211a890ba6e3
 StorageKeyType                      : Primary
 RetentionInDays                     : 0
-EventHubAuditState                  : Enabled
+EventHubTargetState                  : Enabled
 EventHubName                        : eventHubName
 EventHubAuthorizationRuleResourceId : EventHubAuthorizationRuleResourceId
-LogAnalyticsAuditState              : Enabled
+LogAnalyticsTargetState              : Enabled
 WorkspaceResourceId                 : "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2"
 ```
 
@@ -79,15 +79,15 @@ ResourceGroupName                   : resourcegroup01
 AuditActionGroup                    : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
                                        BATCH_COMPLETED_GROUP, ...}
 PredicateExpression                 : statement <> 'select 1'
-BlobStorageAuditState               : Enabled
+BlobStorageTargetState               : Enabled
 StorageAccountName                  : mystorage
 StorageAccountSubscriptionId        : 7fe3301d-31d3-4668-af5e-211a890ba6e3
 StorageKeyType                      : Primary
 RetentionInDays                     : 0
-EventHubAuditState                  : Enabled
+EventHubTargetState                  : Enabled
 EventHubName                        : eventHubName
 EventHubAuthorizationRuleResourceId : EventHubAuthorizationRuleResourceId
-LogAnalyticsAuditState              : Disabled
+LogAnalyticsTargetState              : Disabled
 WorkspaceResourceId                 :
 ```
 

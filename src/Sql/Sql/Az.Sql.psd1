@@ -221,7 +221,9 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Get-AzSqlServerAuditPolicy',
                'Get-AzSqlDatabaseAuditPolicy',
                'Set-AzSqlServerAuditPolicy',
-               'Set-AzSqlDatabaseAuditPolicy'
+               'Set-AzSqlDatabaseAuditPolicy',
+               'Remove-AzSqlServerAuditPolicy',
+               'Remove-AzSqlDatabaseAuditPolicy'
 
 # Variables to export from this module
 # VariablesToExport = @()
