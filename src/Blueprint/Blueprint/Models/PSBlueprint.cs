@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
             {
                 Id = model.Id,
                 Name = model.Name,
-                DefinitionLocationId = Utils.GetDefinitionLocationId(scope),
                 Scope = scope,
                 DisplayName = model.DisplayName,
                 Description = model.Description,
@@ -101,7 +100,16 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                         DependsOn = item.Value.DependsOn.ToList()
                     });
             }
-            
+
+            if (psBlueprint.Scope.StartsWith("/subscriptions"))
+            {
+                psBlueprint.SubscriptionId = Utils.GetDefinitionLocationId(scope);
+            }
+            else
+            {
+                psBlueprint.ManagementGroupId = Utils.GetDefinitionLocationId(scope);
+            }
+
             return psBlueprint;
         }
     }

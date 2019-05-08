@@ -19,8 +19,20 @@
                 <PropertyName>Id</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>DefinitionLocationId</Label>
-                <PropertyName>DefinitionLocationId</PropertyName>
+                <PropertyName>SubscriptionId</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    $_.SubscriptionId -ne $null -and $_.SubscriptionId -ne &quot;&quot;
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ManagementGroupId</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    $_.ManagementGroupId -ne $null -and $_.ManagementGroupId -ne &quot;&quot;
+                  </ScriptBlock>
+                </ItemSelectionCondition>
               </ListItem>
               <ListItem>
                 <Label>Version</Label>
@@ -81,8 +93,20 @@
                 <PropertyName>Id</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>DefinitionLocationId</Label>
-                <PropertyName>DefinitionLocationId</PropertyName>
+                <PropertyName>SubscriptionId</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    $_.SubscriptionId -ne $null -and $_.SubscriptionId -ne &quot;&quot;
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ManagementGroupId</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    $_.ManagementGroupId -ne $null -and $_.ManagementGroupId -ne &quot;&quot;
+                  </ScriptBlock>
+                </ItemSelectionCondition>
               </ListItem>
               <ListItem>
                 <Label>Versions</Label>
