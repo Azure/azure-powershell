@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -61,13 +62,17 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "RouteTable")]
         public PSRouteTable RouteTable { get; set; }
 
+        [GenericBreakingChange("Update Property Name", OldWay = "-ResourceId", NewWay = "-NatGatewayId")]
+        [Alias("NatGatewayId")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResourceId",
-            HelpMessage = "ResourceId")]
+            HelpMessage = "NatGatewayId")]
         public string ResourceId { get; set; }
 
+        [GenericBreakingChange("Update Property Name", OldWay = "-InputObject", NewWay = "-NatGateway")]
+        [Alias("NatGateway")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
