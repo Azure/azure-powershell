@@ -18,6 +18,20 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.0
+* Rename WAF cmdlets to include 'Waf'
+    - `Get-AzFrontDoorFireWallPolicy --> Get-AzFrontDoorWafPolicy`
+    - `New-AzFrontDoorCustomRuleObject --> New-AzFrontDoorWafCustomRuleObject`
+    - `New-AzFrontDoorFireWallPolicy --> New-AzFrontDoorWafPolicy`
+    - `New-AzFrontDoorManagedRuleObject --> New-AzFrontDoorWafManagedRuleObject`
+    - `New-AzFrontDoorManagedRuleOverrideObject --> New-AzFrontDoorWafManagedRuleOverrideObject`
+    - `New-AzFrontDoorMatchConditionObject --> New-AzFrontDoorWafMatchConditionObject`
+    - `New-AzFrontDoorRuleGroupOverrideObject --> New-AzFrontDoorWafRuleGroupOverrideObject`
+    - `Remove-AzFrontDoorFireWallPolicy --> Remove-AzFrontDoorWafPolicy`
+    - `Update-AzFrontDoorFireWallPolicy --> Update-AzFrontDoorWafPolicy`
+
+
 ## Version 0.7.4
 * Change enum type parameters to string.
 

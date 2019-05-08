@@ -243,14 +243,17 @@ namespace Microsoft.Azure.Commands.Compute
 
         class Parameters : IParameters<VirtualMachine>
         {
-            NewAzureVMCommand _cmdlet { get; }
+            NewAzureVMCommand _cmdlet;
 
-            Client _client { get; }
+            Client _client;
 
-            public Parameters(NewAzureVMCommand cmdlet, Client client)
+            IResourceManagementClient _resourceClient;
+
+            public Parameters(NewAzureVMCommand cmdlet, Client client, IResourceManagementClient resourceClient)
             {
                 _cmdlet = cmdlet;
                 _client = client;
+                _resourceClient = resourceClient;
             }
 
             public ImageAndOsType ImageAndOsType { get; set; }
@@ -261,7 +264,34 @@ namespace Microsoft.Azure.Commands.Compute
                 set { _cmdlet.Location = value; }
             }
 
-            public string DefaultLocation => "eastus";
+            string _defaultLocation = null;
+
+            public string DefaultLocation
+            {
+                get
+                {
+                    if(_defaultLocation == null)
+                    {
+                        var vmResourceType = _resourceClient.Providers.GetAsync("Microsoft.Compute").ConfigureAwait(false).GetAwaiter().GetResult()
+                        .ResourceTypes.Where(a => String.Equals(a.ResourceType, "virtualMachines", StringComparison.OrdinalIgnoreCase))
+                                      .FirstOrDefault();
+                        if (vmResourceType != null)
+                        {
+                            var availableLocations = vmResourceType.Locations.Select(a => a.ToLower().Replace(" ", ""));
+                            if (availableLocations.Any(a => a.Equals("eastus")))
+                            {
+                                _defaultLocation = "eastus";
+                            }
+                            _defaultLocation = availableLocations.FirstOrDefault() ?? "eastus";
+                        }
+                        else
+                        {
+                            _defaultLocation = "eastus";
+                        }
+                    }
+                    return _defaultLocation;
+                }
+            }
 
             public BlobUri DestinationUri;
 
@@ -353,14 +383,15 @@ namespace Microsoft.Azure.Commands.Compute
             PublicIpAddressName = PublicIpAddressName ?? Name;
             SecurityGroupName = SecurityGroupName ?? Name;
 
-            var parameters = new Parameters(this, client);
+            var resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
+                    DefaultProfile.DefaultContext,
+                    AzureEnvironment.Endpoint.ResourceManager);
+
+            var parameters = new Parameters(this, client, resourceClient);
 
 
             if (DiskFile != null)
             {
-                var resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
-                    DefaultProfile.DefaultContext,
-                    AzureEnvironment.Endpoint.ResourceManager);
                 if (!resourceClient.ResourceGroups.CheckExistence(ResourceGroupName))
                 {
                     Location = Location ?? parameters.DefaultLocation;
@@ -486,6 +517,7 @@ namespace Microsoft.Azure.Commands.Compute
                         Tags = this.Tag != null ? this.Tag.ToDictionary() : this.VM.Tags,
                         Identity = ComputeAutoMapperProfile.Mapper.Map<VirtualMachineIdentity>(this.VM.Identity),
                         Zones = this.Zone ?? this.VM.Zones,
+                        ProximityPlacementGroup = this.VM.ProximityPlacementGroup
                     };
 
                     Dictionary<string, List<string>> auxAuthHeader = null;

@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ContinueMessage" xml:space="preserve">
+    <value>You are about to remove an {0} Resource. Are you sure?</value>
+  </data>
+  <data name="Create_NewConnectionObject" xml:space="preserve">
+    <value>Create a new PSPeering{0}ConnectionObject by using the New-AzPeering{0}ConnectionObject cmdlet.</value>
+  </data>
+  <data name="Error_BandwidthDowngrade" xml:space="preserve">
+    <value>Downgrading bandwidth from {0} to {1} not supported.</value>
+  </data>
+  <data name="Error_BandwidthIncorrectFormat" xml:space="preserve">
+    <value>Bandwidth {0} must have a multiple of {1}.</value>
+  </data>
+  <data name="Error_BandwidthTooHigh" xml:space="preserve">
+    <value>Bandwidth:{0} is greater than {1}.</value>
+  </data>
+  <data name="Error_BandwidthTooLow" xml:space="preserve">
+    <value>Bandwidth {0} must be greater than 0</value>
+  </data>
+  <data name="Error_CannotParseResourceId" xml:space="preserve">
+    <value>{0} could not be found for this object {1}.</value>
+  </data>
+  <data name="Error_CloudError" xml:space="preserve">
+    <value>ErrorCode: {0} ErrorMessage: {1}</value>
+  </data>
+  <data name="Error_GenericSyntax" xml:space="preserve">
+    <value>Unable to complete the request. Check your syntax for errors.</value>
+  </data>
+  <data name="Error_InvalidConnection" xml:space="preserve">
+    <value>Not a valid connection {0}</value>
+  </data>
+  <data name="Error_InvalidEmailAddress" xml:space="preserve">
+    <value>Invalid email address input {0}.</value>
+  </data>
+  <data name="Error_InvalidFacilityId" xml:space="preserve">
+    <value>Connection has invalid InputObject PeeringDBFacilityId: {0}.</value>
+  </data>
+  <data name="Error_InvalidInputObject_Exchange" xml:space="preserve">
+    <value>Exchange InputObject does not support this operation.</value>
+  </data>
+  <data name="Error_InvalidPrefix" xml:space="preserve">
+    <value>Invalid Prefix: {0}, must be {1}</value>
+  </data>
+  <data name="Error_InvalidPrefixRange" xml:space="preserve">
+    <value>Invalid Prefix Range: {0} must be at least {1} not greater than {2}</value>
+  </data>
+  <data name="Error_Mapping" xml:space="preserve">
+    <value>Failed to map object {0}</value>
+  </data>
+  <data name="Error_MustBeGreaterThanZero" xml:space="preserve">
+    <value>MaxPrefixesAdvertisedV{0}:{1} must be greater than 0 or null.</value>
+  </data>
+  <data name="Error_MustBeNull" xml:space="preserve">
+    <value>MaxPrefixesAdvertisedV{0}:{1} must be null if PeerSessionIPv{0}Address is null.</value>
+  </data>
+  <data name="Error_NullConnection" xml:space="preserve">
+    <value>{0} connection cannot be null or empty. </value>
+  </data>
+  <data name="Error_NullSession" xml:space="preserve">
+    <value>Session cannot be null or empty.</value>
+  </data>
+  <data name="Error_UnableToConvertLegacy" xml:space="preserve">
+    <value>Unable to convert legacy peering because {0} was null or empty.</value>
+  </data>
+  <data name="Error_WrongCommandForDirectObject" xml:space="preserve">
+    <value>Use Set-AzPeeringExchangeConnectionObject instead.</value>
+  </data>
+  <data name="Item_NotFound" xml:space="preserve">
+    <value>{0} {1} not found during lookup. </value>
+  </data>
+  <data name="ProcessMessage" xml:space="preserve">
+    <value>InputObject {0} Resource being removed.</value>
+  </data>
+  <data name="Route_NotProperCIDR" xml:space="preserve">
+    <value>{0} is not in proper IP / CIDR notation.</value>
+  </data>
+  <data name="Route_PrefixUnrecognized" xml:space="preserve">
+    <value>Unrecognized routePrefix {0}</value>
+  </data>
+</root>
