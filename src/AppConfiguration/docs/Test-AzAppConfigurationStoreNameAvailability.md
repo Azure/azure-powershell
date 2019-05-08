@@ -12,15 +12,15 @@ Checks whether the configuration store name is available for use.
 
 ## SYNTAX
 
-### CheckSubscriptionIdViaHostExpanded (Default)
-```
-Test-AzAppConfigurationStoreNameAvailability -Name <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### CheckExpanded
+### CheckExpanded (Default)
 ```
 Test-AzAppConfigurationStoreNameAvailability -SubscriptionId <String> -Name <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CheckViaIdentityExpanded
+```
+Test-AzAppConfigurationStoreNameAvailability -InputObject <IAppConfigurationIdentity> -Name <String>
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -50,6 +50,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
+Parameter Sets: CheckViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

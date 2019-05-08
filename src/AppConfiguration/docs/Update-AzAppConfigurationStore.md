@@ -12,32 +12,16 @@ Updates a configuration store with the specified parameters.
 
 ## SYNTAX
 
-### UpdateSubscriptionIdViaHost (Default)
-```
-Update-AzAppConfigurationStore -Name <String> -ResourceGroupName <String>
- [-ConfigStoreUpdateParameter <IConfigurationStoreUpdateParameters>] [-DefaultProfile <PSObject>] [-AsJob]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Update-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Property <IConfigurationStorePropertiesUpdateParameters>] [-Tag <IConfigurationStoreUpdateParametersTags>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <IConfigurationStoreUpdateParametersTags>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Update
+### UpdateViaIdentityExpanded
 ```
-Update-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-ConfigStoreUpdateParameter <IConfigurationStoreUpdateParameters>] [-DefaultProfile <PSObject>] [-AsJob]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateSubscriptionIdViaHostExpanded
-```
-Update-AzAppConfigurationStore -Name <String> -ResourceGroupName <String>
- [-Property <IConfigurationStorePropertiesUpdateParameters>] [-Tag <IConfigurationStoreUpdateParametersTags>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzAppConfigurationStore -InputObject <IAppConfigurationIdentity>
+ [-Tag <IConfigurationStoreUpdateParametersTags>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,48 +38,18 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConfigStoreUpdateParameter
-The parameters for updating a configuration store.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStoreUpdateParameters
-Parameter Sets: UpdateSubscriptionIdViaHost, Update
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -104,25 +58,10 @@ The name of the configuration store.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Property
-The properties for updating a configuration store.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStorePropertiesUpdateParameters
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -134,7 +73,7 @@ The name of the resource group to which the container registry belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -149,7 +88,7 @@ The Microsoft Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -164,7 +103,7 @@ The ARM resource tags.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStoreUpdateParametersTags
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False

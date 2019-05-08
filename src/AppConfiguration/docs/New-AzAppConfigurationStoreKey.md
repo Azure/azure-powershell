@@ -12,16 +12,16 @@ Regenerates an access key for the specified configuration store.
 
 ## SYNTAX
 
-### RegenerateSubscriptionIdViaHostExpanded (Default)
-```
-New-AzAppConfigurationStoreKey -Name <String> -ResourceGroupName <String> [-Id <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RegenerateExpanded
+### RegenerateExpanded (Default)
 ```
 New-AzAppConfigurationStoreKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Id <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RegenerateViaIdentityExpanded
+```
+New-AzAppConfigurationStoreKey -InputObject <IAppConfigurationIdentity> [-Id <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,12 +68,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
+Parameter Sets: RegenerateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the configuration store.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: True
@@ -88,7 +103,7 @@ The name of the resource group to which the container registry belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: True

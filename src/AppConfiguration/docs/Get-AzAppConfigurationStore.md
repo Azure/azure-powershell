@@ -12,38 +12,27 @@ Gets the properties of the specified configuration store.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
+### List (Default)
 ```
-Get-AzAppConfigurationStore [-SkipToken <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost
-```
-Get-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> [-DefaultProfile <PSObject>]
+Get-AzAppConfigurationStore -SubscriptionId <String[]> [-SkipToken <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Get-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListSubscriptionIdViaHost1
-```
-Get-AzAppConfigurationStore -ResourceGroupName <String> [-SkipToken <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzAppConfigurationStore -ResourceGroupName <String> -SubscriptionId <String> [-SkipToken <String>]
+Get-AzAppConfigurationStore -ResourceGroupName <String> -SubscriptionId <String[]> [-SkipToken <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### GetViaIdentity
 ```
-Get-AzAppConfigurationStore -SubscriptionId <String> [-SkipToken <String>] [-DefaultProfile <PSObject>]
+Get-AzAppConfigurationStore -InputObject <IAppConfigurationIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -76,12 +65,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the configuration store.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -96,7 +100,7 @@ The name of the resource group to which the container registry belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get, ListSubscriptionIdViaHost1, List1
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -112,7 +116,7 @@ If a previous response contains a nextLink element, the value of the nextLink el
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost, ListSubscriptionIdViaHost1, List1, List
+Parameter Sets: List, List1
 Aliases:
 
 Required: False
@@ -126,8 +130,8 @@ Accept wildcard characters: False
 The Microsoft Azure subscription ID.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List1, List
+Type: System.String[]
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: True

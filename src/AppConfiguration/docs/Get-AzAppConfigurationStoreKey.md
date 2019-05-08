@@ -12,15 +12,8 @@ Lists the access key for the specified configuration store.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
 ```
-Get-AzAppConfigurationStoreKey -Name <String> -ResourceGroupName <String> [-SkipToken <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzAppConfigurationStoreKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Get-AzAppConfigurationStoreKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  [-SkipToken <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -103,8 +96,8 @@ Accept wildcard characters: False
 The Microsoft Azure subscription ID.
 
 ```yaml
-Type: System.String
-Parameter Sets: List
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True
