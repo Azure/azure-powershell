@@ -16,7 +16,7 @@ Adds a subnet configuration to a virtual network.
 ### SetByResource (Default)
 ```
 Add-AzVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String[]>
- [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>] [-ServiceEndpoint <String[]>]
+ [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>] [-NatGateway <PSNatGateway>] [-ServiceEndpoint <String[]>]
  [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>] [-Delegation <PSDelegation[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -24,7 +24,7 @@ Add-AzVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwor
 ### SetByResourceId
 ```
 Add-AzVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String[]>
- [-NetworkSecurityGroupId <String>] [-RouteTableId <String>] [-ServiceEndpoint <String[]>]
+ [-NetworkSecurityGroupId <String>] [-RouteTableId <String>] [-NatGatewayId <PSNatGateway>] [-ServiceEndpoint <String[]>]
  [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>] [-Delegation <PSDelegation[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -165,6 +165,36 @@ Accept wildcard characters: False
 ```
 
 ### -RouteTableId
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -NatGateway
+Specifies the Nat Gateway to be associated with the subnet. 
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSNatGateway
+Parameter Sets: SetByResource
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -NatGatewayId
+Specifies the ID of the nat gateway to be associated with the subnet.
+
 ```yaml
 Type: System.String
 Parameter Sets: SetByResourceId
