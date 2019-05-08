@@ -652,8 +652,8 @@ function Test-ExpressRouteCircuitConnectionCRUD
 		Assert-AreEqual 1 $peerckt.Peerings[0].PeeredConnections.Count
 		Assert-AreEqual $initckt.ServiceKey $peerckt.Peerings[0].PeeredConnections[0].Name
 		Assert-AreEqual $connectionName $peerckt.Peerings[0].PeeredConnections[0].ConnectionName
-		Assert-AreEqual "Succeeded" $initckt.Peerings[0].PeeredConnections[0].ProvisioningState
-		Assert-AreEqual "Connected" $initckt.Peerings[0].PeeredConnections[0].CircuitConnectionStatus
+		Assert-AreEqual "Succeeded" $peerckt.Peerings[0].PeeredConnections[0].ProvisioningState
+		Assert-AreEqual "Connected" $peerckt.Peerings[0].PeeredConnections[0].CircuitConnectionStatus
 
 		#Delete the circuit connection Resource
 		Remove-AzExpressRouteCircuitConnectionConfig -Name $connectionName -ExpressRouteCircuit $initckt
