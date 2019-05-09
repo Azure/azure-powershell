@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
     using System.Collections;
     using TagHelper = Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using System.Collections.Generic;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzurePrefix + "AutomationUpdateManagementAzureQuery")]
     [OutputType(typeof(AzureQueryProperties))]
@@ -38,6 +39,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
         public string[] Locaton { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "List of locations for azure virtual machines.")]
+        [LocationCompleter("Microsoft.Automation/SoftwareUpdateConfiguration")]
         public string[] Location { get; set; }
 
         [Parameter(Mandatory = false,  HelpMessage = "Tag for azure virtual machines.")]
