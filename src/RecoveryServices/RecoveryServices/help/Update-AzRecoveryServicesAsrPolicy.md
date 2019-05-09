@@ -124,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureToAzure
-{{Fill AzureToAzure Description}}
+Specifies the Azure to Azure disaster recovery.
 
 ```yaml
 Type: SwitchParameter
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureToVMware
-{{Fill AzureToVMware Description}}
+Specifies the Azure to vMWare disaster recovery.
 
 ```yaml
 Type: SwitchParameter

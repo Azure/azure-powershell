@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzRecoveryServicesAsrReplicationProtectedItemDisk
 
 ## SYNOPSIS
-Add the disk to protection for already replicated Virtual machine on which Enable DR is already done.
+Add the disk for protection for already protected azure virtual machine.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Add-AzRecoveryServicesAsrReplicationProtectedItemDisk -InputObject <ASRReplicati
 ```
 
 ## DESCRIPTION
-Add newly added disk for protection.
+The **Add-AzRecoveryServicesAsrReplicationProtectedItemDisk** cmdlet add the disk for protection for already protected azure virtual machine.
 
 ## EXAMPLES
 
@@ -28,19 +28,19 @@ Add newly added disk for protection.
 PS C:> Add-AzRecoveryServicesAsrReplicationProtectedItemDisk -ReplicationProtectedItem $rpi -AzureToAzureDiskReplicationConfiguration $disk1,$disk2
 ```
 
-Add disk to already protected Vm.
+Start the operation to add specified disk configuration for protection.
 
 ### Example 2
 ```powershell
 PS C:> $ReplicationProtectedItem |Add-AzRecoveryServicesAsrReplicationProtectedItemDisk -AzureToAzureDiskReplicationConfiguration $disk1,$disk2
 ```
 
-Add disk to already protected Vm.Piping input replication protected item.
+Start the operation to add specified disk configuration for protection.Piping input replication protected item.
 
 ## PARAMETERS
 
 ### -AzureToAzureDiskReplicationConfiguration
-Disk info Object.
+Specifies the disk configuration to used for disk protection for Azure to Azure disaster recovery scenario.
 
 ```yaml
 Type: ASRAzuretoAzureDiskReplicationConfig[]
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-{{ Fill InputObject Description }}
+The input object to the cmdlet: The ASR replication protected item object corresponding to which new disk should be protected.
 
 ```yaml
 Type: ASRReplicationProtectedItem

@@ -12,7 +12,7 @@ This topic displays help topics for the Azure Recovery Services cmdlets.
 
 ## Az.RecoveryServices Cmdlets
 ### [Add-AzRecoveryServicesAsrReplicationProtectedItemDisk](Add-AzRecoveryServicesAsrReplicationProtectedItemDisk.md)
-Add the disk to protection for already replicated Virtual machine on which Enable DR is already done.
+Add the disk for protection for already protected azure virtual machine.
 
 ### [Backup-AzRecoveryServicesBackupItem](Backup-AzRecoveryServicesBackupItem.md)
 Starts a backup for a Backup item.
@@ -153,7 +153,7 @@ Creates a disk mapping object for Azure virtual machine disks to be replicated.
 Creates an Azure Site Recovery Fabric.
 
 ### [New-AzRecoveryServicesAsrInMageAzureV2DiskInput](New-AzRecoveryServicesAsrInMageAzureV2DiskInput.md)
-Create disk input for disk to protect vMWare to Azure.
+Creates a disk mapping object for vMWare virtual machine disks to be replicated.
 
 ### [New-AzRecoveryServicesAsrNetworkMapping](New-AzRecoveryServicesAsrNetworkMapping.md)
 Creates an ASR network mapping between two networks.
@@ -300,7 +300,7 @@ Updates the specified azure site recovery network mapping.
 Updates an Azure Site Recovery replication policy.
 
 ### [Update-AzRecoveryServicesAsrProtectionContainerMapping](Update-AzRecoveryServicesAsrProtectionContainerMapping.md)
-Update the ASR protection container mapping.
+Update the Azure site recovery protection container mapping.
 
 ### [Update-AzRecoveryServicesAsrProtectionDirection](Update-AzRecoveryServicesAsrProtectionDirection.md)
 Updates the replication direction for the specified replication protected item or recovery plan. Used to re-protect/reverse replicate a failed over replicated item or recovery plan.

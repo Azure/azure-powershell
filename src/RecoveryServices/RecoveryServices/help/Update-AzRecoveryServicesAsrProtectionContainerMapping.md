@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzRecoveryServicesAsrProtectionContainerMapping
 
 ## SYNOPSIS
-Update the ASR protection container mapping.
+Update the Azure site recovery protection container mapping.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Update-AzRecoveryServicesAsrProtectionContainerMapping -InputObject <ASRProtecti
 ```
 
 ## DESCRIPTION
-Update the ASR protection container mapping.
+The **Update-AzRecoveryServicesAsrProtectionContainerMapping** cmdlet updates the specified Azure Site Recovery protection container mapping.
 
 ## EXAMPLES
 
@@ -36,20 +36,19 @@ Update the ASR protection container mapping.
 PS C:> Update-AzRecoveryServicesAsrProtectionContainerMapping -InputObject $ASRProtectionContainerMapping -AzureToAzure -DisableAutoUpdate
 ```
 
-Disables auto update for container.
+Start the operation to disable auto update for container.
 
 ### Example 2
 ```powershell
 PS C:> Update-AzRecoveryServicesAsrProtectionContainerMapping -InputObject $ASRProtectionContainerMapping  -AzureToAzure -EnableAutoUpdate -AutomationAccountId $automationAccountId
 ```
 
-Enable auto update for container.
-	
+Start the operation to disable enable auto update for container.
 
 ## PARAMETERS
 
 ### -AutomationAccountId
-Automation AccountId
+Specifies the automation accountId used for auto udpate.
 
 ```yaml
 Type: String

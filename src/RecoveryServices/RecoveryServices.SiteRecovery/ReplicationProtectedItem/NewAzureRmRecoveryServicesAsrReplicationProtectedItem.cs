@@ -71,10 +71,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.AzureToAzure,
-            Mandatory = false)]
+            Mandatory = false,
+            HelpMessage = "Switch parameter specifies creating the replicated item in azure to azure scenario.")]
         [Parameter(
             ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails,
-            Mandatory = false)]
+            Mandatory = false,
+            HelpMessage = "Switch parameter specifies creating the replicated item in azure to azure scenario.")]
         public SwitchParameter AzureToAzure { get; set; }
 
         /// <summary>
@@ -104,7 +106,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///    Gets or sets  the list of virtual machine disks to replicated 
         ///    and the cache storage account and recovery storage account to be used to replicate the disk.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, Mandatory = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AzureToAzure,
+            Mandatory = true,
+            HelpMessage = "Specifies the disk configuration to used Vm for Azure to Azure disaster recovery scenario.")]
         [ValidateNotNullOrEmpty]
         public ASRAzuretoAzureDiskReplicationConfig[] AzureToAzureDiskReplicationConfiguration { get; set; }
 
@@ -265,8 +270,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         /// Gets or sets the resource ID of the recovery cloud service to failover this virtual machine to.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure,HelpMessage = "Specify the availabilty zone to used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails, HelpMessage = "Specify the availabilty zone to used by the failover Vm in target recovery region.")]
         [ValidateNotNullOrEmpty]
         public string RecoveryAvailabilityZone { get; set; }
 
@@ -293,11 +298,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string DiskEncryptionVaultId { get; set; }
 
         /// <summary>
-        /// Gets or sets DiskEncryptionSecertUrl.
+        /// Gets or sets DiskEncryptionSecretUrl.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails)]
-        public string DiskEncryptionSecertUrl { get; set; }
+        public string DiskEncryptionSecretUrl { get; set; }
 
         /// <summary>
         /// Gets or sets KeyEncryptionKeyUrl.
@@ -779,17 +784,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         private DiskEncryptionInfo A2AEncryptionDetailDetails()
         {
             // Any encryption data is present.
-            if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionSecertUrl)) ||
+            if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionSecretUrl)) ||
                 this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionVaultId)) ||
                 this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionKeyUrl)) ||
                 this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionVaultId)))
             {
                 DiskEncryptionInfo diskEncryptionInfo = new DiskEncryptionInfo();
                 // BEK DATA is present
-                if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionSecertUrl)) &&
+                if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionSecretUrl)) &&
                 this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionVaultId)))
                 {
-                    diskEncryptionInfo.DiskEncryptionKeyInfo = new DiskEncryptionKeyInfo(this.DiskEncryptionSecertUrl, this.DiskEncryptionVaultId);
+                    diskEncryptionInfo.DiskEncryptionKeyInfo = new DiskEncryptionKeyInfo(this.DiskEncryptionSecretUrl, this.DiskEncryptionVaultId);
                     // KEK Data is present in pair.
                     if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionKeyUrl)) &&
                 this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionVaultId)))
@@ -807,7 +812,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
                 else
                 {
-                    throw new Exception("Provide Disk DiskEncryptionSecertUrl and DiskEncryptionVaultId.");
+                    throw new Exception("Provide Disk DiskEncryptionSecretUrl and DiskEncryptionVaultId.");
                 }
                 return diskEncryptionInfo;
             }

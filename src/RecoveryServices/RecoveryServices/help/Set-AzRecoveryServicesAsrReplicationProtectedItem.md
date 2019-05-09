@@ -20,7 +20,7 @@ Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationPr
  [-RecoveryAvailabilitySet <String>] [-EnableAcceleratedNetworkingOnRecovery]
  [-RecoveryBootDiagStorageAccountId <String>]
  [-AzureToAzureUpdateReplicationConfiguration <ASRAzuretoAzureDiskReplicationConfig[]>]
- [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecertUrl <String>] [-KeyEncryptionKeyUrl <String>]
+ [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>]
  [-KeyEncryptionVaultId <String>] [-UseManagedDisk <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -32,15 +32,54 @@ The **Set-AzRecoveryServicesAsrReplicationProtectedItem** cmdlet sets the recove
 
 ### Example 1
 ```
-PS C:\> $currentJob = Set-AzRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $RPI -PrimaryNic $NicId -RecoveryNetworkId $AzureNetworkID -RecoveryNicSubnetName $subnetName
+PS C:\> $currentJob = Set-AzRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $RPI -UpdateNic $NicId -RecoveryNetworkId $AzureNetworkID -RecoveryNicSubnetName $subnetName
 ```
 
-Starts the operation of updating the replication protect item settings using the specified parameters and returns the ASR job used to track the operation.
+Starts the operation of updating the replication protected item settings using the specified parameters and returns the ASR job used to track the operation.
+
+### Example 2
+```
+PS C:\> $currentJob = Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject $rpi -UpdateNic "00:50:56:8F:3F:7B" -RecoveryNetworkId $recoveryNetwork -RecoveryNicSubnetName $recoverySubnet -NicSelectionType NotSelected
+```
+
+Starts the operation of updating the replication protected item Network Interface card(NIC Reduction) settings using the specified parameters and returns the ASR job used to track the operation.
+
+### Example 3
+```
+PS C:\> $currentJob = Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject $rpi -PrimaryNic "00:50:56:8F:3F:7B"
+```
+
+Starts the operation of updating the replication protected item primary NIC(to used for recovered vm )settings using the specified parameters and returns the ASR job used to track the operation.
+
+### Example 4
+```
+PS C:\>Set-ASRReplicationProtectedItem -InputObject $rpi -UpdateNic $updateNic -RecoveryNetworkId $recoveryNetworkId -RecoveryNicSubnetName $recoveryNicSubnetName�-NicSelectionType SelectedByUser
+```
+
+Starts the operation of updating the replication protected item NIC (to used for recovered vm )settings using the specified parameters and returns the ASR job used to track the operation.
+
+### Example 5
+```
+PS C:\> $currentJob = Set-AzureRmRecoveryServicesAsrReplicationProtectedItem -InputObject $ rpi -UpdateNic $updateNic `
+		-RecoveryNetworkId $recoveryNetworkId -RecoveryNicSubnetName $recoveryNicSubnetName -EnableAcceleratedNetworkingOnRecovery
+```
+
+Starts the operation of updating the replication protected item selected noc tp enable accelerated networking on recovery VM(for Azure to Azure disaster recovery).
+Don�t pass -EnableAcceleratedNetworkingOnRecovery to disable accelerated Networking.
+
+### Example 6
+```
+PS C:\> $currentJob = Set-AzureRmRecoveryServicesAsrReplicationProtectedItem -InputObject $ rpi `
+	-DiskEncryptionVaultId  $DiskEncryptionVaultId   �-DiskEncryptionSecertUrl $DiskEncryptionSecertUrl `
+	 -KeyEncryptionVaultId $KeyEncryptionVaultId  -KeyEncryptionKeyUrl $KeyEncryptionKeyUrl
+```
+
+Start the update operation for the specified encrypted replication protected item to use supplied encryption details for failover VM.
 
 ## PARAMETERS
 
 ### -AzureToAzureUpdateReplicationConfiguration
-{{Fill AzureToAzureUpdateReplicationConfiguration Description}}
+Specifies the disk configuration to udpated for managed disk Vm (Azure to Azure DR scenrio).
 
 ```yaml
 Type: ASRAzuretoAzureDiskReplicationConfig[]
@@ -85,8 +124,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DiskEncryptionSecertUrl
-{{ Fill DiskEncryptionSecertUrl Description }}
+### -DiskEncryptionSecretUrl
+Specifies the disk encryption secret URL with version(Azure disk encryption) to be used be recovery VM after failover.
 
 ```yaml
 Type: String
@@ -101,7 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### -DiskEncryptionVaultId
-{{ Fill DiskEncryptionVaultId Description }}
+Specifies the disk encryption secret key vault ID(Azure disk encryption) to be used be recovery VM after failover.
 
 ```yaml
 Type: String
@@ -116,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableAcceleratedNetworkingOnRecovery
-{{ Fill EnableAcceleratedNetworkingOnRecovery Description }}
+Specifies the specified NIC on recovery vm after failover uses accelerated networking.
 
 ```yaml
 Type: SwitchParameter
@@ -146,7 +185,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyEncryptionKeyUrl
-{{ Fill KeyEncryptionKeyUrl Description }}
+Specifies the disk encryption key URL version(Azure disk encryption) to be used be recovery VM after failover.
 
 ```yaml
 Type: String
@@ -161,7 +200,8 @@ Accept wildcard characters: False
 ```
 
 ### -KeyEncryptionVaultId
-{{ Fill KeyEncryptionVaultId Description }}
+Specifies the disk encryption key keyVault ID(Azure disk encryption) to be used be recovery VM after failover.
+
 
 ```yaml
 Type: String
@@ -224,7 +264,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryNic
-Specifies the NIC of the virtual machine for which this cmdlet sets the recovery network property.
+Specifies the NIC which will be used as primary NIC for recvcovery VM after after failover.
 
 ```yaml
 Type: String
@@ -360,7 +400,7 @@ Accept wildcard characters: False
 ```
 
 ### -UpdateNic
-{{ Fill UpdateNic Description }}
+Specifies the NIC of the virtual machine for which this cmdlet sets the recovery network property needs to udpated.
 
 ```yaml
 Type: String

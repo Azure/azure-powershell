@@ -38,7 +38,7 @@ Starts the fabric creation with passed name and returns the ASR job used to trac
 
 ### Example 2
 ```
-PS C:\>  $currentJob = New-AzRecoveryServicesAsrFabric -Az -Name $fabricName -Location "eastus"
+PS C:\>  $currentJob = New-AzRecoveryServicesAsrFabric -Azure -Name $fabricName -Location "eastus"
 PS C:\>  Get-ASRJob -name $currentJob.id
 ```
 
@@ -47,7 +47,7 @@ Starts the azure fabric creation with passed name and returns the ASR job used t
 ## PARAMETERS
 
 ### -Azure
-{{Fill Azure Description}}
+Switch parameter specifies to create azure fabric.
 
 ```yaml
 Type: SwitchParameter

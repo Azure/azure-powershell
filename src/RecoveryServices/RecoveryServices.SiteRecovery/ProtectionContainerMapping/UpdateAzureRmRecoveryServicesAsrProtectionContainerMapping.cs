@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets protection container mapping object corresponding to the protection container to be updatd.
         /// </summary>
-        [Parameter(ParameterSetName = AzureToAzureEnableAutoUpdate, Mandatory = true, ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = AzureToAzureDisableAutoUpdate, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = AzureToAzureEnableAutoUpdate, Mandatory = true, ValueFromPipeline = true,HelpMessage = "Object for protection container mapping.")]
+        [Parameter(ParameterSetName = AzureToAzureDisableAutoUpdate, Mandatory = true, ValueFromPipeline = true, HelpMessage = "Object for protection container mapping.")]
         [ValidateNotNullOrEmpty]
         [Alias("ProtectionContainerMapping")]
         public ASRProtectionContainerMapping InputObject { get; set; }
@@ -49,29 +49,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///    Switch parameter specifying that the replication container used to replicate Azure virtual machines between 
         ///    two Azure regions will be updated.
         /// </summary>
-        [Parameter(ParameterSetName = AzureToAzureEnableAutoUpdate, Mandatory = true)]
-        [Parameter(ParameterSetName = AzureToAzureDisableAutoUpdate, Mandatory = true)]
+        [Parameter(ParameterSetName = AzureToAzureEnableAutoUpdate, Mandatory = true, HelpMessage = "Specifies Azure to Azure protection container.")]
+        [Parameter(ParameterSetName = AzureToAzureDisableAutoUpdate, Mandatory = true, HelpMessage = "Specifies Azure to Azure protection container.")]
         public SwitchParameter AzureToAzure { get; set; }
 
         /// <summary>
         ///    Switch parameter specifying that the replication container used to replicate Azure virtual machines between 
         ///    two Azure regions will be updated.
         /// </summary>
-        [Parameter(ParameterSetName = AzureToAzureEnableAutoUpdate, Mandatory = true)]
+        [Parameter(ParameterSetName = AzureToAzureEnableAutoUpdate, Mandatory = true, HelpMessage = "Switch parameter to enable auto update.")]
         public SwitchParameter EnableAutoUpdate { get; set; }
 
         /// <summary>
         ///    Switch parameter specifying that the replication container used to replicate Azure virtual machines between 
         ///    two Azure regions will be updated.
         /// </summary>
-        [Parameter(ParameterSetName = AzureToAzureDisableAutoUpdate, Mandatory = true)]
+        [Parameter(ParameterSetName = AzureToAzureDisableAutoUpdate, Mandatory = true ,HelpMessage = "Switch parameter to disable auto update.")]
         public SwitchParameter DisableAutoUpdate { get; set; }
 
         /// <summary>
         ///    Switch parameter specifying that the replication container used to replicate Azure virtual machines between 
         ///    two Azure regions will be updated.
         /// </summary>
-        [Parameter(ParameterSetName = AzureToAzureEnableAutoUpdate, Mandatory = true)]
+        [Parameter(
+            ParameterSetName = AzureToAzureEnableAutoUpdate,
+            Mandatory = true,
+            HelpMessage = "Specifies the automation accountId used for auto udpate.")]
         public string AutomationAccountId { get; set; }
 
         #endregion Parameters

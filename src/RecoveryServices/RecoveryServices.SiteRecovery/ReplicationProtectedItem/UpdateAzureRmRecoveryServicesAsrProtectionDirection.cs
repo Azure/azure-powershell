@@ -145,15 +145,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [ValidateNotNullOrEmpty]
         public ASRAzuretoAzureDiskReplicationConfig[] AzureToAzureDiskReplicationConfiguration { get; set; }
 
-
-        /// <summary>
-        /// Gets or sets the resource ID of the recovery cloud service to failover this virtual machine to.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount)]
-        [ValidateNotNullOrEmpty]
-        public string RecoveryAvailabilityZone { get; set; }
-
+        /* TODO:: uncomment SRS service start supporting this.
+                /// <summary>
+                /// Gets or sets the resource ID of the recovery cloud service to failover this virtual machine to.
+                /// </summary>
+                [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, HelpMessage = "Specify the availabilty zone to used by the failover Vm in target recovery region.")]
+                [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount, HelpMessage = "Specify the availabilty zone to used by the failover Vm in target recovery region.")]
+                [ValidateNotNullOrEmpty]
+                public string RecoveryAvailabilityZone { get; set; }
+        */
         /// <summary>
         ///     Gets or sets recovery plan object.
         /// </summary>
@@ -270,29 +270,41 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         /// Gets or sets DiskEncryptionVaultId.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AzureToAzure,
+            HelpMessage = "Specifies the disk encryption secret key vault ID(Azure disk encryption) to be used be recovery VM after failover.")]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount,
+            HelpMessage = "Specifies the disk encryption secret key vault ID(Azure disk encryption) to be used be recovery VM after failover.")]
         public string DiskEncryptionVaultId { get; set; }
 
         /// <summary>
-        /// Gets or sets DiskEncryptionSecertUrl.
+        /// Gets or sets DiskEncryptionSecretUrl.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount)]
-        public string DiskEncryptionSecertUrl { get; set; }
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AzureToAzure,
+            HelpMessage = "Specifies the disk encryption secret URL(Azure disk encryption) to be used be recovery VM after failover.")]
+        [Parameter
+            (ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount,
+            HelpMessage = "Specifies the disk encryption secret URL(Azure disk encryption) to be used be recovery VM after failover.")]
+        public string DiskEncryptionSecretUrl { get; set; }
 
         /// <summary>
         /// Gets or sets KeyEncryptionKeyUrl.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure,
+            HelpMessage = "Specifies the disk encryption secret key URL(Azure disk encryption) to be used be recovery VM after failover.")]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount,
+            HelpMessage = "Specifies the disk encryption secret key URL(Azure disk encryption) to be used be recovery VM after failover.")]
         public string KeyEncryptionKeyUrl { get; set; }
 
         /// <summary>
         /// Gets or sets KeyEncryptionVaultId.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure,
+            HelpMessage = "Specifies the disk encryption secret key vault ID(Azure disk encryption) to be used be recovery VM after failover.")]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount,
+            HelpMessage = "Specifies the disk encryption secret key vault ID(Azure disk encryption) to be used be recovery VM after failover.")]
         public string KeyEncryptionVaultId { get; set; }
 
         /// <summary>
@@ -760,17 +772,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         private DiskEncryptionInfo A2AEncryptionDetails()
         {
             // Any encryption data is present.
-            if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionSecertUrl)) ||
+            if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionSecretUrl)) ||
                 this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionVaultId)) ||
                 this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionKeyUrl)) ||
                 this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionVaultId)))
             {
                 DiskEncryptionInfo diskEncryptionInfo = new DiskEncryptionInfo();
                 // BEK DATA is present
-                if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionSecertUrl)) &&
+                if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionSecretUrl)) &&
                 this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionVaultId)))
                 {
-                    diskEncryptionInfo.DiskEncryptionKeyInfo = new DiskEncryptionKeyInfo(this.DiskEncryptionSecertUrl, this.DiskEncryptionVaultId);
+                    diskEncryptionInfo.DiskEncryptionKeyInfo = new DiskEncryptionKeyInfo(this.DiskEncryptionSecretUrl, this.DiskEncryptionVaultId);
                     // KEK Data is present in pair.
                     if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionKeyUrl)) &&
                 this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionVaultId)))
@@ -789,7 +801,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
                 else
                 {
-                    throw new Exception("Provide Disk DiskEncryptionSecertUrl and DiskEncryptionVaultId.");
+                    throw new Exception("Provide Disk DiskEncryptionSecretUrl and DiskEncryptionVaultId.");
                 }
                 return diskEncryptionInfo;
             }

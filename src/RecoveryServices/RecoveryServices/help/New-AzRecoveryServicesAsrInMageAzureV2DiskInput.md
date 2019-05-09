@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/update-azrecoveryservicesasrvcenter
+online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/new-azrecoveryservicesasrinmageazurev2diskinput
 schema: 2.0.0
 ---
 
 # New-AzRecoveryServicesAsrInMageAzureV2DiskInput
 
 ## SYNOPSIS
-Create disk input for disk to protect vMWare to Azure.
+Creates a disk mapping object for vMWare virtual machine disks to be replicated.
 
 ## SYNTAX
 
@@ -18,17 +18,16 @@ New-AzRecoveryServicesAsrInMageAzureV2DiskInput -DiskId <String> -LogStorageAcco
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates a disk mapping object that maps an vMWare virtual machine disk to the cache storage account and target managed disk type (recovery region) to be used to replicate the disk.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:> New-AzRecoveryServicesAsrInMageAzureV2DiskInput -DiskId $diskId -LogStorageAccountId $logStorageAccountId
- -DiskType $diskType
+PS C:> New-AzRecoveryServicesAsrInMageAzureV2DiskInput -DiskId $diskId -LogStorageAccountId $logStorageAccountId -DiskType $diskType
 ```
 
-{{ Add example description here }}
+Create a disk mapping object for vMWare virtual machine disks to be replicated.Used during enable protection for vMWare machine.
 
 ## PARAMETERS
 

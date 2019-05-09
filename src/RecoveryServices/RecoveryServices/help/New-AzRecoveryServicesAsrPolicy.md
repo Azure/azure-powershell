@@ -158,7 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureToAzure
-{{Fill AzureToAzure Description}}
+Switch parameter specifies the scenario for azure to azure policy creation.
 
 ```yaml
 Type: SwitchParameter
@@ -173,7 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureToVMware
-{{Fill AzureToVMware Description}}
+Switch parameter specifies the scenario for azure to vMWare policy creation.
 
 ```yaml
 Type: SwitchParameter

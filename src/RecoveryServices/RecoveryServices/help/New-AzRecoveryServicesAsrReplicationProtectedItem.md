@@ -56,7 +56,7 @@ New-AzRecoveryServicesAsrReplicationProtectedItem [-AzureToAzure]
  [-RecoveryAzureNetworkId <String>] [-RecoveryAzureSubnetName <String>] -RecoveryResourceGroupId <String>
  [-RecoveryCloudServiceId <String>] [-RecoveryAvailabilityZone <String>] [-RecoveryAvailabilitySetId <String>]
  [-RecoveryBootDiagStorageAccountId <String>] [-DiskEncryptionVaultId <String>]
- [-DiskEncryptionSecertUrl <String>] [-KeyEncryptionKeyUrl <String>] [-KeyEncryptionVaultId <String>]
+ [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>] [-KeyEncryptionVaultId <String>]
  [-WaitForCompletion] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -67,7 +67,7 @@ New-AzRecoveryServicesAsrReplicationProtectedItem [-AzureToAzure] -AzureVmId <St
  [-RecoveryAzureStorageAccountId <String>] -LogStorageAccountId <String> [-RecoveryAzureNetworkId <String>]
  [-RecoveryAzureSubnetName <String>] -RecoveryResourceGroupId <String> [-RecoveryAvailabilityZone <String>]
  [-RecoveryAvailabilitySetId <String>] [-RecoveryBootDiagStorageAccountId <String>]
- [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecertUrl <String>] [-KeyEncryptionKeyUrl <String>]
+ [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>]
  [-KeyEncryptionVaultId <String>] [-WaitForCompletion] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -87,9 +87,10 @@ Starts the replication protected item creation operation for the specified ASR p
 
 ### Example 2
 ```
-PS C:\>$job = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $pi -Name $rpiName -ProtectionContainerMapping $pcm `
--RecoveryAzureStorageAccountId $RecoveryAzureStorageAccountId -RecoveryResourceGroupId  $RecoveryResourceGroupId `
--ProcessServer $fabric.fabricSpecificDetails.ProcessServers[0] -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
+PS C:\>$job = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -Account $fabric.FabricSpecificDetails.RunAsAccounts[0] `
+-RecoveryResourceGroupId $RecoveryResourceGroupId -RecoveryAzureNetworkId $RecoveryAzureNetworkId  -name $name `
+-ProcessServer $fabric.FabricSpecificDetails.ProcessServers[0] -ProtectableItem $protectableItem -ProtectionContainerMapping $pcm `
+-RecoveryAzureSubnetName $RecoveryAzureSubnetName -RecoveryVmName $RecoveryVmName -LogStorageAccountId $LogStorageAccountId
 ```
 
 Starts the replication protected item creation operation for the specified ASR protectable item and returns the ASR job used to track the operation(vmWare to Azure scenario).
@@ -110,10 +111,35 @@ PS C:\> $disk2 = new-AzToAzureDiskReplicationConfiguration -vhdUri  $diskUri2 -R
 -LogStorageAccountId $logStorageAccountId  
 PS C:\> $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzToAzure -AzVmId $vmId -Name $rpiName `
 -RecoveryCloudServiceId  $recoveryCloudServiceId -ProtectionContainerMapping $pcm -RecoveryResourceGroupId  $RecoveryResourceGroupId `
--AzToAzureDiskReplicationConfiguration $disk1,$disk2
+-AzToAzureDiskReplicationConfiguration $disk1,$disk2 -RecoveryAzureNetworkId $RecoveryAzureNetworkId -RecoveryAzureSubnetName $RecoveryAzureSubnetName
 ```
 
 Starts the replication protected item creation operation for the specified VmId and returns the ASR job used to track the operation (Azure to Azure scenario).
+
+### Example 5
+```
+PS C:\>$disk1 = New-AzRecoveryServicesAsrInMageAzureV2DiskInput -DiskId $diskId -LogStorageAccountId $logStorageAccountId -DiskType $diskType
+PS C:\>$disk2 = New-AzRecoveryServicesAsrInMageAzureV2DiskInput -DiskId $diskId2 -LogStorageAccountId $logStorageAccountId -DiskType $diskType2
+
+PS C:\>$job = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -Account $fabric.FabricSpecificDetails.RunAsAccounts[0] -RecoveryResourceGroupId $RecoveryResourceGroupId `
+-RecoveryAzureNetworkId $RecoveryAzureNetworkId  -name $name -ProcessServer $fabric.FabricSpecificDetails.ProcessServers[0] -ProtectableItem $protectableItem  `
+-ProtectionContainerMapping $pcm -RecoveryAzureSubnetName $RecoveryAzureSubnetName -RecoveryVmName $RecoveryVmName `
+-LogStorageAccountId $LogStorageAccountId -InMageAzureV2DiskInput $disk1,$disk2
+```
+
+Starts the replication protected item creation operation for the specified ASR protectable item including selective disks and returns the ASR job used to track the operation(vmWare to Azure scenario) with selected disks.
+
+### Example 6
+```
+PS C:\> $disk1 = New-AzureToAzureDiskReplicationConfiguration -vhdUri  $diskUri1 -RecoveryAzureStorageAccountId $recoveryAzureStorageAccountId -LogStorageAccountId $logStorageAccountId  
+PS C:\> $disk2 = new-AzureToAzureDiskReplicationConfiguration -vhdUri  $diskUri2 -RecoveryAzureStorageAccountId $recoveryAzureStorageAccountId -LogStorageAccountId $logStorageAccountId  
+PS C:\> $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzToAzure -AzVmId $vmId -Name $rpiName `
+-RecoveryCloudServiceId  $recoveryCloudServiceId -ProtectionContainerMapping $pcm -RecoveryResourceGroupId  $RecoveryResourceGroupId `
+-AzToAzureDiskReplicationConfiguration $disk1,$disk2 -DiskEncryptionVaultId  $DiskEncryptionVaultId   �-DiskEncryptionSecertUrl $DiskEncryptionSecertUrl `
+ -KeyEncryptionVaultId $KeyEncryptionVaultId  -KeyEncryptionKeyUrl $KeyEncryptionKeyUrl
+```
+
+Starts the replication protected item creation operation for the specified VmId and returns the ASR job used to track the operation (Azure to Azure scenario).For the failover VM details passed in cmdlet for encryption will be used .
 
 ## PARAMETERS
 
@@ -133,7 +159,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureToAzure
-{{Fill AzureToAzure Description}}
+Switch parameter specifies creating the replicated item in azure to azure scenario.
 
 ```yaml
 Type: SwitchParameter
@@ -148,7 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureToAzureDiskReplicationConfiguration
-{{Fill AzureToAzureDiskReplicationConfiguration Description}}
+Specifies the disk configuration to used Vm for Azure to Azure disaster recovery scenario.
 
 ```yaml
 Type: ASRAzuretoAzureDiskReplicationConfig[]
@@ -163,7 +189,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureVmId
-{{Fill AzureVmId Description}}
+Specifies the Azure VM id for disaster recovery protection in recovery region.
 
 ```yaml
 Type: String
@@ -208,8 +234,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DiskEncryptionSecertUrl
-{{ Fill DiskEncryptionSecertUrl Description }}
+### -DiskEncryptionSecretUrl
+Specifies the disk encryption secret URL with version(Azure disk encryption) to be used be recovery VM after failover.
 
 ```yaml
 Type: String
@@ -224,7 +250,7 @@ Accept wildcard characters: False
 ```
 
 ### -DiskEncryptionVaultId
-{{ Fill DiskEncryptionVaultId Description }}
+Specifies the disk encryption secret vault ID(Azure disk encryption) to be used be recovery VM after failover.
 
 ```yaml
 Type: String
@@ -254,7 +280,7 @@ Accept wildcard characters: False
 ```
 
 ### -InMageAzureV2DiskInput
-{{ Fill InMageAzureV2DiskInput Description }}
+Specifies the disk configuration input for vMWare disk id to protect from specified protectable item.
 
 ```yaml
 Type: AsrInMageAzureV2DiskInput[]
@@ -284,7 +310,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyEncryptionKeyUrl
-{{ Fill KeyEncryptionKeyUrl Description }}
+Specifies the disk encryption key URL with version(Azure disk encryption) to be used be recovery VM after failover.
 
 ```yaml
 Type: String
@@ -299,7 +325,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyEncryptionVaultId
-{{ Fill KeyEncryptionVaultId Description }}
+Specifies the disk encryption key key-vault ID(Azure disk encryption) to be used be recovery VM after failover.
 
 ```yaml
 Type: String
@@ -448,7 +474,8 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryAvailabilityZone
-{{ Fill RecoveryAvailabilityZone Description }}
+Specifies the recovery VM availability zone after failover.
+
 
 ```yaml
 Type: String

@@ -55,11 +55,10 @@ Update-AzRecoveryServicesAsrProtectionDirection [-VmmToVmm]
 ```
 Update-AzRecoveryServicesAsrProtectionDirection [-AzureToAzure]
  -ProtectionContainerMapping <ASRProtectionContainerMapping> -LogStorageAccountId <String>
- [-RecoveryAzureStorageAccountId <String>] [-RecoveryAvailabilityZone <String>]
- -ReplicationProtectedItem <ASRReplicationProtectedItem> [-RecoveryResourceGroupId <String>]
- [-RecoveryCloudServiceId <String>] [-RecoveryAvailabilitySetId <String>]
+ [-RecoveryAzureStorageAccountId <String>] -ReplicationProtectedItem <ASRReplicationProtectedItem>
+ [-RecoveryResourceGroupId <String>] [-RecoveryCloudServiceId <String>] [-RecoveryAvailabilitySetId <String>]
  [-RecoveryBootDiagStorageAccountId <String>] [-DiskEncryptionVaultId <String>]
- [-DiskEncryptionSecertUrl <String>] [-KeyEncryptionKeyUrl <String>] [-KeyEncryptionVaultId <String>]
+ [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>] [-KeyEncryptionVaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -68,10 +67,10 @@ Update-AzRecoveryServicesAsrProtectionDirection [-AzureToAzure]
 Update-AzRecoveryServicesAsrProtectionDirection [-AzureToAzure]
  -ProtectionContainerMapping <ASRProtectionContainerMapping>
  -AzureToAzureDiskReplicationConfiguration <ASRAzuretoAzureDiskReplicationConfig[]>
- [-RecoveryAvailabilityZone <String>] -ReplicationProtectedItem <ASRReplicationProtectedItem>
- [-RecoveryResourceGroupId <String>] [-RecoveryCloudServiceId <String>] [-RecoveryAvailabilitySetId <String>]
+ -ReplicationProtectedItem <ASRReplicationProtectedItem> [-RecoveryResourceGroupId <String>]
+ [-RecoveryCloudServiceId <String>] [-RecoveryAvailabilitySetId <String>]
  [-RecoveryBootDiagStorageAccountId <String>] [-DiskEncryptionVaultId <String>]
- [-DiskEncryptionSecertUrl <String>] [-KeyEncryptionKeyUrl <String>] [-KeyEncryptionVaultId <String>]
+ [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>] [-KeyEncryptionVaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -101,7 +100,7 @@ Start the update direction operation for the specified recovery plan and returns
 
 ### Example 2
 ```
-PS C:\> $currentJob = Update-AzRecoveryServicesAsrProtectionDirection -AzToAzure -ProtectionContainerMapping $B2ApcmMapping -LogStorageAccountId $cacheStorageId `
+PS C:\> $currentJob = Update-AzRecoveryServicesAsrProtectionDirection -AzureToAzure -ProtectionContainerMapping $B2ApcmMapping -LogStorageAccountId $cacheStorageId `
  -ReplicationProtectedItem $rpi
 ```
 
@@ -109,11 +108,22 @@ Start the update direction operation for the specified replication protected ite
 
 ### Example 3
 ```
-PS C:\> $currentJob = Update-AzRecoveryServicesAsrProtectionDirection -AzToAzure -ProtectionContainerMapping $B2ApcmMapping `
- -AzToAzureDiskReplicationConfiguration $disk1,$disk2 -ReplicationProtectedItem  $rpi
+PS C:\> $currentJob = Update-AzRecoveryServicesAsrProtectionDirection -AzureToAzure -ProtectionContainerMapping $B2ApcmMapping `
+ -AzureToAzureDiskReplicationConfiguration $disk1,$disk2 -ReplicationProtectedItem  $rpi
 ```
 
 Start the update direction operation for the specified replication protected item in target azure region defined by protection container mapping and provided disk replication configuration.
+
+### Example 4
+```
+PS C:\> $currentJob = Update-AzRecoveryServicesAsrProtectionDirection -AzureToAzure -ProtectionContainerMapping $B2ApcmMapping `
+ -AzureToAzureDiskReplicationConfiguration $disk1,$disk2 -ReplicationProtectedItem  $rpi `
+ -DiskEncryptionVaultId  $DiskEncryptionVaultId -DiskEncryptionSecertUrl $DiskEncryptionSecertUrl `
+ -KeyEncryptionVaultId $KeyEncryptionVaultId  -KeyEncryptionKeyUrl $KeyEncryptionKeyUrl
+```
+
+	
+Start the update direction operation for the specified encrypted replication protected item in target azure region defined by protection container mapping and provided disk replication configuration.
 
 ## PARAMETERS
 
@@ -145,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureToAzure
-{{Fill AzureToAzure Description}}
+Specifies the Azure to Azure disaster recovery.
 
 ```yaml
 Type: SwitchParameter
@@ -160,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureToAzureDiskReplicationConfiguration
-{{Fill AzureToAzureDiskReplicationConfiguration Description}}
+Specifies the disk configuration for disaster recovery.
 
 ```yaml
 Type: ASRAzuretoAzureDiskReplicationConfig[]
@@ -175,7 +185,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureToVMware
-{{Fill AzureToVMware Description}}
+Specifies the switch azure to vMWare scenario.
 
 ```yaml
 Type: SwitchParameter
@@ -205,7 +215,7 @@ Accept wildcard characters: False
 ```
 
 ### -DataStore
-The VMware datastore to be used for the vmdisk's.
+The VMware data-store to be used for the vmdisk's.
 
 ```yaml
 Type: ASRDataStore
@@ -255,8 +265,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DiskEncryptionSecertUrl
-{{ Fill DiskEncryptionSecertUrl Description }}
+### -DiskEncryptionSecretUrl
+Specifies the disk encryption secret URL with version(Azure disk encryption) to be used be recovery VM after failover.
 
 ```yaml
 Type: String
@@ -271,7 +281,7 @@ Accept wildcard characters: False
 ```
 
 ### -DiskEncryptionVaultId
-{{ Fill DiskEncryptionVaultId Description }}
+Specifies the disk encryption secret vault ID(Azure disk encryption) to be used be recovery VM after failover.
 
 ```yaml
 Type: String
@@ -301,7 +311,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyEncryptionKeyUrl
-{{ Fill KeyEncryptionKeyUrl Description }}
+Specifies the disk encryption key URL(Azure disk encryption) to be used be recovery VM after failover.
 
 ```yaml
 Type: String
@@ -316,7 +326,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyEncryptionVaultId
-{{ Fill KeyEncryptionVaultId Description }}
+Specifies the disk encryption key keyVault ID(Azure disk encryption) to be used be recovery VM after failover.
 
 ```yaml
 Type: String
@@ -404,21 +414,6 @@ Accept wildcard characters: False
 
 ### -RecoveryAvailabilitySetId
 The availability set that the virtual machine should be created in upon failover
-
-```yaml
-Type: String
-Parameter Sets: AzureToAzure, AzureToAzureWithMultipleStorageAccount
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RecoveryAvailabilityZone
-{{ Fill RecoveryAvailabilityZone Description }}
 
 ```yaml
 Type: String

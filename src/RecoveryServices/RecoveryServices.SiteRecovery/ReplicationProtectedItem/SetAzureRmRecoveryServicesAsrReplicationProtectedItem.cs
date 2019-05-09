@@ -159,11 +159,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string DiskEncryptionVaultId { get; set; }
 
         /// <summary>
-        /// Gets or sets DiskEncryptionSecertUrl.
+        /// Gets or sets DiskEncryptionSecretUrl.
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
-        public string DiskEncryptionSecertUrl { get; set; }
+        public string DiskEncryptionSecretUrl { get; set; }
 
         /// <summary>
         /// Gets or sets KeyEncryptionKeyUrl.
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     string.IsNullOrEmpty(this.RecoveryNetworkId) &&
                     string.IsNullOrEmpty(this.PrimaryNic) &&
                     this.UseManagedDisk == null &&
-                    this.IsParameterBound(c=>c.RecoveryAvailabilitySet) &&
+                    this.IsParameterBound(c => c.RecoveryAvailabilitySet) &&
                     string.IsNullOrEmpty(this.RecoveryCloudServiceId) &&
                     string.IsNullOrEmpty(this.RecoveryResourceGroupId) &&
                     string.IsNullOrEmpty(this.LicenseType) &&
@@ -288,8 +288,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         licenseType = providerSpecificDetails.LicenseType;
                     }
 
-                    availabilitySetId = this.IsParameterBound(c => c.RecoveryAvailabilitySet) 
-                        ? this.RecoveryAvailabilitySet 
+                    availabilitySetId = this.IsParameterBound(c => c.RecoveryAvailabilitySet)
+                        ? this.RecoveryAvailabilitySet
                         : providerSpecificDetails.RecoveryAvailabilitySetId;
 
                     if (string.IsNullOrEmpty(this.UseManagedDisk))
@@ -338,8 +338,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 else if (provider is InMageAzureV2ReplicationDetails)
                 {
                     var providerSpecificDetails =
-                        (InMageAzureV2ReplicationDetails)replicationProtectedItemResponse.Properties
-                            .ProviderSpecificDetails;
+                        (InMageAzureV2ReplicationDetails)replicationProtectedItemResponse.Properties.ProviderSpecificDetails;
 
                     if (string.IsNullOrEmpty(this.Name))
                     {
@@ -353,8 +352,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                     if (string.IsNullOrEmpty(this.RecoveryNetworkId))
                     {
-                        vmRecoveryNetworkId = providerSpecificDetails
-                            .SelectedRecoveryAzureNetworkId;
+                        vmRecoveryNetworkId = providerSpecificDetails.SelectedRecoveryAzureNetworkId;
                     }
 
                     if (string.IsNullOrEmpty(this.LicenseType))
@@ -362,9 +360,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         licenseType = providerSpecificDetails.LicenseType;
                     }
 
-                    availabilitySetId = this.IsParameterBound(c => c.RecoveryAvailabilitySet) 
-                        ? this.RecoveryAvailabilitySet 
-                        : providerSpecificDetails.RecoveryAvailabilitySetId;
+                    availabilitySetId = this.IsParameterBound(c => c.RecoveryAvailabilitySet)
+                        ? this.RecoveryAvailabilitySet : providerSpecificDetails.RecoveryAvailabilitySetId;
 
                     if (string.IsNullOrEmpty(this.UseManagedDisk))
                     {
@@ -373,8 +370,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                     if (string.IsNullOrEmpty(this.RecoveryResourceGroupId))
                     {
-                        recoveryResourceGroupId =
-                            providerSpecificDetails.RecoveryAzureResourceGroupId;
+                        recoveryResourceGroupId = providerSpecificDetails.RecoveryAzureResourceGroupId;
                     }
 
                     if (!this.MyInvocation.BoundParameters.ContainsKey(
@@ -419,8 +415,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             providerSpecificDetails.RecoveryAzureResourceGroupId;
                     }
 
-                    availabilitySetId = this.IsParameterBound(c => c.RecoveryAvailabilitySet) 
-                        ? this.RecoveryAvailabilitySet 
+                    availabilitySetId = this.IsParameterBound(c => c.RecoveryAvailabilitySet)
+                        ? this.RecoveryAvailabilitySet
                         : providerSpecificDetails.RecoveryAvailabilitySet;
 
                     if (!this.MyInvocation.BoundParameters.ContainsKey(
@@ -586,7 +582,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         private DiskEncryptionInfo A2AEncryptionDetails(ReplicationProviderSpecificSettings replicationProvider)
         {
             // Any encryption data is present.
-            if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionSecertUrl)) ||
+            if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionSecretUrl)) ||
                 this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionVaultId)) ||
                 this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionKeyUrl)) ||
                 this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionVaultId)))
@@ -595,7 +591,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 if (!(replicationProvider is A2AReplicationDetails))
                 {
                     throw new Exception(
-                        "DiskEncryptionSecertUrl,DiskEncryptionVaultId,KeyEncryptionKeyUrl,KeyEncryptionVaultId " +
+                        "DiskEncryptionSecretUrl,DiskEncryptionVaultId,KeyEncryptionKeyUrl,KeyEncryptionVaultId " +
                         "is used for udpating Azure to Azure replication");
                 }
                 // todo :: vipin
@@ -603,10 +599,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                 DiskEncryptionInfo diskEncryptionInfo = new DiskEncryptionInfo();
                 // BEK DATA is present
-                if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionSecertUrl)) &&
+                if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionSecretUrl)) &&
                 this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionVaultId)))
                 {
-                    diskEncryptionInfo.DiskEncryptionKeyInfo = new DiskEncryptionKeyInfo(this.DiskEncryptionSecertUrl, this.DiskEncryptionVaultId);
+                    diskEncryptionInfo.DiskEncryptionKeyInfo = new DiskEncryptionKeyInfo(this.DiskEncryptionSecretUrl, this.DiskEncryptionVaultId);
                     // KEK Data is present in pair.
                     if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionKeyUrl)) &&
                 this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionVaultId)))
@@ -625,7 +621,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
                 else
                 {
-                    throw new Exception("Provide Disk DiskEncryptionSecertUrl and DiskEncryptionVaultId.");
+                    throw new Exception("Provide Disk DiskEncryptionSecretUrl and DiskEncryptionVaultId.");
                 }
                 return diskEncryptionInfo;
             }
