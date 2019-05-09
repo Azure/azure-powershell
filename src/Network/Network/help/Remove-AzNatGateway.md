@@ -20,13 +20,13 @@ Remove-AzNatGateway -ResourceGroupName <String> -Name <String> [-Force] [-AsJob]
 
 ### DeleteByInputObjectParameterSet
 ```
-Remove-AzNatGateway -NatGateway <PSNatGateway> [-Force] [-AsJob] [-PassThru]
+Remove-AzNatGateway -InputObject <PSNatGateway> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteByResourceIdParameterSet
 ```
-Remove-AzNatGateway -NatGatewayId <String> [-Force] [-AsJob] [-PassThru]
+Remove-AzNatGateway -ResourceId <String> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -38,8 +38,8 @@ Remove Nat Gateway Resource
 ### Example 1
 ```powershell
 PS C:> $nat = Get-AzNatGateway -ResourceGroupName "natgateway_test" -Name "nat_gateway"
-PS C:> Remove-AzNatGateway -NatGateway $nat
-PS C:> Remove-AzNatGateway -NatGatewayId "/subscriptions/<subid>/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/natgateway"
+PS C:> Remove-AzNatGateway -InputObject $nat
+PS C:> Remove-AzNatGateway -ResourceId "/subscriptions/<subid>/resourceGroups/natgateway_test/providers/Microsoft.Network/natGateways/natgateway"
 ```
 
 ## PARAMETERS
@@ -89,13 +89,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NatGateway
+### -InputObject
 NatGateway Object
 
 ```yaml
 Type: PSNatGateway
 Parameter Sets: DeleteByInputObjectParameterSet
-Aliases:
+Aliases: NatGateway
 
 Required: True
 Position: Named
@@ -150,13 +150,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NatGatewayId
+### -ResourceId
 Resource Id associated with the Nat Gateway.
 
 ```yaml
 Type: String
 Parameter Sets: DeleteByResourceIdParameterSet
-Aliases:
+Aliases: NatGatewayId
 
 Required: True
 Position: Named
