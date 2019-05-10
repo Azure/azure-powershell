@@ -76,32 +76,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                 scope = this.GetDefaultScope();
             }
 
-            ConfirmAction(MyInvocation.InvocationName,
-                "Microsoft.ManagedServices/registrationAssignments",
-                () =>
+            if (string.IsNullOrEmpty(assignmentId))
+            {
+                var results = this.PSManagedServicesClient.ListRegistrationAssignments(
+                    scope: scope,
+                    expandRegistrationDefinition: this.ExpandRegistrationDefinition);
+                this.WriteRegistrationAssignmentList(results);
+            }
+            else
+            {
+                // validate assignmentId.
+                if (!assignmentId.IsGuid())
                 {
-                    if (string.IsNullOrEmpty(assignmentId))
-                    {
-                        var results = this.PSManagedServicesClient.ListRegistrationAssignments(
-                            scope: scope,
-                            expandRegistrationDefinition: this.ExpandRegistrationDefinition);
-                        this.WriteRegistrationAssignmentList(results);
-                    }
-                    else
-                    {
-                        // validate assignmentId.
-                        if (!assignmentId.IsGuid())
-                        {
-                            throw new ApplicationException("RegistrationAssignment must be a valid GUID.");
-                        }
+                    throw new ApplicationException("RegistrationAssignment must be a valid GUID.");
+                }
 
-                        var result = this.PSManagedServicesClient.GetRegistrationAssignment(
-                            scope: scope,
-                            registrationAssignmentId: assignmentId,
-                            expandRegistrationDefinition: this.ExpandRegistrationDefinition);
-                        WriteObject(new PSRegistrationAssignment(result), true);
-                    }
-                });
+                var result = this.PSManagedServicesClient.GetRegistrationAssignment(
+                    scope: scope,
+                    registrationAssignmentId: assignmentId,
+                    expandRegistrationDefinition: this.ExpandRegistrationDefinition);
+                WriteObject(new PSRegistrationAssignment(result), true);
+            }
         }
     }
 }

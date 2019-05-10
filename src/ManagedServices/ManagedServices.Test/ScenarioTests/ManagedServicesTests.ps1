@@ -22,7 +22,7 @@ function New-AzManagedServicesAssignmentWithId
     [CmdletBinding()]
     param(
         [string] [Parameter()] $Scope,
-        [string] [Parameter()] $RegistrationDefinitionId,
+        [string] [Parameter()] $RegistrationDefinitionResourceId,
         [Guid]   [Parameter()] $RegistrationAssignmentId
     )
 
@@ -36,9 +36,9 @@ function New-AzManagedServicesAssignmentWithId
         $cmdlet.Scope = $Scope
     }
 
-    if (-not ([string]::IsNullOrEmpty($RegistrationDefinitionId)))
+    if (-not ([string]::IsNullOrEmpty($RegistrationDefinitionResourceId)))
     {	
-        $cmdlet.RegistrationDefinitionId = $RegistrationDefinitionId
+        $cmdlet.RegistrationDefinitionResourceId = $RegistrationDefinitionResourceId
     }
 
     if ($RegistrationAssignmentId -ne $null -and $RegistrationAssignmentId -ne [System.Guid]::Empty)
@@ -53,7 +53,7 @@ function New-AzManagedServicesDefinitionWithId
 {
     [CmdletBinding()]
     param(
-        [string] [Parameter()] $RegistrationDefinitionName,
+        [string] [Parameter()] $Name,
         [string] [Parameter()] $ManagedByTenantId,
         [string] [Parameter()] $PrincipalId,
         [string] [Parameter()] $RoleDefinitionId,
@@ -71,9 +71,9 @@ function New-AzManagedServicesDefinitionWithId
         $cmdlet.Description = $Description
     }
 
-    if (-not ([string]::IsNullOrEmpty($RegistrationDefinitionName)))
+    if (-not ([string]::IsNullOrEmpty($Name)))
     {
-        $cmdlet.RegistrationDefinitionName = $RegistrationDefinitionName
+        $cmdlet.Name = $Name
     }
 
     if (-not ([string]::IsNullOrEmpty($ManagedByTenantId)))
@@ -110,7 +110,7 @@ function Test-ManagedServices_CRUD
 	$definitionId = "e7d4730c-b52a-42b4-b974-6772d88cf7c6"
 
 	#put def
-	$definition = New-AzManagedServicesDefinitionWithId -ManagedByTenantId $managedByTenantId -RoleDefinitionId $roleDefinitionId -PrincipalId $principalId -RegistrationDefinitionName $name -RegistrationDefinitionId e7d4730c-b52a-42b4-b974-6772d88cf7c6
+	$definition = New-AzManagedServicesDefinitionWithId -ManagedByTenantId $managedByTenantId -RoleDefinitionId $roleDefinitionId -PrincipalId $principalId -Name $name -RegistrationDefinitionId e7d4730c-b52a-42b4-b974-6772d88cf7c6
 
 	Assert-AreEqual $name $definition.Properties.Name
 	Assert-AreEqual $managedByTenantId $definition.Properties.ManagedByTenantId 
@@ -118,13 +118,13 @@ function Test-ManagedServices_CRUD
 	Assert-AreEqual $principalId $definition.Properties.Authorization[0].PrincipalId
 
 	# get def
-	$getDef = Get-AzManagedServicesDefinition -Id $definitionId
+	$getDef = Get-AzManagedServicesDefinition -Name $definitionId
 	Assert-NotNull $getDef
 	Assert-AreEqual $definition.Id $getDef.Id
 
 	#put assignment
 	$assignment = New-AzManagedServicesAssignmentWithId `
-					-RegistrationDefinitionId $definition.Id `
+					-RegistrationDefinitionResourceId $definition.Id `
 					-RegistrationAssignmentId 846b8de3-400b-4e89-b1f4-5bb7b73f12be
 	
 	Assert-NotNull $assignment

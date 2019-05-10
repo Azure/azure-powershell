@@ -34,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
 
         [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The name of the Registration Definition.")]
         [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = true, HelpMessage = "The name of the Registration Definition.")]
-        public string RegistrationDefinitionName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The Managedby Tenant Identifier.")]
         [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = true, HelpMessage = "The Managedby Tenant Identifier.")]
@@ -75,6 +75,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
 
         public override void ExecuteCmdlet()
         {
+            var scope = this.GetDefaultScope();
+
             if (!this.ManagedByTenantId.IsGuid())
             {
                 throw new ApplicationException("ManagedByTenantId must be a valid GUID.");
@@ -96,7 +98,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
             }
 
             ConfirmAction(MyInvocation.InvocationName,
-                "Microsoft.ManagedServices/registrationDefinitions",
+                $"{scope}/providers/Microsoft.ManagedServices/registrationDefinitions/{this.RegistrationDefinitionId}",
                 () =>
                 {
                     Plan plan = null;
@@ -120,7 +122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                         Properties = new RegistrationDefinitionProperties
                         {
                             Description = this.Description,
-                            RegistrationDefinitionName = this.RegistrationDefinitionName,
+                            RegistrationDefinitionName = this.Name,
                             ManagedByTenantId = this.ManagedByTenantId,
                             Authorizations = new List<Authorization>
                                     {
@@ -134,7 +136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                     };
 
                     var result = this.PSManagedServicesClient.CreateOrUpdateRegistrationDefinition(
-                        scope: this.GetDefaultScope(),
+                        scope: scope,
                             registrationDefinition: registrationDefinition,
                             registratonDefinitionId: this.RegistrationDefinitionId);
 

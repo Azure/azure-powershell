@@ -74,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
             }
 
             ConfirmAction(MyInvocation.InvocationName,
-                "Microsoft.ManagedServices/registrationDefinitions",
+                $"/{scope}/providers/Microsoft.ManagedServices/registrationDefinitions{definitionId}",
                 () =>
                 {
                     var result = this.PSManagedServicesClient.RemoveRegistrationDefinition(

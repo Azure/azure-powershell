@@ -22,16 +22,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
     [Cmdlet(
     VerbsCommon.Get,
     Microsoft.Azure.Commands.ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedServicesDefinition",
-    DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(PSRegistrationDefinition))]
+    DefaultParameterSetName = ByIdParameterSet), OutputType(typeof(PSRegistrationDefinition))]
     public class GetAzureRmManagedServicesDefinition : ManagedServicesCmdletBase
     {
-        protected const string DefaultParameterSet = "Default";
+        ////protected const string DefaultParameterSet = "Default";
         protected const string ByResourceIdParameterSet = "ByResourceId";
         protected const string ByIdParameterSet = "ById";
 
-        [Parameter(ParameterSetName = ByIdParameterSet, Mandatory = true, HelpMessage = "The registration definition identifier.")]
+        [Parameter(ParameterSetName = ByIdParameterSet, Mandatory = false, HelpMessage = "The registration definition identifier.")]
         [ValidateNotNullOrEmpty]
-        public string Id { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             ParameterSetName = ByResourceIdParameterSet,
@@ -44,11 +44,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         public override void ExecuteCmdlet()
         {
             string definitionId = null;
-            string scope = null;
-            if (this.IsParameterBound(x => x.Id))
+            string scope = this.GetDefaultScope();
+
+            if (this.IsParameterBound(x => x.Name))
             {
-                scope = this.GetDefaultScope();
-                definitionId = this.Id;
+                definitionId = this.Name;
             }
             else if (this.IsParameterBound(x => x.ResourceId))
             {
@@ -56,30 +56,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                 scope = this.ResourceId.GetSubscriptionId().ToSubscriptionResourceId();
             }
 
-            ConfirmAction(MyInvocation.InvocationName,
-                "Microsoft.ManagedServices/registrationDefinitions",
-                () =>
+            if (string.IsNullOrEmpty(definitionId))
+            {
+                var results = this.PSManagedServicesClient.ListRegistrationDefinitions(
+                    scope: scope);
+                this.WriteRegistrationDefinitionsList(results);
+            }
+            else
+            {
+                // validate definitionId.
+                if (!definitionId.IsGuid())
                 {
-                    if (string.IsNullOrEmpty(definitionId))
-                    {
-                        var results = this.PSManagedServicesClient.ListRegistrationDefinitions(
-                            scope: scope);
-                        this.WriteRegistrationDefinitionsList(results);
-                    }
-                    else
-                    {
-                        // validate definitionId.
-                        if (!definitionId.IsGuid())
-                        {
-                            throw new ApplicationException("RegistrationDefinitionId must be a valid GUID.");
-                        }
+                    throw new ApplicationException("RegistrationDefinitionId must be a valid GUID.");
+                }
 
-                        var result = this.PSManagedServicesClient.GetRegistrationDefinition(
-                            scope: scope,
-                            registrationDefinitionId: definitionId);
-                        WriteObject(new PSRegistrationDefinition(result), true);
-                    }
-                });
+                var result = this.PSManagedServicesClient.GetRegistrationDefinition(
+                    scope: scope,
+                    registrationDefinitionId: definitionId);
+                WriteObject(new PSRegistrationDefinition(result), true);
+            }
         }
     }
 }
