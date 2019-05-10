@@ -93,7 +93,7 @@ Accept wildcard characters: False
 
 ### -Id
 The registration definition identifier.
-##### Example
+### Example
 ```b0c052e5-c437-4771-a476-8b1201158a57```
 
 ```yaml
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 
 ### -ResourceId
 The fully qualified resource id of the registration definition.
-##### Example
+### Example
 ```/subscriptions/bb6d49b2-603d-489f-b6ca-ca4dc497c749/providers/Microsoft.ManagedServices/registrationDefinitions/b0c052e5-c437-4771-a476-8b1201158a57
 ```
 
