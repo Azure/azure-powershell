@@ -52,8 +52,17 @@ $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet `
 $backendSubnet = New-AzVirtualNetworkSubnetConfig -Name backendSubnet `
     -AddressPrefix "10.0.2.0/24" -NetworkSecurityGroup $networkSecurityGroup
 
+$pip = New-AzPublicIpAddress -Name "pip" -ResourceGroupName "natgateway_test" `
+   -Location "eastus2" -Sku "Standard" -IdleTimeoutInMinutes 4 -AllocationMethod "static"
+
+$natgateway = New-AzNatGateway -ResourceGroupName "natgateway_test" -Name "nat_gateway" `
+   -IdleTimeoutInMinutes 4 -Sku "Standard" -Location "eastus2" -PublicIpAddress $pip
+
+$natGatewaySubnet = New-AzVirtualNetworkSubnetConfig -Name natGatewaySubnet `
+   -AddressPrefix "10.0.3.0/24" -InputObject $natGateway
+
 New-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup `
-    -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet
+    -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet,$natGatewaySubnet
 ```
 
 This example creates two new subnet configurations using the 
@@ -69,7 +78,7 @@ This example creates two new subnet configurations using the
 Specifies a range of IP addresses for a subnet configuration.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -84,7 +93,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -99,7 +108,7 @@ Accept wildcard characters: False
 List of services that have permission to perform operations on this subnet.
 
 ```yaml
-Type: PSDelegation[]
+Type: Microsoft.Azure.Commands.Network.Models.PSDelegation[]
 Parameter Sets: (All)
 Aliases:
 
@@ -114,9 +123,9 @@ Accept wildcard characters: False
 Specifies the nat gateway associated with the subnet configuration
 
 ```yaml
-Type: PSNatGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSNatGateway
 Parameter Sets: SetByResource
-Aliases: NatGateway
+Aliases:
 
 Required: False
 Position: Named
@@ -129,7 +138,7 @@ Accept wildcard characters: False
 Specifies the name of the subnet configuration to create.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -144,7 +153,7 @@ Accept wildcard characters: False
 Specifies a NetworkSecurityGroup object.
 
 ```yaml
-Type: PSNetworkSecurityGroup
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup
 Parameter Sets: SetByResource
 Aliases:
 
@@ -159,7 +168,7 @@ Accept wildcard characters: False
 Specifies the ID of a network security group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -174,9 +183,9 @@ Accept wildcard characters: False
 NatGatewayId
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
-Aliases: NatGatewayId
+Aliases:
 
 Required: False
 Position: Named
@@ -189,7 +198,7 @@ Accept wildcard characters: False
 Specifies the route table associated with the subnet configuration.
 
 ```yaml
-Type: PSRouteTable
+Type: Microsoft.Azure.Commands.Network.Models.PSRouteTable
 Parameter Sets: SetByResource
 Aliases:
 
@@ -204,7 +213,7 @@ Accept wildcard characters: False
 Specifies the ID of the route table associated with the subnet configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -219,7 +228,7 @@ Accept wildcard characters: False
 Service Endpoint Value
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -234,7 +243,7 @@ Accept wildcard characters: False
 Service Endpoint Policies
 
 ```yaml
-Type: PSServiceEndpointPolicy[]
+Type: Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicy[]
 Parameter Sets: (All)
 Aliases:
 
@@ -246,7 +255,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
