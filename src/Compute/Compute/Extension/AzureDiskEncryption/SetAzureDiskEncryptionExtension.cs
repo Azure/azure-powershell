@@ -541,9 +541,22 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                     currentOSType = virtualMachineResponse.StorageProfile.OsDisk.OsType;
 
+                    var vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(
+                        this.ResourceGroupName, VMName));
+
                     if (OperatingSystemTypes.Linux.Equals(currentOSType) && !SkipVmBackup)
                     {
-                        CreateVMBackupForLinx();
+                        if (vmParameters.StorageProfile.OsDisk.ManagedDisk != null)
+                        {
+                            ThrowTerminatingError(new ErrorRecord(new ArgumentException(string.Format(CultureInfo.CurrentUICulture, "-skipVmBackup parameter is a required parameter for encrypting Linux VMs with managed disks. For more information, see https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux.")),
+                                                      "InvalidArgument",
+                                                      ErrorCategory.InvalidArgument,
+                                                      null));
+                        }
+                        else
+                        {
+                            CreateVMBackupForLinx();
+                        }                        
                     }
 
                     VirtualMachineExtension parameters = GetVmExtensionParameters(virtualMachineResponse);
