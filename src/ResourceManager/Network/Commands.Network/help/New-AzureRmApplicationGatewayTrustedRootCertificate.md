@@ -25,7 +25,7 @@ The **New-AzureRmApplicationGatewayTrustedRootCertificate** cmdlet creates a Tru
 ### Example 1
 ```powershell
 PS C:\> $certFilePath = ".\rootCA.cer"
-PS C:\> $trc = New-AzureRmApplicationGatewayTrustedRootCertificate -Name "trc1" --CertificateFile $certFilePath
+PS C:\> $trc = New-AzureRmApplicationGatewayTrustedRootCertificate -Name "trc1" -CertificateFile $certFilePath
 ```
 
 This command creates a Trusted Root Certificate named List "trc1" and stores the result in the variable named $trc.
