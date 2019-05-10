@@ -558,15 +558,13 @@ function ApiSchema-SwaggerCRUDTest {
         $getApiSchema = Get-AzApiManagementApiSchema -ResourceId $apiSchema.Id
         Assert-AreEqual $apiSchema.SchemaId $getApiSchema.SchemaId
         Assert-AreEqual $apiSchema.ApiId $getApiSchema.ApiId
-        Assert-AreEqual swaggerdefinition $getApiSchema.SchemaDocumentContentType
-        Assert-AreEqual $apiSchema.SchemaDocument $getApiSchema.SchemaDocument
+        Assert-AreEqual swaggerdefinition $getApiSchema.SchemaDocumentContentType        
 
         #get schema list
         $apiSchemas = Get-AzApiManagementApiSchema -Context $context -ApiId $newApiId
         Assert-AreEqual 1 $apiSchemas.Count
         Assert-AreEqual $getApiSchema.SchemaId $apiSchemas[0].SchemaId
         Assert-AreEqual $getApiSchema.ApiId $apiSchemas[0].ApiId
-        Assert-AreEqual $getApiSchema.SchemaDocumentContentType $apiSchemas[0].SchemaDocumentContentType
 
         # set api Schema
         $apiSchema = Set-AzApiManagementApiSchema -InputObject $getApiSchema -SchemaDocumentContentType "application/json" -PassThru
@@ -574,7 +572,6 @@ function ApiSchema-SwaggerCRUDTest {
         Assert-AreEqual $getApiSchema.SchemaId $apiSchema.SchemaId
         Assert-AreEqual $newApiId $apiSchema.ApiId
         Assert-AreEqual "application/json" $apiSchema.SchemaDocumentContentType
-        Assert-AreEqual $getApiSchema.SchemaDocument $apiSchema.SchemaDocument
 
         Remove-AzApiManagementApiSchema -ResourceId $apiSchema.Id
     }
@@ -598,7 +595,7 @@ function ApiSchema-WsdlCRUDTest {
     $context = New-AzApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
     $wsdlPath1 = Join-Path (Join-Path "$TestOutputRoot" "Resources") "Weather.wsdl"
-    $wsdlFileSchema = Join-Path (Join-Path "$TestOutputRoot" "Resources") "Weather.xsl"
+    $wsdlFileSchema = Join-Path (Join-Path "$TestOutputRoot" "Resources") "weather.xsl"
     $path1 = "soapapifromFile"
     $wsdlServiceName1 = "Weather" # from file Weather.wsdl
     $wsdlEndpointName1 = "WeatherSoap" # from file Weather.wsdl
