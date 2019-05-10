@@ -28,20 +28,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
     public class GetAzureRmBlueprint : BlueprintDefinitionCmdletBase
     {
         #region Parameters
-        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionScope, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionSubscriptionId)]
-        [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionAndName, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionSubscriptionId)]
-        [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionNameAndVersion, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionSubscriptionId)]
-        [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionNameAndLatestPublished, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionSubscriptionId)]
-        [ValidateNotNullOrEmpty]
-        public string SubscriptionId { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.ManagementGroupScope, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionManagementGroupId)]
-        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupAndName, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionManagementGroupId)]
-        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupNameAndVersion, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionManagementGroupId)]
-        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupNameAndLatestPublished, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionManagementGroupId)]
-        [ValidateNotNullOrEmpty]
-        public string ManagementGroupId { get; set; }
-
+ 
         [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionAndName, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionName)]
         [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupAndName, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionName)]
         [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionNameAndLatestPublished, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionName)]
@@ -49,7 +36,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionNameAndVersion, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionVersion)]
         [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupNameAndVersion, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionVersion)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public new string Name { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionNameAndVersion, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionVersion)]
         [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupNameAndVersion, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionVersion)]

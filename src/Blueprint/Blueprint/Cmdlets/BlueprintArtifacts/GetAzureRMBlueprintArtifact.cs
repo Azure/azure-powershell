@@ -16,22 +16,14 @@ using Microsoft.Azure.Commands.Blueprint.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
-using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterSetNames;
+using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintArtifact", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.ArtifactsByBlueprint), OutputType(typeof(PSBlueprintAssignment))]
-    public class GetAzureRmArtifact : BlueprintArtifactsCmdletBase
+    public class GetAzureRmBlueprintArtifact : BlueprintArtifactsCmdletBase
     {
         #region Parameters
-        [Parameter(ParameterSetName = ParameterSetNames.ArtifactsByBlueprint, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.ArtifactsByBlueprint, Mandatory = true, ValueFromPipeline = true, HelpMessage = "To-Do")]
-        [ValidateNotNull]
-        public PSBlueprintBase Blueprint { get; set; }
-
         [Parameter(ParameterSetName = ParameterSetNames.ArtifactsByBlueprint, Mandatory = false, HelpMessage = "Version of the blueprint to get the artifacts from.")]
         [ValidateNotNullOrEmpty]
         public string BlueprintVersion { get; set; }
@@ -46,7 +38,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             {
                 if (this.IsParameterBound(c => c.Name))
                 {
-                    // To-Do - how is blueprint name different than dislplay name
                     WriteObject(BlueprintClient.GetArtifact(scope, Blueprint.Name, Name, BlueprintVersion));
                 }
                 else

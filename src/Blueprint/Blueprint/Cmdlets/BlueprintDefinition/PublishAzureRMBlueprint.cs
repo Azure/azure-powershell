@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.Blueprint.Models;
 using System;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
-using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterSetNames;
+using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
@@ -24,16 +24,17 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
     public class PublishAzureRmBlueprint : BlueprintDefinitionCmdletBase
     {
         #region Parameters
-        [Parameter(ParameterSetName = ParameterSetNames.PublishBlueprint, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        [Parameter(ParameterSetName = ParameterSetNames.PublishBlueprint, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionVersionToPublish)]
         [ValidatePattern("([A-Za-z0-9-_]+)", Options = RegexOptions.Compiled | RegexOptions.CultureInvariant)]
         [ValidateNotNullOrEmpty]
         public string Version { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.PublishBlueprint, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        // To-Do: ChangeNotes will be added in the next SDK release
+        /* [Parameter(ParameterSetName = ParameterSetNames.PublishBlueprint, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
         [ValidateNotNullOrEmpty]
-        public string ChangeNotes { get; set; }
+        public string ChangeNotes { get; set; }*/
 
-        [Parameter(ParameterSetName = ParameterSetNames.PublishBlueprint, Mandatory = true, ValueFromPipeline = true, HelpMessage = "To-Do")]
+        [Parameter(ParameterSetName = ParameterSetNames.PublishBlueprint, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.BlueprintObject)]
         [ValidateNotNullOrEmpty]
         public PSBlueprint Blueprint { get; set; }
         #endregion

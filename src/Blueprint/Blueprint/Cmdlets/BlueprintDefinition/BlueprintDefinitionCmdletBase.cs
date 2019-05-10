@@ -24,15 +24,51 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Management.Automation;
 using System.Net;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     public class BlueprintDefinitionCmdletBase : BlueprintCmdletBase
     {
+        #region Parameters
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintBySubscription, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionName)]
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintByManagementGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionName)]
+        [Parameter(ParameterSetName = ParameterSetNames.ImportBlueprintParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionName)]
+        [ValidatePattern("^[0-9a-zA-Z_-]*$", Options = RegexOptions.Compiled | RegexOptions.CultureInvariant)]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.ImportBlueprintParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionSubscriptionId)]
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintBySubscription, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionSubscriptionId)]
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionScope, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionSubscriptionId)]
+        [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionAndName,Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionSubscriptionId)]
+        [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionNameAndVersion, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionSubscriptionId)]
+        [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionNameAndLatestPublished, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionSubscriptionId)]
+        [ValidateNotNullOrEmpty]
+        public string SubscriptionId { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.ImportBlueprintParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionManagementGroupId)]
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintByManagementGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionManagementGroupId)]
+        [Parameter(ParameterSetName = ParameterSetNames.ManagementGroupScope, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionManagementGroupId)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupAndName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionManagementGroupId)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupNameAndVersion, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionManagementGroupId)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupNameAndLatestPublished, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionManagementGroupId)]
+        [ValidateNotNullOrEmpty]
+        public string ManagementGroupId { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintBySubscription, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ImportInputPath)]
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintByManagementGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ImportInputPath)]
+        [ValidateNotNullOrEmpty]
+        public string BlueprintFile { get; set; }
+        #endregion
+
+
         /// <summary>
         /// Get management group ancestors for a given subscription
         /// </summary>
@@ -112,13 +148,13 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             }
             catch (Exception ex)
             {
-                throw new Exception("Can't deserialize the JSON file: " + blueprintPath + ". " + ex.Message);
+                throw new Exception(string.Format(Resources.CantDeserializeJson, blueprintPath, ex.Message));
             }
 
             this.ConfirmAction(
                 force || !BlueprintExists(scope, blueprintName),
-                $"This will overwrite any unpublished changes in the blueprint {blueprintName} and its artifacts. Would you like to continue?",
-                "Overwriting the unpublished blueprint and artifacts",
+                string.Format(Resources.OverwriteUnpublishedChangesProcessMessage, blueprintName),
+                Resources.OverwriteUnpublishedChangesContinueMessage,
                 blueprintName,
                 () => DeleteBlueprintArtifactsIfExist(scope, blueprintName)
             );
@@ -141,8 +177,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 }
                 else
                 {
-                    // if the exception is due to some other error, halt and let the user know.
-                    throw new Exception("An unexpected error occured while checking if blueprint already exists. Try again in a few minutes." + ex.Message);
+                    // if the exception is due to some other error, halt the execution and let the user know.
+                    throw new Exception(string.Format(Resources.UnexpectedErrorWhileCheckingIfBlueprintExists, ex.Message));
                 }
             }
 
@@ -163,7 +199,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
         protected void ImportArtifacts(string blueprintName, string scope, string inputPath)
         {
-            // if everything is right, start import:
             const string artifacts = "Artifacts";
 
             var artifactsPath = GetValidatedFolderPath(inputPath, artifacts);
@@ -183,7 +218,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Can't deserialize the JSON file: " + artifactFile.FullName + ". " + ex.Message);
+                    throw new Exception(string.Format(Resources.CantDeserializeJson, artifactFile.FullName, ex.Message));
                 }
 
                 // Artifact name comes from the file name
@@ -204,13 +239,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
         protected BlueprintModel CreateBlueprint(string filePath)
         {
-            // To-Do: In good case the JSON file will be deserialized, though it might throw 
+            // To-Do: In good case the JSON file will be deserialized, though it might throw. Then we'll relay that to the user.
             return JsonConvert.DeserializeObject<BlueprintModel>(File.ReadAllText(filePath),
                 DefaultJsonSettings.DeserializerSettings);
         }
 
-
-        // To-Do: Update exception messages
         protected void ThrowIfBlueprintExits(string scope, string name)
         {
             PSBlueprint blueprint = null;

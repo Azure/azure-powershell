@@ -22,6 +22,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
 using BlueprintManagement = Microsoft.Azure.Management.Blueprint;
 
 namespace Microsoft.Azure.Commands.Blueprint.Common
@@ -239,7 +240,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
                     psArtifact = PSRoleAssignmentArtifact.FromArtifactModel(artifact as RoleAssignmentArtifact, scope);
                     break;
                 default:
-                    throw new NotSupportedException("To-Do:");
+                    throw new NotSupportedException(Resources.ArtifactTypeNotSupported);
             }
 
             return psArtifact;
@@ -264,7 +265,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
                     psArtifact = PSRoleAssignmentArtifact.FromArtifactModel(artifact as RoleAssignmentArtifact, scope);
                     break;
                 default:
-                    throw new NotSupportedException("To-Do:");
+                    throw new NotSupportedException(Resources.ArtifactTypeNotSupported);
             }
 
             return psArtifact;
@@ -292,7 +293,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
                         list.Add(PSRoleAssignmentArtifact.FromArtifactModel(artifact as RoleAssignmentArtifact, scope));
                         break;
                     default:
-                        throw new NotSupportedException("To-Do:");
+                        throw new NotSupportedException(Resources.ArtifactTypeNotSupported);
                 }
             }
 
@@ -317,7 +318,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
                     psArtifact = PSRoleAssignmentArtifact.FromArtifactModel(artifact as RoleAssignmentArtifact, scope);
                     break;
                 default:
-                    throw new NotSupportedException("To-Do:");
+                    throw new NotSupportedException(Resources.ArtifactTypeNotSupported);
             }
 
             return psArtifact;
@@ -346,17 +347,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             return JsonConvert.SerializeObject(publishedBlueprint, DefaultJsonSettings.SerializerSettings);
         }
 
-        // import
-        public PSBlueprint GetBlueprintObjectFromJsonDefinition(string jsonDefinition, string scope)
-        {
-            var blueprintDefinitionObj = JsonConvert.DeserializeObject<BlueprintModel>(jsonDefinition,
-                DefaultJsonSettings.DeserializerSettings);
-
-            var blueprint = blueprintManagementClient.Blueprints.CreateOrUpdate(scope, blueprintDefinitionObj.DisplayName + " - Copy", blueprintDefinitionObj);
-
-            return PSBlueprint.FromBlueprintModel(blueprint, scope);
-
-        }
         public string GetBlueprintArtifactJsonFromObject(string scope, string blueprintName, PSArtifact artifact, string version)
         {
             var artifactObj = string.IsNullOrEmpty(version)

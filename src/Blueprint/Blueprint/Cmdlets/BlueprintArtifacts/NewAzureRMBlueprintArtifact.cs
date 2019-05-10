@@ -22,84 +22,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
-using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterSetNames;
+using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintArtifact", DefaultParameterSetName = ParameterSetNames.CreateTemplateArtifact), OutputType(typeof(Artifact))]
     public class NewAzureRMBlueprintArtifact : BlueprintArtifactsCmdletBase
     {
-        #region Parameters
-        [Parameter(ParameterSetName = ParameterSetNames.CreateArtifactByInputFile, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateTemplateArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateRoleAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreatePolicyAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateTemplateArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateRoleAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreatePolicyAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public PSArtifactKind Type { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateArtifactByInputFile, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateTemplateArtifact, Mandatory = true, ValueFromPipeline = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateRoleAssignmentArtifact, Mandatory = true, ValueFromPipeline = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreatePolicyAssignmentArtifact, Mandatory = true, ValueFromPipeline = true, HelpMessage = "To-Do")]
-        [ValidateNotNull]
-        public PSBlueprintBase Blueprint { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateTemplateArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateRoleAssignmentArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreatePolicyAssignmentArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public string Description { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateTemplateArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateRoleAssignmentArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreatePolicyAssignmentArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        public List<string> DependsOn { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreatePolicyAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public string PolicyDefinitionId { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreatePolicyAssignmentArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public Hashtable PolicyParameter { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateTemplateArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public string TemplateParameterFile { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateTemplateArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public string TemplateFile { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateRoleAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public string RoleDefinitionId { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateRoleAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public string[] PrincipalIds { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreatePolicyAssignmentArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateRoleAssignmentArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateTemplateArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        //Alternatively, user can provide a artifactFile
-        [Parameter(ParameterSetName = ParameterSetNames.CreateArtifactByInputFile, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public string ArtifactFile { get; set; }
-
-        #endregion
-
         #region Cmdlet Overrides
-
         public override void ExecuteCmdlet()
         {
             try
@@ -125,7 +55,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                             DisplayName = Name,
                             Description = Description,
                             RoleDefinitionId = RoleDefinitionId,
-                            PrincipalIds = PrincipalIds,
+                            PrincipalIds = RoleDefinitionPrincipalId,
                             ResourceGroup = ResourceGroupName,
                             DependsOn = DependsOn
                         };
@@ -136,7 +66,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                     case ParameterSetNames.CreatePolicyAssignmentArtifact:
                         if (!Type.Equals(PSArtifactKind.PolicyAssignmentArtifact)) throw new PSInvalidOperationException("Artifact type mismatch.");
 
-                        var policyAssignmentParameters = GetPolicyAssignmentParameters(PolicyParameter);
+                        var policyAssignmentParameters = GetPolicyAssignmentParameters(PolicyDefinitionParameter);
 
                         var policyArtifact = new PolicyAssignmentArtifact
                         {

@@ -138,7 +138,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         /// <returns></returns>
         protected string GetValidatedFilePath(string fileFullName)
         {
-            // To-Do: work with relative paths?
             var filePath = ResolveUserPath(fileFullName);
             if (filePath == null || !new FileInfo(filePath).Exists)
             {
