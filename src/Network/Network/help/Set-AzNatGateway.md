@@ -100,7 +100,7 @@ The Nat Gateway
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSNatGateway
 Parameter Sets: SetByInputObjectParameterSet
-Aliases:
+Aliases: NatGateway
 
 Required: True
 Position: Named
@@ -175,7 +175,7 @@ Nat Gateway Id
 ```yaml
 Type: System.String
 Parameter Sets: SetByResourceIdParameterSet
-Aliases:
+Aliases: NatGatewayId
 
 Required: True
 Position: Named

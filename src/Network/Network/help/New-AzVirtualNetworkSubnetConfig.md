@@ -125,7 +125,7 @@ Specifies the nat gateway associated with the subnet configuration
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSNatGateway
 Parameter Sets: SetByResource
-Aliases:
+Aliases: NatGateway
 
 Required: False
 Position: Named
@@ -185,7 +185,7 @@ NatGatewayId
 ```yaml
 Type: System.String
 Parameter Sets: SetByResourceId
-Aliases:
+Aliases: NatGatewayId
 
 Required: False
 Position: Named
