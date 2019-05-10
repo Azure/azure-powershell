@@ -1,9 +1,9 @@
 ---
 Module Name: Az.ManagedServices
-Module Guid: {{ Update Module Guid }}
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Update Help Version }}
-Locale: {{ Update Locale }}
+Module Guid: d2a8f744-8dcb-4a13-ba80-eb181ff365ad
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.managedservices
+Help Version: 0.0.1
+Locale: en-US
 ---
 
 # Az.ManagedServices Module
@@ -18,13 +18,13 @@ Gets a list of the registration assignments.
 Gets a list of the registration definitions.
 
 ### [New-AzManagedServicesAssignment](New-AzManagedServicesAssignment.md)
-Creates or updates a registration assignment.
+Creates a registration assignment.
 
 ### [New-AzManagedServicesDefinition](New-AzManagedServicesDefinition.md)
-Creates or updates a registration definition.
+Creates a registration definition.
 
 ### [Remove-AzManagedServicesAssignment](Remove-AzManagedServicesAssignment.md)
-Deletes a registration assignment.
+Deletes the registration assignment.
 
 ### [Remove-AzManagedServicesDefinition](Remove-AzManagedServicesDefinition.md)
 Deletes the registration definition.

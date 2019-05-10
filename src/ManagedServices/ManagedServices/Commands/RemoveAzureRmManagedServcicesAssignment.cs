@@ -80,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
             }
 
             ConfirmAction(MyInvocation.InvocationName,
-                "Microsoft.ManagedServices/registrationAssignments",
+                $"/{scope}/providers/Microsoft.ManagedServices/registrationAssignments/{assignmentId}",
                 () =>
                 {
                     var result = this.PSManagedServicesClient.RemoveRegistrationAssignment(

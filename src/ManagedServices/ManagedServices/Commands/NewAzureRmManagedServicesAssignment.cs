@@ -47,7 +47,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         [Parameter(ParameterSetName = ByResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The fully qualified resource id of the registration definition.")]
         [ValidateNotNullOrEmpty]
         [Alias("ResourceId")]
-        public string RegistrationDefinitionId { get; set; }
+        public string RegistrationDefinitionResourceId { get; set; }
 
         [Parameter(ParameterSetName = ByInputObjectParameterSet, ValueFromPipeline = true, Mandatory = true, HelpMessage = "The registration definition input object.")]
         public PSRegistrationDefinition RegistrationDefinition { get; set; }
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         public override void ExecuteCmdlet()
         {
             string scope = this.GetDefaultScope();
-            string definitionId = this.RegistrationDefinitionId;
+            string definitionId = this.RegistrationDefinitionResourceId;
 
             if (this.IsParameterBound(x => x.RegistrationDefinitionName))
             {
@@ -70,9 +70,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                 // registation definitions can only exist at the subscription level.
                 definitionId = $"{subscriptionScope}/providers/Microsoft.ManagedServices/registrationDefinitions/{this.RegistrationDefinitionName}";
             }
-            else if (this.IsParameterBound(x => x.RegistrationDefinitionId))
+            else if (this.IsParameterBound(x => x.RegistrationDefinitionResourceId))
             {
-                definitionId = this.RegistrationDefinitionId;
+                definitionId = this.RegistrationDefinitionResourceId;
                 scope = this.Scope ?? definitionId.GetSubscriptionId().ToSubscriptionResourceId();
             }
             else if (this.IsParameterBound(x => x.RegistrationDefinition))
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
             }
 
             ConfirmAction(MyInvocation.InvocationName,
-                "Microsoft.ManagedServices/registrationAssignments",
+                 $"{scope}/providers/Microsoft.ManagedServices/registrationAssignments/{this.RegistrationAssignmentId}",
                 () =>
                 {
                     var result = this.PSManagedServicesClient.CreateOrUpdateRegistrationAssignment(

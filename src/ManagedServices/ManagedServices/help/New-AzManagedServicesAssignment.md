@@ -115,7 +115,9 @@ Accept wildcard characters: False
 ```
 
 ### -RegistrationDefinitionId
-The fully qualified path of the registration definition.
+The fully qualified resource id of the registration definition.
+##### Example
+```/subscriptions/bb6d49b2-603d-489f-b6ca-ca4dc497c749/providers/Microsoft.ManagedServices/registrationDefinitions/b0c052e5-c437-4771-a476-8b1201158a57```
 
 ```yaml
 Type: System.String
@@ -130,7 +132,9 @@ Accept wildcard characters: False
 ```
 
 ### -RegistrationDefinitionName
-The registration definition identifier.
+The registration definition name.
+##### Example
+```b0c052e5-c437-4771-a476-8b1201158a57```
 
 ```yaml
 Type: System.String
