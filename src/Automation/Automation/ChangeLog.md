@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Changed behavior for Start-AzAutomationDscCompilationJob to just start the job instead of waiting for its completion.
+    * Fix for issue https://github.com/Azure/azure-powershell/issues/8347
 
 ## Version 1.2.1
 * Fixed New-AzAutomationSoftwareUpdateConfiguration cmdlet bug for Inclusions. Now parameter IncludedKbNumber and IncludedPackageNameMask should work.
@@ -37,8 +39,6 @@
 * Update help for Import-AzAutomationDscNodeConfiguration
 * Added configuration name validation to Import-AzAutomationDscConfiguration cmdlet
 * Improved error handling for Import-AzAutomationDscConfiguration cmdlet
-* Changed behavior for Start-AzAutomationDscCompilationJob to just start the job instead of waiting for its completion.
-    - Fix for issue https://github.com/Azure/azure-powershell/issues/8347
 
 ## Version 1.1.0
 * Added support for Python 2 runbooks
