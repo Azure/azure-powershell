@@ -95,7 +95,7 @@ NatGateway Object
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSNatGateway
 Parameter Sets: DeleteByInputObjectParameterSet
-Aliases:
+Aliases: NatGateway
 
 Required: True
 Position: Named
@@ -156,7 +156,7 @@ Resource Id associated with the Nat Gateway.
 ```yaml
 Type: System.String
 Parameter Sets: DeleteByResourceIdParameterSet
-Aliases:
+Aliases: NatGatewayId
 
 Required: True
 Position: Named
