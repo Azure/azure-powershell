@@ -735,17 +735,33 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
         }
 
-        public IList<Snapshot> GetSiteSnapshots(string resourceGroupName, string webSiteName, string slotName)
+        public IList<Snapshot> GetSiteSnapshots(string resourceGroupName, string webSiteName, string slotName, bool useDrSecondary)
         {
             string qualifiedSiteName;
             bool useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
             if (useSlot)
             {
-                return WrappedWebsitesClient.WebApps.ListSnapshotsSlot(resourceGroupName, webSiteName, slotName).ToList();
+                if (useDrSecondary)
+                {
+                    return WrappedWebsitesClient.WebApps.ListSnapshotsFromDRSecondarySlot(resourceGroupName, webSiteName, slotName).ToList();
+
+                }
+                else
+                {
+                    return WrappedWebsitesClient.WebApps.ListSnapshotsSlot(resourceGroupName, webSiteName, slotName).ToList();
+                }
             }
             else
             {
-                return WrappedWebsitesClient.WebApps.ListSnapshots(resourceGroupName, webSiteName).ToList();
+                if (useDrSecondary)
+                {
+                    return WrappedWebsitesClient.WebApps.ListSnapshotsFromDRSecondary(resourceGroupName, webSiteName).ToList();
+
+                }
+                else
+                {
+                    return WrappedWebsitesClient.WebApps.ListSnapshots(resourceGroupName, webSiteName).ToList();
+                }
             }
         }
 
