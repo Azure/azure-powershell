@@ -72,23 +72,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         /// <summary>
-        /// Determine if AsJob is present
-        /// </summary>
-        /// <typeparam name="T">The cmdlet type</typeparam>
-        /// <param name="cmdlet">The cmdlet</param>
-        /// <returns>True if the cmdlet shoudl run as a Job, otherwise false</returns>
-        public static bool AsJobPresent<T>(this T cmdlet) where T : AzurePSCmdlet
-        {
-            if (cmdlet == null)
-            {
-                throw new ArgumentNullException(nameof(cmdlet));
-            }
-
-            return (cmdlet.MyInvocation?.BoundParameters != null
-                && cmdlet.MyInvocation.BoundParameters.ContainsKey("AsJob"));
-        }
-
-        /// <summary>
         /// Execute the given cmdlet synchronously os as a job, based on input parameters
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -121,7 +104,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 throw new ArgumentNullException(nameof(executor));
             }
 
-            if (cmdlet.AsJobPresent())
+            // Since right now NoWait and AsJob are not in different parameter sets this check is necessary
+            if (cmdlet.IsBound("AsJob") && !cmdlet.IsBound("NoWait"))
             {
                 cmdlet.WriteObject(cmdlet.ExecuteAsJob(cmdlet.ImplementationBackgroundJobDescription, executor));
             }
@@ -212,7 +196,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <returns>true if the parameter was provided by the user, otherwise false</returns>
         public static bool IsBound(this PSCmdlet cmdlet, string parameterName) 
         {
-            return cmdlet.MyInvocation.BoundParameters.ContainsKey(parameterName);
+            return cmdlet.MyInvocation?.BoundParameters.ContainsKey(parameterName) ?? false;
         }
 
         public static string AsAbsoluteLocation(this string realtivePath)
@@ -358,7 +342,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public static bool IsParameterBound<TPSCmdlet, TProp>(this TPSCmdlet cmdlet, Expression<Func<TPSCmdlet, TProp>> propertySelector) where TPSCmdlet : PSCmdlet
         {
             var propName = ((MemberExpression)propertySelector.Body).Member.Name;
-            return cmdlet.MyInvocation.BoundParameters.ContainsKey(propName);
+            return cmdlet.MyInvocation?.BoundParameters.ContainsKey(propName) ?? false;
         }
 
         #region PowerShell Commands
