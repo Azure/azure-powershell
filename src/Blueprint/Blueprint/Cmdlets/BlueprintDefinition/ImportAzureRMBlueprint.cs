@@ -1,6 +1,7 @@
 ﻿using Microsoft.Azure.Commands.Blueprint.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
+using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
@@ -9,23 +10,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
     public class ImportAzureRmBlueprint : BlueprintDefinitionCmdletBase
     {
         #region Parameters
-        [Parameter(Mandatory = true, HelpMessage = "Name of the blueprint to import. ", ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public string BlueprintName { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = "File path to blueprint and ", ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ParameterSetNames.ImportBlueprintParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ImportInputPath)]
         [ValidateNotNullOrEmpty]
         public string InputPath { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Scope for the blueprint ", ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public string SubscriptionId { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Scope for the blueprint ", ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public string ManagementGroupId { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        [Parameter(ParameterSetName = ParameterSetNames.ImportBlueprintParameterSet, Mandatory = false, HelpMessage = ParameterHelpMessages.ForceHelpMessage)]
         public SwitchParameter Force { get; set; }
         #endregion
 
@@ -36,8 +25,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 ? Utils.GetScopeForManagementGroup(ManagementGroupId) 
                 : Utils.GetScopeForSubscription(SubscriptionId ?? DefaultContext.Subscription.Id);
           
-            ImportBlueprint(BlueprintName, scope, InputPath, Force);
-            ImportArtifacts(BlueprintName, scope, InputPath);
+            ImportBlueprint(Name, scope, InputPath, Force);
+            ImportArtifacts(Name, scope, InputPath);
         }
         #endregion
     }

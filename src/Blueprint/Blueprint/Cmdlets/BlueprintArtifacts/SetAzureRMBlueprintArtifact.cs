@@ -23,82 +23,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Blueprint.Models;
-using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterSetNames;
+using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintArtifact", DefaultParameterSetName = ParameterSetNames.CreateTemplateArtifact), OutputType(typeof(Artifact))]
     public class SetAzureRmBlueprintArtifact : BlueprintArtifactsCmdletBase
     {
-        #region Parameters
-        [Parameter(ParameterSetName = ParameterSetNames.CreateArtifactByInputFile, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateTemplateArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateRoleAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreatePolicyAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateTemplateArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateRoleAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreatePolicyAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public PSArtifactKind Type { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateArtifactByInputFile, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateTemplateArtifact, Mandatory = true, ValueFromPipeline = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateRoleAssignmentArtifact, Mandatory = true, ValueFromPipeline = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreatePolicyAssignmentArtifact, Mandatory = true, ValueFromPipeline = true, HelpMessage = "To-Do")]
-        [ValidateNotNull]
-        public PSBlueprintBase Blueprint { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateTemplateArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateRoleAssignmentArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreatePolicyAssignmentArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public string Description { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateTemplateArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateRoleAssignmentArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreatePolicyAssignmentArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        public List<string> DependsOn { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreatePolicyAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public string PolicyDefinitionId { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreatePolicyAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public Hashtable PolicyParameter { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateTemplateArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public string TemplateParameterFile { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateTemplateArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public string TemplateFile { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateRoleAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public string RoleDefinitionId { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateRoleAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public string[] PrincipalIds { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreatePolicyAssignmentArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateRoleAssignmentArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateTemplateArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        //Alternatively, user can provide a artifactFile
-        [Parameter(ParameterSetName = ParameterSetNames.CreateArtifactByInputFile, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
-        [ValidateNotNullOrEmpty]
-        public string ArtifactFile { get; set; }
-
-        #endregion
-
         #region Cmdlet Overrides
         public override void ExecuteCmdlet()
         {
@@ -124,7 +55,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                             DisplayName = null,
                             Description = Description,
                             RoleDefinitionId = RoleDefinitionId,
-                            PrincipalIds = PrincipalIds,
+                            PrincipalIds = RoleDefinitionPrincipalId,
                             ResourceGroup = ResourceGroupName,
                             DependsOn = DependsOn
                         };
@@ -137,9 +68,9 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
                         Dictionary<string, ParameterValueBase> policyAssignmentParameters = new Dictionary<string, ParameterValueBase>();
 
-                        foreach (var key in PolicyParameter.Keys)
+                        foreach (var key in PolicyDefinitionParameter.Keys)
                         {
-                            var value = new ParameterValue(PolicyParameter[key], null);
+                            var value = new ParameterValue(PolicyDefinitionParameter[key], null);
                             policyAssignmentParameters.Add(key.ToString(), value);
                         }
 
@@ -177,7 +108,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
                             // Missing schema here.
                             JObject parsedJson = JObject.Parse(File.ReadAllText(parameterFilePath));
-                            //To-Do: Next action is to find a better way to check if parameters exists and parse.
+                            //To-Do: This could be done better by creating a type and deserializing the JSON file through converters. 
                             var parametersHashtable = parsedJson["parameters"].ToObject<Dictionary<string, JObject>>();
 
                             foreach (var key in parametersHashtable.Keys)
@@ -187,7 +118,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                                 var paramValue = new ParameterValue(value);
                                 parameters.Add(key, paramValue);
                             }
-                            //paramObjects.ForEach(kvp => parameters.Add(kvp.Key, kvp.Value));
                         }
 
                         var templateArtifact = new TemplateArtifact

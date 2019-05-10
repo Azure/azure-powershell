@@ -50,8 +50,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
 
         string GetBlueprintDefinitionJsonFromObject(PSBlueprintBase blueprint, string version);
 
-        PSBlueprint GetBlueprintObjectFromJsonDefinition(string jsonDefinition, string scope);
-
         IEnumerable<PSArtifact> ListArtifacts(string scope, string blueprintName, string version);
 
         string GetBlueprintArtifactJsonFromObject(string scope, string blueprintName, PSArtifact artifact, string version);

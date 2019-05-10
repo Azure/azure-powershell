@@ -15,7 +15,8 @@
 using Microsoft.Azure.Commands.Blueprint.Models;
 using System.IO;
 using System.Management.Automation;
-using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterSetNames;
+using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
+using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
@@ -24,19 +25,19 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
     public class ExportAzureRmBlueprint : BlueprintDefinitionCmdletBase
     {
         #region Parameters
-        [Parameter(Mandatory = true, HelpMessage = "The Blueprint definition object to export.", ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ParameterSetNames.ExportToFileParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.ExportBlueprintObject)]
         [ValidateNotNullOrEmpty]
         public PSBlueprintBase Blueprint { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ExportToFileParameterSet, Mandatory = true, HelpMessage = "Path to a file on disk where to export the Blueprint definition in JSON format.")]
+        [Parameter(ParameterSetName = ParameterSetNames.ExportToFileParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ExportOutputFile)]
         [ValidateNotNullOrEmpty]
         public string OutputPath { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ExportToFileParameterSet, Mandatory = false, HelpMessage = "Version of the blueprint.")]
+        [Parameter(ParameterSetName = ParameterSetNames.ExportToFileParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionVersion)]
         [ValidateNotNullOrEmpty]
         public string Version { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ExportToFileParameterSet, Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        [Parameter(ParameterSetName = ParameterSetNames.ExportToFileParameterSet, Mandatory = false, HelpMessage = ParameterHelpMessages.ForceHelpMessage)]
         public SwitchParameter Force { get; set; }
         #endregion
 
@@ -51,13 +52,13 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
             this.ConfirmAction(
                 this.Force || !File.Exists(blueprintJsonFilePath),
-                "Do you want to overwrite the output file " + $"{Blueprint.Name}.json?",
-                "Overwriting the output file.",
+                string.Format(Resources.OverwriteExistingOutputFileProcessMessage,Blueprint.Name),
+                Resources.OverwriteExistingOutputFileContinueMessage,
                 blueprintJsonFilePath,
                 () => File.WriteAllText(blueprintJsonFilePath, serializedDefinition)
             );
 
-            // Get serialized artifacts from this blueprint and write it to disk
+            // Get serialized artifacts from this blueprint and write them to disk
             var artifactsPath = CreateFolderIfNotExist(OutputPath, "Artifacts");
 
             var artifacts = BlueprintClient.ListArtifacts(Blueprint.Scope, Blueprint.Name, Version);
@@ -70,8 +71,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
                 this.ConfirmAction(
                     this.Force || !File.Exists(artifactFilePath),
-                    "Do you want to overwrite the output file " + $"{artifact.Name}.json?",
-                    "Overwriting the output file.",
+                    string.Format(Resources.OverwriteExistingOutputFileProcessMessage, artifact.Name),
+                    Resources.OverwriteExistingOutputFileContinueMessage,
                     artifactFilePath,
                     () => File.WriteAllText(artifactFilePath, serializedArtifact)
                 );

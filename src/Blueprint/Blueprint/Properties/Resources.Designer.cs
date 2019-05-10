@@ -79,6 +79,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Artifact type is not supported..
+        /// </summary>
+        internal static string ArtifactTypeNotSupported {
+            get {
+                return ResourceManager.GetString("ArtifactTypeNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An assignment with name &apos;{0}&apos; in subscription &apos;{1}&apos; already exists. Please use Set-AzBlueprintAssignment to update an existing assignment..
         /// </summary>
         internal static string AssignmentExists {
@@ -124,6 +133,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Can&apos;t deserialize the JSON file &apos;{0}&apos;.  &apos;{1}&apos;.
+        /// </summary>
+        internal static string CantDeserializeJson {
+            get {
+                return ResourceManager.GetString("CantDeserializeJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create blueprint assignment &apos;{0}&apos;.
         /// </summary>
         internal static string CreateAssignmentShouldProcessString {
@@ -142,11 +160,56 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Overwriting the output file..
+        /// </summary>
+        internal static string OverwriteExistingOutputFileContinueMessage {
+            get {
+                return ResourceManager.GetString("OverwriteExistingOutputFileContinueMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to overwrite the output file &apos;{0}&apos;.json?.
+        /// </summary>
+        internal static string OverwriteExistingOutputFileProcessMessage {
+            get {
+                return ResourceManager.GetString("OverwriteExistingOutputFileProcessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overwriting unpublished blueprint and artifacts..
+        /// </summary>
+        internal static string OverwriteUnpublishedChangesContinueMessage {
+            get {
+                return ResourceManager.GetString("OverwriteUnpublishedChangesContinueMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This will overwrite any unpublished changes in the blueprint &apos;{0}&apos; and its artifacts. Would you like to continue?.
+        /// </summary>
+        internal static string OverwriteUnpublishedChangesProcessMessage {
+            get {
+                return ResourceManager.GetString("OverwriteUnpublishedChangesProcessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not register the resource provider &apos;{0}&apos;.
         /// </summary>
         internal static string ResourceProviderRegistrationFailed {
             get {
                 return ResourceManager.GetString("ResourceProviderRegistrationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unexpected error occured while checking if blueprint already exists. Try again in a few minutes. &apos;{0}&apos;.
+        /// </summary>
+        internal static string UnexpectedErrorWhileCheckingIfBlueprintExists {
+            get {
+                return ResourceManager.GetString("UnexpectedErrorWhileCheckingIfBlueprintExists", resourceCulture);
             }
         }
         
