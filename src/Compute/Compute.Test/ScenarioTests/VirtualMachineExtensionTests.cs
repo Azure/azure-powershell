@@ -115,16 +115,16 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureDiskEncryptionExtensionSinglePassSkipVmBackupForLinuxManagedDisks()
+        public void TestAzDiskEncryptionSinglePassForLinuxManagedDisks()
         {
-            TestRunner.RunTestScript("TestAzureDiskEncryptionExtensionSinglePassSkipVmBackupForLinuxManagedDisks");
+            TestRunner.RunTestScript("TestAzDiskEncryptionSinglePassForLinuxManagedDisks");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureDiskEncryptionExtensionSinglePassSkipVmBackupForLinuxNativeDisks()
+        public void TestAzDiskEncryptionSinglePassForLinuxNativeDisks()
         {
-            TestRunner.RunTestScript("TestAzureDiskEncryptionExtensionSinglePassSkipVmBackupForLinuxNativeDisks");
+            TestRunner.RunTestScript("TestAzDiskEncryptionSinglePassForLinuxNativeDisks");
         }
 
         [Fact]
