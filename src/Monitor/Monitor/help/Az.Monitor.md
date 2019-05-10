@@ -63,7 +63,7 @@ Gets a log profile.
 Gets the metric values of a resource.
 
 ### [Get-AzMetricAlertRuleV2](Get-AzMetricAlertRuleV2.md)
-Gets V2 (non-classic) metric alert rules.
+Gets V2 (non-classic) metric alert rules
 
 ### [Get-AzMetricDefinition](Get-AzMetricDefinition.md)
 Gets metric definitions.
@@ -99,7 +99,7 @@ Creates an Autoscale rule.
 Creates an Autoscale webhook.
 
 ### [New-AzMetricAlertRuleV2Criteria](New-AzMetricAlertRuleV2Criteria.md)
-Creates a local criteria object that can be used to create a new metric alert.
+Creates a local criteria object that can be used to create a new metric alert
 
 ### [New-AzMetricAlertRuleV2DimensionSelection](New-AzMetricAlertRuleV2DimensionSelection.md)
 Creates a local dimension selection object that can be used to construct a metric alert criteria.

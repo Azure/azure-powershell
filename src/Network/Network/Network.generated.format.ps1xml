@@ -1934,6 +1934,10 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>DisableBgpRoutePropagation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>State</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1951,6 +1955,10 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>DisableBgpRoutePropagation</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>

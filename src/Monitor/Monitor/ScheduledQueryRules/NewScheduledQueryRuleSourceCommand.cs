@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         #endregion
         protected override void ProcessRecordInternal()
         {
-            Source source = new Source(Query, DataSourceId, AuthorizedResource, QueryType);
+            Source source = new Source(query: Query, dataSourceId: DataSourceId, authorizedResources: AuthorizedResource, queryType: QueryType);
             source.Validate();
             WriteObject(new PSScheduledQueryRuleSource(source));
         }

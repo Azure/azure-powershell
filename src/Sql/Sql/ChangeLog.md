@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Rename Advanced Threat Protection cmdlets to Advanced Data Security and enable Vulnerability Assessment by default
 
 ## Version 1.9.0
 * Replace dependency on Monitor SDK with common code
@@ -27,6 +28,7 @@
 * Ability to Get-AzSqlServerServiceObjective by location without needing a preexisting server in the region.
 * Support for time zone parameter in Managed Instance create.
 * Fix documentation for wildcards
+* Support of Serverless specific parameters in New-AzSqlDatabase and Set-AzSqlDatabase
 
 ## Version 1.8.0
 * Support Database Data Classification.
