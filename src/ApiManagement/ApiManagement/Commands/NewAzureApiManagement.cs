@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         public PsApiManagementSslSetting SslSetting { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.")]
+            HelpMessage = "Generate and assign an Azure Active Directory Identity for this service for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
 
         [Parameter(Mandatory = false,

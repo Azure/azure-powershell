@@ -41,7 +41,7 @@ Create a pipeline diagnostic to be used in either FrontEnd or Backend in the Dia
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -57,7 +57,7 @@ Diagnostic setting for Request.
 This parameter is optional.
 
 ```yaml
-Type: PsApiManagementHttpMessageDiagnostic
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementHttpMessageDiagnostic
 Parameter Sets: (All)
 Aliases:
 
@@ -73,7 +73,7 @@ Diagnostic setting for Response.
 This parameter is optional.
 
 ```yaml
-Type: PsApiManagementHttpMessageDiagnostic
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementHttpMessageDiagnostic
 Parameter Sets: (All)
 Aliases:
 

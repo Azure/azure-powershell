@@ -70,7 +70,7 @@ API identifier to look for.
 If specified will try to get the API by the Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ContextParameterSet
 Aliases:
 
@@ -86,7 +86,7 @@ Instance of PsApiManagementContext.
 This parameter is required.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: ContextParameterSet
 Aliases:
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 The identifier of the Release.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ContextParameterSet
 Aliases:
 
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 Arm Resource Identifier of a Api Release. If specified will try to find api release by the identifier. This parameter is required.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
