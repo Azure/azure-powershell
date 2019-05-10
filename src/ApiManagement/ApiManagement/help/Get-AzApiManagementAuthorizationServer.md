@@ -51,7 +51,7 @@ This command gets the specified authorization server.
 ### -Context
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: ContextParameterSet
 Aliases:
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 Arm Resource Identifier of the authorization server. If specified will try to find authorization server by the identifier. This parameter is required.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 
 ### -ServerId
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

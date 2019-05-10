@@ -138,7 +138,7 @@ This command creates a Standar SKU Api Management service and Enable TLS 1.0 on 
 Additional deployment regions of Azure API Management.
 
 ```yaml
-Type: PsApiManagementRegion[]
+Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[]
 Parameter Sets: (All)
 Aliases:
 
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 Specifies the originating email address for all notifications that the API Management system sends.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -184,7 +184,7 @@ Specifies the SKU capacity of the Azure API Management service.
 The default is one (1).
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -199,7 +199,7 @@ Accept wildcard characters: False
 Custom hostname configurations. Default value is $null. Passing $null will set the default hostname.
 
 ```yaml
-Type: PsApiManagementCustomHostNameConfiguration[]
+Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 Flag only meant to be used for Consumption SKU ApiManagement Service. This enforces a client certificate to be presented on each request to the gateway. This also enables the ability to authenticate the certificate in the policy on the gateway.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -246,7 +246,7 @@ To obtain valid locations, use the cmdlet
 Get-AzResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where {$_.ResourceTypes[0].ResourceTypeName -eq "service"} | Select-Object Locations
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -261,7 +261,7 @@ Accept wildcard characters: False
 Specifies a name for the API Management deployment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -277,7 +277,7 @@ Specifies the name of an organization.
 API Management uses this address in the developer portal in email notifications.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -292,7 +292,7 @@ Accept wildcard characters: False
 Specifies the name of the of resource group under which this cmdlet creates an API Management deployment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -312,7 +312,7 @@ Valid values are:
 The default is Developer.
 
 ```yaml
-Type: PsApiManagementSku
+Type: System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Developer, Basic, Standard, Premium, Consumption
@@ -328,7 +328,7 @@ Accept wildcard characters: False
 The Ssl Setting of the ApiManagement Service. Default value is $null
 
 ```yaml
-Type: PsApiManagementSslSetting
+Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting
 Parameter Sets: (All)
 Aliases:
 
@@ -343,7 +343,7 @@ Accept wildcard characters: False
 Certificates issued by Internal CA to be installed on the service. Default value is $null.
 
 ```yaml
-Type: PsApiManagementSystemCertificate[]
+Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -373,7 +373,7 @@ Accept wildcard characters: False
 Virtual Network Configuration of master Azure API Management deployment region.
 
 ```yaml
-Type: PsApiManagementVirtualNetwork
+Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork
 Parameter Sets: (All)
 Aliases:
 
@@ -391,7 +391,7 @@ Virtual Network Type of the ApiManagement Deployment. Valid Values are
 - "Internal" (ApiManagement Deployment is setup inside a Virtual Network having an Intranet Facing Endpoint)
 
 ```yaml
-Type: PsApiManagementVpnType
+Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, External, Internal

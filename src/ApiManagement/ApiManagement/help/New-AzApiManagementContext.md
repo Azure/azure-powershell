@@ -43,7 +43,7 @@ This command creates an instance of **PsApiManagementContext**.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group under which an API Management service is deployed.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ContextParameterSet
 Aliases:
 
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 Arm Resource Identifier of a ApiManagement service. This parameter is required.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 Specifies the name of the deployed API Management service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ContextParameterSet
 Aliases:
 

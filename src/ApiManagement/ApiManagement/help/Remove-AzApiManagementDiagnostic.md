@@ -50,7 +50,7 @@ Identifier of the API.
 This parameter is required.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandParameterSetName
 Aliases:
 
@@ -66,7 +66,7 @@ Instance of PsApiManagementContext.
 This parameter is required.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: ExpandParameterSetName
 Aliases:
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -98,7 +98,7 @@ If specified will return product-scope policy.
 This parameters is optional.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandParameterSetName
 Aliases:
 
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 Instance of PsApiManagementDiagnostic. This parameter is required.
 
 ```yaml
-Type: PsApiManagementDiagnostic
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementDiagnostic
 Parameter Sets: ByInputObjectParameterSet
 Aliases:
 
@@ -129,7 +129,7 @@ If specified will write true in case operation succeeds.
 This parameter is optional.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 Arm ResourceId of Diagnostic. This parameter is required.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -175,7 +175,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

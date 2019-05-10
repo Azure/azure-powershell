@@ -86,7 +86,7 @@ Specifies for what type of messages sampling settings should not apply.
 This parameter is optional.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +102,7 @@ Identifier of existing API.
 This parameter is optional.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandedParameter
 Aliases:
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 Diagnostic setting for incoming/outgoing Http Messsages to the Backend. This parameter is optional.
 
 ```yaml
-Type: PsApiManagementPipelineDiagnosticSetting
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementPipelineDiagnosticSetting
 Parameter Sets: (All)
 Aliases:
 
@@ -133,7 +133,7 @@ Instance of PsApiManagementContext.
 This parameter is required.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: ExpandedParameter
 Aliases:
 
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -164,7 +164,7 @@ Identifier of existing Diagnostic.
 This parameter is required.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandedParameter
 Aliases:
 
@@ -179,7 +179,7 @@ Accept wildcard characters: False
 Diagnostic setting for incoming/outgoing Http Messsages to the Gateway. This parameter is optional.
 
 ```yaml
-Type: PsApiManagementPipelineDiagnosticSetting
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementPipelineDiagnosticSetting
 Parameter Sets: (All)
 Aliases:
 
@@ -195,7 +195,7 @@ Instance of PsApiManagementDiagnostic.
 This parameter is required.
 
 ```yaml
-Type: PsApiManagementDiagnostic
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementDiagnostic
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -211,7 +211,7 @@ Identifier of the logger to push diagnostics to.
 This parameter is required.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -226,7 +226,7 @@ Accept wildcard characters: False
 If specified then instance of Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementDiagnostic type representing the set Diagnostic.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -241,7 +241,7 @@ Accept wildcard characters: False
 Arm ResourceId of Diagnostic or Api Diagnostic. This parameter is required.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 
@@ -257,7 +257,7 @@ Sampling Setting of the Diagnostic.
 This parameter is optional.
 
 ```yaml
-Type: PsApiManagementSamplingSetting
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSamplingSetting
 Parameter Sets: (All)
 Aliases:
 
@@ -272,7 +272,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -287,7 +287,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

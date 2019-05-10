@@ -100,7 +100,7 @@ Specifies an ID for the API to import.
 If you do not specify this parameter, an ID is generated for you.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 Identifier of API Revision. This parameter is optional. If not specified, the import will be done onto the currently active revision or a new api.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 This parameter is optional with a default value of Http. The Soap option is only applicable when importing WSDL and will create a SOAP Passthrough API.
 
 ```yaml
-Type: PsApiManagementApiType
+Type: System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiType]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Http, Soap
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -179,7 +179,7 @@ Must be 1 to 400 characters long.
 The default value is $Null.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -194,7 +194,7 @@ Accept wildcard characters: False
 Web API protocols (http, https). Protocols over which API is made available. This parameter is optional. If provided it will override the protocols specified in the specifications document.
 
 ```yaml
-Type: PsApiManagementSchema[]
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSchema[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Http, Https
@@ -210,7 +210,7 @@ Accept wildcard characters: False
 A URL of the web service exposing the API. This URL will be used by Azure API Management only, and will not be made public. This parameter is optional. If provided it will override the ServiceUrl specificed in the Specifications document.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -226,7 +226,7 @@ Specifies the specification format.
 psdx_paramvalues Wadl, Wsdl, and Swagger.
 
 ```yaml
-Type: PsApiManagementApiFormat
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiFormat
 Parameter Sets: (All)
 Aliases:
 Accepted values: Wadl, Swagger, Wsdl, OpenApi
@@ -242,7 +242,7 @@ Accept wildcard characters: False
 Specifies the specification file path.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ImportFromLocalFile
 Aliases:
 
@@ -257,7 +257,7 @@ Accept wildcard characters: False
 Specifies the specification URL.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ImportFromUrl
 Aliases:
 
@@ -272,7 +272,7 @@ Accept wildcard characters: False
 Local name of WSDL Endpoint (port) to be imported. Must be 1 to 400 characters long. This parameter is optional and only required for importing Wsdl. Default value is $null.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -287,7 +287,7 @@ Accept wildcard characters: False
 Local name of WSDL Service to be imported. Must be 1 to 400 characters long. This parameter is optional and only required for importing Wsdl . Default value is $null.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
