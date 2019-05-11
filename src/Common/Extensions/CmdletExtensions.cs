@@ -72,6 +72,23 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         /// <summary>
+        /// Determine if AsJob is present
+        /// </summary>
+        /// <typeparam name="T">The cmdlet type</typeparam>
+        /// <param name="cmdlet">The cmdlet</param>
+        /// <returns>True if the cmdlet shoudl run as a Job, otherwise false</returns>
+        public static bool AsJobPresent<T>(this T cmdlet) where T : AzurePSCmdlet
+        {
+            if (cmdlet == null)
+            {
+                throw new ArgumentNullException(nameof(cmdlet));
+            }
+
+            return (cmdlet.MyInvocation?.BoundParameters != null
+                && cmdlet.MyInvocation.BoundParameters.ContainsKey("AsJob"));
+        }
+
+        /// <summary>
         /// Execute the given cmdlet synchronously os as a job, based on input parameters
         /// </summary>
         /// <typeparam name="T"></typeparam>
