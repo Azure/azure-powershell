@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Dns.dll-Help.xml
 Module Name: Az.Dns
 ms.assetid: B78F3E8B-C7D2-458C-AB23-06F584FE97E0
@@ -15,15 +15,22 @@ Creates a new DNS zone.
 
 ### Ids (Default)
 ```
-New-AzDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneType>] [-Tag <Hashtable>]
- [-RegistrationVirtualNetworkId <System.Collections.Generic.List`1[System.String]>]
+New-AzDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneType>] [-ParentZoneId <String>]
+ [-Tag <Hashtable>] [-RegistrationVirtualNetworkId <System.Collections.Generic.List`1[System.String]>]
  [-ResolutionVirtualNetworkId <System.Collections.Generic.List`1[System.String]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### Names
+```
+New-AzDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneType>] [-ParentZoneName <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### Objects
 ```
-New-AzDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneType>] [-Tag <Hashtable>]
+New-AzDnsZone -Name <String> -ResourceGroupName <String> [-ZoneType <ZoneType>] [-ParentZone <DnsZone>]
+ [-Tag <Hashtable>]
  [-RegistrationVirtualNetwork <System.Collections.Generic.List`1[Microsoft.Azure.Management.Internal.Network.Common.IResourceReference]>]
  [-ResolutionVirtualNetwork <System.Collections.Generic.List`1[Microsoft.Azure.Management.Internal.Network.Common.IResourceReference]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -66,6 +73,34 @@ This command creates a new Private DNS zone named myprivatezone.com in the speci
 an associated resolution virtual network (referred to by $ResVirtualNetwork variable), and then stores it
 in the $Zone variable.
 
+### Example 4: Create a DNS zone with delegation by specifying parent zone name
+```
+PS C:\>$Zone = New-AzDnsZone -Name "mychild.zone.com" -ResourceGroupName "MyResourceGroup" -ParentZoneName "zone.com"
+```
+
+This command creates a new child DNS zone named mychild.zone.com in the specified resource group and stores 
+in the $Zone variable.
+It also adds delegation in the parent DNS zone named zone.com residing in the same subscription and resource group as child zone.
+
+### Example 5: Create a DNS zone with delegation by specifying parent zone id
+```
+PS C:\>$Zone = New-AzDnsZone -Name "mychild.zone.com" -ResourceGroupName "MyResourceGroup" -ParentZoneId "/subscriptions/**67e2/resourceGroups/other-rg/providers/Microsoft.Network/dnszones/zone.com"
+```
+
+This command creates a new child DNS zone named mychild.zone.com in the specified resource group and stores 
+in the $Zone variable.
+It also adds delegation in the parent DNS zone named zone.com in resource group other-rg provided subscription is same as that of child zone created.
+
+### Example 6: Create a DNS zone with delegation by specifying parent zone object
+```
+PS C:\>$PZone = New-AzDnsZone -Name "zone.com" -ResourceGroupName "MyResourceGroup" 
+PS C:\>$Zone = New-AzDnsZone -Name "mychild.zone.com" -ResourceGroupName "MyResourceGroup" -ParentZone @($PZone)
+```
+
+This command creates a new child DNS zone named mychild.zone.com in the specified resource group and stores 
+in the $Zone variable.
+It also adds delegation in the parent DNS zone named zone.com as passed in the ParentZone object
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -92,6 +127,51 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ParentZone
+The full name of the parent zone to add delegation (without a terminating dot).
+
+```yaml
+Type: Microsoft.Azure.Commands.Dns.DnsZone
+Parameter Sets: Objects
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ParentZoneId
+The resource id of the parent zone to add delegation (without a terminating dot).
+
+```yaml
+Type: System.String
+Parameter Sets: Ids
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ParentZoneName
+The full name of the parent zone to add delegation (without a terminating dot).
+
+```yaml
+Type: System.String
+Parameter Sets: Names
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

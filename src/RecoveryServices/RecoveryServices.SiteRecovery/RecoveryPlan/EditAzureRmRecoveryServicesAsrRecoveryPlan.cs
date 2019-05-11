@@ -18,6 +18,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -29,6 +30,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrRecoveryPlan",
         DefaultParameterSetName = ASRParameterSets.AppendGroup,
         SupportsShouldProcess = true)]
+    [CmdletOutputBreakingChange(
+        typeof(ASRRecoveryPlan),
+        DeprecatedOutputProperties = new String[] {
+            "ASRRecoveryPlanGroup.ReplicationProtectedItems",
+            "ASRRecoveryPlanGroup.StartGroupActions",
+            "ASRRecoveryPlanGroup.EndGroupActions" })]
     [Alias(
         "Edit-ASRRP",
         "Edit-ASRRecoveryPlan")]

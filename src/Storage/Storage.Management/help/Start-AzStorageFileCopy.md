@@ -219,7 +219,7 @@ Specifies a **CloudFile** object.
 You can create a cloud file or obtain one by using the Get-AzStorageFile cmdlet.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.File.CloudFile
+Type: Microsoft.Azure.Storage.File.CloudFile
 Parameter Sets: BlobInstanceFileInstance, FileInstanceToFileInstance, UriToFileInstance
 Aliases:
 
@@ -295,7 +295,7 @@ Specifies a **CloudBlob** object.
 You can create a cloud blob or obtain one by using the Get-AzStorageBlob cmdlet.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlob
+Type: Microsoft.Azure.Storage.Blob.CloudBlob
 Parameter Sets: BlobInstanceFilePath, BlobInstanceFileInstance
 Aliases: ICloudBlob
 
@@ -326,7 +326,7 @@ Specifies a cloud blob container object.
 You can create cloud blob container object or use the Get-AzStorageContainer cmdlet.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
+Type: Microsoft.Azure.Storage.Blob.CloudBlobContainer
 Parameter Sets: ContainerInstance
 Aliases:
 
@@ -357,7 +357,7 @@ Specifies a **CloudFile** object.
 You can create a cloud file or obtain one by using **Get-AzStorageFile**.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.File.CloudFile
+Type: Microsoft.Azure.Storage.File.CloudFile
 Parameter Sets: FileInstanceToFilePath, FileInstanceToFileInstance
 Aliases:
 
@@ -388,7 +388,7 @@ Specifies a cloud file share object.
 You can create a cloud file share or obtain one by using the Get-AzStorageShare cmdlet.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.File.CloudFileShare
+Type: Microsoft.Azure.Storage.File.CloudFileShare
 Parameter Sets: ShareInstance
 Aliases:
 
@@ -450,9 +450,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.WindowsAzure.Storage.Blob.CloudBlob
+### Microsoft.Azure.Storage.Blob.CloudBlob
 
-### Microsoft.WindowsAzure.Storage.File.CloudFile
+### Microsoft.Azure.Storage.File.CloudFile
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
