@@ -60,7 +60,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     Id = obj.ObjectId,
                     Type = obj.ObjectType,
                     SecurityEnabled = obj.SecurityEnabled,
-                    MailNickname = obj.Mail
+                    MailNickname = (obj.Mail != null ? obj.Mail : obj.AdditionalProperties["mailNickname"].ToString()),
+                    Description = (obj.AdditionalProperties.ContainsKey("description") && obj.AdditionalProperties["description"] != null ? obj.AdditionalProperties["description"].ToString() : null)
                 };
             }
             else if (obj.ObjectType == typeof(ServicePrincipal).Name)
@@ -111,7 +112,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 Id = group.ObjectId,
                 SecurityEnabled = group.SecurityEnabled,
                 MailNickname = (group.Mail != null ? group.Mail : group.AdditionalProperties["mailNickname"].ToString()),
-                Description = (group.AdditionalProperties.ContainsKey("description") ? group.AdditionalProperties["description"].ToString() : null)
+                Description = (group.AdditionalProperties.ContainsKey("description") && group.AdditionalProperties["description"] != null ? group.AdditionalProperties["description"].ToString() : null)
             };
         }
 
