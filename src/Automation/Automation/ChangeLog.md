@@ -21,6 +21,7 @@
 * Updated Get-AzAutomationJobOutputRecord to handle JSON and Text record values.
     - Fix for issue https://github.com/Azure/azure-powershell/issues/7977
     - Fix for issue https://github.com/Azure/azure-powershell/issues/8600
+* Fix for Get-AzAutomationDscNode when using -Name returns all node. Now it returns matching node only.
     
 ## Version 1.2.1
 * Fixed New-AzAutomationSoftwareUpdateConfiguration cmdlet bug for Inclusions. Now parameter IncludedKbNumber and IncludedPackageNameMask should work.
