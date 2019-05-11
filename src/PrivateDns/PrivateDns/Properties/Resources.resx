@@ -228,4 +228,7 @@
   <data name="Error_RecordSetIsAutoRegistered" xml:space="preserve">
     <value>The input provided belongs to an auto registered Record Set. Manual operations on this type of record set is not allowed.</value>
   </data>
+  <data name="Warning_ZoneNameEndsWithLocal" xml:space="preserve">
+    <value>Please be aware that DNS names ending with .local are reserved for use with multicast DNS and may not work as expected with some operating systems. For details refer to your operating systems documentation.</value>
+  </data>
 </root>

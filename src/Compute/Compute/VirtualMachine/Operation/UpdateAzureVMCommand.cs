@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -135,12 +136,12 @@ namespace Microsoft.Azure.Commands.Compute
                         Zones = (this.VM.Zones != null && this.VM.Zones.Count > 0) ? this.VM.Zones : null
                     };
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("IdentityType"))
+                    if (this.IsParameterBound(c => c.IdentityType))
                     {
                         parameters.Identity = new VirtualMachineIdentity(null, null, this.IdentityType, null);
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("IdentityId"))
+                    if (this.IsParameterBound(c => c.IdentityId))
                     {
                         if (parameters.Identity == null)
                         {
@@ -156,7 +157,7 @@ namespace Microsoft.Azure.Commands.Compute
                         }
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("OsDiskWriteAccelerator"))
+                    if (this.IsParameterBound(c => c.OsDiskWriteAccelerator))
                     {
                         if (parameters.StorageProfile == null)
                         {
@@ -169,7 +170,7 @@ namespace Microsoft.Azure.Commands.Compute
                         parameters.StorageProfile.OsDisk.WriteAcceleratorEnabled = this.OsDiskWriteAccelerator;
                     }
 
-                    if (this.MyInvocation.BoundParameters.ContainsKey("UltraSSDEnabled"))
+                    if (this.IsParameterBound(c => c.UltraSSDEnabled))
                     {
                         if (parameters.AdditionalCapabilities == null)
                         {

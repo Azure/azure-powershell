@@ -1,6 +1,6 @@
 ﻿using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-using Microsoft.WindowsAzure.Storage.File;
-using Microsoft.WindowsAzure.Storage.RetryPolicies;
+using Microsoft.Azure.Storage.File;
+using Microsoft.Azure.Storage.RetryPolicies;
 using System;
 using System.Management.Automation;
 using System.Security.Permissions;

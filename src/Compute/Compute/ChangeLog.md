@@ -19,6 +19,24 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* New-AzVM wimple parameter set now uses by default an available location if 'East US' is not supported
+
+## Version 2.0.0
+* Proximity placement group feature.
+    - The following new cmdlets are added:
+	    New-AzProximityPlacementGroup
+		Get-AzProximityPlacementGroup
+		Remove-AzProximityPlacementGroup
+	- The new parameter, ProximityPlacementGroupId, is added to the following cmdlets:
+	    New-AzAvailabilitySet
+		New-AzVMConfig
+		New-AzVmssConfig
+* StorageAccountType parameter is added to New-AzGalleryImageVersion.
+* TargetRegion of New-AzGalleryImageVersion can contain StorageAccountType.
+* SkipShutdown switch parameter is added to Stop-AzVM and Stop-AzVmss		
+* Breaking changes
+    - Set-AzVMBootDiagnostics is changed to Set-AzVMBootDiagnostic.
+    - Export-AzLogAnalyticThrottledRequests is changed to Export-AzLogAnalyticThrottledRequests.
 
 ## Version 1.8.0
 * Fix issue with AEM installation if resource ids of disks had lowercase resourcegroups in resource id
