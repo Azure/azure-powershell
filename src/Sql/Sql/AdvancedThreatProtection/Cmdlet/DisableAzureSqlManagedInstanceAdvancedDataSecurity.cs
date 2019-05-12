@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         protected override ManagedInstanceAdvancedDataSecurityPolicyModel PersistChanges(ManagedInstanceAdvancedDataSecurityPolicyModel model)
         {
             model.IsEnabled = false;
-            ModelAdapter.SetManagedInstanceAdvancedThreatProtection(model);
+            ModelAdapter.SetManagedInstanceAdvancedDataSecurity(model);
             return model;
         }
     }

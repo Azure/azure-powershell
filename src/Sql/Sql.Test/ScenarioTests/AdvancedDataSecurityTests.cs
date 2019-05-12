@@ -20,7 +20,7 @@ using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class AdvancedThreatProtectionTests : SqlTestsBase
+    public class AdvancedDataSecurityTests : SqlTestsBase
     {
         protected override void SetupManagementClients(RestTestFramework.MockContext context)
         {
@@ -30,15 +30,15 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             Helper.SetupSomeOfManagementClients(sqlClient, storageV2Client, newResourcesClient);
         }
 
-        public AdvancedThreatProtectionTests(ITestOutputHelper output) : base(output)
+        public AdvancedDataSecurityTests(ITestOutputHelper output) : base(output)
         {
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void AdvancedThreatProtectionPolicyTest()
+        public void AdvancedDataSecurityPolicyTest()
         {
-            RunPowerShellTest("Test-AdvancedThreatProtectionPolicyTest");
+            RunPowerShellTest("Test-AdvancedDataSecurityPolicyTest");
         }
     }
 }
