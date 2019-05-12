@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Commands.KeyVault
       /// </summary>
       [Parameter(Mandatory = false,
                  ValueFromPipelineByPropertyName = true,
-                 HelpMessage = "Specifies the key type of the key backing the certificate.")]
+                 HelpMessage = "Specifies the key size of the certificate.")]
       [ValidateSet("2048", "3072", "4096")]
       public int KeySize { get; set; } = 2048;
 
