@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.StorageSync.Common.Converters;
 using Microsoft.Azure.Commands.StorageSync.Common.Exceptions;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,10 +38,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
 
     /// <summary>
     /// Class StorageSyncClientCmdletBase.
-    /// Implements the <see cref="Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.ActiveDirectoryBaseCmdlet" />
+    /// Implements the <see cref="Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory.ActiveDirectoryBaseCmdlet" />
     /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.IStorageSyncClientCmdlet" />
     /// </summary>
-    /// <seealso cref="Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.ActiveDirectoryBaseCmdlet" />
+    /// <seealso cref="Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory.ActiveDirectoryBaseCmdlet" />
     /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.IStorageSyncClientCmdlet" />
     public abstract class StorageSyncClientCmdletBase : ActiveDirectoryBaseCmdlet, IStorageSyncClientCmdlet
     {

@@ -1,49 +1,50 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/enable-azsqlinstanceadvanceddatasecurity
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/enable-azsqlserveradvanceddatasecurity
 schema: 2.0.0
 ---
 
-# Enable-AzSqlInstanceAdvancedDataSecurity
+# Enable-AzSqlServerAdvancedDataSecurity
 
 ## SYNOPSIS
-Enables Advanced Data Security on a managed instance.
+Enables Advanced Data Security on a server.
 
 ## SYNTAX
 
 ```
-Enable-AzSqlInstanceAdvancedDataSecurity [-DoNotConfigureVulnerabilityAssessment] [-AsJob]
- [-DeploymentName <String>] [-InputObject <AzureSqlManagedInstanceModel>] -InstanceName <String>
+Enable-AzSqlServerAdvancedDataSecurity [-DoNotConfigureVulnerabilityAssessment] [-AsJob]
+ [-DeploymentName <String>] [-InputObject <AzureSqlServerModel>] -ServerName <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Enable-AzSqlInstanceAdvancedDataSecurity** cmdlet enables Advanced Data Security on a managed instance. Advanced Data Security is a unified security package that includes Data Classification, Vulnerability Assessment and Advanced Threat Protection for your managed instance. (A new storage account will automatically be created for saving vulnerability assessments. If a storage account was previously created for this purpose, it will be used instead)
+The **Enable-AzSqlServerAdvancedDataSecurity** cmdlet enables Advanced Data Security on a server. Advanced Data Security is a unified security package that includes Data Classification, Vulnerability Assessment and Advanced Threat Protection for your server. (A new storage account will automatically be created for saving vulnerability assessments. If a storage account was previously created for this purpose, it will be used instead)
 
 ## EXAMPLES
 
-### Example 1 - Enable managed instance Advanced Data Security
+### Example 1
+### Example 1 - Enable server Advanced Data Security
 ```powershell
-PS C:\>  Enable-AzSqlInstanceAdvancedDataSecurity `
+PS C:\>  Enable-AzSqlServerAdvancedDataSecurity `
             -ResourceGroupName "ResourceGroup01" `
-            -InstanceName "ManagedInstance01" 
+            -ServerName "Server01" 
 
 ResourceGroupName	         : ResourceGroup01
-ManagedInstanceName		     : ManagedInstance01
+ServerName		             : Server01
 IsEnabled		             : True
 ```
 
-### Example 2 - Enable managed instance Advanced Data Security from server resource
+### Example 2 - Enable server Advanced Data Security from server resource
 ```powershell
-PS C:\>  Get-AzSqlInstance `
+PS C:\>  Get-AzSqlServer `
            -ResourceGroupName "ResourceGroup01" `
-           -Name "ManagedInstance01" `
-           | Enable-AzSqlInstanceAdvancedDataSecurity
+           -ServerName "Server01" `
+           | Enable-AzSqlServerAdvancedDataSecurity
 
 ResourceGroupName	         : ResourceGroup01
-ManagedInstanceName		     : ManagedInstance01
+ServerName		             : Server01
 IsEnabled		             : True
 ```
 
@@ -110,10 +111,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The managed instance object to use with Advanced Data Security policy operation
+The server object to use with Advanced Data Security policy operation
 
 ```yaml
-Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+Type: Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
 Parameter Sets: (All)
 Aliases:
 
@@ -121,21 +122,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -InstanceName
-SQL Database managed instance name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -149,6 +135,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServerName
+SQL Database server name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -190,13 +191,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+### Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
 
 ### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model.ManagedInstanceAdvancedDataSecurityPolicyModel
+### Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model.ServerAdvancedDataSecurityPolicyModel
 
 ## NOTES
 
