@@ -21,7 +21,8 @@
 * Updated Get-AzAutomationJobOutputRecord to handle JSON and Text record values.
     - Fix for issue https://github.com/Azure/azure-powershell/issues/7977
     - Fix for issue https://github.com/Azure/azure-powershell/issues/8600
-    
+* Bug fix for NewAZAutomationUpdateManagementAzureQuery
+
 ## Version 1.2.1
 * Fixed New-AzAutomationSoftwareUpdateConfiguration cmdlet bug for Inclusions. Now parameter IncludedKbNumber and IncludedPackageNameMask should work.
 * Bug fix for azure automation update management dynamic group
