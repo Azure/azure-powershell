@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
            ValueFromPipelineByPropertyName = false,
            Mandatory = false,
            HelpMessage = "The Type of Sampling. This parameter is optional.")]
-        [PSArgumentCompleter("fixed")]
+        [PSArgumentCompleter(Constants.FixedSamplingType)]
         public string SamplingType { get; set; }
 
         [Parameter(
@@ -37,12 +37,19 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            WriteObject(
-                new PsApiManagementSamplingSetting
-                {
-                    SamplingType = SamplingType,
-                    SamplingPercentage = SamplingPercentage
-                });
+            var samplingType = Utils.GetSamplingType(SamplingType);
+            var psSamplingSetting = new PsApiManagementSamplingSetting();
+            if (samplingType != null)
+            {
+                psSamplingSetting.SamplingType = samplingType;
+            }
+
+            if (SamplingPercentage != null)
+            {
+                psSamplingSetting.SamplingPercentage = SamplingPercentage;
+            }
+
+            WriteObject(psSamplingSetting);
         }
     }
 }

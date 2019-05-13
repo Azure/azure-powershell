@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         [Parameter(
             ParameterSetName = ByResourceIdParameterSetName,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Arm ResourceId of the API Management service.")]
         public string ResourceId { get; set; }

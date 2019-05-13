@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
+    using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementApiSchema", SupportsShouldProcess = true, DefaultParameterSetName = SchemaDocumentInlineParameterSet)]
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "ContentType of the api Schema. This parameter is required.")]
-        [PSArgumentCompleter("swaggerdefinition", "openapicomponents", "xsdschema", "wadlgrammar")]
+        [PSArgumentCompleter(Constants.SwaggerDefinitions, Constants.OpenApiComponents, Constants.XsdSchema, Constants.WadlGrammar)]
         public String SchemaDocumentContentType { get; set; }
 
         [Parameter(

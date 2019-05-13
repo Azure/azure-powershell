@@ -303,14 +303,70 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             return apiIdArrary.Last();
         }
 
+        public static string GetPolicyContentFormat(string format, bool uriFormat)
+        {
+            if (string.IsNullOrEmpty(format))
+            {
+                return uriFormat ? PolicyContentFormat.XmlLink : PolicyContentFormat.Xml;
+            }
+
+            switch (format)
+            {
+                case Constants.XmlPolicyFormat: return uriFormat ? PolicyContentFormat.XmlLink : PolicyContentFormat.Xml;
+                case Constants.RawXmlPolicyFormat: return uriFormat ? PolicyContentFormat.RawxmlLink : PolicyContentFormat.Rawxml;
+                case Constants.OldDefaultPolicyFormat: return uriFormat ? PolicyContentFormat.XmlLink : PolicyContentFormat.Xml;
+                case Constants.OldNonEscapedXmlPolicyFormat: return uriFormat ? PolicyContentFormat.RawxmlLink : PolicyContentFormat.Rawxml;
+                default: return uriFormat ? PolicyContentFormat.XmlLink : PolicyContentFormat.Xml;
+            }
+        }
+
+        public static string GetAlwaysLog(string alwaysLog)
+        {
+            switch(alwaysLog)
+            {
+                case Constants.AllErrors: return "allErrors";
+                default: return alwaysLog;
+            }
+        }
+
+        public static string GetSamplingType(string samplingType)
+        {
+            if (string.IsNullOrEmpty(samplingType))
+            {
+                return null;
+            }
+
+            if (samplingType.Equals(Constants.FixedSamplingType, StringComparison.OrdinalIgnoreCase))
+            {
+                return Constants.FixedSamplingType.ToLower();
+            }
+
+            return samplingType;
+        }
+
+        public static string GetDiagnosticId(string diagnosticId)
+        {
+            if (string.IsNullOrEmpty(diagnosticId))
+            {
+                return diagnosticId;
+            }
+
+            switch(diagnosticId)
+            {
+                case Constants.ApplicationInsightsDiagnostics: return Constants.ApplicationInsightsDiagnostics.ToLower();
+                case Constants.AzureMonitorDiagnostic: return Constants.AzureMonitorDiagnostic.ToLower();
+                default: return diagnosticId.ToLower();
+            }
+        }
+
         public static string GetApiSchemaContentTypeFromPsSchemaContentType(string schemaContentType)
         {
-            switch (schemaContentType.ToLower().Trim())
+            switch (schemaContentType.Trim())
             {
-                case PsApiSchemaContentType.SwaggerDefinition: return ApiSchemaContentType.SwaggerDefinition;
-                case PsApiSchemaContentType.OpenApiComponents: return ApiSchemaContentType.OpenApiComponents;
-                case PsApiSchemaContentType.XsdSchema: return ApiSchemaContentType.XsdSchema;
-                case PsApiSchemaContentType.WadlGrammar: return ApiSchemaContentType.WadlGrammar;
+                case Constants.SwaggerDefinitions: return ApiSchemaContentType.SwaggerDefinition;
+                case Constants.OpenApiComponents: return ApiSchemaContentType.OpenApiComponents;
+                case Constants.XsdSchema: return ApiSchemaContentType.XsdSchema;
+                case Constants.WadlGrammar: return ApiSchemaContentType.WadlGrammar;
             }
 
             // else we return the content-Type which user specified
@@ -321,10 +377,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         {
             switch (contentType.ToLower().Trim())
             {
-                case ApiSchemaContentType.SwaggerDefinition: return PsApiSchemaContentType.SwaggerDefinition;
-                case ApiSchemaContentType.OpenApiComponents: return PsApiSchemaContentType.OpenApiComponents;
-                case ApiSchemaContentType.XsdSchema: return PsApiSchemaContentType.XsdSchema;
-                case ApiSchemaContentType.WadlGrammar: return PsApiSchemaContentType.WadlGrammar;
+                case ApiSchemaContentType.SwaggerDefinition : return Constants.SwaggerDefinitions;
+                case ApiSchemaContentType.OpenApiComponents : return Constants.OpenApiComponents;
+                case ApiSchemaContentType.XsdSchema : return Constants.XsdSchema;
+                case ApiSchemaContentType.WadlGrammar : return Constants.WadlGrammar;
             }
 
             // else we return the content-Type which user specified
@@ -349,17 +405,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                         throw new Exception($"Unable for parse Schema Document for ContentType {schemaContract.ContentType}.", ex);
                     }
             }
-        }
-
-        public class PsApiSchemaContentType
-        {
-            public const string SwaggerDefinition = "swaggerdefinition";
-
-            public const string OpenApiComponents = "openapicomponents";
-
-            public const string XsdSchema = "xsdschema";
-
-            public const string WadlGrammar = "wadlgrammar";
         }
 
         public class ApiSchemaContentType

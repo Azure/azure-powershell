@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementDiagnostic", SupportsShouldProcess = true, DefaultParameterSetName = ByResourceIdParameterSet)]
     [OutputType(typeof(bool), ParameterSetName = new[] { ExpandParameterSetName, ByInputObjectParameterSet, ByResourceIdParameterSet })]
@@ -44,7 +45,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             Mandatory = false,
             HelpMessage = "Identifier of the API whose Diagnostic needs to be removed." +
             " If not specified, Diagnostic at the Tenant level will be removed. " +
-            "This parameter is optional.")]
+            "This parameter is optional.")]        
         public String ApiId { get; set; }
 
         [Parameter(
@@ -52,7 +53,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Identifier of diagnostics entity to remove. " +
-            " This parameters is required.")]        
+            " This parameters is required.")]
+        [PSArgumentCompleter(Constants.ApplicationInsightsDiagnostics, Constants.AzureMonitorDiagnostic)]
         public String DiagnosticId { get; set; }
 
         [Parameter(
@@ -65,7 +67,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ParameterSetName = ByResourceIdParameterSet,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Arm ResourceId of Diagnostic. This parameter is required.")]
         [ValidateNotNullOrEmpty]
@@ -103,7 +105,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             {
                 resourceGroupName = Context.ResourceGroupName;
                 serviceName = Context.ServiceName;
-                diagnosticId = DiagnosticId;
+                diagnosticId = Utils.GetDiagnosticId(DiagnosticId);
                 apiId = ApiId;
             }
 

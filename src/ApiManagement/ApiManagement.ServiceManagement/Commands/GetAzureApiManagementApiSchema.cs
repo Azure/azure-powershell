@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Arm Resource Identifier of a Api Schema." +
             " If specified will try to find api schema by the identifier. This parameter is required.")]
@@ -45,14 +45,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ParameterSetName = ContextParameterSet,
-            ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "API identifier to look for. This parameter is required.")]
         public String ApiId { get; set; }
 
         [Parameter(
             ParameterSetName = ContextParameterSet,
-            ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "The identifier of the Schema. If not specified, will return all the Schema")]
         public String SchemaId { get; set; }

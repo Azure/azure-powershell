@@ -3492,7 +3492,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             PsApiManagementPipelineDiagnosticSetting backend)
         {
             var diagnosticContract = new DiagnosticContract(Utils.GetLoggerIdFullPath(loggerId));
-            diagnosticContract.AlwaysLog = alwaysLog;
+            if (!string.IsNullOrEmpty(alwaysLog))
+            {
+                diagnosticContract.AlwaysLog = Utils.GetAlwaysLog(alwaysLog);
+            }
+            
             if (sampling != null)
             {
                 diagnosticContract.Sampling = Mapper.Map<SamplingSettings>(sampling);
@@ -3586,7 +3590,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
             if (alwaysLog != null)
             {
-                diagnosticContract.AlwaysLog = alwaysLog;
+                diagnosticContract.AlwaysLog = Utils.GetAlwaysLog(alwaysLog);
             }
 
             if (sampling != null)

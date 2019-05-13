@@ -37,14 +37,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Arm Resource Identifier of a cache. If specified will try to find cache by the identifier. This parameter is required.")]
         public String ResourceId { get; set; }
 
         [Parameter(
             ParameterSetName = ContextParameterSet,
-            ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "The identifier of the Cache entity. This parameter is optional.")]
         public String CacheId { get; set; }

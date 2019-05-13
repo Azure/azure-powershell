@@ -41,14 +41,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Identifier of the diagnostics entity. This parameter is optional.")]
-        [PSArgumentCompleter("applicationinsights", "azuremonitor")]
+        [PSArgumentCompleter(Constants.ApplicationInsightsDiagnostics, Constants.AzureMonitorDiagnostic)]
         public String DiagnosticId { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Specifies for what type of messages sampling settings should not apply. This parameter is optional.")]
-        [PSArgumentCompleter("allErrors")]
+        [PSArgumentCompleter(Constants.AllErrors)]
         public String AlwaysLog { get; set; }
 
         [Parameter(
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            var diagnosticId = DiagnosticId ?? "applicationinsights";
+            var diagnosticId =  Utils.GetDiagnosticId(DiagnosticId) ?? "azuremonitor";
             PsApiManagementDiagnostic diagnostic;
             
             if (ShouldProcess(diagnosticId, Resources.CreateDiagnostics))

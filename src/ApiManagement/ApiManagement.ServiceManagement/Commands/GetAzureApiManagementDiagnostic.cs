@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementDiagnostic", DefaultParameterSetName = ContextParameterSet)]
     [OutputType(typeof(PsApiManagementDiagnostic), ParameterSetName = new[] { ContextParameterSet, ResourceIdParameterSet })]
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Arm Resource Identifier of a Diagnostic or Api Diagnostic." +
             " If specified will try to find diagnostic by the identifier. This parameter is required.")]
@@ -45,17 +46,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ParameterSetName = ContextParameterSet,
-            ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Identifier of existing diagnostic." +
                 " If not specified, and ApiId was provided, it returns all " +
                 "api diagnostics are returned. If ApiId is not provided, it returns all global diagnostics." +
                 " This parameters is optional.")]
+        [PSArgumentCompleter(Constants.ApplicationInsightsDiagnostics, Constants.AzureMonitorDiagnostic)]
         public String DiagnosticId { get; set; }
 
         [Parameter(
             ParameterSetName = ContextParameterSet,
-            ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Identifier of the API. " +
             "If specified, it will find out the diagnostic associated with an API." +
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             {
                 resourceGroupName = Context.ResourceGroupName;
                 serviceName = Context.ServiceName;
-                diagnosticId = DiagnosticId;
+                diagnosticId = Utils.GetDiagnosticId(DiagnosticId);
                 apiId = ApiId;
             }
             else

@@ -545,25 +545,26 @@ function ApiSchema-SwaggerCRUDTest {
         $apiSchemas = Get-AzApiManagementApiSchema -Context $context -ApiId $newApiId
         Assert-AreEqual 0 $apiSchemas.Count
 
-        $apiSchema = New-AzApiManagementApiSchema -Context $context -ApiId $newApiId -SchemaId $newSchemaId -SchemaDocumentContentType swaggerdefinition `
+        $apiSchema = New-AzApiManagementApiSchema -Context $context -ApiId $newApiId -SchemaId $newSchemaId -SchemaDocumentContentType SwaggerDefinition `
             -SchemaDocumentFilePath $swaggerDefinitionsFilePath
         
         Assert-NotNull $apiSchema
         Assert-AreEqual $newSchemaId $apiSchema.SchemaId
         Assert-AreEqual $newApiId $apiSchema.ApiId
-        Assert-AreEqual swaggerdefinition $apiSchema.SchemaDocumentContentType
+        Assert-AreEqual SwaggerDefinition $apiSchema.SchemaDocumentContentType
         Assert-NotNull $apiSchema.SchemaDocument
 
         #get api schema by Id
         $getApiSchema = Get-AzApiManagementApiSchema -ResourceId $apiSchema.Id
         Assert-AreEqual $apiSchema.SchemaId $getApiSchema.SchemaId
         Assert-AreEqual $apiSchema.ApiId $getApiSchema.ApiId
-        Assert-AreEqual swaggerdefinition $getApiSchema.SchemaDocumentContentType        
+        Assert-AreEqual SwaggerDefinition $getApiSchema.SchemaDocumentContentType        
 
         #get schema list
         $apiSchemas = Get-AzApiManagementApiSchema -Context $context -ApiId $newApiId
         Assert-AreEqual 1 $apiSchemas.Count
         Assert-AreEqual $getApiSchema.SchemaId $apiSchemas[0].SchemaId
+        Assert-AreEqual SwaggerDefinition $apiSchema.SchemaDocumentContentType
         Assert-AreEqual $getApiSchema.ApiId $apiSchemas[0].ApiId
 
         # set api Schema
@@ -616,24 +617,24 @@ function ApiSchema-WsdlCRUDTest {
         # there should be one schema initially
         $apiSchemas = Get-AzApiManagementApiSchema -Context $context -ApiId $newApiId
         Assert-AreEqual 1 $apiSchemas.Count
-        Assert-AreEqual xsdschema $apiSchemas[0].SchemaDocumentContentType
+        Assert-AreEqual XsdSchema $apiSchemas[0].SchemaDocumentContentType
         Assert-AreEqual $newApiId $apiSchemas[0].ApiId
 
         $newSchemaId = $apiSchemas[0].SchemaId
-        $apiSchema = New-AzApiManagementApiSchema -Context $context -ApiId $newApiId -SchemaId $newSchemaId -SchemaDocumentContentType xsdschema `
+        $apiSchema = New-AzApiManagementApiSchema -Context $context -ApiId $newApiId -SchemaId $newSchemaId -SchemaDocumentContentType XsdSchema `
             -SchemaDocumentFilePath $wsdlFileSchema
         
         Assert-NotNull $apiSchema
         Assert-AreEqual $newSchemaId $apiSchema.SchemaId
         Assert-AreEqual $newApiId $apiSchema.ApiId
-        Assert-AreEqual xsdschema $apiSchema.SchemaDocumentContentType
+        Assert-AreEqual XsdSchema $apiSchema.SchemaDocumentContentType
         Assert-NotNull $apiSchema.SchemaDocument
 
         #get api schema by Id
         $getApiSchema = Get-AzApiManagementApiSchema -ResourceId $apiSchema.Id
         Assert-AreEqual $apiSchema.SchemaId $getApiSchema.SchemaId
         Assert-AreEqual $apiSchema.ApiId $getApiSchema.ApiId
-        Assert-AreEqual xsdschema $getApiSchema.SchemaDocumentContentType
+        Assert-AreEqual XsdSchema $getApiSchema.SchemaDocumentContentType
         Assert-AreEqual $apiSchema.SchemaDocument $getApiSchema.SchemaDocument
 
         #get schema list
@@ -1638,7 +1639,7 @@ function Policy-CrudTest {
         $set = Set-AzApiManagementPolicy -Context $context  -Policy $productValid -ProductId $product.ProductId -PassThru
         Assert-AreEqual $true $set
 
-        Get-AzApiManagementPolicy -Context $context  -ProductId $product.ProductId -SaveAs "$TestOutputRoot/ProductPolicy.xml" -Format 'rawxml' -Force
+        Get-AzApiManagementPolicy -Context $context  -ProductId $product.ProductId -SaveAs "$TestOutputRoot/ProductPolicy.xml" -Format 'RawXml' -Force
         $exists = [System.IO.File]::Exists((Join-Path "$TestOutputRoot" "ProductPolicy.xml"))
         $policy = gc (Join-Path "$TestOutputRoot" "ProductPolicy.xml")
         Assert-True { $policy -like '*<rate-limit calls="5" renewal-period="60" />*' }
@@ -1663,7 +1664,7 @@ function Policy-CrudTest {
         $set = Set-AzApiManagementPolicy -Context $context  -Policy $apiValid -ApiId $api.ApiId -PassThru
         Assert-AreEqual $true $set
 
-        $policy = Get-AzApiManagementPolicy -Context $context  -ApiId $api.ApiId -SaveAs (Join-Path "$TestOutputRoot" "ApiPolicy.xml") -Format 'rawxml' -Force
+        $policy = Get-AzApiManagementPolicy -Context $context  -ApiId $api.ApiId -SaveAs (Join-Path "$TestOutputRoot" "ApiPolicy.xml") -Format 'RawXml' -Force
         $exists = [System.IO.File]::Exists((Join-Path "$TestOutputRoot" "ApiPolicy.xml"))
         $policy = gc (Join-Path "$TestOutputRoot" "ApiPolicy.xml")
         Assert-True { $policy -like '*<cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="none">*' }
@@ -1691,7 +1692,7 @@ function Policy-CrudTest {
         Assert-AreEqual $true $set
 
         $policy = Get-AzApiManagementPolicy -Context $context  -ApiId $api.ApiId -OperationId $operation.OperationId `
-            -SaveAs (Join-Path "$TestOutputRoot" "OperationPolicy.xml") -Format 'rawxml' -Force
+            -SaveAs (Join-Path "$TestOutputRoot" "OperationPolicy.xml") -Format 'RawXml' -Force
         $exists = [System.IO.File]::Exists((Join-Path "$TestOutputRoot" "OperationPolicy.xml"))
         $policy = gc (Join-Path "$TestOutputRoot" "OperationPolicy.xml")
         Assert-True { $policy -like '*<rewrite-uri template="/resource" />*' }
@@ -3039,7 +3040,7 @@ function Diagnostic-CrudTest {
     
     # create new applicationinsights diagnostics
     $appInsightsLoggerId = getAssetName
-    $newDiagnosticId = 'applicationinsights'
+    $newDiagnosticId = 'ApplicationInsights'
 
     try {
         $instrumentationKey = [guid]::newguid()
@@ -3052,7 +3053,7 @@ function Diagnostic-CrudTest {
         Assert-AreEqual $appInsightsLoggerDescription $applogger.Description
 
         #create a sampling setting
-        $samplingSetting = New-AzApiManagementSamplingSetting -SamplingType fixed -SamplingPercentage 100
+        $samplingSetting = New-AzApiManagementSamplingSetting -SamplingType Fixed -SamplingPercentage 100
         Assert-NotNull $samplingSetting
         
         #create a http message diagnostics
@@ -3064,7 +3065,7 @@ function Diagnostic-CrudTest {
         Assert-NotNull $pipelineDiagnostic
 
         #create a diagnostic
-        $diagnostic = New-AzApiManagementDiagnostic -LoggerId $applogger.LoggerId -Context $context -AlwaysLog allErrors -SamplingSetting $samplingSetting `
+        $diagnostic = New-AzApiManagementDiagnostic -LoggerId $applogger.LoggerId -Context $context -AlwaysLog AllErrors -SamplingSetting $samplingSetting `
             -FrontEndSetting $pipelineDiagnostic -BackendSetting $pipelineDiagnostic -DiagnosticId $newDiagnosticId
         Assert-NotNull $diagnostic
 
@@ -3177,7 +3178,7 @@ function ApiDiagnostic-CrudTest {
     
     # create new applicationinsights diagnostics
     $appInsightsLoggerId = getAssetName
-    $newDiagnosticId = 'applicationinsights'
+    $newDiagnosticId = 'ApplicationInsights'
 
     try {
         $instrumentationKey = [guid]::newguid()
@@ -3191,7 +3192,7 @@ function ApiDiagnostic-CrudTest {
         Assert-AreEqual $appInsightsLoggerDescription $applogger.Description
 
         #create a sampling setting
-        $samplingSetting = New-AzApiManagementSamplingSetting -SamplingType fixed -SamplingPercentage 100
+        $samplingSetting = New-AzApiManagementSamplingSetting -SamplingType Fixed -SamplingPercentage 100
         Assert-NotNull $samplingSetting
         
         #create a http message diagnostics
@@ -3203,7 +3204,7 @@ function ApiDiagnostic-CrudTest {
         Assert-NotNull $pipelineDiagnostic
 
         #create a diagnostic
-        $apiDiagnostic = New-AzApiManagementDiagnostic -Context $context -ApiId $apis[0].ApiId -LoggerId $applogger.LoggerId -AlwaysLog allErrors -SamplingSetting $samplingSetting `
+        $apiDiagnostic = New-AzApiManagementDiagnostic -Context $context -ApiId $apis[0].ApiId -LoggerId $applogger.LoggerId -AlwaysLog AllErrors -SamplingSetting $samplingSetting `
             -FrontEndSetting $pipelineDiagnostic -BackendSetting $pipelineDiagnostic -DiagnosticId $newDiagnosticId
         Assert-NotNull $apiDiagnostic
 
