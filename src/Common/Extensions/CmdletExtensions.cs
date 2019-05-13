@@ -359,7 +359,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public static bool IsParameterBound<TPSCmdlet, TProp>(this TPSCmdlet cmdlet, Expression<Func<TPSCmdlet, TProp>> propertySelector) where TPSCmdlet : PSCmdlet
         {
             var propName = ((MemberExpression)propertySelector.Body).Member.Name;
-            return cmdlet.MyInvocation?.BoundParameters.ContainsKey(propName) ?? false;
+            return cmdlet.IsBound(propName);
         }
 
         #region PowerShell Commands
