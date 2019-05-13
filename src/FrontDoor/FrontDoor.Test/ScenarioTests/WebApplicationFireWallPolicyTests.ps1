@@ -22,16 +22,16 @@ function Test-PolicyCrud
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceGroupName = $resourceGroup.ResourceGroupName
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
-    $matchCondition1 = New-AzFrontDoorMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "UserAgent" -MatchValue "Windows"
-    $customRule1 = New-AzFrontDoorCustomRuleObject -Name "Rule1" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Block -Priority 2
+    $matchCondition1 = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "UserAgent" -MatchValue "Windows"
+    $customRule1 = New-AzFrontDoorWafCustomRuleObject -Name "Rule1" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Block -Priority 2
 
-    $ruleOverride = New-AzFrontDoorManagedRuleOverrideObject -RuleId "942100" -Action Log
-    $override1 = New-AzFrontDoorRuleGroupOverrideObject -RuleGroupName SQLI -ManagedRuleOverride $ruleOverride
-    $managedRule1 = New-AzFrontDoorManagedRuleObject -Type DefaultRuleSet -Version "preview-0.1" -RuleGroupOverride $override1
+    $ruleOverride = New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942100" -Action Log
+    $override1 = New-AzFrontDoorWafRuleGroupOverrideObject -RuleGroupName SQLI -ManagedRuleOverride $ruleOverride
+    $managedRule1 = New-AzFrontDoorWafManagedRuleObject -Type DefaultRuleSet -Version "preview-0.1" -RuleGroupOverride $override1
 
-    New-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule1 -ManagedRule $managedRule1 -EnabledState Enabled -Mode Prevention
+    New-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule1 -ManagedRule $managedRule1 -EnabledState Enabled -Mode Prevention
 	
-    $retrievedPolicy = Get-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName 
+    $retrievedPolicy = Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName 
     Assert-NotNull $retrievedPolicy
     Assert-AreEqual $Name $retrievedPolicy.Name
     Assert-AreEqual $customRule1.Name $retrievedPolicy.CustomRules[0].Name
@@ -40,8 +40,8 @@ function Test-PolicyCrud
     Assert-AreEqual $customRule1.Priority $retrievedPolicy.CustomRules[0].Priority
     Assert-AreEqual $managedRule1.RuleGroupOverrides[0].ManagedRuleOverrides[0].Action $retrievedPolicy.ManagedRules[0].RuleGroupOverrides[0].ManagedRuleOverrides[0].Action
 
-    $customRule2 = New-AzFrontDoorCustomRuleObject -Name "Rule2" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Log -Priority 2
-    $updatedPolicy = Update-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule2
+    $customRule2 = New-AzFrontDoorWafCustomRuleObject -Name "Rule2" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Log -Priority 2
+    $updatedPolicy = Update-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule2
     Assert-NotNull $updatedPolicy
     Assert-AreEqual $Name $updatedPolicy.Name
     Assert-AreEqual $customRule2.Name $updatedPolicy.CustomRules[0].Name
@@ -49,9 +49,9 @@ function Test-PolicyCrud
     Assert-AreEqual $customRule2.Priority $updatedPolicy.CustomRules[0].Priority
     Assert-AreEqual $managedRule1.RuleGroupOverrides[0].ManagedRuleOverrides[0].Action $updatedPolicy.ManagedRules[0].RuleGroupOverrides[0].ManagedRuleOverrides[0].Action
 
-    $removed = Remove-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName -PassThru
+    $removed = Remove-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -PassThru
     Assert-True { $removed }
-    Assert-ThrowsContains { Get-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName } "does not exist."
+    Assert-ThrowsContains { Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName } "does not exist."
 }
 
 <#
@@ -64,17 +64,17 @@ function Test-PolicyCrudWithPiping
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceGroupName = $resourceGroup.ResourceGroupName
     $tag = @{"tag1" = "value1"; "tag2" = "value2"}
-    $matchCondition1 = New-AzFrontDoorMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "UserAgent" -MatchValue "Windows"
-    $customRule1 = New-AzFrontDoorCustomRuleObject -Name "Rule1" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Block -Priority 2
+    $matchCondition1 = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "UserAgent" -MatchValue "Windows"
+    $customRule1 = New-AzFrontDoorWafCustomRuleObject -Name "Rule1" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Block -Priority 2
 
-    $ruleOverride = New-AzFrontDoorManagedRuleOverrideObject -RuleId "942100" -Action Log
-    $override1 = New-AzFrontDoorRuleGroupOverrideObject -RuleGroupName SQLI -ManagedRuleOverride $ruleOverride
-    $managedRule1 = New-AzFrontDoorManagedRuleObject -Type DefaultRuleSet -Version "preview-0.1" -RuleGroupOverride $override1
+    $ruleOverride = New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942100" -Action Log
+    $override1 = New-AzFrontDoorWafRuleGroupOverrideObject -RuleGroupName SQLI -ManagedRuleOverride $ruleOverride
+    $managedRule1 = New-AzFrontDoorWafManagedRuleObject -Type DefaultRuleSet -Version "preview-0.1" -RuleGroupOverride $override1
 
-    New-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule1 -ManagedRule $managedRule1 -EnabledState Enabled -Mode Prevention
+    New-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -Customrule $customRule1 -ManagedRule $managedRule1 -EnabledState Enabled -Mode Prevention
 
-    $customRule2 = New-AzFrontDoorCustomRuleObject -Name "Rule2" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Log -Priority 2
-    $updatedPolicy = Get-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName | Update-AzFrontDoorFireWallPolicy -Customrule $customRule2
+    $customRule2 = New-AzFrontDoorWafCustomRuleObject -Name "Rule2" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Log -Priority 2
+    $updatedPolicy = Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName | Update-AzFrontDoorWafPolicy -Customrule $customRule2
     Assert-NotNull $updatedPolicy
     Assert-AreEqual $Name $updatedPolicy.Name
     Assert-AreEqual $customRule2.Name $updatedPolicy.CustomRules[0].Name
@@ -82,7 +82,7 @@ function Test-PolicyCrudWithPiping
     Assert-AreEqual $customRule2.Priority $updatedPolicy.CustomRules[0].Priority
     Assert-AreEqual $managedRule1.RuleGroupOverrides[0].ManagedRuleOverrides[0].Action $updatedPolicy.ManagedRules[0].RuleGroupOverrides[0].ManagedRuleOverrides[0].Action
 
-    $removed = Get-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName | Remove-AzFrontDoorFireWallPolicy -PassThru
+    $removed = Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName | Remove-AzFrontDoorWafPolicy -PassThru
     Assert-True { $removed }
-    Assert-ThrowsContains { Get-AzFrontDoorFireWallPolicy -Name $Name -ResourceGroupName $resourceGroupName } "does not exist."
+    Assert-ThrowsContains { Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName } "does not exist."
 }

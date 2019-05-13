@@ -19,5 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Automatic DNS NameServer Delegation
+    - Create DNS zone cmdlet accepts parent zone name as additional optional parameter.
+    - Adds NS records in the parent zone for newly created child zone.
+
 ## Version 1.0.0
 * General availability of `Az.Dns` module

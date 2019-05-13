@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+using Microsoft.Azure.Storage.Shared.Protocol;
 using XTable = Microsoft.Azure.Cosmos.Table;
 using System.Collections.Generic;
 using System;

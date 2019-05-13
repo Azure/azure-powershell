@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Storage.Adapters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Storage;
+using Microsoft.Azure.Storage;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage

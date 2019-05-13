@@ -25,11 +25,12 @@ function Test-ServerEndpoint2
     Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
-       # Test
+        # Test
         $storageSyncServiceName = Get-ResourceName("sss")
         $syncGroupName = Get-ResourceName("sg")
         $serverEndpointName = Get-ResourceName("sep")
         $cloudEndpointName = Get-ResourceName("cep")
+        $resourceGroupLocation = Get-ResourceGroupLocation
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
 
         $azureFileShareName = "testfs" #Get-ResourceName("fs")
@@ -42,8 +43,8 @@ function Test-ServerEndpoint2
         $volumeFreeSpacePercent = 60
         $volumeFreeSpacePercent2 = 80
 
-        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceGroupLocation | Type : ResourceGroup"
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         $storageSyncService = New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
@@ -52,9 +53,9 @@ function Test-ServerEndpoint2
         $syncGroup = New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Resource: $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
-        $storageAccount = New-AzStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation
+        $storageAccount = New-AzStorageAccount -StorageAccountName $StorageAccountName -Location $resourceLocation -ResourceGroupName $resourceGroupName -Type Standard_LRS
         $key = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $StorageAccountName
-        $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
+        $context = $storageAccount.Context
         Write-Verbose "Resource: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
 
         $azureFileShareName = Ensure-AzureFileShareName $AzureFileShareName $context
@@ -166,8 +167,7 @@ function Test-ServerEndpoint2
         }
 
         Write-Verbose "Removing $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
-        Remove-AzStorageAccount -Force -ResourceGroupName $resourceGroupName -Name $StorageAccountName
-
+        Remove-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $StorageAccountName
     }
     finally
     {
@@ -184,11 +184,12 @@ function Test-ServerEndpoint
     Write-Verbose "RecordMode : $(Get-StorageTestMode)"
     try
     {
-       # Test
+        # Test
         $storageSyncServiceName = Get-ResourceName("sss")
         $syncGroupName = Get-ResourceName("sg")
         $serverEndpointName = Get-ResourceName("sep")
         $cloudEndpointName = Get-ResourceName("cep")
+        $resourceGroupLocation = Get-ResourceGroupLocation
         $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices")
 
         $azureFileShareName = "testfs" #Get-ResourceName("fs")
@@ -201,8 +202,8 @@ function Test-ServerEndpoint
         $volumeFreeSpacePercent = 60
         $volumeFreeSpacePercent2 = 80
 
-        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceLocation | Type : ResourceGroup"
-        New-AzResourceGroup -Name $resourceGroupName -Location $resourceLocation;
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceGroupLocation | Type : ResourceGroup"
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
 
         Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
         $storageSyncService = New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName
@@ -211,9 +212,11 @@ function Test-ServerEndpoint
         $syncGroup = New-AzStorageSyncGroup -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -Name $syncGroupName
 
         Write-Verbose "Resource: $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
-        $storageAccount = New-AzStorageAccount  -SkuName Standard_LRS -ResourceGroupName $resourceGroupName -Name $StorageAccountName -Location $resourceLocation
+        New-AzStorageAccount -StorageAccountName $StorageAccountName -Location $resourceLocation -ResourceGroupName $resourceGroupName -Type Standard_LRS
+        $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $StorageAccountName
+
         $key = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $StorageAccountName
-        $context = New-AzureStorageContext -StorageAccountName $storageAccount.StorageAccountName -StorageAccountKey $key[0].Value
+        $context = $storageAccount.Context
         Write-Verbose "Resource: $AzureFileShareName | Loc: $resourceLocation | Type : AzureStorageShare"
 
         if(IsLive)
@@ -223,7 +226,7 @@ function Test-ServerEndpoint
         }
         else 
         {
-                $azureFileShareName = $AzureFileShareName
+            $azureFileShareName = $AzureFileShareName
         }
 
         $storageAccountResourceId = $storageAccount.Id
@@ -240,13 +243,10 @@ function Test-ServerEndpoint
 
         Write-Verbose "Resource: $serverEndpointName | Loc: $resourceLocation"
         $job = New-AzStorageSyncServerEndpoint -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -ServerResourceId $registeredServer.ResourceId -ServerLocalPath $serverLocalPath -CloudTiering -OfflineDataTransfer -VolumeFreeSpacePercent $volumeFreeSpacePercent -OfflineDataTransferShareName $offlineDataTransferShareName -TierFilesOlderThanDays $tierFilesOlderThanDays -Verbose -AsJob 
-
         $job | Wait-Job
         $serverEndpoint = get-job -Id $job.Id | receive-job -Keep
 
-       
-
-        Write-Verbose "Removing ServerEndpoint: $serverEndpointName"
+       Write-Verbose "Removing ServerEndpoint: $serverEndpointName"
         Remove-AzStorageSyncServerEndpoint -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -AsJob | Wait-Job
 
         Write-Verbose "Unregister Server: $($registeredServer.ServerId)"
@@ -268,8 +268,7 @@ function Test-ServerEndpoint
         }
 
         Write-Verbose "Removing $StorageAccountName | Loc: $resourceLocation | Type : StorageAccount"
-        Remove-AzStorageAccount -Force -ResourceGroupName $resourceGroupName -Name $StorageAccountName
-
+        Remove-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $StorageAccountName
     }
     finally
     {
