@@ -18,8 +18,9 @@ Creates a database or an elastic database.
 New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogCollation <String>]
  [-MaxSizeBytes <Int64>] [-Edition <String>] [-RequestedServiceObjectiveName <String>]
  [-ElasticPoolName <String>] [-ReadScale <DatabaseReadScale>] [-Tags <Hashtable>] [-SampleName <String>]
- [-ZoneRedundant] [-AsJob] [-LicenseType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ZoneRedundant] [-AsJob] [-LicenseType <String>] [-AutoPauseDelayInMinutes <Int32>] [-MinimumCapacity <Double>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### VcoreBasedDatabase
@@ -27,8 +28,9 @@ New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogColl
 New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogCollation <String>]
  [-MaxSizeBytes <Int64>] -Edition <String> [-ReadScale <DatabaseReadScale>] [-Tags <Hashtable>]
  [-SampleName <String>] [-ZoneRedundant] [-AsJob] -VCore <Int32> -ComputeGeneration <String>
- [-LicenseType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-LicenseType <String>] [-ComputeModel <String>] [-AutoPauseDelayInMinutes <Int32>] [-MinimumCapacity <Double>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -113,6 +115,38 @@ Tags                          :
 
 This command creates a Vcore database named Database03 on server Server01.
 
+### Example 4: Create an Serverless database on the specified server
+```
+PS C:\>New-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database04" -Edition "GeneralPurpose" -Vcore 2 -ComputeGeneration "Gen5" -ComputeModel Serverless
+ResourceGroupName             : ResourceGroup01
+ServerName                    : Server01
+DatabaseName                  : Database04
+Location                      : Central US
+DatabaseId                    : ef5a9698-012c-4def-8d94-7f6bfb7b4f04
+Edition                       : GeneralPurpose
+CollationName                 : SQL_Latin1_General_CP1_CI_AS
+CatalogCollation              :
+MaxSizeBytes                  : 34359738368
+Status                        : Online
+CreationDate                  : 4/12/2019 11:20:29 PM
+CurrentServiceObjectiveName   : GP_S_Gen5_2
+RequestedServiceObjectiveName : GP_S_Gen5_2
+ElasticPoolName               :
+EarliestRestoreDate           : 4/12/2019 11:50:29 PM
+Tags                          :
+CreateMode                    :
+ReadScale                     : Disabled
+ZoneRedundant                 : False
+Capacity                      : 2
+Family                        : Gen5
+SkuName                       : GP_S_Gen5
+LicenseType                   : LicenseIncluded
+AutoPauseDelayInMinutes       : 360
+MinimumCapacity          : 0.5
+```
+
+This command creates a Serverless database named Database04 on server Server01.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -120,6 +154,21 @@ Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutoPauseDelayInMinutes
+The auto pause delay in minutes for database(serverless only), -1 to opt out
+
+```yaml
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -169,6 +218,21 @@ Parameter Sets: VcoreBasedDatabase
 Aliases: Family
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ComputeModel
+The compute model for Azure Sql database. Serverless or Provisioned
+
+```yaml
+Type: System.String
+Parameter Sets: VcoreBasedDatabase
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -288,6 +352,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MinimumCapacity
+The Minimal capacity that database will always have allocated, if not paused.
+For serverless Azure Sql databases only.
+
+```yaml
+Type: System.Double
+Parameter Sets: (All)
+Aliases: MinVCore, MinCapacity
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ReadScale
 The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)
 
@@ -388,7 +468,7 @@ The Vcore number for the Azure Sql database
 ```yaml
 Type: System.Int32
 Parameter Sets: VcoreBasedDatabase
-Aliases: Capacity
+Aliases: Capacity, MaxVCore, MaxCapacity
 
 Required: True
 Position: Named

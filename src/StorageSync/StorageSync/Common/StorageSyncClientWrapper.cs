@@ -16,8 +16,8 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
 using Microsoft.Azure.Commands.StorageSync.Properties;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
-using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Version1_6_20190326.Models;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -50,7 +50,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <summary>
         /// The azure us government kailani application identifier
         /// </summary>
+
         private static Guid AzureUSGovernmentKailaniAppId = new Guid("ce88d19b-f69a-4c2e-ac8a-d1aa9db611e8");
+
+        /// <summary>
+        /// The azure us product test kailani application identifier
+        /// </summary>
+        private static Guid AzureUSProdTestKailaniAppId = new Guid("1fcdfafe-959b-4b32-afff-84f850974e84");
 
         /// <summary>
         /// The built in role definition identifier
@@ -162,12 +168,20 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         {
             get
             {
-                switch (AzureRmProfileProvider.Instance?.Profile?.DefaultContext?.Environment?.Name)
+                if (StorageSyncConstants.ResourceProvider.EndsWith("Int", StringComparison.InvariantCultureIgnoreCase) ||
+                    StorageSyncConstants.ResourceProvider.EndsWith("Dev", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    case EnvironmentName.AzureUSGovernment:
-                        return AzureUSGovernmentKailaniAppId;
-                    default:
-                        return AzureCloudKailaniAppId;
+                    return AzureUSProdTestKailaniAppId;
+                }
+                else
+                {
+                    switch (AzureRmProfileProvider.Instance?.Profile?.DefaultContext?.Environment?.Name)
+                    {
+                        case EnvironmentName.AzureUSGovernment:
+                            return AzureUSGovernmentKailaniAppId;
+                        default:
+                            return AzureCloudKailaniAppId;
+                    }
                 }
             }
         }
@@ -207,8 +221,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         public PSADServicePrincipal EnsureServicePrincipal()
         {
             string applicationId = CurrentApplicationId.ToString();
-            IEnumerable<PSADServicePrincipal> servicePrincipals = ActiveDirectoryClient.FilterServicePrincipals(new ODataQuery<ServicePrincipal>(s => s.AppId == applicationId));
-            PSADServicePrincipal servicePrincipal = servicePrincipals.FirstOrDefault();
+            string appObjectId = ActiveDirectoryClient.GetServicePrincipalsIdByAppId(CurrentApplicationId);
+            PSADServicePrincipal servicePrincipal = ActiveDirectoryClient.GetServicePrincipalByObjectId(appObjectId);
 
             if (servicePrincipal == null)
             {
@@ -225,7 +239,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                 var createParameters = new CreatePSServicePrincipalParameters
                 {
                     ApplicationId = CurrentApplicationId,
-                    AccountEnabled = true,
+                    AccountEnabled = bool.TrueString,
                     PasswordCredentials = new PSADPasswordCredential[]
                      {
                         passwordCredential

@@ -18,6 +18,9 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+* Add DisableBgpRoutePropagation flag to Effective Route Table output
+    - Updated cmdlet:
+        - Get-AzEffectiveRouteTable
 
 ## Version 1.8.0
 * Add support for Nat Gateway Resource

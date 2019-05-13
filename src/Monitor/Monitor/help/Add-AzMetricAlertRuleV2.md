@@ -136,19 +136,19 @@ Name                 : AlertWithDim
 Type                 : Microsoft.Insights/metricAlerts
 Location             : global
 Tags                 :
-
 ```
 
 To create a more complex metric alert rule like the ones that involve selecting dimension values or have multiple criteria, you can use the helper cmdlets New-AzMetricAlertRuleV2DimensionSelection and New-AzMetricAlertRuleV2Criteria.
 
 Above set of cmdlets will create a metric alert rule with dimensions.
+
 ## PARAMETERS
 
 ### -ActionGroup
 The Action Group for rule
 
 ```yaml
-Type: ActivityLogAlertActionGroup[]
+Type: Microsoft.Azure.Management.Monitor.Models.ActivityLogAlertActionGroup[]
 Parameter Sets: (All)
 Aliases: Actions
 
@@ -174,26 +174,11 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -208,7 +193,7 @@ Accept wildcard characters: False
 The description of the metric alert rule
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -223,7 +208,7 @@ Accept wildcard characters: False
 The disable rule (status) flag
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -238,7 +223,7 @@ Accept wildcard characters: False
 The evaluation frequency for rule
 
 ```yaml
-Type: TimeSpan
+Type: System.TimeSpan
 Parameter Sets: (All)
 Aliases: EvaluationFrequency
 
@@ -253,7 +238,7 @@ Accept wildcard characters: False
 The name of metric alert rule
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -268,7 +253,7 @@ Accept wildcard characters: False
 The Resource Group Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceGroup
 
@@ -283,7 +268,7 @@ Accept wildcard characters: False
 The severity for the metric alert rule
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -298,7 +283,7 @@ Accept wildcard characters: False
 The target resource id for rule
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateAlertByResourceId
 Aliases:
 
@@ -313,7 +298,7 @@ Accept wildcard characters: False
 The target resource region for rule
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateAlertByScopes
 Aliases:
 
@@ -328,7 +313,7 @@ Accept wildcard characters: False
 The target resource scope for rule
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: CreateAlertByScopes
 Aliases: Scopes
 
@@ -343,7 +328,7 @@ Accept wildcard characters: False
 The target resource type for rule
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateAlertByScopes
 Aliases:
 
@@ -354,27 +339,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -WindowSize
 The window size for rule
 
 ```yaml
-Type: TimeSpan
+Type: System.TimeSpan
 Parameter Sets: (All)
 Aliases:
 
@@ -385,9 +354,39 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
