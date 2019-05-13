@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: 85492E00-3776-4F20-A444-9C28CC6154B7
@@ -60,7 +60,7 @@ This command lists at most 1000 events associated with the user's subscription I
 
 ### Example 2: Get an event log by subscription ID with a maximum number of events
 ```
-PS C:\>Get-AzLog -MaxEvents 100
+PS C:\>Get-AzLog -MaxRecord 100
 ```
 
 This command lists at most 100 events associated with the user's subscription ID that took place 7 days from the current date/time.
@@ -89,7 +89,7 @@ This command lists at most 1000 events associated with the specified correlation
 
 ### Example 6: Get an event log by correlation ID with a maximum number of events
 ```
-PS C:\>Get-AzLog -CorrelationId "60c694d0-e46f-4c12-bed1-9b7aef541c23" -MaxEvents 100
+PS C:\>Get-AzLog -CorrelationId "60c694d0-e46f-4c12-bed1-9b7aef541c23" -MaxRecord 100
 ```
 
 This command lists at most 100 events associated with the specified correlation ID that took place 7 days from the current date/time. 
@@ -119,7 +119,7 @@ This command lists at most 1000 the events associated with the specified resourc
 
 ### Example 10: Get an event log for a resource group with a maximum number of events
 ```
-PS C:\>Get-AzLog -ResourceGroup "Contoso-Web-CentralUS" -MaxEvents 100
+PS C:\>Get-AzLog -ResourceGroup "Contoso-Web-CentralUS" -MaxRecord 100
 ```
 
 This command lists at most 100 events associated with the specified resource group that took place 7 days from the current date/time.
@@ -147,7 +147,7 @@ This command lists at most 1000 events associated with the specified resource ID
 
 ### Example 14: Get an event log by resource ID with a maximum number of events
 ```
-PS C:\>Get-AzLog -ResourceId "/subscriptions/623d50f1-4fa8-4e46-a967-a9214aed43ab/ResourceGroups/Contoso-Web-CentralUS/providers/Microsoft.Web/ServerFarms/Contoso1" -MaxEvents 100
+PS C:\>Get-AzLog -ResourceId "/subscriptions/623d50f1-4fa8-4e46-a967-a9214aed43ab/ResourceGroups/Contoso-Web-CentralUS/providers/Microsoft.Web/ServerFarms/Contoso1" -MaxRecord 100
 ```
 
 This command lists at most 100 events associated with the specified resource ID that took place 7 days from the current date/time.
@@ -175,7 +175,7 @@ This command lists at most 1000 events associated with the specified resource pr
 
 ### Example 18: Get an event log by resource provider with a maximum number of events
 ```
-PS C:\>Get-AzLog -ResourceProvider "Microsoft.Web" -MaxEvents 100
+PS C:\>Get-AzLog -ResourceProvider "Microsoft.Web" -MaxRecord 100
 ```
 
 This command lists at most 100 events associated with the specified resource provider that took place 7 days from the current date/time.
@@ -370,7 +370,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

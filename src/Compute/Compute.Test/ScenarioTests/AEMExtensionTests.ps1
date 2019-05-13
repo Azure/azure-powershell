@@ -19,7 +19,7 @@ Test the basic usage of the Set/Get/Test/Remove virtual machine Azure Enhanced M
 
 function Log($test, $message)
 {
-	Out-File -FilePath "$test.log" -Append -InputObject $message
+    Out-File -FilePath "$test.log" -Append -InputObject $message
 }
 
 function Test-AEMExtensionBasicWindowsWAD
@@ -289,7 +289,7 @@ function Test-AEMExtensionAdvancedWindowsMD
         Assert-AreEqual $extension.Name 'AzureCATExtensionHandler'
         $settings = $extension.PublicSettings | ConvertFrom-Json
         Assert-NotNull $settings.cfg
-		Assert-True { ($extension.PublicSettings.Contains("osdisk.caching")) }
+        Assert-True { ($extension.PublicSettings.Contains("osdisk.caching")) }
         Write-Debug "Test-AEMExtensionAdvancedWindowsMD: Get done"
 
         # Test command.
@@ -326,10 +326,9 @@ function Test-AEMExtensionAdvancedLinuxMD
         Write-Host "Start the test Test-AEMExtensionAdvancedLinuxMD"
         # Setup
         $vm = Create-AdvancedVM -rgname $rgname -loc $loc -vmsize 'Standard_DS2' -stotype 'Premium_LRS' -nicCount 2 -useMD -linux
-		$vmname = $vm.Name
-		$vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname
-		Add-AzVMDataDisk -VM $vm -StorageAccountType Premium_LRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 2059 | Update-AzVM
-		
+        $vmname = $vm.Name
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname
+        Add-AzVMDataDisk -VM $vm -StorageAccountType Premium_LRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 2059 | Update-AzVM
         
         Write-Debug "Test-AEMExtensionAdvancedLinuxMD: VM created"
 
@@ -341,7 +340,7 @@ function Test-AEMExtensionAdvancedLinuxMD
         # Test with not extension
         Write-Debug "Test-AEMExtensionAdvancedLinuxMD: Test with no extension"
         $res = Test-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
-		$tmp = $res;$out = &{while ($true) { if ($tmp) { foreach ($tmpRes in $tmp) {($tmpRes.TestName  + " " + $tmpRes.Result)};$tmp = @($tmp.PartialResults)} else {break}}};
+        $tmp = $res;$out = &{while ($true) { if ($tmp) { foreach ($tmpRes in $tmp) {($tmpRes.TestName  + " " + $tmpRes.Result)};$tmp = @($tmp.PartialResults)} else {break}}};
         Assert-False { $res.Result } "Test result is not false $out"
         Write-Debug "Test-AEMExtensionAdvancedLinuxMD: Test done"
 
@@ -367,7 +366,7 @@ function Test-AEMExtensionAdvancedLinuxMD
         # Test command.
         Write-Debug "Test-AEMExtensionAdvancedLinuxMD: Test with extension"
         $res = Test-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
-		$tmp = $res;$out = &{while ($true) { if ($tmp) { foreach ($tmpRes in $tmp) {($tmpRes.TestName  + " " + $tmpRes.Result)};$tmp = @($tmp.PartialResults)} else {break}}};
+        $tmp = $res;$out = &{while ($true) { if ($tmp) { foreach ($tmpRes in $tmp) {($tmpRes.TestName  + " " + $tmpRes.Result)};$tmp = @($tmp.PartialResults)} else {break}}};
         Assert-True { $res.Result } "Test result is not false $out"
         Assert-True { ($res.PartialResults.Count -gt 0) }
         Write-Debug "Test-AEMExtensionAdvancedLinuxMD: Test done"
@@ -627,41 +626,41 @@ function Test-AEMExtensionAdvancedLinuxMD_E
         Write-Debug "Start the test Test-AEMExtensionAdvancedLinuxMD_E"
         # Setup
 
-		$ultraSSDInfo = Get-AzComputeResourceSku | where { $_.LocationInfo.Location -eq $loc -and $_.Name -eq "UltraSSD_LRS" };
-		Write-Debug "Test-AEMExtensionAdvancedLinuxMD_E: Got UltraSSD info $($ultraSSDInfo)"
-		
-		$zoneparams = @{}
-		if ($ultraSSDInfo) 
-		{
-			$zoneparams.Add("zone", $ultraSSDInfo.LocationInfo.Zones[0])	
-		}
-		
-        $vm = Create-AdvancedVM -rgname $rgname -loc $loc -vmsize 'Standard_E4s_v3' -stotype 'Premium_LRS' -nicCount 2 -useMD -linux @zoneparams
-		Write-Debug "Test-AEMExtensionAdvancedLinuxMD_E: VM created"
-		$vmname = $vm.Name
-		$vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname
-		Add-AzVMDataDisk -VM $vm -StorageAccountType Premium_LRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 2059 | Update-AzVM
-		Add-AzVMDataDisk -VM $vm -StorageAccountType Premium_LRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 16000 | Update-AzVM
-		Add-AzVMDataDisk -VM $vm -StorageAccountType Premium_LRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 32000 | Update-AzVM
+        $ultraSSDInfo = Get-AzComputeResourceSku | where { $_.LocationInfo.Location -eq $loc -and $_.Name -eq "UltraSSD_LRS" };
+        Write-Debug "Test-AEMExtensionAdvancedLinuxMD_E: Got UltraSSD info $($ultraSSDInfo)"
 
-		if ($ultraSSDInfo) 
-		{		
+        $zoneparams = @{}
+        if ($ultraSSDInfo) 
+        {
+            $zoneparams.Add("zone", $ultraSSDInfo.LocationInfo.Zones[0])    
+        }
+
+        $vm = Create-AdvancedVM -rgname $rgname -loc $loc -vmsize 'Standard_E4s_v3' -stotype 'Premium_LRS' -nicCount 2 -useMD -linux @zoneparams
+        Write-Debug "Test-AEMExtensionAdvancedLinuxMD_E: VM created"
+        $vmname = $vm.Name
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname
+        Add-AzVMDataDisk -VM $vm -StorageAccountType Premium_LRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 2059 | Update-AzVM
+        Add-AzVMDataDisk -VM $vm -StorageAccountType Premium_LRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 16000 | Update-AzVM
+        Add-AzVMDataDisk -VM $vm -StorageAccountType Premium_LRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 32000 | Update-AzVM
+
+        if ($ultraSSDInfo) 
+        {
     
             $nul = Stop-AzVm -ResourceGroupName $rgname -Name $vmname -Force
             $vm = Get-AzVM -ResourceGroupName $rgname -VMName $vmname
             $vm | update-azvm -UltraSSDEnabled $true
             $nul = Start-AzVm -ResourceGroupName $rgname -Name $vmname
             
-			$ultraDisk = New-AzDiskConfig -SkuName UltraSSD_LRS -DiskSizeGB 512 -DiskIOPSReadWrite 5000 -DiskMBpsReadWrite 20 -CreateOption Empty -Location $loc -Zone $ultraSSDInfo.LocationInfo.Zones[0] `
-				| New-AzDisk -ResourceGroupName $rgname -DiskName "ultrassd"
+            $ultraDisk = New-AzDiskConfig -SkuName UltraSSD_LRS -DiskSizeGB 512 -DiskIOPSReadWrite 5000 -DiskMBpsReadWrite 20 -CreateOption Empty -Location $loc -Zone $ultraSSDInfo.LocationInfo.Zones[0] `
+                | New-AzDisk -ResourceGroupName $rgname -DiskName "ultrassd"
             
             Add-AzVMDataDisk -VM $vm  -ManagedDiskId $ultraDisk.Id -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Attach `
                 | Update-AzVM
-		}
-		else 
-		{
-			Write-Debug "Test-AEMExtensionAdvancedLinuxMD_E: not testing UltraSSD because the resource sku is not available"
-		}
+        }
+        else 
+        {
+            Write-Debug "Test-AEMExtensionAdvancedLinuxMD_E: not testing UltraSSD because the resource sku is not available"
+        }
         
         Write-Debug "Test-AEMExtensionAdvancedLinuxMD: VM created"
 
@@ -673,7 +672,7 @@ function Test-AEMExtensionAdvancedLinuxMD_E
         # Test with not extension
         Write-Debug "Test-AEMExtensionAdvancedLinuxMD: Test with no extension"
         $res = Test-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
-		$tmp = $res;$out = &{while ($true) { if ($tmp) { foreach ($tmpRes in $tmp) {($tmpRes.TestName  + " " + $tmpRes.Result)};$tmp = @($tmp.PartialResults)} else {break}}};
+        $tmp = $res;$out = &{while ($true) { if ($tmp) { foreach ($tmpRes in $tmp) {($tmpRes.TestName  + " " + $tmpRes.Result)};$tmp = @($tmp.PartialResults)} else {break}}};
         Assert-False { $res.Result } "Test result is not false $out"
         Write-Debug "Test-AEMExtensionAdvancedLinuxMD: Test done"
 
@@ -699,7 +698,7 @@ function Test-AEMExtensionAdvancedLinuxMD_E
         # Test command.
         Write-Debug "Test-AEMExtensionAdvancedLinuxMD: Test with extension"
         $res = Test-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
-		$tmp = $res;$out = &{while ($true) { if ($tmp) { foreach ($tmpRes in $tmp) {($tmpRes.TestName  + " " + $tmpRes.Result)};$tmp = @($tmp.PartialResults)} else {break}}};
+        $tmp = $res;$out = &{while ($true) { if ($tmp) { foreach ($tmpRes in $tmp) {($tmpRes.TestName  + " " + $tmpRes.Result)};$tmp = @($tmp.PartialResults)} else {break}}};
         Assert-True { $res.Result } "Test result is not false $out"
         Assert-True { ($res.PartialResults.Count -gt 0) }
         Write-Debug "Test-AEMExtensionAdvancedLinuxMD: Test done"
@@ -714,11 +713,11 @@ function Test-AEMExtensionAdvancedLinuxMD_E
         Assert-Null $extension "Extension is not null"
         Write-Debug "Test-AEMExtensionAdvancedLinuxMD: Get after remove done"
     }
-	catch 
-	{
-		Write-Debug "Exception while runnign test: $($_)"
-		throw
-	}
+    catch 
+    {
+        Write-Debug "Exception while runnign test: $($_)"
+        throw
+    }
     finally
     {
         # Cleanup
@@ -737,11 +736,10 @@ function Test-AEMExtensionAdvancedLinuxMD_D
         # Setup
         $vm = Create-AdvancedVM -rgname $rgname -loc $loc -vmsize 'Standard_D2s_v3' -stotype 'Premium_LRS' -nicCount 2 -useMD -linux
 
-		Log "Test-AEMExtensionAdvancedLinuxMD_D" "VM created"
-		$vmname = $vm.Name
-		$vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname
-		Add-AzVMDataDisk -VM $vm -StorageAccountType Premium_LRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 2059 | Update-AzVM
-		
+        Log "Test-AEMExtensionAdvancedLinuxMD_D" "VM created"
+        $vmname = $vm.Name
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname
+        Add-AzVMDataDisk -VM $vm -StorageAccountType Premium_LRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 2059 | Update-AzVM
         
         Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: VM created"
 
@@ -753,7 +751,7 @@ function Test-AEMExtensionAdvancedLinuxMD_D
         # Test with not extension
         Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Test with no extension"
         $res = Test-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
-		$tmp = $res;$out = &{while ($true) { if ($tmp) { foreach ($tmpRes in $tmp) {($tmpRes.TestName  + " " + $tmpRes.Result)};$tmp = @($tmp.PartialResults)} else {break}}};
+        $tmp = $res;$out = &{while ($true) { if ($tmp) { foreach ($tmpRes in $tmp) {($tmpRes.TestName  + " " + $tmpRes.Result)};$tmp = @($tmp.PartialResults)} else {break}}};
         Assert-False { $res.Result } "Test result is not false $out"
         Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Test done"
 
@@ -779,7 +777,7 @@ function Test-AEMExtensionAdvancedLinuxMD_D
         # Test command.
         Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Test with extension"
         $res = Test-AzVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
-		$tmp = $res;$out = &{while ($true) { if ($tmp) { foreach ($tmpRes in $tmp) {($tmpRes.TestName  + " " + $tmpRes.Result)};$tmp = @($tmp.PartialResults)} else {break}}};
+        $tmp = $res;$out = &{while ($true) { if ($tmp) { foreach ($tmpRes in $tmp) {($tmpRes.TestName  + " " + $tmpRes.Result)};$tmp = @($tmp.PartialResults)} else {break}}};
         Assert-True { $res.Result } "Test result is not false $out"
         Assert-True { ($res.PartialResults.Count -gt 0) }
         Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: Test done"
@@ -803,8 +801,8 @@ function Test-AEMExtensionAdvancedLinuxMD_D
 
 function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount, [Switch] $linux, [Switch] $useMD, $zone)
 {
-	Write-Debug "Start Create-AdvancedVM"
-	
+    Write-Debug "Start Create-AdvancedVM"
+
     # Initialize parameters
     $rgname = if ([string]::IsNullOrEmpty($rgname)) { Get-ComputeTestResourceName } else { $rgname }
     $vmname = if ([string]::IsNullOrEmpty($vmname)) { 'vm' + $rgname } else { $vmname }
@@ -817,15 +815,15 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
     $g = New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
     # VM Profile & Hardware
-	$zoneparams = @{}
-	if ($zone) 
-	{
-		$zoneparams.Add("Zone", $zone)	
-	}
+    $zoneparams = @{}
+    if ($zone) 
+    {
+        $zoneparams.Add("Zone", $zone)  
+    }
     $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize @zoneparams;
     Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
-	Write-Debug "Start Create-AdvancedVM - Config done"
+    Write-Debug "Start Create-AdvancedVM - Config done"
 
     # NRP
     $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
@@ -836,7 +834,7 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
     $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
     $pubipId = $pubip.Id;
     
-	Write-Debug "Start Create-AdvancedVM - adding pip $($pubip.Id)"
+    Write-Debug "Start Create-AdvancedVM - adding pip $($pubip.Id)"
     $pibparams = @{}
     $pibparams.Add("PublicIpAddressId", $pubip.Id)
     $nicPrimParams = @{}
@@ -854,7 +852,7 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
         $nicPrimParams = @{}
     }
     Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count $nicCount;   
-	Write-Debug "Start Create-AdvancedVM 1"
+    Write-Debug "Start Create-AdvancedVM 1"
     # Storage Account (SA)
     $stoname = 'sto' + $rgname;
     $s = New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
@@ -868,21 +866,21 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
     $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
     $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
-	$osURI = @{}
-	$disk1Uri = @{}
-	$disk2Uri = @{}
-	$disk3Uri = @{}
-	Write-Debug "Start Create-AdvancedVM 2"
-	if (-not $useMD)
-	{
-		$osURI = @{"VhdUri"=$osDiskVhdUri}
-		$disk1Uri = @{"VhdUri"=$dataDiskVhdUri1}
-		$disk2Uri = @{"VhdUri"=$dataDiskVhdUri2}
-		$disk3Uri = @{"VhdUri"=$dataDiskVhdUri3}
-	}
+    $osURI = @{}
+    $disk1Uri = @{}
+    $disk2Uri = @{}
+    $disk3Uri = @{}
+    Write-Debug "Start Create-AdvancedVM 2"
+    if (-not $useMD)
+    {
+        $osURI = @{"VhdUri"=$osDiskVhdUri}
+        $disk1Uri = @{"VhdUri"=$dataDiskVhdUri1}
+        $disk2Uri = @{"VhdUri"=$dataDiskVhdUri2}
+        $disk3Uri = @{"VhdUri"=$dataDiskVhdUri3}
+    }
 
     $p = Set-AzVMOSDisk -VM $p -Name $osDiskName @osURI -Caching $osDiskCaching -CreateOption FromImage -DiskSizeInGB 128;
-	Write-Debug "Start Create-AdvancedVM 3"
+    Write-Debug "Start Create-AdvancedVM 3"
     $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 @disk1Uri -CreateOption Empty;
     $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 @disk2Uri -CreateOption Empty;
     $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 @disk3Uri -CreateOption Empty;
@@ -890,26 +888,26 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
 
     Assert-AreEqual $p.StorageProfile.OsDisk.Caching $osDiskCaching;
     Assert-AreEqual $p.StorageProfile.OsDisk.Name $osDiskName;
-	if (-not $useMD)
-	{
-		Assert-AreEqual $p.StorageProfile.OsDisk.Vhd.Uri $osDiskVhdUri;
-	}
+    if (-not $useMD)
+    {
+        Assert-AreEqual $p.StorageProfile.OsDisk.Vhd.Uri $osDiskVhdUri;
+    }
     Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
     Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
     Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
     Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 1;
-	if (-not $useMD)
-	{
-		Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri $dataDiskVhdUri1;
-	}
+    if (-not $useMD)
+    {
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri $dataDiskVhdUri1;
+    }
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
     Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 2;
-	if (-not $useMD)
-	{
-		Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
-	}
-	Write-Debug "Start Create-AdvancedVM 4"
+    if (-not $useMD)
+    {
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
+    }
+    Write-Debug "Start Create-AdvancedVM 4"
     # OS & Image
     $user = "Foo12";
     $password = $PLACEHOLDER;
@@ -917,7 +915,7 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
     $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
     $computerName = 'test';
     $vhdContainer = "https://$stoname.blob.core.windows.net/test";
-	Write-Debug "Start Create-AdvancedVM 5"
+    Write-Debug "Start Create-AdvancedVM 5"
     if ($linux)
     {
         $p = Set-AzVMOperatingSystem -VM $p -Linux -ComputerName $computerName -Credential $cred;
@@ -932,7 +930,7 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
         $imgRef = Get-DefaultCRPWindowsImageOffline;
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
     }
-	Write-Debug "Start Create-AdvancedVM 6"
+    Write-Debug "Start Create-AdvancedVM 6"
     Assert-AreEqual $p.OSProfile.AdminUsername $user;
     Assert-AreEqual $p.OSProfile.ComputerName $computerName;
     Assert-AreEqual $p.OSProfile.AdminPassword $password;
@@ -945,14 +943,14 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
     Assert-AreEqual $p.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
     Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imgRef.Skus;
     Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
-	Write-Debug "Start Create-AdvancedVM 7"
-	$vmConfig = $p | convertto-json
-	Write-Debug "Start Create-AdvancedVM 8 $vmConfig"
+    Write-Debug "Start Create-AdvancedVM 7"
+    $vmConfig = $p | convertto-json
+    Write-Debug "Start Create-AdvancedVM 8 $vmConfig"
     # Virtual Machine
-    $p = Set-AzVMBootDiagnostics -VM $p -Disable
-	Write-Debug "Start Create-AdvancedVM - creating VM $($vmConfig)"
-	
-	Write-Debug "Start Create-AdvancedVM - creating VM $($vmConfig)"
+    $p = Set-AzVMBootDiagnostic -VM $p -Disable
+    Write-Debug "Start Create-AdvancedVM - creating VM $($vmConfig)"
+    
+    Write-Debug "Start Create-AdvancedVM - creating VM $($vmConfig)"
     $v = New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
     $vm = Get-AzVM -ResourceGroupName $rgname -VMName $vmname
@@ -965,19 +963,19 @@ function Get-LinuxImage
 }
 
 function GetWrongTestResult($TestResult, $searchFor, $level)
-{	
-	$result = ""
+{
+    $result = ""
 
-	if (-not $level) {$level = 0}
+    if (-not $level) {$level = 0}
 
-	if ($TestResult.Result -eq $searchFor)
-	{
-		$result += [String]::new("`t", $level) + $TestResult.TestName + " is not expected. Actual result is " +  $TestResult.Result + [Environment]::NewLine
-	}
-	foreach ($tmpRes in $TestResult.PartialResults) 
-	{
-		$result += GetWrongTestResult $tmpRes $searchFor ($level+1)
-	}
+    if ($TestResult.Result -eq $searchFor)
+    {
+        $result += [String]::new("`t", $level) + $TestResult.TestName + " is not expected. Actual result is " +  $TestResult.Result + [Environment]::NewLine
+    }
+    foreach ($tmpRes in $TestResult.PartialResults) 
+    {
+        $result += GetWrongTestResult $tmpRes $searchFor ($level+1)
+    }
 
-	return $result
+    return $result
 }

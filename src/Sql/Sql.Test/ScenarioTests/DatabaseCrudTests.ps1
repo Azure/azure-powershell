@@ -185,6 +185,39 @@ function Test-CreateVcoreDatabaseWithLicenseType
 
 <#
 	.SYNOPSIS
+	Tests creating a Serverless based database
+#>
+function Test-CreateServerlessDatabase
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Japan East"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+	try
+	{
+		# Create with Edition and RequestedServiceObjectiveName
+		$databaseName = Get-DatabaseName
+		$job1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_S_Gen5_2 -AutoPauseDelayInMinutes 360 -MinVCore 0.5 -AsJob
+		$job1 | Wait-Job
+		$db = $job1.Output
+
+		Assert-AreEqual $databaseName $db.DatabaseName
+		Assert-NotNull $db.MaxSizeBytes
+		Assert-AreEqual GP_S_Gen5_2 $db.CurrentServiceObjectiveName
+		Assert-AreEqual 2 $db.Capacity
+		Assert-AreEqual 360 $db.AutoPauseDelayInMinutes
+		Assert-AreEqual 0.5 $db.MinimumCapacity
+		Assert-AreEqual GeneralPurpose $db.Edition
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
 	Tests creating a database with sample name.
 #>
 function Test-CreateDatabaseWithSampleName
@@ -512,6 +545,74 @@ function Test-UpdateDatabaseWithZoneRedundant ()
 	}
 }
 
+<#
+	.SYNOPSIS
+	Tests updating a vcore database
+#>
+function Test-UpdateServerlessDatabase()
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Japan East"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+	$databaseName = Get-DatabaseName
+	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+		-VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen5 -MaxSizeBytes 250GB -ComputeModel Serverless
+	Assert-AreEqual $db.DatabaseName $databaseName
+
+	try
+	{
+		# Alter with defaults
+		$job = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			 -AsJob
+		$job | Wait-Job
+		$db1 = $job.Output
+
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-NotNull $db1.MaxSizeBytes
+		Assert-NotNull $db1.Edition
+		Assert-NotNull $db1.CurrentServiceObjectiveName
+		Assert-NotNull $db1.MinimumCapacity
+		Assert-NotNull $db1.AutoPauseDelayInMinutes
+
+		# Alter to dtu database
+		$job = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-Edition Premium -AsJob
+		$job | Wait-Job
+		$db1 = $job.Output
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-AreEqual $db1.Edition Premium
+		Assert-Null $db1.MinimumCapacity
+		Assert-Null $db1.AutoPauseDelayInMinutes
+
+		# Alter back to Serverless
+		$job = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-VCore 2 -Edition GeneralPurpose -ComputeModel Serverless -ComputeGeneration Gen5 -AsJob
+		$job | Wait-Job
+		$db1 = $job.Output
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-AreEqual $db1.Edition GeneralPurpose
+		Assert-AreEqual $db1.CurrentServiceObjectiveName GP_S_Gen5_2
+		Assert-NotNull $db1.MinimumCapacity
+		Assert-NotNull $db1.AutoPauseDelayInMinutes
+
+		# Alter mincapacity and AutoPauseDelayInMinutes
+		$job = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-Vcore 2 -Edition GeneralPurpose -ComputeModel Serverless -ComputeGeneration Gen5 -MinimumCapacity 2 -AutoPauseDelayInMinutes 1440 -AsJob
+		$job | Wait-Job
+		$db1 = $job.Output
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-AreEqual $db1.Edition GeneralPurpose
+		Assert-AreEqual $db1.CurrentServiceObjectiveName GP_S_Gen5_2
+		Assert-AreEqual $db1.MinimumCapacity 2
+		Assert-AreEqual $db1.AutoPauseDelayInMinutes 1440
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
 <#
 	.SYNOPSIS
 	Tests updating a database with zone redundancy not specified

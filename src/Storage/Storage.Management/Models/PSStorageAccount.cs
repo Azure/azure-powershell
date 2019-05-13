@@ -17,7 +17,6 @@ using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Storage.Adapters;
-using Microsoft.WindowsAzure.Storage;
 using System;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
@@ -70,7 +69,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public Sku Sku { get; set; }
 
         [Ps1Xml(Label = "Kind", Target = ViewControl.Table, Position = 4)]
-        public Kind? Kind { get; set; }
+        public string Kind { get; set; }
         public Encryption Encryption { get; set; }
 
         [Ps1Xml(Label = "AccessTier", Target = ViewControl.Table, Position = 5)]

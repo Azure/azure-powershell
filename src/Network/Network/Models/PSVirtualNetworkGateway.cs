@@ -45,6 +45,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSBgpSettings BgpSettings { get; set; }
 
+        public PSAddressSpace CustomRoutes { get; set; }
+
         [JsonIgnore]
         public string IpConfigurationsText
         {
@@ -73,6 +75,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string BgpSettingsText
         {
             get { return JsonConvert.SerializeObject(BgpSettings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string CustomRoutesText
+        {
+            get { return JsonConvert.SerializeObject(CustomRoutes, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }
