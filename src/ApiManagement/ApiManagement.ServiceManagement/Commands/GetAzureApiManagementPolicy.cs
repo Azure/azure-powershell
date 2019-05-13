@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Format of the policy. Default value is ‘xml’." +
+            HelpMessage = "Format of the policy. Default value is ‘Xml’." +
                           " This parameter is optional.")]
-        [PSArgumentCompleter("xml", "rawxml")]
+        [PSArgumentCompleter(Constants.XmlPolicyFormat, Constants.RawXmlPolicyFormat)]
         public String Format { get; set; }
 
         [Parameter(
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         {
             string policyContent;
             string apiId;
-            string format = Format ?? "xml";
+            string format = Utils.GetPolicyContentFormat(Format, false); // support for exporting policy document link not enabled.
             switch (ParameterSetName)
             {
                 case TenantLevel:

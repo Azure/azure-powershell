@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Arm Resource Identifier of the Certificate." +
             " If specified will try to find certificate by the identifier. This parameter is required.")]

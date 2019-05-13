@@ -58,7 +58,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Location of the API Management Service.")]        
+            HelpMessage = "Location of the API Management Service.")]
+        [LocationCompleter("Microsoft.ApiManagement/service")]
         public string Location { get; set; }
 
         public override void ExecuteCmdlet()

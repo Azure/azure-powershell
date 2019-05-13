@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
+    using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using System;
     using System.IO;
@@ -68,27 +69,24 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ParameterSetName = ByResourceIdParameterSet,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Arm ResourceId of Diagnostic or Api Schema. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String ResourceId { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "ContentType of the api Schema. This parameter is optional.")]
-        [PSArgumentCompleter("swaggerdefinition", "openapicomponents", "xsdschema", "wadlgrammar")]
+        [PSArgumentCompleter(Constants.SwaggerDefinitions, Constants.OpenApiComponents, Constants.XsdSchema, Constants.WadlGrammar)]
         public String SchemaDocumentContentType { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Api schema document as a string. This parameter is required is -SchemaDocumentFile is not specified.")]
         public String SchemaDocument { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Api schema document file path. This parameter is required is -SchemaDocument is not specified.")]
         public String SchemaDocumentFilePath { get; set; }

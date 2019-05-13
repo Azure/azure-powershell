@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.IO;
     using System.Management.Automation;
     using Management.ApiManagement.Models;
+    using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Models;
 
@@ -25,11 +26,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [OutputType(typeof(bool))]
     public class SetAzureApiManagementPolicy : AzureApiManagementCmdletBase
     {
-        private const string DefaultFormat = "application/vnd.ms-azure-apim.policy+xml";
-        private const string NonEscapedXmlFormat = "application/vnd.ms-azure-apim.policy.raw+xml";
-        private const string XmlPolicyFormat = "xml";
-        private const string RawXmlPolicyFormat = "rawxml";
-
         private const string TenantLevel = "SetTenantLevel";
         private const string ProductLevel = "SetProductLevel";
         private const string ApiLevel = "SetApiLevel";
@@ -47,10 +43,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Format of the policy. This parameter is optional." +
-                          "When using `xml` or `application/vnd.ms-azure-apim.policy+xml`, expressions contained within the policy must be XML-escaped." +
-                          "When using `rawxml` or `application/vnd.ms-azure-apim.policy.raw+xml` no escaping is necessary." +
-                          "Default value is `xml` or `application/vnd.ms-azure-apim.policy+xml`.")]
-        [PSArgumentCompleter(XmlPolicyFormat, RawXmlPolicyFormat, DefaultFormat, NonEscapedXmlFormat)]
+                          "When using `Xml` or `application/vnd.ms-azure-apim.policy+xml`, expressions contained within the policy must be XML-escaped." +
+                          "When using `RawXml` or `application/vnd.ms-azure-apim.policy.raw+xml` no escaping is necessary." +
+                          "Default value is `Xml` or `application/vnd.ms-azure-apim.policy+xml`.")]
+        [PSArgumentCompleter(Constants.XmlPolicyFormat, Constants.RawXmlPolicyFormat, Constants.OldDefaultPolicyFormat, Constants.OldNonEscapedXmlPolicyFormat)]
         public String Format { get; set; }
 
         [Parameter(
@@ -120,35 +116,19 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public override void ExecuteApiManagementCmdlet()
         {
             string policyContent;
-            string contentFormat;
-            string format = Format ?? XmlPolicyFormat;
+            string contentFormat = Utils.GetPolicyContentFormat(Format, !string.IsNullOrEmpty(PolicyUrl));
 
             if (!string.IsNullOrWhiteSpace(Policy))
             {
                 policyContent = Policy;
-                contentFormat = PolicyContentFormat.Xml;
-                if (format.Equals(NonEscapedXmlFormat) || format.Equals(RawXmlPolicyFormat))
-                {
-                    contentFormat = PolicyContentFormat.Rawxml;
-                }
             }
             else if (!string.IsNullOrEmpty(PolicyFilePath))
             {
                 policyContent = File.ReadAllText(PolicyFilePath);
-                contentFormat = PolicyContentFormat.Xml;
-                if (format.Equals(NonEscapedXmlFormat) || format.Equals(RawXmlPolicyFormat))
-                {
-                    contentFormat = PolicyContentFormat.Rawxml;
-                }
             }
             else if (!string.IsNullOrEmpty(PolicyUrl))
             {
                 policyContent = PolicyUrl;
-                contentFormat = PolicyContentFormat.XmlLink;
-                if (format.Equals(NonEscapedXmlFormat) || format.Equals(RawXmlPolicyFormat))
-                {
-                    contentFormat = PolicyContentFormat.RawxmlLink;
-                }
             }
             else
             {

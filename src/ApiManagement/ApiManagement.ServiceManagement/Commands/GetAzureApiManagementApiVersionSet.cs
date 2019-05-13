@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Arm Resource Identifier of the ApiVersionSet." +
             " If specified will try to find apiVersionSet by the identifier. This parameter is required.")]

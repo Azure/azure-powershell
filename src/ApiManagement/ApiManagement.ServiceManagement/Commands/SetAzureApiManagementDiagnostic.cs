@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Identifier of existing Diagnostic. This parameter is required.")]
+        [PSArgumentCompleter(Constants.ApplicationInsightsDiagnostics, Constants.AzureMonitorDiagnostic)]
         [ValidateNotNullOrEmpty]
         public String DiagnosticId { get; set; }
 
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ParameterSetName = ByResourceIdParameterSet,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Arm ResourceId of Diagnostic or Api Diagnostic. This parameter is required.")]
         [ValidateNotNullOrEmpty]
@@ -83,7 +84,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Specifies for what type of messages sampling settings should not apply. This parameter is optional.")]
-        [PSArgumentCompleter("allErrors")]
+        [PSArgumentCompleter(Constants.AllErrors)]
         public String AlwaysLog { get; set; }
 
         [Parameter(
@@ -130,7 +131,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             {
                 resourcegroupName = Context.ResourceGroupName;
                 serviceName = Context.ServiceName;
-                diagnosticId = DiagnosticId;
+                diagnosticId = Utils.GetDiagnosticId(DiagnosticId);
                 apiId = ApiId;
             }
             else
