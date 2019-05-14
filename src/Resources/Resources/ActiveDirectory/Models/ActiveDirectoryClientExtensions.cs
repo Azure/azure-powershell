@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 Id = group.ObjectId,
                 SecurityEnabled = group.SecurityEnabled,
                 MailNickname = group.Mail ?? group.AdditionalProperties["mailNickname"].ToString(),
-                Description = (group.AdditionalProperties.ContainsKey("description") && group.AdditionalProperties["description"] != null ? group.AdditionalProperties["description"].ToString() : null)
+                Description = group.AdditionalProperties.ContainsKey("description") ? group.AdditionalProperties["description"]?.ToString() : null
             };
         }
 
