@@ -115,7 +115,6 @@ function Test-RunbookWithParameter
     $job = $automationAccount | Start-AzAutomationRunbook -Name $runbook.Name -Parameters $parameters
     WaitForJobStatus -Id $job.JobId -Status "Completed"
     $jobOutput = $automationAccount | Get-AzAutomationJobOutput -Id $job.JobId -Stream Output
-
     [int]$Result = $jobOutput | Select-Object -Last 1 -ExpandProperty Summary
     Assert-AreEqual $expectedResult $Result
     
