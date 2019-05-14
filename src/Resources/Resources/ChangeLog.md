@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Add new cmdlet Get-AzureRmDenyAssignment for retrieving deny assignments
+* Add 'NoWait' switch to Remove-AzResource
 
 ## Version 1.3.1
 * Fix documentation for wildcards

@@ -25,10 +25,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        /// <summary>
-        /// Executes the cmdlet.
-        /// </summary>
-        protected override void OnProcessRecord()
+        [Parameter(Mandatory = false, HelpMessage = "Begin resource deletion but don't wait for completion")]
+        public SwitchParameter NoWait { get; set; }
+
+    /// <summary>
+    /// Executes the cmdlet.
+    /// </summary>
+    protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
 
@@ -51,6 +54,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             odataQuery: this.ODataQuery)
                         .Result;
 
+                  if (!NoWait) {
                     var managementUri = this.GetResourcesClient()
                         .GetResourceManagementRequestUri(
                             resourceId: resourceId,
@@ -61,6 +65,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                     this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: false)
                         .WaitOnOperation(operationResult: operationResult);
+                  }
 
                     this.WriteObject(true);
                 });
