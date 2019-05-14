@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                         siteConfig = WebApp.SiteConfig;
                     }
 
-                    //According to current implementation if AppSettings paramter is provided we are overriding existing AppSettings
+                    //According to current implementation if AppSettings parameter is provided we are overriding existing AppSettings
                     if (WebApp.SiteConfig.AppSettings != null && AppSettings == null)
                     {
                         foreach (var setting in WebApp.SiteConfig.AppSettings)
@@ -278,7 +278,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                                 StringComparer.OrdinalIgnoreCase));
 
                     CmdletHelpers.TryParseAppServicePlanMetadataFromResourceId(WebApp.ServerFarmId, out rg, out servicePlanName);
-                    WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, servicePlanName);
+                    WebApp.AzureStoragePath = null; // the API to update site Object doesn't have the AzureStorage Path property
+                    WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, servicePlanName, WebApp);
                     break;
             }
 
