@@ -152,5 +152,6 @@
     { "regex": "DeploymentManager", "alias": "Deployment Manager" },
     { "regex": "Peering", "group": "Peering", "alias": "Peering" },
     { "regex": "PeerAsn", "group": "Peering", "alias": "Peer Asn" },
+    { "regex": "ManagedServices", "group": "Managed Services", "alias": "Managed Services" },
     { "regex": "NetAppFiles", "alias": "NetApp Files" }
 ]
