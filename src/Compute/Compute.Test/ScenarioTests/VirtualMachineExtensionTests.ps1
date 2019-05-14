@@ -1254,21 +1254,21 @@ function Test-AzureDiskEncryptionExtensionSinglePassDisableAndRemove
 .SYNOPSIS
 Test the Set-AzVMDiskEncryptionExtension single pass scenario for Linux VMs with Managed Disks
 #>
-function TestAzureDiskEncryptionExtensionSinglePassSkipVmBackupForLinuxManagedDisks
+function Test-AzDiskEncryptionSinglePassLnxManagedDisks
 {
-	$rgname = Get-ComputeTestResourceName
-	try
-	{
-		# create virtual machine 
-		$loc = Get-ComputeVMLocation;
+    $rgname = Get-ComputeTestResourceName
+    try
+    {
+        # create virtual machine 
+        $loc = Get-ComputeVMLocation;
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
-		        
+            
         # VM Profile & Hardware
         $vmsize = 'Standard_D2S_V3';
         $vmname = 'vm' + $rgname;
-		$imagePublisher = "RedHat";
-		$imageOffer = "RHEL";
-		$imageSku ="7.5";
+        $imagePublisher = "RedHat";
+        $imageOffer = "RHEL";
+        $imageSku = "7.5";
         $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
@@ -1297,13 +1297,13 @@ function TestAzureDiskEncryptionExtensionSinglePassSkipVmBackupForLinuxManagedDi
 
         $osDiskName = 'linuxOsDisk';
         $osDiskCaching = 'ReadWrite';        
-		$osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/linuxos.vhd";
-        
-	    $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -Caching $osDiskCaching -CreateOption FromImage -Linux;
-        
+        $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/linuxos.vhd";
+    
+        $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -Caching $osDiskCaching -CreateOption FromImage -Linux;
+    
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
-              
+            
         # OS & Image
         $user = "Foo12";
         $password = $PLACEHOLDER;
@@ -1313,12 +1313,12 @@ function TestAzureDiskEncryptionExtensionSinglePassSkipVmBackupForLinuxManagedDi
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
         $p = Set-AzVMOperatingSystem -VM $p -Linux -ComputerName $computerName -Credential $cred;
-		$p = Set-AzVMSourceImage -VM $p -PublisherName $imagePublisher -Offer $imageOffer -Skus $imageSku -Version "latest"
-		
+        $p = Set-AzVMSourceImage -VM $p -PublisherName $imagePublisher -Offer $imageOffer -Skus $imageSku -Version "latest"
+    
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
         Assert-AreEqual $p.OSProfile.AdminPassword $password;
-       
+    
         Assert-AreEqual $p.StorageProfile.ImageReference.Offer $imageOffer;
         Assert-AreEqual $p.StorageProfile.ImageReference.Publisher $imagePublisher;
         Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imageSku;        
@@ -1326,45 +1326,45 @@ function TestAzureDiskEncryptionExtensionSinglePassSkipVmBackupForLinuxManagedDi
         # Virtual Machine
         New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
-		# Create key vault and enable ADE access policy
-		$vaultName = 'kv' + $rgname
-		$keyVault = New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $loc -Sku standard;
-		$keyVault = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname
+        # Create key vault and enable ADE access policy
+        $vaultName = 'kv' + $rgname
+        $keyVault = New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $loc -Sku standard;
+        $keyVault = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname
         #set enabledForDiskEncryption
         Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $rgname -EnabledForDiskEncryption;		
-		$diskEncryptionKeyVaultUrl = $keyVault.VaultUri;
+        $diskEncryptionKeyVaultUrl = $keyVault.VaultUri;
         $keyVaultResourceId = $keyVault.ResourceId;
 
-		# Enable single pass encryption without -skipVmBackup on Linux VM managed disk and verify exception is thrown		
-		Assert-ThrowsContains { Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmname -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType "OS" -Force; } `
-			"skipVmBackup parameter is a required parameter for encrypting Linux VMs with managed disks";
-						
-	}
-	finally
-	{
-		Clean-ResourceGroup($rgname)
-	}
+        # Enable single pass encryption without -skipVmBackup on Linux VM managed disk and verify exception is thrown		
+        Assert-ThrowsContains { Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmname -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType "OS" -Force; } `
+            "skipVmBackup parameter is a required parameter for encrypting Linux VMs with managed disks";
+                    
+    }
+    finally
+    {
+        Clean-ResourceGroup($rgname)
+    }
 }
 
 <#
 .SYNOPSIS
 Test the Set-AzVMDiskEncryptionExtension single pass scenario for Linux VMs with Native Disks
 #>
-function TestAzureDiskEncryptionExtensionSinglePassSkipVmBackupForLinuxNativeDisks
+function Test-AzDiskEncryptionSinglePassLnxNativeDisks
 {
-	$rgname = Get-ComputeTestResourceName
-	try
-	{
-		# create virtual machine
-		$loc = Get-ComputeVMLocation;
+    $rgname = Get-ComputeTestResourceName
+    try
+    {
+        # create virtual machine
+        $loc = Get-ComputeVMLocation;
         New-AzResourceGroup -Name $rgname -Location $loc -Force;		
-        
+    
         # VM Profile & Hardware
         $vmsize = 'Standard_D2S_V3';
         $vmname = 'vm' + $rgname;
-		$imagePublisher = "RedHat";
-		$imageOffer = "RHEL";
-		$imageSku ="7.5";
+        $imagePublisher = "RedHat";
+        $imageOffer = "RHEL";
+        $imageSku = "7.5";
         $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
@@ -1393,14 +1393,14 @@ function TestAzureDiskEncryptionExtensionSinglePassSkipVmBackupForLinuxNativeDis
 
         $osDiskName = 'linuxOsDisk';
         $osDiskCaching = 'ReadWrite';        
-		$osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/linuxos.vhd";
-        
+        $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/linuxos.vhd";
+    
         $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage -Linux;
-        
+    
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
         Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
-       
+    
         # OS & Image
         $user = "Foo12";
         $password = $PLACEHOLDER;
@@ -1410,12 +1410,12 @@ function TestAzureDiskEncryptionExtensionSinglePassSkipVmBackupForLinuxNativeDis
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
         $p = Set-AzVMOperatingSystem -VM $p -Linux -ComputerName $computerName -Credential $cred;
-		$p = Set-AzVMSourceImage -VM $p -PublisherName $imagePublisher -Offer $imageOffer -Skus $imageSku -Version "latest"
-		
+        $p = Set-AzVMSourceImage -VM $p -PublisherName $imagePublisher -Offer $imageOffer -Skus $imageSku -Version "latest"
+    
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
         Assert-AreEqual $p.OSProfile.AdminPassword $password;
-       
+    
         Assert-AreEqual $p.StorageProfile.ImageReference.Offer $imageOffer;
         Assert-AreEqual $p.StorageProfile.ImageReference.Publisher $imagePublisher;
         Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imageSku;        
@@ -1423,31 +1423,31 @@ function TestAzureDiskEncryptionExtensionSinglePassSkipVmBackupForLinuxNativeDis
         # Create virtual machine
         New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
-		# Create key vault and enable ADE access policy
-		$vaultName = 'kv' + $rgname
-		$keyVault = New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $loc -Sku standard;
-		$keyVault = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname
+        # Create key vault and enable ADE access policy
+        $vaultName = 'kv' + $rgname
+        $keyVault = New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $loc -Sku standard;
+        $keyVault = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname
         #set enabledForDiskEncryption
         Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $rgname -EnabledForDiskEncryption;		
-		$diskEncryptionKeyVaultUrl = $keyVault.VaultUri;
+        $diskEncryptionKeyVaultUrl = $keyVault.VaultUri;
         $keyVaultResourceId = $keyVault.ResourceId;
-		
-		# Enable single pass encryption on Linux VM with native disk
-		Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmname -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType "OS" -Force;
+    
+        # Enable single pass encryption on Linux VM with native disk
+        Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmname -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType "OS" -Force;
 
-		# verify encryption state
-		$status = Get-AzVmDiskEncryptionStatus -ResourceGroupName $rgname -VMName $vmname
-		Assert-NotNull $status
+        # verify encryption state
+        $status = Get-AzVmDiskEncryptionStatus -ResourceGroupName $rgname -VMName $vmname
+        Assert-NotNull $status
 
-		# Linux OS disk encryption takes about 1-2 hours to complete
-		# Checking for OS disk encryption status = 'EncryptionInProgress' to validate that encryption has been initiated successfully
-		Assert-AreEqual $status.OsVolumeEncrypted EncryptionInProgress
-		Assert-AreEqual $status.DataVolumesEncrypted NotMounted								
-	}
-	finally
-	{
-		Clean-ResourceGroup($rgname)
-	}
+        # Linux OS disk encryption takes about 1-2 hours to complete
+        # Checking for OS disk encryption status = 'EncryptionInProgress' to validate that encryption has been initiated successfully
+        Assert-AreEqual $status.OsVolumeEncrypted EncryptionInProgress
+        Assert-AreEqual $status.DataVolumesEncrypted NotMounted								
+    }
+    finally
+    {
+        Clean-ResourceGroup($rgname)
+    }
 }
 
 <#

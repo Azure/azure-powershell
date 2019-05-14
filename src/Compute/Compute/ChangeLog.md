@@ -20,6 +20,7 @@
 -->
 ## Upcoming Release
 * New-AzVM wimple parameter set now uses by default an available location if 'East US' is not supported
+* Update error message in Set-AzVMDiskEncryptionExtension when -skipVmBackup parameter is missing 
 
 ## Version 2.0.0
 * Proximity placement group feature.
