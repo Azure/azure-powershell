@@ -36,7 +36,21 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewSearchService()
         {
-            TestController.NewInstance.RunPsTest(traceInterceptor,"Test-NewAzureRmSearchService");
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmSearchService");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSearchServiceBasic()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmSearchServiceBasic");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSearchServiceL1()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmSearchServiceL1");
         }
 
         [Fact]
