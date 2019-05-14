@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     Id = obj.ObjectId,
                     Type = obj.ObjectType,
                     SecurityEnabled = obj.SecurityEnabled,
-                    MailNickname = (obj.Mail != null ? obj.Mail : obj.AdditionalProperties["mailNickname"].ToString()),
+                    MailNickname = obj.Mail ?? obj.AdditionalProperties["mailNickname"].ToString(),
                     Description = (obj.AdditionalProperties.ContainsKey("description") && obj.AdditionalProperties["description"] != null ? obj.AdditionalProperties["description"].ToString() : null)
                 };
             }
