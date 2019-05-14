@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.1
 * New-AzVM wimple parameter set now uses by default an available location if 'East US' is not supported
 
 ## Version 2.0.0

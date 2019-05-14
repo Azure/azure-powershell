@@ -1,3 +1,32 @@
+## 2.1.0 - May 2019
+#### Az.Automation
+* Updated Get-AzAutomationJobOutputRecord to handle JSON and Text record values.
+    - Fix for issue https://github.com/Azure/azure-powershell/issues/7977
+    - Fix for issue https://github.com/Azure/azure-powershell/issues/8600
+* Changed behavior for Start-AzAutomationDscCompilationJob to just start the job instead of waiting for its completion.
+    * Fix for issue https://github.com/Azure/azure-powershell/issues/8347
+* Fix for Get-AzAutomationDscNode when using -Name returns all node. Now it returns matching node only.
+
+#### Az.Compute
+* New-AzVM wimple parameter set now uses by default an available location if 'East US' is not supported
+
+#### Az.DataLakeStore
+* Update the ADLS sdk to use httpclient, integrate dataplane testing with azure framework
+
+#### Az.Monitor
+* Fixed incorrect parameter names in help examples
+
+#### Az.Network
+* Add DisableBgpRoutePropagation flag to Effective Route Table output
+    - Updated cmdlet:
+        - Get-AzEffectiveRouteTable
+
+#### Az.Resources
+* Add new cmdlet Get-AzureRmDenyAssignment for retrieving deny assignments
+
+#### Az.Sql
+* Rename Advanced Threat Protection cmdlets to Advanced Data Security and enable Vulnerability Assessment by default
+
 ## 2.0.0 - May 2019
 #### Az.Accounts
 * Update Authentication Library to fix ADFS issues with username/password auth
