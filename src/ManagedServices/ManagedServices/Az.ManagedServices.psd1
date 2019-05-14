@@ -30,7 +30,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = '(c) Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-# Description = ''
+Description = 'Microsoft Azure PowerShell - ManagedServices cmdlets for Azure Resource Manager'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'
@@ -69,7 +69,7 @@ FormatsToProcess = '.\Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.generat
 NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = '*'
+FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport =  'Get-AzManagedServicesAssignment',
@@ -80,10 +80,10 @@ CmdletsToExport =  'Get-AzManagedServicesAssignment',
 				   'Remove-AzManagedServicesDefinition'
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = '*'
+AliasesToExport = @()
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -100,19 +100,28 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        # Tags = @()
+        Tags = 'Azure', 'ResourceManager', 'ARM', 'ManagedServices'
 
         # A URL to the license for this module.
-        # LicenseUri = ''
+        LicenseUri = 'https://aka.ms/azps-license'
 
         # A URL to the main website for this project.
-        # ProjectUri = ''
+        ProjectUri = 'https://github.com/Azure/azure-powershell'
 
         # A URL to an icon representing this module.
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = 'Initial Release for ManagedServices cmdlets.'
+
+        # Prerelease string of this module
+        # Prerelease = ''
+
+        # Flag to indicate whether the module requires explicit user acceptance for install/update/save
+        # RequireLicenseAcceptance = $false
+
+        # External dependent modules of this module
+        # ExternalModuleDependencies = @()
 
     } # End of PSData hashtable
 
