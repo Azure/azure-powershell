@@ -146,12 +146,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipeline = true)]
         public Compute.Models.PSVirtualMachineDataDisk [] DataDisk { get; set; }
 
-        [Parameter(
-            ValueFromPipeline = true)]
+        [Parameter()]
         public bool ProtectFromScaleIn { get; set; }
 
-        [Parameter(
-            ValueFromPipeline = true)]
+        [Parameter()]
         public bool ProtectFromScaleSetAction { get; set; }
 
         [Parameter(
