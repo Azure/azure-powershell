@@ -15,7 +15,7 @@ Creates an Azure SQL Database Managed Instance.
 ### NewByEditionAndComputeGenerationParameterSet (Default)
 ```
 New-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> -AdministratorCredential <PSCredential>
- -Location <String> -SubnetId <String> -LicenseType <String> -StorageSizeInGB <Int32> -VCore <Int32>
+ -Location <String> -SubnetId <String> -LicenseType <String> [-StorageSizeInGB <Int32>] -VCore <Int32>
  -Edition <String> -ComputeGeneration <String> [-Collation <String>] [-PublicDataEndpointEnabled]
  [-ProxyOverride <String>] [-TimezoneId <String>] [-DnsZonePartner <String>] [-Tag <Hashtable>] [-AssignIdentity] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -24,7 +24,7 @@ New-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> -AdministratorC
 ### NewBySkuNameParameterSetParameter
 ```
 New-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> -AdministratorCredential <PSCredential>
- -Location <String> -SubnetId <String> -LicenseType <String> -StorageSizeInGB <Int32> -VCore <Int32>
+ -Location <String> -SubnetId <String> -LicenseType <String> [-StorageSizeInGB <Int32>] -VCore <Int32>
  -SkuName <String> [-Collation <String>] [-PublicDataEndpointEnabled] [-ProxyOverride <String>]
  [-TimezoneId <String>] [-DnsZonePartner <String>] [-Tag <Hashtable>] [-AssignIdentity] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -297,11 +297,11 @@ Accept wildcard characters: False
 Determines how much Storage size to associate with instance
 
 ```yaml
-Type: System.Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
