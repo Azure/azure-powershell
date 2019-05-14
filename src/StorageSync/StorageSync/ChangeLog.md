@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* Replace Graph method for ensuring Service Principal in CloudEndpoint provisioning.
+
 ## Version 0.8.1
 * Support for tracking upload and download sync activity in parallel
 
