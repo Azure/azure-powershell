@@ -1302,7 +1302,7 @@ function Test-AzureDiskEncryptionExtensionSinglePassEnableAndDisableWithNonDefau
 	finally
 	{
 		Clean-ResourceGroup($resourceGroupName)
-    }
+	}
 }
 
 <#
@@ -1604,7 +1604,7 @@ function Test-VirtualMachineBginfoExtension
         $password = $PLACEHOLDER;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force; <#[SuppressMessage("Microsoft.Security", "CS001:SecretInline", Justification="Credentials are used only for the duration of test. Resources are deleted at the end of the test.")]#>
         <#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Credentials are used only for the duration of test. Resources are deleted at the end of the test.")]#>
-        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword); 
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
