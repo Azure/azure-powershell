@@ -1307,7 +1307,8 @@ function Test-AzDiskEncryptionSinglePassLnxManagedDisks
         # OS & Image
         $user = "Foo12";
         $password = $PLACEHOLDER;
-        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force; <#[SuppressMessage("Microsoft.Security", "CS001:SecretInline", Justification="Credentials are used only for the duration of test. Resources are deleted at the end of the test.")]#>
+        <#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Credentials are used only for the duration of test. Resources are deleted at the end of the test.")]#>
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
@@ -1404,8 +1405,9 @@ function Test-AzDiskEncryptionSinglePassLnxNativeDisks
         # OS & Image
         $user = "Foo12";
         $password = $PLACEHOLDER;
-        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
-        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force; <#[SuppressMessage("Microsoft.Security", "CS001:SecretInline", Justification="Credentials are used only for the duration of test. Resources are deleted at the end of the test.")]#>
+        <#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Credentials are used only for the duration of test. Resources are deleted at the end of the test.")]#>
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword); 
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
