@@ -19,11 +19,20 @@
 -->
 ## Upcoming Release
 
+## Version 1.4.0
+* Support for Cross subscription Azure to Azure site recovery.
+* Marking upcoming breaking changes for Azure Site Recovery.
+* Fix for Azure Site Recovery recovery plan end action plan.
+* Fix for Azure Site Recovery Update network mapping for Azure to Azure.
+* Fix for Azure Site Recovery update protection direction for Azure to Azure for managed disk.
+* Other minor fixes.
+
 ## Version 1.3.0
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 * Updated table format for SQL in azure VM
 * Added alternate method to fetch location in AzureFileShare
 * Updated ScheduleRunDays in SchedulePolicy object according to timezone
+* Made some attibutes read-only in Get-AzRecoveryServicesBackupWorkloadRecoveryConfig 
 
 ## Version 1.2.0
 * Added SnapshotRetentionInDays in Azure VM policy to support Instant RP
