@@ -112,7 +112,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Initial Reelease for ManagedServices cmdlets.'
+        ReleaseNotes = 'Initial Release for ManagedServices cmdlets.'
 
         # Prerelease string of this module
         # Prerelease = ''
