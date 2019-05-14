@@ -648,6 +648,68 @@
       </ListControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSVpnClientConnectionHealthDetail</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSVpnClientConfiguration</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>VpnConnectionId</Label>
+                <PropertyName>VpnConnectionId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VpnConnectionDuration</Label>
+                <PropertyName>VpnConnectionDuration</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VpnConnectionTime</Label>
+                <PropertyName>VpnConnectionTime</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PublicIpAddress</Label>
+                <PropertyName>PublicIpAddress</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PrivateIpAddress</Label>
+                <PropertyName>PrivateIpAddress</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VpnUserName</Label>
+                <PropertyName>VpnUserName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>MaxBandwidth</Label>
+                <PropertyName>MaxBandwidth</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EgressPacketsTransferred</Label>
+                <PropertyName>EgressPacketsTransferred</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EgressBytesTransferred</Label>
+                <PropertyName>EgressBytesTransferred</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>IngressPacketsTransferred</Label>
+                <PropertyName>IngressPacketsTransferred</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>IngressBytesTransferred</Label>
+                <PropertyName>IngressBytesTransferred</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>MaxPacketsPerSecond</Label>
+                <PropertyName>MaxPacketsPerSecond</PropertyName>
+              </ListItem>              
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway</TypeName>
