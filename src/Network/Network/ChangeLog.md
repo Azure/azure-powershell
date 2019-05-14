@@ -21,6 +21,9 @@
 * Add DisableBgpRoutePropagation flag to Effective Route Table output
     - Updated cmdlet:
         - Get-AzEffectiveRouteTable
+* Updated below commands for feature: UseLocalAzureIpAddress flag on VpnConnection
+	- Updated New-AzVpnConnection: Added optional parameter -UseLocalAzureIpAddress to indicate that local azure ip address should be used as source address while initiating connection.
+	- Updated Set-AzVpnConnection: Added optional parameter -UseLocalAzureIpAddress to indicate that local azure ip address should be used as source address while initiating connection.
 * Fixed bug in New-AzApplicationGatewayPathRuleConfig that prevented the rewrite ruleset from being set.
 
 ## Version 1.8.0
