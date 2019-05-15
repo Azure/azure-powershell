@@ -90,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-NatGateway Object
+Specifies the Nat Gateway resource.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSNatGateway

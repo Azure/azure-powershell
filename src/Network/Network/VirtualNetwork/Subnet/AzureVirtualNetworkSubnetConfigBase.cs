@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResourceId",
-            HelpMessage = "NatGatewayId")]
+            HelpMessage = "Specifies the Id of NAT Gateway resource associated with the subnet configuration")]
         public string ResourceId { get; set; }
 
         [GenericBreakingChange("Update Property Name", OldWay = "-InputObject", NewWay = "-NatGateway")]
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResource",
-            HelpMessage = "NatGateway")]
+            HelpMessage = "Specifies the nat gateway associated with the subnet configuration")]
         public PSNatGateway InputObject { get; set; }
 
         [Parameter(
