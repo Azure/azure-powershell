@@ -179,7 +179,7 @@ Specifies a continuation token for the blob list.
 Use this parameter and the *MaxCount* parameter to list blobs in multiple batches.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.Blob.BlobContinuationToken
+Type: Microsoft.Azure.Storage.Blob.BlobContinuationToken
 Parameter Sets: (All)
 Aliases:
 

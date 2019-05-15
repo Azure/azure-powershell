@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
+using Microsoft.Azure.Management.ApplicationInsights.Management;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -37,6 +38,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
         public StorageManagementClient StorageManagementClient { get; private set; }
 
         public IMonitorManagementClient MonitorManagementClient { get; private set; }
+
+        public ApplicationInsightsManagementClient ApplicationInsightsClient { get; private set; }
 
         public static TestsController NewInstance => new TestsController();
 
@@ -92,7 +95,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "AzureRM.Storage.ps1",
-                    "AzureRM.Resources.ps1");
+                    "AzureRM.Resources.ps1",
+                    _helper.GetRMModulePath("AzureRM.ApplicationInsights.psd1"));
 
                 try
                 {
@@ -124,18 +128,21 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
                 this.MonitorManagementClient = this.GetInsightsManagementClient(context: context, env: environment);
                 ResourceManagementClient = this.GetResourceManagementClient(context: context, env: environment);
                 StorageManagementClient = this.GetStorageManagementClient(context: context, env: environment);
+                ApplicationInsightsClient = this.GetApplicationInsightsManagementClient(context: context, env: environment);
             }
             else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
                 this.MonitorManagementClient = this.GetInsightsManagementClient(context: context, env: null);
                 ResourceManagementClient = this.GetResourceManagementClient(context: context, env: null);
                 StorageManagementClient = this.GetStorageManagementClient(context: context, env: null);
+                ApplicationInsightsClient = GetApplicationInsightsManagementClient(context, env:null);
             }
 
             _helper.SetupManagementClients(
                 ResourceManagementClient,
                 this.MonitorManagementClient,
-                 StorageManagementClient);
+                 StorageManagementClient,
+                this.ApplicationInsightsClient);
         }
 
         private ResourceManagementClient GetResourceManagementClient(RestTestFramework.MockContext context, RestTestFramework.TestEnvironment env)
@@ -157,6 +164,13 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             return env != null
                 ? context.GetServiceClient<StorageManagementClient>(currentEnvironment: env)
                 : context.GetServiceClient<StorageManagementClient>();
+        }
+
+        private ApplicationInsightsManagementClient GetApplicationInsightsManagementClient(RestTestFramework.MockContext context, RestTestFramework.TestEnvironment env)
+        {
+            return env != null
+                ? context.GetServiceClient<ApplicationInsightsManagementClient>(currentEnvironment: env)
+                : context.GetServiceClient<ApplicationInsightsManagementClient>();
         }
     }
 }

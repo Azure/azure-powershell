@@ -19,6 +19,16 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.0
+* Removed two cmdlets:
+    - Grant-AzHDInsightHttpServicesAccess
+    - Revoke-AzHDInsightHttpServicesAccess
+* Added a new cmdlet Set-AzHDInsightGatewayCredential to replace Grant-AzHDInsightHttpServicesAccess
+* Update cmdlet Get-AzHDInsightJobOutput to distinguish reader role and hdinsight operator role:
+    - Users with reader role need to specify `DefaultStorageAccountKey` parameter explicitly, otherwise error occurs.
+	- Users with hdinsight operator role will not be affected.
+
+
 ## Version 1.1.0
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 
