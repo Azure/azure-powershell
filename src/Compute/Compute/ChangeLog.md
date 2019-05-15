@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add ProtectFromScaleIn and ProtectFromScaleSetAction parameters to Update-AzVmssVM cmdlet.
 * New-AzVM wimple parameter set now uses by default an available location if 'East US' is not supported
 
 ## Version 2.0.0

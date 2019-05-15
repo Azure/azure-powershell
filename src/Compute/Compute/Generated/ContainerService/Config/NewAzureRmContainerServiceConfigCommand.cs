@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vCustomProfile.Orchestrator = this.CustomProfileOrchestrator;
             }
 
-            if (this.IsParameterBound(c => c.ServicePrincipalProfileClientId ))
+            if (this.IsParameterBound(c => c.ServicePrincipalProfileClientId))
             {
                 if (vServicePrincipalProfile == null)
                 {
