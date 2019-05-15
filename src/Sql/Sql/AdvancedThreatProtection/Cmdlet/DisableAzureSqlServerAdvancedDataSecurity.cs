@@ -18,27 +18,21 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
 {
     /// <summary>
-    /// Returns the Advanced Threat Protection policy of a specific server.
+    /// Disables the Advanced Data Security of a specific server.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerAdvancedThreatProtectionPolicy"), OutputType(typeof(ServerAdvancedThreatProtectionPolicyModel))]
-    public class GetAzureSqlServerAdvancedThreatProtectionPolicy : SqlServerAdvancedThreatProtectionCmdletBase
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerAdvancedDataSecurity", SupportsShouldProcess = true), OutputType(typeof(ServerAdvancedDataSecurityPolicyModel))]
+    [Alias("Disable-AzSqlServerAdvancedThreatProtection")]
+    public class DisableAzureSqlServerAdvancedDataSecurity : SqlServerAdvancedDataSecurityCmdletBase
     {
         /// <summary>
-        /// Provides the model element that this cmdlet operates on
-        /// </summary>
-        /// <returns>A model object</returns>
-        protected override ServerAdvancedThreatProtectionPolicyModel GetEntity()
-        {
-            ServerAdvancedThreatProtectionPolicyModel model = base.GetEntity();
-            return ModelAdapter.GetServerAdvancedThreatProtectionPolicy(model.ResourceGroupName, model.ServerName);
-        }
-
-        /// <summary>
-        /// No sending is needed as this is a Get cmdlet
+        /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
+        /// object to the REST endpoint
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override ServerAdvancedThreatProtectionPolicyModel PersistChanges(ServerAdvancedThreatProtectionPolicyModel model)
+        protected override ServerAdvancedDataSecurityPolicyModel PersistChanges(ServerAdvancedDataSecurityPolicyModel model)
         {
+            model.IsEnabled = false;
+            ModelAdapter.SetServerAdvancedDataSecurity(model);
             return model;
         }
     }
