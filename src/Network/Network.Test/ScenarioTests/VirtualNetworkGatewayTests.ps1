@@ -801,6 +801,7 @@ param
         # Cleanup
         Clean-ResourceGroup $rgname
      }
+}
 
 <#
 .SYNOPSIS
@@ -858,4 +859,3 @@ function Test-VirtualNetworkGatewayVpnclientConnectionHealth
     }
 }
 
-}
