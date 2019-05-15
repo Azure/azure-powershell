@@ -13,7 +13,7 @@ Creates azure automation software update configuration azure query object.
 ## SYNTAX
 
 ```
-New-AzAutomationUpdateManagementAzureQuery -Scope <String[]> [-Locaton <String[]>] [-Tag <Hashtable>]
+New-AzAutomationUpdateManagementAzureQuery -Scope <String[]> [-Location <String[]>] [-Tag <Hashtable>]
  [-FilterOperator <TagOperators>] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -36,7 +36,7 @@ PS C:\>$tag1.add("tag2", "tag2Value")
 PS C:\>$azq = New-AzAutomationUpdateManagementAzureQuery -ResourceGroupName "mygroup" `
                                        -AutomationAccountName "myaccount" `
                                        -Scope $query1Scope `
-                                       -Locaton $query1Location `
+                                       -Location $query1Location `
                                        -Tag $tag1
 PS C:\>$AzureQueries = @($azq)
 PS C:\> $startTime = [DateTimeOffset]"2018-09-13T21:00"
@@ -118,7 +118,7 @@ Default value: None
 Accept wildcard characters: False
 ```
 
-### -Locaton
+### -Location
 List of locations for azure virtual machines.
 
 ```yaml
