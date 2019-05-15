@@ -95,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The Nat Gateway
+Specifies Nat Gateway Resource.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSNatGateway
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Nat Gateway Id
+Specifies the Id of the Nat Gateway resource.
 
 ```yaml
 Type: System.String

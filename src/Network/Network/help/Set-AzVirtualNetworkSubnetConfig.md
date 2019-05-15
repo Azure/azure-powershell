@@ -89,10 +89,14 @@ $pip = New-AzPublicIpAddress -Name "pip" -ResourceGroupName "natgateway_test" `
 $natGateway = New-AzNatGateway -ResourceGroupName "natgateway_test" -Name "nat_gateway" `
    -IdleTimeoutInMinutes 4 -Sku "Standard" -Location "eastus2" -PublicIpAddress $pip
 
-$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24" -InputObject $natGateway
+$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24" 
 
 $virtualNetwork = New-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup 
     -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
+
+Set-AzVirtualNetworkSubnetConfig -Name frontendSubnet -VirtualNetwork $virtualNetwork -InputObject $natGateway 
+
+$virtualNetwork | Set-AzVirtualNetwork
 ```
 
 ## PARAMETERS
@@ -143,6 +147,8 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
+Specifies the nat gateway associated with the subnet configuration.
+
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSNatGateway
 Parameter Sets: SetByResource
@@ -201,7 +207,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-NatGatewayId
+Specifies the Id of NAT Gateway resource associated with the subnet configuration.
 
 ```yaml
 Type: System.String

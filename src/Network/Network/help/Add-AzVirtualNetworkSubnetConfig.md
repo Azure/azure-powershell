@@ -106,6 +106,8 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
+Specifies the nat gateway associated with the subnet configuration.
+
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSNatGateway
 Parameter Sets: SetByResource
@@ -165,7 +167,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-NatGatewayId
+Specifies the Id of NAT Gateway resource associated with the subnet configuration.
 
 ```yaml
 Type: System.String
