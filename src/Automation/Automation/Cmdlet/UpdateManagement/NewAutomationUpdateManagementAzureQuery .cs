@@ -36,10 +36,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
         public string[] Scope { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "List of locations for azure virtual machines.")]
-        public string[] Locaton { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "List of locations for azure virtual machines.")]
         [LocationCompleter("Microsoft.Automation/SoftwareUpdateConfiguration")]
+        [Alias("Locaton")]
         public string[] Location { get; set; }
 
         [Parameter(Mandatory = false,  HelpMessage = "Tag for azure virtual machines.")]
@@ -58,7 +56,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
             var azureQuery = new AzureQueryProperties
             {
                 Scope = this.Scope,
-                Locations = this.Location != null ? this.Location : this.Locaton,
+                Locations = this.Location,
                 TagSettings = this.Tag == null ? null : new TagSettings
                 {
                     Tags = CreateTagDictionary(this.Tag),
