@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Peering.dll', '.\AutoMapper.dll'
@@ -109,7 +109,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ARM','Network','Peering', 'EdgeRP', 'PSModule', 'Interconnect', 'Exchange', 'Direct', 'PNI'
+        Tags = 'Azure','ARM','Network','Peering','PSModule', 'Exchange', 'Direct', 'PNI', 'Peer', 'Asn'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -121,7 +121,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Preview Release for Microsoft Peering Service'
+        ReleaseNotes = '* Updated AutoMapper to 6.2.2'
 
         # Prerelease string of this module
         # Prerelease = ''

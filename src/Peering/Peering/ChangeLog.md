@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+## Version 0.1.1
+* Updated Automapper 6.2.0 -> 6.2.2 
+* Bug fix in Get-AzPeeringLocation 
 ## Version 0.1.0
 * Preview release for Microsoft Peering Service module
