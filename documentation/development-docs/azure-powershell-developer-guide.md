@@ -36,11 +36,6 @@ The Azure PowerShell Developer Guide was created to help with the development an
 - [After Development](#after-development)
 - [Misc](#misc)
     - [Publish to PowerShell Gallery](#publish-to-powershell-gallery)
-    - [AsJob Parameter](#asjob-parameter)
-    - [Argument Completers](#argument-completers)
-        - [Resource Group Completer](#resource-group-completers)
-        - [Location Completer](#location-completer)
-        - [Generic Argument Completer](#generic-argument-completer)
 
 # Prerequisites
 

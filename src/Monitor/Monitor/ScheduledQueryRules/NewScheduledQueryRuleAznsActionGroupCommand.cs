@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         #endregion
         protected override void ProcessRecordInternal()
         {
-            AzNsActionGroup actionGroup = new AzNsActionGroup(ActionGroup, EmailSubject, CustomWebhookPayload);
+            AzNsActionGroup actionGroup = new AzNsActionGroup(actionGroup: ActionGroup, emailSubject: EmailSubject, customWebhookPayload: CustomWebhookPayload);
             WriteObject(new PSScheduledQueryRuleAznsAction(actionGroup));
         }
     }
