@@ -694,7 +694,7 @@ Virtual network gateway tests
 #>
 function Test-VirtualNetworkGatewayVpnCustomIpsecPolicySet
 {
-param 
+	param 
     ( 
         $basedir = ".\" 
     )
@@ -809,6 +809,11 @@ Virtual network gateway Vpn Client Connection Health
 #>
 function Test-VirtualNetworkGatewayVpnclientConnectionHealth
 {
+	param 
+    ( 
+        $basedir = ".\" 
+    )
+
 	# Setup
     $rgname = Get-ResourceGroupName
     $rname = Get-ResourceName
