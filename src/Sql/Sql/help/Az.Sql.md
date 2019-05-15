@@ -132,7 +132,8 @@ Gets the geo-replication links between an Azure SQL Database and a resource grou
 Retrieves the distinct restore points from which a SQL Data Warehouse can be restored.
 
 ### [Get-AzSqlDatabaseSecureConnectionPolicy](Get-AzSqlDatabaseSecureConnectionPolicy.md)
-Gets the secure connection policy for a database.
+Gets the secure connection policy for a database. 
+Secure connection is deprecated and this command will be removed in a future release. Please use the SQL database blade in the Azure portal to view the connection strings
 
 ### [Get-AzSqlDatabaseSensitivityClassification](Get-AzSqlDatabaseSensitivityClassification.md)
 Gets the current information types and sensitivity labels of columns in the database.
