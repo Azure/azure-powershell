@@ -88,7 +88,7 @@ $script:LatestProfileMapPath = Get-LatestProfileMapPath
 function Get-AzureStorageBlob
 {
   $ScriptBlock = {
-    Invoke-WebRequest -uri $PSProfileMapEndpoint -ErrorVariable RestError
+    Invoke-WebRequest -Uri $PSProfileMapEndpoint -UseBasicParsing -ErrorVariable RestError
   }
 
   $WebResponse = Invoke-CommandWithRetry -ScriptBlock $ScriptBlock    
