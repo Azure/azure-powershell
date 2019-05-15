@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Rename Advanced Threat Protection cmdlets to Advanced Data Security and enable Vulnerability Assessment by default
+* Rename Threat Detection cmdlets to Advanced Threat Protection
 
 ## Version 1.9.0
 * Replace dependency on Monitor SDK with common code
