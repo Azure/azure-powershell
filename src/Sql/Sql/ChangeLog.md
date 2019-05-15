@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Rename Advanced Threat Protection cmdlets to Advanced Data Security and enable Vulnerability Assessment by default
+* Deprecating Get-AzSqlDatabaseSecureConnectionPolicy cmdlet
 
 ## Version 1.9.0
 * Replace dependency on Monitor SDK with common code
