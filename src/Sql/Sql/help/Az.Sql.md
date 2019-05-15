@@ -14,6 +14,9 @@ This topic displays help topics for the Azure SQL Database Cmdlets.
 ### [Add-AzSqlDatabaseToFailoverGroup](Add-AzSqlDatabaseToFailoverGroup.md)
 Adds one or more databases to an Azure SQL Database Failover Group.
 
+### [Add-AzSqlInstanceKeyVaultKey](Add-AzSqlInstanceKeyVaultKey.md)
+Adds a key vault key to the provided Managed Instance. 
+
 ### [Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate](Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate.md)
 Adds a Transparent Data Encryption Certificate for the given managed instance
 
@@ -213,6 +216,12 @@ Gets all vulnerability assessment scan record(s) associated with a given managed
 ### [Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting](Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a managed database.
 
+### [Get-AzSqlInstanceKeyVaultKey](Get-AzSqlInstanceKeyVaultKey.md)
+Gets a SQL managed instance's Key Vault keys.
+
+### [Get-AzSqlInstanceTransparentDataEncryptionProtector](Get-AzSqlInstanceTransparentDataEncryptionProtector.md)
+Gets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
+
 ### [Get-AzSqlInstanceVulnerabilityAssessmentSetting](Get-AzSqlInstanceVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a managed instance.
 
@@ -393,6 +402,9 @@ Removes an Azure SQL Managed Instance database.
 ### [Remove-AzSqlInstanceDatabaseSensitivityClassification](Remove-AzSqlInstanceDatabaseSensitivityClassification.md)
 Removes the information types and sensitivity labels of columns in the Azure SQL managed instance database.
 
+### [Remove-AzSqlInstanceKeyVaultKey](Remove-AzSqlInstanceKeyVaultKey.md)
+Removes a Key Vault key from a SQL managed instance
+
 ### [Remove-AzSqlServer](Remove-AzSqlServer.md)
 Removes an Azure SQL Database server.
 
@@ -500,6 +512,9 @@ Sets the information types and sensitivity labels of columns in the Azure SQL ma
 
 ### [Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Sets the vulnerability assessment rule baseline.
+
+### [Set-AzSqlInstanceTransparentDataEncryptionProtector](Set-AzSqlInstanceTransparentDataEncryptionProtector.md)
+Sets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
 
 ### [Set-AzSqlServer](Set-AzSqlServer.md)
 Modifies properties of a SQL Database server.

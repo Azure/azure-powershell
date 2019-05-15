@@ -199,7 +199,7 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Get-AzSqlInstanceVulnerabilityAssessmentSetting', 
                'Clear-AzSqlInstanceVulnerabilityAssessmentSetting', 
                'Update-AzSqlServerVulnerabilityAssessmentSetting', 
-               'Get-AzSqlServerVulnerabilityAssessmentSetting', 
+               'Get-AzSqlServerVulnerabilityAssessmentSetting',
                'Clear-AzSqlServerVulnerabilityAssessmentSetting', 
                'Get-AzSqlDatabaseSensitivityClassification', 
                'Get-AzSqlInstanceDatabaseSensitivityClassification', 
@@ -218,7 +218,12 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Update-AzSqlServerAdvancedThreatProtectionSettings', 
                'Get-AzSqlDatabaseAdvancedThreatProtectionSettings', 
                'Update-AzSqlDatabaseAdvancedThreatProtectionSettings', 
-               'Clear-AzSqlDatabaseAdvancedThreatProtectionSettings'
+               'Clear-AzSqlDatabaseAdvancedThreatProtectionSettings',
+               'Add-AzSqlInstanceKeyVaultKey',
+               'Get-AzSqlInstanceKeyVaultKey',
+               'Remove-AzSqlInstanceKeyVaultKey',
+               'Get-AzSqlInstanceTransparentDataEncryptionProtector',
+               'Set-AzSqlInstanceTransparentDataEncryptionProtector'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -242,7 +247,7 @@ AliasesToExport = 'Get-AzSqlDatabaseServerAuditingPolicy',
                'Get-AzSqlInstanceVulnerabilityAssessmentSettings', 
                'Clear-AzSqlInstanceVulnerabilityAssessmentSettings', 
                'Update-AzSqlServerVulnerabilityAssessmentSettings', 
-               'Get-AzSqlServerVulnerabilityAssessmentSettings', 
+               'Get-AzSqlServerVulnerabilityAssessmentSettings',
                'Clear-AzSqlServerVulnerabilityAssessmentSettings', 
                'Enable-AzSqlServerAdvancedThreatProtection', 
                'Disable-AzSqlServerAdvancedThreatProtection', 
@@ -252,7 +257,9 @@ AliasesToExport = 'Get-AzSqlDatabaseServerAuditingPolicy',
                'Set-AzSqlServerThreatDetectionPolicy', 
                'Get-AzSqlDatabaseThreatDetectionPolicy', 
                'Set-AzSqlDatabaseThreatDetectionPolicy', 
-               'Remove-AzSqlDatabaseThreatDetectionPolicy'
+               'Remove-AzSqlDatabaseThreatDetectionPolicy',
+               'Set-AzSqlInstanceTDEProtector',
+               'Get-AzSqlInstanceTDEProtector'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
