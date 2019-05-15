@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+
 * Created new Cmdlets for managing diagnostics at the global and API Scope
     - **Get-AzApiManagementDiagnostic** - Get the diagnostics configured a global or api Scope
     - **New-AzApiManagementDiagnostic** - Create new diagnostics at the global scope or api Scope
