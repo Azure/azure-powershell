@@ -1,0 +1,584 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/BenjinResourceGroup/providers/Microsoft.Sql/managedInstances/benjinmitest/keys/mitest-eus-donotdelete_mitest-key_6dc78e98a3274d87bd847436dd34045e?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmM2NDcwNTYtYmFiMi00MTc1LWIxNzItNDkzZmYwNDllYjI5L3Jlc291cmNlR3JvdXBzL0JlbmppblJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9iZW5qaW5taXRlc3Qva2V5cy9taXRlc3QtZXVzLWRvbm90ZGVsZXRlX21pdGVzdC1rZXlfNmRjNzhlOThhMzI3NGQ4N2JkODQ3NDM2ZGQzNDA0NWU/YXBpLXZlcnNpb249MjAxNy0xMC0wMS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"serverKeyType\": \"AzureKeyVault\",\r\n    \"uri\": \"https://mitest-eus-donotdelete.vault.azure.net/keys/mitest-key/6dc78e98a3274d87bd847436dd34045e\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ec30822e-96be-4f95-b21f-020a3b19cae5"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.31.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "177"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/BenjinResourceGroup/providers/Microsoft.Sql/locations/eastus/managedInstanceKeyOperationResults/43ea68f9-36af-4631-8aa4-ff5846a86394?api-version=2017-10-01-preview"
+        ],
+        "Retry-After": [
+          "1"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/BenjinResourceGroup/providers/Microsoft.Sql/locations/eastus/managedInstanceKeyAzureAsyncOperation/43ea68f9-36af-4631-8aa4-ff5846a86394?api-version=2017-10-01-preview"
+        ],
+        "x-ms-request-id": [
+          "43ea68f9-36af-4631-8aa4-ff5846a86394"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-correlation-request-id": [
+          "01b289a6-f2b9-4a98-b6d6-184683332d51"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190515T222740Z:01b289a6-f2b9-4a98-b6d6-184683332d51"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 15 May 2019 22:27:39 GMT"
+        ],
+        "Content-Length": [
+          "88"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"UpsertManagedServerEncryptionKeys\",\r\n  \"startTime\": \"2019-05-15T22:27:40.163Z\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/BenjinResourceGroup/providers/Microsoft.Sql/locations/eastus/managedInstanceKeyAzureAsyncOperation/43ea68f9-36af-4631-8aa4-ff5846a86394?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmM2NDcwNTYtYmFiMi00MTc1LWIxNzItNDkzZmYwNDllYjI5L3Jlc291cmNlR3JvdXBzL0JlbmppblJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL2Vhc3R1cy9tYW5hZ2VkSW5zdGFuY2VLZXlBenVyZUFzeW5jT3BlcmF0aW9uLzQzZWE2OGY5LTM2YWYtNDYzMS04YWE0LWZmNTg0NmE4NjM5ND9hcGktdmVyc2lvbj0yMDE3LTEwLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.31.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "1"
+        ],
+        "x-ms-request-id": [
+          "d2b1d5f6-4821-41d6-942a-9de7da17d953"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "0647b7c7-aadb-4b33-a8bc-1c8e202e9605"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190515T222741Z:0647b7c7-aadb-4b33-a8bc-1c8e202e9605"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 15 May 2019 22:27:41 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"43ea68f9-36af-4631-8aa4-ff5846a86394\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2019-05-15T22:27:40.163Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/BenjinResourceGroup/providers/Microsoft.Sql/managedInstances/benjinmitest/keys/mitest-eus-donotdelete_mitest-key_6dc78e98a3274d87bd847436dd34045e?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmM2NDcwNTYtYmFiMi00MTc1LWIxNzItNDkzZmYwNDllYjI5L3Jlc291cmNlR3JvdXBzL0JlbmppblJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9iZW5qaW5taXRlc3Qva2V5cy9taXRlc3QtZXVzLWRvbm90ZGVsZXRlX21pdGVzdC1rZXlfNmRjNzhlOThhMzI3NGQ4N2JkODQ3NDM2ZGQzNDA0NWU/YXBpLXZlcnNpb249MjAxNy0xMC0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.31.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "647295ba-84df-45f8-87ae-2f4265768952"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "d88b964e-745e-425b-8d7c-4b216238747d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190515T222741Z:d88b964e-745e-425b-8d7c-4b216238747d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 15 May 2019 22:27:41 GMT"
+        ],
+        "Content-Length": [
+          "613"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"kind\": \"azurekeyvault\",\r\n  \"properties\": {\r\n    \"serverKeyType\": \"AzureKeyVault\",\r\n    \"uri\": \"https://mitest-eus-donotdelete.vault.azure.net/keys/mitest-key/6dc78e98a3274d87bd847436dd34045e\",\r\n    \"thumbprint\": \"0BC02CDC5118ABC1BD5FD85A1A498EA0B474098E\",\r\n    \"creationDate\": \"2019-05-15T21:57:25.99Z\"\r\n  },\r\n  \"id\": \"/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/BenjinResourceGroup/providers/Microsoft.Sql/managedInstances/benjinmitest/keys/mitest-eus-donotdelete_mitest-key_6dc78e98a3274d87bd847436dd34045e\",\r\n  \"name\": \"mitest-eus-donotdelete_mitest-key_6dc78e98a3274d87bd847436dd34045e\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/keys\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/BenjinResourceGroup/providers/Microsoft.Sql/managedInstances/benjinmitest/encryptionProtector/current?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmM2NDcwNTYtYmFiMi00MTc1LWIxNzItNDkzZmYwNDllYjI5L3Jlc291cmNlR3JvdXBzL0JlbmppblJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9iZW5qaW5taXRlc3QvZW5jcnlwdGlvblByb3RlY3Rvci9jdXJyZW50P2FwaS12ZXJzaW9uPTIwMTctMTAtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "65dfea62-ee11-4d41-b593-8091e733d44f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.31.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "5dd7ed5d-2b67-49af-be08-f96d84d33b6c"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "0a204c50-4c10-4fbc-9127-a277096a5756"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190515T222741Z:0a204c50-4c10-4fbc-9127-a277096a5756"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 15 May 2019 22:27:41 GMT"
+        ],
+        "Content-Length": [
+          "359"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"kind\": \"servicemanaged\",\r\n  \"properties\": {\r\n    \"serverKeyName\": \"ServiceManaged\",\r\n    \"serverKeyType\": \"ServiceManaged\"\r\n  },\r\n  \"id\": \"/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/BenjinResourceGroup/providers/Microsoft.Sql/managedInstances/benjinmitest/encryptionProtector/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/encryptionProtector\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/BenjinResourceGroup/providers/Microsoft.Sql/managedInstances/benjinmitest/encryptionProtector/current?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmM2NDcwNTYtYmFiMi00MTc1LWIxNzItNDkzZmYwNDllYjI5L3Jlc291cmNlR3JvdXBzL0JlbmppblJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9iZW5qaW5taXRlc3QvZW5jcnlwdGlvblByb3RlY3Rvci9jdXJyZW50P2FwaS12ZXJzaW9uPTIwMTctMTAtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.31.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "19b141a8-9a32-4b5b-aa5f-cf67b0562f34"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-correlation-request-id": [
+          "08794043-cc13-4851-b8c3-9b303a16ca0a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190515T222744Z:08794043-cc13-4851-b8c3-9b303a16ca0a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 15 May 2019 22:27:43 GMT"
+        ],
+        "Content-Length": [
+          "513"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"kind\": \"azurekeyvault\",\r\n  \"properties\": {\r\n    \"serverKeyName\": \"mitest-eus-donotdelete_mitest-key_6dc78e98a3274d87bd847436dd34045e\",\r\n    \"serverKeyType\": \"AzureKeyVault\",\r\n    \"uri\": \"https://mitest-eus-donotdelete.vault.azure.net/keys/mitest-key/6dc78e98a3274d87bd847436dd34045e\"\r\n  },\r\n  \"id\": \"/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/BenjinResourceGroup/providers/Microsoft.Sql/managedInstances/benjinmitest/encryptionProtector/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/encryptionProtector\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/BenjinResourceGroup/providers/Microsoft.Sql/managedInstances/benjinmitest/encryptionProtector/current?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmM2NDcwNTYtYmFiMi00MTc1LWIxNzItNDkzZmYwNDllYjI5L3Jlc291cmNlR3JvdXBzL0JlbmppblJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9iZW5qaW5taXRlc3QvZW5jcnlwdGlvblByb3RlY3Rvci9jdXJyZW50P2FwaS12ZXJzaW9uPTIwMTctMTAtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "37d1ff4a-0050-472f-93b4-b21a8b470f9e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.31.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "7fef4786-8324-46b3-9a8a-0dc75a43b011"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "x-ms-correlation-request-id": [
+          "5730ffeb-60fc-4472-9f7c-6131e9fcd7b2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190515T222744Z:5730ffeb-60fc-4472-9f7c-6131e9fcd7b2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 15 May 2019 22:27:44 GMT"
+        ],
+        "Content-Length": [
+          "513"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"kind\": \"azurekeyvault\",\r\n  \"properties\": {\r\n    \"serverKeyName\": \"mitest-eus-donotdelete_mitest-key_6dc78e98a3274d87bd847436dd34045e\",\r\n    \"serverKeyType\": \"AzureKeyVault\",\r\n    \"uri\": \"https://mitest-eus-donotdelete.vault.azure.net/keys/mitest-key/6dc78e98a3274d87bd847436dd34045e\"\r\n  },\r\n  \"id\": \"/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/BenjinResourceGroup/providers/Microsoft.Sql/managedInstances/benjinmitest/encryptionProtector/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/encryptionProtector\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/BenjinResourceGroup/providers/Microsoft.Sql/managedInstances/benjinmitest/encryptionProtector/current?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmM2NDcwNTYtYmFiMi00MTc1LWIxNzItNDkzZmYwNDllYjI5L3Jlc291cmNlR3JvdXBzL0JlbmppblJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbWFuYWdlZEluc3RhbmNlcy9iZW5qaW5taXRlc3QvZW5jcnlwdGlvblByb3RlY3Rvci9jdXJyZW50P2FwaS12ZXJzaW9uPTIwMTctMTAtMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"serverKeyName\": \"mitest-eus-donotdelete_mitest-key_6dc78e98a3274d87bd847436dd34045e\",\r\n    \"serverKeyType\": \"AzureKeyVault\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c7a7cc6b-2df3-4a9d-b49e-cc7943f5d3a8"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.31.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "158"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/BenjinResourceGroup/providers/Microsoft.Sql/locations/eastus/managedInstanceEncryptionProtectorOperationResults/c8d9863d-4a1b-46fe-86b8-5e7591c023e4?api-version=2017-10-01-preview"
+        ],
+        "Retry-After": [
+          "1"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/BenjinResourceGroup/providers/Microsoft.Sql/locations/eastus/managedInstanceEncryptionProtectorAzureAsyncOperation/c8d9863d-4a1b-46fe-86b8-5e7591c023e4?api-version=2017-10-01-preview"
+        ],
+        "x-ms-request-id": [
+          "c8d9863d-4a1b-46fe-86b8-5e7591c023e4"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "da3af286-267f-40cf-a88f-e6cc34c1ccbc"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190515T222742Z:da3af286-267f-40cf-a88f-e6cc34c1ccbc"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 15 May 2019 22:27:41 GMT"
+        ],
+        "Content-Length": [
+          "93"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"UpsertManagedServerEncryptionProtector\",\r\n  \"startTime\": \"2019-05-15T22:27:41.933Z\"\r\n}",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/BenjinResourceGroup/providers/Microsoft.Sql/locations/eastus/managedInstanceEncryptionProtectorAzureAsyncOperation/c8d9863d-4a1b-46fe-86b8-5e7591c023e4?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmM2NDcwNTYtYmFiMi00MTc1LWIxNzItNDkzZmYwNDllYjI5L3Jlc291cmNlR3JvdXBzL0JlbmppblJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL2Vhc3R1cy9tYW5hZ2VkSW5zdGFuY2VFbmNyeXB0aW9uUHJvdGVjdG9yQXp1cmVBc3luY09wZXJhdGlvbi9jOGQ5ODYzZC00YTFiLTQ2ZmUtODZiOC01ZTc1OTFjMDIzZTQ/YXBpLXZlcnNpb249MjAxNy0xMC0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.31.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "1"
+        ],
+        "x-ms-request-id": [
+          "a1303c44-e0a1-421b-bb32-8246e72d8b58"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "832266ff-9f51-4489-9db1-53a86b3c026f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190515T222743Z:832266ff-9f51-4489-9db1-53a86b3c026f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 15 May 2019 22:27:42 GMT"
+        ],
+        "Content-Length": [
+          "108"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"c8d9863d-4a1b-46fe-86b8-5e7591c023e4\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2019-05-15T22:27:41.933Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2c647056-bab2-4175-b172-493ff049eb29/resourceGroups/BenjinResourceGroup/providers/Microsoft.Sql/locations/eastus/managedInstanceEncryptionProtectorAzureAsyncOperation/c8d9863d-4a1b-46fe-86b8-5e7591c023e4?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmM2NDcwNTYtYmFiMi00MTc1LWIxNzItNDkzZmYwNDllYjI5L3Jlc291cmNlR3JvdXBzL0JlbmppblJlc291cmNlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL2Vhc3R1cy9tYW5hZ2VkSW5zdGFuY2VFbmNyeXB0aW9uUHJvdGVjdG9yQXp1cmVBc3luY09wZXJhdGlvbi9jOGQ5ODYzZC00YTFiLTQ2ZmUtODZiOC01ZTc1OTFjMDIzZTQ/YXBpLXZlcnNpb249MjAxNy0xMC0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.31.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "1"
+        ],
+        "x-ms-request-id": [
+          "cd7ad086-7ce3-471e-830b-09f466e984ef"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "d717a8bd-d8cf-4bb9-aa9a-222861d05f7e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190515T222744Z:d717a8bd-d8cf-4bb9-aa9a-222861d05f7e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 15 May 2019 22:27:43 GMT"
+        ],
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"c8d9863d-4a1b-46fe-86b8-5e7591c023e4\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2019-05-15T22:27:41.933Z\"\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "2c647056-bab2-4175-b172-493ff049eb29"
+  }
+}
