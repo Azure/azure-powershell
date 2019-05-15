@@ -44,11 +44,6 @@ function Test-Disk
         # Encryption test
         $diskconfig = Set-AzDiskDiskEncryptionKey -Disk $diskconfig -SecretUrl $mocksecret -SourceVaultId $mocksourcevault;
         $diskconfig = Set-AzDiskKeyEncryptionKey -Disk $diskconfig -KeyUrl $mockkey -SourceVaultId $mocksourcevault;
-        Assert-AreEqual $mocksecret $diskconfig.EncryptionSettings.DiskEncryptionKey.SecretUrl;
-        Assert-AreEqual $mocksourcevault $diskconfig.EncryptionSettings.DiskEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mockkey $diskconfig.EncryptionSettings.KeyEncryptionKey.KeyUrl;
-        Assert-AreEqual $mocksourcevault $diskconfig.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
-
         Assert-AreEqual $mocksecret $diskconfig.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SecretUrl;
         Assert-AreEqual $mocksourcevault $diskconfig.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SourceVault.Id;
         Assert-AreEqual $mockkey $diskconfig.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.KeyUrl;
@@ -84,7 +79,7 @@ function Test-Disk
         Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
-        Assert-AreEqual $false $disk.EncryptionSettings.Enabled;
+        Assert-AreEqual $false $disk.EncryptionSettingsCollection.Enabled;
 
         $disk = Get-AzDisk -ResourceGroupName $wildcardRgQuery
         Assert-AreEqual $null $disk.Zones;
@@ -92,7 +87,7 @@ function Test-Disk
         Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
-        Assert-AreEqual $false $disk.EncryptionSettings.Enabled;
+        Assert-AreEqual $false $disk.EncryptionSettingsCollection.Enabled;
 
         $disk = Get-AzDisk -Name $diskname
         Assert-AreEqual $null $disk.Zones;
@@ -100,7 +95,7 @@ function Test-Disk
         Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
-        Assert-AreEqual $false $disk.EncryptionSettings.Enabled;
+        Assert-AreEqual $false $disk.EncryptionSettingsCollection.Enabled;
 
         $disk = Get-AzDisk -Name $wildcardNameQuery
         Assert-AreEqual $null $disk.Zones;
@@ -108,7 +103,7 @@ function Test-Disk
         Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
-        Assert-AreEqual $false $disk.EncryptionSettings.Enabled;
+        Assert-AreEqual $false $disk.EncryptionSettingsCollection.Enabled;
 
         $disk = Get-AzDisk -ResourceGroupName $wildcardRgQuery -Name $diskname
         Assert-AreEqual $null $disk.Zones;
@@ -116,7 +111,7 @@ function Test-Disk
         Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
-        Assert-AreEqual $false $disk.EncryptionSettings.Enabled;
+        Assert-AreEqual $false $disk.EncryptionSettingsCollection.Enabled;
 
         $disk = Get-AzDisk -ResourceGroupName $wildcardRgQuery -Name $wildcardNameQuery
         Assert-AreEqual $null $disk.Zones;
@@ -124,7 +119,7 @@ function Test-Disk
         Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
-        Assert-AreEqual $false $disk.EncryptionSettings.Enabled;
+        Assert-AreEqual $false $disk.EncryptionSettingsCollection.Enabled;
 
         $disk = Get-AzDisk -ResourceGroupName $rgname -Name $wildcardNameQuery
         Assert-AreEqual $null $disk.Zones;
@@ -132,7 +127,7 @@ function Test-Disk
         Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
-        Assert-AreEqual $false $disk.EncryptionSettings.Enabled;
+        Assert-AreEqual $false $disk.EncryptionSettingsCollection.Enabled;
 
         $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
         Assert-AreEqual $null $disk.Zones;
@@ -140,7 +135,7 @@ function Test-Disk
         Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
-        Assert-AreEqual $false $disk.EncryptionSettings.Enabled;
+        Assert-AreEqual $false $disk.EncryptionSettingsCollection.Enabled;
         Assert-AreEqual "V1" $disk.HyperVGeneration;
 
         # Grant access test
@@ -205,11 +200,6 @@ function Test-Snapshot
         # Encryption test
         $snapshotconfig = Set-AzSnapshotDiskEncryptionKey -Snapshot $snapshotconfig -SecretUrl $mocksecret -SourceVaultId $mocksourcevault;
         $snapshotconfig = Set-AzSnapshotKeyEncryptionKey -Snapshot $snapshotconfig -KeyUrl $mockkey -SourceVaultId $mocksourcevault;
-        Assert-AreEqual $mocksecret $snapshotconfig.EncryptionSettings.DiskEncryptionKey.SecretUrl;
-        Assert-AreEqual $mocksourcevault $snapshotconfig.EncryptionSettings.DiskEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mockkey $snapshotconfig.EncryptionSettings.KeyEncryptionKey.KeyUrl;
-        Assert-AreEqual $mocksourcevault $snapshotconfig.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
-
         Assert-AreEqual $mocksecret $snapshotconfig.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SecretUrl;
         Assert-AreEqual $mocksourcevault $snapshotconfig.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SourceVault.Id;
         Assert-AreEqual $mockkey $snapshotconfig.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.KeyUrl;
@@ -240,56 +230,56 @@ function Test-Snapshot
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
-        Assert-AreEqual $false $snapshot.EncryptionSettings.Enabled;
+        Assert-AreEqual $false $snapshot.EncryptionSettingsCollection.Enabled;
 
         $snapshot = Get-AzSnapshot -ResourceGroupName $wildcardRgQuery
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
-        Assert-AreEqual $false $snapshot.EncryptionSettings.Enabled;
+        Assert-AreEqual $false $snapshot.EncryptionSettingsCollection.Enabled;
 
         $snapshot = Get-AzSnapshot -SnapshotName $snapshotname;
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
-        Assert-AreEqual $false $snapshot.EncryptionSettings.Enabled;
+        Assert-AreEqual $false $snapshot.EncryptionSettingsCollection.Enabled;
 
         $snapshot = Get-AzSnapshot -SnapshotName $wildcardNameQuery;
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
-        Assert-AreEqual $false $snapshot.EncryptionSettings.Enabled;
+        Assert-AreEqual $false $snapshot.EncryptionSettingsCollection.Enabled;
 
         $snapshot = Get-AzSnapshot -ResourceGroupName $wildcardRgQuery -SnapshotName $wildcardNameQuery;
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
-        Assert-AreEqual $false $snapshot.EncryptionSettings.Enabled;
+        Assert-AreEqual $false $snapshot.EncryptionSettingsCollection.Enabled;
 
         $snapshot = Get-AzSnapshot -ResourceGroupName $wildcardRgQuery -SnapshotName $snapshotname;
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
-        Assert-AreEqual $false $snapshot.EncryptionSettings.Enabled;
+        Assert-AreEqual $false $snapshot.EncryptionSettingsCollection.Enabled;
 
         $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $wildcardNameQuery;
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
-        Assert-AreEqual $false $snapshot.EncryptionSettings.Enabled;
+        Assert-AreEqual $false $snapshot.EncryptionSettingsCollection.Enabled;
 
         $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname;
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
-        Assert-AreEqual $false $snapshot.EncryptionSettings.Enabled;
+        Assert-AreEqual $false $snapshot.EncryptionSettingsCollection.Enabled;
         Assert-AreEqual "V2" $snapshot.HyperVGeneration;
 
         # Grant access test
@@ -367,11 +357,6 @@ function Test-DiskEncrypt
         # Encryption test
         $diskconfig = Set-AzDiskDiskEncryptionKey -Disk $diskconfig -SecretUrl $mocksecret -SourceVaultId $mocksourcevault;
         $diskconfig = Set-AzDiskKeyEncryptionKey -Disk $diskconfig -KeyUrl $mockkey -SourceVaultId $mocksourcevault;
-        Assert-AreEqual $mocksecret $diskconfig.EncryptionSettings.DiskEncryptionKey.SecretUrl;
-        Assert-AreEqual $mocksourcevault $diskconfig.EncryptionSettings.DiskEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mockkey $diskconfig.EncryptionSettings.KeyEncryptionKey.KeyUrl;
-        Assert-AreEqual $mocksourcevault $diskconfig.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
-
         Assert-AreEqual $mocksecret $diskconfig.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SecretUrl;
         Assert-AreEqual $mocksourcevault $diskconfig.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SourceVault.Id;
         Assert-AreEqual $mockkey $diskconfig.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.KeyUrl;
@@ -403,12 +388,7 @@ function Test-DiskEncrypt
         Assert-AreEqual 5 $disk.DiskSizeGB;
         Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
-        Assert-AreEqual Empty $disk.CreationData.CreateOption;
-        Assert-AreEqual $true $disk.EncryptionSettings.Enabled;
-        Assert-AreEqual $mocksourcevault $disk.EncryptionSettings.DiskEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mocksecret $disk.EncryptionSettings.DiskEncryptionKey.SecretUrl;
-        Assert-AreEqual $mocksourcevault $disk.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mockkey $disk.EncryptionSettings.KeyEncryptionKey.KeyUrl;
+        Assert-AreEqual Empty $disk.CreationData.CreateOption;        
         Assert-AreEqual $true $disk.EncryptionSettingsCollection.Enabled;
         Assert-AreEqual $mocksourcevault $disk.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SourceVault.Id;
         Assert-AreEqual $mocksecret $disk.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SecretUrl;
@@ -421,11 +401,11 @@ function Test-DiskEncrypt
         Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
-        Assert-AreEqual $true $disk.EncryptionSettings.Enabled;
-        Assert-AreEqual $mocksourcevault $disk.EncryptionSettings.DiskEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mocksecret $disk.EncryptionSettings.DiskEncryptionKey.SecretUrl;
-        Assert-AreEqual $mocksourcevault $disk.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mockkey $disk.EncryptionSettings.KeyEncryptionKey.KeyUrl;
+        Assert-AreEqual $true $disk.EncryptionSettingsCollection.Enabled;
+        Assert-AreEqual $mocksourcevault $disk.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mocksecret $disk.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SecretUrl;
+        Assert-AreEqual $mocksourcevault $disk.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mockkey $disk.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.KeyUrl;
 
         $disk = Get-AzDisk -Name $diskname
         Assert-AreEqual $null $disk.Zones;
@@ -433,11 +413,11 @@ function Test-DiskEncrypt
         Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
-        Assert-AreEqual $true $disk.EncryptionSettings.Enabled;
-        Assert-AreEqual $mocksourcevault $disk.EncryptionSettings.DiskEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mocksecret $disk.EncryptionSettings.DiskEncryptionKey.SecretUrl;
-        Assert-AreEqual $mocksourcevault $disk.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mockkey $disk.EncryptionSettings.KeyEncryptionKey.KeyUrl;
+        Assert-AreEqual $true $disk.EncryptionSettingsCollection.Enabled;
+        Assert-AreEqual $mocksourcevault $disk.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mocksecret $disk.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SecretUrl;
+        Assert-AreEqual $mocksourcevault $disk.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mockkey $disk.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.KeyUrl;
 
         $disk = Get-AzDisk -Name $wildcardNameQuery
         Assert-AreEqual $null $disk.Zones;
@@ -445,11 +425,11 @@ function Test-DiskEncrypt
         Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
-        Assert-AreEqual $true $disk.EncryptionSettings.Enabled;
-        Assert-AreEqual $mocksourcevault $disk.EncryptionSettings.DiskEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mocksecret $disk.EncryptionSettings.DiskEncryptionKey.SecretUrl;
-        Assert-AreEqual $mocksourcevault $disk.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mockkey $disk.EncryptionSettings.KeyEncryptionKey.KeyUrl;
+        Assert-AreEqual $true $disk.EncryptionSettingsCollection.Enabled;
+        Assert-AreEqual $mocksourcevault $disk.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mocksecret $disk.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SecretUrl;
+        Assert-AreEqual $mocksourcevault $disk.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mockkey $disk.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.KeyUrl;
 
         $disk = Get-AzDisk -ResourceGroupName $wildcardRgQuery -Name $diskname
         Assert-AreEqual $null $disk.Zones;
@@ -457,11 +437,11 @@ function Test-DiskEncrypt
         Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
-        Assert-AreEqual $true $disk.EncryptionSettings.Enabled;
-        Assert-AreEqual $mocksourcevault $disk.EncryptionSettings.DiskEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mocksecret $disk.EncryptionSettings.DiskEncryptionKey.SecretUrl;
-        Assert-AreEqual $mocksourcevault $disk.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mockkey $disk.EncryptionSettings.KeyEncryptionKey.KeyUrl;
+        Assert-AreEqual $true $disk.EncryptionSettingsCollection.Enabled;
+        Assert-AreEqual $mocksourcevault $disk.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mocksecret $disk.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SecretUrl;
+        Assert-AreEqual $mocksourcevault $disk.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mockkey $disk.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.KeyUrl;
 
         $disk = Get-AzDisk -ResourceGroupName $wildcardRgQuery -Name $wildcardNameQuery
         Assert-AreEqual $null $disk.Zones;
@@ -469,11 +449,11 @@ function Test-DiskEncrypt
         Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
-        Assert-AreEqual $true $disk.EncryptionSettings.Enabled;
-        Assert-AreEqual $mocksourcevault $disk.EncryptionSettings.DiskEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mocksecret $disk.EncryptionSettings.DiskEncryptionKey.SecretUrl;
-        Assert-AreEqual $mocksourcevault $disk.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mockkey $disk.EncryptionSettings.KeyEncryptionKey.KeyUrl;
+        Assert-AreEqual $true $disk.EncryptionSettingsCollection.Enabled;
+        Assert-AreEqual $mocksourcevault $disk.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mocksecret $disk.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SecretUrl;
+        Assert-AreEqual $mocksourcevault $disk.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mockkey $disk.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.KeyUrl;
 
         $disk = Get-AzDisk -ResourceGroupName $rgname -Name $wildcardNameQuery
         Assert-AreEqual $null $disk.Zones;
@@ -481,11 +461,11 @@ function Test-DiskEncrypt
         Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
-        Assert-AreEqual $true $disk.EncryptionSettings.Enabled;
-        Assert-AreEqual $mocksourcevault $disk.EncryptionSettings.DiskEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mocksecret $disk.EncryptionSettings.DiskEncryptionKey.SecretUrl;
-        Assert-AreEqual $mocksourcevault $disk.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mockkey $disk.EncryptionSettings.KeyEncryptionKey.KeyUrl;
+        Assert-AreEqual $true $disk.EncryptionSettingsCollection.Enabled;
+        Assert-AreEqual $mocksourcevault $disk.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mocksecret $disk.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SecretUrl;
+        Assert-AreEqual $mocksourcevault $disk.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mockkey $disk.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.KeyUrl;
 
         $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname;
         Assert-AreEqual $null $disk.Zones;
@@ -493,11 +473,11 @@ function Test-DiskEncrypt
         Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
-        Assert-AreEqual $true $disk.EncryptionSettings.Enabled;
-        Assert-AreEqual $mocksourcevault $disk.EncryptionSettings.DiskEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mocksecret $disk.EncryptionSettings.DiskEncryptionKey.SecretUrl;
-        Assert-AreEqual $mocksourcevault $disk.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mockkey $disk.EncryptionSettings.KeyEncryptionKey.KeyUrl;
+        Assert-AreEqual $true $disk.EncryptionSettingsCollection.Enabled;
+        Assert-AreEqual $mocksourcevault $disk.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mocksecret $disk.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SecretUrl;
+        Assert-AreEqual $mocksourcevault $disk.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mockkey $disk.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.KeyUrl;
         Assert-Null $disk.HyperVGeneration;
 
         # Grant access test
@@ -576,10 +556,10 @@ function Test-SnapshotEncrypt
         # Encryption test
         $snapshotconfig = Set-AzSnapshotDiskEncryptionKey -Snapshot $snapshotconfig -SecretUrl $mocksecret -SourceVaultId $mocksourcevault;
         $snapshotconfig = Set-AzSnapshotKeyEncryptionKey -Snapshot $snapshotconfig -KeyUrl $mockkey -SourceVaultId $mocksourcevault;
-        Assert-AreEqual $mocksecret $snapshotconfig.EncryptionSettings.DiskEncryptionKey.SecretUrl;
-        Assert-AreEqual $mocksourcevault $snapshotconfig.EncryptionSettings.DiskEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mockkey $snapshotconfig.EncryptionSettings.KeyEncryptionKey.KeyUrl;
-        Assert-AreEqual $mocksourcevault $snapshotconfig.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mocksecret $snapshotconfig.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SecretUrl;
+        Assert-AreEqual $mocksourcevault $snapshotconfig.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mockkey $snapshotconfig.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.KeyUrl;
+        Assert-AreEqual $mocksourcevault $snapshotconfig.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.SourceVault.Id;
 
         # Image test
         $mockimage = '/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.Compute/images/TestImage123';
@@ -604,11 +584,6 @@ function Test-SnapshotEncrypt
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
-        Assert-AreEqual $true $snapshot.EncryptionSettings.Enabled;
-        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettings.DiskEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mocksecret $snapshot.EncryptionSettings.DiskEncryptionKey.SecretUrl;
-        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mockkey $snapshot.EncryptionSettings.KeyEncryptionKey.KeyUrl;
         Assert-AreEqual $true $snapshot.EncryptionSettingsCollection.Enabled;
         Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SourceVault.Id;
         Assert-AreEqual $mocksecret $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SecretUrl;
@@ -620,77 +595,77 @@ function Test-SnapshotEncrypt
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
-        Assert-AreEqual $true $snapshot.EncryptionSettings.Enabled;
-        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettings.DiskEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mocksecret $snapshot.EncryptionSettings.DiskEncryptionKey.SecretUrl;
-        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mockkey $snapshot.EncryptionSettings.KeyEncryptionKey.KeyUrl;
+        Assert-AreEqual $true $snapshot.EncryptionSettingsCollection.Enabled;
+        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mocksecret $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SecretUrl;
+        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mockkey $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.KeyUrl;
 
         $snapshot = Get-AzSnapshot -SnapshotName $snapshotname;
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
-        Assert-AreEqual $true $snapshot.EncryptionSettings.Enabled;
-        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettings.DiskEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mocksecret $snapshot.EncryptionSettings.DiskEncryptionKey.SecretUrl;
-        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mockkey $snapshot.EncryptionSettings.KeyEncryptionKey.KeyUrl;
+        Assert-AreEqual $true $snapshot.EncryptionSettingsCollection.Enabled;
+        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mocksecret $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SecretUrl;
+        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mockkey $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.KeyUrl;
 
         $snapshot = Get-AzSnapshot -SnapshotName $wildcardNameQuery;
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
-        Assert-AreEqual $true $snapshot.EncryptionSettings.Enabled;
-        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettings.DiskEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mocksecret $snapshot.EncryptionSettings.DiskEncryptionKey.SecretUrl;
-        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mockkey $snapshot.EncryptionSettings.KeyEncryptionKey.KeyUrl;
+        Assert-AreEqual $true $snapshot.EncryptionSettingsCollection.Enabled;
+        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mocksecret $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SecretUrl;
+        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mockkey $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.KeyUrl;
 
         $snapshot = Get-AzSnapshot -ResourceGroupName $wildcardRgQuery -SnapshotName $wildcardNameQuery;
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
-        Assert-AreEqual $true $snapshot.EncryptionSettings.Enabled;
-        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettings.DiskEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mocksecret $snapshot.EncryptionSettings.DiskEncryptionKey.SecretUrl;
-        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mockkey $snapshot.EncryptionSettings.KeyEncryptionKey.KeyUrl;
+        Assert-AreEqual $true $snapshot.EncryptionSettingsCollection.Enabled;
+        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mocksecret $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SecretUrl;
+        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mockkey $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.KeyUrl;
 
         $snapshot = Get-AzSnapshot -ResourceGroupName $wildcardRgQuery -SnapshotName $snapshotname;
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
-        Assert-AreEqual $true $snapshot.EncryptionSettings.Enabled;
-        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettings.DiskEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mocksecret $snapshot.EncryptionSettings.DiskEncryptionKey.SecretUrl;
-        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mockkey $snapshot.EncryptionSettings.KeyEncryptionKey.KeyUrl;
+        Assert-AreEqual $true $snapshot.EncryptionSettingsCollection.Enabled;
+        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mocksecret $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SecretUrl;
+        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mockkey $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.KeyUrl;
 
         $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $wildcardNameQuery;
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
-        Assert-AreEqual $true $snapshot.EncryptionSettings.Enabled;
-        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettings.DiskEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mocksecret $snapshot.EncryptionSettings.DiskEncryptionKey.SecretUrl;
-        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mockkey $snapshot.EncryptionSettings.KeyEncryptionKey.KeyUrl;
+        Assert-AreEqual $true $snapshot.EncryptionSettingsCollection.Enabled;
+        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mocksecret $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SecretUrl;
+        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mockkey $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.KeyUrl;
 
         $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname;
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
         Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
-        Assert-AreEqual $true $snapshot.EncryptionSettings.Enabled;
-        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettings.DiskEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mocksecret $snapshot.EncryptionSettings.DiskEncryptionKey.SecretUrl;
-        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettings.KeyEncryptionKey.SourceVault.Id;
-        Assert-AreEqual $mockkey $snapshot.EncryptionSettings.KeyEncryptionKey.KeyUrl;
+        Assert-AreEqual $true $snapshot.EncryptionSettingsCollection.Enabled;
+        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mocksecret $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey.SecretUrl;
+        Assert-AreEqual $mocksourcevault $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.SourceVault.Id;
+        Assert-AreEqual $mockkey $snapshot.EncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey.KeyUrl;
         Assert-Null $snapshot.HyperVGeneration;
 
         # Grant access test

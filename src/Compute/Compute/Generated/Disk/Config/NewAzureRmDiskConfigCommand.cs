@@ -19,21 +19,18 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [CmdletOutputBreakingChange(typeof(PSDisk),
-                                DeprecatedOutputProperties = new string[] { "EncryptionSettings" },
-                                NewOutputProperties = new string[] { "EncryptionSettingsCollection", "HyperVGeneration", "DiskState" })]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiskConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(PSDisk))]
     public partial class NewAzureRmDiskConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
@@ -150,7 +147,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // EncryptionSettingsCollection
             EncryptionSettingsCollection vEncryptionSettingsCollection = null;
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("SkuName"))
+            if (this.IsParameterBound(c => c.SkuName))
             {
                 if (vSku == null)
                 {
@@ -159,7 +156,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vSku.Name = this.SkuName;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("CreateOption"))
+            if (this.IsParameterBound(c => c.CreateOption))
             {
                 if (vCreationData == null)
                 {
@@ -168,7 +165,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vCreationData.CreateOption = this.CreateOption;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("StorageAccountId"))
+            if (this.IsParameterBound(c => c.StorageAccountId))
             {
                 if (vCreationData == null)
                 {
@@ -177,7 +174,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vCreationData.StorageAccountId = this.StorageAccountId;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("ImageReference"))
+            if (this.IsParameterBound(c => c.ImageReference))
             {
                 if (vCreationData == null)
                 {
@@ -186,7 +183,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vCreationData.ImageReference = this.ImageReference;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("SourceUri"))
+            if (this.IsParameterBound(c => c.SourceUri))
             {
                 if (vCreationData == null)
                 {
@@ -195,7 +192,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vCreationData.SourceUri = this.SourceUri;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("SourceResourceId"))
+            if (this.IsParameterBound(c => c.SourceResourceId))
             {
                 if (vCreationData == null)
                 {
@@ -204,7 +201,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vCreationData.SourceResourceId = this.SourceResourceId;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("EncryptionSettingsEnabled"))
+            if (this.IsParameterBound(c => c.EncryptionSettingsEnabled))
             {
                 if (vEncryptionSettingsCollection == null)
                 {
@@ -213,7 +210,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vEncryptionSettingsCollection.Enabled = (bool) this.EncryptionSettingsEnabled;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("DiskEncryptionKey"))
+            if (this.IsParameterBound(c => c.DiskEncryptionKey))
             {
                 if (vEncryptionSettingsCollection == null)
                 {
@@ -233,7 +230,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vEncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey = this.DiskEncryptionKey;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("KeyEncryptionKey"))
+            if (this.IsParameterBound(c => c.KeyEncryptionKey))
             {
                 if (vEncryptionSettingsCollection == null)
                 {
@@ -255,14 +252,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vDisk = new PSDisk
             {
-                Zones = this.MyInvocation.BoundParameters.ContainsKey("Zone") ? this.Zone : null,
-                OsType = this.MyInvocation.BoundParameters.ContainsKey("OsType") ? this.OsType : (OperatingSystemTypes?)null,
-                HyperVGeneration = this.MyInvocation.BoundParameters.ContainsKey("HyperVGeneration") ? this.HyperVGeneration : null,
-                DiskSizeGB = this.MyInvocation.BoundParameters.ContainsKey("DiskSizeGB") ? this.DiskSizeGB : (int?)null,
-                DiskIOPSReadWrite = this.MyInvocation.BoundParameters.ContainsKey("DiskIOPSReadWrite") ? this.DiskIOPSReadWrite : (int?)null,
-                DiskMBpsReadWrite = this.MyInvocation.BoundParameters.ContainsKey("DiskMBpsReadWrite") ? this.DiskMBpsReadWrite : (int?)null,
-                Location = this.MyInvocation.BoundParameters.ContainsKey("Location") ? this.Location : null,
-                Tags = this.MyInvocation.BoundParameters.ContainsKey("Tag") ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
+                Zones = this.IsParameterBound(c => c.Zone) ? this.Zone : null,
+                OsType = this.IsParameterBound(c => c.OsType) ? this.OsType : (OperatingSystemTypes?)null,
+                HyperVGeneration = this.IsParameterBound(c => c.HyperVGeneration) ? this.HyperVGeneration : null,
+                DiskSizeGB = this.IsParameterBound(c => c.DiskSizeGB) ? this.DiskSizeGB : (int?)null,
+                DiskIOPSReadWrite = this.IsParameterBound(c => c.DiskIOPSReadWrite) ? this.DiskIOPSReadWrite : (int?)null,
+                DiskMBpsReadWrite = this.IsParameterBound(c => c.DiskMBpsReadWrite) ? this.DiskMBpsReadWrite : (int?)null,
+                Location = this.IsParameterBound(c => c.Location) ? this.Location : null,
+                Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 Sku = vSku,
                 CreationData = vCreationData,
                 EncryptionSettingsCollection = vEncryptionSettingsCollection,
