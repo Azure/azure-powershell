@@ -54,6 +54,10 @@
         DestinationFolder="$(StackPackageFolder)\$(Configuration)" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
     <Copy SourceFiles="$(LibrarySourceFolder)\StackAdmin\AzureStack\AzureStack.psm1"
         DestinationFolder="$(StackPackageFolder)\$(Configuration)" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
+    <Copy SourceFiles="$(LibraryRoot)tools\AzureRM.BootStrapper\AzureRM.BootStrapper.psd1" 
+      DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
+    <Copy SourceFiles="$(LibraryRoot)tools\AzureRM.BootStrapper\AzureRM.BootStrapper.psm1" 
+      DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
           
     <Message Text="----> Scripts signing section" Importance="high"/>
 
@@ -116,6 +120,10 @@
         DestinationFolder="$(LibrarySourceFolder)\StackAdmin\AzureRM" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
     <Copy SourceFiles="$(StackPackageFolder)\$(Configuration)\AzureStack.psm1"
         DestinationFolder="$(LibrarySourceFolder)\StackAdmin\AzureStack" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
+    <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.BootStrapper.psd1" 
+      DestinationFolder="$(LibraryRoot)tools\AzureRM.BootStrapper" />
+    <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.BootStrapper.psm1" 
+      DestinationFolder="$(LibraryRoot)tools\AzureRM.BootStrapper"  />
   </Target>
 
   <Target Name="CodeSignInstaller">

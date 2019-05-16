@@ -151,6 +151,7 @@ function Get-RollupModules {
             Write-Host "Publishing AzureRM"
             $targets += "$PSScriptRoot\..\src\StackAdmin\AzureRM"
             $targets += "$PSScriptRoot\..\src\StackAdmin\AzureStack"
+            $targets += "$PSScriptRoot\AzureRM.BootStrapper"
         }
 
         if ($Scope -eq 'All' -or $Scope -eq 'Latest' -or $Scope -eq 'NetCore') {
