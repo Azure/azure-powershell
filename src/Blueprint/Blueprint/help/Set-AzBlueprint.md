@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzBlueprint
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Update a new blueprint and save it within the specified subscription or management group.
 
 ## SYNTAX
 

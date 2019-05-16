@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzBlueprintArtifact
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Get artifact from a blueprint.
 
 ## SYNTAX
 

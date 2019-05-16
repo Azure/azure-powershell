@@ -8,7 +8,7 @@ schema: 2.0.0
 # Export-AzBlueprintWithArtifacts
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Export specified blueprint to the specified output location as a JSON file. 
 
 ## SYNTAX
 
