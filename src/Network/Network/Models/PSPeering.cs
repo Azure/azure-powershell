@@ -82,6 +82,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public List<PSExpressRouteCircuitConnection> Connections { get; set; }
 
+        [JsonProperty(Order = 1)]
+        public List<PSPeerExpressRouteCircuitConnection> PeeredConnections { get; set; }
+
         [JsonIgnore]
         public string MicrosoftPeeringConfigText
         {
