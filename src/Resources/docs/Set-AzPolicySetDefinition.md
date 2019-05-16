@@ -12,46 +12,60 @@ This operation creates or updates a policy set definition in the given subscript
 
 ## SYNTAX
 
-### UpdateSubscriptionIdViaHost (Default)
+### Update (Default)
 ```
-Set-AzPolicySetDefinition -Name <String> [-Parameters <IPolicySetDefinition>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Set-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-Parameters <IPolicySetDefinition>]
- [-Description <String>] [-DisplayName <String>] [-Metadata <IPolicySetDefinitionPropertiesMetadata>]
- -PolicyDefinitions <IPolicyDefinitionReference[]> [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Update
-```
-Set-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-Parameters <IPolicySetDefinition>]
+Set-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-Parameter <IPolicySetDefinition>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateExpanded1
 ```
-Set-AzPolicySetDefinition -Name <String> -ManagementGroupId <String> [-Parameters <IPolicySetDefinition>]
+Set-AzPolicySetDefinition -Name <String> -ManagementGroupId <String> [-Parameter <IPolicySetDefinition>]
  [-Description <String>] [-DisplayName <String>] [-Metadata <IPolicySetDefinitionPropertiesMetadata>]
- -PolicyDefinitions <IPolicyDefinitionReference[]> [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
+ -PolicyDefinition <IPolicyDefinitionReference[]> [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateExpanded
+```
+Set-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-Parameter <IPolicySetDefinition>]
+ [-Description <String>] [-DisplayName <String>] [-Metadata <IPolicySetDefinitionPropertiesMetadata>]
+ -PolicyDefinition <IPolicyDefinitionReference[]> [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Update1
 ```
-Set-AzPolicySetDefinition -Name <String> -ManagementGroupId <String> [-Parameters <IPolicySetDefinition>]
+Set-AzPolicySetDefinition -Name <String> -ManagementGroupId <String> [-Parameter <IPolicySetDefinition>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateSubscriptionIdViaHostExpanded
+### UpdateViaIdentityExpanded1
 ```
-Set-AzPolicySetDefinition -Name <String> [-Parameters <IPolicySetDefinition>] [-Description <String>]
- [-DisplayName <String>] [-Metadata <IPolicySetDefinitionPropertiesMetadata>]
- -PolicyDefinitions <IPolicyDefinitionReference[]> [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
+Set-AzPolicySetDefinition -InputObject <IResourcesIdentity> [-Parameter <IPolicySetDefinition>]
+ [-Description <String>] [-DisplayName <String>] [-Metadata <IPolicySetDefinitionPropertiesMetadata>]
+ -PolicyDefinition <IPolicyDefinitionReference[]> [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Set-AzPolicySetDefinition -InputObject <IResourcesIdentity> [-Parameter <IPolicySetDefinition>]
+ [-Description <String>] [-DisplayName <String>] [-Metadata <IPolicySetDefinitionPropertiesMetadata>]
+ -PolicyDefinition <IPolicyDefinitionReference[]> [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity1
+```
+Set-AzPolicySetDefinition -InputObject <IResourcesIdentity> [-Parameter <IPolicySetDefinition>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Set-AzPolicySetDefinition -InputObject <IResourcesIdentity> [-Parameter <IPolicySetDefinition>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,7 +102,7 @@ The policy set definition description.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded1, UpdateExpanded, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -103,13 +117,28 @@ The display name of the policy set definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded1, UpdateExpanded, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentity1, UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -133,7 +162,7 @@ The policy set definition metadata.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicySetDefinitionPropertiesMetadata
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded1, UpdateExpanded, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -148,8 +177,8 @@ The name of the policy set definition to create.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: Update, UpdateExpanded1, UpdateExpanded, Update1
+Aliases: PolicySetDefinitionName
 
 Required: True
 Position: Named
@@ -158,7 +187,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -Parameter
 The policy set definition.
 
 ```yaml
@@ -173,12 +202,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PolicyDefinitions
+### -PolicyDefinition
 An array of policy definition references.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicyDefinitionReference[]
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded1, UpdateExpanded, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -194,7 +223,7 @@ Possible values are NotSpecified, BuiltIn, and Custom.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.PolicyType
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded1, UpdateExpanded, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -209,7 +238,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True

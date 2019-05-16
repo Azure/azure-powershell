@@ -14,14 +14,26 @@ Creates or updates a resource link between the specified resources.
 
 ### Update (Default)
 ```
-Set-AzResourceLink -LinkId <String> [-Parameters <IResourceLink>] [-DefaultProfile <PSObject>] [-WhatIf]
+Set-AzResourceLink -LinkId <String> [-Parameter <IResourceLink>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Set-AzResourceLink -LinkId <String> [-Notes <String>] -TargetId <String> [-DefaultProfile <PSObject>] [-WhatIf]
+Set-AzResourceLink -LinkId <String> [-Note <String>] -TargetId <String> [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Set-AzResourceLink -InputObject <IResourcesIdentity> [-Note <String>] -TargetId <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Set-AzResourceLink -InputObject <IResourcesIdentity> [-Parameter <IResourceLink>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,6 +65,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -LinkId
 The fully qualified ID of the resource link.
 Use the format, /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/{provider-namespace}/{resource-type}/{resource-name}/Microsoft.Resources/links/{link-name}.
@@ -60,7 +87,7 @@ For example, /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -70,12 +97,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Notes
+### -Note
 Notes about the resource link.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -85,12 +112,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -Parameter
 The resource link.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901.IResourceLink
-Parameter Sets: Update
+Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -105,7 +132,7 @@ The fully qualified ID of the target resource in the link.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True

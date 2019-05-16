@@ -24,6 +24,12 @@ Get-AzManagementGroup -GroupId <String> [-Filter <String>] [-Recurse <Boolean>] 
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzManagementGroup -InputObject <IResourcesIdentity> [-Filter <String>] [-Recurse <Boolean>]
+ [-CacheControl <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get the details of the management group.
 
@@ -79,7 +85,7 @@ Additionally, when gdprExportPrincipalId filter is used, only the deny assignmen
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentity
 Aliases:
 
 Required: False
@@ -104,13 +110,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Recurse
 The $recurse=true query string parameter allows clients to request inclusion of entire hierarchy in the response payload.
 Note that $expand=children must be passed up if $recurse is set to true.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentity
 Aliases:
 
 Required: False

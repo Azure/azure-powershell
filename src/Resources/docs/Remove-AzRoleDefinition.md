@@ -12,8 +12,15 @@ Deletes a role definition.
 
 ## SYNTAX
 
+### Delete1 (Default)
 ```
 Remove-AzRoleDefinition -Id <String> -Scope <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### DeleteViaIdentity1
+```
+Remove-AzRoleDefinition -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -51,8 +58,8 @@ The ID of the role definition to delete.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: Delete1
+Aliases: RoleDefinitionId
 
 Required: True
 Position: Named
@@ -61,12 +68,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: DeleteViaIdentity1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Scope
 The scope of the role definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete1
 Aliases:
 
 Required: True

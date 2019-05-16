@@ -26,6 +26,20 @@ Set-AzManagementGroup -GroupId <String> [-CacheControl <String>] [-DisplayName <
  [-ParentId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityExpanded
+```
+Set-AzManagementGroup -InputObject <IResourcesIdentity> [-CacheControl <String>] [-DisplayName <String>]
+ [-Name <String>] [-ParentId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Set-AzManagementGroup -InputObject <IResourcesIdentity> [-CacheControl <String>]
+ [-CreateManagementGroupRequest <ICreateManagementGroupRequest>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Create or update a management group.
 If a management group is already created and a subsequent create request is issued with different properties, the management group properties will be updated.
@@ -76,7 +90,7 @@ Management group creation parameters.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180301Preview.ICreateManagementGroupRequest
-Parameter Sets: Update
+Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -107,7 +121,7 @@ If no value is passed then this field will be set to the groupId.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -122,7 +136,7 @@ Management Group ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -132,13 +146,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the management group.
 For example, 00000000-0000-0000-0000-000000000000
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -154,7 +183,7 @@ For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

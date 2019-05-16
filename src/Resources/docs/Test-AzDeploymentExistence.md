@@ -12,10 +12,10 @@ Checks whether the deployment exists.
 
 ## SYNTAX
 
-### CheckSubscriptionIdViaHost (Default)
+### Check (Default)
 ```
-Test-AzDeploymentExistence -DeploymentName <String> [-PassThru] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Test-AzDeploymentExistence -DeploymentName <String> -SubscriptionId <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Check1
@@ -24,16 +24,16 @@ Test-AzDeploymentExistence -DeploymentName <String> -SubscriptionId <String> -Re
  [-PassThru] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Check
+### CheckViaIdentity1
 ```
-Test-AzDeploymentExistence -DeploymentName <String> -SubscriptionId <String> [-PassThru]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Test-AzDeploymentExistence -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
-### CheckSubscriptionIdViaHost1
+### CheckViaIdentity
 ```
-Test-AzDeploymentExistence -DeploymentName <String> -ResourceGroupName <String> [-PassThru]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Test-AzDeploymentExistence -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,13 +70,28 @@ The name of the deployment to check.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Check, Check1
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: CheckViaIdentity1, CheckViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -101,7 +116,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check1, CheckSubscriptionIdViaHost1
+Parameter Sets: Check1
 Aliases:
 
 Required: True
@@ -116,7 +131,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check1, Check
+Parameter Sets: Check, Check1
 Aliases:
 
 Required: True

@@ -18,18 +18,23 @@ Remove-AzResource -ResourceId <String> [-PassThru] [-DefaultProfile <PSObject>] 
  [<CommonParameters>]
 ```
 
-### DeleteSubscriptionIdViaHost
-```
-Remove-AzResource -Name <String> -ParentResourcePath <String> -ProviderNamespace <String>
- -ResourceGroupName <String> -ResourceType <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
 ### Delete1
 ```
 Remove-AzResource -Name <String> -ParentResourcePath <String> -ProviderNamespace <String>
  -ResourceGroupName <String> -ResourceType <String> -SubscriptionId <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity1
+```
+Remove-AzResource -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzResource -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,13 +81,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: DeleteViaIdentity1, DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the resource to delete.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteSubscriptionIdViaHost, Delete1
-Aliases:
+Parameter Sets: Delete1
+Aliases: ResourceName
 
 Required: True
 Position: Named
@@ -96,7 +116,7 @@ The parent resource identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteSubscriptionIdViaHost, Delete1
+Parameter Sets: Delete1
 Aliases:
 
 Required: True
@@ -126,8 +146,8 @@ The namespace of the resource provider.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteSubscriptionIdViaHost, Delete1
-Aliases:
+Parameter Sets: Delete1
+Aliases: ResourceProviderNamespace
 
 Required: True
 Position: Named
@@ -142,7 +162,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteSubscriptionIdViaHost, Delete1
+Parameter Sets: Delete1
 Aliases:
 
 Required: True
@@ -173,7 +193,7 @@ The resource type.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteSubscriptionIdViaHost, Delete1
+Parameter Sets: Delete1
 Aliases:
 
 Required: True

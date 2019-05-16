@@ -12,16 +12,16 @@ Registers the preview feature for the subscription.
 
 ## SYNTAX
 
-### RegisterSubscriptionIdViaHost (Default)
-```
-Register-AzProviderFeature -Name <String> -ResourceProviderNamespace <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Register
+### Register (Default)
 ```
 Register-AzProviderFeature -Name <String> -ResourceProviderNamespace <String> -SubscriptionId <String>
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RegisterViaIdentity
+```
+Register-AzProviderFeature -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,13 +53,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: RegisterViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the feature to register.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: Register
+Aliases: FeatureName
 
 Required: True
 Position: Named
@@ -73,7 +88,7 @@ The namespace of the resource provider.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Register
 Aliases:
 
 Required: True

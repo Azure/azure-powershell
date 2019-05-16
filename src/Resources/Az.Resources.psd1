@@ -24,7 +24,7 @@
       LicenseUri = 'https://aka.ms/azps-license'
       ProjectUri = 'https://github.com/Azure/azure-powershell'
       ReleaseNotes = ''
-      Profiles = 'latest-2019-04-01', 'hybrid-2019'
+      Profiles = 'latest-2019-04-30', 'hybrid-2019-03-01'
     }
   }
 # endregion 

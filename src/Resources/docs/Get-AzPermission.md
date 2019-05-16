@@ -12,28 +12,17 @@ Gets all permissions the caller has for a resource group.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost2 (Default)
+### List2 (Default)
 ```
-Get-AzPermission -ResourceGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPermission -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### List3
 ```
-Get-AzPermission -ResourceGroupName <String> -SubscriptionId <String> -ParentResourcePath <String>
+Get-AzPermission -ResourceGroupName <String> -SubscriptionId <String[]> -ParentResourcePath <String>
  -ResourceName <String> -ResourceProviderNamespace <String> -ResourceType <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### List2
-```
-Get-AzPermission -ResourceGroupName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### ListSubscriptionIdViaHost3
-```
-Get-AzPermission -ResourceGroupName <String> -ParentResourcePath <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,7 +59,7 @@ The parent resource identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: List3, ListSubscriptionIdViaHost3
+Parameter Sets: List3
 Aliases:
 
 Required: True
@@ -100,7 +89,7 @@ The name of the resource to get the permissions for.
 
 ```yaml
 Type: System.String
-Parameter Sets: List3, ListSubscriptionIdViaHost3
+Parameter Sets: List3
 Aliases:
 
 Required: True
@@ -115,7 +104,7 @@ The namespace of the resource provider.
 
 ```yaml
 Type: System.String
-Parameter Sets: List3, ListSubscriptionIdViaHost3
+Parameter Sets: List3
 Aliases:
 
 Required: True
@@ -130,7 +119,7 @@ The resource type of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: List3, ListSubscriptionIdViaHost3
+Parameter Sets: List3
 Aliases:
 
 Required: True
@@ -144,8 +133,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: List3, List2
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True

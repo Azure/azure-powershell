@@ -12,13 +12,7 @@ This operation deletes the policy set definition in the given subscription with 
 
 ## SYNTAX
 
-### DeleteSubscriptionIdViaHost (Default)
-```
-Remove-AzPolicySetDefinition -Name <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### Delete
+### Delete (Default)
 ```
 Remove-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -28,6 +22,18 @@ Remove-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-PassThru]
 ```
 Remove-AzPolicySetDefinition -Name <String> -ManagementGroupId <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity1
+```
+Remove-AzPolicySetDefinition -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzPolicySetDefinition -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,6 +65,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: DeleteViaIdentity1, DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ManagementGroupId
 The ID of the management group.
 
@@ -79,8 +100,8 @@ The name of the policy set definition to delete.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: Delete, Delete1
+Aliases: PolicySetDefinitionName
 
 Required: True
 Position: Named

@@ -14,7 +14,7 @@ Add an owner to an application.
 
 ### Add (Default)
 ```
-Add-AzApplicationOwner -ObjectId <String> -TenantId <String> [-Parameters <IAddOwnerParameters>] [-PassThru]
+Add-AzApplicationOwner -ObjectId <String> -TenantId <String> [-Parameter <IAddOwnerParameters>] [-PassThru]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -22,6 +22,18 @@ Add-AzApplicationOwner -ObjectId <String> -TenantId <String> [-Parameters <IAddO
 ```
 Add-AzApplicationOwner -ObjectId <String> -TenantId <String> [-PassThru] [-Properties <Hashtable>]
  -Url <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AddViaIdentityExpanded
+```
+Add-AzApplicationOwner -InputObject <IResourcesIdentity> [-PassThru] [-Properties <Hashtable>] -Url <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AddViaIdentity
+```
+Add-AzApplicationOwner -InputObject <IResourcesIdentity> [-Parameter <IAddOwnerParameters>] [-PassThru]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,12 +65,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: AddViaIdentityExpanded, AddViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ObjectId
 The object ID of the application to which to add the owner.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Add, AddExpanded
 Aliases:
 
 Required: True
@@ -68,12 +95,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -Parameter
 Request parameters for adding a owner to an application.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IAddOwnerParameters
-Parameter Sets: Add
+Parameter Sets: Add, AddViaIdentity
 Aliases:
 
 Required: False
@@ -103,7 +130,7 @@ Additional Parameters
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: AddExpanded
+Parameter Sets: AddExpanded, AddViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -118,7 +145,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Add, AddExpanded
 Aliases:
 
 Required: True
@@ -133,7 +160,7 @@ A owner object URL, such as "https://graph.windows.net/0b1f9851-1bf0-433f-aec3-c
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded
+Parameter Sets: AddExpanded, AddViaIdentityExpanded
 Aliases:
 
 Required: True

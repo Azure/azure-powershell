@@ -25,6 +25,18 @@ Remove-AzPolicyAssignment -Name <String> -Scope <String> [-PassThru] [-DefaultPr
  [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentity1
+```
+Remove-AzPolicyAssignment -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzPolicyAssignment -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 This operation deletes a policy assignment, given its name and the scope it was created in.
 The scope of a policy assignment is the part of its ID preceding '/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
@@ -62,12 +74,27 @@ Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{pol
 ```yaml
 Type: System.String
 Parameter Sets: Delete1
-Aliases:
+Aliases: PolicyAssignmentId
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: DeleteViaIdentity1, DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -77,7 +104,7 @@ The name of the policy assignment to delete.
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
+Aliases: PolicyAssignmentName
 
 Required: True
 Position: Named

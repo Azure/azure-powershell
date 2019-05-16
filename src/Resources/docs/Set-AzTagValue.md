@@ -13,16 +13,16 @@ The name of the tag must already exist.
 
 ## SYNTAX
 
-### UpdateSubscriptionIdViaHost (Default)
-```
-Set-AzTagValue -TagName <String> -TagValue <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### Update
+### Update (Default)
 ```
 Set-AzTagValue -SubscriptionId <String> -TagName <String> -TagValue <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Set-AzTagValue -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,6 +55,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -75,7 +90,7 @@ The name of the tag.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update
 Aliases:
 
 Required: True
@@ -90,7 +105,7 @@ The value of the tag to create.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update
 Aliases:
 
 Required: True

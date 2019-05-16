@@ -12,36 +12,10 @@ Delete a management lock by scope.
 
 ## SYNTAX
 
-### DeleteSubscriptionIdViaHost1 (Default)
-```
-Remove-AzManagementLock -LockName <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### Delete
+### Delete (Default)
 ```
 Remove-AzManagementLock -LockName <String> -Scope <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
-```
-
-### DeleteSubscriptionIdViaHost
-```
-Remove-AzManagementLock -LockName <String> -ParentResourcePath <String> -ResourceGroupName <String>
- -ResourceName <String> -ResourceProviderNamespace <String> -ResourceType <String> [-PassThru]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Delete1
-```
-Remove-AzManagementLock -LockName <String> -ParentResourcePath <String> -ResourceGroupName <String>
- -ResourceName <String> -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String>
- [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeleteSubscriptionIdViaHost2
-```
-Remove-AzManagementLock -LockName <String> -ResourceGroupName <String> [-PassThru] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Delete3
@@ -54,6 +28,37 @@ Remove-AzManagementLock -LockName <String> -ResourceGroupName <String> -Subscrip
 ```
 Remove-AzManagementLock -LockName <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Delete1
+```
+Remove-AzManagementLock -LockName <String> -ParentResourcePath <String> -ResourceGroupName <String>
+ -ResourceName <String> -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String>
+ [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity3
+```
+Remove-AzManagementLock -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity2
+```
+Remove-AzManagementLock -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity1
+```
+Remove-AzManagementLock -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzManagementLock -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,12 +90,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: DeleteViaIdentity3, DeleteViaIdentity2, DeleteViaIdentity1, DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -LockName
 The name of lock.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete, Delete3, Delete2, Delete1
 Aliases:
 
 Required: True
@@ -105,7 +125,7 @@ The parent resource identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteSubscriptionIdViaHost, Delete1
+Parameter Sets: Delete1
 Aliases:
 
 Required: True
@@ -135,7 +155,7 @@ The name of the resource group containing the resource with the lock to delete.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteSubscriptionIdViaHost, Delete1, DeleteSubscriptionIdViaHost2, Delete3
+Parameter Sets: Delete3, Delete1
 Aliases:
 
 Required: True
@@ -150,7 +170,7 @@ The name of the resource with the lock to delete.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteSubscriptionIdViaHost, Delete1
+Parameter Sets: Delete1
 Aliases:
 
 Required: True
@@ -165,7 +185,7 @@ The resource provider namespace of the resource with the lock to delete.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteSubscriptionIdViaHost, Delete1
+Parameter Sets: Delete1
 Aliases:
 
 Required: True
@@ -180,7 +200,7 @@ The resource type of the resource with the lock to delete.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteSubscriptionIdViaHost, Delete1
+Parameter Sets: Delete1
 Aliases:
 
 Required: True
@@ -210,7 +230,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete1, Delete3, Delete2
+Parameter Sets: Delete3, Delete2, Delete1
 Aliases:
 
 Required: True

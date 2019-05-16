@@ -12,9 +12,16 @@ Remove a member from a group.
 
 ## SYNTAX
 
+### Remove (Default)
 ```
 Remove-AzADGroupMember -GroupObjectId <String> -MemberObjectId <String> -TenantId <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RemoveViaIdentity
+```
+Remove-AzADGroupMember -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,7 +58,7 @@ The object ID of the group from which to remove the member.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Remove
 Aliases:
 
 Required: True
@@ -61,12 +68,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: RemoveViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -MemberObjectId
 Member object id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Remove
 Aliases:
 
 Required: True
@@ -96,7 +118,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Remove
 Aliases:
 
 Required: True

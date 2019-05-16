@@ -15,15 +15,28 @@ You can also specify which resource collections (users, groups, etc.) should be 
 
 ### Get (Default)
 ```
-Get-AzADObject -TenantId <String> [-Parameters <IGetObjectsParameters>] [-DefaultProfile <PSObject>] [-WhatIf]
+Get-AzADObject -TenantId <String> [-Parameter <IGetObjectsParameters>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### GetExpanded
 ```
-Get-AzADObject -TenantId <String> [-Ids <String[]>] [-IncludeDirectoryObjectReferences <Boolean>]
- [-Properties <Hashtable>] [-Types <String[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+Get-AzADObject -TenantId <String> [-Id <String[]>] [-IncludeDirectoryObjectReference <Boolean>]
+ [-Properties <Hashtable>] [-Type <String[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### GetViaIdentityExpanded
+```
+Get-AzADObject -InputObject <IResourcesIdentity> [-Id <String[]>] [-IncludeDirectoryObjectReference <Boolean>]
+ [-Properties <Hashtable>] [-Type <String[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzADObject -InputObject <IResourcesIdentity> [-Parameter <IGetObjectsParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,13 +69,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Ids
+### -Id
 The requested object IDs.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: GetExpanded
-Aliases:
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
+Aliases: ObjectId
 
 Required: False
 Position: Named
@@ -71,12 +84,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IncludeDirectoryObjectReferences
+### -IncludeDirectoryObjectReference
 If true, also searches for object IDs in the partner tenant.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: GetExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -86,12 +99,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentityExpanded, GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Parameter
 Request parameters for the GetObjectsByObjectIds API.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IGetObjectsParameters
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentity
 Aliases:
 
 Required: False
@@ -106,7 +134,7 @@ Additional Parameters
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: GetExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -121,7 +149,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: True
@@ -131,12 +159,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Types
+### -Type
 The requested object types.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: GetExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: False

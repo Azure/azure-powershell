@@ -12,8 +12,14 @@ Gets the details for the currently logged-in user.
 
 ## SYNTAX
 
+### Get (Default)
 ```
 Get-AzSignedInUser -TenantId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzSignedInUser -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,12 +51,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -TenantId
 The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: True

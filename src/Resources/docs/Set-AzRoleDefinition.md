@@ -20,9 +20,22 @@ Set-AzRoleDefinition -Id <String> -Scope <String> [-RoleDefinition <IRoleDefinit
 
 ### UpdateExpanded1
 ```
-Set-AzRoleDefinition -Id <String> -Scope <String> [-AssignableScopes <String[]>] [-Description <String>]
- [-Permissions <IPermission[]>] [-RoleName <String>] [-RoleType <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzRoleDefinition -Id <String> -Scope <String> [-AssignableScope <String[]>] [-Description <String>]
+ [-Permission <IPermission[]>] [-RoleName <String>] [-RoleType <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded1
+```
+Set-AzRoleDefinition -InputObject <IResourcesIdentity> [-AssignableScope <String[]>] [-Description <String>]
+ [-Permission <IPermission[]>] [-RoleName <String>] [-RoleType <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity1
+```
+Set-AzRoleDefinition -InputObject <IResourcesIdentity> [-RoleDefinition <IRoleDefinition>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,12 +52,12 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AssignableScopes
+### -AssignableScope
 Role definition assignable scopes.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded1
+Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -74,7 +87,7 @@ The role definition description.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -89,8 +102,8 @@ The ID of the role definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: Update1, UpdateExpanded1
+Aliases: RoleDefinitionId
 
 Required: True
 Position: Named
@@ -99,12 +112,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Permissions
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: UpdateViaIdentityExpanded1, UpdateViaIdentity1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Permission
 Role definition permissions.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api201801Preview.IPermission[]
-Parameter Sets: UpdateExpanded1
+Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -119,7 +147,7 @@ Role definition.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api201801Preview.IRoleDefinition
-Parameter Sets: Update1
+Parameter Sets: Update1, UpdateViaIdentity1
 Aliases:
 
 Required: False
@@ -134,7 +162,7 @@ The role name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -149,7 +177,7 @@ The role type.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -164,7 +192,7 @@ The scope of the role definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update1, UpdateExpanded1
 Aliases:
 
 Required: True

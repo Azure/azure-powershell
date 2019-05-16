@@ -12,42 +12,38 @@ Gets the managed application.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost1 (Default)
+### Get1 (Default)
 ```
-Get-AzManagedApplication [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost
-```
-Get-AzManagedApplication -Name <String> -ResourceGroupName <String> [-PassThru] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzManagedApplication -Id <String> [-PassThru] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzManagedApplication -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
+Get-AzManagedApplication -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-PassThru]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListSubscriptionIdViaHost
-```
-Get-AzManagedApplication -ResourceGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzManagedApplication -ResourceGroupName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
+Get-AzManagedApplication -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzManagedApplication -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzManagedApplication -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Get1
+### GetViaIdentity1
 ```
-Get-AzManagedApplication -Id <String> [-PassThru] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzManagedApplication -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzManagedApplication -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,7 +82,7 @@ Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Micro
 ```yaml
 Type: System.String
 Parameter Sets: Get1
-Aliases:
+Aliases: ApplicationId
 
 Required: True
 Position: Named
@@ -95,13 +91,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentity1, GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the managed application.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
-Aliases:
+Parameter Sets: Get
+Aliases: ApplicationName
 
 Required: True
 Position: Named
@@ -115,7 +126,7 @@ When specified, PassThru will force the cmdlet return a 'bool' given that there 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: GetSubscriptionIdViaHost, Get, Get1
+Parameter Sets: Get1, Get, GetViaIdentity1, GetViaIdentity
 Aliases:
 
 Required: False
@@ -131,7 +142,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get, ListSubscriptionIdViaHost, List
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -145,7 +156,7 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 

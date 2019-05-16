@@ -12,14 +12,8 @@ Gets service administrator, account administrator, and co-administrators for the
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
 ```
-Get-AzClassicAdministrator [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzClassicAdministrator -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzClassicAdministrator -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,8 +49,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: List
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True

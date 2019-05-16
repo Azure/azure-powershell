@@ -14,32 +14,14 @@ Creates a new managed application definition.
 
 ### Update1 (Default)
 ```
-Set-AzManagedApplicationDefinition -Id <String> [-Parameters <IApplicationDefinition>]
+Set-AzManagedApplicationDefinition -Id <String> [-Parameter <IApplicationDefinition>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateSubscriptionIdViaHostExpanded
-```
-Set-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String>
- [-Artifacts <IApplicationArtifact[]>] -Authorizations <IApplicationProviderAuthorization[]>
- [-CreateUiDefinition <IApplicationDefinitionPropertiesCreateUiDefinition>] [-Description <String>]
- [-DisplayName <String>] [-Identity <IIdentity>] [-IsEnabled <String>] [-Location <String>]
- -LockLevel <ApplicationLockLevel> [-MainTemplate <IApplicationDefinitionPropertiesMainTemplate>]
- [-ManagedBy <String>] [-PackageFileUri <String>] [-Sku <ISku>] [-Tag <IResourceTags>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateSubscriptionIdViaHost
-```
-Set-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String>
- [-Parameters <IApplicationDefinition>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
 Set-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Artifacts <IApplicationArtifact[]>] -Authorizations <IApplicationProviderAuthorization[]>
+ [-Artifact <IApplicationArtifact[]>] -Authorization <IApplicationProviderAuthorization[]>
  [-CreateUiDefinition <IApplicationDefinitionPropertiesCreateUiDefinition>] [-Description <String>]
  [-DisplayName <String>] [-Identity <IIdentity>] [-IsEnabled <String>] [-Location <String>]
  -LockLevel <ApplicationLockLevel> [-MainTemplate <IApplicationDefinitionPropertiesMainTemplate>]
@@ -50,18 +32,52 @@ Set-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String> -S
 ### Update
 ```
 Set-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameters <IApplicationDefinition>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [-Parameter <IApplicationDefinition>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateExpanded1
 ```
-Set-AzManagedApplicationDefinition -Id <String> [-Artifacts <IApplicationArtifact[]>]
- -Authorizations <IApplicationProviderAuthorization[]>
+Set-AzManagedApplicationDefinition -Id <String> [-Artifact <IApplicationArtifact[]>]
+ -Authorization <IApplicationProviderAuthorization[]>
  [-CreateUiDefinition <IApplicationDefinitionPropertiesCreateUiDefinition>] [-Description <String>]
  [-DisplayName <String>] [-Identity <IIdentity>] [-IsEnabled <String>] [-Location <String>]
  -LockLevel <ApplicationLockLevel> [-MainTemplate <IApplicationDefinitionPropertiesMainTemplate>]
  [-ManagedBy <String>] [-PackageFileUri <String>] [-Sku <ISku>] [-Tag <IResourceTags>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded1
+```
+Set-AzManagedApplicationDefinition -InputObject <IResourcesIdentity> [-Artifact <IApplicationArtifact[]>]
+ -Authorization <IApplicationProviderAuthorization[]>
+ [-CreateUiDefinition <IApplicationDefinitionPropertiesCreateUiDefinition>] [-Description <String>]
+ [-DisplayName <String>] [-Identity <IIdentity>] [-IsEnabled <String>] [-Location <String>]
+ -LockLevel <ApplicationLockLevel> [-MainTemplate <IApplicationDefinitionPropertiesMainTemplate>]
+ [-ManagedBy <String>] [-PackageFileUri <String>] [-Sku <ISku>] [-Tag <IResourceTags>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Set-AzManagedApplicationDefinition -InputObject <IResourcesIdentity> [-Artifact <IApplicationArtifact[]>]
+ -Authorization <IApplicationProviderAuthorization[]>
+ [-CreateUiDefinition <IApplicationDefinitionPropertiesCreateUiDefinition>] [-Description <String>]
+ [-DisplayName <String>] [-Identity <IIdentity>] [-IsEnabled <String>] [-Location <String>]
+ -LockLevel <ApplicationLockLevel> [-MainTemplate <IApplicationDefinitionPropertiesMainTemplate>]
+ [-ManagedBy <String>] [-PackageFileUri <String>] [-Sku <ISku>] [-Tag <IResourceTags>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity1
+```
+Set-AzManagedApplicationDefinition -InputObject <IResourcesIdentity> [-Parameter <IApplicationDefinition>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Set-AzManagedApplicationDefinition -InputObject <IResourcesIdentity> [-Parameter <IApplicationDefinition>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -79,13 +95,12 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -Artifacts
-The collection of managed application artifacts.
-The portal will use the files specified as artifacts to construct the user experience of creating a managed application from a managed application definition.
+### -Artifact
+The collection of managed application artifacts. The portal will use the files specified as artifacts to construct the user experience of creating a managed application from a managed application definition.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20170901.IApplicationArtifact[]
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateExpanded, UpdateExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -110,12 +125,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Authorizations
+### -Authorization
 The managed application provider authorizations.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20170901.IApplicationProviderAuthorization[]
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateExpanded, UpdateExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -131,7 +146,7 @@ It can be a JObject or well-formed JSON string.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20170901.IApplicationDefinitionPropertiesCreateUiDefinition
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateExpanded, UpdateExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -161,7 +176,7 @@ The managed application definition description.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateExpanded, UpdateExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -176,7 +191,7 @@ The managed application definition display name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateExpanded, UpdateExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -193,7 +208,7 @@ Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Micro
 ```yaml
 Type: System.String
 Parameter Sets: Update1, UpdateExpanded1
-Aliases:
+Aliases: ApplicationDefinitionId
 
 Required: True
 Position: Named
@@ -207,7 +222,7 @@ The identity of the resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901Preview.IIdentity
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateExpanded, UpdateExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -217,12 +232,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentity1, UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -IsEnabled
 A value indicating whether the package is enabled or not.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateExpanded, UpdateExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -237,7 +267,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateExpanded, UpdateExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -252,7 +282,7 @@ The managed application lock level.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.ApplicationLockLevel
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateExpanded, UpdateExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -268,7 +298,7 @@ It can be a JObject or well-formed JSON string.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20170901.IApplicationDefinitionPropertiesMainTemplate
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateExpanded, UpdateExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -283,7 +313,7 @@ ID of the resource that manages this resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateExpanded, UpdateExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -298,8 +328,8 @@ The name of the managed application definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateSubscriptionIdViaHost, UpdateExpanded, Update
-Aliases:
+Parameter Sets: UpdateExpanded, Update
+Aliases: ApplicationDefinitionName
 
 Required: True
 Position: Named
@@ -314,7 +344,7 @@ Use this element
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateExpanded, UpdateExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -324,12 +354,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -Parameter
 Information about managed application definition.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20170901.IApplicationDefinition
-Parameter Sets: Update1, UpdateSubscriptionIdViaHost, Update
+Parameter Sets: Update1, Update, UpdateViaIdentity1, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -345,7 +375,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateSubscriptionIdViaHost, UpdateExpanded, Update
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -360,7 +390,7 @@ The SKU of the resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901Preview.ISku
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateExpanded, UpdateExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -390,7 +420,7 @@ Resource tags
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901Preview.IResourceTags
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateExpanded, UpdateExpanded1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

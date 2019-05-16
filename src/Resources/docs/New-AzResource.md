@@ -14,37 +14,18 @@ Creates a resource.
 
 ### Create1 (Default)
 ```
-New-AzResource -ResourceId <String> [-Parameters <IGenericResource>] [-DefaultProfile <PSObject>] [-AsJob]
+New-AzResource -ResourceId <String> [-Parameter <IGenericResource>] [-DefaultProfile <PSObject>] [-AsJob]
  [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateSubscriptionIdViaHostExpanded
-```
-New-AzResource -Name <String> -ParentResourcePath <String> -ProviderNamespace <String>
- -ResourceGroupName <String> -ResourceType <String> [-IdentityType <ResourceIdentityType>]
- [-IdentityUserAssignedIdentities <IIdentityUserAssignedIdentities>] [-Kind <String>] [-Location <String>]
- [-ManagedBy <String>] -PlanName <String> -PlanProduct <String> [-PlanPromotionCode <String>]
- -PlanPublisher <String> -PlanVersion <String> [-Properties <IGenericResourceProperties>]
- [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuModel <String>] -SkuName <String> [-SkuSize <String>]
- [-SkuTier <String>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### CreateSubscriptionIdViaHost
-```
-New-AzResource -Name <String> -ParentResourcePath <String> -ProviderNamespace <String>
- -ResourceGroupName <String> -ResourceType <String> [-Parameters <IGenericResource>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
 New-AzResource -Name <String> -ParentResourcePath <String> -ProviderNamespace <String>
  -ResourceGroupName <String> -ResourceType <String> -SubscriptionId <String>
- [-IdentityType <ResourceIdentityType>] [-IdentityUserAssignedIdentities <IIdentityUserAssignedIdentities>]
+ [-IdentityType <ResourceIdentityType>] [-IdentityUserAssignedIdentity <IIdentityUserAssignedIdentities>]
  [-Kind <String>] [-Location <String>] [-ManagedBy <String>] -PlanName <String> -PlanProduct <String>
  [-PlanPromotionCode <String>] -PlanPublisher <String> -PlanVersion <String>
- [-Properties <IGenericResourceProperties>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuModel <String>]
+ [-Property <IGenericResourceProperties>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuModel <String>]
  -SkuName <String> [-SkuSize <String>] [-SkuTier <String>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>]
  [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -52,19 +33,50 @@ New-AzResource -Name <String> -ParentResourcePath <String> -ProviderNamespace <S
 ### Create
 ```
 New-AzResource -Name <String> -ParentResourcePath <String> -ProviderNamespace <String>
- -ResourceGroupName <String> -ResourceType <String> -SubscriptionId <String> [-Parameters <IGenericResource>]
+ -ResourceGroupName <String> -ResourceType <String> -SubscriptionId <String> [-Parameter <IGenericResource>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpanded1
 ```
 New-AzResource -ResourceId <String> [-IdentityType <ResourceIdentityType>]
- [-IdentityUserAssignedIdentities <IIdentityUserAssignedIdentities>] [-Kind <String>] [-Location <String>]
+ [-IdentityUserAssignedIdentity <IIdentityUserAssignedIdentities>] [-Kind <String>] [-Location <String>]
  [-ManagedBy <String>] -PlanName <String> -PlanProduct <String> [-PlanPromotionCode <String>]
- -PlanPublisher <String> -PlanVersion <String> [-Properties <IGenericResourceProperties>]
- [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuModel <String>] -SkuName <String> [-SkuSize <String>]
- [-SkuTier <String>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -PlanPublisher <String> -PlanVersion <String> [-Property <IGenericResourceProperties>] [-SkuCapacity <Int32>]
+ [-SkuFamily <String>] [-SkuModel <String>] -SkuName <String> [-SkuSize <String>] [-SkuTier <String>]
+ [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded1
+```
+New-AzResource -InputObject <IResourcesIdentity> [-IdentityType <ResourceIdentityType>]
+ [-IdentityUserAssignedIdentity <IIdentityUserAssignedIdentities>] [-Kind <String>] [-Location <String>]
+ [-ManagedBy <String>] -PlanName <String> -PlanProduct <String> [-PlanPromotionCode <String>]
+ -PlanPublisher <String> -PlanVersion <String> [-Property <IGenericResourceProperties>] [-SkuCapacity <Int32>]
+ [-SkuFamily <String>] [-SkuModel <String>] -SkuName <String> [-SkuSize <String>] [-SkuTier <String>]
+ [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzResource -InputObject <IResourcesIdentity> [-IdentityType <ResourceIdentityType>]
+ [-IdentityUserAssignedIdentity <IIdentityUserAssignedIdentities>] [-Kind <String>] [-Location <String>]
+ [-ManagedBy <String>] -PlanName <String> -PlanProduct <String> [-PlanPromotionCode <String>]
+ -PlanPublisher <String> -PlanVersion <String> [-Property <IGenericResourceProperties>] [-SkuCapacity <Int32>]
+ [-SkuFamily <String>] [-SkuModel <String>] -SkuName <String> [-SkuSize <String>] [-SkuTier <String>]
+ [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentity1
+```
+New-AzResource -InputObject <IResourcesIdentity> [-Parameter <IGenericResource>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzResource -InputObject <IResourcesIdentity> [-Parameter <IGenericResource>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -116,7 +128,7 @@ The identity type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.ResourceIdentityType
-Parameter Sets: CreateSubscriptionIdViaHostExpanded, CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -126,19 +138,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityUserAssignedIdentities
-The list of user identities associated with the resource.
-The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+### -IdentityUserAssignedIdentity
+The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IIdentityUserAssignedIdentities
-Parameter Sets: CreateSubscriptionIdViaHostExpanded, CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: CreateViaIdentityExpanded1, CreateViaIdentityExpanded, CreateViaIdentity1, CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -147,7 +173,7 @@ The kind of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateSubscriptionIdViaHostExpanded, CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -162,7 +188,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateSubscriptionIdViaHostExpanded, CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -177,7 +203,7 @@ ID of the resource that manages this resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateSubscriptionIdViaHostExpanded, CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -192,8 +218,8 @@ The name of the resource to create.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateSubscriptionIdViaHostExpanded, CreateSubscriptionIdViaHost, CreateExpanded, Create
-Aliases:
+Parameter Sets: CreateExpanded, Create
+Aliases: ResourceName
 
 Required: True
 Position: Named
@@ -202,12 +228,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -Parameter
 Resource information.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IGenericResource
-Parameter Sets: Create1, CreateSubscriptionIdViaHost, Create
+Parameter Sets: Create1, Create, CreateViaIdentity1, CreateViaIdentity
 Aliases:
 
 Required: False
@@ -222,7 +248,7 @@ The parent resource identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateSubscriptionIdViaHostExpanded, CreateSubscriptionIdViaHost, CreateExpanded, Create
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -237,7 +263,7 @@ The plan name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateSubscriptionIdViaHostExpanded, CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -252,7 +278,7 @@ The product code.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateSubscriptionIdViaHostExpanded, CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -267,7 +293,7 @@ The promotion code.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateSubscriptionIdViaHostExpanded, CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -282,7 +308,7 @@ The publisher ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateSubscriptionIdViaHostExpanded, CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -297,7 +323,7 @@ The plan's version.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateSubscriptionIdViaHostExpanded, CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -307,12 +333,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Properties
+### -Property
 The resource properties.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IGenericResourceProperties
-Parameter Sets: CreateSubscriptionIdViaHostExpanded, CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -327,8 +353,8 @@ The namespace of the resource provider.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateSubscriptionIdViaHostExpanded, CreateSubscriptionIdViaHost, CreateExpanded, Create
-Aliases:
+Parameter Sets: CreateExpanded, Create
+Aliases: ResourceProviderNamespace
 
 Required: True
 Position: Named
@@ -343,7 +369,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateSubscriptionIdViaHostExpanded, CreateSubscriptionIdViaHost, CreateExpanded, Create
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -374,7 +400,7 @@ The resource type of the resource to create.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateSubscriptionIdViaHostExpanded, CreateSubscriptionIdViaHost, CreateExpanded, Create
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -389,7 +415,7 @@ The SKU capacity.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateSubscriptionIdViaHostExpanded, CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -404,7 +430,7 @@ The SKU family.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateSubscriptionIdViaHostExpanded, CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -419,7 +445,7 @@ The SKU model.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateSubscriptionIdViaHostExpanded, CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -434,7 +460,7 @@ The SKU name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateSubscriptionIdViaHostExpanded, CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -449,7 +475,7 @@ The SKU size.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateSubscriptionIdViaHostExpanded, CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -464,7 +490,7 @@ The SKU tier.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateSubscriptionIdViaHostExpanded, CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -494,7 +520,7 @@ Resource tags
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901Preview.IResourceTags
-Parameter Sets: CreateSubscriptionIdViaHostExpanded, CreateExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False

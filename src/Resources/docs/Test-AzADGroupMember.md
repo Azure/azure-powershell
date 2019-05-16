@@ -14,13 +14,25 @@ Checks whether the specified user, group, contact, or service principal is a dir
 
 ### Is (Default)
 ```
-Test-AzADGroupMember -TenantId <String> [-Parameters <ICheckGroupMembershipParameters>]
+Test-AzADGroupMember -TenantId <String> [-Parameter <ICheckGroupMembershipParameters>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IsExpanded
 ```
 Test-AzADGroupMember -TenantId <String> -GroupId <String> -MemberId <String> [-Properties <Hashtable>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### IsViaIdentityExpanded
+```
+Test-AzADGroupMember -InputObject <IResourcesIdentity> -GroupId <String> -MemberId <String>
+ [-Properties <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### IsViaIdentity
+```
+Test-AzADGroupMember -InputObject <IResourcesIdentity> [-Parameter <ICheckGroupMembershipParameters>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -58,13 +70,28 @@ The object ID of the group to check.
 
 ```yaml
 Type: System.String
-Parameter Sets: IsExpanded
+Parameter Sets: IsExpanded, IsViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: IsViaIdentityExpanded, IsViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -73,7 +100,7 @@ The object ID of the contact, group, user, or service principal to check for mem
 
 ```yaml
 Type: System.String
-Parameter Sets: IsExpanded
+Parameter Sets: IsExpanded, IsViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -83,12 +110,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -Parameter
 Request parameters for IsMemberOf API call.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.ICheckGroupMembershipParameters
-Parameter Sets: Is
+Parameter Sets: Is, IsViaIdentity
 Aliases:
 
 Required: False
@@ -103,7 +130,7 @@ Additional Parameters
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: IsExpanded
+Parameter Sets: IsExpanded, IsViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -118,7 +145,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Is, IsExpanded
 Aliases:
 
 Required: True

@@ -12,16 +12,16 @@ Deletes a tag value.
 
 ## SYNTAX
 
-### DeleteSubscriptionIdViaHost (Default)
-```
-Remove-AzTagValue -TagName <String> -TagValue <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### Delete
+### Delete (Default)
 ```
 Remove-AzTagValue -SubscriptionId <String> -TagName <String> -TagValue <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzTagValue -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,6 +50,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -88,7 +103,7 @@ The name of the tag.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -103,7 +118,7 @@ The value of the tag to delete.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: True

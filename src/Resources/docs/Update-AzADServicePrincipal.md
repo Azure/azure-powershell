@@ -15,16 +15,30 @@ Updates a service principal in the directory.
 ### Update (Default)
 ```
 Update-AzADServicePrincipal -ObjectId <String> -TenantId <String>
- [-Parameters <IServicePrincipalUpdateParameters>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Parameter <IServicePrincipalUpdateParameters>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
 Update-AzADServicePrincipal -ObjectId <String> -TenantId <String> [-PassThru] [-AccountEnabled <String>]
- [-AppRoleAssignmentRequired <Boolean>] [-KeyCredentials <IKeyCredential[]>]
- [-PasswordCredentials <IPasswordCredential[]>] [-Tag <String[]>] [-Type <String>] [-DefaultProfile <PSObject>]
+ [-AppRoleAssignmentRequired <Boolean>] [-KeyCredential <IKeyCredential[]>]
+ [-PasswordCredential <IPasswordCredential[]>] [-Tag <String[]>] [-Type <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzADServicePrincipal -InputObject <IResourcesIdentity> [-PassThru] [-AccountEnabled <String>]
+ [-AppRoleAssignmentRequired <Boolean>] [-KeyCredential <IKeyCredential[]>]
+ [-PasswordCredential <IPasswordCredential[]>] [-Tag <String[]>] [-Type <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Update-AzADServicePrincipal -InputObject <IResourcesIdentity> [-Parameter <IServicePrincipalUpdateParameters>]
+ [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +60,7 @@ whether or not the service principal account is enabled
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -61,7 +75,7 @@ Specifies whether an AppRoleAssignment to a user or group is required before Azu
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -86,12 +100,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KeyCredentials
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -KeyCredential
 The collection of key credentials associated with the service principal.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IKeyCredential[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -106,7 +135,7 @@ The object ID of the service principal to delete.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -116,12 +145,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -Parameter
 Request parameters for update an existing service principal.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IServicePrincipalUpdateParameters
-Parameter Sets: Update
+Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -146,12 +175,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PasswordCredentials
+### -PasswordCredential
 The collection of password credentials associated with the service principal.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPasswordCredential[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -167,7 +196,7 @@ Not nullable.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -182,7 +211,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -197,8 +226,8 @@ the type of the service principal
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases: ServicePrincipalType
 
 Required: False
 Position: Named

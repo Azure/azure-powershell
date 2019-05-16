@@ -12,16 +12,16 @@ Associates existing subscription with the management group.
 
 ## SYNTAX
 
-### CreateSubscriptionIdViaHost (Default)
-```
-New-AzManagementGroupSubscription -GroupId <String> [-CacheControl <String>] [-PassThru]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Create
+### Create (Default)
 ```
 New-AzManagementGroupSubscription -GroupId <String> -SubscriptionId <String> [-CacheControl <String>]
  [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzManagementGroupSubscription -InputObject <IResourcesIdentity> [-CacheControl <String>] [-PassThru]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,13 +73,28 @@ Management Group ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

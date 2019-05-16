@@ -12,14 +12,9 @@ This operation retrieves the policy definition in the given subscription with th
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
+### List (Default)
 ```
-Get-AzPolicyDefinition [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost
-```
-Get-AzPolicyDefinition -Name <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyDefinition -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
@@ -30,18 +25,23 @@ Get-AzPolicyDefinition -Name <String> -ManagementGroupId <String> [-DefaultProfi
 
 ### Get
 ```
-Get-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
+Get-AzPolicyDefinition -Name <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### List
-```
-Get-AzPolicyDefinition -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzPolicyDefinition -ManagementGroupId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity1
+```
+Get-AzPolicyDefinition -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzPolicyDefinition -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,6 +73,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentity1, GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ManagementGroupId
 The ID of the management group.
 
@@ -93,8 +108,8 @@ The name of the policy definition to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get1, Get
-Aliases:
+Parameter Sets: Get1, Get
+Aliases: PolicyDefinitionName
 
 Required: True
 Position: Named
@@ -107,8 +122,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List
+Type: System.String[]
+Parameter Sets: List, Get
 Aliases:
 
 Required: True

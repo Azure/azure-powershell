@@ -14,13 +14,25 @@ Create a group in the directory.
 
 ### Create (Default)
 ```
-New-AzADGroup -TenantId <String> [-Parameters <IGroupCreateParameters>] [-DefaultProfile <PSObject>] [-WhatIf]
+New-AzADGroup -TenantId <String> [-Parameter <IGroupCreateParameters>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
 New-AzADGroup -TenantId <String> -DisplayName <String> -MailNickname <String> [-Properties <Hashtable>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzADGroup -InputObject <IResourcesIdentity> -DisplayName <String> -MailNickname <String>
+ [-Properties <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzADGroup -InputObject <IResourcesIdentity> [-Parameter <IGroupCreateParameters>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -58,13 +70,28 @@ Group display name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -73,7 +100,7 @@ Mail nickname
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -83,12 +110,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -Parameter
 Request parameters for creating a new group.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IGroupCreateParameters
-Parameter Sets: Create
+Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
 Required: False
@@ -103,7 +130,7 @@ Additional Parameters
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -118,7 +145,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True

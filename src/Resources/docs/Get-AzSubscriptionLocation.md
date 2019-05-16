@@ -12,14 +12,8 @@ This operation provides all the locations that are available for resource provid
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
 ```
-Get-AzSubscriptionLocation [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzSubscriptionLocation -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSubscriptionLocation -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,8 +49,8 @@ Accept wildcard characters: False
 Subscription ID.
 
 ```yaml
-Type: System.String
-Parameter Sets: List
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True

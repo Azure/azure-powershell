@@ -12,46 +12,38 @@ Gets a resource.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost1 (Default)
+### Get1 (Default)
 ```
-Get-AzResource [-Expand <String>] [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost
-```
-Get-AzResource -Name <String> -ParentResourcePath <String> -ProviderNamespace <String>
- -ResourceGroupName <String> -ResourceType <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResource -ResourceId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzResource -Name <String> -ParentResourcePath <String> -ProviderNamespace <String>
- -ResourceGroupName <String> -ResourceType <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
+ -ResourceGroupName <String> -ResourceType <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### ListSubscriptionIdViaHost
-```
-Get-AzResource -ResourceGroupName <String> [-Expand <String>] [-Filter <String>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzResource -ResourceGroupName <String> -SubscriptionId <String> [-Expand <String>] [-Filter <String>]
+Get-AzResource -ResourceGroupName <String> -SubscriptionId <String[]> [-Expand <String>] [-Filter <String>]
  [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzResource -SubscriptionId <String> [-Expand <String>] [-Filter <String>] [-Top <Int32>]
+Get-AzResource -SubscriptionId <String[]> [-Expand <String>] [-Filter <String>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Get1
+### GetViaIdentity1
 ```
-Get-AzResource -ResourceId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResource -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzResource -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,7 +82,7 @@ For example, to expand both properties, use $expand=changedTime,createdTime
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost1, ListSubscriptionIdViaHost, List, List1
+Parameter Sets: List, List1
 Aliases:
 
 Required: False
@@ -108,7 +100,7 @@ The combinations you can use are: substringof and/or resourceType, plan and plan
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost1, ListSubscriptionIdViaHost, List, List1
+Parameter Sets: List, List1
 Aliases:
 
 Required: False
@@ -118,13 +110,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentity1, GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the resource to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
-Aliases:
+Parameter Sets: Get
+Aliases: ResourceName
 
 Required: True
 Position: Named
@@ -138,7 +145,7 @@ The parent resource identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -153,8 +160,8 @@ The namespace of the resource provider.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
-Aliases:
+Parameter Sets: Get
+Aliases: ResourceProviderNamespace
 
 Required: True
 Position: Named
@@ -169,7 +176,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get, ListSubscriptionIdViaHost, List
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -200,7 +207,7 @@ The resource type of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -214,7 +221,7 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
@@ -231,7 +238,7 @@ If null is passed, returns all resources.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: ListSubscriptionIdViaHost1, ListSubscriptionIdViaHost, List, List1
+Parameter Sets: List, List1
 Aliases:
 
 Required: False

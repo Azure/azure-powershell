@@ -26,6 +26,20 @@ New-AzOAuth2PermissionGrant -TenantId <String> [-ClientId <String>] [-ConsentTyp
  [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaIdentityExpanded
+```
+New-AzOAuth2PermissionGrant -InputObject <IResourcesIdentity> [-ClientId <String>] [-ConsentType <ConsentType>]
+ [-ExpiryTime <String>] [-ObjectId <String>] [-OdataType <String>] [-PrincipalId <String>]
+ [-ResourceId <String>] [-Scope <String>] [-StartTime <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzOAuth2PermissionGrant -InputObject <IResourcesIdentity> [-Body <IOAuth2PermissionGrant>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Grants OAuth2 permissions for the relevant resource Ids of an app.
 
@@ -45,7 +59,7 @@ HELP MESSAGE MISSING
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IOAuth2PermissionGrant
-Parameter Sets: Create
+Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
 Required: False
@@ -60,7 +74,7 @@ The id of the resource's service principal granted consent to impersonate the us
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -75,7 +89,7 @@ Indicates if consent was provided by the administrator (on behalf of the organiz
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.ConsentType
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -105,7 +119,7 @@ Expiry time for TTL
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -115,12 +129,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ObjectId
 The id of the permission grant
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -135,7 +164,7 @@ Microsoft.DirectoryServices.OAuth2PermissionGrant
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -150,7 +179,7 @@ When consent type is Principal, this property specifies the id of the user that 
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -165,7 +194,7 @@ Object Id of the resource you want to grant
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -181,7 +210,7 @@ For example, User.Read
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -196,7 +225,7 @@ Start time for TTL
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -211,7 +240,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True

@@ -25,15 +25,21 @@ Get-AzADServicePrincipal -ObjectId <String> -TenantId <String> -ApplicationObjec
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetByDisplayName
+```
+Get-AzADServicePrincipal -TenantId <String> -ApplicationObject <IApplication> -DisplayName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetByApplicationId
 ```
 Get-AzADServicePrincipal -TenantId <String> -ApplicationObject <IApplication> -ApplicationId <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetByDisplayName
+### GetViaIdentity
 ```
-Get-AzADServicePrincipal -TenantId <String> -ApplicationObject <IApplication> -DisplayName <String>
+Get-AzADServicePrincipal -TenantId <String> -InputObject <IResourcesIdentity> -ApplicationObject <IApplication>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -124,6 +130,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

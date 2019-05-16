@@ -12,16 +12,16 @@ Unregisters a subscription from a resource provider.
 
 ## SYNTAX
 
-### UnregisterSubscriptionIdViaHost (Default)
-```
-Unregister-AzProvider -ResourceProviderNamespace <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### Unregister
+### Unregister (Default)
 ```
 Unregister-AzProvider -ResourceProviderNamespace <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UnregisterViaIdentity
+```
+Unregister-AzProvider -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,12 +53,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: UnregisterViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceProviderNamespace
 The namespace of the resource provider to unregister.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Unregister
 Aliases:
 
 Required: True

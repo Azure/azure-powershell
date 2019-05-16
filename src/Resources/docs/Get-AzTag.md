@@ -12,14 +12,8 @@ Gets the names and values of all resource tags that are defined in a subscriptio
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
 ```
-Get-AzTag [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzTag -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzTag -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,8 +49,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: List
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True

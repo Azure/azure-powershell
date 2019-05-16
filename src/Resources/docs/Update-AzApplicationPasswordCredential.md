@@ -15,7 +15,7 @@ Update passwordCredentials associated with an application.
 ### Update (Default)
 ```
 Update-AzApplicationPasswordCredential -ObjectId <String> -TenantId <String>
- [-Parameters <IPasswordCredentialsUpdateParameters>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Parameter <IPasswordCredentialsUpdateParameters>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,6 +23,19 @@ Update-AzApplicationPasswordCredential -ObjectId <String> -TenantId <String>
 ```
 Update-AzApplicationPasswordCredential -ObjectId <String> -TenantId <String> [-PassThru]
  -Value <IPasswordCredential[]> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzApplicationPasswordCredential -InputObject <IResourcesIdentity> [-PassThru]
+ -Value <IPasswordCredential[]> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Update-AzApplicationPasswordCredential -InputObject <IResourcesIdentity>
+ [-Parameter <IPasswordCredentialsUpdateParameters>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,12 +67,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ObjectId
 Application object ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -69,12 +97,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -Parameter
 Request parameters for a PasswordCredentials update operation.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPasswordCredentialsUpdateParameters
-Parameter Sets: Update
+Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -104,7 +132,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -119,7 +147,7 @@ A collection of PasswordCredentials.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPasswordCredential[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True

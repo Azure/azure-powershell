@@ -14,10 +14,10 @@ Canceling a template deployment stops the currently running template deployment 
 
 ## SYNTAX
 
-### CancelSubscriptionIdViaHost (Default)
+### Cancel (Default)
 ```
-Stop-AzDeployment -Name <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Stop-AzDeployment -Name <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Cancel1
@@ -26,15 +26,15 @@ Stop-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <St
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Cancel
+### CancelViaIdentity1
 ```
-Stop-AzDeployment -Name <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
+Stop-AzDeployment -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### CancelSubscriptionIdViaHost1
+### CancelViaIdentity
 ```
-Stop-AzDeployment -Name <String> -ResourceGroupName <String> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
+Stop-AzDeployment -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -69,13 +69,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: CancelViaIdentity1, CancelViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the deployment to cancel.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: Cancel, Cancel1
+Aliases: DeploymentName
 
 Required: True
 Position: Named
@@ -105,7 +120,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Cancel1, CancelSubscriptionIdViaHost1
+Parameter Sets: Cancel1
 Aliases:
 
 Required: True
@@ -120,7 +135,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Cancel1, Cancel
+Parameter Sets: Cancel, Cancel1
 Aliases:
 
 Required: True

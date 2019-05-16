@@ -22,15 +22,20 @@ Get-AzADApplication -TenantId <String> [-Filter <String>] [-DefaultProfile <PSOb
 Get-AzADApplication -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetByDisplayName
+```
+Get-AzADApplication -TenantId <String> -DisplayName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetByApplicationId
 ```
 Get-AzADApplication -TenantId <String> -ApplicationId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### GetByDisplayName
+### GetViaIdentity2
 ```
-Get-AzADApplication -TenantId <String> -DisplayName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADApplication -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,13 +112,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentity2
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ObjectId
 Application object ID.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get2
-Aliases:
+Aliases: ApplicationObjectId
 
 Required: True
 Position: Named
@@ -127,7 +147,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List2, Get2, GetByDisplayName, GetByApplicationId
 Aliases:
 
 Required: True

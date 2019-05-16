@@ -17,18 +17,23 @@ Checks by ID whether a resource exists.
 Test-AzResourceExistence -ResourceId <String> [-PassThru] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### CheckSubscriptionIdViaHost
-```
-Test-AzResourceExistence -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> [-PassThru] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### Check1
 ```
 Test-AzResourceExistence -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
  -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String> [-PassThru]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### CheckViaIdentity1
+```
+Test-AzResourceExistence -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### CheckViaIdentity
+```
+Test-AzResourceExistence -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,12 +65,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: CheckViaIdentity1, CheckViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ParentResourcePath
 The parent resource identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckSubscriptionIdViaHost, Check1
+Parameter Sets: Check1
 Aliases:
 
 Required: True
@@ -96,7 +116,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckSubscriptionIdViaHost, Check1
+Parameter Sets: Check1
 Aliases:
 
 Required: True
@@ -127,7 +147,7 @@ The name of the resource to check whether it exists.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckSubscriptionIdViaHost, Check1
+Parameter Sets: Check1
 Aliases:
 
 Required: True
@@ -142,7 +162,7 @@ The resource provider of the resource to check.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckSubscriptionIdViaHost, Check1
+Parameter Sets: Check1
 Aliases:
 
 Required: True
@@ -157,7 +177,7 @@ The resource type.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckSubscriptionIdViaHost, Check1
+Parameter Sets: Check1
 Aliases:
 
 Required: True

@@ -14,14 +14,15 @@ You cannot create tags with one of these prefixes.
 
 ## SYNTAX
 
-### CreateSubscriptionIdViaHost (Default)
-```
-New-AzTag -Name <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Create
+### Create (Default)
 ```
 New-AzTag -Name <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzTag -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -56,13 +57,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the tag to create.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: Create
+Aliases: TagName
 
 Required: True
 Position: Named

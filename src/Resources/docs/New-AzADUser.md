@@ -14,7 +14,7 @@ Create a new user.
 
 ### Create (Default)
 ```
-New-AzADUser -TenantId <String> [-Parameters <IUserCreateParameters>] [-DefaultProfile <PSObject>] [-WhatIf]
+New-AzADUser -TenantId <String> [-Parameter <IUserCreateParameters>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,6 +23,20 @@ New-AzADUser -TenantId <String> [-Parameters <IUserCreateParameters>] [-DefaultP
 New-AzADUser -TenantId <String> -AccountEnabled <Boolean> -DisplayName <String> [-GivenName <String>]
  [-ImmutableId <String>] [-Mail <String>] -MailNickname <String> -PasswordProfile <IPasswordProfile>
  -PrincipalName <String> [-Surname <String>] [-Type <UserType>] [-UsageLocation <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzADUser -InputObject <IResourcesIdentity> -AccountEnabled <Boolean> -DisplayName <String>
+ [-GivenName <String>] [-ImmutableId <String>] [-Mail <String>] -MailNickname <String>
+ -PasswordProfile <IPasswordProfile> -PrincipalName <String> [-Surname <String>] [-Type <UserType>]
+ [-UsageLocation <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzADUser -InputObject <IResourcesIdentity> [-Parameter <IUserCreateParameters>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -45,7 +59,7 @@ Whether the account is enabled.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -75,7 +89,7 @@ The display name of the user.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -90,7 +104,7 @@ The given name for the user.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -106,7 +120,7 @@ It is used to associate an on-premises Active Directory user account with their 
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -116,12 +130,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Mail
 The primary email address of the user.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -136,7 +165,7 @@ The mail alias for the user.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -146,12 +175,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -Parameter
 Request parameters for creating a new work or school account user.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IUserCreateParameters
-Parameter Sets: Create
+Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
 Required: False
@@ -166,7 +195,7 @@ Password Profile
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPasswordProfile
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -182,8 +211,8 @@ It must contain one of the verified domains for the tenant.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases: UserPrincipalName
 
 Required: True
 Position: Named
@@ -197,7 +226,7 @@ The user's surname (family name or last name).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -212,7 +241,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -227,8 +256,8 @@ A string value that can be used to classify user types in your directory, such a
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.UserType
-Parameter Sets: CreateExpanded
-Aliases:
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases: UserType
 
 Required: False
 Position: Named
@@ -244,7 +273,7 @@ Examples include: "US", "JP", and "GB".
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False

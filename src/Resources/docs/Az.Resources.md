@@ -413,9 +413,6 @@ Validates whether the specified template is syntactically correct and will be ac
 ### [Test-AzDeploymentExistence](Test-AzDeploymentExistence.md)
 Checks whether the deployment exists.
 
-### [Test-AzNameAvailability](Test-AzNameAvailability.md)
-Checks if the specified management group name is valid and unique
-
 ### [Test-AzResourceExistence](Test-AzResourceExistence.md)
 Checks by ID whether a resource exists.
 
@@ -464,8 +461,6 @@ Update a management group.
 ### [Update-AzResource](Update-AzResource.md)
 Updates a resource.
 
-### [Update-AzResourceGroup](Update-AzResourceGroup.md)
-Resource groups can be updated through a simple PATCH operation to a group address.
-The format of the request is the same as that for creating a resource group.
-If a field is unspecified, the current value is retained.
+### [Update-AzResource](Update-AzResource.md)
+Updates a resource.
 

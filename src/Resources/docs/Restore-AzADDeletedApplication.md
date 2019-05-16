@@ -12,8 +12,15 @@ Restores the deleted application in the directory.
 
 ## SYNTAX
 
+### Restore (Default)
 ```
 Restore-AzADDeletedApplication -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### RestoreViaIdentity
+```
+Restore-AzADDeletedApplication -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -46,12 +53,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: RestoreViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ObjectId
 Application object ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Restore
 Aliases:
 
 Required: True
@@ -66,7 +88,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Restore
 Aliases:
 
 Required: True

@@ -15,28 +15,29 @@ Write and delete operations are blocked on the groups until the move completes.
 
 ## SYNTAX
 
-### MoveSubscriptionIdViaHost (Default)
+### Move (Default)
 ```
-Move-AzResource -SourceResourceGroupName <String> [-Parameters <IResourcesMoveInfo>] [-PassThru]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> [-Parameter <IResourcesMoveInfo>]
+ [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MoveExpanded
 ```
-Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> [-PassThru] [-S <String[]>]
+Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> [-PassThru] [-Resource <String[]>]
  [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### Move
+### MoveViaIdentityExpanded
 ```
-Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> [-Parameters <IResourcesMoveInfo>]
- [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Move-AzResource -InputObject <IResourcesIdentity> [-PassThru] [-Resource <String[]>]
+ [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### MoveSubscriptionIdViaHostExpanded
+### MoveViaIdentity
 ```
-Move-AzResource -SourceResourceGroupName <String> [-PassThru] [-S <String[]>] [-TargetResourceGroup <String>]
+Move-AzResource -InputObject <IResourcesIdentity> [-Parameter <IResourcesMoveInfo>] [-PassThru]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -87,12 +88,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: MoveViaIdentityExpanded, MoveViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Parameter
 Parameters of move resources.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourcesMoveInfo
-Parameter Sets: MoveSubscriptionIdViaHost, Move
+Parameter Sets: Move, MoveViaIdentity
 Aliases:
 
 Required: False
@@ -117,12 +133,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -S
+### -Resource
 The IDs of the resources.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: MoveExpanded, MoveSubscriptionIdViaHostExpanded
+Parameter Sets: MoveExpanded, MoveViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -137,7 +153,7 @@ The name of the resource group containing the resources to move.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Move, MoveExpanded
 Aliases:
 
 Required: True
@@ -152,7 +168,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: MoveExpanded, Move
+Parameter Sets: Move, MoveExpanded
 Aliases:
 
 Required: True
@@ -167,7 +183,7 @@ The target resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: MoveExpanded, MoveSubscriptionIdViaHostExpanded
+Parameter Sets: MoveExpanded, MoveViaIdentityExpanded
 Aliases:
 
 Required: False

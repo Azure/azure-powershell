@@ -28,6 +28,24 @@ Remove-AzRoleAssignment -Name <String> -Scope <String> [-DefaultProfile <PSObjec
 Remove-AzRoleAssignment -RoleId <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentity3
+```
+Remove-AzRoleAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### DeleteViaIdentity2
+```
+Remove-AzRoleAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### DeleteViaIdentity1
+```
+Remove-AzRoleAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Deletes a role assignment.
 
@@ -63,12 +81,27 @@ The ID of the role assignment to delete.
 ```yaml
 Type: System.String
 Parameter Sets: Delete1
-Aliases:
+Aliases: RoleAssignmentId
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: DeleteViaIdentity3, DeleteViaIdentity2, DeleteViaIdentity1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -78,7 +111,7 @@ The name of the role assignment to delete.
 ```yaml
 Type: System.String
 Parameter Sets: Delete2
-Aliases:
+Aliases: RoleAssignmentName
 
 Required: True
 Position: Named

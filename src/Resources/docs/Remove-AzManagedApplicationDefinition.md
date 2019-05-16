@@ -18,16 +18,22 @@ Remove-AzManagedApplicationDefinition -Id <String> [-PassThru] [-DefaultProfile 
  [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteSubscriptionIdViaHost
-```
-Remove-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String> [-PassThru]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### Delete
 ```
 Remove-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity1
+```
+Remove-AzManagedApplicationDefinition -InputObject <IResourcesIdentity> [-PassThru]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzManagedApplicationDefinition -InputObject <IResourcesIdentity> [-PassThru]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,7 +87,7 @@ Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Micro
 ```yaml
 Type: System.String
 Parameter Sets: Delete1
-Aliases:
+Aliases: ApplicationDefinitionId
 
 Required: True
 Position: Named
@@ -90,13 +96,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: DeleteViaIdentity1, DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the managed application definition to delete.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteSubscriptionIdViaHost, Delete
-Aliases:
+Parameter Sets: Delete
+Aliases: ApplicationDefinitionName
 
 Required: True
 Position: Named
@@ -126,7 +147,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteSubscriptionIdViaHost, Delete
+Parameter Sets: Delete
 Aliases:
 
 Required: True

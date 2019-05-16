@@ -23,6 +23,12 @@ Get-AzProviderOperationsMetadata -ResourceProviderNamespace <String> [-Expand <S
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentity1
+```
+Get-AzProviderOperationsMetadata -InputObject <IResourcesIdentity> [-Expand <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets provider operations metadata for the specified resource provider.
 
@@ -64,6 +70,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentity1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

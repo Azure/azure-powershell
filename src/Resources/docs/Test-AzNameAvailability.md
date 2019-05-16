@@ -14,8 +14,8 @@ Checks if the specified management group name is valid and unique
 
 ### Check (Default)
 ```
-Test-AzNameAvailability [-CheckNameAvailabilityRequest <ICheckNameAvailabilityRequest>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Test-AzNameAvailability [-Request <ICheckNameAvailabilityRequest>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckExpanded
@@ -38,26 +38,11 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -CheckNameAvailabilityRequest
-Management group name availability check parameters.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180301Preview.ICheckNameAvailabilityRequest
-Parameter Sets: Check
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -72,7 +57,7 @@ Accept wildcard characters: False
 the name to check for availability
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: CheckExpanded
 Aliases:
 
@@ -83,11 +68,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Request
+Management group name availability check parameters.
+
+```yaml
+Type: ICheckNameAvailabilityRequest
+Parameter Sets: Check
+Aliases: CheckNameAvailabilityRequest
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Type
 fully qualified resource type which includes provider namespace
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.Type
+Type: Type
 Parameter Sets: CheckExpanded
 Aliases:
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -118,7 +118,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
