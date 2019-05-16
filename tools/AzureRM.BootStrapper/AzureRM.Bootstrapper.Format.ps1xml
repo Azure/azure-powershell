@@ -16,7 +16,7 @@
               <ListItem>
                 <Label>Modules</Label>
                 <ScriptBlock> 
-                  $RequiredModules = "AzureRM", "AzureRM.Compute", "AzureRM.Websites", "AzureRM.Storage", "AzureRM.Sql"
+                  $RequiredModules = "AzureRM", "AzureRM.Compute", "AzureRM.Netowrk", "AzureRM.Storage", "AzureRM.Sql"
                   foreach ($name in $RequiredModules) 
                   {
                     ($_.psobject.properties | % { if ($_.name -eq $name) { $name + " : " + ( $_.value | ft -auto | out-string ) } } )

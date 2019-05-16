@@ -22,7 +22,7 @@ modules that are appropriate for the azure version profile you are targeting.
 You can also use Tags in the AzureRM modules to discover profile information 
 for each module version.  
 
-Tags for a Profile use the form VersionProfile:2017-03-09-profile
+Tags for a Profile use the form VersionProfile:2019-03-01-hybrid
 
 The AzureRM bootstrapper module uses the PowerShell Gallery to install and 
 load needed modules when you want to target a specific version profile.
@@ -41,7 +41,7 @@ Get-AzureRmProfile -ListAvailable
 lists all available version profiles.
 
 ```
-Use-AzureRmProfile -Profile 2017-03-09-profile
+Use-AzureRmProfile -Profile 2019-03-01-hybrid
 ``` 
 
 Installs and loads cmdlets for one of the listed profiles.
@@ -55,7 +55,7 @@ Get-AzureRmProfile
 Lists the profiles that are currently installed on the machine.
 
 ```
-Use-AzureRmProfile -Profile 2017-03-09-profile
+Use-AzureRmProfile -Profile 2019-03-01-hybrid
 ``` 
 Installs and loads cmdlets compatible with one of the listed profiles.
 
@@ -69,10 +69,10 @@ Installs and loads the latest published cmdlets for Azure PowerShell.
 ## Acquiring and Loading All Azure modules using the BootStrapper
 
 ```
-Use-AzureRmProfile -Profile '2017-03-09-profile' -Force
+Use-AzureRmProfile -Profile '2019-03-01-hybrid' -Force
 ```
 
-Checks if  modules compatible with the '2017-03-09-profile' profile are 
+Checks if  modules compatible with the '2019-03-01-hybrid' profile are 
 installed in the current scope, downloads and installs the modules if necessary, 
 and then loads the modules in the current session.  You must open a new 
 PowerShell session to target a different version profile.  Using the 
@@ -81,11 +81,11 @@ PowerShell session to target a different version profile.  Using the
 ## Acquiring and Loading Selected Azure modules using the Bootstrapper
 
 ```
-Use-AzureRmProfile -Profile '2017-03-09-profile' -Module AzureRM.Compute
+Use-AzureRmProfile -Profile '2019-03-01-hybrid' -Module AzureRM.Compute
 ```
 
 Checks if an AzureRM.Compute module compatible with the 
-'2017-03-09-profile' profile is installed in the current scope, downloads 
+'2019-03-01-hybrid' profile is installed in the current scope, downloads 
 and installs the module if necessary, and then loads the module in the 
 current session.  You must open a new PowerShell session to target a different 
 module.
@@ -96,10 +96,10 @@ To switch between version profiles on a machine, in a new PowerShell window,
 execute the following cmdlet:
 
 ```
-Use-AzureRmProfile -Profile '2017-03-09-profile'
+Use-AzureRmProfile -Profile '2019-03-01-hybrid'
 ```
 
-This loads the modules associated with the '2017-03-09-profile' profile in 
+This loads the modules associated with the '2019-03-01-hybrid' profile in 
 the current session.  You must open a new PowerShell session to target a 
 different version profile.  
 
@@ -130,7 +130,7 @@ To set or update a profile as a default to be used with all Azure PowerShell
 modules, execute the following cmdlet:
 
 ```
-Set-AzureRmDefaultProfile -Profile '2017-03-09-profile'
+Set-AzureRmDefaultProfile -Profile '2019-03-01-hybrid'
 ```
 The default profile selection is persisted across shells and sessions.
 
