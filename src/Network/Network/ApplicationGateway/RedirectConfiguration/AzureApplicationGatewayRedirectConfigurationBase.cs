@@ -88,7 +88,10 @@ namespace Microsoft.Azure.Commands.Network
                 redirectConfiguration.IncludeQueryString = this.IncludeQueryString;
             }
 
-
+            if (this.TargetListener != null)
+            {
+                this.TargetListenerID = this.TargetListener.Id;
+            }
             
             if (!string.IsNullOrEmpty(this.TargetListenerID))
             {
