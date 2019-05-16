@@ -8,7 +8,7 @@ schema: 2.0.0
 # Import-AzBlueprintWithArtifacts
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Import a blueprint file in JSON format to a blueprint object and save it within the specified subscription or management group.
 
 ## SYNTAX
 

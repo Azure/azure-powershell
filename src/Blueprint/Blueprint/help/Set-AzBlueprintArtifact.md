@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzBlueprintArtifact
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Update a new artifact and save it within a blueprint.
 
 ## SYNTAX
 

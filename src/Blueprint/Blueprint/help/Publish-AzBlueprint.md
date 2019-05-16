@@ -8,7 +8,7 @@ schema: 2.0.0
 # Publish-AzBlueprint
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Publish a new blueprint version.
 
 ## SYNTAX
 
