@@ -1,28 +1,52 @@
 ---
 Module Name: Az.Blueprint
-Module Guid: {{ Update Module Guid }}
-Download Help Link: {{ Update Download Link }}
-Help Version: 1.0.0.0
-Locale: en-us
+Module Guid: ef36c942-4a71-4e19-9450-05a35843deb6
+Download Help Link: {{Please enter FwLink manually}}
+Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Locale: en-US
 ---
 
 # Az.Blueprint Module
 ## Description
-The topics in this section document the Azure PowerShell cmdlets for Azure Blueprints in the Azure Resource Manager framework. The cmdlets exist in the Microsoft.Azure.PowerShell.Cmdlets.Blueprint namespace.
+{{Manually Enter Description Here}}
 
 ## Az.Blueprint Cmdlets
+### [Export-AzBlueprintWithArtifacts](Export-AzBlueprintWithArtifacts.md)
+{{Manually Enter Export-AzBlueprintWithArtifacts Description Here}}
+
 ### [Get-AzBlueprint](Get-AzBlueprint.md)
-Get one or more blueprint definitions.
+{{Manually Enter Get-AzBlueprint Description Here}}
+
+### [Get-AzBlueprintArtifact](Get-AzBlueprintArtifact.md)
+{{Manually Enter Get-AzBlueprintArtifact Description Here}}
 
 ### [Get-AzBlueprintAssignment](Get-AzBlueprintAssignment.md)
-Get one or more blueprint assignments.
+{{Manually Enter Get-AzBlueprintAssignment Description Here}}
+
+### [Import-AzBlueprintWithArtifacts](Import-AzBlueprintWithArtifacts.md)
+{{Manually Enter Import-AzBlueprintWithArtifacts Description Here}}
+
+### [New-AzBlueprint](New-AzBlueprint.md)
+{{Manually Enter New-AzBlueprint Description Here}}
+
+### [New-AzBlueprintArtifact](New-AzBlueprintArtifact.md)
+{{Manually Enter New-AzBlueprintArtifact Description Here}}
 
 ### [New-AzBlueprintAssignment](New-AzBlueprintAssignment.md)
-Assign a blueprint definition to a subscription.
+{{Manually Enter New-AzBlueprintAssignment Description Here}}
+
+### [Publish-AzBlueprint](Publish-AzBlueprint.md)
+{{Manually Enter Publish-AzBlueprint Description Here}}
 
 ### [Remove-AzBlueprintAssignment](Remove-AzBlueprintAssignment.md)
-Remove a blueprint assignment from a subscription.
+{{Manually Enter Remove-AzBlueprintAssignment Description Here}}
+
+### [Set-AzBlueprint](Set-AzBlueprint.md)
+{{Manually Enter Set-AzBlueprint Description Here}}
+
+### [Set-AzBlueprintArtifact](Set-AzBlueprintArtifact.md)
+{{Manually Enter Set-AzBlueprintArtifact Description Here}}
 
 ### [Set-AzBlueprintAssignment](Set-AzBlueprintAssignment.md)
-Update an existing blueprint assignment.
+{{Manually Enter Set-AzBlueprintAssignment Description Here}}
 

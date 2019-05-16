@@ -33,55 +33,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     public class BlueprintAssignmentCmdletBase : BlueprintCmdletBase
     {
-        #region Parameters
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignmentByFile, Mandatory = true, HelpMessage = ParameterHelpMessages.BlueprintAssignmentName)]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintAssignmentName)]
-        [ValidatePattern("^[0-9a-zA-Z_-]*$", Options = RegexOptions.Compiled | RegexOptions.CultureInvariant)]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignmentByFile, Mandatory = true, HelpMessage = ParameterHelpMessages.BlueprintObject)]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.BlueprintObject)]
-        [ValidateNotNull]
-        public PSBlueprintBase Blueprint { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignmentByFile, Mandatory = false, HelpMessage = ParameterHelpMessages.SubscriptionIdToAssign)]
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.SubscriptionIdToAssign)]
-        [ValidateNotNullOrEmpty]
-        public string[] SubscriptionId { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.Location)]
-        [ValidateNotNullOrEmpty]
-        [LocationCompleter("Microsoft.Resources/resourceGroups")]
-        public string Location { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, HelpMessage = ParameterHelpMessages.SystemAssignedIdentity)]
-        public SwitchParameter SystemAssignedIdentity { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, HelpMessage = ParameterHelpMessages.UserAssignedIdentity)]
-        [ValidateNotNullOrEmpty]
-        public string UserAssignedIdentity { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, HelpMessage = ParameterHelpMessages.LockFlag)]
-        public PSLockMode? Lock { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, HelpMessage = ParameterHelpMessages.SecureString)]
-        [ValidateNotNullOrEmpty]
-        public Hashtable SecureStringParameter { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public Hashtable ResourceGroupParameter { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.Parameters)]
-        [ValidateNotNull]
-        public Hashtable Parameter { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignmentByFile, Mandatory = false, HelpMessage = ParameterHelpMessages.SecureString)]
-        [ValidateNotNullOrEmpty]
-        public string AssignmentFile { get; set; }
-
-        #endregion Parameters
 
         /// <summary>
         /// Creates an assignment object to be submitted

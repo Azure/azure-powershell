@@ -28,18 +28,30 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
     public class GetAzureRmBlueprint : BlueprintDefinitionCmdletBase
     {
         #region Parameters
- 
-        [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionAndName, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionName)]
-        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupAndName, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionName)]
-        [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionNameAndLatestPublished, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionName)]
-        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupNameAndLatestPublished, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionName)]
-        [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionNameAndVersion, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionVersion)]
-        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupNameAndVersion, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionVersion)]
+        [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionAndName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionName)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupAndName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionName)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupNameAndLatestPublished, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionName)]
+        [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionNameAndLatestPublished, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionName)]
+        [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionNameAndVersion, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionVersion)]
         [ValidateNotNullOrEmpty]
-        public new string Name { get; set; }
+        public string Name { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionAndName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionSubscriptionId)]
+        [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionNameAndLatestPublished, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionSubscriptionId)]
+        [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionNameAndVersion, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionSubscriptionId)]
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionScope, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionSubscriptionId)]
+        [ValidateNotNullOrEmpty]
+        public string SubscriptionId { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupAndName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionManagementGroupId)]
+        [Parameter(ParameterSetName = ParameterSetNames.ManagementGroupScope, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionManagementGroupId)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupNameAndVersion, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionManagementGroupId)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupNameAndLatestPublished, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.DefinitionManagementGroupId)]
+        [ValidateNotNullOrEmpty]
+        public string ManagementGroupId { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.BySubscriptionNameAndVersion, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionVersion)]
-        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupNameAndVersion, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionVersion)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByManagementGroupNameAndVersion, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionVersion)]
         [ValidateNotNullOrEmpty]
         public string Version { get; set; }
 

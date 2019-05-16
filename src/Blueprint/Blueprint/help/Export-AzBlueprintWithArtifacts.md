@@ -12,76 +12,9 @@ Export specified blueprint to the specified output location as a JSON file.
 
 ## SYNTAX
 
-### SubscriptionScope (Default)
-```
-Export-AzBlueprintWithArtifacts [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ExportToFile
 ```
 Export-AzBlueprintWithArtifacts -Blueprint <PSBlueprintBase> -OutputPath <String> [-Version <String>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### CreateBlueprintBySubscription
-```
-Export-AzBlueprintWithArtifacts -Name <String> [-SubscriptionId <String>] -BlueprintFile <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### CreateBlueprintByManagementGroup
-```
-Export-AzBlueprintWithArtifacts -Name <String> -ManagementGroupId <String> -BlueprintFile <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ImportBlueprint
-```
-Export-AzBlueprintWithArtifacts -Name <String> [-SubscriptionId <String>] [-ManagementGroupId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### BySubscriptionAndName
-```
-Export-AzBlueprintWithArtifacts [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### BySubscriptionNameAndVersion
-```
-Export-AzBlueprintWithArtifacts [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### BySubscriptionNameAndLatestPublished
-```
-Export-AzBlueprintWithArtifacts [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ManagementGroupScope
-```
-Export-AzBlueprintWithArtifacts -ManagementGroupId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ByManagementGroupAndName
-```
-Export-AzBlueprintWithArtifacts -ManagementGroupId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ByManagementGroupNameAndVersion
-```
-Export-AzBlueprintWithArtifacts -ManagementGroupId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ByManagementGroupNameAndLatestPublished
-```
-Export-AzBlueprintWithArtifacts -ManagementGroupId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,28 +36,13 @@ The Blueprint definition object to export.
 
 ```yaml
 Type: PSBlueprintBase
-Parameter Sets: ExportToFile
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -BlueprintFile
-Path to a Blueprint JSON file on disk.
-
-```yaml
-Type: String
-Parameter Sets: CreateBlueprintBySubscription, CreateBlueprintByManagementGroup
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -148,7 +66,7 @@ When set to true, execution will not ask for a confirmation.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: ExportToFile
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -158,72 +76,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagementGroupId
-Management Group Id where the blueprint definition is or will be saved.
-
-```yaml
-Type: String
-Parameter Sets: CreateBlueprintByManagementGroup, ManagementGroupScope, ByManagementGroupAndName, ByManagementGroupNameAndVersion, ByManagementGroupNameAndLatestPublished
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: ImportBlueprint
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-Blueprint definition name.
-
-```yaml
-Type: String
-Parameter Sets: CreateBlueprintBySubscription, CreateBlueprintByManagementGroup, ImportBlueprint
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -OutputPath
 Path to a file on disk where to export the Blueprint definition in JSON format.
 
 ```yaml
 Type: String
-Parameter Sets: ExportToFile
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-Subscription Id where the blueprint definition is or will be saved.
-
-```yaml
-Type: String
-Parameter Sets: SubscriptionScope, CreateBlueprintBySubscription, ImportBlueprint, BySubscriptionAndName, BySubscriptionNameAndVersion, BySubscriptionNameAndLatestPublished
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -235,7 +96,7 @@ Published blueprint definition version.
 
 ```yaml
 Type: String
-Parameter Sets: ExportToFile
+Parameter Sets: (All)
 Aliases:
 
 Required: False

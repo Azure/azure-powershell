@@ -24,14 +24,14 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
     public class GetAzureRmBlueprintAssignment : BlueprintAssignmentCmdletBase
     {
         #region Parameters
-        [Parameter(ParameterSetName = ParameterSetNames.BlueprintAssignmentByName, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.AssignmentSubscriptionId)]
-        [Parameter(ParameterSetName = ParameterSetNames.BlueprintAssignmentsBySubscription, Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.AssignmentSubscriptionId)]
+        [Parameter(ParameterSetName = ParameterSetNames.BlueprintAssignmentByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintAssignmentName)]
         [ValidateNotNullOrEmpty]
-        public new string SubscriptionId { get; set; }
+        public string Name { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.BlueprintAssignmentByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintAssignmentName)]
+        [Parameter(ParameterSetName = ParameterSetNames.BlueprintAssignmentByName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.AssignmentSubscriptionId)]
+        [Parameter(ParameterSetName = ParameterSetNames.BlueprintAssignmentsBySubscription, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.AssignmentSubscriptionId)]
         [ValidateNotNullOrEmpty]
-        public new string Name { get; set; }
+        public string SubscriptionId { get; set; }
         #endregion
 
         #region Cmdlet Overrides
