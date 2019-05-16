@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version:https://docs.microsoft.com/en-us/powershell/module/az.monitor/new-azmetricalertrulev2criteria
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/new-azmetricalertrulev2criteria
 schema: 2.0.0
 ---
 
@@ -12,7 +12,7 @@ Creates a local criteria object that can be used to create a new metric alert
 
 ## SYNTAX
 
-### StaticThresholdParameterSet
+### StaticThresholdParameterSet (Default)
 ```
 New-AzMetricAlertRuleV2Criteria -MetricName <String> [-MetricNamespace <String>]
  [-DimensionSelection <PSMetricDimension[]>] -TimeAggregation <String> -Operator <String> -Threshold <Double>
@@ -71,7 +71,7 @@ This set of commands creates a more complex metric alert criteria which includes
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 List of dimension conditions
 
 ```yaml
-Type: PSMetricDimension[]
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDimension[]
 Parameter Sets: (All)
 Aliases:
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 The Dynamic Threshold for rule condition
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DynamicThresholdParameterSet
 Aliases:
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 The Failing Period for rule condition
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: DynamicThresholdParameterSet
 Aliases:
 
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 The IgnoreDataBefore parameter
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: DynamicThresholdParameterSet
 Aliases:
 
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 The metric name for rule
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 The Namespace of the metric
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -176,7 +176,7 @@ Accept wildcard characters: False
 The rule condition operator
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -191,7 +191,7 @@ Accept wildcard characters: False
 The sensitivity for rule condition
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DynamicThresholdParameterSet
 Aliases:
 
@@ -206,7 +206,7 @@ Accept wildcard characters: False
 The threshold for rule condition
 
 ```yaml
-Type: Double
+Type: System.Double
 Parameter Sets: StaticThresholdParameterSet
 Aliases:
 
@@ -221,7 +221,7 @@ Accept wildcard characters: False
 The aggregation operation used to roll up multiple metric values across the window interval
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -236,7 +236,7 @@ Accept wildcard characters: False
 The Total Period for rule condition
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: DynamicThresholdParameterSet
 Aliases:
 
@@ -248,8 +248,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

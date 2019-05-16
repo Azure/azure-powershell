@@ -1,0 +1,169 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/denyAssignments?$filter=principalId%20eq%20'00000000-0000-0000-0000-000000000000'&api-version=2018-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDAwNGE5ZmQtZDU4ZS00OGRjLWFlYjItNGE0YWVjNTg2MDZmL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9kZW55QXNzaWdubWVudHM/JGZpbHRlcj1wcmluY2lwYWxJZCUyMGVxJTIwJzAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCcmYXBpLXZlcnNpb249MjAxOC0wNy0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "34fa48ba-fa62-4b94-83bd-a2338ebfb42d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/2.9.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-charge": [
+          "1"
+        ],
+        "x-ms-request-id": [
+          "e81f8f39-a11c-4694-8497-a3f6fa9ecf84"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "16a5c06a-6780-40fe-a3ad-dbeeb8b04b4f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20181126T235030Z:16a5c06a-6780-40fe-a3ad-dbeeb8b04b4f"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 26 Nov 2018 23:50:29 GMT"
+        ],
+        "Set-Cookie": [
+          "x-ms-gateway-slice=productionb; path=/; secure; HttpOnly"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "Content-Length": [
+          "1855"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"denyAssignmentName\": \"AzureAuthzSDK_C807D002-6D77-452F-A837-4692929D12FD\",\r\n        \"description\": \"Test deny assignment for AzureAuthzSDK\",\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"foo/*\"\r\n            ],\r\n            \"notActions\": [\r\n              \"foo/*/read\"\r\n            ],\r\n            \"dataActions\": [\r\n              \"foo/*\"\r\n            ],\r\n            \"notDataActions\": []\r\n          }\r\n        ],\r\n        \"scope\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/AzureAuthzSDK\",\r\n        \"doNotApplyToChildScopes\": false,\r\n        \"principals\": [\r\n          {\r\n            \"id\": \"00000000000000000000000000000000\",\r\n            \"type\": \"Everyone\"\r\n          }\r\n        ],\r\n        \"excludePrincipals\": [\r\n          {\r\n            \"id\": \"f8d526a054eb4941ae69ebf4a334d0f0\",\r\n            \"type\": \"User\"\r\n          }\r\n        ],\r\n        \"isSystemProtected\": true,\r\n        \"createdOn\": \"2018-11-16T00:03:15.6393179Z\",\r\n        \"updatedOn\": \"2018-11-16T00:03:15.6393179Z\",\r\n        \"createdBy\": null,\r\n        \"updatedBy\": null\r\n      },\r\n      \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourcegroups/AzureAuthzSDK/providers/Microsoft.Authorization/denyAssignments/c807d002-6d77-452f-a837-4692929d12fd\",\r\n      \"type\": \"Microsoft.Authorization/denyAssignments\",\r\n      \"name\": \"c807d002-6d77-452f-a837-4692929d12fd\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"denyAssignmentName\": \"DenyTest_Foo_948A4336-368C-42D6-8167-EB3A5FA80882\",\r\n        \"description\": \"Test deny assignment foo\",\r\n        \"permissions\": [\r\n          {\r\n            \"actions\": [\r\n              \"*\"\r\n            ],\r\n            \"notActions\": [\r\n              \"*/read\"\r\n            ],\r\n            \"dataActions\": [],\r\n            \"notDataActions\": []\r\n          }\r\n        ],\r\n        \"scope\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/foo\",\r\n        \"doNotApplyToChildScopes\": false,\r\n        \"principals\": [\r\n          {\r\n            \"id\": \"00000000000000000000000000000000\",\r\n            \"type\": \"Everyone\"\r\n          }\r\n        ],\r\n        \"excludePrincipals\": [\r\n          {\r\n            \"id\": \"f8d526a054eb4941ae69ebf4a334d0f0\",\r\n            \"type\": \"User\"\r\n          }\r\n        ],\r\n        \"isSystemProtected\": true,\r\n        \"createdOn\": \"2018-10-25T05:22:41.0157179Z\",\r\n        \"updatedOn\": \"2018-10-25T05:22:41.0157179Z\",\r\n        \"createdBy\": null,\r\n        \"updatedBy\": null\r\n      },\r\n      \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/foo/providers/Microsoft.Authorization/denyAssignments/948a4336-368c-42d6-8167-eb3a5fa80882\",\r\n      \"type\": \"Microsoft.Authorization/denyAssignments\",\r\n      \"name\": \"948a4336-368c-42d6-8167-eb3a5fa80882\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/getObjectsByObjectIds?api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9nZXRPYmplY3RzQnlPYmplY3RJZHM/YXBpLXZlcnNpb249MS42",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"objectIds\": [\r\n    \"f8d526a054eb4941ae69ebf4a334d0f0\"\r\n  ],\r\n  \"includeDirectoryObjectReferences\": true\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7e775060-6244-440f-901f-0e5c232d8d82"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3190.0",
+          "OSName/Windows",
+          "OSVersion/10.0.17763.0",
+          "Microsoft.Azure.Graph.RBAC.Version1.6.GraphRbacManagementClient/1.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "112"
+        ]
+      },
+      "ResponseHeaders": {
+        "Pragma": [
+          "no-cache"
+        ],
+        "ocp-aad-diagnostics-server-name": [
+          "vPettSiUstOmmenKCofUY/RtXhXy1JLj54Gv/HPGCX8="
+        ],
+        "request-id": [
+          "eefe9900-142a-4142-9894-e87b75b8f160"
+        ],
+        "client-request-id": [
+          "7e775060-6244-440f-901f-0e5c232d8d82"
+        ],
+        "x-ms-dirapi-data-contract-version": [
+          "1.6"
+        ],
+        "ocp-aad-session-key": [
+          "PZrZVcODRNSliHnJ-cHL1hjzW3HWhCB4gzWkrP7Z5IKX5i7NW2MhLGHPwLOhBIUhXcaPEarIb2RiUfM73-pJuaNKGV7jGsATY86ewxEIYPXikEvdq83HAhxuv0zuQ26b.32XeIcYQDD3i-yCxc0snU_TtjkAvegJcxpwuXTF6pF8"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Duration": [
+          "372724"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 26 Nov 2018 23:50:30 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "Content-Length": [
+          "1583"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.User\",\r\n      \"objectType\": \"User\",\r\n      \"objectId\": \"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\",\r\n      \"deletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"ageGroup\": null,\r\n      \"assignedLicenses\": [],\r\n      \"assignedPlans\": [],\r\n      \"city\": null,\r\n      \"companyName\": null,\r\n      \"consentProvidedForMinor\": null,\r\n      \"country\": null,\r\n      \"createdDateTime\": \"2015-08-04T22:45:24Z\",\r\n      \"creationType\": null,\r\n      \"department\": null,\r\n      \"dirSyncEnabled\": null,\r\n      \"displayName\": \"test2\",\r\n      \"employeeId\": null,\r\n      \"facsimileTelephoneNumber\": null,\r\n      \"givenName\": \"test\",\r\n      \"immutableId\": null,\r\n      \"isCompromised\": null,\r\n      \"jobTitle\": null,\r\n      \"lastDirSyncTime\": null,\r\n      \"legalAgeGroupClassification\": null,\r\n      \"mail\": null,\r\n      \"mailNickname\": \"test2\",\r\n      \"mobile\": null,\r\n      \"onPremisesDistinguishedName\": null,\r\n      \"onPremisesSecurityIdentifier\": null,\r\n      \"otherMails\": [\r\n        \"shubhamagarwal05@gmail.com\"\r\n      ],\r\n      \"passwordPolicies\": \"None\",\r\n      \"passwordProfile\": null,\r\n      \"physicalDeliveryOfficeName\": null,\r\n      \"postalCode\": null,\r\n      \"preferredLanguage\": \"en-US\",\r\n      \"provisionedPlans\": [],\r\n      \"provisioningErrors\": [],\r\n      \"proxyAddresses\": [],\r\n      \"refreshTokensValidFromDateTime\": \"2017-10-13T19:08:04Z\",\r\n      \"showInAddressList\": null,\r\n      \"signInNames\": [],\r\n      \"sipProxyAddress\": null,\r\n      \"state\": null,\r\n      \"streetAddress\": null,\r\n      \"surname\": \"test2\",\r\n      \"telephoneNumber\": null,\r\n      \"thumbnailPhoto@odata.mediaEditLink\": \"directoryObjects/f8d526a0-54eb-4941-ae69-ebf4a334d0f0/Microsoft.DirectoryServices.User/thumbnailPhoto\",\r\n      \"usageLocation\": null,\r\n      \"userIdentities\": [],\r\n      \"userPrincipalName\": \"test2@rbacCliTest.onmicrosoft.com\",\r\n      \"userState\": null,\r\n      \"userStateChangedOn\": null,\r\n      \"userType\": \"Member\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "4004a9fd-d58e-48dc-aeb2-4a4aec58606f",
+    "TenantId": "1273adef-00a3-4086-a51a-dbcce1857d36",
+    "Domain": "rbacclitest.onmicrosoft.com"
+  }
+}

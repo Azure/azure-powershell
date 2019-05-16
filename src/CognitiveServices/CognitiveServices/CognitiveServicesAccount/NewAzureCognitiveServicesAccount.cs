@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Collections;
 using System.Globalization;
 using System.Management.Automation;
@@ -118,23 +119,35 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 if (ShouldProcess(
                     Name, string.Format(CultureInfo.CurrentCulture, Resources.NewAccount_ProcessMessage, Name, Type, SkuName, Location)))
                 {
-                    if (Force.IsPresent)
+                    if (Type.StartsWith("Bing.", StringComparison.InvariantCultureIgnoreCase))
                     {
-                        WriteWarning(Resources.NewAccount_Notice);
-                    }
-                    else
-                    {
-                        bool yesToAll = false, noToAll = false;
-                        if (!ShouldContinue(Resources.NewAccount_Notice, "Notice", true, ref yesToAll, ref noToAll))
+                        if (Force.IsPresent)
                         {
-                            return;
+                            WriteWarning(Resources.NewAccount_Notice);
+                        }
+                        else
+                        {
+                            bool yesToAll = false, noToAll = false;
+                            if (!ShouldContinue(Resources.NewAccount_Notice, "Notice", true, ref yesToAll, ref noToAll))
+                            {
+                                return;
+                            }
                         }
                     }
+                    try
+                    {
+                        CognitiveServicesAccount createAccountResponse = CognitiveServicesClient.Accounts.Create(
+                                        ResourceGroupName,
+                                        Name,
+                                        createParameters);
+                    }
+                    catch (Exception ex)
+                    {
+                        // Give users a specific message says `Failed to create Cognitive Services account.`
+                        // Details should able be found in the exception.
+                        throw new Exception("Failed to create Cognitive Services account.", ex);
+                    }
 
-                    CognitiveServicesAccount createAccountResponse = CognitiveServicesClient.Accounts.Create(
-                                    ResourceGroupName,
-                                    Name,
-                                    createParameters);
                     CognitiveServicesAccount cognitiveServicesAccount = CognitiveServicesClient.Accounts.GetProperties(ResourceGroupName, Name);
                     WriteCognitiveServicesAccount(cognitiveServicesAccount);
                 }

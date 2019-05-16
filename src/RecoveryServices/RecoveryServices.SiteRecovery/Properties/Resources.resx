@@ -468,4 +468,7 @@ Recommended Action: To cleanup the resources created by Test failover run the Te
   <data name="InvalidRecoveryDiskResourceGroup" xml:space="preserve">
     <value>Please pass a valid RecoveryResourceGroupId as input for disk URI "{0}"</value>
   </data>
+  <data name="TryDownloadingVaultFile" xml:space="preserve">
+    <value>Download vault credential file using cmdlet Get-AzRecoveryServicesVaultSettingsFile and Import-AzRecoveryServicesAsrVaultSettingsFile</value>
+  </data>
 </root>

@@ -19,14 +19,15 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -95,7 +96,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            if (this.MyInvocation.BoundParameters.ContainsKey("OsType"))
+            if (this.IsParameterBound(c => c.OsType))
             {
                 // StorageProfile
                 if (this.Image.StorageProfile == null)
@@ -111,7 +112,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.Image.StorageProfile.OsDisk.OsType = this.OsType.Value;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("OsState"))
+            if (this.IsParameterBound(c => c.OsState))
             {
                 // StorageProfile
                 if (this.Image.StorageProfile == null)
@@ -127,7 +128,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.Image.StorageProfile.OsDisk.OsState = this.OsState.Value;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("BlobUri"))
+            if (this.IsParameterBound(c => c.BlobUri))
             {
                 // StorageProfile
                 if (this.Image.StorageProfile == null)
@@ -142,7 +143,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.Image.StorageProfile.OsDisk.BlobUri = this.BlobUri;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("Caching"))
+            if (this.IsParameterBound(c => c.Caching))
             {
                 // StorageProfile
                 if (this.Image.StorageProfile == null)
@@ -157,7 +158,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.Image.StorageProfile.OsDisk.Caching = this.Caching;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("DiskSizeGB"))
+            if (this.IsParameterBound(c => c.DiskSizeGB))
             {
                 // StorageProfile
                 if (this.Image.StorageProfile == null)
@@ -172,7 +173,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.Image.StorageProfile.OsDisk.DiskSizeGB = this.DiskSizeGB;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("StorageAccountType"))
+            if (this.IsParameterBound(c => c.StorageAccountType))
             {
                 // StorageProfile
                 if (this.Image.StorageProfile == null)
@@ -187,7 +188,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.Image.StorageProfile.OsDisk.StorageAccountType = this.StorageAccountType;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("SnapshotId"))
+            if (this.IsParameterBound(c => c.SnapshotId))
             {
                 // StorageProfile
                 if (this.Image.StorageProfile == null)
@@ -207,7 +208,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.Image.StorageProfile.OsDisk.Snapshot.Id = this.SnapshotId;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("ManagedDiskId"))
+            if (this.IsParameterBound(c => c.ManagedDiskId))
             {
                 // StorageProfile
                 if (this.Image.StorageProfile == null)

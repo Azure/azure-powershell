@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Sql.dll', 
@@ -171,9 +171,6 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Remove-AzSqlDatabaseRestorePoint', 'Stop-AzSqlElasticPoolActivity', 
                'Add-AzSqlServerTransparentDataEncryptionCertificate', 
                'Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate', 
-               'Enable-AzSqlServerAdvancedThreatProtection', 
-               'Disable-AzSqlServerAdvancedThreatProtection', 
-               'Get-AzSqlServerAdvancedThreatProtectionPolicy', 
                'Update-AzSqlDatabaseVulnerabilityAssessmentSetting', 
                'Get-AzSqlDatabaseVulnerabilityAssessmentSetting', 
                'Clear-AzSqlDatabaseVulnerabilityAssessmentSetting', 
@@ -208,16 +205,19 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Clear-AzSqlInstanceVulnerabilityAssessmentSetting', 
                'Update-AzSqlServerVulnerabilityAssessmentSetting', 
                'Get-AzSqlServerVulnerabilityAssessmentSetting', 
-               'Clear-AzSqlServerVulnerabilityAssessmentSetting', 
-               'Get-AzSqlDatabaseSensitivityClassification', 
-               'Get-AzSqlInstanceDatabaseSensitivityClassification', 
-               'Set-AzSqlDatabaseSensitivityClassification', 
-               'Set-AzSqlInstanceDatabaseSensitivityClassification', 
-               'Remove-AzSqlDatabaseSensitivityClassification', 
-               'Remove-AzSqlInstanceDatabaseSensitivityClassification', 
-               'Get-AzSqlDatabaseSensitivityRecommendation', 
-               'Get-AzSqlInstanceDatabaseSensitivityRecommendation', 
-               'Get-AzSqlVirtualCluster', 'Remove-AzSqlVirtualCluster'
+               'Clear-AzSqlServerVulnerabilityAssessmentSetting',
+               'Get-AzSqlDatabaseSensitivityClassification',
+               'Get-AzSqlInstanceDatabaseSensitivityClassification',
+               'Set-AzSqlDatabaseSensitivityClassification',
+               'Set-AzSqlInstanceDatabaseSensitivityClassification',
+               'Remove-AzSqlDatabaseSensitivityClassification',
+               'Remove-AzSqlInstanceDatabaseSensitivityClassification',
+               'Get-AzSqlDatabaseSensitivityRecommendation',
+               'Get-AzSqlInstanceDatabaseSensitivityRecommendation',
+               'Get-AzSqlVirtualCluster', 'Remove-AzSqlVirtualCluster',
+			         'Enable-AzSqlServerAdvancedDataSecurity', 
+               'Disable-AzSqlServerAdvancedDataSecurity', 
+               'Get-AzSqlServerAdvancedDataSecurityPolicy'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -242,7 +242,10 @@ AliasesToExport = 'Get-AzSqlDatabaseServerAuditingPolicy',
                'Clear-AzSqlInstanceVulnerabilityAssessmentSettings', 
                'Update-AzSqlServerVulnerabilityAssessmentSettings', 
                'Get-AzSqlServerVulnerabilityAssessmentSettings', 
-               'Clear-AzSqlServerVulnerabilityAssessmentSettings'
+               'Clear-AzSqlServerVulnerabilityAssessmentSettings',
+			         'Enable-AzSqlServerAdvancedThreatProtection', 
+               'Disable-AzSqlServerAdvancedThreatProtection', 
+               'Get-AzSqlServerAdvancedThreatProtectionPolicy'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
