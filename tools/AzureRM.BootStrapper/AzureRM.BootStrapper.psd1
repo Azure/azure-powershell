@@ -12,7 +12,7 @@
 RootModule = 'AzureRM.Bootstrapper.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.4.0'
+ModuleVersion = '0.5.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -114,7 +114,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '0.4.0: Updated for the stack release 2.3.0'
+        ReleaseNotes = '* 0.5.0: Updated for the azure stack profile 2019-03-01-hybrid
+        * Bug fix to add UseBasicParsing for Invoke-WebRequest'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
