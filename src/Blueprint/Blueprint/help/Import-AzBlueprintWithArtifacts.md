@@ -12,70 +12,9 @@ Import a blueprint file in JSON format to a blueprint object and save it within 
 
 ## SYNTAX
 
-### SubscriptionScope (Default)
 ```
-Import-AzBlueprintWithArtifacts [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ImportBlueprint
-```
-Import-AzBlueprintWithArtifacts -InputPath <String> [-Force] -Name <String> [-SubscriptionId <String>]
- [-ManagementGroupId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### CreateBlueprintBySubscription
-```
-Import-AzBlueprintWithArtifacts -Name <String> [-SubscriptionId <String>] -BlueprintFile <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### CreateBlueprintByManagementGroup
-```
-Import-AzBlueprintWithArtifacts -Name <String> -ManagementGroupId <String> -BlueprintFile <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### BySubscriptionAndName
-```
-Import-AzBlueprintWithArtifacts [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### BySubscriptionNameAndVersion
-```
-Import-AzBlueprintWithArtifacts [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### BySubscriptionNameAndLatestPublished
-```
-Import-AzBlueprintWithArtifacts [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ManagementGroupScope
-```
-Import-AzBlueprintWithArtifacts -ManagementGroupId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ByManagementGroupAndName
-```
-Import-AzBlueprintWithArtifacts -ManagementGroupId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ByManagementGroupNameAndVersion
-```
-Import-AzBlueprintWithArtifacts -ManagementGroupId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ByManagementGroupNameAndLatestPublished
-```
-Import-AzBlueprintWithArtifacts -ManagementGroupId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Import-AzBlueprintWithArtifacts -Name <String> [-SubscriptionId <String>] [-ManagementGroupId <String>]
+ -InputPath <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,21 +30,6 @@ PS C:\> {{ Add example code here }}
 {{ Add example description here }}
 
 ## PARAMETERS
-
-### -BlueprintFile
-Path to a Blueprint JSON file on disk.
-
-```yaml
-Type: String
-Parameter Sets: CreateBlueprintBySubscription, CreateBlueprintByManagementGroup
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -127,7 +51,7 @@ When set to true, execution will not ask for a confirmation.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: ImportBlueprint
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -142,7 +66,7 @@ Path to a Blueprint JSON file on disk.
 
 ```yaml
 Type: String
-Parameter Sets: ImportBlueprint
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -157,22 +81,10 @@ Management Group Id where the blueprint definition is or will be saved.
 
 ```yaml
 Type: String
-Parameter Sets: ImportBlueprint
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: CreateBlueprintByManagementGroup, ManagementGroupScope, ByManagementGroupAndName, ByManagementGroupNameAndVersion, ByManagementGroupNameAndLatestPublished
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -184,7 +96,7 @@ Blueprint definition name.
 
 ```yaml
 Type: String
-Parameter Sets: ImportBlueprint, CreateBlueprintBySubscription, CreateBlueprintByManagementGroup
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -199,7 +111,7 @@ Subscription Id where the blueprint definition is or will be saved.
 
 ```yaml
 Type: String
-Parameter Sets: SubscriptionScope, ImportBlueprint, CreateBlueprintBySubscription, BySubscriptionAndName, BySubscriptionNameAndVersion, BySubscriptionNameAndLatestPublished
+Parameter Sets: (All)
 Aliases:
 
 Required: False

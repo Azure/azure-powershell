@@ -24,60 +24,6 @@ New-AzBlueprint -Name <String> -ManagementGroupId <String> -BlueprintFile <Strin
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ImportBlueprint
-```
-New-AzBlueprint -Name <String> [-SubscriptionId <String>] [-ManagementGroupId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### SubscriptionScope
-```
-New-AzBlueprint [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### BySubscriptionAndName
-```
-New-AzBlueprint [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### BySubscriptionNameAndVersion
-```
-New-AzBlueprint [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### BySubscriptionNameAndLatestPublished
-```
-New-AzBlueprint [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ManagementGroupScope
-```
-New-AzBlueprint -ManagementGroupId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ByManagementGroupAndName
-```
-New-AzBlueprint -ManagementGroupId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ByManagementGroupNameAndVersion
-```
-New-AzBlueprint -ManagementGroupId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ByManagementGroupNameAndLatestPublished
-```
-New-AzBlueprint -ManagementGroupId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
 {{Fill in the Description}}
 
@@ -97,7 +43,7 @@ Path to a Blueprint JSON file on disk.
 
 ```yaml
 Type: String
-Parameter Sets: CreateBlueprintBySubscription, CreateBlueprintByManagementGroup
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -127,22 +73,10 @@ Management Group Id where the blueprint definition is or will be saved.
 
 ```yaml
 Type: String
-Parameter Sets: CreateBlueprintByManagementGroup, ManagementGroupScope, ByManagementGroupAndName, ByManagementGroupNameAndVersion, ByManagementGroupNameAndLatestPublished
+Parameter Sets: CreateBlueprintByManagementGroup
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: ImportBlueprint
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -154,7 +88,7 @@ Blueprint definition name.
 
 ```yaml
 Type: String
-Parameter Sets: CreateBlueprintBySubscription, CreateBlueprintByManagementGroup, ImportBlueprint
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -169,7 +103,7 @@ Subscription Id where the blueprint definition is or will be saved.
 
 ```yaml
 Type: String
-Parameter Sets: CreateBlueprintBySubscription, ImportBlueprint, SubscriptionScope, BySubscriptionAndName, BySubscriptionNameAndVersion, BySubscriptionNameAndLatestPublished
+Parameter Sets: CreateBlueprintBySubscription
 Aliases:
 
 Required: False

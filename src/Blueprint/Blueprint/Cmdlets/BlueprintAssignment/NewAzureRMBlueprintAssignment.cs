@@ -19,8 +19,11 @@ using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.IO;
 using System.Management.Automation;
+using System.Text.RegularExpressions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterSetNames;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
@@ -28,11 +31,62 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintAssignment", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.CreateBlueprintAssignment), OutputType(typeof(PSBlueprintAssignment))]
     public class NewAzureRmBlueprintAssignment : BlueprintAssignmentCmdletBase
     {
+        #region Parameters
+
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignmentByFile, Mandatory = true, HelpMessage = BlueprintConstants.ParameterHelpMessages.BlueprintAssignmentName)]
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = BlueprintConstants.ParameterHelpMessages.BlueprintAssignmentName)]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignmentByFile, Mandatory = true, HelpMessage = BlueprintConstants.ParameterHelpMessages.BlueprintObject)]
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = true, ValueFromPipeline = true, HelpMessage = BlueprintConstants.ParameterHelpMessages.BlueprintObject)]
+        [ValidateNotNull]
+        public PSBlueprintBase Blueprint { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = BlueprintConstants.ParameterHelpMessages.Location)]
+        [ValidateNotNullOrEmpty]
+        [LocationCompleter("Microsoft.Resources/resourceGroups")]
+        public string Location { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, HelpMessage = BlueprintConstants.ParameterHelpMessages.SystemAssignedIdentity)]
+        public SwitchParameter SystemAssignedIdentity { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, HelpMessage = BlueprintConstants.ParameterHelpMessages.UserAssignedIdentity)]
+        [ValidateNotNullOrEmpty]
+        public string UserAssignedIdentity { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, HelpMessage = BlueprintConstants.ParameterHelpMessages.LockFlag)]
+        public PSLockMode? Lock { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, HelpMessage = BlueprintConstants.ParameterHelpMessages.SecureString)]
+        [ValidateNotNullOrEmpty]
+        public Hashtable SecureStringParameter { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public Hashtable ResourceGroupParameter { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = BlueprintConstants.ParameterHelpMessages.Parameters)]
+        [ValidateNotNull]
+        public Hashtable Parameter { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignmentByFile, Mandatory = false, HelpMessage = BlueprintConstants.ParameterHelpMessages.SecureString)]
+        [ValidateNotNullOrEmpty]
+        public string AssignmentFile { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignmentByFile, Mandatory = false, HelpMessage = BlueprintConstants.ParameterHelpMessages.SubscriptionIdToAssign)]
+        [Parameter(ParameterSetName = ParameterSetNames.CreateBlueprintAssignment, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = BlueprintConstants.ParameterHelpMessages.SubscriptionIdToAssign)]
+        [ValidateNotNullOrEmpty]
+        public string[] SubscriptionId { get; set; }
+        #endregion
+
         #region Cmdlet Overrides
         public override void ExecuteCmdlet()
         {
             try
             {
+                Utils.ValidateName(Name);
+
                 var subscriptionsList = SubscriptionId ?? new[] { DefaultContext.Subscription.Id };
 
                 switch (ParameterSetName)

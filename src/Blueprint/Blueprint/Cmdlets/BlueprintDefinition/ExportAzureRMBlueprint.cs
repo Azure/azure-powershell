@@ -21,23 +21,23 @@ using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     [Cmdlet("Export", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintWithArtifacts", DefaultParameterSetName =
-         ParameterSetNames.SubscriptionScope), OutputType(typeof(string))]
+         ParameterSetNames.ExportBlueprintParameterSet), OutputType(typeof(string))]
     public class ExportAzureRmBlueprint : BlueprintDefinitionCmdletBase
     {
         #region Parameters
-        [Parameter(ParameterSetName = ParameterSetNames.ExportToFileParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.ExportBlueprintObject)]
+        [Parameter(ParameterSetName = ParameterSetNames.ExportBlueprintParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.ExportBlueprintObject)]
         [ValidateNotNullOrEmpty]
         public PSBlueprintBase Blueprint { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ExportToFileParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ExportOutputFile)]
+        [Parameter(ParameterSetName = ParameterSetNames.ExportBlueprintParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ExportOutputFile)]
         [ValidateNotNullOrEmpty]
         public string OutputPath { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ExportToFileParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionVersion)]
+        [Parameter(ParameterSetName = ParameterSetNames.ExportBlueprintParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintDefinitionVersion)]
         [ValidateNotNullOrEmpty]
         public string Version { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ExportToFileParameterSet, Mandatory = false, HelpMessage = ParameterHelpMessages.ForceHelpMessage)]
+        [Parameter(ParameterSetName = ParameterSetNames.ExportBlueprintParameterSet, Mandatory = false, HelpMessage = ParameterHelpMessages.ForceHelpMessage)]
         public SwitchParameter Force { get; set; }
         #endregion
 
