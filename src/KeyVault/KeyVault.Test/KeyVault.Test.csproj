@@ -14,7 +14,7 @@
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="2.4.2" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.10.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.11.0-preview" />
   </ItemGroup>
 
   <ItemGroup>

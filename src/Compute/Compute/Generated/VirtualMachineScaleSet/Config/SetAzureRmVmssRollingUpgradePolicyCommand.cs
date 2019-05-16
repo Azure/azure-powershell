@@ -19,13 +19,14 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -73,7 +74,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            if (this.MyInvocation.BoundParameters.ContainsKey("MaxBatchInstancePercent"))
+            if (this.IsParameterBound(c => c.MaxBatchInstancePercent))
             {
                 // UpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
@@ -88,7 +89,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy.MaxBatchInstancePercent = this.MaxBatchInstancePercent;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("MaxUnhealthyInstancePercent"))
+            if (this.IsParameterBound(c => c.MaxUnhealthyInstancePercent))
             {
                 // UpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
@@ -103,7 +104,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy.MaxUnhealthyInstancePercent = this.MaxUnhealthyInstancePercent;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("MaxUnhealthyUpgradedInstancePercent"))
+            if (this.IsParameterBound(c => c.MaxUnhealthyUpgradedInstancePercent))
             {
                 // UpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
@@ -118,7 +119,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy.MaxUnhealthyUpgradedInstancePercent = this.MaxUnhealthyUpgradedInstancePercent;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("PauseTimeBetweenBatches"))
+            if (this.IsParameterBound(c => c.PauseTimeBetweenBatches))
             {
                 // UpgradePolicy
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)
