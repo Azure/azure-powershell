@@ -62,6 +62,7 @@ function Test-CrudUserAssignedIdentity
 
         #Delete Identity1
         Remove-AzUserAssignedIdentity -ResourceGroupName $rgName1 -Name $identityName1 -Force;
+        Start-Sleep -s 5
         $resourceGroupIdentities = Get-AzUserAssignedIdentity -ResourceGroupName $rgName1
         Assert-Null $resourceGroupIdentities;
 
