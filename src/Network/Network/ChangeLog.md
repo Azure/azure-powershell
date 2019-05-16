@@ -24,6 +24,9 @@
 * Updated below commands for feature: UseLocalAzureIpAddress flag on VpnConnection
 	- Updated New-AzVpnConnection: Added optional parameter -UseLocalAzureIpAddress to indicate that local azure ip address should be used as source address while initiating connection.
 	- Updated Set-AzVpnConnection: Added optional parameter -UseLocalAzureIpAddress to indicate that local azure ip address should be used as source address while initiating connection.
+* Added readonly field PeeredConnections in ExpressRoute peering.
+* Added readonly field GlobalReachEnabled in ExpressRoute.
+* Added breaking change attribute to call out deprecation of AllowGlobalReach field in ExpressRouteCircuit model
 * Fixed Issue 8756 Error using TargetListenerID with AzApplicationGatewayRedirectConfiguration cmdlets
 
 ## Version 1.8.0
