@@ -56,13 +56,11 @@
 
 * Updated cmdlets **Get-AzApiManagementSsoToken** to take `PsApiManagement` object as input
 * Updated the cmdlet to display Error Messages inline 
-     > PS D:\github\azure-powershell> Set-AzApiManagementPolicy -Context $context -PolicyFilePath C:\wrongpolicy.xml -ApiId httpbin
-
-     >   Set-AzApiManagementPolicy : 
-     Error Code: ValidationError
-     Error Message: One or more fields contain incorrect values:
-     Error Details:
-        [Code=ValidationError, Message=Error in element 'log-to-eventhub' on line 3, column 10: Logger not found, Target=log-to-eventhub]
+     - `PS D:\github\azure-powershell> Set-AzApiManagementPolicy -Context  -PolicyFilePath C:\wrongpolicy.xml -ApiId httpbin`
+       - `Set-AzApiManagementPolicy :`
+       - `Error Code: ValidationError`
+       - `Error Message: One or more fields contain incorrect values:`
+       - `Error Details: [Code=ValidationError, Message=Error in element 'log-to-eventhub' on line 3, column 10: Logger not found, Target=log-to-eventhub]`
 
 * Updated cmdlet **Export-AzApiManagementApi** to export APIs in `OpenApi 3.0` format
 * Updated cmdlet **Import-AzApiManagementApi**
@@ -104,15 +102,15 @@
     - Add support to enable `AllowTracing` at the subscription level.
 
 * Updated following cmdlets to accept `ResourceId` as input
-    - `New-AzApiManagementContext`
-        > New-AzApiManagementContext -ResourceId /subscriptions/subid/resourceGroups/rgName/providers/Microsoft.ApiManagement/service/contoso
-    - `Get-AzApiManagementApiRelease`
-        > Get-AzApiManagementApiRelease -ResourceId /subscriptions/subid/resourceGroups/rgName/providers/Microsoft.ApiManagement/service/contoso/apis/echo-api/releases/releaseId
-    - `Get-AzApiManagementApiVersionSet`
-        > Get-AzApiManagementApiVersionSet -ResourceId /subscriptions/subid/resourceGroups/rgName/providers/Microsoft.ApiManagement/service/constoso/apiversionsets/pathversionset
-    - `Get-AzApiManagementAuthorizationServer`
-    - `Get-AzApiManagementBackend`
-        > Get-AzApiManagementBackend -ResourceId /subscriptions/subid/resourceGroups/rgName/providers/Microsoft.ApiManagement/service/contoso/backends/servicefabric
+    - 'New-AzApiManagementContext'
+      - `New-AzApiManagementContext -ResourceId /subscriptions/subid/resourceGroups/rgName/providers/Microsoft.ApiManagement/service/contoso`
+    - 'Get-AzApiManagementApiRelease'
+      - `Get-AzApiManagementApiRelease -ResourceId /subscriptions/subid/resourceGroups/rgName/providers/Microsoft.ApiManagement/service/contoso/apis/echo-api/releases/releaseId`
+    - 'Get-AzApiManagementApiVersionSet'
+      - `Get-AzApiManagementApiVersionSet -ResourceId /subscriptions/subid/resourceGroups/rgName/providers/Microsoft.ApiManagement/service/constoso/apiversionsets/pathversionset`
+    - 'Get-AzApiManagementAuthorizationServer'
+    - 'Get-AzApiManagementBackend'
+      - `Get-AzApiManagementBackend -ResourceId /subscriptions/subid/resourceGroups/rgName/providers/Microsoft.ApiManagement/service/contoso/backends/servicefabric`
     - `Get-AzApiManagementCertificate` 
     - `Remove-AzApiManagementApiVersionSet`
     - `Remove-AzApiManagementSubscription`
