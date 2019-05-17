@@ -75,4 +75,118 @@ directive:
       parameter-name: VmName
     set:
       parameter-name: Name
+  - where:
+      verb: Convert
+      subject: VMToManagedDisk
+    set:
+      verb: ConvertTo
+      subject: VMManagedDisk
+  - where:
+      verb: Get
+      subject: ResourceSku
+    set:
+      subject-prefix: Compute
+  - where:
+      verb: Invoke
+      subject: ForceVmssRecoveryServiceFabricPlatformUpdateDomainWalk
+    set:
+      verb: Repair
+      subject: VmssServiceFabricUpdateDomain
+  - where:
+      verb: Invoke
+      subject: ForceVmssRecoveryServiceFabricPlatformUpdateDomainWalk
+    set:
+      verb: Repair
+      subject: VmssServiceFabricUpdateDomain
+  - where:
+      verb: Get
+      subject: VMRunCommand
+    set:
+      subject: VMRunCommandDocument
+  - where: 
+      verb: Get
+      subject: VmssRollingUpgradeLatest
+    set:
+      subject: VmssRollingUpgrade
+  - where: 
+      verb: Invoke
+      subject: RedeployVM
+    set:
+      subject: VMReimage
+  - where: 
+      verb: Start
+      subject: .*RunCommand
+    set:
+      verb: Invoke
+  - where:
+      verb: Set
+      subject: Gallery
+    set:
+      verb: Update
+  - where:
+      verb: Set
+      subject: GalleryImage.*
+    set:
+      verb: Update
+  - where: 
+      subject: GalleryImage
+    set:
+      subject: GalleryImageDefinition
+  - where:
+      subject: Usage
+    set:
+      subject: VMUsage
+  - where: 
+      verb: Start
+      subject: VmssRollingUpgradeOSUpgrade
+    set:
+      subject: VmssRollingUpgrade
+  - where: 
+      verb: Export
+      subject: VM
+    set:
+      verb: Save
+      subject: VMImage
+  - where: 
+      verb: Export
+      subject: LogAnalyticRequestRate
+    set:
+      subject: LogAnalyticRequestRateByInterval
+  - where: 
+      verb: Export
+      subject: LogAnalyticThrottledRequest
+    set:
+      subject: LogAnalyticThrottledRequests
+  - where: 
+      parameter-name: GalleryImageName
+    set:
+      parameter-name: GalleryImageDefinitionName
+  - where:
+      noun: VMExtension
+      parameter-name: ExtensionImageName
+    set:
+      parameter-name: Name
+  - where:
+      noun: VmssExtension
+      parameter-name: ExtensionImageName
+    set:
+      parameter-name: Name
+  - where:
+      verb: Get
+      subject: VMImage
+      parameter-name: Filter
+    set:
+      parameter-name: FilterExpression
+  - where:
+      parameter-name: PublishingProfile(.+)
+    set:
+      parameter-name: $1
+  - where:
+      parameter-name: StorageProfile(.+)
+    set:
+      parameter-name: $1
+  - where:
+      parameter-name: NetworkProfile(.+)
+    set:
+      parameter-name: $1
 ```
