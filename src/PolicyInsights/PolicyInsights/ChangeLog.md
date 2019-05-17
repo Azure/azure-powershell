@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.1
 * Fix Null reference issue in Get-AzPolicyEvent
 
 ## Version 1.1.0
