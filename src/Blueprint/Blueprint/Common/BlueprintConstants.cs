@@ -43,6 +43,9 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             public const string DeleteBlueprintAssignmentByName = "DeleteBlueprintAssignmentByName";
             public const string DeleteBlueprintAssignmentByObject = "DeleteBlueprintAssignmentByObject";
 
+            public const string UpdateBlueprintAssignment = "UpdateBlueprintAssignment";
+            public const string UpdateBlueprintAssignmentByFile = "UpdateBlueprintAssignmentByFile";
+
             public const string PublishBlueprint = "PublishBlueprint";
 
             public const string ArtifactsByBlueprint = "ArtifactsByBlueprint";
@@ -55,8 +58,19 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             public const string CreateBlueprintBySubscription = "CreateBlueprintBySubscription";
             public const string CreateBlueprintByManagementGroup = "CreateBlueprintByManagementGroup";
 
+            public const string UpdatePolicyAssignmentArtifact = "UpdatePolicyAssignmentArtifact";
+            public const string UpdateRoleAssignmentArtifact = "UpdateRoleAssignmentArtifact";
+            public const string UpdateTemplateArtifact = "UpdateTemplateArtifact";
+            public const string UpdateArtifactByInputFile = "UpdateArtifactByInputFile";
+
+            public const string UpdateBlueprintBySubscription = "UpdateBlueprintBySubscription";
+            public const string UpdateBlueprintByManagementGroup = "UpdateBlueprintByManagementGroup";
+
             public const string ExportBlueprintParameterSet = "ExportToFile";
             public const string ImportBlueprintParameterSet = "ImportBlueprint";
+
+
+
         }
 
         public static class ParameterHelpMessages

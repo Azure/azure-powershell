@@ -12,39 +12,8 @@ Get artifact from a blueprint.
 
 ## SYNTAX
 
-### ArtifactsByBlueprint (Default)
 ```
-Get-AzBlueprintArtifact [-BlueprintVersion <String>] [-Name <String>] -Blueprint <PSBlueprintBase>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateArtifactByInputFile
-```
-Get-AzBlueprintArtifact -Name <String> -Blueprint <PSBlueprintBase> -ArtifactFile <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateTemplateArtifact
-```
-Get-AzBlueprintArtifact -Name <String> -Type <PSArtifactKind> -Blueprint <PSBlueprintBase>
- [-Description <String>] [-DependsOn <System.Collections.Generic.List`1[System.String]>]
- -TemplateParameterFile <String> -TemplateFile <String> [-ResourceGroupName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateRoleAssignmentArtifact
-```
-Get-AzBlueprintArtifact -Name <String> -Type <PSArtifactKind> -Blueprint <PSBlueprintBase>
- [-Description <String>] [-DependsOn <System.Collections.Generic.List`1[System.String]>]
- -RoleDefinitionId <String> -RoleDefinitionPrincipalId <String[]> [-ResourceGroupName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreatePolicyArtifact
-```
-Get-AzBlueprintArtifact -Name <String> -Type <PSArtifactKind> -Blueprint <PSBlueprintBase>
- [-Description <String>] [-DependsOn <System.Collections.Generic.List`1[System.String]>]
- -PolicyDefinitionId <String> -PolicyDefinitionParameter <Hashtable> [-ResourceGroupName <String>]
+Get-AzBlueprintArtifact [-Name <String>] -Blueprint <PSBlueprintBase> [-BlueprintVersion <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -82,7 +51,7 @@ Blueprint object.
 
 ```yaml
 Type: PSBlueprintBase
-Parameter Sets: ArtifactsByBlueprint, CreateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
+Parameter Sets: ArtifactsByBlueprint, UpdateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
 Aliases:
 
 Required: True
@@ -139,7 +108,7 @@ List of the names of artifacts that needs to be created before current artifact 
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: CreateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
+Parameter Sets: UpdateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
 Aliases:
 
 Required: False
@@ -154,7 +123,7 @@ Description of the artifact.
 
 ```yaml
 Type: String
-Parameter Sets: CreateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
+Parameter Sets: UpdateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
 Aliases:
 
 Required: False
@@ -181,7 +150,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: CreateArtifactByInputFile, CreateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
+Parameter Sets: CreateArtifactByInputFile, UpdateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
 Aliases:
 
 Required: True
@@ -226,7 +195,7 @@ Name of the resource group the artifact is going to be under.
 
 ```yaml
 Type: String
-Parameter Sets: CreateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
+Parameter Sets: UpdateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
 Aliases:
 
 Required: False
@@ -271,7 +240,7 @@ Location of the ARM template file on disk.
 
 ```yaml
 Type: String
-Parameter Sets: CreateTemplateArtifact
+Parameter Sets: UpdateTemplateArtifact
 Aliases:
 
 Required: True
@@ -286,7 +255,7 @@ Location of the ARM template parameter file on disk.
 
 ```yaml
 Type: String
-Parameter Sets: CreateTemplateArtifact
+Parameter Sets: UpdateTemplateArtifact
 Aliases:
 
 Required: True
@@ -302,7 +271,7 @@ There are 3 tpes supported: RoleAssignmentArtifact, PolicyAssignmentArtifact, Te
 
 ```yaml
 Type: PSArtifactKind
-Parameter Sets: CreateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
+Parameter Sets: UpdateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
 Aliases:
 Accepted values: RoleAssignmentArtifact, PolicyAssignmentArtifact, TemplateArtifact
 

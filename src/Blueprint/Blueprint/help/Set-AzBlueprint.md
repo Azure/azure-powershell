@@ -12,70 +12,16 @@ Update a new blueprint and save it within the specified subscription or manageme
 
 ## SYNTAX
 
-### CreateBlueprintBySubscription (Default)
+### UpdateBlueprintBySubscription (Default)
 ```
 Set-AzBlueprint -Name <String> [-SubscriptionId <String>] -BlueprintFile <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateBlueprintByManagementGroup
+### UpdateBlueprintByManagementGroup
 ```
 Set-AzBlueprint -Name <String> -ManagementGroupId <String> -BlueprintFile <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ImportBlueprint
-```
-Set-AzBlueprint -Name <String> [-SubscriptionId <String>] [-ManagementGroupId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### SubscriptionScope
-```
-Set-AzBlueprint [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### BySubscriptionAndName
-```
-Set-AzBlueprint [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### BySubscriptionNameAndVersion
-```
-Set-AzBlueprint [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### BySubscriptionNameAndLatestPublished
-```
-Set-AzBlueprint [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ManagementGroupScope
-```
-Set-AzBlueprint -ManagementGroupId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ByManagementGroupAndName
-```
-Set-AzBlueprint -ManagementGroupId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ByManagementGroupNameAndVersion
-```
-Set-AzBlueprint -ManagementGroupId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ByManagementGroupNameAndLatestPublished
-```
-Set-AzBlueprint -ManagementGroupId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -20,12 +20,6 @@ New-AzBlueprintArtifact -Name <String> -Type <PSArtifactKind> -Blueprint <PSBlue
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ArtifactsByBlueprint
-```
-New-AzBlueprintArtifact [-Name <String>] -Blueprint <PSBlueprintBase>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ### CreateArtifactByInputFile
 ```
 New-AzBlueprintArtifact -Name <String> -Blueprint <PSBlueprintBase> -ArtifactFile <String>
@@ -82,7 +76,7 @@ Blueprint object.
 
 ```yaml
 Type: PSBlueprintBase
-Parameter Sets: CreateTemplateArtifact, ArtifactsByBlueprint, CreateRoleAssignmentArtifact, CreatePolicyArtifact
+Parameter Sets: UpdateTemplateArtifact, ArtifactsByBlueprint, CreateRoleAssignmentArtifact, CreatePolicyArtifact
 Aliases:
 
 Required: True
@@ -124,7 +118,7 @@ List of the names of artifacts that needs to be created before current artifact 
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: CreateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
+Parameter Sets: UpdateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
 Aliases:
 
 Required: False
@@ -139,7 +133,7 @@ Description of the artifact.
 
 ```yaml
 Type: String
-Parameter Sets: CreateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
+Parameter Sets: UpdateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
 Aliases:
 
 Required: False
@@ -154,7 +148,7 @@ Name of the artifact
 
 ```yaml
 Type: String
-Parameter Sets: CreateTemplateArtifact, CreateArtifactByInputFile, CreateRoleAssignmentArtifact, CreatePolicyArtifact
+Parameter Sets: UpdateTemplateArtifact, CreateArtifactByInputFile, CreateRoleAssignmentArtifact, CreatePolicyArtifact
 Aliases:
 
 Required: True
@@ -211,7 +205,7 @@ Name of the resource group the artifact is going to be under.
 
 ```yaml
 Type: String
-Parameter Sets: CreateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
+Parameter Sets: UpdateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
 Aliases:
 
 Required: False
@@ -256,7 +250,7 @@ Location of the ARM template file on disk.
 
 ```yaml
 Type: String
-Parameter Sets: CreateTemplateArtifact
+Parameter Sets: UpdateTemplateArtifact
 Aliases:
 
 Required: True
@@ -271,7 +265,7 @@ Location of the ARM template parameter file on disk.
 
 ```yaml
 Type: String
-Parameter Sets: CreateTemplateArtifact
+Parameter Sets: UpdateTemplateArtifact
 Aliases:
 
 Required: True
@@ -287,7 +281,7 @@ There are 3 tpes supported: RoleAssignmentArtifact, PolicyAssignmentArtifact, Te
 
 ```yaml
 Type: PSArtifactKind
-Parameter Sets: CreateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
+Parameter Sets: UpdateTemplateArtifact, CreateRoleAssignmentArtifact, CreatePolicyArtifact
 Aliases:
 Accepted values: RoleAssignmentArtifact, PolicyAssignmentArtifact, TemplateArtifact
 
