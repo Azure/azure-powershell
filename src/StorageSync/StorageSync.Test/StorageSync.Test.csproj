@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>StorageSync</PsModuleName>
@@ -17,7 +17,6 @@
   </ItemGroup>
 	
   <ItemGroup>
-    <ProjectReference Include="..\..\Storage\Storage.Management\Storage.Management.csproj" />
     <ProjectReference Include="..\..\Storage\Storage\Storage.csproj" />
     <ProjectReference Include="..\StorageSync\StorageSync.csproj" />
   </ItemGroup>
