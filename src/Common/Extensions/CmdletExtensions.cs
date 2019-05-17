@@ -121,7 +121,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 throw new ArgumentNullException(nameof(executor));
             }
 
-            if (cmdlet.AsJobPresent())
+            // Since right now NoWait and AsJob are not in different parameter sets this check is necessary
+            if (cmdlet.IsBound("AsJob") && !cmdlet.IsBound("NoWait"))
             {
                 cmdlet.WriteObject(cmdlet.ExecuteAsJob(cmdlet.ImplementationBackgroundJobDescription, executor));
             }
@@ -212,7 +213,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <returns>true if the parameter was provided by the user, otherwise false</returns>
         public static bool IsBound(this PSCmdlet cmdlet, string parameterName) 
         {
-            return cmdlet.MyInvocation.BoundParameters.ContainsKey(parameterName);
+            return cmdlet.MyInvocation?.BoundParameters.ContainsKey(parameterName) ?? false;
         }
 
         public static string AsAbsoluteLocation(this string realtivePath)
@@ -358,7 +359,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public static bool IsParameterBound<TPSCmdlet, TProp>(this TPSCmdlet cmdlet, Expression<Func<TPSCmdlet, TProp>> propertySelector) where TPSCmdlet : PSCmdlet
         {
             var propName = ((MemberExpression)propertySelector.Body).Member.Name;
-            return cmdlet.MyInvocation.BoundParameters.ContainsKey(propName);
+            return cmdlet.IsBound(propName);
         }
 
         #region PowerShell Commands
