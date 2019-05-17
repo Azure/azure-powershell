@@ -12,12 +12,16 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-using System.Collections;
-
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
+    using System;
+    using System.Collections;
+    using System.Text.RegularExpressions;
+
     public class PsApiManagementOAuth2AuthrozationServer : PsApiManagementArmResource
     {
+        static readonly Regex AuthorizationServerIdRegex = new Regex(@"(.*?)/providers/microsoft.apimanagement/service/(?<serviceName>[^/]+)/authorizationServers/(?<authorizationServerId>[^/]+)", RegexOptions.IgnoreCase);
+
         public string ServerId { get; internal set; }
 
         public string Name { get; set; }
@@ -52,5 +56,24 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
         public string ResourceOwnerUsername { get; set; }
 
         public string ResourceOwnerPassword { get; set; }
+
+        public PsApiManagementOAuth2AuthrozationServer() { }
+
+        public PsApiManagementOAuth2AuthrozationServer(string armResourceId)
+        {
+            this.Id = armResourceId;
+            var match = AuthorizationServerIdRegex.Match(Id);
+            if (match.Success)
+            {
+                var authorizationserverResult = match.Groups["authorizationServerId"];
+                if (authorizationserverResult != null && authorizationserverResult.Success)
+                {
+                    this.ServerId = authorizationserverResult.Value;
+                    return;
+                }
+            }
+
+            throw new ArgumentException($"ResourceId {armResourceId} is not a valid Authorization Server Id");
+        }
     }
 }
