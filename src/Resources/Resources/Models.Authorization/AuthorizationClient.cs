@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
+using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -423,6 +424,86 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             roleDefinitionId = roleDefinitionId == default(Guid) ? Guid.NewGuid() : roleDefinitionId;
             return this.CreateOrUpdateRoleDefinition(roleDefinitionId, roleDefinition);
+        }
+
+                /// <summary>
+        /// Filters deny assignments based on the passed options.
+        /// </summary>
+        /// <param name="options">The filtering options</param>
+        /// <param name="currentSubscription">The current subscription</param>
+        /// <returns>The filtered deny assignments</returns>
+        public List<PSDenyAssignment> FilterDenyAssignments(FilterDenyAssignmentsOptions options, string currentSubscription)
+        {
+            var result = new List<PSDenyAssignment>();
+            string principalId = null;
+
+            PSADObject adObject = null;
+            Rest.Azure.OData.ODataQuery<DenyAssignmentFilter> odataQuery = null;
+            if (options.DenyAssignmentId != Guid.Empty)
+            {
+                var scope = !string.IsNullOrEmpty(options.Scope) ? options.Scope : AuthorizationHelper.GetSubscriptionScope(currentSubscription);
+                return new List<PSDenyAssignment>
+                {
+                    AuthorizationManagementClient.DenyAssignments.Get(scope, options.DenyAssignmentId.ToString())
+                    .ToPSDenyAssignment(ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals)
+                };
+            }
+
+            if (!string.IsNullOrEmpty(options.DenyAssignmentName))
+            {
+                odataQuery = new Rest.Azure.OData.ODataQuery<DenyAssignmentFilter>(item => item.DenyAssignmentName == options.DenyAssignmentName);
+            }
+            else if (options.ADObjectFilter.HasFilter)
+            {
+                if (string.IsNullOrEmpty(options.ADObjectFilter.Id) || options.ExpandPrincipalGroups)
+                {
+                    adObject = ActiveDirectoryClient.GetADObject(options.ADObjectFilter);
+
+                    if (adObject == null)
+                    {
+                        throw new KeyNotFoundException(ProjectResources.PrincipalNotFound);
+                    }
+                }
+
+                // Filter first by principal
+                if (options.ExpandPrincipalGroups)
+                {
+                    if (!(adObject is PSADUser))
+                    {
+                        throw new InvalidOperationException(ProjectResources.ExpandGroupsNotSupported);
+                    }
+
+                    principalId = adObject.Id.ToString();
+                    odataQuery = new Rest.Azure.OData.ODataQuery<DenyAssignmentFilter>(f => f.AssignedTo(principalId));
+                }
+                else
+                {
+                    principalId = string.IsNullOrEmpty(options.ADObjectFilter.Id) ? adObject.Id.ToString() : options.ADObjectFilter.Id;
+                    odataQuery = new Rest.Azure.OData.ODataQuery<DenyAssignmentFilter>(f => f.PrincipalId == principalId);
+                }
+            }
+
+            result.AddRange(this.FilterDenyAssignmentsByScope(options, odataQuery, currentSubscription));
+            return result;
+        }
+
+        private List<PSDenyAssignment> FilterDenyAssignmentsByScope(FilterDenyAssignmentsOptions options, Rest.Azure.OData.ODataQuery<DenyAssignmentFilter> odataQuery, string currentSubscription)
+        {
+            List<PSDenyAssignment> result = null;
+
+            if (!string.IsNullOrEmpty(options.Scope))
+            {
+                var tempResult = AuthorizationManagementClient.DenyAssignments.ListForScope(options.Scope, odataQuery);
+                result = tempResult.ToPSDenyAssignments(ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals).ToList();
+                result.RemoveAll(r => !options.Scope.StartsWith(r.Scope, StringComparison.OrdinalIgnoreCase));
+            }
+            else
+            {
+                var tempResult = AuthorizationManagementClient.DenyAssignments.List(odataQuery);
+                result = tempResult.ToPSDenyAssignments(ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals).ToList();
+            }
+
+            return result;
         }
 
         private PSRoleDefinition CreateOrUpdateRoleDefinition(Guid roleDefinitionId, PSRoleDefinition roleDefinition)

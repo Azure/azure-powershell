@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         #endregion
         protected override void ProcessRecordInternal()
         {
-            LogMetricTrigger metricTrigger = new LogMetricTrigger(ThresholdOperator, Threshold, MetricTriggerType, MetricColumn);
+            LogMetricTrigger metricTrigger = new LogMetricTrigger(thresholdOperator: ThresholdOperator, threshold: Threshold, metricTriggerType: MetricTriggerType, metricColumn: MetricColumn);
             WriteObject(new PSScheduledQueryRuleLogMetricTrigger(metricTrigger));
         }
     }

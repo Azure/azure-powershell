@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Sql</PsModuleName>
@@ -11,7 +11,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.29.0-preview" />
+    <None Remove="AdvancedThreatProtection\Templates\DeployInstanceAdsWithVaTemplate.json" />
+    <None Remove="AdvancedThreatProtection\Templates\DeployServerAdsWithVaTemplate.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="AdvancedThreatProtection\Templates\DeployInstanceAdsWithVaTemplate.json" />
+    <EmbeddedResource Include="AdvancedThreatProtection\Templates\DeployServerAdsWithVaTemplate.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.31.0-preview" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
   </ItemGroup>
  
