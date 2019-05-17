@@ -807,7 +807,7 @@ function Test-VirtualNetworkGatewayVpnCustomIpsecPolicySet
 .SYNOPSIS
 Virtual network gateway Vpn Client Connection Health
 #>
-function Test-VirtualNetworkGatewayVpnclientConnectionHealth
+function Test-VirtualNetworkGatewayVpnClientConnectionHealth
 {
 	param 
     ( 
@@ -854,7 +854,7 @@ function Test-VirtualNetworkGatewayVpnclientConnectionHealth
 		Assert-AreEqual 2 @($protocols).Count
 		Assert-AreEqual "201.169.0.0/16" $actual.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes 
 		
-		$vpnclientHealthDetails = Get-AzVirtualNetworkGatewayVpnclientConnectionHealth -ResourceGroupName $rgname -ResourceName $rname
+		$vpnclientHealthDetails = Get-AzVirtualNetworkGatewayVpnClientConnectionHealth -ResourceGroupName $rgname -ResourceName $rname
 		Assert-AreEqual 0 @($vpnclientHealthDetails).Count
 	}
 	finally
