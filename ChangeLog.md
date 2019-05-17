@@ -69,6 +69,8 @@
 	- Updated Az.Monitor.md to include cmdlets for GenV2(non classic) metric-based alert rule
 
 #### Az.Network
+* Update ResourceId and InputObject for Nat Gateway 
+    - Add alias for ResourceId and InputObject 
 * Add support for Nat Gateway Resource
     - New cmdlets
         - New-AzNatGateway
