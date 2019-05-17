@@ -27,9 +27,78 @@ using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintArtifact", DefaultParameterSetName = ParameterSetNames.CreateTemplateArtifact), OutputType(typeof(Artifact))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintArtifact", DefaultParameterSetName = ParameterSetNames.UpdateTemplateArtifact), OutputType(typeof(Artifact))]
     public class SetAzureRmBlueprintArtifact : BlueprintArtifactsCmdletBase
     {
+        #region Parameters
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateArtifactByInputFile, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactName)]
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateTemplateArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactName)]
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateRoleAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactName)]
+        [Parameter(ParameterSetName = ParameterSetNames.UpdatePolicyAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactName)]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateTemplateArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactType)]
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateRoleAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactType)]
+        [Parameter(ParameterSetName = ParameterSetNames.UpdatePolicyAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactType)]
+        [ValidateNotNullOrEmpty]
+        public PSArtifactKind Type { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateArtifactByInputFile, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.BlueprintObject)]
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateTemplateArtifact, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.BlueprintObject)]
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateRoleAssignmentArtifact, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.BlueprintObject)]
+        [Parameter(ParameterSetName = ParameterSetNames.UpdatePolicyAssignmentArtifact, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.BlueprintObject)]
+        [ValidateNotNull]
+        public PSBlueprintBase Blueprint { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateTemplateArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactDescription)]
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateRoleAssignmentArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactDescription)]
+        [Parameter(ParameterSetName = ParameterSetNames.UpdatePolicyAssignmentArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactDescription)]
+        [ValidateNotNullOrEmpty]
+        public string Description { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateTemplateArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactDependsOn)]
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateRoleAssignmentArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactDependsOn)]
+        [Parameter(ParameterSetName = ParameterSetNames.UpdatePolicyAssignmentArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactDependsOn)]
+        public List<string> DependsOn { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.UpdatePolicyAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactPolicyDefinitionId)]
+        [ValidateNotNullOrEmpty]
+        public string PolicyDefinitionId { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.UpdatePolicyAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactPolicyDefinitionParameter)]
+        [ValidateNotNullOrEmpty]
+        public Hashtable PolicyDefinitionParameter { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateTemplateArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactTemplateParameterFile)]
+        [ValidateNotNullOrEmpty]
+        public string TemplateParameterFile { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateTemplateArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactTemplateFile)]
+        [ValidateNotNullOrEmpty]
+        public string TemplateFile { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateRoleAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactRoleDefinitionId)]
+        [ValidateNotNullOrEmpty]
+        public string RoleDefinitionId { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateRoleAssignmentArtifact, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactRoleDefinitionPrincipalId)]
+        [ValidateNotNullOrEmpty]
+        public string[] RoleDefinitionPrincipalId { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.UpdatePolicyAssignmentArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactResourceGroup)]
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateRoleAssignmentArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactResourceGroup)]
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateTemplateArtifact, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactResourceGroup)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        //Alternatively, user can provide a artifactFile
+        [Parameter(ParameterSetName = ParameterSetNames.UpdateArtifactByInputFile, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ArtifactFile)]
+        [ValidateNotNullOrEmpty]
+        public string ArtifactFile { get; set; }
+
+        #endregion
+
         #region Cmdlet Overrides
         public override void ExecuteCmdlet()
         {
@@ -40,14 +109,14 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
                 switch (ParameterSetName)
                 {
-                    case ParameterSetNames.CreateArtifactByInputFile:
+                    case ParameterSetNames.UpdateArtifactByInputFile:
                         var artifact = JsonConvert.DeserializeObject<Artifact>(File.ReadAllText(ResolveUserPath(ArtifactFile)),
                             DefaultJsonSettings.DeserializerSettings);
 
 
                         WriteObject(BlueprintClient.CreateArtifact(scope, Blueprint.Name, Name, artifact));
                         break;
-                    case ParameterSetNames.CreateRoleAssignmentArtifact:
+                    case ParameterSetNames.UpdateRoleAssignmentArtifact:
                         if (!Type.Equals(PSArtifactKind.RoleAssignmentArtifact)) throw new PSInvalidOperationException("Artifact type mismatch."); ;
 
                         var roleAssignmentArtifact = new RoleAssignmentArtifact
@@ -63,7 +132,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                         WriteObject(BlueprintClient.CreateArtifact(scope, Blueprint.Name, Name, roleAssignmentArtifact));
 
                         break;
-                    case ParameterSetNames.CreatePolicyAssignmentArtifact:
+                    case ParameterSetNames.UpdatePolicyAssignmentArtifact:
                         if (!Type.Equals(PSArtifactKind.PolicyAssignmentArtifact)) throw new PSInvalidOperationException("Artifact type mismatch.");
 
                         Dictionary<string, ParameterValueBase> policyAssignmentParameters = new Dictionary<string, ParameterValueBase>();
@@ -87,7 +156,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                         WriteObject(BlueprintClient.CreateArtifact(scope, Blueprint.Name, Name, policyArtifact));
 
                         break;
-                    case ParameterSetNames.CreateTemplateArtifact:
+                    case ParameterSetNames.UpdateTemplateArtifact:
                         if (!Type.Equals(PSArtifactKind.TemplateArtifact)) throw new PSInvalidOperationException("Artifact type mismatch."); ;
 
                         var templatePath = ResolveUserPath(TemplateFile);
