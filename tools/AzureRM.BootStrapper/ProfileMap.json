@@ -1,0 +1,286 @@
+{
+    "latest": {
+        "AzureRM": [
+            "6.13.1"
+        ],
+        "AzureRM.Profile": [
+            "5.8.3"
+        ],
+        "Azure.Storage": [
+            "4.5.0"
+        ],
+        "AzureRM.AnalysisServices": [
+            "0.6.14"
+        ],
+        "Azure.AnalysisServices": [
+            "0.5.4"
+        ],
+        "AzureRM.ApiManagement": [
+            "6.1.7"
+        ],
+        "AzureRM.ApplicationInsights": [
+            "0.1.8"
+        ],
+        "AzureRM.Automation": [
+            "6.1.1"
+        ],
+        "AzureRM.Backup": [
+            "4.0.11"
+        ],
+        "AzureRM.Batch": [
+            "4.1.5"
+        ],
+        "AzureRM.Billing": [
+            "0.14.6"
+        ],
+        "AzureRM.Cdn": [
+            "5.0.6"
+        ],
+        "AzureRM.CognitiveServices": [
+            "0.9.12"
+        ],
+        "AzureRM.Compute": [
+            "5.9.1"
+        ],
+        "AzureRM.Consumption": [
+            "0.3.7"
+        ],
+        "AzureRM.ContainerInstance": [
+            "0.2.12"
+        ],
+        "AzureRM.ContainerRegistry": [
+            "1.0.10"
+        ],
+        "AzureRM.DataFactories": [
+            "5.0.3"
+        ],
+        "AzureRM.DataFactoryV2": [
+            "0.5.11"
+        ],
+        "AzureRM.DataLakeAnalytics": [
+            "5.1.4"
+        ],
+        "AzureRM.DataLakeStore": [
+            "6.2.1"
+        ],
+        "AzureRM.DevTestLabs": [
+            "4.0.9"
+        ],
+        "AzureRM.Dns": [
+            "5.1.0"
+        ],
+        "AzureRM.EventGrid": [
+            "0.3.7"
+        ],
+        "AzureRM.EventHub": [
+            "0.7.0"
+        ],
+        "AzureRM.HDInsight": [
+            "4.1.8"
+        ],
+        "AzureRM.Insights": [
+            "5.1.5"
+        ],
+        "AzureRM.IoTHub": [
+            "3.1.8"
+        ],
+        "AzureRM.KeyVault": [
+            "5.2.1"
+        ],
+        "AzureRM.LogicApp": [
+            "4.1.4"
+        ],
+        "AzureRM.MachineLearning": [
+            "0.18.5"
+        ],
+        "AzureRM.MachineLearningCompute": [
+            "0.4.8"
+        ],
+        "AzureRM.MarketplaceOrdering": [
+            "0.4.8"
+        ],
+        "AzureRM.Media": [
+            "0.10.4"
+        ],
+        "AzureRM.Network": [
+            "6.11.1"
+        ],
+        "AzureRM.NotificationHubs": [
+            "5.0.3"
+        ],
+        "AzureRM.OperationalInsights": [
+            "5.0.6"
+        ],
+        "AzureRM.PolicyInsights": [
+            "1.1.0"
+        ],
+        "AzureRM.PowerBIEmbedded": [
+            "4.1.10"
+        ],
+        "AzureRM.RecoveryServices": [
+            "4.1.9"
+        ],
+        "AzureRM.RecoveryServices.Backup": [
+            "4.5.2"
+        ],
+        "AzureRM.RecoveryServices.SiteRecovery": [
+            "0.2.12"
+        ],
+        "AzureRM.RedisCache": [
+            "5.1.0"
+        ],
+        "AzureRM.Relay": [
+            "0.3.12"
+        ],
+        "AzureRM.Resources": [
+            "6.7.3"
+        ],
+        "AzureRM.Scheduler": [
+            "0.16.10"
+        ],
+        "AzureRM.ServiceBus": [
+            "0.6.13"
+        ],
+        "AzureRM.ServiceFabric": [
+            "0.3.15"
+        ],
+        "AzureRM.Sql": [
+            "4.12.1"
+        ],
+        "AzureRM.Storage": [
+            "5.2.0"
+        ],
+        "AzureRM.StreamAnalytics": [
+            "4.0.10"
+        ],
+        "AzureRM.Tags": [
+            "4.0.5"
+        ],
+        "AzureRM.TrafficManager": [
+            "4.1.3"
+        ],
+        "AzureRM.UsageAggregates": [
+            "4.0.5"
+        ],
+        "AzureRM.Websites": [
+            "5.2.0"
+        ]
+    },
+    "2017-03-09-profile": {
+        "AzureRM": [
+            "1.2.11"
+        ],
+        "AzureRM.Profile": [
+            "3.4.1"
+        ],
+        "Azure.Storage": [
+            "1.0.5.4"
+        ],
+        "AzureRM.Compute": [
+            "1.2.3.4"
+        ],
+        "AzureRM.Dns": [
+            "3.4.1"
+        ],
+        "AzureRM.KeyVault": [
+            "3.4.1"
+        ],
+        "AzureRM.Network": [
+            "1.0.5.4"
+        ],
+        "AzureRM.Resources": [
+            "4.4.1"
+        ],
+        "AzureRM.Storage": [
+            "1.0.5.4"
+        ],
+        "AzureRM.Tags": [
+            "3.4.1"
+        ],
+        "AzureRM.UsageAggregates": [
+            "3.4.1"
+        ]
+    },
+    "2018-03-01-hybrid": {
+        "AzureRM": [
+            "2.3.0"
+        ],
+        "AzureRM.Profile": [
+            "5.5.2"
+        ],
+        "Azure.Storage": [
+            "4.1.1"
+        ],
+        "AzureRM.Compute": [
+            "4.0.2"
+        ],
+        "AzureRM.Dns": [
+            "3.5.1"
+        ],
+        "AzureRM.Insights": [
+            "5.0.0"
+        ],
+        "AzureRM.KeyVault": [
+            "4.2.0"
+        ],
+        "AzureRM.Network": [
+            "5.0.1"
+        ],
+        "AzureRM.Resources": [
+            "6.0.2"
+        ],
+        "AzureRM.Storage": [
+            "1.1.0.1"
+        ],
+        "AzureRM.Tags": [
+            "4.0.2"
+        ],
+        "AzureRM.UsageAggregates": [
+            "4.0.3"
+        ],
+        "AzureRM.Websites": [
+            "5.0.1"
+        ]
+    },
+    "2019-03-01-hybrid": {
+        "AzureRM": [
+            "2.5.0"
+        ],
+        "AzureRM.Profile": [
+            "5.8.3"
+        ],
+        "Azure.Storage": [
+            "4.5.0"
+        ],
+        "AzureRM.Compute": [
+            "4.6.1"
+        ],
+        "AzureRM.Dns": [
+            "3.5.1"
+        ],
+        "AzureRM.Insights": [
+            "5.1.5"
+        ],
+        "AzureRM.KeyVault": [
+            "4.2.0"
+        ],
+        "AzureRM.Network": [
+            "5.0.1"
+        ],
+        "AzureRM.Resources": [
+            "6.4.3"
+        ],
+        "AzureRM.Storage": [
+            "5.0.4"
+        ],
+        "AzureRM.Tags": [
+            "4.0.2"
+        ],
+        "AzureRM.UsageAggregates": [
+            "4.0.3"
+        ],
+        "AzureRM.Websites": [
+            "5.0.1"
+        ]
+    }
+}

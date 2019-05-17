@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>ProfileMapDataView</Name>
+      <ViewSelectedBy>
+        <TypeName>ProfileMapData</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>ProfileName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Modules</Label>
+                <ScriptBlock> 
+                  $RequiredModules = "AzureRM", "AzureRM.Compute", "AzureRM.Netowrk", "AzureRM.Storage", "AzureRM.Sql"
+                  foreach ($name in $RequiredModules) 
+                  {
+                    ($_.psobject.properties | % { if ($_.name -eq $name) { $name + " : " + ( $_.value | ft -auto | out-string ) } } )
+                  }
+                </ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl> 
+    </View>
+  </ViewDefinitions> 
+</Configuration>

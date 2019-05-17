@@ -449,6 +449,10 @@
 
     <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;$(MSBuildProjectDirectory)\tools\Modules\Run-UnitTests.ps1 -BuildConfig $(Configuration) -Scope $(Scope) &quot;"
           ContinueOnError="ErrorAndContinue"/>
+    
+    <!-- Run unit tests for BootStrapper -->
+    <Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;Import-Module $(LibraryToolsFolder)\AzureRM.BootStrapper; $(LibraryToolsFolder)\AzureRM.BootStrapper\Run-UnitTests.ps1 &quot;" ContinueOnError="false"/>
+
 
     <!-- Azure / Stack -->
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
