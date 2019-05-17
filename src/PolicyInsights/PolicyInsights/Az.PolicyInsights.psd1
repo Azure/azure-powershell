@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.1.0'
+ModuleVersion = '1.1.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -111,8 +111,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Support for querying policy evaluation details.
-    - Add ''-Expand'' parameter to Get-AzPolicyState. Support ''-Expand PolicyEvaluationDetails''.'
+        ReleaseNotes = '* Fix null-reference issue in Get-AzPolicyEvent.'
 
         # Prerelease string of this module
         # Prerelease = ''
