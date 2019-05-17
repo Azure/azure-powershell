@@ -204,7 +204,7 @@ function Create-BasicManagedTestEnvironmentWithParams ($params, $location)
 	$vnetName = "cl_initial"
 	$subnetName = "Cool"
 	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 	$credentials = Get-ServerCredential
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
@@ -715,6 +715,11 @@ function Create-ManagedInstanceForTest ($resourceGroup, $subnetId)
 <#
 	.SYNOPSIS
 	Create a virtual network
+
+	If resource group $resourceGroupName does not exist, then please create it before running the test.
+	We deliberately do not create it, because if we did then ResourceGroupCleaner (inside MockContext) would delete it
+	at the end of the test, which prevents us from reusing the subnet and therefore massively slows down
+	managed instance scenario tests.
 #>
 function CreateAndGetVirtualNetworkForManagedInstance ($vnetName, $subnetName, $location = "westcentralus", $resourceGroupName = "cl_one")
 {
