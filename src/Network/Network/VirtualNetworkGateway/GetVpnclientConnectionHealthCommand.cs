@@ -8,7 +8,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayVpnclientConnectionHealth", SupportsShouldProcess = true), OutputType(typeof(PSVpnClientConnectionHealthDetail))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayVpnClientConnectionHealth", SupportsShouldProcess = true), OutputType(typeof(PSVpnClientConnectionHealthDetail))]
     public class GetVpnclientConnectionHealthCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]

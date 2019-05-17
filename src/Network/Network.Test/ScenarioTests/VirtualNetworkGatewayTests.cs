@@ -113,7 +113,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset3)]
         public void VirtualNetworkGatewayVpnclientConnectionHealthTest()
         {
-            TestRunner.RunTestScript("Test-VirtualNetworkGatewayVpnclientConnectionHealth");
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayVpnClientConnectionHealth");
         }
     }
 }
