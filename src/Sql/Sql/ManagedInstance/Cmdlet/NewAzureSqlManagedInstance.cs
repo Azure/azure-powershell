@@ -214,6 +214,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public SwitchParameter AssignIdentity { get; set; }
 
         /// <summary>
+        /// Gets or sets the managed instance compute generation
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Dns Zone Partner Resource ID for the Sql Azure Managed Instance.")]
+        [ResourceIdCompleter("Microsoft.Sql/managedInstances")]
+        public string DnsZonePartner { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -293,6 +301,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 PublicDataEndpointEnabled = this.PublicDataEndpointEnabled,
                 ProxyOverride = this.ProxyOverride,
                 TimezoneId = this.TimezoneId,
+                DnsZonePartner = this.DnsZonePartner
             });
             return newEntity;
         }
