@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     public class NewAzureApiManagementBackendCredential : AzureApiManagementCmdletBase
     {
         [Parameter(
-           ValueFromPipelineByPropertyName = false,
-           Mandatory = false,
-           HelpMessage = "Client Certificate Thumbprints. This parameter is optional.")]
+            ValueFromPipelineByPropertyName = false,
+            Mandatory = false,
+            HelpMessage = "Client Certificate Thumbprints. This parameter is optional.")]
         public string[] CertificateThumbprint { get; set; }
 
         [Parameter(
