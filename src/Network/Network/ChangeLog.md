@@ -28,6 +28,7 @@
 * Added readonly field GlobalReachEnabled in ExpressRoute.
 * Added breaking change attribute to call out deprecation of AllowGlobalReach field in ExpressRouteCircuit model
 * Fixed Issue 8756 Error using TargetListenerID with AzApplicationGatewayRedirectConfiguration cmdlets
+* Fixed bug in New-AzApplicationGatewayPathRuleConfig that prevented the rewrite ruleset from being set.
 
 ## Version 1.8.0
 * Add support for Nat Gateway Resource
