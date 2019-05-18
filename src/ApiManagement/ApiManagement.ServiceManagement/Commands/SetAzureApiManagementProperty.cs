@@ -15,15 +15,17 @@
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
     using System;
     using System.Management.Automation;
 
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementProperty")]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementProperty", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementProperty))]
     public class SetAzureApiManagementProperty : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
@@ -74,18 +76,21 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            Client.PropertySet(
-                Context,
-                PropertyId,
-                Name,
-                Value,
-                Secret,
-                Tag);
-
-            if (PassThru)
+            if (ShouldProcess(PropertyId, Resources.SetProperty))
             {
-                var @property = Client.PropertyById(Context, PropertyId);
-                WriteObject(@property);
+                Client.PropertySet(
+                    Context,
+                    PropertyId,
+                    Name,
+                    Value,
+                    Secret,
+                    Tag);
+
+                if (PassThru)
+                {
+                    var @property = Client.PropertyById(Context, PropertyId);
+                    WriteObject(@property);
+                }
             }
         }
     }

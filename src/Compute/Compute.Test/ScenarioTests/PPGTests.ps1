@@ -25,7 +25,8 @@ function Test-ProximityPlacementGroup
     try
     {
         # Common
-        $loc = "westcentralus"
+        [string]$loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
         
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
@@ -73,7 +74,8 @@ function Test-ProximityPlacementGroupAvSet
     try
     {
         # Common
-        $loc = "westcentralus"
+        [string]$loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
         
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
@@ -92,7 +94,8 @@ function Test-ProximityPlacementGroupAvSet
 
         $asetName = $rgname + 'as';
         New-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Location $loc -ProximityPlacementGroupId $ppg.Id -Sku 'Classic';
-        $av = Get-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName;     
+        $av = Get-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
+        Assert-AreEqual $ppg.Id $av.ProximityPlacementGroup.Id;
 
         $ppg = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname;
         Assert-AreEqual $av.Id $ppg.AvailabilitySets[0].Id;
@@ -123,7 +126,8 @@ function Test-ProximityPlacementGroupVM
     try
     {
         # Common
-        $loc = "westcentralus"
+        [string]$loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
         
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
@@ -173,6 +177,7 @@ function Test-ProximityPlacementGroupVM
         # Create a virtual machine
         New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmName;
+        Assert-AreEqual $ppg.Id $vm.ProximityPlacementGroup.Id;
 
         $ppg = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname;
         Assert-AreEqual $vm.Id $ppg.VirtualMachines[0].Id;

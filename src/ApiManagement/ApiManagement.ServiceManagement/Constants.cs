@@ -16,60 +16,28 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 {
     public class Constants
     {
-        public const string ApiManagementOpenIdConnectProvider = "AzureRmApiManagementOpenIdConnectProvider";
+        public const string SwaggerDefinitions = "SwaggerDefinition";
 
-        public const string ApiManagementLogger = "AzureRmApiManagementLogger";
+        public const string OpenApiComponents = "OpenApiComponents";
 
-        public const string ApiManagementProperty = "AzureRmApiManagementProperty";
+        public const string XsdSchema = "XsdSchema";
 
-        public const string ApiManagementApiToProduct = "AzureRmApiManagementApiToProduct";
+        public const string WadlGrammar = "WadlGrammar";
 
-        public const string ApiManagementProductToGroup = "AzureRmApiManagementProductToGroup";
+        public const string XmlPolicyFormat = "Xml";
 
-        public const string ApiManagementApiFromProduct = "AzureRmApiManagementApiFromProduct";
+        public const string RawXmlPolicyFormat = "RawXml";
 
-        public const string ApiManagementUserToGroup = "AzureRmApiManagementUserToGroup";
+        public const string OldDefaultPolicyFormat = "application/vnd.ms-azure-apim.policy+xml";
 
-        public const string ApiManagementUserFromGroup = "AzureRmApiManagementUserFromGroup";
+        public const string OldNonEscapedXmlPolicyFormat = "application/vnd.ms-azure-apim.policy.raw+xml";
 
-        public const string ApiManagementApi = "AzureRmApiManagementApi";
+        public const string AllErrors = "AllErrors";
 
-        public const string ApiManagementApiRevision = "AzureRmApiManagementApiRevision";
+        public const string ApplicationInsightsDiagnostics = "ApplicationInsights";
 
-        public const string ApiManagementApiRelease = "AzureRmApiManagementApiRelease";
+        public const string AzureMonitorDiagnostic = "AzureMonitor";
 
-        public const string ApiManagementApiVersionSet = "AzureRmApiManagementApiVersionSet";
-
-        public const string ApiManagementAuthorizationServer = "AzureRmApiManagementAuthorizationServer";
-
-        public const string ApiManagementCertificate = "AzureRmApiManagementCertificate";
-
-        public const string ApiManagementGroup = "AzureRmApiManagementGroup";
-
-        public const string ApiManagementOperation = "AzureRmApiManagementOperation";
-
-        public const string ApiManagementPolicy = "AzureRmApiManagementPolicy";
-
-        public const string ApiManagementProduct = "AzureRmApiManagementProduct";
-
-        public const string ApiManagementSubscription = "AzureRmApiManagementSubscription";
-
-        public const string ApiManagementUser = "AzureRmApiManagementUser";
-
-        public const string ApiManagementUserSsoUrl = "AzureRmApiManagementUserSsoUrl";
-
-        public const string ApiManagementProductFromGroup = "AzureRmApiManagementProductFromGroup";
-
-        public const string ApiManagementTenantGitAccess = "AzureRmApiManagementTenantGitAccess";
-
-        public const string ApiManagementTenantGitConfiguration = "AzureRmApiManagementTenantGitConfiguration";
-
-        public const string ApiManagementTenantSyncState = "AzureRmApiManagementTenantSyncState";
-
-        public const string ApiManagementTenantAccess = "AzureRmApiManagementTenantAccess";
-
-        public const string ApiManagementIdentityProvider = "AzureRmApiManagementIdentityProvider";
-
-        public const string ApiManagementBackend = "AzureRmApiManagementBackend";
+        public const string FixedSamplingType = "Fixed";
     }
 }
