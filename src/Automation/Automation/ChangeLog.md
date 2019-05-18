@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.2
 * Updated Get-AzAutomationJobOutputRecord to handle JSON and Text record values.
     - Fix for issue https://github.com/Azure/azure-powershell/issues/7977
     - Fix for issue https://github.com/Azure/azure-powershell/issues/8600
