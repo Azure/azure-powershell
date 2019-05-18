@@ -18,6 +18,8 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+* Update ResourceId and InputObject for Nat Gateway
+    - Add alias for ResourceId and InputObject
 
 ## Version 1.8.1
 * Add DisableBgpRoutePropagation flag to Effective Route Table output
