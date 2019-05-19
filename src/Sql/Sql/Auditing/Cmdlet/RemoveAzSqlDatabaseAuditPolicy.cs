@@ -6,7 +6,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     [Cmdlet(
         VerbsCommon.Remove,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + DefinitionsCommon.DatabaseAuditPolicyCmdletsSuffix,
-        DefaultParameterSetName = DefinitionsCommon.DatabaseParameterSetName),
+        DefaultParameterSetName = DefinitionsCommon.DatabaseParameterSetName,
+        SupportsShouldProcess = true),
         OutputType(typeof(bool))]
     public class RemoveAzSqlDatabaseAuditPolicy : SqlDatabaseAuditPolicyCmdlet
     {
