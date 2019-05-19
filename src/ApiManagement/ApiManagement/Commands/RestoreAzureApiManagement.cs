@@ -16,7 +16,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ApiManagement.Models;
-    using Microsoft.WindowsAzure.Commands.Common.Storage;
     using Microsoft.WindowsAzure.Storage;
     using ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
