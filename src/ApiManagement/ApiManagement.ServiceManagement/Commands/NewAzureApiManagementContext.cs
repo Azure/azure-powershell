@@ -14,14 +14,21 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using ResourceManager.Common.ArgumentCompleters;
-    using System.Management.Automation;
 
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementContext"), OutputType(typeof(PsApiManagementContext))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementContext", DefaultParameterSetName = ContextParameterSet)]
+    [OutputType(typeof(PsApiManagementContext), ParameterSetName = new[] { ContextParameterSet, ResourceIdParameterSet } )]
     public class NewAzureApiManagementContext : AzureApiManagementCmdletBase
     {
+        #region ParameterSetNames
+        private const string ContextParameterSet = "ContextParameterSet";
+        private const string ResourceIdParameterSet = "ResourceIdParameterSet";
+        #endregion
+
         [Parameter(
+            ParameterSetName = ContextParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Name of resource group under which an API Management service is deployed.")]
@@ -30,19 +37,41 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public string ResourceGroupName { get; set; }
 
         [Parameter(
+            ParameterSetName = ContextParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Name of deployed API Management service.")]
         [ValidateNotNullOrEmpty]
         public string ServiceName { get; set; }
 
+        [Parameter(
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            HelpMessage = "Arm Resource Identifier of a ApiManagement service. This parameter is required.")]
+        public string ResourceId { get; set; }
+
         public override void ExecuteApiManagementCmdlet()
         {
+            string resourceGroupName;
+            string serviceName;
+            if (ParameterSetName.Equals(ResourceIdParameterSet))
+            {
+                var resourceIdentifier = new PsApiManagementArmResource(ResourceId);
+                resourceGroupName = resourceIdentifier.ResourceGroupName;
+                serviceName = resourceIdentifier.ServiceName;
+            }
+            else
+            {
+                resourceGroupName = ResourceGroupName;
+                serviceName = ServiceName;
+            }
+            
             WriteObject(
                 new PsApiManagementContext
                 {
-                    ResourceGroupName = ResourceGroupName,
-                    ServiceName = ServiceName
+                    ResourceGroupName = resourceGroupName,
+                    ServiceName = serviceName
                 });
         }
     }

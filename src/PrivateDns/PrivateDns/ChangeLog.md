@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.1
 * Rename Update- cmdlets to Set-
 	- Changed Update-AzPrivateDnsZone, Update-AzDrivateDnsVirtualNetworkLink, Update-AzPrivateDnsRecordSet cmdlets to Set-AzPrivateDnsZone, Set-AzDrivateDnsVirtualNetworkLink, Set-AzPrivateDnsRecordSet.
 * Add warning for Private DNS zones ending with .local suffix

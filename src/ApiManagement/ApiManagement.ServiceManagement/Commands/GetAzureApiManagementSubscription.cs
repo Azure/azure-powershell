@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
@@ -65,7 +66,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             }
             else if (ParameterSetName.Equals(GetBySubscriptionId))
             {
-                var subscription = Client.SubscriptionById(Context, SubscriptionId);
+                var subscription = Client.SubscriptionById(
+                    Context.ResourceGroupName, 
+                    Context.ServiceName,
+                    SubscriptionId);
                 WriteObject(subscription);
             }
             else if (ParameterSetName.Equals(GetByProductId))
