@@ -20,6 +20,10 @@
 -->
 ## Upcoming Release
 
+## Version 2.1.0
+* Add ProtectFromScaleIn and ProtectFromScaleSetAction parameters to Update-AzVmssVM cmdlet.
+* New-AzVM wimple parameter set now uses by default an available location if 'East US' is not supported
+
 ## Version 2.0.0
 * Proximity placement group feature.
     - The following new cmdlets are added:

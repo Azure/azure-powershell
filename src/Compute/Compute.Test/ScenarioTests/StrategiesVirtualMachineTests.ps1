@@ -105,7 +105,7 @@ function Test-SimpleNewVmWithUltraSSD
 		#As of now the ultrasd feature is only supported in east us 2 and in the size Standard_D2s_v3, on the features GA the restriction will be lifted
 		#Use the follwing command to figure out the one to use 
 		#Get-AzComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }
-        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Location "east US 2" -EnableUltraSSD -Zone 3 -Size "Standard_D2s_v3"
+        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Location "eastus2" -EnableUltraSSD -Zone 2 -Size "Standard_D2s_v3"
 
         Assert-AreEqual $vmname $x.Name;
         Assert-Null $x.Identity
@@ -452,11 +452,13 @@ function Test-SimpleNewVmImageName
         [string]$domainNameLabel = "$vmname-$vmname".tolower()
 
         # Common
-        $x = New-AzVM `
+        $imgversion = Get-VMImageVersion -publisher "MicrosoftWindowsServer" `
+							-offer "WindowsServer" -sku "2016-Datacenter"
+		$x = New-AzVM `
             -Name $vmname `
             -Credential $cred `
             -DomainNameLabel $domainNameLabel `
-            -ImageName "MicrosoftWindowsServer:WindowsServer:2016-Datacenter:2016.127.20170406"
+            -ImageName ("MicrosoftWindowsServer:WindowsServer:2016-Datacenter:" + $imgversion)
 
         Assert-AreEqual $vmname $x.Name
     }

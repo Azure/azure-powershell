@@ -50,11 +50,17 @@ Converts a vulnerability assessment scan results to Excel format.
 ### [Disable-AzSqlInstanceAdvancedDataSecurity](Disable-AzSqlInstanceAdvancedDataSecurity.md)
 Disables Advanced Data Security on a managed instance.
 
+### [Disable-AzSqlServerAdvancedDataSecurity](Disable-AzSqlServerAdvancedDataSecurity.md)
+Disables Advanced Data Security on a server.
+
 ### [Disable-AzSqlServerAdvancedThreatProtection](Disable-AzSqlServerAdvancedThreatProtection.md)
 Disables Advanced Threat Protection on a server.
 
 ### [Enable-AzSqlInstanceAdvancedDataSecurity](Enable-AzSqlInstanceAdvancedDataSecurity.md)
 Enables Advanced Data Security on a managed instance.
+
+### [Enable-AzSqlServerAdvancedDataSecurity](Enable-AzSqlServerAdvancedDataSecurity.md)
+Enables Advanced Data Security on a server.
 
 ### [Enable-AzSqlServerAdvancedThreatProtection](Enable-AzSqlServerAdvancedThreatProtection.md)
 Enables Advanced Threat Protection on a server.
@@ -120,7 +126,8 @@ Gets the geo-replication links between an Azure SQL Database and a resource grou
 Retrieves the distinct restore points from which a SQL Data Warehouse can be restored.
 
 ### [Get-AzSqlDatabaseSecureConnectionPolicy](Get-AzSqlDatabaseSecureConnectionPolicy.md)
-Gets the secure connection policy for a database.
+Gets the secure connection policy for a database. 
+Secure connection is deprecated and this command will be removed in a future release. Please use the SQL database blade in the Azure portal to view the connection strings
 
 ### [Get-AzSqlDatabaseSensitivityClassification](Get-AzSqlDatabaseSensitivityClassification.md)
 Gets the current information types and sensitivity labels of columns in the database.
@@ -211,6 +218,9 @@ Returns information about SQL Database servers.
 
 ### [Get-AzSqlServerActiveDirectoryAdministrator](Get-AzSqlServerActiveDirectoryAdministrator.md)
 Gets information about an Azure AD administrator for SQL Server.
+
+### [Get-AzSqlServerAdvancedDataSecurityPolicy](Get-AzSqlServerAdvancedDataSecurityPolicy.md)
+Gets Advanced Data Security policy of a server.
 
 ### [Get-AzSqlServerAdvancedThreatProtectionPolicy](Get-AzSqlServerAdvancedThreatProtectionPolicy.md)
 Gets Advanced Threat Protection policy of a server.
