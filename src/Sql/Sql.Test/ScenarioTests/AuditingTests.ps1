@@ -1051,7 +1051,7 @@ function Test-AuditingOnDatabase
 		Assert-Null $policy.StorageAccountName
 		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 8 $policy.RetentionInDays
+		Assert-AreEqual 0 $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is enabled.
 		$policy = Get-AzSqlDatabaseAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
@@ -1099,7 +1099,7 @@ function Test-AuditingOnDatabase
 		Assert-Null $policy.StorageAccountName
 		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 8 $policy.RetentionInDays
+		Assert-AreEqual 0 $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is enabled.
 		$policy = Get-AzSqlDatabaseAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
@@ -1138,7 +1138,7 @@ function Test-AuditingOnDatabase
 		Assert-Null $policy.StorageAccountName
 		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 8 $policy.RetentionInDays
+		Assert-AreEqual 0 $policy.RetentionInDays
 		
 		# Verify log analytics auditing policy is disabled.
 		$policy = Get-AzSqlDatabaseAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -LogAnalytics
@@ -1321,7 +1321,7 @@ function Test-AuditingOnServer
 		Assert-Null $policy.StorageAccountName
 		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 8 $policy.RetentionInDays
+		Assert-AreEqual 0 $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is enabled.
 		$policy = Get-AzSqlServerAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
@@ -1365,7 +1365,7 @@ function Test-AuditingOnServer
 		Assert-Null $policy.StorageAccountName
 		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 8 $policy.RetentionInDays
+		Assert-AreEqual 0 $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is enabled.
 		$policy = Get-AzSqlServerAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
@@ -1401,7 +1401,7 @@ function Test-AuditingOnServer
 		Assert-Null $policy.StorageAccountName
 		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 8 $policy.RetentionInDays
+		Assert-AreEqual 0 $policy.RetentionInDays
 		
 		# Verify log analytics auditing policy is disabled.
 		$policy = Get-AzSqlServerAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -LogAnalytics

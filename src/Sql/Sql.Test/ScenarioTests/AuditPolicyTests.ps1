@@ -20,8 +20,8 @@ function Test-BlobAuditPolicyDatabaseUpdatePolicyWithStorage
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
 	try 
 	{
@@ -36,7 +36,7 @@ function Test-BlobAuditPolicyDatabaseUpdatePolicyWithStorage
 	finally
 	{
 		# Cleanup
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
 
@@ -48,8 +48,8 @@ function Test-BlobAuditPolicyDatabaseUpdatePolicyWithSameNameStorageOnDifferentR
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
 	try 
 	{
@@ -65,7 +65,7 @@ function Test-BlobAuditPolicyDatabaseUpdatePolicyWithSameNameStorageOnDifferentR
 		New-AzureRmResourceGroup -Location "West Europe" -ResourceGroupName $newResourceGroupName
 		New-AzureRmStorageAccount -StorageAccountName $params.storageAccount  -ResourceGroupName $newResourceGroupName -Location "West Europe" -Type Standard_GRS 
 
-		Set-AzSqlDatabaseAuditPolicy -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
@@ -76,7 +76,7 @@ function Test-BlobAuditPolicyDatabaseUpdatePolicyWithSameNameStorageOnDifferentR
 	{
 		# Cleanup
 		Remove-AzureRmResourceGroup -Name $newResourceGroupName -Force
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
 
@@ -88,8 +88,8 @@ function Test-BlobAuditPolicyServerUpdatePolicyWithStorage
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
 	try
 	{
@@ -104,7 +104,7 @@ function Test-BlobAuditPolicyServerUpdatePolicyWithStorage
 	finally
 	{
 		# Cleanup
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
 
@@ -117,8 +117,8 @@ function Test-BlobAuditPolicyDatabaseUpdatePolicyKeepPreviousStorage
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
 	try 
 	{
@@ -137,7 +137,7 @@ function Test-BlobAuditPolicyDatabaseUpdatePolicyKeepPreviousStorage
 	finally
 	{
 		# Cleanup
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
 
@@ -150,8 +150,8 @@ function Test-BlobAuditPolicyServerUpdatePolicyKeepPreviousStorage
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
 	try 
 	{
@@ -170,7 +170,7 @@ function Test-BlobAuditPolicyServerUpdatePolicyKeepPreviousStorage
 	finally
 	{
 		# Cleanup
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
 
@@ -178,12 +178,12 @@ function Test-BlobAuditPolicyServerUpdatePolicyKeepPreviousStorage
 .SYNOPSIS
 Tests that when asking to disable blob auditing of a database, later when fetching the policy, it is marked as disabled
 #>
-function Test-BlobAuditPolicyDisableDatabaseAuditing
+function Test-BlobAuditPolicyDisableDatabaseAuditPolicy
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
 	try
 	{
@@ -205,7 +205,7 @@ function Test-BlobAuditPolicyDisableDatabaseAuditing
 	finally
 	{
 		# Cleanup
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
 
@@ -213,12 +213,12 @@ function Test-BlobAuditPolicyDisableDatabaseAuditing
 .SYNOPSIS
 Tests that when asking to disable auditing of a server, later when fetching the policy, it is marked as disabled
 #>
-function Test-BlobAuditPolicyDisableServerAuditing
+function Test-BlobAuditPolicyDisableServerAuditPolicy
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
 	try
 	{
@@ -233,7 +233,7 @@ function Test-BlobAuditPolicyDisableServerAuditing
 	finally
 	{
 		# Cleanup
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
 
@@ -245,8 +245,8 @@ function Test-BlobAuditPolicyFailedDatabaseUpdatePolicyWithNoStorage
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
 	try
 	{
@@ -256,7 +256,7 @@ function Test-BlobAuditPolicyFailedDatabaseUpdatePolicyWithNoStorage
 	finally
 	{
 		# Cleanup
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
 
@@ -268,8 +268,8 @@ function Test-BlobAuditPolicyFailedServerUpdatePolicyWithNoStorage
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
 	try
 	{
@@ -279,7 +279,7 @@ function Test-BlobAuditPolicyFailedServerUpdatePolicyWithNoStorage
 	finally
 	{
 		# Cleanup
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
 
@@ -291,8 +291,8 @@ function Test-BlobAuditPolicyFailWithBadDatabaseIndentity
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
 	try 
 	{
@@ -305,7 +305,7 @@ function Test-BlobAuditPolicyFailWithBadDatabaseIndentity
 	finally
 	{
 		# Cleanup
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
 
@@ -317,8 +317,8 @@ function Test-BlobAuditPolicyFailWithBadServerIndentity
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
 	try 
 	{
@@ -331,7 +331,7 @@ function Test-BlobAuditPolicyFailWithBadServerIndentity
 	finally
 	{
 		# Cleanup
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
 
@@ -343,8 +343,8 @@ function Test-BlobAuditPolicyServerStorageKeyRotation
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
 	try
 	{
@@ -372,7 +372,7 @@ function Test-BlobAuditPolicyServerStorageKeyRotation
 	finally
 	{
 		# Cleanup
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
 
@@ -384,8 +384,8 @@ function Test-BlobAuditPolicyDatabaseStorageKeyRotation
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
 	try
 	{
@@ -413,7 +413,7 @@ function Test-BlobAuditPolicyDatabaseStorageKeyRotation
 	finally
 	{
 		# Cleanup
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
 
@@ -421,12 +421,12 @@ function Test-BlobAuditPolicyDatabaseStorageKeyRotation
 .SYNOPSIS
 Tests that after setting the retention values to a server auditing policy, this value is used on next policy set operations as default.
 #>
-function Test-BlobAudPolicyServerRetentionKeepProperties
+function Test-BlobAuditPolicyServerRetentionKeepProperties
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
 	try
 	{
@@ -449,7 +449,7 @@ function Test-BlobAudPolicyServerRetentionKeepProperties
 	finally
 	{
 		# Cleanup
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
 
@@ -461,8 +461,8 @@ function Test-BlobAuditPolicyDatabaseRetentionKeepProperties
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
 	try
 	{
@@ -485,7 +485,7 @@ function Test-BlobAuditPolicyDatabaseRetentionKeepProperties
 	finally
 	{
 		# Cleanup
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
 
@@ -497,8 +497,8 @@ function Test-BlobAuditPolicyOnDatabase
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 	$dbName = $params.databaseName
 
 	# NEEDS TO BE FILLED OUT WITH A PRECREATED STORAGE ACCOUNT IN A DIFFERENT SUBSCRIPTION
@@ -523,7 +523,7 @@ function Test-BlobAuditPolicyOnDatabase
 		# Test - Tests setting blob auditing policy on a database with a storage account in a subscription which is different than the database's subscription
 		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $storageAccountName -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 -StorageAccountSubscriptionId $subscriptionId
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-	
+		
 		# Assert
 		Assert-AreEqual $policy.BlobStorageTargetState "Enabled"
 		Assert-AreEqual $policy.AuditActionGroup.Length 2
@@ -533,11 +533,11 @@ function Test-BlobAuditPolicyOnDatabase
 		Assert-AreEqual $policy.RetentionInDays 8
 		Assert-True { $policy.StorageKeyType -eq  "Primary"}
 		Assert-AreEqual $policy.StorageAccountSubscriptionId $subscriptionId
-
+		
 		# Test	
 		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -StorageKeyType "Secondary" -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 -AuditAction "UPDATE ON database::[$($params.databaseName)] BY [public]"
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-	
+		
 		# Assert
 		Assert-AreEqual $policy.BlobStorageTargetState "Enabled"
 		Assert-AreEqual $policy.AuditActionGroup.Length 2
@@ -547,19 +547,19 @@ function Test-BlobAuditPolicyOnDatabase
 		Assert-True { $policy.StorageKeyType -eq  "Secondary"}
 		Assert-AreEqual $policy.AuditAction.Length 1
 		Assert-AreEqual $policy.AuditAction "UPDATE ON database::[$($params.databaseName)] BY [public]"
-
+		
 		# Test
 		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-	
+		
 		# Assert
 		Assert-AreEqual $policy.BlobStorageTargetState "Disabled"
 		Assert-AreEqual $policy.AuditAction.Length 1
-
+		
 		# Test - Providing empty AuditActionGroups and an AuditAction
 		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -AuditActionGroup @() -AuditAction "UPDATE ON database::[$($params.databaseName)] BY [public]"
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-	
+		
 		# Assert
 		Assert-AreEqual $policy.AuditActionGroup.Length 0
 		Assert-AreEqual $policy.AuditAction.Length 1
@@ -568,7 +568,7 @@ function Test-BlobAuditPolicyOnDatabase
 	finally
 	{
 		# Cleanup
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
 
@@ -580,8 +580,8 @@ function Test-BlobAuditPolicyOnServer
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
 	# NEEDS TO BE FILLED OUT WITH A PRECREATED STORAGE ACCOUNT IN A DIFFERENT SUBSCRIPTION
 	$subscriptionId = "a8c9a924-06c0-4bde-9788-e7b1370969e1"
@@ -590,11 +590,11 @@ function Test-BlobAuditPolicyOnServer
 	try
 	{
 		# Test - Tests that when setting blob auditing policy on server without StorageKeyType parameter, it gets the default value - "Primary".
-		Set-AzSqlServerAuditPolicy -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
-		Assert-AreEqual $policy.AuditState "Enabled"
+		Assert-AreEqual $policy.BlobStorageTargetState "Enabled"
 		Assert-AreEqual $policy.AuditActionGroup.Length 2
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP)}
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
@@ -602,11 +602,11 @@ function Test-BlobAuditPolicyOnServer
 		Assert-AreEqual $policy.StorageKeyType "Primary"
 
 		# Test - Tests setting blob auditing policy on a server with a storage account in a subscription which is different than the server's subscription
-		Set-AzSqlServerAuditPolicy -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $storageAccountName -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 -StorageAccountSubscriptionId $subscriptionId
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $storageAccountName -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 -StorageAccountSubscriptionId $subscriptionId
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
-		Assert-AreEqual $policy.AuditState "Enabled"
+		Assert-AreEqual $policy.BlobStorageTargetState "Enabled"
 		Assert-AreEqual $policy.AuditActionGroup.Length 2
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP)}
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
@@ -615,11 +615,11 @@ function Test-BlobAuditPolicyOnServer
 		Assert-AreEqual $policy.StorageAccountSubscriptionId $subscriptionId
 
 		# Test	
-		Set-AzSqlServerAuditPolicy -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -StorageKeyType "Secondary" -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -StorageKeyType "Secondary" -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
-		Assert-AreEqual $policy.AuditState "Enabled"
+		Assert-AreEqual $policy.BlobStorageTargetState "Enabled"
 		Assert-AreEqual $policy.AuditActionGroup.Length 2
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP)}
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
@@ -627,16 +627,16 @@ function Test-BlobAuditPolicyOnServer
 		Assert-AreEqual $policy.StorageKeyType "Secondary"
 
 		# Test
-		Set-AzSqlServerAuditPolicy -State Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
-		Assert-AreEqual $policy.AuditState "Disabled"
+		Assert-AreEqual $policy.BlobStorageTargetState "Disabled"
 	}
 	finally
 	{
 		# Cleanup
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
 
@@ -647,8 +647,8 @@ Tests that when modifying the auditActionGroup property of a blob auditing polic
 function Test-BlobAuditPolicyWithAuditActionGroups
 {
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
 	try
 	{
@@ -729,7 +729,7 @@ function Test-BlobAuditPolicyWithAuditActionGroups
 	finally
 	{
 		# Cleanup
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
 
@@ -741,8 +741,8 @@ function Test-ExtendedAuditPolicyOnServer
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
 	try
 	{
@@ -801,7 +801,7 @@ function Test-ExtendedAuditPolicyOnServer
 	finally
 	{
 		# Cleanup
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
 
@@ -813,8 +813,8 @@ function Test-ExtendedAuditPolicyOnDatabase
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
 	try
 	{
@@ -873,7 +873,7 @@ function Test-ExtendedAuditPolicyOnDatabase
 	finally
 	{
 		# Cleanup
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
 
@@ -885,8 +885,8 @@ function Test-AuditPolicyOnDatabase
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 	$subscriptionId = (Get-AzContext).Subscription.Id
 	$workspaceResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $params.rgname + "/providers/microsoft.operationalinsights/workspaces/" + $params.workspaceName
 	$eventHubAuthorizationRuleResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $params.rgname + "/providers/microsoft.EventHub/namespaces/" + $params.eventHubNamespace + "/authorizationrules/RootManageSharedAccessKey"
@@ -1007,7 +1007,7 @@ function Test-AuditPolicyOnDatabase
 		Assert-Null $policy.StorageAccountName
 		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 8 $policy.RetentionInDays
+		Assert-AreEqual 0 $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is enabled.
 		Assert-AreEqual "Enabled" $policy.EventHubTargetState
@@ -1037,7 +1037,7 @@ function Test-AuditPolicyOnDatabase
 		Assert-Null $policy.StorageAccountName
 		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 8 $policy.RetentionInDays
+		Assert-AreEqual 0 $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is enabled.
 		Assert-AreEqual "Enabled" $policy.EventHubTargetState
@@ -1064,10 +1064,10 @@ function Test-AuditPolicyOnDatabase
 		Assert-Null $policy.StorageAccountName
 		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 8 $policy.RetentionInDays
+		Assert-AreEqual 0 $policy.RetentionInDays
 		
 		# Verify log analytics auditing policy is disabled.
-		Assert-AreEqual "Disabled" $policy.LogAnalytics
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
 		Assert-Null $policy.WorkspaceResourceId
 
 		# Verify Diagnostic Settings do not exist.
@@ -1076,7 +1076,7 @@ function Test-AuditPolicyOnDatabase
 	finally
 	{
 		# Cleanup
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
 
@@ -1088,8 +1088,8 @@ function Test-AuditPolicyOnServer
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 	$subscriptionId = (Get-AzContext).Subscription.Id
 	$workspaceResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $params.rgname + "/providers/microsoft.operationalinsights/workspaces/" + $params.workspaceName
 	$eventHubAuthorizationRuleResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $params.rgname + "/providers/microsoft.EventHub/namespaces/" + $params.eventHubNamespace + "/authorizationrules/RootManageSharedAccessKey"
@@ -1116,7 +1116,6 @@ function Test-AuditPolicyOnServer
 		Assert-Null $policy.EventHubNamespace
 		
 		# Verify log analytics auditing policy is disabled.
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -LogAnalytics
 		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
 		Assert-Null $policy.WorkspaceResourceId
 		
@@ -1146,7 +1145,7 @@ function Test-AuditPolicyOnServer
 		Assert-AreEqual 0 (Get-AzDiagnosticSetting -ResourceId $resourceId).count
 
 		# Enable event hub auditing policy and verify it
-		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
+		Set-AzSqlServerAuditPolicy -EventHubTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 		Assert-AreEqual "Enabled" $policy.EventHubTargetState
 		Assert-AreEqual 2 $policy.AuditActionGroup.Length
@@ -1206,7 +1205,7 @@ function Test-AuditPolicyOnServer
 		Assert-Null $policy.StorageAccountName
 		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 8 $policy.RetentionInDays
+		Assert-AreEqual 0 $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is enabled.
 		Assert-AreEqual "Enabled" $policy.EventHubTargetState
@@ -1235,7 +1234,7 @@ function Test-AuditPolicyOnServer
 		Assert-Null $policy.StorageAccountName
 		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 8 $policy.RetentionInDays
+		Assert-AreEqual 0 $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is enabled.
 		Assert-AreEqual "Enabled" $policy.EventHubTargetState
@@ -1261,7 +1260,7 @@ function Test-AuditPolicyOnServer
 		Assert-Null $policy.StorageAccountName
 		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 8 $policy.RetentionInDays
+		Assert-AreEqual 0 $policy.RetentionInDays
 		
 		# Verify log analytics auditing policy is disabled.
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
@@ -1274,7 +1273,7 @@ function Test-AuditPolicyOnServer
 	finally
 	{
 		# Cleanup
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
 
@@ -1282,12 +1281,12 @@ function Test-AuditPolicyOnServer
 .SYNOPSIS
 Tests that new diagnostic settings are created when needed while enabling or disabling policy.
 #>
-function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
+function Test-NewDatabaseAuditPolicyDiagnosticsAreCreatedOnNeed
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 	$subscriptionId = (Get-AzContext).Subscription.Id
 	$workspaceResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $params.rgname + "/providers/microsoft.operationalinsights/workspaces/" + $params.workspaceName
 	$eventHubAuthorizationRuleResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $params.rgname + "/providers/microsoft.EventHub/namespaces/" + $params.eventHubNamespace + "/authorizationrules/RootManageSharedAccessKey"
@@ -1296,8 +1295,8 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 	try
 	{
 		# Verify event hub auditing policy is disabled.
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
-		Assert-AreEqual "Disabled" $policy.AuditState
+		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
 		Assert-AreEqual 0 $policy.AuditActionGroup.Length
 		Assert-AreEqual 0 $policy.AuditAction.Length
 		Assert-Null $policy.PredicateExpression
@@ -1305,17 +1304,13 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		Assert-Null $policy.EventHubNamespace
 
 		# Verify log analytics auditing policy is Disabled.
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -LogAnalytics
-		Assert-AreEqual "Disabled" $policy.AuditState
-		Assert-AreEqual 0 $policy.AuditActionGroup.Length
-		Assert-AreEqual 0 $policy.AuditAction.Length
-		Assert-Null $policy.PredicateExpression
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
 		Assert-Null $policy.WorkspaceResourceId
 
 		# Enable event hub auditing policy and verify it.
-		Set-AzSqlDatabaseAuditPolicy -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
-		Assert-AreEqual "Enabled" $policy.AuditState
+		Set-AzSqlDatabaseAuditPolicy -EventHubTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
+		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
 		Assert-AreEqual 0 $policy.AuditAction.Length
 		Assert-AreEqual "" $policy.PredicateExpression
@@ -1323,11 +1318,7 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		Assert-Null $policy.EventHubNamespace
 
 		# Verify log analytics auditing policy is Disabled.
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -LogAnalytics
-		Assert-AreEqual "Disabled" $policy.AuditState
-		Assert-AreEqual 3 $policy.AuditActionGroup.Length
-		Assert-AreEqual 0 $policy.AuditAction.Length
-		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
 		Assert-Null $policy.WorkspaceResourceId
 
 		# Verify only one diagnostic settings exists.
@@ -1337,21 +1328,18 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		# Enable a new category in existing Diagnostic Settings.
 		$settingsName = ($diagnostics)[0].Name
 		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
+		
 		# Enable log analytics auditing policy and verify it
-		Set-AzSqlDatabaseAuditPolicy -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -LogAnalytics -WorkspaceResourceId $workspaceResourceId
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -LogAnalytics
-		Assert-AreEqual "Enabled" $policy.AuditState
+		Set-AzSqlDatabaseAuditPolicy -LogAnalyticsTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -WorkspaceResourceId $workspaceResourceId
+		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual "Enabled" $policy.LogAnalyticsTargetState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
 		Assert-AreEqual 0 $policy.AuditAction.Length
 		Assert-AreEqual "" $policy.PredicateExpression
 		Assert-AreEqual $workspaceResourceId $policy.WorkspaceResourceId
 
 		# Verify event hub auditing policy is enabled.
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
-		Assert-AreEqual "Enabled" $policy.AuditState
-		Assert-AreEqual 3 $policy.AuditActionGroup.Length
-		Assert-AreEqual 0 $policy.AuditAction.Length
-		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
 		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
 		Assert-Null $policy.EventHubNamespace
 
@@ -1367,27 +1355,24 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		# Enable a new category in Diagnostic Settings.
 		$settingsName = ($diagnostics)[0].Name
 		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
+		
 		# Verify log analytics auditing policy is enabled.
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -LogAnalytics
-		Assert-AreEqual "Enabled" $policy.AuditState
+		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual "Enabled" $policy.LogAnalyticsTargetState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
 		Assert-AreEqual 0 $policy.AuditAction.Length
 		Assert-AreEqual "" $policy.PredicateExpression
 		Assert-AreEqual $workspaceResourceId $policy.WorkspaceResourceId
 		
 		# Verify event hub auditing policy is enabled.
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
-		Assert-AreEqual "Enabled" $policy.AuditState
-		Assert-AreEqual 3 $policy.AuditActionGroup.Length
-		Assert-AreEqual 0 $policy.AuditAction.Length
-		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
 		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
 		Assert-Null $policy.EventHubNamespace
 		
 		# Enable event hub auditing policy and verify it.
-		Set-AzSqlDatabaseAuditPolicy -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
-		Assert-AreEqual "Enabled" $policy.AuditState
+		Set-AzSqlDatabaseAuditPolicy -EventHubTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
+		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
 		Assert-AreEqual 0 $policy.AuditAction.Length
 		Assert-AreEqual "" $policy.PredicateExpression
@@ -1395,11 +1380,7 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		Assert-Null $policy.EventHubNamespace
 		
 		# Verify log analytics auditing policy is enabled.
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -LogAnalytics
-		Assert-AreEqual "Enabled" $policy.AuditState
-		Assert-AreEqual 3 $policy.AuditActionGroup.Length
-		Assert-AreEqual 0 $policy.AuditAction.Length
-		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual "Enabled" $policy.LogAnalyticsTargetState
 		Assert-AreEqual $workspaceResourceId $policy.WorkspaceResourceId
 		
 		# Verify Diagnostic Settings were splitted.
@@ -1414,9 +1395,10 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		# Enable a new category in Diagnostic Settings
 		$settingsName = ($diagnostics)[0].Name
 		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
+		
 		# Verify event hub auditing settings is enabled.
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
-		Assert-AreEqual "Enabled" $policy.AuditState
+		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
 		Assert-AreEqual 0 $policy.AuditAction.Length
 		Assert-AreEqual "" $policy.PredicateExpression
@@ -1424,17 +1406,13 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		Assert-Null $policy.EventHubNamespace
 		
 		# Verify log analytics auditing policy is enabled.
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -LogAnalytics
-		Assert-AreEqual "Enabled" $policy.AuditState
-		Assert-AreEqual 3 $policy.AuditActionGroup.Length
-		Assert-AreEqual 0 $policy.AuditAction.Length
-		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual "Enabled" $policy.LogAnalyticsTargetState
 		Assert-AreEqual $workspaceResourceId $policy.WorkspaceResourceId
 
 		# Disable event hub auditing policy and verify it.
-		Set-AzSqlDatabaseAuditPolicy -State Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
-		Assert-AreEqual "Disabled" $policy.AuditState
+		Set-AzSqlDatabaseAuditPolicy -EventHubTargetState Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
 		Assert-AreEqual 0 $policy.AuditAction.Length
 		Assert-AreEqual "" $policy.PredicateExpression
@@ -1442,11 +1420,7 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		Assert-Null $policy.EventHubNamespace
 		
 		# Verify log analytics auditing policy is enabled.
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -LogAnalytics
-		Assert-AreEqual "Enabled" $policy.AuditState
-		Assert-AreEqual 3 $policy.AuditActionGroup.Length
-		Assert-AreEqual 0 $policy.AuditAction.Length
-		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual "Enabled" $policy.LogAnalyticsTargetState
 		Assert-AreEqual $workspaceResourceId $policy.WorkspaceResourceId
 		
 		# Verify Diagnostic Settings were splitted.
@@ -1459,8 +1433,8 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		Assert-AreEqual 1 ($diagnostics).count
 
 		# Verify event hub auditing policy is disabled.
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
-		Assert-AreEqual "Disabled" $policy.AuditState
+		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
 		Assert-AreEqual 0 $policy.AuditAction.Length
 		Assert-AreEqual "" $policy.PredicateExpression
@@ -1468,17 +1442,13 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		Assert-Null $policy.EventHubNamespace
 		
 		# Verify log analytics auditing policy is enabled.
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -LogAnalytics
-		Assert-AreEqual "Enabled" $policy.AuditState
-		Assert-AreEqual 3 $policy.AuditActionGroup.Length
-		Assert-AreEqual 0 $policy.AuditAction.Length
-		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual "Enabled" $policy.LogAnalyticsTargetState
 		Assert-AreEqual $workspaceResourceId $policy.WorkspaceResourceId
 		
 		# Enable event hub auditing policy and verify it.
-		Set-AzSqlDatabaseAuditPolicy -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
-		Assert-AreEqual "Enabled" $policy.AuditState
+		Set-AzSqlDatabaseAuditPolicy -EventHubTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
+		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
 		Assert-AreEqual 0 $policy.AuditAction.Length
 		Assert-AreEqual "" $policy.PredicateExpression
@@ -1486,11 +1456,7 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		Assert-Null $policy.EventHubNamespace
 		
 		# Verify log analytics auditing policy is enabled.
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -LogAnalytics
-		Assert-AreEqual "Enabled" $policy.AuditState
-		Assert-AreEqual 3 $policy.AuditActionGroup.Length
-		Assert-AreEqual 0 $policy.AuditAction.Length
-		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual "Enabled" $policy.LogAnalyticsTargetState
 		Assert-AreEqual $workspaceResourceId $policy.WorkspaceResourceId
 		
 		# Enable a new category in Diagnostic Settings.
@@ -1500,20 +1466,16 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
 		
 		# Disable log analytics auditing policy and verify it
-		Set-AzSqlDatabaseAuditPolicy -State Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -LogAnalytics
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -LogAnalytics
-		Assert-AreEqual "Disabled" $policy.AuditState
+		Set-AzSqlDatabaseAuditPolicy -LogAnalyticsTargetState Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
 		Assert-AreEqual 0 $policy.AuditAction.Length
 		Assert-AreEqual "" $policy.PredicateExpression
 		Assert-Null $policy.WorkspaceResourceId
 		
 		# Verify event hub auditing policy is enabled.
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
-		Assert-AreEqual "Enabled" $policy.AuditState
-		Assert-AreEqual 3 $policy.AuditActionGroup.Length
-		Assert-AreEqual 0 $policy.AuditAction.Length
-		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
 		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
 		Assert-Null $policy.EventHubNamespace
 		
@@ -1523,26 +1485,22 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		# Remove old Diagnostics
 		Remove-AzDiagnosticSetting -ResourceId $resourceId -Name $settingsName
 		# Verify log analytics auditing policy is Disabled.
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -LogAnalytics
-		Assert-AreEqual "Disabled" $policy.AuditState
+		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
 		Assert-AreEqual 0 $policy.AuditAction.Length
 		Assert-AreEqual "" $policy.PredicateExpression
 		Assert-Null $policy.WorkspaceResourceId
 		
 		# Verify event hub auditing policy is enabled.
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
-		Assert-AreEqual "Enabled" $policy.AuditState
-		Assert-AreEqual 3 $policy.AuditActionGroup.Length
-		Assert-AreEqual 0 $policy.AuditAction.Length
-		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
 		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
 		Assert-Null $policy.EventHubNamespace
 		
 		# Disable event hub auditing policy and verify it.
-		Set-AzSqlDatabaseAuditPolicy -State Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHub
-		Assert-AreEqual "Disabled" $policy.AuditState
+		Set-AzSqlDatabaseAuditPolicy -EventHubTargetState Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
 		Assert-AreEqual 0 $policy.AuditAction.Length
 		Assert-AreEqual "" $policy.PredicateExpression
@@ -1550,11 +1508,7 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 		Assert-Null $policy.EventHubNamespace
 		
 		# Verify log analytics auditing policy is Disabled.
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -LogAnalytics
-		Assert-AreEqual "Disabled" $policy.AuditState
-		Assert-AreEqual 3 $policy.AuditActionGroup.Length
-		Assert-AreEqual 0 $policy.AuditAction.Length
-		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
 		Assert-Null $policy.WorkspaceResourceId
 		
 		# Verify Diagnostic Settings do not exist.
@@ -1563,7 +1517,7 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 	finally
 	{
 		# Cleanup
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }
 
@@ -1571,12 +1525,12 @@ function Test-NewDatabaseDiagnosticsAreCreatedOnNeed
 .SYNOPSIS
 Tests that new diagnostic settings are created when needed while enabling or disabling policy.
 #>
-function Test-NewServerDiagnosticsAreCreatedOnNeed
+function Test-NewServerAuditPolicyDiagnosticsAreCreatedOnNeed
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AuditPolicyTestEnvironment $testSuffix
-	$params = Get-AuditPolicyTestEnvironmentParameters $testSuffix
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 	$subscriptionId = (Get-AzContext).Subscription.Id
 	$workspaceResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $params.rgname + "/providers/microsoft.operationalinsights/workspaces/" + $params.workspaceName
 	$eventHubAuthorizationRuleResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $params.rgname + "/providers/microsoft.EventHub/namespaces/" + $params.eventHubNamespace + "/authorizationrules/RootManageSharedAccessKey"
@@ -1585,30 +1539,26 @@ function Test-NewServerDiagnosticsAreCreatedOnNeed
 	try
 	{
 		# Verify event hub auditing policy is disabled.
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
-		Assert-AreEqual "Disabled" $policy.AuditState
+		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
 		Assert-AreEqual 0 $policy.AuditActionGroup.Length
 		Assert-Null $policy.EventHubAuthorizationRuleResourceId
 		Assert-Null $policy.EventHubNamespace
 
 		# Verify log analytics auditing policy is Disabled.
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -LogAnalytics
-		Assert-AreEqual "Disabled" $policy.AuditState
-		Assert-AreEqual 0 $policy.AuditActionGroup.Length
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
 		Assert-Null $policy.WorkspaceResourceId
 
 		# Enable event hub auditing policy and verify it.
-		Set-AzSqlServerAuditPolicy -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
-		Assert-AreEqual "Enabled" $policy.AuditState
+		Set-AzSqlServerAuditPolicy -EventHubTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
+		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
 		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
 		Assert-Null $policy.EventHubNamespace
 
 		# Verify log analytics auditing policy is Disabled.
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -LogAnalytics
-		Assert-AreEqual "Disabled" $policy.AuditState
-		Assert-AreEqual 3 $policy.AuditActionGroup.Length
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
 		Assert-Null $policy.WorkspaceResourceId
 
 		# Verify only one diagnostic settings exists.
@@ -1620,58 +1570,52 @@ function Test-NewServerDiagnosticsAreCreatedOnNeed
 		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
 
 		# Enable log analytics auditing policy and verify it
-		Set-AzSqlServerAuditPolicy -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -LogAnalytics -WorkspaceResourceId $workspaceResourceId
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -LogAnalytics
-		Assert-AreEqual "Enabled" $policy.AuditState
+		Set-AzSqlServerAuditPolicy -LogAnalyticsTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -WorkspaceResourceId $workspaceResourceId
+		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Enabled" $policy.LogAnalyticsTargetState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
 		Assert-AreEqual $workspaceResourceId $policy.WorkspaceResourceId
 
 		# Verify event hub auditing policy is enabled.
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
-		Assert-AreEqual "Enabled" $policy.AuditState
-		Assert-AreEqual 3 $policy.AuditActionGroup.Length
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
 		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
 		Assert-Null $policy.EventHubNamespace
-
+		
 		# Verify Diagnostic Settings were splitted.
 		Assert-AreEqual 2 (Get-AzDiagnosticSetting -ResourceId $resourceId).count "2"
 		
 		# Remove old Diagnostics.
 		Remove-AzDiagnosticSetting -ResourceId $resourceId -Name $settingsName
-
+		
 		# Verify only one diagnostic settings exists.
 		$diagnostics = Get-AzDiagnosticSetting -ResourceId $resourceId
 		Assert-AreEqual 1 ($diagnostics).count "3"
-
+		
 		# Enable a new category in Diagnostic Settings.
 		$settingsName = ($diagnostics)[0].Name
 		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
-
+		
 		# Verify log analytics auditing policy is enabled.
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -LogAnalytics
-		Assert-AreEqual "Enabled" $policy.AuditState
+		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Enabled" $policy.LogAnalyticsTargetState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
 		Assert-AreEqual $workspaceResourceId $policy.WorkspaceResourceId
 		
 		# Verify event hub auditing policy is enabled.
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
-		Assert-AreEqual "Enabled" $policy.AuditState
-		Assert-AreEqual 3 $policy.AuditActionGroup.Length
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
 		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
 		Assert-Null $policy.EventHubNamespace
 		
 		# Enable event hub auditing policy and verify it.
-		Set-AzSqlServerAuditPolicy -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
-		Assert-AreEqual "Enabled" $policy.AuditState
+		Set-AzSqlServerAuditPolicy -EventHubTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
+		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
 		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
 		Assert-Null $policy.EventHubNamespace
 		
 		# Verify log analytics auditing policy is enabled.
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -LogAnalytics
-		Assert-AreEqual "Enabled" $policy.AuditState
-		Assert-AreEqual 3 $policy.AuditActionGroup.Length
+		Assert-AreEqual "Enabled" $policy.LogAnalyticsTargetState
 		Assert-AreEqual $workspaceResourceId $policy.WorkspaceResourceId
 		
 		# Verify Diagnostic Settings were splitted.
@@ -1679,7 +1623,7 @@ function Test-NewServerDiagnosticsAreCreatedOnNeed
 		
 		# Remove old Diagnostics.
 		Remove-AzDiagnosticSetting -ResourceId $resourceId -Name $settingsName
-
+		
 		# Verify only one diagnostic settings exist.
 		$diagnostics = Get-AzDiagnosticSetting -ResourceId $resourceId
 		Assert-AreEqual 1 ($diagnostics).count "5"
@@ -1688,30 +1632,27 @@ function Test-NewServerDiagnosticsAreCreatedOnNeed
 		$settingsName = ($diagnostics)[0].Name
 		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
 		# Verify event hub auditing settings is enabled.
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
-		Assert-AreEqual "Enabled" $policy.AuditState
+		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
 		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
 		Assert-Null $policy.EventHubNamespace
 		
 		# Verify log analytics auditing policy is enabled.
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -LogAnalytics
-		Assert-AreEqual "Enabled" $policy.AuditState
+		Assert-AreEqual "Enabled" $policy.LogAnalyticsTargetState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
 		Assert-AreEqual $workspaceResourceId $policy.WorkspaceResourceId
-
+		
 		# Disable event hub auditing policy and verify it.
-		Set-AzSqlServerAuditPolicy -State Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
-		Assert-AreEqual "Disabled" $policy.AuditState
+		Set-AzSqlServerAuditPolicy -EventHubTargetState Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName
+		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
 		Assert-Null $policy.EventHubAuthorizationRuleResourceId
 		Assert-Null $policy.EventHubNamespace
 		
 		# Verify log analytics auditing policy is enabled.
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -LogAnalytics
-		Assert-AreEqual "Enabled" $policy.AuditState
-		Assert-AreEqual 3 $policy.AuditActionGroup.Length
+		Assert-AreEqual "Enabled" $policy.LogAnalyticsTargetState
 		Assert-AreEqual $workspaceResourceId $policy.WorkspaceResourceId
 		
 		# Verify Diagnostic Settings were splitted.
@@ -1722,32 +1663,28 @@ function Test-NewServerDiagnosticsAreCreatedOnNeed
 		# Verify only one diagnostic settings exist.
 		$diagnostics = Get-AzDiagnosticSetting -ResourceId $resourceId
 		Assert-AreEqual 1 ($diagnostics).count "7"
-
+		
 		# Verify event hub auditing policy is disabled.
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
-		Assert-AreEqual "Disabled" $policy.AuditState
+		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
 		Assert-Null $policy.EventHubAuthorizationRuleResourceId
 		Assert-Null $policy.EventHubNamespace
 		
 		# Verify log analytics auditing policy is enabled.
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -LogAnalytics
-		Assert-AreEqual "Enabled" $policy.AuditState
-		Assert-AreEqual 3 $policy.AuditActionGroup.Length
+		Assert-AreEqual "Enabled" $policy.LogAnalyticsTargetState
 		Assert-AreEqual $workspaceResourceId $policy.WorkspaceResourceId
 		
 		# Enable event hub auditing policy and verify it.
-		Set-AzSqlServerAuditPolicy -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
-		Assert-AreEqual "Enabled" $policy.AuditState
+		Set-AzSqlServerAuditPolicy -EventHubTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
+		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
 		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
 		Assert-Null $policy.EventHubNamespace
 		
 		# Verify log analytics auditing policy is enabled.
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -LogAnalytics
-		Assert-AreEqual "Enabled" $policy.AuditState
-		Assert-AreEqual 3 $policy.AuditActionGroup.Length
+		Assert-AreEqual "Enabled" $policy.LogAnalyticsTargetState
 		Assert-AreEqual $workspaceResourceId $policy.WorkspaceResourceId
 		
 		# Enable a new category in Diagnostic Settings.
@@ -1757,16 +1694,14 @@ function Test-NewServerDiagnosticsAreCreatedOnNeed
 		Set-AzDiagnosticSetting -ResourceId $resourceId -Enabled $True -Name $settingsName -Category SQLInsights
 		
 		# Disable log analytics auditing policy and verify it
-		Set-AzSqlServerAuditPolicy -State Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName -LogAnalytics
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -LogAnalytics
-		Assert-AreEqual "Disabled" $policy.AuditState
+		Set-AzSqlServerAuditPolicy -LogAnalyticsTargetState Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName
+		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
 		Assert-Null $policy.WorkspaceResourceId
 		
 		# Verify event hub auditing policy is enabled.
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
-		Assert-AreEqual "Enabled" $policy.AuditState
-		Assert-AreEqual 3 $policy.AuditActionGroup.Length
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
 		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
 		Assert-Null $policy.EventHubNamespace
 		
@@ -1776,30 +1711,26 @@ function Test-NewServerDiagnosticsAreCreatedOnNeed
 		# Remove old Diagnostics
 		Remove-AzDiagnosticSetting -ResourceId $resourceId -Name $settingsName
 		# Verify log analytics auditing policy is Disabled.
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -LogAnalytics
-		Assert-AreEqual "Disabled" $policy.AuditState
+		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
 		Assert-Null $policy.WorkspaceResourceId
 		
 		# Verify event hub auditing policy is enabled.
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
-		Assert-AreEqual "Enabled" $policy.AuditState
-		Assert-AreEqual 3 $policy.AuditActionGroup.Length
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
 		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
 		Assert-Null $policy.EventHubNamespace
 		
 		# Disable event hub auditing policy and verify it.
-		Set-AzSqlServerAuditPolicy -State Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHub
-		Assert-AreEqual "Disabled" $policy.AuditState
+		Set-AzSqlServerAuditPolicy -EventHubTargetState Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName
+		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
 		Assert-AreEqual 3 $policy.AuditActionGroup.Length
 		Assert-Null $policy.EventHubAuthorizationRuleResourceId
 		Assert-Null $policy.EventHubNamespace
 		
 		# Verify log analytics auditing policy is Disabled.
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -LogAnalytics
-		Assert-AreEqual "Disabled" $policy.AuditState
-		Assert-AreEqual 3 $policy.AuditActionGroup.Length
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
 		Assert-Null $policy.WorkspaceResourceId
 		
 		# Verify Diagnostic Settings do not exist.
@@ -1808,6 +1739,6 @@ function Test-NewServerDiagnosticsAreCreatedOnNeed
 	finally
 	{
 		# Cleanup
-		Remove-AuditPolicyTestEnvironment $testSuffix
+		Remove-BlobAuditingTestEnvironment $testSuffix
 	}
 }

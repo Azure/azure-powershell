@@ -194,5 +194,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
             return model;
         }
+
+        protected override ServerAuditPolicyModel PersistChanges(ServerAuditPolicyModel entity)
+        {
+            ModelAdapter.PersistAuditPolicyChanges(entity);
+            return null;
+        }
     }
 }

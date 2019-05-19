@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.AuditAction = AuditAction;
             }
 
-            if (AuditActionGroup != null && AuditActionGroup.Length != 0)
+            if (AuditActionGroup != null)
             {
                 model.AuditActionGroup = AuditActionGroup;
             }
@@ -204,6 +204,12 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             }
 
             return model;
+        }
+
+        protected override DatabaseAuditPolicyModel PersistChanges(DatabaseAuditPolicyModel entity)
+        {
+            ModelAdapter.PersistAuditPolicyChanges(entity);
+            return null;
         }
     }
 }
