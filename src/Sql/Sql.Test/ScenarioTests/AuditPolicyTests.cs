@@ -209,5 +209,19 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-NewServerAuditPolicyDiagnosticsAreCreatedOnNeed");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveAuditPolicyOnServer()
+        {
+            RunPowerShellTest("Test-RemoveAuditPolicyOnServer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveAuditPolicyOnDatabase()
+        {
+            RunPowerShellTest("Test-RemoveAuditPolicyOnDatabase");
+        }
     }
 }

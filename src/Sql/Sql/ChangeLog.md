@@ -20,6 +20,13 @@
 ## Upcoming Release
 * Add DnsZonePartner Parameter for New-AzureSqlInstance cmdlet to support AutoDr for Managed Instance.
 * Deprecating Get-AzSqlDatabaseSecureConnectionPolicy cmdlet
+* Support Azure SQL Server\Database Auditing with new cmdlets.
+	- Set-AzSqlServerAuditPolicy
+	- Get-AzSqlServerAuditPolicy
+	- Remove-AzSqlServerAuditPolicy
+	- Set-AzSqlDatabaseAuditPolicy
+	- Get-AzSqlDatabaseAuditPolicy
+	- Remove-AzSqlDatabaseAuditPolicy
 
 ## Version 1.10.0
 * Rename Advanced Threat Protection cmdlets to Advanced Data Security and enable Vulnerability Assessment by default
