@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             base.ApplyUserInputToModel(model);
             model.AuditState = State == SecurityConstants.Enabled ? AuditStateType.Enabled : AuditStateType.Disabled;
 
-            if (AuditActionGroup != null && AuditActionGroup.Length != 0)
+            if (AuditActionGroup != null)
             {
                 model.AuditActionGroup = AuditActionGroup;
             }
