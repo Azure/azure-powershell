@@ -1082,6 +1082,157 @@ function Test-AuditPolicyOnDatabase
 
 <#
 .SYNOPSIS
+Test removal of all auditing settings on a database
+#>
+function Test-RemoveAuditPolicyOnDatabase
+{
+	# Setup
+	$testSuffix = getAssetName
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
+	$subscriptionId = (Get-AzContext).Subscription.Id
+	$workspaceResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $params.rgname + "/providers/microsoft.operationalinsights/workspaces/" + $params.workspaceName
+	$eventHubAuthorizationRuleResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $params.rgname + "/providers/microsoft.EventHub/namespaces/" + $params.eventHubNamespace + "/authorizationrules/RootManageSharedAccessKey"
+	$resourceId = "/subscriptions/" + $subscriptionId + "/resourceGroups/" + $params.rgname + "/providers/Microsoft.Sql/servers/" + $params.serverName + "/databases/" + $params.databaseName
+
+	try
+	{
+		# Verify Diagnostic Settings do not exist.
+		Assert-AreEqual 0 (Get-AzDiagnosticSetting -ResourceId $resourceId).count
+
+		# Verify storage auditing policy is Disabled.
+		$policy = Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseAuditPolicy
+		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
+		Assert-AreEqual 0 $policy.AuditActionGroup.Length
+		Assert-AreEqual 0 $policy.AuditAction.Length
+		Assert-Null $policy.PredicateExpression
+		Assert-Null $policy.StorageAccountName
+		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
+		Assert-AreEqual "Primary" $policy.StorageKeyType
+		Assert-AreEqual 0 $policy.RetentionInDays
+		
+		# Verify event hub auditing policy is disabled.
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
+		Assert-Null $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify log analytics auditing policy is disabled.
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
+		Assert-Null $policy.WorkspaceResourceId
+		
+		# Enable storage auditing policy and verify it.
+		Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -StorageAccountName $params.storageAccount -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
+		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
+		Assert-AreEqual 2 $policy.AuditActionGroup.Length
+		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP)}
+		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
+		Assert-AreEqual 0 $policy.AuditAction.Length
+		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual $params.storageAccount $policy.StorageAccountName
+		Assert-AreEqual $subscriptionId $policy.StorageAccountSubscriptionId
+		Assert-AreEqual "Primary" $policy.StorageKeyType
+		Assert-AreEqual 8 $policy.RetentionInDays
+		
+		# Verify event hub auditing policy is disabled.
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
+		Assert-Null $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify log analytics auditing policy is disabled.
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
+		Assert-Null $policy.WorkspaceResourceId
+		
+		# Verify Diagnostic Settings do not exist.
+		Assert-AreEqual 0 (Get-AzDiagnosticSetting -ResourceId $resourceId).count
+
+		# Enable event hub auditing policy and verify it
+		Set-AzSqlDatabaseAuditPolicy -EventHubTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
+		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
+		Assert-AreEqual 2 $policy.AuditActionGroup.Length
+		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP)}
+		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
+		Assert-AreEqual 0 $policy.AuditAction.Length
+		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify storage auditing policy is enabled.
+		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
+		Assert-AreEqual $params.storageAccount $policy.StorageAccountName
+		Assert-AreEqual $subscriptionId $policy.StorageAccountSubscriptionId
+		Assert-AreEqual "Primary" $policy.StorageKeyType
+		Assert-AreEqual 8 $policy.RetentionInDays
+		
+		# Verify log analytics auditing policy is disabled.
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
+		Assert-Null $policy.WorkspaceResourceId
+		
+		# Verify Diagnostic Settings exist.
+		Assert-AreEqual 1 (Get-AzDiagnosticSetting -ResourceId $resourceId).count
+
+		# Enable log analytics auditing policy and verify it
+		Set-AzSqlDatabaseAuditPolicy -LogAnalyticsTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -WorkspaceResourceId $workspaceResourceId
+		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual "Enabled" $policy.LogAnalyticsTargetState
+		Assert-AreEqual 2 $policy.AuditActionGroup.Length
+		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP)}
+		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
+		Assert-AreEqual 0 $policy.AuditAction.Length
+		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual $workspaceResourceId $policy.WorkspaceResourceId
+		
+		# Verify storage auditing policy is enabled.
+		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
+		Assert-AreEqual $params.storageAccount $policy.StorageAccountName
+		Assert-AreEqual $subscriptionId $policy.StorageAccountSubscriptionId
+		Assert-AreEqual "Primary" $policy.StorageKeyType
+		Assert-AreEqual 8 $policy.RetentionInDays
+		
+		# Verify event hub auditing policy is enabled.
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
+		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify Diagnostic Settings exist.
+		Assert-AreEqual 1 (Get-AzDiagnosticSetting -ResourceId $resourceId).count
+		
+		# Disable auditing policy and verify it.
+		Remove-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
+		Assert-AreEqual 2 $policy.AuditActionGroup.Length
+		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP)}
+		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
+		Assert-AreEqual 0 $policy.AuditAction.Length
+		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-Null $policy.StorageAccountName
+		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
+		Assert-AreEqual "Primary" $policy.StorageKeyType
+		Assert-AreEqual 0 $policy.RetentionInDays
+		
+		# Verify event hub auditing policy is disabled.
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
+		Assert-Null $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify log analytics auditing policy is disabled.
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
+		Assert-Null $policy.WorkspaceResourceId
+		
+		# Verify Diagnostic Settings do not exist.
+		Assert-AreEqual 0 (Get-AzDiagnosticSetting -ResourceId $resourceId).count
+	}
+	finally
+	{
+		# Cleanup
+		Remove-BlobAuditingTestEnvironment $testSuffix
+	}
+}
+
+<#
+.SYNOPSIS
 Test for all auditing settings on a server
 #>
 function Test-AuditPolicyOnServer
@@ -1277,6 +1428,151 @@ function Test-AuditPolicyOnServer
 	}
 }
 
+<#
+.SYNOPSIS
+Test removal of all auditing settings on a server
+#>
+function Test-RemoveAuditPolicyOnServer
+{
+	# Setup
+	$testSuffix = getAssetName
+	Create-BlobAuditingTestEnvironment $testSuffix
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
+	$subscriptionId = (Get-AzContext).Subscription.Id
+	$workspaceResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $params.rgname + "/providers/microsoft.operationalinsights/workspaces/" + $params.workspaceName
+	$eventHubAuthorizationRuleResourceId = "/subscriptions/" + $subscriptionId + "/resourcegroups/" + $params.rgname + "/providers/microsoft.EventHub/namespaces/" + $params.eventHubNamespace + "/authorizationrules/RootManageSharedAccessKey"
+	$resourceId = "/subscriptions/" + $subscriptionId + "/resourceGroups/" + $params.rgname + "/providers/Microsoft.Sql/servers/" + $params.serverName + "/databases/master"
+
+	try
+	{
+		# Verify Diagnostic Settings do not exist.
+		Assert-AreEqual 0 (Get-AzDiagnosticSetting -ResourceId $resourceId).count
+
+		# Verify storage auditing policy is disabled.
+		$policy = Get-AzSqlServer -ResourceGroupName $params.rgname -ServerName $params.serverName | Get-AzSqlServerAuditPolicy
+		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
+		Assert-AreEqual 0 $policy.AuditActionGroup.Length
+		Assert-Null $policy.StorageAccountName
+		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
+		Assert-AreEqual "Primary" $policy.StorageKeyType
+		Assert-AreEqual 0 $policy.RetentionInDays
+		
+		# Verify event hub auditing policy is disabled.
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
+		Assert-Null $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify log analytics auditing policy is disabled.
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
+		Assert-Null $policy.WorkspaceResourceId
+		
+		# Enable storage auditing policy and verify it.
+		Get-AzSqlServer -ResourceGroupName $params.rgname -ServerName $params.serverName | Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -StorageAccountName $params.storageAccount -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
+		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
+		Assert-AreEqual 2 $policy.AuditActionGroup.Length
+		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP)}
+		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
+		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual $params.storageAccount $policy.StorageAccountName
+		Assert-AreEqual $subscriptionId $policy.StorageAccountSubscriptionId
+		Assert-AreEqual "Primary" $policy.StorageKeyType
+		Assert-AreEqual 8 $policy.RetentionInDays
+		
+		# Verify event hub auditing policy is disabled.
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
+		Assert-Null $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify log analytics auditing policy is disabled.
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
+		Assert-Null $policy.WorkspaceResourceId
+		
+		# Verify Diagnostic Settings do not exist.
+		Assert-AreEqual 0 (Get-AzDiagnosticSetting -ResourceId $resourceId).count
+
+		# Enable event hub auditing policy and verify it
+		Set-AzSqlServerAuditPolicy -EventHubTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
+		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
+		Assert-AreEqual 2 $policy.AuditActionGroup.Length
+		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP)}
+		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
+		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify storage auditing policy is enabled.
+		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
+		Assert-AreEqual $params.storageAccount $policy.StorageAccountName
+		Assert-AreEqual $subscriptionId $policy.StorageAccountSubscriptionId
+		Assert-AreEqual "Primary" $policy.StorageKeyType
+		Assert-AreEqual 8 $policy.RetentionInDays
+		
+		# Verify log analytics auditing policy is disabled.
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
+		Assert-Null $policy.WorkspaceResourceId
+		
+		# Verify Diagnostic Settings exist.
+		Assert-AreEqual 1 (Get-AzDiagnosticSetting -ResourceId $resourceId).count
+
+		# Enable log analytics auditing policy and verify it
+		Set-AzSqlServerAuditPolicy -LogAnalyticsTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -WorkspaceResourceId $workspaceResourceId
+		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Enabled" $policy.LogAnalyticsTargetState
+		Assert-AreEqual 2 $policy.AuditActionGroup.Length
+		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP)}
+		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
+		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-AreEqual $workspaceResourceId $policy.WorkspaceResourceId
+		
+		# Verify storage auditing policy is enabled.
+		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
+		Assert-AreEqual $params.storageAccount $policy.StorageAccountName
+		Assert-AreEqual $subscriptionId $policy.StorageAccountSubscriptionId
+		Assert-AreEqual "Primary" $policy.StorageKeyType
+		Assert-AreEqual 8 $policy.RetentionInDays
+		
+		# Verify event hub auditing policy is enabled.
+		Assert-AreEqual "Enabled" $policy.EventHubTargetState
+		Assert-AreEqual $eventHubAuthorizationRuleResourceId $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify Diagnostic Settings exist.
+		Assert-AreEqual 1 (Get-AzDiagnosticSetting -ResourceId $resourceId).count
+		
+		# Disable audit policy and verify it.
+		Remove-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
+		Assert-AreEqual 2 $policy.AuditActionGroup.Length
+		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP)}
+		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
+		Assert-AreEqual "" $policy.PredicateExpression
+		Assert-Null $policy.StorageAccountName
+		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
+		Assert-AreEqual "Primary" $policy.StorageKeyType
+		Assert-AreEqual 0 $policy.RetentionInDays
+		
+		# Verify event hub auditing policy is disabled.
+		Assert-AreEqual "Disabled" $policy.EventHubTargetState
+		Assert-Null $policy.EventHubAuthorizationRuleResourceId
+		Assert-Null $policy.EventHubNamespace
+		
+		# Verify log analytics auditing policy is disabled.
+		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
+		Assert-Null $policy.WorkspaceResourceId
+		
+		# Verify Diagnostic Settings do not exist.
+		Assert-AreEqual 0 (Get-AzDiagnosticSetting -ResourceId $resourceId).count
+	}
+	finally
+	{
+		# Cleanup
+		Remove-BlobAuditingTestEnvironment $testSuffix
+	}
+}
 <#
 .SYNOPSIS
 Tests that new diagnostic settings are created when needed while enabling or disabling policy.
