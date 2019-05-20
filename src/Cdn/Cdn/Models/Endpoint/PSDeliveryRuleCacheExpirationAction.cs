@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.Cdn.Models.Endpoint
 {
     public class PSDeliveryRuleCacheExpirationAction: PSDeliveryRuleAction
     {
-        public PSCacheExpirationActionParameters Parameters { get; set; }
+        public string CacheBehavior { get; set; }
+
+        public string CacheDuration { get; set; }
     }
 }
