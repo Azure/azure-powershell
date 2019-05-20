@@ -141,7 +141,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
-        {
+        {           
+            // When the input context is Oauth bases, can't generate normal SAS, but UserDelegationSas
+            bool generateUserDelegationSas = false;
+            if (Channel != null && Channel.StorageContext != null && Channel.StorageContext.StorageAccount.Credentials.IsToken)
+            {
+                generateUserDelegationSas = true;
+                WriteVerbose("Will generate User Delegation SAS, since input Storage Context is OAuth based.");
+                if (!string.IsNullOrEmpty(accessPolicyIdentifier))
+                {
+                    throw new ArgumentException("When input Storage Context is OAuth based, Saved Policy is not supported.", "Policy");
+                }
+            }
+
             CloudBlob blob = null;
 
             if (ParameterSetName == BlobNamePipelineParmeterSetWithPermission ||
@@ -157,7 +169,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             SharedAccessBlobPolicy accessPolicy = new SharedAccessBlobPolicy();
             bool shouldSetExpiryTime = SasTokenHelper.ValidateContainerAccessPolicy(Channel, blob.Container.Name, accessPolicy, accessPolicyIdentifier);
             SetupAccessPolicy(accessPolicy, shouldSetExpiryTime);
-            string sasToken = GetBlobSharedAccessSignature(blob, accessPolicy, accessPolicyIdentifier, Protocol, Util.SetupIPAddressOrRangeForSAS(IPAddressOrRange));
+            string sasToken = GetBlobSharedAccessSignature(blob, accessPolicy, accessPolicyIdentifier, Protocol, Util.SetupIPAddressOrRangeForSAS(IPAddressOrRange), generateUserDelegationSas);
 
             if (FullUri)
             {
@@ -187,10 +199,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="accessPolicy">SharedAccessBlobPolicy object</param>
         /// <param name="policyIdentifier">The existing policy identifier.</param>
         /// <returns></returns>
-        private string GetBlobSharedAccessSignature(CloudBlob blob, SharedAccessBlobPolicy accessPolicy, string policyIdentifier, SharedAccessProtocol? protocol, IPAddressOrRange iPAddressOrRange)
+        private string GetBlobSharedAccessSignature(CloudBlob blob, SharedAccessBlobPolicy accessPolicy, string policyIdentifier, SharedAccessProtocol? protocol, IPAddressOrRange iPAddressOrRange, bool generateUserDelegationSas)
         {
             CloudBlobContainer container = blob.Container;
-            return blob.GetSharedAccessSignature(accessPolicy, null, policyIdentifier, protocol, iPAddressOrRange);
+            if (generateUserDelegationSas)
+            {
+                UserDelegationKey userDelegationKey = Channel.GetUserDelegationKey(accessPolicy.SharedAccessStartTime, accessPolicy.SharedAccessExpiryTime, null, null, OperationContext);
+                return blob.GetUserDelegationSharedAccessSignature(userDelegationKey, accessPolicy, null, protocol, iPAddressOrRange);
+            }
+            else
+            {
+                return blob.GetSharedAccessSignature(accessPolicy, null, policyIdentifier, protocol, iPAddressOrRange);
+            }
         }
 
         /// <summary>

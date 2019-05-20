@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.1
+* Support generate Blob/Constainer Idenity based SAS token with Storage Context based on Oauth authentication
+    - New-AzStorageContainerSASToken
+    - New-AzStorageBlobSASToken
+* Support revoke Storage Account User Delegation Keys, so all Idenity SAS tokens are revoked
+    - Revoke-AzStorageAccountUserDelegationKeys
+
 ## Version 1.3.0
 * Upgrade to Storage Client Library 10.0.1 (the namespace of all objects from this SDK change from "Microsoft.WindowsAzure.Storage.*" to "Microsoft.Azure.Storage.*")
 * Upgrade to Microsoft.Azure.Management.Storage 11.0.0, to support new API version 2019-04-01.

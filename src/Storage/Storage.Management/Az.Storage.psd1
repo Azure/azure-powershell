@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.3.0'
+ModuleVersion = '1.3.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -163,7 +163,8 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
     'Update-AzStorageBlobServiceProperty',
     'Get-AzStorageBlobServiceProperty',
     'Enable-AzStorageBlobDeleteRetentionPolicy',
-    'Disable-AzStorageBlobDeleteRetentionPolicy'
+    'Disable-AzStorageBlobDeleteRetentionPolicy',
+    'Revoke-AzStorageAccountUserDelegationKeys'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -203,14 +204,11 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Upgrade to Storage Client Library 10.0.1 (the namespace of all objects from this SDK change from ''Microsoft.WindowsAzure.Storage.*'' to ''Microsoft.Azure.Storage.*'')
-* Upgrade to Microsoft.Azure.Management.Storage 11.0.0, to support new API version 2019-04-01.
-* The default Storage account Kind in Create Storage account change from ''Storage'' to ''StorageV2''
-    - New-AzStorageAccount
-* Change the Storage account cmdlet output Sku.Name to be aligned with input SkuName by add ''-'', like ''StandardLRS'' change to ''Standard_LRS''
-    - New-AzStorageAccount
-    - Get-AzStorageAccount
-    - Set-AzStorageAccount'
+        ReleaseNotes = '* Support generate Blob/Constainer Idenity based SAS token with Storage Context based on Oauth authentication
+    - New-AzStorageContainerSASToken
+    - New-AzStorageBlobSASToken
+* Support revoke Storage Account User Delegation Keys, so all Idenity SAS tokens are revoked
+    - Revoke-AzStorageAccountUserDelegationKeys'
 
         # Prerelease string of this module
         Prerelease = 'preview'
