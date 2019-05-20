@@ -55,6 +55,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+DnsZone                  : ad35cna0mw
 ```
 
 This command gets information about all instances assigned to the resource group ResourceGroup01.
@@ -76,6 +77,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+DnsZone                  : ad35cna0mw
 ```
 
 This command gets information about the instance named managedInstance1.
@@ -97,6 +99,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+DnsZone                  : ad35cna0mw
 
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance2
@@ -112,6 +115,7 @@ SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 LicenseType              : BasePrice
 VCores                   : 8
 StorageSizeInGB          : 512
+DnsZone                  : ad35cna0mw
 ```
 
 This command gets information about all instances assigned to the resource group ResourceGroup01 that start with "managedInstance".
