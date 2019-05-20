@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -296,7 +296,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -631,7 +631,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -903,7 +903,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -1218,10 +1218,10 @@
       "AliasList": []
     },
     {
-      "VerbName": "Update",
+      "VerbName": "Set",
       "NounName": "AzPrivateDnsZone",
-      "Name": "Update-AzPrivateDnsZone",
-      "ClassName": "Microsoft.Azure.Commands.PrivateDns.Zones.UpdateAzurePrivateDnsZone",
+      "Name": "Set-AzPrivateDnsZone",
+      "ClassName": "Microsoft.Azure.Commands.PrivateDns.Zones.SetAzurePrivateDnsZone",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
@@ -1231,7 +1231,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -1349,7 +1349,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -1695,7 +1695,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -1931,7 +1931,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RegistrationEnabled": "System.Boolean",
               "Tags": "System.Collections.Hashtable",
@@ -2210,7 +2210,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RegistrationEnabled": "System.Boolean",
               "Tags": "System.Collections.Hashtable",
@@ -2343,123 +2343,16 @@
           "Name": "VirtualNetwork",
           "AliasList": [],
           "Type": {
-            "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-            "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.VirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.VirtualNetwork, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.Management.Internal.Network.Common",
+            "Name": "Microsoft.Azure.Management.Internal.Network.Common.IVirtualNetwork",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Common.IVirtualNetwork, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "AddressSpace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.AddressSpace",
-              "DhcpOptions": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.DhcpOptions",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Subnets": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.Subnet]",
-              "VirtualNetworkPeerings": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.VirtualNetworkPeering]",
-              "EnableDdosProtection": "System.Nullable`1[System.Boolean]",
-              "EnableVmProtection": "System.Nullable`1[System.Boolean]",
-              "ResourceGuid": "System.String",
-              "ProvisioningState": "System.String",
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Name": "System.String",
-              "Type": "System.String",
-              "Location": "System.String"
+              "Id": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [
-              {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
-                "Name": "Equals",
-                "Parameters": [
-                  {
-                    "Name": "obj",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  }
-                ],
-                "ReturnType": "System.Boolean"
-              },
-              {
-                "Name": "GetHashCode",
-                "Parameters": [],
-                "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "GetType",
-                "Parameters": [],
-                "ReturnType": "System.Type"
-              }
-            ],
-            "Constructors": [
-              {
-                "Name": "",
-                "ReturnType": null,
-                "Parameters": []
-              },
-              {
-                "Name": "",
-                "ReturnType": null,
-                "Parameters": [
-                  {
-                    "Name": "id",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "name",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "type",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "location",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "tags",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "addressSpace",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "dhcpOptions",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "subnets",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "virtualNetworkPeerings",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "resourceGuid",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "provisioningState",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "enableDdosProtection",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "enableVmProtection",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "etag",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  }
-                ]
-              }
-            ]
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2897,123 +2790,16 @@
                 "Name": "VirtualNetwork",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-                  "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.VirtualNetwork",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.VirtualNetwork, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.Management.Internal.Network.Common",
+                  "Name": "Microsoft.Azure.Management.Internal.Network.Common.IVirtualNetwork",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Common.IVirtualNetwork, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "AddressSpace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.AddressSpace",
-                    "DhcpOptions": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.DhcpOptions",
-                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "Subnets": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.Subnet]",
-                    "VirtualNetworkPeerings": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.VirtualNetworkPeering]",
-                    "EnableDdosProtection": "System.Nullable`1[System.Boolean]",
-                    "EnableVmProtection": "System.Nullable`1[System.Boolean]",
-                    "ResourceGuid": "System.String",
-                    "ProvisioningState": "System.String",
-                    "Etag": "System.String",
-                    "Id": "System.String",
-                    "Name": "System.String",
-                    "Type": "System.String",
-                    "Location": "System.String"
+                    "Id": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": [],
-                  "Methods": [
-                    {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "Equals",
-                      "Parameters": [
-                        {
-                          "Name": "obj",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Boolean"
-                    },
-                    {
-                      "Name": "GetHashCode",
-                      "Parameters": [],
-                      "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "GetType",
-                      "Parameters": [],
-                      "ReturnType": "System.Type"
-                    }
-                  ],
-                  "Constructors": [
-                    {
-                      "Name": "",
-                      "ReturnType": null,
-                      "Parameters": []
-                    },
-                    {
-                      "Name": "",
-                      "ReturnType": null,
-                      "Parameters": [
-                        {
-                          "Name": "id",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        },
-                        {
-                          "Name": "name",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        },
-                        {
-                          "Name": "type",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        },
-                        {
-                          "Name": "location",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        },
-                        {
-                          "Name": "tags",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        },
-                        {
-                          "Name": "addressSpace",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        },
-                        {
-                          "Name": "dhcpOptions",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        },
-                        {
-                          "Name": "subnets",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        },
-                        {
-                          "Name": "virtualNetworkPeerings",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        },
-                        {
-                          "Name": "resourceGuid",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        },
-                        {
-                          "Name": "provisioningState",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        },
-                        {
-                          "Name": "enableDdosProtection",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        },
-                        {
-                          "Name": "enableVmProtection",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        },
-                        {
-                          "Name": "etag",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ]
-                    }
-                  ]
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3276,7 +3062,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RegistrationEnabled": "System.Boolean",
               "Tags": "System.Collections.Hashtable",
@@ -3571,7 +3357,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RegistrationEnabled": "System.Boolean",
                     "Tags": "System.Collections.Hashtable",
@@ -3885,10 +3671,10 @@
       "AliasList": []
     },
     {
-      "VerbName": "Update",
+      "VerbName": "Set",
       "NounName": "AzPrivateDnsVirtualNetworkLink",
-      "Name": "Update-AzPrivateDnsVirtualNetworkLink",
-      "ClassName": "Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks.UpdateAzurePrivateDnsVirtualNetworkLink",
+      "Name": "Set-AzPrivateDnsVirtualNetworkLink",
+      "ClassName": "Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks.SetAzurePrivateDnsVirtualNetworkLink",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
@@ -3898,7 +3684,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RegistrationEnabled": "System.Boolean",
               "Tags": "System.Collections.Hashtable",
@@ -4015,7 +3801,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RegistrationEnabled": "System.Boolean",
               "Tags": "System.Collections.Hashtable",
@@ -4356,7 +4142,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsVirtualNetworkLink, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RegistrationEnabled": "System.Boolean",
                     "Tags": "System.Collections.Hashtable",
@@ -4761,7 +4547,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -4828,7 +4614,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -5131,7 +4917,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -5271,7 +5057,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -5411,7 +5197,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -5575,7 +5361,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -5715,7 +5501,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -5855,7 +5641,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -6067,7 +5853,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -6207,7 +5993,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -6330,7 +6116,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -6433,7 +6219,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -6851,7 +6637,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -7014,7 +6800,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -7416,7 +7202,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -7519,7 +7305,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -7759,7 +7545,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase",
             "GenericTypeArguments": [],
@@ -8065,7 +7851,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase",
                   "GenericTypeArguments": [],
@@ -8157,7 +7943,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -8409,7 +8195,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase",
                   "GenericTypeArguments": [],
@@ -8708,7 +8494,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase",
                   "GenericTypeArguments": [],
@@ -8983,7 +8769,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase[], Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase",
                   "GenericTypeArguments": [],
@@ -9082,7 +8868,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -10009,7 +9795,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -10076,7 +9862,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -10379,7 +10165,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -10519,7 +10305,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -10659,7 +10445,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -10823,7 +10609,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -10963,7 +10749,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -11103,7 +10889,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -11315,7 +11101,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -11455,7 +11241,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -11633,7 +11419,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -11696,7 +11482,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -12225,7 +12011,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsZone, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
@@ -12495,7 +12281,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -12813,10 +12599,10 @@
       "AliasList": []
     },
     {
-      "VerbName": "Update",
+      "VerbName": "Set",
       "NounName": "AzPrivateDnsRecordSet",
-      "Name": "Update-AzPrivateDnsRecordSet",
-      "ClassName": "Microsoft.Azure.Commands.PrivateDns.Records.UpdateAzurePrivateDnsRecordSet",
+      "Name": "Set-AzPrivateDnsRecordSet",
+      "ClassName": "Microsoft.Azure.Commands.PrivateDns.Records.SetAzurePrivateDnsRecordSet",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
@@ -12826,7 +12612,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -12893,7 +12679,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
             "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
               "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -13016,7 +12802,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
                   "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordSet, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "RecordType": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
                     "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
@@ -13513,2242 +13299,6 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.AddressSpace": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.AddressSpace",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.AddressSpace, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "AddressPrefixes": "System.Collections.Generic.IList`1[System.String]"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "addressPrefixes",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.DhcpOptions": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.DhcpOptions",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.DhcpOptions, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "DnsServers": "System.Collections.Generic.IList`1[System.String]"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "dnsServers",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.Subnet]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.Subnet]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.Subnet, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.Subnet"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.Subnet": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.Subnet",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.Subnet, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "NetworkSecurityGroup": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkSecurityGroup",
-        "RouteTable": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.RouteTable",
-        "IpConfigurations": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.IPConfiguration]",
-        "ResourceNavigationLinks": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ResourceNavigationLink]",
-        "ServiceEndpoints": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ServiceEndpointPropertiesFormat]",
-        "AddressPrefix": "System.String",
-        "ProvisioningState": "System.String",
-        "Name": "System.String",
-        "Etag": "System.String",
-        "Id": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "addressPrefix",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "networkSecurityGroup",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "routeTable",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "serviceEndpoints",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "ipConfigurations",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "resourceNavigationLinks",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provisioningState",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "etag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkSecurityGroup": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkSecurityGroup",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkSecurityGroup, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "NetworkInterfaces": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkInterface]",
-        "SecurityRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.SecurityRule]",
-        "DefaultSecurityRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.SecurityRule]",
-        "Subnets": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.Subnet]",
-        "ResourceGuid": "System.String",
-        "ProvisioningState": "System.String",
-        "Etag": "System.String",
-        "Id": "System.String",
-        "Name": "System.String",
-        "Type": "System.String",
-        "Location": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "type",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "location",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "tags",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "securityRules",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "defaultSecurityRules",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "networkInterfaces",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "subnets",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "resourceGuid",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provisioningState",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "etag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkInterface]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkInterface]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkInterface, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkInterface"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkInterface": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkInterface",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkInterface, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "DnsSettings": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkInterfaceDnsSettings",
-        "NetworkSecurityGroup": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkSecurityGroup",
-        "VirtualMachine": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.SubResource",
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "IpConfigurations": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkInterfaceIPConfiguration]",
-        "Primary": "System.Nullable`1[System.Boolean]",
-        "EnableAcceleratedNetworking": "System.Nullable`1[System.Boolean]",
-        "EnableIPForwarding": "System.Nullable`1[System.Boolean]",
-        "MacAddress": "System.String",
-        "ResourceGuid": "System.String",
-        "ProvisioningState": "System.String",
-        "Etag": "System.String",
-        "Id": "System.String",
-        "Name": "System.String",
-        "Type": "System.String",
-        "Location": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "type",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "location",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "tags",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "virtualMachine",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "networkSecurityGroup",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "ipConfigurations",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "dnsSettings",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "macAddress",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "primary",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "enableAcceleratedNetworking",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "enableIPForwarding",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "resourceGuid",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provisioningState",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "etag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkInterfaceDnsSettings": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkInterfaceDnsSettings",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkInterfaceDnsSettings, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "DnsServers": "System.Collections.Generic.IList`1[System.String]",
-        "AppliedDnsServers": "System.Collections.Generic.IList`1[System.String]",
-        "InternalDnsNameLabel": "System.String",
-        "InternalFqdn": "System.String",
-        "InternalDomainNameSuffix": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "dnsServers",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "appliedDnsServers",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "internalDnsNameLabel",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "internalFqdn",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "internalDomainNameSuffix",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.SubResource": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.SubResource",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.SubResource, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Id": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkInterfaceIPConfiguration]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkInterfaceIPConfiguration]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkInterfaceIPConfiguration, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkInterfaceIPConfiguration"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkInterfaceIPConfiguration": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkInterfaceIPConfiguration",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkInterfaceIPConfiguration, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "PublicIPAddress": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.PublicIPAddress",
-        "Subnet": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.Subnet",
-        "ApplicationGatewayBackendAddressPools": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationGatewayBackendAddressPool]",
-        "ApplicationSecurityGroups": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationSecurityGroup]",
-        "LoadBalancerBackendAddressPools": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.BackendAddressPool]",
-        "LoadBalancerInboundNatRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.InboundNatRule]",
-        "Primary": "System.Nullable`1[System.Boolean]",
-        "PrivateIPAddress": "System.String",
-        "PrivateIPAllocationMethod": "System.String",
-        "PrivateIPAddressVersion": "System.String",
-        "ProvisioningState": "System.String",
-        "Name": "System.String",
-        "Etag": "System.String",
-        "Id": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "applicationGatewayBackendAddressPools",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "loadBalancerBackendAddressPools",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "loadBalancerInboundNatRules",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "privateIPAddress",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "privateIPAllocationMethod",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "privateIPAddressVersion",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "subnet",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "primary",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "publicIPAddress",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "applicationSecurityGroups",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provisioningState",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "etag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.PublicIPAddress": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.PublicIPAddress",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.PublicIPAddress, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "IpConfiguration": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.IPConfiguration",
-        "DnsSettings": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.PublicIPAddressDnsSettings",
-        "Sku": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.PublicIPAddressSku",
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "Zones": "System.Collections.Generic.IList`1[System.String]",
-        "IdleTimeoutInMinutes": "System.Nullable`1[System.Int32]",
-        "PublicIPAllocationMethod": "System.String",
-        "PublicIPAddressVersion": "System.String",
-        "IpAddress": "System.String",
-        "ResourceGuid": "System.String",
-        "ProvisioningState": "System.String",
-        "Etag": "System.String",
-        "Id": "System.String",
-        "Name": "System.String",
-        "Type": "System.String",
-        "Location": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "type",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "location",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "tags",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "sku",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "publicIPAllocationMethod",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "publicIPAddressVersion",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "ipConfiguration",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "dnsSettings",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "ipAddress",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "idleTimeoutInMinutes",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "resourceGuid",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provisioningState",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "etag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "zones",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.IPConfiguration": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.IPConfiguration",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.IPConfiguration, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "PublicIPAddress": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.PublicIPAddress",
-        "Subnet": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.Subnet",
-        "PrivateIPAddress": "System.String",
-        "PrivateIPAllocationMethod": "System.String",
-        "ProvisioningState": "System.String",
-        "Name": "System.String",
-        "Etag": "System.String",
-        "Id": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "privateIPAddress",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "privateIPAllocationMethod",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "subnet",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "publicIPAddress",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provisioningState",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "etag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.PublicIPAddressDnsSettings": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.PublicIPAddressDnsSettings",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.PublicIPAddressDnsSettings, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "DomainNameLabel": "System.String",
-        "Fqdn": "System.String",
-        "ReverseFqdn": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "domainNameLabel",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "fqdn",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "reverseFqdn",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.PublicIPAddressSku": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.PublicIPAddressSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.PublicIPAddressSku, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Name": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "System.Nullable`1[System.Int32]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[System.Int32]",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.Int32"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationGatewayBackendAddressPool]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationGatewayBackendAddressPool]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationGatewayBackendAddressPool, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationGatewayBackendAddressPool"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationGatewayBackendAddressPool": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationGatewayBackendAddressPool",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationGatewayBackendAddressPool, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "BackendAddresses": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationGatewayBackendAddress]",
-        "BackendIPConfigurations": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkInterfaceIPConfiguration]",
-        "ProvisioningState": "System.String",
-        "Name": "System.String",
-        "Etag": "System.String",
-        "Type": "System.String",
-        "Id": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "backendIPConfigurations",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "backendAddresses",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provisioningState",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "etag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "type",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationGatewayBackendAddress]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationGatewayBackendAddress]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationGatewayBackendAddress, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationGatewayBackendAddress"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationGatewayBackendAddress": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationGatewayBackendAddress",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationGatewayBackendAddress, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Fqdn": "System.String",
-        "IpAddress": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "fqdn",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "ipAddress",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationSecurityGroup]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationSecurityGroup]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationSecurityGroup, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationSecurityGroup"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationSecurityGroup": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationSecurityGroup",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationSecurityGroup, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "ResourceGuid": "System.String",
-        "ProvisioningState": "System.String",
-        "Etag": "System.String",
-        "Id": "System.String",
-        "Name": "System.String",
-        "Type": "System.String",
-        "Location": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "type",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "location",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "tags",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "resourceGuid",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provisioningState",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "etag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.BackendAddressPool]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.BackendAddressPool]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.BackendAddressPool, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.BackendAddressPool"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.BackendAddressPool": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.BackendAddressPool",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.BackendAddressPool, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "OutboundNatRule": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.SubResource",
-        "BackendIPConfigurations": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkInterfaceIPConfiguration]",
-        "LoadBalancingRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.SubResource]",
-        "ProvisioningState": "System.String",
-        "Name": "System.String",
-        "Etag": "System.String",
-        "Id": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "backendIPConfigurations",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "loadBalancingRules",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "outboundNatRule",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provisioningState",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "etag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.SubResource]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.SubResource]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.SubResource, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.SubResource"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.InboundNatRule]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.InboundNatRule]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.InboundNatRule, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.InboundNatRule"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.InboundNatRule": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.InboundNatRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.InboundNatRule, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "BackendIPConfiguration": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.NetworkInterfaceIPConfiguration",
-        "FrontendIPConfiguration": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.SubResource",
-        "EnableFloatingIP": "System.Nullable`1[System.Boolean]",
-        "FrontendPort": "System.Nullable`1[System.Int32]",
-        "BackendPort": "System.Nullable`1[System.Int32]",
-        "IdleTimeoutInMinutes": "System.Nullable`1[System.Int32]",
-        "Protocol": "System.String",
-        "ProvisioningState": "System.String",
-        "Name": "System.String",
-        "Etag": "System.String",
-        "Id": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "frontendIPConfiguration",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "backendIPConfiguration",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "protocol",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "frontendPort",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "backendPort",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "idleTimeoutInMinutes",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "enableFloatingIP",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provisioningState",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "etag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "System.Nullable`1[System.Boolean]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[System.Boolean]",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.Boolean"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.SecurityRule]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.SecurityRule]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.SecurityRule, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.SecurityRule"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.SecurityRule": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.SecurityRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.SecurityRule, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "DestinationApplicationSecurityGroups": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationSecurityGroup]",
-        "SourceApplicationSecurityGroups": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ApplicationSecurityGroup]",
-        "SourceAddressPrefixes": "System.Collections.Generic.IList`1[System.String]",
-        "DestinationAddressPrefixes": "System.Collections.Generic.IList`1[System.String]",
-        "DestinationPortRanges": "System.Collections.Generic.IList`1[System.String]",
-        "SourcePortRanges": "System.Collections.Generic.IList`1[System.String]",
-        "Priority": "System.Nullable`1[System.Int32]",
-        "Name": "System.String",
-        "ProvisioningState": "System.String",
-        "Direction": "System.String",
-        "Access": "System.String",
-        "Description": "System.String",
-        "DestinationAddressPrefix": "System.String",
-        "SourceAddressPrefix": "System.String",
-        "DestinationPortRange": "System.String",
-        "SourcePortRange": "System.String",
-        "Protocol": "System.String",
-        "Etag": "System.String",
-        "Id": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "Validate",
-          "Parameters": [],
-          "ReturnType": "System.Void"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "protocol",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "access",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "direction",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "description",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "sourcePortRange",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "destinationPortRange",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "sourceAddressPrefix",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "sourceAddressPrefixes",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "sourceApplicationSecurityGroups",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "destinationAddressPrefix",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "destinationAddressPrefixes",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "destinationApplicationSecurityGroups",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "sourcePortRanges",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "destinationPortRanges",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "priority",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provisioningState",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "etag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.RouteTable": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.RouteTable",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.RouteTable, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "Routes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.Route]",
-        "Subnets": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.Subnet]",
-        "DisableBgpRoutePropagation": "System.Nullable`1[System.Boolean]",
-        "ProvisioningState": "System.String",
-        "Etag": "System.String",
-        "Id": "System.String",
-        "Name": "System.String",
-        "Type": "System.String",
-        "Location": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "type",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "location",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "tags",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "routes",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "subnets",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "disableBgpRoutePropagation",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provisioningState",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "etag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.Route]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.Route]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.Route, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.Route"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.Route": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.Route",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.Route, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "AddressPrefix": "System.String",
-        "NextHopType": "System.String",
-        "NextHopIpAddress": "System.String",
-        "ProvisioningState": "System.String",
-        "Name": "System.String",
-        "Etag": "System.String",
-        "Id": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "Validate",
-          "Parameters": [],
-          "ReturnType": "System.Void"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "nextHopType",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "addressPrefix",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "nextHopIpAddress",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provisioningState",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "etag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.IPConfiguration]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.IPConfiguration]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.IPConfiguration, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.IPConfiguration"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ResourceNavigationLink]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ResourceNavigationLink]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ResourceNavigationLink, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ResourceNavigationLink"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ResourceNavigationLink": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ResourceNavigationLink",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ResourceNavigationLink, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "LinkedResourceType": "System.String",
-        "Link": "System.String",
-        "ProvisioningState": "System.String",
-        "Name": "System.String",
-        "Etag": "System.String",
-        "Id": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "linkedResourceType",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "link",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provisioningState",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "etag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ServiceEndpointPropertiesFormat]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ServiceEndpointPropertiesFormat]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ServiceEndpointPropertiesFormat, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ServiceEndpointPropertiesFormat"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ServiceEndpointPropertiesFormat": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ServiceEndpointPropertiesFormat",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.ServiceEndpointPropertiesFormat, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Locations": "System.Collections.Generic.IList`1[System.String]",
-        "Service": "System.String",
-        "ProvisioningState": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "service",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "locations",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provisioningState",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.VirtualNetworkPeering]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.VirtualNetworkPeering]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.VirtualNetworkPeering, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.VirtualNetworkPeering"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.VirtualNetworkPeering": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.VirtualNetworkPeering",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.VirtualNetworkPeering, Microsoft.Azure.PowerShell.Clients.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "RemoteAddressSpace": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.AddressSpace",
-        "RemoteVirtualNetwork": "Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models.SubResource",
-        "AllowVirtualNetworkAccess": "System.Nullable`1[System.Boolean]",
-        "AllowForwardedTraffic": "System.Nullable`1[System.Boolean]",
-        "AllowGatewayTransit": "System.Nullable`1[System.Boolean]",
-        "UseRemoteGateways": "System.Nullable`1[System.Boolean]",
-        "PeeringState": "System.String",
-        "ProvisioningState": "System.String",
-        "Name": "System.String",
-        "Etag": "System.String",
-        "Id": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "allowVirtualNetworkAccess",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "allowForwardedTraffic",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "allowGatewayTransit",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "useRemoteGateways",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "remoteVirtualNetwork",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "remoteAddressSpace",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "peeringState",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provisioningState",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "etag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
     "Microsoft.Azure.Management.PrivateDns.Models.RecordType": {
       "Namespace": "Microsoft.Azure.Management.PrivateDns.Models",
       "Name": "Microsoft.Azure.Management.PrivateDns.Models.RecordType",
@@ -15857,7 +13407,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -15869,7 +13419,7 @@
     "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase": {
       "Namespace": "Microsoft.Azure.Commands.PrivateDns.Models",
       "Name": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PrivateDns.Models.PSPrivateDnsRecordBase, Microsoft.Azure.PowerShell.Cmdlets.PrivateDns, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -15914,6 +13464,18 @@
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
+    },
+    "System.Nullable`1[System.Boolean]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Boolean]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Boolean"
+      ],
       "Methods": [],
       "Constructors": []
     }

@@ -2,6 +2,2227 @@
   "Cmdlets": [
     {
       "VerbName": "Get",
+      "NounName": "AzDenyAssignment",
+      "Name": "Get-AzDenyAssignment",
+      "ClassName": "Microsoft.Azure.Commands.Resources.GetAzureDenyAssignmentCommand",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "EmptyParameterSet",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
+            "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSDenyAssignment",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSDenyAssignment, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "DoNotApplyToChildScopes": "System.Boolean",
+              "IsSystemProtected": "System.Boolean",
+              "Principals": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Resources.Models.Authorization.PSPrincipal]",
+              "ExcludePrincipals": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Resources.Models.Authorization.PSPrincipal]",
+              "Actions": "System.Collections.Generic.List`1[System.String]",
+              "NotActions": "System.Collections.Generic.List`1[System.String]",
+              "DataActions": "System.Collections.Generic.List`1[System.String]",
+              "NotDataActions": "System.Collections.Generic.List`1[System.String]",
+              "Id": "System.String",
+              "DenyAssignmentName": "System.String",
+              "Description": "System.String",
+              "Scope": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "ObjectId",
+          "AliasList": [
+            "PrincipalId"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Nullable`1[System.Guid]",
+            "AssemblyQualifiedName": "System.Nullable`1[[System.Guid, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "System.Guid"
+            ],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "SignInName",
+          "AliasList": [
+            "Email",
+            "UserPrincipalName"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ServicePrincipalName",
+          "AliasList": [
+            "SPN"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceType",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ParentResource",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Scope",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Id",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Guid",
+            "AssemblyQualifiedName": "System.Guid, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DenyAssignmentName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ExpandPrincipalGroups",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzContext",
+            "AzureRmContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "ObjectIdParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ObjectId",
+                "AliasList": [
+                  "PrincipalId"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Nullable`1[System.Guid]",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Guid, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.Guid"
+                  ],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ExpandPrincipalGroups",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ResourceGroupWithObjectIdParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ObjectId",
+                "AliasList": [
+                  "PrincipalId"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Nullable`1[System.Guid]",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Guid, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.Guid"
+                  ],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ResourceWithObjectIdParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ObjectId",
+                "AliasList": [
+                  "PrincipalId"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Nullable`1[System.Guid]",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Guid, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.Guid"
+                  ],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceType",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ParentResource",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ScopeWithObjectIdParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ObjectId",
+                "AliasList": [
+                  "PrincipalId"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Nullable`1[System.Guid]",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Guid, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.Guid"
+                  ],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Scope",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ResourceGroupWithSignInNameParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "SignInName",
+                "AliasList": [
+                  "Email",
+                  "UserPrincipalName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ResourceWithSignInNameParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "SignInName",
+                "AliasList": [
+                  "Email",
+                  "UserPrincipalName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceType",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ParentResource",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ScopeWithSignInNameParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "SignInName",
+                "AliasList": [
+                  "Email",
+                  "UserPrincipalName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Scope",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "SignInNameParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "SignInName",
+                "AliasList": [
+                  "Email",
+                  "UserPrincipalName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ExpandPrincipalGroups",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ResourceGroupWithSPNParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ServicePrincipalName",
+                "AliasList": [
+                  "SPN"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ResourceWithSPNParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ServicePrincipalName",
+                "AliasList": [
+                  "SPN"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceType",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ParentResource",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ScopeWithSPNParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ServicePrincipalName",
+                "AliasList": [
+                  "SPN"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Scope",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "SPNParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ServicePrincipalName",
+                "AliasList": [
+                  "SPN"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ResourceGroupParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ResourceParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceType",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ParentResource",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "EmptyParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Scope",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ScopeParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Scope",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "DenyAssignmentIdParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Scope",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Id",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Guid",
+                  "AssemblyQualifiedName": "System.Guid, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "DenyAssignmentNameParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Scope",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DenyAssignmentName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Get",
       "NounName": "AzProviderOperation",
       "Name": "Get-AzProviderOperation",
       "ClassName": "Microsoft.Azure.Commands.Resources.GetAzureProviderOperationCommand",
@@ -14,7 +2235,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models",
             "Name": "Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsDataAction": "System.Boolean",
               "Operation": "System.String",
@@ -210,7 +2431,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CanDelegate": "System.Boolean",
               "RoleAssignmentId": "System.String",
@@ -3120,7 +5341,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CanDelegate": "System.Boolean",
               "RoleAssignmentId": "System.String",
@@ -5291,7 +7512,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CanDelegate": "System.Boolean",
               "RoleAssignmentId": "System.String",
@@ -5558,7 +7779,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CanDelegate": "System.Boolean",
               "RoleAssignmentId": "System.String",
@@ -7511,7 +9732,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CanDelegate": "System.Boolean",
                     "RoleAssignmentId": "System.String",
@@ -7652,7 +9873,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8151,7 +10372,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8230,7 +10451,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8397,7 +10618,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IsCustom": "System.Boolean",
                     "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8613,7 +10834,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -9046,7 +11267,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IsCustom": "System.Boolean",
                     "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -9303,7 +11524,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -9382,7 +11603,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -9549,7 +11770,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IsCustom": "System.Boolean",
                     "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -9710,7 +11931,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupInfo, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupInfo, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Type": "System.String",
@@ -9773,7 +11994,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -10026,7 +12247,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -10749,7 +12970,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -10896,7 +13117,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
                     "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -11464,7 +13685,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -11537,7 +13758,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -11702,7 +13923,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
                     "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -11848,7 +14069,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
                     "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -12350,7 +14571,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SecurityEnabled": "System.Nullable`1[System.Boolean]",
               "MailNickname": "System.String",
@@ -12622,7 +14843,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SecurityEnabled": "System.Nullable`1[System.Boolean]",
                     "MailNickname": "System.String",
@@ -13009,7 +15230,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SecurityEnabled": "System.Nullable`1[System.Boolean]",
                     "MailNickname": "System.String",
@@ -13331,7 +15552,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "StartDate": "System.String",
               "EndDate": "System.String",
@@ -13441,7 +15662,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AvailableToOtherTenants": "System.Boolean",
               "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -13745,7 +15966,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -13907,7 +16128,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AvailableToOtherTenants": "System.Boolean",
               "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -14493,7 +16714,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SecurityEnabled": "System.Nullable`1[System.Boolean]",
               "MailNickname": "System.String",
@@ -14971,7 +17192,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADObject",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADObject, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADObject, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DisplayName": "System.String",
               "Id": "System.String",
@@ -15065,7 +17286,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SecurityEnabled": "System.Nullable`1[System.Boolean]",
               "MailNickname": "System.String",
@@ -15300,7 +17521,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SecurityEnabled": "System.Nullable`1[System.Boolean]",
                     "MailNickname": "System.String",
@@ -15458,7 +17679,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "ObjectType": "System.String",
@@ -15590,7 +17811,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AvailableToOtherTenants": "System.Boolean",
               "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -15984,7 +18205,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -16220,7 +18441,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "StartDate": "System.String",
               "EndDate": "System.String",
@@ -16332,7 +18553,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "ObjectType": "System.String",
@@ -16634,7 +18855,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ApplicationId": "System.Guid",
                     "ObjectType": "System.String",
@@ -16794,7 +19015,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "UserPrincipalName": "System.String",
               "ObjectType": "System.String",
@@ -17449,7 +19670,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "StartDate": "System.String",
               "EndDate": "System.String",
@@ -17559,7 +19780,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AvailableToOtherTenants": "System.Boolean",
               "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -18571,7 +20792,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -18754,7 +20975,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -19036,7 +21257,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AvailableToOtherTenants": "System.Boolean",
               "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -19188,7 +21409,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential",
             "GenericTypeArguments": [],
@@ -19206,7 +21427,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential",
             "GenericTypeArguments": [],
@@ -19855,7 +22076,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential",
                   "GenericTypeArguments": [],
@@ -20279,7 +22500,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential",
                   "GenericTypeArguments": [],
@@ -20398,7 +22619,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SecurityEnabled": "System.Nullable`1[System.Boolean]",
               "MailNickname": "System.String",
@@ -20630,7 +22851,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "ObjectType": "System.String",
@@ -20684,7 +22905,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSADServicePrincipalWrapper",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSADServicePrincipalWrapper, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSADServicePrincipalWrapper, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "Secret": "System.Security.SecureString",
@@ -20784,7 +23005,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AvailableToOtherTenants": "System.Boolean",
               "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -20847,7 +23068,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential",
             "GenericTypeArguments": [],
@@ -20867,7 +23088,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential",
             "GenericTypeArguments": [],
@@ -21242,7 +23463,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential",
                   "GenericTypeArguments": [],
@@ -21476,7 +23697,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential",
                   "GenericTypeArguments": [],
@@ -21966,7 +24187,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential",
                   "GenericTypeArguments": [],
@@ -22200,7 +24421,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential",
                   "GenericTypeArguments": [],
@@ -22268,7 +24489,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -22379,7 +24600,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -22538,7 +24759,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -22607,7 +24828,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential",
                   "GenericTypeArguments": [],
@@ -22675,7 +24896,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -22858,7 +25079,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -22927,7 +25148,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential[], Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential",
                   "GenericTypeArguments": [],
@@ -23046,7 +25267,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "StartDate": "System.String",
               "EndDate": "System.String",
@@ -23098,7 +25319,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSADCredentialWrapper",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSADCredentialWrapper, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSADCredentialWrapper, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Secret": "System.Security.SecureString",
               "StartDate": "System.String",
@@ -23200,7 +25421,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "ObjectType": "System.String",
@@ -23870,7 +26091,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ApplicationId": "System.Guid",
                     "ObjectType": "System.String",
@@ -24049,7 +26270,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ApplicationId": "System.Guid",
                     "ObjectType": "System.String",
@@ -24305,7 +26526,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "UserPrincipalName": "System.String",
               "ObjectType": "System.String",
@@ -24795,7 +27016,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AvailableToOtherTenants": "System.Boolean",
               "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -25351,7 +27572,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -25682,7 +27903,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AvailableToOtherTenants": "System.Boolean",
               "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -26166,7 +28387,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -26479,7 +28700,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SecurityEnabled": "System.Nullable`1[System.Boolean]",
               "MailNickname": "System.String",
@@ -26843,7 +29064,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SecurityEnabled": "System.Nullable`1[System.Boolean]",
                     "MailNickname": "System.String",
@@ -27188,7 +29409,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SecurityEnabled": "System.Nullable`1[System.Boolean]",
               "MailNickname": "System.String",
@@ -27442,7 +29663,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SecurityEnabled": "System.Nullable`1[System.Boolean]",
                     "MailNickname": "System.String",
@@ -27829,7 +30050,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADGroup, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SecurityEnabled": "System.Nullable`1[System.Boolean]",
                     "MailNickname": "System.String",
@@ -28155,7 +30376,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "ObjectType": "System.String",
@@ -28290,7 +30511,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "ObjectType": "System.String",
@@ -28347,7 +30568,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AvailableToOtherTenants": "System.Boolean",
               "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -28952,7 +31173,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ApplicationId": "System.Guid",
                     "ObjectType": "System.String",
@@ -29107,7 +31328,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -29438,7 +31659,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "ObjectType": "System.String",
@@ -29984,7 +32205,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ApplicationId": "System.Guid",
                     "ObjectType": "System.String",
@@ -30357,7 +32578,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "UserPrincipalName": "System.String",
               "ObjectType": "System.String",
@@ -30954,7 +33175,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "UserPrincipalName": "System.String",
                     "ObjectType": "System.String",
@@ -31207,7 +33428,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AvailableToOtherTenants": "System.Boolean",
               "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -31305,7 +33526,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AvailableToOtherTenants": "System.Boolean",
               "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -31883,7 +34104,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADApplication, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AvailableToOtherTenants": "System.Boolean",
                     "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
@@ -32171,7 +34392,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "ObjectType": "System.String",
@@ -32287,7 +34508,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApplicationId": "System.Guid",
               "ObjectType": "System.String",
@@ -33017,7 +35238,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ApplicationId": "System.Guid",
                     "ObjectType": "System.String",
@@ -33393,7 +35614,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "UserPrincipalName": "System.String",
               "ObjectType": "System.String",
@@ -33506,7 +35727,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
             "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "UserPrincipalName": "System.String",
               "ObjectType": "System.String",
@@ -34175,7 +36396,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
                   "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADUser, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "UserPrincipalName": "System.String",
                     "ObjectType": "System.String",
@@ -34560,6 +36781,74 @@
       "Methods": [],
       "Constructors": []
     },
+    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Resources.Models.Authorization.PSPrincipal]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Resources.Models.Authorization.PSPrincipal]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.Authorization.PSPrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Resources.Models.Authorization.PSPrincipal"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Commands.Resources.Models.Authorization.PSPrincipal": {
+      "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
+      "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSPrincipal",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSPrincipal, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "ObjectId": "System.Guid",
+        "ObjectType": "System.String",
+        "DisplayName": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        }
+      ]
+    },
+    "System.Guid": {
+      "Namespace": "System",
+      "Name": "System.Guid",
+      "AssemblyQualifiedName": "System.Guid, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
+    },
     "System.Type": {
       "Namespace": "System",
       "Name": "System.Type",
@@ -34567,6 +36856,18 @@
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
+    },
+    "System.Collections.Generic.List`1[System.String]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[System.String]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.String"
+      ],
       "Methods": [],
       "Constructors": []
     },
@@ -34760,22 +37061,10 @@
       "Methods": [],
       "Constructors": []
     },
-    "System.Collections.Generic.List`1[System.String]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.List`1[System.String]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.String"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -34787,7 +37076,7 @@
     "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo": {
       "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
       "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
         "Type": "System.String",
@@ -34876,16 +37165,6 @@
       "Methods": [],
       "Constructors": []
     },
-    "System.Guid": {
-      "Namespace": "System",
-      "Name": "System.Guid",
-      "AssemblyQualifiedName": "System.Guid, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
-    },
     "System.String[]": {
       "Namespace": "System",
       "Name": "System.String[]",
@@ -34899,7 +37178,7 @@
     "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential": {
       "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
       "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "StartDate": "System.DateTime",
         "EndDate": "System.DateTime",
@@ -34946,7 +37225,7 @@
     "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential": {
       "Namespace": "Microsoft.Azure.Commands.ActiveDirectory",
       "Name": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ActiveDirectory.PSADKeyCredential, Microsoft.Azure.PowerShell.Cmdlets.Resources, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "StartDate": "System.DateTime",
         "EndDate": "System.DateTime",
