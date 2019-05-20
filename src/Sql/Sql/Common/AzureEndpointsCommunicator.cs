@@ -27,6 +27,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Sql.Common
 {
@@ -361,6 +362,63 @@ namespace Microsoft.Azure.Commands.Sql.Common
                 tenantId));
             JToken policyToken = await SendAsync(uri, HttpMethod.Get, exception);
             return InformationProtectionPolicy.ToInformationProtectionPolicy(policyToken);
+        }
+
+        /// <summary>
+        /// Deploys an ARM template at resource group level
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="deploymentName">The deployment name</param>
+        /// <param name="deployment">The deployment</param>
+        public void DeployArmTemplate(string resourceGroupName, string deploymentName, Deployment deployment)
+        {
+            GetCurrentResourcesClient(Context).Deployments.BeginCreateOrUpdate(resourceGroupName, deploymentName, deployment);
+
+            WaitForDeployment(resourceGroupName, deploymentName);
+        }
+
+        /// <summary>
+        /// Waits for ARM template deployment to finish
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="deploymentName">The deployment name</param>
+        private void WaitForDeployment(string resourceGroupName, string deploymentName)
+        {
+            DeploymentExtended deployment;
+            string[] status = { "Canceled", "Succeeded", "Failed" };
+
+            // Poll deployment state and deployment operations after RetryAfter.
+            // If no RetryAfter provided: In phase one, poll every 5 seconds. Phase one
+            // takes 400 seconds. In phase two, poll every 60 seconds.
+            const int counterUnit = 1000;
+            int step = 5;
+            int phaseOne = 400;
+
+            do
+            {
+                TestMockSupport.Delay(step * counterUnit);
+
+                if (phaseOne > 0)
+                {
+                    phaseOne -= step;
+                }
+
+                var getDeploymentTask = GetCurrentResourcesClient(Context).Deployments.GetWithHttpMessagesAsync(resourceGroupName, deploymentName);
+
+                using (var getResult = getDeploymentTask.ConfigureAwait(false).GetAwaiter().GetResult())
+                {
+                    deployment = getResult.Body;
+                    var response = getResult.Response;
+                    if (response != null && response.Headers.RetryAfter != null && response.Headers.RetryAfter.Delta.HasValue)
+                    {
+                        step = response.Headers.RetryAfter.Delta.Value.Seconds;
+                    }
+                    else
+                    {
+                        step = phaseOne > 0 ? 5 : 60;
+                    }
+                }
+            } while (!status.Any(s => s.Equals(deployment.Properties.ProvisioningState, StringComparison.OrdinalIgnoreCase)));
         }
 
         /// <summary>

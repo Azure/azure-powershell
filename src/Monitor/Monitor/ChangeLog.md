@@ -19,6 +19,25 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.1
+* Fixed incorrect parameter names in help examples
+
+## Version 1.2.0
+* New cmdlets for SQR API (Scheduled Query Rule)  
+    - New-AzScheduledQueryRuleAlertingAction
+	- New-AzScheduledQueryRuleAznsActionGroup
+	- New-AzScheduledQueryRuleLogMetricTrigger
+	- New-AzScheduledQueryRuleSchedule
+	- New-AzScheduledQueryRuleSource
+	- New-AzScheduledQueryRuleTriggerCondition
+	- New-AzScheduledQueryRule
+	- Get-AzScheduledQueryRule
+	- Set-AzScheduledQueryRule
+	- Update-AzScheduledQueryRule
+	- Remove-AzScheduledQueryRule
+	- [More](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules) information about SQR API
+	- Updated Az.Monitor.md to include cmdlets for GenV2(non classic) metric-based alert rule
+
 ## Version 1.1.0
   * New cmdlets for GenV2(non classic) metric-based alert rule
       - New-AzMetricAlertRuleV2DimensionSelection

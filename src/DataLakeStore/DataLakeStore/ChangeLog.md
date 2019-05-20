@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.1
+* Update the ADLS sdk to use httpclient, integrate dataplane testing with azure framework
+
 ## Version 1.2.0
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
 

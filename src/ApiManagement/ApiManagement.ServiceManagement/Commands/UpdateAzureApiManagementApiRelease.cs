@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Models;
     using Properties;
 
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementApiRelease",DefaultParameterSetName = ExpandedParameterSet,SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementApiRelease",DefaultParameterSetName = ExpandedParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementApiRelease), ParameterSetName = new[] { ExpandedParameterSet, ByInputObjectParameterSet })]
     public class UpdateAzureApiManagementApiRelease : AzureApiManagementCmdletBase
     {
