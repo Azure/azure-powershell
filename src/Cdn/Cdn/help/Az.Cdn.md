@@ -20,9 +20,6 @@ Disables Custom Domain HTTPS (Deprecated).
 ### [Disable-AzCdnCustomDomainHttps](Disable-AzCdnCustomDomainHttps.md)
 Disables Custom Domain HTTPS.
 
-### [Enable-AzCdnCustomDomain](Enable-AzCdnCustomDomain.md)
-Enables Custom Domain HTTPS (Deprecated).
-
 ### [Enable-AzCdnCustomDomainHttps](Enable-AzCdnCustomDomainHttps.md)
 Enables custom HTTPS.
 
@@ -61,6 +58,18 @@ Gets the resource usage for a susbscription.
 
 ### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a custom domain for a CDN endpoint.
+
+### [New-AzCdnDeliveryPolicy](New-AzCdnDeliveryPolicy.md)
+{{ Fill in the Synopsis }}
+
+### [New-AzCdnDeliveryRule](New-AzCdnDeliveryRule.md)
+{{ Fill in the Synopsis }}
+
+### [New-AzCdnDeliveryRuleAction](New-AzCdnDeliveryRuleAction.md)
+{{ Fill in the Synopsis }}
+
+### [New-AzCdnDeliveryRuleCondition](New-AzCdnDeliveryRuleCondition.md)
+{{ Fill in the Synopsis }}
 
 ### [New-AzCdnEndpoint](New-AzCdnEndpoint.md)
 Creates a CDN endpoint.

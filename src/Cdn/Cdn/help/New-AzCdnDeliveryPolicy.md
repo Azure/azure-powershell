@@ -1,60 +1,38 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/get-azcdnprofileresourceusage
+online version:
 schema: 2.0.0
 ---
 
-# Get-AzCdnProfileResourceUsage
+# New-AzCdnDeliveryPolicy
 
 ## SYNOPSIS
-Gets the resource usage of a CDN profile.
+Creates a delivery policy.
 
 ## SYNTAX
 
-### ByFieldsParameterSet (Default)
 ```
-Get-AzCdnProfileResourceUsage -ProfileName <String> -ResourceGroupName <String>
+New-AzCdnDeliveryPolicy [-Description <String>] -Rule <PSDeliveryRule[]>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByObjectParameterSet
-```
-Get-AzCdnProfileResourceUsage -CdnProfile <PSProfile> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzCdnDeliveryPolicy** cmdlet creates a delivery policy for CDN endpoint creation.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> {{ Add example code here }}
+```powershell
+PS C:\> New-AzCdnDeliveryPolicy -Description "Sample Policy" -Rule $rule
 ```
 
-{{ Add example description here }}
+Create a sample delivery policy
 
 ## PARAMETERS
 
-### -CdnProfile
-The Azure CDN profile object.
-
-```yaml
-Type: Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile
-Parameter Sets: ByObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -68,27 +46,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProfileName
-The name of the profile.
+### -Description
+Description of the policy
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The resource group to which the profile belongs.
+### -Rule
+A list of deliveryRules.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Type: Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -103,11 +81,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile
+### None
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Cdn.Models.PSResourceUsage
+### Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryPolicy
 
 ## NOTES
 

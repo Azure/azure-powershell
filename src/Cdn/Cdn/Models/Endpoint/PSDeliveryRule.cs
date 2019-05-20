@@ -20,11 +20,13 @@ namespace Microsoft.Azure.Commands.Cdn.Models.Endpoint
 {
     public class PSDeliveryRule
     {
+        public string Name{ get; set; }
+        
         public int Order { get; set; }
 
-        public IList<PSDeliveryRuleAction> Actions { get; set; }
+        public IList<PSDeliveryRuleAction> Action { get; set; }
 
-        public IList<PSDeliveryRuleCondition> Conditions { get; set; }
+        public IList<PSDeliveryRuleCondition> Condition { get; set; }
 
     }
 }

@@ -18,12 +18,18 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Cdn.Models.Endpoint
 {
-    public class PSCacheExpirationActionParameters
+    public class PSDeliveryRuleUrlRedirectAction: PSDeliveryRuleAction
     {
-       
-        public string CacheBehavior { get; set; }
-        public string Odatatype { get; private set; }
-        public string CacheDuration { get; set; }
-        public string CacheType { get; private set; }
+        public string RedirectType { get; set; }
+
+        public string DestinationProtocol { get; set; }
+
+        public string CustomPath { get; set; }
+
+        public string CustomHostname { get; set; }
+
+        public string CustomQueryString { get; set; }
+
+        public string CustomFragment { get; set; }
     }
 }
