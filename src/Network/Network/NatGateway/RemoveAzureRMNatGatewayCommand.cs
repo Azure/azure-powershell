@@ -45,10 +45,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = DeleteByInputObjectParameterSet)]
         [ValidateNotNull]
+        [Alias("NatGateway")]
         public PSNatGateway InputObject { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = DeleteByResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
+        [Alias("NatGatewayId")]
         public string ResourceId { get; set; }
 
         [Parameter(
