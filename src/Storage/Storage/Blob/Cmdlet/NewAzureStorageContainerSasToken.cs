@@ -112,11 +112,34 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public override void ExecuteCmdlet()
         {
             if (String.IsNullOrEmpty(Name)) return;
+
+            // When the input context is Oauth bases, can't generate normal SAS, but UserDelegationSas
+            bool generateUserDelegationSas = false;
+            if (Channel!=null && Channel.StorageContext!= null && Channel.StorageContext.StorageAccount.Credentials.IsToken)
+            {
+                generateUserDelegationSas = true;
+                WriteVerbose("Will generate User Delegation SAS, since input Storage Context is OAuth based.");
+                if (!string.IsNullOrEmpty(accessPolicyIdentifier))
+                {
+                    throw new ArgumentException("When input Storage Context is OAuth based, Saved Policy is not supported.", "Policy");
+                }
+            }
+
             CloudBlobContainer container = Channel.GetContainerReference(Name);
             SharedAccessBlobPolicy accessPolicy = new SharedAccessBlobPolicy();
             bool shouldSetExpiryTime = SasTokenHelper.ValidateContainerAccessPolicy(Channel, container.Name, accessPolicy, accessPolicyIdentifier);
             SetupAccessPolicy(accessPolicy, shouldSetExpiryTime);
-            string sasToken = container.GetSharedAccessSignature(accessPolicy, accessPolicyIdentifier, Protocol, Util.SetupIPAddressOrRangeForSAS(IPAddressOrRange));
+            string sasToken;
+
+            if (generateUserDelegationSas)
+            {
+                UserDelegationKey userDelegationKey = Channel.GetUserDelegationKey(accessPolicy.SharedAccessStartTime, accessPolicy.SharedAccessExpiryTime, null, null, OperationContext);
+                sasToken = container.GetUserDelegationSharedAccessSignature(userDelegationKey, accessPolicy, null, Protocol, Util.SetupIPAddressOrRangeForSAS(IPAddressOrRange));
+            }
+            else
+            {
+                sasToken = container.GetSharedAccessSignature(accessPolicy, accessPolicyIdentifier, Protocol, Util.SetupIPAddressOrRangeForSAS(IPAddressOrRange));
+            }
 
             if (FullUri)
             {
