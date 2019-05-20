@@ -111,12 +111,7 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Remove-AzSqlDatabaseDataMaskingRule', 
                'Set-AzSqlDatabaseDataMaskingPolicy', 
                'Set-AzSqlDatabaseDataMaskingRule', 'Get-AzSqlCapability', 
-               'Get-AzSqlServerThreatDetectionPolicy', 
-               'Remove-AzSqlServerThreatDetectionPolicy', 
-               'Set-AzSqlServerThreatDetectionPolicy', 
-               'Get-AzSqlDatabaseThreatDetectionPolicy', 
-               'Set-AzSqlDatabaseThreatDetectionPolicy', 
-               'Remove-AzSqlDatabaseThreatDetectionPolicy', 'Get-AzSqlDatabase', 
+			   'Get-AzSqlDatabase', 
                'Get-AzSqlDatabaseActivity', 'Get-AzSqlDatabaseExpanded', 
                'New-AzSqlDatabase', 'Remove-AzSqlDatabase', 'Set-AzSqlDatabase', 
                'Get-AzSqlDatabaseImportExportStatus', 'New-AzSqlDatabaseExport', 
@@ -217,7 +212,13 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Get-AzSqlVirtualCluster', 'Remove-AzSqlVirtualCluster', 
                'Enable-AzSqlServerAdvancedDataSecurity', 
                'Disable-AzSqlServerAdvancedDataSecurity', 
-               'Get-AzSqlServerAdvancedDataSecurityPolicy'
+               'Get-AzSqlServerAdvancedDataSecurityPolicy',
+			   'Get-AzSqlServerAdvancedThreatProtectionSettings', 
+               'Clear-AzSqlServerAdvancedThreatProtectionSettings', 
+               'Update-AzSqlServerAdvancedThreatProtectionSettings', 
+               'Get-AzSqlDatabaseAdvancedThreatProtectionSettings', 
+               'Update-AzSqlDatabaseAdvancedThreatProtectionSettings', 
+               'Clear-AzSqlDatabaseAdvancedThreatProtectionSettings'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -245,7 +246,13 @@ AliasesToExport = 'Get-AzSqlDatabaseServerAuditingPolicy',
                'Clear-AzSqlServerVulnerabilityAssessmentSettings', 
                'Enable-AzSqlServerAdvancedThreatProtection', 
                'Disable-AzSqlServerAdvancedThreatProtection', 
-               'Get-AzSqlServerAdvancedThreatProtectionPolicy'
+               'Get-AzSqlServerAdvancedThreatProtectionPolicy',
+			   'Get-AzSqlServerThreatDetectionPolicy', 
+               'Remove-AzSqlServerThreatDetectionPolicy', 
+               'Set-AzSqlServerThreatDetectionPolicy', 
+               'Get-AzSqlDatabaseThreatDetectionPolicy', 
+               'Set-AzSqlDatabaseThreatDetectionPolicy', 
+               'Remove-AzSqlDatabaseThreatDetectionPolicy'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

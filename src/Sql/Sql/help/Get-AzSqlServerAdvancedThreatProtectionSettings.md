@@ -2,31 +2,31 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: F26CB715-D66A-4672-AA47-F3B316957FC8
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverthreatdetectionpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverAdvancedThreatProtectionSettings
 schema: 2.0.0
 ---
 
-# Get-AzSqlServerThreatDetectionPolicy
+# Get-AzSqlServerAdvancedThreatProtectionSettings
 
 ## SYNOPSIS
-Gets the threat detection policy for a server.
+Gets the advanced threat protection settings for a server.
 
 ## SYNTAX
 
 ```
-Get-AzSqlServerThreatDetectionPolicy -ServerName <String> [-ResourceGroupName] <String>
+Get-AzSqlServerAdvancedThreatProtectionSettings -ServerName <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzSqlServerThreatDetectionPolicy** cmdlet gets the threat detection policy of an Azure SQL server.
-To use this cmdlet, specify the *ResourceGroupName* and *ServerName* parameters to identify the server for which this cmdlet gets the policy.
+The **Get-AzSqlServerAdvancedThreatProtectionSettings** cmdlet gets the advanced threat protection settings of an Azure SQL server.
+To use this cmdlet, specify the *ResourceGroupName* and *ServerName* parameters to identify the server for which this cmdlet gets the settings.
 
 ## EXAMPLES
 
-### Example 1: Get the threat detection policy for a server
+### Example 1: Get the advanced threat protection settings for a server
 ```
-PS C:\>Get-AzSqlServerThreatDetectionPolicy -ResourceGroupName "ResourceGroup11" -ServerName "Server01"
+PS C:\>Get-AzSqlServerAdvancedThreatProtectionSettings -ResourceGroupName "ResourceGroup11" -ServerName "Server01"
 ResourceGroupName            : ResourceGroup11
 ServerName                   : Server01
 ThreatDetectionState         : Enabled
@@ -37,7 +37,7 @@ ExcludedDetectionTypes       : {}
 RetentionInDays              : 0
 ```
 
-This command gets the threat detection policy for a server named Server01.
+This command gets the advanced threat protection settings for a server named Server01.
 The server is assigned to the resource group ResourceGroup11.
 
 ## PARAMETERS
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -127,13 +127,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel
+### Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerAdvancedThreatProtectionSettingsModel
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Remove-AzSqlDatabaseThreatDetectionPolicy](./Remove-AzSqlDatabaseThreatDetectionPolicy.md)
+[Remove-AzSqlDatabaseAdvancedThreatProtectionSettings](./Remove-AzSqlDatabaseAdvancedThreatProtectionSettings.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 
