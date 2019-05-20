@@ -144,7 +144,7 @@ Id                    : /subscriptions/<subid>/resourceGroups/natgateway_test/pr
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 The name of the nat gateway.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameParameterSet
 Aliases: ResourceName
 
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 The resource group name of the nat gateway.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListParameterSet
 Aliases:
 
@@ -186,7 +186,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
@@ -201,7 +201,7 @@ Accept wildcard characters: False
 Nat Gateway Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceIdParameterSet
 Aliases:
 
@@ -213,7 +213,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
