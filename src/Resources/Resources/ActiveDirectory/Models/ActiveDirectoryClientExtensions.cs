@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     Id = obj.ObjectId,
                     Type = obj.ObjectType,
                     SecurityEnabled = obj.SecurityEnabled,
-                    MailNickname = obj.Mail ?? obj.AdditionalProperties["mailNickname"].ToString(),
+                    MailNickname = obj.Mail ?? obj.AdditionalProperties.ContainsKey("mailNickname") ? obj.AdditionalProperties["mailNickname"]?.ToString() : null,
                     Description = obj.AdditionalProperties.ContainsKey("description") ? obj.AdditionalProperties["description"]?.ToString() : null
                 };
             }
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 DisplayName = group.DisplayName,
                 Id = group.ObjectId,
                 SecurityEnabled = group.SecurityEnabled,
-                MailNickname = group.Mail ?? group.AdditionalProperties["mailNickname"].ToString(),
+                MailNickname = group.Mail ?? group.AdditionalProperties.ContainsKey("mailNickname") ? group.AdditionalProperties["mailNickname"]?.ToString() : null,
                 Description = group.AdditionalProperties.ContainsKey("description") ? group.AdditionalProperties["description"]?.ToString() : null
             };
         }
