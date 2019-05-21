@@ -71,13 +71,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VirtualNetworkGatewayName
+### -ResourceName
 Virtual network gateway name
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: ResourceName
+Aliases: VirtualNetworkGatewayName
 
 Required: True
 Position: Named
