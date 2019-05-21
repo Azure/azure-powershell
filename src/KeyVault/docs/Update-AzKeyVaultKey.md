@@ -22,16 +22,18 @@ Update-AzKeyVaultKey -Name <String> -Version <String> [-Parameter <IKeyUpdatePar
 
 ### UpdateExpanded
 ```
-Update-AzKeyVaultKey -Name <String> -Version <String> [-Attribute <IKeyAttributes>]
- [-Op <JsonWebKeyOperation[]>] [-Tag <IKeyUpdateParametersTags>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzKeyVaultKey -Name <String> -Version <String> [-AttributeEnabled <Boolean>]
+ [-AttributeExpire <DateTime>] [-AttributeNotBefore <DateTime>]
+ [-AttributeRecoveryLevel <DeletionRecoveryLevel>] [-Op <JsonWebKeyOperation[]>]
+ [-Tag <IKeyUpdateParametersTags>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzKeyVaultKey -InputObject <IKeyVaultIdentity> [-Attribute <IKeyAttributes>]
- [-Op <JsonWebKeyOperation[]>] [-Tag <IKeyUpdateParametersTags>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzKeyVaultKey -InputObject <IKeyVaultIdentity> [-AttributeEnabled <Boolean>]
+ [-AttributeExpire <DateTime>] [-AttributeNotBefore <DateTime>]
+ [-AttributeRecoveryLevel <DeletionRecoveryLevel>] [-Op <JsonWebKeyOperation[]>]
+ [-Tag <IKeyUpdateParametersTags>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -56,11 +58,56 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -Attribute
-HELP MESSAGE MISSING
+### -AttributeEnabled
+Determines whether the object is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IKeyAttributes
+Type: System.Boolean
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AttributeExpire
+Expiry date in UTC.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AttributeNotBefore
+Not before date in UTC.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AttributeRecoveryLevel
+Reflects the deletion recovery level currently in effect for keys in the current vault. If it contains 'Purgeable' the key can be permanently deleted by a privileged user; otherwise, only the system can purge the key, at the end of the retention interval.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.DeletionRecoveryLevel
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 

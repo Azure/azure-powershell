@@ -22,16 +22,18 @@ New-AzKeyVaultKey -Name <String> [-Parameter <IKeyCreateParameters>] [-DefaultPr
 
 ### CreateExpanded
 ```
-New-AzKeyVaultKey -Name <String> [-Attribute <IKeyAttributes>] [-Crv <JsonWebKeyCurveName>]
- -Kty <JsonWebKeyType> [-Op <JsonWebKeyOperation[]>] [-Size <Int32>] [-Tag <IKeyCreateParametersTags>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzKeyVaultKey -Name <String> [-AttributeEnabled <Boolean>] [-AttributeExpire <DateTime>]
+ [-AttributeNotBefore <DateTime>] [-AttributeRecoveryLevel <DeletionRecoveryLevel>]
+ [-Crv <JsonWebKeyCurveName>] -Kty <JsonWebKeyType> [-Op <JsonWebKeyOperation[]>] [-Size <Int32>]
+ [-Tag <IKeyCreateParametersTags>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzKeyVaultKey -InputObject <IKeyVaultIdentity> [-Attribute <IKeyAttributes>] [-Crv <JsonWebKeyCurveName>]
- -Kty <JsonWebKeyType> [-Op <JsonWebKeyOperation[]>] [-Size <Int32>] [-Tag <IKeyCreateParametersTags>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzKeyVaultKey -InputObject <IKeyVaultIdentity> [-AttributeEnabled <Boolean>] [-AttributeExpire <DateTime>]
+ [-AttributeNotBefore <DateTime>] [-AttributeRecoveryLevel <DeletionRecoveryLevel>]
+ [-Crv <JsonWebKeyCurveName>] -Kty <JsonWebKeyType> [-Op <JsonWebKeyOperation[]>] [-Size <Int32>]
+ [-Tag <IKeyCreateParametersTags>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -56,11 +58,56 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -Attribute
-HELP MESSAGE MISSING
+### -AttributeEnabled
+Determines whether the object is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IKeyAttributes
+Type: System.Boolean
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AttributeExpire
+Expiry date in UTC.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AttributeNotBefore
+Not before date in UTC.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AttributeRecoveryLevel
+Reflects the deletion recovery level currently in effect for keys in the current vault. If it contains 'Purgeable' the key can be permanently deleted by a privileged user; otherwise, only the system can purge the key, at the end of the retention interval.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.DeletionRecoveryLevel
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 

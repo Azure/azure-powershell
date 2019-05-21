@@ -22,25 +22,25 @@ Update-AzKeyVaultCertificatePolicy -CertificateName <String> [-CertificatePolicy
 
 ### UpdateExpanded
 ```
-Update-AzKeyVaultCertificatePolicy -CertificateName <String> [-AttributesEnabled <Boolean>]
- [-AttributesExpire <DateTime>] [-AttributesNotBefore <DateTime>]
- [-AttributesRecoveryLevel <DeletionRecoveryLevel>] [-IssuerCertificateType <String>] [-IssuerName <String>]
- [-KeyPropsExportable <Boolean>] [-KeyPropsKeySize <Int32>] [-KeyPropsKeyType <String>]
- [-KeyPropsReuseKey <Boolean>] [-LifetimeAction <ILifetimeAction[]>] [-SansDnsName <String[]>]
- [-SansEmail <String[]>] [-SansUpn <String[]>] [-SecretPropsContentType <String>] [-X509PropsEkus <String[]>]
- [-X509PropsKeyUsage <KeyUsageType[]>] [-X509PropsSubject <String>] [-X509PropsValidityInMonths <Int32>]
+Update-AzKeyVaultCertificatePolicy -CertificateName <String> [-AttributeEnabled <Boolean>]
+ [-AttributeExpire <DateTime>] [-AttributeNotBefore <DateTime>]
+ [-AttributeRecoveryLevel <DeletionRecoveryLevel>] [-IssuerCertificateType <String>] [-IssuerName <String>]
+ [-KeyPropExportable <Boolean>] [-KeyPropKeySize <Int32>] [-KeyPropKeyType <String>]
+ [-KeyPropReuseKey <Boolean>] [-LifetimeAction <ILifetimeAction[]>] [-SanDnsName <String[]>]
+ [-SanEmail <String[]>] [-SanUpn <String[]>] [-SecretPropContentType <String>] [-X509PropEkus <String[]>]
+ [-X509PropKeyUsage <KeyUsageType[]>] [-X509PropSubject <String>] [-X509PropValidityInMonths <Int32>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzKeyVaultCertificatePolicy -InputObject <IKeyVaultIdentity> [-AttributesEnabled <Boolean>]
- [-AttributesExpire <DateTime>] [-AttributesNotBefore <DateTime>]
- [-AttributesRecoveryLevel <DeletionRecoveryLevel>] [-IssuerCertificateType <String>] [-IssuerName <String>]
- [-KeyPropsExportable <Boolean>] [-KeyPropsKeySize <Int32>] [-KeyPropsKeyType <String>]
- [-KeyPropsReuseKey <Boolean>] [-LifetimeAction <ILifetimeAction[]>] [-SansDnsName <String[]>]
- [-SansEmail <String[]>] [-SansUpn <String[]>] [-SecretPropsContentType <String>] [-X509PropsEkus <String[]>]
- [-X509PropsKeyUsage <KeyUsageType[]>] [-X509PropsSubject <String>] [-X509PropsValidityInMonths <Int32>]
+Update-AzKeyVaultCertificatePolicy -InputObject <IKeyVaultIdentity> [-AttributeEnabled <Boolean>]
+ [-AttributeExpire <DateTime>] [-AttributeNotBefore <DateTime>]
+ [-AttributeRecoveryLevel <DeletionRecoveryLevel>] [-IssuerCertificateType <String>] [-IssuerName <String>]
+ [-KeyPropExportable <Boolean>] [-KeyPropKeySize <Int32>] [-KeyPropKeyType <String>]
+ [-KeyPropReuseKey <Boolean>] [-LifetimeAction <ILifetimeAction[]>] [-SanDnsName <String[]>]
+ [-SanEmail <String[]>] [-SanUpn <String[]>] [-SecretPropContentType <String>] [-X509PropEkus <String[]>]
+ [-X509PropKeyUsage <KeyUsageType[]>] [-X509PropSubject <String>] [-X509PropValidityInMonths <Int32>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -66,7 +66,7 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AttributesEnabled
+### -AttributeEnabled
 Determines whether the object is enabled.
 
 ```yaml
@@ -81,7 +81,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AttributesExpire
+### -AttributeExpire
 Expiry date in UTC.
 
 ```yaml
@@ -96,7 +96,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AttributesNotBefore
+### -AttributeNotBefore
 Not before date in UTC.
 
 ```yaml
@@ -111,9 +111,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AttributesRecoveryLevel
-Reflects the deletion recovery level currently in effect for certificates in the current vault.
-If it contains 'Purgeable', the certificate can be permanently deleted by a privileged user; otherwise, only the system can purge the certificate, at the end of the retention interval.
+### -AttributeRecoveryLevel
+Reflects the deletion recovery level currently in effect for certificates in the current vault. If it contains 'Purgeable', the certificate can be permanently deleted by a privileged user; otherwise, only the system can purge the certificate, at the end of the retention interval.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.DeletionRecoveryLevel
@@ -217,7 +216,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KeyPropsExportable
+### -KeyPropExportable
 Indicates if the private key can be exported.
 
 ```yaml
@@ -232,9 +231,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KeyPropsKeySize
-The key size in bits.
-For example: 2048, 3072, or 4096 for RSA.
+### -KeyPropKeySize
+The key size in bits. For example: 2048, 3072, or 4096 for RSA.
 
 ```yaml
 Type: System.Int32
@@ -248,7 +246,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KeyPropsKeyType
+### -KeyPropKeyType
 The key type.
 
 ```yaml
@@ -263,7 +261,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KeyPropsReuseKey
+### -KeyPropReuseKey
 Indicates if the same key pair will be used on certificate renewal.
 
 ```yaml
@@ -293,7 +291,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SansDnsName
+### -SanDnsName
 Domain names.
 
 ```yaml
@@ -308,7 +306,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SansEmail
+### -SanEmail
 Email addresses.
 
 ```yaml
@@ -323,7 +321,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SansUpn
+### -SanUpn
 User principal names.
 
 ```yaml
@@ -338,7 +336,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SecretPropsContentType
+### -SecretPropContentType
 The media type (MIME type).
 
 ```yaml
@@ -353,7 +351,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -X509PropsEkus
+### -X509PropEkus
 The enhanced key usage.
 
 ```yaml
@@ -368,7 +366,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -X509PropsKeyUsage
+### -X509PropKeyUsage
 List of key usages.
 
 ```yaml
@@ -383,9 +381,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -X509PropsSubject
-The subject name.
-Should be a valid X509 distinguished Name.
+### -X509PropSubject
+The subject name. Should be a valid X509 distinguished Name.
 
 ```yaml
 Type: System.String
@@ -399,7 +396,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -X509PropsValidityInMonths
+### -X509PropValidityInMonths
 The duration that the certificate is valid in months.
 
 ```yaml

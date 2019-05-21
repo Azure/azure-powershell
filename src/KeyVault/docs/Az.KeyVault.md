@@ -135,6 +135,13 @@ It requires the keys/create permission.
 Regenerates the specified key value for the given storage account.
 This operation requires the storage/regeneratekey permission.
 
+### [Protect-AzKeyVaultKey](Protect-AzKeyVaultKey.md)
+The ENCRYPT operation encrypts an arbitrary sequence of bytes using an encryption key that is stored in Azure Key Vault.
+Note that the ENCRYPT operation only supports a single block of data, the size of which is dependent on the target key and the encryption algorithm to be used.
+The ENCRYPT operation is only strictly necessary for symmetric keys stored in Azure Key Vault since protection with an asymmetric key can be performed using public portion of the key.
+This operation is supported for asymmetric keys as a convenience for callers that have a key-reference but do not have access to the public key material.
+This operation requires the keys/encrypt permission.
+
 ### [Remove-AzKeyVault](Remove-AzKeyVault.md)
 Deletes the specified Azure key vault.
 
@@ -258,6 +265,12 @@ This operation requires the storage/recover permission.
 Recovers the deleted SAS definition for the specified storage account.
 This operation can only be performed on a soft-delete enabled vault.
 This operation requires the storage/recover permission.
+
+### [Unprotect-AzKeyVaultKey](Unprotect-AzKeyVaultKey.md)
+The DECRYPT operation decrypts a well-formed block of ciphertext using the target encryption key and specified algorithm.
+This operation is the reverse of the ENCRYPT operation; only a single block of data may be decrypted, the size of this block is dependent on the target key and the algorithm to be used.
+The DECRYPT operation applies to asymmetric and symmetric keys stored in Azure Key Vault since it uses the private portion of the key.
+This operation requires the keys/decrypt permission.
 
 ### [Update-AzKeyVault](Update-AzKeyVault.md)
 Update a key vault in the specified subscription.
