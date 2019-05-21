@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(
           Position = 0,
           Mandatory = true,
-          HelpMessage = "Resource Group Name.",
+          HelpMessage = "The resource group name containing the storage account resource.",
          ParameterSetName = AccountNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(
             Position = 1,
             Mandatory = true,
-            HelpMessage = "Storage Account Name.",
+            HelpMessage = "The name of the storage account resource.",
            ParameterSetName = AccountNameParameterSet)]
         [ResourceNameCompleter("Microsoft.Storage/storageAccounts", nameof(ResourceGroupName))]
         [Alias(AccountNameAlias, NameAlias)]
@@ -59,11 +59,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public string StorageAccountName { get; set; }
 
         [Parameter(Mandatory = true,
-            HelpMessage = "Storage account object",
+            HelpMessage = "A storage account object, returned by Get_AzStorageAccount, New-AzStorageAccount.",
             ValueFromPipeline = true,
             ParameterSetName = AccountObjectParameterSet)]
+        [Alias("StorageAccount")]        
         [ValidateNotNullOrEmpty]
-        public PSStorageAccount StorageAccount { get; set; }
+        public PSStorageAccount InputObject { get; set; }
 
         [Parameter(
             Position = 0,
@@ -71,8 +72,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Resource Id.",
            ParameterSetName = AccountResourceIdParameterSet)]
+        [Alias("StorageAccountResourceId")]
         [ValidateNotNullOrEmpty]
-        public string StorageAccountResourceId { get; set; }
+        public string ResourceId { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -85,11 +87,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 switch (ParameterSetName)
                 {
                     case AccountObjectParameterSet:
-                        this.ResourceGroupName = StorageAccount.ResourceGroupName;
-                        this.StorageAccountName = StorageAccount.StorageAccountName;
+                        this.ResourceGroupName = InputObject.ResourceGroupName;
+                        this.StorageAccountName = InputObject.StorageAccountName;
                         break;
                     case AccountResourceIdParameterSet:
-                        ResourceIdentifier accountResource = new ResourceIdentifier(StorageAccountResourceId);
+                        ResourceIdentifier accountResource = new ResourceIdentifier(ResourceId);
                         this.ResourceGroupName = accountResource.ResourceGroupName;
                         this.StorageAccountName = accountResource.ResourceName;
                         break;
