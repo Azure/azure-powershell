@@ -13,7 +13,7 @@ Get the list of vpn client connection health of an Azure virtual network gateway
 ## SYNTAX
 
 ```
-Get-AzVirtualNetworkGatewayVpnclientConnectionHealth -VirtualNetworkGatewayName <String> -ResourceGroupName <String> -InputObject <InputObj> -ResourceId <ResourceId>
+Get-AzVirtualNetworkGatewayVpnclientConnectionHealth -VirtualNetworkGatewayName <String> -ResourceGroupName <String> -InputObject <PSVirtualNetworkGateway> -ResourceId <ResourceId>
  [-AsJob] [<CommonParameters>]
 ```
 
@@ -85,6 +85,36 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+### -ResourceId
+Virtual network gateway resource Id
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ResourceId
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+Virtual network gateway object
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+Parameter Sets: (All)
+Aliases: VirtualNetworkGateway
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background
 
