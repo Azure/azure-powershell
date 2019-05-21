@@ -13,20 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
-using System;
-using System.Linq;
 using System.Management.Automation;
-using System.Text.RegularExpressions;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
 {
     /// <summary>
-    /// Sets the auditing policy properties for a specific database.
+    /// Updates the advanced threat protection properties for a specific database.
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseThreatDetectionPolicy", SupportsShouldProcess = true), OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
+    [GenericBreakingChange("Set-AzSqlDatabaseThreatDetectionPolicy alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseAdvancedThreatProtectionSettings", SupportsShouldProcess = true), OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
+    [Alias("Set-AzSqlDatabaseThreatDetectionPolicy")]
     public class SetAzureSqlDatabaseThreatDetection : SqlDatabaseThreatDetectionCmdletBase
     {
         /// <summary>
