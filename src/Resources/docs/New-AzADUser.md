@@ -21,7 +21,8 @@ New-AzADUser -TenantId <String> [-Parameter <IUserCreateParameters>] [-DefaultPr
 ### CreateExpanded
 ```
 New-AzADUser -TenantId <String> -AccountEnabled <Boolean> -DisplayName <String> [-GivenName <String>]
- [-ImmutableId <String>] [-Mail <String>] -MailNickname <String> -PasswordProfile <IPasswordProfile>
+ [-ImmutableId <String>] [-Mail <String>] -MailNickname <String>
+ [-PasswordProfileForceChangePasswordNextLogin <Boolean>] -PasswordProfilePassword <String>
  -PrincipalName <String> [-Surname <String>] [-Type <UserType>] [-UsageLocation <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -30,8 +31,9 @@ New-AzADUser -TenantId <String> -AccountEnabled <Boolean> -DisplayName <String> 
 ```
 New-AzADUser -InputObject <IResourcesIdentity> -AccountEnabled <Boolean> -DisplayName <String>
  [-GivenName <String>] [-ImmutableId <String>] [-Mail <String>] -MailNickname <String>
- -PasswordProfile <IPasswordProfile> -PrincipalName <String> [-Surname <String>] [-Type <UserType>]
- [-UsageLocation <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PasswordProfileForceChangePasswordNextLogin <Boolean>] -PasswordProfilePassword <String>
+ -PrincipalName <String> [-Surname <String>] [-Type <UserType>] [-UsageLocation <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -190,11 +192,26 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PasswordProfile
-Password Profile
+### -PasswordProfileForceChangePasswordNextLogin
+Whether to force a password change on next login.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPasswordProfile
+Type: System.Boolean
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PasswordProfilePassword
+Password
+
+```yaml
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 

@@ -21,10 +21,12 @@ Set-AzManagedApplication -Id <String> [-Parameter <IApplication>] [-DefaultProfi
 ### UpdateExpanded
 ```
 Set-AzManagedApplication -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IApplication>] [-DefinitionId <String>] [-Identity <IIdentity>] -Kind <String>
- [-Location <String>] [-ManagedBy <String>] -ManagedResourceGroupId <String> [-Plan <IPlan>]
- [-ProvisioningState <String>] [-Sku <ISku>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Parameter <IApplication>] [-DefinitionId <String>] [-IdentityType <ResourceIdentityType>] -Kind <String>
+ [-Location <String>] [-ManagedBy <String>] -ManagedResourceGroupId <String> -PlanName <String>
+ -PlanProduct <String> [-PlanPromotionCode <String>] -PlanPublisher <String> -PlanVersion <String>
+ [-ProvisioningState <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuModel <String>]
+ -SkuName <String> [-SkuSize <String>] [-SkuTier <String>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Update
@@ -36,24 +38,30 @@ Set-AzManagedApplication -Name <String> -ResourceGroupName <String> -Subscriptio
 ### UpdateExpanded1
 ```
 Set-AzManagedApplication -Id <String> [-Parameter <IApplication>] [-DefinitionId <String>]
- [-Identity <IIdentity>] -Kind <String> [-Location <String>] [-ManagedBy <String>]
- -ManagedResourceGroupId <String> [-Plan <IPlan>] [-ProvisioningState <String>] [-Sku <ISku>]
+ [-IdentityType <ResourceIdentityType>] -Kind <String> [-Location <String>] [-ManagedBy <String>]
+ -ManagedResourceGroupId <String> -PlanName <String> -PlanProduct <String> [-PlanPromotionCode <String>]
+ -PlanPublisher <String> -PlanVersion <String> [-ProvisioningState <String>] [-SkuCapacity <Int32>]
+ [-SkuFamily <String>] [-SkuModel <String>] -SkuName <String> [-SkuSize <String>] [-SkuTier <String>]
  [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded1
 ```
 Set-AzManagedApplication -InputObject <IResourcesIdentity> [-Parameter <IApplication>] [-DefinitionId <String>]
- [-Identity <IIdentity>] -Kind <String> [-Location <String>] [-ManagedBy <String>]
- -ManagedResourceGroupId <String> [-Plan <IPlan>] [-ProvisioningState <String>] [-Sku <ISku>]
+ [-IdentityType <ResourceIdentityType>] -Kind <String> [-Location <String>] [-ManagedBy <String>]
+ -ManagedResourceGroupId <String> -PlanName <String> -PlanProduct <String> [-PlanPromotionCode <String>]
+ -PlanPublisher <String> -PlanVersion <String> [-ProvisioningState <String>] [-SkuCapacity <Int32>]
+ [-SkuFamily <String>] [-SkuModel <String>] -SkuName <String> [-SkuSize <String>] [-SkuTier <String>]
  [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Set-AzManagedApplication -InputObject <IResourcesIdentity> [-Parameter <IApplication>] [-DefinitionId <String>]
- [-Identity <IIdentity>] -Kind <String> [-Location <String>] [-ManagedBy <String>]
- -ManagedResourceGroupId <String> [-Plan <IPlan>] [-ProvisioningState <String>] [-Sku <ISku>]
+ [-IdentityType <ResourceIdentityType>] -Kind <String> [-Location <String>] [-ManagedBy <String>]
+ -ManagedResourceGroupId <String> -PlanName <String> -PlanProduct <String> [-PlanPromotionCode <String>]
+ -PlanPublisher <String> -PlanVersion <String> [-ProvisioningState <String>] [-SkuCapacity <Int32>]
+ [-SkuFamily <String>] [-SkuModel <String>] -SkuName <String> [-SkuSize <String>] [-SkuTier <String>]
  [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -144,11 +152,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Identity
-The identity of the resource.
+### -IdentityType
+The identity type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901Preview.IIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.ResourceIdentityType
 Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
@@ -265,15 +273,75 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Plan
-The plan information.
+### -PlanName
+The plan name.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901Preview.IPlan
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlanProduct
+The product code.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlanPromotionCode
+The promotion code.
+
+```yaml
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlanPublisher
+The publisher ID.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlanVersion
+The plan's version.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -311,11 +379,86 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Sku
-The SKU of the resource.
+### -SkuCapacity
+The SKU capacity.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901Preview.ISku
+Type: System.Int32
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuFamily
+The SKU family.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuModel
+The SKU model.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuName
+The SKU name.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuSize
+The SKU size.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuTier
+The SKU tier.
+
+```yaml
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 

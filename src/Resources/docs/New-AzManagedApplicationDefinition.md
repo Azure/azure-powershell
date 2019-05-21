@@ -23,9 +23,10 @@ New-AzManagedApplicationDefinition -Id <String> [-Parameter <IApplicationDefinit
 New-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Artifact <IApplicationArtifact[]>] -Authorization <IApplicationProviderAuthorization[]>
  [-CreateUiDefinition <IApplicationDefinitionPropertiesCreateUiDefinition>] [-Description <String>]
- [-DisplayName <String>] [-Identity <IIdentity>] [-IsEnabled <String>] [-Location <String>]
+ [-DisplayName <String>] [-IdentityType <ResourceIdentityType>] [-IsEnabled <String>] [-Location <String>]
  -LockLevel <ApplicationLockLevel> [-MainTemplate <IApplicationDefinitionPropertiesMainTemplate>]
- [-ManagedBy <String>] [-PackageFileUri <String>] [-Sku <ISku>] [-Tag <IResourceTags>]
+ [-ManagedBy <String>] [-PackageFileUri <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
+ [-SkuModel <String>] -SkuName <String> [-SkuSize <String>] [-SkuTier <String>] [-Tag <IResourceTags>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -41,9 +42,10 @@ New-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String> -S
 New-AzManagedApplicationDefinition -Id <String> [-Artifact <IApplicationArtifact[]>]
  -Authorization <IApplicationProviderAuthorization[]>
  [-CreateUiDefinition <IApplicationDefinitionPropertiesCreateUiDefinition>] [-Description <String>]
- [-DisplayName <String>] [-Identity <IIdentity>] [-IsEnabled <String>] [-Location <String>]
+ [-DisplayName <String>] [-IdentityType <ResourceIdentityType>] [-IsEnabled <String>] [-Location <String>]
  -LockLevel <ApplicationLockLevel> [-MainTemplate <IApplicationDefinitionPropertiesMainTemplate>]
- [-ManagedBy <String>] [-PackageFileUri <String>] [-Sku <ISku>] [-Tag <IResourceTags>]
+ [-ManagedBy <String>] [-PackageFileUri <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
+ [-SkuModel <String>] -SkuName <String> [-SkuSize <String>] [-SkuTier <String>] [-Tag <IResourceTags>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -52,9 +54,10 @@ New-AzManagedApplicationDefinition -Id <String> [-Artifact <IApplicationArtifact
 New-AzManagedApplicationDefinition -InputObject <IResourcesIdentity> [-Artifact <IApplicationArtifact[]>]
  -Authorization <IApplicationProviderAuthorization[]>
  [-CreateUiDefinition <IApplicationDefinitionPropertiesCreateUiDefinition>] [-Description <String>]
- [-DisplayName <String>] [-Identity <IIdentity>] [-IsEnabled <String>] [-Location <String>]
+ [-DisplayName <String>] [-IdentityType <ResourceIdentityType>] [-IsEnabled <String>] [-Location <String>]
  -LockLevel <ApplicationLockLevel> [-MainTemplate <IApplicationDefinitionPropertiesMainTemplate>]
- [-ManagedBy <String>] [-PackageFileUri <String>] [-Sku <ISku>] [-Tag <IResourceTags>]
+ [-ManagedBy <String>] [-PackageFileUri <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
+ [-SkuModel <String>] -SkuName <String> [-SkuSize <String>] [-SkuTier <String>] [-Tag <IResourceTags>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -63,9 +66,10 @@ New-AzManagedApplicationDefinition -InputObject <IResourcesIdentity> [-Artifact 
 New-AzManagedApplicationDefinition -InputObject <IResourcesIdentity> [-Artifact <IApplicationArtifact[]>]
  -Authorization <IApplicationProviderAuthorization[]>
  [-CreateUiDefinition <IApplicationDefinitionPropertiesCreateUiDefinition>] [-Description <String>]
- [-DisplayName <String>] [-Identity <IIdentity>] [-IsEnabled <String>] [-Location <String>]
+ [-DisplayName <String>] [-IdentityType <ResourceIdentityType>] [-IsEnabled <String>] [-Location <String>]
  -LockLevel <ApplicationLockLevel> [-MainTemplate <IApplicationDefinitionPropertiesMainTemplate>]
- [-ManagedBy <String>] [-PackageFileUri <String>] [-Sku <ISku>] [-Tag <IResourceTags>]
+ [-ManagedBy <String>] [-PackageFileUri <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
+ [-SkuModel <String>] -SkuName <String> [-SkuSize <String>] [-SkuTier <String>] [-Tag <IResourceTags>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -217,11 +221,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Identity
-The identity of the resource.
+### -IdentityType
+The identity type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901Preview.IIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.ResourceIdentityType
 Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
@@ -385,11 +389,86 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Sku
-The SKU of the resource.
+### -SkuCapacity
+The SKU capacity.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901Preview.ISku
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuFamily
+The SKU family.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuModel
+The SKU model.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuName
+The SKU name.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuSize
+The SKU size.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuTier
+The SKU tier.
+
+```yaml
+Type: System.String
 Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 

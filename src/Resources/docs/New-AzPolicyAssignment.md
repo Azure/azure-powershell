@@ -275,7 +275,7 @@ The scope for the policy assignment.
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded
-Aliases: PolicyAssignmentPropertiesScope
+Aliases:
 
 Required: False
 Position: Named
