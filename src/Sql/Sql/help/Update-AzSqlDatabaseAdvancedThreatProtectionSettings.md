@@ -1,40 +1,56 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-ms.assetid: 2B82F5BA-ABC6-4B37-B641-353CFE814290
-online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlserverthreatdetectionpolicy
+ms.assetid: 457FD595-D5E1-45C4-9DB8-C3C6C30A0E94
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/Update-AzSqlDatabaseAdvancedThreatProtectionSettings
 schema: 2.0.0
 ---
 
-# Set-AzSqlServerThreatDetectionPolicy
+# Update-AzSqlDatabaseAdvancedThreatProtectionSettings
 
 ## SYNOPSIS
-Sets a threat detection policy on a server.
+Sets a advanced threat protection settings on a database.
 
 ## SYNTAX
 
 ```
-Set-AzSqlServerThreatDetectionPolicy [-PassThru] [-NotificationRecipientsEmails <String>]
+Update-AzSqlDatabaseAdvancedThreatProtectionSettings [-PassThru] [-NotificationRecipientsEmails <String>]
  [-EmailAdmins <Boolean>] [-ExcludedDetectionType <String[]>] [-StorageAccountName <String>]
- [-RetentionInDays <UInt32>] -ServerName <String> [-ResourceGroupName] <String>
+ [-RetentionInDays <UInt32>] [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzSqlServerThreatDetectionPolicy** cmdlet sets a threat detection policy on an Azure SQL server.
-In order to enable threat detection on a server an auditing policy must be enabled on that server.
-To use this cmdlet, specify the *ResourceGroupName* and ServerName parameters to identify the server.
+The **Update-AzSqlDatabaseAdvancedThreatProtectionSettings** cmdlet sets a advanced threat protection settings on an Azure SQL database.
+In order to enable advanced threat protection on a database an auditing settings must be enabled on that database.
+To use this cmdlet, specify the *ResourceGroupName*, *ServerName* and *DatabaseName* parameters to identify the database.
+This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
 
-### Example 1: Set the threat detection policy for a database
+### Example 1: Set the advanced threat protection settings for a database
 ```
-PS C:\>Set-AzSqlServerThreatDetectionPolicy -ResourceGroupName "ResourceGroup11" -ServerName "Server01" -NotificationRecipientsEmails "admin01@contoso.com;secadmin@contoso.com" -EmailAdmins $False -ExcludedDetectionType "Sql_Injection_Vulnerability","SQL_Injection" -StorageAccountName "mystorageAccount"
+PS C:\>Update-AzSqlDatabaseAdvancedThreatProtectionSettings -ResourceGroupName "ResourceGroup11" -ServerName "Server01" -DatabaseName "Database01" -NotificationRecipientsEmails "admin01@contoso.com;secadmin@contoso.com" -EmailAdmins $False -ExcludedDetectionType "Sql_Injection_Vulnerability", "SQL_Injection" -StorageAccountName "mystorageAccount"
 ```
 
-This command sets the threat detection policy for a server named Server01.
+This command sets the advanced threat protection settings for a database named Database01 on the server named Server01.
 
 ## PARAMETERS
+
+### -DatabaseName
+Specifies the name of the database where the settings is set.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
@@ -52,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -EmailAdmins
-Specifies whether the threat detection policy contacts administrators by using email.
+Specifies whether the advanced threat protection settings contacts administrators by using email.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -67,11 +83,11 @@ Accept wildcard characters: False
 ```
 
 ### -ExcludedDetectionType
-Specifies an array of detection types to exclude from the policy.
+Specifies an array of detection types to exclude from the settings.
 The acceptable values for this parameter are:
-- Sql_Injection
-- Sql_Injection_Vulnerability
-- Access_Anomaly
+- Sql_Injection 
+- Sql_Injection_Vulnerability 
+- Access_Anomaly 
 - None
 
 ```yaml
@@ -87,7 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -NotificationRecipientsEmails
-Specifies a semicolon-separated list of email addresses to which the policy sends alerts.
+Specifies a semicolon-separated list of email addresses to which the settings sends alerts.
 
 ```yaml
 Type: System.String
@@ -118,7 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group to which the server belongs.
+Specifies the name of the resource group to which the server is assigned.
 
 ```yaml
 Type: System.String
@@ -156,14 +172,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -StorageAccountName
-Specifies the name of the storage account to be used. Wildcards are not permitted. This parameter is not required. When this parameter is not provided, the cmdlet will use the storage account that was defined previously as part of the threat detection policy of the database. If this is the first time a database theat detection policy is defined and this parameter is not provided, the cmdlet will fail.
+Specifies the name of the storage account to be used. Wildcards are not permitted. This parameter is not required. When this parameter is not provided, the cmdlet will use the storage account that was defined previously as part of the advanced threat protection settings of the database. If this is the first time a database advanced threat protection settings is defined and this parameter is not provided, the cmdlet will fail.
 
 ```yaml
 Type: System.String
@@ -209,7 +225,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -223,14 +239,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel
+### Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionsettingsModel
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Get-AzSqlServerThreatDetectionPolicy](./Get-AzSqlServerThreatDetectionPolicy.md)
+[Get-AzSqlDatabaseThreatDetectionsettings](./Get-AzSqlServerThreatDetectionsettings.md)
 
-[Remove-AzSqlServerThreatDetectionPolicy](03e90cd1-6ae2-4134-bc5e-28cc080614c9)
+[Remove-AzSqlDatabaseThreatDetectionsettings](./Remove-AzSqlDatabaseThreatDetectionsettings.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+
+
