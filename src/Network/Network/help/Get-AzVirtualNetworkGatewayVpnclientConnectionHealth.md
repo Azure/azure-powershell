@@ -13,7 +13,7 @@ Get the list of vpn client connection health of an Azure virtual network gateway
 ## SYNTAX
 
 ```
-Get-AzVirtualNetworkGatewayVpnclientConnectionHealth -VirtualNetworkGatewayName <String> -ResourceGroupName <String>
+Get-AzVirtualNetworkGatewayVpnclientConnectionHealth -VirtualNetworkGatewayName <String> -ResourceGroupName <String> -InputObject <InputObj> -ResourceId <ResourceId>
  [-AsJob] [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ maxPacketsPerSecond
 
 ### Example 1
 ```
-PS C:\> Get-AzVirtualNetworkGatewayVpnclientConnectionHealth -ResourceGroupName resourceGroup -VirtualNetworkGatewayname gatewayName
+PS C:\> Get-AzVirtualNetworkGatewayVpnclientConnectionHealth -ResourceGroupName resourceGroup -VirtualNetworkGatewayName gatewayName
 
 	vpnConnectionId: IKEv2_1e1cfe59-5c7c-4315-a876-b11fbfdfeed4,
 	vpnConnectionDuration: 900,
