@@ -36,19 +36,19 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
  
         public override void ExecuteCmdlet()
         {
-        var groupCreateParams = new GroupCreateParameters()
-        {
-          DisplayName = DisplayName,
-          MailNickname = MailNickname,
-          AdditionalProperties = new System.Collections.Generic.Dictionary<string, object>()
-        };
+            var groupCreateParams = new GroupCreateParameters()
+            {
+                DisplayName = DisplayName,
+                MailNickname = MailNickname,
+                AdditionalProperties = new System.Collections.Generic.Dictionary<string, object>()
+            };
       
-        if (!string.IsNullOrEmpty(Description))
-        {
-          groupCreateParams.AdditionalProperties.Add("description", Description);
-        }
+            if (!string.IsNullOrEmpty(Description))
+            {
+                groupCreateParams.AdditionalProperties.Add("description", Description);
+            }
 
-        ExecutionBlock(() =>
+            ExecutionBlock(() =>
             {
                 if (ShouldProcess(target: DisplayName, action: string.Format("Creating a new AD group with display name '{0}'", DisplayName)))
                 {
