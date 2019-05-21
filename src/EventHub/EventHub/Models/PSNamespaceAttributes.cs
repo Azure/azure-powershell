@@ -64,7 +64,11 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                 if (evResource.KafkaEnabled.HasValue)
                    KafkaEnabled = evResource.KafkaEnabled;
 
+                if(evResource.Tags.Count > 0)
+                    Tags = new Dictionary<string, string>(evResource.Tags);
+
                 ResourceGroup = Regex.Split(evResource.Id, @"/")[4];
+                ResourceGroupName = Regex.Split(evResource.Id, @"/")[4];
 
             }
         }
@@ -73,6 +77,13 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// Gets the resourcegroup name
         /// </summary>
         public string ResourceGroup { get; }
+
+        /// <summary>
+        /// Gets the resourcegroup name
+        /// </summary>
+        public string ResourceGroupName { get; }
+
+
         /// <summary>
         /// Gets or sets the Id of the Namespace
         /// </summary>
@@ -131,5 +142,6 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// </summary>
         public bool? KafkaEnabled { get; set; }
 
+        public Dictionary<string, string> Tags = new Dictionary<string, string>();
     }
 }
