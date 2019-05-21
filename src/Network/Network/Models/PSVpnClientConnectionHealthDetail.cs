@@ -6,7 +6,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         [Ps1Xml(Label = "VpnConnectionId", Target = ViewControl.Table)]
         public string VpnConnectionId { get; set; }
-        [Ps1Xml(Label = "VpnConnectionDuration", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "VpnConnectionDurationInSeconds", Target = ViewControl.Table)]
         public long? VpnConnectionDuration { get; set; }
         [Ps1Xml(Label = "VpnConnectionTime", Target = ViewControl.Table)]
         public string VpnConnectionTime { get; set; }
