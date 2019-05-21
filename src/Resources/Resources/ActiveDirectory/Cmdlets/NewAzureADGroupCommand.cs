@@ -43,8 +43,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
           AdditionalProperties = new System.Collections.Generic.Dictionary<string, object>()
         };
       
-        if (!string.IsNullOrEmpty(Description)) {
-          groupCreateParams.AdditionalProperties.Add("Description", Description);
+        if (!string.IsNullOrEmpty(Description))
+        {
+          groupCreateParams.AdditionalProperties.Add("description", Description);
         }
 
         ExecutionBlock(() =>
