@@ -20,13 +20,13 @@ Revoke-AzStorageAccountUserDelegationKeys [-ResourceGroupName] <String> [-Storag
 
 ### AccountObject
 ```
-Revoke-AzStorageAccountUserDelegationKeys -StorageAccount <PSStorageAccount> [-PassThru]
+Revoke-AzStorageAccountUserDelegationKeys -InputObject <PSStorageAccount> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountResourceId
 ```
-Revoke-AzStorageAccountUserDelegationKeys [-StorageAccountResourceId] <String> [-PassThru]
+Revoke-AzStorageAccountUserDelegationKeys [-ResourceId] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -59,8 +59,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+A storage account object, returned by Get_AzStorageAccount, New-AzStorageAccount.
+
+```yaml
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount
+Parameter Sets: AccountObject
+Aliases: StorageAccount
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PassThru
-{{Fill PassThru Description}}
+Normally this cmdlet returns no output on successful completion, this parameter forces the cmdlet to return a value ($true) on successful completion.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -75,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name.
+The resource group name containing the storage account resource.
 
 ```yaml
 Type: System.String
@@ -89,23 +104,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageAccount
-Storage account object
+### -ResourceId
+Storage Account Resource Id.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount
-Parameter Sets: AccountObject
-Aliases:
+Type: System.String
+Parameter Sets: AccountResourceId
+Aliases: StorageAccountResourceId
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -StorageAccountName
-Storage Account Name.
+The name of the storage account resource.
 
 ```yaml
 Type: System.String
@@ -116,21 +131,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageAccountResourceId
-Storage Account Resource Id.
-
-```yaml
-Type: System.String
-Parameter Sets: AccountResourceId
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

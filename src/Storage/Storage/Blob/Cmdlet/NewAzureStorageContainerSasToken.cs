@@ -22,7 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System.Management.Automation;
     using System.Security.Permissions;
 
-    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContainerSASToken"), OutputType(typeof(String))]
+    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContainerSASToken", SupportsShouldProcess = true), OutputType(typeof(String))]
     public class NewAzureStorageContainerSasTokenCommand : StorageCloudBlobCmdletBase
     {
         /// <summary>
@@ -117,12 +117,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             bool generateUserDelegationSas = false;
             if (Channel!=null && Channel.StorageContext!= null && Channel.StorageContext.StorageAccount.Credentials.IsToken)
             {
-                generateUserDelegationSas = true;
-                WriteVerbose("Will generate User Delegation SAS, since input Storage Context is OAuth based.");
-                if (!string.IsNullOrEmpty(accessPolicyIdentifier))
+                if (ShouldProcess(Name, "Generate User Delegation SAS, since input Storage Context is OAuth based."))
                 {
-                    throw new ArgumentException("When input Storage Context is OAuth based, Saved Policy is not supported.", "Policy");
+                    generateUserDelegationSas = true;
+                    if (!string.IsNullOrEmpty(accessPolicyIdentifier))
+                    {
+                        throw new ArgumentException("When input Storage Context is OAuth based, Saved Policy is not supported.", "Policy");
+                    }
                 }
+                else
+                {
+                    return;
+                }
+
             }
 
             CloudBlobContainer container = Channel.GetContainerReference(Name);
