@@ -18,7 +18,7 @@ Import-AzBlueprintWithArtifacts -Name <String> [-SubscriptionId <String>] [-Mana
 ```
 
 ## DESCRIPTION
-Import a blueprint with its artifacts.
+Import a blueprint with its artifacts. 
 
 ## EXAMPLES
 
