@@ -12,36 +12,36 @@ Creates a VpnSite resource if it doesn't exist else updates the existing VpnSite
 
 ## SYNTAX
 
-### CreateSubscriptionIdViaHost (Default)
-```
-New-AzVpnSite -Name <String> -ResourceGroupName <String> [-Parameter <IVpnSite>] [-DefaultProfile <PSObject>]
- [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzVpnSite -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-AddressSpaceAddressPrefix <String[]>] [-BgpPropertiesAsn <Int64>] [-BgpPropertiesBgpPeeringAddress <String>]
- [-BgpPropertiesPeerWeight <Int32>] [-DevicePropertiesDeviceModel <String>]
- [-DevicePropertiesDeviceVendor <String>] [-DevicePropertiesLinkSpeedInMbp <Int32>] [-IPAddress <String>]
- [-Id <String>] [-IsSecuritySite <Boolean>] [-Location <String>] [-SiteKey <String>] [-Tag <IResourceTags>]
- [-VirtualWanId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Create
+### Create (Default)
 ```
 New-AzVpnSite -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Parameter <IVpnSite>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateSubscriptionIdViaHostExpanded
+### CreateExpanded
 ```
-New-AzVpnSite -Name <String> -ResourceGroupName <String> [-AddressSpaceAddressPrefix <String[]>]
- [-BgpPropertiesAsn <Int64>] [-BgpPropertiesBgpPeeringAddress <String>] [-BgpPropertiesPeerWeight <Int32>]
- [-DevicePropertiesDeviceModel <String>] [-DevicePropertiesDeviceVendor <String>]
- [-DevicePropertiesLinkSpeedInMbp <Int32>] [-IPAddress <String>] [-Id <String>] [-IsSecuritySite <Boolean>]
+New-AzVpnSite -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-AddressSpaceAddressPrefix <String[]>] [-BgpPropertyAsn <Int64>] [-BgpPropertyBgpPeeringAddress <String>]
+ [-BgpPropertyPeerWeight <Int32>] [-DevicePropertyDeviceModel <String>] [-DevicePropertyDeviceVendor <String>]
+ [-DevicePropertyLinkSpeedInMbp <Int32>] [-IPAddress <String>] [-Id <String>] [-IsSecuritySite <Boolean>]
  [-Location <String>] [-SiteKey <String>] [-Tag <IResourceTags>] [-VirtualWanId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzVpnSite -InputObject <INetworkIdentity> [-AddressSpaceAddressPrefix <String[]>] [-BgpPropertyAsn <Int64>]
+ [-BgpPropertyBgpPeeringAddress <String>] [-BgpPropertyPeerWeight <Int32>]
+ [-DevicePropertyDeviceModel <String>] [-DevicePropertyDeviceVendor <String>]
+ [-DevicePropertyLinkSpeedInMbp <Int32>] [-IPAddress <String>] [-Id <String>] [-IsSecuritySite <Boolean>]
+ [-Location <String>] [-SiteKey <String>] [-Tag <IResourceTags>] [-VirtualWanId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzVpnSite -InputObject <INetworkIdentity> [-Parameter <IVpnSite>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +63,7 @@ A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -88,12 +88,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BgpPropertiesAsn
+### -BgpPropertyAsn
 The BGP speaker's ASN.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -103,12 +103,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BgpPropertiesBgpPeeringAddress
+### -BgpPropertyBgpPeeringAddress
 The BGP peering address and BGP identifier of this BGP speaker.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -118,12 +118,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BgpPropertiesPeerWeight
+### -BgpPropertyPeerWeight
 The weight added to routes learned from this BGP speaker.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -148,12 +148,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevicePropertiesDeviceModel
+### -DevicePropertyDeviceModel
 Model of the device.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -163,12 +163,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevicePropertiesDeviceVendor
+### -DevicePropertyDeviceVendor
 Name of the device Vendor.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -178,12 +178,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevicePropertiesLinkSpeedInMbp
+### -DevicePropertyLinkSpeedInMbp
 Link speed.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -198,7 +198,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -208,12 +208,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -IPAddress
 The ip-address for the vpn-site.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -228,7 +243,7 @@ IsSecuritySite flag
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -243,7 +258,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -258,7 +273,7 @@ The name of the VpnSite being created or updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases: VpnSiteName
 
 Required: True
@@ -273,7 +288,7 @@ VpnSite Resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnSite
-Parameter Sets: CreateSubscriptionIdViaHost, Create
+Parameter Sets: Create, CreateViaIdentity
 Aliases: VpnSiteParameter
 
 Required: False
@@ -288,7 +303,7 @@ The resource group name of the VpnSite.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -303,7 +318,7 @@ The key for vpn-site that can be used for connections.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -319,7 +334,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -333,8 +348,8 @@ Accept wildcard characters: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IResourceTags
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -349,7 +364,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False

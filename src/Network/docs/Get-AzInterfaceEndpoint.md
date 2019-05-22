@@ -12,37 +12,27 @@ Gets the specified interface endpoint by resource group.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost1 (Default)
+### List1 (Default)
 ```
-Get-AzInterfaceEndpoint [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost
-```
-Get-AzInterfaceEndpoint -Name <String> -ResourceGroupName <String> [-Expand <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzInterfaceEndpoint -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzInterfaceEndpoint -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Expand <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListSubscriptionIdViaHost
-```
-Get-AzInterfaceEndpoint -ResourceGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzInterfaceEndpoint -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzInterfaceEndpoint -ResourceGroupName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
+Get-AzInterfaceEndpoint -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### List1
+### GetViaIdentity
 ```
-Get-AzInterfaceEndpoint -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzInterfaceEndpoint -InputObject <INetworkIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +69,7 @@ Expands referenced resources.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get, GetViaIdentity
 Aliases:
 
 Required: False
@@ -89,12 +79,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the interface endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get
 Aliases: InterfaceEndpointName
 
 Required: True
@@ -109,7 +114,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get, ListSubscriptionIdViaHost, List
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -124,8 +129,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List, List1
+Type: System.String[]
+Parameter Sets: List1, Get, List
 Aliases:
 
 Required: True

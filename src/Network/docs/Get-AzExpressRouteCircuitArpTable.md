@@ -8,25 +8,25 @@ schema: 2.0.0
 # Get-AzExpressRouteCircuitArpTable
 
 ## SYNOPSIS
-Gets the currently advertised ARP table associated with the express route circuit in a resource group.
+The ListArpTable from ExpressRouteCircuit operation retrieves the currently advertised arp table associated with the ExpressRouteCircuits in a resource group.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
+### List (Default)
 ```
-Get-AzExpressRouteCircuitArpTable -CircuitName <String> -DevicePath <String> -PeeringName <String>
- -ResourceGroupName <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzExpressRouteCircuitArpTable -CircuitName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### List
+### List2
 ```
-Get-AzExpressRouteCircuitArpTable -CircuitName <String> -DevicePath <String> -PeeringName <String>
- -ResourceGroupName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Get-AzExpressRouteCircuitArpTable -CircuitName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ -DevicePath <String> -PeeringName <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the currently advertised ARP table associated with the express route circuit in a resource group.
+The ListArpTable from ExpressRouteCircuit operation retrieves the currently advertised arp table associated with the ExpressRouteCircuits in a resource group.
 
 ## EXAMPLES
 
@@ -44,7 +44,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: List2
 Aliases:
 
 Required: False
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -CircuitName
-The name of the express route circuit.
+The name of the circuit.
 
 ```yaml
 Type: System.String
@@ -89,7 +89,7 @@ The path of the device.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List2
 Aliases:
 
 Required: True
@@ -104,7 +104,7 @@ The name of the peering.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List2
 Aliases:
 
 Required: True
@@ -134,8 +134,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: List
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -183,6 +183,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20150501Preview.IExpressRouteCircuitArpTable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuitsArpTableListResult
 ## NOTES
 

@@ -12,16 +12,9 @@ Gets all network security groups applied to a network interface.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
 ```
 Get-AzNetworkInterfaceEffectiveNetworkSecurityGroup -NetworkInterfaceName <String> -ResourceGroupName <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzNetworkInterfaceEffectiveNetworkSecurityGroup -NetworkInterfaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,8 +96,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: List
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -152,7 +145,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IEffectiveNetworkSecurityGroupListResult
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IEffectiveNetworkSecurityGroupListResult
 ## NOTES
 
 ## RELATED LINKS

@@ -12,17 +12,17 @@ Gets the backend health of the specified application gateway in a resource group
 
 ## SYNTAX
 
-### BackendSubscriptionIdViaHost (Default)
-```
-Invoke-AzBackendApplicationGatewayHealth -ApplicationGatewayName <String> -ResourceGroupName <String>
- [-Expand <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Backend
+### Backend (Default)
 ```
 Invoke-AzBackendApplicationGatewayHealth -ApplicationGatewayName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-Expand <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### BackendViaIdentity
+```
+Invoke-AzBackendApplicationGatewayHealth -InputObject <INetworkIdentity> [-Expand <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +44,7 @@ The name of the application gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Backend
 Aliases:
 
 Required: True
@@ -99,12 +99,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: BackendViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Backend
 Aliases:
 
 Required: True

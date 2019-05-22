@@ -12,78 +12,74 @@ Creates or updates a peering in the specified express route circuits.
 
 ## SYNTAX
 
-### CreateSubscriptionIdViaHost (Default)
-```
-New-AzExpressRouteCircuitPeering -CircuitName <String> -PeeringName <String> -ResourceGroupName <String>
- [-PeeringParameter <IExpressRouteCircuitPeering>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzExpressRouteCircuitPeering -CircuitName <String> -PeeringName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-AdvertisedCommunitiesMicrosoftPeeringConfigAdvertisedCommunity <String[]>]
- [-AdvertisedPublicPrefixStateMicrosoftPeeringConfigAdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
- [-AdvertisedPublicPrefixesMicrosoftPeeringConfigAdvertisedPublicPrefix <String[]>]
- [-AdvertisedPublicPrefixesStateMicrosoftPeeringConfigAdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
- [-AzureAsn <Int32>] [-ConfigAdvertisedCommunitiesMicrosoftPeeringConfigAdvertisedCommunity <String[]>]
- [-ConfigAdvertisedPublicPrefixesMicrosoftPeeringConfigAdvertisedPublicPrefix <String[]>]
- [-ConfigRoutingRegistryNameMicrosoftPeeringConfigRoutingRegistryName <String>]
- [-Connection <IExpressRouteCircuitConnection[]>] [-CustomerAsnMicrosoftPeeringConfigCustomerAsn <Int32>]
- [-GatewayManagerEtag <String>] [-Id <String>] [-IdRouteFilterId <String>]
- [-Ipv6PeeringConfigPrimaryPeerAddressPrefix <String>] [-Ipv6PeeringConfigSecondaryPeerAddressPrefix <String>]
- [-Ipv6PeeringConfigState <ExpressRouteCircuitPeeringState>] [-LastModifiedBy <String>]
- [-LegacyModeMicrosoftPeeringConfigLegacyMode <Int32>] [-LocationRouteFilterLocation <String>] [-Name <String>]
- [-PeerAsn <Int64>] [-PeeringType <ExpressRoutePeeringType>] [-PrimaryAzurePort <String>]
- [-PrimaryPeerAddressPrefix <String>] [-PropertiesPeering <IExpressRouteCircuitPeering[]>]
- [-PropertiesRule <IRouteFilterRule[]>] [-ProvisioningState <String>] [-ResourceIdRouteFilterId <String>]
- [-ResourceLocationRouteFilterLocation <String>] [-ResourceTagsRouteFilterTag <IResourceTags>]
- [-RouteFilterPropertiesFormatPeering <IExpressRouteCircuitPeering[]>]
- [-RouteFilterPropertiesFormatRule <IRouteFilterRule[]>]
- [-RoutingRegistryNameMicrosoftPeeringConfigRoutingRegistryName <String>]
- [-Schemas446CustomerAsnMicrosoftPeeringConfigCustomerAsn <Int32>]
- [-Schemas446LegacyModeMicrosoftPeeringConfigLegacyMode <Int32>] [-SecondaryAzurePort <String>]
- [-SecondaryPeerAddressPrefix <String>] [-SharedKey <String>] [-State <ExpressRoutePeeringState>]
- [-StatsPrimarybytesIn <Int64>] [-StatsPrimarybytesOut <Int64>] [-StatsSecondarybytesIn <Int64>]
- [-StatsSecondarybytesOut <Int64>] [-TagsRouteFilterTag <IResourceTags>] [-VlanId <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Create
+### Create (Default)
 ```
 New-AzExpressRouteCircuitPeering -CircuitName <String> -PeeringName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-PeeringParameter <IExpressRouteCircuitPeering>] [-DefaultProfile <PSObject>]
  [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateSubscriptionIdViaHostExpanded
+### CreateExpanded
 ```
 New-AzExpressRouteCircuitPeering -CircuitName <String> -PeeringName <String> -ResourceGroupName <String>
- [-AdvertisedCommunitiesMicrosoftPeeringConfigAdvertisedCommunity <String[]>]
- [-AdvertisedPublicPrefixStateMicrosoftPeeringConfigAdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
- [-AdvertisedPublicPrefixesMicrosoftPeeringConfigAdvertisedPublicPrefix <String[]>]
- [-AdvertisedPublicPrefixesStateMicrosoftPeeringConfigAdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
- [-AzureAsn <Int32>] [-ConfigAdvertisedCommunitiesMicrosoftPeeringConfigAdvertisedCommunity <String[]>]
- [-ConfigAdvertisedPublicPrefixesMicrosoftPeeringConfigAdvertisedPublicPrefix <String[]>]
- [-ConfigRoutingRegistryNameMicrosoftPeeringConfigRoutingRegistryName <String>]
- [-Connection <IExpressRouteCircuitConnection[]>] [-CustomerAsnMicrosoftPeeringConfigCustomerAsn <Int32>]
- [-GatewayManagerEtag <String>] [-Id <String>] [-IdRouteFilterId <String>]
- [-Ipv6PeeringConfigPrimaryPeerAddressPrefix <String>] [-Ipv6PeeringConfigSecondaryPeerAddressPrefix <String>]
- [-Ipv6PeeringConfigState <ExpressRouteCircuitPeeringState>] [-LastModifiedBy <String>]
- [-LegacyModeMicrosoftPeeringConfigLegacyMode <Int32>] [-LocationRouteFilterLocation <String>] [-Name <String>]
- [-PeerAsn <Int64>] [-PeeringType <ExpressRoutePeeringType>] [-PrimaryAzurePort <String>]
- [-PrimaryPeerAddressPrefix <String>] [-PropertiesPeering <IExpressRouteCircuitPeering[]>]
- [-PropertiesRule <IRouteFilterRule[]>] [-ProvisioningState <String>] [-ResourceIdRouteFilterId <String>]
- [-ResourceLocationRouteFilterLocation <String>] [-ResourceTagsRouteFilterTag <IResourceTags>]
- [-RouteFilterPropertiesFormatPeering <IExpressRouteCircuitPeering[]>]
- [-RouteFilterPropertiesFormatRule <IRouteFilterRule[]>]
- [-RoutingRegistryNameMicrosoftPeeringConfigRoutingRegistryName <String>]
- [-Schemas446CustomerAsnMicrosoftPeeringConfigCustomerAsn <Int32>]
- [-Schemas446LegacyModeMicrosoftPeeringConfigLegacyMode <Int32>] [-SecondaryAzurePort <String>]
- [-SecondaryPeerAddressPrefix <String>] [-SharedKey <String>] [-State <ExpressRoutePeeringState>]
- [-StatsPrimarybytesIn <Int64>] [-StatsPrimarybytesOut <Int64>] [-StatsSecondarybytesIn <Int64>]
- [-StatsSecondarybytesOut <Int64>] [-TagsRouteFilterTag <IResourceTags>] [-VlanId <Int32>]
+ -SubscriptionId <String> [-AdvertisedCommunity <String[]>] [-AdvertisedPublicPrefix <String[]>]
+ [-AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>] [-AzureAsn <Int32>]
+ [-Connection <IExpressRouteCircuitConnection[]>] [-CustomerAsn <Int32>] [-GatewayManagerEtag <String>]
+ [-Id <String>] [-Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunities <String[]>]
+ [-Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixes <String[]>]
+ [-Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
+ [-Ipv6PeeringConfigMicrosoftPeeringConfigCustomerAsn <Int32>]
+ [-Ipv6PeeringConfigMicrosoftPeeringConfigLegacyMode <Int32>]
+ [-Ipv6PeeringConfigMicrosoftPeeringConfigRoutingRegistryName <String>]
+ [-Ipv6PeeringConfigPrimaryPeerAddressPrefix <String>] [-Ipv6PeeringConfigRouteFilterId <String>]
+ [-Ipv6PeeringConfigRouteFilterLocation <String>]
+ [-Ipv6PeeringConfigRouteFilterPropertiesPeerings <IExpressRouteCircuitPeering[]>]
+ [-Ipv6PeeringConfigRouteFilterPropertiesRules <IRouteFilterRule[]>]
+ [-Ipv6PeeringConfigRouteFilterTags <IResourceTags>] [-Ipv6PeeringConfigSecondaryPeerAddressPrefix <String>]
+ [-Ipv6PeeringConfigState <ExpressRouteCircuitPeeringState>] [-LastModifiedBy <String>] [-LegacyMode <Int32>]
+ [-Location <String>] [-Name <String>] [-PeerAsn <Int64>] [-PeeringType <ExpressRoutePeeringType>]
+ [-PrimaryAzurePort <String>] [-PrimaryPeerAddressPrefix <String>] [-PropertiesRouteFilterId <String>]
+ [-ProvisioningState <String>] [-RouteFilterPropertiesPeering <IExpressRouteCircuitPeering[]>]
+ [-RouteFilterPropertiesRule <IRouteFilterRule[]>] [-RoutingRegistryName <String>]
+ [-SecondaryAzurePort <String>] [-SecondaryPeerAddressPrefix <String>] [-SharedKey <String>]
+ [-StatPrimarybytesIn <Int64>] [-StatPrimarybytesOut <Int64>] [-StatSecondarybytesIn <Int64>]
+ [-StatSecondarybytesOut <Int64>] [-State <ExpressRoutePeeringState>] [-Tag <IResourceTags>] [-VlanId <Int32>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzExpressRouteCircuitPeering -InputObject <INetworkIdentity> [-AdvertisedCommunity <String[]>]
+ [-AdvertisedPublicPrefix <String[]>]
+ [-AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>] [-AzureAsn <Int32>]
+ [-Connection <IExpressRouteCircuitConnection[]>] [-CustomerAsn <Int32>] [-GatewayManagerEtag <String>]
+ [-Id <String>] [-Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunities <String[]>]
+ [-Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixes <String[]>]
+ [-Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
+ [-Ipv6PeeringConfigMicrosoftPeeringConfigCustomerAsn <Int32>]
+ [-Ipv6PeeringConfigMicrosoftPeeringConfigLegacyMode <Int32>]
+ [-Ipv6PeeringConfigMicrosoftPeeringConfigRoutingRegistryName <String>]
+ [-Ipv6PeeringConfigPrimaryPeerAddressPrefix <String>] [-Ipv6PeeringConfigRouteFilterId <String>]
+ [-Ipv6PeeringConfigRouteFilterLocation <String>]
+ [-Ipv6PeeringConfigRouteFilterPropertiesPeerings <IExpressRouteCircuitPeering[]>]
+ [-Ipv6PeeringConfigRouteFilterPropertiesRules <IRouteFilterRule[]>]
+ [-Ipv6PeeringConfigRouteFilterTags <IResourceTags>] [-Ipv6PeeringConfigSecondaryPeerAddressPrefix <String>]
+ [-Ipv6PeeringConfigState <ExpressRouteCircuitPeeringState>] [-LastModifiedBy <String>] [-LegacyMode <Int32>]
+ [-Location <String>] [-Name <String>] [-PeerAsn <Int64>] [-PeeringType <ExpressRoutePeeringType>]
+ [-PrimaryAzurePort <String>] [-PrimaryPeerAddressPrefix <String>] [-PropertiesRouteFilterId <String>]
+ [-ProvisioningState <String>] [-RouteFilterPropertiesPeering <IExpressRouteCircuitPeering[]>]
+ [-RouteFilterPropertiesRule <IRouteFilterRule[]>] [-RoutingRegistryName <String>]
+ [-SecondaryAzurePort <String>] [-SecondaryPeerAddressPrefix <String>] [-SharedKey <String>]
+ [-StatPrimarybytesIn <Int64>] [-StatPrimarybytesOut <Int64>] [-StatSecondarybytesIn <Int64>]
+ [-StatSecondarybytesOut <Int64>] [-State <ExpressRoutePeeringState>] [-Tag <IResourceTags>] [-VlanId <Int32>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzExpressRouteCircuitPeering -InputObject <INetworkIdentity>
+ [-PeeringParameter <IExpressRouteCircuitPeering>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,13 +96,13 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AdvertisedCommunitiesMicrosoftPeeringConfigAdvertisedCommunity
+### -AdvertisedCommunity
 The communities of bgp peering.
 Specified for microsoft peering
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -116,12 +112,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AdvertisedPublicPrefixesMicrosoftPeeringConfigAdvertisedPublicPrefix
+### -AdvertisedPublicPrefix
 The reference of AdvertisedPublicPrefixes.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -131,30 +127,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AdvertisedPublicPrefixesStateMicrosoftPeeringConfigAdvertisedPublicPrefixesState
+### -AdvertisedPublicPrefixesState
 AdvertisedPublicPrefixState of the Peering resource.
 Possible values are 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringAdvertisedPublicPrefixState
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AdvertisedPublicPrefixStateMicrosoftPeeringConfigAdvertisedPublicPrefixesState
-AdvertisedPublicPrefixState of the Peering resource.
-Possible values are 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringAdvertisedPublicPrefixState
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
-Aliases: ExpressRouteCircuitPeeringAdvertisedPublicPrefixStateMicrosoftPeeringConfigAdvertisedPublicPrefixesState
 
 Required: False
 Position: Named
@@ -183,7 +163,7 @@ The Azure ASN.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -198,56 +178,10 @@ The name of the express route circuit.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConfigAdvertisedCommunitiesMicrosoftPeeringConfigAdvertisedCommunity
-The communities of bgp peering.
-Specified for microsoft peering
-
-```yaml
-Type: System.String[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
-Aliases: ExpressRouteCircuitPeeringConfigAdvertisedCommunitiesMicrosoftPeeringConfigAdvertisedCommunity
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConfigAdvertisedPublicPrefixesMicrosoftPeeringConfigAdvertisedPublicPrefix
-The reference of AdvertisedPublicPrefixes.
-
-```yaml
-Type: System.String[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
-Aliases: ExpressRouteCircuitPeeringConfigAdvertisedPublicPrefixesMicrosoftPeeringConfigAdvertisedPublicPrefix
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConfigRoutingRegistryNameMicrosoftPeeringConfigRoutingRegistryName
-The RoutingRegistryName of the configuration.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
-Aliases: ExpressRouteCircuitPeeringConfigRoutingRegistryNameMicrosoftPeeringConfigRoutingRegistryName
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -259,7 +193,7 @@ The list of circuit connections associated with Azure Private Peering for this c
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuitConnection[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -269,12 +203,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CustomerAsnMicrosoftPeeringConfigCustomerAsn
+### -CustomerAsn
 The CustomerASN of the peering.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -304,7 +238,7 @@ The GatewayManager Etag.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -319,7 +253,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -329,12 +263,104 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdRouteFilterId
-Resource ID.
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunities
+The communities of bgp peering.
+Specified for microsoft peering
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixes
+The reference of AdvertisedPublicPrefixes.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixesState
+AdvertisedPublicPrefixState of the Peering resource.
+Possible values are 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringAdvertisedPublicPrefixState
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Ipv6PeeringConfigMicrosoftPeeringConfigCustomerAsn
+The CustomerASN of the peering.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Ipv6PeeringConfigMicrosoftPeeringConfigLegacyMode
+The legacy mode of the peering.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Ipv6PeeringConfigMicrosoftPeeringConfigRoutingRegistryName
+The RoutingRegistryName of the configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -349,7 +375,82 @@ The primary address prefix.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Ipv6PeeringConfigRouteFilterId
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Ipv6PeeringConfigRouteFilterLocation
+Resource location.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Ipv6PeeringConfigRouteFilterPropertiesPeerings
+A collection of references to express route circuit peerings.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuitPeering[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Ipv6PeeringConfigRouteFilterPropertiesRules
+Collection of RouteFilterRules contained within a route filter.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IRouteFilterRule[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Ipv6PeeringConfigRouteFilterTags
+Resource tags.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -364,7 +465,7 @@ The secondary address prefix.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -380,7 +481,7 @@ Possible values are: 'Disabled' and 'Enabled'
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringState
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -395,7 +496,7 @@ Gets whether the provider or the customer last modified the peering.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -405,12 +506,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LegacyModeMicrosoftPeeringConfigLegacyMode
+### -LegacyMode
 The legacy mode of the peering.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -420,12 +521,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LocationRouteFilterLocation
+### -Location
 Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -441,7 +542,7 @@ This name can be used to access the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -456,7 +557,7 @@ The peer ASN.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -471,7 +572,7 @@ The name of the peering.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -486,7 +587,7 @@ Peering in an ExpressRouteCircuit resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuitPeering
-Parameter Sets: CreateSubscriptionIdViaHost, Create
+Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
 Required: False
@@ -501,7 +602,7 @@ The peering type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRoutePeeringType
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -516,7 +617,7 @@ The primary port.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -531,7 +632,7 @@ The primary address prefix.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -541,27 +642,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PropertiesPeering
-A collection of references to express route circuit peerings.
+### -PropertiesRouteFilterId
+Resource ID.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuitPeering[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PropertiesRule
-Collection of RouteFilterRules contained within a route filter.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IRouteFilterRule[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -577,7 +663,7 @@ Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -592,7 +678,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -602,57 +688,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceIdRouteFilterId
-Resource ID.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceLocationRouteFilterLocation
-Resource location.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceTagsRouteFilterTag
-Resource tags.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IResourceTags
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RouteFilterPropertiesFormatPeering
+### -RouteFilterPropertiesPeering
 A collection of references to express route circuit peerings.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuitPeering[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -662,12 +703,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RouteFilterPropertiesFormatRule
+### -RouteFilterPropertiesRule
 Collection of RouteFilterRules contained within a route filter.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IRouteFilterRule[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -677,47 +718,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RoutingRegistryNameMicrosoftPeeringConfigRoutingRegistryName
+### -RoutingRegistryName
 The RoutingRegistryName of the configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Schemas446CustomerAsnMicrosoftPeeringConfigCustomerAsn
-The CustomerASN of the peering.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Schemas446LegacyModeMicrosoftPeeringConfigLegacyMode
-The legacy mode of the peering.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -727,7 +738,7 @@ The secondary port.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -742,7 +753,7 @@ The secondary address prefix.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -757,7 +768,7 @@ The shared key.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -772,7 +783,7 @@ The peering state.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRoutePeeringState
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -782,12 +793,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StatsPrimarybytesIn
+### -StatPrimarybytesIn
 Gets BytesIn of the peering.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -797,12 +808,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StatsPrimarybytesOut
+### -StatPrimarybytesOut
 Gets BytesOut of the peering.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -812,12 +823,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StatsSecondarybytesIn
+### -StatSecondarybytesIn
 Gets BytesIn of the peering.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -827,12 +838,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StatsSecondarybytesOut
+### -StatSecondarybytesOut
 Gets BytesOut of the peering.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -848,7 +859,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -858,12 +869,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TagsRouteFilterTag
+### -Tag
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IResourceTags
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -878,7 +889,7 @@ The VLAN ID.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False

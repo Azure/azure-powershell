@@ -1,6 +1,6 @@
 ---
 external help file: Az.Network-help.xml
-Module Name: Az.Network
+Module Name:
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azvirtualnetworkgatewayvpnclientipsecparameter
 schema: 2.0.0
 ---
@@ -12,9 +12,9 @@ The Set VpnclientIpsecParameters operation sets the vpnclient ipsec policy for P
 
 ## SYNTAX
 
-### SetSubscriptionIdViaHost (Default)
+### Set (Default)
 ```
-Set-AzVirtualNetworkGatewayVpnclientIpsecParameter -ResourceGroupName <String>
+Set-AzVirtualNetworkGatewayVpnclientIpsecParameter -ResourceGroupName <String> -SubscriptionId <String>
  -VirtualNetworkGatewayName <String> [-VpnclientIpsecParam <IVpnClientIPsecParameters>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -28,20 +28,19 @@ Set-AzVirtualNetworkGatewayVpnclientIpsecParameter -ResourceGroupName <String> -
  [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Set
+### SetViaIdentityExpanded
 ```
-Set-AzVirtualNetworkGatewayVpnclientIpsecParameter -ResourceGroupName <String> -SubscriptionId <String>
- -VirtualNetworkGatewayName <String> [-VpnclientIpsecParam <IVpnClientIPsecParameters>]
+Set-AzVirtualNetworkGatewayVpnclientIpsecParameter -InputObject <INetworkIdentity> -DhGroup <DhGroup>
+ -IkeEncryption <IkeEncryption> -IkeIntegrity <IkeIntegrity> -IpsecEncryption <IpsecEncryption>
+ -IpsecIntegrity <IpsecIntegrity> -PfsGroup <PfsGroup> -SaDataSizeKilobyte <Int32> -SaLifeTimeSecond <Int32>
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SetSubscriptionIdViaHostExpanded
+### SetViaIdentity
 ```
-Set-AzVirtualNetworkGatewayVpnclientIpsecParameter -ResourceGroupName <String>
- -VirtualNetworkGatewayName <String> -DhGroup <DhGroup> -IkeEncryption <IkeEncryption>
- -IkeIntegrity <IkeIntegrity> -IpsecEncryption <IpsecEncryption> -IpsecIntegrity <IpsecIntegrity>
- -PfsGroup <PfsGroup> -SaDataSizeKilobyte <Int32> -SaLifeTimeSecond <Int32> [-DefaultProfile <PSObject>]
- [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzVirtualNetworkGatewayVpnclientIpsecParameter -InputObject <INetworkIdentity>
+ [-VpnclientIpsecParam <IVpnClientIPsecParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,7 +92,7 @@ The DH Group used in IKE Phase 1 for initial SA.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.DhGroup
-Parameter Sets: SetExpanded, SetSubscriptionIdViaHostExpanded
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -108,7 +107,7 @@ The IKE encryption algorithm (IKE phase 2).
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IkeEncryption
-Parameter Sets: SetExpanded, SetSubscriptionIdViaHostExpanded
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -123,7 +122,7 @@ The IKE integrity algorithm (IKE phase 2).
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IkeIntegrity
-Parameter Sets: SetExpanded, SetSubscriptionIdViaHostExpanded
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -133,12 +132,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: SetViaIdentityExpanded, SetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -IpsecEncryption
 The IPSec encryption algorithm (IKE phase 1).
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IpsecEncryption
-Parameter Sets: SetExpanded, SetSubscriptionIdViaHostExpanded
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -153,7 +167,7 @@ The IPSec integrity algorithm (IKE phase 1).
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IpsecIntegrity
-Parameter Sets: SetExpanded, SetSubscriptionIdViaHostExpanded
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -168,7 +182,7 @@ The Pfs Group used in IKE Phase 2 for new child SA.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.PfsGroup
-Parameter Sets: SetExpanded, SetSubscriptionIdViaHostExpanded
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -183,7 +197,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Set, SetExpanded
 Aliases:
 
 Required: True
@@ -198,7 +212,7 @@ The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload si
 
 ```yaml
 Type: System.Int32
-Parameter Sets: SetExpanded, SetSubscriptionIdViaHostExpanded
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -213,7 +227,7 @@ The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime i
 
 ```yaml
 Type: System.Int32
-Parameter Sets: SetExpanded, SetSubscriptionIdViaHostExpanded
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -229,7 +243,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, Set
+Parameter Sets: Set, SetExpanded
 Aliases:
 
 Required: True
@@ -244,7 +258,7 @@ The name of the virtual network gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Set, SetExpanded
 Aliases:
 
 Required: True
@@ -259,7 +273,7 @@ An IPSec parameters for a virtual network gateway P2S connection.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnClientIPsecParameters
-Parameter Sets: SetSubscriptionIdViaHost, Set
+Parameter Sets: Set, SetViaIdentity
 Aliases:
 
 Required: False

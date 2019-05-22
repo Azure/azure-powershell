@@ -12,17 +12,9 @@ Gets information about all public IP addresses in a virtual machine IP configura
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
 ```
 Get-AzPublicIPAddressVirtualMachineScaleSetVMPublicIpaddress -IPConfigurationName <String>
- -NetworkInterfaceName <String> -ResourceGroupName <String> -VirtualMachineScaleSetName <String>
- -VirtualmachineIndex <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzPublicIPAddressVirtualMachineScaleSetVMPublicIpaddress -IPConfigurationName <String>
- -NetworkInterfaceName <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -NetworkInterfaceName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  -VirtualMachineScaleSetName <String> -VirtualmachineIndex <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -106,8 +98,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: List
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True

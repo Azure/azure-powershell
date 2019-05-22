@@ -12,14 +12,8 @@ Gets all the available express route service providers.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
 ```
-Get-AzExpressRouteServiceProvider [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzExpressRouteServiceProvider -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzExpressRouteServiceProvider -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,8 +50,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: List
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -74,7 +68,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteServiceProvider
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteServiceProvider
 ## NOTES
 
 ## RELATED LINKS

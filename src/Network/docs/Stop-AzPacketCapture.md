@@ -12,17 +12,17 @@ Stops a specified packet capture session.
 
 ## SYNTAX
 
-### StopSubscriptionIdViaHost (Default)
-```
-Stop-AzPacketCapture -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String> [-PassThru]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Stop
+### Stop (Default)
 ```
 Stop-AzPacketCapture -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### StopViaIdentity
+```
+Stop-AzPacketCapture -InputObject <INetworkIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,12 +69,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: StopViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the packet capture session.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Stop
 Aliases: PacketCaptureName
 
 Required: True
@@ -89,7 +104,7 @@ The name of the network watcher.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Stop
 Aliases:
 
 Required: True
@@ -119,7 +134,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Stop
 Aliases:
 
 Required: True

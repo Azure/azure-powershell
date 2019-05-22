@@ -12,15 +12,15 @@ Checks whether a domain name in the cloudapp.azure.com zone is available for use
 
 ## SYNTAX
 
-### CheckSubscriptionIdViaHost (Default)
-```
-Test-AzDnsNameAvailability -Location <String> -DomainNameLabel <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### Check
+### Check (Default)
 ```
 Test-AzDnsNameAvailability -Location <String> -SubscriptionId <String> -DomainNameLabel <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### CheckViaIdentity
+```
+Test-AzDnsNameAvailability -InputObject <INetworkIdentity> -DomainNameLabel <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -69,12 +69,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: CheckViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Location
 The location of the domain name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Check
 Aliases:
 
 Required: True

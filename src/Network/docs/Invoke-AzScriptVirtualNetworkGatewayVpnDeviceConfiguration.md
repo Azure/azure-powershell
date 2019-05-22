@@ -12,9 +12,9 @@ Gets a xml format representation for vpn device configuration script.
 
 ## SYNTAX
 
-### ScriptSubscriptionIdViaHost (Default)
+### Script (Default)
 ```
-Invoke-AzScriptVirtualNetworkGatewayVpnDeviceConfiguration -ResourceGroupName <String>
+Invoke-AzScriptVirtualNetworkGatewayVpnDeviceConfiguration -ResourceGroupName <String> -SubscriptionId <String>
  -VirtualNetworkGatewayConnectionName <String> [-Parameter <IVpnDeviceScriptParameters>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -26,18 +26,18 @@ Invoke-AzScriptVirtualNetworkGatewayVpnDeviceConfiguration -ResourceGroupName <S
  [-Vendor <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Script
+### ScriptViaIdentityExpanded
 ```
-Invoke-AzScriptVirtualNetworkGatewayVpnDeviceConfiguration -ResourceGroupName <String> -SubscriptionId <String>
- -VirtualNetworkGatewayConnectionName <String> [-Parameter <IVpnDeviceScriptParameters>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzScriptVirtualNetworkGatewayVpnDeviceConfiguration -InputObject <INetworkIdentity>
+ [-DeviceFamily <String>] [-FirmwareVersion <String>] [-Vendor <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### ScriptSubscriptionIdViaHostExpanded
+### ScriptViaIdentity
 ```
-Invoke-AzScriptVirtualNetworkGatewayVpnDeviceConfiguration -ResourceGroupName <String>
- -VirtualNetworkGatewayConnectionName <String> [-DeviceFamily <String>] [-FirmwareVersion <String>]
- [-Vendor <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzScriptVirtualNetworkGatewayVpnDeviceConfiguration -InputObject <INetworkIdentity>
+ [-Parameter <IVpnDeviceScriptParameters>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,7 +74,7 @@ The device family for the vpn device.
 
 ```yaml
 Type: System.String
-Parameter Sets: ScriptExpanded, ScriptSubscriptionIdViaHostExpanded
+Parameter Sets: ScriptExpanded, ScriptViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -89,7 +89,7 @@ The firmware version for the vpn device.
 
 ```yaml
 Type: System.String
-Parameter Sets: ScriptExpanded, ScriptSubscriptionIdViaHostExpanded
+Parameter Sets: ScriptExpanded, ScriptViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -99,12 +99,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: ScriptViaIdentityExpanded, ScriptViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Parameter
 Vpn device configuration script generation parameters
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnDeviceScriptParameters
-Parameter Sets: ScriptSubscriptionIdViaHost, Script
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnDeviceScriptParameters
+Parameter Sets: Script, ScriptViaIdentity
 Aliases:
 
 Required: False
@@ -119,7 +134,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Script, ScriptExpanded
 Aliases:
 
 Required: True
@@ -135,7 +150,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: ScriptExpanded, Script
+Parameter Sets: Script, ScriptExpanded
 Aliases:
 
 Required: True
@@ -150,7 +165,7 @@ The vendor for the vpn device.
 
 ```yaml
 Type: System.String
-Parameter Sets: ScriptExpanded, ScriptSubscriptionIdViaHostExpanded
+Parameter Sets: ScriptExpanded, ScriptViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -165,7 +180,7 @@ The name of the virtual network gateway connection for which the configuration s
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Script, ScriptExpanded
 Aliases:
 
 Required: True
