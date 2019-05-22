@@ -50,8 +50,8 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
             {
                 Name = Name,
                 Order = Order,
-                Condition = Condition,
-                Action = Action
+                Conditions = Condition,
+                Actions = Action
             };
 
             WriteObject(deliveryRule);

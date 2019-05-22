@@ -409,7 +409,7 @@
     "Get-AzCdnCustomDomain": "Get-AzureRmCdnCustomDomain",
     "New-AzCdnCustomDomain": "New-AzureRmCdnCustomDomain",
     "Remove-AzCdnCustomDomain": "Remove-AzureRmCdnCustomDomain",
-    "Enable-AzCdnCustomDomainHttps": "Enable-AzureRmCdnCustomDomainHttps",
+    "Enable-AzCdnCustomDomain": "Enable-AzureRmCdnCustomDomain",
     "Disable-AzCdnCustomDomain": "Disable-AzureRmCdnCustomDomain",
     "Get-AzCdnProfileResourceUsage": "Get-AzureRmCdnProfileResourceUsage",
     "Confirm-AzCdnEndpointProbeUrl": "Confirm-AzureRmCdnEndpointProbeUrl",
