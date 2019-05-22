@@ -1076,5 +1076,28 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("VulnerabilityAssessmentWrongParameterType", resourceCulture);
             }
         }
+  
+
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Instance Failover Group &apos;{0}&apos; on server &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseInstanceFailoverGroupDescription
+        {
+            get
+            {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseInstanceFailoverGroupDescription", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database Instance Failover Group &apos;{0}&apos; on server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseInstanceFailoverGroupWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseInstanceFailoverGroupWarning", resourceCulture);
+            }
+        }
     }
 }
