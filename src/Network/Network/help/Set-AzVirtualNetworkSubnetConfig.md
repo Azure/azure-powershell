@@ -16,17 +16,17 @@ Updates a subnet configuration for a virtual network.
 ### SetByResource (Default)
 ```
 Set-AzVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String[]>
- [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>] [-ServiceEndpoint <String[]>]
- [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>] [-Delegation <PSDelegation[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>] [-InputObject <PSNatGateway>]
+ [-ServiceEndpoint <String[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
+ [-Delegation <PSDelegation[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 Set-AzVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String[]>
- [-NetworkSecurityGroupId <String>] [-RouteTableId <String>] [-ServiceEndpoint <String[]>]
- [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>] [-Delegation <PSDelegation[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-NetworkSecurityGroupId <String>] [-RouteTableId <String>] [-ResourceId <String>]
+ [-ServiceEndpoint <String[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
+ [-Delegation <PSDelegation[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,6 +81,24 @@ This example creates a resource group with one virtual network containing just o
     security group. The Set-AzVirtualNetwork cmdlet is then called to write the modified 
     state back to the service.
 
+### 3: Attach a Nat Gateway to a subnet
+```
+$pip = New-AzPublicIpAddress -Name "pip" -ResourceGroupName "natgateway_test" `
+   -Location "eastus2" -Sku "Standard" -IdleTimeoutInMinutes 4 -AllocationMethod "static"
+
+$natGateway = New-AzNatGateway -ResourceGroupName "natgateway_test" -Name "nat_gateway" `
+   -IdleTimeoutInMinutes 4 -Sku "Standard" -Location "eastus2" -PublicIpAddress $pip
+
+$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24" 
+
+$virtualNetwork = New-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup 
+    -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
+
+Set-AzVirtualNetworkSubnetConfig -Name frontendSubnet -VirtualNetwork $virtualNetwork -InputObject $natGateway 
+
+$virtualNetwork | Set-AzVirtualNetwork
+```
+
 ## PARAMETERS
 
 ### -AddressPrefix
@@ -128,6 +146,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Specifies the nat gateway associated with the subnet configuration.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSNatGateway
+Parameter Sets: SetByResource
+Aliases: NatGateway
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of a subnet configuration that this cmdlet configures.
 
@@ -165,6 +198,21 @@ Specifies the ID of a network security group.
 Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Specifies the Id of NAT Gateway resource associated with the subnet configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceId
+Aliases: NatGatewayId
 
 Required: False
 Position: Named
@@ -249,7 +297,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

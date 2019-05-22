@@ -19,5 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* GA release of Deployment Manager cmdlets
+
 ## Version 0.1.0
 * First release of 'Az.DeploymentManager' module. Parity with AzureRM.DeploymentManager module.
