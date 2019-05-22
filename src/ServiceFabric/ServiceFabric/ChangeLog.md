@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+* Fix missing character in Service Fabric cmdlines
+
 ## Version 1.0.1
 * Rollback when a certificate is added to VMSS model but an exception is thrown this is to fix bug: https://github.com/Azure/service-fabric-issues/issues/932
 * Fix some error messages.
