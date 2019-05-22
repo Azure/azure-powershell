@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.4.0
+* Add new cmdlet Get-AzureRmDenyAssignment for retrieving deny assignments
+
 ## Version 1.3.1
 * Fix documentation for wildcards
 

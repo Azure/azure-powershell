@@ -14,7 +14,6 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services;
 using Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model;
 using System;
@@ -23,7 +22,7 @@ using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
 {
-    public class SqlManagedInstanceAdvancedDataSecurityCmdletBase : AzureSqlCmdletBase<ManagedInstanceAdvancedDataSecurityPolicyModel, SqlAdvancedThreatProtectionAdapter>
+    public class SqlManagedInstanceAdvancedDataSecurityCmdletBase : AzureSqlCmdletBase<ManagedInstanceAdvancedDataSecurityPolicyModel, SqlAdvancedDataSecurityAdapter>
     {
         protected const string UseParentResourceParameterSet = "UseParentResourceParameterSet";
 
@@ -74,9 +73,9 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         /// </summary>
         /// <param name="subscription">The AzureSubscription in which the current execution is performed</param>
         /// <returns>An initialized and ready to use ModelAdapter object</returns>
-        protected override SqlAdvancedThreatProtectionAdapter InitModelAdapter()
+        protected override SqlAdvancedDataSecurityAdapter InitModelAdapter()
         {
-            return new SqlAdvancedThreatProtectionAdapter(DefaultProfile.DefaultContext);
+            return new SqlAdvancedDataSecurityAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

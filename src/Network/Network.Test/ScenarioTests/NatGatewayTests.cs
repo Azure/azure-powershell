@@ -27,7 +27,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestNatGatewayCRUDMinimalParameters()
         {
             TestRunner.RunTestScript("Test-NatGatewayCRUDMinimalParameters");
@@ -35,7 +35,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestNatGatewayCRUDAllParameters()
         {
             TestRunner.RunTestScript("Test-NatGatewayCRUDAllParameters");
@@ -43,7 +43,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestNatGatewayWithSubnet()
         {
             TestRunner.RunTestScript("Test-NatGatewayWithSubnet");

@@ -112,6 +112,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 PublicDataEndpointEnabled = model.PublicDataEndpointEnabled,
                 ProxyOverride = model.ProxyOverride,
                 TimezoneId = model.TimezoneId,
+                DnsZonePartner = model.DnsZonePartner,
             });
 
             return CreateManagedInstanceModelFromResponse(resp);
@@ -183,6 +184,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.PublicDataEndpointEnabled = resp.PublicDataEndpointEnabled;
             managedInstance.ProxyOverride = resp.ProxyOverride;
             managedInstance.TimezoneId = resp.TimezoneId;
+            managedInstance.DnsZone = resp.DnsZone;
 
             Management.Internal.Resources.Models.Sku sku = new Management.Internal.Resources.Models.Sku();
             sku.Name = resp.Sku.Name;
