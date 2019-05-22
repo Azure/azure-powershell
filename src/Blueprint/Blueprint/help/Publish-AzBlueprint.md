@@ -8,7 +8,7 @@ schema: 2.0.0
 # Publish-AzBlueprint
 
 ## SYNOPSIS
-Publish a new blueprint version.
+Publish a new version of a blueprint.
 
 ## SYNTAX
 
@@ -18,16 +18,15 @@ Publish-AzBlueprint -Version <String> -Blueprint <PSBlueprint> [-DefaultProfile 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Publish a new version of a blueprint.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Publish-AzBlueprint -Blueprint $bp -Version 1.0 
 ```
-
-{{ Add example description here }}
+Publish a new version of a blueprint.
 
 ## PARAMETERS
 

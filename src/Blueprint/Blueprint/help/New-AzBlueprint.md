@@ -25,16 +25,16 @@ New-AzBlueprint -Name <String> -ManagementGroupId <String> -BlueprintFile <Strin
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Create a new blueprint.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzBlueprint -Name MyNewBlueprint -SubscriptionId 00000000-1111-0000-1111-000000000000 -BlueprintFile C:\Blueprint.json
 ```
 
-{{ Add example description here }}
+Create a new blueprint within the specified subscription.
 
 ## PARAMETERS
 

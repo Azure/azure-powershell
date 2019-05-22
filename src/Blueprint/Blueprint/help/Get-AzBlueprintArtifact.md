@@ -24,10 +24,10 @@ Get-AzBlueprintArtifact [-Name <String>] -Blueprint <PSBlueprintBase> [-Blueprin
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzBlueprintArtifact -Name MyArtifact -Blueprint $bp -BlueprintVersion 1.0
 ```
 
-{{ Add example description here }}
+Retrieve a blueprint artifact with its properties.
 
 ## PARAMETERS
 

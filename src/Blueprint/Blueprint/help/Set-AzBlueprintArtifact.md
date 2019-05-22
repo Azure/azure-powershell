@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Blueprint.dll-Help.xml
 Module Name: Az.Blueprint
-online version: https://docs.microsoft.com/en-us/powershell/module/az.blueprint/new-azblueprintartifact
+online version: https://docs.microsoft.com/en-us/powershell/module/az.blueprint/set-azblueprintartifact
 schema: 2.0.0
 ---
 
@@ -44,16 +44,16 @@ Set-AzBlueprintArtifact -Name <String> -Type <PSArtifactKind> -Blueprint <PSBlue
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Updates an template artifact.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzBlueprintArtifact -Blueprint $bp -ArtifactFile C:\TemplateARtifact.json
 ```
 
-{{ Add example description here }}
+Update an template artifact.
 
 ## PARAMETERS
 

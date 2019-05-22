@@ -18,16 +18,16 @@ Export-AzBlueprintWithArtifacts -Blueprint <PSBlueprintBase> -OutputPath <String
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Export a blueprint with it's artifact and save to disk.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Export-AzBlueprintWithArtifacts -Blueprint $bp -Version 1.0 -OutputPath C:\ExportedBlueprint
 ```
 
-{{ Add example description here }}
+Export a blueprint with it's artifact and save to disk.
 
 ## PARAMETERS
 

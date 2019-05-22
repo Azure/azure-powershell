@@ -44,16 +44,16 @@ New-AzBlueprintArtifact -Name <String> -Type <PSArtifactKind> -Blueprint <PSBlue
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Create a new template artifact.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzBlueprintArtifact -Blueprint $bp -ArtifactFile C:\TemplateARtifact.json
 ```
 
-{{ Add example description here }}
+Create a new template artifact.
 
 ## PARAMETERS
 

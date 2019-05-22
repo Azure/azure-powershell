@@ -25,16 +25,16 @@ Set-AzBlueprint -Name <String> -ManagementGroupId <String> -BlueprintFile <Strin
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Update a blueprint.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzBlueprint -Name MyBlueprint -SubscriptionId 00000000-1111-0000-1111-000000000000 -BlueprintFile C:\Blueprint.json
 ```
 
-{{ Add example description here }}
+Update a blueprint with new parameters.
 
 ## PARAMETERS
 

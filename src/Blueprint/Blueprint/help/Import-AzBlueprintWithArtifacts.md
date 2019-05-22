@@ -18,16 +18,16 @@ Import-AzBlueprintWithArtifacts -Name <String> [-SubscriptionId <String>] [-Mana
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Import a blueprint with its artifacts.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Import-AzBlueprintWithArtifacts -Name MyBlueprint -SubscriptionId 00000000-1111-0000-1111-000000000000 -InputPath  C:\ExportedBlueprint
 ```
 
-{{ Add example description here }}
+Import a blueprint with its artifacts and save within a subscription.
 
 ## PARAMETERS
 
