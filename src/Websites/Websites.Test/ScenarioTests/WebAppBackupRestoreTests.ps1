@@ -14,15 +14,15 @@
 
 # Snapshots require a Premium app to exist for several hours.
 # Deploy a Premium app and update these global variables to re-record the snapshots tests.
-$snapshotRgName = 'onesdksnapshots'
-$snapshotAppName = 'onesdkpremapp2'
+$snapshotRgName = 'web2'
+$snapshotAppName = 'nkprem'
 $snapshotAppSlot = 'staging'
 
 # Restoring a deleted web app requires an app to have a snapshot available.
 # Deploy a web app and wait at least an hour for a snapshot.
 # Update these global variables to re-record Test-RestoreDeletedWebApp.
-$undeleteRgName = 'ps8425'
-$undeleteAppName = 'ps1705'
+$undeleteRgName = 'nickingssltests'
+$undeleteAppName = 'nkundeletetest'
 $undeleteSlot = 'testslot'
 
 # !!! Storage keys and SAS URIs will be stored in the backup test recordings !!!
@@ -379,7 +379,7 @@ function Test-RestoreWebAppSnapshot
 	Restore-AzWebAppSnapshot -ResourceGroupName $snapshotRgName -Name $snapshotAppName -InputObject $snapshot -Force -RecoverConfiguration
 
 	# Test restore to target slot
-	Restore-AzWebAppSnapshot $snapshotRgName $snapshotAppName $snapshotAppSlot $snapshot -RecoverConfiguration -Force
+	Restore-AzWebAppSnapshot $snapshotRgName $snapshotAppName $snapshotAppSlot $snapshot -RecoverConfiguration -UseDisasterRecovery -Force
 
 	# Test piping and background job
 	$job = $snapshot | Restore-AzWebAppSnapshot -Force -AsJob
@@ -482,7 +482,7 @@ function Test-RestoreDeletedWebAppToNew
 		New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier
 		$deletedApp = Get-AzDeletedWebApp -ResourceGroupName $undeleteRgName -Name $undeleteAppName -Slot "Production"
 		# Test piping the deleted app
-		$job = $deletedApp | Restore-AzDeletedWebApp -TargetResourceGroupName $rgname -TargetAppServicePlanName $whpName -Force -AsJob
+		$job = $deletedApp | Restore-AzDeletedWebApp -TargetResourceGroupName $rgname -TargetAppServicePlanName $whpName -UseDisasterRecovery -Force -AsJob
 		$result = $job | Wait-Job
 		Assert-AreEqual "Completed" $result.State;
 

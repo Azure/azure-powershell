@@ -14,23 +14,26 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "DeveloperPortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ScmCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ManagementCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "PortalCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ProxyCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
               "Identity": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity",
               "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "SslSetting": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
               "SystemCertificates": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
               "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
               "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "PublisherEmail": "System.String",
-              "NotificationSenderEmail": "System.String",
+              "EnableClientCertificate": "System.Nullable`1[System.Boolean]",
+              "OrganizationName": "System.String",
               "ResourceGroupName": "System.String",
+              "PublisherEmail": "System.String",
               "ScmUrl": "System.String",
               "ManagementApiUrl": "System.String",
               "PortalUrl": "System.String",
@@ -40,7 +43,7 @@
               "Location": "System.String",
               "Name": "System.String",
               "Id": "System.String",
-              "OrganizationName": "System.String",
+              "NotificationSenderEmail": "System.String",
               "PrivateIPAddresses": "System.String[]",
               "PublicIPAddresses": "System.String[]"
             },
@@ -157,23 +160,26 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "DeveloperPortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ScmCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ManagementCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "PortalCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ProxyCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
               "Identity": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity",
               "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "SslSetting": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
               "SystemCertificates": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
               "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
               "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "PublisherEmail": "System.String",
-              "NotificationSenderEmail": "System.String",
+              "EnableClientCertificate": "System.Nullable`1[System.Boolean]",
+              "OrganizationName": "System.String",
               "ResourceGroupName": "System.String",
+              "PublisherEmail": "System.String",
               "ScmUrl": "System.String",
               "ManagementApiUrl": "System.String",
               "PortalUrl": "System.String",
@@ -183,7 +189,7 @@
               "Location": "System.String",
               "Name": "System.String",
               "Id": "System.String",
-              "OrganizationName": "System.String",
+              "NotificationSenderEmail": "System.String",
               "PrivateIPAddresses": "System.String[]",
               "PublicIPAddresses": "System.String[]"
             },
@@ -317,7 +323,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -357,7 +363,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "VnetId": "System.Guid",
               "SubnetName": "System.String",
@@ -450,23 +456,26 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
+                    "DeveloperPortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
                     "ScmCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
                     "ManagementCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
                     "PortalCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
                     "ProxyCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
                     "Identity": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity",
                     "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+                    "SslSetting": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
                     "SystemCertificates": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
                     "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
                     "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
                     "Capacity": "System.Int32",
-                    "PublisherEmail": "System.String",
-                    "NotificationSenderEmail": "System.String",
+                    "EnableClientCertificate": "System.Nullable`1[System.Boolean]",
+                    "OrganizationName": "System.String",
                     "ResourceGroupName": "System.String",
+                    "PublisherEmail": "System.String",
                     "ScmUrl": "System.String",
                     "ManagementApiUrl": "System.String",
                     "PortalUrl": "System.String",
@@ -476,7 +485,7 @@
                     "Location": "System.String",
                     "Name": "System.String",
                     "Id": "System.String",
-                    "OrganizationName": "System.String",
+                    "NotificationSenderEmail": "System.String",
                     "PrivateIPAddresses": "System.String[]",
                     "PublicIPAddresses": "System.String[]"
                   },
@@ -622,7 +631,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -674,7 +683,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "VnetId": "System.Guid",
                     "SubnetName": "System.String",
@@ -785,23 +794,26 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "DeveloperPortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ScmCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ManagementCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "PortalCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ProxyCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
               "Identity": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity",
               "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "SslSetting": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
               "SystemCertificates": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
               "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
               "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "PublisherEmail": "System.String",
-              "NotificationSenderEmail": "System.String",
+              "EnableClientCertificate": "System.Nullable`1[System.Boolean]",
+              "OrganizationName": "System.String",
               "ResourceGroupName": "System.String",
+              "PublisherEmail": "System.String",
               "ScmUrl": "System.String",
               "ManagementApiUrl": "System.String",
               "PortalUrl": "System.String",
@@ -811,7 +823,7 @@
               "Location": "System.String",
               "Name": "System.String",
               "Id": "System.String",
-              "OrganizationName": "System.String",
+              "NotificationSenderEmail": "System.String",
               "PrivateIPAddresses": "System.String[]",
               "PublicIPAddresses": "System.String[]"
             },
@@ -1028,7 +1040,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1215,7 +1227,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1290,23 +1302,26 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "DeveloperPortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ScmCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ManagementCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "PortalCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ProxyCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
               "Identity": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity",
               "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "SslSetting": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
               "SystemCertificates": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
               "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
               "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "PublisherEmail": "System.String",
-              "NotificationSenderEmail": "System.String",
+              "EnableClientCertificate": "System.Nullable`1[System.Boolean]",
+              "OrganizationName": "System.String",
               "ResourceGroupName": "System.String",
+              "PublisherEmail": "System.String",
               "ScmUrl": "System.String",
               "ManagementApiUrl": "System.String",
               "PortalUrl": "System.String",
@@ -1316,7 +1331,7 @@
               "Location": "System.String",
               "Name": "System.String",
               "Id": "System.String",
-              "OrganizationName": "System.String",
+              "NotificationSenderEmail": "System.String",
               "PrivateIPAddresses": "System.String[]",
               "PublicIPAddresses": "System.String[]"
             },
@@ -1422,7 +1437,10 @@
             ]
           },
           "ParameterSets": [
-            "__AllParameterSets"
+            "GetBySubscription",
+            "GetByResourceGroup",
+            "GetByResource",
+            "ByResourceId"
           ]
         }
       ],
@@ -1447,6 +1465,24 @@
         },
         {
           "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ResourceId",
           "AliasList": [],
           "Type": {
             "Namespace": "System",
@@ -1659,6 +1695,74 @@
           ]
         },
         {
+          "Name": "ByResourceId",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
           "Name": "__AllParameterSets",
           "Parameters": [
             {
@@ -1711,13 +1815,717 @@
     },
     {
       "VerbName": "Get",
+      "NounName": "AzApiManagementNetworkStatus",
+      "Name": "Get-AzApiManagementNetworkStatus",
+      "ClassName": "Microsoft.Azure.Commands.ApiManagement.Commands.GetAzureApiManagementNetworkStatus",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "ByInputObject",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementNetworkStatus",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementNetworkStatus, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "ConnectivityStatus": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementConnectivityStatus[]",
+              "Location": "System.String",
+              "DnsServers": "System.String[]"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
+          },
+          "ParameterSets": [
+            "ExpandedParameter",
+            "ByInputObject"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "ApiManagementObject",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "DeveloperPortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
+              "ScmCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
+              "ManagementCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
+              "PortalCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
+              "ProxyCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
+              "Identity": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity",
+              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "SslSetting": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
+              "SystemCertificates": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
+              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
+              "Capacity": "System.Int32",
+              "EnableClientCertificate": "System.Nullable`1[System.Boolean]",
+              "OrganizationName": "System.String",
+              "ResourceGroupName": "System.String",
+              "PublisherEmail": "System.String",
+              "ScmUrl": "System.String",
+              "ManagementApiUrl": "System.String",
+              "PortalUrl": "System.String",
+              "RuntimeRegionalUrl": "System.String",
+              "RuntimeUrl": "System.String",
+              "ProvisioningState": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
+              "NotificationSenderEmail": "System.String",
+              "PrivateIPAddresses": "System.String[]",
+              "PublicIPAddresses": "System.String[]"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "AddRegion",
+                "Parameters": [
+                  {
+                    "Name": "location",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "sku",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "capacity",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "virtualNetwork",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion"
+              },
+              {
+                "Name": "RemoveRegion",
+                "Parameters": [
+                  {
+                    "Name": "location",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "UpdateRegion",
+                "Parameters": [
+                  {
+                    "Name": "location",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "sku",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "capacity",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "virtualNetwork",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "apiServiceResource",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Location",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzContext",
+            "AzureRmContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "ByInputObject",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ApiManagementObject",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
+                  "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DeveloperPortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
+                    "ScmCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
+                    "ManagementCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
+                    "PortalCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
+                    "ProxyCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
+                    "Identity": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity",
+                    "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+                    "SslSetting": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
+                    "SystemCertificates": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
+                    "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+                    "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
+                    "Capacity": "System.Int32",
+                    "EnableClientCertificate": "System.Nullable`1[System.Boolean]",
+                    "OrganizationName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "PublisherEmail": "System.String",
+                    "ScmUrl": "System.String",
+                    "ManagementApiUrl": "System.String",
+                    "PortalUrl": "System.String",
+                    "RuntimeRegionalUrl": "System.String",
+                    "RuntimeUrl": "System.String",
+                    "ProvisioningState": "System.String",
+                    "Location": "System.String",
+                    "Name": "System.String",
+                    "Id": "System.String",
+                    "NotificationSenderEmail": "System.String",
+                    "PrivateIPAddresses": "System.String[]",
+                    "PublicIPAddresses": "System.String[]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "AddRegion",
+                      "Parameters": [
+                        {
+                          "Name": "location",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "sku",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "capacity",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "virtualNetwork",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion"
+                    },
+                    {
+                      "Name": "RemoveRegion",
+                      "Parameters": [
+                        {
+                          "Name": "location",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "UpdateRegion",
+                      "Parameters": [
+                        {
+                          "Name": "location",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "sku",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "capacity",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "virtualNetwork",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "apiServiceResource",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Location",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ExpandedParameter",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Location",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Location",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Get",
       "NounName": "AzApiManagementSsoToken",
       "Name": "Get-AzApiManagementSsoToken",
       "ClassName": "Microsoft.Azure.Commands.ApiManagement.Commands.GetAzureApiManagementSsoToken",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "__AllParameterSets",
+      "DefaultParameterSetName": "ExpandedParameter",
       "OutputTypes": [
         {
           "Type": {
@@ -1731,11 +2539,157 @@
             "Constructors": []
           },
           "ParameterSets": [
-            "__AllParameterSets"
+            "ExpandedParameter",
+            "ByInputObject"
           ]
         }
       ],
       "Parameters": [
+        {
+          "Name": "InputObject",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "DeveloperPortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
+              "ScmCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
+              "ManagementCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
+              "PortalCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
+              "ProxyCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
+              "Identity": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity",
+              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "SslSetting": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
+              "SystemCertificates": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
+              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
+              "Capacity": "System.Int32",
+              "EnableClientCertificate": "System.Nullable`1[System.Boolean]",
+              "OrganizationName": "System.String",
+              "ResourceGroupName": "System.String",
+              "PublisherEmail": "System.String",
+              "ScmUrl": "System.String",
+              "ManagementApiUrl": "System.String",
+              "PortalUrl": "System.String",
+              "RuntimeRegionalUrl": "System.String",
+              "RuntimeUrl": "System.String",
+              "ProvisioningState": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
+              "NotificationSenderEmail": "System.String",
+              "PrivateIPAddresses": "System.String[]",
+              "PublicIPAddresses": "System.String[]"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "AddRegion",
+                "Parameters": [
+                  {
+                    "Name": "location",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "sku",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "capacity",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "virtualNetwork",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion"
+              },
+              {
+                "Name": "RemoveRegion",
+                "Parameters": [
+                  {
+                    "Name": "location",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "UpdateRegion",
+                "Parameters": [
+                  {
+                    "Name": "location",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "sku",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "capacity",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "virtualNetwork",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "apiServiceResource",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
         {
           "Name": "ResourceGroupName",
           "AliasList": [],
@@ -1808,7 +2762,202 @@
       ],
       "ParameterSets": [
         {
-          "Name": "__AllParameterSets",
+          "Name": "ByInputObject",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
+                  "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DeveloperPortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
+                    "ScmCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
+                    "ManagementCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
+                    "PortalCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
+                    "ProxyCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
+                    "Identity": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity",
+                    "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+                    "SslSetting": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
+                    "SystemCertificates": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
+                    "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+                    "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
+                    "Capacity": "System.Int32",
+                    "EnableClientCertificate": "System.Nullable`1[System.Boolean]",
+                    "OrganizationName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "PublisherEmail": "System.String",
+                    "ScmUrl": "System.String",
+                    "ManagementApiUrl": "System.String",
+                    "PortalUrl": "System.String",
+                    "RuntimeRegionalUrl": "System.String",
+                    "RuntimeUrl": "System.String",
+                    "ProvisioningState": "System.String",
+                    "Location": "System.String",
+                    "Name": "System.String",
+                    "Id": "System.String",
+                    "NotificationSenderEmail": "System.String",
+                    "PrivateIPAddresses": "System.String[]",
+                    "PublicIPAddresses": "System.String[]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "AddRegion",
+                      "Parameters": [
+                        {
+                          "Name": "location",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "sku",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "capacity",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "virtualNetwork",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion"
+                    },
+                    {
+                      "Name": "RemoveRegion",
+                      "Parameters": [
+                        {
+                          "Name": "location",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "UpdateRegion",
+                      "Parameters": [
+                        {
+                          "Name": "location",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "sku",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "capacity",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "virtualNetwork",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "apiServiceResource",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ExpandedParameter",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -1898,6 +3047,50 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
         }
       ],
       "AliasList": []
@@ -1916,23 +3109,26 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "DeveloperPortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ScmCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ManagementCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "PortalCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ProxyCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
               "Identity": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity",
               "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "SslSetting": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
               "SystemCertificates": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
               "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
               "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "PublisherEmail": "System.String",
-              "NotificationSenderEmail": "System.String",
+              "EnableClientCertificate": "System.Nullable`1[System.Boolean]",
+              "OrganizationName": "System.String",
               "ResourceGroupName": "System.String",
+              "PublisherEmail": "System.String",
               "ScmUrl": "System.String",
               "ManagementApiUrl": "System.String",
               "PortalUrl": "System.String",
@@ -1942,7 +3138,7 @@
               "Location": "System.String",
               "Name": "System.String",
               "Id": "System.String",
-              "OrganizationName": "System.String",
+              "NotificationSenderEmail": "System.String",
               "PrivateIPAddresses": "System.String[]",
               "PublicIPAddresses": "System.String[]"
             },
@@ -2149,7 +3345,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2162,7 +3358,8 @@
             "Developer",
             "Basic",
             "Standard",
-            "Premium"
+            "Premium",
+            "Consumption"
           ],
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
@@ -2184,8 +3381,8 @@
             "Constructors": []
           },
           "ValidateSet": [],
-          "ValidateRangeMin": 1,
-          "ValidateRangeMax": 10,
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
         },
         {
@@ -2194,7 +3391,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2301,7 +3498,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "VnetId": "System.Guid",
               "SubnetName": "System.String",
@@ -2376,7 +3573,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[], Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[], Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion",
             "GenericTypeArguments": [],
@@ -2394,7 +3591,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[], Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[], Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
             "GenericTypeArguments": [],
@@ -2412,7 +3609,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[], Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[], Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate",
             "GenericTypeArguments": [],
@@ -2425,12 +3622,85 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "SslSetting",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "FrontendProtocol": "System.Collections.Hashtable",
+              "BackendProtocol": "System.Collections.Hashtable",
+              "CipherSuite": "System.Collections.Hashtable",
+              "ServerProtocol": "System.Collections.Hashtable"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "AssignIdentity",
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "EnableClientCertificate",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2607,7 +3877,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -2620,7 +3890,8 @@
                   "Developer",
                   "Basic",
                   "Standard",
-                  "Premium"
+                  "Premium",
+                  "Consumption"
                 ],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
@@ -2648,8 +3919,8 @@
                   "Constructors": []
                 },
                 "ValidateSet": [],
-                "ValidateRangeMin": 1,
-                "ValidateRangeMax": 10,
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
@@ -2664,7 +3935,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2777,7 +4048,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "VnetId": "System.Guid",
                     "SubnetName": "System.String",
@@ -2864,7 +4135,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[], Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[], Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion",
                   "GenericTypeArguments": [],
@@ -2888,7 +4159,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[], Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[], Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
                   "GenericTypeArguments": [],
@@ -2912,7 +4183,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[], Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[], Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate",
                   "GenericTypeArguments": [],
@@ -2931,12 +4202,97 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "SslSetting",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
+                  "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "FrontendProtocol": "System.Collections.Hashtable",
+                    "BackendProtocol": "System.Collections.Hashtable",
+                    "CipherSuite": "System.Collections.Hashtable",
+                    "ServerProtocol": "System.Collections.Hashtable"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "AssignIdentity",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnableClientCertificate",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3011,7 +4367,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CertificateInformation": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCertificateInformation",
               "HostnameType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType",
@@ -3089,7 +4445,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3246,7 +4602,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCertificateInformation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCertificateInformation, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCertificateInformation, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Expiry": "System.DateTime",
               "Subject": "System.String",
@@ -3300,7 +4656,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3318,7 +4674,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3399,7 +4755,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3508,7 +4864,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCertificateInformation",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCertificateInformation, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCertificateInformation, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Expiry": "System.DateTime",
                     "Subject": "System.String",
@@ -3568,7 +4924,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3592,7 +4948,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3684,7 +5040,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3841,7 +5197,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3865,7 +5221,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3957,7 +5313,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4090,7 +5446,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4114,7 +5470,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4182,7 +5538,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4206,7 +5562,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4281,7 +5637,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
               "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
@@ -4378,7 +5734,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "VnetId": "System.Guid",
               "SubnetName": "System.String",
@@ -4521,7 +5877,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "VnetId": "System.Guid",
                     "SubnetName": "System.String",
@@ -4620,6 +5976,320 @@
     },
     {
       "VerbName": "New",
+      "NounName": "AzApiManagementSslSetting",
+      "Name": "New-AzApiManagementSslSetting",
+      "ClassName": "Microsoft.Azure.Commands.ApiManagement.Commands.NewAzureApiManagementSslSetting",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "FrontendProtocol": "System.Collections.Hashtable",
+              "BackendProtocol": "System.Collections.Hashtable",
+              "CipherSuite": "System.Collections.Hashtable",
+              "ServerProtocol": "System.Collections.Hashtable"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "FrontendProtocol",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Collections",
+            "Name": "System.Collections.Hashtable",
+            "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "BackendProtocol",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Collections",
+            "Name": "System.Collections.Hashtable",
+            "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "CipherSuite",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Collections",
+            "Name": "System.Collections.Hashtable",
+            "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ServerProtocol",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Collections",
+            "Name": "System.Collections.Hashtable",
+            "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzContext",
+            "AzureRmContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "FrontendProtocol",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.Hashtable",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "BackendProtocol",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.Hashtable",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "CipherSuite",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.Hashtable",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ServerProtocol",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.Hashtable",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "New",
       "NounName": "AzApiManagementSystemCertificate",
       "Name": "New-AzApiManagementSystemCertificate",
       "ClassName": "Microsoft.Azure.Commands.ApiManagement.Commands.NewAzureApiManagementSystemCertificate",
@@ -4632,7 +6302,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CertificateInformation": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCertificateInformation",
               "EncodedCertificate": "System.String",
@@ -4910,7 +6580,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "VnetId": "System.Guid",
               "SubnetName": "System.String",
@@ -5152,7 +6822,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5257,7 +6927,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5332,23 +7002,26 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "DeveloperPortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ScmCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ManagementCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "PortalCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ProxyCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
               "Identity": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity",
               "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "SslSetting": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
               "SystemCertificates": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
               "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
               "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "PublisherEmail": "System.String",
-              "NotificationSenderEmail": "System.String",
+              "EnableClientCertificate": "System.Nullable`1[System.Boolean]",
+              "OrganizationName": "System.String",
               "ResourceGroupName": "System.String",
+              "PublisherEmail": "System.String",
               "ScmUrl": "System.String",
               "ManagementApiUrl": "System.String",
               "PortalUrl": "System.String",
@@ -5358,7 +7031,7 @@
               "Location": "System.String",
               "Name": "System.String",
               "Id": "System.String",
-              "OrganizationName": "System.String",
+              "NotificationSenderEmail": "System.String",
               "PrivateIPAddresses": "System.String[]",
               "PublicIPAddresses": "System.String[]"
             },
@@ -5475,23 +7148,26 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "DeveloperPortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ScmCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ManagementCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "PortalCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ProxyCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
               "Identity": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity",
               "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "SslSetting": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
               "SystemCertificates": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
               "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
               "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "PublisherEmail": "System.String",
-              "NotificationSenderEmail": "System.String",
+              "EnableClientCertificate": "System.Nullable`1[System.Boolean]",
+              "OrganizationName": "System.String",
               "ResourceGroupName": "System.String",
+              "PublisherEmail": "System.String",
               "ScmUrl": "System.String",
               "ManagementApiUrl": "System.String",
               "PortalUrl": "System.String",
@@ -5501,7 +7177,7 @@
               "Location": "System.String",
               "Name": "System.String",
               "Id": "System.String",
-              "OrganizationName": "System.String",
+              "NotificationSenderEmail": "System.String",
               "PrivateIPAddresses": "System.String[]",
               "PublicIPAddresses": "System.String[]"
             },
@@ -5674,23 +7350,26 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
+                    "DeveloperPortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
                     "ScmCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
                     "ManagementCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
                     "PortalCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
                     "ProxyCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
                     "Identity": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity",
                     "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+                    "SslSetting": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
                     "SystemCertificates": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
                     "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
                     "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
                     "Capacity": "System.Int32",
-                    "PublisherEmail": "System.String",
-                    "NotificationSenderEmail": "System.String",
+                    "EnableClientCertificate": "System.Nullable`1[System.Boolean]",
+                    "OrganizationName": "System.String",
                     "ResourceGroupName": "System.String",
+                    "PublisherEmail": "System.String",
                     "ScmUrl": "System.String",
                     "ManagementApiUrl": "System.String",
                     "PortalUrl": "System.String",
@@ -5700,7 +7379,7 @@
                     "Location": "System.String",
                     "Name": "System.String",
                     "Id": "System.String",
-                    "OrganizationName": "System.String",
+                    "NotificationSenderEmail": "System.String",
                     "PrivateIPAddresses": "System.String[]",
                     "PublicIPAddresses": "System.String[]"
                   },
@@ -5897,23 +7576,26 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "DeveloperPortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ScmCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ManagementCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "PortalCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ProxyCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
               "Identity": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity",
               "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "SslSetting": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
               "SystemCertificates": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
               "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
               "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "PublisherEmail": "System.String",
-              "NotificationSenderEmail": "System.String",
+              "EnableClientCertificate": "System.Nullable`1[System.Boolean]",
+              "OrganizationName": "System.String",
               "ResourceGroupName": "System.String",
+              "PublisherEmail": "System.String",
               "ScmUrl": "System.String",
               "ManagementApiUrl": "System.String",
               "PortalUrl": "System.String",
@@ -5923,7 +7605,7 @@
               "Location": "System.String",
               "Name": "System.String",
               "Id": "System.String",
-              "OrganizationName": "System.String",
+              "NotificationSenderEmail": "System.String",
               "PrivateIPAddresses": "System.String[]",
               "PublicIPAddresses": "System.String[]"
             },
@@ -6140,7 +7822,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -6327,7 +8009,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6402,23 +8084,26 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "DeveloperPortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ScmCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ManagementCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "PortalCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ProxyCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
               "Identity": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity",
               "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "SslSetting": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
               "SystemCertificates": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
               "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
               "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "PublisherEmail": "System.String",
-              "NotificationSenderEmail": "System.String",
+              "EnableClientCertificate": "System.Nullable`1[System.Boolean]",
+              "OrganizationName": "System.String",
               "ResourceGroupName": "System.String",
+              "PublisherEmail": "System.String",
               "ScmUrl": "System.String",
               "ManagementApiUrl": "System.String",
               "PortalUrl": "System.String",
@@ -6428,7 +8113,7 @@
               "Location": "System.String",
               "Name": "System.String",
               "Id": "System.String",
-              "OrganizationName": "System.String",
+              "NotificationSenderEmail": "System.String",
               "PrivateIPAddresses": "System.String[]",
               "PublicIPAddresses": "System.String[]"
             },
@@ -6545,23 +8230,26 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "DeveloperPortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ScmCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ManagementCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "PortalCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ProxyCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
               "Identity": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity",
               "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "SslSetting": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
               "SystemCertificates": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
               "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
               "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "PublisherEmail": "System.String",
-              "NotificationSenderEmail": "System.String",
+              "EnableClientCertificate": "System.Nullable`1[System.Boolean]",
+              "OrganizationName": "System.String",
               "ResourceGroupName": "System.String",
+              "PublisherEmail": "System.String",
               "ScmUrl": "System.String",
               "ManagementApiUrl": "System.String",
               "PortalUrl": "System.String",
@@ -6571,7 +8259,7 @@
               "Location": "System.String",
               "Name": "System.String",
               "Id": "System.String",
-              "OrganizationName": "System.String",
+              "NotificationSenderEmail": "System.String",
               "PrivateIPAddresses": "System.String[]",
               "PublicIPAddresses": "System.String[]"
             },
@@ -6687,7 +8375,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -6705,7 +8393,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -6723,7 +8411,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -6780,23 +8468,26 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
+                    "DeveloperPortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
                     "ScmCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
                     "ManagementCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
                     "PortalCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
                     "ProxyCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
                     "Identity": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity",
                     "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+                    "SslSetting": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
                     "SystemCertificates": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
                     "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
                     "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
                     "Capacity": "System.Int32",
-                    "PublisherEmail": "System.String",
-                    "NotificationSenderEmail": "System.String",
+                    "EnableClientCertificate": "System.Nullable`1[System.Boolean]",
+                    "OrganizationName": "System.String",
                     "ResourceGroupName": "System.String",
+                    "PublisherEmail": "System.String",
                     "ScmUrl": "System.String",
                     "ManagementApiUrl": "System.String",
                     "PortalUrl": "System.String",
@@ -6806,7 +8497,7 @@
                     "Location": "System.String",
                     "Name": "System.String",
                     "Id": "System.String",
-                    "OrganizationName": "System.String",
+                    "NotificationSenderEmail": "System.String",
                     "PrivateIPAddresses": "System.String[]",
                     "PublicIPAddresses": "System.String[]"
                   },
@@ -6928,7 +8619,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6952,7 +8643,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6976,7 +8667,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7051,23 +8742,26 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "DeveloperPortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ScmCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ManagementCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "PortalCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ProxyCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
               "Identity": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity",
               "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "SslSetting": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
               "SystemCertificates": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
               "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
               "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "PublisherEmail": "System.String",
-              "NotificationSenderEmail": "System.String",
+              "EnableClientCertificate": "System.Nullable`1[System.Boolean]",
+              "OrganizationName": "System.String",
               "ResourceGroupName": "System.String",
+              "PublisherEmail": "System.String",
               "ScmUrl": "System.String",
               "ManagementApiUrl": "System.String",
               "PortalUrl": "System.String",
@@ -7077,7 +8771,7 @@
               "Location": "System.String",
               "Name": "System.String",
               "Id": "System.String",
-              "OrganizationName": "System.String",
+              "NotificationSenderEmail": "System.String",
               "PrivateIPAddresses": "System.String[]",
               "PublicIPAddresses": "System.String[]"
             },
@@ -7194,23 +8888,26 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "DeveloperPortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ScmCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ManagementCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "PortalCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
               "ProxyCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
               "Identity": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity",
               "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "SslSetting": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
               "SystemCertificates": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
               "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
               "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "PublisherEmail": "System.String",
-              "NotificationSenderEmail": "System.String",
+              "EnableClientCertificate": "System.Nullable`1[System.Boolean]",
+              "OrganizationName": "System.String",
               "ResourceGroupName": "System.String",
+              "PublisherEmail": "System.String",
               "ScmUrl": "System.String",
               "ManagementApiUrl": "System.String",
               "PortalUrl": "System.String",
@@ -7220,7 +8917,7 @@
               "Location": "System.String",
               "Name": "System.String",
               "Id": "System.String",
-              "OrganizationName": "System.String",
+              "NotificationSenderEmail": "System.String",
               "PrivateIPAddresses": "System.String[]",
               "PublicIPAddresses": "System.String[]"
             },
@@ -7354,7 +9051,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -7475,7 +9172,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "VnetId": "System.Guid",
               "SubnetName": "System.String",
@@ -7568,23 +9265,26 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
+                    "DeveloperPortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
                     "ScmCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
                     "ManagementCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
                     "PortalCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
                     "ProxyCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
                     "Identity": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity",
                     "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+                    "SslSetting": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
                     "SystemCertificates": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
                     "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
                     "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
                     "Capacity": "System.Int32",
-                    "PublisherEmail": "System.String",
-                    "NotificationSenderEmail": "System.String",
+                    "EnableClientCertificate": "System.Nullable`1[System.Boolean]",
+                    "OrganizationName": "System.String",
                     "ResourceGroupName": "System.String",
+                    "PublisherEmail": "System.String",
                     "ScmUrl": "System.String",
                     "ManagementApiUrl": "System.String",
                     "PortalUrl": "System.String",
@@ -7594,7 +9294,7 @@
                     "Location": "System.String",
                     "Name": "System.String",
                     "Id": "System.String",
-                    "OrganizationName": "System.String",
+                    "NotificationSenderEmail": "System.String",
                     "PrivateIPAddresses": "System.String[]",
                     "PublicIPAddresses": "System.String[]"
                   },
@@ -7740,7 +9440,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7873,7 +9573,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "VnetId": "System.Guid",
                     "SubnetName": "System.String",
@@ -8115,7 +9815,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "CertificateInformation": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCertificateInformation",
         "HostnameType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType",
@@ -8166,7 +9866,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCertificateInformation": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCertificateInformation",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCertificateInformation, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCertificateInformation, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Expiry": "System.DateTime",
         "Subject": "System.String",
@@ -8232,7 +9932,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -8349,7 +10049,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[], Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[], Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
       "GenericTypeArguments": [],
@@ -8359,7 +10059,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Type": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentityType",
         "TenantId": "System.String",
@@ -8405,7 +10105,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentityType": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentityType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentityType, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentityType, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -8500,7 +10200,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -8592,10 +10292,67 @@
       ],
       "Constructors": []
     },
+    "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting": {
+      "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
+      "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "FrontendProtocol": "System.Collections.Hashtable",
+        "BackendProtocol": "System.Collections.Hashtable",
+        "CipherSuite": "System.Collections.Hashtable",
+        "ServerProtocol": "System.Collections.Hashtable"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        }
+      ]
+    },
+    "System.Collections.Hashtable": {
+      "Namespace": "System.Collections",
+      "Name": "System.Collections.Hashtable",
+      "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
+    },
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[], Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[], Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate",
       "GenericTypeArguments": [],
@@ -8605,7 +10362,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "CertificateInformation": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCertificateInformation",
         "EncodedCertificate": "System.String",
@@ -8652,7 +10409,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "VnetId": "System.Guid",
         "SubnetName": "System.String",
@@ -8708,7 +10465,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -8816,7 +10573,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -8828,7 +10585,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
         "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
@@ -9081,6 +10838,64 @@
       "GenericTypeArguments": [],
       "Methods": [],
       "Constructors": []
+    },
+    "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementConnectivityStatus[]": {
+      "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
+      "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementConnectivityStatus[]",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementConnectivityStatus[], Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {},
+      "ElementType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementConnectivityStatus",
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementConnectivityStatus": {
+      "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
+      "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementConnectivityStatus",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementConnectivityStatus, Microsoft.Azure.PowerShell.Cmdlets.ApiManagement, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "LastUpdated": "System.DateTime",
+        "LastStatusChange": "System.DateTime",
+        "Name": "System.String",
+        "Status": "System.String",
+        "Error": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        }
+      ]
     }
   }
 }

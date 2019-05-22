@@ -14,7 +14,7 @@ This topic displays help topics for the Media Service web service feature in Azu
 ### [Get-AzMediaService](Get-AzMediaService.md)
 Gets information about a media service.
 
-### [Get-AzMediaServiceKeys](Get-AzMediaServiceKeys.md)
+### [Get-AzMediaServiceKey](Get-AzMediaServiceKey.md)
 Gets key information for accessing the REST endpoint associated with the media service.
 
 ### [Get-AzMediaServiceNameAvailability](Get-AzMediaServiceNameAvailability.md)
@@ -36,6 +36,6 @@ Modifies specified properties of an existing media service.
 ### [Set-AzMediaServiceKey](Set-AzMediaServiceKey.md)
 Regenerates a key used for accessing the REST endpoint associated with the media service.
 
-### [Sync-AzMediaServiceStorageKeys](Sync-AzMediaServiceStorageKeys.md)
+### [Sync-AzMediaServiceStorageKey](Sync-AzMediaServiceStorageKey.md)
 Synchronizes storage account keys for a storage account associated with the media service.
 

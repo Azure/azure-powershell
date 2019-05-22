@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.DataClassification.Model;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -62,25 +63,26 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Services
         internal void ModifySensitivityLabels(SensitivityClassificationModel model,
             Action<SensitivityLabelModel> modifySensitivityLabel)
         {
-            int failuresNumber = 0;
-            Exception exception = null;
-            foreach (SensitivityLabelModel sensitivityLabelModel in model.SensitivityLabels)
-            {
-                try
+            ConcurrentQueue<Exception> exceptions = new ConcurrentQueue<Exception>();
+            Parallel.ForEach<SensitivityLabelModel>(model.SensitivityLabels,
+                sensitivityLabelModel =>
                 {
-                    modifySensitivityLabel(sensitivityLabelModel);
-                }
-                catch (Exception e)
-                {
-                    exception = e;
-                    failuresNumber++;
-                }
-            }
+                    try
+                    {
+                        modifySensitivityLabel(sensitivityLabelModel);
+                    }
+                    catch (Exception e)
+                    {
+                        exceptions.Enqueue(e);
+                    }
+                });
 
-            if (failuresNumber > 0)
+            if (!exceptions.IsEmpty)
             {
-                throw (failuresNumber == 1) ? exception :
-                    new Exception($"Operation failed for {failuresNumber} sensitivity classifications", exception);
+                int exceptionsCount = exceptions.Count;
+                Exception lastException = exceptions.Last();
+                throw (exceptionsCount == 1) ? lastException :
+                    new Exception($"Operation failed for {exceptionsCount} sensitivity classifications", lastException);
             }
         }
 

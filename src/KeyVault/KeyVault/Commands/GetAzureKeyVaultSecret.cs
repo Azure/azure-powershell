@@ -145,6 +145,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.SecretName)]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         /// <summary>

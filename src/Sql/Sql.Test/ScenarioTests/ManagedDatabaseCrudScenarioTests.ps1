@@ -97,7 +97,7 @@ function Test-GetManagedDatabase
 		Assert-AreEqual $db1.Collation $gdb1.Collation
 
 		# Test Get using ResourceGroupName and InstanceName
-		$all = Get-AzSqlInstanceDatabase -ResourceGroupName $managedInstance.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName
+		$all = Get-AzSqlInstanceDatabase -ResourceGroupName $managedInstance.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name *
 		Assert-NotNull $all
 		Assert-AreEqual $all.Count 2
 
@@ -259,7 +259,7 @@ function Test-GetManagedDatabaseGeoBackup
 	Assert-AreEqual $managedDatabaseName $gdb1.Name
 
 	# Test Get using ResourceGroupName and InstanceName
-	$all = Get-AzSqlInstanceDatabaseGeoBackup -ResourceGroupName $rgName -InstanceName $managedInstanceName 
+	$all = Get-AzSqlInstanceDatabaseGeoBackup -ResourceGroupName $rgName -InstanceName $managedInstanceName -Name *
 
 	Assert-NotNull $all
 	if($all.Count -le 1)

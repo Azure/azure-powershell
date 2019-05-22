@@ -44,6 +44,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "BGP Enabled", Target = ViewControl.Table)]
         public bool EnableBgp { get; set; }
 
+        [Ps1Xml(Label = "Use Local Azure IpAddress", Target = ViewControl.Table)]
+        public bool UseLocalAzureIpAddress { get; set; }
+
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
     }

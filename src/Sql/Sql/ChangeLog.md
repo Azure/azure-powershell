@@ -18,7 +18,25 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add DnsZonePartner Parameter for New-AzureSqlInstance cmdlet to support AutoDr for Managed Instance.
+* Deprecating Get-AzSqlDatabaseSecureConnectionPolicy cmdlet
+
+## Version 1.10.0
+* Rename Advanced Threat Protection cmdlets to Advanced Data Security and enable Vulnerability Assessment by default
+
+## Version 1.9.0
+* Replace dependency on Monitor SDK with common code
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Enhanced process of multiple columns classification.
+* Include sku properties (sku name, family, capacity) in response from Get-AzSqlServerServiceObjective and format as table by default.
+* Ability to Get-AzSqlServerServiceObjective by location without needing a preexisting server in the region.
+* Support for time zone parameter in Managed Instance create.
+* Fix documentation for wildcards
+* Support of Serverless specific parameters in New-AzSqlDatabase and Set-AzSqlDatabase
+
+## Version 1.8.0
 * Support Database Data Classification.
+* Add Get/Remove AzSqlVirtualCluster cmdlets.
 
 ## Version 1.7.0
 * Add Vulnerability Assessment cmdlets on Server and Managed Instance
@@ -29,7 +47,7 @@
 ## Version 1.5.0
 * Updating AuditingEndpointsCommunicator.
     - Fixing the behavior of an edge case while creating new diagnostic settings.
-    
+
 ## Version 1.4.0
 * Add support for restore an instance database from geo-redundant backups
 * Add support for backup short term retention on Managed Instance

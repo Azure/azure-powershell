@@ -111,7 +111,7 @@ The first command gets the service principal credentials (application id and ser
 The second command connect to Azure using the service principal credentials stored in $Credential for the specified Tenant.
 The ServicePrincipal switch parameter indicates that the account authenticates as a service principal.
 
-### Example 3: Use an interactive login to connect to an account for a specific tenant and subscription
+### Example 4: Use an interactive login to connect to an account for a specific tenant and subscription
 ```powershell
 PS C:\> Connect-AzAccount -Tenant "xxxx-xxxx-xxxx-xxxx" -SubscriptionId "yyyy-yyyy-yyyy-yyyy"
 
@@ -122,7 +122,7 @@ azureuser@contoso.com  Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 
 This command connects to an Azure account and configured AzureRM PowerShell to run cmdlets for the specified tenant and subscription by default.
 
-### Example 4: Add an Account Using Managed Service Identity Login
+### Example 5: Add an Account Using Managed Service Identity Login
 ```powershell
 PS C:\> Connect-AzAccount -Identity
 
@@ -134,7 +134,7 @@ MSI@50342              Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 This command connects using the managed service identity of the host environment (for example, if executed on a
 VirtualMachine with an assigned Managed Service Identity, this will allow the code to login using that assigned identity)
 
-### Example 5: Add an Account Using Managed Service Identity Login and ClientId
+### Example 6: Add an Account Using Managed Service Identity Login and ClientId
 ```powershell
 PS C:\> $identity = Get-AzUserAssignedIdentity -ResourceGroupName "myResourceGroup" -Name "myUserAssignedIdentity"
 PS C:\> Get-AzVM -ResourceGroupName contoso -Name testvm | Update-AzVM -IdentityType UserAssigned -IdentityId $identity.Id
@@ -148,7 +148,7 @@ yyyy-yyyy-yyyy-yyyy    Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 This command connects using the managed service identity of "myUserAssignedIdentity" by adding the User Assigned Identity to the Virtual Machine, then connecting using the ClientId of the User Assigned Identity.
 More information about configuring Managed Identities can be found here: https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.
 
-### Example 6: Add an Account Using Managed Service Identity Login and ClientId
+### Example 7: Add an Account Using Managed Service Identity Login and ClientId
 ```powershell
 PS C:\> $identity = Get-AzUserAssignedIdentity -ResourceGroupName "myResourceGroup" -Name "myUserAssignedIdentity"
 PS C:\> Get-AzVM -ResourceGroupName contoso -Name testvm | Update-AzVM -IdentityType UserAssigned -IdentityId $identity.Id
@@ -162,7 +162,7 @@ yyyy-yyyy-yyyy-yyyy    Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 This command connects using the managed service identity of "myUserAssignedIdentity" by adding the User Assigned Identity to the Virtual Machine, then connecting using the Id of the User Assigned Identity.
 More information about configuring Managed Identities can be found here: https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.
 
-### Example 7: Add an account using certificates
+### Example 8: Add an account using certificates
 ```powershell
 # For more information on creating a self-signed certificate
 # and giving it proper permissions, please see the following:
@@ -185,7 +185,7 @@ Environment      : AzureCloud
 
 This command connects to an Azure account using certificate-based service principal authentication. The service principal used for authentication should have been created with the given certificate.
 
-### Example 8: Add an account using AccessToken authentication
+### Example 9: Add an account using AccessToken authentication
 ```powershell
 PS C:\> $url = "https://login.windows.net/<TenantId>/oauth2/token"
 PS C:\> $body = "grant_type=refresh_token&refresh_token=<refreshtoken>" # Refresh token obtained from ~/.azure/TokenCache.dat

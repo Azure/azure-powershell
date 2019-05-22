@@ -94,11 +94,11 @@ function Get-BlobBytes
 
     if (!$IsPremiumAccount)
     {
-        if($Blob.BlobType -eq [Microsoft.WindowsAzure.Storage.Blob.BlobType]::BlockBlob)
+        if($Blob.BlobType -eq [Microsoft.Azure.Storage.Blob.BlobType]::BlockBlob)
         {
             $blobSizeInBytes += 8
-            # Default is Microsoft.WindowsAzure.Storage.Blob.BlockListingFilter.Committed. Need All
-            $action = { param($requestOption) return $Blob.ICloudBlob.DownloadBlockList([Microsoft.WindowsAzure.Storage.Blob.BlockListingFilter]::All, $null, $requestOption) }                
+            # Default is Microsoft.Azure.Storage.Blob.BlockListingFilter.Committed. Need All
+            $action = { param($requestOption) return $Blob.ICloudBlob.DownloadBlockList([Microsoft.Azure.Storage.Blob.BlockListingFilter]::All, $null, $requestOption) }                
 
             $blocks=Retry-OnRequest $action      
 
@@ -111,7 +111,7 @@ function Get-BlobBytes
                 $blocks | ForEach-Object { $blobSizeInBytes += $_.Length + $_.Name.Length }
             }  
         }
-        elseif($Blob.BlobType -eq [Microsoft.WindowsAzure.Storage.Blob.BlobType]::PageBlob)
+        elseif($Blob.BlobType -eq [Microsoft.Azure.Storage.Blob.BlobType]::PageBlob)
         {
             # It could cause server time out issue when trying to get page ranges of highly fragmented page blob 
             # Get page ranges in segment can mitigate chance of meeting such kind of server time out issue
@@ -180,7 +180,7 @@ function Get-ContainerBytes
 {
     param(
         [Parameter(Mandatory=$true)]
-        [Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer]$Container,
+        [Microsoft.Azure.Storage.Blob.CloudBlobContainer]$Container,
         [Parameter(Mandatory=$false)]
         [bool]$IsPremiumAccount = $false)
 

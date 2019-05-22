@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseReplicationLink",DefaultParameterSetName = ByDatabaseName,ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseReplicationLink", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureReplicationLinkModel))]
     public class GetAzureSqlDatabaseReplicationLink : AzureSqlDatabaseSecondaryCmdletBase
     {
@@ -58,11 +58,11 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// Gets or sets the name of the Azure SQL Server that has the Azure SQL Database partner.
         /// </summary>
         [Parameter(Mandatory = false,
-            ParameterSetName = ByPartnerServerName,
             ValueFromPipelineByPropertyName = false,
             HelpMessage = "The name of the Azure SQL Server that has the Azure SQL Database partner.")]
         [ResourceNameCompleter("Microsoft.Sql/servers", "PartnerResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string PartnerServerName { get; set; }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         {
             ICollection<AzureReplicationLinkModel> results;
 
-            if (ParameterSetName == ByPartnerServerName)
+            if (MyInvocation.BoundParameters.ContainsKey(PartnerServerName) && !WildcardPattern.ContainsWildcardCharacters(PartnerServerName))
             {
                 results = new List<AzureReplicationLinkModel>();
                 results.Add(ModelAdapter.GetLink(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName, this.PartnerServerName));
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 results = ModelAdapter.ListLinks(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName);
             }
 
-            return results;
+            return SubResourceWildcardFilter(PartnerServerName, results);
         }
 
         /// <summary>

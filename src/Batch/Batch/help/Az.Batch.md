@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.Batch
 Module Guid: a8f00f40-1c1a-49b5-9db3-24076b75c3cf
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.batch
@@ -41,7 +41,7 @@ Reactivates a task.
 ### [Get-AzBatchAccount](Get-AzBatchAccount.md)
 Gets a Batch account in the current subscription.
 
-### [Get-AzBatchAccountKeys](Get-AzBatchAccountKeys.md)
+### [Get-AzBatchAccountKey](Get-AzBatchAccountKey.md)
 Gets the keys of a Batch account.
 
 ### [Get-AzBatchApplication](Get-AzBatchApplication.md)
@@ -65,10 +65,10 @@ Gets Batch job preparation and release task status.
 ### [Get-AzBatchJobSchedule](Get-AzBatchJobSchedule.md)
 Gets Batch job schedules.
 
-### [Get-AzBatchJobStatistics](Get-AzBatchJobStatistics.md)
+### [Get-AzBatchJobStatistic](Get-AzBatchJobStatistic.md)
 Gets job summary statistics for a Batch account.
 
-### [Get-AzBatchLocationQuotas](Get-AzBatchLocationQuotas.md)
+### [Get-AzBatchLocationQuota](Get-AzBatchLocationQuota.md)
 Gets the Batch service quotas for your subscription at the given location.
 
 ### [Get-AzBatchNodeAgentSku](Get-AzBatchNodeAgentSku.md)
@@ -83,19 +83,19 @@ Gets a Batch node file.
 ### [Get-AzBatchPool](Get-AzBatchPool.md)
 Gets Batch pools under the specified Batch account.
 
-### [Get-AzBatchPoolNodeCounts](Get-AzBatchPoolNodeCounts.md)
+### [Get-AzBatchPoolNodeCount](Get-AzBatchPoolNodeCount.md)
 Gets Batch node counts per node state grouped by pool id.
 
-### [Get-AzBatchPoolStatistics](Get-AzBatchPoolStatistics.md)
+### [Get-AzBatchPoolStatistic](Get-AzBatchPoolStatistic.md)
 Gets pool summary statistics for a Batch account.
 
-### [Get-AzBatchPoolUsageMetrics](Get-AzBatchPoolUsageMetrics.md)
+### [Get-AzBatchPoolUsageMetric](Get-AzBatchPoolUsageMetric.md)
 Gets pool usage metrics for a Batch account.
 
 ### [Get-AzBatchRemoteDesktopProtocolFile](Get-AzBatchRemoteDesktopProtocolFile.md)
 Gets an RDP file from a compute node.
 
-### [Get-AzBatchRemoteLoginSettings](Get-AzBatchRemoteLoginSettings.md)
+### [Get-AzBatchRemoteLoginSetting](Get-AzBatchRemoteLoginSetting.md)
 Gets remote logon settings for a compute node.
 
 ### [Get-AzBatchSubtask](Get-AzBatchSubtask.md)
@@ -104,7 +104,7 @@ Gets the subtask information of the specified task.
 ### [Get-AzBatchTask](Get-AzBatchTask.md)
 Gets the Batch tasks for a job.
 
-### [Get-AzBatchTaskCounts](Get-AzBatchTaskCounts.md)
+### [Get-AzBatchTaskCount](Get-AzBatchTaskCount.md)
 Gets the task counts for the specified job.
 
 ### [New-AzBatchAccount](New-AzBatchAccount.md)

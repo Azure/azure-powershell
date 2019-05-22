@@ -11,9 +11,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.28.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.3.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.0.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Monitor" Version="0.22.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.31.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.EventHub" Version="2.5.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.11.0-preview" />
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.2.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.19.0-preview" />
   </ItemGroup>
