@@ -11,9 +11,9 @@ Try it out in Azure Cloud Shell!
 ## Modules
 Below is a table containing our Azure PowerShell rollup module.
 
-Description                           | Module Name                             | PowerShell Gallery Link
-------------------------------------- | --------------------------------------- | -----------------------
-Azure PowerShell                      | `Az`                                    | [![Az]][AzGallery]
+Description       | Module Name  | PowerShell Gallery Link
+----------------- | ------------ | -----------------------
+Azure PowerShell  | `Az`         | [![Az]][AzGallery]
 
 For a full list of modules found in this repository, please see the [Azure PowerShell Modules][AzurePowerShelModules] document.
 
@@ -27,7 +27,7 @@ Run the following command in an elevated PowerShell session to install the rollu
 Install-Module -Name Az
 ```
 
-This module runs on Windows PowerShell with [.NET Framework 4.7.2][DotNetFramework] or greater, or [PowerShell Core][PowerShellCore]. The Az module replaces AzureRM. You should not install Az side-by-side with AzureRM.
+This module runs on Windows PowerShell with [.NET Framework 4.7.2][DotNetFramework] or greater, or [PowerShell Core][PowerShellCore]. The `Az` module replaces `AzureRM`. You should not install `Az` side-by-side with `AzureRM`.
 
 If you have an earlier version of the Azure PowerShell modules installed from the PowerShell Gallery and would like to update to the latest version, run the following commands in an elevated PowerShell session:
 
@@ -43,7 +43,7 @@ For detailed instructions on installing Azure PowerShell, please refer to the [i
 
 ### Log into Azure
 
-To connect to Azure, use the [Connect-AzAccount][ConnectAzAccount] cmdlet:
+To connect to Azure, use the [`Connect-AzAccount`][ConnectAzAccount] cmdlet:
 
 ```powershell
 # Device Code login - Provides a link to sign into Azure via your web browser
@@ -53,7 +53,7 @@ Connect-AzAccount
 Connect-AzAccount -ServicePrincipal -ApplicationId 'http://my-app' -Credential $PSCredential -TenantId $TenantId
 ```
 
-To log into a specific cloud (_AzureChinaCloud_, _AzureCloud_, _AzureGermanCloud_, _AzureUSGovernment_), use the `Environment` parameter:
+To log into a specific cloud (_AzureChinaCloud_, _AzureCloud_, _AzureGermanCloud_, _AzureUSGovernment_), use the `-Environment` parameter:
 
 ```powershell
 # Specific cloud login - Logs into the Azure China cloud
@@ -62,7 +62,7 @@ Connect-AzAccount -Environment AzureChinaCloud
 
 ### Getting and setting your Azure PowerShell session context
 
-A session context persists login information across Azure PowerShell modules and PowerShell instances. To view the context you are using in the current session, which contains the subscription and tenant, use the [Get-AzContext][GetAzContext] cmdlet:
+A session context persists login information across Azure PowerShell modules and PowerShell instances. To view the context you are using in the current session, which contains the subscription and tenant, use the [`Get-AzContext`][GetAzContext] cmdlet:
 
 ```powershell
 # Gets the Azure PowerShell context for the current PowerShell session
@@ -72,7 +72,7 @@ Get-AzContext
 Get-AzContext -ListAvailable
 ```
 
-To get the subscriptions in a tenant, use the [Get-AzSubscription][GetAzSubscription] cmdlet:
+To get the subscriptions in a tenant, use the [`Get-AzSubscription`][GetAzSubscription] cmdlet:
 
 ```powershell
 # Get all of the Azure subscriptions in your current Azure tenant
@@ -82,7 +82,7 @@ Get-AzSubscription
 Get-AzSubscription -TenantId $TenantId
 ```
 
-To change the subscription that you are using for your current context, use the [Set-AzContext][SetAzContext] cmdlet:
+To change the subscription that you are using for your current context, use the [`Set-AzContext`][SetAzContext] cmdlet:
 
 ```powershell
 # Set the Azure PowerShell context to a specific Azure subscription
@@ -139,13 +139,13 @@ Alternatively, be sure to check out the [Azure Community Support](https://azure.
 
 ### Feedback
 
-If there is a feature you would like to see in Azure PowerShell, please use the [Send-Feedback][SendFeedback] cmdlet, or file an issue in our [GitHub issues][GitHubIssues] page to provide the Azure PowerShell team direct feedback.
+If there is a feature you would like to see in Azure PowerShell, please use the [`Send-Feedback`][SendFeedback] cmdlet, or file an issue in our [GitHub issues][GitHubIssues] page to provide the Azure PowerShell team direct feedback.
 
 ## Contribute Code
 
 If you would like to become an active contributor to this project, please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines][ContributionGuidelines].
 
-Additional information about contributing to this repository can be found in the [Contributing][Contributing] document and the [Azure PowerShell Developer Guide][DeveloperGuide] document.
+Additional information about contributing to this repository can be found in the [`CONTRIBUTING.md`][Contributing] document and the [_Azure PowerShell Developer Guide_][DeveloperGuide] document.
 
 ## Learn More
 
@@ -162,8 +162,8 @@ _This project has adopted the [Microsoft Open Source Code of Conduct][CodeOfCond
 
 [Contributing]: CONTRIBUTING.md
 
-[AzureIcon]: documentation/MicrosoftAzure-32px.png
-[PowershellIcon]: documentation/MicrosoftPowerShellCore-32px.png
+[AzureIcon]: documentation/images/MicrosoftAzure-32px.png
+[PowershellIcon]: documentation/images/MicrosoftPowerShellCore-32px.png
 [AzurePowerShelModules]: documentation/azure-powershell-modules.md
 [DeveloperGuide]: documentation/development-docs/azure-powershell-developer-guide.md
 

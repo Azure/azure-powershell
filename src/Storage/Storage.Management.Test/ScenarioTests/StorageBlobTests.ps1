@@ -326,4 +326,61 @@ function Test-StorageBlobContainerImmutabilityPolicy
     }
 }
 
+<#
+.SYNOPSIS
+Test StorageAccount Blob Service Properties
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageBlobServiceProperties
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        $loc = Get-ProviderLocation ResourceManagement;
+        $kind = 'StorageV2'
+	
+        Write-Verbose "RGName: $rgname | Loc: $loc"
+        New-AzResourceGroup -Name $rgname -Location $loc;
+
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
+
+		# Update and Get Blob Service Properties
+		$property = Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -DefaultServiceVersion 2018-03-28 
+		Assert-AreEqual '2018-03-28' $property.DefaultServiceVersion
+		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
+		Assert-AreEqual '2018-03-28' $property.DefaultServiceVersion
+
+		# Enable and Disable Blob Delete Retention Policy
+		$policy = Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgname -StorageAccountName $stoname -PassThru -RetentionDays 3
+		Assert-AreEqual $true $policy.Enabled
+		Assert-AreEqual 3 $policy.Days
+		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
+		Assert-AreEqual '2018-03-28' $property.DefaultServiceVersion
+		Assert-AreEqual $true $property.DeleteRetentionPolicy.Enabled
+		Assert-AreEqual 3 $property.DeleteRetentionPolicy.Days
+
+		$policy = Disable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgname -StorageAccountName $stoname -PassThru
+		Assert-AreEqual $false $policy.Enabled
+		Assert-AreEqual $null $policy.Days
+		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
+		Assert-AreEqual '2018-03-28' $property.DefaultServiceVersion
+		Assert-AreEqual $false $property.DeleteRetentionPolicy.Enabled
+		Assert-AreEqual $null $property.DeleteRetentionPolicy.Days
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
 

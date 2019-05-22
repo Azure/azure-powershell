@@ -1,7 +1,0 @@
-steps:
-- task: PublishBuildArtifacts@1
-  displayName: 'Save artifacts'
-  inputs:
-    artifactName: artifacts
-    pathtoPublish: artifacts
-  condition: succeededOrFailed()

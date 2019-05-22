@@ -14,8 +14,8 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 {
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.File;
+    using Microsoft.Azure.Storage;
+    using Microsoft.Azure.Storage.File;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
     public interface IStorageFileManagement : IStorageManagement
     {
         /// <summary>
-        ///  Returns a reference to a Microsoft.WindowsAzure.Storage.File.CloudFileShare
+        ///  Returns a reference to a Microsoft.Azure.Storage.File.CloudFileShare
         ///  object with the specified name.
         /// </summary>
         /// <param name="shareName">A string containing the name of the share.</param>
@@ -62,7 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         ///  the access conditions for the share. If null, no condition is used.
         /// </param>
         /// <param name="options">
-        ///  A Microsoft.WindowsAzure.Storage.File.FileRequestOptions object that specifies
+        ///  A Microsoft.Azure.Storage.File.FileRequestOptions object that specifies
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">
@@ -80,7 +80,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         ///  the access conditions for the share. If null, no condition is used.
         /// </param>
         /// <param name="options">
-        ///  A Microsoft.WindowsAzure.Storage.File.FileRequestOptions object that specifies
+        ///  A Microsoft.Azure.Storage.File.FileRequestOptions object that specifies
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">
@@ -95,7 +95,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="directory">Indicating the directory to be listed.</param>
         /// <param name="enumerationAction">Indicating the action for enumerated items.</param>
         /// <param name="options">
-        ///  A Microsoft.WindowsAzure.Storage.File.FileRequestOptions object that specifies
+        ///  A Microsoft.Azure.Storage.File.FileRequestOptions object that specifies
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">
@@ -118,7 +118,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         ///  the access conditions for the share. If null, no condition is used.
         /// </param>
         /// <param name="options">
-        ///  A Microsoft.WindowsAzure.Storage.File.FileRequestOptions object that specifies
+        ///  A Microsoft.Azure.Storage.File.FileRequestOptions object that specifies
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">
@@ -143,7 +143,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// </param>
         /// <param name="enumerationAction">Indicating the action for enumerated items.</param>
         /// <param name="options">
-        ///  A Microsoft.WindowsAzure.Storage.File.FileRequestOptions object that specifies
+        ///  A Microsoft.Azure.Storage.File.FileRequestOptions object that specifies
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">
@@ -163,7 +163,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// Indicating the reference of the directory to be created.
         /// </param>
         /// <param name="options">
-        ///  A Microsoft.WindowsAzure.Storage.File.FileRequestOptions object that specifies
+        ///  A Microsoft.Azure.Storage.File.FileRequestOptions object that specifies
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">
@@ -187,7 +187,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// Indicating the reference of the directory.
         /// </param>
         /// <param name="options">
-        ///  A Microsoft.WindowsAzure.Storage.File.FileRequestOptions object that specifies
+        ///  A Microsoft.Azure.Storage.File.FileRequestOptions object that specifies
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">
@@ -211,7 +211,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// Indicating the reference of the file.
         /// </param>
         /// <param name="options">
-        ///  A Microsoft.WindowsAzure.Storage.File.FileRequestOptions object that specifies
+        ///  A Microsoft.Azure.Storage.File.FileRequestOptions object that specifies
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">
@@ -234,7 +234,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// Indicating the reference of the share to be created.
         /// </param>
         /// <param name="options">
-        ///  A Microsoft.WindowsAzure.Storage.File.FileRequestOptions object that specifies
+        ///  A Microsoft.Azure.Storage.File.FileRequestOptions object that specifies
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">
@@ -261,7 +261,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         ///  the access conditions for the share. If null, no condition is used.
         /// </param>
         /// <param name="options">
-        ///  A Microsoft.WindowsAzure.Storage.File.FileRequestOptions object that specifies
+        ///  A Microsoft.Azure.Storage.File.FileRequestOptions object that specifies
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">
@@ -288,7 +288,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         ///  the access conditions for the share. If null, no condition is used.
         /// </param>
         /// <param name="options">
-        ///  A Microsoft.WindowsAzure.Storage.File.FileRequestOptions object that specifies
+        ///  A Microsoft.Azure.Storage.File.FileRequestOptions object that specifies
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">
@@ -315,7 +315,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         ///  the access conditions for the share. If null, no condition is used.
         /// </param>
         /// <param name="options">
-        ///  A Microsoft.WindowsAzure.Storage.File.FileRequestOptions object that specifies
+        ///  A Microsoft.Azure.Storage.File.FileRequestOptions object that specifies
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">
@@ -342,7 +342,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         ///  the access conditions for the share. If null, no condition is used.
         /// </param>
         /// <param name="options">
-        ///  A Microsoft.WindowsAzure.Storage.File.FileRequestOptions object that specifies
+        ///  A Microsoft.Azure.Storage.File.FileRequestOptions object that specifies
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">
@@ -380,7 +380,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         ///  the access conditions for the share. If null, no condition is used.
         /// </param>
         /// <param name="options">
-        ///  A Microsoft.WindowsAzure.Storage.File.FileRequestOptions object that specifies
+        ///  A Microsoft.Azure.Storage.File.FileRequestOptions object that specifies
         ///  additional options for the request.
         /// </param>
         /// <param name="operationContext">

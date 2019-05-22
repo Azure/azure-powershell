@@ -22,8 +22,8 @@ function Test-CreateManagedInstance
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$vnetName = "cl_initial"
-	$subnetName = "CooL"
+	$vnetName = "vnet-newprovisioningtest3"
+	$subnetName = "ManagedInstance"
 
 	$managedInstanceName = Get-ManagedInstanceName
  	$version = "12.0"
@@ -33,19 +33,19 @@ function Test-CreateManagedInstance
  	$vCore = 16
  	$skuName = "GP_Gen4"
 	$collation = "Serbian_Cyrillic_100_CS_AS"
+	$timezoneId = "Central Europe Standard Time"
 	$proxyOverride = "Proxy"
-
  	try
  	{
 		# Setup VNET 
-		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "newprovisioningtest"
 		$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
 
  		# With SKU name specified
  		$job = New-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
   			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -Collation $collation `
-			-PublicDataEndpointEnabled -ProxyOverride $proxyOverride -AsJob
+			-TimezoneId $timezoneId -PublicDataEndpointEnabled -ProxyOverride $proxyOverride -AsJob
  		$job | Wait-Job
  		$managedInstance1 = $job.Output
 
@@ -59,18 +59,22 @@ function Test-CreateManagedInstance
 		Assert-AreEqual $managedInstance1.VCores $vCore
 		Assert-AreEqual $managedInstance1.StorageSizeInGB $storageSizeInGB
 		Assert-AreEqual $managedInstance1.Collation $collation
+		Assert-AreEqual $managedInstance1.TimezoneId $timezoneId
 		Assert-AreEqual $managedInstance1.PublicDataEndpointEnabled $true
 		Assert-AreEqual $managedInstance1.ProxyOverride $proxyOverride
  		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
+        Assert-NotNull $managedInstance1.DnsZone
 
 		$edition = "GeneralPurpose"
 		$computeGeneration = "Gen4"
 		$managedInstanceName = Get-ManagedInstanceName
+		$dnsZonePartner = $managedInstance1.ResourceId
+        $originalDnsZone = $managedInstance1.DnsZone
 
 		# With edition and computeGeneration specified
  		$job = New-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $subnetId `
-  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Edition $edition -ComputeGeneration $computeGeneration  -AsJob
+  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -Edition $edition -ComputeGeneration $computeGeneration  -DnsZonePartner $dnsZonePartner  -AsJob
  		$job | Wait-Job
  		$managedInstance1 = $job.Output
 
@@ -84,6 +88,7 @@ function Test-CreateManagedInstance
 		Assert-AreEqual $managedInstance1.VCores $vCore
 		Assert-AreEqual $managedInstance1.StorageSizeInGB $storageSizeInGB
  		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
+        Assert-AreEqual $managedInstance1.DnsZone $originalDnsZone
  	}
  	finally
  	{
@@ -101,11 +106,11 @@ function Test-SetManagedInstance
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$vnetName = "cl_initial"
-	$subnetName = "CooL"
+	$vnetName = "vnet-newprovisioningtest3"
+	$subnetName = "ManagedInstance"
 
 	# Setup VNET 
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "newprovisioningtest"
 	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
 
 	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
@@ -221,11 +226,11 @@ function Test-GetManagedInstance
 		Assert-AreEqual $managedInstance1.VCores $resp1.VCores
 		Assert-AreEqual $managedInstance1.StorageSizeInGB $resp1.StorageSizeInGB
 		
-		$all = Get-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName
+		$all = Get-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name *
 		Assert-AreEqual 1 $all.Count
 
 		# Test getting all managedInstances in all resource groups
-		$all2 = Get-AzSqlInstance
+		$all2 = Get-AzSqlInstance -ResourceGroupName *
 
 		# It is possible that there were existing managedInstances in the subscription when the test was recorded, so make sure
 		# that the managedInstances that we created are retrieved and ignore the other ones.

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Added new cmdlets for NetworkRuleSet of Namespace 
+
 ## Version 1.0.1
 * Added new boolean property SkipEmptyArchives to Skip Empty Archives in CaptureDescription class of Eventhub 
 

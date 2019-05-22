@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: F20A5FD3-6EC3-4EFE-988C-75F8583961A4
@@ -17,7 +17,7 @@ Uploads a local file to an Azure Storage blob.
 ```
 Set-AzStorageBlobContent [-File] <String> [-Container] <String> [-Blob <String>] [-BlobType <String>]
  [-Properties <Hashtable>] [-Metadata <Hashtable>] [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Force]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -26,7 +26,7 @@ Set-AzStorageBlobContent [-File] <String> [-Container] <String> [-Blob <String>]
 ```
 Set-AzStorageBlobContent [-File] <String> [-Blob <String>] -CloudBlobContainer <CloudBlobContainer>
  [-BlobType <String>] [-Properties <Hashtable>] [-Metadata <Hashtable>]
- [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Force] [-Context <IStorageContext>]
+ [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Force] [-AsJob] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -35,8 +35,8 @@ Set-AzStorageBlobContent [-File] <String> [-Blob <String>] -CloudBlobContainer <
 ### BlobPipeline
 ```
 Set-AzStorageBlobContent [-File] <String> -CloudBlob <CloudBlob> [-BlobType <String>] [-Properties <Hashtable>]
- [-Metadata <Hashtable>] [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Force] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-Metadata <Hashtable>] [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Force] [-AsJob]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -99,6 +99,21 @@ This command  uploads the file that is named ContosoPlanning to the container na
 
 ## PARAMETERS
 
+### -AsJob
+Run cmdlet in the background.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Blob
 Specifies the name of a blob.
 This cmdlet uploads a file to the Azure Storage blob that this parameter specifies.
@@ -157,7 +172,7 @@ Specifies a **CloudBlob** object.
 To obtain a **CloudBlob** object, use the Get-AzStorageBlob cmdlet.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlob
+Type: Microsoft.Azure.Storage.Blob.CloudBlob
 Parameter Sets: BlobPipeline
 Aliases: ICloudBlob
 
@@ -174,7 +189,7 @@ This cmdlet uploads content to a blob in the container that this parameter speci
 To obtain a **CloudBlobContainer** object, use the Get-AzStorageContainer cmdlet.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
+Type: Microsoft.Azure.Storage.Blob.CloudBlobContainer
 Parameter Sets: ContainerPipeline
 Aliases:
 
@@ -313,7 +328,7 @@ Accept wildcard characters: False
 Page Blob Tier
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier
+Type: Microsoft.Azure.Storage.Blob.PremiumPageBlobTier
 Parameter Sets: (All)
 Aliases:
 Accepted values: Unknown, P4, P6, P10, P20, P30, P40, P50, P60
@@ -395,9 +410,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
+### Microsoft.Azure.Storage.Blob.CloudBlobContainer
 
-### Microsoft.WindowsAzure.Storage.Blob.CloudBlob
+### Microsoft.Azure.Storage.Blob.CloudBlob
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 

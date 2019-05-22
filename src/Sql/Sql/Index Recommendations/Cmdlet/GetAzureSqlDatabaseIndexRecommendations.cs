@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Model;
 using Microsoft.Azure.Commands.Sql.Service;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -27,8 +28,10 @@ namespace Microsoft.Azure.Commands.Sql.Cmdlet
     /// <summary>
     /// Defines the Get-AzSqlDatabaseIndexRecommendations cmdlet
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseIndexRecommendations", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [GenericBreakingChange("Get-AzSqlDatabaseIndexRecommendations alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseIndexRecommendation", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(IndexRecommendation))]
+    [Alias("Get-AzSqlDatabaseIndexRecommendations")]
     public class GetAzureSqlDatabaseIndexRecommendations : AzureSqlCmdletBase<IEnumerable<IndexRecommendation>, AzureSqlDatabaseIndexRecommendationAdapter>
     {
         /// <summary>

@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ResourceNameCompleter("Microsoft.KeyVault/vaults", "ResourceGroupName")]
         [Alias(Constants.Name)]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string VaultName { get; set; }
 
         /// <summary>
@@ -63,7 +64,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of the resource group associated with the key vault being queried.")]
         [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty()]
+        [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,

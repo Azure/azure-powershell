@@ -15,11 +15,14 @@
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HDInsight.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightProperties"),OutputType(typeof(CapabilitiesResponse))]
+    [GenericBreakingChange("Get-AzHDInsightProperties alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightProperty"),OutputType(typeof(CapabilitiesResponse))]
+    [Alias("Get-AzHDInsightProperties")]
     public class GetAzureHDInsightPropertiesCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions

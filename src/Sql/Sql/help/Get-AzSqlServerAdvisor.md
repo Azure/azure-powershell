@@ -155,6 +155,32 @@ RecommendedActions             : {IR_[test_schema]_[test_table_0.0361551]_6C7AE8
 
 This command gets advisor named CreateIndex from the server named wi-runner-australia-east with its recommended actions included in the response.
 
+### Example 5: List all the advisors for the server using filtering
+```
+PS C:\> Get-AzSqlServerAdvisor -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -AdvisorName d*
+ResourceGroupName              : WIRunnersProd
+ServerName                     : wi-runner-australia-east
+AdvisorName                    : DropIndex
+AdvisorStatus                  : PublicPreview
+AutoExecuteStatus              : Disabled
+AutoExecuteStatusInheritedFrom : Database
+LastChecked                    : 7/31/2016 8:41:19 PM
+RecommendationsStatus          : Ok
+RecommendedActions             : {}
+
+ResourceGroupName              : WIRunnersProd
+ServerName                     : wi-runner-australia-east
+AdvisorName                    : DbParameterization
+AdvisorStatus                  : PublicPreview
+AutoExecuteStatus              : Disabled
+AutoExecuteStatusInheritedFrom : Default
+LastChecked                    : 7/31/2016 2:46:58 PM
+RecommendationsStatus          : NoDbParameterizationIssue
+RecommendedActions             : {}
+```
+
+This command gets a list of all the advisors for the server named wi-runner-australia-east that belongs to the resource group named WIRunnersProd that start with the letter "d".
+
 ## PARAMETERS
 
 ### -AdvisorName
@@ -169,7 +195,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -DefaultProfile
@@ -233,7 +259,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

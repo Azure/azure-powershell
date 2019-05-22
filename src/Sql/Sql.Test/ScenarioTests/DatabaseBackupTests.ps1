@@ -190,7 +190,7 @@ function Test-LongTermRetentionV2Backup($location = "westcentralus")
 		# Can't assert because we can't guarantee that the subscription won't have any backups in the location.
 		$backups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $db.Location -ServerName $server.ServerName
 		Assert-AreEqual $backups.Count 0
-		$backups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $db.Location -ServerName $server.ServerName -DatabaseName $databaseName
+		$backups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $db.Location -ServerName $server.ServerName -DatabaseName $databaseName -BackupName *
 		Assert-AreEqual $backups.Count 0
 	}
 	finally

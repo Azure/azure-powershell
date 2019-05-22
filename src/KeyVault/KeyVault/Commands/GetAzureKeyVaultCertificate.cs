@@ -143,6 +143,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.CertificateName)]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         /// <summary>
