@@ -63,16 +63,16 @@ Gets the resource usage for a susbscription.
 Creates a custom domain for a CDN endpoint.
 
 ### [New-AzCdnDeliveryPolicy](New-AzCdnDeliveryPolicy.md)
-{{ Fill in the Synopsis }}
+Creates a deliveryPolicy for a CDN endpoint.
 
 ### [New-AzCdnDeliveryRule](New-AzCdnDeliveryRule.md)
-{{ Fill in the Synopsis }}
+Creates a deliveryRule for deliveryPolicy creation.
 
 ### [New-AzCdnDeliveryRuleAction](New-AzCdnDeliveryRuleAction.md)
-{{ Fill in the Synopsis }}
+Creates a deliveryRuleAction for deliveryRule creation.
 
 ### [New-AzCdnDeliveryRuleCondition](New-AzCdnDeliveryRuleCondition.md)
-{{ Fill in the Synopsis }}
+Creates a deliveryRuleCondition for deliveryRule creation.
 
 ### [New-AzCdnEndpoint](New-AzCdnEndpoint.md)
 Creates a CDN endpoint.
