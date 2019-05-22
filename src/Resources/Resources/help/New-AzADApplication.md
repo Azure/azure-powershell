@@ -51,6 +51,13 @@ New-AzADApplication -DisplayName <String> -IdentifierUris <String[]> [-HomePage 
 ## DESCRIPTION
 Creates a new azure active directory application.
 
+## PERMISSIONS
+- Azure Active Directory Graph
+  - Application.ReadWrite.OwnedBy
+- Microsoft Graph
+  - Directory.AccessAsUser.All
+  - Directory.ReadWrite.All
+
 ## EXAMPLES
 
 ### Example 1 - Create new AAD application.
