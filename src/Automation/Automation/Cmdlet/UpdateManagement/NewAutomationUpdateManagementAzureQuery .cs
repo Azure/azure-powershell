@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
     using System.Collections;
     using TagHelper = Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using System.Collections.Generic;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzurePrefix + "AutomationUpdateManagementAzureQuery")]
     [OutputType(typeof(AzureQueryProperties))]
@@ -35,7 +36,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
         public string[] Scope { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "List of locations for azure virtual machines.")]
-        public string[] Locaton { get; set; }
+        [LocationCompleter("Microsoft.Automation/SoftwareUpdateConfiguration")]
+        [Alias("Locaton")]
+        public string[] Location { get; set; }
 
         [Parameter(Mandatory = false,  HelpMessage = "Tag for azure virtual machines.")]
         public Hashtable Tag { get; set; }
@@ -53,7 +56,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
             var azureQuery = new AzureQueryProperties
             {
                 Scope = this.Scope,
-                Locations = this.Locaton,
+                Locations = this.Location,
                 TagSettings = this.Tag == null ? null : new TagSettings
                 {
                     Tags = CreateTagDictionary(this.Tag),
