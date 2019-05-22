@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/new-azcdndeliveryrulecondition
 schema: 2.0.0
 ---
 
@@ -25,6 +25,13 @@ The **New-AzCdnDeliveryRule** cmdlet creates a delivery rule for CDN endpoint cr
 ### Example 1
 ```powershell
 PS C:\> New-AzCdnDeliveryRuleCondition -MatchVariable UrlPath -Operator Equal -MatchValue "abc"
+
+MatchVariable   : UrlPath
+Operator        : Equal
+Selector        :
+MatchValue      : {abc}
+NegateCondition : False
+Transfroms      :
 ```
 
 Create a simple condition.

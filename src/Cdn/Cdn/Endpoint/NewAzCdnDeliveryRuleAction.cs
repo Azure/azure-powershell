@@ -91,8 +91,11 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
             {
                 deliveryRuleAction = new PSDeliveryRuleCacheExpirationAction
                 {
-                    CacheBehavior = CacheBehavior,
-                    CacheDuration = CacheDuration
+                    Parameters = new PSCacheExpirationActionParameters
+                    {
+                        CacheBehavior = CacheBehavior,
+                        CacheDuration = CacheDuration
+                    }
                 };
             }
             else if (ParameterSetName == HeaderActionParameterSet)

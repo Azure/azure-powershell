@@ -20,6 +20,9 @@ Disables Custom Domain HTTPS (Deprecated).
 ### [Disable-AzCdnCustomDomainHttps](Disable-AzCdnCustomDomainHttps.md)
 Disables Custom Domain HTTPS.
 
+### [Enable-AzCdnCustomDomain](Enable-AzCdnCustomDomain.md)
+Enables Custom Domain HTTPS (Deprecated).
+
 ### [Enable-AzCdnCustomDomainHttps](Enable-AzCdnCustomDomainHttps.md)
 Enables custom HTTPS.
 

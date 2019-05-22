@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll-Help.xml
 Module Name: Az.Cdn
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cdn/new-azcdndeliverypolicy
 schema: 2.0.0
 ---
 
@@ -25,6 +25,10 @@ The **New-AzCdnDeliveryPolicy** cmdlet creates a delivery policy for CDN endpoin
 ### Example 1
 ```powershell
 PS C:\> New-AzCdnDeliveryPolicy -Description "Sample Policy" -Rule $rule
+
+Description   Rules
+-----------   -----
+Sample Policy {rule1}
 ```
 
 Create a sample delivery policy

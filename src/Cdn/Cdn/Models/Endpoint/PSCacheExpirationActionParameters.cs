@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,12 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Cdn.Models.Endpoint
 {
-    public class PSDeliveryRuleCacheExpirationAction: PSDeliveryRuleAction
+    public class PSCacheExpirationActionParameters
     {
-        public PSCacheExpirationActionParameters Parameters { get; set; }
+       
+        public string CacheBehavior { get; set; }
+        public string Odatatype { get; private set; }
+        public string CacheDuration { get; set; }
+        public string CacheType { get; private set; }
     }
 }

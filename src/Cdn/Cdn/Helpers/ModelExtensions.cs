@@ -191,8 +191,11 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
             {
                 return new PSDeliveryRuleCacheExpirationAction
                 {
-                    CacheBehavior = cacheExpirationAction.Parameters.CacheBehavior,
-                    CacheDuration = cacheExpirationAction.Parameters.CacheDuration
+                    Parameters = new PSCacheExpirationActionParameters
+                    {
+                        CacheBehavior = cacheExpirationAction.Parameters.CacheBehavior,
+                        CacheDuration = cacheExpirationAction.Parameters.CacheDuration
+                    }
                 };
             }
             else if (deliveryRuleAction is UrlRedirectAction urlRedirectAction)
@@ -352,8 +355,8 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
             {
                 Name = deliveryRule.Name,
                 Order = deliveryRule.Order,
-                Action = deliveryRule.Actions.Select(action => action.ToPsDeliveryRuleAction()).ToList(),
-                Condition = deliveryRule.Conditions.Select(condition => condition.ToPsDeliveryRuleCondition()).ToList()
+                Actions = deliveryRule.Actions.Select(action => action.ToPsDeliveryRuleAction()).ToList(),
+                Conditions = deliveryRule.Conditions.Select(condition => condition.ToPsDeliveryRuleCondition()).ToList()
             };
         }
 
@@ -529,8 +532,8 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 {
                     Parameters = new CacheExpirationActionParameters
                     {
-                        CacheBehavior = psDeliveryRuleCacheExpirationAction.CacheBehavior,
-                        CacheDuration = psDeliveryRuleCacheExpirationAction.CacheDuration
+                        CacheBehavior = psDeliveryRuleCacheExpirationAction.Parameters.CacheBehavior,
+                        CacheDuration = psDeliveryRuleCacheExpirationAction.Parameters.CacheDuration
                     }
                 };
             }
@@ -585,8 +588,8 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
             {
                 Name = psDeliveryRule.Name,
                 Order = psDeliveryRule.Order,
-                Actions = psDeliveryRule.Action.Select(action => action.ToDeliveryRuleAction()).ToList(),
-                Conditions = psDeliveryRule.Condition.Select(condition => condition.ToDeliveryRuleCondition()).ToList()
+                Actions = psDeliveryRule.Actions.Select(action => action.ToDeliveryRuleAction()).ToList(),
+                Conditions = psDeliveryRule.Conditions.Select(condition => condition.ToDeliveryRuleCondition()).ToList()
             };
         }
 
