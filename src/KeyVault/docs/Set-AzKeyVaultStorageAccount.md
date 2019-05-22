@@ -21,7 +21,7 @@ Set-AzKeyVaultStorageAccount -Name <String> [-Parameter <IStorageAccountCreatePa
 
 ### SetExpanded
 ```
-Set-AzKeyVaultStorageAccount -Name <String> -ActiveKeyName <String> [-AttributesEnabled <Boolean>]
+Set-AzKeyVaultStorageAccount -Name <String> -ActiveKeyName <String> [-AttributeEnabled <Boolean>]
  -AutoRegenerateKey <Boolean> [-RegenerationPeriod <String>] -ResourceId <String>
  [-Tag <IStorageAccountCreateParametersTags>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -30,9 +30,9 @@ Set-AzKeyVaultStorageAccount -Name <String> -ActiveKeyName <String> [-Attributes
 ### SetViaIdentityExpanded
 ```
 Set-AzKeyVaultStorageAccount -InputObject <IKeyVaultIdentity> -ActiveKeyName <String>
- [-AttributesEnabled <Boolean>] -AutoRegenerateKey <Boolean> [-RegenerationPeriod <String>]
- -ResourceId <String> [-Tag <IStorageAccountCreateParametersTags>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AttributeEnabled <Boolean>] -AutoRegenerateKey <Boolean> [-RegenerationPeriod <String>] -ResourceId <String>
+ [-Tag <IStorageAccountCreateParametersTags>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetViaIdentity
@@ -71,7 +71,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AttributesEnabled
+### -AttributeEnabled
 the enabled state of the object.
 
 ```yaml

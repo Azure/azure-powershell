@@ -22,17 +22,17 @@ Set-AzKeyVaultSecret -Name <String> [-Parameter <ISecretSetParameters>] [-Defaul
 
 ### SetExpanded
 ```
-Set-AzKeyVaultSecret -Name <String> [-AttributesEnabled <Boolean>] [-AttributesExpire <DateTime>]
- [-AttributesNotBefore <DateTime>] [-AttributesRecoveryLevel <DeletionRecoveryLevel>] [-ContentType <String>]
+Set-AzKeyVaultSecret -Name <String> [-AttributeEnabled <Boolean>] [-AttributeExpire <DateTime>]
+ [-AttributeNotBefore <DateTime>] [-AttributeRecoveryLevel <DeletionRecoveryLevel>] [-ContentType <String>]
  [-Tag <ISecretSetParametersTags>] -Value <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
-Set-AzKeyVaultSecret -InputObject <IKeyVaultIdentity> [-AttributesEnabled <Boolean>]
- [-AttributesExpire <DateTime>] [-AttributesNotBefore <DateTime>]
- [-AttributesRecoveryLevel <DeletionRecoveryLevel>] [-ContentType <String>] [-Tag <ISecretSetParametersTags>]
+Set-AzKeyVaultSecret -InputObject <IKeyVaultIdentity> [-AttributeEnabled <Boolean>]
+ [-AttributeExpire <DateTime>] [-AttributeNotBefore <DateTime>]
+ [-AttributeRecoveryLevel <DeletionRecoveryLevel>] [-ContentType <String>] [-Tag <ISecretSetParametersTags>]
  -Value <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -58,7 +58,7 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AttributesEnabled
+### -AttributeEnabled
 Determines whether the object is enabled.
 
 ```yaml
@@ -73,7 +73,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AttributesExpire
+### -AttributeExpire
 Expiry date in UTC.
 
 ```yaml
@@ -88,7 +88,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AttributesNotBefore
+### -AttributeNotBefore
 Not before date in UTC.
 
 ```yaml
@@ -103,9 +103,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AttributesRecoveryLevel
-Reflects the deletion recovery level currently in effect for secrets in the current vault.
-If it contains 'Purgeable', the secret can be permanently deleted by a privileged user; otherwise, only the system can purge the secret, at the end of the retention interval.
+### -AttributeRecoveryLevel
+Reflects the deletion recovery level currently in effect for secrets in the current vault. If it contains 'Purgeable', the secret can be permanently deleted by a privileged user; otherwise, only the system can purge the secret, at the end of the retention interval.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.DeletionRecoveryLevel

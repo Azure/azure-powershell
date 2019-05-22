@@ -54,4 +54,141 @@ require:
 
 module-version: 0.0.1
 skip-model-cmdlets: true
+
+directive:
+  - where:
+      subject: .*AppService.*
+    set:
+      subject-prefix: ''
+  - where:
+      subject: .*WebApp.*
+    set:
+      subject-prefix: ''
+  - where:
+      verb: Get
+      subject: AppServicePlanMetric
+    set:
+      alias: Get-AzAppServicePlanMetrics
+  - where:
+      subject: ^Certificate.*
+    set:
+      subject-prefix: WebApp
+  - where:
+      verb: Get
+      subject: WebAppMetric
+    set:
+      alias: Get-AzWebAppMetrics
+  - where:
+      verb: Get
+      subject: WebAppPublishingProfileXml
+    set:
+      subject: WebAppPublishingProfile
+      alias: [Get-AzWebAppPublishingProfile, Get-AzWebAppSlotPublishingProfile]
+  - where:
+      subject: WebAppSlotConfigurationName
+    set:
+      alias: ${verb}-AzWebAppSlotConfigName
+  - where:
+      verb: Get
+      subject: WebAppMetricSlot
+    set:
+      subject: WebAppSlotMetric
+      alias: Get-AzWebAppSlotMetrics
+  - where:
+      verb: Backup
+      subject: WebApp
+    set:
+      alias: New-AzWebAppBackup
+  - where:
+      verb: Backup
+      subject: WebAppSlot
+    set:
+      alias: New-AzWebAppSlotBackup
+  - where:
+      subject: WebAppNewSitePublishingPassword
+    set:
+      subject: WebAppPublishingPassword
+      alias: Reset-AzWebAppPublishingProfile
+  - where:
+      subject: WebAppNewSitePublishingPasswordSlot
+    set:
+      subject: WebAppSlotPublishingPassword
+      alias: Reset-AzWebAppSlotPublishingProfile
+  - where:
+      verb: Restore
+      subject: WebAppFromDeletedApp
+    set:
+      subject: DeletedWebApp
+  - where:
+      verb: Restore
+      subject: WebAppFromDeletedAppSlot
+    set:
+      subject: DeletedWebAppSlot
+  - where:
+      subject: WebApp
+      parameter-name: InputObject
+    set:
+      alias: WebApp
+  - where:
+      subject: AppServicePlan
+      parameter-name: InputObject
+    set:
+      alias: AppServicePlan
+  - where:
+      subject: WebAppBackupConfiguration
+      parameter-name: InputObject
+    set:
+      alias: WebApp
+  - where:
+      subject: WebAppPublishingProfile
+      parameter-name: OutFile
+    set:
+      parameter-name: OutputFile
+  - where:
+      subject: WebAppPublishingProfile
+      parameter-name: IncludeDisasterRecoveryEndpoint
+    set:
+      parameter-name: IncludeDisasterRecoveryEndpoints
+  - where:
+      subject: WebAppSlot
+      parameter-name: InputObject
+    set:
+      alias: WebApp
+  - where:
+      subject: WebAppPublishingPassword
+      parameter-name: InputObject
+    set:
+      alias: WebApp
+  - where:
+      subject: WebAppSlotPublishingPassword
+      parameter-name: InputObject
+    set:
+      alias: WebApp
+  - where:
+      subject: WebAppBackup
+      parameter-name: InputObject
+    set:
+      alias: WebApp
+  - where:
+      subject: WebAppSnapshot
+      parameter-name: InputObject
+    set:
+      alias: WebApp
+  - where:
+      subject: WebAppSlotConfigurationName
+      parameter-name: InputObject
+    set:
+      alias: WebApp
+  - where:
+      verb: Switch
+      subject: WebAppSlot
+      parameter-name: Slot
+    set:
+      alias: SourceSlotName
+  - where:
+      verb: Switch
+      subject: WebAppSlot
+      parameter-name: TargetSlot
+    set:
+      alias: DestinationSlotName
 ```

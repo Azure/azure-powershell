@@ -62,7 +62,7 @@ PS C:\> {{ Add example code here }}
 algorithm identifier
 
 ```yaml
-Type: JsonWebKeyEncryptionAlgorithm
+Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.JsonWebKeyEncryptionAlgorithm
 Parameter Sets: EncryptExpanded, EncryptViaIdentityExpanded
 Aliases:
 
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: IKeyVaultIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
 Parameter Sets: EncryptViaIdentityExpanded, EncryptViaIdentity
 Aliases:
 
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 The name of the key.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Encrypt, EncryptExpanded
 Aliases:
 
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 The version of the key.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Encrypt, EncryptExpanded
 Aliases:
 
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 The key operations parameters.
 
 ```yaml
-Type: IKeyOperationsParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IKeyOperationsParameters
 Parameter Sets: Encrypt, EncryptViaIdentity
 Aliases:
 
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 HELP MESSAGE MISSING
 
 ```yaml
-Type: Byte[]
+Type: System.Byte[]
 Parameter Sets: EncryptExpanded, EncryptViaIdentityExpanded
 Aliases:
 
@@ -167,7 +167,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -183,7 +183,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

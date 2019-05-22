@@ -23,7 +23,7 @@ Set-AzKeyVaultStorageSasDefinition -SasDefinitionName <String> -StorageAccountNa
 ### SetExpanded
 ```
 Set-AzKeyVaultStorageSasDefinition -SasDefinitionName <String> -StorageAccountName <String>
- [-Parameter <ISasDefinitionCreateParameters>] [-AttributesEnabled <Boolean>]
+ [-Parameter <ISasDefinitionCreateParameters>] [-AttributeEnabled <Boolean>]
  [-Tag <ISasDefinitionCreateParametersTags>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -31,7 +31,7 @@ Set-AzKeyVaultStorageSasDefinition -SasDefinitionName <String> -StorageAccountNa
 ### SetViaIdentityExpanded
 ```
 Set-AzKeyVaultStorageSasDefinition -InputObject <IKeyVaultIdentity>
- [-Parameter <ISasDefinitionCreateParameters>] [-AttributesEnabled <Boolean>]
+ [-Parameter <ISasDefinitionCreateParameters>] [-AttributeEnabled <Boolean>]
  [-Tag <ISasDefinitionCreateParametersTags>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -58,7 +58,7 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AttributesEnabled
+### -AttributeEnabled
 the enabled state of the object.
 
 ```yaml

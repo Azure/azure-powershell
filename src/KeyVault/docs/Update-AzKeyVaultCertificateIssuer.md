@@ -21,17 +21,17 @@ Update-AzKeyVaultCertificateIssuer -IssuerName <String> [-Parameter <ICertificat
 
 ### UpdateExpanded
 ```
-Update-AzKeyVaultCertificateIssuer -IssuerName <String> [-AttributesEnabled <Boolean>]
- [-CredentialsAccountId <String>] [-CredentialsPassword <String>]
- [-OrgDetailsAdminDetail <IAdministratorDetails[]>] [-OrgDetailsId <String>] [-Provider <String>]
+Update-AzKeyVaultCertificateIssuer -IssuerName <String> [-AttributeEnabled <Boolean>]
+ [-CredentialAccountId <String>] [-CredentialPassword <String>]
+ [-OrgDetailAdminDetail <IAdministratorDetails[]>] [-OrgDetailId <String>] [-Provider <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzKeyVaultCertificateIssuer -InputObject <IKeyVaultIdentity> [-AttributesEnabled <Boolean>]
- [-CredentialsAccountId <String>] [-CredentialsPassword <String>]
- [-OrgDetailsAdminDetail <IAdministratorDetails[]>] [-OrgDetailsId <String>] [-Provider <String>]
+Update-AzKeyVaultCertificateIssuer -InputObject <IKeyVaultIdentity> [-AttributeEnabled <Boolean>]
+ [-CredentialAccountId <String>] [-CredentialPassword <String>]
+ [-OrgDetailAdminDetail <IAdministratorDetails[]>] [-OrgDetailId <String>] [-Provider <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -57,7 +57,7 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AttributesEnabled
+### -AttributeEnabled
 Determines whether the issuer is enabled.
 
 ```yaml
@@ -72,7 +72,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CredentialsAccountId
+### -CredentialAccountId
 The user name/account name/account id.
 
 ```yaml
@@ -87,7 +87,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CredentialsPassword
+### -CredentialPassword
 The password/secret/account key.
 
 ```yaml
@@ -147,7 +147,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OrgDetailsAdminDetail
+### -OrgDetailAdminDetail
 Details of the organization administrator.
 
 ```yaml
@@ -162,7 +162,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OrgDetailsId
+### -OrgDetailId
 Id of the organization.
 
 ```yaml

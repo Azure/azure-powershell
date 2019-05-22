@@ -21,7 +21,7 @@ Update-AzKeyVaultStorageAccount -Name <String> [-Parameter <IStorageAccountUpdat
 
 ### UpdateExpanded
 ```
-Update-AzKeyVaultStorageAccount -Name <String> [-ActiveKeyName <String>] [-AttributesEnabled <Boolean>]
+Update-AzKeyVaultStorageAccount -Name <String> [-ActiveKeyName <String>] [-AttributeEnabled <Boolean>]
  [-AutoRegenerateKey <Boolean>] [-RegenerationPeriod <String>] [-Tag <IStorageAccountUpdateParametersTags>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -29,7 +29,7 @@ Update-AzKeyVaultStorageAccount -Name <String> [-ActiveKeyName <String>] [-Attri
 ### UpdateViaIdentityExpanded
 ```
 Update-AzKeyVaultStorageAccount -InputObject <IKeyVaultIdentity> [-ActiveKeyName <String>]
- [-AttributesEnabled <Boolean>] [-AutoRegenerateKey <Boolean>] [-RegenerationPeriod <String>]
+ [-AttributeEnabled <Boolean>] [-AutoRegenerateKey <Boolean>] [-RegenerationPeriod <String>]
  [-Tag <IStorageAccountUpdateParametersTags>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -70,7 +70,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AttributesEnabled
+### -AttributeEnabled
 the enabled state of the object.
 
 ```yaml

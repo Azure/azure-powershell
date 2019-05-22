@@ -23,9 +23,9 @@ Update-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <St
 Update-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AccessPolicy <IAccessPolicyEntry[]>] [-CreateMode <CreateMode>] [-EnablePurgeProtection <Boolean>]
  [-EnableSoftDelete <Boolean>] [-EnabledForDeployment <Boolean>] [-EnabledForDiskEncryption <Boolean>]
- [-EnabledForTemplateDeployment <Boolean>] [-NetworkAclsBypass <NetworkRuleBypassOptions>]
- [-NetworkAclsDefaultAction <NetworkRuleAction>] [-NetworkAclsIPRule <IIPRule[]>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] -SkuName <SkuName> [-Tag <IVaultPatchParametersTags>]
+ [-EnabledForTemplateDeployment <Boolean>] [-NetworkAclBypass <NetworkRuleBypassOptions>]
+ [-NetworkAclDefaultAction <NetworkRuleAction>] [-NetworkAclIPRule <IIPRule[]>]
+ [-NetworkAclVirtualNetworkRule <IVirtualNetworkRule[]>] -SkuName <SkuName> [-Tag <IVaultPatchParametersTags>]
  [-TenantId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -34,9 +34,9 @@ Update-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <St
 Update-AzKeyVault -InputObject <IKeyVaultIdentity> [-AccessPolicy <IAccessPolicyEntry[]>]
  [-CreateMode <CreateMode>] [-EnablePurgeProtection <Boolean>] [-EnableSoftDelete <Boolean>]
  [-EnabledForDeployment <Boolean>] [-EnabledForDiskEncryption <Boolean>]
- [-EnabledForTemplateDeployment <Boolean>] [-NetworkAclsBypass <NetworkRuleBypassOptions>]
- [-NetworkAclsDefaultAction <NetworkRuleAction>] [-NetworkAclsIPRule <IIPRule[]>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] -SkuName <SkuName> [-Tag <IVaultPatchParametersTags>]
+ [-EnabledForTemplateDeployment <Boolean>] [-NetworkAclBypass <NetworkRuleBypassOptions>]
+ [-NetworkAclDefaultAction <NetworkRuleAction>] [-NetworkAclIPRule <IIPRule[]>]
+ [-NetworkAclVirtualNetworkRule <IVirtualNetworkRule[]>] -SkuName <SkuName> [-Tag <IVaultPatchParametersTags>]
  [-TenantId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -215,10 +215,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkAclsBypass
-Tells what traffic can bypass network rules.
-This can be 'AzureServices' or 'None'.
-If not specified the default is 'AzureServices'.
+### -NetworkAclBypass
+Tells what traffic can bypass network rules. This can be 'AzureServices' or 'None'. If not specified the default is 'AzureServices'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.NetworkRuleBypassOptions
@@ -232,9 +230,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkAclsDefaultAction
-The default action when no rule from ipRules and from virtualNetworkRules match.
-This is only used after the bypass property has been evaluated.
+### -NetworkAclDefaultAction
+The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.NetworkRuleAction
@@ -248,7 +245,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkAclsIPRule
+### -NetworkAclIPRule
 The list of IP address rules.
 
 ```yaml
@@ -263,7 +260,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkAclsVirtualNetworkRule
+### -NetworkAclVirtualNetworkRule
 The list of virtual network rules.
 
 ```yaml

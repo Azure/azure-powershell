@@ -23,9 +23,9 @@ New-AzDeployment -Name <String> -SubscriptionId <String> [-Parameter <IDeploymen
 New-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <String> [-Parameter <IDeployment>]
  [-DebugSettingDetailLevel <String>] [-Location <String>] -Mode <DeploymentMode>
  [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
- [-ParametersLinkContentVersion <String>] -ParametersLinkUri <String>
- [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>] -TemplateLinkUri <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ParameterLinkContentVersion <String>] -ParameterLinkUri <String> [-Template <IDeploymentPropertiesTemplate>]
+ [-TemplateLinkContentVersion <String>] -TemplateLinkUri <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -33,9 +33,9 @@ New-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <Str
 New-AzDeployment -Name <String> -SubscriptionId <String> [-Parameter <IDeployment>]
  [-DebugSettingDetailLevel <String>] [-Location <String>] -Mode <DeploymentMode>
  [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
- [-ParametersLinkContentVersion <String>] -ParametersLinkUri <String>
- [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>] -TemplateLinkUri <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ParameterLinkContentVersion <String>] -ParameterLinkUri <String> [-Template <IDeploymentPropertiesTemplate>]
+ [-TemplateLinkContentVersion <String>] -TemplateLinkUri <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create1
@@ -49,9 +49,9 @@ New-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <Str
 New-AzDeployment -InputObject <IResourcesIdentity> [-Parameter <IDeployment>]
  [-DebugSettingDetailLevel <String>] [-Location <String>] -Mode <DeploymentMode>
  [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
- [-ParametersLinkContentVersion <String>] -ParametersLinkUri <String>
- [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>] -TemplateLinkUri <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ParameterLinkContentVersion <String>] -ParameterLinkUri <String> [-Template <IDeploymentPropertiesTemplate>]
+ [-TemplateLinkContentVersion <String>] -TemplateLinkUri <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -59,9 +59,9 @@ New-AzDeployment -InputObject <IResourcesIdentity> [-Parameter <IDeployment>]
 New-AzDeployment -InputObject <IResourcesIdentity> [-Parameter <IDeployment>]
  [-DebugSettingDetailLevel <String>] [-Location <String>] -Mode <DeploymentMode>
  [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
- [-ParametersLinkContentVersion <String>] -ParametersLinkUri <String>
- [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>] -TemplateLinkUri <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ParameterLinkContentVersion <String>] -ParameterLinkUri <String> [-Template <IDeploymentPropertiesTemplate>]
+ [-TemplateLinkContentVersion <String>] -TemplateLinkUri <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
@@ -249,7 +249,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ParametersLinkContentVersion
+### -ParameterLinkContentVersion
 If included, must match the ContentVersion in the template.
 
 ```yaml
@@ -264,7 +264,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ParametersLinkUri
+### -ParameterLinkUri
 The URI of the parameters file.
 
 ```yaml

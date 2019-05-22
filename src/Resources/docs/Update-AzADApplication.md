@@ -24,18 +24,17 @@ Update-AzADApplication -ObjectId <String> -TenantId <String> [-PassThru] [-Allow
  [-AllowPassthroughUser <Boolean>] [-AppLogoUrl <String>] [-AppPermission <String[]>] [-AppRole <IAppRole[]>]
  [-AvailableToOtherTenant <Boolean>] [-DisplayName <String>] [-ErrorUrl <String>]
  [-GroupMembershipClaim <GroupMembershipClaimTypes>] [-Homepage <String>] [-IdentifierUri <String[]>]
- [-InformationalUrlsMarketing <String>] [-InformationalUrlsPrivacy <String>]
- [-InformationalUrlsSupport <String>] [-InformationalUrlsTermsOfService <String>]
- [-IsDeviceOnlyAuthSupported <Boolean>] [-KeyCredential <IKeyCredential[]>]
- [-KnownClientApplication <String[]>] [-LogoutUrl <String>] [-Oauth2AllowImplicitFlow <Boolean>]
- [-Oauth2AllowUrlPathMatching <Boolean>] [-Oauth2Permissions <IOAuth2Permission[]>]
- [-Oauth2RequirePostResponse <Boolean>] [-OptionalClaimsAccessToken <IOptionalClaim[]>]
- [-OptionalClaimsIdToken <IOptionalClaim[]>] [-OptionalClaimsSamlToken <IOptionalClaim[]>]
- [-OrgRestriction <String[]>] [-PasswordCredential <IPasswordCredential[]>]
- [-PreAuthorizedApplication <IPreAuthorizedApplication[]>] [-PublicClient <Boolean>]
- [-PublisherDomain <String>] [-ReplyUrl <String[]>] [-RequiredResourceAccess <IRequiredResourceAccess[]>]
- [-SamlMetadataUrl <String>] [-SignInAudience <String>] [-WwwHomepage <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-InformationalUrlMarketing <String>] [-InformationalUrlPrivacy <String>] [-InformationalUrlSupport <String>]
+ [-InformationalUrlTermsOfService <String>] [-IsDeviceOnlyAuthSupported <Boolean>]
+ [-KeyCredential <IKeyCredential[]>] [-KnownClientApplication <String[]>] [-LogoutUrl <String>]
+ [-Oauth2AllowImplicitFlow <Boolean>] [-Oauth2AllowUrlPathMatching <Boolean>]
+ [-Oauth2Permissions <IOAuth2Permission[]>] [-Oauth2RequirePostResponse <Boolean>]
+ [-OptionalClaimAccessToken <IOptionalClaim[]>] [-OptionalClaimIdToken <IOptionalClaim[]>]
+ [-OptionalClaimSamlToken <IOptionalClaim[]>] [-OrgRestriction <String[]>]
+ [-PasswordCredential <IPasswordCredential[]>] [-PreAuthorizedApplication <IPreAuthorizedApplication[]>]
+ [-PublicClient <Boolean>] [-PublisherDomain <String>] [-ReplyUrl <String[]>]
+ [-RequiredResourceAccess <IRequiredResourceAccess[]>] [-SamlMetadataUrl <String>] [-SignInAudience <String>]
+ [-WwwHomepage <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PatchViaIdentityExpanded
@@ -44,18 +43,17 @@ Update-AzADApplication -InputObject <IResourcesIdentity> [-PassThru] [-AllowGues
  [-AllowPassthroughUser <Boolean>] [-AppLogoUrl <String>] [-AppPermission <String[]>] [-AppRole <IAppRole[]>]
  [-AvailableToOtherTenant <Boolean>] [-DisplayName <String>] [-ErrorUrl <String>]
  [-GroupMembershipClaim <GroupMembershipClaimTypes>] [-Homepage <String>] [-IdentifierUri <String[]>]
- [-InformationalUrlsMarketing <String>] [-InformationalUrlsPrivacy <String>]
- [-InformationalUrlsSupport <String>] [-InformationalUrlsTermsOfService <String>]
- [-IsDeviceOnlyAuthSupported <Boolean>] [-KeyCredential <IKeyCredential[]>]
- [-KnownClientApplication <String[]>] [-LogoutUrl <String>] [-Oauth2AllowImplicitFlow <Boolean>]
- [-Oauth2AllowUrlPathMatching <Boolean>] [-Oauth2Permissions <IOAuth2Permission[]>]
- [-Oauth2RequirePostResponse <Boolean>] [-OptionalClaimsAccessToken <IOptionalClaim[]>]
- [-OptionalClaimsIdToken <IOptionalClaim[]>] [-OptionalClaimsSamlToken <IOptionalClaim[]>]
- [-OrgRestriction <String[]>] [-PasswordCredential <IPasswordCredential[]>]
- [-PreAuthorizedApplication <IPreAuthorizedApplication[]>] [-PublicClient <Boolean>]
- [-PublisherDomain <String>] [-ReplyUrl <String[]>] [-RequiredResourceAccess <IRequiredResourceAccess[]>]
- [-SamlMetadataUrl <String>] [-SignInAudience <String>] [-WwwHomepage <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-InformationalUrlMarketing <String>] [-InformationalUrlPrivacy <String>] [-InformationalUrlSupport <String>]
+ [-InformationalUrlTermsOfService <String>] [-IsDeviceOnlyAuthSupported <Boolean>]
+ [-KeyCredential <IKeyCredential[]>] [-KnownClientApplication <String[]>] [-LogoutUrl <String>]
+ [-Oauth2AllowImplicitFlow <Boolean>] [-Oauth2AllowUrlPathMatching <Boolean>]
+ [-Oauth2Permissions <IOAuth2Permission[]>] [-Oauth2RequirePostResponse <Boolean>]
+ [-OptionalClaimAccessToken <IOptionalClaim[]>] [-OptionalClaimIdToken <IOptionalClaim[]>]
+ [-OptionalClaimSamlToken <IOptionalClaim[]>] [-OrgRestriction <String[]>]
+ [-PasswordCredential <IPasswordCredential[]>] [-PreAuthorizedApplication <IPreAuthorizedApplication[]>]
+ [-PublicClient <Boolean>] [-PublisherDomain <String>] [-ReplyUrl <String[]>]
+ [-RequiredResourceAccess <IRequiredResourceAccess[]>] [-SamlMetadataUrl <String>] [-SignInAudience <String>]
+ [-WwwHomepage <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PatchViaIdentity
@@ -258,7 +256,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationalUrlsMarketing
+### -InformationalUrlMarketing
 The marketing URI
 
 ```yaml
@@ -273,7 +271,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationalUrlsPrivacy
+### -InformationalUrlPrivacy
 The privacy policy URI
 
 ```yaml
@@ -288,7 +286,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationalUrlsSupport
+### -InformationalUrlSupport
 The support URI
 
 ```yaml
@@ -303,7 +301,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationalUrlsTermsOfService
+### -InformationalUrlTermsOfService
 The terms of service URI
 
 ```yaml
@@ -472,7 +470,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OptionalClaimsAccessToken
+### -OptionalClaimAccessToken
 Optional claims requested to be included in the access token.
 
 ```yaml
@@ -487,7 +485,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OptionalClaimsIdToken
+### -OptionalClaimIdToken
 Optional claims requested to be included in the id token.
 
 ```yaml
@@ -502,7 +500,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OptionalClaimsSamlToken
+### -OptionalClaimSamlToken
 Optional claims requested to be included in the saml token.
 
 ```yaml

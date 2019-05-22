@@ -413,6 +413,9 @@ Validates whether the specified template is syntactically correct and will be ac
 ### [Test-AzDeploymentExistence](Test-AzDeploymentExistence.md)
 Checks whether the deployment exists.
 
+### [Test-AzNameAvailability](Test-AzNameAvailability.md)
+Checks if the specified management group name is valid and unique
+
 ### [Test-AzResourceExistence](Test-AzResourceExistence.md)
 Checks by ID whether a resource exists.
 

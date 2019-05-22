@@ -22,16 +22,18 @@ Update-AzADUser -TenantId <String> -UpnOrObjectId <String> [-Parameter <IUserUpd
 ```
 Update-AzADUser -TenantId <String> -UpnOrObjectId <String> [-PassThru] [-AccountEnabled <Boolean>]
  [-DisplayName <String>] [-GivenName <String>] [-ImmutableId <String>] [-MailNickname <String>]
- [-PasswordProfile <IPasswordProfile>] [-PrincipalName <String>] [-Surname <String>] [-Type <UserType>]
- [-UsageLocation <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PasswordProfileForceChangePasswordNextLogin <Boolean>] -PasswordProfilePassword <String>
+ [-PrincipalName <String>] [-Surname <String>] [-Type <UserType>] [-UsageLocation <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzADUser -InputObject <IResourcesIdentity> [-PassThru] [-AccountEnabled <Boolean>]
  [-DisplayName <String>] [-GivenName <String>] [-ImmutableId <String>] [-MailNickname <String>]
- [-PasswordProfile <IPasswordProfile>] [-PrincipalName <String>] [-Surname <String>] [-Type <UserType>]
- [-UsageLocation <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PasswordProfileForceChangePasswordNextLogin <Boolean>] -PasswordProfilePassword <String>
+ [-PrincipalName <String>] [-Surname <String>] [-Type <UserType>] [-UsageLocation <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -190,15 +192,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PasswordProfile
-The password profile of the user.
+### -PasswordProfileForceChangePasswordNextLogin
+Whether to force a password change on next login.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPasswordProfile
+Type: System.Boolean
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PasswordProfilePassword
+Password
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
