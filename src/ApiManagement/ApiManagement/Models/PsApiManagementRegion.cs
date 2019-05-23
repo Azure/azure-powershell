@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
     using Helpers;
     using System;
     using System.Linq;
-    using System.Collections.Generic;
 
     public class PsApiManagementRegion
     {

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 7BCEB0EF-1A09-4CED-9F34-CE3AB03181A7
@@ -77,6 +77,44 @@ PS C:\>Get-AzApiManagementPolicy -Context $apimContext -ApiId "9876543210" -Oper
 
 This command gets the operation-scope policy.
 
+### Example 5: Get the Tenant scope policy in RawXml format
+```powershell
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS c:\> Get-AzApiManagementPolicy -Context $context -Format rawxml
+
+<policies>
+        <inbound>
+                <set-header name="correlationid" exists-action="skip">
+                        <value>@{
+                var guidBinary = new byte[16];
+                Array.Copy(Guid.NewGuid().ToByteArray(), 0, guidBinary, 0, 10);
+                long time = DateTime.Now.Ticks;
+                byte[] bytes = new byte[6];
+                unchecked
+                {
+                       bytes[5] = (byte)(time >> 40);
+                       bytes[4] = (byte)(time >> 32);
+                       bytes[3] = (byte)(time >> 24);
+                       bytes[2] = (byte)(time >> 16);
+                       bytes[1] = (byte)(time >> 8);
+                       bytes[0] = (byte)(time);
+                }
+                Array.Copy(bytes, 0, guidBinary, 10, 6);
+                return new Guid(guidBinary).ToString();
+            }
+            </value>
+                </set-header>
+        </inbound>
+        <backend>
+                <forward-request />
+        </backend>
+        <outbound />
+        <on-error />
+</policies>
+```
+
+This command gets the tenant-scope policy in Non-Xml escaped format.
+
 ## PARAMETERS
 
 ### -ApiId
@@ -121,7 +159,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -157,7 +195,7 @@ Accept wildcard characters: False
 
 ### -Format
 Specifies the format of the API management policy.
-The default value for this parameter is "application/vnd.ms-az-apim.policy+xml".
+The default value for this parameter is "xml".
 
 ```yaml
 Type: System.String
@@ -250,7 +288,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
