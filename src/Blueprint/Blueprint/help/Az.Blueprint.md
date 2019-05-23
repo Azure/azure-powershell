@@ -11,8 +11,8 @@ Locale: en-US
 {{Manually Enter Description Here}}
 
 ## Az.Blueprint Cmdlets
-### [Export-AzBlueprintWithArtifacts](Export-AzBlueprintWithArtifacts.md)
-{{Manually Enter Export-AzBlueprintWithArtifacts Description Here}}
+### [Export-AzBlueprintWithArtifact](Export-AzBlueprintWithArtifact.md)
+{{Manually Enter Export-AzBlueprintWithArtifact Description Here}}
 
 ### [Get-AzBlueprint](Get-AzBlueprint.md)
 {{Manually Enter Get-AzBlueprint Description Here}}
@@ -23,8 +23,8 @@ Locale: en-US
 ### [Get-AzBlueprintAssignment](Get-AzBlueprintAssignment.md)
 {{Manually Enter Get-AzBlueprintAssignment Description Here}}
 
-### [Import-AzBlueprintWithArtifacts](Import-AzBlueprintWithArtifacts.md)
-{{Manually Enter Import-AzBlueprintWithArtifacts Description Here}}
+### [Import-AzBlueprintWithArtifact](Import-AzBlueprintWithArtifact.md)
+{{Manually Enter Import-AzBlueprintWithArtifact Description Here}}
 
 ### [New-AzBlueprint](New-AzBlueprint.md)
 {{Manually Enter New-AzBlueprint Description Here}}

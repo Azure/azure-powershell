@@ -142,6 +142,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create artifact &apos;{0}&apos;.
+        /// </summary>
+        internal static string CreateArtifactShouldProcessString {
+            get {
+                return ResourceManager.GetString("CreateArtifactShouldProcessString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create blueprint assignment &apos;{0}&apos;.
         /// </summary>
         internal static string CreateAssignmentShouldProcessString {
@@ -196,6 +205,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Publish blueprint &apos;{0}&apos;.
+        /// </summary>
+        internal static string PublishBlueprintShouldProcessString {
+            get {
+                return ResourceManager.GetString("PublishBlueprintShouldProcessString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not register the resource provider &apos;{0}&apos;.
         /// </summary>
         internal static string ResourceProviderRegistrationFailed {
@@ -210,6 +228,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties {
         internal static string UnexpectedErrorWhileCheckingIfBlueprintExists {
             get {
                 return ResourceManager.GetString("UnexpectedErrorWhileCheckingIfBlueprintExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update artifact &apos;{0}&apos;.
+        /// </summary>
+        internal static string UpdateArtifactShouldProcessString {
+            get {
+                return ResourceManager.GetString("UpdateArtifactShouldProcessString", resourceCulture);
             }
         }
         

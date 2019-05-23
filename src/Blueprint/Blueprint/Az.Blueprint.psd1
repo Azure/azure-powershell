@@ -83,8 +83,8 @@ CmdletsToExport = 'Get-AzBlueprint',
 				  'Publish-AzBlueprint',
 				  'New-AzBlueprintArtifact',
 				  'Get-AzBlueprintArtifact',
-				  'Export-AzBlueprintWithArtifacts',
-				  'Import-AzBlueprintWithArtifacts',
+				  'Export-AzBlueprintWithArtifact',
+				  'Import-AzBlueprintWithArtifact',
 				  'Set-AzBlueprintArtifact',
 				  'Set-AzBlueprint'
 

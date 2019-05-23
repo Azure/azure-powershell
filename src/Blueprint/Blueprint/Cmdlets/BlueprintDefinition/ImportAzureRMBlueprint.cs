@@ -5,7 +5,7 @@ using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
-    [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintWithArtifacts", DefaultParameterSetName = ParameterSetNames.ImportBlueprintParameterSet), OutputType(typeof(string))]
+    [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintWithArtifact", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.ImportBlueprintParameterSet), OutputType(typeof(string))]
     public class ImportAzureRmBlueprint : BlueprintDefinitionCmdletBase
     {
         #region Parameters
