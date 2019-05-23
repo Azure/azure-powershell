@@ -46,25 +46,7 @@ Get EventSubscription Webhook Endpoint
 #>
 function Get-EventSubscriptionWebhookEndpoint
 {
-    return "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=<HIDDEN>"
-}
-
-<#
-.SYNOPSIS
-Get Hybrid Connection ResourceId
-#>
-function Get-HybridConnectionResourceId
-{
-    return "/subscriptions/$subscriptionId/resourceGroups/<ResourceGroupName>/providers/Microsoft.Relay/namespaces/<NameSpace>/hybridConnections/<HybridConnectionName>"
-}
-
-<#
-.SYNOPSIS
-Get Storage Destination ResourceId
-#>
-function Get-StorageDestinationResourceId
-{
-    return "/subscriptions/$subscriptionId/resourceGroups/<ResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>/queueServices/default/queues/<QueueName>"
+    return "https://devexpfuncappdestination.azurewebsites.net/runtime/webhooks/EventGrid?functionName=EventGridTrigger1&code=<HIDDEN>"
 }
 
 <#
@@ -73,7 +55,34 @@ Get EventSubscription Webhook Endpoint
 #>
 function Get-EventSubscriptionWebhookBaseEndpoint
 {
-    return "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1"
+    return "https://devexpfuncappdestination.azurewebsites.net/runtime/webhooks/EventGrid"
+}
+
+<#
+.SYNOPSIS
+Get Hybrid Connection ResourceId
+#>
+function Get-HybridConnectionResourceId
+{
+    return "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/DevExpRg/providers/Microsoft.Relay/namespaces/DevExpRelayNamespace/hybridConnections/hydbridconnectiondestination"
+}
+
+<#
+.SYNOPSIS
+Get Storage Destination ResourceId
+#>
+function Get-StorageDestinationResourceId
+{
+    return "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/DevExpRg/providers/Microsoft.Storage/storageAccounts/devexpstg/queueServices/default/queues/stogqueuedestination"
+}
+
+<#
+.SYNOPSIS
+Get ServiceBus Queue ResourceId
+#>
+function Get-ServiceBusQueueResourceId
+{
+    return "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/DevExpRg/providers/Microsoft.ServiceBus/namespaces/devexpservicebus/queues/devexpdestination"
 }
 
 <#
@@ -82,7 +91,7 @@ Get Deadletter ResourceId
 #>
 function Get-DeadletterResourceId
 {
-    return "/subscriptions/$subscriptionId/resourceGroups/<ResourceGroupName>/providers/microsoft.Storage/storageAccounts/<StorageAccountName>/blobServices/default/containers/<ContainerName>"
+    return "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/DevExpRg/providers/Microsoft.Storage/storageAccounts/devexpstg/blobServices/default/containers/dlq"
 }
 
 <#
@@ -96,11 +105,29 @@ function Get-TopicName
 
 <#
 .SYNOPSIS
+Get domain name
+#>
+function Get-DomainName
+{
+    return "PSTestDomain-" + (getAssetName)
+}
+
+<#
+.SYNOPSIS
+Get domain topic name
+#>
+function Get-DomainTopicName
+{
+    return "PSTestDomainTopic-" + (getAssetName)
+}
+
+<#
+.SYNOPSIS
 Get location
 #>
 function Get-LocationForEventGrid
 {
-    return "westus2"
+    return "centraluseuap"
 }
 
 <#
