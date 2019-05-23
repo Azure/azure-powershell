@@ -218,7 +218,7 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'New-AzSqlDatabaseInstanceFailoverGroup', 
                'Remove-AzSqlDatabaseInstanceFailoverGroup', 
                'Set-AzSqlDatabaseInstanceFailoverGroup', 
-               'Switch-AzSqlDatabaseInstanceFailoverGroup'
+               'Switch-AzSqlDatabaseInstanceFailoverGroup',
 			   'Get-AzSqlServerAdvancedThreatProtectionSettings', 
                'Clear-AzSqlServerAdvancedThreatProtectionSettings', 
                'Update-AzSqlServerAdvancedThreatProtectionSettings', 
