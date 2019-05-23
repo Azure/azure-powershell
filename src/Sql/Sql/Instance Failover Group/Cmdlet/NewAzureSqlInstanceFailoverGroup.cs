@@ -74,6 +74,14 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         public string PartnerManagedInstanceName { get; set; }
 
         /// <summary>
+        /// Gets or sets the partner subscription id for Instance Failover Group
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The subscription id of the secondary managed instance of the Instance Failover Group needed only for cross-subscrption setup")]
+        [ValidateNotNullOrEmpty]
+        public string PartnerSubscriptionId { get; set; }
+
+        /// <summary>
         /// Gets or sets the failover policy without data loss for the Sql Azure Instance Failover Group.
         /// </summary>
         [Parameter(Mandatory = false,
@@ -143,6 +151,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
                 Location = Location,
                 Name = Name,
                 PartnerResourceGroupName = MyInvocation.BoundParameters.ContainsKey("PartnerResourceGroupName") ? PartnerResourceGroupName : ResourceGroupName,
+                PartnerSubscriptionId = MyInvocation.BoundParameters.ContainsKey("PartnerSubscriptionId") ? PartnerSubscriptionId : null,
                 PartnerRegion = PartnerRegion,
                 PrimaryManagedInstanceName = PrimaryManagedInstanceName,
                 PartnerManagedInstanceName = PartnerManagedInstanceName,

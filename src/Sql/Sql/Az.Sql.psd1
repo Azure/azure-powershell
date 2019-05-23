@@ -217,7 +217,13 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Get-AzSqlVirtualCluster', 'Remove-AzSqlVirtualCluster',
 			         'Enable-AzSqlServerAdvancedDataSecurity', 
                'Disable-AzSqlServerAdvancedDataSecurity', 
-               'Get-AzSqlServerAdvancedDataSecurityPolicy'
+               'Get-AzSqlServerAdvancedDataSecurityPolicy',
+               'Switch-AzSqlDatabaseFailoverGroup',
+               'Get-AzSqlDatabaseInstanceFailoverGroup', 
+               'New-AzSqlDatabaseInstanceFailoverGroup', 
+               'Remove-AzSqlDatabaseInstanceFailoverGroup', 
+               'Set-AzSqlDatabaseInstanceFailoverGroup', 
+               'Switch-AzSqlDatabaseInstanceFailoverGroup'
 
 # Variables to export from this module
 # VariablesToExport = @()
