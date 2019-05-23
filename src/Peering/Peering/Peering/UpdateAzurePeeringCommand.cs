@@ -307,7 +307,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             }
             catch (ErrorResponseException ex)
             {
-                                var error = ex.Response.Content.Contains("\"error\\\":") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(JsonConvert.DeserializeObject(ex.Response.Content).ToString()).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
+                                var error = GetErrorCodeAndMessageFromArmOrErm(ex);
                 throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
 
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             }
             catch (ErrorResponseException ex)
             {
-                                var error = ex.Response.Content.Contains("\"error\\\":") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(JsonConvert.DeserializeObject(ex.Response.Content).ToString()).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
+                                var error = GetErrorCodeAndMessageFromArmOrErm(ex);
                 throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
 
@@ -546,30 +546,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             string name)
         {
             exchangePeering.Exchange.PeerAsn = new PSSubResource(exchangePeering.Exchange.PeerAsn.Id);
+            var count = exchangePeering.Exchange.Connections.Count;
             if (this.ExchangeConnection != null)
             {
-                for (int i = 0; i < exchangePeering.Exchange.Connections.Count; i++)
+                for (int i = 0; i < count; i++)
                 {
                     foreach (var connection in this.ExchangeConnection)
                     {
                         var connectionDifferencesCount =
                             exchangePeering.Exchange.Connections[i].DetailedCompare(connection).Count;
-                        if (connectionDifferencesCount == 0)
-                        {
-                            continue;
-                        }
-
                         if (connectionDifferencesCount == 1)
                         {
                             exchangePeering.Exchange.Connections[i] = connection;
                             continue;
                         }
-
-                        if (connectionDifferencesCount <= 1) continue;
-                        if (!exchangePeering.Exchange.Connections.Contains(connection))
-                        {
-                            exchangePeering.Exchange.Connections.Add(connection);
-                        }
+                        exchangePeering.Exchange.Connections.Add(connection);
                     }
                 }
             }
