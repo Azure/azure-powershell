@@ -350,6 +350,9 @@ Gets a network security group.
 ### [Get-AzNetworkSecurityRuleConfig](Get-AzNetworkSecurityRuleConfig.md)
 Get a network security rule configuration for a network security group.
 
+### [Get-AzNetworkServiceTag](Get-AzNetworkServiceTag.md)
+Gets the list of service tag information resources.
+
 ### [Get-AzNetworkUsage](Get-AzNetworkUsage.md)
 Lists network usages for a subscription
 
