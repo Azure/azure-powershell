@@ -50,6 +50,12 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Model
         public string PartnerResourceGroupName { get; set; }
 
         /// <summary>
+        /// Gets or sets the partner subscription id.
+        /// </summary>
+        public string PartnerSubscriptionId { get; set; }
+
+
+        /// <summary>
         /// Gets or sets the name of the partner server name
         /// </summary>
         public string PartnerRegion { get; set; }
