@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             ParameterSetName = TopicNameParameterSet,
-            HelpMessage = "Resource Group Name.")]
+            HelpMessage = EventGridConstants.ResourceGroupNameHelp)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             ParameterSetName = TopicNameParameterSet,
-            HelpMessage = "EventGrid Topic Name.")]
+            HelpMessage = EventGridConstants.TopicNameHelp)]
+        [ResourceNameCompleter("Microsoft.EventGrid/topics", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         [Alias("TopicName")]
         public string Name { get; set; }
@@ -50,7 +51,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(Mandatory = true,
             ValueFromPipeline = true,
             Position = 0,
-            HelpMessage = "EventGrid Topic object.",
+            HelpMessage = EventGridConstants.TopicInputObjectHelp,
             ParameterSetName = TopicInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSTopic InputObject { get; set; }
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = "Resource Identifier representing the Event Grid Topic.",
+            HelpMessage = EventGridConstants.TopicResourceIdHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
