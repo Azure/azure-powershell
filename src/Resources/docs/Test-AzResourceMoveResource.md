@@ -17,31 +17,31 @@ Retrieve the URL in the Location header value to check the result of the long-ru
 
 ## SYNTAX
 
-### ValidateSubscriptionIdViaHost (Default)
+### Validate (Default)
 ```
-Test-AzResourceMoveResource -SourceResourceGroupName <String> [-Parameters <IResourcesMoveInfo>] [-PassThru]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Test-AzResourceMoveResource -SourceResourceGroupName <String> -SubscriptionId <String>
+ [-Parameter <IResourcesMoveInfo>] [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ValidateExpanded
 ```
 Test-AzResourceMoveResource -SourceResourceGroupName <String> -SubscriptionId <String> [-PassThru]
- [-Resources <String[]>] [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
+ [-Resource <String[]>] [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### Validate
+### ValidateViaIdentityExpanded
 ```
-Test-AzResourceMoveResource -SourceResourceGroupName <String> -SubscriptionId <String>
- [-Parameters <IResourcesMoveInfo>] [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+Test-AzResourceMoveResource -InputObject <IResourcesIdentity> [-PassThru] [-Resource <String[]>]
+ [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### ValidateSubscriptionIdViaHostExpanded
+### ValidateViaIdentity
 ```
-Test-AzResourceMoveResource -SourceResourceGroupName <String> [-PassThru] [-Resources <String[]>]
- [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Test-AzResourceMoveResource -InputObject <IResourcesIdentity> [-Parameter <IResourcesMoveInfo>] [-PassThru]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,12 +93,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: ValidateViaIdentityExpanded, ValidateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Parameter
 Parameters of move resources.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourcesMoveInfo
-Parameter Sets: ValidateSubscriptionIdViaHost, Validate
+Parameter Sets: Validate, ValidateViaIdentity
 Aliases:
 
 Required: False
@@ -123,12 +138,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Resources
+### -Resource
 The IDs of the resources.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ValidateExpanded, ValidateSubscriptionIdViaHostExpanded
+Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -143,7 +158,7 @@ The name of the resource group containing the resources to validate for move.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Validate, ValidateExpanded
 Aliases:
 
 Required: True
@@ -158,7 +173,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, Validate
+Parameter Sets: Validate, ValidateExpanded
 Aliases:
 
 Required: True
@@ -173,7 +188,7 @@ The target resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateSubscriptionIdViaHostExpanded
+Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
 Required: False

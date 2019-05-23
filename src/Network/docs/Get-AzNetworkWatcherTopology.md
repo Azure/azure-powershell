@@ -12,29 +12,30 @@ Gets the current network topology by resource group.
 
 ## SYNTAX
 
-### GetSubscriptionIdViaHost (Default)
+### Get (Default)
 ```
 Get-AzNetworkWatcherTopology -NetworkWatcherName <String> -ResourceGroupName <String>
- [-Parameter <ITopologyParameters>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SubscriptionId <String[]> [-Parameter <ITopologyParameters>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### GetExpanded
 ```
-Get-AzNetworkWatcherTopology -NetworkWatcherName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-TargetResourceGroupName <String>] [-TargetSubnetId <String>] [-TargetVirtualNetworkId <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzNetworkWatcherTopology -NetworkWatcherName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <ITopologyParameters>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHostExpanded
-```
 Get-AzNetworkWatcherTopology -NetworkWatcherName <String> -ResourceGroupName <String>
- [-TargetResourceGroupName <String>] [-TargetSubnetId <String>] [-TargetVirtualNetworkId <String>]
+ -SubscriptionId <String[]> [-TargetResourceGroupName <String>] [-TargetSubnetId <String>]
+ [-TargetVirtualNetworkId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetViaIdentityExpanded
+```
+Get-AzNetworkWatcherTopology -InputObject <INetworkIdentity> [-TargetResourceGroupName <String>]
+ [-TargetSubnetId <String>] [-TargetVirtualNetworkId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzNetworkWatcherTopology -InputObject <INetworkIdentity> [-Parameter <ITopologyParameters>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -67,12 +68,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GetViaIdentityExpanded, GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -NetworkWatcherName
 The name of the network watcher.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: True
@@ -87,7 +103,7 @@ Parameters that define the representation of topology.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ITopologyParameters
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get, GetViaIdentity
 Aliases:
 
 Required: False
@@ -102,7 +118,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: True
@@ -117,8 +133,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: GetExpanded, Get
+Type: System.String[]
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: True
@@ -133,7 +149,7 @@ The name of the target resource group to perform topology on.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetSubscriptionIdViaHostExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -148,7 +164,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetSubscriptionIdViaHostExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -163,7 +179,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetSubscriptionIdViaHostExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: False

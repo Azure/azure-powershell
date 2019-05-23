@@ -12,11 +12,11 @@ Create or update a connection monitor.
 
 ## SYNTAX
 
-### UpdateSubscriptionIdViaHost (Default)
+### Update (Default)
 ```
 Set-AzConnectionMonitor -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
- [-Parameter <IConnectionMonitor>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -SubscriptionId <String> [-Parameter <IConnectionMonitor>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -28,20 +28,19 @@ Set-AzConnectionMonitor -Name <String> -NetworkWatcherName <String> -ResourceGro
  [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Update
+### UpdateViaIdentityExpanded
 ```
-Set-AzConnectionMonitor -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Parameter <IConnectionMonitor>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzConnectionMonitor -InputObject <INetworkIdentity> [-AutoStart <Boolean>] [-DestinationAddress <String>]
+ [-DestinationPort <Int32>] [-DestinationResourceId <String>] [-Location <String>]
+ [-MonitoringIntervalInSecond <Int32>] [-SourcePort <Int32>] -SourceResourceId <String>
+ [-Tag <IConnectionMonitorTags>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### UpdateSubscriptionIdViaHostExpanded
+### UpdateViaIdentity
 ```
-Set-AzConnectionMonitor -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
- [-AutoStart <Boolean>] [-DestinationAddress <String>] [-DestinationPort <Int32>]
- [-DestinationResourceId <String>] [-Location <String>] [-MonitoringIntervalInSecond <Int32>]
- [-SourcePort <Int32>] -SourceResourceId <String> [-Tag <IConnectionMonitorTags>] [-DefaultProfile <PSObject>]
- [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzConnectionMonitor -InputObject <INetworkIdentity> [-Parameter <IConnectionMonitor>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,7 +77,7 @@ Determines if the connection monitor will start automatically once created.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -108,7 +107,7 @@ Address of the connection monitor destination (IP or domain name).
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -123,7 +122,7 @@ The destination port used by connection monitor.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -138,7 +137,7 @@ The ID of the resource used as the destination by connection monitor.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -148,12 +147,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Location
 Connection monitor location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -168,7 +182,7 @@ Monitoring interval in seconds.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -183,7 +197,7 @@ The name of the connection monitor.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases: ConnectionMonitorName
 
 Required: True
@@ -198,7 +212,7 @@ The name of the Network Watcher resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -213,7 +227,7 @@ Parameters that define the operation to create a connection monitor.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectionMonitor
-Parameter Sets: UpdateSubscriptionIdViaHost, Update
+Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -228,7 +242,7 @@ The name of the resource group containing Network Watcher.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -243,7 +257,7 @@ The source port used by connection monitor.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -258,7 +272,7 @@ The ID of the resource used as the source by connection monitor.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -274,7 +288,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -289,7 +303,7 @@ Connection monitor tags.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectionMonitorTags
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

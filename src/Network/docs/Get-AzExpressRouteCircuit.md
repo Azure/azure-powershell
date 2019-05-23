@@ -12,37 +12,26 @@ Gets information about the specified express route circuit.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost1 (Default)
+### List1 (Default)
 ```
-Get-AzExpressRouteCircuit [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost
-```
-Get-AzExpressRouteCircuit -CircuitName <String> -ResourceGroupName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzExpressRouteCircuit -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzExpressRouteCircuit -CircuitName <String> -ResourceGroupName <String> -SubscriptionId <String>
+Get-AzExpressRouteCircuit -CircuitName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListSubscriptionIdViaHost
-```
-Get-AzExpressRouteCircuit -ResourceGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzExpressRouteCircuit -ResourceGroupName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
+Get-AzExpressRouteCircuit -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### List1
+### GetViaIdentity
 ```
-Get-AzExpressRouteCircuit -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzExpressRouteCircuit -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,7 +53,7 @@ The name of express route circuit.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -89,12 +78,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get, ListSubscriptionIdViaHost, List
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -109,8 +113,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List, List1
+Type: System.String[]
+Parameter Sets: List1, Get, List
 Aliases:
 
 Required: True

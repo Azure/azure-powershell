@@ -6,7 +6,7 @@ Param
     [Parameter(Mandatory)]
     [string]${Module},
 
-    [Parameter()]
+    [Parameter(Mandatory)]
     [string]${ApiProfile},
 
     [Parameter()]
@@ -79,13 +79,6 @@ if ($null -eq $ExportsFolder)
 {
     Write-Error "No exports folder found in module folder '$ModuleFolder'"
     return
-}
-
-Write-Debug "[DEBUG] Using exports folder path '$ExportsFolder'"
-if ([string]::IsNullOrEmpty($ApiProfile))
-{
-    Write-Debug "[DEBUG] No API profile provided -- using 'latest-2019-04-01'"
-    $ApiProfile = "latest-2019-04-01"
 }
 
 $ApiProfileFolder = Join-Path -Path $ExportsFolder -ChildPath $ApiProfile

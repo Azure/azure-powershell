@@ -14,7 +14,7 @@ Updates a user.
 
 ### Update (Default)
 ```
-Update-AzADUser -TenantId <String> -UpnOrObjectId <String> [-Parameters <IUserUpdateParameters>] [-PassThru]
+Update-AzADUser -TenantId <String> -UpnOrObjectId <String> [-Parameter <IUserUpdateParameters>] [-PassThru]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -22,8 +22,24 @@ Update-AzADUser -TenantId <String> -UpnOrObjectId <String> [-Parameters <IUserUp
 ```
 Update-AzADUser -TenantId <String> -UpnOrObjectId <String> [-PassThru] [-AccountEnabled <Boolean>]
  [-DisplayName <String>] [-GivenName <String>] [-ImmutableId <String>] [-MailNickname <String>]
- [-PasswordProfile <IPasswordProfile>] [-PrincipalName <String>] [-Surname <String>] [-Type <UserType>]
- [-UsageLocation <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PasswordProfileForceChangePasswordNextLogin <Boolean>] -PasswordProfilePassword <String>
+ [-PrincipalName <String>] [-Surname <String>] [-Type <UserType>] [-UsageLocation <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzADUser -InputObject <IResourcesIdentity> [-PassThru] [-AccountEnabled <Boolean>]
+ [-DisplayName <String>] [-GivenName <String>] [-ImmutableId <String>] [-MailNickname <String>]
+ [-PasswordProfileForceChangePasswordNextLogin <Boolean>] -PasswordProfilePassword <String>
+ [-PrincipalName <String>] [-Surname <String>] [-Type <UserType>] [-UsageLocation <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Update-AzADUser -InputObject <IResourcesIdentity> [-Parameter <IUserUpdateParameters>] [-PassThru]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +61,7 @@ Whether the account is enabled.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -75,7 +91,7 @@ The display name of the user.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -90,7 +106,7 @@ The given name for the user.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -106,13 +122,28 @@ It is used to associate an on-premises Active Directory user account with their 
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -121,7 +152,7 @@ The mail alias for the user.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -131,12 +162,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -Parameter
 Request parameters for updating an existing work or school account user.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IUserUpdateParameters
-Parameter Sets: Update
+Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -161,15 +192,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PasswordProfile
-The password profile of the user.
+### -PasswordProfileForceChangePasswordNextLogin
+Whether to force a password change on next login.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPasswordProfile
-Parameter Sets: UpdateExpanded
+Type: System.Boolean
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PasswordProfilePassword
+Password
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -182,8 +228,8 @@ It must contain one of the verified domains for the tenant.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases: UserPrincipalName
 
 Required: False
 Position: Named
@@ -197,7 +243,7 @@ The user's surname (family name or last name).
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -212,7 +258,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -227,8 +273,8 @@ A string value that can be used to classify user types in your directory, such a
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.UserType
-Parameter Sets: UpdateExpanded
-Aliases:
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases: UserType
 
 Required: False
 Position: Named
@@ -242,7 +288,7 @@ The object ID or principal name of the user to update.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -259,7 +305,7 @@ Examples include: "US", "JP", and "GB".
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

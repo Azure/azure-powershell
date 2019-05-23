@@ -14,7 +14,7 @@
 # endregion 
 
 # region persistent data 
-  GUID = 'bc673cf0-18e3-4ef9-cc14-05b2a7543acb'
+  GUID = '4ff17caf-76fc-409a-2e23-b96989751cb1'
 # endregion 
 
 # region private data 
@@ -24,7 +24,7 @@
       LicenseUri = 'https://aka.ms/azps-license'
       ProjectUri = 'https://github.com/Azure/azure-powershell'
       ReleaseNotes = ''
-      Profiles = 'latest-2019-04-30'
+      Profiles = 'latest-2019-04-30', 'hybrid-2019-03-01'
     }
   }
 # endregion 

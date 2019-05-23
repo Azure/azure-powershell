@@ -12,9 +12,9 @@ Create or updates a route table in a specified resource group.
 
 ## SYNTAX
 
-### CreateSubscriptionIdViaHost (Default)
+### Create (Default)
 ```
-New-AzRouteTable -Name <String> -ResourceGroupName <String> [-Parameter <IRouteTable>]
+New-AzRouteTable -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Parameter <IRouteTable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,17 +26,17 @@ New-AzRouteTable -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Create
+### CreateViaIdentityExpanded
 ```
-New-AzRouteTable -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Parameter <IRouteTable>]
+New-AzRouteTable -InputObject <INetworkIdentity> [-DisableBgpRoutePropagation <Boolean>] [-Etag <String>]
+ [-Id <String>] [-Location <String>] [-ProvisioningState <String>] [-Route <IRoute[]>] [-Tag <IResourceTags>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateSubscriptionIdViaHostExpanded
+### CreateViaIdentity
 ```
-New-AzRouteTable -Name <String> -ResourceGroupName <String> [-DisableBgpRoutePropagation <Boolean>]
- [-Etag <String>] [-Id <String>] [-Location <String>] [-ProvisioningState <String>] [-Route <IRoute[]>]
- [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzRouteTable -InputObject <INetworkIdentity> [-Parameter <IRouteTable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,7 +89,7 @@ True means disable.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -104,7 +104,7 @@ Gets a unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -119,7 +119,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -129,12 +129,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Location
 Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -149,7 +164,7 @@ The name of the route table.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases: RouteTableName
 
 Required: True
@@ -164,7 +179,7 @@ Route table resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IRouteTable
-Parameter Sets: CreateSubscriptionIdViaHost, Create
+Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
 Required: False
@@ -180,7 +195,7 @@ Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -195,7 +210,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -209,8 +224,8 @@ Accept wildcard characters: False
 Collection of routes contained within a route table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IRoute[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRoute[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -226,7 +241,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -240,8 +255,8 @@ Accept wildcard characters: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IResourceTags
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False

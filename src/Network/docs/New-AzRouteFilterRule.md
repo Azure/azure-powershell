@@ -12,11 +12,11 @@ Creates or updates a route in the specified route filter.
 
 ## SYNTAX
 
-### CreateSubscriptionIdViaHost (Default)
+### Create (Default)
 ```
 New-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -RuleName <String>
- [-Parameter <IRouteFilterRule>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -SubscriptionId <String> [-Parameter <IRouteFilterRule>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -26,18 +26,17 @@ New-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -Rul
  [-Name <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Create
+### CreateViaIdentityExpanded
 ```
-New-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -RuleName <String>
- -SubscriptionId <String> [-Parameter <IRouteFilterRule>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzRouteFilterRule -InputObject <INetworkIdentity> -Access <Access> -Community <String[]> [-Id <String>]
+ [-Location <String>] [-Name <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### CreateSubscriptionIdViaHostExpanded
+### CreateViaIdentity
 ```
-New-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -RuleName <String> -Access <Access>
- -Community <String[]> [-Id <String>] [-Location <String>] [-Name <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzRouteFilterRule -InputObject <INetworkIdentity> [-Parameter <IRouteFilterRule>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +58,7 @@ The access type of the rule.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.Access
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -91,7 +90,7 @@ e.g.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -121,7 +120,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -131,12 +130,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Location
 Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -152,7 +166,7 @@ This name can be used to access the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -167,7 +181,7 @@ Route Filter Rule Resource
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IRouteFilterRule
-Parameter Sets: CreateSubscriptionIdViaHost, Create
+Parameter Sets: Create, CreateViaIdentity
 Aliases: RouteFilterRuleParameter
 
 Required: False
@@ -182,7 +196,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -197,7 +211,7 @@ The name of the route filter.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -212,7 +226,7 @@ The name of the route filter rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -228,7 +242,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True

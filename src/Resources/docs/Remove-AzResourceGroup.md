@@ -13,16 +13,16 @@ Deleting a resource group deletes all of its template deployments and currently 
 
 ## SYNTAX
 
-### DeleteSubscriptionIdViaHost (Default)
-```
-Remove-AzResourceGroup -Name <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### Delete
+### Delete (Default)
 ```
 Remove-AzResourceGroup -Name <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>]
  [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzResourceGroup -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,14 +70,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the resource group to delete.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: Delete
+Aliases: ResourceGroupName
 
 Required: True
 Position: Named

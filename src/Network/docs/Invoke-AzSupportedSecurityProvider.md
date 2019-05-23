@@ -12,16 +12,16 @@ Gives the supported security providers for the virtual wan.
 
 ## SYNTAX
 
-### SupportedSubscriptionIdViaHost (Default)
-```
-Invoke-AzSupportedSecurityProvider -ResourceGroupName <String> -VirtualWanName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Supported
+### Supported (Default)
 ```
 Invoke-AzSupportedSecurityProvider -ResourceGroupName <String> -SubscriptionId <String>
  -VirtualWanName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### SupportedViaIdentity
+```
+Invoke-AzSupportedSecurityProvider -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,12 +53,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: SupportedViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Supported
 Aliases:
 
 Required: True
@@ -89,7 +104,7 @@ The name of the VirtualWAN for which supported security providers are needed.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Supported
 Aliases:
 
 Required: True

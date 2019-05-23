@@ -22,6 +22,11 @@ Get-AzPolicyDefinitionBuilt [-DefaultProfile <PSObject>] [<CommonParameters>]
 Get-AzPolicyDefinitionBuilt -PolicyDefinitionName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzPolicyDefinitionBuilt -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 This operation retrieves the built-in policy definition with the given name.
 
@@ -48,6 +53,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

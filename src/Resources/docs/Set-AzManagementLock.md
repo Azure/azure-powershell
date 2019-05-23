@@ -14,94 +14,103 @@ Of the built-in roles, only Owner and User Access Administrator are granted thos
 
 ## SYNTAX
 
-### UpdateSubscriptionIdViaHost1 (Default)
+### Update1 (Default)
 ```
-Set-AzManagementLock -LockName <String> [-Parameters <IManagementLockObject>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzManagementLock -LockName <String> -SubscriptionId <String> [-Parameter <IManagementLockObject>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateSubscriptionIdViaHostExpanded
+### UpdateExpanded3
 ```
-Set-AzManagementLock -LockName <String> -ParentResourcePath <String> -ResourceGroupName <String>
- -ResourceName <String> -ResourceProviderNamespace <String> -ResourceType <String> -Level <LockLevel>
- [-Notes <String>] [-Owners <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+Set-AzManagementLock -LockName <String> -Scope <String> -Level <LockLevel> [-Note <String>]
+ [-Owner <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateExpanded2
+```
+Set-AzManagementLock -LockName <String> -ResourceGroupName <String> -SubscriptionId <String> -Level <LockLevel>
+ [-Note <String>] [-Owner <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### UpdateSubscriptionIdViaHost
+### UpdateExpanded1
 ```
-Set-AzManagementLock -LockName <String> -ParentResourcePath <String> -ResourceGroupName <String>
- -ResourceName <String> -ResourceProviderNamespace <String> -ResourceType <String>
- [-Parameters <IManagementLockObject>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzManagementLock -LockName <String> -SubscriptionId <String> -Level <LockLevel> [-Note <String>]
+ [-Owner <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
 Set-AzManagementLock -LockName <String> -ParentResourcePath <String> -ResourceGroupName <String>
  -ResourceName <String> -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String>
- -Level <LockLevel> [-Notes <String>] [-Owners <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ -Level <LockLevel> [-Note <String>] [-Owner <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+```
+
+### Update3
+```
+Set-AzManagementLock -LockName <String> -Scope <String> [-Parameter <IManagementLockObject>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Update2
+```
+Set-AzManagementLock -LockName <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-Parameter <IManagementLockObject>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Set-AzManagementLock -LockName <String> -ParentResourcePath <String> -ResourceGroupName <String>
  -ResourceName <String> -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String>
- [-Parameters <IManagementLockObject>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Parameter <IManagementLockObject>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateSubscriptionIdViaHostExpanded2
+### UpdateViaIdentityExpanded3
 ```
-Set-AzManagementLock -LockName <String> -ResourceGroupName <String> -Level <LockLevel> [-Notes <String>]
- [-Owners <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzManagementLock -InputObject <IResourcesIdentity> -Level <LockLevel> [-Note <String>]
+ [-Owner <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateSubscriptionIdViaHost2
+### UpdateViaIdentityExpanded2
 ```
-Set-AzManagementLock -LockName <String> -ResourceGroupName <String> [-Parameters <IManagementLockObject>]
+Set-AzManagementLock -InputObject <IResourcesIdentity> -Level <LockLevel> [-Note <String>]
+ [-Owner <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded1
+```
+Set-AzManagementLock -InputObject <IResourcesIdentity> -Level <LockLevel> [-Note <String>]
+ [-Owner <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Set-AzManagementLock -InputObject <IResourcesIdentity> -Level <LockLevel> [-Note <String>]
+ [-Owner <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity3
+```
+Set-AzManagementLock -InputObject <IResourcesIdentity> [-Parameter <IManagementLockObject>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateExpanded2
+### UpdateViaIdentity2
 ```
-Set-AzManagementLock -LockName <String> -ResourceGroupName <String> -SubscriptionId <String> -Level <LockLevel>
- [-Notes <String>] [-Owners <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### Update2
-```
-Set-AzManagementLock -LockName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameters <IManagementLockObject>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateExpanded1
-```
-Set-AzManagementLock -LockName <String> -SubscriptionId <String> -Level <LockLevel> [-Notes <String>]
- [-Owners <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Update1
-```
-Set-AzManagementLock -LockName <String> -SubscriptionId <String> [-Parameters <IManagementLockObject>]
+Set-AzManagementLock -InputObject <IResourcesIdentity> [-Parameter <IManagementLockObject>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateExpanded3
+### UpdateViaIdentity1
 ```
-Set-AzManagementLock -LockName <String> -Scope <String> -Level <LockLevel> [-Notes <String>]
- [-Owners <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Update3
-```
-Set-AzManagementLock -LockName <String> -Scope <String> [-Parameters <IManagementLockObject>]
+Set-AzManagementLock -InputObject <IResourcesIdentity> [-Parameter <IManagementLockObject>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateSubscriptionIdViaHostExpanded1
+### UpdateViaIdentity
 ```
-Set-AzManagementLock -LockName <String> -Level <LockLevel> [-Notes <String>] [-Owners <IManagementLockOwner[]>]
+Set-AzManagementLock -InputObject <IResourcesIdentity> [-Parameter <IManagementLockObject>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -136,6 +145,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: UpdateViaIdentityExpanded3, UpdateViaIdentityExpanded2, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded, UpdateViaIdentity3, UpdateViaIdentity2, UpdateViaIdentity1, UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Level
 The level of the lock.
 Possible values are: NotSpecified, CanNotDelete, ReadOnly.
@@ -144,7 +168,7 @@ ReadOnly means authorized users can only read from a resource, but they can't mo
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.LockLevel
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateExpanded, UpdateSubscriptionIdViaHostExpanded2, UpdateExpanded2, UpdateExpanded1, UpdateExpanded3, UpdateSubscriptionIdViaHostExpanded1
+Parameter Sets: UpdateExpanded3, UpdateExpanded2, UpdateExpanded1, UpdateExpanded, UpdateViaIdentityExpanded3, UpdateViaIdentityExpanded2, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -161,7 +185,7 @@ It cannot contain \<, \> %, &, :, \, ?, /, or any control characters.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update1, UpdateExpanded3, UpdateExpanded2, UpdateExpanded1, UpdateExpanded, Update3, Update2, Update
 Aliases:
 
 Required: True
@@ -171,13 +195,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Notes
-Notes about the lock.
-Maximum of 512 characters.
+### -Note
+Notes about the lock. Maximum of 512 characters.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateExpanded, UpdateSubscriptionIdViaHostExpanded2, UpdateExpanded2, UpdateExpanded1, UpdateExpanded3, UpdateSubscriptionIdViaHostExpanded1
+Parameter Sets: UpdateExpanded3, UpdateExpanded2, UpdateExpanded1, UpdateExpanded, UpdateViaIdentityExpanded3, UpdateViaIdentityExpanded2, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -187,12 +210,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Owners
+### -Owner
 The owners of the lock.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901.IManagementLockOwner[]
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateExpanded, UpdateSubscriptionIdViaHostExpanded2, UpdateExpanded2, UpdateExpanded1, UpdateExpanded3, UpdateSubscriptionIdViaHostExpanded1
+Parameter Sets: UpdateExpanded3, UpdateExpanded2, UpdateExpanded1, UpdateExpanded, UpdateViaIdentityExpanded3, UpdateViaIdentityExpanded2, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -202,12 +225,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -Parameter
 The lock information.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901.IManagementLockObject
-Parameter Sets: UpdateSubscriptionIdViaHost1, UpdateSubscriptionIdViaHost, Update, UpdateSubscriptionIdViaHost2, Update2, Update1, Update3
+Parameter Sets: Update1, Update3, Update2, Update, UpdateViaIdentity3, UpdateViaIdentity2, UpdateViaIdentity1, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -222,7 +245,7 @@ The parent resource identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateSubscriptionIdViaHost, UpdateExpanded, Update
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -237,7 +260,7 @@ The name of the resource group containing the resource to lock.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateSubscriptionIdViaHost, UpdateExpanded, Update, UpdateSubscriptionIdViaHostExpanded2, UpdateSubscriptionIdViaHost2, UpdateExpanded2, Update2
+Parameter Sets: UpdateExpanded2, UpdateExpanded, Update2, Update
 Aliases:
 
 Required: True
@@ -252,7 +275,7 @@ The name of the resource to lock.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateSubscriptionIdViaHost, UpdateExpanded, Update
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -267,7 +290,7 @@ The resource provider namespace of the resource to lock.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateSubscriptionIdViaHost, UpdateExpanded, Update
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -282,7 +305,7 @@ The resource type of the resource to lock.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateSubscriptionIdViaHostExpanded, UpdateSubscriptionIdViaHost, UpdateExpanded, Update
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -313,7 +336,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update, UpdateExpanded2, Update2, UpdateExpanded1, Update1
+Parameter Sets: Update1, UpdateExpanded2, UpdateExpanded1, UpdateExpanded, Update2, Update
 Aliases:
 
 Required: True

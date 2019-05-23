@@ -12,28 +12,21 @@ Gets a connection monitor by name.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
+### List (Default)
 ```
-Get-AzConnectionMonitor -NetworkWatcherName <String> -ResourceGroupName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost
-```
-Get-AzConnectionMonitor -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
+Get-AzConnectionMonitor -NetworkWatcherName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzConnectionMonitor -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### GetViaIdentity
 ```
-Get-AzConnectionMonitor -NetworkWatcherName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzConnectionMonitor -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,12 +58,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the connection monitor.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get
 Aliases: ConnectionMonitorName
 
 Required: True
@@ -85,7 +93,7 @@ The name of the Network Watcher resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -100,7 +108,7 @@ The name of the resource group containing Network Watcher.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -115,8 +123,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List
+Type: System.String[]
+Parameter Sets: List, Get
 Aliases:
 
 Required: True

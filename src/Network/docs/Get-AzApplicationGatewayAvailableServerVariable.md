@@ -12,14 +12,8 @@ Lists all available server variables.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
 ```
-Get-AzApplicationGatewayAvailableServerVariable [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzApplicationGatewayAvailableServerVariable -SubscriptionId <String> [-DefaultProfile <PSObject>]
+Get-AzApplicationGatewayAvailableServerVariable -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -57,8 +51,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: List
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True

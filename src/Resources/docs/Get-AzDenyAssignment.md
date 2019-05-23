@@ -12,12 +12,7 @@ Get the specified deny assignment.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost2 (Default)
-```
-Get-AzDenyAssignment [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get1
+### Get1 (Default)
 ```
 Get-AzDenyAssignment -Id <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -32,35 +27,32 @@ Get-AzDenyAssignment -Id <String> -Scope <String> [-DefaultProfile <PSObject>] [
 Get-AzDenyAssignment -Scope <String> [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ListSubscriptionIdViaHost
+### GetViaIdentity1
 ```
-Get-AzDenyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> [-Filter <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzDenyAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzDenyAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzDenyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String> [-Filter <String>]
+ -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]> [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListSubscriptionIdViaHost1
-```
-Get-AzDenyAssignment -ResourceGroupName <String> [-Filter <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzDenyAssignment -ResourceGroupName <String> -SubscriptionId <String> [-Filter <String>]
+Get-AzDenyAssignment -ResourceGroupName <String> -SubscriptionId <String[]> [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List2
 ```
-Get-AzDenyAssignment -SubscriptionId <String> [-Filter <String>] [-DefaultProfile <PSObject>]
+Get-AzDenyAssignment -SubscriptionId <String[]> [-Filter <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -104,7 +96,7 @@ Additionally, when gdprExportPrincipalId filter is used, only the deny assignmen
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost2, List3, ListSubscriptionIdViaHost, List, ListSubscriptionIdViaHost1, List1, List2
+Parameter Sets: List3, List, List1, List2
 Aliases:
 
 Required: False
@@ -120,7 +112,7 @@ The ID of the deny assignment to get.
 ```yaml
 Type: System.String
 Parameter Sets: Get1, Get
-Aliases:
+Aliases: DenyAssignmentId
 
 Required: True
 Position: Named
@@ -129,12 +121,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentity1, GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ParentResourcePath
 The parent resource identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost, List
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -149,7 +156,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost, List, ListSubscriptionIdViaHost1, List1
+Parameter Sets: List, List1
 Aliases:
 
 Required: True
@@ -164,7 +171,7 @@ The name of the resource to get deny assignments for.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost, List
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -179,7 +186,7 @@ The namespace of the resource provider.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost, List
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -194,7 +201,7 @@ The resource type of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost, List
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -223,7 +230,7 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: List, List1, List2
 Aliases:
 

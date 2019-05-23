@@ -12,16 +12,16 @@ Gets Ssl predefined policy with the specified policy name.
 
 ## SYNTAX
 
-### GetSubscriptionIdViaHost (Default)
+### Get (Default)
 ```
-Get-AzApplicationGatewaySslPredefinedPolicy -PredefinedPolicyName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzApplicationGatewaySslPredefinedPolicy -PredefinedPolicyName <String> -SubscriptionId <String[]>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Get
+### GetViaIdentity
 ```
-Get-AzApplicationGatewaySslPredefinedPolicy -PredefinedPolicyName <String> -SubscriptionId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzApplicationGatewaySslPredefinedPolicy -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,12 +53,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PredefinedPolicyName
 Name of Ssl predefined policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -73,7 +88,7 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: Get
 Aliases:
 
@@ -91,7 +106,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IApplicationGatewaySslPredefinedPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IApplicationGatewaySslPredefinedPolicy
 ## NOTES
 
 ## RELATED LINKS

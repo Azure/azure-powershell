@@ -12,48 +12,37 @@ Gets a deployment.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
+### List (Default)
 ```
-Get-AzDeployment [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost1
-```
-Get-AzDeployment -Name <String> -ResourceGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost
-```
-Get-AzDeployment -Name <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDeployment -SubscriptionId <String[]> [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get1
 ```
-Get-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <String>
+Get-AzDeployment -Name <String> -SubscriptionId <String[]> -ResourceGroupName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDeployment -Name <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDeployment -Name <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzDeployment -SubscriptionId <String> -ResourceGroupName <String> [-Filter <String>] [-Top <Int32>]
+Get-AzDeployment -SubscriptionId <String[]> -ResourceGroupName <String> [-Filter <String>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### GetViaIdentity1
 ```
-Get-AzDeployment -SubscriptionId <String> [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzDeployment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ListSubscriptionIdViaHost1
+### GetViaIdentity
 ```
-Get-AzDeployment -ResourceGroupName <String> [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzDeployment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,7 +80,7 @@ For example, you can use $filter=provisioningState eq '{state}'.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost, List1, List, ListSubscriptionIdViaHost1
+Parameter Sets: List, List1
 Aliases:
 
 Required: False
@@ -101,13 +90,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentity1, GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the deployment to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost1, GetSubscriptionIdViaHost, Get1, Get
-Aliases:
+Parameter Sets: Get1, Get
+Aliases: DeploymentName
 
 Required: True
 Position: Named
@@ -122,7 +126,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost1, Get1, List1, ListSubscriptionIdViaHost1
+Parameter Sets: Get1, List1
 Aliases:
 
 Required: True
@@ -136,8 +140,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get1, Get, List1, List
+Type: System.String[]
+Parameter Sets: List, Get1, Get, List1
 Aliases:
 
 Required: True
@@ -153,7 +157,7 @@ If null is passed, returns all deployments.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: ListSubscriptionIdViaHost, List1, List, ListSubscriptionIdViaHost1
+Parameter Sets: List, List1
 Aliases:
 
 Required: False

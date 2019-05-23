@@ -12,9 +12,16 @@ Remove a member from owners.
 
 ## SYNTAX
 
+### Remove (Default)
 ```
 Remove-AzADGroupOwner -ObjectId <String> -OwnerObjectId <String> -TenantId <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RemoveViaIdentity
+```
+Remove-AzADGroupOwner -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,12 +53,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: RemoveViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ObjectId
 The object ID of the group from which to remove the owner.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Remove
 Aliases:
 
 Required: True
@@ -66,7 +88,7 @@ Owner object id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Remove
 Aliases:
 
 Required: True
@@ -96,7 +118,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Remove
 Aliases:
 
 Required: True

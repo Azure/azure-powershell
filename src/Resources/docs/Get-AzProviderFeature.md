@@ -12,37 +12,26 @@ Gets the preview feature with the specified name.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
+### List (Default)
 ```
-Get-AzProviderFeature [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost
-```
-Get-AzProviderFeature -Name <String> -ResourceProviderNamespace <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzProviderFeature -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzProviderFeature -Name <String> -ResourceProviderNamespace <String> -SubscriptionId <String>
+Get-AzProviderFeature -Name <String> -ResourceProviderNamespace <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListSubscriptionIdViaHost1
-```
-Get-AzProviderFeature -ResourceProviderNamespace <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzProviderFeature -ResourceProviderNamespace <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzProviderFeature -ResourceProviderNamespace <String> -SubscriptionId <String[]>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### GetViaIdentity
 ```
-Get-AzProviderFeature -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzProviderFeature -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,13 +63,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the feature to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
-Aliases:
+Parameter Sets: Get
+Aliases: FeatureName
 
 Required: True
 Position: Named
@@ -94,7 +98,7 @@ The resource provider namespace for the feature.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get, ListSubscriptionIdViaHost1, List1
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -108,8 +112,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List1, List
+Type: System.String[]
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: True

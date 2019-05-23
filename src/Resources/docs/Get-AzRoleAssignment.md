@@ -12,12 +12,7 @@ Gets a role assignment by ID.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost5 (Default)
-```
-Get-AzRoleAssignment [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get1
+### Get1 (Default)
 ```
 Get-AzRoleAssignment -Id <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -37,35 +32,37 @@ Get-AzRoleAssignment -Scope <String> [-Filter <String>] [-DefaultProfile <PSObje
 Get-AzRoleAssignment -RoleId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ListSubscriptionIdViaHost3
+### GetViaIdentity3
 ```
-Get-AzRoleAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> [-Filter <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzRoleAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity2
+```
+Get-AzRoleAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity1
+```
+Get-AzRoleAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List4
 ```
 Get-AzRoleAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String> [-Filter <String>]
+ -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]> [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListSubscriptionIdViaHost4
-```
-Get-AzRoleAssignment -ResourceGroupName <String> [-Filter <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
 ```
 
 ### List5
 ```
-Get-AzRoleAssignment -ResourceGroupName <String> -SubscriptionId <String> [-Filter <String>]
+Get-AzRoleAssignment -ResourceGroupName <String> -SubscriptionId <String[]> [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List6
 ```
-Get-AzRoleAssignment -SubscriptionId <String> [-Filter <String>] [-DefaultProfile <PSObject>]
+Get-AzRoleAssignment -SubscriptionId <String[]> [-Filter <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -105,7 +102,7 @@ Use $filter=principalId eq {id} to return all role assignments at, above or belo
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost5, List7, ListSubscriptionIdViaHost3, List4, ListSubscriptionIdViaHost4, List5, List6
+Parameter Sets: List7, List4, List5, List6
 Aliases:
 
 Required: False
@@ -121,12 +118,27 @@ The ID of the role assignment to get.
 ```yaml
 Type: System.String
 Parameter Sets: Get1
-Aliases:
+Aliases: RoleAssignmentId
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentity3, GetViaIdentity2, GetViaIdentity1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -136,7 +148,7 @@ The name of the role assignment to get.
 ```yaml
 Type: System.String
 Parameter Sets: Get2
-Aliases:
+Aliases: RoleAssignmentName
 
 Required: True
 Position: Named
@@ -150,7 +162,7 @@ The parent resource identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost3, List4
+Parameter Sets: List4
 Aliases:
 
 Required: True
@@ -165,7 +177,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost3, List4, ListSubscriptionIdViaHost4, List5
+Parameter Sets: List4, List5
 Aliases:
 
 Required: True
@@ -180,7 +192,7 @@ The name of the resource to get role assignments for.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost3, List4
+Parameter Sets: List4
 Aliases:
 
 Required: True
@@ -195,7 +207,7 @@ The namespace of the resource provider.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost3, List4
+Parameter Sets: List4
 Aliases:
 
 Required: True
@@ -210,7 +222,7 @@ The resource type of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost3, List4
+Parameter Sets: List4
 Aliases:
 
 Required: True
@@ -254,7 +266,7 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: List4, List5, List6
 Aliases:
 

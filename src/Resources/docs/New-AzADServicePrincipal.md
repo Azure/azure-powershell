@@ -14,16 +14,30 @@ Creates a service principal in the directory.
 
 ### Create (Default)
 ```
-New-AzADServicePrincipal -TenantId <String> [-Parameters <IServicePrincipalCreateParameters>]
+New-AzADServicePrincipal -TenantId <String> [-Parameter <IServicePrincipalCreateParameters>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
 New-AzADServicePrincipal -TenantId <String> [-AccountEnabled <String>] -AppId <String>
- [-AppRoleAssignmentRequired <Boolean>] [-KeyCredentials <IKeyCredential[]>]
- [-PasswordCredentials <IPasswordCredential[]>] [-Tag <String[]>] [-Type <String>] [-DefaultProfile <PSObject>]
+ [-AppRoleAssignmentRequired <Boolean>] [-KeyCredential <IKeyCredential[]>]
+ [-PasswordCredential <IPasswordCredential[]>] [-Tag <String[]>] [-Type <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzADServicePrincipal -InputObject <IResourcesIdentity> [-AccountEnabled <String>] -AppId <String>
+ [-AppRoleAssignmentRequired <Boolean>] [-KeyCredential <IKeyCredential[]>]
+ [-PasswordCredential <IPasswordCredential[]>] [-Tag <String[]>] [-Type <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzADServicePrincipal -InputObject <IResourcesIdentity> [-Parameter <IServicePrincipalCreateParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +59,7 @@ whether or not the service principal account is enabled
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -60,7 +74,7 @@ The application ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -75,7 +89,7 @@ Specifies whether an AppRoleAssignment to a user or group is required before Azu
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -100,12 +114,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KeyCredentials
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -KeyCredential
 The collection of key credentials associated with the service principal.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IKeyCredential[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -115,12 +144,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -Parameter
 Request parameters for creating a new service principal.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IServicePrincipalCreateParameters
-Parameter Sets: Create
+Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
 Required: False
@@ -130,12 +159,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PasswordCredentials
+### -PasswordCredential
 The collection of password credentials associated with the service principal.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPasswordCredential[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -151,7 +180,7 @@ Not nullable.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -166,7 +195,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -181,8 +210,8 @@ the type of the service principal
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases: ServicePrincipalType
 
 Required: False
 Position: Named

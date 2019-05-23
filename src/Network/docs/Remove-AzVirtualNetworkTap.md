@@ -12,16 +12,16 @@ Deletes the specified virtual network tap.
 
 ## SYNTAX
 
-### DeleteSubscriptionIdViaHost (Default)
-```
-Remove-AzVirtualNetworkTap -ResourceGroupName <String> -TapName <String> [-PassThru]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Delete
+### Delete (Default)
 ```
 Remove-AzVirtualNetworkTap -ResourceGroupName <String> -SubscriptionId <String> -TapName <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzVirtualNetworkTap -InputObject <INetworkIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,6 +68,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PassThru
 When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
 
@@ -88,7 +103,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -119,7 +134,7 @@ The name of the virtual network tap.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: True

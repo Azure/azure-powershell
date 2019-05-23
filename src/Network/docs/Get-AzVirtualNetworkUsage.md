@@ -12,15 +12,8 @@ Lists usage stats.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
 ```
-Get-AzVirtualNetworkUsage -ResourceGroupName <String> -VirtualNetworkName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### List
-```
-Get-AzVirtualNetworkUsage -ResourceGroupName <String> -SubscriptionId <String> -VirtualNetworkName <String>
+Get-AzVirtualNetworkUsage -ResourceGroupName <String> -SubscriptionId <String[]> -VirtualNetworkName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -73,8 +66,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: List
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -106,7 +99,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetworkUsage
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkUsage
 ## NOTES
 
 ## RELATED LINKS

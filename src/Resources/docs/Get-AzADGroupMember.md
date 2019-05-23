@@ -12,8 +12,14 @@ Gets the members of a group.
 
 ## SYNTAX
 
+### Get (Default)
 ```
 Get-AzADGroupMember -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzADGroupMember -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,12 +51,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ObjectId
 The object ID of the group whose members should be retrieved.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -65,7 +86,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: True

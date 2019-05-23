@@ -12,9 +12,9 @@ This operation retrieves a single policy assignment, given its name and the scop
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost3 (Default)
+### Get1 (Default)
 ```
-Get-AzPolicyAssignment [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyAssignment -Id <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -22,54 +22,39 @@ Get-AzPolicyAssignment [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonP
 Get-AzPolicyAssignment -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Get1
+### GetViaIdentity1
 ```
-Get-AzPolicyAssignment -Id <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListSubscriptionIdViaHost2
-```
-Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> [-Filter <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzPolicyAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ListSubscriptionIdViaHost
+### GetViaIdentity
 ```
-Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> [-Filter <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzPolicyAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List2
 ```
 Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String> [-Filter <String>]
+ -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]> [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String> [-Filter <String>]
+ -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]> [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListSubscriptionIdViaHost1
-```
-Get-AzPolicyAssignment -ResourceGroupName <String> [-Filter <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzPolicyAssignment -ResourceGroupName <String> -SubscriptionId <String> [-Filter <String>]
+Get-AzPolicyAssignment -ResourceGroupName <String> -SubscriptionId <String[]> [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List3
 ```
-Get-AzPolicyAssignment -SubscriptionId <String> [-Filter <String>] [-DefaultProfile <PSObject>]
+Get-AzPolicyAssignment -SubscriptionId <String[]> [-Filter <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -107,7 +92,7 @@ The filter to apply on the operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost3, ListSubscriptionIdViaHost2, ListSubscriptionIdViaHost, List2, List, ListSubscriptionIdViaHost1, List1, List3
+Parameter Sets: List2, List, List1, List3
 Aliases:
 
 Required: False
@@ -124,12 +109,27 @@ Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{pol
 ```yaml
 Type: System.String
 Parameter Sets: Get1
-Aliases:
+Aliases: PolicyAssignmentId
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentity1, GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -139,7 +139,7 @@ The name of the policy assignment to get.
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: PolicyAssignmentName
 
 Required: True
 Position: Named
@@ -153,7 +153,7 @@ The parent resource path.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost2, ListSubscriptionIdViaHost, List2, List
+Parameter Sets: List2, List
 Aliases:
 
 Required: True
@@ -168,7 +168,7 @@ The name of the resource group containing the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost2, ListSubscriptionIdViaHost, List2, List, ListSubscriptionIdViaHost1, List1
+Parameter Sets: List2, List, List1
 Aliases:
 
 Required: True
@@ -183,7 +183,7 @@ The name of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost2, ListSubscriptionIdViaHost, List2, List
+Parameter Sets: List2, List
 Aliases:
 
 Required: True
@@ -199,7 +199,7 @@ For example, the namespace of a virtual machine is Microsoft.Compute (from Micro
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost2, ListSubscriptionIdViaHost, List2, List
+Parameter Sets: List2, List
 Aliases:
 
 Required: True
@@ -214,7 +214,7 @@ The resource type.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost2, ListSubscriptionIdViaHost, List2, List
+Parameter Sets: List2, List
 Aliases:
 
 Required: True
@@ -244,7 +244,7 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: List2, List, List1, List3
 Aliases:
 

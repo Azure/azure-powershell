@@ -14,7 +14,7 @@ Gets a collection that contains the object IDs of the groups of which the user i
 
 ### Get (Default)
 ```
-Get-AzADUserMemberGroup -ObjectId <String> -TenantId <String> [-Parameters <IUserGetMemberGroupsParameters>]
+Get-AzADUserMemberGroup -ObjectId <String> -TenantId <String> [-Parameter <IUserGetMemberGroupsParameters>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -22,6 +22,18 @@ Get-AzADUserMemberGroup -ObjectId <String> -TenantId <String> [-Parameters <IUse
 ```
 Get-AzADUserMemberGroup -ObjectId <String> -TenantId <String> [-Properties <Hashtable>]
  -SecurityEnabledOnly <Boolean> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetViaIdentityExpanded
+```
+Get-AzADUserMemberGroup -InputObject <IResourcesIdentity> [-Properties <Hashtable>]
+ -SecurityEnabledOnly <Boolean> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzADUserMemberGroup -InputObject <IResourcesIdentity> [-Parameter <IUserGetMemberGroupsParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,12 +65,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentityExpanded, GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ObjectId
 The object ID of the user for which to get group membership.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: True
@@ -68,12 +95,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -Parameter
 Request parameters for GetMemberGroups API call.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IUserGetMemberGroupsParameters
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentity
 Aliases:
 
 Required: False
@@ -88,7 +115,7 @@ Additional Parameters
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: GetExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -104,7 +131,7 @@ Otherwise, membership in all groups should be checked.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: GetExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -119,7 +146,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: True

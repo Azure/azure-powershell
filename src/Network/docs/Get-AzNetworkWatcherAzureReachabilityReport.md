@@ -12,34 +12,34 @@ Gets the relative latency score for internet service providers from a specified 
 
 ## SYNTAX
 
-### GetSubscriptionIdViaHost (Default)
+### Get (Default)
 ```
 Get-AzNetworkWatcherAzureReachabilityReport -NetworkWatcherName <String> -ResourceGroupName <String>
- [-Parameter <IAzureReachabilityReportParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -SubscriptionId <String[]> [-Parameter <IAzureReachabilityReportParameters>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetExpanded
 ```
 Get-AzNetworkWatcherAzureReachabilityReport -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-AzureLocation <String[]>] -EndTime <DateTime> [-Provider <String[]>]
+ -SubscriptionId <String[]> [-AzureLocation <String[]>] -EndTime <DateTime> [-Provider <String[]>]
  [-ProviderLocationCity <String>] -ProviderLocationCountry <String> [-ProviderLocationState <String>]
  -StartTime <DateTime> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Get
+### GetViaIdentityExpanded
 ```
-Get-AzNetworkWatcherAzureReachabilityReport -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Parameter <IAzureReachabilityReportParameters>] [-DefaultProfile <PSObject>]
- [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzNetworkWatcherAzureReachabilityReport -InputObject <INetworkIdentity> [-AzureLocation <String[]>]
+ -EndTime <DateTime> [-Provider <String[]>] [-ProviderLocationCity <String>] -ProviderLocationCountry <String>
+ [-ProviderLocationState <String>] -StartTime <DateTime> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### GetSubscriptionIdViaHostExpanded
+### GetViaIdentity
 ```
-Get-AzNetworkWatcherAzureReachabilityReport -NetworkWatcherName <String> -ResourceGroupName <String>
- [-AzureLocation <String[]>] -EndTime <DateTime> [-Provider <String[]>] [-ProviderLocationCity <String>]
- -ProviderLocationCountry <String> [-ProviderLocationState <String>] -StartTime <DateTime>
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzNetworkWatcherAzureReachabilityReport -InputObject <INetworkIdentity>
+ [-Parameter <IAzureReachabilityReportParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,7 +76,7 @@ Optional Azure regions to scope the query to.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: GetExpanded, GetSubscriptionIdViaHostExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -106,7 +106,7 @@ The end time for the Azure reachability report.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: GetExpanded, GetSubscriptionIdViaHostExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -116,12 +116,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GetViaIdentityExpanded, GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -NetworkWatcherName
 The name of the network watcher resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: True
@@ -136,7 +151,7 @@ Geographic and time constraints for Azure reachability report.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureReachabilityReportParameters
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get, GetViaIdentity
 Aliases:
 
 Required: False
@@ -151,7 +166,7 @@ List of Internet service providers.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: GetExpanded, GetSubscriptionIdViaHostExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -166,7 +181,7 @@ The name of the city or town.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetSubscriptionIdViaHostExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -181,7 +196,7 @@ The name of the country.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetSubscriptionIdViaHostExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -196,7 +211,7 @@ The name of the state.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetSubscriptionIdViaHostExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -211,7 +226,7 @@ The name of the network watcher resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: True
@@ -226,7 +241,7 @@ The start time for the Azure reachability report.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: GetExpanded, GetSubscriptionIdViaHostExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -241,8 +256,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: GetExpanded, Get
+Type: System.String[]
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: True

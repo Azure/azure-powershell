@@ -12,10 +12,10 @@ Creates or updates a resource group.
 
 ## SYNTAX
 
-### CreateSubscriptionIdViaHost (Default)
+### Create (Default)
 ```
-New-AzResourceGroup -Name <String> [-Parameters <IResourceGroup>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzResourceGroup -Name <String> -SubscriptionId <String> [-Parameter <IResourceGroup>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -24,15 +24,15 @@ New-AzResourceGroup -Name <String> -SubscriptionId <String> -Location <String> [
  [-Tag <IResourceGroupTags>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Create
+### CreateViaIdentityExpanded
 ```
-New-AzResourceGroup -Name <String> -SubscriptionId <String> [-Parameters <IResourceGroup>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzResourceGroup -InputObject <IResourcesIdentity> -Location <String> [-ManagedBy <String>]
+ [-Tag <IResourceGroupTags>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateSubscriptionIdViaHostExpanded
+### CreateViaIdentity
 ```
-New-AzResourceGroup -Name <String> -Location <String> [-ManagedBy <String>] [-Tag <IResourceGroupTags>]
+New-AzResourceGroup -InputObject <IResourcesIdentity> [-Parameter <IResourceGroup>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -65,6 +65,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Location
 The location of the resource group.
 It cannot be changed after the resource group has been created.
@@ -72,7 +87,7 @@ It must be one of the supported Azure locations.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -87,7 +102,7 @@ The ID of the resource that manages this resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -103,8 +118,8 @@ Can include alphanumeric, underscore, parentheses, hyphen, period (except at end
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: Create, CreateExpanded
+Aliases: ResourceGroupName
 
 Required: True
 Position: Named
@@ -113,12 +128,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -Parameter
 Resource group information.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroup
-Parameter Sets: CreateSubscriptionIdViaHost, Create
+Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
 Required: False
@@ -133,7 +148,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -148,7 +163,7 @@ The tags attached to the resource group.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroupTags
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False

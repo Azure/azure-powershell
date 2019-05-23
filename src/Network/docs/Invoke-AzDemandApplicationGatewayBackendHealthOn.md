@@ -12,11 +12,11 @@ Gets the backend health for given combination of backend pool and http setting o
 
 ## SYNTAX
 
-### DemandSubscriptionIdViaHost (Default)
+### Demand (Default)
 ```
 Invoke-AzDemandApplicationGatewayBackendHealthOn -ApplicationGatewayName <String> -ResourceGroupName <String>
- [-Expand <String>] [-ProbeRequest <IApplicationGatewayOnDemandProbe>] [-DefaultProfile <PSObject>] [-AsJob]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SubscriptionId <String> [-Expand <String>] [-ProbeRequest <IApplicationGatewayOnDemandProbe>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DemandExpanded
@@ -28,20 +28,20 @@ Invoke-AzDemandApplicationGatewayBackendHealthOn -ApplicationGatewayName <String
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Demand
+### DemandViaIdentityExpanded
 ```
-Invoke-AzDemandApplicationGatewayBackendHealthOn -ApplicationGatewayName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Expand <String>] [-ProbeRequest <IApplicationGatewayOnDemandProbe>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzDemandApplicationGatewayBackendHealthOn -InputObject <INetworkIdentity> [-Expand <String>]
+ [-BackendHttpSettingName <String>] [-BackendPoolName <String>] [-Host <String>] [-MatchBody <String>]
+ [-MatchStatusCode <String[]>] [-Path <String>] [-PickHostNameFromBackendHttpSetting <Boolean>]
+ [-Protocol <ApplicationGatewayProtocol>] [-Timeout <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### DemandSubscriptionIdViaHostExpanded
+### DemandViaIdentity
 ```
-Invoke-AzDemandApplicationGatewayBackendHealthOn -ApplicationGatewayName <String> -ResourceGroupName <String>
- [-Expand <String>] [-BackendHttpSettingName <String>] [-BackendPoolName <String>] [-Host <String>]
- [-MatchBody <String>] [-MatchStatusCode <String[]>] [-Path <String>]
- [-PickHostNameFromBackendHttpSetting <Boolean>] [-Protocol <ApplicationGatewayProtocol>] [-Timeout <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzDemandApplicationGatewayBackendHealthOn -InputObject <INetworkIdentity> [-Expand <String>]
+ [-ProbeRequest <IApplicationGatewayOnDemandProbe>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +63,7 @@ The name of the application gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Demand, DemandExpanded
 Aliases:
 
 Required: True
@@ -93,7 +93,7 @@ Name of backend http setting of application gateway to be used for test probe
 
 ```yaml
 Type: System.String
-Parameter Sets: DemandExpanded, DemandSubscriptionIdViaHostExpanded
+Parameter Sets: DemandExpanded, DemandViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -108,7 +108,7 @@ Name of backend pool of application gateway to which probe request will be sent.
 
 ```yaml
 Type: System.String
-Parameter Sets: DemandExpanded, DemandSubscriptionIdViaHostExpanded
+Parameter Sets: DemandExpanded, DemandViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -153,7 +153,7 @@ Host name to send the probe to.
 
 ```yaml
 Type: System.String
-Parameter Sets: DemandExpanded, DemandSubscriptionIdViaHostExpanded
+Parameter Sets: DemandExpanded, DemandViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -163,13 +163,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: DemandViaIdentityExpanded, DemandViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -MatchBody
 Body that must be contained in the health response.
 Default value is empty.
 
 ```yaml
 Type: System.String
-Parameter Sets: DemandExpanded, DemandSubscriptionIdViaHostExpanded
+Parameter Sets: DemandExpanded, DemandViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -185,7 +200,7 @@ Default range of healthy status codes is 200-399.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: DemandExpanded, DemandSubscriptionIdViaHostExpanded
+Parameter Sets: DemandExpanded, DemandViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -202,7 +217,7 @@ Probe is sent to \<Protocol\>://\<host\>:\<port\>\<path\>
 
 ```yaml
 Type: System.String
-Parameter Sets: DemandExpanded, DemandSubscriptionIdViaHostExpanded
+Parameter Sets: DemandExpanded, DemandViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -218,7 +233,7 @@ Default value is false.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: DemandExpanded, DemandSubscriptionIdViaHostExpanded
+Parameter Sets: DemandExpanded, DemandViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -233,7 +248,7 @@ Details of on demand test probe request
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IApplicationGatewayOnDemandProbe
-Parameter Sets: DemandSubscriptionIdViaHost, Demand
+Parameter Sets: Demand, DemandViaIdentity
 Aliases:
 
 Required: False
@@ -248,7 +263,7 @@ The protocol used for the probe.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ApplicationGatewayProtocol
-Parameter Sets: DemandExpanded, DemandSubscriptionIdViaHostExpanded
+Parameter Sets: DemandExpanded, DemandViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -263,7 +278,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Demand, DemandExpanded
 Aliases:
 
 Required: True
@@ -279,7 +294,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: DemandExpanded, Demand
+Parameter Sets: Demand, DemandExpanded
 Aliases:
 
 Required: True
@@ -296,7 +311,7 @@ Acceptable values are from 1 second to 86400 seconds.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: DemandExpanded, DemandSubscriptionIdViaHostExpanded
+Parameter Sets: DemandExpanded, DemandViaIdentityExpanded
 Aliases:
 
 Required: False

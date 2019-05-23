@@ -14,28 +14,52 @@ Create a new application.
 
 ### Create2 (Default)
 ```
-New-AzADApplication -TenantId <String> [-Parameters <IApplicationCreateParameters>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADApplication -TenantId <String> [-Parameter <IApplicationCreateParameters>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpanded2
 ```
-New-AzADApplication -TenantId <String> [-AllowGuestsSignIn <Boolean>] [-AllowPassthroughUsers <Boolean>]
- [-AppLogoUrl <String>] [-AppPermissions <String[]>] [-AppRoles <IAppRole[]>]
- [-AvailableToOtherTenants <Boolean>] -DisplayName <String> [-ErrorUrl <String>]
- [-GroupMembershipClaims <GroupMembershipClaimTypes>] [-Homepage <String>] [-IdentifierUris <String[]>]
- [-InformationalUrlsMarketing <String>] [-InformationalUrlsPrivacy <String>]
- [-InformationalUrlsSupport <String>] [-InformationalUrlsTermsOfService <String>]
- [-IsDeviceOnlyAuthSupported <Boolean>] [-KeyCredentials <IKeyCredential[]>]
- [-KnownClientApplications <String[]>] [-LogoutUrl <String>] [-Oauth2AllowImplicitFlow <Boolean>]
- [-Oauth2AllowUrlPathMatching <Boolean>] [-Oauth2Permissions <IOAuth2Permission[]>]
- [-Oauth2RequirePostResponse <Boolean>] [-OptionalClaimsAccessToken <IOptionalClaim[]>]
- [-OptionalClaimsIdToken <IOptionalClaim[]>] [-OptionalClaimsSamlToken <IOptionalClaim[]>]
- [-OrgRestrictions <String[]>] [-PasswordCredentials <IPasswordCredential[]>]
- [-PreAuthorizedApplications <IPreAuthorizedApplication[]>] [-PublicClient <Boolean>]
- [-PublisherDomain <String>] [-ReplyUrls <String[]>] [-RequiredResourceAccess <IRequiredResourceAccess[]>]
- [-SamlMetadataUrl <String>] [-SignInAudience <String>] [-WwwHomepage <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzADApplication -TenantId <String> [-AllowGuestsSignIn <Boolean>] [-AllowPassthroughUser <Boolean>]
+ [-AppLogoUrl <String>] [-AppPermission <String[]>] [-AppRole <IAppRole[]>] [-AvailableToOtherTenant <Boolean>]
+ -DisplayName <String> [-ErrorUrl <String>] [-GroupMembershipClaim <GroupMembershipClaimTypes>]
+ [-Homepage <String>] [-IdentifierUri <String[]>] [-InformationalUrlMarketing <String>]
+ [-InformationalUrlPrivacy <String>] [-InformationalUrlSupport <String>]
+ [-InformationalUrlTermsOfService <String>] [-IsDeviceOnlyAuthSupported <Boolean>]
+ [-KeyCredential <IKeyCredential[]>] [-KnownClientApplication <String[]>] [-LogoutUrl <String>]
+ [-Oauth2AllowImplicitFlow <Boolean>] [-Oauth2AllowUrlPathMatching <Boolean>]
+ [-Oauth2Permissions <IOAuth2Permission[]>] [-Oauth2RequirePostResponse <Boolean>]
+ [-OptionalClaimAccessToken <IOptionalClaim[]>] [-OptionalClaimIdToken <IOptionalClaim[]>]
+ [-OptionalClaimSamlToken <IOptionalClaim[]>] [-OrgRestriction <String[]>]
+ [-PasswordCredential <IPasswordCredential[]>] [-PreAuthorizedApplication <IPreAuthorizedApplication[]>]
+ [-PublicClient <Boolean>] [-PublisherDomain <String>] [-ReplyUrl <String[]>]
+ [-RequiredResourceAccess <IRequiredResourceAccess[]>] [-SamlMetadataUrl <String>] [-SignInAudience <String>]
+ [-WwwHomepage <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded2
+```
+New-AzADApplication -InputObject <IResourcesIdentity> [-AllowGuestsSignIn <Boolean>]
+ [-AllowPassthroughUser <Boolean>] [-AppLogoUrl <String>] [-AppPermission <String[]>] [-AppRole <IAppRole[]>]
+ [-AvailableToOtherTenant <Boolean>] -DisplayName <String> [-ErrorUrl <String>]
+ [-GroupMembershipClaim <GroupMembershipClaimTypes>] [-Homepage <String>] [-IdentifierUri <String[]>]
+ [-InformationalUrlMarketing <String>] [-InformationalUrlPrivacy <String>] [-InformationalUrlSupport <String>]
+ [-InformationalUrlTermsOfService <String>] [-IsDeviceOnlyAuthSupported <Boolean>]
+ [-KeyCredential <IKeyCredential[]>] [-KnownClientApplication <String[]>] [-LogoutUrl <String>]
+ [-Oauth2AllowImplicitFlow <Boolean>] [-Oauth2AllowUrlPathMatching <Boolean>]
+ [-Oauth2Permissions <IOAuth2Permission[]>] [-Oauth2RequirePostResponse <Boolean>]
+ [-OptionalClaimAccessToken <IOptionalClaim[]>] [-OptionalClaimIdToken <IOptionalClaim[]>]
+ [-OptionalClaimSamlToken <IOptionalClaim[]>] [-OrgRestriction <String[]>]
+ [-PasswordCredential <IPasswordCredential[]>] [-PreAuthorizedApplication <IPreAuthorizedApplication[]>]
+ [-PublicClient <Boolean>] [-PublisherDomain <String>] [-ReplyUrl <String[]>]
+ [-RequiredResourceAccess <IRequiredResourceAccess[]>] [-SamlMetadataUrl <String>] [-SignInAudience <String>]
+ [-WwwHomepage <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentity2
+```
+New-AzADApplication -InputObject <IResourcesIdentity> [-Parameter <IApplicationCreateParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,7 +81,7 @@ A property on the application to indicate if the application accepts other IDPs 
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -67,12 +91,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AllowPassthroughUsers
+### -AllowPassthroughUser
 Indicates that the application supports pass through users who have no presence in the resource tenant.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -87,7 +111,7 @@ The url for the application logo image stored in a CDN.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -97,12 +121,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AppPermissions
+### -AppPermission
 The application permissions.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -112,13 +136,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AppRoles
-The collection of application roles that an application may declare.
-These roles can be assigned to users, groups or service principals.
+### -AppRole
+The collection of application roles that an application may declare. These roles can be assigned to users, groups or service principals.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IAppRole[]
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -128,12 +151,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AvailableToOtherTenants
+### -AvailableToOtherTenant
 Whether the application is available to other tenants.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -163,7 +186,7 @@ The display name of the application.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: True
@@ -178,7 +201,7 @@ A URL provided by the author of the application to report errors when using the 
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -188,12 +211,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GroupMembershipClaims
+### -GroupMembershipClaim
 Configures the groups claim issued in a user or OAuth 2.0 access token that the app expects.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.GroupMembershipClaimTypes
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -208,7 +231,7 @@ The home page of the application.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -218,12 +241,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentifierUris
+### -IdentifierUri
 A collection of URIs for the application.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -233,12 +256,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationalUrlsMarketing
+### -InformationalUrlMarketing
 The marketing URI
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -248,12 +271,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationalUrlsPrivacy
+### -InformationalUrlPrivacy
 The privacy policy URI
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -263,12 +286,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationalUrlsSupport
+### -InformationalUrlSupport
 The support URI
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -278,18 +301,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationalUrlsTermsOfService
+### -InformationalUrlTermsOfService
 The terms of service URI
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: CreateViaIdentityExpanded2, CreateViaIdentity2
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -299,7 +337,7 @@ The default is false.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -309,12 +347,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KeyCredentials
+### -KeyCredential
 A collection of KeyCredential objects.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IKeyCredential[]
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -324,13 +362,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KnownClientApplications
-Client applications that are tied to this resource application.
-Consent to any of the known client applications will result in implicit consent to the resource application through a combined consent dialog (showing the OAuth permission scopes required by the client and the resource).
+### -KnownClientApplication
+Client applications that are tied to this resource application. Consent to any of the known client applications will result in implicit consent to the resource application through a combined consent dialog (showing the OAuth permission scopes required by the client and the resource).
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -345,7 +382,7 @@ the url of the logout page
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -360,7 +397,7 @@ Whether to allow implicit grant flow for OAuth2
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -376,7 +413,7 @@ The default is false.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -392,7 +429,7 @@ These permission scopes may be granted to client applications during consent.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IOAuth2Permission[]
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -408,7 +445,7 @@ The default is false, which specifies that only GET requests will be allowed.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -418,12 +455,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OptionalClaimsAccessToken
+### -OptionalClaimAccessToken
 Optional claims requested to be included in the access token.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IOptionalClaim[]
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -433,12 +470,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OptionalClaimsIdToken
+### -OptionalClaimIdToken
 Optional claims requested to be included in the id token.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IOptionalClaim[]
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -448,12 +485,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OptionalClaimsSamlToken
+### -OptionalClaimSamlToken
 Optional claims requested to be included in the saml token.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IOptionalClaim[]
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -463,12 +500,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OrgRestrictions
+### -OrgRestriction
 A list of tenants allowed to access application.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -478,12 +515,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -Parameter
 Request parameters for creating a new application.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IApplicationCreateParameters
-Parameter Sets: Create2
+Parameter Sets: Create2, CreateViaIdentity2
 Aliases:
 
 Required: False
@@ -493,12 +530,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PasswordCredentials
+### -PasswordCredential
 A collection of PasswordCredential objects
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPasswordCredential[]
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -508,12 +545,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PreAuthorizedApplications
+### -PreAuthorizedApplication
 list of pre-authorized applications.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPreAuthorizedApplication[]
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -529,7 +566,7 @@ Default is false.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -544,7 +581,7 @@ Reliable domain which can be used to identify an application.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -554,12 +591,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReplyUrls
+### -ReplyUrl
 A collection of reply URLs for the application.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -575,7 +612,7 @@ This pre-configuration of required resource access drives the consent experience
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IRequiredResourceAccess[]
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -590,7 +627,7 @@ The URL to the SAML metadata for the application.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -605,7 +642,7 @@ Audience for signing in to the application (AzureADMyOrganization, AzureADAllOrg
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -620,7 +657,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create2, CreateExpanded2
 Aliases:
 
 Required: True
@@ -635,7 +672,7 @@ The primary Web page.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False

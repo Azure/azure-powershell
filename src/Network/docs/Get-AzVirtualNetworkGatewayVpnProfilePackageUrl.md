@@ -13,17 +13,17 @@ The profile needs to be generated first using generateVpnProfile.
 
 ## SYNTAX
 
-### GetSubscriptionIdViaHost (Default)
+### Get (Default)
 ```
-Get-AzVirtualNetworkGatewayVpnProfilePackageUrl -ResourceGroupName <String> -VirtualNetworkGatewayName <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzVirtualNetworkGatewayVpnProfilePackageUrl -ResourceGroupName <String> -SubscriptionId <String>
+Get-AzVirtualNetworkGatewayVpnProfilePackageUrl -ResourceGroupName <String> -SubscriptionId <String[]>
  -VirtualNetworkGatewayName <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzVirtualNetworkGatewayVpnProfilePackageUrl -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,12 +71,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -91,7 +106,7 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: Get
 Aliases:
 
@@ -107,7 +122,7 @@ The name of the virtual network gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: True

@@ -12,26 +12,21 @@ Gets the specified resource provider.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
+### List (Default)
 ```
-Get-AzProvider [-Expand <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost
-```
-Get-AzProvider -ResourceProviderNamespace <String> [-Expand <String>] [-DefaultProfile <PSObject>]
+Get-AzProvider -SubscriptionId <String[]> [-Expand <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzProvider -ResourceProviderNamespace <String> -SubscriptionId <String> [-Expand <String>]
+Get-AzProvider -ResourceProviderNamespace <String> -SubscriptionId <String[]> [-Expand <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### GetViaIdentity
 ```
-Get-AzProvider -SubscriptionId <String> [-Expand <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+Get-AzProvider -InputObject <IResourcesIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -80,12 +75,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceProviderNamespace
 The namespace of the resource provider.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -99,8 +109,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List
+Type: System.String[]
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -116,7 +126,7 @@ If null is passed returns all deployments.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: ListSubscriptionIdViaHost, List
+Parameter Sets: List
 Aliases:
 
 Required: False

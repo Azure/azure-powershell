@@ -12,52 +12,52 @@ Creates or updates a network interface.
 
 ## SYNTAX
 
-### UpdateSubscriptionIdViaHost (Default)
-```
-Set-AzNetworkInterface -Name <String> -ResourceGroupName <String> [-Parameter <INetworkInterface>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Set-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-DefaultSecurityRule <ISecurityRule[]>] [-DnsSettingsAppliedDnsServer <String[]>]
- [-DnsSettingsDnsServer <String[]>] [-DnsSettingsInternalDnsNameLabel <String>]
- [-DnsSettingsInternalDomainNameSuffix <String>] [-DnsSettingsInternalFqdn <String>]
- [-EnableAcceleratedNetworking <Boolean>] [-EnableIPForwarding <Boolean>] [-EndpointServiceId <String>]
- [-Etag <String>] [-Fqdn <String>] [-IPConfiguration <INetworkInterfaceIPConfiguration[]>] [-Id <String>]
- [-InterfaceEndpointEtag <String>] [-InterfaceEndpointId <String>] [-InterfaceEndpointLocation <String>]
- [-InterfaceEndpointTag <IResourceTags>] [-Location <String>] [-MacAddress <String>]
- [-NetworkSecurityGroupEtag <String>] [-NetworkSecurityGroupId <String>]
- [-NetworkSecurityGroupLocation <String>] [-NetworkSecurityGroupPropertiesFormatProvisioningState <String>]
- [-NetworkSecurityGroupTag <IResourceTags>] [-Primary <Boolean>] [-PropertiesResourceGuid <String>]
- [-ProvisioningState <String>] [-ResourceGuid <String>] [-SecurityRule <ISecurityRule[]>] [-Subnet <ISubnet>]
- [-Tag <IResourceTags>] [-TapConfiguration <INetworkInterfaceTapConfiguration[]>] [-VirtualMachineId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Update
+### Update (Default)
 ```
 Set-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Parameter <INetworkInterface>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### UpdateSubscriptionIdViaHostExpanded
+### UpdateExpanded
 ```
-Set-AzNetworkInterface -Name <String> -ResourceGroupName <String> [-DefaultSecurityRule <ISecurityRule[]>]
- [-DnsSettingsAppliedDnsServer <String[]>] [-DnsSettingsDnsServer <String[]>]
- [-DnsSettingsInternalDnsNameLabel <String>] [-DnsSettingsInternalDomainNameSuffix <String>]
- [-DnsSettingsInternalFqdn <String>] [-EnableAcceleratedNetworking <Boolean>] [-EnableIPForwarding <Boolean>]
+Set-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-DefaultSecurityRule <ISecurityRule[]>] [-DnsSettingAppliedDnsServer <String[]>]
+ [-DnsSettingDnsServer <String[]>] [-DnsSettingInternalDnsNameLabel <String>]
+ [-DnsSettingInternalDomainNameSuffix <String>] [-DnsSettingInternalFqdn <String>]
+ [-EnableAcceleratedNetworking <Boolean>] [-EnableIPForwarding <Boolean>] [-EndpointServiceId <String>]
+ [-Etag <String>] [-Fqdn <String>] [-IPConfiguration <INetworkInterfaceIPConfiguration[]>] [-Id <String>]
+ [-InterfaceEndpointEtag <String>] [-InterfaceEndpointId <String>] [-InterfaceEndpointLocation <String>]
+ [-InterfaceEndpointTag <IResourceTags>] [-Location <String>] [-MacAddress <String>]
+ [-NetworkSecurityGroupEtag <String>] [-NetworkSecurityGroupId <String>]
+ [-NetworkSecurityGroupLocation <String>] [-NetworkSecurityGroupPropertiesProvisioningState <String>]
+ [-NetworkSecurityGroupPropertiesResourceGuid <String>] [-NetworkSecurityGroupTag <IResourceTags>]
+ [-Primary <Boolean>] [-ProvisioningState <String>] [-ResourceGuid <String>] [-SecurityRule <ISecurityRule[]>]
+ [-Subnet <ISubnet>] [-Tag <IResourceTags>] [-TapConfiguration <INetworkInterfaceTapConfiguration[]>]
+ [-VirtualMachineId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Set-AzNetworkInterface -InputObject <INetworkIdentity> [-DefaultSecurityRule <ISecurityRule[]>]
+ [-DnsSettingAppliedDnsServer <String[]>] [-DnsSettingDnsServer <String[]>]
+ [-DnsSettingInternalDnsNameLabel <String>] [-DnsSettingInternalDomainNameSuffix <String>]
+ [-DnsSettingInternalFqdn <String>] [-EnableAcceleratedNetworking <Boolean>] [-EnableIPForwarding <Boolean>]
  [-EndpointServiceId <String>] [-Etag <String>] [-Fqdn <String>]
  [-IPConfiguration <INetworkInterfaceIPConfiguration[]>] [-Id <String>] [-InterfaceEndpointEtag <String>]
  [-InterfaceEndpointId <String>] [-InterfaceEndpointLocation <String>] [-InterfaceEndpointTag <IResourceTags>]
  [-Location <String>] [-MacAddress <String>] [-NetworkSecurityGroupEtag <String>]
  [-NetworkSecurityGroupId <String>] [-NetworkSecurityGroupLocation <String>]
- [-NetworkSecurityGroupPropertiesFormatProvisioningState <String>] [-NetworkSecurityGroupTag <IResourceTags>]
- [-Primary <Boolean>] [-PropertiesResourceGuid <String>] [-ProvisioningState <String>] [-ResourceGuid <String>]
- [-SecurityRule <ISecurityRule[]>] [-Subnet <ISubnet>] [-Tag <IResourceTags>]
- [-TapConfiguration <INetworkInterfaceTapConfiguration[]>] [-VirtualMachineId <String>]
+ [-NetworkSecurityGroupPropertiesProvisioningState <String>]
+ [-NetworkSecurityGroupPropertiesResourceGuid <String>] [-NetworkSecurityGroupTag <IResourceTags>]
+ [-Primary <Boolean>] [-ProvisioningState <String>] [-ResourceGuid <String>] [-SecurityRule <ISecurityRule[]>]
+ [-Subnet <ISubnet>] [-Tag <IResourceTags>] [-TapConfiguration <INetworkInterfaceTapConfiguration[]>]
+ [-VirtualMachineId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Set-AzNetworkInterface -InputObject <INetworkIdentity> [-Parameter <INetworkInterface>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -110,7 +110,7 @@ The default security rules of network security group.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityRule[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -120,13 +120,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsSettingsAppliedDnsServer
+### -DnsSettingAppliedDnsServer
 If the VM that uses this NIC is part of an Availability Set, then this list will have the union of all DNS servers from all NICs that are part of the Availability Set.
 This property is what is configured on each of those VMs.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -136,14 +136,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsSettingsDnsServer
+### -DnsSettingDnsServer
 List of DNS servers IP addresses.
 Use 'AzureProvidedDNS' to switch to azure provided DNS resolution.
 'AzureProvidedDNS' value cannot be combined with other IPs, it must be the only value in dnsServers collection.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -153,12 +153,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsSettingsInternalDnsNameLabel
+### -DnsSettingInternalDnsNameLabel
 Relative DNS name for this NIC used for internal communications between VMs in the same virtual network.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -168,13 +168,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsSettingsInternalDomainNameSuffix
+### -DnsSettingInternalDomainNameSuffix
 Even if internalDnsNameLabel is not specified, a DNS entry is created for the primary NIC of the VM.
 This DNS name can be constructed by concatenating the VM name with the value of internalDomainNameSuffix.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -184,12 +184,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsSettingsInternalFqdn
+### -DnsSettingInternalFqdn
 Fully qualified DNS name supporting internal communications between VMs in the same virtual network.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -204,7 +204,7 @@ If the network interface is accelerated networking enabled.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -219,7 +219,7 @@ Indicates whether IP forwarding is enabled on this network interface.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -234,7 +234,7 @@ A unique identifier of the service being referenced by the interface endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -249,7 +249,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -264,7 +264,7 @@ A first-party service's FQDN that is mapped to the private IP allocated via this
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -279,7 +279,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -289,12 +289,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InterfaceEndpointEtag
 Gets a unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -309,7 +324,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -324,7 +339,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -338,8 +353,8 @@ Accept wildcard characters: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IResourceTags
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -354,7 +369,7 @@ A list of IPConfigurations of the network interface.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterfaceIPConfiguration[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -369,7 +384,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -384,7 +399,7 @@ The MAC address of the network interface.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -399,7 +414,7 @@ The name of the network interface.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases: NetworkInterfaceName
 
 Required: True
@@ -414,7 +429,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -429,7 +444,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -444,7 +459,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -454,13 +469,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkSecurityGroupPropertiesFormatProvisioningState
+### -NetworkSecurityGroupPropertiesProvisioningState
 The provisioning state of the public IP resource.
 Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkSecurityGroupPropertiesResourceGuid
+The resource GUID property of the network security group resource.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -474,8 +504,8 @@ Accept wildcard characters: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IResourceTags
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -490,7 +520,7 @@ A network interface in a resource group.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterface
-Parameter Sets: UpdateSubscriptionIdViaHost, Update
+Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -505,27 +535,12 @@ Gets whether this is a primary network interface on a virtual machine.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PropertiesResourceGuid
-The resource GUID property of the network security group resource.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -536,7 +551,7 @@ Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -551,7 +566,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -566,7 +581,7 @@ The resource GUID property of the network interface resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -581,7 +596,7 @@ A collection of security rules of the network security group.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityRule[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -596,7 +611,7 @@ The ID of the subnet from which the private IP will be allocated.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISubnet
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -612,7 +627,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -626,8 +641,8 @@ Accept wildcard characters: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IResourceTags
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -642,7 +657,7 @@ A list of TapConfigurations of the network interface.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterfaceTapConfiguration[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -657,7 +672,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

@@ -18,10 +18,10 @@ If the asynchronous request failed, the URI in the Location header returns an er
 
 ## SYNTAX
 
-### DeleteSubscriptionIdViaHost (Default)
+### Delete (Default)
 ```
-Remove-AzDeployment -Name <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzDeployment -Name <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Delete1
@@ -30,16 +30,16 @@ Remove-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Delete
+### DeleteViaIdentity1
 ```
-Remove-AzDeployment -Name <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
+Remove-AzDeployment -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteSubscriptionIdViaHost1
+### DeleteViaIdentity
 ```
-Remove-AzDeployment -Name <String> -ResourceGroupName <String> [-PassThru] [-DefaultProfile <PSObject>]
- [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzDeployment -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,13 +92,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: DeleteViaIdentity1, DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the deployment to delete.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: Delete, Delete1
+Aliases: DeploymentName
 
 Required: True
 Position: Named
@@ -128,7 +143,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete1, DeleteSubscriptionIdViaHost1
+Parameter Sets: Delete1
 Aliases:
 
 Required: True
@@ -143,7 +158,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete1, Delete
+Parameter Sets: Delete, Delete1
 Aliases:
 
 Required: True

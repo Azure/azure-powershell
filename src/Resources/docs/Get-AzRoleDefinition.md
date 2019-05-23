@@ -27,6 +27,16 @@ Get-AzRoleDefinition -Id <String> -Scope <String> [-DefaultProfile <PSObject>] [
 Get-AzRoleDefinition -Scope <String> [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentity2
+```
+Get-AzRoleDefinition -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity1
+```
+Get-AzRoleDefinition -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets a role definition by ID.
 
@@ -79,12 +89,27 @@ Use the format, /subscriptions/{guid}/providers/Microsoft.Authorization/roleDefi
 ```yaml
 Type: System.String
 Parameter Sets: Get1, Get2
-Aliases:
+Aliases: RoleDefinitionId
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentity2, GetViaIdentity1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

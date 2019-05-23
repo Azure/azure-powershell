@@ -12,28 +12,23 @@ Get the specified service endpoint policy definitions from service endpoint poli
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
+### List (Default)
 ```
 Get-AzServiceEndpointPolicyDefinition -ResourceGroupName <String> -ServiceEndpointPolicyName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost
-```
-Get-AzServiceEndpointPolicyDefinition -Name <String> -ResourceGroupName <String>
- -ServiceEndpointPolicyName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzServiceEndpointPolicyDefinition -Name <String> -ResourceGroupName <String>
- -ServiceEndpointPolicyName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ServiceEndpointPolicyName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
-### List
+### GetViaIdentity
 ```
-Get-AzServiceEndpointPolicyDefinition -ResourceGroupName <String> -ServiceEndpointPolicyName <String>
- -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzServiceEndpointPolicyDefinition -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,12 +60,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the service endpoint policy definition name.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get
 Aliases: ServiceEndpointPolicyDefinitionName
 
 Required: True
@@ -85,7 +95,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -100,7 +110,7 @@ The name of the service endpoint policy name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -115,8 +125,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List
+Type: System.String[]
+Parameter Sets: List, Get
 Aliases:
 
 Required: True

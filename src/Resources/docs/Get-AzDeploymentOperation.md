@@ -12,52 +12,38 @@ Gets a deployments operation.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
+### List (Default)
 ```
-Get-AzDeploymentOperation -DeploymentName <String> [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost1
-```
-Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> -ResourceGroupName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost
-```
-Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### Get1
-```
-Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> -SubscriptionId <String>
- -ResourceGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> -SubscriptionId <String>
+Get-AzDeploymentOperation -DeploymentName <String> -SubscriptionId <String[]> [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzDeploymentOperation -DeploymentName <String> -SubscriptionId <String> -ResourceGroupName <String>
+Get-AzDeploymentOperation -DeploymentName <String> -SubscriptionId <String[]> -ResourceGroupName <String>
  [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### Get1
 ```
-Get-AzDeploymentOperation -DeploymentName <String> -SubscriptionId <String> [-Top <Int32>]
+Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> -SubscriptionId <String[]>
+ -ResourceGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ListSubscriptionIdViaHost1
+### GetViaIdentity1
 ```
-Get-AzDeploymentOperation -DeploymentName <String> -ResourceGroupName <String> [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDeploymentOperation -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzDeploymentOperation -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,7 +80,7 @@ The name of the deployment.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, List1, Get1, Get
 Aliases:
 
 Required: True
@@ -104,12 +90,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentity1, GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -OperationId
 The ID of the operation to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost1, GetSubscriptionIdViaHost, Get1, Get
+Parameter Sets: Get1, Get
 Aliases:
 
 Required: True
@@ -125,7 +126,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost1, Get1, List1, ListSubscriptionIdViaHost1
+Parameter Sets: List1, Get1
 Aliases:
 
 Required: True
@@ -139,8 +140,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get1, Get, List1, List
+Type: System.String[]
+Parameter Sets: List, List1, Get1, Get
 Aliases:
 
 Required: True
@@ -155,7 +156,7 @@ The number of results to return.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: ListSubscriptionIdViaHost, List1, List, ListSubscriptionIdViaHost1
+Parameter Sets: List, List1
 Aliases:
 
 Required: False

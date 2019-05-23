@@ -14,7 +14,7 @@ Gets a collection of object IDs of groups of which the specified group is a memb
 
 ### Get (Default)
 ```
-Get-AzADGroupMemberGroup -ObjectId <String> -TenantId <String> [-Parameters <IGroupGetMemberGroupsParameters>]
+Get-AzADGroupMemberGroup -ObjectId <String> -TenantId <String> [-Parameter <IGroupGetMemberGroupsParameters>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -22,6 +22,18 @@ Get-AzADGroupMemberGroup -ObjectId <String> -TenantId <String> [-Parameters <IGr
 ```
 Get-AzADGroupMemberGroup -ObjectId <String> -TenantId <String> [-Properties <Hashtable>]
  -SecurityEnabledOnly <Boolean> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetViaIdentityExpanded
+```
+Get-AzADGroupMemberGroup -InputObject <IResourcesIdentity> [-Properties <Hashtable>]
+ -SecurityEnabledOnly <Boolean> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzADGroupMemberGroup -InputObject <IResourcesIdentity> [-Parameter <IGroupGetMemberGroupsParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,12 +65,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentityExpanded, GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ObjectId
 The object ID of the group for which to get group membership.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: True
@@ -68,12 +95,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -Parameter
 Request parameters for GetMemberGroups API call.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IGroupGetMemberGroupsParameters
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentity
 Aliases:
 
 Required: False
@@ -88,7 +115,7 @@ Additional Parameters
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: GetExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -104,7 +131,7 @@ Otherwise, membership in all groups should be checked.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: GetExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -119,7 +146,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: True

@@ -17,14 +17,19 @@ Gets user information from the directory.
 Get-AzADUser -TenantId <String> [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetByDisplayName
+```
+Get-AzADUser -TenantId <String> -DisplayName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzADUser -TenantId <String> -UpnOrObjectId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetByDisplayName
+### GetViaIdentity
 ```
-Get-AzADUser -TenantId <String> -DisplayName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADUser -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,12 +91,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -TenantId
 The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, GetByDisplayName, Get
 Aliases:
 
 Required: True

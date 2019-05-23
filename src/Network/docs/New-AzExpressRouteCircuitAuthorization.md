@@ -12,11 +12,12 @@ Creates or updates an authorization in the specified express route circuit.
 
 ## SYNTAX
 
-### CreateSubscriptionIdViaHost (Default)
+### Create (Default)
 ```
 New-AzExpressRouteCircuitAuthorization -AuthorizationName <String> -CircuitName <String>
- -ResourceGroupName <String> [-AuthorizationParameter <IExpressRouteCircuitAuthorization>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> -SubscriptionId <String>
+ [-AuthorizationParameter <IExpressRouteCircuitAuthorization>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -27,19 +28,17 @@ New-AzExpressRouteCircuitAuthorization -AuthorizationName <String> -CircuitName 
  [-ProvisioningState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Create
+### CreateViaIdentityExpanded
 ```
-New-AzExpressRouteCircuitAuthorization -AuthorizationName <String> -CircuitName <String>
- -ResourceGroupName <String> -SubscriptionId <String>
- [-AuthorizationParameter <IExpressRouteCircuitAuthorization>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzExpressRouteCircuitAuthorization -InputObject <INetworkIdentity> [-AuthorizationKey <String>]
+ [-AuthorizationUseStatu <AuthorizationUseStatus>] [-Id <String>] [-Name <String>]
+ [-ProvisioningState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateSubscriptionIdViaHostExpanded
+### CreateViaIdentity
 ```
-New-AzExpressRouteCircuitAuthorization -AuthorizationName <String> -CircuitName <String>
- -ResourceGroupName <String> [-AuthorizationKey <String>] [-AuthorizationUseStatu <AuthorizationUseStatus>]
- [-Id <String>] [-Name <String>] [-ProvisioningState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
+New-AzExpressRouteCircuitAuthorization -InputObject <INetworkIdentity>
+ [-AuthorizationParameter <IExpressRouteCircuitAuthorization>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -77,7 +76,7 @@ The authorization key.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -92,7 +91,7 @@ The name of the authorization.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -106,8 +105,8 @@ Accept wildcard characters: False
 Authorization in an ExpressRouteCircuit resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuitAuthorization
-Parameter Sets: CreateSubscriptionIdViaHost, Create
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitAuthorization
+Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
 Required: False
@@ -123,7 +122,7 @@ Possible values are: 'Available' and 'InUse'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.AuthorizationUseStatus
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -138,7 +137,7 @@ The name of the express route circuit.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -168,7 +167,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -178,13 +177,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Gets name of the resource that is unique within a resource group.
 This name can be used to access the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -200,7 +214,7 @@ Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -215,7 +229,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -231,7 +245,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -279,7 +293,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuitAuthorization
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitAuthorization
 ## NOTES
 
 ## RELATED LINKS

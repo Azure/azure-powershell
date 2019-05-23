@@ -12,37 +12,27 @@ Gets details about the specified ExpressRouteCrossConnection.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
+### List (Default)
 ```
-Get-AzExpressRouteCrossConnection [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost
-```
-Get-AzExpressRouteCrossConnection -CrossConnectionName <String> -ResourceGroupName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzExpressRouteCrossConnection -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzExpressRouteCrossConnection -CrossConnectionName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListSubscriptionIdViaHost1
-```
-Get-AzExpressRouteCrossConnection -ResourceGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzExpressRouteCrossConnection -ResourceGroupName <String> -SubscriptionId <String>
+Get-AzExpressRouteCrossConnection -ResourceGroupName <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### GetViaIdentity
 ```
-Get-AzExpressRouteCrossConnection -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzExpressRouteCrossConnection -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,7 +54,7 @@ The name of the ExpressRouteCrossConnection (service key of the circuit).
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -89,12 +79,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group (peering location of the circuit).
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get, ListSubscriptionIdViaHost1, List1
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -109,8 +114,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List1, List
+Type: System.String[]
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: True

@@ -12,67 +12,68 @@ Validates whether the specified template is syntactically correct and will be ac
 
 ## SYNTAX
 
-### ValidateSubscriptionIdViaHost (Default)
+### Validate (Default)
 ```
-Test-AzDeployment -Name <String> [-Parameters <IDeployment>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Test-AzDeployment -Name <String> -SubscriptionId <String> [-Parameter <IDeployment>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ValidateExpanded1
 ```
 Test-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <String>
- [-Parameters <IDeployment>] [-DebugSettingDetailLevel <String>] [-Location <String>] -Mode <DeploymentMode>
+ [-Parameter <IDeployment>] [-DebugSettingDetailLevel <String>] [-Location <String>] -Mode <DeploymentMode>
  [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
- [-ParametersLinkContentVersion <String>] -ParametersLinkUri <String>
- [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>] -TemplateLinkUri <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ParameterLinkContentVersion <String>] -ParameterLinkUri <String> [-Template <IDeploymentPropertiesTemplate>]
+ [-TemplateLinkContentVersion <String>] -TemplateLinkUri <String> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ValidateExpanded
 ```
-Test-AzDeployment -Name <String> -SubscriptionId <String> [-Parameters <IDeployment>]
+Test-AzDeployment -Name <String> -SubscriptionId <String> [-Parameter <IDeployment>]
  [-DebugSettingDetailLevel <String>] [-Location <String>] -Mode <DeploymentMode>
  [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
- [-ParametersLinkContentVersion <String>] -ParametersLinkUri <String>
- [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>] -TemplateLinkUri <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ParameterLinkContentVersion <String>] -ParameterLinkUri <String> [-Template <IDeploymentPropertiesTemplate>]
+ [-TemplateLinkContentVersion <String>] -TemplateLinkUri <String> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Validate1
 ```
 Test-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <String>
- [-Parameters <IDeployment>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Parameter <IDeployment>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Validate
+### ValidateViaIdentityExpanded1
 ```
-Test-AzDeployment -Name <String> -SubscriptionId <String> [-Parameters <IDeployment>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ValidateSubscriptionIdViaHostExpanded1
-```
-Test-AzDeployment -Name <String> -ResourceGroupName <String> [-Parameters <IDeployment>]
+Test-AzDeployment -InputObject <IResourcesIdentity> [-Parameter <IDeployment>]
  [-DebugSettingDetailLevel <String>] [-Location <String>] -Mode <DeploymentMode>
  [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
- [-ParametersLinkContentVersion <String>] -ParametersLinkUri <String>
- [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>] -TemplateLinkUri <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ParameterLinkContentVersion <String>] -ParameterLinkUri <String> [-Template <IDeploymentPropertiesTemplate>]
+ [-TemplateLinkContentVersion <String>] -TemplateLinkUri <String> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### ValidateSubscriptionIdViaHost1
+### ValidateViaIdentityExpanded
 ```
-Test-AzDeployment -Name <String> -ResourceGroupName <String> [-Parameters <IDeployment>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Test-AzDeployment -InputObject <IResourcesIdentity> [-Parameter <IDeployment>]
+ [-DebugSettingDetailLevel <String>] [-Location <String>] -Mode <DeploymentMode>
+ [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
+ [-ParameterLinkContentVersion <String>] -ParameterLinkUri <String> [-Template <IDeploymentPropertiesTemplate>]
+ [-TemplateLinkContentVersion <String>] -TemplateLinkUri <String> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### ValidateSubscriptionIdViaHostExpanded
+### ValidateViaIdentity1
 ```
-Test-AzDeployment -Name <String> [-Parameters <IDeployment>] [-DebugSettingDetailLevel <String>]
- [-Location <String>] -Mode <DeploymentMode> [-OnErrorDeploymentName <String>]
- [-OnErrorDeploymentType <OnErrorDeploymentType>] [-ParametersLinkContentVersion <String>]
- -ParametersLinkUri <String> [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>]
- -TemplateLinkUri <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Test-AzDeployment -InputObject <IResourcesIdentity> [-Parameter <IDeployment>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ValidateViaIdentity
+```
+Test-AzDeployment -InputObject <IResourcesIdentity> [-Parameter <IDeployment>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,7 +99,7 @@ By logging information about the request or response, you could potentially expo
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded1, ValidateExpanded, ValidateSubscriptionIdViaHostExpanded1, ValidateSubscriptionIdViaHostExpanded
+Parameter Sets: ValidateExpanded1, ValidateExpanded, ValidateViaIdentityExpanded1, ValidateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -123,12 +124,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: ValidateViaIdentityExpanded1, ValidateViaIdentityExpanded, ValidateViaIdentity1, ValidateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Location
 The location to store the deployment data.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded1, ValidateExpanded, ValidateSubscriptionIdViaHostExpanded1, ValidateSubscriptionIdViaHostExpanded
+Parameter Sets: ValidateExpanded1, ValidateExpanded, ValidateViaIdentityExpanded1, ValidateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -147,7 +163,7 @@ Be careful when using Complete mode as you may unintentionally delete resources.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.DeploymentMode
-Parameter Sets: ValidateExpanded1, ValidateExpanded, ValidateSubscriptionIdViaHostExpanded1, ValidateSubscriptionIdViaHostExpanded
+Parameter Sets: ValidateExpanded1, ValidateExpanded, ValidateViaIdentityExpanded1, ValidateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -162,8 +178,8 @@ The name of the deployment.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: Validate, ValidateExpanded1, ValidateExpanded, Validate1
+Aliases: DeploymentName
 
 Required: True
 Position: Named
@@ -177,7 +193,7 @@ The deployment to be used on error case.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded1, ValidateExpanded, ValidateSubscriptionIdViaHostExpanded1, ValidateSubscriptionIdViaHostExpanded
+Parameter Sets: ValidateExpanded1, ValidateExpanded, ValidateViaIdentityExpanded1, ValidateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -193,7 +209,7 @@ Possible values are LastSuccessful and SpecificDeployment.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.OnErrorDeploymentType
-Parameter Sets: ValidateExpanded1, ValidateExpanded, ValidateSubscriptionIdViaHostExpanded1, ValidateSubscriptionIdViaHostExpanded
+Parameter Sets: ValidateExpanded1, ValidateExpanded, ValidateViaIdentityExpanded1, ValidateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -203,7 +219,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -Parameter
 Deployment operation parameters.
 
 ```yaml
@@ -218,12 +234,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ParametersLinkContentVersion
+### -ParameterLinkContentVersion
 If included, must match the ContentVersion in the template.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded1, ValidateExpanded, ValidateSubscriptionIdViaHostExpanded1, ValidateSubscriptionIdViaHostExpanded
+Parameter Sets: ValidateExpanded1, ValidateExpanded, ValidateViaIdentityExpanded1, ValidateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -233,12 +249,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ParametersLinkUri
+### -ParameterLinkUri
 The URI of the parameters file.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded1, ValidateExpanded, ValidateSubscriptionIdViaHostExpanded1, ValidateSubscriptionIdViaHostExpanded
+Parameter Sets: ValidateExpanded1, ValidateExpanded, ValidateViaIdentityExpanded1, ValidateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -254,7 +270,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded1, Validate1, ValidateSubscriptionIdViaHostExpanded1, ValidateSubscriptionIdViaHost1
+Parameter Sets: ValidateExpanded1, Validate1
 Aliases:
 
 Required: True
@@ -269,7 +285,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded1, ValidateExpanded, Validate1, Validate
+Parameter Sets: Validate, ValidateExpanded1, ValidateExpanded, Validate1
 Aliases:
 
 Required: True
@@ -287,7 +303,7 @@ Use either the templateLink property or the template property, but not both.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeploymentPropertiesTemplate
-Parameter Sets: ValidateExpanded1, ValidateExpanded, ValidateSubscriptionIdViaHostExpanded1, ValidateSubscriptionIdViaHostExpanded
+Parameter Sets: ValidateExpanded1, ValidateExpanded, ValidateViaIdentityExpanded1, ValidateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -302,7 +318,7 @@ If included, must match the ContentVersion in the template.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded1, ValidateExpanded, ValidateSubscriptionIdViaHostExpanded1, ValidateSubscriptionIdViaHostExpanded
+Parameter Sets: ValidateExpanded1, ValidateExpanded, ValidateViaIdentityExpanded1, ValidateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -317,7 +333,7 @@ The URI of the template to deploy.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded1, ValidateExpanded, ValidateSubscriptionIdViaHostExpanded1, ValidateSubscriptionIdViaHostExpanded
+Parameter Sets: ValidateExpanded1, ValidateExpanded, ValidateViaIdentityExpanded1, ValidateViaIdentityExpanded
 Aliases:
 
 Required: True

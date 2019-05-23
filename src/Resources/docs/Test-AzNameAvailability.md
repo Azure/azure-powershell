@@ -14,8 +14,8 @@ Checks if the specified management group name is valid and unique
 
 ### Check (Default)
 ```
-Test-AzNameAvailability [-CheckNameAvailabilityRequest <ICheckNameAvailabilityRequest>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Test-AzNameAvailability [-Request <ICheckNameAvailabilityRequest>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckExpanded
@@ -37,21 +37,6 @@ PS C:\> {{ Add example code here }}
 {{ Add example description here }}
 
 ## PARAMETERS
-
-### -CheckNameAvailabilityRequest
-Management group name availability check parameters.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180301Preview.ICheckNameAvailabilityRequest
-Parameter Sets: Check
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -80,6 +65,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Request
+Management group name availability check parameters.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180301Preview.ICheckNameAvailabilityRequest
+Parameter Sets: Check
+Aliases: CheckNameAvailabilityRequest
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

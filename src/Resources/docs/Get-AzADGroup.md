@@ -27,6 +27,11 @@ Get-AzADGroup -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>]
 Get-AzADGroup -TenantId <String> -DisplayName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzADGroup -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets group information from the directory.
 
@@ -86,6 +91,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ObjectId
 The object ID of the user for which to get group information.
 
@@ -106,7 +126,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, Get, GetByDisplayName
 Aliases:
 
 Required: True

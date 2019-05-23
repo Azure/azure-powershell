@@ -12,16 +12,16 @@ Checks whether a private IP address is available for use.
 
 ## SYNTAX
 
-### CheckSubscriptionIdViaHost (Default)
-```
-Test-AzVirtualNetworkIPAddressAvailability -ResourceGroupName <String> -VirtualNetworkName <String>
- -IPAddress <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Check
+### Check (Default)
 ```
 Test-AzVirtualNetworkIPAddressAvailability -ResourceGroupName <String> -SubscriptionId <String>
  -VirtualNetworkName <String> -IPAddress <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### CheckViaIdentity
+```
+Test-AzVirtualNetworkIPAddressAvailability -InputObject <INetworkIdentity> -IPAddress <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,6 +53,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: CheckViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -IPAddress
 The private IP address to be verified.
 
@@ -73,7 +88,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Check
 Aliases:
 
 Required: True
@@ -104,7 +119,7 @@ The name of the virtual network.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Check
 Aliases:
 
 Required: True
@@ -121,7 +136,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IIPAddressAvailabilityResult
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIPAddressAvailabilityResult
 ## NOTES
 
 ## RELATED LINKS

@@ -12,16 +12,16 @@ Registers a subscription with a resource provider.
 
 ## SYNTAX
 
-### RegisterSubscriptionIdViaHost (Default)
-```
-Register-AzProvider -ResourceProviderNamespace <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### Register
+### Register (Default)
 ```
 Register-AzProvider -ResourceProviderNamespace <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RegisterViaIdentity
+```
+Register-AzProvider -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,12 +53,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: RegisterViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceProviderNamespace
 The namespace of the resource provider to register.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Register
 Aliases:
 
 Required: True

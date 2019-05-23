@@ -24,9 +24,14 @@
       LicenseUri = 'https://aka.ms/azps-license'
       ProjectUri = 'https://github.com/Azure/azure-powershell'
       ReleaseNotes = ''
-      Profiles = 'hybrid-2019'
+      Profiles = 'latest-2019-04-30', 'hybrid-2019-03-01'
     }
   }
 # endregion 
+
+# region exports
+  CmdletsToExport = 'Clear-AzBlobContainerLegalHold', 'Get-AzBlobContainer', 'Get-AzBlobContainerImmutabilityPolicy', 'Get-AzBlobServiceProperty', 'Get-AzManagementPolicy', 'Get-AzSku', 'Get-AzStorageAccount', 'Get-AzStorageAccountKey', 'Get-AzStorageAccountProperty', 'Get-AzStorageAccountSas', 'Get-AzStorageAccountServiceSas', 'Get-AzUsage', 'Invoke-AzExtendBlobContainerImmutabilityPolicy', 'Invoke-AzLeaseBlobContainer', 'Lock-AzBlobContainerImmutabilityPolicy', 'New-AzBlobContainer', 'New-AzBlobContainerImmutabilityPolicy', 'New-AzManagementPolicy', 'New-AzStorageAccount', 'New-AzStorageAccountKey', 'Remove-AzBlobContainer', 'Remove-AzBlobContainerImmutabilityPolicy', 'Remove-AzManagementPolicy', 'Remove-AzStorageAccount', 'Revoke-AzStorageAccountUserDelegationKey', 'Set-AzBlobContainerImmutabilityPolicy', 'Set-AzBlobContainerLegalHold', 'Set-AzBlobServiceProperty', 'Set-AzManagementPolicy', 'Set-AzStorageAccount', 'Test-AzStorageAccountNameAvailability', 'Update-AzBlobContainer', 'Update-AzStorageAccount', '*'
+  AliasesToExport = '*'
+# endregion
 
 }

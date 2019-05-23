@@ -12,28 +12,22 @@ Gets the specified subnet by virtual network and resource group.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
+### List (Default)
 ```
-Get-AzSubnet -ResourceGroupName <String> -VirtualNetworkName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost
-```
-Get-AzSubnet -Name <String> -ResourceGroupName <String> -VirtualNetworkName <String> [-Expand <String>]
+Get-AzSubnet -ResourceGroupName <String> -SubscriptionId <String[]> -VirtualNetworkName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzSubnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VirtualNetworkName <String>
+Get-AzSubnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> -VirtualNetworkName <String>
  [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### GetViaIdentity
 ```
-Get-AzSubnet -ResourceGroupName <String> -SubscriptionId <String> -VirtualNetworkName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSubnet -InputObject <INetworkIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,7 +64,7 @@ Expands referenced resources.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get, GetViaIdentity
 Aliases:
 
 Required: False
@@ -80,12 +74,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the subnet.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get
 Aliases: SubnetName
 
 Required: True
@@ -100,7 +109,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -115,8 +124,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List
+Type: System.String[]
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -131,7 +140,7 @@ The name of the virtual network.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, Get
 Aliases:
 
 Required: True

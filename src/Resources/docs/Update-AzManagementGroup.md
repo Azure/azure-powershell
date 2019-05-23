@@ -25,6 +25,19 @@ Update-AzManagementGroup -GroupId <String> [-CacheControl <String>] [-DisplayNam
  [-ParentId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityExpanded
+```
+Update-AzManagementGroup -InputObject <IResourcesIdentity> [-CacheControl <String>] [-DisplayName <String>]
+ [-ParentId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Update-AzManagementGroup -InputObject <IResourcesIdentity> [-CacheControl <String>]
+ [-PatchGroupRequest <IPatchManagementGroupRequest>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Update a management group.
 
@@ -74,7 +87,7 @@ The friendly name of the management group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -89,7 +102,7 @@ Management Group ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -99,13 +112,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ParentId
 (Optional) The fully qualified ID for the parent management group.
 For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -120,7 +148,7 @@ Management group patch parameters.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180301Preview.IPatchManagementGroupRequest
-Parameter Sets: Update
+Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
 Required: False

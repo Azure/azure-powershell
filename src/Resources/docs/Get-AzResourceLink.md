@@ -12,19 +12,19 @@ Gets a resource link with the specified ID.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
-```
-Get-AzResourceLink [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
+### Get (Default)
 ```
 Get-AzResourceLink -LinkId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzResourceLink -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List
 ```
-Get-AzResourceLink -SubscriptionId <String> [-Filter <String>] [-DefaultProfile <PSObject>]
+Get-AzResourceLink -SubscriptionId <String[]> [-Filter <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -69,13 +69,28 @@ For example, $filter=targetId eq {value}
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost, List
+Parameter Sets: List
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -115,7 +130,7 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: List
 Aliases:
 

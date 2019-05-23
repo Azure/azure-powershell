@@ -12,32 +12,31 @@ Gets the next hop from the specified VM.
 
 ## SYNTAX
 
-### GetSubscriptionIdViaHost (Default)
+### Get (Default)
 ```
-Get-AzNetworkWatcherNextHop -NetworkWatcherName <String> -ResourceGroupName <String>
+Get-AzNetworkWatcherNextHop -NetworkWatcherName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  [-Parameter <INextHopParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### GetExpanded
 ```
-Get-AzNetworkWatcherNextHop -NetworkWatcherName <String> -ResourceGroupName <String> -SubscriptionId <String>
+Get-AzNetworkWatcherNextHop -NetworkWatcherName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  -DestinationIPAddress <String> -SourceIPAddress <String> [-TargetNicResourceId <String>]
  -TargetResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Get
+### GetViaIdentityExpanded
 ```
-Get-AzNetworkWatcherNextHop -NetworkWatcherName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <INextHopParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzNetworkWatcherNextHop -InputObject <INetworkIdentity> -DestinationIPAddress <String>
+ -SourceIPAddress <String> [-TargetNicResourceId <String>] -TargetResourceId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### GetSubscriptionIdViaHostExpanded
+### GetViaIdentity
 ```
-Get-AzNetworkWatcherNextHop -NetworkWatcherName <String> -ResourceGroupName <String>
- -DestinationIPAddress <String> -SourceIPAddress <String> [-TargetNicResourceId <String>]
- -TargetResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzNetworkWatcherNextHop -InputObject <INetworkIdentity> [-Parameter <INextHopParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,7 +88,7 @@ The destination IP address.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetSubscriptionIdViaHostExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -99,12 +98,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GetViaIdentityExpanded, GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -NetworkWatcherName
 The name of the network watcher.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: True
@@ -119,7 +133,7 @@ Parameters that define the source and destination endpoint.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INextHopParameters
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get, GetViaIdentity
 Aliases:
 
 Required: False
@@ -134,7 +148,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: True
@@ -149,7 +163,7 @@ The source IP address.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetSubscriptionIdViaHostExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -164,8 +178,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: GetExpanded, Get
+Type: System.String[]
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: True
@@ -182,7 +196,7 @@ Otherwise optional).
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetSubscriptionIdViaHostExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -197,7 +211,7 @@ The resource identifier of the target resource against which the action is to be
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetSubscriptionIdViaHostExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: True

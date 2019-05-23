@@ -12,25 +12,20 @@ Gets a resource group.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
+### List (Default)
 ```
-Get-AzResourceGroup [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost
-```
-Get-AzResourceGroup -Name <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResourceGroup -SubscriptionId <String[]> [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzResourceGroup -Name <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResourceGroup -Name <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### GetViaIdentity
 ```
-Get-AzResourceGroup -SubscriptionId <String> [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzResourceGroup -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,7 +63,7 @@ For example, to filter for a tag name and value, use $filter=tagName eq 'tag1' a
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSubscriptionIdViaHost, List
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -78,14 +73,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the resource group to get.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
-Aliases:
+Parameter Sets: Get
+Aliases: ResourceGroupName
 
 Required: True
 Position: Named
@@ -98,8 +108,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List
+Type: System.String[]
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -115,7 +125,7 @@ If null is passed, returns all resource groups.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: ListSubscriptionIdViaHost, List
+Parameter Sets: List
 Aliases:
 
 Required: False

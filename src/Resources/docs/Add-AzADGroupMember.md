@@ -14,7 +14,7 @@ Add a member to a group.
 
 ### Add (Default)
 ```
-Add-AzADGroupMember -GroupObjectId <String> -TenantId <String> [-Parameters <IGroupAddMemberParameters>]
+Add-AzADGroupMember -GroupObjectId <String> -TenantId <String> [-Parameter <IGroupAddMemberParameters>]
  [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -22,6 +22,18 @@ Add-AzADGroupMember -GroupObjectId <String> -TenantId <String> [-Parameters <IGr
 ```
 Add-AzADGroupMember -GroupObjectId <String> -TenantId <String> [-PassThru] [-Properties <Hashtable>]
  -Url <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AddViaIdentityExpanded
+```
+Add-AzADGroupMember -InputObject <IResourcesIdentity> [-PassThru] [-Properties <Hashtable>] -Url <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AddViaIdentity
+```
+Add-AzADGroupMember -InputObject <IResourcesIdentity> [-Parameter <IGroupAddMemberParameters>] [-PassThru]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +70,7 @@ The object ID of the group to which to add the member.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Add, AddExpanded
 Aliases:
 
 Required: True
@@ -68,12 +80,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: AddViaIdentityExpanded, AddViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Parameter
 Request parameters for adding a member to a group.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IGroupAddMemberParameters
-Parameter Sets: Add
+Parameter Sets: Add, AddViaIdentity
 Aliases:
 
 Required: False
@@ -103,7 +130,7 @@ Additional Parameters
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: AddExpanded
+Parameter Sets: AddExpanded, AddViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -118,7 +145,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Add, AddExpanded
 Aliases:
 
 Required: True
@@ -133,7 +160,7 @@ A member object URL, such as "https://graph.windows.net/0b1f9851-1bf0-433f-aec3-
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded
+Parameter Sets: AddExpanded, AddViaIdentityExpanded
 Aliases:
 
 Required: True

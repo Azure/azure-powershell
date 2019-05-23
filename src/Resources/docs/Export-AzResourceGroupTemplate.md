@@ -12,27 +12,27 @@ Captures the specified resource group as a template.
 
 ## SYNTAX
 
-### ExportSubscriptionIdViaHost (Default)
+### Export (Default)
 ```
-Export-AzResourceGroupTemplate -ResourceGroupName <String> [-Parameters <IExportTemplateRequest>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Export-AzResourceGroupTemplate -ResourceGroupName <String> -SubscriptionId <String>
+ [-Parameter <IExportTemplateRequest>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ExportExpanded
 ```
-Export-AzResourceGroupTemplate -ResourceGroupName <String> -SubscriptionId <String> [-Options <String>]
- [-Resources <String[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Export-AzResourceGroupTemplate -ResourceGroupName <String> -SubscriptionId <String> [-Option <String>]
+ [-Resource <String[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Export
+### ExportViaIdentityExpanded
 ```
-Export-AzResourceGroupTemplate -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameters <IExportTemplateRequest>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Export-AzResourceGroupTemplate -InputObject <IResourcesIdentity> [-Option <String>] [-Resource <String[]>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ExportSubscriptionIdViaHostExpanded
+### ExportViaIdentity
 ```
-Export-AzResourceGroupTemplate -ResourceGroupName <String> [-Options <String>] [-Resources <String[]>]
+Export-AzResourceGroupTemplate -InputObject <IResourcesIdentity> [-Parameter <IExportTemplateRequest>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -65,13 +65,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Options
-The export template options.
-Supported values include 'IncludeParameterDefaultValue', 'IncludeComments' or 'IncludeParameterDefaultValue, IncludeComments
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: ExportViaIdentityExpanded, ExportViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Option
+The export template options. Supported values include 'IncludeParameterDefaultValue', 'IncludeComments' or 'IncludeParameterDefaultValue, IncludeComments
 
 ```yaml
 Type: System.String
-Parameter Sets: ExportExpanded, ExportSubscriptionIdViaHostExpanded
+Parameter Sets: ExportExpanded, ExportViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -81,12 +95,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
+### -Parameter
 Export resource group template request parameters.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IExportTemplateRequest
-Parameter Sets: ExportSubscriptionIdViaHost, Export
+Parameter Sets: Export, ExportViaIdentity
 Aliases:
 
 Required: False
@@ -96,32 +110,30 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group to export as a template.
+### -Resource
+The IDs of the resources. The only supported string currently is '*' (all resources). Future updates will support exporting specific resources.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: ExportExpanded, ExportViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Resources
-The IDs of the resources.
-The only supported string currently is '*' (all resources).
-Future updates will support exporting specific resources.
+### -ResourceGroupName
+The name of the resource group to export as a template.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: ExportExpanded, ExportSubscriptionIdViaHostExpanded
+Type: System.String
+Parameter Sets: Export, ExportExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -133,7 +145,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ExportExpanded, Export
+Parameter Sets: Export, ExportExpanded
 Aliases:
 
 Required: True

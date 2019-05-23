@@ -12,9 +12,9 @@ Creates a VirtualHub resource if it doesn't exist else updates the existing Virt
 
 ## SYNTAX
 
-### UpdateSubscriptionIdViaHost (Default)
+### Update (Default)
 ```
-Set-AzVirtualHub -Name <String> -ResourceGroupName <String> [-Parameter <IVirtualHub>]
+Set-AzVirtualHub -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Parameter <IVirtualHub>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,19 +27,18 @@ Set-AzVirtualHub -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Update
+### UpdateViaIdentityExpanded
 ```
-Set-AzVirtualHub -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Parameter <IVirtualHub>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzVirtualHub -InputObject <INetworkIdentity> [-AddressPrefix <String>] [-ExpressRouteGatewayId <String>]
+ [-Id <String>] [-Location <String>] [-P2SVpnGatewayId <String>] [-RouteTableRoute <IVirtualHubRoute[]>]
+ [-Tag <IResourceTags>] [-VirtualNetworkConnection <IHubVirtualNetworkConnection[]>] [-VirtualWanId <String>]
+ [-VpnGatewayId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateSubscriptionIdViaHostExpanded
+### UpdateViaIdentity
 ```
-Set-AzVirtualHub -Name <String> -ResourceGroupName <String> [-AddressPrefix <String>]
- [-ExpressRouteGatewayId <String>] [-Id <String>] [-Location <String>] [-P2SVpnGatewayId <String>]
- [-RouteTableRoute <IVirtualHubRoute[]>] [-Tag <IResourceTags>]
- [-VirtualNetworkConnection <IHubVirtualNetworkConnection[]>] [-VirtualWanId <String>] [-VpnGatewayId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzVirtualHub -InputObject <INetworkIdentity> [-Parameter <IVirtualHub>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,7 +60,7 @@ Address-prefix for this VirtualHub.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -106,7 +105,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -121,7 +120,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -131,12 +130,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Location
 Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -151,7 +165,7 @@ The name of the VirtualHub.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases: VirtualHubName
 
 Required: True
@@ -166,7 +180,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -181,7 +195,7 @@ VirtualHub Resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualHub
-Parameter Sets: UpdateSubscriptionIdViaHost, Update
+Parameter Sets: Update, UpdateViaIdentity
 Aliases: VirtualHubParameter
 
 Required: False
@@ -196,7 +210,7 @@ The resource group name of the VirtualHub.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -211,7 +225,7 @@ List of all routes.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualHubRoute[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -227,7 +241,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -241,8 +255,8 @@ Accept wildcard characters: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IResourceTags
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -257,7 +271,7 @@ List of all vnet connections with this VirtualHub.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IHubVirtualNetworkConnection[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -272,7 +286,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -287,7 +301,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

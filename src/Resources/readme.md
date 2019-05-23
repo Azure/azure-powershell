@@ -71,19 +71,19 @@ directive:
   - where:
       verb: Get
       subject: Application
-      variant: ^Get$|^Get1$|^GetSubscriptionIdViaHost$|^List$|^List1$|^ListSubscriptionIdViaHost$|^ListSubscriptionIdViaHost1$
+      variant: ^Get$|^Get1$|^GetSubscriptionIdViaHost$|^GetViaIdentity$|^GetViaIdentity1$|^List$|^List1$|^ListSubscriptionIdViaHost$|^ListSubscriptionIdViaHost1$
     set:
       subject: ManagedApplication
   - where:
       verb: New
       subject: Application
-      variant: ^Create$|^Create1$|^CreateExpanded$|^CreateExpanded1$|^CreateSubscriptionIdViaHost$|^CreateSubscriptionIdViaHostExpanded$
+      variant: ^Create$|^Create1$|^CreateViaIdentity$|^CreateViaIdentity1$|^CreateExpanded$|^CreateExpanded1$|^CreateViaIdentityExpanded$|^CreateViaIdentityExpanded1$|^CreateSubscriptionIdViaHost$|^CreateSubscriptionIdViaHostExpanded$
     set:
       subject: ManagedApplication
   - where:
       verb: Remove
       subject: Application
-      variant: ^Delete$|^Delete1$|^DeleteSubscriptionIdViaHost$
+      variant: ^Delete$|^Delete1$|^DeleteViaIdentity$|^DeleteViaIdentity1$|^DeleteSubscriptionIdViaHost$
     set:
       subject: ManagedApplication
   - where:
@@ -100,19 +100,19 @@ directive:
   - where:
       verb: Get
       subject: Application
-      variant: ^Get2$|^List2$
+      variant: ^Get2$|^GetViaIdentity2$|^List2$
     set:
       subject: ADApplication
   - where:
       verb: New
       subject: Application
-      variant: ^Create2$|^CreateExpanded2$
+      variant: ^Create2$|^CreateViaIdentity2$|^CreateExpanded2$|^CreateViaIdentityExpanded2$
     set:
       subject: ADApplication
   - where:
       verb: Remove
       subject: Application
-      variant: ^Delete2$
+      variant: ^Delete2$|^DeleteViaIdentity2$
     set:
       subject: ADApplication
   - where:
@@ -154,16 +154,19 @@ directive:
       parameter-name: GroupName
     set:
       parameter-name: ResourceGroupName
+    clear-alias: true
   - where:
       subject: Resource
       parameter-name: Id
     set:
       parameter-name: ResourceId
+    clear-alias: true
   - where:
       subject: Resource
       parameter-name: Type
     set:
       parameter-name: ResourceType
+    clear-alias: true
   - where:
       subject: Appliance*
     remove: true
@@ -171,5 +174,9 @@ directive:
       verb: Get
       subject: Subscription
     remove: true
-
+  - where:
+      verb: Test
+      subject: CheckNameAvailability
+    set:
+      subject: NameAvailability
 ```

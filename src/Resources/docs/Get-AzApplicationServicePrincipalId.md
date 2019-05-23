@@ -12,8 +12,15 @@ Gets an object id for a given application id from the current tenant.
 
 ## SYNTAX
 
+### Get (Default)
 ```
 Get-AzApplicationServicePrincipalId -ApplicationId <String> -TenantId <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzApplicationServicePrincipalId -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -36,7 +43,7 @@ The application ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -61,12 +68,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -TenantId
 The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: True

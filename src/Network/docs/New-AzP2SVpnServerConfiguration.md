@@ -1,6 +1,6 @@
 ---
 external help file: Az.Network-help.xml
-Module Name: Az.Network
+Module Name:
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azp2svpngatewayvpnprofile
 schema: 2.0.0
 ---
@@ -12,9 +12,9 @@ Generates VPN profile for P2S client of the P2SVpnGateway in the specified resou
 
 ## SYNTAX
 
-### GenerateSubscriptionIdViaHost (Default)
+### Generate (Default)
 ```
-New-AzP2SVpnGatewayVpnProfile -GatewayName <String> -ResourceGroupName <String>
+New-AzP2SVpnGatewayVpnProfile -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Parameter <IP2SVpnProfileParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -26,18 +26,16 @@ New-AzP2SVpnGatewayVpnProfile -GatewayName <String> -ResourceGroupName <String> 
  [<CommonParameters>]
 ```
 
-### Generate
+### GenerateViaIdentityExpanded
 ```
-New-AzP2SVpnGatewayVpnProfile -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IP2SVpnProfileParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzP2SVpnGatewayVpnProfile -InputObject <INetworkIdentity> [-AuthenticationMethod <AuthenticationMethod>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### GenerateSubscriptionIdViaHostExpanded
+### GenerateViaIdentity
 ```
-New-AzP2SVpnGatewayVpnProfile -GatewayName <String> -ResourceGroupName <String>
- [-AuthenticationMethod <AuthenticationMethod>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzP2SVpnGatewayVpnProfile -InputObject <INetworkIdentity> [-Parameter <IP2SVpnProfileParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,7 +72,7 @@ VPN client authentication method.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.AuthenticationMethod
-Parameter Sets: GenerateExpanded, GenerateSubscriptionIdViaHostExpanded
+Parameter Sets: GenerateExpanded, GenerateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -104,7 +102,7 @@ The name of the P2SVpnGateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Generate, GenerateExpanded
 Aliases:
 
 Required: True
@@ -114,12 +112,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GenerateViaIdentityExpanded, GenerateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Parameter
 Vpn Client Parameters for package generation
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnProfileParameters
-Parameter Sets: GenerateSubscriptionIdViaHost, Generate
+Parameter Sets: Generate, GenerateViaIdentity
 Aliases:
 
 Required: False
@@ -134,7 +147,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Generate, GenerateExpanded
 Aliases:
 
 Required: True
@@ -150,7 +163,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: GenerateExpanded, Generate
+Parameter Sets: Generate, GenerateExpanded
 Aliases:
 
 Required: True

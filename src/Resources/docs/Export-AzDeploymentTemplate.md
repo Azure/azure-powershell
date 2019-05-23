@@ -12,10 +12,10 @@ Exports the template used for specified deployment.
 
 ## SYNTAX
 
-### ExportSubscriptionIdViaHost (Default)
+### Export (Default)
 ```
-Export-AzDeploymentTemplate -DeploymentName <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Export-AzDeploymentTemplate -DeploymentName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Export1
@@ -24,16 +24,16 @@ Export-AzDeploymentTemplate -DeploymentName <String> -SubscriptionId <String> -R
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Export
+### ExportViaIdentity1
 ```
-Export-AzDeploymentTemplate -DeploymentName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Export-AzDeploymentTemplate -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### ExportSubscriptionIdViaHost1
+### ExportViaIdentity
 ```
-Export-AzDeploymentTemplate -DeploymentName <String> -ResourceGroupName <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Export-AzDeploymentTemplate -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,7 +70,7 @@ The name of the deployment from which to get the template.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Export, Export1
 Aliases:
 
 Required: True
@@ -80,13 +80,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+Parameter Sets: ExportViaIdentity1, ExportViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Export1, ExportSubscriptionIdViaHost1
+Parameter Sets: Export1
 Aliases:
 
 Required: True
@@ -101,7 +116,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Export1, Export
+Parameter Sets: Export, Export1
 Aliases:
 
 Required: True

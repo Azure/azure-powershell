@@ -12,16 +12,16 @@ Deletes a VirtualWAN.
 
 ## SYNTAX
 
-### DeleteSubscriptionIdViaHost (Default)
-```
-Remove-AzVirtualWan -Name <String> -ResourceGroupName <String> [-PassThru] [-DefaultProfile <PSObject>]
- [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Delete
+### Delete (Default)
 ```
 Remove-AzVirtualWan -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzVirtualWan -InputObject <INetworkIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,12 +68,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the VirtualWAN being deleted.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases: VirtualWanName
 
 Required: True
@@ -103,7 +118,7 @@ The resource group name of the VirtualWan.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: True
