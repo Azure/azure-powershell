@@ -259,16 +259,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                                 var actualPrefixBigInt = prefix.ActualPrefixBigInt;
                                 if (prefix.Length == 4)
                                 {
-                                    return prefix.StartOfPrefixBigInt + 1 == actualPrefixBigInt
+                                    return prefix.StartOfPrefixBigInt == actualPrefixBigInt
                                                ? routePrefix
                                                : throw new PSArgumentException(
                                                      string.Format(
                                                          Resources.Error_InvalidPrefixRange,
                                                          routePrefix,
-                                                         (prefix.StartOfPrefixBigInt + 1).ToIpAddress(
-                                                             AddressFamily.InterNetwork),
-                                                         (prefix.EndOfPrefixBigInt).ToIpAddress(
-                                                             AddressFamily.InterNetwork)));
+                                                         (prefix.StartOfPrefixBigInt).ToIpAddress(
+                                                             AddressFamily.InterNetwork) + "/30"));
                                 }
                                 else if (prefix.Length == 2)
                                 {
@@ -465,6 +463,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             if (connection.BgpSession == null)
                 throw new PSArgumentNullException(string.Format(Resources.Error_NullSession));
             return this.ValidBandwidth(connection.BandwidthInMbps);
+        }
+
+        /// <summary>
+        /// The get error code and message from arm or erm.
+        /// </summary>
+        /// <param name="ex">
+        /// The ex.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ErrorResponse"/>.
+        /// </returns>
+        public ErrorResponse GetErrorCodeAndMessageFromArmOrErm(ErrorResponseException ex)
+        {
+            ErrorResponse error = null;
+            try
+            {
+                var armError = JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(ex.Response.Content);
+                if (armError.Values.FirstOrDefault()?.Code != null)
+                {
+                    error = new ErrorResponse(code: armError.Values.FirstOrDefault()?.Code, message: armError.Values.FirstOrDefault()?.Message);
+                }
+            }
+            catch
+            {
+                var ermError = JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
+                if (ermError.Code != null)
+                {
+                    error = new ErrorResponse(code: ermError.Code, message: ermError.Message);
+                }
+            }
+            return error;
         }
     }
 }
