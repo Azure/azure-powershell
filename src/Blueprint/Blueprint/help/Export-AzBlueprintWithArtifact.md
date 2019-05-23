@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Blueprint.dll-Help.xml
 Module Name: Az.Blueprint
-online version: https://docs.microsoft.com/en-us/powershell/module/az.blueprint/export-azblueprintwithartifacts
+online version: https://docs.microsoft.com/en-us/powershell/module/az.blueprint/export-azblueprintwithartifact
 schema: 2.0.0
 ---
 
-# Export-AzBlueprintWithArtifacts
+# Export-AzBlueprintWithArtifact
 
 ## SYNOPSIS
 Export specified blueprint to the specified output location as a JSON file. 
@@ -13,7 +13,7 @@ Export specified blueprint to the specified output location as a JSON file.
 ## SYNTAX
 
 ```
-Export-AzBlueprintWithArtifacts -Blueprint <PSBlueprintBase> -OutputPath <String> [-Version <String>] [-Force]
+Export-AzBlueprintWithArtifact -Blueprint <PSBlueprintBase> -OutputPath <String> [-Version <String>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Export a blueprint with it's artifact and save to disk.
 
 ### Example 1
 ```powershell
-PS C:\> Export-AzBlueprintWithArtifacts -Blueprint $bp -Version 1.0 -OutputPath C:\ExportedBlueprint
+PS C:\> Export-AzBlueprintWithArtifact -Blueprint $bp -Version 1.0 -OutputPath C:\ExportedBlueprint
 ```
 
 Export a blueprint with it's artifact and save to disk.

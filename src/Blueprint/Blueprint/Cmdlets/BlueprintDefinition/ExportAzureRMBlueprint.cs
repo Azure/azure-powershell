@@ -20,7 +20,7 @@ using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
-    [Cmdlet("Export", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintWithArtifacts", DefaultParameterSetName =
+    [Cmdlet("Export", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintWithArtifact", SupportsShouldProcess = true, DefaultParameterSetName =
          ParameterSetNames.ExportBlueprintParameterSet), OutputType(typeof(string))]
     public class ExportAzureRmBlueprint : BlueprintDefinitionCmdletBase
     {

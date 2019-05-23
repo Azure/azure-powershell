@@ -23,11 +23,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Blueprint.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
 using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintArtifact", DefaultParameterSetName = ParameterSetNames.UpdateTemplateArtifact), OutputType(typeof(Artifact))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintArtifact", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.UpdateTemplateArtifact), OutputType(typeof(Artifact))]
     public class SetAzureRmBlueprintArtifact : BlueprintArtifactsCmdletBase
     {
         #region Parameters
@@ -105,101 +106,89 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             try
             {
                 var scope = Blueprint.Scope;
+
                 ThrowIfArtifactNotExist(scope, Blueprint.Name, Name);
 
                 switch (ParameterSetName)
                 {
                     case ParameterSetNames.UpdateArtifactByInputFile:
-                        var artifact = JsonConvert.DeserializeObject<Artifact>(File.ReadAllText(ResolveUserPath(ArtifactFile)),
-                            DefaultJsonSettings.DeserializerSettings);
+                        if (ShouldProcess(Utils.GetDefinitionLocationId(scope), string.Format(Resources.UpdateArtifactShouldProcessString, Name)))
+                        {
+                            var artifact = JsonConvert.DeserializeObject<Artifact>(
+                                File.ReadAllText(ResolveUserPath(ArtifactFile)),
+                                DefaultJsonSettings.DeserializerSettings);
 
+                            WriteObject(BlueprintClient.CreateArtifact(scope, Blueprint.Name, Name, artifact));
+                        }
 
-                        WriteObject(BlueprintClient.CreateArtifact(scope, Blueprint.Name, Name, artifact));
                         break;
                     case ParameterSetNames.UpdateRoleAssignmentArtifact:
-                        if (!Type.Equals(PSArtifactKind.RoleAssignmentArtifact)) throw new PSInvalidOperationException("Artifact type mismatch."); ;
-
-                        var roleAssignmentArtifact = new RoleAssignmentArtifact
+                        if (ShouldProcess(Utils.GetDefinitionLocationId(scope), string.Format(Resources.UpdateArtifactShouldProcessString, Name)))
                         {
-                            DisplayName = null,
-                            Description = Description,
-                            RoleDefinitionId = RoleDefinitionId,
-                            PrincipalIds = RoleDefinitionPrincipalId,
-                            ResourceGroup = ResourceGroupName,
-                            DependsOn = DependsOn
-                        };
+                            // Check if chosen -Type parameter matches with parameters set
+                            if (!Type.Equals(PSArtifactKind.RoleAssignmentArtifact))
+                                throw new PSInvalidOperationException("Artifact type mismatch.");
 
-                        WriteObject(BlueprintClient.CreateArtifact(scope, Blueprint.Name, Name, roleAssignmentArtifact));
+                            var roleAssignmentArtifact = new RoleAssignmentArtifact
+                            {
+                                DisplayName = Name,
+                                Description = Description,
+                                RoleDefinitionId = RoleDefinitionId,
+                                PrincipalIds = RoleDefinitionPrincipalId,
+                                ResourceGroup = ResourceGroupName,
+                                DependsOn = DependsOn
+                            };
+
+                            WriteObject(BlueprintClient.CreateArtifact(scope, Blueprint.Name, Name,
+                                roleAssignmentArtifact));
+                        }
 
                         break;
                     case ParameterSetNames.UpdatePolicyAssignmentArtifact:
-                        if (!Type.Equals(PSArtifactKind.PolicyAssignmentArtifact)) throw new PSInvalidOperationException("Artifact type mismatch.");
-
-                        Dictionary<string, ParameterValueBase> policyAssignmentParameters = new Dictionary<string, ParameterValueBase>();
-
-                        foreach (var key in PolicyDefinitionParameter.Keys)
+                        if (ShouldProcess(Utils.GetDefinitionLocationId(scope), string.Format(Resources.UpdateArtifactShouldProcessString, Name)))
                         {
-                            var value = new ParameterValue(PolicyDefinitionParameter[key], null);
-                            policyAssignmentParameters.Add(key.ToString(), value);
+                            if (!Type.Equals(PSArtifactKind.PolicyAssignmentArtifact))
+                                throw new PSInvalidOperationException("Artifact type mismatch.");
+
+                            var policyAssignmentParameters = GetPolicyAssignmentParameters(PolicyDefinitionParameter);
+
+                            var policyArtifact = new PolicyAssignmentArtifact
+                            {
+                                DisplayName = Name,
+                                Description = Description,
+                                PolicyDefinitionId = PolicyDefinitionId,
+                                Parameters = policyAssignmentParameters,
+                                DependsOn = DependsOn,
+                                ResourceGroup = ResourceGroupName
+                            };
+
+                            WriteObject(BlueprintClient.CreateArtifact(scope, Blueprint.Name, Name, policyArtifact));
                         }
-
-                        var policyArtifact = new PolicyAssignmentArtifact
-                        {
-                            DisplayName = Name,
-                            Description = Description,
-                            PolicyDefinitionId = PolicyDefinitionId,
-                            Parameters = policyAssignmentParameters,
-                            DependsOn = DependsOn,
-                            ResourceGroup = ResourceGroupName
-                        };
-
-                        WriteObject(BlueprintClient.CreateArtifact(scope, Blueprint.Name, Name, policyArtifact));
 
                         break;
                     case ParameterSetNames.UpdateTemplateArtifact:
-                        if (!Type.Equals(PSArtifactKind.TemplateArtifact)) throw new PSInvalidOperationException("Artifact type mismatch."); ;
-
-                        var templatePath = ResolveUserPath(TemplateFile);
-                        var parameterFilePath = ResolveUserPath(TemplateParameterFile);
-
-                        if (!new FileInfo(templatePath).Exists)
+                        if (ShouldProcess(Utils.GetDefinitionLocationId(scope), string.Format(Resources.UpdateArtifactShouldProcessString, Name)))
                         {
-                            throw new FileNotFoundException(string.Format("Add here the path"));
+                            if (!Type.Equals(PSArtifactKind.TemplateArtifact))
+                                throw new PSInvalidOperationException("Artifact type mismatch.");
+
+                            var parameters =
+                                GetTemplateParametersFromFile(ValidateAndReturnFilePath(TemplateParameterFile));
+
+                            var templateArtifact = new TemplateArtifact
+                            {
+                                DisplayName = Name,
+                                Description = Description,
+                                ResourceGroup = ResourceGroupName,
+                                Parameters = parameters,
+                                Template = JObject.Parse(File.ReadAllText(ValidateAndReturnFilePath(TemplateFile))),
+                                DependsOn = DependsOn
+                            };
+
+                            WriteObject(BlueprintClientWithVersion.CreateArtifact(scope, Blueprint.Name, Name,
+                                templateArtifact));
                         }
 
-                        Dictionary<string, ParameterValueBase> parameters = new Dictionary<string, ParameterValueBase>();
-                        if (this.IsParameterBound(c => c.TemplateParameterFile))
-                        {
-                            if (parameterFilePath == null || !new FileInfo(parameterFilePath).Exists)
-                            {
-                                throw new FileNotFoundException(string.Format("Add here the path"));
-                            }
-
-                            // Missing schema here.
-                            JObject parsedJson = JObject.Parse(File.ReadAllText(parameterFilePath));
-                            //To-Do: This could be done better by creating a type and deserializing the JSON file through converters. 
-                            var parametersHashtable = parsedJson["parameters"].ToObject<Dictionary<string, JObject>>();
-
-                            foreach (var key in parametersHashtable.Keys)
-                            {
-                                var kvp = parametersHashtable[key];
-                                var value = kvp["value"].ToString();
-                                var paramValue = new ParameterValue(value);
-                                parameters.Add(key, paramValue);
-                            }
-                        }
-
-                        var templateArtifact = new TemplateArtifact
-                        {
-                            DisplayName = Name,
-                            Description = Description,
-                            ResourceGroup = ResourceGroupName,
-                            Parameters = parameters,
-                            Template = JObject.Parse(File.ReadAllText(templatePath)),
-                            DependsOn = DependsOn
-                        };
-
-                        WriteObject(BlueprintClientWithVersion.CreateArtifact(scope, Blueprint.Name, Name, templateArtifact));
                         break;
                     default:
                         throw new PSInvalidOperationException();

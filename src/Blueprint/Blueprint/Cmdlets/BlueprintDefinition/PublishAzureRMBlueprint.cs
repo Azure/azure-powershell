@@ -16,11 +16,13 @@ using Microsoft.Azure.Commands.Blueprint.Models;
 using System;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
+using Microsoft.Azure.Commands.Blueprint.Common;
+using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
 using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
-    [Cmdlet("Publish", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Blueprint", DefaultParameterSetName = ParameterSetNames.PublishBlueprint), OutputType(typeof(PSPublishedBlueprint))]
+    [Cmdlet("Publish", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Blueprint", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.PublishBlueprint), OutputType(typeof(PSPublishedBlueprint))]
     public class PublishAzureRmBlueprint : BlueprintDefinitionCmdletBase
     {
         #region Parameters
@@ -42,13 +44,16 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         #region Cmdlet Overrides
         public override void ExecuteCmdlet()
         {
-            try
+            if (ShouldProcess(Utils.GetDefinitionLocationId(Blueprint.Scope), string.Format(Resources.PublishBlueprintShouldProcessString, Blueprint.Name)))
             {
-                WriteObject(BlueprintClient.CreatePublishedBlueprint(Blueprint.Scope, Blueprint.Name, Version));
-            }
-            catch (Exception ex)
-            {
-                WriteExceptionError(ex);
+                try
+                {
+                    WriteObject(BlueprintClient.CreatePublishedBlueprint(Blueprint.Scope, Blueprint.Name, Version));
+                }
+                catch (Exception ex)
+                {
+                    WriteExceptionError(ex);
+                }
             }
         }
         #endregion

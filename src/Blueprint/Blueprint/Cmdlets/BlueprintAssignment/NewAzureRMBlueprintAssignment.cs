@@ -22,7 +22,6 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Management.Automation;
-using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterSetNames;
 
