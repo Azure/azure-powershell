@@ -1004,6 +1004,12 @@ namespace Microsoft.Azure.Commands.Network
 
                 cfg.CreateMap<CNM.PSPrivateLinkServiceConnectionState, MNM.PrivateLinkServiceConnectionState>();
                 cfg.CreateMap<MNM.PrivateLinkServiceConnectionState, CNM.PSPrivateLinkServiceConnectionState>();
+
+                cfg.CreateMap<CNM.PSPrivateLinkService, MNM.PrivateLinkService>();
+                cfg.CreateMap<MNM.PrivateLinkService, CNM.PSPrivateLinkService>();
+
+                cfg.CreateMap<CNM.PSPrivateEndpointConnection, MNM.PrivateEndpointConnection>();
+                cfg.CreateMap<MNM.PrivateEndpointConnection, CNM.PSPrivateEndpointConnection>();
             });
 
             _mapper = config.CreateMapper();
