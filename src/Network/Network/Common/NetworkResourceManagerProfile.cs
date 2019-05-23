@@ -995,6 +995,15 @@ namespace Microsoft.Azure.Commands.Network
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.VirtualNetworkTap, CNM.PSVirtualNetworkTap>();
+
+                cfg.CreateMap<CNM.PSPrivateEndpoint, MNM.PrivateEndpoint>();
+                cfg.CreateMap<MNM.PrivateEndpoint, CNM.PSPrivateEndpoint>();
+
+                cfg.CreateMap<CNM.PSPrivateLinkServiceConnection, MNM.PrivateLinkServiceConnection>();
+                cfg.CreateMap<MNM.PrivateLinkServiceConnection, CNM.PSPrivateLinkServiceConnection>();
+
+                cfg.CreateMap<CNM.PSPrivateLinkServiceConnectionState, MNM.PrivateLinkServiceConnectionState>();
+                cfg.CreateMap<MNM.PrivateLinkServiceConnectionState, CNM.PSPrivateLinkServiceConnectionState>();
             });
 
             _mapper = config.CreateMapper();
