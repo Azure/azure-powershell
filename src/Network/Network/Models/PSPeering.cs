@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string LastModifiedBy { get; set; }
 
         [JsonProperty(Order = 1)]
-        public PSRouteFilter RouteFilter { get; set; }
+        public PSResourceId RouteFilter { get; set; }
 
         [JsonProperty(Order = 1)]
         public PSIpv6PeeringConfig Ipv6PeeringConfig { get; set; }
