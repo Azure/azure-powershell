@@ -58,28 +58,15 @@ namespace Microsoft.Azure.Commands.Network
         public PSSubnet Subnet { get; set; }
 
         [Parameter(
-           Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The private link service connection.",
-           ParameterSetName = "Manual")]
-        [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The private link service connection.",
-           ParameterSetName = "Auto")]
+           HelpMessage = "The private link service connection.")]
         public PSPrivateLinkServiceConnection[] PrivateLinkServiceConnections { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The private link service connection.",
-            ParameterSetName = "Manual")]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The private link service connection.",
-            ParameterSetName = "Auto")]
-        public PSPrivateLinkServiceConnection[] ManualPrivateLinkServiceConnections { get; set; }
+           Mandatory = false,
+           HelpMessage = "Using manual request.")]
+        public SwitchParameter ByManualRequest { get; set; }
         
         [Parameter(
             Mandatory = false,
@@ -93,11 +80,6 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSPrivateEndpoint CreatePSPrivateEndpoint()
         {
-            if (PrivateLinkServiceConnections == null && ManualPrivateLinkServiceConnections == null)
-            {
-                throw new Microsoft.Rest.Azure.CloudException();
-            }
-
             var psPrivateEndpoint = new PSPrivateEndpoint
             {
                 Name = Name,
@@ -106,8 +88,14 @@ namespace Microsoft.Azure.Commands.Network
                 Subnet = Subnet
             };
 
-            psPrivateEndpoint.ManualPrivateLinkServiceConnections = this.ManualPrivateLinkServiceConnections?.ToList();
-            psPrivateEndpoint.PrivateLinkServiceConnections = this.PrivateLinkServiceConnections?.ToList();
+            if (this.ByManualRequest.IsPresent)
+            {
+                psPrivateEndpoint.ManualPrivateLinkServiceConnections = this.PrivateLinkServiceConnections?.ToList();
+            }
+            else
+            {
+                psPrivateEndpoint.PrivateLinkServiceConnections = this.PrivateLinkServiceConnections?.ToList();
+            }
             
             var peModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PrivateEndpoint>(psPrivateEndpoint);
             // peModel.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);

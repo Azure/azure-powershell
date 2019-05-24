@@ -12,19 +12,10 @@ Creates a private endpoint.
 
 ## SYNTAX
 
-### Manual
-```
-New-AzPrivateEndpoint -Name <String> -ResourceGroupName <String> -Location <String> -Subnet <PSSubnet>
- [-PrivateLinkServiceConnections <PSPrivateLinkServiceConnection[]>]
- -ManualPrivateLinkServiceConnections <PSPrivateLinkServiceConnection[]> [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Auto
 ```
 New-AzPrivateEndpoint -Name <String> -ResourceGroupName <String> -Location <String> -Subnet <PSSubnet>
  -PrivateLinkServiceConnections <PSPrivateLinkServiceConnection[]>
- [-ManualPrivateLinkServiceConnections <PSPrivateLinkServiceConnection[]>] [-Force] [-AsJob]
+ [-ByManualRequest]] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -104,33 +95,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ManualPrivateLinkServiceConnections
-The private link service connection.
-
-```yaml
-Type: PSPrivateLinkServiceConnection[]
-Parameter Sets: Manual
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: PSPrivateLinkServiceConnection[]
-Parameter Sets: Auto
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Name
 The resource name.
 
@@ -146,24 +110,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PrivateLinkServiceConnections
-The private link service connection.
+### -ByManualRequest
+Using manual request.
 
 ```yaml
-Type: PSPrivateLinkServiceConnection[]
-Parameter Sets: Manual
+Type: SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PrivateLinkServiceConnections
+The private link service connection.
+
 ```yaml
 Type: PSPrivateLinkServiceConnection[]
-Parameter Sets: Auto
+Parameter Sets: (All)
 Aliases:
 
 Required: True

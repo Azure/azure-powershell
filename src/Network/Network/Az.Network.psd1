@@ -395,13 +395,13 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Get-AzExpressRouteCrossConnectionRouteTable', 
                'Get-AzExpressRouteCrossConnectionRouteTableSummary', 
                'Get-AzNatGateway', 'New-AzNatGateway', 'Remove-AzNatGateway', 
-               'Set-AzNatGateway',
-			   'New-AzPrivateEndpoint', 'Get-AzPrivateEndpoint', 'Remove-AzPrivateEndpoint',
-			   'New-AzPrivateLinkServiceConnection',
-			   'New-AzPrivateLinkService','Get-AzPrivateLinkService','Remove-AzPrivateLinkService',
-			   'New-AzPrivateLinkServiceIpConfig',
-			   'Set-AzPrivateEndpointConnection',
-			   'Get-AzAvailablePrivateEndpointType'
+               'Set-AzNatGateway', 
+               'New-AzPrivateEndpoint', 'Get-AzPrivateEndpoint', 'Remove-AzPrivateEndpoint', 
+               'New-AzPrivateLinkServiceConnection', 
+               'New-AzPrivateLinkService', 'Get-AzPrivateLinkService', 'Remove-AzPrivateLinkService', 
+               'New-AzPrivateLinkServiceIpConfig', 
+               'Set-AzPrivateEndpointConnection', 
+               'Get-AzAvailablePrivateEndpointType'
 
 # Variables to export from this module
 # VariablesToExport = @()
