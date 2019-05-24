@@ -112,7 +112,7 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '* Support for querying policy evaluation details.
-    - Add `-Expand` parameter to Get-AzPolicyState. Support `-Expand PolicyEvaluationDetails`.'
+    - Add ''-Expand'' parameter to Get-AzPolicyState. Support ''-Expand PolicyEvaluationDetails''.'
 
         # Prerelease string of this module
         # Prerelease = ''
