@@ -37,6 +37,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string ProvisioningState { get; set; }
 
+        public List<string> Zones { get; set; }
+
         [JsonIgnore]
         public string IpConfigurationsText
         {
