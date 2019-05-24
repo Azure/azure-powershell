@@ -80,7 +80,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByExistingPfxAndVaultName,
             HelpMessage = "Azure key vault resource group name, if not given it will be defaulted to resource group name")]
         [ValidateNotNullOrEmpty]
-        public virtual string KeyVaultResouceGroupName { get; set; }
+        [Alias("KeyVaultResouceGroupName")]
+        public virtual string KeyVaultResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByNewPfxAndVaultName,
                    HelpMessage = "Azure key vault name, if not given it will be defaulted to the resource group name")]
@@ -157,7 +158,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             get { return resourceManagerClient.Value; }
         }
 
-        public virtual string KeyVaultResouceGroupLocation
+        public virtual string KeyVaultResourceGroupLocation
         {
             get
             {
@@ -324,9 +325,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         internal List<CertificateInformation> GetOrCreateCertificateInformation()
         {
             var certificateInformations = new List<CertificateInformation>();
-            if (string.IsNullOrEmpty(this.KeyVaultResouceGroupName))
+            if (string.IsNullOrEmpty(this.KeyVaultResourceGroupName))
             {
-                this.KeyVaultResouceGroupName = this.ResourceGroupName;
+                this.KeyVaultResourceGroupName = this.ResourceGroupName;
             }
 
             if (string.IsNullOrEmpty(this.KeyVaultName))
@@ -338,16 +339,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 var resourceGroup = SafeGetResource(
                     () => this.ResourceManagerClient.ResourceGroups.Get(
-                        this.KeyVaultResouceGroupName),
+                        this.KeyVaultResourceGroupName),
                         true);
 
                 if (resourceGroup == null)
                 {
                     this.ResourceManagerClient.ResourceGroups.CreateOrUpdate(
-                        this.KeyVaultResouceGroupName,
+                        this.KeyVaultResourceGroupName,
                         new ResourceGroup()
                         {
-                            Location = this.KeyVaultResouceGroupLocation
+                            Location = this.KeyVaultResourceGroupLocation
                         });
                 }
             }
@@ -542,12 +543,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         protected void GetKeyVaultReady(out Vault vault, out CertificateBundle certificateBundle, out string thumbprint, out string pfxOutputPath, out string commonName, string srcPfxPath = null)
         { 
-            vault = TryGetKeyVault(this.KeyVaultResouceGroupName, this.KeyVaultName);
+            vault = TryGetKeyVault(this.KeyVaultResourceGroupName, this.KeyVaultName);
             pfxOutputPath = null;
             if (vault == null)
             {
                 WriteVerboseWithTimestamp(string.Format("Creating Azure Key Vault {0}", this.KeyVaultName));
-                vault = CreateKeyVault(this.Name, this.KeyVaultName, this.KeyVaultResouceGroupLocation, this.KeyVaultResouceGroupName);
+                vault = CreateKeyVault(this.Name, this.KeyVaultName, this.KeyVaultResourceGroupLocation, this.KeyVaultResourceGroupName);
                 WriteVerboseWithTimestamp(string.Format("Key Vault is created: {0}", vault.Id));
             }
 
