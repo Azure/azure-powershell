@@ -90,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Returns immediately with status of request
+Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has sucessufuly been completed, use some other mechanism.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
