@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Approved or rejected the resource.")]
-        [PSArgumentCompleter("Approved","Rejected")]
+        [PSArgumentCompleter("Approved","Rejected","Removed")]
         [ValidateNotNullOrEmpty]
         public string PrivateLinkServiceConnectionState { get; set; }
 

@@ -40,19 +40,36 @@ function Test-PrivateEndpointCRUD
     $SubnetName = "SubnetName";
     $SubnetAddressPrefix = "10.0.1.0/24";
     $PrivateLinkServiceConnectionName = "PrivateLinkServiceConnectionName";
-	$PrivateLinkServiceId = "/subscriptions/e05dbbce-79c2-45a2-a7ef-f1058856feb3/resourceGroups/privateLinkService_ResourceGroup1/providers/Microsoft.Network/privateLinkServices/privateLinkService";
+    $IpConfigurationName = "IpConfigurationName";
+    $PrivateLinkServiceName = "PrivateLinkServiceName";
 
     try
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
+        # Create Virtual networks
+        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name "frontendSubnet" -AddressPrefix "10.0.1.0/24";
+        $backendSubnet = New-AzVirtualNetworkSubnetConfig -Name "backendSubnet" -AddressPrefix "10.0.2.0/24";
+        $otherSubnet = New-AzVirtualNetworkSubnetConfig -Name "otherSubnet" -AddressPrefix "10.0.3.0/24"; 
+        $vnet = New-AzVirtualNetwork -Name "vnet" -ResourceGroupName $resourceGroup -Location $rglocation -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet,$otherSubnet;
+
+        # Create LoadBalancer
+        $frontendIP = New-AzLoadBalancerFrontendIpConfig -Name "LB-Frontend" -PrivateIpAddress 10.0.1.5 -SubnetId $vnet.subnets[0].Id;
+        $beaddresspool= New-AzLoadBalancerBackendAddressPoolConfig -Name "LB-backend";
+        $LB = New-AzLoadBalancer -ResourceGroupName $resourceGroup -Name "LB" -Location $rglocation -FrontendIpConfiguration $frontendIP -BackendAddressPool $beaddresspool;
+        
+        # Create required dependencies for private link service
+        $IpConfiguration = New-AzPrivateLinkServiceIpConfig -Name $IpConfigurationName -PrivateIpAddress 10.0.3.5 -Subnet $vnet.subnets[2];
+        $LoadBalancerFrontendIpConfiguration = Get-AzLoadBalancerFrontendIpConfig -LoadBalancer $LB;
+        
+        # Create PrivateLinkService
+        $vPrivateLinkService = New-AzPrivateLinkService -ResourceGroup $resourceGroup -ServiceName $PrivateLinkServiceName -Location $location -IpConfiguration $IpConfiguration -LoadBalancerFrontendIpConfiguration $LoadBalancerFrontendIpConfiguration;
+        
         # Create required dependencies
-        $subnetConfig = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix;
-		$vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnetConfig;
-        $PrivateLinkServiceConnection = New-AzPrivateLinkServiceConnection -Name $PrivateLinkServiceConnectionName;
+        $PrivateLinkServiceConnection = New-AzPrivateLinkServiceConnection -Name $PrivateLinkServiceConnectionName -PrivateLinkServiceId  $vPrivateLinkService.Id
 
         # Create PrivateEndpoint
-        $vPrivateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgname -Name $rname -Location $location -Subnet $vnet.subnets[0] -PrivateLinkServiceConnection $PrivateLinkServiceConnection;
+        $vPrivateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgname -Name $rname -Location $location -Subnet $vnet.subnets[2] -PrivateLinkServiceConnection $PrivateLinkServiceConnection;
         Assert-NotNull $vPrivateEndpoint;
         Assert-True { Check-CmdletReturnType "New-AzPrivateEndpoint" $vPrivateEndpoint };
         Assert-NotNull $vPrivateEndpoint.Subnets;
