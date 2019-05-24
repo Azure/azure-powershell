@@ -25,7 +25,7 @@ Get-AzPrivateLinkService -Name <String> -ResourceGroupName <String> -ExpandResou
 ```
 
 ## DESCRIPTION
-The **Get-AzPrivateLinkService** cmdlet gets one or more private link service.
+The **Get-AzPrivateLinkService** cmdlet gets one or more private link services.
 
 ## EXAMPLES
 
@@ -73,7 +73,7 @@ NetworkInterfaces                    : [
 
 ```
 
-This command gets a private link service in the resource group
+This commandlet gets a private link service in the resource group.
 
 ## PARAMETERS
 

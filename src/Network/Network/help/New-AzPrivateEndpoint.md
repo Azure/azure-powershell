@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPrivateEndpoint
 
 ## SYNOPSIS
-Creates a private end point.
+Creates a private endpoint.
 
 ## SYNTAX
 
@@ -29,18 +29,18 @@ New-AzPrivateEndpoint -Name <String> -ResourceGroupName <String> -Location <Stri
 ```
 
 ## DESCRIPTION
-The **New-AzPrivateEndpoint** cmdlet creates a private end point.
+The **New-AzPrivateEndpoint** cmdlet creates a private endpoint.
 
 ## EXAMPLES
 
-### 1: Create a private end point
+### 1: Create a private endpoint
 ```
 $virtualNetwork = Get-AzVirtualNetwork -ResourceName MyVirtualNetwork -ResourceGroupName TestResourceGroup
 $plsConnection= New-AzPrivateLinkServiceConnection -Name MyPLSConnections -PrivateLinkServiceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/providers/Microsoft.Network/privateLinkServices/privateLinkService" -RequestMessage "Please Approve my request"
 New-AzPrivateEndpoint -Name MyPrivateEndpoint -ResourceGroup TestResourceGroup -Location centralus -PirvateLinkServiceConnections $plsConnection -Subnet $virtualNetwork.Subnets[0]
 ```
 
-This example creates a private end point with specific private link service id in a specific subnet in a virtual network.
+This example creates a private endpoint with specific private link service id in a specific subnet in a virtual network.
 
 ## PARAMETERS
 

@@ -26,9 +26,12 @@ The **New-AzPrivateLinkService** cmdlet creates a private link service
 
 ### Example 1
 ```
-$IpConfiguration = New-AzPrivateLinkServiceIpConfig -Name $IpConfigurationName -PrivateIpAddress 10.0.0.5
-$LoadBalancerFrontendIpConfiguration = New-AzLoadBalancerFrontendIpConfig  -Name "loadBalancerName";
-$vPrivateLinkService = New-AzPrivateLinkService -ResourceGroup myresourceGroup -ServiceName myPrivateLinkService -Location eastus2euap -IpConfigurations $IpConfiguration -LoadBalancerFrontendIpConfigurations $LoadBalancerFrontendIpConfiguration;
+$vnet = Get-AzVirtualNetwork -ResourceName "myvnet" -ResourceGroupName "myresourcegroup"
+$IPConfig = New-AzPrivateLinkServiceIpConfig -Name "IP-Config" -Subnet $vnet.subnets[1] -PrivateIpAddress "10.0.0.5"
+$publicip = Get-AzPublicIpAddress -ResourceGroupName "myresourcegroup"
+$frontend = New-AzLoadBalancerFrontendIpConfig -Name "FrontendIpConfig01" -PublicIpAddress $publicip
+$lb = New-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "myresourcegroup" -Location "West US" -FrontendIpConfiguration $frontend  
+New-AzPrivateLinkService -ServiceName "mypls" -ResourceGroupName myresourcegroup -Location "West US" -LoadBalancerFrontendIpConfigurations $frontend -IpConfigurations $IPConfig
 ```
 
 This example creates a private link service.
