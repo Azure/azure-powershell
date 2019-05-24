@@ -187,12 +187,14 @@ function NamespaceTests
 	$checkNameResult = Test-AzEventHubName -Namespace $namespaceName 
 	Assert-True {$checkNameResult.NameAvailable}
 
+	$result = New-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location -SkuName Standard -EnableAutoInflate -MaximumThroughputUnits 12 -EnableKafka
+
 	Write-Debug " Create new Eventhub Kafka namespace"
     Write-Debug "Kafka Namespace name : $namespaceNameKafka"	
     $resultkafka = New-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceNameKafka -Location $locationKafka -EnableKafka
 	Assert-AreEqual $resultkafka.Name $namespaceNameKafka "Namespace created earlier is not found."
 	Assert-True {$resultkafka.KafkaEnabled}
-     
+    
     Write-Debug " Create new eventHub namespace"
     Write-Debug "NamespaceName : $namespaceName" 
     $result = New-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location -SkuName "Standard" -SkuCapacity "1" -EnableAutoInflate -MaximumThroughputUnits 10
