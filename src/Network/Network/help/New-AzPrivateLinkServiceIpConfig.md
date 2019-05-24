@@ -19,13 +19,13 @@ New-AzPrivateLinkServiceIpConfig -Name <String> [-PrivateIpAddressVersion <Strin
 ```
 
 ## DESCRIPTION
-The **New-AzPrivateLinkServiceIpConfig** cmdlet creates a private link service ip configuration.
+The **New-AzPrivateLinkServiceIpConfig** cmdlet creates a private link service ip configuration. This configuration is used for source NAT-ing the incoming traffic from private endpoint. 
 
 ## EXAMPLES
 
 ### Example 1
 ```
-New-AzPrivateLinkServiceIpConfig -Name $IpConfigurationName -PrivateIpAddress 10.0.0.5
+New-AzPrivateLinkServiceIpConfig -Name $IpConfigurationName -PrivateIpAddress "10.0.0.5"
 ```
 
 This example create a private link service ip configuration in memory.

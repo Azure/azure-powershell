@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzPrivateEndpoint
 
 ## SYNOPSIS
-Removes a private end point.
+Removes a private endpoint.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Remove-AzPrivateEndpoint -ResourceGroupName <String> -Name <String> [-Force] [-A
 ```
 
 ## DESCRIPTION
-The **Remove-AzPrivateEndpoint** cmdlet removes an Azure virtual network.
+The **Remove-AzPrivateEndpoint** cmdlet removes a private endpoint. 
 
 ## EXAMPLES
 
@@ -27,7 +27,7 @@ The **Remove-AzPrivateEndpoint** cmdlet removes an Azure virtual network.
 Remove-AzVirtualNetwork -Name MyPrivateEndpoint1 -ResourceGroupName TestResourceGroup
 ```
 
-This example remove a private end point named MyPrivateEndpoint1.
+This example remove a private endpoint named MyPrivateEndpoint1.
 
 ## PARAMETERS
 

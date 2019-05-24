@@ -25,16 +25,16 @@ Get-AzPrivateEndpoint -Name <String> -ResourceGroupName <String> -ExpandResource
 ```
 
 ## DESCRIPTION
-The **Get-AzPrivateEndpoint** cmdlet gets one or more private end points.
+The **Get-AzPrivateEndpoint** cmdlet gets one or more private endpoints.
 
 ## EXAMPLES
 
-### 1: Retrieve a private end point
+### 1: Retrieve a private endpoint
 ```
 Get-AzPrivateEndpoint -Name MyPrivateEndpoint1 -ResourceGroupName TestResourceGroup
 
 Name                                : MyPrivateEndpoint1
-ResourceGroupName                   : bowen_pe
+ResourceGroupName                   : TestResourceGroup
 Location                            : eastus2euap
 Id                                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/provi
                                       ders/Microsoft.Network/privateEndpoints/MyPrivateEndpoint1
@@ -66,14 +66,14 @@ ManualPrivateLinkServiceConnections : [
                                       ]
 ```
 
-This command gets the private end point named MyPrivateEndpoint1 in the resource group TestResourceGroup
+This command gets the private endpoint named MyPrivateEndpoint1 in the resource group TestResourceGroup
 
-### 2: List all private end points in ResourceGroup
+### 2: List all private endpoints in ResourceGroup
 ```
 Get-AzPrivateEndpoint -ResourceGroupName TestResourceGroup
 
 Name                                : MyPrivateEndpoint1
-ResourceGroupName                   : bowen_pe
+ResourceGroupName                   : TestResourceGroup
 Location                            : eastus2euap
 Id                                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/provi
                                       ders/Microsoft.Network/privateEndpoints/MyPrivateEndpoint1

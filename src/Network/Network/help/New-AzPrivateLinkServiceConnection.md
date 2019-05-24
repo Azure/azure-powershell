@@ -24,10 +24,10 @@ New-AzPrivateLinkServiceConnection -Name <String> -PrivateLinkServiceId <String>
 
 ### Example 1
 ```
-New-AzPrivateLinkServiceConnection -Name MyPLSConnections -PrivateLinkServiceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/providers/Microsoft.Network/privateLinkServices/privateLinkService" -RequestMessage "Please Approve my request"
+New-AzPrivateLinkServiceConnection -Name MyPLSConnection -PrivateLinkServiceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/providers/Microsoft.Network/privateLinkServices/privateLinkService" -RequestMessage "Please Approve my request"
 ```
 
-This example create a private link service connection object in memory for using in creating private end point.
+This example create a private link service connection object in memory for using in creating private endpoint.
 
 ## PARAMETERS
 

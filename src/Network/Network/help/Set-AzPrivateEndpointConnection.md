@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzPrivateEndpointConnection
 
 ## SYNOPSIS
-Update a private end point connection.
+Updates a private endpoint connection state on private link service.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Set-AzPrivateEndpointConnection -Name <String> -ServiceName <String> -ResourceGr
 ```
 
 ## DESCRIPTION
-The **Set-AzPrivateEndpointConnection** cmdlet updates a private end point connection in a private link service
+The **Set-AzPrivateEndpointConnection** cmdlet updates a private endpoint connection state on a private link service
 
 ## EXAMPLES
 
@@ -28,7 +28,7 @@ The **Set-AzPrivateEndpointConnection** cmdlet updates a private end point conne
 Set-AzPrivateEndpointConnection -Name TestPrivateEndpointConnection -ResourceGroupName TestResourceGroup -ServiceName TestPrivateLinkService -PrivateLinkServiceConnectionState "Approved"
 ```
 
-This example update a private end point connection state to Approved.
+This example updates a private endpoint connection state to Approved.
 
 ## PARAMETERS
 
