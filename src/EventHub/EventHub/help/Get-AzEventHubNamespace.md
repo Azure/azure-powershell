@@ -30,7 +30,6 @@ PS C:\> Get-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -Namespac
 
 Name                   : MyNamespaceName
 Id                     : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/namespaces/MyNamespaceName
-ResourceGroup          : Default-EventHub-WestCentralUS
 ResourceGroupName      : Default-EventHub-WestCentralUS
 Location               : West US
 Sku                    : Name : Standard , Capacity : 1 , Tier : Standard
