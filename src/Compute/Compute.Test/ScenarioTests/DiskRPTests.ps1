@@ -319,7 +319,8 @@ function Test-DiskEncrypt
 {
     # Setup
     $rgname = 'mytestrg'
-    $loc = 'eastus'
+    [string]$loc = Get-ComputeVMLocation;
+    $loc = $loc.Replace(' ', '');
     $diskname = 'disk' + $rgname;
     $vaultName = 'kv' + $rgname
     $kekName = 'kek' + $rgname
@@ -521,8 +522,9 @@ function Test-DiskEncrypt
 function Test-SnapshotEncrypt
 {
     # Setup
-    $rgname = 'mytestrg'
-    $loc = 'eastus'
+    $rgname = 'mytestrg';
+    [string]$loc = Get-ComputeVMLocation;
+    $loc = $loc.Replace(' ', '');
     $snapshotname = 'snapshot' + $rgname;
     $vaultName = 'kv' + $rgname
     $kekName = 'kek' + $rgname

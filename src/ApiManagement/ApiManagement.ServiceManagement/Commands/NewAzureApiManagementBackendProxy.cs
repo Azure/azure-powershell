@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     public class NewAzureApiManagementBackendProxy : AzureApiManagementCmdletBase
     {
         [Parameter(
-           ValueFromPipelineByPropertyName = false,
-           Mandatory = true,
-           HelpMessage = "Url of the Backend Proxy. This parameter is required.")]
+            ValueFromPipelineByPropertyName = false,
+            Mandatory = true,
+            HelpMessage = "Url of the Backend Proxy. This parameter is required.")]
         [ValidateLength(1, 2000)]
         [ValidateNotNullOrEmpty]
         public string Url { get; set; }
