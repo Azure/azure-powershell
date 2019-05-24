@@ -36,16 +36,26 @@ function Test-PrivateLinkServiceCRUD
     $rname = Get-ResourceName;
     $location = Get-ProviderLocation "Microsoft.Network/privateLinkServices";
     # Dependency parameters
-    $IpConfigurationName = "IpConfigurationName"
-    $LoadBalancerFrontendIpConfigurationName = "LoadBalancerFrontendIpConfigurationName";
+    $IpConfigurationName = "IpConfigurationName";
 
     try
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
+        # Create Virtual networks
+        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name "frontendSubnet" -AddressPrefix "10.0.1.0/24";
+        $backendSubnet = New-AzVirtualNetworkSubnetConfig -Name "backendSubnet" -AddressPrefix "10.0.2.0/24";
+        $otherSubnet = New-AzVirtualNetworkSubnetConfig -Name "otherSubnet" -AddressPrefix "10.0.3.0/24"; 
+        $vnet = New-AzVirtualNetwork -Name "vnet" -ResourceGroupName $resourceGroup -Location $rglocation -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet,$otherSubnet;
+
+        # Create LoadBalancer
+        $frontendIP = New-AzLoadBalancerFrontendIpConfig -Name "LB-Frontend" -PrivateIpAddress 10.0.1.5 -SubnetId $vnet.subnets[0].Id;
+        $beaddresspool= New-AzLoadBalancerBackendAddressPoolConfig -Name "LB-backend";
+        $LB = New-AzLoadBalancer -ResourceGroupName $resourceGroup -Name "LB" -Location $rglocation -FrontendIpConfiguration $frontendIP -BackendAddressPool $beaddresspool;
+        
         # Create required dependencies
-        $IpConfiguration = New-AzPrivateLinkServiceIpConfig -Name $IpConfigurationName -PrivateIpAddress 10.0.0.5
-        $LoadBalancerFrontendIpConfiguration = New-AzLoadBalancerFrontendIpConfig  -Name $LoadBalancerFrontendIpConfigurationName;
+        $IpConfiguration = New-AzPrivateLinkServiceIpConfig -Name $IpConfigurationName -PrivateIpAddress 10.0.3.5 -Subnet $vnet.subnets[2];
+        $LoadBalancerFrontendIpConfiguration = Get-AzLoadBalancerFrontendIpConfig -LoadBalancer $LB;
         
         # Create PrivateLinkService
         $vPrivateLinkService = New-AzPrivateLinkService -ResourceGroup $resourceGroup -ServiceName $rname -Location $location -IpConfigurations $IpConfiguration -LoadBalancerFrontendIpConfigurations $LoadBalancerFrontendIpConfiguration;

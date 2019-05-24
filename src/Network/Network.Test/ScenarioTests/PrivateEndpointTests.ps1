@@ -34,22 +34,25 @@ function Test-PrivateEndpointCRUD
     $rgname = Get-ResourceGroupName;
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
+    $vnetName = Get-ResourceName;
     $location = Get-ProviderLocation "Microsoft.Network/privateEndpoints";
     # Dependency parameters
     $SubnetName = "SubnetName";
     $SubnetAddressPrefix = "10.0.1.0/24";
     $PrivateLinkServiceConnectionName = "PrivateLinkServiceConnectionName";
+	$PrivateLinkServiceId = "/subscriptions/e05dbbce-79c2-45a2-a7ef-f1058856feb3/resourceGroups/privateLinkService_ResourceGroup1/providers/Microsoft.Network/privateLinkServices/privateLinkService";
 
     try
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
         # Create required dependencies
-        $Subnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix;
+        $subnetConfig = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix;
+		$vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnetConfig;
         $PrivateLinkServiceConnection = New-AzPrivateLinkServiceConnection -Name $PrivateLinkServiceConnectionName;
 
         # Create PrivateEndpoint
-        $vPrivateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgname -Name $rname -Location $location -Subnet $Subnet -PrivateLinkServiceConnection $PrivateLinkServiceConnection;
+        $vPrivateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgname -Name $rname -Location $location -Subnet $vnet.subnets[0] -PrivateLinkServiceConnection $PrivateLinkServiceConnection;
         Assert-NotNull $vPrivateEndpoint;
         Assert-True { Check-CmdletReturnType "New-AzPrivateEndpoint" $vPrivateEndpoint };
         Assert-NotNull $vPrivateEndpoint.Subnets;
