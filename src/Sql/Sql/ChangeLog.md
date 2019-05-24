@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add DnsZonePartner Parameter for New-AzureSqlInstance cmdlet to support AutoDr for Managed Instance.
+* Deprecating Get-AzSqlDatabaseSecureConnectionPolicy cmdlet
+
+## Version 1.10.0
+* Rename Advanced Threat Protection cmdlets to Advanced Data Security and enable Vulnerability Assessment by default
 
 ## Version 1.9.0
 * Replace dependency on Monitor SDK with common code

@@ -637,6 +637,13 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM 
                 cfg.CreateMap<MNM.ExpressRouteCircuitConnection, CNM.PSExpressRouteCircuitConnection>();
 
+                // Peer Express Route Circuit Connection 
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSPeerExpressRouteCircuitConnection, MNM.PeerExpressRouteCircuitConnection>();
+
+                // MNM to CNM 
+                cfg.CreateMap<MNM.PeerExpressRouteCircuitConnection, CNM.PSPeerExpressRouteCircuitConnection>();
+
                 // ExpressRouteServiceProvider
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSExpressRouteServiceProvider, MNM.ExpressRouteServiceProvider>();

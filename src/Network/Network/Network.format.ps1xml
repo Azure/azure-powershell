@@ -1219,6 +1219,10 @@
                 <PropertyName>NetworkSecurityGroupText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>TapConfigurations</Label>
+                <PropertyName>TapConfigurationsText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Primary</Label>
                 <PropertyName>Primary</PropertyName>
               </ListItem>

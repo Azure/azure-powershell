@@ -14,6 +14,9 @@
 
 using Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter;
+using Microsoft.Azure.Commands.Sql.VulnerabilityAssessment.Model;
+using Microsoft.Azure.Commands.Sql.VulnerabilityAssessment.Services;
 
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
 {
@@ -24,6 +27,28 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
     public class EnableAzureSqlManagedInstanceAdvancedDataSecurity : SqlManagedInstanceAdvancedDataSecurityCmdletBase
     {
         /// <summary>
+        /// Gets or sets the flag indicating that the user doesn't want to auto enable VA (will not create a storage account)
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Do not auto enable Vulnerability Assessment (This will not create a storage account)")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter DoNotConfigureVulnerabilityAssessment { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether or not to run this cmdlet in the background as a job
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
+        /// A custom name for Advanced Data Security deployment
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Supply a custom name for Advanced Data Security deployment")]
+        [ValidateNotNullOrEmpty]
+        public string DeploymentName { get; set; }
+
+        /// <summary>
         /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
         /// object to the REST endpoint
         /// </summary>
@@ -31,7 +56,29 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         protected override ManagedInstanceAdvancedDataSecurityPolicyModel PersistChanges(ManagedInstanceAdvancedDataSecurityPolicyModel model)
         {
             model.IsEnabled = true;
-            ModelAdapter.SetManagedInstanceAdvancedThreatProtection(model);
+
+            if (DoNotConfigureVulnerabilityAssessment)
+            {
+                ModelAdapter.SetManagedInstanceAdvancedDataSecurity(model);
+            }
+            else
+            {
+                // Deploy arm template to enable VA - only if VA at server level is not defined
+                var vaAdapter = new SqlVulnerabilityAssessmentAdapter(DefaultContext);
+                var vaModel = vaAdapter.GetVulnerabilityAssessmentSettings(ResourceGroupName, InstanceName, "", ApplyToType.ManagedInstance);
+
+                if (string.IsNullOrEmpty(vaModel.StorageAccountName))
+                {
+                    var instanceAdapter = new AzureSqlManagedInstanceAdapter(DefaultContext);
+                    var instanceModel = instanceAdapter.GetManagedInstance(ResourceGroupName, InstanceName);
+                    ModelAdapter.EnableInstanceAdsWithVa(ResourceGroupName, InstanceName, instanceModel.Location, DeploymentName);
+                }
+                else
+                {
+                    ModelAdapter.SetManagedInstanceAdvancedDataSecurity(model);
+                }
+            }
+
             return model;
         }
     }
