@@ -95,6 +95,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRevokeAzStorageAccountUserDelegationKeys()
+        {
+            TestRunner.RunTestScript("Test-RevokeAzStorageAccountUserDelegationKeys");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureRmStorageAccountKeySource()
         {
             TestRunner.RunTestScript("Test-SetAzureRmStorageAccountKeySource");
