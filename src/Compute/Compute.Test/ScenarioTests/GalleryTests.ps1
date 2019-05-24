@@ -112,7 +112,8 @@ function Test-Gallery
     try
     {
         # Common
-        $loc = "southcentralus";
+        [string]$loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
         New-AzResourceGroup -Name $rgname -Location $loc -Force;        
         $description1 = "Original Description";
         $description2 = "Updated Description";
@@ -418,7 +419,8 @@ function Test-GalleryImageVersion
     try
     {
         # Common
-        $loc = "southcentralus";
+        [string]$loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
         $description1 = "Original Description";
 

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ServiceBus.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -25,6 +26,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
     /// <summary>
     /// 'New-AzServiceBusNamespace' cmdlet creates a new Servicebus NameSpace
     /// </summary>
+    [CmdletOutputBreakingChange(typeof(PSNamespaceAttributes), DeprecatedOutputProperties = new string[] { "ResourceGroup" }, NewOutputProperties = new string[] { "ResourceGroupName" })]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusNamespace", SupportsShouldProcess = true), OutputType(typeof(PSNamespaceAttributes))]
     public class NewAzureRmServiceBusNamespace : AzureServiceBusCmdletBase
     {
