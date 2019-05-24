@@ -141,7 +141,7 @@
     { "regex":  "ManagementPartner", "alias":  "Management Partner"  },
     { "regex": "DevSpaces", "group": "DevSpaces", "alias": "DevSpaces" },
     { "regex": "SignalR", "alias": "SignalR" },
-    { "regex": "Search", "alias": "Search" },
+    { "regex": "AzSearch", "alias": "Search" },
     { "regex": "ResourceGraph", "alias": "ResourceGraph" },
     { "regex": "Security", "alias": "Security" },
     { "regex": "Kusto", "alias": "Kusto" },

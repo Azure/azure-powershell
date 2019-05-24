@@ -166,7 +166,6 @@ You can use this parameter to limit the concurrency to throttle local CPU and ba
 The specified value is an absolute count and is not multiplied by the core count.
 This parameter can help reduce network connection problems in low bandwidth environments, such as 100 kilobits per second.
 The default value is 10.
-The default value is 10.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
