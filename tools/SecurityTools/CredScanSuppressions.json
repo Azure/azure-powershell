@@ -876,6 +876,14 @@
     {
       "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\\TestAzDiskEncryptionSinglePassLnxNativeDisks.json",
       "_justification": "Generated test resource group, deleted after test execution"
+    },
+	{
+      "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\\TestAzureDiskEncryptionExtensionSinglePass.json",
+      "_justification": "Generated test resource group, deleted after test execution"
+    },
+	{
+      "file": "src\\Compute\\Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\\TestAzureDiskEncryptionExtensionSinglePassDisableAndRemove.json",
+      "_justification": "Generated test resource group, deleted after test execution"
     }
   ]
 }
