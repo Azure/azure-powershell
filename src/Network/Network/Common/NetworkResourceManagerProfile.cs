@@ -997,6 +997,9 @@ namespace Microsoft.Azure.Commands.Network
 
                 cfg.CreateMap<CNM.PSPrivateEndpointConnection, MNM.PrivateEndpointConnection>();
                 cfg.CreateMap<MNM.PrivateEndpointConnection, CNM.PSPrivateEndpointConnection>();
+
+                cfg.CreateMap<CNM.PSAvailablePrivateEndpointType, MNM.AvailablePrivateEndpointType>();
+                cfg.CreateMap<MNM.AvailablePrivateEndpointType, CNM.PSAvailablePrivateEndpointType>();
             });
 
             _mapper = config.CreateMapper();
