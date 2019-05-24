@@ -14,14 +14,16 @@
 
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
 {
     /// <summary>
-    /// Disables auditing on a specific server.
+    /// Clears advanced threat protection on a specific server.
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerThreatDetectionPolicy", SupportsShouldProcess = true), OutputType(typeof(ServerThreatDetectionPolicyModel))]
-
+    [GenericBreakingChange("Remove-AzSqlServerThreatDetectionPolicy alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Clear", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerAdvancedThreatProtectionSettings", SupportsShouldProcess = true), OutputType(typeof(ServerThreatDetectionPolicyModel))]
+    [Alias("Remove-AzSqlServerThreatDetectionPolicy")]
     public class AzureRmSqlServerThreatDetection : SqlServerThreatDetectionCmdletBase
     {
         /// <summary>
