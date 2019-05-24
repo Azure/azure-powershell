@@ -63,6 +63,11 @@ namespace Microsoft.Azure.Commands.Network
         public PSNatGateway InputObject { get; set; }
 
         [Parameter(
+          Mandatory = false,
+          HelpMessage = "A list of availability zones denoting the zone in which Nat Gateway should be deployed.")]
+        public string[] Zone { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "An array of public ip addresses associated with the nat gateway resource.")]
         public PSResourceId[] PublicIpAddress { get; set; }
@@ -143,6 +148,8 @@ namespace Microsoft.Azure.Commands.Network
                 vPublicIpPrefixes = this.PublicIpPrefix?.ToList();
                 this.InputObject.PublicIpPrefixes = vPublicIpPrefixes;
             }
+
+            this.InputObject.Zones = this.Zone?.ToList();
 
             // Map to the sdk object
             var vNatGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NatGateway>(this.InputObject);

@@ -52,6 +52,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "A list of availability zones denoting the zone in which Nat Gateway should be deployed.")]
+        public string[] Zone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Name of a NAT gateway SKU.")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter(MNM.NatGatewaySkuName.Standard)]
@@ -119,6 +124,8 @@ namespace Microsoft.Azure.Commands.Network
                 PublicIpAddresses = vPublicIpAddresses,
                 PublicIpPrefixes = vPublicIpPrefixes,
             };
+
+            vNatGateway.Zones = this.Zone?.ToList();
 
             var vNatGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NatGateway>(vNatGateway);
             vNatGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
