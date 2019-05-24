@@ -52,13 +52,12 @@ namespace Microsoft.Azure.Commands.Network
         public string PrivateIpAddress { get; set; }
 
         [Parameter(
-            ParameterSetName = "SetByResource",
+            Mandatory = false,
             HelpMessage = "PublicIpAddress")]
         public PSPublicIpAddress PublicIpAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "SetByResource",
             HelpMessage = "Subnet")]
         public PSSubnet Subnet { get; set; }
 
