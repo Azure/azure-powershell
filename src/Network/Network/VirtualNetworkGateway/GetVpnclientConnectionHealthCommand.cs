@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 
         [Alias("VirtualNetworkGateway")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipeline = true,
             ParameterSetName = ParameterSetNames.ByFactoryObject,
             HelpMessage = "The virtual network gateway object to update.")]
