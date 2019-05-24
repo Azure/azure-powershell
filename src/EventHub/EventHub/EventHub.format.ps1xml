@@ -17,6 +17,9 @@
                 <PropertyName>Id</PropertyName>
               </ListItem>
               <ListItem>
+                <PropertyName>ResourceGroup</PropertyName>
+              </ListItem>
+              <ListItem>
                 <PropertyName>ResourceGroupName</PropertyName>
               </ListItem>
               <ListItem>
@@ -52,8 +55,11 @@
                 <PropertyName>ServiceBusEndpoint</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Enabled </Label>
+                <Label>Enabled</Label>
                 <ScriptBlock>$True</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <PropertyName>KafkaEnabled</PropertyName>
               </ListItem>
               <ListItem>
                 <PropertyName>IsAutoInflateEnabled</PropertyName>
