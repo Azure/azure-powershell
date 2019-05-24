@@ -28,8 +28,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     [OutputType(typeof(PsApiManagementSystemCertificate))]
     public class NewAzureApiManagementSystemCertificate : AzureRMCmdlet
     {
-        [Parameter(ValueFromPipelineByPropertyName = true,
-            Mandatory = true, HelpMessage = "Certificate StoreName")]        
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            HelpMessage = "Certificate StoreName")]        
         [ValidateSet("CertificateAuthority", "Root"), PSDefaultValue(Value = "CertificateAuthority")]
         public string StoreName { get; set; }
 

@@ -14,10 +14,9 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
-    using System.Collections.Generic;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementLogger", DefaultParameterSetName = GetAll)]
     [OutputType(typeof(PsApiManagementLogger))]

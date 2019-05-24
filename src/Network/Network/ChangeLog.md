@@ -18,9 +18,26 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+* Update ResourceId and InputObject for Nat Gateway
+    - Add alias for ResourceId and InputObject
+* Updated below commands for feature: UseLocalAzureIpAddress flag on VpnConnection
+	- Updated New-AzVpnConnection: Added optional parameter -UseLocalAzureIpAddress to indicate that local azure ip address should be used as source address while initiating connection.
+	- Updated Set-AzVpnConnection: Added optional parameter -UseLocalAzureIpAddress to indicate that local azure ip address should be used as source address while initiating connection.
+* Added readonly field PeeredConnections in ExpressRoute peering.
+* Added readonly field GlobalReachEnabled in ExpressRoute.
+* Added breaking change attribute to call out deprecation of AllowGlobalReach field in ExpressRouteCircuit model
+* Fixed Issue 8756 Error using TargetListenerID with AzApplicationGatewayRedirectConfiguration cmdlets
+* Fixed bug in New-AzApplicationGatewayPathRuleConfig that prevented the rewrite ruleset from being set.
+* Fixed displaying of VirtualNetworkTaps in NetworkInterfaceIpConfiguration
+* Fixed Cortex Get cmdlets for list all part
+* Fixed VirtualHub reference creation for ExpressRouteGateways, VpnGateway
+* Add Availability Zones support for Azure Firewall
+
+## Version 1.8.1
 * Add DisableBgpRoutePropagation flag to Effective Route Table output
     - Updated cmdlet:
         - Get-AzEffectiveRouteTable
+* Fix double dash in New-AzApplicationGatewayTrustedRootCertificate documentation
 
 ## Version 1.8.0
 * Add support for Nat Gateway Resource
