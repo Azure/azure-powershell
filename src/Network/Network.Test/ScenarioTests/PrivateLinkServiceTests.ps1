@@ -34,7 +34,7 @@ function Test-PrivateLinkServiceCRUD
     $rgname = Get-ResourceGroupName;
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
-    $location = Get-ProviderLocation "Microsoft.Network/privateLinkServices";
+    $location = Get-ProviderLocation "Microsoft.Network/privateLinkServices" "eastus2euap";
     # Dependency parameters
     $IpConfigurationName = "IpConfigurationName";
 

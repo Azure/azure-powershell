@@ -35,7 +35,7 @@ function Test-PrivateEndpointCRUD
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
     $vnetName = Get-ResourceName;
-    $location = Get-ProviderLocation "Microsoft.Network/privateEndpoints";
+    $location = Get-ProviderLocation "Microsoft.Network/privateEndpoints" "eastus2euap";
     # Dependency parameters
     $SubnetName = "SubnetName";
     $SubnetAddressPrefix = "10.0.1.0/24";
