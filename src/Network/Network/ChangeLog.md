@@ -32,6 +32,13 @@
 * Fixed VirtualHub reference creation for ExpressRouteGateways, VpnGateway
 * Add Availability Zones support for Azure Firewall
 
+* Add support for multiple public IP addresses for Azure Firewall
+    - Updated New-AzFirewall cmdlet:
+        - Added parameter -PublicIpAddress which accepts one or more Public IP Address objects
+        - Added parameter -VirtualNetwork which accepts a Virtual Network object
+        - Added methods AddPublicIpAddress and RemovePublicIpAddress on firewall object - these accept a Public IP Address object as input
+        - Deprecated parameters -PublicIpName and -VirtualNetworkName 
+
 ## Version 1.8.1
 * Add DisableBgpRoutePropagation flag to Effective Route Table output
     - Updated cmdlet:
