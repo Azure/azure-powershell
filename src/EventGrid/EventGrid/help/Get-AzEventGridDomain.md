@@ -216,6 +216,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
+### System.Int32
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.EventGrid.Models.PSDomain
