@@ -54,7 +54,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 source.ProvisioningState,
                 source.LastWorkflowId,
                 source.LastOperationName,
-                new ServerEndpointHealthConverter().Convert(source.SyncStatus));
+                new ServerEndpointHealthConverter().Convert(source.SyncStatus),
+                source.OfflineDataTransfer,
+                source.OfflineDataTransferStorageAccountResourceId,
+                source.OfflineDataTransferStorageAccountTenantId,
+                source.OfflineDataTransferShareName);
         }
 
         /// <summary>
@@ -82,7 +86,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 LastWorkflowId = source.LastWorkflowId,
                 CloudTiering = source.CloudTiering,
                 VolumeFreeSpacePercent = source.VolumeFreeSpacePercent,
-                TierFilesOlderThanDays = source.TierFilesOlderThanDays
+                TierFilesOlderThanDays = source.TierFilesOlderThanDays,
+                OfflineDataTransfer = source.OfflineDataTransfer,
+                OfflineDataTransferShareName = source.OfflineDataTransferShareName,
+                OfflineDataTransferStorageAccountResourceId = source.OfflineDataTransferStorageAccountResourceId,
+                OfflineDataTransferStorageAccountTenantId = source.OfflineDataTransferStorageAccountTenantId
             };
         }
     }
