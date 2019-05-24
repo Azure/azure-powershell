@@ -28,6 +28,8 @@
 * Added breaking change attribute to call out deprecation of AllowGlobalReach field in ExpressRouteCircuit model
 * Fixed Issue 8756 Error using TargetListenerID with AzApplicationGatewayRedirectConfiguration cmdlets
 * Fixed bug in New-AzApplicationGatewayPathRuleConfig that prevented the rewrite ruleset from being set.
+* Fixed Cortex Get cmdlets for list all part
+* Fixed VirtualHub reference creation for ExpressRouteGateways, VpnGateway
 
 ## Version 1.8.1
 * Add DisableBgpRoutePropagation flag to Effective Route Table output
