@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (MNM.ExpressRouteGateway gateway in expressRouteGateways.Value)
                 {
                     PSExpressRouteGateway gatewayToReturn = ToPsExpressRouteGateway(gateway);
-                    gatewayToReturn.ResourceGroupName = resourceGroupName;
+                    gatewayToReturn.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(gateway.Id);
                     gatewaysToReturn.Add(gatewayToReturn);
                 }
             }
