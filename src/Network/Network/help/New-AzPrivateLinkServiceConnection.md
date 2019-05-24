@@ -13,7 +13,7 @@ Creates a private link service connection configuration.
 ## SYNTAX
 
 ```
-New-AzPrivateLinkServiceConnection -Name <String> -PrivateLinkServiceId <String> [-GroupIds <String[]>]
+New-AzPrivateLinkServiceConnection -Name <String> -PrivateLinkServiceId <String> [-GroupId <String[]>]
  [-RequestMessage <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -46,7 +46,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GroupIds
+### -GroupId
 The list of group id.
 
 ```yaml

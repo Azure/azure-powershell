@@ -19,6 +19,7 @@ using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -51,16 +52,22 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The front end ip configurations")]
+           HelpMessage = "The front end ip configuration")]
         [ValidateNotNullOrEmpty]
-        public PSFrontendIPConfiguration[] LoadBalancerFrontendIpConfigurations { get; set; }
+        public PSFrontendIPConfiguration[] LoadBalancerFrontendIpConfiguration { get; set; }
 
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The ip configurations")]
+           HelpMessage = "The ip configuration")]
         [ValidateNotNullOrEmpty]
-        public PSPrivateLinkServiceIpConfiguration[] IpConfigurations { get; set; }
+        public PSPrivateLinkServiceIpConfiguration[] IpConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "A hashtable which represents resource tags.")]
+        public Hashtable Tag { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -82,12 +89,11 @@ namespace Microsoft.Azure.Commands.Network
             };
 
 
-            psPrivateLinkService.LoadBalancerFrontendIpConfigurations = LoadBalancerFrontendIpConfigurations?.ToList();
-            psPrivateLinkService.IpConfigurations = IpConfigurations?.ToList();
-            //psPrivateLinkService.ProvisioningState = "Succeeded";
+            psPrivateLinkService.LoadBalancerFrontendIpConfigurations = LoadBalancerFrontendIpConfiguration?.ToList();
+            psPrivateLinkService.IpConfigurations = IpConfiguration?.ToList();
 
             var plsModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PrivateLinkService>(psPrivateLinkService);
-            // plsModel.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+            plsModel.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
 
             this.PrivateLinkServiceClient.CreateOrUpdate(ResourceGroupName, ServiceName, plsModel);
             var getPrivateLinkService = GetPrivateLinkService(ResourceGroupName, ServiceName);

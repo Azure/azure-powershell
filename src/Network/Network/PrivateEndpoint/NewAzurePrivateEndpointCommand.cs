@@ -20,6 +20,7 @@ using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -61,13 +62,19 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The private link service connection.")]
-        public PSPrivateLinkServiceConnection[] PrivateLinkServiceConnections { get; set; }
+        public PSPrivateLinkServiceConnection[] PrivateLinkServiceConnection { get; set; }
 
         [Parameter(
            Mandatory = false,
            HelpMessage = "Using manual request.")]
         public SwitchParameter ByManualRequest { get; set; }
-        
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "A hashtable which represents resource tags.")]
+        public Hashtable Tag { get; set; }
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
@@ -90,15 +97,15 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.ByManualRequest.IsPresent)
             {
-                psPrivateEndpoint.ManualPrivateLinkServiceConnections = this.PrivateLinkServiceConnections?.ToList();
+                psPrivateEndpoint.ManualPrivateLinkServiceConnections = this.PrivateLinkServiceConnection.ToList();
             }
             else
             {
-                psPrivateEndpoint.PrivateLinkServiceConnections = this.PrivateLinkServiceConnections?.ToList();
+                psPrivateEndpoint.PrivateLinkServiceConnections = this.PrivateLinkServiceConnection.ToList();
             }
             
             var peModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PrivateEndpoint>(psPrivateEndpoint);
-            // peModel.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+            peModel.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
 
             this.PrivateEndpointClient.CreateOrUpdate(ResourceGroupName, Name, peModel);
             var getPrivateEndpoint = GetPrivateEndpoint(ResourceGroupName, Name);

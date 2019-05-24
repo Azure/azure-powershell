@@ -14,8 +14,8 @@ Creates a private link service
 
 ```
 New-AzPrivateLinkService -ServiceName <String> -ResourceGroupName <String> -Location <String>
- -LoadBalancerFrontendIpConfigurations <PSFrontendIPConfiguration[]>
- -IpConfigurations <PSPrivateLinkServiceIpConfiguration[]> [-Force] [-AsJob]
+ -LoadBalancerFrontendIpConfiguration <PSFrontendIPConfiguration[]>
+ -IpConfiguration <PSPrivateLinkServiceIpConfiguration[]> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ $IPConfig = New-AzPrivateLinkServiceIpConfig -Name "IP-Config" -Subnet $vnet.sub
 $publicip = Get-AzPublicIpAddress -ResourceGroupName "myresourcegroup"
 $frontend = New-AzLoadBalancerFrontendIpConfig -Name "FrontendIpConfig01" -PublicIpAddress $publicip
 $lb = New-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "myresourcegroup" -Location "West US" -FrontendIpConfiguration $frontend  
-New-AzPrivateLinkService -ServiceName "mypls" -ResourceGroupName myresourcegroup -Location "West US" -LoadBalancerFrontendIpConfigurations $frontend -IpConfigurations $IPConfig
+New-AzPrivateLinkService -ServiceName "mypls" -ResourceGroupName myresourcegroup -Location "West US" -LoadBalancerFrontendIpConfiguration $frontend -IpConfiguration $IPConfig
 ```
 
 This example creates a private link service.
@@ -83,7 +83,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IpConfigurations
+### -Tag
+Key-value pairs in the form of a hash table. For example:
+@{key0="value0";key1=$null;key2="value2"}
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -IpConfiguration
 The ip configurations
 
 ```yaml
@@ -98,7 +114,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -LoadBalancerFrontendIpConfigurations
+### -LoadBalancerFrontendIpConfiguration
 The front end ip configurations
 
 ```yaml

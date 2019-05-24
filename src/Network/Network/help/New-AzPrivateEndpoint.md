@@ -14,7 +14,7 @@ Creates a private endpoint.
 
 ```
 New-AzPrivateEndpoint -Name <String> -ResourceGroupName <String> -Location <String> -Subnet <PSSubnet>
- -PrivateLinkServiceConnections <PSPrivateLinkServiceConnection[]>
+ -PrivateLinkServiceConnection <PSPrivateLinkServiceConnection[]>
  [-ByManualRequest]] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -28,7 +28,7 @@ The **New-AzPrivateEndpoint** cmdlet creates a private endpoint.
 ```
 $virtualNetwork = Get-AzVirtualNetwork -ResourceName MyVirtualNetwork -ResourceGroupName TestResourceGroup
 $plsConnection= New-AzPrivateLinkServiceConnection -Name MyPLSConnections -PrivateLinkServiceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/providers/Microsoft.Network/privateLinkServices/privateLinkService" -RequestMessage "Please Approve my request"
-New-AzPrivateEndpoint -Name MyPrivateEndpoint -ResourceGroup TestResourceGroup -Location centralus -PirvateLinkServiceConnections $plsConnection -Subnet $virtualNetwork.Subnets[0]
+New-AzPrivateEndpoint -Name MyPrivateEndpoint -ResourceGroup TestResourceGroup -Location centralus -PirvateLinkServiceConnection $plsConnection -Subnet $virtualNetwork.Subnets[0]
 ```
 
 This example creates a private endpoint with specific private link service id in a specific subnet in a virtual network.
@@ -80,6 +80,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Tag
+Key-value pairs in the form of a hash table. For example:
+@{key0="value0";key1=$null;key2="value2"}
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Location
 location.
 
@@ -125,7 +141,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PrivateLinkServiceConnections
+### -PrivateLinkServiceConnection
 The private link service connection.
 
 ```yaml

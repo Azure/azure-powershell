@@ -26,7 +26,7 @@
         - Get-AzPrivateLinkService 
         - New-AzPrivateLinkService
         - Remove-AzPrivateLinkService
-        - New-New-AzPrivateLinkServiceIpConfig
+        - New-AzPrivateLinkServiceIpConfig
         - Set-AzPrivateEndpointConnection
 * Add PrivateEndpoint
     - New cmdlets

@@ -58,7 +58,7 @@ function Test-PrivateLinkServiceCRUD
         $LoadBalancerFrontendIpConfiguration = Get-AzLoadBalancerFrontendIpConfig -LoadBalancer $LB;
         
         # Create PrivateLinkService
-        $vPrivateLinkService = New-AzPrivateLinkService -ResourceGroup $resourceGroup -ServiceName $rname -Location $location -IpConfigurations $IpConfiguration -LoadBalancerFrontendIpConfigurations $LoadBalancerFrontendIpConfiguration;
+        $vPrivateLinkService = New-AzPrivateLinkService -ResourceGroup $resourceGroup -ServiceName $rname -Location $location -IpConfiguration $IpConfiguration -LoadBalancerFrontendIpConfiguration $LoadBalancerFrontendIpConfiguration;
         Assert-NotNull $vPrivateLinkService;
         Assert-True { Check-CmdletReturnType "New-AzPrivateLinkService" $vPrivateLinkService };
         Assert-NotNull $vPrivateLinkService.IpConfigurations;

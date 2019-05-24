@@ -52,7 +52,7 @@ function Test-PrivateEndpointCRUD
         $PrivateLinkServiceConnection = New-AzPrivateLinkServiceConnection -Name $PrivateLinkServiceConnectionName;
 
         # Create PrivateEndpoint
-        $vPrivateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgname -Name $rname -Location $location -Subnet $vnet.subnets[0] -PrivateLinkServiceConnections $PrivateLinkServiceConnection;
+        $vPrivateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgname -Name $rname -Location $location -Subnet $vnet.subnets[0] -PrivateLinkServiceConnection $PrivateLinkServiceConnection;
         Assert-NotNull $vPrivateEndpoint;
         Assert-True { Check-CmdletReturnType "New-AzPrivateEndpoint" $vPrivateEndpoint };
         Assert-NotNull $vPrivateEndpoint.Subnets;
