@@ -115,6 +115,11 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A list of availability zones denoting where the firewall needs to come from.")]
+        public string[] Zone { get; set; }
+
         public override void Execute()
         {
             var isVnetPresent = VirtualNetworkName!=null;
@@ -153,6 +158,11 @@ namespace Microsoft.Azure.Commands.Network
                 NetworkRuleCollections = this.NetworkRuleCollection?.ToList(),
                 ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert
             };
+
+            if (this.Zone != null)
+            {
+                firewall.Zones = this.Zone?.ToList();
+            }
 
             if (this.virtualNetwork != null)
             {
