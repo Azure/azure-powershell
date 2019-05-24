@@ -29,7 +29,6 @@ PS C:\> Get-AzServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -Name
 
 Name               : SB-Example1
 Id                 : /subscriptions/{subscription id}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
-ResourceGroup      : Default-ServiceBus-WestUS
 ResourceGroupName  : Default-ServiceBus-WestUS
 Location           : West US
 Tags               : {TesttingTags, TestingTagValue, TestTag, TestTagValue}
