@@ -1357,4 +1357,8 @@ function Test-TagsNotRemovedBySetWebApp
 
 	Assert-notNull $webApp.Tags
 	Assert-notNull $slot.Tags
+
+	# Test - tags not removed after using Set-AzWebApp with WebApp parameter
+	$webapp =  Set-AzWebApp  -WebApp $getApp
+	Assert-notNull $webApp.Tags
 }
