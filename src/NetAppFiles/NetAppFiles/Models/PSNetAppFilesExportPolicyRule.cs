@@ -12,53 +12,43 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Commands.NetAppFiles.Models
 {
-    /// <summary>
-    /// ARM tracked resource
-    /// </summary>
-    public class PSNetAppFilesAccount
-    {
-        /// <summary>
-        /// Gets or sets the Resource group name
-        /// </summary>
-        public string ResourceGroupName { get; set; }
+    public class PSNetAppFilesExportPolicyRule
+    {    /// <summary>
+         /// Gets or sets order index
+         /// </summary>
+        public int? RuleIndex { get; set; }
 
         /// <summary>
-        /// Gets or sets Resource location
+        /// Gets or sets read only access
         /// </summary>
-        public string Location { get; set; }
+        public bool? UnixReadOnly { get; set; }
 
         /// <summary>
-        /// Gets resource Id
+        /// Gets or sets read and write access
         /// </summary>
-        public string Id { get; set; }
+        public bool? UnixReadWrite { get; set; }
 
         /// <summary>
-        /// Gets resource name
+        /// Gets or sets allows CIFS protocol
         /// </summary>
-        public string Name { get; set; }
+        public bool? Cifs { get; set; }
 
         /// <summary>
-        /// Gets resource type
+        /// Gets or sets allows NFSv3 protocol
         /// </summary>
-        public string Type { get; set; }
+        public bool? Nfsv3 { get; set; }
 
         /// <summary>
-        /// Gets or sets resource tags
+        /// Gets or sets allows NFSv4 protocol
         /// </summary>
-        public object Tags { get; set; }
+        public bool? Nfsv4 { get; set; }
 
         /// <summary>
-        /// Gets azure lifecycle management
+        /// Gets or sets client ingress specification as comma separated string
+        /// with IPv4 CIDRs, IPv4 host addresses and host names
         /// </summary>
-        public string ProvisioningState { get; set; }
-
-        /// <summary>
-        /// Gets or sets active directory
-        /// </summary>
-        public List<PSNetAppFilesActiveDirectory> ActiveDirectories { get; set; }
+        public string AllowedClients { get; set; }
     }
 }

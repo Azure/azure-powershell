@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
             Mandatory = true,
             HelpMessage = "The service level of the ANF pool")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Standard", "Premium", "Extreme")]
+        [PSArgumentCompleter("Standard", "Premium", "Ultra")]
         public string ServiceLevel { get; set; }
 
         [Parameter(

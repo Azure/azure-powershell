@@ -20,16 +20,22 @@ using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
+using System.Collections.Generic;
+
+// Note:
+// Both set and Update need to exist
+// Patch of active directories can only alter the content
+// to remove the active directory a put is required
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Account
 {
     [Cmdlet(
-        "New",
+        "Set",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesAccount",
         SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesAccount))]
-    [Alias("New-AnfAccount")]
-    public class NewAzureRmNetAppFilesAccount : AzureNetAppFilesCmdletBase
+    [Alias("Set-AnfAccount")]
+    public class SetAzureRmNetAppFilesAccount : AzureNetAppFilesCmdletBase
     {
         [Parameter(
             Mandatory = true,
@@ -70,7 +76,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             var netAppAccountBody = new NetAppAccount()
             {
                 Location = Location,
-                ActiveDirectories = (ActiveDirectories != null) ? ModelExtensions.ConvertActiveDirectoriesFromPs(ActiveDirectories) : null,
+                ActiveDirectories = (ActiveDirectories != null) ? ModelExtensions.ConvertActiveDirectoriesFromPs(ActiveDirectories) : new List<ActiveDirectory>(),
                 Tags = Tag
             };
 

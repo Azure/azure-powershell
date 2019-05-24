@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,67 +12,72 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using System.Management.Automation;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
-using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
-using System.Linq;
+using Microsoft.Azure.Management.NetApp.Models;
+using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Account
 {
     [Cmdlet(
-        "Get",
+        "Update",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesAccount",
+        SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesAccount))]
-    [Alias("Get-AnfAccount")]
-    public class GetAzureRmNetAppFilesAccount : AzureNetAppFilesCmdletBase
+    [Alias("Update-AnfAccount")]
+    public class UpdateAzureRmNetAppFilesAccount : AzureNetAppFilesCmdletBase
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The resource group of the ANF account",
-            ParameterSetName = FieldsParameterSet)]
+            HelpMessage = "The resource group of the ANF account")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of the ANF account",
-            ParameterSetName = FieldsParameterSet)]
+            Mandatory = true,
+            HelpMessage = "The name of the ANF account")]
         [ValidateNotNullOrEmpty]
         [Alias("AccountName")]
-        [ResourceNameCompleter("Microsoft.NetApp/netAppAccounts", nameof(ResourceGroupName))]
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource id of the ANF account",
-            ParameterSetName = ResourceIdParameterSet)]
+            Mandatory = false,
+            HelpMessage = "The location of the resource")]
         [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
+        [LocationCompleter("Microsoft.NetApp/netAppAccounts")]
+        public string Location { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A hashtable array which represents the active directories")]
+        [ValidateNotNullOrEmpty]
+        public Hashtable[] ActiveDirectories { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A hashtable which represents resource tags")]
+        [ValidateNotNullOrEmpty]
+        [Alias("Tags")]
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (ParameterSetName == ResourceIdParameterSet)
+            var netAppAccountBody = new NetAppAccountPatch()
             {
-                var resourceIdentifier = new ResourceIdentifier(ResourceId);
-                ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                Name = resourceIdentifier.ResourceName;
-            }
+                Location = Location,
+                ActiveDirectories = (ActiveDirectories != null) ? ModelExtensions.ConvertActiveDirectoriesFromPs(ActiveDirectories) : null,
+                Tags = Tag
+            };
 
-            if (Name != null)
+            if (ShouldProcess(Name, "Create the new account"))
             {
-                var anfAccount = AzureNetAppFilesManagementClient.Accounts.Get(ResourceGroupName, Name);
+                var anfAccount = AzureNetAppFilesManagementClient.Accounts.Update(netAppAccountBody, ResourceGroupName, Name);
                 WriteObject(anfAccount.ToPsNetAppFilesAccount());
-            }
-            else
-            {
-                var anfAccounts = AzureNetAppFilesManagementClient.Accounts.List(ResourceGroupName).Select(e => e.ToPsNetAppFilesAccount());
-                WriteObject(anfAccounts, true);
             }
         }
     }

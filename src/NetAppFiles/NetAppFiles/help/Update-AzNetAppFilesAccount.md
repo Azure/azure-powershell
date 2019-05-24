@@ -1,44 +1,45 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/new-aznetappfilesaccount
+online version:
 schema: 2.0.0
 ---
 
-# New-AzNetAppFilesAccount
+# Update-AzNetAppFilesAccount
 
 ## SYNOPSIS
-Creates a new Azure NetApp Files (ANF) account.
+Updates an Azure NetApp Files (ANF) account according to the optional modifiers provided.
 
 ## SYNTAX
 
 ```
-New-AzNetAppFilesAccount -ResourceGroupName <String> -Location <String> -Name <String>
+Update-AzNetAppFilesAccount -ResourceGroupName <String> -Name <String> [-Location <String>]
  [-ActiveDirectories <Hashtable[]>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzNetAppFilesAccount** cmdlet creates an ANF account.
+The **Update-AzNetAppFilesAccount** cmdlet modifies an ANF account.
 
 ## EXAMPLES
 
-### Example 1: Create an ANF account
+### Example 1 : Updates an ANF account
 ```
-
-PS C:\>New-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Name "MyAnfAccount" -l "westus2"
+PS C:\>Update-AzNetAppFilesPool -ResourceGroupName "MyRG" -l "westus2" -Name "MyAnfAccount" -Tag @{'Tag1' = 'Value1'}
 
 Output:
 
 Location          : westus2
-Id                : /subscriptions/mySubs/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount
+Id                : /subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount
 Name              : MyAnfAccount
 Type              : Microsoft.NetApp/netAppAccounts
-Tags              :
+Tags              : {Tag1}
+AccountId         : 9fa2ca6d-1e48-4439-30e3-7de056e44e5a
+ActiveDirectories :
 ProvisioningState : Succeeded
 ```
 
-This command creates the new ANF account "MyAnfAccount".
+This command performs an upate on the given account modifying the tags to those provided.
 
 ## PARAMETERS
 
@@ -80,7 +81,7 @@ Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
