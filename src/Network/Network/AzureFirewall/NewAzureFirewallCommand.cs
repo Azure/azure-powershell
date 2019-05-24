@@ -20,6 +20,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
         private const string DefaultParameterSet = "Default";
 
         private PSVirtualNetwork virtualNetwork;
-        private PSPublicIpAddress publicIpAddress;
+        private List<PSPublicIpAddress> publicIpAddresses;
 
         [Alias("ResourceName")]
         [Parameter(
@@ -54,21 +55,55 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string Location { get; set; }
 
+        [CmdletParameterBreakingChange(
+            "VirtualNetworkName",
+            deprecateByVersion: "2.0.0",
+            ChangeDescription = "This parameter will be removed in an upcoming breaking change release. After this point the Virtual Network will be provided as an object instead of a string.", 
+            OldWay = "New-AzureRmFirewall -VirtualNetworkName \"vnet-name\"",
+            NewWay = "New-AzureRmFirewall -VirtualNetwork $vnet",
+            OldParamaterType = typeof(string),
+            NewParameterTypeName = nameof(PSVirtualNetwork),
+            ReplaceMentCmdletParameterName = "VirtualNetwork")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "IpConfigurationParameterValues",
+            ParameterSetName = "OldIpConfigurationParameterValues",
             HelpMessage = "Virtual Network Name")]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkName { get; set; }
+
+        [CmdletParameterBreakingChange(
+            "PublicIpName",
+            deprecateByVersion: "2.0.0",
+            ChangeDescription = "This parameter will be removed in an upcoming breaking change release. After this point the Public IP Address will be provided as a list of one or more objects instead of a string.",
+            OldWay = "New-AzureRmFirewall -PublicIpName \"public-ip-name\"",
+            NewWay = "New-AzureRmFirewall -PublicIpAddress @($publicip1, $publicip2)",
+            OldParamaterType = typeof(string),
+            NewParameterTypeName = "List<PSPublicIpAddress>",
+            ReplaceMentCmdletParameterName = "PublicIpAddress")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "OldIpConfigurationParameterValues",
+            HelpMessage = "Public IP address name. The Public IP must use Standard SKU and must belong to the same resource group as the Firewall.")]
+        [ValidateNotNullOrEmpty]
+        public string PublicIpName { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "IpConfigurationParameterValues",
-            HelpMessage = "Public Ip Name")]
+            HelpMessage = "Virtual Network")]
         [ValidateNotNullOrEmpty]
-        public string PublicIpName { get; set; }
+        public PSVirtualNetwork VirtualNetwork { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "IpConfigurationParameterValues",
+            HelpMessage = "One or more Public IP Addresses. The Public IP addresses must use Standard SKU and must belong to the same resource group as the Firewall.")]
+        [ValidateNotNullOrEmpty]
+        public List<PSPublicIpAddress> PublicIpAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -122,16 +157,23 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            var isVnetPresent = VirtualNetworkName!=null;
-
-            // Get the virtual network, get the public IP address
-            if (isVnetPresent)
+            // Old params provided - Get the virtual network, get the public IP address
+            if (!string.IsNullOrEmpty(VirtualNetworkName))
             {
                 var vnet = this.VirtualNetworkClient.Get(this.ResourceGroupName, VirtualNetworkName);
                 this.virtualNetwork = NetworkResourceManagerProfile.Mapper.Map<PSVirtualNetwork>(vnet);
 
                 var publicIp = this.PublicIPAddressesClient.Get(this.ResourceGroupName, PublicIpName);
-                this.publicIpAddress = NetworkResourceManagerProfile.Mapper.Map<PSPublicIpAddress>(publicIp);
+                this.publicIpAddresses = new List<PSPublicIpAddress>
+                {
+                    NetworkResourceManagerProfile.Mapper.Map<PSPublicIpAddress>(publicIp)
+                };
+            }
+            // New params
+            else if (VirtualNetwork != null)
+            {
+                this.virtualNetwork = VirtualNetwork;
+                this.publicIpAddresses = PublicIpAddress;
             }
 
             base.Execute();
@@ -166,7 +208,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.virtualNetwork != null)
             {
-                firewall.Allocate(this.virtualNetwork, this.publicIpAddress);
+                firewall.Allocate(this.virtualNetwork, this.publicIpAddresses);
             }
 
             // Map to the sdk object
