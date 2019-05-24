@@ -18,13 +18,16 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+* Add AvailalbePrivateEndpointType
+    - New cmdlets 
+    	- Get-AzAvailablePrivateEndpointType
 * Add PrivatePrivateLinkService
     - New cmdlets 
-    	- Get-AzPrivateLinkService 
-    	- New-AzPrivateLinkService 
-    	- Remove-AzPrivateLinkService 
-    	- New-New-AzPrivateLinkServiceIpConfig
-		- Set-AzPrivateEndpointConnection
+        - Get-AzPrivateLinkService 
+        - New-AzPrivateLinkService
+        - Remove-AzPrivateLinkService
+        - New-New-AzPrivateLinkServiceIpConfig
+        - Set-AzPrivateEndpointConnection
 * Add PrivateEndpoint
     - New cmdlets
         - Get-AzPrivateEndpoint
