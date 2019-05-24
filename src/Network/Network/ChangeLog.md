@@ -28,6 +28,7 @@
 * Added breaking change attribute to call out deprecation of AllowGlobalReach field in ExpressRouteCircuit model
 * Fixed Issue 8756 Error using TargetListenerID with AzApplicationGatewayRedirectConfiguration cmdlets
 * Fixed bug in New-AzApplicationGatewayPathRuleConfig that prevented the rewrite ruleset from being set.
+* Fixed displaying of VirtualNetworkTaps in NetworkInterfaceIpConfiguration
 * Fixed Cortex Get cmdlets for list all part
 * Fixed VirtualHub reference creation for ExpressRouteGateways, VpnGateway
 * Add Availability Zones support for Azure Firewall
