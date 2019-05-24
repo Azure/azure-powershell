@@ -93,7 +93,7 @@ function Create-ProjectToFullPathMappings
     $Mappings = [ordered]@{}
     foreach ($ServiceFolder in $Script:ServiceFolders)
     {
-        $CsprojFiles = Get-ChildItem -Path $ServiceFolder -Filter "*.csproj" -Recurse | where { $_.FullName -notlike "*Stack*" }
+        $CsprojFiles = Get-ChildItem -Path $ServiceFolder -Filter "*.csproj" -Recurse
         foreach ($CsprojFile in $CsprojFiles)
         {
             $Mappings[$CsprojFile.BaseName] = $CsprojFile.FullName
@@ -124,7 +124,7 @@ function Create-SolutionToProjectMappings
     $Mappings = [ordered]@{}
     foreach ($ServiceFolder in $Script:ServiceFolders)
     {
-        $SolutionFiles = Get-ChildItem -Path $ServiceFolder.FullName -Filter "*.sln" | Where-Object { $_.FullName -notlike "*Stack*" }
+        $SolutionFiles = Get-ChildItem -Path $ServiceFolder.FullName -Filter "*.sln"
         foreach ($SolutionFile in $SolutionFiles)
         {
             $Mappings = Add-ProjectDependencies -Mappings $Mappings -SolutionPath $SolutionFile.FullName
@@ -220,8 +220,7 @@ function Create-ModuleMappings
     foreach ($ServiceFolder in $Script:ServiceFolders)
     {
         $Key = "src/$($ServiceFolder.Name)"
-        $ModuleManifestFiles = Get-ChildItem -Path $ServiceFolder.FullName -Filter "*.psd1" -Recurse | Where-Object { $_.FullName -notlike "*Stack*" -and `
-                                                                                                                      $_.FullName -notlike "*.Test*" -and `
+        $ModuleManifestFiles = Get-ChildItem -Path $ServiceFolder.FullName -Filter "*.psd1" -Recurse | Where-Object { $_.FullName -notlike "*.Test*" -and `
                                                                                                                       $_.FullName -notlike "*Release*" -and `
                                                                                                                       $_.FullName -notlike "*Debug*" -and `
                                                                                                                       $_.Name -like "Az.*" }
