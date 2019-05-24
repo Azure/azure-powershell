@@ -57,6 +57,7 @@ namespace Microsoft.Azure.Commands.Network
 
             var psPrivateLinkService = ToPsPrivateLinkService(privateLinkService);
             psPrivateLinkService.ResourceGroupName = resourceGroupName;
+            psPrivateLinkService.Tag = TagsConversionHelper.CreateTagHashtable(privateLinkService.Tags);
 
             return psPrivateLinkService;
         }

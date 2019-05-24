@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The list of group id.")]
-        public string[] GroupIds { get; set; }
+        public string[] GroupId { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -66,10 +66,8 @@ namespace Microsoft.Azure.Commands.Network
                 psPlsConnection.RequestMessage = this.RequestMessage;
             }
 
-            if(this.GroupIds != null)
-            {
-                psPlsConnection.GroupIds = new List<string>(this.GroupIds);
-            }
+            psPlsConnection.GroupIds = this.GroupId?.ToList();
+
 
             WriteObject(psPlsConnection);
         }

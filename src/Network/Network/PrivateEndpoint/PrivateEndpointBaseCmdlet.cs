@@ -57,6 +57,7 @@ namespace Microsoft.Azure.Commands.Network
 
             var psPrivateEndpoint = ToPsPrivateEndpoint(privateEndpoint);
             psPrivateEndpoint.ResourceGroupName = resourceGroupName;
+            psPrivateEndpoint.Tag = TagsConversionHelper.CreateTagHashtable(privateEndpoint.Tags);
 
             return psPrivateEndpoint;
         }
