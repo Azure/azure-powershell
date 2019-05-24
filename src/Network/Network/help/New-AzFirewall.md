@@ -18,7 +18,7 @@ Creates a new Firewall in a resource group.
 New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String>
  [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
- [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-Zone <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String>
 New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -VirtualNetworkName <String>
  -PublicIpName <String> [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
- [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-Zone <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -96,6 +96,16 @@ New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -Virt
 
 This example creates a Firewall which allows all HTTP traffic on port 8080 unless it is considered malicious by Threat Intel.
 When running in Deny mode, unlike Alert, traffic considered malicious by Threat Intel is not just logged, but also blocked.
+
+### 6:  Create a Firewall with no rules and with availability zones
+```
+$rgName = "resourceGroupName"
+$vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name "vnet"
+$pip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name "publicIpName"
+New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetworkName $vnet.Name -PublicIpName $pip.Name -Zone 1,2,3
+```
+
+This example creates a Firewall with all available availability zones.
 
 ## PARAMETERS
 
@@ -246,6 +256,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Zone
+A list of availability zones denoting where the firewall needs to come from.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
