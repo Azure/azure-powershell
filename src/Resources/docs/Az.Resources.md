@@ -52,13 +52,13 @@ You can also specify which resource collections (users, groups, etc.) should be 
 Gets service principal information from the directory.
 Query by objectId or pass a filter to query by appId
 
-### [Get-AzADServicePrincipalKeyCredential](Get-AzADServicePrincipalKeyCredential.md)
+### [Get-AzADServicePrincipalKeyCredentials](Get-AzADServicePrincipalKeyCredentials.md)
 Get the keyCredentials associated with the specified service principal.
 
 ### [Get-AzADServicePrincipalOwner](Get-AzADServicePrincipalOwner.md)
 The owners are a set of non-admin users who are allowed to modify this object.
 
-### [Get-AzADServicePrincipalPasswordCredential](Get-AzADServicePrincipalPasswordCredential.md)
+### [Get-AzADServicePrincipalPasswordCredentials](Get-AzADServicePrincipalPasswordCredentials.md)
 Gets the passwordCredentials associated with a service principal.
 
 ### [Get-AzADUser](Get-AzADUser.md)
@@ -67,13 +67,13 @@ Gets user information from the directory.
 ### [Get-AzADUserMemberGroup](Get-AzADUserMemberGroup.md)
 Gets a collection that contains the object IDs of the groups of which the user is a member.
 
-### [Get-AzApplicationKeyCredential](Get-AzApplicationKeyCredential.md)
+### [Get-AzApplicationKeyCredentials](Get-AzApplicationKeyCredentials.md)
 Get the keyCredentials associated with an application.
 
 ### [Get-AzApplicationOwner](Get-AzApplicationOwner.md)
 The owners are a set of non-admin users who are allowed to modify this object.
 
-### [Get-AzApplicationPasswordCredential](Get-AzApplicationPasswordCredential.md)
+### [Get-AzApplicationPasswordCredentials](Get-AzApplicationPasswordCredentials.md)
 Get the passwordCredentials associated with an application.
 
 ### [Get-AzApplicationServicePrincipalId](Get-AzApplicationServicePrincipalId.md)
@@ -439,19 +439,19 @@ Update an existing application.
 ### [Update-AzADServicePrincipal](Update-AzADServicePrincipal.md)
 Updates a service principal in the directory.
 
-### [Update-AzADServicePrincipalKeyCredential](Update-AzADServicePrincipalKeyCredential.md)
+### [Update-AzADServicePrincipalKeyCredentials](Update-AzADServicePrincipalKeyCredentials.md)
 Update the keyCredentials associated with a service principal.
 
-### [Update-AzADServicePrincipalPasswordCredential](Update-AzADServicePrincipalPasswordCredential.md)
+### [Update-AzADServicePrincipalPasswordCredentials](Update-AzADServicePrincipalPasswordCredentials.md)
 Updates the passwordCredentials associated with a service principal.
 
 ### [Update-AzADUser](Update-AzADUser.md)
 Updates a user.
 
-### [Update-AzApplicationKeyCredential](Update-AzApplicationKeyCredential.md)
+### [Update-AzApplicationKeyCredentials](Update-AzApplicationKeyCredentials.md)
 Update the keyCredentials associated with an application.
 
-### [Update-AzApplicationPasswordCredential](Update-AzApplicationPasswordCredential.md)
+### [Update-AzApplicationPasswordCredentials](Update-AzApplicationPasswordCredentials.md)
 Update passwordCredentials associated with an application.
 
 ### [Update-AzManagedApplication](Update-AzManagedApplication.md)

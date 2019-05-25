@@ -1,45 +1,45 @@
 ---
 external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azadserviceprincipalpasswordcredential
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azadserviceprincipalkeycredentials
 schema: 2.0.0
 ---
 
-# Update-AzADServicePrincipalPasswordCredential
+# Update-AzADServicePrincipalKeyCredentials
 
 ## SYNOPSIS
-Updates the passwordCredentials associated with a service principal.
+Update the keyCredentials associated with a service principal.
 
 ## SYNTAX
 
 ### Update (Default)
 ```
-Update-AzADServicePrincipalPasswordCredential -ObjectId <String> -TenantId <String>
- [-Parameter <IPasswordCredentialsUpdateParameters>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzADServicePrincipalKeyCredentials -ObjectId <String> -TenantId <String>
+ [-Parameter <IKeyCredentialsUpdateParameters>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Update-AzADServicePrincipalPasswordCredential -ObjectId <String> -TenantId <String> [-PassThru]
- -Value <IPasswordCredential[]> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzADServicePrincipalKeyCredentials -ObjectId <String> -TenantId <String> [-PassThru]
+ -Value <IKeyCredential[]> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzADServicePrincipalPasswordCredential -InputObject <IResourcesIdentity> [-PassThru]
- -Value <IPasswordCredential[]> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzADServicePrincipalKeyCredentials -InputObject <IResourcesIdentity> [-PassThru]
+ -Value <IKeyCredential[]> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
-Update-AzADServicePrincipalPasswordCredential -InputObject <IResourcesIdentity>
- [-Parameter <IPasswordCredentialsUpdateParameters>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzADServicePrincipalKeyCredentials -InputObject <IResourcesIdentity>
+ [-Parameter <IKeyCredentialsUpdateParameters>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates the passwordCredentials associated with a service principal.
+Update the keyCredentials associated with a service principal.
 
 ## EXAMPLES
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectId
-The object ID of the service principal.
+The object ID for which to get service principal information.
 
 ```yaml
 Type: System.String
@@ -98,10 +98,10 @@ Accept wildcard characters: False
 ```
 
 ### -Parameter
-Request parameters for a PasswordCredentials update operation.
+Request parameters for a KeyCredentials update operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPasswordCredentialsUpdateParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IKeyCredentialsUpdateParameters
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -143,10 +143,10 @@ Accept wildcard characters: False
 ```
 
 ### -Value
-A collection of PasswordCredentials.
+A collection of KeyCredentials.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPasswordCredential[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IKeyCredential[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -200,5 +200,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azadserviceprincipalpasswordcredential](https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azadserviceprincipalpasswordcredential)
+[https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azadserviceprincipalkeycredentials](https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azadserviceprincipalkeycredentials)
 

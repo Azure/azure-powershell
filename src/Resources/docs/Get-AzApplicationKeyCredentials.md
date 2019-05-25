@@ -1,11 +1,11 @@
 ---
 external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azapplicationkeycredential
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azapplicationkeycredentials
 schema: 2.0.0
 ---
 
-# Get-AzApplicationKeyCredential
+# Get-AzApplicationKeyCredentials
 
 ## SYNOPSIS
 Get the keyCredentials associated with an application.
@@ -13,7 +13,7 @@ Get the keyCredentials associated with an application.
 ## SYNTAX
 
 ```
-Get-AzApplicationKeyCredential -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>]
+Get-AzApplicationKeyCredentials -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -88,5 +88,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azapplicationkeycredential](https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azapplicationkeycredential)
+[https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azapplicationkeycredentials](https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azapplicationkeycredentials)
 

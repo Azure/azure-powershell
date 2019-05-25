@@ -1,11 +1,11 @@
 ---
 external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azapplicationpasswordcredential
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azapplicationpasswordcredentials
 schema: 2.0.0
 ---
 
-# Update-AzApplicationPasswordCredential
+# Update-AzApplicationPasswordCredentials
 
 ## SYNOPSIS
 Update passwordCredentials associated with an application.
@@ -14,26 +14,26 @@ Update passwordCredentials associated with an application.
 
 ### Update (Default)
 ```
-Update-AzApplicationPasswordCredential -ObjectId <String> -TenantId <String>
+Update-AzApplicationPasswordCredentials -ObjectId <String> -TenantId <String>
  [-Parameter <IPasswordCredentialsUpdateParameters>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Update-AzApplicationPasswordCredential -ObjectId <String> -TenantId <String> [-PassThru]
+Update-AzApplicationPasswordCredentials -ObjectId <String> -TenantId <String> [-PassThru]
  -Value <IPasswordCredential[]> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzApplicationPasswordCredential -InputObject <IResourcesIdentity> [-PassThru]
+Update-AzApplicationPasswordCredentials -InputObject <IResourcesIdentity> [-PassThru]
  -Value <IPasswordCredential[]> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
-Update-AzApplicationPasswordCredential -InputObject <IResourcesIdentity>
+Update-AzApplicationPasswordCredentials -InputObject <IResourcesIdentity>
  [-Parameter <IPasswordCredentialsUpdateParameters>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -200,5 +200,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azapplicationpasswordcredential](https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azapplicationpasswordcredential)
+[https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azapplicationpasswordcredentials](https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azapplicationpasswordcredentials)
 

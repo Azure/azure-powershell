@@ -1,24 +1,24 @@
 ---
 external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadserviceprincipalkeycredential
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadserviceprincipalpasswordcredentials
 schema: 2.0.0
 ---
 
-# Get-AzADServicePrincipalKeyCredential
+# Get-AzADServicePrincipalPasswordCredentials
 
 ## SYNOPSIS
-Get the keyCredentials associated with the specified service principal.
+Gets the passwordCredentials associated with a service principal.
 
 ## SYNTAX
 
 ```
-Get-AzADServicePrincipalKeyCredential -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>]
+Get-AzADServicePrincipalPasswordCredentials -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the keyCredentials associated with the specified service principal.
+Gets the passwordCredentials associated with a service principal.
 
 ## EXAMPLES
 
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectId
-The object ID of the service principal for which to get keyCredentials.
+The object ID of the service principal.
 
 ```yaml
 Type: System.String
@@ -83,10 +83,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IKeyCredential
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPasswordCredential
 ## NOTES
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadserviceprincipalkeycredential](https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadserviceprincipalkeycredential)
+[https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadserviceprincipalpasswordcredentials](https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadserviceprincipalpasswordcredentials)
 

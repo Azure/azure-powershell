@@ -1,11 +1,11 @@
 ---
 external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azapplicationpasswordcredential
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azapplicationpasswordcredentials
 schema: 2.0.0
 ---
 
-# Get-AzApplicationPasswordCredential
+# Get-AzApplicationPasswordCredentials
 
 ## SYNOPSIS
 Get the passwordCredentials associated with an application.
@@ -13,7 +13,7 @@ Get the passwordCredentials associated with an application.
 ## SYNTAX
 
 ```
-Get-AzApplicationPasswordCredential -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>]
+Get-AzApplicationPasswordCredentials -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -88,5 +88,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azapplicationpasswordcredential](https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azapplicationpasswordcredential)
+[https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azapplicationpasswordcredentials](https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azapplicationpasswordcredentials)
 

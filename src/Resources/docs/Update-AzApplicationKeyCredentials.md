@@ -1,11 +1,11 @@
 ---
 external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azapplicationkeycredential
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azapplicationkeycredentials
 schema: 2.0.0
 ---
 
-# Update-AzApplicationKeyCredential
+# Update-AzApplicationKeyCredentials
 
 ## SYNOPSIS
 Update the keyCredentials associated with an application.
@@ -14,26 +14,26 @@ Update the keyCredentials associated with an application.
 
 ### Update (Default)
 ```
-Update-AzApplicationKeyCredential -ObjectId <String> -TenantId <String>
+Update-AzApplicationKeyCredentials -ObjectId <String> -TenantId <String>
  [-Parameter <IKeyCredentialsUpdateParameters>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Update-AzApplicationKeyCredential -ObjectId <String> -TenantId <String> [-PassThru] -Value <IKeyCredential[]>
+Update-AzApplicationKeyCredentials -ObjectId <String> -TenantId <String> [-PassThru] -Value <IKeyCredential[]>
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzApplicationKeyCredential -InputObject <IResourcesIdentity> [-PassThru] -Value <IKeyCredential[]>
+Update-AzApplicationKeyCredentials -InputObject <IResourcesIdentity> [-PassThru] -Value <IKeyCredential[]>
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
-Update-AzApplicationKeyCredential -InputObject <IResourcesIdentity>
+Update-AzApplicationKeyCredentials -InputObject <IResourcesIdentity>
  [-Parameter <IKeyCredentialsUpdateParameters>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -200,5 +200,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azapplicationkeycredential](https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azapplicationkeycredential)
+[https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azapplicationkeycredentials](https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azapplicationkeycredentials)
 

@@ -122,6 +122,21 @@ directive:
     set:
       subject: ADApplication
   - where:
+      subject: ApplicationOwner
+    set:
+      subject: ADApplicationOwner
+  - where:
+      subject: ApplicationKeyCredential
+    set:
+      subject: ADApplicationKeyCredential
+  - where:
+      subject: ApplicationPasswordCredential
+    set:
+      subject: ADApplicationPasswordCredential
+  - where:
+      subject: ApplicationServicePrincipalId
+    hide: true
+  - where:
       subject: ^Feature(.*)
     set:
       subject: ProviderFeature$1
@@ -149,6 +164,10 @@ directive:
       parameter-name: ApplicationObjectId
     set:
       parameter-name: ObjectId
+  - where:
+      parameter-name: Filter
+    set:
+      alias: ODataQuery
   - where:
       subject: Resource
       parameter-name: GroupName
@@ -179,4 +198,80 @@ directive:
       subject: CheckNameAvailability
     set:
       subject: NameAvailability
+  - where:
+      verb: Test
+      subject: ResourceExistence
+    set:
+      subject: Resource
+      alias: Test-AzResourceExistence
+  - where:
+      verb: Export
+      subject: ResourceGroupTemplate
+    set:
+      subject: ResourceGroup
+      alias: Export-AzResourceGroupTemplate
+  - where:
+      subject: ResourceLink
+      parameter-name: LinkId
+    set:
+      parameter-name: ResourceId
+      alias: LinkId
+  - where:
+      verb: Test
+      subject: ResourceGroupExistence
+    set:
+      subject: ResourceGroup
+      alias: Test-AzResourceGroupExistence
+  - where:
+      verb: Export
+      subject: DeploymentTemplate
+    set:
+      alias: [Save-AzDeploymentTemplate, Save-AzResourceGroupDeploymentTemplate]
+  - where:
+      subject: Deployment
+    set:
+      alias: ${verb}-AzResourceGroupDeployment
+  - where:
+      verb: Test
+      subject: DeploymentExistence
+    set:
+      alias: Test-AzResourceGroupDeploymentExistence
+  - where:
+      subject: Provider
+    set:
+      subject: ResourceProvider
+  - where:
+      subject: TagValue
+    hide: true
+  - where:
+      verb: Get
+      subject: ADGroupMember
+      parameter-name: ObjectId
+    set:
+      alias: GroupObjectId
+  - where:
+      subject: AD.*KeyCredential
+    hide: true
+  where:
+      subject: AD.*PasswordCredential
+    hide: true
+  - where:
+      subject: SignedInUser.*
+    hide: true
+  - where:
+      subject: ManagementGroup.*
+      parameter-name: GroupId
+    set:
+      alias: GroupName
+  - where:
+      verb: New
+      subject: RoleAssignment
+      parameter-name: CanDelegate
+    set:
+      alias: AllowDelegation
+  - where:
+      subject: RoleDefinition
+      parameter-name: RoleDefinition
+    set:
+      alias: Role
 ```
