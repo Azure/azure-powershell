@@ -18,3 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix conversion to PSCustomObject[] for top-level arrays
+
+## Version 0.7.1
+* Initial release
