@@ -71,6 +71,9 @@ namespace Microsoft.Azure.Commands.Compute
                 HelpMessage = "Operating System Type of the virtual machines. Possible values: Windows | Linux")]
         public string OSType { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has sucessufuly been completed, use some other mechanism.")]
+        public SwitchParameter NoWait { get; set; }
+
         public override void ExecuteCmdlet()
         {
             this._Helper = new AEMHelper((err) => this.WriteError(err), (msg) => this.WriteVerbose(msg), (msg) => this.WriteWarning(msg),
@@ -115,9 +118,17 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                 }
 
-                var op = this.VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(this.ResourceGroupName, this.VMName, this.Name).GetAwaiter().GetResult();
-                var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                WriteObject(result);
+                if (NoWait.IsPresent)
+                {
+                    var op = this.VirtualMachineExtensionClient.BeginDeleteWithHttpMessagesAsync(this.ResourceGroupName, this.VMName, this.Name).GetAwaiter().GetResult();
+                    WriteObject(ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op));
+                }
+                else
+                {
+                    var op = this.VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(this.ResourceGroupName, this.VMName, this.Name).GetAwaiter().GetResult();
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
+                }
             });
         }
     }
