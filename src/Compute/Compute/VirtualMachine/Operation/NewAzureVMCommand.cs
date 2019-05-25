@@ -49,7 +49,7 @@ using CM = Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM",SupportsShouldProcess = true,DefaultParameterSetName = "SimpleParameterSet")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", SupportsShouldProcess = true, DefaultParameterSetName = "SimpleParameterSet")]
     [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
@@ -414,13 +414,13 @@ namespace Microsoft.Azure.Commands.Compute
                     ResourceGroupName,
                     Name,
                     new StorageAccountCreateParameters
-                {
-                    Sku = new Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku
                     {
-                        Name = SkuName.PremiumLRS
-                    },
-                    Location = Location
-                });
+                        Sku = new Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku
+                        {
+                            Name = SkuName.PremiumLRS
+                        },
+                        Location = Location
+                    });
                 var filePath = new FileInfo(SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiskFile));
                 using (var vds = new VirtualDiskStream(filePath.FullName))
                 {
@@ -594,11 +594,11 @@ namespace Microsoft.Azure.Commands.Compute
             return (SystemAssignedIdentity.IsPresent || isUserAssignedEnabled)
                 ? new VirtualMachineIdentity
                 {
-                    Type = !isUserAssignedEnabled ? 
+                    Type = !isUserAssignedEnabled ?
                            CM.ResourceIdentityType.SystemAssigned :
                            (SystemAssignedIdentity.IsPresent ? CM.ResourceIdentityType.SystemAssignedUserAssigned : CM.ResourceIdentityType.UserAssigned),
 
-                    UserAssignedIdentities = isUserAssignedEnabled 
+                    UserAssignedIdentities = isUserAssignedEnabled
                                              ? new Dictionary<string, VirtualMachineIdentityUserAssignedIdentitiesValue>()
                                              {
                                                  { UserAssignedIdentity, new VirtualMachineIdentityUserAssignedIdentitiesValue() }
@@ -776,7 +776,7 @@ namespace Microsoft.Azure.Commands.Compute
                 storageAccountName = GetRandomStorageAccountName(i);
                 i++;
             }
-            while (i < 10 && (bool) !client.StorageAccounts.CheckNameAvailability(storageAccountName).NameAvailable);
+            while (i < 10 && (bool)!client.StorageAccounts.CheckNameAvailability(storageAccountName).NameAvailable);
 
             var storaeAccountParameter = new StorageAccountCreateParameters
             {
