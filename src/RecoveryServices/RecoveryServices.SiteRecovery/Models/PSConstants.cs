@@ -448,9 +448,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string Sync = "Sync";
 
         /// <summary>
-        ///     Represents Premium_LRS storage account.
+        ///     Represents Standard_LRS storage account.
         /// </summary>
         public const string Standard_LRS = "Standard_LRS";
+
+        /// <summary>
+        ///     Represents Standard_SSD storage account.
+        /// </summary>
+        public const string Standard_SSD = "Standard_SSD";
 
         /// <summary>
         ///     Azure VM temporary disk name, to be excluded as part of switch protection.

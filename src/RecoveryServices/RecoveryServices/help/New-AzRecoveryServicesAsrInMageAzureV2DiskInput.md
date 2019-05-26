@@ -1,34 +1,33 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/new-azrecoveryservicesasrprotectioncontainer
+online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/new-azrecoveryservicesasrinmageazurev2diskinput
 schema: 2.0.0
 ---
 
-# New-AzRecoveryServicesAsrProtectionContainer
+# New-AzRecoveryServicesAsrInMageAzureV2DiskInput
 
 ## SYNOPSIS
-Creates an Azure Site Recovery Protection Container within the specified fabric.
+Creates a disk mapping object for vMWare virtual machine disks to be replicated.
 
 ## SYNTAX
 
 ```
-New-AzRecoveryServicesAsrProtectionContainer -Name <String> -InputObject <ASRFabric>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzRecoveryServicesAsrInMageAzureV2DiskInput -DiskId <String> -LogStorageAccountId <String>
+ -DiskType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzRecoveryServicesAsrProtectionContainer cmdlet creates a Protection Container under the specified Azure Site Recovery Fabric.
+Creates a disk mapping object that maps an vMWare virtual machine disk to the cache storage account and target managed disk type (recovery region) to be used to replicate the disk.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $job = New-AzRecoveryServicesAsrProtectionContainer -Name xyz -Fabric $fabric
-PS C:\> Get-ASRJob -name $job.id
+```powershell
+PS C:> New-AzRecoveryServicesAsrInMageAzureV2DiskInput -DiskId $diskId -LogStorageAccountId $logStorageAccountId -DiskType $diskType
 ```
 
-Starts the creation of the protection container with the specified parameters, and returns the ASR job used to track the operation.
+Create a disk mapping object for vMWare virtual machine disks to be replicated.Used during enable protection for vMWare machine.
 
 ## PARAMETERS
 
@@ -62,23 +61,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Creates the replication protection container in specifed input Object (Azure Fabric).
+### -DiskId
+Specify the DiskId of the disk that this mapping corresponds to.
 
 ```yaml
-Type: ASRFabric
+Type: String
 Parameter Sets: (All)
-Aliases: Fabric
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the protection container.
+### -DiskType
+Specifies the Recovery disk type.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Premium_LRS, Standard_LRS, Standard_SSD
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogStorageAccountId
+Specifies the log or cache storage account Id to be used to store replication logs.
 
 ```yaml
 Type: String
@@ -93,7 +108,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -112,11 +128,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
+### None
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.AsrInMageAzureV2DiskInput
 
 ## NOTES
 
