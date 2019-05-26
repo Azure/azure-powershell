@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 838026E4-F001-434C-86F0-B2A838E93A9C
@@ -60,7 +60,7 @@ The last command gets an array of recovery points for the item in $BackupItem, a
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 Specifies the end of the date range.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: DateTime
 Parameter Sets: DateTimeFilter
 Aliases:
 
@@ -91,7 +91,7 @@ Specifies the item for which this cmdlet gets recovery points.
 To obtain an **AzureRmRecoveryServicesBackupItem** object, use the Get-AzRecoveryServicesBackupItem cmdlet.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
+Type: ItemBase
 Parameter Sets: (All)
 Aliases:
 
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 Specifies the location to download the input file to restore the KeyVault key for an encrypted virtual machine.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: RecoveryPointId
 Aliases:
 
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 Specifies the recovery point ID.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: RecoveryPointId
 Aliases:
 
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 Specifies the start of the date range.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: DateTime
 Parameter Sets: DateTimeFilter
 Aliases:
 
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 ARM ID of the Recovery Services Vault.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -163,7 +163,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

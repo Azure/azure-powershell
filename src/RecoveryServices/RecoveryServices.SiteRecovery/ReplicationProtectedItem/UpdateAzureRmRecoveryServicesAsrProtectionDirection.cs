@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Updates the replication direction for the specified replication protected item or recovery plan.
     ///     Used to re-protect/reverse replicate a failed over replicated item or recovery plan.
     /// </summary>
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrProtectionDirection",DefaultParameterSetName = ASRParameterSets.ByRPIObject,SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrProtectionDirection", DefaultParameterSetName = ASRParameterSets.ByRPIObject, SupportsShouldProcess = true)]
     [Alias("Update-ASRProtectionDirection")]
     [OutputType(typeof(ASRJob))]
     public class UpdateAzureRmRecoveryServicesAsrProtection : SiteRecoveryCmdletBase
@@ -145,6 +145,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [ValidateNotNullOrEmpty]
         public ASRAzuretoAzureDiskReplicationConfig[] AzureToAzureDiskReplicationConfiguration { get; set; }
 
+        /* TODO:: uncomment SRS service start supporting this.
+                /// <summary>
+                /// Gets or sets the resource ID of the recovery cloud service to failover this virtual machine to.
+                /// </summary>
+                [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, HelpMessage = "Specify the availabilty zone to used by the failover Vm in target recovery region.")]
+                [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount, HelpMessage = "Specify the availabilty zone to used by the failover Vm in target recovery region.")]
+                [ValidateNotNullOrEmpty]
+                public string RecoveryAvailabilityZone { get; set; }
+        */
         /// <summary>
         ///     Gets or sets recovery plan object.
         /// </summary>
@@ -256,6 +265,47 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.AzureToVMware, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRRetentionVolume RetentionVolume { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets DiskEncryptionVaultId.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AzureToAzure,
+            HelpMessage = "Specifies the disk encryption secret key vault ID(Azure disk encryption) to be used be recovery VM after failover.")]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount,
+            HelpMessage = "Specifies the disk encryption secret key vault ID(Azure disk encryption) to be used be recovery VM after failover.")]
+        public string DiskEncryptionVaultId { get; set; }
+
+        /// <summary>
+        /// Gets or sets DiskEncryptionSecretUrl.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AzureToAzure,
+            HelpMessage = "Specifies the disk encryption secret URL(Azure disk encryption) to be used be recovery VM after failover.")]
+        [Parameter
+            (ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount,
+            HelpMessage = "Specifies the disk encryption secret URL(Azure disk encryption) to be used be recovery VM after failover.")]
+        public string DiskEncryptionSecretUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets KeyEncryptionKeyUrl.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure,
+            HelpMessage = "Specifies the disk encryption secret key URL(Azure disk encryption) to be used be recovery VM after failover.")]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount,
+            HelpMessage = "Specifies the disk encryption secret key URL(Azure disk encryption) to be used be recovery VM after failover.")]
+        public string KeyEncryptionKeyUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets KeyEncryptionVaultId.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure,
+            HelpMessage = "Specifies the disk encryption secret key vault ID(Azure disk encryption) to be used be recovery VM after failover.")]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount,
+            HelpMessage = "Specifies the disk encryption secret key vault ID(Azure disk encryption) to be used be recovery VM after failover.")]
+        public string KeyEncryptionVaultId { get; set; }
 
         /// <summary>
         ///     ProcessRecord of the command.
@@ -560,6 +610,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     populateManagedDiskInputDetails(a2aSwitchInput, replicationProtectedItemResponse);
                 }
 
+                // Add disk encryption releated values.
+                a2aSwitchInput.DiskEncryptionInfo = this.A2AEncryptionDetails();
+
                 input.Properties.ProviderSpecificDetails = a2aSwitchInput;
             }
 
@@ -607,8 +660,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     DiskId = osDisk.ManagedDisk.Id,
                     RecoveryResourceGroupId = this.RecoveryResourceGroupId,
                     PrimaryStagingAzureStorageAccountId = this.LogStorageAccountId,
-                    RecoveryReplicaDiskAccountType = osDisk.ManagedDisk.StorageAccountType.toStorageString(),
-                    RecoveryTargetDiskAccountType = osDisk.ManagedDisk.StorageAccountType.toStorageString()
+                    RecoveryReplicaDiskAccountType = osDisk.ManagedDisk.StorageAccountType,
+                    RecoveryTargetDiskAccountType = osDisk.ManagedDisk.StorageAccountType
                 });
                 if (virtualMachine.StorageProfile.DataDisks != null)
                 {
@@ -619,8 +672,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             DiskId = dataDisk.ManagedDisk.Id,
                             RecoveryResourceGroupId = this.RecoveryResourceGroupId,
                             PrimaryStagingAzureStorageAccountId = this.LogStorageAccountId,
-                            RecoveryReplicaDiskAccountType = dataDisk.ManagedDisk.StorageAccountType.toStorageString(),
-                            RecoveryTargetDiskAccountType = dataDisk.ManagedDisk.StorageAccountType.toStorageString()
+                            RecoveryReplicaDiskAccountType = dataDisk.ManagedDisk.StorageAccountType,
+                            RecoveryTargetDiskAccountType = dataDisk.ManagedDisk.StorageAccountType
                         });
                     }
                 }
@@ -635,7 +688,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         RecoveryResourceGroupId = disk.RecoveryResourceGroupId,
                         RecoveryReplicaDiskAccountType = disk.RecoveryReplicaDiskAccountType,
                         RecoveryTargetDiskAccountType = disk.RecoveryTargetDiskAccountType,
-                        PrimaryStagingAzureStorageAccountId = this.LogStorageAccountId,
+                        PrimaryStagingAzureStorageAccountId = disk.LogStorageAccountId,
                     });
                 }
             }
@@ -714,6 +767,45 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 throw new PSInvalidOperationException(Resources.InvalidParameterSet);
             }
+        }
+
+        private DiskEncryptionInfo A2AEncryptionDetails()
+        {
+            // Any encryption data is present.
+            if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionSecretUrl)) ||
+                this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionVaultId)) ||
+                this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionKeyUrl)) ||
+                this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionVaultId)))
+            {
+                DiskEncryptionInfo diskEncryptionInfo = new DiskEncryptionInfo();
+                // BEK DATA is present
+                if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionSecretUrl)) &&
+                this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionVaultId)))
+                {
+                    diskEncryptionInfo.DiskEncryptionKeyInfo = new DiskEncryptionKeyInfo(this.DiskEncryptionSecretUrl, this.DiskEncryptionVaultId);
+                    // KEK Data is present in pair.
+                    if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionKeyUrl)) &&
+                this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionVaultId)))
+                    {
+                        diskEncryptionInfo.KeyEncryptionKeyInfo = new KeyEncryptionKeyInfo(this.KeyEncryptionKeyUrl, this.KeyEncryptionVaultId);
+                    }
+                    else
+                    {
+                        // If either KeyEncryptionKeyUrl or KeyEncryptionVaultId present not both.
+                        //   if (!this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionKeyUrl)) ||
+                        //   !this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionVaultId)))
+                        //   {
+                        //        throw new Exception("Provide Disk KeyEncryptionKeyUrl and KeyEncryptionVaultId.");
+                        //    }
+                    }
+                }
+                else
+                {
+                    throw new Exception("Provide Disk DiskEncryptionSecretUrl and DiskEncryptionVaultId.");
+                }
+                return diskEncryptionInfo;
+            }
+            return null;
         }
 
         /// <summary>

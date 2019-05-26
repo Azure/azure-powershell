@@ -1,49 +1,54 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection
+online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/add-azrecoveryservicesasrreplicationprotecteditemdisk
 schema: 2.0.0
 ---
 
-# Disable-AzRecoveryServicesBackupAutoProtection
+# Add-AzRecoveryServicesAsrReplicationProtectedItemDisk
 
 ## SYNOPSIS
-Disables auto backup for a protectable item.
+Add the disk for protection for already protected azure virtual machine.
 
 ## SYNTAX
 
 ```
-Disable-AzRecoveryServicesBackupAutoProtection [-InputItem] <ProtectableItemBase>
- [-BackupManagementType] <BackupManagementType> [-WorkloadType] <WorkloadType> [-PassThru] [-VaultId <String>]
+Add-AzRecoveryServicesAsrReplicationProtectedItemDisk -InputObject <ASRReplicationProtectedItem>
+ -AzureToAzureDiskReplicationConfiguration <ASRAzuretoAzureDiskReplicationConfig[]> [-WaitForCompletion]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Disable-AzRecoveryServicesBackupAutoProtection** cmdlet disables protection on a protectable item.
+The **Add-AzRecoveryServicesAsrReplicationProtectedItemDisk** cmdlet add the disk for protection for already protected azure virtual machine.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer
-PS C:\> Get-AzRecoveryServicesBackupProtectableItem -Container $container -WorkloadType "MSSQL" -ItemType "SQLInstance" | Disable-AzRecoveryServicesBackupAutoProtection -BackupManagementType "AzureWorkload" -WorkloadType "MSSQL"
+```powershell
+PS C:> Add-AzRecoveryServicesAsrReplicationProtectedItemDisk -ReplicationProtectedItem $rpi -AzureToAzureDiskReplicationConfiguration $disk1,$disk2
 ```
 
-The first cmdlet disables the Backup protection policy.
+Start the operation to add specified disk configuration for protection.
+
+### Example 2
+```powershell
+PS C:> $ReplicationProtectedItem |Add-AzRecoveryServicesAsrReplicationProtectedItemDisk -AzureToAzureDiskReplicationConfiguration $disk1,$disk2
+```
+
+Start the operation to add specified disk configuration for protection.Piping input replication protected item.
 
 ## PARAMETERS
 
-### -BackupManagementType
-Backup Management type of the resource (for example: MAB, DPM).
+### -AzureToAzureDiskReplicationConfiguration
+Specifies the disk configuration to used for disk protection for Azure to Azure disaster recovery scenario.
 
 ```yaml
-Type: BackupManagementType
+Type: ASRAzuretoAzureDiskReplicationConfig[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL, AzureStorage, AzureWorkload
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -79,23 +84,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputItem
-Item Id
+### -InputObject
+The input object to the cmdlet: The ASR replication protected item object corresponding to which new disk should be protected.
 
 ```yaml
-Type: ProtectableItemBase
+Type: ASRReplicationProtectedItem
 Parameter Sets: (All)
-Aliases:
+Aliases: ReplicationProtectedItem
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Return the result for auto protection.
+### -WaitForCompletion
+Wait For Completion
 
 ```yaml
 Type: SwitchParameter
@@ -106,21 +111,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VaultId
-ARM ID of the Recovery Services Vault.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -140,32 +130,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WorkloadType
-Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles).
-
-```yaml
-Type: WorkloadType
-Parameter Sets: (All)
-Aliases:
-Accepted values: AzureVM, AzureSQLDatabase, AzureFiles, MSSQL
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### None
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob
 
 ## NOTES
 

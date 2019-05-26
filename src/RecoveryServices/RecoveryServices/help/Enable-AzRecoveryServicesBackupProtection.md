@@ -64,11 +64,26 @@ The second cmdlet sets the Backup protection policy for the ARM virtual machine 
 
 ## PARAMETERS
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -84,7 +99,7 @@ Specifies the Backup item for which this cmdlet enables protection.
 To obtain an **AzureRmRecoveryServicesBackupItem**, use the Get-AzRecoveryServicesBackupItem cmdlet.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
+Type: ItemBase
 Parameter Sets: ModifyProtection
 Aliases:
 
@@ -99,7 +114,7 @@ Accept wildcard characters: False
 Specifies the name of the Backup item.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: AzureVMComputeEnableProtection, AzureVMClassicComputeEnableProtection, AzureFileShareEnableProtection
 Aliases:
 
@@ -115,7 +130,7 @@ Specifies protection policy that this cmdlet associates with an item.
 To obtain an **AzureRmRecoveryServicesBackupProtectionPolicy** object, use the Get-AzRecoveryServicesBackupProtectionPolicy cmdlet.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase
+Type: PolicyBase
 Parameter Sets: (All)
 Aliases:
 
@@ -130,7 +145,7 @@ Accept wildcard characters: False
 Filter value for status of job.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ProtectableItemBase
+Type: ProtectableItemBase
 Parameter Sets: AzureWorkloadEnableProtection
 Aliases:
 
@@ -146,7 +161,7 @@ Specifies the name of the resource group.
 Specify this parameter only for ARM virtual machines.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: AzureVMComputeEnableProtection
 Aliases:
 
@@ -162,7 +177,7 @@ Specifies the service name.
 Specify this parameter only for ASM virtual machines.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: AzureVMClassicComputeEnableProtection
 Aliases:
 
@@ -177,7 +192,7 @@ Accept wildcard characters: False
 Azure file share storage account name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: AzureFileShareEnableProtection
 Aliases:
 
@@ -192,7 +207,7 @@ Accept wildcard characters: False
 ARM ID of the Recovery Services Vault.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -203,26 +218,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -WhatIf
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -234,7 +234,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
