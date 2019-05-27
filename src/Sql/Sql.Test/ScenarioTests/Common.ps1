@@ -201,9 +201,9 @@ function Create-BasicManagedTestEnvironmentWithParams ($params, $location)
 	New-AzureRmResourceGroup -Name $params.rgname -Location $location
 	
 	# Setup VNET 
-	$vnetName = "cl_initial"
-	$subnetName = "Cool"
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName
+	$vnetName = "vnet-newprovisioningtest3"
+	$subnetName = "ManagedInstance"
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $location "newprovisioningtest"
 	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
 	$credentials = Get-ServerCredential
  	$licenseType = "BasePrice"

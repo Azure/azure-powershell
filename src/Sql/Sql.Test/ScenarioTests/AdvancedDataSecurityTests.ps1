@@ -91,7 +91,7 @@ function Test-AdvancedDataSecurityPolicyTest
 		Assert-AreEqual "vulnerability-assessment" $settings.ScanResultsContainerName
 		Assert-AreNotEqual "" $settings.StorageAccountName	
 		Assert-AreEqual Weekly $settings.RecurringScansInterval
-		Assert-AreEqual $true $settings.EmailAdmins
+		Assert-AreEqual $false $settings.EmailAdmins
 		Assert-AreEqualArray @() $settings.NotificationEmail
 	}
 	finally
