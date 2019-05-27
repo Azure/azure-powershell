@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             ValueFromPipeline = true,
             HelpMessage = AuditingHelpMessages.ServerInputObjectHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public virtual AzureSqlServerModel ServerObject { get; set; }
+        public virtual AzureSqlServerModel InputObject { get; set; }
 
         [Parameter(
             ParameterSetName = DefinitionsCommon.BlobStorageParameterSetName,
@@ -148,15 +148,15 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model = new ServerLogAnalyticsAuditingSettingsModel();
             }
 
-            if (ServerObject == null)
+            if (InputObject == null)
             {
                 model.ResourceGroupName = ResourceGroupName;
                 model.ServerName = ServerName;
             }
             else
             {
-                model.ResourceGroupName = ServerObject.ResourceGroupName;
-                model.ServerName = ServerObject.ServerName;
+                model.ResourceGroupName = InputObject.ResourceGroupName;
+                model.ServerName = InputObject.ServerName;
             }
 
             ModelAdapter.GetAuditingSettings(model.ResourceGroupName, model.ServerName, model);
