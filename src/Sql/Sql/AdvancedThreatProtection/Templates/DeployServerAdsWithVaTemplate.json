@@ -52,7 +52,7 @@
                 "storageAccountAccessKey": "[if(parameters('enableVa'), listKeys(variables('storageName'), '2018-02-01').keys[0].value, '')]",
                 "recurringScans": {
                     "isEnabled": true,
-                    "emailSubscriptionAdmins": false,
+                    "emailSubscriptionAdmins": true,
                 },
             },
             "dependsOn": [
