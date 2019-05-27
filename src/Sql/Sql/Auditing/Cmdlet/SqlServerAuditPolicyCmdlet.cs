@@ -27,7 +27,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         [Parameter(
             ParameterSetName = DefinitionsCommon.ServerParameterSetName,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = AuditingHelpMessages.ResourceGroupNameHelpMessage)]
         [ResourceGroupCompleter]
@@ -37,7 +36,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         [Parameter(
             ParameterSetName = DefinitionsCommon.ServerParameterSetName,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = AuditingHelpMessages.ServerNameHelpMessage)]
         [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]

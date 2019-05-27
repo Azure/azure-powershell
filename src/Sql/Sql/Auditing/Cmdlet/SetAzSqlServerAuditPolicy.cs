@@ -29,20 +29,17 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     {
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.AuditActionGroupsHelpMessage)]
         public AuditActionGroups[] AuditActionGroup { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.PredicateExpressionHelpMessage)]
         [ValidateNotNull]
         public string PredicateExpression { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.BlobStorageTargetState)]
         [ValidateSet(SecurityConstants.Enabled, SecurityConstants.Disabled, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
@@ -50,21 +47,18 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.AuditStorageAccountNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.AuditStorageAccountSubscriptionIdHelpMessage)]
         [ValidateNotNullOrEmpty]
         public Guid StorageAccountSubscriptionId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.StorageKeyTypeHelpMessage)]
         [ValidateSet(
             SecurityConstants.Primary,
@@ -74,14 +68,12 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.RetentionInDaysHelpMessage)]
         [ValidateNotNullOrEmpty]
         public uint? RetentionInDays { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.EventHubTargetState)]
         [ValidateSet(SecurityConstants.Enabled, SecurityConstants.Disabled, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
@@ -89,21 +81,18 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.EventHubNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string EventHubName { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.EventHubAuthorizationRuleIdHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string EventHubAuthorizationRuleResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.LogAnalyticsTargetState)]
         [ValidateSet(SecurityConstants.Enabled, SecurityConstants.Disabled, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
@@ -111,7 +100,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = AuditingHelpMessages.WorkspaceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string WorkspaceResourceId { get; set; }
