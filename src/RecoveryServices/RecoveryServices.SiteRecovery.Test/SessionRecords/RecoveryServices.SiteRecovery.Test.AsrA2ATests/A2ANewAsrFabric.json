@@ -415,8 +415,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/replicationFabrics/a2aPrimaryFabric35?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvcmVwbGljYXRpb25GYWJyaWNzL2EyYVByaW1hcnlGYWJyaWMzNT9hcGktdmVyc2lvbj0yMDE4LTAxLTEw",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/replicationFabrics/a2aPrimaryFabric35?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvcmVwbGljYXRpb25GYWJyaWNzL2EyYVByaW1hcnlGYWJyaWMzNT9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"customDetails\": {\r\n      \"instanceType\": \"Azure\",\r\n      \"location\": \"westus\"\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
@@ -461,7 +461,7 @@
           "4903b9b4-83b1-4e89-b8eb-eb68c95a4911-2018-08-17 12:35:48Z-Ps 8/17/2018 12:35:52 PM"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/replicationOperationStatus/4d3d1c2a-7f32-48a8-b3ab-5cf6bab9ee85?api-version=2018-01-10"
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/replicationOperationStatus/4d3d1c2a-7f32-48a8-b3ab-5cf6bab9ee85?api-version=2018-07-10"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -488,7 +488,7 @@
           "Fri, 17 Aug 2018 12:35:51 GMT"
         ],
         "Location": [
-          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/replicationFabrics/a2aPrimaryFabric35/operationresults/4d3d1c2a-7f32-48a8-b3ab-5cf6bab9ee85?api-version=2018-01-10"
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/replicationFabrics/a2aPrimaryFabric35/operationresults/4d3d1c2a-7f32-48a8-b3ab-5cf6bab9ee85?api-version=2018-07-10"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -497,8 +497,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/replicationJobs/4d3d1c2a-7f32-48a8-b3ab-5cf6bab9ee85?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvcmVwbGljYXRpb25Kb2JzLzRkM2QxYzJhLTdmMzItNDhhOC1iM2FiLTVjZjZiYWI5ZWU4NT9hcGktdmVyc2lvbj0yMDE4LTAxLTEw",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/replicationJobs/4d3d1c2a-7f32-48a8-b3ab-5cf6bab9ee85?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvcmVwbGljYXRpb25Kb2JzLzRkM2QxYzJhLTdmMzItNDhhOC1iM2FiLTVjZjZiYWI5ZWU4NT9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -573,8 +573,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/replicationJobs/4d3d1c2a-7f32-48a8-b3ab-5cf6bab9ee85?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvcmVwbGljYXRpb25Kb2JzLzRkM2QxYzJhLTdmMzItNDhhOC1iM2FiLTVjZjZiYWI5ZWU4NT9hcGktdmVyc2lvbj0yMDE4LTAxLTEw",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/replicationJobs/4d3d1c2a-7f32-48a8-b3ab-5cf6bab9ee85?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvcmVwbGljYXRpb25Kb2JzLzRkM2QxYzJhLTdmMzItNDhhOC1iM2FiLTVjZjZiYWI5ZWU4NT9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -649,8 +649,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/replicationJobs/4d3d1c2a-7f32-48a8-b3ab-5cf6bab9ee85?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvcmVwbGljYXRpb25Kb2JzLzRkM2QxYzJhLTdmMzItNDhhOC1iM2FiLTVjZjZiYWI5ZWU4NT9hcGktdmVyc2lvbj0yMDE4LTAxLTEw",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/replicationJobs/4d3d1c2a-7f32-48a8-b3ab-5cf6bab9ee85?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvcmVwbGljYXRpb25Kb2JzLzRkM2QxYzJhLTdmMzItNDhhOC1iM2FiLTVjZjZiYWI5ZWU4NT9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -725,8 +725,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/replicationJobs/4d3d1c2a-7f32-48a8-b3ab-5cf6bab9ee85?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvcmVwbGljYXRpb25Kb2JzLzRkM2QxYzJhLTdmMzItNDhhOC1iM2FiLTVjZjZiYWI5ZWU4NT9hcGktdmVyc2lvbj0yMDE4LTAxLTEw",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/replicationJobs/4d3d1c2a-7f32-48a8-b3ab-5cf6bab9ee85?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvcmVwbGljYXRpb25Kb2JzLzRkM2QxYzJhLTdmMzItNDhhOC1iM2FiLTVjZjZiYWI5ZWU4NT9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -801,8 +801,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/replicationJobs/4d3d1c2a-7f32-48a8-b3ab-5cf6bab9ee85?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvcmVwbGljYXRpb25Kb2JzLzRkM2QxYzJhLTdmMzItNDhhOC1iM2FiLTVjZjZiYWI5ZWU4NT9hcGktdmVyc2lvbj0yMDE4LTAxLTEw",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/replicationJobs/4d3d1c2a-7f32-48a8-b3ab-5cf6bab9ee85?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvcmVwbGljYXRpb25Kb2JzLzRkM2QxYzJhLTdmMzItNDhhOC1iM2FiLTVjZjZiYWI5ZWU4NT9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -877,8 +877,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/replicationJobs/4d3d1c2a-7f32-48a8-b3ab-5cf6bab9ee85?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvcmVwbGljYXRpb25Kb2JzLzRkM2QxYzJhLTdmMzItNDhhOC1iM2FiLTVjZjZiYWI5ZWU4NT9hcGktdmVyc2lvbj0yMDE4LTAxLTEw",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/replicationJobs/4d3d1c2a-7f32-48a8-b3ab-5cf6bab9ee85?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvcmVwbGljYXRpb25Kb2JzLzRkM2QxYzJhLTdmMzItNDhhOC1iM2FiLTVjZjZiYWI5ZWU4NT9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -953,8 +953,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/replicationFabrics/a2aPrimaryFabric35?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvcmVwbGljYXRpb25GYWJyaWNzL2EyYVByaW1hcnlGYWJyaWMzNT9hcGktdmVyc2lvbj0yMDE4LTAxLTEw",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/replicationFabrics/a2aPrimaryFabric35?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvcmVwbGljYXRpb25GYWJyaWNzL2EyYVByaW1hcnlGYWJyaWMzNT9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

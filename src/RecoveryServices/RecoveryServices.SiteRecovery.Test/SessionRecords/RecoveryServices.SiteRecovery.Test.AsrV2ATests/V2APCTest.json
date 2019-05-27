@@ -64,8 +64,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uRmFicmljcz9hcGktdmVyc2lvbj0yMDE4LTAxLTEw",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uRmFicmljcz9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -137,8 +137,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics/9a72155b61d09325a02ba0311dea55df3a7135b65558b43c9ff540b9e7be084f?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uRmFicmljcy85YTcyMTU1YjYxZDA5MzI1YTAyYmEwMzExZGVhNTVkZjNhNzEzNWI2NTU1OGI0M2M5ZmY1NDBiOWU3YmUwODRmP2FwaS12ZXJzaW9uPTIwMTgtMDEtMTA=",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics/9a72155b61d09325a02ba0311dea55df3a7135b65558b43c9ff540b9e7be084f?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uRmFicmljcy85YTcyMTU1YjYxZDA5MzI1YTAyYmEwMzExZGVhNTVkZjNhNzEzNWI2NTU1OGI0M2M5ZmY1NDBiOWU3YmUwODRmP2FwaS12ZXJzaW9uPTIwMTgtMDctMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -210,8 +210,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics/9a72155b61d09325a02ba0311dea55df3a7135b65558b43c9ff540b9e7be084f/replicationProtectionContainers?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uRmFicmljcy85YTcyMTU1YjYxZDA5MzI1YTAyYmEwMzExZGVhNTVkZjNhNzEzNWI2NTU1OGI0M2M5ZmY1NDBiOWU3YmUwODRmL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnM/YXBpLXZlcnNpb249MjAxOC0wMS0xMA==",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics/9a72155b61d09325a02ba0311dea55df3a7135b65558b43c9ff540b9e7be084f/replicationProtectionContainers?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uRmFicmljcy85YTcyMTU1YjYxZDA5MzI1YTAyYmEwMzExZGVhNTVkZjNhNzEzNWI2NTU1OGI0M2M5ZmY1NDBiOWU3YmUwODRmL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnM/YXBpLXZlcnNpb249MjAxOC0wNy0xMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -283,8 +283,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics/9a72155b61d09325a02ba0311dea55df3a7135b65558b43c9ff540b9e7be084f/replicationProtectionContainers?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uRmFicmljcy85YTcyMTU1YjYxZDA5MzI1YTAyYmEwMzExZGVhNTVkZjNhNzEzNWI2NTU1OGI0M2M5ZmY1NDBiOWU3YmUwODRmL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnM/YXBpLXZlcnNpb249MjAxOC0wMS0xMA==",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics/9a72155b61d09325a02ba0311dea55df3a7135b65558b43c9ff540b9e7be084f/replicationProtectionContainers?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uRmFicmljcy85YTcyMTU1YjYxZDA5MzI1YTAyYmEwMzExZGVhNTVkZjNhNzEzNWI2NTU1OGI0M2M5ZmY1NDBiOWU3YmUwODRmL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnM/YXBpLXZlcnNpb249MjAxOC0wNy0xMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -356,8 +356,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics/9a72155b61d09325a02ba0311dea55df3a7135b65558b43c9ff540b9e7be084f/replicationProtectionContainers/cloud_a5441e09-275c-4f15-a1b9-450a22c89d7b/replicationProtectionContainerMappings?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uRmFicmljcy85YTcyMTU1YjYxZDA5MzI1YTAyYmEwMzExZGVhNTVkZjNhNzEzNWI2NTU1OGI0M2M5ZmY1NDBiOWU3YmUwODRmL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfYTU0NDFlMDktMjc1Yy00ZjE1LWExYjktNDUwYTIyYzg5ZDdiL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lck1hcHBpbmdzP2FwaS12ZXJzaW9uPTIwMTgtMDEtMTA=",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics/9a72155b61d09325a02ba0311dea55df3a7135b65558b43c9ff540b9e7be084f/replicationProtectionContainers/cloud_a5441e09-275c-4f15-a1b9-450a22c89d7b/replicationProtectionContainerMappings?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uRmFicmljcy85YTcyMTU1YjYxZDA5MzI1YTAyYmEwMzExZGVhNTVkZjNhNzEzNWI2NTU1OGI0M2M5ZmY1NDBiOWU3YmUwODRmL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfYTU0NDFlMDktMjc1Yy00ZjE1LWExYjktNDUwYTIyYzg5ZDdiL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lck1hcHBpbmdzP2FwaS12ZXJzaW9uPTIwMTgtMDctMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -429,8 +429,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics/9a72155b61d09325a02ba0311dea55df3a7135b65558b43c9ff540b9e7be084f/replicationProtectionContainers/cloud_a5441e09-275c-4f15-a1b9-450a22c89d7b/replicationProtectionContainerMappings?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uRmFicmljcy85YTcyMTU1YjYxZDA5MzI1YTAyYmEwMzExZGVhNTVkZjNhNzEzNWI2NTU1OGI0M2M5ZmY1NDBiOWU3YmUwODRmL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfYTU0NDFlMDktMjc1Yy00ZjE1LWExYjktNDUwYTIyYzg5ZDdiL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lck1hcHBpbmdzP2FwaS12ZXJzaW9uPTIwMTgtMDEtMTA=",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics/9a72155b61d09325a02ba0311dea55df3a7135b65558b43c9ff540b9e7be084f/replicationProtectionContainers/cloud_a5441e09-275c-4f15-a1b9-450a22c89d7b/replicationProtectionContainerMappings?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uRmFicmljcy85YTcyMTU1YjYxZDA5MzI1YTAyYmEwMzExZGVhNTVkZjNhNzEzNWI2NTU1OGI0M2M5ZmY1NDBiOWU3YmUwODRmL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfYTU0NDFlMDktMjc1Yy00ZjE1LWExYjktNDUwYTIyYzg5ZDdiL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lck1hcHBpbmdzP2FwaS12ZXJzaW9uPTIwMTgtMDctMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -502,8 +502,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics/9a72155b61d09325a02ba0311dea55df3a7135b65558b43c9ff540b9e7be084f/replicationProtectionContainers/cloud_a5441e09-275c-4f15-a1b9-450a22c89d7b/replicationProtectionContainerMappings?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uRmFicmljcy85YTcyMTU1YjYxZDA5MzI1YTAyYmEwMzExZGVhNTVkZjNhNzEzNWI2NTU1OGI0M2M5ZmY1NDBiOWU3YmUwODRmL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfYTU0NDFlMDktMjc1Yy00ZjE1LWExYjktNDUwYTIyYzg5ZDdiL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lck1hcHBpbmdzP2FwaS12ZXJzaW9uPTIwMTgtMDEtMTA=",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics/9a72155b61d09325a02ba0311dea55df3a7135b65558b43c9ff540b9e7be084f/replicationProtectionContainers/cloud_a5441e09-275c-4f15-a1b9-450a22c89d7b/replicationProtectionContainerMappings?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uRmFicmljcy85YTcyMTU1YjYxZDA5MzI1YTAyYmEwMzExZGVhNTVkZjNhNzEzNWI2NTU1OGI0M2M5ZmY1NDBiOWU3YmUwODRmL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfYTU0NDFlMDktMjc1Yy00ZjE1LWExYjktNDUwYTIyYzg5ZDdiL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lck1hcHBpbmdzP2FwaS12ZXJzaW9uPTIwMTgtMDctMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -575,8 +575,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uUG9saWNpZXM/YXBpLXZlcnNpb249MjAxOC0wMS0xMA==",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uUG9saWNpZXM/YXBpLXZlcnNpb249MjAxOC0wNy0xMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -648,8 +648,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics/9a72155b61d09325a02ba0311dea55df3a7135b65558b43c9ff540b9e7be084f/replicationProtectionContainers/cloud_a5441e09-275c-4f15-a1b9-450a22c89d7b?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uRmFicmljcy85YTcyMTU1YjYxZDA5MzI1YTAyYmEwMzExZGVhNTVkZjNhNzEzNWI2NTU1OGI0M2M5ZmY1NDBiOWU3YmUwODRmL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfYTU0NDFlMDktMjc1Yy00ZjE1LWExYjktNDUwYTIyYzg5ZDdiP2FwaS12ZXJzaW9uPTIwMTgtMDEtMTA=",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics/9a72155b61d09325a02ba0311dea55df3a7135b65558b43c9ff540b9e7be084f/replicationProtectionContainers/cloud_a5441e09-275c-4f15-a1b9-450a22c89d7b?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uRmFicmljcy85YTcyMTU1YjYxZDA5MzI1YTAyYmEwMzExZGVhNTVkZjNhNzEzNWI2NTU1OGI0M2M5ZmY1NDBiOWU3YmUwODRmL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfYTU0NDFlMDktMjc1Yy00ZjE1LWExYjktNDUwYTIyYzg5ZDdiP2FwaS12ZXJzaW9uPTIwMTgtMDctMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -721,8 +721,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics/9a72155b61d09325a02ba0311dea55df3a7135b65558b43c9ff540b9e7be084f/replicationProtectionContainers/cloud_a5441e09-275c-4f15-a1b9-450a22c89d7b?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uRmFicmljcy85YTcyMTU1YjYxZDA5MzI1YTAyYmEwMzExZGVhNTVkZjNhNzEzNWI2NTU1OGI0M2M5ZmY1NDBiOWU3YmUwODRmL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfYTU0NDFlMDktMjc1Yy00ZjE1LWExYjktNDUwYTIyYzg5ZDdiP2FwaS12ZXJzaW9uPTIwMTgtMDEtMTA=",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationFabrics/9a72155b61d09325a02ba0311dea55df3a7135b65558b43c9ff540b9e7be084f/replicationProtectionContainers/cloud_a5441e09-275c-4f15-a1b9-450a22c89d7b?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uRmFicmljcy85YTcyMTU1YjYxZDA5MzI1YTAyYmEwMzExZGVhNTVkZjNhNzEzNWI2NTU1OGI0M2M5ZmY1NDBiOWU3YmUwODRmL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfYTU0NDFlMDktMjc1Yy00ZjE1LWExYjktNDUwYTIyYzg5ZDdiP2FwaS12ZXJzaW9uPTIwMTgtMDctMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -794,8 +794,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestPolicy3?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uUG9saWNpZXMvVjJhVGVzdFBvbGljeTM/YXBpLXZlcnNpb249MjAxOC0wMS0xMA==",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestPolicy3?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uUG9saWNpZXMvVjJhVGVzdFBvbGljeTM/YXBpLXZlcnNpb249MjAxOC0wNy0xMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -867,8 +867,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestPolicy3?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uUG9saWNpZXMvVjJhVGVzdFBvbGljeTM/YXBpLXZlcnNpb249MjAxOC0wMS0xMA==",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestPolicy3?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uUG9saWNpZXMvVjJhVGVzdFBvbGljeTM/YXBpLXZlcnNpb249MjAxOC0wNy0xMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -940,8 +940,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestPolicy3-failback?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uUG9saWNpZXMvVjJhVGVzdFBvbGljeTMtZmFpbGJhY2s/YXBpLXZlcnNpb249MjAxOC0wMS0xMA==",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestPolicy3-failback?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uUG9saWNpZXMvVjJhVGVzdFBvbGljeTMtZmFpbGJhY2s/YXBpLXZlcnNpb249MjAxOC0wNy0xMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1013,8 +1013,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestPolicy3-failback?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uUG9saWNpZXMvVjJhVGVzdFBvbGljeTMtZmFpbGJhY2s/YXBpLXZlcnNpb249MjAxOC0wMS0xMA==",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestPolicy3-failback?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uUG9saWNpZXMvVjJhVGVzdFBvbGljeTMtZmFpbGJhY2s/YXBpLXZlcnNpb249MjAxOC0wNy0xMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1086,8 +1086,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestPolicy2?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uUG9saWNpZXMvVjJhVGVzdFBvbGljeTI/YXBpLXZlcnNpb249MjAxOC0wMS0xMA==",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestPolicy2?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uUG9saWNpZXMvVjJhVGVzdFBvbGljeTI/YXBpLXZlcnNpb249MjAxOC0wNy0xMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1159,8 +1159,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestPolicy2?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uUG9saWNpZXMvVjJhVGVzdFBvbGljeTI/YXBpLXZlcnNpb249MjAxOC0wMS0xMA==",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/IbizaV2ATest/replicationPolicies/V2aTestPolicy2?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL2NhbmFyeWV4cHJvdXRlL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvSWJpemFWMkFUZXN0L3JlcGxpY2F0aW9uUG9saWNpZXMvVjJhVGVzdFBvbGljeTI/YXBpLXZlcnNpb249MjAxOC0wNy0xMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
