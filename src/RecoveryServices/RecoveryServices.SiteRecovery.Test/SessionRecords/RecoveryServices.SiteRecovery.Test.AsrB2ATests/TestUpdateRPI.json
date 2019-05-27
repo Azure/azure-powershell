@@ -64,8 +64,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationPolicies/B2APolicyTest1?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvblBvbGljaWVzL0IyQVBvbGljeVRlc3QxP2FwaS12ZXJzaW9uPTIwMTgtMDEtMTA=",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationPolicies/B2APolicyTest1?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvblBvbGljaWVzL0IyQVBvbGljeVRlc3QxP2FwaS12ZXJzaW9uPTIwMTgtMDctMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -137,8 +137,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3M/YXBpLXZlcnNpb249MjAxOC0wMS0xMA==",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3M/YXBpLXZlcnNpb249MjAxOC0wNy0xMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -210,8 +210,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvcHJpbWFyeUZyaWVuZGx5TmFtZT9hcGktdmVyc2lvbj0yMDE4LTAxLTEw",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvcHJpbWFyeUZyaWVuZGx5TmFtZT9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -283,8 +283,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvcHJpbWFyeUZyaWVuZGx5TmFtZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzP2FwaS12ZXJzaW9uPTIwMTgtMDEtMTA=",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvcHJpbWFyeUZyaWVuZGx5TmFtZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzP2FwaS12ZXJzaW9uPTIwMTgtMDctMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -356,8 +356,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers/cloud_6e846d3a-d55c-5242-870b-c0b98cee05e2/replicationProtectionContainerMappings?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvcHJpbWFyeUZyaWVuZGx5TmFtZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzZlODQ2ZDNhLWQ1NWMtNTI0Mi04NzBiLWMwYjk4Y2VlMDVlMi9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJNYXBwaW5ncz9hcGktdmVyc2lvbj0yMDE4LTAxLTEw",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers/cloud_6e846d3a-d55c-5242-870b-c0b98cee05e2/replicationProtectionContainerMappings?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvcHJpbWFyeUZyaWVuZGx5TmFtZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzZlODQ2ZDNhLWQ1NWMtNTI0Mi04NzBiLWMwYjk4Y2VlMDVlMi9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJNYXBwaW5ncz9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -429,8 +429,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationPolicies?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvblBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMTgtMDEtMTA=",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationPolicies?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvblBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMTgtMDctMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -502,8 +502,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers/cloud_6e846d3a-d55c-5242-870b-c0b98cee05e2/replicationProtectedItems?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvcHJpbWFyeUZyaWVuZGx5TmFtZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzZlODQ2ZDNhLWQ1NWMtNTI0Mi04NzBiLWMwYjk4Y2VlMDVlMi9yZXBsaWNhdGlvblByb3RlY3RlZEl0ZW1zP2FwaS12ZXJzaW9uPTIwMTgtMDEtMTA=",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers/cloud_6e846d3a-d55c-5242-870b-c0b98cee05e2/replicationProtectedItems?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvcHJpbWFyeUZyaWVuZGx5TmFtZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzZlODQ2ZDNhLWQ1NWMtNTI0Mi04NzBiLWMwYjk4Y2VlMDVlMi9yZXBsaWNhdGlvblByb3RlY3RlZEl0ZW1zP2FwaS12ZXJzaW9uPTIwMTgtMDctMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -575,8 +575,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers/cloud_6e846d3a-d55c-5242-870b-c0b98cee05e2/replicationProtectedItems?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvcHJpbWFyeUZyaWVuZGx5TmFtZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzZlODQ2ZDNhLWQ1NWMtNTI0Mi04NzBiLWMwYjk4Y2VlMDVlMi9yZXBsaWNhdGlvblByb3RlY3RlZEl0ZW1zP2FwaS12ZXJzaW9uPTIwMTgtMDEtMTA=",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers/cloud_6e846d3a-d55c-5242-870b-c0b98cee05e2/replicationProtectedItems?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvcHJpbWFyeUZyaWVuZGx5TmFtZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzZlODQ2ZDNhLWQ1NWMtNTI0Mi04NzBiLWMwYjk4Y2VlMDVlMi9yZXBsaWNhdGlvblByb3RlY3RlZEl0ZW1zP2FwaS12ZXJzaW9uPTIwMTgtMDctMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -648,8 +648,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers/cloud_6e846d3a-d55c-5242-870b-c0b98cee05e2/replicationProtectedItems/b1956159-f3d3-4317-86d4-94fb027c6d95?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvcHJpbWFyeUZyaWVuZGx5TmFtZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzZlODQ2ZDNhLWQ1NWMtNTI0Mi04NzBiLWMwYjk4Y2VlMDVlMi9yZXBsaWNhdGlvblByb3RlY3RlZEl0ZW1zL2IxOTU2MTU5LWYzZDMtNDMxNy04NmQ0LTk0ZmIwMjdjNmQ5NT9hcGktdmVyc2lvbj0yMDE4LTAxLTEw",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers/cloud_6e846d3a-d55c-5242-870b-c0b98cee05e2/replicationProtectedItems/b1956159-f3d3-4317-86d4-94fb027c6d95?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvcHJpbWFyeUZyaWVuZGx5TmFtZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzZlODQ2ZDNhLWQ1NWMtNTI0Mi04NzBiLWMwYjk4Y2VlMDVlMi9yZXBsaWNhdGlvblByb3RlY3RlZEl0ZW1zL2IxOTU2MTU5LWYzZDMtNDMxNy04NmQ0LTk0ZmIwMjdjNmQ5NT9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -721,8 +721,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers/cloud_6e846d3a-d55c-5242-870b-c0b98cee05e2/replicationProtectedItems/b1956159-f3d3-4317-86d4-94fb027c6d95?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvcHJpbWFyeUZyaWVuZGx5TmFtZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzZlODQ2ZDNhLWQ1NWMtNTI0Mi04NzBiLWMwYjk4Y2VlMDVlMi9yZXBsaWNhdGlvblByb3RlY3RlZEl0ZW1zL2IxOTU2MTU5LWYzZDMtNDMxNy04NmQ0LTk0ZmIwMjdjNmQ5NT9hcGktdmVyc2lvbj0yMDE4LTAxLTEw",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers/cloud_6e846d3a-d55c-5242-870b-c0b98cee05e2/replicationProtectedItems/b1956159-f3d3-4317-86d4-94fb027c6d95?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvcHJpbWFyeUZyaWVuZGx5TmFtZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzZlODQ2ZDNhLWQ1NWMtNTI0Mi04NzBiLWMwYjk4Y2VlMDVlMi9yZXBsaWNhdGlvblByb3RlY3RlZEl0ZW1zL2IxOTU2MTU5LWYzZDMtNDMxNy04NmQ0LTk0ZmIwMjdjNmQ5NT9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -794,8 +794,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers/cloud_6e846d3a-d55c-5242-870b-c0b98cee05e2/replicationProtectedItems/b1956159-f3d3-4317-86d4-94fb027c6d95?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvcHJpbWFyeUZyaWVuZGx5TmFtZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzZlODQ2ZDNhLWQ1NWMtNTI0Mi04NzBiLWMwYjk4Y2VlMDVlMi9yZXBsaWNhdGlvblByb3RlY3RlZEl0ZW1zL2IxOTU2MTU5LWYzZDMtNDMxNy04NmQ0LTk0ZmIwMjdjNmQ5NT9hcGktdmVyc2lvbj0yMDE4LTAxLTEw",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers/cloud_6e846d3a-d55c-5242-870b-c0b98cee05e2/replicationProtectedItems/b1956159-f3d3-4317-86d4-94fb027c6d95?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvcHJpbWFyeUZyaWVuZGx5TmFtZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzZlODQ2ZDNhLWQ1NWMtNTI0Mi04NzBiLWMwYjk4Y2VlMDVlMi9yZXBsaWNhdGlvblByb3RlY3RlZEl0ZW1zL2IxOTU2MTU5LWYzZDMtNDMxNy04NmQ0LTk0ZmIwMjdjNmQ5NT9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
       "RequestMethod": "PATCH",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"recoveryAzureVMName\": \"hyperV1\",\r\n    \"recoveryAzureVMSize\": \"Basic_A0\",\r\n    \"selectedRecoveryAzureNetworkId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.Network/virtualNetworks/e2anetworksea\",\r\n    \"vmNics\": [\r\n      {\r\n        \"nicId\": \"TWljcm9zb2Z0OkIxOTU2MTU5LUYzRDMtNDMxNy04NkQ0LTk0RkIwMjdDNkQ5NVxEQjZERjg0MC0xNTI4LTQ2OUEtQjQ2Ri1DQ0Q1MUU5OTQwMDQ=\",\r\n        \"recoveryVMSubnetName\": \"default\",\r\n        \"selectionType\": \"SelectedByUser\"\r\n      }\r\n    ],\r\n    \"licenseType\": \"WindowsServer\",\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"HyperVReplicaAzure\",\r\n      \"recoveryAzureV2ResourceGroupId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute\",\r\n      \"useManagedDisks\": \"false\"\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
@@ -840,7 +840,7 @@
           "b6bb0f61-3a02-4f00-aedb-c027f1e165c7-2017-09-20 13:11:36Z-P 9/20/2017 1:11:37 PM"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationJobs/c573494b-a9d3-4f4b-a945-b2f66a9495f0?api-version=2018-01-10"
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationJobs/c573494b-a9d3-4f4b-a945-b2f66a9495f0?api-version=2018-07-10"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -864,7 +864,7 @@
           "Wed, 20 Sep 2017 13:11:36 GMT"
         ],
         "Location": [
-          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers/cloud_6e846d3a-d55c-5242-870b-c0b98cee05e2/replicationProtectedItems/b1956159-f3d3-4317-86d4-94fb027c6d95/operationresults/c573494b-a9d3-4f4b-a945-b2f66a9495f0?api-version=2018-01-10"
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers/cloud_6e846d3a-d55c-5242-870b-c0b98cee05e2/replicationProtectedItems/b1956159-f3d3-4317-86d4-94fb027c6d95/operationresults/c573494b-a9d3-4f4b-a945-b2f66a9495f0?api-version=2018-07-10"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -873,8 +873,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationJobs/c573494b-a9d3-4f4b-a945-b2f66a9495f0?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkpvYnMvYzU3MzQ5NGItYTlkMy00ZjRiLWE5NDUtYjJmNjZhOTQ5NWYwP2FwaS12ZXJzaW9uPTIwMTgtMDEtMTA=",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationJobs/c573494b-a9d3-4f4b-a945-b2f66a9495f0?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkpvYnMvYzU3MzQ5NGItYTlkMy00ZjRiLWE5NDUtYjJmNjZhOTQ5NWYwP2FwaS12ZXJzaW9uPTIwMTgtMDctMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -946,8 +946,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers/cloud_6e846d3a-d55c-5242-870b-c0b98cee05e2/replicationProtectedItems/f3ccb0c1-57d1-4954-81ac-bbc36285cf77?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvcHJpbWFyeUZyaWVuZGx5TmFtZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzZlODQ2ZDNhLWQ1NWMtNTI0Mi04NzBiLWMwYjk4Y2VlMDVlMi9yZXBsaWNhdGlvblByb3RlY3RlZEl0ZW1zL2YzY2NiMGMxLTU3ZDEtNDk1NC04MWFjLWJiYzM2Mjg1Y2Y3Nz9hcGktdmVyc2lvbj0yMDE4LTAxLTEw",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers/cloud_6e846d3a-d55c-5242-870b-c0b98cee05e2/replicationProtectedItems/f3ccb0c1-57d1-4954-81ac-bbc36285cf77?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvcHJpbWFyeUZyaWVuZGx5TmFtZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzZlODQ2ZDNhLWQ1NWMtNTI0Mi04NzBiLWMwYjk4Y2VlMDVlMi9yZXBsaWNhdGlvblByb3RlY3RlZEl0ZW1zL2YzY2NiMGMxLTU3ZDEtNDk1NC04MWFjLWJiYzM2Mjg1Y2Y3Nz9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1019,8 +1019,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers/cloud_6e846d3a-d55c-5242-870b-c0b98cee05e2/replicationProtectedItems/f3ccb0c1-57d1-4954-81ac-bbc36285cf77?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvcHJpbWFyeUZyaWVuZGx5TmFtZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzZlODQ2ZDNhLWQ1NWMtNTI0Mi04NzBiLWMwYjk4Y2VlMDVlMi9yZXBsaWNhdGlvblByb3RlY3RlZEl0ZW1zL2YzY2NiMGMxLTU3ZDEtNDk1NC04MWFjLWJiYzM2Mjg1Y2Y3Nz9hcGktdmVyc2lvbj0yMDE4LTAxLTEw",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers/cloud_6e846d3a-d55c-5242-870b-c0b98cee05e2/replicationProtectedItems/f3ccb0c1-57d1-4954-81ac-bbc36285cf77?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvcHJpbWFyeUZyaWVuZGx5TmFtZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzZlODQ2ZDNhLWQ1NWMtNTI0Mi04NzBiLWMwYjk4Y2VlMDVlMi9yZXBsaWNhdGlvblByb3RlY3RlZEl0ZW1zL2YzY2NiMGMxLTU3ZDEtNDk1NC04MWFjLWJiYzM2Mjg1Y2Y3Nz9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1092,8 +1092,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers/cloud_6e846d3a-d55c-5242-870b-c0b98cee05e2/replicationProtectedItems/f3ccb0c1-57d1-4954-81ac-bbc36285cf77?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvcHJpbWFyeUZyaWVuZGx5TmFtZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzZlODQ2ZDNhLWQ1NWMtNTI0Mi04NzBiLWMwYjk4Y2VlMDVlMi9yZXBsaWNhdGlvblByb3RlY3RlZEl0ZW1zL2YzY2NiMGMxLTU3ZDEtNDk1NC04MWFjLWJiYzM2Mjg1Y2Y3Nz9hcGktdmVyc2lvbj0yMDE4LTAxLTEw",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers/cloud_6e846d3a-d55c-5242-870b-c0b98cee05e2/replicationProtectedItems/f3ccb0c1-57d1-4954-81ac-bbc36285cf77?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvcHJpbWFyeUZyaWVuZGx5TmFtZS9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJzL2Nsb3VkXzZlODQ2ZDNhLWQ1NWMtNTI0Mi04NzBiLWMwYjk4Y2VlMDVlMi9yZXBsaWNhdGlvblByb3RlY3RlZEl0ZW1zL2YzY2NiMGMxLTU3ZDEtNDk1NC04MWFjLWJiYzM2Mjg1Y2Y3Nz9hcGktdmVyc2lvbj0yMDE4LTA3LTEw",
       "RequestMethod": "PATCH",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"recoveryAzureVMName\": \"hyperV2\",\r\n    \"recoveryAzureVMSize\": \"Basic_A0\",\r\n    \"selectedRecoveryAzureNetworkId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.Network/virtualNetworks/e2anetworksea\",\r\n    \"vmNics\": [\r\n      {\r\n        \"nicId\": \"TWljcm9zb2Z0OkYzQ0NCMEMxLTU3RDEtNDk1NC04MUFDLUJCQzM2Mjg1Q0Y3N1xBMzFGMDNGNS0yOTU3LTQ1M0QtOThGMS03NzZDNDAwMUY2NUU=\",\r\n        \"recoveryVMSubnetName\": \"default\",\r\n        \"selectionType\": \"SelectedByUser\"\r\n      }\r\n    ],\r\n    \"licenseType\": \"WindowsServer\",\r\n    \"providerSpecificDetails\": {\r\n      \"instanceType\": \"HyperVReplicaAzure\",\r\n      \"recoveryAzureV2ResourceGroupId\": \"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute\",\r\n      \"useManagedDisks\": \"false\"\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
@@ -1138,7 +1138,7 @@
           "d0ba9d43-3c06-4766-b459-4c68fe192d44-2017-09-20 13:11:40Z-P 9/20/2017 1:11:41 PM"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationJobs/46e85ce9-3f71-4cdc-a662-b3caf7993157?api-version=2018-01-10"
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationJobs/46e85ce9-3f71-4cdc-a662-b3caf7993157?api-version=2018-07-10"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1162,7 +1162,7 @@
           "Wed, 20 Sep 2017 13:11:41 GMT"
         ],
         "Location": [
-          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers/cloud_6e846d3a-d55c-5242-870b-c0b98cee05e2/replicationProtectedItems/f3ccb0c1-57d1-4954-81ac-bbc36285cf77/operationresults/46e85ce9-3f71-4cdc-a662-b3caf7993157?api-version=2018-01-10"
+          "https://management.azure.com/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationFabrics/primaryFriendlyName/replicationProtectionContainers/cloud_6e846d3a-d55c-5242-870b-c0b98cee05e2/replicationProtectedItems/f3ccb0c1-57d1-4954-81ac-bbc36285cf77/operationresults/46e85ce9-3f71-4cdc-a662-b3caf7993157?api-version=2018-07-10"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -1171,8 +1171,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationJobs/46e85ce9-3f71-4cdc-a662-b3caf7993157?api-version=2018-01-10",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkpvYnMvNDZlODVjZTktM2Y3MS00Y2RjLWE2NjItYjNjYWY3OTkzMTU3P2FwaS12ZXJzaW9uPTIwMTgtMDEtMTA=",
+      "RequestUri": "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/E2ERg/providers/Microsoft.RecoveryServices/vaults/E2ETest/replicationJobs/46e85ce9-3f71-4cdc-a662-b3caf7993157?api-version=2018-07-10",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL0UyRVJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvRTJFVGVzdC9yZXBsaWNhdGlvbkpvYnMvNDZlODVjZTktM2Y3MS00Y2RjLWE2NjItYjNjYWY3OTkzMTU3P2FwaS12ZXJzaW9uPTIwMTgtMDctMTA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
