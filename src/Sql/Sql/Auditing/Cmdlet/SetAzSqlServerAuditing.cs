@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             ValueFromPipeline = true,
             HelpMessage = AuditingHelpMessages.ServerInputObjectHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public override AzureSqlServerModel InputObject { get; set; }
+        public override AzureSqlServerModel ServerObject { get; set; }
 
         [Parameter(
             Mandatory = true,
