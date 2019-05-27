@@ -299,9 +299,6 @@ Gets a Azure Firewall.
 ### [Get-AzFirewallFqdnTag](Get-AzFirewallFqdnTag.md)
 Gets the available Azure Firewall Fqdn Tags.
 
-### [Get-AzInterfaceEndpoint](Get-AzInterfaceEndpoint.md)
-The Get-AzInterfaceEndpoint cmdlet gets a Interface Endpoint.
-
 ### [Get-AzLoadBalancer](Get-AzLoadBalancer.md)
 Gets a load balancer.
 
