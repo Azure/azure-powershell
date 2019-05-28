@@ -336,13 +336,15 @@ namespace Microsoft.Azure.Commands.Compute
                 var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
                     _cmdlet.Name, subnet, publicIpAddress, networkSecurityGroup, enableAcceleratedNetwork);
 
-                var availabilitySet = _cmdlet.AvailabilitySetName == null
-                    ? null
-                    : resourceGroup.CreateAvailabilitySetConfig(name: _cmdlet.AvailabilitySetName);
-
                 var proximityPlacementGroup = _cmdlet.ProximityPlacementGroup == null
                     ? null
                     : resourceGroup.CreateProximityPlacementGroupConfig(name: _cmdlet.ProximityPlacementGroup);
+
+                var availabilitySet = _cmdlet.AvailabilitySetName == null
+                    ? null
+                    : resourceGroup.CreateAvailabilitySetConfig(
+                        name: _cmdlet.AvailabilitySetName,
+                        proximityPlacementGroup: proximityPlacementGroup);
 
                 if (_cmdlet.DiskFile == null)
                 {

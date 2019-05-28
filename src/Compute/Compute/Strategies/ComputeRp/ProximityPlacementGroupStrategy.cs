@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     p.ResourceGroupName, p.Name, p.CancellationToken),
                 createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
-                createTime: c => 1);
+                createTime: _ => 1);
 
         public static ResourceConfig<ProximityPlacementGroup> CreateProximityPlacementGroupConfig(
             this ResourceConfig<ResourceGroup> resourceGroup, string name)
