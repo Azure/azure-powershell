@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: engine => new AvailabilitySet
+                createModel: _ =>
                 {
-                    ProximityPlacementGroup = engine.GetReference(proximityPlacementGroup),
+                    throw new InvalidOperationException("Availability set doesn't exist.");
                 });
     }
 }
