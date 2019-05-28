@@ -1,6 +1,6 @@
 # Comments
 
-1. Bo availabilitySet in VMSS
+1. availabilitySet in VMSS
 1. we don't create AvailabilitySets.
 
 ## Dependencies
@@ -13,6 +13,7 @@ VM -> AvailabilitySet -> ProximityPlacementGroup
 ## Scenarios
 
 - availabilitySet, proximityPlacementGroup
+  - check match.
 - availabilitySet
   - generate proximityPlacementGroup ?
 - proximityPlacementGroup
