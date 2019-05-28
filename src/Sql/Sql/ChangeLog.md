@@ -21,6 +21,7 @@
 * Add DnsZonePartner Parameter for New-AzureSqlInstance cmdlet to support AutoDr for Managed Instance.
 * Deprecating Get-AzSqlDatabaseSecureConnectionPolicy cmdlet
 * Rename Threat Detection cmdlets to Advanced Threat Protection
+* New-AzSqlInstance -StorageSizeInGB and -LicenseType parameters are now optional.
 * Remove email constraints from Vulnerability Assessment settings
 
 ## Version 1.10.0
