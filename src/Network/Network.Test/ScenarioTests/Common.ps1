@@ -57,7 +57,7 @@ function Get-NetworkTestMode {
 .SYNOPSIS
 Gets the default location for a provider
 #>
-function Get-ProviderLocation($provider, $preferredLocation = "East US 2 EUAP", $useCanonical = $null)
+function Get-ProviderLocation($provider, $preferredLocation = "West Central US", $useCanonical = $null)
 {
     if($null -eq $useCanonical)
     {

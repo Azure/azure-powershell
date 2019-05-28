@@ -33,7 +33,7 @@ function Test-AvailablePrivateEndpointTypeCRUD
     # Setup
     $rgname = Get-ResourceGroupName;
     $rglocation = Get-ProviderLocation ResourceManagement;
-    $location = Get-ProviderLocation "Microsoft.Network/availablePrivateEndpointTypes";
+    $location = Get-ProviderLocation "Microsoft.Network/availablePrivateEndpointTypes" "eastus2euap";
 
     try
     {
