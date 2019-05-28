@@ -148,7 +148,7 @@ Role definition.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api201801Preview.IRoleDefinition
 Parameter Sets: Update1, UpdateViaIdentity1
-Aliases:
+Aliases: Role
 
 Required: False
 Position: Named

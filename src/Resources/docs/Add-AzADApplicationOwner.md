@@ -1,45 +1,43 @@
 ---
 external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azadserviceprincipalpasswordcredentials
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/add-azadapplicationowner
 schema: 2.0.0
 ---
 
-# Update-AzADServicePrincipalPasswordCredentials
+# Add-AzADApplicationOwner
 
 ## SYNOPSIS
-Updates the passwordCredentials associated with a service principal.
+Add an owner to an application.
 
 ## SYNTAX
 
-### Update (Default)
+### Add (Default)
 ```
-Update-AzADServicePrincipalPasswordCredentials -ObjectId <String> -TenantId <String>
- [-Parameter <IPasswordCredentialsUpdateParameters>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Update-AzADServicePrincipalPasswordCredentials -ObjectId <String> -TenantId <String> [-PassThru]
- -Value <IPasswordCredential[]> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzADApplicationOwner -ObjectId <String> -TenantId <String> [-Parameter <IAddOwnerParameters>] [-PassThru]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### AddExpanded
 ```
-Update-AzADServicePrincipalPasswordCredentials -InputObject <IResourcesIdentity> [-PassThru]
- -Value <IPasswordCredential[]> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzADApplicationOwner -ObjectId <String> -TenantId <String> [-PassThru] [-Properties <Hashtable>]
+ -Url <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaIdentity
+### AddViaIdentityExpanded
 ```
-Update-AzADServicePrincipalPasswordCredentials -InputObject <IResourcesIdentity>
- [-Parameter <IPasswordCredentialsUpdateParameters>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Add-AzADApplicationOwner -InputObject <IResourcesIdentity> [-PassThru] [-Properties <Hashtable>] -Url <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AddViaIdentity
+```
+Add-AzADApplicationOwner -InputObject <IResourcesIdentity> [-Parameter <IAddOwnerParameters>] [-PassThru]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates the passwordCredentials associated with a service principal.
+Add an owner to an application.
 
 ## EXAMPLES
 
@@ -72,7 +70,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Parameter Sets: AddViaIdentityExpanded, AddViaIdentity
 Aliases:
 
 Required: True
@@ -83,11 +81,11 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectId
-The object ID of the service principal.
+The object ID of the application to which to add the owner.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Add, AddExpanded
 Aliases:
 
 Required: True
@@ -98,11 +96,11 @@ Accept wildcard characters: False
 ```
 
 ### -Parameter
-Request parameters for a PasswordCredentials update operation.
+Request parameters for adding a owner to an application.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPasswordCredentialsUpdateParameters
-Parameter Sets: Update, UpdateViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IAddOwnerParameters
+Parameter Sets: Add, AddViaIdentity
 Aliases:
 
 Required: False
@@ -127,12 +125,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Properties
+Additional Parameters
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: AddExpanded, AddViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TenantId
 The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Add, AddExpanded
 Aliases:
 
 Required: True
@@ -142,12 +155,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Value
-A collection of PasswordCredentials.
+### -Url
+A owner object URL, such as "https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd", where "0b1f9851-1bf0-433f-aec3-cb9272f093dc" is the tenantId and "f260bbc4-c254-447b-94cf-293b5ec434dd" is the objectId of the owner (user, application, servicePrincipal, group) to be added.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPasswordCredential[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Type: System.String
+Parameter Sets: AddExpanded, AddViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -200,5 +213,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azadserviceprincipalpasswordcredentials](https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azadserviceprincipalpasswordcredentials)
+[https://docs.microsoft.com/en-us/powershell/module/az.resources/add-azadapplicationowner](https://docs.microsoft.com/en-us/powershell/module/az.resources/add-azadapplicationowner)
 

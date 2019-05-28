@@ -137,7 +137,7 @@ Management Group ID.
 ```yaml
 Type: System.String
 Parameter Sets: Update, UpdateExpanded
-Aliases:
+Aliases: GroupName
 
 Required: True
 Position: Named

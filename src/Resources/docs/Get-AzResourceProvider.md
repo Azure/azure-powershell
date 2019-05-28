@@ -1,31 +1,37 @@
 ---
 external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/register-azprovider
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azresourceprovider
 schema: 2.0.0
 ---
 
-# Register-AzProvider
+# Get-AzResourceProvider
 
 ## SYNOPSIS
-Registers a subscription with a resource provider.
+Gets the specified resource provider.
 
 ## SYNTAX
 
-### Register (Default)
+### List (Default)
 ```
-Register-AzProvider -ResourceProviderNamespace <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzResourceProvider -SubscriptionId <String[]> [-Expand <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### RegisterViaIdentity
+### Get
 ```
-Register-AzProvider -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+Get-AzResourceProvider -ResourceProviderNamespace <String> -SubscriptionId <String[]> [-Expand <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzResourceProvider -InputObject <IResourcesIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Registers a subscription with a resource provider.
+Gets the specified resource provider.
 
 ## EXAMPLES
 
@@ -53,12 +59,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Expand
+The $expand query parameter.
+For example, to include property aliases in response, use $expand=resourceTypes/aliases.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: RegisterViaIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -69,11 +91,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceProviderNamespace
-The namespace of the resource provider to register.
+The namespace of the resource provider.
 
 ```yaml
 Type: System.String
-Parameter Sets: Register
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -87,8 +109,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: Register
+Type: System.String[]
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -98,33 +120,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -Top
+The number of results to return.
+If null is passed returns all deployments.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
+Type: System.Int32
+Parameter Sets: List
+Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -141,5 +148,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.resources/register-azprovider](https://docs.microsoft.com/en-us/powershell/module/az.resources/register-azprovider)
+[https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azresourceprovider](https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azresourceprovider)
 

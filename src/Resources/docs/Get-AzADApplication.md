@@ -103,7 +103,7 @@ The filters to apply to the operation.
 ```yaml
 Type: System.String
 Parameter Sets: List2
-Aliases:
+Aliases: ODataQuery
 
 Required: False
 Position: Named

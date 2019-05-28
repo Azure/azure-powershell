@@ -64,7 +64,7 @@ For example, to filter for a tag name and value, use $filter=tagName eq 'tag1' a
 ```yaml
 Type: System.String
 Parameter Sets: List
-Aliases:
+Aliases: ODataQuery
 
 Required: False
 Position: Named

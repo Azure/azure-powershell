@@ -52,7 +52,7 @@ The filter to apply to the operation.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ODataQuery
 
 Required: False
 Position: Named

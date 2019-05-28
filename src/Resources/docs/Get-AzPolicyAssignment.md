@@ -93,7 +93,7 @@ The filter to apply on the operation.
 ```yaml
 Type: System.String
 Parameter Sets: List2, List, List1, List3
-Aliases:
+Aliases: ODataQuery
 
 Required: False
 Position: Named

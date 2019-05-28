@@ -1,31 +1,41 @@
 ---
 external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-aztagvalue
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/test-azresource
 schema: 2.0.0
 ---
 
-# Remove-AzTagValue
+# Test-AzResource
 
 ## SYNOPSIS
-Deletes a tag value.
+Checks by ID whether a resource exists.
 
 ## SYNTAX
 
-### Delete (Default)
+### Check (Default)
 ```
-Remove-AzTagValue -SubscriptionId <String> -TagName <String> -TagValue <String> [-PassThru]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Test-AzResource -ResourceId <String> [-PassThru] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### Check1
 ```
-Remove-AzTagValue -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Test-AzResource -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
+ -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### CheckViaIdentity1
+```
+Test-AzResource -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### CheckViaIdentity
+```
+Test-AzResource -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes a tag value.
+Checks by ID whether a resource exists.
 
 ## EXAMPLES
 
@@ -58,13 +68,28 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: CheckViaIdentity1, CheckViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ParentResourcePath
+The parent resource identity.
+
+```yaml
+Type: System.String
+Parameter Sets: Check1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -83,76 +108,92 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupName
+The name of the resource group containing the resource to check.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: Check1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The fully qualified ID of the resource, including the resource name and resource type.
+Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
+
+```yaml
+Type: System.String
+Parameter Sets: Check
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceName
+The name of the resource to check whether it exists.
+
+```yaml
+Type: System.String
+Parameter Sets: Check1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceProviderNamespace
+The resource provider of the resource to check.
+
+```yaml
+Type: System.String
+Parameter Sets: Check1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceType
+The resource type.
+
+```yaml
+Type: System.String
+Parameter Sets: Check1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Check1
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TagName
-The name of the tag.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TagValue
-The value of the tag to delete.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -171,5 +212,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-aztagvalue](https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-aztagvalue)
+[https://docs.microsoft.com/en-us/powershell/module/az.resources/test-azresource](https://docs.microsoft.com/en-us/powershell/module/az.resources/test-azresource)
 

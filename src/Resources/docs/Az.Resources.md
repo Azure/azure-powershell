@@ -11,23 +11,26 @@ Locale: en-US
 Microsoft Azure PowerShell: Resources cmdlets
 
 ## Az.Resources Cmdlets
+### [Add-AzADApplicationOwner](Add-AzADApplicationOwner.md)
+Add an owner to an application.
+
 ### [Add-AzADGroupMember](Add-AzADGroupMember.md)
 Add a member to a group.
 
 ### [Add-AzADGroupOwner](Add-AzADGroupOwner.md)
 Add an owner to a group.
 
-### [Add-AzApplicationOwner](Add-AzApplicationOwner.md)
-Add an owner to an application.
-
 ### [Export-AzDeploymentTemplate](Export-AzDeploymentTemplate.md)
 Exports the template used for specified deployment.
 
-### [Export-AzResourceGroupTemplate](Export-AzResourceGroupTemplate.md)
+### [Export-AzResourceGroup](Export-AzResourceGroup.md)
 Captures the specified resource group as a template.
 
 ### [Get-AzADApplication](Get-AzADApplication.md)
 Get an application by object ID.
+
+### [Get-AzADApplicationOwner](Get-AzADApplicationOwner.md)
+The owners are a set of non-admin users who are allowed to modify this object.
 
 ### [Get-AzADDeletedApplication](Get-AzADDeletedApplication.md)
 Gets a list of deleted applications in the directory.
@@ -52,14 +55,8 @@ You can also specify which resource collections (users, groups, etc.) should be 
 Gets service principal information from the directory.
 Query by objectId or pass a filter to query by appId
 
-### [Get-AzADServicePrincipalKeyCredentials](Get-AzADServicePrincipalKeyCredentials.md)
-Get the keyCredentials associated with the specified service principal.
-
 ### [Get-AzADServicePrincipalOwner](Get-AzADServicePrincipalOwner.md)
 The owners are a set of non-admin users who are allowed to modify this object.
-
-### [Get-AzADServicePrincipalPasswordCredentials](Get-AzADServicePrincipalPasswordCredentials.md)
-Gets the passwordCredentials associated with a service principal.
 
 ### [Get-AzADUser](Get-AzADUser.md)
 Gets user information from the directory.
@@ -70,14 +67,8 @@ Gets a collection that contains the object IDs of the groups of which the user i
 ### [Get-AzApplicationKeyCredentials](Get-AzApplicationKeyCredentials.md)
 Get the keyCredentials associated with an application.
 
-### [Get-AzApplicationOwner](Get-AzApplicationOwner.md)
-The owners are a set of non-admin users who are allowed to modify this object.
-
 ### [Get-AzApplicationPasswordCredentials](Get-AzApplicationPasswordCredentials.md)
 Get the passwordCredentials associated with an application.
-
-### [Get-AzApplicationServicePrincipalId](Get-AzApplicationServicePrincipalId.md)
-Gets an object id for a given application id from the current tenant.
 
 ### [Get-AzAuthorizationOperation](Get-AzAuthorizationOperation.md)
 Lists all of the available Microsoft.Authorization REST API operations.
@@ -133,9 +124,6 @@ This operation retrieves the policy set definition in the given subscription wit
 ### [Get-AzPolicySetDefinitionBuilt](Get-AzPolicySetDefinitionBuilt.md)
 This operation retrieves the built-in policy set definition with the given name.
 
-### [Get-AzProvider](Get-AzProvider.md)
-Gets the specified resource provider.
-
 ### [Get-AzProviderFeature](Get-AzProviderFeature.md)
 Gets the preview feature with the specified name.
 
@@ -151,6 +139,9 @@ Gets a resource group.
 ### [Get-AzResourceLink](Get-AzResourceLink.md)
 Gets a resource link with the specified ID.
 
+### [Get-AzResourceProvider](Get-AzResourceProvider.md)
+Gets the specified resource provider.
+
 ### [Get-AzResourceProviderOperationDetail](Get-AzResourceProviderOperationDetail.md)
 Gets a list of resource providers.
 
@@ -159,12 +150,6 @@ Gets a role assignment by ID.
 
 ### [Get-AzRoleDefinition](Get-AzRoleDefinition.md)
 Gets a role definition by ID.
-
-### [Get-AzSignedInUser](Get-AzSignedInUser.md)
-Gets the details for the currently logged-in user.
-
-### [Get-AzSignedInUserOwnedObject](Get-AzSignedInUserOwnedObject.md)
-Get the list of directory objects that are owned by the user.
 
 ### [Get-AzSubscriptionLocation](Get-AzSubscriptionLocation.md)
 This operation provides all the locations that are available for resource providers; however, each resource provider may support a subset of this list.
@@ -254,18 +239,17 @@ The tag name can have a maximum of 512 characters and is case insensitive.
 Tag names created by Azure have prefixes of microsoft, azure, or windows.
 You cannot create tags with one of these prefixes.
 
-### [New-AzTagValue](New-AzTagValue.md)
-Creates a tag value.
-The name of the tag must already exist.
-
-### [Register-AzProvider](Register-AzProvider.md)
-Registers a subscription with a resource provider.
-
 ### [Register-AzProviderFeature](Register-AzProviderFeature.md)
 Registers the preview feature for the subscription.
 
+### [Register-AzResourceProvider](Register-AzResourceProvider.md)
+Registers a subscription with a resource provider.
+
 ### [Remove-AzADApplication](Remove-AzADApplication.md)
 Delete an application.
+
+### [Remove-AzADApplicationOwner](Remove-AzADApplicationOwner.md)
+Remove a member from owners.
 
 ### [Remove-AzADDeletedApplicationHard](Remove-AzADDeletedApplicationHard.md)
 Hard-delete an application.
@@ -284,9 +268,6 @@ Deletes a service principal from the directory.
 
 ### [Remove-AzADUser](Remove-AzADUser.md)
 Delete a user.
-
-### [Remove-AzApplicationOwner](Remove-AzApplicationOwner.md)
-Remove a member from owners.
 
 ### [Remove-AzDeployment](Remove-AzDeployment.md)
 A template deployment that is currently running cannot be deleted.
@@ -345,9 +326,6 @@ Deletes a role definition.
 ### [Remove-AzTag](Remove-AzTag.md)
 You must remove all values from a resource tag before you can delete it.
 
-### [Remove-AzTagValue](Remove-AzTagValue.md)
-Deletes a tag value.
-
 ### [Restore-AzADDeletedApplication](Restore-AzADDeletedApplication.md)
 Restores the deleted application in the directory.
 
@@ -392,10 +370,6 @@ The tag name can have a maximum of 512 characters and is case insensitive.
 Tag names created by Azure have prefixes of microsoft, azure, or windows.
 You cannot create tags with one of these prefixes.
 
-### [Set-AzTagValue](Set-AzTagValue.md)
-Creates a tag value.
-The name of the tag must already exist.
-
 ### [Start-AzTenantBackfill](Start-AzTenantBackfill.md)
 Starts backfilling subscriptions for the Tenant.
 
@@ -416,10 +390,10 @@ Checks whether the deployment exists.
 ### [Test-AzNameAvailability](Test-AzNameAvailability.md)
 Checks if the specified management group name is valid and unique
 
-### [Test-AzResourceExistence](Test-AzResourceExistence.md)
+### [Test-AzResource](Test-AzResource.md)
 Checks by ID whether a resource exists.
 
-### [Test-AzResourceGroupExistence](Test-AzResourceGroupExistence.md)
+### [Test-AzResourceGroup](Test-AzResourceGroup.md)
 Checks whether a resource group exists.
 
 ### [Test-AzResourceMoveResource](Test-AzResourceMoveResource.md)
@@ -430,7 +404,7 @@ If validation succeeds, it returns HTTP response code 204 (no content).
 If validation fails, it returns HTTP response code 409 (Conflict) with an error message.
 Retrieve the URL in the Location header value to check the result of the long-running operation.
 
-### [Unregister-AzProvider](Unregister-AzProvider.md)
+### [Unregister-AzResourceProvider](Unregister-AzResourceProvider.md)
 Unregisters a subscription from a resource provider.
 
 ### [Update-AzADApplication](Update-AzADApplication.md)
@@ -438,12 +412,6 @@ Update an existing application.
 
 ### [Update-AzADServicePrincipal](Update-AzADServicePrincipal.md)
 Updates a service principal in the directory.
-
-### [Update-AzADServicePrincipalKeyCredentials](Update-AzADServicePrincipalKeyCredentials.md)
-Update the keyCredentials associated with a service principal.
-
-### [Update-AzADServicePrincipalPasswordCredentials](Update-AzADServicePrincipalPasswordCredentials.md)
-Updates the passwordCredentials associated with a service principal.
 
 ### [Update-AzADUser](Update-AzADUser.md)
 Updates a user.

@@ -73,7 +73,7 @@ Use atScopeAndBelow filter to search below the given scope as well.
 ```yaml
 Type: System.String
 Parameter Sets: List1
-Aliases:
+Aliases: ODataQuery
 
 Required: False
 Position: Named

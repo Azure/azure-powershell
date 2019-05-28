@@ -86,7 +86,7 @@ Additionally, when gdprExportPrincipalId filter is used, only the deny assignmen
 ```yaml
 Type: System.String
 Parameter Sets: Get, GetViaIdentity
-Aliases:
+Aliases: ODataQuery
 
 Required: False
 Position: Named
@@ -101,7 +101,7 @@ Management Group ID.
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: GroupName
 
 Required: True
 Position: Named

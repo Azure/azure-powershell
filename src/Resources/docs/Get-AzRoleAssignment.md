@@ -49,7 +49,7 @@ Get-AzRoleAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObjec
 
 ### List4
 ```
-Get-AzRoleAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
+Get-AzRoleAssignment -ParentResourceId <String> -ResourceGroupName <String> -ResourceName <String>
  -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]> [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -103,7 +103,7 @@ Use $filter=principalId eq {id} to return all role assignments at, above or belo
 ```yaml
 Type: System.String
 Parameter Sets: List7, List4, List5, List6
-Aliases:
+Aliases: ODataQuery
 
 Required: False
 Position: Named
@@ -157,13 +157,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ParentResourcePath
+### -ParentResourceId
 The parent resource identity.
 
 ```yaml
 Type: System.String
 Parameter Sets: List4
-Aliases:
+Aliases: ParentResourcePath
 
 Required: True
 Position: Named

@@ -52,7 +52,7 @@ This is the Service Principal ObjectId associated with the app
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ODataQuery
 
 Required: False
 Position: Named

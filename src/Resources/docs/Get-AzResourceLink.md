@@ -14,7 +14,7 @@ Gets a resource link with the specified ID.
 
 ### Get (Default)
 ```
-Get-AzResourceLink -LinkId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResourceLink -ResourceId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -70,7 +70,7 @@ For example, $filter=targetId eq {value}
 ```yaml
 Type: System.String
 Parameter Sets: List
-Aliases:
+Aliases: ODataQuery
 
 Required: False
 Position: Named
@@ -94,14 +94,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -LinkId
-The fully qualified Id of the resource link.
-For example, /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup/Microsoft.Web/sites/mySite/Microsoft.Resources/links/myLink
+### -ResourceId
+The fully qualified Id of the resource link. For example, /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup/Microsoft.Web/sites/mySite/Microsoft.Resources/links/myLink
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: LinkId
 
 Required: True
 Position: Named

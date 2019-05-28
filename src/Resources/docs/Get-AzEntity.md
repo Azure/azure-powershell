@@ -72,7 +72,7 @@ Note that the '{entityName}' and '{substringToSearch}' fields are checked case i
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ODataQuery
 
 Required: False
 Position: Named

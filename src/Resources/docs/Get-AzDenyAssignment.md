@@ -97,7 +97,7 @@ Additionally, when gdprExportPrincipalId filter is used, only the deny assignmen
 ```yaml
 Type: System.String
 Parameter Sets: List3, List, List1, List2
-Aliases:
+Aliases: ODataQuery
 
 Required: False
 Position: Named

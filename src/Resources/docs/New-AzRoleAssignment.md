@@ -107,7 +107,7 @@ The delegation flag used for creating a role assignment
 ```yaml
 Type: System.Boolean
 Parameter Sets: CreateExpanded1, CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded3, CreateViaIdentityExpanded2, CreateViaIdentityExpanded1
-Aliases:
+Aliases: AllowDelegation
 
 Required: False
 Position: Named

@@ -1,31 +1,31 @@
 ---
 external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/test-azresourcegroupexistence
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/register-azresourceprovider
 schema: 2.0.0
 ---
 
-# Test-AzResourceGroupExistence
+# Register-AzResourceProvider
 
 ## SYNOPSIS
-Checks whether a resource group exists.
+Registers a subscription with a resource provider.
 
 ## SYNTAX
 
-### Check (Default)
+### Register (Default)
 ```
-Test-AzResourceGroupExistence -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Register-AzResourceProvider -ResourceProviderNamespace <String> -SubscriptionId <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CheckViaIdentity
+### RegisterViaIdentity
 ```
-Test-AzResourceGroupExistence -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
+Register-AzResourceProvider -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Checks whether a resource group exists.
+Registers a subscription with a resource provider.
 
 ## EXAMPLES
 
@@ -58,7 +58,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: CheckViaIdentity
+Parameter Sets: RegisterViaIdentity
 Aliases:
 
 Required: True
@@ -68,28 +68,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The name of the resource group to check.
-The name is case insensitive.
+### -ResourceProviderNamespace
+The namespace of the resource provider to register.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check
+Parameter Sets: Register
 Aliases:
 
 Required: True
@@ -104,10 +88,41 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check
+Parameter Sets: Register
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -121,10 +136,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IProvider
 ## NOTES
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.resources/test-azresourcegroupexistence](https://docs.microsoft.com/en-us/powershell/module/az.resources/test-azresourcegroupexistence)
+[https://docs.microsoft.com/en-us/powershell/module/az.resources/register-azresourceprovider](https://docs.microsoft.com/en-us/powershell/module/az.resources/register-azresourceprovider)
 

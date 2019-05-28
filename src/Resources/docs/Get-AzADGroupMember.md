@@ -72,7 +72,7 @@ The object ID of the group whose members should be retrieved.
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: GroupObjectId
 
 Required: True
 Position: Named

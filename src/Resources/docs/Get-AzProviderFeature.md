@@ -99,7 +99,7 @@ The resource provider namespace for the feature.
 ```yaml
 Type: System.String
 Parameter Sets: Get, List1
-Aliases:
+Aliases: ProviderNamespace
 
 Required: True
 Position: Named

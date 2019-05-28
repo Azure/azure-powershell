@@ -1,45 +1,31 @@
 ---
 external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azadserviceprincipalkeycredentials
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azadapplicationowner
 schema: 2.0.0
 ---
 
-# Update-AzADServicePrincipalKeyCredentials
+# Remove-AzADApplicationOwner
 
 ## SYNOPSIS
-Update the keyCredentials associated with a service principal.
+Remove a member from owners.
 
 ## SYNTAX
 
-### Update (Default)
+### Remove (Default)
 ```
-Update-AzADServicePrincipalKeyCredentials -ObjectId <String> -TenantId <String>
- [-Parameter <IKeyCredentialsUpdateParameters>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Update-AzADServicePrincipalKeyCredentials -ObjectId <String> -TenantId <String> [-PassThru]
- -Value <IKeyCredential[]> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzADApplicationOwner -ObjectId <String> -OwnerObjectId <String> -TenantId <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### RemoveViaIdentity
 ```
-Update-AzADServicePrincipalKeyCredentials -InputObject <IResourcesIdentity> [-PassThru]
- -Value <IKeyCredential[]> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzADServicePrincipalKeyCredentials -InputObject <IResourcesIdentity>
- [-Parameter <IKeyCredentialsUpdateParameters>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzADApplicationOwner -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update the keyCredentials associated with a service principal.
+Remove a member from owners.
 
 ## EXAMPLES
 
@@ -72,7 +58,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Parameter Sets: RemoveViaIdentity
 Aliases:
 
 Required: True
@@ -83,11 +69,11 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectId
-The object ID for which to get service principal information.
+The object ID of the application from which to remove the owner.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Remove
 Aliases:
 
 Required: True
@@ -97,18 +83,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Request parameters for a KeyCredentials update operation
+### -OwnerObjectId
+Owner object id
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IKeyCredentialsUpdateParameters
-Parameter Sets: Update, UpdateViaIdentity
+Type: System.String
+Parameter Sets: Remove
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -132,22 +118,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Value
-A collection of KeyCredentials.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IKeyCredential[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: Remove
 Aliases:
 
 Required: True
@@ -200,5 +171,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azadserviceprincipalkeycredentials](https://docs.microsoft.com/en-us/powershell/module/az.resources/update-azadserviceprincipalkeycredentials)
+[https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azadapplicationowner](https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azadapplicationowner)
 

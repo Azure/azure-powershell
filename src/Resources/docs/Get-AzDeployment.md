@@ -81,7 +81,7 @@ For example, you can use $filter=provisioningState eq '{state}'.
 ```yaml
 Type: System.String
 Parameter Sets: List, List1
-Aliases:
+Aliases: ODataQuery
 
 Required: False
 Position: Named

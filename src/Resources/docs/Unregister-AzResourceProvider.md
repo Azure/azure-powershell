@@ -1,33 +1,31 @@
 ---
 external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-aztagvalue
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/unregister-azresourceprovider
 schema: 2.0.0
 ---
 
-# New-AzTagValue
+# Unregister-AzResourceProvider
 
 ## SYNOPSIS
-Creates a tag value.
-The name of the tag must already exist.
+Unregisters a subscription from a resource provider.
 
 ## SYNTAX
 
-### Create (Default)
+### Unregister (Default)
 ```
-New-AzTagValue -SubscriptionId <String> -TagName <String> -TagValue <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Unregister-AzResourceProvider -ResourceProviderNamespace <String> -SubscriptionId <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaIdentity
+### UnregisterViaIdentity
 ```
-New-AzTagValue -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Unregister-AzResourceProvider -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a tag value.
-The name of the tag must already exist.
+Unregisters a subscription from a resource provider.
 
 ## EXAMPLES
 
@@ -60,7 +58,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: CreateViaIdentity
+Parameter Sets: UnregisterViaIdentity
 Aliases:
 
 Required: True
@@ -70,42 +68,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ResourceProviderNamespace
+The namespace of the resource provider to unregister.
+
+```yaml
+Type: System.String
+Parameter Sets: Unregister
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TagName
-The name of the tag.
-
-```yaml
-Type: System.String
-Parameter Sets: Create
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TagValue
-The value of the tag to create.
-
-```yaml
-Type: System.String
-Parameter Sets: Create
+Parameter Sets: Unregister
 Aliases:
 
 Required: True
@@ -153,10 +136,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.ITagValue
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IProvider
 ## NOTES
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.resources/new-aztagvalue](https://docs.microsoft.com/en-us/powershell/module/az.resources/new-aztagvalue)
+[https://docs.microsoft.com/en-us/powershell/module/az.resources/unregister-azresourceprovider](https://docs.microsoft.com/en-us/powershell/module/az.resources/unregister-azresourceprovider)
 

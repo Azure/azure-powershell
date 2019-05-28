@@ -232,6 +232,11 @@ directive:
     set:
       alias: ${verb}-AzResourceGroupDeployment
   - where:
+      verb: Get
+      subject: DeploymentOperation
+    set:
+      alias: Get-AzResourceGroupDeploymentOperation
+  - where:
       verb: Test
       subject: DeploymentExistence
     set:
@@ -240,6 +245,12 @@ directive:
       subject: Provider
     set:
       subject: ResourceProvider
+  - where:
+      verb: Get
+      subject: ProviderFeature
+      parameter-name: ResourceProviderNamespace
+    set:
+      alias: ProviderNamespace
   - where:
       subject: TagValue
     hide: true
@@ -252,7 +263,7 @@ directive:
   - where:
       subject: AD.*KeyCredential
     hide: true
-  where:
+  - where:
       subject: AD.*PasswordCredential
     hide: true
   - where:
@@ -263,6 +274,13 @@ directive:
       parameter-name: GroupId
     set:
       alias: GroupName
+  - where:
+      verb: Get
+      subject: RoleAssignment
+      parameter-name: ParentResourcePath
+    set:
+      parameter-name: ParentResourceId
+      alias: ParentResourcePath
   - where:
       verb: New
       subject: RoleAssignment

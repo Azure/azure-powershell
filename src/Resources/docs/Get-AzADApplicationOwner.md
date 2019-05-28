@@ -1,31 +1,24 @@
 ---
 external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azapplicationserviceprincipalid
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadapplicationowner
 schema: 2.0.0
 ---
 
-# Get-AzApplicationServicePrincipalId
+# Get-AzADApplicationOwner
 
 ## SYNOPSIS
-Gets an object id for a given application id from the current tenant.
+The owners are a set of non-admin users who are allowed to modify this object.
 
 ## SYNTAX
 
-### Get (Default)
 ```
-Get-AzApplicationServicePrincipalId -ApplicationId <String> -TenantId <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzApplicationServicePrincipalId -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>]
+Get-AzADApplicationOwner -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets an object id for a given application id from the current tenant.
+The owners are a set of non-admin users who are allowed to modify this object.
 
 ## EXAMPLES
 
@@ -37,21 +30,6 @@ PS C:\> {{ Add example code here }}
 {{ Add example description here }}
 
 ## PARAMETERS
-
-### -ApplicationId
-The application ID.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -68,18 +46,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
+### -ObjectId
+The object ID of the application for which to get owners.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: GetViaIdentity
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -88,7 +66,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -105,10 +83,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IServicePrincipalObjectResult
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IDirectoryObject
 ## NOTES
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azapplicationserviceprincipalid](https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azapplicationserviceprincipalid)
+[https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadapplicationowner](https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azadapplicationowner)
 
