@@ -31,17 +31,18 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     p.ResourceGroupName, p.Name, p.CancellationToken),
                 createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
-                createTime: c => 1);
+                createTime: _ => 1);
 
         public static ResourceConfig<AvailabilitySet> CreateAvailabilitySetConfig(
-            this ResourceConfig<ResourceGroup> resourceGroup, string name)
+            this ResourceConfig<ResourceGroup> resourceGroup,
+            string name,
+            ResourceConfig<ProximityPlacementGroup> proximityPlacementGroup)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: _ =>
+                createModel: engine => new AvailabilitySet
                 {
-                    throw new InvalidOperationException("Availability set doesn't exist.");
-                },
-                dependencies: Enumerable.Empty<IEntityConfig>());
+                    ProximityPlacementGroup = engine.GetReference(proximityPlacementGroup),
+                });
     }
 }
