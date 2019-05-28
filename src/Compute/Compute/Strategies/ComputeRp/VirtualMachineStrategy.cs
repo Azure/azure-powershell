@@ -48,7 +48,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             VirtualMachineIdentity identity,
             IEnumerable<int> dataDisks,
             IList<string> zones,
-            bool ultraSSDEnabled)
+            bool ultraSSDEnabled,
+            ResourceConfig<ProximityPlacementGroup> proximityPlacementGroup)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -82,7 +83,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     },
                     AvailabilitySet = engine.GetReference(availabilitySet),
                     Zones = zones,
-                    AdditionalCapabilities = ultraSSDEnabled ? new AdditionalCapabilities(true) : null
+                    AdditionalCapabilities = ultraSSDEnabled ? new AdditionalCapabilities(true) : null,
+                    ProximityPlacementGroup = engine.GetReference(proximityPlacementGroup),
                 });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
@@ -96,7 +98,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             VirtualMachineIdentity identity,
             IEnumerable<int> dataDisks,
             IList<string> zones,
-            bool ultraSSDEnabled)
+            bool ultraSSDEnabled,
+            ResourceConfig<ProximityPlacementGroup> proximityPlacementGroup)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -127,7 +130,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Identity = identity,
                     AvailabilitySet = engine.GetReference(availabilitySet),
                     Zones = zones,
-                    AdditionalCapabilities = ultraSSDEnabled ?  new AdditionalCapabilities(true)  : null
+                    AdditionalCapabilities = ultraSSDEnabled ?  new AdditionalCapabilities(true)  : null,
+                    ProximityPlacementGroup = engine.GetReference(proximityPlacementGroup),
                 });
     }
 }
