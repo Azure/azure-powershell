@@ -48,11 +48,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string vmSize,
             int instanceCount,
             VirtualMachineScaleSetIdentity identity,
-            Boolean singlePlacementGroup,
+            bool singlePlacementGroup,
             UpgradeMode? upgradeMode,
             IEnumerable<int> dataDisks,
             IList<string> zones,
-            bool ultraSSDEnabled)
+            bool ultraSSDEnabled,
+            ResourceConfig<ProximityPlacementGroup> proximityPlacementGroup)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -114,7 +115,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                 }
                             }
                         }
-                    }
+                    },
+                    ProximityPlacementGroup = engine.GetReference(proximityPlacementGroup),
                 });
     }
 }
