@@ -418,7 +418,8 @@ AliasesToExport = 'List-AzApplicationGatewayAvailableWafRuleSets',
                'Set-AzApplicationGatewayBackendHttpSettings', 
                'Get-AzExpressRouteCircuitStats', 
                'Get-AzApplicationGatewayAvailableWafRuleSets', 
-               'Get-AzApplicationGatewayAvailableSslOptions'
+               'Get-AzApplicationGatewayAvailableSslOptions',
+               'Get-AzInterfaceEndpoint'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
