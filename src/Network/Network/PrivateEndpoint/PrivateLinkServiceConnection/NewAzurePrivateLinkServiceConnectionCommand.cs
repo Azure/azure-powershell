@@ -26,7 +26,7 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateLinkServiceConnection"), OutputType(typeof(PSPrivateLinkServiceConnection))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateLinkServiceConnection", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSPrivateLinkServiceConnection))]
     public class NewAzurePrivateLinkServiceConnectionCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -37,6 +37,16 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            ParameterSetName = "SetByResource",
+            ValueFromPipeline = true,
+            HelpMessage = "The private link service.")]
+        [ValidateNotNullOrEmpty]
+        public PSPrivateLinkService PrivateLinkService { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = "SetByResourceId",
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The id of private link service.")]
         [ValidateNotNullOrEmpty]
         public string PrivateLinkServiceId { get; set; }
@@ -54,6 +64,14 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+
+            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
+            {
+                if (this.PrivateLinkService != null)
+                {
+                    this.PrivateLinkServiceId = this.PrivateLinkService.Id;
+                }
+            }
 
             var psPlsConnection = new PSPrivateLinkServiceConnection
             {
