@@ -14,19 +14,19 @@ Regenerates the shared access key for an Azure Event Grid Domain.
 
 ### DomainNameParameterSet (Default)
 ```
-New-AzEventGridDomainKey [-ResourceGroupName] <String> [-DomainName] <String> [-KeyName] <String>
+New-AzEventGridDomainKey [-ResourceGroupName] <String> [-DomainName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DomainInputObjectParameterSet
 ```
-New-AzEventGridDomainKey [-KeyName] <String> [-InputObject] <PSDomain>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzEventGridDomainKey [-Name] <String> [-InputObject] <PSDomain> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
 ```
-New-AzEventGridDomainKey [-KeyName] <String> [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+New-AzEventGridDomainKey [-Name] <String> [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,25 +36,40 @@ Regenerates the shared access key for an Azure Event Grid Domain.
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> New-AzEventGridDomainKey -ResourceGroup MyResourceGroupName -DomainName Domain1 -KeyName key1
-```
 
 Regenerate the key corresponding to key \'key1'\ of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
+
+```powershell
+PS C:\> New-AzEventGridDomainKey -ResourceGroup MyResourceGroupName -DomainName Domain1 -Name key1
+
+Key1                                         Key2
+----                                         ----
+<New Value for Key1>                        <Old Value for Key2>
+```
 
 ### Example 2
-```powershell
-PS C:\> Get-AzEventGridDomain -ResourceGroup MyResourceGroupName -Name Domain1 | New-AzEventGridTopicKey -KeyName "key1"
-```
 
 Regenerate the key corresponding to key \'key1'\ of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
 
-### Example 3
 ```powershell
-PS C:\> New-AzEventGridDomainKey -ResourceId /subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1 -KeyName Key2
+PS C:\> Get-AzEventGridDomain -ResourceGroup MyResourceGroupName -Name Domain1 | New-AzEventGridTopicKey -KeyName "key1"
+
+Key1                                         Key2
+----                                         ----
+<New Value for Key1>                        <Old Value for Key2>
 ```
 
+### Example 3
+
 Regenerate the key corresponding to key \'key2'\ of Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\` using its full resource Id.
+
+```powershell
+PS C:\> New-AzEventGridDomainKey -ResourceId /subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1 -KeyName Key2
+
+Key1                                         Key2
+----                                         ----
+<Old Value for Key1>                        <New Value for Key2>
+```
 
 ## PARAMETERS
 
@@ -103,13 +118,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -KeyName
+### -Name
 The name of the key that needs to be regenerated
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: KeyName
 
 Required: True
 Position: 2

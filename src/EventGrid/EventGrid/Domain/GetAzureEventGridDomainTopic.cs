@@ -38,7 +38,6 @@ namespace Microsoft.Azure.Commands.EventGrid
     {
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = DomainTopicNameParameterSet)]
@@ -49,7 +48,6 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = EventGridConstants.DomainNameHelp,
             ParameterSetName = DomainTopicNameParameterSet)]
@@ -60,7 +58,6 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.DomainTopicNameHelp,
             ParameterSetName = DomainTopicNameParameterSet)]
         [ResourceNameCompleter("Microsoft.EventGrid/domains/topics", nameof(ResourceGroupName), nameof(DomainName))]
@@ -79,12 +76,10 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.ODataQueryHelp,
             ParameterSetName = DomainTopicNameParameterSet)]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.ODataQueryHelp,
             ParameterSetName = ResourceIdDomainTopicParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -92,12 +87,10 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.ODataQueryHelp,
             ParameterSetName = DomainTopicNameParameterSet)]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.ODataQueryHelp,
             ParameterSetName = ResourceIdDomainTopicParameterSet)]
         [ValidateRange(1, 100)]
@@ -105,7 +98,6 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.NextLinkHelp,
             ParameterSetName = NextLinkParameterSet)]
         [ValidateNotNullOrEmpty]

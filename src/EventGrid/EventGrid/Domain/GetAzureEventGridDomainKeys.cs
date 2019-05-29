@@ -24,13 +24,12 @@ namespace Microsoft.Azure.Commands.EventGrid
         VerbsCommon.Get,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridDomainKey",
         DefaultParameterSetName = DomainNameParameterSet),
-    OutputType(typeof(DomainSharedAccessKeys))]
+    OutputType(typeof(PsDomainSharedAccessKeys))]
 
     public class GetAzureEventGridDomainKeys : AzureEventGridCmdletBase
     {
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             Position = 0,
             ParameterSetName = DomainNameParameterSet,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp)]
@@ -41,7 +40,6 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             Position = 1,
             ParameterSetName = DomainNameParameterSet,
             HelpMessage = EventGridConstants.DomainNameHelp)]
@@ -88,7 +86,9 @@ namespace Microsoft.Azure.Commands.EventGrid
                 domainName = this.Name;
             }
 
-            this.WriteObject(this.Client.GetDomainSharedAccessKeys(resourceGroupName, domainName));
+            DomainSharedAccessKeys domainSharedAccessKeys = this.Client.GetDomainSharedAccessKeys(resourceGroupName, domainName);
+            PsDomainSharedAccessKeys psDomainSharedAccessKeys = new PsDomainSharedAccessKeys(domainSharedAccessKeys);
+            this.WriteObject(psDomainSharedAccessKeys);
         }
     }
 }

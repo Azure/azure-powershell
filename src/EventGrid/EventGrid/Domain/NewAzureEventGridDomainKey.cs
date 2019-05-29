@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridDomainKey",
         DefaultParameterSetName = DomainNameParameterSet,
         SupportsShouldProcess = true), 
-    OutputType(typeof(DomainSharedAccessKeys))]
+    OutputType(typeof(PsDomainSharedAccessKeys))]
 
     public class NewAzureEventGridDomainKey : AzureEventGridCmdletBase
     {
@@ -69,7 +69,8 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = EventGridConstants.KeyNameHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string KeyName { get; set; }
+        [Alias(AliasKey)]
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -91,7 +92,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.DomainName, $"Regenerate key {this.KeyName} for domain {this.DomainName} in Resource Group {this.ResourceGroupName}"))
+            if (this.ShouldProcess(this.DomainName, $"Regenerate key {this.Name} for domain {this.DomainName} in Resource Group {this.ResourceGroupName}"))
             {
                 string resourceGroupName;
                 string domainName;
@@ -111,7 +112,9 @@ namespace Microsoft.Azure.Commands.EventGrid
                     domainName = this.DomainName;
                 }
 
-                this.WriteObject(this.Client.RegenerateDomainKey(resourceGroupName, domainName, this.KeyName));
+                DomainSharedAccessKeys domainSharedAccessKeys = this.Client.RegenerateDomainKey(resourceGroupName, domainName, this.Name);
+                PsDomainSharedAccessKeys psDomainSharedAccessKeys = new PsDomainSharedAccessKeys(domainSharedAccessKeys);
+                this.WriteObject(psDomainSharedAccessKeys);
             }
         }
     }

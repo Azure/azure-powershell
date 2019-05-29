@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         protected const string EventSubscriptionTopicTypeNameParameterSet = "EventSubscriptionTopicTypeNameParameterSet";
         protected const string EventSubscriptionFullUrlInResponseHelp = "If specified, include the full endpoint URL of the event subscription destination in the response.";
 
+        protected const string AliasKey = "KeyName";
         protected const string AliasResourceGroup = "ResourceGroup";
         protected const string AliasDomain = "Domain";
         protected const string AliasDomainName = "DomainName";
