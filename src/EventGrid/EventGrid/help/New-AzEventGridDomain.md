@@ -23,25 +23,38 @@ Creates a new Azure Event Grid Domain. Once the domain is created, an applicatio
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> New-AzEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1 -Location westus2
-```
 
 Creates an Event Grid domain \`Domain1\` in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\`.
 
-### Example 2
 ```powershell
-PS C:\> New-AzEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1 -Location westus2 -Tag @{ Department="Finance"; Environment="Test" }
+PS C:\> New-AzEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1 -Location westus2
+
+ResourceGroupName : MyResourceGroupName
+DomainName        : Domain1
+Id                : /subscriptions/<Azure Subscription Id>/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/domain1
+Type              : Microsoft.EventGrid/domains
+Location          : westus2
+Endpoint          : https://domain1.westus2-1.eventgrid.azure.net/api/events
+ProvisioningState : Succeeded
+Tags              :
 ```
+
+### Example 2
 
 Creates an Event Grid domain \`Domain1\` in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\` with the specified tags "Department" and "Environment".
 
-### Example 2
 ```powershell
-PS C:\> New-AzEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1 -Location westus2 --Tag @{ Department="Finance"; Environment="Test" } -InputSchema customeventschema -InputMappingField @{id="CustomIdField"; topic="CustomTopicField"; eventtime="CustomEventTimeField"; subject="CustomSubjectField"; eventtype="CustomEventTypeField"; dataversion="CustomDataVersionField"} -InputMappingDefaultValue @{subject="CustomSubjectDefaultValue"; eventtype="CustomEventTypeDefaultValue"; dataversion="CustomDataVersionDefaultValue"}
-```
+PS C:\> New-AzEventGridDomain -ResourceGroupName MyResourceGroupName -Name Domain1 -Location westus2 -Tag @{ Department="Finance"; Environment="Test" }
 
-Creates an Event Grid domain \`Domain1\` in the specified geographic location \`westus2\`, in resource group \`MyResourceGroupName\` with the specified tags "Department" and "Environment" with the specified customeventschema Input Schema along with the corresponding input mapping fields and default values that are used for input mapping.
+ResourceGroupName : MyResourceGroupName
+DomainName        : Domain1
+Id                : /subscriptions/<Azure Subscription Id>/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/domain1
+Type              : Microsoft.EventGrid/domains
+Location          : westus2
+Endpoint          : https://domain1.westus2-1.eventgrid.azure.net/api/events
+ProvisioningState : Succeeded
+Tags              : {[Department, Finance], [Environment, Test]}
+```
 
 ## PARAMETERS
 

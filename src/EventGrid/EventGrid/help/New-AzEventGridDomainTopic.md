@@ -23,18 +23,19 @@ Creates a new Azure Event Grid Domain Topic.
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> New-AzEventGridDomainTopic -ResourceGroupName MyResourceGroupName -DomainName Domain1 -Name Topic1
-```
 
 Creates an Event Grid Domain Topic \`Topic1\` in Domain \`Domain1\` under resource group \`MyResourceGroupName\`.
 
-### Example 2
 ```powershell
 PS C:\> New-AzEventGridDomainTopic -ResourceGroupName MyResourceGroupName -DomainName Domain1 -Name Topic1
-```
 
-Creates an Event Grid topic \`Topic1\` in Domain \`Domain1\` under resource group \`MyResourceGroupName\`.
+ResourceGroupName : MyResourceGroupName
+DomainName        : Domain1
+DomainTopicName   : topic1
+Id                : /subscriptions/<Azure Subscription Id>/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1/topics/topic1
+Type              : Microsoft.EventGrid/domains/topics
+ProvisioningState : Succeeded
+```
 
 ## PARAMETERS
 

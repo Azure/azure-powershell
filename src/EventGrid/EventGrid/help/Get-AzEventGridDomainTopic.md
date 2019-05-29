@@ -39,41 +39,120 @@ Finally, ODataQuery parameter is used to perform filtering for the search result
 ## EXAMPLES
 
 ### Example 1
+
+Gets the details of Event Grid domain topic \`DomainTopic1\` under Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
+
 ```powershell
 PS C:\> Get-AzEventGridDomainTopic -ResourceGroup MyResourceGroupName -DomainName Domain1 -DomainTopicName DomainTopic1
-```
 
-Gets the details of Event Grid domain topic \`DomainTopic1\` under Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
+ResourceGroupName : MyResourceGroupName
+DomainName        : DomainTopic1
+DomainTopicName   : Topic1
+Id                : /subscriptions/20902276-e53b-4421-8565-f57bcad74f6e/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1/topics/DomainTopic1
+Type              : Microsoft.EventGrid/domains/topics
+ProvisioningState : Succeeded
+```
 
 ### Example 2
-```powershell
-PS C:\> Get-AzEventGridDomainTopic -ResourceGroup MyResourceGroupName -DomainName Domain1
-```
 
-List all the Event Grid domain topics under Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
+Gets the details of Event Grid domain topic \`DomainTopic1\` under Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\` using the ResourceId option.
 
-### Example 3
 ```powershell
 PS C:\> Get-AzEventGridDomainTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1/topics/DomainTopic1"
+
+ResourceGroupName : MyResourceGroupName
+DomainName        : Domain1
+DomainTopicName   : DomainTopic1
+Id                : /subscriptions/20902276-e53b-4421-8565-f57bcad74f6e/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1/topics/DomainTopic1
+Type              : Microsoft.EventGrid/domains/topics
+ProvisioningState : Succeeded
 ```
 
-Gets the details of Event Grid domain topic \`DomainTopic1\` under Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\`.
+### Example 3
+
+List all the Event Grid domain topics under Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\` without pagination (all results are returned in one shot).
+
+```powershell
+PS C:\> $result=Get-AzEventGridDomainTopic -ResourceGroup MyResourceGroupName -DomainName Domain1
+PS C:\> echo $result.PsDomainTopicsList
+
+
+ResourceGroupName : MyResourceGroupName
+DomainName        : Domain1
+DomainTopicName   : DomainTopic1
+Id                : /subscriptions/20902276-e53b-4421-8565-f57bcad74f6e/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1/topics/DomainTopic1
+Type              : Microsoft.EventGrid/domains/topics
+ProvisioningState : Succeeded
+
+
+ResourceGroupName : MyResourceGroupName
+DomainName        : Domain1
+DomainTopicName   : DomainTopic2
+Id                : /subscriptions/20902276-e53b-4421-8565-f57bcad74f6e/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1/topics/DomainTopic2
+Type              : Microsoft.EventGrid/domains/topics
+ProvisioningState : Succeeded
+
+
+ResourceGroupName : MyResourceGroupName
+DomainName        : Domain1
+DomainTopicName   : DomainTopic3
+Id                : /subscriptions/20902276-e53b-4421-8565-f57bcad74f6e/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1/topics/DomainTopic3
+Type              : Microsoft.EventGrid/domains/topics
+ProvisioningState : Succeeded
+```
 
 ### Example 4
+
+List all the Event Grid domain topics under Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\` without pagination (all results are returned in one shot) using ResourceId option
+
 ```powershell
-PS C:\> Get-AzEventGridDomainTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1"
+PS C:\> $result=Get-AzEventGridDomainTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1"
+PS C:\> echo $result.PsDomainTopicsList
+
+
+ResourceGroupName : MyResourceGroupName
+DomainName        : Domain1
+DomainTopicName   : DomainTopic1
+Id                : /subscriptions/20902276-e53b-4421-8565-f57bcad74f6e/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1/topics/DomainTopic1
+Type              : Microsoft.EventGrid/domains/topics
+ProvisioningState : Succeeded
+
+
+ResourceGroupName : MyResourceGroupName
+DomainName        : Domain1
+DomainTopicName   : DomainTopic2
+Id                : /subscriptions/20902276-e53b-4421-8565-f57bcad74f6e/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1/topics/DomainTopic2
+Type              : Microsoft.EventGrid/domains/topics
+ProvisioningState : Succeeded
+
+
+ResourceGroupName : MyResourceGroupName
+DomainName        : Domain1
+DomainTopicName   : DomainTopic3
+Id                : /subscriptions/20902276-e53b-4421-8565-f57bcad74f6e/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/domains/Domain1/topics/DomainTopic3
+Type              : Microsoft.EventGrid/domains/topics
+ProvisioningState : Succeeded
 ```
 
-List all the Event Grid domain topics under Event Grid domain \`Domain1\` in resource group \`MyResourceGroupName\` without pagination.
 
 ### Example 5
-```powershell
-$odataFilter = "Name ne 'ABCD'"
-PS C:\> $result = Get-AzEventGridDomainTopic -ResourceGroup MyResourceGroupName -DomainName Domain1 -Top 10 -ODataQuery $odataFilter
-PS C:\> Get-AzEventGridDomainTopic $result.NextLink
-```
 
-List the first 10 Event Grid domain topics (if any) under domain \`Domain1\` in resource group \`MyResourceGroupName\` that satisfies the $odataFilter query. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of domain topics, user is expected to re-call Get-AzEventGridDomainTopic and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
+List the Event Grid domain topics (if any) iunder domain \`Domain1\` in resource group \`MyResourceGroupName\` that satisfies the $odataFilter query 10 domain topics at a time. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of domain topics, user is expected to re-call Get-AzEventGridDomainTopic and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
+
+```powershell
+
+PS C:\> $total = 0
+PS C:\> $odataFilter = "Name ne 'ABCD'"
+PS C:\> $result = Get-AzEventGridDomainTopic -ResourceGroup MyResourceGroupName -DomainName Domain1 -Top 10 -ODataQuery $odataFilter
+PS C:\> $total += $result.Count
+PS C:\> while ($result.NextLink -ne $Null)
+    {
+        $result = Get-AzEventGridDomainTopic -NextLink $result.NextLink
+        $total += $result.Count
+    }
+
+PS C:\> echo "Total number of domain topics is $Total"
+```
 
 ## PARAMETERS
 
@@ -103,7 +182,7 @@ Aliases: Domain
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -118,7 +197,7 @@ Aliases: DomainTopicName
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -133,7 +212,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -148,7 +227,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -163,7 +242,7 @@ Aliases: ResourceGroup
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -193,7 +272,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
