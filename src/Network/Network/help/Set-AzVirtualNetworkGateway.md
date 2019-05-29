@@ -453,7 +453,9 @@ Accept wildcard characters: False
 ```
 
 ### -RemoveAadAuthentication
-Flag to remove AAD authentication for P2S client from virtual network gateway.```yaml
+Flag to remove AAD authentication for P2S client from virtual network gateway.
+
+```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
