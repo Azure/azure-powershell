@@ -100,7 +100,7 @@ The above will create a resource group, request a Public IP Address, create a Vi
 subnet and create a Virtual Network Gateway in Azure.
 The gateway will be called "myNGW" within the resource group "vnet-gateway" in the location "UK West" with the previously created IP configurations saved in the variable "ngwIPConfig," the gateway type of "VPN," the vpn type "RouteBased," and the sku "Basic." It also adds an external radius server with address "TestRadiusServer". It will also set custom routes specified by customers on gateway.
 
-### 1: Create a Virtual Network Gateway with P2S settings
+### 3: Create a Virtual Network Gateway with P2S settings
 ```
 New-AzResourceGroup -Location "UK West" -Name "vnet-gateway"
 $subnet = New-AzVirtualNetworkSubnetConfig -Name 'gatewaysubnet' -AddressPrefix '10.254.0.0/27'
@@ -120,10 +120,30 @@ subnet and create a Virtual Network Gateway with P2S settings e.g. VpnProtocol,V
 The gateway will be called "myNGW" within the resource group "vnet-gateway" in the location "UK West" with the previously created IP configurations saved in the variable "ngwIPConfig," the gateway type of "VPN," the vpn type "RouteBased," and the sku "VpnGw1." Vpn settings will be set on Gateway such as VpnProtocol set as Ikev2, VpnClientAddressPool as "201.169.0.0/16", VpnClientRootCertificate set as passed one: clientRootCertName and custom vpn ipsec policy passed in object:$vpnclientipsecpolicy  
 It will also set custom routes specified by customers on gateway.
 
+### 4: Create a Virtual Network Gateway with AAD authentication Configuration for VpnClient of virtual network gateway.
+```
+New-AzResourceGroup -Location "UK West" -Name "vnet-gateway"
+New-AzVirtualNetworkSubnetConfig -Name 'gatewaysubnet' -AddressPrefix '10.254.0.0/27'
+
+$ngwpip = New-AzPublicIpAddress -Name ngwpip -ResourceGroupName "vnet-gateway" -Location "UK West" -AllocationMethod Dynamic
+$vnet = New-AzVirtualNetwork -AddressPrefix "10.254.0.0/27" -Location "UK West" -Name vnet-gateway -ResourceGroupName "vnet-gateway" -Subnet $subnet
+$subnet = Get-AzVirtualNetworkSubnetConfig -name 'gatewaysubnet' -VirtualNetwork $vnet
+$ngwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name ngwipconfig -SubnetId $subnet.Id -PublicIpAddressId $ngwpip.Id
+$Secure_String_Pwd = ConvertTo-SecureString "TestRadiusServerPassword" -AsPlainText -Force
+
+New-AzVirtualNetworkGateway -Name myNGW -ResourceGroupName vnet-gateway -Location "UK West" -IpConfigurations $ngwIpConfig  -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "VpnGw1" -VpnClientProtocol OpenVPN   -VpnClientAddressPool 201.169.0.0/16 -AadTenant "https://login.microsoftonline.com/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4" -AadIssuer "https://sts.windows.net/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4/" -AadAudience "a21fce82-76af-45e6-8583-a08cb3b956f9"
+```
+
+The above will create a resource group, request a Public IP Address, create a Virtual Network and
+subnet and create a Virtual Network Gateway in Azure.
+The gateway will be called "myNGW" within the resource group "vnet-gateway" in the location "UK West" with the previously created IP configurations saved in the variable "ngwIPConfig," the gateway type of "VPN," the vpn type "RouteBased," and the sku "Basic." It also configures AAD authentication configurations: AADTenant, AADIssuer and AADAudience for Vpnclient of virtual network gateway.
+
 ## PARAMETERS
 
 ### -AadAudience
-P2S AAD authentication option:AADAudience.```yaml
+P2S AAD authentication option:AADAudience.
+
+```yaml
 Type: System.String
 Parameter Sets: AadAuthenticationConfiguration
 Aliases:
@@ -136,7 +156,9 @@ Accept wildcard characters: False
 ```
 
 ### -AadIssuer
-P2S AAD authentication option:AADIssuer.```yaml
+P2S AAD authentication option:AADIssuer.
+
+```yaml
 Type: System.String
 Parameter Sets: AadAuthenticationConfiguration
 Aliases:
@@ -149,7 +171,9 @@ Accept wildcard characters: False
 ```
 
 ### -AadTenant
-P2S AAD authentication option:AADTenant.```yaml
+P2S AAD authentication option:AADTenant.
+
+```yaml
 Type: System.String
 Parameter Sets: AadAuthenticationConfiguration
 Aliases:
