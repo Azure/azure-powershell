@@ -151,10 +151,86 @@ BgpSettings            : {
 The first command gets a virtual network gateway named Gateway01 that belongs to resource group ResourceGroup001 and stores it to the variable named $Gateway
 The second command updates the virtual network gateway Gateway01 with the tags @{ testtagKey="SomeTagKey"; testtagValue="SomeKeyValue" }.
 
+### Example 4: Add/Update AAD authentication configuration for VpnClient of an existing virtual network gateway
+```
+PS C:\>$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
+PS C:\>Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -AadTenant "https://login.microsoftonline.com/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4" -AadIssuer "https://sts.windows.net/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4/" -AadAudience "a21fce82-76af-45e6-8583-a08cb3b956f9"
+
+Name                   : Gateway001
+ResourceGroupName      : ResourceGroup001
+Location               : westus
+Id                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001
+Etag                   : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid           : 00000000-0000-0000-0000-000000000000
+ProvisioningState      : Succeeded
+Tags                   :
+                         Name          Value
+                         ============  ============
+                         testtagValue  SomeKeyValue
+                         testtagKey    SomeTagKey
+
+IpConfigurations       : [
+                           {
+                             "PrivateIpAllocationMethod": "Dynamic",
+                             "Subnet": {
+                               "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworks/MyVnet/subnets/GatewaySubnet"
+                             },
+                             "PublicIpAddress": {
+                               "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup001/providers/Microsoft.Network/publicIPAddresses/Gateway001Ip"
+                             },
+                             "Name": "vng1ipConfig",
+                             "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                             "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001/ipConfigurations/Gateway001IpConfig"
+                           }
+                         ]
+GatewayType            : Vpn
+VpnType                : RouteBased
+EnableBgp              : False
+ActiveActive           : False
+GatewayDefaultSite     : null
+Sku                    : {
+                           "Capacity": 2,
+                           "Name": "VpnGw1",
+                           "Tier": "VpnGw1"
+                         }
+vpnClientConfiguration : {
+                    "vpnClientProtocols": [
+					"OpenVPN"
+					],
+
+                    "vpnClientAddressPool": {
+                    "addressPrefixes": [
+                        "101.10.0.0/16"
+                    ]
+                	},
+					"vpnClientRootCertificates": "",
+                    "vpnClientRevokedCertificates": "",
+
+                    "radiusServerAddress": "",
+                    "radiusServerSecret": "",
+					"aadTenant": "https://login.microsoftonline.com/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4\",
+					"aadAudience": "a21fce82-76af-45e6-8583-a08cb3b956g9\",
+					"aadIssuer": "https://sts.windows.net/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4/\"
+                },
+BgpSettings            : {
+                           "Asn": 65515,
+                           "BgpPeeringAddress": "1.2.3.4",
+                           "PeerWeight": 0
+                         }
+						 
+PS C:\>Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientRootCertificates $rootCert -RemoveAadAuthentication
+```
+
+The first command gets a virtual network gateway named Gateway01 that belongs to resource group ResourceGroup001 and stores it to the variable named $Gateway
+The second command updates the virtual network gateway Gateway01 with the AAD authentication configurations params:aadTenant, aadAudience, aadIssuer for VpnClient.
+The third command removes the AAD authentication configuration from VpnClient of virtual network gateway.
+
 ## PARAMETERS
 
 ### -AadAudience
-P2S AAD authentication option:AADAudience.```yaml
+P2S AAD authentication option:AADAudience.
+
+```yaml
 Type: System.String
 Parameter Sets: AadAuthenticationConfiguration
 Aliases:
@@ -167,7 +243,9 @@ Accept wildcard characters: False
 ```
 
 ### -AadIssuer
-P2S AAD authentication option:AADIssuer.```yaml
+P2S AAD authentication option:AADIssuer.
+
+```yaml
 Type: System.String
 Parameter Sets: AadAuthenticationConfiguration
 Aliases:
@@ -180,7 +258,9 @@ Accept wildcard characters: False
 ```
 
 ### -AadTenant
-P2S AAD authentication option:AADTenant.```yaml
+P2S AAD authentication option:AADTenant.
+
+```yaml
 Type: System.String
 Parameter Sets: AadAuthenticationConfiguration
 Aliases:
