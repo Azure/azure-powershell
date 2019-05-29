@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Commands.ApiManagement
     using Models;
     using System;
     using System.Collections.Generic;
-    using System.IO;
     using System.Linq;
 
     public class ApiManagementClient
@@ -129,26 +128,32 @@ namespace Microsoft.Azure.Commands.ApiManagement
             string organization,
             string administratorEmail,
             Dictionary<string, string> tags,
+            bool enableClientCertificate,
             PsApiManagementSku sku = PsApiManagementSku.Developer,
-            int capacity = 1,
-            PsApiManagementVpnType vpnType = PsApiManagementVpnType.None,            
+            int? capacity = null,
+            PsApiManagementVpnType vpnType = PsApiManagementVpnType.None,
             PsApiManagementVirtualNetwork virtualNetwork = null,
             PsApiManagementRegion[] additionalRegions = null,
             PsApiManagementCustomHostNameConfiguration[] customHostnameConfigurations = null,
             PsApiManagementSystemCertificate[] systemCertificates = null,
+            PsApiManagementSslSetting sslSettings = null,
             bool createResourceIdentity = false)
         {
+            string skuType = Mappers.MapSku(sku);
+
+            var skuProperties = new ApiManagementServiceSkuProperties(skuType);
+            if (capacity != null)
+            {
+                skuProperties.Capacity = capacity;
+            }
+
             var parameters = new ApiManagementServiceResource
             {
                 Location = location,
                 PublisherEmail = administratorEmail,
                 PublisherName = organization,
                 VirtualNetworkType = Mappers.MapVirtualNetworkType(vpnType),
-                Sku = new ApiManagementServiceSkuProperties()
-                {
-                    Capacity = capacity,
-                    Name = Mappers.MapSku(sku)
-                },
+                Sku = skuProperties,
                 Tags = tags
             };
 
@@ -196,6 +201,16 @@ namespace Microsoft.Azure.Commands.ApiManagement
                     var certificateConfig = systemCertificate.GetCertificateConfiguration();
                     parameters.Certificates.Add(certificateConfig);
                 }
+            }
+
+            if (sslSettings != null)
+            {
+                parameters.CustomProperties = Mappers.MapPsApiManagementSslSetting(sslSettings);
+            }
+
+            if (enableClientCertificate)
+            {
+                parameters.EnableClientCertificate = enableClientCertificate;
             }
 
             if (createResourceIdentity)
@@ -294,6 +309,25 @@ namespace Microsoft.Azure.Commands.ApiManagement
         public string GetSsoToken(string resourceGroupName, string serviceName)
         {
             return Client.ApiManagementService.GetSsoToken(resourceGroupName, serviceName).RedirectUri;
+        }
+
+        public IList<PsApiManagementNetworkStatus> GetNetworkStatus(string resourceGroupName, string serviceName)
+        {
+            IList<NetworkStatusContractByLocation> networkStatus = Client.NetworkStatus.ListByService(
+                resourceGroupName,
+                serviceName);
+
+            return Mappers.MapPsApiManagementNetworkEnumerable(networkStatus);
+        }
+
+        public PsApiManagementNetworkStatus GetNetworkStatusByLocation(string resourceGroupName, string serviceName, string location)
+        {
+            NetworkStatusContract networkStatus = Client.NetworkStatus.ListByLocation(
+                resourceGroupName,
+                serviceName,
+                location);
+
+            return Mappers.MapPsApiManagementNetworkStatus(networkStatus, location);
         }
     }
 }

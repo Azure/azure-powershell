@@ -171,7 +171,7 @@ switch ($PSCmdlet.ParameterSetName)
     {
         try
         {
-            Install-Module Az -Repository PSGallery
+            Install-Module Az -Repository PSGallery -Force
         }
         catch
         {

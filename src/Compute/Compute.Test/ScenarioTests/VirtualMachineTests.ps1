@@ -2549,7 +2549,8 @@ function Test-VirtualMachineWithBYOL
     try
     {
         # Common
-        $loc = "Central US";
+        [string]$loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
@@ -3227,7 +3228,8 @@ function Test-VirtualMachineIdentityUpdate
     try
     {
         # Common
-        $loc = Get-ComputeVMLocation;
+        [string]$loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
 
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
@@ -3318,7 +3320,8 @@ function Test-VirtualMachineWriteAcceleratorUpdate
     try
     {
         # Common
-        $loc = 'WestEurope';
+        [string]$loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
 
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
