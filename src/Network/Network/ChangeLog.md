@@ -18,6 +18,8 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+
+## Version 1.9.0
 * Update ResourceId and InputObject for Nat Gateway
     - Add alias for ResourceId and InputObject
 
