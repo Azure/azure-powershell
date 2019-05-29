@@ -38,6 +38,19 @@ New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### AadAuthenticationConfiguration
+```
+New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location <String>
+ [-IpConfigurations <PSVirtualNetworkGatewayIpConfiguration[]>] [-GatewayType <String>] [-VpnType <String>]
+ [-EnableBgp <Boolean>] [-EnableActiveActiveFeature] [-GatewaySku <String>]
+ [-GatewayDefaultSite <PSLocalNetworkGateway>] [-VpnClientAddressPool <String[]>]
+ [-VpnClientProtocol <String[]>] [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
+ [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
+ [-Asn <UInt32>] [-PeerWeight <Int32>] [-Tag <Hashtable>] [-Force] -AadTenant <String> -AadAudience <String>
+ -AadIssuer <String> [-CustomRoute <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The Virtual Network Gateway is the object representing your gateway in Azure.
 The **New-AzVirtualNetworkGateway** cmdlet creates the object of your gateway in Azure based
@@ -108,6 +121,45 @@ The gateway will be called "myNGW" within the resource group "vnet-gateway" in t
 It will also set custom routes specified by customers on gateway.
 
 ## PARAMETERS
+
+### -AadAudience
+P2S AAD authentication option:AADAudience.```yaml
+Type: System.String
+Parameter Sets: AadAuthenticationConfiguration
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AadIssuer
+P2S AAD authentication option:AADIssuer.```yaml
+Type: System.String
+Parameter Sets: AadAuthenticationConfiguration
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AadTenant
+P2S AAD authentication option:AADTenant.```yaml
+Type: System.String
+Parameter Sets: AadAuthenticationConfiguration
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run cmdlet in the background
