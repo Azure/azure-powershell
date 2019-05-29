@@ -14,45 +14,73 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
-    using System.Collections.Generic;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementAuthorizationServer", DefaultParameterSetName = GetAll)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementAuthorizationServer", DefaultParameterSetName = ContextParameterSet)]
     [OutputType(typeof(PsApiManagementOAuth2AuthrozationServer))]
     public class GetAzureApiManagementAuthorizationServer : AzureApiManagementCmdletBase
     {
-        private const string GetAll = "GetAllAuthorizationServers";
-        private const string GetById = "GetByServerId";
+        #region ParameterSet
+        private const string ContextParameterSet = "ContextParameterSet";
+        private const string ResourceIdParameterSet = "ResourceIdParameterSet";
+        #endregion
 
         [Parameter(
+            ParameterSetName = ContextParameterSet,
             ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
-            ParameterSetName = GetById,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Identifier of the authorization server. If specified will find authorization server by the identifier." +
                           " This parameter is optional. ")]
         public String ServerId { get; set; }
 
+        [Parameter(
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            HelpMessage = "Arm Resource Identifier of the authorization server." +
+    " If specified will try to find authorization server by the identifier. This parameter is required.")]
+        public String ResourceId { get; set; }
+
         public override void ExecuteApiManagementCmdlet()
         {
-            if (ServerId == null)
+            string resourceGroupName;
+            string serviceName;
+            string authorizationserverId;
+
+            if (ParameterSetName.Equals(ResourceIdParameterSet))
             {
-                var servers = Client.AuthorizationServerList(Context);
+                var authorizationServer = new PsApiManagementOAuth2AuthrozationServer(ResourceId);
+                resourceGroupName = authorizationServer.ResourceGroupName;
+                serviceName = authorizationServer.ServiceName;
+                authorizationserverId = authorizationServer.ServerId;
+            }
+            else
+            {
+                resourceGroupName = Context.ResourceGroupName;
+                serviceName = Context.ServiceName;
+                authorizationserverId = ServerId;
+            }
+
+            if (string.IsNullOrEmpty(authorizationserverId))
+            {
+                var servers = Client.AuthorizationServerList(resourceGroupName, serviceName);
                 WriteObject(servers, true);
             }
             else
             {
-                var server = Client.AuthorizationServerById(Context, ServerId);
+                var server = Client.AuthorizationServerById(resourceGroupName, serviceName, authorizationserverId);
                 WriteObject(server);
-            }
+            }        
         }
     }
 }
