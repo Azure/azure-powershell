@@ -25,7 +25,6 @@ The **New-AzNetAppFilesAccount** cmdlet creates an ANF account.
 
 ### Example 1: Create an ANF account
 ```
-
 PS C:\>New-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Name "MyAnfAccount" -l "westus2"
 
 Output:
