@@ -184,7 +184,7 @@ Location          : westus2
 Endpoint          : https://domain4.westus2-1.eventgrid.azure.net/api/events
 ProvisioningState : Succeeded
 Tags              :
-
+```
 
 ### Example 6
 
@@ -200,7 +200,6 @@ PS C:\> while ($result.NextLink -ne $Null)
         $result = Get-AzEventGridDomain -NextLink $result.NextLink
         $total += $result.Count
     }
-
 PS C:\> echo "Total number of domains is $Total"
 ```
 
