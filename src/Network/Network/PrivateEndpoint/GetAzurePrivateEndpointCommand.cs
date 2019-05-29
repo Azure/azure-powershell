@@ -24,6 +24,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateEndpoint"), OutputType(typeof(PSVirtualNetwork))]
+    [Alias("Get-AzInterfaceEndpoint")]
     public class GetAzurePrivateEndpointCommand : PrivateEndpointBaseCmdlet
     {
         [Alias("ResourceName")]
