@@ -25,7 +25,7 @@ The **Update-AzNetAppFilesAccount** cmdlet modifies an ANF account.
 
 ### Example 1 : Updates an ANF account
 ```
-PS C:\>Update-AzNetAppFilesPool -ResourceGroupName "MyRG" -l "westus2" -Name "MyAnfAccount" -Tag @{'Tag1' = 'Value1'}
+PS C:\>Update-AzNetAppFilesAccount -ResourceGroupName "MyRG" -l "westus2" -Name "MyAnfAccount" -Tag @{'Tag1' = 'Value1'}
 
 Output:
 
