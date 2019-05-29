@@ -52,8 +52,8 @@ require:
   - $(repo)/specification/compute/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/compute/resource-manager/readme.md
 
-input-file: 
-  - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2017-07-01/containerService.json
+#input-file: 
+#  - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2017-07-01/containerService.json
 
 subject-prefix: ''
 module-version: 0.0.1
@@ -109,12 +109,6 @@ directive:
       subject: RedeployVM
     set:
       subject: VMReimage
-  - where: 
-      verb: Start
-      subject: ^(.*)RunCommand$
-    set:
-      verb: Invoke
-      alias: Invoke-Az$1RunCommand
   - where:
       verb: Set
       subject: Gallery
@@ -140,10 +134,19 @@ directive:
       subject: VmssRollingOSUpgrade
   - where:
       verb: Start
-      subject: (.+)Command
+      subject: .+Command
     set: 
       verb: Invoke
-      alias: Invoke-Az$1RunCommand
+  - where:
+      verb: Invoke
+      subject: VMCommand
+    set:
+      alias: Invoke-AzVMRunCommand
+  - where:
+      verb: Invoke
+      subject: VmssVMCommand
+    set:
+      alias: Invoke-AzVmssVMRunCommand
 #  - where:
 #      verb: Reset
 #      subject: VM
@@ -211,11 +214,17 @@ directive:
       parameter-name: AdditionalCapabilityUltraSsdEnabled
     set:
       parameter-name: UltraSsdEnabled
+  - where:
+      parameter-name: UltraSsdEnabled
+    set:
       alias: EnableUltraSSD
   - where:
       parameter-name: IdentityUserAssignedIdentity
     set:
       parameter-name: IdentityId
+  - where:
+      parameter-name: IdentityId
+    set:
       alias: UserAssignedIdentity
   - where:
       parameter-name: AutomaticOSUpgradePolicyEnableAutomaticOsupgrade
