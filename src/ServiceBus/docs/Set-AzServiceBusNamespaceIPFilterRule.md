@@ -12,17 +12,18 @@ Creates or updates an IpFilterRule for a Namespace.
 
 ## SYNTAX
 
-### UpdateViaIdentityExpanded (Default)
-```
-Set-AzServiceBusNamespaceIPFilterRule [-Action <IPAction>] [-FilterName <String>] [-IPMask <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzServiceBusNamespaceIPFilterRule -IPFilterRuleName <String> -NamespaceName <String>
  -ResourceGroupName <String> -SubscriptionId <String> [-Action <IPAction>] [-FilterName <String>]
  [-IPMask <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Set-AzServiceBusNamespaceIPFilterRule -InputObject <IServiceBusIdentity> [-Action <IPAction>]
+ [-FilterName <String>] [-IPMask <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -50,7 +51,7 @@ The IP Filter Action
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.IPAction
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -80,7 +81,7 @@ IP Filter name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -95,7 +96,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
-Parameter Sets: UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -125,7 +126,7 @@ IP Mask
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

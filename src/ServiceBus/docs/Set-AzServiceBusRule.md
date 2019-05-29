@@ -12,22 +12,23 @@ Creates a new rule and updates an existing rule
 
 ## SYNTAX
 
-### UpdateViaIdentityExpanded (Default)
-```
-Set-AzServiceBusRule [-ActionCompatibilityLevel <Int32>] [-ActionRequiresPreprocessing <Boolean>]
- [-ActionSqlExpression <String>] [-CorrelationFilterContentType <String>]
- [-CorrelationFilterCorrelationId <String>] [-CorrelationFilterLabel <String>]
- [-CorrelationFilterMessageId <String>] [-CorrelationFilterProperty <ICorrelationFilterProperties>]
- [-CorrelationFilterReplyTo <String>] [-CorrelationFilterReplyToSessionId <String>]
- [-CorrelationFilterRequiresPreprocessing <Boolean>] [-CorrelationFilterSessionId <String>]
- [-CorrelationFilterTo <String>] [-FilterType <FilterType>] [-SqlFilterRequiresPreprocessing <Boolean>]
- [-SqlFilterSqlExpression <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzServiceBusRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -SubscriptionName <String> -TopicName <String> [-ActionCompatibilityLevel <Int32>]
+ [-ActionRequiresPreprocessing <Boolean>] [-ActionSqlExpression <String>]
+ [-CorrelationFilterContentType <String>] [-CorrelationFilterCorrelationId <String>]
+ [-CorrelationFilterLabel <String>] [-CorrelationFilterMessageId <String>]
+ [-CorrelationFilterProperty <ICorrelationFilterProperties>] [-CorrelationFilterReplyTo <String>]
+ [-CorrelationFilterReplyToSessionId <String>] [-CorrelationFilterRequiresPreprocessing <Boolean>]
+ [-CorrelationFilterSessionId <String>] [-CorrelationFilterTo <String>] [-FilterType <FilterType>]
+ [-SqlFilterRequiresPreprocessing <Boolean>] [-SqlFilterSqlExpression <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Set-AzServiceBusRule -InputObject <IServiceBusIdentity> [-ActionCompatibilityLevel <Int32>]
  [-ActionRequiresPreprocessing <Boolean>] [-ActionSqlExpression <String>]
  [-CorrelationFilterContentType <String>] [-CorrelationFilterCorrelationId <String>]
  [-CorrelationFilterLabel <String>] [-CorrelationFilterMessageId <String>]
@@ -64,7 +65,7 @@ An integer value showing the compatibility level, currently hard-coded to 20.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -79,7 +80,7 @@ Value that indicates whether the rule action requires preprocessing.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -96,7 +97,7 @@ MyProperty='ABC'
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -111,7 +112,7 @@ Content type of the message.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -126,7 +127,7 @@ Identifier of the correlation.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -141,7 +142,7 @@ Application specific label.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -156,7 +157,7 @@ Identifier of the message.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -171,7 +172,7 @@ dictionary object for custom filters
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ICorrelationFilterProperties
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -186,7 +187,7 @@ Address of the queue to reply to.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -201,7 +202,7 @@ Session identifier to reply to.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -216,7 +217,7 @@ Value that indicates whether the rule action requires preprocessing.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -231,7 +232,7 @@ Session identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -246,7 +247,7 @@ Address to send to.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -276,7 +277,7 @@ Filter type that is evaluated against a BrokeredMessage.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.FilterType
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -291,7 +292,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
-Parameter Sets: UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -366,7 +367,7 @@ Value that indicates whether the rule action requires preprocessing.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -383,7 +384,7 @@ MyProperty='ABC'
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

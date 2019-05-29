@@ -12,17 +12,7 @@ Creates a topic subscription.
 
 ## SYNTAX
 
-### CreateViaIdentityExpanded (Default)
-```
-New-AzServiceBusSubscription [-AutoDeleteOnIdle <TimeSpan>]
- [-DeadLetteringOnFilterEvaluationException <Boolean>] [-DeadLetteringOnMessageExpiration <Boolean>]
- [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
- [-EnableBatchedOperation <Boolean>] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>]
- [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-RequiresSession <Boolean>] [-Status <EntityStatus>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzServiceBusSubscription -Id <String> -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  -TopicName <String> [-AutoDeleteOnIdle <TimeSpan>] [-DeadLetteringOnFilterEvaluationException <Boolean>]
@@ -31,6 +21,16 @@ New-AzServiceBusSubscription -Id <String> -Name <String> -NamespaceName <String>
  [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-LockDuration <TimeSpan>]
  [-MaxDeliveryCount <Int32>] [-RequiresSession <Boolean>] [-Status <EntityStatus>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzServiceBusSubscription -InputObject <IServiceBusIdentity> [-AutoDeleteOnIdle <TimeSpan>]
+ [-DeadLetteringOnFilterEvaluationException <Boolean>] [-DeadLetteringOnMessageExpiration <Boolean>]
+ [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
+ [-EnableBatchedOperation <Boolean>] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>]
+ [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-RequiresSession <Boolean>] [-Status <EntityStatus>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -59,7 +59,7 @@ The minimum duration is 5 minutes.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -74,7 +74,7 @@ Value that indicates whether a subscription has dead letter support on filter ev
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -89,7 +89,7 @@ Value that indicates whether a subscription has dead letter support when a messa
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -106,7 +106,7 @@ This is the default value used when TimeToLive is not set on a message itself.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -137,7 +137,7 @@ The default value is 10 minutes.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -152,7 +152,7 @@ Value that indicates whether server-side batched operations are enabled.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -167,7 +167,7 @@ Queue/Topic name to forward the Dead Letter message
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -182,7 +182,7 @@ Queue/Topic name to forward the messages
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -213,7 +213,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
-Parameter Sets: CreateViaIdentity
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
 Aliases:
 
 Required: True
@@ -229,7 +229,7 @@ The default value is 1 minute.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -244,7 +244,7 @@ Number of maximum deliveries.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -304,7 +304,7 @@ Value indicating if a subscription supports the concept of sessions.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -334,7 +334,7 @@ Enumerates the possible values for the status of a messaging entity.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False

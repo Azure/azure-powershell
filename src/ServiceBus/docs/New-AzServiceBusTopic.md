@@ -12,16 +12,7 @@ Creates a topic in the specified namespace.
 
 ## SYNTAX
 
-### CreateViaIdentityExpanded (Default)
-```
-New-AzServiceBusTopic [-AutoDeleteOnIdle <TimeSpan>] [-DefaultMessageTimeToLive <TimeSpan>]
- [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperation <Boolean>]
- [-EnableExpress <Boolean>] [-EnablePartitioning <Boolean>] [-MaxSizeInMegabyte <Int32>]
- [-RequiresDuplicateDetection <Boolean>] [-Status <EntityStatus>] [-SupportOrdering <Boolean>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-AutoDeleteOnIdle <TimeSpan>] [-DefaultMessageTimeToLive <TimeSpan>]
@@ -29,6 +20,15 @@ New-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName 
  [-EnableExpress <Boolean>] [-EnablePartitioning <Boolean>] [-MaxSizeInMegabyte <Int32>]
  [-RequiresDuplicateDetection <Boolean>] [-Status <EntityStatus>] [-SupportOrdering <Boolean>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzServiceBusTopic -InputObject <IServiceBusIdentity> [-AutoDeleteOnIdle <TimeSpan>]
+ [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
+ [-EnableBatchedOperation <Boolean>] [-EnableExpress <Boolean>] [-EnablePartitioning <Boolean>]
+ [-MaxSizeInMegabyte <Int32>] [-RequiresDuplicateDetection <Boolean>] [-Status <EntityStatus>]
+ [-SupportOrdering <Boolean>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -57,7 +57,7 @@ The minimum duration is 5 minutes.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -74,7 +74,7 @@ This is the default value used when TimeToLive is not set on a message itself.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -105,7 +105,7 @@ The default value is 10 minutes.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -120,7 +120,7 @@ Value that indicates whether server-side batched operations are enabled.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -136,7 +136,7 @@ An express topic holds a message in memory temporarily before writing it to pers
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -151,7 +151,7 @@ Value that indicates whether the topic to be partitioned across multiple message
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -166,7 +166,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
-Parameter Sets: CreateViaIdentity
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
 Aliases:
 
 Required: True
@@ -182,7 +182,7 @@ Default is 1024.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -242,7 +242,7 @@ Value indicating if this topic requires duplicate detection.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -272,7 +272,7 @@ Enumerates the possible values for the status of a messaging entity.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -303,7 +303,7 @@ Value that indicates whether the topic supports ordering.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False

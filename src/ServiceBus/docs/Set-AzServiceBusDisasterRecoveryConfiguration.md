@@ -12,17 +12,18 @@ Creates or updates a new Alias(Disaster Recovery configuration)
 
 ## SYNTAX
 
-### UpdateViaIdentityExpanded (Default)
-```
-Set-AzServiceBusDisasterRecoveryConfiguration [-AlternateName <String>] [-PartnerNamespace <String>]
- [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzServiceBusDisasterRecoveryConfiguration -Name <String> -NamespaceName <String>
  -ResourceGroupName <String> -SubscriptionId <String> [-AlternateName <String>] [-PartnerNamespace <String>]
  [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Set-AzServiceBusDisasterRecoveryConfiguration -InputObject <IServiceBusIdentity> [-AlternateName <String>]
+ [-PartnerNamespace <String>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -50,7 +51,7 @@ Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -80,7 +81,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
-Parameter Sets: UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -140,7 +141,7 @@ ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

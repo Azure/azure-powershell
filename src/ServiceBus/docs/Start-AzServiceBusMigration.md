@@ -12,17 +12,17 @@ Creates Migration configuration and starts migration of entities from Standard t
 
 ## SYNTAX
 
-### CreateViaIdentityExpanded (Default)
-```
-Start-AzServiceBusMigration -PostMigrationName <String> -TargetNamespace <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 Start-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> -SubscriptionId <String>
  -PostMigrationName <String> -TargetNamespace <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+Start-AzServiceBusMigration -InputObject <IServiceBusIdentity> -PostMigrationName <String>
+ -TargetNamespace <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -80,7 +80,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
-Parameter Sets: CreateViaIdentity
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
 Aliases:
 
 Required: True
@@ -125,7 +125,7 @@ Name to access Standard Namespace after migration
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -171,7 +171,7 @@ Existing premium Namespace ARM Id name which has no entities, will be used for m
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True

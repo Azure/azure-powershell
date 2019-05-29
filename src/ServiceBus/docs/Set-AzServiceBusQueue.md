@@ -13,18 +13,7 @@ This operation is idempotent.
 
 ## SYNTAX
 
-### UpdateViaIdentityExpanded (Default)
-```
-Set-AzServiceBusQueue [-AutoDeleteOnIdle <TimeSpan>] [-DeadLetteringOnMessageExpiration <Boolean>]
- [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
- [-EnableBatchedOperation <Boolean>] [-EnableExpress <Boolean>] [-EnablePartitioning <Boolean>]
- [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-LockDuration <TimeSpan>]
- [-MaxDeliveryCount <Int32>] [-MaxSizeInMegabyte <Int32>] [-RequiresDuplicateDetection <Boolean>]
- [-RequiresSession <Boolean>] [-Status <EntityStatus>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-AutoDeleteOnIdle <TimeSpan>] [-DeadLetteringOnMessageExpiration <Boolean>]
@@ -34,6 +23,17 @@ Set-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName 
  [-MaxDeliveryCount <Int32>] [-MaxSizeInMegabyte <Int32>] [-RequiresDuplicateDetection <Boolean>]
  [-RequiresSession <Boolean>] [-Status <EntityStatus>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Set-AzServiceBusQueue -InputObject <IServiceBusIdentity> [-AutoDeleteOnIdle <TimeSpan>]
+ [-DeadLetteringOnMessageExpiration <Boolean>] [-DefaultMessageTimeToLive <TimeSpan>]
+ [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperation <Boolean>]
+ [-EnableExpress <Boolean>] [-EnablePartitioning <Boolean>] [-ForwardDeadLetteredMessagesTo <String>]
+ [-ForwardTo <String>] [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-MaxSizeInMegabyte <Int32>]
+ [-RequiresDuplicateDetection <Boolean>] [-RequiresSession <Boolean>] [-Status <EntityStatus>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -63,7 +63,7 @@ The minimum duration is 5 minutes.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -78,7 +78,7 @@ A value that indicates whether this queue has dead letter support when a message
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -95,7 +95,7 @@ This is the default value used when TimeToLive is not set on a message itself.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -126,7 +126,7 @@ The default value is 10 minutes.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -141,7 +141,7 @@ Value that indicates whether server-side batched operations are enabled.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -157,7 +157,7 @@ An express queue holds a message in memory temporarily before writing it to pers
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -172,7 +172,7 @@ A value that indicates whether the queue is to be partitioned across multiple me
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -187,7 +187,7 @@ Queue/Topic name to forward the Dead Letter message
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -202,7 +202,7 @@ Queue/Topic name to forward the messages
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -217,7 +217,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
-Parameter Sets: UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -233,7 +233,7 @@ The maximum value for LockDuration is 5 minutes; the default value is 1 minute.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -250,7 +250,7 @@ default value is 10.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -266,7 +266,7 @@ Default is 1024.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -326,7 +326,7 @@ A value indicating if this queue requires duplicate detection.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -341,7 +341,7 @@ A value that indicates whether the queue supports the concept of sessions.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -371,7 +371,7 @@ Enumerates the possible values for the status of a messaging entity.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

@@ -12,17 +12,17 @@ Creates or updates an VirtualNetworkRule for a Namespace.
 
 ## SYNTAX
 
-### CreateViaIdentityExpanded (Default)
-```
-New-AzServiceBusNamespaceVirtualNetworkRule [-VirtualNetworkSubnetId <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzServiceBusNamespaceVirtualNetworkRule -NamespaceName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -VirtualNetworkRuleName <String> [-VirtualNetworkSubnetId <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzServiceBusNamespaceVirtualNetworkRule -InputObject <IServiceBusIdentity>
+ [-VirtualNetworkSubnetId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -65,7 +65,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
-Parameter Sets: CreateViaIdentity
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
 Aliases:
 
 Required: True
@@ -156,7 +156,7 @@ Resource ID of Virtual Network Subnet
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False

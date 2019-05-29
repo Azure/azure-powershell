@@ -14,19 +14,19 @@ This operation is idempotent.
 
 ## SYNTAX
 
-### UpdateViaIdentityExpanded (Default)
-```
-Set-AzServiceBusNamespace -Location <String> [-SkuCapacity <Int32>] -SkuName <SkuName> [-SkuTier <SkuTier>]
- [-Tag <ITrackedResourceTags>] [-ZoneRedundant <Boolean>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  -Location <String> [-SkuCapacity <Int32>] -SkuName <SkuName> [-SkuTier <SkuTier>]
  [-Tag <ITrackedResourceTags>] [-ZoneRedundant <Boolean>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Set-AzServiceBusNamespace -InputObject <IServiceBusIdentity> -Location <String> [-SkuCapacity <Int32>]
+ -SkuName <SkuName> [-SkuTier <SkuTier>] [-Tag <ITrackedResourceTags>] [-ZoneRedundant <Boolean>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -86,7 +86,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
-Parameter Sets: UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -101,7 +101,7 @@ The Geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -162,7 +162,7 @@ For Premium tier, capacity are 1,2 and 4.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -177,7 +177,7 @@ Name of this SKU.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.SkuName
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -192,7 +192,7 @@ The billing tier of this particular SKU.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.SkuTier
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -223,7 +223,7 @@ Resource tags
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.ITrackedResourceTags
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -238,7 +238,7 @@ Enabling this property creates a Premium Service Bus Namespace in regions suppor
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

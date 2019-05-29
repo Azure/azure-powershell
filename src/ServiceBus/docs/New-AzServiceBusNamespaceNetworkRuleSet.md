@@ -12,19 +12,19 @@ Gets NetworkRuleSet for a Namespace.
 
 ## SYNTAX
 
-### CreateViaIdentityExpanded (Default)
-```
-New-AzServiceBusNamespaceNetworkRuleSet [-DefaultAction <DefaultAction>] [-IPRule <INwRuleSetIPRules[]>]
- [-VirtualNetworkRule <INwRuleSetVirtualNetworkRules[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzServiceBusNamespaceNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-DefaultAction <DefaultAction>] [-IPRule <INwRuleSetIPRules[]>]
  [-VirtualNetworkRule <INwRuleSetVirtualNetworkRules[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzServiceBusNamespaceNetworkRuleSet -InputObject <IServiceBusIdentity> [-DefaultAction <DefaultAction>]
+ [-IPRule <INwRuleSetIPRules[]>] [-VirtualNetworkRule <INwRuleSetVirtualNetworkRules[]>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -52,7 +52,7 @@ Default Action for Network Rule Set
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.DefaultAction
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -82,7 +82,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
-Parameter Sets: CreateViaIdentity
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
 Aliases:
 
 Required: True
@@ -97,7 +97,7 @@ List of IpRules
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api201801Preview.INwRuleSetIPRules[]
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -173,7 +173,7 @@ List VirtualNetwork Rules
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api201801Preview.INwRuleSetVirtualNetworkRules[]
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False

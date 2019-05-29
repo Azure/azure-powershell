@@ -12,16 +12,16 @@ This operation Migrate the given namespace to provided name type
 
 ## SYNTAX
 
-### MigrateViaIdentityExpanded (Default)
-```
-Move-AzServiceBusNamespace [-PassThru] -TargetNamespaceType <NameSpaceType> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### MigrateExpanded
+### MigrateExpanded (Default)
 ```
 Move-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
  -TargetNamespaceType <NameSpaceType> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### MigrateViaIdentityExpanded
+```
+Move-AzServiceBusNamespace -InputObject <IServiceBusIdentity> [-PassThru] -TargetNamespaceType <NameSpaceType>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MigrateViaIdentity
@@ -64,7 +64,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
-Parameter Sets: MigrateViaIdentity
+Parameter Sets: MigrateViaIdentityExpanded, MigrateViaIdentity
 Aliases:
 
 Required: True
@@ -155,7 +155,7 @@ Type of namespaces
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.NameSpaceType
-Parameter Sets: MigrateViaIdentityExpanded, MigrateExpanded
+Parameter Sets: MigrateExpanded, MigrateViaIdentityExpanded
 Aliases:
 
 Required: True
