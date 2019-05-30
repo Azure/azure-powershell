@@ -12,17 +12,9 @@ Gets the currently advertised routes table associated with the express route cro
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
 ```
 Get-AzExpressRouteCrossConnectionRouteTable -CrossConnectionName <String> -DevicePath <String>
- -PeeringName <String> -ResourceGroupName <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### List
-```
-Get-AzExpressRouteCrossConnectionRouteTable -CrossConnectionName <String> -DevicePath <String>
- -PeeringName <String> -ResourceGroupName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
+ -PeeringName <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -135,8 +127,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: List
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -184,7 +176,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuitsRoutesTableListResult
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitsRoutesTableListResult
 ## NOTES
 
 ## RELATED LINKS

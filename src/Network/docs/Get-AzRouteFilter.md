@@ -12,37 +12,27 @@ Gets the specified route filter.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost1 (Default)
+### List1 (Default)
 ```
-Get-AzRouteFilter [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost
-```
-Get-AzRouteFilter -Name <String> -ResourceGroupName <String> [-Expand <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzRouteFilter -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzRouteFilter -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Expand <String>]
+Get-AzRouteFilter -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-Expand <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListSubscriptionIdViaHost
-```
-Get-AzRouteFilter -ResourceGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzRouteFilter -ResourceGroupName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
+Get-AzRouteFilter -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### List1
+### GetViaIdentity
 ```
-Get-AzRouteFilter -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzRouteFilter -InputObject <INetworkIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +69,7 @@ Expands referenced express route bgp peering resources.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get, GetViaIdentity
 Aliases:
 
 Required: False
@@ -89,12 +79,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the route filter.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get
 Aliases: RouteFilterName
 
 Required: True
@@ -109,7 +114,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get, ListSubscriptionIdViaHost, List
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -124,8 +129,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List, List1
+Type: System.String[]
+Parameter Sets: List1, Get, List
 Aliases:
 
 Required: True

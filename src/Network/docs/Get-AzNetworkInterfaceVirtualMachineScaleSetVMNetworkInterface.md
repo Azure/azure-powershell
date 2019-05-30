@@ -12,17 +12,9 @@ Gets information about all network interfaces in a virtual machine in a virtual 
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
 ```
 Get-AzNetworkInterfaceVirtualMachineScaleSetVMNetworkInterface -ResourceGroupName <String>
- -VirtualMachineScaleSetName <String> -VirtualmachineIndex <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### List
-```
-Get-AzNetworkInterfaceVirtualMachineScaleSetVMNetworkInterface -ResourceGroupName <String>
- -SubscriptionId <String> -VirtualMachineScaleSetName <String> -VirtualmachineIndex <String>
+ -SubscriptionId <String[]> -VirtualMachineScaleSetName <String> -VirtualmachineIndex <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -75,8 +67,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: List
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True

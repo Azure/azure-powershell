@@ -12,14 +12,8 @@ Gets all of the available subnet delegations for this subscription in this regio
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
 ```
-Get-AzAvailableDelegation -Location <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzAvailableDelegation -Location <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
+Get-AzAvailableDelegation -Location <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -72,8 +66,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: List
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True

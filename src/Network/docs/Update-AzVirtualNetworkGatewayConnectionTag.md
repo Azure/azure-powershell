@@ -12,9 +12,9 @@ Updates a virtual network gateway connection tags.
 
 ## SYNTAX
 
-### UpdateSubscriptionIdViaHost (Default)
+### Update (Default)
 ```
-Update-AzVirtualNetworkGatewayConnectionTag -ResourceGroupName <String>
+Update-AzVirtualNetworkGatewayConnectionTag -ResourceGroupName <String> -SubscriptionId <String>
  -VirtualNetworkGatewayConnectionName <String> [-Parameter <ITagsObject>] [-DefaultProfile <PSObject>] [-AsJob]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -26,18 +26,16 @@ Update-AzVirtualNetworkGatewayConnectionTag -ResourceGroupName <String> -Subscri
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Update
+### UpdateViaIdentityExpanded
 ```
-Update-AzVirtualNetworkGatewayConnectionTag -ResourceGroupName <String> -SubscriptionId <String>
- -VirtualNetworkGatewayConnectionName <String> [-Parameter <ITagsObject>] [-DefaultProfile <PSObject>] [-AsJob]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzVirtualNetworkGatewayConnectionTag -InputObject <INetworkIdentity> [-Tag <ITagsObjectTags>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateSubscriptionIdViaHostExpanded
+### UpdateViaIdentity
 ```
-Update-AzVirtualNetworkGatewayConnectionTag -ResourceGroupName <String>
- -VirtualNetworkGatewayConnectionName <String> [-Tag <ITagsObjectTags>] [-DefaultProfile <PSObject>] [-AsJob]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzVirtualNetworkGatewayConnectionTag -InputObject <INetworkIdentity> [-Parameter <ITagsObject>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,12 +82,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Parameter
 Tags object for patch operations.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ITagsObject
-Parameter Sets: UpdateSubscriptionIdViaHost, Update
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ITagsObject
+Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -104,7 +117,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -120,7 +133,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -134,8 +147,8 @@ Accept wildcard characters: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ITagsObjectTags
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ITagsObjectTags
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -150,7 +163,7 @@ The name of the virtual network gateway connection.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True

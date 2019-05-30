@@ -12,16 +12,16 @@ Resets the primary of the virtual network gateway in the specified resource grou
 
 ## SYNTAX
 
-### ResetSubscriptionIdViaHost (Default)
-```
-Reset-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> [-GatewayVip <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Reset
+### Reset (Default)
 ```
 Reset-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-GatewayVip <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResetViaIdentity
+```
+Reset-AzVirtualNetworkGateway -InputObject <INetworkIdentity> [-GatewayVip <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,12 +83,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: ResetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the virtual network gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Reset
 Aliases: VirtualNetworkGatewayName
 
 Required: True
@@ -103,7 +118,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Reset
 Aliases:
 
 Required: True

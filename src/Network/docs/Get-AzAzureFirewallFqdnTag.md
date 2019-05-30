@@ -12,14 +12,8 @@ Gets all the Azure Firewall FQDN Tags in a subscription.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
 ```
-Get-AzAzureFirewallFqdnTag [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzAzureFirewallFqdnTag -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzAzureFirewallFqdnTag -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,8 +50,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: List
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True

@@ -12,31 +12,30 @@ Gets the configured and effective security group rules on the specified VM.
 
 ## SYNTAX
 
-### GetSubscriptionIdViaHost (Default)
+### Get (Default)
 ```
 Get-AzNetworkWatcherVMSecurityRule -NetworkWatcherName <String> -ResourceGroupName <String>
- [-Parameter <ISecurityGroupViewParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -SubscriptionId <String[]> [-Parameter <ISecurityGroupViewParameters>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetExpanded
 ```
 Get-AzNetworkWatcherVMSecurityRule -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -TargetResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -SubscriptionId <String[]> -TargetResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### Get
+### GetViaIdentityExpanded
 ```
-Get-AzNetworkWatcherVMSecurityRule -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Parameter <ISecurityGroupViewParameters>] [-DefaultProfile <PSObject>] [-AsJob]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzNetworkWatcherVMSecurityRule -InputObject <INetworkIdentity> -TargetResourceId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### GetSubscriptionIdViaHostExpanded
+### GetViaIdentity
 ```
-Get-AzNetworkWatcherVMSecurityRule -NetworkWatcherName <String> -ResourceGroupName <String>
- -TargetResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzNetworkWatcherVMSecurityRule -InputObject <INetworkIdentity> [-Parameter <ISecurityGroupViewParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,12 +82,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GetViaIdentityExpanded, GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -NetworkWatcherName
 The name of the network watcher.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: True
@@ -103,7 +117,7 @@ Parameters that define the VM to check security groups for.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityGroupViewParameters
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get, GetViaIdentity
 Aliases:
 
 Required: False
@@ -118,7 +132,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: True
@@ -133,8 +147,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: GetExpanded, Get
+Type: System.String[]
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: True
@@ -149,7 +163,7 @@ ID of the target VM.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetSubscriptionIdViaHostExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: True

@@ -12,37 +12,27 @@ Gets the specified network security group.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
+### List (Default)
 ```
-Get-AzNetworkSecurityGroup [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost
-```
-Get-AzNetworkSecurityGroup -Name <String> -ResourceGroupName <String> [-Expand <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNetworkSecurityGroup -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Get-AzNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListSubscriptionIdViaHost1
-```
-Get-AzNetworkSecurityGroup -ResourceGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzNetworkSecurityGroup -ResourceGroupName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
+Get-AzNetworkSecurityGroup -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### List
+### GetViaIdentity
 ```
-Get-AzNetworkSecurityGroup -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNetworkSecurityGroup -InputObject <INetworkIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +69,7 @@ Expands referenced resources.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get, GetViaIdentity
 Aliases:
 
 Required: False
@@ -89,12 +79,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the network security group.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get
 Aliases: NetworkSecurityGroupName
 
 Required: True
@@ -109,7 +114,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get, ListSubscriptionIdViaHost1, List1
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -124,8 +129,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List1, List
+Type: System.String[]
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: True

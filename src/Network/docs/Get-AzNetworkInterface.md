@@ -12,37 +12,27 @@ Gets information about the specified network interface.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
+### List (Default)
 ```
-Get-AzNetworkInterface [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost
-```
-Get-AzNetworkInterface -Name <String> -ResourceGroupName <String> [-Expand <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNetworkInterface -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Expand <String>]
+Get-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-Expand <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListSubscriptionIdViaHost1
-```
-Get-AzNetworkInterface -ResourceGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzNetworkInterface -ResourceGroupName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
+Get-AzNetworkInterface -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### List
+### GetViaIdentity
 ```
-Get-AzNetworkInterface -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNetworkInterface -InputObject <INetworkIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +69,7 @@ Expands referenced resources.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get, GetViaIdentity
 Aliases:
 
 Required: False
@@ -89,12 +79,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the network interface.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get
 Aliases: NetworkInterfaceName
 
 Required: True
@@ -109,7 +114,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get, ListSubscriptionIdViaHost1, List1
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -124,8 +129,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List1, List
+Type: System.String[]
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: True

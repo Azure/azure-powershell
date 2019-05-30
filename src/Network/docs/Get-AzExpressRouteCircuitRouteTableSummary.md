@@ -12,16 +12,9 @@ Gets the currently advertised routes table summary associated with the express r
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
 ```
 Get-AzExpressRouteCircuitRouteTableSummary -CircuitName <String> -DevicePath <String> -PeeringName <String>
- -ResourceGroupName <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzExpressRouteCircuitRouteTableSummary -CircuitName <String> -DevicePath <String> -PeeringName <String>
- -ResourceGroupName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
+ -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -134,8 +127,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: List
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True

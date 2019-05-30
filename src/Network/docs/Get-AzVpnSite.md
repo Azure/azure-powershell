@@ -12,36 +12,26 @@ Retrieves the details of a VPN site.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost1 (Default)
+### List1 (Default)
 ```
-Get-AzVpnSite [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost
-```
-Get-AzVpnSite -Name <String> -ResourceGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVpnSite -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzVpnSite -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### ListSubscriptionIdViaHost
-```
-Get-AzVpnSite -ResourceGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVpnSite -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzVpnSite -ResourceGroupName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
+Get-AzVpnSite -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### List1
+### GetViaIdentity
 ```
-Get-AzVpnSite -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVpnSite -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,12 +63,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the VpnSite being retrieved.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get
 Aliases: VpnSiteName
 
 Required: True
@@ -93,7 +98,7 @@ The resource group name of the VpnSite.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get, ListSubscriptionIdViaHost, List
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -108,8 +113,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List, List1
+Type: System.String[]
+Parameter Sets: List1, Get, List
 Aliases:
 
 Required: True

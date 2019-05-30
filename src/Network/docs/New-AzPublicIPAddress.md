@@ -12,45 +12,47 @@ Creates or updates a static or dynamic public IP address.
 
 ## SYNTAX
 
-### CreateSubscriptionIdViaHost (Default)
-```
-New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> [-Parameter <IPublicIPAddress>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-DdosCustomPolicyId <String>] [-DdosSettingsProtectionCoverage <DdosSettingsProtectionCoverage>]
- [-DnsSettingsDomainNameLabel <String>] [-DnsSettingsFqdn <String>] [-DnsSettingsReverseFqdn <String>]
- [-Etag <String>] [-IPAddress <String>] [-IPConfigurationEtag <String>] [-IPConfigurationId <String>]
- [-IPConfigurationName <String>] [-IPTag <IIPTag[]>] [-Id <String>] [-IdleTimeoutInMinute <Int32>]
- [-Location <String>] [-PrivateIPAddress <String>] [-PrivateIPAllocationMethod <IPAllocationMethod>]
- [-PropertiesProvisioningState <String>] [-ProvisioningState <String>] [-PublicIPAddress <IPublicIPAddress>]
- [-PublicIPAllocationMethod <IPAllocationMethod>] [-PublicIPPrefixId <String>] [-ResourceGuid <String>]
- [-SkuName <PublicIPAddressSkuName>] [-Subnet <ISubnet>] [-Tag <IResourceTags>] [-Version <IPVersion>]
- [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Create
+### Create (Default)
 ```
 New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Parameter <IPublicIPAddress>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### CreateSubscriptionIdViaHostExpanded
+### CreateExpanded
 ```
-New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> [-DdosCustomPolicyId <String>]
- [-DdosSettingsProtectionCoverage <DdosSettingsProtectionCoverage>] [-DnsSettingsDomainNameLabel <String>]
- [-DnsSettingsFqdn <String>] [-DnsSettingsReverseFqdn <String>] [-Etag <String>] [-IPAddress <String>]
+New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-DdoCustomPolicyId <String>] [-DdoSettingProtectionCoverage <DdosSettingsProtectionCoverage>]
+ [-DnsSettingDomainNameLabel <String>] [-DnsSettingFqdn <String>] [-DnsSettingReverseFqdn <String>]
+ [-Etag <String>] [-IPAddress <String>] [-IPConfigurationEtag <String>] [-IPConfigurationId <String>]
+ [-IPConfigurationName <String>] [-IPConfigurationPropertiesProvisioningState <String>] [-IPTag <IIPTag[]>]
+ [-Id <String>] [-IdleTimeoutInMinute <Int32>] [-Location <String>] [-PrivateIPAddress <String>]
+ [-PrivateIPAllocationMethod <IPAllocationMethod>] [-ProvisioningState <String>]
+ [-PublicIPAddress <IPublicIPAddress>] [-PublicIPAllocationMethod <IPAllocationMethod>]
+ [-PublicIPPrefixId <String>] [-ResourceGuid <String>] [-SkuName <PublicIPAddressSkuName>] [-Subnet <ISubnet>]
+ [-Tag <IResourceTags>] [-Version <IPVersion>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzPublicIPAddress -InputObject <INetworkIdentity> [-DdoCustomPolicyId <String>]
+ [-DdoSettingProtectionCoverage <DdosSettingsProtectionCoverage>] [-DnsSettingDomainNameLabel <String>]
+ [-DnsSettingFqdn <String>] [-DnsSettingReverseFqdn <String>] [-Etag <String>] [-IPAddress <String>]
  [-IPConfigurationEtag <String>] [-IPConfigurationId <String>] [-IPConfigurationName <String>]
- [-IPTag <IIPTag[]>] [-Id <String>] [-IdleTimeoutInMinute <Int32>] [-Location <String>]
- [-PrivateIPAddress <String>] [-PrivateIPAllocationMethod <IPAllocationMethod>]
- [-PropertiesProvisioningState <String>] [-ProvisioningState <String>] [-PublicIPAddress <IPublicIPAddress>]
- [-PublicIPAllocationMethod <IPAllocationMethod>] [-PublicIPPrefixId <String>] [-ResourceGuid <String>]
- [-SkuName <PublicIPAddressSkuName>] [-Subnet <ISubnet>] [-Tag <IResourceTags>] [-Version <IPVersion>]
- [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IPConfigurationPropertiesProvisioningState <String>] [-IPTag <IIPTag[]>] [-Id <String>]
+ [-IdleTimeoutInMinute <Int32>] [-Location <String>] [-PrivateIPAddress <String>]
+ [-PrivateIPAllocationMethod <IPAllocationMethod>] [-ProvisioningState <String>]
+ [-PublicIPAddress <IPublicIPAddress>] [-PublicIPAllocationMethod <IPAllocationMethod>]
+ [-PublicIPPrefixId <String>] [-ResourceGuid <String>] [-SkuName <PublicIPAddressSkuName>] [-Subnet <ISubnet>]
+ [-Tag <IResourceTags>] [-Version <IPVersion>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzPublicIPAddress -InputObject <INetworkIdentity> [-Parameter <IPublicIPAddress>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,12 +84,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DdosCustomPolicyId
+### -DdoCustomPolicyId
 Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -97,13 +99,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DdosSettingsProtectionCoverage
+### -DdoSettingProtectionCoverage
 The DDoS protection policy customizability of the public IP.
 Only standard coverage will have the ability to be customized.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.DdosSettingsProtectionCoverage
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -128,13 +130,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsSettingsDomainNameLabel
+### -DnsSettingDomainNameLabel
 Gets or sets the Domain name label.The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address.
 If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -144,13 +146,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsSettingsFqdn
+### -DnsSettingFqdn
 Gets the FQDN, Fully qualified domain name of the A DNS record associated with the public IP.
 This is the concatenation of the domainNameLabel and the regionalized DNS zone.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -160,14 +162,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsSettingsReverseFqdn
+### -DnsSettingReverseFqdn
 Gets or Sets the Reverse FQDN.
 A user-visible, fully qualified domain name that resolves to this public IP address.
 If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -182,7 +184,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -197,7 +199,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -212,7 +214,7 @@ The idle timeout of the public IP address.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -222,12 +224,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -IPAddress
 The IP address associated with the public IP address resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -242,7 +259,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -257,7 +274,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -273,7 +290,23 @@ This name can be used to access the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IPConfigurationPropertiesProvisioningState
+Gets the provisioning state of the public IP resource.
+Possible values are: 'Updating', 'Deleting', and 'Failed'.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -288,7 +321,7 @@ The list of tags associated with the public IP address.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IIPTag[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -303,7 +336,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -318,7 +351,7 @@ The name of the public IP address.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases: PublicIPAddressName
 
 Required: True
@@ -333,7 +366,7 @@ Public IP address resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPublicIPAddress
-Parameter Sets: CreateSubscriptionIdViaHost, Create
+Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
 Required: False
@@ -348,7 +381,7 @@ The private IP address of the IP configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -363,23 +396,7 @@ The private IP address allocation method.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPAllocationMethod
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PropertiesProvisioningState
-Gets the provisioning state of the public IP resource.
-Possible values are: 'Updating', 'Deleting', and 'Failed'.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -395,7 +412,7 @@ Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -410,7 +427,7 @@ The reference of the public IP resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPublicIPAddress
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -425,7 +442,7 @@ The public IP address allocation method.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPAllocationMethod
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -440,7 +457,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -455,7 +472,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -470,7 +487,7 @@ The resource GUID property of the public IP resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -485,7 +502,7 @@ Name of a public IP address SKU.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.PublicIPAddressSkuName
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -500,7 +517,7 @@ The reference of the subnet resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISubnet
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -516,7 +533,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -530,8 +547,8 @@ Accept wildcard characters: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IResourceTags
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -546,7 +563,7 @@ The public IP address version.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPVersion
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases: PublicIPAddressVersion
 
 Required: False
@@ -561,7 +578,7 @@ A list of availability zones denoting the IP allocated for the resource needs to
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False

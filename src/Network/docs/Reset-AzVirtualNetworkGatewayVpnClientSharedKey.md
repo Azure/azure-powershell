@@ -12,17 +12,17 @@ Resets the VPN client shared key of the virtual network gateway in the specified
 
 ## SYNTAX
 
-### ResetSubscriptionIdViaHost (Default)
-```
-Reset-AzVirtualNetworkGatewayVpnClientSharedKey -ResourceGroupName <String> -VirtualNetworkGatewayName <String>
- [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Reset
+### Reset (Default)
 ```
 Reset-AzVirtualNetworkGatewayVpnClientSharedKey -ResourceGroupName <String> -SubscriptionId <String>
  -VirtualNetworkGatewayName <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### ResetViaIdentity
+```
+Reset-AzVirtualNetworkGatewayVpnClientSharedKey -InputObject <INetworkIdentity> [-PassThru]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,6 +69,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: ResetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PassThru
 When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
 
@@ -89,7 +104,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Reset
 Aliases:
 
 Required: True
@@ -120,7 +135,7 @@ The name of the virtual network gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Reset
 Aliases:
 
 Required: True

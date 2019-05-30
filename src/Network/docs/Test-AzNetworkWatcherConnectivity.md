@@ -12,11 +12,11 @@ Verifies the possibility of establishing a direct TCP connection from a virtual 
 
 ## SYNTAX
 
-### CheckSubscriptionIdViaHost (Default)
+### Check (Default)
 ```
 Test-AzNetworkWatcherConnectivity -NetworkWatcherName <String> -ResourceGroupName <String>
- [-Parameter <IConnectivityParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -SubscriptionId <String> [-Parameter <IConnectivityParameters>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckExpanded
@@ -29,20 +29,19 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcherName <String> -ResourceGroupNam
  [<CommonParameters>]
 ```
 
-### Check
+### CheckViaIdentityExpanded
 ```
-Test-AzNetworkWatcherConnectivity -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Parameter <IConnectivityParameters>] [-DefaultProfile <PSObject>] [-AsJob]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Test-AzNetworkWatcherConnectivity -InputObject <INetworkIdentity> [-DestinationAddress <String>]
+ [-DestinationPort <Int32>] [-DestinationResourceId <String>] [-HttpConfigurationHeader <IHttpHeader[]>]
+ [-HttpConfigurationMethod <HttpMethod>] [-HttpConfigurationValidStatusCode <Int32[]>] [-Protocol <Protocol>]
+ [-SourcePort <Int32>] -SourceResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### CheckSubscriptionIdViaHostExpanded
+### CheckViaIdentity
 ```
-Test-AzNetworkWatcherConnectivity -NetworkWatcherName <String> -ResourceGroupName <String>
- [-DestinationAddress <String>] [-DestinationPort <Int32>] [-DestinationResourceId <String>]
- [-HttpConfigurationHeader <IHttpHeader[]>] [-HttpConfigurationMethod <HttpMethod>]
- [-HttpConfigurationValidStatusCode <Int32[]>] [-Protocol <Protocol>] [-SourcePort <Int32>]
- -SourceResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Test-AzNetworkWatcherConnectivity -InputObject <INetworkIdentity> [-Parameter <IConnectivityParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,7 +93,7 @@ The IP address or URI the resource to which a connection attempt will be made.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckSubscriptionIdViaHostExpanded
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -109,7 +108,7 @@ Port on which check connectivity will be performed.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CheckExpanded, CheckSubscriptionIdViaHostExpanded
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -124,7 +123,7 @@ The ID of the resource to which a connection attempt will be made.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckSubscriptionIdViaHostExpanded
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -139,7 +138,7 @@ List of HTTP headers.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IHttpHeader[]
-Parameter Sets: CheckExpanded, CheckSubscriptionIdViaHostExpanded
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -154,7 +153,7 @@ HTTP method.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.HttpMethod
-Parameter Sets: CheckExpanded, CheckSubscriptionIdViaHostExpanded
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -169,7 +168,7 @@ Valid status codes.
 
 ```yaml
 Type: System.Int32[]
-Parameter Sets: CheckExpanded, CheckSubscriptionIdViaHostExpanded
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -179,12 +178,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: CheckViaIdentityExpanded, CheckViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -NetworkWatcherName
 The name of the network watcher resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Check, CheckExpanded
 Aliases:
 
 Required: True
@@ -199,7 +213,7 @@ Parameters that determine how the connectivity check will be performed.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectivityParameters
-Parameter Sets: CheckSubscriptionIdViaHost, Check
+Parameter Sets: Check, CheckViaIdentity
 Aliases:
 
 Required: False
@@ -214,7 +228,7 @@ Network protocol.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.Protocol
-Parameter Sets: CheckExpanded, CheckSubscriptionIdViaHostExpanded
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -229,7 +243,7 @@ The name of the network watcher resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Check, CheckExpanded
 Aliases:
 
 Required: True
@@ -244,7 +258,7 @@ The source port from which a connectivity check will be performed.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CheckExpanded, CheckSubscriptionIdViaHostExpanded
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -259,7 +273,7 @@ The ID of the resource from which a connectivity check will be initiated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, CheckSubscriptionIdViaHostExpanded
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -275,7 +289,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded, Check
+Parameter Sets: Check, CheckExpanded
 Aliases:
 
 Required: True

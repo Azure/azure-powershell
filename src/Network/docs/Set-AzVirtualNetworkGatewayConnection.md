@@ -12,9 +12,9 @@ Creates or updates a virtual network gateway connection in the specified resourc
 
 ## SYNTAX
 
-### UpdateSubscriptionIdViaHost (Default)
+### Update (Default)
 ```
-Set-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
+Set-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Parameter <IVirtualNetworkGatewayConnection>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -22,42 +22,44 @@ Set-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
 ### UpdateExpanded
 ```
 Set-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-AuthorizationKey <String>] [-BgpSettingsAsn <Int64>] [-BgpSettingsBgpPeeringAddress <String>]
- [-BgpSettingsPeerWeight <Int32>] [-ConnectionProtocol <VirtualNetworkGatewayConnectionProtocol>]
+ [-AuthorizationKey <String>] [-BgpSettingAsn <Int64>] [-BgpSettingBgpPeeringAddress <String>]
+ [-BgpSettingPeerWeight <Int32>] [-ConnectionProtocol <VirtualNetworkGatewayConnectionProtocol>]
  [-ConnectionStatu <VirtualNetworkGatewayConnectionStatus>]
  -ConnectionType <VirtualNetworkGatewayConnectionType> [-EnableBgp <Boolean>] [-Etag <String>]
  [-ExpressRouteGatewayBypass <Boolean>] [-GatewayIPAddress <String>] [-Id <String>]
  [-IpsecPolicy <IIpsecPolicy[]>] [-LocalNetworkAddressSpaceAddressPrefix <String[]>]
  [-LocalNetworkGateway2Etag <String>] [-LocalNetworkGateway2Id <String>]
- [-LocalNetworkGateway2Location <String>] [-LocalNetworkGateway2Tags <IResourceTags>] [-Location <String>]
- [-PeerId <String>] [-PropertiesResourceGuid <String>] [-ResourceGuid <String>] [-RoutingWeight <Int32>]
- [-SharedKey <String>] [-Tag <IResourceTags>] [-UsePolicyBasedTrafficSelector <Boolean>]
- -VirtualNetworkGateway1 <IVirtualNetworkGateway> [-VirtualNetworkGateway2 <IVirtualNetworkGateway>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Update
-```
-Set-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IVirtualNetworkGatewayConnection>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [-LocalNetworkGateway2Location <String>] [-LocalNetworkGateway2PropertiesResourceGuid <String>]
+ [-LocalNetworkGateway2Tags <IResourceTags>] [-Location <String>] [-PeerId <String>] [-ResourceGuid <String>]
+ [-RoutingWeight <Int32>] [-SharedKey <String>] [-Tag <IResourceTags>]
+ [-UsePolicyBasedTrafficSelector <Boolean>] -VirtualNetworkGateway1 <IVirtualNetworkGateway>
+ [-VirtualNetworkGateway2 <IVirtualNetworkGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### UpdateSubscriptionIdViaHostExpanded
+### UpdateViaIdentityExpanded
 ```
-Set-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String> [-AuthorizationKey <String>]
- [-BgpSettingsAsn <Int64>] [-BgpSettingsBgpPeeringAddress <String>] [-BgpSettingsPeerWeight <Int32>]
+Set-AzVirtualNetworkGatewayConnection -InputObject <INetworkIdentity> [-AuthorizationKey <String>]
+ [-BgpSettingAsn <Int64>] [-BgpSettingBgpPeeringAddress <String>] [-BgpSettingPeerWeight <Int32>]
  [-ConnectionProtocol <VirtualNetworkGatewayConnectionProtocol>]
  [-ConnectionStatu <VirtualNetworkGatewayConnectionStatus>]
  -ConnectionType <VirtualNetworkGatewayConnectionType> [-EnableBgp <Boolean>] [-Etag <String>]
  [-ExpressRouteGatewayBypass <Boolean>] [-GatewayIPAddress <String>] [-Id <String>]
  [-IpsecPolicy <IIpsecPolicy[]>] [-LocalNetworkAddressSpaceAddressPrefix <String[]>]
  [-LocalNetworkGateway2Etag <String>] [-LocalNetworkGateway2Id <String>]
- [-LocalNetworkGateway2Location <String>] [-LocalNetworkGateway2Tags <IResourceTags>] [-Location <String>]
- [-PeerId <String>] [-PropertiesResourceGuid <String>] [-ResourceGuid <String>] [-RoutingWeight <Int32>]
- [-SharedKey <String>] [-Tag <IResourceTags>] [-UsePolicyBasedTrafficSelector <Boolean>]
- -VirtualNetworkGateway1 <IVirtualNetworkGateway> [-VirtualNetworkGateway2 <IVirtualNetworkGateway>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-LocalNetworkGateway2Location <String>] [-LocalNetworkGateway2PropertiesResourceGuid <String>]
+ [-LocalNetworkGateway2Tags <IResourceTags>] [-Location <String>] [-PeerId <String>] [-ResourceGuid <String>]
+ [-RoutingWeight <Int32>] [-SharedKey <String>] [-Tag <IResourceTags>]
+ [-UsePolicyBasedTrafficSelector <Boolean>] -VirtualNetworkGateway1 <IVirtualNetworkGateway>
+ [-VirtualNetworkGateway2 <IVirtualNetworkGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Set-AzVirtualNetworkGatewayConnection -InputObject <INetworkIdentity>
+ [-Parameter <IVirtualNetworkGatewayConnection>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,7 +96,7 @@ The authorizationKey.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -104,12 +106,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BgpSettingsAsn
+### -BgpSettingAsn
 The BGP speaker's ASN.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -119,12 +121,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BgpSettingsBgpPeeringAddress
+### -BgpSettingBgpPeeringAddress
 The BGP peering address and BGP identifier of this BGP speaker.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -134,12 +136,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BgpSettingsPeerWeight
+### -BgpSettingPeerWeight
 The weight added to routes learned from this BGP speaker.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -154,7 +156,7 @@ Connection protocol used for this connection
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.VirtualNetworkGatewayConnectionProtocol
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -169,7 +171,7 @@ Virtual Network Gateway connection status.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.VirtualNetworkGatewayConnectionStatus
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -184,7 +186,7 @@ Gateway connection type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.VirtualNetworkGatewayConnectionType
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -214,7 +216,7 @@ EnableBgp flag
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -229,7 +231,7 @@ Gets a unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -244,7 +246,7 @@ Bypass ExpressRoute Gateway for data forwarding
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -259,7 +261,7 @@ IP address of local network gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -274,7 +276,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -284,12 +286,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -IpsecPolicy
 The IPSec Policies to be considered by this connection.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IIpsecPolicy[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -304,7 +321,7 @@ A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -319,7 +336,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -334,7 +351,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -349,7 +366,22 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LocalNetworkGateway2PropertiesResourceGuid
+The resource GUID property of the LocalNetworkGateway resource.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -363,8 +395,8 @@ Accept wildcard characters: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IResourceTags
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -379,7 +411,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -394,7 +426,7 @@ The name of the virtual network gateway connection.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases: VirtualNetworkGatewayConnectionName
 
 Required: True
@@ -409,7 +441,7 @@ A common class for general resource information
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetworkGatewayConnection
-Parameter Sets: UpdateSubscriptionIdViaHost, Update
+Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -424,22 +456,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PropertiesResourceGuid
-The resource GUID property of the LocalNetworkGateway resource.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -454,7 +471,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -469,7 +486,7 @@ The resource GUID property of the VirtualNetworkGatewayConnection resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -484,7 +501,7 @@ The routing weight.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -499,7 +516,7 @@ The IPSec shared key.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -515,7 +532,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -529,8 +546,8 @@ Accept wildcard characters: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IResourceTags
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -545,7 +562,7 @@ Enable policy-based traffic selectors.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -560,7 +577,7 @@ The reference to virtual network gateway resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetworkGateway
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -575,7 +592,7 @@ The reference to virtual network gateway resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetworkGateway
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

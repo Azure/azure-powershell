@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Network
-Module Guid: bc673cf0-18e3-4ef9-cc14-05b2a7543acb
+Module Guid: 4ff17caf-76fc-409a-2e23-b96989751cb1
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.network
 Help Version: 1.0.0.0
 Locale: en-US
@@ -75,7 +75,7 @@ Get the specified default network security rule.
 Gets information about the specified express route circuit.
 
 ### [Get-AzExpressRouteCircuitArpTable](Get-AzExpressRouteCircuitArpTable.md)
-Gets the currently advertised ARP table associated with the express route circuit in a resource group.
+The ListArpTable from ExpressRouteCircuit operation retrieves the currently advertised arp table associated with the ExpressRouteCircuits in a resource group.
 
 ### [Get-AzExpressRouteCircuitAuthorization](Get-AzExpressRouteCircuitAuthorization.md)
 Gets the specified authorization from the specified express route circuit.
@@ -90,7 +90,7 @@ Gets the specified peering for the express route circuit.
 Gets all stats from an express route circuit in a resource group.
 
 ### [Get-AzExpressRouteCircuitRouteTable](Get-AzExpressRouteCircuitRouteTable.md)
-Gets the currently advertised routes table associated with the express route circuit in a resource group.
+The ListRoutesTable from ExpressRouteCircuit operation retrieves the currently advertised routes table associated with the ExpressRouteCircuits in a resource group.
 
 ### [Get-AzExpressRouteCircuitRouteTableSummary](Get-AzExpressRouteCircuitRouteTableSummary.md)
 Gets the currently advertised routes table summary associated with the express route circuit in a resource group.

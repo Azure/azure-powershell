@@ -12,36 +12,36 @@ Creates or updates a virtual network in the specified resource group.
 
 ## SYNTAX
 
-### CreateSubscriptionIdViaHost (Default)
+### Create (Default)
 ```
-New-AzVirtualNetwork -Name <String> -ResourceGroupName <String> [-Parameter <IVirtualNetwork>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzVirtualNetwork -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-Parameter <IVirtualNetwork>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
 New-AzVirtualNetwork -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-AddressSpaceAddressPrefix <String[]>] [-DdosProtectionPlanId <String>] [-DhcpOptionsDnsServer <String[]>]
+ [-AddressSpaceAddressPrefix <String[]>] [-DdoProtectionPlanId <String>] [-DhcpOptionDnsServer <String[]>]
  [-EnableDdosProtection <Boolean>] [-EnableVMProtection <Boolean>] [-Etag <String>] [-Id <String>]
  [-Location <String>] [-Peering <IVirtualNetworkPeering[]>] [-ProvisioningState <String>]
  [-ResourceGuid <String>] [-Subnet <ISubnet[]>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Create
+### CreateViaIdentityExpanded
 ```
-New-AzVirtualNetwork -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IVirtualNetwork>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateSubscriptionIdViaHostExpanded
-```
-New-AzVirtualNetwork -Name <String> -ResourceGroupName <String> [-AddressSpaceAddressPrefix <String[]>]
- [-DdosProtectionPlanId <String>] [-DhcpOptionsDnsServer <String[]>] [-EnableDdosProtection <Boolean>]
+New-AzVirtualNetwork -InputObject <INetworkIdentity> [-AddressSpaceAddressPrefix <String[]>]
+ [-DdoProtectionPlanId <String>] [-DhcpOptionDnsServer <String[]>] [-EnableDdosProtection <Boolean>]
  [-EnableVMProtection <Boolean>] [-Etag <String>] [-Id <String>] [-Location <String>]
  [-Peering <IVirtualNetworkPeering[]>] [-ProvisioningState <String>] [-ResourceGuid <String>]
  [-Subnet <ISubnet[]>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzVirtualNetwork -InputObject <INetworkIdentity> [-Parameter <IVirtualNetwork>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +63,7 @@ A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -88,12 +88,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DdosProtectionPlanId
+### -DdoProtectionPlanId
 Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -118,12 +118,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DhcpOptionsDnsServer
+### -DhcpOptionDnsServer
 The list of DNS servers IP addresses.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -139,7 +139,7 @@ It requires a DDoS protection plan associated with the resource.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -154,7 +154,7 @@ Indicates if VM protection is enabled for all the subnets in the virtual network
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -169,7 +169,7 @@ Gets a unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -184,7 +184,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -194,12 +194,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Location
 Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -214,7 +229,7 @@ The name of the virtual network.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases: VirtualNetworkName
 
 Required: True
@@ -229,7 +244,7 @@ Virtual Network resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetwork
-Parameter Sets: CreateSubscriptionIdViaHost, Create
+Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
 Required: False
@@ -243,8 +258,8 @@ Accept wildcard characters: False
 A list of peerings in a Virtual Network.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetworkPeering[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkPeering[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases: VirtualNetworkPeering
 
 Required: False
@@ -260,7 +275,7 @@ Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -275,7 +290,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -290,7 +305,7 @@ The resourceGuid property of the Virtual Network resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -305,7 +320,7 @@ A list of subnets in a Virtual Network.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISubnet[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -321,7 +336,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -335,8 +350,8 @@ Accept wildcard characters: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IResourceTags
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
