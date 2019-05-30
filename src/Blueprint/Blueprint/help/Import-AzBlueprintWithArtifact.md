@@ -24,7 +24,7 @@ Import a blueprint with its artifacts.
 
 ### Example 1
 ```powershell
-PS C:\> Import-AzBlueprintWithArtifact -Name MyBlueprint -SubscriptionId 00000000-1111-0000-1111-000000000000 -InputPath  C:\ExportedBlueprint
+PS C:\> Import-AzBlueprintWithArtifact -Name SimpleBlueprint -SubscriptionId 00000000-1111-0000-1111-000000000000 -InputPath  C:\Blueprints
 ```
 
 Import a blueprint with its artifacts and save within a subscription.

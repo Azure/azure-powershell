@@ -24,7 +24,8 @@ Export a blueprint with it's artifact and save to disk.
 
 ### Example 1
 ```powershell
-PS C:\> Export-AzBlueprintWithArtifact -Blueprint $bp -Version 1.0 -OutputPath C:\ExportedBlueprint
+PS C:\> $bp = Get-AzBlueprint -Name SimpleBlueprint
+PS C:\> Export-AzBlueprintWithArtifact -Blueprint $bp -Version 1.0 -OutputPath C:\Blueprints
 ```
 
 Export a blueprint with it's artifact and save to disk.

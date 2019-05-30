@@ -24,10 +24,33 @@ Retrieve a blueprint artifact with its properties.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzBlueprintArtifact -Name MyArtifact -Blueprint $bp -BlueprintVersion 1.0
+PS C:\> $bp = Get-AzBlueprint -Name SimpleBlueprint
+PS C:\> Get-AzBlueprintArtifact -Blueprint $bp 
+
+DisplayName        : Audit use of classic virtual machines
+Description        :
+DependsOn          :
+PolicyDefinitionId : /providers/Microsoft.Authorization/policyDefinitions/1d84d5fb-01f6-4d12-ba4f-4a26081d403d
+Parameters         : {[effect, Microsoft.Azure.Commands.Blueprint.Models.PSParameterValue]}
+ResourceGroup      : SimpleBlueprintRG
+Id                 : /providers/Microsoft.Management/managementGroups/{mgId}/providers/Microsoft.Blueprint/blueprints/SimpleBlueprint/artifacts/3ab44511-0228-4275-9641-7e93e6f34178
+Type               : Microsoft.Blueprint/blueprints/artifacts
+Name               : 3ab44511-0228-4275-9641-7e93e6f34178
+
+DisplayName        : Enforce tag and its value
+Description        :
+DependsOn          :
+PolicyDefinitionId : /providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62
+Parameters         : {[tagName, Microsoft.Azure.Commands.Blueprint.Models.PSParameterValue], [tagValue,
+                     Microsoft.Azure.Commands.Blueprint.Models.PSParameterValue]}
+ResourceGroup      :
+Id                 : /providers/Microsoft.Management/managementGroups/{mgId}/providers/Microsoft.Blueprint/blueprints/SimpleBlueprint/artifacts/0e1593da-47d5-4b75-800c-9a797dd23192
+Type               : Microsoft.Blueprint/blueprints/artifacts
+Name               : 0e1593da-47d5-4b75-800c-9a797dd23192
+
 ```
 
-Retrieve a blueprint artifact with its properties.
+Retrieve a blueprint artifact with its properties. If blueprint version is not specified, draft version is retrieved. In the case where there is no draft version, latest published blueprint returned.
 
 ## PARAMETERS
 

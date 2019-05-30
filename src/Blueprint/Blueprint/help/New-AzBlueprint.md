@@ -25,13 +25,23 @@ New-AzBlueprint -Name <String> -ManagementGroupId <String> -BlueprintFile <Strin
 ```
 
 ## DESCRIPTION
-Create a new blueprint.
+Create a new blueprint. There are two main ways to create a blueprint: either by providing a blueprint JSON file or providing 
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
 PS C:\> New-AzBlueprint -Name MyNewBlueprint -SubscriptionId 00000000-1111-0000-1111-000000000000 -BlueprintFile C:\Blueprint.json
+
+Name              : SimpleBlueprint
+Id                : /providers/Microsoft.Management/managementGroups/{mgId}/providers/Microsoft.Blueprint/blueprints/SimpleBlueprint
+ManagementGroupId : myManagementGroupId
+Versions          : 
+Description       : test
+TimeCreated       : 2019-05-12
+TargetScope       : Subscription
+Parameters        : {enforcetaganditsvalue_tagName, enforcetaganditsvalue_tagValue}
+ResourceGroups    : {AppNetworkRG}
 ```
 
 Create a new blueprint within the specified subscription.
