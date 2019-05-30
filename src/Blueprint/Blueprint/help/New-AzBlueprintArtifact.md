@@ -44,16 +44,69 @@ New-AzBlueprintArtifact -Name <String> -Type <PSArtifactKind> -Blueprint <PSBlue
 ```
 
 ## DESCRIPTION
-Create a new template artifact.
+Create a new template artifact. There are two ways to create an artifact: either through an artifact JSON as an input file or through providing inline parameters for the artifact. 
+while former doesn't require type of the artifact to be provided latter method requires user to provide the type of the artifact through -Type parameter.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> New-AzBlueprintArtifact -Blueprint $bp -ArtifactFile C:\TemplateARtifact.json
+PS C:\> $bp = Get-AzBlueprint -Name SimpleBlueprint
+PS C:\> New-AzBlueprintArtifact -Name PolicyStorage -Blueprint $bp -ArtifactFile C:\PolicyAssignmentStorageTag.json
+
+DisplayName        :
+Description        : Apply storage tag and the parameter also used by the template to resource groups
+DependsOn          :
+PolicyDefinitionId : /providers/Microsoft.Authorization/policyDefinitions/49c88fc8-6fd1-46fd-a676-f12d1d3a4c71
+Parameters         : {[tagName, Microsoft.Azure.Commands.Blueprint.Models.PSParameterValue], [tagValue, Microsoft.Azure.Commands.Blueprint.Models.PSParameterValue]}
+ResourceGroup      :
+Id                 : /subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprints/AppNetwork/artifacts/PolicyAssignmentStorageTag
+Type               : Microsoft.Blueprint/blueprints/artifacts
+Name               : PolicyAssignmentStorageTag
 ```
 
-Create a new template artifact.
+Create a new template artifact through an artifact JSON file.
+
+### Example 2
+```powershell
+PS C:\> $bp = Get-AzBlueprint -Name SimpleBlueprint
+PS C:\> New-AzBlueprintArtifact -Type PolicyAssignmentArtifact -Name "ApplyTag-RG" -Blueprint $bp -PolicyDefinitionId "/providers/Microsoft.Authorization/policyDefinitions/49c88fc8-6fd1-46fd-a676-f12d1d3a4c71" -PolicyDefinitionParameter @{tagName="[parameters('tagName')]"; tagValue="[parameters('tagValue')]"} -ResourceGroupName storageRG
+
+DisplayName        : ApplyTag-RG
+Description        :
+DependsOn          :
+PolicyDefinitionId : /providers/Microsoft.Authorization/policyDefinitions/49c88fc8-6fd1-46fd-a676-f12d1d3a4c71
+Parameters         : {[tagValue, Microsoft.Azure.Commands.Blueprint.Models.PSParameterValue], [tagName,
+                     Microsoft.Azure.Commands.Blueprint.Models.PSParameterValue]}
+ResourceGroup      : storageRG
+Id                 : /subscriptions/28cbf98f-381d-4425-9ac4-cf342dab9753/providers/Microsoft.Blueprint/blueprints/AppNetwork/
+                     artifacts/ApplyTag-RG
+Type               : Microsoft.Blueprint/blueprints/artifacts
+Name               : ApplyTag-RG
+
+```
+
+Create a new artifact through inline parameters.
+
+
+### Example 3
+```powershell
+PS C:\> $bp = Get-AzBlueprint -Name SimpleBlueprint
+PS C:\> New-AzBlueprintArtifact -Type TemplateArtifact -Name storage-account -Blueprint $bp -TemplateFile C:\StorageAccountArmTemplate.json -ResourceGroup "storageRG" -TemplateParameterFile C:\Workspace\BlueprintTemplates\RestTemplatesSomeInline\StorageAccountParameters.json
+
+DisplayName   : storage-account
+Description   :
+DependsOn     :
+Template      : {$schema, contentVersion, parameters, variables...}
+Parameters    : {}
+ResourceGroup : storageRG
+Id            : /subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprints/AppNetwork/artifacts/storage-account
+Type          : Microsoft.Blueprint/blueprints/artifacts
+Name          : storage-account
+
+```
+
+Create a new artifact through an ARM template file.
 
 ## PARAMETERS
 

@@ -25,6 +25,16 @@ Publish a new version of a blueprint.
 ### Example 1
 ```powershell
 PS C:\> Publish-AzBlueprint -Blueprint $bp -Version 1.0 
+
+Name           : SimpleBlueprint
+Id             : /subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprints/SimpleBlueprint/versions/1.0
+SubscriptionId : 28cbf98f-381d-4425-9ac4-cf342dab9753
+Version        : 1.0
+Description    : My simple blueprint
+TimeCreated    : 2019-05-30
+TargetScope    : Subscription
+Parameters     : {[tagName, Microsoft.Azure.Commands.Blueprint.Models.PSParameterValue], [tagValue, Microsoft.Azure.Commands.Blueprint.Models.PSParameterValue]}
+ResourceGroups : {storageRG}
 ```
 Publish a new version of a blueprint.
 
