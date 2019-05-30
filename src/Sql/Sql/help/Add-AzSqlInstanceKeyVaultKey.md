@@ -12,26 +12,26 @@ Adds a key vault key to the provided Managed Instance.
 
 ## SYNTAX
 
-### AddAzureRmSqlManagedInstanceKeyVaultKeyDefaultParameterSet (Default)
+### AddAzureRmSqlInstanceKeyVaultKeyDefaultParameterSet (Default)
 ```
 Add-AzSqlInstanceKeyVaultKey [-ResourceGroupName] <String> [-InstanceName] <String> [-KeyId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### AddAzureRmSqlManagedInstanceKeyVaultKeyInputObjectParameterSet
+### AddAzureRmSqlInstanceKeyVaultKeyInputObjectParameterSet
 ```
 Add-AzSqlInstanceKeyVaultKey [-Instance] <AzureSqlManagedInstanceModel> [-KeyId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### AddAzureRmSqlManagedInstanceKeyVaultKeyResourceIdParameterSet
+### AddAzureRmSqlInstanceKeyVaultKeyResourceIdParameterSet
 ```
 Add-AzSqlInstanceKeyVaultKey [-InstanceResourceId] <String> [-KeyId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Add-AzSqlManagedInstanceKeyVaultKey cmdlet adds a key vault key to the provided Managed Instance. The managed instance must have 'get, wrapKey, unwrapKey' permissions to the vault, use the following script to grant permission to the managed instance.
+The Add-AzSqlInstanceKeyVaultKey cmdlet adds a key vault key to the provided Managed Instance. The managed instance must have 'get, wrapKey, unwrapKey' permissions to the vault, use the following script to grant permission to the managed instance.
 $managedInstance = Get-AzSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
 Set-AzKeyVaultAccessPolicy -VaultName ContosoVault -ObjectId $managedInstance.Identity.PrincipalId -PermissionsToKeys get, wrapKey, unwrapKey
 

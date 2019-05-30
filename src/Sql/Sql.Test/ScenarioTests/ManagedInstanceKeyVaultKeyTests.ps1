@@ -11,17 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-		
-# A managed instance can be provisioned using instructions here https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-get-started
-# currently this takes about 2-3 hours
-$mangedInstanceRg = "BenjinResourceGroup"
-$managedInstanceName = "benjinmitest"
-$keyVaultName = "mitest-eus-doNotDelete"
-$keyName = "mitest-key"
-$keyId = "https://mitest-eus-donotdelete.vault.azure.net/keys/mitest-key/6dc78e98a3274d87bd847436dd34045e"
-$keyVersion = "6dc78e98a3274d87bd847436dd34045e"
-$tdeKeyName = $keyVaultName + "_" + $keyName + "_" + $keyVersion
-
 
 <#
 	.SYNOPSIS
@@ -29,22 +18,24 @@ $tdeKeyName = $keyVaultName + "_" + $keyName + "_" + $keyVersion
 #>
 function Test-ManagedInstanceKeyVaultKeyCI
 {
-
-	$managedInstance = Get-AzSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
+	$params = Get-SqlServerKeyVaultKeyTestEnvironmentParameters
+	$managedInstance = Get-ManagedInstanceForTdeTest $params
+	$mangedInstanceRg = $managedInstance.ResourceGroupName
+	$managedInstanceName = $managedInstance.ManagedInstanceName
 	$managedInstanceResourceId = $managedInstance.Id
 
 	# Test Add
-	$keyResult = Add-AzSqlInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -InstanceName $managedInstanceName -KeyId $keyId
+	$keyResult = Add-AzSqlInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -InstanceName $managedInstanceName -KeyId $params.keyId
 
-	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after calling Add-AzSqlInstanceKeyVaultKey"
-	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Add-AzSqlInstanceKeyVaultKey"
+	Assert-AreEqual $params.keyId $keyResult.KeyId "KeyId mismatch after calling Add-AzSqlInstanceKeyVaultKey"
+	Assert-AreEqual $params.serverKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Add-AzSqlInstanceKeyVaultKey"
 
 	
 	# Test Get
-	$keyResult2 = $managedInstance | Get-AzSqlInstanceKeyVaultKey -KeyId $keyId
+	$keyResult2 = $managedInstance | Get-AzSqlInstanceKeyVaultKey -KeyId $params.keyId
 
-	Assert-AreEqual $keyId $keyResult2.KeyId "KeyId mismatch after calling Get-AzSqlInstanceKeyVaultKey"
-	Assert-AreEqual $tdeKeyName $keyResult2.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Get-AzSqlInstanceKeyVaultKey"
+	Assert-AreEqual $params.keyId $keyResult2.KeyId "KeyId mismatch after calling Get-AzSqlInstanceKeyVaultKey"
+	Assert-AreEqual $params.serverKeyName $keyResult2.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Get-AzSqlInstanceKeyVaultKey"
 		
 	# Test List
 	$keyResults = Get-AzSqlInstanceKeyVaultKey -InstanceResourceId $managedInstanceResourceId
@@ -57,18 +48,23 @@ function Test-ManagedInstanceKeyVaultKeyCI
 #>
 function Test-ManagedInstanceKeyVaultKey
 {
-	# Test Add
-	$keyResult = Add-AzSqlInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -InstanceName $managedInstanceName -KeyId $keyId
+	$params = Get-SqlServerKeyVaultKeyTestEnvironmentParameters
+	$managedInstance = Get-ManagedInstanceForTdeTest $params
+	$mangedInstanceRg = $managedInstance.ResourceGroupName
+	$managedInstanceName = $managedInstance.ManagedInstanceName
 
-	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after calling Add-AzSqlInstanceKeyVaultKey"
-	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Add-AzSqlInstanceKeyVaultKey"
+	# Test Add
+	$keyResult = Add-AzSqlInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -InstanceName $managedInstanceName -KeyId $params.keyId
+
+	Assert-AreEqual $params.keyId $keyResult.KeyId "KeyId mismatch after calling Add-AzSqlInstanceKeyVaultKey"
+	Assert-AreEqual $params.serverKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Add-AzSqlInstanceKeyVaultKey"
 
 	
 	# Test Get
-	$keyResult2 = Get-AzSqlInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -InstanceName $managedInstanceName -KeyId $keyId
+	$keyResult2 = Get-AzSqlInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -InstanceName $managedInstanceName -KeyId $params.keyId
 
-	Assert-AreEqual $keyId $keyResult2.KeyId "KeyId mismatch after calling Get-AzSqlInstanceKeyVaultKey"
-	Assert-AreEqual $tdeKeyName $keyResult2.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Get-AzSqlInstanceKeyVaultKey"
+	Assert-AreEqual $params.keyId $keyResult2.KeyId "KeyId mismatch after calling Get-AzSqlInstanceKeyVaultKey"
+	Assert-AreEqual $params.serverKeyName $keyResult2.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Get-AzSqlInstanceKeyVaultKey"
 		
 	# Test List
 	$keyResults = Get-AzSqlInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -InstanceName $managedInstanceName
@@ -82,20 +78,23 @@ function Test-ManagedInstanceKeyVaultKey
 #>
 function Test-ManagedInstanceKeyVaultKeyInputObject
 {
-	$managedInstance = Get-AzSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
+	$params = Get-SqlServerKeyVaultKeyTestEnvironmentParameters
+	$managedInstance = Get-ManagedInstanceForTdeTest $params
+	$mangedInstanceRg = $managedInstance.ResourceGroupName
+	$managedInstanceName = $managedInstance.ManagedInstanceName
 
 	# Test Add
-	$keyResult = Add-AzSqlInstanceKeyVaultKey -Instance $managedInstance -KeyId $keyId
+	$keyResult = Add-AzSqlInstanceKeyVaultKey -Instance $managedInstance -KeyId $params.keyId
 
-	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after calling Add-AzSqlInstanceKeyVaultKey"
-	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Add-AzSqlInstanceKeyVaultKey"
+	Assert-AreEqual $params.keyId $keyResult.KeyId "KeyId mismatch after calling Add-AzSqlInstanceKeyVaultKey"
+	Assert-AreEqual $params.serverKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Add-AzSqlInstanceKeyVaultKey"
 
 	
 	# Test Get
-	$keyResult2 = Get-AzSqlInstanceKeyVaultKey -Instance $managedInstance -KeyId $keyId
+	$keyResult2 = Get-AzSqlInstanceKeyVaultKey -Instance $managedInstance -KeyId $params.keyId
 
-	Assert-AreEqual $keyId $keyResult2.KeyId "KeyId mismatch after calling Get-AzSqlInstanceKeyVaultKey"
-	Assert-AreEqual $tdeKeyName $keyResult2.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Get-AzSqlInstanceKeyVaultKey"
+	Assert-AreEqual $params.keyId $keyResult2.KeyId "KeyId mismatch after calling Get-AzSqlInstanceKeyVaultKey"
+	Assert-AreEqual $params.serverKeyName $keyResult2.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Get-AzSqlInstanceKeyVaultKey"
 
 	
 	# Test List
@@ -111,21 +110,24 @@ function Test-ManagedInstanceKeyVaultKeyInputObject
 #>
 function Test-ManagedInstanceKeyVaultKeyResourceId
 {
-	$managedInstance = Get-AzSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
+	$params = Get-SqlServerKeyVaultKeyTestEnvironmentParameters
+	$managedInstance = Get-ManagedInstanceForTdeTest $params
+	$mangedInstanceRg = $managedInstance.ResourceGroupName
+	$managedInstanceName = $managedInstance.ManagedInstanceName
 	$managedInstanceResourceId = $managedInstance.Id
 
 	# Test Add
-	$keyResult = Add-AzSqlInstanceKeyVaultKey -InstanceResourceId $managedInstanceResourceId -KeyId $keyId
+	$keyResult = Add-AzSqlInstanceKeyVaultKey -InstanceResourceId $managedInstanceResourceId -KeyId $params.keyId
 
-	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after calling Add-AzSqlInstanceKeyVaultKey"
-	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Add-AzSqlInstanceKeyVaultKey"
+	Assert-AreEqual $params.keyId $keyResult.KeyId "KeyId mismatch after calling Add-AzSqlInstanceKeyVaultKey"
+	Assert-AreEqual $params.serverKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Add-AzSqlInstanceKeyVaultKey"
 
 	
 	# Test Get
-	$keyResult2 = Get-AzSqlInstanceKeyVaultKey -InstanceResourceId $managedInstanceResourceId -KeyId $keyId
+	$keyResult2 = Get-AzSqlInstanceKeyVaultKey -InstanceResourceId $managedInstanceResourceId -KeyId $params.keyId
 
-	Assert-AreEqual $keyId $keyResult2.KeyId "KeyId mismatch after calling Get-AzSqlInstanceKeyVaultKey"
-	Assert-AreEqual $tdeKeyName $keyResult2.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Get-AzSqlInstanceKeyVaultKey"
+	Assert-AreEqual $params.keyId $keyResult2.KeyId "KeyId mismatch after calling Get-AzSqlInstanceKeyVaultKey"
+	Assert-AreEqual $params.serverKeyName $keyResult2.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Get-AzSqlInstanceKeyVaultKey"
 
 	
 	# Test List
@@ -141,20 +143,23 @@ function Test-ManagedInstanceKeyVaultKeyResourceId
 #>
 function Test-ManagedInstanceKeyVaultKeyPiping
 {
-	$managedInstance = Get-AzSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
+	$params = Get-SqlServerKeyVaultKeyTestEnvironmentParameters
+	$managedInstance = Get-ManagedInstanceForTdeTest $params
+	$mangedInstanceRg = $managedInstance.ResourceGroupName
+	$managedInstanceName = $managedInstance.ManagedInstanceName
 
 	# Test Add
-	$keyResult = $managedInstance | Add-AzSqlInstanceKeyVaultKey -KeyId $keyId
+	$keyResult = $managedInstance | Add-AzSqlInstanceKeyVaultKey -KeyId $params.keyId
 
-	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after calling Add-AzSqlInstanceKeyVaultKey"
-	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Add-AzSqlInstanceKeyVaultKey"
+	Assert-AreEqual $params.keyId $keyResult.KeyId "KeyId mismatch after calling Add-AzSqlInstanceKeyVaultKey"
+	Assert-AreEqual $params.serverKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Add-AzSqlInstanceKeyVaultKey"
 
 	
 	# Test Get
-	$keyResult2 = $managedInstance | Get-AzSqlInstanceKeyVaultKey -KeyId $keyId
+	$keyResult2 = $managedInstance | Get-AzSqlInstanceKeyVaultKey -KeyId $params.keyId
 
-	Assert-AreEqual $keyId $keyResult2.KeyId "KeyId mismatch after calling Get-AzSqlInstanceKeyVaultKey"
-	Assert-AreEqual $tdeKeyName $keyResult2.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Get-AzSqlInstanceKeyVaultKey"
+	Assert-AreEqual $params.keyId $keyResult2.KeyId "KeyId mismatch after calling Get-AzSqlInstanceKeyVaultKey"
+	Assert-AreEqual $params.serverKeyName $keyResult2.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Get-AzSqlInstanceKeyVaultKey"
 
 	
 	# Test List

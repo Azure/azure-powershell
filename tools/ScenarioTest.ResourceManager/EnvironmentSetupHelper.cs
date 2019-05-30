@@ -544,7 +544,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     {"Microsoft.Features", null},
                     {"Microsoft.Authorization", null},
                     {"Microsoft.Compute", null},
-                    {"Microsoft.KeyVault", null}
                 };
                 var providersToIgnore = new Dictionary<string, string>
                 {

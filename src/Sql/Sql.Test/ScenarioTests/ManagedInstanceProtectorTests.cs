@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
@@ -23,6 +24,16 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         public ManagedInstanceProtectorTests(ITestOutputHelper output) : base(output)
         {
+        }
+
+        protected override void SetupManagementClients(RestTestFramework.MockContext context)
+        {
+            var sqlClient = GetSqlClient(context);
+            var newResourcesClient = GetResourcesClient(context);
+            var graphClient = GetGraphClient(context);
+            var networkClient = GetNetworkClient(context);
+            var keyVaultClient = GetKeyVaultClient(context);
+            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient, networkClient, graphClient, keyVaultClient);
         }
 
         [Fact]
