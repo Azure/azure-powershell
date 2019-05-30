@@ -52,16 +52,15 @@ require:
   - $(repo)/specification/compute/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/compute/resource-manager/readme.md
 
+#input-file: 
+#  - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2017-07-01/containerService.json
+
 subject-prefix: ''
 module-version: 0.0.1
 skip-model-cmdlets: true
 
 directive:
-  - where:
-      verb: Get
-      subject: .*All
-    set:
-      hide: true
+# subject renames for VM and Vmss
   - where:
       subject: VirtualMachineScaleSet(.*)
     set:
@@ -75,4 +74,403 @@ directive:
       parameter-name: VmName
     set:
       parameter-name: Name
+# Fix Convert verb
+  - where:
+      verb: Convert
+      subject: VMToManagedDisk
+    set:
+      verb: ConvertTo
+      subject: VMManagedDisk
+# Add service name prefix
+  - where:
+      verb: Get
+      subject: ResourceSku
+    set:
+      subject-prefix: Compute
+# Cmdlet renames 
+  - where:
+      verb: Invoke
+      subject: ForceVmssRecoveryServiceFabricPlatformUpdateDomainWalk
+    set:
+      verb: Repair
+      subject: VmssServiceFabricUpdateDomain
+  - where:
+      verb: Get
+      subject: VMRunCommand
+    set:
+      subject: VMRunCommandDocument
+  - where: 
+      verb: Get
+      subject: VmssRollingUpgradeLatest
+    set:
+      subject: VmssRollingUpgrade
+  - where: 
+      verb: Invoke
+      subject: RedeployVM
+    set:
+      subject: VMReimage
+  - where:
+      verb: Set
+      subject: Gallery
+    set:
+      verb: Update
+  - where:
+      verb: Set
+      subject: GalleryImage.*
+    set:
+      verb: Update
+  - where: 
+      subject: GalleryImage
+    set:
+      subject: GalleryImageDefinition
+  - where:
+      subject: Usage
+    set:
+      subject: VMUsage
+  - where: 
+      verb: Start
+      subject: VmssRollingUpgradeOSUpgrade
+    set:
+      subject: VmssRollingOSUpgrade
+  - where:
+      verb: Start
+      subject: .+Command
+    set: 
+      verb: Invoke
+  - where:
+      verb: Invoke
+      subject: VMCommand
+    set:
+      alias: Invoke-AzVMRunCommand
+  - where:
+      verb: Invoke
+      subject: VmssVMCommand
+    set:
+      alias: Invoke-AzVmssVMRunCommand
+#  - where:
+#      verb: Reset
+#      subject: VM
+#    set: 
+#      alias: Invoke-AzVMReimage
+  - where: 
+      verb: Export
+      subject: VM
+    set:
+      verb: Save
+      subject: VMImage
+  - where: 
+      verb: Export
+      subject: LogAnalyticRequestRate
+    set:
+      subject: LogAnalyticRequestRateByInterval
+  - where: 
+      verb: Export
+      subject: LogAnalyticThrottledRequest
+    set:
+      alias: Export-AzLogAnalyticThrottledRequests
+  # parameter renames
+  - where: 
+      verb: New
+      subject: GalleryImageDefinition
+      parameter-name: Identifier(.+)
+    set:
+      parameter-name: $1
+  - where: 
+      subject: GalleryImageDefinition
+      parameter-name: VCpUsMin
+    set:
+      parameter-name: MinimumVCpu
+  - where: 
+      subject: GalleryImageDefinition
+      parameter-name: VCpUsMax
+    set:
+      parameter-name: MaximumVCpu
+  - where: 
+      subject: GalleryImageDefinition
+      parameter-name: MemoryMin
+    set:
+      parameter-name: MinimumMemory
+  - where: 
+      subject: GalleryImageDefinition
+      parameter-name: MemoryMax
+    set:
+      parameter-name: MaximumMemory
+  - where:
+      subject: VM
+      parameter-name: Parameter
+    set:
+      parameter-name: VM
+  - where:
+      subject: Vmss
+      parameter-name: Parameter
+    set:
+      parameter-name: VirtualMachineScaleSet
+  - where:
+      subject: VM
+      parameter-name: HardwareProfileVMSize
+    set:
+      parameter-name: Size
+  - where:
+      parameter-name: AdditionalCapabilityUltraSsdEnabled
+    set:
+      parameter-name: UltraSsdEnabled
+  - where:
+      parameter-name: UltraSsdEnabled
+    set:
+      alias: EnableUltraSSD
+  - where:
+      parameter-name: IdentityUserAssignedIdentity
+    set:
+      parameter-name: IdentityId
+  - where:
+      parameter-name: IdentityId
+    set:
+      alias: UserAssignedIdentity
+  - where:
+      parameter-name: AutomaticOSUpgradePolicyEnableAutomaticOsupgrade
+    set:
+      parameter-name: AutomaticOSUpgrade
+  - where:
+      parameter-name: RollingUpgradePolicyMaxUnhealthyUpgradedInstancePercent
+    set:
+      parameter-name: MaxUnhealthyUpgradedInstancePercent
+  - where:
+      parameter-name: AutomaticOSUpgradePolicyDisableAutomaticRollback
+    set:
+      parameter-name: DisableAutoRollback
+  - where:
+      parameter-name: RollingUpgradePolicyMaxBatchInstancePercent
+    set:
+      parameter-name: MaxBatchInstancePercent
+  - where:
+      parameter-name: RollingUpgradePolicyMaxUnhealthyInstancePercent
+    set:
+      parameter-name: MaxUnhealthyInstancePercent
+  - where:
+      parameter-name: RollingUpgradePolicyPauseTimeBetweenBatch
+    set:
+      parameter-name: PauseTimeBetweenBatches
+  - where: 
+      subject: GalleryImageVersion
+      parameter-name: ^PublishingProfile(.*)$
+    set:
+      parameter-name: $1
+  - where: 
+      subject: GalleryImageVersion
+      parameter-name: ManagedImageId
+    set:
+      alias: SourceImageId
+  - where:
+      subject: Image
+      parameter-name: Parameter
+    set:
+      parameter-name: Image
+  - where: 
+      parameter-name: GalleryImageName
+    set:
+      parameter-name: GalleryImageDefinitionName
+  - where:
+      subject: VMExtension
+      parameter-name: ExtensionImageName
+    set:
+      parameter-name: ImageName
+  - where:
+      subject: VMExtension
+      parameter-name: VMExtensionName
+    set:
+      parameter-name: Name
+  - where:
+      subject: VMExtension
+      parameter-name: PropertiesType
+    set:
+      parameter-name: ExtensionType
+  - where:
+      subject: VMExtension
+      parameter-name: Setting
+    set:
+      alias: Settings
+  - where:
+      subject: VMExtension
+      parameter-name: ProtectedSetting
+    set:
+      alias: ProtectedSettings
+  - where:
+      subject: VMExtension
+      parameter-name: ForceUpdateTag
+    set:
+      parameter-name: ForceRerun
+  - where:
+      subject: VmssExtension
+      parameter-name: VMScaleSetName
+    set:
+      parameter-name: VmssName
+  - where:
+      verb: Get
+      subject: VMImage
+      parameter-name: Filter
+    set:
+      parameter-name: FilterExpression
+  - where:
+      verb: Get
+      subject: VMImage
+      parameter-name: Filter
+    set:
+      parameter-name: FilterExpression
+  - where:
+      verb: Remove
+      subject: VmssExtension
+      parameter-name: VmssExtensionName
+    set:
+      parameter-name: Name
+  - where:
+      subject: VmssVM
+      parameter-name: VMScaleSetVMReimageInput
+    set:
+      parameter-name: VirtualMachineScaleSetVM
+  - where:
+      subject: AvailabilitySet
+      parameter-name: Parameter
+    set:
+      parameter-name: AvailabilitySet
+  # parameter alias not working
+  - where:
+      verb: Remove
+      subject: VmssExtension
+      parameter-name: InputObject
+    set:
+      alias: VirtualMachineScaleSet
+  - where:
+      verb: Update
+      subject: Disk
+      parameter-name: Disk
+    set:
+      alias: DiskUpdate
+  - where:
+      verb: Update
+      subject: Snapshot
+      parameter-name: Snapshot
+    set:
+      alias: SnapshotUpdate
+  - where:
+      verb: Repair
+      subject: VmssServiceFabricUpdateDomain
+      parameter-name: InputObject
+    set:
+      alias: VirtualMachineScaleSet  
+  # Rename flattedned parameter names for VMSS
+  - where:
+      subject: GalleryImageVersion
+      parameter-name: ExcludeFromLatest
+    set:
+      alias: PublishingProfileExcludeFromLatest
+  - where:
+      subject: GalleryImageVersion
+      parameter-name: EndOfLifeDate
+    set:
+      alias: PublishingProfileEndOfLifeDate
+  - where:
+      parameter-name: StorageProfile(.+)
+    set:
+      parameter-name: $1
+  - where:
+      parameter-name: NetworkProfile(.+)
+    set:
+      parameter-name: $1
+  # Hide cmdlets for customizations
+  - where:
+      verb: Get
+      subject: AvailabilitySetAvailableSize
+    hide: true
+  - where:
+      verb: Get
+      subject: VMAvailableSize
+    hide: true
+  - where:
+      verb: Get
+      subject: VMExtensionImageVersion
+    hide: true
+  - where:
+      verb: Get
+      subject: VmssInstanceView
+    hide: true
+  - where:
+      verb: Get
+      subject: VmssOSUpgradeHistory
+    hide: true
+  - where:
+      verb: Get
+      subject: VmssVMInstanceView
+    hide: true
+  - where:
+      verb: Invoke
+      subject: DeallocateVM
+    hide: true
+  - where:
+      verb: Invoke
+      subject: DeallocateVmss
+    hide: true
+  - where:
+      verb: Invoke
+      subject: DeallocateVmssVM
+    hide: true
+  - where:
+      verb: Invoke
+      subject: PerformVMMaintenance
+    hide: true
+  - where:
+      verb: Invoke
+      subject: PerformVmssMaintenance
+    hide: true
+  - where:
+      verb: Invoke
+      subject: PerformVmssVMMaintenance
+    hide: true
+  - where:
+      verb: Invoke
+      subject: RedeployVmss
+    hide: true
+  - where:
+      verb: Invoke
+      subject: RedeployVmssVM
+    hide: true
+  - where:
+      verb: Invoke
+      subject: ViewVMInstance
+    hide: true
+  - where:
+      verb: Reset
+      subject: VM
+    hide: true
+# renaming variants [bug](https://github.com/Azure/autorest.powershell/issues/309)
+  - where: 
+      verb: Update
+      subject: VM
+      variant: ^Reimage.*$
+    set:
+      verb: Invoke
+      subject: VMReimage
+  - where: 
+      verb: Update
+      subject: Vmss
+      variant: ^Reimage.*$
+    set:
+      verb: Invoke
+      subject: VmssReimage
+  - where: 
+      verb: Update
+      subject: VmssVM
+      variant: ^Reimage.*$
+    set:
+      verb: Invoke
+      subject: VmssVMReimage
+# changing after variant change
+  - where:
+      verb: Invoke
+      subject: VmssVMReimage
+    set:
+      alias: Update-AzVmssVM
+  - where:
+      verb: Invoke
+      subject: VmssReimage
+    hide: true
 ```
