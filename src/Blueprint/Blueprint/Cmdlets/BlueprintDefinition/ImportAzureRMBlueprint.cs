@@ -41,6 +41,9 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
         [Parameter(ParameterSetName = ParameterSetNames.ImportBlueprintParameterSet, Mandatory = false, HelpMessage = ParameterHelpMessages.ForceHelpMessage)]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
         #endregion
 
         #region Cmdlet Overrides
@@ -52,6 +55,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
           
             ImportBlueprint(Name, scope, InputPath, Force);
             ImportArtifacts(Name, scope, InputPath);
+
+            if (PassThru.IsPresent)
+            {
+                WriteObject(true);
+            }
         }
         #endregion
     }

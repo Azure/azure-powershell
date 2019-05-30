@@ -18,7 +18,7 @@ Get-AzBlueprintArtifact [-Name <String>] -Blueprint <PSBlueprintBase> [-Blueprin
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Retrieve a blueprint artifact with its properties.
 
 ## EXAMPLES
 

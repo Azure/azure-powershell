@@ -115,13 +115,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
             this.ConfirmAction(
                 force || !BlueprintExists(scope, blueprintName),
-                string.Format(Resources.OverwriteUnpublishedChangesProcessMessage, blueprintName),
+                string.Format(Resources.OverwriteUnpublishedChangesProcessMessage, blueprintName, blueprintName),
                 Resources.OverwriteUnpublishedChangesContinueMessage,
                 blueprintName,
-                () => DeleteBlueprintArtifactsIfExist(scope, blueprintName)
+                () => CreateUpdateBlueprintWithArtifacts(scope, blueprintName, bpObject)
             );
-
-            BlueprintClient.CreateOrUpdateBlueprint(scope, blueprintName, bpObject);
         }
 
         protected bool BlueprintExists(string scope, string blueprintName)
@@ -187,18 +185,20 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 }
 
                 // Artifact name comes from the file name
-               BlueprintClient.CreateArtifact(scope, blueprintName, Path.GetFileNameWithoutExtension(artifactFile), artifactObject);
+                BlueprintClient.CreateArtifact(scope, blueprintName, Path.GetFileNameWithoutExtension(artifactFile), artifactObject);
             }
         }
 
-        private void DeleteBlueprintArtifactsIfExist(string scope, string blueprintName)
+        private void CreateUpdateBlueprintWithArtifacts(string scope, string blueprintName, BlueprintModel bpObject)
         {
-            // If blueprint doesn't exists, return
-            if (!BlueprintExists(scope, blueprintName)) return;
+            if (BlueprintExists(scope, blueprintName))
+            {
+                var artifactList = BlueprintClient.ListArtifacts(scope, blueprintName, null);
 
-            var artifactList = BlueprintClient.ListArtifacts(scope, blueprintName, null);
+                artifactList.ForEach(artifact => BlueprintClient.DeleteArtifact(scope, blueprintName, artifact.Name));
+            }
 
-            artifactList.ForEach(artifact => BlueprintClient.DeleteArtifact(scope, blueprintName, artifact.Name));
+            BlueprintClient.CreateOrUpdateBlueprint(scope, blueprintName, bpObject);
         }
 
 
