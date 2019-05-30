@@ -22,7 +22,7 @@
                 <PropertyName>SubscriptionId</PropertyName>
                 <ItemSelectionCondition>
                   <ScriptBlock>
-                    $_.SubscriptionId -ne $null -and $_.SubscriptionId -ne &quot;&quot;
+                    -not ([string]::IsNullOrEmpty($_.SubscriptionId))
                   </ScriptBlock>
                 </ItemSelectionCondition>
               </ListItem>
@@ -30,7 +30,7 @@
                 <PropertyName>ManagementGroupId</PropertyName>
                 <ItemSelectionCondition>
                   <ScriptBlock>
-                    $_.ManagementGroupId -ne $null -and $_.ManagementGroupId -ne &quot;&quot;
+                    -not ([string]::IsNullOrEmpty($_.ManagementGroupId))
                   </ScriptBlock>
                 </ItemSelectionCondition>
               </ListItem>
@@ -42,7 +42,7 @@
                 <PropertyName>Description</PropertyName>
                 <ItemSelectionCondition>
                   <ScriptBlock>
-                    $_.Description -ne $null -and $_.Description -ne &quot;&quot;
+                    -not ([string]::IsNullOrEmpty($_.Description))
                   </ScriptBlock>
                 </ItemSelectionCondition>
               </ListItem>
@@ -50,7 +50,7 @@
                 <PropertyName>ChangeNotes</PropertyName>
                 <ItemSelectionCondition>
                   <ScriptBlock>
-                    $_.ChangeNotes -ne $null -and $_.ChangeNotes -ne &quot;&quot;
+                    -not ([string]::IsNullOrEmpty($_.ChangeNotes))
                   </ScriptBlock>
                 </ItemSelectionCondition>
               </ListItem>
@@ -96,7 +96,7 @@
                 <PropertyName>SubscriptionId</PropertyName>
                 <ItemSelectionCondition>
                   <ScriptBlock>
-                    $_.SubscriptionId -ne $null -and $_.SubscriptionId -ne &quot;&quot;
+                    -not ([string]::IsNullOrEmpty($_.SubscriptionId))
                   </ScriptBlock>
                 </ItemSelectionCondition>
               </ListItem>
@@ -104,7 +104,7 @@
                 <PropertyName>ManagementGroupId</PropertyName>
                 <ItemSelectionCondition>
                   <ScriptBlock>
-                    $_.ManagementGroupId -ne $null -and $_.ManagementGroupId -ne &quot;&quot;
+                    -not ([string]::IsNullOrEmpty($_.ManagementGroupId))
                   </ScriptBlock>
                 </ItemSelectionCondition>
               </ListItem>
@@ -116,7 +116,7 @@
                 <PropertyName>Description</PropertyName>
                 <ItemSelectionCondition>
                   <ScriptBlock>
-                    $_.Description -ne $null -and $_.Description -ne &quot;&quot;
+                    -not ([string]::IsNullOrEmpty($_.Description))
                   </ScriptBlock>
                 </ItemSelectionCondition>
               </ListItem>
@@ -166,7 +166,7 @@
                 <PropertyName>Description</PropertyName>
                 <ItemSelectionCondition>
                   <ScriptBlock>
-                    $_.Description -ne $null -and $_.Description -ne &quot;&quot;
+                    -not ([string]::IsNullOrEmpty($_.Description))
                   </ScriptBlock>
                 </ItemSelectionCondition>
               </ListItem>

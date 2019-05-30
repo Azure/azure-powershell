@@ -30,6 +30,7 @@ using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.Common.Authentication;
 using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
@@ -75,31 +76,24 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             HttpResponseMessage httpResponse = null;
             string responseContent = null;
 
-            try
+
+            using (HttpClient client = new HttpClient())
             {
-                using (HttpClient client = new HttpClient())
+                await ClientCredentials.ProcessHttpRequestAsync(httpRequest, new CancellationToken(false)).ConfigureAwait(false);
+                httpResponse = await client.SendAsync(httpRequest, new CancellationToken(false));
+
+                HttpStatusCode statusCode = httpResponse.StatusCode;
+                // If we can't find the given subscription in the tenant, show error message.
+                if (statusCode == HttpStatusCode.NotFound)
                 {
-                    await ClientCredentials.ProcessHttpRequestAsync(httpRequest, new CancellationToken(false)).ConfigureAwait(false);
-                    httpResponse = await client.SendAsync(httpRequest, new CancellationToken(false));
-
-                    HttpStatusCode statusCode = httpResponse.StatusCode;
-                    // If we can't find the given subscription in the tenant, show error message.
-                    if (statusCode == HttpStatusCode.NotFound)
-                    {
-                        CloudException cex = new CloudException(string.Format("Subscription Id '{0}' could not be found in current tenant.", subscriptionId));
-                        throw cex;
-                    }
-
-                    responseContent = httpResponse.EnsureSuccessStatusCode().Content.ReadAsStringAsync().Result;
+                    CloudException cex = new CloudException(string.Format("Subscription Id '{0}' could not be found in current tenant.", subscriptionId));
+                    throw cex;
                 }
-                return responseContent;
 
+                responseContent = httpResponse.EnsureSuccessStatusCode().Content.ReadAsStringAsync().Result;
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-                throw;
-            }
+            return responseContent;
+
         }
 
         protected string FormatManagementGroupAncestorScope(string mg) => string.Format(BlueprintConstants.ManagementGroupScope, mg);
@@ -111,7 +105,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             BlueprintModel bpObject;
             try
             {
-                bpObject = JsonConvert.DeserializeObject<BlueprintModel>(File.ReadAllText(blueprintPath),
+                bpObject = JsonConvert.DeserializeObject<BlueprintModel>(AzureSession.Instance.DataStore.ReadFileAsText(blueprintPath),
                     DefaultJsonSettings.DeserializerSettings);
             }
             catch (Exception ex)
@@ -157,9 +151,9 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         {
             var folderPath = Path.Combine(path, folderName);
 
-            if (!Directory.Exists(folderPath))
+            if (!AzureSession.Instance.DataStore.DirectoryExists(folderPath))
             {
-                Directory.CreateDirectory(folderPath);
+                AzureSession.Instance.DataStore.CreateDirectory(folderPath);
             }
 
             return folderPath;
@@ -171,26 +165,29 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
             var artifactsPath = GetValidatedFolderPath(inputPath, artifacts);
 
-            DirectoryInfo artifactsDirectory = new DirectoryInfo(artifactsPath);
-            FileInfo[] artifactsFiles = artifactsDirectory.GetFiles("*.json");
+            var artifactFiles = AzureSession.Instance.DataStore.GetFiles(artifactsPath, "*.json", SearchOption.TopDirectoryOnly);
 
-            foreach (var artifactFile in artifactsFiles)
+            // To-Do - Remove this before release.
+            /*DirectoryInfo artifactsDirectory = new DirectoryInfo(artifactsPath);
+            FileInfo[] artifactsFiles = artifactsDirectory.GetFiles("*.json");*/
+
+            foreach (var artifactFile in artifactFiles)
             {
                 Artifact artifactObject;
 
                 try
                 {
                     artifactObject = JsonConvert.DeserializeObject<Artifact>(
-                        File.ReadAllText(ResolveUserPath(artifactFile.FullName)),
+                        AzureSession.Instance.DataStore.ReadFileAsText(ResolveUserPath(artifactFile)),
                         DefaultJsonSettings.DeserializerSettings);
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception(string.Format(Resources.CantDeserializeJson, artifactFile.FullName, ex.Message));
+                    throw new Exception(string.Format(Resources.CantDeserializeJson, artifactFile, ex.Message));
                 }
 
                 // Artifact name comes from the file name
-                BlueprintClient.CreateArtifact(scope, blueprintName, Path.GetFileNameWithoutExtension(artifactFile.Name), artifactObject);
+               BlueprintClient.CreateArtifact(scope, blueprintName, Path.GetFileNameWithoutExtension(artifactFile), artifactObject);
             }
         }
 
@@ -208,7 +205,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         protected BlueprintModel CreateBlueprint(string filePath)
         {
             // To-Do: In good case the JSON file will be deserialized, though it might throw. Then we'll relay that to the user.
-            return JsonConvert.DeserializeObject<BlueprintModel>(File.ReadAllText(filePath),
+            return JsonConvert.DeserializeObject<BlueprintModel>(AzureSession.Instance.DataStore.ReadFileAsText(filePath),
                 DefaultJsonSettings.DeserializerSettings);
         }
 
