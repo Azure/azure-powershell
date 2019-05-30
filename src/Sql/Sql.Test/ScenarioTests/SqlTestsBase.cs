@@ -31,6 +31,8 @@ using Microsoft.Azure.Management.EventHub;
 using Microsoft.Azure.Management.OperationalInsights;
 using SDKMonitor = Microsoft.Azure.Management.Monitor;
 using CommonMonitor = Microsoft.Azure.Management.Monitor.Version2018_09_01;
+using Microsoft.Azure.Graph.RBAC;
+using Microsoft.Azure.Management.KeyVault;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
@@ -124,6 +126,19 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         protected ResourceManagementClient GetResourcesClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected GraphRbacManagementClient GetGraphClient(MockContext context)
+        {
+            GraphRbacManagementClient graphClient = context.GetServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            graphClient.BaseUri = TestEnvironmentFactory.GetTestEnvironment().Endpoints.GraphUri;
+            graphClient.TenantID = TestEnvironmentFactory.GetTestEnvironment().Tenant;
+            return graphClient;
+        }
+
+        protected KeyVaultManagementClient GetKeyVaultClient(MockContext context)
+        {
+            return context.GetServiceClient<KeyVaultManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         protected NetworkManagementClient GetNetworkClient(MockContext context)
