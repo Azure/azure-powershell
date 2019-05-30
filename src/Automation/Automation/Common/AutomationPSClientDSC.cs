@@ -578,11 +578,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
                 Rest.Azure.IPage<AutomationManagement.Models.DscNode> response;
 
+                ODataQuery<DscNode> oDataFilter = new ODataQuery<DscNode>();
+                oDataFilter.Filter = "name eq '" + nodeName + "'";
+
                 if (string.IsNullOrEmpty(nextLink))
                 {
                     response = this.automationManagementClient.DscNode.ListByAutomationAccount(
                                     resourceGroupName,
-                                    automationAccountName);
+                                    automationAccountName,
+                                    oDataFilter);
                 }
                 else
                 {
@@ -591,7 +595,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
                 nextLink = response.NextPageLink;
 
-                return response.Select(dscNode => new Model.DscNode(resourceGroupName, automationAccountName, dscNode));
+              return response.Select(dscNode => new Model.DscNode(resourceGroupName, automationAccountName, dscNode));
             }
         }
 
@@ -981,7 +985,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
                 };
 
-                var job = this.automationManagementClient.DscCompilationJob.Create(resourceGroupName, automationAccountName, Guid.NewGuid().ToString(), createJobParameters);
+                string jobId = Guid.NewGuid().ToString();
+
+                DscCompilationJob job = this.automationManagementClient.DscCompilationJob.BeginCreate(resourceGroupName, automationAccountName, jobId, createJobParameters);
 
                 return new Model.CompilationJob(resourceGroupName, automationAccountName, job);
             }
