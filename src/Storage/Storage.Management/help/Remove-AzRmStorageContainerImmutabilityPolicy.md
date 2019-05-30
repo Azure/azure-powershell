@@ -38,7 +38,7 @@ Remove-AzRmStorageContainerImmutabilityPolicy [-InputObject] <PSImmutabilityPoli
 ```
 
 ## DESCRIPTION
-The **Remove-AzRmStorageContainerImmutabilityPolicy** cmdlet removes removes ImmutabilityPolicy of a Storage blob container with an unlocked policy.
+The **Remove-AzRmStorageContainerImmutabilityPolicy** cmdlet removes ImmutabilityPolicy of a Storage blob container with an unlocked policy.
 
 ## EXAMPLES
 
