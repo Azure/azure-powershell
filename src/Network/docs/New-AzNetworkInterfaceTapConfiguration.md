@@ -12,11 +12,12 @@ Creates or updates a Tap configuration in the specified NetworkInterface.
 
 ## SYNTAX
 
-### CreateSubscriptionIdViaHost (Default)
+### Create (Default)
 ```
 New-AzNetworkInterfaceTapConfiguration -NetworkInterfaceName <String> -ResourceGroupName <String>
- -TapConfigurationName <String> [-TapConfigurationParameter <INetworkInterfaceTapConfiguration>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SubscriptionId <String> -TapConfigurationName <String>
+ [-TapConfigurationParameter <INetworkInterfaceTapConfiguration>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -27,20 +28,18 @@ New-AzNetworkInterfaceTapConfiguration -NetworkInterfaceName <String> -ResourceG
  [<CommonParameters>]
 ```
 
-### Create
+### CreateViaIdentityExpanded
 ```
-New-AzNetworkInterfaceTapConfiguration -NetworkInterfaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -TapConfigurationName <String>
- [-TapConfigurationParameter <INetworkInterfaceTapConfiguration>] [-DefaultProfile <PSObject>] [-AsJob]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzNetworkInterfaceTapConfiguration -InputObject <INetworkIdentity> [-Etag <String>] [-Id <String>]
+ [-Name <String>] [-VirtualNetworkTap <IVirtualNetworkTap>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### CreateSubscriptionIdViaHostExpanded
+### CreateViaIdentity
 ```
-New-AzNetworkInterfaceTapConfiguration -NetworkInterfaceName <String> -ResourceGroupName <String>
- -TapConfigurationName <String> [-Etag <String>] [-Id <String>] [-Name <String>]
- [-VirtualNetworkTap <IVirtualNetworkTap>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzNetworkInterfaceTapConfiguration -InputObject <INetworkIdentity>
+ [-TapConfigurationParameter <INetworkInterfaceTapConfiguration>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,7 +91,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -107,7 +106,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -117,13 +116,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the resource that is unique within a resource group.
 This name can be used to access the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -138,7 +152,7 @@ The name of the network interface.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -153,7 +167,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -169,7 +183,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -184,7 +198,7 @@ The name of the tap configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -199,7 +213,7 @@ Tap configuration in a Network Interface
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterfaceTapConfiguration
-Parameter Sets: CreateSubscriptionIdViaHost, Create
+Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
 Required: False
@@ -214,7 +228,7 @@ The reference of the Virtual Network Tap resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetworkTap
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False

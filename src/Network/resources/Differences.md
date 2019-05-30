@@ -34,21 +34,13 @@
 - Get-AzExpressRouteCrossConnectionRouteTableSummary
     - ExpressRouteCrossConnection
     - PeeringType
-- Get-AzExpressRouteGateway
-    - ResourceId
-- Get-AzExpressRoutePort
-    - ResourceId
-- Get-AzInterfaceEndpoint
-    - ResourceId
 - Get-AzLoadBalancer
     - ExpandResource
 - Get-AzNetworkInterface
     - VirtualMachineScaleSetName
     - VirtualMachineIndex
-    - ResourceId
     - ExpandResource
 - Get-AzNetworkProfile
-    - ResourceId
     - ExpandResource
 - Get-AzNetworkSecurityGroup
     - ExpandResource
@@ -74,14 +66,10 @@
     - NetworkInterfaceName
     - IpConfigurationName
     - ExpandResource
-- Get-AzPublicIPPrefix
-    - ResourceId
 - Get-AzRouteFilter
     - ExpandResource
 - Get-AzRouteTable
     - ExpandResource
-- Get-AzServiceEndpointPolicy
-    - ResourceId
 - Get-AzServiceEndpointPolicyDefinition
     - ServiceEndpointPolicy
 - Get-AzVirtualNetwork
@@ -90,7 +78,6 @@
     - Name
 - Get-AzVirtualNetworkTap
     - Name
-    - ResourceId
 - Get-AzVpnConnection
     - ParentResourceName
     - ParentObject
@@ -139,7 +126,6 @@
     - VirtualHub
     - VirtualHubName
 - New-AzExpressRoutePort
-    - ResourceId
     - BandwidthInGbps
     - Force
 - New-AzLoadBalancer
@@ -201,6 +187,7 @@
 - New-AzVirtualNetwork
     - AddressPrefix
     - DnsServer
+    - DdosProtectionPlanId
     - Force
 - New-AzVirtualNetworkGateway
     - IpConfigurations
@@ -263,8 +250,6 @@
     - ExpressRouteCircuit
 - Remove-AzExpressRouteConnection
     - Name
-    - ResourceId
-    - InputObject
     - Force
 - Remove-AzExpressRouteCrossConnectionPeering
     - ExpressRouteCrossConnection
@@ -272,12 +257,8 @@
     - PeerAddressType
     - Force
 - Remove-AzExpressRouteGateway
-    - InputObject
-    - ResourceId
     - Force
 - Remove-AzExpressRoutePort
-    - InputObject
-    - ResourceId
     - Force
 - Remove-AzLoadBalancer
     - Force
@@ -286,8 +267,6 @@
 - Remove-AzNetworkInterface
     - Force
 - Remove-AzNetworkProfile
-    - ResourceId
-    - InputObject
     - Force
     - AsJob
 - Remove-AzNetworkSecurityGroup
@@ -298,24 +277,16 @@
 - Remove-AzPublicIPAddress
     - Force
 - Remove-AzPublicIPPrefix
-    - ResourceId
-    - InputObject
     - Force
 - Remove-AzRouteFilter
     - Force
 - Remove-AzRouteTable
     - Force
 - Remove-AzServiceEndpointPolicy
-    - ResourceId
-    - InputObject
     - Force
 - Remove-AzServiceEndpointPolicyDefinition
-    - ResourceId
-    - InputObject
     - ServiceEndpointPolicy
 - Remove-AzVirtualHub
-    - ResourceId
-    - InputObject
     - Force
 - Remove-AzVirtualNetwork
     - Force
@@ -327,27 +298,17 @@
     - Force
 - Remove-AzVirtualNetworkTap
     - Name
-    - ResourceId
-    - InputObject
     - Force
 - Remove-AzVirtualWan
-    - InputObject
-    - ResourceId
     - Force
 - Remove-AzVpnConnection
     - ParentResourceName
     - Name
-    - ResourceId
-    - InputObject
     - Force
 - Remove-AzVpnGateway
     - Name
-    - InputObject
-    - ResourceId
     - Force
 - Remove-AzVpnSite
-    - InputObject
-    - ResourceId
     - Force
 - Reset-AzVirtualNetworkGateway
     - VirtualNetworkGateway
@@ -358,9 +319,6 @@
     - ApplicationGateway
 - Set-AzExpressRouteCircuit
     - ExpressRouteCircuit
-- Set-AzExpressRouteConnection
-    - ResourceId
-    - InputObject
 - Set-AzExpressRouteCrossConnection
     - ExpressRouteCrossConnection
     - Name
@@ -368,12 +326,8 @@
     - Peerings
     - Force
 - Set-AzExpressRouteGateway
-    - InputObject
-    - ResourceId
     - MinScaleUnits
     - MaxScaleUnits
-- Set-AzExpressRoutePort
-    - ExpressRoutePort
 - Set-AzLoadBalancer
     - LoadBalancer
 - Set-AzLocalNetworkGateway
@@ -449,9 +403,14 @@
 - Get-AzApplicationSecurityGroup
 - Get-AzBgpServiceCommunity
 - Get-AzDdosProtectionPlan
+- Get-AzExpressRouteGateway
+- Get-AzExpressRoutePort
 - Get-AzExpressRoutePortsLocation
 - Get-AzExpressRouteServiceProvider
+- Get-AzInterfaceEndpoint
 - Get-AzLocalNetworkGateway
+- Get-AzPublicIPPrefix
+- Get-AzServiceEndpointPolicy
 - Get-AzVirtualHub
 - Get-AzVirtualNetworkGateway
 - Get-AzVirtualNetworkGatewayAdvertisedRoute
@@ -466,6 +425,8 @@
 - New-AzServiceEndpointPolicyDefinition
 - New-AzVirtualWan
 - Remove-AzDdosProtectionPlan
+- Set-AzExpressRouteConnection
+- Set-AzExpressRoutePort
 - Set-AzPublicIPAddress
 - Set-AzVirtualNetworkTap
 

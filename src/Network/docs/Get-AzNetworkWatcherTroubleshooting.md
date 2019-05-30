@@ -12,32 +12,30 @@ Initiate troubleshooting on a specified resource
 
 ## SYNTAX
 
-### GetSubscriptionIdViaHost (Default)
+### Get (Default)
 ```
 Get-AzNetworkWatcherTroubleshooting -NetworkWatcherName <String> -ResourceGroupName <String>
- [-Parameter <ITroubleshootingParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -SubscriptionId <String[]> [-Parameter <ITroubleshootingParameters>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetExpanded
 ```
 Get-AzNetworkWatcherTroubleshooting -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -StorageId <String> -StoragePath <String> -TargetResourceId <String>
+ -SubscriptionId <String[]> -StorageId <String> -StoragePath <String> -TargetResourceId <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Get
+### GetViaIdentityExpanded
 ```
-Get-AzNetworkWatcherTroubleshooting -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Parameter <ITroubleshootingParameters>] [-DefaultProfile <PSObject>] [-AsJob]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzNetworkWatcherTroubleshooting -InputObject <INetworkIdentity> -StorageId <String> -StoragePath <String>
+ -TargetResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### GetSubscriptionIdViaHostExpanded
+### GetViaIdentity
 ```
-Get-AzNetworkWatcherTroubleshooting -NetworkWatcherName <String> -ResourceGroupName <String>
- -StorageId <String> -StoragePath <String> -TargetResourceId <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzNetworkWatcherTroubleshooting -InputObject <INetworkIdentity> [-Parameter <ITroubleshootingParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,12 +82,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GetViaIdentityExpanded, GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -NetworkWatcherName
 The name of the network watcher resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: True
@@ -104,7 +117,7 @@ Parameters that define the resource to troubleshoot.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ITroubleshootingParameters
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get, GetViaIdentity
 Aliases:
 
 Required: False
@@ -119,7 +132,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: True
@@ -134,7 +147,7 @@ The ID for the storage account to save the troubleshoot result.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetSubscriptionIdViaHostExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -149,7 +162,7 @@ The path to the blob to save the troubleshoot result in.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetSubscriptionIdViaHostExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -164,8 +177,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: GetExpanded, Get
+Type: System.String[]
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: True
@@ -180,7 +193,7 @@ The target resource to troubleshoot.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, GetSubscriptionIdViaHostExpanded
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: True

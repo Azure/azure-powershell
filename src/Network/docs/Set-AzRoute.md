@@ -1,6 +1,6 @@
 ---
 external help file: Az.Network-help.xml
-Module Name: Az.Network
+Module Name:
 online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azpublicipprefix
 schema: 2.0.0
 ---
@@ -12,10 +12,10 @@ Creates or updates a static or dynamic public IP prefix.
 
 ## SYNTAX
 
-### UpdateSubscriptionIdViaHost (Default)
+### Update (Default)
 ```
-Set-AzPublicIPPrefix -Name <String> -ResourceGroupName <String> [-Parameter <IPublicIPPrefix>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzPublicIPPrefix -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-Parameter <IPublicIPPrefix>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -28,18 +28,18 @@ Set-AzPublicIPPrefix -Name <String> -ResourceGroupName <String> -SubscriptionId 
  [<CommonParameters>]
 ```
 
-### Update
+### UpdateViaIdentityExpanded
 ```
-Set-AzPublicIPPrefix -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IPublicIPPrefix>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateSubscriptionIdViaHostExpanded
-```
-Set-AzPublicIPPrefix -Name <String> -ResourceGroupName <String> [-Etag <String>] [-IPPrefix <String>]
- [-IPTag <IIPTag[]>] [-Id <String>] [-Location <String>] [-PrefixLength <Int32>] [-ProvisioningState <String>]
+Set-AzPublicIPPrefix -InputObject <INetworkIdentity> [-Etag <String>] [-IPPrefix <String>] [-IPTag <IIPTag[]>]
+ [-Id <String>] [-Location <String>] [-PrefixLength <Int32>] [-ProvisioningState <String>]
  [-PublicIPAddress <IReferencedPublicIPAddress[]>] [-PublicIPAddressVersion <IPVersion>]
  [-ResourceGuid <String>] [-SkuName <PublicIPPrefixSkuName>] [-Tag <IResourceTags>] [-Zone <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Set-AzPublicIPPrefix -InputObject <INetworkIdentity> [-Parameter <IPublicIPPrefix>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -92,7 +92,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -107,7 +107,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -117,12 +117,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -IPPrefix
 The allocated Prefix
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -137,7 +152,7 @@ The list of tags associated with the public IP prefix.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IIPTag[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -152,7 +167,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -167,7 +182,7 @@ The name of the public IP prefix.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases: PublicIPPrefixName
 
 Required: True
@@ -182,7 +197,7 @@ Public IP prefix resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPublicIPPrefix
-Parameter Sets: UpdateSubscriptionIdViaHost, Update
+Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -197,7 +212,7 @@ The Length of the Public IP Prefix.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -213,7 +228,7 @@ Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -228,7 +243,7 @@ The list of all referenced PublicIPAddresses
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IReferencedPublicIPAddress[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -243,7 +258,7 @@ The public IP address version.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPVersion
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -258,7 +273,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -273,7 +288,7 @@ The resource GUID property of the public IP prefix resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -288,7 +303,7 @@ Name of a public IP prefix SKU.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.PublicIPPrefixSkuName
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -304,7 +319,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -318,8 +333,8 @@ Accept wildcard characters: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IResourceTags
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -334,7 +349,7 @@ A list of availability zones denoting the IP allocated for the resource needs to
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

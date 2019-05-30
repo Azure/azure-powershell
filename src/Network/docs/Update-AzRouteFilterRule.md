@@ -12,11 +12,11 @@ Updates a route in the specified route filter.
 
 ## SYNTAX
 
-### UpdateSubscriptionIdViaHost (Default)
+### Update (Default)
 ```
 Update-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -RuleName <String>
- [-Parameter <IPatchRouteFilterRule>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -SubscriptionId <String> [-Parameter <IPatchRouteFilterRule>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -26,18 +26,16 @@ Update-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -
  [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Update
+### UpdateViaIdentityExpanded
 ```
-Update-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -RuleName <String>
- -SubscriptionId <String> [-Parameter <IPatchRouteFilterRule>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzRouteFilterRule -InputObject <INetworkIdentity> -Access <Access> -Community <String[]> [-Id <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateSubscriptionIdViaHostExpanded
+### UpdateViaIdentity
 ```
-Update-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -RuleName <String>
- -Access <Access> -Community <String[]> [-Id <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzRouteFilterRule -InputObject <INetworkIdentity> [-Parameter <IPatchRouteFilterRule>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +57,7 @@ The access type of the rule.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.Access
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -91,7 +89,7 @@ e.g.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -121,7 +119,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -131,12 +129,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Parameter
 Route Filter Rule Resource
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPatchRouteFilterRule
-Parameter Sets: UpdateSubscriptionIdViaHost, Update
+Parameter Sets: Update, UpdateViaIdentity
 Aliases: RouteFilterRuleParameter
 
 Required: False
@@ -151,7 +164,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -166,7 +179,7 @@ The name of the route filter.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -181,7 +194,7 @@ The name of the route filter rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -197,7 +210,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True

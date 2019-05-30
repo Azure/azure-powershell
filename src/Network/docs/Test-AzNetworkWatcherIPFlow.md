@@ -12,9 +12,9 @@ Verify IP flow from the specified VM to a location given the currently configure
 
 ## SYNTAX
 
-### VerifySubscriptionIdViaHost (Default)
+### Verify (Default)
 ```
-Test-AzNetworkWatcherIPFlow -NetworkWatcherName <String> -ResourceGroupName <String>
+Test-AzNetworkWatcherIPFlow -NetworkWatcherName <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Parameter <IVerificationIPFlowParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -27,19 +27,18 @@ Test-AzNetworkWatcherIPFlow -NetworkWatcherName <String> -ResourceGroupName <Str
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Verify
+### VerifyViaIdentityExpanded
 ```
-Test-AzNetworkWatcherIPFlow -NetworkWatcherName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IVerificationIPFlowParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Test-AzNetworkWatcherIPFlow -InputObject <INetworkIdentity> -Direction <Direction> -LocalIPAddress <String>
+ -LocalPort <String> -Protocol <IPFlowProtocol> -RemoteIPAddress <String> -RemotePort <String>
+ [-TargetNicResourceId <String>] -TargetResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### VerifySubscriptionIdViaHostExpanded
+### VerifyViaIdentity
 ```
-Test-AzNetworkWatcherIPFlow -NetworkWatcherName <String> -ResourceGroupName <String> -Direction <Direction>
- -LocalIPAddress <String> -LocalPort <String> -Protocol <IPFlowProtocol> -RemoteIPAddress <String>
- -RemotePort <String> [-TargetNicResourceId <String>] -TargetResourceId <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Test-AzNetworkWatcherIPFlow -InputObject <INetworkIdentity> [-Parameter <IVerificationIPFlowParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,7 +90,7 @@ The direction of the packet represented as a 5-tuple.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.Direction
-Parameter Sets: VerifyExpanded, VerifySubscriptionIdViaHostExpanded
+Parameter Sets: VerifyExpanded, VerifyViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -101,13 +100,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: VerifyViaIdentityExpanded, VerifyViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -LocalIPAddress
 The local IP address.
 Acceptable values are valid IPv4 addresses.
 
 ```yaml
 Type: System.String
-Parameter Sets: VerifyExpanded, VerifySubscriptionIdViaHostExpanded
+Parameter Sets: VerifyExpanded, VerifyViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -124,7 +138,7 @@ Support for * for the source port, which depends on the direction.
 
 ```yaml
 Type: System.String
-Parameter Sets: VerifyExpanded, VerifySubscriptionIdViaHostExpanded
+Parameter Sets: VerifyExpanded, VerifyViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -139,7 +153,7 @@ The name of the network watcher.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Verify, VerifyExpanded
 Aliases:
 
 Required: True
@@ -154,7 +168,7 @@ Parameters that define the IP flow to be verified.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVerificationIPFlowParameters
-Parameter Sets: VerifySubscriptionIdViaHost, Verify
+Parameter Sets: Verify, VerifyViaIdentity
 Aliases:
 
 Required: False
@@ -169,7 +183,7 @@ Protocol to be verified on.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPFlowProtocol
-Parameter Sets: VerifyExpanded, VerifySubscriptionIdViaHostExpanded
+Parameter Sets: VerifyExpanded, VerifyViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -185,7 +199,7 @@ Acceptable values are valid IPv4 addresses.
 
 ```yaml
 Type: System.String
-Parameter Sets: VerifyExpanded, VerifySubscriptionIdViaHostExpanded
+Parameter Sets: VerifyExpanded, VerifyViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -202,7 +216,7 @@ Support for * for the source port, which depends on the direction.
 
 ```yaml
 Type: System.String
-Parameter Sets: VerifyExpanded, VerifySubscriptionIdViaHostExpanded
+Parameter Sets: VerifyExpanded, VerifyViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -217,7 +231,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Verify, VerifyExpanded
 Aliases:
 
 Required: True
@@ -233,7 +247,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: VerifyExpanded, Verify
+Parameter Sets: Verify, VerifyExpanded
 Aliases:
 
 Required: True
@@ -250,7 +264,7 @@ Otherwise optional).
 
 ```yaml
 Type: System.String
-Parameter Sets: VerifyExpanded, VerifySubscriptionIdViaHostExpanded
+Parameter Sets: VerifyExpanded, VerifyViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -265,7 +279,7 @@ The ID of the target resource to perform next-hop on.
 
 ```yaml
 Type: System.String
-Parameter Sets: VerifyExpanded, VerifySubscriptionIdViaHostExpanded
+Parameter Sets: VerifyExpanded, VerifyViaIdentityExpanded
 Aliases:
 
 Required: True

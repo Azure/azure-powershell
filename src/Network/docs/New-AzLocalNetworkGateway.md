@@ -12,35 +12,35 @@ Creates or updates a local network gateway in the specified resource group.
 
 ## SYNTAX
 
-### CreateSubscriptionIdViaHost (Default)
-```
-New-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> [-Parameter <ILocalNetworkGateway>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-BgpSettingsAsn <Int64>] [-BgpSettingsBgpPeeringAddress <String>] [-BgpSettingsPeerWeight <Int32>]
- [-Etag <String>] [-GatewayIPAddress <String>] [-Id <String>]
- [-LocalNetworkAddressSpaceAddressPrefix <String[]>] [-Location <String>] [-ResourceGuid <String>]
- [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Create
+### Create (Default)
 ```
 New-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Parameter <ILocalNetworkGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### CreateSubscriptionIdViaHostExpanded
+### CreateExpanded
 ```
-New-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> [-BgpSettingsAsn <Int64>]
- [-BgpSettingsBgpPeeringAddress <String>] [-BgpSettingsPeerWeight <Int32>] [-Etag <String>]
+New-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-BgpSettingAsn <Int64>] [-BgpSettingBgpPeeringAddress <String>] [-BgpSettingPeerWeight <Int32>]
+ [-Etag <String>] [-GatewayIPAddress <String>] [-Id <String>]
+ [-LocalNetworkAddressSpaceAddressPrefix <String[]>] [-Location <String>] [-ResourceGuid <String>]
+ [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzLocalNetworkGateway -InputObject <INetworkIdentity> [-BgpSettingAsn <Int64>]
+ [-BgpSettingBgpPeeringAddress <String>] [-BgpSettingPeerWeight <Int32>] [-Etag <String>]
  [-GatewayIPAddress <String>] [-Id <String>] [-LocalNetworkAddressSpaceAddressPrefix <String[]>]
  [-Location <String>] [-ResourceGuid <String>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzLocalNetworkGateway -InputObject <INetworkIdentity> [-Parameter <ILocalNetworkGateway>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,12 +72,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BgpSettingsAsn
+### -BgpSettingAsn
 The BGP speaker's ASN.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -87,12 +87,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BgpSettingsBgpPeeringAddress
+### -BgpSettingBgpPeeringAddress
 The BGP peering address and BGP identifier of this BGP speaker.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -102,12 +102,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BgpSettingsPeerWeight
+### -BgpSettingPeerWeight
 The weight added to routes learned from this BGP speaker.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -137,7 +137,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -152,7 +152,7 @@ IP address of local network gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -167,7 +167,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -177,12 +177,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -LocalNetworkAddressSpaceAddressPrefix
 A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -197,7 +212,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -212,7 +227,7 @@ The name of the local network gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases: LocalNetworkGatewayName
 
 Required: True
@@ -226,8 +241,8 @@ Accept wildcard characters: False
 A common class for general resource information
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ILocalNetworkGateway
-Parameter Sets: CreateSubscriptionIdViaHost, Create
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ILocalNetworkGateway
+Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
 Required: False
@@ -242,7 +257,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -257,7 +272,7 @@ The resource GUID property of the LocalNetworkGateway resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -273,7 +288,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -287,8 +302,8 @@ Accept wildcard characters: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IResourceTags
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -336,7 +351,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ILocalNetworkGateway
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ILocalNetworkGateway
 ## NOTES
 
 ## RELATED LINKS

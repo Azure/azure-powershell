@@ -12,9 +12,9 @@ Updates virtual wan p2s vpn gateway tags.
 
 ## SYNTAX
 
-### UpdateSubscriptionIdViaHost (Default)
+### Update (Default)
 ```
-Update-AzP2SVpnGatewayTag -GatewayName <String> -ResourceGroupName <String>
+Update-AzP2SVpnGatewayTag -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-P2SVpnGatewayParameters <ITagsObject>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -25,16 +25,15 @@ Update-AzP2SVpnGatewayTag -GatewayName <String> -ResourceGroupName <String> -Sub
  [-Tag <ITagsObjectTags>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Update
+### UpdateViaIdentityExpanded
 ```
-Update-AzP2SVpnGatewayTag -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-P2SVpnGatewayParameters <ITagsObject>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzP2SVpnGatewayTag -InputObject <INetworkIdentity> [-Tag <ITagsObjectTags>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateSubscriptionIdViaHostExpanded
+### UpdateViaIdentity
 ```
-Update-AzP2SVpnGatewayTag -GatewayName <String> -ResourceGroupName <String> [-Tag <ITagsObjectTags>]
+Update-AzP2SVpnGatewayTag -InputObject <INetworkIdentity> [-P2SVpnGatewayParameters <ITagsObject>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -87,7 +86,7 @@ The name of the gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -97,12 +96,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -P2SVpnGatewayParameters
 Tags object for patch operations.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ITagsObject
-Parameter Sets: UpdateSubscriptionIdViaHost, Update
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ITagsObject
+Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -117,7 +131,7 @@ The resource group name of the P2SVpnGateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -133,7 +147,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -147,8 +161,8 @@ Accept wildcard characters: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ITagsObjectTags
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ITagsObjectTags
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

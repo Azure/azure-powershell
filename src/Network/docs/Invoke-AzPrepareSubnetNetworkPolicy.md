@@ -12,12 +12,19 @@ Prepares a subnet by applying network intent policies.
 
 ## SYNTAX
 
-### PrepareSubscriptionIdViaHost (Default)
+### Prepare (Default)
 ```
-Invoke-AzPrepareSubnetNetworkPolicy -ResourceGroupName <String> -SubnetName <String>
+Invoke-AzPrepareSubnetNetworkPolicy -ResourceGroupName <String> -SubnetName <String> -SubscriptionId <String>
  -VirtualNetworkName <String> [-PassThru]
  [-PrepareNetworkPoliciesRequestParameter <IPrepareNetworkPoliciesRequest>] [-DefaultProfile <PSObject>]
  [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PrepareViaIdentityExpanded
+```
+Invoke-AzPrepareSubnetNetworkPolicy [-ResourceGroupName <String>] -InputObject <INetworkIdentity> [-PassThru]
+ [-NetworkIntentPolicyConfiguration <INetworkIntentPolicyConfiguration[]>] [-ServiceName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PrepareExpanded
@@ -28,20 +35,11 @@ Invoke-AzPrepareSubnetNetworkPolicy -ResourceGroupName <String> -SubnetName <Str
  [-ServiceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Prepare
+### PrepareViaIdentity
 ```
-Invoke-AzPrepareSubnetNetworkPolicy -ResourceGroupName <String> -SubnetName <String> -SubscriptionId <String>
- -VirtualNetworkName <String> [-PassThru]
+Invoke-AzPrepareSubnetNetworkPolicy -InputObject <INetworkIdentity> [-PassThru]
  [-PrepareNetworkPoliciesRequestParameter <IPrepareNetworkPoliciesRequest>] [-DefaultProfile <PSObject>]
  [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### PrepareSubscriptionIdViaHostExpanded
-```
-Invoke-AzPrepareSubnetNetworkPolicy -ResourceGroupName <String> -SubnetName <String>
- -VirtualNetworkName <String> [-PassThru]
- [-NetworkIntentPolicyConfiguration <INetworkIntentPolicyConfiguration[]>] [-ResourceGroupName1 <String>]
- [-ServiceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,12 +86,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: PrepareViaIdentityExpanded, PrepareViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -NetworkIntentPolicyConfiguration
 A list of NetworkIntentPolicyConfiguration.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkIntentPolicyConfiguration[]
-Parameter Sets: PrepareExpanded, PrepareSubscriptionIdViaHostExpanded
+Parameter Sets: PrepareViaIdentityExpanded, PrepareExpanded
 Aliases:
 
 Required: False
@@ -123,7 +136,7 @@ Details of PrepareNetworkPolicies for Subnet.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPrepareNetworkPoliciesRequest
-Parameter Sets: PrepareSubscriptionIdViaHost, Prepare
+Parameter Sets: Prepare, PrepareViaIdentity
 Aliases:
 
 Required: False
@@ -138,10 +151,22 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Prepare, PrepareExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: PrepareViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -153,7 +178,7 @@ The name of the resource group where the Network Intent Policy will be stored.
 
 ```yaml
 Type: System.String
-Parameter Sets: PrepareExpanded, PrepareSubscriptionIdViaHostExpanded
+Parameter Sets: PrepareExpanded
 Aliases:
 
 Required: False
@@ -168,7 +193,7 @@ The name of the service for which subnet is being prepared for.
 
 ```yaml
 Type: System.String
-Parameter Sets: PrepareExpanded, PrepareSubscriptionIdViaHostExpanded
+Parameter Sets: PrepareViaIdentityExpanded, PrepareExpanded
 Aliases:
 
 Required: False
@@ -183,7 +208,7 @@ The name of the subnet.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Prepare, PrepareExpanded
 Aliases:
 
 Required: True
@@ -199,7 +224,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: PrepareExpanded, Prepare
+Parameter Sets: Prepare, PrepareExpanded
 Aliases:
 
 Required: True
@@ -214,7 +239,7 @@ The name of the virtual network.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Prepare, PrepareExpanded
 Aliases:
 
 Required: True

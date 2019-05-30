@@ -12,10 +12,11 @@ Creates or updates a Virtual Network Tap.
 
 ## SYNTAX
 
-### UpdateSubscriptionIdViaHost (Default)
+### Update (Default)
 ```
-Set-AzVirtualNetworkTap -ResourceGroupName <String> -TapName <String> [-Parameter <IVirtualNetworkTap>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzVirtualNetworkTap -ResourceGroupName <String> -SubscriptionId <String> -TapName <String>
+ [-Parameter <IVirtualNetworkTap>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -26,53 +27,60 @@ Set-AzVirtualNetworkTap -ResourceGroupName <String> -SubscriptionId <String> -Ta
  [-DestinationLoadBalancerFrontEndIPConfigurationEtag <String>]
  [-DestinationLoadBalancerFrontEndIPConfigurationId <String>]
  [-DestinationLoadBalancerFrontEndIPConfigurationName <String>]
+ [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesPrivateIpaddress <String>]
+ [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesPrivateIpallocationMethod <IPAllocationMethod>]
+ [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesProvisioningState <String>]
+ [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesPublicIpaddress <IPublicIPAddress>]
+ [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesSubnet <ISubnet>]
  [-DestinationLoadBalancerFrontEndIPConfigurationZone <String[]>]
  [-DestinationNetworkInterfaceIPConfigurationEtag <String>]
  [-DestinationNetworkInterfaceIPConfigurationId <String>]
  [-DestinationNetworkInterfaceIPConfigurationName <String>]
- [-DestinationNetworkInterfaceIPConfigurationPropertiesSubnet1 <ISubnet>] [-DestinationPort <Int32>]
- [-Etag <String>] [-IPAllocationMethodPrivateIpallocationMethod <IPAllocationMethod>] [-Id <String>]
- [-LoadBalancerBackendAddressPool <IBackendAddressPool[]>] [-LoadBalancerInboundNatRule <IInboundNatRule[]>]
- [-Location <String>] [-NetworkInterfaceIPConfigurationPropertiesFormatPrivateIpaddress <String>]
- [-NetworkInterfaceIPConfigurationPropertiesFormatProvisioningState <String>] [-Primary <Boolean>]
- [-PrivateIPAddressVersion <IPVersion>] [-PropertiesPrivateIPAddress <String>]
- [-PropertiesPrivateIPAllocationMethod <IPAllocationMethod>] [-PropertiesProvisioningState <String>]
- [-PropertiesPublicIPAddress <IPublicIPAddress>] [-PropertiesSubnet <ISubnet>]
- [-PublicIPAddressPublicIpaddress <IPublicIPAddress>] [-PublicIPPrefixId <String>] [-Tag <IResourceTags>]
+ [-DestinationNetworkInterfaceIPConfigurationPropertiesPrivateIpaddress <String>]
+ [-DestinationNetworkInterfaceIPConfigurationPropertiesPrivateIpallocationMethod <IPAllocationMethod>]
+ [-DestinationNetworkInterfaceIPConfigurationPropertiesProvisioningState <String>]
+ [-DestinationNetworkInterfaceIPConfigurationPropertiesPublicIpaddress <IPublicIPAddress>]
+ [-DestinationNetworkInterfaceIPConfigurationPropertiesSubnet <ISubnet>] [-DestinationPort <Int32>]
+ [-Etag <String>] [-Id <String>] [-LoadBalancerBackendAddressPool <IBackendAddressPool[]>]
+ [-LoadBalancerInboundNatRule <IInboundNatRule[]>] [-Location <String>] [-Primary <Boolean>]
+ [-PrivateIPAddressVersion <IPVersion>] [-PublicIPPrefixId <String>] [-Tag <IResourceTags>]
  [-VirtualNetworkTap <IVirtualNetworkTap[]>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### Update
+### UpdateViaIdentityExpanded
 ```
-Set-AzVirtualNetworkTap -ResourceGroupName <String> -SubscriptionId <String> -TapName <String>
- [-Parameter <IVirtualNetworkTap>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### UpdateSubscriptionIdViaHostExpanded
-```
-Set-AzVirtualNetworkTap -ResourceGroupName <String> -TapName <String>
+Set-AzVirtualNetworkTap -InputObject <INetworkIdentity>
  [-ApplicationGatewayBackendAddressPool <IApplicationGatewayBackendAddressPool[]>]
  [-ApplicationSecurityGroup <IApplicationSecurityGroup[]>]
  [-DestinationLoadBalancerFrontEndIPConfigurationEtag <String>]
  [-DestinationLoadBalancerFrontEndIPConfigurationId <String>]
  [-DestinationLoadBalancerFrontEndIPConfigurationName <String>]
+ [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesPrivateIpaddress <String>]
+ [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesPrivateIpallocationMethod <IPAllocationMethod>]
+ [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesProvisioningState <String>]
+ [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesPublicIpaddress <IPublicIPAddress>]
+ [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesSubnet <ISubnet>]
  [-DestinationLoadBalancerFrontEndIPConfigurationZone <String[]>]
  [-DestinationNetworkInterfaceIPConfigurationEtag <String>]
  [-DestinationNetworkInterfaceIPConfigurationId <String>]
  [-DestinationNetworkInterfaceIPConfigurationName <String>]
- [-DestinationNetworkInterfaceIPConfigurationPropertiesSubnet1 <ISubnet>] [-DestinationPort <Int32>]
- [-Etag <String>] [-IPAllocationMethodPrivateIpallocationMethod <IPAllocationMethod>] [-Id <String>]
- [-LoadBalancerBackendAddressPool <IBackendAddressPool[]>] [-LoadBalancerInboundNatRule <IInboundNatRule[]>]
- [-Location <String>] [-NetworkInterfaceIPConfigurationPropertiesFormatPrivateIpaddress <String>]
- [-NetworkInterfaceIPConfigurationPropertiesFormatProvisioningState <String>] [-Primary <Boolean>]
- [-PrivateIPAddressVersion <IPVersion>] [-PropertiesPrivateIPAddress <String>]
- [-PropertiesPrivateIPAllocationMethod <IPAllocationMethod>] [-PropertiesProvisioningState <String>]
- [-PropertiesPublicIPAddress <IPublicIPAddress>] [-PropertiesSubnet <ISubnet>]
- [-PublicIPAddressPublicIpaddress <IPublicIPAddress>] [-PublicIPPrefixId <String>] [-Tag <IResourceTags>]
+ [-DestinationNetworkInterfaceIPConfigurationPropertiesPrivateIpaddress <String>]
+ [-DestinationNetworkInterfaceIPConfigurationPropertiesPrivateIpallocationMethod <IPAllocationMethod>]
+ [-DestinationNetworkInterfaceIPConfigurationPropertiesProvisioningState <String>]
+ [-DestinationNetworkInterfaceIPConfigurationPropertiesPublicIpaddress <IPublicIPAddress>]
+ [-DestinationNetworkInterfaceIPConfigurationPropertiesSubnet <ISubnet>] [-DestinationPort <Int32>]
+ [-Etag <String>] [-Id <String>] [-LoadBalancerBackendAddressPool <IBackendAddressPool[]>]
+ [-LoadBalancerInboundNatRule <IInboundNatRule[]>] [-Location <String>] [-Primary <Boolean>]
+ [-PrivateIPAddressVersion <IPVersion>] [-PublicIPPrefixId <String>] [-Tag <IResourceTags>]
  [-VirtualNetworkTap <IVirtualNetworkTap[]>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Set-AzVirtualNetworkTap -InputObject <INetworkIdentity> [-Parameter <IVirtualNetworkTap>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,7 +102,7 @@ The reference of ApplicationGatewayBackendAddressPool resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IApplicationGatewayBackendAddressPool[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -108,8 +116,8 @@ Accept wildcard characters: False
 Application security groups in which the IP configuration is included.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IApplicationSecurityGroup[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IApplicationSecurityGroup[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -154,7 +162,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -169,7 +177,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -185,7 +193,83 @@ This name can be used to access the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationLoadBalancerFrontEndIPConfigurationPropertiesPrivateIpaddress
+The private IP address of the IP configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationLoadBalancerFrontEndIPConfigurationPropertiesPrivateIpallocationMethod
+The Private IP allocation method.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPAllocationMethod
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationLoadBalancerFrontEndIPConfigurationPropertiesProvisioningState
+Gets the provisioning state of the public IP resource.
+Possible values are: 'Updating', 'Deleting', and 'Failed'.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationLoadBalancerFrontEndIPConfigurationPropertiesPublicIpaddress
+The reference of the Public IP resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPublicIPAddress
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationLoadBalancerFrontEndIPConfigurationPropertiesSubnet
+The reference of the subnet resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISubnet
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -200,7 +284,7 @@ A list of availability zones denoting the IP allocated for the resource needs to
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -215,7 +299,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -230,7 +314,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -246,7 +330,7 @@ This name can be used to access the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -256,12 +340,73 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DestinationNetworkInterfaceIPConfigurationPropertiesSubnet1
+### -DestinationNetworkInterfaceIPConfigurationPropertiesPrivateIpaddress
+Private IP address of the IP configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationNetworkInterfaceIPConfigurationPropertiesPrivateIpallocationMethod
+The private IP address allocation method.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPAllocationMethod
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationNetworkInterfaceIPConfigurationPropertiesProvisioningState
+The provisioning state of the network interface IP configuration.
+Possible values are: 'Updating', 'Deleting', and 'Failed'.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationNetworkInterfaceIPConfigurationPropertiesPublicIpaddress
+Public IP address bound to the IP configuration.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPublicIPAddress
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationNetworkInterfaceIPConfigurationPropertiesSubnet
 Subnet bound to the IP configuration.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISubnet
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -276,7 +421,7 @@ The VXLAN destination port that will receive the tapped traffic.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -291,7 +436,7 @@ Gets a unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -306,7 +451,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -316,18 +461,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IPAllocationMethodPrivateIpallocationMethod
-The private IP address allocation method.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPAllocationMethod
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -336,7 +481,7 @@ The reference of LoadBalancerBackendAddressPool resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IBackendAddressPool[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -351,7 +496,7 @@ A list of references of LoadBalancerInboundNatRules.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IInboundNatRule[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -366,38 +511,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NetworkInterfaceIPConfigurationPropertiesFormatPrivateIpaddress
-Private IP address of the IP configuration.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NetworkInterfaceIPConfigurationPropertiesFormatProvisioningState
-The provisioning state of the network interface IP configuration.
-Possible values are: 'Updating', 'Deleting', and 'Failed'.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -412,7 +526,7 @@ Virtual Network Tap resource
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetworkTap
-Parameter Sets: UpdateSubscriptionIdViaHost, Update
+Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -427,7 +541,7 @@ Gets whether this is a primary customer address on the network interface.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -443,98 +557,7 @@ Default is taken as IPv4.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPVersion
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PropertiesPrivateIPAddress
-The private IP address of the IP configuration.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PropertiesPrivateIPAllocationMethod
-The Private IP allocation method.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPAllocationMethod
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PropertiesProvisioningState
-Gets the provisioning state of the public IP resource.
-Possible values are: 'Updating', 'Deleting', and 'Failed'.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PropertiesPublicIPAddress
-The reference of the Public IP resource.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPublicIPAddress
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PropertiesSubnet
-The reference of the subnet resource.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISubnet
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PublicIPAddressPublicIpaddress
-Public IP address bound to the IP configuration.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPublicIPAddress
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -549,7 +572,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -564,7 +587,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -580,7 +603,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -594,8 +617,8 @@ Accept wildcard characters: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IResourceTags
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -610,7 +633,7 @@ The name of the virtual network tap.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -625,7 +648,7 @@ The reference to Virtual Network Taps.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetworkTap[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

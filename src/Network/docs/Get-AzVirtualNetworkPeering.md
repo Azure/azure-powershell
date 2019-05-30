@@ -12,28 +12,21 @@ Gets the specified virtual network peering.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
+### List (Default)
 ```
-Get-AzVirtualNetworkPeering -ResourceGroupName <String> -VirtualNetworkName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost
-```
-Get-AzVirtualNetworkPeering -Name <String> -ResourceGroupName <String> -VirtualNetworkName <String>
+Get-AzVirtualNetworkPeering -ResourceGroupName <String> -SubscriptionId <String[]> -VirtualNetworkName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzVirtualNetworkPeering -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Get-AzVirtualNetworkPeering -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  -VirtualNetworkName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### GetViaIdentity
 ```
-Get-AzVirtualNetworkPeering -ResourceGroupName <String> -SubscriptionId <String> -VirtualNetworkName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVirtualNetworkPeering -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,12 +58,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the virtual network peering.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get
 Aliases: VirtualNetworkPeeringName
 
 Required: True
@@ -85,7 +93,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -100,8 +108,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List
+Type: System.String[]
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -116,7 +124,7 @@ The name of the virtual network.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -133,7 +141,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetworkPeering
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkPeering
 ## NOTES
 
 ## RELATED LINKS

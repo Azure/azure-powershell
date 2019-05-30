@@ -12,11 +12,11 @@ Gives the sas-url to download the configurations for vpn-sites in a resource gro
 
 ## SYNTAX
 
-### DownloadSubscriptionIdViaHost (Default)
+### Download (Default)
 ```
-Invoke-AzDownloadVpnSiteConfiguration -ResourceGroupName <String> -VirtualWanName <String> [-PassThru]
- [-Request <IGetVpnSitesConfigurationRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Invoke-AzDownloadVpnSiteConfiguration -ResourceGroupName <String> -SubscriptionId <String>
+ -VirtualWanName <String> [-PassThru] [-Request <IGetVpnSitesConfigurationRequest>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DownloadExpanded
@@ -26,17 +26,16 @@ Invoke-AzDownloadVpnSiteConfiguration -ResourceGroupName <String> -SubscriptionI
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Download
+### DownloadViaIdentityExpanded
 ```
-Invoke-AzDownloadVpnSiteConfiguration -ResourceGroupName <String> -SubscriptionId <String>
- -VirtualWanName <String> [-PassThru] [-Request <IGetVpnSitesConfigurationRequest>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzDownloadVpnSiteConfiguration -InputObject <INetworkIdentity> [-PassThru] -OutputBlobSasUrl <String>
+ [-VpnSite <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DownloadSubscriptionIdViaHostExpanded
+### DownloadViaIdentity
 ```
-Invoke-AzDownloadVpnSiteConfiguration -ResourceGroupName <String> -VirtualWanName <String> [-PassThru]
- -OutputBlobSasUrl <String> [-VpnSite <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+Invoke-AzDownloadVpnSiteConfiguration -InputObject <INetworkIdentity> [-PassThru]
+ [-Request <IGetVpnSitesConfigurationRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -84,12 +83,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: DownloadViaIdentityExpanded, DownloadViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -OutputBlobSasUrl
 The sas-url to download the configurations for vpn-sites
 
 ```yaml
 Type: System.String
-Parameter Sets: DownloadExpanded, DownloadSubscriptionIdViaHostExpanded
+Parameter Sets: DownloadExpanded, DownloadViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -119,7 +133,7 @@ List of Vpn-Sites
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IGetVpnSitesConfigurationRequest
-Parameter Sets: DownloadSubscriptionIdViaHost, Download
+Parameter Sets: Download, DownloadViaIdentity
 Aliases:
 
 Required: False
@@ -134,7 +148,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Download, DownloadExpanded
 Aliases:
 
 Required: True
@@ -150,7 +164,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: DownloadExpanded, Download
+Parameter Sets: Download, DownloadExpanded
 Aliases:
 
 Required: True
@@ -165,7 +179,7 @@ The name of the VirtualWAN for which configuration of all vpn-sites is needed.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Download, DownloadExpanded
 Aliases:
 
 Required: True
@@ -180,7 +194,7 @@ List of resource-ids of the vpn-sites for which config is to be downloaded.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: DownloadExpanded, DownloadSubscriptionIdViaHostExpanded
+Parameter Sets: DownloadExpanded, DownloadViaIdentityExpanded
 Aliases:
 
 Required: False

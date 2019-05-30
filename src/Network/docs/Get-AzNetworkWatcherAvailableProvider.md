@@ -12,31 +12,17 @@ Lists all available internet service providers for a specified Azure region.
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
+### List (Default)
 ```
 Get-AzNetworkWatcherAvailableProvider -NetworkWatcherName <String> -ResourceGroupName <String>
- [-Parameter <IAvailableProvidersListParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -SubscriptionId <String[]> [-Parameter <IAvailableProvidersListParameters>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ListExpanded
 ```
 Get-AzNetworkWatcherAvailableProvider -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-AzureLocation <String[]>] [-City <String>] [-Country <String>] [-State <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzNetworkWatcherAvailableProvider -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Parameter <IAvailableProvidersListParameters>] [-DefaultProfile <PSObject>]
- [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ListSubscriptionIdViaHostExpanded
-```
-Get-AzNetworkWatcherAvailableProvider -NetworkWatcherName <String> -ResourceGroupName <String>
- [-AzureLocation <String[]>] [-City <String>] [-Country <String>] [-State <String>]
+ -SubscriptionId <String[]> [-AzureLocation <String[]>] [-City <String>] [-Country <String>] [-State <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -74,7 +60,7 @@ A list of Azure regions.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ListExpanded, ListSubscriptionIdViaHostExpanded
+Parameter Sets: ListExpanded
 Aliases:
 
 Required: False
@@ -89,7 +75,7 @@ The city or town for available providers list.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListExpanded, ListSubscriptionIdViaHostExpanded
+Parameter Sets: ListExpanded
 Aliases:
 
 Required: False
@@ -104,7 +90,7 @@ The country for available providers list.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListExpanded, ListSubscriptionIdViaHostExpanded
+Parameter Sets: ListExpanded
 Aliases:
 
 Required: False
@@ -149,7 +135,7 @@ Constraints that determine the list of available Internet service providers.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAvailableProvidersListParameters
-Parameter Sets: ListSubscriptionIdViaHost, List
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -179,7 +165,7 @@ The state for available providers list.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListExpanded, ListSubscriptionIdViaHostExpanded
+Parameter Sets: ListExpanded
 Aliases:
 
 Required: False
@@ -194,8 +180,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: ListExpanded, List
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True

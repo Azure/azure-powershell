@@ -12,42 +12,18 @@ Creates or updates a virtual network gateway in the specified resource group.
 
 ## SYNTAX
 
-### CreateSubscriptionIdViaHost (Default)
-```
-New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> [-Parameter <IVirtualNetworkGateway>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Active <Boolean>] [-BgpSettingsAsn <Int64>] [-BgpSettingsBgpPeeringAddress <String>]
- [-BgpSettingsPeerWeight <Int32>] [-CustomRoutesAddressPrefix <String[]>] [-EnableBgp <Boolean>]
- [-Etag <String>] [-GatewayDefaultSiteId <String>] [-GatewayType <VirtualNetworkGatewayType>]
- [-IPConfiguration <IVirtualNetworkGatewayIPConfiguration[]>] [-Id <String>] [-Location <String>]
- [-ResourceGuid <String>] [-SkuCapacity <Int32>] [-SkuName <VirtualNetworkGatewaySkuName>]
- [-SkuTier <VirtualNetworkGatewaySkuTier>] [-Tag <IResourceTags>]
- [-VpnClientAddressPoolAddressPrefix <String[]>] [-VpnClientConfigurationRadiusServerAddress <String>]
- [-VpnClientConfigurationRadiusServerSecret <String>]
- [-VpnClientConfigurationVpnClientIpsecPolicy <IIpsecPolicy[]>]
- [-VpnClientConfigurationVpnClientProtocol <VpnClientProtocol[]>]
- [-VpnClientConfigurationVpnClientRevokedCertificate <IVpnClientRevokedCertificate[]>]
- [-VpnClientConfigurationVpnClientRootCertificate <IVpnClientRootCertificate[]>] [-VpnType <VpnType>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Create
+### Create (Default)
 ```
 New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Parameter <IVirtualNetworkGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### CreateSubscriptionIdViaHostExpanded
+### CreateExpanded
 ```
-New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> [-Active <Boolean>]
- [-BgpSettingsAsn <Int64>] [-BgpSettingsBgpPeeringAddress <String>] [-BgpSettingsPeerWeight <Int32>]
- [-CustomRoutesAddressPrefix <String[]>] [-EnableBgp <Boolean>] [-Etag <String>]
+New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-Active <Boolean>] [-BgpSettingAsn <Int64>] [-BgpSettingBgpPeeringAddress <String>]
+ [-BgpSettingPeerWeight <Int32>] [-CustomRouteAddressPrefix <String[]>] [-EnableBgp <Boolean>] [-Etag <String>]
  [-GatewayDefaultSiteId <String>] [-GatewayType <VirtualNetworkGatewayType>]
  [-IPConfiguration <IVirtualNetworkGatewayIPConfiguration[]>] [-Id <String>] [-Location <String>]
  [-ResourceGuid <String>] [-SkuCapacity <Int32>] [-SkuName <VirtualNetworkGatewaySkuName>]
@@ -58,6 +34,29 @@ New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> [-Active 
  [-VpnClientConfigurationVpnClientProtocol <VpnClientProtocol[]>]
  [-VpnClientConfigurationVpnClientRevokedCertificate <IVpnClientRevokedCertificate[]>]
  [-VpnClientConfigurationVpnClientRootCertificate <IVpnClientRootCertificate[]>] [-VpnType <VpnType>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzVirtualNetworkGateway -InputObject <INetworkIdentity> [-Active <Boolean>] [-BgpSettingAsn <Int64>]
+ [-BgpSettingBgpPeeringAddress <String>] [-BgpSettingPeerWeight <Int32>] [-CustomRouteAddressPrefix <String[]>]
+ [-EnableBgp <Boolean>] [-Etag <String>] [-GatewayDefaultSiteId <String>]
+ [-GatewayType <VirtualNetworkGatewayType>] [-IPConfiguration <IVirtualNetworkGatewayIPConfiguration[]>]
+ [-Id <String>] [-Location <String>] [-ResourceGuid <String>] [-SkuCapacity <Int32>]
+ [-SkuName <VirtualNetworkGatewaySkuName>] [-SkuTier <VirtualNetworkGatewaySkuTier>] [-Tag <IResourceTags>]
+ [-VpnClientAddressPoolAddressPrefix <String[]>] [-VpnClientConfigurationRadiusServerAddress <String>]
+ [-VpnClientConfigurationRadiusServerSecret <String>]
+ [-VpnClientConfigurationVpnClientIpsecPolicy <IIpsecPolicy[]>]
+ [-VpnClientConfigurationVpnClientProtocol <VpnClientProtocol[]>]
+ [-VpnClientConfigurationVpnClientRevokedCertificate <IVpnClientRevokedCertificate[]>]
+ [-VpnClientConfigurationVpnClientRootCertificate <IVpnClientRootCertificate[]>] [-VpnType <VpnType>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzVirtualNetworkGateway -InputObject <INetworkIdentity> [-Parameter <IVirtualNetworkGateway>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -80,7 +79,7 @@ ActiveActive flag
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -105,12 +104,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BgpSettingsAsn
+### -BgpSettingAsn
 The BGP speaker's ASN.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -120,12 +119,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BgpSettingsBgpPeeringAddress
+### -BgpSettingBgpPeeringAddress
 The BGP peering address and BGP identifier of this BGP speaker.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -135,12 +134,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BgpSettingsPeerWeight
+### -BgpSettingPeerWeight
 The weight added to routes learned from this BGP speaker.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -150,12 +149,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CustomRoutesAddressPrefix
+### -CustomRouteAddressPrefix
 A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -185,7 +184,7 @@ Whether BGP is enabled for this virtual network gateway or not.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -200,7 +199,7 @@ Gets a unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -215,7 +214,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -231,7 +230,7 @@ Possible values are: 'Vpn' and 'ExpressRoute'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.VirtualNetworkGatewayType
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -246,7 +245,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -256,12 +255,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -IPConfiguration
 IP configurations for virtual network gateway.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetworkGatewayIPConfiguration[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkGatewayIPConfiguration[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -276,7 +290,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -291,7 +305,7 @@ The name of the virtual network gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases: VirtualNetworkGatewayName
 
 Required: True
@@ -306,7 +320,7 @@ A common class for general resource information
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetworkGateway
-Parameter Sets: CreateSubscriptionIdViaHost, Create
+Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
 Required: False
@@ -321,7 +335,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -336,7 +350,7 @@ The resource GUID property of the VirtualNetworkGateway resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -351,7 +365,7 @@ The capacity.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -366,7 +380,7 @@ Gateway SKU name.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.VirtualNetworkGatewaySkuName
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -381,7 +395,7 @@ Gateway SKU tier.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.VirtualNetworkGatewaySkuTier
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -397,7 +411,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -411,8 +425,8 @@ Accept wildcard characters: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IResourceTags
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -427,7 +441,7 @@ A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -442,7 +456,7 @@ The radius server address property of the VirtualNetworkGateway resource for vpn
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -457,7 +471,7 @@ The radius secret property of the VirtualNetworkGateway resource for vpn client 
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -472,7 +486,7 @@ VpnClientIpsecPolicies for virtual network gateway P2S client.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IIpsecPolicy[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -487,7 +501,7 @@ VpnClientProtocols for Virtual network gateway.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.VpnClientProtocol[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -501,8 +515,8 @@ Accept wildcard characters: False
 VpnClientRevokedCertificate for Virtual network gateway.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnClientRevokedCertificate[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnClientRevokedCertificate[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -516,8 +530,8 @@ Accept wildcard characters: False
 VpnClientRootCertificate for virtual network gateway.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnClientRootCertificate[]
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnClientRootCertificate[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -533,7 +547,7 @@ Possible values are: 'PolicyBased' and 'RouteBased'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.VpnType
-Parameter Sets: CreateExpanded, CreateSubscriptionIdViaHostExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False

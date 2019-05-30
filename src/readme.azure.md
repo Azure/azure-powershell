@@ -1,13 +1,9 @@
 # Azure PowerShell AutoRest Configuration
 
-> Usings
-``` yaml
-use: "@microsoft.azure/autorest.powershell@beta"
-```
-
 > Values
 ``` yaml
 azure: true
+powershell: true
 enable-multi-api: true
 branch: multiapi
 repo: https://github.com/Azure/azure-rest-api-specs/blob/$(branch)

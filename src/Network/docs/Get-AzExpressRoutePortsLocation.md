@@ -12,25 +12,21 @@ Retrieves a single ExpressRoutePort peering location, including the list of avai
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
+### List (Default)
 ```
-Get-AzExpressRoutePortsLocation [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost
-```
-Get-AzExpressRoutePortsLocation -LocationName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzExpressRoutePortsLocation -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzExpressRoutePortsLocation -LocationName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
+Get-AzExpressRoutePortsLocation -LocationName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### List
+### GetViaIdentity
 ```
-Get-AzExpressRoutePortsLocation -SubscriptionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzExpressRoutePortsLocation -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,12 +58,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -LocationName
 Name of the requested ExpressRoutePort peering location.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -82,8 +93,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List
+Type: System.String[]
+Parameter Sets: List, Get
 Aliases:
 
 Required: True

@@ -12,16 +12,16 @@ Query a snapshot of the most recent connection states.
 
 ## SYNTAX
 
-### QuerySubscriptionIdViaHost (Default)
-```
-Invoke-AzQueryConnectionMonitor -ConnectionMonitorName <String> -NetworkWatcherName <String>
- -ResourceGroupName <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Query
+### Query (Default)
 ```
 Invoke-AzQueryConnectionMonitor -ConnectionMonitorName <String> -NetworkWatcherName <String>
  -ResourceGroupName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### QueryViaIdentity
+```
+Invoke-AzQueryConnectionMonitor -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -59,7 +59,7 @@ The name given to the connection monitor.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Query
 Aliases:
 
 Required: True
@@ -84,12 +84,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: QueryViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -NetworkWatcherName
 The name of the Network Watcher resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Query
 Aliases:
 
 Required: True
@@ -104,7 +119,7 @@ The name of the resource group containing Network Watcher.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Query
 Aliases:
 
 Required: True

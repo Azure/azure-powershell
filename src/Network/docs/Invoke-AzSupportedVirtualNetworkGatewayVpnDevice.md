@@ -12,16 +12,16 @@ Gets a xml format representation for supported vpn devices.
 
 ## SYNTAX
 
-### SupportedSubscriptionIdViaHost (Default)
-```
-Invoke-AzSupportedVirtualNetworkGatewayVpnDevice -ResourceGroupName <String>
- -VirtualNetworkGatewayName <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Supported
+### Supported (Default)
 ```
 Invoke-AzSupportedVirtualNetworkGatewayVpnDevice -ResourceGroupName <String> -SubscriptionId <String>
  -VirtualNetworkGatewayName <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SupportedViaIdentity
+```
+Invoke-AzSupportedVirtualNetworkGatewayVpnDevice -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,12 +53,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: SupportedViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Supported
 Aliases:
 
 Required: True
@@ -89,7 +104,7 @@ The name of the virtual network gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Supported
 Aliases:
 
 Required: True

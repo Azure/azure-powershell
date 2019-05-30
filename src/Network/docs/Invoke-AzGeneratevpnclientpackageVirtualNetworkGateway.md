@@ -12,9 +12,9 @@ Generates VPN client package for P2S client of the virtual network gateway in th
 
 ## SYNTAX
 
-### GeneratevpnclientpackageSubscriptionIdViaHost (Default)
+### Generatevpnclientpackage (Default)
 ```
-Invoke-AzGeneratevpnclientpackageVirtualNetworkGateway -ResourceGroupName <String>
+Invoke-AzGeneratevpnclientpackageVirtualNetworkGateway -ResourceGroupName <String> -SubscriptionId <String>
  -VirtualNetworkGatewayName <String> [-Parameter <IVpnClientParameters>] [-PassThru]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -27,19 +27,19 @@ Invoke-AzGeneratevpnclientpackageVirtualNetworkGateway -ResourceGroupName <Strin
  [-RadiusServerAuthCertificate <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Generatevpnclientpackage
+### GeneratevpnclientpackageViaIdentityExpanded
 ```
-Invoke-AzGeneratevpnclientpackageVirtualNetworkGateway -ResourceGroupName <String> -SubscriptionId <String>
- -VirtualNetworkGatewayName <String> [-Parameter <IVpnClientParameters>] [-PassThru]
+Invoke-AzGeneratevpnclientpackageVirtualNetworkGateway -InputObject <INetworkIdentity> [-PassThru]
+ [-AuthenticationMethod <AuthenticationMethod>] [-ClientRootCertificate <String[]>]
+ [-ProcessorArchitecture <ProcessorArchitecture>] [-RadiusServerAuthCertificate <String>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### GeneratevpnclientpackageSubscriptionIdViaHostExpanded
+### GeneratevpnclientpackageViaIdentity
 ```
-Invoke-AzGeneratevpnclientpackageVirtualNetworkGateway -ResourceGroupName <String>
- -VirtualNetworkGatewayName <String> [-PassThru] [-AuthenticationMethod <AuthenticationMethod>]
- [-ClientRootCertificate <String[]>] [-ProcessorArchitecture <ProcessorArchitecture>]
- [-RadiusServerAuthCertificate <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzGeneratevpnclientpackageVirtualNetworkGateway -InputObject <INetworkIdentity>
+ [-Parameter <IVpnClientParameters>] [-PassThru] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,7 +61,7 @@ VPN client authentication method.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.AuthenticationMethod
-Parameter Sets: GeneratevpnclientpackageExpanded, GeneratevpnclientpackageSubscriptionIdViaHostExpanded
+Parameter Sets: GeneratevpnclientpackageExpanded, GeneratevpnclientpackageViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -77,7 +77,7 @@ Optional parameter for external radius based authentication with EAPTLS.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: GeneratevpnclientpackageExpanded, GeneratevpnclientpackageSubscriptionIdViaHostExpanded
+Parameter Sets: GeneratevpnclientpackageExpanded, GeneratevpnclientpackageViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -102,12 +102,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GeneratevpnclientpackageViaIdentityExpanded, GeneratevpnclientpackageViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Parameter
 Vpn Client Parameters for package generation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnClientParameters
-Parameter Sets: GeneratevpnclientpackageSubscriptionIdViaHost, Generatevpnclientpackage
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnClientParameters
+Parameter Sets: Generatevpnclientpackage, GeneratevpnclientpackageViaIdentity
 Aliases:
 
 Required: False
@@ -138,7 +153,7 @@ Possible values are: 'AMD64' and 'X86'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ProcessorArchitecture
-Parameter Sets: GeneratevpnclientpackageExpanded, GeneratevpnclientpackageSubscriptionIdViaHostExpanded
+Parameter Sets: GeneratevpnclientpackageExpanded, GeneratevpnclientpackageViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -154,7 +169,7 @@ Required only if external radius authentication has been configured with EAPTLS 
 
 ```yaml
 Type: System.String
-Parameter Sets: GeneratevpnclientpackageExpanded, GeneratevpnclientpackageSubscriptionIdViaHostExpanded
+Parameter Sets: GeneratevpnclientpackageExpanded, GeneratevpnclientpackageViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -169,7 +184,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Generatevpnclientpackage, GeneratevpnclientpackageExpanded
 Aliases:
 
 Required: True
@@ -185,7 +200,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: GeneratevpnclientpackageExpanded, Generatevpnclientpackage
+Parameter Sets: Generatevpnclientpackage, GeneratevpnclientpackageExpanded
 Aliases:
 
 Required: True
@@ -200,7 +215,7 @@ The name of the virtual network gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Generatevpnclientpackage, GeneratevpnclientpackageExpanded
 Aliases:
 
 Required: True

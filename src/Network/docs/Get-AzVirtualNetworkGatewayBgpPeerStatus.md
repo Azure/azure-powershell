@@ -12,17 +12,17 @@ The GetBgpPeerStatus operation retrieves the status of all BGP peers.
 
 ## SYNTAX
 
-### GetSubscriptionIdViaHost (Default)
+### Get (Default)
 ```
-Get-AzVirtualNetworkGatewayBgpPeerStatus -ResourceGroupName <String> -VirtualNetworkGatewayName <String>
- [-Peer <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzVirtualNetworkGatewayBgpPeerStatus -ResourceGroupName <String> -SubscriptionId <String>
+Get-AzVirtualNetworkGatewayBgpPeerStatus -ResourceGroupName <String> -SubscriptionId <String[]>
  -VirtualNetworkGatewayName <String> [-Peer <String>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzVirtualNetworkGatewayBgpPeerStatus -InputObject <INetworkIdentity> [-Peer <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,6 +69,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Peer
 The IP address of the peer to retrieve the status of.
 
@@ -89,7 +104,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -104,7 +119,7 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: Get
 Aliases:
 
@@ -120,7 +135,7 @@ The name of the virtual network gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -168,7 +183,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IBgpPeerStatus
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IBgpPeerStatus
 ## NOTES
 
 ## RELATED LINKS

@@ -1,6 +1,6 @@
 function Get-AzADApplication_GetByDisplayName {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IApplication')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Profile("latest-2019-04-01")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Profile("latest-2019-04-30")]
     [CmdletBinding(PositionalBinding = $false)]
     param(
         [Parameter(Mandatory)]

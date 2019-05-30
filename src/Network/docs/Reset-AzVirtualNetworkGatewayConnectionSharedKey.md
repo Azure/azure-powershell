@@ -12,9 +12,9 @@ The VirtualNetworkGatewayConnectionResetSharedKey operation resets the virtual n
 
 ## SYNTAX
 
-### ResetSubscriptionIdViaHost (Default)
+### Reset (Default)
 ```
-Reset-AzVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName <String>
+Reset-AzVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName <String> -SubscriptionId <String>
  -VirtualNetworkGatewayConnectionName <String> [-Parameter <IConnectionResetSharedKey>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -26,18 +26,17 @@ Reset-AzVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName <String> -Su
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Reset
+### ResetViaIdentityExpanded
 ```
-Reset-AzVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName <String> -SubscriptionId <String>
- -VirtualNetworkGatewayConnectionName <String> [-Parameter <IConnectionResetSharedKey>]
+Reset-AzVirtualNetworkGatewayConnectionSharedKey -InputObject <INetworkIdentity> -KeyLength <Int32>
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ResetSubscriptionIdViaHostExpanded
+### ResetViaIdentity
 ```
-Reset-AzVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName <String>
- -VirtualNetworkGatewayConnectionName <String> -KeyLength <Int32> [-DefaultProfile <PSObject>] [-AsJob]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Reset-AzVirtualNetworkGatewayConnectionSharedKey -InputObject <INetworkIdentity>
+ [-Parameter <IConnectionResetSharedKey>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,12 +83,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: ResetViaIdentityExpanded, ResetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -KeyLength
 The virtual network connection reset shared key length, should between 1 and 128.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: ResetExpanded, ResetSubscriptionIdViaHostExpanded
+Parameter Sets: ResetExpanded, ResetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -103,8 +117,8 @@ Accept wildcard characters: False
 The virtual network connection reset shared key
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectionResetSharedKey
-Parameter Sets: ResetSubscriptionIdViaHost, Reset
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IConnectionResetSharedKey
+Parameter Sets: Reset, ResetViaIdentity
 Aliases:
 
 Required: False
@@ -119,7 +133,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Reset, ResetExpanded
 Aliases:
 
 Required: True
@@ -135,7 +149,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetExpanded, Reset
+Parameter Sets: Reset, ResetExpanded
 Aliases:
 
 Required: True
@@ -150,7 +164,7 @@ The virtual network gateway connection reset shared key Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Reset, ResetExpanded
 Aliases:
 
 Required: True

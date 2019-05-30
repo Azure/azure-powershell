@@ -12,10 +12,11 @@ Creates or updates an express route circuit.
 
 ## SYNTAX
 
-### UpdateSubscriptionIdViaHost (Default)
+### Update (Default)
 ```
-Set-AzExpressRouteCircuit -CircuitName <String> -ResourceGroupName <String> [-Parameter <IExpressRouteCircuit>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzExpressRouteCircuit -CircuitName <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-Parameter <IExpressRouteCircuit>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -25,32 +26,31 @@ Set-AzExpressRouteCircuit -CircuitName <String> -ResourceGroupName <String> -Sub
  [-BandwidthInGbp <Single>] [-CircuitProvisioningState <String>] [-ExpressRoutePortId <String>]
  [-GatewayManagerEtag <String>] [-GlobalReachEnabled <Boolean>] [-Id <String>] [-Location <String>]
  [-Peering <IExpressRouteCircuitPeering[]>] [-ProvisioningState <String>] [-ServiceKey <String>]
- [-ServiceProviderNote <String>] [-ServiceProviderPropertiesBandwidthInMbp <Int32>]
- [-ServiceProviderPropertiesPeeringLocation <String>] [-ServiceProviderPropertiesServiceProviderName <String>]
+ [-ServiceProviderNote <String>] [-ServiceProviderPropertyBandwidthInMbp <Int32>]
+ [-ServiceProviderPropertyPeeringLocation <String>] [-ServiceProviderPropertyServiceProviderName <String>]
  [-ServiceProviderProvisioningState <ServiceProviderProvisioningState>]
  [-SkuFamily <ExpressRouteCircuitSkuFamily>] [-SkuName <String>] [-SkuTier <ExpressRouteCircuitSkuTier>]
  [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Update
+### UpdateViaIdentityExpanded
 ```
-Set-AzExpressRouteCircuit -CircuitName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IExpressRouteCircuit>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### UpdateSubscriptionIdViaHostExpanded
-```
-Set-AzExpressRouteCircuit -CircuitName <String> -ResourceGroupName <String> [-AllowClassicOperation <Boolean>]
+Set-AzExpressRouteCircuit -InputObject <INetworkIdentity> [-AllowClassicOperation <Boolean>]
  [-Authorization <IExpressRouteCircuitAuthorization[]>] [-BandwidthInGbp <Single>]
  [-CircuitProvisioningState <String>] [-ExpressRoutePortId <String>] [-GatewayManagerEtag <String>]
  [-GlobalReachEnabled <Boolean>] [-Id <String>] [-Location <String>] [-Peering <IExpressRouteCircuitPeering[]>]
  [-ProvisioningState <String>] [-ServiceKey <String>] [-ServiceProviderNote <String>]
- [-ServiceProviderPropertiesBandwidthInMbp <Int32>] [-ServiceProviderPropertiesPeeringLocation <String>]
- [-ServiceProviderPropertiesServiceProviderName <String>]
+ [-ServiceProviderPropertyBandwidthInMbp <Int32>] [-ServiceProviderPropertyPeeringLocation <String>]
+ [-ServiceProviderPropertyServiceProviderName <String>]
  [-ServiceProviderProvisioningState <ServiceProviderProvisioningState>]
  [-SkuFamily <ExpressRouteCircuitSkuFamily>] [-SkuName <String>] [-SkuTier <ExpressRouteCircuitSkuTier>]
  [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Set-AzExpressRouteCircuit -InputObject <INetworkIdentity> [-Parameter <IExpressRouteCircuit>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,7 +72,7 @@ Allow classic operations
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -101,8 +101,8 @@ Accept wildcard characters: False
 The list of authorizations.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuitAuthorization[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitAuthorization[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -117,7 +117,7 @@ The bandwidth of the circuit when the circuit is provisioned on an ExpressRouteP
 
 ```yaml
 Type: System.Single
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -132,7 +132,7 @@ The name of the circuit.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -147,7 +147,7 @@ The CircuitProvisioningState state of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -177,7 +177,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -192,7 +192,7 @@ The GatewayManager Etag.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -207,7 +207,7 @@ Flag denoting Global reach status.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -222,7 +222,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -232,12 +232,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Location
 Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -252,7 +267,7 @@ ExpressRouteCircuit resource
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuit
-Parameter Sets: UpdateSubscriptionIdViaHost, Update
+Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
 Required: False
@@ -267,7 +282,7 @@ The list of peerings.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuitPeering[]
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -283,7 +298,7 @@ Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -298,7 +313,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -313,7 +328,7 @@ The ServiceKey.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -328,7 +343,7 @@ The ServiceProviderNotes.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -338,12 +353,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServiceProviderPropertiesBandwidthInMbp
+### -ServiceProviderPropertyBandwidthInMbp
 The BandwidthInMbps.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -353,12 +368,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServiceProviderPropertiesPeeringLocation
+### -ServiceProviderPropertyPeeringLocation
 The peering location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -368,12 +383,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServiceProviderPropertiesServiceProviderName
+### -ServiceProviderPropertyServiceProviderName
 The serviceProviderName.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -388,7 +403,7 @@ The ServiceProviderProvisioningState state of the resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ServiceProviderProvisioningState
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -404,7 +419,7 @@ Possible values are: 'UnlimitedData' and 'MeteredData'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitSkuFamily
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -419,7 +434,7 @@ The name of the SKU.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -435,7 +450,7 @@ Possible values are 'Standard', 'Premium' or 'Local'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitSkuTier
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -451,7 +466,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -465,8 +480,8 @@ Accept wildcard characters: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IResourceTags
-Parameter Sets: UpdateExpanded, UpdateSubscriptionIdViaHostExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

@@ -12,43 +12,42 @@ Configures flow log  and traffic analytics (optional) on a specified resource.
 
 ## SYNTAX
 
-### SetSubscriptionIdViaHost (Default)
-```
-Set-AzNetworkWatcherFlowLogConfiguration -NetworkWatcherName <String> -ResourceGroupName <String>
- [-Parameter <IFlowLogInformation>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### SetExpanded
-```
-Set-AzNetworkWatcherFlowLogConfiguration -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Enabled <Boolean> [-FormatType <FlowLogFormatType>] [-FormatVersion <Int32>]
- -NetworkWatcherFlowAnalyticsConfigurationEnabled <Boolean>
- [-NetworkWatcherFlowAnalyticsConfigurationTrafficAnalyticsInterval <Int32>]
- -NetworkWatcherFlowAnalyticsConfigurationWorkspaceId <String>
- -NetworkWatcherFlowAnalyticsConfigurationWorkspaceRegion <String>
- -NetworkWatcherFlowAnalyticsConfigurationWorkspaceResourceId <String> [-RetentionPolicyDay <Int32>]
- [-RetentionPolicyEnabled <Boolean>] -StorageId <String> -TargetResourceId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Set
+### Set (Default)
 ```
 Set-AzNetworkWatcherFlowLogConfiguration -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-Parameter <IFlowLogInformation>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### SetSubscriptionIdViaHostExpanded
+### SetExpanded
 ```
 Set-AzNetworkWatcherFlowLogConfiguration -NetworkWatcherName <String> -ResourceGroupName <String>
- -Enabled <Boolean> [-FormatType <FlowLogFormatType>] [-FormatVersion <Int32>]
- -NetworkWatcherFlowAnalyticsConfigurationEnabled <Boolean>
- [-NetworkWatcherFlowAnalyticsConfigurationTrafficAnalyticsInterval <Int32>]
- -NetworkWatcherFlowAnalyticsConfigurationWorkspaceId <String>
- -NetworkWatcherFlowAnalyticsConfigurationWorkspaceRegion <String>
- -NetworkWatcherFlowAnalyticsConfigurationWorkspaceResourceId <String> [-RetentionPolicyDay <Int32>]
+ -SubscriptionId <String> -Enabled <Boolean> [-FormatType <FlowLogFormatType>] [-FormatVersion <Int32>]
+ -NetworkWatcherFlowAnalyticConfigurationEnabled <Boolean>
+ [-NetworkWatcherFlowAnalyticConfigurationTrafficAnalyticsInterval <Int32>]
+ -NetworkWatcherFlowAnalyticConfigurationWorkspaceId <String>
+ -NetworkWatcherFlowAnalyticConfigurationWorkspaceRegion <String>
+ -NetworkWatcherFlowAnalyticConfigurationWorkspaceResourceId <String> [-RetentionPolicyDay <Int32>]
  [-RetentionPolicyEnabled <Boolean>] -StorageId <String> -TargetResourceId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetViaIdentityExpanded
+```
+Set-AzNetworkWatcherFlowLogConfiguration -InputObject <INetworkIdentity> -Enabled <Boolean>
+ [-FormatType <FlowLogFormatType>] [-FormatVersion <Int32>]
+ -NetworkWatcherFlowAnalyticConfigurationEnabled <Boolean>
+ [-NetworkWatcherFlowAnalyticConfigurationTrafficAnalyticsInterval <Int32>]
+ -NetworkWatcherFlowAnalyticConfigurationWorkspaceId <String>
+ -NetworkWatcherFlowAnalyticConfigurationWorkspaceRegion <String>
+ -NetworkWatcherFlowAnalyticConfigurationWorkspaceResourceId <String> [-RetentionPolicyDay <Int32>]
+ [-RetentionPolicyEnabled <Boolean>] -StorageId <String> -TargetResourceId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetViaIdentity
+```
+Set-AzNetworkWatcherFlowLogConfiguration -InputObject <INetworkIdentity> [-Parameter <IFlowLogInformation>]
  [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -101,7 +100,7 @@ Flag to enable/disable flow logging.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: SetExpanded, SetSubscriptionIdViaHostExpanded
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -116,7 +115,7 @@ The file type of flow log.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.FlowLogFormatType
-Parameter Sets: SetExpanded, SetSubscriptionIdViaHostExpanded
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -131,7 +130,7 @@ The version (revision) of the flow log.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: SetExpanded, SetSubscriptionIdViaHostExpanded
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -141,12 +140,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkWatcherFlowAnalyticsConfigurationEnabled
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: SetViaIdentityExpanded, SetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -NetworkWatcherFlowAnalyticConfigurationEnabled
 Flag to enable/disable traffic analytics.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: SetExpanded, SetSubscriptionIdViaHostExpanded
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -156,12 +170,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkWatcherFlowAnalyticsConfigurationTrafficAnalyticsInterval
+### -NetworkWatcherFlowAnalyticConfigurationTrafficAnalyticsInterval
 The interval in minutes which would decide how frequently TA service should do flow analytics
 
 ```yaml
 Type: System.Int32
-Parameter Sets: SetExpanded, SetSubscriptionIdViaHostExpanded
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -171,12 +185,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkWatcherFlowAnalyticsConfigurationWorkspaceId
+### -NetworkWatcherFlowAnalyticConfigurationWorkspaceId
 The resource guid of the attached workspace
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetSubscriptionIdViaHostExpanded
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -186,12 +200,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkWatcherFlowAnalyticsConfigurationWorkspaceRegion
+### -NetworkWatcherFlowAnalyticConfigurationWorkspaceRegion
 The location of the attached workspace
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetSubscriptionIdViaHostExpanded
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -201,12 +215,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkWatcherFlowAnalyticsConfigurationWorkspaceResourceId
+### -NetworkWatcherFlowAnalyticConfigurationWorkspaceResourceId
 Resource Id of the attached workspace
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetSubscriptionIdViaHostExpanded
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -221,7 +235,7 @@ The name of the network watcher resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Set, SetExpanded
 Aliases:
 
 Required: True
@@ -236,7 +250,7 @@ Information on the configuration of flow log and traffic analytics (optional) .
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IFlowLogInformation
-Parameter Sets: SetSubscriptionIdViaHost, Set
+Parameter Sets: Set, SetViaIdentity
 Aliases:
 
 Required: False
@@ -251,7 +265,7 @@ The name of the network watcher resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Set, SetExpanded
 Aliases:
 
 Required: True
@@ -266,7 +280,7 @@ Number of days to retain flow log records.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: SetExpanded, SetSubscriptionIdViaHostExpanded
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -281,7 +295,7 @@ Flag to enable/disable retention.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: SetExpanded, SetSubscriptionIdViaHostExpanded
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -296,7 +310,7 @@ ID of the storage account which is used to store the flow log.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetSubscriptionIdViaHostExpanded
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -312,7 +326,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, Set
+Parameter Sets: Set, SetExpanded
 Aliases:
 
 Required: True
@@ -327,7 +341,7 @@ The ID of the resource to configure for flow log and traffic analytics (optional
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetSubscriptionIdViaHostExpanded
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: True

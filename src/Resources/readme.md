@@ -71,19 +71,19 @@ directive:
   - where:
       verb: Get
       subject: Application
-      variant: ^Get$|^Get1$|^GetSubscriptionIdViaHost$|^List$|^List1$|^ListSubscriptionIdViaHost$|^ListSubscriptionIdViaHost1$
+      variant: ^Get$|^Get1$|^GetSubscriptionIdViaHost$|^GetViaIdentity$|^GetViaIdentity1$|^List$|^List1$|^ListSubscriptionIdViaHost$|^ListSubscriptionIdViaHost1$
     set:
       subject: ManagedApplication
   - where:
       verb: New
       subject: Application
-      variant: ^Create$|^Create1$|^CreateExpanded$|^CreateExpanded1$|^CreateSubscriptionIdViaHost$|^CreateSubscriptionIdViaHostExpanded$
+      variant: ^Create$|^Create1$|^CreateViaIdentity$|^CreateViaIdentity1$|^CreateExpanded$|^CreateExpanded1$|^CreateViaIdentityExpanded$|^CreateViaIdentityExpanded1$|^CreateSubscriptionIdViaHost$|^CreateSubscriptionIdViaHostExpanded$
     set:
       subject: ManagedApplication
   - where:
       verb: Remove
       subject: Application
-      variant: ^Delete$|^Delete1$|^DeleteSubscriptionIdViaHost$
+      variant: ^Delete$|^Delete1$|^DeleteViaIdentity$|^DeleteViaIdentity1$|^DeleteSubscriptionIdViaHost$
     set:
       subject: ManagedApplication
   - where:
@@ -100,19 +100,19 @@ directive:
   - where:
       verb: Get
       subject: Application
-      variant: ^Get2$|^List2$
+      variant: ^Get2$|^GetViaIdentity2$|^List2$
     set:
       subject: ADApplication
   - where:
       verb: New
       subject: Application
-      variant: ^Create2$|^CreateExpanded2$
+      variant: ^Create2$|^CreateViaIdentity2$|^CreateExpanded2$|^CreateViaIdentityExpanded2$
     set:
       subject: ADApplication
   - where:
       verb: Remove
       subject: Application
-      variant: ^Delete2$
+      variant: ^Delete2$|^DeleteViaIdentity2$
     set:
       subject: ADApplication
   - where:
@@ -121,6 +121,21 @@ directive:
       variant: ^Patch
     set:
       subject: ADApplication
+  - where:
+      subject: ApplicationOwner
+    set:
+      subject: ADApplicationOwner
+  - where:
+      subject: ApplicationKeyCredential
+    set:
+      subject: ADApplicationKeyCredential
+  - where:
+      subject: ApplicationPasswordCredential
+    set:
+      subject: ADApplicationPasswordCredential
+  - where:
+      subject: ApplicationServicePrincipalId
+    hide: true
   - where:
       subject: ^Feature(.*)
     set:
@@ -150,20 +165,27 @@ directive:
     set:
       parameter-name: ObjectId
   - where:
+      parameter-name: Filter
+    set:
+      alias: ODataQuery
+  - where:
       subject: Resource
       parameter-name: GroupName
     set:
       parameter-name: ResourceGroupName
+    clear-alias: true
   - where:
       subject: Resource
       parameter-name: Id
     set:
       parameter-name: ResourceId
+    clear-alias: true
   - where:
       subject: Resource
       parameter-name: Type
     set:
       parameter-name: ResourceType
+    clear-alias: true
   - where:
       subject: Appliance*
     remove: true
@@ -171,5 +193,121 @@ directive:
       verb: Get
       subject: Subscription
     remove: true
-
+  - where:
+      verb: Test
+      subject: CheckNameAvailability
+    set:
+      subject: NameAvailability
+  - where:
+      verb: Test
+      subject: ResourceExistence
+    set:
+      subject: Resource
+      alias: Test-AzResourceExistence
+  - where:
+      verb: Export
+      subject: ResourceGroupTemplate
+    set:
+      subject: ResourceGroup
+      alias: Export-AzResourceGroupTemplate
+  - where:
+      subject: ResourceLink
+      parameter-name: LinkId
+    set:
+      parameter-name: ResourceId
+      alias: LinkId
+  - where:
+      verb: Test
+      subject: ResourceGroupExistence
+    set:
+      subject: ResourceGroup
+      alias: Test-AzResourceGroupExistence
+  - where:
+      verb: Export
+      subject: DeploymentTemplate
+    set:
+      alias: [Save-AzDeploymentTemplate, Save-AzResourceGroupDeploymentTemplate]
+  - where:
+      subject: Deployment
+    set:
+      alias: ${verb}-AzResourceGroupDeployment
+  - where:
+      verb: Get
+      subject: DeploymentOperation
+    set:
+      alias: Get-AzResourceGroupDeploymentOperation
+  - where:
+      verb: Test
+      subject: DeploymentExistence
+    set:
+      alias: Test-AzResourceGroupDeploymentExistence
+  - where:
+      subject: ProviderOperationMetadata
+    set:
+      subject: ProviderOperation
+  - where:
+      subject: Provider
+    set:
+      subject: ResourceProvider
+  - where:
+      verb: Get
+      subject: ProviderFeature
+      parameter-name: ResourceProviderNamespace
+    set:
+      alias: ProviderNamespace
+  - where:
+      subject: TagValue
+    hide: true
+  - where:
+      verb: Get
+      subject: ADGroupMember
+      parameter-name: ObjectId
+    set:
+      alias: GroupObjectId
+  - where:
+      subject: AD.*KeyCredential
+    hide: true
+  - where:
+      subject: AD.*PasswordCredential
+    hide: true
+  - where:
+      subject: SignedInUser.*
+    hide: true
+  - where:
+      subject: ManagementGroup.*
+      parameter-name: GroupId
+    set:
+      alias: GroupName
+  - where:
+      verb: Get
+      subject: RoleAssignment
+      parameter-name: ParentResourcePath
+    set:
+      parameter-name: ParentResourceId
+      alias: ParentResourcePath
+  - where:
+      verb: New
+      subject: RoleAssignment
+      parameter-name: CanDelegate
+    set:
+      alias: AllowDelegation
+  - where:
+      subject: RoleDefinition
+      parameter-name: RoleDefinition
+    set:
+      alias: Role
+  - where:
+      verb: New
+      subject: PolicyAssignment
+      parameter-name: Name
+    clear-alias: true
+  - where:
+      verb: Update
+      subject: ResourceGroup
+      parameter-name: Name
+    clear-alias: true
+  - where:
+      verb: Get
+      subject: Tenant
+    hide: true
 ```

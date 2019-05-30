@@ -12,9 +12,9 @@ The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual netw
 
 ## SYNTAX
 
-### SetSubscriptionIdViaHost (Default)
+### Set (Default)
 ```
-Set-AzVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName <String>
+Set-AzVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName <String> -SubscriptionId <String>
  -VirtualNetworkGatewayConnectionName <String> [-Parameter <IConnectionSharedKey>] [-DefaultProfile <PSObject>]
  [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -26,18 +26,17 @@ Set-AzVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName <String> -Subs
  [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Set
+### SetViaIdentityExpanded
 ```
-Set-AzVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName <String> -SubscriptionId <String>
- -VirtualNetworkGatewayConnectionName <String> [-Parameter <IConnectionSharedKey>] [-DefaultProfile <PSObject>]
- [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzVirtualNetworkGatewayConnectionSharedKey -InputObject <INetworkIdentity> [-Id <String>] -Value <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SetSubscriptionIdViaHostExpanded
+### SetViaIdentity
 ```
-Set-AzVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName <String>
- -VirtualNetworkGatewayConnectionName <String> [-Id <String>] -Value <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzVirtualNetworkGatewayConnectionSharedKey -InputObject <INetworkIdentity>
+ [-Parameter <IConnectionSharedKey>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,7 +88,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetSubscriptionIdViaHostExpanded
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -99,12 +98,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: SetViaIdentityExpanded, SetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Parameter
 Response for GetConnectionSharedKey API service call
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectionSharedKey
-Parameter Sets: SetSubscriptionIdViaHost, Set
+Parameter Sets: Set, SetViaIdentity
 Aliases:
 
 Required: False
@@ -119,7 +133,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Set, SetExpanded
 Aliases:
 
 Required: True
@@ -135,7 +149,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, Set
+Parameter Sets: Set, SetExpanded
 Aliases:
 
 Required: True
@@ -150,7 +164,7 @@ The virtual network connection shared key value.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetSubscriptionIdViaHostExpanded
+Parameter Sets: SetExpanded, SetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -165,7 +179,7 @@ The virtual network gateway connection name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Set, SetExpanded
 Aliases:
 
 Required: True

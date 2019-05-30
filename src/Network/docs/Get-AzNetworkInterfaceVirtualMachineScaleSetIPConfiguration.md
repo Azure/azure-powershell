@@ -12,33 +12,25 @@ Get the specified network interface ip configuration in a virtual machine scale 
 
 ## SYNTAX
 
-### ListSubscriptionIdViaHost (Default)
+### List (Default)
 ```
 Get-AzNetworkInterfaceVirtualMachineScaleSetIPConfiguration -NetworkInterfaceName <String>
- -ResourceGroupName <String> -VirtualMachineScaleSetName <String> -VirtualmachineIndex <String>
- [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetSubscriptionIdViaHost
-```
-Get-AzNetworkInterfaceVirtualMachineScaleSetIPConfiguration -IPConfigurationName <String>
- -NetworkInterfaceName <String> -ResourceGroupName <String> -VirtualMachineScaleSetName <String>
+ -ResourceGroupName <String> -SubscriptionId <String[]> -VirtualMachineScaleSetName <String>
  -VirtualmachineIndex <String> [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzNetworkInterfaceVirtualMachineScaleSetIPConfiguration -IPConfigurationName <String>
- -NetworkInterfaceName <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -NetworkInterfaceName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  -VirtualMachineScaleSetName <String> -VirtualmachineIndex <String> [-Expand <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### GetViaIdentity
 ```
-Get-AzNetworkInterfaceVirtualMachineScaleSetIPConfiguration -NetworkInterfaceName <String>
- -ResourceGroupName <String> -SubscriptionId <String> -VirtualMachineScaleSetName <String>
- -VirtualmachineIndex <String> [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNetworkInterfaceVirtualMachineScaleSetIPConfiguration -InputObject <INetworkIdentity> [-Expand <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,12 +77,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -IPConfigurationName
 The name of the ip configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetSubscriptionIdViaHost, Get
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -105,7 +112,7 @@ The name of the network interface.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -120,7 +127,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -135,8 +142,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List
+Type: System.String[]
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -151,7 +158,7 @@ The virtual machine index.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -166,7 +173,7 @@ The name of the virtual machine scale set.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
