@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-GetServerKeyVaultKey");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO: only works for live mode. Mihymel will fix the test issue for Create-ServerKeyVaultKeyTestEnvironment")]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestServerKeyVaultKeyRemove()
         {
