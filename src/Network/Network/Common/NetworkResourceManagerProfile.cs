@@ -976,25 +976,30 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.AzureFirewallFqdnTag, CNM.PSAzureFirewallFqdnTag>();
 
-                // Interface endpoint
-                // CNM to MNM
-                cfg.CreateMap<CNM.PSInterfaceEndpoint, MNM.InterfaceEndpoint>();
-
-                // MNM to CNM
-                cfg.CreateMap<MNM.InterfaceEndpoint, CNM.PSInterfaceEndpoint>();
-
-                // CNM to MNM
-                cfg.CreateMap<CNM.PSEndpointService, MNM.EndpointService>();
-
-                // MNM to CNM
-                cfg.CreateMap<MNM.EndpointService, CNM.PSEndpointService>();
-
                 // Virtual Network Tap
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSVirtualNetworkTap, MNM.VirtualNetworkTap>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.VirtualNetworkTap, CNM.PSVirtualNetworkTap>();
+
+                cfg.CreateMap<CNM.PSPrivateEndpoint, MNM.PrivateEndpoint>();
+                cfg.CreateMap<MNM.PrivateEndpoint, CNM.PSPrivateEndpoint>();
+
+                cfg.CreateMap<CNM.PSPrivateLinkServiceConnection, MNM.PrivateLinkServiceConnection>();
+                cfg.CreateMap<MNM.PrivateLinkServiceConnection, CNM.PSPrivateLinkServiceConnection>();
+
+                cfg.CreateMap<CNM.PSPrivateLinkServiceConnectionState, MNM.PrivateLinkServiceConnectionState>();
+                cfg.CreateMap<MNM.PrivateLinkServiceConnectionState, CNM.PSPrivateLinkServiceConnectionState>();
+
+                cfg.CreateMap<CNM.PSPrivateLinkService, MNM.PrivateLinkService>();
+                cfg.CreateMap<MNM.PrivateLinkService, CNM.PSPrivateLinkService>();
+
+                cfg.CreateMap<CNM.PSPrivateEndpointConnection, MNM.PrivateEndpointConnection>();
+                cfg.CreateMap<MNM.PrivateEndpointConnection, CNM.PSPrivateEndpointConnection>();
+
+                cfg.CreateMap<CNM.PSAvailablePrivateEndpointType, MNM.AvailablePrivateEndpointType>();
+                cfg.CreateMap<MNM.AvailablePrivateEndpointType, CNM.PSAvailablePrivateEndpointType>();
             });
 
             _mapper = config.CreateMapper();

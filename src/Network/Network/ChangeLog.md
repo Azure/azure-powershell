@@ -18,6 +18,22 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+* Add AvailablePrivateEndpointType
+    - New cmdlets 
+    	- Get-AzAvailablePrivateEndpointType
+* Add PrivatePrivateLinkService
+    - New cmdlets 
+        - Get-AzPrivateLinkService 
+        - New-AzPrivateLinkService
+        - Remove-AzPrivateLinkService
+        - New-AzPrivateLinkServiceIpConfig
+        - Set-AzPrivateEndpointConnection
+* Add PrivateEndpoint
+    - New cmdlets
+        - Get-AzPrivateEndpoint
+        - New-AzPrivateEndpoint
+        - Remove-AzPrivateEndpoint
+        - New-AzPrivateLinkServiceConnection
 * Update ResourceId and InputObject for Nat Gateway
     - Add alias for ResourceId and InputObject
 * Updated below commands for feature: UseLocalAzureIpAddress flag on VpnConnection
