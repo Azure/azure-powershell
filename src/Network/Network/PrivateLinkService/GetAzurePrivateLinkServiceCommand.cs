@@ -23,7 +23,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateLinkService"), OutputType(typeof(PSPrivateLinkService))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateLinkService", DefaultParameterSetName = "NoExpand"), OutputType(typeof(PSPrivateLinkService))]
     public class GetAzurePrivateLinkService : PrivateLinkServiceBaseCmdlet
     {
         [Alias("ResourceName")]
