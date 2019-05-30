@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
     {
         public static ResourceStrategy<ProximityPlacementGroup> Strategy { get; }
             = ComputeStrategy.Create(
-                provider: "proximityPlacementGroup",
+                provider: "proximityPlacementGroups",
                 getOperations: client => client.ProximityPlacementGroups,
                 getAsync: (o, p) => o.GetAsync(
                     p.ResourceGroupName, p.Name, p.CancellationToken),
@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 createModel: _ =>
                 {
                     throw new InvalidOperationException("Proximity placement group doesn't exist.");
-                },
-                dependencies: Enumerable.Empty<IEntityConfig>());
+                });
     }
 }
