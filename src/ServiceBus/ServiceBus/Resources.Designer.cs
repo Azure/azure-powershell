@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create a new Rule:{0} for Subscription:{1} of Namespace:{2}.
+        ///   Looks up a localized string similar to Create a new Rule:{0} for Subscription:{1} of Namsespae:{2}.
         /// </summary>
         internal static string CreateRule {
             get {
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create a new Subscription:{0} for Topic:{1} of Namespace:{2}.
+        ///   Looks up a localized string similar to Create a new Subscription:{0} for Topic:{1} of Namsespae:{2}.
         /// </summary>
         internal static string CreateSubscription {
             get {
