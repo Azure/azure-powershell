@@ -163,7 +163,7 @@
     <value>Overwriting unpublished blueprint and artifacts.</value>
   </data>
   <data name="OverwriteUnpublishedChangesProcessMessage" xml:space="preserve">
-    <value>This will overwrite any unpublished changes in the blueprint '{0}' and its artifacts. Would you like to continue?</value>
+    <value>Blueprint '{0}' already exists. This operation will overwrite any unpublished changes in the blueprint '{1}' and its artifacts. Would you like to continue?</value>
   </data>
   <data name="PublishBlueprintShouldProcessString" xml:space="preserve">
     <value>Publish blueprint '{0}'</value>

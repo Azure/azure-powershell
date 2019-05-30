@@ -44,16 +44,16 @@ Set-AzBlueprintArtifact -Name <String> -Type <PSArtifactKind> -Blueprint <PSBlue
 ```
 
 ## DESCRIPTION
-Updates an template artifact.
+Update an artifact.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzBlueprintArtifact -Blueprint $bp -ArtifactFile C:\TemplateARtifact.json
+PS C:\> Set-AzBlueprintArtifact -Blueprint $bp -ArtifactFile C:\TemplateArtifact.json
 ```
 
-Update an template artifact.
+Update an artifact through an artifact JSON file.
 
 ## PARAMETERS
 

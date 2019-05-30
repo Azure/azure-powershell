@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzBlueprint
 
 ## SYNOPSIS
-Update a new blueprint and save it within the specified subscription or management group.
+Update a blueprint.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Set-AzBlueprint -Name <String> -ManagementGroupId <String> -BlueprintFile <Strin
 ```
 
 ## DESCRIPTION
-Update a blueprint.
+Update a blueprint and save it within the specified subscription or management group.
 
 ## EXAMPLES
 

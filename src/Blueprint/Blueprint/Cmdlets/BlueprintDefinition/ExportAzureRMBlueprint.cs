@@ -22,7 +22,7 @@ using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     [Cmdlet("Export", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintWithArtifact", SupportsShouldProcess = true, DefaultParameterSetName =
-         ParameterSetNames.ExportBlueprintParameterSet)]
+         ParameterSetNames.ExportBlueprintParameterSet), OutputType(typeof(bool))]
     public class ExportAzureRmBlueprint : BlueprintDefinitionCmdletBase
     {
         #region Parameters
@@ -40,6 +40,9 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
         [Parameter(ParameterSetName = ParameterSetNames.ExportBlueprintParameterSet, Mandatory = false, HelpMessage = ParameterHelpMessages.ForceHelpMessage)]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
         #endregion
 
         #region Cmdlet Overrides
@@ -60,7 +63,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             );
 
             // Get serialized artifacts from this blueprint and write them to disk
-            var artifactsPath = CreateFolderIfNotExist(OutputPath, "Artifacts");
+            var artifactsPath = CreateFolderIfNotExist(blueprintFolderPath, "Artifacts");
 
             var artifacts = BlueprintClient.ListArtifacts(Blueprint.Scope, Blueprint.Name, Version);
             
@@ -77,6 +80,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                     artifactFilePath,
                     () => AzureSession.Instance.DataStore.WriteFile(artifactFilePath, serializedArtifact)
                 );
+            }
+
+            if (PassThru.IsPresent)
+            {
+                WriteObject(true);
             }
         }
         #endregion

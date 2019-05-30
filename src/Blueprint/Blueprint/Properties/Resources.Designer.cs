@@ -196,7 +196,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This will overwrite any unpublished changes in the blueprint &apos;{0}&apos; and its artifacts. Would you like to continue?.
+        ///   Looks up a localized string similar to Blueprint &apos;{0}&apos; already exists. This operation will overwrite any unpublished changes in the blueprint &apos;{1}&apos; and its artifacts. Would you like to continue?.
         /// </summary>
         internal static string OverwriteUnpublishedChangesProcessMessage {
             get {
