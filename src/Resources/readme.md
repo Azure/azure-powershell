@@ -242,6 +242,10 @@ directive:
     set:
       alias: Test-AzResourceGroupDeploymentExistence
   - where:
+      subject: ProviderOperationMetadata
+    set:
+      subject: ProviderOperation
+  - where:
       subject: Provider
     set:
       subject: ResourceProvider
@@ -292,4 +296,18 @@ directive:
       parameter-name: RoleDefinition
     set:
       alias: Role
+  - where:
+      verb: New
+      subject: PolicyAssignment
+      parameter-name: Name
+    clear-alias: true
+  - where:
+      verb: Update
+      subject: ResourceGroup
+      parameter-name: Name
+    clear-alias: true
+  - where:
+      verb: Get
+      subject: Tenant
+    hide: true
 ```
