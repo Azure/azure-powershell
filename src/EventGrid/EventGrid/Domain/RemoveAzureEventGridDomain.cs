@@ -16,6 +16,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -73,25 +74,19 @@ namespace Microsoft.Azure.Commands.EventGrid
         {
             if (this.ShouldProcess(this.Name, $"Remove domain {this.Name} in resource group {this.ResourceGroupName}"))
             {
-                string resourceGroupName = string.Empty;
-                string domainName = string.Empty;
-
-                if (!string.IsNullOrEmpty(this.Name))
+                if (!string.IsNullOrEmpty(this.ResourceId))
                 {
-                    resourceGroupName = this.ResourceGroupName;
-                    domainName = this.Name;
-                }
-                else if (!string.IsNullOrEmpty(this.ResourceId))
-                {
-                    EventGridUtils.GetResourceGroupNameAndDomainName(this.ResourceId, out resourceGroupName, out domainName);
+                    var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                    this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                    this.Name = resourceIdentifier.ResourceName;
                 }
                 else if (this.InputObject != null)
                 {
-                    resourceGroupName = this.InputObject.ResourceGroupName;
-                    domainName = this.InputObject.DomainName;
+                    this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                    this.Name = this.InputObject.DomainName;
                 }
 
-                this.Client.DeleteDomain(resourceGroupName, domainName);
+                this.Client.DeleteDomain(this.ResourceGroupName, this.Name);
                 if (this.PassThru)
                 {
                     this.WriteObject(true);

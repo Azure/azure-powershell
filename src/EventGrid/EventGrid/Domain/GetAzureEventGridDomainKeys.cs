@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -68,25 +69,19 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         public override void ExecuteCmdlet()
         {
-            string resourceGroupName;
-            string domainName;
-
             if (!string.IsNullOrEmpty(this.ResourceId))
             {
-                EventGridUtils.GetResourceGroupNameAndDomainName(this.ResourceId, out resourceGroupName, out domainName);
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.Name = resourceIdentifier.ResourceName;
             }
             else if (this.DomainObject != null)
             {
-                resourceGroupName = this.DomainObject.ResourceGroupName;
-                domainName = this.DomainObject.DomainName;
-            }
-            else
-            {
-                resourceGroupName = this.ResourceGroupName;
-                domainName = this.Name;
+                this.ResourceGroupName = this.DomainObject.ResourceGroupName;
+                this.Name = this.DomainObject.DomainName;
             }
 
-            DomainSharedAccessKeys domainSharedAccessKeys = this.Client.GetDomainSharedAccessKeys(resourceGroupName, domainName);
+            DomainSharedAccessKeys domainSharedAccessKeys = this.Client.GetDomainSharedAccessKeys(this.ResourceGroupName, this.Name);
             PsDomainSharedAccessKeys psDomainSharedAccessKeys = new PsDomainSharedAccessKeys(domainSharedAccessKeys);
             this.WriteObject(psDomainSharedAccessKeys);
         }

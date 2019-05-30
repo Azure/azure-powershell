@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -94,25 +95,19 @@ namespace Microsoft.Azure.Commands.EventGrid
         {
             if (this.ShouldProcess(this.DomainName, $"Regenerate key {this.Name} for domain {this.DomainName} in Resource Group {this.ResourceGroupName}"))
             {
-                string resourceGroupName;
-                string domainName;
-
                 if (!string.IsNullOrEmpty(this.ResourceId))
                 {
-                    EventGridUtils.GetResourceGroupNameAndDomainName(this.ResourceId, out resourceGroupName, out domainName);
+                    var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                    this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                    this.DomainName = resourceIdentifier.ResourceName;
                 }
                 else if (this.InputObject != null)
                 {
-                    resourceGroupName = this.InputObject.ResourceGroupName;
-                    domainName = this.InputObject.DomainName;
-                }
-                else
-                {
-                    resourceGroupName = this.ResourceGroupName;
-                    domainName = this.DomainName;
+                    this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                    this.DomainName = this.InputObject.DomainName;
                 }
 
-                DomainSharedAccessKeys domainSharedAccessKeys = this.Client.RegenerateDomainKey(resourceGroupName, domainName, this.Name);
+                DomainSharedAccessKeys domainSharedAccessKeys = this.Client.RegenerateDomainKey(this.ResourceGroupName, this.DomainName, this.Name);
                 PsDomainSharedAccessKeys psDomainSharedAccessKeys = new PsDomainSharedAccessKeys(domainSharedAccessKeys);
                 this.WriteObject(psDomainSharedAccessKeys);
             }
