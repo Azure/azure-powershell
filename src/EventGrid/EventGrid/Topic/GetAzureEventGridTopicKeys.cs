@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -66,25 +67,19 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         public override void ExecuteCmdlet()
         {
-            string resourceGroupName;
-            string topicName;
-
             if (!string.IsNullOrEmpty(this.ResourceId))
             {
-                EventGridUtils.GetResourceGroupNameAndTopicName(this.ResourceId, out resourceGroupName, out topicName);
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.Name = resourceIdentifier.ResourceName;
             }
             else if (this.InputObject != null)
             {
-                resourceGroupName = this.InputObject.ResourceGroupName;
-                topicName = this.InputObject.TopicName;
-            }
-            else
-            {
-                resourceGroupName = this.ResourceGroupName;
-                topicName = this.Name;
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.Name = this.InputObject.TopicName;
             }
 
-            this.WriteObject(this.Client.GetTopicSharedAccessKeys(resourceGroupName, topicName));
+            this.WriteObject(this.Client.GetTopicSharedAccessKeys(this.ResourceGroupName, this.Name));
         }
     }
 }
