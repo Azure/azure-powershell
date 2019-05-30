@@ -32,7 +32,7 @@ function Test-PrivateLinkServiceCRUD
 {
     # Setup
     $rgname = Get-ResourceGroupName;
-    $rglocation = Get-ProviderLocation ResourceManagement;
+    $rglocation = "eastus2euap";
     $rname = Get-ResourceName;
     $location = Get-ProviderLocation "Microsoft.Network/privateLinkServices" "eastus2euap";
     # Dependency parameters
@@ -46,12 +46,12 @@ function Test-PrivateLinkServiceCRUD
         $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name "frontendSubnet" -AddressPrefix "10.0.1.0/24";
         $backendSubnet = New-AzVirtualNetworkSubnetConfig -Name "backendSubnet" -AddressPrefix "10.0.2.0/24";
         $otherSubnet = New-AzVirtualNetworkSubnetConfig -Name "otherSubnet" -AddressPrefix "10.0.3.0/24"; 
-        $vnet = New-AzVirtualNetwork -Name "vnet" -ResourceGroupName $rgname -Location $rglocation -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet,$otherSubnet;
+        $vnet = New-AzVirtualNetwork -Name "vnet" -ResourceGroupName $rgname -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet,$otherSubnet;
 
         # Create LoadBalancer
         $frontendIP = New-AzLoadBalancerFrontendIpConfig -Name "LB-Frontend" -PrivateIpAddress 10.0.1.5 -SubnetId $vnet.subnets[0].Id;
         $beaddresspool= New-AzLoadBalancerBackendAddressPoolConfig -Name "LB-backend";
-        $LB = New-AzLoadBalancer -ResourceGroupName $rgname -Name "LB" -Location $rglocation -FrontendIpConfiguration $frontendIP -BackendAddressPool $beaddresspool;
+        $LB = New-AzLoadBalancer -ResourceGroupName $rgname -Name "LB" -Location $location -FrontendIpConfiguration $frontendIP -BackendAddressPool $beaddresspool -Sku Standard;
         
         # Create required dependencies
         $IpConfiguration = New-AzPrivateLinkServiceIpConfig -Name $IpConfigurationName -PrivateIpAddress 10.0.3.5 -Subnet $vnet.subnets[2];
@@ -92,13 +92,13 @@ function Test-PrivateLinkServiceCRUD
         Assert-NotNull ($listPrivateLinkService | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $rname });
 
         # Remove PrivateLinkService
-        $job = Remove-AzPrivateLinkService -ResourceGroupName $rgname -Name $rname -PassThru -Force -AsJob;
+        $job = Remove-AzPrivateLinkService -ResourceGroupName $rgname -ServiceName $rname -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removePrivateLinkService = $job | Receive-Job;
         Assert-AreEqual $true $removePrivateLinkService;
 
         # Get PrivateLinkService should fail
-        Assert-ThrowsContains { Get-AzPrivateLinkService -ResourceGroupName $rgname -Name $rname } "not found";
+        Assert-ThrowsLike { Get-AzPrivateLinkService -ResourceGroupName $rgname -Name $rname } "*not*found*";
     }
     finally
     {
