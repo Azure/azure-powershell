@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
             var blueprintPath = Path.Combine(resolvedPath, fileName + ".json");
 
-            if (!File.Exists(blueprintPath))
+            if (!AzureSession.Instance.DataStore.FileExists(blueprintPath))
             {
                 throw new Exception(
                     $"Cannot locate a file with the name {fileName} in: {resolvedPath}.");
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
             var artifactsPath = Path.Combine(resolvedPath, folderName);
 
-            if (!Directory.Exists(artifactsPath))
+            if (!AzureSession.Instance.DataStore.DirectoryExists(artifactsPath))
             {
                 throw new DirectoryNotFoundException($"Can't find folder {folderName} in path {resolvedPath}.");
             }

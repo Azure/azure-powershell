@@ -15,13 +15,14 @@
 using Microsoft.Azure.Commands.Blueprint.Models;
 using System.IO;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
 using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
     [Cmdlet("Export", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintWithArtifact", SupportsShouldProcess = true, DefaultParameterSetName =
-         ParameterSetNames.ExportBlueprintParameterSet), OutputType(typeof(string))]
+         ParameterSetNames.ExportBlueprintParameterSet)]
     public class ExportAzureRmBlueprint : BlueprintDefinitionCmdletBase
     {
         #region Parameters
@@ -51,11 +52,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             var blueprintJsonFilePath = Path.Combine(blueprintFolderPath, $"{Blueprint.Name}.json");
 
             this.ConfirmAction(
-                this.Force || !File.Exists(blueprintJsonFilePath),
+                this.Force || !AzureSession.Instance.DataStore.FileExists(blueprintJsonFilePath),
                 string.Format(Resources.OverwriteExistingOutputFileProcessMessage,Blueprint.Name),
                 Resources.OverwriteExistingOutputFileContinueMessage,
                 blueprintJsonFilePath,
-                () => File.WriteAllText(blueprintJsonFilePath, serializedDefinition)
+                () => AzureSession.Instance.DataStore.WriteFile(blueprintJsonFilePath, serializedDefinition)
             );
 
             // Get serialized artifacts from this blueprint and write them to disk
@@ -70,11 +71,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 var artifactFilePath = Path.Combine(artifactsPath, artifact.Name + ".json");
 
                 this.ConfirmAction(
-                    this.Force || !File.Exists(artifactFilePath),
+                    this.Force || !AzureSession.Instance.DataStore.FileExists(artifactFilePath),
                     string.Format(Resources.OverwriteExistingOutputFileProcessMessage, artifact.Name),
                     Resources.OverwriteExistingOutputFileContinueMessage,
                     artifactFilePath,
-                    () => File.WriteAllText(artifactFilePath, serializedArtifact)
+                    () => AzureSession.Instance.DataStore.WriteFile(artifactFilePath, serializedArtifact)
                 );
             }
         }

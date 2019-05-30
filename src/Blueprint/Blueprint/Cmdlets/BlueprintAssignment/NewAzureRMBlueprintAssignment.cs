@@ -22,6 +22,7 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using ParameterSetNames = Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants.ParameterSetNames;
 
@@ -136,7 +137,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                                 try
                                 {
                                     assignmentObject = JsonConvert.DeserializeObject<Assignment>(
-                                        File.ReadAllText(parametersFilePath),
+                                        AzureSession.Instance.DataStore.ReadFileAsText(parametersFilePath),
                                         DefaultJsonSettings.DeserializerSettings);
                                 }
                                 catch (Exception ex)

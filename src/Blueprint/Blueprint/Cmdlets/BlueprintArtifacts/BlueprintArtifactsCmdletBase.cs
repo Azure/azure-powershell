@@ -21,8 +21,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Management.Automation;
-using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
@@ -45,7 +44,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         {
             var templatePath = ResolveUserPath(filePath);
 
-            if (templatePath == null || !File.Exists(templatePath))
+            if (templatePath == null || !AzureSession.Instance.DataStore.FileExists(templatePath))
             {
                 throw new FileNotFoundException(string.Format("Can't find file at " + filePath));
             }
@@ -57,7 +56,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         {
             Dictionary<string, ParameterValueBase> parameters = new Dictionary<string, ParameterValueBase>();
 
-            JObject parsedJson = JObject.Parse(File.ReadAllText(validatedFilePath));
+            JObject parsedJson = JObject.Parse(AzureSession.Instance.DataStore.ReadFileAsText(validatedFilePath));
 
             //To-Do: This could be done better by creating a type and deserializing the JSON file through converters. 
             var parametersHashtable = parsedJson["parameters"].ToObject<Dictionary<string, JObject>>();

@@ -22,6 +22,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
 using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
 
@@ -115,7 +116,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                         if (ShouldProcess(Utils.GetDefinitionLocationId(scope), string.Format(Resources.CreateArtifactShouldProcessString, Name)))
                         {
                             var artifact = JsonConvert.DeserializeObject<Artifact>(
-                                File.ReadAllText(ResolveUserPath(ArtifactFile)),
+                                AzureSession.Instance.DataStore.ReadFileAsText(ResolveUserPath(ArtifactFile)),
                                 DefaultJsonSettings.DeserializerSettings);
 
                             WriteObject(BlueprintClient.CreateArtifact(scope, Blueprint.Name, Name, artifact));
@@ -181,7 +182,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                                 Description = Description,
                                 ResourceGroup = ResourceGroupName,
                                 Parameters = parameters,
-                                Template = JObject.Parse(File.ReadAllText(ValidateAndReturnFilePath(TemplateFile))),
+                                Template = JObject.Parse(AzureSession.Instance.DataStore.ReadFileAsText(ValidateAndReturnFilePath(TemplateFile))),
                                 DependsOn = DependsOn
                             };
 
