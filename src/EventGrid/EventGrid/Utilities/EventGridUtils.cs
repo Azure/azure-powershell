@@ -20,28 +20,6 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
 {
     class EventGridUtils
     {
-        public static void GetResourceGroupNameAndTopicName(
-            string resourceId,
-            out string resourceGroupName,
-            out string topicName)
-        {
-            if (string.IsNullOrEmpty(resourceId))
-            {
-                throw new ArgumentNullException(nameof(resourceId));
-            }
-
-            // ResourceID should be in the following format:
-            // /subscriptions/{subid}/resourceGroups/{rg}/providers/Microsoft.EventGrid/topics/topic1
-            string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-            if (tokens.Length != 8)
-            {
-                throw new Exception($"ResourceId {resourceId} not in the expected format");
-            }
-
-            resourceGroupName = tokens[3];
-            topicName = tokens[7];
-        }
-
         public static void GetResourceGroupNameAndDomainNameAndDomainTopicName(
             string resourceId,
             out string resourceGroupName,

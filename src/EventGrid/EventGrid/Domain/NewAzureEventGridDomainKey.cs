@@ -93,20 +93,20 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         public override void ExecuteCmdlet()
         {
+            if (!string.IsNullOrEmpty(this.ResourceId))
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.DomainName = resourceIdentifier.ResourceName;
+            }
+            else if (this.InputObject != null)
+            {
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.DomainName = this.InputObject.DomainName;
+            }
+
             if (this.ShouldProcess(this.DomainName, $"Regenerate key {this.Name} for domain {this.DomainName} in Resource Group {this.ResourceGroupName}"))
             {
-                if (!string.IsNullOrEmpty(this.ResourceId))
-                {
-                    var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
-                    this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                    this.DomainName = resourceIdentifier.ResourceName;
-                }
-                else if (this.InputObject != null)
-                {
-                    this.ResourceGroupName = this.InputObject.ResourceGroupName;
-                    this.DomainName = this.InputObject.DomainName;
-                }
-
                 DomainSharedAccessKeys domainSharedAccessKeys = this.Client.RegenerateDomainKey(this.ResourceGroupName, this.DomainName, this.Name);
                 PsDomainSharedAccessKeys psDomainSharedAccessKeys = new PsDomainSharedAccessKeys(domainSharedAccessKeys);
                 this.WriteObject(psDomainSharedAccessKeys);
