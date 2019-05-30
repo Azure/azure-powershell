@@ -18,7 +18,7 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
-* Add AvailalbePrivateEndpointType
+* Add AvailablePrivateEndpointType
     - New cmdlets 
     	- Get-AzAvailablePrivateEndpointType
 * Add PrivatePrivateLinkService
