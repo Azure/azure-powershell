@@ -334,6 +334,7 @@ directive:
       parameter-name: AvailabilitySet
   # parameter alias not working
   - where:
+      verb: Remove
       subject: VmssExtension
       parameter-name: InputObject
     set:
@@ -351,6 +352,7 @@ directive:
     set:
       alias: SnapshotUpdate
   - where:
+      verb: Repair
       subject: VmssServiceFabricUpdateDomain
       parameter-name: InputObject
     set:
@@ -439,7 +441,7 @@ directive:
       verb: Reset
       subject: VM
     hide: true
-# renaming variants
+# renaming variants [bug](https://github.com/Azure/autorest.powershell/issues/309)
   - where: 
       verb: Update
       subject: VM
