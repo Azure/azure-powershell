@@ -40,6 +40,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 2)]
         public List<PSApplicationSecurityGroup> ApplicationSecurityGroups { get; set; }
 
+        [JsonProperty(Order = 2)]
+        public List<PSVirtualNetworkTap> VirtualNetworkTaps { get; set; }
+
         [JsonIgnore]
         public string LoadBalancerBackendAddressPoolsText
         {
@@ -62,6 +65,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ApplicationSecurityGroupsText
         {
             get { return JsonConvert.SerializeObject(ApplicationSecurityGroups, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string VirtualNetworkTapsText
+        {
+            get { return JsonConvert.SerializeObject(VirtualNetworkTaps, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         public bool ShouldSerializeLoadBalancerBackendAddressPools()
