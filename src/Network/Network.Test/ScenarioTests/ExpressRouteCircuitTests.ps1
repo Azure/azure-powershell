@@ -791,3 +791,28 @@ function Test-ExpressRouteCircuitPeeringWithRouteFilter
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests Local ExpressRouteCircuits. Ensures we can only create Local circuits on Direct ports.
+#>
+function Test-ExpressRouteLocalCircuit
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $circuitName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $location = Get-ProviderLocation "Microsoft.Network/expressRouteCircuits" "Brazil South"
+
+    try 
+    {
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+      Assert-ThrowsContains { New-AzExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Local -SkuFamily MeteredData -ServiceProviderName "equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 500 } "not allowed on"
+    }
+    finally
+    {
+    # Cleanup
+      Clean-ResourceGroup $rgname
+    }
+}
