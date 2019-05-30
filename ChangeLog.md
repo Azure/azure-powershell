@@ -2,6 +2,35 @@
 #### Az.Cdn
 * Updated cmdlets to support rulesEngine feature based on API version 2019-04-15.
 
+#### Az.Compute
+* Added `NoWait` parameter that starts the operation and returns immediately, before the operation is completed.
+    - Updated cmdlets:
+        Export-AzLogAnalyticRequestRateByInterval
+        Export-AzLogAnalyticThrottledRequest
+        Remove-AzVM
+        Remove-AzVMAccessExtension
+        Remove-AzVMAEMExtension
+        Remove-AzVMChefExtension
+        Remove-AzVMCustomScriptExtension
+        Remove-AzVMDiagnosticsExtension
+        Remove-AzVMDiskEncryptionExtension
+        Remove-AzVMDscExtension
+        Remove-AzVMSqlServerExtension
+        Restart-AzVM
+        Set-AzVM
+        Set-AzVMAccessExtension
+        Set-AzVMADDomainExtension
+        Set-AzVMAEMExtension
+        Set-AzVMBginfoExtension
+        Set-AzVMChefExtension
+        Set-AzVMCustomScriptExtension
+        Set-AzVMDiagnosticsExtension
+        Set-AzVMDscExtension
+        Set-AzVMExtension
+        Start-AzVM
+        Stop-AzVM
+        Update-AzVM
+
 #### Az.EventHub
 * Fix for #9231 - Get-AzEventHubNamespace does not return tags
 * Fix for #9230 - Get-AzEventHubNamespace returns ResourceGroup instead of ResourceGroupName
