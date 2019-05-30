@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzRmStorageContainerImmutabilityPolicy
 
 ## SYNOPSIS
-Removes ImmutabilityPolicy of a Storage blob containers
+Removes ImmutabilityPolicy of a Storage blob container with an unlocked policy
 
 ## SYNTAX
 
@@ -38,42 +38,42 @@ Remove-AzRmStorageContainerImmutabilityPolicy [-InputObject] <PSImmutabilityPoli
 ```
 
 ## DESCRIPTION
-The **Remove-AzRmStorageContainerImmutabilityPolicy** cmdlet removes ImmutabilityPolicy of a Storage blob containers.
+The **Remove-AzRmStorageContainerImmutabilityPolicy** cmdlet removes removes ImmutabilityPolicy of a Storage blob container with an unlocked policy.
 
 ## EXAMPLES
 
-### Example 1: Remove ImmutabilityPolicy of a Storage blob container with Storage account name and container name
+### Example 1: Remove unlocked ImmutabilityPolicy of a Storage blob container with Storage account name and container name
 ```
 PS C:\>$policy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer"
 PS C:\>Remove-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer" -Etag $policy.Etag
 ```
 
-This command removes ImmutabilityPolicy of a Storage blob container with Storage account name and container name.
+This command removes unlocked ImmutabilityPolicy of a Storage blob container with Storage account name and container name.
 
-### Example 2: Remove ImmutabilityPolicy of a Storage blob container, with Storage account object
+### Example 2: Remove unlocked ImmutabilityPolicy of a Storage blob container, with Storage account object
 ```
 PS C:\>$accountObject = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
 PS C:\>$policy = Get-AzRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject -ContainerName "myContainer"
 PS C:\>Remove-AzRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject -ContainerName "myContainer" -Etag $policy.Etag
 ```
 
-This command removes ImmutabilityPolicy of a Storage blob container, with Storage account object. 
+This command removes unlocked ImmutabilityPolicy of a Storage blob container, with Storage account object. 
 
-### Example 3: Remove ImmutabilityPolicyof a Storage blob container, with container object
+### Example 3: Remove unlocked ImmutabilityPolicy of a Storage blob container, with container object
 ```
 PS C:\>$containerObject = Get-AzStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -Name "myContainer"
 PS C:\>$policy = Get-AzRmStorageContainerImmutabilityPolicy -Container $containerObject
 PS C:\>Remove-AzRmStorageContainerImmutabilityPolicy -Container $containerObject -Etag $policy.Etag
 ```
 
-This command removes ImmutabilityPolicy of a Storage blob container with Storage container object.
+This command removes unlocked ImmutabilityPolicy of a Storage blob container with Storage container object.
 
-### Example 4: Remove ImmutabilityPolicy of a Storage blob container, with ImmutabilityPolicy object
+### Example 4: Remove unlocked ImmutabilityPolicy of a Storage blob container, with ImmutabilityPolicy object
 ```
 PS C:\>Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer" | Remove-AzRmStorageContainerImmutabilityPolicy
 ```
 
-This command removes ImmutabilityPolicy of a Storage blob container, with ImmutabilityPolicy object.
+This command removes unlocked ImmutabilityPolicy of a Storage blob container, with ImmutabilityPolicy object.
 
 ## PARAMETERS
 
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-ImmutabilityPolicy Object to Remove
+Unlocked ImmutabilityPolicy Object to Remove
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSImmutabilityPolicy
