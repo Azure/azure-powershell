@@ -335,6 +335,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            Position = 5,
             HelpMessage = EventGridConstants.SubjectEndsWithHelp,
             ParameterSetName = DomainEventSubscriptionParameterSet)]
         [Parameter(
