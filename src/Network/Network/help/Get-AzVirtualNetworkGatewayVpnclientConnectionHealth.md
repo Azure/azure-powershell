@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.network/ge
 schema: 2.0.0
 ---
 
-# Get-AzVirtualNetworkGatewayVpnclientConnectionHealth
+# Get-AzVirtualNetworkGatewayVpnClientConnectionHealth
 
 ## SYNOPSIS
 Get the list of vpn client connection health of an Azure virtual network gateway for per vpn client connection
@@ -13,7 +13,7 @@ Get the list of vpn client connection health of an Azure virtual network gateway
 ## SYNTAX
 
 ```
-Get-AzVirtualNetworkGatewayVpnclientConnectionHealth -VirtualNetworkGatewayName <String> -ResourceGroupName <String> -InputObject <PSVirtualNetworkGateway> -ResourceId <ResourceId>
+Get-AzVirtualNetworkGatewayVpnClientConnectionHealth -ResourceName <String> -ResourceGroupName <String> -InputObject <PSVirtualNetworkGateway> -ResourceId <ResourceId>
  [-AsJob] [<CommonParameters>]
 ```
 
@@ -36,23 +36,36 @@ maxPacketsPerSecond
 
 ### Example 1
 ```
-PS C:\> Get-AzVirtualNetworkGatewayVpnclientConnectionHealth -ResourceGroupName resourceGroup -VirtualNetworkGatewayName gatewayName
+PS C:\> Get-AzVirtualNetworkGatewayVpnClientConnectionHealth -ResourceName gatewayName -ResourceGroupName resourceGroup
 
-	vpnConnectionId: IKEv2_1e1cfe59-5c7c-4315-a876-b11fbfdfeed4,
-	vpnConnectionDuration: 900,
-	vpnConnectionTime: 2019-05-02T22:26:22,
-	publicIpAddress: 167.220.2.232:45522,
-	privateIpAddress: 192.168.210.2,
-	vpnUserName: gwp2sclientcert,
-	maxBandwidth: 240000000,
-	egressPacketsTransferred: 557,
-	egressBytesTransferred: 33420,
-	ingressPacketsTransferred: 557,
-	ingressBytesTransferred: 33420,
-	maxPacketsPerSecond: 4
+VpnConnectionId           : OVPN_0085393D-B345-4846-0426-140616833F4C
+VpnConnectionDuration     : 27878
+VpnConnectionTime         : 05/30/2019 16:03:11
+PublicIpAddress           : 13.78.148.224:39672
+PrivateIpAddress          : 10.1.1.131
+VpnUserName               : GWP2SChildCert
+MaxBandwidth              : 48000000
+EgressPacketsTransferred  : 104084
+EgressBytesTransferred    : 4059276
+IngressPacketsTransferred : 1410
+IngressBytesTransferred   : 67680
+MaxPacketsPerSecond       : 1
+
+VpnConnectionId           : OVPN_00F692AC-2D6F-DE7B-DCAF-07BE896233A0
+VpnConnectionDuration     : 27878
+VpnConnectionTime         : 05/30/2019 16:03:11
+PublicIpAddress           : 13.78.148.224:39692
+PrivateIpAddress          : 10.1.1.79
+VpnUserName               : GWP2SChildCert
+MaxBandwidth              : 48000000
+EgressPacketsTransferred  : 104623
+EgressBytesTransferred    : 4080297
+IngressPacketsTransferred : 1416
+IngressBytesTransferred   : 67968
+MaxPacketsPerSecond       : 1
 ```
 
-For the Azure virtual network gateway named gatewayname in resource group resourceGroup, retrieves the currently connected vpn client connection by using IkeV2. 
+For the Azure virtual network gateway named gatewayname in resource group resourceGroup, retrieves the currently connected vpn client connection by using OpenVpn. 
 
 ## PARAMETERS
 
