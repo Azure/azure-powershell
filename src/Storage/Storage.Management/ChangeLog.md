@@ -28,6 +28,8 @@
     - New-AzStorageAccount
     - Get-AzStorageAccount
     - Set-AzStorageAccount
+* Clarified description of blob immutability cmdlet
+    -  Remove-AzRmStorageContainerImmutabilityPolicy
 
 ## Version 1.2.0
 * Report detail error when create Storage context with parameter -UseConnectedAccount, but without login Azure account
