@@ -1,3 +1,7 @@
+## 2.1.1 - May 2019
+#### Az.Compute
+* Corrected spelling
+
 ## 2.1.0 - May 2019
 #### Az.ApiManagement
 * Created new Cmdlets for managing diagnostics at the global and API Scope
