@@ -99,6 +99,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Storage", "Storage
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Compute", "Compute\Commands.Compute\Commands.Compute.csproj", "{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AzureStack", "Registration\Commands.AzureStack\Commands.AzureStack.csproj", "{77B1229A-3773-4F16-9807-0266488D4259}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -589,6 +591,18 @@ Global
 		{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}.Release|x64.Build.0 = Release|Any CPU
 		{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}.Release|x86.ActiveCfg = Release|Any CPU
 		{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}.Release|x86.Build.0 = Release|Any CPU
+		{77B1229A-3773-4F16-9807-0266488D4259}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77B1229A-3773-4F16-9807-0266488D4259}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77B1229A-3773-4F16-9807-0266488D4259}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{77B1229A-3773-4F16-9807-0266488D4259}.Debug|x64.Build.0 = Debug|Any CPU
+		{77B1229A-3773-4F16-9807-0266488D4259}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{77B1229A-3773-4F16-9807-0266488D4259}.Debug|x86.Build.0 = Debug|Any CPU
+		{77B1229A-3773-4F16-9807-0266488D4259}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77B1229A-3773-4F16-9807-0266488D4259}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77B1229A-3773-4F16-9807-0266488D4259}.Release|x64.ActiveCfg = Release|Any CPU
+		{77B1229A-3773-4F16-9807-0266488D4259}.Release|x64.Build.0 = Release|Any CPU
+		{77B1229A-3773-4F16-9807-0266488D4259}.Release|x86.ActiveCfg = Release|Any CPU
+		{77B1229A-3773-4F16-9807-0266488D4259}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -634,6 +648,7 @@ Global
 		{37C44181-3F1B-4ABD-8089-26DFAB4B6BA8} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A} = {CA556A0B-C7A8-4A8B-AE06-0359ADC6A6D2}
 		{52643BD5-6378-49BD-9F6E-DAC9DD8A867B} = {1A379CEB-B903-41FB-81FC-DF49F003E6B0}
+		{77B1229A-3773-4F16-9807-0266488D4259} = {1A379CEB-B903-41FB-81FC-DF49F003E6B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E3BEFC51-2FF1-4E69-B5D2-36E4D7446B7C}
