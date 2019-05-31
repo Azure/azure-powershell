@@ -41,6 +41,7 @@ using SdkGeoFilter = Microsoft.Azure.Management.Cdn.Models.GeoFilter;
 using SdkGeoFilterAction = Microsoft.Azure.Management.Cdn.Models.GeoFilterActions;
 using SdkDeliveryPolicy = Microsoft.Azure.Management.Cdn.Models.EndpointPropertiesUpdateParametersDeliveryPolicy;
 using Microsoft.Azure.Commands.Cdn.EdgeNodes;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Cdn.Helpers
 {
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
 
         public static PSSku ToPsSku(this SdkSku sdkSku)
         {
-            return new PSSku { Name = (PSSkuName) Enum.Parse(typeof(PSSkuName), sdkSku.Name) };
+            return new PSSku { Name = (PSSkuName)Enum.Parse(typeof(PSSkuName), sdkSku.Name) };
         }
 
         public static SdkProfile ToSdkProfile(this PSProfile psProfile)
@@ -66,8 +67,8 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
             return new SdkProfile(
                 psProfile.Location,
                 psProfile.Sku.ToSdkSku(),
-                psProfile.Id, 
-                psProfile.Name, 
+                psProfile.Id,
+                psProfile.Name,
                 psProfile.Type,
                 psProfile.Tags.ToDictionaryTags(),
                 psProfile.ResourceState.ToString(),
@@ -77,9 +78,9 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
         public static SdkDeepCreatedOrigin ToSdkDeepCreatedOrigin(this PSDeepCreatedOrigin psDeepCreatedOrigin)
         {
             return new SdkDeepCreatedOrigin(
-                psDeepCreatedOrigin.Name, 
+                psDeepCreatedOrigin.Name,
                 psDeepCreatedOrigin.HostName,
-                psDeepCreatedOrigin.HttpPort, 
+                psDeepCreatedOrigin.HttpPort,
                 psDeepCreatedOrigin.HttpsPort);
         }
 
@@ -104,10 +105,10 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 Id = sdkProfile.Id,
                 Name = sdkProfile.Name,
                 Type = sdkProfile.Type,
-                ProvisioningState = (PSProvisioningState) Enum.Parse(typeof(PSProvisioningState), sdkProfile.ProvisioningState),
+                ProvisioningState = (PSProvisioningState)Enum.Parse(typeof(PSProvisioningState), sdkProfile.ProvisioningState),
                 Tags = sdkProfile.Tags.ToHashTableTags(),
                 Location = sdkProfile.Location,
-                ResourceState = (PSProfileResourceState) Enum.Parse(typeof(PSProfileResourceState), sdkProfile.ResourceState),
+                ResourceState = (PSProfileResourceState)Enum.Parse(typeof(PSProfileResourceState), sdkProfile.ResourceState),
 
                 // Entity specific properties
                 Sku = sdkProfile.Sku.ToPsSku()
@@ -128,10 +129,10 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 Id = sdkEndpoint.Id,
                 Name = sdkEndpoint.Name,
                 Type = sdkEndpoint.Type,
-                ProvisioningState = (PSProvisioningState) Enum.Parse(typeof(PSProvisioningState), sdkEndpoint.ProvisioningState),
+                ProvisioningState = (PSProvisioningState)Enum.Parse(typeof(PSProvisioningState), sdkEndpoint.ProvisioningState),
                 Tags = sdkEndpoint.Tags.ToHashTableTags(),
                 Location = sdkEndpoint.Location,
-                ResourceState = (PSEndpointResourceState) Enum.Parse(typeof(PSEndpointResourceState), sdkEndpoint.ResourceState),
+                ResourceState = (PSEndpointResourceState)Enum.Parse(typeof(PSEndpointResourceState), sdkEndpoint.ResourceState),
 
                 // Entity specific properties
                 HostName = sdkEndpoint.HostName,
@@ -158,7 +159,7 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
             return new PSGeoFilter
             {
                 RelativePath = sdkGeoFilter.RelativePath,
-                Action = (PSGeoFilterAction) Enum.Parse(typeof (PSGeoFilterAction), sdkGeoFilter.Action.ToString()),
+                Action = (PSGeoFilterAction)Enum.Parse(typeof(PSGeoFilterAction), sdkGeoFilter.Action.ToString()),
                 CountryCodes = sdkGeoFilter.CountryCodes.ToArray()
             };
         }
@@ -166,50 +167,185 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
         public static PSDeliveryRuleAction ToPsDeliveryRuleAction(this DeliveryRuleAction deliveryRuleAction)
         {
 
-            var deliveryRuleCacheExpirationAction = deliveryRuleAction as DeliveryRuleCacheExpirationAction;
-            if (deliveryRuleCacheExpirationAction !=null)
+            if (deliveryRuleAction is DeliveryRuleRequestHeaderAction requestHeaderAction)
             {
-                
+                return new PSDeliveryRuleHeaderAction
+                {
+                    HeaderActionType = "ModifyRequestHeader",
+                    Action = requestHeaderAction.Parameters.HeaderAction,
+                    HeaderName = requestHeaderAction.Parameters.HeaderName,
+                    Value = requestHeaderAction.Parameters.Value
+                };
+            }
+            else if (deliveryRuleAction is DeliveryRuleResponseHeaderAction responseHeaderAction)
+            {
+                return new PSDeliveryRuleHeaderAction
+                {
+                    HeaderActionType = "ModifyRequestHeader",
+                    Action = responseHeaderAction.Parameters.HeaderAction,
+                    HeaderName = responseHeaderAction.Parameters.HeaderName,
+                    Value = responseHeaderAction.Parameters.Value
+                };
+            }
+            else if (deliveryRuleAction is DeliveryRuleCacheExpirationAction cacheExpirationAction)
+            {
                 return new PSDeliveryRuleCacheExpirationAction
                 {
                     Parameters = new PSCacheExpirationActionParameters
                     {
-                       CacheBehavior = deliveryRuleCacheExpirationAction.Parameters.CacheBehavior,
-                       CacheDuration = deliveryRuleCacheExpirationAction.Parameters.CacheDuration
+                        CacheBehavior = cacheExpirationAction.Parameters.CacheBehavior,
+                        CacheDuration = cacheExpirationAction.Parameters.CacheDuration
                     }
                 };
             }
-            return new PSDeliveryRuleAction();
+            else if (deliveryRuleAction is UrlRedirectAction urlRedirectAction)
+            {
+                return new PSDeliveryRuleUrlRedirectAction
+                {
+                    RedirectType = urlRedirectAction.Parameters.RedirectType
+                };
+            }
+            else
+            {
+                return new PSDeliveryRuleAction();
+            }
         }
 
         public static PSDeliveryRuleCondition ToPsDeliveryRuleCondition(this DeliveryRuleCondition deliveryRuleCondition)
         {
-            var deliveryRuleUrlFileExtensionCondition = deliveryRuleCondition as DeliveryRuleUrlFileExtensionCondition;
-            if (deliveryRuleUrlFileExtensionCondition != null)
+            if (deliveryRuleCondition is DeliveryRuleRemoteAddressCondition deliveryRuleRemoteAddressCondition)
             {
-                return new PSDeliveryRuleUrlFileExtensionCondition
+                return new PSDeliveryRuleCondition
                 {
-                    Parameters = new PSUrlFileExtensionConditionParameters
-                    {
-                        Extensions = deliveryRuleUrlFileExtensionCondition.Parameters.Extensions
-                    }
+                    MatchVariable = "RemoteAddress",
+                    Operator = deliveryRuleRemoteAddressCondition.Parameters.OperatorProperty,
+                    NegateCondition = deliveryRuleRemoteAddressCondition.Parameters.NegateCondition,
+                    MatchValue = deliveryRuleRemoteAddressCondition.Parameters.MatchValues,
+                    Transfroms = deliveryRuleRemoteAddressCondition.Parameters.Transforms
                 };
             }
-
-            var deliveryRuleUrlPathCondition = deliveryRuleCondition as DeliveryRuleUrlPathCondition;
-            if (deliveryRuleUrlPathCondition != null)
+            else if (deliveryRuleCondition is DeliveryRuleRequestMethodCondition deliveryRuleRequestMethodCondition)
             {
-                return new PSDeliveryRuleUrlPathCondition
+                return new PSDeliveryRuleCondition
                 {
-                    Parameters = new PSUrlPathConditionParameters
-                    {
-                        MatchType = deliveryRuleUrlPathCondition.Parameters.MatchType,
-                        Path = deliveryRuleUrlPathCondition.Parameters.Path
-                    }
+                    MatchVariable = "RequestMethod",
+                    Operator = "Equal",
+                    NegateCondition = deliveryRuleRequestMethodCondition.Parameters.NegateCondition,
+                    MatchValue = deliveryRuleRequestMethodCondition.Parameters.MatchValues
                 };
             }
-            
-            return new PSDeliveryRuleCondition();
+            else if (deliveryRuleCondition is DeliveryRuleQueryStringCondition deliveryRuleQueryStringCondition)
+            {
+                return new PSDeliveryRuleCondition
+                {
+                    MatchVariable = "QueryString",
+                    Operator = deliveryRuleQueryStringCondition.Parameters.OperatorProperty,
+                    NegateCondition = deliveryRuleQueryStringCondition.Parameters.NegateCondition,
+                    MatchValue = deliveryRuleQueryStringCondition.Parameters.MatchValues,
+                    Transfroms = deliveryRuleQueryStringCondition.Parameters.Transforms
+                };
+            }
+            else if (deliveryRuleCondition is DeliveryRulePostArgsCondition deliveryRulePostArgsCondition)
+            {
+                return new PSDeliveryRuleCondition
+                {
+                    MatchVariable = "PostArgs",
+                    Operator = deliveryRulePostArgsCondition.Parameters.OperatorProperty,
+                    Selector = deliveryRulePostArgsCondition.Parameters.Selector,
+                    NegateCondition = deliveryRulePostArgsCondition.Parameters.NegateCondition,
+                    MatchValue = deliveryRulePostArgsCondition.Parameters.MatchValues,
+                    Transfroms = deliveryRulePostArgsCondition.Parameters.Transforms
+                };
+            }
+            else if (deliveryRuleCondition is DeliveryRuleRemoteAddressCondition deliveryRuleRequestUriCondition)
+            {
+                return new PSDeliveryRuleCondition
+                {
+                    MatchVariable = "RequestUri",
+                    Operator = deliveryRuleRequestUriCondition.Parameters.OperatorProperty,
+                    NegateCondition = deliveryRuleRequestUriCondition.Parameters.NegateCondition,
+                    MatchValue = deliveryRuleRequestUriCondition.Parameters.MatchValues,
+                    Transfroms = deliveryRuleRequestUriCondition.Parameters.Transforms
+                };
+            }
+            else if (deliveryRuleCondition is DeliveryRuleRequestHeaderCondition deliveryRuleRequestHeaderCondition)
+            {
+                return new PSDeliveryRuleCondition
+                {
+                    MatchVariable = "RequestHeader",
+                    Operator = deliveryRuleRequestHeaderCondition.Parameters.OperatorProperty,
+                    NegateCondition = deliveryRuleRequestHeaderCondition.Parameters.NegateCondition,
+                    Selector = deliveryRuleRequestHeaderCondition.Parameters.Selector,
+                    MatchValue = deliveryRuleRequestHeaderCondition.Parameters.MatchValues,
+                    Transfroms = deliveryRuleRequestHeaderCondition.Parameters.Transforms
+                };
+            }
+            else if (deliveryRuleCondition is DeliveryRuleRequestBodyCondition deliveryRuleRequestBodyCondition)
+            {
+                return new PSDeliveryRuleCondition
+                {
+                    MatchVariable = "RequestBody",
+                    Operator = deliveryRuleRequestBodyCondition.Parameters.OperatorProperty,
+                    NegateCondition = deliveryRuleRequestBodyCondition.Parameters.NegateCondition,
+                    MatchValue = deliveryRuleRequestBodyCondition.Parameters.MatchValues,
+                    Transfroms = deliveryRuleRequestBodyCondition.Parameters.Transforms
+                };
+            }
+            else if (deliveryRuleCondition is DeliveryRuleRequestSchemeCondition deliveryRuleRequestSchemeCondition)
+            {
+                return new PSDeliveryRuleCondition
+                {
+                    MatchVariable = "RequestScheme",
+                    NegateCondition = deliveryRuleRequestSchemeCondition.Parameters.NegateCondition,
+                    MatchValue = deliveryRuleRequestSchemeCondition.Parameters.MatchValues
+                };
+            }
+            else if (deliveryRuleCondition is DeliveryRuleUrlPathCondition deliveryRuleUrlPathCondition)
+            {
+                return new PSDeliveryRuleCondition
+                {
+                    MatchVariable = "UrlPath",
+                    Operator = deliveryRuleUrlPathCondition.Parameters.OperatorProperty,
+                    NegateCondition = deliveryRuleUrlPathCondition.Parameters.NegateCondition,
+                    MatchValue = deliveryRuleUrlPathCondition.Parameters.MatchValues,
+                    Transfroms = deliveryRuleUrlPathCondition.Parameters.Transforms
+                };
+            }
+            else if (deliveryRuleCondition is DeliveryRuleUrlFileExtensionCondition deliveryRuleUrlFileExtensionCondition)
+            {
+                return new PSDeliveryRuleCondition
+                {
+                    MatchVariable = "UrlFileExtension",
+                    Operator = deliveryRuleUrlFileExtensionCondition.Parameters.OperatorProperty,
+                    NegateCondition = deliveryRuleUrlFileExtensionCondition.Parameters.NegateCondition,
+                    MatchValue = deliveryRuleUrlFileExtensionCondition.Parameters.MatchValues,
+                    Transfroms = deliveryRuleUrlFileExtensionCondition.Parameters.Transforms
+                };
+            }
+            else if (deliveryRuleCondition is DeliveryRuleUrlFileNameCondition deliveryRuleUrlFileNameCondition)
+            {
+                return new PSDeliveryRuleCondition
+                {
+                    MatchVariable = "UrlFileName",
+                    Operator = deliveryRuleUrlFileNameCondition.Parameters.OperatorProperty,
+                    NegateCondition = deliveryRuleUrlFileNameCondition.Parameters.NegateCondition,
+                    MatchValue = deliveryRuleUrlFileNameCondition.Parameters.MatchValues,
+                    Transfroms = deliveryRuleUrlFileNameCondition.Parameters.Transforms
+                };
+            }
+            else if (deliveryRuleCondition is DeliveryRuleIsDeviceCondition deliveryRuleIsDeviceCondition)
+            {
+                return new PSDeliveryRuleCondition
+                {
+                    MatchVariable = "IsDevice",
+                    NegateCondition = deliveryRuleIsDeviceCondition.Parameters.NegateCondition,
+                    MatchValue = deliveryRuleIsDeviceCondition.Parameters.MatchValues
+                };
+            }
+            else
+            {
+                return new PSDeliveryRuleCondition();
+            }
         }
 
         public static PSDeliveryRule ToPsDeliveryRule(this DeliveryRule deliveryRule)
@@ -217,8 +353,9 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
 
             return new PSDeliveryRule
             {
+                Name = deliveryRule.Name,
                 Order = deliveryRule.Order,
-                Actions = deliveryRule.Actions.Select(action =>action.ToPsDeliveryRuleAction()).ToList(),
+                Actions = deliveryRule.Actions.Select(action => action.ToPsDeliveryRuleAction()).ToList(),
                 Conditions = deliveryRule.Conditions.Select(condition => condition.ToPsDeliveryRuleCondition()).ToList()
             };
         }
@@ -251,38 +388,145 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
         public static DeliveryRuleCondition ToDeliveryRuleCondition(
             this PSDeliveryRuleCondition psDeliveryRuleCondition)
         {
-            var psDeliveryRuleUrlFileExtensionCondition = psDeliveryRuleCondition as PSDeliveryRuleUrlFileExtensionCondition;
-            if (psDeliveryRuleUrlFileExtensionCondition != null)
+            switch (psDeliveryRuleCondition.MatchVariable)
             {
-                return new DeliveryRuleUrlFileExtensionCondition
-                {
-                    Parameters = new UrlFileExtensionConditionParameters
+                case "RemoteAddress":
+                    return new DeliveryRuleRemoteAddressCondition
                     {
-                        Extensions = psDeliveryRuleUrlFileExtensionCondition.Parameters.Extensions
-                    }
-                };
-            }
-
-            var psDeliveryRuleUrlPathCondition = psDeliveryRuleCondition as PSDeliveryRuleUrlPathCondition;
-            if (psDeliveryRuleUrlPathCondition != null)
-            {
-                return new DeliveryRuleUrlPathCondition
-                {
-                    Parameters = new UrlPathConditionParameters
+                        Parameters = new RemoteAddressMatchConditionParameters
+                        {
+                            OperatorProperty = psDeliveryRuleCondition.Operator,
+                            MatchValues = psDeliveryRuleCondition.MatchValue,
+                            NegateCondition = psDeliveryRuleCondition.NegateCondition,
+                            Transforms = psDeliveryRuleCondition.Transfroms
+                        }
+                    };
+                case "RequestMethod":
+                    return new DeliveryRuleRequestMethodCondition
                     {
-                        Path = psDeliveryRuleUrlPathCondition.Parameters.Path,
-                        MatchType = psDeliveryRuleUrlPathCondition.Parameters.MatchType
-                    }
-                };
+                        Parameters = new RequestMethodMatchConditionParameters
+                        {
+                            MatchValues = psDeliveryRuleCondition.MatchValue,
+                            NegateCondition = psDeliveryRuleCondition.NegateCondition
+                        }
+                    };
+                case "QueryString":
+                    return new DeliveryRuleQueryStringCondition
+                    {
+                        Parameters = new QueryStringMatchConditionParameters
+                        {
+                            OperatorProperty = psDeliveryRuleCondition.Operator,
+                            MatchValues = psDeliveryRuleCondition.MatchValue,
+                            NegateCondition = psDeliveryRuleCondition.NegateCondition,
+                            Transforms = psDeliveryRuleCondition.Transfroms
+                        }
+                    };
+                case "PostArgs":
+                    return new DeliveryRulePostArgsCondition
+                    {
+                        Parameters = new PostArgsMatchConditionParameters
+                        {
+                            OperatorProperty = psDeliveryRuleCondition.Operator,
+                            MatchValues = psDeliveryRuleCondition.MatchValue,
+                            Selector = psDeliveryRuleCondition.Selector,
+                            NegateCondition = psDeliveryRuleCondition.NegateCondition,
+                            Transforms = psDeliveryRuleCondition.Transfroms
+                        }
+                    };
+                case "RequestUri":
+                    return new DeliveryRuleRequestUriCondition
+                    {
+                        Parameters = new RequestUriMatchConditionParameters
+                        {
+                            OperatorProperty = psDeliveryRuleCondition.Operator,
+                            MatchValues = psDeliveryRuleCondition.MatchValue,
+                            NegateCondition = psDeliveryRuleCondition.NegateCondition,
+                            Transforms = psDeliveryRuleCondition.Transfroms
+                        }
+                    };
+                case "RequestHeader":
+                    return new DeliveryRuleRequestHeaderCondition
+                    {
+                        Parameters = new RequestHeaderMatchConditionParameters
+                        {
+                            OperatorProperty = psDeliveryRuleCondition.Operator,
+                            MatchValues = psDeliveryRuleCondition.MatchValue,
+                            Selector = psDeliveryRuleCondition.Selector,
+                            NegateCondition = psDeliveryRuleCondition.NegateCondition,
+                            Transforms = psDeliveryRuleCondition.Transfroms
+                        }
+                    };
+                case "RequestBody":
+                    return new DeliveryRuleRequestBodyCondition
+                    {
+                        Parameters = new RequestBodyMatchConditionParameters
+                        {
+                            OperatorProperty = psDeliveryRuleCondition.Operator,
+                            MatchValues = psDeliveryRuleCondition.MatchValue,
+                            NegateCondition = psDeliveryRuleCondition.NegateCondition,
+                            Transforms = psDeliveryRuleCondition.Transfroms
+                        }
+                    };
+                case "RequestScheme":
+                    return new DeliveryRuleRequestSchemeCondition
+                    {
+                        Parameters = new RequestSchemeMatchConditionParameters
+                        {
+                            MatchValues = psDeliveryRuleCondition.MatchValue,
+                            NegateCondition = psDeliveryRuleCondition.NegateCondition,
+                        }
+                    };
+                case "UrlPath":
+                    return new DeliveryRuleUrlPathCondition
+                    {
+                        Parameters = new UrlPathMatchConditionParameters
+                        {
+                            OperatorProperty = psDeliveryRuleCondition.Operator,
+                            MatchValues = psDeliveryRuleCondition.MatchValue,
+                            NegateCondition = psDeliveryRuleCondition.NegateCondition,
+                            Transforms = psDeliveryRuleCondition.Transfroms
+                        }
+                    };
+                case "UrlFileExtension":
+                    return new DeliveryRuleUrlFileExtensionCondition
+                    {
+                        Parameters = new UrlFileExtensionMatchConditionParameters
+                        {
+                            OperatorProperty = psDeliveryRuleCondition.Operator,
+                            MatchValues = psDeliveryRuleCondition.MatchValue,
+                            NegateCondition = psDeliveryRuleCondition.NegateCondition,
+                            Transforms = psDeliveryRuleCondition.Transfroms
+                        }
+                    };
+                case "UrlFileName":
+                    return new DeliveryRuleUrlFileNameCondition
+                    {
+                        Parameters = new UrlFileNameMatchConditionParameters
+                        {
+                            OperatorProperty = psDeliveryRuleCondition.Operator,
+                            MatchValues = psDeliveryRuleCondition.MatchValue,
+                            NegateCondition = psDeliveryRuleCondition.NegateCondition,
+                            Transforms = psDeliveryRuleCondition.Transfroms
+                        }
+                    };
+                case "IsDevice":
+                    return new DeliveryRuleIsDeviceCondition
+                    {
+                        Parameters = new IsDeviceMatchConditionParameters
+                        {
+                            MatchValues = psDeliveryRuleCondition.MatchValue,
+                            NegateCondition = psDeliveryRuleCondition.NegateCondition,
+                            Transforms = psDeliveryRuleCondition.Transfroms
+                        }
+                    };
+                default:
+                    return new DeliveryRuleCondition();
             }
-
-            return new DeliveryRuleCondition();
         }
 
         public static DeliveryRuleAction ToDeliveryRuleAction(this PSDeliveryRuleAction psDeliveryRuleAction)
         {
-            var psDeliveryRuleCacheExpirationAction = psDeliveryRuleAction as PSDeliveryRuleCacheExpirationAction;
-            if (psDeliveryRuleCacheExpirationAction != null)
+            if (psDeliveryRuleAction is PSDeliveryRuleCacheExpirationAction psDeliveryRuleCacheExpirationAction)
             {
                 return new DeliveryRuleCacheExpirationAction
                 {
@@ -293,6 +537,48 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                     }
                 };
             }
+            else if (psDeliveryRuleAction is PSDeliveryRuleHeaderAction psDeliveryRuleHeaderAction)
+            {
+                if (psDeliveryRuleHeaderAction.HeaderActionType == "ModifyRequestHeader")
+                {
+                    return new DeliveryRuleRequestHeaderAction
+                    {
+                        Parameters = new HeaderActionParameters
+                        {
+                            HeaderAction = psDeliveryRuleHeaderAction.Action,
+                            HeaderName = psDeliveryRuleHeaderAction.HeaderName,
+                            Value = psDeliveryRuleHeaderAction.Value
+                        }
+                    };
+                }
+                else if (psDeliveryRuleHeaderAction.HeaderActionType == "ModifyResponseHeader")
+                {
+                    return new DeliveryRuleRequestHeaderAction
+                    {
+                        Parameters = new HeaderActionParameters
+                        {
+                            HeaderAction = psDeliveryRuleHeaderAction.Action,
+                            HeaderName = psDeliveryRuleHeaderAction.HeaderName,
+                            Value = psDeliveryRuleHeaderAction.Value
+                        }
+                    };
+                }
+            }
+            else if (psDeliveryRuleAction is PSDeliveryRuleUrlRedirectAction psDeliveryRuleUrlRedirectAction)
+            {
+                return new UrlRedirectAction
+                {
+                    Parameters = new UrlRedirectActionParameters
+                    {
+                        RedirectType = psDeliveryRuleUrlRedirectAction.RedirectType,
+                        DestinationProtocol = psDeliveryRuleUrlRedirectAction.DestinationProtocol,
+                        CustomPath = psDeliveryRuleUrlRedirectAction.CustomPath,
+                        CustomHostname = psDeliveryRuleUrlRedirectAction.CustomHostname,
+                        CustomQueryString = psDeliveryRuleUrlRedirectAction.CustomQueryString,
+                        CustomFragment = psDeliveryRuleUrlRedirectAction.CustomFragment
+                    }
+                };
+            }
             return new DeliveryRuleAction();
         }
 
@@ -300,6 +586,7 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
         {
             return new DeliveryRule
             {
+                Name = psDeliveryRule.Name,
                 Order = psDeliveryRule.Order,
                 Actions = psDeliveryRule.Actions.Select(action => action.ToDeliveryRuleAction()).ToList(),
                 Conditions = psDeliveryRule.Conditions.Select(condition => condition.ToDeliveryRuleCondition()).ToList()
@@ -338,8 +625,8 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 Id = origin.Id,
                 Name = origin.Name,
                 Type = origin.Type,
-                ProvisioningState = (PSProvisioningState) Enum.Parse(typeof(PSProvisioningState), origin.ProvisioningState),
-                ResourceState = (PSOriginResourceState) Enum.Parse(typeof(PSOriginResourceState), origin.ResourceState),
+                ProvisioningState = (PSProvisioningState)Enum.Parse(typeof(PSProvisioningState), origin.ProvisioningState),
+                ResourceState = (PSOriginResourceState)Enum.Parse(typeof(PSOriginResourceState), origin.ResourceState),
                 HostName = origin.HostName,
                 HttpPort = origin.HttpPort,
                 HttpsPort = origin.HttpsPort
@@ -356,7 +643,7 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 Id = customDomain.Id,
                 Name = customDomain.Name,
                 Type = customDomain.Type,
-                ProvisioningState = (PSProvisioningState) Enum.Parse(typeof(PSProvisioningState), customDomain.ProvisioningState),
+                ProvisioningState = (PSProvisioningState)Enum.Parse(typeof(PSProvisioningState), customDomain.ProvisioningState),
                 CustomHttpsProvisioningState = (PSCustomHttpsProvisioningState)Enum.Parse(typeof(PSCustomHttpsProvisioningState), customDomain.CustomHttpsProvisioningState),
                 CustomHttpsProvisioningSubstate = (PSCustomHttpsProvisioningSubstate)Enum.Parse(typeof(PSCustomHttpsProvisioningSubstate), customDomain.CustomHttpsProvisioningSubstate),
                 ResourceState = (PSCustomDomainResourceState)Enum.Parse(typeof(PSCustomDomainResourceState), customDomain.ResourceState),
@@ -367,8 +654,7 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
 
         public static IDictionary<string, string> ToDictionaryTags(this Hashtable table)
         {
-            return table == null ? null :
-                table.Cast<DictionaryEntry>()
+            return table?.Cast<DictionaryEntry>()
                 .ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value);
         }
 
@@ -447,6 +733,65 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 CurrentValue = resourceUsage.CurrentValue.Value,
                 Limit = resourceUsage.Limit.Value
             };
+        }
+
+        public static void ValidateDeliveryRuleCondition(this PSDeliveryRuleCondition condition)
+        {
+            switch (condition.MatchVariable)
+            {
+                case "RemoteAddress":
+                    if (condition.Operator != "Any" && condition.Operator != "IPMatch" && condition.Operator != "GeoMatch")
+                    {
+                        throw new PSArgumentException(string.Format(
+                                "Invalid Operator {0} found for {1} match variable. Valid operators are IPMatch, Any, GeoMatch", condition.Operator, condition.MatchVariable
+                                ));
+                    }
+                    break;
+                case "QueryString":
+                case "RequestUri":
+                case "RequestBody":
+                case "UrlPath":
+                case "UrlFileExtension":
+                case "UrlFileName":
+                    if (condition.Operator != "Any" && condition.Operator != "Equal" && condition.Operator != "Contains" &&
+                        condition.Operator != "BeginsWith" && condition.Operator != "EndsWith" && condition.Operator != "LessThan" &&
+                        condition.Operator != "LessThanOrEqual" && condition.Operator != "GreaterThan" && condition.Operator != "GreaterThanOrEqual")
+                    {
+                        throw new PSArgumentException(string.Format(
+                                "Invalid Operator {0} found for {1} match condition. Valid operators are IPMatch, Any, GeoMatch", condition.Operator, condition.MatchVariable
+                                ));
+                    }
+                    break;
+                case "RequestHeader":
+                case "PostArgs":
+                    if (condition.Selector == null)
+                    {
+                        throw new PSArgumentException(string.Format(
+                                "Selector is requried for {0} match condition", condition.MatchVariable
+                                ));
+                    }
+                    if (condition.Operator != "Any" && condition.Operator != "Equal" && condition.Operator != "Contains" &&
+                        condition.Operator != "BeginsWith" && condition.Operator != "EndsWith" && condition.Operator != "LessThan" &&
+                        condition.Operator != "LessThanOrEqual" && condition.Operator != "GreaterThan" && condition.Operator != "GreaterThanOrEqual")
+                    {
+                        throw new PSArgumentException(string.Format(
+                                "Invalid Operator {0} found for {1} match condition. Valid operators are Any, Equal, Contains, BeginsWith, EndsWith, LessThan, LessThanOrEqual, GreaterThan, GreaterThanOrEqual.",
+                                condition.Operator, condition.MatchVariable));
+                    }
+                    break;
+                case "RequestScheme":
+                case "IsDevice":
+                case "RequestMethod":
+                    if (condition.Operator !="Equal")
+                    {
+                        throw new PSArgumentException(string.Format(
+                                "Invalid Operator {0} found for {1} match condition. Valid operator is Equal", condition.Operator, condition.MatchVariable
+                                ));
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

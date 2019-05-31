@@ -221,6 +221,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [AllowNull]
         public string DataCollection { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has sucessufuly been completed, use some other mechanism.")]
+        public SwitchParameter NoWait { get; set; }
+
         //Private Variables
         private const string VersionRegexExpr = @"^(([0-9])\.)\d+$";
 
@@ -368,34 +371,45 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             var count = 1;
             Rest.Azure.AzureOperationResponse<VirtualMachineExtension> op = null;
 
-            while (true)
+            if (NoWait.IsPresent)
             {
-                try
-                {
-                    op = VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                op = VirtualMachineExtensionClient.BeginCreateOrUpdateWithHttpMessagesAsync(
                         ResourceGroupName,
                         VMName,
                         Name ?? DscExtensionCmdletConstants.ExtensionPublishedNamespace + "." + DscExtensionCmdletConstants.ExtensionPublishedName,
                         parameters).GetAwaiter().GetResult();
-
-                    break;
-                }
-                catch (Rest.Azure.CloudException ex)
+            }
+            else
+            {
+                while (true)
                 {
-                    var errorReturned = JsonConvert.DeserializeObject<PSComputeLongRunningOperation>(
-                        ex.Response.Content);
-
-                    if ("Failed".Equals(errorReturned.Status)
-                        && errorReturned.Error != null && "InternalExecutionError".Equals(errorReturned.Error.Code))
+                    try
                     {
-                        count++;
-                        if (count <= 2)
-                        {
-                            continue;
-                        }
-                    }
+                        op = VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                            ResourceGroupName,
+                            VMName,
+                            Name ?? DscExtensionCmdletConstants.ExtensionPublishedNamespace + "." + DscExtensionCmdletConstants.ExtensionPublishedName,
+                            parameters).GetAwaiter().GetResult();
 
-                    ThrowTerminatingError(new ErrorRecord(ex, "InvalidResult", ErrorCategory.InvalidResult, null));
+                        break;
+                    }
+                    catch (Rest.Azure.CloudException ex)
+                    {
+                        var errorReturned = JsonConvert.DeserializeObject<PSComputeLongRunningOperation>(
+                            ex.Response.Content);
+
+                        if ("Failed".Equals(errorReturned.Status)
+                            && errorReturned.Error != null && "InternalExecutionError".Equals(errorReturned.Error.Code))
+                        {
+                            count++;
+                            if (count <= 2)
+                            {
+                                continue;
+                            }
+                        }
+
+                        ThrowTerminatingError(new ErrorRecord(ex, "InvalidResult", ErrorCategory.InvalidResult, null));
+                    }
                 }
             }
 
