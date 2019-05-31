@@ -68,7 +68,9 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
                 {"Microsoft.Authorization", null},
-                {"Microsoft.Network", null}
+                {"Microsoft.Network", null},
+                {"Microsoft.KeyVault", null}
+
             };
             var providersToIgnore = new Dictionary<string, string>
             {
@@ -93,7 +95,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     "AzureRM.Resources.ps1",
                     Helper.RMOperationalInsightsModule,
                     Helper.RMEventHubModule,
-                    Helper.RMMonitorModule);
+                    Helper.RMMonitorModule,
+                    Helper.RMKeyVaultModule);
                 Helper.RunPowerShellTest(scripts);
             }
         }
