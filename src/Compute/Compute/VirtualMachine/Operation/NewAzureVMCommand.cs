@@ -49,7 +49,7 @@ using CM = Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM",SupportsShouldProcess = true,DefaultParameterSetName = "SimpleParameterSet")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", SupportsShouldProcess = true, DefaultParameterSetName = "SimpleParameterSet")]
     [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
@@ -243,14 +243,17 @@ namespace Microsoft.Azure.Commands.Compute
 
         class Parameters : IParameters<VirtualMachine>
         {
-            NewAzureVMCommand _cmdlet { get; }
+            NewAzureVMCommand _cmdlet;
 
-            Client _client { get; }
+            Client _client;
 
-            public Parameters(NewAzureVMCommand cmdlet, Client client)
+            IResourceManagementClient _resourceClient;
+
+            public Parameters(NewAzureVMCommand cmdlet, Client client, IResourceManagementClient resourceClient)
             {
                 _cmdlet = cmdlet;
                 _client = client;
+                _resourceClient = resourceClient;
             }
 
             public ImageAndOsType ImageAndOsType { get; set; }
@@ -261,7 +264,34 @@ namespace Microsoft.Azure.Commands.Compute
                 set { _cmdlet.Location = value; }
             }
 
-            public string DefaultLocation => "eastus";
+            string _defaultLocation = null;
+
+            public string DefaultLocation
+            {
+                get
+                {
+                    if(_defaultLocation == null)
+                    {
+                        var vmResourceType = _resourceClient.Providers.GetAsync("Microsoft.Compute").ConfigureAwait(false).GetAwaiter().GetResult()
+                        .ResourceTypes.Where(a => String.Equals(a.ResourceType, "virtualMachines", StringComparison.OrdinalIgnoreCase))
+                                      .FirstOrDefault();
+                        if (vmResourceType != null)
+                        {
+                            var availableLocations = vmResourceType.Locations.Select(a => a.ToLower().Replace(" ", ""));
+                            if (availableLocations.Any(a => a.Equals("eastus")))
+                            {
+                                _defaultLocation = "eastus";
+                            }
+                            _defaultLocation = availableLocations.FirstOrDefault() ?? "eastus";
+                        }
+                        else
+                        {
+                            _defaultLocation = "eastus";
+                        }
+                    }
+                    return _defaultLocation;
+                }
+            }
 
             public BlobUri DestinationUri;
 
@@ -353,14 +383,15 @@ namespace Microsoft.Azure.Commands.Compute
             PublicIpAddressName = PublicIpAddressName ?? Name;
             SecurityGroupName = SecurityGroupName ?? Name;
 
-            var parameters = new Parameters(this, client);
+            var resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
+                    DefaultProfile.DefaultContext,
+                    AzureEnvironment.Endpoint.ResourceManager);
+
+            var parameters = new Parameters(this, client, resourceClient);
 
 
             if (DiskFile != null)
             {
-                var resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
-                    DefaultProfile.DefaultContext,
-                    AzureEnvironment.Endpoint.ResourceManager);
                 if (!resourceClient.ResourceGroups.CheckExistence(ResourceGroupName))
                 {
                     Location = Location ?? parameters.DefaultLocation;
@@ -383,13 +414,13 @@ namespace Microsoft.Azure.Commands.Compute
                     ResourceGroupName,
                     Name,
                     new StorageAccountCreateParameters
-                {
-                    Sku = new Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku
                     {
-                        Name = SkuName.PremiumLRS
-                    },
-                    Location = Location
-                });
+                        Sku = new Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku
+                        {
+                            Name = SkuName.PremiumLRS
+                        },
+                        Location = Location
+                    });
                 var filePath = new FileInfo(SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiskFile));
                 using (var vds = new VirtualDiskStream(filePath.FullName))
                 {
@@ -486,6 +517,7 @@ namespace Microsoft.Azure.Commands.Compute
                         Tags = this.Tag != null ? this.Tag.ToDictionary() : this.VM.Tags,
                         Identity = ComputeAutoMapperProfile.Mapper.Map<VirtualMachineIdentity>(this.VM.Identity),
                         Zones = this.Zone ?? this.VM.Zones,
+                        ProximityPlacementGroup = this.VM.ProximityPlacementGroup
                     };
 
                     Dictionary<string, List<string>> auxAuthHeader = null;
@@ -562,11 +594,11 @@ namespace Microsoft.Azure.Commands.Compute
             return (SystemAssignedIdentity.IsPresent || isUserAssignedEnabled)
                 ? new VirtualMachineIdentity
                 {
-                    Type = !isUserAssignedEnabled ? 
+                    Type = !isUserAssignedEnabled ?
                            CM.ResourceIdentityType.SystemAssigned :
                            (SystemAssignedIdentity.IsPresent ? CM.ResourceIdentityType.SystemAssignedUserAssigned : CM.ResourceIdentityType.UserAssigned),
 
-                    UserAssignedIdentities = isUserAssignedEnabled 
+                    UserAssignedIdentities = isUserAssignedEnabled
                                              ? new Dictionary<string, VirtualMachineIdentityUserAssignedIdentitiesValue>()
                                              {
                                                  { UserAssignedIdentity, new VirtualMachineIdentityUserAssignedIdentitiesValue() }
@@ -744,7 +776,7 @@ namespace Microsoft.Azure.Commands.Compute
                 storageAccountName = GetRandomStorageAccountName(i);
                 i++;
             }
-            while (i < 10 && (bool) !client.StorageAccounts.CheckNameAvailability(storageAccountName).NameAvailable);
+            while (i < 10 && (bool)!client.StorageAccounts.CheckNameAvailability(storageAccountName).NameAvailable);
 
             var storaeAccountParameter = new StorageAccountCreateParameters
             {

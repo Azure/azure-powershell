@@ -14,10 +14,9 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
-    using System.Collections.Generic;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementIdentityProvider", DefaultParameterSetName = AllIdentityProviders)]
     [OutputType(typeof(PsApiManagementIdentityProvider))]
@@ -28,6 +27,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             }
             else if (ParameterSetName.Equals(IdentityProviderByType))
             {
-                var identityProvider = Client.IdentityProviderByName(Context, Type.ToString("g"));
+                var identityProvider = Client.IdentityProviderByName(Context.ResourceGroupName, Context.ServiceName, Type.ToString("g"));
                 WriteObject(identityProvider);
             }
             else

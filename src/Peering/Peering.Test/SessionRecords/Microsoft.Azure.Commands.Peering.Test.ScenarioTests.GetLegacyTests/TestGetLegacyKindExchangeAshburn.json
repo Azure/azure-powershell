@@ -1,0 +1,68 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/4445bf11-61c4-436f-a940-60194f8aca57/providers/Microsoft.Peering/legacyPeerings?peeringLocation=Ashburn&kind=Exchange&api-version=2019-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDQ0NWJmMTEtNjFjNC00MzZmLWE5NDAtNjAxOTRmOGFjYTU3L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9sZWdhY3lQZWVyaW5ncz9wZWVyaW5nTG9jYXRpb249QXNoYnVybiZraW5kPUV4Y2hhbmdlJmFwaS12ZXJzaW9uPTIwMTktMDMtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "eecebebc-e5b0-407e-b983-0be7b8360b39"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.9.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "b3312f27-1415-4d93-9812-bfcf4506ede8"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14995"
+        ],
+        "x-ms-correlation-request-id": [
+          "760b0359-6b38-4b1d-8f1d-38ae034ccd9c"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190415T165334Z:760b0359-6b38-4b1d-8f1d-38ae034ccd9c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 15 Apr 2019 16:53:34 GMT"
+        ],
+        "Content-Length": [
+          "1591"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"sku\": {\r\n        \"name\": \"Basic_Exchange_Free\",\r\n        \"tier\": \"Basic\",\r\n        \"family\": \"Exchange\",\r\n        \"size\": \"Free\"\r\n      },\r\n      \"kind\": \"Exchange\",\r\n      \"properties\": {\r\n        \"exchange\": {\r\n          \"connections\": [\r\n            {\r\n              \"peeringDBFacilityId\": 1,\r\n              \"connectionState\": \"Active\",\r\n              \"bgpSession\": {\r\n                \"sessionPrefixV4\": \"206.126.236.0/22\",\r\n                \"sessionPrefixV6\": \"2001:504:0:2::/64\",\r\n                \"microsoftSessionIPv4Address\": \"206.126.236.17\",\r\n                \"peerSessionIPv4Address\": \"206.126.236.8\",\r\n                \"sessionStateV4\": \"Established\",\r\n                \"sessionStateV6\": \"None\",\r\n                \"maxPrefixesAdvertisedV4\": 20000,\r\n                \"maxPrefixesAdvertisedV6\": 2000\r\n              }\r\n            },\r\n            {\r\n              \"peeringDBFacilityId\": 1,\r\n              \"connectionState\": \"Active\",\r\n              \"bgpSession\": {\r\n                \"sessionPrefixV4\": \"206.126.236.0/22\",\r\n                \"sessionPrefixV6\": \"2001:504:0:2::/64\",\r\n                \"microsoftSessionIPv4Address\": \"206.126.236.17\",\r\n                \"peerSessionIPv4Address\": \"206.126.236.8\",\r\n                \"sessionStateV4\": \"Established\",\r\n                \"sessionStateV6\": \"None\",\r\n                \"maxPrefixesAdvertisedV4\": 20000,\r\n                \"maxPrefixesAdvertisedV6\": 2000\r\n              }\r\n            }\r\n          ]\r\n        },\r\n        \"peeringLocation\": \"Ashburn\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "4445bf11-61c4-436f-a940-60194f8aca57"
+  }
+}
