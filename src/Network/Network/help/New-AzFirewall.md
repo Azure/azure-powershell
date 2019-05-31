@@ -36,7 +36,7 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
 ### IpConfigurationParameterValues
 ```
 New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -VirtualNetwork <PSVirtualNetwork>
- -PublicIpAddress <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress]>
+ -PublicIpAddress <PSPublicIpAddress[]>
  [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
  [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
@@ -257,7 +257,7 @@ Accept wildcard characters: False
 One or more Public IP Addresses. The Public IP addresses must use Standard SKU and must belong to the same resource group as the Firewall.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress]
+Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress[]
 Parameter Sets: IpConfigurationParameterValues
 Aliases:
 
@@ -357,7 +357,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
