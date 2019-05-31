@@ -55,23 +55,10 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 psBlueprint.Versions = versionsDict.Keys.ToArray();
             }
 
-            if (DateTime.TryParse(model.Status.TimeCreated, out DateTime timeCreated))
-            {
-                psBlueprint.Status.TimeCreated = timeCreated;
-            }
-            else
-            {
-                psBlueprint.Status.TimeCreated = null;
-            }
+            psBlueprint.Status.TimeCreated = model.Status.TimeCreated;
 
-            if (DateTime.TryParse(model.Status.LastModified, out DateTime lastModified))
-            {
-                psBlueprint.Status.LastModified = lastModified;
-            }
-            else
-            {
-                psBlueprint.Status.LastModified = null;
-            }
+            psBlueprint.Status.LastModified = model.Status.LastModified;
+
 
             if (Enum.TryParse(model.TargetScope, true, out PSBlueprintTargetScope targetScope))
             {

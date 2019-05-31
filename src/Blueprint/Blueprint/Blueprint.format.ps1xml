@@ -56,7 +56,7 @@
               </ListItem>
               <ListItem>
                 <Label>TimeCreated</Label>
-                <ScriptBlock>$_.Status.TimeCreated.ToString("yyyy-MM-dd")</ScriptBlock>
+                <ScriptBlock>$_.Status.TimeCreated.ToString()</ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>TargetScope</Label>
@@ -127,7 +127,7 @@
               </ListItem>
               <ListItem>
                 <Label>TimeCreated</Label>
-                <ScriptBlock>$_.Status.TimeCreated.ToString("yyyy-MM-dd")</ScriptBlock>
+                <ScriptBlock>$_.Status.TimeCreated.ToString()</ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>TargetScope</Label>
