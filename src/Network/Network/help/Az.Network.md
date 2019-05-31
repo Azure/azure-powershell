@@ -464,7 +464,7 @@ Gets a virtual network tap
 ### [Get-AzVirtualNetworkUsageList](Get-AzVirtualNetworkUsageList.md)
 Gets virtual network current usage.
 
-### [Get-AzVirtualNetworkGatewayVpnclientConnectionHealth](Get-AzVirtualNetworkGatewayVpnclientConnectionHealth.md)
+### [Get-AzVirtualNetworkGatewayVpnClientConnectionHealth](Get-AzVirtualNetworkGatewayVpnClientConnectionHealth.md)
 Gets virtual network vpn client connection health for per vpn client connection.
 
 ### [Get-AzVirtualWan](Get-AzVirtualWan.md)
