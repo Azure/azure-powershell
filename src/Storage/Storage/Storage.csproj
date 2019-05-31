@@ -1,4 +1,5 @@
-<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="Current">
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <PsModuleName>Storage</PsModuleName>
     <OmitJsonPackage>true</OmitJsonPackage>
