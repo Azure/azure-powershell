@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
@@ -25,12 +26,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Target Server
         /// </summary>
-        public string TargetServer { get; set; }
+        public string TargetServer { get; }
 
         /// <summary>
         /// Target Instance
         /// </summary>
-        public string TargetInstance { get; set; }
+        public string TargetInstance { get; }
 
         /// <summary>
         /// Restored DB Name
@@ -54,8 +55,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public string ContainerId { get; set; }
 
-        public AzureWorkloadRecoveryConfig()
+        public AzureWorkloadRecoveryConfig(string targetServer, string targetInstance, string restoreRequestType,
+            RecoveryPointBase recoveryPoint, DateTime pointInTime)
+            : base(restoreRequestType, recoveryPoint, pointInTime)
         {
+            TargetServer = targetServer;
+            TargetInstance = targetInstance;
         }
     }
 }

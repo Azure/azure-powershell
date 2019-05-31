@@ -28,13 +28,20 @@ function Test-CrudApiManagement {
     $secondAdminEmail = "second.apim@powershell.org"
     $secondSku = "Basic"
     $secondSkuCapacity = 2
+	$enableTls=@{"Tls10" = "True"}
+	$enable3DES=@{"TripleDes168" = "True"}
+	$thirdApiManagementName = Get-ApiManagementServiceName
+	$thirdSku = "Consumption"
+	$thirdServiceLocation = "West Europe"
 
     try {
         # Create Resource Group
         New-AzResourceGroup -Name $resourceGroupName -Location $location
         
+		# enable TLS and 3DES CipherSuite
+		$sslSetting = New-AzApiManagementSslSetting -FrontendProtocol $enableTls -CipherSuite $enable3DES
         # Create API Management service
-        $result = New-AzApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail
+        $result = New-AzApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -SslSetting $sslSetting
 
         Assert-AreEqual $resourceGroupName $result.ResourceGroupName
         Assert-AreEqual $apiManagementName $result.Name
@@ -42,6 +49,9 @@ function Test-CrudApiManagement {
         Assert-AreEqual "Developer" $result.Sku
         Assert-AreEqual 1 $result.Capacity
         Assert-AreEqual "None" $result.VpnType
+		Assert-NotNull $result.SslSetting
+		Assert-AreEqual "True" $result.SslSetting.FrontendProtocol["Tls10"]
+		Assert-AreEqual "True" $result.SslSetting.CipherSuite["TripleDes168"]
 
         # Get SSO token
         $token = Get-AzApiManagementSsoToken -ResourceGroupName $resourceGroupName -Name $apiManagementName
@@ -66,7 +76,18 @@ function Test-CrudApiManagement {
         # List all services
         $allServices = Get-AzApiManagement
         Assert-True {$allServices.Count -ge 2}
-        
+				
+        #Create Third Service of Consumption SKU
+        $thirdResult = New-AzApiManagement -ResourceGroupName $resourceGroupName -Location $thirdServiceLocation -Name $thirdApiManagementName -Organization $secondOrganization -AdminEmail $secondAdminEmail -Sku $thirdSku
+        Assert-AreEqual $resourceGroupName $thirdResult.ResourceGroupName
+        Assert-AreEqual $thirdApiManagementName $thirdResult.Name
+        Assert-AreEqual $thirdServiceLocation $thirdResult.Location
+        Assert-AreEqual $thirdSku $thirdResult.Sku
+
+		# List all services
+        $allServices = Get-AzApiManagement
+        Assert-True {$allServices.Count -ge 3}
+		        
         $found = 0
         for ($i = 0; $i -lt $allServices.Count; $i++) {
             if ($allServices[$i].Name -eq $apiManagementName) {
@@ -86,8 +107,16 @@ function Test-CrudApiManagement {
                 Assert-AreEqual $secondSku $allServices[$i].Sku
                 Assert-AreEqual $secondSkuCapacity $allServices[$i].Capacity
             }
+			
+            if ($allServices[$i].Name -eq $thirdApiManagementName) {
+                $found = $found + 1
+                Assert-AreEqual $thirdServiceLocation $allServices[$i].Location
+                Assert-AreEqual $resourceGroupName $allServices[$i].ResourceGroupName
+        
+                Assert-AreEqual $thirdSku $allServices[$i].Sku
+            }
         }
-        Assert-True {$found -eq 2} "Api Management services created earlier is not found."
+        Assert-True {$found -eq 3} "Api Management services created earlier is not found."
         
         # Delete listed services in the ResourceGroup
         Get-AzApiManagement -ResourceGroupName $resourceGroupName | Remove-AzApiManagement
@@ -186,6 +215,11 @@ function Test-ApiManagementVirtualNetworkCRUD {
         Assert-NotNull $result.PublicIPAddresses
         Assert-AreEqual $primarySubnetResourceId $result.VirtualNetwork.SubnetResourceId
 
+		$networkStatus = Get-AzApiManagementNetworkStatus -ResourceGroupName $resourceGroupName -Name $apiManagementName
+        Assert-NotNull $networkStatus
+		Assert-NotNull $networkStatus.DnsServers
+		Assert-NotNull $networkStatus.ConnectivityStatus
+
         # Get the service and switch to internal Virtual Network
         $service = Get-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
         $vpnType = "Internal"
@@ -230,6 +264,13 @@ function Test-ApiManagementVirtualNetworkCRUD {
         }
         
         Assert-True {$found -eq 1} "Api Management regions created earlier is not found."
+
+		# check the network status for the service.
+		$networkStatus = Get-AzApiManagementNetworkStatus -ApiManagementObject $service
+        Assert-NotNull $networkStatus
+		Assert-NotNull $networkStatus.DnsServers
+		Assert-NotNull $networkStatus.ConnectivityStatus
+
     }
     finally {
         # Cleanup
@@ -285,7 +326,7 @@ function Test-ApiManagementHostnamesCRUD {
         
         #validate the Proxy Custom Hostname configuration
         Assert-NotNull $result.ProxyCustomHostnameConfiguration
-        Assert-AreEqual 2 $result.ProxyCustomHostnameConfiguration.Count
+        Assert-AreEqual 3 $result.ProxyCustomHostnameConfiguration.Count
         for ($i = 0; $i -lt $result.ProxyCustomHostnameConfiguration.Count; $i++) {
             if ($result.ProxyCustomHostnameConfiguration[$i].Hostname -eq $proxyHostName1) {
                 $found = $found + 1
@@ -343,7 +384,7 @@ function Test-ApiManagementHostnamesCRUD {
         
         #validate the Proxy Custom Hostname configuration
         Assert-NotNull $result.ProxyCustomHostnameConfiguration
-        Assert-AreEqual 1 $result.ProxyCustomHostnameConfiguration.Count
+        Assert-AreEqual 2 $result.ProxyCustomHostnameConfiguration.Count
         for ($i = 0; $i -lt $result.ProxyCustomHostnameConfiguration.Count; $i++) {
             if ($result.ProxyCustomHostnameConfiguration[$i].Hostname -eq $proxyHostName1) {
                 $found = $found + 1

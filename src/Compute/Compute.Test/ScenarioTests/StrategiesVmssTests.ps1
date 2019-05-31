@@ -133,7 +133,7 @@ function Test-SimpleNewVmssWithUltraSSD
         Assert-AreEqual $vmssname $x.ResourceGroupName;
         Assert-AreEqual $vmssname $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Name;
         Assert-AreEqual $vmssname $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Name;
-        Assert-True { $x.VirtualMachineProfile.AdditionalCapabilities.UltraSSDEnabled };
+        Assert-True { $x.AdditionalCapabilities.UltraSSDEnabled };
         Assert-AreEqual "Standard_D2s_v3" $x.Sku.Name
         Assert-AreEqual $username $x.VirtualMachineProfile.OsProfile.AdminUsername
         Assert-AreEqual "2016-Datacenter" $x.VirtualMachineProfile.StorageProfile.ImageReference.Sku

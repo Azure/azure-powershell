@@ -70,12 +70,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-SimpleNewVmSystemAssignedIdentity");
         }
 
-#if NETSTANDARD
         [Fact(Skip = "Unknown issue/update, needs re-recorded")]
         [Trait(Category.RunType, Category.DesktopOnly)]
-#else
-        [Fact]
-#endif
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestSimpleNewVmWithSystemAssignedAndUserAssignedIdentity()
         {
