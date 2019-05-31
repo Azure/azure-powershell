@@ -20,6 +20,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System;
 using Microsoft.Azure.Commands.Common.Strategies;
+using SubResource = Microsoft.Azure.Management.Compute.Models.SubResource;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             IEnumerable<int> dataDisks,
             IList<string> zones,
             bool ultraSSDEnabled,
-            ResourceConfig<ProximityPlacementGroup> proximityPlacementGroup)
+            Func<IEngine, SubResource> proximityPlacementGroup)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -116,7 +117,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             }
                         }
                     },
-                    ProximityPlacementGroup = engine.GetReference(proximityPlacementGroup),
+                    ProximityPlacementGroup = proximityPlacementGroup(engine),
                 });
     }
 }

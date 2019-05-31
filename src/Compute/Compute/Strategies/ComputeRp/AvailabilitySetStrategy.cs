@@ -17,7 +17,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using System;
-using System.Linq;
+using SubResource = Microsoft.Azure.Management.Compute.Models.SubResource;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
         public static ResourceConfig<AvailabilitySet> CreateAvailabilitySetConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
-            ResourceConfig<ProximityPlacementGroup> proximityPlacementGroup)
+            Func<IEngine, SubResource> proximityPlacementGroup)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
