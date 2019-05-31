@@ -564,7 +564,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/798436ab-a054-4fbf-ba01-f9f8cce4e65f/resourceGroups/web2/providers/Microsoft.Web/sites/nkprem/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US 2\",\r\n  \"properties\": {\r\n    \"dreaminazure db\": {\r\n      \"value\": \"Server=dreaminazure.mysql.database.azure.com; Port=3306; Database=test; Uid=nicking@dreaminazure; Pwd=AzDb4242019; SslMode=Preferred;\",\r\n      \"type\": \"MySql\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/798436ab-a054-4fbf-ba01-f9f8cce4e65f/resourceGroups/web2/providers/Microsoft.Web/sites/nkprem/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US 2\",\r\n  \"properties\": {\r\n    \"dreaminazure db\": {\r\n      \"value\": \"<REDACTED>\",\r\n      \"type\": \"MySql\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
