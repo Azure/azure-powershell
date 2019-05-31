@@ -47,24 +47,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 Version = model.Name, // Name is the version in PublishedBlueprint object.
                 ChangeNotes = model.ChangeNotes
             };
-
-            if (DateTime.TryParse(model.Status.TimeCreated, out DateTime timeCreated))
-            {
-                psBlueprint.Status.TimeCreated = timeCreated;
-            }
-            else
-            {
-                psBlueprint.Status.TimeCreated = null;
-            }
             
-            if (DateTime.TryParse(model.Status.LastModified, out DateTime lastModified))
-            {
-                psBlueprint.Status.LastModified = lastModified;
-            }
-            else
-            {
-                psBlueprint.Status.LastModified = null;
-            }
+            psBlueprint.Status.TimeCreated = model.Status.TimeCreated;
+            
+            psBlueprint.Status.LastModified = model.Status.LastModified;
+
 
             if (Enum.TryParse(model.TargetScope, true, out PSBlueprintTargetScope targetScope))
             {
