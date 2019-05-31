@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzBlueprint
 
 ## SYNOPSIS
-Update a blueprint.
+Update a blueprint definition.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Set-AzBlueprint -Name <String> -ManagementGroupId <String> -BlueprintFile <Strin
 ```
 
 ## DESCRIPTION
-Update a blueprint and save it within the specified subscription or management group.
+Update a blueprint definition and save it within the specified subscription or management group.
 
 ## EXAMPLES
 
@@ -44,7 +44,7 @@ Parameters        : {enforcetaganditsvalue_tagName, enforcetaganditsvalue_tagVal
 ResourceGroups    : {AppNetworkRG}
 ```
 
-Update a blueprint with new parameters.
+Update a blueprint definition with new parameters.
 
 ## PARAMETERS
 

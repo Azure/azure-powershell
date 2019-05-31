@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzBlueprintArtifact
 
 ## SYNOPSIS
-Update an artifact in a blueprint.
+Update an artifact in a blueprint definition.
 
 ## SYNTAX
 
@@ -45,7 +45,7 @@ Set-AzBlueprintArtifact -Name <String> -Type <PSArtifactKind> -Blueprint <PSBlue
 
 ## DESCRIPTION
 Update an artifact. There are two ways to update an artifact: either through an artifact JSON as an input file or through providing inline parameters for the artifact. 
-while former doesn't require type of the artifact to be provided latter method requires user to provide the type of the artifact through -Type parameter.
+While the JSON method doesn't require type of the artifact to be provided inline parameter method requires user to provide the type of the artifact through -Type parameter.
 
 ## EXAMPLES
 
@@ -331,7 +331,7 @@ Accept wildcard characters: False
 
 ### -Type
 Type of the artifact.
-There are 3 tpes supported: RoleAssignmentArtifact, PolicyAssignmentArtifact, TemplateArtifact.
+There are 3 types supported: RoleAssignmentArtifact, PolicyAssignmentArtifact, TemplateArtifact.
 
 ```yaml
 Type: PSArtifactKind

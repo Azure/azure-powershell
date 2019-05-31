@@ -18,7 +18,7 @@ Publish-AzBlueprint -Version <String> -Blueprint <PSBlueprint> [-DefaultProfile 
 ```
 
 ## DESCRIPTION
-Publish a new version of a blueprint.
+Publish a new version of a blueprint definition.
 
 ## EXAMPLES
 
@@ -36,7 +36,7 @@ TargetScope    : Subscription
 Parameters     : {[tagName, Microsoft.Azure.Commands.Blueprint.Models.PSParameterValue], [tagValue, Microsoft.Azure.Commands.Blueprint.Models.PSParameterValue]}
 ResourceGroups : {storageRG}
 ```
-Publish a new version of a blueprint.
+Publish a new version of a blueprint definition.
 
 ## PARAMETERS
 

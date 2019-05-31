@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzBlueprint
 
 ## SYNOPSIS
-Create a new blueprint and save it within the specified subscription or management group.
+Create a new blueprint definition and save it within the specified subscription or management group.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ New-AzBlueprint -Name <String> -ManagementGroupId <String> -BlueprintFile <Strin
 ```
 
 ## DESCRIPTION
-Create a new blueprint. There are two main ways to create a blueprint: either by providing a blueprint JSON file or providing 
+Create a new blueprint definition. 
 
 ## EXAMPLES
 
@@ -44,7 +44,7 @@ Parameters        : {enforcetaganditsvalue_tagName, enforcetaganditsvalue_tagVal
 ResourceGroups    : {AppNetworkRG}
 ```
 
-Create a new blueprint within the specified subscription.
+Create a new blueprint definition within the specified subscription.
 
 ## PARAMETERS
 

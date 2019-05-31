@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzBlueprintArtifact
 
 ## SYNOPSIS
-Get artifact from a blueprint.
+Retrieve artifacts from a blueprint definition.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzBlueprintArtifact [-Name <String>] -Blueprint <PSBlueprintBase> [-Blueprin
 ```
 
 ## DESCRIPTION
-Retrieve a blueprint artifact with its properties.
+Retrieve artifacts from a blueprint definition. If a blueprint definition version is not specified, the draft version is retrieved. In the case where there is no draft version, the latest published blueprint definition is returned.
 
 ## EXAMPLES
 
@@ -50,7 +50,7 @@ Name               : 0e1593da-47d5-4b75-800c-9a797dd23192
 
 ```
 
-Retrieve a blueprint artifact with its properties. If blueprint version is not specified, draft version is retrieved. In the case where there is no draft version, latest published blueprint returned.
+Retrieve artifacts from a blueprint definition.. 
 
 ## PARAMETERS
 
