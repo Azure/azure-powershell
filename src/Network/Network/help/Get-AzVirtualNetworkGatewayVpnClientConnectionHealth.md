@@ -7,7 +7,7 @@ schema: 2.0.0
 
 # Get-AzVirtualNetworkGatewayVpnClientConnectionHealth
 
-## SYNOPSIS
+## SYNOPSIS 
 Get the list of vpn client connection health of an Azure virtual network gateway for per vpn client connection
 
 ## SYNTAX
