@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
         private const string DefaultParameterSet = "Default";
 
         private PSVirtualNetwork virtualNetwork;
-        private List<PSPublicIpAddress> publicIpAddresses;
+        private PSPublicIpAddress[] publicIpAddresses;
 
         [Alias("ResourceName")]
         [Parameter(
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             ParameterSetName = "IpConfigurationParameterValues",
             HelpMessage = "Virtual Network")]
         [ValidateNotNullOrEmpty]
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = "IpConfigurationParameterValues",
             HelpMessage = "One or more Public IP Addresses. The Public IP addresses must use Standard SKU and must belong to the same resource group as the Firewall.")]
         [ValidateNotNullOrEmpty]
-        public List<PSPublicIpAddress> PublicIpAddress { get; set; }
+        public PSPublicIpAddress[] PublicIpAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.virtualNetwork = NetworkResourceManagerProfile.Mapper.Map<PSVirtualNetwork>(vnet);
 
                 var publicIp = this.PublicIPAddressesClient.Get(this.ResourceGroupName, PublicIpName);
-                this.publicIpAddresses = new List<PSPublicIpAddress>
+                this.publicIpAddresses = new PSPublicIpAddress[]
                 {
                     NetworkResourceManagerProfile.Mapper.Map<PSPublicIpAddress>(publicIp)
                 };

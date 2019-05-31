@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         #region Ip Configuration Operations
 
-        public void Allocate(PSVirtualNetwork virtualNetwork, List<PSPublicIpAddress> publicIpAddresses)
+        public void Allocate(PSVirtualNetwork virtualNetwork, PSPublicIpAddress[] publicIpAddresses)
         {
             if (virtualNetwork == null)
             {
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             }
 
             
-            if (publicIpAddresses == null || publicIpAddresses.Count == 0)
+            if (publicIpAddresses == null || publicIpAddresses.Count() == 0)
             {
                 throw new ArgumentNullException(nameof(publicIpAddresses), "Public IP Addresses cannot be null or empty!");
             }
