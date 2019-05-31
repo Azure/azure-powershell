@@ -9,7 +9,7 @@ schema: 2.0.0
 # New-AzBlueprintArtifact
 
 ## SYNOPSIS
-Create a new artifact and save it within a blueprint.
+Create a new artifact and save it within a blueprint definition.
 
 ## SYNTAX
 
@@ -44,8 +44,8 @@ New-AzBlueprintArtifact -Name <String> -Type <PSArtifactKind> -Blueprint <PSBlue
 ```
 
 ## DESCRIPTION
-Create a new template artifact. There are two ways to create an artifact: either through an artifact JSON as an input file or through providing inline parameters for the artifact. 
-while former doesn't require type of the artifact to be provided latter method requires user to provide the type of the artifact through -Type parameter.
+Create a new artifact. There are two ways to create an artifact: either through an artifact JSON as an input file or through providing inline parameters for the artifact. 
+While the JSON method doesn't require type of the artifact to be provided inline parameter method requires user to provide the type of the artifact through -Type parameter.
 
 ## EXAMPLES
 
@@ -65,7 +65,7 @@ Type               : Microsoft.Blueprint/blueprints/artifacts
 Name               : PolicyAssignmentStorageTag
 ```
 
-Create a new template artifact through an artifact JSON file.
+Create a new artifact through an artifact JSON file.
 
 ### Example 2
 ```powershell

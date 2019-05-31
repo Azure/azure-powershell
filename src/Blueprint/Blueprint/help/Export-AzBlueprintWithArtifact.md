@@ -8,7 +8,7 @@ schema: 2.0.0
 # Export-AzBlueprintWithArtifact
 
 ## SYNOPSIS
-Export specified blueprint to the specified output location as a JSON file. 
+Export specified blueprint definition to the specified output location as a JSON file. 
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Export-AzBlueprintWithArtifact -Blueprint <PSBlueprintBase> -OutputPath <String>
 ```
 
 ## DESCRIPTION
-Export a blueprint with it's artifact and save to disk.
+Export a blueprint definition with its artifacts and save to disk.
 
 ## EXAMPLES
 
@@ -28,12 +28,12 @@ PS C:\> $bp = Get-AzBlueprint -Name SimpleBlueprint
 PS C:\> Export-AzBlueprintWithArtifact -Blueprint $bp -Version 1.0 -OutputPath C:\Blueprints
 ```
 
-Export a blueprint with it's artifact and save to disk.
+Export a blueprint definition with its artifacts and save to disk.
 
 ## PARAMETERS
 
 ### -Blueprint
-The Blueprint definition object to export.
+The blueprint definition object to export.
 
 ```yaml
 Type: PSBlueprintBase

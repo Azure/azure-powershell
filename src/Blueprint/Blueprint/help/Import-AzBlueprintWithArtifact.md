@@ -18,7 +18,7 @@ Import-AzBlueprintWithArtifact -Name <String> [-SubscriptionId <String>] [-Manag
 ```
 
 ## DESCRIPTION
-Import a blueprint with its artifacts. 
+Import a blueprint definition with its artifacts. 
 
 ## EXAMPLES
 
@@ -27,7 +27,7 @@ Import a blueprint with its artifacts.
 PS C:\> Import-AzBlueprintWithArtifact -Name SimpleBlueprint -SubscriptionId 00000000-1111-0000-1111-000000000000 -InputPath  C:\Blueprints
 ```
 
-Import a blueprint with its artifacts and save within a subscription.
+Import a blueprint definition with its artifacts and save within a subscription.
 
 ## PARAMETERS
 
