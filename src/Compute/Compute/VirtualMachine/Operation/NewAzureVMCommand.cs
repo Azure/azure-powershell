@@ -336,15 +336,13 @@ namespace Microsoft.Azure.Commands.Compute
                 var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
                     _cmdlet.Name, subnet, publicIpAddress, networkSecurityGroup, enableAcceleratedNetwork);
 
-                var proximityPlacementGroup = _cmdlet.ProximityPlacementGroup == null
-                    ? null
-                    : resourceGroup.CreateProximityPlacementGroupConfig(name: _cmdlet.ProximityPlacementGroup);
+                var ppgSubResourceFunc = resourceGroup.CreateProximityPlacementGroupSuResourceFunc(_cmdlet.ProximityPlacementGroup);
 
                 var availabilitySet = _cmdlet.AvailabilitySetName == null
                     ? null
                     : resourceGroup.CreateAvailabilitySetConfig(
                         name: _cmdlet.AvailabilitySetName,
-                        proximityPlacementGroup: proximityPlacementGroup);
+                        proximityPlacementGroup: ppgSubResourceFunc);
 
                 if (_cmdlet.DiskFile == null)
                 {
@@ -361,7 +359,7 @@ namespace Microsoft.Azure.Commands.Compute
                         zones: _cmdlet.Zone,
                         ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
                         identity: _cmdlet.GetVMIdentityFromArgs(),
-                        proximityPlacementGroup: proximityPlacementGroup);
+                        proximityPlacementGroup: ppgSubResourceFunc);
                 }
                 else
                 {
@@ -380,7 +378,7 @@ namespace Microsoft.Azure.Commands.Compute
                         zones: _cmdlet.Zone,
                         ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
                         identity: _cmdlet.GetVMIdentityFromArgs(),
-                        proximityPlacementGroup: proximityPlacementGroup);
+                        proximityPlacementGroup: ppgSubResourceFunc);
                 }
             }
         }

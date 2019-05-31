@@ -17,7 +17,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using System;
-using System.Linq;
+using SubResource = Microsoft.Azure.Management.Compute.Models.SubResource;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -42,5 +42,21 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 {
                     throw new InvalidOperationException("Proximity placement group doesn't exist.");
                 });
+
+        public static Func<IEngine, SubResource> CreateProximityPlacementGroupSuResourceFunc(
+            this ResourceConfig<ResourceGroup> resourceGroup, string name)
+        {
+            if (name == null)
+            {
+                return _ => null;
+            }
+            var id = ResourceId.TryParse(name);
+            if (id == null)
+            {
+                var ppgConfig = resourceGroup.CreateProximityPlacementGroupConfig(name);
+                return e => e.GetReference(ppgConfig);
+            }
+            return _ => new SubResource(name);
+        }
     }
 }

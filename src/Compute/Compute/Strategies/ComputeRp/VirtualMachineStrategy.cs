@@ -18,6 +18,8 @@ using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Commands.Common.Strategies;
 using System.Collections.Generic;
+using System;
+using SubResource = Microsoft.Azure.Management.Compute.Models.SubResource;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -49,7 +51,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             IEnumerable<int> dataDisks,
             IList<string> zones,
             bool ultraSSDEnabled,
-            ResourceConfig<ProximityPlacementGroup> proximityPlacementGroup)
+            Func<IEngine, SubResource> proximityPlacementGroup)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -84,7 +86,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     AvailabilitySet = engine.GetReference(availabilitySet),
                     Zones = zones,
                     AdditionalCapabilities = ultraSSDEnabled ? new AdditionalCapabilities(true) : null,
-                    ProximityPlacementGroup = engine.GetReference(proximityPlacementGroup),
+                    ProximityPlacementGroup = proximityPlacementGroup(engine),
                 });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
@@ -99,7 +101,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             IEnumerable<int> dataDisks,
             IList<string> zones,
             bool ultraSSDEnabled,
-            ResourceConfig<ProximityPlacementGroup> proximityPlacementGroup)
+            Func<IEngine, SubResource> proximityPlacementGroup)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -131,7 +133,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     AvailabilitySet = engine.GetReference(availabilitySet),
                     Zones = zones,
                     AdditionalCapabilities = ultraSSDEnabled ?  new AdditionalCapabilities(true)  : null,
-                    ProximityPlacementGroup = engine.GetReference(proximityPlacementGroup),
+                    ProximityPlacementGroup = proximityPlacementGroup(engine),
                 });
     }
 }
