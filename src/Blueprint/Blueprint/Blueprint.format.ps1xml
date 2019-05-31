@@ -111,6 +111,11 @@
               <ListItem>
                 <Label>Versions</Label>
                 <PropertyName>Versions</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    $_.Versions.count -gt 0
+                  </ScriptBlock>
+                </ItemSelectionCondition>
                </ListItem>
               <ListItem>
                 <PropertyName>Description</PropertyName>

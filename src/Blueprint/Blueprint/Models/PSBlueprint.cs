@@ -14,15 +14,18 @@
 
 using Microsoft.Azure.Management.Blueprint.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Blueprint.Common;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.Blueprint.Models
 {
     public class PSBlueprint : PSBlueprintBase
     {
-        public object Versions { get; set; }
+        public string[] Versions { get; set; }
 
         /// <summary>
         /// Create a PSBlueprint object from a BlueprintModel.
@@ -43,8 +46,14 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 TargetScope = PSBlueprintTargetScope.Unknown,
                 Parameters = new Dictionary<string, PSParameterDefinition>(),
                 ResourceGroups = new Dictionary<string, PSResourceGroupDefinition>(),
-                Versions = model.Versions
+                Versions = null
             };
+
+            if (model.Versions != null)
+            {
+                var versionsDict = JObject.FromObject(model.Versions).ToObject<Dictionary<string, object>>();
+                psBlueprint.Versions = versionsDict.Keys.ToArray();
+            }
 
             if (DateTime.TryParse(model.Status.TimeCreated, out DateTime timeCreated))
             {
