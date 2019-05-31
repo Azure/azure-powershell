@@ -65,7 +65,7 @@ It is "false" by default.
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: InstanceDetails
 
 Required: False
 Position: Named

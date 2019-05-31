@@ -205,4 +205,47 @@ directive:
       subject: Connection
       parameter-name: Name
     clear-alias: true
+  - where:
+      verb: Get
+      subject: AppServicePlanMetric
+      parameter-name: Detail
+    set:
+      alias: InstanceDetails
+  - where:
+      subject: AppServicePlan
+      parameter-name: SkuTier
+    set:
+      alias: Tier
+  - where:
+      subject: AppServicePlan
+      parameter-name: Capacity
+    set:
+      alias: NumberOfWorkers
+  - where:
+      verb: Get
+      subject: WebAppMetric
+      parameter-name: Detail
+    set:
+      alias: InstanceDetails
+  - where:
+      verb: Get
+      subject: WebAppPublishingCredentials
+    set:
+      alias: Get-AzWebAppContainerContinuousDeploymentUrl
+  - where:
+      verb: Restore
+      subject: DeletedWebApp
+      parameter-name: RecoverConfiguration
+    set:
+      alias: RestoreContentOnly
+  - where:
+      verb: Set
+      subject: WebAppBackupConfiguration
+    set:
+      alias: Edit-AzWebAppBackupConfiguration
+  - where:
+      verb: Restore
+      subject: WebApp
+    set:
+      alias: Restore-AzWebAppBackup
 ```

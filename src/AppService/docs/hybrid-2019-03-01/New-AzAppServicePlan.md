@@ -114,7 +114,7 @@ Current number of instances assigned to the resource.
 ```yaml
 Type: System.Int32
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: NumberOfWorkers
 
 Required: False
 Position: Named
@@ -514,7 +514,7 @@ Service tier of the resource SKU.
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: Tier
 
 Required: False
 Position: Named

@@ -65,7 +65,7 @@ The default is <code>false</code>.
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: InstanceDetails
 
 Required: False
 Position: Named
