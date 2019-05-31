@@ -35,6 +35,21 @@ The New-AzEventHubNamespace cmdlet creates a new namespace of type Event Hubs.
 ### Example 1			 								
 ```
 PS C:\> New-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location MyLocation
+
+Name                   : MyNamespaceName
+Id                     : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/namespaces/MyNamespaceName
+ResourceGroupName      : Default-EventHub-WestCentralUS
+Location               : West US
+Sku                    : Name : Standard , Capacity : 1 , Tier : Standard
+Tags                   :
+ProvisioningState      : Succeeded
+Status                 : Active
+CreatedAt              : 5/24/2019 12:47:27 AM
+UpdatedAt              : 5/24/2019 12:48:14 AM
+ServiceBusEndpoint     : #########
+Enabled                : True
+IsAutoInflateEnabled   : False
+MaximumThroughputUnits : 0
 ```
 
 Creates an Event Hubs namespace \`MyNamespaceName\` in the specified geographic location \`MyLocation\`, in resource group \`MyResourceGroupName\`.
@@ -42,6 +57,21 @@ Creates an Event Hubs namespace \`MyNamespaceName\` in the specified geographic 
 ### Example 2
 ```
 PS C:\> New-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location MyLocation -EnableAutoInflate -MaximumThroughputUnits 10
+
+Name                   : MyNamespaceName
+Id                     : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/namespaces/MyNamespaceName
+ResourceGroupName      : Default-EventHub-WestCentralUS
+Location               : West US
+Sku                    : Name : Standard , Capacity : 1 , Tier : Standard
+Tags                   :
+ProvisioningState      : Succeeded
+Status                 : Active
+CreatedAt              : 5/24/2019 12:47:27 AM
+UpdatedAt              : 5/24/2019 12:48:14 AM
+ServiceBusEndpoint     : #########
+Enabled                : True
+IsAutoInflateEnabled   : True
+MaximumThroughputUnits : 10
 ```
 
 Creates an Event Hubs namespace \`MyNamespaceName\` in the specified geographic location \`MyLocation\`, in resource group \`MyResourceGroupName\` and AutoInflate is enabled with MaximumThroughputUnits 10.
@@ -49,6 +79,21 @@ Creates an Event Hubs namespace \`MyNamespaceName\` in the specified geographic 
 ### Example 3 - Kafka enabled namespace
 ```
 PS C:\> New-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location MyLocation -EnableAutoInflate -EnableKafka
+
+Name                   : MyNamespaceName
+Id                     : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/namespaces/MyNamespaceName
+ResourceGroupName      : Default-EventHub-WestCentralUS
+Location               : West US
+Sku                    : Name : Standard , Capacity : 1 , Tier : Standard
+Tags                   :
+ProvisioningState      : Succeeded
+Status                 : Active
+CreatedAt              : 5/24/2019 12:47:27 AM
+UpdatedAt              : 5/24/2019 12:48:14 AM
+ServiceBusEndpoint     : #########
+Enabled                : True
+IsAutoInflateEnabled   : True
+MaximumThroughputUnits : 12
 ```
 
 Creates an Event Hubs namespace \`MyNamespaceName\` in the specified geographic location \`MyLocation\`, in resource group \`MyResourceGroupName\` with Kafka and  AutoInflate enabled.
