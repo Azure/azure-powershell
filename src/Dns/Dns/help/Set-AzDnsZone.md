@@ -71,7 +71,7 @@ zone.
 
 ### Example 3: Associating a private zone with a virtual network by specifying its ID
 ```
-PS C:\>$vnet = Get-AzVirualNetwork -ResourceGroupName "MyResourceGroup" -Name "myvnet"
+PS C:\>$vnet = Get-AzVirtualNetwork -ResourceGroupName "MyResourceGroup" -Name "myvnet"
 PS C:\>Set-AzDNSZone -ResourceGroupName "MyResourceGroup" -Name "myprivatezone.com" -RegistrationVirtualNetworkId @($vnet.Id)
 ```
 
@@ -80,7 +80,7 @@ by specifying its ID.
 
 ### Example 4: Associating a private zone with a virtual network by specifying the network object.
 ```
-PS C:\>$vnet = Get-AzVirualNetwork -ResourceGroupName "MyResourceGroup" -Name "myvnet"
+PS C:\>$vnet = Get-AzVirtualNetwork -ResourceGroupName "MyResourceGroup" -Name "myvnet"
 PS C:\>Set-AzDNSZone -ResourceGroupName "MyResourceGroup" -Name "myprivatezone.com" -RegistrationVirtualNetwork @($vnet)
 ```
 
