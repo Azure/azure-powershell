@@ -56,6 +56,10 @@ module-version: 0.0.1
 skip-model-cmdlets: true
 
 directive:
+  - from: swagger-document
+    where: $..produces
+    transform: $ = $.filter( each => each === 'application/json');
+    reason: this spec adds produces application/xml and text/json erronously.
   - where:
       subject: .*AppService.*
     set:
@@ -191,4 +195,14 @@ directive:
       parameter-name: TargetSlot
     set:
       alias: DestinationSlotName
+  - where:
+      verb: New
+      subject: Connection
+      parameter-name: Name
+    clear-alias: true
+  - where:
+      verb: Set
+      subject: Connection
+      parameter-name: Name
+    clear-alias: true
 ```

@@ -60,14 +60,6 @@ skip-model-cmdlets: true
 
 directive:
   - where:
-      verb: Get
-      subject: Deleted(.*)
-    hide: true
-  - where:
-      verb: Clear
-      subject: Deleted(.*)
-    hide: true
-  - where:
       verb: New
       subject: Certificate
     set:
@@ -201,4 +193,97 @@ directive:
     set:
       verb: Protect
       subject: Key
+  - where:
+      verb: New
+      subject: ''
+      parameter-name: SkuName
+    set:
+      alias: Sku
+  - where:
+      verb: Test
+      subject: VaultNameAvailability
+    set:
+      subject: Vault
+  - where:
+      verb: Import
+      subject: Certificate
+      parameter-name: Base64EncodedCertificate
+    set:
+      parameter-name: CertificateString
+  - where:
+      verb: New
+      subject: Certificate
+      parameter-name: Policy
+    set:
+      alias: CertificatePolicy
+  - where:
+      verb: Set
+      subject: CertificateIssuer
+      parameter-name: Provider
+    set:
+      alias: IssuerProvider
+  - where:
+      verb: Set
+      subject: CertificateIssuer
+      parameter-name: CredentialsAccountId
+    set:
+      alias: AccountId
+  - where:
+      verb: Set
+      subject: CertificateIssuer
+      parameter-name: CredentialsPassword
+    set:
+      alias: ApiKey
+  - where:
+      parameter-name: Attribute(.*)
+    set:
+      parameter-name: $1
+  - where:
+      verb: Update
+      subject: CertificatePolicy
+      parameter-name: SecretPropContentType
+    set:
+      parameter-name: SecretContentType
+  - where:
+      verb: Update
+      subject: CertificatePolicy
+      parameter-name: KeyProp(.*)
+    set:
+      parameter-name: $1
+  - where:
+      verb: Update
+      subject: CertificatePolicy
+      parameter-name: X509Prop(.*)
+    set:
+      parameter-name: $1
+  - where:
+      verb: Update
+      subject: CertificatePolicy
+      parameter-name: Subject
+    set:
+      parameter-name: SubjectName
+  - where:
+      verb: Update
+      subject: CertificatePolicy
+      parameter-name: SanDnsName
+    set:
+      parameter-name: DnsName
+  - where:
+      verb: Update
+      subject: CertificatePolicy
+      parameter-name: IssuerCertificateType
+    set:
+      parameter-name: CertificateType
+  - where:
+      verb: Set
+      subject: Secret
+      parameter-name: Value
+    set:
+      parameter-name: SecretValue
+  - where:
+      verb: Set
+      subject: StorageAccount
+      parameter-name: ResourceId
+    set:
+      alias: AccountResourceId
 ```
