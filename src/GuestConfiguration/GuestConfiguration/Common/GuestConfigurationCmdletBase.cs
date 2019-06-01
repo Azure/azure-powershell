@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
             foreach (var gcPolicySetDefinition in gcPolicySetDefinitions)
             {
                 var gcAssignmentReports = GetPolicyStatusesDetailedByInitiativeId(resourceGroupName, vmName, gcPolicySetDefinition.Id, gcrpAssignments);
-                if (gcAssignmentReports != null || gcAssignmentReports.Count() > 0)
+                if (gcAssignmentReports != null && gcAssignmentReports.Count() > 0)
                 {
                     gcPolicyAssignmentReportList.AddRange(gcAssignmentReports);
                 }
@@ -183,34 +183,37 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
             var gcPolicyAssignments = GetPolicyStatuses(resourceGroupName, vmName, gcrpAssignments, initiativeName);
             var gcPolicyAssignmentReportList = new List<PolicyStatusDetailed>();
 
-            var gcPolicyAssignmentsArray = gcPolicyAssignments.ToArray();
-
-            // Sort assignments by policy display name
-            Array.Sort(gcPolicyAssignmentsArray, (first, second) =>
+            if (gcPolicyAssignments.Count() > 0)
             {
-                return string.Compare(first.PolicyDisplayName, second.PolicyDisplayName, true);
-            });
+                var gcPolicyAssignmentsArray = gcPolicyAssignments.ToArray();
 
-            foreach (var gcPolicyAssignment in gcPolicyAssignmentsArray)
-            {
-                var reportGuid = CommonHelpers.GetReportGUIDFromID(gcPolicyAssignment.LatestReportId);
-                GuestConfigurationAssignmentReport gcrpReport = null;
-                if (gcPolicyAssignment.LatestReportId != null)
+                // Sort assignments by policy display name
+                Array.Sort(gcPolicyAssignmentsArray, (first, second) =>
                 {
-                    gcrpReport = GuestConfigurationClient.GuestConfigurationAssignmentReports.Get(resourceGroupName, gcPolicyAssignment.Configuration.Name, reportGuid, vmName);
-                }
+                    return string.Compare(first.PolicyDisplayName, second.PolicyDisplayName, true);
+                });
 
-                PolicyStatusDetailed policyDetailed = new PolicyStatusDetailed(gcrpReport, gcPolicyAssignment);
-                QueryOptions queryOptions = new QueryOptions();
-                queryOptions.Filter = string.Format("resourceGroup eq '{0}' and policyDefinitionAction eq 'deployifnotexists' and contains(ResourceId,'{1}')", resourceGroupName, vmName);
-                queryOptions.OrderBy = "Timestamp desc";
-                queryOptions.Top = 1;
-                PolicyStatesQueryResults policyDbResults = PolicyInsightsClient.PolicyStates.ListQueryResultsForPolicySetDefinition("latest", DefaultContext.Subscription.Id, gcPolicyAssignment.PolicySetDefinitionName, queryOptions);
-                if (policyDbResults.Odatacount > 0 && policyDbResults.Value[0].ComplianceState == "NonCompliant")
+                foreach (var gcPolicyAssignment in gcPolicyAssignmentsArray)
                 {
-                    policyDetailed.ComplianceStatus = policyDbResults.Value[0].ComplianceState;
+                    var reportGuid = CommonHelpers.GetReportGUIDFromID(gcPolicyAssignment.LatestReportId);
+                    GuestConfigurationAssignmentReport gcrpReport = null;
+                    if (gcPolicyAssignment.LatestReportId != null)
+                    {
+                        gcrpReport = GuestConfigurationClient.GuestConfigurationAssignmentReports.Get(resourceGroupName, gcPolicyAssignment.Configuration.Name, reportGuid, vmName);
+                    }
+
+                    PolicyStatusDetailed policyDetailed = new PolicyStatusDetailed(gcrpReport, gcPolicyAssignment);
+                    QueryOptions queryOptions = new QueryOptions();
+                    queryOptions.Filter = string.Format("resourceGroup eq '{0}' and policyDefinitionAction eq 'deployifnotexists' and contains(ResourceId,'{1}')", resourceGroupName, vmName);
+                    queryOptions.OrderBy = "Timestamp desc";
+                    queryOptions.Top = 1;
+                    PolicyStatesQueryResults policyDbResults = PolicyInsightsClient.PolicyStates.ListQueryResultsForPolicySetDefinition("latest", DefaultContext.Subscription.Id, gcPolicyAssignment.PolicySetDefinitionName, queryOptions);
+                    if (policyDbResults.Odatacount > 0 && policyDbResults.Value[0].ComplianceState == "NonCompliant")
+                    {
+                        policyDetailed.ComplianceStatus = policyDbResults.Value[0].ComplianceState;
+                    }
+                    gcPolicyAssignmentReportList.Add(policyDetailed);
                 }
-                gcPolicyAssignmentReportList.Add(policyDetailed);
             }
 
             return gcPolicyAssignmentReportList;
