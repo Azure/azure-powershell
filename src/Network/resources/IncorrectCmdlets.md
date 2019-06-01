@@ -1,0 +1,397 @@
+## Incorrect Cmdlets
+- Get-AzApplicationGatewaySslPredefinedPolicy
+    - Name
+- Get-AzExpressRouteCircuit
+    - Name
+- Get-AzExpressRouteCircuitArpTable
+    - ExpressRouteCircuitName
+    - PeeringType
+- Get-AzExpressRouteCircuitAuthorization
+    - Name
+    - ExpressRouteCircuit
+- Get-AzExpressRouteCircuitRouteTable
+    - ExpressRouteCircuitName
+    - PeeringType
+- Get-AzExpressRouteCircuitRouteTableSummary
+    - ExpressRouteCircuitName
+    - PeeringType
+- Get-AzExpressRouteConnection
+    - ExpressRouteGatewayObject
+    - ParentResourceId
+    - Name
+- Get-AzExpressRouteCrossConnection
+    - Name
+- Get-AzExpressRouteCrossConnectionArpTable
+    - ExpressRouteCrossConnection
+    - PeeringType
+- Get-AzExpressRouteCrossConnectionPeering
+    - Name
+    - ExpressRouteCrossConnection
+- Get-AzExpressRouteCrossConnectionRouteTable
+    - ExpressRouteCrossConnection
+    - PeeringType
+- Get-AzExpressRouteCrossConnectionRouteTableSummary
+    - ExpressRouteCrossConnection
+    - PeeringType
+- Get-AzLoadBalancer
+    - ExpandResource
+- Get-AzNetworkInterface
+    - VirtualMachineScaleSetName
+    - VirtualMachineIndex
+    - ExpandResource
+- Get-AzNetworkProfile
+    - ExpandResource
+- Get-AzNetworkSecurityGroup
+    - ExpandResource
+- Get-AzNetworkWatcher
+    - Location
+- Get-AzNetworkWatcherFlowLogStatus
+    - NetworkWatcher
+    - Location
+- Get-AzNetworkWatcherNextHop
+    - NetworkWatcher
+    - Location
+    - TargetVirtualMachineId
+    - TargetNetworkInterfaceId
+- Get-AzNetworkWatcherTopology
+    - NetworkWatcher
+    - Location
+- Get-AzNetworkWatcherTroubleshootingResult
+    - NetworkWatcher
+    - Location
+- Get-AzPublicIPAddress
+    - VirtualMachineScaleSetName
+    - VirtualMachineIndex
+    - NetworkInterfaceName
+    - IpConfigurationName
+    - ExpandResource
+- Get-AzRouteFilter
+    - ExpandResource
+- Get-AzRouteTable
+    - ExpandResource
+- Get-AzServiceEndpointPolicyDefinition
+    - ServiceEndpointPolicy
+- Get-AzVirtualNetwork
+    - ExpandResource
+- Get-AzVirtualNetworkGatewayConnectionSharedKey
+    - Name
+- Get-AzVirtualNetworkTap
+    - Name
+- Get-AzVpnConnection
+    - ParentResourceName
+    - ParentObject
+    - ParentResourceId
+    - Name
+- Get-AzVpnGateway
+    - Name
+- New-AzApplicationGateway
+    - Sku
+    - SslPolicy
+    - GatewayIPConfigurations
+    - SslCertificates
+    - AuthenticationCertificates
+    - FrontendIPConfigurations
+    - FrontendPorts
+    - Probes
+    - BackendAddressPools
+    - HttpListeners
+    - UrlPathMaps
+    - RequestRoutingRules
+    - RedirectConfigurations
+    - WebApplicationFirewallConfiguration
+    - FirewallPolicy
+    - AutoscaleConfiguration
+    - EnableFIPS
+    - UserAssignedIdentityId
+    - Identity
+    - Force
+- New-AzApplicationSecurityGroup
+    - Force
+- New-AzExpressRouteCircuit
+    - Name
+    - ServiceProviderName
+    - PeeringLocation
+    - BandwidthInMbps
+    - ExpressRoutePort
+    - BandwidthInGbps
+    - AllowClassicOperations
+    - Force
+- New-AzExpressRouteConnection
+    - ExpressRouteGatewayObject
+    - ParentResourceId
+- New-AzExpressRouteGateway
+    - MinScaleUnits
+    - MaxScaleUnits
+    - VirtualHub
+    - VirtualHubName
+- New-AzExpressRoutePort
+    - BandwidthInGbps
+    - Force
+- New-AzLoadBalancer
+    - Sku
+    - Force
+- New-AzLocalNetworkGateway
+    - AddressPrefix
+    - Asn
+    - BgpPeeringAddress
+    - PeerWeight
+    - Force
+- New-AzNetworkInterface
+    - SubnetId
+    - PublicIpAddressId
+    - PublicIpAddress
+    - NetworkSecurityGroup
+    - LoadBalancerBackendAddressPoolId
+    - LoadBalancerBackendAddressPool
+    - LoadBalancerInboundNatRuleId
+    - LoadBalancerInboundNatRule
+    - ApplicationGatewayBackendAddressPoolId
+    - ApplicationGatewayBackendAddressPool
+    - ApplicationSecurityGroupId
+    - ApplicationSecurityGroup
+    - PrivateIpAddress
+    - IpConfigurationName
+    - DnsServer
+    - InternalDnsNameLabel
+    - Force
+- New-AzNetworkProfile
+    - Force
+    - AsJob
+- New-AzNetworkSecurityGroup
+    - SecurityRules
+    - Force
+- New-AzPublicIPAddress
+    - Sku
+    - AllocationMethod
+    - IpAddressVersion
+    - DomainNameLabel
+    - PublicIpPrefix
+    - ReverseFqdn
+    - IdleTimeoutInMinutes
+    - Force
+- New-AzPublicIPPrefix
+    - Sku
+    - IpAddressVersion
+    - Force
+- New-AzRouteFilter
+    - Force
+- New-AzRouteTable
+    - Force
+- New-AzServiceEndpointPolicy
+    - Force
+- New-AzVirtualHub
+    - VirtualWan
+    - HubVnetConnection
+    - RouteTable
+- New-AzVirtualNetwork
+    - AddressPrefix
+    - DnsServer
+    - DdosProtectionPlanId
+    - Force
+- New-AzVirtualNetworkGateway
+    - IpConfigurations
+    - EnableActiveActiveFeature
+    - GatewaySku
+    - GatewayDefaultSite
+    - VpnClientAddressPool
+    - VpnClientProtocol
+    - VpnClientRootCertificates
+    - VpnClientRevokedCertificates
+    - VpnClientIpsecPolicy
+    - Asn
+    - PeerWeight
+    - Force
+    - RadiusServerAddress
+    - RadiusServerSecret
+- New-AzVirtualNetworkGatewayConnection
+    - LocalNetworkGateway2
+    - Peer
+    - Force
+    - UsePolicyBasedTrafficSelectors
+    - IpsecPolicies
+- New-AzVirtualNetworkTap
+    - Name
+    - DestinationNetworkInterfaceIPConfiguration
+    - DestinationLoadBalancerFrontEndIPConfiguration
+    - Force
+- New-AzVpnConnection
+    - ParentResourceName
+    - ParentObject
+    - ParentResourceId
+    - VpnSite
+    - VpnSiteId
+    - ConnectionBandwidthInMbps
+- New-AzVpnGateway
+    - Name
+    - VirtualHub
+    - VirtualHubName
+    - VpnConnection
+- New-AzVpnSite
+    - VirtualWanResourceGroupName
+    - VirtualWanName
+    - VirtualWan
+    - AddressSpace
+    - DeviceModel
+    - DeviceVendor
+    - LinkSpeedInMbps
+    - BgpAsn
+    - BgpPeeringAddress
+    - BgpPeeringWeight
+- Remove-AzApplicationGateway
+    - Force
+- Remove-AzApplicationSecurityGroup
+    - Force
+- Remove-AzExpressRouteCircuit
+    - Name
+    - Force
+- Remove-AzExpressRouteCircuitAuthorization
+    - Name
+    - ExpressRouteCircuit
+- Remove-AzExpressRouteConnection
+    - Name
+    - Force
+- Remove-AzExpressRouteCrossConnectionPeering
+    - ExpressRouteCrossConnection
+    - Name
+    - PeerAddressType
+    - Force
+- Remove-AzExpressRouteGateway
+    - Force
+- Remove-AzExpressRoutePort
+    - Force
+- Remove-AzLoadBalancer
+    - Force
+- Remove-AzLocalNetworkGateway
+    - Force
+- Remove-AzNetworkInterface
+    - Force
+- Remove-AzNetworkProfile
+    - Force
+    - AsJob
+- Remove-AzNetworkSecurityGroup
+    - Force
+- Remove-AzNetworkWatcher
+    - NetworkWatcher
+    - Location
+- Remove-AzPublicIPAddress
+    - Force
+- Remove-AzPublicIPPrefix
+    - Force
+- Remove-AzRouteFilter
+    - Force
+- Remove-AzRouteTable
+    - Force
+- Remove-AzServiceEndpointPolicy
+    - Force
+- Remove-AzServiceEndpointPolicyDefinition
+    - ServiceEndpointPolicy
+- Remove-AzVirtualHub
+    - Force
+- Remove-AzVirtualNetwork
+    - Force
+- Remove-AzVirtualNetworkGateway
+    - Force
+- Remove-AzVirtualNetworkGatewayConnection
+    - Force
+- Remove-AzVirtualNetworkPeering
+    - Force
+- Remove-AzVirtualNetworkTap
+    - Name
+    - Force
+- Remove-AzVirtualWan
+    - Force
+- Remove-AzVpnConnection
+    - ParentResourceName
+    - Name
+    - Force
+- Remove-AzVpnGateway
+    - Name
+    - Force
+- Remove-AzVpnSite
+    - Force
+- Reset-AzVirtualNetworkGateway
+    - VirtualNetworkGateway
+- Reset-AzVirtualNetworkGatewayConnectionSharedKey
+    - Name
+    - Force
+- Set-AzApplicationGateway
+    - ApplicationGateway
+- Set-AzExpressRouteCircuit
+    - ExpressRouteCircuit
+- Set-AzExpressRouteCrossConnection
+    - ExpressRouteCrossConnection
+    - Name
+    - ServiceProviderNotes
+    - Peerings
+    - Force
+- Set-AzExpressRouteGateway
+    - MinScaleUnits
+    - MaxScaleUnits
+- Set-AzLoadBalancer
+    - LoadBalancer
+- Set-AzLocalNetworkGateway
+    - LocalNetworkGateway
+    - AddressPrefix
+    - Asn
+    - BgpPeeringAddress
+    - PeerWeight
+- Set-AzNetworkInterface
+    - NetworkInterface
+- Set-AzNetworkProfile
+    - NetworkProfile
+    - AsJob
+- Set-AzNetworkSecurityGroup
+    - NetworkSecurityGroup
+- Set-AzPublicIPPrefix
+    - PublicIpPrefix
+- Set-AzRouteFilter
+    - RouteFilter
+    - Force
+- Set-AzRouteTable
+    - RouteTable
+- Set-AzServiceEndpointPolicy
+    - ServiceEndpointPolicy
+- Set-AzServiceEndpointPolicyDefinition
+    - ServiceEndpointPolicy
+- Set-AzVirtualNetwork
+    - VirtualNetwork
+- Set-AzVirtualNetworkGateway
+    - VirtualNetworkGateway
+    - GatewaySku
+    - GatewayDefaultSite
+    - VpnClientAddressPool
+    - VpnClientProtocol
+    - VpnClientRootCertificates
+    - VpnClientRevokedCertificates
+    - VpnClientIpsecPolicy
+    - Asn
+    - PeerWeight
+    - EnableActiveActiveFeature
+    - DisableActiveActiveFeature
+    - RadiusServerAddress
+    - RadiusServerSecret
+- Set-AzVirtualNetworkGatewayConnection
+    - VirtualNetworkGatewayConnection
+    - UsePolicyBasedTrafficSelectors
+    - IpsecPolicies
+    - Force
+- Set-AzVirtualNetworkGatewayConnectionSharedKey
+    - Name
+    - Force
+- Set-AzVirtualNetworkPeering
+    - VirtualNetworkPeering
+- Start-AzApplicationGateway
+    - ApplicationGateway
+- Stop-AzApplicationGateway
+    - ApplicationGateway
+- Test-AzNetworkWatcherConnectivity
+    - NetworkWatcher
+    - Location
+    - SourceId
+    - DestinationId
+    - ProtocolConfiguration
+- Test-AzNetworkWatcherIPFlow
+    - NetworkWatcher
+    - Location
+    - TargetVirtualMachineId
+    - TargetNetworkInterfaceId

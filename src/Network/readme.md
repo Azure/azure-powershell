@@ -52,52 +52,66 @@ require:
   - $(repo)/specification/network/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/network/resource-manager/readme.md
 
-# input-file:
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/applicationGateway.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/applicationSecurityGroup.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/availableDelegations.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/azureFirewall.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/azureFirewallFqdnTag.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/checkDnsAvailability.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/ddosCustomPolicy.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/ddosProtectionPlan.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/endpointService.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/expressRouteCircuit.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/expressRouteCrossConnection.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/expressRouteGateway.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/expressRoutePort.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/interfaceEndpoint.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/loadBalancer.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/natGateway.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/network.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/networkInterface.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/networkProfile.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/networkSecurityGroup.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/networkWatcher.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/operation.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/publicIpAddress.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/publicIpPrefix.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/routeFilter.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/routeTable.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/serviceCommunity.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/serviceEndpointPolicy.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/usage.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/virtualNetwork.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/virtualNetworkGateway.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/virtualNetworkTap.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/virtualWan.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/vmssNetworkInterface.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/vmssPublicIpAddress.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/webapplicationfirewall.json
-
 subject-prefix: ''
 module-version: 0.0.1
 skip-model-cmdlets: true
 
 directive:
+# General
   - where:
       enum-name: SecurityRuleProtocol
       enum-value-name: Asterisk
     set:
       enum-value-name: All
+
+# Something
+  - where:
+      subject: ^AzureFirewall(.*)
+    set:
+      subject: Firewall$1
+  - where:
+      subject: ^Route$
+    set:
+      subject: RouteTableRoute
+  - where:
+      subject: ^SecurityRule$
+    set:
+      subject: NetworkSecurityRule
+  - where:
+      subject: ^Usage$
+    set:
+      subject: NetworkUsage
+
+# Vmss
+  - where:
+      subject: (.*)VirtualMachineScaleSet(.*)
+    set:
+      subject: Vmss$2
+  - where:
+      subject: VmssVMPublicIpaddress
+    set:
+      subject: VmssVMPublicIPAddress
+
+# Subnet
+  - where:
+      subject: ^Subnet$
+    set:
+      subject: VirtualNetworkSubnet
+  - where:
+      subject: (.*)Delegation$
+    set:
+      subject: $1VirtualNetworkSubnetDelegation
+  - where:
+      subjects: AvailableResourceGroupVirtualNetworkSubnetDelegation
+    hide: true
+
+# Packet Capture
+  - where:
+      subject: ^PacketCapture(.*)
+    set:
+      subject: NetworkWatcherPacketCapture$1
+  - where:
+      subject: NetworkWatcherPacketCaptureStatus
+    hide: true
+
 ```
