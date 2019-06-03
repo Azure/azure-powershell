@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Support Kind FileStorage and SkuName Premium_ZRS when create Storage account
-       - New-AzStorageAccount
+    - New-AzStorageAccount
 
 ## Version 1.3.0
 * Upgrade to Storage Client Library 10.0.1 (the namespace of all objects from this SDK change from "Microsoft.WindowsAzure.Storage.*" to "Microsoft.Azure.Storage.*")
