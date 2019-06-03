@@ -17,6 +17,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using System;
+using System.Linq;
 using SubResource = Microsoft.Azure.Management.Compute.Models.SubResource;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     throw new InvalidOperationException("Proximity placement group doesn't exist.");
                 },
                 // we need this line to prevent calling createModel().
-                dependencies: Enumerable.Empty());
+                dependencies: Enumerable.Empty<IEntityConfig>());
 
         public static Func<IEngine, SubResource> CreateProximityPlacementGroupSuResourceFunc(
             this ResourceConfig<ResourceGroup> resourceGroup, string name)
