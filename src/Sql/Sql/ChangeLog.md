@@ -22,6 +22,7 @@
 * Deprecating Get-AzSqlDatabaseSecureConnectionPolicy cmdlet
 * Rename Threat Detection cmdlets to Advanced Threat Protection
 * New-AzSqlInstance -StorageSizeInGB and -LicenseType parameters are now optional.
+* Fix issue in reference documentation for `Enable-AzSqlServerAdvancedDataSecurity`
 
 ## Version 1.10.0
 * Rename Advanced Threat Protection cmdlets to Advanced Data Security and enable Vulnerability Assessment by default
