@@ -219,6 +219,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition
 
 ## NOTES
+
 More information about the supported metrics may be found at:
 https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
 
