@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Clarified description of blob immutability cmdlet
+    -  Remove-AzRmStorageContainerImmutabilityPolicy
 
 ## Version 1.3.0
 * Upgrade to Storage Client Library 10.0.1 (the namespace of all objects from this SDK change from "Microsoft.WindowsAzure.Storage.*" to "Microsoft.Azure.Storage.*")
@@ -28,8 +30,6 @@
     - New-AzStorageAccount
     - Get-AzStorageAccount
     - Set-AzStorageAccount
-* Clarified description of blob immutability cmdlet
-    -  Remove-AzRmStorageContainerImmutabilityPolicy
 
 ## Version 1.2.0
 * Report detail error when create Storage context with parameter -UseConnectedAccount, but without login Azure account
