@@ -305,6 +305,7 @@ Gets the values of the parameters used in the Server Key Vault Key tests
 #>
 function Get-SqlServerKeyVaultKeyTestEnvironmentParameters ()
 {
+	# Create a key vault with soft delete.configured
 	return @{ rgName = Get-ResourceGroupName;
 			  serverName = Get-ServerName;
 			  databaseName = Get-DatabaseName;
@@ -362,11 +363,6 @@ function Get-ManagedInstanceForTdeTest ($params)
 	
 	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
 	Set-AzKeyVaultAccessPolicy -VaultName $params.vaultName -ObjectId $managedInstance.Identity.PrincipalId -PermissionsToKeys get, list, wrapKey, unwrapKey
-
-	# $mangedInstanceRg = "BenjinResourceGroup"
-	# $managedInstanceName = "benjinmitest"
-	# 
-	# $managedInstance = Get-AzSqlInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
 
 	return $managedInstance
 }
