@@ -208,6 +208,21 @@ namespace Common.Authentication.Test
         }
 
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NoWaitWithAsJob()
+        {
+            var mock = new Mock<ICommandRuntime>();
+            var cmdlet = new AzureStreamTestCmdlet();
+            cmdlet.MyInvocation.BoundParameters["AsJob"] = true;
+            cmdlet.MyInvocation.BoundParameters["NoWait"] = true;
+
+            mock.Setup(m => m.WriteObject(It.IsAny<object>())).Throws(new InvalidOperationException("Should not execute as job"));
+
+            cmdlet.CommandRuntime = mock.Object;
+            cmdlet.ExecuteSynchronouslyOrAsJob();
+        }
+
         AzureStreamTestCmdlet SetupCmdlet(bool CallShouldProcess, bool CallShouldContinue, out Mock<ICommandRuntime> mockRuntime)
         {
             var cmdlet = new AzureStreamTestCmdlet();

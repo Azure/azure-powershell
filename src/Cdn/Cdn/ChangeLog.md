@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated cmdlets to support rulesEngine feature based on API version 2019-04-15.
 
 ## Version 1.2.0
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
