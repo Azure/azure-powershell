@@ -12,15 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 
-namespace Microsoft.Azure.Commands.Cdn.Models.Endpoint
+namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class PSUrlFileExtensionConditionParameters
+    public class NoWaitTests : ComputeTestRunner
     {
-        public IList<string> Extensions { get; set; }
-        public string Odatatype { get; private set; }
+        public NoWaitTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
+        {
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNoWaitParameter()
+        {
+            TestRunner.RunTestScript("Test-NoWaitParameter");
+        }
+
     }
 }

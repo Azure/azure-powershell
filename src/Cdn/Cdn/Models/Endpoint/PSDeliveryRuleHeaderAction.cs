@@ -18,10 +18,14 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Cdn.Models.Endpoint
 {
-    public class PSUrlPathConditionParameters
+    public class PSDeliveryRuleHeaderAction: PSDeliveryRuleAction
     {
-        public string Path { get; set; }
-        public string MatchType { get; set; }
-        public string Odatatype { get; private set; }
+        public string HeaderActionType { get; set; }
+
+        public string Action { get; set; }
+
+        public string HeaderName { get; set; }
+
+        public string Value { get; set; }
     }
 }
