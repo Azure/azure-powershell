@@ -619,7 +619,8 @@ function Test-AEMExtensionAdvancedLinux
 function Test-AEMExtensionAdvancedLinuxMD_E
 {
     $rgname = Get-ComputeTestResourceName
-    $loc = "eastus2"
+    [string]$loc = Get-ComputeVMLocation;
+    $loc = $loc.Replace(' ', '');
 
     try
     {
@@ -728,7 +729,8 @@ function Test-AEMExtensionAdvancedLinuxMD_E
 function Test-AEMExtensionAdvancedLinuxMD_D
 {
     $rgname = Get-ComputeTestResourceName
-    $loc = "southeastasia"
+    [string]$loc = Get-ComputeVMLocation;
+    $loc = $loc.Replace(' ', '');
 
     try
     {

@@ -86,5 +86,29 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// </summary>
         /// <value>The tier files older than days.</value>
         public int? TierFilesOlderThanDays { get; set; }
+
+        /// <summary>
+        /// Gets or sets the offline data transfer.
+        /// </summary>
+        /// <value>The offline data transfer.</value>
+        public string OfflineDataTransfer { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the offline data transfer share.
+        /// </summary>
+        /// <value>The name of the offline data transfer share.</value>
+        public string OfflineDataTransferShareName { get; set; }
+
+        /// <summary>
+        /// Gets the offline data transfer storage account resource identifier.
+        /// </summary>
+        /// <value>The offline data transfer storage account resource identifier.</value>
+        public string OfflineDataTransferStorageAccountResourceId { get; internal set; }
+
+        /// <summary>
+        /// Gets the offline data transfer storage account tenant identifier.
+        /// </summary>
+        /// <value>The offline data transfer storage account tenant identifier.</value>
+        public string OfflineDataTransferStorageAccountTenantId { get; internal set; }
     }
 }

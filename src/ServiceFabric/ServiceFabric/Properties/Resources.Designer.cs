@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot find Virtual Machine Scale Sate with name {0}..
+        ///   Looks up a localized string similar to Cannot find Virtual Machine Scale Set with name {0}..
         /// </summary>
         internal static string CannotFindVMSS {
             get {
