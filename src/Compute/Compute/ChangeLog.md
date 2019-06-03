@@ -19,6 +19,36 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix typo in `New-AzVM` reference documentation
+
+## Version 2.2.0
+* Added `NoWait` parameter that starts the operation and returns immediately, before the operation is completed.
+    - Updated cmdlets:
+        Export-AzLogAnalyticRequestRateByInterval
+        Export-AzLogAnalyticThrottledRequest
+        Remove-AzVM
+        Remove-AzVMAccessExtension
+        Remove-AzVMAEMExtension
+        Remove-AzVMChefExtension
+        Remove-AzVMCustomScriptExtension
+        Remove-AzVMDiagnosticsExtension
+        Remove-AzVMDiskEncryptionExtension
+        Remove-AzVMDscExtension
+        Remove-AzVMSqlServerExtension
+        Restart-AzVM
+        Set-AzVM
+        Set-AzVMAccessExtension
+        Set-AzVMADDomainExtension
+        Set-AzVMAEMExtension
+        Set-AzVMBginfoExtension
+        Set-AzVMChefExtension
+        Set-AzVMCustomScriptExtension
+        Set-AzVMDiagnosticsExtension
+        Set-AzVMDscExtension
+        Set-AzVMExtension
+        Start-AzVM
+        Stop-AzVM
+        Update-AzVM
 
 ## Version 2.1.0
 * Add ProtectFromScaleIn and ProtectFromScaleSetAction parameters to Update-AzVmssVM cmdlet.
