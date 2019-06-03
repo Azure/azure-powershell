@@ -111,6 +111,16 @@ namespace Microsoft.Azure.Commands.Batch
         public int PoolQuota { get; private set; }
 
         /// <summary>
+        /// The Dedicated core quota for this Batch account.
+        /// </summary>
+        public int? DedicatedCoreQuota { get; private set; }
+
+        /// <summary>
+        /// The Low priority core quota for this Batch account.
+        /// </summary>
+        public int? LowPriorityCoreQuota { get; private set; }
+
+        /// <summary>
         /// The active job and job schedule quota for this Batch account.
         /// </summary>
         public int ActiveJobAndJobScheduleQuota { get; private set; }
@@ -203,6 +213,8 @@ namespace Microsoft.Azure.Commands.Batch
             this.Tags = TagsConversionHelper.CreateTagHashtable(resource.Tags);
             this.CoreQuota = resource.CoreQuota;
             this.PoolQuota = resource.PoolQuota;
+            this.DedicatedCoreQuota = resource.DedicatedCoreQuota;
+            this.LowPriorityCoreQuota = resource.LowPriorityCoreQuota;
             this.ActiveJobAndJobScheduleQuota = resource.ActiveJobAndJobScheduleQuota;
             this.PoolAllocationMode = resource.PoolAllocationMode;
             
