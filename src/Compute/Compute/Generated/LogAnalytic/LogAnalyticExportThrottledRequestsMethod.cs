@@ -19,15 +19,16 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -51,10 +52,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     parameters.GroupByThrottlePolicy = this.GroupByThrottlePolicy;
                     string location = this.Location.Canonicalize();
 
-                    var result = LogAnalyticsClient.ExportThrottledRequests(parameters, location);
-                    var psObject = new PSLogAnalyticsOperationResult();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<LogAnalyticsOperationResult, PSLogAnalyticsOperationResult>(result, psObject);
-                    WriteObject(psObject);
+                    if (NoWait.IsPresent)
+                    {
+                        var result = LogAnalyticsClient.BeginExportThrottledRequests(parameters, location);
+                        var psObject = new PSLogAnalyticsOperationResult();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<LogAnalyticsOperationResult, PSLogAnalyticsOperationResult>(result, psObject);
+                        WriteObject(psObject);
+                    }
+                    else
+                    {
+                        var result = LogAnalyticsClient.ExportThrottledRequests(parameters, location);
+                        var psObject = new PSLogAnalyticsOperationResult();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<LogAnalyticsOperationResult, PSLogAnalyticsOperationResult>(result, psObject);
+                        WriteObject(psObject);
+                    }
                 }
             });
         }
@@ -102,5 +113,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has sucessufuly been completed, use some other mechanism.")]
+        public SwitchParameter NoWait { get; set; }
     }
 }

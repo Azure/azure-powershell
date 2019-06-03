@@ -18,8 +18,18 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Cdn.Models.Endpoint
 {
-    public class PSDeliveryRuleUrlPathCondition: PSDeliveryRuleCondition
+    public class PSDeliveryRuleUrlRedirectAction: PSDeliveryRuleAction
     {
-        public PSUrlPathConditionParameters Parameters { get; set; }
+        public string RedirectType { get; set; }
+
+        public string DestinationProtocol { get; set; }
+
+        public string CustomPath { get; set; }
+
+        public string CustomHostname { get; set; }
+
+        public string CustomQueryString { get; set; }
+
+        public string CustomFragment { get; set; }
     }
 }
