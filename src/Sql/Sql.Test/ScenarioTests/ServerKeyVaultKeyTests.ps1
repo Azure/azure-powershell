@@ -82,12 +82,9 @@ function Test-RemoveServerKeyVaultKey
 		Assert-AreEqual $params.keyId $keyGet.Uri
 		Assert-AreEqual $params.serverKeyName $keyGet.ServerKeyName
 
-		
-		$keyRemove = Remove-AzSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId
-
-		# $job = Remove-AzSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId -AsJob
-		# $job | Wait-Job
-		# $keyRemove = $job.Output
+		$job = Remove-AzSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId -AsJob
+		$job | Wait-Job
+		$keyRemove = $job.Output
 		
 		Assert-AreEqual $params.serverKeyName $keyRemove.ServerKeyName
 		Assert-AreEqual $params.keyId $keyRemove.Uri
