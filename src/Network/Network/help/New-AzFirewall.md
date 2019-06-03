@@ -416,7 +416,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress, Microsoft.Azure.PowerShell.Cmdlets.Network, Version=1.8.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress[]
 
 ### Microsoft.Azure.Commands.Network.Models.PSAzureFirewallApplicationRuleCollection[]
 
