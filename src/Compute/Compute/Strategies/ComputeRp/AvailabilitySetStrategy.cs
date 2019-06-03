@@ -43,6 +43,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 createModel: _ =>
                 {
                     throw new InvalidOperationException("Availability set doesn't exist.");
-                });
+                },
+                // we need this line to prevent calling createModel().
+                dependencies: Enumerable.Empty());
     }
 }

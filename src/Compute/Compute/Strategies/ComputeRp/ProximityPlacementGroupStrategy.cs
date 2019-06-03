@@ -41,7 +41,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 createModel: _ =>
                 {
                     throw new InvalidOperationException("Proximity placement group doesn't exist.");
-                });
+                },
+                // we need this line to prevent calling createModel().
+                dependencies: Enumerable.Empty());
 
         public static Func<IEngine, SubResource> CreateProximityPlacementGroupSuResourceFunc(
             this ResourceConfig<ResourceGroup> resourceGroup, string name)
