@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix bug for not passing OFflineDataTransferProxy to SDK
 
 ## Version 1.0.0
 * Replace Graph method for ensuring Service Principal in CloudEndpoint provisioning.
