@@ -650,64 +650,114 @@
     <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSVpnClientConnectionHealthDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Network.Models.PSVpnClientConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSVpnClientConnectionHealthDetail</TypeName>
       </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
-                <Label>VpnConnectionId</Label>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>VpnConnectionId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>VpnConnectionDurationInSeconds</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>VpnConnectionTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PublicIpAddress</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PrivateIpAddress</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>VpnUserName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>MaxBandwidth</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>EgressPacketsTransferred</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>EgressBytesTransferred</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IngressPacketsTransferred</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IngressBytesTransferred</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>MaxPacketsPerSecond</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>VpnConnectionId</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>VpnConnectionDuration</Label>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>VpnConnectionDuration</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>VpnConnectionTime</Label>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>VpnConnectionTime</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>PublicIpAddress</Label>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>PublicIpAddress</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>PrivateIpAddress</Label>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>PrivateIpAddress</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>VpnUserName</Label>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>VpnUserName</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>MaxBandwidth</Label>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>MaxBandwidth</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>EgressPacketsTransferred</Label>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>EgressPacketsTransferred</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>EgressBytesTransferred</Label>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>EgressBytesTransferred</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>IngressPacketsTransferred</Label>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>IngressPacketsTransferred</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>IngressBytesTransferred</Label>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>IngressBytesTransferred</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>MaxPacketsPerSecond</Label>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>MaxPacketsPerSecond</PropertyName>
-              </ListItem>              
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
     </View>
     <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway</Name>
