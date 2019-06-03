@@ -59,8 +59,8 @@ namespace Microsoft.Azure.Commands.Network
             "VirtualNetworkName",
             deprecateByVersion: "2.0.0",
             ChangeDescription = "This parameter will be removed in an upcoming breaking change release. After this point the Virtual Network will be provided as an object instead of a string.", 
-            OldWay = "New-AzureRmFirewall -VirtualNetworkName \"vnet-name\"",
-            NewWay = "New-AzureRmFirewall -VirtualNetwork $vnet",
+            OldWay = "New-AzFirewall -VirtualNetworkName \"vnet-name\"",
+            NewWay = "New-AzFirewall -VirtualNetwork $vnet",
             OldParamaterType = typeof(string),
             NewParameterTypeName = nameof(PSVirtualNetwork),
             ReplaceMentCmdletParameterName = "VirtualNetwork")]
@@ -76,8 +76,8 @@ namespace Microsoft.Azure.Commands.Network
             "PublicIpName",
             deprecateByVersion: "2.0.0",
             ChangeDescription = "This parameter will be removed in an upcoming breaking change release. After this point the Public IP Address will be provided as a list of one or more objects instead of a string.",
-            OldWay = "New-AzureRmFirewall -PublicIpName \"public-ip-name\"",
-            NewWay = "New-AzureRmFirewall -PublicIpAddress @($publicip1, $publicip2)",
+            OldWay = "New-AzFirewall -PublicIpName \"public-ip-name\"",
+            NewWay = "New-AzFirewall -PublicIpAddress @($publicip1, $publicip2)",
             OldParamaterType = typeof(string),
             NewParameterTypeName = "List<PSPublicIpAddress>",
             ReplaceMentCmdletParameterName = "PublicIpAddress")]
