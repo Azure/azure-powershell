@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix typo in `New-AzVM` reference documentation
 
 ## Version 2.2.0
 * Added `NoWait` parameter that starts the operation and returns immediately, before the operation is completed.
