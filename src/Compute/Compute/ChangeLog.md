@@ -19,7 +19,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Test update to Compute
 
 ## Version 2.1.0
 * Add ProtectFromScaleIn and ProtectFromScaleSetAction parameters to Update-AzVmssVM cmdlet.
