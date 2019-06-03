@@ -18,7 +18,6 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
-* Test update to Network
 * Update ResourceId and InputObject for Nat Gateway
     - Add alias for ResourceId and InputObject
 
