@@ -95,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -Query
-Specifies the query name.
+Specifies the query expression for the saved search.
 
 ```yaml
 Type: System.String
