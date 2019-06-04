@@ -52,10 +52,72 @@ require:
   - $(repo)/specification/billing/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/billing/resource-manager/readme.md
   - $(repo)/specification/commerce/resource-manager/readme.enable-multi-api.md
-  - $(repo)/specification/commerce/resource-manager/readme.md 
+  - $(repo)/specification/commerce/resource-manager/readme.md
   - $(repo)/specification/consumption/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/consumption/resource-manager/readme.md
 
 module-version: 0.0.1
 title: Billing
+subject-prefix: ''
+
+directive:
+  - where:
+      subject: Agreement|Department|Invoice.*|PaymentMethod|RecipientTransfer|Transaction|Transfer
+    set:
+      alias: ${verb}-AzBilling${subject}
+  - where:
+      subject: AggregatedCost|Balance|Budget|Charge.*|CostTag|Forecast|Marketplace|PriceSheet|Reservation.*|UsageDetail
+    set:
+      alias: ${verb}-AzConsumption${subject}
+  - where:
+      subject: Policy|Product|RoleAssignment
+    set:
+      subject-prefix: Billing
+  - where:
+      subject: Tag|Tenant
+    set:
+      subject-prefix: Consumption
+  - where:
+      subject: AvailableBalance
+    set:
+      subject: AvailableCreditBalance
+  - where:
+      subject: CreditSummary.*
+    set:
+      subject: CreditSummary
+      alias: ${verb}-AzConsumptionCreditSummary
+  - where:
+      subject: ConsumptionEventsByBillingProfile
+    set:
+      subject: ConsumptionEvent
+  - where:
+      subject: Invoice
+      parameter-name: Top
+    set:
+      alias: MaxCount
+  - where:
+      subject: BillingPeriod
+      parameter-name: Top
+    set:
+      alias: MaxCount
+  - where:
+      subject: EnrollmentAccount
+      parameter-name: Name
+    set:
+      alias: ObjectId
+  - where:
+      subject: UsageAggregate
+      parameter-name: ShowDetail
+    set:
+      alias: ShowDetails
+  - where:
+      subject: BillingProfile
+      parameter-name: EnabledAzureSkU
+    set:
+      parameter-name: EnabledAzureSku
+  - where:
+      subject: BillingProfile
+      parameter-name: PoNumber
+    set:
+      parameter-name: PurchaseNumberOrder
 ```

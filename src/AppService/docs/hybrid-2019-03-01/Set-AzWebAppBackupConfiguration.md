@@ -375,5 +375,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## ALIASES
 
+### Edit-AzWebAppBackupConfiguration
+
 ## RELATED LINKS
 

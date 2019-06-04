@@ -184,7 +184,7 @@ If true, deleted site configuration, in addition to content, will be restored.
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: RestoreExpanded, RestoreViaIdentityExpanded
-Aliases:
+Aliases: RestoreContentOnly
 
 Required: False
 Position: Named
