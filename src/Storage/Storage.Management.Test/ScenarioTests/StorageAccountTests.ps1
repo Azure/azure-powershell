@@ -670,6 +670,43 @@ function Test-GetAzureStorageLocationUsage
 
 <#
 .SYNOPSIS
+Test New-AzStorageAccountFileStorage
+.DESCRIPTION
+Smoke[Broken]Test
+#>
+function Test-NewAzureStorageAccountFileStorage
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Premium_LRS';
+        $kind = 'FileStorage'
+
+        $loc = Get-ProviderLocation ResourceManagement;
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+        
+        Retry-IfException { Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test Get-AzStorageAccount | New/Set-AzStorageAccount
 #>
 function Test-PipingNewUpdateAccount
