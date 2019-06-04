@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Test update to Resources 
 
 ## Version 1.4.0
 * Add new cmdlet Get-AzureRmDenyAssignment for retrieving deny assignments
