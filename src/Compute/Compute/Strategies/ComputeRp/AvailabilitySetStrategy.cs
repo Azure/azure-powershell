@@ -38,14 +38,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             Func<IEngine, SubResource> proximityPlacementGroup)
-            => Strategy.CreateResourceConfig(
-                resourceGroup: resourceGroup,
-                name: name,
-                createModel: _ =>
-                {
-                    throw new InvalidOperationException("Availability set doesn't exist.");
-                },
-                // we need this line to prevent calling createModel().
-                dependencies: Enumerable.Empty<IEntityConfig>());
+            => Strategy.CreateNoncreatableResourceConfig(resourceGroup: resourceGroup, name: name);
     }
 }

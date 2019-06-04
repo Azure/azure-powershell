@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         _cmdlet.VMScaleSetName,
                         _cmdlet.NatBackendPort.Concat(_cmdlet.BackendPort).ToList());
 
-                var proximityPlacementGroup = resourceGroup.CreateProximityPlacementGroupSuResourceFunc(_cmdlet.ProximityPlacementGroup);
+                var proximityPlacementGroup = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroup);
 
                 return resourceGroup.CreateVirtualMachineScaleSetConfig(
                     name: _cmdlet.VMScaleSetName,
