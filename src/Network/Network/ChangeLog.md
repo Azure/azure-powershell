@@ -47,7 +47,7 @@
 * Fixed displaying of VirtualNetworkTaps in NetworkInterfaceIpConfiguration
 * Fixed Cortex Get cmdlets for list all part
 * Fixed VirtualHub reference creation for ExpressRouteGateways, VpnGateway
-* Add Availability Zones support for Azure Firewall
+* Added support for Availability Zones in AzureFirewall and NatGateway
 
 ## Version 1.8.1
 * Add DisableBgpRoutePropagation flag to Effective Route Table output
