@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = EventGridConstants.DomainInputObjectHelp,
             ParameterSetName = DomainInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
-        public PSDomain InputObject { get; set; }
+        public PSDomain DomainInputObject { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -89,20 +89,20 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = EventGridConstants.DomainResourceIdHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
+        public string DomainResourceId { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(this.ResourceId))
+            if (!string.IsNullOrEmpty(this.DomainResourceId))
             {
-                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                var resourceIdentifier = new ResourceIdentifier(this.DomainResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 this.DomainName = resourceIdentifier.ResourceName;
             }
-            else if (this.InputObject != null)
+            else if (this.DomainInputObject != null)
             {
-                this.ResourceGroupName = this.InputObject.ResourceGroupName;
-                this.DomainName = this.InputObject.DomainName;
+                this.ResourceGroupName = this.DomainInputObject.ResourceGroupName;
+                this.DomainName = this.DomainInputObject.DomainName;
             }
 
             if (this.ShouldProcess(this.DomainName, $"Regenerate key {this.Name} for domain {this.DomainName} in Resource Group {this.ResourceGroupName}"))

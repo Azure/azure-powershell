@@ -29,13 +29,9 @@ function DomainTests {
 
     $subscriptionId = Get-SubscriptionId
 
-    Write-Debug "Creating first resource group"
-    Write-Debug "ResourceGroup name : $resourceGroupName"
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-ResourceGroup $resourceGroupName $location
 
-    Write-Debug "Creating second resource group"
-    Write-Debug "ResourceGroup name : $secondResourceGroup"
-    New-AzureRmResourceGroup -Name $secondResourceGroup -Location $location -Force
+    New-ResourceGroup $secondResourceGroup $location
 
     try
     {
@@ -112,11 +108,8 @@ function DomainTests {
     }
     finally
     {
-        Write-Debug "Deleting resourcegroup $resourceGroupName"
-        Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
-
-        Write-Debug "Deleting resourcegroup $secondResourceGroup"
-        Remove-AzureRmResourceGroup -Name $secondResourceGroup -Force
+        Remove-ResourceGroup $resourceGroupName
+        Remove-ResourceGroup $secondResourceGroup
     }
 }
 
@@ -131,9 +124,7 @@ function DomainGetKeyTests {
     $resourceGroupName = Get-ResourceGroupName
     $subscriptionId = Get-SubscriptionId
 
-    Write-Debug "Creating resource group"
-    Write-Debug "ResourceGroup name : $resourceGroupName"
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-ResourceGroup $resourceGroupName $location
 
     try
     {
@@ -146,7 +137,7 @@ function DomainGetKeyTests {
         Assert-True {$sharedAccessKeys.Count -eq 1}
 
         # Get the keys of the domain using ResourceID parameter set
-        $sharedAccessKeys = Get-AzEventGridDomainKey -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/domains/$domainName"
+        $sharedAccessKeys = Get-AzEventGridDomainKey -DomainResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/domains/$domainName"
         Assert-True {$sharedAccessKeys.Count -eq 1}
 
         # Get the keys of the domain using the Domain Input object
@@ -158,8 +149,7 @@ function DomainGetKeyTests {
     }
     finally
     {
-        Write-Debug "Deleting resourcegroup $resourceGroupName"
-        Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+        Remove-ResourceGroup $resourceGroupName
     }
 }
 
@@ -174,9 +164,7 @@ function DomainNewKeyTests {
     $resourceGroupName = Get-ResourceGroupName
     $subscriptionId = Get-SubscriptionId
 
-    Write-Debug "Creating resource group"
-    Write-Debug "ResourceGroup name : $resourceGroupName"
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-ResourceGroup $resourceGroupName $location
 
     try
     {
@@ -189,7 +177,7 @@ function DomainNewKeyTests {
         Assert-True {$sharedAccessKeys.Count -eq 1}
 
         # Regenerate "key2" using the ResourceId parameter set
-        $sharedAccessKeys = New-AzEventGridDomainKey -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/domains/$domainName" -KeyName "key2"
+        $sharedAccessKeys = New-AzEventGridDomainKey -DomainResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/domains/$domainName" -KeyName "key2"
         Assert-True {$sharedAccessKeys.Count -eq 1}
 
         # Regenerate "key2" using the Domain Input object
@@ -201,8 +189,7 @@ function DomainNewKeyTests {
     }
     finally
     {
-        Write-Debug "Deleting resourcegroup $resourceGroupName"
-        Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+        Remove-ResourceGroup $resourceGroupName
     }
 }
 
@@ -224,9 +211,7 @@ function DomainTopicTests {
     $eventSubscriptionName = Get-EventSubscriptionName
     $eventSubscriptionEndpoint = Get-EventSubscriptionWebhookEndpoint
 
-    Write-Debug "Creating resource group"
-    Write-Debug "ResourceGroup name : $resourceGroupName"
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-ResourceGroup $resourceGroupName $location
 
     try
     {
@@ -304,7 +289,6 @@ function DomainTopicTests {
     }
     finally
     {
-        Write-Debug "Deleting resourcegroup $resourceGroupName"
-        Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+        Remove-ResourceGroup $resourceGroupName
     }
 }

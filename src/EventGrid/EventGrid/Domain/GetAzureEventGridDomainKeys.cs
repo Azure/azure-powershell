@@ -65,13 +65,13 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = EventGridConstants.DomainResourceIdHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
+        public string DomainResourceId { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(this.ResourceId))
+            if (!string.IsNullOrEmpty(this.DomainResourceId))
             {
-                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                var resourceIdentifier = new ResourceIdentifier(this.DomainResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 this.Name = resourceIdentifier.ResourceName;
             }

@@ -26,7 +26,8 @@ Get-AzEventGridDomainKey [-DomainObject] <PSDomain> [-DefaultProfile <IAzureCont
 
 ### ResourceIdEventSubscriptionParameterSet
 ```
-Get-AzEventGridDomainKey [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzEventGridDomainKey [-DomainResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,6 +91,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -DomainResourceId
+Resource Identifier representing the Event Grid Domain.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdEventSubscriptionParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 EventGrid domain name.
 
@@ -117,21 +133,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Resource Identifier representing the Event Grid Domain.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceIdEventSubscriptionParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
