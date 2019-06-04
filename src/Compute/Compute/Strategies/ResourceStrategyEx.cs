@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
                 {
                     throw new InvalidOperationException($"{name} of {strategy.Type} doesn't exist.");
                 },
-                // we need this line to prevent calling createModel().
+                // we need this line to prevent calling createModel() by dependency engine.
                 dependencies: Enumerable.Empty<IEntityConfig>());
     }
 }
