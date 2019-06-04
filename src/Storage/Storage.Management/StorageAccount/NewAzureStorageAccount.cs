@@ -56,6 +56,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             StorageModels.SkuName.StandardGRS,
             StorageModels.SkuName.StandardRAGRS,
             StorageModels.SkuName.PremiumLRS,
+            StorageModels.SkuName.PremiumZRS,
             IgnoreCase = true)]
         public string SkuName { get; set; }
 
@@ -75,6 +76,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             StorageModels.Kind.StorageV2,
             StorageModels.Kind.BlobStorage,
             StorageModels.Kind.BlockBlobStorage,
+            StorageModels.Kind.FileStorage,
             IgnoreCase = true)]
         public string Kind
         {
