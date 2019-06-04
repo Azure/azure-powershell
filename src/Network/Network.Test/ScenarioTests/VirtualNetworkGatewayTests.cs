@@ -107,5 +107,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualNetworkGatewayVpnCustomIpsecPolicySet");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset3)]
+        public void VirtualNetworkGatewayVpnclientConnectionHealthTest()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayVpnClientConnectionHealth");
+        }
     }
 }
