@@ -53,6 +53,11 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "A list of availability zones denoting the zone in which Nat Gateway should be deployed.")]
+        [PSArgumentCompleter(
+            "1",
+            "2",
+            "3"
+        )]
         public string[] Zone { get; set; }
 
         [Parameter(
