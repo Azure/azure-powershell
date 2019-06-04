@@ -48,6 +48,7 @@
 * Fixed Cortex Get cmdlets for list all part
 * Fixed VirtualHub reference creation for ExpressRouteGateways, VpnGateway
 * Added support for Availability Zones in AzureFirewall and NatGateway
+* Added cmdlet Get-AzNetworkServiceTag
 
 ## Version 1.8.1
 * Add DisableBgpRoutePropagation flag to Effective Route Table output
