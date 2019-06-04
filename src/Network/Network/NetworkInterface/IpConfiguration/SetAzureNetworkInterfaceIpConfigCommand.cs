@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("IpConfiguration with the specified name does not exist");
             }
 
-
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
                 if (this.Subnet != null)
@@ -102,7 +101,6 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            ipconfig.Subnet = null;
             ipconfig.PublicIpAddress = null;
             ipconfig.LoadBalancerBackendAddressPools = null;
             ipconfig.LoadBalancerInboundNatRules = null;
@@ -166,8 +164,21 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            ipconfig.PrivateIpAddressVersion = this.PrivateIpAddressVersion;
-            ipconfig.Primary = this.Primary.IsPresent;
+            if(this.PrivateIpAddressVersion != null)
+            {
+                ipconfig.PrivateIpAddressVersion = this.PrivateIpAddressVersion;
+            }
+
+            if (this.Primary.IsPresent)
+            {
+                foreach (var item in NetworkInterface.IpConfigurations)
+                {
+                    item.Primary = false;
+                }
+
+                ipconfig.Primary = this.Primary.IsPresent;
+            }
+
             WriteObject(this.NetworkInterface);
         }
     }

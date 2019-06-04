@@ -34,47 +34,63 @@ namespace Microsoft.Azure.Commands.Network
         public PSApplicationGatewayPathRule[] PathRules { get; set; }
 
         [Parameter(
-                ParameterSetName = "SetByResourceId",
+                ParameterSetName = "BackendSetByResourceId",
+                Mandatory = true,
                 HelpMessage = "ID of the application gateway BackendAddressPool")]
         [ValidateNotNullOrEmpty]
         public string DefaultBackendAddressPoolId { get; set; }
 
         [Parameter(
-                ParameterSetName = "SetByResource",
+                ParameterSetName = "BackendSetByResource",
+                Mandatory = true,
                 HelpMessage = "Application gateway BackendAddressPool")]
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayBackendAddressPool DefaultBackendAddressPool { get; set; }
 
         [Parameter(
-                ParameterSetName = "SetByResourceId",
+                ParameterSetName = "BackendSetByResourceId",
+                Mandatory = true,
                 HelpMessage = "ID of the application gateway BackendHttpSettings")]
         [ValidateNotNullOrEmpty]
         public string DefaultBackendHttpSettingsId { get; set; }
 
         [Parameter(
-                ParameterSetName = "SetByResource",
+                ParameterSetName = "BackendSetByResource",
+                Mandatory = true,
                 HelpMessage = "Application gateway BackendHttpSettings")]
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayBackendHttpSettings DefaultBackendHttpSettings { get; set; }
 
         [Parameter(
-                ParameterSetName = "SetByResource",
+                ParameterSetName = "BackendSetByResource",
+                Mandatory = false,
+                HelpMessage = "Application gateway default rewrite rule set")]
+        [Parameter(
+                ParameterSetName = "RedirectSetByResource",
+                Mandatory = false,
                 HelpMessage = "Application gateway default rewrite rule set")]
         public PSApplicationGatewayRewriteRuleSet DefaultRewriteRuleSet { get; set; }
 
         [Parameter(
-                ParameterSetName = "SetByResourceId",
+                ParameterSetName = "BackendSetByResourceId",
+                Mandatory = false,
+                HelpMessage = "ID of the application gateway default rewrite rule set")]
+        [Parameter(
+                ParameterSetName = "RedirectSetByResourceId",
+                Mandatory = false,
                 HelpMessage = "ID of the application gateway default rewrite rule set")]
         public string DefaultRewriteRuleSetId { get; set; }
 
         [Parameter(
-                ParameterSetName = "SetByResourceId",
+                ParameterSetName = "RedirectSetByResourceId",
+                Mandatory = true,
                 HelpMessage = "ID of the application gateway default RedirectConfiguration")]
         [ValidateNotNullOrEmpty]
         public string DefaultRedirectConfigurationId { get; set; }
 
         [Parameter(
-                ParameterSetName = "SetByResource",
+                ParameterSetName = "RedirectSetByResource",
+                Mandatory = true,
                 HelpMessage = "Application gateway default RedirectConfiguration")]
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayRedirectConfiguration DefaultRedirectConfiguration { get; set; }
@@ -83,7 +99,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
+            if (ParameterSetName.EndsWith(Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
                 if (DefaultBackendAddressPool != null)
                 {

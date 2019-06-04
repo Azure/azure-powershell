@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using AzureRestNS = Microsoft.Rest.Azure;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 
@@ -58,6 +57,55 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <param name="operationName">Name of the operation</param>
         protected void HandleCreatedJob(
             AzureRestNS.AzureOperationResponse response,
+            string operationName,
+            string vaultName = null,
+            string resourceGroupName = null)
+        {
+            WriteDebug(Resources.TrackingOperationStatusURLForCompletion +
+                            response.Response.Headers.GetAzureAsyncOperationHeader());
+
+            var operationStatus = TrackingHelpers.GetOperationStatus(
+                response,
+                operationId => ServiceClientAdapter.GetProtectedItemOperationStatus(
+                    operationId,
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName));
+
+            if (response != null && operationStatus != null)
+            {
+                WriteDebug(Resources.FinalOperationStatus + operationStatus.Status);
+
+                if (operationStatus.Properties != null)
+                {
+                    var jobExtendedInfo =
+                        (OperationStatusJobExtendedInfo)operationStatus.Properties;
+
+                    if (jobExtendedInfo.JobId != null)
+                    {
+                        var jobStatusResponse =
+                            (OperationStatusJobExtendedInfo)operationStatus.Properties;
+                        WriteObject(GetJobObject(
+                            jobStatusResponse.JobId,
+                            vaultName: vaultName,
+                            resourceGroupName: resourceGroupName));
+                    }
+                }
+
+                if (operationStatus.Status == OperationStatusValues.Failed &&
+                    operationStatus.Error != null)
+                {
+                    var errorMessage = string.Format(
+                        Resources.OperationFailed,
+                        operationName,
+                        operationStatus.Error.Code,
+                        operationStatus.Error.Message);
+                    throw new Exception(errorMessage);
+                }
+            }
+        }
+
+        protected void HandleCreatedJob(
+            AzureRestNS.AzureOperationResponse<ProtectedItemResource> response,
             string operationName,
             string vaultName = null,
             string resourceGroupName = null)

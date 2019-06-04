@@ -19,8 +19,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
+    /// <summary>
+    /// Class MaximumFilenameLengthValidationTest.
+    /// </summary>
     public class MaximumFilenameLengthValidationTest
     {
+        /// <summary>
+        /// Defines the test method WhenFilenameIsTooLongValidationResultIsError.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenFilenameIsTooLongValidationResultIsError()
@@ -39,6 +45,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             AssertExtension.ValidationResultIsError(validationResult, "File with too long name does not trigger an error.");
         }
 
+        /// <summary>
+        /// Defines the test method WhenFilenameLengthIsEqualToMaxLengthValidationResultIsSuccess.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenFilenameLengthIsEqualToMaxLengthValidationResultIsSuccess()
@@ -57,6 +66,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             AssertExtension.ValidationResultIsSuccess(validationResult, "File with name of length equal to max length triggers an error.");
         }
 
+        /// <summary>
+        /// Defines the test method WhenFilenameLengthIsLessThanMaxLengthValidationResultIsSuccess.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenFilenameLengthIsLessThanMaxLengthValidationResultIsSuccess()
@@ -75,6 +87,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             AssertExtension.ValidationResultIsSuccess(validationResult, "File with name of length less than max length triggers an error.");
         }
 
+        /// <summary>
+        /// Defines the test method WhenDirectoryNameIsTooLongValidationResultIsError.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenDirectoryNameIsTooLongValidationResultIsError()
@@ -93,6 +108,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             AssertExtension.ValidationResultIsError(validationResult, "File with too long name does not trigger an error.");
         }
 
+        /// <summary>
+        /// Defines the test method WhenDirectoryNameLengthIsEqualToMaxLengthValidationResultIsSuccess.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenDirectoryNameLengthIsEqualToMaxLengthValidationResultIsSuccess()
@@ -111,6 +129,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             AssertExtension.ValidationResultIsSuccess(validationResult, "File with name of length equal to max length triggers an error.");
         }
 
+        /// <summary>
+        /// Defines the test method WhenDirectoryNameLengthIsLessThanMaxLengthValidationResultIsSuccess.
+        /// </summary>
         [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenDirectoryNameLengthIsLessThanMaxLengthValidationResultIsSuccess()

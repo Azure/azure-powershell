@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Gets the list of protection policies associated with this recovery services vault
     /// according to the filters passed via the cmdlet parameters.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupProtectionPolicy", DefaultParameterSetName = NoParamSet),OutputType(typeof(PolicyBase))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupProtectionPolicy", DefaultParameterSetName = NoParamSet), OutputType(typeof(PolicyBase))]
     public class GetAzureRmRecoveryServicesBackupProtectionPolicy : RSBackupVaultCmdletBase
     {
         protected const string PolicyNameParamSet = "PolicyNameParamSet";
@@ -121,48 +121,74 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             {
                                 serviceClientProviderType = ServiceClientHelpers.GetServiceClientProviderType(Models.WorkloadType.AzureFiles);
                             }
+                            else if (WorkloadType == Models.WorkloadType.MSSQL)
+                            {
+                                serviceClientProviderType = ServiceClientHelpers.GetServiceClientProviderType(Models.WorkloadType.MSSQL);
+                            }
                             break;
 
                         case WorkloadBackupMangementTypeParamSet:
-                            if (WorkloadType == Models.WorkloadType.AzureVM)
+                    if( WorkloadType == Models.WorkloadType.AzureVM )
+                        {
+                        if( BackupManagementType != Models.BackupManagementType.AzureVM )
                             {
-                                if (BackupManagementType != Models.BackupManagementType.AzureVM)
-                                {
-                                    throw new ArgumentException(
-                                        Resources.AzureVMUnsupportedBackupManagementTypeException);
-                                }
-                                serviceClientProviderType = ServiceClientHelpers.
-                                    GetServiceClientProviderType(Models.WorkloadType.AzureVM);
+                            throw new ArgumentException(
+                                Resources.AzureVMUnsupportedBackupManagementTypeException );
                             }
-                            else if (WorkloadType == Models.WorkloadType.AzureSQLDatabase)
+                        serviceClientProviderType = ServiceClientHelpers.
+                            GetServiceClientProviderType( Models.WorkloadType.AzureVM );
+                        }
+                    else if( WorkloadType == Models.WorkloadType.AzureSQLDatabase )
+                        {
+                        if( BackupManagementType != Models.BackupManagementType.AzureSQL )
                             {
-                                if (BackupManagementType != Models.BackupManagementType.AzureSQL)
-                                {
-                                    throw new ArgumentException(
-                                        Resources.AzureSqlUnsupportedBackupManagementTypeException);
-                                }
-                                serviceClientProviderType =
-                                    ServiceClientHelpers.GetServiceClientProviderType(
-                                        Models.WorkloadType.AzureSQLDatabase);
+                            throw new ArgumentException(
+                                Resources.AzureSqlUnsupportedBackupManagementTypeException );
                             }
-                            else if (WorkloadType == Models.WorkloadType.AzureFiles)
+                        serviceClientProviderType =
+                            ServiceClientHelpers.GetServiceClientProviderType(
+                                Models.WorkloadType.AzureSQLDatabase );
+                        }
+                    else if( WorkloadType == Models.WorkloadType.AzureFiles )
+                        {
+                        if( BackupManagementType != Models.BackupManagementType.AzureStorage )
                             {
-                                if (BackupManagementType != Models.BackupManagementType.AzureStorage)
-                                {
-                                    throw new ArgumentException(
-                                        Resources.AzureFileUnsupportedBackupManagementTypeException);
-                                }
-                                serviceClientProviderType =
-                                    ServiceClientHelpers.GetServiceClientProviderType(
-                                        Models.WorkloadType.AzureFiles);
+                            throw new ArgumentException(
+                                Resources.AzureFileUnsupportedBackupManagementTypeException );
                             }
-                            else
+                        serviceClientProviderType =
+                            ServiceClientHelpers.GetServiceClientProviderType(
+                                Models.WorkloadType.AzureFiles );
+                        }
+                    else if( WorkloadType == Models.WorkloadType.AzureFiles )
+                        {
+                        if( BackupManagementType != Models.BackupManagementType.AzureStorage )
                             {
-                                throw new ArgumentException(string.Format(
-                                    Resources.UnsupportedWorkloadBackupManagementTypeException,
-                                    WorkloadType.ToString(),
-                                    BackupManagementType.ToString()));
+                            throw new ArgumentException(
+                                Resources.AzureFileUnsupportedBackupManagementTypeException );
                             }
+                        serviceClientProviderType =
+                            ServiceClientHelpers.GetServiceClientProviderType(
+                                Models.WorkloadType.AzureFiles );
+                        }
+                    else if( WorkloadType == Models.WorkloadType.MSSQL )
+                        {
+                        if( BackupManagementType != Models.BackupManagementType.AzureWorkload )
+                            {
+                            throw new ArgumentException(
+                                Resources.AzureFileUnsupportedBackupManagementTypeException );
+                            }
+                        serviceClientProviderType =
+                            ServiceClientHelpers.GetServiceClientProviderType(
+                                Models.WorkloadType.MSSQL );
+                        }
+                    else
+                        {
+                        throw new ArgumentException( string.Format(
+                            Resources.UnsupportedWorkloadBackupManagementTypeException,
+                            WorkloadType.ToString(),
+                            BackupManagementType.ToString() ) );
+                        }
                             break;
 
                         default:

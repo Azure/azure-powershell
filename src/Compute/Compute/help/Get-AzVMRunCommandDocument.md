@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmruncommanddocument
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzVMRunCommandDocument
 
 ## SYNOPSIS
-Get run command document.
+Get a run command document.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzVMRunCommandDocument [-Location] <String> [[-CommandId] <String>]
 ```
 
 ## DESCRIPTION
-Get run command document.
+Get a run command document.
 
 ## EXAMPLES
 
@@ -28,7 +28,6 @@ PS C:\> Get-AzVMRunCommandDocument -Location 'westus' -CommandId 'RunPowerShellS
 ```
 
 Gets a specific run command document for 'RunPowerShellScript' in 'westus'.
-Get-AzVMRunCommandDocument -Location $loc
 
 ### Example 2
 ```
@@ -40,7 +39,7 @@ Lists all available run commands in 'westus'.
 ## PARAMETERS
 
 ### -CommandId
-The command id.
+The command ID.
 
 ```yaml
 Type: System.String
@@ -48,7 +47,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -70,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location upon which run commands is queried.
+The location upon which run commands are queried.
 
 ```yaml
 Type: System.String
@@ -78,14 +77,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

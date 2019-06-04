@@ -52,6 +52,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpResourceId = "The Azure resource ID.";
 
+        public const string HelpDataFactoryV2ResourceId = "The Azure resource ID of V2 data factory.";
+
         public const string HelpResourceGroup = "The resource group name.";
 
         public const string HelpFactoryObject = "The data factory object.";
@@ -198,5 +200,24 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpFactoryLocation = "The geographic region of the data factory.";
 
+        public const string HelpRepoConfigurationProjectName = "The project name for repo configuration.";
+
+        public const string HelpRepoConfigurationTenantId = "The tenant id for repo configuration.";
+
+        public const string HelpRepoConfigurationAccountName = "The account name for repo configuration.";
+
+        public const string HelpRepoConfigurationRepositoryName = "The repository name for repo configuration.";
+
+        public const string HelpRepoConfigurationHostName = "The host name for repo configuration.";
+
+        public const string HelpRepoConfigurationCollaborationBranch = "The collaboration branch for repo configuration.";
+
+        public const string HelpRepoConfigurationRootFolder = "The root folder for repo configuration.";
+
+        public const string HelpRepoConfigurationLastCommitId = "The last commit id for repo configuration.";
+
+        public const string Id = "Id";
+
+        public const string DataFactoryId = "DataFactoryId";
     }
 }

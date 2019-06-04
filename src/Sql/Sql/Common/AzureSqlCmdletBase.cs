@@ -95,9 +95,8 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <summary>
         /// Creation and initialization of the ModelAdapter object
         /// </summary>
-        /// <param name="subscription">The AzureSubscription in which the current execution is performed</param>
         /// <returns>An initialized and ready to use ModelAdapter object</returns>
-        protected abstract A InitModelAdapter(IAzureSubscription subscription);
+        protected abstract A InitModelAdapter();
 
         /// <summary>
         /// Transforms the given model object to be an object that is written out
@@ -119,7 +118,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            ModelAdapter = InitModelAdapter(DefaultProfile.DefaultContext.Subscription);
+            ModelAdapter = InitModelAdapter();
             M model = GetEntity();
             M updatedModel = ApplyUserInputToModel(model);
             M responseModel = default(M);

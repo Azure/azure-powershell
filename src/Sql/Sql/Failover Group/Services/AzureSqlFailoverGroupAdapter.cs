@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// <param name="subscription">The current azure subscription</param>
         public AzureSqlFailoverGroupAdapter(IAzureContext context)
         {
-            _subscription = context.Subscription;
+            _subscription = context?.Subscription;
             Context = context;
             Communicator = new AzureSqlFailoverGroupCommunicator(Context);
         }

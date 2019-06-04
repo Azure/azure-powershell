@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 httpClientHelper: HttpClientHelperFactory.Instance
                 .CreateHttpClientHelper(
                         credentials: AzureSession.Instance.AuthenticationFactory
-                                                 .GetSubscriptionCloudCredentials(
+                                                 .GetServiceClientCredentials(
                                                     DefaultContext,
                                                     AzureEnvironment.Endpoint.ResourceManager),
                         headerValues: AzureSession.Instance.ClientFactory.UserAgents,
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 var errorResponseException = capturedException.SourceException as ErrorResponseMessageException;
                 if (errorResponseException != null)
                 {
-                    this.ThrowTerminatingError(errorResponseException.ToErrorRecord());
+                    throw errorResponseException;
                 }
 
                 var aggregateException = capturedException.SourceException as AggregateException;
@@ -435,18 +435,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         errorResponseException = aggregateException.InnerExceptions.Single() as ErrorResponseMessageException;
                         if (errorResponseException != null)
                         {
-                            this.ThrowTerminatingError(errorResponseException.ToErrorRecord());
+                            throw errorResponseException;
                         }
 
-                        this.ThrowTerminatingError(aggregateException.InnerExceptions.Single().ToErrorRecord());
+                        throw aggregateException.InnerExceptions.Single();
                     }
                     else
                     {
-                        this.ThrowTerminatingError(aggregateException.ToErrorRecord());
+                        throw aggregateException;
                     }
                 }
 
-                capturedException.Throw();
+                throw capturedException.SourceException;
             }
             finally
             {

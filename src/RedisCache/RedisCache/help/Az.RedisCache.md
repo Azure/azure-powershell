@@ -53,7 +53,7 @@ Creates a schedule entry.
 ### [Remove-AzRedisCache](Remove-AzRedisCache.md)
 Removes a Redis Cache.
 
-### [Remove-AzRedisCacheDiagnostics](Remove-AzRedisCacheDiagnostics.md)
+### [Remove-AzRedisCacheDiagnostic](Remove-AzRedisCacheDiagnostic.md)
 Disables diagnostics on an Azure Redis Cache.
 
 ### [Remove-AzRedisCacheFirewallRule](Remove-AzRedisCacheFirewallRule.md)
@@ -71,6 +71,6 @@ Restarts nodes of a cache.
 ### [Set-AzRedisCache](Set-AzRedisCache.md)
 Modifies a Redis Cache.
 
-### [Set-AzRedisCacheDiagnostics](Set-AzRedisCacheDiagnostics.md)
+### [Set-AzRedisCacheDiagnostic](Set-AzRedisCacheDiagnostic.md)
 Enables diagnostics on an Azure Redis Cache.
 

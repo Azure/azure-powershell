@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
             HelpMessage = "The Azure Sql Database Server Firewall Rule name.")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string FirewallRuleName { get; set; }
 
         /// <summary>
@@ -44,7 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         {
             ICollection<AzureSqlServerFirewallRuleModel> results = null;
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("FirewallRuleName"))
+            if (this.MyInvocation.BoundParameters.ContainsKey("FirewallRuleName") && !WildcardPattern.ContainsWildcardCharacters(FirewallRuleName))
             {
                 results = new List<AzureSqlServerFirewallRuleModel>();
                 results.Add(ModelAdapter.GetFirewallRule(this.ResourceGroupName, this.ServerName, this.FirewallRuleName));
@@ -54,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
                 results = ModelAdapter.ListFirewallRules(this.ResourceGroupName, this.ServerName);
             }
 
-            return results;
+            return SubResourceWildcardFilter(FirewallRuleName, results);
         }
 
         /// <summary>

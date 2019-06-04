@@ -27,6 +27,10 @@ using CommonStorage = Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Xunit.Abstractions;
+using Microsoft.Azure.Management.EventHub;
+using Microsoft.Azure.Management.OperationalInsights;
+using SDKMonitor = Microsoft.Azure.Management.Monitor;
+using CommonMonitor = Microsoft.Azure.Management.Monitor.Version2018_09_01;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
@@ -84,7 +88,10 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     Helper.GetRMModulePath(@"AzureRM.Sql.psd1"),
                     Helper.RMNetworkModule,
                     "AzureRM.Storage.ps1",
-                    "AzureRM.Resources.ps1");
+                    "AzureRM.Resources.ps1",
+                    Helper.RMOperationalInsightsModule,
+                    Helper.RMEventHubModule,
+                    Helper.RMMonitorModule);
                 Helper.RunPowerShellTest(scripts);
             }
         }
@@ -92,6 +99,26 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         protected SqlManagementClient GetSqlClient(MockContext context)
         {
             return context.GetServiceClient<SqlManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected SDKMonitor.IMonitorManagementClient GetMonitorManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<SDKMonitor.MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected CommonMonitor.IMonitorManagementClient GetCommonMonitorManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<CommonMonitor.MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected IEventHubManagementClient GetEventHubManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<EventHubManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected IOperationalInsightsManagementClient GetOperationalInsightsManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<OperationalInsightsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         protected ResourceManagementClient GetResourcesClient(MockContext context)

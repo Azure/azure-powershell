@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public string TemplateFile { get; set; }
 
+        public Hashtable TemplateObject { get; set; }
+
         public Hashtable TemplateParameterObject { get; set; }
 
         public string ParameterUri { get; set; }

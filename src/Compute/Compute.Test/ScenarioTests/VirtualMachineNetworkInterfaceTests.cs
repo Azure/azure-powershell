@@ -12,69 +12,65 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class VirtualMachineNetworkInterfaceTests
+    public class VirtualMachineNetworkInterfaceTests : ComputeTestRunner
     {
-        XunitTracingInterceptor _logger;
-
         public VirtualMachineNetworkInterfaceTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineSingleNetworkInterface()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SingleNetworkInterface");
+            TestRunner.RunTestScript("Test-SingleNetworkInterface");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineMultipleNetworkInterface()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-MultipleNetworkInterface");
+            TestRunner.RunTestScript("Test-MultipleNetworkInterface");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSingleNetworkInterfaceDnsSettings()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SingleNetworkInterfaceDnsSettings");
+            TestRunner.RunTestScript("Test-SingleNetworkInterfaceDnsSettings");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddNetworkInterface()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AddNetworkInterface");
+            TestRunner.RunTestScript("Test-AddNetworkInterface");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEffectiveRoutesAndNsg()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-EffectiveRoutesAndNsg");
+            TestRunner.RunTestScript("Test-EffectiveRoutesAndNsg");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSingleNetworkInterfaceWithAcceleratedNetworking()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SingleNetworkInterfaceWithAcceleratedNetworking");
+            TestRunner.RunTestScript("Test-SingleNetworkInterfaceWithAcceleratedNetworking");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVMNicWithAcceleratedNetworkingValidations()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VMNicWithAcceleratedNetworkingValidations");
+            TestRunner.RunTestScript("Test-VMNicWithAcceleratedNetworkingValidations");
         }
     }
 }

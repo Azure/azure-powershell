@@ -25,11 +25,11 @@ The **New-AzServiceBusNamespace** cmdlet creates a new Service Bus namespace. On
 
 ### Example 1
 ```
-PS C:\> New-AzServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -Location WestUS -SkuName "Standard" -Tag @{Tag1="Tag1Value"}
+PS C:\> New-AzServiceBusNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name SB-Example1 -Location WestUS -SkuName "Standard" -Tag @{Tag1="Tag1Value"}
 
 Name               : SB-Example1
 Id                 : /subscriptions/{SubscriptionId}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
-ResourceGroup      : Default-ServiceBus-WestUS
+ResourceGroupName  : Default-ServiceBus-WestUS
 Location           : West US
 Tags               : {TesttingTags, TestingTagValue, TestTag, TestTagValue}
 Sku                : Name : Premium , Tier : Premium

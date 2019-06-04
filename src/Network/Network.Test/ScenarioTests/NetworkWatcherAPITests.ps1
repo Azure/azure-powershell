@@ -492,7 +492,7 @@ function Test-PacketCapture
         $job | Wait-Job
         $pc1 = $job | Receive-Job
         $pc2 = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2
-        $pcList = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw
+        $pcList = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName "*"
 
         #Verification
         Assert-AreEqual $pc1.Name $pcName1
@@ -985,7 +985,7 @@ function Test-ConnectionMonitor
         Assert-AreEqual $cm2.MonitoringStatus Running
 
         # Get List
-        $cms = Get-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw
+        $cms = Get-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name "*"
         Assert-NotNull $cms
 
         #Query connection monitor

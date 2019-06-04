@@ -16,40 +16,57 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
 {
     using Interfaces;
 
-    public class MaximumDatasetSizeValidation : BaseNamespaceValidation
+    /// <summary>
+    /// Class MaximumDatasetSizeValidation.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations.NamespaceValidationBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations.NamespaceValidationBase" />
+    public class MaximumDatasetSizeValidation : NamespaceValidationBase
     {
         #region Fields and Properties
+        /// <summary>
+        /// The maximum data set size
+        /// </summary>
         private readonly long _maxDataSetSize;
         #endregion
 
         #region Constructors
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MaximumDatasetSizeValidation" /> class.
+        /// </summary>
+        /// <param name="configuration">The configuration.</param>
         public MaximumDatasetSizeValidation(IConfiguration configuration) : base(configuration, "Namespace size limit", ValidationType.DatasetSize)
         {
-            this._maxDataSetSize = configuration.MaximumDatasetSizeInBytes();
+            _maxDataSetSize = configuration.MaximumDatasetSizeInBytes();
         }
 
         #endregion
 
         #region Private methods
 
+        /// <summary>
+        /// Does the validate.
+        /// </summary>
+        /// <param name="namespaceInfo">The namespace information.</param>
+        /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidate(INamespaceInfo namespaceInfo)
         {
-            bool dataSetTooBig = namespaceInfo.TotalFileSizeInBytes > this._maxDataSetSize;
+            bool dataSetTooBig = namespaceInfo.TotalFileSizeInBytes > _maxDataSetSize;
             if (dataSetTooBig)
             {
                 return new ValidationResult
                 {
                     Result = Result.Fail,
-                    Type = this.ValidationType,
-                    Kind = this.ValidationKind,
+                    Type = ValidationType,
+                    Kind = ValidationKind,
                     Level = ResultLevel.Error,
-                    Description = $"The dataset is too big. Maximum dataset size is {this._maxDataSetSize}.",
+                    Description = $"The dataset is too big. Maximum dataset size is {_maxDataSetSize}.",
                     Path = namespaceInfo.Path 
                 };
             }
 
-            return this.SuccessfulResult;
+            return SuccessfulResult;
         }
 
         #endregion

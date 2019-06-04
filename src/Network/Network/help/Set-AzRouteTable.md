@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzRouteTable
 
 ## SYNOPSIS
-Sets the goal state for a route table.
+Updates a route table.
 
 ## SYNTAX
 
@@ -19,11 +19,11 @@ Set-AzRouteTable -RouteTable <PSRouteTable> [-AsJob] [-DefaultProfile <IAzureCon
 ```
 
 ## DESCRIPTION
-The **Set-AzRouteTable** cmdlet sets the goal state for an Azure route table.
+The **Set-AzRouteTable** cmdlet updates a route table.
 
 ## EXAMPLES
 
-### Example 1: Add a route and then set the goal state of the route table
+### Example 1: Update a route table by adding route configuration to it
 ```
 PS C:\>Get-AzRouteTable -ResourceGroupName "ResourceGroup11" -Name "RouteTable01" | Add-AzRouteConfig -Name "Route07" -AddressPrefix 10.2.0.0/16 -NextHopType "VnetLocal" | Set-AzRouteTable
 Name              : RouteTable01
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -RouteTable
-Specifies a route table object that represents the goal state to which this cmdlet sets the route table.
+Specifies a route table object representing the state to which the route table should be set.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSRouteTable

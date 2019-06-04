@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.TestFx
         ITestRunnerFactory WithProjectSubfolderForTests(string folderName);
         ITestRunnerFactory WithCommonPsScripts(string[] psScriptList);
         ITestRunnerFactory WithNewPsScriptFilename(string psScriptName);
+        ITestRunnerFactory WithMockContextAction(Action mockContextAction);
         ITestRunnerFactory WithExtraRmModules(Func<EnvironmentSetupHelper, string[]> buildModuleList);
         ITestRunnerFactory WithNewRmModules(Func<EnvironmentSetupHelper, string[]> buildModuleList);
         ITestRunnerFactory WithExtraUserAgentsToIgnore(Dictionary<string, string> userAgentsToIgnore);

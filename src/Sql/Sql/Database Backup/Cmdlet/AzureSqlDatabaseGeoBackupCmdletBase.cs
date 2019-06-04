@@ -46,14 +46,14 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             HelpMessage = "The name of the Azure SQL Database to retrieve geo backups for.")]
         [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string DatabaseName { get; set; }
 
         /// <summary>
         /// Initializes the adapter
         /// </summary>
-        /// <param name="subscription">The subscription to operate on</param>
         /// <returns></returns>
-        protected override AzureSqlDatabaseBackupAdapter InitModelAdapter(IAzureSubscription subscription)
+        protected override AzureSqlDatabaseBackupAdapter InitModelAdapter()
         {
             return new AzureSqlDatabaseBackupAdapter(DefaultProfile.DefaultContext);
         }

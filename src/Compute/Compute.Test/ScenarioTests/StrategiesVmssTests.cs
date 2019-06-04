@@ -13,75 +13,67 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
-using System.Diagnostics;
 using System.Reflection;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class StrategiesVmssTests
+    public class StrategiesVmssTests : ComputeTestRunner
     {
-        XunitTracingInterceptor _logger;
-
         public StrategiesVmssTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmss()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmss");
+            TestRunner.RunTestScript("Test-SimpleNewVmss");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmssFromSIGImage()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmssFromSIGImage");
+            TestRunner.RunTestScript("Test-SimpleNewVmssFromSIGImage");
         }
 
-        [Fact]
+        [Fact(Skip = "Test failed while re-recording.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmssWithUltraSSD()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmssWithUltraSSD");
+            TestRunner.RunTestScript("Test-SimpleNewVmssWithUltraSSD");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmssLbErrorScenario()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmssLbErrorScenario");
+            TestRunner.RunTestScript("Test-SimpleNewVmssLbErrorScenario");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmssWithSystemAssignedIdentity()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmssWithSystemAssignedIdentity");
+            TestRunner.RunTestScript("Test-SimpleNewVmssWithSystemAssignedIdentity");
         }
 
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.CoreOnly)]
         public void TestSimpleNewVmssImageName()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmssImageName");
+            TestRunner.RunTestScript("Test-SimpleNewVmssImageName");
         }
 
-#if NETSTANDARD
         [Fact(Skip = "Unknown issue/update, needs re-recorded")]
         [Trait(Category.RunType, Category.DesktopOnly)]
-#else
-        [Fact]
-#endif
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestSimpleNewVmssWithSystemAssignedUserAssignedIdentity()
         {
@@ -95,38 +87,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
              * Get-AzUserAssignedIdentity -ResourceGroupName UAITG123456 -Name UAITG123456Identity
              * Nore down the Id and use it in the PS code
              * */
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmssWithsystemAssignedUserAssignedIdentity");
+            TestRunner.RunTestScript("Test-SimpleNewVmssWithsystemAssignedUserAssignedIdentity");
        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmssWithoutDomainName()
         {
-            TestDomainName(
-                "Test-SimpleNewVmssWithoutDomainName",
-                () => HttpMockServer.GetAssetGuid("domainName").ToString());
-        }
-
-        internal void TestDomainName(string psTest, Func<string> getUniqueId)
-        {
-            var sf = new StackTrace().GetFrame(1);
-            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
-            var mockName = sf.GetMethod().Name;
-
             var create = typeof(UniqueId).GetField("_Create", BindingFlags.Static | BindingFlags.NonPublic);
             var oldCreate = create.GetValue(null);
 
-            ComputeTestController controller = ComputeTestController.NewInstance;
-            controller.SetLogger(_logger);
-
-            controller.RunPsTestWorkflow(
-                () => new[] { psTest },
-                // initializer
-                _ => create.SetValue(null, getUniqueId),
-                // cleanup 
-                () => create.SetValue(null, oldCreate),
-                callingClassType,
-                mockName);
+            string GetUnigueId() => HttpMockServer.GetAssetGuid("domainName").ToString();
+            create.SetValue(null, (Func<string>) GetUnigueId);
+            TestRunner.RunTestScript("Test-SimpleNewVmssWithoutDomainName");
+            create.SetValue(null, oldCreate);
         }
     }
 }

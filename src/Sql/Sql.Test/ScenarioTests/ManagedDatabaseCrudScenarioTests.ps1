@@ -25,7 +25,7 @@ function Test-CreateManagedDatabase
 
 	# Setup VNET 
 	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
 
@@ -75,7 +75,7 @@ function Test-GetManagedDatabase
 
 	# Setup VNET 
 	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
 	
@@ -97,7 +97,7 @@ function Test-GetManagedDatabase
 		Assert-AreEqual $db1.Collation $gdb1.Collation
 
 		# Test Get using ResourceGroupName and InstanceName
-		$all = Get-AzSqlInstanceDatabase -ResourceGroupName $managedInstance.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName
+		$all = Get-AzSqlInstanceDatabase -ResourceGroupName $managedInstance.ResourceGroupName -InstanceName $managedInstance.ManagedInstanceName -Name *
 		Assert-NotNull $all
 		Assert-AreEqual $all.Count 2
 
@@ -130,7 +130,7 @@ function Test-RemoveManagedDatabase
 
 	# Setup VNET 
 	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
 	
@@ -200,7 +200,7 @@ function Test-RestoreManagedDatabase
 
 	# Setup VNET 
 	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
 	$managedInstance2 = Create-ManagedInstanceForTest $rg2 $subnetId
@@ -239,5 +239,93 @@ function Test-RestoreManagedDatabase
 	finally
 	{
 		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+.SYNOPSIS
+	Tests Getting a managed database geo-redundant backups
+#>
+function Test-GetManagedDatabaseGeoBackup
+{
+	# Setup
+	$rgName = "restore-rg"	
+	$managedInstanceName = "testbrinstance"
+	$managedDatabaseName = "sourcedb"
+
+	# Test Get using all parameters
+	$gdb1 = Get-AzSqlInstanceDatabaseGeoBackup -ResourceGroupName $rgName -InstanceName $managedInstanceName -Name $managedDatabaseName
+	Assert-NotNull $gdb1
+	Assert-AreEqual $managedDatabaseName $gdb1.Name
+
+	# Test Get using ResourceGroupName and InstanceName
+	$all = Get-AzSqlInstanceDatabaseGeoBackup -ResourceGroupName $rgName -InstanceName $managedInstanceName -Name *
+
+	Assert-NotNull $all
+	if($all.Count -le 1)
+	{
+        throw "Should get more than 1 backup geo-redundant backups"
+    }
+}
+
+<#
+	.SYNOPSIS
+	Tests geo-restoring a managed database
+#>
+function Test-GeoRestoreManagedDatabase
+{
+	# Setup
+    $rgName = "restore-rg"	
+	$managedInstanceName = "testbrinstance"
+	$managedDatabaseName = "sourcedb"
+
+	$targetRgName = "restore-rg"
+	$targetInstanceName = "testbrinstance"
+	try
+	{
+		$sourceDbGeoBackup = Get-AzSqlInstanceDatabaseGeoBackup -ResourceGroupName $rgName -InstanceName $managedInstanceName -Name $managedDatabaseName
+
+		Assert-NotNull $sourceDbGeoBackup
+
+	   $targetManagedDatabaseName1 = Get-ManagedDatabaseName		
+		$targetManagedDatabaseName2 = Get-ManagedDatabaseName
+		$targetManagedDatabaseName3 = Get-ManagedDatabaseName
+		$targetManagedDatabaseName4 = Get-ManagedDatabaseName
+
+		# geo-restore managed database using resourceID
+		$restoredDb1 = Restore-AzSqlInstanceDatabase -FromGeoBackup -ResourceId $sourceDbGeoBackup.RecoverableDatabaseId -TargetInstanceDatabaseName $targetManagedDatabaseName1 -TargetInstanceName $targetInstanceName -TargetResourceGroupName $targetRgName
+		Assert-NotNull $restoredDb1
+		Assert-AreEqual $restoredDb1.Name $targetManagedDatabaseName1
+		Assert-AreEqual $restoredDb1.ResourceGroupName $targetRgName
+		Assert-AreEqual $restoredDb1.ManagedInstanceName $targetInstanceName
+
+		# geo-restore managed database using name, instance and resource group name 
+		$restoredDb2 = Restore-AzSqlInstanceDatabase -FromGeoBackup -ResourceGroupName $rgName -InstanceName $managedInstanceName -Name $managedDatabaseName -TargetInstanceDatabaseName $targetManagedDatabaseName2 -TargetInstanceName $targetInstanceName -TargetResourceGroupName $targetRgName
+		Assert-NotNull $restoredDb2
+		Assert-AreEqual $restoredDb2.Name $targetManagedDatabaseName2
+		Assert-AreEqual $restoredDb2.ResourceGroupName $targetRgName
+		Assert-AreEqual $restoredDb2.ManagedInstanceName $targetInstanceName
+		
+		# geo-restore managed database using GeoBackupObject
+		$restoredDb3 = Restore-AzSqlInstanceDatabase -FromGeoBackup -GeoBackupObject $sourceDbGeoBackup -TargetInstanceDatabaseName $targetManagedDatabaseName3 -TargetInstanceName $targetInstanceName -TargetResourceGroupName $targetRgName
+		Assert-NotNull $restoredDb3
+		Assert-AreEqual $restoredDb3.Name $targetManagedDatabaseName3
+		Assert-AreEqual $restoredDb3.ResourceGroupName $targetRgName
+		Assert-AreEqual $restoredDb3.ManagedInstanceName $targetInstanceName
+
+		# geo-restore managed database using piping
+		$restoredDb4 = $sourceDbGeoBackup | Restore-AzSqlInstanceDatabase -FromGeoBackup -TargetInstanceDatabaseName $targetManagedDatabaseName4 -TargetInstanceName $targetInstanceName -TargetResourceGroupName $targetRgName
+		Assert-NotNull $restoredDb4
+		Assert-AreEqual $restoredDb4.Name $targetManagedDatabaseName4
+		Assert-AreEqual $restoredDb4.ResourceGroupName $targetRgName
+	   Assert-AreEqual $restoredDb4.ManagedInstanceName $targetInstanceName	
+
+	}
+	finally
+	{
+     	$restoredDb1 | Remove-AzSqlInstanceDatabase -Force
+		$restoredDb2 | Remove-AzSqlInstanceDatabase -Force
+		$restoredDb3 | Remove-AzSqlInstanceDatabase -Force
+		$restoredDb4 | Remove-AzSqlInstanceDatabase -Force
 	}
 }

@@ -18,7 +18,55 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.11.0
+* Add DnsZonePartner Parameter for New-AzureSqlInstance cmdlet to support AutoDr for Managed Instance.
+* Deprecating Get-AzSqlDatabaseSecureConnectionPolicy cmdlet
+* Rename Threat Detection cmdlets to Advanced Threat Protection
+* New-AzSqlInstance -StorageSizeInGB and -LicenseType parameters are now optional.
+* Fix issue in reference documentation for `Enable-AzSqlServerAdvancedDataSecurity`
+
+## Version 1.10.0
+* Rename Advanced Threat Protection cmdlets to Advanced Data Security and enable Vulnerability Assessment by default
+
+## Version 1.9.0
+* Replace dependency on Monitor SDK with common code
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Enhanced process of multiple columns classification.
+* Include sku properties (sku name, family, capacity) in response from Get-AzSqlServerServiceObjective and format as table by default.
+* Ability to Get-AzSqlServerServiceObjective by location without needing a preexisting server in the region.
+* Support for time zone parameter in Managed Instance create.
+* Fix documentation for wildcards
+* Support of Serverless specific parameters in New-AzSqlDatabase and Set-AzSqlDatabase
+
+## Version 1.8.0
+* Support Database Data Classification.
+* Add Get/Remove AzSqlVirtualCluster cmdlets.
+
+## Version 1.7.0
+* Add Vulnerability Assessment cmdlets on Server and Managed Instance
+
+## Version 1.6.0
+* changed Threat Detection's cmdlets param (ExcludeDetectionType) from DetectionType to string[] to make it future proof when new DetectionTypes are added and to support autocomplete as well.
+
+## Version 1.5.0
+* Updating AuditingEndpointsCommunicator.
+    - Fixing the behavior of an edge case while creating new diagnostic settings.
+
+## Version 1.4.0
+* Add support for restore an instance database from geo-redundant backups
+* Add support for backup short term retention on Managed Instance
+
+## Version 1.3.0
+* Add support for SQL DB Hyperscale tier
+* Fixed bug where restore could fail due to setting unnecessary properties in restore request
+
+
+## Version 1.2.0
 * Add Get/Set AzSqlDatabaseBackupShortTermRetentionPolicy
+* Fix issue where not being logged into Azure account would result in nullref exception when executing SQL cmdlets
+* Fixed null ref exception in Get-AzSqlCapability
+* Support Database/Server auditing to event hub and log analytics.
 
 ## Version 1.1.0
 * Update incorrect online help URLs

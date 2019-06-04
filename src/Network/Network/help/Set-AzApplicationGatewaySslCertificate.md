@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzApplicationGatewaySslCertificate
 
 ## SYNOPSIS
-Sets the goal state of an SSL certificate.
+Updates an SSL certificate for an application gateway.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Set-AzApplicationGatewaySslCertificate -ApplicationGateway <PSApplicationGateway
 ```
 
 ## DESCRIPTION
-The **Set-AzApplicationGatewaySslCertificate** cmdlet sets the goal state of an SSL certificate.
+The **Set-AzApplicationGatewaySslCertificate** cmdlet updates an SSL certificate for an application gateway.
 
 ## EXAMPLES
 
@@ -31,7 +31,7 @@ PS C:\> $password = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
 PS C:\> $cert = Set-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -CertificateFile "D:\cert01.pfx" -Password $password
 ```
 
-This command sets the goal state for an SSL certificate from the application gateway named ApplicationGateway01.
+Update an existing SSL certificate for the application gateway named ApplicationGateway01.
 
 ### Example 2: Update an existing SSL certificate using KeyVault Secret (version-less secretId) on Application Gateway
 ```

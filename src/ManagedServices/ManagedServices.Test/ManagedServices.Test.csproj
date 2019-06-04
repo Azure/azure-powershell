@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PsModuleName>Kusto</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
+
+  <PropertyGroup>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Test</RootNamespace>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Test</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.ManagedServices" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="SessionRecords\Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Test.ScenarioTests.ManagedServicesTests\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="SessionRecords\ManagedServices_CRUD.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

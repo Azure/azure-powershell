@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Kusto.dll-Help.xml
 Module Name: Az.Kusto
 online version: https://docs.microsoft.com/en-us/powershell/module/az.kusto/update-azkustocluster
@@ -14,19 +14,19 @@ Update an existing Kusto cluster.
 
 ### ByNameAndResourceGroup (Default)
 ```
-Update-AzKustoCluster [-ResourceGroupName] <String> [-Name] <String> [-SkuName <String>] [-Tier <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzKustoCluster [-ResourceGroupName] <String> [-Name] <String> [-SkuName <String>] [-Capacity <Int32>]
+ [-Tier <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Update-AzKustoCluster [-SkuName <String>] [-Tier <String>] [-ResourceId] <String>
+Update-AzKustoCluster [-SkuName <String>] [-Capacity <Int32>] [-Tier <String>] [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Update-AzKustoCluster [-SkuName <String>] [-Tier <String>] [-InputObject] <PSKustoCluster>
+Update-AzKustoCluster [-SkuName <String>] [-Capacity <Int32>] [-Tier <String>] [-InputObject] <PSKustoCluster>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -46,10 +46,12 @@ ResourceGroup     : testrg
 Name              : mykustocluster
 Location          : Central US
 Sku               : D14_v2
+Capacity          : 5
 ProvisioningState : Succeeded
 State             : Running
 Tag               : {}
-
+Uri               : https://mykustocluster1.centralus.kusto.windows.net
+DataIngestionUri  : https://ingest-mykustocluster1.centralus.kusto.windows.net
 ```
 
 The above command updates the tier of the Kusto cluster "mykustocluster" found in the resource group "testrg".
@@ -57,22 +59,40 @@ The above command updates the tier of the Kusto cluster "mykustocluster" found i
 ### Example 2 - Update an existing cluster by piping
 
 ```
-PS C:\> PS C:\> Get-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster | Update-AzKustoCluster -Tier D14_v2
+PS C:\> PS C:\> Get-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster | Update-AzKustoCluster -Sku D14_v2 -Capacity 10
 
 Type              : Microsoft.Kusto/Clusters
 Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testrg/providers/Microsoft.Kusto/Clusters/mykustocluster
 ResourceGroup     : testrg
 Name              : mykustocluster
 Location          : Central US
+Capacity          : 10
 Sku               : D14_v2
 ProvisioningState : Succeeded
 State             : Running
 Tag               : {}
+Uri               : https://mykustocluster1.centralus.kusto.windows.net
+DataIngestionUri  : https://ingest-mykustocluster1.centralus.kusto.windows.net
 ```
 
 The above command gets the Kusto cluster "mykustocluster" found in the resource group "testrg" using the `Get-AzKustoCluster` cmdlet, and then pipes the result to `Update-AzKustoCluster` to update the cluster's tier to "standard".
 
 ## PARAMETERS
+
+### -Capacity
+The instance number of the VM.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

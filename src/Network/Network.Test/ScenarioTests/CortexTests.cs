@@ -12,22 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+
 namespace Commands.Network.Test.ScenarioTests
 {
-    using System;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
-    using Microsoft.Azure.ServiceManagement.Common.Models;
     using Xunit.Abstractions;
 
-    public class CortexTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class CortexTests : NetworkTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public CortexTests(ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]
@@ -35,7 +32,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestCortexCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-CortexCRUD");
+            TestRunner.RunTestScript("Test-CortexCRUD");
         }
 
         [Fact]
@@ -43,7 +40,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.pgtm)]
         public void TestCortexExpressRouteCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-CortexExpressRouteCRUD");
+            TestRunner.RunTestScript("Test-CortexExpressRouteCRUD");
         }
 
         [Fact]
@@ -51,7 +48,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestCortexDownloadConfig()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-CortexDownloadConfig");
+            TestRunner.RunTestScript("Test-CortexDownloadConfig");
         }
     }
 }

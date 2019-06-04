@@ -13,40 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.IO;
 
 namespace Tools.Common.Helpers
 {
     public static class EnvironmentHelpers
     {
-// TODO: Remove IfDef code
-#if !NETSTANDARD
-        /// <summary>
-        /// Create a new AppDomain and create a remote instance of AssemblyLoader we can use there
-        /// </summary>
-        /// <param name="directoryPath">directory containing assemblies</param>
-        /// <param name="testDomain">A new AppDomain, where assemblies can be loaded</param>
-        /// <returns>A proxy to the AssemblyLoader running in the newly created app domain</returns>
-        public static T CreateProxy<T>(string directoryPath, out AppDomain testDomain) where T:MarshalByRefObject
-        {
-            if (String.IsNullOrWhiteSpace(directoryPath))
-            {
-                throw new ArgumentException("directoryPath");
-            }
-
-            var setup = new AppDomainSetup();
-            setup.ApplicationBase = directoryPath;
-            setup.ApplicationName = "TestDomain";
-            setup.ApplicationTrust = AppDomain.CurrentDomain.ApplicationTrust;
-            setup.DisallowApplicationBaseProbing = false;
-            setup.DisallowCodeDownload = false;
-            setup.DisallowBindingRedirects = false;
-            setup.DisallowPublisherPolicy = false;
-            testDomain = AppDomain.CreateDomain("TestDomain", null, setup);
-            return testDomain.CreateInstanceFromAndUnwrap(typeof(T).Assembly.Location,
-                typeof(T).FullName) as T;
-        }
-#endif
-
         /// <summary>
         /// Get the name of the directory from a directory path
         /// </summary>
@@ -56,11 +28,11 @@ namespace Tools.Common.Helpers
         {
             if (path == null)
             {
-                throw new ArgumentNullException("path");
+                throw new ArgumentNullException(nameof(path));
             }
 
-            var result = path.TrimEnd('\\');
-            var lastSlash = result.LastIndexOf("\\");
+            var result = path.TrimEnd(Path.DirectorySeparatorChar);
+            var lastSlash = result.LastIndexOf(Path.DirectorySeparatorChar);
             if (lastSlash > 0)
             {
                 result = result.Substring(lastSlash + 1);

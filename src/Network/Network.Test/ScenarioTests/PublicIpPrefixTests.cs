@@ -12,22 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+
 namespace Commands.Network.Test.ScenarioTests
 {
-    using global::Commands.Network.Test;
-    using Microsoft.Azure.ServiceManagement.Common.Models;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
-    using Xunit.Abstractions;
 
-    public class PublicIpPrefixTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class PublicIpPrefixTests : NetworkTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public PublicIpPrefixTests(Xunit.Abstractions.ITestOutputHelper output)
+             : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -35,7 +31,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpPrefixCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpPrefixCRUD");
+            TestRunner.RunTestScript("Test-PublicIpPrefixCRUD");
         }
 
         [Fact]
@@ -43,7 +39,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpPrefixAllocatePublicIpAddress()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpPrefixAllocatePublicIpAddress");
+            TestRunner.RunTestScript("Test-PublicIpPrefixAllocatePublicIpAddress");
         }
     }
 }

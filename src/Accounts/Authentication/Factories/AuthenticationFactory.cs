@@ -16,7 +16,6 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
-using Microsoft.Rest.Azure.Authentication;
 using System;
 using System.Linq;
 using System.Security;
@@ -27,6 +26,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
     public class AuthenticationFactory : IAuthenticationFactory
     {
+        public const string AppServiceManagedIdentityFlag = "AppServiceManagedIdentityFlag";
+
         public const string CommonAdTenant = "Common",
             DefaultMSILoginUri = "http://169.254.169.254/metadata/identity/oauth2/token",
             DefaultBackupMSILoginUri = "http://localhost:50342/oauth2/token";
@@ -333,13 +334,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 /*TracingAdapter.Information(Resources.UPNAuthenticationTokenTrace,
                     token.LoginType, token.TenantId, token.UserId);*/
 
-                var env = new ActiveDirectoryServiceSettings
-                {
-                    AuthenticationEndpoint = context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ActiveDirectory),
-                    TokenAudience = context.Environment.GetEndpointAsUri(context.Environment.GetTokenAudience(targetEndpoint)),
-                    ValidateAuthority = !context.Environment.OnPremise
-                };
-
                 var tokenCache = AzureSession.Instance.TokenCache;
 
                 if (context.TokenCache != null)
@@ -359,33 +353,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                                 context.Environment.GetTokenAudience(targetEndpoint)));
                         break;
                     case AzureAccount.AccountType.User:
-                        result = Rest.Azure.Authentication.UserTokenProvider.CreateCredentialsFromCache(
-                           AdalConfiguration.PowerShellClientId,
-                           tenant,
-                           context.Account.Id,
-                           env,
-                           tokenCache as TokenCache).ConfigureAwait(false).GetAwaiter().GetResult();
-                        break;
                     case AzureAccount.AccountType.ServicePrincipal:
-                        if (context.Account.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
-                        {
-                            result = ApplicationTokenProvider.LoginSilentAsync(
-                                tenant,
-                                context.Account.Id,
-                                new CertificateApplicationCredentialProvider(
-                                    context.Account.GetThumbprint()),
-                                env,
-                                tokenCache as TokenCache).ConfigureAwait(false).GetAwaiter().GetResult();
-                        }
-                        else
-                        {
-                            result = ApplicationTokenProvider.LoginSilentAsync(
-                                tenant,
-                                context.Account.Id,
-                                new KeyStoreApplicationCredentialProvider(tenant, KeyStore),
-                                env,
-                                tokenCache as TokenCache).ConfigureAwait(false).GetAwaiter().GetResult();
-                        }
+                        result = new RenewingTokenCredential(Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, context.Environment.GetTokenAudience(targetEndpoint)));
                         break;
                     default:
                         throw new NotSupportedException(context.Account.Type.ToString());
@@ -454,6 +423,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             if (string.IsNullOrWhiteSpace(tenant))
             {
                 tenant = environment.AdTenant ?? "Common";
+            }
+
+            if (account.IsPropertySet(AuthenticationFactory.AppServiceManagedIdentityFlag))
+            {
+                return new ManagedServiceAppServiceAccessToken(account, environment, tenant);
             }
 
             return new ManagedServiceAccessToken(account, environment, GetResourceId(resourceId, environment), tenant);

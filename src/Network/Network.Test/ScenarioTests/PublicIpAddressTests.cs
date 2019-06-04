@@ -12,21 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class PublicIpAddressTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class PublicIpAddressTests : NetworkTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public PublicIpAddressTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -34,7 +30,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpAddressCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD");
+            TestRunner.RunTestScript("Test-PublicIpAddressCRUD");
         }
 
         [Fact]
@@ -42,7 +38,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpAddressCRUDPublicIPPrefix()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-PublicIPPrefix");
+            TestRunner.RunTestScript("Test-PublicIpAddressCRUD-PublicIPPrefix");
         }
 
         [Fact]
@@ -50,7 +46,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpAddressCRUDNoDomainNameLabel()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-NoDomainNameLabel");
+            TestRunner.RunTestScript("Test-PublicIpAddressCRUD-NoDomainNameLabel");
         }
 
         [Fact]
@@ -58,7 +54,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpAddressCRUDStaticAllocation()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-StaticAllocation");
+            TestRunner.RunTestScript("Test-PublicIpAddressCRUD-StaticAllocation");
         }
 
         [Fact]
@@ -66,7 +62,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpAddressCRUDEditDomainNameLavel()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-EditDomainNameLavel");
+            TestRunner.RunTestScript("Test-PublicIpAddressCRUD-EditDomainNameLavel");
         }
 
         [Fact]
@@ -74,7 +70,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpAddressCRUDReverseFqdn()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-ReverseFqdn");
+            TestRunner.RunTestScript("Test-PublicIpAddressCRUD-ReverseFqdn");
         }
 
         [Fact]
@@ -82,7 +78,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpAddressCRUDIpTag()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-IpTag");
+            TestRunner.RunTestScript("Test-PublicIpAddressCRUD-IpTag");
         }
 
         [Fact]
@@ -90,7 +86,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpAddressIpVersion()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressIpVersion");
+            TestRunner.RunTestScript("Test-PublicIpAddressIpVersion");
         }
 
         [Fact]
@@ -98,7 +94,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpAddressVmss()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressVmss");
+            TestRunner.RunTestScript("Test-PublicIpAddressVmss");
         }
 
         [Fact]
@@ -106,7 +102,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpBasicSku()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-BasicSku");
+            TestRunner.RunTestScript("Test-PublicIpAddressCRUD-BasicSku");
         }
 
         [Fact]
@@ -114,7 +110,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpStandardSku()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-StandardSku");
+            TestRunner.RunTestScript("Test-PublicIpAddressCRUD-StandardSku");
         }
 
         [Fact]
@@ -122,7 +118,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpAddressZones()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressZones");
+            TestRunner.RunTestScript("Test-PublicIpAddressZones");
         }
 
         [Fact]
@@ -130,7 +126,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpAddressCRUDIdleTimeout()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-IdleTimeout");
+            TestRunner.RunTestScript("Test-PublicIpAddressCRUD-IdleTimeout");
         }
     }
 }

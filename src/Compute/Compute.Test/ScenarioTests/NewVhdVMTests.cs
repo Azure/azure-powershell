@@ -12,39 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class NewVhdVMTests
+    public class NewVhdVMTests : ComputeTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public NewVhdVMTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
+        [Fact]
         [Trait(Category.RunType, Category.DesktopOnly)]
-#else
-        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWithValidVhdDiskFile()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-NewAzureRmVhdVMWithValidDiskFile");
+            TestRunner.RunTestScript("Test-NewAzureRmVhdVMWithValidDiskFile");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWithInvalidVhdDiskFile()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-NewAzureRmVhdVMWithInvalidDiskFile");
+            TestRunner.RunTestScript("Test-NewAzureRmVhdVMWithInvalidDiskFile");
         }
     }
 }

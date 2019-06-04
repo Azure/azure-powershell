@@ -202,7 +202,6 @@ The mode of the policy definition
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Indexed, All
 
 Required: False
 Position: Named

@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+
 namespace Microsoft.Azure.Commands.Security.Models.Pricings
 {
     public class PSSecurityPricing
@@ -21,5 +23,7 @@ namespace Microsoft.Azure.Commands.Security.Models.Pricings
         public string Name { get; set; }
 
         public string PricingTier { get; set; }
+
+        public TimeSpan? FreeTrialRemainingTime { get; internal set; }
     }
 }

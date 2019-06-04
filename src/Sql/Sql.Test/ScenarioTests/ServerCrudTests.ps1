@@ -119,11 +119,11 @@ function Test-GetServer
 		Assert-AreEqual $server2.SqlAdministratorLogin $resp2.SqlAdministratorLogin
 		Assert-StartsWith ($server1.ServerName + ".") $server1.FullyQualifiedDomainName
 		
-		$all = Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName
+		$all = Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -Name *
 		Assert-AreEqual 2 $all.Count
 
 		# Test getting all servers in all resource groups
-		$all2 = Get-AzSqlServer
+		$all2 = Get-AzSqlServer -ResourceGroupName *
 
 		# It is possible that there were existing servers in the subscription when the test was recorded, so make sure
 		# that the servers that we created are retrieved and ignore the other ones.

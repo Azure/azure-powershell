@@ -67,6 +67,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string ConsumergroupInputObjectParameterSet = "ConsumergroupInputObjectSet";
         protected const string AuthoRuleInputObjectParameterSet = "AuthoRuleInputObjectSet";
         protected const string GeoDRInputObjectParameterSet = "GeoDRConfigurationInputObjectSet";
+        protected const string NetwrokruleSetInputObjectParameterSet = "NetwrokruleSetInputObjectSet";
+        protected const string VirtualNetworkRuleInputObjectParameterSet = "VirtualNetworkRuleInputObjectParameterSet";
+        protected const string IPRuleInputObjectParameterSet = "IPRuleInputObjectParameterSet";
 
         //Parameter sets for ResourceID
         protected const string GeoDRConfigResourceIdParameterSet = "GeoDRConfigResourceIdParameterSet";
@@ -74,12 +77,17 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
         protected const string EventhubResourceIdParameterSet = "EventhubResourceIdParameterSet";
         protected const string ConsumergroupResourceIdParameterSet = "ConsumergroupResourceIdParameterSet";
+        protected const string NetworkRuleSetResourceIdParameterSet = "NetworkRuleSetResourceIdParameterSet";
 
         //Parameter sets for Properties
         protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
         protected const string EventhubPropertiesParameterSet = "EventhubPropertiesSet";
         protected const string ConsumergroupPropertiesParameterSet = "ConsumergroupPropertiesSet";
         protected const string GeoDRParameterSet = "GeoDRParameterSet";
+        protected const string NetwrokruleSetPropertiesParameterSet = "NetworkRuleSetPropertiesSet";
+        protected const string NetwrokruleSetNamespacePropertiesParameterSet = "NetworkRuleSetNamespacePropertiesSet";
+        protected const string VirtualNetworkRulePropertiesParameterSet = "VirtualNetworkRulePropertiesParameterSet";
+        protected const string IPRulePropertiesParameterSet = "IPRulePropertiesParameterSet";
 
         protected const string EventhubDefaultParameterSet = "EventhubDefaultSet";
 

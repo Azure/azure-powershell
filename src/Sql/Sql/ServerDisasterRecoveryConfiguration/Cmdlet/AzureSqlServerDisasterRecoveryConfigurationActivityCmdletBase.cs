@@ -59,9 +59,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
         /// <summary>
         /// Initializes the adapter
         /// </summary>
-        /// <param name="subscription"></param>
         /// <returns></returns>
-        protected override AzureSqlServerDisasterRecoveryConfigurationAdapter InitModelAdapter(IAzureSubscription subscription)
+        protected override AzureSqlServerDisasterRecoveryConfigurationAdapter InitModelAdapter()
         {
             return new AzureSqlServerDisasterRecoveryConfigurationAdapter(DefaultProfile.DefaultContext);
         }

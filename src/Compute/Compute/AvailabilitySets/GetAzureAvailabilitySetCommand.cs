@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Compute
            HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Alias("ResourceName", "AvailabilitySetName")]
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "The availability set name.")]
         [ResourceNameCompleter("Microsoft.Compute/availabilitySets", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         public override void ExecuteCmdlet()
@@ -49,7 +51,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (string.IsNullOrEmpty(this.ResourceGroupName) && string.IsNullOrEmpty(this.Name))
+                if (ShouldListBySubscription(ResourceGroupName, Name))
                 {
                     var result = this.AvailabilitySetClient.ListBySubscriptionWithHttpMessagesAsync().GetAwaiter().GetResult();
                     var psResultList = new List<PSAvailabilitySet>();
@@ -73,9 +75,9 @@ namespace Microsoft.Azure.Commands.Compute
                         nextPageLink = pageResult.Body.NextPageLink;
                     }
 
-                    WriteObject(psResultList, true);
+                    WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psResultList), true);
                 }
-                else if (string.IsNullOrEmpty(this.Name))
+                else if (ShouldListByResourceGroup(ResourceGroupName, Name))
                 {
                     var result = this.AvailabilitySetClient.ListWithHttpMessagesAsync(this.ResourceGroupName).GetAwaiter().GetResult();
 
@@ -100,7 +102,7 @@ namespace Microsoft.Azure.Commands.Compute
                         nextPageLink = pageResult.Body.NextPageLink;
                     }
 
-                    WriteObject(psResultList, true);
+                    WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psResultList), true);
                 }
                 else
                 {

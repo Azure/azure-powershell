@@ -18,14 +18,16 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.IO;
 using System.Management.Automation;
 using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAvailableWafRuleSets"), OutputType(typeof(PSApplicationGatewayAvailableWafRuleSetsResult))]
-    [Alias("List-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAvailableWafRuleSets")]
+    [GenericBreakingChange("Get-AzApplicationGatewayAvailableWafRuleSets alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAvailableWafRuleSet"), OutputType(typeof(PSApplicationGatewayAvailableWafRuleSetsResult))]
+    [Alias("List-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAvailableWafRuleSets", "Get-AzApplicationGatewayAvailableWafRuleSets")]
     public class GetAzureApplicationGatewayAvailableWafRuleSets : ApplicationGatewayBaseCmdlet
     {
         public override void ExecuteCmdlet()

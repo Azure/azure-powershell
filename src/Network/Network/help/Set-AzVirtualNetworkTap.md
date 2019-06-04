@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzVirtualNetworkTap
 
 ## SYNOPSIS
-Sets the goal state for a virtual network tap.
+Updates a virtual network tap.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Set-AzVirtualNetworkTap -VirtualNetworkTap <PSVirtualNetworkTap> [-AsJob]
 ```
 
 ## DESCRIPTION
-The **Set-AzVirtualNetworkTap** sets the goal state for an Azure virtual network tap.
+The **Set-AzVirtualNetworkTap** cmdlet updates a virtual network tap.
 
 ## EXAMPLES
 

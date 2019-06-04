@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         public SqlDataMaskingAdapter(IAzureContext context)
         {
             Context = context;
-            Subscription = context.Subscription;
+            Subscription = context?.Subscription;
             Communicator = new DataMaskingEndpointsCommunicator(Context);
         }
 

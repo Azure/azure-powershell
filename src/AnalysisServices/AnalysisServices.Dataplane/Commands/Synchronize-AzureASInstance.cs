@@ -13,58 +13,33 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
     /// <summary>
-    /// Cmdlet to log into an Analysis Services environment
+    /// Cmdlet to sync Analysis Services server databases.
     /// </summary>
     [Cmdlet("Sync", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AnalysisServicesInstance", SupportsShouldProcess = true)]
     [Alias("Sync-AzureAsInstance", "Sync-AzAsInstance")]
     [OutputType(typeof(ScaleOutServerDatabaseSyncDetails))]
-    public class SynchronizeAzureAzureAnalysisServer : AzurePSCmdlet
+    public class SynchronizeAzureAzureAnalysisServer : AsAzureDataplaneCmdletBase
     {
-        private static TimeSpan DefaultPollingInterval = TimeSpan.FromSeconds(30);
-
+        /// <summary>
+        /// Default time interval to wait between polls for sync status.
+        /// </summary>
         public static TimeSpan DefaultRetryIntervalForPolling = TimeSpan.FromSeconds(10);
-
-        private static string RootActivityIdHeaderName = "x-ms-root-activity-id";
-
-        private static string CurrentUtcDateHeaderName = "x-ms-current-utc-date";
-
-        private string serverName;
-
-        private ClusterResolutionResult clusterResolveResult;
-
-        private Guid correlationId;
-
-        private string syncRequestRootActivityId;
-
-        private string syncRequestTimeStamp;
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "Name of the Azure Analysis Services server to synchronize. E.x. asazure://westus.asazure.windows.net/contososerver:rw",
-            Position = 0,
-            ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public string Instance { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -74,261 +49,161 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         [ValidateNotNullOrEmpty]
         public string Database { get; set; }
 
-        [Parameter(Mandatory = false)]
-        public SwitchParameter PassThru { get; set; }
+        /// <summary>
+        /// Default time interval to wait before first poll for sync status.
+        /// </summary>
+        private static readonly TimeSpan DefaultPollingInterval = TimeSpan.FromSeconds(30);
 
-        protected override IAzureContext DefaultContext
+        /// <summary>
+        /// Http Header name for root activity id.
+        /// </summary>
+        private readonly string RootActivityIdHeaderName = "x-ms-root-activity-id";
+
+        /// <summary>
+        /// Http Header name for current UTC date and time.
+        /// </summary>
+        private readonly string CurrentUtcDateHeaderName = "x-ms-current-utc-date";
+
+        /// <summary>
+        /// Correlation ID for http requests.
+        /// </summary>
+        private Guid correlationId = Guid.Empty;
+
+        /// <summary>
+        /// The root activity id for this sync activity.
+        /// </summary>
+        private string syncRequestRootActivityId = string.Empty;
+
+        /// <summary>
+        /// Time stamp for the sync request.
+        /// </summary>
+        private string syncRequestTimeStamp = string.Empty;
+
+        /// <inheritdoc cref="AzurePSCmdlet.ExecuteCmdlet"/>
+        public override void ExecuteCmdlet()
         {
-            get
+            if (!ShouldProcess(Instance, Resources.SynchronizingAnalysisServicesServer))
             {
-                // Nothing to do with Azure Resource Management context
-                return null;
+                return;
+            }
+
+            WriteProgress(new ProgressRecord(0, "Sync-AzAnalysisServicesInstance.", string.Format("Successfully authenticated for '{0}' environment.", DnsSafeHost)));
+            correlationId = Guid.NewGuid();
+            Uri clusterBaseUri = new Uri(string.Format("{0}{1}{2}", Uri.UriSchemeHttps, Uri.SchemeDelimiter, DnsSafeHost));
+            ScaleOutServerDatabaseSyncDetails syncResult = null;
+
+            try
+            {
+                WriteObject(string.Format("Sending sync request for database '{0}' to server '{1}'. Correlation Id: '{2}'.", Database, Instance, correlationId.ToString()));
+                syncResult = SynchronizeDatabaseAsync(clusterBaseUri, Database).GetAwaiter().GetResult();
+            }
+            catch (AggregateException aex)
+            {
+                foreach (var innerException in aex.Flatten().InnerExceptions)
+                {
+                    WriteExceptionError(innerException);
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteExceptionError(ex);
+            }
+
+            if (syncResult == null)
+            {
+                throw new SynchronizationFailedException(string.Format(Resources.SyncASPollStatusUnknownMessage.FormatInvariant(
+                    ServerName,
+                    correlationId,
+                    DateTime.Now.ToString(CultureInfo.InvariantCulture),
+                    string.Format("RootActivityId: {0}, Date Time UTC: {1}", syncRequestRootActivityId, syncRequestTimeStamp))));
+            }
+
+            if (syncResult.SyncState != DatabaseSyncState.Completed)
+            {
+                var serializedDetails = JsonConvert.SerializeObject(syncResult);
+                throw new SynchronizationFailedException(serializedDetails);
+            }
+
+            if (PassThru.IsPresent)
+            {
+                WriteObject(syncResult, true);
             }
         }
 
-        public IAsAzureHttpClient AsAzureHttpClient { get; private set; }
-
-        public ITokenCacheItemProvider TokenCacheItemProvider { get; private set; }
-
-        public SynchronizeAzureAzureAnalysisServer()
+        /// <inheritdoc cref="AsAzureDataplaneCmdletBase.BeginProcessing"/>
+        protected override void BeginProcessing()
         {
-            this.AsAzureHttpClient = new AsAzureHttpClient(() =>
-            {
-                HttpClientHandler httpClientHandler = new HttpClientHandler();
-                httpClientHandler.AllowAutoRedirect = false;
-                return new HttpClient(httpClientHandler);
-            });
-
-            this.TokenCacheItemProvider = new TokenCacheItemProvider();
-            this.syncRequestRootActivityId = string.Empty;
-            this.correlationId = Guid.Empty;
-            this.syncRequestTimeStamp = string.Empty;
+            this._dataCollectionProfile = new AzurePSDataCollectionProfile(false);
+            base.BeginProcessing();
         }
 
-        public SynchronizeAzureAzureAnalysisServer(IAsAzureHttpClient AsAzureHttpClient, ITokenCacheItemProvider TokenCacheItemProvider)
-        {
-            this.AsAzureHttpClient = AsAzureHttpClient;
-            this.TokenCacheItemProvider = TokenCacheItemProvider;
-        }
-
+        /// <inheritdoc cref="AzurePSCmdlet.SetupDebuggingTraces"/>
         protected override void SetupDebuggingTraces()
         {
             // nothing to do here.
         }
 
+        /// <inheritdoc cref="AzurePSCmdlet.TearDownDebuggingTraces"/>
         protected override void TearDownDebuggingTraces()
         {
             // nothing to do here.
         }
 
+        /// <inheritdoc cref="AzurePSCmdlet.SetupHttpClientPipeline"/>
         protected override void SetupHttpClientPipeline()
         {
             // nothing to do here.
         }
 
+        /// <inheritdoc cref="AzurePSCmdlet.TearDownHttpClientPipeline"/>
         protected override void TearDownHttpClientPipeline()
         {
             // nothing to do here.
         }
 
-
-        public override void ExecuteCmdlet()
-        {
-            if (ShouldProcess(Instance, Resources.SynchronizingAnalysisServicesServer))
-            {
-                correlationId = Guid.NewGuid();
-                WriteObject(string.Format("Sending sync request for database '{0}' to server '{1}'. Correlation Id: '{2}'.", Database, Instance, correlationId.ToString()));
-                var context = AsAzureClientSession.Instance.Profile.Context;
-                AsAzureClientSession.Instance.Login(context);
-                WriteProgress(new ProgressRecord(0, "Sync-AzAnalysisServicesInstance.", string.Format("Authenticating user for '{0}' environment.", context.Environment.Name)));
-                var clusterResolveResult = ClusterResolve(context, serverName);
-                var virtualServerName = clusterResolveResult.CoreServerName.Split(":".ToCharArray())[0];
-                if (!serverName.Equals(virtualServerName) && !clusterResolveResult.CoreServerName.EndsWith(":rw"))
-                {
-                    throw new SynchronizationFailedException("Sync request can only be sent to the management endpoint");
-                }
-
-                this.clusterResolveResult = clusterResolveResult;
-                Uri clusterBaseUri = new Uri(string.Format("{0}{1}{2}", Uri.UriSchemeHttps, Uri.SchemeDelimiter, clusterResolveResult.ClusterFQDN));
-                var accessToken = this.TokenCacheItemProvider.GetTokenFromTokenCache(AsAzureClientSession.TokenCache, context.Account.UniqueId, context.Environment.Name);
-
-                ScaleOutServerDatabaseSyncDetails syncResult = null;
-                try
-                {
-                    WriteProgress(new ProgressRecord(0, "Sync-AzAnalysisServicesInstance.", string.Format("Successfully authenticated for '{0}' environment.", context.Environment.Name)));
-                    syncResult = SynchronizeDatabaseAsync(context, clusterBaseUri, Database, accessToken).GetAwaiter().GetResult();
-                }
-                catch (AggregateException aex)
-                {
-                    foreach (var innerException in aex.Flatten().InnerExceptions)
-                    {
-                        WriteExceptionError(innerException);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    WriteExceptionError(ex);
-                }
-
-                if (syncResult == null)
-                {
-                    throw new SynchronizationFailedException(string.Format(Resources.SyncASPollStatusUnknownMessage.FormatInvariant(
-                        this.clusterResolveResult.CoreServerName,
-                        correlationId,
-                        DateTime.Now.ToString(CultureInfo.InvariantCulture),
-                        string.Format("RootActivityId: {0}, Date Time UTC: {1}", syncRequestRootActivityId, syncRequestTimeStamp))));
-                }
-
-                if (syncResult.SyncState != DatabaseSyncState.Completed)
-                {
-                    var serializedDetails = JsonConvert.SerializeObject(syncResult);
-                    throw new SynchronizationFailedException(serializedDetails);
-                }
-
-                if (PassThru.IsPresent)
-                {
-                    WriteObject(syncResult, true);
-                }
-            }
-        }
-
-        protected override void BeginProcessing()
-        {
-            this._dataCollectionProfile = new AzurePSDataCollectionProfile(false);
-
-            if (AsAzureClientSession.Instance.Profile.Environments.Count == 0)
-            {
-                throw new PSInvalidOperationException(string.Format(Resources.NotLoggedInMessage, ""));
-            }
-
-            serverName = Instance;
-            Uri uriResult;
-
-            // if the user specifies the FQN of the server, then extract the servername out of that.
-            // and set the current context
-            if (Uri.TryCreate(Instance, UriKind.Absolute, out uriResult) && uriResult.Scheme == "asazure")
-            {
-                serverName = uriResult.PathAndQuery.Trim('/');
-                if (string.Compare(AsAzureClientSession.Instance.Profile.Context.Environment.Name, uriResult.DnsSafeHost, StringComparison.InvariantCultureIgnoreCase) != 0)
-                {
-                    throw new PSInvalidOperationException(string.Format(Resources.NotLoggedInMessage, Instance));
-                }
-            }
-            else
-            {
-                var currentContext = AsAzureClientSession.Instance.Profile.Context;
-                if (currentContext != null
-                    && AsAzureClientSession.AsAzureRolloutEnvironmentMapping.ContainsKey(currentContext.Environment.Name))
-                {
-                    throw new PSInvalidOperationException(string.Format(Resources.InvalidServerName, serverName));
-                }
-            }
-
-            if (this.AsAzureHttpClient == null)
-            {
-                this.AsAzureHttpClient = new AsAzureHttpClient(() =>
-                {
-                    HttpClientHandler httpClientHandler = new HttpClientHandler();
-                    httpClientHandler.AllowAutoRedirect = false;
-                    return new HttpClient();
-                });
-            }
-
-            if (this.TokenCacheItemProvider == null)
-            {
-                this.TokenCacheItemProvider = new TokenCacheItemProvider();
-            }
-
-            base.BeginProcessing();
-        }
-
-        protected override void InitializeQosEvent()
-        {
-            // No data collection for this commandlet
-        }
-
-        protected override string DataCollectionWarning
-        {
-            get
-            {
-                return Resources.ARMDataCollectionMessage;
-            }
-        }
-
         /// <summary>
         /// Worker Method for the synchronize request.
         /// </summary>
-        /// <param name="context">The AS azure context</param>
         /// <param name="syncBaseUri">Base Uri for sync</param>
         /// <param name="databaseName">Database name</param>
-        /// <param name="accessToken">Access token</param>
-        /// <param name="maxNumberOfAttempts">Max number of retries for get command</param>
         /// <returns></returns>
         private async Task<ScaleOutServerDatabaseSyncDetails> SynchronizeDatabaseAsync(
-            AsAzureContext context,
             Uri syncBaseUri,
-            string databaseName,
-            string accessToken)
+            string databaseName)
         {
             Tuple<Uri, RetryConditionHeaderValue> pollingUrlAndRetryAfter = new Tuple<Uri, RetryConditionHeaderValue>(null, null);
             ScaleOutServerDatabaseSyncDetails syncResult = null;
 
             return await Task.Run(async () =>
             {
-                try
+                var syncEndpoint = string.Format(AsAzureEndpoints.SynchronizeEndpointPathFormat, this.ServerName, databaseName);
+                this.AsAzureDataplaneClient.ResetHttpClient();
+                using (var message = await AsAzureDataplaneClient.CallPostAsync(syncBaseUri, syncEndpoint, correlationId))
                 {
-                    var synchronize = string.Format((string)context.Environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.SyncEndpoint], this.serverName, databaseName);
-                    this.AsAzureHttpClient.resetHttpClient();
-                    using (var message = await AsAzureHttpClient.CallPostAsync(
-                        syncBaseUri,
-                        synchronize,
-                        accessToken,
-                        correlationId,
-                        null))
+                    this.syncRequestRootActivityId = message.Headers.Contains(RootActivityIdHeaderName) ? message.Headers.GetValues(RootActivityIdHeaderName).FirstOrDefault() : string.Empty;
+                    this.syncRequestTimeStamp = message.Headers.Contains(CurrentUtcDateHeaderName) ? message.Headers.GetValues(CurrentUtcDateHeaderName).FirstOrDefault() : string.Empty;
+
+                    if (message.StatusCode != HttpStatusCode.Accepted)
                     {
-                        this.syncRequestRootActivityId = message.Headers.Contains(RootActivityIdHeaderName) ? message.Headers.GetValues(RootActivityIdHeaderName).FirstOrDefault() : string.Empty;
-                        this.syncRequestTimeStamp = message.Headers.Contains(CurrentUtcDateHeaderName) ? message.Headers.GetValues(CurrentUtcDateHeaderName).FirstOrDefault() : string.Empty;
+                        var timestampNow = DateTime.Now;
 
-                        message.EnsureSuccessStatusCode();
-
-                        if (message.StatusCode != HttpStatusCode.Accepted)
+                        // Return sync details with exception message as details
+                        return new ScaleOutServerDatabaseSyncDetails
                         {
-                            var timestampNow = DateTime.Now;
-                            syncResult = new ScaleOutServerDatabaseSyncDetails
-                            {
-                                CorrelationId = correlationId.ToString(),
-                                Database = databaseName,
-                                SyncState = DatabaseSyncState.Completed,
-                                Details = string.Format("Http status code: {0}. Nothing readonly instances found to replicate databases.", message.StatusCode),
-                                UpdatedAt = timestampNow,
-                                StartedAt = timestampNow
-                            };
-
-                            return syncResult;
-                        }
-
-                        pollingUrlAndRetryAfter = new Tuple< Uri, RetryConditionHeaderValue>(message.Headers.Location, message.Headers.RetryAfter);
+                            CorrelationId = correlationId.ToString(),
+                            Database = databaseName,
+                            SyncState = DatabaseSyncState.Invalid,
+                            Details = Resources.PostSyncRequestFailureMessage.FormatInvariant(
+                                                                    ServerName,
+                                                                    this.syncRequestRootActivityId,
+                                                                    this.syncRequestTimeStamp,
+                                                                    await message.Content.ReadAsStringAsync()),
+                            UpdatedAt = timestampNow,
+                            StartedAt = timestampNow
+                        };
                     }
 
-                }
-                catch (Exception e)
-                {
-                    var timestampNow = DateTime.Now;
-
-                    // Return sync details with exception message as details
-                    return new ScaleOutServerDatabaseSyncDetails
-                    {
-                        CorrelationId = correlationId.ToString(),
-                        Database = databaseName,
-                        SyncState = DatabaseSyncState.Invalid,
-                        Details = Resources.PostSyncRequestFailureMessage.FormatInvariant(
-                                                                this.clusterResolveResult.CoreServerName,
-                                                                this.syncRequestRootActivityId,
-                                                                this.syncRequestTimeStamp,
-                                                                string.Format(e.Message)),
-                        UpdatedAt = timestampNow,
-                        StartedAt = timestampNow
-                    };
+                    pollingUrlAndRetryAfter = new Tuple<Uri, RetryConditionHeaderValue>(message.Headers.Location, message.Headers.RetryAfter);
                 }
 
                 Uri pollingUrl = pollingUrlAndRetryAfter.Item1;
@@ -338,7 +213,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 {
                     ScaleOutServerDatabaseSyncResult result = await this.PollSyncStatusWithRetryAsync(
                             databaseName,
-                            accessToken,
                             pollingUrl,
                             retryAfter.Delta ?? DefaultPollingInterval);
                     syncResult = ScaleOutServerDatabaseSyncDetails.FromResult(result, correlationId.ToString());
@@ -354,7 +228,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                         Database = databaseName,
                         SyncState = DatabaseSyncState.Invalid,
                         Details = Resources.SyncASPollStatusFailureMessage.FormatInvariant(
-                                serverName,
+                                ServerName,
                                 string.Empty,
                                 timestampNow.ToString(CultureInfo.InvariantCulture),
                                 string.Format(e.StackTrace)),
@@ -368,15 +242,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         }
 
         /// <summary>
-        /// 
+        /// Worker Method for the synchronize request.
         /// </summary>
         /// <param name="databaseName">Database name</param>
-        /// <param name="accessToken">Access token</param>
         /// <param name="pollingUrl">URL for polling</param>
         /// <param name="pollingInterval">Polling interval set by the post response</param>
         /// <param name="maxNumberOfAttempts">Max number of attempts for each poll before the attempt is declared a failure</param>
         /// <returns></returns>
-        private async Task<ScaleOutServerDatabaseSyncResult> PollSyncStatusWithRetryAsync(string databaseName, string accessToken, Uri pollingUrl, TimeSpan pollingInterval, int maxNumberOfAttempts = 3)
+        private async Task<ScaleOutServerDatabaseSyncResult> PollSyncStatusWithRetryAsync(string databaseName, Uri pollingUrl, TimeSpan pollingInterval, int maxNumberOfAttempts = 3)
         {
             return await Task.Run(async () =>
             {
@@ -396,12 +269,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                         await Task.Delay(DefaultRetryIntervalForPolling);
                     }
 
-                    this.AsAzureHttpClient.resetHttpClient();
-                    using (HttpResponseMessage message = await AsAzureHttpClient.CallGetAsync(
-                        pollingUrl,
-                        string.Empty,
-                        accessToken,
-                        correlationId))
+                    this.AsAzureDataplaneClient.ResetHttpClient();
+                    using (HttpResponseMessage message = await AsAzureDataplaneClient.CallGetAsync(pollingUrl, string.Empty, correlationId))
                     {
                         bool shouldRetry = false;
                         if (message.IsSuccessStatusCode && message.Content != null)
@@ -432,7 +301,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                             shouldRetry = true;
                         }
 
-                        if(shouldRetry)
+                        if (shouldRetry)
                         {
                             retryCount++;
                             response = new ScaleOutServerDatabaseSyncResult()
@@ -460,36 +329,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
                 return response;
             });
-        }
-
-        /// <summary>
-        /// Resolves the cluster to which the request needs to be sent for the current environment
-        /// </summary>
-        /// <param name="context"></param>
-        /// <param name="serverName"></param>
-        /// <returns></returns>
-        private ClusterResolutionResult ClusterResolve(AsAzureContext context, string serverName)
-        {
-            Uri clusterResolveBaseUri = new Uri(string.Format("{0}{1}{2}", Uri.UriSchemeHttps, Uri.SchemeDelimiter, context.Environment.Name));
-            UriBuilder resolvedUriBuilder = new UriBuilder(clusterResolveBaseUri);
-            string rolloutAccessToken = this.TokenCacheItemProvider.GetTokenFromTokenCache(AsAzureClientSession.TokenCache, context.Account.UniqueId, context.Environment.Name);
-
-            var resolveEndpoint = "/webapi/clusterResolve";
-            var content = new StringContent($"ServerName={serverName}");
-            content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/x-www-form-urlencoded");
-
-            this.AsAzureHttpClient.resetHttpClient();
-            using (HttpResponseMessage message = AsAzureHttpClient.CallPostAsync(
-                clusterResolveBaseUri,
-                resolveEndpoint,
-                rolloutAccessToken,
-                content).Result)
-            {
-                message.EnsureSuccessStatusCode();
-                var rawResult = message.Content.ReadAsStringAsync().Result;
-                ClusterResolutionResult result = JsonConvert.DeserializeObject<ClusterResolutionResult>(rawResult);
-                return result;
-            }
         }
     }
 }

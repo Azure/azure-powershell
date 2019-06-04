@@ -109,6 +109,7 @@ function Test-CreateAllKindsOfDataSource
     $wsname = Get-ResourceName
     $rgname = Get-ResourceGroupName
     $subId1 = "0b88dfdb-55b3-4fb0-b474-5b6dcbe6b2ef"
+    $subId2 = "aaaadfdb-55b3-4fb0-b474-5b6dcbe6aaaa"
     $wslocation = Get-ProviderLocation
 
     New-AzResourceGroup -Name $rgname -Location $wslocation -Force
@@ -134,7 +135,20 @@ function Test-CreateAllKindsOfDataSource
     # customlog
     $customLogRawJson = '{"customLogName":"Validation_CL","description":"test","inputs":[{"location":{"fileSystemLocations":{"linuxFileTypeLogPaths":null,"windowsFileTypeLogPaths":["C:\\e2e\\Evan\\ArubaSECURITY\\*.log"]}},"recordDelimiter":{"regexDelimiter":{"pattern":"\\n","matchIndex":0}}}],"extractions":[{"extractionName":"TimeGenerated","extractionType":"DateTime","extractionProperties":{"dateTimeExtraction":{"regex":null,"joinStringRegex":null}}}]}'
     $customLogDataSource = New-AzOperationalInsightsCustomLogDataSource -Workspace $workspace -CustomLogRawJson $customLogRawJson -Name "MyCustomLog"
+	
+    # ApplicationInsights data source
+    $applicationInsightsDataSource1 = New-AzOperationalInsightsApplicationInsightsDataSource -Workspace $workspace -ApplicationSubscriptionId $subId1 -ApplicationResourceGroupName $rgname -ApplicationName "ai-app"
+    Assert-NotNull $applicationInsightsDataSource1
+    Assert-AreEqual "subscriptions/$subId1/resourceGroups/$rgname/providers/microsoft.insights/components/ai-app" $applicationInsightsDataSource1.Name 
+    Assert-AreEqual "ApplicationInsights" $applicationInsightsDataSource1.Kind 
+    Assert-AreEqual $rgname $applicationInsightsDataSource1.ResourceGroupName
 
+    # ApplicationInsights data source by application resourceId 
+    $applicationInsightsDataSource2 = New-AzOperationalInsightsApplicationInsightsDataSource -Workspace $workspace -ApplicationResourceId "/subscriptions/$subId2/resourceGroups/$rgname/providers/microsoft.insights/components/ai-app2"
+    Assert-NotNull $applicationInsightsDataSource2
+    Assert-AreEqual "subscriptions/$subId2/resourceGroups/$rgname/providers/microsoft.insights/components/ai-app2" $applicationInsightsDataSource2.Name 
+    Assert-AreEqual "ApplicationInsights" $applicationInsightsDataSource2.Kind 
+    Assert-AreEqual $rgname $applicationInsightsDataSource2.ResourceGroupName
 }
 
 <#

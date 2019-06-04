@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: A3DA1205-B8FB-4B4C-9C40-AD303D038EDF
@@ -185,13 +185,15 @@ The acceptable values for this parameter are:
 - Storage. General purpose Storage account that supports storage of Blobs, Tables, Queues, Files and Disks.
 - StorageV2. General Purpose Version 2 (GPv2) Storage account that supports Blobs, Tables, Queues, Files, and Disks, with advanced features like data tiering.
 - BlobStorage. Blob Storage account which supports storage of Blobs only.
-The default value is Storage.
+- BlockBlobStorage. Block Blob Storage account which supports storage of Block Blobs only.
+- FileStorage. File Storage account which supports storage of Files only.
+The default value is StorageV2.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Storage, StorageV2, BlobStorage
+Accepted values: Storage, StorageV2, BlobStorage, BlockBlobStorage, FileStorage
 
 Required: False
 Position: Named
@@ -268,12 +270,13 @@ The acceptable values for this parameter are:
 - Standard_GRS. Geo-redundant storage.
 - Standard_RAGRS. Read access geo-redundant storage.
 - Premium_LRS. Premium locally-redundant storage.
+- Premium_ZRS. Premium zone-redundant storage.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases: StorageAccountType, AccountType, Type
-Accepted values: Standard_LRS, Standard_ZRS, Standard_GRS, Standard_RAGRS, Premium_LRS
+Accepted values: Standard_LRS, Standard_ZRS, Standard_GRS, Standard_RAGRS, Premium_LRS, Premium_ZRS
 
 Required: True
 Position: 2

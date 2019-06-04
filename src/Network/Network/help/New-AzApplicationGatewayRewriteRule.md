@@ -14,6 +14,8 @@ Creates a rewrite rule for an application gateway.
 
 ```
 New-AzApplicationGatewayRewriteRule -Name <String> -ActionSet <PSApplicationGatewayRewriteRuleActionSet>
+ [-RuleSequence <Int32>]
+ [-Condition <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRuleCondition]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,7 +26,7 @@ New-AzApplicationGatewayRewriteRule -Name <String> -ActionSet <PSApplicationGate
 
 ### Example 1 : Create a rewrite rule for an application gateway
 ```powershell
-PS C:\> $rule = New-AzApplicationGatewayRewriteRule -Name rule1 -ActionSet $action
+PS C:\> $rule = New-AzApplicationGatewayRewriteRule -Name rule1 -ActionSet $action -RuleSequence 101 -Condition $condition
 ```
 
 This command creates a rewrite rule named rule1 and stores the result in the variable named $rule.
@@ -40,6 +42,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Condition
+Condition for the rewrite rule to execute
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRuleCondition]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -70,6 +87,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuleSequence
+The rule ordering of this rewrite rule in the rewrite rule set
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

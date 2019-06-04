@@ -16,38 +16,55 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
 {
     using Interfaces;
 
-    public class MaximumFileSizeValidation : BaseNamespaceValidation
+    /// <summary>
+    /// Class MaximumFileSizeValidation.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations.NamespaceValidationBase" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations.NamespaceValidationBase" />
+    public class MaximumFileSizeValidation : NamespaceValidationBase
     {
         #region Fields and Properties
+        /// <summary>
+        /// The maximum file size in bytes
+        /// </summary>
         private readonly long _maxFileSizeInBytes;
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MaximumFileSizeValidation" /> class.
+        /// </summary>
+        /// <param name="configuration">The configuration.</param>
         public MaximumFileSizeValidation(IConfiguration configuration): base(configuration, "Files over the size limit", ValidationType.FileSize)
         {
-            this._maxFileSizeInBytes = configuration.MaximumFileSizeInBytes();
+            _maxFileSizeInBytes = configuration.MaximumFileSizeInBytes();
         }
         #endregion
 
         #region Protected methods
+        /// <summary>
+        /// Does the validate.
+        /// </summary>
+        /// <param name="node">The node.</param>
+        /// <returns>IValidationResult.</returns>
         protected override IValidationResult DoValidate(IFileInfo node)
         {
-            bool fileIsTooBig = node.Length > this._maxFileSizeInBytes;
+            bool fileIsTooBig = node.Length > _maxFileSizeInBytes;
 
             if (fileIsTooBig)
             {
                 return new ValidationResult
                 {
                     Result = Result.Fail,
-                    Description = $"File {node.Name} is too big. Maximum allowed file size is {this._maxFileSizeInBytes} bytes",
+                    Description = $"File {node.Name} is too big. Maximum allowed file size is {_maxFileSizeInBytes} bytes",
                     Level = ResultLevel.Error,
                     Path = node.FullName,
-                    Type = this.ValidationType,
-                    Kind = this.ValidationKind
+                    Type = ValidationType,
+                    Kind = ValidationKind
                 };
             }
 
-            return this.SuccessfulResult;
+            return SuccessfulResult;
         }
         #endregion
     }

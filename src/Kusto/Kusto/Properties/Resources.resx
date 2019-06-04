@@ -138,7 +138,13 @@
   <data name="KustoDatabaseExists" xml:space="preserve">
     <value>Cannot perform the requested operation because the specified database '{0}' exists.</value>
   </data>
+  <data name="ResourceGroupNotExist" xml:space="preserve">
+    <value>Cannot perform the requested operation because the specified Resource Group '{0}' doesn't exist.</value>
+  </data>
   <data name="KustoClusterNotExist" xml:space="preserve">
+    <value>Cannot perform the requested operation because the specified cluster '{0}' doesn't exist.</value>
+  </data>
+  <data name="KustoClusterExistsRegion" xml:space="preserve">
     <value>Cannot perform the requested operation because the specified cluster '{0}' exists in region {1}.</value>
   </data>
   <data name="KustoDatabaseNotExist" xml:space="preserve">

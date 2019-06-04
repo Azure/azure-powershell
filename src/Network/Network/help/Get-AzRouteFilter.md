@@ -31,10 +31,50 @@ The **Get-AzRouteFilter** cmdlet gets a route filter.
 
 ### Example 1
 ```powershell
-PS C:\> $rf = Get-AzRouteFilter -Name "RouteFilter01" -ResourceGroupName "ResourceGroup01"
+PS C:\> Get-AzRouteFilter -Name "RouteFilter01" -ResourceGroupName "ResourceGroup01"
+
+Name              : RouteFilter01
+ResourceGroupName : ResourceGroup01
+Location          : westus
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsof
+                    t.Network/routeFilters/RouteFilter01
+Etag              : W/"00000000-0000-0000-0000-000000000000"
+ProvisioningState : Succeeded
+Tags              :
+Rules             : []
+Peerings          : []
 ```
 
-This command gets the route filter named RouteFilter01 that belongs to the resource group named ResourceGroup01 and stores it in the $rf variable.
+This command gets the route filter named RouteFilter01 that belongs to the resource group named ResourceGroup01.
+
+### Example 2
+```powershell
+PS C:\> Get-AzRouteFilter -Name "RouteFilter*"
+
+Name              : RouteFilter01
+ResourceGroupName : ResourceGroup01
+Location          : westus
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsof
+                    t.Network/routeFilters/RouteFilter01
+Etag              : W/"00000000-0000-0000-0000-000000000000"
+ProvisioningState : Succeeded
+Tags              :
+Rules             : []
+Peerings          : []
+
+Name              : RouteFilter02
+ResourceGroupName : ResourceGroup01
+Location          : westus
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsof
+                    t.Network/routeFilters/RouteFilter02
+Etag              : W/"00000000-0000-0000-0000-000000000000"
+ProvisioningState : Succeeded
+Tags              :
+Rules             : []
+Peerings          : []
+```
+
+This command gets all route filters that start with "RouteFilter".
 
 ## PARAMETERS
 
@@ -80,7 +120,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -92,7 +132,7 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
@@ -107,7 +147,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -119,11 +159,11 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

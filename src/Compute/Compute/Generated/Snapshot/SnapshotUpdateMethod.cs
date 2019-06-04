@@ -61,12 +61,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 1,
+            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [Parameter(
             ParameterSetName = "FriendMethod",
-            Position = 1,
+            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
@@ -74,12 +74,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 2,
+            Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [Parameter(
             ParameterSetName = "FriendMethod",
-            Position = 2,
+            Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Compute/snapshots", "ResourceGroupName")]
@@ -88,14 +88,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 3,
+            Position = 2,
             Mandatory = true,
             ValueFromPipeline = true)]
         public PSSnapshotUpdate SnapshotUpdate { get; set; }
 
         [Parameter(
             ParameterSetName = "FriendMethod",
-            Position = 4,
+            Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = false,
             ValueFromPipeline = true)]

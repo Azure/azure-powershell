@@ -13,21 +13,34 @@ Creates an array of URL path mappings to a backend server pool.
 
 ## SYNTAX
 
-### SetByResourceId
+### BackendSetByResource (Default)
 ```
 New-AzApplicationGatewayUrlPathMapConfig -Name <String> -PathRules <PSApplicationGatewayPathRule[]>
- [-DefaultBackendAddressPoolId <String>] [-DefaultBackendHttpSettingsId <String>]
- [-DefaultRewriteRuleSetId <String>] [-DefaultRedirectConfigurationId <String>]
+ -DefaultBackendAddressPool <PSApplicationGatewayBackendAddressPool>
+ -DefaultBackendHttpSettings <PSApplicationGatewayBackendHttpSettings>
+ [-DefaultRewriteRuleSet <PSApplicationGatewayRewriteRuleSet>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### BackendSetByResourceId
+```
+New-AzApplicationGatewayUrlPathMapConfig -Name <String> -PathRules <PSApplicationGatewayPathRule[]>
+ -DefaultBackendAddressPoolId <String> -DefaultBackendHttpSettingsId <String>
+ [-DefaultRewriteRuleSetId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### RedirectSetByResource
+```
+New-AzApplicationGatewayUrlPathMapConfig -Name <String> -PathRules <PSApplicationGatewayPathRule[]>
+ [-DefaultRewriteRuleSet <PSApplicationGatewayRewriteRuleSet>]
+ -DefaultRedirectConfiguration <PSApplicationGatewayRedirectConfiguration>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### SetByResource
+### RedirectSetByResourceId
 ```
 New-AzApplicationGatewayUrlPathMapConfig -Name <String> -PathRules <PSApplicationGatewayPathRule[]>
- [-DefaultBackendAddressPool <PSApplicationGatewayBackendAddressPool>]
- [-DefaultBackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
- [-DefaultRewriteRuleSet <PSApplicationGatewayRewriteRuleSet>]
- [-DefaultRedirectConfiguration <PSApplicationGatewayRedirectConfiguration>]
+ [-DefaultRewriteRuleSetId <String>] -DefaultRedirectConfigurationId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -50,10 +63,10 @@ Specifies the default backend address pool to route in case none of the rules sp
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool
-Parameter Sets: SetByResource
+Parameter Sets: BackendSetByResource
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -65,10 +78,10 @@ Specifies the default backend address pool ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceId
+Parameter Sets: BackendSetByResourceId
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -80,10 +93,10 @@ Specifies the default backend HTTP settings to use in case none of the rules spe
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings
-Parameter Sets: SetByResource
+Parameter Sets: BackendSetByResource
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -95,10 +108,10 @@ Specifies the default backend HTTP settings ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceId
+Parameter Sets: BackendSetByResourceId
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -125,10 +138,10 @@ Application gateway default RedirectConfiguration
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRedirectConfiguration
-Parameter Sets: SetByResource
+Parameter Sets: RedirectSetByResource
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -140,10 +153,10 @@ ID of the application gateway default RedirectConfiguration
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceId
+Parameter Sets: RedirectSetByResourceId
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -155,7 +168,7 @@ Application gateway default rewrite rule set
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRuleSet
-Parameter Sets: SetByResource
+Parameter Sets: BackendSetByResource, RedirectSetByResource
 Aliases:
 
 Required: False
@@ -170,7 +183,7 @@ ID of the application gateway default rewrite rule set
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceId
+Parameter Sets: BackendSetByResourceId, RedirectSetByResourceId
 Aliases:
 
 Required: False

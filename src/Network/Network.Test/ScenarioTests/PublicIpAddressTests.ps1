@@ -53,6 +53,15 @@ function Test-PublicIpAddressCRUD
       Assert-AreEqual "Dynamic" $list[0].PublicIpAllocationMethod
       Assert-AreEqual "Succeeded" $list[0].ProvisioningState
       Assert-AreEqual $domainNameLabel $list[0].DnsSettings.DomainNameLabel
+
+      $list = Get-AzPublicIpAddress -ResourceGroupName "*"
+      Assert-True { $list.Count -ge 0 }
+
+      $list = Get-AzPublicIpAddress -Name "*"
+      Assert-True { $list.Count -ge 0 }
+
+      $list = Get-AzPublicIpAddress -ResourceGroupName "*" -Name "*"
+      Assert-True { $list.Count -ge 0 }
       
       # delete
       $job = Remove-AzPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force -AsJob

@@ -71,7 +71,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
             PSResourceGroup expected = new PSResourceGroup()
             {
                 ResourceGroupName = expectedParameters.ResourceGroupName,
-                Tags = expectedParameters.Tag
+                Tags = expectedParameters.Tag,
+                ManagedBy = "test"
             };
             resourcesClientMock.Setup(f => f.UpdatePSResourceGroup(It.IsAny<PSUpdateResourceGroupParameters>()))
                 .Returns(expected)

@@ -22,6 +22,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
+using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 {
@@ -88,7 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// <summary>
         /// Gets or sets the instance License Type
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             HelpMessage = "Determines which License Type to use. Possible values are BasePrice (with AHB discount) and LicenseIncluded (without AHB discount).")]
         [PSArgumentCompleter(Constants.LicenseTypeBasePrice, Constants.LicenseTypeLicenseIncluded)]
         public string LicenseType { get; set; }
@@ -96,7 +98,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// <summary>
         /// Gets or sets the Storage Size in GB for instance
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             HelpMessage = "Determines how much Storage size to associate with instance.")]
         [ValidateNotNullOrEmpty]
         public int StorageSizeInGB { get; set; }
@@ -143,10 +145,58 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// Gets or sets the instance collation
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The collation of the Azure SQL Managed Instance to use.")]
+            HelpMessage = "The collation of the instance to use.")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter(Constants.CollationSqlLatin1, Constants.CollationLatin1)]
         public string Collation { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether or not the public data endpoint is enabled.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Whether or not the public data endpoint is enabled for the instance.")]
+        public SwitchParameter PublicDataEndpointEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets connection type used for connecting to the instance.
+        /// Possible values include: 'Proxy', 'Redirect', 'Default'
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The connection type used for connecting to the instance.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter(ManagedInstanceProxyOverride.Proxy, ManagedInstanceProxyOverride.Redirect, ManagedInstanceProxyOverride.Default)]
+        public string ProxyOverride { get; set; }
+
+        /// <summary>
+        /// Gets or sets the instance time zone
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The time zone id for the instance to set. A list of time zone ids is exposed through the sys.time_zone_info (Transact-SQL) view.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Dateline Standard Time", "UTC-11", "Aleutian Standard Time", "Hawaiian Standard Time", "Marquesas Standard Time", "Alaskan Standard Time", "UTC-09",
+         "Pacific Standard Time (Mexico)", "UTC-08", "Pacific Standard Time", "US Mountain Standard Time", "Mountain Standard Time (Mexico)", "Mountain Standard Time",
+         "Central America Standard Time", "Central Standard Time", "Easter Island Standard Time", "Central Standard Time (Mexico)", "Canada Central Standard Time",
+         "SA Pacific Standard Time", "Eastern Standard Time (Mexico)", "Eastern Standard Time", "Haiti Standard Time", "Cuba Standard Time", "US Eastern Standard Time",
+         "Turks And Caicos Standard Time", "Paraguay Standard Time", "Atlantic Standard Time", "Venezuela Standard Time", "Central Brazilian Standard Time",
+         "SA Western Standard Time", "Pacific SA Standard Time", "Newfoundland Standard Time", "Tocantins Standard Time", "E. South America Standard Time",
+         "SA Eastern Standard Time", "Argentina Standard Time", "Greenland Standard Time", "Montevideo Standard Time", "Magallanes Standard Time", "Saint Pierre Standard Time",
+         "Bahia Standard Time", "UTC-02", "Mid-Atlantic Standard Time", "Azores Standard Time", "Cape Verde Standard Time", "UTC", "GMT Standard Time",
+         "Greenwich Standard Time", "W. Europe Standard Time", "Central Europe Standard Time", "Romance Standard Time", "Morocco Standard Time", "Sao Tome Standard Time",
+         "Central European Standard Time", "W. Central Africa Standard Time", "Jordan Standard Time", "GTB Standard Time", "Middle East Standard Time", "Egypt Standard Time",
+         "E. Europe Standard Time", "Syria Standard Time", "West Bank Standard Time", "South Africa Standard Time", "FLE Standard Time", "Israel Standard Time",
+         "Kaliningrad Standard Time", "Sudan Standard Time", "Libya Standard Time", "Namibia Standard Time", "Arabic Standard Time", "Turkey Standard Time",
+         "Arab Standard Time", "Belarus Standard Time", "Russian Standard Time", "E. Africa Standard Time", "Iran Standard Time", "Arabian Standard Time",
+         "Astrakhan Standard Time", "Azerbaijan Standard Time", "Russia Time Zone 3", "Mauritius Standard Time", "Saratov Standard Time", "Georgian Standard Time",
+         "Volgograd Standard Time", "Caucasus Standard Time", "Afghanistan Standard Time", "West Asia Standard Time", "Ekaterinburg Standard Time",
+         "Pakistan Standard Time", "India Standard Time", "Sri Lanka Standard Time", "Nepal Standard Time", "Central Asia Standard Time", "Bangladesh Standard Time",
+         "Omsk Standard Time", "Myanmar Standard Time", "SE Asia Standard Time", "Altai Standard Time", "W. Mongolia Standard Time", "North Asia Standard Time",
+         "N. Central Asia Standard Time", "Tomsk Standard Time", "China Standard Time", "North Asia East Standard Time", "Singapore Standard Time", "W. Australia Standard Time",
+         "Taipei Standard Time", "Ulaanbaatar Standard Time", "Aus Central W. Standard Time", "Transbaikal Standard Time", "Tokyo Standard Time", "North Korea Standard Time",
+         "Korea Standard Time", "Yakutsk Standard Time", "Cen. Australia Standard Time", "AUS Central Standard Time", "E. Australia Standard Time", "AUS Eastern Standard Time",
+         "West Pacific Standard Time", "Tasmania Standard Time", "Vladivostok Standard Time", "Lord Howe Standard Time", "Bougainville Standard Time", "Russia Time Zone 10",
+         "Magadan Standard Time", "Norfolk Standard Time", "Sakhalin Standard Time", "Central Pacific Standard Time", "Russia Time Zone 11", "New Zealand Standard Time", "UTC+12",
+         "Fiji Standard Time", "Kamchatka Standard Time", "Chatham Islands Standard Time", "UTC+13", "Tonga Standard Time", "Samoa Standard Time", "Line Islands Standard Time")]
+        public string TimezoneId { get; set; }
 
         /// <summary>
         /// Gets or sets the tags to associate with the instance
@@ -162,6 +212,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "Generate and assign an Azure Active Directory Identity for this instance for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed instance compute generation
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Dns Zone Partner Resource ID for the Sql Azure Managed Instance.")]
+        [ResourceIdCompleter("Microsoft.Sql/managedInstances")]
+        public string DnsZonePartner { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -221,7 +279,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             }
             else if (string.Equals(this.ParameterSetName, NewByEditionAndComputeGenerationParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
-                string editionShort = Edition.Equals(Constants.GeneralPurposeEdition) ? "GP" : Edition.Equals(Constants.BusinessCriticalEdition) ? "BC" : "Unknown";
+                string editionShort = AzureSqlManagedInstanceAdapter.GetInstanceSkuPrefix(Edition);
                 Sku.Name = editionShort + "_" + ComputeGeneration;
             }
 
@@ -235,11 +293,19 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
                 Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
                 LicenseType = this.LicenseType,
-                StorageSizeInGB = this.StorageSizeInGB,
+                // `-StorageSizeInGB 0` as a parameter to this cmdlet means "use default".
+                // For non-MI database, we can just pass in 0 and the server will treat 0 as default.
+                // However this is (currently) not the case for MI. We need to convert the 0 to null
+                // here in client before sending to the server.
+                StorageSizeInGB = SqlSkuUtils.ValueIfNonZero(this.StorageSizeInGB),
                 SubnetId = this.SubnetId,
                 VCores = this.VCore,
                 Sku = Sku,
-                Collation = this.Collation
+                Collation = this.Collation,
+                PublicDataEndpointEnabled = this.PublicDataEndpointEnabled,
+                ProxyOverride = this.ProxyOverride,
+                TimezoneId = this.TimezoneId,
+                DnsZonePartner = this.DnsZonePartner
             });
             return newEntity;
         }

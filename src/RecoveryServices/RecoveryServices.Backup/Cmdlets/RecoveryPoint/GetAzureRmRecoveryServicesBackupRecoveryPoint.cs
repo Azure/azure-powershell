@@ -12,20 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
     /// Gets recovery points created for the provided item protected by the recovery services vault
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupRecoveryPoint",DefaultParameterSetName = NoFilterParameterSet),OutputType(typeof(RecoveryPointBase))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupRecoveryPoint", DefaultParameterSetName = NoFilterParameterSet), OutputType(typeof(RecoveryPointBase))]
     public class GetAzureRmRecoveryServicesBackupRecoveryPoint : RSBackupVaultCmdletBase
     {
         internal const string DateTimeFilterParameterSet = "DateTimeFilter";
@@ -137,8 +137,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                     //User want list of RPs between given time range
                     WriteDebug(string.Format("ParameterSet = DateTimeFilterParameterSet. \n" +
-                        "StartDate = {0} EndDate = {1}, Item.Name = {2}, Item.ContainerName = {3}",
-                        rangeStart, rangeEnd, Item.Name, Item.ContainerName));
+                       "StartDate = {0} EndDate = {1}, Item.Name = {2}, Item.ContainerName = {3}",
+                       rangeStart, rangeEnd, Item.Name, Item.ContainerName));
                     if (rangeStart >= rangeEnd)
                     {
                         throw new ArgumentException(Resources.RecoveryPointEndDateShouldBeGreater);
@@ -157,6 +157,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                     providerParameters.Add(RecoveryPointParams.StartDate, rangeStart);
                     providerParameters.Add(RecoveryPointParams.EndDate, rangeEnd);
+                    if (string.Compare(Item.BackupManagementType.ToString(),
+                        BackupManagementType.AzureWorkload.ToString()) == 0)
+                    {
+                        providerParameters.Add(RecoveryPointParams.RestorePointQueryType, "FullAndDifferential");
+                    }
+
                     PsBackupProviderManager providerManager =
                         new PsBackupProviderManager(providerParameters, ServiceClientAdapter);
                     IPsBackupProvider psBackupProvider =

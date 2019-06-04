@@ -26,11 +26,6 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Services
     public class SqlSecureConnectionAdapter
     {
         /// <summary>
-        /// Gets or sets the Azure subscription
-        /// </summary>
-        private IAzureSubscription Subscription { get; set; }
-
-        /// <summary>
         /// The end points communicator used by this adapter
         /// </summary>
         private SecureConnectionEndpointsCommunicator Communicator { get; set; }
@@ -43,7 +38,6 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Services
         public SqlSecureConnectionAdapter(IAzureContext context)
         {
             Context = context;
-            Subscription = context.Subscription;
             Communicator = new SecureConnectionEndpointsCommunicator(Context);
         }
 
