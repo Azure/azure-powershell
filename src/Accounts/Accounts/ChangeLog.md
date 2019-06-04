@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Test update to Accounts
 
 ## Version 1.5.2
 * Update Authentication Library to fix ADFS issues with username/password auth
