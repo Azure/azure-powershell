@@ -73,6 +73,8 @@ New-AzStorageContext [-Local] [<CommonParameters>]
 
 ## DESCRIPTION
 The **New-AzStorageContext** cmdlet creates an Azure Storage context.
+The default Authentication of a Storage Context is OAuth (Azure AD), if only input Storage account name.
+See details of authentication of the Storage Service in https://docs.microsoft.com/en-us/rest/api/storageservices/authorization-for-the-azure-storage-services.
 
 ## EXAMPLES
 
@@ -159,7 +161,7 @@ PS C:\>Connect-AzAccount
 PS C:\> $Context = New-AzStorageContext -StorageAccountName "myaccountname" -UseConnectedAccount
 ```
 
-This command creates a context by using the OAuth Authentication.
+This command creates a context by using the OAuth (Azure AD)  Authentication.
 
 ## PARAMETERS
 
@@ -316,7 +318,7 @@ Accept wildcard characters: False
 ```
 
 ### -UseConnectedAccount
-Indicates that this cmdlet creates an Azure Storage context with OAuth Authentication.
+Indicates that this cmdlet creates an Azure Storage context with OAuth (Azure AD) Authentication.
 The cmdlet will use OAuth Authentication by default, when other anthentication not specified.
 
 ```yaml

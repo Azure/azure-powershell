@@ -21,7 +21,7 @@ function Test-EndpointCrudAndAction
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "Standard_Verizon"
+    $profileSku = "Standard_Microsoft"
     $createdProfile = New-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
@@ -31,29 +31,11 @@ function Test-EndpointCrudAndAction
     $nameAvailability = Get-AzCdnEndpointNameAvailability -EndpointName $endpointName
     Assert-True{$nameAvailability.NameAvailable}
 
-		$description = 'Sample delivery policy'
-	$conditions  = New-Object 'Collections.Generic.List[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition]'
-	$actions = New-Object 'Collections.Generic.List[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction]'
-
-	$conditions.Add($(
-		New-Object  -TypeName Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleUrlPathCondition -Prop(@{'Parameters' = New-Object Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSUrlPathConditionParameters -Prop(@{'Path'= '/folder' ; 'MatchType' = 'Literal'})})
-	))
-
-	$actions.Add($(
-		New-Object -TypeName Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCacheExpirationAction -Prop(@{'Parameters' = New-Object Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSCacheExpirationActionParameters -Prop(@{'CacheBehavior'= 'Override'; 'CacheDuration'= '10:10:09'})})
-	))
-
-	$rules = New-Object 'Collections.Generic.List[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule]'
-
-	$rules.Add($(
-		New-Object Microsoft.Azure.Commands.Cdn.Models.Endpoint.PsDeliveryRule -Prop(@{
-			'Order' = 1;
-			'Conditions' = $conditions
-			'Actions' = $actions
-		})
-	))
-
-	$deliveryPolicy = New-Object -TypeName Microsoft.Azure.Commands.Cdn.Models.Endpoint.PsDeliveryPolicy -Prop(@{'Description' = $description; 'Rules' = $rules})
+	$description = 'Sample delivery policy'
+    $action = New-AzCdnDeliveryRuleAction -HeaderActionType ModifyResponseHeader -Action Append -HeaderName "Access-Control-Allow-Origin" -Value "*"
+    $condition = New-AzCdnDeliveryRuleCondition -MatchVariable UrlPath -Operator Contains -MatchValue "abc"
+    $deliveryRule = New-AzCdnDeliveryRule -Name "Rule1" -Order 1 -Condition $condition -Action $action
+    $deliveryPolicy = New-AzCdnDeliveryPolicy -Description $description -Rule $deliveryRule
 
     $createdEndpoint = New-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName -DeliveryPolicy $deliveryPolicy
 	Assert-AreEqual $description $createdEndpoint.DeliveryPolicy.Description
@@ -77,12 +59,6 @@ function Test-EndpointCrudAndAction
     Assert-True{$started}
     Assert-AreEqual "Running" $startedEndpoint.ResourceState
 
-    $purged = Unpublish-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -PurgeContent @("/pic1.jpg", "/pic2.jpg") -PassThru
-    Assert-True{$purged}
-
-    $loaded = Publish-AzCdnEndpointContent -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -LoadContent @("/pic1.jpg", "/pic2.jpg") -PassThru
-    Assert-True{$loaded}
-
     $validateResult = Test-AzCdnCustomDomain -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -CustomDomainHostName "unverifiedcustomdomain.com"
     Assert-False{$validateResult.CustomDomainValidated}
 
@@ -103,7 +79,7 @@ function Test-EndpointCrudAndActionWithPiping
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "Standard_Verizon"
+    $profileSku = "Standard_Microsoft"
     $createdProfile = New-AzCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
 
     $endpointName = getAssetName
@@ -112,33 +88,8 @@ function Test-EndpointCrudAndActionWithPiping
 
     $nameAvailability = Get-AzCdnEndpointNameAvailability -EndpointName $endpointName
     Assert-True{$nameAvailability.NameAvailable}
+    $createdEndpoint = New-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName
 
-	$description = 'Sample delivery policy'
-	$conditions  = New-Object 'Collections.Generic.List[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition]'
-	$actions = New-Object 'Collections.Generic.List[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction]'
-
-	$conditions.Add($(
-		New-Object  -TypeName Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleUrlPathCondition -Prop(@{'Parameters' = New-Object Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSUrlPathConditionParameters -Prop(@{'Path'= '/folder' ; 'MatchType' = 'Literal'})})
-	))
-
-	$actions.Add($(
-		New-Object -TypeName Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCacheExpirationAction -Prop(@{'Parameters' = New-Object Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSCacheExpirationActionParameters -Prop(@{'CacheBehavior'= 'Override'; 'CacheDuration'= '10:10:09'})})
-	))
-
-	$rules = New-Object 'Collections.Generic.List[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule]'
-
-	$rules.Add($(
-		New-Object Microsoft.Azure.Commands.Cdn.Models.Endpoint.PsDeliveryRule -Prop(@{
-			'Order' = 1;
-			'Conditions' = $conditions;
-			'Actions' = $actions
-		})
-	))
-
-	$deliveryPolicy = New-Object -TypeName Microsoft.Azure.Commands.Cdn.Models.Endpoint.PsDeliveryPolicy -Prop(@{'Description' = $description; 'Rules' = $rules})
-
-    $createdEndpoint = New-AzCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName -DeliveryPolicy $deliveryPolicy
-	Assert-AreEqual $description $createdEndpoint.DeliveryPolicy.Description
     Assert-AreEqual $endpointName $createdEndpoint.Name
     Assert-AreEqual $profileName $createdEndpoint.ProfileName
     Assert-AreEqual $resourceGroup.ResourceGroupName $createdEndpoint.ResourceGroupName
@@ -158,12 +109,6 @@ function Test-EndpointCrudAndActionWithPiping
     Assert-True{$started}
     Assert-AreEqual "Running" $startedEndpoint.ResourceState
 
-    $purged = Unpublish-AzCdnEndpointContent -CdnEndpoint $createdEndpoint -PurgeContent @("/pic1.jpg", "/pic2.jpg") -PassThru
-    Assert-True{$purged}
-
-    $loaded = Publish-AzCdnEndpointContent -CdnEndpoint $createdEndpoint -LoadContent @("/pic1.jpg", "/pic2.jpg") -PassThru
-    Assert-True{$loaded}
-
     $validateResultbyPiping = Test-AzCdnCustomDomain -CdnEndpoint $createdEndpoint -CustomDomainHostName "unverifiedcustomdomain.com"
     Assert-False{$validateResultbyPiping.CustomDomainValidated}
 
@@ -171,27 +116,13 @@ function Test-EndpointCrudAndActionWithPiping
     $startedEndpoint.OriginPath = "/pictures"
     $startedEndpoint.QueryStringCachingBehavior = "UseQueryString"
 
-	$extensions = New-Object 'System.Collections.Generic.List[String]'
-	$extensions.Add('jpg')
-	$extensions.Add('mp4')
-	$newConditions  = New-Object 'Collections.Generic.List[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition]'
-	$newConditions.Add($(
-		New-Object  -TypeName Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleUrlFileExtensionCondition -Prop(@{'Parameters' = New-Object Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSUrlFileExtensionConditionParameters -Prop(@{'Extensions'= $extensions})})
-	))
+    $description = "Updated Delivery Policy"
+    $action = New-AzCdnDeliveryRuleAction -HeaderActionType ModifyResponseHeader -Action Append -HeaderName "Access-Control-Allow-Origin" -Value "*"
+    $condition = New-AzCdnDeliveryRuleCondition -MatchVariable UrlPath -Operator Contains -MatchValue "abc"
+    $newRule = New-AzCdnDeliveryRule -Name "Rule1" -Order 1 -Condition $condition -Action $action
+    $deliveryPolicy = New-AzCdnDeliveryPolicy -Description $description -Rule $newRule
 
-
-	$newRules = New-Object 'Collections.Generic.List[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule]'
-
-	$newRules.Add($(
-		New-Object Microsoft.Azure.Commands.Cdn.Models.Endpoint.PsDeliveryRule -Prop(@{
-			'Order' = 1;
-			'Conditions' = $newConditions;
-			'Actions' = $actions
-		})
-	))
-
-	$startedEndpoint.DeliveryPolicy.Description = "Updated Delivery Policy"
-	$startedEndpoint.DeliveryPolicy.Rules = $newRules
+	$startedEndpoint.DeliveryPolicy = $deliveryPolicy
 
     $updatedEndpoint = Set-AzCdnEndpoint -CdnEndpoint $startedEndpoint
     Assert-AreEqual $startedEndpoint.OriginHostHeader $updatedEndpoint.OriginHostHeader
