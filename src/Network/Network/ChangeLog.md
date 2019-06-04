@@ -18,6 +18,9 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+* Add support for Virtual Network Gateway Resource
+    - New cmdlets
+        - Get-AzVirtualNetworkGatewayVpnClientConnectionHealth
 * Add AvailablePrivateEndpointType
     - New cmdlets 
     	- Get-AzAvailablePrivateEndpointType
