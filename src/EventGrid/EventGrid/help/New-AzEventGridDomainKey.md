@@ -20,14 +20,14 @@ New-AzEventGridDomainKey [-ResourceGroupName] <String> [-DomainName] <String> [-
 
 ### DomainInputObjectParameterSet
 ```
-New-AzEventGridDomainKey [-Name] <String> [-InputObject] <PSDomain> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzEventGridDomainKey [-Name] <String> [-DomainInputObject] <PSDomain>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
 ```
-New-AzEventGridDomainKey [-Name] <String> [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzEventGridDomainKey [-Name] <String> [-DomainResourceId] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,6 +88,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DomainInputObject
+EventGrid Domain object.
+
+```yaml
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomain
+Parameter Sets: DomainInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DomainName
 EventGrid domain name.
 
@@ -103,18 +118,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InputObject
-EventGrid Domain object.
+### -DomainResourceId
+Resource Identifier representing the Event Grid Domain.
 
 ```yaml
-Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomain
-Parameter Sets: DomainInputObjectParameterSet
+Type: System.String
+Parameter Sets: ResourceIdEventSubscriptionParameterSet
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -140,21 +155,6 @@ The name of the resource group.
 Type: System.String
 Parameter Sets: DomainNameParameterSet
 Aliases: ResourceGroup
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Resource Identifier representing the Event Grid Domain.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceIdEventSubscriptionParameterSet
-Aliases:
 
 Required: True
 Position: 0

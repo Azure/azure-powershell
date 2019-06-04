@@ -27,13 +27,9 @@ function TopicTests {
     $secondResourceGroup = Get-ResourceGroupName
     $subscriptionId = Get-SubscriptionId
 
-    Write-Debug "Creating first resource group"
-    Write-Debug "ResourceGroup name : $resourceGroupName"
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-ResourceGroup $resourceGroupName $location
 
-    Write-Debug "Creating second resource group"
-    Write-Debug "ResourceGroup name : $secondResourceGroup"
-    New-AzureRmResourceGroup -Name $secondResourceGroup -Location $location -Force
+    New-ResourceGroup $secondResourceGroup $location
 
     try
     {
@@ -113,11 +109,8 @@ function TopicTests {
     }
     finally
     {
-        Write-Debug "Deleting resourcegroup $resourceGroupName"
-        Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
-
-        Write-Debug "Deleting resourcegroup $secondResourceGroup"
-        Remove-AzureRmResourceGroup -Name $secondResourceGroup -Force
+        Remove-ResourceGroup $resourceGroupName
+        Remove-ResourceGroup $secondResourceGroup
     }
 }
 
@@ -132,9 +125,7 @@ function TopicSetTests {
     $resourceGroupName = Get-ResourceGroupName
     $subscriptionId = Get-SubscriptionId
 
-    Write-Debug "Creating resource group"
-    Write-Debug "ResourceGroup name : $resourceGroupName"
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-ResourceGroup $resourceGroupName $location
 
     try
     {
@@ -174,8 +165,7 @@ function TopicSetTests {
     }
     finally
     {
-        Write-Debug "Deleting resourcegroup $resourceGroupName"
-        Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+        Remove-ResourceGroup $resourceGroupName
     }
 }
 
@@ -190,9 +180,7 @@ function TopicGetKeyTests {
     $resourceGroupName = Get-ResourceGroupName
     $subscriptionId = Get-SubscriptionId
 
-    Write-Debug "Creating resource group"
-    Write-Debug "ResourceGroup name : $resourceGroupName"
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-ResourceGroup $resourceGroupName $location
 
     try
     {
@@ -217,8 +205,7 @@ function TopicGetKeyTests {
     }
     finally
     {
-        Write-Debug "Deleting resourcegroup $resourceGroupName"
-        Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+        Remove-ResourceGroup $resourceGroupName
     }
 }
 
@@ -233,9 +220,7 @@ function TopicNewKeyTests {
     $resourceGroupName = Get-ResourceGroupName
     $subscriptionId = Get-SubscriptionId
 
-    Write-Debug "Creating resource group"
-    Write-Debug "ResourceGroup name : $resourceGroupName"
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-ResourceGroup $resourceGroupName $location
 
     try
     {
@@ -260,7 +245,6 @@ function TopicNewKeyTests {
     }
     finally
     {
-        Write-Debug "Deleting resourcegroup $resourceGroupName"
-        Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+        Remove-ResourceGroup $resourceGroupName
     }
 }

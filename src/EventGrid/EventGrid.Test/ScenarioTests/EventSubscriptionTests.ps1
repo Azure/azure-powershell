@@ -28,11 +28,13 @@ function EventSubscriptionTests_CustomTopic {
     $resourceGroupName = Get-ResourceGroupName
     $eventSubscriptionEndpoint = Get-EventSubscriptionWebhookEndpoint
     $eventSubscriptionBaseEndpoint = Get-EventSubscriptionWebhookBaseEndpoint
-    $eventSubscriptionServiceBusQueueResourceId = Get-ServiceBusQueueResourceId
 
-    Write-Debug "Creating resource group"
-    Write-Debug "ResourceGroup name : $resourceGroupName"
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-ResourceGroup $resourceGroupName $location
+    $sbNamespaceName = Get-ServiceBusNameSpaceName
+    $sbName = Get-ServiceBusName
+
+    New-ServiceBusQueue $ResourceGroupName $sbNamespaceName $sbName $Location
+    $eventSubscriptionServiceBusQueueResourceId = Get-ServiceBusQueueResourceId $ResourceGroupName $sbNamespaceName $sbName
 
     try
     {
@@ -152,8 +154,8 @@ function EventSubscriptionTests_CustomTopic {
     }
     finally
     {
-        Write-Debug "Deleting resourcegroup $resourceGroupName"
-        Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+        Remove-ServiceBusResources $ResourceGroupName $sbNamespaceName $sbName
+        Remove-ResourceGroup $resourceGroupName
     }
 }
 
@@ -170,9 +172,7 @@ function EventSubscriptionTests_CustomTopic2 {
     $eventSubscriptionEndpoint = Get-EventSubscriptionWebhookEndpoint
     $eventSubscriptionBaseEndpoint = Get-EventSubscriptionWebhookBaseEndpoint
 
-    Write-Host "Creating resource group"
-    Write-Host "ResourceGroup name : $resourceGroupName"
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-ResourceGroup $resourceGroupName $location
 
     try
     {
@@ -203,8 +203,7 @@ function EventSubscriptionTests_CustomTopic2 {
     }
     finally
     {
-        Write-Debug "Deleting resourcegroup $resourceGroupName"
-        Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+        Remove-ResourceGroup $resourceGroupName
     }
 }
 
@@ -221,9 +220,7 @@ function EventSubscriptionTests_ResourceGroup {
     $resourceGroupName = Get-ResourceGroupName
     $eventSubscriptionEndpoint = Get-EventSubscriptionWebhookEndpoint
 
-    Write-Debug "Creating resource group"
-    Write-Debug "ResourceGroup name : $resourceGroupName"
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-ResourceGroup $resourceGroupName  $location
 
     try
     {
@@ -290,8 +287,7 @@ function EventSubscriptionTests_ResourceGroup {
     }
     finally
     {
-        Write-Debug "Deleting resourcegroup $resourceGroupName"
-        Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+        Remove-ResourceGroup $resourceGroupName
     }
 }
 
@@ -307,11 +303,31 @@ function EventSubscriptionTests_Subscription {
     $eventSubscriptionName3 = Get-EventSubscriptionName
     $eventSubscriptionName4 = Get-EventSubscriptionName
 
+    $location = Get-LocationForEventGrid
+    $resourceGroupName = Get-ResourceGroupName
+
+    New-ResourceGroup $resourceGroupName $location
+
+    $storageAccountName = Get-StorageAccountName
+    $storageQueueName = Get-StorageQueueName
+
+    New-StorageQueue $ResourceGroupName $storageAccountName $storageQueueName $Location
+    $eventSubscriptionStorageDestinationResourceId = Get-StorageDestinationResourceId $ResourceGroupName $storageAccountName $storageQueueName
+
+    $hcNamespaceName = Get-HybridConnNameSpaceName
+    $hcName = Get-HybridConnName
+
+    New-HybridConnection $ResourceGroupName $hcNamespaceName $hcName $Location
+    $eventSubscriptionHybridConnectionResourceId = Get-HybridConnectionResourceId $ResourceGroupName $hcNamespaceName $hcName
+
+    $sbNamespaceName = Get-ServiceBusNameSpaceName
+    $sbName = Get-ServiceBusName
+
+    New-ServiceBusQueue $ResourceGroupName $sbNamespaceName $sbName $Location
+    $eventSubscriptionServiceBusQueueResourceId = Get-ServiceBusQueueResourceId $ResourceGroupName $sbNamespaceName $sbName
+
     $eventSubscriptionEndpoint = Get-EventSubscriptionWebhookEndpoint
     $eventSubscriptionBaseEndpoint = Get-EventSubscriptionWebhookBaseEndpoint
-    $eventSubscriptionStorageDestinationResourceId = Get-StorageDestinationResourceId
-    $eventSubscriptionHybridConnectionResourceId = Get-HybridConnectionResourceId
-    # $eventSubscriptionServiceBusQueueResourceId = Get-ServiceBusQueueResourceId
 
     try
     {
@@ -329,10 +345,10 @@ function EventSubscriptionTests_Subscription {
         $result = New-AzEventGridSubscription -ResourceId "/subscriptions/$subscriptionId" -Endpoint $eventSubscriptionHybridConnectionResourceId -EndpointType "hYbridConNECtIon" -EventSubscriptionName $eventSubscriptionName3 -IncludedEventType $includedEventTypes
         Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
-        # Write-Debug "Creating a new EventSubscription $eventSubscriptionName4 to subscription $subscriptionId using Service Bus Queue as a destination"
-        # $includedEventTypes = "All"
-        # $result = New-AzEventGridSubscription -ResourceId "/subscriptions/$subscriptionId" -Endpoint $eventSubscriptionServiceBusQueueResourceId -EndpointType "servicebusqueue" -EventSubscriptionName $eventSubscriptionName4 -IncludedEventType $includedEventTypes
-        # Assert-True {$result.ProvisioningState -eq "Succeeded"}
+        Write-Debug "Creating a new EventSubscription $eventSubscriptionName4 to subscription $subscriptionId using Service Bus Queue as a destination"
+        $includedEventTypes = "Microsoft.Resources.ResourceWriteFailure", "Microsoft.Resources.ResourceWriteSuccess"
+        $result = New-AzEventGridSubscription -ResourceId "/subscriptions/$subscriptionId" -Endpoint $eventSubscriptionServiceBusQueueResourceId -EndpointType "servicebusqueue" -EventSubscriptionName $eventSubscriptionName4 -IncludedEventType $includedEventTypes
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
         Write-Debug "Getting the created event subscription $eventSubscriptionName"
         $result = Get-AzEventGridSubscription -ResourceId "/subscriptions/$subscriptionId" -EventSubscriptionName $eventSubscriptionName -IncludeFullEndpointUrl
@@ -362,7 +378,16 @@ function EventSubscriptionTests_Subscription {
         Remove-AzEventGridSubscription -ResourceId "/subscriptions/$subscriptionId" -EventSubscriptionName $eventSubscriptionName2
 
         Write-Debug "Deleting event subscription: $eventSubscriptionName3"
-        Remove-AzEventGridSubscription -ResourceId "/subscriptions/$subscriptionId" -EventSubscriptionName $eventSubscriptionName2
+        Remove-AzEventGridSubscription -ResourceId "/subscriptions/$subscriptionId" -EventSubscriptionName $eventSubscriptionName3
+
+        Write-Debug "Deleting event subscription: $eventSubscriptionName4"
+        Remove-AzEventGridSubscription -ResourceId "/subscriptions/$subscriptionId" -EventSubscriptionName $eventSubscriptionName4
+
+        Remove-HybridConnectionResources $ResourceGroupName $hcNamespaceName $hcName
+
+        Remove-ServiceBusResources $ResourceGroupName $sbNamespaceName $sbName
+        Remove-StorageResources $ResourceGroupName $storageAccountName $storageQueueName
+        Remove-ResourceGroup $resourceGroupName
     }
 }
 
@@ -381,9 +406,7 @@ function EventSubscriptionTests_Resource {
     $eventSubscriptionEndpoint = Get-EventSubscriptionWebhookEndpoint
     $eventSubscriptionBaseEndpoint = Get-EventSubscriptionWebhookBaseEndpoint
 
-    Write-Debug "Creating resource group"
-    Write-Debug "ResourceGroup name : $resourceGroupName"
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-ResourceGroup $resourceGroupName $location
 
     try
     {
@@ -453,8 +476,7 @@ function EventSubscriptionTests_Resource {
     }
     finally
     {
-        Write-Debug "Deleting resourcegroup $resourceGroupName"
-        Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+        Remove-ResourceGroup $resourceGroupName
     }
 }
 
@@ -470,9 +492,7 @@ function EventSubscriptionTests_ResourceGroup2 {
     $resourceGroupName = Get-ResourceGroupName
     $eventSubscriptionEndpoint = Get-EventSubscriptionWebhookEndpoint
 
-    Write-Debug "Creating resource group"
-    Write-Debug "ResourceGroup name : $resourceGroupName"
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-ResourceGroup $resourceGroupName $location
 
     try
     {
@@ -506,8 +526,7 @@ function EventSubscriptionTests_ResourceGroup2 {
     }
     finally
     {
-        Write-Debug "Deleting resourcegroup $resourceGroupName"
-        Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+        Remove-ResourceGroup $resourceGroupName
     }
 }
 
@@ -564,13 +583,16 @@ function EventSubscriptionTests_Deadletter {
     $subscriptionId = Get-SubscriptionId
     $eventSubscriptionName = Get-EventSubscriptionName
     $resourceGroupName = Get-ResourceGroupName
-    $deadletterResourceId = Get-DeadletterResourceId
     $eventSubscriptionEndpoint = Get-EventSubscriptionWebhookEndpoint
     $eventSubscriptionEndpoint = Get-EventSubscriptionWebhookEndpoint
 
-    Write-Host "Creating resource group"
-    Write-Host "ResourceGroup name : $resourceGroupName"
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-ResourceGroup $resourceGroupName $location
+
+    $storageAccountName = Get-StorageAccountName
+    $storageContainerName = Get-StorageBlobName
+
+    New-StorageBlob $ResourceGroupName $storageAccountName $storageContainerName $location
+    $deadletterResourceId = Get-DeadletterResourceId $resourceGroupName $storageAccountName $storageContainerName
 
     try
     {
@@ -626,8 +648,8 @@ function EventSubscriptionTests_Deadletter {
     }
     finally
     {
-        Write-Debug "Deleting resourcegroup $resourceGroupName"
-        Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+        Remove-StorageContainerResources $ResourceGroupName $storageAccountName $storageContainerName
+        Remove-ResourceGroup $resourceGroupName
     }
 }
 
@@ -647,9 +669,7 @@ function EventSubscriptionTests_Domains {
     $eventSubscriptionName3 = Get-EventSubscriptionName
     $eventSubscriptionName4 = Get-EventSubscriptionName
 
-    Write-Debug "Creating resource group"
-    Write-Debug "ResourceGroup name : $resourceGroupName"
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-ResourceGroup $resourceGroupName $location
 
     try
     {
@@ -851,8 +871,7 @@ function EventSubscriptionTests_Domains {
     }
     finally
     {
-        Write-Debug "Deleting resourcegroup $resourceGroupName"
-        Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+        Remove-ResourceGroup $resourceGroupName
     }
 }
 
@@ -873,9 +892,7 @@ function EventSubscriptionTests_DomainTopics {
     $eventSubscriptionName3 = Get-EventSubscriptionName
     $eventSubscriptionName4 = Get-EventSubscriptionName
 
-    Write-Debug "Creating resource group"
-    Write-Debug "ResourceGroup name : $resourceGroupName"
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-ResourceGroup $resourceGroupName $location
 
     try
     {
@@ -990,7 +1007,6 @@ function EventSubscriptionTests_DomainTopics {
     }
     finally
     {
-        Write-Debug "Deleting resourcegroup $resourceGroupName"
-        Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+        Remove-ResourceGroup $resourceGroupName
     }
 }
