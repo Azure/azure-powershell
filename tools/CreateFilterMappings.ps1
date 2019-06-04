@@ -148,11 +148,11 @@ function Add-ProjectDependencies
         [string]$SolutionPath
     )
 
-    $CommonProjectsToIgnore = @( "Accounts", "Authentication", "Authentication.ResourceManager", "Authenticators", "ScenarioTest.ResourceManager", "TestFx", "Tests" )
+    $CommonProjectsToIgnore = @( "Authentication", "Authentication.ResourceManager", "Authenticators", "ScenarioTest.ResourceManager", "TestFx", "Tests" )
 
     $ProjectDependencies = @()
     $Content = Get-Content -Path $SolutionPath
-    $Content | Select-String -Pattern "`"[a-zA-Z.]*`"" | ForEach-Object { $_.Matches[0].Value.Trim('"') } | Where-Object { $CommonProjectsToIgnore -notcontains $_ } | Where-Object { $ProjectDependencies += $_ }
+    $Content | Select-String -Pattern "`"[a-zA-Z.]*`"" | ForEach-Object { $_.Matches[0].Value.Trim('"') } | Where-Object { $CommonProjectsToIgnore -notcontains $_ } | ForEach-Object { $ProjectDependencies += $_ }
     $Mappings[$SolutionPath] = $ProjectDependencies
     return $Mappings
 }
@@ -271,7 +271,11 @@ function Add-CsprojMappings
             {
                 foreach ($ReferencedProject in $Script:SolutionToProjectMappings[$Solution])
                 {
-                    $Values.Add($Script:ProjectToFullPathMappings[$ReferencedProject]) | Out-Null
+                    $TempValue = $Script:ProjectToFullPathMappings[$ReferencedProject]
+                    if (-not [string]::IsNullOrEmpty($TempValue))
+                    {
+                        $Values.Add($TempValue) | Out-Null
+                    }
                 }
             }
         }
