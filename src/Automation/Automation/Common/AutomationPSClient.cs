@@ -680,7 +680,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
             using (var request = new RequestSettings(this.automationManagementClient))
             {
-                this.automationManagementClient.RunbookDraft.Publish(resourceGroupName, automationAccountName, runbookName);
+                this.automationManagementClient.Runbook.Publish(resourceGroupName, automationAccountName, runbookName);
 
                 return this.GetRunbook(resourceGroupName, automationAccountName, runbookName);
             }

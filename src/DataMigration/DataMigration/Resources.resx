@@ -207,4 +207,7 @@
   <data name="SKUDeprecationWarningMessage" xml:space="preserve">
     <value>The {0} SKU in service {1} is marked for deprecation and will be discontinued from 08/31/2018.</value>
   </data>
+  <data name="createAadApp" xml:space="preserve">
+    <value>Create Azure Active Directory App</value>
+  </data>
 </root>

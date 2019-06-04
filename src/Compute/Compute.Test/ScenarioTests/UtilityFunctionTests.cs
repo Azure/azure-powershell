@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using Xunit;
@@ -22,12 +21,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class UtilityFunctionTests
     {
-        XunitTracingInterceptor _logger;
-
         public UtilityFunctionTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]

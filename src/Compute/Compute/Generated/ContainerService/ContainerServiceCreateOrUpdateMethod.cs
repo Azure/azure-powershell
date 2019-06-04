@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 1,
+            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
@@ -65,14 +65,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 2,
+            Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 3,
+            Position = 2,
             Mandatory = true,
             ValueFromPipeline = true)]
         public PSContainerService ContainerService { get; set; }
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 1,
+            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
@@ -115,14 +115,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 2,
+            Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 3,
+            Position = 2,
             Mandatory = true,
             ValueFromPipeline = true)]
         public PSContainerService ContainerService { get; set; }

@@ -19,15 +19,16 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -49,13 +50,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         case "ResourceIdParameter":
                             resourceGroupName = GetResourceGroupName(this.ResourceId);
-                            vmScaleSetName = GetResourceName(this.ResourceId, "Microsoft.Compute/VirtualMachineScaleSets", "virtualMachines");
-                            instanceId = GetInstanceId(this.ResourceId, "Microsoft.Compute/VirtualMachineScaleSets", "virtualMachines");
+                            vmScaleSetName = GetResourceName(this.ResourceId, "Microsoft.Compute/virtualMachineScaleSets", "virtualMachines");
+                            instanceId = GetInstanceId(this.ResourceId, "Microsoft.Compute/virtualMachineScaleSets", "virtualMachines");
                             break;
                         case "ObjectParameter":
                             resourceGroupName = GetResourceGroupName(this.VirtualMachineScaleSetVM.Id);
-                            vmScaleSetName = GetResourceName(this.VirtualMachineScaleSetVM.Id, "Microsoft.Compute/VirtualMachineScaleSets", "virtualMachines");
-                            instanceId = GetInstanceId(this.VirtualMachineScaleSetVM.Id, "Microsoft.Compute/VirtualMachineScaleSets", "virtualMachines");
+                            vmScaleSetName = GetResourceName(this.VirtualMachineScaleSetVM.Id, "Microsoft.Compute/virtualMachineScaleSets", "virtualMachines");
+                            instanceId = GetInstanceId(this.VirtualMachineScaleSetVM.Id, "Microsoft.Compute/virtualMachineScaleSets", "virtualMachines");
                             break;
                         default:
                             resourceGroupName = this.ResourceGroupName;
@@ -89,6 +90,26 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         }
                     }
 
+                    if (this.IsParameterBound(c => c.ProtectFromScaleIn))
+                    {
+                        if (parameters.ProtectionPolicy == null)
+                        {
+                            parameters.ProtectionPolicy = new VirtualMachineScaleSetVMProtectionPolicy();
+                        }
+
+                        parameters.ProtectionPolicy.ProtectFromScaleIn = this.ProtectFromScaleIn;
+                    }
+
+                    if (this.IsParameterBound(c => c.ProtectFromScaleSetAction))
+                    {
+                        if (parameters.ProtectionPolicy == null)
+                        {
+                            parameters.ProtectionPolicy = new VirtualMachineScaleSetVMProtectionPolicy();
+                        }
+
+                        parameters.ProtectionPolicy.ProtectFromScaleSetActions = this.ProtectFromScaleSetAction;
+                    }
+
                     var result = VirtualMachineScaleSetVMsClient.Update(resourceGroupName, vmScaleSetName, instanceId, parameters);
                     var psObject = new PSVirtualMachineScaleSetVM();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetVM, PSVirtualMachineScaleSetVM>(result, psObject);
@@ -99,7 +120,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 1,
+            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
@@ -107,7 +128,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 2,
+            Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets", "ResourceGroupName")]
@@ -116,14 +137,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 3,
+            Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string InstanceId { get; set; }
 
         [Parameter(
             ValueFromPipeline = true)]
-        public Compute.Models.PSVirtualMachineDataDisk [] DataDisk { get; set; }
+        public Compute.Models.PSVirtualMachineDataDisk[] DataDisk { get; set; }
+
+        [Parameter()]
+        public bool ProtectFromScaleIn { get; set; }
+
+        [Parameter()]
+        public bool ProtectFromScaleSetAction { get; set; }
 
         [Parameter(
             ParameterSetName = "ResourceIdParameter",
@@ -137,6 +164,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
         public PSVirtualMachineScaleSetVM VirtualMachineScaleSetVM { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]

@@ -35,6 +35,8 @@ function Get-SqlBlobAuditingTestEnvironmentParameters ($testSuffix)
 			  serverName = "blob-audit-cmdlet-server" + $testSuffix;
 			  databaseName = "blob-audit-cmdlet-db" + $testSuffix;
 			  storageAccount = "blobaudit" + $testSuffix
+			  eventHubNamespace = "audit-cmdlet-event-hub-ns" + $testSuffix
+			  workspaceName = "audit-cmdlet-workspace" +$testSuffix
 		}
 }
 
@@ -91,6 +93,8 @@ function Create-BlobAuditingTestEnvironment ($testSuffix, $location = "West Cent
 {
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 	Create-TestEnvironmentWithParams $params $location $serverVersion
+	New-AzOperationalInsightsWorkspace -ResourceGroupName $params.rgname -Name $params.workspaceName -Sku "Standard" -Location "eastus"
+	New-AzEventHubNamespace -ResourceGroupName $params.rgname -NamespaceName $params.eventHubNamespace -Location $location
 }
 
 <#
@@ -200,7 +204,7 @@ function Create-BasicManagedTestEnvironmentWithParams ($params, $location)
 	$vnetName = "cl_initial"
 	$subnetName = "Cool"
 	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 	$credentials = Get-ServerCredential
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
@@ -210,7 +214,7 @@ function Create-BasicManagedTestEnvironmentWithParams ($params, $location)
 
 	$managedInstance = New-AzureRmSqlInstance -ResourceGroupName $params.rgname -Name $params.serverName `
  			-Location $location -AdministratorCredential $credentials -SubnetId $subnetId `
-  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName
+  			-Vcore $vCore -SkuName $skuName
 
 	New-AzureRmSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.serverName -Name $params.databaseName -Collation $collation
 }
@@ -696,14 +700,12 @@ function Create-ManagedInstanceForTest ($resourceGroup, $subnetId)
 {
 	$managedInstanceName = Get-ManagedInstanceName
 	$credentials = Get-ServerCredential
- 	$licenseType = "BasePrice"
-  	$storageSizeInGB = 32
  	$vCore = 16
  	$skuName = "GP_Gen4"
 
 	$managedInstance = New-AzSqlInstance -ResourceGroupName $resourceGroup.ResourceGroupName -Name $managedInstanceName `
  			-Location $resourceGroup.Location -AdministratorCredential $credentials -SubnetId $subnetId `
-  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName
+  			-Vcore $vCore -SkuName $skuName
 
 	return $managedInstance
 }
@@ -711,19 +713,23 @@ function Create-ManagedInstanceForTest ($resourceGroup, $subnetId)
 <#
 	.SYNOPSIS
 	Create a virtual network
+
+	If resource group $resourceGroupName does not exist, then please create it before running the test.
+	We deliberately do not create it, because if we did then ResourceGroupCleaner (inside MockContext) would delete it
+	at the end of the test, which prevents us from reusing the subnet and therefore massively slows down
+	managed instance scenario tests.
 #>
-function CreateAndGetVirtualNetworkForManagedInstance ($vnetName, $subnetName, $location = "westcentralus")
+function CreateAndGetVirtualNetworkForManagedInstance ($vnetName, $subnetName, $location = "westcentralus", $resourceGroupName = "cl_one")
 {
 	$vNetAddressPrefix = "10.0.0.0/16"
-	$defaultResourceGroupName = "cl_one"
 	$defaultSubnetAddressPrefix = "10.0.0.0/24"
 
 	try {
-		$getVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $defaultResourceGroupName
+		$getVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
 		return $getVnet
 	} catch {
 		$virtualNetwork = New-AzVirtualNetwork `
-							-ResourceGroupName $defaultResourceGroupName `
+							-ResourceGroupName $resourceGroupName `
 							-Location $location `
 							-Name $vNetName `
 							-AddressPrefix $vNetAddressPrefix
@@ -734,7 +740,7 @@ function CreateAndGetVirtualNetworkForManagedInstance ($vnetName, $subnetName, $
  		$virtualNetwork | Set-AzVirtualNetwork
  		$routeTableMiManagementService = New-AzRouteTable `
 								-Name 'myRouteTableMiManagementService' `
-								-ResourceGroupName $defaultResourceGroupName `
+								-ResourceGroupName $resourceGroupName `
 								-location $location
  		Set-AzVirtualNetworkSubnetConfig `
 								-VirtualNetwork $virtualNetwork `
@@ -743,7 +749,7 @@ function CreateAndGetVirtualNetworkForManagedInstance ($vnetName, $subnetName, $
 								-RouteTable $routeTableMiManagementService | `
 							Set-AzVirtualNetwork
  		Get-AzRouteTable `
-								-ResourceGroupName $defaultResourceGroupName `
+								-ResourceGroupName $resourceGroupName `
 								-Name "myRouteTableMiManagementService" `
 								| Add-AzRouteConfig `
 								-Name "ToManagedInstanceManagementService" `
@@ -751,7 +757,7 @@ function CreateAndGetVirtualNetworkForManagedInstance ($vnetName, $subnetName, $
 								-NextHopType "Internet" `
 								| Set-AzRouteTable
 
-		$getVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $defaultResourceGroupName
+		$getVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
 		return $getVnet
 	}
 }

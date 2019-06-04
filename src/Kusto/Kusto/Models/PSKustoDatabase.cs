@@ -32,14 +32,6 @@ namespace Microsoft.Azure.Commands.Kusto.Models
             }
         }
 
-        public string Etag
-        {
-            get
-            {
-                return _database.Etag;
-            }
-        }
-
         public DatabaseStatistics Statistic
         {
             get

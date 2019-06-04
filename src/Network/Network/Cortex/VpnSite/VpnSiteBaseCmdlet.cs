@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public List<PSVpnSite> ListVpnSites(string resourceGroupName)
         {
-            var vpnSites = string.IsNullOrWhiteSpace(resourceGroupName) ?
+            var vpnSites = ShouldListBySubscription(resourceGroupName, null) ?
                 this.VpnSiteClient.List() :                                       //// List by SubId
                 this.VpnSiteClient.ListByResourceGroup(resourceGroupName);        //// List by RG Name
 

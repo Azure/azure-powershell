@@ -33,7 +33,7 @@ using System.Management.Automation;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
+namespace Microsoft.Azure.Commands.Profile.Test
 {
     public class EnvironmentCmdletTests : RMTestBase
     {

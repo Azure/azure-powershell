@@ -19,8 +19,9 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-GatewayDefaultSite <PSLocalNetworkGateway>] [-VpnClientAddressPool <String[]>]
  [-VpnClientProtocol <String[]>] [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
- [-Asn <UInt32>] [-PeerWeight <Int32>] [-EnableActiveActiveFeature] [-DisableActiveActiveFeature] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Asn <UInt32>] [-PeerWeight <Int32>] [-EnableActiveActiveFeature] [-DisableActiveActiveFeature]
+ [-CustomRoute <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RadiusServerConfiguration
@@ -30,8 +31,29 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-VpnClientProtocol <String[]>] [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
  [-Asn <UInt32>] [-PeerWeight <Int32>] [-EnableActiveActiveFeature] [-DisableActiveActiveFeature]
- -RadiusServerAddress <String> -RadiusServerSecret <SecureString> [-AsJob]
+ -RadiusServerAddress <String> -RadiusServerSecret <SecureString> [-CustomRoute <String[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RadiusServerConfigurationUpdateResourceWithTags
+```
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-GatewaySku <String>]
+ [-GatewayDefaultSite <PSLocalNetworkGateway>] [-VpnClientAddressPool <String[]>]
+ [-VpnClientProtocol <String[]>] [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
+ [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
+ [-Asn <UInt32>] [-PeerWeight <Int32>] [-EnableActiveActiveFeature] [-DisableActiveActiveFeature]
+ -RadiusServerAddress <String> -RadiusServerSecret <SecureString> -Tag <Hashtable> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateResourceWithTags
+```
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-GatewaySku <String>]
+ [-GatewayDefaultSite <PSLocalNetworkGateway>] [-VpnClientAddressPool <String[]>]
+ [-VpnClientProtocol <String[]>] [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
+ [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
+ [-Asn <UInt32>] [-PeerWeight <Int32>] [-EnableActiveActiveFeature] [-DisableActiveActiveFeature]
+ -Tag <Hashtable> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,17 +61,17 @@ The **Set-AzVirtualNetworkGateway** cmdlet updates a virtual network gateway.
 
 ## EXAMPLES
 
-### Example 1: Set the goal state a virtual network gateway
+### Example 1: Update a virtual network gateway's ASN
 ```
 PS C:\>$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
 PS C:\> Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -Asn 1337
 ```
 
 The first command gets a virtual network gateway named Gateway01 that belongs to resource group ResourceGroup001 and stores it to the variable named $Gateway
-The second command sets the goal state for the virtual network gateway stored in variable $Gateway.
+The second command updates the virtual network gateway stored in variable $Gateway.
 The command also sets the ASN to 1337.
 
-### Example 2: Set the goal state a virtual network gateway
+### Example 2: Add IPsec policy to a virtual network gateway
 ```
 PS C:\>$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
 PS C:\> $vpnclientipsecpolicy = New-AzVpnClientIpsecPolicy -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTimeSeconds 86472 -SADataSizeKilobytes 429497 -IkeEncryption AES256 -IkeIntegrity SHA256 -DhGroup DHGroup2 -PfsGroup None
@@ -58,8 +80,61 @@ PS C:\> $gateway = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -
 
 The first command gets a virtual network gateway named Gateway01 that belongs to resource group ResourceGroup001 and stores it to the variable named $Gateway
 The second command creates the Vpn ipsec policy object as per specified ipsec parameters.
-The third command sets the goal state for the virtual network gateway stored in variable $Gateway.
+The third command updates the virtual network gateway stored in variable $Gateway.
 The command also sets the custom vpn ipsec policy specified in the $vpnclientipsecpolicy object on Virtual network gateway.
+
+### Example 3: Add/Update Tags to an existing virtual network gateway
+```
+PS C:\>$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
+PS C:\>Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -Tag @{ testtagKey="SomeTagKey"; testtagValue="SomeKeyValue" }
+
+Name                   : Gateway001
+ResourceGroupName      : ResourceGroup001
+Location               : westus
+Id                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001
+Etag                   : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid           : 00000000-0000-0000-0000-000000000000
+ProvisioningState      : Succeeded
+Tags                   :
+                         Name          Value
+                         ============  ============
+                         testtagValue  SomeKeyValue
+                         testtagKey    SomeTagKey
+
+IpConfigurations       : [
+                           {
+                             "PrivateIpAllocationMethod": "Dynamic",
+                             "Subnet": {
+                               "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworks/MyVnet/subnets/GatewaySubnet"
+                             },
+                             "PublicIpAddress": {
+                               "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup001/providers/Microsoft.Network/publicIPAddresses/Gateway001Ip"
+                             },
+                             "Name": "vng1ipConfig",
+                             "Etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                             "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001/ipConfigurations/Gateway001IpConfig"
+                           }
+                         ]
+GatewayType            : Vpn
+VpnType                : RouteBased
+EnableBgp              : False
+ActiveActive           : False
+GatewayDefaultSite     : null
+Sku                    : {
+                           "Capacity": 2,
+                           "Name": "VpnGw1",
+                           "Tier": "VpnGw1"
+                         }
+VpnClientConfiguration : null
+BgpSettings            : {
+                           "Asn": 65515,
+                           "BgpPeeringAddress": "1.2.3.4",
+                           "PeerWeight": 0
+                         }
+```
+
+The first command gets a virtual network gateway named Gateway01 that belongs to resource group ResourceGroup001 and stores it to the variable named $Gateway
+The second command updates the virtual network gateway Gateway01 with the tags @{ testtagKey="SomeTagKey"; testtagValue="SomeKeyValue" }.
 
 ## PARAMETERS
 
@@ -83,6 +158,21 @@ Specifies the virtual network gateway Autonomous System Number (ASN) that is use
 
 ```yaml
 Type: System.UInt32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -CustomRoute
+Custom routes AddressPool specified by customer
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -203,7 +293,7 @@ P2S External Radius server address.
 
 ```yaml
 Type: System.String
-Parameter Sets: RadiusServerConfiguration
+Parameter Sets: RadiusServerConfiguration, RadiusServerConfigurationUpdateResourceWithTags
 Aliases:
 
 Required: True
@@ -218,13 +308,28 @@ P2S External Radius server secret.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: RadiusServerConfiguration
+Parameter Sets: RadiusServerConfiguration, RadiusServerConfigurationUpdateResourceWithTags
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Tag
+A hashtable which represents resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: RadiusServerConfigurationUpdateResourceWithTags, UpdateResourceWithTags
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -1,19 +1,19 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/b651b9ea-5e9d-4817-8441-435ce25fdf30/providers/Microsoft.Network/applicationGatewayAvailableSslOptions/default?api-version=2018-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjY1MWI5ZWEtNWU5ZC00ODE3LTg0NDEtNDM1Y2UyNWZkZjMwL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVTc2xPcHRpb25zL2RlZmF1bHQ/YXBpLXZlcnNpb249MjAxOC0xMS0wMQ==",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/applicationGatewayAvailableSslOptions/default?api-version=2019-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVTc2xPcHRpb25zL2RlZmF1bHQ/YXBpLXZlcnNpb249MjAxOS0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cc215cd0-0438-40c2-ae95-c9e0bcaf2eae"
+          "feeaf5b7-7e01-4589-936f-d192c7037238"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27129.04",
+          "FxVersion/4.6.27414.06",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
@@ -27,10 +27,74 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "2a2a9bb5-f183-4a97-9937-3c93b1f688a6"
+          "acf2316d-64a5-44c7-8e52-62e07357635c"
         ],
         "x-ms-correlation-request-id": [
-          "269367f4-f38a-42f0-8449-2ed803085a65"
+          "f4a376a6-25e7-4a75-8604-8dd83f0a547d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11988"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20190409T090545Z:f4a376a6-25e7-4a75-8604-8dd83f0a547d"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 09 Apr 2019 09:05:44 GMT"
+        ],
+        "Content-Length": [
+          "6378"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"default\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups//providers/Microsoft.Network/ApplicationGatewayAvailableSslOptions/default\",\r\n  \"type\": \"Microsoft.Network/ApplicationGatewayAvailableSslOptions\",\r\n  \"properties\": {\r\n    \"predefinedPolicies\": [\r\n      {\r\n        \"name\": \"AppGwSslPolicy20150501\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups//providers/Microsoft.Network/ApplicationGatewayAvailableSslOptions/default/ApplicationGatewaySslPredefinedPolicy/AppGwSslPolicy20150501\",\r\n        \"properties\": {\r\n          \"cipherSuites\": [\r\n            \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\",\r\n            \"TLS_DHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n            \"TLS_DHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n            \"TLS_DHE_RSA_WITH_AES_256_CBC_SHA\",\r\n            \"TLS_DHE_RSA_WITH_AES_128_CBC_SHA\",\r\n            \"TLS_RSA_WITH_AES_256_GCM_SHA384\",\r\n            \"TLS_RSA_WITH_AES_128_GCM_SHA256\",\r\n            \"TLS_RSA_WITH_AES_256_CBC_SHA256\",\r\n            \"TLS_RSA_WITH_AES_128_CBC_SHA256\",\r\n            \"TLS_RSA_WITH_AES_256_CBC_SHA\",\r\n            \"TLS_RSA_WITH_AES_128_CBC_SHA\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\",\r\n            \"TLS_DHE_DSS_WITH_AES_256_CBC_SHA256\",\r\n            \"TLS_DHE_DSS_WITH_AES_128_CBC_SHA256\",\r\n            \"TLS_DHE_DSS_WITH_AES_256_CBC_SHA\",\r\n            \"TLS_DHE_DSS_WITH_AES_128_CBC_SHA\",\r\n            \"TLS_RSA_WITH_3DES_EDE_CBC_SHA\",\r\n            \"TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA\"\r\n          ],\r\n          \"minProtocolVersion\": \"TLSv1_0\"\r\n        },\r\n        \"type\": \"Microsoft.Network/ApplicationGatewayAvailableSslOptions/ApplicationGatewaySslPredefinedPolicy\"\r\n      },\r\n      {\r\n        \"name\": \"AppGwSslPolicy20170401\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups//providers/Microsoft.Network/ApplicationGatewayAvailableSslOptions/default/ApplicationGatewaySslPredefinedPolicy/AppGwSslPolicy20170401\",\r\n        \"properties\": {\r\n          \"cipherSuites\": [\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\",\r\n            \"TLS_RSA_WITH_AES_256_GCM_SHA384\",\r\n            \"TLS_RSA_WITH_AES_128_GCM_SHA256\",\r\n            \"TLS_RSA_WITH_AES_256_CBC_SHA256\",\r\n            \"TLS_RSA_WITH_AES_128_CBC_SHA256\",\r\n            \"TLS_RSA_WITH_AES_256_CBC_SHA\",\r\n            \"TLS_RSA_WITH_AES_128_CBC_SHA\"\r\n          ],\r\n          \"minProtocolVersion\": \"TLSv1_1\"\r\n        },\r\n        \"type\": \"Microsoft.Network/ApplicationGatewayAvailableSslOptions/ApplicationGatewaySslPredefinedPolicy\"\r\n      },\r\n      {\r\n        \"name\": \"AppGwSslPolicy20170401S\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups//providers/Microsoft.Network/ApplicationGatewayAvailableSslOptions/default/ApplicationGatewaySslPredefinedPolicy/AppGwSslPolicy20170401S\",\r\n        \"properties\": {\r\n          \"cipherSuites\": [\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\",\r\n            \"TLS_RSA_WITH_AES_256_GCM_SHA384\",\r\n            \"TLS_RSA_WITH_AES_128_GCM_SHA256\",\r\n            \"TLS_RSA_WITH_AES_256_CBC_SHA256\",\r\n            \"TLS_RSA_WITH_AES_128_CBC_SHA256\",\r\n            \"TLS_RSA_WITH_AES_256_CBC_SHA\",\r\n            \"TLS_RSA_WITH_AES_128_CBC_SHA\"\r\n          ],\r\n          \"minProtocolVersion\": \"TLSv1_2\"\r\n        },\r\n        \"type\": \"Microsoft.Network/ApplicationGatewayAvailableSslOptions/ApplicationGatewaySslPredefinedPolicy\"\r\n      }\r\n    ],\r\n    \"defaultPolicy\": \"AppGwSslPolicy20150501\",\r\n    \"availableCipherSuites\": [\r\n      \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n      \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n      \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384\",\r\n      \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256\",\r\n      \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\",\r\n      \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\",\r\n      \"TLS_DHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n      \"TLS_DHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n      \"TLS_DHE_RSA_WITH_AES_256_CBC_SHA\",\r\n      \"TLS_DHE_RSA_WITH_AES_128_CBC_SHA\",\r\n      \"TLS_RSA_WITH_AES_256_GCM_SHA384\",\r\n      \"TLS_RSA_WITH_AES_128_GCM_SHA256\",\r\n      \"TLS_RSA_WITH_AES_256_CBC_SHA256\",\r\n      \"TLS_RSA_WITH_AES_128_CBC_SHA256\",\r\n      \"TLS_RSA_WITH_AES_256_CBC_SHA\",\r\n      \"TLS_RSA_WITH_AES_128_CBC_SHA\",\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\",\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\",\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\",\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\",\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\",\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\",\r\n      \"TLS_DHE_DSS_WITH_AES_256_CBC_SHA256\",\r\n      \"TLS_DHE_DSS_WITH_AES_128_CBC_SHA256\",\r\n      \"TLS_DHE_DSS_WITH_AES_256_CBC_SHA\",\r\n      \"TLS_DHE_DSS_WITH_AES_128_CBC_SHA\",\r\n      \"TLS_RSA_WITH_3DES_EDE_CBC_SHA\",\r\n      \"TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA\"\r\n    ],\r\n    \"availableProtocols\": [\r\n      \"TLSv1_0\",\r\n      \"TLSv1_1\",\r\n      \"TLSv1_2\"\r\n    ]\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/applicationGatewayAvailableSslOptions/default/predefinedPolicies?api-version=2019-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVTc2xPcHRpb25zL2RlZmF1bHQvcHJlZGVmaW5lZFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMTktMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ab59d8e9-00f3-4dda-b4c6-c18bbac5d3f7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "db66802b-ad2b-46b6-a755-1c843c454824"
+        ],
+        "x-ms-correlation-request-id": [
+          "affbfc26-81ac-4ecf-ae8e-e81471a7f5ff"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,16 +107,16 @@
           "11999"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190115T034832Z:269367f4-f38a-42f0-8449-2ed803085a65"
+          "UKSOUTH:20190409T090547Z:affbfc26-81ac-4ecf-ae8e-e81471a7f5ff"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 15 Jan 2019 03:48:31 GMT"
+          "Tue, 09 Apr 2019 09:05:46 GMT"
         ],
         "Content-Length": [
-          "6378"
+          "4472"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -61,23 +125,23 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"default\",\r\n  \"id\": \"/subscriptions/b651b9ea-5e9d-4817-8441-435ce25fdf30/resourceGroups//providers/Microsoft.Network/ApplicationGatewayAvailableSslOptions/default\",\r\n  \"type\": \"Microsoft.Network/ApplicationGatewayAvailableSslOptions\",\r\n  \"properties\": {\r\n    \"predefinedPolicies\": [\r\n      {\r\n        \"name\": \"AppGwSslPolicy20150501\",\r\n        \"id\": \"/subscriptions/b651b9ea-5e9d-4817-8441-435ce25fdf30/resourceGroups//providers/Microsoft.Network/ApplicationGatewayAvailableSslOptions/default/ApplicationGatewaySslPredefinedPolicy/AppGwSslPolicy20150501\",\r\n        \"properties\": {\r\n          \"cipherSuites\": [\r\n            \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\",\r\n            \"TLS_DHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n            \"TLS_DHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n            \"TLS_DHE_RSA_WITH_AES_256_CBC_SHA\",\r\n            \"TLS_DHE_RSA_WITH_AES_128_CBC_SHA\",\r\n            \"TLS_RSA_WITH_AES_256_GCM_SHA384\",\r\n            \"TLS_RSA_WITH_AES_128_GCM_SHA256\",\r\n            \"TLS_RSA_WITH_AES_256_CBC_SHA256\",\r\n            \"TLS_RSA_WITH_AES_128_CBC_SHA256\",\r\n            \"TLS_RSA_WITH_AES_256_CBC_SHA\",\r\n            \"TLS_RSA_WITH_AES_128_CBC_SHA\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\",\r\n            \"TLS_DHE_DSS_WITH_AES_256_CBC_SHA256\",\r\n            \"TLS_DHE_DSS_WITH_AES_128_CBC_SHA256\",\r\n            \"TLS_DHE_DSS_WITH_AES_256_CBC_SHA\",\r\n            \"TLS_DHE_DSS_WITH_AES_128_CBC_SHA\",\r\n            \"TLS_RSA_WITH_3DES_EDE_CBC_SHA\",\r\n            \"TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA\"\r\n          ],\r\n          \"minProtocolVersion\": \"TLSv1_0\"\r\n        },\r\n        \"type\": \"Microsoft.Network/ApplicationGatewayAvailableSslOptions/ApplicationGatewaySslPredefinedPolicy\"\r\n      },\r\n      {\r\n        \"name\": \"AppGwSslPolicy20170401\",\r\n        \"id\": \"/subscriptions/b651b9ea-5e9d-4817-8441-435ce25fdf30/resourceGroups//providers/Microsoft.Network/ApplicationGatewayAvailableSslOptions/default/ApplicationGatewaySslPredefinedPolicy/AppGwSslPolicy20170401\",\r\n        \"properties\": {\r\n          \"cipherSuites\": [\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\",\r\n            \"TLS_RSA_WITH_AES_256_GCM_SHA384\",\r\n            \"TLS_RSA_WITH_AES_128_GCM_SHA256\",\r\n            \"TLS_RSA_WITH_AES_256_CBC_SHA256\",\r\n            \"TLS_RSA_WITH_AES_128_CBC_SHA256\",\r\n            \"TLS_RSA_WITH_AES_256_CBC_SHA\",\r\n            \"TLS_RSA_WITH_AES_128_CBC_SHA\"\r\n          ],\r\n          \"minProtocolVersion\": \"TLSv1_1\"\r\n        },\r\n        \"type\": \"Microsoft.Network/ApplicationGatewayAvailableSslOptions/ApplicationGatewaySslPredefinedPolicy\"\r\n      },\r\n      {\r\n        \"name\": \"AppGwSslPolicy20170401S\",\r\n        \"id\": \"/subscriptions/b651b9ea-5e9d-4817-8441-435ce25fdf30/resourceGroups//providers/Microsoft.Network/ApplicationGatewayAvailableSslOptions/default/ApplicationGatewaySslPredefinedPolicy/AppGwSslPolicy20170401S\",\r\n        \"properties\": {\r\n          \"cipherSuites\": [\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\",\r\n            \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\",\r\n            \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\",\r\n            \"TLS_RSA_WITH_AES_256_GCM_SHA384\",\r\n            \"TLS_RSA_WITH_AES_128_GCM_SHA256\",\r\n            \"TLS_RSA_WITH_AES_256_CBC_SHA256\",\r\n            \"TLS_RSA_WITH_AES_128_CBC_SHA256\",\r\n            \"TLS_RSA_WITH_AES_256_CBC_SHA\",\r\n            \"TLS_RSA_WITH_AES_128_CBC_SHA\"\r\n          ],\r\n          \"minProtocolVersion\": \"TLSv1_2\"\r\n        },\r\n        \"type\": \"Microsoft.Network/ApplicationGatewayAvailableSslOptions/ApplicationGatewaySslPredefinedPolicy\"\r\n      }\r\n    ],\r\n    \"defaultPolicy\": \"AppGwSslPolicy20150501\",\r\n    \"availableCipherSuites\": [\r\n      \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n      \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n      \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384\",\r\n      \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256\",\r\n      \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\",\r\n      \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\",\r\n      \"TLS_DHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n      \"TLS_DHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n      \"TLS_DHE_RSA_WITH_AES_256_CBC_SHA\",\r\n      \"TLS_DHE_RSA_WITH_AES_128_CBC_SHA\",\r\n      \"TLS_RSA_WITH_AES_256_GCM_SHA384\",\r\n      \"TLS_RSA_WITH_AES_128_GCM_SHA256\",\r\n      \"TLS_RSA_WITH_AES_256_CBC_SHA256\",\r\n      \"TLS_RSA_WITH_AES_128_CBC_SHA256\",\r\n      \"TLS_RSA_WITH_AES_256_CBC_SHA\",\r\n      \"TLS_RSA_WITH_AES_128_CBC_SHA\",\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\",\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\",\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\",\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\",\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\",\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\",\r\n      \"TLS_DHE_DSS_WITH_AES_256_CBC_SHA256\",\r\n      \"TLS_DHE_DSS_WITH_AES_128_CBC_SHA256\",\r\n      \"TLS_DHE_DSS_WITH_AES_256_CBC_SHA\",\r\n      \"TLS_DHE_DSS_WITH_AES_128_CBC_SHA\",\r\n      \"TLS_RSA_WITH_3DES_EDE_CBC_SHA\",\r\n      \"TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA\"\r\n    ],\r\n    \"availableProtocols\": [\r\n      \"TLSv1_0\",\r\n      \"TLSv1_1\",\r\n      \"TLSv1_2\"\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"AppGwSslPolicy20150501\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups//providers/Microsoft.Network/ApplicationGatewayAvailableSslOptions/default/ApplicationGatewaySslPredefinedPolicy/AppGwSslPolicy20150501\",\r\n      \"properties\": {\r\n        \"cipherSuites\": [\r\n          \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_DHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_DHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_DHE_RSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_DHE_RSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_RSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_RSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_RSA_WITH_AES_256_CBC_SHA256\",\r\n          \"TLS_RSA_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_RSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_RSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_DHE_DSS_WITH_AES_256_CBC_SHA256\",\r\n          \"TLS_DHE_DSS_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_DHE_DSS_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_DHE_DSS_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_RSA_WITH_3DES_EDE_CBC_SHA\",\r\n          \"TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA\"\r\n        ],\r\n        \"minProtocolVersion\": \"TLSv1_0\"\r\n      },\r\n      \"type\": \"Microsoft.Network/ApplicationGatewayAvailableSslOptions/ApplicationGatewaySslPredefinedPolicy\"\r\n    },\r\n    {\r\n      \"name\": \"AppGwSslPolicy20170401\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups//providers/Microsoft.Network/ApplicationGatewayAvailableSslOptions/default/ApplicationGatewaySslPredefinedPolicy/AppGwSslPolicy20170401\",\r\n      \"properties\": {\r\n        \"cipherSuites\": [\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_RSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_RSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_RSA_WITH_AES_256_CBC_SHA256\",\r\n          \"TLS_RSA_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_RSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_RSA_WITH_AES_128_CBC_SHA\"\r\n        ],\r\n        \"minProtocolVersion\": \"TLSv1_1\"\r\n      },\r\n      \"type\": \"Microsoft.Network/ApplicationGatewayAvailableSslOptions/ApplicationGatewaySslPredefinedPolicy\"\r\n    },\r\n    {\r\n      \"name\": \"AppGwSslPolicy20170401S\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups//providers/Microsoft.Network/ApplicationGatewayAvailableSslOptions/default/ApplicationGatewaySslPredefinedPolicy/AppGwSslPolicy20170401S\",\r\n      \"properties\": {\r\n        \"cipherSuites\": [\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_RSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_RSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_RSA_WITH_AES_256_CBC_SHA256\",\r\n          \"TLS_RSA_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_RSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_RSA_WITH_AES_128_CBC_SHA\"\r\n        ],\r\n        \"minProtocolVersion\": \"TLSv1_2\"\r\n      },\r\n      \"type\": \"Microsoft.Network/ApplicationGatewayAvailableSslOptions/ApplicationGatewaySslPredefinedPolicy\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b651b9ea-5e9d-4817-8441-435ce25fdf30/providers/Microsoft.Network/applicationGatewayAvailableSslOptions/default/predefinedPolicies?api-version=2018-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjY1MWI5ZWEtNWU5ZC00ODE3LTg0NDEtNDM1Y2UyNWZkZjMwL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVTc2xPcHRpb25zL2RlZmF1bHQvcHJlZGVmaW5lZFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMTgtMTEtMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/applicationGatewayAvailableSslOptions/default/predefinedPolicies?api-version=2019-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVTc2xPcHRpb25zL2RlZmF1bHQvcHJlZGVmaW5lZFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMTktMDItMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c02a0e21-fb68-45b8-aac5-3a73547a074b"
+          "ae5fafaa-c679-45cd-af0c-3e77013ea1af"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27129.04",
+          "FxVersion/4.6.27414.06",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
@@ -91,10 +155,74 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "3c4c8c6f-567b-4c21-bd46-1f33fb031366"
+          "cfb42075-94a0-4c13-a2df-c8fd9e74b857"
         ],
         "x-ms-correlation-request-id": [
-          "b9fcc4c1-221c-4a02-ae5f-029a85a12040"
+          "5c9b1f0d-34fd-4199-be0f-3e2dc5662f3c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11926"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20190409T090550Z:5c9b1f0d-34fd-4199-be0f-3e2dc5662f3c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 09 Apr 2019 09:05:49 GMT"
+        ],
+        "Content-Length": [
+          "4472"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"AppGwSslPolicy20150501\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups//providers/Microsoft.Network/ApplicationGatewayAvailableSslOptions/default/ApplicationGatewaySslPredefinedPolicy/AppGwSslPolicy20150501\",\r\n      \"properties\": {\r\n        \"cipherSuites\": [\r\n          \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_DHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_DHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_DHE_RSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_DHE_RSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_RSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_RSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_RSA_WITH_AES_256_CBC_SHA256\",\r\n          \"TLS_RSA_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_RSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_RSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_DHE_DSS_WITH_AES_256_CBC_SHA256\",\r\n          \"TLS_DHE_DSS_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_DHE_DSS_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_DHE_DSS_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_RSA_WITH_3DES_EDE_CBC_SHA\",\r\n          \"TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA\"\r\n        ],\r\n        \"minProtocolVersion\": \"TLSv1_0\"\r\n      },\r\n      \"type\": \"Microsoft.Network/ApplicationGatewayAvailableSslOptions/ApplicationGatewaySslPredefinedPolicy\"\r\n    },\r\n    {\r\n      \"name\": \"AppGwSslPolicy20170401\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups//providers/Microsoft.Network/ApplicationGatewayAvailableSslOptions/default/ApplicationGatewaySslPredefinedPolicy/AppGwSslPolicy20170401\",\r\n      \"properties\": {\r\n        \"cipherSuites\": [\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_RSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_RSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_RSA_WITH_AES_256_CBC_SHA256\",\r\n          \"TLS_RSA_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_RSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_RSA_WITH_AES_128_CBC_SHA\"\r\n        ],\r\n        \"minProtocolVersion\": \"TLSv1_1\"\r\n      },\r\n      \"type\": \"Microsoft.Network/ApplicationGatewayAvailableSslOptions/ApplicationGatewaySslPredefinedPolicy\"\r\n    },\r\n    {\r\n      \"name\": \"AppGwSslPolicy20170401S\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups//providers/Microsoft.Network/ApplicationGatewayAvailableSslOptions/default/ApplicationGatewaySslPredefinedPolicy/AppGwSslPolicy20170401S\",\r\n      \"properties\": {\r\n        \"cipherSuites\": [\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_RSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_RSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_RSA_WITH_AES_256_CBC_SHA256\",\r\n          \"TLS_RSA_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_RSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_RSA_WITH_AES_128_CBC_SHA\"\r\n        ],\r\n        \"minProtocolVersion\": \"TLSv1_2\"\r\n      },\r\n      \"type\": \"Microsoft.Network/ApplicationGatewayAvailableSslOptions/ApplicationGatewaySslPredefinedPolicy\"\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/applicationGatewayAvailableSslOptions/default/predefinedPolicies/AppGwSslPolicy20170401?api-version=2019-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVTc2xPcHRpb25zL2RlZmF1bHQvcHJlZGVmaW5lZFBvbGljaWVzL0FwcEd3U3NsUG9saWN5MjAxNzA0MDE/YXBpLXZlcnNpb249MjAxOS0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8cca1b48-4902-410f-83ec-1eca400a2ee5"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "431754fe-b4cc-4fd2-87e0-190b618ee82b"
+        ],
+        "x-ms-correlation-request-id": [
+          "fbf65f5d-4b19-490f-85f2-3b69d69459b7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -107,77 +235,13 @@
           "11998"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190115T034832Z:b9fcc4c1-221c-4a02-ae5f-029a85a12040"
+          "UKSOUTH:20190409T090548Z:fbf65f5d-4b19-490f-85f2-3b69d69459b7"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 15 Jan 2019 03:48:31 GMT"
-        ],
-        "Content-Length": [
-          "4472"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"AppGwSslPolicy20150501\",\r\n      \"id\": \"/subscriptions/b651b9ea-5e9d-4817-8441-435ce25fdf30/resourceGroups//providers/Microsoft.Network/ApplicationGatewayAvailableSslOptions/default/ApplicationGatewaySslPredefinedPolicy/AppGwSslPolicy20150501\",\r\n      \"properties\": {\r\n        \"cipherSuites\": [\r\n          \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_DHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_DHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_DHE_RSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_DHE_RSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_RSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_RSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_RSA_WITH_AES_256_CBC_SHA256\",\r\n          \"TLS_RSA_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_RSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_RSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_DHE_DSS_WITH_AES_256_CBC_SHA256\",\r\n          \"TLS_DHE_DSS_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_DHE_DSS_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_DHE_DSS_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_RSA_WITH_3DES_EDE_CBC_SHA\",\r\n          \"TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA\"\r\n        ],\r\n        \"minProtocolVersion\": \"TLSv1_0\"\r\n      },\r\n      \"type\": \"Microsoft.Network/ApplicationGatewayAvailableSslOptions/ApplicationGatewaySslPredefinedPolicy\"\r\n    },\r\n    {\r\n      \"name\": \"AppGwSslPolicy20170401\",\r\n      \"id\": \"/subscriptions/b651b9ea-5e9d-4817-8441-435ce25fdf30/resourceGroups//providers/Microsoft.Network/ApplicationGatewayAvailableSslOptions/default/ApplicationGatewaySslPredefinedPolicy/AppGwSslPolicy20170401\",\r\n      \"properties\": {\r\n        \"cipherSuites\": [\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_RSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_RSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_RSA_WITH_AES_256_CBC_SHA256\",\r\n          \"TLS_RSA_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_RSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_RSA_WITH_AES_128_CBC_SHA\"\r\n        ],\r\n        \"minProtocolVersion\": \"TLSv1_1\"\r\n      },\r\n      \"type\": \"Microsoft.Network/ApplicationGatewayAvailableSslOptions/ApplicationGatewaySslPredefinedPolicy\"\r\n    },\r\n    {\r\n      \"name\": \"AppGwSslPolicy20170401S\",\r\n      \"id\": \"/subscriptions/b651b9ea-5e9d-4817-8441-435ce25fdf30/resourceGroups//providers/Microsoft.Network/ApplicationGatewayAvailableSslOptions/default/ApplicationGatewaySslPredefinedPolicy/AppGwSslPolicy20170401S\",\r\n      \"properties\": {\r\n        \"cipherSuites\": [\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\",\r\n          \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_RSA_WITH_AES_256_GCM_SHA384\",\r\n          \"TLS_RSA_WITH_AES_128_GCM_SHA256\",\r\n          \"TLS_RSA_WITH_AES_256_CBC_SHA256\",\r\n          \"TLS_RSA_WITH_AES_128_CBC_SHA256\",\r\n          \"TLS_RSA_WITH_AES_256_CBC_SHA\",\r\n          \"TLS_RSA_WITH_AES_128_CBC_SHA\"\r\n        ],\r\n        \"minProtocolVersion\": \"TLSv1_2\"\r\n      },\r\n      \"type\": \"Microsoft.Network/ApplicationGatewayAvailableSslOptions/ApplicationGatewaySslPredefinedPolicy\"\r\n    }\r\n  ]\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/b651b9ea-5e9d-4817-8441-435ce25fdf30/providers/Microsoft.Network/applicationGatewayAvailableSslOptions/default/predefinedPolicies/AppGwSslPolicy20170401?api-version=2018-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjY1MWI5ZWEtNWU5ZC00ODE3LTg0NDEtNDM1Y2UyNWZkZjMwL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVTc2xPcHRpb25zL2RlZmF1bHQvcHJlZGVmaW5lZFBvbGljaWVzL0FwcEd3U3NsUG9saWN5MjAxNzA0MDE/YXBpLXZlcnNpb249MjAxOC0xMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "cd74811d-2c35-48a5-bfee-21c14357bcc3"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.27129.04",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "a375f1c8-983d-412f-a92f-1e6b555a75dc"
-        ],
-        "x-ms-correlation-request-id": [
-          "99eeb305-481a-461d-b306-02a7e8bbc533"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20190115T034832Z:99eeb305-481a-461d-b306-02a7e8bbc533"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 15 Jan 2019 03:48:31 GMT"
+          "Tue, 09 Apr 2019 09:05:48 GMT"
         ],
         "Content-Length": [
           "1181"
@@ -189,12 +253,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"AppGwSslPolicy20170401\",\r\n  \"id\": \"/subscriptions/b651b9ea-5e9d-4817-8441-435ce25fdf30/resourceGroups//providers/Microsoft.Network/ApplicationGatewayAvailableSslOptions/default/ApplicationGatewaySslPredefinedPolicy/AppGwSslPolicy20170401\",\r\n  \"properties\": {\r\n    \"cipherSuites\": [\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\",\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\",\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\",\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\",\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\",\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\",\r\n      \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n      \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n      \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\",\r\n      \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\",\r\n      \"TLS_RSA_WITH_AES_256_GCM_SHA384\",\r\n      \"TLS_RSA_WITH_AES_128_GCM_SHA256\",\r\n      \"TLS_RSA_WITH_AES_256_CBC_SHA256\",\r\n      \"TLS_RSA_WITH_AES_128_CBC_SHA256\",\r\n      \"TLS_RSA_WITH_AES_256_CBC_SHA\",\r\n      \"TLS_RSA_WITH_AES_128_CBC_SHA\"\r\n    ],\r\n    \"minProtocolVersion\": \"TLSv1_1\"\r\n  },\r\n  \"type\": \"Microsoft.Network/ApplicationGatewayAvailableSslOptions/ApplicationGatewaySslPredefinedPolicy\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"AppGwSslPolicy20170401\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups//providers/Microsoft.Network/ApplicationGatewayAvailableSslOptions/default/ApplicationGatewaySslPredefinedPolicy/AppGwSslPolicy20170401\",\r\n  \"properties\": {\r\n    \"cipherSuites\": [\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\",\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\",\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\",\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\",\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\",\r\n      \"TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\",\r\n      \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\",\r\n      \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\r\n      \"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\",\r\n      \"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\",\r\n      \"TLS_RSA_WITH_AES_256_GCM_SHA384\",\r\n      \"TLS_RSA_WITH_AES_128_GCM_SHA256\",\r\n      \"TLS_RSA_WITH_AES_256_CBC_SHA256\",\r\n      \"TLS_RSA_WITH_AES_128_CBC_SHA256\",\r\n      \"TLS_RSA_WITH_AES_256_CBC_SHA\",\r\n      \"TLS_RSA_WITH_AES_128_CBC_SHA\"\r\n    ],\r\n    \"minProtocolVersion\": \"TLSv1_1\"\r\n  },\r\n  \"type\": \"Microsoft.Network/ApplicationGatewayAvailableSslOptions/ApplicationGatewaySslPredefinedPolicy\"\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "b651b9ea-5e9d-4817-8441-435ce25fdf30"
+    "SubscriptionId": "947d47b4-7883-4bb9-9d85-c5e8e2f572ce"
   }
 }

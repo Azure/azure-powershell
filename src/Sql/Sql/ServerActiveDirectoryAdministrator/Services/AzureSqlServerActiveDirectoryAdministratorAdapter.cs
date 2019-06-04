@@ -39,11 +39,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         public IAzureContext Context { get; set; }
 
         /// <summary>
-        /// Gets or sets the Azure Subscription
-        /// </summary>
-        private IAzureSubscription _subscription { get; set; }
-
-        /// <summary>
         /// A private instance of ActiveDirectoryClient
         /// </summary>
         private ActiveDirectoryClient _activeDirectoryClient;
@@ -78,7 +73,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         public AzureSqlServerActiveDirectoryAdministratorAdapter(IAzureContext context)
         {
             Context = context;
-            _subscription = context.Subscription;
             Communicator = new AzureSqlServerActiveDirectoryAdministratorCommunicator(Context);
         }
 

@@ -19,8 +19,16 @@
 -->
 ## Upcoming Release
 
-## Version 1.0.1
+## Version 1.2.1
 * Enable **pergb2018** pricing tier in `New-AzureRmOperationalInsightsWorkspace` command
+
+## Version 1.2.0
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+## Version 1.1.0
+* Additional support for New and Get ApplicationInsights data source.
+    - Added new 'ApplicationInsights' kind to support Get specific and Get all ApplicationInsights data sources for given workspace. 
+    - Added New-AzOperationalInsightsApplicationInsightsDataSource cmdlet for creating data source by given Application-Insights resource parameters: subscription Id, resourceGroupName and name. 
 
 ## Version 1.0.0
 * General availability of `Az.OperationalInsights` module

@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         public ThreatDetectionEndpointsCommunicator(IAzureContext context)
         {
             Context = context;
-            if (context.Subscription != Subscription)
+            if (context?.Subscription != Subscription)
             {
-                Subscription = context.Subscription;
+                Subscription = context?.Subscription;
                 LegacySqlClient = null;
                 SqlClient = null;
             }

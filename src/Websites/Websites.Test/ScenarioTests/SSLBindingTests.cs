@@ -65,5 +65,12 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         {
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetWebAppCertificate");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TagsNotRemovedByCreateNewWebAppSSLBinding()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-TagsNotRemovedByCreateNewWebAppSSLBinding");
+        }
     }
 }

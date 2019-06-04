@@ -45,9 +45,8 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// <summary>
         /// Creation and initialization of the ModelAdapter object
         /// </summary>
-        /// <param name="subscription">The Azure Subscription in which the current execution is performed</param>
         /// <returns>An initialized and ready to use ModelAdapter object</returns>
-        protected override AzureSqlDataSyncAdapter InitModelAdapter(IAzureSubscription subscription)
+        protected override AzureSqlDataSyncAdapter InitModelAdapter()
         {
             return new AzureSqlDataSyncAdapter(DefaultProfile.DefaultContext);
         }

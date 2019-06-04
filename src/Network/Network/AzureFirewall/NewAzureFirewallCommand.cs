@@ -91,6 +91,17 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The operation mode for Threat Intelligence.")]
+        [ValidateSet(
+            MNM.AzureFirewallThreatIntelMode.Alert,
+            MNM.AzureFirewallThreatIntelMode.Deny,
+            MNM.AzureFirewallThreatIntelMode.Off,
+            IgnoreCase = false)]
+        public string ThreatIntelMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -139,7 +150,8 @@ namespace Microsoft.Azure.Commands.Network
                 Location = this.Location,
                 ApplicationRuleCollections = this.ApplicationRuleCollection?.ToList(),
                 NatRuleCollections = this.NatRuleCollection?.ToList(),
-                NetworkRuleCollections = this.NetworkRuleCollection?.ToList()
+                NetworkRuleCollections = this.NetworkRuleCollection?.ToList(),
+                ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert
             };
 
             if (this.virtualNetwork != null)

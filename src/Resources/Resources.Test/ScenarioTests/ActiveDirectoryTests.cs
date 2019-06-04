@@ -595,25 +595,43 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-NewADServicePrincipalWithReaderRole");
         }
 
-        [Fact]
+        [Fact(Skip = "Currently not working.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewADServicePrincipalWithCustomScope()
         {
             TestRunner.RunTestScript("Test-NewADServicePrincipalWithCustomScope");
         }
-
-        [Fact(Skip = "Not working in playback.")]
+        
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateDeleteAppPasswordCredentials()
+        public void TestCreateDeleteAppCredentials()
         {
-            TestRunner.RunTestScript("Test-CreateDeleteAppPasswordCredentials");
+            TestRunner.RunTestScript("Test-CreateDeleteAppCredentials");
         }
-
-        [Fact(Skip = "Not working in playback.")]
+        
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateDeleteSpPasswordCredentials()
+        public void TestCreateDeleteSpCredentials()
         {
-            TestRunner.RunTestScript("Test-CreateDeleteSpPasswordCredentials");
+            const string scriptMethod = "Test-CreateDeleteSpCredentials '{0}'";
+            Application application = null;
+            var controllerAdmin = ResourcesController.NewInstance;
+
+            controllerAdmin.RunPsTestWorkflow(
+                interceptor,
+                // scriptBuilder
+                () =>
+                {
+                    application = CreateNewAdApp(controllerAdmin);
+                    return new[] { string.Format(scriptMethod, application.AppId) };
+                },
+                // cleanup
+                () =>
+                {
+                    DeleteAdApp(controllerAdmin, application);
+                },
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]

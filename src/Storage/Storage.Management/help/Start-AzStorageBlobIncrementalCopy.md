@@ -125,7 +125,7 @@ Accept wildcard characters: False
 CloudBlob object from Azure Storage Client library. You can create it or use Get-AzStorageBlob cmdlet.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob
+Type: Microsoft.Azure.Storage.Blob.CloudPageBlob
 Parameter Sets: BlobInstance, BlobInstanceToBlobInstance
 Aliases: SrcICloudBlob, SrcCloudBlob, ICloudBlob, SourceICloudBlob, SourceCloudBlob
 
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 CloudBlobContainer object from Azure Storage Client library. You can create it or use Get-AzStorageContainer cmdlet.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
+Type: Microsoft.Azure.Storage.Blob.CloudBlobContainer
 Parameter Sets: ContainerInstance
 Aliases: SourceCloudBlobContainer
 
@@ -240,7 +240,7 @@ Accept wildcard characters: False
 Destination CloudBlob object
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob
+Type: Microsoft.Azure.Storage.Blob.CloudPageBlob
 Parameter Sets: BlobInstanceToBlobInstance
 Aliases: DestICloudBlob, DestinationCloudBlob, DestinationICloudBlob
 
@@ -377,9 +377,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob
+### Microsoft.Azure.Storage.Blob.CloudPageBlob
 
-### Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
+### Microsoft.Azure.Storage.Blob.CloudBlobContainer
 
 ### System.String
 

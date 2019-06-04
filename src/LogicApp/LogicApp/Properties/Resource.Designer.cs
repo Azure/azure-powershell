@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resource {
@@ -61,6 +61,33 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Assembly.
+        /// </summary>
+        internal static string Assembly {
+            get {
+                return ResourceManager.GetString("Assembly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Batch Configuration.
+        /// </summary>
+        internal static string BatchConfiguration {
+            get {
+                return ResourceManager.GetString("BatchConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to At least one release criteria must be provided..
+        /// </summary>
+        internal static string BatchConfigurationParameterNeedsToBeSpecified {
+            get {
+                return ResourceManager.GetString("BatchConfigurationParameterNeedsToBeSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancelling the LogicApp run..
         /// </summary>
         internal static string CancelLogicAppRunMessage {
@@ -75,6 +102,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         internal static string CancelLogicAppRunWarning {
             get {
                 return ResourceManager.GetString("CancelLogicAppRunWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating {0} &apos;{1}&apos; in resource group &apos;{2}&apos;..
+        /// </summary>
+        internal static string CreateIntegrationAccountArtifactMessage {
+            get {
+                return ResourceManager.GetString("CreateIntegrationAccountArtifactMessage", resourceCulture);
             }
         }
         
@@ -169,6 +205,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing {0} &apos;{1}&apos; in resource group &apos;{2}&apos;..
+        /// </summary>
+        internal static string RemoveIntegrationAccountArtifactMessage {
+            get {
+                return ResourceManager.GetString("RemoveIntegrationAccountArtifactMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing &apos;{0}&apos; &apos;{1}&apos;..
         /// </summary>
         internal static string RemoveResourceMessage {
@@ -210,6 +255,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         internal static string UpdateGeneratedControlNumberMessage {
             get {
                 return ResourceManager.GetString("UpdateGeneratedControlNumberMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating {0} &apos;{1}&apos; in resource group &apos;{2}&apos;..
+        /// </summary>
+        internal static string UpdateIntegrationAccountArtifactMessage {
+            get {
+                return ResourceManager.GetString("UpdateIntegrationAccountArtifactMessage", resourceCulture);
             }
         }
         

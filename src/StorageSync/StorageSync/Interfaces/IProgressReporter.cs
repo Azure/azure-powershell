@@ -14,13 +14,37 @@
 
 namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces
 {
+    /// <summary>
+    /// Interface IProgressReporter
+    /// </summary>
     public interface IProgressReporter
     {
+        /// <summary>
+        /// Adds the steps.
+        /// </summary>
+        /// <param name="count">The count.</param>
         void AddSteps(long count);
+        /// <summary>
+        /// Reserves the steps.
+        /// </summary>
+        /// <param name="count">The count.</param>
         void ReserveSteps(long count);
+        /// <summary>
+        /// Resets the steps.
+        /// </summary>
+        /// <param name="count">The count.</param>
         void ResetSteps(long count);
+        /// <summary>
+        /// Shows this instance.
+        /// </summary>
         void Show();
+        /// <summary>
+        /// Completes the step.
+        /// </summary>
         void CompleteStep();
+        /// <summary>
+        /// Completes this instance.
+        /// </summary>
         void Complete();
     }
 }

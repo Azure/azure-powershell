@@ -13,22 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
 using System.Security;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-#if NETSTANDARD
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
-#else
-using Microsoft.WindowsAzure.Management.Storage;
-#endif
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using System.Net.Http.Headers;
 
 namespace Common.Authentication.Test
 {
@@ -45,6 +37,7 @@ namespace Common.Authentication.Test
         public ClientFactoryTests()
         {
             // Example of environment variable: TEST_AZURE_CREDENTIALS=<subscription-id-value>;<email@domain.com>;<email-password>"
+            AzureSessionInitializer.InitializeAzureSession();
             string credsEnvironmentVariable = Environment.GetEnvironmentVariable("TEST_AZURE_CREDENTIALS") ?? "";
             string[] creds = credsEnvironmentVariable.Split(';');
 
@@ -67,57 +60,6 @@ namespace Common.Authentication.Test
             if (runTest) { return; }
         }
 
-#if !NETSTANDARD
-        /// <summary>
-        /// This test run live against Azure to list storage accounts under current subscription.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void VerifyClientFactoryWorks()
-        {
-            if (!runTest)
-            {
-                return;
-            }
-            var sub = new AzureSubscription()
-            {
-                Id = subscriptionId,
-            };
-            sub.SetAccount(userAccount);
-            sub.SetEnvironment("AzureCloud");
-            sub.SetTenant("common");
-            var account = new AzureAccount()
-            {
-                Id = userAccount,
-                Type = AzureAccount.AccountType.User,
-            };
-            account.SetTenants("common");
-            AzureContext context = new AzureContext
-            (
-                sub,
-                account,
-                AzureEnvironment.PublicEnvironments["AzureCloud"]
-            );
-
-            // Add registration action to make sure we register for the used provider (if required)
-            // AzureSession.Instance.ClientFactory.AddAction(new RPRegistrationAction());
-
-            // Authenticate!
-            AzureSession.Instance.AuthenticationFactory.Authenticate(context.Account, context.Environment, "common", password, ShowDialog.Always, null);
-
-            AzureSession.Instance.ClientFactory.AddUserAgent("TestUserAgent", "1.0");
-            // Create the client
-            var client = AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ServiceManagement);
-
-            // List storage accounts
-            var storageAccounts = client.StorageAccounts.List().StorageAccounts;
-            foreach (var storageAccount in storageAccounts)
-            {
-                Assert.NotNull(storageAccount);
-            }
-        }
-#endif
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void VerifyProductInfoHeaderValueEquality()
@@ -135,6 +77,60 @@ namespace Common.Authentication.Test
             Assert.Contains(factory.UserAgents, u => u.Product.Name == "test2" && u.Product.Version == "123");
             Assert.Contains(factory.UserAgents, u => u.Product.Name == "test1" && u.Product.Version == "456");
             Assert.Contains(factory.UserAgents, u => u.Product.Name == "test3" && u.Product.Version == null);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void VerifyUserAgentValuesAreTransmitted()
+        {
+            var storedClientFactory = AzureSession.Instance.ClientFactory;
+            var storedAuthFactory = AzureSession.Instance.AuthenticationFactory;
+            try
+            {
+                var authFactory = new AuthenticationFactory();
+                authFactory.TokenProvider = new MockAccessTokenProvider(Guid.NewGuid().ToString(), "user@contoso.com");
+                AzureSession.Instance.AuthenticationFactory = authFactory;
+                var factory = new ClientFactory();
+                AzureSession.Instance.ClientFactory = factory;
+                foreach (var agent in factory.UserAgents)
+                {
+                    factory.RemoveUserAgent(agent.Product.Name);
+                }
+
+                factory.AddUserAgent("agent1");
+                factory.AddUserAgent("agent1", "1.0.0");
+                factory.AddUserAgent("agent1", "1.0.0");
+                factory.AddUserAgent("agent1", "1.9.8");
+                factory.AddUserAgent("agent2");
+                Assert.Equal(4, factory.UserAgents.Length);
+                var sub = new AzureSubscription
+                {
+                    Id = Guid.NewGuid().ToString(),
+                };
+                sub.SetTenant("123");
+                var account = new AzureAccount
+                {
+                    Id = "user@contoso.com",
+                    Type = AzureAccount.AccountType.User,
+                };
+                account.SetTenants("123");
+                var client = factory.CreateClient<NullClient>(new AzureContext(
+                    sub,
+                    account,
+                    AzureEnvironment.PublicEnvironments["AzureCloud"]
+
+                    ), AzureEnvironment.Endpoint.ResourceManager);
+                Assert.Equal(5, client.HttpClient.DefaultRequestHeaders.UserAgent.Count);
+                Assert.Contains(new ProductInfoHeaderValue("agent1", ""), client.HttpClient.DefaultRequestHeaders.UserAgent);
+                Assert.Contains(new ProductInfoHeaderValue("agent1", "1.0.0"), client.HttpClient.DefaultRequestHeaders.UserAgent);
+                Assert.Contains(new ProductInfoHeaderValue("agent1", "1.9.8"), client.HttpClient.DefaultRequestHeaders.UserAgent);
+                Assert.Contains(new ProductInfoHeaderValue("agent2", ""), client.HttpClient.DefaultRequestHeaders.UserAgent);
+            }
+            finally
+            {
+                AzureSession.Instance.ClientFactory = storedClientFactory;
+                AzureSession.Instance.AuthenticationFactory = storedAuthFactory;
+            }
         }
 
 #if !NETSTANDARD

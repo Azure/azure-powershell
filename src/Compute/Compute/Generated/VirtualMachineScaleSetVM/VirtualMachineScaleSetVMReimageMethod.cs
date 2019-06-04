@@ -19,15 +19,16 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -81,14 +82,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
 
         [Parameter(
-            Position = 1,
+            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Position = 2,
+            Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets", "ResourceGroupName")]
@@ -96,7 +97,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string VMScaleSetName { get; set; }
 
         [Parameter(
-            Position = 3,
+            Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string InstanceId { get; set; }

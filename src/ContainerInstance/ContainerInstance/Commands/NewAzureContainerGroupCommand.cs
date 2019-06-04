@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
                     {
                         throw new ArgumentException($"Invalid 'Command' parameter: {string.Join("; ", errors.Select(err => err.Message))}");
                     }
-                    creationParameter.ContainerCommand = tokens.Select(token => token.Text.Trim('\'', '"')).ToList();
+                    creationParameter.ContainerCommand = tokens.Select(token => token.Text.Trim('\'', '"')).Where(token => !string.IsNullOrEmpty(token)).ToList();
                 }
 
                 creationParameter.Validate();

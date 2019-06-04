@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        ///Test New-AzureLogicApp with physical file paths
-        ///Test New-AzureLogicApp using definition object and parameter file
-        ///Test New-AzureLogicApp using piped input
+        ///Test New-AzLogicApp with physical file paths
+        ///Test New-AzLogicApp using definition object and parameter file
+        ///Test New-AzLogicApp using piped input
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -86,9 +86,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        ///Test New-AzureLogicApp with only definition
-        ///Test Get-AzureLogicApp 
-        ///Test Get-AzureLogicApp for a non-existing logic app
+        ///Test New-AzLogicApp with only definition
+        ///Test Get-AzLogicApp 
+        ///Test Get-AzLogicApp for a non-existing logic app
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -108,11 +108,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        ///Test Set-AzureLogicApp command to update workflow defintion without parametrs.
-        ///Test Set-AzureLogicApp command to update workflow defintion and state to Disabled.
-        ///Test Set-AzureLogicApp command to update workflow state to Enabled.
-        ///Test Set-AzureLogicApp command to set logic app with null definition.
-        ///Test Set-AzureLogicApp command to set non-existing logic app.
+        ///Test Set-AzLogicApp command to update workflow definition without parameters.
+        ///Test Set-AzLogicApp command to update workflow definition and state to Disabled.
+        ///Test Set-AzLogicApp command to update workflow state to Enabled.
+        ///Test Set-AzLogicApp command to set logic app with null definition.
+        ///Test Set-AzLogicApp command to set non-existing logic app.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -132,27 +132,28 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        ///Test New-AzureLogicApp to create logic app for non-existing service plan. Constraint validation.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateLogicAppWithNonExistingAppServicePlan()
-        {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateLogicAppWithNonExistingAppServicePlan");
-        }
-
-        /// <summary>
-        ///Test Set-AzureLogicApp command to update workflow defintion without parametrs.
-        ///Test Set-AzureLogicApp command to update workflow defintion and state to Disabled.
-        ///Test Set-AzureLogicApp command to update workflow state to Enabled.
-        ///Test Set-AzureLogicApp command to set logic app with null definition.
-        ///Test Set-AzureLogicApp command to set non-existing logic app.
+        ///Test Set-AzLogicApp command to update workflow definition without parameters.
+        ///Test Set-AzLogicApp command to update workflow definition and state to Disabled.
+        ///Test Set-AzLogicApp command to update workflow state to Enabled.
+        ///Test Set-AzLogicApp command to set logic app with null definition.
+        ///Test Set-AzLogicApp command to set non-existing logic app.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetUpgradedDefinitionForLogicApp()
         {
             WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetUpgradedDefinitionForLogicApp");
+        }
+
+        /// <summary>
+        ///Test Set-AzLogicApp command to update workflow with integration account.
+        ///Test Set-AzLogicApp command to remove integration account from a workflow.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateLogicAppWithIntegrationAccount()
+        {
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateLogicAppWithIntegrationAccount");
         }
     }
 }

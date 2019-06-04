@@ -16,54 +16,101 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
 {
     using Interfaces;
 
-    public class BaseNamespaceValidation : BaseValidation, INamespaceValidation
+    /// <summary>
+    /// Class NamespaceValidationBase.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.ValidationBase" />
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.INamespaceValidation" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.ValidationBase" />
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.INamespaceValidation" />
+    public class NamespaceValidationBase : ValidationBase, INamespaceValidation
     {
         #region Fields and Properties
+        /// <summary>
+        /// Gets the configuration.
+        /// </summary>
+        /// <value>The configuration.</value>
         protected IConfiguration Configuration { get;  }
         #endregion
 
         #region Constructors
-        public BaseNamespaceValidation(
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NamespaceValidationBase" /> class.
+        /// </summary>
+        /// <param name="configuration">The configuration.</param>
+        /// <param name="validationName">Name of the validation.</param>
+        /// <param name="validationType">Type of the validation.</param>
+        public NamespaceValidationBase(
             IConfiguration configuration,
             string validationName,
             ValidationType validationType): base(validationName, validationType, ValidationKind.NamespaceValidation)
         {
-            this.Configuration = configuration;
+            Configuration = configuration;
         }
 
         #endregion
 
         #region Public methods
+        /// <summary>
+        /// Validates the specified file information.
+        /// </summary>
+        /// <param name="fileInfo">The file information.</param>
+        /// <returns>IValidationResult.</returns>
         public IValidationResult Validate(IFileInfo fileInfo)
         {
-            return this.DoValidate(fileInfo);
+            return DoValidate(fileInfo);
         }
 
+        /// <summary>
+        /// Validates the specified directory information.
+        /// </summary>
+        /// <param name="directoryInfo">The directory information.</param>
+        /// <returns>IValidationResult.</returns>
         public IValidationResult Validate(IDirectoryInfo directoryInfo)
         {
-            return this.DoValidate(directoryInfo);
+            return DoValidate(directoryInfo);
         }
 
+        /// <summary>
+        /// Validates the specified namespace information.
+        /// </summary>
+        /// <param name="namespaceInfo">The namespace information.</param>
+        /// <returns>IValidationResult.</returns>
         public IValidationResult Validate(INamespaceInfo namespaceInfo)
         {
-            return this.DoValidate(namespaceInfo);
+            return DoValidate(namespaceInfo);
         }
         #endregion
 
         #region Protected methods
+        /// <summary>
+        /// Does the validate.
+        /// </summary>
+        /// <param name="file">The file.</param>
+        /// <returns>IValidationResult.</returns>
         protected virtual IValidationResult DoValidate(IFileInfo file)
         {
-            return this.SuccessfulResult;
+            return SuccessfulResult;
         }
 
+        /// <summary>
+        /// Does the validate.
+        /// </summary>
+        /// <param name="directoryInfo">The directory information.</param>
+        /// <returns>IValidationResult.</returns>
         protected virtual IValidationResult DoValidate(IDirectoryInfo directoryInfo)
         {
-            return this.SuccessfulResult;
+            return SuccessfulResult;
         }
 
+        /// <summary>
+        /// Does the validate.
+        /// </summary>
+        /// <param name="namespaceInfo">The namespace information.</param>
+        /// <returns>IValidationResult.</returns>
         protected virtual IValidationResult DoValidate(INamespaceInfo namespaceInfo)
         {
-            return this.SuccessfulResult;
+            return SuccessfulResult;
         }
         #endregion
     }

@@ -169,5 +169,26 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
         {
             DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-MigrateMongoDb");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestConnectToTargetSqlDbMiSync()
+        {
+            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-ConnectToTargetSqlDbMiSync");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestValidateMigrationInputSqlSqlDbMiSync()
+        {
+            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-ValidateMigrationInputSqlSqlDbMiSync");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMigrateSqlSqlDbMiSync()
+        {
+            DataMigrationTestController.NewInstance.RunPsTest(_logger, "Test-MigrateSqlSqlDbMiSync");
+        }
     }
 }

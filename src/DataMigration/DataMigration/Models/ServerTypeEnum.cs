@@ -17,7 +17,8 @@ namespace Microsoft.Azure.Commands.DataMigration.Models
     public enum ServerTypeEnum
     {
         SQL,
-        MongoDb
+        MongoDb,
+        SQLMI
     }
 }
 

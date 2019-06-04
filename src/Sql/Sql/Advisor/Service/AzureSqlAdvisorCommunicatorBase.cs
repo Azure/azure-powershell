@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         public AzureSqlAdvisorCommunicatorBase(IAzureContext context)
         {
             Context = context;
-            if (context.Subscription != Subscription)
+            if (context?.Subscription != Subscription)
             {
-                Subscription = context.Subscription;
+                Subscription = context?.Subscription;
                 SqlClient = null;
             }
         }

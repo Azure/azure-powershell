@@ -1,0 +1,86 @@
+variables:
+  WindowsName: windows
+  WindowsImage: VS2017-Win2016
+  LinuxName: linux
+  LinuxImage: Ubuntu-16.04
+  MacOSName: macOS
+  MacOSImage: macOS-10.13
+  TestFramework: netcoreapp2.1
+  TestTarget: Test
+  Configuration: Debug
+
+jobs:
+- job: Build
+  displayName: Build
+  condition: succeeded()
+  strategy:
+    matrix:
+      windows:
+        OSName: ${{ variables.WindowsName }}
+        ImageName: ${{ variables.WindowsImage }}
+      linux:
+        OSName: ${{ variables.LinuxName }}
+        ImageName: ${{ variables.LinuxImage }}
+      macOS:
+        OSName: ${{ variables.MacOSName }}
+        ImageName: ${{ variables.MacOSImage }}
+  pool:
+    vmImage: $(ImageName)
+
+  steps:
+  - template: util/build-steps.yml
+    parameters:
+      osName: $(OSName)
+      testFramework: ${{ variables.TestFramework }}
+      configuration: ${{ variables.Configuration }}
+
+- job: Analyze
+  displayName: Analyze
+  dependsOn: Build
+  condition: succeeded()
+  strategy:
+    matrix:
+      windows:
+        OSName: ${{ variables.WindowsName }}
+        ImageName: ${{ variables.WindowsImage }}
+      linux:
+        OSName: ${{ variables.LinuxName }}
+        ImageName: ${{ variables.LinuxImage }}
+      macOS:
+        OSName: ${{ variables.MacOSName }}
+        ImageName: ${{ variables.MacOSImage }}
+  pool:
+    vmImage: $(ImageName)
+
+  steps:
+  - template: util/analyze-steps.yml
+    parameters:
+      osName: $(OSName)
+      configuration: ${{ variables.Configuration }}
+
+- job: Test
+  displayName: Test
+  dependsOn: Build
+  condition: succeeded()
+  timeoutInMinutes: 120
+  strategy:
+    matrix:
+      windows:
+        OSName: ${{ variables.WindowsName }}
+        ImageName: ${{ variables.WindowsImage }}
+      linux:
+        OSName: ${{ variables.LinuxName }}
+        ImageName: ${{ variables.LinuxImage }}
+      macOS:
+        OSName: ${{ variables.MacOSName }}
+        ImageName: ${{ variables.MacOSImage }}
+  pool:
+    vmImage: $(ImageName)
+
+  steps:
+  - template: util/test-steps.yml
+    parameters:
+      osName: $(OSName)
+      testFramework: ${{ variables.TestFramework }}
+      testTarget: ${{ variables.TestTarget }}
+      configuration: ${{ variables.Configuration }}

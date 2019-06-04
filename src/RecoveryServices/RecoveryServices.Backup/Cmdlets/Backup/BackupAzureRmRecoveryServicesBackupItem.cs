@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Enables backup of an item protected by the recovery services vault.
     /// Returns the corresponding job created in the service to track this backup operation.
     /// </summary>
-    [Cmdlet("Backup", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupItem", SupportsShouldProcess = true),OutputType(typeof(JobBase))]
+    [Cmdlet("Backup", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupItem", SupportsShouldProcess = true), OutputType(typeof(JobBase))]
     public class BackupAzureRmRecoveryServicesBackupItem : RSBackupVaultCmdletBase
     {
         /// <summary>
@@ -45,6 +45,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public DateTime? ExpiryDateTimeUTC { get; set; }
 
+        /// <summary>
+        /// The protected item on which backup has to be triggered.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Item.BackupType,
+            ValueFromPipeline = false)]
+        [ValidateNotNullOrEmpty]
+        public BackupType BackupType { get; set; }
+
+        /// <summary>
+        /// The protected item on which backup has to be triggered.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Item.EnableCompression,
+            ValueFromPipeline = false)]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter EnableCompression { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -62,6 +78,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         {VaultParams.ResourceGroupName, resourceGroupName},
                         {ItemParams.Item, Item},
                         {ItemParams.ExpiryDateTimeUTC, ExpiryDateTimeUTC},
+                        {ItemParams.BackupType, BackupType},
+                        {ItemParams.EnableCompression, EnableCompression.IsPresent},
                     }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider =

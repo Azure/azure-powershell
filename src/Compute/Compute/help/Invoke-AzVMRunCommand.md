@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/invoke-azvmruncommand
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzVMRunCommand
 
 ## SYNOPSIS
-Run command on the VM.
+Run a command on the VM.
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Invoke a run command on the VM.
 
 ### Example 1
 ```
-PS C:\> Invoke-AzVMRunCommand -ResourceGroupName 'rgname' -Name 'vmname' -CommandId 'RunPowerShellScript' -ScriptPath 'sample.ps1' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
+PS C:\> Invoke-AzVMRunCommand -ResourceGroupName 'rgname' -Name 'vmname' -CommandId 'RunPowerShellScript' -ScriptPath 'sample.ps1' -Parameter @{param1 = "var1"; param2 = "var2"}
 ```
 
 Invoke a run command of RunPowerShellScript with overriding the script 'sample.ps1' and the parameters on the VM of 'vmname' in resource group 'rgname'.
@@ -48,7 +48,7 @@ Invoke a run command of RunPowerShellScript with overriding the script 'sample.p
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background and return a Job to track progress.
+Run cmdlet in the background and return a job object to track progress.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -CommandId
-The run command id.
+The run command ID.
 
 ```yaml
 Type: System.String
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -116,14 +116,14 @@ Parameter Sets: DefaultParameter
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id for the VM
+The resource ID for the VM.
 
 ```yaml
 Type: System.String
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 ```
 
 ### -VM
-The PS virtual Machine Object.
+The PS virtual machine object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
@@ -176,7 +176,7 @@ Parameter Sets: DefaultParameter
 Aliases: Name
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

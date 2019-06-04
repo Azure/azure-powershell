@@ -94,9 +94,8 @@ namespace Microsoft.Azure.Commands.Sql.Cmdlet
         /// <summary>
         /// Initializes the model adapter
         /// </summary>
-        /// <param name="subscription">The subscription the cmdlets are operation under</param>
         /// <returns>The recommended index adapter</returns>
-        protected override AzureSqlDatabaseIndexRecommendationAdapter InitModelAdapter(IAzureSubscription subscription)
+        protected override AzureSqlDatabaseIndexRecommendationAdapter InitModelAdapter()
         {
             return new AzureSqlDatabaseIndexRecommendationAdapter(DefaultProfile.DefaultContext);
         }

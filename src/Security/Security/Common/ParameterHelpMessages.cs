@@ -68,5 +68,12 @@ namespace Microsoft.Azure.Commands.Security.Common
         public const string VirutalMachines = "Virtual Machines.";
 
         #endregion
+
+        #region Threat Detection Settings
+
+        public const string Disable = "Disables Threat Protection Policy";
+        public const string Enable = "Enables Threat Protection Policy";
+
+        #endregion
     }
 }

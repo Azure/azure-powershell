@@ -77,9 +77,8 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
         /// <summary>
         /// Initializes the adapter
         /// </summary>
-        /// <param name="subscription">Subscription</param>
         /// <returns>Returns new AzureSqlServiceTierAdvisorAdapter</returns>
-        protected override AzureSqlServiceTierAdvisorAdapter InitModelAdapter(IAzureSubscription subscription)
+        protected override AzureSqlServiceTierAdvisorAdapter InitModelAdapter()
         {
             return new AzureSqlServiceTierAdvisorAdapter(DefaultProfile.DefaultContext);
         }

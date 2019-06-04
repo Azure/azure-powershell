@@ -1,4 +1,5 @@
 # Azure PowerShell specific
+Net472Tests/
 artifacts/
 src/Stack/
 src/local-artifacts/*

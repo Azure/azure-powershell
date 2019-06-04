@@ -53,7 +53,7 @@ Enum that describes server type to connect to. Currently supported values are SQ
 Type: Microsoft.Azure.Commands.DataMigration.Models.ServerTypeEnum
 Parameter Sets: (All)
 Aliases:
-Accepted values: SQL
+Accepted values: SQL, MongoDb, SQLMI
 
 Required: True
 Position: Named

@@ -46,10 +46,65 @@ The **Get-AzPublicIPAddress** cmdlet gets one or more public IP addresses in a r
 
 ### 1: Get a public IP resource
 ```
-$publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
+Get-AzPublicIpAddress -Name myPublicIp1 -ResourceGroupName myRg
+
+Name                     : myPublicIp1
+ResourceGroupName        : myRg
+Location                 : westus2
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRg/providers/Microsoft
+                           .Network/publicIPAddresses/myPublicIp1
+Etag                     : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid             : 00000000-0000-0000-0000-000000000000
+ProvisioningState        : Succeeded
+Tags                     :
+PublicIpAllocationMethod : Dynamic
+IpAddress                : Not Assigned
+PublicIpAddressVersion   : IPv4
+IdleTimeoutInMinutes     : 4
+IpConfiguration          : {
+                             "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRg/providers/
+                           Microsoft.Network/networkInterfaces/ps-azure-env407/ipConfigurations/ipconfig1"
+                           }
+DnsSettings              : null
+Zones                    : {}
+Sku                      : {
+                             "Name": "Basic"
+                           }
+IpTags                   : []
 ```
 
-This command gets a public IP address resource with name $publicIPName in the resource group $rgName.
+This command gets a public IP address resource with name myPublicIp in the resource group myRg.
+
+### 2: Get public IP resources using filtering
+```
+Get-AzPublicIpAddress -Name myPublicIp*
+
+Name                     : myPublicIp1
+ResourceGroupName        : myRg
+Location                 : westus2
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRg/providers/Microsoft
+                           .Network/publicIPAddresses/myPublicIp1
+Etag                     : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid             : 00000000-0000-0000-0000-000000000000
+ProvisioningState        : Succeeded
+Tags                     :
+PublicIpAllocationMethod : Dynamic
+IpAddress                : Not Assigned
+PublicIpAddressVersion   : IPv4
+IdleTimeoutInMinutes     : 4
+IpConfiguration          : {
+                             "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRg/providers/
+                           Microsoft.Network/networkInterfaces/ps-azure-env407/ipConfigurations/ipconfig1"
+                           }
+DnsSettings              : null
+Zones                    : {}
+Sku                      : {
+                             "Name": "Basic"
+                           }
+IpTags                   : []
+```
+
+This command gets all public IP address resources whose name starts with myPublicIp.
 
 ## PARAMETERS
 
@@ -120,7 +175,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -132,7 +187,7 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -NetworkInterfaceName
@@ -174,7 +229,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -186,7 +241,7 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -VirtualMachineIndex
@@ -244,7 +299,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

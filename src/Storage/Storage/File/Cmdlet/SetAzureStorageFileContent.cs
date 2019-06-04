@@ -14,9 +14,12 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.File;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using Microsoft.Azure.Storage;
+    using Microsoft.Azure.Storage.File;
+    using System;
     using System.Globalization;
     using System.IO;
     using System.Management.Automation;
@@ -71,10 +74,30 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(HelpMessage = "Returns an object representing the downloaded cloud file. By default, this cmdlet does not generate any output.")]
         public SwitchParameter PassThru { get; set; }
 
+        protected override void ProcessRecord()
+        {
+            try
+            {
+                Source = this.GetUnresolvedProviderPathFromPSPath(Source);
+                Validate.ValidateInternetConnection();
+                InitChannelCurrentSubscription();
+                this.ExecuteSynchronouslyOrAsJob();
+            }
+            catch (Exception ex) when (!IsTerminatingError(ex))
+            {
+                WriteExceptionError(ex);
+            }
+        }
+
         public override void ExecuteCmdlet()
         {
-            // Step 1: Validate source file.
-            FileInfo localFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(this.Source));
+            if (AsJob.IsPresent)
+            {
+                DoBeginProcessing();
+            }
+
+            string filePath = this.Source;
+            FileInfo localFile = new FileInfo(filePath);
             if (!localFile.Exists)
             {
                 throw new FileNotFoundException(string.Format(CultureInfo.CurrentCulture, Resources.SourceFileNotFound, this.Source));
@@ -118,6 +141,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         this.OutputStream.WriteObject(taskId, cloudFileToBeUploaded);
                     }
                 });
+            }
+
+            if (AsJob.IsPresent)
+            {
+                DoEndProcessing();
             }
         }
 

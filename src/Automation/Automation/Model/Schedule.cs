@@ -233,6 +233,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         private static WeeklyScheduleOptions CreateWeeklyScheduleOptions(Microsoft.Azure.Management.Automation.Models.AdvancedSchedule advSchedule)
         {
             return advSchedule == null
+                || advSchedule.WeekDays == null
                 ? null
                 : new WeeklyScheduleOptions()
                 {
@@ -301,7 +302,12 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </returns>
         private static IList<DaysOfMonth> GetDaysOfMonth(IList<int> daysOfMonth)
         {
-            return daysOfMonth.Select(value => (DaysOfMonth)value).ToList();
+            if (daysOfMonth != null)
+            {
+                return daysOfMonth.Select(value => (DaysOfMonth)value).ToList();
+            }
+
+            return null;
         }
 
         private static DateTimeOffset? AdjustOffset(DateTimeOffset? dateTimeOffset, double offsetMinutes)

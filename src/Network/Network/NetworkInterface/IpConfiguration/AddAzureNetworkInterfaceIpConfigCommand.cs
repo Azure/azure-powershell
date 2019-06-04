@@ -105,7 +105,16 @@ namespace Microsoft.Azure.Commands.Network
 
             var ipconfig = new PSNetworkInterfaceIPConfiguration();
             ipconfig.Name = this.Name;
-            ipconfig.Primary = this.Primary.IsPresent;
+            if (this.Primary.IsPresent)
+            {
+                foreach(var item in NetworkInterface.IpConfigurations)
+                {
+                    item.Primary = false;
+                }
+
+                ipconfig.Primary = this.Primary.IsPresent;
+            }
+
             if (!string.IsNullOrEmpty(this.SubnetId))
             {
                 ipconfig.Subnet = new PSSubnet();

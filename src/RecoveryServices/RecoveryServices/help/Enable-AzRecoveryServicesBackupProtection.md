@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 44622461-E567-4A0A-8F18-2D7B1BF86DA2
@@ -30,6 +30,12 @@ Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-Name] <String
 Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-Name] <String>
  [-StorageAccountName] <String> [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+```
+
+### AzureWorkloadEnableProtection
+```
+Enable-AzRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-ProtectableItem] <ProtectableItemBase>
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ModifyProtection
@@ -117,6 +123,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProtectableItem
+Filter value for status of job.
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ProtectableItemBase
+Parameter Sets: AzureWorkloadEnableProtection
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

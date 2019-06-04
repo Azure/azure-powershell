@@ -21,9 +21,11 @@ using Microsoft.Azure.Management.Cdn;
 using System.Linq;
 using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
+    [CmdletDeprecation(ReplacementCmdletName = "Disable-AzCdnCustomDomainHttps")]
     [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnCustomDomain", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class DisableAzureRmCdnCustomDomain : AzureCdnCmdletBase
     {

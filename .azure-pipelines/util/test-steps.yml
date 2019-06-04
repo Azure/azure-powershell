@@ -1,0 +1,21 @@
+parameters:
+  osName: ''
+  testFramework: ''
+  testTarget: ''
+  configuration: ''
+
+steps:
+- template: download-build-steps.yml
+  parameters:
+    osName: ${{ parameters.osName }}
+
+- task: DotNetCoreCLI@2
+  displayName: Test
+  inputs:
+    command: custom
+    custom: msbuild
+    arguments: 'build.proj /t:${{ parameters.testTarget }} /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }}'
+
+- template: publish-artifacts-steps.yml
+  parameters:
+    artifactName: test-${{ parameters.osName }}

@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzNetworkInterfaceIpConfig
 
 ## SYNOPSIS
-Sets the goal state for an Azure network interface IP configuration.
+Updates an IP configuration for a network interface.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Set-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterf
 ```
 
 ## DESCRIPTION
-The **Set-AzNetworkInterfaceIpConfig** cmdlet sets the goal state for an Azure network interface IP configuration.
+The **Set-AzNetworkInterfaceIpConfig** cmdlet updates an IP configuration for a network interface.
 
 ## EXAMPLES
 

@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.Security
 Module Guid: 5e312bb4-9d3a-4c88-94c3-8e5bbb2e3da4
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.security
@@ -11,6 +11,12 @@ Locale: en-US
 Azure Security Center gives you control over the security of your Azure subscriptions and other machines that you connected to it outside of Azure.
 
 ## Az.Security Cmdlets
+### [Disable-AzSecurityAdvancedThreatProtection](Disable-AzSecurityAdvancedThreatProtection.md)
+Disables the advanced threat protection policy for a storage account.
+
+### [Enable-AzSecurityAdvancedThreatProtection](Enable-AzSecurityAdvancedThreatProtection.md)
+Enables the advanced threat protection policy for a storage account.
+
 ### [Get-AzDiscoveredSecuritySolution](Get-AzDiscoveredSecuritySolution.md)
 Gets security solutions that were discovered by Azure Security Center
 
@@ -19,6 +25,9 @@ Get external security solution
 
 ### [Get-AzJitNetworkAccessPolicy](Get-AzJitNetworkAccessPolicy.md)
 Gets the JIT network access policies
+
+### [Get-AzSecurityAdvancedThreatProtection](Get-AzSecurityAdvancedThreatProtection.md)
+Gets the advanced threat protection policy for a storage account.
 
 ### [Get-AzSecurityAlert](Get-AzSecurityAlert.md)
 Gets security alerts that were detected by Azure Security Center

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 115A7612-4856-47AE-AEE4-918350CD7009
@@ -63,11 +63,10 @@ Following is a sample updated role definition json for Set-AzRoleDefinition
 ### Update using PSRoleDefinitionObject
 ```
 PS C:\> $roleDef = Get-AzRoleDefinition "Contoso On-Call"
-          PS C:\> $roleDef.Actions.Add("Microsoft.ClassicCompute/virtualmachines/start/action")
-          PS C:\> $roleDef.Description = "Can monitor all resources and start and restart virtual machines"
-          PS C:\> $roleDef.AssignableScopes = @("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-
-          PS C:\> Set-AzRoleDefinition -Role $roleDef
+PS C:\> $roleDef.Actions.Add("Microsoft.ClassicCompute/virtualmachines/start/action")
+PS C:\> $roleDef.Description = "Can monitor all resources and start and restart virtual machines"
+PS C:\> $roleDef.AssignableScopes = @("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+PS C:\> Set-AzRoleDefinition -Role $roleDef
 ```
 
 ### Create using JSON file

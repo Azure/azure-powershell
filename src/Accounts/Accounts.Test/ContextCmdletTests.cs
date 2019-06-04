@@ -35,7 +35,7 @@ using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Common;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
+namespace Microsoft.Azure.Commands.Profile.Test
 {
     public class ContextCmdletTests : RMTestBase
     {

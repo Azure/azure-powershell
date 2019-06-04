@@ -56,9 +56,8 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Cmdlet
         /// <summary>
         /// Initializes the adapter
         /// </summary>
-        /// <param name="subscription"></param>
         /// <returns></returns>
-        protected override AzureSqlDatabaseActivationAdapter InitModelAdapter(IAzureSubscription subscription)
+        protected override AzureSqlDatabaseActivationAdapter InitModelAdapter()
         {
             return new AzureSqlDatabaseActivationAdapter(DefaultProfile.DefaultContext);
         }

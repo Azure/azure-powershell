@@ -53,6 +53,13 @@ In this example we create a packet capture named "PacketCaptureTest" with multip
 We then call Get-AzNetworkWatcherPacketCapture to retrieve the status of the capture session. 
 Note: The Azure Network Watcher extension must be installed on the target virtual machine to create packet captures.
 
+### Example 2: Create a Packet Capture with multiple filters and retrieve its status
+```
+Get-AzNetworkWatcherPacketCapture -ResourceGroupName rg1 -NetworkWatcherName nw1 -PacketCaptureName PacketCapture*
+```
+
+This cmdlet returns all PacketCaptures that start with "PacketCapture" in the nw1 Network Watcher.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -142,7 +149,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
@@ -161,7 +168,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

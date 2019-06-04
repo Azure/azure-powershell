@@ -108,7 +108,12 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
             slo.Id = s.Id;
             slo.ServiceObjectiveName = s.Name;
             slo.Status = s.Status.ToString();
-            slo.SupportedMaxSizes = s.SupportedMaxSizes.Select(CreateSupportedMaxSizeModel).ToList();
+
+            // Vcore service objectives don't have supported max sizes, they have max size ranges
+            if (s.SupportedMaxSizes != null)
+            {
+                slo.SupportedMaxSizes = s.SupportedMaxSizes.Select(CreateSupportedMaxSizeModel).ToList();
+            }
 
             return slo;
         }
@@ -133,7 +138,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
                 Limit = m.MaxValue.Limit,
                 Unit = m.MaxValue.Unit
             };
-            
+
             maxSizeRange.ScaleSize = new MaxSizeCapabilityModel()
             {
                 Limit = m.ScaleSize.Limit,

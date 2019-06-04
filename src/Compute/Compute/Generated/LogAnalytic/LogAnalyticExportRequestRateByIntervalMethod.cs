@@ -19,15 +19,16 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -52,17 +53,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     parameters.GroupByThrottlePolicy = this.GroupByThrottlePolicy;
                     string location = this.Location.Canonicalize();
 
-                    var result = LogAnalyticsClient.ExportRequestRateByInterval(parameters, location);
-                    var psObject = new PSLogAnalyticsOperationResult();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<LogAnalyticsOperationResult, PSLogAnalyticsOperationResult>(result, psObject);
-                    WriteObject(psObject);
+                    if (NoWait.IsPresent)
+                    {
+                        var result = LogAnalyticsClient.BeginExportRequestRateByInterval(parameters, location);
+                        var psObject = new PSLogAnalyticsOperationResult();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<LogAnalyticsOperationResult, PSLogAnalyticsOperationResult>(result, psObject);
+                        WriteObject(psObject);
+                    }
+                    else
+                    {
+                        var result = LogAnalyticsClient.ExportRequestRateByInterval(parameters, location);
+                        var psObject = new PSLogAnalyticsOperationResult();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<LogAnalyticsOperationResult, PSLogAnalyticsOperationResult>(result, psObject);
+                        WriteObject(psObject);
+                    }
                 }
             });
         }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 1,
+            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [LocationCompleter("Microsoft.Compute/locations/logAnalytics")]
@@ -70,25 +81,25 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 2,
+            Position = 1,
             Mandatory = true)]
         public DateTime FromTime { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 3,
+            Position = 2,
             Mandatory = true)]
         public DateTime ToTime { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 4,
+            Position = 3,
             Mandatory = true)]
         public string BlobContainerSasUri { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 5,
+            Position = 4,
             Mandatory = true)]
         public IntervalInMins IntervalLength { get; set; }
 
@@ -109,5 +120,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has sucessufuly been completed, use some other mechanism.")]
+        public SwitchParameter NoWait { get; set; }
     }
 }

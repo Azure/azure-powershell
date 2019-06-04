@@ -19,14 +19,15 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -95,40 +96,67 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            // EncryptionSettings
-            EncryptionSettings vEncryptionSettings = null;
+            // EncryptionSettingsCollection
+            EncryptionSettingsCollection vEncryptionSettingsCollection = null;
+
+            // EncryptionSettingsCollection
+            EncryptionSettingsElement vEncryptionSettingsElement = null;
 
             // Sku
             DiskSku vSku = null;
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("EncryptionSettingsEnabled"))
+            if (this.IsParameterBound(c => c.EncryptionSettingsEnabled))
             {
-                if (vEncryptionSettings == null)
+                if (vEncryptionSettingsCollection == null)
                 {
-                    vEncryptionSettings = new EncryptionSettings();
+                    vEncryptionSettingsCollection = new EncryptionSettingsCollection();
                 }
-                vEncryptionSettings.Enabled = this.EncryptionSettingsEnabled;
+                vEncryptionSettingsCollection.Enabled = (bool)this.EncryptionSettingsEnabled;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("DiskEncryptionKey"))
+            if (this.IsParameterBound(c => c.DiskEncryptionKey))
             {
-                if (vEncryptionSettings == null)
+                if (vEncryptionSettingsCollection == null)
                 {
-                    vEncryptionSettings = new EncryptionSettings();
+                    vEncryptionSettingsCollection = new EncryptionSettingsCollection();
                 }
-                vEncryptionSettings.DiskEncryptionKey = this.DiskEncryptionKey;
+
+                if (vEncryptionSettingsCollection.EncryptionSettings == null)
+                {
+                    vEncryptionSettingsCollection.EncryptionSettings = new List<EncryptionSettingsElement>();
+                }
+
+                if (vEncryptionSettingsElement == null)
+                {
+                    vEncryptionSettingsElement = new EncryptionSettingsElement();
+                    vEncryptionSettingsCollection.EncryptionSettings.Add(vEncryptionSettingsElement);
+                }
+
+                vEncryptionSettingsCollection.EncryptionSettings[0].DiskEncryptionKey = this.DiskEncryptionKey;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("KeyEncryptionKey"))
+            if (this.IsParameterBound(c => c.KeyEncryptionKey))
             {
-                if (vEncryptionSettings == null)
+                if (vEncryptionSettingsCollection == null)
                 {
-                    vEncryptionSettings = new EncryptionSettings();
+                    vEncryptionSettingsCollection = new EncryptionSettingsCollection();
                 }
-                vEncryptionSettings.KeyEncryptionKey = this.KeyEncryptionKey;
+
+                if (vEncryptionSettingsCollection.EncryptionSettings == null)
+                {
+                    vEncryptionSettingsCollection.EncryptionSettings = new List<EncryptionSettingsElement>();
+                }
+
+                if (vEncryptionSettingsElement == null)
+                {
+                    vEncryptionSettingsElement = new EncryptionSettingsElement();
+                    vEncryptionSettingsCollection.EncryptionSettings.Add(vEncryptionSettingsElement);
+                }
+
+                vEncryptionSettingsCollection.EncryptionSettings[0].KeyEncryptionKey = this.KeyEncryptionKey;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("SkuName"))
+            if (this.IsParameterBound(c => c.SkuName))
             {
                 if (vSku == null)
                 {
@@ -139,12 +167,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vDiskUpdate = new PSDiskUpdate
             {
-                OsType = this.MyInvocation.BoundParameters.ContainsKey("OsType") ? this.OsType : (OperatingSystemTypes?)null,
-                DiskSizeGB = this.MyInvocation.BoundParameters.ContainsKey("DiskSizeGB") ? this.DiskSizeGB : (int?)null,
-                DiskIOPSReadWrite = this.MyInvocation.BoundParameters.ContainsKey("DiskIOPSReadWrite") ? this.DiskIOPSReadWrite : (int?)null,
-                DiskMBpsReadWrite = this.MyInvocation.BoundParameters.ContainsKey("DiskMBpsReadWrite") ? this.DiskMBpsReadWrite : (int?)null,
-                Tags = this.MyInvocation.BoundParameters.ContainsKey("Tag") ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
-                EncryptionSettings = vEncryptionSettings,
+                OsType = this.IsParameterBound(c => c.OsType) ? this.OsType : (OperatingSystemTypes?)null,
+                DiskSizeGB = this.IsParameterBound(c => c.DiskSizeGB) ? this.DiskSizeGB : (int?)null,
+                DiskIOPSReadWrite = this.IsParameterBound(c => c.DiskIOPSReadWrite) ? this.DiskIOPSReadWrite : (int?)null,
+                DiskMBpsReadWrite = this.IsParameterBound(c => c.DiskMBpsReadWrite) ? this.DiskMBpsReadWrite : (int?)null,
+                Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
+                EncryptionSettingsCollection = vEncryptionSettingsCollection,
                 Sku = vSku,
             };
 

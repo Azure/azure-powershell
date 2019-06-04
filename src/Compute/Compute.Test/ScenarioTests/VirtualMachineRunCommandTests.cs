@@ -12,41 +12,37 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class VirtualMachineRunCommandTests
+    public class VirtualMachineRunCommandTests : ComputeTestRunner
     {
-        XunitTracingInterceptor _logger;
-
         public VirtualMachineRunCommandTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineGetRunCommand()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineGetRunCommand");
+            TestRunner.RunTestScript("Test-VirtualMachineGetRunCommand");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineSetRunCommand()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineSetRunCommand");
+            TestRunner.RunTestScript("Test-VirtualMachineSetRunCommand");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetVMRunCommand()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineScaleSetVMRunCommand");
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetVMRunCommand");
         }
 
     }

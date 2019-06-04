@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzNetworkInterface
 
 ## SYNOPSIS
-Sets the goal state for a network interface.
+Updates a network interface.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Set-AzNetworkInterface -NetworkInterface <PSNetworkInterface> [-AsJob]
 ```
 
 ## DESCRIPTION
-The **Set-AzNetworkInterface** sets the goal state for an Azure network interface.
+The **Set-AzNetworkInterface** updates a network interface.
 
 ## EXAMPLES
 
@@ -80,7 +80,7 @@ $nic.NetworkSecurityGroup = $nsg
 $nic | Set-AzNetworkInterface
 ```
 
-The first command gets an existing network interface called NetworkInterface1 and stores it in the $nic variable. The second command gets an existing network security group called MyNSG and stores it in the $nsg variable. The forth command assigns the $nsg to the $nic. Finally, the fifth command applies the changes to the Network interface. To dissociate network security groups from a network interface, simple replace $nsg in the forth command with $null.
+The first command gets an existing network interface called NetworkInterface1 and stores it in the $nic variable. The second command gets an existing network security group called MyNSG and stores it in the $nsg variable. The third command assigns the $nsg to the $nic. Finally, the forth command applies the changes to the Network interface. To dissociate network security groups from a network interface, simple replace $nsg in the third command with $null.
 
 ## PARAMETERS
 
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkInterface
-Specifies a **NetworkInterface** object that represents the goal state for a network interface.
+Specifies a network interface object representing the state to which the network interface should be set.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSNetworkInterface

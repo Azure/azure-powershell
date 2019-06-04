@@ -27,17 +27,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     public abstract class ResourceWithParameterCmdletBase : ResourceManagerCmdletBase
     {
+        protected const string TemplateObjectParameterObjectParameterSetName = "ByTemplateObjectAndParameterObject";
+        protected const string TemplateObjectParameterFileParameterSetName = "ByTemplateObjectAndParameterFile";
+        protected const string TemplateObjectParameterUriParameterSetName = "ByTemplateObjectAndParameterUri";
+
         protected const string TemplateFileParameterObjectParameterSetName = "ByTemplateFileAndParameterObject";
         protected const string TemplateFileParameterFileParameterSetName = "ByTemplateFileAndParameterFile";
         protected const string TemplateFileParameterUriParameterSetName = "ByTemplateFileAndParameterUri";
+
         protected const string TemplateUriParameterObjectParameterSetName = "ByTemplateUriAndParameterObject";
         protected const string TemplateUriParameterFileParameterSetName = "ByTemplateUriAndParameterFile";
         protected const string TemplateUriParameterUriParameterSetName = "ByTemplateUriAndParameterUri";
-        protected const string ParameterlessTemplateFileParameterSetName = "ByTemplateFileWithNoParameters";
+
         protected const string ParameterlessGalleryTemplateParameterSetName = "ByGalleryWithNoParameters";
+        protected const string ParameterlessTemplateObjectParameterSetName = "ByTemplateObjectWithNoParameters";
+        protected const string ParameterlessTemplateFileParameterSetName = "ByTemplateFileWithNoParameters";
         protected const string ParameterlessTemplateUriParameterSetName = "ByTemplateUriWithNoParameters";
 
         protected RuntimeDefinedParameterDictionary dynamicParameters;
+
+        private Hashtable templateObject;
 
         private string templateFile;
 
@@ -48,12 +57,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             dynamicParameters = new RuntimeDefinedParameterDictionary();
         }
 
+        [Parameter(ParameterSetName = TemplateObjectParameterObjectParameterSetName,
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents the parameters.")]
         [Parameter(ParameterSetName = TemplateFileParameterObjectParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents the parameters.")]
         [Parameter(ParameterSetName = TemplateUriParameterObjectParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents the parameters.")]
         public Hashtable TemplateParameterObject { get; set; }
 
+        [Parameter(ParameterSetName = TemplateObjectParameterFileParameterSetName,
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A file that has the template parameters.")]
         [Parameter(ParameterSetName = TemplateFileParameterFileParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A file that has the template parameters.")]
         [Parameter(ParameterSetName = TemplateUriParameterFileParameterSetName,
@@ -61,12 +74,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string TemplateParameterFile { get; set; }
 
+        [Parameter(ParameterSetName = TemplateObjectParameterUriParameterSetName,
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template parameter file.")]
         [Parameter(ParameterSetName = TemplateFileParameterUriParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template parameter file.")]
         [Parameter(ParameterSetName = TemplateUriParameterUriParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template parameter file.")]
         [ValidateNotNullOrEmpty]
         public string TemplateParameterUri { get; set; }
+
+        [Parameter(ParameterSetName = TemplateObjectParameterFileParameterSetName,
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents the template.")]
+        [Parameter(ParameterSetName = TemplateObjectParameterObjectParameterSetName,
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents the template.")]
+        [Parameter(ParameterSetName = TemplateObjectParameterUriParameterSetName,
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents the template.")]
+        [Parameter(ParameterSetName = ParameterlessTemplateObjectParameterSetName,
+            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents the template.")]
+        [ValidateNotNull]
+        public Hashtable TemplateObject { get; set; }
 
         [Parameter(ParameterSetName = TemplateFileParameterObjectParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Local path to the template file.")]
@@ -90,48 +116,78 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string TemplateUri { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Skips the PowerShell dynamic parameter processing that checks if the provided template parameter contains all necessary parameters used by the template. " +
+                                                    "This check would prompt the user to provide a value for the missing parameters, but providing the -SkipTemplateParameterPrompt will ignore this prompt and " +
+                                                    "error out immediately if a parameter was found not to be bound in the template. For non-interactive scripts, -SkipTemplateParameterPrompt can be provided " +
+                                                    "to provide a better error message in the case where not all required parameters are satisfied.")]
+        public SwitchParameter SkipTemplateParameterPrompt { get; set; }
+
         public object GetDynamicParameters()
         {
-            if (!string.IsNullOrEmpty(TemplateFile) &&
-                !TemplateFile.Equals(templateFile, StringComparison.OrdinalIgnoreCase))
+            if (!this.IsParameterBound(c => c.SkipTemplateParameterPrompt))
             {
-                templateFile = TemplateFile;
-                if (string.IsNullOrEmpty(TemplateParameterUri))
+                if (TemplateObject != null &&
+                TemplateObject != templateObject)
                 {
-                    dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                        this.ResolvePath(TemplateFile),
-                        TemplateParameterObject,
-                        this.ResolvePath(TemplateParameterFile),
-                        MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                    templateObject = TemplateObject;
+                    if (string.IsNullOrEmpty(TemplateParameterUri))
+                    {
+                        dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
+                            TemplateObject,
+                            TemplateParameterObject,
+                            this.ResolvePath(TemplateParameterFile),
+                            MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                    }
+                    else
+                    {
+                        dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
+                            TemplateObject,
+                            TemplateParameterObject,
+                            TemplateParameterUri,
+                            MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                    }
                 }
-                else
+                else if (!string.IsNullOrEmpty(TemplateFile) &&
+                    !TemplateFile.Equals(templateFile, StringComparison.OrdinalIgnoreCase))
                 {
-                    dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                        this.ResolvePath(TemplateFile),
-                        TemplateParameterObject,
-                        TemplateParameterUri,
-                        MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                    templateFile = TemplateFile;
+                    if (string.IsNullOrEmpty(TemplateParameterUri))
+                    {
+                        dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
+                            this.ResolvePath(TemplateFile),
+                            TemplateParameterObject,
+                            this.ResolvePath(TemplateParameterFile),
+                            MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                    }
+                    else
+                    {
+                        dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
+                            this.ResolvePath(TemplateFile),
+                            TemplateParameterObject,
+                            TemplateParameterUri,
+                            MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                    }
                 }
-            }
-            else if (!string.IsNullOrEmpty(TemplateUri) &&
-                !TemplateUri.Equals(templateUri, StringComparison.OrdinalIgnoreCase))
-            {
-                templateUri = TemplateUri;
-                if (string.IsNullOrEmpty(TemplateParameterUri))
+                else if (!string.IsNullOrEmpty(TemplateUri) &&
+                    !TemplateUri.Equals(templateUri, StringComparison.OrdinalIgnoreCase))
                 {
-                    dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                        TemplateUri,
-                        TemplateParameterObject,
-                        this.ResolvePath(TemplateParameterFile),
-                        MyInvocation.MyCommand.Parameters.Keys.ToArray());
-                }
-                else
-                {
-                    dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
-                        TemplateUri,
-                        TemplateParameterObject,
-                        TemplateParameterUri,
-                        MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                    templateUri = TemplateUri;
+                    if (string.IsNullOrEmpty(TemplateParameterUri))
+                    {
+                        dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
+                            TemplateUri,
+                            TemplateParameterObject,
+                            this.ResolvePath(TemplateParameterFile),
+                            MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                    }
+                    else
+                    {
+                        dynamicParameters = TemplateUtility.GetTemplateParametersFromFile(
+                            TemplateUri,
+                            TemplateParameterObject,
+                            TemplateParameterUri,
+                            MyInvocation.MyCommand.Parameters.Keys.ToArray());
+                    }
                 }
             }
 

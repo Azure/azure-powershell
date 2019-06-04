@@ -75,7 +75,7 @@ function Create-DataMigrationService($rg)
 	}else{
 		$serviceName = Get-ServiceName
 		$virtualSubNetId = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("VIRTUAL_SUBNET_ID")
-		$sku = "BusinessCritical_4vCores"
+		$sku = "Premium_4vCores"
 		$service = New-AzDataMigrationService -ResourceGroupName $rg.ResourceGroupName -ServiceName $ServiceName -Location $rg.Location -Sku $sku -VirtualSubnetId $virtualSubNetId
 	}
 
@@ -188,4 +188,22 @@ function SleepTask($value){
 	}else{
 		Start-Sleep -s 0
 	}
+}
+
+function New-TargetSqlMiSyncConnectionInfo
+{
+	$miResourceId = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("MI_RESOURCE_ID")
+	$connectioninfo = New-AzDmsConnInfo -ServerType SQLMI -MiResourceId $miResourceId
+
+	return $connectioninfo
+}
+
+function New-AzureActiveDirectoryApp
+{
+	$pwd = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("AZURE_AAD_APP_KEY")
+	$appId = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("AZURE_AAD_APP_ID")
+
+	$secpasswd = ConvertTo-SecureString $pwd -AsPlainText -Force
+	$app = New-AzDmsAadApp -ApplicationId $appId -AppKey $secpasswd
+	return $app
 }

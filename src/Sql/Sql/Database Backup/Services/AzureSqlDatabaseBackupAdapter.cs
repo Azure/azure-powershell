@@ -24,6 +24,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Services
 {
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         public AzureSqlDatabaseBackupAdapter(IAzureContext context)
         {
             Context = context;
-            _subscription = context.Subscription;
+            _subscription = context?.Subscription;
             Communicator = new AzureSqlDatabaseBackupCommunicator(Context);
         }
 
@@ -363,7 +364,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             bool? onlyLatestPerDatabase,
             string databaseState)
         {
-            if (!string.IsNullOrWhiteSpace(backupName))
+            if (!string.IsNullOrWhiteSpace(backupName) && !WildcardPattern.ContainsWildcardCharacters(backupName))
             {
                 return new List<AzureSqlDatabaseLongTermRetentionBackupModel>()
                 {
@@ -511,27 +512,22 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 LicenseType = model.LicenseType
             };
 
-            if(model.CreateMode.Equals(Management.Sql.Models.CreateMode.Recovery))
+            switch (model.CreateMode)
             {
-                dbModel.SourceDatabaseId = resourceId;
-                dbModel.RecoverableDatabaseId = resourceId;
-                dbModel.RecoveryServicesRecoveryPointId = resourceId;
-            }
-            else if(model.CreateMode.Equals(Management.Sql.Models.CreateMode.Restore))
-            {
-                dbModel.RestorableDroppedDatabaseId = resourceId;
-                dbModel.RecoveryServicesRecoveryPointId = resourceId;
-            }
-            else if(model.CreateMode.Equals(Management.Sql.Models.CreateMode.RestoreLongTermRetentionBackup) && resourceId.Contains("/providers/Microsoft.Sql"))
-            {
-                // LTR V2
-                dbModel.LongTermRetentionBackupResourceId = resourceId;
-                dbModel.SourceDatabaseId = resourceId;
-            }
-            else
-            {
-                dbModel.SourceDatabaseId = resourceId;
-                dbModel.RecoveryServicesRecoveryPointId = resourceId;
+                case Management.Sql.Models.CreateMode.Recovery:
+                    dbModel.RecoverableDatabaseId = resourceId;
+                    break;
+                case Management.Sql.Models.CreateMode.Restore:
+                    dbModel.RestorableDroppedDatabaseId = resourceId;
+                    break;
+                case Management.Sql.Models.CreateMode.PointInTimeRestore:
+                    dbModel.SourceDatabaseId = resourceId;
+                    break;
+                case Management.Sql.Models.CreateMode.RestoreLongTermRetentionBackup:
+                    dbModel.LongTermRetentionBackupResourceId = resourceId;
+                    break;
+                default:
+                    throw new ArgumentException("Restore mode not supported");
             }
 
             Management.Sql.Models.Database database = Communicator.RestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, dbModel);
@@ -550,19 +546,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             AzureSqlServerAdapter serverAdapter = new AzureSqlServerAdapter(Context);
             var server = serverAdapter.GetServer(resourceGroupName, serverName);
             return server.Location;
-        }
-
-        /// <summary>
-        /// Gets a SQL database by name
-        /// </summary>
-        /// <param name="resourceGroupName">The resource group the database is in</param>
-        /// <param name="serverName">The name of the server</param>
-        /// <param name="databaseName">The name of the database</param>
-        /// <returns></returns>
-        public AzureSqlDatabaseModel GetDatabase(string resourceGroupName, string serverName, string databaseName)
-        {
-            AzureSqlDatabaseAdapter databaseAdapter = new AzureSqlDatabaseAdapter(Context);
-            return databaseAdapter.GetDatabase(resourceGroupName, serverName, databaseName);
         }
 
         /// <summary>

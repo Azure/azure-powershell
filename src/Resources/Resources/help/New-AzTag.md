@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Tags.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 23DB0AD2-7EB7-4373-BB8D-BB6CB651DD54

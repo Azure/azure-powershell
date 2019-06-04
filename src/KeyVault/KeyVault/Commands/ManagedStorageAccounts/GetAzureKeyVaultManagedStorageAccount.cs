@@ -76,6 +76,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 "selected environment and manged storage account name." )]
         [ValidateNotNullOrEmpty]
         [Alias( Constants.StorageAccountName, Constants.Name )]
+        [SupportsWildcards]
         public string AccountName { get; set; }
 
         [Parameter(Mandatory = false,
@@ -97,9 +98,9 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (InRemovedState)
             {
-                if (String.IsNullOrWhiteSpace(AccountName))
+                if (String.IsNullOrWhiteSpace(AccountName) || WildcardPattern.ContainsWildcardCharacters(AccountName))
                 {
-                    GetAndWriteDeletedManagedStorageAccounts(VaultName);
+                    GetAndWriteDeletedManagedStorageAccounts(VaultName, AccountName);
                 }
                 else
                 {
@@ -109,9 +110,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
             else
             {
-                if (String.IsNullOrWhiteSpace(AccountName))
+                if (String.IsNullOrWhiteSpace(AccountName) || WildcardPattern.ContainsWildcardCharacters(AccountName))
                 {
-                    GetAndWriteManagedStorageAccounts(VaultName);
+                    GetAndWriteManagedStorageAccounts(VaultName, AccountName);
                 }
                 else
                 {
@@ -121,7 +122,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
         }
 
-        private void GetAndWriteManagedStorageAccounts( string vaultName )
+        private void GetAndWriteManagedStorageAccounts( string vaultName, string name )
         {
             var options = new KeyVaultObjectFilterOptions
             {
@@ -130,11 +131,11 @@ namespace Microsoft.Azure.Commands.KeyVault
             };
             do
             {
-                WriteObject( DataServiceClient.GetManagedStorageAccounts( options ), true );
+                WriteObject(KVSubResourceWildcardFilter(name, DataServiceClient.GetManagedStorageAccounts( options )), true );
             } while( !string.IsNullOrEmpty( options.NextLink ) );
         }
 
-        private void GetAndWriteDeletedManagedStorageAccounts(string vaultName)
+        private void GetAndWriteDeletedManagedStorageAccounts(string vaultName, string name)
         {
             var options = new KeyVaultObjectFilterOptions
             {
@@ -143,7 +144,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             };
             do
             {
-                WriteObject(DataServiceClient.GetDeletedManagedStorageAccounts(options), true);
+                WriteObject(KVSubResourceWildcardFilter(name, DataServiceClient.GetDeletedManagedStorageAccounts(options)), true);
             } while (!string.IsNullOrEmpty(options.NextLink));
         }
     }

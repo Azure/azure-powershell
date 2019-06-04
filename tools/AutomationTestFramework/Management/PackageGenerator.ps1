@@ -40,10 +40,21 @@ function Create-SmokeTestModule(
     if (-not (Test-Path $archiveDir)) {
         $null = New-Item -ItemType directory -Path $archiveDir -ErrorAction Stop
     }
+    $files = New-Object System.Collections.ArrayList
+    Write-Verbose "Adding .ps1 common test files from /tools/ScenarioTest.ResourceManager..."
+    $rmCommonFileNames = 'Common.ps1', 'Assert.ps1'
+    'Common.ps1', 'Assert.ps1' | ForEach-Object {
+        $rmFilename = $_ 
+        $rmCommonFilePath = Join-Path $srcPath ".." "tools" "ScenarioTest.ResourceManager" $rmFilename
+        if(Test-Path $rmCommonFilePath){
+            $null = $files.Add((Copy-Item $rmCommonFilePath  (Join-Path $archiveDir $rmFilename) -PassThru -ErrorAction Stop))
+        } else {
+            Write-Warning "!!! Common resource management file not found: $rmCommonFilePath"
+        }
+    }
 
     Write-Verbose "Gathering .ps1 test file list from $srcPath..."
     $commonFileName = 'Common.ps1'
-    $files = New-Object System.Collections.ArrayList
     foreach($folder in Get-TestFolders $srcPath $projectList) {
         $null = $files.AddRange(@(Filter-TestFiles $folder.Path))
         $commonFilePath = Join-Path $folder.Path $commonFileName
@@ -77,7 +88,7 @@ function Create-SmokeTestModule(
 }
 
 # Remove version and rename extension .nupkg -> .zip
-# Example: AzureRM.Compute.3.3.2.nupkg -> AzureRM.Compute.zip
+# Example: Az.Compute.3.3.2.nupkg -> Az.Compute.zip
 function Convert-NupkgToZip (
     [string] $path,
     [string[]] $moduleList,
@@ -133,7 +144,7 @@ function Create-SignedModules([hashtable] $signedModules, [string] $modulesDir, 
     }
     Convert-NupkgToZip `
         -path $modulesDir `
-        -moduleList ($signedModules.Profile + $signedModules.Storage + $signedModules.Other) `
+        -moduleList ($signedModules.Accounts + $signedModules.Other) `
         -outputPath $archiveDir
     Write-Verbose "Signed module zips created in '$archiveDir'."
 }

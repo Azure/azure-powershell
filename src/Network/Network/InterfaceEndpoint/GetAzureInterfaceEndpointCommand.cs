@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The name of the interface endpoint")]
         [ResourceNameCompleter("Microsoft.Network/interfaceEndpoints", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         [Parameter(
@@ -39,6 +40,7 @@ namespace Microsoft.Azure.Commands.Network
            ParameterSetName = "GetByNameParameterSet")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -61,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
                     this.Name = resourceIdentifier.ResourceName;
                 }
 
-                if (!string.IsNullOrEmpty(this.Name))
+                if (ShouldGetByName(ResourceGroupName, Name))
                 {
                     PSInterfaceEndpoint psInterfaceEndpoint;
                     psInterfaceEndpoint = this.GetInterfaceEndpoint(this.ResourceGroupName, this.Name);
@@ -70,12 +72,12 @@ namespace Microsoft.Azure.Commands.Network
                 else
                 {
                     IEnumerable<PSInterfaceEndpoint> interfaceEndpoints = null;
-                    if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                    if (ShouldListByResourceGroup(ResourceGroupName, Name))
                     {
                         interfaceEndpoints = ListInterfaceEndpoints(this.ResourceGroupName);
                     }
 
-                    WriteObject(interfaceEndpoints, true);
+                    WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, interfaceEndpoints), true);
                 }
             }
         }

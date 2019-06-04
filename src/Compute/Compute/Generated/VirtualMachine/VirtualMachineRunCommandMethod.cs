@@ -19,15 +19,16 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -48,11 +49,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         case "ResourceIdParameter":
                             resourceGroupName = GetResourceGroupName(this.ResourceId);
-                            vmName = GetResourceName(this.ResourceId, "Microsoft.Compute/VirtualMachines");
+                            vmName = GetResourceName(this.ResourceId, "Microsoft.Compute/virtualMachines");
                             break;
                         case "VMParameter":
                             resourceGroupName = GetResourceGroupName(this.VM.Id);
-                            vmName = GetResourceName(this.VM.Id, "Microsoft.Compute/VirtualMachines");
+                            vmName = GetResourceName(this.VM.Id, "Microsoft.Compute/virtualMachines");
                             break;
                         default:
                             resourceGroupName = this.ResourceGroupName;
@@ -92,7 +93,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 1,
+            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
@@ -100,7 +101,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 2,
+            Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]

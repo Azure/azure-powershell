@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 using Hyak.Common;
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
@@ -276,9 +275,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 {
                     if (AuthResult.UserInfo.IdentityProvider != null)
                     {
-                        return Authentication.LoginType.LiveId;
+                        return Common.Authentication.LoginType.LiveId;
                     }
-                    return Authentication.LoginType.OrgId;
+                    return Common.Authentication.LoginType.OrgId;
                 }
             }
 

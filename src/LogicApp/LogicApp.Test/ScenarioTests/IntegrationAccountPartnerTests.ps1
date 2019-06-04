@@ -18,11 +18,8 @@ Test New-AzIntegrationAccountPartner command
 #>
 function Test-CreateIntegrationAccountPartner
 {
-	#Create App resource group
-
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 	
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName 
 
@@ -55,11 +52,8 @@ Test Get-AzIntegrationAccountPartner command
 #>
 function Test-GetIntegrationAccountPartner
 {
-	#Create App resource group
-
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 	
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName 
 
@@ -88,11 +82,8 @@ Test Get-AzIntegrationAccountPartner command : Paging test
 #>
 function Test-ListIntegrationAccountPartner
 {
-	#Create App resource group
-
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName 
 
@@ -119,11 +110,8 @@ Test Remove-AzIntegrationAccountPartner command
 #>
 function Test-RemoveIntegrationAccountPartner
 {
-	#Create App resource group
-
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 	
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
@@ -147,11 +135,8 @@ Test Set-AzIntegrationAccountPartner command
 #>
 function Test-UpdateIntegrationAccountPartner
 {
-	#Create App resource group
-
-	$resourceGroupName = getAssetname
-	$resourceGroup = TestSetup-CreateNamedResourceGroup $resourceGroupName
-	$integrationAccountName = getAssetname
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$integrationAccountName = "IA-" + (getAssetname)
 	
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 

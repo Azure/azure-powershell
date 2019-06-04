@@ -16,16 +16,16 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 {
     public enum PSOperatorProperty
     {
-        Any ,
-        IPMatch ,
-        GeoMatch ,
-        Equal ,
-        Contains ,
-        LessThan ,
-        GreaterThan ,
-        LessThanOrEqual ,
-        GreaterThanOrEqual ,
-        BeginsWith ,
-        EndsWith 
+        Any,
+        IPMatch,
+        GeoMatch,
+        Equal,
+        Contains,
+        LessThan,
+        GreaterThan,
+        LessThanOrEqual,
+        GreaterThanOrEqual,
+        BeginsWith,
+        EndsWith
     }
 }

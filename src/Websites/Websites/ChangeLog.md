@@ -19,6 +19,25 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.2
+* fixes the issue where using  Set-AzWebApp and Set-AzWebAppSlot with -WebApp property was removing the tags
+
+## Version 1.2.1
+* "Kind" property will now be set for PSSite objects returned by Get-AzWebApp
+* Get-AzWebApp*Metrics and Get-AzAppServicePlanMetrics marked deprecated
+
+## Version 1.2.0
+* fixes the Set-AzWebApp and Set-AzWebAppSlot to not remove the tags on execution
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Updated the WebSites SDK.
+* Removed the AdminSiteName property from PSAppServicePlan.
+
+## Version 1.1.2
+* Fix ARM template bug that breaks cloning all slots using `New-AzWebApp -IncludeSourceWebAppSlots` 
+
+## Version 1.1.1
+* Correct example in Get-AzWebAppSlotMetrics
+
 ## Version 1.1.0
 * Update incorrect online help URLs
 * Fixes `New-AzWebAppSSLBinding` to upload the certificate to the correct resourcegroup+location if the app is hosted on an ASE.

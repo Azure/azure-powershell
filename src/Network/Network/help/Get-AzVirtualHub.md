@@ -19,7 +19,7 @@ Get-AzVirtualHub [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 
 ### ListByResourceGroupName
 ```
-Get-AzVirtualHub -ResourceGroupName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzVirtualHub [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -52,6 +52,36 @@ The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub
 
 It then gets the virtual hub using its ResourceGroupName and ResourceName.
 
+### Example 2
+
+```powershell
+PS C:\> Get-AzVirtualHub -Name westushub*
+
+VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+ResourceGroupName         : testRG
+Name                      : westushub1
+Id                        : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub1
+AddressPrefix             : 10.0.1.0/24
+RouteTable                : 
+VirtualNetworkConnections : {}
+Location                  : West US
+Type                      : Microsoft.Network/virtualHubs
+ProvisioningState         : Succeeded
+
+VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+ResourceGroupName         : testRG
+Name                      : westushub2
+Id                        : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub2
+AddressPrefix             : 10.0.1.0/24
+RouteTable                : 
+VirtualNetworkConnections : {}
+Location                  : West US
+Type                      : Microsoft.Network/virtualHubs
+ProvisioningState         : Succeeded
+```
+
+This cmdlet gets the virtual hub using filtering.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -81,7 +111,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
@@ -92,15 +122,15 @@ Type: System.String
 Parameter Sets: ListByResourceGroupName
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

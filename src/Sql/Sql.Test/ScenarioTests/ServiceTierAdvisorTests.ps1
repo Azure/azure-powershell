@@ -18,7 +18,7 @@
 #>
 function Test-GetUpgradeDatabaseHint
 {
-    $response = Get-AzSqlDatabaseUpgradeHint -ResourceGroupName TestRg -ServerName test-srv-v1
+    $response = Get-AzSqlDatabaseUpgradeHint -ResourceGroupName TestRg -ServerName test-srv-v1 -DatabaseName *
     Assert-NotNull $response
     Assert-AreEqual 1 $response.Count
     Assert-AreEqual test-db-v1 $response[0].Name

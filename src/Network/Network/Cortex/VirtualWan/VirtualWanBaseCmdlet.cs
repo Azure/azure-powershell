@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public List<PSVirtualWan> ListVirtualWans(string resourceGroupName)
         {
-            var virtualWans = string.IsNullOrWhiteSpace(resourceGroupName) ?
+            var virtualWans = ShouldListBySubscription(resourceGroupName, null) ?
                 this.VirtualWanClient.List() :                                      //// List by sub id
                 this.VirtualWanClient.ListByResourceGroup(resourceGroupName);       //// List by RG name
 

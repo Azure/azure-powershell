@@ -144,9 +144,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ManagementGroupsApiClient = GetManagementGroupsApiClient(context);
             FeatureClient = GetFeatureClient(context);
             var testEnvironment = TestEnvironmentFactory.GetTestEnvironment();
-            var credentials = new SubscriptionCloudCredentialsAdapter(
-                testEnvironment.TokenInfo[TokenAudience.Management],
-                testEnvironment.SubscriptionId);
+            var credentials = testEnvironment.TokenInfo[TokenAudience.Management];
             HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(credentials);
 
             _helper.SetupManagementClients(ResourceManagementClient,
@@ -229,15 +227,15 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         private class TestHttpClientHelperFactory : HttpClientHelperFactory
         {
             /// <summary>
-            /// The subscription cloud credentials.
+            /// The service client credentials.
             /// </summary>
-            private readonly SubscriptionCloudCredentials _credential;
+            private readonly ServiceClientCredentials _credential;
 
             /// <summary>
             /// Initializes a new instance of the <see cref="TestHttpClientHelperFactory"/> class.
             /// </summary>
             /// <param name="credentials"></param>
-            public TestHttpClientHelperFactory(SubscriptionCloudCredentials credentials)
+            public TestHttpClientHelperFactory(ServiceClientCredentials credentials)
             {
                 _credential = credentials;
             }
@@ -247,7 +245,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             /// </summary>
             /// <param name="credentials">The credentials.</param>
             /// <param name="headerValues">The headers.</param>
-            public override HttpClientHelper CreateHttpClientHelper(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
+            public override HttpClientHelper CreateHttpClientHelper(ServiceClientCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
             {
                 return new HttpClientHelperImpl(credentials: _credential, headerValues: headerValues, cmdletHeaderValues: cmdletHeaderValues);
             }
@@ -262,7 +260,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 /// </summary>
                 /// <param name="credentials">The credentials.</param>
                 /// <param name="headerValues">The headers.</param>
-                public HttpClientHelperImpl(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
+                public HttpClientHelperImpl(ServiceClientCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
                     : base(credentials: credentials, headerValues: headerValues, cmdletHeaderValues: cmdletHeaderValues)
                 {
                 }

@@ -39,9 +39,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
         /// <summary>
         /// Initializes the adapter
         /// </summary>
-        /// <param name="subscription"></param>
         /// <returns></returns>
-        protected override AzureSqlServerActiveDirectoryAdministratorAdapter InitModelAdapter(IAzureSubscription subscription)
+        protected override AzureSqlServerActiveDirectoryAdministratorAdapter InitModelAdapter()
         {
             return new AzureSqlServerActiveDirectoryAdministratorAdapter(DefaultProfile.DefaultContext);
         }

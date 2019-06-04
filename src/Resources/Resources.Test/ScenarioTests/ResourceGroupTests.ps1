@@ -291,7 +291,17 @@ function Test-FindResourceGroup
         Assert-AreEqual $expected2.ResourceGroupName $actual2.ResourceGroupName
         Assert-AreEqual $expected2.Tags["testtag"] $actual2.Tags["testtag"]
 
+		$expected2 = Get-AzResourceGroup -Name ($rgname2 + "*")
+        # Assert
+        Assert-AreEqual $expected2.ResourceGroupName $actual2.ResourceGroupName
+        Assert-AreEqual $expected2.Tags["testtag"] $actual2.Tags["testtag"]
+
 		$expected3 = Get-AzResourceGroup
+		$expectedCount = $originalCount + 2
+		# Assert
+		Assert-AreEqual @($expected3).Count $expectedCount
+
+		$expected3 = Get-AzResourceGroup -Name *
 		$expectedCount = $originalCount + 2
 		# Assert
 		Assert-AreEqual @($expected3).Count $expectedCount

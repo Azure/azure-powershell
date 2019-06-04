@@ -46,6 +46,15 @@ function Test-ApplicationSecurityGroupCRUD
         Assert-NotNull $asgGet.Location
         Assert-NotNull $asgGet.Etag
 
+        $asgGet = Get-AzApplicationSecurityGroup -ResourceGroupName "*"
+        Assert-True { $asgGet.Count -ge 0 }
+
+        $asgGet = Get-AzApplicationSecurityGroup -Name "*"
+        Assert-True { $asgGet.Count -ge 0 }
+
+        $asgGet = Get-AzApplicationSecurityGroup -ResourceGroupName "*" -Name "*"
+        Assert-True { $asgGet.Count -ge 0 }
+
         # Remove the application security group
         $asgDelete = Remove-AzApplicationSecurityGroup -Name $asgName -ResourceGroupName $rgName -PassThru -Force
         Assert-AreEqual $true $asgDelete

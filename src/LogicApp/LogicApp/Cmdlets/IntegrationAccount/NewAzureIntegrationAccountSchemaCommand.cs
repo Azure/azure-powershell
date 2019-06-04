@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (string.IsNullOrEmpty(this.SchemaDefinition))
             {
-                this.SchemaDefinition = CmdletHelper.GetContentFromFile(this.TryResolvePath(this.SchemaFilePath));
+                this.SchemaDefinition = CmdletHelper.GetStringContentFromFile(this.TryResolvePath(this.SchemaFilePath));
             }
 
             this.WriteObject(
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     new IntegrationAccountSchema
                     {
                         ContentType = this.contentType,
-                        SchemaType = (SchemaType) Enum.Parse(typeof(SchemaType), this.schemaType),                        
+                        SchemaType = this.schemaType,
                         Content = this.SchemaDefinition,
                         Metadata = this.Metadata
                     }), true);

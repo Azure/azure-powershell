@@ -12,48 +12,44 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public partial class VirtualMachineBootDiagnosticsTests
+    public class VirtualMachineBootDiagnosticsTests : ComputeTestRunner
     {
-        XunitTracingInterceptor _logger;
-
         public VirtualMachineBootDiagnosticsTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "TODO: only works for live mode")]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestVirtualMachineBootDiagnostics()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineBootDiagnostics");
+            TestRunner.RunTestScript("Test-VirtualMachineBootDiagnostics");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineBootDiagnosticsPremium()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineBootDiagnosticsPremium");
+            TestRunner.RunTestScript("Test-VirtualMachineBootDiagnosticsPremium");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinuxVirtualMachineBootDiagnostics()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-LinuxVirtualMachineBootDiagnostics");
+            TestRunner.RunTestScript("Test-LinuxVirtualMachineBootDiagnostics");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineBootDiagnosticsSet()
         {
-            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineBootDiagnosticsSet");
+            TestRunner.RunTestScript("Test-VirtualMachineBootDiagnosticsSet");
         }
     }
 }

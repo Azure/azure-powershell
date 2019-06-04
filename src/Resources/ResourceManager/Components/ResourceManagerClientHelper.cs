@@ -48,8 +48,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 httpClientHelper: HttpClientHelperFactory.Instance
                 .CreateHttpClientHelper(
                     credentials: AzureSession.Instance.AuthenticationFactory
-                                             .GetSubscriptionCloudCredentials(
-                                                    context, 
+                                             .GetServiceClientCredentials(
+                                                    context,
                                                     AzureEnvironment.Endpoint.ResourceManager),
                     headerValues: AzureSession.Instance.ClientFactory.UserAgents,
                     cmdletHeaderValues: cmdletHeaderValues));
