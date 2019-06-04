@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Commands.Compute
                 var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
                     _cmdlet.Name, subnet, publicIpAddress, networkSecurityGroup, enableAcceleratedNetwork);
 
-                var ppgSubResourceFunc = resourceGroup.CreateProximityPlacementGroupSuResourceFunc(_cmdlet.ProximityPlacementGroup);
+                var ppgSubResourceFunc = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroup);
 
                 var availabilitySet = _cmdlet.AvailabilitySetName == null
                     ? null
