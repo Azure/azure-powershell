@@ -8,7 +8,8 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.DataBoxAPI" Version="2.9" />
+    <PackageReference Include="Microsoft.Azure.Management.DataBox" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Cdn" Version="4.2.2-preview" />
   </ItemGroup>
 
 </Project>
