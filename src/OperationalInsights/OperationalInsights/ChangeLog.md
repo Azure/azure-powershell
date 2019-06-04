@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.1
+* Enable **pergb2018** pricing tier in `New-AzureRmOperationalInsightsWorkspace` command
+
 ## Version 1.0.0
 * General availability of `Az.OperationalInsights` module
 * Default parameter set for Get-AzOperationalInsightsDataSource is removed, and ByWorkspaceNameByKind has become the default parameter set
