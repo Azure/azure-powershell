@@ -53,7 +53,6 @@ require:
   - $(repo)/specification/appconfiguration/resource-manager/readme.md
 
 module-version: 0.1.3
-skip-model-cmdlets: true
 
 directive:
   - where:

@@ -75,7 +75,6 @@ input-file:
 - $(web)/stable/2018-02-01/ResourceHealthMetadata.json
 
 module-version: 0.0.1
-skip-model-cmdlets: true
 title: FunctionsClient
 
 directive:

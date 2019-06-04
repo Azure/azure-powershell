@@ -54,7 +54,6 @@ require:
 
 subject-prefix: ''
 module-version: 0.0.1
-skip-model-cmdlets: true
 
 directive:
 # General
