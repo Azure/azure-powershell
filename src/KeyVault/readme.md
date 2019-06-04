@@ -56,7 +56,6 @@ require:
 
 title: KeyVault
 module-version: 0.0.1
-skip-model-cmdlets: true
 
 directive:
   - where:

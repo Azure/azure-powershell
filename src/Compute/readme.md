@@ -57,7 +57,6 @@ require:
 
 subject-prefix: ''
 module-version: 0.0.1
-skip-model-cmdlets: true
 
 directive:
 # subject renames for VM and Vmss
