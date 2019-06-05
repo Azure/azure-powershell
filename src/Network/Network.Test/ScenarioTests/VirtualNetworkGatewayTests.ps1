@@ -727,7 +727,7 @@ function Test-VirtualNetworkGatewayOpenVPNAADAuth
 		$vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
       
 		# Create & Get P2S OpenVPN AAD authentication on virtualnetworkgateway
-		New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -VpnClientProtocol OpenVPN -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 #-AadTenant $aadTenant -AadIssuer $aadIssuer -AadAudience $aadAudience
+		New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -VpnClientProtocol OpenVPN -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 #-AadTenantUri $aadTenant -AadIssuerUri $aadIssuer -AadAudienceId $aadAudience
 		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
 		$protocols = $actual.VpnClientConfiguration.VpnClientProtocols
 		Assert-AreEqual 1 @($protocols).Count
@@ -738,7 +738,7 @@ function Test-VirtualNetworkGatewayOpenVPNAADAuth
 		#Assert-AreEqual $aadAudience $actual.VpnClientConfiguration.AadAudience
 
 		# Set an existing virtualnetworkgateway with updated AAD authentication configuration.
-		Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -AadTenant $aadTenant -AadIssuer $aadIssuer -AadAudience $aadAudienceNew
+		Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -AadTenantUri $aadTenant -AadIssuerUri $aadIssuer -AadAudienceId $aadAudienceNew
 		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
 
 		Assert-AreEqual "VpnGw1" $actual.Sku.Tier

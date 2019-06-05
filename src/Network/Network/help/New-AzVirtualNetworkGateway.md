@@ -46,8 +46,8 @@ New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location
  [-GatewayDefaultSite <PSLocalNetworkGateway>] [-VpnClientAddressPool <String[]>]
  [-VpnClientProtocol <String[]>] [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
- [-Asn <UInt32>] [-PeerWeight <Int32>] [-Tag <Hashtable>] [-Force] -AadTenant <String> -AadAudience <String>
- -AadIssuer <String> [-CustomRoute <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Asn <UInt32>] [-PeerWeight <Int32>] [-Tag <Hashtable>] [-Force] -AadTenantUri <String> -AadAudienceId <String>
+ -AadIssuerUri <String> [-CustomRoute <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -131,17 +131,17 @@ $subnet = Get-AzVirtualNetworkSubnetConfig -name 'gatewaysubnet' -VirtualNetwork
 $ngwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name ngwipconfig -SubnetId $subnet.Id -PublicIpAddressId $ngwpip.Id
 $Secure_String_Pwd = ConvertTo-SecureString "TestRadiusServerPassword" -AsPlainText -Force
 
-New-AzVirtualNetworkGateway -Name myNGW -ResourceGroupName vnet-gateway -Location "UK West" -IpConfigurations $ngwIpConfig  -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "VpnGw1" -VpnClientProtocol OpenVPN   -VpnClientAddressPool 201.169.0.0/16 -AadTenant "https://login.microsoftonline.com/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4" -AadIssuer "https://sts.windows.net/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4/" -AadAudience "a21fce82-76af-45e6-8583-a08cb3b956f9"
+New-AzVirtualNetworkGateway -Name myNGW -ResourceGroupName vnet-gateway -Location "UK West" -IpConfigurations $ngwIpConfig  -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "VpnGw1" -VpnClientProtocol OpenVPN   -VpnClientAddressPool 201.169.0.0/16 -AadTenantUri "https://login.microsoftonline.com/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4" -AadIssuerUri "https://sts.windows.net/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4/" -AadAudienceId "a21fce82-76af-45e6-8583-a08cb3b956f9"
 ```
 
 The above will create a resource group, request a Public IP Address, create a Virtual Network and
 subnet and create a Virtual Network Gateway in Azure.
-The gateway will be called "myNGW" within the resource group "vnet-gateway" in the location "UK West" with the previously created IP configurations saved in the variable "ngwIPConfig," the gateway type of "VPN," the vpn type "RouteBased," and the sku "Basic." It also configures AAD authentication configurations: AADTenant, AADIssuer and AADAudience for Vpnclient of virtual network gateway.
+The gateway will be called "myNGW" within the resource group "vnet-gateway" in the location "UK West" with the previously created IP configurations saved in the variable "ngwIPConfig," the gateway type of "VPN," the vpn type "RouteBased," and the sku "Basic." It also configures AAD authentication configurations: AadTenantUri, AadIssuerUri and AadAudienceId for Vpnclient of virtual network gateway.
 
 ## PARAMETERS
 
-### -AadAudience
-P2S AAD authentication option:AADAudience.
+### -AadAudienceId
+P2S AAD authentication option:AadAudienceId.
 
 ```yaml
 Type: System.String
@@ -155,8 +155,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -AadIssuer
-P2S AAD authentication option:AADIssuer.
+### -AadIssuerUri
+P2S AAD authentication option:AadIssuerUri.
 
 ```yaml
 Type: System.String
@@ -170,8 +170,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -AadTenant
-P2S AAD authentication option:AADTenant.
+### -AadTenantUri
+P2S AAD authentication option:AadTenantUri.
 
 ```yaml
 Type: System.String
