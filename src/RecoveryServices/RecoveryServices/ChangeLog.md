@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
 * Azure Site Recovery Support to write to managed disk for vMWare to Azure.
 * Azure Site Recovery Support to NIC reduction for vMWare to Azure.
 * Azure Site Recovery Support to accelerated networking for Azure to Azure.
@@ -26,6 +25,9 @@
 * Azure Site Recovery Support to Standard SSD for Azure to Azure.
 * Azure Site Recovery Support to Azure Disk Encryption two pass for Azure to Azure.
 * Azure Site Recovery Support to protect newly added disk for Azure to Azure.
+
+## Version 1.4.1
+* IaaSVM policy minimum retention in days changed to 7 from 1
 
 ## Version 1.4.0
 * Support for Cross subscription Azure to Azure site recovery.

@@ -21,5 +21,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         public string MailNickname { get; set; }
 
         public string ObjectType => "Group";
+
+        public string Description { get; set; }
     }
 }

@@ -47,6 +47,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has sucessufuly been completed, use some other mechanism.")]
+        public SwitchParameter NoWait { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -62,30 +65,40 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 var count = 1;
                 Rest.Azure.AzureOperationResponse op = null;
 
-                while (true)
+                if (NoWait.IsPresent)
                 {
-                    try
-                    {
-                        op = VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
+                    op = VirtualMachineExtensionClient.BeginDeleteWithHttpMessagesAsync(
                             ResourceGroupName,
                             VMName,
                             Name).GetAwaiter().GetResult();
-                        break;
-                    }
-                    catch (Rest.Azure.CloudException ex)
+                }
+                else
+                {
+                    while (true)
                     {
-                        var errorReturned = JsonConvert.DeserializeObject<PSComputeLongRunningOperation>(ex.Response.Content);
-
-                        if ("Failed".Equals(errorReturned.Status)
-                            && errorReturned.Error != null && "InternalExecutionError".Equals(errorReturned.Error.Code))
+                        try
                         {
-                            count++;
-                            if (count <= 2)
-                            {
-                                continue;
-                            }
+                            op = VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
+                                ResourceGroupName,
+                                VMName,
+                                Name).GetAwaiter().GetResult();
+                            break;
                         }
-                        ThrowTerminatingError(new ErrorRecord(ex, "InvalidResult", ErrorCategory.InvalidResult, null));
+                        catch (Rest.Azure.CloudException ex)
+                        {
+                            var errorReturned = JsonConvert.DeserializeObject<PSComputeLongRunningOperation>(ex.Response.Content);
+
+                            if ("Failed".Equals(errorReturned.Status)
+                                && errorReturned.Error != null && "InternalExecutionError".Equals(errorReturned.Error.Code))
+                            {
+                                count++;
+                                if (count <= 2)
+                                {
+                                    continue;
+                                }
+                            }
+                            ThrowTerminatingError(new ErrorRecord(ex, "InvalidResult", ErrorCategory.InvalidResult, null));
+                        }
                     }
                 }
 

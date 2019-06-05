@@ -17,14 +17,23 @@
                 <PropertyName>Id</PropertyName>
               </ListItem>
               <ListItem>
-                <PropertyName>Location</PropertyName>
+                <PropertyName>ResourceGroupName</PropertyName>
               </ListItem>
               <ListItem>
-                <PropertyName>ResourceGroup</PropertyName>
+                <PropertyName>Location</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Sku </Label>
                 <ScriptBlock>"Name : " + $_.Sku.Name.ToString()  + " , Capacity : " +  $_.Sku.Capacity + " , Tier : " +  $_.Sku.Tier.ToString() </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Tags</Label>
+                <ScriptBlock>
+                  if($_.Tags -ne $null)
+                  {
+                  $_.Tags.GetEnumerator() | ForEach-Object{ $_.Key, $_.Value }
+                  }
+                </ScriptBlock>
               </ListItem>
               <ListItem>
                 <PropertyName>ProvisioningState</PropertyName>
@@ -43,8 +52,11 @@
                 <PropertyName>ServiceBusEndpoint</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Enabled </Label>
+                <Label>Enabled</Label>
                 <ScriptBlock>$True</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <PropertyName>KafkaEnabled</PropertyName>
               </ListItem>
               <ListItem>
                 <PropertyName>IsAutoInflateEnabled</PropertyName>

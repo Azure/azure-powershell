@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Specification format (Wadl, Swagger, Wsdl). This parameter is required.")]
+            HelpMessage = "Specification format (Wadl, Swagger, Wsdl, Openapi). This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementApiFormat SpecificationFormat { get; set; }
 
@@ -99,6 +100,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                           "The Soap option is only applicable when importing WSDL and will create a SOAP Passthrough API.")]
         public PsApiManagementApiType? ApiType { get; set; }
 
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Web API protocols (http, https). Protocols over which API is made available. " +
+            "This parameter is optional. If provided it will override the protocols specified in the specifications document.")]        
+        public PsApiManagementSchema[] Protocol { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "A URL of the web service exposing the API. This URL will be used by Azure API Management only, and will not be made public. " +
+            "This parameter is optional. If provided it will override the ServiceUrl specificed in the Specifications document.")]        
+        public String ServiceUrl { get; set; }
+
         public override void ExecuteApiManagementCmdlet()
         {
             string apiId = ApiId;
@@ -130,7 +145,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                     Path,
                     WsdlServiceName, 
                     WsdlEndpointName,
-                    ApiType);
+                    ApiType,
+                    Protocol,
+                    ServiceUrl);
             }
             else if (ParameterSetName.Equals(FromUrl))
             {
@@ -142,7 +159,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                     Path,
                     WsdlServiceName,
                     WsdlEndpointName,
-                    ApiType);
+                    ApiType,
+                    Protocol,
+                    ServiceUrl);
             }
             else
             {
