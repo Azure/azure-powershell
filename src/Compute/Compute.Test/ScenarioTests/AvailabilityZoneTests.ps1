@@ -24,12 +24,14 @@ function Test-VirtualMachineZone
     try
     {
         # Common
-        $loc = 'eastus2';
+        #[string]$loc = Get-Location "Microsoft.Compute" "virtualMachines" "East US 2";
+        [string]$loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
 
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_DS2_v2';
         $vmname = 'vm' + $rgname;
 
         # NRP
@@ -37,7 +39,8 @@ function Test-VirtualMachineZone
         $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc `
+                                       -AllocationMethod 'Static' -DomainNameLabel ('pubip' + $rgname) -Zone "1" -Sku 'Standard';
         $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
         $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
@@ -62,19 +65,14 @@ function Test-VirtualMachineZone
              | Set-AzVMOperatingSystem -Windows -ComputerName $computerName -Credential $cred;
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
-
         $p = $imgRef | Set-AzVMSourceImage -VM $p;
-
-        Assert-ThrowsContains { New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;} `
-            "Availability Zone is not available for";
-        $p.Zones = $null;
-        Assert-ThrowsContains { New-AzVM -ResourceGroupName $rgname -Location $loc -Zone "1" -VM $p;} `
-            "Availability Zone is not available for";
-        $p.Zones = $null;
-
         New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
+
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual "1" $vm.Zones;
+
         $vm | Update-AzVM;
+        Assert-AreEqual "1" $vm.Zones;
     }
     finally
     {

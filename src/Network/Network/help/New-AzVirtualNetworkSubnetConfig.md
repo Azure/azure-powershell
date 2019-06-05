@@ -16,16 +16,17 @@ Creates a virtual network subnet configuration.
 ### SetByResource (Default)
 ```
 New-AzVirtualNetworkSubnetConfig -Name <String> -AddressPrefix <String[]>
- [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>] [-ServiceEndpoint <String[]>]
- [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>] [-Delegation <PSDelegation[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>] [-InputObject <PSNatGateway>]
+ [-ServiceEndpoint <String[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
+ [-Delegation <PSDelegation[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 New-AzVirtualNetworkSubnetConfig -Name <String> -AddressPrefix <String[]> [-NetworkSecurityGroupId <String>]
- [-RouteTableId <String>] [-ServiceEndpoint <String[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
- [-Delegation <PSDelegation[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-RouteTableId <String>] [-ResourceId <String>] [-ServiceEndpoint <String[]>]
+ [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>] [-Delegation <PSDelegation[]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,8 +52,17 @@ $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet `
 $backendSubnet = New-AzVirtualNetworkSubnetConfig -Name backendSubnet `
     -AddressPrefix "10.0.2.0/24" -NetworkSecurityGroup $networkSecurityGroup
 
+$pip = New-AzPublicIpAddress -Name "pip" -ResourceGroupName "natgateway_test" `
+   -Location "eastus2" -Sku "Standard" -IdleTimeoutInMinutes 4 -AllocationMethod "static"
+
+$natgateway = New-AzNatGateway -ResourceGroupName "natgateway_test" -Name "nat_gateway" `
+   -IdleTimeoutInMinutes 4 -Sku "Standard" -Location "eastus2" -PublicIpAddress $pip
+
+$natGatewaySubnet = New-AzVirtualNetworkSubnetConfig -Name natGatewaySubnet `
+   -AddressPrefix "10.0.3.0/24" -InputObject $natGateway
+
 New-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup `
-    -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet
+    -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet,$natGatewaySubnet
 ```
 
 This example creates two new subnet configurations using the 
@@ -109,6 +119,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Specifies the nat gateway associated with the subnet configuration
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSNatGateway
+Parameter Sets: SetByResource
+Aliases: NatGateway
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the subnet configuration to create.
 
@@ -146,6 +171,21 @@ Specifies the ID of a network security group.
 Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Specifies the Id of NAT Gateway resource associated with the subnet configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceId
+Aliases: NatGatewayId
 
 Required: False
 Position: Named
@@ -215,7 +255,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -224,6 +264,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup
 
 ### Microsoft.Azure.Commands.Network.Models.PSRouteTable
+
+### Microsoft.Azure.Commands.Network.Models.PSNatGateway
 
 ### System.String[]
 
