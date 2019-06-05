@@ -53,6 +53,9 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has sucessufuly been completed, use some other mechanism.")]
+        public SwitchParameter NoWait { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -66,12 +69,24 @@ namespace Microsoft.Azure.Commands.Compute
 
                 if (this.ShouldContinue(Properties.Resources.VirtualMachineExtensionRemovalConfirmation, Properties.Resources.VirtualMachineExtensionRemovalCaption))
                 {
-                    var op = this.VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
-                        this.ResourceGroupName,
-                        this.VMName,
-                        this.Name).GetAwaiter().GetResult();
-                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                    WriteObject(result);
+                    if (NoWait.IsPresent)
+                    {
+                        var op = this.VirtualMachineExtensionClient.BeginDeleteWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            this.VMName,
+                            this.Name).GetAwaiter().GetResult();
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                        WriteObject(result);
+                    }
+                    else
+                    {
+                        var op = this.VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            this.VMName,
+                            this.Name).GetAwaiter().GetResult();
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                        WriteObject(result);
+                    }
                 }
             });
         }
