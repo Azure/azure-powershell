@@ -74,6 +74,97 @@ directive:
       parameter-name: VmName
     set:
       parameter-name: Name
+  # Variant deletions for POST/DELETE with body parameters
+  - where:
+      verb: Convert
+      subject: VmssToSinglePlacementGroup
+      variant: ^Convert$
+    remove: true
+  - where:
+      verb: Convert
+      subject: VmssToSinglePlacementGroup
+      variant: ^ConvertViaIdentity$
+    remove: true
+#  - where:
+#      verb: Export
+#      subject: LogAnalyticRequestRate
+#      variant: Export|Export1|ExportViaIdentity|ExportViaIdentity1
+#    remove: true
+#  - where:
+#      verb: Export
+#      subject: LogAnalyticThrottledRequest
+#      variant: Export|Export1|ExportViaIdentity|ExportViaIdentity1
+#    remove: true
+#  - where:
+#      verb: Grant
+#      subject: DiskAccess
+#      variant: Grant
+#    remove: true
+#  - where:
+#      verb: Grant
+#      subject: DiskAccess
+#      variant: Grant1
+#    remove: true
+#  - where:
+#      verb: Grant
+#     subject: DiskAccess
+#     variant: GrantViaIdentity
+#    remove: true
+#  - where:
+#      verb: Grant
+#      subject: DiskAccess
+#      variant: GrantViaIdentity1
+#    remove: true
+#  - where:
+#      verb: Grant
+#      subject: SnapshotAccess
+#      variant: Grant
+#    remove: true
+#  - where:
+#      verb: Grant
+#      subject: SnapshotAccess
+#      variant: Grant1
+#    remove: true
+#  - where:
+#      verb: Grant
+#      subject: SnapshotAccess
+#      variant: GrantViaIdentity
+#    remove: true
+#  - where:
+#      verb: Grant
+#      subject: SnapshotAccess
+#      variant: GrantViaIdentity1
+#    remove: true
+#  - where:
+#      verb: Invoke
+#      subject: VMCommand
+#      variant: Run|Run1|RunViaIdentity|RunViaIdentity1
+#    remove: true
+#  - where:
+#      verb: Invoke
+#      subject: VmssVMCommand
+#      variant: Run|RunViaIdentity
+#    remove: true
+#  - where:
+#      verb: Remove
+#      subject: VmssInstance
+#      variant: Delete|Delete1|DeleteViaIdentity|DeleteViaIdentity1
+#    remove: true
+#  - where:
+#      verb: Restart
+#      subject: Vmss
+#      variant: Restart|Restart1|RestartViaIdentity|RestartViaIdentity1
+#    remove: true
+#  - where:
+#      verb: Start
+#      subject: Vmss
+#      variant: Start|Start1|StartViaIdentity|StartViaExpanded1
+#    remove: true
+#  - where:
+#      verb: Stop
+#      subject: Vmss
+#     variant: PowerOff|PowerOff1|PowerOffViaIdentity|PowerOffViaIdentity1
+#   remove: true
 # Fix Convert verb
   - where:
       verb: Convert
@@ -81,6 +172,12 @@ directive:
     set:
       verb: ConvertTo
       subject: VMManagedDisk
+  - where:
+      verb: Convert
+      subject: VmssToSinglePlacementGroup
+    set:
+      verb: ConvertTo
+      subject: VmssSinglePlacementGroup
 # Add service name prefix
   - where:
       verb: Get
@@ -441,6 +538,11 @@ directive:
       verb: Reset
       subject: VM
     hide: true
+  - where:
+      verb: Invoke
+      subject: VmssReimage
+    hide: true
+
 # renaming variants [bug](https://github.com/Azure/autorest.powershell/issues/309)
   - where: 
       verb: Update
@@ -469,8 +571,26 @@ directive:
       subject: VmssVMReimage
     set:
       alias: Update-AzVmssVM
-  - where:
-      verb: Invoke
-      subject: VmssReimage
-    hide: true
+# variant remove (flattened body parameters with no piping value)
+# Do not remove variants for hidden cmdlets
+#  - where:
+#      verb: Invoke
+#      subject: DeallocateVmss
+#      variant: ^Deallocate.?$|^DeallocateViaIdentity.?$
+#    remove: true
+#  - where:
+#      verb: Invoke
+#      subject: PerformVmssMaintenance
+#      variant: ^Perform.?$|^PerformViaIdentity.?$
+#    remove: true
+#  - where:
+#      verb: Invoke
+#      subject: RedeployVmss
+#      variant: ^Redeploy.?$|^RedeployViaIdentity.?$
+#    remove: true
+#  - where:
+#      verb: Invoke
+#      subject: .*Reimage
+#      variant: ^Reimage.?$|^ReimageViaIdentity.?$
+#    remove: true
 ```
