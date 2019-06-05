@@ -124,6 +124,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invoke change detection for Cloud Endpoint.
+        /// </summary>
+        internal static string InvokeChangeDetectionActionMessage {
+            get {
+                return ResourceManager.GetString("InvokeChangeDetectionActionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed mounting network path {0}. Error: {1}.
         /// </summary>
         internal static string InvokeCompatibilityCheckError1Format {
@@ -358,7 +367,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to $&quot;Certificate is expired. Current Time: {0} Certificate NotAfter: {1}&quot;;.
+        ///   Looks up a localized string similar to Certificate is expired. Current Time: {0} Certificate NotAfter: {1}.
         /// </summary>
         internal static string ResetCertificateMessageFormat14 {
             get {
