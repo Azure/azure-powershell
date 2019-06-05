@@ -113,14 +113,14 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
         /// <summary>
         /// Sets a managed instance Advanced Data Security policy model for the given managed instance
         /// </summary>
-        public ManagedInstanceAdvancedDataSecurityPolicyModel SetManagedInstanceAdvancedDataSecurity(ManagedInstanceAdvancedDataSecurityPolicyModel model)
+        public ManagedInstanceAdvancedDataSecurityPolicyModel SetManagedInstanceAdvancedDataSecurity(ManagedInstanceAdvancedDataSecurityPolicyModel model, string storageEndpointSuffix)
         {
             // Currently Advanced Data Security policy is a TD policy until the backend will support Advanced Data Security APIs
             var threatDetectionPolicy = SqlThreatDetectionAdapter.GetManagedInstanceThreatDetectionPolicy(model.ResourceGroupName, model.ManagedInstanceName);
 
             threatDetectionPolicy.ThreatDetectionState = model.IsEnabled ? ThreatDetectionStateType.Enabled : ThreatDetectionStateType.Disabled;
 
-            SqlThreatDetectionAdapter.SetManagedInstanceThreatDetectionPolicy(threatDetectionPolicy, AzureEnvironment.Endpoint.StorageEndpointSuffix);
+            SqlThreatDetectionAdapter.SetManagedInstanceThreatDetectionPolicy(threatDetectionPolicy, storageEndpointSuffix);
 
             return model;
         }

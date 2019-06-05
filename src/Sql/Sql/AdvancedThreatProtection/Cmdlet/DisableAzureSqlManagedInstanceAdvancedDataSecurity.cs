@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model;
 using System.Management.Automation;
 
@@ -31,7 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         protected override ManagedInstanceAdvancedDataSecurityPolicyModel PersistChanges(ManagedInstanceAdvancedDataSecurityPolicyModel model)
         {
             model.IsEnabled = false;
-            ModelAdapter.SetManagedInstanceAdvancedDataSecurity(model);
+            ModelAdapter.SetManagedInstanceAdvancedDataSecurity(model, DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
             return model;
         }
     }
