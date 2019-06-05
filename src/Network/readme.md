@@ -62,8 +62,12 @@ directive:
       enum-value-name: Asterisk
     set:
       enum-value-name: All
+  - where:
+      verb: Update
+      subject: (.*)Tag$
+    remove: true
 
-# Something
+# General Cmdlet Naming
   - where:
       subject: ^AzureFirewall(.*)
     set:
@@ -80,6 +84,16 @@ directive:
       subject: ^Usage$
     set:
       subject: NetworkUsage
+  - where:
+      subject: (.*)(?<!Scr)Ip(.*)
+    set:
+      subject: $1IP$2
+
+# General Parameter Naming
+  - where:
+      parameter-name: (.*)(?<!Scr)Ip(.*)
+    set:
+      parameter-name: $1IP$2
 
 # Vmss
   - where:
@@ -87,7 +101,7 @@ directive:
     set:
       subject: Vmss$2
   - where:
-      subject: VmssVMPublicIpaddress
+      subject: VmssVMPublicIPaddress
     set:
       subject: VmssVMPublicIPAddress
 
@@ -101,10 +115,16 @@ directive:
     set:
       subject: $1VirtualNetworkSubnetDelegation
   - where:
-      subjects: AvailableResourceGroupVirtualNetworkSubnetDelegation
+      subject: AvailableResourceGroupVirtualNetworkSubnetDelegation
     hide: true
+  - where:
+      verb: Invoke
+      subject: PrepareSubnetNetworkPolicy
+    set:
+      verb: Set
+      subject: VirtualNetworkSubnetNetworkPolicy
 
-# Packet Capture
+# NetworkWatcher
   - where:
       subject: ^PacketCapture(.*)
     set:
@@ -112,5 +132,86 @@ directive:
   - where:
       subject: NetworkWatcherPacketCaptureStatus
     hide: true
+  - where:
+      subject: ^ConnectionMonitor$
+    set:
+      subject: NetworkWatcherConnectionMonitor
+  - where:
+      verb: Invoke
+      subject: QueryConnectionMonitor
+    set:
+      verb: Get
+      subject: NetworkWatcherConnectionMonitorState
 
+# ApplicationGateway
+  - where:
+      verb: Invoke
+      subject: BackendApplicationGatewayHealth
+    set:
+      verb: Get
+      subject: ApplicationGatewayBackendHealth
+  - where:
+      verb: Invoke
+      subject: DemandApplicationGatewayBackendHealthOn
+    set:
+      verb: Get
+      subject: ApplicationGatewayBackendHealthOnDemand
+
+# LoadBalancer
+  - where:
+      subject: ^InboundNatRule$
+    set:
+      subject: LoadBalancerInboundNatRule
+
+# Vpn
+  - where:
+      verb: Invoke
+      subject: DownloadVpnSiteConfiguration
+    set:
+      verb: Get
+      subject: VpnSiteConfiguration
+
+# VirtualNetworkGateway
+  - where:
+      subject: VirtualNetworkGatewayVpnclientIPsecParameter
+    set:
+      subject: VirtualNetworkGatewayVpnClientIPsecParameter
+  - where:
+      verb: Invoke
+      subject: DownloadVpnSiteConfiguration
+    set:
+      verb: Get
+      subject: VpnSiteConfiguration
+  - where:
+      verb: Invoke
+      subject: DownloadVpnSiteConfiguration
+    set:
+      verb: Get
+      subject: VpnSiteConfiguration
+  - where:
+      verb: Invoke
+      subject: GeneratevpnclientpackageVirtualNetworkGateway
+    set:
+      verb: New
+      subject: VirtualNetworkGatewayVpnClientPackage
+  - where:
+      verb: Invoke
+      subject: ScriptVirtualNetworkGatewayVpnDeviceConfiguration
+    set:
+      verb: Get
+      subject: VirtualNetworkGatewayVpnDeviceConfigurationScript
+  - where:
+      verb: Invoke
+      subject: SupportedVirtualNetworkGatewayVpnDevice
+    set:
+      verb: Get
+      subject: VirtualNetworkGatewaySupportedVpnDevice
+
+# VirtualWan
+  - where:
+      verb: Invoke
+      subject: SupportedSecurityProvider
+    set:
+      verb: Get
+      subject: VirtualWanSupportedSecurityProvider
 ```
