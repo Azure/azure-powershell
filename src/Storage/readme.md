@@ -55,4 +55,67 @@ require:
 subject-prefix: ''
 title: Storage
 module-version: 0.0.1
+skip-model-cmdlets: true
+
+directive:
+  - where:
+      subject: ^BlobContainer
+    set:
+      subject: RmStorageContainer
+  - where:
+      subject: ^BlobService
+    set:
+      subject: StorageBlobService
+  - where:
+      subject: ManagementPolicy$
+    set:
+      subject: StorageAccountManagementPolicy
+  - where:
+      verb: Test
+      subject: StorageAccountNameAvailability
+    set:
+      alias: Get-AzStorageAccountNameAvailability
+  - where:
+      verb: Set
+      subject: RmStorageContainerLegalHold
+    set:
+      alias: Add-AzRmStorageContainerLegalHold
+  - where:
+      verb: Clear
+      subject: RmStorageContainerLegalHold
+    set:
+      alias: Remove-AzRmStorageContainerLegalHold
+  - where:
+      subject: ^Usage$
+    set:
+      subject: StorageUsage
+  - where:
+      subject: StorageAccount
+      parameter-name: CustomDomainUseSubDomainName
+    set:
+      parameter-name: UseSubDomain
+  - where:
+      verb: Set
+      subject: ^StorageAccount$
+    set:
+      verb: Invoke
+      subject: StorageAccountFailover
+  - where:
+      verb: Update
+      subject: ^StorageAccount$
+    set:
+      verb: Set
+  - where:
+      verb: Set
+      subject: ^StorageAccount$
+      parameter-name: Keyvaultproperty(.*)
+    set:
+      parameter-name: $1
+  - where:
+      verb: Set
+      subject: ^StorageContainerImmutabilityPolicy$
+      parameter-name: ImmutabilityPeriodSinceCreationInDay
+    set:
+      parameter-name: ImmutabilityPeriod
+
 ```
