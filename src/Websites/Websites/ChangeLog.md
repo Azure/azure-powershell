@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Adds -UseDisasterRecovery switch parameter to Get-AzWebAppSnapshot
+
+## Version 1.2.2
 * fixes the issue where using  Set-AzWebApp and Set-AzWebAppSlot with -WebApp property was removing the tags
 
 ## Version 1.2.1
