@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,12 +20,12 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model
+namespace Microsoft.Azure.Commands.Sql.Common
 {
     /// <summary>
     /// Helper class for Managed instance key
     /// </summary>
-    class ManagedInstanceKeyHelper
+    class TdeKeyHelper
     {
         /// <summary>
         /// Creates the SQL Server Key Name from an Azure Key Vault KeyId

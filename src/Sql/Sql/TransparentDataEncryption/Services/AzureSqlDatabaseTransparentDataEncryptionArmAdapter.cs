@@ -26,6 +26,7 @@ using System.Linq;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common;
 using ServerKeyType = Microsoft.Azure.Management.Sql.Models.ServerKeyType;
+using Microsoft.Azure.Commands.Sql.Common;
 
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
 {
@@ -156,7 +157,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
                 managedInstanceEncryptionProtector: new ManagedInstanceEncryptionProtector()
                 {
                     ServerKeyType = model.Type.ToString(),
-                    ServerKeyName = ManagedInstanceKeyHelper.CreateServerKeyNameFromKeyId(model.KeyId)
+                    ServerKeyName = TdeKeyHelper.CreateServerKeyNameFromKeyId(model.KeyId)
                 });
 
             return AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel

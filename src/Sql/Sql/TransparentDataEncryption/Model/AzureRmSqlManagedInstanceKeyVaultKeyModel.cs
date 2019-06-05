@@ -15,6 +15,7 @@
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model
             ResourceGroupName = resourceGroupName;
             ManagedInstanceName = managedInstanceName;
             KeyId = keyId;
-            ManagedInstanceKeyName = ManagedInstanceKeyHelper.CreateServerKeyNameFromKeyId(keyId);
+            ManagedInstanceKeyName = TdeKeyHelper.CreateServerKeyNameFromKeyId(keyId);
         }
 
         private AzureRmSqlManagedInstanceKeyVaultKeyModel() { }
