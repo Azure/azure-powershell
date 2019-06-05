@@ -14,16 +14,18 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
 
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementOpenIdConnectProvider")]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementOpenIdConnectProvider", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementOpenIdConnectProvider))]
     public class SetAzureApiManagementOpenIdConnectProvider : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
@@ -76,19 +78,22 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            Client.OpenIdConnectProviderSet(
-                Context,
-                OpenIdConnectProviderId,
-                Name,
-                Description,
-                ClientId,
-                ClientSecret,
-                MetadataEndpointUri);
-
-            if (PassThru)
+            if (ShouldProcess(OpenIdConnectProviderId, Resources.SetOpenIdConnectProvider))
             {
-                var @openIdConnectProvider = Client.OpenIdConnectProviderById(Context, OpenIdConnectProviderId);
-                WriteObject(@openIdConnectProvider);
+                Client.OpenIdConnectProviderSet(
+                    Context,
+                    OpenIdConnectProviderId,
+                    Name,
+                    Description,
+                    ClientId,
+                    ClientSecret,
+                    MetadataEndpointUri);
+
+                if (PassThru)
+                {
+                    var @openIdConnectProvider = Client.OpenIdConnectProviderById(Context, OpenIdConnectProviderId);
+                    WriteObject(@openIdConnectProvider);
+                }
             }
         }
     }

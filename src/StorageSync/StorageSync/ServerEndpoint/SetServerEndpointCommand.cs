@@ -217,10 +217,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
                 var updateParameters = new ServerEndpointUpdateParameters()
                 {
-                    CloudTiering = CloudTiering.IsPresent ? StorageSyncConstants.CloudTieringOn : StorageSyncConstants.CloudTieringOff,
+                    CloudTiering = CloudTiering.ToBool() ? StorageSyncConstants.CloudTieringOn : StorageSyncConstants.CloudTieringOff,
                     VolumeFreeSpacePercent = VolumeFreeSpacePercent,
                     TierFilesOlderThanDays = TierFilesOlderThanDays,
-                    OfflineDataTransfer = OfflineDataTransfer.IsPresent ? "on" : "off"
+                    OfflineDataTransfer = OfflineDataTransfer.ToBool() ? StorageSyncConstants.OfflineDataTransferOn : StorageSyncConstants.OfflineDataTransferOff
                 };
 
                 Target = string.Join("/", resourceGroupName, storageSyncServiceName, parentResourceName, resourceName);

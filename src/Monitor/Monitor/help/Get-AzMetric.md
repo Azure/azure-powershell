@@ -434,6 +434,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+More information about the supported metrics may be found at:
+https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
+
 ## RELATED LINKS
 
 [Get-AzMetricDefinition](./Get-AzMetricDefinition.md)

@@ -251,16 +251,33 @@ This document describes the changes between the 1.0.0 and 2.0.0 versions of Az
   ```
 
 ### Az.HDInsight
-- Removed cmdlet `Grant-AzHDInsightHttpServicesAccess` and replaced with `Set-AzHDInsightGatewayCredential`
+- Removed the `Grant-AzHDInsightHttpServicesAccess` and `Revoke-AzHDInsightHttpServicesAccess` cmdlets. These are no longer necessary because HTTP access is always enabled on all HDInsight clusters.
+- Added a new `Set-AzHDInsightGatewayCredential`  cmdlet. Use this cmdlet to change the gateway HTTP username and password (replaces `Grant-AzHDInsightHttpServicesAccess`).
+- Updated the `Get-AzHDInsightJobOutput` cmdlet to support granular role-based access to the storage key.
+    - Users with HDInsight Cluster Operator, Contributor, or Owner roles will not be affected.
+    - Users with only the Reader role will need to specify `DefaultStorageAccountKey` parameter explicitly.
+
+For more information about these role-based access changes, see [aka.ms/hdi-config-update](http://aka.ms/hdi-config-update)
+
   #### Before
   ```powershell
-  Grant-AzHDInsightHttpServicesAccess ...
+  Grant-AzHDInsightHttpServicesAccess -ClusterName $cluster -HttpCredential $credential
   ```
   #### After
   ```powershell
-  Set-AzHDInsightGatewayCredential ...
+  Set-AzHDInsightGatewayCredential -ClusterName $cluster -HttpCredential $credential
   ```
-- Removed cmdlet `Revoke-AzHDInsightHttpServicesAccess`
+
+###  Users with only Reader role for cmdlet Get-AzHDInsightJobOutput
+
+  ####  Before
+  ```powershell
+  Get-AzHDInsightJobOutput  -ClusterName $clusterName -JobId $jobId
+  ```
+  #### After
+  ```powershell
+  Get-AzHDInsightJobOutput  -ClusterName $clusterName -JobId $jobId -DefaultStorageAccountKey $storageAccountKey
+  ```
 
 ### Az.Storage
 - Namespaces for types returned from Blob, Queue, and File cmdlets have changed their namespace from `Microsoft.WindowsAzure.Storage` to `Microsoft.Azure.Storage`.  While this is not technically a breaking change according to the breaking change policy, it may require some changes in code that uses the methods from the Storage .Net SDK to interact with the objects returned from these cmdlets.
