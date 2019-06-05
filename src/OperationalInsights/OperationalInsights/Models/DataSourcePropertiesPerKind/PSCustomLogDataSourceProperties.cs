@@ -163,7 +163,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         /// <summary>
         /// Gets or sets the regex.
         /// </summary>
-        public string regex { get; set; }
+        public RegexDelimiter[] regex { get; set; }
+
+        ///<summary>
+        /// Gets or sets the FormatString
+        /// </summary>
+        public string formatString { get; set; }
 
         #endregion
     }
