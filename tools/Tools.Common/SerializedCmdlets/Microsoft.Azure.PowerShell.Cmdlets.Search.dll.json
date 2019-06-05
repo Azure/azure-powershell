@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Primary": "System.String",
               "Secondary": "System.String"
@@ -83,7 +83,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "HostingMode": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
@@ -251,7 +251,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "HostingMode": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
@@ -587,7 +587,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "HostingMode": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
@@ -967,7 +967,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchQueryKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchQueryKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchQueryKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "Key": "System.String"
@@ -1036,7 +1036,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "HostingMode": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
@@ -1204,7 +1204,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "HostingMode": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
@@ -1540,7 +1540,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Primary": "System.String",
               "Secondary": "System.String"
@@ -1609,7 +1609,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "HostingMode": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
@@ -1738,7 +1738,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1898,7 +1898,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "HostingMode": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
@@ -1979,7 +1979,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2180,7 +2180,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2405,7 +2405,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2582,7 +2582,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKeyKind, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2766,7 +2766,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "HostingMode": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
@@ -2878,7 +2878,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSkuName",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3039,7 +3039,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -3146,7 +3146,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3331,7 +3331,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -3408,7 +3408,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchQueryKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchQueryKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchQueryKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "Key": "System.String"
@@ -3477,7 +3477,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "HostingMode": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
@@ -3663,7 +3663,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "HostingMode": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
@@ -4114,7 +4114,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "HostingMode": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
@@ -4318,7 +4318,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "HostingMode": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
@@ -4865,7 +4865,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "HostingMode": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
@@ -5087,7 +5087,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "HostingMode": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
@@ -5711,7 +5711,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "HostingMode": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
@@ -5787,7 +5787,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
             "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "HostingMode": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
@@ -5995,7 +5995,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
                   "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "HostingMode": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
@@ -6670,7 +6670,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKey": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKey",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchAdminKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Primary": "System.String",
         "Secondary": "System.String"
@@ -6753,7 +6753,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -6765,7 +6765,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -6870,7 +6870,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSkuName]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSSkuName]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.Search.Models.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -6882,7 +6882,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSSkuName": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSkuName",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSkuName, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -6989,7 +6989,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchService, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "HostingMode": "System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSHostingMode]",
@@ -7233,7 +7233,7 @@
     "Microsoft.Azure.Commands.Management.Search.Models.PSSearchQueryKey": {
       "Namespace": "Microsoft.Azure.Commands.Management.Search.Models",
       "Name": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchQueryKey",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchQueryKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.Search.Models.PSSearchQueryKey, Microsoft.Azure.PowerShell.Cmdlets.Search, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "Key": "System.String"

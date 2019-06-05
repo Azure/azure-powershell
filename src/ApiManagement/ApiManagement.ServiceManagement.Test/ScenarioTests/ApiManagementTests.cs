@@ -69,6 +69,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApiCloneCrudTest()
+        {
+            RunPowerShellTest("ApiClone-Test");
+        }        
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ApiImportExportWadlTest()
         {
             RunPowerShellTest("Api-ImportExportWadlTest");
@@ -90,6 +97,27 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApiImportExportOpenApiTest()
+        {
+            RunPowerShellTest("Api-ImportExportOpenApiTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApiSchemaCrudOnSwaggerApiTest()
+        {
+            RunPowerShellTest("ApiSchema-SwaggerCRUDTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApiSchemaCrudOnWsdlApiTest()
+        {
+            RunPowerShellTest("ApiSchema-WsdlCRUDTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void OperationsCrudTest()
         {
             RunPowerShellTest("Operations-CrudTest");
@@ -104,9 +132,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SubscriptionCrudTest()
+        public void SubscriptionOldModelCrudTest()
         {
-            RunPowerShellTest("Subscription-CrudTest");
+            RunPowerShellTest("SubscriptionOldModel-CrudTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SubscriptionNewModelCrudTest()
+        {
+            RunPowerShellTest("SubscriptionNewModel-CrudTest");
         }
 
         [Fact]
@@ -167,6 +202,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void IdentityProviderAadB2CCrudTest()
+        {
+            RunPowerShellTest("IdentityProvider-AadB2C-CrudTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IdentityProviderCrudTest()
         {
             RunPowerShellTest("IdentityProvider-CrudTest");
@@ -212,6 +254,27 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
         public void ApiRevisionCrudTest()
         {
             RunPowerShellTest("ApiRevision-CrudTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CacheCrudTest()
+        {
+            RunPowerShellTest("Cache-CrudTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DiagnosticCrudTest()
+        {
+            RunPowerShellTest("Diagnostic-CrudTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApiDiagnosticCrudTest()
+        {
+            RunPowerShellTest("ApiDiagnostic-CrudTest");
         }
 
         private void RunPowerShellTest(params string[] scripts)
