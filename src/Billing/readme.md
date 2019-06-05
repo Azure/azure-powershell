@@ -58,7 +58,6 @@ require:
 
 module-version: 0.0.1
 title: Billing
-skip-model-cmdlets: true
 subject-prefix: ''
 
 directive:
