@@ -114,8 +114,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
            ParameterSetName = StorageSyncParameterSets.ObjectParameterSet,
            Mandatory = true,
            ValueFromPipeline = true,
-           HelpMessage = HelpMessages.SyncGroupObjectParameter)]
-        [Alias(StorageSyncAliases.RegisteredServerAlias)]
+           HelpMessage = HelpMessages.ServerEndpointObjectParameter)]
+        [Alias(StorageSyncAliases.ServerEndpointAlias)]
         public PSServerEndpoint InputObject { get; set; }
 
         /// <summary>

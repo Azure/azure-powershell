@@ -84,7 +84,8 @@ CmdletsToExport = 'Invoke-AzStorageSyncCompatibilityCheck',
                'Remove-AzStorageSyncServerEndpoint', 
                'Set-AzStorageSyncServerEndpoint', 'Invoke-AzStorageSyncFileRecall', 
                'Register-AzStorageSyncServer', 'Unregister-AzStorageSyncServer', 
-               'Get-AzStorageSyncServer', 'Reset-AzStorageSyncServerCertificate'
+               'Get-AzStorageSyncServer', 'Reset-AzStorageSyncServerCertificate',
+               'Invoke-AzStorageSyncChangeDetection'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -119,7 +120,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fix bug for not passing OFflineDataTransferProxy to SDK'
+        ReleaseNotes = '* Support for invoke change detection command'
 
         # Prerelease string of this module
         # Prerelease = ''
