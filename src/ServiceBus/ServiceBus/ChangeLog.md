@@ -20,6 +20,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Fix for issue #9182 - Get-AzServiceBusNamespace returns ResourceGroup instead of ResourceGroupName
+* Fix spelling of Namespace in Resources.resx
+
 ## Version 1.1.0
 * Added new cmdlets for NetworkRuleSet of Namespace
 
