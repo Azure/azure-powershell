@@ -98,14 +98,14 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
         /// <summary>
         /// Sets a server Advanced Data Security policy model for the given server
         /// </summary>
-        public ServerAdvancedDataSecurityPolicyModel SetServerAdvancedDataSecurity(ServerAdvancedDataSecurityPolicyModel model)
+        public ServerAdvancedDataSecurityPolicyModel SetServerAdvancedDataSecurity(ServerAdvancedDataSecurityPolicyModel model, string storageEndpointSuffix)
         {
             // Currently Advanced Data Security policy is a TD policy until the backend will support Advanced Data Security APIs
             var threatDetectionPolicy = SqlThreatDetectionAdapter.GetServerThreatDetectionPolicy(model.ResourceGroupName, model.ServerName);
 
             threatDetectionPolicy.ThreatDetectionState = model.IsEnabled ? ThreatDetectionStateType.Enabled : ThreatDetectionStateType.Disabled;
 
-            SqlThreatDetectionAdapter.SetServerThreatDetectionPolicy(threatDetectionPolicy, AzureEnvironment.Endpoint.StorageEndpointSuffix);
+            SqlThreatDetectionAdapter.SetServerThreatDetectionPolicy(threatDetectionPolicy, storageEndpointSuffix);
 
             return model;
         }
