@@ -1,3 +1,66 @@
+## 2.2.0 - June 2019
+#### Az.Cdn
+* Updated cmdlets to support rulesEngine feature based on API version 2019-04-15.
+
+#### Az.Compute
+* Added `NoWait` parameter that starts the operation and returns immediately, before the operation is completed.
+    - Updated cmdlets:
+        Export-AzLogAnalyticRequestRateByInterval
+        Export-AzLogAnalyticThrottledRequest
+        Remove-AzVM
+        Remove-AzVMAccessExtension
+        Remove-AzVMAEMExtension
+        Remove-AzVMChefExtension
+        Remove-AzVMCustomScriptExtension
+        Remove-AzVMDiagnosticsExtension
+        Remove-AzVMDiskEncryptionExtension
+        Remove-AzVMDscExtension
+        Remove-AzVMSqlServerExtension
+        Restart-AzVM
+        Set-AzVM
+        Set-AzVMAccessExtension
+        Set-AzVMADDomainExtension
+        Set-AzVMAEMExtension
+        Set-AzVMBginfoExtension
+        Set-AzVMChefExtension
+        Set-AzVMCustomScriptExtension
+        Set-AzVMDiagnosticsExtension
+        Set-AzVMDscExtension
+        Set-AzVMExtension
+        Start-AzVM
+        Stop-AzVM
+        Update-AzVM
+
+#### Az.EventHub
+* Fix for #9231 - Get-AzEventHubNamespace does not return tags
+* Fix for #9230 - Get-AzEventHubNamespace returns ResourceGroup instead of ResourceGroupName
+
+#### Az.Network
+* Update ResourceId and InputObject for Nat Gateway
+    - Add alias for ResourceId and InputObject
+
+#### Az.PolicyInsights
+* Fix Null reference issue in Get-AzPolicyEvent
+
+#### Az.RecoveryServices
+* IaaSVM policy minimum retention in days changed to 7 from 1
+
+#### Az.ServiceBus
+* Fix for issue #9182 - Get-AzServiceBusNamespace returns ResourceGroup instead of ResourceGroupName
+
+#### Az.ServiceFabric
+* Fix typo in error message for 'Update-AzServiceFabricReliability'
+* Fix missing character in Service Fabric cmdlines
+
+#### Az.Sql
+* Add DnsZonePartner Parameter for New-AzureSqlInstance cmdlet to support AutoDr for Managed Instance.
+* Deprecating Get-AzSqlDatabaseSecureConnectionPolicy cmdlet
+* Rename Threat Detection cmdlets to Advanced Threat Protection
+* New-AzSqlInstance -StorageSizeInGB and -LicenseType parameters are now optional.
+
+#### Az.Websites
+* fixes the issue where using  Set-AzWebApp and Set-AzWebAppSlot with -WebApp property was removing the tags
+
 ## 2.1.0 - May 2019
 #### Az.ApiManagement
 * Created new Cmdlets for managing diagnostics at the global and API Scope

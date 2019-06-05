@@ -133,10 +133,10 @@
     <value>Creating new AuthorizationRule named:{0} for Queue: {1}</value>
   </data>
   <data name="CreateRule" xml:space="preserve">
-    <value>Create a new Rule:{0} for Subscription:{1} of Namsespae:{2}</value>
+    <value>Create a new Rule:{0} for Subscription:{1} of Namespace:{2}</value>
   </data>
   <data name="CreateSubscription" xml:space="preserve">
-    <value>Create a new Subscription:{0} for Topic:{1} of Namsespae:{2}</value>
+    <value>Create a new Subscription:{0} for Topic:{1} of Namespace:{2}</value>
   </data>
   <data name="CreateTopic" xml:space="preserve">
     <value>Create a new Topic:{0} for Namespace:{1}</value>
