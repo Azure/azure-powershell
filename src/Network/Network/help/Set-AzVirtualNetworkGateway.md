@@ -55,7 +55,7 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-VpnClientProtocol <String[]>] [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
  [-Asn <UInt32>] [-PeerWeight <Int32>] [-EnableActiveActiveFeature] [-DisableActiveActiveFeature]
- -AadTenant <String> -AadAudience <String> -AadIssuer <String> [-RemoveAadAuthentication]
+ -AadTenantUri <String> -AadAudienceId <String> -AadIssuerUri <String> [-RemoveAadAuthentication]
  [-CustomRoute <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -154,7 +154,7 @@ The second command updates the virtual network gateway Gateway01 with the tags @
 ### Example 4: Add/Update AAD authentication configuration for VpnClient of an existing virtual network gateway
 ```
 PS C:\>$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
-PS C:\>Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -AadTenant "https://login.microsoftonline.com/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4" -AadIssuer "https://sts.windows.net/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4/" -AadAudience "a21fce82-76af-45e6-8583-a08cb3b956f9"
+PS C:\>Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -AadTenantUri "https://login.microsoftonline.com/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4" -AadIssuerUri "https://sts.windows.net/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4/" -AadAudienceId "a21fce82-76af-45e6-8583-a08cb3b956f9"
 
 Name                   : Gateway001
 ResourceGroupName      : ResourceGroup001
@@ -208,9 +208,9 @@ vpnClientConfiguration : {
 
                     "radiusServerAddress": "",
                     "radiusServerSecret": "",
-					"aadTenant": "https://login.microsoftonline.com/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4\",
-					"aadAudience": "a21fce82-76af-45e6-8583-a08cb3b956g9\",
-					"aadIssuer": "https://sts.windows.net/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4/\"
+					"aadTenantUri": "https://login.microsoftonline.com/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4\",
+					"aadAudienceId": "a21fce82-76af-45e6-8583-a08cb3b956g9\",
+					"aadIssuerUri": "https://sts.windows.net/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4/\"
                 },
 BgpSettings            : {
                            "Asn": 65515,
@@ -222,13 +222,13 @@ PS C:\>Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientRoo
 ```
 
 The first command gets a virtual network gateway named Gateway01 that belongs to resource group ResourceGroup001 and stores it to the variable named $Gateway
-The second command updates the virtual network gateway Gateway01 with the AAD authentication configurations params:aadTenant, aadAudience, aadIssuer for VpnClient.
+The second command updates the virtual network gateway Gateway01 with the AAD authentication configurations params:aadTenantUri, aadAudienceId, aadIssuerUri for VpnClient.
 The third command removes the AAD authentication configuration from VpnClient of virtual network gateway.
 
 ## PARAMETERS
 
-### -AadAudience
-P2S AAD authentication option:AADAudience.
+### -AadAudienceId
+P2S AAD authentication option:AadAudienceId.
 
 ```yaml
 Type: System.String
@@ -242,8 +242,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -AadIssuer
-P2S AAD authentication option:AADIssuer.
+### -AadIssuerUri
+P2S AAD authentication option:AadIssuerUri.
 
 ```yaml
 Type: System.String
@@ -257,8 +257,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -AadTenant
-P2S AAD authentication option:AADTenant.
+### -AadTenantUri
+P2S AAD authentication option:AadTenantUri.
 
 ```yaml
 Type: System.String

@@ -233,25 +233,25 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration,
-            HelpMessage = "P2S AAD authentication option:AADTenant.")]
+            HelpMessage = "P2S AAD authentication option:AadTenantUri.")]
         [ValidateNotNullOrEmpty]
-        public string AadTenant { get; set; }
+        public string AadTenantUri { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration,
-            HelpMessage = "P2S AAD authentication option:AADAudience.")]
+            HelpMessage = "P2S AAD authentication option:AadAudienceId.")]
         [ValidateNotNullOrEmpty]
-        public string AadAudience { get; set; }
+        public string AadAudienceId { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration,
-            HelpMessage = "P2S AAD authentication option:AADIssuer.")]
+            HelpMessage = "P2S AAD authentication option:AadIssuerUri.")]
         [ValidateNotNullOrEmpty]
-        public string AadIssuer { get; set; }
+        public string AadIssuerUri { get; set; }
 
         [Parameter(
                     Mandatory = false,
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.VpnClientRevokedCertificates != null ||
                 this.RadiusServerAddress != null ||
                 (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Length != 0) ||
-                this.AadTenant != null)
+                this.AadTenantUri != null)
             {
                 vnetGateway.VpnClientConfiguration = new PSVpnClientConfiguration();
 
@@ -407,19 +407,19 @@ namespace Microsoft.Azure.Commands.Network
                     vnetGateway.VpnClientConfiguration.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
                 }
                 
-                if (this.AadTenant != null)
+                if (this.AadTenantUri != null)
                 {
-                    if (this.AadIssuer == null || this.AadAudience == null)
+                    if (this.AadIssuerUri == null || this.AadAudienceId == null)
                     {
-                        throw new ArgumentException("AadTenant, AadIssuer and AadAudience must be specified if AAD authentication is being configured for P2S.");
+                        throw new ArgumentException("AadTenantUri, AadIssuerUri and AadAudienceId must be specified if AAD authentication is being configured for P2S.");
                     }
 
                     if (vnetGateway.VpnClientConfiguration.VpnClientProtocols.Count() == 1 && 
                         vnetGateway.VpnClientConfiguration.VpnClientProtocols.First().Equals(MNM.VpnClientProtocol.OpenVPN))
                     {
-                        vnetGateway.VpnClientConfiguration.AadTenant = this.AadTenant;
-                        vnetGateway.VpnClientConfiguration.AadIssuer = this.AadIssuer;
-                        vnetGateway.VpnClientConfiguration.AadAudience = this.AadAudience;
+                        vnetGateway.VpnClientConfiguration.AadTenant = this.AadTenantUri;
+                        vnetGateway.VpnClientConfiguration.AadIssuer = this.AadIssuerUri;
+                        vnetGateway.VpnClientConfiguration.AadAudience = this.AadAudienceId;
                     }
                     else
                     {

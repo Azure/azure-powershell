@@ -59,8 +59,8 @@
         - Added methods AddPublicIpAddress and RemovePublicIpAddress on firewall object - these accept a Public IP Address object as input
         - Deprecated parameters -PublicIpName and -VirtualNetworkName 
 * Updated below commands for feature: Set VpnClient AAD authentication options to Virtual network gateway resource. 
-    - Updated New-AzVirtualNetworkGateway: Added optional parameters AadTenant,AadAudience,AadIssuer to set VpnClient AAD authentication options on Gateway.
-    - Updated Set-AzVirtualNetworkGateway: Added optional parameter AadTenant,AadAudience,AadIssuer to set VpnClient AAD authentication options on Gateway.
+    - Updated New-AzVirtualNetworkGateway: Added optional parameters AadTenantUri,AadAudienceId,AadIssuerUri to set VpnClient AAD authentication options on Gateway.
+    - Updated Set-AzVirtualNetworkGateway: Added optional parameter AadTenantUri,AadAudienceId,AadIssuerUri to set VpnClient AAD authentication options on Gateway.
     - Updated Set-AzVirtualNetworkGateway: Added optional switch parameter RemoveAadAuthentication to remove VpnClient AAD authentication options from Gateway.
 
 ## Version 1.8.1
