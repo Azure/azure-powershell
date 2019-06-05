@@ -50,7 +50,7 @@
 * Fixed displaying of VirtualNetworkTaps in NetworkInterfaceIpConfiguration
 * Fixed Cortex Get cmdlets for list all part
 * Fixed VirtualHub reference creation for ExpressRouteGateways, VpnGateway
-* Add Availability Zones support for Azure Firewall
+* Added support for Availability Zones in AzureFirewall and NatGateway
 * Added cmdlet Get-AzNetworkServiceTag
 
 * Add support for multiple public IP addresses for Azure Firewall
