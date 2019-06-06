@@ -52,13 +52,16 @@
 * Fixed VirtualHub reference creation for ExpressRouteGateways, VpnGateway
 * Added support for Availability Zones in AzureFirewall and NatGateway
 * Added cmdlet Get-AzNetworkServiceTag
-
 * Add support for multiple public IP addresses for Azure Firewall
     - Updated New-AzFirewall cmdlet:
         - Added parameter -PublicIpAddress which accepts one or more Public IP Address objects
         - Added parameter -VirtualNetwork which accepts a Virtual Network object
         - Added methods AddPublicIpAddress and RemovePublicIpAddress on firewall object - these accept a Public IP Address object as input
         - Deprecated parameters -PublicIpName and -VirtualNetworkName 
+* Updated below commands for feature: Set VpnClient AAD authentication options to Virtual network gateway resource. 
+    - Updated New-AzVirtualNetworkGateway: Added optional parameters AadTenantUri,AadAudienceId,AadIssuerUri to set VpnClient AAD authentication options on Gateway.
+    - Updated Set-AzVirtualNetworkGateway: Added optional parameter AadTenantUri,AadAudienceId,AadIssuerUri to set VpnClient AAD authentication options on Gateway.
+    - Updated Set-AzVirtualNetworkGateway: Added optional switch parameter RemoveAadAuthentication to remove VpnClient AAD authentication options from Gateway.
 
 ## Version 1.8.1
 * Add DisableBgpRoutePropagation flag to Effective Route Table output
