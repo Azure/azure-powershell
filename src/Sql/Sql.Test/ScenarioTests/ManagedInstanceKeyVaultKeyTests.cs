@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,9 +20,11 @@ using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ServerKeyVaultKeyTests : SqlTestsBase
+    public class ManagedInstanceKeyVaultKeyTests : SqlTestsBase
     {
-
+        public ManagedInstanceKeyVaultKeyTests(ITestOutputHelper output) : base(output)
+        {
+        }
 
         protected override void SetupManagementClients(RestTestFramework.MockContext context)
         {
@@ -34,29 +36,39 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient, networkClient, graphClient, keyVaultClient);
         }
 
-        public ServerKeyVaultKeyTests(ITestOutputHelper output) : base(output)
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedInstanceKeyVaultKeyCI()
         {
-        }
-
-        [Fact] 
-        [Trait(Category.RunType, Category.LiveOnly)]
-        public void TestServerKeyVaultKeyAdd()
-        {
-            RunPowerShellTest("Test-AddServerKeyVaultKey");
+            RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyCI");
         }
 
         [Fact]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        public void TestServerKeyVaultKeyGet()
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedInstanceKeyVaultKey()
         {
-            RunPowerShellTest("Test-GetServerKeyVaultKey");
+            RunPowerShellTest("Test-ManagedInstanceKeyVaultKey");
         }
 
-        [Fact(Skip = "TODO: only works for live mode. Mihymel will fix the test issue for Create-ServerKeyVaultKeyTestEnvironment")]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        public void TestServerKeyVaultKeyRemove()
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedInstanceKeyVaultKeyInputObject()
         {
-            RunPowerShellTest("Test-RemoveServerKeyVaultKey");
+            RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyInputObject");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedInstanceKeyVaultKeyResourceId()
+        {
+            RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyResourceId");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedInstanceKeyVaultKeyPiping()
+        {
+            RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyPiping");
         }
     }
 }
