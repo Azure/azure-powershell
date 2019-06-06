@@ -42,8 +42,7 @@ AuditActionGroup                    : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
                                        BATCH_COMPLETED_GROUP, ...}
 PredicateExpression                 : statement <> 'select 1'
 BlobStorageTargetState              : Enabled
-StorageAccountName                  : mystorage
-StorageAccountSubscriptionId        : 7fe3301d-31d3-4668-af5e-211a890ba6e3
+StorageAccountResourceId            : /subscriptions/7fe3301d-31d3-4668-af5e-211a890ba6e3/resourceGroups/resourcegroup01/providers/Microsoft.Storage/storageAccounts/mystorage
 StorageKeyType                      : Primary
 RetentionInDays                     : 0
 EventHubTargetState                 : Enabled
@@ -64,8 +63,7 @@ AuditActionGroup                    : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
                                        BATCH_COMPLETED_GROUP, ...}
 PredicateExpression                 : statement <> 'select 1'
 BlobStorageTargetState              : Enabled
-StorageAccountName                  : mystorage
-StorageAccountSubscriptionId        : 7fe3301d-31d3-4668-af5e-211a890ba6e3
+StorageAccountResourceId            : /subscriptions/7fe3301d-31d3-4668-af5e-211a890ba6e3/resourceGroups/resourcegroup01/providers/Microsoft.Storage/storageAccounts/mystorage
 StorageKeyType                      : Primary
 RetentionInDays                     : 0
 EventHubTargetState                 : Enabled
@@ -86,8 +84,7 @@ AuditActionGroup                    : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
                                        BATCH_COMPLETED_GROUP, ...}
 PredicateExpression                 : statement <> 'select 1'
 BlobStorageTargetState              : Enabled
-StorageAccountName                  : mystorage
-StorageAccountSubscriptionId        : 7fe3301d-31d3-4668-af5e-211a890ba6e3
+StorageAccountResourceId            : /subscriptions/7fe3301d-31d3-4668-af5e-211a890ba6e3/resourceGroups/resourcegroup01/providers/Microsoft.Storage/storageAccounts/mystorage
 StorageKeyType                      : Primary
 RetentionInDays                     : 0
 EventHubTargetState                 : Enabled
