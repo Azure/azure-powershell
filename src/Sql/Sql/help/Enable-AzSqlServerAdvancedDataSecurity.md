@@ -24,7 +24,6 @@ The **Enable-AzSqlServerAdvancedDataSecurity** cmdlet enables Advanced Data Secu
 
 ## EXAMPLES
 
-### Example 1
 ### Example 1 - Enable server Advanced Data Security
 ```powershell
 PS C:\>  Enable-AzSqlServerAdvancedDataSecurity `
