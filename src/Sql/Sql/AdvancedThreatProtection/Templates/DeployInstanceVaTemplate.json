@@ -34,15 +34,6 @@
             "properties": {},
         },
         {
-            "type": "Microsoft.Sql/managedInstances/securityAlertPolicies",
-            "name": "[concat(parameters('serverName'), '/Default')]",
-            "apiVersion": "2017-03-01-preview",
-            "properties": {
-                "state": "Enabled",
-                "emailAccountAdmins": true,
-            },
-        },
-        {
             "condition": "[parameters('enableVa')]",
             "type": "Microsoft.Sql/managedInstances/vulnerabilityAssessments",
             "name": "[concat(parameters('serverName'), '/Default')]",
@@ -57,7 +48,6 @@
             },
             "dependsOn": [
                 "[concat('Microsoft.Storage/storageAccounts/', variables('storageName'))]",
-                "[concat('Microsoft.Sql/managedInstances/', parameters('serverName'), '/securityAlertPolicies/Default')]",
             ],
         },
     ],

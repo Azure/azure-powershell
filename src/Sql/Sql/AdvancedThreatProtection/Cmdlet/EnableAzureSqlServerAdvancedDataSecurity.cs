@@ -58,13 +58,11 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override ServerAdvancedDataSecurityPolicyModel PersistChanges(ServerAdvancedDataSecurityPolicyModel model)
         {
+            // Enable ADS
             model.IsEnabled = true;
+            ModelAdapter.SetServerAdvancedDataSecurity(model, DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
 
-            if (DoNotConfigureVulnerabilityAssessment)
-            {
-                ModelAdapter.SetServerAdvancedDataSecurity(model, DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
-            }
-            else
+            if (!DoNotConfigureVulnerabilityAssessment)
             {
                 // Deploy arm template to enable VA - only if VA at server level is not defined
                 var vaAdapter = new SqlVulnerabilityAssessmentAdapter(DefaultContext);
@@ -74,11 +72,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
                 {
                     var serverAdapter = new AzureSqlServerAdapter(DefaultContext);
                     AzureSqlServerModel serverModel = serverAdapter.GetServer(ResourceGroupName, ServerName);
-                    ModelAdapter.EnableServerAdsWithVa(ResourceGroupName, ServerName, serverModel.Location, DeploymentName);
-                }
-                else
-                {
-                    ModelAdapter.SetServerAdvancedDataSecurity(model, DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
+                    ModelAdapter.AutoEnableServerVa(ResourceGroupName, ServerName, serverModel.Location, DeploymentName);
                 }
             }
 
