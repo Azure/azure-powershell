@@ -132,9 +132,9 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
         /// <param name="serverName">The server name</param>
         /// <param name="serverLocation">The server location</param>
         /// <param name="deploymentName">The name of the deployment (can be null - in this case a random name will be generated)</param>
-        public void EnableServerAdsWithVa(string resourceGroupName, string serverName, string serverLocation, string deploymentName)
+        public void AutoEnableServerVa(string resourceGroupName, string serverName, string serverLocation, string deploymentName)
         {
-            EnableAdsWithVa(resourceGroupName, serverName, serverLocation, @"DeployServerAdsWithVaTemplate.json", deploymentName);
+            AutoEnableVa(resourceGroupName, serverName, serverLocation, @"DeployServerVaTemplate.json", deploymentName);
         }
 
         /// <summary>
@@ -144,17 +144,17 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
         /// <param name="instanceName">The managed instance name</param>
         /// <param name="instanceLocation">The managed instance location</param>
         /// <param name="deploymentName">The name of the deployment (can be null - in this case a random name will be generated)</param>
-        public void EnableInstanceAdsWithVa(string resourceGroupName, string instanceName, string instanceLocation, string deploymentName)
+        public void AutoEnableInstanceVa(string resourceGroupName, string instanceName, string instanceLocation, string deploymentName)
         {
-            EnableAdsWithVa(resourceGroupName, instanceName, instanceLocation, @"DeployInstanceAdsWithVaTemplate.json", deploymentName);
+            AutoEnableVa(resourceGroupName, instanceName, instanceLocation, @"DeployInstanceVaTemplate.json", deploymentName);
         }
 
-        private void EnableAdsWithVa(string resourceGroupName, string serverName, string serverLocation, string templateName, string deploymentName)
+        private void AutoEnableVa(string resourceGroupName, string serverName, string serverLocation, string templateName, string deploymentName)
         {
             // Generate deployment name if it was not provided
             if (string.IsNullOrEmpty(deploymentName))
             {
-                deploymentName = "EnableADS_" + serverName + "_" + Guid.NewGuid().ToString("N");
+                deploymentName = "EnableVA_" + serverName + "_" + Guid.NewGuid().ToString("N");
             }
 
             // Trim deployment name as it has a maximum of 64 chars
