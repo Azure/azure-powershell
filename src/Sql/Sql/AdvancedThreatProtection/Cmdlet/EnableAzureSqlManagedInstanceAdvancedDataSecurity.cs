@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter;
 using Microsoft.Azure.Commands.Sql.VulnerabilityAssessment.Model;
 using Microsoft.Azure.Commands.Sql.VulnerabilityAssessment.Services;
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
 
             if (DoNotConfigureVulnerabilityAssessment)
             {
-                ModelAdapter.SetManagedInstanceAdvancedDataSecurity(model);
+                ModelAdapter.SetManagedInstanceAdvancedDataSecurity(model, DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
             }
             else
             {
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
                 }
                 else
                 {
-                    ModelAdapter.SetManagedInstanceAdvancedDataSecurity(model);
+                    ModelAdapter.SetManagedInstanceAdvancedDataSecurity(model, DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
                 }
             }
 
