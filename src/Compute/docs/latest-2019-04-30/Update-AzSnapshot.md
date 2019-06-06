@@ -12,13 +12,7 @@ Updates (patches) a snapshot.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Update-AzSnapshot -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Snapshot <ISnapshotUpdate>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Update-AzSnapshot -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  -EncryptionSettingCollectionEnabled [-DiskSizeGb <Int32>]
@@ -33,12 +27,6 @@ Update-AzSnapshot -InputObject <IComputeIdentity> -EncryptionSettingCollectionEn
  [-EncryptionSettingCollectionEncryptionSetting <IEncryptionSettingsElement[]>]
  [-OSType <OperatingSystemTypes>] [-SkuName <SnapshotStorageAccountTypes>] [-Tag <ISnapshotUpdateTags>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzSnapshot -InputObject <IComputeIdentity> [-Snapshot <ISnapshotUpdate>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,7 +93,7 @@ Resizes are only allowed if the disk is not attached to a running VM, and can on
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -123,7 +111,7 @@ If EncryptionSettings is null in the request object, the existing settings remai
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -139,7 +127,7 @@ A collection of encryption settings, one for each disk volume.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20180930.IEncryptionSettingsElement[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -155,7 +143,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -174,7 +162,7 @@ The max name length is 80 characters.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases: SnapshotName
 
 Required: True
@@ -190,7 +178,7 @@ the Operating System type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemTypes
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -206,7 +194,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -222,7 +210,7 @@ The sku name.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.SnapshotStorageAccountTypes
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -233,29 +221,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Snapshot
-Snapshot update resource.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20180930.ISnapshotUpdate
-Parameter Sets: Update, UpdateViaIdentity
-Aliases: SnapshotUpdate
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -SubscriptionId
 Subscription credentials which uniquely identify Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -271,7 +243,7 @@ Resource tags
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20180930.ISnapshotUpdateTags
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -319,8 +291,6 @@ Dynamic: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20180930.ISnapshotUpdate
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 

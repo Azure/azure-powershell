@@ -521,6 +521,19 @@ directive:
       subject: Vmss
       variant: ^PowerOff\d?$|^PowerOffViaIdentity\d?$
     remove: true
+# Revove variants that cause piping problems
+  - where:
+      verb: New
+      variant: ^CreateViaIdentityExpanded\d?$|^CreateViaIdentity\d?$
+    remove: true
+  - where:
+      verb: Set
+      variant: ^UpdateViaIdentity\d?$
+    remove: true
+  - where:
+      verb: Update
+      variant: ^Update\d?$|^UpdateViaIdentity\d?$
+    remove: true
 # Remove variants for hidden cmdlets
   - where:
       verb: Invoke

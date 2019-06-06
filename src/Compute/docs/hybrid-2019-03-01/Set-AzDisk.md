@@ -41,12 +41,6 @@ Set-AzDisk -InputObject <IComputeIdentity> -CreationDataCreateOption <DiskCreate
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentity1
-```
-Set-AzDisk -InputObject <IComputeIdentity> [-Disk <IDisk>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Creates or updates a disk.
 
@@ -174,7 +168,7 @@ Disk resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.IDisk
-Parameter Sets: Update1, UpdateViaIdentity1
+Parameter Sets: Update1
 Aliases:
 
 Required: False
@@ -291,7 +285,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateViaIdentity1
+Parameter Sets: UpdateViaIdentityExpanded1
 Aliases:
 
 Required: True

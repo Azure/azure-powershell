@@ -29,22 +29,6 @@ New-AzImage -Name <String> -ResourceGroupName <String> -SubscriptionId <String> 
  [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded1
-```
-New-AzImage -InputObject <IComputeIdentity> -Location <String> -OSDiskOsstate <OperatingSystemStateTypes>
- -OSDiskOstype <OperatingSystemTypes> [-DataDisk <IImageDataDisk[]>]
- [-HyperVGeneration <HyperVGenerationTypes>] [-ManagedDiskId <String>] [-OSDiskBlobUri <String>]
- [-OSDiskCaching <CachingTypes>] [-OSDiskSizeGb <Int32>] [-OSDiskStorageAccountType <StorageAccountTypes>]
- [-SnapshotId <String>] [-SourceVirtualMachineId <String>] [-Tag <IResourceTags>] [-ZoneResilient]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity1
-```
-New-AzImage -InputObject <IComputeIdentity> [-Image <IImage>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Create or update an image.
 
@@ -92,7 +76,7 @@ Specifies the parameters that are used to add a data disk to a virtual machine.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IImageDataDisk[]
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -124,7 +108,7 @@ Gets the HyperVGenerationType of the VirtualMachine created from the image
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.HyperVGenerationTypes
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -142,26 +126,10 @@ If SourceImage is provided, the destination virtual hard drive must not exist.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IImage
-Parameter Sets: Create1, CreateViaIdentity1
+Parameter Sets: Create1
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: CreateViaIdentityExpanded1, CreateViaIdentity1
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -174,7 +142,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: True
@@ -190,7 +158,7 @@ Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -206,7 +174,7 @@ The name of the image.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: (All)
 Aliases: ImageName
 
 Required: True
@@ -222,7 +190,7 @@ The Virtual Hard Disk.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -240,7 +208,7 @@ ReadOnly for Premium storage**
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.CachingTypes
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -256,7 +224,7 @@ The OS State.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemStateTypes
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: True
@@ -273,7 +241,7 @@ This property allows you to specify the type of the OS that is included in the d
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemTypes
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: True
@@ -291,7 +259,7 @@ This element can be used to overwrite the name of the disk in a virtual machine 
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -308,7 +276,7 @@ UltraSSD_LRS cannot be used with OS Disk.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.StorageAccountTypes
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -324,7 +292,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -340,7 +308,7 @@ Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -356,7 +324,7 @@ Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -373,7 +341,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -389,7 +357,7 @@ Resource tags
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.IResourceTags
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -407,7 +375,7 @@ Zone resilient images can be created only in regions that provide Zone Redundant
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -457,8 +425,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IImage
-
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 
 ## OUTPUTS
 

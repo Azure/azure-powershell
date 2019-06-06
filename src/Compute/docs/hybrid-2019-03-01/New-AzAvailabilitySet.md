@@ -26,20 +26,6 @@ New-AzAvailabilitySet -Name <String> -ResourceGroupName <String> -SubscriptionId
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded1
-```
-New-AzAvailabilitySet -InputObject <IComputeIdentity> -Location <String> [-PlatformFaultDomainCount <Int32>]
- [-PlatformUpdateDomainCount <Int32>] [-SkuCapacity <Int64>] [-SkuName <String>] [-SkuTier <String>]
- [-Tag <IResourceTags>] [-VirtualMachine <ISubResource[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentity1
-```
-New-AzAvailabilitySet -InputObject <IComputeIdentity> [-AvailabilitySet <IAvailabilitySet>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Create or update an availability set.
 
@@ -74,7 +60,7 @@ An existing VM cannot be added to an availability set.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IAvailabilitySet
-Parameter Sets: Create1, CreateViaIdentity1
+Parameter Sets: Create1
 Aliases:
 
 Required: False
@@ -101,28 +87,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: CreateViaIdentityExpanded1, CreateViaIdentity1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Location
 Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: True
@@ -138,7 +108,7 @@ The name of the availability set.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: (All)
 Aliases: AvailabilitySetName
 
 Required: True
@@ -154,7 +124,7 @@ Fault Domain count.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -170,7 +140,7 @@ Update Domain count.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -186,7 +156,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -202,7 +172,7 @@ Specifies the number of virtual machines in the scale set.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -218,7 +188,7 @@ The sku name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -234,7 +204,7 @@ Specifies the tier of virtual machines in a scale set.<br /><br /> Possible Valu
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -251,7 +221,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -267,7 +237,7 @@ Resource tags
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.IResourceTags
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -283,7 +253,7 @@ A list of references to all virtual machines in the availability set.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.ISubResource[]
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -333,8 +303,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IAvailabilitySet
-
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 
 ## OUTPUTS
 

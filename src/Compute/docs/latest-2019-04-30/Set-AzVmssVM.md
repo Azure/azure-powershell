@@ -66,12 +66,6 @@ Set-AzVmssVM -InputObject <IComputeIdentity> -Location <String> [-AvailabilitySe
  [<CommonParameters>]
 ```
 
-### UpdateViaIdentity1
-```
-Set-AzVmssVM -InputObject <IComputeIdentity> [-Parameter <IVirtualMachineScaleSetVM>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Updates a virtual machine of a VM scale set.
 
@@ -318,7 +312,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateViaIdentity1
+Parameter Sets: UpdateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -591,7 +585,7 @@ Describes a virtual machine scale set virtual machine.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IVirtualMachineScaleSetVM
-Parameter Sets: Update1, UpdateViaIdentity1
+Parameter Sets: Update1
 Aliases:
 
 Required: False

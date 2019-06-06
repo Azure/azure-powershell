@@ -40,12 +40,6 @@ Set-AzVmssExtension -InputObject <IComputeIdentity> [-AutoUpgradeMinorVersion] [
  [<CommonParameters>]
 ```
 
-### UpdateViaIdentity1
-```
-Set-AzVmssExtension -InputObject <IComputeIdentity> [-ExtensionParameter <IVirtualMachineScaleSetExtension>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The operation to create or update an extension.
 
@@ -125,7 +119,7 @@ Describes a Virtual Machine Scale Set Extension.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IVirtualMachineScaleSetExtension
-Parameter Sets: Update1, UpdateViaIdentity1
+Parameter Sets: Update1
 Aliases:
 
 Required: False
@@ -157,7 +151,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateViaIdentity1
+Parameter Sets: UpdateViaIdentityExpanded1
 Aliases:
 
 Required: True

@@ -61,12 +61,6 @@ Set-AzVM -InputObject <IComputeIdentity> -Location <String> [-AvailabilitySetId 
  [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentity1
-```
-Set-AzVM -InputObject <IComputeIdentity> [-VM <IVirtualMachine>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The operation to create or update a virtual machine.
 
@@ -313,7 +307,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateViaIdentity1
+Parameter Sets: UpdateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -752,7 +746,7 @@ Describes a Virtual Machine.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IVirtualMachine
-Parameter Sets: Update1, UpdateViaIdentity1
+Parameter Sets: Update1
 Aliases:
 
 Required: False

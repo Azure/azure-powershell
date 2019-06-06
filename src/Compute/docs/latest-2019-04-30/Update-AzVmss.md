@@ -12,14 +12,7 @@ Update a VM scale set.
 
 ## SYNTAX
 
-### Update1 (Default)
-```
-Update-AzVmss -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
- [-VirtualMachineScaleSet <IVirtualMachineScaleSetUpdate>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded1
+### UpdateExpanded1 (Default)
 ```
 Update-AzVmss -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
  [-AutomaticOSUpgrade] [-DisableAutoRollback]
@@ -44,12 +37,6 @@ Update-AzVmss -InputObject <IComputeIdentity> [-AutomaticOSUpgrade] [-DisableAut
  [-Tag <IUpdateResourceTags>] [-UltraSsdEnabled] [-UpgradePolicyMode <UpgradeMode>]
  [-VirtualMachineProfile <IVirtualMachineScaleSetUpdateVMProfile>] [-DefaultProfile <PSObject>] [-AsJob]
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity1
-```
-Update-AzVmss -InputObject <IComputeIdentity> [-VirtualMachineScaleSet <IVirtualMachineScaleSetUpdate>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,7 +87,7 @@ If this is set to true for Windows based scale sets, recommendation is to set [e
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -133,7 +120,7 @@ Default value is false.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -150,7 +137,7 @@ The user identity dictionary key references will be ARM resource ids in the form
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IVirtualMachineScaleSetIdentityUserAssignedIdentities
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases: UserAssignedIdentity
 
 Required: False
@@ -168,7 +155,7 @@ The type 'None' will remove any identities from the virtual machine scale set.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ResourceIdentityType
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -184,7 +171,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateViaIdentity1
+Parameter Sets: UpdateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -202,7 +189,7 @@ The default value for this parameter is 20%.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -220,7 +207,7 @@ The default value for this parameter is 20%.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -239,7 +226,7 @@ The default value for this parameter is 20%.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -255,7 +242,7 @@ Specifies whether the Virtual Machine Scale Set should be overprovisioned.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -273,7 +260,7 @@ The default value is 0 seconds (PT0S).
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -289,7 +276,7 @@ The plan ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -306,7 +293,7 @@ This is the same value as Offer under the imageReference element.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -322,7 +309,7 @@ The promotion code.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -338,7 +325,7 @@ The publisher ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -354,7 +341,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: True
@@ -370,7 +357,7 @@ When true this limits the scale set to a single placement group, of max size 100
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -386,7 +373,7 @@ Specifies the number of virtual machines in the scale set.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -402,7 +389,7 @@ The sku name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -418,7 +405,7 @@ Specifies the tier of virtual machines in a scale set.<br /><br /> Possible Valu
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -435,7 +422,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: True
@@ -451,7 +438,7 @@ Resource tags
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IUpdateResourceTags
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -468,7 +455,7 @@ Managed disks with storage account type UltraSSD_LRS can be added to a virtual m
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases: EnableUltraSSD
 
 Required: False
@@ -485,7 +472,7 @@ You do this by using the manualUpgrade action.<br /><br /> **Automatic** - All v
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.UpgradeMode
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -501,7 +488,7 @@ The virtual machine profile.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IVirtualMachineScaleSetUpdateVMProfile
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -512,28 +499,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VirtualMachineScaleSet
-Describes a Virtual Machine Scale Set.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IVirtualMachineScaleSetUpdate
-Parameter Sets: Update1, UpdateViaIdentity1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -VMScaleSetName
 The name of the VM scale set to create or update.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: True
@@ -581,8 +552,6 @@ Dynamic: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IVirtualMachineScaleSetUpdate
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 

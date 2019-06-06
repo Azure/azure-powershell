@@ -34,12 +34,6 @@ Set-AzAvailabilitySet -InputObject <IComputeIdentity> -Location <String> [-Platf
  [<CommonParameters>]
 ```
 
-### UpdateViaIdentity1
-```
-Set-AzAvailabilitySet -InputObject <IComputeIdentity> [-AvailabilitySet <IAvailabilitySet>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Create or update an availability set.
 
@@ -74,7 +68,7 @@ An existing VM cannot be added to an availability set.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IAvailabilitySet
-Parameter Sets: Update1, UpdateViaIdentity1
+Parameter Sets: Update1
 Aliases:
 
 Required: False
@@ -106,7 +100,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateViaIdentity1
+Parameter Sets: UpdateViaIdentityExpanded1
 Aliases:
 
 Required: True

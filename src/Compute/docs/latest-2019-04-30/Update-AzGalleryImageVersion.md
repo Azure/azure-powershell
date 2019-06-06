@@ -12,14 +12,7 @@ Create or update a gallery Image Version.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Update-AzGalleryImageVersion -GalleryImageDefinitionName <String> -GalleryName <String> -Name <String>
- -ResourceGroupName <String> -SubscriptionId <String> [-GalleryImageVersion <IGalleryImageVersion>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Update-AzGalleryImageVersion -GalleryImageDefinitionName <String> -GalleryName <String> -Name <String>
  -ResourceGroupName <String> -SubscriptionId <String> -Location <String> -ManagedImageId <String>
@@ -33,12 +26,6 @@ Update-AzGalleryImageVersion -GalleryImageDefinitionName <String> -GalleryName <
 Update-AzGalleryImageVersion -InputObject <IComputeIdentity> -Location <String> -ManagedImageId <String>
  [-EndOfLifeDate <DateTime>] [-ExcludeFromLatest] [-ReplicaCount <Int32>]
  [-StorageAccountType <StorageAccountType>] [-Tag <IResourceTags>] [-TargetRegion <ITargetRegion[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzGalleryImageVersion -InputObject <IComputeIdentity> [-GalleryImageVersion <IGalleryImageVersion>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -106,7 +93,7 @@ This property is updatable.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases: PublishingProfileEndOfLifeDate
 
 Required: False
@@ -122,7 +109,7 @@ If set to true, Virtual Machines deployed from the latest version of the Image D
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases: PublishingProfileExcludeFromLatest
 
 Required: False
@@ -138,7 +125,7 @@ The name of the gallery Image Definition in which the Image Version is to be cre
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -149,28 +136,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -GalleryImageVersion
-Specifies information about the gallery Image Version that you want to create or update.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IGalleryImageVersion
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -GalleryName
 The name of the Shared Image Gallery in which the Image Definition resides.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -186,7 +157,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -202,7 +173,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -218,7 +189,7 @@ The managed artifact id.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases: SourceImageId
 
 Required: True
@@ -237,7 +208,7 @@ Format: <MajorVersion>.<MinorVersion>.<Patch>
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases: GalleryImageVersionName
 
 Required: True
@@ -255,7 +226,7 @@ This property is updatable.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -271,7 +242,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -288,7 +259,7 @@ This property is not updatable.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.StorageAccountType
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -305,7 +276,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -321,7 +292,7 @@ Resource tags
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.IResourceTags
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -338,7 +309,7 @@ This property is updatable.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.ITargetRegion[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -386,8 +357,6 @@ Dynamic: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IGalleryImageVersion
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 

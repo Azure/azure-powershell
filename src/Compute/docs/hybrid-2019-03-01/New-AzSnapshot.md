@@ -30,23 +30,6 @@ New-AzSnapshot -Name <String> -ResourceGroupName <String> -SubscriptionId <Strin
  [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded1
-```
-New-AzSnapshot -InputObject <IComputeIdentity> -CreationDataCreateOption <DiskCreateOption>
- -DiskEncryptionKeySecretUrl <String> -ImageReferenceId <String> -KeyEncryptionKeyUrl <String>
- -Location <String> [-CreationDataSourceResourceId <String>] [-CreationDataSourceUri <String>]
- [-CreationDataStorageAccountId <String>] [-DiskEncryptionKeySourceVaultId <String>] [-DiskSizeGb <Int32>]
- [-EncryptionSettingEnabled] [-ImageReferenceLun <Int32>] [-KeyEncryptionKeySourceVaultId <String>]
- [-OSType <OperatingSystemTypes>] [-SkuName <StorageAccountTypes>] [-Tag <IResourceTags>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity1
-```
-New-AzSnapshot -InputObject <IComputeIdentity> [-Snapshot <ISnapshot>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Creates or updates a snapshot.
 
@@ -93,7 +76,7 @@ This enumerates the possible sources of a disk's creation.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.DiskCreateOption
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: True
@@ -109,7 +92,7 @@ If createOption is Copy, this is the ARM id of the source snapshot or disk.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -125,7 +108,7 @@ If createOption is Import, this is the URI of a blob to be imported into a manag
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -142,7 +125,7 @@ Required only if the blob is in a different subscription
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -174,7 +157,7 @@ Url pointing to a key or secret in KeyVault
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: True
@@ -190,7 +173,7 @@ Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -208,7 +191,7 @@ Resizes are only allowed if the disk is not attached to a running VM, and can on
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -226,7 +209,7 @@ If EncryptionSettings is null in the request object, the existing settings remai
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -242,7 +225,7 @@ A relative uri containing either a Platform Image Repository or user image refer
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: True
@@ -259,7 +242,7 @@ For OS disks, this field is null.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -270,28 +253,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: CreateViaIdentityExpanded1, CreateViaIdentity1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -KeyEncryptionKeySourceVaultId
 Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -307,7 +274,7 @@ Url pointing to a key or secret in KeyVault
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: True
@@ -323,7 +290,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: True
@@ -342,7 +309,7 @@ The max name length is 80 characters.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: (All)
 Aliases: SnapshotName
 
 Required: True
@@ -358,7 +325,7 @@ The Operating System type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemTypes
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -374,7 +341,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -390,7 +357,7 @@ The sku name.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.StorageAccountTypes
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -406,7 +373,7 @@ Snapshot resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.ISnapshot
-Parameter Sets: Create1, CreateViaIdentity1
+Parameter Sets: Create1
 Aliases:
 
 Required: False
@@ -423,7 +390,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -439,7 +406,7 @@ Resource tags
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.IResourceTags
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1
 Aliases:
 
 Required: False
@@ -489,8 +456,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.ISnapshot
-
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 
 ## OUTPUTS
 

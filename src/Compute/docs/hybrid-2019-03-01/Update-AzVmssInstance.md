@@ -12,14 +12,7 @@ Upgrades one or more virtual machines to the latest SKU set in the VM scale set 
 
 ## SYNTAX
 
-### Update (Default)
-```
-Update-AzVmssInstance -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
- [-VMInstanceID <IVirtualMachineScaleSetVMInstanceRequiredIds>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Update-AzVmssInstance -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
  -InstanceId <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -29,13 +22,6 @@ Update-AzVmssInstance -ResourceGroupName <String> -SubscriptionId <String> -VMSc
 ```
 Update-AzVmssInstance -InputObject <IComputeIdentity> -InstanceId <String[]> [-DefaultProfile <PSObject>]
  [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzVmssInstance -InputObject <IComputeIdentity>
- [-VMInstanceID <IVirtualMachineScaleSetVMInstanceRequiredIds>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,7 +86,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -116,7 +102,7 @@ The virtual machine scale set instance ids.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -132,7 +118,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -149,7 +135,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -160,28 +146,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VMInstanceID
-Specifies a list of virtual machine instance IDs from the VM scale set.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineScaleSetVMInstanceRequiredIds
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -VMScaleSetName
 The name of the VM scale set.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -229,8 +199,6 @@ Dynamic: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineScaleSetVMInstanceRequiredIds
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 

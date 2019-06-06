@@ -38,12 +38,6 @@ Set-AzImage -InputObject <IComputeIdentity> -Location <String> -OSDiskOsstate <O
  [<CommonParameters>]
 ```
 
-### UpdateViaIdentity
-```
-Set-AzImage -InputObject <IComputeIdentity> [-Image <IImage>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Create or update an image.
 
@@ -125,7 +119,7 @@ If SourceImage is provided, the destination virtual hard drive must not exist.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IImage
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: Update
 Aliases:
 
 Required: False
@@ -141,7 +135,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
