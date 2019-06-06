@@ -22,22 +22,36 @@ using SubResource = Microsoft.Azure.Management.Compute.Models.SubResource;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
-    static class AvailabilitySetStrategy
+    static class ProximityPlacementGroupSetStrategy
     {
-        public static ResourceStrategy<AvailabilitySet> Strategy { get; }
+        public static ResourceStrategy<ProximityPlacementGroup> Strategy { get; }
             = ComputeStrategy.Create(
-                provider: "availabilitySets",
-                getOperations: client => client.AvailabilitySets,
+                provider: "proximityPlacementGroups",
+                getOperations: client => client.ProximityPlacementGroups,
                 getAsync: (o, p) => o.GetAsync(
                     p.ResourceGroupName, p.Name, p.CancellationToken),
                 createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
                 createTime: _ => 1);
 
-        public static ResourceConfig<AvailabilitySet> CreateAvailabilitySetConfig(
-            this ResourceConfig<ResourceGroup> resourceGroup,
-            string name,
-            Func<IEngine, SubResource> proximityPlacementGroup)
+        public static ResourceConfig<ProximityPlacementGroup> CreateProximityPlacementGroupConfig(
+            this ResourceConfig<ResourceGroup> resourceGroup, string name)
             => Strategy.CreateNoncreatableResourceConfig(resourceGroup: resourceGroup, name: name);
+
+        public static Func<IEngine, SubResource> CreateProximityPlacementGroupSubResourceFunc(
+            this ResourceConfig<ResourceGroup> resourceGroup, string name)
+        {
+            if (name == null)
+            {
+                return _ => null;
+            }
+            var id = ResourceId.TryParse(name);
+            if (id == null)
+            {
+                var ppgConfig = resourceGroup.CreateProximityPlacementGroupConfig(name);
+                return e => e.GetReference(ppgConfig);
+            }
+            return _ => new SubResource(name);
+        }
     }
 }
