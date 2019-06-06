@@ -1,12 +1,31 @@
 [CmdletBinding()]
 Param
 (
-    [ValidateSet("Az.AppService", "Az.Billing", "Az.Compute", "Az.Dns", "Az.FrontDoor", "Az.KeyVault",
+    [ValidateSet("Az.AppService", "Az.Billing", "Az.Compute", "Az.Dns", "Az.FrontDoor", "Az.KeyVault", "Az.Media",
                  "Az.Monitor", "Az.Network", "Az.RedisCache", "Az.Resources", "Az.ServiceBus", "Az.Storage")]
     [Parameter(Mandatory)]
     [string]${Module},
 
     [Parameter(Mandatory)]
+    [ArgumentCompleter( {
+            param ( $commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters )
+
+            if ($fakeBoundParameters.ContainsKey("Module"))
+            {
+                $TempModule = $fakeBoundParameters.Module
+                $RootFolder = (Get-Item -Path $PSScriptRoot).Parent.FullName
+                $SrcFolder = Join-Path -Path $RootFolder -ChildPath "src"
+                $ModuleFolder = Join-Path -Path $SrcFolder -ChildPath ($TempModule.Replace("Az.", ""))
+                if (Test-Path -Path $ModuleFolder)
+                {
+                    $ExportsFolder = Join-Path -Path $ModuleFolder -ChildPath "exports"
+                    if (Test-Path -Path $ExportsFolder)
+                    {
+                        (Get-ChildItem -Path $ExportsFolder -Directory).Name | Where-Object { $_ -like "*$wordToComplete*" }
+                    }
+                }
+            }
+        } )]
     [string]${ApiProfile},
 
     [Parameter()]
@@ -19,7 +38,6 @@ $SerializedCmdletsFolder = Join-Path -Path $ToolsFolder -ChildPath (Join-Path -P
 $RootFolder = (Get-Item -Path $ToolsFolder).Parent.FullName
 $SrcFolder = Join-Path -Path $RootFolder -ChildPath "src"
 $ModuleFolder = Join-Path -Path $SrcFolder -ChildPath ($Module.Replace("Az.", ""))
-
 $ModuleToSerializedCmdletsFile = @{
     "Az.AppService" = @( "Microsoft.Azure.PowerShell.Cmdlets.Websites.dll.json" );
     "Az.Billing"    = @( "Microsoft.Azure.PowerShell.Cmdlets.Billing.dll.json",
@@ -29,6 +47,7 @@ $ModuleToSerializedCmdletsFile = @{
     "Az.Dns"        = @( "Microsoft.Azure.PowerShell.Cmdlets.Dns.dll.json" );
     "Az.FrontDoor"  = @( "Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.dll.json" );
     "Az.KeyVault"   = @( "Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll.json" );
+    "Az.Media"      = @( "Microsoft.Azure.PowerShell.Cmdlets.Media.dll.json" );
     "Az.Monitor"    = @( "Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll.json" );
     "Az.Network"    = @( "Microsoft.Azure.PowerShell.Cmdlets.Network.dll.json" );
     "Az.RedisCache" = @( "Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll.json" );
@@ -59,7 +78,7 @@ foreach ($File in $SerializedCmdletsFiles)
     Write-Debug "[DEBUG] Processing serialized cmdlet file '$FullFile'"
     $Json = ConvertFrom-Json ([System.IO.File]::ReadAllText($FullFile))
     $Hashtable = @{}
-    $Json.PSObject.Properties | ForEach-Object { $Hashtable[$_.Name] =  $_.Value }
+    $Json.PSObject.Properties | ForEach-Object { $Hashtable[$_.Name] = $_.Value }
     foreach ($Cmdlet in $Hashtable.Cmdlets)
     {
         $CmdletsToParameters[$Cmdlet.Name] = $Cmdlet.Parameters
