@@ -31,12 +31,14 @@ Gets the values of the parameters used at the blob auditing tests
 #>
 function Get-SqlBlobAuditingTestEnvironmentParameters ($testSuffix)
 {
+	$subscriptionId = (Get-AzContext).Subscription.Id
 	return @{ rgname = "blob-audit-cmdlet-test-rg" + $testSuffix;
 			  serverName = "blob-audit-cmdlet-server" + $testSuffix;
 			  databaseName = "blob-audit-cmdlet-db" + $testSuffix;
 			  storageAccount = "blobaudit" + $testSuffix
 			  eventHubNamespace = "audit-cmdlet-event-hub-ns" + $testSuffix
 			  workspaceName = "audit-cmdlet-workspace" +$testSuffix
+			  storageAccountResourceId = "/subscriptions/" + $subscriptionId + "/resourceGroups/" + "blob-audit-cmdlet-test-rg" + $testSuffix + "/providers/Microsoft.Storage/storageAccounts/" + "blobaudit" + $testSuffix
 		}
 }
 

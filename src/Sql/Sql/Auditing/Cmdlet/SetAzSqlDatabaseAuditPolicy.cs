@@ -52,15 +52,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = AuditingHelpMessages.AuditStorageAccountNameHelpMessage)]
+            HelpMessage = AuditingHelpMessages.AuditStorageAccountResourceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public string StorageAccountName { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = AuditingHelpMessages.AuditStorageAccountSubscriptionIdHelpMessage)]
-        [ValidateNotNullOrEmpty]
-        public Guid StorageAccountSubscriptionId { get; set; }
+        public string StorageAccountResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -139,9 +133,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                     AuditStateType.Enabled : AuditStateType.Disabled;
             }
 
-            if (StorageAccountName != null)
+            if (StorageAccountResourceId != null)
             {
-                model.StorageAccountName = StorageAccountName;
+                model.StorageAccountResourceId = StorageAccountResourceId;
             }
 
             if (MyInvocation.BoundParameters.ContainsKey(SecurityConstants.StorageKeyType))
@@ -152,15 +146,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             if (RetentionInDays != null)
             {
                 model.RetentionInDays = RetentionInDays;
-            }
-
-            if (!StorageAccountSubscriptionId.Equals(Guid.Empty))
-            {
-                model.StorageAccountSubscriptionId = StorageAccountSubscriptionId;
-            }
-            else if (StorageAccountName != null)
-            {
-                model.StorageAccountSubscriptionId = Guid.Parse(DefaultProfile.DefaultContext.Subscription.Id);
             }
 
             if (EventHubTargetState != null)

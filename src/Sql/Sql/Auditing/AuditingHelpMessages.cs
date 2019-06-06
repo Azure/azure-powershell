@@ -38,6 +38,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing
 
         public const string AuditStorageAccountSubscriptionIdHelpMessage = "The storage account subscription id";
 
+        public const string AuditStorageAccountResourceIdHelpMessage = "The storage account resource id";
+
         public const string StorageKeyTypeHelpMessage = "Specifies which of the storage access keys to use.";
 
         public const string RetentionInDaysHelpMessage = "The number of retention days for the audit logs.";

@@ -150,36 +150,77 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             return actions.ToArray();
         }
 
-        private void ModelizeRetentionInfo(dynamic model, int? retentionDays)
+        private static void ModelizeRetentionInfo(dynamic model, int? retentionDays)
         {
             model.RetentionInDays = Convert.ToUInt32(retentionDays);
         }
 
-        private static void ModelizeStorageInfo(dynamic model,
-            string storageEndpoint, bool? isSecondary, Guid? storageAccountSubscriptionId)
+        private static void ModelizeStorageInfo(ServerBlobAuditingSettingsModel model,
+            string storageEndpoint, bool? isSecondary, Guid? storageAccountSubscriptionId,
+            bool isAuditPolicyEnabled, int? retentionDays)
         {
             if (string.IsNullOrEmpty(storageEndpoint))
             {
                 return;
             }
 
-            var accountNameStartIndex = storageEndpoint.StartsWith("https://", StringComparison.InvariantCultureIgnoreCase) ? 8 : 7; // https:// or http://
-            var accountNameEndIndex = storageEndpoint.IndexOf(".blob", StringComparison.InvariantCultureIgnoreCase);
-            model.StorageAccountName = storageEndpoint.Substring(accountNameStartIndex, accountNameEndIndex - accountNameStartIndex);
-            model.StorageKeyType = (isSecondary ?? false) ? StorageKeyKind.Secondary : StorageKeyKind.Primary;
-            model.StorageAccountSubscriptionId = storageAccountSubscriptionId ?? Guid.Empty;
+
+            if (isAuditPolicyEnabled)
+            {
+                model.StorageKeyType = GetStorageKeyKind(isSecondary);
+                model.StorageAccountName = GetStorageAccountName(storageEndpoint);
+                model.StorageAccountSubscriptionId = storageAccountSubscriptionId ?? Guid.Empty;
+                ModelizeRetentionInfo(model, retentionDays);
+            }
+        }
+
+        private void ModelizeStorageInfo(ServerAuditPolicyModel model,
+            string storageEndpoint, bool? isSecondary, Guid? storageAccountSubscriptionId,
+            bool isAuditPolicyEnabled, int? retentionDays)
+        {
+            if (string.IsNullOrEmpty(storageEndpoint))
+            {
+                return;
+            }
+
+            model.StorageKeyType = GetStorageKeyKind(isSecondary);
+
+            if (isAuditPolicyEnabled)
+            {
+                model.StorageAccountResourceId = AzureCommunicator.RetrieveStorageAccountIdAsync(
+                    storageAccountSubscriptionId ?? Subscription.GetId(),
+                    GetStorageAccountName(storageEndpoint)).GetAwaiter().GetResult();
+                ModelizeRetentionInfo(model, retentionDays);
+            }
+        }
+
+        private static StorageKeyKind GetStorageKeyKind(bool? isSecondary)
+        {
+            return (isSecondary ?? false) ? StorageKeyKind.Secondary : StorageKeyKind.Primary;
+        }
+
+        private static string GetStorageAccountName(string storageEndpoint)
+        {
+            int accountNameStartIndex = storageEndpoint.StartsWith("https://", StringComparison.InvariantCultureIgnoreCase) ? 8 : 7; // https:// or http://
+            int accountNameEndIndex = storageEndpoint.IndexOf(".blob", StringComparison.InvariantCultureIgnoreCase);
+            return storageEndpoint.Substring(accountNameStartIndex, accountNameEndIndex - accountNameStartIndex);
         }
 
         private void ModelizeServerAuditPolicy(
             ServerBlobAuditingSettingsModel model,
             ExtendedServerBlobAuditingPolicy policy)
         {
-            model.IsGlobalAuditEnabled = policy.State == BlobAuditingPolicyState.Enabled;
+            model.IsGlobalAuditEnabled = IsAuditPolicyEnabled(policy.State);
             model.IsAzureMonitorTargetEnabled = policy.IsAzureMonitorTargetEnabled;
             model.PredicateExpression = policy.PredicateExpression;
             model.AuditActionGroup = ExtractAuditActionGroups(policy.AuditActionsAndGroups);
-            ModelizeStorageInfo(model, policy.StorageEndpoint, policy.IsStorageSecondaryKeyInUse, policy.StorageAccountSubscriptionId);
-            ModelizeRetentionInfo(model, policy.RetentionDays);
+            ModelizeStorageInfo(model, policy.StorageEndpoint, policy.IsStorageSecondaryKeyInUse, policy.StorageAccountSubscriptionId,
+                model.IsGlobalAuditEnabled, policy.RetentionDays);
+        }
+
+        private bool IsAuditPolicyEnabled(BlobAuditingPolicyState state)
+        {
+            return state == BlobAuditingPolicyState.Enabled;
         }
 
         private void ModelizeServerAuditPolicy(
@@ -189,8 +230,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             model.IsAzureMonitorTargetEnabled = policy.IsAzureMonitorTargetEnabled;
             model.PredicateExpression = policy.PredicateExpression;
             model.AuditActionGroup = ExtractAuditActionGroups(policy.AuditActionsAndGroups);
-            ModelizeStorageInfo(model, policy.StorageEndpoint, policy.IsStorageSecondaryKeyInUse, policy.StorageAccountSubscriptionId);
-            ModelizeRetentionInfo(model, policy.RetentionDays);
+            ModelizeStorageInfo(model, policy.StorageEndpoint, policy.IsStorageSecondaryKeyInUse, policy.StorageAccountSubscriptionId,
+                IsAuditPolicyEnabled(policy.State), policy.RetentionDays);
             DetermineTargetsState(model, policy.State);
         }
 
@@ -203,8 +244,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             model.PredicateExpression = policy.PredicateExpression;
             model.AuditAction = ExtractAuditActions(policy.AuditActionsAndGroups);
             model.AuditActionGroup = ExtractAuditActionGroups(policy.AuditActionsAndGroups);
-            ModelizeStorageInfo(model, policy.StorageEndpoint, policy.IsStorageSecondaryKeyInUse, policy.StorageAccountSubscriptionId);
-            ModelizeRetentionInfo(model, policy.RetentionDays);
+            ModelizeStorageInfo(model, policy.StorageEndpoint, policy.IsStorageSecondaryKeyInUse, policy.StorageAccountSubscriptionId,
+                model.IsGlobalAuditEnabled, policy.RetentionDays);
         }
 
         private void ModelizeDatabaseAuditPolicy(
@@ -215,8 +256,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             model.PredicateExpression = policy.PredicateExpression;
             model.AuditActionGroup = ExtractAuditActionGroups(policy.AuditActionsAndGroups);
             model.AuditAction = ExtractAuditActions(policy.AuditActionsAndGroups);
-            ModelizeStorageInfo(model, policy.StorageEndpoint, policy.IsStorageSecondaryKeyInUse, policy.StorageAccountSubscriptionId);
-            ModelizeRetentionInfo(model, policy.RetentionDays);
+            ModelizeStorageInfo(model, policy.StorageEndpoint, policy.IsStorageSecondaryKeyInUse, policy.StorageAccountSubscriptionId,
+                IsAuditPolicyEnabled(policy.State), policy.RetentionDays);
             DetermineTargetsState(model, policy.State);
         }
 
@@ -232,7 +273,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             }
             else
             {
-                if (string.IsNullOrEmpty(model.StorageAccountName))
+                if (string.IsNullOrEmpty(model.StorageAccountResourceId))
                 {
                     model.BlobStorageTargetState = AuditStateType.Disabled;
                 }
@@ -500,10 +541,10 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             }
         }
 
-        private void PolicizeStorageInfo(dynamic model, dynamic policy)
+        private void PolicizeStorageInfo(ServerBlobAuditingSettingsModel model, dynamic policy)
         {
             string storageEndpointSuffix = Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
-            policy.StorageEndpoint = ExtractStorageAccountName(model, storageEndpointSuffix);
+            policy.StorageEndpoint = GetStorageAccountEndpoint(model.StorageAccountName, storageEndpointSuffix);
             policy.StorageAccountAccessKey = Subscription.GetId().Equals(model.StorageAccountSubscriptionId) ?
                 ExtractStorageAccountKey(model.StorageAccountName, model.StorageKeyType) :
                 ExtractStorageAccountKey(model.StorageAccountSubscriptionId, model.StorageAccountName, model.StorageKeyType);
@@ -514,6 +555,31 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             {
                 policy.RetentionDays = (int)model.RetentionInDays;
             }
+        }
+
+        private void PolicizeStorageInfo(ServerAuditPolicyModel model, dynamic policy)
+        {
+            ExtractStorageAccountProperties(model.StorageAccountResourceId, out string storageAccountName, out Guid storageAccountSubscriptionId);
+            string storageEndpointSuffix = Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
+
+            policy.StorageEndpoint = GetStorageAccountEndpoint(storageAccountName, storageEndpointSuffix);
+            policy.StorageAccountAccessKey = AzureCommunicator.RetrieveStorageKeysAsync(model.StorageAccountResourceId).GetAwaiter().GetResult()[model.StorageKeyType];
+            policy.IsStorageSecondaryKeyInUse = model.StorageKeyType == StorageKeyKind.Secondary;
+            policy.StorageAccountSubscriptionId = storageAccountSubscriptionId;
+
+            if (model.RetentionInDays != null)
+            {
+                policy.RetentionDays = (int)model.RetentionInDays;
+            }
+        }
+
+        private void ExtractStorageAccountProperties(string storageAccountResourceId, out string storageAccountName, out Guid storageAccountSubscriptionId)
+        {
+            const string separator = "subscriptions/";
+            storageAccountResourceId = storageAccountResourceId.Substring(storageAccountResourceId.IndexOf(separator) + separator.Length);
+            string[] segments = storageAccountResourceId.Split('/');
+            storageAccountSubscriptionId = Guid.Parse(segments[0]);
+            storageAccountName = segments[6];
         }
 
         private static IList<string> ExtractAuditActionsAndGroups(AuditActionGroups[] auditActionGroup, string[] auditAction = null)
@@ -538,9 +604,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Extracts the storage account name from the given model
         /// </summary>
-        private static string ExtractStorageAccountName(dynamic model, string endpointSuffix)
+        private static string GetStorageAccountEndpoint(string storageAccountName, string endpointSuffix)
         {
-            return string.Format("https://{0}.blob.{1}", model.StorageAccountName, endpointSuffix);
+            return string.Format("https://{0}.blob.{1}", storageAccountName, endpointSuffix);
         }
 
         private string ExtractStorageAccountKey(Guid storageAccountSubscriptionId, string storageAccountName, StorageKeyKind storageKeyKind)
@@ -789,10 +855,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         private void VerifyAuditPolicyBeforePersistChanges(ServerAuditPolicyModel model)
         {
             if (model.BlobStorageTargetState == AuditStateType.Enabled &&
-                string.IsNullOrEmpty(model.StorageAccountName))
+                string.IsNullOrEmpty(model.StorageAccountResourceId))
             {
                 throw DefinitionsCommon.StorageAccountNameParameterException;
-
             }
 
             if (model.EventHubTargetState == AuditStateType.Enabled &&

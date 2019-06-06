@@ -26,11 +26,11 @@ function Test-BlobAuditPolicyDatabaseUpdatePolicyWithStorage
 	try 
 	{
 		# Test
-		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
-		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
+		Assert-AreEqual $policy.StorageAccountResourceId $params.storageAccountResourceId
 		Assert-AreEqual $policy.BlobStorageTargetState "Enabled"  
 	}
 	finally
@@ -54,22 +54,22 @@ function Test-BlobAuditPolicyDatabaseUpdatePolicyWithSameNameStorageOnDifferentR
 	try 
 	{
 		# Test
-		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
-		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
+		Assert-AreEqual $policy.StorageAccountResourceId $params.storageAccountResourceId
 		Assert-AreEqual $policy.BlobStorageTargetState "Enabled"  
 
 		$newResourceGroupName =  "test-rg2-for-sql-cmdlets-" + $testSuffix
 		New-AzureRmResourceGroup -Location "West Europe" -ResourceGroupName $newResourceGroupName
-		New-AzureRmStorageAccount -StorageAccountName $params.storageAccount  -ResourceGroupName $newResourceGroupName -Location "West Europe" -Type Standard_GRS 
+		New-AzureRmStorageAccount -StorageAccountName $params.storageAccount  -ResourceGroupName $newResourceGroupName -Location "West Europe" -Type Standard_GRS
 
-		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
-		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
+		Assert-AreEqual $policy.StorageAccountResourceId $params.storageAccountResourceId
 		Assert-AreEqual $policy.BlobStorageTargetState "Enabled"  
 	}
 	finally
@@ -94,11 +94,11 @@ function Test-BlobAuditPolicyServerUpdatePolicyWithStorage
 	try
 	{
 		# Test
-		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
-		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
+		Assert-AreEqual $policy.StorageAccountResourceId $params.storageAccountResourceId
 		Assert-AreEqual $policy.BlobStorageTargetState "Enabled" 
 	}
 	finally
@@ -123,15 +123,15 @@ function Test-BlobAuditPolicyDatabaseUpdatePolicyKeepPreviousStorage
 	try 
 	{
 		# Test
-		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId
 		$policyBefore = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 
 		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 		$policyAfter = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
-		Assert-AreEqual $policyBefore.StorageAccountName $policyAfter.StorageAccountName
-		Assert-AreEqual $policyAfter.StorageAccountName $params.storageAccount 
+		Assert-AreEqual $policyBefore.StorageAccountResourceId $policyAfter.StorageAccountResourceId
+		Assert-AreEqual $policyAfter.StorageAccountResourceId $params.storageAccountResourceId 
 
 	}
 	finally
@@ -156,15 +156,15 @@ function Test-BlobAuditPolicyServerUpdatePolicyKeepPreviousStorage
 	try 
 	{
 		# Test
-		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId
 		$policyBefore = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 
 		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName 
 		$policyAfter = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
-		Assert-AreEqual $policyBefore.StorageAccountName $policyAfter.StorageAccountName
-		Assert-AreEqual $policyAfter.StorageAccountName $params.storageAccount 
+		Assert-AreEqual $policyBefore.StorageAccountResourceId $policyAfter.StorageAccountResourceId
+		Assert-AreEqual $policyAfter.StorageAccountResourceId $params.storageAccountResourceId 
 
 	}
 	finally
@@ -188,8 +188,8 @@ function Test-BlobAuditPolicyDisableDatabaseAuditPolicy
 	try
 	{
 		# Test
-		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
-		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
+		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 		
 		# Assert
@@ -223,7 +223,7 @@ function Test-BlobAuditPolicyDisableServerAuditPolicy
 	try
 	{
 		# Test
-		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId
 		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
@@ -299,8 +299,8 @@ function Test-BlobAuditPolicyFailWithBadDatabaseIndentity
 		# Assert
 		Assert-Throws { Get-AzSqlDatabaseAuditPolicy -ResourceGroupName "NONEXISTING-RG" -ServerName $params.serverName -DatabaseName $params.databaseName }
 		Assert-Throws { Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName "NONEXISTING-SERVER"-DatabaseName $params.databaseName }
-		Assert-Throws { Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName "NONEXISTING-RG"  -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount}
-		Assert-Throws { Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName "NONEXISTING-SERVER" -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount}
+		Assert-Throws { Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName "NONEXISTING-RG"  -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId}
+		Assert-Throws { Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName "NONEXISTING-SERVER" -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId}
 	}
 	finally
 	{
@@ -325,8 +325,8 @@ function Test-BlobAuditPolicyFailWithBadServerIndentity
 		# Assert
 		Assert-Throws { Get-AzSqlServerAuditPolicy -ResourceGroupName "NONEXISTING-RG" -ServerName $params.serverName }
 		Assert-Throws { Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName "NONEXISTING-SERVER" }
-		Assert-Throws { Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName "NONEXISTING-RG"  -ServerName $params.serverName -StorageAccountName $params.storageAccount}
-		Assert-Throws { Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName "NONEXISTING-SERVER" -StorageAccountName $params.storageAccount}
+		Assert-Throws { Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName "NONEXISTING-RG"  -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId}
+		Assert-Throws { Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName "NONEXISTING-SERVER" -StorageAccountResourceId $params.storageAccountResourceId}
 	}
 	finally
 	{
@@ -349,21 +349,21 @@ function Test-BlobAuditPolicyServerStorageKeyRotation
 	try
 	{
 		# Test
-		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -StorageKeyType "Primary"
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId -StorageKeyType "Primary"
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
 	
 		# Assert
 		Assert-True { $policy.StorageKeyType -eq  "Primary"}
 
 		# Test
-		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -StorageKeyType "Secondary"
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId -StorageKeyType "Secondary"
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
 	
 		# Assert
 		Assert-True { $policy.StorageKeyType -eq  "Secondary"}
 
 		# Test
-		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -StorageKeyType "Primary"
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId -StorageKeyType "Primary"
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
 	
 		# Assert
@@ -390,21 +390,21 @@ function Test-BlobAuditPolicyDatabaseStorageKeyRotation
 	try
 	{
 		# Test
-		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -StorageKeyType "Primary"
+		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId -StorageKeyType "Primary"
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 	
 		# Assert
 		Assert-True { $policy.StorageKeyType -eq  "Primary"}
 
 		# Test
-		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -StorageKeyType "Secondary"
+		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId -StorageKeyType "Secondary"
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 	
 		# Assert
 		Assert-True { $policy.StorageKeyType -eq  "Secondary"}
 
 		# Test
-		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -StorageKeyType "Primary"
+		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId -StorageKeyType "Primary"
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 	
 		# Assert
@@ -431,16 +431,16 @@ function Test-BlobAuditPolicyServerRetentionKeepProperties
 	try
 	{
 		# Test
-		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -RetentionInDays 10;
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId -RetentionInDays 10;
 
-		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -RetentionInDays 11;
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId -RetentionInDays 11;
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 
 		# Assert
 		Assert-AreEqual $policy.RetentionInDays 11
 
 		# Test
-		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount;
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId;
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 
 		# Assert
@@ -467,16 +467,16 @@ function Test-BlobAuditPolicyDatabaseRetentionKeepProperties
 	try
 	{
 		# Test
-		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -RetentionInDays 10;
+		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId -RetentionInDays 10;
 	
-		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -RetentionInDays 11;
+		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId -RetentionInDays 11;
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 
 		# Assert
 		Assert-AreEqual $policy.RetentionInDays 11
 
 		# Test
-		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount;
+		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId;
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 
 		# Assert
@@ -502,13 +502,12 @@ function Test-BlobAuditPolicyOnDatabase
 	$dbName = $params.databaseName
 
 	# NEEDS TO BE FILLED OUT WITH A PRECREATED STORAGE ACCOUNT IN A DIFFERENT SUBSCRIPTION
-	$subscriptionId = "a8c9a924-06c0-4bde-9788-e7b1370969e1"
-	$storageAccountName = "auditcmdletssa"
+	$storageAccountResourceId = "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/Default-Storage-EastUS/providers/Microsoft.Storage/storageAccounts/auditcmdletssa"
 
 	try
 	{
 		# Test - Tests that when setting blob auditing policy on database without StorageKeyType parameter, it gets the default value - "Primary".
-		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 
+		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
@@ -521,7 +520,7 @@ function Test-BlobAuditPolicyOnDatabase
 		Assert-True { $policy.StorageKeyType -eq  "Primary"}
 		
 		# Test - Tests setting blob auditing policy on a database with a storage account in a subscription which is different than the database's subscription
-		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $storageAccountName -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 -StorageAccountSubscriptionId $subscriptionId
+		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 		
 		# Assert
@@ -532,10 +531,10 @@ function Test-BlobAuditPolicyOnDatabase
 		Assert-AreEqual $policy.AuditAction.Length 0
 		Assert-AreEqual $policy.RetentionInDays 8
 		Assert-True { $policy.StorageKeyType -eq  "Primary"}
-		Assert-AreEqual $policy.StorageAccountSubscriptionId $subscriptionId
+		Assert-AreEqual $policy.StorageAccountResourceId $storageAccountResourceId
 		
 		# Test	
-		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -StorageKeyType "Secondary" -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 -AuditAction "UPDATE ON database::[$($params.databaseName)] BY [public]"
+		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId -StorageKeyType "Secondary" -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 -AuditAction "UPDATE ON database::[$($params.databaseName)] BY [public]"
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 		
 		# Assert
@@ -584,13 +583,12 @@ function Test-BlobAuditPolicyOnServer
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
 	# NEEDS TO BE FILLED OUT WITH A PRECREATED STORAGE ACCOUNT IN A DIFFERENT SUBSCRIPTION
-	$subscriptionId = "a8c9a924-06c0-4bde-9788-e7b1370969e1"
-	$storageAccountName = "auditcmdletssa"
-
+	$storageAccountResourceId = "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/Default-Storage-EastUS/providers/Microsoft.Storage/storageAccounts/auditcmdletssa"
+	
 	try
 	{
 		# Test - Tests that when setting blob auditing policy on server without StorageKeyType parameter, it gets the default value - "Primary".
-		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
@@ -602,7 +600,7 @@ function Test-BlobAuditPolicyOnServer
 		Assert-AreEqual $policy.StorageKeyType "Primary"
 
 		# Test - Tests setting blob auditing policy on a server with a storage account in a subscription which is different than the server's subscription
-		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $storageAccountName -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 -StorageAccountSubscriptionId $subscriptionId
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
@@ -612,10 +610,10 @@ function Test-BlobAuditPolicyOnServer
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
 		Assert-AreEqual $policy.RetentionInDays 8
 		Assert-AreEqual $policy.StorageKeyType "Primary"
-		Assert-AreEqual $policy.StorageAccountSubscriptionId $subscriptionId
+		Assert-AreEqual $policy.StorageAccountResourceId $storageAccountResourceId
 
 		# Test	
-		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -StorageKeyType "Secondary" -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId -StorageKeyType "Secondary" -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
@@ -653,7 +651,7 @@ function Test-BlobAuditPolicyWithAuditActionGroups
 	try
 	{
 		# Test - when setting new blob auditing policy for database without audit action groups, the default audit action groups is set.
-		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
@@ -663,7 +661,7 @@ function Test-BlobAuditPolicyWithAuditActionGroups
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::BATCH_COMPLETED_GROUP)}
 
 		# Test - when setting blob auditing policy for database with audit action groups, the default audit action groups is being replaced by the new audit action groups.
-		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -AuditActionGroup "APPLICATION_ROLE_CHANGE_PASSWORD_GROUP","DATABASE_OBJECT_PERMISSION_CHANGE_GROUP"
+		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "APPLICATION_ROLE_CHANGE_PASSWORD_GROUP","DATABASE_OBJECT_PERMISSION_CHANGE_GROUP"
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
@@ -672,7 +670,7 @@ function Test-BlobAuditPolicyWithAuditActionGroups
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::DATABASE_OBJECT_PERMISSION_CHANGE_GROUP)} 
 
 		# Test - tests that audit action groups can be changed
-		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -AuditActionGroup "DATABASE_OPERATION_GROUP","DATABASE_LOGOUT_GROUP"
+		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "DATABASE_OPERATION_GROUP","DATABASE_LOGOUT_GROUP"
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
@@ -681,7 +679,7 @@ function Test-BlobAuditPolicyWithAuditActionGroups
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::DATABASE_LOGOUT_GROUP)}
 
 		# Test - when updating blob auditing policy for existing one without audit action groups, the action groups won't change.
-		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
@@ -690,7 +688,7 @@ function Test-BlobAuditPolicyWithAuditActionGroups
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::DATABASE_LOGOUT_GROUP)}
 
 		# Test - when setting new blob auditing policy for server without audit action groups, the default audit action groups is set.
-		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
@@ -700,7 +698,7 @@ function Test-BlobAuditPolicyWithAuditActionGroups
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::BATCH_COMPLETED_GROUP)}
 
 		# Test
-		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -AuditActionGroup "APPLICATION_ROLE_CHANGE_PASSWORD_GROUP","DATABASE_OBJECT_PERMISSION_CHANGE_GROUP"
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "APPLICATION_ROLE_CHANGE_PASSWORD_GROUP","DATABASE_OBJECT_PERMISSION_CHANGE_GROUP"
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
@@ -709,7 +707,7 @@ function Test-BlobAuditPolicyWithAuditActionGroups
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::DATABASE_OBJECT_PERMISSION_CHANGE_GROUP)}
 
 		# Test - tests that audit action groups can be changed
-		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -AuditActionGroup "DATABASE_OPERATION_GROUP","DATABASE_LOGOUT_GROUP"
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "DATABASE_OPERATION_GROUP","DATABASE_LOGOUT_GROUP"
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
@@ -718,7 +716,7 @@ function Test-BlobAuditPolicyWithAuditActionGroups
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::DATABASE_LOGOUT_GROUP)}
 
 		# Test - when updating blob auditing policy for existing one without audit action groups, the action groups won't change.
-		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
@@ -747,7 +745,7 @@ function Test-ExtendedAuditPolicyOnServer
 	try
 	{
 		# Enable auditing policy, without speficying a predicate expression, and verify it.
-		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
 		Assert-AreEqual 2 $policy.AuditActionGroup.Length
@@ -758,7 +756,7 @@ function Test-ExtendedAuditPolicyOnServer
 		Assert-AreEqual "" $policy.PredicateExpression
 
 		# Enable Extended auditing policy, speficying a predicate expression, and verify it.
-		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 -PredicateExpression "statement <> 'select 1'"
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 -PredicateExpression "statement <> 'select 1'"
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
 		Assert-AreEqual 2 $policy.AuditActionGroup.Length
@@ -774,7 +772,7 @@ function Test-ExtendedAuditPolicyOnServer
 		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
 
 		# Enable Extended auditing policy, without speficying a predicate expression, and verify it.
-		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
 		Assert-AreEqual 2 $policy.AuditActionGroup.Length
@@ -785,7 +783,7 @@ function Test-ExtendedAuditPolicyOnServer
 		Assert-AreEqual "statement <> 'select 1'" $policy.PredicateExpression
 
 		# Remove Extended auditing policy, and enable auditing policy
-		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 -PredicateExpression ""
+		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 -PredicateExpression ""
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
 		Assert-AreEqual 2 $policy.AuditActionGroup.Length
@@ -819,7 +817,7 @@ function Test-ExtendedAuditPolicyOnDatabase
 	try
 	{
 		# Enable auditing policy, without speficying a predicate expression, and verify it.
-		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
+		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
 		Assert-AreEqual 2 $policy.AuditActionGroup.Length
@@ -830,7 +828,7 @@ function Test-ExtendedAuditPolicyOnDatabase
 		Assert-AreEqual "" $policy.PredicateExpression
 
 		# Enable Extended auditing policy, speficying a predicate expression, and verify it.
-		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 -PredicateExpression "statement <> 'select 1'"
+		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 -PredicateExpression "statement <> 'select 1'"
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
 		Assert-AreEqual 2 $policy.AuditActionGroup.Length
@@ -846,7 +844,7 @@ function Test-ExtendedAuditPolicyOnDatabase
 		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
 
 		# Enable Extended auditing policy, without speficying a predicate expression, and verify it.
-		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
+		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
 		Assert-AreEqual 2 $policy.AuditActionGroup.Length
@@ -857,7 +855,7 @@ function Test-ExtendedAuditPolicyOnDatabase
 		Assert-AreEqual "statement <> 'select 1'" $policy.PredicateExpression
 
 		# Remove Extended auditing policy, and enable auditing policy
-		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 -PredicateExpression ""
+		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 -PredicateExpression ""
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
 		Assert-AreEqual 2 $policy.AuditActionGroup.Length
@@ -903,10 +901,9 @@ function Test-AuditPolicyOnDatabase
 		Assert-AreEqual 0 $policy.AuditActionGroup.Length
 		Assert-AreEqual 0 $policy.AuditAction.Length
 		Assert-Null $policy.PredicateExpression
-		Assert-Null $policy.StorageAccountName
-		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
+		Assert-Null $policy.StorageAccountResourceId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 0 $policy.RetentionInDays
+		Assert-Null $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is disabled.
 		Assert-AreEqual "Disabled" $policy.EventHubTargetState
@@ -918,7 +915,7 @@ function Test-AuditPolicyOnDatabase
 		Assert-Null $policy.WorkspaceResourceId
 		
 		# Enable storage auditing policy and verify it.
-		Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -StorageAccountName $params.storageAccount -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
+		Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
 		Assert-AreEqual 2 $policy.AuditActionGroup.Length
@@ -926,8 +923,7 @@ function Test-AuditPolicyOnDatabase
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
 		Assert-AreEqual 0 $policy.AuditAction.Length
 		Assert-AreEqual "" $policy.PredicateExpression
-		Assert-AreEqual $params.storageAccount $policy.StorageAccountName
-		Assert-AreEqual $subscriptionId $policy.StorageAccountSubscriptionId
+		Assert-AreEqual $params.storageAccountResourceId $policy.StorageAccountResourceId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
 		Assert-AreEqual 8 $policy.RetentionInDays
 		
@@ -957,8 +953,7 @@ function Test-AuditPolicyOnDatabase
 		
 		# Verify storage auditing policy is enabled.
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
-		Assert-AreEqual $params.storageAccount $policy.StorageAccountName
-		Assert-AreEqual $subscriptionId $policy.StorageAccountSubscriptionId
+		Assert-AreEqual $params.storageAccountResourceId $policy.StorageAccountResourceId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
 		Assert-AreEqual 8 $policy.RetentionInDays
 		
@@ -982,8 +977,7 @@ function Test-AuditPolicyOnDatabase
 		
 		# Verify storage auditing policy is enabled.
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
-		Assert-AreEqual $params.storageAccount $policy.StorageAccountName
-		Assert-AreEqual $subscriptionId $policy.StorageAccountSubscriptionId
+		Assert-AreEqual $params.storageAccountResourceId $policy.StorageAccountResourceId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
 		Assert-AreEqual 8 $policy.RetentionInDays
 		
@@ -1004,10 +998,9 @@ function Test-AuditPolicyOnDatabase
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
 		Assert-AreEqual 0 $policy.AuditAction.Length
 		Assert-AreEqual "" $policy.PredicateExpression
-		Assert-Null $policy.StorageAccountName
-		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
+		Assert-Null $policy.StorageAccountResourceId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 0 $policy.RetentionInDays
+		Assert-Null $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is enabled.
 		Assert-AreEqual "Enabled" $policy.EventHubTargetState
@@ -1034,10 +1027,9 @@ function Test-AuditPolicyOnDatabase
 		
 		# Verify storage auditing policy is disabled.
 		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
-		Assert-Null $policy.StorageAccountName
-		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
+		Assert-Null $policy.StorageAccountResourceId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 0 $policy.RetentionInDays
+		Assert-Null $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is enabled.
 		Assert-AreEqual "Enabled" $policy.EventHubTargetState
@@ -1061,10 +1053,9 @@ function Test-AuditPolicyOnDatabase
 		
 		# Verify storage auditing policy is disabled.
 		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
-		Assert-Null $policy.StorageAccountName
-		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
+		Assert-Null $policy.StorageAccountResourceId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 0 $policy.RetentionInDays
+		Assert-Null $policy.RetentionInDays
 		
 		# Verify log analytics auditing policy is disabled.
 		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
@@ -1106,10 +1097,9 @@ function Test-RemoveAuditPolicyOnDatabase
 		Assert-AreEqual 0 $policy.AuditActionGroup.Length
 		Assert-AreEqual 0 $policy.AuditAction.Length
 		Assert-Null $policy.PredicateExpression
-		Assert-Null $policy.StorageAccountName
-		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
+		Assert-Null $policy.StorageAccountResourceId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 0 $policy.RetentionInDays
+		Assert-Null $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is disabled.
 		Assert-AreEqual "Disabled" $policy.EventHubTargetState
@@ -1121,7 +1111,7 @@ function Test-RemoveAuditPolicyOnDatabase
 		Assert-Null $policy.WorkspaceResourceId
 		
 		# Enable storage auditing policy and verify it.
-		Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -StorageAccountName $params.storageAccount -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
+		Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
 		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
 		Assert-AreEqual 2 $policy.AuditActionGroup.Length
@@ -1129,8 +1119,7 @@ function Test-RemoveAuditPolicyOnDatabase
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
 		Assert-AreEqual 0 $policy.AuditAction.Length
 		Assert-AreEqual "" $policy.PredicateExpression
-		Assert-AreEqual $params.storageAccount $policy.StorageAccountName
-		Assert-AreEqual $subscriptionId $policy.StorageAccountSubscriptionId
+		Assert-AreEqual $params.storageAccountResourceId $policy.StorageAccountResourceId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
 		Assert-AreEqual 8 $policy.RetentionInDays
 		
@@ -1160,8 +1149,7 @@ function Test-RemoveAuditPolicyOnDatabase
 		
 		# Verify storage auditing policy is enabled.
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
-		Assert-AreEqual $params.storageAccount $policy.StorageAccountName
-		Assert-AreEqual $subscriptionId $policy.StorageAccountSubscriptionId
+		Assert-AreEqual $params.storageAccountResourceId $policy.StorageAccountResourceId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
 		Assert-AreEqual 8 $policy.RetentionInDays
 		
@@ -1185,8 +1173,7 @@ function Test-RemoveAuditPolicyOnDatabase
 		
 		# Verify storage auditing policy is enabled.
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
-		Assert-AreEqual $params.storageAccount $policy.StorageAccountName
-		Assert-AreEqual $subscriptionId $policy.StorageAccountSubscriptionId
+		Assert-AreEqual $params.storageAccountResourceId $policy.StorageAccountResourceId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
 		Assert-AreEqual 8 $policy.RetentionInDays
 		
@@ -1207,10 +1194,9 @@ function Test-RemoveAuditPolicyOnDatabase
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
 		Assert-AreEqual 0 $policy.AuditAction.Length
 		Assert-AreEqual "" $policy.PredicateExpression
-		Assert-Null $policy.StorageAccountName
-		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
+		Assert-Null $policy.StorageAccountResourceId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 0 $policy.RetentionInDays
+		Assert-Null $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is disabled.
 		Assert-AreEqual "Disabled" $policy.EventHubTargetState
@@ -1255,11 +1241,10 @@ function Test-AuditPolicyOnServer
 		$policy = Get-AzSqlServer -ResourceGroupName $params.rgname -ServerName $params.serverName | Get-AzSqlServerAuditPolicy
 		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
 		Assert-AreEqual 0 $policy.AuditActionGroup.Length
-		Assert-Null $policy.StorageAccountName
+		Assert-Null $policy.StorageAccountResourceId
 		Assert-AreEqual "" $policy.PredicateExpression
-		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 0 $policy.RetentionInDays
+		Assert-Null $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is disabled.
 		Assert-AreEqual "Disabled" $policy.EventHubTargetState
@@ -1271,15 +1256,14 @@ function Test-AuditPolicyOnServer
 		Assert-Null $policy.WorkspaceResourceId
 		
 		# Enable storage auditing policy and verify it.
-		Get-AzSqlServer -ResourceGroupName $params.rgname -ServerName $params.serverName | Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -StorageAccountName $params.storageAccount -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
+		Get-AzSqlServer -ResourceGroupName $params.rgname -ServerName $params.serverName | Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
 		Assert-AreEqual 2 $policy.AuditActionGroup.Length
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP)}
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
 		Assert-AreEqual "" $policy.PredicateExpression
-		Assert-AreEqual $params.storageAccount $policy.StorageAccountName
-		Assert-AreEqual $subscriptionId $policy.StorageAccountSubscriptionId
+		Assert-AreEqual $params.storageAccountResourceId $policy.StorageAccountResourceId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
 		Assert-AreEqual 8 $policy.RetentionInDays
 		
@@ -1294,7 +1278,7 @@ function Test-AuditPolicyOnServer
 		
 		# Verify Diagnostic Settings do not exist.
 		Assert-AreEqual 0 (Get-AzDiagnosticSetting -ResourceId $resourceId).count
-
+		
 		# Enable event hub auditing policy and verify it
 		Set-AzSqlServerAuditPolicy -EventHubTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -EventHubAuthorizationRuleResourceId $eventHubAuthorizationRuleResourceId
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
@@ -1308,8 +1292,7 @@ function Test-AuditPolicyOnServer
 		
 		# Verify storage auditing policy is enabled.
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
-		Assert-AreEqual $params.storageAccount $policy.StorageAccountName
-		Assert-AreEqual $subscriptionId $policy.StorageAccountSubscriptionId
+		Assert-AreEqual $params.storageAccountResourceId $policy.StorageAccountResourceId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
 		Assert-AreEqual 8 $policy.RetentionInDays
 		
@@ -1319,7 +1302,7 @@ function Test-AuditPolicyOnServer
 		
 		# Verify Diagnostic Settings exist.
 		Assert-AreEqual 1 (Get-AzDiagnosticSetting -ResourceId $resourceId).count
-
+		
 		# Enable log analytics auditing policy and verify it
 		Set-AzSqlServerAuditPolicy -LogAnalyticsTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -WorkspaceResourceId $workspaceResourceId
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
@@ -1332,8 +1315,7 @@ function Test-AuditPolicyOnServer
 		
 		# Verify storage auditing policy is enabled.
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
-		Assert-AreEqual $params.storageAccount $policy.StorageAccountName
-		Assert-AreEqual $subscriptionId $policy.StorageAccountSubscriptionId
+		Assert-AreEqual $params.storageAccountResourceId $policy.StorageAccountResourceId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
 		Assert-AreEqual 8 $policy.RetentionInDays
 		
@@ -1353,10 +1335,9 @@ function Test-AuditPolicyOnServer
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP)}
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
 		Assert-AreEqual "" $policy.PredicateExpression
-		Assert-Null $policy.StorageAccountName
-		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
+		Assert-Null $policy.StorageAccountResourceId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 0 $policy.RetentionInDays
+		Assert-Null $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is enabled.
 		Assert-AreEqual "Enabled" $policy.EventHubTargetState
@@ -1382,10 +1363,9 @@ function Test-AuditPolicyOnServer
 		
 		# Verify storage auditing policy is disabled.
 		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
-		Assert-Null $policy.StorageAccountName
-		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
+		Assert-Null $policy.StorageAccountResourceId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 0 $policy.RetentionInDays
+		Assert-Null $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is enabled.
 		Assert-AreEqual "Enabled" $policy.EventHubTargetState
@@ -1394,7 +1374,7 @@ function Test-AuditPolicyOnServer
 		
 		# Verify Diagnostic Settings exist.
 		Assert-AreEqual 1 (Get-AzDiagnosticSetting -ResourceId $resourceId).count
-
+		
 		# Disable event hub auditing policy and verify it
 		Set-AzSqlServerAuditPolicy -EventHubTargetState Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
@@ -1408,19 +1388,18 @@ function Test-AuditPolicyOnServer
 		
 		# Verify storage auditing policy is disabled.
 		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
-		Assert-Null $policy.StorageAccountName
-		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
+		Assert-Null $policy.StorageAccountResourceId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 0 $policy.RetentionInDays
+		Assert-Null $policy.RetentionInDays
 		
 		# Verify log analytics auditing policy is disabled.
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 		Assert-AreEqual "Disabled" $policy.LogAnalyticsTargetState
 		Assert-Null $policy.WorkspaceResourceId
-
+		
 		# Verify Diagnostic Settings do not exist.
 		Assert-AreEqual 0 (Get-AzDiagnosticSetting -ResourceId $resourceId).count
-	}
+	}	
 	finally
 	{
 		# Cleanup
@@ -1452,11 +1431,10 @@ function Test-RemoveAuditPolicyOnServer
 		$policy = Get-AzSqlServer -ResourceGroupName $params.rgname -ServerName $params.serverName | Get-AzSqlServerAuditPolicy
 		Assert-AreEqual "Disabled" $policy.BlobStorageTargetState
 		Assert-AreEqual 0 $policy.AuditActionGroup.Length
-		Assert-Null $policy.StorageAccountName
+		Assert-Null $policy.StorageAccountResourceId
 		Assert-AreEqual "" $policy.PredicateExpression
-		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 0 $policy.RetentionInDays
+		Assert-Null $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is disabled.
 		Assert-AreEqual "Disabled" $policy.EventHubTargetState
@@ -1468,15 +1446,14 @@ function Test-RemoveAuditPolicyOnServer
 		Assert-Null $policy.WorkspaceResourceId
 		
 		# Enable storage auditing policy and verify it.
-		Get-AzSqlServer -ResourceGroupName $params.rgname -ServerName $params.serverName | Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -StorageAccountName $params.storageAccount -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
+		Get-AzSqlServer -ResourceGroupName $params.rgname -ServerName $params.serverName | Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -StorageAccountResourceId $params.storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
 		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
 		Assert-AreEqual 2 $policy.AuditActionGroup.Length
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP)}
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
 		Assert-AreEqual "" $policy.PredicateExpression
-		Assert-AreEqual $params.storageAccount $policy.StorageAccountName
-		Assert-AreEqual $subscriptionId $policy.StorageAccountSubscriptionId
+		Assert-AreEqual $params.storageAccountResourceId $policy.StorageAccountResourceId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
 		Assert-AreEqual 8 $policy.RetentionInDays
 		
@@ -1505,8 +1482,7 @@ function Test-RemoveAuditPolicyOnServer
 		
 		# Verify storage auditing policy is enabled.
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
-		Assert-AreEqual $params.storageAccount $policy.StorageAccountName
-		Assert-AreEqual $subscriptionId $policy.StorageAccountSubscriptionId
+		Assert-AreEqual $params.storageAccountResourceId $policy.StorageAccountResourceId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
 		Assert-AreEqual 8 $policy.RetentionInDays
 		
@@ -1529,8 +1505,7 @@ function Test-RemoveAuditPolicyOnServer
 		
 		# Verify storage auditing policy is enabled.
 		Assert-AreEqual "Enabled" $policy.BlobStorageTargetState
-		Assert-AreEqual $params.storageAccount $policy.StorageAccountName
-		Assert-AreEqual $subscriptionId $policy.StorageAccountSubscriptionId
+		Assert-AreEqual $params.storageAccountResourceId $policy.StorageAccountResourceId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
 		Assert-AreEqual 8 $policy.RetentionInDays
 		
@@ -1550,10 +1525,9 @@ function Test-RemoveAuditPolicyOnServer
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP)}
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
 		Assert-AreEqual "" $policy.PredicateExpression
-		Assert-Null $policy.StorageAccountName
-		Assert-AreEqual "00000000-0000-0000-0000-000000000000" $policy.StorageAccountSubscriptionId
+		Assert-Null $policy.StorageAccountResourceId
 		Assert-AreEqual "Primary" $policy.StorageKeyType
-		Assert-AreEqual 0 $policy.RetentionInDays
+		Assert-Null $policy.RetentionInDays
 		
 		# Verify event hub auditing policy is disabled.
 		Assert-AreEqual "Disabled" $policy.EventHubTargetState

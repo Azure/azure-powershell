@@ -31,9 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 
         public AuditStateType BlobStorageTargetState { get; set; }
 
-        public string StorageAccountName { get; set; }
-
-        public Guid StorageAccountSubscriptionId { get; set; }
+        public string StorageAccountResourceId { get; set; }
 
         public StorageKeyKind StorageKeyType { get; set; }
 
