@@ -225,6 +225,10 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public SwitchParameter EnableUltraSSD { get; set; }
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public string ProximityPlacementGroup { get; set; }
+
         public override void ExecuteCmdlet()
         {
             switch (ParameterSetName)
@@ -243,11 +247,11 @@ namespace Microsoft.Azure.Commands.Compute
 
         class Parameters : IParameters<VirtualMachine>
         {
-            NewAzureVMCommand _cmdlet;
+            readonly NewAzureVMCommand _cmdlet;
 
-            Client _client;
+            readonly Client _client;
 
-            IResourceManagementClient _resourceClient;
+            readonly IResourceManagementClient _resourceClient;
 
             public Parameters(NewAzureVMCommand cmdlet, Client client, IResourceManagementClient resourceClient)
             {
@@ -332,9 +336,13 @@ namespace Microsoft.Azure.Commands.Compute
                 var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
                     _cmdlet.Name, subnet, publicIpAddress, networkSecurityGroup, enableAcceleratedNetwork);
 
+                var ppgSubResourceFunc = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroup);
+
                 var availabilitySet = _cmdlet.AvailabilitySetName == null
                     ? null
-                    : resourceGroup.CreateAvailabilitySetConfig(name: _cmdlet.AvailabilitySetName);
+                    : resourceGroup.CreateAvailabilitySetConfig(
+                        name: _cmdlet.AvailabilitySetName,
+                        proximityPlacementGroup: ppgSubResourceFunc);
 
                 if (_cmdlet.DiskFile == null)
                 {
@@ -350,7 +358,8 @@ namespace Microsoft.Azure.Commands.Compute
                         dataDisks: _cmdlet.DataDiskSizeInGb,
                         zones: _cmdlet.Zone,
                         ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
-                        identity: _cmdlet.GetVMIdentityFromArgs());
+                        identity: _cmdlet.GetVMIdentityFromArgs(),
+                        proximityPlacementGroup: ppgSubResourceFunc);
                 }
                 else
                 {
@@ -368,7 +377,8 @@ namespace Microsoft.Azure.Commands.Compute
                         dataDisks: _cmdlet.DataDiskSizeInGb,
                         zones: _cmdlet.Zone,
                         ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
-                        identity: _cmdlet.GetVMIdentityFromArgs());
+                        identity: _cmdlet.GetVMIdentityFromArgs(),
+                        proximityPlacementGroup: ppgSubResourceFunc);
                 }
             }
         }
