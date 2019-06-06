@@ -214,4 +214,11 @@ directive:
     set:
       verb: Get
       subject: VirtualWanSupportedSecurityProvider
+
+# Fix Alias Issues
+  - where:
+      verb: New|Set
+      subject: LoadBalancerInboundNatRule|NetworkSecurityRule|RouteTableRoute|VirtualNetworkPeering|VirtualNetworkSubnet|P2SVpnServerConfiguration|ServiceEndpointPolicyDefinition
+      parameter-name: Name
+    clear-alias: true
 ```
