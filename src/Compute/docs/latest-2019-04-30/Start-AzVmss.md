@@ -12,30 +12,17 @@ Starts one or more virtual machines in a VM scale set.
 
 ## SYNTAX
 
-### Start1 (Default)
+### StartExpanded1 (Default)
 ```
-Start-AzVmss -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String> [-PassThru]
- [-VMInstanceID <IVirtualMachineScaleSetVMInstanceIds>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### StartExpanded1
-```
-Start-AzVmss -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String> [-PassThru]
- [-InstanceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzVmss -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
+ [-InstanceId <String[]>] [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### StartViaIdentityExpanded1
 ```
-Start-AzVmss -InputObject <IComputeIdentity> [-PassThru] [-InstanceId <String[]>] [-DefaultProfile <PSObject>]
+Start-AzVmss -InputObject <IComputeIdentity> [-InstanceId <String[]>] [-PassThru] [-DefaultProfile <PSObject>]
  [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### StartViaIdentity1
-```
-Start-AzVmss -InputObject <IComputeIdentity> [-PassThru]
- [-VMInstanceID <IVirtualMachineScaleSetVMInstanceIds>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,7 +87,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: StartViaIdentityExpanded1, StartViaIdentity1
+Parameter Sets: StartViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -117,7 +104,7 @@ Omitting the virtual machine scale set instance ids will result in the operation
 
 ```yaml
 Type: System.String[]
-Parameter Sets: StartExpanded1, StartViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -149,7 +136,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start1, StartExpanded1
+Parameter Sets: StartExpanded1
 Aliases:
 
 Required: True
@@ -166,7 +153,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start1, StartExpanded1
+Parameter Sets: StartExpanded1
 Aliases:
 
 Required: True
@@ -177,28 +164,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VMInstanceID
-Specifies a list of virtual machine instance IDs from the VM scale set.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineScaleSetVMInstanceIds
-Parameter Sets: Start1, StartViaIdentity1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -VMScaleSetName
 The name of the VM scale set.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start1, StartExpanded1
+Parameter Sets: StartExpanded1
 Aliases:
 
 Required: True
@@ -246,8 +217,6 @@ Dynamic: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineScaleSetVMInstanceIds
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 

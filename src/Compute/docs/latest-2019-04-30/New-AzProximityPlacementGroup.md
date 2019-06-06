@@ -22,14 +22,15 @@ New-AzProximityPlacementGroup -Name <String> -ResourceGroupName <String> -Subscr
 ### CreateExpanded
 ```
 New-AzProximityPlacementGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Location <String> [-Tag <IResourceTags>] [-Type <ProximityPlacementGroupType>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Location <String> [-ProximityPlacementGroupType <ProximityPlacementGroupType>] [-Tag <IResourceTags>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzProximityPlacementGroup -InputObject <IComputeIdentity> -Location <String> [-Tag <IResourceTags>]
- [-Type <ProximityPlacementGroupType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzProximityPlacementGroup -InputObject <IComputeIdentity> -Location <String>
+ [-ProximityPlacementGroupType <ProximityPlacementGroupType>] [-Tag <IResourceTags>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -143,6 +144,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ProximityPlacementGroupType
+Specifies the type of the proximity placement group.
+  Possible values are:    **Standard**    **Ultra**
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ProximityPlacementGroupType
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -183,23 +201,6 @@ Resource tags
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.IResourceTags
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Type
-Specifies the type of the proximity placement group.
-  Possible values are:    **Standard**    **Ultra**
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ProximityPlacementGroupType
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases: ProximityPlacementGroupType
 
 Required: False
 Position: Named

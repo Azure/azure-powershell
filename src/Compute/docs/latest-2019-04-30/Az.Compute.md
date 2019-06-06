@@ -11,6 +11,10 @@ Locale: en-US
 Microsoft Azure PowerShell: Compute cmdlets
 
 ## Az.Compute Cmdlets
+### [ConvertTo-AzVMManagedDisk](ConvertTo-AzVMManagedDisk.md)
+Converts virtual machine disks from blob-based to managed disks.
+Virtual machine must be stop-deallocated before invoking this operation.
+
 ### [ConvertTo-AzVmssSinglePlacementGroup](ConvertTo-AzVmssSinglePlacementGroup.md)
 Converts SinglePlacementGroup property to false for a existing virtual machine scale set.
 
@@ -107,6 +111,9 @@ Run command on the VM.
 
 ### [Invoke-AzVMReimage](Invoke-AzVMReimage.md)
 The operation to redeploy a virtual machine.
+
+### [Invoke-AzVmssReimage](Invoke-AzVmssReimage.md)
+Reimages (upgrade the operating system) one or more virtual machines in a VM scale set which don't have a ephemeral OS disk, for virtual machines who have a ephemeral OS disk the virtual machine is reset to initial state.
 
 ### [Invoke-AzVmssVMCommand](Invoke-AzVmssVMCommand.md)
 Run command on a virtual machine in a VM scale set.

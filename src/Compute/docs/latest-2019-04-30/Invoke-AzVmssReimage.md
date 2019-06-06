@@ -1,31 +1,45 @@
 ---
 external help file:
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/start-azvmss
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/invoke-azvmssreimage
 schema: 2.0.0
 ---
 
-# Start-AzVmss
+# Invoke-AzVmssReimage
 
 ## SYNOPSIS
-Starts one or more virtual machines in a VM scale set.
+Reimages (upgrade the operating system) one or more virtual machines in a VM scale set which don't have a ephemeral OS disk, for virtual machines who have a ephemeral OS disk the virtual machine is reset to initial state.
 
 ## SYNTAX
 
-### StartExpanded (Default)
+### ReimageExpanded2 (Default)
 ```
-Start-AzVmss -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
- [-InstanceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzVmssReimage -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
+ [-InstanceId <String[]>] [-PassThru] [-TempDisk] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### StartViaIdentityExpanded
+### ReimageExpanded3
 ```
-Start-AzVmss -InputObject <IComputeIdentity> [-InstanceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzVmssReimage -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
+ [-InstanceId <String[]>] [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### ReimageViaIdentityExpanded3
+```
+Invoke-AzVmssReimage -InputObject <IComputeIdentity> [-InstanceId <String[]>] [-PassThru]
+ [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ReimageViaIdentityExpanded2
+```
+Invoke-AzVmssReimage -InputObject <IComputeIdentity> [-InstanceId <String[]>] [-PassThru] [-TempDisk]
+ [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Starts one or more virtual machines in a VM scale set.
+Reimages (upgrade the operating system) one or more virtual machines in a VM scale set which don't have a ephemeral OS disk, for virtual machines who have a ephemeral OS disk the virtual machine is reset to initial state.
 
 ## EXAMPLES
 
@@ -86,7 +100,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: StartViaIdentityExpanded
+Parameter Sets: ReimageViaIdentityExpanded3, ReimageViaIdentityExpanded2
 Aliases:
 
 Required: True
@@ -114,12 +128,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -PassThru
+When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartExpanded
+Parameter Sets: ReimageExpanded2, ReimageExpanded3
 Aliases:
 
 Required: True
@@ -136,7 +166,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartExpanded
+Parameter Sets: ReimageExpanded2, ReimageExpanded3
 Aliases:
 
 Required: True
@@ -147,12 +177,29 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -TempDisk
+Specifies whether to reimage temp disk.
+Default value: false.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ReimageExpanded2, ReimageViaIdentityExpanded2
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -VMScaleSetName
 The name of the VM scale set.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartExpanded
+Parameter Sets: ReimageExpanded2, ReimageExpanded3
 Aliases:
 
 Required: True
@@ -205,7 +252,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.IOperationStatusResponse
+### System.Boolean
 
 ## ALIASES
 

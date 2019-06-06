@@ -21,18 +21,19 @@ Update-AzDisk -Name <String> -ResourceGroupName <String> -SubscriptionId <String
 ### UpdateExpanded1
 ```
 Update-AzDisk -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -EncryptionKeySecretUrl <String> -KeyEncryptionKeyUrl <String> [-EncryptionKeySourceVaultId <String>]
- [-EncryptionSettingEnabled] [-KeyEncryptionKeySourceVaultId <String>] [-OSType <OperatingSystemTypes>]
- [-SizeGb <Int32>] [-SkuName <StorageAccountTypes>] [-Tag <IResourceUpdateTags>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -DiskEncryptionKeySecretUrl <String> -KeyEncryptionKeyUrl <String> [-DiskEncryptionKeySourceVaultId <String>]
+ [-DiskSizeGb <Int32>] [-EncryptionSettingEnabled] [-KeyEncryptionKeySourceVaultId <String>]
+ [-OSType <OperatingSystemTypes>] [-SkuName <StorageAccountTypes>] [-Tag <IResourceUpdateTags>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded1
 ```
-Update-AzDisk -InputObject <IComputeIdentity> -EncryptionKeySecretUrl <String> -KeyEncryptionKeyUrl <String>
- [-EncryptionKeySourceVaultId <String>] [-EncryptionSettingEnabled] [-KeyEncryptionKeySourceVaultId <String>]
- [-OSType <OperatingSystemTypes>] [-SizeGb <Int32>] [-SkuName <StorageAccountTypes>]
- [-Tag <IResourceUpdateTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDisk -InputObject <IComputeIdentity> -DiskEncryptionKeySecretUrl <String>
+ -KeyEncryptionKeyUrl <String> [-DiskEncryptionKeySourceVaultId <String>] [-DiskSizeGb <Int32>]
+ [-EncryptionSettingEnabled] [-KeyEncryptionKeySourceVaultId <String>] [-OSType <OperatingSystemTypes>]
+ [-SkuName <StorageAccountTypes>] [-Tag <IResourceUpdateTags>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity1
@@ -114,13 +115,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -EncryptionKeySecretUrl
+### -DiskEncryptionKeySecretUrl
 Url pointing to a key or secret in KeyVault
 
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
-Aliases: DiskEncryptionKeySecretUrl
+Aliases:
 
 Required: True
 Position: Named
@@ -130,17 +131,35 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -EncryptionKeySourceVaultId
+### -DiskEncryptionKeySourceVaultId
 Resource Id
 
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
-Aliases: DiskEncryptionKeySourceVaultId
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -DiskSizeGb
+If creationData.createOption is Empty, this field is mandatory and it indicates the size of the VHD to create.
+If this field is present for updates or creation with other options, it indicates a resize.
+Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -258,24 +277,6 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -SizeGb
-If creationData.createOption is Empty, this field is mandatory and it indicates the size of the VHD to create.
-If this field is present for updates or creation with other options, it indicates a resize.
-Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size.
-
-```yaml
-Type: System.Int32
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
-Aliases: DiskSizeGb
-
-Required: False
-Position: Named
-Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

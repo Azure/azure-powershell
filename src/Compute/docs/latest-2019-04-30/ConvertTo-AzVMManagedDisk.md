@@ -1,31 +1,33 @@
 ---
 external help file:
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/start-azvmss
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/convertto-azvmmanageddisk
 schema: 2.0.0
 ---
 
-# Start-AzVmss
+# ConvertTo-AzVMManagedDisk
 
 ## SYNOPSIS
-Starts one or more virtual machines in a VM scale set.
+Converts virtual machine disks from blob-based to managed disks.
+Virtual machine must be stop-deallocated before invoking this operation.
 
 ## SYNTAX
 
-### StartExpanded (Default)
+### Convert1 (Default)
 ```
-Start-AzVmss -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
- [-InstanceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ConvertTo-AzVMManagedDisk -ResourceGroupName <String> -SubscriptionId <String> -VMName <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### StartViaIdentityExpanded
+### ConvertViaIdentity1
 ```
-Start-AzVmss -InputObject <IComputeIdentity> [-InstanceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ConvertTo-AzVMManagedDisk -InputObject <IComputeIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Starts one or more virtual machines in a VM scale set.
+Converts virtual machine disks from blob-based to managed disks.
+Virtual machine must be stop-deallocated before invoking this operation.
 
 ## EXAMPLES
 
@@ -86,7 +88,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: StartViaIdentityExpanded
+Parameter Sets: ConvertViaIdentity1
 Aliases:
 
 Required: True
@@ -97,18 +99,17 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InstanceId
-The virtual machine scale set instance ids.
-Omitting the virtual machine scale set instance ids will result in the operation being performed on all virtual machines in the virtual machine scale set.
+### -PassThru
+When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
 
 ```yaml
-Type: System.String[]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -119,7 +120,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartExpanded
+Parameter Sets: Convert1
 Aliases:
 
 Required: True
@@ -136,7 +137,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartExpanded
+Parameter Sets: Convert1
 Aliases:
 
 Required: True
@@ -147,12 +148,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VMScaleSetName
-The name of the VM scale set.
+### -VMName
+The name of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartExpanded
+Parameter Sets: Convert1
 Aliases:
 
 Required: True
@@ -205,7 +206,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.IOperationStatusResponse
+### System.Boolean
 
 ## ALIASES
 

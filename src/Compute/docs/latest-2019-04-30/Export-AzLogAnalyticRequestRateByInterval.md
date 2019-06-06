@@ -28,13 +28,6 @@ Export-AzLogAnalyticRequestRateByInterval -InputObject <IComputeIdentity> -BlobC
  [<CommonParameters>]
 ```
 
-### ExportViaIdentity1
-```
-Export-AzLogAnalyticRequestRateByInterval -InputObject <IComputeIdentity>
- [-Parameter <IRequestRateByIntervalInput>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Export logs that show Api requests made by this subscription in the given time window to show throttling activities.
 
@@ -81,7 +74,7 @@ SAS Uri of the logging blob container to which LogAnalytics Api writes output lo
 
 ```yaml
 Type: System.String
-Parameter Sets: ExportExpanded1, ExportViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -113,7 +106,7 @@ From time of the query
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: ExportExpanded1, ExportViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -129,7 +122,7 @@ Group query result by Operation Name.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ExportExpanded1, ExportViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -145,7 +138,7 @@ Group query result by Resource Name.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ExportExpanded1, ExportViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -161,7 +154,7 @@ Group query result by Throttle Policy applied.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ExportExpanded1, ExportViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -177,7 +170,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: ExportViaIdentityExpanded1, ExportViaIdentity1
+Parameter Sets: ExportViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -193,7 +186,7 @@ Interval value in minutes used to create LogAnalytics call rate logs.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.IntervalInMins
-Parameter Sets: ExportExpanded1, ExportViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -220,22 +213,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Api request input for LogAnalytics getRequestRateByInterval Api.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IRequestRateByIntervalInput
-Parameter Sets: ExportViaIdentity1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -SubscriptionId
 Subscription credentials which uniquely identify Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -258,7 +235,7 @@ To time of the query
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: ExportExpanded1, ExportViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -308,8 +285,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IRequestRateByIntervalInput
 
 ## OUTPUTS
 

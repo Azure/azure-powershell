@@ -1,31 +1,33 @@
 ---
 external help file:
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/start-azvmss
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/convertto-azvmmanageddisk
 schema: 2.0.0
 ---
 
-# Start-AzVmss
+# ConvertTo-AzVMManagedDisk
 
 ## SYNOPSIS
-Starts one or more virtual machines in a VM scale set.
+Converts virtual machine disks from blob-based to managed disks.
+Virtual machine must be stop-deallocated before invoking this operation.
 
 ## SYNTAX
 
-### StartExpanded (Default)
+### Convert (Default)
 ```
-Start-AzVmss -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
- [-InstanceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ConvertTo-AzVMManagedDisk -ResourceGroupName <String> -SubscriptionId <String> -VMName <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### StartViaIdentityExpanded
+### ConvertViaIdentity
 ```
-Start-AzVmss -InputObject <IComputeIdentity> [-InstanceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ConvertTo-AzVMManagedDisk -InputObject <IComputeIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Starts one or more virtual machines in a VM scale set.
+Converts virtual machine disks from blob-based to managed disks.
+Virtual machine must be stop-deallocated before invoking this operation.
 
 ## EXAMPLES
 
@@ -86,7 +88,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: StartViaIdentityExpanded
+Parameter Sets: ConvertViaIdentity
 Aliases:
 
 Required: True
@@ -97,29 +99,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InstanceId
-The virtual machine scale set instance ids.
-Omitting the virtual machine scale set instance ids will result in the operation being performed on all virtual machines in the virtual machine scale set.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartExpanded
+Parameter Sets: Convert
 Aliases:
 
 Required: True
@@ -136,7 +121,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartExpanded
+Parameter Sets: Convert
 Aliases:
 
 Required: True
@@ -147,12 +132,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VMScaleSetName
-The name of the VM scale set.
+### -VMName
+The name of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartExpanded
+Parameter Sets: Convert
 Aliases:
 
 Required: True

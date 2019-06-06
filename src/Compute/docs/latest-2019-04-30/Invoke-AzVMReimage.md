@@ -24,23 +24,10 @@ Invoke-AzVMReimage -ResourceGroupName <String> -SubscriptionId <String> -Name <S
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Reimage
-```
-Invoke-AzVMReimage -ResourceGroupName <String> -SubscriptionId <String> -Name <String> [-PassThru]
- [-VM <IVirtualMachineReimageParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### ReimageViaIdentityExpanded
 ```
 Invoke-AzVMReimage -InputObject <IComputeIdentity> [-PassThru] [-TempDisk] [-DefaultProfile <PSObject>]
  [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ReimageViaIdentity
-```
-Invoke-AzVMReimage -InputObject <IComputeIdentity> [-PassThru] [-VM <IVirtualMachineReimageParameters>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RedeployViaIdentity1
@@ -111,7 +98,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: ReimageViaIdentityExpanded, ReimageViaIdentity, RedeployViaIdentity1
+Parameter Sets: ReimageViaIdentityExpanded, RedeployViaIdentity1
 Aliases:
 
 Required: True
@@ -127,7 +114,7 @@ The name of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReimageExpanded, Reimage
+Parameter Sets: ReimageExpanded
 Aliases:
 
 Required: True
@@ -159,7 +146,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Redeploy1, ReimageExpanded, Reimage
+Parameter Sets: Redeploy1, ReimageExpanded
 Aliases:
 
 Required: True
@@ -176,7 +163,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Redeploy1, ReimageExpanded, Reimage
+Parameter Sets: Redeploy1, ReimageExpanded
 Aliases:
 
 Required: True
@@ -200,23 +187,6 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VM
-Parameters for Reimaging Virtual Machine.
-NOTE: Virtual Machine OS disk will always be reimaged
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IVirtualMachineReimageParameters
-Parameter Sets: Reimage, ReimageViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -274,8 +244,6 @@ Dynamic: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IVirtualMachineReimageParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 

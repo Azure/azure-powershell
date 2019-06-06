@@ -12,43 +12,16 @@ Reimages (upgrade the operating system) a specific virtual machine in a VM scale
 
 ## SYNTAX
 
-### Reimage2 (Default)
-```
-Invoke-AzVmssVMReimage -InstanceId <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VMScaleSetName <String> [-PassThru] [-VirtualMachineScaleSetVM <IVirtualMachineScaleSetVMReimageParameters>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ReimageExpanded
+### ReimageExpanded (Default)
 ```
 Invoke-AzVmssVMReimage -InstanceId <String> -ResourceGroupName <String> -SubscriptionId <String>
  -VMScaleSetName <String> [-PassThru] [-TempDisk] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### Reimage3
-```
-Invoke-AzVmssVMReimage -InstanceId <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VMScaleSetName <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### ReimageViaIdentityExpanded
 ```
 Invoke-AzVmssVMReimage -InputObject <IComputeIdentity> [-PassThru] [-TempDisk] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ReimageViaIdentity3
-```
-Invoke-AzVmssVMReimage -InputObject <IComputeIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ReimageViaIdentity2
-```
-Invoke-AzVmssVMReimage -InputObject <IComputeIdentity> [-PassThru]
- [-VirtualMachineScaleSetVM <IVirtualMachineScaleSetVMReimageParameters>] [-DefaultProfile <PSObject>]
  [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -114,7 +87,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: ReimageViaIdentityExpanded, ReimageViaIdentity3, ReimageViaIdentity2
+Parameter Sets: ReimageViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -130,7 +103,7 @@ The instance ID of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reimage2, ReimageExpanded, Reimage3
+Parameter Sets: ReimageExpanded
 Aliases:
 
 Required: True
@@ -162,7 +135,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reimage2, ReimageExpanded, Reimage3
+Parameter Sets: ReimageExpanded
 Aliases:
 
 Required: True
@@ -179,7 +152,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reimage2, ReimageExpanded, Reimage3
+Parameter Sets: ReimageExpanded
 Aliases:
 
 Required: True
@@ -196,7 +169,7 @@ Default value: false.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ReimageExpanded, ReimageViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -207,28 +180,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VirtualMachineScaleSetVM
-Describes a Virtual Machine Scale Set VM Reimage Parameters.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IVirtualMachineScaleSetVMReimageParameters
-Parameter Sets: Reimage2, ReimageViaIdentity2
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -VMScaleSetName
 The name of the VM scale set.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reimage2, ReimageExpanded, Reimage3
+Parameter Sets: ReimageExpanded
 Aliases:
 
 Required: True
@@ -276,8 +233,6 @@ Dynamic: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IVirtualMachineScaleSetVMReimageParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 

@@ -12,14 +12,7 @@ Grants access to a snapshot.
 
 ## SYNTAX
 
-### Grant (Default)
-```
-Grant-AzSnapshotAccess -ResourceGroupName <String> -SnapshotName <String> -SubscriptionId <String>
- [-GrantAccessData <IGrantAccessData>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### GrantExpanded
+### GrantExpanded (Default)
 ```
 Grant-AzSnapshotAccess -ResourceGroupName <String> -SnapshotName <String> -SubscriptionId <String>
  -Access <AccessLevel> -DurationInSecond <Int32> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
@@ -29,12 +22,6 @@ Grant-AzSnapshotAccess -ResourceGroupName <String> -SnapshotName <String> -Subsc
 ### GrantViaIdentityExpanded
 ```
 Grant-AzSnapshotAccess -InputObject <IComputeIdentity> -Access <AccessLevel> -DurationInSecond <Int32>
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GrantViaIdentity
-```
-Grant-AzSnapshotAccess -InputObject <IComputeIdentity> [-GrantAccessData <IGrantAccessData>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -68,7 +55,7 @@ HELP MESSAGE MISSING
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.AccessLevel
-Parameter Sets: GrantExpanded, GrantViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -116,7 +103,7 @@ Time duration in seconds until the SAS access expires.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: GrantExpanded, GrantViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -127,28 +114,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -GrantAccessData
-Data used for requesting a SAS.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20180930.IGrantAccessData
-Parameter Sets: Grant, GrantViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -InputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: GrantViaIdentityExpanded, GrantViaIdentity
+Parameter Sets: GrantViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -164,7 +135,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Grant, GrantExpanded
+Parameter Sets: GrantExpanded
 Aliases:
 
 Required: True
@@ -183,7 +154,7 @@ The max name length is 80 characters.
 
 ```yaml
 Type: System.String
-Parameter Sets: Grant, GrantExpanded
+Parameter Sets: GrantExpanded
 Aliases:
 
 Required: True
@@ -200,7 +171,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Grant, GrantExpanded
+Parameter Sets: GrantExpanded
 Aliases:
 
 Required: True
@@ -248,8 +219,6 @@ Dynamic: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20180930.IGrantAccessData
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 

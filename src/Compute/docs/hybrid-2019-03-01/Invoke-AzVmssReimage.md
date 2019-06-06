@@ -1,31 +1,43 @@
 ---
 external help file:
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/start-azvmss
+online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/invoke-azvmssreimage
 schema: 2.0.0
 ---
 
-# Start-AzVmss
+# Invoke-AzVmssReimage
 
 ## SYNOPSIS
-Starts one or more virtual machines in a VM scale set.
+Reimages (upgrade the operating system) one or more virtual machines in a VM scale set.
 
 ## SYNTAX
 
-### StartExpanded (Default)
+### ReimageExpanded (Default)
 ```
-Start-AzVmss -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
+Invoke-AzVmssReimage -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
  [-InstanceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### StartViaIdentityExpanded
+### ReimageExpanded1
 ```
-Start-AzVmss -InputObject <IComputeIdentity> [-InstanceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzVmssReimage -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
+ [-InstanceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ReimageViaIdentityExpanded1
+```
+Invoke-AzVmssReimage -InputObject <IComputeIdentity> [-InstanceId <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ReimageViaIdentityExpanded
+```
+Invoke-AzVmssReimage -InputObject <IComputeIdentity> [-InstanceId <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Starts one or more virtual machines in a VM scale set.
+Reimages (upgrade the operating system) one or more virtual machines in a VM scale set.
 
 ## EXAMPLES
 
@@ -86,7 +98,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: StartViaIdentityExpanded
+Parameter Sets: ReimageViaIdentityExpanded1, ReimageViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -119,7 +131,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartExpanded
+Parameter Sets: ReimageExpanded, ReimageExpanded1
 Aliases:
 
 Required: True
@@ -136,7 +148,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartExpanded
+Parameter Sets: ReimageExpanded, ReimageExpanded1
 Aliases:
 
 Required: True
@@ -152,7 +164,7 @@ The name of the VM scale set.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartExpanded
+Parameter Sets: ReimageExpanded, ReimageExpanded1
 Aliases:
 
 Required: True

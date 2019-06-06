@@ -18,6 +18,12 @@ Get-AzVMExtension -ResourceGroupName <String> -SubscriptionId <String[]> -VMName
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### Get1
+```
+Get-AzVMExtension -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> -VMName <String>
+ [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity1
 ```
 Get-AzVMExtension -InputObject <IComputeIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
@@ -97,12 +103,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the virtual machine extension.
+
+```yaml
+Type: System.String
+Parameter Sets: Get1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: List, Get1
 Aliases:
 
 Required: True
@@ -119,7 +141,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List
+Parameter Sets: List, Get1
 Aliases:
 
 Required: True
@@ -135,7 +157,7 @@ The name of the virtual machine containing the extension.
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: List, Get1
 Aliases:
 
 Required: True

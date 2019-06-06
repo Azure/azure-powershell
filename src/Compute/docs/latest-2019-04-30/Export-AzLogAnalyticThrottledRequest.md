@@ -12,14 +12,7 @@ Export logs that show total throttled Api requests for this subscription in the 
 
 ## SYNTAX
 
-### Export1 (Default)
-```
-Export-AzLogAnalyticThrottledRequest -Location <String> -SubscriptionId <String>
- [-Parameter <IThrottledRequestsInput>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ExportExpanded1
+### ExportExpanded1 (Default)
 ```
 Export-AzLogAnalyticThrottledRequest -Location <String> -SubscriptionId <String> -BlobContainerSasUri <String>
  -FromTime <DateTime> -ToTime <DateTime> [-GroupByOperationName] [-GroupByResourceName]
@@ -31,12 +24,6 @@ Export-AzLogAnalyticThrottledRequest -Location <String> -SubscriptionId <String>
 Export-AzLogAnalyticThrottledRequest -InputObject <IComputeIdentity> -BlobContainerSasUri <String>
  -FromTime <DateTime> -ToTime <DateTime> [-GroupByOperationName] [-GroupByResourceName]
  [-GroupByThrottlePolicy] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ExportViaIdentity1
-```
-Export-AzLogAnalyticThrottledRequest -InputObject <IComputeIdentity> [-Parameter <IThrottledRequestsInput>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,7 +72,7 @@ SAS Uri of the logging blob container to which LogAnalytics Api writes output lo
 
 ```yaml
 Type: System.String
-Parameter Sets: ExportExpanded1, ExportViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -117,7 +104,7 @@ From time of the query
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: ExportExpanded1, ExportViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -133,7 +120,7 @@ Group query result by Operation Name.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ExportExpanded1, ExportViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -149,7 +136,7 @@ Group query result by Resource Name.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ExportExpanded1, ExportViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -165,7 +152,7 @@ Group query result by Throttle Policy applied.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ExportExpanded1, ExportViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -181,7 +168,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: ExportViaIdentityExpanded1, ExportViaIdentity1
+Parameter Sets: ExportViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -197,7 +184,7 @@ The location upon which virtual-machine-sizes is queried.
 
 ```yaml
 Type: System.String
-Parameter Sets: Export1, ExportExpanded1
+Parameter Sets: ExportExpanded1
 Aliases:
 
 Required: True
@@ -208,29 +195,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Api request input for LogAnalytics getThrottledRequests Api.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IThrottledRequestsInput
-Parameter Sets: Export1, ExportViaIdentity1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -SubscriptionId
 Subscription credentials which uniquely identify Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Export1, ExportExpanded1
+Parameter Sets: ExportExpanded1
 Aliases:
 
 Required: True
@@ -246,7 +217,7 @@ To time of the query
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: ExportExpanded1, ExportViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -294,8 +265,6 @@ Dynamic: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IThrottledRequestsInput
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 

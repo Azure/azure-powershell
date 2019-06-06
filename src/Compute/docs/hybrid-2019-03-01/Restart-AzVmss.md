@@ -12,14 +12,7 @@ Restarts one or more virtual machines in a VM scale set.
 
 ## SYNTAX
 
-### Restart (Default)
-```
-Restart-AzVmss -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
- [-VMInstanceID <IVirtualMachineScaleSetVMInstanceIds>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### RestartExpanded
+### RestartExpanded (Default)
 ```
 Restart-AzVmss -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
  [-InstanceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -29,12 +22,6 @@ Restart-AzVmss -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetN
 ```
 Restart-AzVmss -InputObject <IComputeIdentity> [-InstanceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RestartViaIdentity
-```
-Restart-AzVmss -InputObject <IComputeIdentity> [-VMInstanceID <IVirtualMachineScaleSetVMInstanceIds>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -99,7 +86,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: RestartViaIdentityExpanded, RestartViaIdentity
+Parameter Sets: RestartViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -116,7 +103,7 @@ Omitting the virtual machine scale set instance ids will result in the operation
 
 ```yaml
 Type: System.String[]
-Parameter Sets: RestartExpanded, RestartViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -132,7 +119,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart, RestartExpanded
+Parameter Sets: RestartExpanded
 Aliases:
 
 Required: True
@@ -149,7 +136,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart, RestartExpanded
+Parameter Sets: RestartExpanded
 Aliases:
 
 Required: True
@@ -160,28 +147,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VMInstanceID
-Specifies a list of virtual machine instance IDs from the VM scale set.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineScaleSetVMInstanceIds
-Parameter Sets: Restart, RestartViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -VMScaleSetName
 The name of the VM scale set.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart, RestartExpanded
+Parameter Sets: RestartExpanded
 Aliases:
 
 Required: True
@@ -229,8 +200,6 @@ Dynamic: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineScaleSetVMInstanceIds
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 

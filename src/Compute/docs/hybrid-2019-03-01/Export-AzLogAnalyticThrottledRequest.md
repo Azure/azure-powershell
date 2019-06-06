@@ -26,12 +26,6 @@ Export-AzLogAnalyticThrottledRequest -InputObject <IComputeIdentity> -BlobContai
  [-GroupByThrottlePolicy] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ExportViaIdentity
-```
-Export-AzLogAnalyticThrottledRequest -InputObject <IComputeIdentity> [-Parameter <IThrottledRequestsInput>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Export logs that show total throttled Api requests for this subscription in the given time window.
 
@@ -78,7 +72,7 @@ SAS Uri of the logging blob container to which LogAnalytics Api writes output lo
 
 ```yaml
 Type: System.String
-Parameter Sets: ExportExpanded, ExportViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -110,7 +104,7 @@ From time of the query
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: ExportExpanded, ExportViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -126,7 +120,7 @@ Group query result by Operation Name.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ExportExpanded, ExportViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -142,7 +136,7 @@ Group query result by Resource Name.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ExportExpanded, ExportViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -158,7 +152,7 @@ Group query result by Throttle Policy applied.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ExportExpanded, ExportViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -174,7 +168,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: ExportViaIdentityExpanded, ExportViaIdentity
+Parameter Sets: ExportViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -201,22 +195,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Api request input for LogAnalytics getThrottledRequests Api.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IThrottledRequestsInput
-Parameter Sets: ExportViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -SubscriptionId
 Subscription credentials which uniquely identify Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -239,7 +217,7 @@ To time of the query
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: ExportExpanded, ExportViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -289,8 +267,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IThrottledRequestsInput
 
 ## OUTPUTS
 

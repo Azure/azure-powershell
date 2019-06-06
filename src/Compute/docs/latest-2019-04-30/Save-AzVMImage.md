@@ -12,14 +12,7 @@ Captures the VM by copying virtual hard disks of the VM and outputs a template t
 
 ## SYNTAX
 
-### Capture1 (Default)
-```
-Save-AzVMImage -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IVirtualMachineCaptureParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CaptureExpanded1
+### CaptureExpanded1 (Default)
 ```
 Save-AzVMImage -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  -DestinationContainerName <String> -OverwriteVhd -VhdPrefix <String> [-DefaultProfile <PSObject>] [-AsJob]
@@ -30,12 +23,6 @@ Save-AzVMImage -Name <String> -ResourceGroupName <String> -SubscriptionId <Strin
 ```
 Save-AzVMImage -InputObject <IComputeIdentity> -DestinationContainerName <String> -OverwriteVhd
  -VhdPrefix <String> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CaptureViaIdentity1
-```
-Save-AzVMImage -InputObject <IComputeIdentity> [-Parameter <IVirtualMachineCaptureParameters>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,7 +87,7 @@ The destination container name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CaptureExpanded1, CaptureViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -116,7 +103,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: CaptureViaIdentityExpanded1, CaptureViaIdentity1
+Parameter Sets: CaptureViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -132,7 +119,7 @@ The name of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: Capture1, CaptureExpanded1
+Parameter Sets: CaptureExpanded1
 Aliases:
 
 Required: True
@@ -148,7 +135,7 @@ Specifies whether to overwrite the destination virtual hard disk, in case of con
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CaptureExpanded1, CaptureViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -159,28 +146,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Capture Virtual Machine parameters.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineCaptureParameters
-Parameter Sets: Capture1, CaptureViaIdentity1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Capture1, CaptureExpanded1
+Parameter Sets: CaptureExpanded1
 Aliases:
 
 Required: True
@@ -197,7 +168,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Capture1, CaptureExpanded1
+Parameter Sets: CaptureExpanded1
 Aliases:
 
 Required: True
@@ -213,7 +184,7 @@ The captured virtual hard disk's name prefix.
 
 ```yaml
 Type: System.String
-Parameter Sets: CaptureExpanded1, CaptureViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -261,8 +232,6 @@ Dynamic: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineCaptureParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 

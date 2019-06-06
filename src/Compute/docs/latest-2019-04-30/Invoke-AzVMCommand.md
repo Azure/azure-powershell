@@ -12,30 +12,18 @@ Run command on the VM.
 
 ## SYNTAX
 
-### Run (Default)
-```
-Invoke-AzVMCommand -ResourceGroupName <String> -SubscriptionId <String> -VMName <String>
- [-Parameter <IRunCommandInput>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### RunExpanded
+### RunExpanded (Default)
 ```
 Invoke-AzVMCommand -ResourceGroupName <String> -SubscriptionId <String> -VMName <String> -CommandId <String>
- [-Parameter <IRunCommandInput>] [-Script <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Parameter <IRunCommandInputParameter[]>] [-Script <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RunViaIdentityExpanded
 ```
-Invoke-AzVMCommand -InputObject <IComputeIdentity> -CommandId <String> [-Parameter <IRunCommandInput>]
- [-Script <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RunViaIdentity
-```
-Invoke-AzVMCommand -InputObject <IComputeIdentity> [-Parameter <IRunCommandInput>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzVMCommand -InputObject <IComputeIdentity> -CommandId <String>
+ [-Parameter <IRunCommandInputParameter[]>] [-Script <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +72,7 @@ The run command id.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded, RunViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -116,7 +104,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: RunViaIdentityExpanded, RunViaIdentity
+Parameter Sets: RunViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -128,17 +116,17 @@ Dynamic: False
 ```
 
 ### -Parameter
-Capture Virtual Machine parameters.
+The run command parameters.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IRunCommandInput
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IRunCommandInputParameter[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -148,7 +136,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Run, RunExpanded
+Parameter Sets: RunExpanded
 Aliases:
 
 Required: True
@@ -166,7 +154,7 @@ When this value is given, the given script will override the default script of t
 
 ```yaml
 Type: System.String[]
-Parameter Sets: RunExpanded, RunViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -183,7 +171,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Run, RunExpanded
+Parameter Sets: RunExpanded
 Aliases:
 
 Required: True
@@ -199,7 +187,7 @@ The name of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: Run, RunExpanded
+Parameter Sets: RunExpanded
 Aliases:
 
 Required: True
@@ -247,8 +235,6 @@ Dynamic: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IRunCommandInput
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 

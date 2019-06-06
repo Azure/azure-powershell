@@ -21,20 +21,19 @@ Update-AzDisk -Name <String> -ResourceGroupName <String> -SubscriptionId <String
 ### UpdateExpanded
 ```
 Update-AzDisk -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -EncryptionSettingCollectionEnabled
- [-EncryptionSettingCollectionEncryptionSetting <IEncryptionSettingsElement[]>] [-IopsReadWrite <Int64>]
- [-MBpsReadWrite <Int32>] [-OSType <OperatingSystemTypes>] [-SizeGb <Int32>]
- [-SkuName <DiskStorageAccountTypes>] [-Tag <IDiskUpdateTags>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -EncryptionSettingCollectionEnabled [-DiskIopsReadWrite <Int64>] [-DiskMBpsReadWrite <Int32>]
+ [-DiskSizeGb <Int32>] [-EncryptionSettingCollectionEncryptionSetting <IEncryptionSettingsElement[]>]
+ [-OSType <OperatingSystemTypes>] [-SkuName <DiskStorageAccountTypes>] [-Tag <IDiskUpdateTags>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDisk -InputObject <IComputeIdentity> -EncryptionSettingCollectionEnabled
- [-EncryptionSettingCollectionEncryptionSetting <IEncryptionSettingsElement[]>] [-IopsReadWrite <Int64>]
- [-MBpsReadWrite <Int32>] [-OSType <OperatingSystemTypes>] [-SizeGb <Int32>]
- [-SkuName <DiskStorageAccountTypes>] [-Tag <IDiskUpdateTags>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDisk -InputObject <IComputeIdentity> -EncryptionSettingCollectionEnabled [-DiskIopsReadWrite <Int64>]
+ [-DiskMBpsReadWrite <Int32>] [-DiskSizeGb <Int32>]
+ [-EncryptionSettingCollectionEncryptionSetting <IEncryptionSettingsElement[]>]
+ [-OSType <OperatingSystemTypes>] [-SkuName <DiskStorageAccountTypes>] [-Tag <IDiskUpdateTags>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -116,6 +115,58 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -DiskIopsReadWrite
+The number of IOPS allowed for this disk; only settable for UltraSSD disks.
+One operation can transfer between 4k and 256k bytes.
+
+```yaml
+Type: System.Int64
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -DiskMBpsReadWrite
+The bandwidth allowed for this disk; only settable for UltraSSD disks.
+MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -DiskSizeGb
+If creationData.createOption is Empty, this field is mandatory and it indicates the size of the VHD to create.
+If this field is present for updates or creation with other options, it indicates a resize.
+Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -EncryptionSettingCollectionEnabled
 Set this flag to true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable encryption.
 Set this flag to false and remove DiskEncryptionKey and KeyEncryptionKey to disable encryption.
@@ -166,40 +217,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IopsReadWrite
-The number of IOPS allowed for this disk; only settable for UltraSSD disks.
-One operation can transfer between 4k and 256k bytes.
-
-```yaml
-Type: System.Int64
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases: DiskIopsReadWrite
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -MBpsReadWrite
-The bandwidth allowed for this disk; only settable for UltraSSD disks.
-MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10.
-
-```yaml
-Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases: DiskMBpsReadWrite
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Name
 The name of the managed disk that is being created.
 The name can't be changed after the disk is created.
@@ -246,24 +263,6 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -SizeGb
-If creationData.createOption is Empty, this field is mandatory and it indicates the size of the VHD to create.
-If this field is present for updates or creation with other options, it indicates a resize.
-Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size.
-
-```yaml
-Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases: DiskSizeGb
-
-Required: False
-Position: Named
-Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,31 +14,17 @@ Instead, use deallocate to release resources and avoid charges.
 
 ## SYNTAX
 
-### PowerOff1 (Default)
+### PowerOffExpanded1 (Default)
 ```
 Stop-AzVmss -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String> [-SkipShutdown]
- [-PassThru] [-VMInstanceID <IVirtualMachineScaleSetVMInstanceIds>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PowerOffExpanded1
-```
-Stop-AzVmss -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String> [-SkipShutdown]
- [-PassThru] [-InstanceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-InstanceId <String[]>] [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### PowerOffViaIdentityExpanded1
 ```
-Stop-AzVmss -InputObject <IComputeIdentity> [-SkipShutdown] [-PassThru] [-InstanceId <String[]>]
+Stop-AzVmss -InputObject <IComputeIdentity> [-SkipShutdown] [-InstanceId <String[]>] [-PassThru]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PowerOffViaIdentity1
-```
-Stop-AzVmss -InputObject <IComputeIdentity> [-SkipShutdown] [-PassThru]
- [-VMInstanceID <IVirtualMachineScaleSetVMInstanceIds>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,7 +91,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: PowerOffViaIdentityExpanded1, PowerOffViaIdentity1
+Parameter Sets: PowerOffViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -122,7 +108,7 @@ Omitting the virtual machine scale set instance ids will result in the operation
 
 ```yaml
 Type: System.String[]
-Parameter Sets: PowerOffExpanded1, PowerOffViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -154,7 +140,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: PowerOff1, PowerOffExpanded1
+Parameter Sets: PowerOffExpanded1
 Aliases:
 
 Required: True
@@ -189,7 +175,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: PowerOff1, PowerOffExpanded1
+Parameter Sets: PowerOffExpanded1
 Aliases:
 
 Required: True
@@ -200,28 +186,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VMInstanceID
-Specifies a list of virtual machine instance IDs from the VM scale set.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineScaleSetVMInstanceIds
-Parameter Sets: PowerOff1, PowerOffViaIdentity1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -VMScaleSetName
 The name of the VM scale set.
 
 ```yaml
 Type: System.String
-Parameter Sets: PowerOff1, PowerOffExpanded1
+Parameter Sets: PowerOffExpanded1
 Aliases:
 
 Required: True
@@ -269,8 +239,6 @@ Dynamic: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineScaleSetVMInstanceIds
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 
