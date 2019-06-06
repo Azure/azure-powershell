@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The service tier of the workspace.")]
         [PSArgumentCompleter("free", "standard", "premium", "pernode", "standalone", "pergb2018")]
+        [ValidateSet("free", "standard", "premium", "pernode", "standalone", "pergb2018", IgnoreCase = true)]
         public string Sku { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true,
