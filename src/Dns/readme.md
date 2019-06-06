@@ -54,4 +54,12 @@ require:
 
 title: Dns
 module-version: 0.0.1
+
+directive:
+  - where:
+      subject: RecordSet
+      parameter-name: Ttl
+    set:
+      parameter-name: TimeToLive
+      alias: Ttl
 ```
