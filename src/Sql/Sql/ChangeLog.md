@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix Advanced Threat Protection storage endpoint suffix
+* Fix Advanced Data Security enable overrides Advanced Threat Protection policy
 
 ## Version 1.11.0
 * Add DnsZonePartner Parameter for New-AzureSqlInstance cmdlet to support AutoDr for Managed Instance.
