@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed CustomLog datasource model returned in Get-AzOperationalInsightsDataSource
 
 ## Version 1.2.1
 * Fixed incorrect parameter names in help examples
