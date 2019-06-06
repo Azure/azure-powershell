@@ -501,9 +501,6 @@ function Test-BlobAuditPolicyOnDatabase
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 	$dbName = $params.databaseName
 
-	# NEEDS TO BE FILLED OUT WITH A PRECREATED STORAGE ACCOUNT IN A DIFFERENT SUBSCRIPTION
-	$storageAccountResourceId = "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/Default-Storage-EastUS/providers/Microsoft.Storage/storageAccounts/auditcmdletssa"
-
 	try
 	{
 		# Test - Tests that when setting blob auditing policy on database without StorageKeyType parameter, it gets the default value - "Primary".
@@ -518,20 +515,6 @@ function Test-BlobAuditPolicyOnDatabase
 		Assert-AreEqual $policy.AuditAction.Length 0
 		Assert-AreEqual $policy.RetentionInDays 8
 		Assert-True { $policy.StorageKeyType -eq  "Primary"}
-		
-		# Test - Tests setting blob auditing policy on a database with a storage account in a subscription which is different than the database's subscription
-		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
-		$policy = Get-AzSqlDatabaseAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-		
-		# Assert
-		Assert-AreEqual $policy.BlobStorageTargetState "Enabled"
-		Assert-AreEqual $policy.AuditActionGroup.Length 2
-		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP)}
-		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
-		Assert-AreEqual $policy.AuditAction.Length 0
-		Assert-AreEqual $policy.RetentionInDays 8
-		Assert-True { $policy.StorageKeyType -eq  "Primary"}
-		Assert-AreEqual $policy.StorageAccountResourceId $storageAccountResourceId
 		
 		# Test	
 		Set-AzSqlDatabaseAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountResourceId $params.storageAccountResourceId -StorageKeyType "Secondary" -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 -AuditAction "UPDATE ON database::[$($params.databaseName)] BY [public]"
@@ -582,9 +565,6 @@ function Test-BlobAuditPolicyOnServer
 	Create-BlobAuditingTestEnvironment $testSuffix
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
-	# NEEDS TO BE FILLED OUT WITH A PRECREATED STORAGE ACCOUNT IN A DIFFERENT SUBSCRIPTION
-	$storageAccountResourceId = "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/Default-Storage-EastUS/providers/Microsoft.Storage/storageAccounts/auditcmdletssa"
-	
 	try
 	{
 		# Test - Tests that when setting blob auditing policy on server without StorageKeyType parameter, it gets the default value - "Primary".
@@ -598,19 +578,6 @@ function Test-BlobAuditPolicyOnServer
 		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
 		Assert-AreEqual $policy.RetentionInDays 8
 		Assert-AreEqual $policy.StorageKeyType "Primary"
-
-		# Test - Tests setting blob auditing policy on a server with a storage account in a subscription which is different than the server's subscription
-		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $storageAccountResourceId -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
-		$policy = Get-AzSqlServerAuditPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
-	
-		# Assert
-		Assert-AreEqual $policy.BlobStorageTargetState "Enabled"
-		Assert-AreEqual $policy.AuditActionGroup.Length 2
-		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP)}
-		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
-		Assert-AreEqual $policy.RetentionInDays 8
-		Assert-AreEqual $policy.StorageKeyType "Primary"
-		Assert-AreEqual $policy.StorageAccountResourceId $storageAccountResourceId
 
 		# Test	
 		Set-AzSqlServerAuditPolicy -BlobStorageTargetState Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountResourceId $params.storageAccountResourceId -StorageKeyType "Secondary" -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
