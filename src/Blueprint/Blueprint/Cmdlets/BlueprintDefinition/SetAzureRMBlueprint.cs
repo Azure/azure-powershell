@@ -55,14 +55,14 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
                 switch (ParameterSetName)
                 {
-                    case ParameterSetNames.CreateBlueprintBySubscription:
+                    case ParameterSetNames.UpdateBlueprintBySubscription:
                         var subScope = Utils.GetScopeForSubscription(SubscriptionId ?? DefaultContext.Subscription.Id);
 
                         ThrowIfBlueprintNotExist(subScope, Name);
 
                         WriteObject(BlueprintClient.CreateOrUpdateBlueprint(subScope, Name, bp));
                         break;
-                    case ParameterSetNames.CreateBlueprintByManagementGroup:
+                    case ParameterSetNames.UpdateBlueprintByManagementGroup:
                         var mgScope = Utils.GetScopeForManagementGroup(ManagementGroupId);
 
                         ThrowIfBlueprintNotExist(mgScope, Name);
