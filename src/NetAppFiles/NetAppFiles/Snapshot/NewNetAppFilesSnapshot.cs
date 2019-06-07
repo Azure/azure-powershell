@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = FieldsParameterSet,
             HelpMessage = "The file system id")]
         [ValidateNotNullOrEmpty]

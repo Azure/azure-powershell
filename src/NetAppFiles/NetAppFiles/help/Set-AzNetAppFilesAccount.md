@@ -1,43 +1,45 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/new-aznetappfilesaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/set-aznetappfilesaccount
 schema: 2.0.0
 ---
 
-# New-AzNetAppFilesAccount
+# Set-AzNetAppFilesAccount
 
 ## SYNOPSIS
-Creates a new Azure NetApp Files (ANF) account.
+Updates an Azure NetApp Files (ANF) account with the new data set. Useful for deletion of associated active directories.
 
 ## SYNTAX
 
 ```
-New-AzNetAppFilesAccount -ResourceGroupName <String> -Location <String> -Name <String>
+Set-AzNetAppFilesAccount -ResourceGroupName <String> -Location <String> -Name <String>
  [-ActiveDirectories <PSNetAppFilesActiveDirectory[]>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzNetAppFilesAccount** cmdlet creates an ANF account.
+The **Set-AzNetAppFilesAccount** cmdlet modifies an ANF account.
 
 ## EXAMPLES
 
-### Example 1: Create an ANF account
+### Example 1 : Modify an ANF account
 ```
-PS C:\>New-AzNetAppFilesAccount -ResourceGroupName "MyRG" -Name "MyAnfAccount" -l "westus2"
+PS C:\>Set-AzNetAppFilesAccount -ResourceGroupName "MyRG" -l "westus2" -Name "MyAnfAccount"
 
 Output:
 
 Location          : westus2
-Id                : /subscriptions/mySubs/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount
+Id                : /subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount
 Name              : MyAnfAccount
 Type              : Microsoft.NetApp/netAppAccounts
 Tags              :
+AccountId         : 9fa2ca6d-1e48-4439-30e3-7de056e44e5a
+ActiveDirectories : {}
 ProvisioningState : Succeeded
 ```
 
-This command creates the new ANF account "MyAnfAccount".
+This command performs an upate on the given account. The absence of the active directory means it will be removed from the account.
 
 ## PARAMETERS
 
