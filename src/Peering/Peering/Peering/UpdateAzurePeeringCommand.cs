@@ -218,7 +218,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             }
             catch (ErrorResponseException ex)
             {
-                throw new ErrorResponseException($"{ex}");
+                var error = this.GetErrorCodeAndMessageFromArmOrErm(ex);
+                throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
 
@@ -292,7 +293,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                             }
                         }
                     }
-
+                    this.WriteVerbose($"Updating:{peeringName} for ResourceGroup:{resourceGroupName}");
                     return new PSDirectPeeringModelView(
                         this.ToPeeringPs(
                             this.PeeringClient.CreateOrUpdate(
@@ -307,7 +308,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             }
             catch (ErrorResponseException ex)
             {
-                                var error = GetErrorCodeAndMessageFromArmOrErm(ex);
+                var error = GetErrorCodeAndMessageFromArmOrErm(ex);
                 throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
 
@@ -347,6 +348,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                                                                  exchangePeeringModelView.PeerAsn.Id),
                         }
                     };
+                    this.WriteVerbose($"Updating:{peeringName} for ResourceGroup:{resourceGroupName}");
                     this.PeeringClient.CreateOrUpdate(
                         resourceGroupName.ToString(),
                         peeringName.ToString(),
@@ -361,7 +363,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             }
             catch (ErrorResponseException ex)
             {
-                                var error = GetErrorCodeAndMessageFromArmOrErm(ex);
+                var error = GetErrorCodeAndMessageFromArmOrErm(ex);
                 throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
 
