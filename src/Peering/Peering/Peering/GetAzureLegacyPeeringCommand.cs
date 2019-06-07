@@ -78,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             }
             catch (ErrorResponseException ex)
             {
-                                var error = this.GetErrorCodeAndMessageFromArmOrErm(ex);
+                var error = this.GetErrorCodeAndMessageFromArmOrErm(ex);
                 throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
