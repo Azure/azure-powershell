@@ -80,6 +80,12 @@ directive:
     set:
       verb: ConvertTo
       subject: VMManagedDisk
+  - where:
+      verb: Convert
+      subject: VmssToSinglePlacementGroup
+    set:
+      verb: ConvertTo
+      subject: VmssSinglePlacementGroup
 # Add service name prefix
   - where:
       verb: Get
@@ -440,6 +446,11 @@ directive:
       verb: Reset
       subject: VM
     hide: true
+  - where:
+      verb: Invoke
+      subject: VmssReimage
+    hide: true
+
 # renaming variants [bug](https://github.com/Azure/autorest.powershell/issues/309)
   - where: 
       verb: Update
@@ -468,8 +479,89 @@ directive:
       subject: VmssVMReimage
     set:
       alias: Update-AzVmssVM
+# variant remove (flattened body parameters with no piping value)
+  - where:
+      verb: ConvertTo
+      subject: VmssSinglePlacementGroup
+      variant: ^Convert\d?$|^ConvertViaIdentity\d?$
+    remove: true
+  - where:
+      verb: Export
+      subject: LogAnalytic.*
+      variant: ^Export\d?$|^ExportViaIdentity\d?$
+    remove: true
+  - where:
+      verb: Grant
+      subject: .+Access
+      variant: ^Grant\d?$|^GrantViaIdentity\d?$
+    remove: true
   - where:
       verb: Invoke
-      subject: VmssReimage
-    hide: true
+      subject: .*Command
+      variant: ^Run\d?$|^RunViaIdentity\d?$
+    remove: true
+  - where:
+      verb: Remove
+      subject: VmssInstance
+      variant: ^Delete\d?$|^DeleteViaIdentity\d?$
+    remove: true
+  - where:
+      verb: Restart
+      subject: Vmss
+      variant: ^Restart\d?$|^RestartViaIdentity\d?$
+    remove: true
+  - where:
+      verb: Start
+      subject: Vmss
+      variant: ^Start\d?$|^StartViaIdentity\d?$
+    remove: true
+  - where:
+      verb: Stop
+      subject: Vmss
+      variant: ^PowerOff\d?$|^PowerOffViaIdentity\d?$
+    remove: true
+# Revove variants that cause piping problems
+  - where:
+      verb: New
+      variant: ^CreateViaIdentityExpanded\d?$|^CreateViaIdentity\d?$
+    remove: true
+  - where:
+      verb: Set
+      variant: ^UpdateViaIdentity\d?$
+    remove: true
+  - where:
+      verb: Update
+      variant: ^Update\d?$|^UpdateViaIdentity\d?$
+    remove: true
+# Remove variants for hidden cmdlets
+  - where:
+      verb: Invoke
+      subject: DeallocateVmss
+      variant: ^Deallocate\d?$|^DeallocateViaIdentity\d?$
+    remove: true
+  - where:
+      verb: Invoke
+      subject: PerformVmssMaintenance
+      variant: ^Perform\d?$|^PerformViaIdentity\d?$
+    remove: true
+  - where:
+      verb: Invoke
+      subject: PerformVMMaintenance
+      variant: ^Perform\d?$|^PerformViaIdentity\d?$
+    remove: true
+  - where:
+      verb: Invoke
+      subject: RedeployVmss
+      variant: ^Redeploy\d?$|^RedeployViaIdentity\d?$
+    remove: true
+  - where:
+      verb: Invoke
+      subject: .*Reimage
+      variant: ^Reimage\d?$|^ReimageViaIdentity\d?$
+    remove: true
+  - where:
+      verb: Save
+      subject: VMImage
+      variant: ^Capture\d?$|^CaptureViaIdentity\d?$
+    remove: true
 ```
