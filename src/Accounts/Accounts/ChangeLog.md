@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Fix bug with incorrect URL being used in some cases for Functions calls
     - More information here: https://github.com/Azure/azure-powershell/issues/8983
+* Fix Issue with Set-AzureRmVMBootDiagnostics Alias in Enable-AzureRAlias
 
 ## Version 1.5.2
 * Update Authentication Library to fix ADFS issues with username/password auth
