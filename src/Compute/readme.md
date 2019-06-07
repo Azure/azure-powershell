@@ -74,6 +74,17 @@ directive:
       parameter-name: VmName
     set:
       parameter-name: Name
+  - where:
+      subject: Vmss
+      parameter-name: VMScaleSetName
+    set:
+      parameter-name: Name
+      alias: VMScaleSetName
+  - where:
+      subject: VmssExtension
+      parameter-name: VmssExtensionName
+    set:
+      parameter-name: Name
 # Fix Convert verb
   - where:
       verb: Convert
@@ -338,6 +349,272 @@ directive:
       parameter-name: Parameter
     set:
       parameter-name: AvailabilitySet
+  - where:
+      parameter-name: ^DurationIn(Second|Millisecond|Minute|Hour|Day)$
+    set:
+      parameter-name: ^DurationIn$1s
+  - where:
+      parameter-name: ^Platform(Fault|Update)DomainCount$
+    set:
+      parameter-name: $1DomainCount
+      alias: Platform$1DomainCount
+  - where:
+      subject: .*Disk.*|.*Snapshot.*
+      parameter-name: CreationData(.+)
+    set:
+      parameter-name: $1
+  - where:
+      subject: .*Disk.*|.*Snapshot.*
+      parameter-name: Disk(.+)
+    set:
+      parameter-name: $1
+  - where:
+      subject: .*Disk.*|.*Snapshot.*
+      parameter-name: EncryptionSettingCollectionEnabled
+    set:
+      parameter-name: EncryptionEnabled
+  - where:
+      subject: .*Disk.*|.*Snapshot.*
+      parameter-name: EncryptionSettingCollectionEEncryptionSetting
+    set:
+      parameter-name: EncryptionSetting
+  - where:  
+      subject: ProximityPlacementGroup
+      parameter-name: Parameter
+    set:
+      parameter-name: ProximityPlacementGroup
+  - where:
+      parameter-name: ^(.+)SizeGb$
+    set:
+      parameter-name: $1SizeInGb
+  - where:
+      parameter-name: ^SizeGb$
+    set:
+      parameter-name: SizeInGb
+  - where:
+      subject: VMExtension
+      parameter-name: ExtensionParameter
+    set:
+      parameter-name: VMExtension
+  
+  # model property renames
+  - where:
+      model-name: IVirtualMachineSize
+      property-name: ^NumberOfCore$
+    set:
+      property-name: NumberOfCores
+  - where:
+      model-name: IVirtualMachineInstanceView
+      property-name: ^MaintenanceRedeployStatus(.+)$
+    set:
+      property-name: $1
+  - where:
+      model-name: IVirtualMachineInstanceView
+      property-name: ^VMAgentVmagentVersion$
+    set:
+      property-name: VMAgentVersion
+  - where:
+      property-name: AutomaticOSUpgradePropertyAutomaticOsupgradeSupported
+    set:
+      property-name: AutomaticOsupgradeSupported
+  - where:
+      model-name: IRollingUpgradeStatusInfo
+      property-name: ^Policy(.+)$
+    set:
+      property-name: $1
+  - where:
+      model-name: IRollingUpgradeStatusInfo
+      property-name: ^RunningStatusCode$
+    set:
+      property-name: StatusCode
+  - where:
+      model-name: IRollingUpgradeStatusInfo
+      property-name: ^RunningStatus(.+)$
+    set:
+      property-name: $1
+  - where:
+      property-name: ^CapacityDefaultCapacity$
+    set:
+      property-name: DefaultCapacity
+  - where:
+      property-name: ^Capacity(Default|Maximum|Minimum)$
+    set:
+      property-name: $1Capacity
+  - where:
+      property-name: ^RestrictionInfo(Location|Zone)$
+    set:
+      property-name: $1
+  - where:
+      model-name: IGallery
+      property-name: IdentifierUniqueName
+    set:
+      property-name: UniqueName
+  - where:
+      property-name: ^(.+)SizeGb$
+    set:
+      property-name: $1SizeInGb
+  - where:
+      property-name: ^SizeGb$
+    set:
+      property-name: SizeInGb
+  - where:
+      model-name: .*Disk.*|.*Snapshot.*
+      property-name: CreationData(.+)
+    set:
+      property-name: $1
+  - where:
+      model-name: .*Disk.*|.*Snapshot.*
+      property-name: Disk(.+)
+    set:
+      property-name: $1
+  - where:
+      model-name: .*Disk.*|.*Snapshot.*
+      property-name: EncryptionSettingCollectionEnabled
+    set:
+      property-name: EncryptionEnabled
+  - where:
+      model-name: .*Disk.*|.*Snapshot.*
+      property-name: EncryptionSettingCollectionEEncryptionSetting
+    set:
+      property-name: EncryptionSetting
+
+  - where:
+      property-name: ErrorInnererror
+    set:
+      property-name: InnerError
+  - where:
+      property-name: InnererrorErrorDetail
+    set:
+      property-name: InnerErrorDetail
+  - where:
+      property-name: InnererrorExceptionType
+    set:
+      property-name: InnerErrorExceptionType
+  - where:
+      property-name: ^(.+)Statu$
+    set:
+      property-name: $1Status
+  - where:
+      model-name: IGalleryImage
+      property-name: RecommendedVCpU
+    set:
+      property-name: RecommendedVCpu
+  - where: 
+      model-name: IGalleryImage.*
+      property-name: Identifier(.+)
+    set:
+      property-name: $1
+  - where: 
+      model-name: IGalleryImage.*
+      property-name: VCpUsMin
+    set:
+      property-name: MinimumVCpu
+  - where: 
+      model-name: IGalleryImage.*
+      property-name: VCpUsMax
+    set:
+      property-name: MaximumVCpu
+  - where: 
+      model-name: IGalleryImageDefinition
+      property-name: MemoryMin
+    set:
+      property-name: MinimumMemory
+  - where: 
+      model-name: IGalleryImageDefinition
+      property-name: MemoryMax
+    set:
+      property-name: MaximumMemory
+  - where:
+      model-name: IVirtualMachine
+      property-name: HardwareProfileVMSize
+    set:
+      property-name: Size
+  - where:
+      property-name: AdditionalCapabilityUltraSsdEnabled
+    set:
+      property-name: UltraSsdEnabled
+  - where:
+      property-name: IdentityUserAssignedIdentity
+    set:
+      property-name: IdentityId
+  - where:
+      property-name: AutomaticOSUpgradePolicyEnableAutomaticOsupgrade
+    set:
+      property-name: AutomaticOSUpgrade
+  - where:
+      property-name: RollingUpgradePolicyMaxUnhealthyUpgradedInstancePercent
+    set:
+      property-name: MaxUnhealthyUpgradedInstancePercent
+  - where:
+      property-name: AutomaticOSUpgradePolicyDisableAutomaticRollback
+    set:
+      property-name: DisableAutoRollback
+  - where:
+      property-name: RollingUpgradePolicyMaxBatchInstancePercent
+    set:
+      property-name: MaxBatchInstancePercent
+  - where:
+      property-name: RollingUpgradePolicyMaxUnhealthyInstancePercent
+    set:
+      property-name: MaxUnhealthyInstancePercent
+  - where:
+      property-name: RollingUpgradePolicyPauseTimeBetweenBatch
+    set:
+      property-name: PauseTimeBetweenBatches
+  - where: 
+      model-name: IGalleryImageVersion
+      property-name: ^PublishingProfile(.*)$
+    set:
+      property-name: $1
+  - where: 
+      property-name: GalleryImageName
+    set:
+      property-name: GalleryImageDefinitionName
+  - where:
+      model-name: IVirtualMachineExtension
+      property-name: ExtensionImageName
+    set:
+      property-name: ImageName
+  - where:
+      model-name: IVirtualMachineExtension
+      property-name: VMExtensionName
+    set:
+      property-name: Name
+  - where:
+      model-name: IVirtualMachineExtension
+      property-name: PropertiesType
+    set:
+      property-name: ExtensionType
+  - where:
+      model-name: IVirtualMachineExtension
+      property-name: ForceUpdateTag
+    set:
+      property-name: ForceRerun
+  - where:
+      model-name: IVirtualMachineScaleSetExtension
+      property-name: VMScaleSetName
+    set:
+      property-name: VmssName
+  - where:
+      model-name: IVirtualMachineImage
+      property-name: Filter
+    set:
+      property-name: FilterExpression
+  - where:
+      model-name: IVirtualMachineImage
+      property-name: Filter
+    set:
+      property-name: FilterExpression
+  - where:
+      model-name: IVirtualMachineScaleSetExtension
+      property-name: VmssExtensionName
+    set:
+      property-name: Name
+  - where:
+      model-name: IVirtualMachineScaleSetVM
+      property-name: VMScaleSetVMReimageInput
+    set:
+      property-name: VirtualMachineScaleSetVM
   # parameter alias not working
   - where:
       verb: Remove
@@ -521,14 +798,14 @@ directive:
       subject: Vmss
       variant: ^PowerOff\d?$|^PowerOffViaIdentity\d?$
     remove: true
-# Revove variants that cause piping problems
+# Set correct variants for PUT and PATCH verbs
   - where:
       verb: New
       variant: ^CreateViaIdentityExpanded\d?$|^CreateViaIdentity\d?$
     remove: true
   - where:
       verb: Set
-      variant: ^UpdateViaIdentity\d?$
+      variant: ^Update\d?$|^UpdateViaIdentity\d?$
     remove: true
   - where:
       verb: Update
