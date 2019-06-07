@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix bug with incorrect URL being used in some cases for Functions calls
+    - More information here: https://github.com/Azure/azure-powershell/issues/8983
 
 ## Version 1.5.2
 * Update Authentication Library to fix ADFS issues with username/password auth

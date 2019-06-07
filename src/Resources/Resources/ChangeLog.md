@@ -21,6 +21,9 @@
 
 ## Version 1.4.0
 * Add new cmdlet Get-AzureRmDenyAssignment for retrieving deny assignments
+* Added 'Description' parameter when working with Azure AD Groups:
+    - Added a parameter to New-AzAdGroup
+    - Added as output on Get-AzAdGroup
 
 ## Version 1.3.1
 * Fix documentation for wildcards

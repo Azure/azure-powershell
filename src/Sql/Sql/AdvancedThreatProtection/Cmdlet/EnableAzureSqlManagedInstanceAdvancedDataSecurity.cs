@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter;
 using Microsoft.Azure.Commands.Sql.VulnerabilityAssessment.Model;
 using Microsoft.Azure.Commands.Sql.VulnerabilityAssessment.Services;
@@ -55,13 +56,11 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override ManagedInstanceAdvancedDataSecurityPolicyModel PersistChanges(ManagedInstanceAdvancedDataSecurityPolicyModel model)
         {
+            // Enable ADS
             model.IsEnabled = true;
+            ModelAdapter.SetManagedInstanceAdvancedDataSecurity(model, DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
 
-            if (DoNotConfigureVulnerabilityAssessment)
-            {
-                ModelAdapter.SetManagedInstanceAdvancedDataSecurity(model);
-            }
-            else
+            if (!DoNotConfigureVulnerabilityAssessment)
             {
                 // Deploy arm template to enable VA - only if VA at server level is not defined
                 var vaAdapter = new SqlVulnerabilityAssessmentAdapter(DefaultContext);
@@ -71,11 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
                 {
                     var instanceAdapter = new AzureSqlManagedInstanceAdapter(DefaultContext);
                     var instanceModel = instanceAdapter.GetManagedInstance(ResourceGroupName, InstanceName);
-                    ModelAdapter.EnableInstanceAdsWithVa(ResourceGroupName, InstanceName, instanceModel.Location, DeploymentName);
-                }
-                else
-                {
-                    ModelAdapter.SetManagedInstanceAdvancedDataSecurity(model);
+                    ModelAdapter.AutoEnableInstanceVa(ResourceGroupName, InstanceName, instanceModel.Location, DeploymentName);
                 }
             }
 
