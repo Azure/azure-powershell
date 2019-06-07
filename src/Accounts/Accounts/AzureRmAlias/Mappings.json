@@ -478,7 +478,7 @@
     "Remove-AzVMSecret": "Remove-AzureRmVMSecret",
     "Remove-AzVMNetworkInterface": "Remove-AzureRmVMNetworkInterface",
     "Remove-AzVMDataDisk": "Remove-AzureRmVMDataDisk",
-    "Set-AzVMBootDiagnostics": "Set-AzureRmVMBootDiagnostics",
+    "Set-AzVMBootDiagnostics": "Set-AzureRmVMBootDiagnostic",
     "Set-AzVMDataDisk": "Set-AzureRmVMDataDisk",
     "Set-AzVMPlan": "Set-AzureRmVMPlan",
     "Set-AzVMSourceImage": "Set-AzureRmVMSourceImage",
