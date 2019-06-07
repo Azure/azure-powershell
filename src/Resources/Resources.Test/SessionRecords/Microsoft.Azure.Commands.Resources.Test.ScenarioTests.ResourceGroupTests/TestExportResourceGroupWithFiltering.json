@@ -386,6 +386,7 @@
       "RequestUri": "/subscriptions/d08e1a72-8180-4ed3-8125-9dff7376b0bd/resourceGroups/ps6188/providers/Providers.Test/statefulResources/ps9824?api-version=2014-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA4ZTFhNzItODE4MC00ZWQzLTgxMjUtOWRmZjczNzZiMGJkL3Jlc291cmNlR3JvdXBzL3BzNjE4OC9wcm92aWRlcnMvUHJvdmlkZXJzLlRlc3Qvc3RhdGVmdWxSZXNvdXJjZXMvcHM5ODI0P2FwaS12ZXJzaW9uPTIwMTQtMDQtMDE=",
       "RequestMethod": "PUT",
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"administratorLoginPassword\": \"P@ssword1\",\r\n    \"administratorLogin\": \"adminuser\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"A0\"\r\n  },\r\n  \"location\": \"centralus\",\r\n  \"tags\": {\r\n    \"testtag\": \"testval\"\r\n  }\r\n}",
       "RequestHeaders": {
         "User-Agent": [
@@ -446,6 +447,7 @@
           "0"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/d08e1a72-8180-4ed3-8125-9dff7376b0bd/resourceGroups/ps6188/providers/Providers.Test/statefulResources/ps9824\",\r\n  \"name\": \"ps9824\",\r\n  \"type\": \"Providers.Test/statefulResources\",\r\n  \"sku\": {\r\n    \"name\": \"A0\"\r\n  },\r\n  \"location\": \"Central US\",\r\n  \"tags\": {\r\n    \"testtag\": \"testval\"\r\n  },\r\n  \"properties\": {\r\n    \"administratorLoginPassword\": \"P@ssword1\",\r\n    \"administratorLogin\": \"adminuser\"\r\n  }\r\n}",
       "StatusCode": 201
     },
@@ -453,6 +455,7 @@
       "RequestUri": "/subscriptions/d08e1a72-8180-4ed3-8125-9dff7376b0bd/resourceGroups/ps6188/providers/Providers.Test/statefulResources/ps151?api-version=2014-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA4ZTFhNzItODE4MC00ZWQzLTgxMjUtOWRmZjczNzZiMGJkL3Jlc291cmNlR3JvdXBzL3BzNjE4OC9wcm92aWRlcnMvUHJvdmlkZXJzLlRlc3Qvc3RhdGVmdWxSZXNvdXJjZXMvcHMxNTE/YXBpLXZlcnNpb249MjAxNC0wNC0wMQ==",
       "RequestMethod": "PUT",
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"administratorLoginPassword\": \"P@ssword1\",\r\n    \"administratorLogin\": \"adminuser\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"A0\"\r\n  },\r\n  \"location\": \"centralus\",\r\n  \"tags\": {\r\n    \"testtag\": \"testval\"\r\n  }\r\n}",
       "RequestHeaders": {
         "User-Agent": [
@@ -513,6 +516,7 @@
           "0"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/d08e1a72-8180-4ed3-8125-9dff7376b0bd/resourceGroups/ps6188/providers/Providers.Test/statefulResources/ps151\",\r\n  \"name\": \"ps151\",\r\n  \"type\": \"Providers.Test/statefulResources\",\r\n  \"sku\": {\r\n    \"name\": \"A0\"\r\n  },\r\n  \"location\": \"Central US\",\r\n  \"tags\": {\r\n    \"testtag\": \"testval\"\r\n  },\r\n  \"properties\": {\r\n    \"administratorLoginPassword\": \"P@ssword1\",\r\n    \"administratorLogin\": \"adminuser\"\r\n  }\r\n}",
       "StatusCode": 201
     },
