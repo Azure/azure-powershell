@@ -21,7 +21,7 @@
 * Support for additional Template Export options
     - Add `-SkipResourceNameParameterization` parameter to Export-AzResourceGroup
     - Add `-SkipAllParameterization` parameter to Export-AzResourceGroup
-    - Add `-ResourceIdFilter` parameter to Export-AzResourceGroup for exported resource filtering
+    - Add `-Resource` parameter to Export-AzResourceGroup for exported resource filtering
 
 ## Version 1.3.0
 * Improve handling of providers for `Get-AzResource` when providing `-ResourceId` or `-ResourceGroupName`, `-Name` and `-ResourceType` parameters

@@ -400,7 +400,7 @@ function Test-ExportResourceGroupWithFiltering
         $r2 = New-AzResource -Name $rname2 -Location "centralus" -Tags @{ testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
         Assert-NotNull $r2.ResourceId
 
-        $exportOutput = Export-AzResourceGroup -ResourceGroupName $rgname -Force -ResourceIdFilter @($r2.ResourceId) -IncludeParameterDefaultValue -IncludeComments
+        $exportOutput = Export-AzResourceGroup -ResourceGroupName $rgname -Force -Resource @($r2.ResourceId) -IncludeParameterDefaultValue -IncludeComments
         Assert-NotNull $exportOutput
         Assert-True { $exportOutput.Path.Contains($rgname + ".json") }
     }
