@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: DFEB9EA3-574A-463B-8B70-46D76ABCA84D
@@ -164,7 +164,7 @@ Aliases:
 
 Required: False
 Position: 7
-Default value: None
+Default value: 1
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
