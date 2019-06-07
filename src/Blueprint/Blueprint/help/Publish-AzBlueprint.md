@@ -28,7 +28,7 @@ PS C:\> Publish-AzBlueprint -Blueprint $bp -Version 1.0
 
 Name           : SimpleBlueprint
 Id             : /subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprints/SimpleBlueprint/versions/1.0
-SubscriptionId : 28cbf98f-381d-4425-9ac4-cf342dab9753
+SubscriptionId : 00000000-1111-0000-1111-000000000000
 Version        : 1.0
 Description    : My simple blueprint
 TimeCreated    : 2019-05-30
