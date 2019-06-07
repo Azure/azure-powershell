@@ -560,7 +560,7 @@ Accept wildcard characters: False
 ### -VolumeType
 Specifies the type of virtual machine volumes to perform the encryption operation.
 Allowed values for virtual machines that run the Windows operating system are as follows: All, OS, and Data.
-Although a required parameter when encrypting Linux virtual machines, VolumeType can be omitted when encrypting Linux virtual machines.
+VolumeType is a required parameter when encrypting Linux virtual machines, but can be omitted when encrypting Windows virtual machines.
 
 ```yaml
 Type: System.String
