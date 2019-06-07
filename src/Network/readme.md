@@ -115,21 +115,37 @@ directive:
     set:
       subject: $1VirtualNetworkSubnetDelegation
   - where:
+      verb: Get
       subject: AvailableResourceGroupVirtualNetworkSubnetDelegation
-    hide: true
+      variant: List
+    set:
+      variant: ResourceGroup
+  - where:
+      verb: Get
+      subject: AvailableVirtualNetworkSubnetDelegation|AvailableResourceGroupVirtualNetworkSubnetDelegation
+    set:
+      subject: VirtualNetworkAvailableSubnetDelegation
+  # - where: # Combine with Get-AzVirtualNetworkAvailableSubnetDelegation
+  #     subject: AvailableResourceGroupVirtualNetworkSubnetDelegation
+  #   hide: true
   - where:
       verb: Invoke
       subject: PrepareSubnetNetworkPolicy
     set:
       verb: Set
       subject: VirtualNetworkSubnetNetworkPolicy
+  - where:
+      verb: Get
+      subject: AvailableVirtualNetworkSubnetDelegation
+    set:
+      alias: Get-AzAvailableServiceDelegation
 
 # NetworkWatcher
   - where:
       subject: ^PacketCapture(.*)
     set:
       subject: NetworkWatcherPacketCapture$1
-  - where:
+  - where: # Combine with Get-AzNetworkWatcherPacketCapture
       subject: NetworkWatcherPacketCaptureStatus
     hide: true
   - where:
@@ -142,6 +158,17 @@ directive:
     set:
       verb: Get
       subject: NetworkWatcherConnectionMonitorState
+      alias: Get-AzNetworkWatcherConnectionMonitorReport
+  - where:
+      verb: Get
+      subject: NetworkWatcherAvailableProvider
+    set:
+      alias: Get-AzNetworkWatcherReachabilityProvidersList
+  - where:
+      verb: Get
+      subject: NetworkWatcherAzureReachabilityReport
+    set:
+      subject: NetworkWatcherReachabilityReport
 
 # ApplicationGateway
   - where:
@@ -156,6 +183,30 @@ directive:
     set:
       verb: Get
       subject: ApplicationGatewayBackendHealthOnDemand
+  - where: # Combine into Get-AzApplicationGatewayAvailableServerVariableAndHeader
+      verb: Get
+      subject: ApplicationGatewayAvailableRequestHeader|ApplicationGatewayAvailableResponseHeader|ApplicationGatewayAvailableServerVariable
+    hide: true
+  - where:
+      verb: Get
+      subject: ApplicationGatewayAvailableSslOption
+    set:
+      alias: Get-AzApplicationGatewayAvailableSslOptions
+  - where:
+      verb: Get
+      subject: ApplicationGatewayAvailableWafRuleSet
+    set:
+      alias: Get-AzApplicationGatewayAvailableWafRuleSets
+## WebApplicationFirewall
+  - where:
+      subject: ^WebApplicationFirewall(.*)
+    set:
+      subject: ApplicationGatewayWaf$1
+  - where:
+      verb: Get
+      subject: ApplicationGatewayWafPolicy
+    set:
+      alias: Get-AzApplicationGatewayFirewallPolicy
 
 # LoadBalancer
   - where:
@@ -214,6 +265,25 @@ directive:
     set:
       verb: Get
       subject: VirtualWanSupportedSecurityProvider
+
+# NetworkInterface
+  - where:
+      verb: Get
+      subject: NetworkInterfaceEffectiveNetworkSecurityGroup
+    set:
+      alias: Get-AzEffectiveNetworkSecurityGroup
+  - where:
+      verb: Get
+      subject: NetworkInterfaceEffectiveRouteTable
+    set:
+      alias: Get-AzEffectiveRouteTable
+
+# ExpressRouteCircuit
+  - where:
+      verb: Get
+      subject: ExpressRouteCircuitStat
+    set:
+      alias: Get-AzExpressRouteCircuitStats
 
 # Fix Alias Issues
   - where:
