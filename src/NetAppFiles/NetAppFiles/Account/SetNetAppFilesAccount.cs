@@ -20,19 +20,26 @@ using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
+using System.Collections.Generic;
+
+// Note:
+// Both set and Update need to exist
+// Patch of active directories can only alter the content
+// to remove the active directory a put is required
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Account
 {
     [Cmdlet(
-        "New",
+        "Set",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesAccount",
         SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesAccount))]
-    [Alias("New-AnfAccount")]
-    public class NewAzureRmNetAppFilesAccount : AzureNetAppFilesCmdletBase
+    [Alias("Set-AnfAccount")]
+    public class SetAzureRmNetAppFilesAccount : AzureNetAppFilesCmdletBase
     {
         [Parameter(
             Mandatory = true,
+            ParameterSetName = "SetByResourceGroupName",
             HelpMessage = "The resource group of the ANF account")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter()]
@@ -54,6 +61,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = "SetByResourceActiveDirectory",
             HelpMessage = "A hashtable array which represents the active directories")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesActiveDirectory[] ActiveDirectory { get; set; }
@@ -70,7 +78,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             var netAppAccountBody = new NetAppAccount()
             {
                 Location = Location,
-                ActiveDirectories = (ActiveDirectory != null) ? ModelExtensions.ConvertActiveDirectoriesFromPs(ActiveDirectory) : null,
+                ActiveDirectories = (ActiveDirectory != null) ? ModelExtensions.ConvertActiveDirectoriesFromPs(ActiveDirectory) : new List<ActiveDirectory>(),
                 Tags = Tag
             };
 
