@@ -22,6 +22,7 @@
 ## Version 1.9.0
 * Update ResourceId and InputObject for Nat Gateway
     - Add alias for ResourceId and InputObject
+* Removed WAF RuleSetVersion validation
 
 ## Version 1.8.1
 * Add DisableBgpRoutePropagation flag to Effective Route Table output
