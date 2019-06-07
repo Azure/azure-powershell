@@ -23,7 +23,7 @@
         - Get-AzVirtualNetworkGatewayVpnClientConnectionHealth
 * Add AvailablePrivateEndpointType
     - New cmdlets 
-    	- Get-AzAvailablePrivateEndpointType
+        - Get-AzAvailablePrivateEndpointType
 * Add PrivatePrivateLinkService
     - New cmdlets 
         - Get-AzPrivateLinkService 
@@ -37,11 +37,9 @@
         - New-AzPrivateEndpoint
         - Remove-AzPrivateEndpoint
         - New-AzPrivateLinkServiceConnection
-* Update ResourceId and InputObject for Nat Gateway
-    - Add alias for ResourceId and InputObject
 * Updated below commands for feature: UseLocalAzureIpAddress flag on VpnConnection
-	- Updated New-AzVpnConnection: Added optional parameter -UseLocalAzureIpAddress to indicate that local azure ip address should be used as source address while initiating connection.
-	- Updated Set-AzVpnConnection: Added optional parameter -UseLocalAzureIpAddress to indicate that local azure ip address should be used as source address while initiating connection.
+    - Updated New-AzVpnConnection: Added optional parameter -UseLocalAzureIpAddress to indicate that local azure ip address should be used as source address while initiating connection.
+    - Updated Set-AzVpnConnection: Added optional parameter -UseLocalAzureIpAddress to indicate that local azure ip address should be used as source address while initiating connection.
 * Added readonly field PeeredConnections in ExpressRoute peering.
 * Added readonly field GlobalReachEnabled in ExpressRoute.
 * Added breaking change attribute to call out deprecation of AllowGlobalReach field in ExpressRouteCircuit model
@@ -62,6 +60,10 @@
     - Updated New-AzVirtualNetworkGateway: Added optional parameters AadTenantUri,AadAudienceId,AadIssuerUri to set VpnClient AAD authentication options on Gateway.
     - Updated Set-AzVirtualNetworkGateway: Added optional parameter AadTenantUri,AadAudienceId,AadIssuerUri to set VpnClient AAD authentication options on Gateway.
     - Updated Set-AzVirtualNetworkGateway: Added optional switch parameter RemoveAadAuthentication to remove VpnClient AAD authentication options from Gateway.
+
+## Version 1.9.0
+* Update ResourceId and InputObject for Nat Gateway
+    - Add alias for ResourceId and InputObject
 
 ## Version 1.8.1
 * Add DisableBgpRoutePropagation flag to Effective Route Table output

@@ -50,6 +50,26 @@ function Test-AdvancedDataSecurityPolicyManagedInstanceTest
 		Assert-AreEqual $params.rgname $policy.ResourceGroupName
 		Assert-AreEqual $params.serverName $policy.ManagedInstanceName
 		Assert-False { $policy.IsEnabled }
+
+		# Check enabling ADS with VA
+		Disable-AzSqlInstanceAdvancedDataSecurity -ResourceGroupName $params.rgname -InstanceName $params.serverName 
+		Enable-AzSqlInstanceAdvancedDataSecurity -ResourceGroupName $params.rgname -InstanceName $params.serverName -DeploymentName "EnableVA_sql-ads-cmdlet-test-srv1"
+
+		# Validate the ADS policy
+		$policy = Get-AzSqlInstanceAdvancedDataSecurityPolicy -ResourceGroupName $params.rgname -InstanceName $params.serverName 
+		Assert-AreEqual $params.rgname $policy.ResourceGroupName
+		Assert-AreEqual $params.serverName $policy.ManagedInstanceName
+		Assert-True { $policy.IsEnabled }
+
+		# Validate the VA policy
+		$settings = Get-AzSqlInstanceVulnerabilityAssessmentSettings -ResourceGroupName $params.rgname -InstanceName $params.serverName 
+		Assert-AreEqual $params.rgname $settings.ResourceGroupName
+		Assert-AreEqual $params.serverName $settings.InstanceName
+		Assert-AreEqual "vulnerability-assessment" $settings.ScanResultsContainerName
+		Assert-AreNotEqual "" $settings.StorageAccountName	
+		Assert-AreEqual Weekly $settings.RecurringScansInterval
+		Assert-AreEqual $true $settings.EmailAdmins
+		Assert-AreEqualArray @() $settings.NotificationEmail
 	}
 	finally
 	{
