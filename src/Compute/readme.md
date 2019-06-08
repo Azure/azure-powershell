@@ -84,7 +84,7 @@ directive:
       subject: VmssExtension
       parameter-name: VmssExtensionName
     set:
-      parameter-name: Name
+      parameter-name: ExtensionName
 # Fix Convert verb
   - where:
       verb: Convert
@@ -340,6 +340,11 @@ directive:
     set:
       parameter-name: Name
   - where:
+      subject: VmssExtension
+      parameter-name: ExtensionParameter
+    set:
+      parameter-name: VmssExtension
+  - where:
       subject: VmssVM
       parameter-name: VMScaleSetVMReimageInput
     set:
@@ -352,12 +357,17 @@ directive:
   - where:
       parameter-name: ^DurationIn(Second|Millisecond|Minute|Hour|Day)$
     set:
-      parameter-name: ^DurationIn$1s
+      parameter-name: DurationIn$1s
   - where:
-      parameter-name: ^Platform(Fault|Update)DomainCount$
+      parameter-name: ^PlatformFaultDomainCount$
     set:
-      parameter-name: $1DomainCount
-      alias: Platform$1DomainCount
+      parameter-name: FaultDomainCount
+      alias: PlatformFaultDomainCount
+  - where:
+      parameter-name: ^PlatformUpdateDomainCount$
+    set:
+      parameter-name: UpdateDomainCount
+      alias: PlatformUpdateDomainCount
   - where:
       subject: .*Disk.*|.*Snapshot.*
       parameter-name: CreationData(.+)
@@ -399,17 +409,17 @@ directive:
   
   # model property renames
   - where:
-      model-name: IVirtualMachineSize
+      model-name: VirtualMachineSize
       property-name: ^NumberOfCore$
     set:
       property-name: NumberOfCores
   - where:
-      model-name: IVirtualMachineInstanceView
+      model-name: VirtualMachineInstanceView
       property-name: ^MaintenanceRedeployStatus(.+)$
     set:
       property-name: $1
   - where:
-      model-name: IVirtualMachineInstanceView
+      model-name: VirtualMachineInstanceView
       property-name: ^VMAgentVmagentVersion$
     set:
       property-name: VMAgentVersion
@@ -418,17 +428,17 @@ directive:
     set:
       property-name: AutomaticOsupgradeSupported
   - where:
-      model-name: IRollingUpgradeStatusInfo
+      model-name: RollingUpgradeStatusInfo
       property-name: ^Policy(.+)$
     set:
       property-name: $1
   - where:
-      model-name: IRollingUpgradeStatusInfo
+      model-name: RollingUpgradeStatusInfo
       property-name: ^RunningStatusCode$
     set:
       property-name: StatusCode
   - where:
-      model-name: IRollingUpgradeStatusInfo
+      model-name: RollingUpgradeStatusInfo
       property-name: ^RunningStatus(.+)$
     set:
       property-name: $1
@@ -445,7 +455,7 @@ directive:
     set:
       property-name: $1
   - where:
-      model-name: IGallery
+      model-name: Gallery
       property-name: IdentifierUniqueName
     set:
       property-name: UniqueName
@@ -495,37 +505,37 @@ directive:
     set:
       property-name: $1Status
   - where:
-      model-name: IGalleryImage
+      model-name: GalleryImage
       property-name: RecommendedVCpU
     set:
       property-name: RecommendedVCpu
   - where: 
-      model-name: IGalleryImage.*
+      model-name: GalleryImage.*
       property-name: Identifier(.+)
     set:
       property-name: $1
   - where: 
-      model-name: IGalleryImage.*
+      model-name: GalleryImage.*
       property-name: VCpUsMin
     set:
       property-name: MinimumVCpu
   - where: 
-      model-name: IGalleryImage.*
+      model-name: GalleryImage.*
       property-name: VCpUsMax
     set:
       property-name: MaximumVCpu
   - where: 
-      model-name: IGalleryImageDefinition
+      model-name: GalleryImageDefinition
       property-name: MemoryMin
     set:
       property-name: MinimumMemory
   - where: 
-      model-name: IGalleryImageDefinition
+      model-name: GalleryImageDefinition
       property-name: MemoryMax
     set:
       property-name: MaximumMemory
   - where:
-      model-name: IVirtualMachine
+      model-name: VirtualMachine
       property-name: HardwareProfileVMSize
     set:
       property-name: Size
@@ -562,7 +572,7 @@ directive:
     set:
       property-name: PauseTimeBetweenBatches
   - where: 
-      model-name: IGalleryImageVersion
+      model-name: GalleryImageVersion
       property-name: ^PublishingProfile(.*)$
     set:
       property-name: $1
@@ -571,50 +581,45 @@ directive:
     set:
       property-name: GalleryImageDefinitionName
   - where:
-      model-name: IVirtualMachineExtension
+      model-name: VirtualMachineExtension
       property-name: ExtensionImageName
     set:
       property-name: ImageName
   - where:
-      model-name: IVirtualMachineExtension
-      property-name: VMExtensionName
-    set:
-      property-name: Name
-  - where:
-      model-name: IVirtualMachineExtension
+      model-name: VirtualMachineExtension
       property-name: PropertiesType
     set:
       property-name: ExtensionType
   - where:
-      model-name: IVirtualMachineExtension
+      model-name: VirtualMachineExtension
       property-name: ForceUpdateTag
     set:
       property-name: ForceRerun
   - where:
-      model-name: IVirtualMachineScaleSetExtension
+      model-name: VirtualMachineScaleSetExtension
       property-name: VMScaleSetName
     set:
       property-name: VmssName
   - where:
-      model-name: IVirtualMachineImage
+      model-name: VirtualMachineImage
       property-name: Filter
     set:
       property-name: FilterExpression
   - where:
-      model-name: IVirtualMachineImage
+      model-name: VirtualMachineImage
       property-name: Filter
     set:
       property-name: FilterExpression
   - where:
-      model-name: IVirtualMachineScaleSetExtension
-      property-name: VmssExtensionName
-    set:
-      property-name: Name
-  - where:
-      model-name: IVirtualMachineScaleSetVM
+      model-name: VirtualMachineScaleSetVM
       property-name: VMScaleSetVMReimageInput
     set:
       property-name: VirtualMachineScaleSetVM
+  - where:
+      model-name: VirtualMachineScaleSetExtension
+      property-name: Name
+    set:
+      property-name: ExtensionName
   # parameter alias not working
   - where:
       verb: Remove
