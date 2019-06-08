@@ -27,96 +27,96 @@
 - Y Get-AzNetworkWatcherReachabilityProvidersList
 - Y Get-AzNetworkWatcherReachabilityReport
 - !!C!! Get-AzNetworkWatcherSecurityGroupView
-- Get-AzVirtualHubVnetConnection
-- Get-AzVirtualNetworkAvailableEndpointService
-- Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript
-- Get-AzVirtualNetworkUsageList
-- Get-AzVpnClientIpsecParameter
-- Get-AzVpnClientPackage
-- Get-AzVpnClientRevokedCertificate
-- Get-AzVpnClientRootCertificate
-- Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic
-- Move-AzExpressRouteCircuit
-- New-AzApplicationGatewayAuthenticationCertificate
-- New-AzApplicationGatewayBackendAddressPool
-- New-AzApplicationGatewayBackendHttpSettings
-- New-AzApplicationGatewayConnectionDraining
-- New-AzApplicationGatewayCustomError
-- New-AzApplicationGatewayFirewallCondition
-- New-AzApplicationGatewayFirewallCustomRule
-- New-AzApplicationGatewayFirewallMatchVariable
-- New-AzApplicationGatewayFirewallPolicy
-- New-AzApplicationGatewayFrontendPort
-- New-AzApplicationGatewayHttpListener
-- New-AzApplicationGatewayIdentity
-- New-AzApplicationGatewayProbeHealthResponseMatch
-- New-AzApplicationGatewayRequestRoutingRule
-- New-AzApplicationGatewayRewriteRule
-- New-AzApplicationGatewayRewriteRuleActionSet
-- New-AzApplicationGatewayRewriteRuleCondition
-- New-AzApplicationGatewayRewriteRuleSet
-- New-AzApplicationGatewaySku
-- New-AzApplicationGatewaySslCertificate
-- New-AzApplicationGatewaySslPolicy
-- New-AzApplicationGatewayTrustedRootCertificate
-- New-AzDelegation
-- New-AzFirewallApplicationRule
-- New-AzFirewallApplicationRuleCollection
-- New-AzFirewallNatRule
-- New-AzFirewallNatRuleCollection
-- New-AzFirewallNetworkRule
-- New-AzFirewallNetworkRuleCollection
-- New-AzIpsecPolicy
-- New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile
-- New-AzPublicIpTag
-- New-AzVirtualHubRoute
-- New-AzVirtualHubRouteTable
+- Y Get-AzVirtualHubVnetConnection
+- Y Get-AzVirtualNetworkAvailableEndpointService
+- Y Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript
+- Y Get-AzVirtualNetworkUsageList
+- Y Get-AzVpnClientIpsecParameter
+- Y Get-AzVpnClientPackage
+- #NO# Get-AzVpnClientRevokedCertificate
+- #NO# Get-AzVpnClientRootCertificate
+- Y Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic
+- #NO# Move-AzExpressRouteCircuit
+- #NO# (generalized solution) New-AzApplicationGatewayAuthenticationCertificate
+- #NO# New-AzApplicationGatewayBackendAddressPool
+- #NO# New-AzApplicationGatewayBackendHttpSettings
+- #NO# New-AzApplicationGatewayConnectionDraining
+- #NO# New-AzApplicationGatewayCustomError
+- #NO# New-AzApplicationGatewayFirewallCondition
+- #NO# New-AzApplicationGatewayFirewallCustomRule
+- #NO# New-AzApplicationGatewayFirewallMatchVariable
+- #NO# New-AzApplicationGatewayFirewallPolicy
+- #NO# New-AzApplicationGatewayFrontendPort
+- #NO# New-AzApplicationGatewayHttpListener
+- #NO# New-AzApplicationGatewayIdentity
+- #NO# New-AzApplicationGatewayProbeHealthResponseMatch
+- #NO# New-AzApplicationGatewayRequestRoutingRule
+- #NO# New-AzApplicationGatewayRewriteRule
+- #NO# New-AzApplicationGatewayRewriteRuleActionSet
+- #NO# New-AzApplicationGatewayRewriteRuleCondition
+- #NO# New-AzApplicationGatewayRewriteRuleSet
+- #NO# New-AzApplicationGatewaySku
+- #NO# (generalized solution) New-AzApplicationGatewaySslCertificate
+- #NO# New-AzApplicationGatewaySslPolicy
+- #NO# (generalized solution) New-AzApplicationGatewayTrustedRootCertificate
+- #NO# New-AzDelegation
+- #NO# New-AzFirewallApplicationRule
+- #NO# New-AzFirewallApplicationRuleCollection
+- #NO# New-AzFirewallNatRule
+- #NO# New-AzFirewallNatRuleCollection
+- #NO# New-AzFirewallNetworkRule
+- #NO# New-AzFirewallNetworkRuleCollection
+- #NO# New-AzIpsecPolicy
+- #NO# New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile
+- #NO# New-AzPublicIpTag
+- #NO# New-AzVirtualHubRoute
+- #NO# New-AzVirtualHubRouteTable
 - New-AzVirtualHubVnetConnection
-- New-AzVpnClientIpsecParameter
+- #NO# New-AzVpnClientIpsecParameter
 - New-AzVpnClientIpsecPolicy
 - New-AzVpnClientRevokedCertificate
 - New-AzVpnClientRootCertificate
-- Remove-AzApplicationGatewayAuthenticationCertificate
-- Remove-AzApplicationGatewayBackendAddressPool
-- Remove-AzApplicationGatewayBackendHttpSettings
-- Remove-AzApplicationGatewayConnectionDraining
-- Remove-AzApplicationGatewayCustomError
-- Remove-AzApplicationGatewayFirewallPolicy
-- Remove-AzApplicationGatewayFrontendPort
-- Remove-AzApplicationGatewayHttpListener
-- Remove-AzApplicationGatewayHttpListenerCustomError
-- Remove-AzApplicationGatewayIdentity
-- Remove-AzApplicationGatewayRequestRoutingRule
-- Remove-AzApplicationGatewayRewriteRuleSet
-- Remove-AzApplicationGatewaySslCertificate
-- Remove-AzApplicationGatewaySslPolicy
-- Remove-AzApplicationGatewayTrustedRootCertificate
-- Remove-AzDelegation
+- #NO# Remove-AzApplicationGatewayAuthenticationCertificate
+- #NO# Remove-AzApplicationGatewayBackendAddressPool
+- #NO# Remove-AzApplicationGatewayBackendHttpSettings
+- #NO# Remove-AzApplicationGatewayConnectionDraining
+- #NO# Remove-AzApplicationGatewayCustomError
+- #NO# Remove-AzApplicationGatewayFirewallPolicy
+- #NO# Remove-AzApplicationGatewayFrontendPort
+- #NO# Remove-AzApplicationGatewayHttpListener
+- #NO# Remove-AzApplicationGatewayHttpListenerCustomError
+- #NO# Remove-AzApplicationGatewayIdentity
+- #NO# Remove-AzApplicationGatewayRequestRoutingRule
+- #NO# Remove-AzApplicationGatewayRewriteRuleSet
+- #NO# Remove-AzApplicationGatewaySslCertificate
+- #NO# Remove-AzApplicationGatewaySslPolicy
+- #NO# Remove-AzApplicationGatewayTrustedRootCertificate
+- #NO# Remove-AzDelegation
 - Remove-AzVirtualHubVnetConnection
 - Remove-AzVirtualNetworkGatewayDefaultSite
-- Remove-AzVpnClientIpsecParameter
+- #NO# Remove-AzVpnClientIpsecParameter
 - Remove-AzVpnClientRevokedCertificate
 - Remove-AzVpnClientRootCertificate
 - Resize-AzVirtualNetworkGateway
-- Set-AzApplicationGatewayAuthenticationCertificate
-- Set-AzApplicationGatewayBackendAddressPool
-- Set-AzApplicationGatewayBackendHttpSettings
-- Set-AzApplicationGatewayConnectionDraining
-- Set-AzApplicationGatewayCustomError
-- Set-AzApplicationGatewayFirewallPolicy
-- Set-AzApplicationGatewayFrontendPort
-- Set-AzApplicationGatewayHttpListener
-- Set-AzApplicationGatewayHttpListenerCustomError
-- Set-AzApplicationGatewayIdentity
-- Set-AzApplicationGatewayRequestRoutingRule
-- Set-AzApplicationGatewayRewriteRuleSet
-- Set-AzApplicationGatewaySku
-- Set-AzApplicationGatewaySslCertificate
-- Set-AzApplicationGatewaySslPolicy
-- Set-AzApplicationGatewayTrustedRootCertificate
+- #NO# Set-AzApplicationGatewayAuthenticationCertificate
+- #NO# Set-AzApplicationGatewayBackendAddressPool
+- #NO# Set-AzApplicationGatewayBackendHttpSettings
+- #NO# Set-AzApplicationGatewayConnectionDraining
+- #NO# Set-AzApplicationGatewayCustomError
+- #NO# Set-AzApplicationGatewayFirewallPolicy
+- #NO# Set-AzApplicationGatewayFrontendPort
+- #NO# Set-AzApplicationGatewayHttpListener
+- #NO# Set-AzApplicationGatewayHttpListenerCustomError
+- #NO# Set-AzApplicationGatewayIdentity
+- #NO# Set-AzApplicationGatewayRequestRoutingRule
+- #NO# Set-AzApplicationGatewayRewriteRuleSet
+- #NO# Set-AzApplicationGatewaySku
+- #NO# Set-AzApplicationGatewaySslCertificate
+- #NO# Set-AzApplicationGatewaySslPolicy
+- #NO# Set-AzApplicationGatewayTrustedRootCertificate
 - Set-AzNetworkWatcherConfigFlowLog
 - Set-AzVirtualNetworkGatewayDefaultSite
-- Set-AzVpnClientIpsecParameter
+- Y Set-AzVpnClientIpsecParameter
 - Start-AzNetworkWatcherResourceTroubleshooting
 - Test-AzDnsAvailability
 - Test-AzPrivateIPAddressAvailability

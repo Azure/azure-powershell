@@ -67,7 +67,7 @@ directive:
       subject: (.*)Tag$
     remove: true
 
-# General Cmdlet Naming
+# General Naming
   - where:
       subject: ^AzureFirewall(.*)
     set:
@@ -88,8 +88,6 @@ directive:
       subject: (.*)(?<!Scr)Ip(.*)
     set:
       subject: $1IP$2
-
-# General Parameter Naming
   - where:
       parameter-name: (.*)(?<!Scr)Ip(.*)
     set:
@@ -169,6 +167,11 @@ directive:
       subject: NetworkWatcherAzureReachabilityReport
     set:
       subject: NetworkWatcherReachabilityReport
+  - where:
+      verb: Get
+      subject: NetworkWatcherNetworkConfigurationDiagnostic
+    set:
+      alias: Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic
 
 # ApplicationGateway
   - where:
@@ -227,6 +230,7 @@ directive:
       subject: VirtualNetworkGatewayVpnclientIPsecParameter
     set:
       subject: VirtualNetworkGatewayVpnClientIPsecParameter
+      alias: ${verb}-AzVpnClientIpsecParameter
   - where:
       verb: Invoke
       subject: DownloadVpnSiteConfiguration
@@ -245,6 +249,7 @@ directive:
     set:
       verb: New
       subject: VirtualNetworkGatewayVpnClientPackage
+      alias: Get-AzVpnClientPackage
   - where:
       verb: Invoke
       subject: ScriptVirtualNetworkGatewayVpnDeviceConfiguration
@@ -257,6 +262,16 @@ directive:
     set:
       verb: Get
       subject: VirtualNetworkGatewaySupportedVpnDevice
+  - where:
+      verb: Get
+      subject: VirtualNetworkGatewayVpnDeviceConfigurationScript
+    set:
+      alias: Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript
+  - where:
+      verb: Get
+      subject: VirtualNetworkUsage
+    set:
+      alias: Get-AzVirtualNetworkUsageList
 
 # VirtualWan
   - where:
@@ -285,10 +300,40 @@ directive:
     set:
       alias: Get-AzExpressRouteCircuitStats
 
+# VirtualNetwork
+  - where:
+      verb: Get
+      subject: HubVirtualNetworkConnection
+    set:
+      subject: VirtualHubVirtualNetworkConnection
+  - where:
+      verb: Get
+      subject: AvailableEndpointService
+    set:
+      subject: VirtualNetworkAvailableEndpointService
+
 # Fix Alias Issues
   - where:
       verb: New|Set
       subject: LoadBalancerInboundNatRule|NetworkSecurityRule|RouteTableRoute|VirtualNetworkPeering|VirtualNetworkSubnet|P2SVpnServerConfiguration|ServiceEndpointPolicyDefinition
       parameter-name: Name
     clear-alias: true
+
+# General Changes (at end)
+  - where:
+      subject: (.*)VirtualNetwork(.*)
+    set:
+      alias: ${verb}-$(prefix)${subject-prefix}${subject}
+  # - where:
+  #     parameter-name: (.*)VirtualNetwork(.*)
+  #   set:
+  #     alias: $1VirtualNetwork$2
+  - where:
+      subject: (.*)VirtualNetwork(.*)
+    set:
+      subject: $1Vnet$2
+  - where:
+      parameter-name: (.*)VirtualNetwork(.*)
+    set:
+      parameter-name: $1Vnet$2
 ```
