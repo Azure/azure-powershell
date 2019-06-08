@@ -16,10 +16,12 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 {
     using Microsoft.Build.Framework;
     using Microsoft.Build.Utilities;
-    using Octokit;
+    using System.Management.Automation;
+    using System.Collections.ObjectModel;
     using System.Collections.Generic;
     using System;
-
+    using System.IO;
+    using System.Reflection;
     /// <summary>
     /// Build task to get all of the files changed in a given PR.
     /// </summary>
@@ -47,6 +49,20 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         /// </summary>
         [Output]
         public string[] FilesChanged { get; set; }
+
+        /// <summary>
+        /// File path of PS script to get list of filechanges from a PR.
+        /// </summary>
+        public static string ScriptFilePath
+        {
+            get
+            {
+                string scriptFileName = "GetPullRequestFileChanges.ps1";
+                var assemblyLocation = new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath;
+                var buildTaskDirectory = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(assemblyLocation)));
+                return Path.Combine(buildTaskDirectory, scriptFileName);
+            }
+        }
 
         /// <summary>
         /// Executes the task to generate a list of files changed in a given pull request.
@@ -79,12 +95,37 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             if (int.TryParse(PullRequestNumber, out ParsedPullRequestNumber))
             {
                 List<string> filesChanged = new List<string>();
+                Collection<PSObject> psOutput = new Collection<PSObject>();
+                var GetFilesScript = File.ReadAllText(ScriptFilePath);
+                PowerShell powerShell = PowerShell.Create();
+                powerShell.AddScript(GetFilesScript);
+                if (debug)
+                {
+                    powerShell.AddScript("$DebugPreference=\"Continue\"");
+                }
+
+                powerShell.AddScript($"Get-PullRequestFileChanges " +
+                                        $"-RepositoryOwner {RepositoryOwner} " +
+                                        $"-RepositoryName {RepositoryName} " +
+                                        $"-PullRequestNumber {ParsedPullRequestNumber}");
+                powerShell.Streams.Debug.Clear();
                 try
                 {
-                    var client = new GitHubClient(new ProductHeaderValue("Azure"));
-                    var files = client.PullRequest.Files(RepositoryOwner, RepositoryName, int.Parse(PullRequestNumber))
-                                    .ConfigureAwait(false).GetAwaiter().GetResult();
-                    if (files == null)
+                    if (debug)
+                    {
+                        Console.WriteLine("DEBUG: ---Starting PS script to detect file changes...");
+                    }
+
+                    psOutput = powerShell.Invoke();
+                    if (debug)
+                    {
+                        foreach (var debugRecord in powerShell.Streams.Debug)
+                        {
+                            Console.WriteLine("[PS]DEBUG: " + debugRecord.ToString());
+                        }
+                    }
+
+                    if (psOutput == null)
                     {
                         return false;
                     }
@@ -94,15 +135,15 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                         Console.WriteLine("DEBUG: ---Using these files: ");
                     }
 
-                    foreach (var file in files)
+                    foreach (var element in psOutput)
                     {
-                        var fileName = file.FileName;
+                        var filename = element.ToString();
                         if (debug)
                         {
-                            Console.WriteLine("DEBUG: " + fileName);
+                            Console.WriteLine("DEBUG: " + filename);
                         }
 
-                        filesChanged.Add(fileName);
+                        filesChanged.Add(filename);
                     }
 
                     if (debug)
