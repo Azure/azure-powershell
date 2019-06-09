@@ -15,6 +15,7 @@
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -26,6 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "Start-ASRCommitFailover",
         "Start-ASRCommitFailoverJob")]
     [OutputType(typeof(ASRJob))]
+    [GenericBreakingChange("Property type ASRHealthError_2016_08_10 changed to ASRHealthError")]
     public class StartAzureRmRecoveryServicesAsrCommitFailoverJob : SiteRecoveryCmdletBase
     {
         /// <summary>

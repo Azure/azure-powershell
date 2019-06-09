@@ -247,6 +247,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the replication group name to use to create multi-VM consistent recovery points.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails)]
         [ValidateNotNullOrEmpty]
         public string ReplicationGroupName { get; set; }
 
@@ -594,7 +596,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        ///     Helper method for Azure to Azure replication scenerio.
+        ///     Helper method for Azure to Azure replication scenario.
         /// </summary>
         private void AzureToAzureReplication(EnableProtectionInput input)
         {
@@ -610,6 +612,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 RecoveryAvailabilitySetId = this.RecoveryAvailabilitySetId,
                 RecoveryBootDiagStorageAccountId = this.RecoveryBootDiagStorageAccountId
             };
+
+            if (!string.IsNullOrEmpty(this.ReplicationGroupName))
+            {
+                providerSettings.MultiVmGroupName = this.ReplicationGroupName;
+            }
 
             if (!string.IsNullOrEmpty(this.RecoveryCloudServiceId))
             {

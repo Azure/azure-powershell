@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -27,10 +28,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrProtectionDirection",DefaultParameterSetName = ASRParameterSets.ByRPIObject,SupportsShouldProcess = true)]
     [Alias("Update-ASRProtectionDirection")]
     [OutputType(typeof(ASRJob))]
+    [GenericBreakingChange("Property type ASRHealthError_2016_08_10 changed to ASRHealthError")]
     public class UpdateAzureRmRecoveryServicesAsrProtection : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///    Switch Paramter to update replication direction from Azure to Vmware.
+        ///    Switch Parameter to update replication direction from Azure to vMWare.
         /// </summary>
         [Parameter(
             Position = 0,
@@ -39,7 +41,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter AzureToVMware { get; set; }
 
         /// <summary>
-        ///    Switch Paramter to update replication direction from VMware to Azure.
+        ///    Switch Parameter to update replication direction from VMware to Azure.
         /// </summary>
         [Parameter(
             Position = 0,
@@ -48,7 +50,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter VMwareToAzure { get; set; }
 
         /// <summary>
-        ///    Switch Paramter to reprotect a Hyper-V virtual machine after failback..
+        ///    Switch Parameter to re-protect a Hyper-V virtual machine after fail-back..
         /// </summary>
         [Parameter(
             Position = 0,
@@ -57,7 +59,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter HyperVToAzure { get; set; }
 
         /// <summary>
-        ///     Switch Paramter to update replication direction 
+        ///     Switch Parameter to update replication direction 
         ///     for a failed over Hyper-V virtual machine that is protected between two VMM managed Hyper-V sites.
         /// </summary>
         [Parameter(
@@ -67,7 +69,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter VmmToVmm { get; set; }
 
         /// <summary>
-        ///    Switch Paramter to specifying that the replication direction being updated for replicated 
+        ///    Switch Parameter to specifying that the replication direction being updated for replicated 
         ///    Azure virtual machines between two Azure regions.
         /// </summary>
         [Parameter(
@@ -88,7 +90,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRRunAsAccount Account { get; set; }
 
         /// <summary>
-        ///     Gets or sets DataStore of MT server for the on-premise vmware machine.
+        ///     Gets or sets DataStore of MT server for the on-premise vMWare machine.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToVMware, Mandatory = true)]
         [ValidateNotNullOrEmpty]

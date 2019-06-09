@@ -19,17 +19,20 @@ using System.IO;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
     ///     Starts a test failover operation.
     /// </summary>
-    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrTestFailoverJob",DefaultParameterSetName = ASRParameterSets.ByRPIObject,SupportsShouldProcess = true)]
+    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrTestFailoverJob", DefaultParameterSetName = ASRParameterSets.ByRPIObject, SupportsShouldProcess = true)]
     [Alias(
         "Start-ASRTFO",
         "Start-ASRTestFailoverJob")]
     [OutputType(typeof(ASRJob))]
+    [GenericBreakingChange("Property type ASRHealthError_2016_08_10 changed to ASRHealthError")]
     public class StartAzureRmRecoveryServicesAsrTestFailoverJob : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -252,6 +255,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         SecondaryKekCertificatePfx = this.secondaryKekCertpfx
                     };
 
+                    if (this.IsParameterBound(c => c.RecoveryPoint))
+                    {
+                        failoverInput.RecoveryPointId = this.RecoveryPoint != null ? this.RecoveryPoint.ID : null;
+                    }
                     input.Properties.ProviderSpecificDetails = failoverInput;
                 }
                 else
@@ -315,9 +322,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     string.Format(
                         Resources.UnsupportedReplicationProviderForTestFailover,
                         this.ReplicationProtectedItem.ReplicationProvider));
-            }else if (Constants.A2A.Equals(
-              this.ReplicationProtectedItem.ReplicationProvider,
-               StringComparison.OrdinalIgnoreCase))
+            }
+            else if (Constants.A2A.Equals(
+             this.ReplicationProtectedItem.ReplicationProvider,
+              StringComparison.OrdinalIgnoreCase))
             {
                 var failoverInput = new A2AFailoverProviderInput()
                 {

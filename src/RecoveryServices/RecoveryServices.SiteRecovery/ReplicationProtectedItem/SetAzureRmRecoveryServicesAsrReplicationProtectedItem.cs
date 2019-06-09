@@ -18,6 +18,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
@@ -56,6 +57,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the NIC of the virtual machine for which this cmdlet sets the recovery network property.
         /// </summary>
         [Parameter]
+        [CmdletParameterBreakingChange("PrimaryNic", ChangeDescription = "Further this property will be used to set primary NIC for Replication ProtectedItem."
+            + "And UpdateNic will be used to update(selected) provided NIC")]
         [ValidateNotNullOrEmpty]
         public string PrimaryNic { get; set; }
 

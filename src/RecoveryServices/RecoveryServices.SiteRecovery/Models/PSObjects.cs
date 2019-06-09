@@ -1518,6 +1518,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Replication Health Errors
         /// </summary>
+        
         public IList<ASRHealthError_2016_08_10> ReplicationHealthErrors { get; set; }
 
         /// <summary>
