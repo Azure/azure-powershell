@@ -56,7 +56,7 @@ Appends a group to existing Azure Site Recovery plan and returns the in-memory u
 List of ASR replication protected items to be added to the recovery plan group in the recovery plan object.
 
 ```yaml
-Type: ASRReplicationProtectedItem[]
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem[]
 Parameter Sets: AddReplicationProtectedItems
 Aliases: AddProtectedItems
 
@@ -71,26 +71,11 @@ Accept wildcard characters: False
 Switch parameter to append a recovery plan group to the recovery plan object.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: AppendGroup
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -102,7 +87,7 @@ The credentials, account, tenant, and subscription used for communication with A
 
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -117,7 +102,7 @@ Accept wildcard characters: False
 Specifies a recovery plan group.
 
 ```yaml
-Type: ASRRecoveryPlanGroup
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup
 Parameter Sets: AddReplicationProtectedItems, RemoveReplicationProtectedItems
 Aliases:
 
@@ -132,7 +117,7 @@ Accept wildcard characters: False
 The ASR recovery plan object to be edited (In memory operation. To update the recovery plan run Update-AzASRRecoveryPlan with the edited recovery plan object.)
 
 ```yaml
-Type: ASRRecoveryPlan
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlan
 Parameter Sets: (All)
 Aliases: RecoveryPlan
 
@@ -147,7 +132,7 @@ Accept wildcard characters: False
 Removes the specified group from the recovery plan object.
 
 ```yaml
-Type: ASRRecoveryPlanGroup
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup
 Parameter Sets: RemoveGroup
 Aliases:
 
@@ -162,7 +147,7 @@ Accept wildcard characters: False
 List of ASR replication protected items to be removed from the recovery plan group in the recovery plan object.
 
 ```yaml
-Type: ASRReplicationProtectedItem[]
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem[]
 Parameter Sets: RemoveReplicationProtectedItems
 Aliases: RemoveProtectedItems
 
@@ -173,11 +158,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -189,7 +189,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

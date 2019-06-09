@@ -89,7 +89,7 @@ List of event between time start time and end time , severity critical and healt
 Specifies AffectedObject FriendlyName for the search.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByParam, ByFabricId
 Aliases:
 
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 Specifies the end time of the search window. Use this parameter to get only those events that have occurred before the specified time.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: ByParam, ByFabricId
 Aliases:
 
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 Filter events by the event type.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByParam, ByFabricId
 Aliases:
 Accepted values: VmHealth, ServerHealth, AgentHealth
@@ -150,7 +150,7 @@ Accept wildcard characters: False
 Filter events by the specified fabric.
 
 ```yaml
-Type: ASRFabric
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
 Parameter Sets: ByParam
 Aliases:
 
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 Specifies the fabricId to filter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFabricId
 Aliases:
 
@@ -180,7 +180,7 @@ Accept wildcard characters: False
 Specifies name of the event for search.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases:
 
@@ -195,7 +195,7 @@ Accept wildcard characters: False
 Specifes the event ReourceId of event.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 
@@ -210,7 +210,7 @@ Accept wildcard characters: False
 Event severity to filter on.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByParam, ByFabricId
 Aliases:
 Accepted values: Critical, Warning, OK, Unknown
@@ -226,7 +226,7 @@ Accept wildcard characters: False
 Specifies the start time of the search window. Use this parameter to get only those events that have occurred after the specified time.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: ByParam, ByFabricId
 Aliases:
 
@@ -238,7 +238,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

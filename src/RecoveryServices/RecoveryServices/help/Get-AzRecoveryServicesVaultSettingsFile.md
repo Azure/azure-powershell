@@ -68,7 +68,7 @@ The command gets the vault credentials file for $Vault01.
 Indicates the vault credentials file is applicable to Azure Backup.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ForBackupVaultTypeWithCertificate
 Aliases:
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 {{Fill Certificate Description}}
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -114,7 +114,7 @@ Specifies the path to the Azure Site Recovery vault settings file.
 You can download this file from the Azure Site Recovery vault portal and store it locally.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -130,7 +130,7 @@ Specifies the site friendly name.
 Use this parameter if you are downloading the vault credentials for a Hyper-V site.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ForSiteWithCertificate
 Aliases:
 
@@ -146,7 +146,7 @@ Specifies the site identifier.
 Use this parameter if you are downloading the vault credentials for a Hyper-V site.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ForSiteWithCertificate
 Aliases:
 
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 Indicates the vault credentials file is applicable to Azure Site Recovery.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ForSiteWithCertificate, ByDefaultWithCertificate
 Aliases:
 
@@ -176,7 +176,7 @@ Accept wildcard characters: False
 Specifies the Azure Site Recovery vault object.
 
 ```yaml
-Type: ARSVault
+Type: Microsoft.Azure.Commands.RecoveryServices.ARSVault
 Parameter Sets: (All)
 Aliases:
 
@@ -188,7 +188,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

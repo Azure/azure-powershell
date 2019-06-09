@@ -257,6 +257,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the replication group name to use to create multi-VM consistent recovery points.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails)]
         [ValidateNotNullOrEmpty]
         public string ReplicationGroupName { get; set; }
 
@@ -657,6 +659,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 RecoverySubnetName = this.RecoveryAzureSubnetName,
                 RecoveryAvailabilityZone = this.RecoveryAvailabilityZone
             };
+
+            if (!string.IsNullOrEmpty(this.ReplicationGroupName))
+            {
+                providerSettings.MultiVmGroupName = this.ReplicationGroupName;
+            }
 
             if (!string.IsNullOrEmpty(this.RecoveryCloudServiceId))
             {

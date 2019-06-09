@@ -53,7 +53,7 @@ The second command gets the Backup item in $Container, and then stores it in the
 Container where the item resides
 
 ```yaml
-Type: ContainerBase
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase
 Parameter Sets: NoFilterParamSet, FilterParamSet
 Aliases:
 
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 Specifies the type of protectable item. Applicable values: (SQLDataBase, SQLInstance, SQLAvailabilityGroup).
 
 ```yaml
-Type: ProtectableItemType
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ProtectableItemType
 Parameter Sets: FilterParamSet, IdParamSet
 Aliases:
 Accepted values: SQLDataBase, SQLInstance, SQLAvailabilityGroup
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 Specifies the name of the Database, Instance or AvailabilityGroup.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: FilterParamSet, IdParamSet
 Aliases:
 
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 Specified the ARM ID of an Instance or AG.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IdParamSet
 Aliases:
 
@@ -129,7 +129,7 @@ Accept wildcard characters: False
 Specifies the name of the server to which the item belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: FilterParamSet, IdParamSet
 Aliases:
 
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 ARM ID of the Recovery Services Vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles, MSSQL).
 
 ```yaml
-Type: WorkloadType
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
 Parameter Sets: NoFilterParamSet, FilterParamSet
 Aliases:
 Accepted values: AzureVM, AzureSQLDatabase, AzureFiles, MSSQL
@@ -172,7 +172,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
