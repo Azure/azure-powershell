@@ -69,26 +69,11 @@ The last command restores the disks to the target storage account DestAccount in
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -104,7 +89,7 @@ Specifies the recovery point to which to restore the virtual machine.
 To obtain an **AzureRmRecoveryServicesBackupRecoveryPoint** object, use the Get-AzRecoveryServicesBackupRecoveryPoint cmdlet.
 
 ```yaml
-Type: RecoveryPointBase
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointBase
 Parameter Sets: AzureVMParameterSet, AzureFileParameterSet
 Aliases:
 
@@ -119,7 +104,7 @@ Accept wildcard characters: False
 In case the restored item also exists in the destination, use this to indicate whether to overwrite or not.
 
 ```yaml
-Type: RestoreFSResolveConflictOption
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RestoreFSResolveConflictOption
 Parameter Sets: AzureFileParameterSet
 Aliases:
 Accepted values: Overwrite, Skip
@@ -135,7 +120,7 @@ Accept wildcard characters: False
 Used for a particular item restore from a file share. The path of the item to be restored within the file share.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AzureFileParameterSet
 Aliases:
 
@@ -150,7 +135,7 @@ Accept wildcard characters: False
 Used for a particular item restore from a file share. The path of the item to be restored within the file share.
 
 ```yaml
-Type: SourceFileType
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SourceFileType]
 Parameter Sets: AzureFileParameterSet
 Aliases:
 Accepted values: File, Directory
@@ -167,7 +152,7 @@ Specifies the name of the target Storage account in your subscription.
 As a part of the restore process, this cmdlet stores the disks and the configuration information in this Storage account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AzureVMParameterSet
 Aliases:
 
@@ -183,7 +168,7 @@ Specifies the name of the resource group that contains the target Storage accoun
 As a part of the restore process, this cmdlet stores the disks and the configuration information in this Storage account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AzureVMParameterSet
 Aliases:
 
@@ -198,7 +183,7 @@ Accept wildcard characters: False
 The File Share to which the file share has to be restored to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AzureFileParameterSet
 Aliases:
 
@@ -213,7 +198,7 @@ Accept wildcard characters: False
 The folder under which the file share has to be restored to within the targetFileShareName.Leave the variable empty to restore under root folder.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AzureFileParameterSet
 Aliases:
 
@@ -228,7 +213,7 @@ Accept wildcard characters: False
 The resource group to which the managed disks are restored. Applicable to backup of VM with managed disks
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AzureVMParameterSet
 Aliases:
 
@@ -243,7 +228,7 @@ Accept wildcard characters: False
 The storage account to which the file share has to be restored to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AzureFileParameterSet
 Aliases:
 
@@ -258,7 +243,7 @@ Accept wildcard characters: False
 Use this switch if the disks from the recovery point are to be restored to their original storage accounts.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: AzureVMParameterSet
 Aliases:
 
@@ -273,7 +258,7 @@ Accept wildcard characters: False
 ARM ID of the Recovery Services Vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -288,7 +273,7 @@ Accept wildcard characters: False
 Location of the Recovery Services Vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -303,7 +288,7 @@ Accept wildcard characters: False
 Recovery config
 
 ```yaml
-Type: RecoveryConfigBase
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryConfigBase
 Parameter Sets: AzureWorkloadParameterSet
 Aliases:
 
@@ -314,11 +299,26 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -330,7 +330,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
