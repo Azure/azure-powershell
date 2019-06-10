@@ -60,10 +60,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 }
             );
 
-            // Filter out deleted sites older than 30 days.
-            // They can't be restored and eventually will not be returned by the GetDeletedSites API.
-            deletedSites = deletedSites.Where(ds => ds.DeletionTime >= DateTime.UtcNow.AddDays(-30)).OrderBy(ds => ds.DeletionTime);
-
             if (!string.IsNullOrEmpty(ResourceGroupName))
             {
 

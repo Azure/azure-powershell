@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
-        public string [] InstanceId { get; set; }
+        public string[] InstanceId { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter")]
