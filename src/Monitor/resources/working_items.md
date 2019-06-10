@@ -1,4 +1,4 @@
-## Storage
+## Monitor
 
 ### ActivityLog
 
@@ -23,7 +23,7 @@
 ### ActionGroup
 
 * `Set-AzActionGroup`
-    - `-GroupShortName` -> `-ShortName`
+    - [ ] `-GroupShortName` -> `-ShortName`
     - [ ] Hide the specific `Receiver` parameters i.e. `-EmailReceiver` and implement like the original code an parameter for an array of generic receivers
         - Obs: It seems that the spec specify more kinds of receiver that the original code actually uses/creates with the in-memory creation cmdlet `New-AzActionGroupReceiver`
 * `New-AzActionGroup`
