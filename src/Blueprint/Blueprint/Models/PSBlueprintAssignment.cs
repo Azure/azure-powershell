@@ -12,12 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common.Properties;
-using Microsoft.Azure.Commands.Blueprint.Common;
 using Microsoft.Azure.Management.Blueprint.Models;
 using System;
 using System.Collections.Generic;
-using Resources = Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Blueprint.Models
 {
@@ -67,23 +64,9 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 ResourceGroups = new Dictionary<string, PSResourceGroupValue>()
             };
 
-            if (DateTime.TryParse(assignment.Status.TimeCreated, out DateTime timeCreated))
-            {
-                psAssignment.Status.TimeCreated = timeCreated;
-            }
-            else
-            {
-                psAssignment.Status.TimeCreated = null;
-            }
+            psAssignment.Status.TimeCreated = assignment.Status.TimeCreated;
 
-            if (DateTime.TryParse(assignment.Status.LastModified, out DateTime lastModified))
-            {
-                psAssignment.Status.LastModified = lastModified;
-            }
-            else
-            {
-                psAssignment.Status.LastModified = null;
-            }
+            psAssignment.Status.LastModified = assignment.Status.LastModified;
 
             if (Enum.TryParse(assignment.ProvisioningState, true, out PSAssignmentProvisioningState state))
             {
