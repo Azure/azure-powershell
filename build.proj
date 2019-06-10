@@ -50,7 +50,7 @@
     <Scope Condition="$(NetCore) == 'true'">Netcore</Scope>
 
     <!-- PS command related -->
-    <PowerShellCoreCommandPrefix>pwsh -NonInteractive -NoLogo -NoProfile -Command</PowerShellCoreCommandPrefix>
+    <PowerShellCoreCommandPrefix>powershell -NonInteractive -NoLogo -NoProfile -Command</PowerShellCoreCommandPrefix>
 
     <!-- Testing related -->
     <TestsToRun Condition="$(TestsToRun) == ''" >All</TestsToRun>
