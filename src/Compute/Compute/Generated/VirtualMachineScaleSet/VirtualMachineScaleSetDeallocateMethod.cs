@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "FriendMethod",
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
-        public string [] InstanceId { get; set; }
+        public string[] InstanceId { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",

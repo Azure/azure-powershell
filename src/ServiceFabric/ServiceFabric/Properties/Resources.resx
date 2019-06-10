@@ -151,7 +151,7 @@
     <value>Cannot find key vault '{0}' from secret id '{1}'.</value>
   </data>
   <data name="CannotFindVMSS" xml:space="preserve">
-    <value>Cannot find Virtual Machine Scale Sate with name {0}.</value>
+    <value>Cannot find Virtual Machine Scale Set with name {0}.</value>
   </data>
   <data name="CannotParseReliabilityLevel" xml:space="preserve">
     <value>Cannot parse reliability level {0}.</value>
