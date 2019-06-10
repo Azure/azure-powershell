@@ -24,9 +24,14 @@
       LicenseUri = 'https://aka.ms/azps-license'
       ProjectUri = 'https://github.com/Azure/azure-powershell'
       ReleaseNotes = ''
-      Profiles = 'latest-2019-04-01', 'hybrid-2019'
+      Profiles = 'latest-2019-04-30', 'hybrid-2019-03-01'
     }
   }
 # endregion 
+
+# region exports
+  CmdletsToExport = 'Enable-AzActionGroupReceiver', 'Get-AzActionGroup', 'Get-AzActivityLog', 'Get-AzActivityLogAlert', 'Get-AzAlertRule', 'Get-AzAlertRuleIncident', 'Get-AzAutoscaleSetting', 'Get-AzBaseline', 'Get-AzDiagnosticSetting', 'Get-AzDiagnosticSettingsCategory', 'Get-AzEventCategory', 'Get-AzLogProfile', 'Get-AzMetric', 'Get-AzMetricAlert', 'Get-AzMetricAlertsStatu', 'Get-AzMetricAlertStatus', 'Get-AzMetricBaseline', 'Get-AzMetricDefinition', 'Get-AzMetricNamespace', 'Get-AzScheduledQueryRule', 'Get-AzTenantActivityLog', 'Get-AzVMInsightOnboardingStatus', 'Invoke-AzCalculateMetricBaseline', 'New-AzActionGroup', 'New-AzActivityLogAlert', 'New-AzAlertRule', 'New-AzAutoscaleSetting', 'New-AzDiagnosticSetting', 'New-AzLogProfile', 'New-AzMetric', 'New-AzMetricAlert', 'New-AzScheduledQueryRule', 'Remove-AzActionGroup', 'Remove-AzActivityLogAlert', 'Remove-AzAlertRule', 'Remove-AzAutoscaleSetting', 'Remove-AzDiagnosticSetting', 'Remove-AzLogProfile', 'Remove-AzMetricAlert', 'Remove-AzScheduledQueryRule', 'Set-AzActionGroup', 'Set-AzActivityLogAlert', 'Set-AzAlertRule', 'Set-AzAutoscaleSetting', 'Set-AzDiagnosticSetting', 'Set-AzLogProfile', 'Set-AzMetricAlert', 'Set-AzScheduledQueryRule', 'Update-AzActionGroup', 'Update-AzActivityLogAlert', 'Update-AzAlertRule', 'Update-AzAutoscaleSetting', 'Update-AzLogProfile', 'Update-AzMetricAlert', 'Update-AzScheduledQueryRule', '*'
+  AliasesToExport = 'Get-AzLog', 'Get-AzMetricAlertRuleV2', 'Add-AzMetricAlertRule', 'Add-AzMetricAlertRuleV2', 'Remove-AzMetricAlertRuleV2', 'Add-AzAutoscaleSetting', 'Add-AzLogProfile', '*'
+# endregion
 
 }
