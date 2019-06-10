@@ -179,8 +179,8 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrWhiteSpace(this.DeviceModel) || !string.IsNullOrWhiteSpace(this.DeviceVendor))
             {
                 vpnSiteToCreate.DeviceProperties = this.ValidateAndCreateVpnSiteDeviceProperties(
-                    this.DeviceModel??string.Empty, 
-                    this.DeviceVendor??string.Empty, 
+                    this.DeviceModel ?? string.Empty,
+                    this.DeviceVendor ?? string.Empty,
                     this.LinkSpeedInMbps);
             }
 
@@ -193,8 +193,8 @@ namespace Microsoft.Azure.Commands.Network
 
             vpnSiteToCreate.IpAddress = this.IpAddress;
 
-            //// Adress spaces
-            if (this.AddressSpace.Any())
+            //// Address spaces
+            if (this.AddressSpace != null && this.AddressSpace.Any())
             {
                 vpnSiteToCreate.AddressSpace = new PSAddressSpace();
                 vpnSiteToCreate.AddressSpace.AddressPrefixes = new List<string>();
