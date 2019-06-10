@@ -14,16 +14,15 @@ Update a VM scale set.
 
 ### UpdateExpanded1 (Default)
 ```
-Update-AzVmss -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
- [-AutomaticOSUpgrade] [-DisableAutoRollback]
- [-IdentityId <IVirtualMachineScaleSetIdentityUserAssignedIdentities>] [-IdentityType <ResourceIdentityType>]
- [-MaxBatchInstancePercent <Int32>] [-MaxUnhealthyInstancePercent <Int32>]
- [-MaxUnhealthyUpgradedInstancePercent <Int32>] [-Overprovision] [-PauseTimeBetweenBatches <String>]
- [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
- [-SinglePlacementGroup] [-SkuCapacity <Int64>] [-SkuName <String>] [-SkuTier <String>]
- [-Tag <IUpdateResourceTags>] [-UltraSsdEnabled] [-UpgradePolicyMode <UpgradeMode>]
- [-VirtualMachineProfile <IVirtualMachineScaleSetUpdateVMProfile>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzVmss -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-AutomaticOSUpgrade]
+ [-DisableAutoRollback] [-IdentityId <IVirtualMachineScaleSetIdentityUserAssignedIdentities>]
+ [-IdentityType <ResourceIdentityType>] [-MaxBatchInstancePercent <Int32>]
+ [-MaxUnhealthyInstancePercent <Int32>] [-MaxUnhealthyUpgradedInstancePercent <Int32>] [-Overprovision]
+ [-PauseTimeBetweenBatches <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-SinglePlacementGroup] [-SkuCapacity <Int64>]
+ [-SkuName <String>] [-SkuTier <String>] [-Tag <IUpdateResourceTags>] [-UltraSsdEnabled]
+ [-UpgradePolicyMode <UpgradeMode>] [-VirtualMachineProfile <IVirtualMachineScaleSetUpdateVMProfile>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded1
@@ -232,6 +231,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Name
+The name of the VM scale set to create or update.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded1
+Aliases: VMScaleSetName
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -492,22 +507,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VMScaleSetName
-The name of the VM scale set to create or update.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

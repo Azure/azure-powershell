@@ -12,16 +12,9 @@ The operation to create or update an extension.
 
 ## SYNTAX
 
-### Update (Default)
+### UpdateExpanded (Default)
 ```
-Set-AzVmssExtension -ResourceGroupName <String> -SubscriptionId <String> -VmssExtensionName <String>
- -VmssName <String> [-ExtensionParameter <IVirtualMachineScaleSetExtension>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Set-AzVmssExtension -ResourceGroupName <String> -SubscriptionId <String> -VmssExtensionName <String>
+Set-AzVmssExtension -ExtensionName <String> -ResourceGroupName <String> -SubscriptionId <String>
  -VmssName <String> [-AutoUpgradeMinorVersion] [-ForceUpdateTag <String>] [-Name <String>]
  [-ProtectedSetting <IVirtualMachineScaleSetExtensionPropertiesProtectedSettings>] [-Publisher <String>]
  [-Setting <IVirtualMachineScaleSetExtensionPropertiesSettings>] [-Type <String>]
@@ -85,7 +78,7 @@ Once deployed, however, the extension will not upgrade minor versions unless red
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -112,18 +105,18 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ExtensionParameter
-Describes a Virtual Machine Scale Set Extension.
+### -ExtensionName
+The name of the VM scale set extension.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineScaleSetExtension
-Parameter Sets: Update
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -133,7 +126,7 @@ If a value is provided and is different from the previous value, the extension h
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -165,7 +158,7 @@ The name of the extension.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -181,7 +174,7 @@ The extension can contain either protectedSettings or protectedSettingsFromKeyVa
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineScaleSetExtensionPropertiesProtectedSettings
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -197,7 +190,7 @@ The name of the extension handler publisher.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -213,7 +206,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -229,7 +222,7 @@ Json formatted public settings for the extension.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineScaleSetExtensionPropertiesSettings
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -246,7 +239,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -262,7 +255,7 @@ Specifies the type of the extension; an example is "CustomScriptExtension".
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -278,26 +271,10 @@ Specifies the version of the script handler.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VmssExtensionName
-The name of the VM scale set extension.
-
-```yaml
-Type: System.String
-Parameter Sets: Update, UpdateExpanded
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -310,7 +287,7 @@ The name of the VM scale set where the extension should be create or updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -358,8 +335,6 @@ Dynamic: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineScaleSetExtension
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 

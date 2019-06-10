@@ -15,7 +15,7 @@ Create or update a proximity placement group.
 ### Create (Default)
 ```
 New-AzProximityPlacementGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IProximityPlacementGroup>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-ProximityPlacementGroup <IProximityPlacementGroup>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
+### -ProximityPlacementGroup
 Specifies information about the proximity placement group.
 
 ```yaml

@@ -15,7 +15,7 @@ The operation to create or update the extension.
 ### Create (Default)
 ```
 New-AzVMExtension -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VMName <String>
- [-ExtensionParameter <IVirtualMachineExtension>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-VMExtension <IVirtualMachineExtension>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -101,22 +101,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ExtensionParameter
-Describes a Virtual Machine Extension.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineExtension
-Parameter Sets: Create
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -374,6 +358,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VMExtension
+Describes a Virtual Machine Extension.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineExtension
+Parameter Sets: Create
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```

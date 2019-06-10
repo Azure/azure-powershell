@@ -23,7 +23,7 @@ New-AzImage -Name <String> -ResourceGroupName <String> -SubscriptionId <String> 
 New-AzImage -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
  -OSDiskOsstate <OperatingSystemStateTypes> -OSDiskOstype <OperatingSystemTypes>
  [-DataDisk <IImageDataDisk[]>] [-HyperVGeneration <HyperVGenerationTypes>] [-ManagedDiskId <String>]
- [-OSDiskBlobUri <String>] [-OSDiskCaching <CachingTypes>] [-OSDiskSizeGb <Int32>]
+ [-OSDiskBlobUri <String>] [-OSDiskCaching <CachingTypes>] [-OSDiskSizeInGb <Int32>]
  [-OSDiskStorageAccountType <StorageAccountTypes>] [-SnapshotId <String>] [-SourceVirtualMachineId <String>]
  [-Tag <IResourceTags>] [-ZoneResilient] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -252,7 +252,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -OSDiskSizeGb
+### -OSDiskSizeInGb
 Specifies the size of empty data disks in gigabytes.
 This element can be used to overwrite the name of the disk in a virtual machine image.
   This value cannot be larger than 1023 GB

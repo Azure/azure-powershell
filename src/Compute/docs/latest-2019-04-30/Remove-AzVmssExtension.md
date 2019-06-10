@@ -14,8 +14,9 @@ The operation to delete the extension.
 
 ### Delete1 (Default)
 ```
-Remove-AzVmssExtension -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VmssName <String>
- [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzVmssExtension -ExtensionName <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -VmssName <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity1
@@ -81,6 +82,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ExtensionName
+The name of the VM scale set extension.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -93,22 +110,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Name
-The name of the VM scale set extension.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```

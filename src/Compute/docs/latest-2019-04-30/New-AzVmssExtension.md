@@ -14,14 +14,14 @@ The operation to create or update an extension.
 
 ### Create1 (Default)
 ```
-New-AzVmssExtension -ResourceGroupName <String> -SubscriptionId <String> -VmssExtensionName <String>
- -VmssName <String> [-ExtensionParameter <IVirtualMachineScaleSetExtension>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVmssExtension -ExtensionName <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -VmssName <String> [-VmssExtension <IVirtualMachineScaleSetExtension>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded1
 ```
-New-AzVmssExtension -ResourceGroupName <String> -SubscriptionId <String> -VmssExtensionName <String>
+New-AzVmssExtension -ExtensionName <String> -ResourceGroupName <String> -SubscriptionId <String>
  -VmssName <String> [-AutoUpgradeMinorVersion] [-ForceUpdateTag <String>] [-Name <String>]
  [-ProtectedSetting <IVirtualMachineScaleSetExtensionPropertiesProtectedSettings>]
  [-ProvisionAfterExtension <String[]>] [-Publisher <String>]
@@ -104,18 +104,18 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ExtensionParameter
-Describes a Virtual Machine Scale Set Extension.
+### -ExtensionName
+The name of the VM scale set extension.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IVirtualMachineScaleSetExtension
-Parameter Sets: Create1
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -281,18 +281,18 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VmssExtensionName
-The name of the VM scale set extension.
+### -VmssExtension
+Describes a Virtual Machine Scale Set Extension.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IVirtualMachineScaleSetExtension
+Parameter Sets: Create1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```

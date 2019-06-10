@@ -12,14 +12,7 @@ Updates a virtual machine of a VM scale set.
 
 ## SYNTAX
 
-### Update1 (Default)
-```
-Set-AzVmssVM -InstanceId <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VMScaleSetName <String> [-Parameter <IVirtualMachineScaleSetVM>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded1
+### UpdateExpanded1 (Default)
 ```
 Set-AzVmssVM -InstanceId <String> -ResourceGroupName <String> -SubscriptionId <String>
  -VMScaleSetName <String> -Location <String> [-AvailabilitySetId <String>] [-BootDiagnosticEnabled]
@@ -112,7 +105,7 @@ Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -128,7 +121,7 @@ Whether boot diagnostics should be enabled on the Virtual Machine.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -144,7 +137,7 @@ Uri of the storage account to use for placing the console output and screenshot.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -160,7 +153,7 @@ The list of network configurations.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IVirtualMachineScaleSetNetworkConfiguration[]
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -177,7 +170,7 @@ Specifies the parameters that are used to add a data disk to a virtual machine.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IDataDisk[]
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -212,7 +205,7 @@ For a list of available sizes use these APIs:    [List all available virtual mac
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.VirtualMachineSizeTypes
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -228,7 +221,7 @@ Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -244,7 +237,7 @@ Specifies the offer of the platform image or marketplace image used to create th
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -260,7 +253,7 @@ The image publisher.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -276,7 +269,7 @@ The image SKU.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -296,7 +289,7 @@ Even if you use 'latest', the VM image will not automatically update after deplo
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -328,7 +321,7 @@ The instance ID of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: True
@@ -344,7 +337,7 @@ The virtual machine instance view.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IVirtualMachineScaleSetVMInstanceView
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -364,7 +357,7 @@ This value cannot be updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -380,7 +373,7 @@ Specifies whether password authentication should be disabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -398,7 +391,7 @@ This will ensure that VM Agent is installed on the VM so that extensions can be 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -414,7 +407,7 @@ The list of SSH public keys used to authenticate with linux based VMs.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.ISshPublicKey[]
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -430,7 +423,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -446,7 +439,7 @@ Specifies the list of resource Ids for the network interfaces associated with th
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.INetworkInterfaceReference[]
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -463,7 +456,7 @@ Specifies information about the operating system disk used by the virtual machin
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IOSDisk
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -480,7 +473,7 @@ Specifies the password of the administrator account.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -498,7 +491,7 @@ Specifies the name of the administrator account.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -515,7 +508,7 @@ Specifies whether extension operations should be allowed on the virtual machine.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -534,7 +527,7 @@ Specifies the host OS name of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -553,7 +546,7 @@ The maximum length of the binary array is 65535 bytes.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -569,7 +562,7 @@ Specifies set of certificates that should be installed onto the virtual machine.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVaultSecretGroup[]
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -580,28 +573,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Describes a virtual machine scale set virtual machine.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IVirtualMachineScaleSetVM
-Parameter Sets: Update1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -PlanName
 The plan ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -618,7 +595,7 @@ This is the same value as Offer under the imageReference element.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -634,7 +611,7 @@ The promotion code.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -650,7 +627,7 @@ The publisher ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -666,7 +643,7 @@ Indicates that the virtual machine scale set VM shouldn't be considered for dele
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -682,7 +659,7 @@ Indicates that model updates or actions (including scale-in) initiated on the vi
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -698,7 +675,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: True
@@ -714,7 +691,7 @@ Specifies the number of virtual machines in the scale set.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -730,7 +707,7 @@ The sku name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -746,7 +723,7 @@ Specifies the tier of virtual machines in a scale set.<br /><br /> Possible Valu
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -763,7 +740,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: True
@@ -779,7 +756,7 @@ Resource tags
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.IResourceTags
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -796,7 +773,7 @@ Managed disks with storage account type UltraSSD_LRS can be added to a virtual m
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases: EnableUltraSSD
 
 Required: False
@@ -812,7 +789,7 @@ The name of the VM scale set where the extension should be create or updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: True
@@ -828,7 +805,7 @@ Specifies additional base-64 encoded XML formatted information that can be inclu
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IAdditionalUnattendContent[]
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -846,7 +823,7 @@ Default value is true.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -864,7 +841,7 @@ This will ensure that VM Agent is installed on the VM so that extensions can be 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -882,7 +859,7 @@ e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -898,7 +875,7 @@ The list of Windows Remote Management listeners
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IWinRmListener[]
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -947,8 +924,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IVirtualMachineScaleSetVM
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 
 ## OUTPUTS
@@ -956,6 +931,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IVirtualMachineScaleSetVM
 
 ## ALIASES
+
+### Update-AzVmssVM
 
 ## RELATED LINKS
 

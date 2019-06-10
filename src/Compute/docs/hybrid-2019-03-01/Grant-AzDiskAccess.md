@@ -14,14 +14,13 @@ Grants access to a disk.
 
 ### GrantExpanded1 (Default)
 ```
-Grant-AzDiskAccess -DiskName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Access <AccessLevel> -DurationInSecond <Int32> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Grant-AzDiskAccess -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Access <AccessLevel>
+ -DurationInSeconds <Int32> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GrantViaIdentityExpanded1
 ```
-Grant-AzDiskAccess -InputObject <IComputeIdentity> -Access <AccessLevel> -DurationInSecond <Int32>
+Grant-AzDiskAccess -InputObject <IComputeIdentity> -Access <AccessLevel> -DurationInSeconds <Int32>
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -98,32 +97,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DiskName
-The name of the managed disk that is being created.
-The name can't be changed after the disk is created.
-Supported characters for the name are a-z, A-Z, 0-9 and _.
-The maximum name length is 80 characters.
-
-```yaml
-Type: System.String
-Parameter Sets: GrantExpanded1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -DurationInSecond
+### -DurationInSeconds
 Time duration in seconds until the SAS access expires.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: ${parameter-name}
 
 Required: True
 Position: Named
@@ -145,6 +125,25 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Name
+The name of the managed disk that is being created.
+The name can't be changed after the disk is created.
+Supported characters for the name are a-z, A-Z, 0-9 and _.
+The maximum name length is 80 characters.
+
+```yaml
+Type: System.String
+Parameter Sets: GrantExpanded1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```

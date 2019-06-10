@@ -17,16 +17,16 @@ Display information about a virtual machine scale set.
 Get-AzVmss -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### Get1
+```
+Get-AzVmss -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### List2
 ```
 Get-AzVmss -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### Get1
-```
-Get-AzVmss -ResourceGroupName <String> -SubscriptionId <String[]> -VMScaleSetName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity1
@@ -91,12 +91,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the VM scale set.
+
+```yaml
+Type: System.String
+Parameter Sets: Get1
+Aliases: VMScaleSetName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: List2, Get1
+Parameter Sets: Get1, List2
 Aliases:
 
 Required: True
@@ -113,23 +129,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List3, List2, Get1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VMScaleSetName
-The name of the VM scale set.
-
-```yaml
-Type: System.String
-Parameter Sets: Get1
+Parameter Sets: List3, Get1, List2
 Aliases:
 
 Required: True

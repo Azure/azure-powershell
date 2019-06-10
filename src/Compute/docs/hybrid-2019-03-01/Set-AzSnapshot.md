@@ -12,33 +12,26 @@ Creates or updates a snapshot.
 
 ## SYNTAX
 
-### Update1 (Default)
-```
-Set-AzSnapshot -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Snapshot <ISnapshot>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded1
+### UpdateExpanded1 (Default)
 ```
 Set-AzSnapshot -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -CreationDataCreateOption <DiskCreateOption> -DiskEncryptionKeySecretUrl <String> -ImageReferenceId <String>
- -KeyEncryptionKeyUrl <String> -Location <String> [-CreationDataSourceResourceId <String>]
- [-CreationDataSourceUri <String>] [-CreationDataStorageAccountId <String>]
- [-DiskEncryptionKeySourceVaultId <String>] [-DiskSizeGb <Int32>] [-EncryptionSettingEnabled]
- [-ImageReferenceLun <Int32>] [-KeyEncryptionKeySourceVaultId <String>] [-OSType <OperatingSystemTypes>]
- [-SkuName <StorageAccountTypes>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -CreateOption <DiskCreateOption> -EncryptionKeySecretUrl <String> -ImageReferenceId <String>
+ -KeyEncryptionKeyUrl <String> -Location <String> [-EncryptionKeySourceVaultId <String>]
+ [-EncryptionSettingEnabled] [-ImageReferenceLun <Int32>] [-KeyEncryptionKeySourceVaultId <String>]
+ [-OSType <OperatingSystemTypes>] [-SizeInGb <Int32>] [-SkuName <StorageAccountTypes>]
+ [-SourceResourceId <String>] [-SourceUri <String>] [-StorageAccountId <String>] [-Tag <IResourceTags>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded1
 ```
-Set-AzSnapshot -InputObject <IComputeIdentity> -CreationDataCreateOption <DiskCreateOption>
- -DiskEncryptionKeySecretUrl <String> -ImageReferenceId <String> -KeyEncryptionKeyUrl <String>
- -Location <String> [-CreationDataSourceResourceId <String>] [-CreationDataSourceUri <String>]
- [-CreationDataStorageAccountId <String>] [-DiskEncryptionKeySourceVaultId <String>] [-DiskSizeGb <Int32>]
- [-EncryptionSettingEnabled] [-ImageReferenceLun <Int32>] [-KeyEncryptionKeySourceVaultId <String>]
- [-OSType <OperatingSystemTypes>] [-SkuName <StorageAccountTypes>] [-Tag <IResourceTags>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzSnapshot -InputObject <IComputeIdentity> -CreateOption <DiskCreateOption>
+ -EncryptionKeySecretUrl <String> -ImageReferenceId <String> -KeyEncryptionKeyUrl <String> -Location <String>
+ [-EncryptionKeySourceVaultId <String>] [-EncryptionSettingEnabled] [-ImageReferenceLun <Int32>]
+ [-KeyEncryptionKeySourceVaultId <String>] [-OSType <OperatingSystemTypes>] [-SizeInGb <Int32>]
+ [-SkuName <StorageAccountTypes>] [-SourceResourceId <String>] [-SourceUri <String>]
+ [-StorageAccountId <String>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,64 +75,15 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -CreationDataCreateOption
+### -CreateOption
 This enumerates the possible sources of a disk's creation.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.DiskCreateOption
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -CreationDataSourceResourceId
-If createOption is Copy, this is the ARM id of the source snapshot or disk.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -CreationDataSourceUri
-If createOption is Import, this is the URI of a blob to be imported into a managed disk.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -CreationDataStorageAccountId
-If createOption is Import, the Azure Resource Manager identifier of the storage account containing the blob to import as a disk.
-Required only if the blob is in a different subscription
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -163,12 +107,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DiskEncryptionKeySecretUrl
+### -EncryptionKeySecretUrl
 Url pointing to a key or secret in KeyVault
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -179,35 +123,17 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DiskEncryptionKeySourceVaultId
+### -EncryptionKeySourceVaultId
 Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -DiskSizeGb
-If creationData.createOption is Empty, this field is mandatory and it indicates the size of the VHD to create.
-If this field is present for updates or creation with other options, it indicates a resize.
-Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size.
-
-```yaml
-Type: System.Int32
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -220,7 +146,7 @@ If EncryptionSettings is null in the request object, the existing settings remai
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -236,7 +162,7 @@ A relative uri containing either a Platform Image Repository or user image refer
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -253,7 +179,7 @@ For OS disks, this field is null.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -285,7 +211,7 @@ Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -301,7 +227,7 @@ Url pointing to a key or secret in KeyVault
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -317,7 +243,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -336,7 +262,7 @@ The max name length is 80 characters.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases: SnapshotName
 
 Required: True
@@ -352,7 +278,7 @@ The Operating System type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemTypes
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -368,7 +294,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: True
@@ -379,12 +305,30 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -SizeInGb
+If creationData.createOption is Empty, this field is mandatory and it indicates the size of the VHD to create.
+If this field is present for updates or creation with other options, it indicates a resize.
+Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -SkuName
 The sku name.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.StorageAccountTypes
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -395,18 +339,51 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Snapshot
-Snapshot resource.
+### -SourceResourceId
+If createOption is Copy, this is the ARM id of the source snapshot or disk.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.ISnapshot
-Parameter Sets: Update1
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SourceUri
+If createOption is Import, this is the URI of a blob to be imported into a managed disk.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -StorageAccountId
+If createOption is Import, the Azure Resource Manager identifier of the storage account containing the blob to import as a disk.
+Required only if the blob is in a different subscription
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -417,7 +394,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: True
@@ -433,7 +410,7 @@ Resource tags
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.IResourceTags
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -481,8 +458,6 @@ Dynamic: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.ISnapshot
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 
