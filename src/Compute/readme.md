@@ -329,9 +329,9 @@ directive:
   - where:
       verb: Get
       subject: VMImage
-      parameter-name: Filter
+      parameter-name: Sku
     set:
-      parameter-name: FilterExpression
+      alias: Skus
   - where:
       verb: Remove
       subject: VmssExtension
@@ -357,6 +357,7 @@ directive:
       parameter-name: ^DurationIn(Second|Millisecond|Minute|Hour|Day)$
     set:
       parameter-name: DurationIn$1s
+      alias: ${parameter-name}
   - where:
       parameter-name: ^PlatformFaultDomainCount$
     set:
@@ -384,7 +385,7 @@ directive:
       parameter-name: EncryptionEnabled
   - where:
       subject: .*Disk.*|.*Snapshot.*
-      parameter-name: EncryptionSettingCollectionEEncryptionSetting
+      parameter-name: EncryptionSettingCollectionEncryptionSetting
     set:
       parameter-name: EncryptionSetting
   - where:  
@@ -483,7 +484,7 @@ directive:
       property-name: EncryptionEnabled
   - where:
       model-name: .*Disk.*|.*Snapshot.*
-      property-name: EncryptionSettingCollectionEEncryptionSetting
+      property-name: EncryptionSettingCollectionEncryptionSetting
     set:
       property-name: EncryptionSetting
 
@@ -757,8 +758,8 @@ directive:
       subject: VmssVMReimage
 # changing after variant change
   - where:
-      verb: Invoke
-      subject: VmssVMReimage
+      verb: Set
+      subject: VmssVM
     set:
       alias: Update-AzVmssVM
 # variant remove (flattened body parameters with no piping value)

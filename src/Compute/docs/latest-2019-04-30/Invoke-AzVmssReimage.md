@@ -14,14 +14,14 @@ Reimages (upgrade the operating system) one or more virtual machines in a VM sca
 
 ### ReimageExpanded2 (Default)
 ```
-Invoke-AzVmssReimage -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
+Invoke-AzVmssReimage -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-InstanceId <String[]>] [-PassThru] [-TempDisk] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### ReimageExpanded3
 ```
-Invoke-AzVmssReimage -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
+Invoke-AzVmssReimage -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-InstanceId <String[]>] [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -128,6 +128,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the VM scale set.
+
+```yaml
+Type: System.String
+Parameter Sets: ReimageExpanded2, ReimageExpanded3
+Aliases: VMScaleSetName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -PassThru
 When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
 
@@ -189,22 +205,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VMScaleSetName
-The name of the VM scale set.
-
-```yaml
-Type: System.String
-Parameter Sets: ReimageExpanded2, ReimageExpanded3
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -15,17 +15,16 @@ Update an availability set.
 ### UpdateExpanded (Default)
 ```
 Update-AzAvailabilitySet -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-PlatformFaultDomainCount <Int32>] [-PlatformUpdateDomainCount <Int32>] [-SkuCapacity <Int64>]
- [-SkuName <String>] [-SkuTier <String>] [-Tag <IUpdateResourceTags>] [-VirtualMachine <ISubResource[]>]
+ [-FaultDomainCount <Int32>] [-SkuCapacity <Int64>] [-SkuName <String>] [-SkuTier <String>]
+ [-Tag <IUpdateResourceTags>] [-UpdateDomainCount <Int32>] [-VirtualMachine <ISubResource[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzAvailabilitySet -InputObject <IComputeIdentity> [-PlatformFaultDomainCount <Int32>]
- [-PlatformUpdateDomainCount <Int32>] [-SkuCapacity <Int64>] [-SkuName <String>] [-SkuTier <String>]
- [-Tag <IUpdateResourceTags>] [-VirtualMachine <ISubResource[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzAvailabilitySet -InputObject <IComputeIdentity> [-FaultDomainCount <Int32>] [-SkuCapacity <Int64>]
+ [-SkuName <String>] [-SkuTier <String>] [-Tag <IUpdateResourceTags>] [-UpdateDomainCount <Int32>]
+ [-VirtualMachine <ISubResource[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,6 +68,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -FaultDomainCount
+Fault Domain count.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases: PlatformFaultDomainCount
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -96,38 +111,6 @@ Aliases: AvailabilitySetName
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PlatformFaultDomainCount
-Fault Domain count.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PlatformUpdateDomainCount
-Update Domain count.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -225,6 +208,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -UpdateDomainCount
+Update Domain count.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases: PlatformUpdateDomainCount
+
+Required: False
+Position: Named
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

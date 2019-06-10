@@ -21,8 +21,8 @@ New-AzAvailabilitySet -Name <String> -ResourceGroupName <String> -SubscriptionId
 ### CreateExpanded1
 ```
 New-AzAvailabilitySet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
- [-PlatformFaultDomainCount <Int32>] [-PlatformUpdateDomainCount <Int32>] [-SkuCapacity <Int64>]
- [-SkuName <String>] [-SkuTier <String>] [-Tag <IResourceTags>] [-VirtualMachine <ISubResource[]>]
+ [-FaultDomainCount <Int32>] [-SkuCapacity <Int64>] [-SkuName <String>] [-SkuTier <String>]
+ [-Tag <IResourceTags>] [-UpdateDomainCount <Int32>] [-VirtualMachine <ISubResource[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -87,6 +87,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -FaultDomainCount
+Fault Domain count.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded1
+Aliases: PlatformFaultDomainCount
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Location
 Resource location
 
@@ -114,38 +130,6 @@ Aliases: AvailabilitySetName
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PlatformFaultDomainCount
-Fault Domain count.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PlatformUpdateDomainCount
-Update Domain count.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -243,6 +227,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -UpdateDomainCount
+Update Domain count.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded1
+Aliases: PlatformUpdateDomainCount
+
+Required: False
+Position: Named
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
