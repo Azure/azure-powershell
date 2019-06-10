@@ -56,6 +56,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             StorageModels.SkuName.StandardGRS,
             StorageModels.SkuName.StandardRAGRS,
             StorageModels.SkuName.PremiumLRS,
+            StorageModels.SkuName.PremiumZRS,
             IgnoreCase = true)]
         public string SkuName { get; set; }
 
