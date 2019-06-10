@@ -755,6 +755,40 @@ function Test-NewAzureStorageAccountFileStorage
 
 <#
 .SYNOPSIS
+#>
+function Test-NewAzureStorageAccountFileStorage
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Premium_LRS';
+        $kind = 'FileStorage'
+
+        $loc = Get-ProviderLocation ResourceManagement;
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+        
+        Retry-IfException { Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test New-AzStorageAccountBlockBlobStorage
 .DESCRIPTION
 Smoke[Broken]Test
