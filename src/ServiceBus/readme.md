@@ -53,7 +53,6 @@ require:
   - $(repo)/specification/servicebus/resource-manager/readme.md
 
 module-version: 0.0.1
-skip-model-cmdlets: true
 
 directive:
 # Internal

@@ -54,5 +54,12 @@ require:
 
 title: Dns
 module-version: 0.0.1
-skip-model-cmdlets: true
+
+directive:
+  - where:
+      subject: RecordSet
+      parameter-name: Ttl
+    set:
+      parameter-name: TimeToLive
+      alias: Ttl
 ```

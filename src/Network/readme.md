@@ -52,52 +52,288 @@ require:
   - $(repo)/specification/network/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/network/resource-manager/readme.md
 
-# input-file:
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/applicationGateway.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/applicationSecurityGroup.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/availableDelegations.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/azureFirewall.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/azureFirewallFqdnTag.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/checkDnsAvailability.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/ddosCustomPolicy.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/ddosProtectionPlan.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/endpointService.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/expressRouteCircuit.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/expressRouteCrossConnection.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/expressRouteGateway.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/expressRoutePort.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/interfaceEndpoint.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/loadBalancer.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/natGateway.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/network.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/networkInterface.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/networkProfile.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/networkSecurityGroup.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/networkWatcher.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/operation.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/publicIpAddress.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/publicIpPrefix.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/routeFilter.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/routeTable.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/serviceCommunity.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/serviceEndpointPolicy.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/usage.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/virtualNetwork.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/virtualNetworkGateway.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/virtualNetworkTap.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/virtualWan.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/vmssNetworkInterface.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/vmssPublicIpAddress.json
-#   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2019-02-01/webapplicationfirewall.json
-
 subject-prefix: ''
 module-version: 0.0.1
-skip-model-cmdlets: true
 
 directive:
+# General
   - where:
       enum-name: SecurityRuleProtocol
       enum-value-name: Asterisk
     set:
       enum-value-name: All
+  - where:
+      verb: Update
+      subject: (.*)Tag$
+    remove: true
+
+# General Naming
+  - where:
+      subject: ^AzureFirewall(.*)
+    set:
+      subject: Firewall$1
+  - where:
+      subject: ^Route$
+    set:
+      subject: RouteTableRoute
+  - where:
+      subject: ^SecurityRule$
+    set:
+      subject: NetworkSecurityRule
+  - where:
+      subject: ^Usage$
+    set:
+      subject: NetworkUsage
+  - where:
+      subject: (.*)(?<!Scr)Ip(.*)
+    set:
+      subject: $1IP$2
+  - where:
+      parameter-name: (.*)(?<!Scr)Ip(.*)
+    set:
+      parameter-name: $1IP$2
+
+# Vmss
+  - where:
+      subject: (.*)VirtualMachineScaleSet(.*)
+    set:
+      subject: Vmss$2
+  - where:
+      subject: VmssVMPublicIPaddress
+    set:
+      subject: VmssVMPublicIPAddress
+
+# Subnet
+  - where:
+      subject: ^Subnet$
+    set:
+      subject: VirtualNetworkSubnet
+  - where:
+      subject: (.*)Delegation$
+    set:
+      subject: $1VirtualNetworkSubnetDelegation
+  - where:
+      verb: Get
+      subject: AvailableResourceGroupVirtualNetworkSubnetDelegation
+      variant: List
+    set:
+      variant: ResourceGroup
+  - where:
+      verb: Get
+      subject: AvailableVirtualNetworkSubnetDelegation|AvailableResourceGroupVirtualNetworkSubnetDelegation
+    set:
+      subject: VirtualNetworkAvailableSubnetDelegation
+  # - where: # Combine with Get-AzVirtualNetworkAvailableSubnetDelegation
+  #     subject: AvailableResourceGroupVirtualNetworkSubnetDelegation
+  #   hide: true
+  - where:
+      verb: Invoke
+      subject: PrepareSubnetNetworkPolicy
+    set:
+      verb: Set
+      subject: VirtualNetworkSubnetNetworkPolicy
+  - where:
+      verb: Get
+      subject: AvailableVirtualNetworkSubnetDelegation
+    set:
+      alias: Get-AzAvailableServiceDelegation
+
+# NetworkWatcher
+  - where:
+      subject: ^PacketCapture(.*)
+    set:
+      subject: NetworkWatcherPacketCapture$1
+  - where: # Combine with Get-AzNetworkWatcherPacketCapture
+      subject: NetworkWatcherPacketCaptureStatus
+    hide: true
+  - where:
+      subject: ^ConnectionMonitor$
+    set:
+      subject: NetworkWatcherConnectionMonitor
+  - where:
+      verb: Invoke
+      subject: QueryConnectionMonitor
+    set:
+      verb: Get
+      subject: NetworkWatcherConnectionMonitorState
+      alias: Get-AzNetworkWatcherConnectionMonitorReport
+  - where:
+      verb: Get
+      subject: NetworkWatcherAvailableProvider
+    set:
+      alias: Get-AzNetworkWatcherReachabilityProvidersList
+  - where:
+      verb: Get
+      subject: NetworkWatcherAzureReachabilityReport
+    set:
+      subject: NetworkWatcherReachabilityReport
+  - where:
+      verb: Get
+      subject: NetworkWatcherNetworkConfigurationDiagnostic
+    set:
+      alias: Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic
+
+# ApplicationGateway
+  - where:
+      verb: Invoke
+      subject: BackendApplicationGatewayHealth
+    set:
+      verb: Get
+      subject: ApplicationGatewayBackendHealth
+  - where:
+      verb: Invoke
+      subject: DemandApplicationGatewayBackendHealthOn
+    set:
+      verb: Get
+      subject: ApplicationGatewayBackendHealthOnDemand
+  - where: # Combine into Get-AzApplicationGatewayAvailableServerVariableAndHeader
+      verb: Get
+      subject: ApplicationGatewayAvailableRequestHeader|ApplicationGatewayAvailableResponseHeader|ApplicationGatewayAvailableServerVariable
+    hide: true
+  - where:
+      verb: Get
+      subject: ApplicationGatewayAvailableSslOption
+    set:
+      alias: Get-AzApplicationGatewayAvailableSslOptions
+  - where:
+      verb: Get
+      subject: ApplicationGatewayAvailableWafRuleSet
+    set:
+      alias: Get-AzApplicationGatewayAvailableWafRuleSets
+## WebApplicationFirewall
+  - where:
+      subject: ^WebApplicationFirewall(.*)
+    set:
+      subject: ApplicationGatewayWaf$1
+  - where:
+      verb: Get
+      subject: ApplicationGatewayWafPolicy
+    set:
+      alias: Get-AzApplicationGatewayFirewallPolicy
+
+# LoadBalancer
+  - where:
+      subject: ^InboundNatRule$
+    set:
+      subject: LoadBalancerInboundNatRule
+
+# Vpn
+  - where:
+      verb: Invoke
+      subject: DownloadVpnSiteConfiguration
+    set:
+      verb: Get
+      subject: VpnSiteConfiguration
+
+# VirtualNetworkGateway
+  - where:
+      subject: VirtualNetworkGatewayVpnclientIPsecParameter
+    set:
+      subject: VirtualNetworkGatewayVpnClientIPsecParameter
+      alias: ${verb}-AzVpnClientIpsecParameter
+  - where:
+      verb: Invoke
+      subject: DownloadVpnSiteConfiguration
+    set:
+      verb: Get
+      subject: VpnSiteConfiguration
+  - where:
+      verb: Invoke
+      subject: DownloadVpnSiteConfiguration
+    set:
+      verb: Get
+      subject: VpnSiteConfiguration
+  - where:
+      verb: Invoke
+      subject: GeneratevpnclientpackageVirtualNetworkGateway
+    set:
+      verb: New
+      subject: VirtualNetworkGatewayVpnClientPackage
+      alias: Get-AzVpnClientPackage
+  - where:
+      verb: Invoke
+      subject: ScriptVirtualNetworkGatewayVpnDeviceConfiguration
+    set:
+      verb: Get
+      subject: VirtualNetworkGatewayVpnDeviceConfigurationScript
+  - where:
+      verb: Invoke
+      subject: SupportedVirtualNetworkGatewayVpnDevice
+    set:
+      verb: Get
+      subject: VirtualNetworkGatewaySupportedVpnDevice
+  - where:
+      verb: Get
+      subject: VirtualNetworkGatewayVpnDeviceConfigurationScript
+    set:
+      alias: Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript
+  - where:
+      verb: Get
+      subject: VirtualNetworkUsage
+    set:
+      alias: Get-AzVirtualNetworkUsageList
+
+# VirtualWan
+  - where:
+      verb: Invoke
+      subject: SupportedSecurityProvider
+    set:
+      verb: Get
+      subject: VirtualWanSupportedSecurityProvider
+
+# NetworkInterface
+  - where:
+      verb: Get
+      subject: NetworkInterfaceEffectiveNetworkSecurityGroup
+    set:
+      alias: Get-AzEffectiveNetworkSecurityGroup
+  - where:
+      verb: Get
+      subject: NetworkInterfaceEffectiveRouteTable
+    set:
+      alias: Get-AzEffectiveRouteTable
+
+# ExpressRouteCircuit
+  - where:
+      verb: Get
+      subject: ExpressRouteCircuitStat
+    set:
+      alias: Get-AzExpressRouteCircuitStats
+
+# VirtualNetwork
+  - where:
+      verb: Get
+      subject: HubVirtualNetworkConnection
+    set:
+      subject: VirtualHubVirtualNetworkConnection
+  - where:
+      verb: Get
+      subject: AvailableEndpointService
+    set:
+      subject: VirtualNetworkAvailableEndpointService
+
+# Fix Alias Issues
+  - where:
+      verb: New|Set
+      subject: LoadBalancerInboundNatRule|NetworkSecurityRule|RouteTableRoute|VirtualNetworkPeering|VirtualNetworkSubnet|P2SVpnServerConfiguration|ServiceEndpointPolicyDefinition
+      parameter-name: Name
+    clear-alias: true
+
+# General Changes (at end)
+  - where:
+      subject: (.*)VirtualNetwork(.*)
+    set:
+      alias: ${verb}-$(prefix)${subject-prefix}${subject}
+  # - where:
+  #     parameter-name: (.*)VirtualNetwork(.*)
+  #   set:
+  #     alias: $1VirtualNetwork$2
+  - where:
+      subject: (.*)VirtualNetwork(.*)
+    set:
+      subject: $1Vnet$2
+  - where:
+      parameter-name: (.*)VirtualNetwork(.*)
+    set:
+      parameter-name: $1Vnet$2
 ```
