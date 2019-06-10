@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// <summary>
         /// Gets or sets the instance License Type
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             HelpMessage = "Determines which License Type to use. Possible values are BasePrice (with AHB discount) and LicenseIncluded (without AHB discount).")]
         [PSArgumentCompleter(Constants.LicenseTypeBasePrice, Constants.LicenseTypeLicenseIncluded)]
         public string LicenseType { get; set; }
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// <summary>
         /// Gets or sets the Storage Size in GB for instance
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             HelpMessage = "Determines how much Storage size to associate with instance.")]
         [ValidateNotNullOrEmpty]
         public int StorageSizeInGB { get; set; }
@@ -293,7 +293,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
                 Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
                 LicenseType = this.LicenseType,
-                StorageSizeInGB = this.StorageSizeInGB,
+                // `-StorageSizeInGB 0` as a parameter to this cmdlet means "use default".
+                // For non-MI database, we can just pass in 0 and the server will treat 0 as default.
+                // However this is (currently) not the case for MI. We need to convert the 0 to null
+                // here in client before sending to the server.
+                StorageSizeInGB = SqlSkuUtils.ValueIfNonZero(this.StorageSizeInGB),
                 SubnetId = this.SubnetId,
                 VCores = this.VCore,
                 Sku = Sku,
