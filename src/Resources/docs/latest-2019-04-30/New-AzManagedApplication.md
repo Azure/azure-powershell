@@ -22,7 +22,7 @@ New-AzManagedApplication -Id <String> [-Parameter <IApplication>] [-DefaultProfi
 ```
 New-AzManagedApplication -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Kind <String>
  -ManagedResourceGroupId <String> -PlanName <String> -PlanProduct <String> -PlanPublisher <String>
- -PlanVersion <String> -SkuName <String> [-Parameter <IApplication>] [-DefinitionId <String>]
+ -PlanVersion <String> -SkuName <String> [-Parameter <IApplication>] [-ApplicationDefinitionId <String>]
  [-IdentityType <ResourceIdentityType>] [-Location <String>] [-ManagedBy <String>]
  [-PlanPromotionCode <String>] [-ProvisioningState <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
  [-SkuModel <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <IResourceTags>]
@@ -39,7 +39,7 @@ New-AzManagedApplication -Name <String> -ResourceGroupName <String> -Subscriptio
 ```
 New-AzManagedApplication -Id <String> -Kind <String> -ManagedResourceGroupId <String> -PlanName <String>
  -PlanProduct <String> -PlanPublisher <String> -PlanVersion <String> -SkuName <String>
- [-Parameter <IApplication>] [-DefinitionId <String>] [-IdentityType <ResourceIdentityType>]
+ [-Parameter <IApplication>] [-ApplicationDefinitionId <String>] [-IdentityType <ResourceIdentityType>]
  [-Location <String>] [-ManagedBy <String>] [-PlanPromotionCode <String>] [-ProvisioningState <String>]
  [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuModel <String>] [-SkuSize <String>] [-SkuTier <String>]
  [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -49,7 +49,7 @@ New-AzManagedApplication -Id <String> -Kind <String> -ManagedResourceGroupId <St
 ```
 New-AzManagedApplication -InputObject <IResourcesIdentity> -Kind <String> -ManagedResourceGroupId <String>
  -PlanName <String> -PlanProduct <String> -PlanPublisher <String> -PlanVersion <String> -SkuName <String>
- [-Parameter <IApplication>] [-DefinitionId <String>] [-IdentityType <ResourceIdentityType>]
+ [-Parameter <IApplication>] [-ApplicationDefinitionId <String>] [-IdentityType <ResourceIdentityType>]
  [-Location <String>] [-ManagedBy <String>] [-PlanPromotionCode <String>] [-ProvisioningState <String>]
  [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuModel <String>] [-SkuSize <String>] [-SkuTier <String>]
  [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -59,7 +59,7 @@ New-AzManagedApplication -InputObject <IResourcesIdentity> -Kind <String> -Manag
 ```
 New-AzManagedApplication -InputObject <IResourcesIdentity> -Kind <String> -ManagedResourceGroupId <String>
  -PlanName <String> -PlanProduct <String> -PlanPublisher <String> -PlanVersion <String> -SkuName <String>
- [-Parameter <IApplication>] [-DefinitionId <String>] [-IdentityType <ResourceIdentityType>]
+ [-Parameter <IApplication>] [-ApplicationDefinitionId <String>] [-IdentityType <ResourceIdentityType>]
  [-Location <String>] [-ManagedBy <String>] [-PlanPromotionCode <String>] [-ProvisioningState <String>]
  [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuModel <String>] [-SkuSize <String>] [-SkuTier <String>]
  [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -102,6 +102,22 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -ApplicationDefinitionId
+The fully qualified path of managed application definition Id.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -AsJob
 Run the command as a job
 
@@ -125,22 +141,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -DefinitionId
-The fully qualified path of managed application definition Id.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
-Aliases: ApplicationDefinitionId
 
 Required: False
 Position: Named

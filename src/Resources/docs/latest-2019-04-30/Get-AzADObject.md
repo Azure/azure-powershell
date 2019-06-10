@@ -21,14 +21,14 @@ Get-AzADObject -TenantId <String> [-Parameter <IGetObjectsParameters>] [-Default
 
 ### GetExpanded
 ```
-Get-AzADObject -TenantId <String> [-Id <String[]>] [-IncludeDirectoryObjectReference]
+Get-AzADObject -TenantId <String> [-IncludeDirectoryObjectReference] [-ObjectId <String[]>]
  [-Properties <Hashtable>] [-Type <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentityExpanded
 ```
-Get-AzADObject -InputObject <IResourcesIdentity> [-Id <String[]>] [-IncludeDirectoryObjectReference]
+Get-AzADObject -InputObject <IResourcesIdentity> [-IncludeDirectoryObjectReference] [-ObjectId <String[]>]
  [-Properties <Hashtable>] [-Type <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -81,22 +81,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Id
-The requested object IDs.
-
-```yaml
-Type: System.String[]
-Parameter Sets: GetExpanded, GetViaIdentityExpanded
-Aliases: ObjectId
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -IncludeDirectoryObjectReference
 If true, also searches for object IDs in the partner tenant.
 
@@ -125,6 +109,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ObjectId
+The requested object IDs.
+
+```yaml
+Type: System.String[]
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```

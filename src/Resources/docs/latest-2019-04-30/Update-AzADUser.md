@@ -22,18 +22,18 @@ Update-AzADUser -TenantId <String> -UpnOrObjectId <String> [-Parameter <IUserUpd
 ```
 Update-AzADUser -TenantId <String> -UpnOrObjectId <String> -PasswordProfilePassword <String> [-PassThru]
  [-AccountEnabled] [-DisplayName <String>] [-GivenName <String>] [-ImmutableId <String>]
- [-MailNickname <String>] [-PasswordProfileForceChangePasswordNextLogin] [-PrincipalName <String>]
- [-Surname <String>] [-Type <UserType>] [-UsageLocation <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-MailNickname <String>] [-PasswordProfileForceChangePasswordNextLogin] [-Surname <String>]
+ [-UsageLocation <String>] [-UserPrincipalName <String>] [-UserType <UserType>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzADUser -InputObject <IResourcesIdentity> -PasswordProfilePassword <String> [-PassThru]
  [-AccountEnabled] [-DisplayName <String>] [-GivenName <String>] [-ImmutableId <String>]
- [-MailNickname <String>] [-PasswordProfileForceChangePasswordNextLogin] [-PrincipalName <String>]
- [-Surname <String>] [-Type <UserType>] [-UsageLocation <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-MailNickname <String>] [-PasswordProfileForceChangePasswordNextLogin] [-Surname <String>]
+ [-UsageLocation <String>] [-UserPrincipalName <String>] [-UserType <UserType>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -244,23 +244,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PrincipalName
-The user principal name (someuser@contoso.com).
-It must contain one of the verified domains for the tenant.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases: UserPrincipalName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Surname
 The user's surname (family name or last name).
 
@@ -293,22 +276,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Type
-A string value that can be used to classify user types in your directory, such as 'Member' and 'Guest'.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.UserType
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases: UserType
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -UpnOrObjectId
 The object ID or principal name of the user to update.
 
@@ -332,6 +299,39 @@ Examples include: "US", "JP", and "GB".
 
 ```yaml
 Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -UserPrincipalName
+The user principal name (someuser@contoso.com).
+It must contain one of the verified domains for the tenant.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -UserType
+A string value that can be used to classify user types in your directory, such as 'Member' and 'Guest'.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.UserType
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 

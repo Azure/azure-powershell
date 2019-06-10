@@ -32,9 +32,6 @@ Gets a policy assignment.
 ### [Get-AzPolicyDefinition](Get-AzPolicyDefinition.md)
 Gets the policy definition.
 
-### [Get-AzPolicyDefinitionBuilt](Get-AzPolicyDefinitionBuilt.md)
-Gets the built in policy definition.
-
 ### [Get-AzProviderOperationsMetadata](Get-AzProviderOperationsMetadata.md)
 Gets provider operations metadata for the specified resource provider.
 

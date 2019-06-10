@@ -64,7 +64,7 @@ PS C:\> {{ Add code here }}
 ## PARAMETERS
 
 ### -ApplicationId
-
+The application id of the application.
 
 ```yaml
 Type: System.String
@@ -96,7 +96,7 @@ Dynamic: False
 ```
 
 ### -DisplayName
-
+The display name of the application.
 
 ```yaml
 Type: System.String
@@ -160,7 +160,7 @@ Dynamic: False
 ```
 
 ### -TenantId
-
+The tenant ID.
 
 ```yaml
 Type: System.String

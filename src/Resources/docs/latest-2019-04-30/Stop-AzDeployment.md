@@ -26,6 +26,12 @@ Stop-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <St
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CancelById
+```
+Stop-AzDeployment -SubscriptionId <String> -Id <String> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ### CancelViaIdentity1
 ```
 Stop-AzDeployment -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
@@ -74,6 +80,22 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Id
+The ID of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: CancelById
+Aliases: ResourceId
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -151,7 +173,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Cancel, Cancel1
+Parameter Sets: Cancel, Cancel1, CancelById
 Aliases:
 
 Required: True

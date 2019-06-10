@@ -19,7 +19,7 @@ Get-AzPolicyDefinition -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [
 
 ### Get3
 ```
-Get-AzPolicyDefinition -Name <String> -ManagementGroupId <String> [-DefaultProfile <PSObject>]
+Get-AzPolicyDefinition -Name <String> -ManagementGroupName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Get-AzPolicyDefinition -Name <String> -SubscriptionId <String[]> [-DefaultProfil
 
 ### List3
 ```
-Get-AzPolicyDefinition -ManagementGroupId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyDefinition -ManagementGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity3
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ManagementGroupId
+### -ManagementGroupName
 The ID of the management group.
 
 ```yaml

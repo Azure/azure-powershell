@@ -22,16 +22,16 @@ New-AzADServicePrincipal -TenantId <String> [-Parameter <IServicePrincipalCreate
 ```
 New-AzADServicePrincipal -TenantId <String> -AppId <String> [-AccountEnabled <String>]
  [-AppRoleAssignmentRequired] [-KeyCredential <IKeyCredential[]>]
- [-PasswordCredential <IPasswordCredential[]>] [-Tag <String[]>] [-Type <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PasswordCredential <IPasswordCredential[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzADServicePrincipal -InputObject <IResourcesIdentity> -AppId <String> [-AccountEnabled <String>]
  [-AppRoleAssignmentRequired] [-KeyCredential <IKeyCredential[]>]
- [-PasswordCredential <IPasswordCredential[]>] [-Tag <String[]>] [-Type <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PasswordCredential <IPasswordCredential[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -193,6 +193,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ServicePrincipalType
+the type of the service principal
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Tag
 Optional list of tags that you can apply to your service principals.
 Not nullable.
@@ -219,22 +235,6 @@ Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Type
-the type of the service principal
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases: ServicePrincipalType
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

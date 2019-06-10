@@ -24,6 +24,12 @@ Set-AzResourceGroup -Name <String> -SubscriptionId <String> -Location <String> [
  [-Tag <IResourceGroupTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateById
+```
+Set-AzResourceGroup -SubscriptionId <String> -Id <String> -Location <String> [-ManagedBy <String>]
+ [-Tag <IResourceGroupTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Set-AzResourceGroup -InputObject <IResourcesIdentity> -Location <String> [-ManagedBy <String>]
@@ -77,6 +83,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Id
+The ID of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateById
+Aliases: ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -100,7 +122,7 @@ It must be one of the supported Azure locations.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateById, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -116,7 +138,7 @@ The ID of the resource that manages this resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateById, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -165,7 +187,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Update, UpdateExpanded, UpdateById
 Aliases:
 
 Required: True
@@ -181,7 +203,7 @@ The tags attached to the resource group.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroupTags
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateById, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

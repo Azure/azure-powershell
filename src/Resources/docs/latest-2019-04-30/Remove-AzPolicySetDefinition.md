@@ -20,7 +20,7 @@ Remove-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-PassThru]
 
 ### Delete1
 ```
-Remove-AzPolicySetDefinition -Name <String> -ManagementGroupId <String> [-PassThru]
+Remove-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ManagementGroupId
+### -ManagementGroupName
 The ID of the management group.
 
 ```yaml

@@ -33,6 +33,12 @@ Update-AzResourceGroup -SubscriptionId <String> -ResourceGroupName <String> [-Na
  [<CommonParameters>]
 ```
 
+### UpdateById
+```
+Update-AzResourceGroup -SubscriptionId <String> -Id <String> [-ManagedBy <String>]
+ [-Tag <IResourceGroupPatchableTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaIdentity
 ```
 Update-AzResourceGroup -InputObject <IResourcesIdentity> [-Parameter <IResourceGroupPatchable>]
@@ -82,6 +88,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Id
+The ID of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateById
+Aliases: ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -103,7 +125,7 @@ The ID of the resource that manages this resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded, UpdateById
 Aliases:
 
 Required: False
@@ -168,7 +190,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Update, UpdateExpanded, UpdateById
 Aliases:
 
 Required: True
@@ -184,7 +206,7 @@ The tags attached to the resource group.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroupPatchableTags
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded, UpdateById
 Aliases:
 
 Required: False

@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/test-azresourcemoveresource
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/test-azresourcemove
 schema: 2.0.0
 ---
 
-# Test-AzResourceMoveResource
+# Test-AzResourceMove
 
 ## SYNOPSIS
 This operation checks whether the specified resources can be moved to the target.
@@ -19,28 +19,35 @@ Retrieve the URL in the Location header value to check the result of the long-ru
 
 ### Validate (Default)
 ```
-Test-AzResourceMoveResource -SourceResourceGroupName <String> -SubscriptionId <String>
+Test-AzResourceMove -SourceResourceGroupName <String> -SubscriptionId <String>
  [-Parameter <IResourcesMoveInfo>] [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
+### ValidateByComponents
+```
+Test-AzResourceMove -SourceResourceGroupName <String> -SubscriptionId <String>
+ -TargetResourceGroupName <String> [-PassThru] [-Resource <String[]>] [-TargetSubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### ValidateExpanded
 ```
-Test-AzResourceMoveResource -SourceResourceGroupName <String> -SubscriptionId <String> [-PassThru]
+Test-AzResourceMove -SourceResourceGroupName <String> -SubscriptionId <String> [-PassThru]
  [-Resource <String[]>] [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentityExpanded
 ```
-Test-AzResourceMoveResource -InputObject <IResourcesIdentity> [-PassThru] [-Resource <String[]>]
+Test-AzResourceMove -InputObject <IResourcesIdentity> [-PassThru] [-Resource <String[]>]
  [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### ValidateViaIdentity
 ```
-Test-AzResourceMoveResource -InputObject <IResourcesIdentity> [-Parameter <IResourcesMoveInfo>] [-PassThru]
+Test-AzResourceMove -InputObject <IResourcesIdentity> [-Parameter <IResourcesMoveInfo>] [-PassThru]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -159,7 +166,7 @@ The IDs of the resources.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
+Parameter Sets: ValidateByComponents, ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -171,11 +178,11 @@ Dynamic: False
 ```
 
 ### -SourceResourceGroupName
-The name of the resource group containing the resources to validate for move.
+The name of the resource group containing the resources to move.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded
+Parameter Sets: Validate, ValidateByComponents, ValidateExpanded
 Aliases:
 
 Required: True
@@ -191,7 +198,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Validate, ValidateExpanded
+Parameter Sets: Validate, ValidateByComponents, ValidateExpanded
 Aliases:
 
 Required: True
@@ -209,6 +216,39 @@ The target resource group.
 Type: System.String
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TargetResourceGroupName
+The target resource group name.
+
+```yaml
+Type: System.String
+Parameter Sets: ValidateByComponents
+Aliases: DestinationResourceGroupName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TargetSubscriptionId
+The target subscription id.
+If not value is provided, the subscription id of the current context will be used.
+
+```yaml
+Type: System.String
+Parameter Sets: ValidateByComponents
+Aliases: DestinationSubscriptionId
 
 Required: False
 Position: Named

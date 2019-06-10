@@ -20,7 +20,7 @@ Set-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-Parameter <IPol
 
 ### UpdateExpanded3
 ```
-Set-AzPolicyDefinition -Name <String> -ManagementGroupId <String> [-Parameter <IPolicyDefinition>]
+Set-AzPolicyDefinition -Name <String> -ManagementGroupName <String> [-Parameter <IPolicyDefinition>]
  [-Description <String>] [-DisplayName <String>] [-Metadata <IPolicyDefinitionPropertiesMetadata>]
  [-Mode <PolicyMode>] [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>] [-PolicyType <PolicyType>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -36,7 +36,7 @@ Set-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-Parameter <IPol
 
 ### Update3
 ```
-Set-AzPolicyDefinition -Name <String> -ManagementGroupId <String> [-Parameter <IPolicyDefinition>]
+Set-AzPolicyDefinition -Name <String> -ManagementGroupName <String> [-Parameter <IPolicyDefinition>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ManagementGroupId
+### -ManagementGroupName
 The ID of the management group.
 
 ```yaml

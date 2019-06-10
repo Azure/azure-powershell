@@ -258,6 +258,10 @@ directive:
       subject: TagValue
     hide: true
   - where:
+      verb: Set
+      subject: Tag
+    hide: true
+  - where:
       verb: Get
       subject: ADGroupMember
       parameter-name: ObjectId
@@ -308,5 +312,25 @@ directive:
   - where:
       verb: Get
       subject: Tenant
+    hide: true
+  - where:
+      subject: ResourceMoveResource
+    set:
+      subject: ResourceMove
+  - where:
+      subject: PolicyDefinition
+      parameter-name: ManagementGroupId
+    set:
+      parameter-name: ManagementGroupName
+  - where:
+      subject: PolicySetDefinition
+      parameter-name: ManagementGroupId
+    set:
+      parameter-name: ManagementGroupName
+  - where:
+      subject: PolicyDefinitionBuilt
+    hide: true
+  - where:
+      subject: PolicySetDefinitionBuilt
     hide: true
 ```
