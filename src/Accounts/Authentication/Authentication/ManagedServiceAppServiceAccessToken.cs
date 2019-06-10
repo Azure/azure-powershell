@@ -24,6 +24,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
         }
 
+        public ManagedServiceAppServiceAccessToken(IAzureAccount account, IAzureEnvironment environment, string resourceId, string tenant = "Common")
+            : base(account, environment, resourceId, tenant)
+        {
+        }
+
         protected override IEnumerable<string> BuildTokenUri(string baseUri, IAzureAccount account, IdentityType identityType,
             string resourceId)
         {

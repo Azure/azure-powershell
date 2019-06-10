@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Utilities
                 {
                     var value = row[columnIndex];
                     var normalizedValue =
-                        (value as JObject)?.ToPsObject() ?? value;
+                        (value as JToken)?.ToPsObject() ?? value;
                     
                     rowObject.Properties.Add(new PSNoteProperty(
                         name: table.Columns[columnIndex].Name,

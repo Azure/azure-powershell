@@ -17,10 +17,14 @@
                 <PropertyName>Id</PropertyName>
               </ListItem>
               <ListItem>
-                <PropertyName>ResourceGroup</PropertyName>
+                <PropertyName>ResourceGroupName</PropertyName>
               </ListItem>
               <ListItem>
                 <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Sku </Label>
+                <ScriptBlock>"Name : " + $_.Sku.Name  + " , Tier : " +  $_.Sku.Tier + ", Capacity : " +  $_.Sku.Capacity </ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>Tags</Label>
@@ -30,11 +34,7 @@
                     $_.Tags.GetEnumerator() | ForEach-Object{ $_.Key, $_.Value }
                   }
                 </ScriptBlock>              
-              </ListItem>
-              <ListItem>
-                <Label>Sku </Label>
-                <ScriptBlock>"Name : " + $_.Sku.Name  + " , Tier : " +  $_.Sku.Tier + ", Capacity : " +  $_.Sku.Capacity </ScriptBlock>
-              </ListItem>
+              </ListItem>              
               <ListItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </ListItem>
