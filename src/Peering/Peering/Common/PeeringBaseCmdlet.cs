@@ -18,6 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
+    using System.Net;
     using System.Net.Sockets;
 
     using Microsoft.Azure.Commands.Common.Authentication;
@@ -238,6 +239,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             if (routePrefix != null)
             {
                 this.WriteVerbose($"Validating route prefix: {routePrefix} for PeeringType:{peeringType}");
+                if (peeringType.Equals(Constants.Exchange))
+                {
+                    if (routePrefix.Split('/').Length != 2) {
+                        // Prefix if missing
+                        var newRouteWithPrefix = IPAddress.Parse(routePrefix);
+                        if(newRouteWithPrefix.AddressFamily == AddressFamily.InterNetwork)
+                        {
+                            routePrefix += "/32";
+                            this.WriteVerbose($"Validating route prefix: {routePrefix} for PeeringType:{peeringType}");
+                        }
+                        if(newRouteWithPrefix.AddressFamily == AddressFamily.InterNetworkV6)
+                        {
+                            routePrefix += "/128";
+                            this.WriteVerbose($"Validating route prefix: {routePrefix} for PeeringType:{peeringType}");
+                        }
+
+                    }
+                }
                 var prefix = RoutePrefix.GetValidPrefix(routePrefix);
                 switch (prefix.PrefixAddressFamily)
                 {
@@ -419,26 +438,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 
             if (connection.BgpSession == null)
                 throw new PSArgumentNullException(string.Format(Resources.Error_NullSession));
-            if (connection.BgpSession.PeerSessionIPv4Address == null
-                && connection.BgpSession.MaxPrefixesAdvertisedV4 != null)
-                throw new PSArgumentException(
-                    string.Format(Resources.Error_MustBeNull, "4", connection.BgpSession.MaxPrefixesAdvertisedV4));
-            if (connection.BgpSession.PeerSessionIPv6Address == null
-                && connection.BgpSession.MaxPrefixesAdvertisedV6 != null)
-                throw new PSArgumentException(
-                    string.Format(Resources.Error_MustBeNull, "6", connection.BgpSession.MaxPrefixesAdvertisedV6));
-            if (connection.BgpSession.MaxPrefixesAdvertisedV4 <= 0 && connection.BgpSession.SessionPrefixV4 != null)
-                throw new PSArgumentException(
-                    string.Format(
-                        Resources.Error_MustBeGreaterThanZero,
-                        "4",
-                        connection.BgpSession.MaxPrefixesAdvertisedV4));
-            if (connection.BgpSession.MaxPrefixesAdvertisedV6 <= 0 && connection.BgpSession.SessionPrefixV6 != null)
-                throw new PSArgumentException(
-                    string.Format(
-                        Resources.Error_MustBeGreaterThanZero,
-                        "6",
-                        connection.BgpSession.MaxPrefixesAdvertisedV6));
             return true;
         }
 
@@ -460,7 +459,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                 throw new PSArgumentException(
                     string.Format(Resources.Error_InvalidFacilityId, connection.PeeringDBFacilityId));
             }
-
             if (connection.BgpSession == null)
                 throw new PSArgumentNullException(string.Format(Resources.Error_NullSession));
             return this.ValidBandwidth(connection.BandwidthInMbps);
@@ -488,10 +486,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             }
             catch
             {
-                var ermError = JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
-                if (ermError.Code != null)
+                try
                 {
-                    error = new ErrorResponse(code: ermError.Code, message: ermError.Message);
+                    var ermError = JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
+                    if (ermError.Code != null)
+                    {
+                        error = new ErrorResponse(code: ermError.Code, message: ermError.Message);
+                    }
+                }
+                catch
+                {
+                    throw ex;
                 }
             }
             return error;
