@@ -47,6 +47,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string GatewayManagerEtag { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? AllowGlobalReach { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? GlobalReachEnabled { get; set; }
         [Ps1Xml(Label = "Sku Name", Target = ViewControl.Table, ScriptBlock = "$_.Sku.Name")]
         public PSExpressRouteCircuitSku Sku { get; set; }
         public List<PSExpressRouteCircuitAuthorization> Authorizations { get; set; }

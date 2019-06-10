@@ -103,9 +103,25 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset3)]
+        public void VirtualNetworkGatewayOpenVPNAADAuthTest()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayOpenVPNAADAuth");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset3)]
         public void VirtualNetworkGatewayVpnCustomIpsecPolicySetTest()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkGatewayVpnCustomIpsecPolicySet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset3)]
+        public void VirtualNetworkGatewayVpnclientConnectionHealthTest()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayVpnClientConnectionHealth");
         }
     }
 }
