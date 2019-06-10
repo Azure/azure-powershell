@@ -568,8 +568,8 @@ Accept wildcard characters: False
 
 ### -VolumeType
 Specifies the type of virtual machine volumes on which to perform the encryption operation.
-Allowed values for virtual machines that run the Windows operating system are: All, OS, and Data.
-The only allowed value for Linux virtual machines is: Data.
+Allowed values for Windows virtual machines: All, OS, and Data.
+The only allowed value for Linux virtual machines: Data.
 The VolumeType parameter is required when encrypting Linux virtual machines, but can be omitted when encrypting Windows virtual machines.
 
 ```yaml
