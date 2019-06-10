@@ -50,8 +50,6 @@ Set-AzVMDiskEncryptionExtension [-ResourceGroupName] <String> [-VMName] <String>
 The **Set-AzVMDiskEncryptionExtension** cmdlet enables encryption on a running infrastructure as a service (IaaS) virtual machine in Azure.
 This cmdlet enables encryption by installing the disk encryption extension on the virtual machine. 
 
-If no *Name* parameter is specified, an extension with the default name AzureDiskEncryption for virtual machines that run the Windows operating system or AzureDiskEncryptionForLinux for Linux virtual machines are installed. 
-
 The *VolumeType* parameter is required when encrypting Linux virtual machines, but can be omitted when encrypting Windows virtual machines.
 
 This cmdlet requires confirmation from the users as one of the steps to enable encryption requires a restart of the virtual machine.

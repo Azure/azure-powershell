@@ -24,8 +24,6 @@ Set-AzVmssDiskEncryptionExtension [-ResourceGroupName] <String> [-VMScaleSetName
 ## DESCRIPTION
 The **Set-AzVmssDiskEncryptionExtension** cmdlet enables encryption on a VM scale set. This cmdlet enables encryption by installing the disk encryption extension on the VM scale set.
 
-If no *Name* parameter is specified, an extension with the default name AzureDiskEncryption for virtual machines that run the Windows operating system or AzureDiskEncryptionForLinux for Linux virtual machines are installed.
-
 The *VolumeType* parameter is required when encrypting Linux virtual machines, and must be set to "Data". It can be omitted when encrypting Windows virtual machines.
 
 ## EXAMPLES
