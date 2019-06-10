@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [Parameter(Position = 4, ParameterSetName = ByWorkspaceNameByKind, Mandatory = true, ValueFromPipelineByPropertyName = true,
         HelpMessage = "The data source name.")]
         [Parameter(ParameterSetName = ByWorkspaceObjectByKind)]
-        [ValidateSet(
+        [PSArgumentCompleter(
             PSDataSourceKinds.AzureAuditLog,
             PSDataSourceKinds.AzureActivityLog,
             PSDataSourceKinds.CustomLog,
