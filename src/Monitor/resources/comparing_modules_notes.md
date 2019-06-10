@@ -6,7 +6,7 @@
 
 | Cmdlet | New? | Notes |
 | ------ | ---- | ----- |
-| `Get-AzActivityLog` | Yes | - `-Filter` should be replaced by more specific parameters or by a querying syntax |
+| `Get-AzActivityLog` | No | - `-Filter` should be replaced by more specific parameters or by a querying syntax |
 | `Get-AzTenantActivityLog` | Yes | |
 
 ### ActionGroup
@@ -17,8 +17,8 @@
 | `New-AzActionGroup` | No | - Create just like the Set variant.<br>- The original code also have a `New-AzActionGroup` but it is a local object creation used only for `ActivityLogAlerts` |
 | `Set-AzActionGroup` | No | - The original expects ActionGroupReceiver<br>- The original aggregates different types of receiver in just one |
 | `Update-AzActionGroup` | Yes | |
-| `Remove-AzActionGroup` | No | |
-| `New-AzActionGroupReceiver` | Old | - Create in-memory receiver information. It can be an eamail, sms or webhook receiver. Used in `Set-AzActionGroup` |
+| `Remove-AzActionGroup` | No | - Correct |
+| `New-AzActionGroupReceiver` | X | - Create in-memory receiver information. It can be an eamail, sms or webhook receiver. Used in `Set-AzActionGroup` |
 | `Enable-AzActionGroupReceiver` | Yes | |
 
 ### ActivityLogAlert
