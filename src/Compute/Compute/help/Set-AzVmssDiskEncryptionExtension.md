@@ -272,7 +272,7 @@ Accept wildcard characters: False
 ```
 
 ### -VolumeType
-Type of the volume (OS or Data) on which to perform encryption operation. This parameter is required when encrypting Linux virtual machines, and must be set to "Data". This parameter can be omitted when encrypting Windows virtual machines.
+Type of the volume (OS or Data) on which to perform encryption operation. This parameter is required when encrypting Linux virtual machines, and must be set to a vlue supported by the Linux distribution. This parameter can be omitted when encrypting Windows virtual machines.
 
 ```yaml
 Type: System.String
