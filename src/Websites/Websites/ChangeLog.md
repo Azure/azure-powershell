@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.0
 * Adds -UseDisasterRecovery switch parameter to Get-AzWebAppSnapshot
 
 ## Version 1.2.2

@@ -1,3 +1,128 @@
+## 2.3.0 - June 2019
+#### Az.Accounts
+* Fix bug with incorrect URL being used in some cases for Functions calls
+    - More information here: https://github.com/Azure/azure-powershell/issues/8983
+* Fix Issue with aliases from AzureRM to Az cmdlets
+  - Set-AzureRmVMBootDiagnostics -> Set-AzVMBootDiagnostic
+  - Export-AzureRMLogAnalyticThrottledRequests -> Export-AzLogAnalyticThrottledRequest
+
+#### Az.Compute
+* New-AzVm and New-AzVmss simple parameter sets now accept the 'ProximityPlacementGroup' parameter.
+* Fix typo in 'New-AzVM' reference documentation
+
+#### Az.Dns
+* Fixed a typo in 'Set-AzDnsZone' help examples.
+
+#### Az.EventGrid
+* Updated to use the 2019-06-01 API version.
+* New cmdlets:
+    - New-AzureRmEventGridDomain
+        - Creates a new Azure Event Grid Domain.
+    - Get-AzureRmEventGridDomain
+        - Gets the details of an Event Grid Domain, or gets a list of all Event Grid Domains in the current Azure subscription.
+    - Remove-AzureRmEventGridDomain
+        - Removes an Azure Event Grid Domain.
+    - New-AzureRmEventGridDomainKey
+        - Regenerates the shared access key for an Azure Event Grid Domain.
+    - Get-AzureRmEventGridDomainKey
+        - Gets the shared access keys used to publish events to an Event Grid Domain.
+    - New-AzureRmEventGridDomainTopic:
+        - Creates a new Azure Event Grid Domain Topic.
+    - Get-AzureRmEventGridDomainTopic
+        - Gets the details of an Event Grid Domain Topic, or gets a list of all Event Grid Domain Topics under specific Event Grid Domain in the current Azure 
+    - Remove-AzureRmEventGridDomainTopic:
+        - Removes an existing Azure Event Grid Domain Topic.
+* Updated cmdlets:
+    - New-AzureRmEventGridSubscription/Update-AzureRmEventGridSubscription:
+        - Add new mandatory parameters to support piping for the new Event Grid Domain and Event Grid Domain Topic to allow creating new event subscription under these resources.
+        - Add new mandatory parameters for specifying the new Event Grid Domain name and/or Event Grid Domain Topic name to allow creating new event subscription under these resources.
+        - Add new Parameter sets for domains and domain topics to allow reusing existing parameters (e.g., EndPointType, SubjectBeginsWith, etc).
+        - Add new optional parameters for specifying:
+            - Event subscription expiration date,
+            - Advanced filtering parameters.
+        - Add new enum for servicebusqueue as destination.
+        - Disallow usage of 'All' in -IncludedEventType option and replace it with 
+    - Get-AzEventGridTopic, Get-AzEventGridDomain, Get-AzEventGridDomainTopic, Get-AzEventGridSubscription:
+        - Add new optional parameters (Top, ODataQuery and NextLink) to support results pagination and filtering.
+    - Remove-AzureRmEventGridSubscription
+        - Add new mandatory parameters to support piping for Event Grid Domain and Event Grid Domain Topic to allow removing existing event subscription under these resources.
+        - Add new mandatory parameters for specifying the Event Grid Domain name and/or Event Grid Domain Topic name to allow removing existing event subscription under these resources.
+
+#### Az.Network
+* Add support for Virtual Network Gateway Resource
+    - New cmdlets
+        - Get-AzVirtualNetworkGatewayVpnClientConnectionHealth
+* Add AvailablePrivateEndpointType
+    - New cmdlets 
+        - Get-AzAvailablePrivateEndpointType
+* Add PrivatePrivateLinkService
+    - New cmdlets 
+        - Get-AzPrivateLinkService 
+        - New-AzPrivateLinkService
+        - Remove-AzPrivateLinkService
+        - New-AzPrivateLinkServiceIpConfig
+        - Set-AzPrivateEndpointConnection
+* Add PrivateEndpoint
+    - New cmdlets
+        - Get-AzPrivateEndpoint
+        - New-AzPrivateEndpoint
+        - Remove-AzPrivateEndpoint
+        - New-AzPrivateLinkServiceConnection
+* Updated below commands for feature: UseLocalAzureIpAddress flag on VpnConnection
+    - Updated New-AzVpnConnection: Added optional parameter -UseLocalAzureIpAddress to indicate that local azure ip address should be used as source address while initiating connection.
+    - Updated Set-AzVpnConnection: Added optional parameter -UseLocalAzureIpAddress to indicate that local azure ip address should be used as source address while initiating connection.
+* Added readonly field PeeredConnections in ExpressRoute peering.
+* Added readonly field GlobalReachEnabled in ExpressRoute.
+* Added breaking change attribute to call out deprecation of AllowGlobalReach field in ExpressRouteCircuit model
+* Fixed Issue 8756 Error using TargetListenerID with AzApplicationGatewayRedirectConfiguration cmdlets
+* Fixed bug in New-AzApplicationGatewayPathRuleConfig that prevented the rewrite ruleset from being set.
+* Fixed displaying of VirtualNetworkTaps in NetworkInterfaceIpConfiguration
+* Fixed Cortex Get cmdlets for list all part
+* Fixed VirtualHub reference creation for ExpressRouteGateways, VpnGateway
+* Added support for Availability Zones in AzureFirewall and NatGateway
+* Added cmdlet Get-AzNetworkServiceTag
+* Add support for multiple public IP addresses for Azure Firewall
+    - Updated New-AzFirewall cmdlet:
+        - Added parameter -PublicIpAddress which accepts one or more Public IP Address objects
+        - Added parameter -VirtualNetwork which accepts a Virtual Network object
+        - Added methods AddPublicIpAddress and RemovePublicIpAddress on firewall object - these accept a Public IP Address object as input
+        - Deprecated parameters -PublicIpName and -VirtualNetworkName 
+* Updated below commands for feature: Set VpnClient AAD authentication options to Virtual network gateway resource. 
+    - Updated New-AzVirtualNetworkGateway: Added optional parameters AadTenantUri,AadAudienceId,AadIssuerUri to set VpnClient AAD authentication options on Gateway.
+    - Updated Set-AzVirtualNetworkGateway: Added optional parameter AadTenantUri,AadAudienceId,AadIssuerUri to set VpnClient AAD authentication options on Gateway.
+    - Updated Set-AzVirtualNetworkGateway: Added optional switch parameter RemoveAadAuthentication to remove VpnClient AAD authentication options from Gateway.
+
+#### Az.OperationalInsights
+* Enable **pergb2018** pricing tier in 'New-AzureRmOperationalInsightsWorkspace' command
+
+#### Az.Resources
+* Support for additional Template Export options
+    - Add '-SkipResourceNameParameterization' parameter to Export-AzResourceGroup
+    - Add '-SkipAllParameterization' parameter to Export-AzResourceGroup
+    - Add '-Resource' parameter to Export-AzResourceGroup for exported resource filtering
+
+#### Az.ServiceFabric
+* Fix add certificate ByExistingKeyVault getting the wrong thumbprint in some cases
+
+#### Az.Sql
+* Fix Advanced Threat Protection storage endpoint suffix
+* Fix Advanced Data Security enable overrides Advanced Threat Protection policy
+* New Cmdlets for Management.Sql to allow customers to add TDE keys and set TDE protector for managed instances
+   - Add-AzSqlInstanceKeyVaultKey
+   - Get-AzSqlInstanceKeyVaultKey
+   - Remove-AzSqlInstanceKeyVaultKey
+   - Get-AzSqlInstanceTransparentDataEncryptionProtector
+   - Set-AzSqlInstanceTransparentDataEncryptionProtector
+
+#### Az.Storage
+* Support Kind FileStorage and SkuName Premium_ZRS when create Storage account
+    - New-AzStorageAccount
+* Clarified description of blob immutability cmdlet
+    -  Remove-AzRmStorageContainerImmutabilityPolicy
+
+#### Az.Websites
+* Adds -UseDisasterRecovery switch parameter to Get-AzWebAppSnapshot
+
 ## 2.2.0 - June 2019
 #### Az.Cdn
 * Updated cmdlets to support rulesEngine feature based on API version 2019-04-15.

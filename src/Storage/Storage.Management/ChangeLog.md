@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.0
 * Support Kind FileStorage and SkuName Premium_ZRS when create Storage account
     - New-AzStorageAccount
 * Clarified description of blob immutability cmdlet

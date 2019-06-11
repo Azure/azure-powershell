@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.1
 * Fix add certificate ByExistingKeyVault getting the wrong thumbprint in some cases
 
 ## Version 1.1.0
