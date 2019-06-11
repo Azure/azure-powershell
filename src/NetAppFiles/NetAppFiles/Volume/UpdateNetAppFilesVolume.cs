@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 Tags = Tag
             };
 
-            if (ShouldProcess(Name, "Update the pool"))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
                 var anfVolume = AzureNetAppFilesManagementClient.Volumes.Update(volumePatchBody, ResourceGroupName, AccountName, PoolName, Name);
                 WriteObject(anfVolume.ToPsNetAppFilesVolume());

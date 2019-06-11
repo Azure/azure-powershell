@@ -33,14 +33,21 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
     {
         [Parameter(
             Mandatory = true,
+            ParameterSetName = FieldsParameterSet,
             HelpMessage = "The resource group of the ANF account")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
-
+        
+        
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the ANF account")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource id of the ANF account",
+            ParameterSetName = ResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("AccountName")]
         public string Name { get; set; }
@@ -71,10 +78,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             {
                 Location = Location,
                 ActiveDirectories = (ActiveDirectory != null) ? ModelExtensions.ConvertActiveDirectoriesFromPs(ActiveDirectory) : null,
-                Tags = Tag
+                Tags = Tag,
+                                                    
             };
 
-            if (ShouldProcess(Name, "Create the new account"))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
                 var anfAccount = AzureNetAppFilesManagementClient.Accounts.Update(netAppAccountBody, ResourceGroupName, Name);
                 WriteObject(anfAccount.ToPsNetAppFilesAccount());

@@ -103,7 +103,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             HelpMessage = "The service level of the ANF volume")]
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
-            ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "The service level of the ANF volume")]
         [ValidateNotNullOrEmpty]
@@ -153,7 +152,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 Tags = Tag
             };
 
-            if (ShouldProcess(Name, "Create the new volume"))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
                 var anfVolume = AzureNetAppFilesManagementClient.Volumes.CreateOrUpdate(volumeBody, ResourceGroupName, AccountName, PoolName, Name);
                 WriteObject(anfVolume.ToPsNetAppFilesVolume());

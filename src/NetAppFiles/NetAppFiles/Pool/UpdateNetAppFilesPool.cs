@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 Tags = Tag
             };
 
-            if (ShouldProcess(Name, "Update the pool"))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
                 var anfPool = AzureNetAppFilesManagementClient.Pools.Update(capacityPoolBody, ResourceGroupName, AccountName, Name);
                 WriteObject(anfPool);
