@@ -71,11 +71,11 @@
 - #NO# New-AzPublicIpTag
 - #NO# New-AzVirtualHubRoute
 - #NO# New-AzVirtualHubRouteTable
-- New-AzVirtualHubVnetConnection
+- #NO# New-AzVirtualHubVnetConnection
 - #NO# New-AzVpnClientIpsecParameter
-- New-AzVpnClientIpsecPolicy
-- New-AzVpnClientRevokedCertificate
-- New-AzVpnClientRootCertificate
+- #NO# New-AzVpnClientIpsecPolicy
+- #NO# New-AzVpnClientRevokedCertificate
+- #NO# New-AzVpnClientRootCertificate
 - #NO# Remove-AzApplicationGatewayAuthenticationCertificate
 - #NO# Remove-AzApplicationGatewayBackendAddressPool
 - #NO# Remove-AzApplicationGatewayBackendHttpSettings
@@ -92,12 +92,12 @@
 - #NO# Remove-AzApplicationGatewaySslPolicy
 - #NO# Remove-AzApplicationGatewayTrustedRootCertificate
 - #NO# Remove-AzDelegation
-- Remove-AzVirtualHubVnetConnection
-- Remove-AzVirtualNetworkGatewayDefaultSite
+- #NO# Remove-AzVirtualHubVnetConnection
+- #NO# Remove-AzVirtualNetworkGatewayDefaultSite
 - #NO# Remove-AzVpnClientIpsecParameter
-- Remove-AzVpnClientRevokedCertificate
-- Remove-AzVpnClientRootCertificate
-- Resize-AzVirtualNetworkGateway
+- #NO# Remove-AzVpnClientRevokedCertificate
+- #NO# Remove-AzVpnClientRootCertificate
+- #NO# Resize-AzVirtualNetworkGateway
 - #NO# Set-AzApplicationGatewayAuthenticationCertificate
 - #NO# Set-AzApplicationGatewayBackendAddressPool
 - #NO# Set-AzApplicationGatewayBackendHttpSettings
@@ -114,17 +114,17 @@
 - #NO# Set-AzApplicationGatewaySslCertificate
 - #NO# Set-AzApplicationGatewaySslPolicy
 - #NO# Set-AzApplicationGatewayTrustedRootCertificate
-- Set-AzNetworkWatcherConfigFlowLog
-- Set-AzVirtualNetworkGatewayDefaultSite
+- Y Set-AzNetworkWatcherConfigFlowLog
+- #NO# Set-AzVirtualNetworkGatewayDefaultSite
 - Y Set-AzVpnClientIpsecParameter
-- Start-AzNetworkWatcherResourceTroubleshooting
-- Test-AzDnsAvailability
-- Test-AzPrivateIPAddressAvailability
-- Update-AzVirtualHub
-- Update-AzVirtualWan
-- Update-AzVpnConnection
-- Update-AzVpnGateway
-- Update-AzVpnSite
+- Y Start-AzNetworkWatcherResourceTroubleshooting
+- Y Test-AzDnsAvailability
+- Y Test-AzPrivateIPAddressAvailability
+- !!C!! Update-AzVirtualHub
+- !!C!! Update-AzVirtualWan
+- #NO# Update-AzVpnConnection
+- !!C!! Update-AzVpnGateway
+- !!C!! Update-AzVpnSite
 
 ## Add (General)
 - Add-AzApplicationGatewayAuthenticationCertificate

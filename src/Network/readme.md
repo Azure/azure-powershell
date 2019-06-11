@@ -172,6 +172,17 @@ directive:
       subject: NetworkWatcherNetworkConfigurationDiagnostic
     set:
       alias: Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic
+  - where:
+      verb: Set
+      subject: NetworkWatcherFlowLogConfiguration
+    set:
+      alias: Set-AzNetworkWatcherConfigFlowLog
+  - where:
+      verb: Get
+      subject: ^NetworkWatcherTroubleshooting$
+    set:
+      verb: Start
+      alias: Start-AzNetworkWatcherResourceTroubleshooting
 
 # ApplicationGateway
   - where:
@@ -217,6 +228,13 @@ directive:
     set:
       subject: LoadBalancerInboundNatRule
 
+# Dns
+  - where:
+      verb: Test
+      subject: DnsNameAvailability
+    set:
+      alias: Test-AzDnsAvailability
+
 # Vpn
   - where:
       verb: Invoke
@@ -231,18 +249,6 @@ directive:
     set:
       subject: VirtualNetworkGatewayVpnClientIPsecParameter
       alias: ${verb}-AzVpnClientIpsecParameter
-  - where:
-      verb: Invoke
-      subject: DownloadVpnSiteConfiguration
-    set:
-      verb: Get
-      subject: VpnSiteConfiguration
-  - where:
-      verb: Invoke
-      subject: DownloadVpnSiteConfiguration
-    set:
-      verb: Get
-      subject: VpnSiteConfiguration
   - where:
       verb: Invoke
       subject: GeneratevpnclientpackageVirtualNetworkGateway
@@ -292,6 +298,21 @@ directive:
       subject: NetworkInterfaceEffectiveRouteTable
     set:
       alias: Get-AzEffectiveRouteTable
+  - where:
+      verb: Get
+      subject: NetworkInterfaceTapConfiguration
+    set:
+      alias: Get-AzNetworkInterfaceTapConfig
+  - where:
+      verb: Remove
+      subject: NetworkInterfaceTapConfiguration
+    set:
+      alias: Remove-AzNetworkInterfaceTapConfig
+  - where:
+      verb: Set
+      subject: NetworkInterfaceTapConfiguration
+    set:
+      alias: Set-AzNetworkInterfaceTapConfig
 
 # ExpressRouteCircuit
   - where:
@@ -311,6 +332,11 @@ directive:
       subject: AvailableEndpointService
     set:
       subject: VirtualNetworkAvailableEndpointService
+  - where:
+      verb: Test
+      subject: VirtualNetworkIPAddressAvailability
+    set:
+      alias: Test-AzPrivateIPAddressAvailability
 
 # Fix Alias Issues
   - where:
