@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
                 FileSystemId = FileSystemId
             };
 
-            if (ShouldProcess(Name, "Create the new snapshot"))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
                 var anfSnapshot = AzureNetAppFilesManagementClient.Snapshots.Create(snapshotBody, ResourceGroupName, AccountName, PoolName, VolumeName, Name);
                 WriteObject(anfSnapshot);
