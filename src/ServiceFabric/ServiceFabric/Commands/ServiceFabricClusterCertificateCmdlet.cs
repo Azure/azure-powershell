@@ -52,6 +52,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private string keyVaultCertificateName { get; set; }
 
+        private const string BasicConstraintsExtensionName = "Basic Constraints";
+
         /// <summary>
         /// Resource group name
         /// </summary>
@@ -661,15 +663,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
             }
 
-            X509Certificate2Collection certCollection = GetCertCollectionFromSecret(secretUrl);
-           
-            var lastCert = certCollection.Count > 0 ? certCollection[certCollection.Count - 1] : null;
-            if (lastCert?.Thumbprint != null)
+            X509Certificate2 cert = GetCertFromSecret(secretUrl);
+            if (cert.Thumbprint == null)
             {
-                return lastCert.Thumbprint;
+                throw new PSInvalidOperationException(string.Format("Thumbprint from secretUrl: {0} is null.", secretUrl));
             }
 
-            throw new PSInvalidOperationException(string.Format("Failed to find the thumbprint from {0}", secretUrl));
+            WriteVerboseWithTimestamp("Certificate found from secret with thumbprint: {0}", cert.Thumbprint);
+            return cert.Thumbprint;
         }
 
         private string GetCommonNameFromSecret(string secretUrl)
@@ -692,14 +693,50 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
             }
 
+            var cert = GetCertFromSecret(secretUrl);
+            string commonName = cert.GetNameInfo(X509NameType.SimpleName, false);
+            WriteVerboseWithTimestamp("Certificate found from secret with common name: {0}", commonName);
+            return commonName;
+        }
+
+        private X509Certificate2 GetCertFromSecret(string secretUrl)
+        {
             X509Certificate2Collection certCollection = GetCertCollectionFromSecret(secretUrl);
-            var lastCert = certCollection.Count > 0 ? certCollection[certCollection.Count - 1] : null;
-            if (lastCert != null)
+
+            if (certCollection.Count == 0)
             {
-                return lastCert.GetNameInfo(X509NameType.SimpleName, false);
+                throw new PSInvalidOperationException(string.Format("Failed to get certificate from secretUrl: {0}. Certcollection is empty", secretUrl));
             }
 
-            throw new PSInvalidOperationException(string.Format("Failed to find the common name from {0}", secretUrl));
+            var firstCert = certCollection[0];
+            var lastCert = certCollection[certCollection.Count - 1];
+
+            if (!IsCertCA(firstCert))
+            {
+                return firstCert;
+            }
+            else if (!IsCertCA(lastCert))
+            {
+                return lastCert;
+            }
+            else
+            {
+                throw new PSInvalidOperationException(string.Format("Failed to get certificate from secretUrl: {0}. All certs in the chain are Certificate Authority", secretUrl));
+            }
+        }
+
+        private bool IsCertCA(X509Certificate2 cert)
+        {
+            foreach (var currExt in cert.Extensions)
+            {
+                if (currExt.Oid.FriendlyName == BasicConstraintsExtensionName)
+                {
+                    X509BasicConstraintsExtension ext = (X509BasicConstraintsExtension)currExt;
+                    return ext.CertificateAuthority;
+                }
+            }
+
+            return false;
         }
 
         private X509Certificate2Collection GetCertCollectionFromSecret(string secretUrl)

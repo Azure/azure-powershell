@@ -258,6 +258,7 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'New-AzRouteConfig', 'Remove-AzRouteConfig', 'Set-AzRouteConfig', 
                'Set-AzRouteTable', 'Set-AzVirtualNetworkGateway', 
                'Get-AzVirtualNetworkGateway', 'New-AzVirtualNetworkGateway', 
+			   'Get-AzVirtualNetworkGatewayVpnclientConnectionHealth',
                'Get-AzVpnClientRootCertificate', 
                'Get-AzVpnClientRevokedCertificate', 
                'Add-AzVpnClientRootCertificate', 
@@ -377,7 +378,7 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Get-AzNetworkProfile', 'New-AzNetworkProfile', 
                'Remove-AzNetworkProfile', 'Set-AzNetworkProfile', 
                'New-AzContainerNicConfig', 'New-AzContainerNicConfigIpConfig', 
-               'Get-AzInterfaceEndpoint', 'Add-AzNetworkInterfaceTapConfig', 
+               'Add-AzNetworkInterfaceTapConfig', 
                'Get-AzNetworkInterfaceTapConfig', 
                'Set-AzNetworkInterfaceTapConfig', 
                'Remove-AzNetworkInterfaceTapConfig', 'Get-AzVirtualNetworkTap', 
@@ -395,7 +396,14 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Get-AzExpressRouteCrossConnectionRouteTable', 
                'Get-AzExpressRouteCrossConnectionRouteTableSummary', 
                'Get-AzNatGateway', 'New-AzNatGateway', 'Remove-AzNatGateway', 
-               'Set-AzNatGateway'
+               'Set-AzNatGateway', 
+               'Get-AzNetworkServiceTag', 
+               'New-AzPrivateEndpoint', 'Get-AzPrivateEndpoint', 'Remove-AzPrivateEndpoint', 
+               'New-AzPrivateLinkServiceConnection', 
+               'New-AzPrivateLinkService', 'Get-AzPrivateLinkService', 'Remove-AzPrivateLinkService', 
+               'New-AzPrivateLinkServiceIpConfig', 
+               'Set-AzPrivateEndpointConnection', 
+               'Get-AzAvailablePrivateEndpointType'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -412,7 +420,8 @@ AliasesToExport = 'List-AzApplicationGatewayAvailableWafRuleSets',
                'Set-AzApplicationGatewayBackendHttpSettings', 
                'Get-AzExpressRouteCircuitStats', 
                'Get-AzApplicationGatewayAvailableWafRuleSets', 
-               'Get-AzApplicationGatewayAvailableSslOptions'
+               'Get-AzApplicationGatewayAvailableSslOptions',
+               'Get-AzInterfaceEndpoint'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

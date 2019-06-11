@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
@@ -112,6 +113,23 @@ namespace Microsoft.Azure.Commands.WebApps.Models
             {
                 ErrorLogger(error);
             }
+        }
+
+        /// <summary>
+        /// Gets a web app resource from the ARM cache.
+        /// </summary>
+        public GenericResource GetAppResource(string name, string slot = null)
+        {
+            ODataQuery<GenericResourceFilter> query;
+            if (string.IsNullOrEmpty(slot) || string.Equals(slot, "production", StringComparison.InvariantCultureIgnoreCase))
+            {
+                query = new ODataQuery<GenericResourceFilter>($"resourceType eq 'Microsoft.Web/sites' and name eq '{name}'");
+            }
+            else
+            {
+                query = new ODataQuery<GenericResourceFilter>($"resourceType eq 'Microsoft.Web/sites/slots' and name eq '{name}/{slot}'");
+            }
+            return ResourceManagementClient.Resources.List(query).FirstOrDefault();
         }
 
         public DeploymentExtended ProvisionDeploymentStatus(string resourceGroup, string deploymentName, Deployment deployment)
