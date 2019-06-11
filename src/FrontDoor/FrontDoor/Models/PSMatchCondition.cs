@@ -29,6 +29,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 
         public bool? NegateCondition { get; set; }
 
-        public List<string> Transforms { get; set; }
+        public List<string> Transform { get; set; }
     }
 }
