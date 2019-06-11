@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string[] IncludeDiskId { get; set; }
 
         /// <summary>
-        ///     Gets or sets list of disks config to include for replication. By default all disks are included.
+        ///     Gets or sets list of disks configuration to include for replication. By default all disks are included.
         /// </summary>
 
         [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzure)]
@@ -272,8 +272,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         /// Gets or sets the resource ID of the recovery cloud service to failover this virtual machine to.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure,HelpMessage = "Specify the availabilty zone to used by the failover Vm in target recovery region.")]
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails, HelpMessage = "Specify the availabilty zone to used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, HelpMessage = "Specify the availability zone to used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails, HelpMessage = "Specify the availability zone to used by the failover Vm in target recovery region.")]
         [ValidateNotNullOrEmpty]
         public string RecoveryAvailabilityZone { get; set; }
 
@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     {
                         DiskId = p.DiskId,
                         DiskType = p.DiskType,
-                        LogStorageAccountId = p.LogStorageAccountId 
+                        LogStorageAccountId = p.LogStorageAccountId
                     }).ToList();
                 providerSettings.DisksToInclude = inmageAzureV2DiskInput;
             }
@@ -536,7 +536,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        ///     Helper method for E2A and H2A scenerio.
+        ///     Helper method for E2A and H2A scenario.
         /// </summary>
         private void EnterpriseAndHyperVToAzure(EnableProtectionInput input)
         {
@@ -640,7 +640,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        ///     Helper method for Azure to Azure replication scenerio.
+        ///     Helper method for Azure to Azure replication scenario.
         /// </summary>
         private void AzureToAzureReplication(EnableProtectionInput input)
         {
@@ -749,7 +749,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
                 else
                 {
-                    throw new Exception("Pass Disk details for Classic Vms");
+                    throw new Exception("Pass Disk details for Classic VMs");
                 }
             }
             else
@@ -782,39 +782,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
             }
 
-
-            providerSettings.DiskEncryptionInfo = this.A2AEncryptionDetailDetails();
+            providerSettings.DiskEncryptionInfo = this.A2AEncryptionDetails();
 
             input.Properties.ProviderSpecificDetails = providerSettings;
         }
 
-        private DiskEncryptionInfo A2AEncryptionDetailDetails()
+        /**
+         * Creating DiskEncryptionInfo for A2A encrypted Vm.
+         */
+        private DiskEncryptionInfo A2AEncryptionDetails()
         {
-            // Any encryption data is present.
-            if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionSecretUrl)) ||
-                this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionVaultId)) ||
-                this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionKeyUrl)) ||
-                this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionVaultId)))
+            // Checking if any encryption data is present then the only creating DiskEncryptionInfo.
+            if (this.IsParameterBound(c => c.DiskEncryptionSecretUrl) ||
+                this.IsParameterBound(c => c.DiskEncryptionVaultId) ||
+                this.IsParameterBound(c => c.KeyEncryptionKeyUrl) ||
+                this.IsParameterBound(c => c.KeyEncryptionVaultId))
             {
                 DiskEncryptionInfo diskEncryptionInfo = new DiskEncryptionInfo();
                 // BEK DATA is present
-                if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionSecretUrl)) &&
-                this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionVaultId)))
+                if (this.IsParameterBound(c => c.DiskEncryptionSecretUrl) && this.IsParameterBound(c => c.DiskEncryptionVaultId))
                 {
                     diskEncryptionInfo.DiskEncryptionKeyInfo = new DiskEncryptionKeyInfo(this.DiskEncryptionSecretUrl, this.DiskEncryptionVaultId);
                     // KEK Data is present in pair.
-                    if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionKeyUrl)) &&
-                this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionVaultId)))
+                    if (this.IsParameterBound(c => c.KeyEncryptionKeyUrl) && this.IsParameterBound(c => c.KeyEncryptionVaultId))
                     {
                         diskEncryptionInfo.KeyEncryptionKeyInfo = new KeyEncryptionKeyInfo(this.KeyEncryptionKeyUrl, this.KeyEncryptionVaultId);
-                    }
-                    else
-                    {   // If either KeyEncryptionKeyUrl or KeyEncryptionVaultId present not both.
-                        // if (!this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionKeyUrl)) ||
-                        //  !this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionVaultId)))
-                        // {
-                        //     throw new Exception("Provide Disk KeyEncryptionKeyUrl and KeyEncryptionVaultId.");
-                        // }
                     }
                 }
                 else

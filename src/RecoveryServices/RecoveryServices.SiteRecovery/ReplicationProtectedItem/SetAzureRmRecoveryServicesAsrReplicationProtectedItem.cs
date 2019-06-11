@@ -527,7 +527,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         private List<VMNicInputDetails> getNicListToUpdate(IList<VMNicDetails> vmNicList)
         {
             var vMNicInputDetailsList = new List<VMNicInputDetails>();
-            // Weather to track Nic found to be updated. IF primary nic is not or empty no need to update.
+            // Weather to track NIC found to be updated. IF primary NIC is not or empty no need to update.
             var nicFoundToBeUpdated = string.IsNullOrEmpty(this.UpdateNic);
 
             if (vmNicList != null)
@@ -546,7 +546,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             string.IsNullOrEmpty(this.NicSelectionType)
                                 ? Constants.SelectedByUser : this.NicSelectionType;
                         vMNicInputDetailsList.Add(vMNicInputDetails);
-                        // NicId  matched for updation
+                        // NicId  matched for update
                         nicFoundToBeUpdated = true;
 
                         if (this.MyInvocation.BoundParameters.ContainsKey(
@@ -579,44 +579,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             return vMNicInputDetailsList;
         }
 
-        private DiskEncryptionInfo A2AEncryptionDetails(ReplicationProviderSpecificSettings replicationProvider)
+        /*
+         * Creating DiskEncryptionInfo for A2A provider.
+         */
+        private DiskEncryptionInfo A2AEncryptionDetails(ReplicationProviderSpecificSettings provider)
         {
-            // Any encryption data is present.
-            if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionSecretUrl)) ||
-                this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionVaultId)) ||
-                this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionKeyUrl)) ||
-                this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionVaultId)))
+            // Checking if any encryption data is present then the only creating DiskEncryptionInfo.
+            if (this.IsParameterBound(c => c.DiskEncryptionSecretUrl) ||
+                this.IsParameterBound(c => c.DiskEncryptionVaultId) ||
+                this.IsParameterBound(c => c.KeyEncryptionKeyUrl) ||
+                this.IsParameterBound(c => c.KeyEncryptionVaultId))
             {
-                // Non A2A scenerio
-                if (!(replicationProvider is A2AReplicationDetails))
+                // Non A2A scenario
+                if (!(provider is A2AReplicationDetails))
                 {
                     throw new Exception(
                         "DiskEncryptionSecretUrl,DiskEncryptionVaultId,KeyEncryptionKeyUrl,KeyEncryptionVaultId " +
-                        "is used for udpating Azure to Azure replication");
+                        "is used for updating Azure to Azure replication");
                 }
-                // todo :: vipin
-                A2AReplicationDetails providerSpecificDetails = (A2AReplicationDetails)replicationProvider;
 
                 DiskEncryptionInfo diskEncryptionInfo = new DiskEncryptionInfo();
                 // BEK DATA is present
-                if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionSecretUrl)) &&
-                this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.DiskEncryptionVaultId)))
+                if (this.IsParameterBound(c => c.DiskEncryptionSecretUrl) && this.IsParameterBound(c => c.DiskEncryptionVaultId))
                 {
                     diskEncryptionInfo.DiskEncryptionKeyInfo = new DiskEncryptionKeyInfo(this.DiskEncryptionSecretUrl, this.DiskEncryptionVaultId);
                     // KEK Data is present in pair.
-                    if (this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionKeyUrl)) &&
-                this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionVaultId)))
+                    if (this.IsParameterBound(c => c.KeyEncryptionKeyUrl) && this.IsParameterBound(c => c.KeyEncryptionVaultId))
                     {
                         diskEncryptionInfo.KeyEncryptionKeyInfo = new KeyEncryptionKeyInfo(this.KeyEncryptionKeyUrl, this.KeyEncryptionVaultId);
-                    }
-                    else
-                    {
-                        // If either KeyEncryptionKeyUrl or KeyEncryptionVaultId present not both.
-                        // if (!this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionKeyUrl)) ||
-                        //!this.MyInvocation.BoundParameters.ContainsKey(Utilities.GetMemberName(() => this.KeyEncryptionVaultId)))
-                        // {
-                        //      throw new Exception("Provide Disk KeyEncryptionKeyUrl and KeyEncryptionVaultId.");
-                        //  }
                     }
                 }
                 else
