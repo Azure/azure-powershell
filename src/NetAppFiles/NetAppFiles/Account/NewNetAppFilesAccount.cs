@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
     {
         [Parameter(
             Mandatory = true,
+            ParameterSetName = FieldsParameterSet,
             HelpMessage = "The resource group of the ANF account")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter()]
