@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrRecoveryPoint",DefaultParameterSetName = ASRParameterSets.ByObject)]
     [Alias("Get-ASRRecoveryPoint")]
     [OutputType(typeof(ASRRecoveryPoint))]
-    [GenericBreakingChange("Property type ASRHealthError_2016_08_10 changed to ASRHealthError")]
     public class GetAzureRmRecoveryServicesAsrRecoveryPoint : SiteRecoveryCmdletBase
     {
         /// <summary>

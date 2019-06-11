@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrSwitchProcessServerJob",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]
     [Alias("Start-ASRSwitchProcessServerJob")]
     [OutputType(typeof(ASRJob))]
-    [GenericBreakingChange("Property type ASRHealthError_2016_08_10 changed to ASRHealthError")]
     public class StartAzureRmRecoveryServicesAsrSwitchProcessServerJob : SiteRecoveryCmdletBase
     {
         /// <summary>

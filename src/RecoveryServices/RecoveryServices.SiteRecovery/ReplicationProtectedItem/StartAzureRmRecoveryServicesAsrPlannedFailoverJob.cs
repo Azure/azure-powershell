@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "Start-ASRPFO",
         "Start-ASRPlannedFailoverJob")]
     [OutputType(typeof(ASRJob))]
-    [GenericBreakingChange("Property type ASRHealthError_2016_08_10 changed to ASRHealthError")]
     public class StartAzureRmRecoveryServicesAsrPlannedFailoverJob : SiteRecoveryCmdletBase
     {
         /// <summary>

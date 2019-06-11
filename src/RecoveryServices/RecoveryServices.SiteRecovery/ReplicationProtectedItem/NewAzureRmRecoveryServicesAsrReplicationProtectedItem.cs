@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Job = Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.Job;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -613,7 +614,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 RecoveryBootDiagStorageAccountId = this.RecoveryBootDiagStorageAccountId
             };
 
-            if (!string.IsNullOrEmpty(this.ReplicationGroupName))
+            if (this.IsParameterBound(c=>c.ReplicationGroupName))
             {
                 providerSettings.MultiVmGroupName = this.ReplicationGroupName;
             }

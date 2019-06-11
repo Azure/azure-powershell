@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrTestFailoverCleanupJob",DefaultParameterSetName = ASRParameterSets.ByRPIObject,SupportsShouldProcess = true)]
     [Alias("Start-ASRTestFailoverCleanupJob")]
     [OutputType(typeof(ASRJob))]
-    [GenericBreakingChange("Property type ASRHealthError_2016_08_10 changed to ASRHealthError")]
     public class StartAzureRmRecoveryServicesAsrTestFailoverCleanupJob : SiteRecoveryCmdletBase
     {
         /// <summary>

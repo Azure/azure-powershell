@@ -58,7 +58,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter]
         [CmdletParameterBreakingChange("PrimaryNic", ChangeDescription = "Further this property will be used to set primary NIC for Replication ProtectedItem."
-            + "And UpdateNic will be used to update(selected) provided NIC")]
+            + "And UpdateNic will be used to update(selected) provided NIC",
+            OldWay = "Set-AzRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $RPI -PrimaryNic $NicId -RecoveryNetworkId $AzureNetworkID -RecoveryNicSubnetName $subnetName",
+            NewWay = "[To update the details for selected NIC] Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject $RPI -UpdateNic $NicId -RecoveryNicSubnetName $subnetName"
+            + "[To update the primary NIC to be used after failover] Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject $RPI -PrimaryNic $NicId")]
         [ValidateNotNullOrEmpty]
         public string PrimaryNic { get; set; }
 

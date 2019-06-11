@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrProtectableItem",DefaultParameterSetName = ASRParameterSets.ByObject)]
     [Alias("Get-ASRProtectableItem")]
     [OutputType(typeof(ASRProtectableItem))]
-    [GenericBreakingChange("Property type ASRHealthError_2016_08_10 changed to ASRHealthError")]
     public class GetAzureRmRecoveryServicesAsrProtectableItem : SiteRecoveryCmdletBase
     {
         /// <summary>
