@@ -14,7 +14,7 @@ Update a VM scale set.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzVmss -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
+Update-AzVmss -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AutoOSUpgradePolicyDisableAutoRollback] [-IdentityId <String[]>] [-IdentityType <ResourceIdentityType>]
  [-MaxBatchInstancePercent <Int32>] [-MaxUnhealthyInstancePercent <Int32>]
  [-MaxUnhealthyUpgradedInstancePercent <Int32>] [-Overprovision] [-PauseTimeBetweenBatches <String>]
@@ -212,6 +212,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Name
+The name of the VM scale set to create or update.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases: VMScaleSetName
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -471,22 +487,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VMScaleSetName
-The name of the VM scale set to create or update.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

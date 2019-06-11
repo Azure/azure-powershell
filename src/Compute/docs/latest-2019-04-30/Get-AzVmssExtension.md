@@ -20,7 +20,7 @@ Get-AzVmssExtension -ResourceGroupName <String> -SubscriptionId <String[]> -Vmss
 
 ### Get1
 ```
-Get-AzVmssExtension -ResourceGroupName <String> -SubscriptionId <String[]> -VmssExtensionName <String>
+Get-AzVmssExtension -ExtensionName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  -VmssName <String> [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -87,6 +87,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ExtensionName
+The name of the VM scale set extension.
+
+```yaml
+Type: System.String
+Parameter Sets: Get1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -126,22 +142,6 @@ The subscription ID forms part of the URI for every service call.
 ```yaml
 Type: System.String[]
 Parameter Sets: List1, Get1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VmssExtensionName
-The name of the VM scale set extension.
-
-```yaml
-Type: System.String
-Parameter Sets: Get1
 Aliases:
 
 Required: True

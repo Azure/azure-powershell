@@ -56,4 +56,70 @@ require:
 
 subject-prefix: ''
 module-version: 0.0.1
+title: Monitor
+
+directive:
+  - where:
+      enum-name: ComparisonOperationType|^Operator$
+      enum-value-name: Equals
+    set:
+      enum-value-name: Equal
+  # ActivityLogAlert
+  - where:
+      subject: ActivityLogAlert
+      parameter-name: ConditionAllOf
+    set:
+      parameter-name: Condition
+  # Log
+  - where:
+      verb: Get
+      subject: ^ActivityLog$
+    set:
+      alias: Get-AzLog
+  # MetricAlert
+  - where:
+      verb: Get
+      subject: ^MetricAlert$
+    set:
+      alias: Get-AzMetricAlertRuleV2
+  - where:
+      verb: New
+      subject: ^MetricAlert$
+    set:
+      alias: Add-AzMetricAlertRuleV2
+  - where:
+      verb: Remove
+      subject: ^MetricAlert$
+    set:
+      alias: Remove-AzMetricAlertRuleV2
+  #- where:
+  #    subject: ^MetricAlertsStatu$|^MetricAlertStatus$
+  #  set:
+  #    subject: MetricAlertStatus
+  # AlertRule
+  - where:
+      verb: New
+      subject: ^AlertRule$
+    set:
+      alias: Add-AzMetricAlertRule
+  # LogProfile
+  - where:
+      verb: Set
+      subject: ^LogProfile$
+    set:
+      alias: Add-AzLogProfile
+  # Autoscale
+  - where:
+      verb: Set
+      subject: ^AutoscaleSetting$
+    set:
+      alias: Add-AzAutoscaleSetting
+  # Fix Help Generation Bug
+  - where:
+      verb: Update
+      subject: ^AutoscaleSetting$
+      parameter-name: ^Name$
+    clear-alias: true
+    
+
 ```

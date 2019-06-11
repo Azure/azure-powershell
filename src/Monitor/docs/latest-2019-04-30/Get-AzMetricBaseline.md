@@ -1,43 +1,33 @@
 ---
 external help file:
-Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/invoke-azvmssvmreimage
+Module Name: Az.Monitor
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azmetricbaseline
 schema: 2.0.0
 ---
 
-# Invoke-AzVmssVMReimage
+# Get-AzMetricBaseline
 
 ## SYNOPSIS
-Reimages (upgrade the operating system) a specific virtual machine in a VM scale set.
+**Gets the baseline values for a specific metric**.
 
 ## SYNTAX
 
-### Reimage (Default)
+### Get (Default)
 ```
-Invoke-AzVmssVMReimage -InstanceId <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VMScaleSetName <String> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Reimage1
-```
-Invoke-AzVmssVMReimage -InstanceId <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VMScaleSetName <String> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzMetricBaseline -MetricName <String> -ResourceUri <String> [-Aggregation <String>] [-Interval <TimeSpan>]
+ [-ResultType <ResultType>] [-Sensitivity <String>] [-Timespan <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
-### ReimageViaIdentity1
+### GetViaIdentity
 ```
-Invoke-AzVmssVMReimage -InputObject <IComputeIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### ReimageViaIdentity
-```
-Invoke-AzVmssVMReimage -InputObject <IComputeIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Get-AzMetricBaseline -InputObject <IMonitorIdentity> [-Aggregation <String>] [-Interval <TimeSpan>]
+ [-ResultType <ResultType>] [-Sensitivity <String>] [-Timespan <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Reimages (upgrade the operating system) a specific virtual machine in a VM scale set.
+**Gets the baseline values for a specific metric**.
 
 ## EXAMPLES
 
@@ -61,17 +51,17 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
+### -Aggregation
+The aggregation type of the metric to retrieve the baseline for.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -97,8 +87,8 @@ Dynamic: False
 Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: ReimageViaIdentity1, ReimageViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -109,78 +99,14 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InstanceId
-The instance ID of the virtual machine.
+### -Interval
+The interval (i.e.
+timegrain) of the query.
 
 ```yaml
-Type: System.String
-Parameter Sets: Reimage, Reimage1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ResourceGroupName
-The name of the resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: Reimage, Reimage1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -SubscriptionId
-Subscription credentials which uniquely identify Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
-
-```yaml
-Type: System.String
-Parameter Sets: Reimage, Reimage1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VMScaleSetName
-The name of the VM scale set.
-
-```yaml
-Type: System.String
-Parameter Sets: Reimage, Reimage1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.TimeSpan
 Parameter Sets: (All)
-Aliases: cf
+Aliases:
 
 Required: False
 Position: Named
@@ -190,14 +116,81 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -MetricName
+The name of the metric to retrieve the baseline for.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceUri
+The identifier of the resource.
+It has the following structure: subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/{providerName}/{resourceName}.
+For example: subscriptions/b368ca2f-e298-46b7-b0ab-012281956afa/resourceGroups/vms/providers/Microsoft.Compute/virtualMachines/vm1
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResultType
+Allows retrieving only metadata of the baseline.
+On data request all information is retrieved.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Support.ResultType
 Parameter Sets: (All)
-Aliases: wi
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Sensitivity
+The list of sensitivities (comma separated) to retrieve.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Timespan
+The timespan of the query.
+It is a string with the following format 'startDateTime_ISO/endDateTime_ISO'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -212,15 +205,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.IOperationStatusResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20171101Preview.IBaselineResponse
 
 ## ALIASES
-
-### Update-AzVmssVM
 
 ## RELATED LINKS
 

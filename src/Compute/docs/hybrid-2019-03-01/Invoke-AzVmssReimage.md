@@ -14,13 +14,13 @@ Reimages (upgrade the operating system) one or more virtual machines in a VM sca
 
 ### ReimageExpanded (Default)
 ```
-Invoke-AzVmssReimage -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
+Invoke-AzVmssReimage -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-InstanceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ReimageExpanded1
 ```
-Invoke-AzVmssReimage -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
+Invoke-AzVmssReimage -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-InstanceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -126,6 +126,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the VM scale set.
+
+```yaml
+Type: System.String
+Parameter Sets: ReimageExpanded, ReimageExpanded1
+Aliases: VMScaleSetName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -145,22 +161,6 @@ Dynamic: False
 ### -SubscriptionId
 Subscription credentials which uniquely identify Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
-
-```yaml
-Type: System.String
-Parameter Sets: ReimageExpanded, ReimageExpanded1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VMScaleSetName
-The name of the VM scale set.
 
 ```yaml
 Type: System.String
