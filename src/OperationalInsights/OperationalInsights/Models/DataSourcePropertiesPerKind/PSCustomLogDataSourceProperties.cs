@@ -19,6 +19,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
@@ -163,6 +165,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         /// <summary>
         /// Gets or sets the regex.
         /// </summary>
+        [CmdletParameterBreakingChange(nameof(regex), OldParamaterType = typeof(string), NewParameterTypeName = nameof(RegexDelimiter))]
+        [JsonConverter(typeof(RegexDelimiterJsonConverter))]
         public RegexDelimiter[] regex { get; set; }
 
         ///<summary>
@@ -211,5 +215,27 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public string extractionType { get; set; }
 
         #endregion
+    }
+
+    public class RegexDelimiterJsonConverter : JsonConverter
+    {
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            switch (reader.TokenType)
+            {
+                case JsonToken.StartArray:
+                    JToken token = JToken.Load(reader);
+                    return token.ToObject<RegexDelimiter[]>();
+                case JsonToken.String:
+                    // Allow input of just regex string for backward compatibility
+                    return new[] {new RegexDelimiter {matchIndex = 0, pattern = (string) reader.Value}};
+            }
+
+            throw new JsonSerializationException();
+        }
+
+        public override bool CanWrite => false;
+        public override bool CanConvert(Type objectType) => throw new NotImplementedException();
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => throw new NotImplementedException();
     }
 }
