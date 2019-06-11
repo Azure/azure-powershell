@@ -187,6 +187,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update IoT Hub Key.
+        /// </summary>
+        internal static string SetIotHubKey {
+            get {
+                return ResourceManager.GetString("SetIotHubKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update IoT Hub .
         /// </summary>
         internal static string UpdateIotHub {

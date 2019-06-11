@@ -1,41 +1,40 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/get-aziothubkey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/set-aziothubkey
 schema: 2.0.0
 ---
 
-# Get-AzIotHubKey
+# Set-AzIotHubKey
 
 ## SYNOPSIS
-Gets an IotHub Key.
+Update an Azure IoT Hub key.
 
 ## SYNTAX
 
 ```
-Get-AzIotHubKey [-ResourceGroupName] <String> [-Name] <String> [[-KeyName] <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzIotHubKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String> [-RenewKey] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets an IotHub Key.
-You can either list all Keys or filter the list by a specific Key Name.
+Update an Azure IoT Hub key.
 
 ## EXAMPLES
 
-### Example 1 Get all Keys
+### Example 1 Regenerate primary key
 ```
-PS C:\> Get-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub"
-```
-
-Gets all the Keys for the IotHub named "myiothub"
-
-### Example 2 Get information for a specific Key
-```
-PS C:\> Get-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "iothubowner"
+PS C:\> Set-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "testKey" -RenewKey "primary"
 ```
 
-Gets the information for a key named "iothubowner" for the IotHub named "myiothub"
+Regenerated primary key for the authorization policy "testKey" of an azure iot hub.
+
+### Example 2 Swapping keys
+```
+PS C:\> Set-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "testKey" -RenewKey "swap"
+```
+
+Swapping keys for the authorization policy "testKey" of an azure iot hub.
 
 ## PARAMETERS
 
@@ -62,15 +61,15 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 2
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the IoT hub. 
+Name of the IotHub
 
 ```yaml
 Type: System.String
@@ -81,6 +80,22 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RenewKey
+Regenerate Key.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: primary, secondary, swap
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -96,6 +111,37 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
