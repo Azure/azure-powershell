@@ -349,7 +349,7 @@ directive:
   - where:
       subject: (.*)VirtualNetwork(.*)
     set:
-      alias: ${verb}-$(prefix)${subject-prefix}${subject}
+      alias: ${verb}-Az${subject-prefix}${subject}
   # - where:
   #     parameter-name: (.*)VirtualNetwork(.*)
   #   set:

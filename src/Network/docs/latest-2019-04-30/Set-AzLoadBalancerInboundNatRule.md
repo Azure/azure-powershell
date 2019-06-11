@@ -32,8 +32,8 @@ Set-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -ResourceGroupName <
  [-LoadBalancerInboundNatRule <IInboundNatRule[]>] [-Primary] [-PrivateIPAddress <String>]
  [-PrivateIPAddressVersion <IPVersion>] [-PrivateIPAllocationMethod <IPAllocationMethod>]
  [-Protocol <TransportProtocol>] [-ProvisioningState <String>] [-PublicIPAddress <IPublicIPAddress>]
- [-Subnet <ISubnet>] [-VirtualNetworkTap <IVirtualNetworkTap[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Subnet <ISubnet>] [-VnetTap <IVirtualNetworkTap[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -48,8 +48,8 @@ Set-AzLoadBalancerInboundNatRule -InputObject <INetworkIdentity> [-Name <String>
  [-LoadBalancerInboundNatRule <IInboundNatRule[]>] [-Primary] [-PrivateIPAddress <String>]
  [-PrivateIPAddressVersion <IPVersion>] [-PrivateIPAllocationMethod <IPAllocationMethod>]
  [-Protocol <TransportProtocol>] [-ProvisioningState <String>] [-PublicIPAddress <IPublicIPAddress>]
- [-Subnet <ISubnet>] [-VirtualNetworkTap <IVirtualNetworkTap[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Subnet <ISubnet>] [-VnetTap <IVirtualNetworkTap[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -626,7 +626,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VirtualNetworkTap
+### -VnetTap
 The reference to Virtual Network Taps.
 
 ```yaml

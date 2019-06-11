@@ -11,9 +11,6 @@ Locale: en-US
 Microsoft Azure PowerShell: Network cmdlets
 
 ## Az.Network Cmdlets
-### [Get-AzAvailableEndpointService](Get-AzAvailableEndpointService.md)
-List what values of endpoint services are available for use.
-
 ### [Get-AzDefaultSecurityRule](Get-AzDefaultSecurityRule.md)
 Get the specified default network security rule.
 
@@ -77,44 +74,47 @@ Gets the specified route table.
 ### [Get-AzRouteTableRoute](Get-AzRouteTableRoute.md)
 Gets the specified route from a route table.
 
-### [Get-AzVirtualNetwork](Get-AzVirtualNetwork.md)
+### [Get-AzVnet](Get-AzVnet.md)
 Gets the specified virtual network by resource group.
 
-### [Get-AzVirtualNetworkGateway](Get-AzVirtualNetworkGateway.md)
+### [Get-AzVnetAvailableEndpointService](Get-AzVnetAvailableEndpointService.md)
+List what values of endpoint services are available for use.
+
+### [Get-AzVnetGateway](Get-AzVnetGateway.md)
 Gets the specified virtual network gateway by resource group.
 
-### [Get-AzVirtualNetworkGatewayAdvertisedRoute](Get-AzVirtualNetworkGatewayAdvertisedRoute.md)
+### [Get-AzVnetGatewayAdvertisedRoute](Get-AzVnetGatewayAdvertisedRoute.md)
 This operation retrieves a list of routes the virtual network gateway is advertising to the specified peer.
 
-### [Get-AzVirtualNetworkGatewayBgpPeerStatus](Get-AzVirtualNetworkGatewayBgpPeerStatus.md)
+### [Get-AzVnetGatewayBgpPeerStatus](Get-AzVnetGatewayBgpPeerStatus.md)
 The GetBgpPeerStatus operation retrieves the status of all BGP peers.
 
-### [Get-AzVirtualNetworkGatewayConnection](Get-AzVirtualNetworkGatewayConnection.md)
+### [Get-AzVnetGatewayConnection](Get-AzVnetGatewayConnection.md)
 Gets the specified virtual network gateway connection by resource group.
 
-### [Get-AzVirtualNetworkGatewayConnectionSharedKey](Get-AzVirtualNetworkGatewayConnectionSharedKey.md)
+### [Get-AzVnetGatewayConnectionSharedKey](Get-AzVnetGatewayConnectionSharedKey.md)
 The Get VirtualNetworkGatewayConnectionSharedKey operation retrieves information about the specified virtual network gateway connection shared key through Network resource provider.
 
-### [Get-AzVirtualNetworkGatewayLearnedRoute](Get-AzVirtualNetworkGatewayLearnedRoute.md)
+### [Get-AzVnetGatewayLearnedRoute](Get-AzVnetGatewayLearnedRoute.md)
 This operation retrieves a list of routes the virtual network gateway has learned, including routes learned from BGP peers.
 
-### [Get-AzVirtualNetworkGatewaySupportedVpnDevice](Get-AzVirtualNetworkGatewaySupportedVpnDevice.md)
+### [Get-AzVnetGatewaySupportedVpnDevice](Get-AzVnetGatewaySupportedVpnDevice.md)
 Gets a xml format representation for supported vpn devices.
 
-### [Get-AzVirtualNetworkGatewayVpnDeviceConfigurationScript](Get-AzVirtualNetworkGatewayVpnDeviceConfigurationScript.md)
+### [Get-AzVnetGatewayVpnDeviceConfigurationScript](Get-AzVnetGatewayVpnDeviceConfigurationScript.md)
 Gets a xml format representation for vpn device configuration script.
 
-### [Get-AzVirtualNetworkGatewayVpnProfilePackageUrl](Get-AzVirtualNetworkGatewayVpnProfilePackageUrl.md)
+### [Get-AzVnetGatewayVpnProfilePackageUrl](Get-AzVnetGatewayVpnProfilePackageUrl.md)
 Gets pre-generated VPN profile for P2S client of the virtual network gateway in the specified resource group.
 The profile needs to be generated first using generateVpnProfile.
 
-### [Get-AzVirtualNetworkPeering](Get-AzVirtualNetworkPeering.md)
+### [Get-AzVnetPeering](Get-AzVnetPeering.md)
 Gets the specified virtual network peering.
 
-### [Get-AzVirtualNetworkSubnet](Get-AzVirtualNetworkSubnet.md)
+### [Get-AzVnetSubnet](Get-AzVnetSubnet.md)
 Gets the specified subnet by virtual network and resource group.
 
-### [Get-AzVirtualNetworkUsage](Get-AzVirtualNetworkUsage.md)
+### [Get-AzVnetUsage](Get-AzVnetUsage.md)
 Lists usage stats.
 
 ### [New-AzLoadBalancer](New-AzLoadBalancer.md)
@@ -144,26 +144,26 @@ Create or updates a route table in a specified resource group.
 ### [New-AzRouteTableRoute](New-AzRouteTableRoute.md)
 Creates or updates a route in the specified route table.
 
-### [New-AzVirtualNetwork](New-AzVirtualNetwork.md)
+### [New-AzVnet](New-AzVnet.md)
 Creates or updates a virtual network in the specified resource group.
 
-### [New-AzVirtualNetworkGateway](New-AzVirtualNetworkGateway.md)
+### [New-AzVnetGateway](New-AzVnetGateway.md)
 Creates or updates a virtual network gateway in the specified resource group.
 
-### [New-AzVirtualNetworkGatewayConnection](New-AzVirtualNetworkGatewayConnection.md)
+### [New-AzVnetGatewayConnection](New-AzVnetGatewayConnection.md)
 Creates or updates a virtual network gateway connection in the specified resource group.
 
-### [New-AzVirtualNetworkGatewayVpnClientPackage](New-AzVirtualNetworkGatewayVpnClientPackage.md)
+### [New-AzVnetGatewayVpnClientPackage](New-AzVnetGatewayVpnClientPackage.md)
 Generates VPN client package for P2S client of the virtual network gateway in the specified resource group.
 
-### [New-AzVirtualNetworkGatewayVpnProfile](New-AzVirtualNetworkGatewayVpnProfile.md)
+### [New-AzVnetGatewayVpnProfile](New-AzVnetGatewayVpnProfile.md)
 Generates VPN profile for P2S client of the virtual network gateway in the specified resource group.
 Used for IKEV2 and radius based authentication.
 
-### [New-AzVirtualNetworkPeering](New-AzVirtualNetworkPeering.md)
+### [New-AzVnetPeering](New-AzVnetPeering.md)
 Creates or updates a peering in the specified virtual network.
 
-### [New-AzVirtualNetworkSubnet](New-AzVirtualNetworkSubnet.md)
+### [New-AzVnetSubnet](New-AzVnetSubnet.md)
 Creates or updates a subnet in the specified virtual network.
 
 ### [Remove-AzLoadBalancer](Remove-AzLoadBalancer.md)
@@ -193,25 +193,25 @@ Deletes the specified route table.
 ### [Remove-AzRouteTableRoute](Remove-AzRouteTableRoute.md)
 Deletes the specified route from a route table.
 
-### [Remove-AzVirtualNetwork](Remove-AzVirtualNetwork.md)
+### [Remove-AzVnet](Remove-AzVnet.md)
 Deletes the specified virtual network.
 
-### [Remove-AzVirtualNetworkGateway](Remove-AzVirtualNetworkGateway.md)
+### [Remove-AzVnetGateway](Remove-AzVnetGateway.md)
 Deletes the specified virtual network gateway.
 
-### [Remove-AzVirtualNetworkGatewayConnection](Remove-AzVirtualNetworkGatewayConnection.md)
+### [Remove-AzVnetGatewayConnection](Remove-AzVnetGatewayConnection.md)
 Deletes the specified virtual network Gateway connection.
 
-### [Remove-AzVirtualNetworkPeering](Remove-AzVirtualNetworkPeering.md)
+### [Remove-AzVnetPeering](Remove-AzVnetPeering.md)
 Deletes the specified virtual network peering.
 
-### [Remove-AzVirtualNetworkSubnet](Remove-AzVirtualNetworkSubnet.md)
+### [Remove-AzVnetSubnet](Remove-AzVnetSubnet.md)
 Deletes the specified subnet.
 
-### [Reset-AzVirtualNetworkGateway](Reset-AzVirtualNetworkGateway.md)
+### [Reset-AzVnetGateway](Reset-AzVnetGateway.md)
 Resets the primary of the virtual network gateway in the specified resource group.
 
-### [Reset-AzVirtualNetworkGatewayConnectionSharedKey](Reset-AzVirtualNetworkGatewayConnectionSharedKey.md)
+### [Reset-AzVnetGatewayConnectionSharedKey](Reset-AzVnetGatewayConnectionSharedKey.md)
 The VirtualNetworkGatewayConnectionResetSharedKey operation resets the virtual network gateway connection shared key for passed virtual network gateway connection in the specified resource group through Network resource provider.
 
 ### [Set-AzLoadBalancer](Set-AzLoadBalancer.md)
@@ -241,27 +241,27 @@ Create or updates a route table in a specified resource group.
 ### [Set-AzRouteTableRoute](Set-AzRouteTableRoute.md)
 Creates or updates a route in the specified route table.
 
-### [Set-AzVirtualNetwork](Set-AzVirtualNetwork.md)
+### [Set-AzVnet](Set-AzVnet.md)
 Creates or updates a virtual network in the specified resource group.
 
-### [Set-AzVirtualNetworkGateway](Set-AzVirtualNetworkGateway.md)
+### [Set-AzVnetGateway](Set-AzVnetGateway.md)
 Creates or updates a virtual network gateway in the specified resource group.
 
-### [Set-AzVirtualNetworkGatewayConnection](Set-AzVirtualNetworkGatewayConnection.md)
+### [Set-AzVnetGatewayConnection](Set-AzVnetGatewayConnection.md)
 Creates or updates a virtual network gateway connection in the specified resource group.
 
-### [Set-AzVirtualNetworkGatewayConnectionSharedKey](Set-AzVirtualNetworkGatewayConnectionSharedKey.md)
+### [Set-AzVnetGatewayConnectionSharedKey](Set-AzVnetGatewayConnectionSharedKey.md)
 The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual network gateway connection shared key for passed virtual network gateway connection in the specified resource group through Network resource provider.
 
-### [Set-AzVirtualNetworkPeering](Set-AzVirtualNetworkPeering.md)
+### [Set-AzVnetPeering](Set-AzVnetPeering.md)
 Creates or updates a peering in the specified virtual network.
 
-### [Set-AzVirtualNetworkSubnet](Set-AzVirtualNetworkSubnet.md)
+### [Set-AzVnetSubnet](Set-AzVnetSubnet.md)
 Creates or updates a subnet in the specified virtual network.
 
 ### [Test-AzDnsNameAvailability](Test-AzDnsNameAvailability.md)
 Checks whether a domain name in the cloudapp.azure.com zone is available for use.
 
-### [Test-AzVirtualNetworkIPAddressAvailability](Test-AzVirtualNetworkIPAddressAvailability.md)
+### [Test-AzVnetIPAddressAvailability](Test-AzVnetIPAddressAvailability.md)
 Checks whether a private IP address is available for use.
 

@@ -278,5 +278,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## ALIASES
 
+### Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic
+
 ## RELATED LINKS
 

@@ -23,14 +23,14 @@ Get-AzNetworkWatcherTopology -NetworkWatcherName <String> -ResourceGroupName <St
 ```
 Get-AzNetworkWatcherTopology -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> [-TargetResourceGroupName <String>] [-TargetSubnetId <String>]
- [-TargetVirtualNetworkId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-TargetVnetId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentityExpanded
 ```
 Get-AzNetworkWatcherTopology -InputObject <INetworkIdentity> [-TargetResourceGroupName <String>]
- [-TargetSubnetId <String>] [-TargetVirtualNetworkId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-TargetSubnetId <String>] [-TargetVnetId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -193,7 +193,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -TargetVirtualNetworkId
+### -TargetVnetId
 Resource ID.
 
 ```yaml

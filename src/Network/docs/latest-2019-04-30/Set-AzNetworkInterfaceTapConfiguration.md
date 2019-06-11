@@ -24,15 +24,15 @@ Set-AzNetworkInterfaceTapConfiguration -NetworkInterfaceName <String> -ResourceG
 ```
 Set-AzNetworkInterfaceTapConfiguration -NetworkInterfaceName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -TapConfigurationName <String> [-Etag <String>] [-Id <String>] [-Name <String>]
- [-VirtualNetworkTap <IVirtualNetworkTap>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-VnetTap <IVirtualNetworkTap>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Set-AzNetworkInterfaceTapConfiguration -InputObject <INetworkIdentity> [-Etag <String>] [-Id <String>]
- [-Name <String>] [-VirtualNetworkTap <IVirtualNetworkTap>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Name <String>] [-VnetTap <IVirtualNetworkTap>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -245,7 +245,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VirtualNetworkTap
+### -VnetTap
 The reference of the Virtual Network Tap resource.
 
 ```yaml
@@ -308,6 +308,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterfaceTapConfiguration
 
 ## ALIASES
+
+### Set-AzNetworkInterfaceTapConfig
 
 ## RELATED LINKS
 

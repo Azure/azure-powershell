@@ -23,16 +23,16 @@ Set-AzVirtualHub -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 ```
 Set-AzVirtualHub -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-AddressPrefix <String>]
  [-ExpressRouteGatewayId <String>] [-Id <String>] [-Location <String>] [-P2SVpnGatewayId <String>]
- [-RouteTableRoute <IVirtualHubRoute[]>] [-Tag <IResourceTags>]
- [-VirtualNetworkConnection <IHubVirtualNetworkConnection[]>] [-VirtualWanId <String>]
- [-VpnGatewayId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-RouteTableRoute <IVirtualHubRoute[]>] [-Tag <IResourceTags>] [-VirtualWanId <String>]
+ [-VnetConnection <IHubVirtualNetworkConnection[]>] [-VpnGatewayId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Set-AzVirtualHub -InputObject <INetworkIdentity> [-AddressPrefix <String>] [-ExpressRouteGatewayId <String>]
  [-Id <String>] [-Location <String>] [-P2SVpnGatewayId <String>] [-RouteTableRoute <IVirtualHubRoute[]>]
- [-Tag <IResourceTags>] [-VirtualNetworkConnection <IHubVirtualNetworkConnection[]>] [-VirtualWanId <String>]
+ [-Tag <IResourceTags>] [-VirtualWanId <String>] [-VnetConnection <IHubVirtualNetworkConnection[]>]
  [-VpnGatewayId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -292,11 +292,11 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VirtualNetworkConnection
-List of all vnet connections with this VirtualHub.
+### -VirtualWanId
+Resource ID.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IHubVirtualNetworkConnection[]
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -308,11 +308,11 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VirtualWanId
-Resource ID.
+### -VnetConnection
+List of all vnet connections with this VirtualHub.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IHubVirtualNetworkConnection[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 

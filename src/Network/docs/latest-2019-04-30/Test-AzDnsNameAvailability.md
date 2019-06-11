@@ -144,5 +144,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## ALIASES
 
+### Test-AzDnsAvailability
+
 ## RELATED LINKS
 
