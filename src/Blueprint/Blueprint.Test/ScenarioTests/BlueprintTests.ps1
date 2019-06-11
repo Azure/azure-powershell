@@ -25,7 +25,6 @@ function Test-GetBlueprintWithDefinitionLocationNameAndVersion
 	Assert-NotNull $blueprintByMG
 	Assert-NotNull $blueprintByMG.Id
 	Assert-NotNull $blueprintByMG.Scope
-	Assert-NotNull $blueprintByMG.DefinitionLocationId
 	Assert-NotNull $blueprintByMG.TargetScope
 }
 
@@ -38,6 +37,5 @@ function Test-GetBlueprintWithDefinitionLocationNameAndLatestPublished
 	Assert-NotNull $blueprintByMG
 	Assert-NotNull $blueprintByMG.Id
 	Assert-NotNull $blueprintByMG.Scope
-	Assert-NotNull $blueprintByMG.DefinitionLocationId
 	Assert-NotNull $blueprintByMG.TargetScope
 }

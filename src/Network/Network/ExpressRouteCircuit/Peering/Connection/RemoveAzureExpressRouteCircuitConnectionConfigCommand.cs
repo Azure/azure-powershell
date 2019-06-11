@@ -18,10 +18,11 @@ using System.Linq;
 using System.Management.Automation;
 using System;
 using Microsoft.Azure.Management.Network;
-
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
+    [CmdletOutputBreakingChange(typeof(PSExpressRouteCircuit), DeprecatedOutputProperties = new[] { "AllowGlobalReach" })]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuitConnectionConfig", SupportsShouldProcess = true), OutputType(typeof(PSExpressRouteCircuit))]
     public class RemoveAzureExpressRouteCircuitConnectionConfigCommand : ExpressRouteCircuitBaseCmdlet
     {

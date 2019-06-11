@@ -74,9 +74,19 @@ NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Blueprint.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzBlueprint', 'Get-AzBlueprintAssignment', 
-               'New-AzBlueprintAssignment', 'Remove-AzBlueprintAssignment', 
-               'Set-AzBlueprintAssignment'
+CmdletsToExport = 'Get-AzBlueprint',
+                  'Get-AzBlueprintAssignment',
+                  'New-AzBlueprintAssignment',
+                  'Remove-AzBlueprintAssignment',
+                  'Set-AzBlueprintAssignment',
+                  'New-AzBlueprint',
+                  'Publish-AzBlueprint',
+                  'New-AzBlueprintArtifact',
+                  'Get-AzBlueprintArtifact',
+                  'Export-AzBlueprintWithArtifact',
+                  'Import-AzBlueprintWithArtifact',
+                  'Set-AzBlueprintArtifact',
+                  'Set-AzBlueprint'
 
 # Variables to export from this module
 # VariablesToExport = @()
