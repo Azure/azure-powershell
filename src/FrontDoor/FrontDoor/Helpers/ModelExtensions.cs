@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 OperatorProperty = sdkMatchCondition.OperatorProperty,
                 Selector = sdkMatchCondition.Selector,
                 NegateCondition = sdkMatchCondition.NegateCondition,
-                Transforms = sdkMatchCondition.Transforms?.ToList()
+                Transform = sdkMatchCondition.Transforms?.ToList()
             };
         }
 
@@ -434,7 +434,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 NegateCondition = psMatchCondition.NegateCondition,
                 Selector = psMatchCondition.Selector,
                 OperatorProperty = psMatchCondition.OperatorProperty,
-                Transforms = psMatchCondition.Transforms
+                Transforms = psMatchCondition.Transform
             };
         }
 

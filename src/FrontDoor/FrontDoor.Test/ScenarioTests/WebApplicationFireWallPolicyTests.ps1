@@ -22,7 +22,7 @@ function Test-PolicyCrud
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceGroupName = $resourceGroup.ResourceGroupName
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
-    $matchCondition1 = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "UserAgent" -MatchValue "WINDOWS" -Transforms "Uppercase"
+    $matchCondition1 = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "UserAgent" -MatchValue "WINDOWS" -Transform "Uppercase"
     $customRule1 = New-AzFrontDoorWafCustomRuleObject -Name "Rule1" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Block -Priority 2
 
     $ruleOverride = New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942100" -Action Log
@@ -43,7 +43,7 @@ function Test-PolicyCrud
     Assert-AreEqual $matchCondition1.Selector $retrievedPolicy.CustomRules[0].MatchConditions[0].Selector
     Assert-AreEqual $matchCondition1.OperatorProperty $retrievedPolicy.CustomRules[0].MatchConditions[0].OperatorProperty
     Assert-AreEqual $matchCondition1.MatchValue[0] $retrievedPolicy.CustomRules[0].MatchConditions[0].MatchValue[0]
-    Assert-AreEqual $matchCondition1.Transforms[0] $retrievedPolicy.CustomRules[0].MatchConditions[0].Transforms[0]
+    Assert-AreEqual $matchCondition1.Transform[0] $retrievedPolicy.CustomRules[0].MatchConditions[0].Transform[0]
     Assert-AreEqual $managedRule1.RuleGroupOverrides[0].ManagedRuleOverrides[0].Action $retrievedPolicy.ManagedRules[0].RuleGroupOverrides[0].ManagedRuleOverrides[0].Action
     Assert-AreEqual $managedRule1.RuleSetType $retrievedPolicy.ManagedRules[0].RuleSetType
     Assert-AreEqual $managedRule1.RuleSetVersion $retrievedPolicy.ManagedRules[0].RuleSetVersion
@@ -74,7 +74,7 @@ function Test-PolicyCrudWithPiping
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceGroupName = $resourceGroup.ResourceGroupName
     $tag = @{"tag1" = "value1"; "tag2" = "value2"}
-    $matchCondition1 = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "UserAgent" -MatchValue "WINDOWS" -Transforms "Uppercase"
+    $matchCondition1 = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "UserAgent" -MatchValue "WINDOWS" -Transform "Uppercase"
     $customRule1 = New-AzFrontDoorWafCustomRuleObject -Name "Rule1" -RuleType MatchRule -MatchCondition $matchCondition1 -Action Block -Priority 2
 
     $ruleOverride = New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942100" -Action Log

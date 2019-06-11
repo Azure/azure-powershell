@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Transforms to apply. Possible values include: 'Lowercase', 'Uppercase', 'Trim', 'UrlDecode', 'UrlEncode', 'RemoveNulls'.")]
         [PSArgumentCompleter("Lowercase", "Uppercase", "Trim", "UrlDecode", "UrlEncode", "RemoveNulls")]
-        public string[] Transforms { get; set; }
+        public string[] Transform { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 NegateCondition = !this.IsParameterBound(c => c.NegateCondition) ? false : NegateCondition,
                 OperatorProperty = OperatorProperty,
                 Selector = Selector,
-                Transforms = Transforms?.ToList()
+                Transform = Transform?.ToList()
             };
             WriteObject(matchCondition);
         }

@@ -14,7 +14,7 @@ Create MatchCondition Object for WAF policy creation
 
 ```
 New-AzFrontDoorWafMatchConditionObject -MatchVariable <String> -OperatorProperty <String>
- [-MatchValue <String[]>] [-Selector <String>] [-NegateCondition <Boolean>] [-Transforms <String[]>]
+ [-MatchValue <String[]>] [-Selector <String>] [-NegateCondition <Boolean>] [-Transform <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -28,18 +28,18 @@ Create MatchCondition Object for WAF policy creation
 PS C:\> New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "User-Agent" -MatchValue "Windows"
 
 
-MatchVariable OperatorProperty MatchValue Selector   NegateCondition Transforms
-------------- ---------------- ---------- --------   --------------- ----------
+MatchVariable OperatorProperty MatchValue Selector   NegateCondition Transform
+------------- ---------------- ---------- --------   --------------- ---------
 RequestHeader Contains         {Windows}  User-Agent           False
 ```
 
 ### Example 2
 ```powershell
-PS C:\> New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "User-Agent" -MatchValue "WINDOWS" -Transforms Uppercase
+PS C:\> New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "User-Agent" -MatchValue "WINDOWS" -Transform Uppercase
 
 
-MatchVariable OperatorProperty MatchValue Selector   NegateCondition Transforms
-------------- ---------------- ---------- --------   --------------- ----------
+MatchVariable OperatorProperty MatchValue Selector   NegateCondition Transform
+------------- ---------------- ---------- --------   --------------- ---------
 RequestHeader Contains         {WINDOWS}  User-Agent           False {Uppercase}
 ```
 
@@ -140,7 +140,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Transforms
+### -Transform
 Transforms to apply. Possible values include: 'Lowercase', 'Uppercase', 'Trim', 'UrlDecode', 'UrlEncode', 'RemoveNulls'.
 
 ```yaml
