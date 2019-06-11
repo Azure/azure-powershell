@@ -92,6 +92,9 @@ Delete an endpoint for your IoT Hub
 ### [Set-AzIotHub](Set-AzIotHub.md)
 Updates the properties of an IotHub.
 
+### [Set-AzIotHubKey](Set-AzIotHubKey.md)
+Update an Azure IoT Hub key.
+
 ### [Set-AzIotHubRoute](Set-AzIotHubRoute.md)
 Update a route in IoT Hub
 
@@ -103,4 +106,3 @@ Test routes in IoT Hub
 
 ### [Update-AzIotHub](Update-AzIotHub.md)
 Update an Azure IoT Hub.
-

@@ -159,6 +159,9 @@
   <data name="RemoveIotHubRoutingEndpoint" xml:space="preserve">
     <value>Remove Routing Endpoint</value>
   </data>
+  <data name="SetIotHubKey" xml:space="preserve">
+    <value>Update IoT Hub Key</value>
+  </data>
   <data name="UpdateIotHub" xml:space="preserve">
     <value>Update IoT Hub </value>
   </data>
