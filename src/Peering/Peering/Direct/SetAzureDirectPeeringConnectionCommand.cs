@@ -176,15 +176,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         /// </returns>
         private PSDirectConnection UpdatePeeringOffer()
         {
-            if (this.InputObject.GetType().Equals(typeof(PSDirectConnection)))
-            {
                 this.InputObject.BandwidthInMbps =
                     this.ValidUpgradeBandwidth(this.InputObject.BandwidthInMbps, this.BandwidthInMbps)
                         ? this.BandwidthInMbps
                         : this.InputObject.BandwidthInMbps;
                 if (this.IsValidConnection(this.InputObject))
                     return this.InputObject;
-            }
 
             throw new InvalidOperationException(string.Format(Resources.Error_WrongCommandForDirectObject));
         }
@@ -197,12 +194,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         /// </returns>
         private PSDirectConnection UpdateMD5Authentication()
         {
-            if (this.InputObject.GetType().Equals(typeof(PSDirectConnection)))
-            {
                 this.InputObject.BgpSession.Md5AuthenticationKey = this.MD5AuthenticationKey;
                 if (this.IsValidConnection(this.InputObject))
                     return this.InputObject;
-            }
 
             throw new InvalidOperationException(string.Format(Resources.Error_WrongCommandForDirectObject));
         }
@@ -215,14 +209,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         /// </returns>
         private PSDirectConnection UpdateIpV4Prefix()
         {
-            if (this.InputObject.GetType().Equals(typeof(PSDirectConnection)))
-            {
                 this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 =
                     this.MaxPrefixesAdvertisedIPv4 == null ? this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 : 20000;
                 this.InputObject.BgpSession.SessionPrefixV4 = this.ValidatePrefix(this.SessionPrefixV4, Constants.Direct);
                 if (this.IsValidConnection(this.InputObject))
                     return this.InputObject;
-            }
 
             throw new InvalidOperationException(string.Format(Resources.Error_WrongCommandForDirectObject));
         }
@@ -235,14 +226,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         /// </returns>
         private PSDirectConnection UpdateIpV6Prefix()
         {
-            if (this.InputObject.GetType().Equals(typeof(PSDirectConnection)))
-            {
                 this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 =
                     this.MaxPrefixesAdvertisedIPv6 == null ? this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 : 2000;
                 this.InputObject.BgpSession.SessionPrefixV6 = this.ValidatePrefix(this.SessionPrefixV6, Constants.Direct);
                 if (this.IsValidConnection(this.InputObject))
                     return this.InputObject;
-            }
 
             throw new InvalidOperationException(string.Format(Resources.Error_WrongCommandForDirectObject));
         }
