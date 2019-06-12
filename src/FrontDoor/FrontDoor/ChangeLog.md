@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* New-AzFrontDoorWafMatchConditionObject
+    - Add transforms support and new operator auto-complete value (RegEx)
+* New-AzFrontDoorWafManagedRuleObject
+    - Add new auto-complete values
 
 ## Version 1.0.0
 * Rename WAF cmdlets to include 'Waf'
