@@ -39,7 +39,7 @@
 | Cmdlet | New? | Notes |
 | ------ | ---- | ----- |
 | `Get-AzMetric` | No |  - `-Filter` should be replaced by more specific parameters or by a querying syntax (the original uses the cmdlet `New-AzMetricFilter` for that)<br>- `-Aggregation` is string but the original has a object type `AggregationType` from another resource spec (`MetricDefinition`) |
-| `New-AzMetric` | New | |
+| `New-AzMetric` | Yes | |
 | `Get-AzMetricBaseline` | Yes | |
 | `Get-AzMetricNamespace` | Yes | |
 | `Get-AzMetricDefinition` | No | - No `-MetricName` |

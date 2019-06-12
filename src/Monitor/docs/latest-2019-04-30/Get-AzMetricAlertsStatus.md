@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azmetricalertsstatu
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azmetricalertsstatus
 schema: 2.0.0
 ---
 
-# Get-AzMetricAlertsStatu
+# Get-AzMetricAlertsStatus
 
 ## SYNOPSIS
 Retrieve an alert rule status.
@@ -13,7 +13,7 @@ Retrieve an alert rule status.
 ## SYNTAX
 
 ```
-Get-AzMetricAlertsStatu -ResourceGroupName <String> -RuleName <String> -SubscriptionId <String[]>
+Get-AzMetricAlertsStatus -ResourceGroupName <String> -RuleName <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
