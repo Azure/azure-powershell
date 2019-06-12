@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix Advanced Threat Protection storage endpoint suffix
+* Fix Advanced Data Security enable overrides Advanced Threat Protection policy
+* New Cmdlets for Management.Sql to allow customers to add TDE keys and set TDE protector for managed instances
+   - Add-AzSqlInstanceKeyVaultKey
+   - Get-AzSqlInstanceKeyVaultKey
+   - Remove-AzSqlInstanceKeyVaultKey
+   - Get-AzSqlInstanceTransparentDataEncryptionProtector
+   - Set-AzSqlInstanceTransparentDataEncryptionProtector
 
 ## Version 1.11.0
 * Add DnsZonePartner Parameter for New-AzureSqlInstance cmdlet to support AutoDr for Managed Instance.

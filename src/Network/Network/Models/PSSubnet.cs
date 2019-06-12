@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSDelegation> Delegations { get; set; }
 
         [JsonProperty(Order = 1)]
-        public List<PSInterfaceEndpoint> InterfaceEndpoints { get; set; }
+        public List<PSPrivateEndpoint> PrivateEndpoints { get; set; }
 
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             return !string.IsNullOrEmpty(this.Name);
         }
 
-        public bool ShouldSerializeInterfaceEndpoints()
+        public bool ShouldSerializePrivateEndpoints()
         {
             return !string.IsNullOrEmpty(this.Name);
         }
@@ -134,9 +134,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
-        public string InterfaceEndpointsText
+        public string PrivateEndpointsText
         {
-            get { return JsonConvert.SerializeObject(InterfaceEndpoints, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(PrivateEndpoints, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]

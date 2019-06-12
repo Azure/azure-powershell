@@ -38,21 +38,52 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
 
             public const string BlueprintAssignmentsBySubscription = "BlueprintAssignmentsBySubscription";
             public const string BlueprintAssignmentByName = "BlueprintAssignmentByName";
-            public const string CreateBlueprintAssignment = "CreateBlueprintAssignmentBySystemAssigned";
+            public const string CreateBlueprintAssignment = "CreateBlueprintAssignment";
+            public const string CreateBlueprintAssignmentByFile = "CreateBlueprintAssignmentByFile";
             public const string DeleteBlueprintAssignmentByName = "DeleteBlueprintAssignmentByName";
             public const string DeleteBlueprintAssignmentByObject = "DeleteBlueprintAssignmentByObject";
+
+            public const string UpdateBlueprintAssignment = "UpdateBlueprintAssignment";
+            public const string UpdateBlueprintAssignmentByFile = "UpdateBlueprintAssignmentByFile";
+
+            public const string PublishBlueprint = "PublishBlueprint";
+
+            public const string ArtifactsByBlueprint = "ArtifactsByBlueprint";
+
+            public const string CreatePolicyAssignmentArtifact = "CreatePolicyArtifact";
+            public const string CreateRoleAssignmentArtifact = "CreateRoleAssignmentArtifact";
+            public const string CreateTemplateArtifact = "CreateTemplateArtifact";
+            public const string CreateArtifactByInputFile = "CreateArtifactByInputFile";
+
+            public const string CreateBlueprintBySubscription = "CreateBlueprintBySubscription";
+            public const string CreateBlueprintByManagementGroup = "CreateBlueprintByManagementGroup";
+
+            public const string UpdatePolicyAssignmentArtifact = "UpdatePolicyAssignmentArtifact";
+            public const string UpdateRoleAssignmentArtifact = "UpdateRoleAssignmentArtifact";
+            public const string UpdateTemplateArtifact = "UpdateTemplateArtifact";
+            public const string UpdateArtifactByInputFile = "UpdateArtifactByInputFile";
+
+            public const string UpdateBlueprintBySubscription = "UpdateBlueprintBySubscription";
+            public const string UpdateBlueprintByManagementGroup = "UpdateBlueprintByManagementGroup";
+
+            public const string ExportBlueprintParameterSet = "ExportToFile";
+            public const string ImportBlueprintParameterSet = "ImportBlueprint";
+
+
+
         }
 
         public static class ParameterHelpMessages
         {
-            public const string DefinitionSubscriptionId = "Subscription Id where the blueprint definition is saved.";
+            public const string DefinitionSubscriptionId = "Subscription Id where the blueprint definition is or will be saved.";
             public const string AssignmentSubscriptionId = "Subscription Id the blueprint assignment is deployed to.";
             public const string BlueprintAssignmentName = "Blueprint assignment name.";
             public const string BlueprintAssignmentObject = "Blueprint assignment object.";
             public const string BlueprintObject = "Blueprint object.";
-            public const string DefinitionManagementGroupId = "Management Group Id where the blueprint definition is saved.";
+            public const string DefinitionManagementGroupId = "Management Group Id where the blueprint definition is or will be saved.";
             public const string BlueprintDefinitionName = "Blueprint definition name.";
             public const string BlueprintDefinitionVersion = "Published blueprint definition version.";
+            public const string BlueprintDefinitionVersionToPublish = "Version for the blueprint definition.";
             public const string LatestPublishedFlag = "The latest published blueprint definition flag. When set, execution returns the latest published version of the blueprint definition.";
             public const string SubscriptionIdToAssign = "SubscriptionId to assign the Blueprint. Can be a comma delimited list of subscriptionId strings.";
             public const string Location = "Region for managed identity to be created in. Learn more at aka.ms/blueprintmsi";
@@ -62,6 +93,23 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             public const string SystemAssignedIdentity = "System assigned identity(MSI) to deploy the artifacts.";
             public const string UserAssignedIdentity = "User assigned identity(MSI) to deploy the artifacts.";
             public const string SecureString = "Secure string parameter for KeyVault resource id, name and version.";
+            public const string ArtifactName = "Name of the artifact";
+            public const string ArtifactType = "Type of the artifact. There are 3 tpes supported: RoleAssignmentArtifact, PolicyAssignmentArtifact, TemplateArtifact.";
+            public const string ArtifactDescription = "Description of the artifact.";
+            public const string ArtifactDependsOn = "List of the names of artifacts that needs to be created before current artifact is created.";
+            public const string ArtifactPolicyDefinitionId = "Definition Id of the policy definition.";
+            public const string ArtifactPolicyDefinitionParameter = "Hashtable of parameters to pass to the policy definition artifact.";
+            public const string ArtifactRoleDefinitionId = "List of role definition";
+            public const string ArtifactRoleDefinitionPrincipalId = "List of role definition pricipal ids.";
+            public const string ArtifactTemplateFile = "Location of the ARM template file on disk.";
+            public const string ArtifactTemplateParameterFile = "Location of the ARM template parameter file on disk.";
+            public const string ArtifactFile = "Location of the artifact file in JSON format on disk.";
+            public const string ArtifactResourceGroup = "Name of the resource group the artifact is going to be under.";
+            public const string ExportBlueprintObject = "The Blueprint definition object to export.";
+            public const string ExportOutputFile = "Path to a file on disk where to export the Blueprint definition in JSON format.";
+            public const string ForceHelpMessage = "When set to true, execution will not ask for a confirmation.";
+            public const string ImportInputPath = "Path to a Blueprint JSON file on disk.";
+
         }
     }
 }
