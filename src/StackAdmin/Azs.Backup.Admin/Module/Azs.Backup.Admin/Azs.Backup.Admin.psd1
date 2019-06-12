@@ -31,7 +31,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     RootModule           = 'Azs.Backup.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion        = '0.3.1'
+    ModuleVersion        = '0.3.2'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
