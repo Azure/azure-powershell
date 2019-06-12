@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
 online version: https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/start-azrecoveryservicesasrtestfailoverjob
@@ -76,7 +76,7 @@ Starts the test failover operation for the recovery plan with the specified para
 ## PARAMETERS
 
 ### -AzureVMNetworkId
-{{Fill AzureVMNetworkId Description}}
+Specifies the Azure vm network id for recovery VM after failover.
 
 ```yaml
 Type: System.String

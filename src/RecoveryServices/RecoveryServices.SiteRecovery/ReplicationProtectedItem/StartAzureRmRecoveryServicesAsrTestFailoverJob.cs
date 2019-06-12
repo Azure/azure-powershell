@@ -19,6 +19,7 @@ using System.IO;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -112,7 +113,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string CloudServiceCreationOption { get; set; }
 
         /// <summary>
-        ///     Gets or sets data encryption priamry certificate file path for failover of protected item.
+        ///     Gets or sets data encryption primary certificate file path for failover of protected item.
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
@@ -252,6 +253,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         SecondaryKekCertificatePfx = this.secondaryKekCertpfx
                     };
 
+                    if (this.IsParameterBound(c => c.RecoveryPoint))
+                    {
+                        failoverInput.RecoveryPointId = this.RecoveryPoint != null ? this.RecoveryPoint.ID : null;
+                    }
                     input.Properties.ProviderSpecificDetails = failoverInput;
                 }
                 else
@@ -315,7 +320,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     string.Format(
                         Resources.UnsupportedReplicationProviderForTestFailover,
                         this.ReplicationProtectedItem.ReplicationProvider));
-            }else if (Constants.A2A.Equals(
+            }
+            else if (Constants.A2A.Equals(
               this.ReplicationProtectedItem.ReplicationProvider,
                StringComparison.OrdinalIgnoreCase))
             {
