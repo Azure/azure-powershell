@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support for additional Template Export options
+    - Add `-SkipResourceNameParameterization` parameter to Export-AzResourceGroup
+    - Add `-SkipAllParameterization` parameter to Export-AzResourceGroup
+    - Add `-Resource` parameter to Export-AzResourceGroup for exported resource filtering
 
 ## Version 1.4.0
 * Add new cmdlet Get-AzureRmDenyAssignment for retrieving deny assignments
