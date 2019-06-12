@@ -18,9 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Bug Fix in IP Prefix validation to allow 0/30 for DirectConnection
+* Bug fix in IP Prefix validation to allow 0/30 for DirectConnection
+* Bug fix to handle error messages from ARM and ERM
+* Added Verbose comments for debugging
 ## Version 0.1.1
-* Updated Automapper 6.2.0 -> 6.2.2 
-* Bug fix in Get-AzPeeringLocation that made Kind case sensative.
+* Update version of AutoMapper library used
+* Fix case sensitivity bug in `Get-AzPeeringLocation` for `-Kind` parameter
 ## Version 0.1.0
 * Preview release for Microsoft Peering Service module
