@@ -78,7 +78,7 @@ The acceptable values for this parameter are:
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, Windows, AzureSQL, AzureStorage, AzureWorkload
+Accepted values: AzureVM, Windows, AzureSQL, AzureStorage, AzureVMAppContainer
 
 Required: True
 Position: 1
