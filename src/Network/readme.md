@@ -362,4 +362,131 @@ directive:
       parameter-name: (.*)VirtualNetwork(.*)
     set:
       parameter-name: $1Vnet$2
+
+# Parameter Rename
+  - where: # Little to no documentation. Not sure how this parameter works or is used.
+      verb: Get
+      subject: ApplicationGatewayBackendHealth|ApplicationGatewayBackendHealthOnDemand|LoadBalancer|NetworkInterface|NetworkProfile|NetworkSecurityGroup|PublicIPAddress|RouteFilter|RouteTable|Vnet
+      parameter-name: Expand
+    set:
+      parameter-name: ExpandResource
+  - where: # Property path
+      verb: Get
+      subject: ApplicationGatewayBackendHealth|ApplicationGatewayBackendHealthOnDemand
+      parameter-name: ApplicationGatewayName
+    set:
+      parameter-name: Name
+      alias: ApplicationGatewayName
+  - where:
+      verb: Get
+      subject: ApplicationGatewaySslPredefinedPolicy
+      parameter-name: PredefinedPolicyName
+    set:
+      parameter-name: Name
+      alias: PredefinedPolicyName
+  - where:
+      verb: Get
+      subject: ApplicationGatewayWafPolicy
+      parameter-name: PolicyName
+    set:
+      parameter-name: Name
+      alias: PolicyName
+  - where:
+      verb: Get|New|Remove
+      subject: ExpressRouteCircuit
+      parameter-name: CircuitName
+    set:
+      parameter-name: Name
+      alias: CircuitName
+  - where:
+      verb: Get|Remove
+      subject: ExpressRouteCircuitAuthorization
+      parameter-name: AuthorizationName
+    set:
+      parameter-name: Name
+      alias: AuthorizationName
+  - where:
+      verb: Get|Remove
+      subject: ExpressRouteConnection
+      parameter-name: ConnectionName
+    set:
+      parameter-name: Name
+      alias: ConnectionName
+  - where:
+      verb: Get|Set
+      subject: ExpressRouteCrossConnection
+      parameter-name: CrossConnectionName
+    set:
+      parameter-name: Name
+      alias: CrossConnectionName
+  - where:
+      verb: Get|Remove
+      subject: ExpressRouteCrossConnectionPeering
+      parameter-name: PeeringName
+    set:
+      parameter-name: Name
+      alias: PeeringName
+  - where:
+      verb: Get|Remove
+      subject: NetworkInterfaceTapConfiguration
+      parameter-name: TapConfigurationName
+    set:
+      parameter-name: Name
+      alias: TapConfigurationName
+  - where:
+      verb: Get
+      subject: VirtualHubVnetConnection
+      parameter-name: ConnectionName
+    set:
+      parameter-name: Name
+      alias: ConnectionName
+  - where: # Property path
+      verb: Get|Reset|Set
+      subject: VnetGatewayConnectionSharedKey
+      parameter-name: VnetGatewayConnectionName
+    set:
+      parameter-name: Name
+      alias: VnetGatewayConnectionName
+  - where: # Property path
+      verb: Get
+      subject: VnetGatewaySupportedVpnDevice|VnetGatewayVpnClientIPsecParameter
+      parameter-name: VnetGatewayName
+    set:
+      parameter-name: Name
+      alias: VnetGatewayName
+  - where: # Property path
+      verb: Get
+      subject: VnetGatewayVpnDeviceConfigurationScript
+      parameter-name: VnetGatewayConnectionName
+    set:
+      parameter-name: Name
+      alias: VnetGatewayConnectionName
+  - where:
+      verb: Get|New|Remove
+      subject: VnetTap
+      parameter-name: TapName
+    set:
+      parameter-name: Name
+      alias: TapName
+  - where: # Property path
+      verb: Get
+      subject: VnetUsage
+      parameter-name: VnetName
+    set:
+      parameter-name: Name
+      alias: VnetName
+  - where:
+      verb: Get|Remove
+      subject: VpnConnection
+      parameter-name: ConnectionName
+    set:
+      parameter-name: Name
+      alias: ConnectionName
+  - where:
+      verb: Get|New|Remove
+      subject: VpnGateway
+      parameter-name: GatewayName
+    set:
+      parameter-name: Name
+      alias: GatewayName
 ```

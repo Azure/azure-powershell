@@ -246,7 +246,25 @@ function Test-AzDummy {
 )]
 [Microsoft.Azure.PowerShell.Cmdlets.Network.Profile('latest-2019-04-30')]
 [Microsoft.Azure.PowerShell.Cmdlets.Network.Description('Dummy alias cmdlet')]
-param()
+param(
+    [Parameter(Mandatory, HelpMessage='The name of the dummy.')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Network.Category('Path')]
+    [System.String]
+    ${Name},
+
+    [Parameter(Mandatory, HelpMessage='The name of the application gateway.')]
+    [Alias('ApplicationGateway')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Network.Category('Path')]
+    [System.String]
+    ${ApplicationGatewayName},
+
+    [Parameter(HelpMessage='The credentials, account, tenant, and subscription used for communication with Azure.')]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Network.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    ${DefaultProfile}
+)
 
 process {}
 }
