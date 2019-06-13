@@ -305,14 +305,15 @@ Gets the values of the parameters used in the Server Key Vault Key tests
 #>
 function Get-SqlServerKeyVaultKeyTestEnvironmentParameters ()
 {
+	# Create a key vault with soft delete.configured
 	return @{ rgName = Get-ResourceGroupName;
 			  serverName = Get-ServerName;
 			  databaseName = Get-DatabaseName;
-			  keyId = "https://akvtdekeyvault.vault.azure.net/keys/key1/51c2fab9ff3c4a17aab4cd51b932b106";
-			  serverKeyName = "akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106";
-			  vaultName = "akvtdekeyvault";
+			  keyId = "https://akvtdekeyvaultcl.vault.azure.net/keys/key1/738a177a3b0d45e98d366fdf738840e8";
+			  serverKeyName = "akvtdekeyvaultcl_key1_738a177a3b0d45e98d366fdf738840e8";
+			  vaultName = "akvtdekeyvaultcl";
 			  keyName = "key1"
-			  location = "southeastasia";
+			  location = "westcentralus";
 			  }
 }
 
@@ -330,15 +331,40 @@ function Create-ServerKeyVaultKeyTestEnvironment ($params)
 	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
-	$server = New-AzSqlServer -ResourceGroupName  $rg.ResourceGroupName -ServerName $params.serverName -Location $params.location -ServerVersion "12.0" -SqlAdministratorCredentials $credentials
+	$server = New-AzSqlServer -ResourceGroupName  $rg.ResourceGroupName -ServerName $params.serverName -Location $params.location -ServerVersion "12.0" -SqlAdministratorCredentials $credentials -AssignIdentity
 	Assert-AreEqual $server.ServerName $params.serverName
 
 	# Create database
 	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $params.databaseName
 	Assert-AreEqual $db.DatabaseName $params.databaseName
 
+	#Set permissions on key Vault
+	Set-AzKeyVaultAccessPolicy -VaultName $params.vaultName -ObjectId $server.Identity.PrincipalId -PermissionsToKeys get, list, wrapKey, unwrapKey
+
 	# Return the created resource group
 	return $rg
+}
+
+
+<#
+.SYNOPSIS
+Creates test managed instance
+#>
+function Get-ManagedInstanceForTdeTest ($params)
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$vnetName = "cl_initial"
+	$subnetName = "Cool"
+	
+	# Setup VNET 
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
+	
+	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
+	Set-AzKeyVaultAccessPolicy -VaultName $params.vaultName -ObjectId $managedInstance.Identity.PrincipalId -PermissionsToKeys get, list, wrapKey, unwrapKey
+
+	return $managedInstance
 }
 
 <#
@@ -705,7 +731,7 @@ function Create-ManagedInstanceForTest ($resourceGroup, $subnetId)
 
 	$managedInstance = New-AzSqlInstance -ResourceGroupName $resourceGroup.ResourceGroupName -Name $managedInstanceName `
  			-Location $resourceGroup.Location -AdministratorCredential $credentials -SubnetId $subnetId `
-  			-Vcore $vCore -SkuName $skuName
+  			-Vcore $vCore -SkuName $skuName -AssignIdentity
 
 	return $managedInstance
 }
