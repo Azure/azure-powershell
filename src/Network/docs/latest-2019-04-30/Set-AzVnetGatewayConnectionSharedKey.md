@@ -14,16 +14,16 @@ The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual netw
 
 ### Set (Default)
 ```
-Set-AzVnetGatewayConnectionSharedKey -ResourceGroupName <String> -SubscriptionId <String>
- -VnetGatewayConnectionName <String> [-Parameter <IConnectionSharedKey>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzVnetGatewayConnectionSharedKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-Parameter <IConnectionSharedKey>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### SetExpanded
 ```
-Set-AzVnetGatewayConnectionSharedKey -ResourceGroupName <String> -SubscriptionId <String>
- -VnetGatewayConnectionName <String> -Value <String> [-Id <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzVnetGatewayConnectionSharedKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Value <String> [-Id <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
@@ -127,6 +127,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The virtual network gateway connection name.
+
+```yaml
+Type: System.String
+Parameter Sets: Set, SetExpanded
+Aliases: VnetGatewayConnectionName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 Response for GetConnectionSharedKey API service call
 
@@ -182,22 +198,6 @@ The virtual network connection shared key value.
 ```yaml
 Type: System.String
 Parameter Sets: SetExpanded, SetViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VnetGatewayConnectionName
-The virtual network gateway connection name.
-
-```yaml
-Type: System.String
-Parameter Sets: Set, SetExpanded
 Aliases:
 
 Required: True

@@ -14,8 +14,8 @@ Gets a xml format representation for supported vpn devices.
 
 ### Supported (Default)
 ```
-Get-AzVnetGatewaySupportedVpnDevice -ResourceGroupName <String> -SubscriptionId <String[]>
- -VnetGatewayName <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzVnetGatewaySupportedVpnDevice -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SupportedViaIdentity
@@ -81,6 +81,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the virtual network gateway.
+
+```yaml
+Type: System.String
+Parameter Sets: Supported
+Aliases: VnetGatewayName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -103,22 +119,6 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Supported
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VnetGatewayName
-The name of the virtual network gateway.
-
-```yaml
-Type: System.String
 Parameter Sets: Supported
 Aliases:
 

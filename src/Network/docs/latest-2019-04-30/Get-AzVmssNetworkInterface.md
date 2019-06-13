@@ -22,13 +22,13 @@ Get-AzVmssNetworkInterface -ResourceGroupName <String> -SubscriptionId <String[]
 ```
 Get-AzVmssNetworkInterface -NetworkInterfaceName <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> -VirtualMachineScaleSetName <String> -VirtualmachineIndex <String>
- [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-ExpandResource <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzVmssNetworkInterface -InputObject <INetworkIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzVmssNetworkInterface -InputObject <INetworkIdentity> [-ExpandResource <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Expand
+### -ExpandResource
 Expands referenced resources.
 
 ```yaml

@@ -17,16 +17,16 @@ Gets information about the specified virtual network tap.
 Get-AzVnetTap -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### Get
+```
+Get-AzVnetTap -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List1
 ```
 Get-AzVnetTap -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzVnetTap -ResourceGroupName <String> -SubscriptionId <String[]> -TapName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -91,12 +91,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of virtual network tap.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: TapName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: List1, Get
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -113,23 +129,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, List1, Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -TapName
-The name of virtual network tap.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: True

@@ -14,7 +14,7 @@ Deletes the specified peering from the ExpressRouteCrossConnection.
 
 ### Delete (Default)
 ```
-Remove-AzExpressRouteCrossConnectionPeering -CrossConnectionName <String> -PeeringName <String>
+Remove-AzExpressRouteCrossConnectionPeering -CrossConnectionName <String> -Name <String>
  -ResourceGroupName <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -114,6 +114,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the peering.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: PeeringName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -PassThru
 When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
 
@@ -125,22 +141,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PeeringName
-The name of the peering.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

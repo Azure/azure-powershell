@@ -29,7 +29,10 @@ Param
     [string]${ApiProfile},
 
     [Parameter()]
-    [string]${OutputFile}
+    [string]${OutputFile},
+
+    [Parameter()]
+    [switch]${IgnoreForce}
 )
 
 $Result = @()
@@ -211,7 +214,7 @@ foreach ($Script in $GeneratedScripts)
     $MissingParameters = @()
     foreach ($Parameter in $ExistingParameters)
     {
-        if (($Parameter.Name -ne 'ResourceId') -and (($Parameters | Where-Object { $_ -eq $Parameter.Name }).Count -eq 0))
+        if (($Parameter.Name -ne 'ResourceId') -and (-not $IgnoreForce -or $Parameter.Name -ne 'Force') -and (($Parameters | Where-Object { $_ -eq $Parameter.Name }).Count -eq 0))
         {
             $Found = $false
             foreach ($Alias in $Parameter.AliasList)

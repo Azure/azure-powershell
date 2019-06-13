@@ -14,8 +14,8 @@ The Get VpnclientIpsecParameters operation retrieves information about the vpncl
 
 ### Get (Default)
 ```
-Get-AzVnetGatewayVpnClientIPsecParameter -ResourceGroupName <String> -SubscriptionId <String[]>
- -VnetGatewayName <String> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzVnetGatewayVpnClientIPsecParameter -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -97,6 +97,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The virtual network gateway name.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: VnetGatewayName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -119,22 +135,6 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VnetGatewayName
-The virtual network gateway name.
-
-```yaml
-Type: System.String
 Parameter Sets: Get
 Aliases:
 

@@ -14,14 +14,14 @@ Creates or updates an express route circuit.
 
 ### Create (Default)
 ```
-New-AzExpressRouteCircuit -CircuitName <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Parameter <IExpressRouteCircuit>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
-New-AzExpressRouteCircuit -CircuitName <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AllowClassicOperation] [-Authorization <IExpressRouteCircuitAuthorization[]>] [-BandwidthInGbp <Single>]
  [-CircuitProvisioningState <String>] [-ExpressRoutePortId <String>] [-GatewayManagerEtag <String>]
  [-GlobalReachEnabled] [-Id <String>] [-Location <String>] [-Peering <IExpressRouteCircuitPeering[]>]
@@ -137,22 +137,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -CircuitName
-The name of the circuit.
-
-```yaml
-Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -279,6 +263,22 @@ Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Name
+The name of the circuit.
+
+```yaml
+Type: System.String
+Parameter Sets: Create, CreateExpanded
+Aliases: CircuitName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

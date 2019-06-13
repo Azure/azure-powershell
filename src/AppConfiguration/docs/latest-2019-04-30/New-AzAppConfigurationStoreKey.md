@@ -1,33 +1,51 @@
 ---
-external help file: Az.AppConfiguration-help.xml
+external help file:
 Module Name: Az.AppConfiguration
-online version: https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/get-azappconfigurationstorekey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstorekey
 schema: 2.0.0
 ---
 
-# Get-AzAppConfigurationStoreKey
+# New-AzAppConfigurationStoreKey
 
 ## SYNOPSIS
-Lists the access key for the specified configuration store.
+Regenerates an access key for the specified configuration store.
 
 ## SYNTAX
 
+### RegenerateExpanded (Default)
 ```
-Get-AzAppConfigurationStoreKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- [-SkipToken <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzAppConfigurationStoreKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-Id <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RegenerateViaIdentityExpanded
+```
+New-AzAppConfigurationStoreKey -InputObject <IAppConfigurationIdentity> [-Id <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Lists the access key for the specified configuration store.
+Regenerates an access key for the specified configuration store.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-{{ Add example description here }}
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -44,41 +62,11 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
-### -Name
-The name of the configuration store.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The name of the resource group to which the container registry belongs.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkipToken
-A skip token is used to continue retrieving items after an operation returns a partial result.
-If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
+### -Id
+The id of the key to regenerate.
 
 ```yaml
 Type: System.String
@@ -90,14 +78,31 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
-### -SubscriptionId
-The Microsoft Azure subscription ID.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
+Parameter Sets: RegenerateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Name
+The name of the configuration store.
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: True
@@ -105,6 +110,39 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceGroupName
+The name of the resource group to which the container registry belongs.
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SubscriptionId
+The Microsoft Azure subscription ID.
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -Confirm
@@ -120,6 +158,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -WhatIf
@@ -136,6 +175,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### CommonParameters
@@ -143,12 +183,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IApiKey
-## NOTES
+
+## ALIASES
 
 ## RELATED LINKS
-
-[https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/get-azappconfigurationstorekey](https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/get-azappconfigurationstorekey)
 

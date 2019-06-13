@@ -19,8 +19,8 @@ Get-AzExpressRouteCrossConnection -SubscriptionId <String[]> [-DefaultProfile <P
 
 ### Get
 ```
-Get-AzExpressRouteCrossConnection -CrossConnectionName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzExpressRouteCrossConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
@@ -60,22 +60,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -CrossConnectionName
-The name of the ExpressRouteCrossConnection (service key of the circuit).
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -104,6 +88,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Name
+The name of the ExpressRouteCrossConnection (service key of the circuit).
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: CrossConnectionName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```

@@ -14,23 +14,23 @@ Gets the backend health for given combination of backend pool and http setting o
 
 ### Demand (Default)
 ```
-Get-AzApplicationGatewayBackendHealthOnDemand -ApplicationGatewayName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-Expand <String>] [-ProbeRequest <IApplicationGatewayOnDemandProbe>]
+Get-AzApplicationGatewayBackendHealthOnDemand -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> [-ExpandResource <String>] [-ProbeRequest <IApplicationGatewayOnDemandProbe>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DemandExpanded
 ```
-Get-AzApplicationGatewayBackendHealthOnDemand -ApplicationGatewayName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-Expand <String>] [-BackendHttpSettingName <String>] [-BackendPoolName <String>]
- [-Host <String>] [-MatchBody <String>] [-MatchStatusCode <String[]>] [-Path <String>]
- [-PickHostNameFromBackendHttpSetting] [-Protocol <ApplicationGatewayProtocol>] [-Timeout <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzApplicationGatewayBackendHealthOnDemand -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> [-ExpandResource <String>] [-BackendHttpSettingName <String>]
+ [-BackendPoolName <String>] [-Host <String>] [-MatchBody <String>] [-MatchStatusCode <String[]>]
+ [-Path <String>] [-PickHostNameFromBackendHttpSetting] [-Protocol <ApplicationGatewayProtocol>]
+ [-Timeout <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DemandViaIdentityExpanded
 ```
-Get-AzApplicationGatewayBackendHealthOnDemand -InputObject <INetworkIdentity> [-Expand <String>]
+Get-AzApplicationGatewayBackendHealthOnDemand -InputObject <INetworkIdentity> [-ExpandResource <String>]
  [-BackendHttpSettingName <String>] [-BackendPoolName <String>] [-Host <String>] [-MatchBody <String>]
  [-MatchStatusCode <String[]>] [-Path <String>] [-PickHostNameFromBackendHttpSetting]
  [-Protocol <ApplicationGatewayProtocol>] [-Timeout <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
@@ -39,7 +39,7 @@ Get-AzApplicationGatewayBackendHealthOnDemand -InputObject <INetworkIdentity> [-
 
 ### DemandViaIdentity
 ```
-Get-AzApplicationGatewayBackendHealthOnDemand -InputObject <INetworkIdentity> [-Expand <String>]
+Get-AzApplicationGatewayBackendHealthOnDemand -InputObject <INetworkIdentity> [-ExpandResource <String>]
  [-ProbeRequest <IApplicationGatewayOnDemandProbe>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -68,22 +68,6 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -ApplicationGatewayName
-The name of the application gateway.
-
-```yaml
-Type: System.String
-Parameter Sets: Demand, DemandExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
 
 ### -AsJob
 Run the command as a job
@@ -149,7 +133,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Expand
+### -ExpandResource
 Expands BackendAddressPool and BackendHttpSettings referenced in backend health.
 
 ```yaml
@@ -224,6 +208,22 @@ Parameter Sets: DemandExpanded, DemandViaIdentityExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Name
+The name of the application gateway.
+
+```yaml
+Type: System.String
+Parameter Sets: Demand, DemandExpanded
+Aliases: ApplicationGatewayName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

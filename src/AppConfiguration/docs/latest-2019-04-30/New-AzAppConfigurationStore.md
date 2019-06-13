@@ -1,5 +1,5 @@
 ---
-external help file: Az.AppConfiguration-help.xml
+external help file:
 Module Name: Az.AppConfiguration
 online version: https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstore
 schema: 2.0.0
@@ -15,14 +15,14 @@ Creates a configuration store with the specified parameters.
 ### CreateExpanded (Default)
 ```
 New-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Location <String> [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ -Location <String> [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzAppConfigurationStore -InputObject <IAppConfigurationIdentity> -Location <String> [-Tag <IResourceTags>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,12 +30,23 @@ Creates a configuration store with the specified parameters.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-{{ Add example description here }}
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -52,6 +63,7 @@ Position: Named
 Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -DefaultProfile
@@ -67,6 +79,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -InputObject
@@ -82,6 +95,7 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -Location
@@ -98,6 +112,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -Name
@@ -113,6 +128,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -ResourceGroupName
@@ -128,6 +144,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -143,6 +160,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -Tag
@@ -158,6 +176,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -Confirm
@@ -173,6 +192,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -WhatIf
@@ -189,6 +209,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### CommonParameters
@@ -196,12 +217,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20190201Preview.IConfigurationStore
-## NOTES
+
+## ALIASES
 
 ## RELATED LINKS
-
-[https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstore](https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/new-azappconfigurationstore)
 

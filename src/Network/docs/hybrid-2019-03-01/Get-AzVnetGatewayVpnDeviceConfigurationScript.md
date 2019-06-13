@@ -14,15 +14,15 @@ Gets a xml format representation for vpn device configuration script.
 
 ### Script1 (Default)
 ```
-Get-AzVnetGatewayVpnDeviceConfigurationScript -ResourceGroupName <String> -SubscriptionId <String[]>
- -VnetGatewayConnectionName <String> [-Parameter <IVpnDeviceScriptParameters>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzVnetGatewayVpnDeviceConfigurationScript -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> [-Parameter <IVpnDeviceScriptParameters>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### ScriptExpanded1
 ```
-Get-AzVnetGatewayVpnDeviceConfigurationScript -ResourceGroupName <String> -SubscriptionId <String[]>
- -VnetGatewayConnectionName <String> [-DeviceFamily <String>] [-FirmwareVersion <String>] [-Vendor <String>]
+Get-AzVnetGatewayVpnDeviceConfigurationScript -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> [-DeviceFamily <String>] [-FirmwareVersion <String>] [-Vendor <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -129,6 +129,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the virtual network gateway connection for which the configuration script is generated.
+
+```yaml
+Type: System.String
+Parameter Sets: Script1, ScriptExpanded1
+Aliases: VnetGatewayConnectionName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 Vpn device configuration script generation parameters
 
@@ -187,22 +203,6 @@ Parameter Sets: ScriptExpanded1, ScriptViaIdentityExpanded1
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VnetGatewayConnectionName
-The name of the virtual network gateway connection for which the configuration script is generated.
-
-```yaml
-Type: System.String
-Parameter Sets: Script1, ScriptExpanded1
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

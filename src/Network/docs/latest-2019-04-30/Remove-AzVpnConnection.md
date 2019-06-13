@@ -14,7 +14,7 @@ Deletes a vpn connection.
 
 ### Delete (Default)
 ```
-Remove-AzVpnConnection -ConnectionName <String> -GatewayName <String> -ResourceGroupName <String>
+Remove-AzVpnConnection -GatewayName <String> -Name <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -66,22 +66,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ConnectionName
-The name of the connection.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -126,6 +110,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Name
+The name of the connection.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: ConnectionName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```

@@ -19,7 +19,7 @@ Get-AzVnet -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParam
 
 ### Get
 ```
-Get-AzVnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-Expand <String>]
+Get-AzVnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-ExpandResource <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Get-AzVnet -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfi
 
 ### GetViaIdentity
 ```
-Get-AzVnet -InputObject <INetworkIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
+Get-AzVnet -InputObject <INetworkIdentity> [-ExpandResource <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Expand
+### -ExpandResource
 Expands referenced resources.
 
 ```yaml

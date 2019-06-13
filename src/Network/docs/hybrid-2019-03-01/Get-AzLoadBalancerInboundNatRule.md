@@ -21,12 +21,12 @@ Get-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -ResourceGroupName <
 ### Get1
 ```
 Get-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -SubscriptionId <String[]> [-ExpandResource <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity1
 ```
-Get-AzLoadBalancerInboundNatRule -InputObject <INetworkIdentity> [-Expand <String>]
+Get-AzLoadBalancerInboundNatRule -InputObject <INetworkIdentity> [-ExpandResource <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Expand
+### -ExpandResource
 Expands referenced resources.
 
 ```yaml

@@ -14,16 +14,16 @@ Update the specified ExpressRouteCrossConnection.
 
 ### Update (Default)
 ```
-Set-AzExpressRouteCrossConnection -CrossConnectionName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Parameter <IExpressRouteCrossConnection>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzExpressRouteCrossConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-Parameter <IExpressRouteCrossConnection>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Set-AzExpressRouteCrossConnection -CrossConnectionName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-BandwidthInMbp <Int32>] [-ExpressRouteCircuitId <String>] [-Id <String>]
- [-Location <String>] [-Peering <IExpressRouteCrossConnectionPeering[]>] [-PeeringLocation <String>]
+Set-AzExpressRouteCrossConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-BandwidthInMbp <Int32>] [-ExpressRouteCircuitId <String>] [-Id <String>] [-Location <String>]
+ [-Peering <IExpressRouteCrossConnectionPeering[]>] [-PeeringLocation <String>]
  [-ServiceProviderNote <String>] [-ServiceProviderProvisioningState <ServiceProviderProvisioningState>]
  [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -95,22 +95,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -CrossConnectionName
-The name of the ExpressRouteCrossConnection.
-
-```yaml
-Type: System.String
-Parameter Sets: Update, UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -189,6 +173,22 @@ Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Name
+The name of the ExpressRouteCrossConnection.
+
+```yaml
+Type: System.String
+Parameter Sets: Update, UpdateExpanded
+Aliases: CrossConnectionName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

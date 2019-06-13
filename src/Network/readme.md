@@ -134,7 +134,7 @@ directive:
       subject: VirtualNetworkSubnetNetworkPolicy
   - where:
       verb: Get
-      subject: AvailableVirtualNetworkSubnetDelegation
+      subject: VirtualNetworkAvailableSubnetDelegation
     set:
       alias: Get-AzAvailableServiceDelegation
 
@@ -364,12 +364,7 @@ directive:
       parameter-name: $1Vnet$2
 
 # Parameter Rename
-  - where: # Little to no documentation. Not sure how this parameter works or is used.
-      verb: Get
-      subject: ApplicationGatewayBackendHealth|ApplicationGatewayBackendHealthOnDemand|LoadBalancer|NetworkInterface|NetworkProfile|NetworkSecurityGroup|PublicIPAddress|RouteFilter|RouteTable|Vnet
-      parameter-name: Expand
-    set:
-      parameter-name: ExpandResource
+## Name
   - where: # Property path
       verb: Get
       subject: ApplicationGatewayBackendHealth|ApplicationGatewayBackendHealthOnDemand
@@ -489,4 +484,98 @@ directive:
     set:
       parameter-name: Name
       alias: GatewayName
+## Other
+  - where: # Little to no documentation. Not sure how this parameter works or is used.
+      verb: Get
+      subject: ApplicationGatewayBackendHealth|ApplicationGatewayBackendHealthOnDemand|LoadBalancer|NetworkInterface|NetworkProfile|NetworkSecurityGroup|PublicIPAddress|RouteFilter|RouteTable|Vnet
+      parameter-name: Expand
+    set:
+      parameter-name: ExpandResource
+  - where:
+      verb: Get
+      subject: ExpressRouteCircuitArpTable|ExpressRouteCircuitRouteTable|ExpressRouteCircuitRouteTableSummary|ExpressRouteCircuitStat
+      parameter-name: CircuitName
+    set:
+      alias: ExpressRouteCircuitName
+  - where: # This parameter needs a validate set, as [AzurePrivatePeering, AzurePublicPeering, MicrosoftPeering] are listed as the only valid values in current cmdlets.
+      verb: Get
+      subject: ExpressRouteCircuitArpTable|ExpressRouteCircuitRouteTable|ExpressRouteCircuitRouteTableSummary|ExpressRouteCircuitStat|ExpressRouteCrossConnectionArpTable|ExpressRouteCrossConnectionRouteTable|ExpressRouteCrossConnectionRouteTableSummary
+      parameter-name: PeeringName
+    set:
+      alias: PeeringType
+  - where:
+      subject: NetworkWatcherAvailableProvider|NetworkWatcherReachabilityReport
+      parameter-name: AzureLocation
+    set:
+      parameter-name: Location
+  - where: # REMOVE BEFORE RELEASE: Unnecessary custom client-side Location implementation
+      subject: NetworkWatcherAvailableProvider|NetworkWatcherReachabilityReport
+      parameter-name: InputObject
+    set:
+      alias: NetworkWatcherLocation
+  - where: # REMOVE BEFORE RELEASE: Unnecessary custom client-side Location implementation
+      subject: ^NetworkWatcher(?!(AvailableProvider|ReachabilityReport))(.*)
+      parameter-name: InputObject
+    set:
+      alias: Location
+  - where: # REMOVE BEFORE RELEASE: Not a direct mapping to what NetworkWatcher in-memory object represented
+      verb: Get
+      subject: NetworkWatcherAvailableProvider|NetworkWatcherFlowLogStatus|NetworkWatcherNetworkConfigurationDiagnostic|NetworkWatcherNextHop|NetworkWatcherReachabilityReport|NetworkWatcherTopology|NetworkWatcherTroubleshootingResult
+      parameter-name: Parameter
+    set:
+      alias: NetworkWatcher
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Get
+      subject: NetworkWatcherConnectionMonitor|NetworkWatcherConnectionMonitorState|NetworkWatcherPacketCapture
+      parameter-name: InputObject
+    set:
+      alias: NetworkWatcher
+  - where: # REMOVE BEFORE RELEASE: Not a direct mapping to what NetworkWatcher in-memory object represented
+      verb: New
+      subject: NetworkWatcherConnectionMonitor|NetworkWatcherPacketCapture
+      parameter-name: Parameter
+    set:
+      alias: NetworkWatcher
+- where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Remove
+      subject: NetworkWatcher|NetworkWatcherConnectionMonitor|NetworkWatcherPacketCapture
+      parameter-name: InputObject
+    set:
+      alias: NetworkWatcher
+  - where: # REMOVE BEFORE RELEASE: Not a direct mapping to what NetworkWatcher in-memory object represented
+      verb: Set
+      subject: NetworkWatcherConnectionMonitor|NetworkWatcherFlowLogConfiguration
+      parameter-name: Parameter
+    set:
+      alias: NetworkWatcher
+- where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Start|Stop
+      subject: NetworkWatcherConnectionMonitor
+      parameter-name: InputObject
+    set:
+      alias: NetworkWatcher
+  - where: # REMOVE BEFORE RELEASE: Not a direct mapping to what NetworkWatcher in-memory object represented
+      verb: Start
+      subject: NetworkWatcherTroubleshooting
+      parameter-name: Parameter
+    set:
+      alias: NetworkWatcher
+- where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Stop
+      subject: NetworkWatcherPacketCapture
+      parameter-name: InputObject
+    set:
+      alias: NetworkWatcher
+  - where: # REMOVE BEFORE RELEASE: Not a direct mapping to what NetworkWatcher in-memory object represented
+      verb: Test
+      subject: NetworkWatcherConnectivity|NetworkWatcherIPFlow
+      parameter-name: Parameter
+    set:
+      alias: NetworkWatcher
+
+# Other Fixes
+  - where:
+      subject: (.*)Stat$
+    set:
+      subject: $1Statistic
 ```

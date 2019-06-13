@@ -14,14 +14,13 @@ Gets the backend health of the specified application gateway in a resource group
 
 ### Backend (Default)
 ```
-Get-AzApplicationGatewayBackendHealth -ApplicationGatewayName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-Expand <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzApplicationGatewayBackendHealth -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ [-ExpandResource <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### BackendViaIdentity
 ```
-Get-AzApplicationGatewayBackendHealth -InputObject <INetworkIdentity> [-Expand <String>]
+Get-AzApplicationGatewayBackendHealth -InputObject <INetworkIdentity> [-ExpandResource <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -49,22 +48,6 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -ApplicationGatewayName
-The name of the application gateway.
-
-```yaml
-Type: System.String
-Parameter Sets: Backend
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
 
 ### -AsJob
 Run the command as a job
@@ -98,7 +81,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Expand
+### -ExpandResource
 Expands BackendAddressPool and BackendHttpSettings referenced in backend health.
 
 ```yaml
@@ -126,6 +109,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Name
+The name of the application gateway.
+
+```yaml
+Type: System.String
+Parameter Sets: Backend
+Aliases: ApplicationGatewayName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```

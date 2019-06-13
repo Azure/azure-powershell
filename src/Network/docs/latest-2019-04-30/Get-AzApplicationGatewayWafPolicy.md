@@ -19,7 +19,7 @@ Get-AzApplicationGatewayWafPolicy -SubscriptionId <String[]> [-DefaultProfile <P
 
 ### Get
 ```
-Get-AzApplicationGatewayWafPolicy -PolicyName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzApplicationGatewayWafPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -92,13 +92,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PolicyName
+### -Name
 The name of the policy
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: PolicyName
 
 Required: True
 Position: Named

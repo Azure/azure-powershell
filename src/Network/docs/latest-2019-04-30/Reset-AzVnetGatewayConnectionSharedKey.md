@@ -14,16 +14,15 @@ The VirtualNetworkGatewayConnectionResetSharedKey operation resets the virtual n
 
 ### Reset (Default)
 ```
-Reset-AzVnetGatewayConnectionSharedKey -ResourceGroupName <String> -SubscriptionId <String>
- -VnetGatewayConnectionName <String> [-Parameter <IConnectionResetSharedKey>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+Reset-AzVnetGatewayConnectionSharedKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-Parameter <IConnectionResetSharedKey>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ResetExpanded
 ```
-Reset-AzVnetGatewayConnectionSharedKey -ResourceGroupName <String> -SubscriptionId <String>
- -VnetGatewayConnectionName <String> -KeyLength <Int32> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Reset-AzVnetGatewayConnectionSharedKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -KeyLength <Int32> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ResetViaIdentityExpanded
@@ -128,6 +127,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The virtual network gateway connection reset shared key Name.
+
+```yaml
+Type: System.String
+Parameter Sets: Reset, ResetExpanded
+Aliases: VnetGatewayConnectionName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 The virtual network connection reset shared key
 
@@ -163,22 +178,6 @@ Dynamic: False
 ### -SubscriptionId
 The subscription credentials which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
-
-```yaml
-Type: System.String
-Parameter Sets: Reset, ResetExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VnetGatewayConnectionName
-The virtual network gateway connection reset shared key Name.
 
 ```yaml
 Type: System.String

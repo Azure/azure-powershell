@@ -22,14 +22,14 @@ Get-AzVmssPublicIPaddress -ResourceGroupName <String> -SubscriptionId <String[]>
 ```
 Get-AzVmssPublicIPaddress -IPConfigurationName <String> -NetworkInterfaceName <String>
  -PublicIPAddressName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -VirtualMachineScaleSetName <String> -VirtualmachineIndex <String> [-Expand <String>]
+ -VirtualMachineScaleSetName <String> -VirtualmachineIndex <String> [-ExpandResource <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzVmssPublicIPaddress -InputObject <INetworkIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzVmssPublicIPaddress -InputObject <INetworkIdentity> [-ExpandResource <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Expand
+### -ExpandResource
 Expands referenced resources.
 
 ```yaml

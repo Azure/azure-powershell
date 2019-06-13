@@ -14,14 +14,14 @@ Creates or updates a Virtual Network Tap.
 
 ### Create (Default)
 ```
-New-AzVnetTap -ResourceGroupName <String> -SubscriptionId <String> -TapName <String>
+New-AzVnetTap -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Parameter <IVirtualNetworkTap>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
-New-AzVnetTap -ResourceGroupName <String> -SubscriptionId <String> -TapName <String>
+New-AzVnetTap -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-ApplicationGatewayBackendAddressPool <IApplicationGatewayBackendAddressPool[]>]
  [-ApplicationSecurityGroup <IApplicationSecurityGroup[]>]
  [-DestinationLoadBalancerFrontEndIPConfigurationEtag <String>]
@@ -560,6 +560,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the virtual network tap.
+
+```yaml
+Type: System.String
+Parameter Sets: Create, CreateExpanded
+Aliases: TapName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 Virtual Network Tap resource
 
@@ -667,22 +683,6 @@ Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -TapName
-The name of the virtual network tap.
-
-```yaml
-Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

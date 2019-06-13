@@ -14,8 +14,8 @@ The Get VirtualNetworkGatewayConnectionSharedKey operation retrieves information
 
 ### Get (Default)
 ```
-Get-AzVnetGatewayConnectionSharedKey -ResourceGroupName <String> -SubscriptionId <String[]>
- -VnetGatewayConnectionName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVnetGatewayConnectionSharedKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -81,6 +81,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The virtual network gateway connection shared key name.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: VnetGatewayConnectionName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -103,22 +119,6 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VnetGatewayConnectionName
-The virtual network gateway connection shared key name.
-
-```yaml
-Type: System.String
 Parameter Sets: Get
 Aliases:
 

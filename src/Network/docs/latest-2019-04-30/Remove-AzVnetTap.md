@@ -14,7 +14,7 @@ Deletes the specified virtual network tap.
 
 ### Delete (Default)
 ```
-Remove-AzVnetTap -ResourceGroupName <String> -SubscriptionId <String> -TapName <String> [-PassThru]
+Remove-AzVnetTap -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -97,6 +97,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the virtual network tap.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: TapName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -PassThru
 When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
 
@@ -132,22 +148,6 @@ Dynamic: False
 ### -SubscriptionId
 The subscription credentials which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -TapName
-The name of the virtual network tap.
 
 ```yaml
 Type: System.String

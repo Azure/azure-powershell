@@ -20,8 +20,8 @@ Get-AzNetworkInterfaceTapConfiguration -NetworkInterfaceName <String> -ResourceG
 
 ### Get
 ```
-Get-AzNetworkInterfaceTapConfiguration -NetworkInterfaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -TapConfigurationName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNetworkInterfaceTapConfiguration -Name <String> -NetworkInterfaceName <String>
+ -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -87,6 +87,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the tap configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: TapConfigurationName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -NetworkInterfaceName
 The name of the network interface.
 
@@ -126,22 +142,6 @@ The subscription ID forms part of the URI for every service call.
 ```yaml
 Type: System.String[]
 Parameter Sets: List, Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -TapConfigurationName
-The name of the tap configuration.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
 Aliases:
 
 Required: True

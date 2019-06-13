@@ -19,8 +19,8 @@ Get-AzLoadBalancer -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<Com
 
 ### Get
 ```
-Get-AzLoadBalancer -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-Expand <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLoadBalancer -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ [-ExpandResource <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
@@ -31,7 +31,7 @@ Get-AzLoadBalancer -ResourceGroupName <String> -SubscriptionId <String[]> [-Defa
 
 ### GetViaIdentity
 ```
-Get-AzLoadBalancer -InputObject <INetworkIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
+Get-AzLoadBalancer -InputObject <INetworkIdentity> [-ExpandResource <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Expand
+### -ExpandResource
 Expands referenced resources.
 
 ```yaml

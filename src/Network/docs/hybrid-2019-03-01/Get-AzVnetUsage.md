@@ -13,7 +13,7 @@ Lists usage stats.
 ## SYNTAX
 
 ```
-Get-AzVnetUsage -ResourceGroupName <String> -SubscriptionId <String[]> -VnetName <String>
+Get-AzVnetUsage -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -58,6 +58,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the virtual network.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: VnetName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -80,22 +96,6 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VnetName
-The name of the virtual network.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 

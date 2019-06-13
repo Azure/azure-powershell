@@ -14,8 +14,8 @@ Deletes the specified tap configuration from the NetworkInterface.
 
 ### Delete (Default)
 ```
-Remove-AzNetworkInterfaceTapConfiguration -NetworkInterfaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -TapConfigurationName <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
+Remove-AzNetworkInterfaceTapConfiguration -Name <String> -NetworkInterfaceName <String>
+ -ResourceGroupName <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -98,6 +98,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the tap configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: TapConfigurationName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -NetworkInterfaceName
 The name of the network interface.
 
@@ -149,22 +165,6 @@ Dynamic: False
 ### -SubscriptionId
 The subscription credentials which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -TapConfigurationName
-The name of the tap configuration.
 
 ```yaml
 Type: System.String
