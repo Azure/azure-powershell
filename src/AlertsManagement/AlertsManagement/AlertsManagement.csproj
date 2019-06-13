@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PsModuleName>AlertsManagement</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+
+  <!--
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.AlertsManagement" Version="1.0.0" />
+  </ItemGroup>
+  -->
+
+</Project>
