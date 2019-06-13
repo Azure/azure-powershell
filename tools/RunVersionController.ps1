@@ -1,6 +1,6 @@
 # To version all modules in Az (standard release), run the following command: .\RunVersionController.ps1 -Release "December 2017"
 # To version a single module (one-off release), run the following command: .\RunVersionController.ps1 -ModuleName "Az.Compute"
-[CmdletBinding()]
+[CmdletBinding(DefaultParameterSetName="ReleaseAz")]
 Param(
     [Parameter(ParameterSetName='ReleaseAz', Mandatory = $true)]
     [string]$Release,
