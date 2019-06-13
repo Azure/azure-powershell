@@ -1,31 +1,24 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azaddeletedapplicationhard
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/remove-azpolicysetdefinition
 schema: 2.0.0
 ---
 
-# Remove-AzADDeletedApplicationHard
+# Remove-AzPolicySetDefinition
 
 ## SYNOPSIS
-Hard-delete an application.
+
 
 ## SYNTAX
 
-### Delete (Default)
 ```
-Remove-AzADDeletedApplicationHard -ObjectId <String> -TenantId <String> [-PassThru]
+Remove-AzPolicySetDefinition -Id <String> [-SubscriptionId <String[]>] [-PassThru]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
-```
-Remove-AzADDeletedApplicationHard -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Hard-delete an application.
+
 
 ## EXAMPLES
 
@@ -65,29 +58,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: DeleteViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ObjectId
-Application object ID.
+### -Id
+The ID of the policy set definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases:
+Parameter Sets: (All)
+Aliases: ResourceId
 
 Required: True
 Position: Named
@@ -113,15 +90,15 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -TenantId
-The tenant ID.
+### -SubscriptionId
+The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -166,8 +143,6 @@ Dynamic: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
 

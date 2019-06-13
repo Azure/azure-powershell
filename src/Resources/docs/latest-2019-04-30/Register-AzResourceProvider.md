@@ -87,7 +87,7 @@ The namespace of the resource provider to register.
 ```yaml
 Type: System.String
 Parameter Sets: Register
-Aliases:
+Aliases: ProviderNamespace
 
 Required: True
 Position: Named

@@ -22,6 +22,24 @@ Get-AzADApplication -TenantId <String> [-Filter <String>] [-DefaultProfile <PSOb
 Get-AzADApplication -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetDeleted
+```
+Get-AzADApplication -TenantId <String> -IncludeDeleted [-Filter <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetByIdentifierUri
+```
+Get-AzADApplication -TenantId <String> -IdentifierUri <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetByDisplayNamePrefix
+```
+Get-AzADApplication -TenantId <String> -DisplayNameStartWith <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### GetByDisplayName
 ```
 Get-AzADApplication -TenantId <String> -DisplayName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -111,17 +129,65 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Filter
-The filters to apply to the operation.
+### -DisplayNameStartWith
+The prefix of the display name of the application.
 
 ```yaml
 Type: System.String
-Parameter Sets: List2
+Parameter Sets: GetByDisplayNamePrefix
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Filter
+The filter to apply to the operation.
+
+```yaml
+Type: System.String
+Parameter Sets: List2, GetDeleted
 Aliases: ODataQuery
 
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -IdentifierUri
+The identifier URI of the application.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByIdentifierUri
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -IncludeDeleted
+Signals that deleted applications should be returned as well.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: GetDeleted
+Aliases:
+
+Required: True
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -164,7 +230,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: List2, Get2, GetByDisplayName, GetByApplicationId
+Parameter Sets: List2, Get2, GetDeleted, GetByIdentifierUri, GetByDisplayNamePrefix, GetByDisplayName, GetByApplicationId
 Aliases:
 
 Required: True

@@ -14,13 +14,13 @@ Creates or updates a resource group.
 
 ### Update (Default)
 ```
-Set-AzResourceGroup -Name <String> -SubscriptionId <String> [-Parameter <IResourceGroup>]
+Set-AzResourceGroup -SubscriptionId <String> -Name <String> [-Parameter <IResourceGroup>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Set-AzResourceGroup -Name <String> -SubscriptionId <String> -Location <String> [-ManagedBy <String>]
+Set-AzResourceGroup -SubscriptionId <String> -Name <String> -Location <String> [-ManagedBy <String>]
  [-Tag <IResourceGroupTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -28,18 +28,6 @@ Set-AzResourceGroup -Name <String> -SubscriptionId <String> -Location <String> [
 ```
 Set-AzResourceGroup -SubscriptionId <String> -Id <String> -Location <String> [-ManagedBy <String>]
  [-Tag <IResourceGroupTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Set-AzResourceGroup -InputObject <IResourcesIdentity> -Location <String> [-ManagedBy <String>]
- [-Tag <IResourceGroupTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Set-AzResourceGroup -InputObject <IResourcesIdentity> [-Parameter <IResourceGroup>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -99,22 +87,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Location
 The location of the resource group.
 It cannot be changed after the resource group has been created.
@@ -122,7 +94,7 @@ It must be one of the supported Azure locations.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateById, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateById
 Aliases:
 
 Required: True
@@ -138,7 +110,7 @@ The ID of the resource that manages this resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateById, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateById
 Aliases:
 
 Required: False
@@ -171,7 +143,7 @@ Resource group information.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroup
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: Update
 Aliases:
 
 Required: False
@@ -187,7 +159,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateById
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -203,7 +175,7 @@ The tags attached to the resource group.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroupTags
-Parameter Sets: UpdateExpanded, UpdateById, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateById
 Aliases:
 
 Required: False
@@ -253,8 +225,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroup
-
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
 

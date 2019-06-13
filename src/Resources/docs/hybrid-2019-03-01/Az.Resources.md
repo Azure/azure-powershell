@@ -80,6 +80,9 @@ Deletes a policy assignment.
 ### [Remove-AzPolicyDefinition](Remove-AzPolicyDefinition.md)
 Deletes a policy definition.
 
+### [Remove-AzPolicySetDefinition](Remove-AzPolicySetDefinition.md)
+
+
 ### [Remove-AzRoleAssignment](Remove-AzRoleAssignment.md)
 Deletes a role assignment.
 

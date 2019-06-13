@@ -32,9 +32,6 @@ Get an application by object ID.
 ### [Get-AzADApplicationOwner](Get-AzADApplicationOwner.md)
 The owners are a set of non-admin users who are allowed to modify this object.
 
-### [Get-AzADDeletedApplication](Get-AzADDeletedApplication.md)
-Gets a list of deleted applications in the directory.
-
 ### [Get-AzADGroup](Get-AzADGroup.md)
 Gets group information from the directory.
 
@@ -43,9 +40,6 @@ Gets the members of a group.
 
 ### [Get-AzADGroupMemberGroup](Get-AzADGroupMemberGroup.md)
 Gets a collection of object IDs of groups of which the specified group is a member.
-
-### [Get-AzADGroupOwner](Get-AzADGroupOwner.md)
-The owners are a set of non-admin users who are allowed to modify this object.
 
 ### [Get-AzADObject](Get-AzADObject.md)
 Gets the directory objects specified in a list of object IDs.
@@ -238,9 +232,6 @@ Delete an application.
 
 ### [Remove-AzADApplicationOwner](Remove-AzADApplicationOwner.md)
 Remove a member from owners.
-
-### [Remove-AzADDeletedApplicationHard](Remove-AzADDeletedApplicationHard.md)
-Hard-delete an application.
 
 ### [Remove-AzADGroup](Remove-AzADGroup.md)
 Delete a group from the directory.

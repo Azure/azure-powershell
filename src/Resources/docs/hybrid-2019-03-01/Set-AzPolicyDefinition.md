@@ -12,10 +12,12 @@ Creates or updates a policy definition.
 
 ## SYNTAX
 
-### Update2 (Default)
+### UpdateById (Default)
 ```
-Set-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-Parameter <IPolicyDefinition>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzPolicyDefinition -Id <String> [-SubscriptionId <String>] [-Description <String>] [-DisplayName <String>]
+ [-Metadata <IPolicyDefinitionPropertiesMetadata>] [-Mode <PolicyMode>]
+ [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>] [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded3
@@ -28,7 +30,7 @@ Set-AzPolicyDefinition -Name <String> -ManagementGroupName <String> [-Parameter 
 
 ### UpdateExpanded2
 ```
-Set-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-Parameter <IPolicyDefinition>]
+Set-AzPolicyDefinition -Name <String> [-SubscriptionId <String>] [-Parameter <IPolicyDefinition>]
  [-Description <String>] [-DisplayName <String>] [-Metadata <IPolicyDefinitionPropertiesMetadata>]
  [-Mode <PolicyMode>] [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>] [-PolicyType <PolicyType>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -40,31 +42,9 @@ Set-AzPolicyDefinition -Name <String> -ManagementGroupName <String> [-Parameter 
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded3
+### Update2
 ```
-Set-AzPolicyDefinition -InputObject <IResourcesIdentity> [-Parameter <IPolicyDefinition>]
- [-Description <String>] [-DisplayName <String>] [-Metadata <IPolicyDefinitionPropertiesMetadata>]
- [-Mode <PolicyMode>] [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>] [-PolicyType <PolicyType>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded2
-```
-Set-AzPolicyDefinition -InputObject <IResourcesIdentity> [-Parameter <IPolicyDefinition>]
- [-Description <String>] [-DisplayName <String>] [-Metadata <IPolicyDefinitionPropertiesMetadata>]
- [-Mode <PolicyMode>] [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>] [-PolicyType <PolicyType>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity3
-```
-Set-AzPolicyDefinition -InputObject <IResourcesIdentity> [-Parameter <IPolicyDefinition>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity2
-```
-Set-AzPolicyDefinition -InputObject <IResourcesIdentity> [-Parameter <IPolicyDefinition>]
+Set-AzPolicyDefinition -Name <String> [-SubscriptionId <String>] [-Parameter <IPolicyDefinition>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -114,7 +94,7 @@ The policy definition description.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded3, UpdateExpanded2, UpdateViaIdentityExpanded3, UpdateViaIdentityExpanded2
+Parameter Sets: UpdateById, UpdateExpanded3, UpdateExpanded2
 Aliases:
 
 Required: False
@@ -130,7 +110,7 @@ The display name of the policy definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded3, UpdateExpanded2, UpdateViaIdentityExpanded3, UpdateViaIdentityExpanded2
+Parameter Sets: UpdateById, UpdateExpanded3, UpdateExpanded2
 Aliases:
 
 Required: False
@@ -141,18 +121,18 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
+### -Id
+The ID of the policy definition.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: UpdateViaIdentityExpanded3, UpdateViaIdentityExpanded2, UpdateViaIdentity3, UpdateViaIdentity2
-Aliases:
+Type: System.String
+Parameter Sets: UpdateById
+Aliases: ResourceId
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -178,7 +158,7 @@ The policy definition metadata.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20161201.IPolicyDefinitionPropertiesMetadata
-Parameter Sets: UpdateExpanded3, UpdateExpanded2, UpdateViaIdentityExpanded3, UpdateViaIdentityExpanded2
+Parameter Sets: UpdateById, UpdateExpanded3, UpdateExpanded2
 Aliases:
 
 Required: False
@@ -195,7 +175,7 @@ Possible values are NotSpecified, Indexed, and All.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.PolicyMode
-Parameter Sets: UpdateExpanded3, UpdateExpanded2, UpdateViaIdentityExpanded3, UpdateViaIdentityExpanded2
+Parameter Sets: UpdateById, UpdateExpanded3, UpdateExpanded2
 Aliases:
 
 Required: False
@@ -211,7 +191,7 @@ The name of the policy definition to create.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update2, UpdateExpanded3, UpdateExpanded2, Update3
+Parameter Sets: UpdateExpanded3, UpdateExpanded2, Update3, Update2
 Aliases: PolicyDefinitionName
 
 Required: True
@@ -223,17 +203,17 @@ Dynamic: False
 ```
 
 ### -Parameter
-The policy definition.
+Required if a parameter is used in policy rule.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20161201.IPolicyDefinition
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded3, UpdateExpanded2, Update3, Update2
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -243,7 +223,7 @@ The policy rule.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20161201.IPolicyDefinitionPropertiesPolicyRule
-Parameter Sets: UpdateExpanded3, UpdateExpanded2, UpdateViaIdentityExpanded3, UpdateViaIdentityExpanded2
+Parameter Sets: UpdateById, UpdateExpanded3, UpdateExpanded2
 Aliases:
 
 Required: False
@@ -260,7 +240,7 @@ Possible values are NotSpecified, BuiltIn, and Custom.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.PolicyType
-Parameter Sets: UpdateExpanded3, UpdateExpanded2, UpdateViaIdentityExpanded3, UpdateViaIdentityExpanded2
+Parameter Sets: UpdateById, UpdateExpanded3, UpdateExpanded2
 Aliases:
 
 Required: False
@@ -276,10 +256,10 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update2, UpdateExpanded2
+Parameter Sets: UpdateById, UpdateExpanded2, Update2
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -325,13 +305,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20161201.IPolicyDefinition
-
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20161201.IPolicyDefinition
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicyDefinition
 
 ## ALIASES
 

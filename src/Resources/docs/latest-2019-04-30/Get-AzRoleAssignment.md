@@ -22,6 +22,23 @@ Get-AzRoleAssignment -Id <String> [-DefaultProfile <PSObject>] [<CommonParameter
 Get-AzRoleAssignment -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### ListByScopeExpandPrincipalGroups
+```
+Get-AzRoleAssignment -Scope <String> -ExpandPrincipalGroups <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### ListByScopeFilterBySPN
+```
+Get-AzRoleAssignment -Scope <String> -ServicePrincipalName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### ListByScopeFilterBySignInName
+```
+Get-AzRoleAssignment -Scope <String> -SignInName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List7
 ```
 Get-AzRoleAssignment -Scope <String> [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -47,6 +64,27 @@ Get-AzRoleAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObjec
 Get-AzRoleAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### ListByComponentsExpandPrincipalGroups
+```
+Get-AzRoleAssignment -ParentResourceId <String> -ResourceGroupName <String> -ResourceName <String>
+ -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]>
+ -ExpandPrincipalGroups <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListByComponentsFilterBySPN
+```
+Get-AzRoleAssignment -ParentResourceId <String> -ResourceGroupName <String> -ResourceName <String>
+ -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]>
+ -ServicePrincipalName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListByComponentsFilterBySignInName
+```
+Get-AzRoleAssignment -ParentResourceId <String> -ResourceGroupName <String> -ResourceName <String>
+ -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]> -SignInName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List4
 ```
 Get-AzRoleAssignment -ParentResourceId <String> -ResourceGroupName <String> -ResourceName <String>
@@ -54,10 +92,46 @@ Get-AzRoleAssignment -ParentResourceId <String> -ResourceGroupName <String> -Res
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### ListByResourceGroupExpandPrincipalGroups
+```
+Get-AzRoleAssignment -ResourceGroupName <String> -SubscriptionId <String[]> -ExpandPrincipalGroups <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListByResourceGroupFilterBySPN
+```
+Get-AzRoleAssignment -ResourceGroupName <String> -SubscriptionId <String[]> -ServicePrincipalName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListByResourceGroupFilterBySignInName
+```
+Get-AzRoleAssignment -ResourceGroupName <String> -SubscriptionId <String[]> -SignInName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List5
 ```
 Get-AzRoleAssignment -ResourceGroupName <String> -SubscriptionId <String[]> [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListBySubscriptionExpandPrincipalGroups
+```
+Get-AzRoleAssignment -SubscriptionId <String[]> -ExpandPrincipalGroups <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### ListBySubscriptionFilterBySPN
+```
+Get-AzRoleAssignment -SubscriptionId <String[]> -ServicePrincipalName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### ListBySubscriptionFilterBySignInName
+```
+Get-AzRoleAssignment -SubscriptionId <String[]> -SignInName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### List6
@@ -100,6 +174,22 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ExpandPrincipalGroups
+Signals that the role assignments returned should be directly assigned to the principal as well as assignments to the principals groups (transitive).
+
+```yaml
+Type: System.String
+Parameter Sets: ListByScopeExpandPrincipalGroups, ListByComponentsExpandPrincipalGroups, ListByResourceGroupExpandPrincipalGroups, ListBySubscriptionExpandPrincipalGroups
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -178,7 +268,7 @@ The parent resource identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: List4
+Parameter Sets: ListByComponentsExpandPrincipalGroups, ListByComponentsFilterBySPN, ListByComponentsFilterBySignInName, List4
 Aliases: ParentResourcePath
 
 Required: True
@@ -194,7 +284,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: List4, List5
+Parameter Sets: ListByComponentsExpandPrincipalGroups, ListByComponentsFilterBySPN, ListByComponentsFilterBySignInName, List4, ListByResourceGroupExpandPrincipalGroups, ListByResourceGroupFilterBySPN, ListByResourceGroupFilterBySignInName, List5
 Aliases:
 
 Required: True
@@ -210,7 +300,7 @@ The name of the resource to get role assignments for.
 
 ```yaml
 Type: System.String
-Parameter Sets: List4
+Parameter Sets: ListByComponentsExpandPrincipalGroups, ListByComponentsFilterBySPN, ListByComponentsFilterBySignInName, List4
 Aliases:
 
 Required: True
@@ -226,7 +316,7 @@ The namespace of the resource provider.
 
 ```yaml
 Type: System.String
-Parameter Sets: List4
+Parameter Sets: ListByComponentsExpandPrincipalGroups, ListByComponentsFilterBySPN, ListByComponentsFilterBySignInName, List4
 Aliases:
 
 Required: True
@@ -242,7 +332,7 @@ The resource type of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: List4
+Parameter Sets: ListByComponentsExpandPrincipalGroups, ListByComponentsFilterBySPN, ListByComponentsFilterBySignInName, List4
 Aliases:
 
 Required: True
@@ -274,7 +364,39 @@ The scope of the role assignments.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get2, List7
+Parameter Sets: Get2, ListByScopeExpandPrincipalGroups, ListByScopeFilterBySPN, ListByScopeFilterBySignInName, List7
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ServicePrincipalName
+The service principal name (SPN) of the application.
+
+```yaml
+Type: System.String
+Parameter Sets: ListByScopeFilterBySPN, ListByComponentsFilterBySPN, ListByResourceGroupFilterBySPN, ListBySubscriptionFilterBySPN
+Aliases: SPN
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SignInName
+The sign in name of the user.
+
+```yaml
+Type: System.String
+Parameter Sets: ListByScopeFilterBySignInName, ListByComponentsFilterBySignInName, ListByResourceGroupFilterBySignInName, ListBySubscriptionFilterBySignInName
 Aliases:
 
 Required: True
@@ -290,7 +412,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List4, List5, List6
+Parameter Sets: ListByComponentsExpandPrincipalGroups, ListByComponentsFilterBySPN, ListByComponentsFilterBySignInName, List4, ListByResourceGroupExpandPrincipalGroups, ListByResourceGroupFilterBySPN, ListByResourceGroupFilterBySignInName, List5, ListBySubscriptionExpandPrincipalGroups, ListBySubscriptionFilterBySPN, ListBySubscriptionFilterBySignInName, List6
 Aliases:
 
 Required: True

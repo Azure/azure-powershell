@@ -21,7 +21,7 @@ Update-AzADUser -TenantId <String> -UpnOrObjectId <String> [-Parameter <IUserUpd
 ### UpdateExpanded
 ```
 Update-AzADUser -TenantId <String> -UpnOrObjectId <String> -PasswordProfilePassword <String> [-PassThru]
- [-AccountEnabled] [-DisplayName <String>] [-GivenName <String>] [-ImmutableId <String>]
+ [-DisplayName <String>] [-EnableAccount] [-GivenName <String>] [-ImmutableId <String>]
  [-MailNickname <String>] [-PasswordProfileForceChangePasswordNextLogin] [-Surname <String>]
  [-UsageLocation <String>] [-UserPrincipalName <String>] [-UserType <UserType>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -30,7 +30,7 @@ Update-AzADUser -TenantId <String> -UpnOrObjectId <String> -PasswordProfilePassw
 ### UpdateViaIdentityExpanded
 ```
 Update-AzADUser -InputObject <IResourcesIdentity> -PasswordProfilePassword <String> [-PassThru]
- [-AccountEnabled] [-DisplayName <String>] [-GivenName <String>] [-ImmutableId <String>]
+ [-DisplayName <String>] [-EnableAccount] [-GivenName <String>] [-ImmutableId <String>]
  [-MailNickname <String>] [-PasswordProfileForceChangePasswordNextLogin] [-Surname <String>]
  [-UsageLocation <String>] [-UserPrincipalName <String>] [-UserType <UserType>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -67,22 +67,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -AccountEnabled
-Whether the account is enabled.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -110,6 +94,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -EnableAccount
+Whether the account is enabled.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -282,7 +282,7 @@ The object ID or principal name of the user to update.
 ```yaml
 Type: System.String
 Parameter Sets: Update, UpdateExpanded
-Aliases:
+Aliases: Upn, ObjectId
 
 Required: True
 Position: Named

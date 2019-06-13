@@ -17,9 +17,10 @@ Gets user information from the directory.
 Get-AzADUser -TenantId <String> [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetByDisplayName
+### GetByFilter
 ```
-Get-AzADUser -TenantId <String> -DisplayName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADUser -TenantId <String> -StartsWith <String> [-DisplayName <String>] [-Mail <String>]
+ [-MailNickname <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -74,14 +75,14 @@ Dynamic: False
 ```
 
 ### -DisplayName
-The display name of the application.
+The display name of the user.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByDisplayName
+Parameter Sets: GetByFilter
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -121,12 +122,60 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Mail
+The primary email address of the user.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -MailNickname
+The mail alias for the user.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -StartsWith
+The prefix of the display name of the user.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByFilter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -TenantId
 The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, GetByDisplayName, Get
+Parameter Sets: List, GetByFilter, Get
 Aliases:
 
 Required: True
@@ -143,7 +192,7 @@ The object ID or principal name of the user for which to get information.
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: UserPrincipalName, Upn, ObjectId
 
 Required: True
 Position: Named

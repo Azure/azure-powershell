@@ -12,15 +12,21 @@ This operation deletes the policy set definition in the given subscription with 
 
 ## SYNTAX
 
-### Delete (Default)
+### DeleteById (Default)
 ```
-Remove-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>]
+Remove-AzPolicySetDefinition -Id <String> [-SubscriptionId <String>] [-PassThru] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Delete1
 ```
 Remove-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Delete
+```
+Remove-AzPolicySetDefinition -Name <String> [-SubscriptionId <String>] [-PassThru]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -77,6 +83,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Id
+The ID of the policy set definition.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteById
+Aliases: ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -114,7 +136,7 @@ The name of the policy set definition to delete.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, Delete1
+Parameter Sets: Delete1, Delete
 Aliases: PolicySetDefinitionName
 
 Required: True
@@ -146,10 +168,10 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: DeleteById, Delete
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

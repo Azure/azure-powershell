@@ -18,6 +18,30 @@ Remove-AzADServicePrincipal -ObjectId <String> -TenantId <String> [-PassThru] [-
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteBySPN
+```
+Remove-AzADServicePrincipal -TenantId <String> -ServicePrincipalName <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteByDisplayName
+```
+Remove-AzADServicePrincipal -TenantId <String> -DisplayName <String> [-PassThru] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteByApplicationObject
+```
+Remove-AzADServicePrincipal -TenantId <String> -ApplicationObject <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteByApplicationId
+```
+Remove-AzADServicePrincipal -TenantId <String> -ApplicationId <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzADServicePrincipal -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
@@ -49,6 +73,38 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -ApplicationId
+The application id of the service principal.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteByApplicationId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ApplicationObject
+The object representation of the application of the service principal.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteByApplicationObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -58,6 +114,22 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -DisplayName
+The display name of the service principal.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteByDisplayName
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -113,12 +185,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ServicePrincipalName
+The application id of the service principal.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteBySPN
+Aliases: SPN
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -TenantId
 The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteBySPN, DeleteByDisplayName, DeleteByApplicationObject, DeleteByApplicationId
 Aliases:
 
 Required: True

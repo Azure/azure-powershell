@@ -21,16 +21,16 @@ New-AzADServicePrincipal -TenantId <String> [-Parameter <IServicePrincipalCreate
 ### CreateExpanded
 ```
 New-AzADServicePrincipal -TenantId <String> -AppId <String> [-AccountEnabled <String>]
- [-AppRoleAssignmentRequired] [-KeyCredential <IKeyCredential[]>]
- [-PasswordCredential <IPasswordCredential[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
+ [-AppRoleAssignmentRequired] [-KeyCredentials <IKeyCredential[]>]
+ [-PasswordCredentials <IPasswordCredential[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzADServicePrincipal -InputObject <IResourcesIdentity> -AppId <String> [-AccountEnabled <String>]
- [-AppRoleAssignmentRequired] [-KeyCredential <IKeyCredential[]>]
- [-PasswordCredential <IPasswordCredential[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
+ [-AppRoleAssignmentRequired] [-KeyCredentials <IKeyCredential[]>]
+ [-PasswordCredentials <IPasswordCredential[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -145,7 +145,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -KeyCredential
+### -KeyCredentials
 The collection of key credentials associated with the service principal.
 
 ```yaml
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PasswordCredential
+### -PasswordCredentials
 The collection of password credentials associated with the service principal.
 
 ```yaml

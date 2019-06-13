@@ -1,15 +1,22 @@
-function Get-AzADUser_GetByDisplayName {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IUser')]
+function Remove-AzADUser_DeleteByDisplayName {
+    [OutputType('System.Boolean')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Profile("latest-2019-04-30")]
-    [CmdletBinding(PositionalBinding = $false)]
+    [CmdletBinding(SupportsShouldProcess, PositionalBinding = $false)]
     param(
-        [Parameter(Mandatory, HelpMessage="The tenant ID.")]
+        [Parameter(Mandatory, HelpMessage='The tenant ID.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Path')]
         [System.String]
         ${TenantId},
 
-        [Parameter(Mandatory, HelpMessage="The display name of the application.")]
+        [Parameter(Mandatory, HelpMessage='The display name of the user.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Query')]
         [System.String]
         ${DisplayName},
+
+        [Parameter(HelpMessage='When specified, PassThru will force the cmdlet return a ''bool'' given that there isn''t a return type by default.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        ${PassThru},
 
         [Parameter(HelpMessage='The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -53,8 +60,12 @@ function Get-AzADUser_GetByDisplayName {
     )
 
     process {
-        $PSBoundParameters.Add("Filter", "displayname eq '$DisplayName'") | Out-Null
-        $PSBoundParameters.Remove("DisplayName") | Out-Null
-        Az.Resources\Get-AzADServicePrincipal @PSBoundParameters
+        $User = Az.Resources\Get-AzADUser -TenantId $TenantId -DisplayName $DisplayName
+        if ($null -ne $User)
+        {
+            $PSBoundParameters.Add("UpnOrObjectId", $User.ObjectId) | Out-Null
+            $PSBoundParameters.Remove("DisplayName") | Out-Null
+            Az.Resources\Remove-AzADUser @PSBoundParameters
+        }
     }
 }

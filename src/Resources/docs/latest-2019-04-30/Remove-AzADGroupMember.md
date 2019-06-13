@@ -18,6 +18,42 @@ Remove-AzADGroupMember -GroupObjectId <String> -MemberObjectId <String> -TenantI
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteByMemberUpnAndGroupId
+```
+Remove-AzADGroupMember -GroupObjectId <String> -TenantId <String> -MemberUserPrincipalName <String>
+ [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteByMemberIdAndGroupId
+```
+Remove-AzADGroupMember -GroupObjectId <String> -MemberObjectId <String> -TenantId <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteByMemberIdAndGroupObject
+```
+Remove-AzADGroupMember -MemberObjectId <String> -TenantId <String> -GroupObject <IAdGroup> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteByMemberIdAndGroupDisplayName
+```
+Remove-AzADGroupMember -MemberObjectId <String> -TenantId <String> -GroupDisplayName <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteByMemberUpnAndGroupObject
+```
+Remove-AzADGroupMember -TenantId <String> -MemberUserPrincipalName <String> -GroupObject <IAdGroup>
+ [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteByMemberUpnAndGroupDisplayName
+```
+Remove-AzADGroupMember -TenantId <String> -GroupDisplayName <String> -MemberUserPrincipalName <String>
+ [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### RemoveViaIdentity
 ```
 Remove-AzADGroupMember -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
@@ -65,12 +101,44 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -GroupObjectId
-The object ID of the group from which to remove the member.
+### -GroupDisplayName
+The display name of the group that the member should be removed from.
 
 ```yaml
 Type: System.String
-Parameter Sets: Remove
+Parameter Sets: DeleteByMemberIdAndGroupDisplayName, DeleteByMemberUpnAndGroupDisplayName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -GroupObject
+The object representation of the group that the member should be removed from.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IAdGroup
+Parameter Sets: DeleteByMemberIdAndGroupObject, DeleteByMemberUpnAndGroupObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -GroupObjectId
+The object ID of the group that the member should be removed from.
+
+```yaml
+Type: System.String
+Parameter Sets: Remove, DeleteByMemberUpnAndGroupId, DeleteByMemberIdAndGroupId
 Aliases:
 
 Required: True
@@ -98,11 +166,27 @@ Dynamic: False
 ```
 
 ### -MemberObjectId
-Member object id
+Member object id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Remove
+Parameter Sets: Remove, DeleteByMemberIdAndGroupId, DeleteByMemberIdAndGroupObject, DeleteByMemberIdAndGroupDisplayName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -MemberUserPrincipalName
+The UPN of the member to remove.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteByMemberUpnAndGroupId, DeleteByMemberUpnAndGroupObject, DeleteByMemberUpnAndGroupDisplayName
 Aliases:
 
 Required: True
@@ -134,7 +218,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Remove
+Parameter Sets: Remove, DeleteByMemberUpnAndGroupId, DeleteByMemberIdAndGroupId, DeleteByMemberIdAndGroupObject, DeleteByMemberIdAndGroupDisplayName, DeleteByMemberUpnAndGroupObject, DeleteByMemberUpnAndGroupDisplayName
 Aliases:
 
 Required: True
