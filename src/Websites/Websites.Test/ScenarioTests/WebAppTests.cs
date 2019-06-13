@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewWebAppSimple");
         }
 
-        [Fact(Skip = "Needs investigation. Fails running playback")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebApp()
         {
