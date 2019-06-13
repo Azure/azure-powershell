@@ -25,7 +25,7 @@ New-AzMetric -ResourceGroupName <String> -ResourceName <String> -ResourceProvide
 New-AzMetric -ResourceGroupName <String> -ResourceName <String> -ResourceProvider <String>
  -ResourceTypeName <String> -SubscriptionId <String> -Authorization <String> -ContentLength <Int32>
  -ContentType <String> -BaseDataMetric <String> -BaseDataNamespace <String>
- -BaseDataSery <IAzureTimeSeriesData[]> -Time <String> [-BaseDataDimName <String[]>]
+ -BaseDataSeries <IAzureTimeSeriesData[]> -Time <String> [-BaseDataDimName <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ New-AzMetric -ResourceGroupName <String> -ResourceName <String> -ResourceProvide
 ```
 New-AzMetric -InputObject <IMonitorIdentity> -Authorization <String> -ContentLength <Int32>
  -ContentType <String> -BaseDataMetric <String> -BaseDataNamespace <String>
- -BaseDataSery <IAzureTimeSeriesData[]> -Time <String> [-BaseDataDimName <String[]>]
+ -BaseDataSeries <IAzureTimeSeriesData[]> -Time <String> [-BaseDataDimName <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BaseDataSery
+### -BaseDataSeries
 Gets or sets the list of time series data for the metric (one per unique dimension combination)
 
 ```yaml

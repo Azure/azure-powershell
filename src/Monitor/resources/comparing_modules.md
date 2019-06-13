@@ -66,14 +66,18 @@
     - ShortName
     - Receiver
     - DisableGroup
+    - InputObject
 - Set-AzActivityLogAlert
     - Action
     - DisableAlert
+    - InputObject
 - Set-AzAutoscaleSetting
+    - InputObject
     - DisableSetting
     - AutoscaleProfile
     - TargetResourceId
 - Set-AzDiagnosticSetting
+    - InputObject
     - Enabled
     - Category
     - MetricCategory
@@ -83,6 +87,7 @@
 - Set-AzLogProfile
     - RetentionInDays
 - Set-AzScheduledQueryRule
+    - InputObject
     - Source
     - Schedule
     - Action
@@ -110,7 +115,7 @@
 - Get-AzBaseline
 - Get-AzDiagnosticSettingsCategory
 - Get-AzEventCategory
-- Get-AzMetricAlertsStatu
+- Get-AzMetricAlertsStatus
 - Get-AzMetricAlertStatus
 - Get-AzMetricBaseline
 - Get-AzMetricNamespace

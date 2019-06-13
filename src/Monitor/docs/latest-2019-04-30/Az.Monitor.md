@@ -55,7 +55,7 @@ Gets the log profile.
 ### [Get-AzMetricAlert](Get-AzMetricAlert.md)
 Retrieve an alert rule definition.
 
-### [Get-AzMetricAlertsStatu](Get-AzMetricAlertsStatu.md)
+### [Get-AzMetricAlertsStatus](Get-AzMetricAlertsStatus.md)
 Retrieve an alert rule status.
 
 ### [Get-AzMetricAlertStatus](Get-AzMetricAlertStatus.md)

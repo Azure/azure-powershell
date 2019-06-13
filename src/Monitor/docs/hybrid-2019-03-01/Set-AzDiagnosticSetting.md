@@ -26,20 +26,6 @@ Set-AzDiagnosticSetting -Name <String> -ResourceUri <String> [-EventHubAuthoriza
  [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
-```
-Set-AzDiagnosticSetting -InputObject <IMonitorIdentity> [-EventHubAuthorizationRuleId <String>]
- [-EventHubName <String>] [-Log <ILogSettings[]>] [-Metric <IMetricSettings[]>] [-ServiceBusRuleId <String>]
- [-StorageAccountId <String>] [-WorkspaceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Set-AzDiagnosticSetting -InputObject <IMonitorIdentity> [-Parameter <IDiagnosticSettingsResource>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Creates or updates diagnostic settings for the specified resource.
 
@@ -86,7 +72,7 @@ The resource Id for the event hub authorization rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -103,7 +89,7 @@ If none is specified, the default event hub will be selected.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -114,28 +100,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Log
 the list of logs settings.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170501Preview.ILogSettings[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -151,7 +121,7 @@ the list of metric settings.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170501Preview.IMetricSettings[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -167,7 +137,7 @@ The name of the diagnostic setting.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -183,7 +153,7 @@ The diagnostic setting resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170501Preview.IDiagnosticSettingsResource
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: Update
 Aliases:
 
 Required: False
@@ -199,7 +169,7 @@ The identifier of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -216,7 +186,7 @@ This is here to maintain backwards compatibility.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -232,7 +202,7 @@ The resource ID of the storage account to which you would like to send Diagnosti
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -249,7 +219,7 @@ Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insi
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -299,8 +269,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170501Preview.IDiagnosticSettingsResource
-
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
 
 ## OUTPUTS
 
