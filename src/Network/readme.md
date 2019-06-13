@@ -536,7 +536,7 @@ directive:
       parameter-name: Parameter
     set:
       alias: NetworkWatcher
-- where: # REMOVE BEFORE RELEASE: In-memory object parameter
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: Remove
       subject: NetworkWatcher|NetworkWatcherConnectionMonitor|NetworkWatcherPacketCapture
       parameter-name: InputObject
@@ -548,7 +548,7 @@ directive:
       parameter-name: Parameter
     set:
       alias: NetworkWatcher
-- where: # REMOVE BEFORE RELEASE: In-memory object parameter
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: Start|Stop
       subject: NetworkWatcherConnectionMonitor
       parameter-name: InputObject
@@ -560,7 +560,7 @@ directive:
       parameter-name: Parameter
     set:
       alias: NetworkWatcher
-- where: # REMOVE BEFORE RELEASE: In-memory object parameter
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: Stop
       subject: NetworkWatcherPacketCapture
       parameter-name: InputObject
