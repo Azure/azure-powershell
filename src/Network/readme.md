@@ -350,10 +350,10 @@ directive:
       subject: (.*)VirtualNetwork(.*)
     set:
       alias: ${verb}-Az${subject-prefix}${subject}
-  # - where:
-  #     parameter-name: (.*)VirtualNetwork(.*)
-  #   set:
-  #     alias: $1VirtualNetwork$2
+  - where:
+      parameter-name: (.*)VirtualNetwork(.*)
+    set:
+      alias: $1VirtualNetwork$2
   - where:
       subject: (.*)VirtualNetwork(.*)
     set:
@@ -503,6 +503,11 @@ directive:
       parameter-name: PeeringName
     set:
       alias: PeeringType
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      subject: ExpressRouteCircuitAuthorization
+      parameter-name: ResourceGroupName
+    set:
+      alias: ExpressRouteCircuit
   - where:
       subject: NetworkWatcherAvailableProvider|NetworkWatcherReachabilityReport
       parameter-name: AzureLocation
@@ -510,12 +515,12 @@ directive:
       parameter-name: Location
   - where: # REMOVE BEFORE RELEASE: Unnecessary custom client-side Location implementation
       subject: NetworkWatcherAvailableProvider|NetworkWatcherReachabilityReport
-      parameter-name: InputObject
+      parameter-name: ResourceGroupName
     set:
       alias: NetworkWatcherLocation
   - where: # REMOVE BEFORE RELEASE: Unnecessary custom client-side Location implementation
       subject: ^NetworkWatcher(?!(AvailableProvider|ReachabilityReport))(.*)
-      parameter-name: InputObject
+      parameter-name: ResourceGroupName
     set:
       alias: Location
   - where: # REMOVE BEFORE RELEASE: Not a direct mapping to what NetworkWatcher in-memory object represented
@@ -527,7 +532,7 @@ directive:
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: Get
       subject: NetworkWatcherConnectionMonitor|NetworkWatcherConnectionMonitorState|NetworkWatcherPacketCapture
-      parameter-name: InputObject
+      parameter-name: ResourceGroupName
     set:
       alias: NetworkWatcher
   - where: # REMOVE BEFORE RELEASE: Not a direct mapping to what NetworkWatcher in-memory object represented
@@ -539,7 +544,7 @@ directive:
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: Remove
       subject: NetworkWatcher|NetworkWatcherConnectionMonitor|NetworkWatcherPacketCapture
-      parameter-name: InputObject
+      parameter-name: ResourceGroupName
     set:
       alias: NetworkWatcher
   - where: # REMOVE BEFORE RELEASE: Not a direct mapping to what NetworkWatcher in-memory object represented
@@ -551,7 +556,7 @@ directive:
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: Start|Stop
       subject: NetworkWatcherConnectionMonitor
-      parameter-name: InputObject
+      parameter-name: ResourceGroupName
     set:
       alias: NetworkWatcher
   - where: # REMOVE BEFORE RELEASE: Not a direct mapping to what NetworkWatcher in-memory object represented
@@ -563,7 +568,7 @@ directive:
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: Stop
       subject: NetworkWatcherPacketCapture
-      parameter-name: InputObject
+      parameter-name: ResourceGroupName
     set:
       alias: NetworkWatcher
   - where: # REMOVE BEFORE RELEASE: Not a direct mapping to what NetworkWatcher in-memory object represented

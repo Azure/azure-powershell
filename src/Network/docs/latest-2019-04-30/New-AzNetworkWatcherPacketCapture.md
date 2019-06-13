@@ -186,7 +186,7 @@ Parameters that define the create packet capture operation.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPacketCapture
 Parameter Sets: Create, CreateViaIdentity
-Aliases:
+Aliases: NetworkWatcher
 
 Required: False
 Position: Named

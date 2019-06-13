@@ -133,7 +133,7 @@ Parameters that define a resource to query flow log and traffic analytics (optio
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IFlowLogStatusParameters
 Parameter Sets: Get, GetViaIdentity
-Aliases:
+Aliases: NetworkWatcher
 
 Required: False
 Position: Named

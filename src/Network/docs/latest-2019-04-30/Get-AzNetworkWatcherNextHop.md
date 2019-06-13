@@ -151,7 +151,7 @@ Parameters that define the source and destination endpoint.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INextHopParameters
 Parameter Sets: Get, GetViaIdentity
-Aliases:
+Aliases: NetworkWatcher
 
 Required: False
 Position: Named

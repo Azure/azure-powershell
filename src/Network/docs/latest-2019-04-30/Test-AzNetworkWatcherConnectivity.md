@@ -234,7 +234,7 @@ Parameters that determine how the connectivity check will be performed.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectivityParameters
 Parameter Sets: Check, CheckViaIdentity
-Aliases:
+Aliases: NetworkWatcher
 
 Required: False
 Position: Named

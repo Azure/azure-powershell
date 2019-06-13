@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressroutecircuitpeeringstat
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressroutecircuitpeeringstatistic
 schema: 2.0.0
 ---
 
-# Get-AzExpressRouteCircuitPeeringStat
+# Get-AzExpressRouteCircuitPeeringStatistic
 
 ## SYNOPSIS
 Gets all stats from an express route circuit in a resource group.
@@ -14,13 +14,13 @@ Gets all stats from an express route circuit in a resource group.
 
 ### Get (Default)
 ```
-Get-AzExpressRouteCircuitPeeringStat -CircuitName <String> -PeeringName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzExpressRouteCircuitPeeringStatistic -CircuitName <String> -PeeringName <String>
+ -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzExpressRouteCircuitPeeringStat -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>]
+Get-AzExpressRouteCircuitPeeringStatistic -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 

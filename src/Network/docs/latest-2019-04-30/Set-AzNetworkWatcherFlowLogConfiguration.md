@@ -271,7 +271,7 @@ Information on the configuration of flow log and traffic analytics (optional) .
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IFlowLogInformation
 Parameter Sets: Set, SetViaIdentity
-Aliases:
+Aliases: NetworkWatcher
 
 Required: False
 Position: Named

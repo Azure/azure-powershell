@@ -113,7 +113,7 @@ The name of the peering.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: PeeringType
 
 Required: True
 Position: Named

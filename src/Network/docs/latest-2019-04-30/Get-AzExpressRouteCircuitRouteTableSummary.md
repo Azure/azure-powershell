@@ -65,7 +65,7 @@ The name of the express route circuit.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ExpressRouteCircuitName
 
 Required: True
 Position: Named
@@ -113,7 +113,7 @@ The name of the peering.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: PeeringType
 
 Required: True
 Position: Named

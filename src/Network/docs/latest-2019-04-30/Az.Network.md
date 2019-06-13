@@ -65,7 +65,7 @@ Gets the specified Express Route Circuit Connection from the specified express r
 ### [Get-AzExpressRouteCircuitPeering](Get-AzExpressRouteCircuitPeering.md)
 Gets the specified peering for the express route circuit.
 
-### [Get-AzExpressRouteCircuitPeeringStat](Get-AzExpressRouteCircuitPeeringStat.md)
+### [Get-AzExpressRouteCircuitPeeringStatistic](Get-AzExpressRouteCircuitPeeringStatistic.md)
 Gets all stats from an express route circuit in a resource group.
 
 ### [Get-AzExpressRouteCircuitRouteTable](Get-AzExpressRouteCircuitRouteTable.md)
@@ -74,7 +74,7 @@ The ListRoutesTable from ExpressRouteCircuit operation retrieves the currently a
 ### [Get-AzExpressRouteCircuitRouteTableSummary](Get-AzExpressRouteCircuitRouteTableSummary.md)
 Gets the currently advertised routes table summary associated with the express route circuit in a resource group.
 
-### [Get-AzExpressRouteCircuitStat](Get-AzExpressRouteCircuitStat.md)
+### [Get-AzExpressRouteCircuitStatistic](Get-AzExpressRouteCircuitStatistic.md)
 Gets all the stats from an express route circuit in a resource group.
 
 ### [Get-AzExpressRouteConnection](Get-AzExpressRouteConnection.md)

@@ -250,7 +250,7 @@ Parameters that define the operation to create a connection monitor.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectionMonitor
 Parameter Sets: Create, CreateViaIdentity
-Aliases:
+Aliases: NetworkWatcher
 
 Required: False
 Position: Named

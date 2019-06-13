@@ -23,7 +23,7 @@ Get-AzNetworkWatcherReachabilityReport -NetworkWatcherName <String> -ResourceGro
 ```
 Get-AzNetworkWatcherReachabilityReport -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> -EndTime <DateTime> -ProviderLocationCountry <String> -StartTime <DateTime>
- [-AzureLocation <String[]>] [-Provider <String[]>] [-ProviderLocationCity <String>]
+ [-Location <String[]>] [-Provider <String[]>] [-ProviderLocationCity <String>]
  [-ProviderLocationState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -31,7 +31,7 @@ Get-AzNetworkWatcherReachabilityReport -NetworkWatcherName <String> -ResourceGro
 ### GetViaIdentityExpanded
 ```
 Get-AzNetworkWatcherReachabilityReport -InputObject <INetworkIdentity> -EndTime <DateTime>
- -ProviderLocationCountry <String> -StartTime <DateTime> [-AzureLocation <String[]>] [-Provider <String[]>]
+ -ProviderLocationCountry <String> -StartTime <DateTime> [-Location <String[]>] [-Provider <String[]>]
  [-ProviderLocationCity <String>] [-ProviderLocationState <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -79,22 +79,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -AzureLocation
-Optional Azure regions to scope the query to.
-
-```yaml
-Type: System.String[]
-Parameter Sets: GetExpanded, GetViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -148,6 +132,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Location
+Optional Azure regions to scope the query to.
+
+```yaml
+Type: System.String[]
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -NetworkWatcherName
 The name of the network watcher resource.
 
@@ -170,7 +170,7 @@ Geographic and time constraints for Azure reachability report.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureReachabilityReportParameters
 Parameter Sets: Get, GetViaIdentity
-Aliases:
+Aliases: NetworkWatcher
 
 Required: False
 Position: Named

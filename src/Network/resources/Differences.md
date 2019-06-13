@@ -1,42 +1,27 @@
 ## Incorrect Cmdlets
 
-- Get-AzExpressRouteCircuitArpTable
-    - ExpressRouteCircuitName
-    - PeeringType
 - Get-AzExpressRouteCircuitAuthorization
     - ExpressRouteCircuit
-- Get-AzExpressRouteCircuitRouteTable
-    - ExpressRouteCircuitName
-    - PeeringType
-- Get-AzExpressRouteCircuitRouteTableSummary
-    - ExpressRouteCircuitName
-    - PeeringType
-- Get-AzExpressRouteCircuitStat
-    - ExpressRouteCircuitName
+- Get-AzExpressRouteCircuitStatistic
     - PeeringType
 - Get-AzExpressRouteConnection
     - ExpressRouteGatewayObject
     - ParentResourceId
 - Get-AzExpressRouteCrossConnectionArpTable
     - ExpressRouteCrossConnection
-    - PeeringType
 - Get-AzExpressRouteCrossConnectionPeering
     - ExpressRouteCrossConnection
 - Get-AzExpressRouteCrossConnectionRouteTable
     - ExpressRouteCrossConnection
-    - PeeringType
 - Get-AzExpressRouteCrossConnectionRouteTableSummary
     - ExpressRouteCrossConnection
-    - PeeringType
 - Get-AzNetworkInterface
     - VirtualMachineScaleSetName
     - VirtualMachineIndex
 - Get-AzNetworkWatcher
     - Location
 - Get-AzNetworkWatcherAvailableProvider
-    - NetworkWatcher
     - NetworkWatcherLocation
-    - Location
 - Get-AzNetworkWatcherConnectionMonitor
     - NetworkWatcher
     - Location
@@ -44,13 +29,10 @@
     - NetworkWatcher
     - Location
 - Get-AzNetworkWatcherFlowLogStatus
-    - NetworkWatcher
     - Location
 - Get-AzNetworkWatcherNetworkConfigurationDiagnostic
-    - NetworkWatcher
     - Location
 - Get-AzNetworkWatcherNextHop
-    - NetworkWatcher
     - Location
     - TargetVirtualMachineId
     - TargetNetworkInterfaceId
@@ -59,17 +41,13 @@
     - Location
     - AsJob
 - Get-AzNetworkWatcherReachabilityReport
-    - NetworkWatcher
     - NetworkWatcherLocation
-    - Location
     - Country
     - State
     - City
 - Get-AzNetworkWatcherTopology
-    - NetworkWatcher
     - Location
 - Get-AzNetworkWatcherTroubleshootingResult
-    - NetworkWatcher
     - Location
 - Get-AzPublicIPAddress
     - VirtualMachineScaleSetName
@@ -164,11 +142,9 @@
 - New-AzNetworkSecurityGroup
     - SecurityRules
 - New-AzNetworkWatcherConnectionMonitor
-    - NetworkWatcher
     - MonitoringIntervalInSeconds
     - ConfigureOnly
 - New-AzNetworkWatcherPacketCapture
-    - NetworkWatcher
     - Location
     - TargetVirtualMachineId
     - StorageAccountId
@@ -296,11 +272,9 @@
 - Set-AzNetworkSecurityGroup
     - NetworkSecurityGroup
 - Set-AzNetworkWatcherConnectionMonitor
-    - NetworkWatcher
     - MonitoringIntervalInSeconds
     - ConfigureOnly
 - Set-AzNetworkWatcherFlowLogConfiguration
-    - NetworkWatcher
     - Location
     - EnableFlowLog
     - StorageAccountId
@@ -356,7 +330,6 @@
     - NetworkWatcher
     - Location
 - Start-AzNetworkWatcherTroubleshooting
-    - NetworkWatcher
     - Location
 - Stop-AzApplicationGateway
     - ApplicationGateway
@@ -367,13 +340,11 @@
     - NetworkWatcher
     - Location
 - Test-AzNetworkWatcherConnectivity
-    - NetworkWatcher
     - Location
     - SourceId
     - DestinationId
     - ProtocolConfiguration
 - Test-AzNetworkWatcherIPFlow
-    - NetworkWatcher
     - Location
     - TargetVirtualMachineId
     - TargetNetworkInterfaceId
@@ -393,6 +364,9 @@
 - Get-AzBgpServiceCommunity
 - Get-AzDdosProtectionPlan
 - Get-AzExpressRouteCircuit
+- Get-AzExpressRouteCircuitArpTable
+- Get-AzExpressRouteCircuitRouteTable
+- Get-AzExpressRouteCircuitRouteTableSummary
 - Get-AzExpressRouteCrossConnection
 - Get-AzExpressRouteGateway
 - Get-AzExpressRoutePort
@@ -417,6 +391,7 @@
 - Get-AzVirtualWan
 - Get-AzVnet
 - Get-AzVnetAvailableEndpointService
+- Get-AzVnetAvailableSubnetDelegation
 - Get-AzVnetGateway
 - Get-AzVnetGatewayConnection
 - Get-AzVnetGatewayConnectionSharedKey
@@ -477,7 +452,7 @@
 - Get-AzDefaultSecurityRule
 - Get-AzExpressRouteCircuitConnection
 - Get-AzExpressRouteCircuitPeering
-- Get-AzExpressRouteCircuitPeeringStat
+- Get-AzExpressRouteCircuitPeeringStatistic
 - Get-AzExpressRouteLink
 - Get-AzLoadBalancerBackendAddressPool
 - Get-AzLoadBalancerFrontendIPConfiguration
@@ -502,7 +477,6 @@
 - Get-AzVmssPublicIPaddress
 - Get-AzVmssVMNetworkInterface
 - Get-AzVmssVMPublicIPAddress
-- Get-AzVnetAvailableSubnetDelegation
 - Get-AzVnetGatewayVpnProfilePackageUrl
 - Get-AzVnetSubnet
 - Get-AzVpnSiteConfiguration
@@ -570,7 +544,6 @@
 ## Missing Cmdlets
 
 - Get-AzApplicationGatewayAvailableServerVariableAndHeader
-- Get-AzAvailableServiceDelegation
 - Get-AzNetworkWatcherSecurityGroupView
 - Update-AzVirtualHub
 - Update-AzVirtualWan

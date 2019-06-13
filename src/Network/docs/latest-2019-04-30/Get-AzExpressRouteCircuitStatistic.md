@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressroutecircuitstat
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressroutecircuitstatistic
 schema: 2.0.0
 ---
 
-# Get-AzExpressRouteCircuitStat
+# Get-AzExpressRouteCircuitStatistic
 
 ## SYNOPSIS
 Gets all the stats from an express route circuit in a resource group.
@@ -14,19 +14,19 @@ Gets all the stats from an express route circuit in a resource group.
 
 ### Get (Default)
 ```
-Get-AzExpressRouteCircuitStat -CircuitName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzExpressRouteCircuitStatistic -CircuitName <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzExpressRouteCircuitStat -CircuitName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzExpressRouteCircuitStatistic -CircuitName <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzExpressRouteCircuitStat -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>]
+Get-AzExpressRouteCircuitStatistic -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -61,7 +61,7 @@ The name of the express route circuit.
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
-Aliases:
+Aliases: ExpressRouteCircuitName
 
 Required: True
 Position: Named

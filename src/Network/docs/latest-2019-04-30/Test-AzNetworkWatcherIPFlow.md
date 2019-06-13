@@ -187,7 +187,7 @@ Parameters that define the IP flow to be verified.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVerificationIPFlowParameters
 Parameter Sets: Verify, VerifyViaIdentity
-Aliases:
+Aliases: NetworkWatcher
 
 Required: False
 Position: Named
