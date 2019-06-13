@@ -1,33 +1,41 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azprivateendpoint
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azprivateendpointconnection
 schema: 2.0.0
 ---
 
-# Remove-AzPrivateEndpoint
+# Remove-AzPrivateEndpointConnection
 
 ## SYNOPSIS
-Removes a private endpoint.
+Removes a private endpoint connection.
 
 ## SYNTAX
 
+### ByResourceId (Default)
 ```
-Remove-AzPrivateEndpoint -ResourceGroupName <String> -Name <String> [-Force] [-AsJob] [-PassThru]
+Remove-AzPrivateEndpointConnection [-Force] [-AsJob] [-PassThru] -ResourceId <String> [-Description <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ByResource
+```
+Remove-AzPrivateEndpointConnection [-Force] [-AsJob] [-PassThru] -Name <String> -ServiceName <String>
+ -ResourceGroupName <String> [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The **Remove-AzPrivateEndpoint** cmdlet removes a private endpoint. 
+The **Remove-AzPrivateEndpointConnection** cmdlet removes a private endpoint connection. 
 
 ## EXAMPLES
 
 ### Example 1
 ```
-Remove-AzPrivateEndpoint -Name MyPrivateEndpoint1 -ResourceGroupName TestResourceGroup
+Remove-AzPrivateEndpointConnection -Name MyPrivateEndpointConnection1 -ResourceGroupName TestResourceGroup -ServiceName MyPrivateLinkServiceName
 ```
 
-This example remove a private endpoint named MyPrivateEndpoint1.
+This example remove a private endpoint connection named MyPrivateEndpointConnection1
 
 ## PARAMETERS
 
@@ -61,6 +69,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Description
+The reason of action.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Force
 Do not ask for confirmation if you want to delete resource
 
@@ -77,11 +100,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the private endpoint.
+The name of the private endpoint connection.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByResource
 Aliases: ResourceName
 
 Required: True
@@ -108,11 +131,41 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group name of the private endpoint.
+The resource group name of the private endpoint connection.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByResource
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The Azure resource manager id of the private endpoint connection.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServiceName
+The name of the private link service that has the private endpoint connection.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResource
 Aliases:
 
 Required: True
@@ -168,6 +221,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzPrivateEndpoint](./Get-AzPrivateEndpoint.md)
-
-[New-AzPrivateEndpoint](./New-AzPrivateEndpoint.md)
+[Set-AzPrivateEndpointConnection](./Set-AzPrivateEndpointConnection.md)

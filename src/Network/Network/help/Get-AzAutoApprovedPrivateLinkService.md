@@ -1,51 +1,33 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azavailableprivateendpointtype
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azautoapprovedprivatelinkservice
 schema: 2.0.0
 ---
 
-# Get-AzAvailablePrivateEndpointType
+# Get-AzAutoApprovedPrivateLinkService
 
 ## SYNOPSIS
-Return available private end point types in the location
+Gets an array of private link service id that can be linked to a private end point with auto approved.
 
 ## SYNTAX
 
 ```
-Get-AzAvailablePrivateEndpointType -Location <String> [-ResourceGroupName <String>]
+Get-AzAutoApprovedPrivateLinkService -Location <String> [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzAvailablePrivateEndpointType** cmdlet returns all available private end point types in the location.
+The **Get-AzAutoApprovedPrivateLinkService** gets an array of private link service id that can be linked to a private end point with auto approved.
 
 ## EXAMPLES
 
 ### Example
 ```
-Get-AzAvailablePrivateEndpointType -Location eastus
-
-[
-  {
-    "id": "subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/availablePrivateEndpointTypes/typename1",
-    "type": "Microsoft.Network/availablePrivateEndpointType",
-    "resourceName": "Microsot.Sql/servers"
-  },
-  {
-    "id": "subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/availablePrivateEndpointTypes/typename2",
-    "type": "Microsoft.Network/availablePrivateEndpointType",
-    "resourceName": "Microsot.Storage/accounts"
-  },
-  {
-    "id": "subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/availablePrivateEndpointTypes/typename3",
-    "type": "Microsoft.Network/availablePrivateEndpointType",
-    "resourceName": "Microsot.Cosmos/cosmosDbAccounts"
-  }
-]
+Get-AzAutoApprovedPrivateLinkService -Location westus -ResourceGroupName TestResourceGroup
 ```
 
-This example returns all available private end point types in the location.
+This example return an array of private link service id that can be linked to a private end point with auto approved.
 
 ## PARAMETERS
 
@@ -65,8 +47,6 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location.
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -80,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group name.
+Specifies the name of the resource group.
 
 ```yaml
 Type: System.String
@@ -99,11 +79,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### None
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSAvailablePrivateEndpointType
+### Microsoft.Azure.Commands.Network.Models.PSAutoApprovedPrivateLinkService
 
 ## NOTES
 
