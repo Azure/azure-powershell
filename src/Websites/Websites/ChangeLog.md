@@ -20,7 +20,8 @@
 ## Upcoming Release
 
 ## Version 1.3.0
-* Optimizes Get-AzWebAppCertificate to filter by resource group on the server instead of the client* Adds -UseDisasterRecovery switch parameter to Get-AzWebAppSnapshot
+* Optimizes Get-AzWebAppCertificate to filter by resource group on the server instead of the client
+* Adds -UseDisasterRecovery switch parameter to Get-AzWebAppSnapshot
 
 ## Version 1.2.2
 * fixes the issue where using  Set-AzWebApp and Set-AzWebAppSlot with -WebApp property was removing the tags

@@ -74,7 +74,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.3'; },
                @{ModuleName = 'Az.Dns'; RequiredVersion = '1.1.1'; }, 
                @{ModuleName = 'Az.EventGrid'; RequiredVersion = '1.2.0'; }, 
                @{ModuleName = 'Az.EventHub'; RequiredVersion = '1.2.0'; }, 
-               @{ModuleName = 'Az.FrontDoor'; RequiredVersion = '1.0.0'; }, 
+               @{ModuleName = 'Az.FrontDoor'; RequiredVersion = '1.1.0'; }, 
                @{ModuleName = 'Az.HDInsight'; RequiredVersion = '2.0.0'; }, 
                @{ModuleName = 'Az.IotHub'; RequiredVersion = '1.1.0'; }, 
                @{ModuleName = 'Az.KeyVault'; RequiredVersion = '1.2.0'; }, 
@@ -206,6 +206,12 @@ Az.EventGrid
         - Add new mandatory parameters to support piping for Event Grid Domain and Event Grid Domain Topic to allow removing existing event subscription under these resources.
         - Add new mandatory parameters for specifying the Event Grid Domain name and/or Event Grid Domain Topic name to allow removing existing event subscription under these resources.
 
+Az.FrontDoor
+* New-AzFrontDoorWafMatchConditionObject
+    - Add transforms support and new operator auto-complete value (RegEx)
+* New-AzFrontDoorWafManagedRuleObject
+    - Add new auto-complete values
+    
 Az.Network
 * Add support for Virtual Network Gateway Resource
     - New cmdlets
@@ -279,6 +285,7 @@ Az.Storage
     -  Remove-AzRmStorageContainerImmutabilityPolicy
 
 Az.Websites
+* Optimizes Get-AzWebAppCertificate to filter by resource group on the server instead of the client
 * Adds -UseDisasterRecovery switch parameter to Get-AzWebAppSnapshot
 '
 

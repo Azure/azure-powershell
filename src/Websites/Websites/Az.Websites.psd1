@@ -133,7 +133,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Adds -UseDisasterRecovery switch parameter to Get-AzWebAppSnapshot'
+        ReleaseNotes = '* Optimizes Get-AzWebAppCertificate to filter by resource group on the server instead of the client
+        * Adds -UseDisasterRecovery switch parameter to Get-AzWebAppSnapshot'
 
         # Prerelease string of this module
         # Prerelease = ''

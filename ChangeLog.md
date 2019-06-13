@@ -48,6 +48,12 @@
         - Add new mandatory parameters to support piping for Event Grid Domain and Event Grid Domain Topic to allow removing existing event subscription under these resources.
         - Add new mandatory parameters for specifying the Event Grid Domain name and/or Event Grid Domain Topic name to allow removing existing event subscription under these resources.
 
+#### Az.FrontDoor
+* New-AzFrontDoorWafMatchConditionObject
+    - Add transforms support and new operator auto-complete value (RegEx)
+* New-AzFrontDoorWafManagedRuleObject
+    - Add new auto-complete values
+
 #### Az.Network
 * Add support for Virtual Network Gateway Resource
     - New cmdlets
@@ -121,6 +127,7 @@
     -  Remove-AzRmStorageContainerImmutabilityPolicy
 
 #### Az.Websites
+* Optimizes Get-AzWebAppCertificate to filter by resource group on the server instead of the client
 * Adds -UseDisasterRecovery switch parameter to Get-AzWebAppSnapshot
 
 ## 2.2.0 - June 2019
