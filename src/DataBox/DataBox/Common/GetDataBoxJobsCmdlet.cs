@@ -38,6 +38,9 @@ namespace MMicrosoft.Azure.Commands.DataBox.Common
         public SwitchParameter Completed { get; set; } = false;
 
         [Parameter(Mandatory = false, ParameterSetName = ListParameterSet)]
+        public SwitchParameter CompletedWithErrors { get; set; } = false;
+
+        [Parameter(Mandatory = false, ParameterSetName = ListParameterSet)]
         public SwitchParameter Cancelled { get; set; } = false;
 
         [Parameter(Mandatory = false, ParameterSetName = ListParameterSet)]
@@ -91,11 +94,14 @@ namespace MMicrosoft.Azure.Commands.DataBox.Common
                                         jobPageList.NextPageLink);
                     }
 
-                    if (Completed || Cancelled || Aborted)
+                    if (Completed || Cancelled || Aborted || CompletedWithErrors)
                     {
                         foreach (var job in jobPageList)
                         {
-                            if ((Completed && job.Status == StageName.Completed) || (Cancelled && job.Status == StageName.Cancelled) || (Aborted && job.Status == StageName.Aborted))
+                            if ((Completed && job.Status == StageName.Completed) 
+                                || (Cancelled && job.Status == StageName.Cancelled) 
+                                || (Aborted && job.Status == StageName.Aborted)
+                                || (CompletedWithErrors && job.Status == StageName.CompletedWithErrors))
                             {
                                 result.Add(job);
                             }
@@ -128,11 +134,14 @@ namespace MMicrosoft.Azure.Commands.DataBox.Common
                                          this.DataBoxManagementClient.Jobs,
                                          jobPageList.NextPageLink);
                      }
-                    if (Completed || Cancelled || Aborted)
+                    if (Completed || Cancelled || Aborted || CompletedWithErrors)
                     {
                         foreach (var job in jobPageList)
                         {
-                            if ((Completed && job.Status == StageName.Completed) || (Cancelled && job.Status == StageName.Cancelled) || (Aborted && job.Status == StageName.Aborted))
+                            if ((Completed && job.Status == StageName.Completed) 
+                                || (Cancelled && job.Status == StageName.Cancelled) 
+                                || (Aborted && job.Status == StageName.Aborted)
+                                || (CompletedWithErrors && job.Status == StageName.CompletedWithErrors))
                             {
                                 result.Add(job);
                             }
