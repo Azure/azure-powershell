@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.0
 * New-AzFrontDoorWafMatchConditionObject
     - Add transforms support and new operator auto-complete value (RegEx)
 * New-AzFrontDoorWafManagedRuleObject
