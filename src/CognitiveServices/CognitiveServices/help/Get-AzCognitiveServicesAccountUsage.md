@@ -86,7 +86,7 @@ NextResetTime : 0001-01-01T00:00:00Z
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 Cognitive Services Account Object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount
+Type: PSCognitiveServicesAccount
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 Cognitive Services Account Name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceNameParameterSet
 Aliases: CognitiveServicesAccountName, AccountName
 
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceNameParameterSet
 Aliases:
 
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 Cognitive Services Account Resource ID.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -158,7 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
