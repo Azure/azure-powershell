@@ -39,6 +39,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceManager.Test", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitor", "src\Monitor\Monitor.csproj", "{F27EF17C-CE35-4F25-8B6E-013FDE8B9761}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolicyInsights", "src\PolicyInsights\PolicyInsights.csproj", "{36D99B99-B59B-4464-9832-7C3C4A82E7F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,6 +115,10 @@ Global
 		{F27EF17C-CE35-4F25-8B6E-013FDE8B9761}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F27EF17C-CE35-4F25-8B6E-013FDE8B9761}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F27EF17C-CE35-4F25-8B6E-013FDE8B9761}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36D99B99-B59B-4464-9832-7C3C4A82E7F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36D99B99-B59B-4464-9832-7C3C4A82E7F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36D99B99-B59B-4464-9832-7C3C4A82E7F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36D99B99-B59B-4464-9832-7C3C4A82E7F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
