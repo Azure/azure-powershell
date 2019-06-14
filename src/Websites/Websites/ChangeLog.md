@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.0
 * Optimizes Get-AzWebAppCertificate to filter by resource group on the server instead of the client
 * Adds -UseDisasterRecovery switch parameter to Get-AzWebAppSnapshot
 
