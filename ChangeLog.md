@@ -1,4 +1,4 @@
-## 2.3.0 - June 2019
+## 2.3.1 - June 2019
 #### Az.Accounts
 * Fix bug with incorrect URL being used in some cases for Functions calls
     - More information here: https://github.com/Azure/azure-powershell/issues/8983
