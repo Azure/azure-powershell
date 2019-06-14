@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.3.0'
+ModuleVersion = '2.3.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -97,7 +97,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.3'; },
                @{ModuleName = 'Az.SignalR'; RequiredVersion = '1.0.2'; }, 
                @{ModuleName = 'Az.Sql'; RequiredVersion = '1.12.0'; }, 
                @{ModuleName = 'Az.Storage'; RequiredVersion = '1.4.0'; }, 
-               @{ModuleName = 'Az.StorageSync'; RequiredVersion = '1.0.0'; },
+               @{ModuleName = 'Az.StorageSync'; RequiredVersion = '1.1.0'; },
                @{ModuleName = 'Az.StreamAnalytics'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.TrafficManager'; RequiredVersion = '1.0.1'; }, 
                @{ModuleName = 'Az.Websites'; RequiredVersion = '1.3.0'; })
