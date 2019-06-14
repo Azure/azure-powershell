@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Commands.AzureStack
     public class AzureStackClient
     {
         private AzureStackManagementClient client;
-        private ResourceManagementClient resourceManagementClient;
 
         public const string Namespace = "Microsoft.AzureStack";
         public const string RegistrationsTypeName = Namespace + "/Registrations";
@@ -38,7 +37,6 @@ namespace Microsoft.Azure.Commands.AzureStack
         public AzureStackClient(IAzureContext context)
         {
             client = AzureSession.Instance.ClientFactory.CreateArmClient<AzureStackManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
-            resourceManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         public AzureStackClient() { }
@@ -46,7 +44,6 @@ namespace Microsoft.Azure.Commands.AzureStack
         #region registrations
         public Registration CreateRegistration(string resourceGroupName, string registrationName, string token)
         {
-            resourceManagementClient.Providers.Register(Namespace);
             var param = new RegistrationParameter
             {
                 Location = Registration.Location,
@@ -58,7 +55,6 @@ namespace Microsoft.Azure.Commands.AzureStack
 
         public Registration UpdateRegistration(string resourceGroupName, string registrationName, string token)
         {
-            resourceManagementClient.Providers.Register(Namespace);
             var param = new RegistrationParameter
             {
                 Location = Registration.Location,
@@ -119,7 +115,6 @@ namespace Microsoft.Azure.Commands.AzureStack
         #region customer subscriptions
         public CustomerSubscription CreateCustomerSubscription(string resourceGroupName, string registrationName, string subscriptionName, string tenantId)
         {
-            resourceManagementClient.Providers.Register(Namespace);
             var param = new CustomerSubscription
             {
                 TenantId = tenantId
