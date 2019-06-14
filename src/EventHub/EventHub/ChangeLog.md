@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.0
 * Fix for #9231 - Get-AzEventHubNamespace does not return tags
 * Fix for #9230 - Get-AzEventHubNamespace returns ResourceGroup instead of ResourceGroupName
 
