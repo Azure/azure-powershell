@@ -102,5 +102,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-SimpleNewVmssWithoutDomainName");
             create.SetValue(null, oldCreate);
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmssPpg()
+        {
+            TestRunner.RunTestScript("Test-SimpleNewVmssPpg");
+        }
     }
 }
