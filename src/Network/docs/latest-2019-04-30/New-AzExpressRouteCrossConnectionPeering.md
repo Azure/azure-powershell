@@ -27,8 +27,8 @@ New-AzExpressRouteCrossConnectionPeering -CrossConnectionName <String> -PeeringN
  [-AdvertisedPublicPrefix <String[]>]
  [-AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
  [-CustomerAsn <Int32>] [-GatewayManagerEtag <String>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunities <String[]>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixes <String[]>]
+ [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunity <String[]>]
+ [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefix <String[]>]
  [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
  [-IPv6PeeringConfigMicrosoftPeeringConfigCustomerAsn <Int32>]
  [-IPv6PeeringConfigMicrosoftPeeringConfigLegacyMode <Int32>]
@@ -49,8 +49,8 @@ New-AzExpressRouteCrossConnectionPeering -InputObject <INetworkIdentity> [-Adver
  [-AdvertisedPublicPrefix <String[]>]
  [-AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
  [-CustomerAsn <Int32>] [-GatewayManagerEtag <String>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunities <String[]>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixes <String[]>]
+ [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunity <String[]>]
+ [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefix <String[]>]
  [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
  [-IPv6PeeringConfigMicrosoftPeeringConfigCustomerAsn <Int32>]
  [-IPv6PeeringConfigMicrosoftPeeringConfigLegacyMode <Int32>]
@@ -259,7 +259,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunities
+### -IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunity
 The communities of bgp peering.
 Specified for microsoft peering
 
@@ -276,7 +276,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixes
+### -IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefix
 The reference of AdvertisedPublicPrefixes.
 
 ```yaml

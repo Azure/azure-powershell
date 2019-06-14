@@ -14,32 +14,17 @@ Creates or updates a peering in the specified virtual network.
 
 ### Update1 (Default)
 ```
-Set-AzVnetPeering -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String> [-Name <String>]
+Set-AzVnetPeering -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
  [-VnetPeeringParameter <IVirtualNetworkPeering>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded1
-```
-Set-AzVnetPeering -InputObject <INetworkIdentity> [-Name <String>] [-AllowForwardedTraffic]
- [-AllowGatewayTransit] [-AllowVnetAccess] [-Etag <String>] [-Id <String>]
- [-PeeringState <VirtualNetworkPeeringState>] [-ProvisioningState <String>]
- [-RemoteAddressSpaceAddressPrefix <String[]>] [-RemoteVnetId <String>] [-UseRemoteGateway]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateExpanded1
 ```
-Set-AzVnetPeering -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
- -VnetPeeringName <String> [-Name <String>] [-AllowForwardedTraffic] [-AllowGatewayTransit] [-AllowVnetAccess]
- [-Etag <String>] [-Id <String>] [-PeeringState <VirtualNetworkPeeringState>] [-ProvisioningState <String>]
+Set-AzVnetPeering -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
+ -VnetPeeringName <String> [-AllowForwardedTraffic] [-AllowGatewayTransit] [-AllowVnetAccess] [-Etag <String>]
+ [-Id <String>] [-PeeringState <VirtualNetworkPeeringState>] [-ProvisioningState <String>]
  [-RemoteAddressSpaceAddressPrefix <String[]>] [-RemoteVnetId <String>] [-UseRemoteGateway]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity1
-```
-Set-AzVnetPeering -InputObject <INetworkIdentity> [-VnetPeeringParameter <IVirtualNetworkPeering>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -73,7 +58,7 @@ Whether the forwarded traffic from the VMs in the local virtual network will be 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -89,7 +74,7 @@ If gateway links can be used in remote virtual networking to link to this virtua
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -105,8 +90,8 @@ Whether the VMs in the local virtual network space would be able to access the V
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
-Aliases:
+Parameter Sets: UpdateExpanded1
+Aliases: AllowVirtualNetworkAccess
 
 Required: False
 Position: Named
@@ -153,7 +138,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -169,7 +154,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -180,29 +165,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateViaIdentity1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Name
-The name of the resource that is unique within a resource group.
-This name can be used to access the resource.
+The name of the peering.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -219,7 +187,7 @@ Possible values are 'Initiated', 'Connected', and 'Disconnected'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.VirtualNetworkPeeringState
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -235,7 +203,7 @@ The provisioning state of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -251,7 +219,7 @@ A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -267,8 +235,8 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
-Aliases:
+Parameter Sets: UpdateExpanded1
+Aliases: RemoteVirtualNetworkId
 
 Required: False
 Position: Named
@@ -283,7 +251,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -300,7 +268,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -319,7 +287,7 @@ This flag cannot be set if virtual network already has a gateway.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -335,8 +303,8 @@ The name of the virtual network.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
-Aliases:
+Parameter Sets: (All)
+Aliases: VirtualNetworkName
 
 Required: True
 Position: Named
@@ -352,7 +320,7 @@ The name of the peering.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded1
-Aliases:
+Aliases: VirtualNetworkPeeringName
 
 Required: True
 Position: Named
@@ -367,8 +335,8 @@ Peerings in a virtual network resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkPeering
-Parameter Sets: Update1, UpdateViaIdentity1
-Aliases:
+Parameter Sets: Update1
+Aliases: VirtualNetworkPeeringParameter
 
 Required: False
 Position: Named
@@ -417,8 +385,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkPeering
-
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
 ## OUTPUTS
 

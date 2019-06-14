@@ -87,7 +87,7 @@ The virtual network gateway connection shared key name.
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: VnetGatewayConnectionName
+Aliases: VirtualNetworkGatewayConnectionName, VnetGatewayConnectionName
 
 Required: True
 Position: Named

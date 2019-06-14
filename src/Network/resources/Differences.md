@@ -1,7 +1,5 @@
 ## Incorrect Cmdlets
 
-- Get-AzExpressRouteCircuitAuthorization
-    - ExpressRouteCircuit
 - Get-AzExpressRouteCircuitStatistic
     - PeeringType
 - Get-AzExpressRouteConnection
@@ -20,35 +18,17 @@
     - VirtualMachineIndex
 - Get-AzNetworkWatcher
     - Location
-- Get-AzNetworkWatcherAvailableProvider
-    - NetworkWatcherLocation
 - Get-AzNetworkWatcherConnectionMonitor
-    - NetworkWatcher
-    - Location
-- Get-AzNetworkWatcherConnectionMonitorState
-    - NetworkWatcher
-    - Location
-- Get-AzNetworkWatcherFlowLogStatus
-    - Location
-- Get-AzNetworkWatcherNetworkConfigurationDiagnostic
     - Location
 - Get-AzNetworkWatcherNextHop
-    - Location
     - TargetVirtualMachineId
     - TargetNetworkInterfaceId
 - Get-AzNetworkWatcherPacketCapture
-    - NetworkWatcher
-    - Location
     - AsJob
 - Get-AzNetworkWatcherReachabilityReport
-    - NetworkWatcherLocation
     - Country
     - State
     - City
-- Get-AzNetworkWatcherTopology
-    - Location
-- Get-AzNetworkWatcherTroubleshootingResult
-    - Location
 - Get-AzPublicIPAddress
     - VirtualMachineScaleSetName
     - VirtualMachineIndex
@@ -59,16 +39,8 @@
 - Get-AzVirtualHubVnetConnection
     - ParentObject
     - ParentResourceId
-- Get-AzVnetGatewayAdvertisedRoute
-    - VirtualNetworkGatewayName
-- Get-AzVnetGatewayBgpPeerStatus
-    - VirtualNetworkGatewayName
-- Get-AzVnetGatewayLearnedRoute
-    - VirtualNetworkGatewayName
 - Get-AzVnetGatewayVpnDeviceConfigurationScript
     - DeviceVendor
-- Get-AzVnetPeering
-    - VirtualNetworkName
 - Get-AzVpnConnection
     - ParentResourceName
     - ParentObject
@@ -145,7 +117,6 @@
     - MonitoringIntervalInSeconds
     - ConfigureOnly
 - New-AzNetworkWatcherPacketCapture
-    - Location
     - TargetVirtualMachineId
     - StorageAccountId
     - StoragePath
@@ -184,14 +155,10 @@
     - RadiusServerAddress
     - RadiusServerSecret
 - New-AzVnetGatewayConnection
-    - VirtualNetworkGateway1
-    - VirtualNetworkGateway2
     - LocalNetworkGateway2
     - Peer
     - UsePolicyBasedTrafficSelectors
     - IpsecPolicies
-- New-AzVnetGatewayVpnClientPackage
-    - VirtualNetworkGatewayName
 - New-AzVnetTap
     - DestinationNetworkInterfaceIPConfiguration
     - DestinationLoadBalancerFrontEndIPConfiguration
@@ -217,26 +184,17 @@
     - BgpAsn
     - BgpPeeringAddress
     - BgpPeeringWeight
-- Remove-AzExpressRouteCircuitAuthorization
-    - ExpressRouteCircuit
 - Remove-AzExpressRouteCrossConnectionPeering
     - ExpressRouteCrossConnection
     - PeerAddressType
 - Remove-AzNetworkProfile
     - AsJob
 - Remove-AzNetworkWatcher
-    - NetworkWatcher
     - Location
 - Remove-AzNetworkWatcherConnectionMonitor
-    - NetworkWatcher
-    - Location
-- Remove-AzNetworkWatcherPacketCapture
-    - NetworkWatcher
     - Location
 - Remove-AzServiceEndpointPolicyDefinition
     - ServiceEndpointPolicy
-- Remove-AzVnetPeering
-    - VirtualNetworkName
 - Remove-AzVpnConnection
     - ParentResourceName
 - Reset-AzVnetGateway
@@ -245,13 +203,18 @@
     - ApplicationGateway
 - Set-AzExpressRouteCircuit
     - ExpressRouteCircuit
+- Set-AzExpressRouteConnection
+    - InputObject
 - Set-AzExpressRouteCrossConnection
     - ExpressRouteCrossConnection
     - ServiceProviderNotes
     - Peerings
 - Set-AzExpressRouteGateway
+    - InputObject
     - MinScaleUnits
     - MaxScaleUnits
+- Set-AzExpressRoutePort
+    - ExpressRoutePort
 - Set-AzFirewall
     - AzureFirewall
 - Set-AzLoadBalancer
@@ -272,10 +235,10 @@
 - Set-AzNetworkSecurityGroup
     - NetworkSecurityGroup
 - Set-AzNetworkWatcherConnectionMonitor
+    - InputObject
     - MonitoringIntervalInSeconds
     - ConfigureOnly
 - Set-AzNetworkWatcherFlowLogConfiguration
-    - Location
     - EnableFlowLog
     - StorageAccountId
     - EnableRetention
@@ -286,6 +249,8 @@
     - WorkspaceLocation
     - Workspace
     - TrafficAnalyticsInterval
+- Set-AzPublicIPAddress
+    - PublicIpAddress
 - Set-AzPublicIPPrefix
     - PublicIpPrefix
 - Set-AzRouteFilter
@@ -318,39 +283,27 @@
     - UsePolicyBasedTrafficSelectors
     - IpsecPolicies
 - Set-AzVnetGatewayVpnClientIPsecParameter
-    - VirtualNetworkGatewayName
     - VpnClientIPsecParameter
+    - InputObject
 - Set-AzVnetPeering
     - VirtualNetworkPeering
-- Set-AzVnetTap
-    - VirtualNetworkTap
 - Start-AzApplicationGateway
     - ApplicationGateway
 - Start-AzNetworkWatcherConnectionMonitor
-    - NetworkWatcher
-    - Location
-- Start-AzNetworkWatcherTroubleshooting
     - Location
 - Stop-AzApplicationGateway
     - ApplicationGateway
 - Stop-AzNetworkWatcherConnectionMonitor
-    - NetworkWatcher
-    - Location
-- Stop-AzNetworkWatcherPacketCapture
-    - NetworkWatcher
     - Location
 - Test-AzNetworkWatcherConnectivity
-    - Location
     - SourceId
     - DestinationId
     - ProtocolConfiguration
 - Test-AzNetworkWatcherIPFlow
-    - Location
     - TargetVirtualMachineId
     - TargetNetworkInterfaceId
 - Test-AzVnetIPAddressAvailability
     - VirtualNetwork
-    - VirtualNetworkName
 
 ## Correct Cmdlets
 
@@ -365,6 +318,7 @@
 - Get-AzDdosProtectionPlan
 - Get-AzExpressRouteCircuit
 - Get-AzExpressRouteCircuitArpTable
+- Get-AzExpressRouteCircuitAuthorization
 - Get-AzExpressRouteCircuitRouteTable
 - Get-AzExpressRouteCircuitRouteTableSummary
 - Get-AzExpressRouteCrossConnection
@@ -383,6 +337,12 @@
 - Get-AzNetworkProfile
 - Get-AzNetworkSecurityGroup
 - Get-AzNetworkUsage
+- Get-AzNetworkWatcherAvailableProvider
+- Get-AzNetworkWatcherConnectionMonitorState
+- Get-AzNetworkWatcherFlowLogStatus
+- Get-AzNetworkWatcherNetworkConfigurationDiagnostic
+- Get-AzNetworkWatcherTopology
+- Get-AzNetworkWatcherTroubleshootingResult
 - Get-AzPublicIPPrefix
 - Get-AzRouteFilter
 - Get-AzRouteTable
@@ -393,10 +353,14 @@
 - Get-AzVnetAvailableEndpointService
 - Get-AzVnetAvailableSubnetDelegation
 - Get-AzVnetGateway
+- Get-AzVnetGatewayAdvertisedRoute
+- Get-AzVnetGatewayBgpPeerStatus
 - Get-AzVnetGatewayConnection
 - Get-AzVnetGatewayConnectionSharedKey
+- Get-AzVnetGatewayLearnedRoute
 - Get-AzVnetGatewaySupportedVpnDevice
 - Get-AzVnetGatewayVpnClientIPsecParameter
+- Get-AzVnetPeering
 - Get-AzVnetTap
 - Get-AzVnetUsage
 - Get-AzVpnGateway
@@ -410,10 +374,12 @@
 - New-AzServiceEndpointPolicy
 - New-AzServiceEndpointPolicyDefinition
 - New-AzVirtualWan
+- New-AzVnetGatewayVpnClientPackage
 - Remove-AzApplicationGateway
 - Remove-AzApplicationSecurityGroup
 - Remove-AzDdosProtectionPlan
 - Remove-AzExpressRouteCircuit
+- Remove-AzExpressRouteCircuitAuthorization
 - Remove-AzExpressRouteConnection
 - Remove-AzExpressRouteGateway
 - Remove-AzExpressRoutePort
@@ -423,6 +389,7 @@
 - Remove-AzNetworkInterface
 - Remove-AzNetworkInterfaceTapConfiguration
 - Remove-AzNetworkSecurityGroup
+- Remove-AzNetworkWatcherPacketCapture
 - Remove-AzPublicIPAddress
 - Remove-AzPublicIPPrefix
 - Remove-AzRouteFilter
@@ -433,14 +400,15 @@
 - Remove-AzVnet
 - Remove-AzVnetGateway
 - Remove-AzVnetGatewayConnection
+- Remove-AzVnetPeering
 - Remove-AzVnetTap
 - Remove-AzVpnGateway
 - Remove-AzVpnSite
 - Reset-AzVnetGatewayConnectionSharedKey
-- Set-AzExpressRouteConnection
-- Set-AzExpressRoutePort
-- Set-AzPublicIPAddress
 - Set-AzVnetGatewayConnectionSharedKey
+- Set-AzVnetTap
+- Start-AzNetworkWatcherTroubleshooting
+- Stop-AzNetworkWatcherPacketCapture
 - Test-AzDnsNameAvailability
 - Test-AzDummy
 

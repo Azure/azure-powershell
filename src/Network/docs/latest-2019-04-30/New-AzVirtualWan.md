@@ -22,7 +22,7 @@ New-AzVirtualWan -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 ```
 New-AzVirtualWan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AllowBranchToBranchTraffic] [-AllowVnetToVnetTraffic] [-DisableVpnEncryption] [-Id <String>]
- [-Location <String>] [-P2SVpnServerConfigurations <IP2SVpnServerConfiguration[]>]
+ [-Location <String>] [-P2SVpnServerConfiguration <IP2SVpnServerConfiguration[]>]
  [-SecurityProviderName <String>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -31,7 +31,7 @@ New-AzVirtualWan -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 ```
 New-AzVirtualWan -InputObject <INetworkIdentity> [-AllowBranchToBranchTraffic] [-AllowVnetToVnetTraffic]
  [-DisableVpnEncryption] [-Id <String>] [-Location <String>]
- [-P2SVpnServerConfigurations <IP2SVpnServerConfiguration[]>] [-SecurityProviderName <String>]
+ [-P2SVpnServerConfiguration <IP2SVpnServerConfiguration[]>] [-SecurityProviderName <String>]
  [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -210,7 +210,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -P2SVpnServerConfigurations
+### -P2SVpnServerConfiguration
 List of all P2SVpnServerConfigurations associated with the virtual wan.
 
 ```yaml

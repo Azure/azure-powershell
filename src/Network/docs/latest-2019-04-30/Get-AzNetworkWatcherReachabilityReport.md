@@ -250,7 +250,7 @@ The name of the network watcher resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Get, GetExpanded
-Aliases:
+Aliases: NetworkWatcherLocation
 
 Required: True
 Position: Named

@@ -135,7 +135,7 @@ The name of the virtual network gateway connection for which the configuration s
 ```yaml
 Type: System.String
 Parameter Sets: Script, ScriptExpanded
-Aliases: VnetGatewayConnectionName
+Aliases: VirtualNetworkGatewayConnectionName, VnetGatewayConnectionName
 
 Required: True
 Position: Named

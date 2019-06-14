@@ -64,7 +64,7 @@ The name of the virtual network.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: VnetName
+Aliases: VirtualNetworkName, VnetName
 
 Required: True
 Position: Named

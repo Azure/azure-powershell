@@ -152,7 +152,7 @@ The name of the resource group containing Network Watcher.
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
+Aliases: NetworkWatcher
 
 Required: True
 Position: Named

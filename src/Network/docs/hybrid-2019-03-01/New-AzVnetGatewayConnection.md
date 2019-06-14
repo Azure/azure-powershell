@@ -24,11 +24,11 @@ New-AzVnetGatewayConnection -Name <String> -ResourceGroupName <String> -Subscrip
 New-AzVnetGatewayConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  -ConnectionType <VirtualNetworkGatewayConnectionType> -VnetGateway1 <IVirtualNetworkGateway>
  [-AuthorizationKey <String>] [-BgpSettingAsn <Int64>] [-BgpSettingBgpPeeringAddress <String>]
- [-BgpSettingPeerWeight <Int32>] [-ConnectionStatu <VirtualNetworkGatewayConnectionStatus>] [-EnableBgp]
+ [-BgpSettingPeerWeight <Int32>] [-ConnectionStatus <VirtualNetworkGatewayConnectionStatus>] [-EnableBgp]
  [-Etag <String>] [-GatewayIPAddress <String>] [-IPsecPolicy <IIpsecPolicy[]>] [-Id <String>]
  [-LocalNetworkAddressSpaceAddressPrefix <String[]>] [-LocalNetworkGateway2Etag <String>]
  [-LocalNetworkGateway2Id <String>] [-LocalNetworkGateway2Location <String>]
- [-LocalNetworkGateway2PropertiesResourceGuid <String>] [-LocalNetworkGateway2Tags <IResourceTags>]
+ [-LocalNetworkGateway2PropertiesResourceGuid <String>] [-LocalNetworkGateway2Tag <IResourceTags>]
  [-Location <String>] [-PeerId <String>] [-ResourceGuid <String>] [-RoutingWeight <Int32>]
  [-SharedKey <String>] [-Tag <IResourceTags>] [-UsePolicyBasedTrafficSelector]
  [-VnetGateway2 <IVirtualNetworkGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
@@ -40,11 +40,11 @@ New-AzVnetGatewayConnection -Name <String> -ResourceGroupName <String> -Subscrip
 New-AzVnetGatewayConnection -InputObject <INetworkIdentity>
  -ConnectionType <VirtualNetworkGatewayConnectionType> -VnetGateway1 <IVirtualNetworkGateway>
  [-AuthorizationKey <String>] [-BgpSettingAsn <Int64>] [-BgpSettingBgpPeeringAddress <String>]
- [-BgpSettingPeerWeight <Int32>] [-ConnectionStatu <VirtualNetworkGatewayConnectionStatus>] [-EnableBgp]
+ [-BgpSettingPeerWeight <Int32>] [-ConnectionStatus <VirtualNetworkGatewayConnectionStatus>] [-EnableBgp]
  [-Etag <String>] [-GatewayIPAddress <String>] [-IPsecPolicy <IIpsecPolicy[]>] [-Id <String>]
  [-LocalNetworkAddressSpaceAddressPrefix <String[]>] [-LocalNetworkGateway2Etag <String>]
  [-LocalNetworkGateway2Id <String>] [-LocalNetworkGateway2Location <String>]
- [-LocalNetworkGateway2PropertiesResourceGuid <String>] [-LocalNetworkGateway2Tags <IResourceTags>]
+ [-LocalNetworkGateway2PropertiesResourceGuid <String>] [-LocalNetworkGateway2Tag <IResourceTags>]
  [-Location <String>] [-PeerId <String>] [-ResourceGuid <String>] [-RoutingWeight <Int32>]
  [-SharedKey <String>] [-Tag <IResourceTags>] [-UsePolicyBasedTrafficSelector]
  [-VnetGateway2 <IVirtualNetworkGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ConnectionStatu
+### -ConnectionStatus
 Virtual network Gateway connection status.
 Possible values are 'Unknown', 'Connecting', 'Connected' and 'NotConnected'.
 
@@ -388,7 +388,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -LocalNetworkGateway2Tags
+### -LocalNetworkGateway2Tag
 Resource tags.
 
 ```yaml
@@ -587,7 +587,7 @@ The reference to virtual network gateway resource.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkGateway
 Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
+Aliases: VirtualNetworkGateway1
 
 Required: True
 Position: Named
@@ -603,7 +603,7 @@ The reference to virtual network gateway resource.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkGateway
 Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
+Aliases: VirtualNetworkGateway2
 
 Required: False
 Position: Named

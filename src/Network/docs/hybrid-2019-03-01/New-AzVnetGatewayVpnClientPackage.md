@@ -236,7 +236,7 @@ The name of the virtual network gateway.
 ```yaml
 Type: System.String
 Parameter Sets: Generatevpnclientpackage1, GeneratevpnclientpackageExpanded1
-Aliases:
+Aliases: VirtualNetworkGatewayName
 
 Required: True
 Position: Named

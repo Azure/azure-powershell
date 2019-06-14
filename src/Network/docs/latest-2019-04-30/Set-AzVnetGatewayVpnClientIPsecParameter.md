@@ -28,21 +28,6 @@ Set-AzVnetGatewayVpnClientIPsecParameter -ResourceGroupName <String> -Subscripti
  [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### SetViaIdentityExpanded
-```
-Set-AzVnetGatewayVpnClientIPsecParameter -InputObject <INetworkIdentity> -DhGroup <DhGroup>
- -IPsecEncryption <IpsecEncryption> -IPsecIntegrity <IpsecIntegrity> -IkeEncryption <IkeEncryption>
- -IkeIntegrity <IkeIntegrity> -PfsGroup <PfsGroup> -SaDataSizeKilobyte <Int32> -SaLifeTimeSecond <Int32>
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### SetViaIdentity
-```
-Set-AzVnetGatewayVpnClientIPsecParameter -InputObject <INetworkIdentity>
- [-VpnclientIPsecParam <IVpnClientIPsecParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The Set VpnclientIpsecParameters operation sets the vpnclient ipsec policy for P2S client of virtual network gateway in the specified resource group through Network resource provider.
 
@@ -105,7 +90,7 @@ The DH Group used in IKE Phase 1 for initial SA.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.DhGroup
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -121,7 +106,7 @@ The IKE encryption algorithm (IKE phase 2).
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IkeEncryption
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -137,7 +122,7 @@ The IKE integrity algorithm (IKE phase 2).
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IkeIntegrity
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -148,28 +133,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: SetViaIdentityExpanded, SetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -IPsecEncryption
 The IPSec encryption algorithm (IKE phase 1).
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IpsecEncryption
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -185,7 +154,7 @@ The IPSec integrity algorithm (IKE phase 1).
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IpsecIntegrity
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -201,7 +170,7 @@ The Pfs Group used in IKE Phase 2 for new child SA.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.PfsGroup
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -217,7 +186,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Set, SetExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -233,7 +202,7 @@ The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload si
 
 ```yaml
 Type: System.Int32
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -249,7 +218,7 @@ The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime i
 
 ```yaml
 Type: System.Int32
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -266,7 +235,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Set, SetExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -282,8 +251,8 @@ The name of the virtual network gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: Set, SetExpanded
-Aliases:
+Parameter Sets: (All)
+Aliases: VirtualNetworkGatewayName
 
 Required: True
 Position: Named
@@ -298,7 +267,7 @@ An IPSec parameters for a virtual network gateway P2S connection.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnClientIPsecParameters
-Parameter Sets: Set, SetViaIdentity
+Parameter Sets: Set
 Aliases:
 
 Required: False
@@ -348,8 +317,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnClientIPsecParameters
-
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
 ## OUTPUTS
 

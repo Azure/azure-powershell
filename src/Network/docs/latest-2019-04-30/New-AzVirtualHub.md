@@ -314,7 +314,7 @@ List of all vnet connections with this VirtualHub.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IHubVirtualNetworkConnection[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: VirtualNetworkConnection
 
 Required: False
 Position: Named

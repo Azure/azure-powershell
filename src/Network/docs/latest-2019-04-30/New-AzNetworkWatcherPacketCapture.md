@@ -202,7 +202,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Create, CreateExpanded
-Aliases:
+Aliases: Location
 
 Required: True
 Position: Named

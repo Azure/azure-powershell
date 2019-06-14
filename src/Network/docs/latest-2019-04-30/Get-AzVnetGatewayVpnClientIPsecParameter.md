@@ -103,7 +103,7 @@ The virtual network gateway name.
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: VnetGatewayName
+Aliases: VirtualNetworkGatewayName, VnetGatewayName
 
 Required: True
 Position: Named

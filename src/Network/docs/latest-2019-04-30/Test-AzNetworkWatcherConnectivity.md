@@ -266,7 +266,7 @@ The name of the network watcher resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Check, CheckExpanded
-Aliases:
+Aliases: Location
 
 Required: True
 Position: Named

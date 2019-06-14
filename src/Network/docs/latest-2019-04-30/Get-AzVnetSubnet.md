@@ -158,7 +158,7 @@ The name of the virtual network.
 ```yaml
 Type: System.String
 Parameter Sets: List, Get
-Aliases:
+Aliases: VirtualNetworkName
 
 Required: True
 Position: Named

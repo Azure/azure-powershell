@@ -14,32 +14,17 @@ Prepares a subnet by applying network intent policies.
 
 ### Prepare (Default)
 ```
-Set-AzVnetSubnetNetworkPolicy -SubnetName <String> -SubscriptionId <String> -VnetName <String>
- [-ResourceGroupName <String>] [-PassThru]
- [-PrepareNetworkPoliciesRequestParameter <IPrepareNetworkPoliciesRequest>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PrepareViaIdentityExpanded
-```
-Set-AzVnetSubnetNetworkPolicy -InputObject <INetworkIdentity> [-ResourceGroupName <String>] [-PassThru]
- [-NetworkIntentPolicyConfiguration <INetworkIntentPolicyConfiguration[]>] [-ServiceName <String>]
+Set-AzVnetSubnetNetworkPolicy -ResourceGroupName <String> -SubnetName <String> -SubscriptionId <String>
+ -VnetName <String> [-PassThru] [-PrepareNetworkPoliciesRequestParameter <IPrepareNetworkPoliciesRequest>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PrepareExpanded
 ```
-Set-AzVnetSubnetNetworkPolicy -SubnetName <String> -SubscriptionId <String> -VnetName <String>
- [-ResourceGroupName <String>] [-PassThru]
- [-NetworkIntentPolicyConfiguration <INetworkIntentPolicyConfiguration[]>] [-ResourceGroupName1 <String>]
- [-ServiceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PrepareViaIdentity
-```
-Set-AzVnetSubnetNetworkPolicy -InputObject <INetworkIdentity> [-PassThru]
- [-PrepareNetworkPoliciesRequestParameter <IPrepareNetworkPoliciesRequest>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzVnetSubnetNetworkPolicy -ResourceGroupName <String> -SubnetName <String> -SubscriptionId <String>
+ -VnetName <String> [-PassThru] [-NetworkIntentPolicyConfiguration <INetworkIntentPolicyConfiguration[]>]
+ [-ResourceGroupName1 <String>] [-ServiceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -99,28 +84,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: PrepareViaIdentityExpanded, PrepareViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -NetworkIntentPolicyConfiguration
 A list of NetworkIntentPolicyConfiguration.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkIntentPolicyConfiguration[]
-Parameter Sets: PrepareViaIdentityExpanded, PrepareExpanded
+Parameter Sets: PrepareExpanded
 Aliases:
 
 Required: False
@@ -152,7 +121,7 @@ Details of PrepareNetworkPolicies for Subnet.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPrepareNetworkPoliciesRequest
-Parameter Sets: Prepare, PrepareViaIdentity
+Parameter Sets: Prepare
 Aliases:
 
 Required: False
@@ -164,11 +133,11 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group where the Network Intent Policy will be stored.
+The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Prepare, PrepareViaIdentityExpanded, PrepareExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -200,7 +169,7 @@ The name of the service for which subnet is being prepared for.
 
 ```yaml
 Type: System.String
-Parameter Sets: PrepareViaIdentityExpanded, PrepareExpanded
+Parameter Sets: PrepareExpanded
 Aliases:
 
 Required: False
@@ -216,7 +185,7 @@ The name of the subnet.
 
 ```yaml
 Type: System.String
-Parameter Sets: Prepare, PrepareExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -233,7 +202,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Prepare, PrepareExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -249,8 +218,8 @@ The name of the virtual network.
 
 ```yaml
 Type: System.String
-Parameter Sets: Prepare, PrepareExpanded
-Aliases:
+Parameter Sets: (All)
+Aliases: VirtualNetworkName
 
 Required: True
 Position: Named
@@ -299,8 +268,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPrepareNetworkPoliciesRequest
-
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
 ## OUTPUTS
 

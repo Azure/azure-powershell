@@ -15,17 +15,17 @@ Creates a P2SVpnServerConfiguration to associate with a VirtualWan if it doesn't
 ### Create (Default)
 ```
 New-AzP2SVpnServerConfiguration -ResourceGroupName <String> -SubscriptionId <String> -VirtualWanName <String>
- [-Name <String>] [-P2SVpnServerConfigurationParameters <IP2SVpnServerConfiguration>]
+ [-Name <String>] [-P2SVpnServerConfigurationParameter <IP2SVpnServerConfiguration>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzP2SVpnServerConfiguration -InputObject <INetworkIdentity> [-Name <String>] [-Id <String>]
- [-P2SVpnServerConfigRadiusClientRootCertificates <IP2SVpnServerConfigRadiusClientRootCertificate[]>]
- [-P2SVpnServerConfigRadiusServerRootCertificates <IP2SVpnServerConfigRadiusServerRootCertificate[]>]
- [-P2SVpnServerConfigVpnClientRevokedCertificates <IP2SVpnServerConfigVpnClientRevokedCertificate[]>]
- [-P2SVpnServerConfigVpnClientRootCertificates <IP2SVpnServerConfigVpnClientRootCertificate[]>]
+ [-P2SVpnServerConfigRadiusClientRootCertificate <IP2SVpnServerConfigRadiusClientRootCertificate[]>]
+ [-P2SVpnServerConfigRadiusServerRootCertificate <IP2SVpnServerConfigRadiusServerRootCertificate[]>]
+ [-P2SVpnServerConfigVpnClientRevokedCertificate <IP2SVpnServerConfigVpnClientRevokedCertificate[]>]
+ [-P2SVpnServerConfigVpnClientRootCertificate <IP2SVpnServerConfigVpnClientRootCertificate[]>]
  [-PropertiesEtag <String>] [-PropertiesName <String>] [-RadiusServerAddress <String>]
  [-RadiusServerSecret <String>] [-VpnClientIPsecPolicy <IIpsecPolicy[]>]
  [-VpnProtocol <VpnGatewayTunnelingProtocol[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
@@ -36,10 +36,10 @@ New-AzP2SVpnServerConfiguration -InputObject <INetworkIdentity> [-Name <String>]
 ```
 New-AzP2SVpnServerConfiguration -ResourceGroupName <String> -SubscriptionId <String> -VirtualWanName <String>
  -P2SVpnServerConfigurationName <String> [-Name <String>] [-Id <String>]
- [-P2SVpnServerConfigRadiusClientRootCertificates <IP2SVpnServerConfigRadiusClientRootCertificate[]>]
- [-P2SVpnServerConfigRadiusServerRootCertificates <IP2SVpnServerConfigRadiusServerRootCertificate[]>]
- [-P2SVpnServerConfigVpnClientRevokedCertificates <IP2SVpnServerConfigVpnClientRevokedCertificate[]>]
- [-P2SVpnServerConfigVpnClientRootCertificates <IP2SVpnServerConfigVpnClientRootCertificate[]>]
+ [-P2SVpnServerConfigRadiusClientRootCertificate <IP2SVpnServerConfigRadiusClientRootCertificate[]>]
+ [-P2SVpnServerConfigRadiusServerRootCertificate <IP2SVpnServerConfigRadiusServerRootCertificate[]>]
+ [-P2SVpnServerConfigVpnClientRevokedCertificate <IP2SVpnServerConfigVpnClientRevokedCertificate[]>]
+ [-P2SVpnServerConfigVpnClientRootCertificate <IP2SVpnServerConfigVpnClientRootCertificate[]>]
  [-PropertiesEtag <String>] [-PropertiesName <String>] [-RadiusServerAddress <String>]
  [-RadiusServerSecret <String>] [-VpnClientIPsecPolicy <IIpsecPolicy[]>]
  [-VpnProtocol <VpnGatewayTunnelingProtocol[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
@@ -49,7 +49,7 @@ New-AzP2SVpnServerConfiguration -ResourceGroupName <String> -SubscriptionId <Str
 ### CreateViaIdentity
 ```
 New-AzP2SVpnServerConfiguration -InputObject <INetworkIdentity>
- [-P2SVpnServerConfigurationParameters <IP2SVpnServerConfiguration>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-P2SVpnServerConfigurationParameter <IP2SVpnServerConfiguration>] [-DefaultProfile <PSObject>] [-AsJob]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -P2SVpnServerConfigRadiusClientRootCertificates
+### -P2SVpnServerConfigRadiusClientRootCertificate
 Radius client root certificate of P2SVpnServerConfiguration.
 
 ```yaml
@@ -175,7 +175,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -P2SVpnServerConfigRadiusServerRootCertificates
+### -P2SVpnServerConfigRadiusServerRootCertificate
 Radius Server root certificate of P2SVpnServerConfiguration.
 
 ```yaml
@@ -207,7 +207,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -P2SVpnServerConfigurationParameters
+### -P2SVpnServerConfigurationParameter
 P2SVpnServerConfiguration Resource.
 
 ```yaml
@@ -223,7 +223,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -P2SVpnServerConfigVpnClientRevokedCertificates
+### -P2SVpnServerConfigVpnClientRevokedCertificate
 VPN client revoked certificate of P2SVpnServerConfiguration.
 
 ```yaml
@@ -239,7 +239,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -P2SVpnServerConfigVpnClientRootCertificates
+### -P2SVpnServerConfigVpnClientRootCertificate
 VPN client root certificate of P2SVpnServerConfiguration.
 
 ```yaml

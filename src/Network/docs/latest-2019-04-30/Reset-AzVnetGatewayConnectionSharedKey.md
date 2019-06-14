@@ -133,7 +133,7 @@ The virtual network gateway connection reset shared key Name.
 ```yaml
 Type: System.String
 Parameter Sets: Reset, ResetExpanded
-Aliases: VnetGatewayConnectionName
+Aliases: VirtualNetworkGatewayConnectionName, VnetGatewayConnectionName
 
 Required: True
 Position: Named

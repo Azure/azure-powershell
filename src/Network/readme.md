@@ -49,7 +49,8 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.md
-  - $(repo)/specification/network/resource-manager/readme.enable-multi-api.md
+  # - $(repo)/specification/network/resource-manager/readme.enable-multi-api.md
+  - $(this-folder)/resources/specs-used.md
   - $(repo)/specification/network/resource-manager/readme.md
 
 subject-prefix: ''
@@ -493,6 +494,13 @@ directive:
       parameter-name: ExpandResource
   - where:
       verb: Get
+      subject: ExpressRouteCircuitPeeringStat
+      variant: Get
+    set:
+      subject: ExpressRouteCircuitStat
+      variant: Peering
+  - where:
+      verb: Get
       subject: ExpressRouteCircuitArpTable|ExpressRouteCircuitRouteTable|ExpressRouteCircuitRouteTableSummary|ExpressRouteCircuitStat
       parameter-name: CircuitName
     set:
@@ -519,7 +527,7 @@ directive:
     set:
       alias: NetworkWatcherLocation
   - where: # REMOVE BEFORE RELEASE: Unnecessary custom client-side Location implementation
-      subject: ^NetworkWatcher(?!(AvailableProvider|ReachabilityReport))(.*)
+      subject: ^NetworkWatcher(?!(AvailableProvider$|ReachabilityReport$|ConnectionMonitor$))(.+)
       parameter-name: ResourceGroupName
     set:
       alias: Location
@@ -577,6 +585,68 @@ directive:
       parameter-name: Parameter
     set:
       alias: NetworkWatcher
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter + resource ID parameter
+      verb: Get|New
+      subject: ExpressRouteConnection
+      parameter-name: ResourceGroupName
+    set:
+      alias:
+        - ExpressRouteGatewayObject
+        - ParentResourceId
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter + resource ID parameter
+      verb: Get
+      subject: VirtualHubVnetConnection
+      parameter-name: ResourceGroupName
+    set:
+      alias:
+        - ParentObject
+        - ParentResourceId
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter + resource ID parameter
+      verb: Get|New
+      subject: VpnConnection
+      parameter-name: ResourceGroupName
+    set:
+      alias:
+        - ParentObject
+        - ParentResourceId
+  - where:
+      verb: Get|New|Remove
+      subject: VpnConnection
+      parameter-name: GatewayName
+    set:
+      alias: ParentResourceName
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Get
+      subject: ExpressRouteCrossConnectionArpTable|ExpressRouteCrossConnectionPeering|ExpressRouteCrossConnectionRouteTable|ExpressRouteCrossConnectionRouteTableSummary
+      parameter-name: ResourceGroupName
+    set:
+      alias: ExpressRouteCrossConnection
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter + PeerAddressType is in-memory object manipulation
+      verb: Remove
+      subject: ExpressRouteCrossConnectionPeering
+      parameter-name: ResourceGroupName
+    set:
+      alias:
+        - ExpressRouteCrossConnection
+        - PeerAddressType
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Set
+      subject: ExpressRouteCrossConnection
+      parameter-name: Parameter
+    set:
+      alias: ExpressRouteCrossConnection
+  - where:
+      verb: Set
+      subject: ExpressRouteCrossConnection
+      parameter-name: ServiceProviderNote
+    set:
+      alias: ServiceProviderNotes
+  - where:
+      verb: Set
+      subject: ExpressRouteCrossConnection
+      parameter-name: Peering
+    set:
+      alias: Peerings
 
 # Other Fixes
   - where:

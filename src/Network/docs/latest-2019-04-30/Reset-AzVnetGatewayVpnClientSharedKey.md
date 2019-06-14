@@ -153,7 +153,7 @@ The name of the virtual network gateway.
 ```yaml
 Type: System.String
 Parameter Sets: Reset
-Aliases:
+Aliases: VirtualNetworkGatewayName
 
 Required: True
 Position: Named

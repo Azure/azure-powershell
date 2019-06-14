@@ -14,30 +14,16 @@ Creates or updates a route in the specified route table.
 
 ### Update1 (Default)
 ```
-Set-AzRouteTableRoute -ResourceGroupName <String> -SubscriptionId <String> -TableName <String>
- [-Name <String>] [-RouteParameter <IRoute>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded1
-```
-Set-AzRouteTableRoute -InputObject <INetworkIdentity> -NextHopType <RouteNextHopType> [-Name <String>]
- [-AddressPrefix <String>] [-Etag <String>] [-Id <String>] [-NextHopIPAddress <String>]
- [-ProvisioningState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzRouteTableRoute -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -TableName <String>
+ [-RouteParameter <IRoute>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded1
 ```
-Set-AzRouteTableRoute -ResourceGroupName <String> -SubscriptionId <String> -TableName <String>
- -RouteName <String> -NextHopType <RouteNextHopType> [-Name <String>] [-AddressPrefix <String>]
- [-Etag <String>] [-Id <String>] [-NextHopIPAddress <String>] [-ProvisioningState <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity1
-```
-Set-AzRouteTableRoute -InputObject <INetworkIdentity> [-RouteParameter <IRoute>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzRouteTableRoute -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -TableName <String>
+ -RouteName <String> -NextHopType <RouteNextHopType> [-AddressPrefix <String>] [-Etag <String>] [-Id <String>]
+ [-NextHopIPAddress <String>] [-ProvisioningState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,7 +56,7 @@ The destination CIDR to which the route applies.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -118,7 +104,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -134,7 +120,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -145,29 +131,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateViaIdentity1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Name
-The name of the resource that is unique within a resource group.
-This name can be used to access the resource.
+The name of the route.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -184,7 +153,7 @@ Next hop values are only allowed in routes where the next hop type is VirtualApp
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -200,7 +169,7 @@ The type of Azure hop the packet should be sent to.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.RouteNextHopType
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: True
@@ -217,7 +186,7 @@ Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -233,7 +202,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -265,7 +234,7 @@ Route resource
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRoute
-Parameter Sets: Update1, UpdateViaIdentity1
+Parameter Sets: Update1
 Aliases:
 
 Required: False
@@ -282,7 +251,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -298,7 +267,7 @@ The name of the route table.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: (All)
 Aliases: RouteTableName
 
 Required: True
@@ -348,8 +317,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRoute
-
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
 ## OUTPUTS
 

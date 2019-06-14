@@ -25,18 +25,6 @@ Set-AzVnetGatewayConnectionSharedKey -Name <String> -ResourceGroupName <String> 
  -Value <String> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### SetViaIdentityExpanded1
-```
-Set-AzVnetGatewayConnectionSharedKey -InputObject <INetworkIdentity> -Value <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### SetViaIdentity1
-```
-Set-AzVnetGatewayConnectionSharedKey -InputObject <INetworkIdentity> [-Parameter <IConnectionSharedKey>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual network gateway connection shared key for passed virtual network gateway connection in the specified resource group through Network resource provider.
 
@@ -94,29 +82,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: SetViaIdentityExpanded1, SetViaIdentity1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Name
 The virtual network gateway connection name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Set1, SetExpanded1
-Aliases: VnetGatewayConnectionName
+Parameter Sets: (All)
+Aliases: VirtualNetworkGatewayConnectionName, VnetGatewayConnectionName
 
 Required: True
 Position: Named
@@ -131,7 +103,7 @@ Response for GetConnectionSharedKey API service call
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IConnectionSharedKey
-Parameter Sets: Set1, SetViaIdentity1
+Parameter Sets: Set1
 Aliases:
 
 Required: False
@@ -147,7 +119,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Set1, SetExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -164,7 +136,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Set1, SetExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -180,7 +152,7 @@ The virtual network connection shared key value.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded1, SetViaIdentityExpanded1
+Parameter Sets: SetExpanded1
 Aliases:
 
 Required: True
@@ -230,8 +202,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IConnectionSharedKey
-
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
 ## OUTPUTS
 

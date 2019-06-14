@@ -169,7 +169,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Get, GetExpanded
-Aliases:
+Aliases: Location
 
 Required: True
 Position: Named

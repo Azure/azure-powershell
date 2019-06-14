@@ -106,7 +106,7 @@ Whether the VMs in the local virtual network space would be able to access the V
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
-Aliases:
+Aliases: AllowVirtualNetworkAccess
 
 Required: False
 Position: Named
@@ -268,7 +268,7 @@ Resource ID.
 ```yaml
 Type: System.String
 Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
-Aliases:
+Aliases: RemoteVirtualNetworkId
 
 Required: False
 Position: Named
@@ -336,7 +336,7 @@ The name of the virtual network.
 ```yaml
 Type: System.String
 Parameter Sets: Create1, CreateExpanded1
-Aliases:
+Aliases: VirtualNetworkName
 
 Required: True
 Position: Named
@@ -352,7 +352,7 @@ The name of the peering.
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded1
-Aliases:
+Aliases: VirtualNetworkPeeringName
 
 Required: True
 Position: Named
@@ -368,7 +368,7 @@ Peerings in a virtual network resource.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkPeering
 Parameter Sets: Create1, CreateViaIdentity1
-Aliases:
+Aliases: VirtualNetworkPeeringParameter
 
 Required: False
 Position: Named

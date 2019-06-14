@@ -169,7 +169,7 @@ The name of the network watcher resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: NetworkWatcherLocation
 
 Required: True
 Position: Named

@@ -25,17 +25,17 @@ New-AzExpressRouteCircuitPeering -CircuitName <String> -PeeringName <String> -Re
  -SubscriptionId <String> [-AdvertisedCommunity <String[]>] [-AdvertisedPublicPrefix <String[]>]
  [-AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>] [-AzureAsn <Int32>]
  [-Connection <IExpressRouteCircuitConnection[]>] [-CustomerAsn <Int32>] [-GatewayManagerEtag <String>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunities <String[]>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixes <String[]>]
+ [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunity <String[]>]
+ [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefix <String[]>]
  [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
  [-IPv6PeeringConfigMicrosoftPeeringConfigCustomerAsn <Int32>]
  [-IPv6PeeringConfigMicrosoftPeeringConfigLegacyMode <Int32>]
  [-IPv6PeeringConfigMicrosoftPeeringConfigRoutingRegistryName <String>]
  [-IPv6PeeringConfigPrimaryPeerAddressPrefix <String>] [-IPv6PeeringConfigRouteFilterId <String>]
  [-IPv6PeeringConfigRouteFilterLocation <String>]
- [-IPv6PeeringConfigRouteFilterPropertiesPeerings <IExpressRouteCircuitPeering[]>]
- [-IPv6PeeringConfigRouteFilterPropertiesRules <IRouteFilterRule[]>]
- [-IPv6PeeringConfigRouteFilterTags <IResourceTags>] [-IPv6PeeringConfigSecondaryPeerAddressPrefix <String>]
+ [-IPv6PeeringConfigRouteFilterPropertiesPeering <IExpressRouteCircuitPeering[]>]
+ [-IPv6PeeringConfigRouteFilterPropertiesRule <IRouteFilterRule[]>]
+ [-IPv6PeeringConfigRouteFilterTag <IResourceTags>] [-IPv6PeeringConfigSecondaryPeerAddressPrefix <String>]
  [-IPv6PeeringConfigState <ExpressRouteCircuitPeeringState>] [-Id <String>] [-LastModifiedBy <String>]
  [-LegacyMode <Int32>] [-Location <String>] [-Name <String>] [-PeerAsn <Int64>]
  [-PeeringType <ExpressRoutePeeringType>] [-PrimaryAzurePort <String>] [-PrimaryPeerAddressPrefix <String>]
@@ -54,17 +54,17 @@ New-AzExpressRouteCircuitPeering -InputObject <INetworkIdentity> [-AdvertisedCom
  [-AdvertisedPublicPrefix <String[]>]
  [-AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>] [-AzureAsn <Int32>]
  [-Connection <IExpressRouteCircuitConnection[]>] [-CustomerAsn <Int32>] [-GatewayManagerEtag <String>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunities <String[]>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixes <String[]>]
+ [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunity <String[]>]
+ [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefix <String[]>]
  [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
  [-IPv6PeeringConfigMicrosoftPeeringConfigCustomerAsn <Int32>]
  [-IPv6PeeringConfigMicrosoftPeeringConfigLegacyMode <Int32>]
  [-IPv6PeeringConfigMicrosoftPeeringConfigRoutingRegistryName <String>]
  [-IPv6PeeringConfigPrimaryPeerAddressPrefix <String>] [-IPv6PeeringConfigRouteFilterId <String>]
  [-IPv6PeeringConfigRouteFilterLocation <String>]
- [-IPv6PeeringConfigRouteFilterPropertiesPeerings <IExpressRouteCircuitPeering[]>]
- [-IPv6PeeringConfigRouteFilterPropertiesRules <IRouteFilterRule[]>]
- [-IPv6PeeringConfigRouteFilterTags <IResourceTags>] [-IPv6PeeringConfigSecondaryPeerAddressPrefix <String>]
+ [-IPv6PeeringConfigRouteFilterPropertiesPeering <IExpressRouteCircuitPeering[]>]
+ [-IPv6PeeringConfigRouteFilterPropertiesRule <IRouteFilterRule[]>]
+ [-IPv6PeeringConfigRouteFilterTag <IResourceTags>] [-IPv6PeeringConfigSecondaryPeerAddressPrefix <String>]
  [-IPv6PeeringConfigState <ExpressRouteCircuitPeeringState>] [-Id <String>] [-LastModifiedBy <String>]
  [-LegacyMode <Int32>] [-Location <String>] [-Name <String>] [-PeerAsn <Int64>]
  [-PeeringType <ExpressRoutePeeringType>] [-PrimaryAzurePort <String>] [-PrimaryPeerAddressPrefix <String>]
@@ -303,7 +303,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunities
+### -IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunity
 The communities of bgp peering.
 Specified for microsoft peering
 
@@ -320,7 +320,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixes
+### -IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefix
 The reference of AdvertisedPublicPrefixes.
 
 ```yaml
@@ -449,7 +449,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigRouteFilterPropertiesPeerings
+### -IPv6PeeringConfigRouteFilterPropertiesPeering
 A collection of references to express route circuit peerings.
 
 ```yaml
@@ -465,7 +465,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigRouteFilterPropertiesRules
+### -IPv6PeeringConfigRouteFilterPropertiesRule
 Collection of RouteFilterRules contained within a route filter.
 
 ```yaml
@@ -481,7 +481,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigRouteFilterTags
+### -IPv6PeeringConfigRouteFilterTag
 Resource tags.
 
 ```yaml

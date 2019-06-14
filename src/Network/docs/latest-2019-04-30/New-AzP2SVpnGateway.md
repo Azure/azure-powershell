@@ -15,7 +15,7 @@ Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the exist
 ### Create (Default)
 ```
 New-AzP2SVpnGateway -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-P2SVpnGatewayParameters <IP2SVpnGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-P2SVpnGatewayParameter <IP2SVpnGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ New-AzP2SVpnGateway -InputObject <INetworkIdentity> [-CustomRouteAddressPrefix <
 
 ### CreateViaIdentity
 ```
-New-AzP2SVpnGateway -InputObject <INetworkIdentity> [-P2SVpnGatewayParameters <IP2SVpnGateway>]
+New-AzP2SVpnGateway -InputObject <INetworkIdentity> [-P2SVpnGatewayParameter <IP2SVpnGateway>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -181,7 +181,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -P2SVpnGatewayParameters
+### -P2SVpnGatewayParameter
 P2SVpnGateway Resource.
 
 ```yaml

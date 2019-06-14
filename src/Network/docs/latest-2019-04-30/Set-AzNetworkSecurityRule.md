@@ -14,41 +14,22 @@ Creates or updates a security rule in the specified network security group.
 
 ### Update (Default)
 ```
-Set-AzNetworkSecurityRule -NetworkSecurityGroupName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Name <String>] [-SecurityRuleParameter <ISecurityRule>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Set-AzNetworkSecurityRule -InputObject <INetworkIdentity> -Access <SecurityRuleAccess>
- -Direction <SecurityRuleDirection> -Protocol <SecurityRuleProtocol> [-Name <String>] [-Description <String>]
- [-DestinationAddressPrefix <String>] [-DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]
- [-DestinationPortRange <String>] [-Etag <String>] [-Id <String>] [-Priority <Int32>]
- [-PropertiesDestinationAddressPrefixes <String[]>] [-PropertiesDestinationPortRanges <String[]>]
- [-PropertiesSourceAddressPrefixes <String[]>] [-PropertiesSourcePortRanges <String[]>]
- [-ProvisioningState <String>] [-SourceAddressPrefix <String>]
- [-SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>] [-SourcePortRange <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzNetworkSecurityRule -Name <String> -NetworkSecurityGroupName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> [-SecurityRuleParameter <ISecurityRule>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Set-AzNetworkSecurityRule -NetworkSecurityGroupName <String> -ResourceGroupName <String>
+Set-AzNetworkSecurityRule -Name <String> -NetworkSecurityGroupName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -SecurityRuleName <String> -Access <SecurityRuleAccess>
- -Direction <SecurityRuleDirection> -Protocol <SecurityRuleProtocol> [-Name <String>] [-Description <String>]
+ -Direction <SecurityRuleDirection> -Protocol <SecurityRuleProtocol> [-Description <String>]
  [-DestinationAddressPrefix <String>] [-DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]
  [-DestinationPortRange <String>] [-Etag <String>] [-Id <String>] [-Priority <Int32>]
  [-PropertiesDestinationAddressPrefixes <String[]>] [-PropertiesDestinationPortRanges <String[]>]
  [-PropertiesSourceAddressPrefixes <String[]>] [-PropertiesSourcePortRanges <String[]>]
  [-ProvisioningState <String>] [-SourceAddressPrefix <String>]
  [-SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>] [-SourcePortRange <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Set-AzNetworkSecurityRule -InputObject <INetworkIdentity> [-SecurityRuleParameter <ISecurityRule>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -82,7 +63,7 @@ The network traffic is allowed or denied.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.SecurityRuleAccess
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -131,7 +112,7 @@ Restricted to 140 chars.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -150,7 +131,7 @@ Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can al
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -166,7 +147,7 @@ The application security group specified as destination.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IApplicationSecurityGroup[]
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -184,7 +165,7 @@ Asterisk '*' can also be used to match all ports.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -201,7 +182,7 @@ The direction specifies if rule will be evaluated on incoming or outgoing traffi
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.SecurityRuleDirection
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -217,7 +198,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -233,7 +214,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -244,29 +225,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Name
-The name of the resource that is unique within a resource group.
-This name can be used to access the resource.
+The name of the security rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -282,7 +246,7 @@ The name of the network security group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -301,7 +265,7 @@ The lower the priority number, the higher the priority of the rule.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -318,7 +282,7 @@ CIDR or destination IP ranges.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -334,7 +298,7 @@ The destination port ranges.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -350,7 +314,7 @@ The CIDR or source IP ranges.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -366,7 +330,7 @@ The source port ranges.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -383,7 +347,7 @@ Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.SecurityRuleProtocol
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -400,7 +364,7 @@ Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -416,7 +380,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -448,7 +412,7 @@ Network security rule.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityRule
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: Update
 Aliases:
 
 Required: False
@@ -468,7 +432,7 @@ If this is an ingress rule, specifies where network traffic originates from.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -484,7 +448,7 @@ The application security group specified as source.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IApplicationSecurityGroup[]
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -502,7 +466,7 @@ Asterisk '*' can also be used to match all ports.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -519,7 +483,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -569,8 +533,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityRule
-
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
 ## OUTPUTS
 

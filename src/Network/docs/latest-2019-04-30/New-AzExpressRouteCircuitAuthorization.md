@@ -24,14 +24,14 @@ New-AzExpressRouteCircuitAuthorization -AuthorizationName <String> -CircuitName 
 ```
 New-AzExpressRouteCircuitAuthorization -AuthorizationName <String> -CircuitName <String>
  -ResourceGroupName <String> -SubscriptionId <String> [-AuthorizationKey <String>]
- [-AuthorizationUseStatu <AuthorizationUseStatus>] [-Id <String>] [-Name <String>]
+ [-AuthorizationUseStatus <AuthorizationUseStatus>] [-Id <String>] [-Name <String>]
  [-ProvisioningState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzExpressRouteCircuitAuthorization -InputObject <INetworkIdentity> [-AuthorizationKey <String>]
- [-AuthorizationUseStatu <AuthorizationUseStatus>] [-Id <String>] [-Name <String>]
+ [-AuthorizationUseStatus <AuthorizationUseStatus>] [-Id <String>] [-Name <String>]
  [-ProvisioningState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -AuthorizationUseStatu
+### -AuthorizationUseStatus
 AuthorizationUseStatus.
 Possible values are: 'Available' and 'InUse'.
 
@@ -252,7 +252,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Create, CreateExpanded
-Aliases:
+Aliases: ExpressRouteCircuit
 
 Required: True
 Position: Named

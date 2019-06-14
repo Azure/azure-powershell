@@ -14,32 +14,18 @@ Creates or updates a service endpoint policy definition in the specified service
 
 ### Update (Default)
 ```
-Set-AzServiceEndpointPolicyDefinition -ResourceGroupName <String> -ServiceEndpointPolicyName <String>
- -SubscriptionId <String> [-Name <String>]
+Set-AzServiceEndpointPolicyDefinition -Name <String> -ResourceGroupName <String>
+ -ServiceEndpointPolicyName <String> -SubscriptionId <String>
  [-ServiceEndpointPolicyDefinition <IServiceEndpointPolicyDefinition>] [-DefaultProfile <PSObject>] [-AsJob]
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Set-AzServiceEndpointPolicyDefinition -InputObject <INetworkIdentity> [-Name <String>] [-Description <String>]
- [-Etag <String>] [-Id <String>] [-Service <String>] [-ServiceResource <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Set-AzServiceEndpointPolicyDefinition -ResourceGroupName <String> -ServiceEndpointPolicyName <String>
- -SubscriptionId <String> -ServiceEndpointPolicyDefinitionName <String> [-Name <String>]
+Set-AzServiceEndpointPolicyDefinition -Name <String> -ResourceGroupName <String>
+ -ServiceEndpointPolicyName <String> -SubscriptionId <String> -ServiceEndpointPolicyDefinitionName <String>
  [-Description <String>] [-Etag <String>] [-Id <String>] [-Service <String>] [-ServiceResource <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Set-AzServiceEndpointPolicyDefinition -InputObject <INetworkIdentity>
- [-ServiceEndpointPolicyDefinition <IServiceEndpointPolicyDefinition>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,7 +91,7 @@ Restricted to 140 chars.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -121,7 +107,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -137,7 +123,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -148,29 +134,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Name
-The name of the resource that is unique within a resource group.
-This name can be used to access the resource.
+The name of the service endpoint policy definition name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -186,7 +155,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -202,7 +171,7 @@ Service endpoint name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -218,7 +187,7 @@ Service Endpoint policy definitions.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IServiceEndpointPolicyDefinition
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: Update
 Aliases:
 
 Required: False
@@ -250,7 +219,7 @@ The name of the service endpoint policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -266,7 +235,7 @@ A list of service resources.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -283,7 +252,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -333,8 +302,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IServiceEndpointPolicyDefinition
-
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
 ## OUTPUTS
 

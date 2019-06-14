@@ -382,7 +382,7 @@ A list of peerings in a Virtual Network.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkPeering[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: VirtualNetworkPeering
 
 Required: False
 Position: Named

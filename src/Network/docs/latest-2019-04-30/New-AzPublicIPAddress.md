@@ -25,13 +25,12 @@ New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId
  [-DdosCustomPolicyId <String>] [-DdosSettingProtectionCoverage <DdosSettingsProtectionCoverage>]
  [-DnsSettingDomainNameLabel <String>] [-DnsSettingFqdn <String>] [-DnsSettingReverseFqdn <String>]
  [-Etag <String>] [-IPAddress <String>] [-IPConfigurationEtag <String>] [-IPConfigurationId <String>]
- [-IPConfigurationName <String>] [-IPConfigurationPropertiesProvisioningState <String>] [-IPTag <IIPTag[]>]
- [-Id <String>] [-IdleTimeoutInMinute <Int32>] [-Location <String>] [-PrivateIPAddress <String>]
- [-PrivateIPAllocationMethod <IPAllocationMethod>] [-ProvisioningState <String>]
- [-PublicIPAddress <IPublicIPAddress>] [-PublicIPAddressVersion <IPVersion>]
+ [-IPConfigurationName <String>] [-IPConfigurationProperty <IIPConfigurationPropertiesFormat>]
+ [-IPTag <IIPTag[]>] [-Id <String>] [-IdleTimeoutInMinute <Int32>] [-Location <String>]
+ [-ProvisioningState <String>] [-PublicIPAddressVersion <IPVersion>]
  [-PublicIPAllocationMethod <IPAllocationMethod>] [-PublicIPPrefixId <String>] [-ResourceGuid <String>]
- [-SkuName <PublicIPAddressSkuName>] [-Subnet <ISubnet>] [-Tag <IResourceTags>] [-Zone <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SkuName <PublicIPAddressSkuName>] [-Tag <IResourceTags>] [-Zone <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -40,13 +39,12 @@ New-AzPublicIPAddress -InputObject <INetworkIdentity> [-DdosCustomPolicyId <Stri
  [-DdosSettingProtectionCoverage <DdosSettingsProtectionCoverage>] [-DnsSettingDomainNameLabel <String>]
  [-DnsSettingFqdn <String>] [-DnsSettingReverseFqdn <String>] [-Etag <String>] [-IPAddress <String>]
  [-IPConfigurationEtag <String>] [-IPConfigurationId <String>] [-IPConfigurationName <String>]
- [-IPConfigurationPropertiesProvisioningState <String>] [-IPTag <IIPTag[]>] [-Id <String>]
- [-IdleTimeoutInMinute <Int32>] [-Location <String>] [-PrivateIPAddress <String>]
- [-PrivateIPAllocationMethod <IPAllocationMethod>] [-ProvisioningState <String>]
- [-PublicIPAddress <IPublicIPAddress>] [-PublicIPAddressVersion <IPVersion>]
- [-PublicIPAllocationMethod <IPAllocationMethod>] [-PublicIPPrefixId <String>] [-ResourceGuid <String>]
- [-SkuName <PublicIPAddressSkuName>] [-Subnet <ISubnet>] [-Tag <IResourceTags>] [-Zone <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IPConfigurationProperty <IIPConfigurationPropertiesFormat>] [-IPTag <IIPTag[]>] [-Id <String>]
+ [-IdleTimeoutInMinute <Int32>] [-Location <String>] [-ProvisioningState <String>]
+ [-PublicIPAddressVersion <IPVersion>] [-PublicIPAllocationMethod <IPAllocationMethod>]
+ [-PublicIPPrefixId <String>] [-ResourceGuid <String>] [-SkuName <PublicIPAddressSkuName>]
+ [-Tag <IResourceTags>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -327,12 +325,11 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPConfigurationPropertiesProvisioningState
-Gets the provisioning state of the public IP resource.
-Possible values are: 'Updating', 'Deleting', and 'Failed'.
+### -IPConfigurationProperty
+Properties of the IP configuration
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IIPConfigurationPropertiesFormat
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -408,60 +405,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PrivateIPAddress
-The private IP address of the IP configuration.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PrivateIPAllocationMethod
-The private IP address allocation method.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPAllocationMethod
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ProvisioningState
 The provisioning state of the PublicIP resource.
 Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PublicIPAddress
-The reference of the public IP resource.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPublicIPAddress
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -558,22 +507,6 @@ Name of a public IP address SKU.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.PublicIPAddressSkuName
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Subnet
-The reference of the subnet resource.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISubnet
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 

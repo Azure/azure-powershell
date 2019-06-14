@@ -696,7 +696,7 @@ The reference to Virtual Network Taps.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetworkTap[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: VirtualNetworkTap
 
 Required: False
 Position: Named

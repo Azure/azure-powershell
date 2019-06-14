@@ -87,7 +87,7 @@ The name of the virtual network gateway.
 ```yaml
 Type: System.String
 Parameter Sets: Supported
-Aliases: VnetGatewayName
+Aliases: VirtualNetworkGatewayName, VnetGatewayName
 
 Required: True
 Position: Named

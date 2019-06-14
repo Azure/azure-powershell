@@ -14,28 +14,14 @@ Creates or updates a subnet in the specified virtual network.
 
 ### Update1 (Default)
 ```
-Set-AzVnetSubnet -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String> [-Name <String>]
+Set-AzVnetSubnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
  [-SubnetParameter <ISubnet>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded1
-```
-Set-AzVnetSubnet -InputObject <INetworkIdentity> [-Name <String>] [-AddressPrefix <String>]
- [-DefaultSecurityRule <ISecurityRule[]>] [-DisableBgpRoutePropagation] [-Etag <String>] [-Id <String>]
- [-NetworkSecurityGroupEtag <String>] [-NetworkSecurityGroupId <String>]
- [-NetworkSecurityGroupLocation <String>] [-NetworkSecurityGroupPropertiesProvisioningState <String>]
- [-NetworkSecurityGroupTag <IResourceTags>] [-ProvisioningState <String>] [-ResourceGuid <String>]
- [-ResourceNavigationLink <IResourceNavigationLink[]>] [-Route <IRoute[]>] [-RouteTableEtag <String>]
- [-RouteTableId <String>] [-RouteTableLocation <String>] [-RouteTablePropertiesProvisioningState <String>]
- [-RouteTableTag <IResourceTags>] [-SecurityRule <ISecurityRule[]>]
- [-ServiceEndpoint <IServiceEndpointPropertiesFormat[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded1
 ```
-Set-AzVnetSubnet -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String> -SubnetName <String>
- [-Name <String>] [-AddressPrefix <String>] [-DefaultSecurityRule <ISecurityRule[]>]
+Set-AzVnetSubnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
+ -SubnetName <String> [-AddressPrefix <String>] [-DefaultSecurityRule <ISecurityRule[]>]
  [-DisableBgpRoutePropagation] [-Etag <String>] [-Id <String>] [-NetworkSecurityGroupEtag <String>]
  [-NetworkSecurityGroupId <String>] [-NetworkSecurityGroupLocation <String>]
  [-NetworkSecurityGroupPropertiesProvisioningState <String>] [-NetworkSecurityGroupTag <IResourceTags>]
@@ -44,12 +30,6 @@ Set-AzVnetSubnet -ResourceGroupName <String> -SubscriptionId <String> -VnetName 
  [-RouteTablePropertiesProvisioningState <String>] [-RouteTableTag <IResourceTags>]
  [-SecurityRule <ISecurityRule[]>] [-ServiceEndpoint <IServiceEndpointPropertiesFormat[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity1
-```
-Set-AzVnetSubnet -InputObject <INetworkIdentity> [-SubnetParameter <ISubnet>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,7 +62,7 @@ The address prefix for the subnet.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -130,7 +110,7 @@ The default security rules of network security group.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule[]
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -147,7 +127,7 @@ True means disable.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -163,7 +143,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -179,7 +159,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -190,29 +170,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateViaIdentity1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Name
-The name of the resource that is unique within a resource group.
-This name can be used to access the resource.
+The name of the subnet.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -228,7 +191,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -244,7 +207,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -260,7 +223,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -277,7 +240,7 @@ Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -293,7 +256,7 @@ Resource tags.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -309,7 +272,7 @@ The provisioning state of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -325,7 +288,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -341,7 +304,7 @@ The resource GUID property of the network security group resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -357,7 +320,7 @@ Gets an array of references to the external resources using subnet.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceNavigationLink[]
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -373,7 +336,7 @@ Collection of routes contained within a route table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRoute[]
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -389,7 +352,7 @@ Gets a unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -405,7 +368,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -421,7 +384,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -438,7 +401,7 @@ Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -454,7 +417,7 @@ Resource tags.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -470,7 +433,7 @@ A collection of security rules of the network security group.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule[]
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -486,7 +449,7 @@ An array of service endpoints.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IServiceEndpointPropertiesFormat[]
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -518,7 +481,7 @@ Subnet in a virtual network resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISubnet
-Parameter Sets: Update1, UpdateViaIdentity1
+Parameter Sets: Update1
 Aliases:
 
 Required: False
@@ -535,7 +498,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -551,8 +514,8 @@ The name of the virtual network.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
-Aliases:
+Parameter Sets: (All)
+Aliases: VirtualNetworkName
 
 Required: True
 Position: Named
@@ -601,8 +564,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISubnet
-
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
 ## OUTPUTS
 

@@ -125,7 +125,7 @@ The name of the resource group containing Network Watcher.
 ```yaml
 Type: System.String
 Parameter Sets: List, Get
-Aliases:
+Aliases: NetworkWatcher
 
 Required: True
 Position: Named
