@@ -7,14 +7,11 @@ using Microsoft.Azure.Commands.DataBox.Common;
 using Microsoft.Azure.Management.DataBox.Models;
 using Microsoft.Azure.Management.DataBox;
 using Microsoft.Rest.Azure;
-using Microsoft.Rest;
-using Microsoft.Rest.Azure.Authentication;
 using System.Threading;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace MMicrosoft.Azure.Commands.DataBox.Common
 {
-    [Cmdlet(VerbsCommon.Get, "AzDataBoxJobs", DefaultParameterSetName = ListParameterSet)]//, OutputType(typeof(IList<JobResource>))]
+    [Cmdlet(VerbsCommon.Get, "AzDataBoxJobs", DefaultParameterSetName = ListParameterSet), OutputType(typeof(JobResource))]
     public class GetDataBoxJobs : AzureDataBoxCmdletBase
     {
         private const string ListParameterSet = "ListParameterSet";
@@ -39,15 +36,15 @@ namespace MMicrosoft.Azure.Commands.DataBox.Common
 
         public override void ExecuteCmdlet()
         {
-            /*if (this.IsParameterBound(c => c.ResourceId))
-            {
-                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
-                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.Name = resourceIdentifier.ResourceName;
-            }*/
+            //if (this.IsParameterBound(c => c.ResourceId))
+            //{
+            //    var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+            //    this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+            //    this.Name = resourceIdentifier.ResourceName;
+            //}
 
             // Initializes a new instance of the DataBoxManagementClient class.
-            //DataBoxManagementClient dataBoxManagementClient = InitializeDataBoxClient();
+
             this.DataBoxManagementClient.SubscriptionId = "05b5dd1c-793d-41de-be9f-6f9ed142f695";
             if (Name != null && string.IsNullOrWhiteSpace(Name))
             {
@@ -68,7 +65,6 @@ namespace MMicrosoft.Azure.Commands.DataBox.Common
             {
                 IPage<JobResource> jobPageList = null;
                 List<JobResource> result = new List<JobResource>();
-                //var result = this.MySDKClient.TopLevelResource.ListByResourceGroup(this.ResourceGroupName).Select(r => new PSTopLevelResource(r));
                 
                 do
                 {
@@ -93,15 +89,6 @@ namespace MMicrosoft.Azure.Commands.DataBox.Common
             }
             else
             {
-
-                //var result = this.DataBoxManagementClient.Jobs.List().Select(r => new PSTopLevelResource(r));
-                //var result = this.DataBoxManagementClient.Jobs.List().ToArray();
-                //DataBoxManagementClient dataBoxManagementClient = InitializeDataBoxClient();
-                //var result = dataBoxManagementClient.Jobs.List().ToList();
-                //WriteObject(result.Count.ToString());
-                
-                //WriteObject(this.DataBoxManagementClient.SubscriptionId.ToString());
-                //WriteObject(this.DataBoxManagementClient.Jobs.List().Count());
                  IPage<JobResource> jobPageList = null;
                  List<JobResource> result = new List<JobResource>();
 
@@ -119,51 +106,13 @@ namespace MMicrosoft.Azure.Commands.DataBox.Common
                                          this.DataBoxManagementClient.Jobs,
                                          jobPageList.NextPageLink);
                      }
-
-                    // WriteObject(jobPageList.ToList());
+                   
                      result.AddRange(jobPageList.ToList());
 
                  } while (!(string.IsNullOrEmpty(jobPageList.NextPageLink)));
-                 /*foreach (var job in result)
-                 {
-                    
-                     WriteObject("Name : " + job.Name + "\t Status : " + job.Status + "\t Stage : " + job.Details?.JobStages.Count);
-                 }
-                WriteObject("Total No of Jobs : " + result.Count);*/
+
                 WriteObject(result, true);
             }
-           // WriteObject("Finished Executing Cmdlet");
-        }
-
-        private static DataBoxManagementClient InitializeDataBoxClient()
-        {
-            const string prodAuthenticationEndpoint = "https://login.windows.net/";
-            const string prodAzureServiceEndpoint = "https://management.core.windows.net/";
-            SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
-
-            TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
-            SubscriptionId = "05b5dd1c-793d-41de-be9f-6f9ed142f695";
-
-            ServiceClientCredentials creds = UserTokenProvider.LoginByDeviceCodeAsync(
-                "1950a258-227b-4e31-a9cf-717495945fc2", TenantId, new ActiveDirectoryServiceSettings
-                {
-                    AuthenticationEndpoint = new Uri(prodAuthenticationEndpoint),
-                    TokenAudience = new Uri(prodAzureServiceEndpoint),
-                    ValidateAuthority = true
-                }, DisplayDeviceCode).GetAwaiter().GetResult();
-
-            var dataBoxManagementClient = new DataBoxManagementClient(creds)
-            {
-                SubscriptionId = SubscriptionId
-            };
-
-            return dataBoxManagementClient;
-        }
-
-        private static bool DisplayDeviceCode(DeviceCodeResult a)
-        {
-            Console.WriteLine($"Go to URL - {a.VerificationUrl} and enter code {a.UserCode}");
-            return true;
         }
     }
 

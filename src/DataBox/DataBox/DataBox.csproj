@@ -12,14 +12,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.DataBox" Version="1.0.0" />
     <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="4.3.0" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.4.0" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication">
-      <HintPath>C:\Users\t-irali\Documents\Visual Studio 2017\Projects\Test-Cmdlet\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.3.4\lib\net461\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>
