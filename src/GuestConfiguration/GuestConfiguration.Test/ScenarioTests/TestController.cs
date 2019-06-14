@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests
 
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Management.GuestConfiguration;
-    using Microsoft.Azure.Management.PolicyInsights;
-    using Microsoft.Azure.Management.PolicyInsights.Models;
+    using Microsoft.Azure.Management.PolicyInsights_2018_04;
+    using Microsoft.Azure.Management.PolicyInsights_2018_04.Models;
     using Microsoft.Azure.Test.HttpRecorder;
     using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;

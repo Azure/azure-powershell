@@ -30,8 +30,8 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
     using Microsoft.Azure.Commands.GuestConfiguration.Models;
     using Microsoft.Azure.Management.GuestConfiguration;
     using Microsoft.Azure.Management.GuestConfiguration.Models;
-    using Microsoft.Azure.Management.PolicyInsights;
-    using Microsoft.Azure.Management.PolicyInsights.Models;    
+    using Microsoft.Azure.Management.PolicyInsights_2018_04;
+    using Microsoft.Azure.Management.PolicyInsights_2018_04.Models;
     using GuestConfigurationErrorResponseException = Management.GuestConfiguration.Models.ErrorResponseException;
     using StringResources = Microsoft.Azure.Commands.GuestConfiguration.Properties.Resources;
     using ResourceManagerErrorResponseException = Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models.ErrorResponseException;
@@ -208,9 +208,9 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Common
                     queryOptions.OrderBy = "Timestamp desc";
                     queryOptions.Top = 1;
                     PolicyStatesQueryResults policyDbResults = PolicyInsightsClient.PolicyStates.ListQueryResultsForPolicySetDefinition("latest", DefaultContext.Subscription.Id, gcPolicyAssignment.PolicySetDefinitionName, queryOptions);
-                    if (policyDbResults.Odatacount > 0 && policyDbResults.Value[0].ComplianceState == "NonCompliant")
+                    if (policyDbResults.Odatacount > 0 && policyDbResults.Value[0].IsCompliant.HasValue && !policyDbResults.Value[0].IsCompliant.Value)
                     {
-                        policyDetailed.ComplianceStatus = policyDbResults.Value[0].ComplianceState;
+                        policyDetailed.ComplianceStatus = "NonCompliant";
                     }
                     gcPolicyAssignmentReportList.Add(policyDetailed);
                 }
