@@ -56,7 +56,6 @@ namespace MMicrosoft.Azure.Commands.DataBox.Common
 
             if (!string.IsNullOrEmpty(this.Name))
             {
-                WriteObject("Getting the job with specified name...");
                 List<JobResource> result = new List<JobResource>();
                 result.Add(JobsOperationsExtensions.Get(
                                 this.DataBoxManagementClient.Jobs,
@@ -67,7 +66,6 @@ namespace MMicrosoft.Azure.Commands.DataBox.Common
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                WriteObject("Getting all the jobs under the specified resource group...");
                 IPage<JobResource> jobPageList = null;
                 List<JobResource> result = new List<JobResource>();
                 //var result = this.MySDKClient.TopLevelResource.ListByResourceGroup(this.ResourceGroupName).Select(r => new PSTopLevelResource(r));
@@ -95,7 +93,6 @@ namespace MMicrosoft.Azure.Commands.DataBox.Common
             }
             else
             {
-                WriteObject("Getting all the jobs...");
 
                 //var result = this.DataBoxManagementClient.Jobs.List().Select(r => new PSTopLevelResource(r));
                 //var result = this.DataBoxManagementClient.Jobs.List().ToArray();
@@ -127,12 +124,13 @@ namespace MMicrosoft.Azure.Commands.DataBox.Common
                      result.AddRange(jobPageList.ToList());
 
                  } while (!(string.IsNullOrEmpty(jobPageList.NextPageLink)));
-                 foreach (var job in result)
+                 /*foreach (var job in result)
                  {
-                     WriteObject("Name : " + job.Name + "\t Status : " + job.Status);
+                    
+                     WriteObject("Name : " + job.Name + "\t Status : " + job.Status + "\t Stage : " + job.Details?.JobStages.Count);
                  }
-                WriteObject("Total No of Jobs : " + result.Count);
-                //WriteObject(result, true);
+                WriteObject("Total No of Jobs : " + result.Count);*/
+                WriteObject(result, true);
             }
            // WriteObject("Finished Executing Cmdlet");
         }
