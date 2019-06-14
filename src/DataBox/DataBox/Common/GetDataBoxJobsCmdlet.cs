@@ -34,6 +34,15 @@ namespace MMicrosoft.Azure.Commands.DataBox.Common
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = ListParameterSet )]
+        public SwitchParameter Completed { get; set; } = false;
+
+        [Parameter(Mandatory = false, ParameterSetName = ListParameterSet)]
+        public SwitchParameter Cancelled { get; set; } = false;
+
+        [Parameter(Mandatory = false, ParameterSetName = ListParameterSet)]
+        public SwitchParameter Aborted { get; set; } = false;
+
         public override void ExecuteCmdlet()
         {
             //if (this.IsParameterBound(c => c.ResourceId))
@@ -82,7 +91,20 @@ namespace MMicrosoft.Azure.Commands.DataBox.Common
                                         jobPageList.NextPageLink);
                     }
 
-                    result.AddRange(jobPageList.ToList());
+                    if (Completed || Cancelled || Aborted)
+                    {
+                        foreach (var job in jobPageList)
+                        {
+                            if ((Completed && job.Status == StageName.Completed) || (Cancelled && job.Status == StageName.Cancelled) || (Aborted && job.Status == StageName.Aborted))
+                            {
+                                result.Add(job);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        result.AddRange(jobPageList.ToList());
+                    }
 
                 } while (!(string.IsNullOrEmpty(jobPageList.NextPageLink)));
                 WriteObject(result, true);
@@ -106,10 +128,22 @@ namespace MMicrosoft.Azure.Commands.DataBox.Common
                                          this.DataBoxManagementClient.Jobs,
                                          jobPageList.NextPageLink);
                      }
-                   
-                     result.AddRange(jobPageList.ToList());
+                    if (Completed || Cancelled || Aborted)
+                    {
+                        foreach (var job in jobPageList)
+                        {
+                            if ((Completed && job.Status == StageName.Completed) || (Cancelled && job.Status == StageName.Cancelled) || (Aborted && job.Status == StageName.Aborted))
+                            {
+                                result.Add(job);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        result.AddRange(jobPageList.ToList());
+                    }
 
-                 } while (!(string.IsNullOrEmpty(jobPageList.NextPageLink)));
+                } while (!(string.IsNullOrEmpty(jobPageList.NextPageLink)));
 
                 WriteObject(result, true);
             }
