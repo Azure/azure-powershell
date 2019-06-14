@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 * Show more error information when cmdlet failed with StorageException 
+* Support create or update Storage account with Azure Files AAD DS Authentication
+    -  New-AzStorageAccount
+    -  Set-AzStorageAccount
 
 ## Version 1.4.0
 * Support Kind FileStorage and SkuName Premium_ZRS when create Storage account
