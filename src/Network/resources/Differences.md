@@ -1,18 +1,5 @@
 ## Incorrect Cmdlets
 
-- Get-AzExpressRouteCircuitStatistic
-    - PeeringType
-- Get-AzExpressRouteConnection
-    - ExpressRouteGatewayObject
-    - ParentResourceId
-- Get-AzExpressRouteCrossConnectionArpTable
-    - ExpressRouteCrossConnection
-- Get-AzExpressRouteCrossConnectionPeering
-    - ExpressRouteCrossConnection
-- Get-AzExpressRouteCrossConnectionRouteTable
-    - ExpressRouteCrossConnection
-- Get-AzExpressRouteCrossConnectionRouteTableSummary
-    - ExpressRouteCrossConnection
 - Get-AzNetworkInterface
     - VirtualMachineScaleSetName
     - VirtualMachineIndex
@@ -36,15 +23,8 @@
     - IpConfigurationName
 - Get-AzServiceEndpointPolicyDefinition
     - ServiceEndpointPolicy
-- Get-AzVirtualHubVnetConnection
-    - ParentObject
-    - ParentResourceId
 - Get-AzVnetGatewayVpnDeviceConfigurationScript
     - DeviceVendor
-- Get-AzVpnConnection
-    - ParentResourceName
-    - ParentObject
-    - ParentResourceId
 - New-AzApplicationGateway
     - Sku
     - SslPolicy
@@ -72,9 +52,6 @@
     - ExpressRoutePort
     - BandwidthInGbps
     - AllowClassicOperations
-- New-AzExpressRouteConnection
-    - ExpressRouteGatewayObject
-    - ParentResourceId
 - New-AzExpressRouteGateway
     - MinScaleUnits
     - MaxScaleUnits
@@ -163,9 +140,6 @@
     - DestinationNetworkInterfaceIPConfiguration
     - DestinationLoadBalancerFrontEndIPConfiguration
 - New-AzVpnConnection
-    - ParentResourceName
-    - ParentObject
-    - ParentResourceId
     - VpnSite
     - VpnSiteId
     - ConnectionBandwidthInMbps
@@ -184,9 +158,6 @@
     - BgpAsn
     - BgpPeeringAddress
     - BgpPeeringWeight
-- Remove-AzExpressRouteCrossConnectionPeering
-    - ExpressRouteCrossConnection
-    - PeerAddressType
 - Remove-AzNetworkProfile
     - AsJob
 - Remove-AzNetworkWatcher
@@ -195,8 +166,6 @@
     - Location
 - Remove-AzServiceEndpointPolicyDefinition
     - ServiceEndpointPolicy
-- Remove-AzVpnConnection
-    - ParentResourceName
 - Reset-AzVnetGateway
     - VirtualNetworkGateway
 - Set-AzApplicationGateway
@@ -205,10 +174,6 @@
     - ExpressRouteCircuit
 - Set-AzExpressRouteConnection
     - InputObject
-- Set-AzExpressRouteCrossConnection
-    - ExpressRouteCrossConnection
-    - ServiceProviderNotes
-    - Peerings
 - Set-AzExpressRouteGateway
     - InputObject
     - MinScaleUnits
@@ -321,7 +286,13 @@
 - Get-AzExpressRouteCircuitAuthorization
 - Get-AzExpressRouteCircuitRouteTable
 - Get-AzExpressRouteCircuitRouteTableSummary
+- Get-AzExpressRouteCircuitStatistic
+- Get-AzExpressRouteConnection
 - Get-AzExpressRouteCrossConnection
+- Get-AzExpressRouteCrossConnectionArpTable
+- Get-AzExpressRouteCrossConnectionPeering
+- Get-AzExpressRouteCrossConnectionRouteTable
+- Get-AzExpressRouteCrossConnectionRouteTableSummary
 - Get-AzExpressRouteGateway
 - Get-AzExpressRoutePort
 - Get-AzExpressRoutePortsLocation
@@ -348,6 +319,7 @@
 - Get-AzRouteTable
 - Get-AzServiceEndpointPolicy
 - Get-AzVirtualHub
+- Get-AzVirtualHubVnetConnection
 - Get-AzVirtualWan
 - Get-AzVnet
 - Get-AzVnetAvailableEndpointService
@@ -363,11 +335,13 @@
 - Get-AzVnetPeering
 - Get-AzVnetTap
 - Get-AzVnetUsage
+- Get-AzVpnConnection
 - Get-AzVpnGateway
 - Get-AzVpnSite
 - New-AzApplicationSecurityGroup
 - New-AzDdosProtectionPlan
 - New-AzExpressRouteCircuitAuthorization
+- New-AzExpressRouteConnection
 - New-AzNetworkWatcher
 - New-AzRouteFilter
 - New-AzRouteTable
@@ -381,6 +355,7 @@
 - Remove-AzExpressRouteCircuit
 - Remove-AzExpressRouteCircuitAuthorization
 - Remove-AzExpressRouteConnection
+- Remove-AzExpressRouteCrossConnectionPeering
 - Remove-AzExpressRouteGateway
 - Remove-AzExpressRoutePort
 - Remove-AzFirewall
@@ -402,9 +377,11 @@
 - Remove-AzVnetGatewayConnection
 - Remove-AzVnetPeering
 - Remove-AzVnetTap
+- Remove-AzVpnConnection
 - Remove-AzVpnGateway
 - Remove-AzVpnSite
 - Reset-AzVnetGatewayConnectionSharedKey
+- Set-AzExpressRouteCrossConnection
 - Set-AzVnetGatewayConnectionSharedKey
 - Set-AzVnetTap
 - Start-AzNetworkWatcherTroubleshooting

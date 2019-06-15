@@ -93,16 +93,76 @@ directive:
       parameter-name: (.*)(?<!Scr)Ip(.*)
     set:
       parameter-name: $1IP$2
+  - where: # Fix casing
+      subject: (.*)IPaddress(.*)
+    set:
+      subject: $1IPAddress$2
 
 # Vmss
   - where:
       subject: (.*)VirtualMachineScaleSet(.*)
     set:
-      subject: Vmss$2
+      alias: ${verb}-Az${subject-prefix}${subject}
   - where:
-      subject: VmssVMPublicIPaddress
+      parameter-name: (.*)VirtualMachineScaleSet(.*)
     set:
+      alias: $1VirtualMachineScaleSet$2
+  - where:
+      subject: (.*)VirtualMachineScaleSet(.*)
+    set:
+      subject: $1Vmss$2
+  - where:
+      parameter-name: (.*)VirtualMachineScaleSet(.*)
+    set:
+      parameter-name: $1Vmss$2
+
+# VM
+  - where:
+      subject: (.*)VirtualMachine(.*)
+    set:
+      alias: ${verb}-Az${subject-prefix}${subject}
+  - where:
+      parameter-name: (.*)VirtualMachine(.*)
+    set:
+      alias: $1VirtualMachine$2
+  - where:
+      subject: (.*)VirtualMachine(.*)
+    set:
+      subject: $1VM$2
+  - where:
+      parameter-name: (.*)VirtualMachine(.*)
+    set:
+      parameter-name: $1VM$2
+
+# Public IP
+  - where:
+      verb: Get
+      subject: VmssPublicIPAddress
+      variant: List
+    set:
+      variant: ListVmss
+  - where:
+      verb: Get
+      subject: VmssPublicIPAddress
+      variant: Get
+    set:
+      variant: GetVmss
+  - where:
+      verb: Get
+      subject: VmssPublicIPAddress
+    set:
+      subject: PublicIPAddress
+  - where:
+      verb: Get
       subject: VmssVMPublicIPAddress
+      variant: List
+    set:
+      variant: ListVmssVM
+  - where:
+      verb: Get
+      subject: VmssVMPublicIPAddress
+    set:
+      subject: PublicIPAddress
 
 # Subnet
   - where:
@@ -124,9 +184,6 @@ directive:
       subject: AvailableVirtualNetworkSubnetDelegation|AvailableResourceGroupVirtualNetworkSubnetDelegation
     set:
       subject: VirtualNetworkAvailableSubnetDelegation
-  # - where: # Combine with Get-AzVirtualNetworkAvailableSubnetDelegation
-  #     subject: AvailableResourceGroupVirtualNetworkSubnetDelegation
-  #   hide: true
   - where:
       verb: Invoke
       subject: PrepareSubnetNetworkPolicy
@@ -144,9 +201,17 @@ directive:
       subject: ^PacketCapture(.*)
     set:
       subject: NetworkWatcherPacketCapture$1
-  - where: # Combine with Get-AzNetworkWatcherPacketCapture
+  - where:
+      verb: Get
       subject: NetworkWatcherPacketCaptureStatus
-    hide: true
+      variant: Get
+    set:
+      variant: GetStatus
+  - where:
+      verb: Get
+      subject: NetworkWatcherPacketCaptureStatus
+    set:
+      subject: NetworkWatcherPacketCapture
   - where:
       subject: ^ConnectionMonitor$
     set:
@@ -184,6 +249,13 @@ directive:
     set:
       verb: Start
       alias: Start-AzNetworkWatcherResourceTroubleshooting
+  - where:
+      verb: Get
+      subject: NetworkWatcherReachabilityReport
+      parameter-name: ProviderLocation(.*)
+    set:
+      parameter-name: Provider$1
+      alias: $1
 
 # ApplicationGateway
   - where:
@@ -314,6 +386,51 @@ directive:
       subject: NetworkInterfaceTapConfiguration
     set:
       alias: Set-AzNetworkInterfaceTapConfig
+  - where:
+      verb: Get
+      subject: VmssNetworkInterface
+      variant: List
+    set:
+      variant: ListVmss
+  - where:
+      verb: Get
+      subject: VmssNetworkInterface
+      variant: Get
+    set:
+      variant: GetVmss
+  - where:
+      verb: Get
+      subject: VmssNetworkInterface
+    set:
+      subject: NetworkInterface
+  - where:
+      verb: Get
+      subject: VmssVMNetworkInterface
+      variant: List
+    set:
+      variant: ListVmssVM
+  - where:
+      verb: Get
+      subject: VmssVMNetworkInterface
+    set:
+      subject: NetworkInterface
+  - where:
+      verb: Get
+      subject: VmssIPConfiguration
+      variant: List
+    set:
+      variant: ListVmss
+  - where:
+      verb: Get
+      subject: VmssIPConfiguration
+      variant: Get
+    set:
+      variant: GetVmss
+  - where:
+      verb: Get
+      subject: VmssIPConfiguration
+    set:
+      subject: NetworkInterfaceIPConfiguration
 
 # ExpressRouteCircuit
   - where:
@@ -527,7 +644,7 @@ directive:
     set:
       alias: NetworkWatcherLocation
   - where: # REMOVE BEFORE RELEASE: Unnecessary custom client-side Location implementation
-      subject: ^NetworkWatcher(?!(AvailableProvider$|ReachabilityReport$|ConnectionMonitor$))(.+)
+      subject: ^NetworkWatcher(?!(AvailableProvider$|ReachabilityReport$))(.*)
       parameter-name: ResourceGroupName
     set:
       alias: Location
@@ -647,6 +764,31 @@ directive:
       parameter-name: Peering
     set:
       alias: Peerings
+  - where:
+      verb: Get
+      subject: NetworkWatcherNextHop
+      parameter-name: TargetResourceId
+    set:
+      parameter-name: TargetVMResourceId
+      alias: TargetVirtualMachineId
+  - where:
+      verb: Get
+      subject: NetworkWatcherNextHop
+      parameter-name: TargetNicResourceId
+    set:
+      alias: TargetNetworkInterfaceId
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Get
+      subject: ServiceEndpointPolicyDefinition
+      parameter-name: ResourceGroupName
+    set:
+      alias: ServiceEndpointPolicy
+  - where:
+      verb: Get
+      subject: VnetGatewayVpnDeviceConfigurationScript
+      parameter-name: Vendor
+    set:
+      alias: DeviceVendor
 
 # Other Fixes
   - where:

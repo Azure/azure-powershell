@@ -171,7 +171,7 @@ ExpressRouteCrossConnection resource
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCrossConnection
 Parameter Sets: Update
-Aliases:
+Aliases: ExpressRouteCrossConnection
 
 Required: False
 Position: Named
@@ -187,7 +187,7 @@ The list of peerings.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCrossConnectionPeering[]
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: Peerings
 
 Required: False
 Position: Named
@@ -235,7 +235,7 @@ Additional read only notes set by the connectivity provider.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: ServiceProviderNotes
 
 Required: False
 Position: Named

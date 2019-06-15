@@ -129,7 +129,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ExpressRouteCrossConnection
 
 Required: True
 Position: Named

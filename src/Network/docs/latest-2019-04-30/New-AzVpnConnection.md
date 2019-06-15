@@ -187,7 +187,7 @@ The name of the gateway.
 ```yaml
 Type: System.String
 Parameter Sets: Create, CreateExpanded
-Aliases:
+Aliases: ParentResourceName
 
 Required: True
 Position: Named
@@ -284,7 +284,7 @@ The resource group name of the VpnGateway.
 ```yaml
 Type: System.String
 Parameter Sets: Create, CreateExpanded
-Aliases:
+Aliases: ParentObject, ParentResourceId
 
 Required: True
 Position: Named

@@ -88,7 +88,7 @@ The name of the gateway.
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
+Aliases: ParentResourceName
 
 Required: True
 Position: Named

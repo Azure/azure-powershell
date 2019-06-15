@@ -233,7 +233,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Create, CreateExpanded
-Aliases:
+Aliases: ExpressRouteGatewayObject, ParentResourceId
 
 Required: True
 Position: Named

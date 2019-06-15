@@ -124,7 +124,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: List, Get
-Aliases:
+Aliases: ExpressRouteGatewayObject, ParentResourceId
 
 Required: True
 Position: Named

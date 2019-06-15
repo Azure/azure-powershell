@@ -18,6 +18,12 @@ Get-AzExpressRouteCircuitStatistic -CircuitName <String> -ResourceGroupName <Str
  -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### Peering
+```
+Get-AzExpressRouteCircuitStatistic -CircuitName <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> -PeeringName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List
 ```
 Get-AzExpressRouteCircuitStatistic -CircuitName <String> -ResourceGroupName <String>
@@ -60,7 +66,7 @@ The name of the express route circuit.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, Peering, List
 Aliases: ExpressRouteCircuitName
 
 Required: True
@@ -103,12 +109,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -PeeringName
+The name of the peering.
+
+```yaml
+Type: System.String
+Parameter Sets: Peering
+Aliases: PeeringType
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, Peering, List
 Aliases:
 
 Required: True
@@ -125,7 +147,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: Get, Peering, List
 Aliases:
 
 Required: True

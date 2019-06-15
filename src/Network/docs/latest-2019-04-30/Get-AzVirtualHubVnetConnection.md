@@ -109,7 +109,7 @@ The resource group name of the VirtualHub.
 ```yaml
 Type: System.String
 Parameter Sets: List, Get
-Aliases:
+Aliases: ParentObject, ParentResourceId
 
 Required: True
 Position: Named
