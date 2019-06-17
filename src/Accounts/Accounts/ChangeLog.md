@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.5.3
 * Fix bug with incorrect URL being used in some cases for Functions calls
     - More information here: https://github.com/Azure/azure-powershell/issues/8983
 * Fix Issue with aliases from AzureRM to Az cmdlets
