@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Show more error information when cmdlet failed with StorageException 
 
 ## Version 1.4.0
 * Support Kind FileStorage and SkuName Premium_ZRS when create Storage account
