@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.3.0
 * New-AzVm and New-AzVmss simple parameter sets now accept the `ProximityPlacementGroup` parameter.
 * Fix typo in `New-AzVM` reference documentation
 
