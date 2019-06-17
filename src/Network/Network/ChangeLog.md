@@ -62,6 +62,11 @@
     - Updated New-AzVirtualNetworkGateway: Added optional parameters AadTenantUri,AadAudienceId,AadIssuerUri to set VpnClient AAD authentication options on Gateway.
     - Updated Set-AzVirtualNetworkGateway: Added optional parameter AadTenantUri,AadAudienceId,AadIssuerUri to set VpnClient AAD authentication options on Gateway.
     - Updated Set-AzVirtualNetworkGateway: Added optional switch parameter RemoveAadAuthentication to remove VpnClient AAD authentication options from Gateway.
+* Add PrivateIpAddressVersion in LoadBalancerFrontendIpConfiguration
+    - Updated cmdlet:
+        - New-AzLoadBalancerFrontendIpConfig
+        - Add-AzLoadBalancerFrontendIpConfig
+        - Set-AzLoadBalancerFrontendIpConfig
 
 ## Version 1.9.0
 * Update ResourceId and InputObject for Nat Gateway
