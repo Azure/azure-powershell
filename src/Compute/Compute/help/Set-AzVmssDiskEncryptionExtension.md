@@ -38,6 +38,7 @@ $DiskEncryptionKeyVaultUrl = $KeyVault.VaultUri
 $KeyVaultResourceId = $KeyVault.ResourceId
 
 PS C:\> Set-AzVmssDiskEncryptionExtension -ResourceGroupName $RGName -VMScaleSetName $VmssName -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId```
+```
 
 This command enables encryption on all disks of all Windows VMs in a VM scale set.
 
@@ -52,7 +53,8 @@ $KeyVaultResourceId = $KeyVault.ResourceId
 $VolumeType = "Data"
 
 PS C:\> Set-AzVmssDiskEncryptionExtension -ResourceGroupName $RGName -VMScaleSetName $VmssName -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId
- -VolumeType $volumeType```
+ -VolumeType $volumeType
+ ```
 
 This command enables encryption on the data disks of all Linux VMs in a VM scale set.
 
