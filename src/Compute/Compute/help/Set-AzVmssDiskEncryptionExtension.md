@@ -54,7 +54,7 @@ $VolumeType = "Data"
 
 PS C:\> Set-AzVmssDiskEncryptionExtension -ResourceGroupName $RGName -VMScaleSetName $VmssName -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId
  -VolumeType $volumeType
- ```
+```
 
 This command enables encryption on the data disks of all Linux VMs in a VM scale set.
 
