@@ -469,10 +469,10 @@ function Test-CreateNewWebAppHyperV
 	$tier = "PremiumContainer"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
-    $containerImageName = "testcontainer.io/paltest/iis"
-    $containerRegistryUrl = "https://testcontainer.azurecr.io"
-    $ontainerRegistryUser = "testregistry"
-    $pass = "7Dxo9p79Ins2K3ZU"
+    $containerImageName = "pstestacr.azurecr.io/tests/iis:latest"
+    $containerRegistryUrl = "https://pstestacr.azurecr.io"
+    $containerRegistryUser = "pstestacr"
+    $pass = "cYK4qnENExflnnOkBN7P+gkmBG0sqgIv"
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
     $dockerPrefix = "DOCKER|" 
 
@@ -484,7 +484,7 @@ function Test-CreateNewWebAppHyperV
 		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -WorkerSize Small -HyperV
 		
 		# Create new web app
-		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $ontainerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -AsJob
+		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $containerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -AsJob
 		$job | Wait-Job
 		$actual = $job | Receive-Job
 		
@@ -503,7 +503,7 @@ function Test-CreateNewWebAppHyperV
 
         $appSettings = @{
         "DOCKER_REGISTRY_SERVER_URL" = $containerRegistryUrl;
-        "DOCKER_REGISTRY_SERVER_USERNAME" = $ontainerRegistryUser;
+        "DOCKER_REGISTRY_SERVER_USERNAME" = $containerRegistryUser;
         "DOCKER_REGISTRY_SERVER_PASSWORD" = $pass;}
 
         foreach($nvp in $webApp.SiteConfig.AppSettings)
@@ -539,10 +539,10 @@ function Test-EnableContainerContinuousDeploymentAndGetUrl
 	$tier = "PremiumContainer"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
-    $containerImageName = "microsoft/iis"
-    $containerRegistryUrl = "https://testcontainer.azurecr.io"
-    $ontainerRegistryUser = "testregistry"
-    $pass = "7Dxo9p79Ins2K3ZU"
+    $containerImageName = "pstestacr.azurecr.io/tests/iis:latest"
+    $containerRegistryUrl = "https://pstestacr.azurecr.io"
+    $containerRegistryUser = "pstestacr"
+    $pass = "cYK4qnENExflnnOkBN7P+gkmBG0sqgIv"
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
     $dockerPrefix = "DOCKER|"
  	try
@@ -552,7 +552,7 @@ function Test-EnableContainerContinuousDeploymentAndGetUrl
 		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -WorkerSize Small -HyperV
 
 		# Create new web app
-		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $ontainerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -EnableContainerContinuousDeployment -AsJob
+		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $containerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -EnableContainerContinuousDeployment -AsJob
 		$job | Wait-Job
 		$actual = $job | Receive-Job
 		
@@ -569,7 +569,7 @@ function Test-EnableContainerContinuousDeploymentAndGetUrl
         Assert-AreEqual ($dockerPrefix + $containerImageName)  $result.SiteConfig.WindowsFxVersion
          $appSettings = @{
         "DOCKER_REGISTRY_SERVER_URL" = $containerRegistryUrl;
-        "DOCKER_REGISTRY_SERVER_USERNAME" = $ontainerRegistryUser;
+        "DOCKER_REGISTRY_SERVER_USERNAME" = $containerRegistryUser;
         "DOCKER_REGISTRY_SERVER_PASSWORD" = $pass;
         "DOCKER_ENABLE_CI" = "true"}
          foreach($nvp in $webApp.SiteConfig.AppSettings)
@@ -882,10 +882,10 @@ function Test-SetAzureStorageWebAppHyperV
 	$tier = "PremiumContainer"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
-    $containerImageName = "testcontainer.io/test/iis"
-    $containerRegistryUrl = "https://testcontainer.azurecr.io"
-    $ontainerRegistryUser = "testregistry"
-    $pass = "7Dxo9p79Ins2K3ZU"
+    $containerImageName = "pstestacr.azurecr.io/tests/iis:latest"
+    $containerRegistryUrl = "https://pstestacr.azurecr.io"
+    $containerRegistryUser = "pstestacr"
+    $pass = "cYK4qnENExflnnOkBN7P+gkmBG0sqgIv"
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
     $dockerPrefix = "DOCKER|" 
 	$azureStorageAccountCustomId1 = "mystorageaccount"
@@ -908,7 +908,7 @@ function Test-SetAzureStorageWebAppHyperV
 		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -WorkerSize Small -HyperV
 		
 		# Create new web app
-		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $ontainerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -AsJob
+		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $containerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -AsJob
 		$job | Wait-Job
 		$actual = $job | Receive-Job
 		
@@ -999,11 +999,11 @@ function Test-CreateNewWebAppOnAse
 	# Setup
 	# Creating and provisioning an ASE currently takes 30 mins to an hour, hence this test requires that the ASE & ASP are already created 
 	# before creating the app on the ASE
-	$rgname = "appdemorg"
+	$rgname = "mnresourcegroup"
 	$wname = Get-WebsiteName
-	$location = "West US"
-	$whpName = "travelproductionplan"
-	$aseName = "asedemops"
+	$location = "South Central US"
+	$whpName = "powershellasp"
+	$aseName = "mnASE"
 	$resourceType = "Microsoft.Web/sites"
 	try
 	{

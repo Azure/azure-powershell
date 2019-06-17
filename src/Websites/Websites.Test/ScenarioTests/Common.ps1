@@ -152,6 +152,9 @@ function PingWebApp($webApp)
 {
 	if ((Get-WebsitesTestMode) -ne 'Playback') 
 	{
+		# Give the app time to stabilize
+		Start-Sleep -Seconds 30
+
 		try 
 		{
 			$result = Invoke-WebRequest $webApp.HostNames[0] -UseBasicParsing
