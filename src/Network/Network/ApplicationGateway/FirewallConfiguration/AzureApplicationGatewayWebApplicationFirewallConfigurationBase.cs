@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
                Mandatory = false,
                HelpMessage = "The version of the rule set type.")]
-        [ValidateSet("3.0", "2.2.9")]
         public string RuleSetVersion { get; set; }
 
         [Parameter(

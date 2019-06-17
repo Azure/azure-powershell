@@ -74,18 +74,25 @@ NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Peering.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzPeering', 'Get-AzPeerAsn', 'New-AzPeerAsn', 'New-AzPeering', 
-               'Update-AzPeering', 'Set-AzPeeringExchangeConnectionObject', 
-               'New-AzPeeringExchangeConnectionObject', 
-               'Set-AzPeeringDirectConnectionObject', 
-               'New-AzPeeringDirectConnectionObject', 'Get-AzPeeringLocation', 
-               'Get-AzLegacyPeering', 'Set-AzPeerAsn', 'Remove-AzPeerAsn'
+CmdletsToExport = 'Get-AzPeering',
+			'Get-AzPeerAsn',
+			'New-AzPeerAsn',
+			'New-AzPeering',
+			'Update-AzPeering',
+			'Set-AzPeeringExchangeConnectionObject',
+			'New-AzPeeringExchangeConnectionObject',
+			'Set-AzPeeringDirectConnectionObject',
+			'New-AzPeeringDirectConnectionObject',
+			'Get-AzPeeringLocation',
+			'Get-AzLegacyPeering',
+			'Set-AzPeerAsn',
+			'Remove-AzPeerAsn'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+#AliasesToExport = @()
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -102,7 +109,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ARM','Network','Peering','PSModule','Exchange','Direct','PNI','Peer','Asn'
+        Tags = 'Azure','ARM','Network','Peering','PSModule', 'Exchange', 'Direct', 'PNI', 'Peer', 'Asn'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'

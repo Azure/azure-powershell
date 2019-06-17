@@ -140,7 +140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
             }
             catch (ErrorResponseException ex)
             {
-                                var error = ex.Response.Content.Contains("\"error\\\":") ? JsonConvert.DeserializeObject<Dictionary<string, ErrorResponse>>(JsonConvert.DeserializeObject(ex.Response.Content).ToString()).FirstOrDefault().Value : JsonConvert.DeserializeObject<ErrorResponse>(ex.Response.Content);
+                                var error = this.GetErrorCodeAndMessageFromArmOrErm(ex);
                 throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
@@ -153,12 +153,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         /// </returns>
         private PSExchangeConnection UpdateMD5Authentication()
         {
-            if (this.InputObject is PSExchangeConnection inputObject)
-            {
-                inputObject.BgpSession.Md5AuthenticationKey = this.MD5AuthenticationKey;
-                if (this.IsValidConnection(inputObject))
-                    return inputObject;
-            }
+                this.InputObject.BgpSession.Md5AuthenticationKey = this.MD5AuthenticationKey;
+                if (this.IsValidConnection(this.InputObject))
+                    return this.InputObject;
 
             throw new InvalidOperationException(string.Format(Resources.Error_InvalidInputObject_Exchange));
         }
@@ -171,17 +168,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         /// </returns>
         private PSExchangeConnection UpdateIpV4Prefix()
         {
-            if (this.InputObject is PSExchangeConnection inputObject)
-            {
-                inputObject.BgpSession.PeerSessionIPv4Address = this.PeerSessionIPv4Address;
-                if (this.MaxPrefixesAdvertisedIPv4 != null)
-                {
-                    inputObject.BgpSession.MaxPrefixesAdvertisedV4 = this.MaxPrefixesAdvertisedIPv4;
-                }
-
-                if (this.IsValidConnection(inputObject))
-                    return inputObject;
-            }
+                this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 =
+                    this.MaxPrefixesAdvertisedIPv4 == null ? (this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 != 0 ? this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 : 2000) : 2000;
+                this.InputObject.BgpSession.PeerSessionIPv6Address = this.ValidatePrefix(this.PeerSessionIPv4Address, Constants.Exchange);
+                if (this.IsValidConnection(this.InputObject))
+                    return this.InputObject;
 
             throw new InvalidOperationException(string.Format(Resources.Error_InvalidInputObject_Exchange));
         }
@@ -194,17 +185,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         /// </returns>
         private PSExchangeConnection UpdateIpV6Prefix()
         {
-            if (this.InputObject is PSExchangeConnection inputObject)
-            {
-                inputObject.BgpSession.PeerSessionIPv6Address = this.PeerSessionIPv6Address;
-                if (this.MaxPrefixesAdvertisedIPv6 != null)
-                {
-                    inputObject.BgpSession.MaxPrefixesAdvertisedV6 = this.MaxPrefixesAdvertisedIPv4;
-                }
-
-                if (this.IsValidConnection(inputObject))
-                    return inputObject;
-            }
+                this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 =
+                    this.MaxPrefixesAdvertisedIPv6 == null ? (this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 != 0 ? this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 : 2000) : 2000;
+                this.InputObject.BgpSession.PeerSessionIPv6Address = this.ValidatePrefix(this.PeerSessionIPv6Address, Constants.Exchange);
+                if (this.IsValidConnection(this.InputObject))
+                    return this.InputObject;
 
             throw new InvalidOperationException(string.Format(Resources.Error_InvalidInputObject_Exchange));
         }

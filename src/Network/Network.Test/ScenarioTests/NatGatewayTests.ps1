@@ -52,16 +52,20 @@ function Test-NatGatewayCRUDMinimalParameters
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
         # Create NatGateway
-        $vNatGateway = New-AzNatGateway -ResourceGroupName $rgname -Name $rname -Location $location -Sku Standard;
+        $vNatGateway = New-AzNatGateway -ResourceGroupName $rgname -Name $rname -Location $location -Sku Standard -Zone "1";
         Assert-NotNull $vNatGateway;
         Assert-True { Check-CmdletReturnType "New-AzNatGateway" $vNatGateway };
         Assert-AreEqual $rname $vNatGateway.Name;
+        Assert-AreEqual $vNatGateway.Zones.Count 1;
+        Assert-AreEqual $vNatGateway.Zones[0] "1";
 
         # Get NatGateway
         $vNatGateway = Get-AzNatGateway -ResourceGroupName $rgname -Name $rname;
         Assert-NotNull $vNatGateway;
         Assert-True { Check-CmdletReturnType "Get-AzNatGateway" $vNatGateway };
         Assert-AreEqual $rname $vNatGateway.Name;
+        Assert-AreEqual $vNatGateway.Zones.Count 1;
+        Assert-AreEqual $vNatGateway.Zones[0] "1";
 
         # Get all NatGateways in resource group
         $listNatGateway = Get-AzNatGateway -ResourceGroupName $rgname;
