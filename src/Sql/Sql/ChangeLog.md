@@ -26,20 +26,20 @@
    - Remove-AzSqlInstanceKeyVaultKey
    - Get-AzSqlInstanceTransparentDataEncryptionProtector
    - Set-AzSqlInstanceTransparentDataEncryptionProtector
-
+* Support Azure SQL Server\Database Auditing with new cmdlets.
+    - Set-AzSqlServerAuditPolicy
+    - Get-AzSqlServerAuditPolicy
+    - Remove-AzSqlServerAuditPolicy
+    - Set-AzSqlDatabaseAuditPolicy
+    - Get-AzSqlDatabaseAuditPolicy
+    - Remove-AzSqlDatabaseAuditPolicy
+	
 ## Version 1.11.0
 * Add DnsZonePartner Parameter for New-AzureSqlInstance cmdlet to support AutoDr for Managed Instance.
 * Deprecating Get-AzSqlDatabaseSecureConnectionPolicy cmdlet
 * Rename Threat Detection cmdlets to Advanced Threat Protection
 * New-AzSqlInstance -StorageSizeInGB and -LicenseType parameters are now optional.
 * Fix issue in reference documentation for `Enable-AzSqlServerAdvancedDataSecurity`
-* Support Azure SQL Server\Database Auditing with new cmdlets.
-	- Set-AzSqlServerAuditPolicy
-	- Get-AzSqlServerAuditPolicy
-	- Remove-AzSqlServerAuditPolicy
-	- Set-AzSqlDatabaseAuditPolicy
-	- Get-AzSqlDatabaseAuditPolicy
-	- Remove-AzSqlDatabaseAuditPolicy
 
 ## Version 1.10.0
 * Rename Advanced Threat Protection cmdlets to Advanced Data Security and enable Vulnerability Assessment by default
