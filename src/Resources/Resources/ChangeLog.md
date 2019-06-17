@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.5.0
 * Support for additional Template Export options
     - Add `-SkipResourceNameParameterization` parameter to Export-AzResourceGroup
     - Add `-SkipAllParameterization` parameter to Export-AzResourceGroup
