@@ -33,7 +33,7 @@ The **Get-AzApiManagementAuthorizationServer** cmdlet gets all Azure API Managem
 ### Example 1: Get all authorization servers
 ```
 PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzApiManagementAuthrizarionServer -Context $ApiMgmtContext
+PS C:\>Get-AzApiManagementAuthorizationServer -Context $ApiMgmtContext
 ```
 
 This command gets all API Management authorization servers.
