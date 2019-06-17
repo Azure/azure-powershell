@@ -160,7 +160,7 @@
     <value>Invalid Prefix: {0}, must be {1}</value>
   </data>
   <data name="Error_InvalidPrefixRange" xml:space="preserve">
-    <value>Invalid Prefix Range: {0} must be at least {1} not greater than {2}</value>
+    <value>Invalid Prefix Range: {0}, the prefix must be {1}</value>
   </data>
   <data name="Error_Mapping" xml:space="preserve">
     <value>Failed to map object {0}</value>

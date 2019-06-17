@@ -103,6 +103,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             var expressRouteGateway = new PSExpressRouteGateway();
+            string virtualHubResourceGroupName = this.ResourceGroupName; // default to common RG for ByVirtualHubName parameter set
             expressRouteGateway.Name = this.Name;
             expressRouteGateway.ResourceGroupName = this.ResourceGroupName;
             expressRouteGateway.VirtualHub = null;
@@ -111,20 +112,27 @@ namespace Microsoft.Azure.Commands.Network
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubObject, StringComparison.OrdinalIgnoreCase))
             {
                 this.VirtualHubName = this.VirtualHub.Name;
+                virtualHubResourceGroupName = this.VirtualHub.ResourceGroupName;
             }
             else if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubResourceId, StringComparison.OrdinalIgnoreCase))
             {
                 var parsedResourceId = new ResourceIdentifier(this.VirtualHubId);
                 this.VirtualHubName = parsedResourceId.ResourceName;
+                virtualHubResourceGroupName = parsedResourceId.ResourceGroupName;
             }
-            
+
             //// At this point, we should have the virtual hub name resolved. Fail this operation if it is not.
             if (string.IsNullOrWhiteSpace(this.VirtualHubName))
             {
                 throw new PSArgumentException(Properties.Resources.VirtualHubRequiredForExpressRouteGateway);
             }
 
-            var resolvedVirtualHub = new VirtualHubBaseCmdlet().GetVirtualHub(this.ResourceGroupName, this.VirtualHubName);
+            var resolvedVirtualHub = new VirtualHubBaseCmdlet().GetVirtualHub(virtualHubResourceGroupName, this.VirtualHubName);
+            if(resolvedVirtualHub == null)
+            {
+                throw new PSArgumentException(Properties.Resources.VirtualHubRequiredForExpressRouteGateway);
+            }
+
             expressRouteGateway.Location = resolvedVirtualHub.Location;
             expressRouteGateway.VirtualHub = new PSVirtualHubId() { Id = resolvedVirtualHub.Id };
 
