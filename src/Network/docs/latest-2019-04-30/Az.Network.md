@@ -65,9 +65,6 @@ Gets the specified Express Route Circuit Connection from the specified express r
 ### [Get-AzExpressRouteCircuitPeering](Get-AzExpressRouteCircuitPeering.md)
 Gets the specified peering for the express route circuit.
 
-### [Get-AzExpressRouteCircuitPeeringStatistic](Get-AzExpressRouteCircuitPeeringStatistic.md)
-Gets all stats from an express route circuit in a resource group.
-
 ### [Get-AzExpressRouteCircuitRouteTable](Get-AzExpressRouteCircuitRouteTable.md)
 The ListRoutesTable from ExpressRouteCircuit operation retrieves the currently advertised routes table associated with the ExpressRouteCircuits in a resource group.
 
@@ -259,21 +256,6 @@ Retrieves the details of a VirtualWAN.
 
 ### [Get-AzVirtualWanSupportedSecurityProvider](Get-AzVirtualWanSupportedSecurityProvider.md)
 Gives the supported security providers for the virtual wan.
-
-### [Get-AzVmssIPConfiguration](Get-AzVmssIPConfiguration.md)
-Get the specified network interface ip configuration in a virtual machine scale set.
-
-### [Get-AzVmssNetworkInterface](Get-AzVmssNetworkInterface.md)
-Get the specified network interface in a virtual machine scale set.
-
-### [Get-AzVmssPublicIPaddress](Get-AzVmssPublicIPaddress.md)
-Get the specified public IP address in a virtual machine scale set.
-
-### [Get-AzVmssVMNetworkInterface](Get-AzVmssVMNetworkInterface.md)
-Gets information about all network interfaces in a virtual machine in a virtual machine scale set.
-
-### [Get-AzVmssVMPublicIPAddress](Get-AzVmssVMPublicIPAddress.md)
-Gets information about all public IP addresses in a virtual machine IP configuration in a virtual machine scale set.
 
 ### [Get-AzVnet](Get-AzVnet.md)
 Gets the specified virtual network by resource group.

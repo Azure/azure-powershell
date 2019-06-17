@@ -17,10 +17,28 @@ Gets information about the specified network interface.
 Get-AzNetworkInterface -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetVmss
+```
+Get-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> -VMIndex <String>
+ -VmssName <String> [-ExpandResource <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  [-ExpandResource <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListVmssVM
+```
+Get-AzNetworkInterface -ResourceGroupName <String> -SubscriptionId <String[]> -VMIndex <String>
+ -VmssName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListVmss
+```
+Get-AzNetworkInterface -ResourceGroupName <String> -SubscriptionId <String[]> -VmssName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
@@ -81,7 +99,7 @@ Expands referenced resources.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentity
+Parameter Sets: GetVmss, Get, GetViaIdentity
 Aliases:
 
 Required: False
@@ -113,7 +131,7 @@ The name of the network interface.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetVmss, Get
 Aliases: NetworkInterfaceName
 
 Required: True
@@ -129,7 +147,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: GetVmss, Get, ListVmssVM, ListVmss, List1
 Aliases:
 
 Required: True
@@ -146,8 +164,40 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get, List1
+Parameter Sets: List, GetVmss, Get, ListVmssVM, ListVmss, List1
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VMIndex
+The virtual machine index.
+
+```yaml
+Type: System.String
+Parameter Sets: GetVmss, ListVmssVM
+Aliases: VirtualMachineIndex
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VmssName
+The name of the virtual machine scale set.
+
+```yaml
+Type: System.String
+Parameter Sets: GetVmss, ListVmssVM, ListVmss
+Aliases: VirtualMachineScaleSetName
 
 Required: True
 Position: Named
@@ -169,6 +219,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterface
 
 ## ALIASES
+
+### Get-AzNetworkInterfaceVirtualMachineScaleSetNetworkInterface
+
+### Get-AzNetworkInterfaceVirtualMachineScaleSetVMNetworkInterface
 
 ## RELATED LINKS
 

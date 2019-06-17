@@ -137,30 +137,42 @@ directive:
 # Public IP
   - where:
       verb: Get
-      subject: VmssPublicIPAddress
+      subject: PublicIPAddressVmssPublicIPAddress
       variant: List
     set:
       variant: ListVmss
   - where:
       verb: Get
-      subject: VmssPublicIPAddress
+      subject: PublicIPAddressVmssPublicIPAddress
       variant: Get
     set:
       variant: GetVmss
   - where:
       verb: Get
-      subject: VmssPublicIPAddress
+      subject: PublicIPAddressVmssPublicIPAddress
+      variant: GetViaIdentity
+    remove: true
+  - where:
+      verb: Get
+      subject: PublicIPAddressVmssPublicIPAddress
+      parameter-name: PublicIPAddressName
+    set:
+      parameter-name: Name
+      alias: PublicIPAddressName
+  - where:
+      verb: Get
+      subject: PublicIPAddressVmssPublicIPAddress
     set:
       subject: PublicIPAddress
   - where:
       verb: Get
-      subject: VmssVMPublicIPAddress
+      subject: PublicIPAddressVmssVMPublicIPAddress
       variant: List
     set:
       variant: ListVmssVM
   - where:
       verb: Get
-      subject: VmssVMPublicIPAddress
+      subject: PublicIPAddressVmssVMPublicIPAddress
     set:
       subject: PublicIPAddress
 
@@ -210,6 +222,18 @@ directive:
   - where:
       verb: Get
       subject: NetworkWatcherPacketCaptureStatus
+      variant: GetViaIdentity
+    remove: true
+  - where:
+      verb: Get
+      subject: NetworkWatcherPacketCaptureStatus
+      parameter-name: PacketCaptureName
+    set:
+      parameter-name: Name
+      alias: PacketCaptureName
+  - where:
+      verb: Get
+      subject: NetworkWatcherPacketCaptureStatus
     set:
       subject: NetworkWatcherPacketCapture
   - where:
@@ -249,13 +273,25 @@ directive:
     set:
       verb: Start
       alias: Start-AzNetworkWatcherResourceTroubleshooting
+  # - where:
+  #     verb: Get
+  #     subject: NetworkWatcherReachabilityReport
+  #     parameter-name: ProviderLocation(.*)
+  #   set:
+  #     parameter-name: Provider$1
+  #     alias: $1
+  - where:
+      verb: Get
+      subject: NetworkWatcherReachabilityReport
+      parameter-name: ProviderLocation(.*)
+    set:
+      alias: $1
   - where:
       verb: Get
       subject: NetworkWatcherReachabilityReport
       parameter-name: ProviderLocation(.*)
     set:
       parameter-name: Provider$1
-      alias: $1
 
 # ApplicationGateway
   - where:
@@ -388,47 +424,64 @@ directive:
       alias: Set-AzNetworkInterfaceTapConfig
   - where:
       verb: Get
-      subject: VmssNetworkInterface
+      subject: NetworkInterfaceVmssNetworkInterface
       variant: List
     set:
       variant: ListVmss
   - where:
       verb: Get
-      subject: VmssNetworkInterface
+      subject: NetworkInterfaceVmssNetworkInterface
       variant: Get
     set:
       variant: GetVmss
   - where:
       verb: Get
-      subject: VmssNetworkInterface
+      subject: NetworkInterfaceVmssNetworkInterface
+      variant: GetViaIdentity
+    remove: true
+  - where:
+      verb: Get
+      subject: NetworkInterfaceVmssNetworkInterface
+      parameter-name: NetworkInterfaceName
+    set:
+      parameter-name: Name
+      alias: NetworkInterfaceName
+  - where:
+      verb: Get
+      subject: NetworkInterfaceVmssNetworkInterface
     set:
       subject: NetworkInterface
   - where:
       verb: Get
-      subject: VmssVMNetworkInterface
+      subject: NetworkInterfaceVmssVMNetworkInterface
       variant: List
     set:
       variant: ListVmssVM
   - where:
       verb: Get
-      subject: VmssVMNetworkInterface
+      subject: NetworkInterfaceVmssVMNetworkInterface
     set:
       subject: NetworkInterface
   - where:
       verb: Get
-      subject: VmssIPConfiguration
+      subject: NetworkInterfaceVmssIPConfiguration
       variant: List
     set:
       variant: ListVmss
   - where:
       verb: Get
-      subject: VmssIPConfiguration
+      subject: NetworkInterfaceVmssIPConfiguration
       variant: Get
     set:
       variant: GetVmss
   - where:
       verb: Get
-      subject: VmssIPConfiguration
+      subject: NetworkInterfaceVmssIPConfiguration
+      variant: GetViaIdentity
+    remove: true
+  - where:
+      verb: Get
+      subject: NetworkInterfaceVmssIPConfiguration
     set:
       subject: NetworkInterfaceIPConfiguration
 
@@ -612,6 +665,11 @@ directive:
   - where:
       verb: Get
       subject: ExpressRouteCircuitPeeringStat
+      variant: GetViaIdentity
+    remove: true
+  - where:
+      verb: Get
+      subject: ExpressRouteCircuitPeeringStat
       variant: Get
     set:
       subject: ExpressRouteCircuitStat
@@ -644,7 +702,7 @@ directive:
     set:
       alias: NetworkWatcherLocation
   - where: # REMOVE BEFORE RELEASE: Unnecessary custom client-side Location implementation
-      subject: ^NetworkWatcher(?!(AvailableProvider$|ReachabilityReport$))(.*)
+      subject: ^NetworkWatcher(?!(AvailableProvider$|ReachabilityReport$|ConnectionMonitor$))(.+)
       parameter-name: ResourceGroupName
     set:
       alias: Location

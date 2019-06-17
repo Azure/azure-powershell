@@ -200,7 +200,7 @@ The vendor for the vpn device.
 ```yaml
 Type: System.String
 Parameter Sets: ScriptExpanded1, ScriptViaIdentityExpanded1
-Aliases:
+Aliases: DeviceVendor
 
 Required: False
 Position: Named

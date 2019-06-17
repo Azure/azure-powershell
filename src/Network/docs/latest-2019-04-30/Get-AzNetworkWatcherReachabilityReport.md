@@ -22,18 +22,17 @@ Get-AzNetworkWatcherReachabilityReport -NetworkWatcherName <String> -ResourceGro
 ### GetExpanded
 ```
 Get-AzNetworkWatcherReachabilityReport -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -EndTime <DateTime> -ProviderLocationCountry <String> -StartTime <DateTime>
- [-Location <String[]>] [-Provider <String[]>] [-ProviderLocationCity <String>]
- [-ProviderLocationState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -SubscriptionId <String[]> -EndTime <DateTime> -ProviderCountry <String> -StartTime <DateTime>
+ [-Location <String[]>] [-Provider <String[]>] [-ProviderCity <String>] [-ProviderState <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentityExpanded
 ```
 Get-AzNetworkWatcherReachabilityReport -InputObject <INetworkIdentity> -EndTime <DateTime>
- -ProviderLocationCountry <String> -StartTime <DateTime> [-Location <String[]>] [-Provider <String[]>]
- [-ProviderLocationCity <String>] [-ProviderLocationState <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ProviderCountry <String> -StartTime <DateTime> [-Location <String[]>] [-Provider <String[]>]
+ [-ProviderCity <String>] [-ProviderState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -196,13 +195,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ProviderLocationCity
+### -ProviderCity
 The name of the city or town.
 
 ```yaml
 Type: System.String
 Parameter Sets: GetExpanded, GetViaIdentityExpanded
-Aliases:
+Aliases: City
 
 Required: False
 Position: Named
@@ -212,13 +211,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ProviderLocationCountry
+### -ProviderCountry
 The name of the country.
 
 ```yaml
 Type: System.String
 Parameter Sets: GetExpanded, GetViaIdentityExpanded
-Aliases:
+Aliases: Country
 
 Required: True
 Position: Named
@@ -228,13 +227,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ProviderLocationState
+### -ProviderState
 The name of the state.
 
 ```yaml
 Type: System.String
 Parameter Sets: GetExpanded, GetViaIdentityExpanded
-Aliases:
+Aliases: State
 
 Required: False
 Position: Named

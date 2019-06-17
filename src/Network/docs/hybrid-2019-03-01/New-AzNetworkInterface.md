@@ -31,8 +31,8 @@ New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionI
  [-NetworkSecurityGroupLocation <String>] [-NetworkSecurityGroupPropertiesProvisioningState <String>]
  [-NetworkSecurityGroupPropertiesResourceGuid <String>] [-NetworkSecurityGroupTag <IResourceTags>] [-Primary]
  [-ProvisioningState <String>] [-ResourceGuid <String>] [-SecurityRule <ISecurityRule[]>]
- [-Tag <IResourceTags>] [-VirtualMachineId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Tag <IResourceTags>] [-VMId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
@@ -46,8 +46,8 @@ New-AzNetworkInterface -InputObject <INetworkIdentity> [-DefaultSecurityRule <IS
  [-NetworkSecurityGroupLocation <String>] [-NetworkSecurityGroupPropertiesProvisioningState <String>]
  [-NetworkSecurityGroupPropertiesResourceGuid <String>] [-NetworkSecurityGroupTag <IResourceTags>] [-Primary]
  [-ProvisioningState <String>] [-ResourceGuid <String>] [-SecurityRule <ISecurityRule[]>]
- [-Tag <IResourceTags>] [-VirtualMachineId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Tag <IResourceTags>] [-VMId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
@@ -584,13 +584,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VirtualMachineId
+### -VMId
 Resource ID.
 
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
+Aliases: VirtualMachineId
 
 Required: False
 Position: Named

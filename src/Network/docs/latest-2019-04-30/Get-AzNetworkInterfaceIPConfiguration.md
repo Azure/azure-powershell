@@ -18,10 +18,24 @@ Get-AzNetworkInterfaceIPConfiguration -NetworkInterfaceName <String> -ResourceGr
  -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetVmss
+```
+Get-AzNetworkInterfaceIPConfiguration -IPConfigurationName <String> -NetworkInterfaceName <String>
+ -ResourceGroupName <String> -SubscriptionId <String[]> -VMIndex <String> -VmssName <String>
+ [-ExpandResource <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzNetworkInterfaceIPConfiguration -IPConfigurationName <String> -NetworkInterfaceName <String>
  -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListVmss
+```
+Get-AzNetworkInterfaceIPConfiguration -NetworkInterfaceName <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> -VMIndex <String> -VmssName <String> [-ExpandResource <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -71,6 +85,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ExpandResource
+Expands referenced resources.
+
+```yaml
+Type: System.String
+Parameter Sets: GetVmss, ListVmss
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -88,11 +118,11 @@ Dynamic: False
 ```
 
 ### -IPConfigurationName
-The name of the ip configuration name.
+The name of the ip configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetVmss, Get
 Aliases:
 
 Required: True
@@ -108,7 +138,7 @@ The name of the network interface.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: List, GetVmss, Get, ListVmss
 Aliases:
 
 Required: True
@@ -124,7 +154,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: List, GetVmss, Get, ListVmss
 Aliases:
 
 Required: True
@@ -141,8 +171,40 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: List, GetVmss, Get, ListVmss
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VMIndex
+The virtual machine index.
+
+```yaml
+Type: System.String
+Parameter Sets: GetVmss, ListVmss
+Aliases: VirtualMachineIndex
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VmssName
+The name of the virtual machine scale set.
+
+```yaml
+Type: System.String
+Parameter Sets: GetVmss, ListVmss
+Aliases: VirtualMachineScaleSetName
 
 Required: True
 Position: Named
@@ -164,6 +226,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterfaceIPConfiguration
 
 ## ALIASES
+
+### Get-AzNetworkInterfaceVirtualMachineScaleSetIPConfiguration
 
 ## RELATED LINKS
 

@@ -1,30 +1,9 @@
 ## Incorrect Cmdlets
 
-- Get-AzNetworkInterface
-    - VirtualMachineScaleSetName
-    - VirtualMachineIndex
 - Get-AzNetworkWatcher
     - Location
 - Get-AzNetworkWatcherConnectionMonitor
     - Location
-- Get-AzNetworkWatcherNextHop
-    - TargetVirtualMachineId
-    - TargetNetworkInterfaceId
-- Get-AzNetworkWatcherPacketCapture
-    - AsJob
-- Get-AzNetworkWatcherReachabilityReport
-    - Country
-    - State
-    - City
-- Get-AzPublicIPAddress
-    - VirtualMachineScaleSetName
-    - VirtualMachineIndex
-    - NetworkInterfaceName
-    - IpConfigurationName
-- Get-AzServiceEndpointPolicyDefinition
-    - ServiceEndpointPolicy
-- Get-AzVnetGatewayVpnDeviceConfigurationScript
-    - DeviceVendor
 - New-AzApplicationGateway
     - Sku
     - SslPolicy
@@ -302,6 +281,7 @@
 - Get-AzInterfaceEndpoint
 - Get-AzLoadBalancer
 - Get-AzLocalNetworkGateway
+- Get-AzNetworkInterface
 - Get-AzNetworkInterfaceEffectiveNetworkSecurityGroup
 - Get-AzNetworkInterfaceEffectiveRouteTable
 - Get-AzNetworkInterfaceTapConfiguration
@@ -312,12 +292,17 @@
 - Get-AzNetworkWatcherConnectionMonitorState
 - Get-AzNetworkWatcherFlowLogStatus
 - Get-AzNetworkWatcherNetworkConfigurationDiagnostic
+- Get-AzNetworkWatcherNextHop
+- Get-AzNetworkWatcherPacketCapture
+- Get-AzNetworkWatcherReachabilityReport
 - Get-AzNetworkWatcherTopology
 - Get-AzNetworkWatcherTroubleshootingResult
+- Get-AzPublicIPAddress
 - Get-AzPublicIPPrefix
 - Get-AzRouteFilter
 - Get-AzRouteTable
 - Get-AzServiceEndpointPolicy
+- Get-AzServiceEndpointPolicyDefinition
 - Get-AzVirtualHub
 - Get-AzVirtualHubVnetConnection
 - Get-AzVirtualWan
@@ -332,6 +317,7 @@
 - Get-AzVnetGatewayLearnedRoute
 - Get-AzVnetGatewaySupportedVpnDevice
 - Get-AzVnetGatewayVpnClientIPsecParameter
+- Get-AzVnetGatewayVpnDeviceConfigurationScript
 - Get-AzVnetPeering
 - Get-AzVnetTap
 - Get-AzVnetUsage
@@ -397,7 +383,6 @@
 - Get-AzDefaultSecurityRule
 - Get-AzExpressRouteCircuitConnection
 - Get-AzExpressRouteCircuitPeering
-- Get-AzExpressRouteCircuitPeeringStatistic
 - Get-AzExpressRouteLink
 - Get-AzLoadBalancerBackendAddressPool
 - Get-AzLoadBalancerFrontendIPConfiguration
@@ -417,11 +402,6 @@
 - Get-AzRouteFilterRule
 - Get-AzRouteTableRoute
 - Get-AzVirtualWanSupportedSecurityProvider
-- Get-AzVmssIPConfiguration
-- Get-AzVmssNetworkInterface
-- Get-AzVmssPublicIPaddress
-- Get-AzVmssVMNetworkInterface
-- Get-AzVmssVMPublicIPAddress
 - Get-AzVnetGatewayVpnProfilePackageUrl
 - Get-AzVnetSubnet
 - Get-AzVpnSiteConfiguration

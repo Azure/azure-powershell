@@ -33,7 +33,7 @@ New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionI
  [-NetworkSecurityGroupLocation <String>] [-NetworkSecurityGroupPropertiesProvisioningState <String>]
  [-NetworkSecurityGroupPropertiesResourceGuid <String>] [-NetworkSecurityGroupTag <IResourceTags>] [-Primary]
  [-ProvisioningState <String>] [-ResourceGuid <String>] [-SecurityRule <ISecurityRule[]>] [-Subnet <ISubnet>]
- [-Tag <IResourceTags>] [-TapConfiguration <INetworkInterfaceTapConfiguration[]>] [-VirtualMachineId <String>]
+ [-Tag <IResourceTags>] [-TapConfiguration <INetworkInterfaceTapConfiguration[]>] [-VMId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -51,7 +51,7 @@ New-AzNetworkInterface -InputObject <INetworkIdentity> [-DefaultSecurityRule <IS
  [-NetworkSecurityGroupPropertiesProvisioningState <String>]
  [-NetworkSecurityGroupPropertiesResourceGuid <String>] [-NetworkSecurityGroupTag <IResourceTags>] [-Primary]
  [-ProvisioningState <String>] [-ResourceGuid <String>] [-SecurityRule <ISecurityRule[]>] [-Subnet <ISubnet>]
- [-Tag <IResourceTags>] [-TapConfiguration <INetworkInterfaceTapConfiguration[]>] [-VirtualMachineId <String>]
+ [-Tag <IResourceTags>] [-TapConfiguration <INetworkInterfaceTapConfiguration[]>] [-VMId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -717,13 +717,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VirtualMachineId
+### -VMId
 Resource ID.
 
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: VirtualMachineId
 
 Required: False
 Position: Named
