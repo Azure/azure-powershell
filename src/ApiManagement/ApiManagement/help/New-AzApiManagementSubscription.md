@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: B85BF332-503D-41CB-A3B7-221B85B9BE30
@@ -13,9 +13,17 @@ Creates a subscription.
 
 ## SYNTAX
 
+### OldSubscriptionModel (Default)
 ```
 New-AzApiManagementSubscription -Context <PsApiManagementContext> [-SubscriptionId <String>] -Name <String>
- -UserId <String> -ProductId <String> [-PrimaryKey <String>] [-SecondaryKey <String>]
+ -UserId <String> -ProductId <String> [-PrimaryKey <String>] [-SecondaryKey <String>] [-AllowTracing]
+ [-State <PsApiManagementSubscriptionState>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### NewSubscriptionModel
+```
+New-AzApiManagementSubscription -Context <PsApiManagementContext> [-SubscriptionId <String>] -Name <String>
+ [-UserId <String>] -Scope <String> [-PrimaryKey <String>] [-SecondaryKey <String>] [-AllowTracing]
  [-State <PsApiManagementSubscriptionState>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,14 +33,41 @@ The **New-AzApiManagementSubscription** cmdlet creates a subscription.
 ## EXAMPLES
 
 ### Example 1: Subscribe a user to a product
-```
+```powershell
 PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>New-AzApiManagementSubscription -Context $apimContext -UserId "777" -ProductId "999"
 ```
 
 This command subscribes an existing user to a product.
 
+### Example 2: Create a subscription for all Api Scope
+```powershell
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>New-AzApiManagementSubscription -Context $context -Scope "/apis" -Name "GlobalApiScope"
+```
+
+### Example 3: Create a subscription for Product Scope
+```powershell
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>New-AzApiManagementSubscription -Context $context -Scope "/products/starter" -Name "UnlimitedProductSub"
+```
+
 ## PARAMETERS
+
+### -AllowTracing
+Flag which determines whether Tracing can be enabled at the Subscription Leve. This is optional parameter and default is $null.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -Context
 Specifies a **PsApiManagementContext** object.
@@ -45,7 +80,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -101,7 +136,22 @@ Specifies the ID of the product to which to subscribe.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: OldSubscriptionModel
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Scope
+The Scope of the Subscription, whether it is Api Scope /apis/{apiId} or Product Scope /products/{productId} or Global API Scope /apis or Global scope /. This parameter is required.
+
+```yaml
+Type: System.String
+Parameter Sets: NewSubscriptionModel
 Aliases:
 
 Required: True
@@ -166,7 +216,7 @@ Specifies the subscriber ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: OldSubscriptionModel
 Aliases:
 
 Required: True
@@ -176,8 +226,20 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+```yaml
+Type: System.String
+Parameter Sets: NewSubscriptionModel
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

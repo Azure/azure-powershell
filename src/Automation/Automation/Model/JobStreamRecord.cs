@@ -56,17 +56,25 @@ namespace Microsoft.Azure.Commands.Automation.Model
                 if (kvp.Value != null)
                 {
                     object paramValue;
-                    try
-                    {
-                        paramValue = ((object)PowerShellJsonConverter.Deserialize(kvp.Value.ToString()));
-                    }
-                    catch (CmdletInvocationException exception)
-                    {
-                        if (!exception.Message.Contains("Invalid JSON primitive"))
-                            throw;
 
+                    if (System.Text.RegularExpressions.Regex.IsMatch(kvp.Value.ToString(), "\\{.*\\:\\{.*\\:.*\\}\\}"))
+                    {
+                        try
+                        {
+                            paramValue = ((object)PowerShellJsonConverter.Deserialize(kvp.Value.ToString()));
+                        }
+                        catch (CmdletInvocationException exception)
+                        {
+                            if (!exception.Message.Contains("Invalid JSON primitive"))
+                                throw;
+
+                            paramValue = kvp.Value;
+                        }
+                    }
+                    else {
                         paramValue = kvp.Value;
                     }
+                    
                     this.Value.Add(kvp.Key, paramValue);
                 }
             }

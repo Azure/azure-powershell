@@ -31,13 +31,22 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [ValidateNotNullOrEmpty]
         public string MailNickname { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The description for the group.")]
+        public string Description { get; set; }
+ 
         public override void ExecuteCmdlet()
         {
             var groupCreateParams = new GroupCreateParameters()
             {
                 DisplayName = DisplayName,
-                MailNickname = MailNickname
+                MailNickname = MailNickname,
+                AdditionalProperties = new System.Collections.Generic.Dictionary<string, object>()
             };
+      
+            if (!string.IsNullOrEmpty(Description))
+            {
+                groupCreateParams.AdditionalProperties.Add("description", Description);
+            }
 
             ExecutionBlock(() =>
             {

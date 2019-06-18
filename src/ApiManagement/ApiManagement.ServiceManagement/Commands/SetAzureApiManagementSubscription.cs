@@ -15,26 +15,57 @@
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
     using System;
     using System.Management.Automation;
 
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementSubscription")]
-    [OutputType(typeof(PsApiManagementSubscription))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementSubscription", DefaultParameterSetName = ByInputObjectParameterSet, SupportsShouldProcess = true)]
+    [OutputType(typeof(PsApiManagementSubscription), ParameterSetName = new[] { ExpandedParameterSet, ByInputObjectParameterSet})]
     public class SetAzureApiManagementSubscription : AzureApiManagementCmdletBase
     {
+        #region Parameter Set Names
+
+        protected const string ExpandedParameterSet = "ExpandedParameter";
+        protected const string ByInputObjectParameterSet = "ByInputObject";
+
+        #endregion
+
         [Parameter(
+            ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
+            ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Identifier of existing subscription. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String SubscriptionId { get; set; }
+
+        [Parameter(
+            ParameterSetName = ByInputObjectParameterSet,
+            ValueFromPipeline = true,
+            Mandatory = true,
+            HelpMessage = "Instance of PsApiManagementSubscription. This parameter is required.")]
+        [ValidateNotNullOrEmpty]
+        public PsApiManagementSubscription InputObject { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "The Scope of the Subscription, whether it is Api Scope /apis/{apiId} or Product Scope /products/{productId} or Global API Scope /apis or Global scope /. This parameter is required.")]
+        public String Scope { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "The owner of the subscription. This parameter is optional.")]
+        public String UserId { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -87,12 +118,47 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            Client.SubscriptionSet(Context, SubscriptionId, Name, PrimaryKey, SecondaryKey, State, ExpiresOn, StateComment);
+            string resourcegroupName;
+            string serviceName;
+            string subscriptionId;
 
-            if (PassThru)
+            if (ParameterSetName.Equals(ByInputObjectParameterSet))
             {
-                var subscription = Client.SubscriptionById(Context, SubscriptionId);
-                WriteObject(subscription);
+                resourcegroupName = InputObject.ResourceGroupName;
+                serviceName = InputObject.ServiceName;
+                subscriptionId = InputObject.SubscriptionId;
+            }
+            else
+            {
+                resourcegroupName = Context.ResourceGroupName;
+                serviceName = Context.ServiceName;
+                subscriptionId = SubscriptionId;
+            }
+
+            if (ShouldProcess(subscriptionId, Resources.SetSubscription))
+            {
+                Client.SubscriptionSet(
+                    resourcegroupName,
+                    serviceName,
+                    subscriptionId,
+                    Name,
+                    Scope,
+                    UserId,
+                    PrimaryKey,
+                    SecondaryKey,
+                    State,
+                    ExpiresOn,
+                    StateComment,
+                    InputObject);
+
+                if (PassThru)
+                {
+                    var subscription = Client.SubscriptionById(
+                        resourcegroupName,
+                        serviceName,
+                        subscriptionId);
+                    WriteObject(subscription);
+                }
             }
         }
     }

@@ -1,58 +1,58 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/azureFirewallFqdnTags?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9henVyZUZpcmV3YWxsRnFkblRhZ3M/YXBpLXZlcnNpb249MjAxOS0wMi0wMQ==",
+      "RequestUri": "/subscriptions/d2ad5196-2292-4080-b209-ce4399b0a807/providers/Microsoft.Network/azureFirewallFqdnTags?api-version=2019-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDJhZDUxOTYtMjI5Mi00MDgwLWIyMDktY2U0Mzk5YjBhODA3L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9henVyZUZpcmV3YWxsRnFkblRhZ3M/YXBpLXZlcnNpb249MjAxOS0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8dff4169-3de0-43ec-a1dd-1948d1217199"
+          "a982a655-7b52-4e37-abc6-d99c3b1cb337"
         ],
-        "Accept-Language": [
+        "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.26614.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.1.0"
         ]
       },
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
+        "Date": [
+          "Wed, 08 May 2019 06:23:32 GMT"
+        ],
         "Pragma": [
           "no-cache"
-        ],
-        "x-ms-request-id": [
-          "d7f1fd63-0a74-4de1-9f33-48330f8b0ec6"
-        ],
-        "x-ms-correlation-request-id": [
-          "646bc516-ccc0-40e9-862e-780d198e23c1"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
+        "x-ms-request-id": [
+          "3638e859-5e7a-4bf0-b1b8-62eb7129083e"
+        ],
+        "x-ms-correlation-request-id": [
+          "d724ecb5-c712-4f15-b1f9-81ad70517268"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11999"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20190409T121816Z:646bc516-ccc0-40e9-862e-780d198e23c1"
+          "WESTUS2:20190508T062333Z:d724ecb5-c712-4f15-b1f9-81ad70517268"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Date": [
-          "Tue, 09 Apr 2019 12:18:15 GMT"
-        ],
         "Content-Length": [
-          "1677"
+          "1988"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -61,12 +61,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"MicrosoftActiveProtectionService\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"MicrosoftActiveProtectionService\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"WindowsDiagnostics\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"WindowsDiagnostics\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"WindowsUpdate\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"WindowsUpdate\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"AppServiceEnvironment\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"AppServiceEnvironment\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"AzureBackup\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"AzureBackup\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"MicrosoftActiveProtectionService\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"MicrosoftActiveProtectionService\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"WindowsDiagnostics\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"WindowsDiagnostics\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"WindowsUpdate\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"WindowsUpdate\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"AppServiceEnvironment\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"AppServiceEnvironment\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"AzureBackup\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"AzureBackup\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"HDInsight\",\r\n      \"id\": \"/subscriptions//resourceGroups//providers/Microsoft.Network/azureFirewallFqdnTags/\",\r\n      \"type\": \"Microsoft.Network/azureFirewallFqdnTags\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"fqdnTagName\": \"HDInsight\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "18b0dc06-a2b8-4c0f-95af-550319fa5eac"
+    "SubscriptionId": "d2ad5196-2292-4080-b209-ce4399b0a807"
   }
 }

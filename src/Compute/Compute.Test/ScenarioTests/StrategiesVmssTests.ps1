@@ -133,7 +133,7 @@ function Test-SimpleNewVmssWithUltraSSD
         Assert-AreEqual $vmssname $x.ResourceGroupName;
         Assert-AreEqual $vmssname $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Name;
         Assert-AreEqual $vmssname $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Name;
-        Assert-True { $x.VirtualMachineProfile.AdditionalCapabilities.UltraSSDEnabled };
+        Assert-True { $x.AdditionalCapabilities.UltraSSDEnabled };
         Assert-AreEqual "Standard_D2s_v3" $x.Sku.Name
         Assert-AreEqual $username $x.VirtualMachineProfile.OsProfile.AdminUsername
         Assert-AreEqual "2016-Datacenter" $x.VirtualMachineProfile.StorageProfile.ImageReference.Sku
@@ -366,5 +366,41 @@ function Test-SimpleNewVmssWithoutDomainName
     {
         # Cleanup
         Clean-ResourceGroup $vmssname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vm
+#>
+function Test-SimpleNewVmssPpg
+{
+    # Setup
+    $rgname = Get-ResourceName
+
+    try
+    {
+        $vmssname = "MyVmss"
+        $ppgname = "MyPpg"
+        $lbName = $vmssname + "LoadBalancer"
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$domainNameLabel = "$vmssname$vmssname".tolower();
+
+        # Common
+        $rg = New-AzResourceGroup -Name $rgname -Location "eastus"
+        $ppg = New-AzProximityPlacementGroup `
+            -ResourceGroupName $rgname `
+            -Name $ppgname `
+            -Location "eastus"
+        $vmss = New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -DomainNameLabel $domainNameLabel -LoadBalancerName $lbName -ProximityPlacementGroup $ppgname
+
+        Assert-AreEqual $vmss.ProximityPlacementGroup.Id $ppg.Id
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
     }
 }

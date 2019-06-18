@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -83,6 +82,11 @@ namespace Microsoft.Azure.Commands.Compute
         public string [] Zone { get; set; }
 
         [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Id of ProximityPlacementGroup")]
+        public string ProximityPlacementGroupId { get; set; }
+
+        [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true)]
 		[Alias("Tag")]
@@ -113,12 +117,12 @@ namespace Microsoft.Azure.Commands.Compute
                 Zones = this.Zone,
             };
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("IdentityType"))
+            if (this.IsParameterBound(c => c.IdentityType))
             {
                 vm.Identity = new VirtualMachineIdentity(null, null, this.IdentityType);
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("IdentityId"))
+            if (this.IsParameterBound(c => c.IdentityId))
             {
                 if (vm.Identity == null)
                 {
@@ -142,6 +146,11 @@ namespace Microsoft.Azure.Commands.Compute
             if (this.EnableUltraSSD.IsPresent)
             {
                 vm.AdditionalCapabilities = new AdditionalCapabilities(true);
+            }
+
+            if (this.IsParameterBound(c => c.ProximityPlacementGroupId))
+            {
+                vm.ProximityPlacementGroup = new SubResource(this.ProximityPlacementGroupId);
             }
 
             WriteObject(vm);

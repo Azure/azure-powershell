@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
-online version:https://docs.microsoft.com/en-us/powershell/module/az.monitor/remove-azmetricalertrulev2
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/remove-azmetricalertrulev2
 schema: 2.0.0
 ---
 
@@ -12,7 +12,7 @@ Removes a V2 (non-classic) metric alert rule.
 
 ## SYNTAX
 
-### ByMetricRuleResourceName
+### ByMetricRuleResourceName (Default)
 ```
 Remove-AzMetricAlertRuleV2 -Name <String> -ResourceGroupName <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -51,6 +51,7 @@ PS C:\>Remove-AzMetricAlertRuleV2 -ResourceId /subscriptions/00000000-0000-0000-
 ```
 
 This command removes the alert rule with resource ID `/subscriptions/00000000-0000-0000-0000-0000000/resourceGroups/metricAlertRG/providers/microsoft.insights/metricAlerts/myAlertRule`
+
 ### Example 3: Get an alert and remove it
 
 ```powershell
@@ -65,24 +66,9 @@ This command gets an alert and removes it.
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -95,7 +81,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -110,7 +96,7 @@ Accept wildcard characters: False
 The Metric rule object
 
 ```yaml
-Type: PSMetricAlertRuleV2
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricAlertRuleV2
 Parameter Sets: ByRuleObject
 Aliases:
 
@@ -125,7 +111,7 @@ Accept wildcard characters: False
 The name of metric alert rule
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByMetricRuleResourceName
 Aliases:
 
@@ -140,7 +126,7 @@ Accept wildcard characters: False
 Return true upon successful deletion.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -155,7 +141,7 @@ Accept wildcard characters: False
 The ResourceGroupName
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByMetricRuleResourceName
 Aliases: ResourceGroup
 
@@ -170,7 +156,7 @@ Accept wildcard characters: False
 The RuleResourceId
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByMetricRuleResourceId
 Aliases: RuleResourceId
 
@@ -181,12 +167,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -198,8 +199,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

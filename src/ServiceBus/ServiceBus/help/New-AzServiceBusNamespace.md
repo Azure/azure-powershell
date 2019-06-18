@@ -29,7 +29,7 @@ PS C:\> New-AzServiceBusNamespace -ResourceGroupName Default-ServiceBus-WestUS -
 
 Name               : SB-Example1
 Id                 : /subscriptions/{SubscriptionId}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
-ResourceGroup      : Default-ServiceBus-WestUS
+ResourceGroupName  : Default-ServiceBus-WestUS
 Location           : West US
 Tags               : {TesttingTags, TestingTagValue, TestTag, TestTagValue}
 Sku                : Name : Premium , Tier : Premium
