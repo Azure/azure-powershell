@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         private const string GetAll = "GetAllSubscriptions";
         private const string GetBySubscriptionId = "GetBySubscriptionId";
         private const string GetByUserId = "GetByUserId";
-        private const string GetByScope = "GetByApiId";
+        private const string GetByScope = "GetByScope";
         private const string GetByProductId = "GetByProductId";
         private const string GetByProductIdAndUser = "GetByProductIdAndUser";
 
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ParameterSetName = GetByScope,
             ValueFromPipelineByPropertyName = true,
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "Scope identifier. The Scope of the Subscription, whether it is Api Scope /apis/{apiId} or Product Scope /products/{productId} or Global API Scope /apis or Global scope /.")]
         public String Scope { get; set; }
 
