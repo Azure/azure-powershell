@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         #endregion
         protected override void ProcessRecordInternal()
         {
-             AlertingAction alertingAction = new AlertingAction(Severity, AznsAction, Trigger, ThrottlingInMinutes);
+             AlertingAction alertingAction = new AlertingAction(severity: Severity, aznsAction:AznsAction, trigger: Trigger, throttlingInMin: ThrottlingInMinutes);
              alertingAction.Validate();
              WriteObject(new PSScheduledQueryRuleAlertingAction(alertingAction));
         }

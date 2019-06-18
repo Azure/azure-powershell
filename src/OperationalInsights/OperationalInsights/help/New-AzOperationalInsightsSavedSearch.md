@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: DFEB9EA3-574A-463B-8B70-46D76ABCA84D
@@ -27,7 +27,7 @@ The **New-AzOperationalInsightsSavedSearch** cmdlet creates a new saved search w
 
 ### Example 1: Create a new saved search
 ```
-PS C:\>New-AzOperationalInsightSavedSearch -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -SavedSearchId "ContosoSavedSearchId" -DisplayName "ContosoSavedSearchDisplayName" -Category "ContosoSavedSearchCategory" -Query "*" -Version $Version -Force
+PS C:\>New-AzOperationalInsightsSavedSearch -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -SavedSearchId "ContosoSavedSearchId" -DisplayName "ContosoSavedSearchDisplayName" -Category "ContosoSavedSearchCategory" -Query "*" -Version $Version -Force
 ```
 
 This command creates a new saved search.
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -Query
-Specifies the query name.
+Specifies the query expression for the saved search.
 
 ```yaml
 Type: System.String
@@ -164,7 +164,7 @@ Aliases:
 
 Required: False
 Position: 7
-Default value: None
+Default value: 1
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```

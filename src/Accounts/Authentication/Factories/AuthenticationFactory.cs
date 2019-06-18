@@ -427,7 +427,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             if (account.IsPropertySet(AuthenticationFactory.AppServiceManagedIdentityFlag))
             {
-                return new ManagedServiceAppServiceAccessToken(account, environment, tenant);
+                return new ManagedServiceAppServiceAccessToken(account, environment, GetFunctionsResourceId(resourceId, environment), tenant);
             }
 
             return new ManagedServiceAccessToken(account, environment, GetResourceId(resourceId, environment), tenant);
@@ -436,6 +436,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         private string GetResourceId(string resourceIdorEndpointName, IAzureEnvironment environment)
         {
             return environment.GetEndpoint(resourceIdorEndpointName) ?? resourceIdorEndpointName;
+        }
+
+        private string GetFunctionsResourceId(string resourceIdOrEndpointName, IAzureEnvironment environment)
+        {
+            var resourceId = environment.GetEndpoint(resourceIdOrEndpointName) ?? resourceIdOrEndpointName;
+            if (string.Equals(
+                environment.GetEndpoint(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId),
+                resourceId, StringComparison.OrdinalIgnoreCase))
+            {
+                resourceId = environment.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager);
+            }
+
+            return resourceId;
         }
 
         private AdalConfiguration GetAdalConfiguration(IAzureEnvironment environment, string tenantId,

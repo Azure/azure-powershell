@@ -83,6 +83,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestExportResourceGroupWithFiltering()
+        {
+            TestRunner.RunTestScript("Test-ExportResourceGroupWithFiltering");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResourceGroupWithPositionalParams()
         {
             TestRunner.RunTestScript("Test-ResourceGroupWithPositionalParams");

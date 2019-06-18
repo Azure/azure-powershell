@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Show more error information when cmdlet failed with StorageException 
+
+## Version 1.4.0
+* Support Kind FileStorage and SkuName Premium_ZRS when create Storage account
+    - New-AzStorageAccount
+* Clarified description of blob immutability cmdlet
+    -  Remove-AzRmStorageContainerImmutabilityPolicy
+
+## Version 1.3.0
 * Upgrade to Storage Client Library 10.0.1 (the namespace of all objects from this SDK change from "Microsoft.WindowsAzure.Storage.*" to "Microsoft.Azure.Storage.*")
 * Upgrade to Microsoft.Azure.Management.Storage 11.0.0, to support new API version 2019-04-01.
 * The default Storage account Kind in Create Storage account change from 'Storage' to 'StorageV2'
