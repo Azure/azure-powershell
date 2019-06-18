@@ -88,7 +88,8 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
             HelpMessage = "The failover policy of the Instance Failover Group.")]
         [ValidateNotNullOrEmpty]
         [PSDefaultValue(Help = "Automatic")]
-        public FailoverPolicy FailoverPolicy { get; set; }
+        [PSArgumentCompleter("Automatic", "Manual")]
+        public string FailoverPolicy { get; set; }
 
         /// <summary>
         /// Gets or sets the grace period with data loss for the Sql Azure Instance Failover Group.
@@ -106,7 +107,8 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "Whether an outage on the secondary server should trigger automatic failover of the read-only endpoint. This feature is not yet supported.")]
         [ValidateNotNullOrEmpty]
-        public AllowReadOnlyFailoverToPrimary AllowReadOnlyFailoverToPrimary { get; set; }
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string AllowReadOnlyFailoverToPrimary { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -140,7 +142,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
             object parameterValue;
 
             int? gracePeriod = null;
-            if (!FailoverPolicy.ToString().Equals("Manual"))
+            if (!FailoverPolicy.Equals("Manual"))
             {
                 gracePeriod = (MyInvocation.BoundParameters.TryGetValue("GracePeriodWithDataLossHours", out parameterValue) ? (int)parameterValue : 1);
             }                     
@@ -157,7 +159,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
                 PartnerManagedInstanceName = PartnerManagedInstanceName,
                 ReadWriteFailoverPolicy = FailoverPolicy.ToString(),
                 FailoverWithDataLossGracePeriodHours = gracePeriod,
-                ReadOnlyFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("AllowReadOnlyFailoverToPrimary") ? AllowReadOnlyFailoverToPrimary.ToString() : AllowReadOnlyFailoverToPrimary.Disabled.ToString(),
+                ReadOnlyFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("AllowReadOnlyFailoverToPrimary") ? AllowReadOnlyFailoverToPrimary : AllowReadOnlyFailoverToPrimary.Disabled.ToString(),
             });
             return newEntity;
         }

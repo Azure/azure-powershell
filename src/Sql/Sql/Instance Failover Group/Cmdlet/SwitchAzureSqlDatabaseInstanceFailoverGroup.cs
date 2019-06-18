@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         [Parameter(ParameterSetName = SwitchIfgByResourceIdSet,
             Mandatory = true,
             Position = 0,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Resource ID of the Instance Failover Group that will become the new Primary.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }

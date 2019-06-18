@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         [Parameter(ParameterSetName = RemoveIfgByResourceIdSet,
             Mandatory = true,
             Position = 0,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Resource ID of the Instance Failover Group to remove.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
