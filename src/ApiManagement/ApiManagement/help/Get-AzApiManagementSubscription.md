@@ -43,9 +43,9 @@ Get-AzApiManagementSubscription -Context <PsApiManagementContext> [-ProductId <S
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### GetByApiId
+### GetByScope
 ```
-Get-AzApiManagementSubscription -Context <PsApiManagementContext> [-Scope <String>]
+Get-AzApiManagementSubscription -Context <PsApiManagementContext> -Scope <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -210,7 +210,7 @@ Type: System.String
 Parameter Sets: GetByApiId
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

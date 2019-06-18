@@ -127,6 +127,7 @@ Id                            : /subscriptions/subid/resourceGroups/Api-Default-
 ResourceGroupName             : Api-Default-East-US
 ServiceName                   : contoso
 ```
+
 This command imports an API from the specified Open 3.0 specification document and create a new ApiVersion.
 
 ## PARAMETERS
