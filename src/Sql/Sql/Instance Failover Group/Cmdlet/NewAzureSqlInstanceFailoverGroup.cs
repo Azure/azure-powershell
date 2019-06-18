@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
                 PartnerManagedInstanceName = PartnerManagedInstanceName,
                 ReadWriteFailoverPolicy = FailoverPolicy.ToString(),
                 FailoverWithDataLossGracePeriodHours = gracePeriod,
-                ReadOnlyFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("AllowReadOnlyFailoverToPrimary") ? AllowReadOnlyFailoverToPrimary : AllowReadOnlyFailoverToPrimary.Disabled.ToString(),
+                ReadOnlyFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("AllowReadOnlyFailoverToPrimary") ? AllowReadOnlyFailoverToPrimary : "Disabled",
             });
             return newEntity;
         }
