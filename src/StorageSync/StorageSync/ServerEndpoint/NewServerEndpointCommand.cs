@@ -232,10 +232,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
                 var createParameters = new ServerEndpointCreateParameters()
                 {
-                    CloudTiering = CloudTiering.IsPresent ? StorageSyncConstants.CloudTieringOn : StorageSyncConstants.CloudTieringOff,
+                    CloudTiering = CloudTiering.ToBool() ? StorageSyncConstants.CloudTieringOn : StorageSyncConstants.CloudTieringOff,
                     VolumeFreeSpacePercent = VolumeFreeSpacePercent,
                     ServerLocalPath = ServerLocalPath,
-                    ServerResourceId = ServerResourceId
+                    ServerResourceId = ServerResourceId,
+                    OfflineDataTransfer = OfflineDataTransfer.ToBool() ? StorageSyncConstants.OfflineDataTransferOn : StorageSyncConstants.OfflineDataTransferOff,
+                    OfflineDataTransferShareName = OfflineDataTransferShareName
                 };
 
                 string resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName;

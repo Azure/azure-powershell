@@ -88,6 +88,9 @@ namespace Microsoft.Azure.Commands.Compute
                 HelpMessage = "Disables the settings for table content")]
         public SwitchParameter SkipStorage { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has sucessufuly been completed, use some other mechanism.")]
+        public SwitchParameter NoWait { get; set; }
+
         public SetAzureRmVMAEMExtension()
         {
         }
@@ -403,25 +406,50 @@ namespace Microsoft.Azure.Commands.Compute
 
                 Version aemVersion = this._Helper.GetExtensionVersion(selectedVM, selectedVMStatus, OSType, AEMExtensionConstants.AEMExtensionType[OSType], AEMExtensionConstants.AEMExtensionPublisher[OSType]);
 
-                var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
-                    this.ResourceGroupName, this.VMName, AEMExtensionConstants.AEMExtensionDefaultName[OSType],
-                    new VirtualMachineExtension()
-                    {
-                        Publisher = AEMExtensionConstants.AEMExtensionPublisher[OSType],
-                        VirtualMachineExtensionType = AEMExtensionConstants.AEMExtensionType[OSType],
-                        TypeHandlerVersion = aemVersion.ToString(2),
-                        Settings = jsonPublicConfig,
-                        ProtectedSettings = jsonPrivateConfig,
-                        Location = selectedVM.Location,
-                        AutoUpgradeMinorVersion = true,
-                        ForceUpdateTag = DateTime.Now.Ticks.ToString()
-                    }).GetAwaiter().GetResult();
+                if (NoWait.IsPresent)
+                {
+                    var op = this.VirtualMachineExtensionClient.BeginCreateOrUpdateWithHttpMessagesAsync(
+                        this.ResourceGroupName, this.VMName, AEMExtensionConstants.AEMExtensionDefaultName[OSType],
+                        new VirtualMachineExtension()
+                        {
+                            Publisher = AEMExtensionConstants.AEMExtensionPublisher[OSType],
+                            VirtualMachineExtensionType = AEMExtensionConstants.AEMExtensionType[OSType],
+                            TypeHandlerVersion = aemVersion.ToString(2),
+                            Settings = jsonPublicConfig,
+                            ProtectedSettings = jsonPrivateConfig,
+                            Location = selectedVM.Location,
+                            AutoUpgradeMinorVersion = true,
+                            ForceUpdateTag = DateTime.Now.Ticks.ToString()
+                        }).GetAwaiter().GetResult();
 
-                this._Helper.WriteHost("[INFO] Azure Enhanced Monitoring Extension for SAP configuration updated. It can take up to 15 Minutes for the monitoring data to appear in the SAP system.");
-                this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzVMAEMExtension commandlet.");
+                    this._Helper.WriteHost("[INFO] Azure Enhanced Monitoring Extension for SAP configuration updated. It can take up to 15 Minutes for the monitoring data to appear in the SAP system.");
+                    this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzVMAEMExtension commandlet.");
 
-                var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
-                WriteObject(result);
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
+                }
+                else
+                {
+                    var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                        this.ResourceGroupName, this.VMName, AEMExtensionConstants.AEMExtensionDefaultName[OSType],
+                        new VirtualMachineExtension()
+                        {
+                            Publisher = AEMExtensionConstants.AEMExtensionPublisher[OSType],
+                            VirtualMachineExtensionType = AEMExtensionConstants.AEMExtensionType[OSType],
+                            TypeHandlerVersion = aemVersion.ToString(2),
+                            Settings = jsonPublicConfig,
+                            ProtectedSettings = jsonPrivateConfig,
+                            Location = selectedVM.Location,
+                            AutoUpgradeMinorVersion = true,
+                            ForceUpdateTag = DateTime.Now.Ticks.ToString()
+                        }).GetAwaiter().GetResult();
+
+                    this._Helper.WriteHost("[INFO] Azure Enhanced Monitoring Extension for SAP configuration updated. It can take up to 15 Minutes for the monitoring data to appear in the SAP system.");
+                    this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzVMAEMExtension commandlet.");
+
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
+                }
             });
         }
 

@@ -27,6 +27,7 @@
 * Changed behavior for Start-AzAutomationDscCompilationJob to just start the job instead of waiting for its completion.
     * Fix for issue https://github.com/Azure/azure-powershell/issues/8347
 * Fix for Get-AzAutomationDscNode when using -Name returns all node. Now it returns matching node only.
+* Fixed Start-AzAutomationDscNodeConfigurationDeployment cmdlet to allow multiple executions
 
 ## Version 1.2.1
 * Fixed New-AzAutomationSoftwareUpdateConfiguration cmdlet bug for Inclusions. Now parameter IncludedKbNumber and IncludedPackageNameMask should work.

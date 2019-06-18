@@ -19,9 +19,20 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+* Added new cmdlets:
+    - New-AzBlueprint
+    - Set-AzBlueprint
+    - Publish-AzBlueprint
+    - New-AzBlueprintArtifact
+    - Set-AzBlueprintArtifact
+    - Get-AzBlueprintArtifact
+    - Export-AzBlueprintWithArtifact
+    - Import-AzBlueprintWithArtifact'
+
 ## Version 0.1.1
 * Update Remove- cmdlet to not require SubscriptionId parameter
-* Update cmdlet examples 
+* Update cmdlet examples
 * Update Blueprint .NET SDK version
 * Support secure strings as assignment parameters
 * Support WhoIsBlueprint

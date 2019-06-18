@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// 'Contains', 'LessThan', 'GreaterThan', 'LessThanOrEqual',
         /// 'GreaterThanOrEqual', 'BeginsWith', 'EndsWith'
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "Describes operator to be matched. Possible values include: 'Any', 'IPMatch', 'GeoMatch', 'Equal', 'Contains', 'LessThan', 'GreaterThan', 'LessThanOrEqual', 'GreaterThanOrEqual', 'BeginsWith', 'EndsWith''")]
-        [PSArgumentCompleter("Any", "IPMatch", "GeoMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith")]
+        [Parameter(Mandatory = true, HelpMessage = "Describes operator to be matched. Possible values include: 'Any', 'IPMatch', 'GeoMatch', 'Equal', 'Contains', 'LessThan', 'GreaterThan', 'LessThanOrEqual', 'GreaterThanOrEqual', 'BeginsWith', 'EndsWith', 'RegEx'")]
+        [PSArgumentCompleter("Any", "IPMatch", "GeoMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith", "RegEx")]
         public string OperatorProperty { get; set; }
 
         /// <summary>
@@ -65,6 +65,13 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "Describes if this is negate condition or not. Default value is false")]
         public bool NegateCondition { get; set; }
 
+        /// <summary>
+        /// Tranforms value.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Transforms to apply. Possible values include: 'Lowercase', 'Uppercase', 'Trim', 'UrlDecode', 'UrlEncode', 'RemoveNulls'.")]
+        [PSArgumentCompleter("Lowercase", "Uppercase", "Trim", "UrlDecode", "UrlEncode", "RemoveNulls")]
+        public string[] Transform { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ValidateArguments();
@@ -75,7 +82,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 MatchValue = MatchValue?.ToList(),
                 NegateCondition = !this.IsParameterBound(c => c.NegateCondition) ? false : NegateCondition,
                 OperatorProperty = OperatorProperty,
-                Selector = Selector
+                Selector = Selector,
+                Transform = Transform?.ToList()
             };
             WriteObject(matchCondition);
         }

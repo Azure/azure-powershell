@@ -19,10 +19,23 @@
 -->
 ## Upcoming Release
 * Add Instance Failover Group cmdlets from preview release to public release
+
+## Version 1.12.0
+* Fix Advanced Threat Protection storage endpoint suffix
+* Fix Advanced Data Security enable overrides Advanced Threat Protection policy
+* New Cmdlets for Management.Sql to allow customers to add TDE keys and set TDE protector for managed instances
+   - Add-AzSqlInstanceKeyVaultKey
+   - Get-AzSqlInstanceKeyVaultKey
+   - Remove-AzSqlInstanceKeyVaultKey
+   - Get-AzSqlInstanceTransparentDataEncryptionProtector
+   - Set-AzSqlInstanceTransparentDataEncryptionProtector
+
+## Version 1.11.0
 * Add DnsZonePartner Parameter for New-AzureSqlInstance cmdlet to support AutoDr for Managed Instance.
 * Deprecating Get-AzSqlDatabaseSecureConnectionPolicy cmdlet
 * Rename Threat Detection cmdlets to Advanced Threat Protection
 * New-AzSqlInstance -StorageSizeInGB and -LicenseType parameters are now optional.
+* Fix issue in reference documentation for `Enable-AzSqlServerAdvancedDataSecurity`
 
 ## Version 1.10.0
 * Rename Advanced Threat Protection cmdlets to Advanced Data Security and enable Vulnerability Assessment by default

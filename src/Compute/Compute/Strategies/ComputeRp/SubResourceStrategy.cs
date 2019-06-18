@@ -29,6 +29,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             => engine.GetSubResourceReference(availabilitySet);
 
         public static SubResource GetReference(
+            this IEngine engine, ResourceConfig<ProximityPlacementGroup> proximityPlacementGroup)
+            => engine.GetSubResourceReference(proximityPlacementGroup);
+
+        public static SubResource GetReference(
             this IEngine engine, ResourceConfig<N.NetworkSecurityGroup> networkSecurityGroup)
             => engine.GetSubResourceReference(networkSecurityGroup);
 
