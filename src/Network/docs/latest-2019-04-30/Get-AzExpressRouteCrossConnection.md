@@ -109,7 +109,7 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the resource group (peering location of the circuit).
 
 ```yaml
 Type: System.String

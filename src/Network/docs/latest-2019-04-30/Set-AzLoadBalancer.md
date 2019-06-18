@@ -192,7 +192,7 @@ Dynamic: False
 ```
 
 ### -LoadBalancingRule
-Object collection representing the load balancing rules Gets the provisioning 
+Object collection representing the load balancing rules Gets the provisioning
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ILoadBalancingRule[]

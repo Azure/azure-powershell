@@ -104,7 +104,7 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-The resource group name of the VirtualWan.
+The resource group name of the P2SVpnServerConfiguration.
 
 ```yaml
 Type: System.String

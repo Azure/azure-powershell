@@ -129,7 +129,7 @@ Dynamic: False
 ```
 
 ### -IPConfigurationName
-The IP configuration name.
+The name of the IP configuration.
 
 ```yaml
 Type: System.String
@@ -145,7 +145,7 @@ Dynamic: False
 ```
 
 ### -Name
-The name of the public IP Address.
+The name of the subnet.
 
 ```yaml
 Type: System.String
@@ -161,7 +161,7 @@ Dynamic: False
 ```
 
 ### -NetworkInterfaceName
-The network interface name.
+The name of the network interface.
 
 ```yaml
 Type: System.String

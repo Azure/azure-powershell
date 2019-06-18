@@ -118,7 +118,7 @@ Dynamic: False
 ```
 
 ### -IPConfigurationName
-The name of the ip configuration.
+The name of the ip configuration name.
 
 ```yaml
 Type: System.String

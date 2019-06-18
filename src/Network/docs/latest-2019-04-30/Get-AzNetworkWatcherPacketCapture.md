@@ -110,7 +110,7 @@ Dynamic: False
 ```
 
 ### -Name
-The name given to the packet capture session.
+The name of the packet capture session.
 
 ```yaml
 Type: System.String
@@ -126,7 +126,7 @@ Dynamic: False
 ```
 
 ### -NetworkWatcherName
-The name of the Network Watcher resource.
+The name of the network watcher.
 
 ```yaml
 Type: System.String

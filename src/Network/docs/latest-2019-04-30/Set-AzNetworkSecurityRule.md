@@ -429,7 +429,6 @@ Asterisk '*' can also be used to match all source IPs.
 Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
 If this is an ingress rule, specifies where network traffic originates from.
 
-
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded

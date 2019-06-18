@@ -201,7 +201,7 @@ Dynamic: False
 ```
 
 ### -NetworkWatcherFlowAnalyticConfigurationWorkspaceResourceId
-Resource Id of the attached workspace 
+Resource Id of the attached workspace
 
 ```yaml
 Type: System.String

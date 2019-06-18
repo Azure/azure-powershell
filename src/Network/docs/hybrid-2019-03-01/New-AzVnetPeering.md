@@ -197,8 +197,7 @@ Dynamic: False
 ```
 
 ### -Name
-The name of the resource that is unique within a resource group.
-This name can be used to access the resource.
+The name of the peering.
 
 ```yaml
 Type: System.String
@@ -416,9 +415,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkPeering
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkPeering
 
 ## OUTPUTS
 
