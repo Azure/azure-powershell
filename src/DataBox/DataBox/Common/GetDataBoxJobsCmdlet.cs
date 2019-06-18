@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
 
         public static string TenantId { get; internal set; }
+
+        [Parameter(Mandatory = true)]
+        [ValidateNotNullOrEmpty]
         public static string SubscriptionId { get; internal set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ListParameterSet)]
@@ -62,7 +65,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
 
             // Initializes a new instance of the DataBoxManagementClient class.
 
-            this.DataBoxManagementClient.SubscriptionId = "05b5dd1c-793d-41de-be9f-6f9ed142f695";
+            this.DataBoxManagementClient.SubscriptionId = SubscriptionId;
             if (Name != null && string.IsNullOrWhiteSpace(Name))
             {
                 throw new PSArgumentNullException("Name");

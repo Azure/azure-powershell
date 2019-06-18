@@ -12,14 +12,15 @@ using System.Threading;
 
 namespace Microsoft.Azure.Commands.DataBox.Common
 {
-    [Cmdlet(VerbsCommon.Get, "AzDataBoxPassword"), OutputType(typeof(List<DataBoxCredentials>))]
-    public class GetDataBoxPassword : AzureDataBoxCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzDataBoxSMBCreds"), OutputType(typeof(List<DataBoxSMBCredentials>))]
+
+    public class GetDataBoxSMBCreds : AzureDataBoxCmdletBase
     {
         public static string TenantId { get; internal set; }
 
-        
 
-        public static List<DataBoxCredentials> Credentials;
+
+        public static List<DataBoxSMBCredentials> Credentials;
 
         [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
@@ -44,7 +45,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             //}
 
             // Initializes a new instance of the DataBoxManagementClient class.
-            Credentials = new List<DataBoxCredentials>();
+            Credentials = new List<DataBoxSMBCredentials>();
 
             this.DataBoxManagementClient.SubscriptionId = this.SubscriptionId;
             if (Name != null && string.IsNullOrWhiteSpace(Name))
@@ -56,44 +57,41 @@ namespace Microsoft.Azure.Commands.DataBox.Common
 
             IEnumerable<UnencryptedCredentials> result = DataBoxManagementClient.Jobs.ListCredentials(ResourceGroupName, Name);
 
-            if (sku.Equals("DataBoxDisk"))
-            {
-                DataBoxDiskJobSecrets secrets = result.ToList()[0].JobSecrets as DataBoxDiskJobSecrets;
-                foreach (var obj in secrets.DiskSecrets)
-                {
-                    Credentials.Add(new DataBoxCredentials(obj.DiskSerialNumber, obj.BitLockerKey));
-                }
-            }
-            else if (sku.Equals("DataBox"))
+            
+            if (sku.Equals("DataBox"))
             {
                 DataboxJobSecrets secrets = result.ToList()[0].JobSecrets as DataboxJobSecrets;
-                foreach (var obj in secrets.PodSecrets)
+                foreach (var obj in secrets.PodSecrets[0].AccountCredentialDetails[0].ShareCredentialDetails)
                 {
-                    Credentials.Add(new DataBoxCredentials(obj.DeviceSerialNumber, obj.DevicePassword));
+                    Credentials.Add(new DataBoxSMBCredentials(obj.ShareName, obj.UserName , obj.Password));
                 }
             }
             else
             {
                 DataBoxHeavyJobSecrets secrets = result.ToList()[0].JobSecrets as DataBoxHeavyJobSecrets;
-                foreach (var obj in secrets.CabinetPodSecrets)
+                foreach (var obj in secrets.CabinetPodSecrets[0].AccountCredentialDetails[0].ShareCredentialDetails)
                 {
-                    Credentials.Add(new DataBoxCredentials(obj.DeviceSerialNumber, obj.DevicePassword));
+                    Credentials.Add(new DataBoxSMBCredentials(obj.ShareName, obj.UserName, obj.Password));
                 }
             }
-            
+
             WriteObject(Credentials);
         }
     }
 
-    public class DataBoxCredentials
+    public class DataBoxSMBCredentials
     {
-        public string serialNo { get; set; }
+        public string shareName { get; set; }
+        public string username { get; set; }
         public string password { get; set; }
 
-        public DataBoxCredentials(string serialNo, string password)
+        public DataBoxSMBCredentials(string shareName, string username, string password)
         {
-            this.serialNo = serialNo;
+            this.shareName = shareName;
+            this.username = username;
             this.password = password;
         }
     }
 }
+    
+
