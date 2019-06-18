@@ -1251,11 +1251,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
             Requires.Argument("NodeConfiguraionName", nodeConfiguraionName).NotNullOrEmpty().ValidNodeConfigurationName();
 
             const string runbookName = "Deploy-NodeConfigurationToAutomationDscNodesV1";
+            System.Guid jobId = System.Guid.NewGuid();
 
-            IDictionary<string, string> processedParameters =
-                    this.ProcessRunbookParameters(BuildParametersForNodeConfigurationDeploymentRunbook(),
-                        ProcessParametersFornodeConfigurationRunbook(resourceGroupName, automationAccountName,
-                            nodeConfiguraionName, nodeNames));
+            IDictionary<string, string> processedParameters = this.ProcessRunbookParameters(BuildParametersForNodeConfigurationDeploymentRunbook(),
+              ProcessParametersFornodeConfigurationRunbook(jobId, resourceGroupName, automationAccountName, nodeConfiguraionName, nodeNames));
 
             JobSchedule jobSchedule = null;
             Job job = null;
@@ -1265,7 +1264,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 job = this.automationManagementClient.Job.Create(
                     resourceGroupName,
                     automationAccountName,
-                    new Guid().ToString(),
+                    jobId.ToString(),
                     new JobCreateParameters
                     {
                         Runbook = new RunbookAssociationProperty
@@ -1280,7 +1279,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 jobSchedule = this.automationManagementClient.JobSchedule.Create(
                     resourceGroupName,
                     automationAccountName, 
-                    new Guid(),
+                    jobId,
                     new JobScheduleCreateParameters
                     {
                         Schedule = new ScheduleAssociationProperty { Name = schedule.Name },
@@ -1592,7 +1591,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return new Model.JobStream(jobStream, resourceGroupName, automationAccountName, jobId);
         }
 
-        private IDictionary<string, object> ProcessParametersFornodeConfigurationRunbook(string resourceGroup,
+        private IDictionary<string, object> ProcessParametersFornodeConfigurationRunbook(System.Guid jobId, string resourceGroup,
             string automationAccountName, string nodeConfigurationName, string[][] nodeNames, int waitingPeriod = 0,
             int numberOfAttempts = 0)
         {
@@ -1604,6 +1603,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 parameters.Add("AutomationAccountName", automationAccountName);
                 parameters.Add("NodeConfigurationName", nodeConfigurationName);
                 parameters.Add("ListOfNodeNames", nodeNames);
+                parameters.Add("Id", jobId.ToString());
             }
             catch (JsonSerializationException)
             {
@@ -1629,44 +1629,51 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
             var paramsForRunbook = new List<KeyValuePair<string, RunbookParameter>>
             {
-                new KeyValuePair<string, RunbookParameter>("ResourceGroupName", new RunbookParameter
+                new KeyValuePair<string, RunbookParameter>("Id", new RunbookParameter
                 {
                     IsMandatory = true,
                     Position = 0,
                     DefaultValue = "",
-                    Type = "System.String"
+                    Type = "System.Guid"
                 }),
-                new KeyValuePair<string, RunbookParameter>("AutomationAccountName", new RunbookParameter
+                new KeyValuePair<string, RunbookParameter>("ResourceGroupName", new RunbookParameter
                 {
                     IsMandatory = true,
                     Position = 1,
                     DefaultValue = "",
                     Type = "System.String"
                 }),
-                new KeyValuePair<string, RunbookParameter>("NodeConfigurationName", new RunbookParameter
+                new KeyValuePair<string, RunbookParameter>("AutomationAccountName", new RunbookParameter
                 {
                     IsMandatory = true,
                     Position = 2,
                     DefaultValue = "",
                     Type = "System.String"
                 }),
-                new KeyValuePair<string, RunbookParameter>("ListOfNodeNames", new RunbookParameter
+                new KeyValuePair<string, RunbookParameter>("NodeConfigurationName", new RunbookParameter
                 {
                     IsMandatory = true,
                     Position = 3,
+                    DefaultValue = "",
+                    Type = "System.String"
+                }),
+                new KeyValuePair<string, RunbookParameter>("ListOfNodeNames", new RunbookParameter
+                {
+                    IsMandatory = true,
+                    Position = 4,
                     Type = "System.Array"
                 }),
                 new KeyValuePair<string, RunbookParameter>("WaitingPeriod", new RunbookParameter
                 {
                     IsMandatory = false,
-                    Position = 4,
+                    Position = 5,
                     DefaultValue = "60",
                     Type = "System.Int32"
                 }),
                 new KeyValuePair<string, RunbookParameter>("NumberOfTriesPerGroup", new RunbookParameter
                 {
                     IsMandatory = false,
-                    Position = 5,
+                    Position = 6,
                     DefaultValue = "100",
                     Type = "System.Int32"
                 })

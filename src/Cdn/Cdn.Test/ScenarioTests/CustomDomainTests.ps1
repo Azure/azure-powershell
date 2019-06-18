@@ -96,9 +96,9 @@ function Test-CustomDomainEnableDisableWithRunningEndpoint
     Assert-AreEqual $customDomainName $customDomain.Name
     Assert-AreEqual $hostName $customDomain.HostName
 
-    $enabled = $customDomain | Enable-AzCdnCustomDomain -PassThru
+    $enabled = $customDomain | Enable-AzCdnCustomDomainHttps -PassThru
     Assert-True{$enabled}
-    Assert-ThrowsContains { Enable-AzCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "BadRequest"
+    Assert-ThrowsContains { Enable-AzCdnCustomDomainHttps -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "BadRequest"
 
     Assert-ThrowsContains { Disable-AzCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "BadRequest"
 
@@ -198,23 +198,6 @@ function Test-CustomDomainEnableHttpsWithRunningEndpoint
     $customDomain = Get-AzCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
 
     Assert-AreEqual $customDomain.CustomHttpsProvisioningState "Enabling"
-
-    Assert-ThrowsContains { $customDomain | Enable-AzCdnCustomDomainHttps } "BadRequest"
-
-    Assert-ThrowsContains {  $customDomain | Disable-AzCdnCustomDomainHttps } "BadRequest"
-
-    [int]$counter = 0
-    do {
-           SleepInRecordMode 600
-           $customDomain = Get-AzCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
-    } while ($customDomain.CustomHttpsProvisioningState -ne "Enabled" -and $counter++ -lt 50)
-
-    $disabled = $customDomain | Disable-AzCdnCustomDomainHttps -PassThru
-    Assert-True{$disabled}
-
-    $customDomain = Get-AzCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
-
-    Assert-AreEqual $customDomain.CustomHttpsProvisioningState "Disabling"
 
     Assert-ThrowsContains { $customDomain | Enable-AzCdnCustomDomainHttps } "BadRequest"
 

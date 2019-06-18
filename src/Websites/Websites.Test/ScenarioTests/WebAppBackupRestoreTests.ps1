@@ -21,8 +21,8 @@ $snapshotAppSlot = 'staging'
 # Restoring a deleted web app requires an app to have a snapshot available.
 # Deploy a web app and wait at least an hour for a snapshot.
 # Update these global variables to re-record Test-RestoreDeletedWebApp.
-$undeleteRgName = 'nickingssltests'
-$undeleteAppName = 'nkundeletetest'
+$undeleteRgName = 'web2'
+$undeleteAppName = 'undeletesrc'
 $undeleteSlot = 'testslot'
 
 # !!! Storage keys and SAS URIs will be stored in the backup test recordings !!!
@@ -343,7 +343,7 @@ function Test-EditAndGetWebAppBackupConfigurationPiping
 function Test-GetWebAppSnapshot
 {
 	# Test named parameters
-	$snapshots = Get-AzWebAppSnapshot -ResourceGroupName $snapshotRgName -Name $snapshotAppName
+	$snapshots = Get-AzWebAppSnapshot -ResourceGroupName $snapshotRgName -Name $snapshotAppName -UseDisasterRecovery
 	Assert-True { $snapshots.Length -gt 0 }
 	Assert-NotNull $snapshots[0]
 	Assert-NotNull $snapshots[0].SnapshotTime
