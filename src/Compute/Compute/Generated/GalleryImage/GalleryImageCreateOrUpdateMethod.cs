@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public string ReleaseNoteUri { get; set; }
-        
+
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
-        
+
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]

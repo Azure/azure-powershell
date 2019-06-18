@@ -33,26 +33,30 @@ function ServiceBusTests
 	Assert-True {$checkNameResult.NameAvailable}
 
     Write-Debug " Create new eventHub namespace"
-    Write-Debug "NamespaceName : $namespaceName" 
+    Write-Debug "NamespaceName : $namespaceName"
     $result = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location  -Name $namespaceName -SkuName "Standard"
-	# Assert 
+	# Assert
 	Assert-AreEqual $result.Name $namespaceName
 	Assert-AreEqual $result.ProvisioningState "Succeeded"
+	Assert-AreEqual $result.ResourceGroup $resourceGroupName "Namespace create : ResourceGroup name matches"
+	Assert-AreEqual $result.ResourceGroupName $resourceGroupName "Namespace create : ResourceGroupName name matches"
 
     Write-Debug "Get the created namespace within the resource group"
     $getNamespace = Get-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
 	Assert-AreEqual $getNamespace.Name $namespaceName "Get-ServicebusName- created namespace not found"
+	Assert-AreEqual $getNamespace.ResourceGroup $resourceGroupName "Namespace get : ResourceGroup name matches"
+	Assert-AreEqual $getNamespace.ResourceGroupName $resourceGroupName "Namespace get : ResourceGroupName name matches"
     
-	$UpdatedNameSpace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName -SkuName "Standard" -SkuCapacity 2	
+	$UpdatedNameSpace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName -SkuName "Standard" -SkuCapacity 2
 	Assert-AreEqual $UpdatedNameSpace.Name $namespaceName
 
     Write-Debug "Namespace name : $namespaceName2"
-    $result = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName2    
+    $result = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName2
 
     Write-Debug "Get all the namespaces created in the resourceGroup"
     $allCreatedNamespace = Get-AzServiceBusNamespace -ResourceGroupName $resourceGroupName
 	Assert-True {$allCreatedNamespace.Count -gt 1}
-    
+	
     Write-Debug "Get all the namespaces created in the subscription"
     $allCreatedNamespace = Get-AzServiceBusNamespace
 	Assert-True {$allCreatedNamespace.Count -gt 1 }

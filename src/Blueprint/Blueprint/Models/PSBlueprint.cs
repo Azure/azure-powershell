@@ -14,25 +14,24 @@
 
 using Microsoft.Azure.Management.Blueprint.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Newtonsoft.Json;
-using System.Collections;
 using Microsoft.Azure.Commands.Blueprint.Common;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.Blueprint.Models
 {
     public class PSBlueprint : PSBlueprintBase
     {
-        public string DefinitionLocationId { get; set; }
-        public string Scope { get; set; }
-        public object Versions { get; set; }
+        public string[] Versions { get; set; }
 
         /// <summary>
         /// Create a PSBlueprint object from a BlueprintModel.
         /// </summary>
         /// <param name="model"></param>
-        /// <param name="managementGroupName">Name of the management group the blueprint belongs to.</param>
+        /// <param name="scope">Name of the scope the blueprint is under.</param>
         /// <returns>A new PSBlueprint object</returns>
         internal static PSBlueprint FromBlueprintModel(BlueprintModel model, string scope)
         {
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
             {
                 Id = model.Id,
                 Name = model.Name,
-                DefinitionLocationId = Utils.GetDefinitionLocationId(scope),
                 Scope = scope,
                 DisplayName = model.DisplayName,
                 Description = model.Description,
@@ -48,26 +46,19 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                 TargetScope = PSBlueprintTargetScope.Unknown,
                 Parameters = new Dictionary<string, PSParameterDefinition>(),
                 ResourceGroups = new Dictionary<string, PSResourceGroupDefinition>(),
-                Versions = model.Versions
+                Versions = null
             };
 
-            if (DateTime.TryParse(model.Status.TimeCreated, out DateTime timeCreated))
+            if (model.Versions != null)
             {
-                psBlueprint.Status.TimeCreated = timeCreated;
-            }
-            else
-            {
-                psBlueprint.Status.TimeCreated = null;
+                var versionsDict = JObject.FromObject(model.Versions).ToObject<Dictionary<string, object>>();
+                psBlueprint.Versions = versionsDict.Keys.ToArray();
             }
 
-            if (DateTime.TryParse(model.Status.LastModified, out DateTime lastModified))
-            {
-                psBlueprint.Status.LastModified = lastModified;
-            }
-            else
-            {
-                psBlueprint.Status.LastModified = null;
-            }
+            psBlueprint.Status.TimeCreated = model.Status.TimeCreated;
+
+            psBlueprint.Status.LastModified = model.Status.LastModified;
+
 
             if (Enum.TryParse(model.TargetScope, true, out PSBlueprintTargetScope targetScope))
             {
@@ -105,7 +96,16 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                         DependsOn = item.Value.DependsOn.ToList()
                     });
             }
-            
+
+            if (psBlueprint.Scope.StartsWith("/subscriptions"))
+            {
+                psBlueprint.SubscriptionId = Utils.GetDefinitionLocationId(scope);
+            }
+            else
+            {
+                psBlueprint.ManagementGroupId = Utils.GetDefinitionLocationId(scope);
+            }
+
             return psBlueprint;
         }
     }

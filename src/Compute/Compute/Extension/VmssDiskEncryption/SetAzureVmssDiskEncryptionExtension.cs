@@ -29,7 +29,7 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssDiskEncryptionExtension",SupportsShouldProcess = true,DefaultParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientSecretParameterSet)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssDiskEncryptionExtension", SupportsShouldProcess = true, DefaultParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientSecretParameterSet)]
     [OutputType(typeof(PSVirtualMachineScaleSetExtension))]
     public class SetAzureVmssDiskEncryptionExtensionCommand : VirtualMachineScaleSetExtensionBaseCmdlet
     {
@@ -143,15 +143,15 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.keyVaultUrlKey, DiskEncryptionKeyVaultUrl ?? string.Empty);
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.keyEncryptionKeyUrlKey, KeyEncryptionKeyUrl ?? string.Empty);
-			publicSettings.Add(AzureDiskEncryptionExtensionConstants.keyVaultResourceIdKey, DiskEncryptionKeyVaultId ?? string.Empty);
-			publicSettings.Add(AzureDiskEncryptionExtensionConstants.kekVaultResourceIdKey, KeyEncryptionKeyVaultId ?? string.Empty);
+            publicSettings.Add(AzureDiskEncryptionExtensionConstants.keyVaultResourceIdKey, DiskEncryptionKeyVaultId ?? string.Empty);
+            publicSettings.Add(AzureDiskEncryptionExtensionConstants.kekVaultResourceIdKey, KeyEncryptionKeyVaultId ?? string.Empty);
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.volumeTypeKey, VolumeType ?? string.Empty);
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.encryptionOperationKey, AzureDiskEncryptionExtensionConstants.enableEncryptionOperation);
 
             string keyEncryptAlgorithm = string.Empty;
             if (!string.IsNullOrEmpty(this.KeyEncryptionKeyUrl))
             {
-                if(!string.IsNullOrEmpty(KeyEncryptionAlgorithm))
+                if (!string.IsNullOrEmpty(KeyEncryptionAlgorithm))
                 {
                     keyEncryptAlgorithm = KeyEncryptionAlgorithm;
                 }
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 this.ExtensionName = this.ExtensionName ?? AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
                 vmssExtensionParameters = new VirtualMachineScaleSetExtension
                 {
-					Name = this.ExtensionName,
+                    Name = this.ExtensionName,
                     Publisher = AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher,
                     Type = AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultName,
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? AzureVmssDiskEncryptionExtensionContext.LinuxExtensionDefaultVersion,
