@@ -18,3 +18,4 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+    * Improving logic of getting subscriptions for query to ARG
