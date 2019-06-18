@@ -143,7 +143,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             // Recursive only take effect on File Dir
             if (!foundAFolder && Recursive.IsPresent)
             {
-                WriteWarning("The target object of the 'Path' is an Azure File, the parameter 'Recursive' won't take effect.");
+                WriteVerbose("The target object of the 'Path' is an Azure File, the parameter '-Recursive' won't take effect.");
             }
 
             //List handle

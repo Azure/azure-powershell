@@ -166,7 +166,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(string.Format("Close File Handles for File or FileDirectory on Path: {0}", Path), "This operation will force the provided file handle(s) closed, which may cause data loss or corruption for active applications/users.", null))
+            if (this.ShouldProcess(string.Format("Close File Handles for File or FileDirectory on Path: {0}", this.Path != null? this.Path : (this.FileHandle != null? this.FileHandle.Path: null) ), "This operation will force the provided file handle(s) closed, which may cause data loss or corruption for active applications/users.", null))
             {
                 CloudFileDirectory baseDirectory = null;
                 switch (this.ParameterSetName)
@@ -237,7 +237,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 // Recursive only take effect on File Dir
                 if (!foundAFolder && Recursive.IsPresent)
                 {
-                    WriteWarning("The target object of the 'Path' is an Azure File, the parameter '-Recursive' won't take effect.");
+                    WriteVerbose("The target object of the 'Path' is an Azure File, the parameter '-Recursive' won't take effect.");
                 }
 
                 //Close handle
