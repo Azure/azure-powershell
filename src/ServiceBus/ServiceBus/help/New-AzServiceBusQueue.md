@@ -326,7 +326,7 @@ Accept wildcard characters: False
 ```
 
 ### -RequiresSession
-RequiresSession - the value indicating if this queue requires duplicate detection
+RequiresSession - the value indicating if this queue uses sessions
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
