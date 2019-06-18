@@ -101,6 +101,11 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Use local azure ip address as source ip for this connection.")]
+        public bool? UseLocalAzureIpAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -158,6 +163,11 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
             if (this.EnableBgp.HasValue)
             {
                 vpnConnectionToModify.EnableBgp = this.EnableBgp.Value;
+            }
+
+            if (this.UseLocalAzureIpAddress.HasValue)
+            {
+                vpnConnectionToModify.UseLocalAzureIpAddress = this.UseLocalAzureIpAddress.Value;
             }
 
             if (this.IpSecPolicy != null)
