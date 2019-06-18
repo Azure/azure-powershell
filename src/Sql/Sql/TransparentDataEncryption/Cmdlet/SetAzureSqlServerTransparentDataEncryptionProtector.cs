@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model;
 using Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model;
 using System.Collections.Generic;
@@ -82,7 +83,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
                 ResourceGroupName = this.ResourceGroupName,
                 ServerName = this.ServerName,
                 Type = this.Type,
-                ServerKeyVaultKeyName = AzureSqlServerKeyVaultKeyModel.CreateServerKeyNameFromKeyId(this.KeyId),
+                ServerKeyVaultKeyName = TdeKeyHelper.CreateServerKeyNameFromKeyId(this.KeyId),
                 KeyId = this.KeyId
             });
             return newEntity;

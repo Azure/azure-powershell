@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         #endregion
         protected override void ProcessRecordInternal()
         {
-            Schedule schedule = new Schedule(FrequencyInMinutes, TimeWindowInMinutes);
+            Schedule schedule = new Schedule(frequencyInMinutes: FrequencyInMinutes, timeWindowInMinutes: TimeWindowInMinutes);
             schedule.Validate();
             WriteObject(new PSScheduledQueryRuleSchedule(schedule));
         }

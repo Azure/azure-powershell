@@ -20,6 +20,60 @@
 -->
 ## Upcoming Release
 
+## Version 2.3.0
+* New-AzVm and New-AzVmss simple parameter sets now accept the `ProximityPlacementGroup` parameter.
+* Fix typo in `New-AzVM` reference documentation
+
+## Version 2.2.0
+* Added `NoWait` parameter that starts the operation and returns immediately, before the operation is completed.
+    - Updated cmdlets:
+        Export-AzLogAnalyticRequestRateByInterval
+        Export-AzLogAnalyticThrottledRequest
+        Remove-AzVM
+        Remove-AzVMAccessExtension
+        Remove-AzVMAEMExtension
+        Remove-AzVMChefExtension
+        Remove-AzVMCustomScriptExtension
+        Remove-AzVMDiagnosticsExtension
+        Remove-AzVMDiskEncryptionExtension
+        Remove-AzVMDscExtension
+        Remove-AzVMSqlServerExtension
+        Restart-AzVM
+        Set-AzVM
+        Set-AzVMAccessExtension
+        Set-AzVMADDomainExtension
+        Set-AzVMAEMExtension
+        Set-AzVMBginfoExtension
+        Set-AzVMChefExtension
+        Set-AzVMCustomScriptExtension
+        Set-AzVMDiagnosticsExtension
+        Set-AzVMDscExtension
+        Set-AzVMExtension
+        Start-AzVM
+        Stop-AzVM
+        Update-AzVM
+
+## Version 2.1.0
+* Add ProtectFromScaleIn and ProtectFromScaleSetAction parameters to Update-AzVmssVM cmdlet.
+* New-AzVM simple parameter set now uses by default an available location if 'East US' is not supported
+
+## Version 2.0.0
+* Proximity placement group feature.
+    - The following new cmdlets are added:
+	    New-AzProximityPlacementGroup
+		Get-AzProximityPlacementGroup
+		Remove-AzProximityPlacementGroup
+	- The new parameter, ProximityPlacementGroupId, is added to the following cmdlets:
+	    New-AzAvailabilitySet
+		New-AzVMConfig
+		New-AzVmssConfig
+* StorageAccountType parameter is added to New-AzGalleryImageVersion.
+* TargetRegion of New-AzGalleryImageVersion can contain StorageAccountType.
+* SkipShutdown switch parameter is added to Stop-AzVM and Stop-AzVmss		
+* Breaking changes
+    - Set-AzVMBootDiagnostics is changed to Set-AzVMBootDiagnostic.
+    - Export-AzLogAnalyticThrottledRequests is changed to Export-AzLogAnalyticThrottledRequests.
+
 ## Version 1.8.0
 * Fix issue with AEM installation if resource ids of disks had lowercase resourcegroups in resource id
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.

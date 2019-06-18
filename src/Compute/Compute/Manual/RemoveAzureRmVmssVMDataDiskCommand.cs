@@ -16,12 +16,9 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [CmdletOutputBreakingChange(typeof(PSVirtualMachineScaleSetVM), NewOutputProperties = new string[] { "ProtectFromScaleIn" })]
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssVMDataDisk")]
     [OutputType(typeof(PSVirtualMachineScaleSetVM))]
     public class RemoveAzureRmVmssVMDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet

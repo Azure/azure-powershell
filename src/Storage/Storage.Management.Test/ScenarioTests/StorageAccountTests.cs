@@ -123,6 +123,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAzureStorageAccountFileStorage()
+        {
+            TestRunner.RunTestScript("Test-NewAzureStorageAccountFileStorage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPipingNewUpdateAccount()
         {
             TestRunner.RunTestScript("Test-PipingNewUpdateAccount");

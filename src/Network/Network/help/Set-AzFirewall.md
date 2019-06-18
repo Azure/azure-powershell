@@ -62,6 +62,46 @@ Set-AzFirewall -Firewall $azFw
 This example updates the Threat Intel operation mode of Azure Firewall "AzureFirewall" in resource group "rg".
 Without the Set-AzFirewall command, all operations performed on the local $azFw object are not reflected on the server.
 
+### 4: Deallocate and allocate the Firewall
+```
+$firewall=Get-AzFirewall -ResourceGroupName rgName -Name azFw
+$firewall.Deallocate()
+$firewall | Set-AzFirewall
+
+$vnet = Get-AzVirtualNetwork -ResourceGroupName rgName -Name anotherVNetName
+$pip = Get-AzPublicIpAddress - ResourceGroupName rgName -Name publicIpName
+$firewall.Allocate($vnet, $pip)
+$firewall | Set-AzFirewall
+```
+
+This example retrieves a Firewall, deallocates the firewall, and saves it. The Deallocate command removes the running 
+service but preserves the firewall's configuration. For changes to be reflected in cloud, Set-AzFirewall must be called.
+If user wants to start the service again, the Allocate method should be called on the firewall.
+The new VNet and Public IP must be in the same resource group as the Firewall. Again, for changes to be reflected in cloud,
+Set-AzFirewall must be called.
+
+### 5:	Add a Public IP address to an Azure Firewall
+```
+$pip = New-AzPublicIpAddress -Name "azFwPublicIp1" -ResourceGroupName "rg" -Sku "Standard" -Location "centralus" -AllocationMethod Static
+$azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
+$azFw.AddPublicIpAddress($pip)
+
+$azFw | Set-AzFirewall
+```
+
+In this example, the Public IP Address "azFwPublicIp1" as attached to the Firewall.
+
+### 6:	Remove a Public IP address from an Azure Firewall
+```
+$pip = Get-AzPublicIpAddress -Name "azFwPublicIp1" -ResourceGroupName "rg"
+$azFw = Get-AzFirewall -Name "AzureFirewall" -ResourceGroupName "rg"
+$azFw.RemovePublicIpAddress($pip)
+
+$azFw | Set-AzFirewall
+```
+
+In this example, the Public IP Address "azFwPublicIp1" as detached from the Firewall.
+
 ## PARAMETERS
 
 ### -AsJob

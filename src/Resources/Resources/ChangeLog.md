@@ -19,6 +19,18 @@
 -->
 ## Upcoming Release
 
+## Version 1.5.0
+* Support for additional Template Export options
+    - Add `-SkipResourceNameParameterization` parameter to Export-AzResourceGroup
+    - Add `-SkipAllParameterization` parameter to Export-AzResourceGroup
+    - Add `-Resource` parameter to Export-AzResourceGroup for exported resource filtering
+
+## Version 1.4.0
+* Add new cmdlet Get-AzureRmDenyAssignment for retrieving deny assignments
+* Added 'Description' parameter when working with Azure AD Groups:
+    - Added a parameter to New-AzAdGroup
+    - Added as output on Get-AzAdGroup
+
 ## Version 1.3.1
 * Fix documentation for wildcards
 

@@ -19,13 +19,14 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -100,10 +101,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vAdditionalUnattendContent = new AdditionalUnattendContent();
 
-            vAdditionalUnattendContent.PassName = this.MyInvocation.BoundParameters.ContainsKey("PassName") ? this.PassName : (PassNames?)null;
-            vAdditionalUnattendContent.ComponentName = this.MyInvocation.BoundParameters.ContainsKey("ComponentName") ? this.ComponentName : (ComponentNames?)null;
-            vAdditionalUnattendContent.SettingName = this.MyInvocation.BoundParameters.ContainsKey("SettingName") ? this.SettingName : (SettingNames?)null;
-            vAdditionalUnattendContent.Content = this.MyInvocation.BoundParameters.ContainsKey("Content") ? this.Content : null;
+            vAdditionalUnattendContent.PassName = this.IsParameterBound(c => c.PassName) ? this.PassName : (PassNames?)null;
+            vAdditionalUnattendContent.ComponentName = this.IsParameterBound(c => c.ComponentName) ? this.ComponentName : (ComponentNames?)null;
+            vAdditionalUnattendContent.SettingName = this.IsParameterBound(c => c.SettingName) ? this.SettingName : (SettingNames?)null;
+            vAdditionalUnattendContent.Content = this.IsParameterBound(c => c.Content) ? this.Content : null;
             this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.AdditionalUnattendContent.Add(vAdditionalUnattendContent);
             WriteObject(this.VirtualMachineScaleSet);
         }

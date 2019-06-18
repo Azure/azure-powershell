@@ -27,6 +27,22 @@ If the namespace name is not provided, a list of namespaces is returned.
 ### Example 1
 ```
 PS C:\> Get-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName
+
+Name                   : MyNamespaceName
+Id                     : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/namespaces/MyNamespaceName
+ResourceGroupName      : Default-EventHub-WestCentralUS
+Location               : West US
+Sku                    : Name : Standard , Capacity : 1 , Tier : Standard
+Tags                   :
+ProvisioningState      : Succeeded
+Status                 : Active
+CreatedAt              : 5/24/2019 12:47:27 AM
+UpdatedAt              : 5/24/2019 12:48:14 AM
+ServiceBusEndpoint     : #########
+Enabled                : True
+KafkaEnabled           : True
+IsAutoInflateEnabled   : True
+MaximumThroughputUnits : 10
 ```
 
 Gets the details of namespace \`MyNamespaceName\` in the resource group \`MyResourceGroupName\`.
