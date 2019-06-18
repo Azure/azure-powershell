@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.0
 * Enable **pergb2018** pricing tier in `New-AzureRmOperationalInsightsWorkspace` command
 
 ## Version 1.2.0
