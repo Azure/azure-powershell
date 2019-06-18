@@ -18,13 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+    - Fix help text for Get-AzPolicyState -Top parameter
+    - Add client-side paging support for Get-AzPolicyAlias
+    - Add new parameters for Set-AzPolicyAssignment, -PolicyParameters and -PolicyParametersObject
+
+## Version 1.5.0
 * Support for additional Template Export options
     - Add `-SkipResourceNameParameterization` parameter to Export-AzResourceGroup
     - Add `-SkipAllParameterization` parameter to Export-AzResourceGroup
     - Add `-Resource` parameter to Export-AzResourceGroup for exported resource filtering
-    - Fix help text for Get-AzPolicyState -Top parameter
-    - Add client-side paging support for Get-AzPolicyAlias
-    - Add new parameters for Set-AzPolicyAssignment, -PolicyParameters and -PolicyParametersObject
 
 ## Version 1.4.0
 * Add new cmdlet Get-AzureRmDenyAssignment for retrieving deny assignments

@@ -85,6 +85,42 @@ The first command gets the policy assignment named PolicyAssignment from the cur
 The command stores that object in the $PolicyAssignment variable.
 The final command assigns a managed identity to the policy assignment.
 
+### Example 3: Update policy assignment parameters with new policy parameter object
+```
+PS C:\> $Locations = Get-AzLocation | where {($_.displayname -like 'france*') -or ($_.displayname -like 'uk*')}
+PS C:\> $AllowedLocations = @{'listOfAllowedLocations'=($Locations.location)}
+PS C:\> $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment'
+PS C:\> Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -PolicyParameterObject $AllowedLocations
+```
+
+The first and second commands create an object containing all Azure regions whose names start with "france" or "uk".
+The second command stores that object in the $AllowedLocations variable.
+The third command gets the policy assignment named 'PolicyAssignment'
+The command stores that object in the $PolicyAssignment variable.
+The final command updates the parameter values on the policy assignment named PolicyAssignment.
+
+### Example 4: Update policy assignment parameters with policy parameter file
+Create a file called _AllowedLocations.json_ in the local working directory with the following content.
+
+```
+{
+    "listOfAllowedLocations":  {
+      "value": [
+        "uksouth",
+        "ukwest",
+        "francecentral",
+        "francesouth"
+      ]
+    }
+}
+```
+
+```
+PS C:\> Set-AzPolicyAssignment -Name 'PolicyAssignment' -PolicyParameter .\AllowedLocations.json
+```
+
+The command updates the policy assignment named 'PolicyAssignment' using the policy parameter file AllowedLocations.json from the local working directory.
+
 ## PARAMETERS
 
 ### -ApiVersion
