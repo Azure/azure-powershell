@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid Prefix Range: {0} must be at least {1} not greater than {2}.
+        ///   Looks up a localized string similar to Invalid Prefix Range: {0}, the prefix must be {1}.
         /// </summary>
         internal static string Error_InvalidPrefixRange {
             get {

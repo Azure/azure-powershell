@@ -26,7 +26,7 @@ Creates a Log Alert Rule (Scheduled Query Rule type)
 
 ### Example 1
 ```powershell
-PS C:\> New-AzScheduledQueryRule -Location "West Europe" -Action $alertingAction -Enabled "true" -Description "log alert foo" -Schedule $schedule -Source $source -RuleName "logalertfoo"
+PS C:\> New-AzScheduledQueryRule -Location "West Europe" -Action $alertingAction -Enabled "true" -Description "log alert foo" -Schedule $schedule -Source $source -Name "logalertfoo"
 ```
 
 ## PARAMETERS

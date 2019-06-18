@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights.dll-Help.xml
 Module Name: Az.OperationalInsights
 ms.assetid: 4682807D-34E8-4057-8894-36820447067B
@@ -163,7 +163,7 @@ Valid values are:
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: free, standard, premium, pernode, standalone
+Accepted values: free, standard, premium, pernode, standalone, pergb2018
 
 Required: False
 Position: 3
