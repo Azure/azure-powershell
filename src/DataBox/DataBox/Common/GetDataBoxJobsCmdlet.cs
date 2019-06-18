@@ -7,9 +7,10 @@ using Microsoft.Azure.Commands.DataBox.Common;
 using Microsoft.Azure.Management.DataBox.Models;
 using Microsoft.Azure.Management.DataBox;
 using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Threading;
 
-namespace MMicrosoft.Azure.Commands.DataBox.Common
+namespace Microsoft.Azure.Commands.DataBox.Common
 {
     [Cmdlet(VerbsCommon.Get, "AzDataBoxJobs", DefaultParameterSetName = ListParameterSet), OutputType(typeof(JobResource))]
     public class GetDataBoxJobs : AzureDataBoxCmdletBase
@@ -24,6 +25,7 @@ namespace MMicrosoft.Azure.Commands.DataBox.Common
         [Parameter(Mandatory = false, ParameterSetName = ListParameterSet)]
         [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet)]
@@ -45,6 +47,9 @@ namespace MMicrosoft.Azure.Commands.DataBox.Common
 
         [Parameter(Mandatory = false, ParameterSetName = ListParameterSet)]
         public SwitchParameter Aborted { get; set; } = false;
+
+        [Parameter(Mandatory = false, ParameterSetName = ListParameterSet)]
+        public SwitchParameter Detatiled { get; set; } = false;
 
         public override void ExecuteCmdlet()
         {
@@ -94,6 +99,7 @@ namespace MMicrosoft.Azure.Commands.DataBox.Common
                                         jobPageList.NextPageLink);
                     }
 
+                    
                     if (Completed || Cancelled || Aborted || CompletedWithErrors)
                     {
                         foreach (var job in jobPageList)
@@ -117,6 +123,7 @@ namespace MMicrosoft.Azure.Commands.DataBox.Common
             }
             else
             {
+                WriteObject("asdjfkl");
                  IPage<JobResource> jobPageList = null;
                  List<JobResource> result = new List<JobResource>();
 
@@ -149,6 +156,7 @@ namespace MMicrosoft.Azure.Commands.DataBox.Common
                     }
                     else
                     {
+
                         result.AddRange(jobPageList.ToList());
                     }
 
@@ -158,5 +166,6 @@ namespace MMicrosoft.Azure.Commands.DataBox.Common
             }
         }
     }
+
 
 }

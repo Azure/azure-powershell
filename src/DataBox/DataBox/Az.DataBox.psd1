@@ -12,13 +12,13 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.2.0'
+ModuleVersion = '1.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
 
 # ID used to uniquely identify this module
-GUID = '91832aaa-dc11-4583-8239-bce5fd531604'
+GUID = '39B6B3E6-A15E-48BA-BE20-FE0D441D92B4'
 
 # Author of this module
 Author = 'Microsoft Corporation'
@@ -30,9 +30,9 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell - CDN service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
+Description = 'Microsoft Azure PowerShell - DataBox service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
 
-For more information on Cdn, please visit the following: https://docs.microsoft.com/azure/cdn/'
+For more information on DataBox, please visit the following: https://docs.microsoft.com/azure/databox/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'
@@ -56,7 +56,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.5.2'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.Cdn.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.DataBox.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -68,34 +68,19 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.Cdn.dll'
 # FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Cdn.dll')
+NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.DataBox.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzDataBoxJobs', 'Get-AzCdnProfileSsoUrl', 'New-AzCdnProfile', 
-               'Remove-AzCdnProfile', 'Set-AzCdnProfile', 'Get-AzCdnOrigin', 
-               'Set-AzCdnOrigin', 'Get-AzCdnEndpointNameAvailability', 
-               'Get-AzCdnEndpoint', 'Publish-AzCdnEndpointContent', 
-               'New-AzCdnEndpoint', 'Unpublish-AzCdnEndpointContent', 
-               'Remove-AzCdnEndpoint', 'Set-AzCdnEndpoint', 'Start-AzCdnEndpoint', 
-               'Stop-AzCdnEndpoint', 'Test-AzCdnCustomDomain', 
-               'Get-AzCdnCustomDomain', 'New-AzCdnCustomDomain', 
-               'Remove-AzCdnCustomDomain', 'Enable-AzCdnCustomDomain', 
-               'Disable-AzCdnCustomDomain', 'Enable-AzCdnCustomDomainHttps', 
-               'Disable-AzCdnCustomDomainHttps', 'Get-AzCdnProfileResourceUsage', 
-               'Confirm-AzCdnEndpointProbeUrl', 'Get-AzCdnEndpointResourceUsage', 
-               'Get-AzCdnProfileSupportedOptimizationType', 
-               'Get-AzCdnSubscriptionResourceUsage', 'Get-AzCdnEdgeNode',
-               'New-AzCdnDeliveryRule', 'New-AzCdnDeliveryRuleCondition', 
-               'New-AzCdnDeliveryRuleAction', 'New-AzCdnDeliveryPolicy'
+CmdletsToExport = 'Get-AzDataBoxJobs', 'Get-AzDataBoxPassword'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Validate-AzCdnCustomDomain', 'Get-AzCdnEdgeNodes'
+#AliasesToExport = 'Validate-AzCdnCustomDomain', 'Get-AzCdnEdgeNodes'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -112,7 +97,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','CDN'
+        Tags = 'Azure','ResourceManager','ARM','DataBox'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
