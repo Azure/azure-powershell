@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* New-AzVm and New-AzVmss simple parameter sets now accept the `ProximityPlacementGroup` parameter.
 * Fix typo in `New-AzVM` reference documentation
 
 ## Version 2.2.0
@@ -52,7 +53,7 @@
 
 ## Version 2.1.0
 * Add ProtectFromScaleIn and ProtectFromScaleSetAction parameters to Update-AzVmssVM cmdlet.
-* New-AzVM wimple parameter set now uses by default an available location if 'East US' is not supported
+* New-AzVM simple parameter set now uses by default an available location if 'East US' is not supported
 
 ## Version 2.0.0
 * Proximity placement group feature.
