@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         [Parameter(ParameterSetName = SetIfgByResourceIdSet,
             Mandatory = true,
             Position = 0,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName  = true,
             HelpMessage = "The Resource ID of the Instance Failover Group to set.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -113,7 +113,8 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
             HelpMessage = "The failover policy of the Instance Failover Group.")]
         [ValidateNotNullOrEmpty]
         [PSDefaultValue(Help = "Automatic")]
-        public FailoverPolicy FailoverPolicy { get; set; }
+        [PSArgumentCompleter("Automatic", "Manual")]
+        public string FailoverPolicy { get; set; }
 
         /// <summary>
         /// Gets or sets the grace period with data loss for the Sql Azure Instance Failover Group.
@@ -131,7 +132,8 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "Whether outages on the secondary server should trigger automatic failover of the read-only endpoint. This feature is not yet supported.")]
         [ValidateNotNullOrEmpty]
-        public AllowReadOnlyFailoverToPrimary AllowReadOnlyFailoverToPrimary { get; set; }
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string AllowReadOnlyFailoverToPrimary { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -168,15 +170,15 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
             List<AzureSqlInstanceFailoverGroupModel> newEntity = new List<AzureSqlInstanceFailoverGroupModel>();
             AzureSqlInstanceFailoverGroupModel newModel = model.First();
             object parameterValue;
-            FailoverPolicy effectivePolicy = FailoverPolicy;
+            string effectivePolicy = FailoverPolicy;
             if (!MyInvocation.BoundParameters.ContainsKey("FailoverPolicy"))
             {
                 // If none was provided, use the existing policy.
-                Enum.TryParse(newModel.ReadWriteFailoverPolicy, out effectivePolicy);
+                effectivePolicy = newModel.ReadWriteFailoverPolicy;
             }
 
             int? gracePeriod = null;
-            if (!FailoverPolicy.ToString().Equals("Manual"))
+            if (!FailoverPolicy.Equals("Manual"))
             {
                 int? setDefault = newModel.FailoverWithDataLossGracePeriodHours;
                 if (setDefault.Equals(null))
@@ -188,7 +190,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
 
             newModel.ReadWriteFailoverPolicy = effectivePolicy.ToString();
             newModel.FailoverWithDataLossGracePeriodHours = gracePeriod;
-            newModel.ReadOnlyFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("AllowReadOnlyFailoverToPrimary") ? AllowReadOnlyFailoverToPrimary.ToString() : newModel.ReadOnlyFailoverPolicy;
+            newModel.ReadOnlyFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("AllowReadOnlyFailoverToPrimary") ? AllowReadOnlyFailoverToPrimary : newModel.ReadOnlyFailoverPolicy;
             newEntity.Add(newModel);
 
             return newEntity;
