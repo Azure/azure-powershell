@@ -1210,7 +1210,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (connectionModel.FieldDefinitionValues.ContainsKey(connectionFieldName))
             {
-                if (value.GetType().FullName == "System.String")
+                if (value is string)
                 {
                     connectionModel.FieldDefinitionValues[connectionFieldName] = value.ToString();
                 }
