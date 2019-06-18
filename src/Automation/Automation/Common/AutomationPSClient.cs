@@ -1210,8 +1210,15 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (connectionModel.FieldDefinitionValues.ContainsKey(connectionFieldName))
             {
-                connectionModel.FieldDefinitionValues[connectionFieldName] =
-                    PowerShellJsonConverter.Serialize(value);
+                if (value.GetType().FullName == "System.String")
+                {
+                    connectionModel.FieldDefinitionValues[connectionFieldName] = value.ToString();
+                }
+                else
+                {
+                    connectionModel.FieldDefinitionValues[connectionFieldName] =
+                        PowerShellJsonConverter.Serialize(value);
+                }
             }
             else
             {
