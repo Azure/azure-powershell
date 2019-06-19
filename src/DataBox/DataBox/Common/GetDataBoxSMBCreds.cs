@@ -61,6 +61,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             if (sku.Equals("DataBox"))
             {
                 DataboxJobSecrets secrets = result.ToList()[0].JobSecrets as DataboxJobSecrets;
+                //WriteObject(secrets);
                 foreach (var obj in secrets.PodSecrets[0].AccountCredentialDetails[0].ShareCredentialDetails)
                 {
                     Credentials.Add(new DataBoxSMBCredentials(obj.ShareName, obj.UserName , obj.Password));
