@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.2.0'
+ModuleVersion = '0.2.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -114,15 +114,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added new cmdlets:
-    - New-AzBlueprint
-    - Set-AzBlueprint
-    - Publish-AzBlueprint
-    - New-AzBlueprintArtifact
-    - Set-AzBlueprintArtifact
-    - Get-AzBlueprintArtifact
-    - Export-AzBlueprintWithArtifact
-    - Import-AzBlueprintWithArtifact'''
+        ReleaseNotes = 'Bug fixes and improvements'
 
         # Prerelease string of this module
         # Prerelease = ''
