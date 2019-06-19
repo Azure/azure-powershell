@@ -231,9 +231,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180416.ILogSearchRuleResourcePatch
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180416.ILogSearchRuleResourcePatch
 
 ## OUTPUTS
 

@@ -71,7 +71,7 @@
 | ------ | ---- | ----- |
 | `Get-AzLogProfile` | No | - Correct |
 | `Remove-AzLogProfile` | No | - Correct |
-| `Set-AzLogProfile` | No | - `Add-AzLogProfile` |
+| `Set-AzLogProfile` | No | |
 | `New-AzLogProfile` | Yes | |
 | `Update-AzLogProfile` | Yes | |
 
@@ -102,13 +102,18 @@
 | `New-AzScheduledQueryRuleSource` | X | - Create in-memory object used in `Set-AzScheduleQueryRule`, parameter `-Source` |
 | `New-AzScheduledQueryRuleTriggerCondition` | X | - Create in-memory object used in `New-AzScheduledQueryRuleAlertingAction`, parameter `-Trigger` |
 
+### DiagnosticSetting
+
+| Cmdlet | New? | Notes |
+| ------ | ---- | ----- |
+| `Set-AzDiagnosticSetting` | No | `-Log` and `-Metric` parameters not expanded  |
+| `New-AzDiagnosticSetting` | Yes | |
+| `Get-AzDiagnosticSettingsCategory` | Yes | - The `List` operation is used in the old `Set-AzDiagnosticSetting` to get the available categories for a specific resource
 ### Others
 
 | Cmdlet | New? | Notes |
 | ------ | ---- | ----- |
 | `Get-AzBaseline` | Yes | |
 | `Get-AzEventCategory` | Yes | |
-| `Get-AzDiagnosticSettingsCategory` | Yes | - The `List` operation is used in the old `Set-AzDiagnosticSetting` to get the available categories for a specific resource |
-| `New-AzDiagnosticSetting` | Yes | |
 | `Get-AzAlertHistory` | X | - Uses `ActivityLogs` API to retrieve only logs about alerts |
 | `Get-AzAutoscaleHistory` | X | - Uses `ActivityLogs` API to retrieve only logs about autoscale settings |
