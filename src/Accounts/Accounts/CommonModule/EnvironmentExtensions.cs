@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.Text.RegularExpressions;
 using System;
-using System.IO;
 using System.Text;
 
 namespace Microsoft.Azure.Commands.Common
@@ -28,7 +27,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="environment">The current Azure Environment</param>
         /// <param name="baseEndpoint">The Uri to tranform</param>
         /// <returns>The Uri, with naseUri appropriately altered for the current Azure environment</returns>
-        public static Uri GetEndpointFromBaseEndpoint(this IAzureEnvironment environment, Uri baseEndpoint)
+        public static Uri GetUriFromBaseRequestUri(this IAzureEnvironment environment, Uri baseEndpoint)
         {
             if (null == environment)
             {
@@ -104,7 +103,13 @@ namespace Microsoft.Azure.Commands.Common
             return baseEndpoint;
         }
 
-        public static string GetAudienceFromBaseEndpoint(this IAzureEnvironment environment, Uri baseEndpoint)
+        /// <summary>
+        /// Determien the inteneded audience of a request
+        /// </summary>
+        /// <param name="environment">The environment to use as a source of audiences</param>
+        /// <param name="baseEndpoint">The Uri to try to find the audience for</param>
+        /// <returns></returns>
+        public static string GetAudienceFromRequestUri(this IAzureEnvironment environment, Uri baseEndpoint)
         {
             if (null == environment)
             {
@@ -150,6 +155,11 @@ namespace Microsoft.Azure.Commands.Common
             return environment.ActiveDirectoryServiceEndpointResourceId;
         }
 
+        /// <summary>
+        /// Get a regular expression for a given Azure Environment endpoint or suffix.
+        /// </summary>
+        /// <param name="baseProperty">The string representation of the value to match</param>
+        /// <returns>A regular expression that will appropriately match Uris that contain the given endpoint or suffix</returns>
         internal static Regex GetMatcher(this string baseProperty)
         {
             if (string.IsNullOrWhiteSpace(baseProperty))
@@ -165,12 +175,24 @@ namespace Microsoft.Azure.Commands.Common
             return new Regex($"\\w+\\.?{Regex.Escape(baseProperty)}", RegexOptions.IgnoreCase);
         }
 
-        internal static bool IsMatch(this string baseProperty, Uri compare)
+        /// <summary>
+        /// Determines if the given Uri contaisn the given endpoint or endpoint suffix
+        /// </summary>
+        /// <param name="endpointOrSuffix">The endpoint or suffix to match</param>
+        /// <param name="compare">The Uri to compare to the given endpoint or suffix.</param>
+        /// <returns>True if the Uri matches the given endpoint or siffix, otherwise false</returns>
+        internal static bool IsMatch(this string endpointOrSuffix, Uri compare)
         {
-            var matcher = baseProperty.GetMatcher();
+            var matcher = endpointOrSuffix.GetMatcher();
             return matcher != null && matcher.IsMatch(compare.DnsSafeHost);
         }
 
+        /// <summary>
+        /// Adapt the given Uri to use the given Uri suffix
+        /// </summary>
+        /// <param name="baseUri">The Uri to change</param>
+        /// <param name="suffix">The suffix to substitute for the dns suffix in the given Uri</param>
+        /// <returns>A new Uri with the dns suffix altered to match the input suffix</returns>
         internal static Uri PatchDnsSuffix(this Uri baseUri, string suffix)
         {
             if (null == baseUri || !baseUri.IsAbsoluteUri)
@@ -191,6 +213,12 @@ namespace Microsoft.Azure.Commands.Common
             return builder.Uri;
         }
 
+        /// <summary>
+        /// Change the given Uri to use the base endpoint provided
+        /// </summary>
+        /// <param name="baseUri">The Uri to change</param>
+        /// <param name="newBase">The Uri or fragment to use as the new Uri base endpoint.</param>
+        /// <returns>A transformed Uri using the given base.</returns>
         internal static Uri PatchHost(this Uri baseUri, string newBase)
         {
             if (string.IsNullOrWhiteSpace(newBase))
@@ -200,7 +228,6 @@ namespace Microsoft.Azure.Commands.Common
 
             baseUri = baseUri ?? new Uri("/", UriKind.Relative);
             UriBuilder output = new UriBuilder(newBase);
-
             if (baseUri.IsAbsoluteUri)
             {
                 output.Path = output.Uri.AppendPathRemoveDuplicates(baseUri.AbsolutePath);
@@ -212,6 +239,12 @@ namespace Microsoft.Azure.Commands.Common
             return new Uri(output.Uri, baseUri);
         }
 
+        /// <summary>
+        /// Append two Uri paths, and remove any duplication of the first Uri path at the start of the new Uri
+        /// </summary>
+        /// <param name="start">The beginning of the path</param>
+        /// <param name="end">The end of the path</param>
+        /// <returns>A new absolute path that concatenates the teo paths</returns>
         internal static string AppendPathRemoveDuplicates(this Uri start, string end)
         {
             var startPath = start.AbsolutePath;
@@ -219,6 +252,12 @@ namespace Microsoft.Azure.Commands.Common
             return string.Concat(startPath, startRegex.Replace(end, string.Empty, 1));
         }
 
+        /// <summary>
+        /// Remove the given characters from the start of a string
+        /// </summary>
+        /// <param name="target">The string to change</param>
+        /// <param name="characters">The characters to remove from the start</param>
+        /// <returns>The altered string</returns>
         internal static string RemoveAtStart(this string target, params char[] characters)
         {
             var builder = new StringBuilder("^([");
