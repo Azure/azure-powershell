@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         public void TestPatchHost(string baseUri, string patchbase, string expected)
         {
             var checkValue = CreateUri(baseUri).PatchHost(patchbase);
-            Assert.Equal(expected, checkValue.ToString());
+            Assert.Equal(expected, checkValue.GetComponents(UriComponents.AbsoluteUri, UriFormat.Unescaped));
         }
 
         [Fact]
