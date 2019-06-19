@@ -49,6 +49,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         #region Cmdlet Overrides
         public override void ExecuteCmdlet()
         {
+            const string blueprintFileName = "Blueprint";
+
             // Get serialized blueprint definition
             string serializedDefinition = BlueprintClient.GetBlueprintDefinitionJsonFromObject(Blueprint, Version);
 
@@ -65,7 +67,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 () => CreateFolderIfNotExist(resolvedPath, Blueprint.Name)
             );
             
-            var blueprintJsonFilePath = Path.Combine(blueprintFolderPath, $"{Blueprint.Name}.json");
+            var blueprintJsonFilePath = Path.Combine(blueprintFolderPath, $"{blueprintFileName}.json");
 
             AzureSession.Instance.DataStore.WriteFile(blueprintJsonFilePath, serializedDefinition);
            
