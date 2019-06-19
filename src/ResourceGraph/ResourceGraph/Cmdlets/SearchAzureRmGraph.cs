@@ -113,6 +113,18 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         public override void ExecuteCmdlet()
         {
             var subscriptions = this.GetSubscriptions().ToList();
+            if(subscriptions == null || subscriptions.Count == 0)
+            {
+                var exception = new ArgumentException("No subscriptions were found to run query. " +
+                    "Please try to add them implicitly as param to your request (e.g. Search-AzGraph -Query '' -Subscription '11111111-1111-1111-1111-111111111111')");
+
+                var errorRecord = new ErrorRecord(
+                            exception, "400",
+                            ErrorCategory.InvalidArgument, null);
+                this.WriteError(errorRecord);
+                return;
+            }
+
             var first = this.MyInvocation.BoundParameters.ContainsKey("First") ? this.First : 100;
             var skip = this.MyInvocation.BoundParameters.ContainsKey("Skip") ? this.Skip : 0;
 
@@ -137,12 +149,10 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                         (queryExtensionWithSubcriptionNames + (this.Query.Length != 0 ? "| " : string.Empty)) :
                         string.Empty;
 
-                    var request = new QueryRequest(subscriptions, queryExtenstion + this.Query, requestOptions);
-
+                    var request = new QueryRequest(subscriptions, queryExtenstion + this.Query, options: requestOptions);
                     response = this.ResourceGraphClient.ResourcesWithHttpMessagesAsync(request)
                         .Result
                         .Body;
-
                     var requestResults = response.Data.ToPsObjects().ToList();
                     results.AddRange(requestResults);
                     this.WriteVerbose($"Received results: {requestResults.Count}");
@@ -186,6 +196,16 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             if (this.Subscription != null)
             {
                 return this.Subscription;
+            }
+
+            // Use selected subscription (for example, by command "Select-AzSubscription {subscriptionId}") 
+            if (this.TryGetDefaultContext(out var context))
+            {
+                var subscriptionId = context.Subscription?.Id;
+                if(subscriptionId != null)
+                {
+                    return new List<string> { subscriptionId };
+                }
             }
 
             var accountSubscriptions = this.DefaultContext.Account.GetSubscriptions();
