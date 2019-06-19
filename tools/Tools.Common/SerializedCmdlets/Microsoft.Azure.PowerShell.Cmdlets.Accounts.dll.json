@@ -1,6 +1,142 @@
 {
   "Cmdlets": [
     {
+      "VerbName": "Get",
+      "NounName": "AzProfile",
+      "Name": "Get-AzProfile",
+      "ClassName": "Microsoft.Azure.Commands.Common.GetAzProfile",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String[]",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": "System.String",
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "ModuleName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String[]",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": "System.String",
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ListAvailable",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ModuleName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": "System.String",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ListAvailable",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
       "VerbName": "Register",
       "NounName": "AzModule",
       "Name": "Register-AzModule",
@@ -14,7 +150,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common",
             "Name": "Microsoft.Azure.Commands.Common.VTable",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.VTable, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.VTable, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProfileName": "System.String"
             },
@@ -65,6 +201,73 @@
         {
           "Name": "__AllParameterSets",
           "Parameters": []
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Select",
+      "NounName": "AzProfile",
+      "Name": "Select-AzProfile",
+      "ClassName": "Microsoft.Azure.Commands.Common.SelectAzProfile",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "Name",
+          "AliasList": [
+            "ProfileName"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [
+                  "ProfileName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
         }
       ],
       "AliasList": []
@@ -512,7 +715,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -752,7 +955,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1105,7 +1308,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1434,7 +1637,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1811,7 +2014,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2144,7 +2347,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2569,7 +2772,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2997,7 +3200,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3477,7 +3680,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3646,7 +3849,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3850,7 +4053,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4088,7 +4291,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4326,7 +4529,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4503,7 +4706,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4656,7 +4859,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5492,7 +5695,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5980,7 +6183,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6157,7 +6360,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6310,7 +6513,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7803,7 +8006,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -8105,7 +8308,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8413,7 +8616,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8736,7 +8939,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9018,7 +9221,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9273,7 +9476,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9501,7 +9704,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10480,7 +10683,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -10796,7 +10999,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11578,7 +11781,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12005,7 +12208,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12515,7 +12718,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -12681,7 +12884,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -13440,7 +13643,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -13756,7 +13959,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14538,7 +14741,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14965,7 +15168,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -16109,7 +16312,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Errors",
             "Name": "Microsoft.Azure.Commands.Profile.Errors.AzureErrorRecord",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureErrorRecord, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureErrorRecord, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ErrorCategory": "System.Management.Automation.ErrorCategoryInfo",
               "ErrorDetails": "System.Management.Automation.ErrorDetails",
@@ -16166,7 +16369,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Errors",
             "Name": "Microsoft.Azure.Commands.Profile.Errors.AzureExceptionRecord",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureExceptionRecord, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureExceptionRecord, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "InnerException": "System.Boolean",
               "Exception": "System.Exception",
@@ -16236,7 +16439,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Errors",
             "Name": "Microsoft.Azure.Commands.Profile.Errors.AzureRestExceptionRecord",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureRestExceptionRecord, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureRestExceptionRecord, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RequestMessage": "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo",
               "ServerResponse": "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo",
@@ -16669,7 +16872,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -16883,7 +17086,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -17084,7 +17287,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -17244,7 +17447,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSResourceGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSResourceGroup, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSResourceGroup, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -17477,7 +17680,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSResourceGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSResourceGroup, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSResourceGroup, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -17570,7 +17773,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -17760,7 +17963,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -17937,7 +18140,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -18643,7 +18846,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -18785,7 +18988,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19003,7 +19206,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -19145,7 +19348,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19363,7 +19566,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -19505,7 +19708,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19720,7 +19923,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -19910,7 +20113,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -20265,7 +20468,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -20540,7 +20743,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -20741,7 +20944,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -21096,7 +21299,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -21371,7 +21574,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -21572,7 +21775,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -21891,7 +22094,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Common",
             "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -22118,7 +22321,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -22271,7 +22474,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Common",
                   "Name": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Common.ContextModificationScope, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -23355,7 +23558,7 @@
     "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo": {
       "Namespace": "Microsoft.Azure.Commands.Profile.Errors",
       "Name": "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Headers": "System.Collections.Generic.IDictionary`2[System.String,System.Collections.Generic.IEnumerable`1[System.String]]",
         "Verb": "System.String",
@@ -23452,7 +23655,7 @@
     "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo": {
       "Namespace": "Microsoft.Azure.Commands.Profile.Errors",
       "Name": "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.5.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo, Microsoft.Azure.PowerShell.Cmdlets.Accounts, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Headers": "System.Collections.Generic.IDictionary`2[System.String,System.Collections.Generic.IEnumerable`1[System.String]]",
         "ResponseStatusCode": "System.String",

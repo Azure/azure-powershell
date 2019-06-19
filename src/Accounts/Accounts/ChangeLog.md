@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.6.0
 * Add support for profile cmdlets
 * Add support for environments and data planes in generated cmdlets
 
