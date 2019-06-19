@@ -41,6 +41,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using System.Management.Automation;
 using Microsoft.Rest;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 {
@@ -65,6 +66,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// </summary>
         private List<DeploymentOperation> operations;
 
+        /// <summary>
+        /// The azure context.
+        /// </summary>
+        private IAzureContext azureContext;
+
+        /// <summary>
+        /// The resource management client dictionary for cross subscriptions.
+        /// </summary>
+        private InsensitiveDictionary<IResourceManagementClient> resourceManagementClientCache = new InsensitiveDictionary<IResourceManagementClient>();
+
+        /// <summary>
+        /// The default resource management client.
+        /// </summary>
         public IResourceManagementClient ResourceManagementClient { get; set; }
 
         public Action<string> VerboseLogger { get; set; }
@@ -90,7 +104,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             : this(
                 AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
-
+            this.azureContext = context;
         }
 
         /// <summary>
@@ -111,6 +125,32 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         public ResourceManagerSdkClient()
         {
 
+        }
+
+        private IResourceManagementClient GetResourceManagementClient(string subscriptionId)
+        {
+            if (!subscriptionId.EqualsInsensitively(this.ResourceManagementClient.SubscriptionId))
+            {
+                if (this.resourceManagementClientCache.ContainsKey(subscriptionId))
+                {
+                    return resourceManagementClientCache[subscriptionId];
+                }
+
+                if (this.azureContext != null)
+                {
+                    var sdkClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
+                        context: this.azureContext,
+                        endpoint: AzureEnvironment.Endpoint.ResourceManager);
+
+                    sdkClient.SubscriptionId = subscriptionId;
+
+                    resourceManagementClientCache[subscriptionId] = sdkClient;
+
+                    return resourceManagementClientCache[subscriptionId];
+                }
+            }
+
+            return this.ResourceManagementClient;
         }
 
         private string GetDeploymentParameters(Hashtable templateParameterObject)
@@ -471,11 +511,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                         var deploymentName = operation.Properties.TargetResource.ResourceName;
 
                         // (tiano): specify the subscription id.
-                        if (this.CheckDeploymentExistence(resourceGroupName, deploymentName) == true)
+                        if (this.CheckDeploymentExistence(subscriptionId, resourceGroupName, deploymentName) == true)
                         {
                             List<DeploymentOperation> newNestedOperations = new List<DeploymentOperation>();
 
-                            var result = this.ListDeploymentOperations(resourceGroupName, deploymentName);
+                            var result = this.ListDeploymentOperations(subscriptionId, resourceGroupName, deploymentName);
 
                             newNestedOperations = GetNewOperations(operations, result);
 
@@ -624,6 +664,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 : this.ResourceManagementClient.DeploymentOperations.ListAtSubscriptionScope(deploymentName, null);
         }
 
+        private IPage<DeploymentOperation> ListDeploymentOperations(string subscriptionId, string resourceGroupName, string deploymentName)
+        {
+            return resourceGroupName != null
+                ? this.GetResourceManagementClient(subscriptionId).DeploymentOperations.List(resourceGroupName, deploymentName, null)
+                : this.GetResourceManagementClient(subscriptionId).DeploymentOperations.ListAtSubscriptionScope(deploymentName, null);
+        }
+
         private IPage<DeploymentOperation> ListNextDeploymentOperations(string resourceGroupName, string nextLink)
         {
             return resourceGroupName != null
@@ -636,11 +683,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return this.ResourceManagementClient.Deployments.CheckExistenceAtManagementGroupScope(managementGroup, deploymentName);
         }
 
-        private bool CheckDeploymentExistence(string resourceGroupName, string deploymentName)
+        private bool CheckDeploymentExistence(string subscriptionId, string resourceGroupName, string deploymentName)
         {
             return resourceGroupName != null
-                ? this.ResourceManagementClient.Deployments.CheckExistence(resourceGroupName, deploymentName)
-                : this.ResourceManagementClient.Deployments.CheckExistenceAtSubscriptionScope(deploymentName);
+                ? this.GetResourceManagementClient(subscriptionId).Deployments.CheckExistence(resourceGroupName, deploymentName)
+                : this.GetResourceManagementClient(subscriptionId).Deployments.CheckExistenceAtSubscriptionScope(deploymentName);
         }
 
         private void BeginDeploymentAtManagementGroupScope(string managementGroupId, string deploymentName, Deployment deployment)
