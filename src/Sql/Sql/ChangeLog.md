@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.12.0
 * Fix Advanced Threat Protection storage endpoint suffix
 * Fix Advanced Data Security enable overrides Advanced Threat Protection policy
 * New Cmdlets for Management.Sql to allow customers to add TDE keys and set TDE protector for managed instances
