@@ -64,7 +64,7 @@ RequiredAssemblies = '.\Microsoft.Azure.PowerShell.Authentication.Abstractions.d
                '.\Microsoft.Azure.PowerShell.Clients.Graph.Rbac.dll', 
                '.\Microsoft.Azure.PowerShell.Clients.Monitor.dll', 
                '.\Microsoft.Azure.PowerShell.Clients.Network.dll', 
-               '.\Microsoft.Azure.PowerShell.Clients.PolicyInsights', 
+               '.\Microsoft.Azure.PowerShell.Clients.PolicyInsights.dll', 
                '.\Microsoft.Azure.PowerShell.Clients.ResourceManager.dll', 
                '.\Microsoft.Azure.PowerShell.Common.dll', 
                '.\Microsoft.Azure.PowerShell.Storage.dll', 
