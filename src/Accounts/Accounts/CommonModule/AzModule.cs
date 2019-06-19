@@ -42,6 +42,8 @@ namespace Microsoft.Azure.Commands.Common
         AdalLogger _logger;
         ConcurrentQueue<string> _debugMessages;
         ConcurrentQueue<string> _warningMessages;
+
+        internal static readonly string[] ClientHeaders = {"x-ms-client-request-id", "client-request-id", "x-ms-request-id", "request-id" };
         public AzModule(ICommandRuntime runtime)
         {
             _runtime = runtime;
@@ -155,9 +157,18 @@ namespace Microsoft.Azure.Commands.Common
                         if (response != null)
                         {
                             AzurePSQoSEvent qos;
-                            if (_telemetryEvents.TryGetValue(processRecordId, out qos))
+                            if (_telemetryEvents.TryGetValue(processRecordId, out qos) && null != response?.Headers)
                             {
-                                qos.ClientRequestId = response?.Headers?.GetValues("x-ms-request-id").FirstOrDefault();
+                                IEnumerable<string> headerValues;
+                                string requestId = Guid.NewGuid().ToString();
+                                foreach (var headerName in ClientHeaders)
+                                {
+                                    if (response.Headers.TryGetValues(headerName, out headerValues) && headerValues.Any())
+                                    {
+                                        qos.ClientRequestId = ClientHeaders.First();
+                                        break;
+                                    }
+                                }
                             }
 
                             /// Print formatted response message

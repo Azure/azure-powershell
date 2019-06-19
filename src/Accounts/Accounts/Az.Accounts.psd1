@@ -105,7 +105,7 @@ CmdletsToExport = 'Disable-AzDataCollection', 'Disable-AzContextAutosave',
                'Disconnect-AzAccount', 'Get-AzContextAutosaveSetting', 
                'Set-AzDefault', 'Get-AzDefault', 'Clear-AzDefault', 
                'Register-AzModule', 'Enable-AzureRmAlias', 'Disable-AzureRmAlias', 
-               'Uninstall-AzureRm'
+               'Uninstall-AzureRm', 'Get-AzProfile', 'Select-AzProfile'
 
 # Variables to export from this module
 # VariablesToExport = @()

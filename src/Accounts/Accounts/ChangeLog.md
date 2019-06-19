@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add support for profile cmdlets
+* Add support for environments and data planes in generated cmdlets
 
 ## Version 1.5.3
 * Fix bug with incorrect URL being used in some cases for Functions calls
