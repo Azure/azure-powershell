@@ -22,7 +22,7 @@ Get-AzNetworkInterfaceIPConfiguration -NetworkInterfaceName <String> -ResourceGr
 ```
 Get-AzNetworkInterfaceIPConfiguration -IPConfigurationName <String> -NetworkInterfaceName <String>
  -ResourceGroupName <String> -SubscriptionId <String[]> -VMIndex <String> -VmssName <String>
- [-ExpandResource <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -34,7 +34,7 @@ Get-AzNetworkInterfaceIPConfiguration -IPConfigurationName <String> -NetworkInte
 ### ListVmss
 ```
 Get-AzNetworkInterfaceIPConfiguration -NetworkInterfaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -VMIndex <String> -VmssName <String> [-ExpandResource <String>]
+ -SubscriptionId <String[]> -VMIndex <String> -VmssName <String> [-Expand <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ExpandResource
+### -Expand
 Expands referenced resources.
 
 ```yaml

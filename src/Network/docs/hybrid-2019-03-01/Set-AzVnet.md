@@ -252,7 +252,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: VirtualNetwork
 
 Required: True
 Position: Named

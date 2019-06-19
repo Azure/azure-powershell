@@ -253,7 +253,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Create, CreateExpanded
-Aliases:
+Aliases: VirtualNetworkName, PublicIpName
 
 Required: True
 Position: Named

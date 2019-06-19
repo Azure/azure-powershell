@@ -193,7 +193,7 @@ directive:
       variant: ResourceGroup
   - where:
       verb: Get
-      subject: AvailableVirtualNetworkSubnetDelegation|AvailableResourceGroupVirtualNetworkSubnetDelegation
+      subject: ^AvailableVirtualNetworkSubnetDelegation$|^AvailableResourceGroupVirtualNetworkSubnetDelegation$
     set:
       subject: VirtualNetworkAvailableSubnetDelegation
   - where:
@@ -308,7 +308,7 @@ directive:
       subject: ApplicationGatewayBackendHealthOnDemand
   - where: # Combine into Get-AzApplicationGatewayAvailableServerVariableAndHeader
       verb: Get
-      subject: ApplicationGatewayAvailableRequestHeader|ApplicationGatewayAvailableResponseHeader|ApplicationGatewayAvailableServerVariable
+      subject: ^ApplicationGatewayAvailableRequestHeader$|^ApplicationGatewayAvailableResponseHeader$|^ApplicationGatewayAvailableServerVariable$
     hide: true
   - where:
       verb: Get
@@ -511,12 +511,12 @@ directive:
 
 # Fix Alias Issues
   - where:
-      verb: New|Set
-      subject: LoadBalancerInboundNatRule|NetworkSecurityRule|RouteTableRoute|VirtualNetworkPeering|VirtualNetworkSubnet|P2SVpnServerConfiguration|ServiceEndpointPolicyDefinition
+      verb: ^New$|^Set$
+      subject: ^LoadBalancerInboundNatRule$|^NetworkSecurityRule$|^RouteTableRoute$|^VirtualNetworkPeering$|^VirtualNetworkSubnet$|^P2SVpnServerConfiguration$|^ServiceEndpointPolicyDefinition$
       parameter-name: Name
     clear-alias: true
 
-# General Changes (at end)
+# General Changes
   - where:
       subject: (.*)VirtualNetwork(.*)
     set:
@@ -538,7 +538,7 @@ directive:
 ## Name
   - where: # Property path
       verb: Get
-      subject: ApplicationGatewayBackendHealth|ApplicationGatewayBackendHealthOnDemand
+      subject: ^ApplicationGatewayBackendHealth$|^ApplicationGatewayBackendHealthOnDemand$
       parameter-name: ApplicationGatewayName
     set:
       parameter-name: Name
@@ -558,42 +558,42 @@ directive:
       parameter-name: Name
       alias: PolicyName
   - where:
-      verb: Get|New|Remove
+      verb: ^Get$|^New$|^Remove$
       subject: ExpressRouteCircuit
       parameter-name: CircuitName
     set:
       parameter-name: Name
       alias: CircuitName
   - where:
-      verb: Get|Remove
+      verb: ^Get$|^Remove$
       subject: ExpressRouteCircuitAuthorization
       parameter-name: AuthorizationName
     set:
       parameter-name: Name
       alias: AuthorizationName
   - where:
-      verb: Get|Remove
+      verb: ^Get$|^Remove$
       subject: ExpressRouteConnection
       parameter-name: ConnectionName
     set:
       parameter-name: Name
       alias: ConnectionName
   - where:
-      verb: Get|Set
+      verb: ^Get$|^Set$
       subject: ExpressRouteCrossConnection
       parameter-name: CrossConnectionName
     set:
       parameter-name: Name
       alias: CrossConnectionName
   - where:
-      verb: Get|Remove
+      verb: ^Get$|^Remove$
       subject: ExpressRouteCrossConnectionPeering
       parameter-name: PeeringName
     set:
       parameter-name: Name
       alias: PeeringName
   - where:
-      verb: Get|Remove
+      verb: ^Get$|^Remove$
       subject: NetworkInterfaceTapConfiguration
       parameter-name: TapConfigurationName
     set:
@@ -607,7 +607,7 @@ directive:
       parameter-name: Name
       alias: ConnectionName
   - where: # Property path
-      verb: Get|Reset|Set
+      verb: ^Get$|^Reset$|^Set$
       subject: VnetGatewayConnectionSharedKey
       parameter-name: VnetGatewayConnectionName
     set:
@@ -615,7 +615,7 @@ directive:
       alias: VnetGatewayConnectionName
   - where: # Property path
       verb: Get
-      subject: VnetGatewaySupportedVpnDevice|VnetGatewayVpnClientIPsecParameter
+      subject: ^VnetGatewaySupportedVpnDevice$|^VnetGatewayVpnClientIPsecParameter$
       parameter-name: VnetGatewayName
     set:
       parameter-name: Name
@@ -628,7 +628,7 @@ directive:
       parameter-name: Name
       alias: VnetGatewayConnectionName
   - where:
-      verb: Get|New|Remove
+      verb: ^Get$|^New$|^Remove$
       subject: VnetTap
       parameter-name: TapName
     set:
@@ -642,14 +642,14 @@ directive:
       parameter-name: Name
       alias: VnetName
   - where:
-      verb: Get|Remove
+      verb: ^Get$|^Remove$
       subject: VpnConnection
       parameter-name: ConnectionName
     set:
       parameter-name: Name
       alias: ConnectionName
   - where:
-      verb: Get|New|Remove
+      verb: ^Get$|^New$|^Remove$
       subject: VpnGateway
       parameter-name: GatewayName
     set:
@@ -658,7 +658,7 @@ directive:
 ## Other
   - where: # Little to no documentation. Not sure how this parameter works or is used.
       verb: Get
-      subject: ApplicationGatewayBackendHealth|ApplicationGatewayBackendHealthOnDemand|LoadBalancer|NetworkInterface|NetworkProfile|NetworkSecurityGroup|PublicIPAddress|RouteFilter|RouteTable|Vnet
+      subject: ^ApplicationGatewayBackendHealth$|^ApplicationGatewayBackendHealthOnDemand$|^LoadBalancer$|^NetworkInterface$|^NetworkProfile$|^NetworkSecurityGroup$|^PublicIPAddress$|^RouteFilter$|^RouteTable$|^Vnet$
       parameter-name: Expand
     set:
       parameter-name: ExpandResource
@@ -676,13 +676,13 @@ directive:
       variant: Peering
   - where:
       verb: Get
-      subject: ExpressRouteCircuitArpTable|ExpressRouteCircuitRouteTable|ExpressRouteCircuitRouteTableSummary|ExpressRouteCircuitStat
+      subject: ^ExpressRouteCircuitArpTable$|^ExpressRouteCircuitRouteTable$|^ExpressRouteCircuitRouteTableSummary$|^ExpressRouteCircuitStat$
       parameter-name: CircuitName
     set:
       alias: ExpressRouteCircuitName
   - where: # This parameter needs a validate set, as [AzurePrivatePeering, AzurePublicPeering, MicrosoftPeering] are listed as the only valid values in current cmdlets.
       verb: Get
-      subject: ExpressRouteCircuitArpTable|ExpressRouteCircuitRouteTable|ExpressRouteCircuitRouteTableSummary|ExpressRouteCircuitStat|ExpressRouteCrossConnectionArpTable|ExpressRouteCrossConnectionRouteTable|ExpressRouteCrossConnectionRouteTableSummary
+      subject: ^ExpressRouteCircuitArpTable$|^ExpressRouteCircuitRouteTable$|^ExpressRouteCircuitRouteTableSummary$|^ExpressRouteCircuitStat$|^ExpressRouteCrossConnectionArpTable$|^ExpressRouteCrossConnectionRouteTable$|^ExpressRouteCrossConnectionRouteTableSummary$
       parameter-name: PeeringName
     set:
       alias: PeeringType
@@ -692,12 +692,12 @@ directive:
     set:
       alias: ExpressRouteCircuit
   - where:
-      subject: NetworkWatcherAvailableProvider|NetworkWatcherReachabilityReport
+      subject: ^NetworkWatcherAvailableProvider$|^NetworkWatcherReachabilityReport$
       parameter-name: AzureLocation
     set:
       parameter-name: Location
   - where: # REMOVE BEFORE RELEASE: Unnecessary custom client-side Location implementation
-      subject: NetworkWatcherAvailableProvider|NetworkWatcherReachabilityReport
+      subject: ^NetworkWatcherAvailableProvider$|^NetworkWatcherReachabilityReport$
       parameter-name: ResourceGroupName
     set:
       alias: NetworkWatcherLocation
@@ -706,38 +706,44 @@ directive:
       parameter-name: ResourceGroupName
     set:
       alias: Location
+  - where: # REMOVE BEFORE RELEASE: Unnecessary custom client-side Location implementation
+      verb: ^Get$|^Remove$|^Start$|^Stop$
+      subject: ^NetworkWatcher$|^NetworkWatcherConnectionMonitor$
+      parameter-name: ResourceGroupName
+    set:
+      alias: Location
   - where: # REMOVE BEFORE RELEASE: Not a direct mapping to what NetworkWatcher in-memory object represented
       verb: Get
-      subject: NetworkWatcherAvailableProvider|NetworkWatcherFlowLogStatus|NetworkWatcherNetworkConfigurationDiagnostic|NetworkWatcherNextHop|NetworkWatcherReachabilityReport|NetworkWatcherTopology|NetworkWatcherTroubleshootingResult
+      subject: ^NetworkWatcherAvailableProvider$|^NetworkWatcherFlowLogStatus$|^NetworkWatcherNetworkConfigurationDiagnostic$|^NetworkWatcherNextHop$|^NetworkWatcherReachabilityReport$|^NetworkWatcherTopology$|^NetworkWatcherTroubleshootingResult$
       parameter-name: Parameter
     set:
       alias: NetworkWatcher
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: Get
-      subject: NetworkWatcherConnectionMonitor|NetworkWatcherConnectionMonitorState|NetworkWatcherPacketCapture
+      subject: ^NetworkWatcherConnectionMonitor$|^NetworkWatcherConnectionMonitorState$|^NetworkWatcherPacketCapture$
       parameter-name: ResourceGroupName
     set:
       alias: NetworkWatcher
   - where: # REMOVE BEFORE RELEASE: Not a direct mapping to what NetworkWatcher in-memory object represented
       verb: New
-      subject: NetworkWatcherConnectionMonitor|NetworkWatcherPacketCapture
+      subject: ^NetworkWatcherConnectionMonitor$|^NetworkWatcherPacketCapture$
       parameter-name: Parameter
     set:
       alias: NetworkWatcher
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: Remove
-      subject: NetworkWatcher|NetworkWatcherConnectionMonitor|NetworkWatcherPacketCapture
+      subject: ^NetworkWatcher$|^NetworkWatcherConnectionMonitor$|^NetworkWatcherPacketCapture$
       parameter-name: ResourceGroupName
     set:
       alias: NetworkWatcher
   - where: # REMOVE BEFORE RELEASE: Not a direct mapping to what NetworkWatcher in-memory object represented
       verb: Set
-      subject: NetworkWatcherConnectionMonitor|NetworkWatcherFlowLogConfiguration
+      subject: ^NetworkWatcherConnectionMonitor$|^NetworkWatcherFlowLogConfiguration$
       parameter-name: Parameter
     set:
       alias: NetworkWatcher
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Start|Stop
+      verb: ^Start$|^Stop$
       subject: NetworkWatcherConnectionMonitor
       parameter-name: ResourceGroupName
     set:
@@ -756,12 +762,12 @@ directive:
       alias: NetworkWatcher
   - where: # REMOVE BEFORE RELEASE: Not a direct mapping to what NetworkWatcher in-memory object represented
       verb: Test
-      subject: NetworkWatcherConnectivity|NetworkWatcherIPFlow
+      subject: ^NetworkWatcherConnectivity$|^NetworkWatcherIPFlow$
       parameter-name: Parameter
     set:
       alias: NetworkWatcher
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter + resource ID parameter
-      verb: Get|New
+      verb: ^Get$|^New$
       subject: ExpressRouteConnection
       parameter-name: ResourceGroupName
     set:
@@ -777,7 +783,7 @@ directive:
         - ParentObject
         - ParentResourceId
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter + resource ID parameter
-      verb: Get|New
+      verb: ^Get$|^New$
       subject: VpnConnection
       parameter-name: ResourceGroupName
     set:
@@ -785,14 +791,14 @@ directive:
         - ParentObject
         - ParentResourceId
   - where:
-      verb: Get|New|Remove
+      verb: ^Get$|^New$|^Remove$
       subject: VpnConnection
       parameter-name: GatewayName
     set:
       alias: ParentResourceName
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: Get
-      subject: ExpressRouteCrossConnectionArpTable|ExpressRouteCrossConnectionPeering|ExpressRouteCrossConnectionRouteTable|ExpressRouteCrossConnectionRouteTableSummary
+      subject: ^ExpressRouteCrossConnectionArpTable$|^ExpressRouteCrossConnectionPeering$|^ExpressRouteCrossConnectionRouteTable$|^ExpressRouteCrossConnectionRouteTableSummary$
       parameter-name: ResourceGroupName
     set:
       alias: ExpressRouteCrossConnection
@@ -836,8 +842,14 @@ directive:
     set:
       alias: TargetNetworkInterfaceId
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Get
+      verb: ^Get$|^Remove$|^Set$
       subject: ServiceEndpointPolicyDefinition
+      parameter-name: ResourceGroupName
+    set:
+      alias: ServiceEndpointPolicy
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Set
+      subject: ServiceEndpointPolicy
       parameter-name: ResourceGroupName
     set:
       alias: ServiceEndpointPolicy
@@ -847,6 +859,32 @@ directive:
       parameter-name: Vendor
     set:
       alias: DeviceVendor
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Set
+      subject: Vnet
+      parameter-name: ResourceGroupName
+    set:
+      alias: VirtualNetwork
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Test
+      subject: VnetIPAddressAvailability
+      parameter-name: ResourceGroupName
+    set:
+      alias: VirtualNetwork
+  - where: # REMOVE BEFORE RELEASE: Parameters are used to update in-memory objects
+      verb: New
+      subject: Firewall
+      parameter-name: ResourceGroupName
+    set:
+      alias:
+        - VirtualNetworkName
+        - PublicIpName
+  - where:
+      verb: New
+      subject: ^LoadBalancer$|^PublicIPAddress$
+      parameter-name: SkuName
+    set:
+      alias: Sku
 
 # Other Fixes
   - where:

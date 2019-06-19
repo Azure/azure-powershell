@@ -135,7 +135,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: NetworkWatcher
+Aliases: Location, NetworkWatcher
 
 Required: True
 Position: Named

@@ -1,9 +1,5 @@
 ## Incorrect Cmdlets
 
-- Get-AzNetworkWatcher
-    - Location
-- Get-AzNetworkWatcherConnectionMonitor
-    - Location
 - New-AzApplicationGateway
     - Sku
     - SslPolicy
@@ -29,18 +25,12 @@
     - PeeringLocation
     - BandwidthInMbps
     - ExpressRoutePort
-    - BandwidthInGbps
     - AllowClassicOperations
 - New-AzExpressRouteGateway
     - MinScaleUnits
     - MaxScaleUnits
     - VirtualHub
     - VirtualHubName
-- New-AzExpressRoutePort
-    - BandwidthInGbps
-- New-AzFirewall
-    - VirtualNetworkName
-    - PublicIpName
 - New-AzLoadBalancer
     - Sku
 - New-AzLocalNetworkGateway
@@ -139,12 +129,6 @@
     - BgpPeeringWeight
 - Remove-AzNetworkProfile
     - AsJob
-- Remove-AzNetworkWatcher
-    - Location
-- Remove-AzNetworkWatcherConnectionMonitor
-    - Location
-- Remove-AzServiceEndpointPolicyDefinition
-    - ServiceEndpointPolicy
 - Reset-AzVnetGateway
     - VirtualNetworkGateway
 - Set-AzApplicationGateway
@@ -201,12 +185,6 @@
     - RouteFilter
 - Set-AzRouteTable
     - RouteTable
-- Set-AzServiceEndpointPolicy
-    - ServiceEndpointPolicy
-- Set-AzServiceEndpointPolicyDefinition
-    - ServiceEndpointPolicy
-- Set-AzVnet
-    - VirtualNetwork
 - Set-AzVnetGateway
     - VirtualNetworkGateway
     - GatewaySku
@@ -233,12 +211,8 @@
     - VirtualNetworkPeering
 - Start-AzApplicationGateway
     - ApplicationGateway
-- Start-AzNetworkWatcherConnectionMonitor
-    - Location
 - Stop-AzApplicationGateway
     - ApplicationGateway
-- Stop-AzNetworkWatcherConnectionMonitor
-    - Location
 - Test-AzNetworkWatcherConnectivity
     - SourceId
     - DestinationId
@@ -246,8 +220,6 @@
 - Test-AzNetworkWatcherIPFlow
     - TargetVirtualMachineId
     - TargetNetworkInterfaceId
-- Test-AzVnetIPAddressAvailability
-    - VirtualNetwork
 
 ## Correct Cmdlets
 
@@ -288,7 +260,9 @@
 - Get-AzNetworkProfile
 - Get-AzNetworkSecurityGroup
 - Get-AzNetworkUsage
+- Get-AzNetworkWatcher
 - Get-AzNetworkWatcherAvailableProvider
+- Get-AzNetworkWatcherConnectionMonitor
 - Get-AzNetworkWatcherConnectionMonitorState
 - Get-AzNetworkWatcherFlowLogStatus
 - Get-AzNetworkWatcherNetworkConfigurationDiagnostic
@@ -328,6 +302,8 @@
 - New-AzDdosProtectionPlan
 - New-AzExpressRouteCircuitAuthorization
 - New-AzExpressRouteConnection
+- New-AzExpressRoutePort
+- New-AzFirewall
 - New-AzNetworkWatcher
 - New-AzRouteFilter
 - New-AzRouteTable
@@ -350,12 +326,15 @@
 - Remove-AzNetworkInterface
 - Remove-AzNetworkInterfaceTapConfiguration
 - Remove-AzNetworkSecurityGroup
+- Remove-AzNetworkWatcher
+- Remove-AzNetworkWatcherConnectionMonitor
 - Remove-AzNetworkWatcherPacketCapture
 - Remove-AzPublicIPAddress
 - Remove-AzPublicIPPrefix
 - Remove-AzRouteFilter
 - Remove-AzRouteTable
 - Remove-AzServiceEndpointPolicy
+- Remove-AzServiceEndpointPolicyDefinition
 - Remove-AzVirtualHub
 - Remove-AzVirtualWan
 - Remove-AzVnet
@@ -368,12 +347,18 @@
 - Remove-AzVpnSite
 - Reset-AzVnetGatewayConnectionSharedKey
 - Set-AzExpressRouteCrossConnection
+- Set-AzServiceEndpointPolicy
+- Set-AzServiceEndpointPolicyDefinition
+- Set-AzVnet
 - Set-AzVnetGatewayConnectionSharedKey
 - Set-AzVnetTap
+- Start-AzNetworkWatcherConnectionMonitor
 - Start-AzNetworkWatcherTroubleshooting
+- Stop-AzNetworkWatcherConnectionMonitor
 - Stop-AzNetworkWatcherPacketCapture
 - Test-AzDnsNameAvailability
 - Test-AzDummy
+- Test-AzVnetIPAddressAvailability
 
 ## New Cmdlets
 

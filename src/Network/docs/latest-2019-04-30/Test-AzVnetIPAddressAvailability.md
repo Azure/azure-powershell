@@ -103,7 +103,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Check
-Aliases:
+Aliases: VirtualNetwork
 
 Required: True
 Position: Named

@@ -22,7 +22,7 @@ Set-AzExpressRoutePort -Name <String> -ResourceGroupName <String> -SubscriptionI
 ### UpdateExpanded
 ```
 Set-AzExpressRoutePort -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-BandwidthInGbp <Int32>] [-Encapsulation <ExpressRoutePortsEncapsulation>] [-Id <String>]
+ [-BandwidthInGbps <Int32>] [-Encapsulation <ExpressRoutePortsEncapsulation>] [-Id <String>]
  [-Link <IExpressRouteLink[]>] [-Location <String>] [-PeeringLocation <String>] [-ResourceGuid <String>]
  [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BandwidthInGbp
+### -BandwidthInGbps
 Bandwidth of procured ports in Gbps
 
 ```yaml

@@ -22,14 +22,14 @@ New-AzExpressRoutePort -Name <String> -ResourceGroupName <String> -SubscriptionI
 ### CreateExpanded
 ```
 New-AzExpressRoutePort -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-BandwidthInGbp <Int32>] [-Encapsulation <ExpressRoutePortsEncapsulation>] [-Id <String>]
+ [-BandwidthInGbps <Int32>] [-Encapsulation <ExpressRoutePortsEncapsulation>] [-Id <String>]
  [-Link <IExpressRouteLink[]>] [-Location <String>] [-PeeringLocation <String>] [-ResourceGuid <String>]
  [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzExpressRoutePort -InputObject <INetworkIdentity> [-BandwidthInGbp <Int32>]
+New-AzExpressRoutePort -InputObject <INetworkIdentity> [-BandwidthInGbps <Int32>]
  [-Encapsulation <ExpressRoutePortsEncapsulation>] [-Id <String>] [-Link <IExpressRouteLink[]>]
  [-Location <String>] [-PeeringLocation <String>] [-ResourceGuid <String>] [-Tag <IResourceTags>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BandwidthInGbp
+### -BandwidthInGbps
 Bandwidth of procured ports in Gbps
 
 ```yaml

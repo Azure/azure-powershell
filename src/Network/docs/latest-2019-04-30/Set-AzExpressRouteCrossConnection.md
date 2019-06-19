@@ -22,7 +22,7 @@ Set-AzExpressRouteCrossConnection -Name <String> -ResourceGroupName <String> -Su
 ### UpdateExpanded
 ```
 Set-AzExpressRouteCrossConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-BandwidthInMbp <Int32>] [-ExpressRouteCircuitId <String>] [-Id <String>] [-Location <String>]
+ [-BandwidthInMbps <Int32>] [-ExpressRouteCircuitId <String>] [-Id <String>] [-Location <String>]
  [-Peering <IExpressRouteCrossConnectionPeering[]>] [-PeeringLocation <String>]
  [-ServiceProviderNote <String>] [-ServiceProviderProvisioningState <ServiceProviderProvisioningState>]
  [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BandwidthInMbp
+### -BandwidthInMbps
 The circuit bandwidth In Mbps.
 
 ```yaml
