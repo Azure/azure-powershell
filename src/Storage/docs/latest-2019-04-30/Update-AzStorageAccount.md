@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azstorageaccount
+online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/update-azstorageaccount
 schema: 2.0.0
 ---
 
-# Set-AzStorageAccount
+# Update-AzStorageAccount
 
 ## SYNOPSIS
 The update operation can be used to update the SKU, encryption, access tier, or tags for a storage account.
@@ -21,14 +21,14 @@ The location and name of the storage account cannot be changed after creation.
 
 ### Update1 (Default)
 ```
-Set-AzStorageAccount -AccountName <String> -ResourceGroupName <String> -SubscriptionId <String>
+Update-AzStorageAccount -AccountName <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Parameter <IStorageAccountUpdateParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateExpanded1
 ```
-Set-AzStorageAccount -AccountName <String> -ResourceGroupName <String> -SubscriptionId <String>
+Update-AzStorageAccount -AccountName <String> -ResourceGroupName <String> -SubscriptionId <String>
  -CustomDomainName <String> -EncryptionKeySource <KeySource> -NetworkAclsDefaultAction <DefaultAction>
  -SkuName <SkuName> [-AccessTier <AccessTier>] [-BlobEnabled] [-EnableAzureFilesAadIntegration]
  [-EnableHttpsTrafficOnly] [-FileEnabled] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
@@ -40,7 +40,7 @@ Set-AzStorageAccount -AccountName <String> -ResourceGroupName <String> -Subscrip
 
 ### UpdateViaIdentityExpanded1
 ```
-Set-AzStorageAccount -InputObject <IStorageIdentity> -CustomDomainName <String>
+Update-AzStorageAccount -InputObject <IStorageIdentity> -CustomDomainName <String>
  -EncryptionKeySource <KeySource> -NetworkAclsDefaultAction <DefaultAction> -SkuName <SkuName>
  [-AccessTier <AccessTier>] [-BlobEnabled] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly]
  [-FileEnabled] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>] [-Kind <Kind>]
@@ -52,7 +52,7 @@ Set-AzStorageAccount -InputObject <IStorageIdentity> -CustomDomainName <String>
 
 ### UpdateViaIdentity1
 ```
-Set-AzStorageAccount -InputObject <IStorageIdentity> [-Parameter <IStorageAccountUpdateParameters>]
+Update-AzStorageAccount -InputObject <IStorageIdentity> [-Parameter <IStorageAccountUpdateParameters>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -590,9 +590,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IStorageAccountUpdateParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IStorageAccountUpdateParameters
 
 ## OUTPUTS
 

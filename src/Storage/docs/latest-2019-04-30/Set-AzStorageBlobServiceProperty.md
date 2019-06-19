@@ -26,19 +26,6 @@ Set-AzStorageBlobServiceProperty -AccountName <String> -ResourceGroupName <Strin
  [-WhatIf] [<CommonParameters>]
 ```
 
-### SetViaIdentityExpanded
-```
-Set-AzStorageBlobServiceProperty -InputObject <IStorageIdentity> [-AutomaticSnapshotPolicyEnabled]
- [-CorCorsRule <ICorsRule[]>] [-DefaultServiceVersion <String>] [-DeleteRetentionPolicyDay <Int32>]
- [-DeleteRetentionPolicyEnabled] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### SetViaIdentity
-```
-Set-AzStorageBlobServiceProperty -InputObject <IStorageIdentity> [-Parameter <IBlobServiceProperties>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Sets the properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
 
@@ -70,7 +57,7 @@ Storage account names must be between 3 and 24 characters in length and use numb
 
 ```yaml
 Type: System.String
-Parameter Sets: Set, SetExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -86,7 +73,7 @@ Automatic Snapshot is enabled if set to true.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -101,10 +88,9 @@ Dynamic: False
 The List of CORS rules.
 You can include up to five CorsRule elements in the request.
 
-
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20180701.ICorsRule[]
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -132,12 +118,12 @@ Dynamic: False
 ```
 
 ### -DefaultServiceVersion
-DefaultServiceVersion indicates the default version to use for requests to the Blob service if an incoming request's version is not specified.
+DefaultServiceVersion indicates the default version to use for requests to the Blob service if an incoming request’s version is not specified.
 Possible values include version 2008-10-27 and all more recent versions.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -154,7 +140,7 @@ The minimum specified value can be 1 and the maximum value can be 365.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -170,7 +156,7 @@ Indicates whether DeleteRetentionPolicy is enabled for the Blob service.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -181,28 +167,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
-Parameter Sets: SetViaIdentityExpanded, SetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Parameter
-The properties of a storage account's Blob service.
+The properties of a storage account’s Blob service.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IBlobServiceProperties
-Parameter Sets: Set, SetViaIdentity
+Parameter Sets: Set
 Aliases:
 
 Required: False
@@ -219,7 +189,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Set, SetExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -235,7 +205,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Set, SetExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -285,8 +255,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IBlobServiceProperties
-
-### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
 
 ## OUTPUTS
 

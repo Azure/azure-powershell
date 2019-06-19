@@ -8,9 +8,7 @@
 * `Set-AzStorageAccount`
     - [x] Change name to `Invoke-AzStorageAccountFailover` or something else
 * `Update-AzStorageAccount`
-    - [x] Rename to `Set-AzStorageAccount`
     - [ ] Return results after calling `GetProperties`
-    - [ ] Implemente as a PUT
     - [ ] Add two new parameter sets: Make `-KeyvaultEncryption` become two boolean parameters -- `-StorageEncryption` and `-KeyvaultEncryption` ?
     - [ ] Add `-AssignIdentity` that resets `Identity`
     - [ ] Rename the parameter prefix `NetworkAcls` to `NetworkRuleSet`?
