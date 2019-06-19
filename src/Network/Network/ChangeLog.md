@@ -18,6 +18,7 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+* Added `RoutingPreference` to network tags
 * Improve examples for `Get-AzNetworkServiceTag` reference documentation
 
 ## Version 1.10.0

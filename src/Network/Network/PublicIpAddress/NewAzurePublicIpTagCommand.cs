@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet(
             "FirstPartyUsage",
             "NetworkDomain",
+            "RoutingPreference",
             IgnoreCase = true)]
         public string IpTagType { get; set; }
 
