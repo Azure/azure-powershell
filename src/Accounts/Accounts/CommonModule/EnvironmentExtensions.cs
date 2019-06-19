@@ -117,35 +117,41 @@ namespace Microsoft.Azure.Commands.Common
             }
 
             var baseEnvironment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
-            if (baseEnvironment.GraphUrl.IsMatch(baseEndpoint))
+            if (baseEnvironment.GraphUrl.IsMatch(baseEndpoint) || environment.GraphUrl.IsMatch(baseEndpoint))
             {
                 return environment.GraphEndpointResourceId;
             }
 
-            if (baseEnvironment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint].IsMatch(baseEndpoint))
+            if (baseEnvironment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint].IsMatch(baseEndpoint)
+                || (environment.ExtendedProperties.ContainsKey(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint) 
+                && environment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint].IsMatch(baseEndpoint)))
             {
                 return environment.ExtendedProperties.ContainsKey(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId) 
                     ? environment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId]
                     : baseEnvironment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId];
             }
 
-            if (baseEnvironment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix.IsMatch(baseEndpoint))
+            if (baseEnvironment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix.IsMatch(baseEndpoint)
+                || environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix.IsMatch(baseEndpoint))
             {
                 return environment.DataLakeEndpointResourceId ?? baseEnvironment.DataLakeEndpointResourceId;
             }
 
-            if (baseEnvironment.AzureDataLakeStoreFileSystemEndpointSuffix.IsMatch(baseEndpoint))
+            if (baseEnvironment.AzureDataLakeStoreFileSystemEndpointSuffix.IsMatch(baseEndpoint) 
+                || environment.AzureDataLakeStoreFileSystemEndpointSuffix.IsMatch(baseEndpoint))
             {
                 return environment.DataLakeEndpointResourceId ?? baseEnvironment.DataLakeEndpointResourceId;
             }
 
-            if (baseEnvironment.AzureKeyVaultDnsSuffix.IsMatch(baseEndpoint))
+            if (baseEnvironment.AzureKeyVaultDnsSuffix.IsMatch(baseEndpoint) || environment.AzureKeyVaultDnsSuffix.IsMatch(baseEndpoint))
             {
                 return environment.AzureKeyVaultServiceEndpointResourceId 
                     ?? baseEnvironment.AzureKeyVaultServiceEndpointResourceId;
             }
 
-            if (baseEnvironment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix].IsMatch(baseEndpoint))
+            if (baseEnvironment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix].IsMatch(baseEndpoint)
+                || ( environment.ExtendedProperties.ContainsKey(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix) 
+                && environment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix].IsMatch(baseEndpoint)))
             {
                 return environment.ExtendedProperties.ContainsKey(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId) 
                     ? environment.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId]

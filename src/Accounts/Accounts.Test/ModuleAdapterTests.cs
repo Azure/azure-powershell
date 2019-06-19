@@ -150,6 +150,49 @@ namespace Microsoft.Azure.Commands.Profile.Test
             newEnv.GetAudienceFromRequestUri(new Uri($"https://myazas.{baseEnv.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix]}/analyzers")));
         }
 
+        [Theory]
+        [InlineData(EnvironmentName.AzureChinaCloud)]
+        [InlineData(EnvironmentName.AzureGermanCloud)]
+        [InlineData(EnvironmentName.AzureUSGovernment)]
+        [InlineData(EnvironmentName.AzureCloud)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public static void TestEndpointAndAudienceUpdate(string environmentName)
+        {
+            var newEnv = AzureEnvironment.PublicEnvironments[environmentName];
+            var baseEnv = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+
+            Assert.Equal(newEnv.ActiveDirectoryServiceEndpointResourceId,
+                newEnv.GetAudienceFromRequestUri(newEnv.GetUriFromBaseRequestUri(new Uri($"{baseEnv.ResourceManagerUrl}/subscriptions"))));
+            Assert.Equal(newEnv.GraphEndpointResourceId,
+                newEnv.GetAudienceFromRequestUri(newEnv.GetUriFromBaseRequestUri(new Uri($"{baseEnv.GraphUrl}/tenants"))));
+            Assert.Equal(newEnv.ActiveDirectoryServiceEndpointResourceId,
+                newEnv.GetAudienceFromRequestUri(newEnv.GetUriFromBaseRequestUri(new Uri($"{baseEnv.ServiceManagementUrl}/subscriptions"))));
+            Assert.Equal(newEnv.ActiveDirectoryServiceEndpointResourceId,
+                newEnv.GetAudienceFromRequestUri(newEnv.GetUriFromBaseRequestUri(new Uri($"https://mystorage.{baseEnv.StorageEndpointSuffix}/containers"))));
+            Assert.Equal(newEnv.AzureKeyVaultServiceEndpointResourceId,
+                newEnv.GetAudienceFromRequestUri(newEnv.GetUriFromBaseRequestUri(new Uri($"https://myvault.{baseEnv.AzureKeyVaultDnsSuffix}/keys"))));
+            Assert.Equal(newEnv.ActiveDirectoryServiceEndpointResourceId,
+                newEnv.GetAudienceFromRequestUri(newEnv.GetUriFromBaseRequestUri(new Uri($"https://myazsql{baseEnv.SqlDatabaseDnsSuffix}/databases"))));
+            Assert.Equal(newEnv.ActiveDirectoryServiceEndpointResourceId,
+                newEnv.GetAudienceFromRequestUri(newEnv.GetUriFromBaseRequestUri(new Uri($"https://mytm.{baseEnv.TrafficManagerDnsSuffix}/packets"))));
+
+            // endpoint only available in Azure
+            Assert.Equal(newEnv.DataLakeEndpointResourceId ?? baseEnv.DataLakeEndpointResourceId,
+                newEnv.GetAudienceFromRequestUri(newEnv.GetUriFromBaseRequestUri(new Uri($"https://myadl.{baseEnv.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix}/jobs"))));
+            Assert.Equal(newEnv.DataLakeEndpointResourceId ?? baseEnv.DataLakeEndpointResourceId,
+                newEnv.GetAudienceFromRequestUri(newEnv.GetUriFromBaseRequestUri(new Uri($"https://myadfs.{baseEnv.AzureDataLakeStoreFileSystemEndpointSuffix}/files"))));
+
+            var expected = newEnv.ExtendedProperties.ContainsKey(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId)
+                ? newEnv.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId]
+                : baseEnv.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId];
+            // extended endpoints
+            Assert.Equal(expected,
+                newEnv.GetAudienceFromRequestUri(newEnv.GetUriFromBaseRequestUri(new Uri($"{baseEnv.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint]}/alerts"))));
+            Assert.Equal(newEnv.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointResourceId],
+            newEnv.GetAudienceFromRequestUri(newEnv.GetUriFromBaseRequestUri(new Uri($"https://myazas.{baseEnv.ExtendedProperties[AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix]}/analyzers"))));
+
+        }
+
         static Uri CreateUri(string baseString)
         {
             Uri outValue = null;
