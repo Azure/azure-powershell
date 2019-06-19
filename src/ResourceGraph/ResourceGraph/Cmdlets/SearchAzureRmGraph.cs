@@ -15,12 +15,17 @@
 namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 {
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Commands.ResourceGraph.Utilities;
+    using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Management.ResourceGraph.Models;
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
 
     /// <summary>
     /// Search-AzGraph cmdlet
@@ -37,16 +42,27 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Query extension with subscription names
         /// </summary>
-        private readonly string queryExtensionWithSubcriptionNames;
+        private readonly string queryExtensionToIncludeNames;
 
         public SearchAzureRmGraph() : base()
         {
+            // Query extension with subscription names 
+            var subscriptionList = this.DefaultContext.Account.GetSubscriptions(this.DefaultProfile);
+            if (subscriptionList != null && subscriptionList.Count != 0) {
+                var subIdToNameCache = subscriptionList.ToDictionary(sub => sub.Id, sub => sub.Name);
+                this.queryExtensionToIncludeNames =
+                    $"extend subscriptionDisplayName=case({string.Join(",", subIdToNameCache.Select(sub => $"subscriptionId=='{sub.Key}', '{sub.Value}'"))},'')";
+            }
 
-            var subscriptionIdToNameCache = this.DefaultContext.Account.GetSubscriptions(this.DefaultProfile)
-                .ToDictionary(sub => sub.Id, sub => sub.Name);
+            // Query extension with tenant names
+            var tenantList = this.ListTenants();
+            if (tenantList != null && tenantList.Count != 0)
+            {
+                var tenantIdToNameMap = tenantList?.ToDictionary(tenant => tenant["tenantId"], tenant => tenant["displayName"]);
 
-            this.queryExtensionWithSubcriptionNames = 
-                $"extend subscriptionName=case({string.Join(",", subscriptionIdToNameCache.Select(sub => $"subscriptionId=='{sub.Key}', '{sub.Value}'"))},'')";
+                this.queryExtensionToIncludeNames +=
+                $"| extend tenantDisplayName=case({string.Join(",", tenantIdToNameMap.Select(tenant => $"tenantId=='{tenant.Key}', '{tenant.Value}'"))},'')";
+            }
         }
 
         /// <summary>
@@ -97,7 +113,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         }
 
         /// <summary>
-        /// Gets or sets if result should be extended with subcription names.
+        /// Gets or sets if result should be extended with subcription and tenant names.
         /// </summary>s
         [Parameter(Mandatory = false, HelpMessage = "Indicates if result should be extended with subcription names")]
         [PSDefaultValue(Value = false)]
@@ -113,7 +129,8 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         public override void ExecuteCmdlet()
         {
             var subscriptions = this.GetSubscriptions().ToList();
-            if(subscriptions == null || subscriptions.Count == 0)
+
+            if (subscriptions == null || subscriptions.Count == 0)
             {
                 var exception = new ArgumentException("No subscriptions were found to run query. " +
                     "Please try to add them implicitly as param to your request (e.g. Search-AzGraph -Query '' -Subscription '11111111-1111-1111-1111-111111111111')");
@@ -146,7 +163,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                         skipToken: requestSkipToken);
 
                     var queryExtenstion = this.IncludeNames ?
-                        (queryExtensionWithSubcriptionNames + (this.Query.Length != 0 ? "| " : string.Empty)) :
+                        (this.queryExtensionToIncludeNames + (this.Query.Length != 0 ? "| " : string.Empty)) :
                         string.Empty;
 
                     var request = new QueryRequest(subscriptions, queryExtenstion + this.Query, options: requestOptions);
@@ -202,7 +219,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             if (this.TryGetDefaultContext(out var context))
             {
                 var subscriptionId = context.Subscription?.Id;
-                if(subscriptionId != null)
+                if (subscriptionId != null)
                 {
                     return new List<string> { subscriptionId };
                 }
@@ -215,6 +232,33 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             }
 
             return SubscriptionCache.GetSubscriptions(this.DefaultContext);
+        }
+
+        /// <summary>
+        /// Gets list of detailed tenants 
+        /// </summary>
+        /// <returns></returns>
+        private IList<IDictionary<string, object>> ListTenants()
+        {
+            try
+            {
+                var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
+                var authorizationToken = profileClient.AcquireAccessToken(this.DefaultContext.Tenant.Id).AccessToken;
+                HttpResponseMessage response;
+                using (HttpClient client = new HttpClient())
+                {
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(AUX_TOKEN_PREFIX, authorizationToken);
+                    response = client.GetAsync("https://management.azure.com/tenants?api-version=2019-05-10").Result;
+                }
+
+                var tenantContent = response.Content.ReadAsStringAsync().Result;
+                return JsonConvert.DeserializeObject<Dictionary<string, IList<IDictionary<string, object>>>>(tenantContent)["value"];
+            }
+            catch (Exception)
+            {
+                // Ignore exceptions 
+                return null;
+            }
         }
     }
 }

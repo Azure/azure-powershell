@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Improving logic of getting subscriptions for query to ARG
+* Adding param to extend query result with subscrption and tenant names
 
 ## Version 0.7.2
 * Fix conversion to PSCustomObject[] for top-level arrays
