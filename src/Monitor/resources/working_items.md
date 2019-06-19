@@ -88,10 +88,85 @@
 * `New-AzAlertRule`
     - [ ] Rename `-RuleName` to `-Name`
     - [ ] Investigate the need of `-DataSourceOdataType`
+    - [ ] (?) `Odata.Type` vs `RuleCondition` type
 * `Remove-AzAlertRule`
+    - [ ] Rename `-RuleName` to `-Name`
 * `Set-AzAlertRule`
+    - [ ] (?) New command. Hide it?
 * `Update-AzAlertRule`
 * `Get-AzAlertRuleIncident`
+    * Obs: New command.
+    - [ ] Rename `-RuleName` to `-Name` (for consistency)
+
+### LogProfile
+
+* `Set-AzLogProfile`
+    - [ ] Hide `-RetentionPolicyDay` and `-RetentionPolicyEnabled`
+    - [ ] Add `-RetentionInDays` and the following logic:
+        * `-RetentionPolicyDay` receives 0 and `-RetentionPolicyEnabled` false if `-RetentionInDays` is missing.
+        * `-RetentionPolicyEnabled` true if `-RetentionInDays` is used.
+* `Get-AzLogProfile`
+* `Remove-AzLogProfile`
+* `New-AzLogProfile`
+    - [ ] (?) New command. Hide it?
+* `Update-AzLogProfile`
+
+### Autoscale
+
+* `Set-AzAutoscaleSetting`
+    - [ ] (?) Since the default is creating an enabled alert. Remove `-Enabled` switch parameter and add `-DisableSetting`, that disables the alert if used.
+    - [ ] Rename or add alias from `-Profile` to `-AutoscaleProfile`
+    - [ ] Rename `-TargetResourceUri` to `-TargetResourceId`
+* `Get-AzAutoscaleSetting`
+    - [ ] (?) Add `-DetailedOutput` that returns the alert rule information with full details or not.
+        * Obs: The `PSAutoscaleSetting` and `PSAutoscaleSettingNoDetails` classes seems to be the same class so `-DetailedOutput` would be useless
+* `Remove-AzAutoscaleSetting`
+* `New-AzAutoscaleSetting`
+    - [ ] (?) New command. Hide it?
+* `Update-AzAutoscaleSetting`
+* (?) `Get-AzAutoescaleHistory`
+    - [ ] (?) Implemente cmdlet that uses `ActivityLogs` API to retrieve only logs about autoscale settings.
+
+### ScheduledQuery
+
+* `Set-ScheduledQueryRule`
+    - [ ] Rename `-RuleName` to `-Name`
+    - [ ] Change `-Enabled` type to boolean
+    - [ ] The `-ActionOdataType` actually receives types `AlertingAction` or `LogToMetricAction`
+    - [ ] (?) Add `-AsJob`
+* `New-ScheduledQueryRule`
+    - [ ] Apply same changes made to Set
+* `Update-ScheduledQueryRule`
+    - [ ] Rename `-RuleName` to `-Name`
+    - [ ] Change `-Enabled` type to boolean
+* `Remove-AzScheduledQueryRule`
+    - [ ] Rename `-RuleName` to `-Name`
+* `Get-AzScheduledQueryRule`
+    - [ ] Rename `-RuleName` to `-Name`
+
+### DiagnosticSetting
+
+* `Set-AzDiagnosticSetting`
+    - [ ] (?) Check the need to add `DiagnosticSettingsCategory` validation that uses `Get-AzDiagnosticSettingsCategory`
+    - [ ] Give better examples on how to use the non expanded parameters `-Log` and `-Metric`
+* `Get-AzDiagnosticSetting`
+* `Remove-AzDiagnosticSetting`
+* `New-AzDiagnosticSetting`
+    - [ ] New Command. Apply same changes made to Set
+* `Get-AzDiagnosticSettingsCategory`
+    - [ ] (?) New command. Hide it?
+
+### Others
+
+* `Get-AzBaseline`
+    - [ ] (?) New command. Hide it?
+* `Get-AzEventCategory`
+    - [ ] (?) New command. Hide it?
+
+### Missing Others
+
+* `Get-AzAlertHistory`
+* `Get-AzAutoscaleHistory`
 
 ### Missing in-memory objects creation cmdlets
 
@@ -103,3 +178,13 @@
 * `Add-AzWebtestAlertRule`
 * `New-AzAlertRuleEmail`
 * `New-AzAlertRuleWebhook`
+* `New-AzAutoscaleNotification`
+* `New-AzAutoscaleProfile`
+* `New-AzAutoscaleRule`
+* `New-AzAutoscaleWebhook`
+* `New-AzScheduledQueryRuleAlertingAction`
+* `New-AzScheduledQueryRuleAznsActionGroup`
+* `New-AzScheduledQueryRuleLogMetricTrigger`
+* `New-AzScheduledQueryRuleSchedule`
+* `New-AzScheduledQueryRuleSource`
+* `New-AzScheduledQueryRuleTriggerCondition`

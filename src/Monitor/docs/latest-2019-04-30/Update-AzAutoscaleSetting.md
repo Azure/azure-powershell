@@ -151,7 +151,7 @@ Dynamic: False
 ```
 
 ### -Name
-the name of the autoscale setting.
+The autoscale setting name.
 
 ```yaml
 Type: System.String
@@ -301,9 +301,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20150401.IAutoscaleSettingResourcePatch
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20150401.IAutoscaleSettingResourcePatch
 
 ## OUTPUTS
 
