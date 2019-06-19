@@ -14,13 +14,13 @@
 
 namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 {
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.ResourceGraph.Utilities;
+    using Microsoft.Azure.Management.ResourceGraph.Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-    using Microsoft.Azure.Commands.ResourceGraph.Utilities;
-    using Microsoft.Azure.Management.ResourceGraph.Models;
 
     /// <summary>
     /// Search-AzGraph cmdlet
@@ -33,7 +33,22 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// The rows per page
         /// </summary>
         private const int RowsPerPage = 1000;
-        
+
+        /// <summary>
+        /// Query extension with subscription names
+        /// </summary>
+        private readonly string queryExtensionWithSubcriptionNames;
+
+        public SearchAzureRmGraph() : base()
+        {
+
+            var subscriptionIdToNameCache = this.DefaultContext.Account.GetSubscriptions(this.DefaultProfile)
+                .ToDictionary(sub => sub.Id, sub => sub.Name);
+            this.queryExtensionWithSubcriptionNames = "extend subscriptionName = case(" +
+                        string.Join(",", subscriptionIdToNameCache.Keys.Select(sub => $"subscriptionId=='{sub}', '{subscriptionIdToNameCache[sub]}'"))
+                        + ", '')";
+        }
+
         /// <summary>
         /// Gets or sets the query.
         /// </summary>s
@@ -80,7 +95,18 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             get;
             set;
         }
-        
+
+        /// <summary>
+        /// Gets or sets if result should be extended with subcription names.
+        /// </summary>s
+        [Parameter(Mandatory = false, HelpMessage = "Indicates if result should be extended with subcription names")]
+        [PSDefaultValue(Value = false)]
+        public bool IncludeNames
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// Executes the cmdlet.
         /// </summary>
@@ -107,7 +133,11 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                         skip: requestSkip,
                         skipToken: requestSkipToken);
 
-                    var request = new QueryRequest(subscriptions, this.Query, requestOptions);
+                    var queryExtenstion = this.IncludeNames ?
+                        (queryExtensionWithSubcriptionNames + (this.Query.Length != 0 ? "| " : string.Empty)) :
+                        string.Empty;
+
+                    var request = new QueryRequest(subscriptions, queryExtenstion + this.Query, requestOptions);
 
                     response = this.ResourceGraphClient.ResourcesWithHttpMessagesAsync(request)
                         .Result
