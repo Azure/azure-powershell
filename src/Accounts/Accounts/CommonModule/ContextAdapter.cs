@@ -139,6 +139,7 @@ namespace Microsoft.Azure.Commands.Common
         {
             return async (request, cancelToken, cancelAction, signal, next) =>
             {
+                PatchRequestUri(context, request);
                 await AuthorizeRequest(context, resourceId, request, cancelToken);
                 return await next(request, cancelToken, cancelAction, signal);
             };
@@ -156,9 +157,16 @@ namespace Microsoft.Azure.Commands.Common
         {
             await Task.Run(() =>
             {
+                resourceId = context?.Environment?.GetAudienceFromBaseEndpoint(request.RequestUri) ?? resourceId;
                 var authToken = _authenticator.Authenticate(context.Account, context.Environment, context.Tenant.Id, null, "Never", null, resourceId);
                 authToken.AuthorizeRequest((type, token) => request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(type, token));
             }, outerToken);
+        }
+
+        internal void PatchRequestUri(IAzureContext context, HttpRequestMessage request)
+        {
+            var requestUri = context?.Environment?.GetEndpointFromBaseEndpoint(request.RequestUri);
+            request.RequestUri = requestUri ?? request.RequestUri;
         }
 
         /// <summary>
