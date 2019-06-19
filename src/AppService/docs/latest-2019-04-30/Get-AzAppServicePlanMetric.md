@@ -12,9 +12,17 @@ Get metrics for an App Service plan.
 
 ## SYNTAX
 
+### List (Default)
 ```
 Get-AzAppServicePlanMetric -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-Detail]
  [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListByFilter
+```
+Get-AzAppServicePlanMetric -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-Detail]
+ [-Metric <String[]>] [-StartTime <DateTime>] [-EndTime <DateTime>] [-Granularity <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,6 +83,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -EndTime
+End time fo the metrics to filter by.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: ListByFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Filter
 Return only usages/metrics specified in the filter.
 Filter conforms to odata syntax.
@@ -82,8 +106,41 @@ Example: $filter=(name.value eq 'Metric1' or name.value eq 'Metric2') and startT
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Granularity
+Granularity of the metrics to filter by.
+Allow values are PT1M, PT1H, P1D.
+
+```yaml
+Type: System.String
+Parameter Sets: ListByFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Metric
+Name(s) of the web app metric(s) to filter by.
+
+```yaml
+Type: System.String[]
+Parameter Sets: ListByFilter
+Aliases: Metrics
 
 Required: False
 Position: Named
@@ -118,6 +175,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -StartTime
+Start time of the metrics to filter by.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: ListByFilter
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

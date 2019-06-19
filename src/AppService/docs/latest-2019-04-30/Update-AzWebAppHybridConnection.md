@@ -229,7 +229,7 @@ Dynamic: False
 ```
 
 ### -RelayName
-The name of the Service Bus relay.
+The relay name for this hybrid connection.
 
 ```yaml
 Type: System.String
@@ -384,9 +384,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IHybridConnection
-
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IHybridConnection
 
 ## OUTPUTS
 

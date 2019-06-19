@@ -15,7 +15,7 @@ Create or update a certificate.
 ### Update (Default)
 ```
 Update-AzWebAppCertificate -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Envelope <ICertificatePatchResource>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-CertificateEnvelope <ICertificatePatchResource>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -23,7 +23,7 @@ Update-AzWebAppCertificate -Name <String> -ResourceGroupName <String> -Subscript
 ```
 Update-AzWebAppCertificate -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  -Password <String> [-HostName <String[]>] [-HostingEnvironmentProfileId <String>] [-KeyVaultId <String>]
- [-KeyVaultSecretName <String>] [-KeyVaultSecretStatu <KeyVaultSecretStatus>] [-Kind <String>]
+ [-KeyVaultSecretName <String>] [-KeyVaultSecretStatus <KeyVaultSecretStatus>] [-Kind <String>]
  [-PfxBlob <Byte[]>] [-ServerFarmId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -32,13 +32,13 @@ Update-AzWebAppCertificate -Name <String> -ResourceGroupName <String> -Subscript
 ```
 Update-AzWebAppCertificate -InputObject <IWebSiteIdentity> -Password <String> [-HostName <String[]>]
  [-HostingEnvironmentProfileId <String>] [-KeyVaultId <String>] [-KeyVaultSecretName <String>]
- [-KeyVaultSecretStatu <KeyVaultSecretStatus>] [-Kind <String>] [-PfxBlob <Byte[]>] [-ServerFarmId <String>]
+ [-KeyVaultSecretStatus <KeyVaultSecretStatus>] [-Kind <String>] [-PfxBlob <Byte[]>] [-ServerFarmId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
-Update-AzWebAppCertificate -InputObject <IWebSiteIdentity> [-Envelope <ICertificatePatchResource>]
+Update-AzWebAppCertificate -InputObject <IWebSiteIdentity> [-CertificateEnvelope <ICertificatePatchResource>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -67,6 +67,22 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -CertificateEnvelope
+ARM resource for a certificate.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICertificatePatchResource
+Parameter Sets: Update, UpdateViaIdentity
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -79,22 +95,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Envelope
-ARM resource for a certificate.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICertificatePatchResource
-Parameter Sets: Update, UpdateViaIdentity
-Aliases: CertificateEnvelope
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -179,7 +179,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -KeyVaultSecretStatu
+### -KeyVaultSecretStatus
 Status of the Key Vault secret.
 
 ```yaml
@@ -347,9 +347,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICertificatePatchResource
-
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICertificatePatchResource
 
 ## OUTPUTS
 

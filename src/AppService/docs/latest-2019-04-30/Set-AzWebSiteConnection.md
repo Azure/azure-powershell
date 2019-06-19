@@ -14,28 +14,14 @@ Creates or updates a connection.
 
 ### Update (Default)
 ```
-Set-AzWebSiteConnection -ResourceGroupName <String> -SubscriptionId <String> [-Name <String>]
+Set-AzWebSiteConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Connection <IConnection>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Set-AzWebSiteConnection -InputObject <IWebSiteIdentity> -ApiLocation <String> -Location <String>
- [-Name <String>] [-ApiId <String>] [-ApiKind <String>] [-ApiName <String>] [-ApiTag <IResourceTags>]
- [-ApiType <String>] [-ChangedTime <DateTime>] [-CreatedTime <DateTime>]
- [-CustomParameterValue <IConnectionPropertiesCustomParameterValues>] [-DisplayName <String>]
- [-Entity <IResponseMessageEnvelopeApiEntity>] [-FirstExpirationTime <DateTime>] [-Id <String>]
- [-Keyword <String[]>] [-Kind <String>] [-Metadata <IObject>]
- [-NonSecretParameterValue <IConnectionPropertiesNonSecretParameterValues>]
- [-ParameterValue <IConnectionPropertiesParameterValues>] [-PropertiesId <String>] [-PropertiesName <String>]
- [-Statuses <IConnectionStatus[]>] [-Tag <IResourceTags>] [-TenantId <String>] [-Type <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Set-AzWebSiteConnection -ResourceGroupName <String> -SubscriptionId <String> -ConnectionName <String>
- -ApiLocation <String> -Location <String> [-Name <String>] [-ApiId <String>] [-ApiKind <String>]
+Set-AzWebSiteConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -ConnectionName <String> -ApiLocation <String> -Location <String> [-ApiId <String>] [-ApiKind <String>]
  [-ApiName <String>] [-ApiTag <IResourceTags>] [-ApiType <String>] [-ChangedTime <DateTime>]
  [-CreatedTime <DateTime>] [-CustomParameterValue <IConnectionPropertiesCustomParameterValues>]
  [-DisplayName <String>] [-Entity <IResponseMessageEnvelopeApiEntity>] [-FirstExpirationTime <DateTime>]
@@ -43,12 +29,6 @@ Set-AzWebSiteConnection -ResourceGroupName <String> -SubscriptionId <String> -Co
  [-NonSecretParameterValue <IConnectionPropertiesNonSecretParameterValues>]
  [-ParameterValue <IConnectionPropertiesParameterValues>] [-PropertiesId <String>] [-PropertiesName <String>]
  [-Statuses <IConnectionStatus[]>] [-Tag <IResourceTags>] [-TenantId <String>] [-Type <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Set-AzWebSiteConnection -InputObject <IWebSiteIdentity> [-Connection <IConnection>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -82,7 +62,7 @@ Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -98,7 +78,7 @@ Kind of resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -114,7 +94,7 @@ Resource Location
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -130,7 +110,7 @@ Resource Name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -146,7 +126,7 @@ Resource tags
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IResourceTags
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -162,7 +142,7 @@ Resource type
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -178,7 +158,7 @@ Timestamp of last connection change.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -194,7 +174,7 @@ API Connection
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IConnection
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: Update
 Aliases:
 
 Required: False
@@ -226,7 +206,7 @@ Timestamp of the connection creation
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -242,7 +222,7 @@ Custom login setting values.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IConnectionPropertiesCustomParameterValues
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -274,7 +254,7 @@ display name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -290,7 +270,7 @@ Id of connection provider
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IResponseMessageEnvelopeApiEntity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -306,7 +286,7 @@ Time in UTC when the first expiration of OAuth tokens
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -322,7 +302,7 @@ Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -333,28 +313,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Keyword
 List of Keywords that tag the acl
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -370,7 +334,7 @@ Kind of resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -386,7 +350,7 @@ Resource Location
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -402,7 +366,7 @@ HELP MESSAGE MISSING
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IObject
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -414,11 +378,11 @@ Dynamic: False
 ```
 
 ### -Name
-Resource Name
+The connection name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -434,7 +398,7 @@ Tokens/Claim
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IConnectionPropertiesNonSecretParameterValues
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -450,7 +414,7 @@ Tokens/Claim
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IConnectionPropertiesParameterValues
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -466,7 +430,7 @@ Id of connection provider
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -482,7 +446,7 @@ connection name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -498,7 +462,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -514,7 +478,7 @@ Status of the connection
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IConnectionStatus[]
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -532,7 +496,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -548,7 +512,7 @@ Resource tags
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IResourceTags
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -564,7 +528,7 @@ HELP MESSAGE MISSING
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -580,7 +544,7 @@ Resource type
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -630,8 +594,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IConnection
-
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
 
 ## OUTPUTS
 

@@ -15,14 +15,14 @@ Create or update a certificate.
 ### Create (Default)
 ```
 New-AzWebAppCertificate -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Envelope <ICertificate>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-CertificateEnvelope <ICertificate>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
 New-AzWebAppCertificate -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
  -Password <String> [-HostName <String[]>] [-HostingEnvironmentProfileId <String>] [-KeyVaultId <String>]
- [-KeyVaultSecretName <String>] [-KeyVaultSecretStatu <KeyVaultSecretStatus>] [-Kind <String>]
+ [-KeyVaultSecretName <String>] [-KeyVaultSecretStatus <KeyVaultSecretStatus>] [-Kind <String>]
  [-PfxBlob <Byte[]>] [-ServerFarmId <String>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -31,14 +31,14 @@ New-AzWebAppCertificate -Name <String> -ResourceGroupName <String> -Subscription
 ```
 New-AzWebAppCertificate -InputObject <IWebSiteIdentity> -Location <String> -Password <String>
  [-HostName <String[]>] [-HostingEnvironmentProfileId <String>] [-KeyVaultId <String>]
- [-KeyVaultSecretName <String>] [-KeyVaultSecretStatu <KeyVaultSecretStatus>] [-Kind <String>]
+ [-KeyVaultSecretName <String>] [-KeyVaultSecretStatus <KeyVaultSecretStatus>] [-Kind <String>]
  [-PfxBlob <Byte[]>] [-ServerFarmId <String>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
-New-AzWebAppCertificate -InputObject <IWebSiteIdentity> [-Envelope <ICertificate>]
+New-AzWebAppCertificate -InputObject <IWebSiteIdentity> [-CertificateEnvelope <ICertificate>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -67,6 +67,22 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -CertificateEnvelope
+SSL certificate for an app.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICertificate
+Parameter Sets: Create, CreateViaIdentity
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -79,22 +95,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Envelope
-SSL certificate for an app.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICertificate
-Parameter Sets: Create, CreateViaIdentity
-Aliases: CertificateEnvelope
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -179,7 +179,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -KeyVaultSecretStatu
+### -KeyVaultSecretStatus
 Status of the Key Vault secret.
 
 ```yaml
@@ -379,9 +379,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICertificate
-
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICertificate
 
 ## OUTPUTS
 

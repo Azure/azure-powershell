@@ -136,7 +136,7 @@ Dynamic: False
 
 ### -Slot
 Name of the deployment slot.
-If a slot is not specified, the API returns deployments for the production slot.
+If a slot is not specified, the API gets a deployment for the production slot.
 
 ```yaml
 Type: System.String

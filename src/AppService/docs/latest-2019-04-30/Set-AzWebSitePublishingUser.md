@@ -20,7 +20,7 @@ Set-AzWebSitePublishingUser [-UserDetail <IUser>] [-DefaultProfile <PSObject>] [
 
 ### UpdateExpanded1
 ```
-Set-AzWebSitePublishingUser -Name <String> [-Kind <String>] [-PublishingPassword <String>]
+Set-AzWebSitePublishingUser -PublishingUserName <String> [-Kind <String>] [-PublishingPassword <String>]
  [-PublishingPasswordHash <String>] [-PublishingPasswordHashSalt <String>] [-ScmUri <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -82,22 +82,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Name
-Username used for publishing.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
-Aliases: PublishingUserName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -PublishingPassword
 Password used for publishing.
 
@@ -139,6 +123,22 @@ Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -PublishingUserName
+Username used for publishing.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded1
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

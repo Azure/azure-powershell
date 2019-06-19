@@ -26,9 +26,6 @@ Applies the configuration settings from the target slot onto the current slot.
 ### [Backup-AzWebApp](Backup-AzWebApp.md)
 Creates a backup of an app.
 
-### [Backup-AzWebAppSlot](Backup-AzWebAppSlot.md)
-Creates a backup of an app.
-
 ### [Confirm-AzWebSiteConnectionConsentCode](Confirm-AzWebSiteConnectionConsentCode.md)
 Confirms consent code of a connection.
 
@@ -36,10 +33,6 @@ Confirms consent code of a connection.
 Disables the specified rule so it will not apply to a subscription in the future.
 
 ### [Find-AzWebAppBackup](Find-AzWebAppBackup.md)
-Discovers an existing app backup that can be restored from a blob in Azure storage.
-Use this to get information about the databases stored in a backup.
-
-### [Find-AzWebAppBackupSlot](Find-AzWebAppBackupSlot.md)
 Discovers an existing app backup that can be restored from a blob in Azure storage.
 Use this to get information about the databases stored in a backup.
 
@@ -208,14 +201,17 @@ Gets the Azure storage account configurations of an app.
 ### [Get-AzWebAppBackup](Get-AzWebAppBackup.md)
 Gets existing backups of an app.
 
+### [Get-AzWebAppBackup](Get-AzWebAppBackup.md)
+Gets existing backups of an app.
+
 ### [Get-AzWebAppBackupConfiguration](Get-AzWebAppBackupConfiguration.md)
 Gets the backup configuration of an app.
 
-### [Get-AzWebAppBackupConfigurationSlot](Get-AzWebAppBackupConfigurationSlot.md)
+### [Get-AzWebAppBackupConfiguration](Get-AzWebAppBackupConfiguration.md)
 Gets the backup configuration of an app.
 
-### [Get-AzWebAppBackupSlot](Get-AzWebAppBackupSlot.md)
-Gets existing backups of an app.
+### [Get-AzWebAppBackupStatus](Get-AzWebAppBackupStatus.md)
+Gets a backup of an app by its ID.
 
 ### [Get-AzWebAppBackupStatus](Get-AzWebAppBackupStatus.md)
 Gets a backup of an app by its ID.
@@ -224,12 +220,9 @@ Gets a backup of an app by its ID.
 Gets status of a web app backup that may be in progress, including secrets associated with the backup, such as the Azure Storage SAS URL.
 Also can be used to update the SAS URL for the backup if a new URL is passed in the request body.
 
-### [Get-AzWebAppBackupStatusSecretSlot](Get-AzWebAppBackupStatusSecretSlot.md)
+### [Get-AzWebAppBackupStatusSecret](Get-AzWebAppBackupStatusSecret.md)
 Gets status of a web app backup that may be in progress, including secrets associated with the backup, such as the Azure Storage SAS URL.
 Also can be used to update the SAS URL for the backup if a new URL is passed in the request body.
-
-### [Get-AzWebAppBackupStatusSlot](Get-AzWebAppBackupStatusSlot.md)
-Gets a backup of an app by its ID.
 
 ### [Get-AzWebAppCertificate](Get-AzWebAppCertificate.md)
 Get a certificate.
@@ -494,9 +487,6 @@ Get the named public certificate for an app (or deployment slot, if specified).
 ### [Get-AzWebAppPublishingCredentials](Get-AzWebAppPublishingCredentials.md)
 Gets the Git/FTP publishing credentials of an app.
 
-### [Get-AzWebAppPublishingCredentialsSlot](Get-AzWebAppPublishingCredentialsSlot.md)
-Gets the Git/FTP publishing credentials of an app.
-
 ### [Get-AzWebAppPublishingProfile](Get-AzWebAppPublishingProfile.md)
 Gets the publishing profile for an app (or deployment slot, if specified).
 
@@ -539,20 +529,11 @@ Get the difference in configuration settings between two web app slots.
 ### [Get-AzWebAppSlotDifferenceSlot](Get-AzWebAppSlotDifferenceSlot.md)
 Get the difference in configuration settings between two web app slots.
 
-### [Get-AzWebAppSlotMetric](Get-AzWebAppSlotMetric.md)
-Gets performance metrics of an app (or deployment slot, if specified).
-
 ### [Get-AzWebAppSnapshot](Get-AzWebAppSnapshot.md)
 Returns all Snapshots to the user.
 
 ### [Get-AzWebAppSnapshotFromDrSecondary](Get-AzWebAppSnapshotFromDrSecondary.md)
 Returns all Snapshots to the user from DRSecondary endpoint.
-
-### [Get-AzWebAppSnapshotFromDrSecondarySlot](Get-AzWebAppSnapshotFromDrSecondarySlot.md)
-Returns all Snapshots to the user from DRSecondary endpoint.
-
-### [Get-AzWebAppSnapshotSlot](Get-AzWebAppSnapshotSlot.md)
-Returns all Snapshots to the user.
 
 ### [Get-AzWebAppSourceControl](Get-AzWebAppSourceControl.md)
 Gets the source control configuration of an app.
@@ -903,12 +884,6 @@ Creates a new hybrid connection configuration (PUT), or updates an existing one 
 ### [New-AzWebAppRelayServiceConnectionSlot](New-AzWebAppRelayServiceConnectionSlot.md)
 Creates a new hybrid connection configuration (PUT), or updates an existing one (PATCH).
 
-### [New-AzWebAppSlot](New-AzWebAppSlot.md)
-Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
-
-### [New-AzWebAppSlotPublishingPassword](New-AzWebAppSlotPublishingPassword.md)
-Generates a new publishing password for an app (or deployment slot, if specified).
-
 ### [New-AzWebAppSourceControl](New-AzWebAppSourceControl.md)
 Updates the source control configuration of an app.
 
@@ -979,12 +954,6 @@ Deletes a backup of an app by its ID.
 
 ### [Remove-AzWebAppBackupConfiguration](Remove-AzWebAppBackupConfiguration.md)
 Deletes the backup configuration of an app.
-
-### [Remove-AzWebAppBackupConfigurationSlot](Remove-AzWebAppBackupConfigurationSlot.md)
-Deletes the backup configuration of an app.
-
-### [Remove-AzWebAppBackupSlot](Remove-AzWebAppBackupSlot.md)
-Deletes a backup of an app by its ID.
 
 ### [Remove-AzWebAppCertificate](Remove-AzWebAppCertificate.md)
 Delete a certificate.
@@ -1064,9 +1033,6 @@ Remove a site extension from a web site, or a deployment slot.
 ### [Remove-AzWebAppSiteExtensionSlot](Remove-AzWebAppSiteExtensionSlot.md)
 Remove a site extension from a web site, or a deployment slot.
 
-### [Remove-AzWebAppSlot](Remove-AzWebAppSlot.md)
-Deletes a web, mobile, or API app, or one of the deployment slots.
-
 ### [Remove-AzWebAppSourceControl](Remove-AzWebAppSourceControl.md)
 Deletes the source control configuration of an app.
 
@@ -1139,13 +1105,7 @@ Reboot a worker machine in an App Service plan.
 ### [Restart-AzWebApp](Restart-AzWebApp.md)
 Restarts an app (or deployment slot, if specified).
 
-### [Restart-AzWebAppSlot](Restart-AzWebAppSlot.md)
-Restarts an app (or deployment slot, if specified).
-
 ### [Restore-AzDeletedWebApp](Restore-AzDeletedWebApp.md)
-Restores a deleted web app to this web app.
-
-### [Restore-AzDeletedWebAppSlot](Restore-AzDeletedWebAppSlot.md)
 Restores a deleted web app to this web app.
 
 ### [Restore-AzWebApp](Restore-AzWebApp.md)
@@ -1163,13 +1123,7 @@ Reverts the configuration of an app to a previous snapshot.
 ### [Restore-AzWebAppSiteConfigurationSnapshotSlot](Restore-AzWebAppSiteConfigurationSnapshotSlot.md)
 Reverts the configuration of an app to a previous snapshot.
 
-### [Restore-AzWebAppSlot](Restore-AzWebAppSlot.md)
-Recovers a web app to a previous snapshot.
-
 ### [Restore-AzWebAppSnapshot](Restore-AzWebAppSnapshot.md)
-Restores a web app from a snapshot.
-
-### [Restore-AzWebAppSnapshotSlot](Restore-AzWebAppSnapshotSlot.md)
 Restores a web app from a snapshot.
 
 ### [Resume-AzAppServiceEnvironment](Resume-AzAppServiceEnvironment.md)
@@ -1221,9 +1175,6 @@ Updates the Azure storage account configurations of an app.
 Updates the Azure storage account configurations of an app.
 
 ### [Set-AzWebAppBackupConfiguration](Set-AzWebAppBackupConfiguration.md)
-Updates the backup configuration of an app.
-
-### [Set-AzWebAppBackupConfigurationSlot](Set-AzWebAppBackupConfigurationSlot.md)
 Updates the backup configuration of an app.
 
 ### [Set-AzWebAppCertificate](Set-AzWebAppCertificate.md)
@@ -1298,9 +1249,6 @@ Updates the Push settings associated with web app.
 ### [Set-AzWebAppSitePushSettingSlot](Set-AzWebAppSitePushSettingSlot.md)
 Updates the Push settings associated with web app.
 
-### [Set-AzWebAppSlot](Set-AzWebAppSlot.md)
-Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
-
 ### [Set-AzWebAppSlotConfigurationName](Set-AzWebAppSlotConfigurationName.md)
 Updates the names of application settings and connection string that remain with the slot during swap operation.
 
@@ -1366,9 +1314,6 @@ Start capturing network packets for the site.
 ### [Start-AzWebAppNetworkTraceSlot](Start-AzWebAppNetworkTraceSlot.md)
 Start capturing network packets for the site.
 
-### [Start-AzWebAppSlot](Start-AzWebAppSlot.md)
-Starts an app (or deployment slot, if specified).
-
 ### [Start-AzWebAppTriggeredWebJob](Start-AzWebAppTriggeredWebJob.md)
 Run a triggered web job for an app, or a deployment slot.
 
@@ -1401,9 +1346,6 @@ Stop ongoing capturing network packets for the site.
 
 ### [Stop-AzWebAppNetworkTraceSlot](Stop-AzWebAppNetworkTraceSlot.md)
 Stop ongoing capturing network packets for the site.
-
-### [Stop-AzWebAppSlot](Stop-AzWebAppSlot.md)
-Stops an app (or deployment slot, if specified).
 
 ### [Stop-AzWebAppWebSiteNetworkTrace](Stop-AzWebAppWebSiteNetworkTrace.md)
 Stop ongoing capturing network packets for the site.

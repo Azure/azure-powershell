@@ -18,6 +18,12 @@ New-AzWebAppPublishingPassword -Name <String> -ResourceGroupName <String> -Subsc
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### GenerateSlot
+```
+New-AzWebAppPublishingPassword -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Slot <String> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### GenerateViaIdentity
 ```
 New-AzWebAppPublishingPassword -InputObject <IWebSiteIdentity> [-PassThru] [-DefaultProfile <PSObject>]
@@ -86,7 +92,7 @@ Name of the app.
 
 ```yaml
 Type: System.String
-Parameter Sets: Generate
+Parameter Sets: Generate, GenerateSlot
 Aliases:
 
 Required: True
@@ -118,7 +124,24 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Generate
+Parameter Sets: Generate, GenerateSlot
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Slot
+Name of the deployment slot.
+If a slot is not specified, the API generate a new publishing password for the production slot.
+
+```yaml
+Type: System.String
+Parameter Sets: GenerateSlot
 Aliases:
 
 Required: True
@@ -136,7 +159,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Generate
+Parameter Sets: Generate, GenerateSlot
 Aliases:
 
 Required: True
@@ -194,6 +217,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Reset-AzWebAppPublishingProfile
+
+### Reset-AzWebAppSlotPublishingProfile
 
 ## RELATED LINKS
 

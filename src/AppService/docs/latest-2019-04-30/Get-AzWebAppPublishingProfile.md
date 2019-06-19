@@ -14,30 +14,37 @@ Gets the publishing profile for an app (or deployment slot, if specified).
 
 ### List (Default)
 ```
-Get-AzWebAppPublishingProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzWebAppPublishingProfile -SubscriptionId <String[]> -Name <String> -ResourceGroupName <String>
  [-PassThru] [-PublishingProfileOption <ICsmPublishingProfileOptions>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### ListExpanded1
 ```
-Get-AzWebAppPublishingProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzWebAppPublishingProfile -SubscriptionId <String[]> -Name <String> -ResourceGroupName <String>
  -Slot <String> [-PassThru] [-Format <PublishingProfileFormat>] [-IncludeDisasterRecoveryEndpoints]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzWebAppPublishingProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -Slot <String> [-PassThru] [-PublishingProfileOption <ICsmPublishingProfileOptions>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ListExpanded
 ```
-Get-AzWebAppPublishingProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzWebAppPublishingProfile -SubscriptionId <String[]> -Name <String> -ResourceGroupName <String>
  [-PassThru] [-Format <PublishingProfileFormat>] [-IncludeDisasterRecoveryEndpoints]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzWebAppPublishingProfile -SubscriptionId <String[]> -Name <String> -ResourceGroupName <String>
+ -Slot <String> [-PassThru] [-PublishingProfileOption <ICsmPublishingProfileOptions>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ListBySiteObject
+```
+Get-AzWebAppPublishingProfile -SubscriptionId <String[]> -SiteObject <ISite> [-PassThru]
+ [-Format <PublishingProfileFormat>] [-IncludeDisasterRecoveryEndpoints] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,7 +94,7 @@ Valid values are: FileZilla3WebDeploy -- defaultFtp
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.PublishingProfileFormat
-Parameter Sets: ListExpanded1, ListExpanded
+Parameter Sets: ListExpanded1, ListExpanded, ListBySiteObject
 Aliases:
 
 Required: False
@@ -103,7 +110,7 @@ Include the DisasterRecover endpoint if true
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ListExpanded1, ListExpanded
+Parameter Sets: ListExpanded1, ListExpanded, ListBySiteObject
 Aliases:
 
 Required: False
@@ -119,7 +126,7 @@ Name of the app.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, ListExpanded1, ListExpanded, List1
 Aliases:
 
 Required: True
@@ -167,8 +174,24 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, ListExpanded1, ListExpanded, List1
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SiteObject
+The object representation of the web app or slot.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISite
+Parameter Sets: ListBySiteObject
+Aliases: WebApp, WebAppSlot
 
 Required: True
 Position: Named

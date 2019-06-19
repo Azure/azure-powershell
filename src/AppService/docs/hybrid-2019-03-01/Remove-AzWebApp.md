@@ -18,6 +18,13 @@ Remove-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <Stri
  [-DeleteMetric] [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteSlot
+```
+Remove-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Slot <String>
+ [-DeleteEmptyServerFarm] [-DeleteMetric] [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzWebApp -InputObject <IWebSiteIdentity> [-DeleteEmptyServerFarm] [-DeleteMetric] [-PassThru]
@@ -119,7 +126,7 @@ Name of the app to delete.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteSlot
 Aliases:
 
 Required: True
@@ -151,7 +158,24 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteSlot
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Slot
+Name of the deployment slot to delete.
+By default, the API deletes the production slot.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteSlot
 Aliases:
 
 Required: True
@@ -169,7 +193,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteSlot
 Aliases:
 
 Required: True
@@ -225,6 +249,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+### Remove-AzWebAppSlot
 
 ## RELATED LINKS
 

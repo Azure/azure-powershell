@@ -47,47 +47,8 @@ Set-AzWebSiteDomain -Name <String> -ResourceGroupName <String> -SubscriptionId <
  [-ContactTechAddressMailingAddress2 <String>] [-ContactTechFax <String>] [-ContactTechJobTitle <String>]
  [-ContactTechNameMiddle <String>] [-ContactTechOrganization <String>] [-DnsType <DnsType>]
  [-DnsZoneId <String>] [-Kind <String>] [-Privacy] [-ProvisioningState <ProvisioningState>]
- [-RegistrationStatu <DomainStatus>] [-Tag <IResourceTags>] [-TargetDnsType <DnsType>]
+ [-RegistrationStatus <DomainStatus>] [-Tag <IResourceTags>] [-TargetDnsType <DnsType>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Set-AzWebSiteDomain -InputObject <IWebSiteIdentity> -ContactAdminAddressMailingAddress1 <String>
- -ContactAdminAddressMailingCity <String> -ContactAdminAddressMailingCountry <String>
- -ContactAdminAddressMailingPostalCode <String> -ContactAdminAddressMailingState <String>
- -ContactAdminEmail <String> -ContactAdminNameFirst <String> -ContactAdminNameLast <String>
- -ContactAdminPhone <String> -ContactBillingAddressMailingAddress1 <String>
- -ContactBillingAddressMailingCity <String> -ContactBillingAddressMailingCountry <String>
- -ContactBillingAddressMailingPostalCode <String> -ContactBillingAddressMailingState <String>
- -ContactBillingEmail <String> -ContactBillingNameFirst <String> -ContactBillingNameLast <String>
- -ContactBillingPhone <String> -ContactRegistrantAddressMailingAddress1 <String>
- -ContactRegistrantAddressMailingCity <String> -ContactRegistrantAddressMailingCountry <String>
- -ContactRegistrantAddressMailingPostalCode <String> -ContactRegistrantAddressMailingState <String>
- -ContactRegistrantEmail <String> -ContactRegistrantNameFirst <String> -ContactRegistrantNameLast <String>
- -ContactRegistrantPhone <String> -ContactTechAddressMailingAddress1 <String>
- -ContactTechAddressMailingCity <String> -ContactTechAddressMailingCountry <String>
- -ContactTechAddressMailingPostalCode <String> -ContactTechAddressMailingState <String>
- -ContactTechEmail <String> -ContactTechNameFirst <String> -ContactTechNameLast <String>
- -ContactTechPhone <String> -Location <String> [-AuthCode <String>] [-AutoRenew] [-ConsentAgreedAt <DateTime>]
- [-ConsentAgreedBy <String>] [-ConsentAgreementKey <String[]>] [-ContactAdminAddressMailingAddress2 <String>]
- [-ContactAdminFax <String>] [-ContactAdminJobTitle <String>] [-ContactAdminNameMiddle <String>]
- [-ContactAdminOrganization <String>] [-ContactBillingAddressMailingAddress2 <String>]
- [-ContactBillingFax <String>] [-ContactBillingJobTitle <String>] [-ContactBillingNameMiddle <String>]
- [-ContactBillingOrganization <String>] [-ContactRegistrantAddressMailingAddress2 <String>]
- [-ContactRegistrantFax <String>] [-ContactRegistrantJobTitle <String>]
- [-ContactRegistrantNameMiddle <String>] [-ContactRegistrantOrganization <String>]
- [-ContactTechAddressMailingAddress2 <String>] [-ContactTechFax <String>] [-ContactTechJobTitle <String>]
- [-ContactTechNameMiddle <String>] [-ContactTechOrganization <String>] [-DnsType <DnsType>]
- [-DnsZoneId <String>] [-Kind <String>] [-Privacy] [-ProvisioningState <ProvisioningState>]
- [-RegistrationStatu <DomainStatus>] [-Tag <IResourceTags>] [-TargetDnsType <DnsType>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Set-AzWebSiteDomain -InputObject <IWebSiteIdentity> [-Domain <IDomain>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -136,7 +97,7 @@ HELP MESSAGE MISSING
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -152,7 +113,7 @@ Dynamic: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -168,7 +129,7 @@ Timestamp when the agreements were accepted.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -184,7 +145,7 @@ Client IP address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -201,7 +162,7 @@ This list can be retrieved using ListLegalAgreements API under <code>TopLevelDom
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -217,7 +178,7 @@ First line of an Address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -234,7 +195,7 @@ Optional.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -250,7 +211,7 @@ The city for the address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -266,7 +227,7 @@ The country for the address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -282,7 +243,7 @@ The postal code for the address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -298,7 +259,7 @@ The state or province for the address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -314,7 +275,7 @@ Email address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -330,7 +291,7 @@ Fax number.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -346,7 +307,7 @@ Job title.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -362,7 +323,7 @@ First name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -378,7 +339,7 @@ Last name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -394,7 +355,7 @@ Middle name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -410,7 +371,7 @@ Organization contact belongs to.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -426,7 +387,7 @@ Phone number.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -442,7 +403,7 @@ First line of an Address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -459,7 +420,7 @@ Optional.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -475,7 +436,7 @@ The city for the address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -491,7 +452,7 @@ The country for the address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -507,7 +468,7 @@ The postal code for the address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -523,7 +484,7 @@ The state or province for the address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -539,7 +500,7 @@ Email address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -555,7 +516,7 @@ Fax number.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -571,7 +532,7 @@ Job title.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -587,7 +548,7 @@ First name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -603,7 +564,7 @@ Last name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -619,7 +580,7 @@ Middle name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -635,7 +596,7 @@ Organization contact belongs to.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -651,7 +612,7 @@ Phone number.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -667,7 +628,7 @@ First line of an Address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -684,7 +645,7 @@ Optional.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -700,7 +661,7 @@ The city for the address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -716,7 +677,7 @@ The country for the address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -732,7 +693,7 @@ The postal code for the address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -748,7 +709,7 @@ The state or province for the address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -764,7 +725,7 @@ Email address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -780,7 +741,7 @@ Fax number.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -796,7 +757,7 @@ Job title.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -812,7 +773,7 @@ First name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -828,7 +789,7 @@ Last name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -844,7 +805,7 @@ Middle name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -860,7 +821,7 @@ Organization contact belongs to.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -876,7 +837,7 @@ Phone number.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -892,7 +853,7 @@ First line of an Address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -909,7 +870,7 @@ Optional.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -925,7 +886,7 @@ The city for the address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -941,7 +902,7 @@ The country for the address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -957,7 +918,7 @@ The postal code for the address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -973,7 +934,7 @@ The state or province for the address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -989,7 +950,7 @@ Email address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -1005,7 +966,7 @@ Fax number.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1021,7 +982,7 @@ Job title.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1037,7 +998,7 @@ First name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -1053,7 +1014,7 @@ Last name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -1069,7 +1030,7 @@ Middle name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1085,7 +1046,7 @@ Organization contact belongs to.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1101,7 +1062,7 @@ Phone number.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -1133,7 +1094,7 @@ Current DNS type
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.DnsType
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1149,7 +1110,7 @@ Azure DNS Zone to use
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1165,26 +1126,10 @@ Information about a domain.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IDomain
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: Update
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -1197,7 +1142,7 @@ Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1213,7 +1158,7 @@ Resource Location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -1229,7 +1174,7 @@ Name of the domain.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases: DomainName
 
 Required: True
@@ -1245,7 +1190,7 @@ Dynamic: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1261,7 +1206,7 @@ Domain provisioning state.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.ProvisioningState
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1272,12 +1217,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RegistrationStatu
+### -RegistrationStatus
 Domain registration status.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.DomainStatus
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1293,7 +1238,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -1311,7 +1256,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -1327,7 +1272,7 @@ Resource tags.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IResourceTags
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1343,7 +1288,7 @@ Target DNS type (would be used for migration)
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.DnsType
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1393,8 +1338,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IDomain
-
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
 
 ## OUTPUTS
 

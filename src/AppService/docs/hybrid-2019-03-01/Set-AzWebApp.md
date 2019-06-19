@@ -18,6 +18,29 @@ Set-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateSlot
+```
+Set-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Slot <String>
+ [-SiteEnvelope <ISite>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateExpandedSlot
+```
+Set-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Slot <String>
+ -CloningInfoSourceWebAppId <String> -Location <String> [-ClientAffinityEnabled] [-ClientCertEnabled]
+ [-ClientCertExclusionPath <String>] [-CloningInfoAppSettingsOverride <ICloningInfoAppSettingsOverrides>]
+ [-CloningInfoCloneCustomHostName] [-CloningInfoCloneSourceControl] [-CloningInfoConfigureLoadBalancing]
+ [-CloningInfoCorrelationId <String>] [-CloningInfoHostingEnvironment <String>] [-CloningInfoOverwrite]
+ [-CloningInfoTrafficManagerProfileId <String>] [-CloningInfoTrafficManagerProfileName <String>]
+ [-ContainerSize <Int32>] [-DailyMemoryTimeQuota <Int32>] [-Enabled] [-GeoDistribution <IGeoDistribution[]>]
+ [-HostNameSslState <IHostNameSslState[]>] [-HostNamesDisabled] [-HostingEnvironmentProfileId <String>]
+ [-HttpsOnly] [-HyperV] [-IdentityType <ManagedServiceIdentityType>]
+ [-IdentityUserAssignedIdentity <IManagedServiceIdentityUserAssignedIdentities>] [-IsXenon] [-Kind <String>]
+ [-RedundancyMode <RedundancyMode>] [-Reserved] [-ScmSiteAlsoStopped] [-ServerFarmId <String>]
+ [-SiteConfig <ISiteConfig>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ### UpdateExpanded
 ```
 Set-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
@@ -33,29 +56,6 @@ Set-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-RedundancyMode <RedundancyMode>] [-Reserved] [-ScmSiteAlsoStopped] [-ServerFarmId <String>]
  [-SiteConfig <ISiteConfig>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Set-AzWebApp -InputObject <IWebSiteIdentity> -CloningInfoSourceWebAppId <String> -Location <String>
- [-ClientAffinityEnabled] [-ClientCertEnabled] [-ClientCertExclusionPath <String>]
- [-CloningInfoAppSettingsOverride <ICloningInfoAppSettingsOverrides>] [-CloningInfoCloneCustomHostName]
- [-CloningInfoCloneSourceControl] [-CloningInfoConfigureLoadBalancing] [-CloningInfoCorrelationId <String>]
- [-CloningInfoHostingEnvironment <String>] [-CloningInfoOverwrite]
- [-CloningInfoTrafficManagerProfileId <String>] [-CloningInfoTrafficManagerProfileName <String>]
- [-ContainerSize <Int32>] [-DailyMemoryTimeQuota <Int32>] [-Enabled] [-GeoDistribution <IGeoDistribution[]>]
- [-HostNameSslState <IHostNameSslState[]>] [-HostNamesDisabled] [-HostingEnvironmentProfileId <String>]
- [-HttpsOnly] [-HyperV] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssignedIdentity <IManagedServiceIdentityUserAssignedIdentities>] [-IsXenon] [-Kind <String>]
- [-RedundancyMode <RedundancyMode>] [-Reserved] [-ScmSiteAlsoStopped] [-ServerFarmId <String>]
- [-SiteConfig <ISiteConfig>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Set-AzWebApp -InputObject <IWebSiteIdentity> [-SiteEnvelope <ISite>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,7 +105,7 @@ Default is <code>true</code>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -122,7 +122,7 @@ Default is <code>false</code>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -138,7 +138,7 @@ client certificate authentication comma-separated exclusion paths
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -156,7 +156,7 @@ Otherwise, application settings from source app are retained.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.ICloningInfoAppSettingsOverrides
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -172,7 +172,7 @@ Dynamic: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -188,7 +188,7 @@ Dynamic: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -204,7 +204,7 @@ Dynamic: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -221,7 +221,7 @@ This ID ties multiple cloning operationstogether to use the same snapshot.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -237,7 +237,7 @@ App Service Environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -253,7 +253,7 @@ Dynamic: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -270,7 +270,7 @@ App resource ID is of the form /subscriptions/{subId}/resourceGroups/{resourceGr
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: True
@@ -287,7 +287,7 @@ Traffic Manager resource ID is of the form /subscriptions/{subId}/resourceGroups
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -304,7 +304,7 @@ This is only needed if Traffic Manager profile does not already exist.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -320,7 +320,7 @@ Size of the function container.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -336,7 +336,7 @@ Maximum allowed daily memory-time quota (applicable on dynamic apps only).
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -369,7 +369,7 @@ Setting this value to false disables the app (takes the app offline).
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -385,7 +385,7 @@ GeoDistributions for this site
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IGeoDistribution[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -401,7 +401,7 @@ Resource ID of the App Service Environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -418,7 +418,7 @@ If <code>true</code>, the app is only accessible via API management process.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -434,7 +434,7 @@ Hostname SSL states are used to manage the SSL bindings for app's hostnames.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IHostNameSslState[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -451,7 +451,7 @@ Issues redirect forhttp requests
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -467,7 +467,7 @@ Hyper-V sandbox.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -483,7 +483,7 @@ Type of managed service identity.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.ManagedServiceIdentityType
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -500,7 +500,7 @@ The user identity dictionary key references will be ARM resource ids in the form
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IManagedServiceIdentityUserAssignedIdentities
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -511,28 +511,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -IsXenon
 Obsolete: Hyper-V sandbox.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -548,7 +532,7 @@ Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -564,7 +548,7 @@ Resource Location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: True
@@ -581,7 +565,7 @@ To create or update a deployment slot, use the {slot} parameter.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -597,7 +581,7 @@ Site redundancy mode
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.RedundancyMode
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -613,7 +597,7 @@ Dynamic: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -629,7 +613,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -646,7 +630,7 @@ The default is <code>false</code>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -662,7 +646,7 @@ Resource ID of the associated App Service plan, formatted as: "/subscriptions/{s
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -678,7 +662,7 @@ Configuration of the app.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISiteConfig
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -694,13 +678,30 @@ A web app, a mobile app backend, or an API app.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISite
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: Update, UpdateSlot
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Slot
+Name of the deployment slot to create or update.
+By default, this API attempts to create or modify the production slot.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateSlot, UpdateExpandedSlot
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -712,7 +713,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -728,7 +729,7 @@ Resource tags.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IResourceTags
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpandedSlot, UpdateExpanded
 Aliases:
 
 Required: False
@@ -779,13 +780,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISite
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISite
 
 ## ALIASES
+
+### Set-AzWebAppSlot
 
 ## RELATED LINKS
 

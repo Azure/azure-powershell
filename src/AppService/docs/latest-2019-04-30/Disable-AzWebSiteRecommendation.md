@@ -116,7 +116,7 @@ Dynamic: False
 ```
 
 ### -EnvironmentName
-Site name
+Name of the app.
 
 ```yaml
 Type: System.String
@@ -212,7 +212,7 @@ Dynamic: False
 ```
 
 ### -SiteName
-Site name
+Name of the app.
 
 ```yaml
 Type: System.String

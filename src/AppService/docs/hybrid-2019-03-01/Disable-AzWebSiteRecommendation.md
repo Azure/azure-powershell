@@ -154,7 +154,7 @@ Dynamic: False
 ```
 
 ### -SiteName
-Site name
+Name of the app.
 
 ```yaml
 Type: System.String

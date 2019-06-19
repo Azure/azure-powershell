@@ -24,7 +24,7 @@ Set-AzWebAppConfiguration -Name <String> -ResourceGroupName <String> -Subscripti
  -ActionType <AutoHealActionType> -IsPushEnabled [-ActionMinProcessExecutionTime <String>] [-AlwaysOn]
  [-ApiDefinitionUrl <String>] [-AppCommandLine <String>] [-AppSetting <INameValuePair[]>] [-AutoHealEnabled]
  [-AutoSwapSlotName <String>] [-AzureStorageAccount <ISiteConfigAzureStorageAccounts>]
- [-ConnectionString <IConnStringInfo[]>] [-CorAllowedOrigin <String[]>] [-CorSupportCredential]
+ [-ConnectionString <IConnStringInfo[]>] [-CorAllowedOrigin <String[]>] [-CorSupportCredentials]
  [-CustomActionExe <String>] [-CustomActionParameter <String>] [-DefaultDocument <String[]>]
  [-DetailedErrorLoggingEnabled] [-DocumentRoot <String>] [-DynamicTagsJson <String>]
  [-ExperimentRampUpRule <IRampUpRule[]>] [-FtpsState <FtpsState>] [-HandlerMapping <IHandlerMapping[]>]
@@ -48,43 +48,6 @@ Set-AzWebAppConfiguration -Name <String> -ResourceGroupName <String> -Subscripti
  [-VirtualApplication <IVirtualApplication[]>] [-VnetName <String>] [-WebSocketsEnabled]
  [-WindowsFxVersion <String>] [-XManagedServiceIdentityId <Int32>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Set-AzWebAppConfiguration -InputObject <IWebSiteIdentity> -ActionType <AutoHealActionType> -IsPushEnabled
- [-ActionMinProcessExecutionTime <String>] [-AlwaysOn] [-ApiDefinitionUrl <String>] [-AppCommandLine <String>]
- [-AppSetting <INameValuePair[]>] [-AutoHealEnabled] [-AutoSwapSlotName <String>]
- [-AzureStorageAccount <ISiteConfigAzureStorageAccounts>] [-ConnectionString <IConnStringInfo[]>]
- [-CorAllowedOrigin <String[]>] [-CorSupportCredential] [-CustomActionExe <String>]
- [-CustomActionParameter <String>] [-DefaultDocument <String[]>] [-DetailedErrorLoggingEnabled]
- [-DocumentRoot <String>] [-DynamicTagsJson <String>] [-ExperimentRampUpRule <IRampUpRule[]>]
- [-FtpsState <FtpsState>] [-HandlerMapping <IHandlerMapping[]>] [-Http20Enabled] [-HttpLoggingEnabled]
- [-IPSecurityRestriction <IIPSecurityRestriction[]>] [-JavaContainer <String>]
- [-JavaContainerVersion <String>] [-JavaVersion <String>] [-Kind <String>] [-LimitMaxDiskSizeInMb <Int64>]
- [-LimitMaxMemoryInMb <Int64>] [-LimitMaxPercentageCpu <Double>] [-LinuxFxVersion <String>]
- [-LoadBalancing <SiteLoadBalancing>] [-LocalMySqlEnabled] [-LogsDirectorySizeLimit <Int32>]
- [-MachineKeyDecryption <String>] [-MachineKeyDecryptionKey <String>] [-MachineKeyValidation <String>]
- [-MachineKeyValidationKey <String>] [-ManagedPipelineMode <ManagedPipelineMode>]
- [-ManagedServiceIdentityId <Int32>] [-MinTlsVersion <SupportedTlsVersions>] [-NetFrameworkVersion <String>]
- [-NodeVersion <String>] [-NumberOfWorker <Int32>] [-PhpVersion <String>] [-PublishingUsername <String>]
- [-PushKind <String>] [-PythonVersion <String>] [-RemoteDebuggingEnabled] [-RemoteDebuggingVersion <String>]
- [-RequestCount <Int32>] [-RequestTimeInterval <String>] [-RequestTracingEnabled]
- [-RequestTracingExpirationTime <DateTime>] [-ReservedInstanceCount <Int32>]
- [-ScmIPSecurityRestriction <IIPSecurityRestriction[]>] [-ScmIPSecurityRestrictionsUseMain]
- [-ScmType <ScmType>] [-SlowRequestCount <Int32>] [-SlowRequestTimeInterval <String>]
- [-SlowRequestTimeTaken <String>] [-TagWhitelistJson <String>] [-TagsRequiringAuth <String>]
- [-TracingOption <String>] [-TriggerPrivateBytesInKb <Int32>]
- [-TriggerStatusCode <IStatusCodesBasedTrigger[]>] [-Use32BitWorkerProcess]
- [-VirtualApplication <IVirtualApplication[]>] [-VnetName <String>] [-WebSocketsEnabled]
- [-WindowsFxVersion <String>] [-XManagedServiceIdentityId <Int32>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Set-AzWebAppConfiguration -InputObject <IWebSiteIdentity> [-SiteConfig <ISiteConfigResource>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -117,7 +80,7 @@ MinProcessExecutionTime - minimum time the process must execute before taking th
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -133,7 +96,7 @@ ActionType - predefined action to be taken
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.AutoHealActionType
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -149,7 +112,7 @@ Dynamic: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -165,7 +128,7 @@ The URL of the API definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -181,7 +144,7 @@ App command line to launch.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -197,7 +160,7 @@ Application settings.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.INameValuePair[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -213,7 +176,7 @@ Dynamic: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -229,7 +192,7 @@ Auto-swap slot name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -245,7 +208,7 @@ User-provided Azure storage accounts.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISiteConfigAzureStorageAccounts
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -261,7 +224,7 @@ Connection strings.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IConnStringInfo[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -278,7 +241,7 @@ Use "*" to allow all.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -289,13 +252,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -CorSupportCredential
+### -CorSupportCredentials
 Gets or sets whether CORS requests with credentials are allowed.
 See https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentialsfor more details.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -311,7 +274,7 @@ Executable to be run.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -327,7 +290,7 @@ Parameters for the executable.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -343,7 +306,7 @@ Default documents.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -375,7 +338,7 @@ Dynamic: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -391,7 +354,7 @@ Document root.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -407,7 +370,7 @@ Gets or sets a JSON string containing a list of dynamic tags that will be evalua
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -423,7 +386,7 @@ List of ramp-up rules.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IRampUpRule[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -439,7 +402,7 @@ State of FTP / FTPS service
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.FtpsState
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -455,7 +418,7 @@ Handler mappings.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IHandlerMapping[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -471,7 +434,7 @@ Http20Enabled: configures a web site to allow clients to connect over http2.0
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -487,7 +450,7 @@ Dynamic: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -498,28 +461,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -IPSecurityRestriction
 IP security restrictions for main.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IIPSecurityRestriction[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -535,7 +482,7 @@ Gets or sets a flag indicating whether the Push endpoint is enabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -551,7 +498,7 @@ Java container.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -567,7 +514,7 @@ Java container version.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -583,7 +530,7 @@ Java version.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -599,7 +546,7 @@ Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -615,7 +562,7 @@ Maximum allowed disk size usage in MB.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -631,7 +578,7 @@ Maximum allowed memory usage in MB.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -647,7 +594,7 @@ Maximum allowed CPU usage percentage.
 
 ```yaml
 Type: System.Double
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -663,7 +610,7 @@ Linux App Framework and version
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -679,7 +626,7 @@ Site load balancing.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.SiteLoadBalancing
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -695,7 +642,7 @@ Dynamic: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -711,7 +658,7 @@ HTTP logs directory size limit.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -727,7 +674,7 @@ Algorithm used for decryption.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -743,7 +690,7 @@ Decryption key.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -759,7 +706,7 @@ MachineKey validation.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -775,7 +722,7 @@ Validation key.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -791,7 +738,7 @@ Managed pipeline mode.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.ManagedPipelineMode
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -807,7 +754,7 @@ Managed Service Identity Id
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -823,7 +770,7 @@ MinTlsVersion: configures the minimum version of TLS required for SSL requests
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.SupportedTlsVersions
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -839,7 +786,7 @@ Name of the app.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -855,7 +802,7 @@ Dynamic: False
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -871,7 +818,7 @@ Version of Node.js.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -887,7 +834,7 @@ Number of workers.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -903,7 +850,7 @@ Version of PHP.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -919,7 +866,7 @@ Publishing user name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -935,7 +882,7 @@ Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -951,7 +898,7 @@ Version of Python.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -967,7 +914,7 @@ Dynamic: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -983,7 +930,7 @@ Remote debugging version.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -999,7 +946,7 @@ Request Count.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1015,7 +962,7 @@ Time interval.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1031,7 +978,7 @@ Dynamic: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1047,7 +994,7 @@ Request tracing expiration time.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1063,7 +1010,7 @@ Number of reserved instances.This setting only applies to the Consumption Plan
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1079,7 +1026,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -1095,7 +1042,7 @@ IP security restrictions for scm.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IIPSecurityRestriction[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1111,7 +1058,7 @@ IP security restrictions for scm to use main.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1127,7 +1074,7 @@ SCM type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.ScmType
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1143,7 +1090,7 @@ Web app configuration ARM resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISiteConfigResource
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: Update
 Aliases:
 
 Required: False
@@ -1159,7 +1106,7 @@ Request Count.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1175,7 +1122,7 @@ Time interval.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1191,7 +1138,7 @@ Time taken.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1209,7 +1156,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -1226,7 +1173,7 @@ Validation should be performed at the PushRequestHandler.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1242,7 +1189,7 @@ Gets or sets a JSON string containing a list of tags that are whitelisted for us
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1258,7 +1205,7 @@ Tracing options.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1274,7 +1221,7 @@ A rule based on private bytes.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1290,7 +1237,7 @@ A rule based on status codes.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IStatusCodesBasedTrigger[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1306,7 +1253,7 @@ Dynamic: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1322,7 +1269,7 @@ Virtual applications.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IVirtualApplication[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1338,7 +1285,7 @@ Virtual Network name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1354,7 +1301,7 @@ Dynamic: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1370,7 +1317,7 @@ Xenon App Framework and version
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1386,7 +1333,7 @@ Explicit Managed Service Identity Id
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -1436,8 +1383,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISiteConfigResource
-
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
 
 ## OUTPUTS
 

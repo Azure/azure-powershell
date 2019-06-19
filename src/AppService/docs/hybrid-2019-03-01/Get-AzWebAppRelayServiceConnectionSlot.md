@@ -137,7 +137,7 @@ Dynamic: False
 
 ### -Slot
 Name of the deployment slot.
-If a slot is not specified, the API will get hybrid connections for the production slot.
+If a slot is not specified, the API will get a hybrid connection for the production slot.
 
 ```yaml
 Type: System.String

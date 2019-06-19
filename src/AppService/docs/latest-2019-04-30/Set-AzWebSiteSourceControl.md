@@ -25,19 +25,6 @@ Set-AzWebSiteSourceControl -Type <String> [-ExpirationTime <DateTime>] [-Kind <S
  [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded1
-```
-Set-AzWebSiteSourceControl -InputObject <IWebSiteIdentity> [-ExpirationTime <DateTime>] [-Kind <String>]
- [-RefreshToken <String>] [-Token <String>] [-TokenSecret <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity1
-```
-Set-AzWebSiteSourceControl -InputObject <IWebSiteIdentity> [-RequestMessage <ISourceControl>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Updates source control token
 
@@ -84,7 +71,7 @@ OAuth token expiration.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -95,28 +82,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateViaIdentity1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Kind
 Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -132,7 +103,7 @@ OAuth refresh token.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -148,7 +119,7 @@ The source control OAuth token.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISourceControl
-Parameter Sets: Update1, UpdateViaIdentity1
+Parameter Sets: Update1
 Aliases:
 
 Required: False
@@ -164,7 +135,7 @@ OAuth access token.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -180,7 +151,7 @@ OAuth access token secret.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -196,7 +167,7 @@ Type of source control
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: (All)
 Aliases: SourceControlType
 
 Required: True
@@ -246,8 +217,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISourceControl
-
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
 
 ## OUTPUTS
 
