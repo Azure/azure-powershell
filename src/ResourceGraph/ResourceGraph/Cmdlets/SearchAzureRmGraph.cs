@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 
             var subscriptionIdToNameCache = this.DefaultContext.Account.GetSubscriptions(this.DefaultProfile)
                 .ToDictionary(sub => sub.Id, sub => sub.Name);
-            this.queryExtensionWithSubcriptionNames = "extend subscriptionName = case(" +
-                        string.Join(",", subscriptionIdToNameCache.Keys.Select(sub => $"subscriptionId=='{sub}', '{subscriptionIdToNameCache[sub]}'"))
-                        + ", '')";
+
+            this.queryExtensionWithSubcriptionNames = 
+                $"extend subscriptionName=case({string.Join(",", subscriptionIdToNameCache.Select(sub => $"subscriptionId=='{sub.Key}', '{sub.Value}'"))},'')";
         }
 
         /// <summary>
