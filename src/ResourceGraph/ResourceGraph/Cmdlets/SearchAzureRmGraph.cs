@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Query extension with subscription names
         /// </summary>
-        private readonly string queryExtensionToIncludeNames;
+        private readonly string queryExtensionToIncludeNames = string.Empty;
 
         public SearchAzureRmGraph() : base()
         {
@@ -60,8 +60,13 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             {
                 var tenantIdToNameMap = tenantList?.ToDictionary(tenant => tenant["tenantId"], tenant => tenant["displayName"]);
 
+                if(this.queryExtensionToIncludeNames.Length > 0)
+                {
+                    this.queryExtensionToIncludeNames += "| ";
+                }
+
                 this.queryExtensionToIncludeNames +=
-                $"| extend tenantDisplayName=case({string.Join(",", tenantIdToNameMap.Select(tenant => $"tenantId=='{tenant.Key}', '{tenant.Value}'"))},'')";
+                $"extend tenantDisplayName=case({string.Join(",", tenantIdToNameMap.Select(tenant => $"tenantId=='{tenant.Key}', '{tenant.Value}'"))},'')";
             }
         }
 
