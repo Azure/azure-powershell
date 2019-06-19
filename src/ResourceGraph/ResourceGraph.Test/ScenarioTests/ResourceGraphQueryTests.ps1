@@ -106,6 +106,23 @@ function Search-AzureRmGraph-Subscriptions
 
 <#
 .SYNOPSIS
+Run query with subscriptions explicitly passed
+#>
+function Search-AzureRmGraph-IncludeSubscriptionNames
+{
+	$mockedSubscriptionId = "00000000-0000-0000-0000-000000000000"
+	$mockedSubscriptionName = "Test Subscription"
+	$query = "project subscriptionId, subscriptionName"
+
+	$queryResult = Search-AzGraph $query -IncludeNames $true
+
+	Assert-IsInstance $queryResult System.Management.Automation.PSCustomObject
+	Assert-AreEqual $queryResult.subscriptionId $mockedSubscriptionId
+	Assert-AreEqual $queryResult.subscriptionName $mockedSubscriptionName
+}
+
+<#
+.SYNOPSIS
 Run malformed query
 #>
 function Search-AzureRmGraph-QueryError
