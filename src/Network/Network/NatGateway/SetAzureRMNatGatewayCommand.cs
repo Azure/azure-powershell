@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = SetByResourceIdParameterSet,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
+        [Alias("NatGatewayId")]
         public string ResourceId { get; set; }
 
         [Parameter(
@@ -58,6 +59,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             ParameterSetName = SetByInputObjectParameterSet,
             HelpMessage = "The nat gateway")]
+        [Alias("NatGateway")]
         public PSNatGateway InputObject { get; set; }
 
         [Parameter(

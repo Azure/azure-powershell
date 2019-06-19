@@ -23,7 +23,10 @@ using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common;
+using ServerKeyType = Microsoft.Azure.Management.Sql.Models.ServerKeyType;
+using Microsoft.Azure.Commands.Sql.Common;
 
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
 {
@@ -79,6 +82,89 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
                 managedInstanceName,
                 privateBlob,
                 password);
+        }
+		
+        internal AzureRmSqlManagedInstanceKeyVaultKeyModel AddAzureRmSqlManagedInstanceKeyVaultKey(AzureRmSqlManagedInstanceKeyVaultKeyModel azureRmSqlManagedInstanceKeyVaultKeyModel)
+        {
+            ManagedInstanceKey managedInstanceKey = new ManagedInstanceKey()
+            {
+                ServerKeyType = ServerKeyType.AzureKeyVault,
+                Uri = azureRmSqlManagedInstanceKeyVaultKeyModel.KeyId
+            };
+
+            string resourceGroupName = azureRmSqlManagedInstanceKeyVaultKeyModel.ResourceGroupName;
+            string managedInstanceName = azureRmSqlManagedInstanceKeyVaultKeyModel.ManagedInstanceName;
+            
+            ManagedInstanceKey response = Communicator.AddAzureRmSqlManagedInstanceKeyVaultKey(
+                resourceGroupName: resourceGroupName,
+                managedInstanceName: managedInstanceName,
+                keyName: azureRmSqlManagedInstanceKeyVaultKeyModel.ManagedInstanceKeyName,
+                managedInstanceKeyParameters: managedInstanceKey);
+            
+            return AzureRmSqlManagedInstanceKeyVaultKeyModel.FromManagedInstanceKey(
+                managedInstanceKey: response,
+                resourceGroupName: resourceGroupName,
+                managedInstanceName: managedInstanceName);
+        }
+
+        internal AzureRmSqlManagedInstanceKeyVaultKeyModel GetAzureRmSqlManagedInstanceKeyVaultKey(AzureRmSqlManagedInstanceKeyVaultKeyModel azureRmSqlManagedInstanceKeyVaultKeyModel)
+        {
+            string resourceGroupName = azureRmSqlManagedInstanceKeyVaultKeyModel.ResourceGroupName;
+            string managedInstanceName = azureRmSqlManagedInstanceKeyVaultKeyModel.ManagedInstanceName;
+
+            ManagedInstanceKey response = Communicator.GetAzureRmSqlManagedInstanceKeyVaultKey(
+                resourceGroupName: resourceGroupName,
+                managedInstanceName: managedInstanceName,
+                keyName: azureRmSqlManagedInstanceKeyVaultKeyModel.ManagedInstanceKeyName);
+            
+            return AzureRmSqlManagedInstanceKeyVaultKeyModel.FromManagedInstanceKey(
+                managedInstanceKey: response,
+                resourceGroupName: resourceGroupName,
+                managedInstanceName: managedInstanceName);
+        }
+        
+        internal void RemoveAzureRmSqlManagedInstanceKeyVaultKey(AzureRmSqlManagedInstanceKeyVaultKeyModel azureRmSqlManagedInstanceKeyVaultKeyModel)
+        {
+            Communicator.RemoveAzureRmSqlManagedInstanceKeyVaultKey(
+                resourceGroupName: azureRmSqlManagedInstanceKeyVaultKeyModel.ResourceGroupName,
+                managedInstanceName: azureRmSqlManagedInstanceKeyVaultKeyModel.ManagedInstanceName,
+                keyName: azureRmSqlManagedInstanceKeyVaultKeyModel.ManagedInstanceKeyName);
+        }
+
+        internal IEnumerable<AzureRmSqlManagedInstanceKeyVaultKeyModel> ListAzureRmSqlManagedInstanceKeyVaultKeys(string resourceGroupName, string managedInstanceName)
+        {
+           return Communicator.ListAzureRmSqlManagedInstanceKeyVaultKeys(
+                resourceGroupName: resourceGroupName,
+                managedInstanceName: managedInstanceName)
+                .Select(b => AzureRmSqlManagedInstanceKeyVaultKeyModel.FromManagedInstanceKey(b, resourceGroupName:resourceGroupName, managedInstanceName:managedInstanceName));
+        }
+
+        public AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel GetAzureRmSqlManagedInstanceTransparentDataEncryptionProtector(AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel model)
+        {
+            var managedInstanceEncryptionProtector = Communicator.GetManagedInstanceEncryptionProtector(
+                resourceGroupName: model.ResourceGroupName,
+                managedInstanceName: model.ManagedInstanceName);
+
+            return AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel.FromManagedInstanceEncryptionProtector(
+                model.ResourceGroupName, model.ManagedInstanceName, managedInstanceEncryptionProtector);
+        }
+
+        public AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel CreateOrUpdateManagedInstanceEncryptionProtector(AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel model)
+        {
+            ManagedInstanceEncryptionProtector managedInstanceEncryptionProtector = Communicator.CreateOrUpdateManagedInstanceEncryptionProtector(
+                resourceGroupName: model.ResourceGroupName,
+                managedInstanceName: model.ManagedInstanceName,
+                managedInstanceEncryptionProtector: new ManagedInstanceEncryptionProtector()
+                {
+                    ServerKeyType = model.Type.ToString(),
+                    ServerKeyName = TdeKeyHelper.CreateServerKeyNameFromKeyId(model.KeyId)
+                });
+
+            return AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel
+                .FromManagedInstanceEncryptionProtector(
+                    resourceGroupName: model.ResourceGroupName,
+                    managedInstanceName: model.ManagedInstanceName,
+                    managedInstanceEncryptionProtector: managedInstanceEncryptionProtector);
         }
     }
 }

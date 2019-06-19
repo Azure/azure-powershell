@@ -189,6 +189,26 @@ function Test-ZoneNewAlreadyExists
 
 <#
 .SYNOPSIS
+Test zone creation with .local suffix.
+#>
+function Test-ZoneNewWithLocalSuffix
+{
+	$zoneName = Get-RandomZoneName
+	$zoneName = $zoneName + ".local"
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$resourceGroupName = $resourceGroup.ResourceGroupName
+	$createdZone = New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName -WarningVariable warnings
+
+	Assert-NotNull $createdZone
+	$message = "Please be aware that DNS names ending with .local are reserved for use with multicast DNS and may not work as expected with some operating systems. For details refer to your operating systems documentation."
+	Assert-AreEqual $message $warnings
+
+	$createdZone | Remove-AzPrivateDnsZone -PassThru -Confirm:$false
+	Remove-AzResourceGroup -Name $resourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
 Test zone update when etags mismatch
 #>
 function Test-ZoneSetEtagMismatch

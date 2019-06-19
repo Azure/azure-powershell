@@ -607,7 +607,8 @@ function Test-SingleNetworkInterfaceWithAcceleratedNetworking
     try
     {
         # Common
-        $loc = "WestCentralUS";
+        [string]$loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
@@ -729,7 +730,8 @@ function Test-VMNicWithAcceleratedNetworkingValidations
     try
     {
         # Common
-        $loc = "WestCentralUS";
+        [string]$loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware

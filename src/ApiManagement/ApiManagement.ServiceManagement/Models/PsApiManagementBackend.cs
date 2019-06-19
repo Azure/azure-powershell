@@ -12,12 +12,16 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text.RegularExpressions;
+    
     public class PsApiManagementBackend : PsApiManagementArmResource
     {
+        static readonly Regex BackendIdRegex = new Regex(@"(.*?)/providers/microsoft.apimanagement/service/(?<serviceName>[^/]+)/backends/(?<backendId>[^/]+)", RegexOptions.IgnoreCase);
+
         public string BackendId { get; set; }
 
         public string Protocol { get; set; }
@@ -37,5 +41,25 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
         public PsApiManagementBackendCredential Credentials { get; set; }
 
         public PsApiManagementServiceFabric ServiceFabricCluster { get; set; }
+
+        public PsApiManagementBackend() {  }
+
+        public PsApiManagementBackend(string armResourceId)
+        {
+            this.Id = armResourceId;
+
+            var match = BackendIdRegex.Match(Id);
+            if (match.Success)
+            {
+                var backendIdRegexResult = match.Groups["backendId"];
+                if (backendIdRegexResult != null && backendIdRegexResult.Success)
+                {
+                    this.BackendId = backendIdRegexResult.Value;
+                    return;
+                }
+            }
+
+            throw new ArgumentException($"ResourceId {armResourceId} is not a valid Backend Id.");
+        }
     }
 }
