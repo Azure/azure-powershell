@@ -4,9 +4,9 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C9A66E3B-651C-4F93-A0B4-4479D08E2553}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AzureStack", "Commands.AzureStack\Commands.AzureStack.csproj", "{77B1229A-3773-4F16-9807-0266488D4259}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AzureStack.Registration", "Module\Commands.AzureStack.Registration.csproj", "{77B1229A-3773-4F16-9807-0266488D4259}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AzureStack.Tests", "Commands.AzureStack.Tests\Commands.AzureStack.Tests.csproj", "{2F4AFDA8-6782-4A78-B9F6-90DEA84A30E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AzureStack.Registration.Tests", "Tests\Commands.AzureStack.Registration.Tests.csproj", "{2F4AFDA8-6782-4A78-B9F6-90DEA84A30E7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\..\ResourceManager\Profile\Commands.Profile\Commands.Profile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject

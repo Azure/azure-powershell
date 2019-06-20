@@ -7,42 +7,38 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.AzureStack</RootNamespace>
-    <AssemblyName>$(RootNamespace)</AssemblyName>
+    <AssemblyName>Microsoft.Azure.Commands.AzureStack.Registration</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <OutputPath>$(ProjectDir)..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.AzureStack.Registration\</OutputPath>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <FileAlignment>512</FileAlignment>
+    <ErrorReport>prompt</ErrorReport>
     <TargetFrameworkProfile />
     <RestorePackages>true</RestorePackages>
+    <Prefer32Bit>false</Prefer32Bit>
     <CodeAnalysisAdditionalOptions>/assemblyCompareMode:StrongNameIgnoringVersion</CodeAnalysisAdditionalOptions>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.AzureStack\</OutputPath>
     <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <RunCodeAnalysis>true</RunCodeAnalysis>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.AzureStack\</OutputPath>
     <DefineConstants>TRACE;SIGN</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <CodeAnalysisLogFile>bin\Release\Microsoft.Azure.Commands.AzureStack.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
-    <ErrorReport>prompt</ErrorReport>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <CodeAnalysisLogFile>bin\Release\Microsoft.Azure.Commands.AzureStack.Registration.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DelaySign>true</DelaySign>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.AzureStack">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.AzureStack.1.0.0\lib\net452\Microsoft.Azure.Management.AzureStack.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.AzureStack.Registration">
+      <HintPath>$(ProjectDir)..\..\..\packages\Microsoft.Azure.Management.AzureStack.Registration.1.0.0\lib\net452\Microsoft.Azure.Management.AzureStack.Registration.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -72,11 +68,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.AzureStack.format.ps1xml">
+    <Content Include="Microsoft.Azure.Commands.AzureStack.Registration.format.ps1xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="AzureRM.AzureStack.psd1">
+    <None Include="AzureRM.AzureStack.Registration.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />

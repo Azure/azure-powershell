@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.AzureStack.Tests
                 this.helper.SetupModules(AzureModule.AzureResourceManager,
                     $@"TestCases\{callingClassName}.ps1",
                     this.helper.RMProfileModule,
-                    this.helper.GetRMModulePath("AzureRM.AzureStack.psd1"));
+                    this.helper.GetRMModulePath("AzureRM.AzureStack.Registration.psd1"));
 
                 if (scripts != null)
                 {

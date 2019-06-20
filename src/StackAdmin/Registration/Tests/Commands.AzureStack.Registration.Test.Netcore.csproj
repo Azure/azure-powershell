@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
+
+  <PropertyGroup>
+    <ProjectGuid>{D42BABFF-F725-43BF-819E-3102ACDFFB22}</ProjectGuid>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;net472</TargetFrameworks>
+    <RootNamespace>Microsoft.Azure.Commands.AzureStack.Tests</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.AzureStack.Registration.Tests</AssemblyName>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DelaySign>false</DelaySign>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>true</DelaySign>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Management.AzureStack.Registration">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.AzureStack.Registration.1.0.0\lib\net452\Microsoft.Azure.Management.AzureStack.Registration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Commands.AzureStack.Registration">
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.AzureStack.Registration\Microsoft.Azure.Commands.AzureStack.Registration.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="SessionRecords\**\*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="ScenarioTests\*.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
