@@ -21,6 +21,9 @@
 * Change 2 parameters "-IndexDocument" and "-ErrorDocument404Path" from required to optional  in cmdlet:
     -  Enable-AzStorageStaticWebsite
 * Show more error information when cmdlet failed with StorageException 
+* Support list or close file handles of a file share, file directory or a file
+    - Get-AzStorageFileHandle
+    - Close-AzStorageFileHandle
 
 ## Version 1.4.0
 * Support Kind FileStorage and SkuName Premium_ZRS when create Storage account
