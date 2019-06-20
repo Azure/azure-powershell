@@ -12,9 +12,33 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Rest.Azure;
+using System.Collections.Generic;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.AlertsManagement.OutputModels;
+using Microsoft.Azure.Management.AlertsManagement.Models;
+
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SmartGroupHistory")]
+    [OutputType(typeof(PSSmartGroupModification))]
     public class GetAzureSmartGroupHistory : AlertsManagementBaseCmdlet
     {
+        #region Parameters declarations
+        /// <summary>
+        /// Alert Id
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   HelpMessage = "Unique Identifier of SmartGroup / ResourceId of alert.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("ResourceId")]
+        public string SmartGroupId { get; set; }
+        #endregion
+
+        protected override void ProcessRecordInternal()
+        {
+            var alert = this.AlertsManagementClient.SmartGroups.GetHistoryWithHttpMessagesAsync(SmartGroupId).Result;
+        }
     }
 }

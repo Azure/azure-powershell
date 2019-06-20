@@ -12,9 +12,43 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Rest.Azure;
+using System.Collections.Generic;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.AlertsManagement.OutputModels;
+using Microsoft.Azure.Management.AlertsManagement.Models;
+
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AlertState")]
+    [OutputType(typeof(PSAlert))]
     public class UpdateAzureAlertState : AlertsManagementBaseCmdlet
     {
+        #region Parameters declarations
+        /// <summary>
+        /// Alert Id
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   HelpMessage = "Unique Identifier of Alert / ResourceId of alert.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("ResourceId")]
+        public string AlertId { get; set; }
+
+        /// <summary>
+        /// Alert State
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   HelpMessage = "Updated Alert State")]
+        [PSArgumentCompleter("New", "Acknowledged", "Closed")]
+        [ValidateNotNullOrEmpty]
+        public string State { get; set; }
+        
+        #endregion
+
+        protected override void ProcessRecordInternal()
+        {
+            var alert = this.AlertsManagementClient.Alerts.ChangeStateWithHttpMessagesAsync(AlertId, State).Result;
+        }
     }
 }

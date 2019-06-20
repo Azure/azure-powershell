@@ -76,7 +76,10 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByFilterParameterSet,
                    HelpMessage = "Filter on Moniter Service")]
-        [PSArgumentCompleter("Platform", "Log Analytics", "SCOM", "Activity Log")]
+        [PSArgumentCompleter("Application Insights", "ActivityLog Administrative", "ActivityLog Security",
+                                "ActivityLog Recommendation", "ActivityLog Policy", "ActivityLog Autoscale",
+                                "Log Analytics", "Nagios", "Platform", "SCOM", "ServiceHealth", "SmartDetector",
+                                "VM Insights", "Zabbix")]
         public string MonitorService { get; set; }
 
         /// <summary>
@@ -216,11 +219,22 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                         timeRange: TimeRange,
                         customTimeRange: CustomTimeRange,
                         select: Select
-                        ).Result;
+                        ).Result.Body;
+         
+                    List<PSAlert> alerts = new List<PSAlert>();
+                    IEnumerator<Alert> enumerator = alertsList.GetEnumerator();
+                    while (enumerator.MoveNext())
+                    {
+                        alerts.Add(new PSAlert(enumerator.Current));
+                    }
+
+                    // TODO: Deal with page of alerts
+                    WriteObject(sendToPipeline: alerts, enumerateCollection: true);
                     break;
                 
                 case AlertByIdParameterSet:
-                    var alert = this.AlertsManagementClient.Alerts.GetByIdWithHttpMessagesAsync(AlertId).Result;
+                    PSAlert alert = new PSAlert(this.AlertsManagementClient.Alerts.GetByIdWithHttpMessagesAsync(AlertId).Result.Body);
+                    WriteObject(sendToPipeline: alert);
                     break;
             }
         }

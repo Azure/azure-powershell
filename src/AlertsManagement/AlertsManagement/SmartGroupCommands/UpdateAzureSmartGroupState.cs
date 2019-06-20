@@ -12,9 +12,43 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Rest.Azure;
+using System.Collections.Generic;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.AlertsManagement.OutputModels;
+using Microsoft.Azure.Management.AlertsManagement.Models;
+
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SmartGroupState")]
+    [OutputType(typeof(PSSmartGroup))]
     public class UpdateAzureSmartGroupState : AlertsManagementBaseCmdlet
     {
+        #region Parameters declarations
+        /// <summary>
+        /// Smart Group Id
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   HelpMessage = "Unique Identifier of Smart Group / ResourceId of smart group.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("ResourceId")]
+        public string SmartGroupId { get; set; }
+
+        /// <summary>
+        /// Smart Group State
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   HelpMessage = "Updated Smart group State")]
+        [PSArgumentCompleter("New", "Acknowledged", "Closed")]
+        [ValidateNotNullOrEmpty]
+        public string State { get; set; }
+
+        #endregion
+
+        protected override void ProcessRecordInternal()
+        {
+            var smartGroup = this.AlertsManagementClient.SmartGroups.ChangeStateWithHttpMessagesAsync(SmartGroupId, State).Result;
+        }
     }
 }
