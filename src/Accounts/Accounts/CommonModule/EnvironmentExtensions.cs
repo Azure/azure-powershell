@@ -89,9 +89,7 @@ namespace Microsoft.Azure.Commands.Common
             if (!string.IsNullOrWhiteSpace(environment.TrafficManagerDnsSuffix) 
                 && baseEnvironment.TrafficManagerDnsSuffix.IsMatch(baseEndpoint))
             {
-                return string.IsNullOrWhiteSpace(environment.TrafficManagerDnsSuffix)
-                    ? baseEndpoint
-                    : baseEndpoint.PatchDnsSuffix(environment.TrafficManagerDnsSuffix);
+                return baseEndpoint.PatchDnsSuffix(environment.TrafficManagerDnsSuffix);
             }
 
             if (environment.ExtendedProperties.ContainsKey(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix) 
