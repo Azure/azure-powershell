@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Change 2 parameters "-IndexDocument" and "-ErrorDocument404Path" from required to optional  in cmdlet:
+    -  Enable-AzStorageStaticWebsite
 * Show more error information when cmdlet failed with StorageException 
 
 ## Version 1.4.0
