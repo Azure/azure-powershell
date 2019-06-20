@@ -21,6 +21,8 @@ using Microsoft.Azure.Management.AlertsManagement.Models;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
+    [Cmdlet("Measure", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AlertStatistic")]
+    [OutputType(typeof(PSAlertsSummary))]
     public class MeasureAzureAlertStatistic : AlertsManagementBaseCmdlet
     {
         #region Parameters declarations
@@ -124,6 +126,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         protected override void ProcessRecordInternal()
         {
             var alertsList = this.AlertsManagementClient.Alerts.GetSummaryWithHttpMessagesAsync(
+                groupby: GroupBy,
                 targetResource: TargetResource,
                 targetResourceType: TargetResourceType,
                 targetResourceGroup: TargetResourceGroup,

@@ -6,6 +6,14 @@
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.AlertsManagement" Version="0.9.0-preview" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ActionRuleCommands\" />
+  </ItemGroup>
+
   <!--
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.AlertsManagement" Version="1.0.0" />
