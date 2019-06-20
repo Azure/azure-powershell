@@ -344,6 +344,61 @@ function Test-PublicIpAddressCRUD-IpTag
 
 <#
 .SYNOPSIS
+Tests edit the domain name label of a publicIpAddress with Iptags
+#>
+function Test-PublicIpAddressCRUD-IpTag-RoutingPreference
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/publicIpAddresses"
+    $location = Get-ProviderLocation $resourceTypeParent
+
+    try
+     {
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+      
+      $IpTag = New-AzPublicIpTag -IpTagType RoutingPreference -Tag "/Internet"
+
+      Assert-AreEqual $IpTag.IpTagType "RoutingPreference"
+      Assert-AreEqual $IpTag.Tag "/Internet"
+
+      # Create publicIpAddres
+      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel -IpTag $IpTag
+      $publicip = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $publicip.ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual $publicip.Name $actual.Name
+      Assert-AreEqual $publicip.Location $actual.Location
+      Assert-AreEqual "Dynamic" $publicip.PublicIpAllocationMethod
+      Assert-AreEqual "Succeeded" $publicip.ProvisioningState
+      Assert-AreEqual $domainNameLabel $publicip.DnsSettings.DomainNameLabel
+
+      # Set publicIpAddress
+      $publicip | Set-AzPublicIpAddress
+
+      $publicip = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual "RoutingPreference" $publicip.IpTags.IpTagType
+      Assert-AreEqual "/Internet" $publicip.IpTags.Tag
+
+      # delete
+      $delete = Remove-AzPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      Assert-AreEqual true $delete
+
+      $list = Get-AzPublicIpAddress -ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests creating new publicIpAddress with IpVersion.
 #>
 function Test-PublicIpAddressIpVersion

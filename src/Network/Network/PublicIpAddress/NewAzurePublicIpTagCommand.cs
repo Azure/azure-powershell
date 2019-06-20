@@ -39,6 +39,9 @@ namespace Microsoft.Azure.Commands.Network
             "NetworkDomain",
             "RoutingPreference",
             IgnoreCase = true)]
+        [PSArgumentCompleter("FirstPartyUsage",
+            "NetworkDomain",
+            "RoutingPreference")]
         public string IpTagType { get; set; }
 
         [Parameter(
