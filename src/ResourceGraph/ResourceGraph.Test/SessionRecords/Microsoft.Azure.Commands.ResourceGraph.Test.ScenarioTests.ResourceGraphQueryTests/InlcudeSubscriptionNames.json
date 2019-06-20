@@ -61,10 +61,70 @@
       "StatusCode": 200
     },
     {
+      "RequestUri": "/tenants?api-version=2019-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "31537677-7032-4654-becb-372f2eeebf21"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17134",
+          "Microsoft.Azure.Internal.Subscriptions.SubscriptionClient/4.1.0"
+        ]
+      },
+      "ResponseBody": "{\"value\":[{\"id\":\"/tenants/00000000-0000-0000-0000-000000000000\",\"tenantId\":\"00000000-0000-0000-0000-000000000000\",\"countryCode\":\"US\",\"displayName\":\"Test Tenant\",\"domains\":[],\"tenantCategory\":\"test\"}]}\"",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "987"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "dc5b4ea5-4059-44fa-9d49-5c48f46224f4"
+        ],
+        "x-ms-correlation-request-id": [
+          "dc5b4ea5-4059-44fa-9d49-5c48f46224f4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180926T232942Z:dc5b4ea5-4059-44fa-9d49-5c48f46224f4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 26 Sep 2018 23:29:41 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
       "RequestUri": "/providers/Microsoft.ResourceGraph/resources?api-version=2018-09-01-preview",
       "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VHcmFwaC9yZXNvdXJjZXM/YXBpLXZlcnNpb249MjAxOC0wOS0wMS1wcmV2aWV3",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"subscriptions\": [\r\n    \"00000000-0000-0000-0000-000000000000\"\r\n  ],\r\n  \"query\": \"extend subscriptionName = case(subscriptionId=='00000000-0000-0000-0000-000000000000', 'Test Subscription', '')| project subscriptionId, subscriptionName\",\r\n  \"options\": {\r\n    \"$top\": 100,\r\n    \"$skip\": 0\r\n  }\r\n}",
+      "RequestBody": "",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -85,7 +145,7 @@
           "Microsoft.Azure.Management.ResourceGraph.ResourceGraphClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"totalRecords\": 1,\r\n  \"count\": 1,\r\n  \"data\": {\r\n  \"columns\": [\r\n  {\r\n  \"name\": \"subscriptionId\",\r\n  \"type\": \"string\"\r\n  },\r\n  {\r\n  \"name\": \"subscriptionName\",\r\n  \"type\": \"string\"\r\n  }\r\n  ],\r\n  \"rows\":[\r\n  [\r\n  \"00000000-0000-0000-0000-000000000000\",\r\n  \"Test Subscription\"\r\n  ]\r\n  ]\r\n  },\r\n  \"facets\": [],\r\n  \"resultTruncated\": \"false\"\r\n  }",
+      "ResponseBody": "{\"totalRecords\":1,\"count\":1,\"data\":{\"columns\":[{\"name\":\"subscriptionId\",\"type\":\"string\"},{\"name\":\"tenantId\",\"type\":\"string\"},{\"name\":\"subscriptionDisplayName\",\"type\":\"string\"},{\"name\":\"tenantDisplayName\",\"type\":\"string\"}],\"rows\":[[\"00000000-0000-0000-0000-000000000000\",\"00000000-0000-0000-0000-000000000000\",\"Test Subscription\",\"Test Tenant\"]]},\"facets\":[],\"resultTruncated\":\"false\"}",
       "ResponseHeaders": {
         "Content-Length": [
           "179"

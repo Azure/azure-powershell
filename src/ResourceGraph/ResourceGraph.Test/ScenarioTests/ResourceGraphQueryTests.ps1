@@ -110,15 +110,18 @@ Run query with subscriptions explicitly passed
 #>
 function Search-AzureRmGraph-IncludeSubscriptionNames
 {
-	$mockedSubscriptionId = "00000000-0000-0000-0000-000000000000"
+	$mockedScopeId = "00000000-0000-0000-0000-000000000000"
 	$mockedSubscriptionName = "Test Subscription"
-	$query = "project subscriptionId, subscriptionName"
+	$mockedTenantName = "Test Tenant"
+	$query = "project subscriptionId, tenantId, subscriptionDisplayName, tenantDisplayName"
 
-	$queryResult = Search-AzGraph $query -IncludeNames $true
+	$queryResult = Search-AzGraph $query -Include "DisplayNames"
 
 	Assert-IsInstance $queryResult System.Management.Automation.PSCustomObject
-	Assert-AreEqual $queryResult.subscriptionId $mockedSubscriptionId
-	Assert-AreEqual $queryResult.subscriptionName $mockedSubscriptionName
+	Assert-AreEqual $queryResult.subscriptionId $mockedScopeId
+	Assert-AreEqual $queryResult.tenantId $mockedScopeId
+	Assert-AreEqual $queryResult.subscriptionDisplayName $mockedSubscriptionName
+	Assert-AreEqual $queryResult.tenantDisplayName $mockedTenantName
 }
 
 <#
