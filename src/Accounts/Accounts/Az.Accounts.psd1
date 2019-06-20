@@ -143,7 +143,8 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '* Add support for profile cmdlets
-* Add support for environments and data planes in generated cmdlets'
+* Add support for environments and data planes in generated cmdlets
+* Fix bug where incorrect endpoint was being used in some cases for data plane cmdlets in Windows PowerShell'
 
         # Prerelease string of this module
         # Prerelease = ''
