@@ -23,13 +23,16 @@ namespace Microsoft.Azure.Commands.Common
     /// <summary>
     /// Selects the current Azure profile.
     /// </summary>
-    [Cmdlet(VerbsCommon.Select, @"AzProfile", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Select, @"AzProfile", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class SelectAzProfile : PSCmdlet
     {
         [Parameter(Mandatory = true)]
         [Alias("ProfileName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter]
+        public SwitchParameter PassThru { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -40,6 +43,11 @@ namespace Microsoft.Azure.Commands.Common
                     ContextAdapter.Instance.SelectedProfile = Name;
                     var modules = GetModules(InvokeCommand).Where(m => GetProfiles(m).Contains(Name)).ToArray();
                     ReloadModules(InvokeCommand, modules);
+
+                    if (PassThru.IsPresent && PassThru.ToBool())
+                    {
+                        WriteObject(true);
+                    }
                 }
             }
             catch (Exception exception)
