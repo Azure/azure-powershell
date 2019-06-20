@@ -35,6 +35,11 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
     public class SearchAzureRmGraph : ResourceGraphBaseCmdlet
     {
         /// <summary>
+        /// The synchronize root
+        /// </summary>
+        private static readonly object SyncRoot = new object();
+
+        /// <summary>
         /// The rows per page
         /// </summary>
         private const int RowsPerPage = 1000;
@@ -42,33 +47,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Query extension with subscription names
         /// </summary>
-        private readonly string queryExtensionToIncludeNames = string.Empty;
-
-        public SearchAzureRmGraph() : base()
-        {
-            // Query extension with subscription names 
-            var subscriptionList = this.DefaultContext.Account.GetSubscriptions(this.DefaultProfile);
-            if (subscriptionList != null && subscriptionList.Count != 0) {
-                var subIdToNameCache = subscriptionList.ToDictionary(sub => sub.Id, sub => sub.Name);
-                this.queryExtensionToIncludeNames =
-                    $"extend subscriptionDisplayName=case({string.Join(",", subIdToNameCache.Select(sub => $"subscriptionId=='{sub.Key}', '{sub.Value}'"))},'')";
-            }
-
-            // Query extension with tenant names
-            var tenantList = this.ListTenants();
-            if (tenantList != null && tenantList.Count != 0)
-            {
-                var tenantIdToNameMap = tenantList?.ToDictionary(tenant => tenant["tenantId"], tenant => tenant["displayName"]);
-
-                if(this.queryExtensionToIncludeNames.Length > 0)
-                {
-                    this.queryExtensionToIncludeNames += "| ";
-                }
-
-                this.queryExtensionToIncludeNames +=
-                $"extend tenantDisplayName=case({string.Join(",", tenantIdToNameMap.Select(tenant => $"tenantId=='{tenant.Key}', '{tenant.Value}'"))},'')";
-            }
-        }
+        private string queryExtensionToIncludeNames = null;
 
         /// <summary>
         /// Gets or sets the query.
@@ -120,9 +99,9 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets if result should be extended with subcription and tenant names.
         /// </summary>s
-        [Parameter(Mandatory = false, HelpMessage = "Indicates if result should be extended with subcription names")]
-        [PSDefaultValue(Value = false)]
-        public bool IncludeNames
+        [Parameter(Mandatory = false, HelpMessage = "Indicates if result should be extended with subcription and tenants names")]
+        [PSDefaultValue(Value = IncludeOptionsEnum.None)]
+        public IncludeOptionsEnum Include
         {
             get;
             set;
@@ -167,7 +146,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                         skip: requestSkip,
                         skipToken: requestSkipToken);
 
-                    var queryExtenstion = this.IncludeNames ?
+                    var queryExtenstion = (this.Include == IncludeOptionsEnum.DisplayNames && this.QueryExtensionInitizalized())?
                         (this.queryExtensionToIncludeNames + (this.Query.Length != 0 ? "| " : string.Empty)) :
                         string.Empty;
 
@@ -237,6 +216,58 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             }
 
             return SubscriptionCache.GetSubscriptions(this.DefaultContext);
+        }
+
+        /// <summary>
+        /// Ensure that this.queryExtensionToIncludeNames is initialized
+        /// </summary>
+        /// <returns></returns>
+        private bool QueryExtensionInitizalized()
+        {
+            if (this.queryExtensionToIncludeNames == null)
+            {
+                lock (SyncRoot)
+                {
+                    if (this.queryExtensionToIncludeNames == null)
+                    {
+                        this.InitializeQueryExtension();
+                    }
+                }
+            }
+
+            return this.queryExtensionToIncludeNames != null && this.queryExtensionToIncludeNames.Length > 0;
+        }
+
+        /// <summary>
+        /// Initialize this.queryExtensionToIncludeNames 
+        /// </summary>
+        private void InitializeQueryExtension()
+        {
+            this.queryExtensionToIncludeNames = string.Empty;
+
+            // Query extension with subscription names 
+            var subscriptionList = this.DefaultContext.Account.GetSubscriptions(this.DefaultProfile);
+            if (subscriptionList != null && subscriptionList.Count != 0)
+            {
+                var subIdToNameCache = subscriptionList.ToDictionary(sub => sub.Id, sub => sub.Name);
+                this.queryExtensionToIncludeNames =
+                    $"extend subscriptionDisplayName=case({string.Join(",", subIdToNameCache.Select(sub => $"subscriptionId=='{sub.Key}', '{sub.Value}'"))},'')";
+            }
+
+            // Query extension with tenant names
+            var tenantList = this.ListTenants();
+            if (tenantList != null && tenantList.Count != 0)
+            {
+                var tenantIdToNameMap = tenantList?.ToDictionary(tenant => tenant["tenantId"], tenant => tenant["displayName"]);
+
+                if (this.queryExtensionToIncludeNames.Length > 0)
+                {
+                    this.queryExtensionToIncludeNames += "| ";
+                }
+
+                this.queryExtensionToIncludeNames +=
+                $"extend tenantDisplayName=case({string.Join(",", tenantIdToNameMap.Select(tenant => $"tenantId=='{tenant.Key}', '{tenant.Value}'"))},'')";
+            }
         }
 
         /// <summary>
