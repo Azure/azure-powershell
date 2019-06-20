@@ -173,7 +173,10 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
             var artifactsPath = GetValidatedFolderPath(inputPath, artifacts);
 
-            if (artifactsPath == null) return; // if blueprint doesn't contain artifacts don't proceed.
+            if (artifactsPath == null)
+            {
+                return; // if blueprint doesn't contain artifacts don't proceed.
+            }
 
             var artifactFiles = AzureSession.Instance.DataStore.GetFiles(artifactsPath, "*.json", SearchOption.TopDirectoryOnly);
 
