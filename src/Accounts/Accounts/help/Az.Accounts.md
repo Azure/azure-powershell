@@ -60,7 +60,7 @@ Get the defaults set by the user in the current context.
 ### [Get-AzEnvironment](Get-AzEnvironment.md)
 Get endpoints and metadata for an instance of Azure services.
 
-### [Get-AzProfile](Get-AProfile.md)
+### [Get-AzProfile](Get-AzProfile.md)
 Get the service profiles supported by installed modules.
 
 ### [Get-AzSubscription](Get-AzSubscription.md)
