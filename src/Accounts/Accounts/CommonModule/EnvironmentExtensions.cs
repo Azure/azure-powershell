@@ -274,5 +274,34 @@ namespace Microsoft.Azure.Commands.Common
             var regex = new Regex(builder.ToString());
             return regex.Replace(target, string.Empty);
         }
+
+        /// <summary>
+        /// Determines
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="searchValue"></param>
+        /// <returns></returns>
+        internal static bool ContainsNotNull(this string target, string searchValue, StringComparison comparison = StringComparison.OrdinalIgnoreCase)
+        {
+            if (string.IsNullOrWhiteSpace(target) || string.IsNullOrWhiteSpace(searchValue))
+            {
+                return false;
+            }
+
+            switch(comparison)
+            {
+                case StringComparison.CurrentCultureIgnoreCase:
+                case StringComparison.OrdinalIgnoreCase:
+                    target = target.ToLower();
+                    searchValue = searchValue.ToLower();
+                    break;
+                case StringComparison.InvariantCultureIgnoreCase:
+                    target = target.ToLowerInvariant();
+                    searchValue = searchValue.ToLowerInvariant();
+                    break;
+            }
+
+            return target.Contains(searchValue);
+        }
     }
 }

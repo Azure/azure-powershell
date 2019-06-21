@@ -100,9 +100,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
-
-### System.String[]
+### Microsoft.Azure.Commands.Profile.CommonModule.PSAzureServiceProfile
 
 ## NOTES
 

@@ -16,6 +16,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Profile.CommonModule;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using static Microsoft.Azure.Commands.Common.Profile;
 
@@ -25,7 +26,7 @@ namespace Microsoft.Azure.Commands.Common
     /// Returns the current Azure profile (no parameters).
     /// Returns the Azure profiles available from a module if ModuleName is provided.
     /// </summary>
-    [OutputType(typeof(string), typeof(string[]))]
+    [OutputType(typeof(PSAzureServiceProfile))]
     [Cmdlet(VerbsCommon.Get, @"AzProfile", SupportsShouldProcess = true)]
     public class GetAzProfile : PSCmdlet
     {
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.Common
                     : new []{ ContextAdapter.Instance.SelectedProfile };
                 if (profiles.Any() && !profiles.All(String.IsNullOrEmpty))
                 {
-                    WriteObject(profiles, true);
+                    WriteObject(profiles.Select((p) => PSAzureServiceProfile.Create(p)), true);
                 }
             }
             catch (Exception exception)
