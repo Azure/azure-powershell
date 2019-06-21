@@ -64,6 +64,14 @@ PS C:\>Get-AzStorageContainer container* | Get-AzStorageBlobContent -Blob "cbox.
 
 This example uses the asterisk wildcard character and the pipeline to find and download blob content.
 
+### Example 4: Get a blob object and save it in a variable, then download blob content with the blob object
+```
+PS C:\>$blob = Get-AzStorageBlob -Container containername -Blob blobname 
+PS C:\>Get-AzStorageBlobContent -CloudBlob $blob.ICloudBlob -Destination "C:\test"
+```
+
+This example first get a blob object and save it in a variable, then download blob content with the blob object. 
+
 ## PARAMETERS
 
 ### -AsJob
