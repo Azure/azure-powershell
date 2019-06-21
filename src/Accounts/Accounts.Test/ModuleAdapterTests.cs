@@ -16,10 +16,7 @@ using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
