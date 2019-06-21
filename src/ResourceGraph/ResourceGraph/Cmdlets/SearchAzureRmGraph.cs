@@ -38,16 +38,16 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// The synchronize root
         /// </summary>
         private static readonly object SyncRoot = new object();
+        
+        /// <summary>
+        /// Query extension with subscription names
+        /// </summary>
+        private static string queryExtensionToIncludeNames = null;
 
         /// <summary>
         /// The rows per page
         /// </summary>
         private const int RowsPerPage = 1000;
-
-        /// <summary>
-        /// Query extension with subscription names
-        /// </summary>
-        private string queryExtensionToIncludeNames = null;
 
         /// <summary>
         /// Gets or sets the query.
@@ -146,8 +146,8 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                         skip: requestSkip,
                         skipToken: requestSkipToken);
 
-                    var queryExtenstion = (this.Include == IncludeOptionsEnum.DisplayNames && this.QueryExtensionInitizalized())?
-                        (this.queryExtensionToIncludeNames + (this.Query.Length != 0 ? "| " : string.Empty)) :
+                    var queryExtenstion = (this.Include == IncludeOptionsEnum.DisplayNames && this.QueryExtensionInitizalized()) ?
+                        (queryExtensionToIncludeNames + (this.Query.Length != 0 ? "| " : string.Empty)) :
                         string.Empty;
 
                     var request = new QueryRequest(subscriptions, queryExtenstion + this.Query, options: requestOptions);
@@ -224,18 +224,18 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <returns></returns>
         private bool QueryExtensionInitizalized()
         {
-            if (this.queryExtensionToIncludeNames == null)
+            if (queryExtensionToIncludeNames == null)
             {
                 lock (SyncRoot)
                 {
-                    if (this.queryExtensionToIncludeNames == null)
+                    if (queryExtensionToIncludeNames == null)
                     {
                         this.InitializeQueryExtension();
                     }
                 }
             }
 
-            return this.queryExtensionToIncludeNames != null && this.queryExtensionToIncludeNames.Length > 0;
+            return queryExtensionToIncludeNames != null && queryExtensionToIncludeNames.Length > 0;
         }
 
         /// <summary>
@@ -243,14 +243,14 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// </summary>
         private void InitializeQueryExtension()
         {
-            this.queryExtensionToIncludeNames = string.Empty;
+            queryExtensionToIncludeNames = string.Empty;
 
             // Query extension with subscription names 
             var subscriptionList = this.DefaultContext.Account.GetSubscriptions(this.DefaultProfile);
             if (subscriptionList != null && subscriptionList.Count != 0)
             {
                 var subIdToNameCache = subscriptionList.ToDictionary(sub => sub.Id, sub => sub.Name);
-                this.queryExtensionToIncludeNames =
+                queryExtensionToIncludeNames =
                     $"extend subscriptionDisplayName=case({string.Join(",", subIdToNameCache.Select(sub => $"subscriptionId=='{sub.Key}', '{sub.Value}'"))},'')";
             }
 
@@ -260,12 +260,12 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             {
                 var tenantIdToNameMap = tenantList?.ToDictionary(tenant => tenant["tenantId"], tenant => tenant["displayName"]);
 
-                if (this.queryExtensionToIncludeNames.Length > 0)
+                if (queryExtensionToIncludeNames.Length > 0)
                 {
-                    this.queryExtensionToIncludeNames += "| ";
+                    queryExtensionToIncludeNames += "| ";
                 }
 
-                this.queryExtensionToIncludeNames +=
+                queryExtensionToIncludeNames +=
                 $"extend tenantDisplayName=case({string.Join(",", tenantIdToNameMap.Select(tenant => $"tenantId=='{tenant.Key}', '{tenant.Value}'"))},'')";
             }
         }
