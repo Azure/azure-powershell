@@ -43,20 +43,13 @@
 - Set-AzRmStorageContainerImmutabilityPolicy
     - StorageAccount
     - Container
+    - InputObject
     - ImmutabilityPeriod
     - Etag
     - ExtendPolicy
 - Set-AzRmStorageContainerLegalHold
     - StorageAccount
     - Container
-- Set-AzStorageAccount
-    - Force
-    - StorageEncryption
-    - KeyvaultEncryption
-    - AssignIdentity
-    - NetworkRuleSet
-    - UpgradeToStorageV2
-    - AsJob
 - Set-AzStorageAccountManagementPolicy
     - StorageAccount
     - StorageAccountResourceId
@@ -85,6 +78,7 @@
 - New-AzStorageAccountManagementPolicy
 - Revoke-AzStorageAccountUserDelegationKey
 - Set-AzStorageBlobServiceProperty
+- Update-AzStorageAccount
 
 ## Missing Cmdlets
 
@@ -97,5 +91,6 @@
 - New-AzStorageAccountManagementPolicyRule
 - Remove-AzStorageAccountNetworkRule
 - Set-AzCurrentStorageAccount
+- Set-AzStorageAccount
 - Update-AzStorageAccountNetworkRuleSet
 - Update-AzStorageBlobServiceProperty

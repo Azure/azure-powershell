@@ -58,7 +58,7 @@ $ModuleToSerializedCmdletsFile = @{
                          "Microsoft.Azure.PowerShell.Cmdlets.Resources.dll.json",
                          "Microsoft.Azure.PowerShell.Cmdlets.Tags.dll.json" );
     "Az.ServiceBus" = @( "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll.json" );
-    "Az.Storage"    = @( "Microsoft.Azure.PowerShell.Cmdlets.Storage.dll.json" );
+    "Az.Storage"    = @( "Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll.json" );
 }
 
 $CmdletsToParameters = @{}
