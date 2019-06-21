@@ -24,7 +24,7 @@ New-AzNetworkWatcherConnectionMonitor -Name <String> -NetworkWatcherName <String
 New-AzNetworkWatcherConnectionMonitor -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -SourceResourceId <String> [-AutoStart] [-DestinationAddress <String>]
  [-DestinationPort <Int32>] [-DestinationResourceId <String>] [-Location <String>]
- [-MonitoringIntervalInSecond <Int32>] [-SourcePort <Int32>] [-Tag <IConnectionMonitorTags>]
+ [-MonitoringIntervalInSeconds <Int32>] [-SourcePort <Int32>] [-Tag <IConnectionMonitorTags>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ New-AzNetworkWatcherConnectionMonitor -Name <String> -NetworkWatcherName <String
 ```
 New-AzNetworkWatcherConnectionMonitor -InputObject <INetworkIdentity> -SourceResourceId <String> [-AutoStart]
  [-DestinationAddress <String>] [-DestinationPort <Int32>] [-DestinationResourceId <String>]
- [-Location <String>] [-MonitoringIntervalInSecond <Int32>] [-SourcePort <Int32>]
+ [-Location <String>] [-MonitoringIntervalInSeconds <Int32>] [-SourcePort <Int32>]
  [-Tag <IConnectionMonitorTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -196,7 +196,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -MonitoringIntervalInSecond
+### -MonitoringIntervalInSeconds
 Monitoring interval in seconds.
 
 ```yaml
@@ -266,7 +266,7 @@ The name of the resource group containing Network Watcher.
 ```yaml
 Type: System.String
 Parameter Sets: Create, CreateExpanded
-Aliases:
+Aliases: ConfigureOnly
 
 Required: True
 Position: Named

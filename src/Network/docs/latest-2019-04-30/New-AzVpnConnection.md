@@ -91,7 +91,7 @@ Expected bandwidth in MBPS.
 ```yaml
 Type: System.Int32
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: ConnectionBandwidthInMbps
 
 Required: False
 Position: Named
@@ -268,7 +268,7 @@ Resource ID.
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: VpnSiteId
 
 Required: False
 Position: Named
@@ -284,7 +284,7 @@ The resource group name of the VpnGateway.
 ```yaml
 Type: System.String
 Parameter Sets: Create, CreateExpanded
-Aliases: ParentObject, ParentResourceId
+Aliases: ParentObject, ParentResourceId, VpnSite
 
 Required: True
 Position: Named

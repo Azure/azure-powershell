@@ -881,14 +881,136 @@ directive:
         - PublicIpName
   - where:
       verb: New
-      subject: ^LoadBalancer$|^PublicIPAddress$
+      subject: ^LoadBalancer$|^PublicIPAddress$|^PublicIPPrefix$
       parameter-name: SkuName
     set:
       alias: Sku
+  - where: # REMOVE BEFORE RELEASE: Not sure why AsJob was part of the cmdlet before
+      verb: ^New$|^Remove$
+      subject: NetworkProfile
+      parameter-name: ResourceGroupName
+    set:
+      alias: AsJob
+  - where:
+      verb: New
+      subject: NetworkSecurityGroup
+      parameter-name: SecurityRule
+    set:
+      alias: SecurityRules
+  - where: # REMOVE BEFORE RELEASE: This is the opposite of AutoStart
+      verb: New
+      subject: NetworkWatcherConnectionMonitor
+      parameter-name: ResourceGroupName
+    set:
+      alias: ConfigureOnly
+  - where:
+      verb: New
+      subject: PublicIPPrefix
+      parameter-name: PublicIPAddressVersion
+    set:
+      alias: IpAddressVersion
+  - where:
+      verb: New
+      subject: Vnet
+      parameter-name: AddressSpaceAddressPrefix
+    set:
+      parameter-name: AddressPrefix
+  - where:
+      verb: New
+      subject: Vnet
+      parameter-name: DhcpOptionDnsServer
+    set:
+      parameter-name: DnsServer
+  - where:
+      verb: Set
+      subject: LocalNetworkGateway
+      parameter-name: LocalNetworkAddressSpaceAddressPrefix
+    set:
+      parameter-name: AddressPrefix
+  - where: # REMOVE BEFORE RELEASE: These parameters are expanded into their properties as separate parameters
+      verb: New
+      subject: VnetTap
+      parameter-name: ResourceGroupName
+    set:
+      alias:
+        - DestinationNetworkInterfaceIPConfiguration
+        - DestinationLoadBalancerFrontEndIPConfiguration
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: New
+      subject: VpnConnection
+      parameter-name: ResourceGroupName
+    set:
+      alias: VpnSite
+  - where:
+      verb: New
+      subject: VpnConnection
+      parameter-name: RemoteVpnSiteId
+    set:
+      alias: VpnSiteId
+  - where:
+      verb: New
+      subject: VpnConnection
+      parameter-name: ConnectionBandwidth
+    set:
+      alias: ConnectionBandwidthInMbps
+  - where:
+      verb: New
+      subject: VpnGateway
+      parameter-name: Connection
+    set:
+      alias: VpnConnection
+  - where: # Uses VirtualHub.Name/VirtualHubName to do a Get call to get the resource ID for VirtualHubId. Decide if this kind of logic needs to be implemented??
+      verb: New
+      subject: VpnGateway
+      parameter-name: ResourceGroupName
+    set:
+      alias:
+        - VirtualHub
+        - VirtualHubName
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Reset
+      subject: VnetGateway
+      parameter-name: ResourceGroupName
+    set:
+      alias: VirtualNetworkGateway
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: ^Set$|^Start$|^Stop$
+      subject: ApplicationGateway
+      parameter-name: ResourceGroupName
+    set:
+      alias: VirtualNetworkGateway
 
 # Other Fixes
   - where:
       subject: (.*)Stat$
     set:
       subject: $1Statistic
+  - where:
+      parameter-name: ^(.*)InSecond$
+    set:
+      parameter-name: $1InSeconds
+  - where:
+      parameter-name: ^(.*)InMinute$
+    set:
+      parameter-name: $1InMinutes
+  - where:
+      parameter-name: ^(.*)InHour$
+    set:
+      parameter-name: $1InHours
+  - where:
+      parameter-name: ^(.*)InDay$
+    set:
+      parameter-name: $1InDays
+  - where:
+      parameter-name: ^(.*)IPaddress(.*)$
+    set:
+      parameter-name: $1IPAddress$2
+  - where:
+      parameter-name: ^(.*)IPallocation(.*)$
+    set:
+      parameter-name: $1IPAllocation$2
+  - where:
+      parameter-name: ^(.*)VIP(.*)$
+    set:
+      parameter-name: $1Vip$2
 ```

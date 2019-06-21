@@ -20,21 +20,20 @@ New-AzVnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [
 
 ### CreateExpanded1
 ```
-New-AzVnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-AddressSpaceAddressPrefix <String[]>] [-DhcpOptionDnsServer <String[]>] [-EnableDdosProtection]
- [-EnableVMProtection] [-Etag <String>] [-Id <String>] [-Location <String>] [-ProvisioningState <String>]
- [-ResourceGuid <String>] [-Subnet <ISubnet[]>] [-Tag <IResourceTags>]
- [-VnetPeering <IVirtualNetworkPeering[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzVnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-AddressPrefix <String[]>]
+ [-DnsServer <String[]>] [-EnableDdosProtection] [-EnableVMProtection] [-Etag <String>] [-Id <String>]
+ [-Location <String>] [-ProvisioningState <String>] [-ResourceGuid <String>] [-Subnet <ISubnet[]>]
+ [-Tag <IResourceTags>] [-VnetPeering <IVirtualNetworkPeering[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
 ```
-New-AzVnet -InputObject <INetworkIdentity> [-AddressSpaceAddressPrefix <String[]>]
- [-DhcpOptionDnsServer <String[]>] [-EnableDdosProtection] [-EnableVMProtection] [-Etag <String>]
- [-Id <String>] [-Location <String>] [-ProvisioningState <String>] [-ResourceGuid <String>]
- [-Subnet <ISubnet[]>] [-Tag <IResourceTags>] [-VnetPeering <IVirtualNetworkPeering[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVnet -InputObject <INetworkIdentity> [-AddressPrefix <String[]>] [-DnsServer <String[]>]
+ [-EnableDdosProtection] [-EnableVMProtection] [-Etag <String>] [-Id <String>] [-Location <String>]
+ [-ProvisioningState <String>] [-ResourceGuid <String>] [-Subnet <ISubnet[]>] [-Tag <IResourceTags>]
+ [-VnetPeering <IVirtualNetworkPeering[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
@@ -68,7 +67,7 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -AddressSpaceAddressPrefix
+### -AddressPrefix
 A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
@@ -116,7 +115,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DhcpOptionDnsServer
+### -DnsServer
 The list of DNS servers IP addresses.
 
 ```yaml

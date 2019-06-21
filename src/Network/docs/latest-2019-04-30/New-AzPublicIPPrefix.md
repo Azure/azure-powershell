@@ -284,7 +284,7 @@ The public IP address version.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPVersion
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: IpAddressVersion
 
 Required: False
 Position: Named
@@ -332,7 +332,7 @@ Name of a public IP prefix SKU.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.PublicIPPrefixSkuName
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: Sku
 
 Required: False
 Position: Named

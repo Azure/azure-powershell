@@ -24,7 +24,7 @@ Set-AzNetworkWatcherConnectionMonitor -Name <String> -NetworkWatcherName <String
 Set-AzNetworkWatcherConnectionMonitor -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -SourceResourceId <String> [-AutoStart] [-DestinationAddress <String>]
  [-DestinationPort <Int32>] [-DestinationResourceId <String>] [-Location <String>]
- [-MonitoringIntervalInSecond <Int32>] [-SourcePort <Int32>] [-Tag <IConnectionMonitorTags>]
+ [-MonitoringIntervalInSeconds <Int32>] [-SourcePort <Int32>] [-Tag <IConnectionMonitorTags>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -MonitoringIntervalInSecond
+### -MonitoringIntervalInSeconds
 Monitoring interval in seconds.
 
 ```yaml

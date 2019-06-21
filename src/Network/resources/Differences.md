@@ -31,8 +31,6 @@
     - MaxScaleUnits
     - VirtualHub
     - VirtualHubName
-- New-AzLoadBalancer
-    - Sku
 - New-AzLocalNetworkGateway
     - AddressPrefix
     - Asn
@@ -55,37 +53,21 @@
     - IpConfigurationName
     - DnsServer
     - InternalDnsNameLabel
-- New-AzNetworkProfile
-    - AsJob
-- New-AzNetworkSecurityGroup
-    - SecurityRules
-- New-AzNetworkWatcherConnectionMonitor
-    - MonitoringIntervalInSeconds
-    - ConfigureOnly
 - New-AzNetworkWatcherPacketCapture
     - TargetVirtualMachineId
     - StorageAccountId
     - StoragePath
     - LocalFilePath
-    - TimeLimitInSeconds
 - New-AzPublicIPAddress
-    - Sku
     - AllocationMethod
     - IpAddressVersion
     - DomainNameLabel
     - PublicIpPrefix
     - ReverseFqdn
-    - IdleTimeoutInMinutes
-- New-AzPublicIPPrefix
-    - Sku
-    - IpAddressVersion
 - New-AzVirtualHub
     - VirtualWan
     - HubVnetConnection
     - RouteTable
-- New-AzVnet
-    - AddressPrefix
-    - DnsServer
 - New-AzVnetGateway
     - IpConfigurations
     - EnableActiveActiveFeature
@@ -105,17 +87,6 @@
     - Peer
     - UsePolicyBasedTrafficSelectors
     - IpsecPolicies
-- New-AzVnetTap
-    - DestinationNetworkInterfaceIPConfiguration
-    - DestinationLoadBalancerFrontEndIPConfiguration
-- New-AzVpnConnection
-    - VpnSite
-    - VpnSiteId
-    - ConnectionBandwidthInMbps
-- New-AzVpnGateway
-    - VirtualHub
-    - VirtualHubName
-    - VpnConnection
 - New-AzVpnSite
     - VirtualWanResourceGroupName
     - VirtualWanName
@@ -127,10 +98,6 @@
     - BgpAsn
     - BgpPeeringAddress
     - BgpPeeringWeight
-- Remove-AzNetworkProfile
-    - AsJob
-- Reset-AzVnetGateway
-    - VirtualNetworkGateway
 - Set-AzApplicationGateway
     - ApplicationGateway
 - Set-AzExpressRouteCircuit
@@ -149,7 +116,6 @@
     - LoadBalancer
 - Set-AzLocalNetworkGateway
     - LocalNetworkGateway
-    - AddressPrefix
     - Asn
     - BgpPeeringAddress
     - PeerWeight
@@ -164,7 +130,6 @@
     - NetworkSecurityGroup
 - Set-AzNetworkWatcherConnectionMonitor
     - InputObject
-    - MonitoringIntervalInSeconds
     - ConfigureOnly
 - Set-AzNetworkWatcherFlowLogConfiguration
     - EnableFlowLog
@@ -304,13 +269,22 @@
 - New-AzExpressRouteConnection
 - New-AzExpressRoutePort
 - New-AzFirewall
+- New-AzLoadBalancer
+- New-AzNetworkProfile
+- New-AzNetworkSecurityGroup
 - New-AzNetworkWatcher
+- New-AzNetworkWatcherConnectionMonitor
+- New-AzPublicIPPrefix
 - New-AzRouteFilter
 - New-AzRouteTable
 - New-AzServiceEndpointPolicy
 - New-AzServiceEndpointPolicyDefinition
 - New-AzVirtualWan
+- New-AzVnet
 - New-AzVnetGatewayVpnClientPackage
+- New-AzVnetTap
+- New-AzVpnConnection
+- New-AzVpnGateway
 - Remove-AzApplicationGateway
 - Remove-AzApplicationSecurityGroup
 - Remove-AzDdosProtectionPlan
@@ -325,6 +299,7 @@
 - Remove-AzLocalNetworkGateway
 - Remove-AzNetworkInterface
 - Remove-AzNetworkInterfaceTapConfiguration
+- Remove-AzNetworkProfile
 - Remove-AzNetworkSecurityGroup
 - Remove-AzNetworkWatcher
 - Remove-AzNetworkWatcherConnectionMonitor
@@ -345,6 +320,7 @@
 - Remove-AzVpnConnection
 - Remove-AzVpnGateway
 - Remove-AzVpnSite
+- Reset-AzVnetGateway
 - Reset-AzVnetGatewayConnectionSharedKey
 - Set-AzExpressRouteCrossConnection
 - Set-AzServiceEndpointPolicy

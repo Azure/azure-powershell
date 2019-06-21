@@ -24,7 +24,7 @@ New-AzNetworkWatcherPacketCapture -Name <String> -NetworkWatcherName <String> -R
 New-AzNetworkWatcherPacketCapture -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -Target <String> [-BytesToCapturePerPacket <Int32>]
  [-Filter <IPacketCaptureFilter[]>] [-StorageLocationFilePath <String>] [-StorageLocationStorageId <String>]
- [-StorageLocationStoragePath <String>] [-TimeLimitInSecond <Int32>] [-TotalBytesPerSession <Int32>]
+ [-StorageLocationStoragePath <String>] [-TimeLimitInSeconds <Int32>] [-TotalBytesPerSession <Int32>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ New-AzNetworkWatcherPacketCapture -Name <String> -NetworkWatcherName <String> -R
 ```
 New-AzNetworkWatcherPacketCapture -InputObject <INetworkIdentity> -Target <String>
  [-BytesToCapturePerPacket <Int32>] [-Filter <IPacketCaptureFilter[]>] [-StorageLocationFilePath <String>]
- [-StorageLocationStorageId <String>] [-StorageLocationStoragePath <String>] [-TimeLimitInSecond <Int32>]
+ [-StorageLocationStorageId <String>] [-StorageLocationStoragePath <String>] [-TimeLimitInSeconds <Int32>]
  [-TotalBytesPerSession <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -298,7 +298,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -TimeLimitInSecond
+### -TimeLimitInSeconds
 Maximum duration of the capture session in seconds.
 
 ```yaml

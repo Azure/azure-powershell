@@ -14,13 +14,13 @@ Resets the primary of the virtual network gateway in the specified resource grou
 
 ### Reset (Default)
 ```
-Reset-AzVnetGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-GatewayVIP <String>]
+Reset-AzVnetGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-GatewayVip <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ResetViaIdentity
 ```
-Reset-AzVnetGateway -InputObject <INetworkIdentity> [-GatewayVIP <String>] [-DefaultProfile <PSObject>]
+Reset-AzVnetGateway -InputObject <INetworkIdentity> [-GatewayVip <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -GatewayVIP
+### -GatewayVip
 Virtual network gateway vip address supplied to the begin reset of the active-active feature enabled gateway.
 
 ```yaml
@@ -135,7 +135,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Reset
-Aliases:
+Aliases: VirtualNetworkGateway
 
 Required: True
 Position: Named
