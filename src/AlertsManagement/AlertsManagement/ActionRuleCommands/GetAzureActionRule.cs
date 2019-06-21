@@ -149,9 +149,10 @@ namespace Microsoft.Azure.Commands.AlertsManagement
             switch (ParameterSetName)
             {
                 case ListActionRulesParameterSet:
+                    IPage<ActionRule> actionRuleList = new Page<ActionRule>();
                     if (string.IsNullOrWhiteSpace(ResourceGroupName))
                     {
-                        var actionRulesList = this.AlertsManagementClient.ActionRules.ListBySubscriptionWithHttpMessagesAsync(
+                        actionRuleList = this.AlertsManagementClient.ActionRules.ListBySubscriptionWithHttpMessagesAsync(
                             targetResource: TargetResource,
                             targetResourceType: TargetResourceType,
                             targetResourceGroup: TargetResourceGroup,
@@ -162,11 +163,11 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                             actionGroup: ActionGroup,
                             description: Description,
                             name: Name
-                        ).Result;
+                        ).Result.Body;
                     }
                     else
                     {
-                        var actionRulesList = this.AlertsManagementClient.ActionRules.ListByResourceGroupWithHttpMessagesAsync(
+                         actionRuleList = this.AlertsManagementClient.ActionRules.ListByResourceGroupWithHttpMessagesAsync(
                             resourceGroupName: ResourceGroupName,
                             targetResource: TargetResource,
                             targetResourceType: TargetResourceType,
@@ -178,18 +179,30 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                             actionGroup: ActionGroup,
                             description: Description,
                             name: Name
-                        ).Result;
+                        ).Result.Body;
                     }
-                    
+
+                    List<PSActionRule> actionRules = new List<PSActionRule>();
+                    IEnumerator<ActionRule> enumerator = actionRuleList.GetEnumerator();
+                    while (enumerator.MoveNext())
+                    {
+                        actionRules.Add(new PSActionRule(enumerator.Current));
+                    }
+
+                    // TODO: Deal with page of alerts
+                    WriteObject(sendToPipeline: actionRules, enumerateCollection: true);
+
                     break;
 
                 case ActionRuleByNameParameterSet:
-                    var actionRule = this.AlertsManagementClient.ActionRules.GetByNameWithHttpMessagesAsync(ResourceGroupName, Name).Result;
+                    PSActionRule rulebyName = new PSActionRule(this.AlertsManagementClient.ActionRules.GetByNameWithHttpMessagesAsync(ResourceGroupName, Name).Result.Body);
+                    WriteObject(sendToPipeline: rulebyName);
                     break;
 
                 case ResourceIdParameterSet:
                     string[] tokens = ResourceId.Split('/');
-                    actionRule = this.AlertsManagementClient.ActionRules.GetByNameWithHttpMessagesAsync(tokens[2], tokens[5]).Result;
+                    PSActionRule ruleById = new PSActionRule(this.AlertsManagementClient.ActionRules.GetByNameWithHttpMessagesAsync(tokens[4], tokens[8]).Result.Body);
+                    WriteObject(sendToPipeline: ruleById);
                     break;
             }
         }

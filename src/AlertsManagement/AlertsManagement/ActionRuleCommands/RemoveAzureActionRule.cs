@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.AlertsManagement.Models;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionRule")]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionRule", SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class RemoveAzureActionRule : AlertsManagementBaseCmdlet
     {
@@ -75,16 +75,36 @@ namespace Microsoft.Azure.Commands.AlertsManagement
             switch (ParameterSetName)
             {
                 case ByResourceIdParameterSet:
+                    if (ShouldProcess(
+                       target: string.Format("Remove the action rule: {0}", ResourceId),
+                       action: "Remove the action rule"))
+                    {
+                        string[] tokens = ResourceId.Split('/');
+                        var isDeleted = this.AlertsManagementClient.ActionRules.DeleteWithHttpMessagesAsync(
+                            resourceGroupName: tokens[4],
+                            actionRuleName: tokens[8])
+                            .Result;
+                    }
+
+                    WriteObject(string.Format("Successfully deleted the action rule: {0}", ResourceId));
                     break;
                 
+                // TODO: Implementation
                 case ByInputObjectParameterSet:
                     break;
                 
                 case ByNameParameterSet:
-                    var isDeleted = this.AlertsManagementClient.ActionRules.DeleteWithHttpMessagesAsync(
+                    if (ShouldProcess(
+                       target: string.Format("Remove the action rule: {0} from resource group: {1}", this.Name, this.ResourceGroupName),
+                       action: "Remove an action rule"))
+                    {
+                        var isDeleted = this.AlertsManagementClient.ActionRules.DeleteWithHttpMessagesAsync(
                             resourceGroupName: ResourceGroupName,
                             actionRuleName: Name)
                             .Result;
+                    }
+
+                    WriteObject(string.Format("Successfully deleted the action rule: {0}", Name));
                     break;
             }
            

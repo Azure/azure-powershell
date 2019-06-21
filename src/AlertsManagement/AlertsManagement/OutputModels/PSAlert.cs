@@ -20,9 +20,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
     public class PSAlert
     {
         /// <summary>
-        /// Initializes a new instance of the PSAlertRule class.
+        /// Initializes a new instance of the PSAlert class.
         /// </summary>
-        /// <param name="ruleSpec"></param>
         public PSAlert(Alert alert)
         {
             Id = alert.Id;
