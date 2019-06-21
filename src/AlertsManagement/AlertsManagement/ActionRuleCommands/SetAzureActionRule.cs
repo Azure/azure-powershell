@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                 ParameterSetName = ByJsonFormatActionRuleParameterSet,
                 HelpMessage = "Action rule Json format")]
         [ValidateNotNullOrEmpty]
-        public PSActionRule ActionRule { get; set; }
+        public ActionRule ActionRule { get; set; }
 
         /// <summary>
         /// Action rule simplified format : Scope Type

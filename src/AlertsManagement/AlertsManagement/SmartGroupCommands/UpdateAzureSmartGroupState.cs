@@ -48,7 +48,9 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
         protected override void ProcessRecordInternal()
         {
-            var smartGroup = this.AlertsManagementClient.SmartGroups.ChangeStateWithHttpMessagesAsync(SmartGroupId, State).Result;
+            PSSmartGroup smartGroup = new PSSmartGroup(this.AlertsManagementClient.SmartGroups.ChangeStateWithHttpMessagesAsync(SmartGroupId, State).Result.Body);
+
+            WriteObject(sendToPipeline: smartGroup);
         }
     }
 }
