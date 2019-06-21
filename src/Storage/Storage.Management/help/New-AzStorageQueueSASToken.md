@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 42C669B6-B621-454C-B897-262E1C8E76E3
@@ -172,7 +172,7 @@ The acceptable values for this parameter are:
 The default value is HttpsOrHttp.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.WindowsAzure.Storage.SharedAccessProtocol]
+Type: System.Nullable`1[Microsoft.Azure.Storage.SharedAccessProtocol]
 Parameter Sets: (All)
 Aliases:
 Accepted values: HttpsOnly, HttpsOrHttp

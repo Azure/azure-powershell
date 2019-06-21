@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using System;
 using System.Linq;
+using SubResource = Microsoft.Azure.Management.Compute.Models.SubResource;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -31,17 +32,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     p.ResourceGroupName, p.Name, p.CancellationToken),
                 createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
-                createTime: c => 1);
+                createTime: _ => 1);
 
         public static ResourceConfig<AvailabilitySet> CreateAvailabilitySetConfig(
-            this ResourceConfig<ResourceGroup> resourceGroup, string name)
-            => Strategy.CreateResourceConfig(
-                resourceGroup: resourceGroup,
-                name: name,
-                createModel: _ =>
-                {
-                    throw new InvalidOperationException("Availability set doesn't exist.");
-                },
-                dependencies: Enumerable.Empty<IEntityConfig>());
+            this ResourceConfig<ResourceGroup> resourceGroup,
+            string name,
+            Func<IEngine, SubResource> proximityPlacementGroup)
+            => Strategy.CreateNoncreatableResourceConfig(resourceGroup: resourceGroup, name: name);
     }
 }

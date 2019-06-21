@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix null reference issue in Get-AzPolicyState
+    - More information here: https://github.com/Azure/azure-powershell/issues/9446
+
+## Version 1.1.1
 * Fix Null reference issue in Get-AzPolicyEvent
 
 ## Version 1.1.0

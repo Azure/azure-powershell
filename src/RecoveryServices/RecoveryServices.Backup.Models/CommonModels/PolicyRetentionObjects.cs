@@ -229,9 +229,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         // no extra fields
         public override void Validate()
         {
-            if (DurationCountInDays <= 0 || DurationCountInDays > PolicyConstants.MaxAllowedRetentionDurationCount)
+            if (DurationCountInDays < 7 || DurationCountInDays > PolicyConstants.MaxAllowedRetentionDurationCount)
             {
-                throw new ArgumentException(Resources.RetentionDurationCountInvalidException);
+                throw new ArgumentException(Resources.RetentionDurationCountInDaysInvalidException);
             }
 
             base.Validate();
