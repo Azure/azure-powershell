@@ -20,6 +20,8 @@ using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
+using System.Collections.Generic;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Account
 {
@@ -33,24 +35,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
     {
         [Parameter(
             Mandatory = true,
-            ParameterSetName = FieldsParameterSet,
             HelpMessage = "The resource group of the ANF account")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
-        
-        
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the ANF account")]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource id of the ANF account",
-            ParameterSetName = ResourceIdParameterSet)]
-        [ValidateNotNullOrEmpty]
-        [Alias("AccountName")]
-        public string Name { get; set; }
+
 
         [Parameter(
             Mandatory = false,
@@ -60,10 +49,34 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
         public string Location { get; set; }
 
         [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of the ANF account")]
+        [ValidateNotNullOrEmpty]
+        [Alias("AccountName")]
+        [ResourceNameCompleter("Microsoft.NetApp/netAppAccounts", nameof(ResourceGroupName))]
+        public string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource id of the ANF account",
+            ParameterSetName = ResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable array which represents the active directories")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesActiveDirectory[] ActiveDirectory { get; set; }
+
+        [Parameter(
+            ParameterSetName = ObjectParameterSet,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The account object to update")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesAccount InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -74,6 +87,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
 
         public override void ExecuteCmdlet()
         {
+            if (ParameterSetName == ResourceIdParameterSet)
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                Name = resourceIdentifier.ResourceName;
+            }
+            else if (ParameterSetName == ObjectParameterSet)
+            {
+                ResourceGroupName = InputObject.ResourceGroupName;
+                Name = InputObject.Name;
+            }
+
             var netAppAccountBody = new NetAppAccountPatch()
             {
                 Location = Location,

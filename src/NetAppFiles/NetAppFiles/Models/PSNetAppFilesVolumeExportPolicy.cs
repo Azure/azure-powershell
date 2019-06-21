@@ -19,6 +19,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
 
     public class PSNetAppFilesVolumeExportPolicy
     {
-        public List<PSNetAppFilesExportPolicyRule> Rules { get; set; }
+        public PSNetAppFilesExportPolicyRule[] Rules { get; set; }
     }
 }
