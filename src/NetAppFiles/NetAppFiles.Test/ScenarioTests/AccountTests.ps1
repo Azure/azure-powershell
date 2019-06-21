@@ -54,7 +54,7 @@ function Test-AccountActiveDirectory
             # create and check account 1
             $newTagName = "tag1"
             $newTagValue = "tagValue1"
-            $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirectories $activeDirectories
+            $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirector $activeDirectories
             Assert-True { $false }
         }
         catch
@@ -71,7 +71,7 @@ function Test-AccountActiveDirectory
         # create and check account 1
         $newTagName = "tag1"
         $newTagValue = "tagValue1"
-        $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirectories $activeDirectories
+        $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirectory $activeDirectories
         Assert-AreEqual $accName1 $retrievedAcc.Name
         Assert-AreEqual $activeDirectory1.SmbServerName $retrievedAcc.ActiveDirectories[0].SmbServerName
         Assert-AreEqual $activeDirectory1.Username $retrievedAcc.ActiveDirectories[0].Username
@@ -80,7 +80,7 @@ function Test-AccountActiveDirectory
         # create and check account 1
         $newTagName = "tag1"
         $newTagValue = "tagValue2"
-        $retrievedAcc = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue}
+        $retrievedAcc = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -Tag @{$newTagName = $newTagValue}
         Assert-AreEqual $accName1 $retrievedAcc.Name
         Assert-AreEqual $activeDirectory1.SmbServerName $retrievedAcc.ActiveDirectories[0].SmbServerName
         Assert-AreEqual $activeDirectory1.Username $retrievedAcc.ActiveDirectories[0].Username
@@ -89,7 +89,7 @@ function Test-AccountActiveDirectory
 
         # patch an Active Directory. Should be updated to contain only the new one
         $activedirectories = @( $activeDirectory2 )
-        $retrievedAcc = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accName1 -ActiveDirectories $activedirectories
+        $retrievedAcc = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -ActiveDirectory $activedirectories
         Assert-AreEqual $accName1 $retrievedAcc.Name
         Assert-AreEqual $activeDirectory2.SmbServerName $retrievedAcc.ActiveDirectories[0].SmbServerName
         Assert-AreEqual $activeDirectory2.Username $retrievedAcc.ActiveDirectories[0].Username
@@ -97,7 +97,7 @@ function Test-AccountActiveDirectory
         Assert-AreEqual "tagValue2" $retrievedAcc.Tags[$newTagName].ToString()
 
         # update (put) the account. The absence of an active directory should result in the removal of any currently associated. Also tags
-        $retrievedAcc = Set-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Name $accName1 -Location $resourceLocation
+        $retrievedAcc = Set-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -AccountName $accName1 -Location $resourceLocation
         Assert-AreEqual $accName1 $retrievedAcc.Name
         Assert-Null $retrievedAcc.Tags
         Assert-Null $retrievedAcc.ActiveDirectories

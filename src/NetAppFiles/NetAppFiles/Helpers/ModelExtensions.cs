@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
         public static PSNetAppFilesVolumeExportPolicy ConvertExportPolicyToPs(VolumePropertiesExportPolicy ExportPolicy)
         {
             PSNetAppFilesVolumeExportPolicy PsExportPolicy = new PSNetAppFilesVolumeExportPolicy();
-            PsExportPolicy.Rules = new List<PSNetAppFilesExportPolicyRule>();
+            var rules = new List<PSNetAppFilesExportPolicyRule>();
 
             foreach (var Rule in ExportPolicy.Rules)
             {
@@ -159,10 +159,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                     Nfsv4 = Rule.Nfsv4,
                     AllowedClients = Rule.AllowedClients
                 };
-
-                PsExportPolicy.Rules.Add(PsExportPolicyRule);
+                rules.Add(PsExportPolicyRule);
             }
-
+            PsExportPolicy.Rules = rules.ToArray();
             return PsExportPolicy;
         }
 

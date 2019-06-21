@@ -56,7 +56,13 @@ function Test-VolumeCrud
         Nfsv4 = 'false'
         AllowedClients = '1.2.3.0/24'
     }
-    $exportPolicy = @( $rule1, $rule2 )
+
+
+    $exportPolicy = @{
+		Rules = (
+			$rule1, $rule2
+		)
+	}
 
     try
     {
@@ -119,8 +125,24 @@ function Test-VolumeCrud
         Assert-AreEqual $retrievedVolume.ExportPolicy.Rules[0].AllowedClients '0.0.0.0/0'
         Assert-AreEqual $retrievedVolume.ExportPolicy.Rules[1].AllowedClients '1.2.3.0/24'
 
+		$rule3 = @{
+			RuleIndex = 3
+			UnixReadOnly = 'false'
+			UnixReadWrite = 'true'
+			Cifs = 'false'
+			Nfsv3 = 'true'
+			Nfsv4 = 'false'
+			AllowedClients = '1.2.3.0/24'
+		}
+
+		$exportPolicyUpdate = @{
+			Rules = (
+				$rule2, $rule3
+			)
+		}
+
         # now patch the policy
-        $retrievedVolume = Update-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -ExportPolicy @( $rule2 )
+        $retrievedVolume = Update-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -ExportPolicy $exportPolicyUpdate
         Assert-AreEqual $retrievedVolume.ExportPolicy.Rules[0].AllowedClients '1.2.3.0/24'
 
         # delete one volume retrieved by id and one by name and check removed
@@ -185,7 +207,7 @@ function Test-VolumePipelines
 
         # create volume by piping from a pool
         # account name, pool name and service level are all acquired
-        $retrievedVolume = Get-AnfPool -ResourceGroupName $resourceGroup -AccountName $accName -Name $poolName | New-AnfVolume -Name $volName1 -CreationToken $volName1 -UsageThreshold $usageThreshold -SubnetId $subnetId
+        $retrievedVolume = Get-AnfPool -ResourceGroupName $resourceGroup -AccountName $accName -Name $poolName | New-AnfVolume -Name $volName1 -CreationToken $volName1 -UsageThreshold $usageThreshold -SubnetId $subnetId -ServiceLevel $serviceLevel
         Assert-AreEqual "$accName/$poolName/$volName1" $retrievedVolume.Name
         Assert-AreEqual "Premium" $retrievedVolume.ServiceLevel
         
