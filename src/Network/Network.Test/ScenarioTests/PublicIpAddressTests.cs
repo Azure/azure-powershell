@@ -84,14 +84,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
-        public void TestPublicIpAddressCRUDIpTagRoutingPreference()
-        {
-            TestRunner.RunTestScript("Test-PublicIpAddressCRUD-IpTag-RoutingPreference");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpAddressIpVersion()
         {
             TestRunner.RunTestScript("Test-PublicIpAddressIpVersion");
