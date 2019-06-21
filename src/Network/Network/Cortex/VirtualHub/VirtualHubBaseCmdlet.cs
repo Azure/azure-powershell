@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (MNM.VirtualHub virtualHub in virtualHubs)
                 {
                     PSVirtualHub virtualHubToReturn = ToPsVirtualHub(virtualHub);
-                    virtualHubToReturn.ResourceGroupName = resourceGroupName;
+                    virtualHubToReturn.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(virtualHub.Id);
                     hubsToReturn.Add(virtualHubToReturn);
                 }
             }

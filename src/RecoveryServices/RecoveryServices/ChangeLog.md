@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix for get-policy command for IaaSVMs
+
+## Version 1.4.1
+* IaaSVM policy minimum retention in days changed to 7 from 1
 
 ## Version 1.4.0
 * Support for Cross subscription Azure to Azure site recovery.

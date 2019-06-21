@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Change 2 parameters "-IndexDocument" and "-ErrorDocument404Path" from required to optional  in cmdlet:
+    -  Enable-AzStorageStaticWebsite
+* Show more error information when cmdlet failed with StorageException 
+* Support list or close file handles of a file share, file directory or a file
+    - Get-AzStorageFileHandle
+    - Close-AzStorageFileHandle
+
+## Version 1.4.0
+* Support Kind FileStorage and SkuName Premium_ZRS when create Storage account
+    - New-AzStorageAccount
+* Clarified description of blob immutability cmdlet
+    -  Remove-AzRmStorageContainerImmutabilityPolicy
 
 ## Version 1.3.0
 * Upgrade to Storage Client Library 10.0.1 (the namespace of all objects from this SDK change from "Microsoft.WindowsAzure.Storage.*" to "Microsoft.Azure.Storage.*")
