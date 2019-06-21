@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Change 2 parameters "-IndexDocument" and "-ErrorDocument404Path" from required to optional  in cmdlet:
     -  Enable-AzStorageStaticWebsite
+* Update help of Get-AzStorageBlobContent by add an example
 * Show more error information when cmdlet failed with StorageException 
 * Support list or close file handles of a file share, file directory or a file
     - Get-AzStorageFileHandle
