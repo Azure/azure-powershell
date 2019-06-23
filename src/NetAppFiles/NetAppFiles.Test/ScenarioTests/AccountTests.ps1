@@ -26,6 +26,7 @@ function Test-AccountActiveDirectory
     
     $activeDirectory1 = @{
         Username = "sdkuser"
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="...")]#>
         Password = "sdkpass"
         Domain = "sdkdomain"
         Dns = "127.0.0.1"
@@ -33,6 +34,7 @@ function Test-AccountActiveDirectory
     }
     $activeDirectory2 = @{
         Username = "sdkuser1"
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="...")]#>
         Password = "sdkpass1"
         Domain = "sdkdomain1"
         Dns = "127.0.0.2"
