@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         /// Gets or sets the file system locations.
         /// </summary>
         [JsonProperty(PropertyName = "fileSystemLocations")]
-        public FileSystemLocations fileSystemLocations { get; set; }
+        public FileSystemLocations FileSystemLocations { get; set; }
 
         #endregion
     }
