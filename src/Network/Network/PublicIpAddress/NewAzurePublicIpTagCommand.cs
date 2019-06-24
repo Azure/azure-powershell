@@ -34,11 +34,6 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "IpTag type Example:FirstPartyUsage")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(
-            "FirstPartyUsage",
-            "NetworkDomain",
-            "RoutingPreference",
-            IgnoreCase = true)]
         [PSArgumentCompleter("FirstPartyUsage",
             "NetworkDomain",
             "RoutingPreference")]

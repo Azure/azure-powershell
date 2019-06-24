@@ -55,7 +55,6 @@ IpTag type Example:FirstPartyUsage
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: FirstPartyUsage, NetworkDomain, RoutingPreference
 
 Required: True
 Position: Named
