@@ -1130,6 +1130,58 @@ function SubscriptionOldModel-CrudTest {
         Assert-AreEqual $patchedSk $sub.SecondaryKey
         Assert-AreEqual $newSubscriptionState $sub.State
         Assert-AreEqual $patchedExpirationDate $sub.ExpirationDate
+
+        # Get subscriptions by product id
+        $productSubs = Get-AzApiManagementSubscription -Context $context -ProductId $subs[0].ProductId
+
+        Assert-AreEqual 2 $productSubs.Count
+        for ($i = 0; $i -lt $productSubs.Count; $i++) 
+        {
+            Assert-NotNull $productSubs[$i]
+            Assert-NotNull $productSubs[$i].SubscriptionId
+            Assert-NotNull $productSubs[$i].Scope
+            Assert-NotNull $productSubs[$i].State
+            Assert-NotNull $productSubs[$i].CreatedDate
+            Assert-NotNull $productSubs[$i].PrimaryKey
+            Assert-NotNull $productSubs[$i].SecondaryKey
+
+            Assert-AreEqual $subs[0].ProductId $productSubs[$i].ProductId
+        }
+
+        # Get subscriptions by user id
+        $userSubs = Get-AzApiManagementSubscription -Context $context -UserId $subs[0].UserId
+
+        Assert-AreEqual 3 $userSubs.Count
+        for ($i = 0; $i -lt $userSubs.Count; $i++) 
+        {
+            Assert-NotNull $userSubs[$i]
+            Assert-NotNull $userSubs[$i].SubscriptionId
+            Assert-NotNull $userSubs[$i].Scope
+            Assert-NotNull $userSubs[$i].State
+            Assert-NotNull $userSubs[$i].CreatedDate
+            Assert-NotNull $userSubs[$i].PrimaryKey
+            Assert-NotNull $userSubs[$i].SecondaryKey
+
+            Assert-AreEqual $subs[0].UserId $userSubs[$i].UserId
+        }
+
+        # get Subscriptions by User and Product
+        $productUserSubs = Get-AzApiManagementSubscription -Context $context -UserId $subs[0].UserId -ProductId $subs[0].ProductId
+
+        Assert-AreEqual 2 $productUserSubs.Count
+        for ($i = 0; $i -lt $productUserSubs.Count; $i++) 
+        {
+            Assert-NotNull $productUserSubs[$i]
+            Assert-NotNull $productUserSubs[$i].SubscriptionId
+            Assert-NotNull $productUserSubs[$i].Scope
+            Assert-NotNull $productUserSubs[$i].State
+            Assert-NotNull $productUserSubs[$i].CreatedDate
+            Assert-NotNull $productUserSubs[$i].PrimaryKey
+            Assert-NotNull $productUserSubs[$i].SecondaryKey
+
+            Assert-AreEqual $subs[0].UserId $productUserSubs[$i].UserId
+            Assert-AreEqual $subs[0].ProductId $productUserSubs[$i].ProductId
+        }
     }
     finally {
         # remove created subscription
@@ -1221,6 +1273,18 @@ function SubscriptionNewModel-CrudTest {
         Assert-AreEqual 1 $sub.UserId
         Assert-NotNull $sub.OwnerId
 
+        # get subscription by apiId
+        $sub = Get-AzApiManagementSubscription -Context $context -Scope $allApisScope
+
+        Assert-AreEqual $newSubscriptionId $sub.SubscriptionId
+        Assert-AreEqual $patchedName $sub.Name
+        Assert-AreEqual $patchedPk $sub.PrimaryKey
+        Assert-AreEqual $patchedSk $sub.SecondaryKey
+        Assert-AreEqual $newSubscriptionState $sub.State
+        Assert-AreEqual $patchedExpirationDate $sub.ExpirationDate
+        Assert-NotNull $sub.UserId
+        Assert-AreEqual 1 $sub.UserId
+        Assert-NotNull $sub.OwnerId
     }
     finally {
         # remove created subscription
@@ -2886,7 +2950,8 @@ function ApiVersionSet-CrudTest {
     # there should be no API Version sets initially
     Assert-AreEqual 0 $apiversionsets.Count
     
-    # create new api
+    # create new api and apiVersionSet
+    $swaggerApiId1 = getAssetName
     $newApiVersionSetId = getAssetName
     try {
         $newVersionSetName = getAssetName
@@ -2921,8 +2986,24 @@ function ApiVersionSet-CrudTest {
         Assert-AreEqual $description $newApiVersionSet.Description
         Assert-AreEqual Header $newApiVersionSet.VersioningScheme
         Assert-AreEqual $versionHeaderName $newApiVersionSet.VersionHeaderName
+
+        # now import an api into the ApiVersionSet
+        $swaggerPath = Join-Path (Join-Path "$TestOutputRoot" "Resources") "SwaggerPetStoreV2.json"
+        $path1 = "swaggerapifromFile"        
+        $apiVersion = "2"
+
+        $api = Import-AzApiManagementApi -Context $context -ApiId $swaggerApiId1 -SpecificationPath $swaggerPath -SpecificationFormat Swagger -Path $path1 -ApiVersion $apiVersion -ApiVersionSetId $newApiVersionSetId
+        Assert-NotNull $api
+        Assert-AreEqual $apiVersion $api.ApiVersion
+        Assert-AreEqual $swaggerApiId1 $api.ApiId
+        Assert-AreEqual $path1 $api.Path
+        Assert-AreEqual $newApiVersionSet.Id $api.ApiVersionSetId
     }
     finally {
+        # remove created api
+        $removed = Remove-AzApiManagementApi -Context $context -ApiId $swaggerApiId1 -PassThru
+        Assert-True { $removed }
+
         # remove created api version set
         $removed = Remove-AzApiManagementApiVersionSet -Context $context -ApiVersionSetId $newApiVersionSetId -PassThru
         Assert-True { $removed }

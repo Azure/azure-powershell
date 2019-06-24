@@ -14,9 +14,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Cosmos.Table" Version="0.10.1-preview" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
-    <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="10.0.1" />
-    <PackageReference Include="Microsoft.Azure.Storage.File" Version="10.0.1" />
-    <PackageReference Include="Microsoft.Azure.Storage.Queue" Version="10.0.1" />
+    <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="10.0.3" />
+    <PackageReference Include="Microsoft.Azure.Storage.File" Version="10.0.3" />
+    <PackageReference Include="Microsoft.Azure.Storage.Queue" Version="10.0.3" />
   </ItemGroup>
 
   <ItemGroup>

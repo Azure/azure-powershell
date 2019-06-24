@@ -21,6 +21,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScenarioTest.ResourceManage
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Relay", "..\Relay\Relay\Relay.csproj", "{10C8273F-7C1B-455C-B358-420DD2EA8FF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBus", "..\ServiceBus\ServiceBus\ServiceBus.csproj", "{70B4325F-044A-44CE-AAC3-78CD5A8347DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +63,14 @@ Global
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10C8273F-7C1B-455C-B358-420DD2EA8FF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10C8273F-7C1B-455C-B358-420DD2EA8FF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10C8273F-7C1B-455C-B358-420DD2EA8FF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10C8273F-7C1B-455C-B358-420DD2EA8FF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70B4325F-044A-44CE-AAC3-78CD5A8347DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70B4325F-044A-44CE-AAC3-78CD5A8347DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70B4325F-044A-44CE-AAC3-78CD5A8347DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70B4325F-044A-44CE-AAC3-78CD5A8347DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
