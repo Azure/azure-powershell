@@ -22,7 +22,7 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionRule")]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionRule", SupportsShouldProcess = true)]
     [OutputType(typeof(PSActionRule))]
     public class UpdateAzureActionRule : AlertsManagementBaseCmdlet
     {
@@ -90,39 +90,61 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
         protected override void ProcessRecordInternal()
         {
-            PSActionRule updatedActionRule = new PSActionRule();
-            switch (ParameterSetName)
+            if (ShouldProcess(
+                       target: string.Format("Update Action rule (status/tags)"),
+                       action: "Update Action rule"))
             {
-                case ByNameJsonPatchParameterSet:
-                    PatchObject patchObject = JsonConvert.DeserializeObject<PatchObject>(ActionRulePatch);
-                    updatedActionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.UpdateWithHttpMessagesAsync(
-                        resourceGroupName: ResourceGroupName,
-                        actionRuleName: Name,
-                        actionRulePatch: patchObject
-                        ).Result.Body);
-                    break;
+                PSActionRule updatedActionRule = new PSActionRule();
+                switch (ParameterSetName)
+                {
+                    case ByNameJsonPatchParameterSet:
+                        PatchObject patchObject = JsonConvert.DeserializeObject<PatchObject>(ActionRulePatch);
+                        updatedActionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.UpdateWithHttpMessagesAsync(
+                            resourceGroupName: ResourceGroupName,
+                            actionRuleName: Name,
+                            actionRulePatch: patchObject
+                            ).Result.Body);
+                        break;
 
-                case ByNameSimplifiedPatchParameterSet:
-                    updatedActionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.UpdateWithHttpMessagesAsync(
-                        resourceGroupName: ResourceGroupName,
-                        actionRuleName: Name,
-                        actionRulePatch: new PatchObject(
-                                status: Status,
-                                tags: Tags
-                            )
-                        ).Result.Body);
-                    break;
+                    case ByNameSimplifiedPatchParameterSet:
+                        updatedActionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.UpdateWithHttpMessagesAsync(
+                            resourceGroupName: ResourceGroupName,
+                            actionRuleName: Name,
+                            actionRulePatch: new PatchObject(
+                                    status: Status,
+                                    tags: Tags
+                                )
+                            ).Result.Body);
+                        break;
 
-                case ByInputObjectParameterSet:
-                    //var alert = this.AlertsManagementClient.ActionRules.(AlertId).Result;
-                    break;
+                    case ByInputObjectParameterSet:
+                        string[] tokens = InputObject.Id.Split('/');
+                        updatedActionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.UpdateWithHttpMessagesAsync(
+                            resourceGroupName: tokens[4],
+                            actionRuleName: tokens[8],
+                            actionRulePatch: new PatchObject(
+                                    status: Status,
+                                    tags: Tags
+                                )
+                            ).Result.Body);
+                        break;
 
-                case ByResourceIdParameterSet:
-                    break;
+                    case ByResourceIdParameterSet:
+                        string[] tokensRId = ResourceId.Split('/');
+                        updatedActionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.UpdateWithHttpMessagesAsync(
+                            resourceGroupName: tokensRId[4],
+                            actionRuleName: tokensRId[8],
+                            actionRulePatch: new PatchObject(
+                                    status: Status,
+                                    tags: Tags
+                                )
+                            ).Result.Body);
+                        break;
+                }
+
+                WriteObject(sendToPipeline: string.Format("Successfully updated Action Rule : {0}.", Name));
+                WriteObject(sendToPipeline: updatedActionRule);
             }
-
-            WriteObject(sendToPipeline: string.Format("Successfully updated Action Rule : {0}.", Name));
-            WriteObject(sendToPipeline: updatedActionRule);
         }
     }
 }

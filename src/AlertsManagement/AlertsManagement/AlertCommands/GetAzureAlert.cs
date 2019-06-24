@@ -233,7 +233,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                     break;
                 
                 case AlertByIdParameterSet:
-                    PSAlert alert = new PSAlert(this.AlertsManagementClient.Alerts.GetByIdWithHttpMessagesAsync(AlertId).Result.Body);
+                    string id = CommonUtils.GetIdFromARMResourceId(AlertId);
+                    PSAlert alert = new PSAlert(this.AlertsManagementClient.Alerts.GetByIdWithHttpMessagesAsync(id).Result.Body);
                     WriteObject(sendToPipeline: alert);
                     break;
             }

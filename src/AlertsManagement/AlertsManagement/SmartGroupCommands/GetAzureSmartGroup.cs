@@ -95,7 +95,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                     break;
 
                 case SmartGroupByIdParameterSet:
-                    PSSmartGroup smartGroup = new PSSmartGroup(this.AlertsManagementClient.SmartGroups.GetByIdWithHttpMessagesAsync(SmartGroupId).Result.Body);
+                    string id = CommonUtils.GetIdFromARMResourceId(SmartGroupId);
+                    PSSmartGroup smartGroup = new PSSmartGroup(this.AlertsManagementClient.SmartGroups.GetByIdWithHttpMessagesAsync(id).Result.Body);
                     WriteObject(sendToPipeline: smartGroup);
                     break;
             }

@@ -42,16 +42,9 @@ namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests.ScenarioT
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateAndDeleteActionRule()
+        public void TestCreateUpdateAndDeleteActionRule()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateAndDeleteActionRule");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateAndUpdateActionRule()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateAndUpdateActionRule");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateUpdateAndDeleteActionRule");
         }
     }
 }

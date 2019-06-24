@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                         actionRules.Add(new PSActionRule(enumerator.Current));
                     }
 
-                    // TODO: Deal with page of alerts
+                    // TODO: Deal with page of action rules
                     WriteObject(sendToPipeline: actionRules, enumerateCollection: true);
 
                     break;
