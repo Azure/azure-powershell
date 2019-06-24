@@ -22,6 +22,9 @@
     -  Enable-AzStorageStaticWebsite
 * Update help of Get-AzStorageBlobContent by add an example
 * Show more error information when cmdlet failed with StorageException 
+* Support create or update Storage account with Azure Files AAD DS Authentication
+    -  New-AzStorageAccount
+    -  Set-AzStorageAccount
 * Support list or close file handles of a file share, file directory or a file
     - Get-AzStorageFileHandle
     - Close-AzStorageFileHandle
