@@ -23,6 +23,7 @@
         - New-AzLoadBalancerFrontendIpConfig
         - Add-AzLoadBalancerFrontendIpConfig
         - Set-AzLoadBalancerFrontendIpConfig
+* Improve examples for `Get-AzNetworkServiceTag` reference documentation
 
 ## Version 1.10.0
 * Add support for Virtual Network Gateway Resource
