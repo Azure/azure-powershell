@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// <summary>
         /// Action rule simplified format : Suppression Schedule
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionRuleParameterSet,
                 HelpMessage = "Specifies the duration when the suppression should be applied.")]
         [PSArgumentCompleter("Always", "Once", "Daily", "Weekly", "Monthly")]
