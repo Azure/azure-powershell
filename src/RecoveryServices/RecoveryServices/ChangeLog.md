@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.0-preview
 * Azure Site Recovery Support to write to managed disk for vMWare to Azure.
 * Azure Site Recovery Support to NIC reduction for vMWare to Azure.
 * Azure Site Recovery Support to accelerated networking for Azure to Azure.

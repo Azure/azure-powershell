@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.4.1'
+ModuleVersion = '2.0.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -265,10 +265,16 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* IaaSVM policy minimum retention in days changed to 7 from 1'
+        ReleaseNotes = '* Azure Site Recovery Support to write to managed disk for vMWare to Azure.
+* Azure Site Recovery Support to NIC reduction for vMWare to Azure.
+* Azure Site Recovery Support to accelerated networking for Azure to Azure.
+* Azure Site Recovery Support to agent auto update for Azure to Azure.
+* Azure Site Recovery Support to Standard SSD for Azure to Azure.
+* Azure Site Recovery Support to Azure Disk Encryption two pass for Azure to Azure.
+* Azure Site Recovery Support to protect newly added disk for Azure to Azure.'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
