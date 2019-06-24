@@ -164,6 +164,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? enableHierarchicalNamespace = null;
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable Azure Files Azure Active Directory Domain Service Authentication for the storage account.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableAzureActiveDirectoryDomainServicesForFile
+        {
+            get
+            {
+                return enableAzureActiveDirectoryDomainServicesForFile.Value;
+            }
+            set
+            {
+                enableAzureActiveDirectoryDomainServicesForFile = value;
+            }
+        }
+        private bool? enableAzureActiveDirectoryDomainServicesForFile = null;
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -222,6 +239,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (enableHierarchicalNamespace != null)
             {
                 createParameters.IsHnsEnabled = enableHierarchicalNamespace;
+            }
+            if (enableAzureActiveDirectoryDomainServicesForFile !=null)
+            {
+                createParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
+                if (enableAzureActiveDirectoryDomainServicesForFile.Value)
+                {
+                    createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.AADDS;
+                }
+                else
+                {
+                    createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
+                }
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(
