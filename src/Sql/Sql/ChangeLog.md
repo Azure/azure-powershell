@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Add Instance Failover Group cmdlets from preview release to public release
+* Remove email constraints from Vulnerability Assessment settings
 
 ## Version 1.12.0
 * Fix Advanced Threat Protection storage endpoint suffix

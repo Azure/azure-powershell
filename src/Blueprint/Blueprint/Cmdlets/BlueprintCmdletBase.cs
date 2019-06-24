@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         }
 
         /// <summary>
-        /// Combines input folder path and folder name and check if the resulting path exists.
+        /// Combines input folder path and folder name and check if the resulting path exists. 
         /// </summary>
         /// <param name="inputPath"></param>
         /// <param name="folderName"></param>
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
             if (!AzureSession.Instance.DataStore.DirectoryExists(artifactsPath))
             {
-                throw new DirectoryNotFoundException($"Can't find folder {folderName} in path {resolvedPath}.");
+                artifactsPath = null;
             }
 
             return artifactsPath;
