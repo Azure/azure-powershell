@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
             }
 
             int? gracePeriod = null;
-            if (!FailoverPolicy.Equals("Manual"))
+            if (!effectivePolicy.Equals("Manual"))
             {
                 int? setDefault = newModel.FailoverWithDataLossGracePeriodHours;
                 if (setDefault.Equals(null))

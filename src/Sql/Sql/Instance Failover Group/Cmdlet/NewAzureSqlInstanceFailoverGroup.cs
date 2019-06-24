@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         SupportsShouldProcess = true), OutputType(typeof(AzureSqlInstanceFailoverGroupModel))]
     public class NewAzureSqlInstanceFailoverGroup : AzureSqlInstanceFailoverGroupCmdletBase
     {
+        private const string DefaultFailoverPolicy = "Automatic";
+        private const int DefaultGracePeriod = 1;
+
         /// <summary>
         /// Gets or sets the name of the Instance Failover Group to create.
         /// </summary>
@@ -87,9 +90,9 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The failover policy of the Instance Failover Group.")]
         [ValidateNotNullOrEmpty]
-        [PSDefaultValue(Help = "Automatic")]
+        [PSDefaultValue(Help = "Automatic", Value = "Automatic")]
         [PSArgumentCompleter("Automatic", "Manual")]
-        public string FailoverPolicy { get; set; }
+        public string FailoverPolicy { get; set; } = DefaultFailoverPolicy;
 
         /// <summary>
         /// Gets or sets the grace period with data loss for the Sql Azure Instance Failover Group.
@@ -98,8 +101,8 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
             HelpMessage = "Interval before automatic failover is initiated if an outage occurs on the primary server and failover cannot be completed without data loss.")]
         [ValidateNotNullOrEmpty]
         [ValidateRange(1, int.MaxValue/60)]
-        [PSDefaultValue(Help = "1")]
-        public int GracePeriodWithDataLossHours { get; set; }
+        [PSDefaultValue(Help = "1", Value = 1)]
+        public int GracePeriodWithDataLossHours { get; set; } = DefaultGracePeriod;
 
         /// <summary>
         /// Gets or sets the failover policy for read only endpoint of the Sql Azure Instance Failover Group.
