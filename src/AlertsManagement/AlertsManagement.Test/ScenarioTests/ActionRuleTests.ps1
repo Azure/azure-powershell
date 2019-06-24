@@ -23,28 +23,25 @@ function Test-GetActionRulesFilteredByParameters
 	$actionRules = Get-AzActionRule -Severity $severityFilter -MonitorService $monitorService
 }
 
-function Test-CreateAndDeleteActionRule
-{
-    $summary = Measure-AzAlertStatistic -GroupBy "severity,alertstate"
-
-	Assert-AreEqual "severity" $summary.GroupBy
-	Assert-NotNull $summary.TotalAlerts
-
-	ForEach ($item in $summary.AggregatedCounts.Content){
-		Assert-AreEqual "alertState" $item.GroupedBy
-		Assert-NotNull $item.Count
-	}
-} 
-
-function Test-CreateAndUpdateActionRule
+function Test-CreateUpdateAndDeleteActionRule
 {
 	$resourceGroupName = "ActionRules-Powershell-Test"
     $actionRuleName = "ScenarioTest-ActionRule"
-	$actionRuleJson = "{\""properties\"":{\""actionGroupId\"":\""/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/actionrules-powershell-test/providers/microsoft.insights/actionGroups/powershell-test-ag\"",\""scope\"":{\""scopeType\"":\""ResourceGroup\"",\""values\"":[\""/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab\"",\""/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs\""]},\""conditions\"":{\""severity\"":{\""operator\"":\""Equals\"",\""values\"":[\""Sev2\""]},\""monitorService\"":null,\""monitorCondition\"":null,\""targetResourceType\"":null,\""alertRuleId\"":null,\""description\"":null,\""alertContext\"":null},\""description\"":\""Test Supression Rule\"",\""createdAt\"":null,\""lastModifiedAt\"":null,\""createdBy\"":null,\""lastModifiedBy\"":null,\""status\"":\""Enabled\""},\""location\"":\""Global\"",\""tags\"":{}}"
+	#$actionRuleJson = "{\""properties\"":{\""actionGroupId\"":\""/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/actionrules-powershell-test/providers/microsoft.insights/actionGroups/powershell-test-ag\"",\""scope\"":{\""scopeType\"":\""ResourceGroup\"",\""values\"":[\""/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab\"",\""/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs\""]},\""conditions\"":{\""severity\"":{\""operator\"":\""Equals\"",\""values\"":[\""Sev2\""]},\""monitorService\"":null,\""monitorCondition\"":null,\""targetResourceType\"":null,\""alertRuleId\"":null,\""description\"":null,\""alertContext\"":null},\""description\"":\""Test Supression Rule\"",\""createdAt\"":null,\""lastModifiedAt\"":null,\""createdBy\"":null,\""lastModifiedBy\"":null,\""status\"":\""Enabled\""},\""location\"":\""Global\"",\""tags\"":{}}"
 
 	$createdActionRule = Set-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName 
 		-ScopeType "ResourceGroup" -ScopeValues "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab,/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs"
-		-SeverityCondition "Equals:Sev0,Sev1"
-	
-	Assert.NotNull $createdActionRule
+		-SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" 
+		-ActionRuleType "ActionGroup" -ActionGroupId "/subscriptions/1e3ff1c0-771a-4119-a03b-be82a51e232d/resourceGroups/alertscorrelationrg/providers/Microsoft.insights/actiongroups/testAG"
+
+	Assert.NotNull $createdActionRule 
+
+	# Update Status of Action Rule
+	$updatedActionRule = Update-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName -Status "Disabled"
+	Assert.NotNull $updatedActionRule 
+	Assert.AreEqual "Disabled" $updatedActionRule.Status
+
+	# Delete Action Rule
+	$isDeleted = Remove-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName
+	Assert.True $isDeleted
 }

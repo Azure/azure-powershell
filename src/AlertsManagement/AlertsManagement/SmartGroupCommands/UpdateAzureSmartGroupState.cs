@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.AlertsManagement.Models;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SmartGroupState")]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SmartGroupState", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSmartGroup))]
     public class UpdateAzureSmartGroupState : AlertsManagementBaseCmdlet
     {
@@ -48,9 +48,15 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
         protected override void ProcessRecordInternal()
         {
-            PSSmartGroup smartGroup = new PSSmartGroup(this.AlertsManagementClient.SmartGroups.ChangeStateWithHttpMessagesAsync(SmartGroupId, State).Result.Body);
-
-            WriteObject(sendToPipeline: smartGroup);
+            if (ShouldProcess(
+                       target: string.Format("Update smart group state to {0}", State),
+                       action: "Update Smart group state"))
+            {
+                string id = CommonUtils.GetIdFromARMResourceId(SmartGroupId);
+                PSSmartGroup smartGroup = new PSSmartGroup(
+                    this.AlertsManagementClient.SmartGroups.ChangeStateWithHttpMessagesAsync(id, State).Result.Body);
+                WriteObject(sendToPipeline: smartGroup);
+            }
         }
     }
 }

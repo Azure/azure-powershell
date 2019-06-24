@@ -89,8 +89,20 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                     WriteObject(string.Format("Successfully deleted the action rule: {0}", ResourceId));
                     break;
                 
-                // TODO: Implementation
+                // TODO: Feedback on the correct way to handle InputObject Parameter
                 case ByInputObjectParameterSet:
+                    if (ShouldProcess(
+                    target: string.Format("Remove the action rule: {0}", InputObject.Id),
+                    action: "Remove an action rule"))
+                    {
+                        string[] tokens = ResourceId.Split('/');
+                        var isDeleted = this.AlertsManagementClient.ActionRules.DeleteWithHttpMessagesAsync(
+                            resourceGroupName: tokens[4],
+                            actionRuleName: tokens[8])
+                            .Result;
+                    }
+
+                    WriteObject(string.Format("Successfully deleted the action rule: {0}", Name));
                     break;
                 
                 case ByNameParameterSet:

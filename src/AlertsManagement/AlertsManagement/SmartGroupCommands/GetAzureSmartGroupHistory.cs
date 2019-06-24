@@ -38,7 +38,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
         protected override void ProcessRecordInternal()
         {
-            PSSmartGroupModification history = new PSSmartGroupModification(this.AlertsManagementClient.SmartGroups.GetHistoryWithHttpMessagesAsync(SmartGroupId).Result.Body);
+            string id = CommonUtils.GetIdFromARMResourceId(SmartGroupId);
+            PSSmartGroupModification history = new PSSmartGroupModification(this.AlertsManagementClient.SmartGroups.GetHistoryWithHttpMessagesAsync(id).Result.Body);
             WriteObject(sendToPipeline: history.Items, enumerateCollection: true);
         }
     }

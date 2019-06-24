@@ -33,6 +33,9 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
         /// <param name="rule"></param>
         public PSActionRule(ActionRule rule)
         {
+            // TODO: Uncomment after using correct SDK
+            //Id = rule.Id
+            //Name = rule.Name
             Description = rule.Properties.Description;
             Status = rule.Properties.Status;
             CreatedAt = rule.Properties.CreatedAt;
@@ -42,6 +45,10 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
             Scope = JsonConvert.SerializeObject(rule.Properties.Scope);
             Conditions = JsonConvert.SerializeObject(rule.Properties.Conditions);
         }
+
+        public string Id { get; }
+
+        public string Name { get; }
 
         public string Description { get; }
 

@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.AlertsManagement.Models;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AlertState")]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AlertState", SupportsShouldProcess = true)]
     [OutputType(typeof(PSAlert))]
     public class UpdateAzureAlertState : AlertsManagementBaseCmdlet
     {
@@ -48,9 +48,14 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
         protected override void ProcessRecordInternal()
         {
-            string id = CommonUtils.GetIdFromARMResourceId(AlertId);
-            PSAlert alert = new PSAlert(this.AlertsManagementClient.Alerts.ChangeStateWithHttpMessagesAsync(id, State).Result.Body);
-            WriteObject(sendToPipeline: alert);
+            if (ShouldProcess(
+                       target: string.Format("Update alert state to {0}", State),
+                       action: "Update Alert state"))
+            {
+                string id = CommonUtils.GetIdFromARMResourceId(AlertId);
+                PSAlert alert = new PSAlert(this.AlertsManagementClient.Alerts.ChangeStateWithHttpMessagesAsync(id, State).Result.Body);
+                WriteObject(sendToPipeline: alert);
+            }
         }
     }
 }
