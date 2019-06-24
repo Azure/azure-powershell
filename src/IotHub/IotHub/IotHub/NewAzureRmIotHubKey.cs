@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub.Models;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubKey", SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubKey", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSharedAccessSignatureAuthorizationRule))]
-    public class SetAzureRmIotHubKey : IotHubBaseCmdlet
+    public class NewAzureRmIotHubKey : IotHubBaseCmdlet
     {
         [Parameter(
             Position = 0,
@@ -60,12 +60,12 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Mandatory = true,
             HelpMessage = "Regenerate Key.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(new string[] { "primary", "secondary", "swap" }, IgnoreCase = true)]
+        [PSArgumentCompleter(new string[] { "Primary", "Secondary", "Swap" })]
         public string RenewKey { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(KeyName, Properties.Resources.SetIotHubKey))
+            if (ShouldProcess(KeyName, Properties.Resources.NewIotHubKey))
             {
                 var regeneratedAuthRule = new PSSharedAccessSignatureAuthorizationRule();
 
