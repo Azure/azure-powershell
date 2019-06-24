@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Remove email constraints from Vulnerability Assessment settings
 
 ## Version 1.12.0
 * Fix Advanced Threat Protection storage endpoint suffix
