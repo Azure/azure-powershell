@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.AlertsManagement.OutputModels;
 using Microsoft.Azure.Management.AlertsManagement.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(ParameterSetName = ByNameJsonPatchParameterSet, Mandatory = true, HelpMessage = "Action rule patch object in JSON format")]
         [ValidateNotNullOrEmpty]
-        public PatchObject ActionRulePatch { get; set; }
+        public string ActionRulePatch { get; set; }
 
         /// <summary>
         /// Gets or sets simplified property of patch object : status
@@ -89,26 +90,27 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
         protected override void ProcessRecordInternal()
         {
-            ActionRule updatedActionRule = new ActionRule();
+            PSActionRule updatedActionRule = new PSActionRule();
             switch (ParameterSetName)
             {
                 case ByNameJsonPatchParameterSet:
-                    updatedActionRule = this.AlertsManagementClient.ActionRules.UpdateWithHttpMessagesAsync(
+                    PatchObject patchObject = JsonConvert.DeserializeObject<PatchObject>(ActionRulePatch);
+                    updatedActionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.UpdateWithHttpMessagesAsync(
                         resourceGroupName: ResourceGroupName,
                         actionRuleName: Name,
-                        actionRulePatch: ActionRulePatch 
-                        ).Result.Body;
+                        actionRulePatch: patchObject
+                        ).Result.Body);
                     break;
 
                 case ByNameSimplifiedPatchParameterSet:
-                    updatedActionRule = this.AlertsManagementClient.ActionRules.UpdateWithHttpMessagesAsync(
+                    updatedActionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.UpdateWithHttpMessagesAsync(
                         resourceGroupName: ResourceGroupName,
                         actionRuleName: Name,
                         actionRulePatch: new PatchObject(
                                 status: Status,
                                 tags: Tags
                             )
-                        ).Result.Body;
+                        ).Result.Body);
                     break;
 
                 case ByInputObjectParameterSet:
@@ -119,7 +121,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                     break;
             }
 
-            WriteObject(updatedActionRule);
+            WriteObject(sendToPipeline: string.Format("Successfully updated Action Rule : {0}.", Name));
+            WriteObject(sendToPipeline: updatedActionRule);
         }
     }
 }

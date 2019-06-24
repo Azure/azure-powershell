@@ -38,7 +38,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
         protected override void ProcessRecordInternal()
         {
-            var alert = this.AlertsManagementClient.Alerts.GetHistoryWithHttpMessagesAsync(AlertId).Result;
+            PSAlertModification history = new PSAlertModification(this.AlertsManagementClient.Alerts.GetHistoryWithHttpMessagesAsync(AlertId).Result.Body);
+            WriteObject(sendToPipeline: history.Items, enumerateCollection: true);
         }
     }
 }

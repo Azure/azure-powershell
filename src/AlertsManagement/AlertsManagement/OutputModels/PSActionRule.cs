@@ -23,6 +23,13 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
         /// <summary>
         /// Initializes a new instance of PSActionRule
         /// </summary>
+        public PSActionRule()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of PSActionRule
+        /// </summary>
         /// <param name="rule"></param>
         public PSActionRule(ActionRule rule)
         {

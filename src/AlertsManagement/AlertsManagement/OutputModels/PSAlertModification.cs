@@ -12,11 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.Azure.Management.AlertsManagement.Models;
 
 namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
 {
-    public class PSAlertModification : AlertModification
+    public class PSAlertModification
     {
+        /// <summary>
+        /// Initializes a new instance of PSAlertModification
+        /// </summary>
+        /// <param name="history">history of alerts</param>
+        public PSAlertModification(AlertModification history)
+        {
+            Items = new List<PSAlertModificationItem>();
+            foreach (var item in history.Properties.Modifications)
+            {
+                Items.Add(new PSAlertModificationItem(item));
+            }
+        }
+
+        public List<PSAlertModificationItem> Items { get; }
     }
 }

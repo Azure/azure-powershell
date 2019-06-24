@@ -12,26 +12,41 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System;
+using System.Text;
 using Microsoft.Azure.Management.AlertsManagement.Models;
 
 namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
 {
-    public class PSSmartGroupModification
+    public class PSSmartGroupModificationItem
     {
-        /// <summary>
-        /// Initializes a new instance of PSAlertModification
-        /// </summary>
-        /// <param name="history">history of alerts</param>
-        public PSSmartGroupModification(SmartGroupModification history)
+        public PSSmartGroupModificationItem(SmartGroupModificationItem item)
         {
-            Items = new List<PSSmartGroupModificationItem>();
-            foreach (var item in history.Properties.Modifications)
-            {
-                Items.Add(new PSSmartGroupModificationItem(item));
-            }
+            ModifiedAt = item.ModifiedAt;
+            ModifiedBy = item.ModifiedBy;
+            Comments = item.Comments;
+            Event = item.Description;
         }
 
-        public List<PSSmartGroupModificationItem> Items { get; }
+        public override string ToString()
+        {
+            var output = new StringBuilder();
+
+            output.AppendLine();
+            output.Append(string.Format("Event : {0}", Event));
+            output.Append(string.Format("at {0} by {1}.", ModifiedAt, ModifiedBy));
+            output.Append(string.Format("Comments : {0}", Comments));
+
+            return output.ToString();
+        }
+
+        public string Event { get; }
+
+        public string ModifiedAt { get; }
+
+        public string ModifiedBy { get; }
+
+        public string Comments { get; }
+
     }
 }

@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Rest.Azure;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.AlertsManagement.OutputModels;
 using Microsoft.Azure.Management.AlertsManagement.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
@@ -85,7 +86,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                 ParameterSetName = ByJsonFormatActionRuleParameterSet,
                 HelpMessage = "Action rule Json format")]
         [ValidateNotNullOrEmpty]
-        public ActionRule ActionRule { get; set; }
+        public string ActionRule { get; set; }
 
         /// <summary>
         /// Action rule simplified format : Scope Type
@@ -173,19 +174,22 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
         protected override void ProcessRecordInternal()
         {
-            ActionRule actionRule = new ActionRule();
+            PSActionRule actionRule = new PSActionRule();
             switch (ParameterSetName)
             {
                 case ByJsonFormatActionRuleParameterSet:
-                    actionRule = this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
+                    // TODO: Update the action rule json string
+                    //ActionRule = ActionRule.Replace("\\\\\\", "+");
+                    ActionRule actionRuleObject = JsonConvert.DeserializeObject<ActionRule>(ActionRule);
+                    actionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
                             resourceGroupName: ResourceGroupName,
                             actionRuleName: Name,
-                            actionRule: ActionRule
-                        ).Result.Body;
+                            actionRule: actionRuleObject
+                        ).Result.Body);
                     break;
 
                 case BySimplifiedFormatActionRuleParameterSet:
-                    actionRule = this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
+                    actionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
                             resourceGroupName: ResourceGroupName,
                             actionRuleName: Name,
                             actionRule: new ActionRule(
@@ -220,7 +224,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                                     )
                                 )
                             )
-                        ).Result.Body;
+                        ).Result.Body);
                     break;
 
                 case ByInputObjectParameterSet:
@@ -229,7 +233,11 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
                 case ByResourceIdParameterSet:
                     break;
+
             }
+
+            WriteObject(sendToPipeline: string.Format("Successfully created Action Rule : {0}.", Name));
+            WriteObject(sendToPipeline: actionRule);
         }
     }
 }
