@@ -1,37 +1,37 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/set-aziothubkey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/new-aziothubkey
 schema: 2.0.0
 ---
 
-# Set-AzIotHubKey
+# New-AzIotHubKey
 
 ## SYNOPSIS
-Update an Azure IoT Hub key.
+Generate an Azure IoT Hub key.
 
 ## SYNTAX
 
 ```
-Set-AzIotHubKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String> [-RenewKey] <String>
+New-AzIotHubKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String> [-RenewKey] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update an Azure IoT Hub key.
+Generate an Azure IoT Hub key.
 
 ## EXAMPLES
 
 ### Example 1 Regenerate primary key
 ```
-PS C:\> Set-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "testKey" -RenewKey "primary"
+PS C:\> New-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "testKey" -RenewKey "primary"
 ```
 
 Regenerated primary key for the authorization policy "testKey" of an azure iot hub.
 
 ### Example 2 Swapping keys
 ```
-PS C:\> Set-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "testKey" -RenewKey "swap"
+PS C:\> New-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "testKey" -RenewKey "swap"
 ```
 
 Swapping keys for the authorization policy "testKey" of an azure iot hub.

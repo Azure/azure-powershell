@@ -10,8 +10,8 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
     using System;
-    
-    
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -133,6 +133,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Generate IoT Hub Key.
+        /// </summary>
+        internal static string NewIotHubKey {
+            get {
+                return ResourceManager.GetString("NewIotHubKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove Event Hub Consumer Group.
         /// </summary>
         internal static string RemoveEventHubConsumerGroup {
@@ -183,15 +192,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         internal static string RemoveIotHubRoutingEndpoint {
             get {
                 return ResourceManager.GetString("RemoveIotHubRoutingEndpoint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Update IoT Hub Key.
-        /// </summary>
-        internal static string SetIotHubKey {
-            get {
-                return ResourceManager.GetString("SetIotHubKey", resourceCulture);
             }
         }
         

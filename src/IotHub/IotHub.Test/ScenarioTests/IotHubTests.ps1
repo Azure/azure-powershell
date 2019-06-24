@@ -164,12 +164,12 @@ function Test-AzureRmIotHubLifecycle
 	$newkey = Get-AzIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner1
 	
 	# Swap keys
-	$swappedKey = Set-AzIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner1 -RenewKey swap
+	$swappedKey = New-AzIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner1 -RenewKey Swap
 	Assert-True { $swappedKey.PrimaryKey -eq $newkey.SecondaryKey }
 	Assert-True { $swappedKey.SecondaryKey -eq $newkey.PrimaryKey }
 
 	# Regenerate Primary Key
-	$regeneratedKey = Set-AzIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner1 -RenewKey primary
+	$regeneratedKey = New-AzIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner1 -RenewKey Primary
 	Assert-True { $regeneratedKey.PrimaryKey -ne $swappedKey.PrimaryKey }
 
 	# Remove Key
