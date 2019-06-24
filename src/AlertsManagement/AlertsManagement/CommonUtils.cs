@@ -12,26 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using Microsoft.Azure.Management.AlertsManagement.Models;
-
-namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
+namespace Microsoft.Azure.Commands.AlertsManagement
 {
-    public class PSSmartGroupModification
+    public class CommonUtils
     {
         /// <summary>
-        /// Initializes a new instance of PSAlertModification
+        /// Extracts the GUID from ARM id
         /// </summary>
-        /// <param name="history">history of alerts</param>
-        public PSSmartGroupModification(SmartGroupModification history)
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string GetIdFromARMResourceId(string input)
         {
-            Items = new List<PSSmartGroupModificationItem>();
-            foreach (var item in history.Properties.Modifications)
+            string[] tokens = input.Split('/');
+            if (tokens.Length == 1)
             {
-                Items.Add(new PSSmartGroupModificationItem(item));
+                return input;
+            }
+            else
+            {
+                return tokens[tokens.Length-1];
             }
         }
-
-        public List<PSSmartGroupModificationItem> Items { get; }
     }
 }

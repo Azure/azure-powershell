@@ -12,11 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Newtonsoft.Json;
 using Microsoft.Azure.Management.AlertsManagement.Models;
 
 namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
 {
-    public class PSAlertsSummary : AlertsSummary
+    public class PSAlertsSummary
     {
+        /// <summary>
+        /// Initializes a new instance of the PSAlertsSummary class.
+        /// </summary>
+        public PSAlertsSummary(AlertsSummary summary)
+        {
+            GroupBy = summary.Properties.Groupedby;
+            TotalAlerts = summary.Properties.Total;
+            TotalSmartGroups = summary.Properties.SmartGroupsCount;
+            AggregatedCounts = new PSAggregatedCounts(summary.Properties.Values);
+        }
+
+        public string GroupBy { get; }
+
+        public int? TotalAlerts { get; }
+
+        public int? TotalSmartGroups { get; }
+
+        public PSAggregatedCounts AggregatedCounts { get; }
     }
 }

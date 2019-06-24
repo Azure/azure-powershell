@@ -18,9 +18,13 @@ Test Smart Group change state
 #>
 function Test-SmartGroupChangeState
 {
-	$smartGroupId = "58dd8b7e-d8d5-4589-b2d3-2ebf0ca37ebe"
+	$smartGroupId = "f52ed8ac-fe87-4234-8134-782825645204"
+
+	$oldSmartGroup = Get-AzSmartGroup -SmartGroupId $smartGroupId
 	$newState = "Acknowledged"
     $updatedSmartGroup = Update-AzSmartGroupState -SmartGroupId $smartGroupId -State $newState
+	Assert-AreEqual $newState $updatedSmartGroup.State
 
-	Assert-AreEqual $newState, $updatedSmartGroup.State
+	# Revert the changes
+	$oldSmartGroup = Update-AzSmartGroupState -SmartGroupId $smartGroupId -State $oldSmartGroup.State
 }

@@ -141,8 +141,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                         var errorResponse = exTemp as Microsoft.Azure.Management.AlertsManagement.Models.ErrorResponseException;
                         if (errorResponse != null)
                         {
-                            //message = errorResponse.Body.Message;
-                            //code = errorResponse.Body.Code;
                             statusCode = errorResponse.Response.StatusCode;
                             reasonPhrase = errorResponse.Response.ReasonPhrase;
                         }

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
             TargetResource = alert.Properties.Essentials.TargetResource;
             Severity = alert.Properties.Essentials.Severity;
             MonitorCondition = alert.Properties.Essentials.MonitorCondition;
-            AlertState = alert.Properties.Essentials.AlertState;
+            State = alert.Properties.Essentials.AlertState;
             MonitorService = alert.Properties.Essentials.MonitorService;
             SignalType = alert.Properties.Essentials.SignalType;
             LastModifiedDateTime = alert.Properties.Essentials.LastModifiedDateTime;
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
 
         public string Severity { get; }
 
-        public string AlertState { get; }
+        public string State { get; }
 
         public string MonitorService { get; }
 

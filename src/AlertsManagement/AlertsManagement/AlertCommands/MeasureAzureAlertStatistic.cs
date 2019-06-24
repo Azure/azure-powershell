@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
         protected override void ProcessRecordInternal()
         {
-            var alertsList = this.AlertsManagementClient.Alerts.GetSummaryWithHttpMessagesAsync(
+            PSAlertsSummary summary = new PSAlertsSummary(this.AlertsManagementClient.Alerts.GetSummaryWithHttpMessagesAsync(
                 groupby: GroupBy,
                 targetResource: TargetResource,
                 targetResourceType: TargetResourceType,
@@ -138,7 +138,10 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                 timeRange: TimeRange,
                 customTimeRange: CustomTimeRange,
                 includeSmartGroupsCount: IncludeSmartGroupsCount
-                ).Result;
+                ).Result.Body);
+
+            WriteObject(summary);
+            WriteObject(summary.AggregatedCounts.ToString());
         }
     }
 }
