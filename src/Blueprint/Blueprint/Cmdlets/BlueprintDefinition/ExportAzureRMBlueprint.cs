@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Blueprint.Models;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
@@ -48,38 +49,45 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         #region Cmdlet Overrides
         public override void ExecuteCmdlet()
         {
-            // Get serialized blueprint and write it to disk
+            const string blueprintFileName = "Blueprint";
+
+            // Get serialized blueprint definition
             string serializedDefinition = BlueprintClient.GetBlueprintDefinitionJsonFromObject(Blueprint, Version);
 
-            var blueprintFolderPath = CreateFolderIfNotExist(OutputPath, Blueprint.Name);
-            var blueprintJsonFilePath = Path.Combine(blueprintFolderPath, $"{Blueprint.Name}.json");
+            var resolvedPath = ResolveUserPath(OutputPath);
 
+            var blueprintFolderPath = Path.Combine(resolvedPath, Blueprint.Name);
+
+            // if directory exists, let's ask if we can clean contents of it. If directory doesn't exist, we'll create one.
             this.ConfirmAction(
-                this.Force || !AzureSession.Instance.DataStore.FileExists(blueprintJsonFilePath),
-                string.Format(Resources.OverwriteExistingOutputFileProcessMessage,Blueprint.Name),
-                Resources.OverwriteExistingOutputFileContinueMessage,
-                blueprintJsonFilePath,
-                () => AzureSession.Instance.DataStore.WriteFile(blueprintJsonFilePath, serializedDefinition)
+                this.Force || !AzureSession.Instance.DataStore.DirectoryExists(blueprintFolderPath),
+                string.Format(Resources.DeleteBlueprintFolderContentsProcessString, Blueprint.Name),
+                Resources.DeleteBlueprintFolderContentsContinueMessage,
+                blueprintFolderPath,
+                () => CreateFolderIfNotExist(resolvedPath, Blueprint.Name)
             );
-
-            // Get serialized artifacts from this blueprint and write them to disk
-            var artifactsPath = CreateFolderIfNotExist(blueprintFolderPath, "Artifacts");
-
-            var artifacts = BlueprintClient.ListArtifacts(Blueprint.Scope, Blueprint.Name, Version);
             
-            foreach (var artifact in artifacts)
+            var blueprintJsonFilePath = Path.Combine(blueprintFolderPath, $"{blueprintFileName}.json");
+
+            AzureSession.Instance.DataStore.WriteFile(blueprintJsonFilePath, serializedDefinition);
+           
+            var artifacts = BlueprintClient.ListArtifacts(Blueprint.Scope, Blueprint.Name, Version);
+
+            if (artifacts != null && artifacts.Any())
             {
-                string serializedArtifact = BlueprintClient.GetBlueprintArtifactJsonFromObject(Blueprint.Scope, Blueprint.Name, artifact, Version);
+                // Get serialized artifacts from this blueprint and write them to disk
+                var artifactsPath = CreateFolderIfNotExist(blueprintFolderPath, "Artifacts");
 
-                var artifactFilePath = Path.Combine(artifactsPath, artifact.Name + ".json");
+                foreach (var artifact in artifacts)
+                {
+                    string serializedArtifact =
+                        BlueprintClient.GetBlueprintArtifactJsonFromObject(Blueprint.Scope, Blueprint.Name, artifact,
+                            Version);
 
-                this.ConfirmAction(
-                    this.Force || !AzureSession.Instance.DataStore.FileExists(artifactFilePath),
-                    string.Format(Resources.OverwriteExistingOutputFileProcessMessage, artifact.Name),
-                    Resources.OverwriteExistingOutputFileContinueMessage,
-                    artifactFilePath,
-                    () => AzureSession.Instance.DataStore.WriteFile(artifactFilePath, serializedArtifact)
-                );
+                    var artifactFilePath = Path.Combine(artifactsPath, artifact.Name + ".json");
+
+                    AzureSession.Instance.DataStore.WriteFile(artifactFilePath, serializedArtifact);
+                }
             }
 
             if (PassThru.IsPresent)
