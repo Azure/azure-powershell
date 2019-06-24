@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public string Slot { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The location of the deleted app.")]
+        [Parameter(Mandatory = false, HelpMessage = "The location of the deleted app.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

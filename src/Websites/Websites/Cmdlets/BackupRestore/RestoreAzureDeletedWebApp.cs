@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         [Parameter(Position = 2, ParameterSetName = FromDeletedResourceNameParameterSet, Mandatory = false, HelpMessage = "The deleted Azure Web App slot.")]
         public string Slot { get; set; }
 
-        [Parameter(Position = 3, ParameterSetName = FromDeletedResourceNameParameterSet, Mandatory = false, HelpMessage = "The location of the deleted Azure Web App.")]
+        [Parameter(ParameterSetName = FromDeletedResourceNameParameterSet, Mandatory = false, HelpMessage = "The location of the deleted Azure Web App.")]
         public string Location { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The resource group containing the new Azure Web App.")]
