@@ -1,0 +1,68 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/providers/Microsoft.AlertsManagement/alertsSummary?groupby=severity%2Calertstate&includeSmartGroupsCount=false&api-version=2019-05-05-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQ5MWRlMDUtZDc5MS00Y2ViLWI2ZGMtOTg4NjgyZGM3ZDcyL3Byb3ZpZGVycy9NaWNyb3NvZnQuQWxlcnRzTWFuYWdlbWVudC9hbGVydHNTdW1tYXJ5P2dyb3VwYnk9c2V2ZXJpdHklMkNhbGVydHN0YXRlJmluY2x1ZGVTbWFydEdyb3Vwc0NvdW50PWZhbHNlJmFwaS12ZXJzaW9uPTIwMTktMDUtMDUtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "98bc665e-310b-4463-a31e-6c6003a5cd83"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.AlertsManagement.AlertsManagementClient/27.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "29723c55-9ba1-4d7a-b20c-b3813af50e38"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "999"
+        ],
+        "x-ms-correlation-request-id": [
+          "6fddfabf-a630-4ce3-ad4d-d3d390d607f8"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20190624T233825Z:6fddfabf-a630-4ce3-ad4d-d3d390d607f8"
+        ],
+        "Date": [
+          "Mon, 24 Jun 2019 23:38:24 GMT"
+        ],
+        "Content-Length": [
+          "1005"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"groupedby\": \"severity\",\r\n    \"total\": 1026,\r\n    \"values\": [\r\n      {\r\n        \"name\": \"Sev0\",\r\n        \"count\": 0,\r\n        \"groupedby\": \"alertState\",\r\n        \"values\": [\r\n          {\r\n            \"name\": \"New\",\r\n            \"count\": 0\r\n          },\r\n          {\r\n            \"name\": \"Acknowledged\",\r\n            \"count\": 0\r\n          },\r\n          {\r\n            \"name\": \"Closed\",\r\n            \"count\": 0\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"Sev1\",\r\n        \"count\": 399,\r\n        \"groupedby\": \"alertState\",\r\n        \"values\": [\r\n          {\r\n            \"name\": \"New\",\r\n            \"count\": 396\r\n          },\r\n          {\r\n            \"name\": \"Acknowledged\",\r\n            \"count\": 0\r\n          },\r\n          {\r\n            \"name\": \"Closed\",\r\n            \"count\": 3\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"Sev2\",\r\n        \"count\": 4,\r\n        \"groupedby\": \"alertState\",\r\n        \"values\": [\r\n          {\r\n            \"name\": \"New\",\r\n            \"count\": 4\r\n          },\r\n          {\r\n            \"name\": \"Acknowledged\",\r\n            \"count\": 0\r\n          },\r\n          {\r\n            \"name\": \"Closed\",\r\n            \"count\": 0\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"Sev3\",\r\n        \"count\": 404,\r\n        \"groupedby\": \"alertState\",\r\n        \"values\": [\r\n          {\r\n            \"name\": \"New\",\r\n            \"count\": 400\r\n          },\r\n          {\r\n            \"name\": \"Acknowledged\",\r\n            \"count\": 2\r\n          },\r\n          {\r\n            \"name\": \"Closed\",\r\n            \"count\": 2\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"Sev4\",\r\n        \"count\": 219,\r\n        \"groupedby\": \"alertState\",\r\n        \"values\": [\r\n          {\r\n            \"name\": \"New\",\r\n            \"count\": 216\r\n          },\r\n          {\r\n            \"name\": \"Acknowledged\",\r\n            \"count\": 0\r\n          },\r\n          {\r\n            \"name\": \"Closed\",\r\n            \"count\": 3\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/providers/Microsoft.AlertsManagement/alertsSummary/current\",\r\n  \"type\": \"Microsoft.AlertsManagement/alertsSummary\",\r\n  \"name\": \"current\"\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "dd91de05-d791-4ceb-b6dc-988682dc7d72"
+  }
+}
