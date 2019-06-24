@@ -183,6 +183,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
             HelpMessage = "Upgrade Storage Account Kind to StorageV2.")]
         public SwitchParameter UpgradeToStorageV2 { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable Azure Files Azure Active Directory Domain Service Authentication for the storage account.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableAzureActiveDirectoryDomainServicesForFile
+        {
+            get
+            {
+                return enableAzureActiveDirectoryDomainServicesForFile.Value;
+            }
+            set
+            {
+                enableAzureActiveDirectoryDomainServicesForFile = value;
+            }
+        }
+        private bool? enableAzureActiveDirectoryDomainServicesForFile = null;
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -249,6 +266,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     if (UpgradeToStorageV2.IsPresent)
                     {
                         updateParameters.Kind = Kind.StorageV2;
+                    }
+                    if (enableAzureActiveDirectoryDomainServicesForFile != null)
+                    {
+                        updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
+                        if (enableAzureActiveDirectoryDomainServicesForFile.Value)
+                        {
+                            updateParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.AADDS;
+                        }
+                        else
+                        {
+                            updateParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
+                        }
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(

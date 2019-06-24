@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 var container = this.StorageClient.BlobContainers.List(
                            this.ResourceGroupName,
                            this.StorageAccountName);
-                WriteContainerList(container.Value);
+                WriteContainerList(container);
             }
         }
     }
