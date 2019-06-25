@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing
         internal const string WhatIfParameterName = "WhatIf";
         internal const string ConfirmParameterName = "Confirm";
         internal const string ServerAuditingCmdletsSuffix = "SqlServerAuditing";
-        internal const string ServerAuditPolicyCmdletsSuffix = "SqlServerAuditPolicy";
+        internal const string ServerAuditCmdletsSuffix = "SqlServerAudit";
         internal const string DatabaseAuditingCmdletsSuffix = "SqlDatabaseAuditing";
-        internal const string DatabaseAuditPolicyCmdletsSuffix = "SqlDatabaseAuditPolicy";
+        internal const string DatabaseAuditCmdletsSuffix = "SqlDatabaseAudit";
         internal const string BlobStorageParameterSetName = "DefaultParameterSet";
         internal const string BlobStorageByParentResourceParameterSetName = "BlobStorageByParentResourceSet";
         internal const string EventHubParameterSetName = "EventHubSet";

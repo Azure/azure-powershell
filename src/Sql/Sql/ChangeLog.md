@@ -29,12 +29,12 @@
    - Get-AzSqlInstanceTransparentDataEncryptionProtector
    - Set-AzSqlInstanceTransparentDataEncryptionProtector
 * Support Azure SQL Server\Database Auditing with new cmdlets.
-    - Set-AzSqlServerAuditPolicy
-    - Get-AzSqlServerAuditPolicy
-    - Remove-AzSqlServerAuditPolicy
-    - Set-AzSqlDatabaseAuditPolicy
-    - Get-AzSqlDatabaseAuditPolicy
-    - Remove-AzSqlDatabaseAuditPolicy
+    - Set-AzSqlServerAudit
+    - Get-AzSqlServerAudit
+    - Remove-AzSqlServerAudit
+    - Set-AzSqlDatabaseAudit
+    - Get-AzSqlDatabaseAudit
+    - Remove-AzSqlDatabaseAudit
 	
 ## Version 1.11.0
 * Add DnsZonePartner Parameter for New-AzureSqlInstance cmdlet to support AutoDr for Managed Instance.
