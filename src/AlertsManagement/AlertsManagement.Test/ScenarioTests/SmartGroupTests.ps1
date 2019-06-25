@@ -22,7 +22,7 @@ function Test-SmartGroupChangeState
 
 	$oldSmartGroup = Get-AzSmartGroup -SmartGroupId $smartGroupId
 	$newState = "Acknowledged"
-    $updatedSmartGroup = Update-AzSmartGroupState -SmartGroupId $smartGroupId -State $newState
+	$updatedSmartGroup = Update-AzSmartGroupState -SmartGroupId $smartGroupId -State $newState
 	Assert-AreEqual $newState $updatedSmartGroup.State
 
 	# Revert the changes
