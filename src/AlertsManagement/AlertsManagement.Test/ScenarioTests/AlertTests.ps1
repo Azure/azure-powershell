@@ -24,8 +24,7 @@ function Test-AlertChangeState
 
 	$oldState = $alert.State
 	$newState = "Closed"
-
-    $updatedAlert = Update-AzAlertState -AlertId $alert.Id -State $newState
+	$updatedAlert = Update-AzAlertState -AlertId $alert.Id -State $newState
 	Assert-AreEqual $newState $updatedAlert.State
 
 	# Revert the state change operation
@@ -34,7 +33,7 @@ function Test-AlertChangeState
 
 function Test-AlertsSummary
 {
-    $summary = Measure-AzAlertStatistic -GroupBy "severity,alertstate"
+	$summary = Measure-AzAlertStatistic -GroupBy "severity,alertstate"
 
 	Assert-AreEqual "severity" $summary.GroupBy
 	Assert-NotNull $summary.TotalAlerts
