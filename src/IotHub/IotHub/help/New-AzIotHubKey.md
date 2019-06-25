@@ -25,6 +25,10 @@ Generate an Azure IoT Hub key.
 ### Example 1 Regenerate primary key
 ```
 PS C:\> New-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "testKey" -RenewKey "primary"
+
+KeyName		PrimaryKey										SecondaryKey										Rights
+-------		----------										------------										------
+test		SXSdm31aT+i3939xSnA191f8g3uRhIUCTsO26b9s/nE=	6JqGKGUTL0mhQwvcOeIRT7OnT6noK/tie6jBY77sJTE=		ServiceConnect
 ```
 
 Regenerated primary key for the authorization policy "testKey" of an azure iot hub.
@@ -32,6 +36,10 @@ Regenerated primary key for the authorization policy "testKey" of an azure iot h
 ### Example 2 Swapping keys
 ```
 PS C:\> New-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "testKey" -RenewKey "swap"
+
+KeyName		PrimaryKey										SecondaryKey										Rights
+-------		----------										------------										------
+test		6JqGKGUTL0mhQwvcOeIRT7OnT6noK/tie6jBY77sJTE=	SXSdm31aT+i3939xSnA191f8g3uRhIUCTsO26b9s/nE=		ServiceConnect
 ```
 
 Swapping keys for the authorization policy "testKey" of an azure iot hub.
