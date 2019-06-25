@@ -109,7 +109,7 @@ function Get-WebLocation
 		}
 	}
 
-	return "WestUS"
+	return "West US"
 }
 
 <#
@@ -133,7 +133,7 @@ function Get-SecondaryLocation
 		}
 	}
 
-	return "WestUS"
+	return "West US"
 }
 
 <#

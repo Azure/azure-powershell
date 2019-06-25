@@ -128,7 +128,16 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
             switch (ParameterSetName)
             {
                 case FromDeletedResourceNameParameterSet:
-                    IEnumerable<string> locations = ResourcesClient.GetDeletedSitesLocations();
+                    IEnumerable<string> locations;
+                    if (string.IsNullOrEmpty(Location))
+                    {
+                        locations = ResourcesClient.GetDeletedSitesLocations();
+                    }
+                    else
+                    {
+                        locations = new List<string> { Location };
+                    }
+
                     var deletedSites = WebsitesClient.GetDeletedSitesFromLocations(locations).Where(ds =>
                     {
                         bool match = string.Equals(ds.ResourceGroup, ResourceGroupName, StringComparison.InvariantCultureIgnoreCase) &&
@@ -136,10 +145,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
                         if (!string.IsNullOrEmpty(Slot))
                         {
                             match = match && string.Equals(ds.Slot, Slot, StringComparison.InvariantCultureIgnoreCase);
-                        }
-                        if (!string.IsNullOrEmpty(Location))
-                        {
-                            match = match && string.Equals(ds.GeoRegionName, Location, StringComparison.InvariantCultureIgnoreCase);
                         }
                         return match;
                     });
