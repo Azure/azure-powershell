@@ -92,7 +92,7 @@ Gets one or more Advisors for an Azure SQL Database.
 ### [Get-AzSqlDatabaseAuditing](Get-AzSqlDatabaseAuditing.md)
 Gets the auditing settings of an Azure SQL database.
 
-### [Get-AzSqlDatabaseAuditPolicy](Get-AzSqlDatabaseAuditPolicy.md)
+### [Get-AzSqlDatabaseAudit](Get-AzSqlDatabaseAudit.md)
 Gets the auditing settings of an Azure SQL database.
 
 ### [Get-AzSqlDatabaseBackupLongTermRetentionPolicy](Get-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
@@ -249,7 +249,7 @@ Gets one or more Advisors for an Azure SQL Server.
 ### [Get-AzSqlServerAuditing](Get-AzSqlServerAuditing.md)
 Gets the auditing settings of an Azure SQL server.
 
-### [Get-AzSqlServerAuditPolicy](Get-AzSqlServerAuditPolicy.md)
+### [Get-AzSqlServerAudit](Get-AzSqlServerAudit.md)
 Gets the auditing settings of an Azure SQL server.
 
 ### [Get-AzSqlServerCommunicationLink](Get-AzSqlServerCommunicationLink.md)
@@ -375,7 +375,7 @@ Creates an Azure SQL Database Sync Member.
 ### [Remove-AzSqlDatabase](Remove-AzSqlDatabase.md)
 Removes an Azure SQL database.
 
-### [Remove-AzSqlDatabaseAuditPolicy](Remove-AzSqlDatabaseAuditPolicy.md)
+### [Remove-AzSqlDatabaseAudit](Remove-AzSqlDatabaseAudit.md)
 Removes the audit policy of a SQL Database.
 
 ### [Remove-AzSqlDatabaseDataMaskingRule](Remove-AzSqlDatabaseDataMaskingRule.md)
@@ -420,7 +420,7 @@ Removes an Azure SQL Database server.
 ### [Remove-AzSqlServerActiveDirectoryAdministrator](Remove-AzSqlServerActiveDirectoryAdministrator.md)
 Removes an Azure AD administrator for SQL Server.
 
-### [Remove-AzSqlServerAuditPolicy](Remove-AzSqlServerAuditPolicy.md)
+### [Remove-AzSqlServerAudit](Remove-AzSqlServerAudit.md)
 Removes the audit policy of a SQL Server.
 
 ### [Remove-AzSqlServerCommunicationLink](Remove-AzSqlServerCommunicationLink.md)
@@ -471,7 +471,7 @@ Modifies auto execute status of an Azure SQL Database Advisor.
 ### [Set-AzSqlDatabaseAuditing](Set-AzSqlDatabaseAuditing.md)
 Changes the auditing settings for an Azure SQL database.
 
-### [Set-AzSqlDatabaseAuditPolicy](Set-AzSqlDatabaseAuditPolicy.md)
+### [Set-AzSqlDatabaseAudit](Set-AzSqlDatabaseAudit.md)
 Changes the auditing settings for an Azure SQL database.
 
 ### [Set-AzSqlDatabaseBackupLongTermRetentionPolicy](Set-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
@@ -543,7 +543,7 @@ Updates the auto execute status of an Azure SQL Server Advisor.
 ### [Set-AzSqlServerAuditing](Set-AzSqlServerAuditing.md)
 Changes the auditing settings of an Azure SQL server.
 
-### [Set-AzSqlServerAuditPolicy](Set-AzSqlServerAuditPolicy.md)
+### [Set-AzSqlServerAudit](Set-AzSqlServerAudit.md)
 Changes the auditing settings of an Azure SQL server.
 
 ### [Set-AzSqlServerDisasterRecoveryConfiguration](Set-AzSqlServerDisasterRecoveryConfiguration.md)
