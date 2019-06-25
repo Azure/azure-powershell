@@ -100,7 +100,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
         protected void ImportBlueprint(string blueprintName, string scope, string inputPath, bool force)
         {
-            var blueprintPath = GetValidatedFilePath(inputPath, blueprintName);
+            const string blueprintFileName = "Blueprint";
+            var blueprintPath = GetValidatedFilePath(inputPath, blueprintFileName);
 
             BlueprintModel bpObject;
             try
@@ -149,8 +150,17 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         {
             var folderPath = Path.Combine(path, folderName);
 
-            if (!AzureSession.Instance.DataStore.DirectoryExists(folderPath))
+            if (AzureSession.Instance.DataStore.DirectoryExists(folderPath))
             {
+                AzureSession.Instance.DataStore.EmptyDirectory(folderPath);
+
+                if (AzureSession.Instance.DataStore.DirectoryExists(Path.Combine(folderPath, "Artifacts")))
+                {
+                    AzureSession.Instance.DataStore.DeleteDirectory(Path.Combine(folderPath, "Artifacts"));
+                }
+            }
+            else
+            { 
                 AzureSession.Instance.DataStore.CreateDirectory(folderPath);
             }
 
@@ -163,11 +173,12 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
             var artifactsPath = GetValidatedFolderPath(inputPath, artifacts);
 
-            var artifactFiles = AzureSession.Instance.DataStore.GetFiles(artifactsPath, "*.json", SearchOption.TopDirectoryOnly);
+            if (artifactsPath == null)
+            {
+                return; // if blueprint doesn't contain artifacts don't proceed.
+            }
 
-            // To-Do - Remove this before release.
-            /*DirectoryInfo artifactsDirectory = new DirectoryInfo(artifactsPath);
-            FileInfo[] artifactsFiles = artifactsDirectory.GetFiles("*.json");*/
+            var artifactFiles = AzureSession.Instance.DataStore.GetFiles(artifactsPath, "*.json", SearchOption.TopDirectoryOnly);
 
             foreach (var artifactFile in artifactFiles)
             {

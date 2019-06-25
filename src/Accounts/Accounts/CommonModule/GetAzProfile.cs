@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Common
     /// Returns the Azure profiles available from a module if ModuleName is provided.
     /// </summary>
     [OutputType(typeof(PSAzureServiceProfile))]
-    [Cmdlet(VerbsCommon.Get, @"AzProfile", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Get, @"AzProfile")]
     public class GetAzProfile : PSCmdlet
     {
         [Parameter(Mandatory = false)]
@@ -47,9 +47,10 @@ namespace Microsoft.Azure.Commands.Common
                 var profiles = includesModuleNames || isListAvailable
                     ? GetProfiles(InvokeCommand, isListAvailable, moduleNames)
                     : new []{ ContextAdapter.Instance.SelectedProfile };
-                if (profiles.Any() && !profiles.All(String.IsNullOrEmpty))
+                if (profiles.Any((p) => !string.IsNullOrWhiteSpace(p)))
                 {
-                    WriteObject(profiles.Select((p) => PSAzureServiceProfile.Create(p)), true);
+                    WriteObject(profiles.Where((profile) => !string.IsNullOrWhiteSpace(profile))
+                        .Select((p) => PSAzureServiceProfile.Create(p)), true);
                 }
             }
             catch (Exception exception)

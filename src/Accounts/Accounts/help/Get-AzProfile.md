@@ -13,7 +13,7 @@ Get the service profiles supported by installed modules.
 ## SYNTAX
 
 ```
-Get-AzProfile [-ModuleName <String[]>] [-ListAvailable] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzProfile [-ModuleName <String[]>] [-ListAvailable] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,10 +23,15 @@ Get the service profiles supported by installed modules.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzProfile -Module Az.Compute
+PS C:\> Get-AzProfile -ModuleName Az.KeyVault
+
+Name              Description
+----              -----------
+latest-2019-04-30 A snapshot of the service API versions in the Azure Global Cloud. This profile was defined in April 2019.
+hybrid-2019-03-01 A snapshot of the Service API versions in AzureStack, Azure Sovereign clouds, and the Azure Global Cloud. This profile was defined                    in March 2019.
 ```
 
-Gte the service profile supported by the Compute module
+Get the service profile supported by the KeyVault module
 
 ## PARAMETERS
 
@@ -52,37 +57,6 @@ The name of the module to check
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
 
 Required: False
 Position: Named

@@ -15,6 +15,7 @@
 using System;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using static Microsoft.Azure.Commands.Common.Profile;
 
@@ -38,15 +39,18 @@ namespace Microsoft.Azure.Commands.Common
         {
             try
             {
-                if(this.IsBound(nameof(Name)) && !String.IsNullOrEmpty(Name))
+                if(this.IsParameterBound(c => c.Name))
                 {
-                    ContextAdapter.Instance.SelectedProfile = Name;
                     var modules = GetModules(InvokeCommand).Where(m => GetProfiles(m).Contains(Name)).ToArray();
-                    ReloadModules(InvokeCommand, modules);
-
-                    if (PassThru.IsPresent && PassThru.ToBool())
+                    var moduleList = string.Join(", ", modules.Select(s => s.Name));
+                    if (ShouldProcess($"{Resources.SelectProfileTarget} {moduleList}", $"{Resources.SelectProfileAction} {Name}"))
                     {
-                        WriteObject(true);
+                        ContextAdapter.Instance.SelectedProfile = Name;
+                        ReloadModules(InvokeCommand, modules);
+                        if (PassThru.IsPresent && PassThru.ToBool())
+                        {
+                            WriteObject(true);
+                        }
                     }
                 }
             }
