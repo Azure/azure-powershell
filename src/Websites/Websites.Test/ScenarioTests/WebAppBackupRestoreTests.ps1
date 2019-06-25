@@ -399,12 +399,12 @@ function Test-GetDeletedWebApp
 		Remove-AzWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotName -Force
 		Remove-AzWebApp -ResourceGroupName $rgname -Name $wname -Force
 
-		$deletedApp = Get-AzDeletedWebApp -ResourceGroupName $rgname -Name $wname -Slot "Production"
+		$deletedApp = Get-AzDeletedWebApp -ResourceGroupName $rgname -Name $wname -Slot "Production" -Location $location
 		Assert-NotNull $deletedApp
 		Assert-AreEqual $rgname $deletedApp.ResourceGroupName
 		Assert-AreEqual $wname $deletedApp.Name
 
-		$deletedSlot = Get-AzDeletedWebApp -ResourceGroupName $rgname -Name $wname -Slot $slotName
+		$deletedSlot = Get-AzDeletedWebApp -ResourceGroupName $rgname -Name $wname -Slot $slotName -Location $location
 		Assert-NotNull $deletedSlot
 		Assert-AreEqual $rgname $deletedSlot.ResourceGroupName
 		Assert-AreEqual $wname $deletedSlot.Name
@@ -462,14 +462,14 @@ function Test-RestoreDeletedWebAppToExisting
 		if ($isRecordMode) 
 		{
 			# Need extra time for restore operation to resolve globally
-			Start-Sleep -Seconds 300
+			Start-Sleep -Seconds 900
 		}
 
 		# Test the FromDeletedResourceName parameter set
 		$restoredSlot = Restore-AzDeletedWebApp -ResourceGroupName $rgname -Name $delName -Slot $delSlot -TargetResourceGroupName $rgname -TargetName $wname -TargetSlot $slotName -Force
 		if ($isRecordMode) 
 		{
-			Start-Sleep -Seconds 300
+			Start-Sleep -Seconds 900
 		}
 
 		Assert-NotNull $restoredApp
@@ -533,7 +533,7 @@ function Test-RestoreDeletedWebAppToNew
 		if ($isRecordMode) 
 		{
 			# Need extra time for restore operation to resolve globally, or cleanup will be blocked
-			Start-Sleep -Seconds 300
+			Start-Sleep -Seconds 900
 		}
 	}
 	finally

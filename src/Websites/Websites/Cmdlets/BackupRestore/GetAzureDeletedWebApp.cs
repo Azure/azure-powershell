@@ -51,7 +51,16 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         {
             base.ExecuteCmdlet();
 
-            IEnumerable<string> locations = ResourcesClient.GetDeletedSitesLocations();
+            IEnumerable<string> locations;
+            if (string.IsNullOrEmpty(Location))
+            {
+                locations = ResourcesClient.GetDeletedSitesLocations();
+            }
+            else
+            {
+                locations = new List<string> { Location };
+            }
+
             IEnumerable<PSAzureDeletedWebApp> deletedSites = WebsitesClient.GetDeletedSitesFromLocations(locations)
                 .Where(ds => ds.DeletedSiteId.HasValue)
                 .Select(ds => new PSAzureDeletedWebApp(ds, DefaultContext.Subscription.Id));
@@ -67,10 +76,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             if (!string.IsNullOrEmpty(Slot))
             {
                 deletedSites = deletedSites.Where(ds => string.Equals(Slot, ds.Slot, StringComparison.InvariantCultureIgnoreCase));
-            }
-            if (!string.IsNullOrEmpty(Location))
-            {
-                deletedSites = deletedSites.Where(ds => string.Equals(Location, ds.Location, StringComparison.InvariantCultureIgnoreCase));
             }
 
             WriteObject(deletedSites, true);
