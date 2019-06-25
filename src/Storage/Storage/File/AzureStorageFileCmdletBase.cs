@@ -46,6 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             {
                 this.Channel = new StorageFileManagement(
                     this.ParameterSetName == Constants.ShareNameParameterSetName ||
+                    this.ParameterSetName.StartsWith("ShareName") ||
                     this.ParameterSetName == Constants.MatchingPrefixParameterSetName ||
                     this.ParameterSetName == Constants.SpecificParameterSetName ?
                         this.GetCmdletStorageContext() :

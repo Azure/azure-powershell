@@ -169,6 +169,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleting folder contents..
+        /// </summary>
+        internal static string DeleteBlueprintFolderContentsContinueMessage {
+            get {
+                return ResourceManager.GetString("DeleteBlueprintFolderContentsContinueMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Folder &apos;{0}&apos; already exists. This operation will replace contents of the folder with specified blueprint and its artifacts. Would you like to continue?.
+        /// </summary>
+        internal static string DeleteBlueprintFolderContentsProcessString {
+            get {
+                return ResourceManager.GetString("DeleteBlueprintFolderContentsProcessString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Overwriting the output file..
         /// </summary>
         internal static string OverwriteExistingOutputFileContinueMessage {

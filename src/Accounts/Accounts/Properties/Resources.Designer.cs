@@ -763,6 +763,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Load modules with profile.
+        /// </summary>
+        internal static string SelectProfileAction {
+            get {
+                return ResourceManager.GetString("SelectProfileAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modules.
+        /// </summary>
+        internal static string SelectProfileTarget {
+            get {
+                return ResourceManager.GetString("SelectProfileTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter your email if you are interested in providing follow up information:.
         /// </summary>
         internal static string SendFeedbackEmailQuestion {

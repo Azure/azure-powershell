@@ -456,6 +456,12 @@
   <data name="ProdProfileDescription" xml:space="preserve">
     <value>A snapshot of the service API versions in the Azure Global Cloud.</value>
   </data>
+  <data name="SelectProfileAction" xml:space="preserve">
+    <value>Load modules with profile</value>
+  </data>
+  <data name="SelectProfileTarget" xml:space="preserve">
+    <value>Modules</value>
+  </data>
   <data name="SovereignProfileDescription" xml:space="preserve">
     <value>A snapshot of the service API versiosn available in Azure Sovereign Clouds and the Azure Global Cloud.</value>
   </data>
