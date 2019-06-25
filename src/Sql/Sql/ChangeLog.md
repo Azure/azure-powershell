@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Support Azure SQL Server\Database Auditing with new cmdlets.
+    - Set-AzSqlServerAudit
+    - Get-AzSqlServerAudit
+    - Remove-AzSqlServerAudit
+    - Set-AzSqlDatabaseAudit
+    - Get-AzSqlDatabaseAudit
+    - Remove-AzSqlDatabaseAudit
 
 ## Version 1.12.0
 * Fix Advanced Threat Protection storage endpoint suffix
@@ -28,20 +35,6 @@
    - Remove-AzSqlInstanceKeyVaultKey
    - Get-AzSqlInstanceTransparentDataEncryptionProtector
    - Set-AzSqlInstanceTransparentDataEncryptionProtector
-* Support Azure SQL Server\Database Auditing with new cmdlets.
-    - Set-AzSqlServerAudit
-    - Get-AzSqlServerAudit
-    - Remove-AzSqlServerAudit
-    - Set-AzSqlDatabaseAudit
-    - Get-AzSqlDatabaseAudit
-    - Remove-AzSqlDatabaseAudit
-	
-## Version 1.11.0
-* Add DnsZonePartner Parameter for New-AzureSqlInstance cmdlet to support AutoDr for Managed Instance.
-* Deprecating Get-AzSqlDatabaseSecureConnectionPolicy cmdlet
-* Rename Threat Detection cmdlets to Advanced Threat Protection
-* New-AzSqlInstance -StorageSizeInGB and -LicenseType parameters are now optional.
-* Fix issue in reference documentation for `Enable-AzSqlServerAdvancedDataSecurity`
 
 ## Version 1.11.0
 * Add DnsZonePartner Parameter for New-AzureSqlInstance cmdlet to support AutoDr for Managed Instance.
