@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Improving logic of getting subscriptions for query to ARG
 
 ## Version 0.7.2
 * Fix conversion to PSCustomObject[] for top-level arrays
