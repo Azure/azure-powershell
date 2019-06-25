@@ -26,7 +26,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Management.AlertsManagement;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 
-namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests.ScenarioTests
+namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests
 {
     public class TestController : RMTestBase
     {

@@ -267,25 +267,25 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
                 case BySimplifiedFormatActionRuleParameterSet:
                     Conditions conditions = new Conditions(
-                            severity: new Condition(
+                            severity: string.IsNullOrWhiteSpace(SeverityCondition) ? new Condition(): new Condition(
                                 operatorProperty: SeverityCondition.Split(':')[0],
                                 values: SeverityCondition.Split(':')[1].Split(',')),
-                            monitorService: new Condition(
+                            monitorService: string.IsNullOrWhiteSpace(MonitorServiceCondition) ? new Condition() : new Condition(
                                 operatorProperty: MonitorServiceCondition.Split(':')[0],
                                 values: MonitorServiceCondition.Split(':')[1].Split(',')),
-                            monitorCondition: new Condition(
+                            monitorCondition: string.IsNullOrWhiteSpace(MonitorCondition) ? new Condition() : new Condition(
                                 operatorProperty: MonitorCondition.Split(':')[0],
                                 values: MonitorCondition.Split(':')[1].Split(',')),
-                            targetResourceType: new Condition(
+                            targetResourceType: string.IsNullOrWhiteSpace(TargetResourceTypeCondition) ? new Condition() : new Condition(
                                 operatorProperty: TargetResourceTypeCondition.Split(':')[0],
                                 values: TargetResourceTypeCondition.Split(':')[1].Split(',')),
-                            description: new Condition(
+                            description: string.IsNullOrWhiteSpace(DescriptionCondition) ? new Condition() : new Condition(
                                 operatorProperty: DescriptionCondition.Split(':')[0],
                                 values: DescriptionCondition.Split(':')[1].Split(',')),
-                            alertRuleId: new Condition(
+                            alertRuleId: string.IsNullOrWhiteSpace(AlertRuleIdCondition) ? new Condition() : new Condition(
                                 operatorProperty: AlertRuleIdCondition.Split(':')[0],
                                 values: AlertRuleIdCondition.Split(':')[1].Split(',')),
-                            alertContext: new Condition(
+                            alertContext: string.IsNullOrWhiteSpace(AlertContextCondition) ? new Condition() : new Condition(
                                 operatorProperty: AlertContextCondition.Split(':')[0],
                                 values: AlertContextCondition.Split(':')[1].Split(',')));
 

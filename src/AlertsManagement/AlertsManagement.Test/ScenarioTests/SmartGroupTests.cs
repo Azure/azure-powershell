@@ -18,7 +18,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 
-namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests.ScenarioTests
+namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests
 {
     public class SmartGroupTests : RMTestBase
     {
