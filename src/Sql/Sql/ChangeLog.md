@@ -25,6 +25,7 @@
     - Set-AzSqlDatabaseAudit
     - Get-AzSqlDatabaseAudit
     - Remove-AzSqlDatabaseAudit
+* Remove email constraints from Vulnerability Assessment settings
 
 ## Version 1.12.0
 * Fix Advanced Threat Protection storage endpoint suffix
