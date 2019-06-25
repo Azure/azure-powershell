@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed CustomLog datasource model returned in Get-AzOperationalInsightsDataSource
 
 ## Version 1.3.0
 * Enable **pergb2018** pricing tier in `New-AzureRmOperationalInsightsWorkspace` command
