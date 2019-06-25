@@ -109,6 +109,12 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         public SwitchParameter Force { get; set; }
 
         /// <summary>
+        /// Defines whether it is ok to pass through cmdlet output
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
+        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
@@ -164,6 +170,11 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
                Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
             {
                 return;
+            }
+
+            if (this.PassThru.IsPresent)
+            {
+                WriteObject(true);
             }
 
             base.ExecuteCmdlet();
