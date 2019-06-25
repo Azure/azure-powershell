@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed Set-AzAutomationConnectionFieldValue cmdlet bug to handle string value.
 
 ## Version 1.2.2
 * Updated Get-AzAutomationJobOutputRecord to handle JSON and Text record values.
