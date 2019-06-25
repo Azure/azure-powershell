@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.AlertsManagement.Models;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests.ScenarioTests
+namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests
 {
     public class ActionRuleTests : RMTestBase
     {
