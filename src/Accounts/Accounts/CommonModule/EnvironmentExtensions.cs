@@ -16,6 +16,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.Text.RegularExpressions;
 using System;
 using System.Text;
+using System.Collections.Concurrent;
+using Microsoft.Azure.Commands.Profile.CommonModule;
 
 namespace Microsoft.Azure.Commands.Common
 {
@@ -227,7 +229,7 @@ namespace Microsoft.Azure.Commands.Common
         {
             if (string.IsNullOrWhiteSpace(newBase))
             {
-                throw new ArgumentOutOfRangeException(nameof(newBase));
+                return baseUri;
             }
 
             baseUri = baseUri ?? new Uri("/", UriKind.Relative);
@@ -302,6 +304,47 @@ namespace Microsoft.Azure.Commands.Common
             }
 
             return target.Contains(searchValue);
+        }
+
+        internal static void CheckAndEnqueue<T>(this ConcurrentQueue<T> queue,  T item) where T: class
+        {
+            const int capacity = 1000;
+            if (null == item || null == queue)
+            {
+                return;
+            }
+
+            lock(queue)
+            {
+                while (queue.Count >= capacity)
+                {
+                    T result;
+                    queue.TryDequeue(out result);
+                }
+
+                queue.Enqueue(item);
+            }
+        }
+
+        internal static bool TryDequeueIfNotNull<T>(this ConcurrentQueue<T> queue, out T result)
+        {
+            result = default(T);
+            if (null == queue)
+            {
+                return false;
+            }
+
+            return queue.TryDequeue(out result);
+        }
+
+        internal static Action<string> GetDebugLogger(this IEventStore store)
+        {
+            return ((message) => store.AddEvent(EventHelper.CreateDebugEvent(message)));
+        }
+
+        internal static Action<string> GetWarningLogger(this IEventStore store)
+        {
+            return ((message) => store.AddEvent(EventHelper.CreateWarningEvent(message)));
         }
     }
 }
