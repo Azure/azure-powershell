@@ -33,9 +33,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
         /// <param name="rule"></param>
         public PSActionRule(ActionRule rule)
         {
-            // TODO: Uncomment after using correct SDK
-            //Id = rule.Id
-            //Name = rule.Name
+            Id = rule.Id;
+            Name = rule.Name;
             Description = rule.Properties.Description;
             Status = rule.Properties.Status;
             CreatedAt = rule.Properties.CreatedAt;
