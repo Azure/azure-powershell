@@ -1,34 +1,64 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/register-azmodule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/select-azprofile
 schema: 2.0.0
 ---
 
-# Register-AzModule
+# Select-AzProfile
 
 ## SYNOPSIS
-FOR INTERNAL USE ONLY - Provide RUntime Support for AutoRest Generated cmdlets
+For modules that support multiple service profiles - load the cmdlets corresponding with the given service profile.
 
 ## SYNTAX
 
 ```
-Register-AzModule [-WhatIf] [-Confirm] [<CommonParameters>]
+Select-AzProfile -Name <String> [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-FOR INTERNAL USE ONLY - Provide RUntime Support for AutoRest Generated cmdlets
+For modules that support multiple service profiles - load the cmdlets corresponding with the given service profile.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Register-AzModule
+PS C:\> Select-AzProfile hybrid-2019-03
 ```
 
-Used Internally by AutoRest-generated cmdlets
+Load cmdlets for the AzureStack profile from March 2019
 
 ## PARAMETERS
+
+### -Name
+The name of the profile to select
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ProfileName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+When present, forces the cmdlet to return a value on successful execution
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
@@ -46,7 +76,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
