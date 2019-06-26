@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzAlertState
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates alert state
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ Update-AzAlertState -AlertId <String> -State <String> [-DefaultProfile <IAzureCo
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+**Update-AzAlertState** cmdlet updates alert state.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Update-AzAlertState -AlertId "afbf1b3a-0a6c-4f19-9c9b-644ccd7b1529" -State "Closed"
 ```
 
-{{ Add example description here }}
+This cmdlet updates the alert state to Closed.
 
 ## PARAMETERS
 

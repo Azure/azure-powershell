@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzAlert
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get Alerts Information
 
 ## SYNTAX
 
@@ -27,16 +27,24 @@ Get-AzAlert [-TargetResource <String>] [-TargetResourceType <String>] [-TargetRe
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+**Get-AzAlert** cmdlet gets fired alert instances.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzAlert -Severity "Sev2" -MonitorCondition "Fired" -IncludeContext true
 ```
 
-{{ Add example description here }}
+List all alerts with Sev2 severity and Fired monitor condition. Setting IncludeContext to true, include custom payload of alert.
+
+### Example 2
+```powershell
+PS C:\> Get-AzAlert -AlertId "afbf1b3a-0a6c-4f19-9c9b-644ccd7b1529"
+```
+
+Get Alert details by Id (GUID) or Resource Id (Complete ARM Id)
+
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzActionRule
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Deletes a action group
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Remove-AzActionRule -InputObject <PSActionRule> [-DefaultProfile <IAzureContextC
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+**Remove-AzActionRule** cmdlet deletes a action rule.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzActionRule -ResourceGroupName "test-rg" -Name "ActionRuleName"
 ```
 
-{{ Add example description here }}
+This cmdlet deletes the action rule with name ActionRuleName in resource group test-rg
 
 ## PARAMETERS
 

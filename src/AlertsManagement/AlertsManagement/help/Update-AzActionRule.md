@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzActionRule
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates action rule properties.
 
 ## SYNTAX
 
@@ -37,16 +37,16 @@ Update-AzActionRule -Name <String> -ResourceGroupName <String> [-Status <String>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+**Update-AzActionRule** cmdlet updates action rule properties - status and tags.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Update-AzActionRule -ResourceGroupName "test-rg" -Name "Test-ActionRule" -Status "Disabled"
 ```
 
-{{ Add example description here }}
+This cmdlet disables the action rule. 
 
 ## PARAMETERS
 

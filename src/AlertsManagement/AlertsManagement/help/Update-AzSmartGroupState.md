@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSmartGroupState
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates smart group state
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ Update-AzSmartGroupState -SmartGroupId <String> -State <String> [-DefaultProfile
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+**Update-AzSmartGroupState** cmdlet updates smart group state.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Update-AzSmartGroupState -SmartGroupId "afbf1b3a-0a6c-4f19-9c9b-644ccd7b1529" -State "Acknowledged"
 ```
 
-{{ Add example description here }}
+This cmdlet updates the smart group state to Acknowleged.
 
 ## PARAMETERS
 

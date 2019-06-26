@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSmartGroupHistory
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets smart group history
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Get-AzSmartGroupHistory -SmartGroupId <String> [-DefaultProfile <IAzureContextCo
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+**Get-AzSmartGroupHistory** cmdlet gets smart group history.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzSmartGroupHistory -AlertId "afbf1b3a-0a6c-4f19-9c9b-644ccd7b1529"
 ```
 
-{{ Add example description here }}
+Gets smart group history details.
 
 ## PARAMETERS
 
