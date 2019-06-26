@@ -14,8 +14,8 @@ Gets the managementpolicy associated with the specified storage account.
 
 ### Get (Default)
 ```
-Get-AzStorageAccountManagementPolicy -AccountName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStorageAccountManagementPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -49,23 +49,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -AccountName
-The name of the storage account within the specified resource group.
-Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -94,6 +77,23 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Name
+The name of the storage account within the specified resource group.
+Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -143,6 +143,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20181101.IManagementPolicy
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

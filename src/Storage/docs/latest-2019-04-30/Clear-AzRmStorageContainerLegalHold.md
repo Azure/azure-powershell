@@ -136,6 +136,7 @@ Dynamic: False
 
 ### -LegalHold
 The LegalHold property of a blob container.
+To construct, see NOTES section for LEGALHOLD properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.ILegalHold
@@ -248,6 +249,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Remove-AzRmStorageContainerLegalHold
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### LEGALHOLD <ILegalHold>: The LegalHold property of a blob container.
+  - `Tag <String[]>`: Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case at SRP.
 
 ## RELATED LINKS
 

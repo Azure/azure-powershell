@@ -15,13 +15,14 @@ Gets the existing immutability policy along with the corresponding ETag in respo
 ### Get (Default)
 ```
 Get-AzRmStorageContainerImmutabilityPolicy -AccountName <String> -ContainerName <String>
- -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ResourceGroupName <String> -SubscriptionId <String[]> [-IfMatch <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzRmStorageContainerImmutabilityPolicy -InputObject <IStorageIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzRmStorageContainerImmutabilityPolicy -InputObject <IStorageIdentity> [-IfMatch <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,6 +101,24 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -IfMatch
+The entity state (ETag) version of the immutability policy to update.
+A value of "*" can be used to apply the operation only if the immutability policy already exists.
+If omitted, this operation will always be applied.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -161,6 +180,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20180201.IImmutabilityPolicy
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

@@ -88,6 +88,8 @@ Dynamic: False
 The List of CORS rules.
 You can include up to five CorsRule elements in the request.
 
+To construct, see NOTES section for CORCORSRULE properties and create a hash table.
+
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20180701.ICorsRule[]
 Parameter Sets: SetExpanded
@@ -169,6 +171,7 @@ Dynamic: False
 
 ### -Parameter
 The properties of a storage account’s Blob service.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IBlobServiceProperties
@@ -261,6 +264,30 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IBlobServiceProperties
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### CORCORSRULE <ICorsRule[]>: The List of CORS rules. You can include up to five CorsRule elements in the request. 
+  - `AllowedHeader <String[]>`: Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request.
+  - `AllowedMethod <String[]>`: Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin.
+  - `AllowedOrigin <String[]>`: Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
+  - `ExposedHeader <String[]>`: Required if CorsRule element is present. A list of response headers to expose to CORS clients.
+  - `MaxAgeInSecond <Int32>`: Required if CorsRule element is present. The number of seconds that the client/browser should cache a preflight response.
+
+#### PARAMETER <IBlobServiceProperties>: The properties of a storage account's Blob service.
+  - `[AutomaticSnapshotPolicyEnabled <Boolean?>]`: Automatic Snapshot is enabled if set to true.
+  - `[CorCorsRule <ICorsRule[]>]`: The List of CORS rules. You can include up to five CorsRule elements in the request. 
+    - `AllowedHeader <String[]>`: Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request.
+    - `AllowedMethod <String[]>`: Required if CorsRule element is present. A list of HTTP methods that are allowed to be executed by the origin.
+    - `AllowedOrigin <String[]>`: Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
+    - `ExposedHeader <String[]>`: Required if CorsRule element is present. A list of response headers to expose to CORS clients.
+    - `MaxAgeInSecond <Int32>`: Required if CorsRule element is present. The number of seconds that the client/browser should cache a preflight response.
+  - `[DefaultServiceVersion <String>]`: DefaultServiceVersion indicates the default version to use for requests to the Blob service if an incoming request’s version is not specified. Possible values include version 2008-10-27 and all more recent versions.
+  - `[DeleteRetentionPolicyDay <Int32?>]`: Indicates the number of days that the deleted blob should be retained. The minimum specified value can be 1 and the maximum value can be 365.
+  - `[DeleteRetentionPolicyEnabled <Boolean?>]`: Indicates whether DeleteRetentionPolicy is enabled for the Blob service.
 
 ## RELATED LINKS
 

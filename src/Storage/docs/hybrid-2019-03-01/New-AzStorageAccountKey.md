@@ -14,15 +14,15 @@ Regenerates one of the access keys for the specified storage account.
 
 ### Regenerate1 (Default)
 ```
-New-AzStorageAccountKey -AccountName <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzStorageAccountKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-RegenerateKey <IStorageAccountRegenerateKeyParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### RegenerateExpanded1
 ```
-New-AzStorageAccountKey -AccountName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -KeyName <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzStorageAccountKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -KeyName <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RegenerateViaIdentityExpanded1
@@ -62,23 +62,6 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -AccountName
-The name of the storage account within the specified resource group.
-Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-
-```yaml
-Type: System.String
-Parameter Sets: Regenerate1, RegenerateExpanded1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -128,8 +111,26 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the storage account within the specified resource group.
+Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+
+```yaml
+Type: System.String
+Parameter Sets: Regenerate1, RegenerateExpanded1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -RegenerateKey
 The parameters used to regenerate the storage account key.
+To construct, see NOTES section for REGENERATEKEY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IStorageAccountRegenerateKeyParameters
@@ -225,6 +226,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IStorageAccountKey
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### REGENERATEKEY <IStorageAccountRegenerateKeyParameters>: The parameters used to regenerate the storage account key.
+  - `KeyName <String>`: The name of storage keys that want to be regenerated, possible values are key1, key2.
 
 ## RELATED LINKS
 

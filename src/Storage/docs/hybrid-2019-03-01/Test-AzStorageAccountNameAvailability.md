@@ -15,27 +15,29 @@ Checks that the storage account name is valid and is not already in use.
 ### Check1 (Default)
 ```
 Test-AzStorageAccountNameAvailability -SubscriptionId <String>
- [-AccountName <IStorageAccountCheckNameAvailabilityParameters>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Name <IStorageAccountCheckNameAvailabilityParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CheckExpanded1
 ```
-Test-AzStorageAccountNameAvailability -SubscriptionId <String> -Name <String> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzStorageAccountNameAvailability -SubscriptionId <String>
+ [-Name <IStorageAccountCheckNameAvailabilityParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CheckViaIdentityExpanded1
 ```
-Test-AzStorageAccountNameAvailability -InputObject <IStorageIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzStorageAccountNameAvailability -InputObject <IStorageIdentity>
+ [-Name <IStorageAccountCheckNameAvailabilityParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CheckViaIdentity1
 ```
 Test-AzStorageAccountNameAvailability -InputObject <IStorageIdentity>
- [-AccountName <IStorageAccountCheckNameAvailabilityParameters>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Name <IStorageAccountCheckNameAvailabilityParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,22 +64,6 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -AccountName
-The parameters used to check the availability of the storage account name.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IStorageAccountCheckNameAvailabilityParameters
-Parameter Sets: Check1, CheckViaIdentity1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -112,17 +98,18 @@ Dynamic: False
 ```
 
 ### -Name
-The storage account name.
+The parameters used to check the availability of the storage account name.
+To construct, see NOTES section for NAME properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: CheckExpanded1, CheckViaIdentityExpanded1
+Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IStorageAccountCheckNameAvailabilityParameters
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -193,6 +180,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Get-AzStorageAccountNameAvailability
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### NAME <IStorageAccountCheckNameAvailabilityParameters>: The parameters used to check the availability of the storage account name.
+  - `Name <String>`: The storage account name.
 
 ## RELATED LINKS
 

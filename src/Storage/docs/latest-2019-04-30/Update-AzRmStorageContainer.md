@@ -24,15 +24,15 @@ Update-AzRmStorageContainer -AccountName <String> -ContainerName <String> -Resou
 ### UpdateExpanded
 ```
 Update-AzRmStorageContainer -AccountName <String> -ContainerName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -ImmutabilityPeriodSinceCreationInDay <Int32> [-LegalHoldTag <ITagProperty[]>]
- [-Metadata <IContainerPropertiesMetadata>] [-PublicAccess <PublicAccess>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String> [-ImmutabilityPeriodSinceCreationInDay <Int32>] [-LegalHoldTag <ITagProperty[]>]
+ [-Metadata <Hashtable>] [-PublicAccess <PublicAccess>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzRmStorageContainer -InputObject <IStorageIdentity> -ImmutabilityPeriodSinceCreationInDay <Int32>
- [-LegalHoldTag <ITagProperty[]>] [-Metadata <IContainerPropertiesMetadata>] [-PublicAccess <PublicAccess>]
+Update-AzRmStorageContainer -InputObject <IStorageIdentity> [-ImmutabilityPeriodSinceCreationInDay <Int32>]
+ [-LegalHoldTag <ITagProperty[]>] [-Metadata <Hashtable>] [-PublicAccess <PublicAccess>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -88,6 +88,7 @@ Dynamic: False
 
 ### -BlobContainer
 Properties of the blob container, including Id, resource name, resource type, Etag.
+To construct, see NOTES section for BLOBCONTAINER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20180201.IBlobContainer
@@ -144,7 +145,7 @@ Type: System.Int32
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: 0
 Accept pipeline input: False
@@ -188,7 +189,7 @@ Dynamic: False
 A name-value pair to associate with the container as metadata.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20180201.IContainerPropertiesMetadata
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -296,6 +297,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20180201.IBlobContainer
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### BLOBCONTAINER <IBlobContainer>: Properties of the blob container, including Id, resource name, resource type, Etag.
+  - `ImmutabilityPeriodSinceCreationInDay <Int32>`: The immutability period for the blobs in the container since the policy creation, in days.
+  - `[LegalHoldTag <ITagProperty[]>]`: The list of LegalHold tags of a blob container.
+  - `[Metadata <IContainerPropertiesMetadata>]`: A name-value pair to associate with the container as metadata.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[PublicAccess <PublicAccess?>]`: Specifies whether data in the container may be accessed publicly and the level of access.
 
 ## RELATED LINKS
 

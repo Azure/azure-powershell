@@ -14,14 +14,14 @@ Deletes the managementpolicy associated with the specified storage account.
 
 ### Delete (Default)
 ```
-Remove-AzStorageAccountManagementPolicy -AccountName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzStorageAccountManagementPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzStorageAccountManagementPolicy -InputObject <IStorageIdentity> [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzStorageAccountManagementPolicy -InputObject <IStorageIdentity> [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,23 +48,6 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -AccountName
-The name of the storage account within the specified resource group.
-Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -98,8 +81,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the storage account within the specified resource group.
+Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -192,6 +192,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

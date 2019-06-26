@@ -18,14 +18,14 @@ Deleting a locked immutability policy is not allowed, only way is to delete the 
 ### Delete (Default)
 ```
 Remove-AzRmStorageContainerImmutabilityPolicy -AccountName <String> -ContainerName <String>
- -ResourceGroupName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -ResourceGroupName <String> -SubscriptionId <String> -IfMatch <String> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzRmStorageContainerImmutabilityPolicy -InputObject <IStorageIdentity> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzRmStorageContainerImmutabilityPolicy -InputObject <IStorageIdentity> -IfMatch <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,6 +100,24 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -IfMatch
+The entity state (ETag) version of the immutability policy to update.
+A value of "*" can be used to apply the operation only if the immutability policy already exists.
+If omitted, this operation will always be applied.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -201,6 +219,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20180201.IImmutabilityPolicy
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

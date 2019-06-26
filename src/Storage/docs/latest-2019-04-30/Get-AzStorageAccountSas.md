@@ -14,13 +14,13 @@ List SAS credentials of a storage account.
 
 ### List (Default)
 ```
-Get-AzStorageAccountSas -AccountName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzStorageAccountSas -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  [-Parameter <IAccountSasParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ListExpanded
 ```
-Get-AzStorageAccountSas -AccountName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzStorageAccountSas -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  -Permission <Permissions> -ResourceType <SignedResourceTypes> -Service <Services>
  -SharedAccessExpiryTime <DateTime> [-IPAddressOrRange <String>] [-KeyToSign <String>]
  [-Protocol <HttpProtocol>] [-SharedAccessStartTime <DateTime>] [-DefaultProfile <PSObject>] [-Confirm]
@@ -51,23 +51,6 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -AccountName
-The name of the storage account within the specified resource group.
-Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -117,8 +100,26 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the storage account within the specified resource group.
+Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 The parameters to list SAS credentials of a storage account.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IAccountSasParameters
@@ -310,6 +311,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IAccountSasParameters>: The parameters to list SAS credentials of a storage account.
+  - `Permission <Permissions>`: The signed permissions for the account SAS. Possible values include: Read (r), Write (w), Delete (d), List (l), Add (a), Create (c), Update (u) and Process (p).
+  - `ResourceType <SignedResourceTypes>`: The signed resource types that are accessible with the account SAS. Service (s): Access to service-level APIs; Container (c): Access to container-level APIs; Object (o): Access to object-level APIs for blobs, queue messages, table entities, and files.
+  - `Service <Services>`: The signed services accessible with the account SAS. Possible values include: Blob (b), Queue (q), Table (t), File (f).
+  - `SharedAccessExpiryTime <DateTime>`: The time at which the shared access signature becomes invalid.
+  - `[IPAddressOrRange <String>]`: An IP address or a range of IP addresses from which to accept requests.
+  - `[KeyToSign <String>]`: The key to sign the account SAS token with.
+  - `[Protocol <HttpProtocol?>]`: The protocol permitted for a request made with the account SAS.
+  - `[SharedAccessStartTime <DateTime?>]`: The time at which the SAS becomes valid.
 
 ## RELATED LINKS
 

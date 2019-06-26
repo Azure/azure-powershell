@@ -15,12 +15,12 @@ Deletes specified container under its account.
 ### Delete (Default)
 ```
 Remove-AzRmStorageContainer -AccountName <String> -ContainerName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzRmStorageContainer -InputObject <IStorageIdentity> [-PassThru] [-DefaultProfile <PSObject>]
+Remove-AzRmStorageContainer -InputObject <IStorageIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -117,7 +117,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -210,6 +210,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

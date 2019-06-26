@@ -203,6 +203,7 @@ Dynamic: False
 
 ### -Parameter
 Lease Container request schema.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.ILeaseContainerRequest
@@ -314,6 +315,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.ILeaseContainerResponse
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <ILeaseContainerRequest>: Lease Container request schema.
+  - `Action <String>`: Specifies the lease action. Can be one of the available actions.
+  - `[BreakPeriod <Int32?>]`: Optional. For a break action, proposed duration the lease should continue before it is broken, in seconds, between 0 and 60.
+  - `[LeaseDuration <Int32?>]`: Required for acquire. Specifies the duration of the lease, in seconds, or negative one (-1) for a lease that never expires.
+  - `[LeaseId <String>]`: Identifies the lease. Can be specified in any valid GUID string format.
+  - `[ProposedLeaseId <String>]`: Optional for acquire, required for change. Proposed lease ID, in a GUID string format.
 
 ## RELATED LINKS
 

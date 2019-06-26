@@ -69,8 +69,6 @@ function Get-AzStorageAccount_GetByName {
     )
     
     process {
-        $PSBoundParameters.Add("AccountName", $Name) | Out-Null
-        $PSBoundParameters.Remove("Name") | Out-Null
         Az.Storage.internal\Get-AzStorageAccountProperty @PSBoundParameters
     }
 }
