@@ -1,0 +1,200 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/ActionRules-Powershell-Test/providers/Microsoft.AlertsManagement/actionRules/ScenarioTest-Suppression-ActionRule?api-version=2019-05-05-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQ5MWRlMDUtZDc5MS00Y2ViLWI2ZGMtOTg4NjgyZGM3ZDcyL3Jlc291cmNlR3JvdXBzL0FjdGlvblJ1bGVzLVBvd2Vyc2hlbGwtVGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkFsZXJ0c01hbmFnZW1lbnQvYWN0aW9uUnVsZXMvU2NlbmFyaW9UZXN0LVN1cHByZXNzaW9uLUFjdGlvblJ1bGU/YXBpLXZlcnNpb249MjAxOS0wNS0wNS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"type\": \"Suppression\",\r\n    \"suppressionConfig\": {\r\n      \"recurrenceType\": \"Weekly\",\r\n      \"schedule\": {\r\n        \"startDate\": \"06/26/2018\",\r\n        \"endDate\": \"07/27/2018\",\r\n        \"startTime\": \"06:00:00\",\r\n        \"endTime\": \"06:00:00\",\r\n        \"recurrenceValues\": [\r\n          1,\r\n          4,\r\n          6\r\n        ]\r\n      }\r\n    },\r\n    \"scope\": {\r\n      \"scopeType\": \"ResourceGroup\",\r\n      \"values\": [\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab\",\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs\"\r\n      ]\r\n    },\r\n    \"conditions\": {\r\n      \"severity\": {\r\n        \"operator\": \"Equals\",\r\n        \"values\": [\r\n          \"Sev0\",\r\n          \"Sev1\"\r\n        ]\r\n      },\r\n      \"monitorCondition\": {\r\n        \"operator\": \"NotEquals\",\r\n        \"values\": [\r\n          \"Resolved\"\r\n        ]\r\n      }\r\n    },\r\n    \"description\": \"Test description\",\r\n    \"status\": \"Enabled\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"tags\": {}\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "05e865d2-bde4-440a-aa35-2d9acbdd5cab"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.AlertsManagement.AlertsManagementClient/27.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1032"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c2dbbd21-6355-42df-a1f5-5d75ab3b9106"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "bf8e66d4-920c-483c-874a-0a3387d222f4"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20190626T135146Z:bf8e66d4-920c-483c-874a-0a3387d222f4"
+        ],
+        "Date": [
+          "Wed, 26 Jun 2019 13:51:46 GMT"
+        ],
+        "Content-Length": [
+          "1062"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"conditions\": {\r\n      \"severity\": {\r\n        \"operator\": \"Equals\",\r\n        \"values\": [\r\n          \"Sev0\",\r\n          \"Sev1\"\r\n        ]\r\n      },\r\n      \"monitorCondition\": {\r\n        \"operator\": \"NotEquals\",\r\n        \"values\": [\r\n          \"Resolved\"\r\n        ]\r\n      }\r\n    },\r\n    \"status\": \"Enabled\",\r\n    \"type\": \"Suppression\",\r\n    \"scope\": {\r\n      \"scopeType\": \"ResourceGroup\",\r\n      \"values\": [\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab\",\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs\"\r\n      ]\r\n    },\r\n    \"suppressionConfig\": {\r\n      \"recurrenceType\": \"Weekly\",\r\n      \"schedule\": {\r\n        \"startDate\": \"06/26/2018\",\r\n        \"endDate\": \"07/27/2018\",\r\n        \"startTime\": \"06:00:00\",\r\n        \"endTime\": \"06:00:00\",\r\n        \"recurrenceValues\": [\r\n          1,\r\n          4,\r\n          6\r\n        ]\r\n      }\r\n    },\r\n    \"description\": \"Test description\",\r\n    \"createdAt\": \"2019-06-26T13:28:08.498092Z\",\r\n    \"createdBy\": \"mahja@microsoft.com\",\r\n    \"lastModifiedAt\": \"2019-06-26T13:51:46.2267526Z\",\r\n    \"lastModifiedBy\": \"User\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"id\": \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/ActionRules-Powershell-Test/providers/Microsoft.AlertsManagement/actionRules/ScenarioTest-Suppression-ActionRule\",\r\n  \"type\": \"Microsoft.AlertsManagement/actionRules\",\r\n  \"name\": \"ScenarioTest-Suppression-ActionRule\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/ActionRules-Powershell-Test/providers/Microsoft.AlertsManagement/actionRules/ScenarioTest-Suppression-ActionRule?api-version=2019-05-05-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQ5MWRlMDUtZDc5MS00Y2ViLWI2ZGMtOTg4NjgyZGM3ZDcyL3Jlc291cmNlR3JvdXBzL0FjdGlvblJ1bGVzLVBvd2Vyc2hlbGwtVGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkFsZXJ0c01hbmFnZW1lbnQvYWN0aW9uUnVsZXMvU2NlbmFyaW9UZXN0LVN1cHByZXNzaW9uLUFjdGlvblJ1bGU/YXBpLXZlcnNpb249MjAxOS0wNS0wNS1wcmV2aWV3",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"status\": \"Disabled\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c6bb3445-eb09-4522-b780-839ff642eb15"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.AlertsManagement.AlertsManagementClient/27.0.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "54"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "1ef121b8-8e37-41d5-953c-744233d7e4eb"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "feedc720-fee1-4613-a98f-2d856a45c3cd"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20190626T135149Z:feedc720-fee1-4613-a98f-2d856a45c3cd"
+        ],
+        "Date": [
+          "Wed, 26 Jun 2019 13:51:48 GMT"
+        ],
+        "Content-Length": [
+          "1063"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"conditions\": {\r\n      \"severity\": {\r\n        \"operator\": \"Equals\",\r\n        \"values\": [\r\n          \"Sev0\",\r\n          \"Sev1\"\r\n        ]\r\n      },\r\n      \"monitorCondition\": {\r\n        \"operator\": \"NotEquals\",\r\n        \"values\": [\r\n          \"Resolved\"\r\n        ]\r\n      }\r\n    },\r\n    \"status\": \"Disabled\",\r\n    \"type\": \"Suppression\",\r\n    \"scope\": {\r\n      \"scopeType\": \"ResourceGroup\",\r\n      \"values\": [\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab\",\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs\"\r\n      ]\r\n    },\r\n    \"suppressionConfig\": {\r\n      \"recurrenceType\": \"Weekly\",\r\n      \"schedule\": {\r\n        \"startDate\": \"06/26/2018\",\r\n        \"endDate\": \"07/27/2018\",\r\n        \"startTime\": \"06:00:00\",\r\n        \"endTime\": \"06:00:00\",\r\n        \"recurrenceValues\": [\r\n          1,\r\n          4,\r\n          6\r\n        ]\r\n      }\r\n    },\r\n    \"description\": \"Test description\",\r\n    \"createdAt\": \"2019-06-26T13:28:08.498092Z\",\r\n    \"createdBy\": \"mahja@microsoft.com\",\r\n    \"lastModifiedAt\": \"2019-06-26T13:51:48.7424399Z\",\r\n    \"lastModifiedBy\": \"User\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"id\": \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/ActionRules-Powershell-Test/providers/Microsoft.AlertsManagement/actionRules/ScenarioTest-Suppression-ActionRule\",\r\n  \"type\": \"Microsoft.AlertsManagement/actionRules\",\r\n  \"name\": \"ScenarioTest-Suppression-ActionRule\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/ActionRules-Powershell-Test/providers/Microsoft.AlertsManagement/actionRules/ScenarioTest-Suppression-ActionRule?api-version=2019-05-05-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQ5MWRlMDUtZDc5MS00Y2ViLWI2ZGMtOTg4NjgyZGM3ZDcyL3Jlc291cmNlR3JvdXBzL0FjdGlvblJ1bGVzLVBvd2Vyc2hlbGwtVGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkFsZXJ0c01hbmFnZW1lbnQvYWN0aW9uUnVsZXMvU2NlbmFyaW9UZXN0LVN1cHByZXNzaW9uLUFjdGlvblJ1bGU/YXBpLXZlcnNpb249MjAxOS0wNS0wNS1wcmV2aWV3",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fcf7a26a-e5a8-4f4b-8ed2-7dc4dd8fb690"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27414.06",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.AlertsManagement.AlertsManagementClient/27.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "76e1ef69-3d62-4c9b-a990-bf005ff1d660"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "9fd8c58f-6600-4681-86fc-63cacbeda0bb"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20190626T135152Z:9fd8c58f-6600-4681-86fc-63cacbeda0bb"
+        ],
+        "Date": [
+          "Wed, 26 Jun 2019 13:51:51 GMT"
+        ],
+        "Content-Length": [
+          "4"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "true",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "dd91de05-d791-4ceb-b6dc-988682dc7d72"
+  }
+}
