@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncGroupName": "System.String",
               "StorageSyncServiceName": "System.String",
