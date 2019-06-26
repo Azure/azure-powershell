@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix typo in `New-AzEventGridSubscription` documentation
 
 ## Version 1.2.0
 * Updated to use the 2019-06-01 API version.
