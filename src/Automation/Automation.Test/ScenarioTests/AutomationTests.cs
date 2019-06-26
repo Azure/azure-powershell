@@ -72,9 +72,11 @@ namespace Commands.Automation.Test
             TestRunner.RunTestScript("Test-AutomationStartUnpublishedRunbook -runbookPath ScenarioTests\\Resources\\Test-WorkFlowWithVariousParameters.ps1");
         }
 
-        [Fact(Skip = "Need x64 test framework.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
         [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestAutomationRunbookWithParameter()
         {
           TestRunner.RunTestScript("Test-RunbookWithParameter -runbookPath ScenarioTests\\Resources\\Test-PowershellRunbook.ps1 -type 'PowerShell' -parameters @{'nums'=@(1,2,3,4,5,6,7)} -expectedResult 28");
@@ -86,6 +88,16 @@ namespace Commands.Automation.Test
         public void TestAutomationPy2RunbookWithParameter()
         {
           TestRunner.RunTestScript("Test-RunbookWithParameter -runbookPath ScenarioTests\\Resources\\TestPythonRunbook.py -type 'Python2' -parameters @{'param1'='1';'param2'='2';'param3'='3';'param4'='4';'param5'='5';'param6'='6';'param7'='7'} -expectedResult 28");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestAutomationRunbookWithParameterAndWait()
+        {
+            TestRunner.RunTestScript("Test-RunbookWithParameterAndWait -runbookPath ScenarioTests\\Resources\\Test-PowershellRunbook.ps1 -type 'PowerShell' -parameters @{'nums'=@(1,2,3,4,5,6,7)} -expectedResult 28");
         }
     }
 }
