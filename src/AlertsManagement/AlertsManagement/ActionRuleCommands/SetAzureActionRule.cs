@@ -131,7 +131,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionRuleParameterSet,
                 HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Equals:Sev0,Sev1")]
-        [ValidateNotNullOrEmpty]
         public string SeverityCondition { get; set; }
 
         /// <summary>
@@ -140,7 +139,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionRuleParameterSet,
                 HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Equals:Platform,Log Analytics")]
-        [ValidateNotNullOrEmpty]
         public string MonitorServiceCondition { get; set; }
 
         /// <summary>
@@ -149,7 +147,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionRuleParameterSet,
                 HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. NotEquals:Resolved")]
-        [ValidateNotNullOrEmpty]
         public string MonitorCondition { get; set; }
 
         /// <summary>
@@ -158,7 +155,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionRuleParameterSet,
                 HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Contains:Virtual Machines,Storage Account")]
-        [ValidateNotNullOrEmpty]
         public string TargetResourceTypeCondition { get; set; }
 
         /// <summary>
@@ -167,7 +163,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionRuleParameterSet,
                 HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Equals:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/abvarma/providers/microsoft.insights/metricAlerts/test-mrmc-vm-abvarma")]
-        [ValidateNotNullOrEmpty]
         public string AlertRuleIdCondition { get; set; }
 
         /// <summary>
@@ -176,7 +171,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionRuleParameterSet,
                 HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Contains:Test Alert")]
-        [ValidateNotNullOrEmpty]
         public string DescriptionCondition { get; set; }
 
         /// <summary>
@@ -185,7 +179,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                 ParameterSetName = BySimplifiedFormatActionRuleParameterSet,
                 HelpMessage = "Expected format - {<operation>:<comma separated list of values>} For eg. Contains:smartgroups")]
-        [ValidateNotNullOrEmpty]
         public string AlertContextCondition { get; set; }
 
         /// <summary>
@@ -236,7 +229,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                  HelpMessage = "Reccurent values, if applicable." +
                     "In case of Weekly - [Saturday,Sunday]\n" +
                     "In case of Monthly - [1,3,5,30]\n")]
-        public string ReccurentValues { get; set; }
+        public List<int?> ReccurentValues { get; set; }
 
         /// <summary>
         /// Action rule simplified format : Action Group Id
@@ -266,28 +259,55 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                     break;
 
                 case BySimplifiedFormatActionRuleParameterSet:
-                    Conditions conditions = new Conditions(
-                            severity: string.IsNullOrWhiteSpace(SeverityCondition) ? new Condition(): new Condition(
+                    Conditions conditions = new Conditions();
+                    if (SeverityCondition != null)
+                    {
+                        conditions.Severity = new Condition(
                                 operatorProperty: SeverityCondition.Split(':')[0],
-                                values: SeverityCondition.Split(':')[1].Split(',')),
-                            monitorService: string.IsNullOrWhiteSpace(MonitorServiceCondition) ? new Condition() : new Condition(
+                                values: SeverityCondition.Split(':')[1].Split(','));
+                    }
+
+                    if (MonitorServiceCondition != null)
+                    {
+                        conditions.MonitorService = new Condition(
                                 operatorProperty: MonitorServiceCondition.Split(':')[0],
-                                values: MonitorServiceCondition.Split(':')[1].Split(',')),
-                            monitorCondition: string.IsNullOrWhiteSpace(MonitorCondition) ? new Condition() : new Condition(
+                                values: MonitorServiceCondition.Split(':')[1].Split(','));
+                    }
+
+                    if (MonitorCondition != null)
+                    {
+                        conditions.MonitorCondition = new Condition(
                                 operatorProperty: MonitorCondition.Split(':')[0],
-                                values: MonitorCondition.Split(':')[1].Split(',')),
-                            targetResourceType: string.IsNullOrWhiteSpace(TargetResourceTypeCondition) ? new Condition() : new Condition(
+                                values: MonitorCondition.Split(':')[1].Split(','));
+                    }
+
+                    if (TargetResourceTypeCondition != null)
+                    {
+                        conditions.MonitorCondition = new Condition(
                                 operatorProperty: TargetResourceTypeCondition.Split(':')[0],
-                                values: TargetResourceTypeCondition.Split(':')[1].Split(',')),
-                            description: string.IsNullOrWhiteSpace(DescriptionCondition) ? new Condition() : new Condition(
+                                values: TargetResourceTypeCondition.Split(':')[1].Split(','));
+                    }
+
+                    if (DescriptionCondition != null)
+                    {
+                        conditions.Description = new Condition(
                                 operatorProperty: DescriptionCondition.Split(':')[0],
-                                values: DescriptionCondition.Split(':')[1].Split(',')),
-                            alertRuleId: string.IsNullOrWhiteSpace(AlertRuleIdCondition) ? new Condition() : new Condition(
+                                values: DescriptionCondition.Split(':')[1].Split(','));
+                    }
+
+                    if (AlertRuleIdCondition != null)
+                    {
+                        conditions.AlertRuleId = new Condition(
                                 operatorProperty: AlertRuleIdCondition.Split(':')[0],
-                                values: AlertRuleIdCondition.Split(':')[1].Split(',')),
-                            alertContext: string.IsNullOrWhiteSpace(AlertContextCondition) ? new Condition() : new Condition(
+                                values: AlertRuleIdCondition.Split(':')[1].Split(','));
+                    }
+
+                    if (AlertContextCondition != null)
+                    {
+                        conditions.AlertContext = new Condition(
                                 operatorProperty: AlertContextCondition.Split(':')[0],
-                                values: AlertContextCondition.Split(':')[1].Split(',')));
+                                values: AlertContextCondition.Split(':')[1].Split(','));
+                    }
 
                     Scope scope = new Scope(
                             scopeType: ScopeType,
@@ -296,71 +316,72 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                     switch (ActionRuleType)
                     {
                         case "Suppression":
-                            List<int?> recurrentValues = new List<int?>();
-                            string[] tokens = ReccurentValues.Split(',');
-                            foreach (var token in tokens)
+                           
+                            SuppressionConfig config = new SuppressionConfig(recurrenceType: ReccurenceType);
+                            if (ReccurenceType != "Daily")
                             {
-                                int i;
-                                if (int.TryParse(token, out i))
+                                config.Schedule = new SuppressionSchedule(
+                                    startDate: SuppressionStartTime.Split(' ')[0],
+                                    endDate: SuppressionEndTime.Split(' ')[0],
+                                    startTime: SuppressionStartTime.Split(' ')[1],
+                                    endTime: SuppressionEndTime.Split(' ')[1]
+                                    );
+
+                                if (ReccurentValues.Count > 0)
                                 {
-                                    recurrentValues.Add(i);
-                                }
+                                    config.Schedule.RecurrenceValues = ReccurentValues;
+                                }                         
                             }
-                            
+
+                            // Create Action Rule
+                            ActionRule suppressionAR = new ActionRule(
+                                location: "Global",
+                                tags: new Dictionary<string, string>(),
+                                properties: new Suppression(
+                                    scope: scope,
+                                    conditions: conditions,
+                                    description: Description,
+                                    status: Status,
+                                    suppressionConfig: config
+                                )
+                            );
+
                             actionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
-                                resourceGroupName: ResourceGroupName,
-                                actionRuleName: Name,
-                                actionRule: new ActionRule(
-                                    location: "Global",
-                                    properties: new Suppression(
-                                        description: Description,
-                                        status: Status,
-                                        scope: scope,
-                                        conditions: conditions,
-                                        suppressionConfig: new SuppressionConfig(
-                                            recurrenceType: ReccurenceType,
-                                            schedule: new SuppressionSchedule(
-                                                startDate: SuppressionStartTime.Split(' ')[0],
-                                                endDate: SuppressionEndTime.Split(' ')[0],
-                                                startTime: SuppressionStartTime.Split(' ')[1],
-                                                endTime: SuppressionEndTime.Split(' ')[1],
-                                                recurrenceValues: recurrentValues
-                                                )
-                                            )
-                                        )
-                                    )
-                                ).Result.Body);
+                                resourceGroupName: ResourceGroupName, actionRuleName: Name, actionRule: suppressionAR).Result.Body);
                             break;
                         case "ActionGroup":
+                            // Create Action Rule
+                            ActionRule actionGroupAR = new ActionRule(
+                                location: "Global",
+                                tags: new Dictionary<string, string>(),
+                                properties: new ActionGroup(
+                                    scope: scope,
+                                    conditions: conditions,
+                                    actionGroupId: ActionGroupId,
+                                    description: Description,
+                                    status: Status
+                                )
+                            );
+
                             actionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
-                                resourceGroupName: ResourceGroupName,
-                                actionRuleName: Name,
-                                actionRule: new ActionRule(
-                                    location: "Global",
-                                    properties: new ActionGroup(
-                                        description: Description,
-                                        status: Status,
-                                        scope: scope,
-                                        conditions: conditions,
-                                        actionGroupId: ActionGroupId
-                                        )
-                                    )
-                                ).Result.Body);
+                                resourceGroupName: ResourceGroupName, actionRuleName: Name, actionRule: actionGroupAR).Result.Body);
                             break;
                         case "Diagnostics":
+                            // Create Action Rule
+                            ActionRule diagnosticsAR = new ActionRule(
+                                location: "Global",
+                                tags: new Dictionary<string, string>(),
+                                properties: new ActionGroup(
+                                    scope: scope,
+                                    conditions: conditions,
+                                    actionGroupId: ActionGroupId,
+                                    description: Description,
+                                    status: Status
+                                )
+                            );
+
                             actionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
-                                resourceGroupName: ResourceGroupName,
-                                actionRuleName: Name,
-                                actionRule: new ActionRule(
-                                    location: "Global",
-                                    properties: new Diagnostics(
-                                        description: Description,
-                                        status: Status,
-                                        scope: scope,
-                                        conditions: conditions
-                                        )
-                                    )
-                                ).Result.Body);
+                                resourceGroupName: ResourceGroupName, actionRuleName: Name, actionRule: diagnosticsAR).Result.Body);
                             break;
                     }
 
@@ -375,7 +396,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
             }
 
-            WriteObject(sendToPipeline: string.Format("Successfully created Action Rule : {0}.", Name));
             WriteObject(sendToPipeline: actionRule);
         }
     }

@@ -17,9 +17,6 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Microsoft.Azure.ServiceManagement.Common.Models;
-using Microsoft.Azure.Management.AlertsManagement.Models;
-using System.Collections.Generic;
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests
 {
@@ -42,9 +39,16 @@ namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateUpdateAndDeleteActionRule()
+        public void TestCreateUpdateAndDeleteSuppressionRule()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateUpdateAndDeleteActionRule");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateUpdateAndDeleteSuppressionRule");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateUpdateAndDeleteActionGroupRule()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateUpdateAndDeleteActionGroupRule");
         }
     }
 }
