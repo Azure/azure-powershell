@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub.Models;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubKey", SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubKey", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSharedAccessSignatureAuthorizationRule))]
     public class NewAzureRmIotHubKey : IotHubBaseCmdlet
     {
