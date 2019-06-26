@@ -73,6 +73,17 @@ directive:
       parameter-name: VmName
     set:
       parameter-name: Name
+  - where:
+      subject: Vmss
+      parameter-name: VMScaleSetName
+    set:
+      parameter-name: Name
+      alias: VMScaleSetName
+  - where:
+      subject: VmssExtension
+      parameter-name: VmssExtensionName
+    set:
+      parameter-name: ExtensionName
 # Fix Convert verb
   - where:
       verb: Convert
@@ -318,15 +329,20 @@ directive:
   - where:
       verb: Get
       subject: VMImage
-      parameter-name: Filter
+      parameter-name: Sku
     set:
-      parameter-name: FilterExpression
+      alias: Skus
   - where:
       verb: Remove
       subject: VmssExtension
       parameter-name: VmssExtensionName
     set:
       parameter-name: Name
+  - where:
+      subject: VmssExtension
+      parameter-name: ExtensionParameter
+    set:
+      parameter-name: VmssExtension
   - where:
       subject: VmssVM
       parameter-name: VMScaleSetVMReimageInput
@@ -337,6 +353,273 @@ directive:
       parameter-name: Parameter
     set:
       parameter-name: AvailabilitySet
+  - where:
+      parameter-name: ^DurationIn(Second|Millisecond|Minute|Hour|Day)$
+    set:
+      parameter-name: DurationIn$1s
+      alias: ${parameter-name}
+  - where:
+      parameter-name: ^PlatformFaultDomainCount$
+    set:
+      parameter-name: FaultDomainCount
+      alias: PlatformFaultDomainCount
+  - where:
+      parameter-name: ^PlatformUpdateDomainCount$
+    set:
+      parameter-name: UpdateDomainCount
+      alias: PlatformUpdateDomainCount
+  - where:
+      subject: .*Disk.*|.*Snapshot.*
+      parameter-name: CreationData(.+)
+    set:
+      parameter-name: $1
+  - where:
+      subject: .*Disk.*|.*Snapshot.*
+      parameter-name: Disk(.+)
+    set:
+      parameter-name: $1
+  - where:
+      subject: .*Disk.*|.*Snapshot.*
+      parameter-name: EncryptionSettingCollectionEnabled
+    set:
+      parameter-name: EncryptionEnabled
+  - where:
+      subject: .*Disk.*|.*Snapshot.*
+      parameter-name: EncryptionSettingCollectionEncryptionSetting
+    set:
+      parameter-name: EncryptionSetting
+  - where:  
+      subject: ProximityPlacementGroup
+      parameter-name: Parameter
+    set:
+      parameter-name: ProximityPlacementGroup
+  - where:
+      parameter-name: ^(.+)SizeGb$
+    set:
+      parameter-name: $1SizeInGb
+  - where:
+      parameter-name: ^SizeGb$
+    set:
+      parameter-name: SizeInGb
+  - where:
+      subject: VMExtension
+      parameter-name: ExtensionParameter
+    set:
+      parameter-name: VMExtension
+  
+  # model property renames
+  - where:
+      model-name: VirtualMachineSize
+      property-name: ^NumberOfCore$
+    set:
+      property-name: NumberOfCores
+  - where:
+      model-name: VirtualMachineInstanceView
+      property-name: ^MaintenanceRedeployStatus(.+)$
+    set:
+      property-name: $1
+  - where:
+      model-name: VirtualMachineInstanceView
+      property-name: ^VMAgentVmagentVersion$
+    set:
+      property-name: VMAgentVersion
+  - where:
+      property-name: AutomaticOSUpgradePropertyAutomaticOsupgradeSupported
+    set:
+      property-name: AutomaticOsupgradeSupported
+  - where:
+      model-name: RollingUpgradeStatusInfo
+      property-name: ^Policy(.+)$
+    set:
+      property-name: $1
+  - where:
+      model-name: RollingUpgradeStatusInfo
+      property-name: ^RunningStatusCode$
+    set:
+      property-name: StatusCode
+  - where:
+      model-name: RollingUpgradeStatusInfo
+      property-name: ^RunningStatus(.+)$
+    set:
+      property-name: $1
+  - where:
+      property-name: ^CapacityDefaultCapacity$
+    set:
+      property-name: DefaultCapacity
+  - where:
+      property-name: ^Capacity(Default|Maximum|Minimum)$
+    set:
+      property-name: $1Capacity
+  - where:
+      property-name: ^RestrictionInfo(Location|Zone)$
+    set:
+      property-name: $1
+  - where:
+      model-name: Gallery
+      property-name: IdentifierUniqueName
+    set:
+      property-name: UniqueName
+  - where:
+      property-name: ^(.+)SizeGb$
+    set:
+      property-name: $1SizeInGb
+  - where:
+      property-name: ^SizeGb$
+    set:
+      property-name: SizeInGb
+  - where:
+      model-name: .*Disk.*|.*Snapshot.*
+      property-name: CreationData(.+)
+    set:
+      property-name: $1
+  - where:
+      model-name: .*Disk.*|.*Snapshot.*
+      property-name: Disk(.+)
+    set:
+      property-name: $1
+  - where:
+      model-name: .*Disk.*|.*Snapshot.*
+      property-name: EncryptionSettingCollectionEnabled
+    set:
+      property-name: EncryptionEnabled
+  - where:
+      model-name: .*Disk.*|.*Snapshot.*
+      property-name: EncryptionSettingCollectionEncryptionSetting
+    set:
+      property-name: EncryptionSetting
+
+  - where:
+      property-name: ErrorInnererror
+    set:
+      property-name: InnerError
+  - where:
+      property-name: InnererrorErrorDetail
+    set:
+      property-name: InnerErrorDetail
+  - where:
+      property-name: InnererrorExceptionType
+    set:
+      property-name: InnerErrorExceptionType
+  - where:
+      property-name: ^(.+)Statu$
+    set:
+      property-name: $1Status
+  - where:
+      model-name: GalleryImage
+      property-name: RecommendedVCpU
+    set:
+      property-name: RecommendedVCpu
+  - where: 
+      model-name: GalleryImage.*
+      property-name: Identifier(.+)
+    set:
+      property-name: $1
+  - where: 
+      model-name: GalleryImage.*
+      property-name: VCpUsMin
+    set:
+      property-name: MinimumVCpu
+  - where: 
+      model-name: GalleryImage.*
+      property-name: VCpUsMax
+    set:
+      property-name: MaximumVCpu
+  - where: 
+      model-name: GalleryImageDefinition
+      property-name: MemoryMin
+    set:
+      property-name: MinimumMemory
+  - where: 
+      model-name: GalleryImageDefinition
+      property-name: MemoryMax
+    set:
+      property-name: MaximumMemory
+  - where:
+      model-name: VirtualMachine
+      property-name: HardwareProfileVMSize
+    set:
+      property-name: Size
+  - where:
+      property-name: AdditionalCapabilityUltraSsdEnabled
+    set:
+      property-name: UltraSsdEnabled
+  - where:
+      property-name: IdentityUserAssignedIdentity
+    set:
+      property-name: IdentityId
+  - where:
+      property-name: AutomaticOSUpgradePolicyEnableAutomaticOsupgrade
+    set:
+      property-name: AutomaticOSUpgrade
+  - where:
+      property-name: RollingUpgradePolicyMaxUnhealthyUpgradedInstancePercent
+    set:
+      property-name: MaxUnhealthyUpgradedInstancePercent
+  - where:
+      property-name: AutomaticOSUpgradePolicyDisableAutomaticRollback
+    set:
+      property-name: DisableAutoRollback
+  - where:
+      property-name: RollingUpgradePolicyMaxBatchInstancePercent
+    set:
+      property-name: MaxBatchInstancePercent
+  - where:
+      property-name: RollingUpgradePolicyMaxUnhealthyInstancePercent
+    set:
+      property-name: MaxUnhealthyInstancePercent
+  - where:
+      property-name: RollingUpgradePolicyPauseTimeBetweenBatch
+    set:
+      property-name: PauseTimeBetweenBatches
+  - where: 
+      model-name: GalleryImageVersion
+      property-name: ^PublishingProfile(.*)$
+    set:
+      property-name: $1
+  - where: 
+      property-name: GalleryImageName
+    set:
+      property-name: GalleryImageDefinitionName
+  - where:
+      model-name: VirtualMachineExtension
+      property-name: ExtensionImageName
+    set:
+      property-name: ImageName
+  - where:
+      model-name: VirtualMachineExtension
+      property-name: PropertiesType
+    set:
+      property-name: ExtensionType
+  - where:
+      model-name: VirtualMachineExtension
+      property-name: ForceUpdateTag
+    set:
+      property-name: ForceRerun
+  - where:
+      model-name: VirtualMachineScaleSetExtension
+      property-name: VMScaleSetName
+    set:
+      property-name: VmssName
+  - where:
+      model-name: VirtualMachineImage
+      property-name: Filter
+    set:
+      property-name: FilterExpression
+  - where:
+      model-name: VirtualMachineImage
+      property-name: Filter
+    set:
+      property-name: FilterExpression
+  - where:
+      model-name: VirtualMachineScaleSetVM
+      property-name: VMScaleSetVMReimageInput
+    set:
+      property-name: VirtualMachineScaleSetVM
+  - where:
+      model-name: VirtualMachineScaleSetExtension
+      property-name: Name
+    set:
+      property-name: ExtensionName
   # parameter alias not working
   - where:
       verb: Remove
@@ -475,8 +758,8 @@ directive:
       subject: VmssVMReimage
 # changing after variant change
   - where:
-      verb: Invoke
-      subject: VmssVMReimage
+      verb: Set
+      subject: VmssVM
     set:
       alias: Update-AzVmssVM
 # variant remove (flattened body parameters with no piping value)
@@ -520,14 +803,14 @@ directive:
       subject: Vmss
       variant: ^PowerOff\d?$|^PowerOffViaIdentity\d?$
     remove: true
-# Revove variants that cause piping problems
+# Set correct variants for PUT and PATCH verbs
   - where:
       verb: New
       variant: ^CreateViaIdentityExpanded\d?$|^CreateViaIdentity\d?$
     remove: true
   - where:
       verb: Set
-      variant: ^UpdateViaIdentity\d?$
+      variant: ^Update\d?$|^UpdateViaIdentity\d?$
     remove: true
   - where:
       verb: Update

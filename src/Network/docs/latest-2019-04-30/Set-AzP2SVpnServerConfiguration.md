@@ -14,43 +14,23 @@ Creates a P2SVpnServerConfiguration to associate with a VirtualWan if it doesn't
 
 ### Update (Default)
 ```
-Set-AzP2SVpnServerConfiguration -ResourceGroupName <String> -SubscriptionId <String> -VirtualWanName <String>
- [-Name <String>] [-P2SVpnServerConfigurationParameters <IP2SVpnServerConfiguration>]
+Set-AzP2SVpnServerConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -VirtualWanName <String> [-P2SVpnServerConfigurationParameter <IP2SVpnServerConfiguration>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Set-AzP2SVpnServerConfiguration -InputObject <INetworkIdentity> [-Name <String>] [-Id <String>]
- [-P2SVpnServerConfigRadiusClientRootCertificates <IP2SVpnServerConfigRadiusClientRootCertificate[]>]
- [-P2SVpnServerConfigRadiusServerRootCertificates <IP2SVpnServerConfigRadiusServerRootCertificate[]>]
- [-P2SVpnServerConfigVpnClientRevokedCertificates <IP2SVpnServerConfigVpnClientRevokedCertificate[]>]
- [-P2SVpnServerConfigVpnClientRootCertificates <IP2SVpnServerConfigVpnClientRootCertificate[]>]
- [-PropertiesEtag <String>] [-PropertiesName <String>] [-RadiusServerAddress <String>]
- [-RadiusServerSecret <String>] [-VpnClientIPsecPolicy <IIpsecPolicy[]>]
- [-VpnProtocol <VpnGatewayTunnelingProtocol[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Set-AzP2SVpnServerConfiguration -ResourceGroupName <String> -SubscriptionId <String> -VirtualWanName <String>
- -P2SVpnServerConfigurationName <String> [-Name <String>] [-Id <String>]
- [-P2SVpnServerConfigRadiusClientRootCertificates <IP2SVpnServerConfigRadiusClientRootCertificate[]>]
- [-P2SVpnServerConfigRadiusServerRootCertificates <IP2SVpnServerConfigRadiusServerRootCertificate[]>]
- [-P2SVpnServerConfigVpnClientRevokedCertificates <IP2SVpnServerConfigVpnClientRevokedCertificate[]>]
- [-P2SVpnServerConfigVpnClientRootCertificates <IP2SVpnServerConfigVpnClientRootCertificate[]>]
+Set-AzP2SVpnServerConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -VirtualWanName <String> -P2SVpnServerConfigurationName <String> [-Id <String>]
+ [-P2SVpnServerConfigRadiusClientRootCertificate <IP2SVpnServerConfigRadiusClientRootCertificate[]>]
+ [-P2SVpnServerConfigRadiusServerRootCertificate <IP2SVpnServerConfigRadiusServerRootCertificate[]>]
+ [-P2SVpnServerConfigVpnClientRevokedCertificate <IP2SVpnServerConfigVpnClientRevokedCertificate[]>]
+ [-P2SVpnServerConfigVpnClientRootCertificate <IP2SVpnServerConfigVpnClientRootCertificate[]>]
  [-PropertiesEtag <String>] [-PropertiesName <String>] [-RadiusServerAddress <String>]
  [-RadiusServerSecret <String>] [-VpnClientIPsecPolicy <IIpsecPolicy[]>]
  [-VpnProtocol <VpnGatewayTunnelingProtocol[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Set-AzP2SVpnServerConfiguration -InputObject <INetworkIdentity>
- [-P2SVpnServerConfigurationParameters <IP2SVpnServerConfiguration>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -115,40 +95,23 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -Name
-The name of the resource that is unique within a resource group.
-This name can be used to access the resource.
+The name of the P2SVpnServerConfiguration.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -159,12 +122,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -P2SVpnServerConfigRadiusClientRootCertificates
+### -P2SVpnServerConfigRadiusClientRootCertificate
 Radius client root certificate of P2SVpnServerConfiguration.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnServerConfigRadiusClientRootCertificate[]
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -175,12 +138,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -P2SVpnServerConfigRadiusServerRootCertificates
+### -P2SVpnServerConfigRadiusServerRootCertificate
 Radius Server root certificate of P2SVpnServerConfiguration.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnServerConfigRadiusServerRootCertificate[]
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -207,12 +170,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -P2SVpnServerConfigurationParameters
+### -P2SVpnServerConfigurationParameter
 P2SVpnServerConfiguration Resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnServerConfiguration
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: Update
 Aliases:
 
 Required: False
@@ -223,12 +186,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -P2SVpnServerConfigVpnClientRevokedCertificates
+### -P2SVpnServerConfigVpnClientRevokedCertificate
 VPN client revoked certificate of P2SVpnServerConfiguration.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnServerConfigVpnClientRevokedCertificate[]
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -239,12 +202,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -P2SVpnServerConfigVpnClientRootCertificates
+### -P2SVpnServerConfigVpnClientRootCertificate
 VPN client root certificate of P2SVpnServerConfiguration.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnServerConfigVpnClientRootCertificate[]
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -260,7 +223,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -277,7 +240,7 @@ This name can be used to access the resource along with Paren VirtualWan resourc
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -293,7 +256,7 @@ The radius server address property of the P2SVpnServerConfiguration resource for
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -309,7 +272,7 @@ The radius secret property of the P2SVpnServerConfiguration resource for point t
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -325,7 +288,7 @@ The resource group name of the VirtualWan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -342,7 +305,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -358,7 +321,7 @@ The name of the VirtualWan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -374,7 +337,7 @@ VpnClientIpsecPolicies for P2SVpnServerConfiguration.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IIpsecPolicy[]
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -390,7 +353,7 @@ VPN protocols for the P2SVpnServerConfiguration.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.VpnGatewayTunnelingProtocol[]
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -440,8 +403,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnServerConfiguration
-
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
 ## OUTPUTS
 

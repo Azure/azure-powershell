@@ -21,7 +21,7 @@ New-AzNatGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 ### CreateExpanded
 ```
 New-AzNatGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Etag <String>]
- [-Id <String>] [-IdleTimeoutInMinute <Int32>] [-Location <String>] [-ProvisioningState <String>]
+ [-Id <String>] [-IdleTimeoutInMinutes <Int32>] [-Location <String>] [-ProvisioningState <String>]
  [-PublicIPAddress <ISubResource[]>] [-PublicIPPrefix <ISubResource[]>] [-ResourceGuid <String>]
  [-SkuName <NatGatewaySkuName>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -30,7 +30,7 @@ New-AzNatGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 ### CreateViaIdentityExpanded
 ```
 New-AzNatGateway -InputObject <INetworkIdentity> [-Etag <String>] [-Id <String>]
- [-IdleTimeoutInMinute <Int32>] [-Location <String>] [-ProvisioningState <String>]
+ [-IdleTimeoutInMinutes <Int32>] [-Location <String>] [-ProvisioningState <String>]
  [-PublicIPAddress <ISubResource[]>] [-PublicIPPrefix <ISubResource[]>] [-ResourceGuid <String>]
  [-SkuName <NatGatewaySkuName>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IdleTimeoutInMinute
+### -IdleTimeoutInMinutes
 The idle timeout of the nat gateway.
 
 ```yaml
@@ -379,9 +379,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INatGateway
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INatGateway
 
 ## OUTPUTS
 

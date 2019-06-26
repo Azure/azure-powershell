@@ -21,13 +21,12 @@ New-AzDisk -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [
 ### CreateExpanded
 ```
 New-AzDisk -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -CreationDataCreateOption <DiskCreateOption> -EncryptionSettingCollectionEnabled -ImageReferenceId <String>
- -Location <String> [-CreationDataSourceResourceId <String>] [-CreationDataSourceUri <String>]
- [-CreationDataStorageAccountId <String>] [-DiskIopsReadWrite <Int64>] [-DiskMBpsReadWrite <Int32>]
- [-DiskSizeGb <Int32>] [-EncryptionSettingCollectionEncryptionSetting <IEncryptionSettingsElement[]>]
- [-HyperVGeneration <HyperVGeneration>] [-ImageReferenceLun <Int32>] [-OSType <OperatingSystemTypes>]
- [-SkuName <DiskStorageAccountTypes>] [-Tag <IResourceTags>] [-Zone <String[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -CreateOption <DiskCreateOption> -EncryptionEnabled -ImageReferenceId <String> -Location <String>
+ [-EncryptionSetting <IEncryptionSettingsElement[]>] [-HyperVGeneration <HyperVGeneration>]
+ [-ImageReferenceLun <Int32>] [-IopsReadWrite <Int64>] [-MBpsReadWrite <Int32>]
+ [-OSType <OperatingSystemTypes>] [-SizeInGb <Int32>] [-SkuName <DiskStorageAccountTypes>]
+ [-SourceResourceId <String>] [-SourceUri <String>] [-StorageAccountId <String>] [-Tag <IResourceTags>]
+ [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,7 +70,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -CreationDataCreateOption
+### -CreateOption
 This enumerates the possible sources of a disk's creation.
 
 ```yaml
@@ -80,55 +79,6 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -CreationDataSourceResourceId
-If createOption is Copy, this is the ARM id of the source snapshot or disk.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -CreationDataSourceUri
-If createOption is Import, this is the URI of a blob to be imported into a managed disk.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -CreationDataStorageAccountId
-If createOption is Import, the Azure Resource Manager identifier of the storage account containing the blob to import as a disk.
-Required only if the blob is in a different subscription
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -168,59 +118,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DiskIopsReadWrite
-The number of IOPS allowed for this disk; only settable for UltraSSD disks.
-One operation can transfer between 4k and 256k bytes.
-
-```yaml
-Type: System.Int64
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -DiskMBpsReadWrite
-The bandwidth allowed for this disk; only settable for UltraSSD disks.
-MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -DiskSizeGb
-If creationData.createOption is Empty, this field is mandatory and it indicates the size of the VHD to create.
-If this field is present for updates or creation with other options, it indicates a resize.
-Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -EncryptionSettingCollectionEnabled
+### -EncryptionEnabled
 Set this flag to true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable encryption.
 Set this flag to false and remove DiskEncryptionKey and KeyEncryptionKey to disable encryption.
 If EncryptionSettings is null in the request object, the existing settings remain unchanged.
@@ -238,7 +136,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -EncryptionSettingCollectionEncryptionSetting
+### -EncryptionSetting
 A collection of encryption settings, one for each disk volume.
 
 ```yaml
@@ -304,6 +202,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -IopsReadWrite
+The number of IOPS allowed for this disk; only settable for UltraSSD disks.
+One operation can transfer between 4k and 256k bytes.
+
+```yaml
+Type: System.Int64
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Location
 Resource location
 
@@ -315,6 +230,23 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -MBpsReadWrite
+The bandwidth allowed for this disk; only settable for UltraSSD disks.
+MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -371,11 +303,78 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -SizeInGb
+If creationData.createOption is Empty, this field is mandatory and it indicates the size of the VHD to create.
+If this field is present for updates or creation with other options, it indicates a resize.
+Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -SkuName
 The sku name.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.DiskStorageAccountTypes
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SourceResourceId
+If createOption is Copy, this is the ARM id of the source snapshot or disk.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SourceUri
+If createOption is Import, this is the URI of a blob to be imported into a managed disk.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -StorageAccountId
+If createOption is Import, the Azure Resource Manager identifier of the storage account containing the blob to import as a disk.
+Required only if the blob is in a different subscription
+
+```yaml
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 

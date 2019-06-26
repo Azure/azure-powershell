@@ -14,20 +14,20 @@ Create or update a VM scale set.
 
 ### Create (Default)
 ```
-New-AzVmss -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
+New-AzVmss -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-VirtualMachineScaleSet <IVirtualMachineScaleSet>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
-New-AzVmss -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String> -Location <String>
- [-AutoOSUpgradePolicyDisableAutoRollback] [-IdentityId <String[]>] [-IdentityType <ResourceIdentityType>]
- [-MaxBatchInstancePercent <Int32>] [-MaxUnhealthyInstancePercent <Int32>]
- [-MaxUnhealthyUpgradedInstancePercent <Int32>] [-Overprovision] [-PauseTimeBetweenBatches <String>]
- [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
- [-PlatformFaultDomainCount <Int32>] [-SinglePlacementGroup] [-SkuCapacity <Int64>] [-SkuName <String>]
- [-SkuTier <String>] [-Tag <IResourceTags>] [-UpgradePolicyAutomaticOSUpgrade]
+New-AzVmss -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
+ [-AutoOSUpgradePolicyDisableAutoRollback] [-FaultDomainCount <Int32>] [-IdentityId <String[]>]
+ [-IdentityType <ResourceIdentityType>] [-MaxBatchInstancePercent <Int32>]
+ [-MaxUnhealthyInstancePercent <Int32>] [-MaxUnhealthyUpgradedInstancePercent <Int32>] [-Overprovision]
+ [-PauseTimeBetweenBatches <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-SinglePlacementGroup] [-SkuCapacity <Int64>]
+ [-SkuName <String>] [-SkuTier <String>] [-Tag <IResourceTags>] [-UpgradePolicyAutomaticOSUpgrade]
  [-UpgradePolicyMode <UpgradeMode>] [-VirtualMachineProfile <IVirtualMachineScaleSetVMProfile>]
  [-Zone <String[]>] [-ZoneBalance] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -102,6 +102,22 @@ Aliases: AzureRMContext, AzureCredential
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -FaultDomainCount
+Fault Domain count for each placement group.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases: PlatformFaultDomainCount
+
+Required: False
+Position: Named
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -213,6 +229,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the VM scale set to create or update.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: VMScaleSetName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Overprovision
 Specifies whether the Virtual Machine Scale Set should be overprovisioned.
 
@@ -307,22 +339,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PlatformFaultDomainCount
-Fault Domain count for each placement group.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -502,22 +518,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VMScaleSetName
-The name of the VM scale set to create or update.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```

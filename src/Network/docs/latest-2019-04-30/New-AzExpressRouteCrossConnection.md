@@ -22,7 +22,7 @@ New-AzExpressRouteCrossConnection -CrossConnectionName <String> -ResourceGroupNa
 ### CreateExpanded
 ```
 New-AzExpressRouteCrossConnection -CrossConnectionName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-BandwidthInMbp <Int32>] [-ExpressRouteCircuitId <String>] [-Id <String>]
+ -SubscriptionId <String> [-BandwidthInMbps <Int32>] [-ExpressRouteCircuitId <String>] [-Id <String>]
  [-Location <String>] [-Peering <IExpressRouteCrossConnectionPeering[]>] [-PeeringLocation <String>]
  [-ServiceProviderNote <String>] [-ServiceProviderProvisioningState <ServiceProviderProvisioningState>]
  [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -30,7 +30,7 @@ New-AzExpressRouteCrossConnection -CrossConnectionName <String> -ResourceGroupNa
 
 ### CreateViaIdentityExpanded
 ```
-New-AzExpressRouteCrossConnection -InputObject <INetworkIdentity> [-BandwidthInMbp <Int32>]
+New-AzExpressRouteCrossConnection -InputObject <INetworkIdentity> [-BandwidthInMbps <Int32>]
  [-ExpressRouteCircuitId <String>] [-Id <String>] [-Location <String>]
  [-Peering <IExpressRouteCrossConnectionPeering[]>] [-PeeringLocation <String>]
  [-ServiceProviderNote <String>] [-ServiceProviderProvisioningState <ServiceProviderProvisioningState>]
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BandwidthInMbp
+### -BandwidthInMbps
 The circuit bandwidth In Mbps.
 
 ```yaml
@@ -363,9 +363,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCrossConnection
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCrossConnection
 
 ## OUTPUTS
 

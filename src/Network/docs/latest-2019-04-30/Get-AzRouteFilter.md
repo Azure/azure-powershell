@@ -19,8 +19,8 @@ Get-AzRouteFilter -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<Comm
 
 ### Get
 ```
-Get-AzRouteFilter -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-Expand <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzRouteFilter -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ [-ExpandResource <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
@@ -31,7 +31,7 @@ Get-AzRouteFilter -ResourceGroupName <String> -SubscriptionId <String[]> [-Defau
 
 ### GetViaIdentity
 ```
-Get-AzRouteFilter -InputObject <INetworkIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
+Get-AzRouteFilter -InputObject <INetworkIdentity> [-ExpandResource <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Expand
+### -ExpandResource
 Expands referenced express route bgp peering resources.
 
 ```yaml

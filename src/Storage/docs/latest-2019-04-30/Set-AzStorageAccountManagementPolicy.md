@@ -26,18 +26,6 @@ Set-AzStorageAccountManagementPolicy -AccountName <String> -ResourceGroupName <S
  [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
-```
-Set-AzStorageAccountManagementPolicy -InputObject <IStorageIdentity> -PolicyRule <IManagementPolicyRule[]>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Set-AzStorageAccountManagementPolicy -InputObject <IStorageIdentity> [-Property <IManagementPolicy>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Sets the managementpolicy to the specified storage account.
 
@@ -69,7 +57,7 @@ Storage account names must be between 3 and 24 characters in length and use numb
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -96,29 +84,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -PolicyRule
 The Storage Account ManagementPolicies Rules.
 See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20181101.IManagementPolicyRule[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -134,7 +106,7 @@ The Get Storage Account ManagementPolicies operation response.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20181101.IManagementPolicy
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: Update
 Aliases:
 
 Required: False
@@ -151,7 +123,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -167,7 +139,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -217,8 +189,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20181101.IManagementPolicy
-
-### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
 
 ## OUTPUTS
 

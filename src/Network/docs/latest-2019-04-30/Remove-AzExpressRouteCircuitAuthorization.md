@@ -14,9 +14,9 @@ Deletes the specified authorization from the specified express route circuit.
 
 ### Delete (Default)
 ```
-Remove-AzExpressRouteCircuitAuthorization -AuthorizationName <String> -CircuitName <String>
- -ResourceGroupName <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzExpressRouteCircuitAuthorization -CircuitName <String> -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -61,22 +61,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -AuthorizationName
-The name of the authorization.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -130,6 +114,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the authorization.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: AuthorizationName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -PassThru
 When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
 
@@ -152,7 +152,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
+Aliases: ExpressRouteCircuit
 
 Required: True
 Position: Named

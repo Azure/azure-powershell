@@ -23,14 +23,14 @@ Get-AzNetworkWatcherNextHop -NetworkWatcherName <String> -ResourceGroupName <Str
 ```
 Get-AzNetworkWatcherNextHop -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> -DestinationIPAddress <String> -SourceIPAddress <String>
- -TargetResourceId <String> [-TargetNicResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
+ -TargetVMResourceId <String> [-TargetNicResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentityExpanded
 ```
 Get-AzNetworkWatcherNextHop -InputObject <INetworkIdentity> -DestinationIPAddress <String>
- -SourceIPAddress <String> -TargetResourceId <String> [-TargetNicResourceId <String>]
+ -SourceIPAddress <String> -TargetVMResourceId <String> [-TargetNicResourceId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -151,7 +151,7 @@ Parameters that define the source and destination endpoint.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INextHopParameters
 Parameter Sets: Get, GetViaIdentity
-Aliases:
+Aliases: NetworkWatcher
 
 Required: False
 Position: Named
@@ -167,7 +167,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Get, GetExpanded
-Aliases:
+Aliases: Location
 
 Required: True
 Position: Named
@@ -218,7 +218,7 @@ Otherwise optional).
 ```yaml
 Type: System.String
 Parameter Sets: GetExpanded, GetViaIdentityExpanded
-Aliases:
+Aliases: TargetNetworkInterfaceId
 
 Required: False
 Position: Named
@@ -228,13 +228,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -TargetResourceId
+### -TargetVMResourceId
 The resource identifier of the target resource against which the action is to be performed.
 
 ```yaml
 Type: System.String
 Parameter Sets: GetExpanded, GetViaIdentityExpanded
-Aliases:
+Aliases: TargetVirtualMachineId
 
 Required: True
 Position: Named
@@ -282,9 +282,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INextHopParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INextHopParameters
 
 ## OUTPUTS
 

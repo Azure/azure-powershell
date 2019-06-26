@@ -23,14 +23,14 @@ Get-AzNetworkWatcherTopology -NetworkWatcherName <String> -ResourceGroupName <St
 ```
 Get-AzNetworkWatcherTopology -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> [-TargetResourceGroupName <String>] [-TargetSubnetId <String>]
- [-TargetVirtualNetworkId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-TargetVnetId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentityExpanded
 ```
 Get-AzNetworkWatcherTopology -InputObject <INetworkIdentity> [-TargetResourceGroupName <String>]
- [-TargetSubnetId <String>] [-TargetVirtualNetworkId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-TargetSubnetId <String>] [-TargetVnetId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -118,7 +118,7 @@ Parameters that define the representation of topology.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ITopologyParameters
 Parameter Sets: Get, GetViaIdentity
-Aliases:
+Aliases: NetworkWatcher
 
 Required: False
 Position: Named
@@ -134,7 +134,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Get, GetExpanded
-Aliases:
+Aliases: Location
 
 Required: True
 Position: Named
@@ -193,13 +193,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -TargetVirtualNetworkId
+### -TargetVnetId
 Resource ID.
 
 ```yaml
 Type: System.String
 Parameter Sets: GetExpanded, GetViaIdentityExpanded
-Aliases:
+Aliases: TargetVirtualNetworkId
 
 Required: False
 Position: Named
@@ -247,9 +247,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ITopologyParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ITopologyParameters
 
 ## OUTPUTS
 

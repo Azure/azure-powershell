@@ -91,7 +91,7 @@ Expected bandwidth in MBPS.
 ```yaml
 Type: System.Int32
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: ConnectionBandwidthInMbps
 
 Required: False
 Position: Named
@@ -187,7 +187,7 @@ The name of the gateway.
 ```yaml
 Type: System.String
 Parameter Sets: Create, CreateExpanded
-Aliases:
+Aliases: ParentResourceName
 
 Required: True
 Position: Named
@@ -268,7 +268,7 @@ Resource ID.
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: VpnSiteId
 
 Required: False
 Position: Named
@@ -284,7 +284,7 @@ The resource group name of the VpnGateway.
 ```yaml
 Type: System.String
 Parameter Sets: Create, CreateExpanded
-Aliases:
+Aliases: ParentObject, ParentResourceId, VpnSite
 
 Required: True
 Position: Named
@@ -429,9 +429,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnConnection
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnConnection
 
 ## OUTPUTS
 

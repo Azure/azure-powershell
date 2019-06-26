@@ -173,7 +173,7 @@ A valid image SKU.
 ```yaml
 Type: System.String
 Parameter Sets: List, Get
-Aliases:
+Aliases: Skus
 
 Required: True
 Position: Named

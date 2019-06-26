@@ -27,20 +27,6 @@ Set-AzNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -Subscript
  [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded1
-```
-Set-AzNetworkSecurityGroup -InputObject <INetworkIdentity> [-DefaultSecurityRule <ISecurityRule[]>]
- [-Etag <String>] [-Id <String>] [-Location <String>] [-ProvisioningState <String>] [-ResourceGuid <String>]
- [-SecurityRule <ISecurityRule[]>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity1
-```
-Set-AzNetworkSecurityGroup -InputObject <INetworkIdentity> [-Parameter <INetworkSecurityGroup>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Creates or updates a network security group in the specified resource group.
 
@@ -103,7 +89,7 @@ The default security rules of network security group.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule[]
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -119,7 +105,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -135,7 +121,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -146,28 +132,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateViaIdentity1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Location
 Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -183,7 +153,7 @@ The name of the network security group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: (All)
 Aliases: NetworkSecurityGroupName
 
 Required: True
@@ -199,7 +169,7 @@ NetworkSecurityGroup resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkSecurityGroup
-Parameter Sets: Update1, UpdateViaIdentity1
+Parameter Sets: Update1
 Aliases:
 
 Required: False
@@ -216,7 +186,7 @@ Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -232,7 +202,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -248,7 +218,7 @@ The resource GUID property of the network security group resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -264,7 +234,7 @@ A collection of security rules of the network security group.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule[]
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -281,7 +251,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -297,7 +267,7 @@ Resource tags.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -347,8 +317,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkSecurityGroup
-
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
 ## OUTPUTS
 

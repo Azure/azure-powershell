@@ -24,15 +24,15 @@ New-AzNetworkInterfaceTapConfiguration -NetworkInterfaceName <String> -ResourceG
 ```
 New-AzNetworkInterfaceTapConfiguration -NetworkInterfaceName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -TapConfigurationName <String> [-Etag <String>] [-Id <String>] [-Name <String>]
- [-VirtualNetworkTap <IVirtualNetworkTap>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-VnetTap <IVirtualNetworkTap>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzNetworkInterfaceTapConfiguration -InputObject <INetworkIdentity> [-Etag <String>] [-Id <String>]
- [-Name <String>] [-VirtualNetworkTap <IVirtualNetworkTap>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Name <String>] [-VnetTap <IVirtualNetworkTap>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -245,13 +245,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VirtualNetworkTap
+### -VnetTap
 The reference of the Virtual Network Tap resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetworkTap
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: VirtualNetworkTap
 
 Required: False
 Position: Named
@@ -299,9 +299,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterfaceTapConfiguration
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterfaceTapConfiguration
 
 ## OUTPUTS
 

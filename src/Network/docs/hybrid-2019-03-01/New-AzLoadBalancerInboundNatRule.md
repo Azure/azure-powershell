@@ -28,7 +28,7 @@ New-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -ResourceGroupName <
  [-BackendIPConfigurationId <String>] [-BackendIPConfigurationName <String>]
  [-BackendIPConfigurationPropertiesProvisioningState <String>] [-BackendPort <Int32>] [-EnableFloatingIP]
  [-Etag <String>] [-FrontendIPConfigurationId <String>] [-FrontendPort <Int32>] [-Id <String>]
- [-IdleTimeoutInMinute <Int32>] [-LoadBalancerBackendAddressPool <IBackendAddressPool[]>]
+ [-IdleTimeoutInMinutes <Int32>] [-LoadBalancerBackendAddressPool <IBackendAddressPool[]>]
  [-LoadBalancerInboundNatRule <IInboundNatRule[]>] [-Primary] [-PrivateIPAddress <String>]
  [-PrivateIPAddressVersion <IPVersion>] [-PrivateIPAllocationMethod <IPAllocationMethod>]
  [-Protocol <TransportProtocol>] [-ProvisioningState <String>] [-PublicIPAddress <IPublicIPAddress>]
@@ -43,7 +43,7 @@ New-AzLoadBalancerInboundNatRule -InputObject <INetworkIdentity> [-Name <String>
  [-BackendIPConfigurationId <String>] [-BackendIPConfigurationName <String>]
  [-BackendIPConfigurationPropertiesProvisioningState <String>] [-BackendPort <Int32>] [-EnableFloatingIP]
  [-Etag <String>] [-FrontendIPConfigurationId <String>] [-FrontendPort <Int32>] [-Id <String>]
- [-IdleTimeoutInMinute <Int32>] [-LoadBalancerBackendAddressPool <IBackendAddressPool[]>]
+ [-IdleTimeoutInMinutes <Int32>] [-LoadBalancerBackendAddressPool <IBackendAddressPool[]>]
  [-LoadBalancerInboundNatRule <IInboundNatRule[]>] [-Primary] [-PrivateIPAddress <String>]
  [-PrivateIPAddressVersion <IPVersion>] [-PrivateIPAllocationMethod <IPAllocationMethod>]
  [-Protocol <TransportProtocol>] [-ProvisioningState <String>] [-PublicIPAddress <IPublicIPAddress>]
@@ -312,7 +312,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IdleTimeoutInMinute
+### -IdleTimeoutInMinutes
 The timeout for the TCP idle connection.
 The value can be set between 4 and 30 minutes.
 The default value is 4 minutes.
@@ -428,8 +428,7 @@ Dynamic: False
 ```
 
 ### -Name
-Gets name of the resource that is unique within a resource group.
-This name can be used to access the resource.
+The name of the inbound nat rule.
 
 ```yaml
 Type: System.String
@@ -648,9 +647,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IInboundNatRule
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IInboundNatRule
 
 ## OUTPUTS
 

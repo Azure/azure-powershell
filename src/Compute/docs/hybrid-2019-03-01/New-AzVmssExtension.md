@@ -14,14 +14,14 @@ The operation to create or update an extension.
 
 ### Create (Default)
 ```
-New-AzVmssExtension -ResourceGroupName <String> -SubscriptionId <String> -VmssExtensionName <String>
- -VmssName <String> [-ExtensionParameter <IVirtualMachineScaleSetExtension>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVmssExtension -ExtensionName <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -VmssName <String> [-VmssExtension <IVirtualMachineScaleSetExtension>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
-New-AzVmssExtension -ResourceGroupName <String> -SubscriptionId <String> -VmssExtensionName <String>
+New-AzVmssExtension -ExtensionName <String> -ResourceGroupName <String> -SubscriptionId <String>
  -VmssName <String> [-AutoUpgradeMinorVersion] [-ForceUpdateTag <String>] [-Name <String>]
  [-ProtectedSetting <IVirtualMachineScaleSetExtensionPropertiesProtectedSettings>] [-Publisher <String>]
  [-Setting <IVirtualMachineScaleSetExtensionPropertiesSettings>] [-Type <String>]
@@ -103,18 +103,18 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ExtensionParameter
-Describes a Virtual Machine Scale Set Extension.
+### -ExtensionName
+The name of the VM scale set extension.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineScaleSetExtension
-Parameter Sets: Create
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -264,18 +264,18 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VmssExtensionName
-The name of the VM scale set extension.
+### -VmssExtension
+Describes a Virtual Machine Scale Set Extension.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineScaleSetExtension
+Parameter Sets: Create
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```

@@ -20,7 +20,7 @@ Get-AzNetworkSecurityGroup -SubscriptionId <String[]> [-DefaultProfile <PSObject
 ### Get
 ```
 Get-AzNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-ExpandResource <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
@@ -31,8 +31,8 @@ Get-AzNetworkSecurityGroup -ResourceGroupName <String> -SubscriptionId <String[]
 
 ### GetViaIdentity
 ```
-Get-AzNetworkSecurityGroup -InputObject <INetworkIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzNetworkSecurityGroup -InputObject <INetworkIdentity> [-ExpandResource <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Expand
+### -ExpandResource
 Expands referenced resources.
 
 ```yaml

@@ -89,6 +89,7 @@ directive:
       subject: ^Usage$
     set:
       subject: StorageUsage
+  # StorageAccount
   - where:
       subject: StorageAccount
       parameter-name: CustomDomainUseSubDomainName
@@ -102,11 +103,6 @@ directive:
       subject: StorageAccountFailover
   - where:
       verb: Update
-      subject: ^StorageAccount$
-    set:
-      verb: Set
-  - where:
-      verb: Set
       subject: ^StorageAccount$
       parameter-name: Keyvaultproperty(.*)
     set:

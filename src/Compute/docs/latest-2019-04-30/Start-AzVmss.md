@@ -14,9 +14,8 @@ Starts one or more virtual machines in a VM scale set.
 
 ### StartExpanded1 (Default)
 ```
-Start-AzVmss -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
- [-InstanceId <String[]>] [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Start-AzVmss -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-InstanceId <String[]>]
+ [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### StartViaIdentityExpanded1
@@ -115,6 +114,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the VM scale set.
+
+```yaml
+Type: System.String
+Parameter Sets: StartExpanded1
+Aliases: VMScaleSetName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -PassThru
 When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
 
@@ -150,22 +165,6 @@ Dynamic: False
 ### -SubscriptionId
 Subscription credentials which uniquely identify Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
-
-```yaml
-Type: System.String
-Parameter Sets: StartExpanded1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VMScaleSetName
-The name of the VM scale set.
 
 ```yaml
 Type: System.String

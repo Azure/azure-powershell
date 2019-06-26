@@ -22,7 +22,7 @@ Get-AzNetworkWatcherAvailableProvider -NetworkWatcherName <String> -ResourceGrou
 ### ListExpanded
 ```
 Get-AzNetworkWatcherAvailableProvider -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-AzureLocation <String[]>] [-City <String>] [-Country <String>] [-State <String>]
+ -SubscriptionId <String[]> [-City <String>] [-Country <String>] [-Location <String[]>] [-State <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -62,22 +62,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -AzureLocation
-A list of Azure regions.
-
-```yaml
-Type: System.String[]
-Parameter Sets: ListExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -131,6 +115,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Location
+A list of Azure regions.
+
+```yaml
+Type: System.String[]
+Parameter Sets: ListExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -NetworkWatcherName
 The name of the network watcher resource.
 
@@ -153,7 +153,7 @@ Constraints that determine the list of available Internet service providers.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAvailableProvidersListParameters
 Parameter Sets: List
-Aliases:
+Aliases: NetworkWatcher
 
 Required: False
 Position: Named
@@ -169,7 +169,7 @@ The name of the network watcher resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: NetworkWatcherLocation
 
 Required: True
 Position: Named
@@ -257,6 +257,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAvailableProvidersListCountry
 
 ## ALIASES
+
+### Get-AzNetworkWatcherReachabilityProvidersList
 
 ## RELATED LINKS
 

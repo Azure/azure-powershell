@@ -14,8 +14,8 @@ Deletes the specified tap configuration from the NetworkInterface.
 
 ### Delete (Default)
 ```
-Remove-AzNetworkInterfaceTapConfiguration -NetworkInterfaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -TapConfigurationName <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
+Remove-AzNetworkInterfaceTapConfiguration -Name <String> -NetworkInterfaceName <String>
+ -ResourceGroupName <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -98,6 +98,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the tap configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: TapConfigurationName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -NetworkInterfaceName
 The name of the network interface.
 
@@ -163,22 +179,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -TapConfigurationName
-The name of the tap configuration.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -224,6 +224,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+### Remove-AzNetworkInterfaceTapConfig
 
 ## RELATED LINKS
 

@@ -26,18 +26,6 @@ Set-AzDdosProtectionPlan -Name <String> -ResourceGroupName <String> -Subscriptio
  [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
-```
-Set-AzDdosProtectionPlan -InputObject <INetworkIdentity> [-Location <String>] [-Tag <IDdosProtectionPlanTags>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Set-AzDdosProtectionPlan -InputObject <INetworkIdentity> [-Parameter <IDdosProtectionPlan>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Creates or updates a DDoS protection plan.
 
@@ -95,28 +83,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Location
 Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -132,7 +104,7 @@ The name of the DDoS protection plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases: DdosProtectionPlanName
 
 Required: True
@@ -148,7 +120,7 @@ A DDoS protection plan in a resource group.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IDdosProtectionPlan
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: Update
 Aliases:
 
 Required: False
@@ -164,7 +136,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -181,7 +153,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -197,7 +169,7 @@ Resource tags.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IDdosProtectionPlanTags
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -247,8 +219,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IDdosProtectionPlan
-
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
 ## OUTPUTS
 

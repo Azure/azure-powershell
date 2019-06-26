@@ -28,18 +28,6 @@ Set-AzRmStorageContainerLegalHold -AccountName <String> -ContainerName <String> 
  [<CommonParameters>]
 ```
 
-### SetViaIdentityExpanded
-```
-Set-AzRmStorageContainerLegalHold -InputObject <IStorageIdentity> -Tag <String[]> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### SetViaIdentity
-```
-Set-AzRmStorageContainerLegalHold -InputObject <IStorageIdentity> [-LegalHold <ILegalHold>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Sets legal hold tags.
 Setting the same tag results in an idempotent operation.
@@ -73,7 +61,7 @@ Storage account names must be between 3 and 24 characters in length and use numb
 
 ```yaml
 Type: System.String
-Parameter Sets: Set, SetExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -91,7 +79,7 @@ Every dash (-) character must be immediately preceded and followed by a letter o
 
 ```yaml
 Type: System.String
-Parameter Sets: Set, SetExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -118,28 +106,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
-Parameter Sets: SetViaIdentityExpanded, SetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -LegalHold
 The LegalHold property of a blob container.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.ILegalHold
-Parameter Sets: Set, SetViaIdentity
+Parameter Sets: Set
 Aliases:
 
 Required: False
@@ -156,7 +128,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Set, SetExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -172,7 +144,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Set, SetExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -188,7 +160,7 @@ Each tag should be 3 to 23 alphanumeric characters and is normalized to lower ca
 
 ```yaml
 Type: System.String[]
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -238,8 +210,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.ILegalHold
-
-### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
 
 ## OUTPUTS
 

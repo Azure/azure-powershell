@@ -27,19 +27,6 @@ Set-AzInterfaceEndpoint -Name <String> -ResourceGroupName <String> -Subscription
  [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
-```
-Set-AzInterfaceEndpoint -InputObject <INetworkIdentity> [-EndpointServiceId <String>] [-Etag <String>]
- [-Fqdn <String>] [-Id <String>] [-Location <String>] [-Subnet <ISubnet>] [-Tag <IResourceTags>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Set-AzInterfaceEndpoint -InputObject <INetworkIdentity> [-Parameter <IInterfaceEndpoint>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Creates or updates an interface endpoint in the specified resource group.
 
@@ -102,7 +89,7 @@ A unique identifier of the service being referenced by the interface endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -118,7 +105,7 @@ Gets a unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -134,7 +121,7 @@ A first-party service's FQDN that is mapped to the private IP allocated via this
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -150,7 +137,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -161,28 +148,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Location
 Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -198,7 +169,7 @@ The name of the interface endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases: InterfaceEndpointName
 
 Required: True
@@ -214,7 +185,7 @@ Interface endpoint resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IInterfaceEndpoint
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: Update
 Aliases:
 
 Required: False
@@ -230,7 +201,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -246,7 +217,7 @@ The ID of the subnet from which the private IP will be allocated.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISubnet
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -263,7 +234,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -279,7 +250,7 @@ Resource tags.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -329,8 +300,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IInterfaceEndpoint
-
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
 ## OUTPUTS
 

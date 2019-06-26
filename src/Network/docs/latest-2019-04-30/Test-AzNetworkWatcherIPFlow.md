@@ -187,7 +187,7 @@ Parameters that define the IP flow to be verified.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVerificationIPFlowParameters
 Parameter Sets: Verify, VerifyViaIdentity
-Aliases:
+Aliases: NetworkWatcher
 
 Required: False
 Position: Named
@@ -254,7 +254,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Verify, VerifyExpanded
-Aliases:
+Aliases: Location
 
 Required: True
 Position: Named
@@ -353,9 +353,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVerificationIPFlowParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVerificationIPFlowParameters
 
 ## OUTPUTS
 

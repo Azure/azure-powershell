@@ -1,102 +1,5 @@
 ## Incorrect Cmdlets
 
-- Get-AzApplicationGatewayBackendHealth
-    - Name
-    - ExpandResource
-- Get-AzApplicationGatewaySslPredefinedPolicy
-    - Name
-- Get-AzExpressRouteCircuit
-    - Name
-- Get-AzExpressRouteCircuitArpTable
-    - ExpressRouteCircuitName
-    - PeeringType
-- Get-AzExpressRouteCircuitAuthorization
-    - Name
-    - ExpressRouteCircuit
-- Get-AzExpressRouteCircuitRouteTable
-    - ExpressRouteCircuitName
-    - PeeringType
-- Get-AzExpressRouteCircuitRouteTableSummary
-    - ExpressRouteCircuitName
-    - PeeringType
-- Get-AzExpressRouteConnection
-    - ExpressRouteGatewayObject
-    - ParentResourceId
-    - Name
-- Get-AzExpressRouteCrossConnection
-    - Name
-- Get-AzExpressRouteCrossConnectionArpTable
-    - ExpressRouteCrossConnection
-    - PeeringType
-- Get-AzExpressRouteCrossConnectionPeering
-    - Name
-    - ExpressRouteCrossConnection
-- Get-AzExpressRouteCrossConnectionRouteTable
-    - ExpressRouteCrossConnection
-    - PeeringType
-- Get-AzExpressRouteCrossConnectionRouteTableSummary
-    - ExpressRouteCrossConnection
-    - PeeringType
-- Get-AzLoadBalancer
-    - ExpandResource
-- Get-AzNetworkInterface
-    - VirtualMachineScaleSetName
-    - VirtualMachineIndex
-    - ExpandResource
-- Get-AzNetworkProfile
-    - ExpandResource
-- Get-AzNetworkSecurityGroup
-    - ExpandResource
-- Get-AzNetworkWatcher
-    - Location
-- Get-AzNetworkWatcherConnectionMonitor
-    - NetworkWatcher
-    - Location
-- Get-AzNetworkWatcherFlowLogStatus
-    - NetworkWatcher
-    - Location
-- Get-AzNetworkWatcherNextHop
-    - NetworkWatcher
-    - Location
-    - TargetVirtualMachineId
-    - TargetNetworkInterfaceId
-- Get-AzNetworkWatcherPacketCapture
-    - NetworkWatcher
-    - Location
-    - AsJob
-- Get-AzNetworkWatcherTopology
-    - NetworkWatcher
-    - Location
-- Get-AzNetworkWatcherTroubleshootingResult
-    - NetworkWatcher
-    - Location
-- Get-AzPublicIPAddress
-    - VirtualMachineScaleSetName
-    - VirtualMachineIndex
-    - NetworkInterfaceName
-    - IpConfigurationName
-    - ExpandResource
-- Get-AzRouteFilter
-    - ExpandResource
-- Get-AzRouteTable
-    - ExpandResource
-- Get-AzServiceEndpointPolicyDefinition
-    - ServiceEndpointPolicy
-- Get-AzVirtualNetwork
-    - ExpandResource
-- Get-AzVirtualNetworkGatewayConnectionSharedKey
-    - Name
-- Get-AzVirtualNetworkGatewaySupportedVpnDevice
-    - Name
-- Get-AzVirtualNetworkTap
-    - Name
-- Get-AzVpnConnection
-    - ParentResourceName
-    - ParentObject
-    - ParentResourceId
-    - Name
-- Get-AzVpnGateway
-    - Name
 - New-AzApplicationGateway
     - Sku
     - SslPolicy
@@ -117,42 +20,22 @@
     - EnableFIPS
     - UserAssignedIdentityId
     - Identity
-    - Force
-- New-AzApplicationSecurityGroup
-    - Force
 - New-AzExpressRouteCircuit
-    - Name
     - ServiceProviderName
     - PeeringLocation
     - BandwidthInMbps
     - ExpressRoutePort
-    - BandwidthInGbps
     - AllowClassicOperations
-    - Force
-- New-AzExpressRouteConnection
-    - ExpressRouteGatewayObject
-    - ParentResourceId
 - New-AzExpressRouteGateway
     - MinScaleUnits
     - MaxScaleUnits
     - VirtualHub
     - VirtualHubName
-- New-AzExpressRoutePort
-    - BandwidthInGbps
-    - Force
-- New-AzFirewall
-    - VirtualNetworkName
-    - PublicIpName
-    - Force
-- New-AzLoadBalancer
-    - Sku
-    - Force
 - New-AzLocalNetworkGateway
     - AddressPrefix
     - Asn
     - BgpPeeringAddress
     - PeerWeight
-    - Force
 - New-AzNetworkInterface
     - SubnetId
     - PublicIpAddressId
@@ -170,54 +53,22 @@
     - IpConfigurationName
     - DnsServer
     - InternalDnsNameLabel
-    - Force
-- New-AzNetworkProfile
-    - Force
-    - AsJob
-- New-AzNetworkSecurityGroup
-    - SecurityRules
-    - Force
-- New-AzNetworkWatcherConnectionMonitor
-    - NetworkWatcher
-    - MonitoringIntervalInSeconds
-    - ConfigureOnly
-    - Force
 - New-AzNetworkWatcherPacketCapture
-    - NetworkWatcher
-    - Location
     - TargetVirtualMachineId
     - StorageAccountId
     - StoragePath
     - LocalFilePath
-    - TimeLimitInSeconds
 - New-AzPublicIPAddress
-    - Sku
     - AllocationMethod
     - IpAddressVersion
     - DomainNameLabel
     - PublicIpPrefix
     - ReverseFqdn
-    - IdleTimeoutInMinutes
-    - Force
-- New-AzPublicIPPrefix
-    - Sku
-    - IpAddressVersion
-    - Force
-- New-AzRouteFilter
-    - Force
-- New-AzRouteTable
-    - Force
-- New-AzServiceEndpointPolicy
-    - Force
 - New-AzVirtualHub
     - VirtualWan
     - HubVnetConnection
     - RouteTable
-- New-AzVirtualNetwork
-    - AddressPrefix
-    - DnsServer
-    - Force
-- New-AzVirtualNetworkGateway
+- New-AzVnetGateway
     - IpConfigurations
     - EnableActiveActiveFeature
     - GatewaySku
@@ -229,32 +80,13 @@
     - VpnClientIpsecPolicy
     - Asn
     - PeerWeight
-    - Force
     - RadiusServerAddress
     - RadiusServerSecret
-- New-AzVirtualNetworkGatewayConnection
+- New-AzVnetGatewayConnection
     - LocalNetworkGateway2
     - Peer
-    - Force
     - UsePolicyBasedTrafficSelectors
     - IpsecPolicies
-- New-AzVirtualNetworkTap
-    - Name
-    - DestinationNetworkInterfaceIPConfiguration
-    - DestinationLoadBalancerFrontEndIPConfiguration
-    - Force
-- New-AzVpnConnection
-    - ParentResourceName
-    - ParentObject
-    - ParentResourceId
-    - VpnSite
-    - VpnSiteId
-    - ConnectionBandwidthInMbps
-- New-AzVpnGateway
-    - Name
-    - VirtualHub
-    - VirtualHubName
-    - VpnConnection
 - New-AzVpnSite
     - VirtualWanResourceGroupName
     - VirtualWanName
@@ -266,139 +98,59 @@
     - BgpAsn
     - BgpPeeringAddress
     - BgpPeeringWeight
-- Remove-AzApplicationGateway
-    - Force
-- Remove-AzApplicationSecurityGroup
-    - Force
-- Remove-AzExpressRouteCircuit
-    - Name
-    - Force
-- Remove-AzExpressRouteCircuitAuthorization
-    - Name
-    - ExpressRouteCircuit
-- Remove-AzExpressRouteConnection
-    - Name
-    - Force
-- Remove-AzExpressRouteCrossConnectionPeering
-    - ExpressRouteCrossConnection
-    - Name
-    - PeerAddressType
-    - Force
-- Remove-AzExpressRouteGateway
-    - Force
-- Remove-AzExpressRoutePort
-    - Force
-- Remove-AzFirewall
-    - Force
-- Remove-AzLoadBalancer
-    - Force
-- Remove-AzLocalNetworkGateway
-    - Force
-- Remove-AzNetworkInterface
-    - Force
-- Remove-AzNetworkProfile
-    - Force
-    - AsJob
-- Remove-AzNetworkSecurityGroup
-    - Force
-- Remove-AzNetworkWatcher
-    - NetworkWatcher
-    - Location
-- Remove-AzNetworkWatcherConnectionMonitor
-    - NetworkWatcher
-    - Location
-- Remove-AzNetworkWatcherPacketCapture
-    - NetworkWatcher
-    - Location
-- Remove-AzPublicIPAddress
-    - Force
-- Remove-AzPublicIPPrefix
-    - Force
-- Remove-AzRouteFilter
-    - Force
-- Remove-AzRouteTable
-    - Force
-- Remove-AzServiceEndpointPolicy
-    - Force
-- Remove-AzServiceEndpointPolicyDefinition
-    - ServiceEndpointPolicy
-- Remove-AzVirtualHub
-    - Force
-- Remove-AzVirtualNetwork
-    - Force
-- Remove-AzVirtualNetworkGateway
-    - Force
-- Remove-AzVirtualNetworkGatewayConnection
-    - Force
-- Remove-AzVirtualNetworkPeering
-    - Force
-- Remove-AzVirtualNetworkTap
-    - Name
-    - Force
-- Remove-AzVirtualWan
-    - Force
-- Remove-AzVpnConnection
-    - ParentResourceName
-    - Name
-    - Force
-- Remove-AzVpnGateway
-    - Name
-    - Force
-- Remove-AzVpnSite
-    - Force
-- Reset-AzVirtualNetworkGateway
-    - VirtualNetworkGateway
-- Reset-AzVirtualNetworkGatewayConnectionSharedKey
-    - Name
-    - Force
 - Set-AzApplicationGateway
     - ApplicationGateway
 - Set-AzExpressRouteCircuit
     - ExpressRouteCircuit
-- Set-AzExpressRouteCrossConnection
-    - ExpressRouteCrossConnection
-    - Name
-    - ServiceProviderNotes
-    - Peerings
-    - Force
+- Set-AzExpressRouteConnection
+    - InputObject
 - Set-AzExpressRouteGateway
+    - InputObject
     - MinScaleUnits
     - MaxScaleUnits
+- Set-AzExpressRoutePort
+    - ExpressRoutePort
 - Set-AzFirewall
     - AzureFirewall
 - Set-AzLoadBalancer
     - LoadBalancer
 - Set-AzLocalNetworkGateway
     - LocalNetworkGateway
-    - AddressPrefix
     - Asn
     - BgpPeeringAddress
     - PeerWeight
 - Set-AzNetworkInterface
     - NetworkInterface
+- Set-AzNetworkInterfaceTapConfiguration
+    - NetworkInterfaceTapConfig
 - Set-AzNetworkProfile
     - NetworkProfile
     - AsJob
 - Set-AzNetworkSecurityGroup
     - NetworkSecurityGroup
 - Set-AzNetworkWatcherConnectionMonitor
-    - NetworkWatcher
-    - MonitoringIntervalInSeconds
+    - InputObject
     - ConfigureOnly
+- Set-AzNetworkWatcherFlowLogConfiguration
+    - EnableFlowLog
+    - StorageAccountId
+    - EnableRetention
+    - RetentionInDays
+    - EnableTrafficAnalytics
+    - WorkspaceResourceId
+    - WorkspaceGUID
+    - WorkspaceLocation
+    - Workspace
+    - TrafficAnalyticsInterval
+- Set-AzPublicIPAddress
+    - PublicIpAddress
 - Set-AzPublicIPPrefix
     - PublicIpPrefix
 - Set-AzRouteFilter
     - RouteFilter
-    - Force
 - Set-AzRouteTable
     - RouteTable
-- Set-AzServiceEndpointPolicy
-    - ServiceEndpointPolicy
-- Set-AzServiceEndpointPolicyDefinition
-    - ServiceEndpointPolicy
-- Set-AzVirtualNetwork
-    - VirtualNetwork
-- Set-AzVirtualNetworkGateway
+- Set-AzVnetGateway
     - VirtualNetworkGateway
     - GatewaySku
     - GatewayDefaultSite
@@ -413,47 +165,50 @@
     - DisableActiveActiveFeature
     - RadiusServerAddress
     - RadiusServerSecret
-- Set-AzVirtualNetworkGatewayConnection
+- Set-AzVnetGatewayConnection
     - VirtualNetworkGatewayConnection
     - UsePolicyBasedTrafficSelectors
     - IpsecPolicies
-    - Force
-- Set-AzVirtualNetworkGatewayConnectionSharedKey
-    - Name
-    - Force
-- Set-AzVirtualNetworkPeering
+- Set-AzVnetGatewayVpnClientIPsecParameter
+    - VpnClientIPsecParameter
+    - InputObject
+- Set-AzVnetPeering
     - VirtualNetworkPeering
 - Start-AzApplicationGateway
     - ApplicationGateway
-- Start-AzNetworkWatcherConnectionMonitor
-    - NetworkWatcher
-    - Location
 - Stop-AzApplicationGateway
     - ApplicationGateway
-- Stop-AzNetworkWatcherConnectionMonitor
-    - NetworkWatcher
-    - Location
-- Stop-AzNetworkWatcherPacketCapture
-    - NetworkWatcher
-    - Location
 - Test-AzNetworkWatcherConnectivity
-    - NetworkWatcher
-    - Location
     - SourceId
     - DestinationId
     - ProtocolConfiguration
 - Test-AzNetworkWatcherIPFlow
-    - NetworkWatcher
-    - Location
     - TargetVirtualMachineId
     - TargetNetworkInterfaceId
 
 ## Correct Cmdlets
 
 - Get-AzApplicationGateway
+- Get-AzApplicationGatewayAvailableSslOption
+- Get-AzApplicationGatewayAvailableWafRuleSet
+- Get-AzApplicationGatewayBackendHealth
+- Get-AzApplicationGatewaySslPredefinedPolicy
+- Get-AzApplicationGatewayWafPolicy
 - Get-AzApplicationSecurityGroup
 - Get-AzBgpServiceCommunity
 - Get-AzDdosProtectionPlan
+- Get-AzExpressRouteCircuit
+- Get-AzExpressRouteCircuitArpTable
+- Get-AzExpressRouteCircuitAuthorization
+- Get-AzExpressRouteCircuitRouteTable
+- Get-AzExpressRouteCircuitRouteTableSummary
+- Get-AzExpressRouteCircuitStatistic
+- Get-AzExpressRouteConnection
+- Get-AzExpressRouteCrossConnection
+- Get-AzExpressRouteCrossConnectionArpTable
+- Get-AzExpressRouteCrossConnectionPeering
+- Get-AzExpressRouteCrossConnectionRouteTable
+- Get-AzExpressRouteCrossConnectionRouteTableSummary
 - Get-AzExpressRouteGateway
 - Get-AzExpressRoutePort
 - Get-AzExpressRoutePortsLocation
@@ -461,49 +216,135 @@
 - Get-AzFirewall
 - Get-AzFirewallFqdnTag
 - Get-AzInterfaceEndpoint
+- Get-AzLoadBalancer
 - Get-AzLocalNetworkGateway
+- Get-AzNetworkInterface
+- Get-AzNetworkInterfaceEffectiveNetworkSecurityGroup
+- Get-AzNetworkInterfaceEffectiveRouteTable
+- Get-AzNetworkInterfaceTapConfiguration
+- Get-AzNetworkProfile
+- Get-AzNetworkSecurityGroup
 - Get-AzNetworkUsage
+- Get-AzNetworkWatcher
+- Get-AzNetworkWatcherAvailableProvider
+- Get-AzNetworkWatcherConnectionMonitor
+- Get-AzNetworkWatcherConnectionMonitorState
+- Get-AzNetworkWatcherFlowLogStatus
+- Get-AzNetworkWatcherNetworkConfigurationDiagnostic
+- Get-AzNetworkWatcherNextHop
+- Get-AzNetworkWatcherPacketCapture
+- Get-AzNetworkWatcherReachabilityReport
+- Get-AzNetworkWatcherTopology
+- Get-AzNetworkWatcherTroubleshootingResult
+- Get-AzPublicIPAddress
 - Get-AzPublicIPPrefix
+- Get-AzRouteFilter
+- Get-AzRouteTable
 - Get-AzServiceEndpointPolicy
+- Get-AzServiceEndpointPolicyDefinition
 - Get-AzVirtualHub
-- Get-AzVirtualNetworkGateway
-- Get-AzVirtualNetworkGatewayAdvertisedRoute
-- Get-AzVirtualNetworkGatewayBgpPeerStatus
-- Get-AzVirtualNetworkGatewayConnection
-- Get-AzVirtualNetworkGatewayLearnedRoute
-- Get-AzVirtualNetworkPeering
+- Get-AzVirtualHubVnetConnection
 - Get-AzVirtualWan
+- Get-AzVnet
+- Get-AzVnetAvailableEndpointService
+- Get-AzVnetAvailableSubnetDelegation
+- Get-AzVnetGateway
+- Get-AzVnetGatewayAdvertisedRoute
+- Get-AzVnetGatewayBgpPeerStatus
+- Get-AzVnetGatewayConnection
+- Get-AzVnetGatewayConnectionSharedKey
+- Get-AzVnetGatewayLearnedRoute
+- Get-AzVnetGatewaySupportedVpnDevice
+- Get-AzVnetGatewayVpnClientIPsecParameter
+- Get-AzVnetGatewayVpnDeviceConfigurationScript
+- Get-AzVnetPeering
+- Get-AzVnetTap
+- Get-AzVnetUsage
+- Get-AzVpnConnection
+- Get-AzVpnGateway
 - Get-AzVpnSite
+- New-AzApplicationSecurityGroup
 - New-AzDdosProtectionPlan
 - New-AzExpressRouteCircuitAuthorization
+- New-AzExpressRouteConnection
+- New-AzExpressRoutePort
+- New-AzFirewall
+- New-AzLoadBalancer
+- New-AzNetworkProfile
+- New-AzNetworkSecurityGroup
 - New-AzNetworkWatcher
+- New-AzNetworkWatcherConnectionMonitor
+- New-AzPublicIPPrefix
+- New-AzRouteFilter
+- New-AzRouteTable
+- New-AzServiceEndpointPolicy
 - New-AzServiceEndpointPolicyDefinition
 - New-AzVirtualWan
+- New-AzVnet
+- New-AzVnetGatewayVpnClientPackage
+- New-AzVnetTap
+- New-AzVpnConnection
+- New-AzVpnGateway
+- Remove-AzApplicationGateway
+- Remove-AzApplicationSecurityGroup
 - Remove-AzDdosProtectionPlan
-- Set-AzExpressRouteConnection
-- Set-AzExpressRoutePort
-- Set-AzPublicIPAddress
-- Set-AzVirtualNetworkTap
+- Remove-AzExpressRouteCircuit
+- Remove-AzExpressRouteCircuitAuthorization
+- Remove-AzExpressRouteConnection
+- Remove-AzExpressRouteCrossConnectionPeering
+- Remove-AzExpressRouteGateway
+- Remove-AzExpressRoutePort
+- Remove-AzFirewall
+- Remove-AzLoadBalancer
+- Remove-AzLocalNetworkGateway
+- Remove-AzNetworkInterface
+- Remove-AzNetworkInterfaceTapConfiguration
+- Remove-AzNetworkProfile
+- Remove-AzNetworkSecurityGroup
+- Remove-AzNetworkWatcher
+- Remove-AzNetworkWatcherConnectionMonitor
+- Remove-AzNetworkWatcherPacketCapture
+- Remove-AzPublicIPAddress
+- Remove-AzPublicIPPrefix
+- Remove-AzRouteFilter
+- Remove-AzRouteTable
+- Remove-AzServiceEndpointPolicy
+- Remove-AzServiceEndpointPolicyDefinition
+- Remove-AzVirtualHub
+- Remove-AzVirtualWan
+- Remove-AzVnet
+- Remove-AzVnetGateway
+- Remove-AzVnetGatewayConnection
+- Remove-AzVnetPeering
+- Remove-AzVnetTap
+- Remove-AzVpnConnection
+- Remove-AzVpnGateway
+- Remove-AzVpnSite
+- Reset-AzVnetGateway
+- Reset-AzVnetGatewayConnectionSharedKey
+- Set-AzExpressRouteCrossConnection
+- Set-AzServiceEndpointPolicy
+- Set-AzServiceEndpointPolicyDefinition
+- Set-AzVnet
+- Set-AzVnetGatewayConnectionSharedKey
+- Set-AzVnetTap
+- Start-AzNetworkWatcherConnectionMonitor
+- Start-AzNetworkWatcherTroubleshooting
+- Stop-AzNetworkWatcherConnectionMonitor
+- Stop-AzNetworkWatcherPacketCapture
+- Test-AzDnsNameAvailability
+- Test-AzDummy
+- Test-AzVnetIPAddressAvailability
 
 ## New Cmdlets
 
-- Get-AzApplicationGatewayAvailableRequestHeader
-- Get-AzApplicationGatewayAvailableResponseHeader
-- Get-AzApplicationGatewayAvailableServerVariable
-- Get-AzApplicationGatewayAvailableSslOption
 - Get-AzApplicationGatewayAvailableSslPredefinedPolicy
-- Get-AzApplicationGatewayAvailableWafRuleSet
 - Get-AzApplicationGatewayBackendHealthOnDemand
-- Get-AzAvailableEndpointService
-- Get-AzAvailableVirtualNetworkSubnetDelegation
 - Get-AzDdosCustomPolicy
 - Get-AzDefaultSecurityRule
 - Get-AzExpressRouteCircuitConnection
 - Get-AzExpressRouteCircuitPeering
-- Get-AzExpressRouteCircuitPeeringStat
-- Get-AzExpressRouteCircuitStat
 - Get-AzExpressRouteLink
-- Get-AzHubVirtualNetworkConnection
 - Get-AzLoadBalancerBackendAddressPool
 - Get-AzLoadBalancerFrontendIPConfiguration
 - Get-AzLoadBalancerInboundNatRule
@@ -512,36 +353,20 @@
 - Get-AzLoadBalancerOutboundRule
 - Get-AzLoadBalancerProbe
 - Get-AzNatGateway
-- Get-AzNetworkInterfaceEffectiveNetworkSecurityGroup
-- Get-AzNetworkInterfaceEffectiveRouteTable
 - Get-AzNetworkInterfaceIPConfiguration
 - Get-AzNetworkInterfaceLoadBalancer
-- Get-AzNetworkInterfaceTapConfiguration
 - Get-AzNetworkSecurityRule
-- Get-AzNetworkWatcherAvailableProvider
-- Get-AzNetworkWatcherAzureReachabilityReport
-- Get-AzNetworkWatcherConnectionMonitorState
-- Get-AzNetworkWatcherNetworkConfigurationDiagnostic
-- Get-AzNetworkWatcherTroubleshooting
 - Get-AzNetworkWatcherVMSecurityRule
 - Get-AzP2SVpnGateway
 - Get-AzP2SVpnServerConfiguration
 - Get-AzPeerExpressRouteCircuitConnection
 - Get-AzRouteFilterRule
 - Get-AzRouteTableRoute
-- Get-AzVirtualNetworkGatewayVpnClientIPsecParameter
-- Get-AzVirtualNetworkGatewayVpnDeviceConfigurationScript
-- Get-AzVirtualNetworkGatewayVpnProfilePackageUrl
-- Get-AzVirtualNetworkSubnet
-- Get-AzVirtualNetworkUsage
 - Get-AzVirtualWanSupportedSecurityProvider
-- Get-AzVmssIPConfiguration
-- Get-AzVmssNetworkInterface
-- Get-AzVmssPublicIPaddress
-- Get-AzVmssVMNetworkInterface
-- Get-AzVmssVMPublicIPAddress
+- Get-AzVnetGatewayVpnProfilePackageUrl
+- Get-AzVnetSubnet
 - Get-AzVpnSiteConfiguration
-- Get-AzWebApplicationFirewallPolicy
+- New-AzApplicationGatewayWafPolicy
 - New-AzDdosCustomPolicy
 - New-AzExpressRouteCircuitConnection
 - New-AzExpressRouteCircuitPeering
@@ -557,26 +382,24 @@
 - New-AzP2SVpnServerConfiguration
 - New-AzRouteFilterRule
 - New-AzRouteTableRoute
-- New-AzVirtualNetworkGatewayVpnClientPackage
-- New-AzVirtualNetworkGatewayVpnProfile
-- New-AzVirtualNetworkPeering
-- New-AzVirtualNetworkSubnet
-- New-AzWebApplicationFirewallPolicy
+- New-AzVnetGatewayVpnProfile
+- New-AzVnetPeering
+- New-AzVnetSubnet
+- Remove-AzApplicationGatewayWafPolicy
 - Remove-AzDdosCustomPolicy
 - Remove-AzExpressRouteCircuitConnection
 - Remove-AzExpressRouteCircuitPeering
 - Remove-AzInterfaceEndpoint
 - Remove-AzLoadBalancerInboundNatRule
 - Remove-AzNatGateway
-- Remove-AzNetworkInterfaceTapConfiguration
 - Remove-AzNetworkSecurityRule
 - Remove-AzP2SVpnGateway
 - Remove-AzP2SVpnServerConfiguration
 - Remove-AzRouteFilterRule
 - Remove-AzRouteTableRoute
-- Remove-AzVirtualNetworkSubnet
-- Remove-AzWebApplicationFirewallPolicy
-- Reset-AzVirtualNetworkGatewayVpnClientSharedKey
+- Remove-AzVnetSubnet
+- Reset-AzVnetGatewayVpnClientSharedKey
+- Set-AzApplicationGatewayWafPolicy
 - Set-AzApplicationSecurityGroup
 - Set-AzDdosCustomPolicy
 - Set-AzDdosProtectionPlan
@@ -587,290 +410,28 @@
 - Set-AzInterfaceEndpoint
 - Set-AzLoadBalancerInboundNatRule
 - Set-AzNatGateway
-- Set-AzNetworkInterfaceTapConfiguration
 - Set-AzNetworkSecurityRule
 - Set-AzNetworkWatcher
-- Set-AzNetworkWatcherFlowLogConfiguration
 - Set-AzP2SVpnGateway
 - Set-AzP2SVpnServerConfiguration
 - Set-AzRouteFilterRule
 - Set-AzRouteTableRoute
 - Set-AzVirtualHub
-- Set-AzVirtualNetworkGatewayVpnClientIPsecParameter
-- Set-AzVirtualNetworkSubnet
-- Set-AzVirtualNetworkSubnetNetworkPolicy
 - Set-AzVirtualWan
+- Set-AzVnetSubnet
+- Set-AzVnetSubnetNetworkPolicy
 - Set-AzVpnConnection
 - Set-AzVpnGateway
 - Set-AzVpnSite
-- Set-AzWebApplicationFirewallPolicy
-- Test-AzDnsNameAvailability
-- Test-AzVirtualNetworkIPAddressAvailability
 - Update-AzRouteFilter
 - Update-AzRouteFilterRule
 - Update-AzServiceEndpointPolicy
 
 ## Missing Cmdlets
 
-- Add-AzApplicationGatewayAuthenticationCertificate
-- Add-AzApplicationGatewayBackendAddressPool
-- Add-AzApplicationGatewayBackendHttpSettings
-- Add-AzApplicationGatewayCustomError
-- Add-AzApplicationGatewayFrontendIPConfig
-- Add-AzApplicationGatewayFrontendPort
-- Add-AzApplicationGatewayHttpListener
-- Add-AzApplicationGatewayHttpListenerCustomError
-- Add-AzApplicationGatewayIPConfiguration
-- Add-AzApplicationGatewayProbeConfig
-- Add-AzApplicationGatewayRedirectConfiguration
-- Add-AzApplicationGatewayRequestRoutingRule
-- Add-AzApplicationGatewayRewriteRuleSet
-- Add-AzApplicationGatewaySslCertificate
-- Add-AzApplicationGatewayTrustedRootCertificate
-- Add-AzApplicationGatewayUrlPathMapConfig
-- Add-AzDelegation
-- Add-AzExpressRouteCircuitAuthorization
-- Add-AzExpressRouteCircuitConnectionConfig
-- Add-AzExpressRouteCircuitPeeringConfig
-- Add-AzExpressRouteCrossConnectionPeering
-- Add-AzLoadBalancerBackendAddressPoolConfig
-- Add-AzLoadBalancerFrontendIpConfig
-- Add-AzLoadBalancerInboundNatPoolConfig
-- Add-AzLoadBalancerInboundNatRuleConfig
-- Add-AzLoadBalancerOutboundRuleConfig
-- Add-AzLoadBalancerProbeConfig
-- Add-AzLoadBalancerRuleConfig
-- Add-AzNetworkInterfaceIpConfig
-- Add-AzNetworkInterfaceTapConfig
-- Add-AzNetworkSecurityRuleConfig
-- Add-AzRouteConfig
-- Add-AzRouteFilterRuleConfig
-- Add-AzServiceEndpointPolicyDefinition
-- Add-AzVirtualNetworkGatewayIpConfig
-- Add-AzVirtualNetworkPeering
-- Add-AzVirtualNetworkSubnetConfig
-- Add-AzVpnClientRevokedCertificate
-- Add-AzVpnClientRootCertificate
-- Get-AzApplicationGatewayAuthenticationCertificate
-- Get-AzApplicationGatewayAutoscaleConfiguration
 - Get-AzApplicationGatewayAvailableServerVariableAndHeader
-- Get-AzApplicationGatewayAvailableSslOptions
-- Get-AzApplicationGatewayAvailableWafRuleSets
-- Get-AzApplicationGatewayBackendAddressPool
-- Get-AzApplicationGatewayBackendHttpSettings
-- Get-AzApplicationGatewayConnectionDraining
-- Get-AzApplicationGatewayCustomError
-- Get-AzApplicationGatewayFirewallPolicy
-- Get-AzApplicationGatewayFrontendIPConfig
-- Get-AzApplicationGatewayFrontendPort
-- Get-AzApplicationGatewayHttpListener
-- Get-AzApplicationGatewayHttpListenerCustomError
-- Get-AzApplicationGatewayIdentity
-- Get-AzApplicationGatewayIPConfiguration
-- Get-AzApplicationGatewayProbeConfig
-- Get-AzApplicationGatewayRedirectConfiguration
-- Get-AzApplicationGatewayRequestRoutingRule
-- Get-AzApplicationGatewayRewriteRuleSet
-- Get-AzApplicationGatewaySku
-- Get-AzApplicationGatewaySslCertificate
-- Get-AzApplicationGatewaySslPolicy
-- Get-AzApplicationGatewayTrustedRootCertificate
-- Get-AzApplicationGatewayUrlPathMapConfig
-- Get-AzApplicationGatewayWebApplicationFirewallConfiguration
-- Get-AzAvailableServiceDelegation
-- Get-AzDelegation
-- Get-AzEffectiveNetworkSecurityGroup
-- Get-AzEffectiveRouteTable
-- Get-AzExpressRouteCircuitConnectionConfig
-- Get-AzExpressRouteCircuitPeeringConfig
-- Get-AzExpressRouteCircuitStats
-- Get-AzExpressRoutePortLinkConfig
-- Get-AzLoadBalancerBackendAddressPoolConfig
-- Get-AzLoadBalancerFrontendIpConfig
-- Get-AzLoadBalancerInboundNatPoolConfig
-- Get-AzLoadBalancerInboundNatRuleConfig
-- Get-AzLoadBalancerOutboundRuleConfig
-- Get-AzLoadBalancerProbeConfig
-- Get-AzLoadBalancerRuleConfig
-- Get-AzNetworkInterfaceIpConfig
-- Get-AzNetworkInterfaceTapConfig
-- Get-AzNetworkSecurityRuleConfig
-- Get-AzNetworkWatcherConnectionMonitorReport
-- Get-AzNetworkWatcherReachabilityProvidersList
-- Get-AzNetworkWatcherReachabilityReport
 - Get-AzNetworkWatcherSecurityGroupView
-- Get-AzRouteConfig
-- Get-AzRouteFilterRuleConfig
-- Get-AzVirtualHubVnetConnection
-- Get-AzVirtualNetworkAvailableEndpointService
-- Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript
-- Get-AzVirtualNetworkSubnetConfig
-- Get-AzVirtualNetworkUsageList
-- Get-AzVirtualWanVpnConfiguration
-- Get-AzVpnClientConfiguration
-- Get-AzVpnClientIpsecParameter
-- Get-AzVpnClientPackage
-- Get-AzVpnClientRevokedCertificate
-- Get-AzVpnClientRootCertificate
-- Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic
-- Move-AzExpressRouteCircuit
-- New-AzApplicationGatewayAuthenticationCertificate
-- New-AzApplicationGatewayAutoscaleConfiguration
-- New-AzApplicationGatewayBackendAddressPool
-- New-AzApplicationGatewayBackendHttpSettings
-- New-AzApplicationGatewayConnectionDraining
-- New-AzApplicationGatewayCustomError
-- New-AzApplicationGatewayFirewallCondition
-- New-AzApplicationGatewayFirewallCustomRule
-- New-AzApplicationGatewayFirewallDisabledRuleGroupConfig
-- New-AzApplicationGatewayFirewallExclusionConfig
-- New-AzApplicationGatewayFirewallMatchVariable
-- New-AzApplicationGatewayFirewallPolicy
-- New-AzApplicationGatewayFrontendIPConfig
-- New-AzApplicationGatewayFrontendPort
-- New-AzApplicationGatewayHttpListener
-- New-AzApplicationGatewayIdentity
-- New-AzApplicationGatewayIPConfiguration
-- New-AzApplicationGatewayPathRuleConfig
-- New-AzApplicationGatewayProbeConfig
-- New-AzApplicationGatewayProbeHealthResponseMatch
-- New-AzApplicationGatewayRedirectConfiguration
-- New-AzApplicationGatewayRequestRoutingRule
-- New-AzApplicationGatewayRewriteRule
-- New-AzApplicationGatewayRewriteRuleActionSet
-- New-AzApplicationGatewayRewriteRuleCondition
-- New-AzApplicationGatewayRewriteRuleHeaderConfiguration
-- New-AzApplicationGatewayRewriteRuleSet
-- New-AzApplicationGatewaySku
-- New-AzApplicationGatewaySslCertificate
-- New-AzApplicationGatewaySslPolicy
-- New-AzApplicationGatewayTrustedRootCertificate
-- New-AzApplicationGatewayUrlPathMapConfig
-- New-AzApplicationGatewayWebApplicationFirewallConfiguration
-- New-AzContainerNicConfig
-- New-AzContainerNicConfigIpConfig
-- New-AzDelegation
-- New-AzExpressRouteCircuitPeeringConfig
-- New-AzFirewallApplicationRule
-- New-AzFirewallApplicationRuleCollection
-- New-AzFirewallNatRule
-- New-AzFirewallNatRuleCollection
-- New-AzFirewallNetworkRule
-- New-AzFirewallNetworkRuleCollection
-- New-AzIpsecPolicy
-- New-AzLoadBalancerBackendAddressPoolConfig
-- New-AzLoadBalancerFrontendIpConfig
-- New-AzLoadBalancerInboundNatPoolConfig
-- New-AzLoadBalancerInboundNatRuleConfig
-- New-AzLoadBalancerOutboundRuleConfig
-- New-AzLoadBalancerProbeConfig
-- New-AzLoadBalancerRuleConfig
-- New-AzNetworkInterfaceIpConfig
-- New-AzNetworkSecurityRuleConfig
-- New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile
-- New-AzNetworkWatcherProtocolConfiguration
-- New-AzPacketCaptureFilterConfig
-- New-AzPublicIpTag
-- New-AzRouteConfig
-- New-AzRouteFilterRuleConfig
-- New-AzVirtualHubRoute
-- New-AzVirtualHubRouteTable
-- New-AzVirtualHubVnetConnection
-- New-AzVirtualNetworkGatewayIpConfig
-- New-AzVirtualNetworkSubnetConfig
-- New-AzVpnClientConfiguration
-- New-AzVpnClientIpsecParameter
-- New-AzVpnClientIpsecPolicy
-- New-AzVpnClientRevokedCertificate
-- New-AzVpnClientRootCertificate
-- Remove-AzApplicationGatewayAuthenticationCertificate
-- Remove-AzApplicationGatewayAutoscaleConfiguration
-- Remove-AzApplicationGatewayBackendAddressPool
-- Remove-AzApplicationGatewayBackendHttpSettings
-- Remove-AzApplicationGatewayConnectionDraining
-- Remove-AzApplicationGatewayCustomError
-- Remove-AzApplicationGatewayFirewallPolicy
-- Remove-AzApplicationGatewayFrontendIPConfig
-- Remove-AzApplicationGatewayFrontendPort
-- Remove-AzApplicationGatewayHttpListener
-- Remove-AzApplicationGatewayHttpListenerCustomError
-- Remove-AzApplicationGatewayIdentity
-- Remove-AzApplicationGatewayIPConfiguration
-- Remove-AzApplicationGatewayProbeConfig
-- Remove-AzApplicationGatewayRedirectConfiguration
-- Remove-AzApplicationGatewayRequestRoutingRule
-- Remove-AzApplicationGatewayRewriteRuleSet
-- Remove-AzApplicationGatewaySslCertificate
-- Remove-AzApplicationGatewaySslPolicy
-- Remove-AzApplicationGatewayTrustedRootCertificate
-- Remove-AzApplicationGatewayUrlPathMapConfig
-- Remove-AzDelegation
-- Remove-AzExpressRouteCircuitConnectionConfig
-- Remove-AzExpressRouteCircuitPeeringConfig
-- Remove-AzLoadBalancerBackendAddressPoolConfig
-- Remove-AzLoadBalancerFrontendIpConfig
-- Remove-AzLoadBalancerInboundNatPoolConfig
-- Remove-AzLoadBalancerInboundNatRuleConfig
-- Remove-AzLoadBalancerOutboundRuleConfig
-- Remove-AzLoadBalancerProbeConfig
-- Remove-AzLoadBalancerRuleConfig
-- Remove-AzNetworkInterfaceIpConfig
-- Remove-AzNetworkInterfaceTapConfig
-- Remove-AzNetworkSecurityRuleConfig
-- Remove-AzRouteConfig
-- Remove-AzRouteFilterRuleConfig
-- Remove-AzVirtualHubVnetConnection
-- Remove-AzVirtualNetworkGatewayDefaultSite
-- Remove-AzVirtualNetworkGatewayIpConfig
-- Remove-AzVirtualNetworkSubnetConfig
-- Remove-AzVpnClientIpsecParameter
-- Remove-AzVpnClientRevokedCertificate
-- Remove-AzVpnClientRootCertificate
-- Resize-AzVirtualNetworkGateway
-- Set-AzApplicationGatewayAuthenticationCertificate
-- Set-AzApplicationGatewayAutoscaleConfiguration
-- Set-AzApplicationGatewayBackendAddressPool
-- Set-AzApplicationGatewayBackendHttpSettings
-- Set-AzApplicationGatewayConnectionDraining
-- Set-AzApplicationGatewayCustomError
-- Set-AzApplicationGatewayFirewallPolicy
-- Set-AzApplicationGatewayFrontendIPConfig
-- Set-AzApplicationGatewayFrontendPort
-- Set-AzApplicationGatewayHttpListener
-- Set-AzApplicationGatewayHttpListenerCustomError
-- Set-AzApplicationGatewayIdentity
-- Set-AzApplicationGatewayIPConfiguration
-- Set-AzApplicationGatewayProbeConfig
-- Set-AzApplicationGatewayRedirectConfiguration
-- Set-AzApplicationGatewayRequestRoutingRule
-- Set-AzApplicationGatewayRewriteRuleSet
-- Set-AzApplicationGatewaySku
-- Set-AzApplicationGatewaySslCertificate
-- Set-AzApplicationGatewaySslPolicy
-- Set-AzApplicationGatewayTrustedRootCertificate
-- Set-AzApplicationGatewayUrlPathMapConfig
-- Set-AzApplicationGatewayWebApplicationFirewallConfiguration
-- Set-AzExpressRouteCircuitPeeringConfig
-- Set-AzLoadBalancerFrontendIpConfig
-- Set-AzLoadBalancerInboundNatPoolConfig
-- Set-AzLoadBalancerInboundNatRuleConfig
-- Set-AzLoadBalancerOutboundRuleConfig
-- Set-AzLoadBalancerProbeConfig
-- Set-AzLoadBalancerRuleConfig
-- Set-AzNetworkInterfaceIpConfig
-- Set-AzNetworkInterfaceTapConfig
-- Set-AzNetworkSecurityRuleConfig
-- Set-AzNetworkWatcherConfigFlowLog
-- Set-AzRouteConfig
-- Set-AzRouteFilterRuleConfig
-- Set-AzVirtualNetworkGatewayDefaultSite
-- Set-AzVirtualNetworkSubnetConfig
-- Set-AzVpnClientIpsecParameter
-- Start-AzNetworkWatcherResourceTroubleshooting
-- Test-AzDnsAvailability
-- Test-AzPrivateIPAddressAvailability
 - Update-AzVirtualHub
 - Update-AzVirtualWan
-- Update-AzVpnConnection
 - Update-AzVpnGateway
 - Update-AzVpnSite

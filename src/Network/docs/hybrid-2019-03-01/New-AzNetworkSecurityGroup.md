@@ -265,7 +265,7 @@ A collection of security rules of the network security group.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule[]
 Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
+Aliases: SecurityRules
 
 Required: False
 Position: Named
@@ -346,9 +346,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkSecurityGroup
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkSecurityGroup
 
 ## OUTPUTS
 

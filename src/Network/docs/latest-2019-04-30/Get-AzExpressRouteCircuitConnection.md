@@ -56,7 +56,7 @@ PS C:\> {{ Add code here }}
 ## PARAMETERS
 
 ### -CircuitName
-The name of the circuit.
+The name of the express route circuit.
 
 ```yaml
 Type: System.String

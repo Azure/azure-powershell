@@ -14,7 +14,7 @@ Gets Ssl predefined policy with the specified policy name.
 
 ### Get (Default)
 ```
-Get-AzApplicationGatewaySslPredefinedPolicy -PredefinedPolicyName <String> -SubscriptionId <String[]>
+Get-AzApplicationGatewaySslPredefinedPolicy -Name <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -81,13 +81,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PredefinedPolicyName
+### -Name
 Name of Ssl predefined policy.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: PredefinedPolicyName
 
 Required: True
 Position: Named

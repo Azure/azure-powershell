@@ -24,7 +24,7 @@ New-AzVpnSite -Name <String> -ResourceGroupName <String> -SubscriptionId <String
 New-AzVpnSite -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AddressSpaceAddressPrefix <String[]>] [-BgpPropertyAsn <Int64>] [-BgpPropertyBgpPeeringAddress <String>]
  [-BgpPropertyPeerWeight <Int32>] [-DevicePropertyDeviceModel <String>] [-DevicePropertyDeviceVendor <String>]
- [-DevicePropertyLinkSpeedInMbp <Int32>] [-IPAddress <String>] [-Id <String>] [-IsSecuritySite]
+ [-DevicePropertyLinkSpeedInMbps <Int32>] [-IPAddress <String>] [-Id <String>] [-IsSecuritySite]
  [-Location <String>] [-SiteKey <String>] [-Tag <IResourceTags>] [-VirtualWanId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -34,7 +34,7 @@ New-AzVpnSite -Name <String> -ResourceGroupName <String> -SubscriptionId <String
 New-AzVpnSite -InputObject <INetworkIdentity> [-AddressSpaceAddressPrefix <String[]>]
  [-BgpPropertyAsn <Int64>] [-BgpPropertyBgpPeeringAddress <String>] [-BgpPropertyPeerWeight <Int32>]
  [-DevicePropertyDeviceModel <String>] [-DevicePropertyDeviceVendor <String>]
- [-DevicePropertyLinkSpeedInMbp <Int32>] [-IPAddress <String>] [-Id <String>] [-IsSecuritySite]
+ [-DevicePropertyLinkSpeedInMbps <Int32>] [-IPAddress <String>] [-Id <String>] [-IsSecuritySite]
  [-Location <String>] [-SiteKey <String>] [-Tag <IResourceTags>] [-VirtualWanId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -198,7 +198,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DevicePropertyLinkSpeedInMbp
+### -DevicePropertyLinkSpeedInMbps
 Link speed.
 
 ```yaml
@@ -445,9 +445,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnSite
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnSite
 
 ## OUTPUTS
 

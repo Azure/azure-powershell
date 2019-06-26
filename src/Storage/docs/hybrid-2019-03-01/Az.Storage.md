@@ -42,7 +42,10 @@ Regenerates one of the access keys for the specified storage account.
 ### [Remove-AzStorageAccount](Remove-AzStorageAccount.md)
 Deletes a storage account in Microsoft Azure.
 
-### [Set-AzStorageAccount](Set-AzStorageAccount.md)
+### [Test-AzStorageAccountNameAvailability](Test-AzStorageAccountNameAvailability.md)
+Checks that the storage account name is valid and is not already in use.
+
+### [Update-AzStorageAccount](Update-AzStorageAccount.md)
 The update operation can be used to update the SKU, encryption, access tier, or tags for a storage account.
 It can also be used to map the account to a custom domain.
 Only one custom domain is supported per storage account; the replacement/change of custom domain is not supported.
@@ -51,7 +54,4 @@ The update of multiple properties is supported.
 This call does not change the storage keys for the account.
 If you want to change the storage account keys, use the regenerate keys operation.
 The location and name of the storage account cannot be changed after creation.
-
-### [Test-AzStorageAccountNameAvailability](Test-AzStorageAccountNameAvailability.md)
-Checks that the storage account name is valid and is not already in use.
 

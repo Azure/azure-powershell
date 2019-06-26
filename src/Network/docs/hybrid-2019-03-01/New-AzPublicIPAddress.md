@@ -25,7 +25,7 @@ New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId
  [-DnsSettingDomainNameLabel <String>] [-DnsSettingFqdn <String>] [-DnsSettingReverseFqdn <String>]
  [-Etag <String>] [-IPAddress <String>] [-IPConfigurationEtag <String>] [-IPConfigurationId <String>]
  [-IPConfigurationName <String>] [-IPConfigurationPropertiesProvisioningState <String>] [-Id <String>]
- [-IdleTimeoutInMinute <Int32>] [-Location <String>] [-PrivateIPAddress <String>]
+ [-IdleTimeoutInMinutes <Int32>] [-Location <String>] [-PrivateIPAddress <String>]
  [-PrivateIPAllocationMethod <IPAllocationMethod>] [-ProvisioningState <String>]
  [-PublicIPAddress <IPublicIPAddress>] [-PublicIPAddressVersion <IPVersion>]
  [-PublicIPAllocationMethod <IPAllocationMethod>] [-ResourceGuid <String>] [-SkuName <PublicIPAddressSkuName>]
@@ -38,7 +38,7 @@ New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId
 New-AzPublicIPAddress -InputObject <INetworkIdentity> [-DnsSettingDomainNameLabel <String>]
  [-DnsSettingFqdn <String>] [-DnsSettingReverseFqdn <String>] [-Etag <String>] [-IPAddress <String>]
  [-IPConfigurationEtag <String>] [-IPConfigurationId <String>] [-IPConfigurationName <String>]
- [-IPConfigurationPropertiesProvisioningState <String>] [-Id <String>] [-IdleTimeoutInMinute <Int32>]
+ [-IPConfigurationPropertiesProvisioningState <String>] [-Id <String>] [-IdleTimeoutInMinutes <Int32>]
  [-Location <String>] [-PrivateIPAddress <String>] [-PrivateIPAllocationMethod <IPAllocationMethod>]
  [-ProvisioningState <String>] [-PublicIPAddress <IPublicIPAddress>] [-PublicIPAddressVersion <IPVersion>]
  [-PublicIPAllocationMethod <IPAllocationMethod>] [-ResourceGuid <String>] [-SkuName <PublicIPAddressSkuName>]
@@ -148,7 +148,6 @@ Gets or Sets the Reverse FQDN.
 A user-visible, fully qualified domain name that resolves to this public IP address.
 If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
 
-
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
@@ -194,7 +193,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IdleTimeoutInMinute
+### -IdleTimeoutInMinutes
 The idle timeout of the public IP address.
 
 ```yaml
@@ -494,7 +493,7 @@ Name of a public IP address SKU.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.PublicIPAddressSkuName
 Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
+Aliases: Sku
 
 Required: False
 Position: Named
@@ -607,9 +606,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IPublicIPAddress
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IPublicIPAddress
 
 ## OUTPUTS
 

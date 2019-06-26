@@ -134,7 +134,7 @@ Parameters that define the resource to query the troubleshooting result.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IQueryTroubleshootingParameters
 Parameter Sets: Get, GetViaIdentity
-Aliases:
+Aliases: NetworkWatcher
 
 Required: False
 Position: Named
@@ -150,7 +150,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Get, GetExpanded
-Aliases:
+Aliases: Location
 
 Required: True
 Position: Named
@@ -231,9 +231,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IQueryTroubleshootingParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IQueryTroubleshootingParameters
 
 ## OUTPUTS
 

@@ -14,7 +14,7 @@ Revokes access to a disk.
 
 ### Revoke (Default)
 ```
-Revoke-AzDiskAccess -DiskName <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
+Revoke-AzDiskAccess -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -81,7 +81,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DiskName
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
+Parameter Sets: RevokeViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Name
 The name of the managed disk that is being created.
 The name can't be changed after the disk is created.
 Supported characters for the name are a-z, A-Z, 0-9 and _.
@@ -96,22 +112,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: RevokeViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```

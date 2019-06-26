@@ -136,7 +136,7 @@ The name of the resource group containing Network Watcher.
 ```yaml
 Type: System.String
 Parameter Sets: Query
-Aliases:
+Aliases: Location, NetworkWatcher
 
 Required: True
 Position: Named
@@ -208,6 +208,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectionMonitorQueryResult
 
 ## ALIASES
+
+### Get-AzNetworkWatcherConnectionMonitorReport
 
 ## RELATED LINKS
 

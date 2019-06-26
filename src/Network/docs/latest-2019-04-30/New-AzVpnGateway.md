@@ -14,18 +14,18 @@ Creates a virtual wan vpn gateway if it doesn't exist else updates the existing 
 
 ### Create (Default)
 ```
-New-AzVpnGateway -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-VpnGatewayParameter <IVpnGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
-New-AzVpnGateway -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-BgpSettingAsn <Int64>] [-BgpSettingBgpPeeringAddress <String>] [-BgpSettingPeerWeight <Int32>]
- [-Connection <IVpnConnection[]>] [-Id <String>] [-Location <String>] [-Tag <IResourceTags>]
- [-VirtualHubId <String>] [-VpnGatewayScaleUnit <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-BgpSettingAsn <Int64>]
+ [-BgpSettingBgpPeeringAddress <String>] [-BgpSettingPeerWeight <Int32>] [-Connection <IVpnConnection[]>]
+ [-Id <String>] [-Location <String>] [-Tag <IResourceTags>] [-VirtualHubId <String>]
+ [-VpnGatewayScaleUnit <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -138,7 +138,7 @@ List of all vpn connections to the gateway.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnConnection[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: VpnConnection
 
 Required: False
 Position: Named
@@ -157,22 +157,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -GatewayName
-The name of the gateway.
-
-```yaml
-Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -228,13 +212,29 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the gateway.
+
+```yaml
+Type: System.String
+Parameter Sets: Create, CreateExpanded
+Aliases: GatewayName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
 The resource group name of the VpnGateway.
 
 ```yaml
 Type: System.String
 Parameter Sets: Create, CreateExpanded
-Aliases:
+Aliases: VirtualHub, VirtualHubName
 
 Required: True
 Position: Named
@@ -363,9 +363,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnGateway
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnGateway
 
 ## OUTPUTS
 

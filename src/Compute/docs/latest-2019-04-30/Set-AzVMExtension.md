@@ -12,14 +12,7 @@ The operation to create or update the extension.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzVMExtension -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VMName <String>
- [-ExtensionParameter <IVirtualMachineExtension>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzVMExtension -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VMName <String>
  -Location <String> [-AutoUpgradeMinorVersion] [-ExtensionType <String>] [-ForceRerun <String>]
@@ -89,7 +82,7 @@ Once deployed, however, the extension will not upgrade minor versions unless red
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -116,28 +109,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ExtensionParameter
-Describes a Virtual Machine Extension.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineExtension
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ExtensionType
 Specifies the type of the extension; an example is "CustomScriptExtension".
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -153,7 +130,7 @@ How the extension handler should be forced to update even if the extension confi
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -185,7 +162,7 @@ The virtual machine extension name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -201,7 +178,7 @@ The resource status information.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IInstanceViewStatus[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -217,7 +194,7 @@ The resource status information.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IInstanceViewStatus[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -233,7 +210,7 @@ Specifies the type of the extension; an example is "CustomScriptExtension".
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -249,7 +226,7 @@ Specifies the version of the script handler.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -265,7 +242,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -281,7 +258,7 @@ The name of the virtual machine extension.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -297,7 +274,7 @@ The extension can contain either protectedSettings or protectedSettingsFromKeyVa
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineExtensionPropertiesProtectedSettings
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases: ProtectedSettings
 
 Required: False
@@ -313,7 +290,7 @@ The name of the extension handler publisher.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -329,7 +306,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -345,7 +322,7 @@ Json formatted public settings for the extension.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineExtensionPropertiesSettings
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases: Settings
 
 Required: False
@@ -362,7 +339,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -378,7 +355,7 @@ Resource tags
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.IResourceTags
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -394,7 +371,7 @@ Specifies the version of the script handler.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -410,7 +387,7 @@ The name of the virtual machine where the extension should be created or updated
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -458,8 +435,6 @@ Dynamic: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineExtension
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 

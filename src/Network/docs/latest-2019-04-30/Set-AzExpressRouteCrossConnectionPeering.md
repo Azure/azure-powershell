@@ -27,8 +27,8 @@ Set-AzExpressRouteCrossConnectionPeering -CrossConnectionName <String> -PeeringN
  [-AdvertisedPublicPrefix <String[]>]
  [-AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
  [-CustomerAsn <Int32>] [-GatewayManagerEtag <String>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunities <String[]>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixes <String[]>]
+ [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunity <String[]>]
+ [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefix <String[]>]
  [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
  [-IPv6PeeringConfigMicrosoftPeeringConfigCustomerAsn <Int32>]
  [-IPv6PeeringConfigMicrosoftPeeringConfigLegacyMode <Int32>]
@@ -40,35 +40,6 @@ Set-AzExpressRouteCrossConnectionPeering -CrossConnectionName <String> -PeeringN
  [-RouteFilterLocation <String>] [-RouteFilterTag <IResourceTags>] [-RoutingRegistryName <String>]
  [-Rule <IRouteFilterRule[]>] [-SecondaryPeerAddressPrefix <String>] [-SharedKey <String>]
  [-State <ExpressRoutePeeringState>] [-VlanId <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Set-AzExpressRouteCrossConnectionPeering -InputObject <INetworkIdentity> [-AdvertisedCommunity <String[]>]
- [-AdvertisedPublicPrefix <String[]>]
- [-AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
- [-CustomerAsn <Int32>] [-GatewayManagerEtag <String>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunities <String[]>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixes <String[]>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigCustomerAsn <Int32>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigLegacyMode <Int32>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigRoutingRegistryName <String>]
- [-IPv6PeeringConfigPrimaryPeerAddressPrefix <String>] [-IPv6PeeringConfigSecondaryPeerAddressPrefix <String>]
- [-IPv6PeeringConfigState <ExpressRouteCircuitPeeringState>] [-Id <String>] [-LastModifiedBy <String>]
- [-LegacyMode <Int32>] [-Name <String>] [-PeerAsn <Int64>] [-Peering <IExpressRouteCircuitPeering[]>]
- [-PeeringType <ExpressRoutePeeringType>] [-PrimaryPeerAddressPrefix <String>] [-RouteFilterId <String>]
- [-RouteFilterLocation <String>] [-RouteFilterTag <IResourceTags>] [-RoutingRegistryName <String>]
- [-Rule <IRouteFilterRule[]>] [-SecondaryPeerAddressPrefix <String>] [-SharedKey <String>]
- [-State <ExpressRoutePeeringState>] [-VlanId <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Set-AzExpressRouteCrossConnectionPeering -InputObject <INetworkIdentity>
- [-PeeringParameter <IExpressRouteCrossConnectionPeering>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -103,7 +74,7 @@ Specified for microsoft peering
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -119,7 +90,7 @@ The reference of AdvertisedPublicPrefixes.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -136,7 +107,7 @@ Possible values are 'NotConfigured', 'Configuring', 'Configured', and 'Validatio
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringAdvertisedPublicPrefixState
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -168,7 +139,7 @@ The name of the ExpressRouteCrossConnection.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -184,7 +155,7 @@ The CustomerASN of the peering.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -216,7 +187,7 @@ The GatewayManager Etag.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -232,7 +203,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -243,29 +214,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunities
+### -IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunity
 The communities of bgp peering.
 Specified for microsoft peering
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -276,12 +231,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixes
+### -IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefix
 The reference of AdvertisedPublicPrefixes.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -298,7 +253,7 @@ Possible values are 'NotConfigured', 'Configuring', 'Configured', and 'Validatio
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringAdvertisedPublicPrefixState
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -314,7 +269,7 @@ The CustomerASN of the peering.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -330,7 +285,7 @@ The legacy mode of the peering.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -346,7 +301,7 @@ The RoutingRegistryName of the configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -362,7 +317,7 @@ The primary address prefix.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -378,7 +333,7 @@ The secondary address prefix.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -395,7 +350,7 @@ Possible values are: 'Disabled' and 'Enabled'
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRouteCircuitPeeringState
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -411,7 +366,7 @@ Gets whether the provider or the customer last modified the peering.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -427,7 +382,7 @@ The legacy mode of the peering.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -444,7 +399,7 @@ This name can be used to access the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -460,7 +415,7 @@ The peer ASN.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -476,7 +431,7 @@ A collection of references to express route circuit peerings.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuitPeering[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -492,7 +447,7 @@ The name of the peering.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -508,7 +463,7 @@ Peering in an ExpressRoute Cross Connection resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCrossConnectionPeering
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: Update
 Aliases:
 
 Required: False
@@ -524,7 +479,7 @@ The peering type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRoutePeeringType
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -540,7 +495,7 @@ The primary address prefix.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -556,7 +511,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -572,7 +527,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -588,7 +543,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -604,7 +559,7 @@ Resource tags.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -620,7 +575,7 @@ The RoutingRegistryName of the configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -636,7 +591,7 @@ Collection of RouteFilterRules contained within a route filter.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IRouteFilterRule[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -652,7 +607,7 @@ The secondary address prefix.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -668,7 +623,7 @@ The shared key.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -684,7 +639,7 @@ The peering state.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ExpressRoutePeeringState
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -701,7 +656,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -717,7 +672,7 @@ The VLAN ID.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -767,8 +722,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCrossConnectionPeering
-
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
 ## OUTPUTS
 

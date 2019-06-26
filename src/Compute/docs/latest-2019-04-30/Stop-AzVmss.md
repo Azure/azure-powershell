@@ -16,7 +16,7 @@ Instead, use deallocate to release resources and avoid charges.
 
 ### PowerOffExpanded1 (Default)
 ```
-Stop-AzVmss -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String> [-SkipShutdown]
+Stop-AzVmss -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-SkipShutdown]
  [-InstanceId <String[]>] [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -119,6 +119,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the VM scale set.
+
+```yaml
+Type: System.String
+Parameter Sets: PowerOffExpanded1
+Aliases: VMScaleSetName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -PassThru
 When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
 
@@ -172,22 +188,6 @@ Dynamic: False
 ### -SubscriptionId
 Subscription credentials which uniquely identify Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
-
-```yaml
-Type: System.String
-Parameter Sets: PowerOffExpanded1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VMScaleSetName
-The name of the VM scale set.
 
 ```yaml
 Type: System.String

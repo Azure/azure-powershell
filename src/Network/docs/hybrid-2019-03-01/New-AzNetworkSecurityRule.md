@@ -263,8 +263,7 @@ Dynamic: False
 ```
 
 ### -Name
-The name of the resource that is unique within a resource group.
-This name can be used to access the resource.
+The name of the security rule.
 
 ```yaml
 Type: System.String
@@ -467,7 +466,6 @@ Asterisk '*' can also be used to match all source IPs.
 Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
 If this is an ingress rule, specifies where network traffic originates from.
 
-
 ```yaml
 Type: System.String
 Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
@@ -570,9 +568,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule
 
 ## OUTPUTS
 

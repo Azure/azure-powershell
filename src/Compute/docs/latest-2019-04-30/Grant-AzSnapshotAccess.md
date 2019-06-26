@@ -15,13 +15,13 @@ Grants access to a snapshot.
 ### GrantExpanded (Default)
 ```
 Grant-AzSnapshotAccess -ResourceGroupName <String> -SnapshotName <String> -SubscriptionId <String>
- -Access <AccessLevel> -DurationInSecond <Int32> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ -Access <AccessLevel> -DurationInSeconds <Int32> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### GrantViaIdentityExpanded
 ```
-Grant-AzSnapshotAccess -InputObject <IComputeIdentity> -Access <AccessLevel> -DurationInSecond <Int32>
+Grant-AzSnapshotAccess -InputObject <IComputeIdentity> -Access <AccessLevel> -DurationInSeconds <Int32>
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -98,13 +98,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DurationInSecond
+### -DurationInSeconds
 Time duration in seconds until the SAS access expires.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: ${parameter-name}
 
 Required: True
 Position: Named

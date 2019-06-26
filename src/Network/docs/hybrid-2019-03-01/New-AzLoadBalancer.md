@@ -224,7 +224,7 @@ Dynamic: False
 ```
 
 ### -LoadBalancingRule
-Object collection representing the load balancing rules Gets the provisioning 
+Object collection representing the load balancing rules Gets the provisioning
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ILoadBalancingRule[]
@@ -374,7 +374,7 @@ Name of a load balancer SKU.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.LoadBalancerSkuName
 Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
+Aliases: Sku
 
 Required: False
 Position: Named
@@ -455,9 +455,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ILoadBalancer
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ILoadBalancer
 
 ## OUTPUTS
 

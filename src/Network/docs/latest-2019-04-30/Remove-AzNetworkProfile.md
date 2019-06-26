@@ -119,7 +119,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
+Aliases: AsJob
 
 Required: True
 Position: Named

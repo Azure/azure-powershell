@@ -234,7 +234,7 @@ Parameters that determine how the connectivity check will be performed.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectivityParameters
 Parameter Sets: Check, CheckViaIdentity
-Aliases:
+Aliases: NetworkWatcher
 
 Required: False
 Position: Named
@@ -266,7 +266,7 @@ The name of the network watcher resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Check, CheckExpanded
-Aliases:
+Aliases: Location
 
 Required: True
 Position: Named
@@ -363,9 +363,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectivityParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectivityParameters
 
 ## OUTPUTS
 

@@ -20,8 +20,8 @@ Get-AzNetworkInterfaceTapConfiguration -NetworkInterfaceName <String> -ResourceG
 
 ### Get
 ```
-Get-AzNetworkInterfaceTapConfiguration -NetworkInterfaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -TapConfigurationName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNetworkInterfaceTapConfiguration -Name <String> -NetworkInterfaceName <String>
+ -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -87,6 +87,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the tap configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: TapConfigurationName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -NetworkInterfaceName
 The name of the network interface.
 
@@ -136,22 +152,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -TapConfigurationName
-The name of the tap configuration.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -164,6 +164,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterfaceTapConfiguration
 
 ## ALIASES
+
+### Get-AzNetworkInterfaceTapConfig
 
 ## RELATED LINKS
 

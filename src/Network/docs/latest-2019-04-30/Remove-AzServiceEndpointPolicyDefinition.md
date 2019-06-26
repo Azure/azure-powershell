@@ -136,7 +136,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
+Aliases: ServiceEndpointPolicy
 
 Required: True
 Position: Named

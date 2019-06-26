@@ -29,7 +29,10 @@ Param
     [string]${ApiProfile},
 
     [Parameter()]
-    [string]${OutputFile}
+    [string]${OutputFile},
+
+    [Parameter()]
+    [switch]${IgnoreForce}
 )
 
 $Result = @()
@@ -55,7 +58,7 @@ $ModuleToSerializedCmdletsFile = @{
                          "Microsoft.Azure.PowerShell.Cmdlets.Resources.dll.json",
                          "Microsoft.Azure.PowerShell.Cmdlets.Tags.dll.json" );
     "Az.ServiceBus" = @( "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll.json" );
-    "Az.Storage"    = @( "Microsoft.Azure.PowerShell.Cmdlets.Storage.dll.json" );
+    "Az.Storage"    = @( "Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll.json" );
 }
 
 $CmdletsToParameters = @{}
@@ -211,7 +214,7 @@ foreach ($Script in $GeneratedScripts)
     $MissingParameters = @()
     foreach ($Parameter in $ExistingParameters)
     {
-        if (($Parameter.Name -ne 'ResourceId') -and (($Parameters | Where-Object { $_ -eq $Parameter.Name }).Count -eq 0))
+        if (($Parameter.Name -ne 'ResourceId') -and (-not $IgnoreForce -or $Parameter.Name -ne 'Force') -and (($Parameters | Where-Object { $_ -eq $Parameter.Name }).Count -eq 0))
         {
             $Found = $false
             foreach ($Alias in $Parameter.AliasList)

@@ -24,7 +24,7 @@ New-AzNetworkWatcherPacketCapture -Name <String> -NetworkWatcherName <String> -R
 New-AzNetworkWatcherPacketCapture -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -Target <String> [-BytesToCapturePerPacket <Int32>]
  [-Filter <IPacketCaptureFilter[]>] [-StorageLocationFilePath <String>] [-StorageLocationStorageId <String>]
- [-StorageLocationStoragePath <String>] [-TimeLimitInSecond <Int32>] [-TotalBytesPerSession <Int32>]
+ [-StorageLocationStoragePath <String>] [-TimeLimitInSeconds <Int32>] [-TotalBytesPerSession <Int32>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ New-AzNetworkWatcherPacketCapture -Name <String> -NetworkWatcherName <String> -R
 ```
 New-AzNetworkWatcherPacketCapture -InputObject <INetworkIdentity> -Target <String>
  [-BytesToCapturePerPacket <Int32>] [-Filter <IPacketCaptureFilter[]>] [-StorageLocationFilePath <String>]
- [-StorageLocationStorageId <String>] [-StorageLocationStoragePath <String>] [-TimeLimitInSecond <Int32>]
+ [-StorageLocationStorageId <String>] [-StorageLocationStoragePath <String>] [-TimeLimitInSeconds <Int32>]
  [-TotalBytesPerSession <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -186,7 +186,7 @@ Parameters that define the create packet capture operation.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPacketCapture
 Parameter Sets: Create, CreateViaIdentity
-Aliases:
+Aliases: NetworkWatcher
 
 Required: False
 Position: Named
@@ -202,7 +202,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Create, CreateExpanded
-Aliases:
+Aliases: Location
 
 Required: True
 Position: Named
@@ -298,7 +298,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -TimeLimitInSecond
+### -TimeLimitInSeconds
 Maximum duration of the capture session in seconds.
 
 ```yaml
@@ -368,9 +368,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPacketCapture
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPacketCapture
 
 ## OUTPUTS
 

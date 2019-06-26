@@ -192,5 +192,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## ALIASES
 
+### Get-AzEffectiveRouteTable
+
 ## RELATED LINKS
 

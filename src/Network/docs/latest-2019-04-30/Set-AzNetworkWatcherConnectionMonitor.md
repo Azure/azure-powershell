@@ -24,22 +24,7 @@ Set-AzNetworkWatcherConnectionMonitor -Name <String> -NetworkWatcherName <String
 Set-AzNetworkWatcherConnectionMonitor -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -SourceResourceId <String> [-AutoStart] [-DestinationAddress <String>]
  [-DestinationPort <Int32>] [-DestinationResourceId <String>] [-Location <String>]
- [-MonitoringIntervalInSecond <Int32>] [-SourcePort <Int32>] [-Tag <IConnectionMonitorTags>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Set-AzNetworkWatcherConnectionMonitor -InputObject <INetworkIdentity> -SourceResourceId <String> [-AutoStart]
- [-DestinationAddress <String>] [-DestinationPort <Int32>] [-DestinationResourceId <String>]
- [-Location <String>] [-MonitoringIntervalInSecond <Int32>] [-SourcePort <Int32>]
- [-Tag <IConnectionMonitorTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Set-AzNetworkWatcherConnectionMonitor -InputObject <INetworkIdentity> [-Parameter <IConnectionMonitor>]
+ [-MonitoringIntervalInSeconds <Int32>] [-SourcePort <Int32>] [-Tag <IConnectionMonitorTags>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -89,7 +74,7 @@ Determines if the connection monitor will start automatically once created.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -121,7 +106,7 @@ Address of the connection monitor destination (IP or domain name).
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -137,7 +122,7 @@ The destination port used by connection monitor.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -153,29 +138,13 @@ The ID of the resource used as the destination by connection monitor.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -185,7 +154,7 @@ Connection monitor location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -196,12 +165,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -MonitoringIntervalInSecond
+### -MonitoringIntervalInSeconds
 Monitoring interval in seconds.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -217,7 +186,7 @@ The name of the connection monitor.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases: ConnectionMonitorName
 
 Required: True
@@ -233,7 +202,7 @@ The name of the Network Watcher resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -249,8 +218,8 @@ Parameters that define the operation to create a connection monitor.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectionMonitor
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
+Parameter Sets: Update
+Aliases: NetworkWatcher
 
 Required: False
 Position: Named
@@ -265,7 +234,7 @@ The name of the resource group containing Network Watcher.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -281,7 +250,7 @@ The source port used by connection monitor.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -297,7 +266,7 @@ The ID of the resource used as the source by connection monitor.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -314,7 +283,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -330,7 +299,7 @@ Connection monitor tags.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectionMonitorTags
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -380,8 +349,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectionMonitor
-
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
 ## OUTPUTS
 
