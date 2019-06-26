@@ -298,8 +298,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                         location: "Global",
                         tags: new Dictionary<string, string>(),
                         properties: new ActionGroup(
-                            scope: scope,
-                            conditions: conditions,
+                            scope: ParseScope(),
+                            conditions: ParseConditions(),
                             actionGroupId: ActionGroupId,
                             description: Description,
                             status: Status
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                 case BySimplifiedFormatSuppressionActionRuleParameterSet:
 
                     SuppressionConfig config = new SuppressionConfig(recurrenceType: ReccurenceType);
-                    if (ReccurenceType != "Daily")
+                    if (ReccurenceType != "Always")
                     {
                         config.Schedule = new SuppressionSchedule(
                             startDate: SuppressionStartTime.Split(' ')[0],
@@ -333,8 +333,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                         location: "Global",
                         tags: new Dictionary<string, string>(),
                         properties: new Suppression(
-                            scope: scope,
-                            conditions: conditions,
+                            scope: ParseScope(),
+                            conditions: ParseConditions(),
                             description: Description,
                             status: Status,
                             suppressionConfig: config
@@ -346,23 +346,35 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                     break;
 
                 case ByInputObjectParameterSet:
-                    string[] tokens = InputObject.Id.Split('/');
-                    updatedActionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.UpdateWithHttpMessagesAsync(
-                        resourceGroupName: tokens[4],
-                        actionRuleName: tokens[8],
-                        actionRulePatch: new PatchObject(
-                                status: Status,
-                                tags: Tags
+                    // TODO: Implement from InputObject
+                    break;
+
+                default:
+                    if (ActionRuleType == "Diagnostics")
+                    {
+                        // Create Action Rule
+                        ActionRule diagnosticsAR = new ActionRule(
+                            location: "Global",
+                            tags: new Dictionary<string, string>(),
+                            properties: new Diagnostics(
+                                scope: ParseScope(),
+                                conditions: ParseConditions(),
+                                description: Description,
+                                status: Status
                             )
-                        ).Result.Body);
-                    //var alert = this.AlertsManagementClient.ActionRules.(AlertId).Result;
+                        );
+
+                        actionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
+                            resourceGroupName: ResourceGroupName, actionRuleName: Name, actionRule: diagnosticsAR).Result.Body);
+                    }
+
                     break;
             }
 
             WriteObject(sendToPipeline: actionRule);
         }
 
-        private Conditions ParseConditons()
+        private Conditions ParseConditions()
         {
             Conditions conditions = new Conditions();
             if (SeverityCondition != null)
@@ -415,6 +427,15 @@ namespace Microsoft.Azure.Commands.AlertsManagement
             }
 
             return conditions;
+        }
+
+        private Scope ParseScope()
+        {
+            Scope scope = new Scope(
+                scopeType: ScopeType,
+                values: ScopeValues.Split(',')
+            );
+            return scope;
         }
     }
 }
