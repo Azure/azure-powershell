@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzActionRule
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get Action Rules Information
 
 ## SYNTAX
 
@@ -32,16 +32,23 @@ Get-AzActionRule [-Name <String>] [-ResourceGroupName <String>] [-TargetResource
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+**Get-AzActionRule** cmdlet gets action rules configured.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzActionRule -ResourceGroupName "test-rg" -Severity "Sev2" -MonitorService "Platform"
 ```
 
-{{ Add example description here }}
+List all action rules configured in resource group test-rg filtered on Sev2 severity and Platform Monitor Service.
+
+### Example 2
+```powershell
+PS C:\> Get-AzActionRule -ResourceGroupName "test-rg" -Name "Test-Action-Rule"
+```
+
+Get the action rule with name Test-Action-Rule in test-rg resource group.
 
 ## PARAMETERS
 

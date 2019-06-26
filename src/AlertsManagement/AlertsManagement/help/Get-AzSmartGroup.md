@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSmartGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets Smart Groups information
 
 ## SYNTAX
 
@@ -24,16 +24,23 @@ Get-AzSmartGroup [-SortBy <String>] [-SortOrder <String>] [-TimeRange <String>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+**Get-AzSmartGroup** cmdlet gets smart groups information.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzSmartGroup -TimeRange "1h"
 ```
 
-{{ Add example description here }}
+List all smart groups formed in last 1 hour.
+
+### Example 2
+```powershell
+PS C:\> Get-AzSmartGroup -SmartGroupId "afbf1b3a-0a6c-4f19-9c9b-644ccd7b1529"
+```
+
+Get Smart Group details by Id (GUID) or Resource Id (Complete ARM Id)
 
 ## PARAMETERS
 

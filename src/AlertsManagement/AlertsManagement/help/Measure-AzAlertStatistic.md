@@ -8,7 +8,7 @@ schema: 2.0.0
 # Measure-AzAlertStatistic
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets Alert Summary Information
 
 ## SYNTAX
 
@@ -20,16 +20,16 @@ Measure-AzAlertStatistic -GroupBy <String> [-TargetResource <String>] [-TargetRe
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+**Measure-AzAlertStatistic** cmdlet gets alert summary details.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Measure-AzAlertStatistic -GroupBy "severity,alertstate" -State "Active"
 ```
 
-{{ Add example description here }}
+Summarize alerts count grouped by severity and state filtered by Active state.
 
 ## PARAMETERS
 

@@ -13,7 +13,7 @@
   -->
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.AlertsManagement" Version="0.9.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.AlertsManagement" Version="0.9.1-preview" />
   </ItemGroup>
 
 </Project>

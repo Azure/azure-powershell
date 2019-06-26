@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzActionRule
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create or update an action rule.
 
 ## SYNTAX
 
@@ -43,16 +43,23 @@ Set-AzActionRule -ResourceGroupName <String> -Name <String> [-Description <Strin
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+**Set-AzActionRule** creates or updates an action rule.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzActionRule -ResourceGroupName "test-rg" -Name "Test-AR" -ScopeType "ResourceGroup" -ScopeValues "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab,/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" -ActionRuleType "Suppression" -ReccurenceType "Weekly" -SuppressionStartTime "06/26/2018 06:00:00" -SuppressionEndTime "07/27/2018 06:00:00" -ReccurentValues 1,4,6
 ```
 
-{{ Add example description here }}
+This cmdlet creates an action rule for supression.
+
+### Example 2
+```powershell
+PS C:\> Set-AzActionRule -ResourceGroupName "test-rg" -Name "Test-AR" -ScopeType "ResourceGroup" -ScopeValues "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab,/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" -ActionRuleType "ActionGroup" -ActionGroupId "/subscriptions/1e3ff1c0-771a-4119-a03b-be82a51e232d/resourceGroups/alertscorrelationrg/providers/Microsoft.insights/actiongroups/testAG"
+```
+
+This cmdlet creates an action rule for action group.
 
 ## PARAMETERS
 

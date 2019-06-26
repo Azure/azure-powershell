@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzAlertHistory
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets Alert History information
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ Get-AzAlertHistory -AlertId <String> [-DefaultProfile <IAzureContextContainer>] 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+**Get-AzAlertHistory** cmdlet gets history of alert.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzAlertHistory -AlertId "afbf1b3a-0a6c-4f19-9c9b-644ccd7b1529"
 ```
 
-{{ Add example description here }}
+Gets alert history details. 
 
 ## PARAMETERS
 
