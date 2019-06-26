@@ -172,12 +172,12 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
                 return;
             }
 
+            base.ExecuteCmdlet();
+
             if (this.PassThru.IsPresent)
             {
                 WriteObject(true);
             }
-
-            base.ExecuteCmdlet();
         }
     }
 }
