@@ -12,36 +12,45 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using System.Management.Automation;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
-using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
+using Microsoft.Azure.Commands.NetAppFiles.Helpers;
+using System.Collections.Generic;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Account
 {
     [Cmdlet(
-        "Remove",
+        "Update",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesAccount",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
-    [Alias("Remove-AnfAccount")]
-    public class RemoveAzureRmNetAppFilesAccount : AzureNetAppFilesCmdletBase
+        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesAccount))]
+    [Alias("Update-AnfAccount")]
+    public class UpdateAzureRmNetAppFilesAccount : AzureNetAppFilesCmdletBase
     {
-        [Parameter
-            (Mandatory = true,
-            HelpMessage = "The resource group of the ANF account",
-            ParameterSetName = FieldsParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The resource group of the ANF account")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The location of the resource")]
+        [ValidateNotNullOrEmpty]
+        [LocationCompleter("Microsoft.NetApp/netAppAccounts")]
+        public string Location { get; set; }
+
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the ANF account",
-            ParameterSetName = FieldsParameterSet)]
+            HelpMessage = "The name of the ANF account")]
         [ValidateNotNullOrEmpty]
         [Alias("AccountName")]
         [ResourceNameCompleter("Microsoft.NetApp/netAppAccounts", nameof(ResourceGroupName))]
@@ -56,22 +65,28 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
         public string ResourceId { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "A hashtable array which represents the active directories")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesActiveDirectory[] ActiveDirectory { get; set; }
+
+        [Parameter(
             ParameterSetName = ObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The account object to remove")]
+            HelpMessage = "The account object to update")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesAccount InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Return whether the specified account was successfully removed")]
-        public SwitchParameter PassThru { get; set; }
+            HelpMessage = "A hashtable which represents resource tags")]
+        [ValidateNotNullOrEmpty]
+        [Alias("Tags")]
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            bool success = false;
-
             if (ParameterSetName == ResourceIdParameterSet)
             {
                 var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
@@ -84,15 +99,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
                 Name = InputObject.Name;
             }
 
-            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RemoveResourceMessage, ResourceGroupName)))
+            var netAppAccountBody = new NetAppAccountPatch()
             {
-                AzureNetAppFilesManagementClient.Accounts.Delete(ResourceGroupName, Name);
-                success = true;
-            }
+                Location = Location,
+                ActiveDirectories = (ActiveDirectory != null) ? ModelExtensions.ConvertActiveDirectoriesFromPs(ActiveDirectory) : null,
+                Tags = Tag,
+                                                    
+            };
 
-            if (PassThru)
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
-                WriteObject(success);
+                var anfAccount = AzureNetAppFilesManagementClient.Accounts.Update(netAppAccountBody, ResourceGroupName, Name);
+                WriteObject(anfAccount.ToPsNetAppFilesAccount());
             }
         }
     }

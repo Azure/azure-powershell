@@ -1,24 +1,22 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/update-aznetappfilespool
+online version: https://docs.microsoft.com/en-us/powershell/module/az.netappfiles/update-aznetappfilesaccount
 schema: 2.0.0
 ---
 
-# Update-AzNetAppFilesPool
+# Update-AzNetAppFilesAccount
 
 ## SYNOPSIS
-Updates an Azure NetApp Files (ANF) pool according to the optional modifiers provided.
+Updates an Azure NetApp Files (ANF) account according to the optional modifiers provided.
 
 ## SYNTAX
 
-### ByFieldsParameterSet (Default)
 ```
-Update-AzNetAppFilesPool -ResourceGroupName <String> [-Location <String>] -AccountName <String> -Name <String>
- [-PoolSize <Int64>] [-ServiceLevel <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzNetAppFilesAccount -ResourceGroupName <String> -Name <String> [-Location <String>]
+ [-ActiveDirectories <PSNetAppFilesActiveDirectory[]>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
-
 ### ByParentObjectParameterSet
 ```
 Update-AzNetAppFilesPool -Name <String> [-PoolSize <Int64>] [-ServiceLevel <String>] [-Tag <Hashtable>]
@@ -40,58 +38,42 @@ Update-AzNetAppFilesPool [-PoolSize <Int64>] [-ServiceLevel <String>] [-Tag <Has
 ```
 
 ## DESCRIPTION
-The **Update-AzNetAppFilesPool** cmdlet modifies an ANF pool.
+The **Update-AzNetAppFilesAccount** cmdlet modifies an ANF account.
 
 ## EXAMPLES
 
-### Example 1: Modify an ANF pool
+### Example 1 : Updates an ANF account
 ```
-PS C:\>Update-AzNetAppFilesPool -ResourceGroupName "MyRG" -l "westus2" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -PoolSize 4398046511104 -ServiceLevel "Standard"
+PS C:\>Update-AzNetAppFilesAccount -ResourceGroupName "MyRG" -l "westus2" -Name "MyAnfAccount" -Tag @{'Tag1' = 'Value1'}
 
 Output:
 
 Location          : westus2
-Id                : /subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount/capacityPools/MyAnfPool
-Name              : MyAnfAccount/MyAnfPool
-Type              : Microsoft.NetApp/netAppAccounts/capacityPools
-Tags              :
-PoolId            : 9fa2ca6d-1e48-4439-30e3-7de056e44e5a
-Size              : 4398046511104
-ServiceLevel      : Standard
+Id                : /subscriptions/subsId/resourceGroups/MyRG/providers/Microsoft.NetApp/netAppAccounts/MyAnfAccount
+Name              : MyAnfAccount
+Type              : Microsoft.NetApp/netAppAccounts
+Tags              : {Tag1}
+AccountId         : 9fa2ca6d-1e48-4439-30e3-7de056e44e5a
+ActiveDirectories :
 ProvisioningState : Succeeded
 ```
 
-This command changes the ANF pool "MyAnfPool" to have the given size and ServiceLevel.
+This command performs an upate on the given account modifying the tags to those provided.
 
 ## PARAMETERS
 
-### -AccountName
-The name of the ANF account
+### -ActiveDirectories
+A hashtable array which represents the active directories
 
 ```yaml
-Type: String
-Parameter Sets: ByFieldsParameterSet
+Type: PSNetAppFilesActiveDirectory[]
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AccountObject
-The account object containing the pool to update
-
-```yaml
-Type: PSNetAppFilesAccount
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -111,10 +93,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The pool object to update
+The account object to update
 
 ```yaml
-Type: PSNetAppFilesPool
+Type: PSNetAppFilesAccount
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -130,7 +112,7 @@ The location of the resource
 
 ```yaml
 Type: String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -141,29 +123,14 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the ANF pool
+The name of the ANF account
 
 ```yaml
 Type: String
-Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
-Aliases: PoolName
+Parameter Sets: (All)
+Aliases: AccountName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PoolSize
-The size of the ANF pool
-
-```yaml
-Type: Int64
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -175,7 +142,7 @@ The resource group of the ANF account
 
 ```yaml
 Type: String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -186,7 +153,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of the ANF pool
+The resource id of the ANF account
 
 ```yaml
 Type: String
@@ -197,21 +164,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ServiceLevel
-The service level of the ANF pool
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -267,15 +219,11 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
-
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool
+### None
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
 
 ## NOTES
 
