@@ -27,19 +27,19 @@ New-AzVnetTap -Name <String> -ResourceGroupName <String> -SubscriptionId <String
  [-DestinationLoadBalancerFrontEndIPConfigurationEtag <String>]
  [-DestinationLoadBalancerFrontEndIPConfigurationId <String>]
  [-DestinationLoadBalancerFrontEndIPConfigurationName <String>]
- [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesPrivateIPaddress <String>]
- [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesPrivateIPallocationMethod <IPAllocationMethod>]
+ [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesPrivateIPAddress <String>]
+ [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesPrivateIPAllocationMethod <IPAllocationMethod>]
  [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesProvisioningState <String>]
- [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesPublicIPaddress <IPublicIPAddress>]
+ [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesPublicIPAddress <IPublicIPAddress>]
  [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesSubnet <ISubnet>]
  [-DestinationLoadBalancerFrontEndIPConfigurationZone <String[]>]
  [-DestinationNetworkInterfaceIPConfigurationEtag <String>]
  [-DestinationNetworkInterfaceIPConfigurationId <String>]
  [-DestinationNetworkInterfaceIPConfigurationName <String>]
- [-DestinationNetworkInterfaceIPConfigurationPropertiesPrivateIPaddress <String>]
- [-DestinationNetworkInterfaceIPConfigurationPropertiesPrivateIPallocationMethod <IPAllocationMethod>]
+ [-DestinationNetworkInterfaceIPConfigurationPropertiesPrivateIPAddress <String>]
+ [-DestinationNetworkInterfaceIPConfigurationPropertiesPrivateIPAllocationMethod <IPAllocationMethod>]
  [-DestinationNetworkInterfaceIPConfigurationPropertiesProvisioningState <String>]
- [-DestinationNetworkInterfaceIPConfigurationPropertiesPublicIPaddress <IPublicIPAddress>]
+ [-DestinationNetworkInterfaceIPConfigurationPropertiesPublicIPAddress <IPublicIPAddress>]
  [-DestinationNetworkInterfaceIPConfigurationPropertiesSubnet <ISubnet>] [-DestinationPort <Int32>]
  [-Etag <String>] [-Id <String>] [-LoadBalancerBackendAddressPool <IBackendAddressPool[]>]
  [-LoadBalancerInboundNatRule <IInboundNatRule[]>] [-Location <String>] [-Primary]
@@ -56,19 +56,19 @@ New-AzVnetTap -InputObject <INetworkIdentity>
  [-DestinationLoadBalancerFrontEndIPConfigurationEtag <String>]
  [-DestinationLoadBalancerFrontEndIPConfigurationId <String>]
  [-DestinationLoadBalancerFrontEndIPConfigurationName <String>]
- [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesPrivateIPaddress <String>]
- [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesPrivateIPallocationMethod <IPAllocationMethod>]
+ [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesPrivateIPAddress <String>]
+ [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesPrivateIPAllocationMethod <IPAllocationMethod>]
  [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesProvisioningState <String>]
- [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesPublicIPaddress <IPublicIPAddress>]
+ [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesPublicIPAddress <IPublicIPAddress>]
  [-DestinationLoadBalancerFrontEndIPConfigurationPropertiesSubnet <ISubnet>]
  [-DestinationLoadBalancerFrontEndIPConfigurationZone <String[]>]
  [-DestinationNetworkInterfaceIPConfigurationEtag <String>]
  [-DestinationNetworkInterfaceIPConfigurationId <String>]
  [-DestinationNetworkInterfaceIPConfigurationName <String>]
- [-DestinationNetworkInterfaceIPConfigurationPropertiesPrivateIPaddress <String>]
- [-DestinationNetworkInterfaceIPConfigurationPropertiesPrivateIPallocationMethod <IPAllocationMethod>]
+ [-DestinationNetworkInterfaceIPConfigurationPropertiesPrivateIPAddress <String>]
+ [-DestinationNetworkInterfaceIPConfigurationPropertiesPrivateIPAllocationMethod <IPAllocationMethod>]
  [-DestinationNetworkInterfaceIPConfigurationPropertiesProvisioningState <String>]
- [-DestinationNetworkInterfaceIPConfigurationPropertiesPublicIPaddress <IPublicIPAddress>]
+ [-DestinationNetworkInterfaceIPConfigurationPropertiesPublicIPAddress <IPublicIPAddress>]
  [-DestinationNetworkInterfaceIPConfigurationPropertiesSubnet <ISubnet>] [-DestinationPort <Int32>]
  [-Etag <String>] [-Id <String>] [-LoadBalancerBackendAddressPool <IBackendAddressPool[]>]
  [-LoadBalancerInboundNatRule <IInboundNatRule[]>] [-Location <String>] [-Primary]
@@ -221,7 +221,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DestinationLoadBalancerFrontEndIPConfigurationPropertiesPrivateIPaddress
+### -DestinationLoadBalancerFrontEndIPConfigurationPropertiesPrivateIPAddress
 The private IP address of the IP configuration.
 
 ```yaml
@@ -237,7 +237,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DestinationLoadBalancerFrontEndIPConfigurationPropertiesPrivateIPallocationMethod
+### -DestinationLoadBalancerFrontEndIPConfigurationPropertiesPrivateIPAllocationMethod
 The Private IP allocation method.
 
 ```yaml
@@ -270,7 +270,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DestinationLoadBalancerFrontEndIPConfigurationPropertiesPublicIPaddress
+### -DestinationLoadBalancerFrontEndIPConfigurationPropertiesPublicIPAddress
 The reference of the Public IP resource.
 
 ```yaml
@@ -367,7 +367,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DestinationNetworkInterfaceIPConfigurationPropertiesPrivateIPaddress
+### -DestinationNetworkInterfaceIPConfigurationPropertiesPrivateIPAddress
 Private IP address of the IP configuration.
 
 ```yaml
@@ -383,7 +383,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DestinationNetworkInterfaceIPConfigurationPropertiesPrivateIPallocationMethod
+### -DestinationNetworkInterfaceIPConfigurationPropertiesPrivateIPAllocationMethod
 The private IP address allocation method.
 
 ```yaml
@@ -416,7 +416,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DestinationNetworkInterfaceIPConfigurationPropertiesPublicIPaddress
+### -DestinationNetworkInterfaceIPConfigurationPropertiesPublicIPAddress
 Public IP address bound to the IP configuration.
 
 ```yaml
@@ -647,7 +647,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Create, CreateExpanded
-Aliases:
+Aliases: DestinationNetworkInterfaceIPConfiguration, DestinationLoadBalancerFrontEndIPConfiguration
 
 Required: True
 Position: Named

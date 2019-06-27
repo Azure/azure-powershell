@@ -14,24 +14,35 @@ This operation retrieves the policy definition in the given subscription with th
 
 ### List (Default)
 ```
-Get-AzPolicyDefinition -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyDefinition [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### WithBuiltIn
+```
+Get-AzPolicyDefinition -BuiltIn [-Name <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
-Get-AzPolicyDefinition -Name <String> -ManagementGroupId <String> [-DefaultProfile <PSObject>]
+Get-AzPolicyDefinition -ManagementGroupName <String> [-Name <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzPolicyDefinition -Name <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzPolicyDefinition [-Name <String>] [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetById
+```
+Get-AzPolicyDefinition -Id <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzPolicyDefinition -ManagementGroupId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyDefinition -ManagementGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity1
@@ -69,6 +80,22 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -BuiltIn
+Signals to retrieve built-in policy definitions.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: WithBuiltIn
+Aliases:
+
+Required: True
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -78,6 +105,22 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Id
+The ID of the policy definition.
+
+```yaml
+Type: System.String
+Parameter Sets: GetById
+Aliases: ResourceId
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -101,7 +144,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ManagementGroupId
+### -ManagementGroupName
 The ID of the management group.
 
 ```yaml
@@ -118,14 +161,14 @@ Dynamic: False
 ```
 
 ### -Name
-The name of the policy definition to get.
+The name of the built-in policy definition to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, Get
+Parameter Sets: WithBuiltIn, Get1, Get
 Aliases: PolicyDefinitionName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -138,7 +181,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: List, Get, GetById
 Aliases:
 
 Required: True

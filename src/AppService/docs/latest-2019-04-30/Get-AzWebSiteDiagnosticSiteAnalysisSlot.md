@@ -154,7 +154,7 @@ Dynamic: False
 ```
 
 ### -Slot
-Slot Name
+Slot - optional
 
 ```yaml
 Type: System.String

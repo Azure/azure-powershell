@@ -25,11 +25,11 @@ New-AzADApplication -TenantId <String> -DisplayName <String> [-AllowGuestsSignIn
  [-ErrorUrl <String>] [-GroupMembershipClaim <GroupMembershipClaimTypes>] [-Homepage <String>]
  [-IdentifierUri <String[]>] [-InformationalUrlMarketing <String>] [-InformationalUrlPrivacy <String>]
  [-InformationalUrlSupport <String>] [-InformationalUrlTermsOfService <String>] [-IsDeviceOnlyAuthSupported]
- [-KeyCredential <IKeyCredential[]>] [-KnownClientApplication <String[]>] [-LogoutUrl <String>]
- [-Oauth2AllowImplicitFlow] [-Oauth2AllowUrlPathMatching] [-Oauth2Permissions <IOAuth2Permission[]>]
+ [-KeyCredentials <IKeyCredential[]>] [-KnownClientApplication <String[]>] [-LogoutUrl <String>]
+ [-Oauth2AllowImplicitFlow] [-Oauth2AllowUrlPathMatching] [-Oauth2Permission <IOAuth2Permission[]>]
  [-Oauth2RequirePostResponse] [-OptionalClaimAccessToken <IOptionalClaim[]>]
  [-OptionalClaimIdToken <IOptionalClaim[]>] [-OptionalClaimSamlToken <IOptionalClaim[]>]
- [-OrgRestriction <String[]>] [-PasswordCredential <IPasswordCredential[]>]
+ [-OrgRestriction <String[]>] [-PasswordCredentials <IPasswordCredential[]>]
  [-PreAuthorizedApplication <IPreAuthorizedApplication[]>] [-PublicClient] [-PublisherDomain <String>]
  [-ReplyUrl <String[]>] [-RequiredResourceAccess <IRequiredResourceAccess[]>] [-SamlMetadataUrl <String>]
  [-SignInAudience <String>] [-WwwHomepage <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -43,12 +43,12 @@ New-AzADApplication -InputObject <IResourcesIdentity> -DisplayName <String> [-Al
  [-AvailableToOtherTenant] [-ErrorUrl <String>] [-GroupMembershipClaim <GroupMembershipClaimTypes>]
  [-Homepage <String>] [-IdentifierUri <String[]>] [-InformationalUrlMarketing <String>]
  [-InformationalUrlPrivacy <String>] [-InformationalUrlSupport <String>]
- [-InformationalUrlTermsOfService <String>] [-IsDeviceOnlyAuthSupported] [-KeyCredential <IKeyCredential[]>]
+ [-InformationalUrlTermsOfService <String>] [-IsDeviceOnlyAuthSupported] [-KeyCredentials <IKeyCredential[]>]
  [-KnownClientApplication <String[]>] [-LogoutUrl <String>] [-Oauth2AllowImplicitFlow]
- [-Oauth2AllowUrlPathMatching] [-Oauth2Permissions <IOAuth2Permission[]>] [-Oauth2RequirePostResponse]
+ [-Oauth2AllowUrlPathMatching] [-Oauth2Permission <IOAuth2Permission[]>] [-Oauth2RequirePostResponse]
  [-OptionalClaimAccessToken <IOptionalClaim[]>] [-OptionalClaimIdToken <IOptionalClaim[]>]
  [-OptionalClaimSamlToken <IOptionalClaim[]>] [-OrgRestriction <String[]>]
- [-PasswordCredential <IPasswordCredential[]>] [-PreAuthorizedApplication <IPreAuthorizedApplication[]>]
+ [-PasswordCredentials <IPasswordCredential[]>] [-PreAuthorizedApplication <IPreAuthorizedApplication[]>]
  [-PublicClient] [-PublisherDomain <String>] [-ReplyUrl <String[]>]
  [-RequiredResourceAccess <IRequiredResourceAccess[]>] [-SamlMetadataUrl <String>] [-SignInAudience <String>]
  [-WwwHomepage <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -375,7 +375,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -KeyCredential
+### -KeyCredentials
 A collection of KeyCredential objects.
 
 ```yaml
@@ -457,7 +457,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Oauth2Permissions
+### -Oauth2Permission
 The collection of OAuth 2.0 permission scopes that the web API (resource) application exposes to client applications.
 These permission scopes may be granted to client applications during consent.
 
@@ -571,7 +571,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PasswordCredential
+### -PasswordCredentials
 A collection of PasswordCredential objects
 
 ```yaml

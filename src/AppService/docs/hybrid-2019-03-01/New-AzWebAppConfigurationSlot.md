@@ -26,7 +26,7 @@ New-AzWebAppConfigurationSlot -Name <String> -ResourceGroupName <String> -Slot <
  [-ActionMinProcessExecutionTime <String>] [-AlwaysOn] [-ApiDefinitionUrl <String>] [-AppCommandLine <String>]
  [-AppSetting <INameValuePair[]>] [-AutoHealEnabled] [-AutoSwapSlotName <String>]
  [-AzureStorageAccount <ISiteConfigAzureStorageAccounts>] [-ConnectionString <IConnStringInfo[]>]
- [-CorAllowedOrigin <String[]>] [-CorSupportCredential] [-CustomActionExe <String>]
+ [-CorAllowedOrigin <String[]>] [-CorSupportCredentials] [-CustomActionExe <String>]
  [-CustomActionParameter <String>] [-DefaultDocument <String[]>] [-DetailedErrorLoggingEnabled]
  [-DocumentRoot <String>] [-DynamicTagsJson <String>] [-ExperimentRampUpRule <IRampUpRule[]>]
  [-FtpsState <FtpsState>] [-HandlerMapping <IHandlerMapping[]>] [-Http20Enabled] [-HttpLoggingEnabled]
@@ -57,7 +57,7 @@ New-AzWebAppConfigurationSlot -InputObject <IWebSiteIdentity> -ActionType <AutoH
  [-ActionMinProcessExecutionTime <String>] [-AlwaysOn] [-ApiDefinitionUrl <String>] [-AppCommandLine <String>]
  [-AppSetting <INameValuePair[]>] [-AutoHealEnabled] [-AutoSwapSlotName <String>]
  [-AzureStorageAccount <ISiteConfigAzureStorageAccounts>] [-ConnectionString <IConnStringInfo[]>]
- [-CorAllowedOrigin <String[]>] [-CorSupportCredential] [-CustomActionExe <String>]
+ [-CorAllowedOrigin <String[]>] [-CorSupportCredentials] [-CustomActionExe <String>]
  [-CustomActionParameter <String>] [-DefaultDocument <String[]>] [-DetailedErrorLoggingEnabled]
  [-DocumentRoot <String>] [-DynamicTagsJson <String>] [-ExperimentRampUpRule <IRampUpRule[]>]
  [-FtpsState <FtpsState>] [-HandlerMapping <IHandlerMapping[]>] [-Http20Enabled] [-HttpLoggingEnabled]
@@ -290,7 +290,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -CorSupportCredential
+### -CorSupportCredentials
 Gets or sets whether CORS requests with credentials are allowed.
 See https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentialsfor more details.
 
@@ -1453,9 +1453,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISiteConfigResource
-
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISiteConfigResource
 
 ## OUTPUTS
 

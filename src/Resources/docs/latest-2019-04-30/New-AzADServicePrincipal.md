@@ -21,17 +21,17 @@ New-AzADServicePrincipal -TenantId <String> [-Parameter <IServicePrincipalCreate
 ### CreateExpanded
 ```
 New-AzADServicePrincipal -TenantId <String> -AppId <String> [-AccountEnabled <String>]
- [-AppRoleAssignmentRequired] [-KeyCredential <IKeyCredential[]>]
- [-PasswordCredential <IPasswordCredential[]>] [-Tag <String[]>] [-Type <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AppRoleAssignmentRequired] [-KeyCredentials <IKeyCredential[]>]
+ [-PasswordCredentials <IPasswordCredential[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzADServicePrincipal -InputObject <IResourcesIdentity> -AppId <String> [-AccountEnabled <String>]
- [-AppRoleAssignmentRequired] [-KeyCredential <IKeyCredential[]>]
- [-PasswordCredential <IPasswordCredential[]>] [-Tag <String[]>] [-Type <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AppRoleAssignmentRequired] [-KeyCredentials <IKeyCredential[]>]
+ [-PasswordCredentials <IPasswordCredential[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -145,7 +145,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -KeyCredential
+### -KeyCredentials
 The collection of key credentials associated with the service principal.
 
 ```yaml
@@ -177,11 +177,27 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PasswordCredential
+### -PasswordCredentials
 The collection of password credentials associated with the service principal.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPasswordCredential[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ServicePrincipalType
+the type of the service principal
+
+```yaml
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -219,22 +235,6 @@ Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Type
-the type of the service principal
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases: ServicePrincipalType
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

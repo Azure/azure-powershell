@@ -18,6 +18,12 @@ Get-AzWebAppBackupConfiguration -Name <String> -ResourceGroupName <String> -Subs
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### GetSlot
+```
+Get-AzWebAppBackupConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ -Slot <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzWebAppBackupConfiguration -InputObject <IWebSiteIdentity> [-DefaultProfile <PSObject>] [-Confirm]
@@ -86,7 +92,7 @@ Name of the app.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetSlot
 Aliases:
 
 Required: True
@@ -102,7 +108,24 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetSlot
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Slot
+Name of the deployment slot.
+If a slot is not specified, the API will get the backup configuration for the production slot.
+
+```yaml
+Type: System.String
+Parameter Sets: GetSlot
 Aliases:
 
 Required: True
@@ -120,7 +143,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
+Parameter Sets: Get, GetSlot
 Aliases:
 
 Required: True
@@ -176,6 +199,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IBackupRequest
 
 ## ALIASES
+
+### Get-AzWebAppBackupConfigurationSlot
 
 ## RELATED LINKS
 

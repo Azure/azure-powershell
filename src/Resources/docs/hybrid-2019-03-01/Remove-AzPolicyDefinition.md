@@ -12,15 +12,21 @@ Deletes a policy definition.
 
 ## SYNTAX
 
-### Delete2 (Default)
+### DeleteById (Default)
 ```
-Remove-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>]
+Remove-AzPolicyDefinition -Id <String> [-SubscriptionId <String>] [-PassThru] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Delete3
 ```
-Remove-AzPolicyDefinition -Name <String> -ManagementGroupId <String> [-PassThru] [-DefaultProfile <PSObject>]
+Remove-AzPolicyDefinition -Name <String> -ManagementGroupName <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Delete2
+```
+Remove-AzPolicyDefinition -Name <String> [-SubscriptionId <String>] [-PassThru] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -77,6 +83,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Id
+The ID of the policy definition.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteById
+Aliases: ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -93,7 +115,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ManagementGroupId
+### -ManagementGroupName
 The ID of the management group.
 
 ```yaml
@@ -114,7 +136,7 @@ The name of the policy definition to delete.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete2, Delete3
+Parameter Sets: Delete3, Delete2
 Aliases: PolicyDefinitionName
 
 Required: True
@@ -146,10 +168,10 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete2
+Parameter Sets: DeleteById, Delete2
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

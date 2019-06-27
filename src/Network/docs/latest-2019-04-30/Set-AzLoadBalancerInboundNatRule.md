@@ -28,7 +28,7 @@ Set-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -Name <String> -Reso
  [-BackendIPConfigurationId <String>] [-BackendIPConfigurationName <String>]
  [-BackendIPConfigurationPropertiesProvisioningState <String>] [-BackendPort <Int32>] [-EnableFloatingIP]
  [-EnableTcpReset] [-Etag <String>] [-FrontendIPConfigurationId <String>] [-FrontendPort <Int32>]
- [-Id <String>] [-IdleTimeoutInMinute <Int32>] [-LoadBalancerBackendAddressPool <IBackendAddressPool[]>]
+ [-Id <String>] [-IdleTimeoutInMinutes <Int32>] [-LoadBalancerBackendAddressPool <IBackendAddressPool[]>]
  [-LoadBalancerInboundNatRule <IInboundNatRule[]>] [-Primary] [-PrivateIPAddress <String>]
  [-PrivateIPAddressVersion <IPVersion>] [-PrivateIPAllocationMethod <IPAllocationMethod>]
  [-Protocol <TransportProtocol>] [-ProvisioningState <String>] [-PublicIPAddress <IPublicIPAddress>]
@@ -309,7 +309,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IdleTimeoutInMinute
+### -IdleTimeoutInMinutes
 The timeout for the TCP idle connection.
 The value can be set between 4 and 30 minutes.
 The default value is 4 minutes.

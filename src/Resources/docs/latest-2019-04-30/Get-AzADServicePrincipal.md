@@ -25,6 +25,18 @@ Get-AzADServicePrincipal -ObjectId <String> -TenantId <String> -ApplicationObjec
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetBySPN
+```
+Get-AzADServicePrincipal -TenantId <String> -ApplicationObject <IApplication> -ServicePrincipalName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetByDisplayNamePrefix
+```
+Get-AzADServicePrincipal -TenantId <String> -ApplicationObject <IApplication> -DisplayNameBeginsWith <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetByDisplayName
 ```
 Get-AzADServicePrincipal -TenantId <String> -ApplicationObject <IApplication> -DisplayName <String>
@@ -70,7 +82,7 @@ PS C:\> {{ Add code here }}
 ## PARAMETERS
 
 ### -ApplicationId
-
+The application id of the application.
 
 ```yaml
 Type: System.String
@@ -86,7 +98,7 @@ Dynamic: False
 ```
 
 ### -ApplicationObject
-
+The object representation of the application.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IApplication
@@ -118,11 +130,27 @@ Dynamic: False
 ```
 
 ### -DisplayName
-
+The display name of the application.
 
 ```yaml
 Type: System.String
 Parameter Sets: GetByDisplayName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -DisplayNameBeginsWith
+The prefix of the display name of the application.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByDisplayNamePrefix
 Aliases:
 
 Required: True
@@ -181,8 +209,24 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -TenantId
+### -ServicePrincipalName
+The display name of the application.
 
+```yaml
+Type: System.String
+Parameter Sets: GetBySPN
+Aliases: SPN
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TenantId
+The tenant ID.
 
 ```yaml
 Type: System.String

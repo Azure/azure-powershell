@@ -22,6 +22,16 @@ Get-AzRoleDefinition -Id <String> [-DefaultProfile <PSObject>] [<CommonParameter
 Get-AzRoleDefinition -Id <String> -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetByName
+```
+Get-AzRoleDefinition -Scope <String> -Name <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetByCustom
+```
+Get-AzRoleDefinition -Scope <String> -Custom [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List1
 ```
 Get-AzRoleDefinition -Scope <String> [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -61,6 +71,22 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -Custom
+Signals that only custom created roles in the directory should be returned.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: GetByCustom
+Aliases:
+
+Required: True
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -127,12 +153,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the role definition.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Scope
 The scope of the role definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get2, List1
+Parameter Sets: Get2, GetByName, GetByCustom, List1
 Aliases:
 
 Required: True

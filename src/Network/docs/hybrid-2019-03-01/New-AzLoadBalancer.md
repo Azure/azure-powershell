@@ -374,7 +374,7 @@ Name of a load balancer SKU.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.LoadBalancerSkuName
 Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
+Aliases: Sku
 
 Required: False
 Position: Named

@@ -68,6 +68,60 @@ directive:
     set:
       subject-prefix: ''
   - where:
+      verb: Backup|New|Remove|Restart|Restore|Set|Start|Stop
+      subject: WebAppSlot
+      variant: (.*)
+    set:
+      variant: $1Slot
+  - where:
+      verb: Backup|New|Remove|Restart|Restore|Set|Start|Stop
+      subject: WebAppSlot
+    set:
+      subject: WebApp
+      alias: ${verb}-AzWebAppSlot
+  - where:
+      subject: WebAppBackup.*Slot
+      variant: (.*)
+    set:
+      variant: $1Slot
+  - where:
+      subject: WebAppBackup(.*)Slot
+    set:
+      subject: WebAppBackup$1
+      alias: ${verb}-Az${subject}Slot
+  - where:
+      subject: WebAppSnapshot.*Slot
+      variant: (.*)
+    set:
+      variant: $1Slot
+  - where:
+      subject: WebAppSnapshot(.*)Slot
+    set:
+      subject: WebAppSnapshot$1
+      alias: ${verb}-Az${subject}Slot
+  - where:
+      verb: Get
+      subject: WebAppMetricSlot
+      variant: (.*)
+    set:
+      variant: $1Slot
+  - where:
+      verb: Get
+      subject: WebAppMetricSlot
+    set:
+      subject: WebAppMetric
+  - where:
+      verb: Get
+      subject: WebAppPublishingCredentialsSlot
+      variant: (.*)
+    set:
+      variant: $1Slot
+  - where:
+      verb: Get
+      subject: WebAppPublishingCredentialsSlot
+    set:
+      subject: WebAppPublishingCredentials
+  - where:
       verb: Get
       subject: AppServicePlanMetric
     set:
@@ -80,7 +134,7 @@ directive:
       verb: Get
       subject: WebAppMetric
     set:
-      alias: Get-AzWebAppMetrics
+      alias: ['Get-AzWebAppMetrics', 'Get-AzWebAppSlotMetric', 'Get-AzWebAppSlotMetrics']
   - where:
       verb: Get
       subject: WebAppPublishingProfileXml
@@ -92,31 +146,24 @@ directive:
     set:
       alias: ${verb}-AzWebAppSlotConfigName
   - where:
-      verb: Get
-      subject: WebAppMetricSlot
-    set:
-      subject: WebAppSlotMetric
-      alias: Get-AzWebAppSlotMetrics
-  - where:
       verb: Backup
       subject: WebApp
     set:
-      alias: New-AzWebAppBackup
-  - where:
-      verb: Backup
-      subject: WebAppSlot
-    set:
-      alias: New-AzWebAppSlotBackup
+      alias: ['Backup-AzWebAppSlot', 'New-AzWebAppBackup', 'New-AzWebAppSlotBackup']
   - where:
       subject: WebAppNewSitePublishingPassword
     set:
       subject: WebAppPublishingPassword
-      alias: Reset-AzWebAppPublishingProfile
+      alias: ['Reset-AzWebAppPublishingProfile', 'Reset-AzWebAppSlotPublishingProfile']
+  - where:
+      subject: WebAppNewSitePublishingPasswordSlot
+      variant: (.*)
+    set:
+      variant: $1Slot
   - where:
       subject: WebAppNewSitePublishingPasswordSlot
     set:
-      subject: WebAppSlotPublishingPassword
-      alias: Reset-AzWebAppSlotPublishingProfile
+      subject: WebAppPublishingPassword
   - where:
       verb: Restore
       subject: WebAppFromDeletedApp
@@ -125,8 +172,14 @@ directive:
   - where:
       verb: Restore
       subject: WebAppFromDeletedAppSlot
+      variant: (.*)
     set:
-      subject: DeletedWebAppSlot
+      variant: $1Slot
+  - where:
+      verb: Restore
+      subject: WebAppFromDeletedAppSlot
+    set:
+      subject: DeletedWebApp
   - where:
       subject: WebApp
       parameter-name: InputObject
@@ -230,13 +283,19 @@ directive:
       verb: Get
       subject: WebAppPublishingCredentials
     set:
-      alias: Get-AzWebAppContainerContinuousDeploymentUrl
+      alias: ['Get-AzWebAppContainerContinuousDeploymentUrl', 'Get-AzWebAppPublishingCredentialsSlot']
   - where:
       verb: Restore
       subject: DeletedWebApp
       parameter-name: RecoverConfiguration
     set:
       alias: RestoreContentOnly
+  - where:
+      verb: Restore
+      subject: DeletedWebApp
+      parameter-name: (Name|ResourceGroupName|Slot)
+    set:
+      alias: Target$1
   - where:
       verb: Set
       subject: WebAppBackupConfiguration
@@ -247,4 +306,17 @@ directive:
       subject: WebApp
     set:
       alias: Restore-AzWebAppBackup
+  - where:
+      verb: Restore
+      subject: WebApp
+      parameter-name: (Database|IgnoreConflictingHostName)
+    set:
+      alias: $1s
+  - where:
+      variant: (.*)SlotSlot
+    set:
+      variant: $1Slot
+  - where:
+      variant: (.*)ViaIdentitySlot
+    remove: true
 ```

@@ -25,19 +25,6 @@ Set-AzWebAppPrivateAccessVnet -Name <String> -ResourceGroupName <String> -Subscr
  [-WhatIf] [<CommonParameters>]
 ```
 
-### PutViaIdentityExpanded
-```
-Set-AzWebAppPrivateAccessVnet -InputObject <IWebSiteIdentity> [-Enabled] [-Kind <String>]
- [-VirtualNetwork <IPrivateAccessVirtualNetwork[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### PutViaIdentity
-```
-Set-AzWebAppPrivateAccessVnet -InputObject <IWebSiteIdentity> [-Access <IPrivateAccess>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Sets data around private site access enablement and authorized Virtual Networks that can access the site.
 
@@ -68,7 +55,7 @@ Description of the parameters of Private Access for a Web Site.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IPrivateAccess
-Parameter Sets: Put, PutViaIdentity
+Parameter Sets: Put
 Aliases:
 
 Required: False
@@ -100,7 +87,7 @@ Whether private access is enabled or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: PutExpanded, PutViaIdentityExpanded
+Parameter Sets: PutExpanded
 Aliases:
 
 Required: False
@@ -111,28 +98,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: PutViaIdentityExpanded, PutViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Kind
 Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: PutExpanded, PutViaIdentityExpanded
+Parameter Sets: PutExpanded
 Aliases:
 
 Required: False
@@ -148,7 +119,7 @@ The name of the web app.
 
 ```yaml
 Type: System.String
-Parameter Sets: Put, PutExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -164,7 +135,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Put, PutExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -182,7 +153,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Put, PutExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -198,7 +169,7 @@ The Virtual Networks (and subnets) allowed to access the site privately.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IPrivateAccessVirtualNetwork[]
-Parameter Sets: PutExpanded, PutViaIdentityExpanded
+Parameter Sets: PutExpanded
 Aliases:
 
 Required: False
@@ -248,8 +219,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IPrivateAccess
-
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
 
 ## OUTPUTS
 

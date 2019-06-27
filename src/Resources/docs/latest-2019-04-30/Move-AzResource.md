@@ -21,6 +21,13 @@ Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> [-Par
  [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### MoveByComponents
+```
+Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> -TargetResourceGroupName <String>
+ [-PassThru] [-Resource <String[]>] [-TargetSubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### MoveExpanded
 ```
 Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> [-PassThru] [-Resource <String[]>]
@@ -154,7 +161,7 @@ The IDs of the resources.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: MoveExpanded, MoveViaIdentityExpanded
+Parameter Sets: MoveByComponents, MoveExpanded, MoveViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -170,7 +177,7 @@ The name of the resource group containing the resources to move.
 
 ```yaml
 Type: System.String
-Parameter Sets: Move, MoveExpanded
+Parameter Sets: Move, MoveByComponents, MoveExpanded
 Aliases:
 
 Required: True
@@ -186,7 +193,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Move, MoveExpanded
+Parameter Sets: Move, MoveByComponents, MoveExpanded
 Aliases:
 
 Required: True
@@ -204,6 +211,39 @@ The target resource group.
 Type: System.String
 Parameter Sets: MoveExpanded, MoveViaIdentityExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TargetResourceGroupName
+The target resource group name.
+
+```yaml
+Type: System.String
+Parameter Sets: MoveByComponents
+Aliases: DestinationResourceGroupName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TargetSubscriptionId
+The target subscription id.
+If not value is provided, the subscription id of the current context will be used.
+
+```yaml
+Type: System.String
+Parameter Sets: MoveByComponents
+Aliases: DestinationSubscriptionId
 
 Required: False
 Position: Named

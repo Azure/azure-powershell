@@ -21,7 +21,7 @@ Set-AzNatGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 ### UpdateExpanded
 ```
 Set-AzNatGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Etag <String>]
- [-Id <String>] [-IdleTimeoutInMinute <Int32>] [-Location <String>] [-ProvisioningState <String>]
+ [-Id <String>] [-IdleTimeoutInMinutes <Int32>] [-Location <String>] [-ProvisioningState <String>]
  [-PublicIPAddress <ISubResource[]>] [-PublicIPPrefix <ISubResource[]>] [-ResourceGuid <String>]
  [-SkuName <NatGatewaySkuName>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IdleTimeoutInMinute
+### -IdleTimeoutInMinutes
 The idle timeout of the nat gateway.
 
 ```yaml

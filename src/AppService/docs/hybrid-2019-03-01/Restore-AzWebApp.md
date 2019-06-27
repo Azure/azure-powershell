@@ -19,13 +19,39 @@ Restore-AzWebApp -BackupId <String> -Name <String> -ResourceGroupName <String> -
  [<CommonParameters>]
 ```
 
+### RestoreSlot
+```
+Restore-AzWebApp -BackupId <String> -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Slot <String> [-PassThru] [-Request <IRestoreRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### RestoreExpandedSlot
+```
+Restore-AzWebApp -BackupId <String> -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Slot <String> -Overwrite -StorageAccountUrl <String> [-PassThru] [-AdjustConnectionString]
+ [-AppServicePlan <String>] [-BlobName <String>] [-Database <IDatabaseBackupSetting[]>]
+ [-HostingEnvironment <String>] [-IgnoreConflictingHostName] [-IgnoreDatabase] [-Kind <String>]
+ [-OperationType <BackupRestoreOperationType>] [-SiteName <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### RestoreExpanded
 ```
 Restore-AzWebApp -BackupId <String> -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  -Overwrite -StorageAccountUrl <String> [-PassThru] [-AdjustConnectionString] [-AppServicePlan <String>]
  [-BlobName <String>] [-Database <IDatabaseBackupSetting[]>] [-HostingEnvironment <String>]
- [-IgnoreConflictingHostName] [-IgnoreDatabas] [-Kind <String>] [-OperationType <BackupRestoreOperationType>]
+ [-IgnoreConflictingHostName] [-IgnoreDatabase] [-Kind <String>] [-OperationType <BackupRestoreOperationType>]
  [-SiteName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RestoreViaIdentityExpandedSlot
+```
+Restore-AzWebApp -InputObject <IWebSiteIdentity> -Overwrite -StorageAccountUrl <String> [-PassThru]
+ [-AdjustConnectionString] [-AppServicePlan <String>] [-BlobName <String>]
+ [-Database <IDatabaseBackupSetting[]>] [-HostingEnvironment <String>] [-IgnoreConflictingHostName]
+ [-IgnoreDatabase] [-Kind <String>] [-OperationType <BackupRestoreOperationType>] [-SiteName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreViaIdentityExpanded
@@ -33,7 +59,7 @@ Restore-AzWebApp -BackupId <String> -Name <String> -ResourceGroupName <String> -
 Restore-AzWebApp -InputObject <IWebSiteIdentity> -Overwrite -StorageAccountUrl <String> [-PassThru]
  [-AdjustConnectionString] [-AppServicePlan <String>] [-BlobName <String>]
  [-Database <IDatabaseBackupSetting[]>] [-HostingEnvironment <String>] [-IgnoreConflictingHostName]
- [-IgnoreDatabas] [-Kind <String>] [-OperationType <BackupRestoreOperationType>] [-SiteName <String>]
+ [-IgnoreDatabase] [-Kind <String>] [-OperationType <BackupRestoreOperationType>] [-SiteName <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -73,7 +99,7 @@ PS C:\> {{ Add code here }}
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: RestoreExpanded, RestoreViaIdentityExpanded
+Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -89,7 +115,7 @@ Specify app service plan that will own restored site.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreExpanded, RestoreViaIdentityExpanded
+Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -121,7 +147,7 @@ ID of the backup.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restore, RestoreExpanded
+Parameter Sets: Restore, RestoreSlot, RestoreExpandedSlot, RestoreExpanded
 Aliases:
 
 Required: True
@@ -137,7 +163,7 @@ Name of a blob which contains the backup.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreExpanded, RestoreViaIdentityExpanded
+Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -154,8 +180,8 @@ This list has to match the list of databases included in the backup.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IDatabaseBackupSetting[]
-Parameter Sets: RestoreExpanded, RestoreViaIdentityExpanded
-Aliases:
+Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
+Aliases: Databases
 
 Required: False
 Position: Named
@@ -186,7 +212,7 @@ App Service Environment name, if needed (only when restoring an app to an App Se
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreExpanded, RestoreViaIdentityExpanded
+Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -204,8 +230,8 @@ If <code>false</code>, custom domains are added to the app's object when it is b
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: RestoreExpanded, RestoreViaIdentityExpanded
-Aliases:
+Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
+Aliases: IgnoreConflictingHostNames
 
 Required: False
 Position: Named
@@ -215,13 +241,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IgnoreDatabas
+### -IgnoreDatabase
 Ignore the databases and only restore the site content
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: RestoreExpanded, RestoreViaIdentityExpanded
-Aliases:
+Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
+Aliases: IgnoreDatabases
 
 Required: False
 Position: Named
@@ -236,7 +262,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: RestoreViaIdentityExpanded, RestoreViaIdentity
+Parameter Sets: RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded, RestoreViaIdentity
 Aliases:
 
 Required: True
@@ -252,7 +278,7 @@ Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreExpanded, RestoreViaIdentityExpanded
+Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -268,7 +294,7 @@ Name of the app.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restore, RestoreExpanded
+Parameter Sets: Restore, RestoreSlot, RestoreExpandedSlot, RestoreExpanded
 Aliases:
 
 Required: True
@@ -284,7 +310,7 @@ Operation type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.BackupRestoreOperationType
-Parameter Sets: RestoreExpanded, RestoreViaIdentityExpanded
+Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -301,7 +327,7 @@ Dynamic: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: RestoreExpanded, RestoreViaIdentityExpanded
+Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -333,7 +359,7 @@ Description of a restore request.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IRestoreRequest
-Parameter Sets: Restore, RestoreViaIdentity
+Parameter Sets: Restore, RestoreSlot, RestoreViaIdentity
 Aliases:
 
 Required: False
@@ -349,7 +375,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restore, RestoreExpanded
+Parameter Sets: Restore, RestoreSlot, RestoreExpandedSlot, RestoreExpanded
 Aliases:
 
 Required: True
@@ -365,10 +391,27 @@ Name of an app.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreExpanded, RestoreViaIdentityExpanded
+Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Slot
+Name of the deployment slot.
+If a slot is not specified, the API will restore a backup of the production slot.
+
+```yaml
+Type: System.String
+Parameter Sets: RestoreSlot, RestoreExpandedSlot
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -381,7 +424,7 @@ SAS URL to the container.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreExpanded, RestoreViaIdentityExpanded
+Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -399,7 +442,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restore, RestoreExpanded
+Parameter Sets: Restore, RestoreSlot, RestoreExpandedSlot, RestoreExpanded
 Aliases:
 
 Required: True
@@ -448,9 +491,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IRestoreRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IRestoreRequest
 
 ## OUTPUTS
 
@@ -459,6 +502,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Restore-AzWebAppBackup
+
+### Restore-AzWebAppSlot
 
 ## RELATED LINKS
 

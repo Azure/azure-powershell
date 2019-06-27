@@ -79,7 +79,7 @@ Dynamic: False
 ### -Detailed
 Specify <code>true</code> to return all App Service plan properties.
 The default is <code>false</code>, which returns a subset of the properties.
-Retrieval of all properties may increase the API latency.
+ Retrieval of all properties may increase the API latency.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

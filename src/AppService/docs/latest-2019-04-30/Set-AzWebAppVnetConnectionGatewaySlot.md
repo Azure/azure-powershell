@@ -15,27 +15,15 @@ Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
 ### Update (Default)
 ```
 Set-AzWebAppVnetConnectionGatewaySlot -GatewayName <String> -Name <String> -ResourceGroupName <String>
- -Slot <String> -SubscriptionId <String> [-VnetName <String>] [-ConnectionEnvelope <IVnetGateway>]
+ -Slot <String> -SubscriptionId <String> -VnetName <String> [-ConnectionEnvelope <IVnetGateway>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
 Set-AzWebAppVnetConnectionGatewaySlot -GatewayName <String> -Name <String> -ResourceGroupName <String>
- -Slot <String> -SubscriptionId <String> -VpnPackageUri <String> [-VnetName <String>] [-Kind <String>]
+ -Slot <String> -SubscriptionId <String> -VnetName <String> -VpnPackageUri <String> [-Kind <String>]
  [-PropertiesVnetName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Set-AzWebAppVnetConnectionGatewaySlot -InputObject <IWebSiteIdentity> -VpnPackageUri <String>
- [-VnetName <String>] [-Kind <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Set-AzWebAppVnetConnectionGatewaySlot -InputObject <IWebSiteIdentity> [-ConnectionEnvelope <IVnetGateway>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,7 +57,7 @@ This is used to give the Virtual Network gateway access to the VPN package.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IVnetGateway
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: Update
 Aliases:
 
 Required: False
@@ -102,7 +90,7 @@ Currently, the only supported string is "primary".
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -113,28 +101,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Kind
 Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -150,7 +122,7 @@ Name of the app.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -182,7 +154,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -199,7 +171,7 @@ If a slot is not specified, the API will add or update a gateway for the product
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -217,7 +189,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -229,11 +201,11 @@ Dynamic: False
 ```
 
 ### -VnetName
-The Virtual Network name.
+Name of the Virtual Network.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -249,7 +221,7 @@ The URI where the VPN package can be downloaded.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -299,8 +271,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IVnetGateway
-
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
 
 ## OUTPUTS
 

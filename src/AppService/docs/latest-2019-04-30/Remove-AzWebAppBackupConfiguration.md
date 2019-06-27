@@ -18,6 +18,12 @@ Remove-AzWebAppBackupConfiguration -Name <String> -ResourceGroupName <String> -S
  [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteSlot
+```
+Remove-AzWebAppBackupConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Slot <String> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzWebAppBackupConfiguration -InputObject <IWebSiteIdentity> [-PassThru] [-DefaultProfile <PSObject>]
@@ -86,7 +92,7 @@ Name of the app.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteSlot
 Aliases:
 
 Required: True
@@ -118,7 +124,24 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteSlot
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Slot
+Name of the deployment slot.
+If a slot is not specified, the API will delete the backup configuration for the production slot.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteSlot
 Aliases:
 
 Required: True
@@ -136,7 +159,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteSlot
 Aliases:
 
 Required: True
@@ -192,6 +215,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+### Remove-AzWebAppBackupConfigurationSlot
 
 ## RELATED LINKS
 

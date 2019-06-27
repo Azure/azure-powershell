@@ -22,6 +22,12 @@ Get-AzADGroup -TenantId <String> [-Filter <String>] [-DefaultProfile <PSObject>]
 Get-AzADGroup -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetByDisplayNamePrefix
+```
+Get-AzADGroup -TenantId <String> -DisplayNameStartsWith <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### GetByDisplayName
 ```
 Get-AzADGroup -TenantId <String> -DisplayName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -74,11 +80,27 @@ Dynamic: False
 ```
 
 ### -DisplayName
-
+The display name of the application.
 
 ```yaml
 Type: System.String
 Parameter Sets: GetByDisplayName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -DisplayNameStartsWith
+The prefix of the display name of the application.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByDisplayNamePrefix
 Aliases:
 
 Required: True
@@ -138,11 +160,11 @@ Dynamic: False
 ```
 
 ### -TenantId
-
+The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get, GetByDisplayName
+Parameter Sets: List, Get, GetByDisplayNamePrefix, GetByDisplayName
 Aliases:
 
 Required: True

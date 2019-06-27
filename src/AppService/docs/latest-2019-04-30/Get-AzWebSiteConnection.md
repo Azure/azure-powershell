@@ -119,7 +119,7 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+The resource group name.
 
 ```yaml
 Type: System.String

@@ -265,7 +265,7 @@ A collection of security rules of the network security group.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityRule[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: SecurityRules
 
 Required: False
 Position: Named

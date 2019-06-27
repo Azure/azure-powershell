@@ -26,7 +26,7 @@ New-AzWebSiteManagedHostingEnvironmentManagedHostingEnvironment -InputObject <IW
  [-AllowedMultiSize <String>] [-AllowedWorkerSize <String>] [-ApiManagementAccountId <String>]
  [-ClusterSetting <INameValuePair[]>] [-DatabaseEdition <String>] [-DatabaseServiceObjective <String>]
  [-DnsSuffix <String>] [-EnvironmentCapacity <IStampCapacity[]>] [-EnvironmentIsHealthy]
- [-EnvironmentStatu <String>] [-Id <String>] [-InternalLoadBalancingMode <InternalLoadBalancingMode>]
+ [-EnvironmentStatus <String>] [-Id <String>] [-InternalLoadBalancingMode <InternalLoadBalancingMode>]
  [-IpsslAddressCount <Int32>] [-Kind <String>] [-LastAction <String>] [-LastActionResult <String>]
  [-MaximumNumberOfMachine <Int32>] [-MultiRoleCount <Int32>] [-MultiSize <String>]
  [-NetworkAccessControlList <INetworkAccessControlEntry[]>] [-PropertiesLocation <String>]
@@ -45,7 +45,7 @@ New-AzWebSiteManagedHostingEnvironmentManagedHostingEnvironment -ResourceGroupNa
  [-AllowedMultiSize <String>] [-AllowedWorkerSize <String>] [-ApiManagementAccountId <String>]
  [-ClusterSetting <INameValuePair[]>] [-DatabaseEdition <String>] [-DatabaseServiceObjective <String>]
  [-DnsSuffix <String>] [-EnvironmentCapacity <IStampCapacity[]>] [-EnvironmentIsHealthy]
- [-EnvironmentStatu <String>] [-Id <String>] [-InternalLoadBalancingMode <InternalLoadBalancingMode>]
+ [-EnvironmentStatus <String>] [-Id <String>] [-InternalLoadBalancingMode <InternalLoadBalancingMode>]
  [-IpsslAddressCount <Int32>] [-Kind <String>] [-LastAction <String>] [-LastActionResult <String>]
  [-MaximumNumberOfMachine <Int32>] [-MultiRoleCount <Int32>] [-MultiSize <String>] [-Name1 <String>]
  [-NetworkAccessControlList <INetworkAccessControlEntry[]>] [-PropertiesLocation <String>]
@@ -267,7 +267,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -EnvironmentStatu
+### -EnvironmentStatus
 Detailed message about with results of the last check of the hostingEnvironment (App Service Environment)
 
 ```yaml
@@ -477,7 +477,7 @@ Dynamic: False
 ```
 
 ### -Name
-Resource Name
+Name of managed hosting environment
 
 ```yaml
 Type: System.String
@@ -654,7 +654,9 @@ Dynamic: False
 ```
 
 ### -SubscriptionId
-Subscription of the hostingEnvironment (App Service Environment)
+Your Azure subscription ID.
+This is a GUID-formatted string (e.g.
+00000000-0000-0000-0000-000000000000).
 
 ```yaml
 Type: System.String
@@ -917,9 +919,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IHostingEnvironment
-
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IHostingEnvironment
 
 ## OUTPUTS
 

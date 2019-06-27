@@ -12,9 +12,16 @@ Returns all Snapshots to the user from DRSecondary endpoint.
 
 ## SYNTAX
 
+### List (Default)
 ```
 Get-AzWebAppSnapshotFromDrSecondary -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListSlot
+```
+Get-AzWebAppSnapshotFromDrSecondary -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ -Slot <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,6 +97,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Slot
+Website Slot.
+
+```yaml
+Type: System.String
+Parameter Sets: ListSlot
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -SubscriptionId
 Your Azure subscription ID.
 This is a GUID-formatted string (e.g.
@@ -118,6 +141,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.ISnapshot
 
 ## ALIASES
+
+### Get-AzWebAppSnapshotFromDrSecondarySlot
 
 ## RELATED LINKS
 

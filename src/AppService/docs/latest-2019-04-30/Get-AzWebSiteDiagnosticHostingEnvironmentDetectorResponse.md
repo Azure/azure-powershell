@@ -122,7 +122,7 @@ Dynamic: False
 ```
 
 ### -Name
-Site Name
+App Service Environment Name
 
 ```yaml
 Type: System.String

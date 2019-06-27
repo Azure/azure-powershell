@@ -12,9 +12,29 @@ Gets performance metrics of an app (or deployment slot, if specified).
 
 ## SYNTAX
 
+### List (Default)
 ```
-Get-AzWebAppMetric -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-Detail]
+Get-AzWebAppMetric -SubscriptionId <String[]> -Name <String> -ResourceGroupName <String> [-Detail]
  [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListByFilter
+```
+Get-AzWebAppMetric -SubscriptionId <String[]> -Name <String> -ResourceGroupName <String> [-Slot <String>]
+ [-Detail] [-Metric <String[]>] [-StartTime <DateTime>] [-EndTime <DateTime>] [-Granularity <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListSlot
+```
+Get-AzWebAppMetric -SubscriptionId <String[]> -Name <String> -ResourceGroupName <String> [-Slot <String>]
+ [-Detail] [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListBySiteObject
+```
+Get-AzWebAppMetric -SubscriptionId <String[]> -SiteObject <ISite> [-Detail] [-Filter <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,14 +95,63 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -EndTime
+End time fo the metrics to filter by.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: ListByFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Filter
 Return only metrics specified in the filter (using OData syntax).
 For example: $filter=(name.value eq 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, ListSlot, ListBySiteObject
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Granularity
+Granularity of the metrics to filter by.
+Allow values are PT1M, PT1H, P1D.
+
+```yaml
+Type: System.String
+Parameter Sets: ListByFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Metric
+Name(s) of the web app metric(s) to filter by.
+
+```yaml
+Type: System.String[]
+Parameter Sets: ListByFilter
+Aliases: Metrics
 
 Required: False
 Position: Named
@@ -97,7 +166,7 @@ Name of the app.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, ListByFilter, ListSlot
 Aliases:
 
 Required: True
@@ -113,10 +182,59 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, ListByFilter, ListSlot
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SiteObject
+The object representation of the web app or slot.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISite
+Parameter Sets: ListBySiteObject
+Aliases: WebApp, WebAppSlot
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Slot
+Name of the deployment slot.
+If a slot is not specified, the API will get metrics of the production slot.
+
+```yaml
+Type: System.String
+Parameter Sets: ListByFilter, ListSlot
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -StartTime
+Start time of the metrics to filter by.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: ListByFilter
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -154,6 +272,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Get-AzWebAppMetrics
+
+### Get-AzWebAppSlotMetric
+
+### Get-AzWebAppSlotMetrics
 
 ## RELATED LINKS
 

@@ -110,7 +110,7 @@ The namespace of the resource provider.
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: ProviderNamespace
 
 Required: True
 Position: Named

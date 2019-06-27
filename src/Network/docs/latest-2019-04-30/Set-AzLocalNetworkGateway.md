@@ -22,10 +22,10 @@ Set-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> -Subscripti
 ### UpdateExpanded
 ```
 Set-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-BgpSettingAsn <Int64>] [-BgpSettingBgpPeeringAddress <String>] [-BgpSettingPeerWeight <Int32>]
- [-Etag <String>] [-GatewayIPAddress <String>] [-Id <String>]
- [-LocalNetworkAddressSpaceAddressPrefix <String[]>] [-Location <String>] [-ResourceGuid <String>]
- [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AddressPrefix <String[]>] [-BgpSettingAsn <Int64>] [-BgpSettingBgpPeeringAddress <String>]
+ [-BgpSettingPeerWeight <Int32>] [-Etag <String>] [-GatewayIPAddress <String>] [-Id <String>]
+ [-Location <String>] [-ResourceGuid <String>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,6 +52,22 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AddressPrefix
+A list of address blocks reserved for this virtual network in CIDR notation.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -170,22 +186,6 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -LocalNetworkAddressSpaceAddressPrefix
-A list of address blocks reserved for this virtual network in CIDR notation.
-
-```yaml
-Type: System.String[]
 Parameter Sets: UpdateExpanded
 Aliases:
 

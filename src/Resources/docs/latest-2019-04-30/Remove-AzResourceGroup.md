@@ -19,6 +19,12 @@ Remove-AzResourceGroup -Name <String> -SubscriptionId <String> [-PassThru] [-Def
  [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteById
+```
+Remove-AzResourceGroup -SubscriptionId <String> -Id <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzResourceGroup -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
@@ -56,7 +62,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Delete, DeleteViaIdentity
 Aliases:
 
 Required: False
@@ -76,6 +82,22 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Id
+The ID of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteById
+Aliases: ResourceId
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -121,7 +143,7 @@ When specified, PassThru will force the cmdlet return a 'bool' given that there 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Delete, DeleteViaIdentity
 Aliases:
 
 Required: False
@@ -137,7 +159,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteById
 Aliases:
 
 Required: True

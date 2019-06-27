@@ -18,6 +18,12 @@ Remove-AzADGroup -ObjectId <String> -TenantId <String> [-PassThru] [-DefaultProf
  [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteByDisplayName
+```
+Remove-AzADGroup -TenantId <String> -DisplayName <String> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzADGroup -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
@@ -58,6 +64,22 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -DisplayName
+The display name of the group.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteByDisplayName
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -118,7 +140,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteByDisplayName
 Aliases:
 
 Required: True

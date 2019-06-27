@@ -229,7 +229,7 @@ Dynamic: False
 ```
 
 ### -VnetName
-The Virtual Network name.
+Name of the Virtual Network.
 
 ```yaml
 Type: System.String
@@ -298,9 +298,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IVnetGateway
-
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IVnetGateway
 
 ## OUTPUTS
 

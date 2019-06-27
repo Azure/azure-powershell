@@ -33,27 +33,6 @@ Set-AzWebAppAuthSettingSlot -Name <String> -ResourceGroupName <String> -Slot <St
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
-```
-Set-AzWebAppAuthSettingSlot -InputObject <IWebSiteIdentity> [-AdditionalLoginParam <String[]>]
- [-AllowedAudience <String[]>] [-AllowedExternalRedirectUrl <String[]>] [-ClientId <String>]
- [-ClientSecret <String>] [-ClientSecretCertificateThumbprint <String>]
- [-DefaultProvider <BuiltInAuthenticationProvider>] [-Enabled] [-FacebookAppId <String>]
- [-FacebookAppSecret <String>] [-FacebookOAuthScope <String[]>] [-GoogleClientId <String>]
- [-GoogleClientSecret <String>] [-GoogleOAuthScope <String[]>] [-Issuer <String>] [-Kind <String>]
- [-MicrosoftAccountClientId <String>] [-MicrosoftAccountClientSecret <String>]
- [-MicrosoftAccountOAuthScope <String[]>] [-RuntimeVersion <String>] [-TokenRefreshExtensionHour <Double>]
- [-TokenStoreEnabled] [-TwitterConsumerKey <String>] [-TwitterConsumerSecret <String>]
- [-UnauthenticatedClientAction <UnauthenticatedClientAction>] [-ValidateIssuer] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Set-AzWebAppAuthSettingSlot -InputObject <IWebSiteIdentity> [-SiteAuthSetting <ISiteAuthSettings>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Updates the Authentication / Authorization settings associated with web app.
 
@@ -85,7 +64,7 @@ Each parameter must be in the form "key=value".
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -102,7 +81,7 @@ Note that the <code>ClientID</code> value is always considered anallowed audienc
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -119,7 +98,7 @@ Note that the query string part of the URL is ignored.This is an advanced settin
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -135,7 +114,7 @@ The Client ID of this relying party application, known as the client_id.This set
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -152,7 +131,7 @@ If no client secret is configured, the OpenID Connect implicit auth flow is used
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -170,7 +149,7 @@ It is also optional.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -202,7 +181,7 @@ The default authentication provider to use when multiple providers are configure
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.BuiltInAuthenticationProvider
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -218,7 +197,7 @@ Dynamic: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -234,7 +213,7 @@ The App ID of the Facebook app used for login.This setting is required for enabl
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -250,7 +229,7 @@ The App Secret of the Facebook app used for Facebook Login.This setting is requi
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -266,7 +245,7 @@ The OAuth 2.0 scopes that will be requested as part of Facebook Login authentica
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -282,7 +261,7 @@ The OpenID Connect Client ID for the Google web application.This setting is requ
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -298,7 +277,7 @@ The client secret associated with the Google web application.This setting is req
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -315,7 +294,7 @@ If not specified, "openid", "profile", and "email" are used as default scopes.Go
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -326,29 +305,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Issuer
 The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.When using Azure Active Directory, this value is the URI of the directory tenant, e.g.
 https://sts.windows.net/{tenant-guid}/.This URI is a case-sensitive identifier for the token issuer.More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -364,7 +327,7 @@ Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -380,7 +343,7 @@ The OAuth 2.0 client ID that was created for the app used for authentication.Thi
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -396,7 +359,7 @@ The OAuth 2.0 client secret that was created for the app used for authentication
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -413,7 +376,7 @@ If not specified, "wl.basic" is used as the default scope.Microsoft Account Scop
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -429,7 +392,7 @@ Name of web app.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -445,7 +408,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -461,7 +424,7 @@ The RuntimeVersion of the Authentication / Authorization feature in use for the 
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -477,7 +440,7 @@ Configuration settings for the Azure App Service Authentication / Authorization 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISiteAuthSettings
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: Update
 Aliases:
 
 Required: False
@@ -494,7 +457,7 @@ If not specified then will default to production slot.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -512,7 +475,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -529,7 +492,7 @@ The default is 72 hours.
 
 ```yaml
 Type: System.Double
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -546,7 +509,7 @@ The default is <code>false</code>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -562,7 +525,7 @@ The OAuth 1.0a consumer key of the Twitter application used for sign-in.This set
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -578,7 +541,7 @@ The OAuth 1.0a consumer secret of the Twitter application used for sign-in.This 
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -594,7 +557,7 @@ The action to take when an unauthenticated client attempts to access the app.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.UnauthenticatedClientAction
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -610,7 +573,7 @@ Gets a value indicating whether the issuer should be a valid HTTPS url and be va
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -660,8 +623,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISiteAuthSettings
-
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
 
 ## OUTPUTS
 

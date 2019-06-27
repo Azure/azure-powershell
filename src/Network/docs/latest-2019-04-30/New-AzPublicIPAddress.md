@@ -26,7 +26,7 @@ New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId
  [-DnsSettingDomainNameLabel <String>] [-DnsSettingFqdn <String>] [-DnsSettingReverseFqdn <String>]
  [-Etag <String>] [-IPAddress <String>] [-IPConfigurationEtag <String>] [-IPConfigurationId <String>]
  [-IPConfigurationName <String>] [-IPConfigurationProperty <IIPConfigurationPropertiesFormat>]
- [-IPTag <IIPTag[]>] [-Id <String>] [-IdleTimeoutInMinute <Int32>] [-Location <String>]
+ [-IPTag <IIPTag[]>] [-Id <String>] [-IdleTimeoutInMinutes <Int32>] [-Location <String>]
  [-ProvisioningState <String>] [-PublicIPAddressVersion <IPVersion>]
  [-PublicIPAllocationMethod <IPAllocationMethod>] [-PublicIPPrefixId <String>] [-ResourceGuid <String>]
  [-SkuName <PublicIPAddressSkuName>] [-Tag <IResourceTags>] [-Zone <String[]>] [-DefaultProfile <PSObject>]
@@ -40,7 +40,7 @@ New-AzPublicIPAddress -InputObject <INetworkIdentity> [-DdosCustomPolicyId <Stri
  [-DnsSettingFqdn <String>] [-DnsSettingReverseFqdn <String>] [-Etag <String>] [-IPAddress <String>]
  [-IPConfigurationEtag <String>] [-IPConfigurationId <String>] [-IPConfigurationName <String>]
  [-IPConfigurationProperty <IIPConfigurationPropertiesFormat>] [-IPTag <IIPTag[]>] [-Id <String>]
- [-IdleTimeoutInMinute <Int32>] [-Location <String>] [-ProvisioningState <String>]
+ [-IdleTimeoutInMinutes <Int32>] [-Location <String>] [-ProvisioningState <String>]
  [-PublicIPAddressVersion <IPVersion>] [-PublicIPAllocationMethod <IPAllocationMethod>]
  [-PublicIPPrefixId <String>] [-ResourceGuid <String>] [-SkuName <PublicIPAddressSkuName>]
  [-Tag <IResourceTags>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
@@ -227,7 +227,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IdleTimeoutInMinute
+### -IdleTimeoutInMinutes
 The idle timeout of the public IP address.
 
 ```yaml
@@ -507,7 +507,7 @@ Name of a public IP address SKU.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.PublicIPAddressSkuName
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: Sku
 
 Required: False
 Position: Named

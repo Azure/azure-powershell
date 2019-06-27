@@ -198,7 +198,7 @@ Dynamic: False
 ```
 
 ### -Id
-Resource Id
+Id of the deployment
 
 ```yaml
 Type: System.String
@@ -310,7 +310,7 @@ Dynamic: False
 ```
 
 ### -Name
-Resource Name
+Name of web app
 
 ```yaml
 Type: System.String
@@ -493,9 +493,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IDeployment
-
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IDeployment
 
 ## OUTPUTS
 

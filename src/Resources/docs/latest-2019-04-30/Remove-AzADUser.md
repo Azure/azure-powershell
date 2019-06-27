@@ -18,6 +18,12 @@ Remove-AzADUser -TenantId <String> -UpnOrObjectId <String> [-PassThru] [-Default
  [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteByDisplayName
+```
+Remove-AzADUser -TenantId <String> -DisplayName <String> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzADUser -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
@@ -65,6 +71,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -DisplayName
+The display name of the user.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteByDisplayName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -102,7 +124,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteByDisplayName
 Aliases:
 
 Required: True
@@ -119,7 +141,7 @@ The object ID or principal name of the user to delete.
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
+Aliases: UserPrincipalName, Upn, ObjectId
 
 Required: True
 Position: Named

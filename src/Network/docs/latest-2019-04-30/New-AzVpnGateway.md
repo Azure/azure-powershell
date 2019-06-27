@@ -138,7 +138,7 @@ List of all vpn connections to the gateway.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnConnection[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: VpnConnection
 
 Required: False
 Position: Named
@@ -234,7 +234,7 @@ The resource group name of the VpnGateway.
 ```yaml
 Type: System.String
 Parameter Sets: Create, CreateExpanded
-Aliases:
+Aliases: VirtualHub, VirtualHubName
 
 Required: True
 Position: Named

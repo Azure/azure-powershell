@@ -32,9 +32,6 @@ Get an application by object ID.
 ### [Get-AzADApplicationOwner](Get-AzADApplicationOwner.md)
 The owners are a set of non-admin users who are allowed to modify this object.
 
-### [Get-AzADDeletedApplication](Get-AzADDeletedApplication.md)
-Gets a list of deleted applications in the directory.
-
 ### [Get-AzADGroup](Get-AzADGroup.md)
 Gets group information from the directory.
 
@@ -43,9 +40,6 @@ Gets the members of a group.
 
 ### [Get-AzADGroupMemberGroup](Get-AzADGroupMemberGroup.md)
 Gets a collection of object IDs of groups of which the specified group is a member.
-
-### [Get-AzADGroupOwner](Get-AzADGroupOwner.md)
-The owners are a set of non-admin users who are allowed to modify this object.
 
 ### [Get-AzADObject](Get-AzADObject.md)
 Gets the directory objects specified in a list of object IDs.
@@ -112,14 +106,8 @@ This operation retrieves a single policy assignment, given its name and the scop
 ### [Get-AzPolicyDefinition](Get-AzPolicyDefinition.md)
 This operation retrieves the policy definition in the given subscription with the given name.
 
-### [Get-AzPolicyDefinitionBuilt](Get-AzPolicyDefinitionBuilt.md)
-This operation retrieves the built-in policy definition with the given name.
-
 ### [Get-AzPolicySetDefinition](Get-AzPolicySetDefinition.md)
 This operation retrieves the policy set definition in the given subscription with the given name.
-
-### [Get-AzPolicySetDefinitionBuilt](Get-AzPolicySetDefinitionBuilt.md)
-This operation retrieves the built-in policy set definition with the given name.
 
 ### [Get-AzProviderFeature](Get-AzProviderFeature.md)
 Gets the preview feature with the specified name.
@@ -245,9 +233,6 @@ Delete an application.
 ### [Remove-AzADApplicationOwner](Remove-AzADApplicationOwner.md)
 Remove a member from owners.
 
-### [Remove-AzADDeletedApplicationHard](Remove-AzADDeletedApplicationHard.md)
-Hard-delete an application.
-
 ### [Remove-AzADGroup](Remove-AzADGroup.md)
 Delete a group from the directory.
 
@@ -359,11 +344,6 @@ Creates or updates a resource link between the specified resources.
 ### [Set-AzRoleDefinition](Set-AzRoleDefinition.md)
 Creates or updates a role definition.
 
-### [Set-AzTag](Set-AzTag.md)
-The tag name can have a maximum of 512 characters and is case insensitive.
-Tag names created by Azure have prefixes of microsoft, azure, or windows.
-You cannot create tags with one of these prefixes.
-
 ### [Start-AzTenantBackfill](Start-AzTenantBackfill.md)
 Starts backfilling subscriptions for the Tenant.
 
@@ -390,7 +370,7 @@ Checks by ID whether a resource exists.
 ### [Test-AzResourceGroup](Test-AzResourceGroup.md)
 Checks whether a resource group exists.
 
-### [Test-AzResourceMoveResource](Test-AzResourceMoveResource.md)
+### [Test-AzResourceMove](Test-AzResourceMove.md)
 This operation checks whether the specified resources can be moved to the target.
 The resources to move must be in the same source resource group.
 The target resource group may be in a different subscription.

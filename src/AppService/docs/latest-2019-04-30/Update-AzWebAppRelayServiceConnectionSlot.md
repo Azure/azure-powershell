@@ -133,7 +133,7 @@ Dynamic: False
 ```
 
 ### -EntityName
-HELP MESSAGE MISSING
+Name of the hybrid connection configuration.
 
 ```yaml
 Type: System.String
@@ -365,9 +365,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IRelayServiceConnectionEntity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IRelayServiceConnectionEntity
 
 ## OUTPUTS
 

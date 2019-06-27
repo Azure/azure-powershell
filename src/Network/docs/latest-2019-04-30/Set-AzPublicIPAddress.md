@@ -26,7 +26,7 @@ Set-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId
  [-DnsSettingDomainNameLabel <String>] [-DnsSettingFqdn <String>] [-DnsSettingReverseFqdn <String>]
  [-Etag <String>] [-IPAddress <String>] [-IPConfigurationEtag <String>] [-IPConfigurationId <String>]
  [-IPConfigurationName <String>] [-IPConfigurationProperty <IIPConfigurationPropertiesFormat>]
- [-IPTag <IIPTag[]>] [-Id <String>] [-IdleTimeoutInMinute <Int32>] [-Location <String>]
+ [-IPTag <IIPTag[]>] [-Id <String>] [-IdleTimeoutInMinutes <Int32>] [-Location <String>]
  [-ProvisioningState <String>] [-PublicIPAddressVersion <IPVersion>]
  [-PublicIPAllocationMethod <IPAllocationMethod>] [-PublicIPPrefixId <String>] [-ResourceGuid <String>]
  [-SkuName <PublicIPAddressSkuName>] [-Tag <IResourceTags>] [-Zone <String[]>] [-DefaultProfile <PSObject>]
@@ -207,7 +207,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IdleTimeoutInMinute
+### -IdleTimeoutInMinutes
 The idle timeout of the public IP address.
 
 ```yaml
