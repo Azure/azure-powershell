@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Improving logic of getting subscriptions for query to ARG
+* Updated package Microsoft.Azure.Management.ResourceGraph to version 2.0
 
 ## Version 0.7.2
 * Fix conversion to PSCustomObject[] for top-level arrays
