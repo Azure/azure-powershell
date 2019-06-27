@@ -1,41 +1,55 @@
 ﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/remove-aziothubkey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.iothub/new-aziothubkey
 schema: 2.0.0
 ---
 
-# Remove-AzIotHubKey
+# New-AzIotHubKey
 
 ## SYNOPSIS
-Removes an IotHub Key.
+Generate an Azure IoT Hub key.
 
 ## SYNTAX
 
 ### ResourceSet (Default)
 ```
-Remove-AzIotHubKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String>
+New-AzIotHubKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String> [-RenewKey] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Remove-AzIotHubKey [-HubId] <String> [-KeyName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzIotHubKey [-HubId] <String> [-KeyName] <String> [-RenewKey] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Removes an IotHub Key.
-If there are multiple keys with the same name the first one in the list is removed.
+Generate an Azure IoT Hub key.
 
 ## EXAMPLES
 
-### Example 1 Delete an IotHub
+### Example 1 Regenerate primary key
 ```
-PS C:\> Remove-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "iothubowner1"
+PS C:\> New-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "testKey" -RenewKey "primary"
+
+KeyName		PrimaryKey										SecondaryKey										Rights
+-------		----------										------------										------
+test		SXSdm31aT+i3939xSnA191f8g3uRhIUCTsO26b9s/nE=	6JqGKGUTL0mhQwvcOeIRT7OnT6noK/tie6jBY77sJTE=		ServiceConnect
 ```
 
-Removes the key named iothubowner1 from the IotHub named "myiothub"
+Regenerated primary key for the authorization policy "testKey" of an azure iot hub.
+
+### Example 2 Swapping keys
+```
+PS C:\> New-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "testKey" -RenewKey "swap"
+
+KeyName		PrimaryKey										SecondaryKey										Rights
+-------		----------										------------										------
+test		6JqGKGUTL0mhQwvcOeIRT7OnT6noK/tie6jBY77sJTE=	SXSdm31aT+i3939xSnA191f8g3uRhIUCTsO26b9s/nE=		ServiceConnect
+```
+
+Swapping keys for the authorization policy "testKey" of an azure iot hub.
 
 ## PARAMETERS
 
@@ -108,6 +122,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RenewKey
+Regenerate Key.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
