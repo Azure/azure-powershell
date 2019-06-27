@@ -75,6 +75,7 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzNetAppFilesAccount', 'New-AzNetAppFilesAccount', 'Remove-AzNetAppFilesAccount', 
+               'Set-AzNetAppFilesAccount', 'Update-AzNetAppFilesAccount',
                'Get-AzNetAppFilesPool', 'New-AzNetAppFilesPool', 'Update-AzNetAppFilesPool',
                'Remove-AzNetAppFilesPool', 'Get-AzNetAppFilesVolume', 'New-AzNetAppFilesVolume', 
                'Remove-AzNetAppFilesVolume', 'Update-AzNetAppFilesVolume',
@@ -84,7 +85,7 @@ CmdletsToExport = 'Get-AzNetAppFilesAccount', 'New-AzNetAppFilesAccount', 'Remov
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Get-AnfAccount', 'New-AnfAccount', 'Remove-AnfAccount', 
+AliasesToExport = 'Get-AnfAccount', 'New-AnfAccount', 'Remove-AnfAccount', 'Set-AnfAccount', 'Update-AnfAccount', 
                'Get-AnfPool', 'New-AnfPool', 'Update-AnfPool',
                'Remove-AnfPool', 'Get-AnfVolume', 'New-AnfVolume', 
                'Remove-AnfVolume', 'Update-AnfVolume',
