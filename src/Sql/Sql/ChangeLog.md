@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add Instance Failover Group cmdlets from preview release to public release
 * Support Azure SQL Server\Database Auditing with new cmdlets.
     - Set-AzSqlServerAudit
     - Get-AzSqlServerAudit
