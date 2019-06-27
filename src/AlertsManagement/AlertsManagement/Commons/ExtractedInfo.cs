@@ -14,24 +14,10 @@
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
-    public class CommonUtils
+    public class ExtractedInfo
     {
-        /// <summary>
-        /// Extracts the GUID from ARM id
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        public static string GetIdFromARMResourceId(string input)
-        {
-            string[] tokens = input.Split('/');
-            if (tokens.Length == 1)
-            {
-                return input;
-            }
-            else
-            {
-                return tokens[tokens.Length-1];
-            }
-        }
+        public string ResourceGroupName { get; set; }
+
+        public string Resource { get; set; }
     }
 }

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Rest.Azure;
 using System.Collections.Generic;
@@ -50,7 +51,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByFilterParameterSet,
                    HelpMessage = "Filter on Resource Id of the target resource of alert.")]
-        public string TargetResource { get; set; }
+        public string TargetResourceId { get; set; }
 
         /// <summary>
         /// Resource Type
@@ -202,7 +203,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
             {
                 case AlertsListByFilterParameterSet:
                     var alertsList = this.AlertsManagementClient.Alerts.GetAllWithHttpMessagesAsync(
-                        targetResource: TargetResource,
+                        targetResource: TargetResourceId,
                         targetResourceType: TargetResourceType,
                         targetResourceGroup: TargetResourceGroup,
                         monitorService: MonitorService,
@@ -220,16 +221,21 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                         customTimeRange: CustomTimeRange,
                         select: Select
                         ).Result.Body;
-         
-                    List<PSAlert> alerts = new List<PSAlert>();
-                    IEnumerator<Alert> enumerator = alertsList.GetEnumerator();
-                    while (enumerator.MoveNext())
+
+                    // Deal with paging in response
+                    var resultList = alertsList.ToList();
+                    var nextPageLink = alertsList.NextPageLink;
+                    while (!string.IsNullOrEmpty(nextPageLink))
                     {
-                        alerts.Add(new PSAlert(enumerator.Current));
+                        var pageResult = this.AlertsManagementClient.Alerts.GetAllNextWithHttpMessagesAsync(nextPageLink);
+                        foreach (var pageItem in pageResult.Result.Body)
+                        {
+                            resultList.Add(pageItem);
+                        }
+                        nextPageLink = pageResult.Result.Body.NextPageLink;
                     }
 
-                    // TODO: Deal with page of alerts
-                    WriteObject(sendToPipeline: alerts, enumerateCollection: true);
+                    WriteObject(resultList.Select((r) => new PSAlert(r)), enumerateCollection: true);
                     break;
                 
                 case AlertByIdParameterSet:

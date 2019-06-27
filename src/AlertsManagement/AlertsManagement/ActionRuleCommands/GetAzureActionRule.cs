@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Rest.Azure;
 using System.Collections.Generic;
@@ -150,6 +151,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
             {
                 case ListActionRulesParameterSet:
                     IPage<ActionRule> actionRuleList = new Page<ActionRule>();
+                    List<ActionRule> resultList = new List<ActionRule>();
                     if (string.IsNullOrWhiteSpace(ResourceGroupName))
                     {
                         actionRuleList = this.AlertsManagementClient.ActionRules.ListBySubscriptionWithHttpMessagesAsync(
@@ -164,6 +166,19 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                             description: Description,
                             name: Name
                         ).Result.Body;
+
+                        // Deal with paging in response
+                        resultList = actionRuleList.ToList();
+                        var nextPageLink = actionRuleList.NextPageLink;
+                        while (!string.IsNullOrEmpty(nextPageLink))
+                        {
+                            var pageResult = this.AlertsManagementClient.ActionRules.ListBySubscriptionNextWithHttpMessagesAsync(nextPageLink);
+                            foreach (var pageItem in pageResult.Result.Body)
+                            {
+                                resultList.Add(pageItem);
+                            }
+                            nextPageLink = pageResult.Result.Body.NextPageLink;
+                        }
                     }
                     else
                     {
@@ -180,18 +195,22 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                             description: Description,
                             name: Name
                         ).Result.Body;
+
+                        // Deal with paging in response
+                        resultList = actionRuleList.ToList();
+                        var nextPageLink = actionRuleList.NextPageLink;
+                        while (!string.IsNullOrEmpty(nextPageLink))
+                        {
+                            var pageResult = this.AlertsManagementClient.ActionRules.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink);
+                            foreach (var pageItem in pageResult.Result.Body)
+                            {
+                                resultList.Add(pageItem);
+                            }
+                            nextPageLink = pageResult.Result.Body.NextPageLink;
+                        }
                     }
 
-                    List<PSActionRule> actionRules = new List<PSActionRule>();
-                    IEnumerator<ActionRule> enumerator = actionRuleList.GetEnumerator();
-                    while (enumerator.MoveNext())
-                    {
-                        actionRules.Add(new PSActionRule(enumerator.Current));
-                    }
-
-                    // TODO: Deal with page of action rules
-                    WriteObject(sendToPipeline: actionRules, enumerateCollection: true);
-
+                    WriteObject(resultList.Select((r) => new PSActionRule(r)), enumerateCollection: true);
                     break;
 
                 case ActionRuleByNameParameterSet:
@@ -200,8 +219,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                     break;
 
                 case ResourceIdParameterSet:
-                    string[] tokens = ResourceId.Split('/');
-                    PSActionRule ruleById = new PSActionRule(this.AlertsManagementClient.ActionRules.GetByNameWithHttpMessagesAsync(tokens[4], tokens[8]).Result.Body);
+                    ExtractedInfo info = CommonUtils.ExtractFromActionRuleResourceId(ResourceId);
+                    PSActionRule ruleById = new PSActionRule(this.AlertsManagementClient.ActionRules.GetByNameWithHttpMessagesAsync(info.ResourceGroupName, info.Resource).Result.Body);
                     WriteObject(sendToPipeline: ruleById);
                     break;
             }

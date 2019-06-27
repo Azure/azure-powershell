@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Rest.Azure;
 using System.Collections.Generic;
@@ -83,15 +84,20 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                         timeRange: TimeRange
                         ).Result.Body;
 
-                    List<PSSmartGroup> smartGroups = new List<PSSmartGroup>();
-                    IEnumerator<SmartGroup> enumerator = smartGroupsList.GetEnumerator();
-                    while (enumerator.MoveNext())
+                    // Deal with paging in response
+                    var resultList = smartGroupsList.ToList();
+                    var nextPageLink = smartGroupsList.NextPageLink;
+                    while (!string.IsNullOrEmpty(nextPageLink))
                     {
-                        smartGroups.Add(new PSSmartGroup(enumerator.Current));
+                        var pageResult = this.AlertsManagementClient.SmartGroups.GetAllNextWithHttpMessagesAsync(nextPageLink);
+                        foreach (var pageItem in pageResult.Result.Body)
+                        {
+                            resultList.Add(pageItem);
+                        }
+                        nextPageLink = pageResult.Result.Body.NextPageLink;
                     }
 
-                    // TODO: Deal with page of smart groups
-                    WriteObject(sendToPipeline: smartGroups, enumerateCollection: true);
+                    WriteObject(resultList.Select((r) => new PSSmartGroup(r)), enumerateCollection: true);
                     break;
 
                 case SmartGroupByIdParameterSet:

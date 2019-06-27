@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                 ParameterSetName = BySimplifiedFormatSuppressionActionRuleParameterSet,
                 HelpMessage = "Comma separated list of values")]
         [ValidateNotNullOrEmpty]
-        public string ScopeValues { get; set; }
+        public List<string> Scope { get; set; }
 
         /// <summary>
         /// Action rule simplified format : Severity Condition
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         {
             Scope scope = new Scope(
                 scopeType: ScopeType,
-                values: ScopeValues.Split(',')
+                values: Scope
             );
             return scope;
         }
