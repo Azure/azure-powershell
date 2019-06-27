@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add support to regenerate authorization policy keys.
 
 ## Version 1.1.0
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.

@@ -14,18 +14,21 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub
 {
+    using System;
     using System.Collections.Generic;
-    using System.Management.Automation;
+    using System.Globalization;
     using System.Linq;
+    using System.Management.Automation;
+    using System.Text;
     using Microsoft.Azure.Commands.Management.IotHub.Common;
     using Microsoft.Azure.Commands.Management.IotHub.Models;
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubKey", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubKey", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSharedAccessSignatureAuthorizationRule))]
-    public class AddAzureRmIotHubKey : IotHubBaseCmdlet
+    public class NewAzureRmIotHubKey : IotHubBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
         private const string ResourceParameterSet = "ResourceSet";
@@ -67,29 +70,28 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Position = 2,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Key")]
         [ValidateNotNullOrEmpty]
         public string KeyName { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "PrimaryKey")]
-        public string PrimaryKey { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "SecondaryKey")]
-        public string SecondaryKey { get; set; }
-
-        [Parameter(
+            Position = 2,
             Mandatory = true,
-            HelpMessage = "Access Rights")]
+            ParameterSetName = ResourceIdParameterSet,
+            HelpMessage = "Regenerate Key.")]
+        [Parameter(
+            Position = 3,
+            Mandatory = true,
+            ParameterSetName = ResourceParameterSet,
+            HelpMessage = "Regenerate Key.")]
         [ValidateNotNullOrEmpty]
-        public PSAccessRights Rights { get; set; }
+        [PSArgumentCompleter(new string[] { "Primary", "Secondary", "Swap" })]
+        public string RenewKey { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(KeyName, Properties.Resources.AddIotHubKey))
+            if (ShouldProcess(KeyName, Properties.Resources.NewIotHubKey))
             {
                 if (ParameterSetName.Equals(ResourceIdParameterSet))
                 {
@@ -97,25 +99,57 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                     this.Name = IotHubUtils.GetIotHubName(this.HubId);
                 }
 
-                var psAuthRule = new PSSharedAccessSignatureAuthorizationRule()
-                {
-                    KeyName = this.KeyName,
-                    PrimaryKey = this.PrimaryKey,
-                    SecondaryKey = this.SecondaryKey,
-                    Rights = this.Rights
-                };
-
-                var authRule = IotHubUtils.ToSharedAccessSignatureAuthorizationRule(psAuthRule);
+                var regeneratedAuthRule = new PSSharedAccessSignatureAuthorizationRule();
 
                 IotHubDescription iothubDesc = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.Name);
                 IList<SharedAccessSignatureAuthorizationRule> authRules = (List<SharedAccessSignatureAuthorizationRule>)this.IotHubClient.IotHubResource.ListKeys(this.ResourceGroupName, this.Name).ToList();
-                authRules.Add(authRule);
+
+                foreach (var authRule in authRules)
+                {
+                    if (authRule.KeyName.Equals(this.KeyName, StringComparison.OrdinalIgnoreCase))
+                    {
+                        regeneratedAuthRule = IotHubUtils.ToPSSharedAccessSignatureAuthorizationRule(authRule);
+                        authRules.Remove(authRule);
+                        break;
+                    }
+                }
+
+                switch (RenewKey.ToLower(CultureInfo.InvariantCulture))
+                {
+                    case "primary":
+                        regeneratedAuthRule.PrimaryKey = this.RegenerateKey();
+                        break;
+                    case "secondary":
+                        regeneratedAuthRule.SecondaryKey = this.RegenerateKey();
+                        break;
+                    case "swap":
+                        var temp = regeneratedAuthRule.PrimaryKey;
+                        regeneratedAuthRule.PrimaryKey = regeneratedAuthRule.SecondaryKey;
+                        regeneratedAuthRule.SecondaryKey = temp;
+                        break;
+                }
+
+                authRules.Add(IotHubUtils.ToSharedAccessSignatureAuthorizationRule(regeneratedAuthRule));
                 iothubDesc.Properties.AuthorizationPolicies = authRules;
 
                 this.IotHubClient.IotHubResource.CreateOrUpdate(this.ResourceGroupName, this.Name, iothubDesc);
                 IEnumerable<SharedAccessSignatureAuthorizationRule> updatedAuthRules = this.IotHubClient.IotHubResource.ListKeys(this.ResourceGroupName, this.Name);
-                this.WriteObject(IotHubUtils.ToPSSharedAccessSignatureAuthorizationRules(updatedAuthRules), true);
+
+                SharedAccessSignatureAuthorizationRule authPolicy = this.IotHubClient.IotHubResource.GetKeysForKeyName(this.ResourceGroupName, this.Name, this.KeyName);
+                this.WriteObject(IotHubUtils.ToPSSharedAccessSignatureAuthorizationRule(authPolicy), false);
             }
+        }
+
+        private string RegenerateKey(int byteLength = 32)
+        {
+            char[] charArray = new char[byteLength];
+            for (int i = 0; i < byteLength; i++)
+            {
+                charArray[i] = (char)new Random().Next(1, 255);
+            }
+            string charCode = new string(charArray);
+            byte[] bytes = Encoding.GetEncoding(28591).GetBytes(charCode);
+            return System.Convert.ToBase64String(bytes);
         }
     }
 }
