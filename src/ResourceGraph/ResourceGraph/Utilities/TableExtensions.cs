@@ -16,12 +16,12 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Utilities
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Management.Automation;
 
     using Microsoft.Azure.Management.ResourceGraph.Models;
-
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
-
     /// <summary>
     /// TableExtensions
     /// </summary>
@@ -49,41 +49,62 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Utilities
             typeof(PSCustomObject).FullName + "#QueryResponse";
 
         /// <summary>
-        /// Converts table to the PS Objects.
+        /// Converts object to the PS Objects.
         /// </summary>
-        /// <param name="table">The table.</param>
+        /// <param name="data">The data.</param>
         /// <returns></returns>
-        public static IEnumerable<PSObject> ToPsObjects(this Table table)
+        public static IList<PSObject> ToPsObjects(this object data)
         {
-            var idColumnIndex = IndexOf(table.Columns, column =>
-                string.Equals(column.Name, IdColumnName, StringComparison.OrdinalIgnoreCase) &&
-                column.Type == IdColumnType);
+            try
+            {
+                if (data is JArray array)
+                {
+                    return ToPsObjects(array.ToList());
+                }
 
-            foreach (var row in table.Rows)
+                throw new ArgumentOutOfRangeException("Result format is not supported");
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentOutOfRangeException(ex.Message);
+            }
+        }
+
+        #region Helpers
+
+        /// <summary>
+        /// Converts List to the PS Objects.
+        /// </summary>
+        /// <param name="rows">The table.</param>
+        /// <returns></returns>
+        private static IList<PSObject> ToPsObjects(this IList<JToken> rows)
+        {
+            var result = new List<PSObject>(rows.Count);
+            foreach (var jtoken in rows)
             {
                 var rowObject = new PSObject();
                 rowObject.TypeNames.Add(PsCustomObjectType);
-                for (var columnIndex = 0; columnIndex < table.Columns.Count; columnIndex++)
-                {
-                    var value = row[columnIndex];
-                    var normalizedValue =
-                        (value as JToken)?.ToPsObject() ?? value;
-                    
-                    rowObject.Properties.Add(new PSNoteProperty(
-                        name: table.Columns[columnIndex].Name,
-                        value: normalizedValue));
-                }
 
-                if (idColumnIndex != -1)
+                var row = jtoken.ToObject<Dictionary<string, object>>();
+                row.Keys
+                    .ForEach(key => rowObject.Properties.Add(
+                        new PSNoteProperty(name: key, value: (row[key] as JObject)?.ToPsObject() ?? row[key])));
+
+               var idColumnKey = row.Keys
+                    .FirstOrDefault(key => string.Equals(key, IdColumnName, StringComparison.OrdinalIgnoreCase));
+
+                if (idColumnKey != null)
                 {
                     // Best effort on resource id piping
                     rowObject.Properties.Add(new PSNoteProperty(
                         name: ResourceIdColumnName,
-                        value: row[idColumnIndex]));
+                        value: row[idColumnKey]));
                 }
 
-                yield return rowObject;
+                result.Add(rowObject);
             }
+
+            return result;
         }
 
         /// <summary>
@@ -107,5 +128,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Utilities
 
             return -1;
         }
+
+        #endregion
     }
 }
