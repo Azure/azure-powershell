@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "IotHub Resource Id")]
         [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
+        public string HubId { get; set; }
 
         [Parameter(
             Position = 0,
@@ -82,8 +82,8 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             {
                 if (ParameterSetName.Equals(ResourceIdParameterSet))
                 {
-                    this.ResourceGroupName = IotHubUtils.GetResourceGroupName(this.ResourceId);
-                    this.Name = IotHubUtils.GetIotHubName(this.ResourceId);
+                    this.ResourceGroupName = IotHubUtils.GetResourceGroupName(this.HubId);
+                    this.Name = IotHubUtils.GetIotHubName(this.HubId);
                 }
 
                 IotHubDescription iothubDesc = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.Name);
