@@ -90,10 +90,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         [Alias("SubnetId", "VirtualNetworkId")]
         public string[] VirtualNetworkResourceId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
-
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -114,7 +110,10 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 {
                     case NetWorkRuleStringParameterSet:
                         if (accountACL.VirtualNetworkRules == null)
+                        {
                             accountACL.VirtualNetworkRules = new List<VirtualNetworkRule>();
+                        }
+
                         foreach (string s in VirtualNetworkResourceId)
                         {
                             VirtualNetworkRule rule = new VirtualNetworkRule(s, null, true);
@@ -123,7 +122,10 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         break;
                     case IpRuleStringParameterSet:
                         if (accountACL.IpRules == null)
+                        {
                             accountACL.IpRules = new List<IpRule>();
+                        }
+
                         foreach (string s in IpAddressOrRange)
                         {
                             IpRule rule = new IpRule(s);
@@ -132,7 +134,10 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         break;
                     case NetworkRuleObjectParameterSet:
                         if (accountACL.VirtualNetworkRules == null)
+                        {
                             accountACL.VirtualNetworkRules = new List<VirtualNetworkRule>();
+                        }
+
                         foreach (PSVirtualNetworkRule rule in VirtualNetworkRule)
                         {
                             accountACL.VirtualNetworkRules.Add(rule.ToVirtualNetworkRule());
@@ -140,7 +145,10 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         break;
                     case IpRuleObjectParameterSet:
                         if (accountACL.IpRules == null)
+                        {
                             accountACL.IpRules = new List<IpRule>();
+                        }
+
                         foreach (PSIpRule rule in IpRule)
                         {
                             accountACL.IpRules.Add(rule.ToIpRule());

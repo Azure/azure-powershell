@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     public class UpdateAzureCognitiveServicesAccountNetworkRuleSetCommand : CognitiveServicesAccountBaseCmdlet
     {
         [Parameter(
-       Position = 0,
-       Mandatory = true,
-       ValueFromPipelineByPropertyName = true,
-       HelpMessage = "Resource Group Name.")]
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Resource Group Name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -98,9 +98,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         private PSVirtualNetworkRule[] virtualNetworkRules = null;
         private bool isIpRuleSet = false;
         private bool isNetworkRuleSet = false;
-
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
 
 
         public override void ExecuteCmdlet()
