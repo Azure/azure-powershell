@@ -19,7 +19,7 @@ Get-AzAlert -AlertId <String> [-DefaultProfile <IAzureContextContainer>] [<Commo
 
 ### AlertsListByFilter
 ```
-Get-AzAlert [-TargetResource <String>] [-TargetResourceType <String>] [-TargetResourceGroup <String>]
+Get-AzAlert [-TargetResourceId <String>] [-TargetResourceType <String>] [-TargetResourceGroup <String>]
  [-MonitorService <String>] [-MonitorCondition <String>] [-Severity <String>] [-State <String>]
  [-AlertRuleId <String>] [-SmartGroupId <String>] [-IncludeContext <Boolean>] [-IncludeEgressConfig <Boolean>]
  [-PageCount <Int32>] [-SortBy <String>] [-SortOrder <String>] [-TimeRange <String>]
@@ -45,14 +45,13 @@ PS C:\> Get-AzAlert -AlertId "afbf1b3a-0a6c-4f19-9c9b-644ccd7b1529"
 
 Get Alert details by Id (GUID) or Resource Id (Complete ARM Id)
 
-
 ## PARAMETERS
 
 ### -AlertId
 Unique Identifier of Alert / ResourceId of alert.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AlertById
 Aliases: ResourceId
 
@@ -67,7 +66,7 @@ Accept wildcard characters: False
 Filter on Alert Rule Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AlertsListByFilter
 Aliases:
 
@@ -82,7 +81,7 @@ Accept wildcard characters: False
 Supported format - \<start-time\>/\<end-time\> where time is in ISO-8601 format
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AlertsListByFilter
 Aliases:
 
@@ -97,7 +96,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -112,7 +111,7 @@ Accept wildcard characters: False
 Include context (custom payload) of alert
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: AlertsListByFilter
 Aliases:
 
@@ -127,7 +126,7 @@ Accept wildcard characters: False
 Include EgressConfig
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: AlertsListByFilter
 Aliases:
 
@@ -142,7 +141,7 @@ Accept wildcard characters: False
 Filter on Monitor Condition
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AlertsListByFilter
 Aliases:
 
@@ -157,7 +156,7 @@ Accept wildcard characters: False
 Filter on Moniter Service
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AlertsListByFilter
 Aliases:
 
@@ -172,7 +171,7 @@ Accept wildcard characters: False
 Number of alerts to be fetched in a page.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: AlertsListByFilter
 Aliases:
 
@@ -188,7 +187,7 @@ Project the required fields out of essentials.
 Expected input is comma-separated.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AlertsListByFilter
 Aliases:
 
@@ -203,7 +202,7 @@ Accept wildcard characters: False
 Filter on Severity of alert
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AlertsListByFilter
 Aliases:
 
@@ -218,7 +217,7 @@ Accept wildcard characters: False
 Filter all the alerts having the Smart Group Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AlertsListByFilter
 Aliases:
 
@@ -233,7 +232,7 @@ Accept wildcard characters: False
 Alert property to use while sorting
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AlertsListByFilter
 Aliases:
 
@@ -248,7 +247,7 @@ Accept wildcard characters: False
 Sort Order
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AlertsListByFilter
 Aliases:
 
@@ -263,22 +262,7 @@ Accept wildcard characters: False
 Filter on State of alert
 
 ```yaml
-Type: String
-Parameter Sets: AlertsListByFilter
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TargetResource
-Filter on Resource Id of the target resource of alert.
-
-```yaml
-Type: String
+Type: System.String
 Parameter Sets: AlertsListByFilter
 Aliases:
 
@@ -293,7 +277,22 @@ Accept wildcard characters: False
 Filter on Resource group name of the target resource of alert.
 
 ```yaml
-Type: String
+Type: System.String
+Parameter Sets: AlertsListByFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetResourceId
+Filter on Resource Id of the target resource of alert.
+
+```yaml
+Type: System.String
 Parameter Sets: AlertsListByFilter
 Aliases:
 
@@ -308,7 +307,7 @@ Accept wildcard characters: False
 Filter on Resource type of the target resource of alert.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AlertsListByFilter
 Aliases:
 
@@ -323,7 +322,7 @@ Accept wildcard characters: False
 Supported time range values - 1h, 1d, 7d, 30d (Default is 1d)
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AlertsListByFilter
 Aliases:
 

@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.AlertsManagement.Models;
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionRule", SupportsShouldProcess = true)]
-    [OutputType(typeof(bool))]
+    [OutputType(typeof(string))]
     public class RemoveAzureActionRule : AlertsManagementBaseCmdlet
     {
         private const string ByInputObjectParameterSet = "ByInputObject";
@@ -72,6 +72,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
         protected override void ProcessRecordInternal()
         {
+            bool? isDeleted = false;
             switch (ParameterSetName)
             {
                 case ByResourceIdParameterSet:
@@ -79,14 +80,17 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                        target: string.Format("Remove the action rule: {0}", ResourceId),
                        action: "Remove the action rule"))
                     {
-                        string[] tokens = ResourceId.Split('/');
-                        var isDeleted = this.AlertsManagementClient.ActionRules.DeleteWithHttpMessagesAsync(
-                            resourceGroupName: tokens[4],
-                            actionRuleName: tokens[8])
-                            .Result;
+                        var extractedInfo = CommonUtils.ExtractFromActionRuleResourceId(ResourceId);
+                        isDeleted = this.AlertsManagementClient.ActionRules.DeleteWithHttpMessagesAsync(
+                            resourceGroupName: extractedInfo.ResourceGroupName,
+                            actionRuleName: extractedInfo.Resource)
+                            .Result.Body;
                     }
 
-                    WriteObject(string.Format("Successfully deleted the action rule: {0}", ResourceId));
+                    if ((bool)isDeleted)
+                    {
+                        WriteObject(string.Format("Successfully deleted the action rule: {0}", ResourceId));
+                    }
                     break;
                 
                 // TODO: Feedback on the correct way to handle InputObject Parameter
@@ -95,14 +99,17 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                     target: string.Format("Remove the action rule: {0}", InputObject.Id),
                     action: "Remove an action rule"))
                     {
-                        string[] tokens = ResourceId.Split('/');
-                        var isDeleted = this.AlertsManagementClient.ActionRules.DeleteWithHttpMessagesAsync(
-                            resourceGroupName: tokens[4],
-                            actionRuleName: tokens[8])
-                            .Result;
+                        var extractedInfo = CommonUtils.ExtractFromActionRuleResourceId(InputObject.Id);
+                        isDeleted = this.AlertsManagementClient.ActionRules.DeleteWithHttpMessagesAsync(
+                            resourceGroupName: extractedInfo.ResourceGroupName,
+                            actionRuleName: extractedInfo.Resource)
+                            .Result.Body;
                     }
 
-                    WriteObject(string.Format("Successfully deleted the action rule: {0}", Name));
+                    if ((bool)isDeleted)
+                    {
+                        WriteObject(string.Format("Successfully deleted the action rule: {0}", Name));
+                    }
                     break;
                 
                 case ByNameParameterSet:
@@ -110,16 +117,23 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                        target: string.Format("Remove the action rule: {0} from resource group: {1}", this.Name, this.ResourceGroupName),
                        action: "Remove an action rule"))
                     {
-                        var isDeleted = this.AlertsManagementClient.ActionRules.DeleteWithHttpMessagesAsync(
+                        isDeleted = this.AlertsManagementClient.ActionRules.DeleteWithHttpMessagesAsync(
                             resourceGroupName: ResourceGroupName,
                             actionRuleName: Name)
-                            .Result;
+                            .Result.Body;
                     }
 
-                    WriteObject(string.Format("Successfully deleted the action rule: {0}", Name));
+                    if ((bool)isDeleted)
+                    {
+                        WriteObject(string.Format("Successfully deleted the action rule: {0}", Name));
+                    }
                     break;
             }
-           
+
+            if (!(bool)isDeleted)
+            {
+                WriteObject(string.Format("Couldn't delete the action rule. Please retry!"));
+            }
         }
     }
 }

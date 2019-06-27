@@ -32,7 +32,7 @@ Update-AzActionRule -Name <String> -ResourceGroupName <String> -ActionRulePatch 
 
 ### ByNameSimplifiedPatch
 ```
-Update-AzActionRule -Name <String> -ResourceGroupName <String> [-Status <String>] [-Tags <Object>]
+Update-AzActionRule -Name <String> -ResourceGroupName <String> [-Status <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -54,7 +54,7 @@ This cmdlet disables the action rule.
 Action rule patch object in JSON format
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameJsonPatch
 Aliases:
 
@@ -65,26 +65,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -99,7 +84,7 @@ Accept wildcard characters: False
 The action rule resource
 
 ```yaml
-Type: PSActionRule
+Type: Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSActionRule
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -114,7 +99,7 @@ Accept wildcard characters: False
 Action rule name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameJsonPatch, ByNameSimplifiedPatch
 Aliases:
 
@@ -129,7 +114,7 @@ Accept wildcard characters: False
 Action rule name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameJsonPatch, ByNameSimplifiedPatch
 Aliases:
 
@@ -144,7 +129,7 @@ Accept wildcard characters: False
 The resource id of action rule
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 
@@ -159,7 +144,7 @@ Accept wildcard characters: False
 Action rule status
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameSimplifiedPatch
 Aliases:
 
@@ -170,13 +155,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Action rule tags
 
 ```yaml
-Type: Object
+Type: System.Collections.Hashtable
 Parameter Sets: ByNameSimplifiedPatch
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -190,7 +190,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

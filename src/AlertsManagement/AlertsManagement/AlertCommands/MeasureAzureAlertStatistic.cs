@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = true,
                    HelpMessage = "Summarize by property")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("severity", "alertState", "monitorCondition", "monitorService", "signalType", "alertRule")]
+        [PSArgumentCompleter("Severity", "AlertState", "MonitorCondition", "MonitorService", "SignalType", "AlertRule")]
         public string GroupBy { get; set; }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(Mandatory = false,
                    HelpMessage = "Filter on Resource Id of the target resource of alert.")]
-        public string TargetResource { get; set; }
+        public string TargetResourceId { get; set; }
 
         /// <summary>
         /// Resource Type
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         {
             PSAlertsSummary summary = new PSAlertsSummary(this.AlertsManagementClient.Alerts.GetSummaryWithHttpMessagesAsync(
                 groupby: GroupBy,
-                targetResource: TargetResource,
+                targetResource: TargetResourceId,
                 targetResourceType: TargetResourceType,
                 targetResourceGroup: TargetResourceGroup,
                 monitorService: MonitorService,

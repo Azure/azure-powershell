@@ -22,6 +22,7 @@ using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.AlertsManagement;
+using Microsoft.Azure.Management.AlertsManagement.Models;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
@@ -124,7 +125,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
                 if (exTemp is RestException)
                 {
-                    // All the following Exceptions have the same structure, but their common ancestor does not contain Body nor Response
+                    // Extract relevant information for CloudExceptions and throw
                     var cloudException = exTemp as CloudException;
                     if (cloudException != null)
                     {
@@ -132,13 +133,12 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                         code = cloudException.Body.Code;
                         statusCode = cloudException.Response.StatusCode;
                         reasonPhrase = cloudException.Response.ReasonPhrase;
+                        throw cloudException;
                     }
                     else
-                    {
-                        // TODO: Enable this flow once SDK is published
-                        
+                    {                        
                         // New model to report errors (from Swagger Spec)
-                        var errorResponse = exTemp as Microsoft.Azure.Management.AlertsManagement.Models.ErrorResponseException;
+                        var errorResponse = exTemp as ErrorResponseException;
                         if (errorResponse != null)
                         {
                             statusCode = errorResponse.Response.StatusCode;
@@ -148,22 +148,16 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                         {
                             message = exTemp.ToString();
                         }
+
+                        throw errorResponse;
                     }
                 }
 
-                throw new PSInvalidOperationException(
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        "Exception type: {0}, Message: {1}, Code: {2}, Status code:{3}, Reason phrase: {4}",
-                        exName,
-                        string.IsNullOrWhiteSpace(message) ? "Null/Empty" : message,
-                        code ?? "Null",
-                        statusCode.HasValue ? statusCode.Value.ToString() : "Null",
-                        reasonPhrase ?? "Null"),
-                    exTemp);
+                throw exTemp;
             }
             catch (Exception ex)
             {
+                //Deals with any generic exception
                 exName = ex.GetType().Name;
                 message = ex.ToString();
 

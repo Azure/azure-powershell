@@ -13,7 +13,7 @@ Gets Alert Summary Information
 ## SYNTAX
 
 ```
-Measure-AzAlertStatistic -GroupBy <String> [-TargetResource <String>] [-TargetResourceType <String>]
+Measure-AzAlertStatistic -GroupBy <String> [-TargetResourceId <String>] [-TargetResourceType <String>]
  [-TargetResourceGroup <String>] [-MonitorService <String>] [-MonitorCondition <String>] [-Severity <String>]
  [-State <String>] [-AlertRuleId <String>] [-TimeRange <String>] [-CustomTimeRange <String>]
  [-IncludeSmartGroupsCount <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -37,7 +37,7 @@ Summarize alerts count grouped by severity and state filtered by Active state.
 Filter on Alert Rule Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 Supported format - \<start-time\>/\<end-time\> where time is in ISO-8601 format
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 Summarize by property
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 Include SmartGroups Count
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 Filter on Monitor Condition
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 Filter on Moniter Service
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 Filter on Severity of alert
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -157,22 +157,7 @@ Accept wildcard characters: False
 Filter on State of alert
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TargetResource
-Filter on Resource Id of the target resource of alert.
-
-```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -187,7 +172,22 @@ Accept wildcard characters: False
 Filter on Resource group name of the target resource of alert.
 
 ```yaml
-Type: String
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetResourceId
+Filter on Resource Id of the target resource of alert.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -202,7 +202,7 @@ Accept wildcard characters: False
 Filter on Resource type of the target resource of alert.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -217,7 +217,7 @@ Accept wildcard characters: False
 Supported time range values - 1h, 1d, 7d, 30d (Default is 1d)
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

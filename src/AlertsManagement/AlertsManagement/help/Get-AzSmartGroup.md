@@ -48,7 +48,7 @@ Get Smart Group details by Id (GUID) or Resource Id (Complete ARM Id)
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 Unique Identifier of SmartGroup / ResourceId of SmartGroup.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SmartGroupById
 Aliases: ResourceId
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 Alert property to use while sorting
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SmartGroupsListByFilter
 Aliases:
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 Sort Order
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SmartGroupsListByFilter
 Aliases:
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 Supported time range values - 1h, 1d, 7d, 30d (Default is 1d)
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SmartGroupsListByFilter
 Aliases:
 

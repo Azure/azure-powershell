@@ -19,6 +19,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.AlertsManagement.OutputModels;
 using Microsoft.Azure.Management.AlertsManagement.Models;
 using Newtonsoft.Json;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
@@ -84,7 +85,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// Gets or sets simplified property of patch object : tags
         /// </summary>
         [Parameter(ParameterSetName = ByNameSimplifiedPatchParameterSet, Mandatory = false, HelpMessage = "Action rule tags")]
-        public object Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         #endregion
 
@@ -112,31 +113,31 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                             actionRuleName: Name,
                             actionRulePatch: new PatchObject(
                                     status: Status,
-                                    tags: Tags
+                                    tags: Tag
                                 )
                             ).Result.Body);
                         break;
 
                     case ByInputObjectParameterSet:
-                        string[] tokens = InputObject.Id.Split('/');
+                        var extractedInfo = CommonUtils.ExtractFromActionRuleResourceId(InputObject.Id);
                         updatedActionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.UpdateWithHttpMessagesAsync(
-                            resourceGroupName: tokens[4],
-                            actionRuleName: tokens[8],
+                            resourceGroupName: extractedInfo.ResourceGroupName,
+                            actionRuleName: extractedInfo.Resource,
                             actionRulePatch: new PatchObject(
                                     status: Status,
-                                    tags: Tags
+                                    tags: Tag
                                 )
                             ).Result.Body);
                         break;
 
                     case ByResourceIdParameterSet:
-                        string[] tokensRId = ResourceId.Split('/');
+                        var info = CommonUtils.ExtractFromActionRuleResourceId(InputObject.Id);
                         updatedActionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.UpdateWithHttpMessagesAsync(
-                            resourceGroupName: tokensRId[4],
-                            actionRuleName: tokensRId[8],
+                            resourceGroupName: info.ResourceGroupName,
+                            actionRuleName: info.Resource,
                             actionRulePatch: new PatchObject(
                                     status: Status,
-                                    tags: Tags
+                                    tags: Tag
                                 )
                             ).Result.Body);
                         break;
