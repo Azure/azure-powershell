@@ -14,28 +14,21 @@
 
 namespace Microsoft.Azure.Commands.ResourceGraph.Utilities
 {
+    using Newtonsoft.Json.Linq;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
 
-    using Microsoft.Azure.Management.ResourceGraph.Models;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Newtonsoft.Json.Linq;
     /// <summary>
-    /// TableExtensions
+    /// ResultExtensions
     /// </summary>
-    public static class TableExtensions
+    public static class ResultExtensions
     {
         /// <summary>
         /// The identifier column name
         /// </summary>
-        private const string IdColumnName = "Id";
-
-        /// <summary>
-        /// The identifier column type
-        /// </summary>
-        private const ColumnDataType IdColumnType = ColumnDataType.String;
+        private const string IdColumnName = "id";
 
         /// <summary>
         /// The resource identifier column name
@@ -75,7 +68,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Utilities
         /// <summary>
         /// Converts List to the PS Objects.
         /// </summary>
-        /// <param name="rows">The table.</param>
+        /// <param name="rows">The rows.</param>
         /// <returns></returns>
         private static IList<PSObject> ToPsObjects(this IList<JToken> rows)
         {
@@ -86,19 +79,20 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Utilities
                 rowObject.TypeNames.Add(PsCustomObjectType);
 
                 var row = jtoken.ToObject<Dictionary<string, object>>();
-                row.Keys
-                    .ForEach(key => rowObject.Properties.Add(
-                        new PSNoteProperty(name: key, value: (row[key] as JObject)?.ToPsObject() ?? row[key])));
 
-               var idColumnKey = row.Keys
-                    .FirstOrDefault(key => string.Equals(key, IdColumnName, StringComparison.OrdinalIgnoreCase));
+                foreach(var rowEntry in row)
+                {
+                    var normalizedValue = (rowEntry.Value as JToken)?.ToPsObject() ?? rowEntry.Value;
+                    rowObject.Properties.Add(
+                        new PSNoteProperty(name: rowEntry.Key, value: normalizedValue));
+                }
 
-                if (idColumnKey != null)
+                if (row.TryGetValue(IdColumnName, out var idValue))
                 {
                     // Best effort on resource id piping
                     rowObject.Properties.Add(new PSNoteProperty(
                         name: ResourceIdColumnName,
-                        value: row[idColumnKey]));
+                        value: idValue));
                 }
 
                 result.Add(rowObject);
