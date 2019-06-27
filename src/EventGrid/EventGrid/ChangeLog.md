@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.1
 * Fix typo in `New-AzEventGridSubscription` documentation
 
 ## Version 1.2.0
