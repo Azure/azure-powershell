@@ -414,6 +414,47 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+### -RecoveryPublicIPAddressId
+Specifies the ID of the public IP address resource to be associated with the recovery NIC.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+
+### -RecoveryNetworkSecurityGroupId
+Specifies the ID of the network security group to be associated with the recovery NIC.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+
+### -RecoveryLBBackendAddressPoolIds
+Specifies the target backend address pools to be associated with the recovery NIC.
+
+```yaml
+Type: System.Collections.Generic.List`1[String]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
