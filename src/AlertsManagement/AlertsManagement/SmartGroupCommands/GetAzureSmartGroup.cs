@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.AlertsManagement.Models;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SmartGroup")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SmartGroup", DefaultParameterSetName = SmartGroupsListByFilterParameterSet)]
     [OutputType(typeof(PSSmartGroup))]
     public class GetAzureSmartGroup : AlertsManagementBaseCmdlet
     {

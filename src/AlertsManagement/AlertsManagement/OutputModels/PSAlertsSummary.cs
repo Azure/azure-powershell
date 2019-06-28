@@ -14,6 +14,7 @@
 
 using Newtonsoft.Json;
 using Microsoft.Azure.Management.AlertsManagement.Models;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
 {
