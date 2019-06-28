@@ -21,7 +21,8 @@ using Microsoft.Azure.Management.AlertsManagement.Models;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionRule", SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionRule", DefaultParameterSetName = ByNameParameterSet, 
+        SupportsShouldProcess = true)]
     [OutputType(typeof(string))]
     public class RemoveAzureActionRule : AlertsManagementBaseCmdlet
     {

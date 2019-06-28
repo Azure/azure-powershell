@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.AlertsManagement.Models;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Alert")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Alert", DefaultParameterSetName = AlertsListByFilterParameterSet)]
     [OutputType(typeof(PSAlert))]
     public class GetAzureAlertCommand : AlertsManagementBaseCmdlet
     {

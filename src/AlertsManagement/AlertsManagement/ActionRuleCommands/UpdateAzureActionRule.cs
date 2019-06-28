@@ -23,7 +23,8 @@ using System.Collections;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionRule", SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionRule", DefaultParameterSetName = ByNameSimplifiedPatchParameterSet,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSActionRule))]
     public class UpdateAzureActionRule : AlertsManagementBaseCmdlet
     {

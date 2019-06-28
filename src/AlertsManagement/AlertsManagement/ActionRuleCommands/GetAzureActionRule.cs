@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.AlertsManagement.Models;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionRule")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionRule", DefaultParameterSetName = ListActionRulesParameterSet)]
     [OutputType(typeof(PSActionRule))]
     public class GetAzureActionRule : AlertsManagementBaseCmdlet
     {
