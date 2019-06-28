@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Attestation.dll-Help.xml
 Module Name: Az.Attestation
-online version:
+online version:https://docs.microsoft.com/en-us/powershell/module/az.attestation/remove-azattestation
 schema: 2.0.0
 ---
 
@@ -37,10 +37,10 @@ Remove-AzAttestation [-InputObject] <PSAttestation> [-Force] [-AsJob] [-PassThru
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzAttestation -Name example -ResourceGroupName rg1 
 ```
 
-{{ Add example description here }}
+Delete Attestation "example" from current Subscription and Resource Group "rg1".
 
 ## PARAMETERS
 
