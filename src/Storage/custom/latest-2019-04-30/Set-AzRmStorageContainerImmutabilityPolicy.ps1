@@ -54,12 +54,6 @@ function Set-AzRmStorageContainerImmutabilityPolicy {
         # The ImmutabilityPolicy property of a blob container, including Id, resource name, resource type, Etag.
         ${Parameter},
 
-        [Parameter(ParameterSetName='UpdateExpanded', HelpMessage='MISSING DESCRIPTION 03')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
-        [System.String]
-        # MISSING DESCRIPTION 03
-        ${ETag},
-
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory, HelpMessage='The immutability period for the blobs in the container since the policy creation, in days.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
         [System.Int32]

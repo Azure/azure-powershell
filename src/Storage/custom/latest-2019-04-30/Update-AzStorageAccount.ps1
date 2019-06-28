@@ -51,6 +51,17 @@ function Update-AzStorageAccount {
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity]
         # Identity Parameter
         ${InputObject},
+
+        [Parameter(ParameterSetName='UpdateExpanded1', HelpMessage='Specify IdentityType as ''SystemAssigned''')]
+        [Parameter(ParameterSetName='UpdateExpanded1StorageEncryption', HelpMessage='Specify IdentityType as ''SystemAssigned''')]
+        [Parameter(ParameterSetName='UpdateExpanded1KeyVaultEncryption', HelpMessage='Specify IdentityType as ''SystemAssigned''')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded1', HelpMessage='Specify IdentityType as ''SystemAssigned''')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded1StorageEncryption', HelpMessage='Specify IdentityType as ''SystemAssigned''')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded1KeyVaultEncryption', HelpMessage='Specify IdentityType as ''SystemAssigned''')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # Specify IdentityType as 'SystemAssigned'
+        ${AssignIdentity},
     
         [Parameter(ParameterSetName='UpdateExpanded1', HelpMessage='Required for storage accounts where kind = BlobStorage. The access tier used for billing.')]
         [Parameter(ParameterSetName='UpdateExpanded1StorageEncryption', HelpMessage='Required for storage accounts where kind = BlobStorage. The access tier used for billing.')]
@@ -186,7 +197,7 @@ function Update-AzStorageAccount {
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.Bypass]
         # Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to bypass none of those traffics.
-        ${NetworkAclsBypass},
+        ${NetworkRuleSetBypass},
     
         [Parameter(ParameterSetName='UpdateExpanded1', Mandatory, HelpMessage='Specifies the default action of allow or deny when no other rules match.')]
         [Parameter(ParameterSetName='UpdateExpanded1StorageEncryption', Mandatory, HelpMessage='Specifies the default action of allow or deny when no other rules match.')]
@@ -198,7 +209,7 @@ function Update-AzStorageAccount {
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.DefaultAction]
         # Specifies the default action of allow or deny when no other rules match.
-        ${NetworkAclsDefaultAction},
+        ${NetworkRuleSetDefaultAction},
     
         [Parameter(ParameterSetName='UpdateExpanded1', HelpMessage='Sets the IP ACL rules')]
         [Parameter(ParameterSetName='UpdateExpanded1StorageEncryption', HelpMessage='Sets the IP ACL rules')]
@@ -209,7 +220,7 @@ function Update-AzStorageAccount {
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IIPRule[]]
         # Sets the IP ACL rules
-        ${NetworkAclsIPRule},
+        ${NetworkRuleSetIPRule},
     
         [Parameter(ParameterSetName='UpdateExpanded1', HelpMessage='Sets the virtual network rules')]
         [Parameter(ParameterSetName='UpdateExpanded1StorageEncryption', HelpMessage='Sets the virtual network rules')]
@@ -220,7 +231,7 @@ function Update-AzStorageAccount {
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IVirtualNetworkRule[]]
         # Sets the virtual network rules
-        ${NetworkAclsVirtualNetworkRule},
+        ${NetworkRuleSetVirtualNetworkRule},
     
         [Parameter(ParameterSetName='UpdateExpanded1', HelpMessage='A boolean indicating whether or not the service encrypts the data as it is stored.')]
         [Parameter(ParameterSetName='UpdateExpanded1StorageEncryption', HelpMessage='A boolean indicating whether or not the service encrypts the data as it is stored.')]

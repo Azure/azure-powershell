@@ -24,7 +24,7 @@ Set-AzRmStorageContainerImmutabilityPolicy -AccountName <String> -ContainerName 
 ```
 Set-AzRmStorageContainerImmutabilityPolicy -AccountName <String> -ContainerName <String>
  -ResourceGroupName <String> -SubscriptionId <String> -ImmutabilityPeriod <Int32> [-IfMatch <String>]
- [-ExtendPolicy] [-ETag <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ExtendPolicy] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,22 +95,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ETag
-MISSING DESCRIPTION 03
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
 
 Required: False
 Position: Named

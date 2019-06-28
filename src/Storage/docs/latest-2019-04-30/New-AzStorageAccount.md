@@ -14,54 +14,51 @@ If an account is already created and a subsequent create or update request is is
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzStorageAccount [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpandedStorageEncryption
+### CreateExpandedStorageEncryption (Default)
 ```
 New-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -CustomDomainName <String> -Kind <Kind> -Location <String> -NetworkAclsDefaultAction <DefaultAction>
- -SkuName <SkuName> [-AccessTier <AccessTier>] [-BlobEnabled] [-EnableAzureFilesAadIntegration]
- [-EnableHttpsTrafficOnly] [-FileEnabled] [-EnableHierarchicalNamespace] [-NetworkAclsBypass <Bypass>]
- [-NetworkAclsIPRule <IIPRule[]>] [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled]
- [-SkuKind <Kind>] [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <Hashtable>] [-UseSubDomain]
- [-StorageEncryption] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -CustomDomainName <String> -Kind <Kind> -Location <String> -NetworkRuleSetDefaultAction <DefaultAction>
+ -SkuName <SkuName> [-AssignIdentity] [-AccessTier <AccessTier>] [-BlobEnabled]
+ [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-StorageEncryption] [-FileEnabled]
+ [-EnableHierarchicalNamespace] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetIPRule <IIPRule[]>]
+ [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled] [-SkuKind <Kind>]
+ [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <Hashtable>] [-UseSubDomain]
+ [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpandedKeyVaultEncryption
 ```
 New-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -CustomDomainName <String> -Kind <Kind> -Location <String> -NetworkAclsDefaultAction <DefaultAction>
- -SkuName <SkuName> [-AccessTier <AccessTier>] [-BlobEnabled] [-EnableAzureFilesAadIntegration]
- [-EnableHttpsTrafficOnly] [-KeyVaultEncryption] [-FileEnabled] [-EnableHierarchicalNamespace]
- [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>] [-NetworkAclsBypass <Bypass>]
- [-NetworkAclsIPRule <IIPRule[]>] [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled]
- [-SkuKind <Kind>] [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <Hashtable>] [-UseSubDomain]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -CustomDomainName <String> -Kind <Kind> -Location <String> -NetworkRuleSetDefaultAction <DefaultAction>
+ -SkuName <SkuName> [-AssignIdentity] [-AccessTier <AccessTier>] [-BlobEnabled]
+ [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-FileEnabled] [-EnableHierarchicalNamespace]
+ [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetIPRule <IIPRule[]>]
+ [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled] [-SkuKind <Kind>]
+ [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <Hashtable>] [-UseSubDomain] [-KeyVaultEncryption]
+ [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpandedStorageEncryption
 ```
 New-AzStorageAccount -InputObject <IStorageIdentity> -CustomDomainName <String> -Kind <Kind>
- -Location <String> -NetworkAclsDefaultAction <DefaultAction> -SkuName <SkuName> [-AccessTier <AccessTier>]
- [-BlobEnabled] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-FileEnabled]
- [-EnableHierarchicalNamespace] [-NetworkAclsBypass <Bypass>] [-NetworkAclsIPRule <IIPRule[]>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled] [-SkuKind <Kind>]
- [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <Hashtable>] [-UseSubDomain] [-StorageEncryption]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Location <String> -NetworkRuleSetDefaultAction <DefaultAction> -SkuName <SkuName> [-AssignIdentity]
+ [-AccessTier <AccessTier>] [-BlobEnabled] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly]
+ [-StorageEncryption] [-FileEnabled] [-EnableHierarchicalNamespace] [-NetworkRuleSetBypass <Bypass>]
+ [-NetworkRuleSetIPRule <IIPRule[]>] [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>]
+ [-QueueEnabled] [-SkuKind <Kind>] [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <Hashtable>]
+ [-UseSubDomain] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpandedKeyVaultEncryption
 ```
 New-AzStorageAccount -InputObject <IStorageIdentity> -CustomDomainName <String> -Kind <Kind>
- -Location <String> -NetworkAclsDefaultAction <DefaultAction> -SkuName <SkuName> [-AccessTier <AccessTier>]
- [-BlobEnabled] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-KeyVaultEncryption]
- [-FileEnabled] [-EnableHierarchicalNamespace] [-KeyName <String>] [-KeyVaultUri <String>]
- [-KeyVersion <String>] [-NetworkAclsBypass <Bypass>] [-NetworkAclsIPRule <IIPRule[]>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled] [-SkuKind <Kind>]
- [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <Hashtable>] [-UseSubDomain]
+ -Location <String> -NetworkRuleSetDefaultAction <DefaultAction> -SkuName <SkuName> [-AssignIdentity]
+ [-AccessTier <AccessTier>] [-BlobEnabled] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly]
+ [-FileEnabled] [-EnableHierarchicalNamespace] [-NetworkRuleSetBypass <Bypass>]
+ [-NetworkRuleSetIPRule <IIPRule[]>] [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>]
+ [-QueueEnabled] [-SkuKind <Kind>] [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <Hashtable>]
+ [-UseSubDomain] [-KeyVaultEncryption] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -98,7 +95,7 @@ The access tier used for billing.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.AccessTier
-Parameter Sets: CreateExpandedStorageEncryption, CreateExpandedKeyVaultEncryption, CreateViaIdentityExpandedStorageEncryption, CreateViaIdentityExpandedKeyVaultEncryption
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -125,12 +122,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -AssignIdentity
+Specify IdentityType as 'SystemAssigned'
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -BlobEnabled
 A boolean indicating whether or not the service encrypts the data as it is stored.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpandedStorageEncryption, CreateExpandedKeyVaultEncryption, CreateViaIdentityExpandedStorageEncryption, CreateViaIdentityExpandedKeyVaultEncryption
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -147,7 +160,7 @@ Name is the CNAME source.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpandedStorageEncryption, CreateExpandedKeyVaultEncryption, CreateViaIdentityExpandedStorageEncryption, CreateViaIdentityExpandedKeyVaultEncryption
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -179,7 +192,7 @@ Enables Azure Files AAD Integration for SMB if sets to true.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpandedStorageEncryption, CreateExpandedKeyVaultEncryption, CreateViaIdentityExpandedStorageEncryption, CreateViaIdentityExpandedKeyVaultEncryption
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -195,7 +208,7 @@ Account HierarchicalNamespace enabled if sets to true.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpandedStorageEncryption, CreateExpandedKeyVaultEncryption, CreateViaIdentityExpandedStorageEncryption, CreateViaIdentityExpandedKeyVaultEncryption
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -211,7 +224,7 @@ Allows https traffic only to storage service if sets to true.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpandedStorageEncryption, CreateExpandedKeyVaultEncryption, CreateViaIdentityExpandedStorageEncryption, CreateViaIdentityExpandedKeyVaultEncryption
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -227,7 +240,7 @@ A boolean indicating whether or not the service encrypts the data as it is store
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpandedStorageEncryption, CreateExpandedKeyVaultEncryption, CreateViaIdentityExpandedStorageEncryption, CreateViaIdentityExpandedKeyVaultEncryption
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -324,7 +337,7 @@ Indicates the type of storage account.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.Kind
-Parameter Sets: CreateExpandedStorageEncryption, CreateExpandedKeyVaultEncryption, CreateViaIdentityExpandedStorageEncryption, CreateViaIdentityExpandedKeyVaultEncryption
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -344,7 +357,7 @@ The geo region of a resource cannot be changed once it is created, but if an ide
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpandedStorageEncryption, CreateExpandedKeyVaultEncryption, CreateViaIdentityExpandedStorageEncryption, CreateViaIdentityExpandedKeyVaultEncryption
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -372,13 +385,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkAclsBypass
+### -NetworkRuleSetBypass
 Specifies whether traffic is bypassed for Logging/Metrics/AzureServices.
 Possible values are any combination of Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to bypass none of those traffics.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.Bypass
-Parameter Sets: CreateExpandedStorageEncryption, CreateExpandedKeyVaultEncryption, CreateViaIdentityExpandedStorageEncryption, CreateViaIdentityExpandedKeyVaultEncryption
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -389,12 +402,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkAclsDefaultAction
+### -NetworkRuleSetDefaultAction
 Specifies the default action of allow or deny when no other rules match.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.DefaultAction
-Parameter Sets: CreateExpandedStorageEncryption, CreateExpandedKeyVaultEncryption, CreateViaIdentityExpandedStorageEncryption, CreateViaIdentityExpandedKeyVaultEncryption
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -405,12 +418,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkAclsIPRule
+### -NetworkRuleSetIPRule
 Sets the IP ACL rules
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IIPRule[]
-Parameter Sets: CreateExpandedStorageEncryption, CreateExpandedKeyVaultEncryption, CreateViaIdentityExpandedStorageEncryption, CreateViaIdentityExpandedKeyVaultEncryption
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -421,12 +434,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkAclsVirtualNetworkRule
+### -NetworkRuleSetVirtualNetworkRule
 Sets the virtual network rules
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IVirtualNetworkRule[]
-Parameter Sets: CreateExpandedStorageEncryption, CreateExpandedKeyVaultEncryption, CreateViaIdentityExpandedStorageEncryption, CreateViaIdentityExpandedKeyVaultEncryption
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -442,7 +455,7 @@ A boolean indicating whether or not the service encrypts the data as it is store
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpandedStorageEncryption, CreateExpandedKeyVaultEncryption, CreateViaIdentityExpandedStorageEncryption, CreateViaIdentityExpandedKeyVaultEncryption
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -475,7 +488,7 @@ Indicates the type of storage account.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.Kind
-Parameter Sets: CreateExpandedStorageEncryption, CreateExpandedKeyVaultEncryption, CreateViaIdentityExpandedStorageEncryption, CreateViaIdentityExpandedKeyVaultEncryption
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -493,7 +506,7 @@ Note that in older versions, SKU name was called accountType.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.SkuName
-Parameter Sets: CreateExpandedStorageEncryption, CreateExpandedKeyVaultEncryption, CreateViaIdentityExpandedStorageEncryption, CreateViaIdentityExpandedKeyVaultEncryption
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -510,7 +523,7 @@ This is empty if there are no restrictions.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IRestriction[]
-Parameter Sets: CreateExpandedStorageEncryption, CreateExpandedKeyVaultEncryption, CreateViaIdentityExpandedStorageEncryption, CreateViaIdentityExpandedKeyVaultEncryption
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -558,7 +571,7 @@ A boolean indicating whether or not the service encrypts the data as it is store
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpandedStorageEncryption, CreateExpandedKeyVaultEncryption, CreateViaIdentityExpandedStorageEncryption, CreateViaIdentityExpandedKeyVaultEncryption
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -577,7 +590,7 @@ Each tag must have a key with a length no greater than 128 characters and a valu
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpandedStorageEncryption, CreateExpandedKeyVaultEncryption, CreateViaIdentityExpandedStorageEncryption, CreateViaIdentityExpandedKeyVaultEncryption
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -595,7 +608,7 @@ This should only be set on updates.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpandedStorageEncryption, CreateExpandedKeyVaultEncryption, CreateViaIdentityExpandedStorageEncryption, CreateViaIdentityExpandedKeyVaultEncryption
+Parameter Sets: (All)
 Aliases:
 
 Required: False

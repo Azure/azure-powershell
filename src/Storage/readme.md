@@ -110,6 +110,11 @@ directive:
     set:
       parameter-name: UseSubDomain
   - where:
+      subject: StorageAccount
+      parameter-name: NetworkAcls(.*)
+    set:
+      parameter-name: NetworkRuleSet$1
+  - where:
       verb: Set
       subject: ^StorageAccount$
     set:

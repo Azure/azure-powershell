@@ -16,7 +16,7 @@ https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstorageaccou
 #>
 function New-AzStorageAccount {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IStorageAccount')]
-    [CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='CreateExpandedStorageEncryption', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Profile('latest-2019-04-30')]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Description('Asynchronously creates a new storage account with the specified parameters. If an account is already created and a subsequent create request is issued with different properties, the account properties will be updated. If an account is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.')]
     param(
@@ -47,6 +47,15 @@ function New-AzStorageAccount {
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity]
         # Identity Parameter
         ${InputObject},
+
+        [Parameter(ParameterSetName='CreateExpandedStorageEncryption', HelpMessage='Specify IdentityType as ''SystemAssigned''')]
+        [Parameter(ParameterSetName='CreateExpandedKeyVaultEncryption', HelpMessage='Specify IdentityType as ''SystemAssigned''')]
+        [Parameter(ParameterSetName='CreateViaIdentityExpandedStorageEncryption', HelpMessage='Specify IdentityType as ''SystemAssigned''')]
+        [Parameter(ParameterSetName='CreateViaIdentityExpandedKeyVaultEncryption', HelpMessage='Specify IdentityType as ''SystemAssigned''')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # Specify IdentityType as 'SystemAssigned'
+        ${AssignIdentity},
     
         [Parameter(ParameterSetName='CreateExpandedStorageEncryption', HelpMessage='Required for storage accounts where kind = BlobStorage. The access tier used for billing.')]
         [Parameter(ParameterSetName='CreateExpandedKeyVaultEncryption', HelpMessage='Required for storage accounts where kind = BlobStorage. The access tier used for billing.')]
@@ -178,7 +187,7 @@ function New-AzStorageAccount {
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.Bypass]
         # Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to bypass none of those traffics.
-        ${NetworkAclsBypass},
+        ${NetworkRuleSetBypass},
     
         [Parameter(ParameterSetName='CreateExpandedStorageEncryption', Mandatory, HelpMessage='Specifies the default action of allow or deny when no other rules match.')]
         [Parameter(ParameterSetName='CreateExpandedKeyVaultEncryption', Mandatory, HelpMessage='Specifies the default action of allow or deny when no other rules match.')]
@@ -188,7 +197,7 @@ function New-AzStorageAccount {
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.DefaultAction]
         # Specifies the default action of allow or deny when no other rules match.
-        ${NetworkAclsDefaultAction},
+        ${NetworkRuleSetDefaultAction},
     
         [Parameter(ParameterSetName='CreateExpandedStorageEncryption', HelpMessage='Sets the IP ACL rules')]
         [Parameter(ParameterSetName='CreateExpandedKeyVaultEncryption', HelpMessage='Sets the IP ACL rules')]
@@ -197,7 +206,7 @@ function New-AzStorageAccount {
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IIPRule[]]
         # Sets the IP ACL rules
-        ${NetworkAclsIPRule},
+        ${NetworkRuleSetIPRule},
     
         [Parameter(ParameterSetName='CreateExpandedStorageEncryption', HelpMessage='Sets the virtual network rules')]
         [Parameter(ParameterSetName='CreateExpandedKeyVaultEncryption', HelpMessage='Sets the virtual network rules')]
@@ -206,7 +215,7 @@ function New-AzStorageAccount {
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IVirtualNetworkRule[]]
         # Sets the virtual network rules
-        ${NetworkAclsVirtualNetworkRule},
+        ${NetworkRuleSetVirtualNetworkRule},
     
         [Parameter(ParameterSetName='CreateExpandedStorageEncryption', HelpMessage='A boolean indicating whether or not the service encrypts the data as it is stored.')]
         [Parameter(ParameterSetName='CreateExpandedKeyVaultEncryption', HelpMessage='A boolean indicating whether or not the service encrypts the data as it is stored.')]

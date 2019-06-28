@@ -22,21 +22,21 @@ The location and name of the storage account cannot be changed after creation.
 ### UpdateExpanded1 (Default)
 ```
 Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -CustomDomainName <String> -NetworkAclsDefaultAction <DefaultAction> -SkuName <SkuName>
+ -CustomDomainName <String> -NetworkRuleSetDefaultAction <DefaultAction> -SkuName <SkuName> [-AssignIdentity]
  [-AccessTier <AccessTier>] [-BlobEnabled] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly]
- [-NoEncryption] [-FileEnabled] [-Kind <Kind>] [-NetworkAclsBypass <Bypass>] [-NetworkAclsIPRule <IIPRule[]>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled] [-SkuKind <Kind>]
- [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <Hashtable>] [-UseSubDomain]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoEncryption] [-FileEnabled] [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>]
+ [-NetworkRuleSetIPRule <IIPRule[]>] [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>]
+ [-QueueEnabled] [-SkuKind <Kind>] [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <Hashtable>]
+ [-UseSubDomain] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded1StorageEncryption
 ```
 Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -CustomDomainName <String> -NetworkAclsDefaultAction <DefaultAction> -SkuName <SkuName>
+ -CustomDomainName <String> -NetworkRuleSetDefaultAction <DefaultAction> -SkuName <SkuName> [-AssignIdentity]
  [-AccessTier <AccessTier>] [-BlobEnabled] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly]
- [-FileEnabled] [-Kind <Kind>] [-NetworkAclsBypass <Bypass>] [-NetworkAclsIPRule <IIPRule[]>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled] [-SkuKind <Kind>]
+ [-FileEnabled] [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetIPRule <IIPRule[]>]
+ [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled] [-SkuKind <Kind>]
  [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <Hashtable>] [-UseSubDomain] [-StorageEncryption]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -44,10 +44,10 @@ Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -Subscription
 ### UpdateExpanded1KeyVaultEncryption
 ```
 Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -CustomDomainName <String> -NetworkAclsDefaultAction <DefaultAction> -SkuName <SkuName>
+ -CustomDomainName <String> -NetworkRuleSetDefaultAction <DefaultAction> -SkuName <SkuName> [-AssignIdentity]
  [-AccessTier <AccessTier>] [-BlobEnabled] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly]
- [-FileEnabled] [-Kind <Kind>] [-NetworkAclsBypass <Bypass>] [-NetworkAclsIPRule <IIPRule[]>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled] [-SkuKind <Kind>]
+ [-FileEnabled] [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetIPRule <IIPRule[]>]
+ [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled] [-SkuKind <Kind>]
  [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <Hashtable>] [-UseSubDomain] [-KeyVaultEncryption]
  [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -56,10 +56,10 @@ Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -Subscription
 ### UpdateViaIdentityExpanded1
 ```
 Update-AzStorageAccount -InputObject <IStorageIdentity> -CustomDomainName <String>
- -NetworkAclsDefaultAction <DefaultAction> -SkuName <SkuName> [-AccessTier <AccessTier>] [-BlobEnabled]
- [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-NoEncryption] [-FileEnabled] [-Kind <Kind>]
- [-NetworkAclsBypass <Bypass>] [-NetworkAclsIPRule <IIPRule[]>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled] [-SkuKind <Kind>]
+ -NetworkRuleSetDefaultAction <DefaultAction> -SkuName <SkuName> [-AssignIdentity] [-AccessTier <AccessTier>]
+ [-BlobEnabled] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-NoEncryption] [-FileEnabled]
+ [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetIPRule <IIPRule[]>]
+ [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled] [-SkuKind <Kind>]
  [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <Hashtable>] [-UseSubDomain]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -67,10 +67,10 @@ Update-AzStorageAccount -InputObject <IStorageIdentity> -CustomDomainName <Strin
 ### UpdateViaIdentityExpanded1StorageEncryption
 ```
 Update-AzStorageAccount -InputObject <IStorageIdentity> -CustomDomainName <String>
- -NetworkAclsDefaultAction <DefaultAction> -SkuName <SkuName> [-AccessTier <AccessTier>] [-BlobEnabled]
- [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-FileEnabled] [-Kind <Kind>]
- [-NetworkAclsBypass <Bypass>] [-NetworkAclsIPRule <IIPRule[]>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled] [-SkuKind <Kind>]
+ -NetworkRuleSetDefaultAction <DefaultAction> -SkuName <SkuName> [-AssignIdentity] [-AccessTier <AccessTier>]
+ [-BlobEnabled] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-FileEnabled] [-Kind <Kind>]
+ [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetIPRule <IIPRule[]>]
+ [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled] [-SkuKind <Kind>]
  [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <Hashtable>] [-UseSubDomain] [-StorageEncryption]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -78,10 +78,10 @@ Update-AzStorageAccount -InputObject <IStorageIdentity> -CustomDomainName <Strin
 ### UpdateViaIdentityExpanded1KeyVaultEncryption
 ```
 Update-AzStorageAccount -InputObject <IStorageIdentity> -CustomDomainName <String>
- -NetworkAclsDefaultAction <DefaultAction> -SkuName <SkuName> [-AccessTier <AccessTier>] [-BlobEnabled]
- [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-FileEnabled] [-Kind <Kind>]
- [-NetworkAclsBypass <Bypass>] [-NetworkAclsIPRule <IIPRule[]>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled] [-SkuKind <Kind>]
+ -NetworkRuleSetDefaultAction <DefaultAction> -SkuName <SkuName> [-AssignIdentity] [-AccessTier <AccessTier>]
+ [-BlobEnabled] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-FileEnabled] [-Kind <Kind>]
+ [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetIPRule <IIPRule[]>]
+ [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled] [-SkuKind <Kind>]
  [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <Hashtable>] [-UseSubDomain] [-KeyVaultEncryption]
  [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -131,6 +131,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -AssignIdentity
+Specify IdentityType as 'SystemAssigned'
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -348,7 +364,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkAclsBypass
+### -NetworkRuleSetBypass
 Specifies whether traffic is bypassed for Logging/Metrics/AzureServices.
 Possible values are any combination of Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to bypass none of those traffics.
 
@@ -365,7 +381,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkAclsDefaultAction
+### -NetworkRuleSetDefaultAction
 Specifies the default action of allow or deny when no other rules match.
 
 ```yaml
@@ -381,7 +397,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkAclsIPRule
+### -NetworkRuleSetIPRule
 Sets the IP ACL rules
 
 ```yaml
@@ -397,7 +413,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkAclsVirtualNetworkRule
+### -NetworkRuleSetVirtualNetworkRule
 Sets the virtual network rules
 
 ```yaml
