@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.0
 * Add support to regenerate authorization policy keys.
 
 ## Version 1.1.0

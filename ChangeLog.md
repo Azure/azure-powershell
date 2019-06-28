@@ -1,3 +1,86 @@
+## 2.4.0 - July 2019
+#### Az.Accounts
+* Add support for profile cmdlets
+* Add support for environments and data planes in generated cmdlets
+* Fix bug where incorrect endpoint was being used in some cases for data plane cmdlets in Windows PowerShell
+
+#### Az.Advisor
+* GA release of Az.Advisor
+* This module is now included as a part of the roll-up `Az` module
+
+#### Az.ApiManagement
+* Fix for issue https://github.com/Azure/azure-powershell/issues/8671
+    - **Get-AzApiManagementSubscription**
+        - Added support for querying subscriptions by User and Product
+        - Added support for querying using Scope '/', '/apis', '/apis/echo-api'
+* Fix for issue https://github.com/Azure/azure-powershell/issues/9307 and https://github.com/Azure/azure-powershell/issues/8432
+    - **Import-AzApiManagementApi**
+        - Added support for specifiying 'ApiVersion' and 'ApiVersionSetId' when importing Apis
+
+#### Az.Automation
+* Fixed Set-AzAutomationConnectionFieldValue cmdlet bug to handle string value.
+
+#### Az.Compute
+* Add HyperVGeneration parameter to New-AzImageConfig
+
+#### Az.DataFactory
+* Updating the output of get activity runs, get pipeline runs, and get trigger runs ADF cmdlets to support Select-Object pipe.
+
+#### Az.EventGrid
+* Fix typo in 'New-AzEventGridSubscription' documentation
+
+#### Az.IotHub
+* Add support to regenerate authorization policy keys.
+
+#### Az.Network
+* Added 'RoutingPreference' to public ip tags
+* Improve examples for 'Get-AzNetworkServiceTag' reference documentation
+
+#### Az.PolicyInsights
+* Fix null reference issue in Get-AzPolicyState
+    - More information here: https://github.com/Azure/azure-powershell/issues/9446
+
+#### Az.OperationalInsights
+* Fixed CustomLog datasource model returned in Get-AzOperationalInsightsDataSource
+
+#### Az.RecoveryServices
+* Fix for get-policy command for IaaSVMs
+
+#### Az.Resources
+    - Fix help text for Get-AzPolicyState -Top parameter
+    - Add client-side paging support for Get-AzPolicyAlias
+    - Add new parameters for Set-AzPolicyAssignment, -PolicyParameters and -PolicyParametersObject
+    - Handful of doc and example updates for Policy cmdlets
+
+#### Az.ServiceBus
+* Fix for issue #4938 - New-AzureRmServiceBusQueue returns BadRequest when setting MaxSizeInMegabytes
+
+#### Az.Sql
+* Add Instance Failover Group cmdlets from preview release to public release
+* Support Azure SQL Server\Database Auditing with new cmdlets.
+    - Set-AzSqlServerAudit
+    - Get-AzSqlServerAudit
+    - Remove-AzSqlServerAudit
+    - Set-AzSqlDatabaseAudit
+    - Get-AzSqlDatabaseAudit
+    - Remove-AzSqlDatabaseAudit
+* Remove email constraints from Vulnerability Assessment settings
+
+#### Az.Storage
+* Change 2 parameters '-IndexDocument' and '-ErrorDocument404Path' from required to optional  in cmdlet:
+    -  Enable-AzStorageStaticWebsite
+* Update help of Get-AzStorageBlobContent by add an example
+* Show more error information when cmdlet failed with StorageException
+* Support create or update Storage account with Azure Files AAD DS Authentication
+    -  New-AzStorageAccount
+    -  Set-AzStorageAccount
+* Support list or close file handles of a file share, file directory or a file
+    - Get-AzStorageFileHandle
+    - Close-AzStorageFileHandle
+
+#### Az.StorageSync
+* This module is now included as a part of the roll-up `Az` module
+
 ## 2.3.2 - June 2019
 #### Az.Accounts
 * Fix bug with incorrect URL being used in some cases for Functions calls
@@ -29,7 +112,7 @@
     - New-AzureRmEventGridDomainTopic:
         - Creates a new Azure Event Grid Domain Topic.
     - Get-AzureRmEventGridDomainTopic
-        - Gets the details of an Event Grid Domain Topic, or gets a list of all Event Grid Domain Topics under specific Event Grid Domain in the current Azure 
+        - Gets the details of an Event Grid Domain Topic, or gets a list of all Event Grid Domain Topics under specific Event Grid Domain in the current Azure
     - Remove-AzureRmEventGridDomainTopic:
         - Removes an existing Azure Event Grid Domain Topic.
 * Updated cmdlets:
@@ -41,7 +124,7 @@
             - Event subscription expiration date,
             - Advanced filtering parameters.
         - Add new enum for servicebusqueue as destination.
-        - Disallow usage of 'All' in -IncludedEventType option and replace it with 
+        - Disallow usage of 'All' in -IncludedEventType option and replace it with
     - Get-AzEventGridTopic, Get-AzEventGridDomain, Get-AzEventGridDomainTopic, Get-AzEventGridSubscription:
         - Add new optional parameters (Top, ODataQuery and NextLink) to support results pagination and filtering.
     - Remove-AzureRmEventGridSubscription
@@ -59,11 +142,11 @@
     - New cmdlets
         - Get-AzVirtualNetworkGatewayVpnClientConnectionHealth
 * Add AvailablePrivateEndpointType
-    - New cmdlets 
+    - New cmdlets
         - Get-AzAvailablePrivateEndpointType
 * Add PrivatePrivateLinkService
-    - New cmdlets 
-        - Get-AzPrivateLinkService 
+    - New cmdlets
+        - Get-AzPrivateLinkService
         - New-AzPrivateLinkService
         - Remove-AzPrivateLinkService
         - New-AzPrivateLinkServiceIpConfig
@@ -92,8 +175,8 @@
         - Added parameter -PublicIpAddress which accepts one or more Public IP Address objects
         - Added parameter -VirtualNetwork which accepts a Virtual Network object
         - Added methods AddPublicIpAddress and RemovePublicIpAddress on firewall object - these accept a Public IP Address object as input
-        - Deprecated parameters -PublicIpName and -VirtualNetworkName 
-* Updated below commands for feature: Set VpnClient AAD authentication options to Virtual network gateway resource. 
+        - Deprecated parameters -PublicIpName and -VirtualNetworkName
+* Updated below commands for feature: Set VpnClient AAD authentication options to Virtual network gateway resource.
     - Updated New-AzVirtualNetworkGateway: Added optional parameters AadTenantUri,AadAudienceId,AadIssuerUri to set VpnClient AAD authentication options on Gateway.
     - Updated Set-AzVirtualNetworkGateway: Added optional parameter AadTenantUri,AadAudienceId,AadIssuerUri to set VpnClient AAD authentication options on Gateway.
     - Updated Set-AzVirtualNetworkGateway: Added optional switch parameter RemoveAadAuthentication to remove VpnClient AAD authentication options from Gateway.
@@ -213,17 +296,17 @@
     - **Get-AzApiManagementSchema** - Get the schemas configured in the API
     - **Remove-AzApiManagementSchema** - Remove the schema configured in the API
     - **Set-AzApiManagementSchema** - Update the schema configured in the API
-* Created new Cmdlet for generating a User Token. 
+* Created new Cmdlet for generating a User Token.
     - **New-AzApiManagementUserToken** - Generate a new User Token valid for 8 hours by default.Token for the 'GIT' user can be generated using this cmdlet./
 * Created a new cmdlet to retrieving the Network Status
     - **Get-AzApiManagementNetworkStatus** - Get the Network status connectivity of resources on which API Management service depends on. This is useful when deploying ApiManagement service into a Virtual Network and validing whether any of the dependencies are broken.
-* Updated cmdlet **New-AzApiManagement** to manage ApiManagement service 
+* Updated cmdlet **New-AzApiManagement** to manage ApiManagement service
     - Added support for the new 'Consumption' SKU
     - Added support to turn the 'EnableClientCertificate' flag on for 'Consumption' SKU
     - The new cmdlet **New-AzApiManagementSslSetting** allows configuring 'TLS/SSL' setting on the 'Backend' and 'Frontend'. This can also be used to configure 'Ciphers' like '3DES' and 'ServerProtocols' like 'Http2' on the 'Frontend' of an ApiManagement service.
     - Added support for configuring the 'DeveloperPortal' hostname on ApiManagement service.
 * Updated cmdlets **Get-AzApiManagementSsoToken** to take 'PsApiManagement' object as input
-* Updated the cmdlet to display Error Messages inline 
+* Updated the cmdlet to display Error Messages inline
      - `PS D:\github\azure-powershell> Set-AzApiManagementPolicy -Context  -PolicyFilePath C:\wrongpolicy.xml -ApiId httpbin`
        - `Set-AzApiManagementPolicy :`
        - `Error Code: ValidationError`
@@ -236,15 +319,15 @@
     - To override the 'ServiceUrl' property specified in any document.
 * Updated cmdlet **Get-AzApiManagementPolicy** to return policy in Non-Xml escaped 'format' using 'rawxml'
 * Updated cmdlet **Set-AzApiManagementPolicy** to accept policy in Non-Xml escaped 'format' using 'rawxml' and Xml escaped using 'xml'
-* Updated cmdlet **New-AzApiManagementApi** 
+* Updated cmdlet **New-AzApiManagementApi**
     - To configure API with 'OpenId' authorization server.
     - To create an API in an 'ApiVersionSet'
     - To clone an API using 'SourceApiId' and 'SourceApiRevision'.
-    - Ability to configure 'SubscriptionRequired' at the Api scope. 
+    - Ability to configure 'SubscriptionRequired' at the Api scope.
 * Updated cmdlet **Set-AzApiManagementApi**
     - To configure API with 'OpenId' authorization server.
-    - To updated an API into an 'ApiVersionSet'    
-    - Ability to configure 'SubscriptionRequired' at the Api scope. 
+    - To updated an API into an 'ApiVersionSet'
+    - Ability to configure 'SubscriptionRequired' at the Api scope.
 * Updated cmdlet **New-AzApiManagementRevision**
     - To clone (copy tags, products, operations and policies) an existing revision using 'SourceApiRevision'. The new Revision assumes the 'ApiId' of the parent.
     - To provide an 'ApiRevisionDescription'
@@ -270,7 +353,7 @@
     - 'Get-AzApiManagementAuthorizationServer'
     - 'Get-AzApiManagementBackend'
       - `Get-AzApiManagementBackend -ResourceId /subscriptions/subid/resourceGroups/rgName/providers/Microsoft.ApiManagement/service/contoso/backends/servicefabric`
-    - 'Get-AzApiManagementCertificate' 
+    - 'Get-AzApiManagementCertificate'
     - 'Remove-AzApiManagementApiVersionSet'
     - 'Remove-AzApiManagementSubscription'
 
@@ -324,7 +407,7 @@
 		New-AzVmssConfig
 * StorageAccountType parameter is added to New-AzGalleryImageVersion.
 * TargetRegion of New-AzGalleryImageVersion can contain StorageAccountType.
-* SkipShutdown switch parameter is added to Stop-AzVM and Stop-AzVmss		
+* SkipShutdown switch parameter is added to Stop-AzVM and Stop-AzVmss
 * Breaking changes
     - Set-AzVMBootDiagnostics is changed to Set-AzVMBootDiagnostic.
     - Export-AzLogAnalyticThrottledRequests is changed to Export-AzLogAnalyticThrottledRequests.
@@ -359,7 +442,7 @@
 	- Users with hdinsight operator role will not be affected.
 
 #### Az.Monitor
-* New cmdlets for SQR API (Scheduled Query Rule)  
+* New cmdlets for SQR API (Scheduled Query Rule)
     - New-AzScheduledQueryRuleAlertingAction
 	- New-AzScheduledQueryRuleAznsActionGroup
 	- New-AzScheduledQueryRuleLogMetricTrigger
@@ -457,7 +540,7 @@
 * Updated the help text for endpoint to indicate that resources should be created before using the create/update event subscription cmdlets.
 
 #### Az.EventHub
-* Added new cmdlets for NetworkRuleSet of Namespace 
+* Added new cmdlets for NetworkRuleSet of Namespace
 
 #### Az.HDInsight
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
@@ -547,7 +630,7 @@
 
 #### Az.Compute
 * Add HyperVGeneration parameter to New-AzDiskConfig and New-AzSnapshotConfig
-* Allow VM creation with galley image from other tenants. 
+* Allow VM creation with galley image from other tenants.
 
 #### Az.ContainerInstance
 * Fixed issue in the -Command parameter of New-AzContainerGroup which added a trailing empty argument
@@ -636,7 +719,7 @@
     - New-AzStorageAccountManagementPolicyRule
 
 #### Az.Websites
-* Fix ARM template bug that breaks cloning all slots using 'New-AzWebApp -IncludeSourceWebAppSlots' 
+* Fix ARM template bug that breaks cloning all slots using 'New-AzWebApp -IncludeSourceWebAppSlots'
 
 ## 1.5.0 - March 2019
 ### Highlights since the last major release
