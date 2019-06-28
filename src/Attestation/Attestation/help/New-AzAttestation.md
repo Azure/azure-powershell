@@ -8,17 +8,17 @@ schema: 2.0.0
 # New-AzAttestation
 
 ## SYNOPSIS
-Creates an attestation
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ```
-New-AzAttestation -Name <String> -ResourceGroupName <String> [-AttestationPolicy <String>]
+New-AzAttestation [-Name] <String> [-ResourceGroupName] <String> [[-AttestationPolicy] <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzAttestation cmdlet creates an attestation in the specified resource group.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
@@ -47,7 +47,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -80,7 +80,7 @@ Parameter Sets: (All)
 Aliases: InstanceName
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -95,7 +95,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

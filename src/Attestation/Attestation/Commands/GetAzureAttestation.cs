@@ -1,18 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
-//
-// Copyright Microsoft Corporation
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-// http://www.apache.org/licenses/LICENSE-2.0
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-// ----------------------------------------------------------------------------------
-
-using Microsoft.Azure.Commands.Attestation.Models;
+﻿using Microsoft.Azure.Commands.Attestation.Models;
 using Microsoft.Azure.Commands.Attestation.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -26,14 +12,16 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Attestation
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Attestation", DefaultParameterSetName = NameParameterSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Attestation", SupportsShouldProcess = true, DefaultParameterSetName = NameParameterSet)]
     [OutputType(typeof(PSAttestation))]
     public class GetAzureAttestation : AttestationManagementCmdletBase
     {
         #region Parameter Set Names
 
         private const string NameParameterSet = "NameParameterSet";
-        private const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
+        private const string InputObjectParameterSet = "IdParameterSet";
+
+
         #endregion
 
         #region Input Parameter Definitions
@@ -49,17 +37,15 @@ namespace Microsoft.Azure.Commands.Attestation
         public string Name { get; set; }
 
         /// <summary>
-        /// ResourceId to which the attestation belongs.
+        /// Attestation object
         /// </summary>
-        [Parameter(
+        [Parameter(Mandatory = true,
             Position = 0,
-            Mandatory = true,
-            ParameterSetName = ResourceGroupParameterSet,
-            HelpMessage = "Specifies the name of the ResourceID associated with the attestation being queried")]
-        [ResourceGroupCompleter()]
+            ParameterSetName = InputObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "Attestation object to be queried.")]
         [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
-
+        public PSAttestation InputObject { get; set; }
 
         /// <summary>
         /// Resource group to which the attestation belongs.
@@ -75,13 +61,11 @@ namespace Microsoft.Azure.Commands.Attestation
 
         public override void ExecuteCmdlet()
         {
-            if (ResourceId != null)
+            if (InputObject != null)
             {
-                var resourceIdentifier = new ResourceIdentifier(ResourceId);
-                Name = resourceIdentifier.ResourceName;
-                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                Name = InputObject.Name;
+                ResourceGroupName = InputObject.ResourceGroupName;
             }
-
             if (string.IsNullOrEmpty(Name))
             {
                 throw new CloudException(string.Format("ResourceNotSpecified", Name));

@@ -12,6 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+// TODO: Remove IfDef
+#if NETSTANDARD
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+#else
+using Microsoft.Azure.ActiveDirectory.GraphClient;
+#endif
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,18 +53,11 @@ namespace Microsoft.Azure.Commands.Attestation.Models
         public PSAttestation CreateNewAttestation(AttestationCreationParameters parameters)
         {
             if (parameters == null)
-            {
                 throw new ArgumentNullException("parameters");
-            }
             if (string.IsNullOrWhiteSpace(parameters.ProviderName))
-            {
                 throw new ArgumentNullException("parameters.ProviderName");
-            }
             if (string.IsNullOrWhiteSpace(parameters.ResourceGroupName))
-            {
                 throw new ArgumentNullException("parameters.ResourceGroupName");
-            }
-               
             try
             {
                 AttestationServiceCreationParams _creationParams = new AttestationServiceCreationParams();
@@ -72,66 +71,50 @@ namespace Microsoft.Azure.Commands.Attestation.Models
                     providerName: parameters.ProviderName,
                     creationParams: _creationParams);
 
-                if ((response.Status == "Ready") || (response.Status == "NotReady"))
-                {
+                if (response.Status == "Ready" || response.Status == "NotReady")
                     return new PSAttestation(response);
-                }
-                else
-                {
-                    return null;
-                }
+                else return null;
             }
             catch
             {
-                throw new ArgumentException(string.Format("FailToCreateAttestation", parameters.ProviderName, parameters.ResourceGroupName));
+                throw;
             }
         }
 
         public PSAttestation GetAttestation(string attestationName, string resourceGroupName)
         {
             if (string.IsNullOrWhiteSpace(attestationName))
-            {
                 throw new ArgumentNullException("attestationName");
-            }
             if (string.IsNullOrWhiteSpace(resourceGroupName))
-            {
                 throw new ArgumentNullException("resourceGroupName");
-            } 
             try
             {
                 var response = attestationClient.AttestationProviders.Get(resourceGroupName, attestationName);
 
-                if ((response.Status == "Ready") || (response.Status == "NotReady"))
-                {
+                if (response.Status == "Ready" || response.Status == "NotReady")
                     return new PSAttestation(response);
-                }
-                else
-                {
-                    return null;
-                }
+                else return null;
+
             }
             catch
             {
-                throw new ArgumentException(string.Format("AttestationNotFound", attestationName, resourceGroupName));
+                return null;
             }       
         }
         public void DeleteAttestation(string attestationName, string resourceGroupName)
         {
             if (string.IsNullOrWhiteSpace(attestationName))
-            {
                 throw new ArgumentNullException("attestationName");
-            }
-
             if (string.IsNullOrWhiteSpace(resourceGroupName))
-            {
                 throw new ArgumentNullException("resourceGroupName");
-            }     
             try
             {
                 attestationClient.AttestationProviders.Delete(resourceGroupName, attestationName);
             }
-            catch
+            catch (CloudException ce)
             {
+                if (ce.Response.StatusCode == HttpStatusCode.NotFound)
+                    throw new ArgumentException(string.Format("AttestationNotFound", attestationName, resourceGroupName));
                 throw;
             }
         }

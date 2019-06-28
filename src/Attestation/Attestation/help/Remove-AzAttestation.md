@@ -8,30 +8,30 @@ schema: 2.0.0
 # Remove-AzAttestation
 
 ## SYNOPSIS
-Deletes an attestation.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### ByAvailableAttestation (Default)
 ```
-Remove-AzAttestation [-Name] <String> [-ResourceGroupName] <String> [-AsJob] [-PassThru]
+Remove-AzAttestation [-Name] <String> [-ResourceGroupName] <String> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdByAvailableAttestation
 ```
-Remove-AzAttestation [-ResourceId] <String> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzAttestation [-ResourceId] <String> [-Force] [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectByAvailableAttestation
 ```
-Remove-AzAttestation [-InputObject] <PSAttestation> [-AsJob] [-PassThru]
+Remove-AzAttestation [-InputObject] <PSAttestation> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzAttestation cmdlet deletes the specified attestation.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
@@ -66,6 +66,22 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Indicates that the cmdlet does not prompt you for confirmation.
+By default, this cmdlet prompts you to confirm that you want to delete the attestation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

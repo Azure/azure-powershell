@@ -12,6 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+// TODO: Remove IfDef
+#if NETSTANDARD
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+#else
+using Microsoft.Azure.ActiveDirectory.GraphClient;
+#endif
 using System;
 using System.Collections;
 using System.Collections.Generic;
