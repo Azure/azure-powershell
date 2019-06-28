@@ -50,6 +50,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public object Tags { get; set; }
 
         /// <summary>
+        /// Gets azure lifecycle management
+        /// </summary>
+        public string ProvisioningState { get; set; }
+
+        /// <summary>
         /// Gets fileSystem ID
         /// </summary>
         /// <remarks>
@@ -70,7 +75,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// </summary>
         /// <remarks>
         /// The service level of the file system. Possible values include:
-        /// 'Standard', 'Premium', 'Extreme'
+        /// 'Standard', 'Premium', 'Ultra'
         /// </remarks>
         public string ServiceLevel { get; set; }
 
@@ -85,9 +90,28 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public long? UsageThreshold { get; set; }
 
         /// <summary>
-        /// Gets azure lifecycle management
+        /// Gets or sets exportPolicy
         /// </summary>
-        public string ProvisioningState { get; set; }
+        /// <remarks>
+        /// Set of export policy rules
+        /// </remarks>
+        public PSNetAppFilesVolumeExportPolicy ExportPolicy { get; set; }
+
+        /// <summary>
+        /// Gets or sets snapshot ID
+        /// </summary>
+        /// <remarks>
+        /// UUID v4 used to identify the Snapshot
+        /// </remarks>
+        public string SnapshotId { get; set; }
+
+        /// <summary>
+        /// Gets or setsbaremetal Tenant ID
+        /// </summary>
+        /// <remarks>
+        /// Unique Baremetal Tenant Identifier.
+        /// </remarks>
+        public string BaremetalTenantId { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Resource URI for a delegated subnet. Must
