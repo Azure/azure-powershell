@@ -84,14 +84,6 @@ namespace Microsoft.Azure.Commands.Attestation
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
 
-
-        /// <summary>
-        /// If present, do not ask for confirmation
-        /// </summary>
-        [Parameter(Mandatory = false,
-        HelpMessage = "Indicates that the cmdlet does not prompt you for confirmation. By default, this cmdlet prompts you to confirm that you want to delete the attestation.")]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -114,11 +106,14 @@ namespace Microsoft.Azure.Commands.Attestation
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
             }
 
-            AttestationClient.DeleteAttestation(Name,ResourceGroupName);
-
-            if (PassThru)
+            if (ShouldProcess(Name))
             {
-                WriteObject(true);
+                AttestationClient.DeleteAttestation(Name, ResourceGroupName);
+
+                if (PassThru)
+                {
+                    WriteObject(true);
+                }
             }
         }
     }
