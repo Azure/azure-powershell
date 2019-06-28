@@ -5,7 +5,7 @@
 * Fix bug where incorrect endpoint was being used in some cases for data plane cmdlets in Windows PowerShell
 
 #### Az.Advisor
-* GA release of Az.Advisor
+* GA release of `Az.Advisor`
 * This module is now included as a part of the roll-up `Az` module
 
 #### Az.ApiManagement
