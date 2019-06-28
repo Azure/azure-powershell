@@ -12,14 +12,117 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.SYNOPSIS
+Test Account Active Directory
+#>
+function Test-AccountActiveDirectory
+{
+    $resourceGroup = Get-ResourceGroupName
+    $accName1 = Get-ResourceName
+    $accName2 = Get-ResourceName
+    $accName3 = Get-ResourceName
+    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
+    
+    $activeDirectory1 = @{
+        Username = "sdkuser"
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="...")]#>
+        Password = "sdkpass"
+        Domain = "sdkdomain"
+        Dns = "127.0.0.1"
+        SmbServerName = "PSSMBSName"
+    }
+    $activeDirectory2 = @{
+        Username = "sdkuser1"
+		<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="...")]#>
+        Password = "sdkpass1"
+        Domain = "sdkdomain1"
+        Dns = "127.0.0.2"
+        SmbServerName = "PSSMBSNam1"
+    }
+    
+
+    try
+    {
+        # create the resource group
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation
+
+        # check multiple ADs are captured
+        # currently this is not permitted and throws a message
+        try
+        {
+            $activedirectories = @( $activeDirectory1, $activeDirectory2 )
+
+            # create and check account 1
+            $newTagName = "tag1"
+            $newTagValue = "tagValue1"
+            $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirector $activeDirectories
+            Assert-True { $false }
+        }
+        catch
+        {
+            $ErrorMessage = $_.Exception.Message
+            Assert-True { ($ErrorMessage -contains 'Only one active directory allowed') }
+            #Assert-AreEqual $accName1 $retrievedAcc.Name
+        }
+
+        # try creating an AD -
+
+        $activedirectories = @( $activeDirectory1 )
+
+        # create and check account 1
+        $newTagName = "tag1"
+        $newTagValue = "tagValue1"
+        $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -ActiveDirectory $activeDirectories
+        Assert-AreEqual $accName1 $retrievedAcc.Name
+        Assert-AreEqual $activeDirectory1.SmbServerName $retrievedAcc.ActiveDirectories[0].SmbServerName
+        Assert-AreEqual $activeDirectory1.Username $retrievedAcc.ActiveDirectories[0].Username
+
+        # patch an Active Directory with no active directory. Should be no change
+        # create and check account 1
+        $newTagName = "tag1"
+        $newTagValue = "tagValue2"
+        $retrievedAcc = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -Tag @{$newTagName = $newTagValue}
+        Assert-AreEqual $accName1 $retrievedAcc.Name
+        Assert-AreEqual $activeDirectory1.SmbServerName $retrievedAcc.ActiveDirectories[0].SmbServerName
+        Assert-AreEqual $activeDirectory1.Username $retrievedAcc.ActiveDirectories[0].Username
+        Assert-AreEqual 1 $retrievedAcc.ActiveDirectories.Length
+        Assert-AreEqual "tagValue2" $retrievedAcc.Tags[$newTagName].ToString()
+
+        # patch an Active Directory. Should be updated to contain only the new one
+        $activedirectories = @( $activeDirectory2 )
+        $retrievedAcc = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -ActiveDirectory $activedirectories
+        Assert-AreEqual $accName1 $retrievedAcc.Name
+        Assert-AreEqual $activeDirectory2.SmbServerName $retrievedAcc.ActiveDirectories[0].SmbServerName
+        Assert-AreEqual $activeDirectory2.Username $retrievedAcc.ActiveDirectories[0].Username
+        Assert-AreEqual 1 $retrievedAcc.ActiveDirectories.Length
+        Assert-AreEqual "tagValue2" $retrievedAcc.Tags[$newTagName].ToString()
+
+        # update (put) the account. The absence of an active directory should result in the removal of any currently associated. Also tags
+        $retrievedAcc = Set-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -AccountName $accName1 -Location $resourceLocation
+        Assert-AreEqual $accName1 $retrievedAcc.Name
+        Assert-Null $retrievedAcc.Tags
+        Assert-Null $retrievedAcc.ActiveDirectories
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroup
+    }
+}
+    
+<#
+.SYNOPSIS
+Test Account CRUD operations
+#>
 function Test-AccountCrud
 {
-    $resourceGroup = "pws-sdk-tests-rg-1"
-    $accName1 = "pws-sdk-acc-1"
-    $accName2 = "pws-sdk-acc-2"
-    $accName3 = "pws-sdk-acc-3"
-    $resourceLocation = "westus2"
-
+    $resourceGroup = Get-ResourceGroupName
+    $accName1 = Get-ResourceName
+    $accName2 = Get-ResourceName
+    $accName3 = Get-ResourceName
+    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
+    
     try
     {
         # create the resource group
@@ -42,8 +145,9 @@ function Test-AccountCrud
 
         # get and check accounts by group (list)
         $retrievedAcc = Get-AzNetAppFilesAccount -ResourceGroupName $resourceGroup
-        Assert-AreEqual $accName1 $retrievedAcc[0].Name
-        Assert-AreEqual $accName2 $retrievedAcc[1].Name
+        # check the names but the order does not appear to be guaranteed (perhaps because the names are randomly generated)
+        Assert-True {"$accName1" -eq $retrievedAcc[0].Name -or "$accName2" -eq $retrievedAcc[0].Name}
+        Assert-True {"$accName1" -eq $retrievedAcc[1].Name -or "$accName2" -eq $retrievedAcc[1].Name}
         Assert-AreEqual 2 $retrievedAcc.Length
 
         # get and check an account by name
@@ -54,9 +158,7 @@ function Test-AccountCrud
         $retrievedAccById = Get-AzNetAppFilesAccount -ResourceId $retrievedAcc.Id
         Assert-AreEqual $accName1 $retrievedAccById.Name
 
-        # update and check the account (tags)
-        # since only tags can be patched and no other set or update is possible
-        # there is no implemented cmdlet
+        # update and check the account (tags) - the active directory test chceks this stuff
 
         # delete one account retrieved by id and one by name and check removed
         Remove-AzNetAppFilesAccount -ResourceId $retrievedAccById.Id
@@ -83,10 +185,10 @@ Test Account Pipeline operations (uses command aliases)
 #>
 function Test-AccountPipelines
 {
-    $resourceGroup = "pws-sdk-tests-rg-1"
-    $accName1 = "pws-sdk-acc-1"
-    $accName2 = "pws-sdk-acc-2"
-    $resourceLocation = "westus2"
+    $resourceGroup = Get-ResourceGroupName
+    $accName1 = Get-ResourceName
+    $accName2 = Get-ResourceName
+    $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
 
     try
     {

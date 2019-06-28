@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.13.0
+* Add Instance Failover Group cmdlets from preview release to public release
+* Support Azure SQL Server\Database Auditing with new cmdlets.
+    - Set-AzSqlServerAudit
+    - Get-AzSqlServerAudit
+    - Remove-AzSqlServerAudit
+    - Set-AzSqlDatabaseAudit
+    - Get-AzSqlDatabaseAudit
+    - Remove-AzSqlDatabaseAudit
 * Remove email constraints from Vulnerability Assessment settings
 
 ## Version 1.12.0
