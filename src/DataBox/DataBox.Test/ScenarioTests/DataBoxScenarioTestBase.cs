@@ -13,81 +13,57 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Management.DataBox;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Management.Cdn;
-using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using ResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 
-namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
+namespace Microsoft.Azure.Commands.DataBox.Test
 {
-    public class TestController : RMTestBase
+    public abstract class DataBoxScenarioTestBase : RMTestBase
     {
         private readonly EnvironmentSetupHelper _helper;
 
-        public ResourceManagementClient ResourceManagementClient { get; private set; }
-
-        public CdnManagementClient CdnManagementClient { get; private set; }
-
-        public static TestController NewInstance => new TestController();
-
-        protected TestController()
-        {
+        protected DataBoxScenarioTestBase()
+        { 
             _helper = new EnvironmentSetupHelper();
         }
 
         protected void SetupManagementClients(MockContext context)
         {
-            ResourceManagementClient = GetResourceManagementClient(context);
-            CdnManagementClient = GetCdnManagementClient(context);
+            var dataPipelineManagementClient = GetDataPipelineManagementClient(context);
+            var resourceManagementClient = GetResourceManagementClient(context);
 
-            _helper.SetupManagementClients(
-                ResourceManagementClient,
-                CdnManagementClient);
+            _helper.SetupManagementClients(dataPipelineManagementClient, resourceManagementClient);
         }
 
-        public void RunPowerShellTest(ServiceManagement.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
+        protected void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var sf = new StackTrace().GetFrame(1);
             var callingClassType = sf.GetMethod().ReflectedType?.ToString();
             var mockName = sf.GetMethod().Name;
 
             _helper.TracingInterceptor = logger;
-            RunPsTestWorkflow(
-                () => scripts,
-                // no custom cleanup
-                null,
-                callingClassType,
-                mockName);
-        }
-
-        public void RunPsTestWorkflow(
-            Func<string[]> scriptBuilder,
-            Action cleanup,
-            string callingClassType,
-            string mockName)
-        {
 
             var d = new Dictionary<string, string>
             {
                 {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
-                {"Microsoft.Authorization", null},
-                {"Microsoft.Compute", null}
+                {"Microsoft.Authorization", null}
             };
             var providersToIgnore = new Dictionary<string, string>
             {
                 {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
             };
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
-
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
             using (var context = MockContext.Start(callingClassType, mockName))
@@ -95,38 +71,27 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
                 SetupManagementClients(context);
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
-
-                var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
-
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    "ScenarioTests\\" + GetType().Name + ".ps1",
                     _helper.RMProfileModule,
-                    _helper.GetRMModulePath("AzureRM.Cdn.psd1"),
+                    _helper.GetRMModulePath("Az.DataBox.psd1"),
                     "AzureRM.Resources.ps1");
-                try
-                {
-                    var psScripts = scriptBuilder?.Invoke();
-                    if (psScripts != null)
-                    {
-                        _helper.RunPowerShellTest(psScripts);
-                    }
-                }
-                finally
-                {
-                    cleanup?.Invoke();
-                }
+
+                _helper.RunPowerShellTest(scripts);
             }
+        }
+
+        protected DataBoxManagementClient GetDataPipelineManagementClient(MockContext context)
+        {
+            var testEnv = TestEnvironmentFactory.GetTestEnvironment();
+            testEnv.SubscriptionId = "05b5dd1c-793d-41de-be9f-6f9ed142f695";
+            return context.GetServiceClient<DataBoxManagementClient>(testEnv);
         }
 
         protected ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private static CdnManagementClient GetCdnManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<CdnManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

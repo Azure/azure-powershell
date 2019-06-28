@@ -11,7 +11,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.DataBox" Version="1.0.0" />
-    <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="4.3.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
+      <HintPath>..\..\..\artifacts\Debug\Az.Accounts\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

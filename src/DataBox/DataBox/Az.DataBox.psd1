@@ -35,7 +35,7 @@ Description = 'Microsoft Azure PowerShell - DataBox service cmdlets for Azure Re
 For more information on DataBox, please visit the following: https://docs.microsoft.com/azure/databox/'
 
 # Minimum version of the PowerShell engine required by this module
-PowerShellVersion = '5.1'
+PowerShellVersion = '6.0'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''
@@ -74,7 +74,7 @@ NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.DataBox.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzDataBoxJobs', 'Get-AzDataBoxPassword', 'Get-AzDataBoxSMBCreds'
+CmdletsToExport = 'Get-AzDataBoxJobs', 'Get-AzDataBoxPassword', 'Get-AzDataBoxSMBCreds', 'Stop-AzDataBoxJob'
 
 # Variables to export from this module
 # VariablesToExport = @()

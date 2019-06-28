@@ -14,23 +14,17 @@
 
 <#
 .SYNOPSIS
-Subscription resource usage
+Nagative test. Get resources from an non-existing empty group.
 #>
-function Test-SubscriptionGetResourceUsage
-{
-    $subscriptionResourceUsage = Get-AzCdnSubscriptionResourceUsage
-
-    Assert-True {$subscriptionResourceUsage.Count -eq 1}
-	Assert-True {$subscriptionResourceUsage[0].CurrentValue -eq 16}
+function Test-GetNonExistingDataBoxJob
+{	
+    $dfname = Get-DataBoxJobName
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
+    
+    # Test
+    Assert-ThrowsContains { Get-AzDataBoxJobs -ResourceGroupName $rgname -Name $dfname } "not found"    
 }
 
-<#
-.SYNOPSIS
-Edge node
-#>
-function Test-SubscriptionEdgeNode
-{
-    $edgeNodes = Get-AzCdnEdgeNodes
-
-    Assert-False {$edgeNodes -eq $null}
-}
