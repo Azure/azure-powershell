@@ -40,6 +40,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
             SmartGroupId = alert.Properties.Essentials.SmartGroupId;
             SmartGroupingReason = alert.Properties.Essentials.SmartGroupingReason;
             MonitorConditionResolvedDateTime = alert.Properties.Essentials.MonitorConditionResolvedDateTime;
+            ContextPayload = alert.Properties.Context?.ToString();
+            EgressConfig = alert.Properties.EgressConfig?.ToString();
         }
 
         public string Id { get; }
@@ -73,5 +75,9 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
         public string SmartGroupId { get; }
 
         public string SmartGroupingReason { get; }
+
+        public string ContextPayload { get; }
+
+        public string EgressConfig { get; }
     }
 }
