@@ -21,7 +21,6 @@ using System.Collections;
 using System.Management.Automation;
 using System.Runtime.InteropServices.ComTypes;
 using Newtonsoft.Json;
-//using Microsoft.Azure.KeyVault.WebKey;
 
 namespace Microsoft.Azure.Commands.Attestation
 {
@@ -38,7 +37,6 @@ namespace Microsoft.Azure.Commands.Attestation
         /// Instance name
         /// </summary>
         [Parameter(Mandatory = true,
-            Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage =
                 "Specifies a name of the Instance to create. The name can be any combination of letters, digits, or hyphens. The name must start and end with a letter or digit. The name must be universally unique."
@@ -50,7 +48,6 @@ namespace Microsoft.Azure.Commands.Attestation
         /// Resource group name
         /// </summary>
         [Parameter(Mandatory = true,
-            Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of an existing resource group in which to create the attestation.")]
         [ResourceGroupCompleter]
@@ -59,7 +56,6 @@ namespace Microsoft.Azure.Commands.Attestation
 
 
         [Parameter(Mandatory = false,
-            Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage =
                 "Specifies the attestation policy passed in which to create the attestation."
