@@ -17,13 +17,8 @@ namespace Microsoft.Azure.Commands.DataBox.Common
     {
         public static string TenantId { get; internal set; }
 
-        
-
         public static List<DataBoxCredentials> Credentials;
-
-        [Parameter(Mandatory = true)]
-        [ValidateNotNullOrEmpty]
-        public string SubscriptionId { get; internal set; }
+        
 
         [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
@@ -36,17 +31,9 @@ namespace Microsoft.Azure.Commands.DataBox.Common
 
         public override void ExecuteCmdlet()
         {
-            //if (this.IsParameterBound(c => c.ResourceId))
-            //{
-            //    var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
-            //    this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-            //    this.Name = resourceIdentifier.ResourceName;
-            //}
-
-            // Initializes a new instance of the DataBoxManagementClient class.
+            
             Credentials = new List<DataBoxCredentials>();
 
-            this.DataBoxManagementClient.SubscriptionId = this.SubscriptionId;
             if (Name != null && string.IsNullOrWhiteSpace(Name))
             {
                 throw new PSArgumentNullException("Name");
@@ -80,8 +67,8 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                     Credentials.Add(new DataBoxCredentials(obj.DeviceSerialNumber, obj.DevicePassword));
                 }
             }
-            
-            WriteObject(Credentials);
+            PSObject output = new PSObject(Credentials);
+            WriteObject(output);
         }
     }
 

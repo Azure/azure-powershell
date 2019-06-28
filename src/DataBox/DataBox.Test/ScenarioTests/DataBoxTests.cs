@@ -12,34 +12,34 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
+namespace Microsoft.Azure.Commands.DataBox.Test
 {
-    public class SubscriptionTests
+    public class DataBoxTests : DataBoxScenarioTestBase
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
+        public XunitTracingInterceptor _logger;
 
-        public SubscriptionTests(Xunit.Abstractions.ITestOutputHelper output)
+        public DataBoxTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
+#if NETSTANDARD
+        [Fact]//(Skip = "Management library needs NetCore republish")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSubscriptionGetResourceUsage()
+        public void TestGetNonExistingDataBoxJob()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SubscriptionGetResourceUsage");
+            
+            RunPowerShellTest(_logger, "Test-GetNonExistingDataBoxJob");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSubscriptionEdgeNode()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SubscriptionEdgeNode");
-        }
     }
 }

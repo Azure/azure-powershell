@@ -21,10 +21,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
 
         public static string TenantId { get; internal set; }
 
-        [Parameter(Mandatory = true)]
-        [ValidateNotNullOrEmpty]
-        public static string SubscriptionId { get; internal set; }
-
         [Parameter(Mandatory = false, ParameterSetName = ListParameterSet)]
         [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -56,16 +52,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
 
         public override void ExecuteCmdlet()
         {
-            //if (this.IsParameterBound(c => c.ResourceId))
-            //{
-            //    var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
-            //    this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-            //    this.Name = resourceIdentifier.ResourceName;
-            //}
-
-            // Initializes a new instance of the DataBoxManagementClient class.
-
-            this.DataBoxManagementClient.SubscriptionId = SubscriptionId;
+            
             if (Name != null && string.IsNullOrWhiteSpace(Name))
             {
                 throw new PSArgumentNullException("Name");
@@ -80,6 +67,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                                 this.Name,
                                 "details"));
                 WriteObject(result);
+               
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
@@ -126,7 +114,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             }
             else
             {
-                WriteObject("asdjfkl");
+
                  IPage<JobResource> jobPageList = null;
                  List<JobResource> result = new List<JobResource>();
 

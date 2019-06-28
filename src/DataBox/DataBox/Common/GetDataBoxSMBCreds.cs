@@ -24,10 +24,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
 
         [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string SubscriptionId { get; internal set; }
-
-        [Parameter(Mandatory = true)]
-        [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
@@ -37,17 +33,9 @@ namespace Microsoft.Azure.Commands.DataBox.Common
 
         public override void ExecuteCmdlet()
         {
-            //if (this.IsParameterBound(c => c.ResourceId))
-            //{
-            //    var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
-            //    this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-            //    this.Name = resourceIdentifier.ResourceName;
-            //}
-
-            // Initializes a new instance of the DataBoxManagementClient class.
+            
             Credentials = new List<DataBoxSMBCredentials>();
 
-            this.DataBoxManagementClient.SubscriptionId = this.SubscriptionId;
             if (Name != null && string.IsNullOrWhiteSpace(Name))
             {
                 throw new PSArgumentNullException("Name");
@@ -74,6 +62,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                 {
                     Credentials.Add(new DataBoxSMBCredentials(obj.ShareName, obj.UserName, obj.Password));
                 }
+                
             }
 
             WriteObject(Credentials);

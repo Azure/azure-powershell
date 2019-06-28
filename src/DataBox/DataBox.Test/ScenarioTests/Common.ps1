@@ -25,7 +25,7 @@ function Get-ResourceGroupName
 .SYNOPSIS
 Gets valid resource name
 #>
-function Get-ResourceName
+function Get-DataBoxJobName
 {
     return getAssetName
 }
