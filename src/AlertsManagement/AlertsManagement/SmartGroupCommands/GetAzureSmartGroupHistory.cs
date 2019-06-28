@@ -21,25 +21,53 @@ using Microsoft.Azure.Management.AlertsManagement.Models;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SmartGroupHistory")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SmartGroupHistory", DefaultParameterSetName = ByIdParameterSet)]
     [OutputType(typeof(PSSmartGroupModification))]
     public class GetAzureSmartGroupHistory : AlertsManagementBaseCmdlet
     {
+        #region Parameter sets
+        private const string ByInputObjectParameterSet = "ByInputObject";
+        private const string ByIdParameterSet = "BySmartGroupId";
+        #endregion
+
         #region Parameters declarations
         /// <summary>
-        /// Alert Id
+        /// Smart group Id
         /// </summary>
         [Parameter(Mandatory = true,
+                   ParameterSetName = ByIdParameterSet,
                    HelpMessage = "Unique Identifier of SmartGroup / ResourceId of alert.")]
         [ValidateNotNullOrEmpty]
         [Alias("ResourceId")]
         public string SmartGroupId { get; set; }
+
+        /// <summary>
+        /// Input Object
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   ParameterSetName = ByInputObjectParameterSet,
+                   ValueFromPipeline = true,
+                   HelpMessage = "Input object from pipeline.")]
+        [ValidateNotNullOrEmpty]
+        public PSSmartGroup InputObject { get; set; }
         #endregion
 
         protected override void ProcessRecordInternal()
         {
-            string id = CommonUtils.GetIdFromARMResourceId(SmartGroupId);
-            PSSmartGroupModification history = new PSSmartGroupModification(this.AlertsManagementClient.SmartGroups.GetHistoryWithHttpMessagesAsync(id).Result.Body);
+            string id = SmartGroupId;
+            switch (ParameterSetName)
+            {
+                case ByIdParameterSet:
+                    id = CommonUtils.GetIdFromARMResourceId(SmartGroupId);
+                    break;
+
+                case ByInputObjectParameterSet:
+                    id = CommonUtils.GetIdFromARMResourceId(InputObject.Id);
+                    break;
+            }
+
+            PSSmartGroupModification history = new PSSmartGroupModification(
+                        this.AlertsManagementClient.SmartGroups.GetHistoryWithHttpMessagesAsync(id).Result.Body);
             WriteObject(sendToPipeline: history.Items, enumerateCollection: true);
         }
     }

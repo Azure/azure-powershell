@@ -21,15 +21,22 @@ using Microsoft.Azure.Management.AlertsManagement.Models;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SmartGroupState", SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SmartGroupState", 
+        DefaultParameterSetName = ByIdParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSmartGroup))]
     public class UpdateAzureSmartGroupState : AlertsManagementBaseCmdlet
     {
+        #region Parameter sets
+        private const string ByInputObjectParameterSet = "ByInputObject";
+        private const string ByIdParameterSet = "BySmartGroupId";
+        #endregion
+
         #region Parameters declarations
         /// <summary>
         /// Smart Group Id
         /// </summary>
         [Parameter(Mandatory = true,
+                   ParameterSetName = ByIdParameterSet,
                    HelpMessage = "Unique Identifier of Smart Group / ResourceId of smart group.")]
         [ValidateNotNullOrEmpty]
         [Alias("ResourceId")]
@@ -39,10 +46,24 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// Smart Group State
         /// </summary>
         [Parameter(Mandatory = true,
+                   ParameterSetName = ByIdParameterSet,
+                   HelpMessage = "Updated Smart group State")]
+        [Parameter(Mandatory = true,
+                   ParameterSetName = ByInputObjectParameterSet,
                    HelpMessage = "Updated Smart group State")]
         [PSArgumentCompleter("New", "Acknowledged", "Closed")]
         [ValidateNotNullOrEmpty]
         public string State { get; set; }
+
+        /// <summary>
+        /// Input Object
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   ParameterSetName = ByInputObjectParameterSet,
+                   ValueFromPipeline = true,
+                   HelpMessage = "Input object from pipeline.")]
+        [ValidateNotNullOrEmpty]
+        public PSSmartGroup InputObject { get; set; }
 
         #endregion
 
@@ -52,7 +73,18 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                        target: string.Format("Update smart group state to {0}", State),
                        action: "Update Smart group state"))
             {
-                string id = CommonUtils.GetIdFromARMResourceId(SmartGroupId);
+                string id = SmartGroupId;
+                switch (ParameterSetName)
+                {
+                    case ByIdParameterSet:
+                        id = CommonUtils.GetIdFromARMResourceId(SmartGroupId);
+                        break;
+
+                    case ByInputObjectParameterSet:
+                        id = CommonUtils.GetIdFromARMResourceId(InputObject.Id);
+                        break;
+                }
+
                 PSSmartGroup smartGroup = new PSSmartGroup(
                     this.AlertsManagementClient.SmartGroups.ChangeStateWithHttpMessagesAsync(id, State).Result.Body);
                 WriteObject(sendToPipeline: smartGroup);

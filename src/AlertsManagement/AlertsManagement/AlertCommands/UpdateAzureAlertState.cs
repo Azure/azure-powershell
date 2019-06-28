@@ -21,15 +21,22 @@ using Microsoft.Azure.Management.AlertsManagement.Models;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AlertState", SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AlertState", 
+        DefaultParameterSetName = ByIdParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSAlert))]
     public class UpdateAzureAlertState : AlertsManagementBaseCmdlet
     {
+        #region Parameter sets
+        private const string ByInputObjectParameterSet = "ByInputObject";
+        private const string ByIdParameterSet = "ByAlertId";
+        #endregion
+
         #region Parameters declarations
         /// <summary>
         /// Alert Id
         /// </summary>
         [Parameter(Mandatory = true,
+                   ParameterSetName = ByIdParameterSet,
                    HelpMessage = "Unique Identifier of Alert / ResourceId of alert.")]
         [ValidateNotNullOrEmpty]
         [Alias("ResourceId")]
@@ -39,11 +46,25 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// Alert State
         /// </summary>
         [Parameter(Mandatory = true,
+                   ParameterSetName = ByIdParameterSet,
+                   HelpMessage = "Updated Alert State")]
+        [Parameter(Mandatory = true,
+                   ParameterSetName = ByInputObjectParameterSet,
                    HelpMessage = "Updated Alert State")]
         [PSArgumentCompleter("New", "Acknowledged", "Closed")]
         [ValidateNotNullOrEmpty]
         public string State { get; set; }
-        
+
+        /// <summary>
+        /// Input Object
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   ParameterSetName = ByInputObjectParameterSet,
+                   ValueFromPipeline = true,
+                   HelpMessage = "Input object from pipeline.")]
+        [ValidateNotNullOrEmpty]
+        public PSAlert InputObject { get; set; }
+
         #endregion
 
         protected override void ProcessRecordInternal()
@@ -52,7 +73,18 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                        target: string.Format("Update alert state to {0}", State),
                        action: "Update Alert state"))
             {
-                string id = CommonUtils.GetIdFromARMResourceId(AlertId);
+                string id = AlertId;
+                switch (ParameterSetName)
+                {
+                    case ByIdParameterSet:
+                        id = CommonUtils.GetIdFromARMResourceId(AlertId);
+                        break;
+
+                    case ByInputObjectParameterSet:
+                        id = CommonUtils.GetIdFromARMResourceId(InputObject.Id);
+                        break;
+                }
+
                 PSAlert alert = new PSAlert(this.AlertsManagementClient.Alerts.ChangeStateWithHttpMessagesAsync(id, State).Result.Body);
                 WriteObject(sendToPipeline: alert);
             }

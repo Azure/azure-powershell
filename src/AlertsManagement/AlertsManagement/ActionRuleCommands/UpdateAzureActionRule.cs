@@ -78,6 +78,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// <summary>
         /// Gets or sets simplified property of patch object : status
         /// </summary>
+        [Parameter(ParameterSetName = ByResourceIdParameterSet, Mandatory = false, HelpMessage = "Action rule status")]
+        [Parameter(ParameterSetName = ByInputObjectParameterSet, Mandatory = false, HelpMessage = "Action rule status")]
         [Parameter(ParameterSetName = ByNameSimplifiedPatchParameterSet, Mandatory = false, HelpMessage = "Action rule status")]
         [PSArgumentCompleter(ActionRuleStatus.Enabled, ActionRuleStatus.Disabled)]
         public string Status { get; set; }
@@ -85,6 +87,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// <summary>
         /// Gets or sets simplified property of patch object : tags
         /// </summary>
+        [Parameter(ParameterSetName = ByResourceIdParameterSet, Mandatory = false, HelpMessage = "Action rule tags")]
+        [Parameter(ParameterSetName = ByInputObjectParameterSet, Mandatory = false, HelpMessage = "Action rule tags")]
         [Parameter(ParameterSetName = ByNameSimplifiedPatchParameterSet, Mandatory = false, HelpMessage = "Action rule tags")]
         public Hashtable Tag { get; set; }
 
@@ -144,7 +148,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                         break;
                 }
 
-                WriteObject(sendToPipeline: string.Format("Successfully updated Action Rule : {0}.", Name));
                 WriteObject(sendToPipeline: updatedActionRule);
             }
         }
