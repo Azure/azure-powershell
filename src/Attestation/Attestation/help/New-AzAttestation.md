@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Attestation.dll-Help.xml
 Module Name: Az.Attestation
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.attestation/new-azattestation
 schema: 2.0.0
 ---
 
@@ -24,10 +24,17 @@ New-AzAttestation [-Name] <String> [-ResourceGroupName] <String> [[-AttestationP
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzAttestation -Name example -ResourceGroupName rg1 
+Id                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/rg1/providers/Microsoft.Attestation/attestationProviders/example
+Name                : example
+Type                : Microsoft.Attestation/attestationProviders
+Status              : Ready
+AttesUri            : https://example.us.attest.azure.net
+ResoureGroupName    : rg1 
+SubscriptionId      : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
 ```
 
-{{ Add example description here }}
+Create a new Attestatopm "example" in current Subscription, Resource Group "rg1"
 
 ## PARAMETERS
 
