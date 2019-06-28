@@ -27,7 +27,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact(Skip = "TODO: record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestAvailablePrivateEndpointTypeCRUD()
         {
             TestRunner.RunTestScript("Test-AvailablePrivateEndpointTypeCRUD");
