@@ -18,8 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Update common packages to include new PolicyInsights library 
-* Fix bug where incorrect endpoint was being used in some cases for data plane cmdlets in Windows PowerShell
+
+## Version 1.6.0
+* Add support for profile cmdlets
+* Add support for environments and data planes in generated cmdlets
+* Update common packages to include new PolicyInsights library * Fix bug where incorrect endpoint was being used in some cases for data plane cmdlets in Windows PowerShell
 
 ## Version 1.5.3
 * Fix bug with incorrect URL being used in some cases for Functions calls

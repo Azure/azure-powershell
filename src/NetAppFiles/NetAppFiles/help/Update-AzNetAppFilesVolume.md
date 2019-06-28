@@ -15,22 +15,30 @@ Updates an Azure NetApp Files (ANF) volume according to the optional modifiers p
 ### ByFieldsParameterSet (Default)
 ```
 Update-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -AccountName <String>
- -PoolName <String> -Name <String> [-UsageThreshold <Int64>] [-ServiceLevel <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -PoolName <String> -Name <String> [-UsageThreshold <Int64>] [-ServiceLevel <String>]
+ [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Update-AzNetAppFilesVolume -Name <String> [-UsageThreshold <Int64>] [-ServiceLevel <String>] [-Tag <Hashtable>]
- -PoolObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Update-AzNetAppFilesVolume -Name <String> [-UsageThreshold <Int64>] [-ServiceLevel <String>]
+ [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Tag <Hashtable>] -PoolObject <PSNetAppFilesPool>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceIdParameterSet
+```
+Update-AzNetAppFilesVolume [-UsageThreshold <Int64>] [-ServiceLevel <String>] [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
+ [-Tag <Hashtable>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Update-AzNetAppFilesVolume [-UsageThreshold <Int64>] [-ServiceLevel <String>] [-Tag <Hashtable>]
- -InputObject <PSNetAppFilesVolume> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzNetAppFilesVolume [-UsageThreshold <Int64>] [-ServiceLevel <String>] [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
+ [-Tag <Hashtable>] -InputObject <PSNetAppFilesVolume> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,6 +91,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExportPolicy
+A hashtable array which represents the export policy
+
+```yaml
+Type: PSNetAppFilesVolumeExportPolicy
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -181,6 +204,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+The resource id of the ANF volume
+
+```yaml
+Type: String
+Parameter Sets: ByResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ServiceLevel
 The service level of the ANF volume
 
@@ -262,6 +300,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### System.String
 
 ### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool
 
