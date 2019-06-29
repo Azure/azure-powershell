@@ -1,3 +1,3 @@
 $exportsPath = Join-Path $PSScriptRoot "..\..\exports"
-$cmdlets = (Get-ChildItem -Path $exportsPath -Include *.ps1 -Recurse).Name -replace ".ps1", ""
-$cmdlets | %{$global:PSDefaultParameterValues[$_ + ":SubscriptionId"] = {(Get-AzContext).Subscription.Id}}
+[string[]]$cmdlets = (Get-ChildItem -Path $exportsPath -Include *.ps1 -Recurse).Name
+$cmdlets | %{$global:PSDefaultParameterValues[($_ -replace ".ps1", "") + ":SubscriptionId"] = {(Get-AzContext).Subscription.Id}}
