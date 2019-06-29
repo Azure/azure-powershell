@@ -35,6 +35,11 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         private const int RowsPerPage = 1000;
 
         /// <summary>
+        /// Maximum number of subscriptions for request
+        /// </summary>
+        private const int SubscriptionLimit = 1000;
+
+        /// <summary>
         /// Gets or sets the query.
         /// </summary>s
         [Parameter(Mandatory = true, Position = 0, HelpMessage = "Resource Graph query")]
@@ -97,6 +102,16 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                             ErrorCategory.InvalidArgument, null);
                 this.WriteError(errorRecord);
                 return;
+            }
+
+            if (subscriptions.Count > SubscriptionLimit)
+            {
+                subscriptions = subscriptions.Take(SubscriptionLimit).ToList();
+                this.WriteWarning($"Exceeded number of subscriptions for the request, only first {SubscriptionLimit} were included in the query." +
+                    "To iterate through more subscriptions, you can use:\n" +
+                    "$query = \"limit 1\";$subscriptions = Get-AzSubscription; $subscriptionIds = $subscriptions.Id;" +
+                    "$counter = [pscustomobject] @{ Value = 0 }; $subscriptionsBatch= $subscriptionIds | Group -Property { [math]::Floor($counter.Value++ / 1000) };" +
+                    "$res = @(); foreach ($batch in $subscriptionsBatch){ $res += Search-AzGraph -query $query -Subscription $batch.Group }; $res ");
             }
 
             var first = this.MyInvocation.BoundParameters.ContainsKey("First") ? this.First : 100;
