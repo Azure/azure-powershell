@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Improving logic for customers with more than 1000 subscriptions
 
 ## Version 0.7.3
 * Improving logic of getting subscriptions for query to ARG
