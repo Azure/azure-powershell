@@ -36,14 +36,12 @@ namespace Microsoft.Azure.Commands.Attestation.Models
 
         public AttestationClient(IAzureContext context)
         {
-            _subscriptionId = context.Subscription.GetId();
             attestationClient = AzureSession.Instance.ClientFactory.CreateArmClient<AttestationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         public AttestationClient()
         {
         }
-        private readonly Guid _subscriptionId;
         public PSAttestation CreateNewAttestation(AttestationCreationParameters parameters)
         {
             if (parameters == null)
