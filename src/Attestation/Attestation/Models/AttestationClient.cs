@@ -58,33 +58,17 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             {
                 throw new ArgumentNullException("parameters.ResourceGroupName");
             }
-               
-            try
+            AttestationServiceCreationParams _creationParams = new AttestationServiceCreationParams();
+            if (!string.IsNullOrEmpty(parameters.AttestationPolicy))
             {
-                AttestationServiceCreationParams _creationParams = new AttestationServiceCreationParams();
-                if (!string.IsNullOrEmpty(parameters.AttestationPolicy))
-                {
-                    _creationParams.AttestationPolicy = parameters.AttestationPolicy;
-                }
-
-                var response = attestationClient.AttestationProviders.Create(
-                    resourceGroupName: parameters.ResourceGroupName,
-                    providerName: parameters.ProviderName,
-                    creationParams: _creationParams);
-
-                if ((response.Status == "Ready") || (response.Status == "NotReady"))
-                {
-                    return new PSAttestation(response);
-                }
-                else
-                {
-                    return null;
-                }
+                _creationParams.AttestationPolicy = parameters.AttestationPolicy;
             }
-            catch
-            {
-                throw new ArgumentException(string.Format("FailToCreateAttestation", parameters.ProviderName, parameters.ResourceGroupName));
-            }
+
+            var response = attestationClient.AttestationProviders.Create(
+                resourceGroupName: parameters.ResourceGroupName,
+                providerName: parameters.ProviderName,
+                creationParams: _creationParams);
+            return new PSAttestation(response);
         }
 
         public PSAttestation GetAttestation(string attestationName, string resourceGroupName)
@@ -96,24 +80,9 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             if (string.IsNullOrWhiteSpace(resourceGroupName))
             {
                 throw new ArgumentNullException("resourceGroupName");
-            } 
-            try
-            {
-                var response = attestationClient.AttestationProviders.Get(resourceGroupName, attestationName);
-
-                if ((response.Status == "Ready") || (response.Status == "NotReady"))
-                {
-                    return new PSAttestation(response);
-                }
-                else
-                {
-                    return null;
-                }
             }
-            catch
-            {
-                throw new ArgumentException(string.Format("AttestationNotFound", attestationName, resourceGroupName));
-            }       
+            var response = attestationClient.AttestationProviders.Get(resourceGroupName, attestationName);
+            return new PSAttestation(response);
         }
         public void DeleteAttestation(string attestationName, string resourceGroupName)
         {
@@ -125,15 +94,8 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             if (string.IsNullOrWhiteSpace(resourceGroupName))
             {
                 throw new ArgumentNullException("resourceGroupName");
-            }     
-            try
-            {
-                attestationClient.AttestationProviders.Delete(resourceGroupName, attestationName);
             }
-            catch
-            {
-                throw;
-            }
+            attestationClient.AttestationProviders.Delete(resourceGroupName, attestationName);
         }
     }
 }
