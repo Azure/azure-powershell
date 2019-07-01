@@ -14,6 +14,9 @@ This topic displays help topics for the Azure SQL Database Cmdlets.
 ### [Add-AzSqlDatabaseToFailoverGroup](Add-AzSqlDatabaseToFailoverGroup.md)
 Adds one or more databases to an Azure SQL Database Failover Group.
 
+### [Add-AzSqlInstanceKeyVaultKey](Add-AzSqlInstanceKeyVaultKey.md)
+Adds a key vault key to the provided Managed Instance. 
+
 ### [Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate](Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate.md)
 Adds a Transparent Data Encryption Certificate for the given managed instance
 
@@ -89,6 +92,9 @@ Gets one or more Advisors for an Azure SQL Database.
 ### [Get-AzSqlDatabaseAuditing](Get-AzSqlDatabaseAuditing.md)
 Gets the auditing settings of an Azure SQL database.
 
+### [Get-AzSqlDatabaseAudit](Get-AzSqlDatabaseAudit.md)
+Gets the auditing settings of an Azure SQL database.
+
 ### [Get-AzSqlDatabaseBackupLongTermRetentionPolicy](Get-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
 Gets a database long term retention policy.
 
@@ -112,6 +118,9 @@ Gets a geo-redundant backup of a database.
 
 ### [Get-AzSqlDatabaseGeoBackupPolicy](Get-AzSqlDatabaseGeoBackupPolicy.md)
 Gets a database geo backup policy.
+
+### [Get-AzSqlDatabaseInstanceFailoverGroup](Get-AzSqlDatabaseInstanceFailoverGroup.md)
+Gets or lists Azure SQL Database Instance Failover Groups.
 
 ### [Get-AzSqlDatabaseImportExportStatus](Get-AzSqlDatabaseImportExportStatus.md)
 Gets the details of an import or export of an Azure SQL Database.
@@ -213,6 +222,12 @@ Gets all vulnerability assessment scan record(s) associated with a given managed
 ### [Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting](Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a managed database.
 
+### [Get-AzSqlInstanceKeyVaultKey](Get-AzSqlInstanceKeyVaultKey.md)
+Gets a SQL managed instance's Key Vault keys.
+
+### [Get-AzSqlInstanceTransparentDataEncryptionProtector](Get-AzSqlInstanceTransparentDataEncryptionProtector.md)
+Gets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
+
 ### [Get-AzSqlInstanceVulnerabilityAssessmentSetting](Get-AzSqlInstanceVulnerabilityAssessmentSetting.md)
 Gets the vulnerability assessment settings of a managed instance.
 
@@ -235,6 +250,9 @@ Gets the advanced threat protection settings for a server.
 Gets one or more Advisors for an Azure SQL Server.
 
 ### [Get-AzSqlServerAuditing](Get-AzSqlServerAuditing.md)
+Gets the auditing settings of an Azure SQL server.
+
+### [Get-AzSqlServerAudit](Get-AzSqlServerAudit.md)
 Gets the auditing settings of an Azure SQL server.
 
 ### [Get-AzSqlServerCommunicationLink](Get-AzSqlServerCommunicationLink.md)
@@ -309,6 +327,9 @@ Exports an Azure SQL Database as a .bacpac file to a storage account.
 ### [New-AzSqlDatabaseFailoverGroup](New-AzSqlDatabaseFailoverGroup.md)
 This command creates a new Azure SQL Database Failover Group.
 
+### [New-AzSqlDatabaseInstanceFailoverGroup](New-AzSqlDatabaseInstanceFailoverGroup.md)
+This command creates a new Azure SQL Database Instance Failover Group.
+
 ### [New-AzSqlDatabaseImport](New-AzSqlDatabaseImport.md)
 Imports a .bacpac file and create a new database on the server.
 
@@ -360,11 +381,17 @@ Creates an Azure SQL Database Sync Member.
 ### [Remove-AzSqlDatabase](Remove-AzSqlDatabase.md)
 Removes an Azure SQL database.
 
+### [Remove-AzSqlDatabaseAudit](Remove-AzSqlDatabaseAudit.md)
+Removes the audit policy of a SQL Database.
+
 ### [Remove-AzSqlDatabaseDataMaskingRule](Remove-AzSqlDatabaseDataMaskingRule.md)
 Removes a data masking rule from a database.
 
 ### [Remove-AzSqlDatabaseFailoverGroup](Remove-AzSqlDatabaseFailoverGroup.md)
 Removes an Azure SQL Database Failover Group.
+
+### [Remove-AzSqlDatabaseInstanceFailoverGroup](Remove-AzSqlDatabaseInstanceFailoverGroup.md)
+Removes an Azure SQL Database Instance Failover Group.
 
 ### [Remove-AzSqlDatabaseFromFailoverGroup](Remove-AzSqlDatabaseFromFailoverGroup.md)
 Removes one or more databases from an Azure SQL Database Failover Group.
@@ -393,11 +420,17 @@ Removes an Azure SQL Managed Instance database.
 ### [Remove-AzSqlInstanceDatabaseSensitivityClassification](Remove-AzSqlInstanceDatabaseSensitivityClassification.md)
 Removes the information types and sensitivity labels of columns in the Azure SQL managed instance database.
 
+### [Remove-AzSqlInstanceKeyVaultKey](Remove-AzSqlInstanceKeyVaultKey.md)
+Removes a Key Vault key from a SQL managed instance
+
 ### [Remove-AzSqlServer](Remove-AzSqlServer.md)
 Removes an Azure SQL Database server.
 
 ### [Remove-AzSqlServerActiveDirectoryAdministrator](Remove-AzSqlServerActiveDirectoryAdministrator.md)
 Removes an Azure AD administrator for SQL Server.
+
+### [Remove-AzSqlServerAudit](Remove-AzSqlServerAudit.md)
+Removes the audit policy of a SQL Server.
 
 ### [Remove-AzSqlServerCommunicationLink](Remove-AzSqlServerCommunicationLink.md)
 Deletes a communication link for elastic database transactions between two servers.
@@ -447,6 +480,9 @@ Modifies auto execute status of an Azure SQL Database Advisor.
 ### [Set-AzSqlDatabaseAuditing](Set-AzSqlDatabaseAuditing.md)
 Changes the auditing settings for an Azure SQL database.
 
+### [Set-AzSqlDatabaseAudit](Set-AzSqlDatabaseAudit.md)
+Changes the auditing settings for an Azure SQL database.
+
 ### [Set-AzSqlDatabaseBackupLongTermRetentionPolicy](Set-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
 Sets a server long term retention policy.
 
@@ -461,6 +497,9 @@ Sets the properties of a data masking rule for a database.
 
 ### [Set-AzSqlDatabaseFailoverGroup](Set-AzSqlDatabaseFailoverGroup.md)
 Modifies the configuration of an Azure SQL Database Failover Group.
+
+### [Set-AzSqlDatabaseInstanceFailoverGroup](Set-AzSqlDatabaseInstanceFailoverGroup.md)
+Modifies the configuration of an Azure SQL Database Instance Failover Group.
 
 ### [Set-AzSqlDatabaseGeoBackupPolicy](Set-AzSqlDatabaseGeoBackupPolicy.md)
 Sets a database geo backup policy.
@@ -501,6 +540,9 @@ Sets the information types and sensitivity labels of columns in the Azure SQL ma
 ### [Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Sets the vulnerability assessment rule baseline.
 
+### [Set-AzSqlInstanceTransparentDataEncryptionProtector](Set-AzSqlInstanceTransparentDataEncryptionProtector.md)
+Sets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
+
 ### [Set-AzSqlServer](Set-AzSqlServer.md)
 Modifies properties of a SQL Database server.
 
@@ -511,6 +553,9 @@ Provisions an Azure AD administrator for SQL Server.
 Updates the auto execute status of an Azure SQL Server Advisor.
 
 ### [Set-AzSqlServerAuditing](Set-AzSqlServerAuditing.md)
+Changes the auditing settings of an Azure SQL server.
+
+### [Set-AzSqlServerAudit](Set-AzSqlServerAudit.md)
 Changes the auditing settings of an Azure SQL server.
 
 ### [Set-AzSqlServerDisasterRecoveryConfiguration](Set-AzSqlServerDisasterRecoveryConfiguration.md)
@@ -560,6 +605,9 @@ Suspends a SQL Data Warehouse database.
 
 ### [Switch-AzSqlDatabaseFailoverGroup](Switch-AzSqlDatabaseFailoverGroup.md)
 Executes a failover of an Azure SQL Database Failover Group.
+
+### [Switch-AzSqlDatabaseInstanceFailoverGroup](Switch-AzSqlDatabaseInstanceFailoverGroup.md)
+Executes a failover of an Azure SQL Database Instance Failover Group.
 
 ### [Update-AzSqlDatabaseAdvancedThreatProtectionSettings](Update-AzSqlDatabaseAdvancedThreatProtectionSettings.md)
 Sets a advanced threat protection settings on a database.

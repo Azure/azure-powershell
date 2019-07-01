@@ -17,8 +17,8 @@ Creates a Storage account.
 New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String> [-Location] <String>
  [-Kind <String>] [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>]
  [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-EnableHierarchicalNamespace <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-EnableHierarchicalNamespace <Boolean>] [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,6 +65,13 @@ PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "m
 ```
 
 This command creates a Storage account with Hierarchical Namespace enabled.
+
+### Example 6: Create a Storage account with Azure Files AAD DS Authentication.
+```
+PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EnableAzureActiveDirectoryDomainServicesForFile $true
+```
+
+This command creates a Storage account with Azure Files AAD DS Authentication.
 
 ## PARAMETERS
 
@@ -141,6 +148,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAzureActiveDirectoryDomainServicesForFile
+Enable Azure Files Azure Active Directory Domain Service Authentication for the storage account.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
