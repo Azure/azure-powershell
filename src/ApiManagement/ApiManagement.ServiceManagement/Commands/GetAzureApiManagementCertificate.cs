@@ -14,19 +14,22 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
-    using System.Collections.Generic;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementCertificate", DefaultParameterSetName = GetAll, SupportsShouldProcess= true)]
-    [OutputType(typeof(PsApiManagementCertificate))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementCertificate", DefaultParameterSetName = ContextParameterSet, SupportsShouldProcess= true)]
+    [OutputType(typeof(PsApiManagementCertificate), ParameterSetName = new[] { ContextParameterSet, ResourceIdParameterSet })]
     public class GetAzureApiManagementCertificate : AzureApiManagementCmdletBase
     {
-        private const string GetAll = "GetAllCertificates";
-        private const string GetById = "GetByCertificateId";
+        #region ParameterSets
+        private const string ContextParameterSet = "ContextParameterSet";
+        private const string ResourceIdParameterSet = "ResourceIdParameterSet";
+        #endregion
 
         [Parameter(
+            ParameterSetName = ContextParameterSet,
+            ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
@@ -34,26 +37,48 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
-            ParameterSetName = GetById,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Identifier of the certificate. If specified will find certificate by the identifier. This parameter is optional. ")]
+        public String CertificateId { get; set; }
+
+        [Parameter(
+            ParameterSetName = ResourceIdParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Identifier of the certificate. If specified will find certificate by the identifier. This parameter is required. ")]
-        public String CertificateId { get; set; }
+            HelpMessage = "Arm Resource Identifier of the Certificate." +
+            " If specified will try to find certificate by the identifier. This parameter is required.")]
+        public String ResourceId { get; set; }
 
         public override void ExecuteApiManagementCmdlet()
         {
-            switch (ParameterSetName)
+            string resourceGroupName;
+            string serviceName;
+            string certificateId;
+
+            if (ParameterSetName.Equals(ResourceIdParameterSet))
             {
-                case GetAll:
-                    var certificates = Client.CertificateList(Context);
-                    WriteObject(certificates, true);
-                    break;
-                case GetById:
-                    var certificate = Client.CertificateById(Context, CertificateId);
-                    WriteObject(certificate);
-                    break;
-                default:
-                    throw new InvalidOperationException(string.Format("Parameter set name '{0}' is not supported.", ParameterSetName));
+                var psBackend = new PsApiManagementCertificate(ResourceId);
+                resourceGroupName = psBackend.ResourceGroupName;
+                serviceName = psBackend.ServiceName;
+                certificateId = psBackend.CertificateId;
+            }
+            else
+            {
+                resourceGroupName = Context.ResourceGroupName;
+                serviceName = Context.ServiceName;
+                certificateId = CertificateId;
+            }
+
+            if (string.IsNullOrEmpty(certificateId))
+            {
+                var certificates = Client.CertificateList(resourceGroupName, serviceName);
+                WriteObject(certificates, true);
+            }
+            else
+            {
+                var certificate = Client.CertificateById(resourceGroupName, serviceName, certificateId);
+                WriteObject(certificate);
             }
         }
     }

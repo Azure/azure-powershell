@@ -501,3 +501,74 @@ function Test-SimpleNewVmImageNameMicrosoftSqlUbuntu
         Clean-ResourceGroup $vmname
     }
 }
+
+<#
+.SYNOPSIS
+Test Simple Parameter Set for New Vm with PPG
+#>
+function Test-SimpleNewVmPpg
+{
+    # Setup
+    $rgname = Get-ResourceName
+
+    try
+    {
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        $ppgname = "MyPpg"
+        $vmname = "MyVm"
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
+
+        # Common
+        $rg = New-AzResourceGroup -Name $rgname -Location "eastus"
+        $ppg = New-AzProximityPlacementGroup `
+            -ResourceGroupName $rgname `
+            -Name $ppgname `
+            -Location "eastus"
+        $vm = New-AzVM -Name $vmname -ResourceGroup $rgname -Credential $cred -DomainNameLabel $domainNameLabel -ProximityPlacementGroup $ppgname
+
+        Assert-AreEqual $vm.ProximityPlacementGroup.Id $ppg.Id
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Simple Parameter Set for New Vm with PPG Id
+#>
+function Test-SimpleNewVmPpgId
+{
+    # Setup
+    $rgname = Get-ResourceName
+    $vmname = Get-ResourceName
+
+    try
+    {
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        $ppgname = "MyPpg"
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
+
+        # Common
+        $rg = New-AzResourceGroup -Name $rgname -Location "eastus"
+        $ppg = New-AzProximityPlacementGroup `
+            -ResourceGroupName $rgname `
+            -Name $ppgname `
+            -Location "eastus"
+        $vm = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -ProximityPlacementGroup $ppg.Id
+
+        Assert-AreEqual $vm.ProximityPlacementGroup.Id $ppg.Id
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+        Clean-ResourceGroup $vmname
+    }
+}

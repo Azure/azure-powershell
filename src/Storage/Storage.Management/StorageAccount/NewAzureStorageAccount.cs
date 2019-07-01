@@ -56,6 +56,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             StorageModels.SkuName.StandardGRS,
             StorageModels.SkuName.StandardRAGRS,
             StorageModels.SkuName.PremiumLRS,
+            StorageModels.SkuName.PremiumZRS,
             IgnoreCase = true)]
         public string SkuName { get; set; }
 
@@ -75,6 +76,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             StorageModels.Kind.StorageV2,
             StorageModels.Kind.BlobStorage,
             StorageModels.Kind.BlockBlobStorage,
+            StorageModels.Kind.FileStorage,
             IgnoreCase = true)]
         public string Kind
         {
@@ -162,6 +164,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? enableHierarchicalNamespace = null;
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable Azure Files Azure Active Directory Domain Service Authentication for the storage account.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableAzureActiveDirectoryDomainServicesForFile
+        {
+            get
+            {
+                return enableAzureActiveDirectoryDomainServicesForFile.Value;
+            }
+            set
+            {
+                enableAzureActiveDirectoryDomainServicesForFile = value;
+            }
+        }
+        private bool? enableAzureActiveDirectoryDomainServicesForFile = null;
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -220,6 +239,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (enableHierarchicalNamespace != null)
             {
                 createParameters.IsHnsEnabled = enableHierarchicalNamespace;
+            }
+            if (enableAzureActiveDirectoryDomainServicesForFile !=null)
+            {
+                createParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
+                if (enableAzureActiveDirectoryDomainServicesForFile.Value)
+                {
+                    createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.AADDS;
+                }
+                else
+                {
+                    createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
+                }
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

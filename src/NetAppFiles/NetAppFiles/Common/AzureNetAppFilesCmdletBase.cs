@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.NetApp;
@@ -21,7 +19,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Common
 {
-
     /// <summary>
     /// Base class of Azure NetApp Files Cmdlet.
     /// </summary>
@@ -29,42 +26,23 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Common
     { 
         private IAzureNetAppFilesManagementClient _netAppFilesManagementClient;
 
-        private Dictionary<string, List<string>> _defaultRequestHeaders;
+        protected const string ResourceIdParameterSet = "ByResourceIdParameterSet";
+        protected const string ObjectParameterSet = "ByObjectParameterSet";
+        protected const string ParentObjectParameterSet = "ByParentObjectParameterSet";
+        protected const string FieldsParameterSet = "ByFieldsParameterSet";
 
-        public const string ResourceIdParameterSet = "ByResourceIdParameterSet";
-        public const string ObjectParameterSet = "ByObjectParameterSet";
-        public const string ParentObjectParameterSet = "ByParentObjectParameterSet";
-        public const string FieldsParameterSet = "ByFieldsParameterSet";
-
-        
 
         /// <summary>
         /// Gets or sets the Azure NetApp Files management client.
         /// </summary>
         public IAzureNetAppFilesManagementClient AzureNetAppFilesManagementClient
         {
-            get
-            {
-                return _netAppFilesManagementClient ??
-                       (_netAppFilesManagementClient =
-                           AzureSession.Instance.ClientFactory.CreateArmClient<AzureNetAppFilesManagementClient>(DefaultProfile.DefaultContext,
-                               AzureEnvironment.Endpoint.ResourceManager));
-            }
+            get =>
+                _netAppFilesManagementClient ??
+                (_netAppFilesManagementClient =
+                    AzureSession.Instance.ClientFactory.CreateArmClient<AzureNetAppFilesManagementClient>(DefaultProfile.DefaultContext,
+                        AzureEnvironment.Endpoint.ResourceManager));
             set { _netAppFilesManagementClient = value; }
-        }
-
-        /// <summary>
-        /// Gets or sets the default headers send with rest requests.
-        /// </summary>
-        public Dictionary<string, List<string>> DefaultRequestHeaders
-        {
-            get
-            {
-                return _defaultRequestHeaders ??
-                       (_defaultRequestHeaders =
-                           new Dictionary<string, List<string>> { { "UserAgent", new List<string> { "PowerShell" } } });
-            }
-            set { _defaultRequestHeaders = value; }
         }
     }
 }

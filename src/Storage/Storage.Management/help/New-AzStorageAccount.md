@@ -17,8 +17,8 @@ Creates a Storage account.
 New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String> [-Location] <String>
  [-Kind <String>] [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>]
  [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-EnableHierarchicalNamespace <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-EnableHierarchicalNamespace <Boolean>] [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,6 +65,13 @@ PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "m
 ```
 
 This command creates a Storage account with Hierarchical Namespace enabled.
+
+### Example 6: Create a Storage account with Azure Files AAD DS Authentication.
+```
+PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EnableAzureActiveDirectoryDomainServicesForFile $true
+```
+
+This command creates a Storage account with Azure Files AAD DS Authentication.
 
 ## PARAMETERS
 
@@ -149,6 +156,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableAzureActiveDirectoryDomainServicesForFile
+Enable Azure Files Azure Active Directory Domain Service Authentication for the storage account.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableHierarchicalNamespace
 Indicates whether or not the Storage account enables Hierarchical Namespace.
 
@@ -185,13 +207,15 @@ The acceptable values for this parameter are:
 - Storage. General purpose Storage account that supports storage of Blobs, Tables, Queues, Files and Disks.
 - StorageV2. General Purpose Version 2 (GPv2) Storage account that supports Blobs, Tables, Queues, Files, and Disks, with advanced features like data tiering.
 - BlobStorage. Blob Storage account which supports storage of Blobs only.
-The default value is Storage.
+- BlockBlobStorage. Block Blob Storage account which supports storage of Block Blobs only.
+- FileStorage. File Storage account which supports storage of Files only.
+The default value is StorageV2.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Storage, StorageV2, BlobStorage, BlockBlobStorage
+Accepted values: Storage, StorageV2, BlobStorage, BlockBlobStorage, FileStorage
 
 Required: False
 Position: Named
@@ -268,12 +292,13 @@ The acceptable values for this parameter are:
 - Standard_GRS. Geo-redundant storage.
 - Standard_RAGRS. Read access geo-redundant storage.
 - Premium_LRS. Premium locally-redundant storage.
+- Premium_ZRS. Premium zone-redundant storage.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases: StorageAccountType, AccountType, Type
-Accepted values: Standard_LRS, Standard_ZRS, Standard_GRS, Standard_RAGRS, Premium_LRS
+Accepted values: Standard_LRS, Standard_ZRS, Standard_GRS, Standard_RAGRS, Premium_LRS, Premium_ZRS
 
 Required: True
 Position: 2
