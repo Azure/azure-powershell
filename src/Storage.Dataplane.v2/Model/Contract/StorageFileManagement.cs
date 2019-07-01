@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Storage.Model.Contract
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Microsoft.Azure.PowerShell.Cmdlets.Storage.Dataplane.V2;
 
     /// <summary>
     /// File management

@@ -28,6 +28,7 @@ using System.Management.Automation;
 using System.Security.Permissions;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Azure.PowerShell.Cmdlets.Storage.Dataplane.V2;
 
 namespace Microsoft.Azure.Commands.Storage.Common.Cmdlet
 {

@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
     using XTable = Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
+    using Microsoft.Azure.PowerShell.Cmdlets.Storage.Dataplane.V2;
 
     internal class SasTokenHelper
     {

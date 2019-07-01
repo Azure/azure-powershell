@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.Storage.Common.Cmdlet
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
+    using Microsoft.Azure.PowerShell.Cmdlets.Storage.Dataplane.V2;
 
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageAccountSASToken"), OutputType(typeof(String))]
     public class NewAzureStorageAccountSasTokenCommand : StorageCloudBlobCmdletBase

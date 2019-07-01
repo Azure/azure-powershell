@@ -18,6 +18,8 @@ namespace Microsoft.Azure.Commands.Storage.File
 {
     using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.Azure.Commands.Storage.Common;
+
+    using Microsoft.Azure.PowerShell.Cmdlets.Storage.Dataplane.V2;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.Azure.Storage.DataMovement;
     using System;

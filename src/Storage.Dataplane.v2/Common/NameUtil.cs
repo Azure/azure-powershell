@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
     using System.Linq;
     using System.Management.Automation;
     using System.Text.RegularExpressions;
+    using Microsoft.Azure.PowerShell.Cmdlets.Storage.Dataplane.V2;
 
     /// <summary>
     /// Name utility

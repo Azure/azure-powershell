@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
     using System.Collections.Generic;
     using System.Globalization;
     using System.Management.Automation;
+    using Microsoft.Azure.PowerShell.Cmdlets.Storage.Dataplane.V2;
 
     internal class AccessPolicyHelper
     {

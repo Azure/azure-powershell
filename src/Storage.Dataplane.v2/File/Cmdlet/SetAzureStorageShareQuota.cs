@@ -13,6 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Storage.Common;
+
+
+using Microsoft.Azure.PowerShell.Cmdlets.Storage.Dataplane.V2;
 using Microsoft.Azure.Storage.File;
 using System.Globalization;
 using System.Management.Automation;

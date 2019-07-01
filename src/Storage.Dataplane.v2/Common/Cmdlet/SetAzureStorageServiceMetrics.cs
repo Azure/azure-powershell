@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.Storage.Common.Cmdlet
     using System.Management.Automation;
     using System.Security.Permissions;
     using Microsoft.Azure.Commands.Storage.Model.Contract;
+    using Microsoft.Azure.PowerShell.Cmdlets.Storage.Dataplane.V2;
 
     /// <summary>
     /// Show azure storage service properties

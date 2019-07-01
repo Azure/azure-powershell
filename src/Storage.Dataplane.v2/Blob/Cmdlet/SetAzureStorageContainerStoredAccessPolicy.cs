@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob.Cmdlet
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
+    using Microsoft.Azure.PowerShell.Cmdlets.Storage.Dataplane.V2;
 
     /// <summary>
     /// create a new azure container

@@ -4,6 +4,7 @@ using System;
 using System.Globalization;
 using System.Management.Automation;
 using System.Threading.Tasks;
+using Microsoft.Azure.PowerShell.Cmdlets.Storage.Dataplane.V2;
 
 namespace Microsoft.Azure.Commands.Storage.Common
 {

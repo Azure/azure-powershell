@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Storage.Common.Cmdlet
     using System.Security.Permissions;
     using StorageClient = Azure.Storage.Shared.Protocol;
     using XTable = Microsoft.Azure.Cosmos.Table;
+    using Microsoft.Azure.PowerShell.Cmdlets.Storage.Dataplane.V2;
 
     /// <summary>
     /// Show azure storage service properties

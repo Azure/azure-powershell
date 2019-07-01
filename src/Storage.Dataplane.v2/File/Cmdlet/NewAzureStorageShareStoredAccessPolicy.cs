@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Storage.File.Cmdlet
     using System.Management.Automation;
     using System.Security.Permissions;
     using System.Threading.Tasks;
+    using Microsoft.Azure.PowerShell.Cmdlets.Storage.Dataplane.V2;
 
     /// <summary>
     /// create a new stored access policy to a specific azure share.

@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
     using System;
     using System.Threading;
     using XTable = Microsoft.Azure.Cosmos.Table;
+    using Microsoft.Azure.PowerShell.Cmdlets.Storage.Dataplane.V2;
 
     internal class CmdletOperationContext
     {

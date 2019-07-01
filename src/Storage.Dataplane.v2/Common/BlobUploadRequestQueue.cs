@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using Microsoft.Azure.PowerShell.Cmdlets.Storage.Dataplane.V2;
 
     internal class BlobUploadRequestQueue
     {

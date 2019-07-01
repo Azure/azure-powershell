@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.Storage.File
     using System.Globalization;
     using System.Linq;
     using System.Text.RegularExpressions;
+    using Microsoft.Azure.PowerShell.Cmdlets.Storage.Dataplane.V2;
 
     /// <summary>
     /// Provides utilities to determining whether the given string is a valid

@@ -23,6 +23,7 @@ using System.Net;
 using System.Security.Permissions;
 using SharedProtocol = Microsoft.Azure.Storage.Shared.Protocol;
 using Microsoft.Azure.Commands.Storage.Model.Contract;
+using Microsoft.Azure.PowerShell.Cmdlets.Storage.Dataplane.V2;
 
 namespace Microsoft.Azure.Commands.Storage.Common.Cmdlet
 {

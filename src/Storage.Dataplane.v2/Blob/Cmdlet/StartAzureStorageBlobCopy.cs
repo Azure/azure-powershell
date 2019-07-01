@@ -22,6 +22,8 @@ namespace Microsoft.Azure.Commands.Storage.Blob.Cmdlet
     using Commands.Common.Storage.ResourceModel;
     using Microsoft.Azure.Commands.Common.Storage;
     using Microsoft.Azure.Commands.Storage.Common;
+
+    using Microsoft.Azure.PowerShell.Cmdlets.Storage.Dataplane.V2;
     using Microsoft.Azure.Commands.Storage.File;
     using Microsoft.Azure.Commands.Storage.Model.Contract;
     using Microsoft.Azure.Storage;

@@ -48,9 +48,6 @@
     <None Update="help\*.md" CopyToOutputDirectory="PreserveNewest" />
     <None Update="*.ps1xml" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
-  <PropertyGroup>
-    <RootNamespace>Microsoft.WindowsAzure.Commands.$(PsModuleName)</RootNamespace>
-  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.PowerShell.Authentication.Abstractions" Version="1.3.0-preview"/>
     <PackageReference Include="Microsoft.Azure.PowerShell.Common" Version="1.3.0-preview"/>

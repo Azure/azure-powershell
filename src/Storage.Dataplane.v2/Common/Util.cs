@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
     using System.Globalization;
     using System.Net;
     using System.Threading.Tasks;
+    using Microsoft.Azure.PowerShell.Cmdlets.Storage.Dataplane.V2;
 
     internal static class Util
     {
